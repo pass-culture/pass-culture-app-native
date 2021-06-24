@@ -74,7 +74,7 @@ describe('NonBeneficiaryHeader  ', () => {
     banner.props.onClick()
 
     await flushAllPromises()
-    expect(navigate).toBeCalledWith('PhoneValidation')
+    expect(navigate).toBeCalledWith('SetPhoneNumber')
   })
 
   it('should render the right body for 18 years old users if user has not completed idcheck', async () => {

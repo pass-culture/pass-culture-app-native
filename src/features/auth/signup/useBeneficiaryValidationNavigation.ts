@@ -50,7 +50,7 @@ export const useBeneficiaryValidationNavigation = () => {
     email: PrefetchedInfo['email']
   ) {
     if (nextStep === BeneficiaryValidationStep.PhoneValidation && settings?.enablePhoneValidation) {
-      navigate('PhoneValidation')
+      navigate('SetPhoneNumber')
     } else if (nextStep === BeneficiaryValidationStep.IdCheck) {
       if (settings?.allowIdCheckRegistration && !!email) {
         try {

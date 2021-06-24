@@ -292,7 +292,7 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={`PhoneValidation`}
-            onPress={() => navigation.navigate('PhoneValidation')}
+            onPress={() => navigation.navigate('SetPhoneNumber')}
           />
         </Row>
         <Row half>

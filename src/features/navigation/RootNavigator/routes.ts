@@ -19,8 +19,8 @@ import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
 import { IdCheck } from 'features/auth/signup/IdCheck'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
-import { PhoneValidation } from 'features/auth/signup/PhoneValidation/PhoneValidation'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
+import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
@@ -129,7 +129,7 @@ const routes: Array<Route> = [
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'TabNavigator', component: TabNavigator },
   { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep },
-  { name: 'PhoneValidation', component: PhoneValidation },
+  { name: 'SetPhoneNumber', component: SetPhoneNumber },
   { name: 'SetPhoneValidationCode', component: SetPhoneValidationCode },
   { name: 'PhoneValidationTooManyAttempts', component: PhoneValidationTooManyAttempts },
   { name: 'VerifyEligibility', component: VerifyEligibility },
