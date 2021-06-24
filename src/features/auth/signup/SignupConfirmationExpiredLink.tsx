@@ -19,8 +19,6 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-// import { contactSupport } from '../support.services'
-
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink'>
 
 export function SignupConfirmationExpiredLink(props: Props) {

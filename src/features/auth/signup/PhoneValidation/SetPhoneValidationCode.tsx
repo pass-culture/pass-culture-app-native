@@ -10,6 +10,7 @@ import { ApiError, extractApiErrorMessage } from 'api/helpers'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
@@ -28,7 +29,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-import { contactSupport } from '../../support.services'
 const CODE_INPUT_LENGTH = 6
 
 const screenWidth = Dimensions.get('window').width
@@ -223,7 +223,7 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
           <Spacer.Column numberOfSpaces={4} />
           <HelpRow>
             <Typo.Caption color={ColorsEnum.GREY_DARK}>
-              {t`Si tu n’arrives pas à récuperer ton code tu peux`}
+              {t`Si tu n’arrives pas à récupérer ton code tu peux`}
               <Spacer.Row numberOfSpaces={1} />
               <ButtonQuaternary
                 title={t`Contacter le support`}

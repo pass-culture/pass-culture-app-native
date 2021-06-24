@@ -20,7 +20,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { padding, Spacer, Typo } from 'ui/theme'
 
-// import { contactSupport } from '../support.services'
+// import { contactSupport } from 'features/auth/support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 

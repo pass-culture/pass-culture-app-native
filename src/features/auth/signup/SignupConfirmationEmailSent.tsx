@@ -5,6 +5,7 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
+import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -17,8 +18,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
-
-import { contactSupport } from '../support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
