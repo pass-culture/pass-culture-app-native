@@ -21,11 +21,18 @@ module.exports = {
       '|@pass-culture/id-check' +
       '/(?!(lib)))',
   ],
-  testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
+  testRegex: '(?:\/__tests__\/.*)?\.(?:test|spec)(?:\.(?:native|ios|android))?\.(?:ts|tsx|js)$',
   testPathIgnorePatterns: ['\\.snap$', '<rootDir>/node_modules/'],
   cacheDirectory: '.jest/cache',
-  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
-  coveragePathIgnorePatterns: ['/node_modules/', '/src/environment', '/src/locales'],
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx,ts,tsx}'
+  ],
+  coveragePathIgnorePatterns: [
+    '\\.web\\.(test|spec)',
+    '/node_modules/',
+    '/src/environment',
+    '/src/locales'
+  ],
   collectCoverage: false,
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-native.js',
 }
