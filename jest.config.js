@@ -1,6 +1,17 @@
 module.exports = {
   preset: 'react-native',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  moduleNameMapper: {
+    '^api(.*)$': '<rootDir>/src/api$1',
+    '^features(.*)$': '<rootDir>/src/features$1',
+    '^libs(.*)$': '<rootDir>/src/libs$1',
+    '^locales(.*)$': '<rootDir>/src/locales$1',
+    '^types(.*)$': '<rootDir>/src/types$1',
+    '^tests(.*)$': '<rootDir>/src/tests$1',
+    '^ui(.*)$': '<rootDir>/src/ui$1',
+    '^__mocks__(.*)$': '<rootDir>/__mocks__$1',
+  },
+  snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-native.js',
   setupFiles: ['./jest/jest.setup.ts', './node_modules/react-native-gesture-handler/jestSetup.js'],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
   transform: {
@@ -22,10 +33,17 @@ module.exports = {
       '/(?!(lib)))',
   ],
   testRegex: '(?:\/__tests__\/.*)?\.(?:test|spec)(?:\.(?:native|ios|android))?\.(?:ts|tsx|js)$',
-  testPathIgnorePatterns: ['\\.snap$', '<rootDir>/node_modules/'],
+  testPathIgnorePatterns: [
+    '\\.snap$',
+    '\\.native-snap$',
+    '\\.web-snap$',
+    '<rootDir>/node_modules/'
+  ],
   cacheDirectory: '.jest/cache',
   collectCoverageFrom: [
-    'src/**/*.{js,jsx,ts,tsx}'
+    'src/**/*.{js,jsx,ts,tsx}',
+    '!**/node_modules/**',
+    '!**/coverage/**',
   ],
   coveragePathIgnorePatterns: [
     '\\.web\\.(test|spec)',
@@ -34,5 +52,4 @@ module.exports = {
     '/src/locales'
   ],
   collectCoverage: false,
-  snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-native.js',
 }

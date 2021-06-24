@@ -16,7 +16,7 @@ module.exports = {
           types: './src/types',
           tests: './src/tests',
           ui: './src/ui',
-          __mocks__: './__mocks__/',
+          __mocks__: './__mocks__',
         },
       },
     ],
