@@ -1,16 +1,17 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { useMutation, UseMutationResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, canGoBack, goBack } from '__mocks__/@react-navigation/native'
 import * as AuthApi from 'features/auth/api'
 import {
   formatPhoneNumber,
-  SetPhoneValidationCodeModal,
-  SetPhoneValidationCodeModalProps,
-} from 'features/auth/signup/PhoneValidation/SetPhoneValidationCodeModal'
+  SetPhoneValidationCode,
+} from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 import { contactSupport } from 'features/auth/support.services'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { EmptyResponse } from 'libs/fetch'
 import {
   act,
@@ -46,7 +47,7 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
   onError: () => {},
 }
 
-describe('SetPhoneNumberValidationCodeModal', () => {
+describe('SetPhoneValidationCode', () => {
   beforeEach(() => {
     // @ts-ignore ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
@@ -75,13 +76,16 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       useModalMock.mockRestore()
     })
 
-    it('should call onGoBack property on press left arrow', () => {
-      const mockOnGoBack = jest.fn()
-      const { getByTestId } = renderSetPhoneValidationCode({ onGoBack: mockOnGoBack })
+    it('should call onGoBack property on press left arrow', async () => {
+      canGoBack.mockImplementationOnce(() => true)
+      const { getByTestId } = renderSetPhoneValidationCode()
 
       const leftArrow = getByTestId('leftIconButton')
       fireEvent.press(leftArrow)
-      expect(mockOnGoBack).toHaveBeenCalled()
+      await waitForExpect(() => {
+        expect(canGoBack).toHaveBeenCalled()
+        expect(goBack).toHaveBeenCalled()
+      })
     })
   })
 
@@ -122,10 +126,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
     })
 
     it('should navigate to id-check if validate phone number request succeeds', async () => {
-      const mockDismissModal = jest.fn()
-      const { getByTestId } = renderModalWithFilledCodeInput('123456', {
-        dismissModal: mockDismissModal,
-      })
+      const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
 
       fireEvent.press(continueButton)
@@ -159,7 +160,6 @@ describe('SetPhoneNumberValidationCodeModal', () => {
     })
 
     it('should navigate to PhoneValidationTooManyAttempts page if request fails with TOO_MANY_VALIDATION_ATTEMPTS code', async () => {
-      const mockDismissModal = jest.fn()
       const response = {
         content: {
           code: 'TOO_MANY_VALIDATION_ATTEMPTS',
@@ -168,9 +168,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
         name: 'ApiError',
       }
 
-      const { getByTestId } = renderModalWithFilledCodeInput('123456', {
-        dismissModal: mockDismissModal,
-      })
+      const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
 
       fireEvent.press(continueButton)
@@ -181,7 +179,6 @@ describe('SetPhoneNumberValidationCodeModal', () => {
 
       await waitForExpect(() => {
         expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManyAttempts')
-        expect(mockDismissModal).toHaveBeenCalled()
       })
     })
   })
@@ -204,42 +201,41 @@ describe('SetPhoneNumberValidationCodeModal', () => {
     })
   })
 
-  describe.only('formatPhoneNumber helper', () => {
+  describe('formatPhoneNumber helper', () => {
     it.each([
       ['+33612345678', '+33\u00a06\u00a012\u00a034\u00a056\u00a078'],
       ['+687723160', '+687\u00a072\u00a031\u00a060'],
     ])('should format number correctly"', (phoneNumber, expectedPhoneNumber) => {
-      expect(formatPhoneNumber(phoneNumber)).toEqual(expectedPhoneNumber)
+      expect(formatPhoneNumber(phoneNumber, 'FR')).toEqual(expectedPhoneNumber)
     })
   })
 })
 
-function renderSetPhoneValidationCode(customProps?: Partial<SetPhoneValidationCodeModalProps>) {
-  const props = {
-    dismissModal: jest.fn(),
-    visible: true,
-    phoneNumber: '0612345678',
-    onGoBack: jest.fn(),
-    ...customProps,
-  }
-  return render(<SetPhoneValidationCodeModal {...props} />)
+function renderSetPhoneValidationCode() {
+  const navigationProps = {
+    route: {
+      params: {
+        phoneNumber: '0612345678',
+        countryCode: 'FR',
+      },
+    },
+  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
+  return render(<SetPhoneValidationCode {...navigationProps} />)
 }
 
-function renderModalWithFilledCodeInput(
-  code: string,
-  customProps?: Partial<SetPhoneValidationCodeModalProps>
-) {
-  const renderAPI = renderSetPhoneValidationCode(customProps)
+function renderModalWithFilledCodeInput(code: string) {
+  const renderAPI = renderSetPhoneValidationCode()
+  const navigationProps = {
+    route: {
+      params: {
+        phoneNumber: '0612345678',
+        countryCode: 'FR',
+      },
+    },
+  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
   for (let i = 0; i < code.length; i++) {
     fireEvent.changeText(renderAPI.getByTestId(`input-${i}`), code[i])
-    renderAPI.rerender(
-      <SetPhoneValidationCodeModal
-        dismissModal={jest.fn()}
-        visible={true}
-        phoneNumber={'0612345678'}
-        onGoBack={jest.fn()}
-      />
-    )
+    renderAPI.rerender(<SetPhoneValidationCode {...navigationProps} />)
   }
   return renderAPI
 }

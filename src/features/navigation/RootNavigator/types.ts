@@ -3,6 +3,7 @@ import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { StackNavigationOptions } from '@react-navigation/stack/lib/typescript/src/types'
 import { ComponentType } from 'react'
+import { CountryCode } from 'react-native-country-picker-modal'
 
 import { BeneficiaryValidationStep } from 'api/gen'
 
@@ -88,6 +89,7 @@ export type RootStackParamList = {
     params: TabParamList[TabRouteName]
   }
   PhoneValidation: undefined
+  SetPhoneValidationCode: { phoneNumber: string; countryCode: CountryCode }
   PhoneValidationTooManyAttempts: undefined
   VerifyEligibility: { email: string; nextBeneficiaryValidationStep: BeneficiaryValidationStep }
   FirstTutorial: { shouldCloseAppOnBackAction: boolean }

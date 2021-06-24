@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
-import parsePhoneNumber from 'libphonenumber-js'
-import React, { FC, useEffect, useState } from 'react'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
+import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
+import React, { useCallback, FC, useState, useMemo } from 'react'
 import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -9,16 +10,17 @@ import { ApiError, extractApiErrorMessage } from 'api/helpers'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
+import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { CodeInput, CodeValidation } from 'ui/components/inputs/CodeInput'
 import { InputError } from 'ui/components/inputs/InputError'
-import { AppModal } from 'ui/components/modals/AppModal'
+import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -27,7 +29,6 @@ import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { contactSupport } from '../../support.services'
-
 const CODE_INPUT_LENGTH = 6
 
 const screenWidth = Dimensions.get('window').width
@@ -45,8 +46,14 @@ interface CodeInputState extends CodeValidation {
 
 const TIMER = 60
 
-export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> = (props) => {
-  const { navigate } = useNavigation<UseNavigationType>()
+export type SetPhoneValidationCodeProps = StackScreenProps<
+  RootStackParamList,
+  'SetPhoneValidationCode'
+>
+
+export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route }) => {
+  const { phoneNumber, countryCode } = route.params
+  const { navigate, canGoBack, goBack } = useNavigation<UseNavigationType>()
   const [codeInputState, setCodeInputState] = useState<CodeInputState>({
     code: null,
     isComplete: false,
@@ -71,7 +78,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     visible: fullPageModalVisible,
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
-  } = useModal(props.visible)
+  } = useModal(false)
 
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
 
@@ -85,22 +92,22 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     onError,
   })
 
-  useEffect(() => {
-    storage.readObject('phone_validation_code_asked_at').then((value) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      setValidationCodeRequestTimestamp(value as any)
-    })
-  }, [props.visible])
+  useFocusEffect(
+    useCallback(() => {
+      storage.readObject('phone_validation_code_asked_at').then((value) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        setValidationCodeRequestTimestamp(value as any)
+      })
+    }, [route.params])
+  )
 
   function onValidateSuccess() {
     navigateToNextBeneficiaryValidationStep()
-    props.dismissModal()
   }
 
   function onError(error: unknown | ApiError) {
     const { content } = error as ApiError
     if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS' || content.code === 'TOO_MANY_SMS_SENT') {
-      props.dismissModal()
       navigate('PhoneValidationTooManyAttempts')
     } else {
       setErrorMessage(extractApiErrorMessage(error))
@@ -128,9 +135,11 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     }
   }
 
-  function goBack() {
+  function onGoBack() {
     setErrorMessage('')
-    props.onGoBack()
+    if (canGoBack()) {
+      goBack()
+    }
   }
 
   function getRetryButtonTitle() {
@@ -141,99 +150,105 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
 
   function requestSendPhoneValidationCode() {
     if (isRequestTimestampExpired) {
-      sendPhoneValidationCode(props.phoneNumber)
+      sendPhoneValidationCode(phoneNumber)
     }
   }
 
-  const validationCodeInformation =
-    t`Saisis le code envoyé par SMS au numéro` +
-    ` ${formatPhoneNumber(props.phoneNumber)}.` +
-    '\n' +
-    t`Attention tu n'as que 3 tentatives.`
+  const validationCodeInformation = useMemo(
+    () =>
+      t`Saisis le code envoyé par SMS au numéro` +
+      ` ${formatPhoneNumber(phoneNumber, countryCode as CountryCode)}.` +
+      '\n' +
+      t`Attention tu n'as que 3 tentatives.`,
+    [route.params]
+  )
 
   if (error) {
     throw error
   }
 
   return (
-    <AppModal
-      visible={props.visible}
-      title={t`Confirme ton numéro`}
-      rightIcon={Close}
-      onRightIconPress={showFullPageModal}
-      leftIcon={ArrowPrevious}
-      onLeftIconPress={goBack}
-      disableBackdropTap
-      isScrollable
-      shouldDisplayOverlay={false}>
-      <ModalContent>
-        <Paragraphe>
-          <Typo.Body>{validationCodeInformation}</Typo.Body>
-        </Paragraphe>
-        <Spacer.Column numberOfSpaces={6} />
-        <CodeInput
-          codeLength={CODE_INPUT_LENGTH}
-          placeholder={'0'}
-          enableValidation
-          isValid={isCodeValid}
-          isInputValid={isInputValid}
-          onChangeValue={onChangeValue}
+    <React.Fragment>
+      <BottomContentPage>
+        <ModalHeader
+          title={t`Confirme ton numéro`}
+          leftIcon={ArrowPrevious}
+          onLeftIconPress={onGoBack}
+          rightIcon={Close}
+          onRightIconPress={showFullPageModal}
         />
-        {errorMessage ? (
-          <React.Fragment>
-            <InputError visible messageId={errorMessage} numberOfSpacesTop={3} />
-            <Spacer.Column numberOfSpaces={5} />
-          </React.Fragment>
-        ) : (
-          <Spacer.Column numberOfSpaces={8} />
-        )}
-        <ButtonPrimary
-          title={t`Continuer`}
-          disabled={!codeInputState.isValid}
-          onPress={validateCode}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        <HelpRow>
-          <Typo.Body>{t`Tu n'as pas reçu le sms ?`}</Typo.Body>
-          {/* force button to wrap on small screen, otherwise timer will "unwrap" when timer is under 10 seconds */}
-          {screenWidth <= 320 ? <Break /> : null}
-          <ButtonTertiary
-            title={getRetryButtonTitle()}
-            testId={'Réessayer'}
-            onPress={requestSendPhoneValidationCode}
-            inline
-            disabled={!isRequestTimestampExpired}
+        <ModalContent>
+          <Spacer.Column numberOfSpaces={6} />
+
+          <Paragraphe>
+            <Typo.Body>{validationCodeInformation}</Typo.Body>
+          </Paragraphe>
+          <Spacer.Column numberOfSpaces={6} />
+          <CodeInput
+            codeLength={CODE_INPUT_LENGTH}
+            placeholder={'0'}
+            enableValidation
+            isValid={isCodeValid}
+            isInputValid={isInputValid}
+            onChangeValue={onChangeValue}
           />
-        </HelpRow>
-        <Spacer.Column numberOfSpaces={4} />
-        <Separator color={ColorsEnum.GREY_MEDIUM} />
-        <Spacer.Column numberOfSpaces={4} />
-        <HelpRow>
-          <Typo.Caption color={ColorsEnum.GREY_DARK}>
-            {t`Si tu n’arrives pas à récuperer ton code tu peux`}
-            <Spacer.Row numberOfSpaces={1} />
-            <ButtonQuaternary
-              title={t`Contacter le support`}
-              icon={Email}
-              onPress={contactSupport.forPhoneNumberConfirmation}
+          {errorMessage ? (
+            <React.Fragment>
+              <InputError visible messageId={errorMessage} numberOfSpacesTop={3} />
+              <Spacer.Column numberOfSpaces={5} />
+            </React.Fragment>
+          ) : (
+            <Spacer.Column numberOfSpaces={8} />
+          )}
+          <ButtonPrimary
+            title={t`Continuer`}
+            disabled={!codeInputState.isValid}
+            onPress={validateCode}
+          />
+          <Spacer.Column numberOfSpaces={4} />
+          <HelpRow>
+            <Typo.Body>{t`Tu n'as pas reçu le sms ?`}</Typo.Body>
+            {/* force button to wrap on small screen, otherwise timer will "unwrap" when timer is under 10 seconds */}
+            {screenWidth <= 320 ? <Break /> : null}
+            <ButtonTertiary
+              title={getRetryButtonTitle()}
+              testId={'Réessayer'}
+              onPress={requestSendPhoneValidationCode}
               inline
+              disabled={!isRequestTimestampExpired}
             />
-          </Typo.Caption>
-        </HelpRow>
-      </ModalContent>
+          </HelpRow>
+          <Spacer.Column numberOfSpaces={4} />
+          <Separator color={ColorsEnum.GREY_MEDIUM} />
+          <Spacer.Column numberOfSpaces={4} />
+          <HelpRow>
+            <Typo.Caption color={ColorsEnum.GREY_DARK}>
+              {t`Si tu n’arrives pas à récuperer ton code tu peux`}
+              <Spacer.Row numberOfSpaces={1} />
+              <ButtonQuaternary
+                title={t`Contacter le support`}
+                icon={Email}
+                onPress={contactSupport.forPhoneNumberConfirmation}
+                inline
+              />
+            </Typo.Caption>
+          </HelpRow>
+        </ModalContent>
+      </BottomContentPage>
       <QuitSignupModal
+        testIdSuffix="phone-validation-quit-signup"
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
         signupStep={SignupSteps.PhoneNumber}
       />
-    </AppModal>
+    </React.Fragment>
   )
 }
 
 /** returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces
  */
-export const formatPhoneNumber = (phoneNumber: string) => {
-  const parsedPhoneNumber = parsePhoneNumber(phoneNumber)
+export const formatPhoneNumber = (phoneNumber: string, countryCode: CountryCode) => {
+  const parsedPhoneNumber = parsePhoneNumber(phoneNumber, countryCode)
   return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0')
 }
 

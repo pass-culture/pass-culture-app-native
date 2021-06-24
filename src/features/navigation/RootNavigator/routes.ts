@@ -21,6 +21,7 @@ import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
 import { PhoneValidation } from 'features/auth/signup/PhoneValidation/PhoneValidation'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
+import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
@@ -129,6 +130,7 @@ const routes: Array<Route> = [
   { name: 'TabNavigator', component: TabNavigator },
   { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep },
   { name: 'PhoneValidation', component: PhoneValidation },
+  { name: 'SetPhoneValidationCode', component: SetPhoneValidationCode },
   { name: 'PhoneValidationTooManyAttempts', component: PhoneValidationTooManyAttempts },
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial },

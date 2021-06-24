@@ -4,10 +4,7 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import {
-  SetPhoneNumberModal,
-  SetPhoneNumberModalProps,
-} from 'features/auth/signup/PhoneValidation/SetPhoneNumberModal'
+import { PhoneValidation } from 'features/auth/signup/PhoneValidation/PhoneValidation'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
 import {
@@ -35,7 +32,7 @@ jest.mock('libs/timer', () => ({
 
 let mockedSendPhoneValidationCode = jest.fn()
 
-describe('SetPhoneNumberModal', () => {
+describe('PhoneValidation', () => {
   beforeEach(() => {
     mockedSendPhoneValidationCode = mockedUseMutation.mockImplementation(
       // @ts-ignore ts(2345)
@@ -49,7 +46,7 @@ describe('SetPhoneNumberModal', () => {
 
   describe('button "Continuer"', () => {
     it('should enable the button when the phone number is valid', async () => {
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
+      const { getByTestId, getByPlaceholderText } = renderPhoneValidation()
       await superFlushWithAct()
 
       const button = getByTestId('Continuer')
@@ -68,7 +65,7 @@ describe('SetPhoneNumberModal', () => {
       '62435463579', // too long (max 10)
       '33224354m', // includes char
     ])('should disable the button when the phone number is not valid (%s)', async (phoneNumber) => {
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
+      const { getByTestId, getByPlaceholderText } = renderPhoneValidation()
       await superFlushWithAct()
 
       const button = getByTestId('Continuer')
@@ -81,11 +78,8 @@ describe('SetPhoneNumberModal', () => {
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
     })
 
-    it('should call onValidationCodeAsked property on /send_phone_validation request success', async () => {
-      const mockOnValidationCodeAsked = jest.fn()
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal({
-        onValidationCodeAsked: mockOnValidationCodeAsked,
-      })
+    it('should navigate to SetPhoneValidationCode on /send_phone_validation request success', async () => {
+      const { getByTestId, getByPlaceholderText } = renderPhoneValidation()
       await superFlushWithAct()
 
       const button = getByTestId('Continuer')
@@ -96,22 +90,10 @@ describe('SetPhoneNumberModal', () => {
       await act(async () => {
         useMutationCallbacks.onSuccess()
       })
-      expect(mockOnValidationCodeAsked).toHaveBeenCalled()
-    })
-
-    it('should call onChangePhoneNumber property on /send_phone_validation request', async () => {
-      const mockOnChangePhoneNumber = jest.fn()
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal({
-        onChangePhoneNumber: mockOnChangePhoneNumber,
+      expect(navigate).toHaveBeenCalledWith('SetPhoneValidationCode', {
+        countryCode: 'FR',
+        phoneNumber: '612345678',
       })
-      await superFlushWithAct()
-
-      const button = getByTestId('Continuer')
-      const input = getByPlaceholderText('6 12 34 56 78')
-      fireEvent.changeText(input, '612345678')
-      fireEvent.press(button)
-
-      expect(mockOnChangePhoneNumber).toHaveBeenCalled()
     })
 
     it('should display input error message if validate phone number request fails', async () => {
@@ -123,18 +105,12 @@ describe('SetPhoneNumberModal', () => {
         name: 'ApiError',
       }
 
-      const { getByTestId, getByPlaceholderText, getByText, rerender } = renderSetPhoneNumberModal()
+      const { getByTestId, getByPlaceholderText, getByText, rerender } = renderPhoneValidation()
       const continueButton = getByTestId('Continuer')
       const input = getByPlaceholderText('6 12 34 56 78')
       fireEvent.changeText(input, '600000000')
-      const props = {
-        visible: true,
-        dismissModal: jest.fn(),
-        onChangePhoneNumber: jest.fn(),
-        onValidationCodeAsked: jest.fn(),
-        phoneNumber: '',
-      }
-      rerender(<SetPhoneNumberModal {...props} />)
+
+      rerender(<PhoneValidation />)
 
       fireEvent.press(continueButton)
 
@@ -153,13 +129,13 @@ describe('SetPhoneNumberModal', () => {
       ['', '> 1 min', 'Continuer', 65, currentTimestamp() - 65, 1], // last call was made 65 seconds ago
       ['NOT', '< 1 min', /Attends/, 5, currentTimestamp() - 5, 0], // last call was made 5 seconds ago
     ])(
-      'should %s call sendPhoneValidationCode mutation if SetPhoneNumberModal if last request timestamp is %s',
+      'should %s call sendPhoneValidationCode mutation if PhoneValidation if last request timestamp is %s',
       async (_should, _label, buttonTestId, timeSinceLastRequest, storageValue, numberOfCall) => {
         await storage.saveObject('phone_validation_code_asked_at', storageValue)
 
         mockTimeSinceLastRequest = timeSinceLastRequest
 
-        const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
+        const { getByTestId, getByPlaceholderText } = renderPhoneValidation()
         await superFlushWithAct()
 
         const button = getByTestId(buttonTestId)
@@ -184,7 +160,7 @@ describe('SetPhoneNumberModal', () => {
         name: 'ApiError',
       }
 
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
+      const { getByTestId, getByPlaceholderText } = renderPhoneValidation()
 
       const button = getByTestId('Continuer')
       const input = getByPlaceholderText('6 12 34 56 78')
@@ -199,14 +175,6 @@ describe('SetPhoneNumberModal', () => {
   })
 })
 
-function renderSetPhoneNumberModal(customProps?: Partial<SetPhoneNumberModalProps>) {
-  const props = {
-    visible: true,
-    dismissModal: jest.fn(),
-    onChangePhoneNumber: jest.fn(),
-    onValidationCodeAsked: jest.fn(),
-    phoneNumber: '',
-    ...customProps,
-  }
-  return render(<SetPhoneNumberModal {...props} />)
+function renderPhoneValidation() {
+  return render(<PhoneValidation />)
 }
