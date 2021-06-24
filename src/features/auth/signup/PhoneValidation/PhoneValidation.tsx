@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import { SetPhoneNumberModal } from 'features/auth/signup/SetPhoneNumberModal'
-import { SetPhoneValidationCodeModal } from 'features/auth/signup/SetPhoneValidationCodeModal'
+import { SetPhoneNumberModal } from 'features/auth/signup/PhoneValidation/SetPhoneNumberModal'
+import { SetPhoneValidationCodeModal } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCodeModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { Background } from 'ui/svg/Background'
 

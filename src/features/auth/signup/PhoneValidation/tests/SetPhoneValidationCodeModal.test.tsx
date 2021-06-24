@@ -9,7 +9,7 @@ import {
   formatPhoneNumber,
   SetPhoneValidationCodeModal,
   SetPhoneValidationCodeModalProps,
-} from 'features/auth/signup/SetPhoneValidationCodeModal'
+} from 'features/auth/signup/PhoneValidation/SetPhoneValidationCodeModal'
 import { contactSupport } from 'features/auth/support.services'
 import { EmptyResponse } from 'libs/fetch'
 import {
