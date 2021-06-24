@@ -11839,6 +11839,11 @@ lottie-react-native@^4.0.0:
     prop-types "^15.5.10"
     react-native-safe-modules "^1.0.3"
 
+lottie-web@^5.7.1:
+  version "5.7.11"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.7.11.tgz#4ba74e8a629f76d3c0a0062ddc37d2b96e13765c"
+  integrity sha512-Jvz3PQqwrDj1rXGqfeQtipH/WNtM/Y4l8t8NIQXe1xUI0nVooH2bTYJGef0UkdBcWUx1s3miKsRhyP196g9tvQ==
+
 lower-case@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/lower-case/-/lower-case-2.0.2.tgz#6fa237c63dbdc4a82ca0fd882e4722dc5e634e28"
@@ -12685,6 +12690,11 @@ mockdate@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/mockdate/-/mockdate-3.0.2.tgz#a5a7bb5820da617747af424d7a4dcb22c6c03d79"
   integrity sha512-ldfYSUW1ocqSHGTK6rrODUiqAFPGAg0xaHqYJ5tvj1hQyFsjuHpuWgWFTZWwDVlzougN/s2/mhDr8r5nY5xDpA==
+
+modal-enhanced-react-native-web@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/modal-enhanced-react-native-web/-/modal-enhanced-react-native-web-0.2.0.tgz#767d6e8d78da4a6d34e80d9da49bc192016aaca1"
+  integrity sha512-ZJGTt12wqId068TjHNw0yyHEkTlVrZX+mqtr6hpRchH2v4na/UFxOHz+YF86mJ7+LN20UlqpkYVmKWJPw+CO5Q==
 
 modal-react-native-web@0.2.0:
   version "0.2.0"
@@ -15307,6 +15317,11 @@ react-native-splash-screen@^3.2.0:
   resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
   integrity sha512-Ls9qiNZzW/OLFoI25wfjjAcrf2DZ975hn2vr6U9gyuxi2nooVbzQeFoQS5vQcbCt9QX5NY8ASEEAtlLdIa6KVg==
 
+react-native-svg-web@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-svg-web/-/react-native-svg-web-1.0.9.tgz#a50b1ac6e33eb9efdba38d58e6e13c193ef041c2"
+  integrity sha512-fggz1MPx55xP92ZlFWhvxfsd8/Mj3z63E1eo1pldtBRuNbR4LffvtY9hwj96bgHZU3gRwJL00LV3GAWRFthlnA==
+
 react-native-svg@^12.1.1:
   version "12.1.1"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-12.1.1.tgz#5f292410b8bcc07bbc52b2da7ceb22caf5bcaaee"
@@ -15330,6 +15345,13 @@ react-native-tracking-transparency@^0.1.0:
   resolved "https://registry.yarnpkg.com/react-native-tracking-transparency/-/react-native-tracking-transparency-0.1.0.tgz#d3204f165f3bc7851b66eeb50d814bc65eb6f2cf"
   integrity sha512-daq2bPV4Yme4dpSHEL1iJLVqbV14bLjyIdaMfMQ1XAfGDtGToyq4Fb18hKeObLKP8w2TYHaUUErPoIwNuqtORA==
 
+react-native-web-lottie@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/react-native-web-lottie/-/react-native-web-lottie-1.4.4.tgz#b64d989cf3300bff5813f4ee3f2ee466092e6e4c"
+  integrity sha512-W0jZiOf2u3Us6yASdpgAuL1+3Gw1EU/Wi5QAf6brzhXmJnq6/FMGCTf5zvSaX0yIurr9qcYB40DwAb4HwA6frg==
+  dependencies:
+    lottie-web "^5.7.1"
+
 react-native-web-swiper@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.1.tgz#48d53e0ecf86d3fcd49f63ef7894db4beaa3b6f2"
@@ -15337,10 +15359,10 @@ react-native-web-swiper@2.2.1:
   dependencies:
     prop-types "^15.6.2"
 
-react-native-web@0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.17.0.tgz#a5c2765da93086fa7ac9850b784adf878ca725ca"
-  integrity sha512-6HfitapMLbpUysviJKxZ9M22GnEek1KYO6HbiDH5shBJ5bhG9LpQwKq1mqhTUU6qYQKtXO27oiZNbadrx58ryQ==
+react-native-web@^0.17.1:
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.17.1.tgz#90d473c89dd99b88bc9830b2a9fcdd2fc5f04902"
+  integrity sha512-lUnn+2O8ynQ6/gJKylSxm7DLi2vHw6AujdDV1+LSa8Epe1bYFJNUcJTEhJf0jNYUFGOujzMtuG8Mkz3HdWTkag==
   dependencies:
     array-find-index "^1.0.2"
     create-react-class "^15.7.0"
