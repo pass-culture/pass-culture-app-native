@@ -228,7 +228,7 @@ const CountryPickerPressable = styled.TouchableOpacity({
 })
 
 /**
- * - contains 9 digits
+ * 6 to 10 digits
  */
 function isValidPhoneNumber(word: string) {
   return word.match(/^\d{6,10}$/)

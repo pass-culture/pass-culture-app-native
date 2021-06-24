@@ -5,12 +5,11 @@ import { Text } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
+import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
-
-import { contactSupport } from '../support.services'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 

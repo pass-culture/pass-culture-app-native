@@ -6,6 +6,7 @@ import React, { FC, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { AsyncError, errorMonitoring, MonitoringError } from 'libs/errorMonitoring'
@@ -25,7 +26,6 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { useSignInNumberOfSteps, useSignUp } from '../api'
 import { useAppSettings } from '../settings'
-import { contactSupport } from '../support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'AcceptCgu'>
 

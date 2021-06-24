@@ -9,6 +9,7 @@ import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { AccountRequest } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
+import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -18,8 +19,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { simulateWebviewMessage, fireEvent, render, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
-
-import { contactSupport } from '../support.services'
 
 import { AcceptCgu } from './AcceptCgu'
 
