@@ -107,10 +107,22 @@ export type ResultFields<FieldsEnum> = FieldsEnum extends string
   ? Partial<Record<FieldsEnum, { raw?: ResultFieldRaw; snippet?: ResultFieldSnippet }>>
   : never
 
+/** Allows for the adjustments to pagination.
+ *
+ * https://swiftype.com/documentation/app-search/api/search#paging
+ */
+interface Page {
+  /** Number of results per page. Must be between 1 and 100; defaults to 20 */
+  size: number
+  /** Page number to return. Must be greater or equal to 1; defaults to 1. */
+  current: number
+}
+
 export interface SearchOptions<FieldsEnum> {
   search_fields?: SearchFields<FieldsEnum>
   result_fields?: ResultFields<FieldsEnum>
   filters?: Filters<FieldsEnum>
+  page?: Page
 }
 
 export interface Info {
@@ -149,10 +161,7 @@ export interface ResultList<FieldsEnum> {
 
 interface AppSearchClient {
   /** https://github.com/elastic/app-search-javascript#searching */
-  search: <Field>(searchOptions: {
-    query: string
-    options: SearchOptions<Field>
-  }) => Promise<ResultList>
+  search: <Field>(query: string, searchOptions: SearchOptions<Field>) => Promise<ResultList>
 
   /** https://github.com/elastic/app-search-javascript#multi-search */
   multiSearch: <Field>(

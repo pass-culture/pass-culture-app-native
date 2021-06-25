@@ -7,17 +7,22 @@ import { buildGeolocationFilter } from './buildGeolocationFilter'
 import { buildNumericFilters } from './buildNumericFilters'
 import { AppSearchFields, result_fields } from './constants'
 
-export const buildQueryOptions = (params: SearchParameters): SearchOptions<AppSearchFields> => {
-  return {
-    result_fields,
-    filters: {
-      all: [
-        ...buildFacetFilters(params),
-        ...buildNumericFilters(params),
-        ...buildGeolocationFilter(params),
-      ],
-    },
-  }
-}
+export const buildQueryOptions = (
+  params: SearchParameters,
+  page?: number
+): SearchOptions<AppSearchFields> => ({
+  result_fields,
+  filters: {
+    all: [
+      ...buildFacetFilters(params),
+      ...buildNumericFilters(params),
+      ...buildGeolocationFilter(params),
+    ],
+  },
+  page: {
+    current: page || 1,
+    size: params.hitsPerPage || 20,
+  },
+})
 
 export { AppSearchFields }
