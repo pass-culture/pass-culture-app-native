@@ -20,7 +20,6 @@
     "noImplicitThis": true,
     "resolveJsonModule": true,
     "target": "es5",
-    "typeRoots": ["node_modules/@types", "src/types"],
     "skipLibCheck": true,
     "sourceMap": true,
     "removeComments": true,
