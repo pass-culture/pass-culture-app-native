@@ -1,11 +1,10 @@
 import React from 'react'
-import { View } from 'react-native'
 import Svg, { ClipPath, Defs, G, Image, Path, Use, LinearGradient, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getNativeShadow } from 'ui/theme'
+import { ColorsEnum, getShadow } from 'ui/theme'
 
 export type ClippedImageProps = {
   clipId: string
@@ -33,7 +32,7 @@ export function ClippedImage(props: ClippedImageProps) {
   const Icon = props.altIcon || OfferDigital
 
   return (
-    <View style={shadowStyle}>
+    <Container>
       <Svg width={props.width} height={props.height} viewBox={`0 0 ${props.width} ${props.height}`}>
         <Defs>
           <ClipPath id={props.clipId}>
@@ -64,12 +63,12 @@ export function ClippedImage(props: ClippedImageProps) {
           <Icon size={48} color={ColorsEnum.GREY_MEDIUM} />
         </IconContainer>
       ) : null}
-    </View>
+    </Container>
   )
 }
 
-const shadowStyle = {
-  ...getNativeShadow({
+const Container = styled.View({
+  ...getShadow({
     shadowOffset: {
       width: 0,
       height: 2,
@@ -78,7 +77,7 @@ const shadowStyle = {
     shadowColor: ColorsEnum.BLACK,
     shadowOpacity: 0.1,
   }),
-}
+})
 
 const IconContainer = styled.View({
   position: 'absolute',

@@ -87,10 +87,6 @@ exports[`Search component should render correctly 1`] = `
               "paddingRight": 16,
               "paddingTop": 4,
               "shadowColor": "#151515",
-              "shadowOffset": Object {
-                "height": 2,
-                "width": 0,
-              },
               "shadowOpacity": 0.15,
               "shadowRadius": 6,
               "width": "100%",
@@ -409,6 +405,7 @@ exports[`Search component should render correctly 1`] = `
     }
   >
     <View
+      accessibilityLabel="Rechercher"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -427,6 +424,7 @@ exports[`Search component should render correctly 1`] = `
           "overflow": "hidden",
         }
       }
+      testID="Rechercher"
     >
       <View
         height={48}

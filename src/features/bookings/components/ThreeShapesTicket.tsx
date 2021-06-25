@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
-import { ColorsEnum, getNativeShadow } from 'ui/theme'
+import { ColorsEnum, getShadow } from 'ui/theme'
 
 import { TICKET_WIDTH } from './ThreeShapesTicket.constants'
 
@@ -16,7 +16,7 @@ export function ThreeShapesTicket(props: ThreeShapesTicketProps) {
   const contentWidth = width - 5
 
   return (
-    <Container style={shadowStyle} testID="three-shapes-ticket">
+    <Container testID="three-shapes-ticket">
       <TicketHeader width={width} color={ColorsEnum.WHITE} />
       <TicketContent width={contentWidth}>{children}</TicketContent>
       <TicketFooter width={width} color={ColorsEnum.WHITE} />
@@ -24,8 +24,11 @@ export function ThreeShapesTicket(props: ThreeShapesTicketProps) {
   )
 }
 
-const shadowStyle = {
-  ...getNativeShadow({
+const Container = styled.View({
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  ...getShadow({
     shadowOffset: {
       width: 0,
       height: 2,
@@ -34,12 +37,6 @@ const shadowStyle = {
     shadowColor: ColorsEnum.BLACK,
     shadowOpacity: 0.1,
   }),
-}
-
-const Container = styled.View({
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
 })
 
 const TicketContent = styled.View<{ width: number }>(({ width }) => ({
