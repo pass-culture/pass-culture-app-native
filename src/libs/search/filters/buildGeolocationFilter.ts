@@ -5,6 +5,7 @@ import { SearchParameters } from 'features/search/types'
 
 import { AppSearchFields } from './constants'
 
+// Filter okey on search
 export const buildGeolocationFilter = (params: SearchParameters): FilterArray<AppSearchFields> => {
   const { aroundRadius, geolocation, locationType } = params
 

@@ -4,6 +4,7 @@ import { CategoryNameEnum } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
 import { AppSearchFields } from 'libs/search/filters/constants'
 
+// TODO(antoinewg) We need this function temporarily but delete when we migrate completely to App Search
 export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): AlgoliaHit => {
   const dates = (searchHit.getRaw(AppSearchFields.dates) as string[]).map((ts: string) => +ts)
   const prices = (searchHit.getRaw(AppSearchFields.prices) as string[]).map(
