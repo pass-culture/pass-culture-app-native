@@ -1,3 +1,4 @@
+import { Platform } from 'react-native'
 import { useMutation, useQuery } from 'react-query'
 
 import { api } from 'api/api'
@@ -5,6 +6,7 @@ import { AccountRequest, GetIdCheckTokenResponse, SigninRequest } from 'api/gen'
 import { ApiError, isApiError } from 'api/helpers'
 import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
+import { getCustomerUniqueId } from 'libs/campaign/useCampaignTracker'
 import { QueryKeys } from 'libs/queryKeys'
 
 import { formatToFrenchDecimal } from '../../libs/parsers'
@@ -69,7 +71,11 @@ type appAccountRequest = Omit<AccountRequest, 'appsFlyerPlatform' | 'appsFlyerUs
 export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse> {
   return async (body: appAccountRequest) => {
     try {
-      const response = await api.postnativev1account(body, { credentials: 'omit' })
+      const appsFlyerUserId = await getCustomerUniqueId()
+      const response = await api.postnativev1account(
+        { ...body, appsFlyerPlatform: Platform.OS, appsFlyerUserId },
+        { credentials: 'omit' }
+      )
       return { isSuccess: !!response }
     } catch (error) {
       return {

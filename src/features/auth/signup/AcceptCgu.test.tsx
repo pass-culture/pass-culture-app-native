@@ -24,7 +24,7 @@ import { contactSupport } from '../support.services'
 import { AcceptCgu } from './AcceptCgu'
 
 jest.mock('features/auth/settings')
-
+jest.mock('libs/campaign/useCampaignTracker')
 jest.mock('libs/errorMonitoring')
 
 afterEach(jest.clearAllMocks)
@@ -142,6 +142,8 @@ describe('AcceptCgu Page', () => {
           password: 'password',
           token: 'fakeToken',
           postalCode: '35000',
+          appsFlyerPlatform: 'ios',
+          appsFlyerUserId: 'uniqueCustomerId',
         },
         { credentials: 'omit' }
       )
@@ -176,7 +178,10 @@ describe('AcceptCgu Page', () => {
       token: 'fakeToken',
     }
     await waitFor(() => {
-      expect(postnativev1accountSpy).toBeCalledWith(requestBody, { credentials: 'omit' })
+      expect(postnativev1accountSpy).toBeCalledWith(
+        { ...requestBody, appsFlyerPlatform: 'ios', appsFlyerUserId: 'uniqueCustomerId' },
+        { credentials: 'omit' }
+      )
       expect(
         renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
       ).toBeTruthy()
