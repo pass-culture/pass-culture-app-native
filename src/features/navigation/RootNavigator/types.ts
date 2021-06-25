@@ -40,7 +40,6 @@ export type RootStackParamList = {
   CulturalSurvey: undefined
   DeeplinkImporter: undefined
   DeleteProfileSuccess: undefined
-  EligibilityConfirmed: undefined
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
@@ -60,7 +59,6 @@ export type RootStackParamList = {
   Navigation: undefined
   NavigationIdCheckErrors: undefined
   NotificationSettings: undefined
-  NotEligible: undefined
   Offer: {
     id: number
     from: Referrals
