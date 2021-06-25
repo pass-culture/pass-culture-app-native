@@ -15320,6 +15320,11 @@ react-native-tracking-transparency@^0.1.0:
   resolved "https://registry.yarnpkg.com/react-native-tracking-transparency/-/react-native-tracking-transparency-0.1.0.tgz#d3204f165f3bc7851b66eeb50d814bc65eb6f2cf"
   integrity sha512-daq2bPV4Yme4dpSHEL1iJLVqbV14bLjyIdaMfMQ1XAfGDtGToyq4Fb18hKeObLKP8w2TYHaUUErPoIwNuqtORA==
 
+react-native-web-linear-gradient@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-web-linear-gradient/-/react-native-web-linear-gradient-1.1.2.tgz#33f85f7085a0bb5ffa5106faf02ed105b92a9ed7"
+  integrity sha512-SmUnpwT49CEe78pXvIvYf72Es8Pv+ZYKCnEOgb2zAKpEUDMo0+xElfRJhwt5nfI8krJ5WbFPKnoDgD0uUjAN1A==
+
 react-native-web-lottie@^1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/react-native-web-lottie/-/react-native-web-lottie-1.4.4.tgz#b64d989cf3300bff5813f4ee3f2ee466092e6e4c"

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component should render correctly 1`] = `
+<div
+  className="css-view-1dbjc4n"
+>
+  <div
+    className="css-view-1dbjc4n"
+  />
+</div>
+`;

@@ -281,6 +281,7 @@ module.exports = function (webpackEnv) {
         'react-native-modal$': 'modal-enhanced-react-native-web',
         'react-native-svg': 'react-native-svg-web',
         'lottie-react-native': 'react-native-web-lottie',
+        'react-native-linear-gradient': 'react-native-web-linear-gradient',
 
         // /**
         //  * These will replace react navigation entirely.

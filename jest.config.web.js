@@ -14,6 +14,7 @@ module.exports = {
     '^react-native-modal$': 'modal-enhanced-react-native-web',
     '^react-native-svg$': 'react-native-svg-web',
     '^lottie-react-native$': 'react-native-web-lottie',
+    '^react-native-linear-gradient$': 'react-native-web-linear-gradient',
   },
   collectCoverageFrom: [...base.collectCoverageFrom, '!**/*.(native|ios|android).*'],
   testPathIgnorePatterns: [
