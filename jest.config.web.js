@@ -1,27 +1,27 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const nativeJestConfig = require('./jest.config')
+const base = require('./jest.config')
 
 module.exports = {
-  ...nativeJestConfig,
+  ...base,
   preset: 'react-native-web',
   testEnvironment: 'jsdom',
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
   testRegex: '.(?:test|spec)(?:.web)?.(?:tsx?|js)$',
-  moduleFileExtensions: ['web.tsx', 'web.ts', ...nativeJestConfig.moduleFileExtensions],
+  moduleFileExtensions: ['web.tsx', 'web.ts', ...base.moduleFileExtensions],
   moduleNameMapper: {
-    ...nativeJestConfig.moduleNameMapper,
+    ...base.moduleNameMapper,
     '^react-native$': 'react-native-web',
     '^react-native-modal$': 'modal-enhanced-react-native-web',
     '^react-native-svg$': 'react-native-svg-web',
     '^lottie-react-native$': 'react-native-web-lottie',
   },
-  collectCoverageFrom: [...nativeJestConfig.collectCoverageFrom, '!**/*.(native|ios|android).*'],
+  collectCoverageFrom: [...base.collectCoverageFrom, '!**/*.(native|ios|android).*'],
   testPathIgnorePatterns: [
-    ...nativeJestConfig.testPathIgnorePatterns,
+    ...base.testPathIgnorePatterns,
     '.*(/tests?/.*.(test|spec)).(native|ios|android).(tsx?)$',
   ],
   transform: {
-    ...nativeJestConfig.transform,
+    ...base.transform,
     '^.+\\.tsx?$': 'ts-jest',
   },
   verbose: true,
