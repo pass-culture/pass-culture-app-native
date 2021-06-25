@@ -1,0 +1,3019 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeBodyPlaceholder matches snapshot 1`] = `
+<div
+  className="css-view-1dbjc4n"
+>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitFlexDirection": "row",
+        "flexDirection": "row",
+        "msFlexDirection": "row",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "width": "24px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "backgroundColor": "rgba(221,221,221,1.00)",
+            "borderBottomLeftRadius": "2px",
+            "borderBottomRightRadius": "2px",
+            "borderTopLeftRadius": "2px",
+            "borderTopRightRadius": "2px",
+            "height": "16px",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "width": "160px",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitTransform": "translateX(-200px)",
+              "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+              "borderBottomLeftRadius": "2px",
+              "borderBottomRightRadius": "2px",
+              "borderTopLeftRadius": "2px",
+              "borderTopRightRadius": "2px",
+              "bottom": "0px",
+              "left": "0px",
+              "position": "absolute",
+              "right": "0px",
+              "top": "0px",
+              "transform": "translateX(-200px)",
+            }
+          }
+        />
+      </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "16px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "flexDirection": "row",
+            "msFlexDirection": "row",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "312px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "192px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-240px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-240px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "153.60000000000002px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-192.00000000000003px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-192.00000000000003px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "57.599999999999994px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-72px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-72px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "312px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "192px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-240px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-240px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "153.60000000000002px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-192.00000000000003px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-192.00000000000003px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "57.599999999999994px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-72px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-72px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "312px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "192px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-240px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-240px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "153.60000000000002px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-192.00000000000003px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-192.00000000000003px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "57.599999999999994px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-72px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-72px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "312px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "192px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-240px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-240px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "153.60000000000002px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-192.00000000000003px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-192.00000000000003px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "57.599999999999994px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-72px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-72px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "24px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitFlexDirection": "row",
+        "flexDirection": "row",
+        "msFlexDirection": "row",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "width": "24px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "backgroundColor": "rgba(221,221,221,1.00)",
+            "borderBottomLeftRadius": "2px",
+            "borderBottomRightRadius": "2px",
+            "borderTopLeftRadius": "2px",
+            "borderTopRightRadius": "2px",
+            "height": "16px",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "width": "160px",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitTransform": "translateX(-200px)",
+              "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+              "borderBottomLeftRadius": "2px",
+              "borderBottomRightRadius": "2px",
+              "borderTopLeftRadius": "2px",
+              "borderTopRightRadius": "2px",
+              "bottom": "0px",
+              "left": "0px",
+              "position": "absolute",
+              "right": "0px",
+              "top": "0px",
+              "transform": "translateX(-200px)",
+            }
+          }
+        />
+      </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "16px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "flexDirection": "row",
+            "msFlexDirection": "row",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "240px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "144px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-180px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-180px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "115.2px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-144px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-144px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "43.199999999999996px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-53.99999999999999px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-53.99999999999999px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "240px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "144px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-180px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-180px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "115.2px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-144px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-144px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "43.199999999999996px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-53.99999999999999px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-53.99999999999999px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "240px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "144px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-180px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-180px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "115.2px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-144px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-144px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "43.199999999999996px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-53.99999999999999px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-53.99999999999999px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "240px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "144px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-180px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-180px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "115.2px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-144px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-144px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "43.199999999999996px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-53.99999999999999px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-53.99999999999999px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "240px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "144px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-180px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-180px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "115.2px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-144px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-144px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "43.199999999999996px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-53.99999999999999px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-53.99999999999999px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "24px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    data-testid="HomeBodyPlaceholder-testID"
+    style={
+      Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "alignItems": "center",
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "msFlexAlign": "center",
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "backgroundColor": "rgba(221,221,221,1.00)",
+          "borderBottomLeftRadius": "8px",
+          "borderBottomRightRadius": "8px",
+          "borderTopLeftRadius": "8px",
+          "borderTopRightRadius": "8px",
+          "height": "325px",
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+          "width": "976px",
+        }
+      }
+    >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitTransform": "translateX(-1220px)",
+            "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+            "borderBottomLeftRadius": "8px",
+            "borderBottomRightRadius": "8px",
+            "borderTopLeftRadius": "8px",
+            "borderTopRightRadius": "8px",
+            "bottom": "0px",
+            "left": "0px",
+            "position": "absolute",
+            "right": "0px",
+            "top": "0px",
+            "transform": "translateX(-1220px)",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "24px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitFlexDirection": "row",
+        "flexDirection": "row",
+        "msFlexDirection": "row",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "width": "24px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "backgroundColor": "rgba(221,221,221,1.00)",
+            "borderBottomLeftRadius": "2px",
+            "borderBottomRightRadius": "2px",
+            "borderTopLeftRadius": "2px",
+            "borderTopRightRadius": "2px",
+            "height": "16px",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "width": "160px",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitTransform": "translateX(-200px)",
+              "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+              "borderBottomLeftRadius": "2px",
+              "borderBottomRightRadius": "2px",
+              "borderTopLeftRadius": "2px",
+              "borderTopRightRadius": "2px",
+              "bottom": "0px",
+              "left": "0px",
+              "position": "absolute",
+              "right": "0px",
+              "top": "0px",
+              "transform": "translateX(-200px)",
+            }
+          }
+        />
+      </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "16px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "flexDirection": "row",
+            "msFlexDirection": "row",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "240px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "144px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-180px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-180px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "115.2px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-144px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-144px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "43.199999999999996px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-53.99999999999999px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-53.99999999999999px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "240px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "144px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-180px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-180px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "115.2px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-144px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-144px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "43.199999999999996px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-53.99999999999999px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-53.99999999999999px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "240px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "144px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-180px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-180px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "115.2px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-144px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-144px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "43.199999999999996px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-53.99999999999999px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-53.99999999999999px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "240px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "144px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-180px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-180px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "115.2px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-144px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-144px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "43.199999999999996px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-53.99999999999999px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-53.99999999999999px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "240px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "144px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-180px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-180px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "115.2px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-144px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-144px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "43.199999999999996px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-53.99999999999999px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-53.99999999999999px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "24px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitFlexDirection": "row",
+        "flexDirection": "row",
+        "msFlexDirection": "row",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "width": "24px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "backgroundColor": "rgba(221,221,221,1.00)",
+            "borderBottomLeftRadius": "2px",
+            "borderBottomRightRadius": "2px",
+            "borderTopLeftRadius": "2px",
+            "borderTopRightRadius": "2px",
+            "height": "16px",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "width": "160px",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitTransform": "translateX(-200px)",
+              "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+              "borderBottomLeftRadius": "2px",
+              "borderBottomRightRadius": "2px",
+              "borderTopLeftRadius": "2px",
+              "borderTopRightRadius": "2px",
+              "bottom": "0px",
+              "left": "0px",
+              "position": "absolute",
+              "right": "0px",
+              "top": "0px",
+              "transform": "translateX(-200px)",
+            }
+          }
+        />
+      </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "16px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "flexDirection": "row",
+            "msFlexDirection": "row",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "312px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "192px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-240px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-240px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "153.60000000000002px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-192.00000000000003px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-192.00000000000003px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "57.599999999999994px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-72px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-72px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "312px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "192px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-240px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-240px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "153.60000000000002px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-192.00000000000003px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-192.00000000000003px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "57.599999999999994px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-72px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-72px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "312px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "192px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-240px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-240px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "153.60000000000002px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-192.00000000000003px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-192.00000000000003px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "57.599999999999994px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-72px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-72px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+        <div
+          className="css-view-1dbjc4n"
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "8px",
+                "borderBottomRightRadius": "8px",
+                "borderTopLeftRadius": "8px",
+                "borderTopRightRadius": "8px",
+                "height": "312px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "192px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-240px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-240px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "153.60000000000002px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-192.00000000000003px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-192.00000000000003px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(221,221,221,1.00)",
+                "borderBottomLeftRadius": "2px",
+                "borderBottomRightRadius": "2px",
+                "borderTopLeftRadius": "2px",
+                "borderTopRightRadius": "2px",
+                "height": "12px",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "width": "57.599999999999994px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitTransform": "translateX(-72px)",
+                  "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                  "borderBottomLeftRadius": "2px",
+                  "borderBottomRightRadius": "2px",
+                  "borderTopLeftRadius": "2px",
+                  "borderTopRightRadius": "2px",
+                  "bottom": "0px",
+                  "left": "0px",
+                  "position": "absolute",
+                  "right": "0px",
+                  "top": "0px",
+                  "transform": "translateX(-72px)",
+                }
+              }
+            />
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "height": "8px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "16px",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
