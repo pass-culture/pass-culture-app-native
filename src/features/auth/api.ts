@@ -64,8 +64,10 @@ export function useSignIn(): (data: SigninRequest) => Promise<SignInResponse> {
   }
 }
 
-export function useSignUp(): (data: AccountRequest) => Promise<SignUpResponse> {
-  return async (body: AccountRequest) => {
+type appAccountRequest = Omit<AccountRequest, 'appsFlyerPlatform' | 'appsFlyerUserId'>
+
+export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse> {
+  return async (body: appAccountRequest) => {
     try {
       const response = await api.postnativev1account(body, { credentials: 'omit' })
       return { isSuccess: !!response }
