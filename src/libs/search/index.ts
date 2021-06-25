@@ -1,5 +1,5 @@
 import { AlgoliaHit } from 'libs/algolia'
-import { Geoloc } from 'libs/algolia/algolia.d'
+import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
 import {
   attributesToRetrieve,
   fetchAlgolia,
@@ -17,5 +17,5 @@ export const transformHit = transformAlgoliaHit
 export const useTransformHits = useTransformAlgoliaHits
 export type SearchHit = AlgoliaHit
 
-export type { Geoloc }
+export type Geoloc = AlgoliaGeoloc
 export { attributesToRetrieve, fetchAlgolia, filterSearchHit }

@@ -16,7 +16,7 @@ describe('Timer', () => {
   })
 
   describe('Stop condition', () => {
-    let clearLocalIntervalMock: jest.SpyInstance<void, [timerId: NodeJS.Timeout | null]>
+    let clearLocalIntervalMock: jest.SpyInstance<void, Array<NodeJS.Timeout | null>>
 
     beforeEach(() => {
       clearLocalIntervalMock = jest

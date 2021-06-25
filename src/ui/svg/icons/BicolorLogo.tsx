@@ -3,7 +3,7 @@ import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 
 import { ColorsEnum } from 'ui/theme'
 
-import type { BicolorIconInterface } from './types'
+import { BicolorIconInterface } from './types'
 
 export const BicolorLogo: React.FC<BicolorIconInterface> = ({
   size = 32,

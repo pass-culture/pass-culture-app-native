@@ -28,7 +28,7 @@ export const useItinerary = () => {
         (appKey): appKey is AppEnum => appEnumTypeGuard(appKey) && appsAvailability[appKey]
       )
       setAvailableApps(apps)
-    } catch (e: unknown) {
+    } catch {
       setAvailableApps([])
     }
   }
@@ -46,7 +46,7 @@ export const useItinerary = () => {
         throw Error()
       }
       await LN.navigate([coordinates.latitude, coordinates.longitude], { app })
-    } catch (_error: unknown) {
+    } catch {
       switch (backupSolution) {
         case BackupSolution.OPEN_STREET_MAP:
           navigateWithOpenStreetMap(coordinates)
