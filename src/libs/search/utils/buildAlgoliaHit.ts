@@ -5,11 +5,9 @@ import { AlgoliaHit } from 'libs/algolia'
 import { AppSearchFields } from 'libs/search/filters/constants'
 
 export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): AlgoliaHit => {
-  const dates = (searchHit.getRaw(AppSearchFields.dates) as string[]).map(
-    (ts: string) => +ts * 1000
-  )
+  const dates = (searchHit.getRaw(AppSearchFields.dates) as string[]).map((ts: string) => +ts)
   const prices = (searchHit.getRaw(AppSearchFields.prices) as string[]).map(
-    (price: string) => +price
+    (price: string) => +price / 100
   )
   const geoloc = searchHit.getRaw(AppSearchFields.geoloc)
   const [lat, lng] = ((geoloc as string) || ', ').split(', ')

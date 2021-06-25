@@ -10,10 +10,11 @@ import { SearchHit, useFetchQuery } from 'libs/search'
 import { useSearch, useStagedSearch } from './SearchWrapper'
 
 type PartialSearchState = SearchParameters & { query: string }
+export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
 
 const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
   const { enabled, fetchHits, transformHits } = useFetchQuery()
-  const { data, ...infiniteQuery } = useInfiniteQuery<SearchResponse<SearchHit>>(
+  const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, searchState],
     async (context: QueryFunctionContext<[string, PartialSearchState], number>) => {
       const page = context.pageParam || 0

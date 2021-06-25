@@ -1,7 +1,8 @@
-import { GetObjectsResponse, MultipleQueriesResponse, SearchResponse } from '@algolia/client-search'
+import { GetObjectsResponse, MultipleQueriesResponse } from '@algolia/client-search'
 import algoliasearch from 'algoliasearch'
 
 import { LocationType } from 'features/search/enums'
+import { Response } from 'features/search/pages/useSearchResults'
 import { SearchParameters } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
@@ -82,7 +83,7 @@ export const fetchAlgolia = ({
   query = '',
   page = 0,
   ...parameters
-}: SearchParametersQuery): Readonly<Promise<SearchResponse<AlgoliaHit>>> => {
+}: SearchParametersQuery): Readonly<Promise<Response>> => {
   const searchParameters = buildSearchParameters(parameters)
   const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
 
