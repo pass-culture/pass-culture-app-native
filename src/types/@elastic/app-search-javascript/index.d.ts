@@ -45,9 +45,9 @@ export type ValueFilter = string | string[] | number | number[]
  */
 export interface RangeFilter {
   /** Exclusive upper bound of the range. Is required if from is not given. */
-  from: string | number
+  from?: string | number
   /** Inclusive lower bound of the range. Is required if to is not given. */
-  to: string | number
+  to?: string | number
 }
 
 /** Return documents relative to their location.
@@ -127,7 +127,7 @@ export interface Info {
 
 export interface ResultItem<FieldsEnum> {
   /** Returns the HTML-unsafe raw value for a field, if it exists */
-  getRaw: (fieldName: FieldsEnum) => string
+  getRaw: (fieldName: FieldsEnum) => string | string[]
   /** Returns the HTML-safe snippet value for a field, if it exists */
   getSnippet: (fieldName: FieldsEnum) => string
 }

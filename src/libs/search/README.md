@@ -69,3 +69,72 @@ interface SearchState extends PartialSearchParameters {
 // depends on the provider (algolia or app search)
 interface SearchParametersQuery {}
 ```
+
+### Fields to remove in App Search
+
+Champs inutiles:
+
+- `offer.pk`
+- `offer.musicSubType`
+- `offer.showSubType`
+- `offer.type`
+- `offer.visa`
+- `offer.withdrawalDetails`
+
+### Fields to adapt in App Search
+
+1. Pas d'objet nested:
+
+Ex: `offerer.name` => `offerer_name`
+
+2. Pas de lettre majuscule / caratères spéciaux
+   > Field names can only contain lowercase letters, numbers, and underscores
+
+Ex: `offer.rankingWeight` => `ranking_weight`
+
+3. Changement de types
+
+Ex:
+
+- `"_geoloc": { "lat": 48.9263, "lng": 2.49008 }` => `geoloc: "48.9263, 2.49008"`
+
+```json
+{
+  "offer": {
+    "author": null,
+    "category": "PRESSE",
+    "rankingWeight": null,
+    "dateCreated": 1624537915.299662,
+    "dates": [],
+    "description": null,
+    "id": "ANR24",
+    "isbn": null,
+    "isDigital": true,
+    "isDuo": false,
+    "isEvent": false,
+    "isThing": true,
+    "label": "Presse en ligne",
+    "musicType": null,
+    "name": "12ABOLIGNE",
+    "performer": null,
+    "prices": [0],
+    "priceMin": 0,
+    "priceMax": 0,
+    "showType": null,
+    "speaker": null,
+    "stageDirector": null,
+    "stocksDateCreated": [1624537921.156929],
+    "tags": [],
+    "times": []
+  },
+  "offerer": { "name": "Bar des amis" },
+  "venue": {
+    "city": null,
+    "departementCode": null,
+    "name": "Le Sous-sol (Offre numérique)",
+    "publicName": null
+  },
+  "_geoloc": { "lat": null, "lng": null },
+  "objectID": "222126"
+}
+```
