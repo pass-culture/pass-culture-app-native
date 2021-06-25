@@ -85,6 +85,18 @@ export interface AccountRequest {
      * @type {string}
      * @memberof AccountRequest
      */
+    appsFlyerPlatform?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
+    appsFlyerUserId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
     birthdate: string;
     /**
      * 
