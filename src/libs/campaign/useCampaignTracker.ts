@@ -3,6 +3,7 @@ import appsFlyer from 'react-native-appsflyer'
 
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { MonitoringError } from 'libs/errorMonitoring'
 import { useTrackingConsent } from 'libs/trackingConsent'
 
 // We ask for the user's consent on app launch. We defer the sending of events to AppsFlyer,
@@ -35,4 +36,16 @@ export const useCampaignTracker = () => {
       }
     )
   }, [])
+}
+
+export const getCustomerUniqueId = async (): Promise<string | undefined> => {
+  const appsFlyerUserIdPromise: Promise<string | undefined> = new Promise((resolve, reject) => {
+    const getAppsFlyerUIDCallback = (error: Error, uid: string) => {
+      error && new MonitoringError(error.message, 'ApssFlyer_getUID') && reject(error)
+      resolve(uid)
+    }
+    appsFlyer.getAppsFlyerUID(getAppsFlyerUIDCallback)
+  })
+
+  return await appsFlyerUserIdPromise
 }
