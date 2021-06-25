@@ -7,9 +7,9 @@ import { AppSearchFields } from './constants'
 export const buildFacetFilters = (params: SearchParameters): FilterArray<AppSearchFields> => {
   const { offerCategories, offerIsDuo, tags, offerTypes } = params
 
-  const facetFilters: FilterArray<AppSearchFields> = buildOfferTypesFilter(offerTypes)
-  if (offerCategories.length) facetFilters.push({ [AppSearchFields.category]: offerCategories })
-  if (offerIsDuo) facetFilters.push({ [AppSearchFields.is_duo]: 'true' })
+  const facetFilters: FilterArray<AppSearchFields> = buildOfferTypesFilter(offerTypes) // ko: weird logic
+  if (offerCategories.length) facetFilters.push({ [AppSearchFields.category]: offerCategories }) // ok
+  if (offerIsDuo) facetFilters.push({ [AppSearchFields.is_duo]: 'true' }) // ok
   if (tags.length) facetFilters.push({ [AppSearchFields.tags]: tags })
 
   return facetFilters

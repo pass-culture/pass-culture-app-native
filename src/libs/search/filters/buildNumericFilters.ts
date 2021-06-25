@@ -16,13 +16,14 @@ export const buildNumericFilters = (params: SearchParameters): FilterArray<AppSe
   ]
 }
 
+// Filter okey on search if we store prices as cents
 const buildOfferPriceRangePredicate = (params: SearchParameters): FilterArray<AppSearchFields> => {
   const { offerIsFree, priceRange } = params
-  if (offerIsFree) return [{ [AppSearchFields.prices]: ['0'] }]
+  if (offerIsFree) return [{ [AppSearchFields.prices]: { to: 1 } }] // to is exclusive
   if (!priceRange) return []
 
   const [from = 0, to = 300] = priceRange
-  return [{ [AppSearchFields.prices]: { from, to } }]
+  return [{ [AppSearchFields.prices]: { from, to: to * 100 } }]
 }
 
 const buildDatePredicate = (params: SearchParameters): FilterArray<AppSearchFields> => {
@@ -49,6 +50,7 @@ const buildTimeOnlyPredicate = (timeRange: Range<number>): FilterArray<AppSearch
   return [{ [AppSearchFields.times]: { from, to } }]
 }
 
+// Attention à la timezone. Utiliser le departementCode?
 const buildDateAndTimePredicate = ({
   date,
   timeRange,
@@ -70,6 +72,7 @@ const buildDateAndTimePredicate = ({
   return dateFilter.map(([from, to]) => ({ [AppSearchFields.dates]: { from, to } }))
 }
 
+// Marche uniquement si le schéma de dates est number.
 const buildDateOnlyPredicate = (
   date: Exclude<SearchParameters['date'], null | undefined>
 ): FilterArray<AppSearchFields> => {
