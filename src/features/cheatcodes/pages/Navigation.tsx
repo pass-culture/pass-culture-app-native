@@ -181,12 +181,6 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'Eligibility confirmed'}
-            onPress={() => navigation.navigate('EligibilityConfirmed')}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
             title={'First Tutorial'}
             onPress={() =>
               navigation.navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })

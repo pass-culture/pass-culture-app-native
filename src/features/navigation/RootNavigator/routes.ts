@@ -15,7 +15,6 @@ import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
-import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
 import { IdCheck } from 'features/auth/signup/IdCheck'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
@@ -77,7 +76,6 @@ const routes: Array<Route> = [
   { name: 'BookingDetails', component: BookingDetails },
   { name: 'CulturalSurvey', component: CulturalSurvey },
   { name: 'DeeplinkImporter', component: DeeplinkImporter },
-  { name: 'EligibilityConfirmed', component: EligibilityConfirmed },
   {
     name: 'EighteenBirthday',
     component: EighteenBirthday,
