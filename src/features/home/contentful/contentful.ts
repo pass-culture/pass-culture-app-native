@@ -23,34 +23,35 @@ export enum ContentTypes {
 
 export type Layout = 'two-items' | 'one-item-medium'
 
-interface Entry<T, ContentType> {
+export interface Entry<T, ContentType> {
   sys: Sys<ContentType>
   fields: T
   update(): Promise<Entry<T, ContentType>>
 }
 
-interface EntryCollectionInclusions<T, ContentType> {
+export interface EntryCollectionInclusions<T, ContentType> {
   string: Array<Asset<ContentType> | Entry<T, ContentType>>
 }
 
-interface EntryCollection<T, ContentType> extends ContentfulCollection<Entry<T, ContentType>> {
+export interface EntryCollection<T, ContentType>
+  extends ContentfulCollection<Entry<T, ContentType>> {
   errors?: Array<EntryCollectionError>
   includes?: EntryCollectionInclusions<T, ContentType>
 }
 
-interface EntryFields {
+export interface EntryFields {
   modules: Array<{ sys: EntryTypeLink }>
   title: string
 }
 
-interface ContentfulCollection<T> {
+export interface ContentfulCollection<T> {
   total: number
   skip: number
   limit: number
   items: Array<T>
 }
 
-interface Asset<ContentType> {
+export interface Asset<ContentType> {
   sys: Sys<ContentType>
   fields: {
     title: string
@@ -70,7 +71,7 @@ interface Asset<ContentType> {
   }
 }
 
-interface Sys<ContentType> {
+export interface Sys<ContentType> {
   type: string
   id: string
   createdAt: string
@@ -90,19 +91,19 @@ interface Sys<ContentType> {
   }
 }
 
-interface SpaceLink {
+export interface SpaceLink {
   type: string
   linkType: string
   id: string
 }
 
-interface EntryTypeLink {
+export interface EntryTypeLink {
   type: string
   linkType: string
   id: string
 }
 
-interface EntryCollectionError {
+export interface EntryCollectionError {
   sys: {
     id: string
     type: string
@@ -114,29 +115,29 @@ interface EntryCollectionError {
   }
 }
 
-interface AlgoliaParameters {
+export interface AlgoliaParameters {
   sys: Sys<typeof CONTENT_TYPES.ALGOLIA>
   fields: SearchParametersFields
 }
 
-interface DisplayParameters {
+export interface DisplayParameters {
   sys: Sys<typeof CONTENT_TYPES.DISPLAY_PARAMETERS>
   fields: DisplayParametersFields
 }
 
-interface Cover {
+export interface Cover {
   sys: Sys<typeof CONTENT_TYPES.INFORMATION>
   fields: CoverFields
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/cover/fields
-interface CoverFields {
+export interface CoverFields {
   title: string
   image: Image
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/algolia/fields
-interface AlgoliaFields {
+export interface AlgoliaFields {
   title: string
   algoliaParameters: AlgoliaParameters
   displayParameters: DisplayParameters
@@ -145,13 +146,13 @@ interface AlgoliaFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/recommendation/fields
-interface RecommendationFields {
+export interface RecommendationFields {
   title: string
   displayParameters: DisplayParameters
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/algoliaParameters/fields
-interface SearchParametersFields {
+export interface SearchParametersFields {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
@@ -171,14 +172,14 @@ interface SearchParametersFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/displayParameters/fields
-interface DisplayParametersFields {
+export interface DisplayParametersFields {
   title: string
   layout: Layout
   minOffers: number
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/business/fields
-interface BusinessFields {
+export interface BusinessFields {
   title: string
   firstLine?: string
   secondLine?: string
@@ -189,7 +190,7 @@ interface BusinessFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivity/fields
-interface ExclusivityFields {
+export interface ExclusivityFields {
   title: string
   alt: string
   image: Image
@@ -197,18 +198,18 @@ interface ExclusivityFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields
-interface HomepageNatifFields {
+export interface HomepageNatifFields {
   title: string
   modules: HomepageModule[]
 }
 
-type HomepageModule =
+export type HomepageModule =
   | { sys: Sys<'algolia'>; fields: AlgoliaFields }
   | { sys: Sys<'business'>; fields: BusinessFields }
   | { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
   | { sys: Sys<'recommendation'>; fields: RecommendationFields }
 
-interface Image {
+export interface Image {
   sys: Sys<typeof CONTENT_TYPES.INFORMATION>
   fields: {
     title: string
@@ -228,24 +229,7 @@ interface Image {
   }
 }
 
-interface HomepageEntry {
+export interface HomepageEntry {
   sys: Sys<typeof CONTENT_TYPES.HOMEPAGE_NATIF>
   fields: HomepageNatifFields
-}
-
-export type {
-  HomepageModule,
-  AlgoliaFields,
-  AlgoliaParameters,
-  SearchParametersFields,
-  BusinessFields,
-  Cover,
-  DisplayParametersFields,
-  EntryCollection,
-  EntryFields,
-  ExclusivityFields,
-  CoverFields,
-  Image,
-  HomepageEntry,
-  RecommendationFields,
 }
