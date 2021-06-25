@@ -28,6 +28,11 @@ const isMultipleAlgoliaHit = (
   'results' in response &&
   'moduleId' in response
 
+const isMultipleSearchHit = (
+  response: unknown
+): response is { hits: SearchHit[]; moduleId: string } =>
+  typeof response === 'object' && response !== null && 'hits' in response && 'moduleId' in response
+
 export const useHomeModules = (
   offerModules: Array<Offers | OffersWithCover>
 ): HomeModuleResponse => {
@@ -53,6 +58,18 @@ export const useHomeModules = (
           if (isMultipleAlgoliaHit(response)) {
             const hits = flatten(response.results.map(({ hits }) => hits))
             const nbHits = response.results.reduce((prev, curr) => prev + curr.nbHits, 0)
+
+            setHomeModules((prevHomeModules) => ({
+              ...prevHomeModules,
+              [response.moduleId]: {
+                hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID'),
+                nbHits,
+              },
+            }))
+          } else if (isMultipleSearchHit(response)) {
+            const { hits } = response
+            // TODO (antoinewg) This is not correct, we want to know if there are more hits than retrieved.
+            const nbHits = hits.length
 
             setHomeModules((prevHomeModules) => ({
               ...prevHomeModules,
