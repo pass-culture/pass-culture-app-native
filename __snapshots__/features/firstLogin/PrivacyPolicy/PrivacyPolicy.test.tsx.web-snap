@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PrivacyPolicy /> should NOT show modal when has_accepted_cookie is false 1`] = `null`;
