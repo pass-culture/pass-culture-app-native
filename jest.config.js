@@ -32,7 +32,7 @@ module.exports = {
       '|@pass-culture/id-check' +
       '/(?!(lib)))',
   ],
-  testRegex: '(?:\/__tests__\/.*)?\.(?:test|spec)(?:\.(?:native|ios|android))?\.(?:ts|tsx|js)$',
+  testRegex: '(?<!\.web)\.(?:test|spec)\.(?:tsx?|js)$',
   testPathIgnorePatterns: [
     '\\.snap$',
     '\\.native-snap$',
