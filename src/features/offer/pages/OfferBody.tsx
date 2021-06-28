@@ -5,11 +5,16 @@ import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
+import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { OfferHero } from 'features/offer/components/OfferHero'
+import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { Flag } from 'ui/svg/icons/Flag'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useOffer } from '../api/useOffer'
@@ -28,6 +33,7 @@ export const OfferBody: FunctionComponent<{
   onScroll: () => void
 }> = ({ offerId, onScroll }) => {
   const { data: offerResponse } = useOffer({ offerId })
+  const credit = useAvailableCredit()
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
@@ -114,6 +120,25 @@ export const OfferBody: FunctionComponent<{
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>
       </Section>
+
+      {/* TODO(PC-9481) remove testing condition to display the report button */}
+      {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
+        <Section
+          visible={
+            !!user && !!credit && (isUserBeneficiary(user) || isUserExBeneficiary(user, credit))
+          }
+          margin={true}>
+          <Spacer.Column numberOfSpaces={7} />
+          <SectionBody>
+            <ButtonTertiaryBlack
+              inline
+              title={t`Signaler l'offre`}
+              icon={() => <Flag size={24} />}
+            />
+          </SectionBody>
+        </Section>
+      )}
+
     </Container>
   )
 }
