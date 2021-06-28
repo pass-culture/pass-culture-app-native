@@ -29,6 +29,7 @@ export interface AppButtonProps extends BaseButtonProps {
   iconColor?: ColorsEnum
   iconSize?: number
   inline?: boolean
+  inlineHeight?: number
   loadingIconColor: ColorsEnum
   textColor?: ColorsEnum
 }
@@ -50,7 +51,8 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
       onPress={pressHandler}
       onLongPress={longPressHandler}
       buttonHeight={props.buttonHeight ?? 'small'}
-      inline={inline}>
+      inline={inline}
+      inlineHeight={props.inlineHeight ?? 16}>
       {props.isLoading ? (
         <Logo
           {...testID('button-isloading-icon')}
@@ -83,11 +85,12 @@ interface ContainerProps {
   borderColor?: ColorsEnum
   buttonHeight: 'small' | 'tall'
   inline?: boolean
+  inlineHeight?: number
 }
 
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
-}))<ContainerProps>(({ inline, backgroundColor, borderColor, buttonHeight }) => ({
+}))<ContainerProps>(({ inline, backgroundColor, borderColor, buttonHeight, inlineHeight }) => ({
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
@@ -112,7 +115,7 @@ const Container = styled.TouchableOpacity.attrs(() => ({
         paddingRight: 0,
         paddingLeft: 0,
         width: 'auto',
-        height: 16,
+        height: inlineHeight,
       }
     : {}),
 }))
