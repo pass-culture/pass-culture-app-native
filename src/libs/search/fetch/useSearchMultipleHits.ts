@@ -7,7 +7,9 @@ import { client } from 'libs/search/client'
 import { buildQueryOptions, AppSearchFields } from 'libs/search/filters'
 import { buildAlgoliaHit } from 'libs/search/utils/buildAlgoliaHit'
 
-const fetchMultipleHits = (parametersList: SearchParameters[]): Promise<{ hits: SearchHit[] }> => {
+const fetchMultipleHits = (
+  parametersList: SearchParameters[]
+): Promise<{ hits: SearchHit[]; nbHits: number }> => {
   const queries = parametersList.map((params) => ({
     query: '',
     options: buildQueryOptions(params),
@@ -17,7 +19,11 @@ const fetchMultipleHits = (parametersList: SearchParameters[]): Promise<{ hits: 
     const searchHits = allResults.map((results) => results.results)
     const hits = searchHits.flatMap((results) => results.map(buildAlgoliaHit))
 
-    return { hits: flatten(hits) }
+    // We only use the total hits from the first search parameters, as this will
+    // be used for the 'See More' button to redirect to search
+    const nbHits = allResults[0].info.meta.page.total_results
+
+    return { hits: flatten(hits), nbHits }
   })
 }
 
