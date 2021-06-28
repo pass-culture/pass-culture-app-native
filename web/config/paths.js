@@ -57,7 +57,6 @@ module.exports = {
     appSrc: resolveApp('src'),
     appNodeModules: resolveApp('node_modules'),
     publicUrlOrPath,
-    packagesSrc: resolveApp('../../../packages'),
 };
 
 module.exports.moduleFileExtensions = moduleFileExtensions;
