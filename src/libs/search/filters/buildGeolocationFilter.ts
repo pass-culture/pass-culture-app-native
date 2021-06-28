@@ -15,5 +15,6 @@ export const buildGeolocationFilter = (params: SearchParameters): FilterArray<Ap
 
   const center = `${geolocation.latitude}, ${geolocation.longitude}`
   const distance = aroundRadius === 0 ? 1 : aroundRadius
-  return [{ [AppSearchFields.geoloc]: { center, distance, unit: 'km' } }]
+  const unit = aroundRadius === 0 ? 'm' : 'km'
+  return [{ [AppSearchFields.geoloc]: { center, distance, unit } }]
 }
