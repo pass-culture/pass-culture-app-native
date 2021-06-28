@@ -7,7 +7,7 @@ module.exports = {
   testEnvironment: 'jest-environment-jsdom',
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
   setupFiles: ['react-native-web/jest/setup.js', ...base.setupFiles],
-  testRegex: '.(?:test|spec)(?:.web)?.(?:tsx?|js)$',
+  testRegex: '(?<!.(?:native|ios|android)).(?:test|spec).(?:tsx?|js)$',
   moduleFileExtensions: ['web.tsx', 'web.ts', 'web.js', 'web.jsx', ...base.moduleFileExtensions],
   moduleNameMapper: {
     ...base.moduleNameMapper,
@@ -27,7 +27,7 @@ module.exports = {
   collectCoverageFrom: [...base.collectCoverageFrom, '!**/*.(native|ios|android).*'],
   testPathIgnorePatterns: [
     ...base.testPathIgnorePatterns,
-    '.*(/tests?/.*.(test|spec)).(native|ios|android).(tsx?)$',
+    '.*(/tests?/.*.(native|ios|android).(test|spec)).(tsx?)$',
   ],
   transform: {
     ...base.transform,
