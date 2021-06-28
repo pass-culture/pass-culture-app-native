@@ -23,7 +23,8 @@ const buildOfferPriceRangePredicate = (params: SearchParameters): FilterArray<Ap
   if (!priceRange) return []
 
   const [from = 0, to = 300] = priceRange
-  return [{ [AppSearchFields.prices]: { from, to: to * 100 } }]
+  // TODO (antoinewg): do we still need * 100 ?
+  return [{ [AppSearchFields.prices]: { from: from * 100, to: to * 100 } }]
 }
 
 const buildDatePredicate = (params: SearchParameters): FilterArray<AppSearchFields> => {
