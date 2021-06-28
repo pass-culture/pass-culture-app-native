@@ -5,8 +5,9 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
   id: number
@@ -21,12 +22,17 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
   }
 
   return (
-    <PressableContainer testID="description-details-button" onPress={onPressSeeMore}>
-      <Typo.ButtonText>{longWording ? t`Voir plus d'informations` : t`voir plus`}</Typo.ButtonText>
+    <Container>
+      <ButtonTertiaryBlack
+        inline
+        testId="description-details-button"
+        onPress={onPressSeeMore}
+        title={longWording ? t`Voir plus d'informations` : t`voir plus`}
+      />
       <Spacer.Row numberOfSpaces={1} />
       <ArrowNext size={getSpacing(6)} />
-    </PressableContainer>
+    </Container>
   )
 }
 
-const PressableContainer = styled.TouchableOpacity({ flexDirection: 'row', alignItems: 'center' })
+const Container = styled.View({ flexDirection: 'row', alignItems: 'center' })
