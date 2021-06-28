@@ -29,6 +29,8 @@
     "babel.config.js",
     "metro.config.js",
     "jest.config.js",
+    "jest.web.config.js",
+    "lingui.config.js",
     "react-native.config.js",
     "rn-cli.config.js",
     "__mocks__/**",
