@@ -30,7 +30,7 @@ const isMultipleAlgoliaHit = (
 
 const isMultipleSearchHit = (
   response: unknown
-): response is { hits: SearchHit[]; moduleId: string } =>
+): response is { hits: SearchHit[]; moduleId: string; nbHits: number } =>
   typeof response === 'object' && response !== null && 'hits' in response && 'moduleId' in response
 
 export const useHomeModules = (
@@ -67,9 +67,7 @@ export const useHomeModules = (
               },
             }))
           } else if (isMultipleSearchHit(response)) {
-            const { hits } = response
-            // TODO (antoinewg) This is not correct, we want to know if there are more hits than retrieved.
-            const nbHits = hits.length
+            const { hits, nbHits } = response
 
             setHomeModules((prevHomeModules) => ({
               ...prevHomeModules,
