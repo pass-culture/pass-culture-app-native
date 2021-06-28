@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 import 'cross-fetch/polyfill'
-import 'jest-canvas-mock'
 jest.unmock('react-query')
 /* We disable the following warning, which can be safely ignored as the code
   is not executed on a device :

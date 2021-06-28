@@ -208,7 +208,6 @@
     "fs-extra": "^9.1.0",
     "html-webpack-plugin": "^4.5.2",
     "jest": "^26.6.3",
-    "jest-canvas-mock": "^2.3.1",
     "jest-styled-components": "^7.0.4",
     "jetifier": "^1.6.5",
     "json": "^10.0.0",
