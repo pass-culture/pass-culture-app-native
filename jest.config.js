@@ -12,10 +12,10 @@ module.exports = {
     '^__mocks__(.*)$': '<rootDir>/__mocks__$1',
   },
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-native.js',
-  setupFiles: ['./jest/jest.setup.ts', './node_modules/react-native-gesture-handler/jestSetup.js'],
+  setupFiles: ['<rootDir>/jest/jest.setup.ts', 'react-native-gesture-handler/jestSetup.js'],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
   transform: {
-    '^.+\\.(js)$': 'babel-jest',
+    '^.+\\.[jt]sx?$': 'babel-jest',
   },
   transformIgnorePatterns: [
     'node_modules/(?!(jest-)?react-native' +

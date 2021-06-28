@@ -4,8 +4,9 @@ const base = require('./jest.config')
 module.exports = {
   ...base,
   preset: 'react-native-web',
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-environment-jsdom',
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
+  setupFiles: ['react-native-web/jest/setup.js', ...base.setupFiles],
   testRegex: '.(?:test|spec)(?:.web)?.(?:tsx?|js)$',
   moduleFileExtensions: ['web.tsx', 'web.ts', ...base.moduleFileExtensions],
   moduleNameMapper: {
@@ -23,14 +24,9 @@ module.exports = {
   ],
   transform: {
     ...base.transform,
-    '^.+\\.tsx?$': 'ts-jest',
   },
   verbose: true,
   globals: {
     __DEV__: true,
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-      diagnostics: true,
-    },
   },
 }
