@@ -25,4 +25,4 @@ export const buildQueryOptions = (
   },
 })
 
-export { AppSearchFields }
+export { AppSearchFields, result_fields }
