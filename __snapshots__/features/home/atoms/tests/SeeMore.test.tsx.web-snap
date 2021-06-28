@@ -108,7 +108,7 @@ exports[`SeeMore renders correctly 1`] = `
             "borderTopRightRadius": "32px",
             "borderTopStyle": "solid",
             "borderTopWidth": "1px",
-            "boxShadow": "0px 8px 12px rgba(21,21,21,0.15)",
+            "boxShadow": "0px 8px 12px rgba(21,21,21,1.00)",
             "cursor": "pointer",
             "justifyContent": "center",
             "msFlexAlign": "center",

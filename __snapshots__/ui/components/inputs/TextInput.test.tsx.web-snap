@@ -28,7 +28,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
       "borderTopRightRadius": "22px",
       "borderTopStyle": "solid",
       "borderTopWidth": "1px",
-      "boxShadow": "0px 2px 6px rgba(21,21,21,0.15)",
+      "boxShadow": "0px 2px 6px rgba(21,21,21,1.00)",
       "flexDirection": "row",
       "height": "40px",
       "maxWidth": "0px",
@@ -114,7 +114,7 @@ exports[`<TextInput /> should render correctly when focused 1`] = `
         \\"borderTopRightRadius\\": \\"22px\\",
         \\"borderTopStyle\\": \\"solid\\",
         \\"borderTopWidth\\": \\"1px\\",
-        \\"boxShadow\\": \\"0px 2px 6px rgba(21,21,21,0.15)\\","
+        \\"boxShadow\\": \\"0px 2px 6px rgba(21,21,21,1.00)\\","
 `;
 
 exports[`<TextInput /> should render correctly when in error 1`] = `
@@ -148,5 +148,5 @@ exports[`<TextInput /> should render correctly when in error 1`] = `
         \\"borderTopRightRadius\\": \\"22px\\",
         \\"borderTopStyle\\": \\"solid\\",
         \\"borderTopWidth\\": \\"1px\\",
-        \\"boxShadow\\": \\"0px 2px 6px rgba(21,21,21,0.15)\\","
+        \\"boxShadow\\": \\"0px 2px 6px rgba(21,21,21,1.00)\\","
 `;
