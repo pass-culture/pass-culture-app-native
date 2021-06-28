@@ -8,7 +8,7 @@ module.exports = {
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
   setupFiles: ['react-native-web/jest/setup.js', ...base.setupFiles],
   testRegex: '.(?:test|spec)(?:.web)?.(?:tsx?|js)$',
-  moduleFileExtensions: ['web.tsx', 'web.ts', ...base.moduleFileExtensions],
+  moduleFileExtensions: ['web.tsx', 'web.ts', 'web.js', 'web.jsx', ...base.moduleFileExtensions],
   moduleNameMapper: {
     ...base.moduleNameMapper,
     '^react-native$': 'react-native-web',
