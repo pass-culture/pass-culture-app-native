@@ -13,7 +13,8 @@ const onApproval = jest.fn()
 const onRefusal = jest.fn()
 const visible = true
 
-describe('<PrivacyPolicyModal />', () => {
+// FIXME: web integration
+describe.skip('<PrivacyPolicyModal />', () => {
   beforeEach(jest.clearAllMocks)
 
   it('should render correctly', () => {
