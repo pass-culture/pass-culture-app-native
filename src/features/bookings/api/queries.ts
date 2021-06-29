@@ -8,7 +8,7 @@ export function useBookings() {
   return useQuery<BookingsResponse>(QueryKeys.BOOKINGS, () => api.getnativev1bookings())
 }
 
-export function useOngoingBooking(id: number): BookingReponse | undefined {
+export function useOngoingOrEndedBooking(id: number): BookingReponse | undefined {
   const client = useQueryClient()
   const state = client.getQueryState<BookingsResponse>(QueryKeys.BOOKINGS)
   const onGoingBooking = state?.data?.ongoing_bookings?.find((item) => item.id === id)

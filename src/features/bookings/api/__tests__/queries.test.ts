@@ -1,4 +1,4 @@
-import { useOngoingBooking } from '../queries'
+import { useOngoingOrEndedBooking } from '../queries'
 
 jest.mock('react-query')
 
@@ -6,7 +6,7 @@ describe('[API] booking queries', () => {
   describe('[Method] useOngoingOrEndedBooking', () => {
     it('should return ongoing_bookings where there is one', async () => {
       const bookingId = 123
-      const bookingResult = useOngoingBooking(bookingId)
+      const bookingResult = useOngoingOrEndedBooking(bookingId)
       expect(bookingResult).toMatchInlineSnapshot(`
         Object {
           "id": 123,
@@ -36,7 +36,7 @@ describe('[API] booking queries', () => {
     })
     it('should not return ended_bookings where there is one', async () => {
       const bookingId = 321
-      const bookingResult = useOngoingBooking(bookingId)
+      const bookingResult = useOngoingOrEndedBooking(bookingId)
       expect(bookingResult).toMatchInlineSnapshot(`
         Object {
           "id": 321,
