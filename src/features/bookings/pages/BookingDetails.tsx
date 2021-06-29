@@ -6,7 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { useOngoingBooking } from 'features/bookings/api/queries'
+import { useOngoingOrEndedBooking } from 'features/bookings/api/queries'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
@@ -46,7 +46,7 @@ const getOfferRules = (
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const booking = useOngoingBooking(params.id)
+  const booking = useOngoingOrEndedBooking(params.id)
   const headerScroll = useRef(new Animated.Value(0)).current
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {

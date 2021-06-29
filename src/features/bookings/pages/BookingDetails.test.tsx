@@ -42,12 +42,12 @@ describe('BookingDetails', () => {
     }))
   })
 
-  it('should call useOngoingBooking with the right parameters', () => {
-    const useOngoingBooking = jest.spyOn(Queries, 'useOngoingBooking')
+  it('should call useOngoingOrEndedBooking with the right parameters', () => {
+    const useOngoingOrEndedBooking = jest.spyOn(Queries, 'useOngoingOrEndedBooking')
 
     const booking = bookingsSnap.ongoing_bookings[0]
     renderBookingDetails(booking)
-    expect(useOngoingBooking).toBeCalledWith(456)
+    expect(useOngoingOrEndedBooking).toBeCalledWith(456)
   })
 
   it('should render correctly', async () => {
@@ -283,6 +283,6 @@ describe('BookingDetails', () => {
 })
 
 function renderBookingDetails(booking: Booking) {
-  jest.spyOn(Queries, 'useOngoingBooking').mockReturnValue(booking)
+  jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue(booking)
   return render(reactQueryProviderHOC(<BookingDetails />))
 }
