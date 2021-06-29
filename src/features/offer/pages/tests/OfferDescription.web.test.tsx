@@ -10,7 +10,7 @@ import { env } from 'libs/environment'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, render } from 'tests/utils/web'
+import { render } from 'tests/utils/web'
 
 import {
   OfferDescription,
