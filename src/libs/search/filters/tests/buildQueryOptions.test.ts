@@ -128,6 +128,7 @@ describe('buildQueryOptions', () => {
         all: [
           { [AppSearchFields.is_digital]: 'true' },
           { [AppSearchFields.category]: ['LECON', 'VISITE'] },
+          { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.geoloc]: { center: '42, 43', distance: 123, unit: 'km' } },
         ],
       })
@@ -157,6 +158,7 @@ describe('buildQueryOptions', () => {
         all: [
           { [AppSearchFields.is_event]: 'true' },
           { [AppSearchFields.category]: ['PRATIQUE', 'SPECTACLE'] },
+          { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.geoloc]: { center: '42, 43', distance: 123, unit: 'km' } },
         ],
       })

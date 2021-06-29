@@ -16,15 +16,18 @@ export const buildNumericFilters = (params: SearchParameters): FilterArray<AppSe
   ]
 }
 
-// Filter okey on search if we store prices as cents
+const MAX_PRICE = 30000
+
+// Filter okey on search a long as we store prices as cents
 const buildOfferPriceRangePredicate = (params: SearchParameters): FilterArray<AppSearchFields> => {
   const { offerIsFree, priceRange } = params
   if (offerIsFree) return [{ [AppSearchFields.prices]: { to: 1 } }] // to is exclusive
-  if (!priceRange) return []
+  if (!priceRange) return [{ [AppSearchFields.prices]: { to: MAX_PRICE } }]
 
-  const [from = 0, to = 300] = priceRange
-  // TODO (antoinewg): do we still need * 100 ?
-  return [{ [AppSearchFields.prices]: { from: from * 100, to: to * 100 } }]
+  const from = 100 * priceRange[0] || 0
+  const to = Math.min(100 * priceRange[1], MAX_PRICE)
+
+  return [{ [AppSearchFields.prices]: { from, to } }]
 }
 
 const buildDatePredicate = (params: SearchParameters): FilterArray<AppSearchFields> => {
