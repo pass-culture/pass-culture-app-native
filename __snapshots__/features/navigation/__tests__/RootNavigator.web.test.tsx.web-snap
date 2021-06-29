@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`wrapRoute() should display force update page when global variable is set 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="css-view-1dbjc4n"
+        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-basis: 0px; flex-grow: 1.5; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px; width: 100%;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px;"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="text-align: center;"
+            >
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-MediumItalic; font-size: 24px; line-height: 28px;"
+              >
+                Mise à jour de l'application
+              </span>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-direction: row;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="max-width: 352px;"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="text-align: center;"
+                >
+                  <span
+                    class="css-text-901oao css-textHasAncestor-16my406"
+                    style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  >
+                    Le pass Culture ne semble plus à jour sur ton téléphone !
+Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 0.5; flex-shrink: 1; width: 100%;"
+          >
+            <div
+              aria-label="Télécharger la dernière version"
+              class="css-view-1dbjc4n"
+              data-focusable="true"
+              data-testid="Télécharger la dernière version"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+              tabindex="0"
+            >
+              <div
+                class="css-text-901oao css-textOneLine-bfa6kz"
+                dir="auto"
+                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
+              >
+                Télécharger la dernière version
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 8px;"
+        />
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="css-view-1dbjc4n"
+      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+    >
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+          >
+            undefined-SVG-Mock
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        />
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="align-items: center; flex-basis: 0px; flex-grow: 1.5; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px; width: 100%;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px;"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="text-align: center;"
+          >
+            <span
+              class="css-text-901oao css-textHasAncestor-16my406"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-MediumItalic; font-size: 24px; line-height: 28px;"
+            >
+              Mise à jour de l'application
+            </span>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-direction: row;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="max-width: 352px;"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="text-align: center;"
+              >
+                <span
+                  class="css-text-901oao css-textHasAncestor-16my406"
+                  style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                >
+                  Le pass Culture ne semble plus à jour sur ton téléphone !
+Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 0.5; flex-shrink: 1; width: 100%;"
+        >
+          <div
+            aria-label="Télécharger la dernière version"
+            class="css-view-1dbjc4n"
+            data-focusable="true"
+            data-testid="Télécharger la dernière version"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+            tabindex="0"
+          >
+            <div
+              class="css-text-901oao css-textOneLine-bfa6kz"
+              dir="auto"
+              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
+            >
+              Télécharger la dernière version
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 8px;"
+      />
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
