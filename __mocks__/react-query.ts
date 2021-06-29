@@ -1,3 +1,5 @@
+import { mockedBookingsResponse } from './fixtures/booking'
+
 const invalidateQueries = jest.fn()
 
 export class QueryCache {
@@ -14,6 +16,18 @@ export const useMutation = jest.fn().mockImplementation((mutationFunction, mutat
   mutationOptions,
   mutate: () => {},
 }))
-export const useQueryClient = jest.fn().mockReturnValue({ invalidateQueries, getQueryData: () => {}})
+
+const getQueryState = (key: string) => {
+  switch (key) {
+    case 'bookings':
+      return { data: mockedBookingsResponse }
+    default:
+      return {}
+  }
+}
+
+export const useQueryClient = jest
+  .fn()
+  .mockReturnValue({ invalidateQueries, getQueryData: () => {}, getQueryState })
 
 export const useQuery = jest.fn().mockResolvedValue({})
