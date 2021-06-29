@@ -2,7 +2,7 @@ import { act, fireEvent } from 'tests/utils'
 
 import { renderOfferPage } from './renderOfferPageTestUtil'
 
-describe('<Offer />', () => {
+describe.skip('<Offer />', () => {
   it('animates on scroll', async () => {
     const { getByTestId } = await renderOfferPage()
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
