@@ -1,0 +1,554 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BookingEventChoices /> should display date step and hour step and duo step on a snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="css-view-1dbjc4n"
+        style="margin-top: -8px; width: 100%;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="background-color: rgb(245, 245, 245); height: 2px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 16px;"
+        />
+        <div
+          class="css-text-901oao"
+          data-testid="DateStep"
+          dir="auto"
+          style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+        >
+          Date
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          data-focusable="true"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          tabindex="0"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 8px;"
+          />
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+          >
+            Samedi 2 janvier 2021
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 24px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="background-color: rgb(245, 245, 245); height: 2px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 24px;"
+        />
+        <div
+          class="css-text-901oao"
+          data-testid="HourStep"
+          dir="auto"
+          style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+        >
+          Heure
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 8px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          data-focusable="true"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          tabindex="0"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+          />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 24px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="background-color: rgb(245, 245, 245); height: 2px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 24px;"
+        />
+        <div
+          class="css-text-901oao"
+          data-testid="DuoStep"
+          dir="auto"
+          style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+        >
+          Nombre de place
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 8px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-direction: row; flex-wrap: wrap; margin-right: -8px; margin-left: -8px;"
+        >
+          <div
+            aria-disabled="true"
+            class="css-view-1dbjc4n"
+            data-testid="DuoChoice1"
+            disabled=""
+            style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+          >
+            <div
+              aria-disabled="true"
+              class="css-view-1dbjc4n"
+              disabled=""
+              style="align-items: center; background-color: rgb(235, 0, 85); border-top-color: rgba(235,0,85,1.00); border-right-color: rgba(235,0,85,1.00); border-bottom-color: rgba(235,0,85,1.00); border-left-color: rgba(235,0,85,1.00); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; padding-right: 13px; padding-left: 13px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="position: absolute; right: 2px; top: 2px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; justify-content: center; min-height: 80px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                >
+                  Solo
+                </div>
+                <div
+                  class="css-text-901oao"
+                  data-testid="DuoChoice1-price"
+                  dir="auto"
+                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                >
+                  crédit insuffisant
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="background-color: rgb(199, 199, 204); border-top-left-radius: 0.5px; border-top-right-radius: 0.5px; border-bottom-right-radius: 0.5px; border-bottom-left-radius: 0.5px; height: 1px; position: absolute; transform: rotate(-13.842302982032358deg); width: 346.6666666666667px;"
+              />
+            </div>
+          </div>
+          <div
+            aria-disabled="true"
+            class="css-view-1dbjc4n"
+            data-testid="DuoChoice2"
+            disabled=""
+            style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+          >
+            <div
+              aria-disabled="true"
+              class="css-view-1dbjc4n"
+              disabled=""
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; padding-right: 13px; padding-left: 13px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 20px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; justify-content: center; min-height: 80px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(98, 98, 98); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                >
+                  Duo
+                </div>
+                <div
+                  class="css-text-901oao"
+                  data-testid="DuoChoice2-price"
+                  dir="auto"
+                  style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                >
+                  crédit insuffisant
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="background-color: rgb(199, 199, 204); border-top-left-radius: 0.5px; border-top-right-radius: 0.5px; border-bottom-right-radius: 0.5px; border-bottom-left-radius: 0.5px; height: 1px; position: absolute; transform: rotate(-13.842302982032358deg); width: 346.6666666666667px;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 24px;"
+        />
+        <div
+          aria-label="Valider ces options"
+          class="css-view-1dbjc4n"
+          data-focusable="true"
+          data-testid="Valider ces options"
+          style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+          tabindex="0"
+        >
+          <div
+            class="css-text-901oao css-textOneLine-bfa6kz"
+            dir="auto"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
+          >
+            Valider ces options
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 16px;"
+        />
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="css-view-1dbjc4n"
+      style="margin-top: -8px; width: 100%;"
+    >
+      <div
+        class="css-view-1dbjc4n"
+        style="background-color: rgb(245, 245, 245); height: 2px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 16px;"
+      />
+      <div
+        class="css-text-901oao"
+        data-testid="DateStep"
+        dir="auto"
+        style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+      >
+        Date
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        data-focusable="true"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        tabindex="0"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 8px;"
+        />
+        <div
+          class="css-text-901oao"
+          dir="auto"
+          style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+        >
+          Samedi 2 janvier 2021
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="background-color: rgb(245, 245, 245); height: 2px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        class="css-text-901oao"
+        data-testid="HourStep"
+        dir="auto"
+        style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+      >
+        Heure
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 8px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        data-focusable="true"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        tabindex="0"
+      >
+        <div
+          class="css-text-901oao"
+          dir="auto"
+          style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+        />
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="background-color: rgb(245, 245, 245); height: 2px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        class="css-text-901oao"
+        data-testid="DuoStep"
+        dir="auto"
+        style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+      >
+        Nombre de place
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 8px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-direction: row; flex-wrap: wrap; margin-right: -8px; margin-left: -8px;"
+      >
+        <div
+          aria-disabled="true"
+          class="css-view-1dbjc4n"
+          data-testid="DuoChoice1"
+          disabled=""
+          style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+        >
+          <div
+            aria-disabled="true"
+            class="css-view-1dbjc4n"
+            disabled=""
+            style="align-items: center; background-color: rgb(235, 0, 85); border-top-color: rgba(235,0,85,1.00); border-right-color: rgba(235,0,85,1.00); border-bottom-color: rgba(235,0,85,1.00); border-left-color: rgba(235,0,85,1.00); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; padding-right: 13px; padding-left: 13px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="position: absolute; right: 2px; top: 2px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; justify-content: center; min-height: 80px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Solo
+              </div>
+              <div
+                class="css-text-901oao"
+                data-testid="DuoChoice1-price"
+                dir="auto"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+              >
+                crédit insuffisant
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(199, 199, 204); border-top-left-radius: 0.5px; border-top-right-radius: 0.5px; border-bottom-right-radius: 0.5px; border-bottom-left-radius: 0.5px; height: 1px; position: absolute; transform: rotate(-13.842302982032358deg); width: 346.6666666666667px;"
+            />
+          </div>
+        </div>
+        <div
+          aria-disabled="true"
+          class="css-view-1dbjc4n"
+          data-testid="DuoChoice2"
+          disabled=""
+          style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+        >
+          <div
+            aria-disabled="true"
+            class="css-view-1dbjc4n"
+            disabled=""
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; padding-right: 13px; padding-left: 13px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="width: 20px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; justify-content: center; min-height: 80px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Duo
+              </div>
+              <div
+                class="css-text-901oao"
+                data-testid="DuoChoice2-price"
+                dir="auto"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+              >
+                crédit insuffisant
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(199, 199, 204); border-top-left-radius: 0.5px; border-top-right-radius: 0.5px; border-bottom-right-radius: 0.5px; border-bottom-left-radius: 0.5px; height: 1px; position: absolute; transform: rotate(-13.842302982032358deg); width: 346.6666666666667px;"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        aria-label="Valider ces options"
+        class="css-view-1dbjc4n"
+        data-focusable="true"
+        data-testid="Valider ces options"
+        style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+        tabindex="0"
+      >
+        <div
+          class="css-text-901oao css-textOneLine-bfa6kz"
+          dir="auto"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
+        >
+          Valider ces options
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 16px;"
+      />
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
