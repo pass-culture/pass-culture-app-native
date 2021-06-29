@@ -439,55 +439,74 @@ Array [
           }
         />
         <View
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "opacity": 1,
-            }
+            Array [
+              Object {
+                "alignItems": "flex-start",
+              },
+            ]
           }
         >
           <View
-            height={24}
-            width={24}
+            accessibilityLabel="Voir l'itinéraire"
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 20,
+                "justifyContent": "center",
+                "marginTop": 0,
+                "maxWidth": 500,
+                "opacity": 1,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "width": "auto",
+              }
+            }
+            testID="Voir l'itinéraire"
           >
-            <Text>
-              undefined-SVG-Mock
+            <View
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 5,
+                    "maxWidth": 650,
+                  },
+                ]
+              }
+              textColor="#151515"
+            >
+              Voir l'itinéraire
             </Text>
           </View>
-          <View
-            numberOfSpaces={1}
-            style={
-              Array [
-                Object {
-                  "width": 4,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Voir l'itinéraire
-          </Text>
         </View>
         <View
           numberOfSpaces={8}
