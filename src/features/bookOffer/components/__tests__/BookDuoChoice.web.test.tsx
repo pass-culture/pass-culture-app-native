@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils/web'
 
 import { BookDuoChoice } from '../BookDuoChoice'
 
