@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<EighteenBirthdayCard /> should go to id check when user is authed 1`] = `null`;
+
 exports[`<EighteenBirthdayCard /> should go to login check when user is not authed 1`] = `null`;
 
 exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
@@ -189,7 +191,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
-          "opacity": 0.04290143715394713,
+          "opacity": 0.014452077416484813,
         }
       }
     >
