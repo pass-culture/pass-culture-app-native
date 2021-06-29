@@ -107,9 +107,13 @@ jobs:
           command: |
             yarn test:types
       - run:
-          name: Unit Tests
+          name: Unit Tests Native
           command: |
             yarn test:unit:ci
+      - run:
+          name: Unit Tests Web
+          command: |
+            yarn test:unit:web:ci
 
   upload-sourcemaps:
     docker:
