@@ -11,5 +11,7 @@ export function useBookings() {
 export function useOngoingBooking(id: number): BookingReponse | undefined {
   const client = useQueryClient()
   const state = client.getQueryState<BookingsResponse>(QueryKeys.BOOKINGS)
-  return state?.data?.ongoing_bookings?.find((item) => item.id === id)
+  const onGoingBooking = state?.data?.ongoing_bookings?.find((item) => item.id === id)
+  const endedBooking = state?.data?.ended_bookings?.find((item) => item.id === id)
+  return onGoingBooking || endedBooking
 }
