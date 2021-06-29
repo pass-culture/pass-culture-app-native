@@ -232,10 +232,9 @@
 			};
 			buildConfigurationList = 798F19CA4A3D47C18E2967A0 /* Build configuration list for PBXProject "PassCulture" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = fr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				fr,
 			);
 			mainGroup = 4A62C898BE944215BF1A5561;
