@@ -10,16 +10,16 @@ const CheckedCheckboxInput = <CheckboxInput isChecked={true} setIsChecked={doNot
 
 describe('<CheckboxInput />', () => {
   it('should render correctly when not checked', () => {
-    const renderAPI = render(NotCheckedCheckboxInput)
+    const { getByTestId } = render(NotCheckedCheckboxInput)
 
-    const renderedCheckbox = renderAPI.getByTestId('checkbox')
+    const renderedCheckbox = getByTestId('checkbox')
     expect(renderedCheckbox.style.backgroundColor).toEqual('rgb(255, 255, 255)')
   })
 
   it('should render correctly when checked', () => {
-    const renderAPI = render(CheckedCheckboxInput)
+    const { getByTestId } = render(CheckedCheckboxInput)
 
-    const checkboxMark = renderAPI.getByTestId('checkbox-mark')
+    const checkboxMark = getByTestId('checkbox-mark')
     expect(checkboxMark).toBeTruthy()
   })
 })
