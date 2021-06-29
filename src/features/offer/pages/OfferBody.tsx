@@ -14,6 +14,7 @@ import { env } from 'libs/environment'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { useModal } from 'ui/components/modals/useModal'
 import { Flag } from 'ui/svg/icons/Flag'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -25,6 +26,7 @@ import {
   AccessibilityBlock,
   OfferPartialDescription,
 } from '../components'
+import { ReportOfferDescriptionModal } from '../components/ReportOfferDescriptionModal'
 
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 
@@ -36,6 +38,11 @@ export const OfferBody: FunctionComponent<{
   const credit = useAvailableCredit()
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
+  const {
+    visible: isReportOfferModalVisible,
+    showModal: showReportOfferModal,
+    hideModal,
+  } = useModal(false)
 
   useTrackOfferSeenDuration(offerId)
 
@@ -134,11 +141,13 @@ export const OfferBody: FunctionComponent<{
               inline
               title={t`Signaler l'offre`}
               icon={() => <Flag size={24} />}
+              onPress={showReportOfferModal}
             />
           </SectionBody>
         </Section>
       )}
 
+      <ReportOfferDescriptionModal isVisible={isReportOfferModalVisible} dismissModal={hideModal} />
     </Container>
   )
 }
