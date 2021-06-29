@@ -41,7 +41,7 @@ msgstr "1 Minuscule"
 msgid "12 Caractères"
 msgstr "12 Caractères"
 
-#: src/features/auth/signup/SetPhoneNumberModal.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "6 12 34 56 78"
 msgstr "6 12 34 56 78"
 
@@ -123,12 +123,12 @@ msgstr "Annuler ma réservation"
 msgid "Annulé"
 msgstr "Annulé"
 
-#: src/features/auth/signup/SetPhoneNumberModal.tsx
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Attends"
 msgstr "Attends"
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Attention tu n'as que 3 tentatives."
 msgstr "Attention tu n'as que 3 tentatives."
 
@@ -333,8 +333,8 @@ msgstr "Confidentialité"
 msgid "Confirme ton e‑mail"
 msgstr "Confirme ton e‑mail"
 
-#: src/features/auth/signup/SetPhoneNumberModal.tsx
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Confirme ton numéro"
 msgstr "Confirme ton numéro"
 
@@ -382,17 +382,17 @@ msgid "Consulter notre centre d'aide"
 msgstr "Consulter notre centre d'aide"
 
 #: src/features/auth/signup/AcceptCgu.tsx
-#: src/features/auth/signup/PhoneValidationTooManyAttempts.tsx
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/auth/signup/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail.tsx
 #: src/features/auth/signup/SetPassword.tsx
-#: src/features/auth/signup/SetPhoneNumberModal.tsx
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
 #: src/features/auth/signup/SetPostalCode.tsx
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
@@ -973,10 +973,6 @@ msgstr "Pas de résultat trouvé."
 msgid "Passer"
 msgstr "Passer"
 
-#: src/features/profile/components/NonEligibleDepartmentBadge.tsx
-msgid "Patience ! Le pass Culture sera bientôt disponible dans ton département !"
-msgstr "Patience ! Le pass Culture sera bientôt disponible dans ton département !"
-
 #: src/features/profile/components/YoungerBadge.tsx
 msgid "Patience ! À tes 18 ans, tu bénéficieras de"
 msgstr "Patience ! À tes 18 ans, tu bénéficieras de"
@@ -1001,7 +997,7 @@ msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exerc
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
-#: src/features/auth/signup/SetPhoneNumberModal.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 
@@ -1092,7 +1088,7 @@ msgid "Retour"
 msgstr "Retour"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx
-#: src/features/auth/signup/PhoneValidationTooManyAttempts.tsx
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx
 #: src/features/auth/signup/VerifyEligibility.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
@@ -1127,7 +1123,7 @@ msgstr "Revenir en arrière"
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 msgid "Réessayer"
 msgstr "Réessayer"
@@ -1164,7 +1160,7 @@ msgstr "S'inscrire"
 msgid "Saisir une adresse..."
 msgstr "Saisir une adresse..."
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Saisis le code envoyé par SMS au numéro"
 msgstr "Saisis le code envoyé par SMS au numéro"
 
@@ -1200,9 +1196,9 @@ msgstr "Si tu as 18 ans, tu pourras obtenir une aide financière de"
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
-msgid "Si tu n’arrives pas à récuperer ton code tu peux"
-msgstr "Si tu n’arrives pas à récuperer ton code tu peux"
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+msgid "Si tu n’arrives pas à récupérer ton code tu peux"
+msgstr "Si tu n’arrives pas à récupérer ton code tu peux"
 
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx
 msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
@@ -1323,7 +1319,7 @@ msgstr "Trier par"
 msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
-#: src/features/auth/signup/PhoneValidationTooManyAttempts.tsx
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts.tsx
 msgid "Trop de tentatives !"
 msgstr "Trop de tentatives !"
 
@@ -1339,7 +1335,7 @@ msgstr "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.ap
 msgid "Tu as déjà un compte ?"
 msgstr "Tu as déjà un compte ?"
 
-#: src/features/auth/signup/PhoneValidationTooManyAttempts.tsx
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts.tsx
 msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
 msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
 
@@ -1363,7 +1359,7 @@ msgstr "Tu es sur le point d'annuler"
 msgid "Tu es sur le point d'archiver"
 msgstr "Tu es sur le point d'archiver"
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
 
