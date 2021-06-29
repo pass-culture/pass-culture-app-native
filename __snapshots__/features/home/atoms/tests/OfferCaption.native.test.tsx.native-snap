@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OfferCaption component should render correctly 1`] = `
+<View
+  imageWidth={50}
+  style={
+    Array [
+      Object {
+        "marginTop": 8,
+        "maxWidth": 50,
+      },
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+  >
+    Mensch ! Où sont les Hommes ?
+  </Text>
+  <Text
+    color="#626262"
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#626262",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+  >
+    Dès le 2 mars 2020
+  </Text>
+  <Text
+    color="#626262"
+    style={
+      Array [
+        Object {
+          "color": "#626262",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+    testID="priceIsDuo"
+  >
+    Dès 5€ - Duo
+  </Text>
+</View>
+`;
