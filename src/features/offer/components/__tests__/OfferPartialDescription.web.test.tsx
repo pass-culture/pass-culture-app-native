@@ -14,12 +14,16 @@ describe('OfferPartialDescription', () => {
   it('centers CTA when provided description is empty', async () => {
     const { getByTestId } = await renderOfferDescription('')
     const offerSeeMoreContainer = getByTestId('offerSeeMoreContainer')
-    expect(offerSeeMoreContainer.style._values['align-self']).toBe('center')
+    // @ts-ignore FIXME see how to fix typing
+    const { 'align-self': alignSelf } = offerSeeMoreContainer.style
+    expect(alignSelf).toBe('center')
   })
   it('places CTA on flex-end when provided a description', async () => {
     const { getByTestId } = await renderOfferDescription(description)
     const offerSeeMoreContainer = getByTestId('offerSeeMoreContainer')
-    expect(offerSeeMoreContainer.style._values['align-self']).toBe('flex-end')
+    // @ts-ignore FIXME see how to fix typing
+    const { 'align-self': alignSelf } = offerSeeMoreContainer.style
+    expect(alignSelf).toBe('flex-end')
   })
   it('renders externalLinks if http(s) url are present in the description', async () => {
     const { queryByTestId } = await renderOfferDescription(description)

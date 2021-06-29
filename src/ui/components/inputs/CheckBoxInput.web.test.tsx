@@ -2,7 +2,6 @@
 import React from 'react'
 
 import { render } from 'tests/utils/web'
-import { ColorsEnum } from 'ui/theme'
 
 import { CheckboxInput } from './CheckboxInput'
 
