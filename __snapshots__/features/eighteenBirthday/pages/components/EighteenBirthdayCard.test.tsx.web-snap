@@ -191,7 +191,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
-          "opacity": 0.03295154130590043,
+          "opacity": 0.03979174990262597,
         }
       }
     >
