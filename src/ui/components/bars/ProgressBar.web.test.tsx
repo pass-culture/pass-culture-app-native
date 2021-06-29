@@ -22,7 +22,11 @@ describe('ProgressBar', () => {
     const expectedBackgroundColor = 'rgb(235, 0, 85)'
 
     const { getByText, getByTestId } = render(
-      <ProgressBar color={expectedBackgroundColor} progress={expectedProgress} icon={Close} />
+      <ProgressBar
+        color={expectedBackgroundColor as ColorsEnum}
+        progress={expectedProgress}
+        icon={Close}
+      />
     )
 
     const progressBar = getByTestId('progress-bar')

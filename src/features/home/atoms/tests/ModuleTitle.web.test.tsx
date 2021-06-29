@@ -14,7 +14,7 @@ describe('ModuleTitle component', () => {
 
   // FIXME: web integration
   it.skip('should have an ellipsis [WEB FIXME]', () => {
-    const { getByTestId } = render(<ModuleTitle title="Pour bien commencer" />)
-    expect(getByTestId('moduleTitle').parent?.props.numberOfLines).toEqual(2)
+    // const { getByTestId } = render(<ModuleTitle title="Pour bien commencer" />)
+    // expect(getByTestId('moduleTitle').parent?.props.numberOfLines).toEqual(2)
   })
 })
