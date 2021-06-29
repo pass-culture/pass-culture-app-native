@@ -189,6 +189,10 @@ msgstr "Autres"
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
+#: src/features/offer/components/ReportOfferDescriptionModal.tsx
+msgid "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU."
+msgstr "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU."
+
 #: src/features/home/components/HomeHeader.tsx
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
@@ -609,6 +613,10 @@ msgstr "Hors connexion : en attente du réseau."
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "ISBN"
 msgstr "ISBN"
+
+#: src/features/offer/components/ReportOfferDescriptionModal.tsx
+msgid "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
+msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 
 #: src/features/auth/login/Login.tsx
 msgid "Il y a eu un problème. Tu peux réessayer plus tard."
@@ -1204,6 +1212,15 @@ msgstr "Si tu n’arrives pas à récupérer ton code tu peux"
 msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 msgstr "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 
+#: src/features/offer/components/ReportOfferDescriptionModal.tsx
+#: src/features/offer/pages/OfferBody.tsx
+msgid "Signaler l'offre"
+msgstr "Signaler l'offre"
+
+#: src/features/offer/components/ReportOfferDescriptionModal.tsx
+msgid "Signaler une offre"
+msgstr "Signaler une offre"
+
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Solo"
@@ -1269,6 +1286,10 @@ msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure con
 #: src/features/auth/signup/SetEmail.tsx
 msgid "Ton e-mail"
 msgstr "Ton e-mail"
+
+#: src/features/offer/components/ReportOfferDescriptionModal.tsx
+msgid "Ton identité restera anonyme auprès des acteurs culturels."
+msgstr "Ton identité restera anonyme auprès des acteurs culturels."
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx
