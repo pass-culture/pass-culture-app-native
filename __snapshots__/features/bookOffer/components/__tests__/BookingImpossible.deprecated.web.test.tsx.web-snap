@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BookingImpossible /> should render with CTAs when offer is not yet favorite 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="css-view-1dbjc4n"
+        style="align-content: center; align-items: center; justify-content: center; width: 100%;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+          >
+            undefined-SVG-Mock
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 24px;"
+        />
+        <div
+          class="css-text-901oao"
+          dir="auto"
+          style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; padding-right: 24px; padding-left: 24px; text-align: center;"
+        >
+          Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 24px;"
+        />
+        <div
+          class="css-text-901oao"
+          dir="auto"
+          style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; padding-right: 24px; padding-left: 24px; text-align: center;"
+        >
+          Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 24px;"
+        />
+        <div
+          aria-label="Mettre en favoris"
+          class="css-view-1dbjc4n"
+          data-focusable="true"
+          data-testid="Mettre en favoris"
+          style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+          tabindex="0"
+        >
+          <div
+            class="css-text-901oao css-textOneLine-bfa6kz"
+            dir="auto"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
+          >
+            Mettre en favoris
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 16px;"
+        />
+        <div
+          aria-label="Retourner à l'offre"
+          class="css-view-1dbjc4n"
+          data-focusable="true"
+          data-testid="Retourner à l'offre"
+          style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+          tabindex="0"
+        >
+          <div
+            class="css-text-901oao css-textOneLine-bfa6kz"
+            dir="auto"
+            style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
+          >
+            Retourner à l'offre
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 16px;"
+        />
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="css-view-1dbjc4n"
+      style="align-content: center; align-items: center; justify-content: center; width: 100%;"
+    >
+      <div
+        class="css-view-1dbjc4n"
+      >
+        <div
+          class="css-text-901oao"
+          dir="auto"
+        >
+          undefined-SVG-Mock
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        class="css-text-901oao"
+        dir="auto"
+        style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; padding-right: 24px; padding-left: 24px; text-align: center;"
+      >
+        Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        class="css-text-901oao"
+        dir="auto"
+        style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; padding-right: 24px; padding-left: 24px; text-align: center;"
+      >
+        Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        aria-label="Mettre en favoris"
+        class="css-view-1dbjc4n"
+        data-focusable="true"
+        data-testid="Mettre en favoris"
+        style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+        tabindex="0"
+      >
+        <div
+          class="css-text-901oao css-textOneLine-bfa6kz"
+          dir="auto"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
+        >
+          Mettre en favoris
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 16px;"
+      />
+      <div
+        aria-label="Retourner à l'offre"
+        class="css-view-1dbjc4n"
+        data-focusable="true"
+        data-testid="Retourner à l'offre"
+        style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+        tabindex="0"
+      >
+        <div
+          class="css-text-901oao css-textOneLine-bfa6kz"
+          dir="auto"
+          style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
+        >
+          Retourner à l'offre
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 16px;"
+      />
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
