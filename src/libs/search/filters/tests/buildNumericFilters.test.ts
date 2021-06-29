@@ -27,7 +27,9 @@ describe('buildNumericFilters', () => {
   describe('offer price', () => {
     it('should not filter when no price range is specified and offer is not free', () => {
       const params = { offerIsFree: false, priceRange: null } as SearchParameters
-      expect(buildNumericFilters(params as SearchParameters)).toEqual([])
+      expect(buildNumericFilters(params as SearchParameters)).toEqual([
+        { [AppSearchFields.prices]: { to: 30000 } },
+      ])
     })
 
     it('should filter prices when offer is free even when priceRange is provided', () => {
@@ -43,12 +45,19 @@ describe('buildNumericFilters', () => {
         { [AppSearchFields.prices]: { from: 2000, to: 5000 } },
       ])
     })
+
+    it('should filter prices with max price when price range is provided and offer is not free', () => {
+      const params = { offerIsFree: false, priceRange: [20, 500] } as SearchParameters
+      expect(buildNumericFilters(params as SearchParameters)).toEqual([
+        { [AppSearchFields.prices]: { from: 2000, to: 30000 } },
+      ])
+    })
   })
 
   describe('offer is new', () => {
     it('should fetch with no numericFilters when offerIsNew is false', () => {
       const filters = buildNumericFilters({ offerIsNew: false } as SearchParameters)
-      expect(filters).toStrictEqual([])
+      expect(filters).toStrictEqual([{ [AppSearchFields.prices]: { to: 30000 } }])
     })
 
     it('should fetch with numericFilters when offerIsNew is true', () => {
@@ -57,6 +66,7 @@ describe('buildNumericFilters', () => {
       const filters = buildNumericFilters({ offerIsNew: true } as SearchParameters)
       expect(timestamp.getFromDate).toHaveBeenLastCalledWith(now)
       expect(filters).toStrictEqual([
+        { [AppSearchFields.prices]: { to: 30000 } },
         { [AppSearchFields.stocks_date_created]: { from: 1588762412, to: 1589453612 } },
       ])
     })
@@ -78,6 +88,7 @@ describe('buildNumericFilters', () => {
         expect(TIMESTAMP.getFromDate).toHaveBeenCalledWith(selectedDate)
         expect(TIMESTAMP.getLastOfDate).toHaveBeenCalledWith(selectedDate)
         expect(filters).toStrictEqual([
+          { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.dates]: { from: 123456789, to: 987654321 } },
         ])
       })
@@ -96,6 +107,7 @@ describe('buildNumericFilters', () => {
         expect(timestamp.getFromDate).toHaveBeenCalledWith(selectedDate)
         expect(timestamp.WEEK.getLastFromDate).toHaveBeenCalledWith(selectedDate)
         expect(filters).toStrictEqual([
+          { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.dates]: { from: 123456789, to: 987654321 } },
         ])
       })
@@ -114,6 +126,7 @@ describe('buildNumericFilters', () => {
         expect(timestamp.WEEK_END.getFirstFromDate).toHaveBeenCalledWith(selectedDate)
         expect(timestamp.WEEK.getLastFromDate).toHaveBeenCalledWith(selectedDate)
         expect(filters).toStrictEqual([
+          { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.dates]: { from: 123456789, to: 987654321 } },
         ])
       })
@@ -132,6 +145,7 @@ describe('buildNumericFilters', () => {
         expect(timestamp.getFirstOfDate).toHaveBeenCalledWith(selectedDate)
         expect(timestamp.getLastOfDate).toHaveBeenCalledWith(selectedDate)
         expect(filters).toStrictEqual([
+          { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.dates]: { from: 123456789, to: 987654321 } },
         ])
       })
@@ -145,7 +159,10 @@ describe('buildNumericFilters', () => {
         const filters = buildNumericFilters({ timeRange } as SearchParameters)
 
         expect(computeTimeRange).toHaveBeenCalledWith(timeRange)
-        expect(filters).toStrictEqual([{ [AppSearchFields.times]: { from: 64800, to: 79200 } }])
+        expect(filters).toStrictEqual([
+          { [AppSearchFields.prices]: { to: 30000 } },
+          { [AppSearchFields.times]: { from: 64800, to: 79200 } },
+        ])
       })
     })
 
@@ -164,7 +181,10 @@ describe('buildNumericFilters', () => {
         } as SearchParameters)
 
         expect(timestamp.getAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
-        expect(filters).toStrictEqual([{ [AppSearchFields.dates]: { from: 123, to: 124 } }])
+        expect(filters).toStrictEqual([
+          { [AppSearchFields.prices]: { to: 30000 } },
+          { [AppSearchFields.dates]: { from: 123, to: 124 } },
+        ])
       })
 
       it('should fetch with date filter when timeRange, date and currentWeek option are provided', () => {
@@ -189,6 +209,7 @@ describe('buildNumericFilters', () => {
           timeRange
         )
         expect(filters).toStrictEqual([
+          { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.dates]: { from: 123, to: 124 } },
           { [AppSearchFields.dates]: { from: 225, to: 226 } },
           { [AppSearchFields.dates]: { from: 327, to: 328 } },
@@ -216,6 +237,7 @@ describe('buildNumericFilters', () => {
           timeRange
         )
         expect(filters).toStrictEqual([
+          { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.dates]: { from: 123, to: 124 } },
           { [AppSearchFields.dates]: { from: 225, to: 226 } },
         ])
@@ -235,7 +257,10 @@ describe('buildNumericFilters', () => {
         } as SearchParameters)
 
         expect(timestamp.getAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
-        expect(filters).toStrictEqual([{ [AppSearchFields.dates]: { from: 123, to: 124 } }])
+        expect(filters).toStrictEqual([
+          { [AppSearchFields.prices]: { to: 30000 } },
+          { [AppSearchFields.dates]: { from: 123, to: 124 } },
+        ])
       })
     })
   })
@@ -248,7 +273,10 @@ describe('buildNumericFilters', () => {
       const filters = buildNumericFilters({ beginningDatetime } as SearchParameters)
 
       expect(timestamp.getFromDate).toHaveBeenCalledWith(beginningDatetime)
-      expect(filters).toStrictEqual([{ [AppSearchFields.dates]: { from: 1596240000 } }])
+      expect(filters).toStrictEqual([
+        { [AppSearchFields.prices]: { to: 30000 } },
+        { [AppSearchFields.dates]: { from: 1596240000 } },
+      ])
     })
 
     it('should fetch until the ending datetime', () => {
@@ -258,7 +286,10 @@ describe('buildNumericFilters', () => {
       const filters = buildNumericFilters({ endingDatetime } as SearchParameters)
 
       expect(timestamp.getFromDate).toHaveBeenCalledWith(endingDatetime)
-      expect(filters).toStrictEqual([{ [AppSearchFields.dates]: { to: 1596240000 } }])
+      expect(filters).toStrictEqual([
+        { [AppSearchFields.prices]: { to: 30000 } },
+        { [AppSearchFields.dates]: { to: 1596240000 } },
+      ])
     })
 
     it('should fetch from the beginning datetime to the ending datetime', () => {
@@ -270,6 +301,7 @@ describe('buildNumericFilters', () => {
 
       expect(timestamp.getFromDate).toHaveBeenCalledTimes(2)
       expect(filters).toStrictEqual([
+        { [AppSearchFields.prices]: { to: 30000 } },
         { [AppSearchFields.dates]: { from: 1596240000, to: 1596326400 } },
       ])
     })
