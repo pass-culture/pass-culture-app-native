@@ -1,9 +1,11 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils/web'
-import { ColorsEnum } from 'ui/theme'
+import { render } from 'tests/utils/web'
 
-import { DateInput, DateInputRef, FULL_DATE_VALIDATOR } from './DateInput'
+import { DateInput, DateInputRef } from './DateInput'
+// import { fireEvent, render } from 'tests/utils/web'
+// import { ColorsEnum } from 'ui/theme'
+// import { DateInput, DateInputRef, FULL_DATE_VALIDATOR } from './DateInput'
 
 describe('DateInput Component', () => {
   it('should render ref and give access to clearFocuses function', () => {
