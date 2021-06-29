@@ -32,7 +32,8 @@ jest.mock('libs/timer', () => ({
 
 let mockedSendSetPhoneNumberCode = jest.fn()
 
-describe('SetPhoneNumber', () => {
+// FIXME: web integration
+describe.skip('SetPhoneNumber', () => {
   beforeEach(() => {
     mockedSendSetPhoneNumberCode = mockedUseMutation.mockImplementation(
       // @ts-ignore ts(2345)
