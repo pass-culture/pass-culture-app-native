@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
-import { render } from 'tests/utils'
+import { render, fireEvent } from 'tests/utils/web'
 
 import { LoggedOutHeader } from './LoggedOutHeader'
 
@@ -11,7 +11,8 @@ describe('LoggedOutHeader', () => {
     const { getByTestId } = render(<LoggedOutHeader />)
 
     const signupButton = getByTestId("S'inscrire")
-    signupButton.props.onClick()
+
+    fireEvent.click(signupButton)
 
     expect(analytics.logProfilSignUp).toBeCalled()
     expect(navigate).toBeCalledWith('SetEmail', { preventCancellation: true })
@@ -20,7 +21,7 @@ describe('LoggedOutHeader', () => {
     const { getByTestId } = render(<LoggedOutHeader />)
 
     const connectButton = getByTestId('Connecte-toi')
-    connectButton.props.onClick()
+    fireEvent.click(connectButton)
 
     expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
   })
