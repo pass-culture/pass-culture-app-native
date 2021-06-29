@@ -97,6 +97,9 @@ Ex: `offer.rankingWeight` => `ranking_weight`
 Ex:
 
 - `"_geoloc": { "lat": 48.9263, "lng": 2.49008 }` => `geoloc: "48.9263, 2.49008"`
+- `"_geoloc": { "lat": null, "lng": null }` => `geoloc: null`
+
+### Before
 
 ```json
 {
@@ -125,7 +128,9 @@ Ex:
     "stageDirector": null,
     "stocksDateCreated": [1624537921.156929],
     "tags": [],
-    "times": []
+    "times": [],
+    "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/D7UQ",
+    "type": "Lire"
   },
   "offerer": { "name": "Bar des amis" },
   "venue": {
@@ -136,5 +141,46 @@ Ex:
   },
   "_geoloc": { "lat": null, "lng": null },
   "objectID": "222126"
+}
+```
+
+### After
+
+```json
+{
+  "author": null,
+  "category": "PRESSE",
+  "ranking_weight": null,
+  "date_created": 1624537915.299662,
+  "dates": [],
+  "description": null,
+  "id": "ANR24",
+  "isbn": null,
+  "is_digital": true,
+  "is_duo": false,
+  "is_event": false,
+  "is_thing": true,
+  "label": "Presse en ligne",
+  "music_type": null,
+  "name": "12ABOLIGNE",
+  "performer": null,
+  "prices": [0],
+  "price_min": 0,
+  "price_max": 0,
+  "show_type": null,
+  "speaker": null,
+  "stage_director": null,
+  "stocks_date_created": [1624537921.156929],
+  "tags": [],
+  "times": [],
+  "thumb_url": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/D7UQ",
+  "type": "Lire",
+  "offerer_name": "Bar des amis",
+  "city": null,
+  "venue_departement_code": null,
+  "venue_name": "Le Sous-sol (Offre numérique)",
+  "venue_public_name": null,
+  "geoloc": null,
+  "object_id": "222126"
 }
 ```
