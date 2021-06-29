@@ -4,7 +4,7 @@ import { act } from 'react-test-renderer'
 
 import { AsyncErrorBoundary } from 'features/errors'
 import * as BatchLocalLib from 'libs/notifications'
-import { flushAllPromises, render } from 'tests/utils'
+import { flushAllPromises, render } from 'tests/utils/web'
 
 import { App } from './App'
 
