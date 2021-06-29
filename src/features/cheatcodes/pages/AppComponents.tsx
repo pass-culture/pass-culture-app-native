@@ -51,8 +51,10 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
+import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
@@ -466,12 +468,20 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Confidentiality </Text>
         </AlignedText>
         <AlignedText>
+          <BicolorConfidentiality size={ICON_SIZE} />
+          <Text> - BicolorConfidentiality </Text>
+        </AlignedText>
+        <AlignedText>
           <SignOut size={ICON_SIZE} />
           <Text> - SignOut </Text>
         </AlignedText>
         <AlignedText>
           <Lock size={ICON_SIZE} />
           <Text> - Lock </Text>
+        </AlignedText>
+        <AlignedText>
+          <BicolorLock size={ICON_SIZE} />
+          <Text> - BicolorLock </Text>
         </AlignedText>
         <AlignedText>
           <Profile size={ICON_SIZE} />
