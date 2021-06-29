@@ -31,12 +31,7 @@ export const useHasEnoughCredit = (offerId: number): boolean => {
 
   const price = getOfferPrice(offer.stocks)
 
-  return hasEnoughCredit(
-    // @ts-ignore : TODO(antoinewg, 22/3/21): this is to ensure backward compatibility. Can be removed after next MES/MEP.
-    offer.expenseDomains ?? offer.expense_domains,
-    price,
-    user.domainsCredit
-  )
+  return hasEnoughCredit(offer.expenseDomains, price, user.domainsCredit)
 }
 
 export const useCreditForOffer = (offerId: number | undefined): number => {
@@ -47,10 +42,7 @@ export const useCreditForOffer = (offerId: number | undefined): number => {
   const { domainsCredit } = user
   if (!domainsCredit) return 0
 
-  // @ts-ignore : TODO(antoinewg, 22/3/21): this is to ensure backward compatibility. Can be removed after next MES/MEP.
-  const offerDomains = offer.expenseDomains ?? offer.expense_domains
-
-  const creditsRemainingPerDomain = offerDomains
+  const creditsRemainingPerDomain = offer.expenseDomains
     .map((domain) => {
       const expenseDomain = domainsCredit[domain]
       if (expenseDomain === null || expenseDomain === undefined) return undefined
