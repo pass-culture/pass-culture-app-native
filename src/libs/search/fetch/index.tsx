@@ -7,38 +7,39 @@ import { useSearchHits } from './useSearchHits'
 import { useSearchMultipleHits } from './useSearchMultipleHits'
 import { useSearchQuery } from './useSearchQuery'
 
+const useAppSearchBackend = () => {
+  const { data: settings } = useAppSettings()
+  // This is to make sure we do not have to force the update of the application
+  // once we remove `useAppSearch` from the /settings endpoint. By that time,
+  // App Search will be the default search backend
+  const isAppSearchBackend = settings?.useAppSearch ?? true
+
+  return { enabled: !!settings, isAppSearchBackend }
+}
+
 // Home page: module contentful with multiple parameters
 export const useFetchMultipleHits = () => {
-  const { data: settings } = useAppSettings()
+  const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const algoliaMultipleHits = useAlgoliaMultipleHits()
   const searchMultipleHits = useSearchMultipleHits()
 
-  return {
-    enabled: !!settings,
-    ...(settings?.useAppSearch ? searchMultipleHits : algoliaMultipleHits),
-  }
+  return { enabled, ...(isAppSearchBackend ? searchMultipleHits : algoliaMultipleHits) }
 }
 
 // Recommendation module
 export const useFetchHits = () => {
-  const { data: settings } = useAppSettings()
+  const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const algoliaHits = useAlgoliaHits()
   const searchHits = useSearchHits()
 
-  return {
-    enabled: !!settings,
-    ...(settings?.useAppSearch ? searchHits : algoliaHits),
-  }
+  return { enabled, ...(isAppSearchBackend ? searchHits : algoliaHits) }
 }
 
 // Search page
 export const useFetchQuery = () => {
-  const { data: settings } = useAppSettings()
+  const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const algoliaQuery = useAlgoliaQuery()
   const searchQuery = useSearchQuery()
 
-  return {
-    enabled: !!settings,
-    ...(settings?.useAppSearch ? searchQuery : algoliaQuery),
-  }
+  return { enabled, ...(isAppSearchBackend ? searchQuery : algoliaQuery) }
 }
