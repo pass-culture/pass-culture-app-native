@@ -6,7 +6,8 @@ import { superFlushWithAct, act, fireEvent } from 'tests/utils'
 
 import { offerId, renderOfferPage, renderOfferBodyPage } from './renderOfferPageTestUtil'
 
-describe('<OfferBody /> - Analytics', () => {
+// FIXME: web integration
+describe.skip('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })
@@ -57,7 +58,8 @@ describe('<OfferBody /> - Analytics', () => {
   })
 })
 
-describe('<Offer /> - Analytics', () => {
+// FIXME: web integration
+describe.skip('<Offer /> - Analytics', () => {
   const nativeEventMiddle = {
     layoutMeasurement: { height: 1000 },
     contentOffset: { y: 400 }, // how far did we scroll

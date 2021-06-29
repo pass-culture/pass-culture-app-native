@@ -2,6 +2,7 @@ import { act, fireEvent } from 'tests/utils'
 
 import { renderOfferPage } from './renderOfferPageTestUtil'
 
+// FIXME: web integration
 describe.skip('<Offer />', () => {
   it('animates on scroll', async () => {
     const { getByTestId } = await renderOfferPage()

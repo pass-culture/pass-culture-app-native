@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { renderOfferBodyPage } from './renderOfferPageTestUtil'
 
-describe('<OfferBody />', () => {
+describe.skip('<OfferBody />', () => {
   beforeAll(() => {
     mockdate.set(new Date(2021, 0, 1))
   })
