@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils'
+import { render, fireEvent } from 'tests/utils'
 import { Close } from 'ui/svg/icons/Close'
 
 import { SectionRow } from './SectionRow'
@@ -14,7 +14,7 @@ describe('SectionRow', () => {
       )
       const touchable = getByTestId('section-row-touchable')
 
-      touchable.props.onClick()
+      fireEvent.press(touchable)
       expect(method).toBeCalled()
     })
   })
