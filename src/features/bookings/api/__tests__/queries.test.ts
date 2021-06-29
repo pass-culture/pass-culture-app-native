@@ -37,7 +37,32 @@ describe('[API] booking queries', () => {
     it('should not return ended_bookings where there is one', async () => {
       const bookingId = 321
       const bookingResult = useOngoingBooking(bookingId)
-      expect(bookingResult).toMatchInlineSnapshot(`undefined`)
+      expect(bookingResult).toMatchInlineSnapshot(`
+        Object {
+          "id": 321,
+          "quantity": 3,
+          "stock": Object {
+            "id": 431,
+            "offer": Object {
+              "category": Object {
+                "categoryType": "Event",
+                "label": "categoryLabel",
+              },
+              "id": 32871,
+              "isDigital": true,
+              "isPermanent": true,
+              "name": "mockedBookingName",
+              "venue": Object {
+                "coordinates": Object {},
+                "id": 3131,
+                "name": "venueName",
+              },
+            },
+          },
+          "token": "bookingToken",
+          "totalAmount": 4,
+        }
+      `)
     })
   })
 })
