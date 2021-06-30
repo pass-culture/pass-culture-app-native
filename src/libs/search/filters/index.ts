@@ -5,13 +5,13 @@ import { SearchParameters } from 'features/search/types'
 import { buildFacetFilters } from './buildFacetFilters'
 import { buildGeolocationFilter } from './buildGeolocationFilter'
 import { buildNumericFilters } from './buildNumericFilters'
-import { AppSearchFields, result_fields } from './constants'
+import { AppSearchFields, RESULT_FIELDS } from './constants'
 
 export const buildQueryOptions = (
   params: SearchParameters,
   page?: number
 ): SearchOptions<AppSearchFields> => ({
-  result_fields,
+  result_fields: RESULT_FIELDS,
   filters: {
     all: [
       ...buildFacetFilters(params),
@@ -25,4 +25,4 @@ export const buildQueryOptions = (
   },
 })
 
-export { AppSearchFields, result_fields }
+export { AppSearchFields, RESULT_FIELDS }

@@ -3,12 +3,12 @@ import { SearchOptions } from '@elastic/app-search-javascript'
 import { useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { SearchHit } from 'libs/search'
 import { client } from 'libs/search/client'
-import { AppSearchFields, result_fields } from 'libs/search/filters'
+import { AppSearchFields, RESULT_FIELDS } from 'libs/search/filters'
 import { buildAlgoliaHit } from 'libs/search/utils/buildAlgoliaHit'
 
 const fetchHits = (ids: string[]): Promise<{ results: { hits: SearchHit[] } }> => {
   const options: SearchOptions<AppSearchFields> = {
-    result_fields,
+    result_fields: RESULT_FIELDS,
     filters: { any: ids.map((id) => ({ [AppSearchFields.object_id]: id })) },
   }
 

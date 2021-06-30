@@ -39,7 +39,7 @@ export enum AppSearchFields {
 }
 
 // We don't use all the fields indexed. Simply retrieve the one we use.
-export const result_fields: ResultFields<AppSearchFields> = {
+export const RESULT_FIELDS: ResultFields<AppSearchFields> = {
   [AppSearchFields.category]: { raw: {} },
   [AppSearchFields.dates]: { raw: {} },
   [AppSearchFields.description]: { raw: {} },
