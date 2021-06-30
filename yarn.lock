@@ -2938,10 +2938,10 @@
   resolved "https://registry.yarnpkg.com/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
-"@pass-culture/id-check@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.3.1.tgz#0880ab427e49710e6c5861f4cdecc9f256f36f34"
-  integrity sha512-1TuFMo4wd20O6RBhRe75jgz66eFPL2AdlHut/gwWR5z/xv/qBy/Un8oE9mW8ndHXv7yXQ7UO7LPRDUEGzYrEfQ==
+"@pass-culture/id-check@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.3.2.tgz#267a587d463522660dae66f7effd1cc10aa21072"
+  integrity sha512-mZAxZbyijpawSwQKAVZXBUXEWYR0QxdmeMRoB0P5R1W/GKtla/kL5A+ZDIijKqYNmva+mpKHdkm0XYnGR9Ii/w==
   dependencies:
     deepmerge "^4.2.2"
     lodash "^4.17.21"
