@@ -17,7 +17,6 @@ describe('useDeeplinkUrlHandler Analytics', () => {
 
     handleDeeplinkUrl({ url })
 
-    expect(analytics.logConsultOffer).not.toHaveBeenCalled()
-    expect(analytics.logConsultOfferFromDeeplink).toHaveBeenCalledWith(1234)
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId: 1234, from: 'deeplink' })
   })
 })

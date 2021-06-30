@@ -6,6 +6,7 @@ export const handleDeeplinkAnalytics = <Screen extends keyof AllNavParamList>(
   params: RouteParams<AllNavParamList, Screen>
 ) => {
   if (screen === 'Offer') {
-    analytics.logConsultOfferFromDeeplink((params as RouteParams<AllNavParamList, 'Offer'>).id)
+    const { id: offerId } = params as RouteParams<AllNavParamList, 'Offer'>
+    analytics.logConsultOffer({ offerId, from: 'deeplink' })
   }
 }
