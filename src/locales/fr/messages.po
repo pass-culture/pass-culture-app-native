@@ -1711,6 +1711,12 @@ msgstr "{price} seront déduits de ton crédit pass Culture"
 msgid "need verify eligibility"
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
+#: src/features/bookings/components/BookingDetailsCancelButton.tsx
+msgid "not cancellable because expired for ex beneficiary"
+msgstr ""
+"Ton crédit est expiré.\n"
+"Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {date}"
+
 #: src/features/bookings/components/CancelBookingModal.tsx
 msgid "not refunded because expired"
 msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré."

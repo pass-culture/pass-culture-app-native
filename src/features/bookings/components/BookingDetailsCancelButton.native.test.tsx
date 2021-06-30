@@ -1,10 +1,12 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import { mocked } from 'ts-jest/utils'
 
 import {
   BookingDetailsCancelButton,
   BookingDetailsCancelButtonProps,
 } from 'features/bookings/components/BookingDetailsCancelButton'
+import { isUserExBeneficiary } from 'features/profile/utils'
 import { fireEvent, render } from 'tests/utils'
 
 import { bookingsSnap } from '../api/bookingsSnap'
@@ -12,6 +14,11 @@ import { bookingsSnap } from '../api/bookingsSnap'
 import { Booking } from './types'
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
+
+jest.mock('features/home/api')
+jest.mock('features/home/services/useAvailableCredit')
+jest.mock('features/profile/utils')
+const mockedisUserExBeneficiary = mocked(isUserExBeneficiary, true)
 
 describe('<BookingDetailsCancelButton />', () => {
   it('should display the "Terminer" button for digital offers when autoActivateDigitalBookings is true', () => {
@@ -81,6 +88,15 @@ describe('<BookingDetailsCancelButton />', () => {
     const { getByText } = renderBookingDetailsCancelButton(booking)
     getByText(
       'Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1 novembre 2020'
+    )
+  })
+  it('should block user if cancellation date is over and user is ex beneficiary ', () => {
+    const booking = { ...bookingsSnap.ongoing_bookings[0] }
+    booking.confirmationDate = new Date('2020-11-01T00:00:00Z')
+    mockedisUserExBeneficiary.mockReturnValueOnce(true)
+    const { getByText } = renderBookingDetailsCancelButton(booking)
+    getByText(
+      'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation : elle devait être annulée avant le 1 novembre 2020'
     )
   })
 })

@@ -3,6 +3,9 @@ import * as React from 'react'
 import styled from 'styled-components/native'
 
 import { getBookingProperties } from 'features/bookings/helpers'
+import { useUserProfileInfo } from 'features/home/api'
+import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
+import { isUserExBeneficiary } from 'features/profile/utils'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
@@ -19,6 +22,9 @@ export interface BookingDetailsCancelButtonProps {
 export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProps) => {
   const { booking } = props
   const properties = getBookingProperties(booking)
+  const { data: user } = useUserProfileInfo()
+  const credit = useAvailableCredit()
+  const isExBeneficiary = user && credit && isUserExBeneficiary(user, credit)
 
   if (properties.hasActivationCode == true && props.activationCodeFeatureEnabled) {
     return <ButtonSecondary title={t`Terminer`} onPress={props.onTerminate} />
@@ -43,6 +49,17 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
             {t`La réservation est annulable jusqu'au` + '\u00a0' + formattedConfirmationDate}
           </CancellationCaption>
         </React.Fragment>
+      )
+    } else if (isExBeneficiary) {
+      return (
+        <CancellationCaption>
+          {t({
+            id: 'not cancellable because expired for ex beneficiary',
+            values: { date: formattedConfirmationDate },
+            message:
+              'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation : elle devait être annulée avant le {date}',
+          })}
+        </CancellationCaption>
       )
     } else {
       return (
