@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 
 import {
@@ -9,6 +10,8 @@ import { fireEvent, render } from 'tests/utils'
 import { bookingsSnap } from '../api/bookingsSnap'
 
 import { Booking } from './types'
+
+mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
 describe('<BookingDetailsCancelButton />', () => {
   it('should display the "Terminer" button for digital offers when autoActivateDigitalBookings is true', () => {
@@ -71,6 +74,14 @@ describe('<BookingDetailsCancelButton />', () => {
     fireEvent.press(button)
 
     expect(onTerminate).toBeCalled()
+  })
+  it('should block user if cancellation date is over', () => {
+    const booking = { ...bookingsSnap.ongoing_bookings[0] }
+    booking.confirmationDate = new Date('2020-11-01T00:00:00Z')
+    const { getByText } = renderBookingDetailsCancelButton(booking)
+    getByText(
+      'Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1 novembre 2020'
+    )
   })
 })
 

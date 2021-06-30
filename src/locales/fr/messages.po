@@ -1585,7 +1585,7 @@ msgstr "Vérifier mon identité"
 msgid "Vérifier mon éligibilité"
 msgstr "Vérifier mon éligibilité"
 
-#: src/libs/i18n.test.ts
+#: src/libs/i18n.native.test.ts
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
@@ -1786,7 +1786,8 @@ msgstr "{0, plural, one {Réservation terminée} other {Réservations terminées
 msgid "{count, plural, one {# favori} other {# favoris}}"
 msgstr "{count, plural, one {# favori} other {# favoris}}"
 
-#: src/features/search/atoms/__tests__/NumberOfResults.test.tsx
+#: src/features/search/atoms/__tests__/NumberOfResults.native.test.tsx
+#: src/features/search/atoms/__tests__/NumberOfResults.web.test.tsx
 msgid "{count, plural, one {# résultat} other {# résultats}}"
 msgstr "{count, plural, one {# résultat} other {# résultats}}"
 
