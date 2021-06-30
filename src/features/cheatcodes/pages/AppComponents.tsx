@@ -40,6 +40,7 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { RadioButton } from 'ui/components/RadioButton'
 import { SectionRow } from 'ui/components/SectionRow'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
@@ -144,6 +145,7 @@ export const AppComponents: FunctionComponent = () => {
   const [inputText, setInputText] = useState('')
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
+  const [radioButtonChoice, setRadioButtonChoice] = useState('')
   const numberOfSteps = useSignInNumberOfSteps()
 
   function navigateToIdCheckUnavailable() {
@@ -645,6 +647,19 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Banner title="Je suis une bannière" type={BannerType.INFO} />
         </AlignedText>
+      </AccordionItem>
+
+      <Divider />
+
+      <AccordionItem title="Radio button">
+        <RadioButton
+          choices={[
+            { key: '1', title: 'item 1', subtitle: 'description 1' },
+            { key: '2', title: 'item 2', subtitle: 'description 2' },
+          ]}
+          onSelect={setRadioButtonChoice}
+        />
+        <Typo.Caption>{`Selected : ${radioButtonChoice}`}</Typo.Caption>
       </AccordionItem>
 
       <Divider />
