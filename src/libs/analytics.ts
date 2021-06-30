@@ -38,7 +38,6 @@ export enum AnalyticsEvent {
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
   CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT = 'ContactSupportResetPassword',
   HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'HelpCenterContactSignUpConfirmation',
-  DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
   DISCOVER_OFFERS = 'DiscoverOffers',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
@@ -139,9 +138,6 @@ const logRecommendationModuleSeen = (moduleName: string, numberOfTiles: number) 
 /**
  * Offer
  */
-const logConsultOfferFromDeeplink = (offerId: number) =>
-  logEvent(AnalyticsEvent.DEEPLINK_CONSULT_OFFER, { offerId })
-
 const logConsultAccessibility = (offerId: number) =>
   logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, { offerId })
 
@@ -332,7 +328,6 @@ export const analytics = {
   logConsultDescriptionDetails,
   logConsultItinerary,
   logConsultOffer,
-  logConsultOfferFromDeeplink,
   logConsultWholeOffer,
   logConsultWhyAnniversary,
   logConsultWithdrawal,
