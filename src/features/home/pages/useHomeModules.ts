@@ -55,28 +55,26 @@ export const useHomeModules = (
         queryKey: [QueryKeys.HOME_MODULE, moduleId],
         queryFn: fetchModule,
         onSuccess: (response) => {
+          let hits: SearchHit[] = []
+          let nbHits = 0
+
           if (isMultipleAlgoliaHit(response)) {
-            const hits = flatten(response.results.map(({ hits }) => hits))
-            const nbHits = response.results.reduce((prev, curr) => prev + curr.nbHits, 0)
-
-            setHomeModules((prevHomeModules) => ({
-              ...prevHomeModules,
-              [response.moduleId]: {
-                hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID'),
-                nbHits,
-              },
-            }))
+            hits = flatten(response.results.map(({ hits }) => hits))
+            nbHits = response.results.reduce((prev, curr) => prev + curr.nbHits, 0)
           } else if (isMultipleSearchHit(response)) {
-            const { hits, nbHits } = response
-
-            setHomeModules((prevHomeModules) => ({
-              ...prevHomeModules,
-              [response.moduleId]: {
-                hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID'),
-                nbHits,
-              },
-            }))
+            hits = response.hits
+            nbHits = response.nbHits
+          } else {
+            return
           }
+
+          setHomeModules((prevHomeModules) => ({
+            ...prevHomeModules,
+            [response.moduleId]: {
+              hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID'),
+              nbHits,
+            },
+          }))
         },
         enabled,
       }
