@@ -10,6 +10,10 @@ import { bookingsSnap } from '../api/bookingsSnap'
 
 import { Booking } from './types'
 
+jest.mock('features/home/api')
+jest.mock('features/home/services/useAvailableCredit')
+jest.mock('features/profile/utils')
+
 describe('<BookingDetailsCancelButton />', () => {
   it('should display the "Terminer" button for digital offers when autoActivateDigitalBookings is true', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
