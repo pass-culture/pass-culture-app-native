@@ -33,10 +33,15 @@ export const CancellationDetails: React.FC = () => {
             message: 'Cette réservation peut être annulée jusqu’au {date}',
           })
   }
-
   // if "autoActivateDigitalBookings" is set, any digital booking with activationCode will be
-  // automatically activated. As a result, they are not cancellable
-  if (settings?.autoActivateDigitalBookings && offer.isDigital && !!activationCode) {
+  // automatically activated. As a result, they are not cancellable.
+  // In the event where the offer cannot expire (press subscription or audio book), the user cannot cancel
+  if (
+    settings?.autoActivateDigitalBookings &&
+    offer.isDigital &&
+    !offer.canExpire &&
+    !!activationCode
+  ) {
     message = notCancellableMessage
   }
 

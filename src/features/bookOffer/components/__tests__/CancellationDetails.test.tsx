@@ -33,6 +33,7 @@ let mockStock: OfferStockResponse | undefined = undefined
 let mockOffer = ({
   id: 1,
   isDuo: true,
+  canExpire: true,
 } as unknown) as OfferAdaptedResponse
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBookingStock: jest.fn(() => mockStock),
@@ -78,14 +79,18 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = false', () 
 
 describe('<CancellationDetails /> when autoActivateDigitalBookings = true and isDigital = true', () => {
   it.each([null, pastDate, futureDate])(
-    'should not be cancellable when cancellation limit date="%s and has activationCode',
+    'should not be cancellable when cancellation limit date=%s and has activationCode and canExpire=false',
     (cancellationLimitDatetime) => {
       mockStock = {
         ...notExpiredStock,
         cancellationLimitDatetime,
         activationCode: { expirationDate: new Date('2030-02-05T00:00:00Z') },
       }
-      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+      mockOffer = ({
+        ...mockOffer,
+        isDigital: true,
+        canExpire: false,
+      } as unknown) as OfferAdaptedResponse
       mockSettings = { autoActivateDigitalBookings: true }
       const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
@@ -100,6 +105,22 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
     const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
     expectCancellable(page)
+  })
+
+  it('should not be cancellable when activationCode and canExpire=false', () => {
+    mockStock = {
+      ...notExpiredStock,
+      activationCode: { expirationDate: new Date('2030-02-05T00:00:00Z') },
+    }
+    mockOffer = ({
+      ...mockOffer,
+      isDigital: true,
+      canExpire: false,
+    } as unknown) as OfferAdaptedResponse
+    mockSettings = { autoActivateDigitalBookings: true }
+    const page = render(reactQueryProviderHOC(<CancellationDetails />))
+
+    expectNotCancellable(page)
   })
 
   it('should not be cancellable if limitDate is past and no activationCode', () => {
