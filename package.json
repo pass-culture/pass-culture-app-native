@@ -1,7 +1,7 @@
 {
   "name": "PassCulture",
-  "version": "1.140.6",
-  "build": 10140006,
+  "version": "1.140.7",
+  "build": 10140007,
   "private": true,
   "engines": {
     "node": ">=12.13.0 <13.0.0"
@@ -145,9 +145,9 @@
     "@lingui/macro": "^3.10.2",
     "@react-native-community/eslint-config": "^2.0.0",
     "@svgr/webpack": "^5.5.0",
+    "@testing-library/react": "^12.0.0",
     "@testing-library/react-hooks": "^3.4.2",
     "@testing-library/react-native": "7.1.0",
-    "@testing-library/react": "^12.0.0",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/geojson": "^7946.0.7",
     "@types/highlight-words-core": "^1.2.0",
