@@ -19,6 +19,7 @@ const user: UserProfileResponse = {
   lastName: '93 HNMM 2',
   id: 1234,
   needsToFillCulturalSurvey: true,
+  roles: [],
   showEligibleCard: false,
   subscriptions: {
     marketingEmail: true,

@@ -92,6 +92,7 @@ const userProfileAPIResponse: UserProfileResponse = {
   needsToFillCulturalSurvey: true,
   showEligibleCard: false,
   id: 1234,
+  roles: [],
   subscriptions: {
     marketingEmail: true,
     marketingPush: true,

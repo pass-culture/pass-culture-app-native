@@ -79,6 +79,7 @@ describe('OfferTile component', () => {
       stocks: [],
       venue: { coordinates: {} },
       isActive: true,
+      canExpire: true,
     })
   })
 })

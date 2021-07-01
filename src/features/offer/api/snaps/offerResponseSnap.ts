@@ -54,6 +54,7 @@ export const offerResponseSnap: OfferResponse = {
   },
   withdrawalDetails: 'How to withdraw, https://test.com',
   isActive: true,
+  canExpire: true,
 }
 
 export const offerAdaptedResponseSnap = {

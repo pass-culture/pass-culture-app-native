@@ -59,6 +59,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
   } as OfferResponse['category'],
   venue: { coordinates: {} } as OfferResponse['venue'],
   isActive: true,
+  canExpire: true,
   ...(prevData || {}),
 })
 
