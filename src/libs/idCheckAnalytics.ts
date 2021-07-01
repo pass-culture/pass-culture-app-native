@@ -118,4 +118,7 @@ export const idCheckAnalytics: IdCheckAnalyticsInterface = {
       licenceTokenExpirationTimestamp,
     })
   },
+  idDocumentAcquisitionType(type: 'Camera' | 'ImageLibrary') {
+    firebaseAnalytics.logEvent('IdCheck_IdDocumentAcquisitionType', { type })
+  },
 }
