@@ -95,3 +95,5 @@ If I don't see my codepush on staging/prod app:
 - Check that you find it on AppCenter: https://appcenter.ms/orgs/pass-Culture/apps/PassCulture-<env></env:staging|prod>-<os:ios|android>/distribute/code-push
 
 ![img](./CodePushOnAppCenter.png)
+
+> To get the code push, the version must match the one installed by the user.
