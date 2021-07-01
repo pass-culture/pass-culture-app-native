@@ -466,6 +466,12 @@ export interface BookingVenueResponse {
      * @memberof BookingVenueResponse
      */
     name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingVenueResponse
+     */
+    publicName?: string | null;
 }/**
  * 
  * @export
@@ -993,6 +999,12 @@ export interface OfferResponse {
      * @memberof OfferResponse
      */
     accessibility: OfferAccessibilityResponse;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferResponse
+     */
+    canExpire: boolean;
     /**
      * 
      * @type {OfferCategoryResponse}
@@ -1547,6 +1559,12 @@ export interface UserProfileResponse {
     pseudo?: string | null;
     /**
      * 
+     * @type {Array<UserRole>}
+     * @memberof UserProfileResponse
+     */
+    roles: Array<UserRole>;
+    /**
+     * 
      * @type {boolean}
      * @memberof UserProfileResponse
      */
@@ -1581,6 +1599,15 @@ export interface UserProfilingFraudRequest {
      * @memberof UserProfilingFraudRequest
      */
     session_id: string;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum UserRole {
+    ADMIN = 'ADMIN',
+    BENEFICIARY = 'BENEFICIARY',
+    PRO = 'PRO'
 }/**
  * 
  * @export
