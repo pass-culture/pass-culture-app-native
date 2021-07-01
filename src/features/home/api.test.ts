@@ -29,6 +29,7 @@ const userProfileAPIResponse: UserProfileResponse = {
   firstName: 'Jean',
   isBeneficiary: true,
   needsToFillCulturalSurvey: true,
+  roles: [],
   showEligibleCard: false,
   id: 1234,
   subscriptions: {
