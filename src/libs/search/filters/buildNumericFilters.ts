@@ -76,7 +76,6 @@ const buildDateAndTimePredicate = ({
   return dateFilter.map(([from, to]) => ({ [AppSearchFields.dates]: { from, to } }))
 }
 
-// Marche uniquement si le schéma de dates est number.
 const buildDateOnlyPredicate = (
   date: Exclude<SearchParameters['date'], null | undefined>
 ): FilterArray<AppSearchFields> => {

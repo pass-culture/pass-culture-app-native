@@ -9,7 +9,7 @@ import { buildAlgoliaHit } from 'libs/search/utils/buildAlgoliaHit'
 const fetchHits = (ids: string[]): Promise<{ results: { hits: SearchHit[] } }> => {
   const options: SearchOptions<AppSearchFields> = {
     result_fields: RESULT_FIELDS,
-    filters: { any: ids.map((id) => ({ [AppSearchFields.object_id]: id })) },
+    filters: { any: ids.map((id) => ({ [AppSearchFields.id]: id })) },
   }
 
   return client.search<AppSearchFields>('', options).then((response) => ({

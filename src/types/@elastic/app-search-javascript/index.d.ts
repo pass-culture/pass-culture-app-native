@@ -118,11 +118,18 @@ interface Page {
   current: number
 }
 
+type SortOption<FieldsEnum> = FieldsEnum extends string
+  ? Partial<Record<FieldsEnum | '_score', 'asc' | 'desc'>>
+  : never
+
+export type Sort<FieldsEnum> = SortOption<FieldsEnum> | Array<SortOption<FieldsEnum>>
+
 export interface SearchOptions<FieldsEnum> {
   search_fields?: SearchFields<FieldsEnum>
   result_fields?: ResultFields<FieldsEnum>
   filters?: Filters<FieldsEnum>
   page?: Page
+  sort?: Sort<FieldsEnum>
 }
 
 export interface Info {

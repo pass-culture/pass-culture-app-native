@@ -50,7 +50,7 @@ describe('buildFacetFilters', () => {
         isThing: false,
       }
       const filters = buildFacetFilters({ offerTypes } as SearchParameters)
-      expect(filters).toStrictEqual([{ [AppSearchFields.is_digital]: 'true' }])
+      expect(filters).toStrictEqual([{ [AppSearchFields.is_digital]: 1 }])
     })
 
     it('should fetch with facetFilters when offer is physical only', () => {
@@ -61,8 +61,8 @@ describe('buildFacetFilters', () => {
       }
       const filters = buildFacetFilters({ offerTypes } as SearchParameters)
       expect(filters).toStrictEqual([
-        { [AppSearchFields.is_digital]: 'false' },
-        { [AppSearchFields.is_thing]: 'true' },
+        { [AppSearchFields.is_digital]: 0 },
+        { [AppSearchFields.is_thing]: 1 },
       ])
     })
 
@@ -74,7 +74,7 @@ describe('buildFacetFilters', () => {
       }
 
       const filters = buildFacetFilters({ offerTypes } as SearchParameters)
-      expect(filters).toStrictEqual([{ [AppSearchFields.is_event]: 'true' }])
+      expect(filters).toStrictEqual([{ [AppSearchFields.is_event]: 1 }])
     })
 
     it('should fetch with facetFilters when offer is digital and physical', () => {
@@ -85,7 +85,7 @@ describe('buildFacetFilters', () => {
       }
 
       const filters = buildFacetFilters({ offerTypes } as SearchParameters)
-      expect(filters).toStrictEqual([{ [AppSearchFields.is_thing]: 'true' }])
+      expect(filters).toStrictEqual([{ [AppSearchFields.is_thing]: 1 }])
     })
 
     it('should fetch with facetFilters when offer is digital or an event', () => {
@@ -97,8 +97,8 @@ describe('buildFacetFilters', () => {
 
       const filters = buildFacetFilters({ offerTypes } as SearchParameters)
       expect(filters).toStrictEqual([
-        { [AppSearchFields.is_digital]: 'true' },
-        { [AppSearchFields.is_event]: 'true' },
+        { [AppSearchFields.is_digital]: 1 },
+        { [AppSearchFields.is_event]: 1 },
       ])
     })
 
@@ -110,7 +110,7 @@ describe('buildFacetFilters', () => {
       }
 
       const filters = buildFacetFilters({ offerTypes } as SearchParameters)
-      expect(filters).toStrictEqual([{ [AppSearchFields.is_digital]: 'false' }])
+      expect(filters).toStrictEqual([{ [AppSearchFields.is_digital]: 0 }])
     })
 
     it('should fetch with no facetFilters when offer is digital, event and thing', () => {
@@ -133,7 +133,7 @@ describe('buildFacetFilters', () => {
 
     it('should fetch with facetFilters when offer duo is true', () => {
       const filters = buildFacetFilters({ ...baseParams, offerIsDuo: true } as SearchParameters)
-      expect(filters).toStrictEqual([{ [AppSearchFields.is_duo]: 'true' }])
+      expect(filters).toStrictEqual([{ [AppSearchFields.is_duo]: 1 }])
     })
   })
 
