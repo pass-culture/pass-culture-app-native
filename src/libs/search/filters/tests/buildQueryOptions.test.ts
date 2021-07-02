@@ -126,10 +126,10 @@ describe('buildQueryOptions', () => {
 
       expect(filters.filters).toStrictEqual({
         all: [
-          { [AppSearchFields.is_digital]: 'true' },
+          { [AppSearchFields.is_digital]: 1 },
           { [AppSearchFields.category]: ['LECON', 'VISITE'] },
           { [AppSearchFields.prices]: { to: 30000 } },
-          { [AppSearchFields.geoloc]: { center: '42, 43', distance: 123, unit: 'km' } },
+          { [AppSearchFields.venue_position]: { center: '42, 43', distance: 123, unit: 'km' } },
         ],
       })
     })
@@ -156,10 +156,10 @@ describe('buildQueryOptions', () => {
 
       expect(filters.filters).toStrictEqual({
         all: [
-          { [AppSearchFields.is_event]: 'true' },
+          { [AppSearchFields.is_event]: 1 },
           { [AppSearchFields.category]: ['PRATIQUE', 'SPECTACLE'] },
           { [AppSearchFields.prices]: { to: 30000 } },
-          { [AppSearchFields.geoloc]: { center: '42, 43', distance: 123, unit: 'km' } },
+          { [AppSearchFields.venue_position]: { center: '42, 43', distance: 123, unit: 'km' } },
         ],
       })
     })
@@ -188,11 +188,11 @@ describe('buildQueryOptions', () => {
 
       expect(filters.filters).toStrictEqual({
         all: [
-          { [AppSearchFields.is_event]: 'true' },
+          { [AppSearchFields.is_event]: 1 },
           { [AppSearchFields.category]: ['PRATIQUE', 'SPECTACLE'] },
-          { [AppSearchFields.is_duo]: 'true' },
+          { [AppSearchFields.is_duo]: 1 },
           { [AppSearchFields.prices]: { from: 500, to: 4000 } },
-          { [AppSearchFields.geoloc]: { center: '42, 43', distance: 123, unit: 'km' } },
+          { [AppSearchFields.venue_position]: { center: '42, 43', distance: 123, unit: 'km' } },
         ],
       })
     })

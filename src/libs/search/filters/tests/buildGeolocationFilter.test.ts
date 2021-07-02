@@ -32,7 +32,7 @@ describe('buildGeolocationFilter', () => {
     const params: Params = { ...baseParams, aroundRadius: 135 }
     expect(buildGeolocationFilter(params as SearchParameters)).toEqual([
       {
-        [AppSearchFields.geoloc]: {
+        [AppSearchFields.venue_position]: {
           center: '42, 43',
           distance: 135,
           unit: 'km',
@@ -45,7 +45,7 @@ describe('buildGeolocationFilter', () => {
     const params: Params = { ...baseParams, aroundRadius: 0 }
     expect(buildGeolocationFilter(params as SearchParameters)).toEqual([
       {
-        [AppSearchFields.geoloc]: {
+        [AppSearchFields.venue_position]: {
           center: '42, 43',
           distance: 1,
           unit: 'm',

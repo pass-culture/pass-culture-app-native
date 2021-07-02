@@ -2,23 +2,23 @@ import { FilterArray } from '@elastic/app-search-javascript'
 
 import { SearchParameters } from 'features/search/types'
 
-import { AppSearchFields } from './constants'
+import { AppSearchFields, FALSE, TRUE } from './constants'
 
 export const buildFacetFilters = (params: SearchParameters): FilterArray<AppSearchFields> => {
   const { offerCategories, offerIsDuo, tags, offerTypes } = params
 
-  const facetFilters: FilterArray<AppSearchFields> = buildOfferTypesFilter(offerTypes) // ko: weird logic
+  const facetFilters: FilterArray<AppSearchFields> = buildOfferTypesFilter(offerTypes)
   if (offerCategories?.length) facetFilters.push({ [AppSearchFields.category]: offerCategories })
-  if (offerIsDuo) facetFilters.push({ [AppSearchFields.is_duo]: 'true' }) // ok
+  if (offerIsDuo) facetFilters.push({ [AppSearchFields.is_duo]: TRUE })
   if (tags?.length) facetFilters.push({ [AppSearchFields.tags]: tags })
 
   return facetFilters
 }
 
-const DIGITAL = { [AppSearchFields.is_digital]: 'true' }
-const NOT_DIGITAL = { [AppSearchFields.is_digital]: 'false' }
-const EVENT = { [AppSearchFields.is_event]: 'true' }
-const THING = { [AppSearchFields.is_thing]: 'true' }
+const DIGITAL = { [AppSearchFields.is_digital]: TRUE }
+const NOT_DIGITAL = { [AppSearchFields.is_digital]: FALSE }
+const EVENT = { [AppSearchFields.is_event]: TRUE }
+const THING = { [AppSearchFields.is_thing]: TRUE }
 
 const buildOfferTypesFilter = ({
   isDigital,
