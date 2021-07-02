@@ -30,11 +30,7 @@ describe('formatDate()', () => {
 })
 
 let mockStock: OfferStockResponse | undefined = undefined
-let mockOffer = ({
-  id: 1,
-  isDuo: true,
-  canExpire: true,
-} as unknown) as OfferAdaptedResponse
+let mockOffer = ({ id: 1, isDuo: true } as unknown) as OfferAdaptedResponse
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBookingStock: jest.fn(() => mockStock),
   useBookingOffer: jest.fn(() => mockOffer),
@@ -78,67 +74,73 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = false', () 
 })
 
 describe('<CancellationDetails /> when autoActivateDigitalBookings = true and isDigital = true', () => {
-  it.each([null, pastDate, futureDate])(
-    'should not be cancellable when cancellation limit date=%s and has activationCode and canExpire=false',
-    (cancellationLimitDatetime) => {
-      mockStock = {
-        ...notExpiredStock,
-        cancellationLimitDatetime,
-        activationCode: { expirationDate: new Date('2030-02-05T00:00:00Z') },
+  describe('activationCode with expiration date', () => {
+    it.each([null, pastDate, futureDate])(
+      'should not be cancellable when cancellation limit date=%s',
+      (cancellationLimitDatetime) => {
+        mockStock = {
+          ...notExpiredStock,
+          cancellationLimitDatetime,
+          activationCode: { expirationDate: new Date('2030-02-05T00:00:00Z') },
+        }
+        mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+        mockSettings = { autoActivateDigitalBookings: true }
+        const page = render(reactQueryProviderHOC(<CancellationDetails />))
+
+        expectNotCancellable(page)
       }
-      mockOffer = ({
-        ...mockOffer,
-        isDigital: true,
-        canExpire: false,
-      } as unknown) as OfferAdaptedResponse
+    )
+  })
+
+  describe('activationCode with no expiration date', () => {
+    it.each([null, pastDate, futureDate])(
+      'should not be cancellable when cancellation limit date=%s',
+      (cancellationLimitDatetime) => {
+        mockStock = {
+          ...notExpiredStock,
+          cancellationLimitDatetime,
+          activationCode: { expirationDate: null },
+        }
+        mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+        mockSettings = { autoActivateDigitalBookings: true }
+        const page = render(reactQueryProviderHOC(<CancellationDetails />))
+
+        expectNotCancellable(page)
+      }
+    )
+  })
+
+  describe('no activationCode', () => {
+    it('should be cancellable if no cancellation limit date', () => {
+      mockStock = { ...notExpiredStock, cancellationLimitDatetime: null, activationCode: null }
+      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+      mockSettings = { autoActivateDigitalBookings: true }
+      const page = render(reactQueryProviderHOC(<CancellationDetails />))
+
+      expectCancellable(page)
+    })
+
+    it('should not be cancellable if limitDate is past', () => {
+      mockStock = { ...notExpiredStock, cancellationLimitDatetime: pastDate, activationCode: null }
+      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
       mockSettings = { autoActivateDigitalBookings: true }
       const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
       expectNotCancellable(page)
-    }
-  )
+    })
 
-  it('should be cancellable when no activationCode and no cancellation limit', () => {
-    mockStock = { ...notExpiredStock, cancellationLimitDatetime: null, activationCode: null }
-    mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
-    mockSettings = { autoActivateDigitalBookings: true }
-    const page = render(reactQueryProviderHOC(<CancellationDetails />))
+    it('should be cancellable before limitDate if future', () => {
+      mockStock = {
+        ...notExpiredStock,
+        cancellationLimitDatetime: futureDate,
+        activationCode: null,
+      }
+      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+      mockSettings = { autoActivateDigitalBookings: true }
+      const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
-    expectCancellable(page)
-  })
-
-  it('should not be cancellable when activationCode and canExpire=false', () => {
-    mockStock = {
-      ...notExpiredStock,
-      activationCode: { expirationDate: new Date('2030-02-05T00:00:00Z') },
-    }
-    mockOffer = ({
-      ...mockOffer,
-      isDigital: true,
-      canExpire: false,
-    } as unknown) as OfferAdaptedResponse
-    mockSettings = { autoActivateDigitalBookings: true }
-    const page = render(reactQueryProviderHOC(<CancellationDetails />))
-
-    expectNotCancellable(page)
-  })
-
-  it('should not be cancellable if limitDate is past and no activationCode', () => {
-    mockStock = { ...notExpiredStock, cancellationLimitDatetime: pastDate, activationCode: null }
-    mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
-    mockSettings = { autoActivateDigitalBookings: true }
-    const page = render(reactQueryProviderHOC(<CancellationDetails />))
-
-    expectNotCancellable(page)
-  })
-
-  it('should be cancellable before limitDate if future and no activationCode', () => {
-    mockStock = { ...notExpiredStock, cancellationLimitDatetime: futureDate, activationCode: null }
-    mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
-    mockSettings = { autoActivateDigitalBookings: true }
-    const page = render(reactQueryProviderHOC(<CancellationDetails />))
-
-    expectCancellableBefore(page)
+      expectCancellableBefore(page)
+    })
   })
 })
 
