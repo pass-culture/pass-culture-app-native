@@ -1052,12 +1052,6 @@ export interface OfferResponse {
      * @type {boolean}
      * @memberof OfferResponse
      */
-    isActive: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferResponse
-     */
     isDigital: boolean;
     /**
      * 
@@ -1118,7 +1112,7 @@ export interface OfferStockActivationCodeResponse {
      * @type {Date}
      * @memberof OfferStockActivationCodeResponse
      */
-    expirationDate: Date;
+    expirationDate?: Date | null;
 }/**
  * 
  * @export

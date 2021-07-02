@@ -22,7 +22,7 @@ const { width } = Dimensions.get('window')
 
 const ExpirationDate: React.FC<{
   autoActivateDigitalBookings: boolean | undefined
-  expirationDate: Date | undefined
+  expirationDate: Date | undefined | null
 }> = ({ autoActivateDigitalBookings, expirationDate }) => {
   if (!autoActivateDigitalBookings || !expirationDate) return <React.Fragment></React.Fragment>
 
