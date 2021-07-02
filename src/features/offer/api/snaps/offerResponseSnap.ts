@@ -53,7 +53,6 @@ export const offerResponseSnap: OfferResponse = {
     coordinates: { latitude: 20, longitude: 2 },
   },
   withdrawalDetails: 'How to withdraw, https://test.com',
-  canExpire: true,
 }
 
 export const offerAdaptedResponseSnap = {
