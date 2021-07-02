@@ -64,7 +64,6 @@ exports[`Favorites component should render correctly 1`] = `
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
-          "displayName": "Styled(View)",
           "inlineStyle": InlineStyle {
             "rules": Array [
               "height: 2px;",

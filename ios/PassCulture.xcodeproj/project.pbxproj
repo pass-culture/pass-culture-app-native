@@ -22,6 +22,7 @@
 		94D55C9476A7485C9076C139 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F423851ED1194E90940E001F /* Montserrat-Regular.ttf */; };
 		98F5A3B1CBFA4421965B8CA8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */; };
 		CE363314E2974BF48FF6C850 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8881E10DAB84DAA99A29F65 /* Images.xcassets */; };
+		D554C848268F69C300C16018 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554C847268F69C300C16018 /* File.swift */; };
 		DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */; };
 		F4E8C120AED243C7AB108C37 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.ttf"; path = "../assets/fonts/Montserrat/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		D13F61BEEAE54B13ABB83BDB /* Pods-PassCultureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassCultureTests.debug.xcconfig"; path = "Target Support Files/Pods-PassCultureTests/Pods-PassCultureTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D33106CFBBB44FF5B75130D1 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		D554C847268F69C300C16018 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		D9306B1F89B44991A1F9A9F6 /* libPods-PassCultureTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PassCultureTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD221C6CACA34DB9AF0A9DFA /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraBoldItalic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		ED0101357B234447B64D029A /* PassCulture-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PassCulture-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		4A62C898BE944215BF1A5561 = {
 			isa = PBXGroup;
 			children = (
+				D554C847268F69C300C16018 /* File.swift */,
 				6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */,
 				4F80AFA8A04449E4B81411BE /* PassCulture */,
 				2F09B5F584694FA397052BFB /* Libraries */,
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				042C3F171E8246C0835AF4E6 /* AppDelegate.m in Sources */,
+				D554C848268F69C300C16018 /* File.swift in Sources */,
 				7323393B84C441F488A4C363 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
