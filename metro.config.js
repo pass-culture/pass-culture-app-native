@@ -14,7 +14,7 @@ const { readdirSync, lstatSync, readlinkSync, statSync, existsSync, readFileSync
 const { join, resolve, isAbsolute, relative } = require('path')
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const appendExclusions = require('metro-config/src/defaults/blacklist')
+const appendExclusions = require('metro-config/src/defaults/exclusionList')
 
 // Escape function taken from the MDN documentation: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Escaping
 function escapeRegExp(string) {
@@ -79,7 +79,7 @@ module.exports = {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: false,
+        inlineRequires: true,
       },
     }),
   },
