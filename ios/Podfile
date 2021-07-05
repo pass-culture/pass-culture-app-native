@@ -6,8 +6,10 @@ platform :ios, '10.0'
 target 'PassCulture' do
   config = use_native_modules!
 
-  use_react_native!(:path => config["reactNativePath"])
-
+  use_react_native!(
+     :path => config["reactNativePath"],
+     :hermes_enabled => true
+   )
   # Third party deps podspec link, to include if 0.60 autolinking not supported
 
   # Enables Flipper.
