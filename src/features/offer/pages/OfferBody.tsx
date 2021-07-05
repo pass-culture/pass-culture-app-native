@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef } from 'react'
-import { ScrollView } from 'react-native'
+import { Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -27,6 +27,7 @@ import {
   OfferPartialDescription,
 } from '../components'
 import { ReportOfferDescriptionModal } from '../components/ReportOfferDescriptionModal'
+import { ReportOfferReasonModal } from '../components/ReportOfferReasonModal'
 
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 
@@ -39,9 +40,15 @@ export const OfferBody: FunctionComponent<{
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const {
-    visible: isReportOfferModalVisible,
-    showModal: showReportOfferModal,
-    hideModal,
+    visible: isReportOfferDescriptionVisible,
+    showModal: showReportOfferDescription,
+    hideModal: hideReportOfferDescription,
+  } = useModal(false)
+
+  const {
+    visible: isReportOfferReasonVisible,
+    showModal: showReportOfferReason,
+    hideModal: hideReportOfferReason,
   } = useModal(false)
 
   useTrackOfferSeenDuration(offerId)
@@ -56,6 +63,26 @@ export const OfferBody: FunctionComponent<{
   )
   const formattedDate = formatDatePeriod(dates)
   const shouldDisplayWhenBlock = category.categoryType === CategoryType.Event && !!formattedDate
+
+  function onPressReportOffer() {
+    hideReportOfferDescription()
+    // TODO(PC-9487) find a better workaround to show next modal (issue (ios only): https://github.com/react-native-modal/react-native-modal/issues/484)
+    if (Platform.OS === 'ios') {
+      setTimeout(() => showReportOfferReason(), 500)
+    } else {
+      showReportOfferReason()
+    }
+  }
+
+  function goBackToReportDescription() {
+    hideReportOfferReason()
+    // TODO(PC-9487) find a better workaround to show next modal (issue (ios only): https://github.com/react-native-modal/react-native-modal/issues/484)
+    if (Platform.OS === 'ios') {
+      setTimeout(() => showReportOfferDescription(), 500)
+    } else {
+      showReportOfferDescription()
+    }
+  }
 
   return (
     <Container
@@ -141,13 +168,24 @@ export const OfferBody: FunctionComponent<{
               inline
               title={t`Signaler l'offre`}
               icon={() => <Flag size={24} />}
-              onPress={showReportOfferModal}
+              onPress={showReportOfferDescription}
             />
           </SectionBody>
         </Section>
       )}
 
-      <ReportOfferDescriptionModal isVisible={isReportOfferModalVisible} dismissModal={hideModal} />
+      <ReportOfferDescriptionModal
+        isVisible={isReportOfferDescriptionVisible}
+        dismissModal={hideReportOfferDescription}
+        onPressReportOffer={onPressReportOffer}
+      />
+      <ReportOfferReasonModal
+        isVisible={isReportOfferReasonVisible}
+        dismissModal={hideReportOfferReason}
+        onGoBack={goBackToReportDescription}
+        // TODO(PC-9486) redirect to ReportOfferOtherReason
+        onPressOtherReason={() => undefined}
+      />
     </Container>
   )
 }
