@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type SectionRowProps = {
@@ -43,7 +43,12 @@ export function SectionRow(props: SectionRowProps) {
       onPress={props.onPress}
       testID={props.testID ? props.testID : 'section-row-touchable'}>
       <View style={[styles.container, props.style]}>
-        {!!Icon && <Icon />}
+        {!!Icon && (
+          <React.Fragment>
+            <Icon />
+            <Spacer.Row numberOfSpaces={2} />
+          </React.Fragment>
+        )}
         <TitleContainer>{title}</TitleContainer>
         <CTAContainer>
           {props.type == 'navigable' ? (
@@ -67,7 +72,6 @@ const styles = StyleSheet.create({
 
 const TitleContainer = styled.View({
   flex: 1,
-  marginHorizontal: getSpacing(2),
   textAlign: 'left',
 })
 
