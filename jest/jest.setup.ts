@@ -67,7 +67,6 @@ jest.mock('libs/environment', () => ({
     APPS_FLYER_DEV_KEY: 'appsFlyerDevKey',
     APP_SEARCH_KEY: 'appSearchKey',
     APP_SEARCH_ENDPOINT: 'appSearchEndpoint',
-    APP_SEARCH_ENGINE: 'engine',
     CGU_LINK: 'https://passculture.cgu',
     CONTENTFUL_ACCESS_TOKEN: 'accessToken',
     CONTENTFUL_ENVIRONMENT: 'environment',
