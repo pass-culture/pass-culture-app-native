@@ -13,11 +13,13 @@ import { Spacer, Typo } from 'ui/theme'
 interface Props {
   isVisible: boolean
   dismissModal: () => void
+  onPressReportOffer: () => void
 }
 
 export const ReportOfferDescriptionModal: FunctionComponent<Props> = ({
   isVisible,
   dismissModal,
+  onPressReportOffer,
 }) => {
   return (
     <AppModal
@@ -40,7 +42,7 @@ export const ReportOfferDescriptionModal: FunctionComponent<Props> = ({
           text={t`Ton identité restera anonyme auprès des acteurs culturels.`}
         />
         <Spacer.Column numberOfSpaces={13} />
-        <ButtonPrimary title={t`Signaler l'offre`} />
+        <ButtonPrimary title={t`Signaler l'offre`} onPress={onPressReportOffer} />
       </ModalContent>
     </AppModal>
   )
