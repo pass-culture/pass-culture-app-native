@@ -22,7 +22,7 @@ describe('SearchBox component', () => {
   })
   it('should call logSearchQuery on submit', () => {
     const { getByPlaceholderText } = render(<SearchBox />)
-    const searchInput = getByPlaceholderText('Titre, artiste...')
+    const searchInput = getByPlaceholderText('Titre, artiste, lieu...')
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
     expect(analytics.logSearchQuery).toHaveBeenCalledWith('jazzaza')
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SHOW_RESULTS', payload: true })
