@@ -31,6 +31,7 @@ import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { CodeInput } from 'ui/components/inputs/CodeInput'
 import { DateInput, DatePartType } from 'ui/components/inputs/DateInput'
+import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -143,6 +144,7 @@ export const AppComponents: FunctionComponent = () => {
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [_partialDate, setPartialDate] = useState('')
   const [inputText, setInputText] = useState('')
+  const [largeInputText, setLargeInputText] = useState('')
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
   const [radioButtonChoice, setRadioButtonChoice] = useState('')
@@ -611,6 +613,10 @@ export const AppComponents: FunctionComponent = () => {
         </Spacer.Flex>
         <Typo.Caption color={ColorsEnum.BLACK}>{inputText}</Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
+
+        <Typo.Title4 color={ColorsEnum.TERTIARY}>Large input</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <LargeTextInput value={largeInputText} onChangeText={setLargeInputText} maxLength={200} />
       </AccordionItem>
 
       <Divider />
