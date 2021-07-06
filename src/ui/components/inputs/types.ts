@@ -31,6 +31,7 @@ export type RNTextInputProps = Pick<
   | 'selectTextOnFocus'
   | 'textContentType'
   | 'value'
+  | 'multiline'
 > &
   RefAttributes<RNTextInput> & {
     testID?: string
