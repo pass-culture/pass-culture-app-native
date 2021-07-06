@@ -175,7 +175,7 @@ jobs:
       - setup_android_google_services_config
       - run:
           name: Build Android App for production environment
-          command: bundle exec fastlane android build --env production --verbose
+          command: ./scripts/check_diff && bundle exec fastlane android build --env production --verbose
 
   build-ios-production-hard:
     macos:
@@ -198,8 +198,10 @@ jobs:
           name: Build IOS App for production environment
           no_output_timeout: 30m
           command: |
-            bundle exec fastlane ios download_certificates --env production
-            bundle exec fastlane ios build --env production --verbose
+            if ./scripts/check_diff; then
+              bundle exec fastlane ios download_certificates --env production
+              bundle exec fastlane ios build --env production --verbose
+            fi
 
   deploy-android-testing-hard:
     docker:
