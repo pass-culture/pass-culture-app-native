@@ -15,6 +15,7 @@ exports[`<BaseTextInput /> should render correctly 1`] = `
         "flexShrink": 1,
         "fontFamily": "Montserrat-Regular",
         "fontSize": 15,
+        "height": "100%",
         "paddingBottom": 0,
         "paddingLeft": 0,
         "paddingRight": 0,

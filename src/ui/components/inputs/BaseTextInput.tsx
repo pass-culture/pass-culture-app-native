@@ -72,4 +72,5 @@ const StyledTextInput = styled(RNTextInput).attrs({
   color: ColorsEnum.BLACK,
   fontFamily: 'Montserrat-Regular',
   fontSize: getSpacing(3.75),
+  height: '100%',
 })
