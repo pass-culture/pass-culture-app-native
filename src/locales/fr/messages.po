@@ -1255,8 +1255,8 @@ msgid "Terminer ma réservation"
 msgstr "Terminer ma réservation"
 
 #: src/features/search/components/SearchBox.tsx
-msgid "Titre, artiste..."
-msgstr "Titre, artiste..."
+msgid "Titre, artiste, lieu..."
+msgstr "Titre, artiste, lieu..."
 
 #: src/features/auth/signup/SetBirthday.tsx
 msgid "Ton anniversaire"
