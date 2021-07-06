@@ -5,7 +5,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -281,10 +281,11 @@
+@@ -282,10 +282,11 @@
                       },
                     ]
                   }
@@ -17,7 +17,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
             </View>
             <View
               numberOfSpaces={6}
-@@ -394,10 +395,11 @@
+@@ -396,10 +397,11 @@
                       },
                     ]
                   }
@@ -29,7 +29,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -496,22 +498,22 @@
+@@ -498,22 +500,22 @@
               }
             />
             <View
@@ -54,7 +54,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -530,20 +532,20 @@
+@@ -532,20 +534,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -165,7 +165,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -332,18 +381,18 @@
+@@ -333,18 +382,18 @@
                     },
                   ]
                 }
@@ -274,7 +274,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -332,18 +381,18 @@
+@@ -333,18 +382,18 @@
                     },
                   ]
                 }
@@ -383,7 +383,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -332,18 +381,18 @@
+@@ -333,18 +382,18 @@
                     },
                   ]
                 }
