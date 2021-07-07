@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import Profiling from '@pass-culture/react-native-profiling'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
@@ -6,6 +7,7 @@ import React, { useCallback, FC, useState, useMemo } from 'react'
 import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
+import { api } from 'api/api'
 import { ApiError, extractApiErrorMessage } from 'api/helpers'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
@@ -13,6 +15,8 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { currentTimestamp } from 'libs/dates'
+import { env } from 'libs/environment'
+import { errorMonitoring } from 'libs/errorMonitoring'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -102,6 +106,22 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
   )
 
   function onValidateSuccess() {
+    try {
+      Profiling.profileDevice(env.TMX_ORGID, env.TMX_FPSERVER, (sessionId) => {
+        if (!sessionId) {
+          errorMonitoring.captureException(new Error('TMX sessionId is null'))
+          return
+        }
+        api
+          .postnativev1userProfiling({
+            session_id: sessionId,
+          })
+          .catch(errorMonitoring.captureException)
+      })
+    } catch (err) {
+      errorMonitoring.captureException(err)
+    }
+
     navigateToNextBeneficiaryValidationStep()
   }
 

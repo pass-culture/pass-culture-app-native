@@ -30,6 +30,7 @@ module.exports = {
       '|@sentry/react-native' +
       '|react-native-geolocation-service' +
       '|@pass-culture/id-check' +
+      '|@pass-culture/react-native-profiling' +
       '/(?!(lib)))',
   ],
   testRegex: '(?<!\.web)\.(?:test|spec)\.(?:tsx?|js)$',

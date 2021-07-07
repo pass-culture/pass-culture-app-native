@@ -93,6 +93,8 @@ jest.mock('libs/environment', () => ({
     UNIVERSAL_LINK: 'app.passculture-testing.beta.gouv.fr',
     FIREBASE_DYNAMIC_LINK: 'passcultureapptesting.page.link',
     URL_PREFIX: 'passculture',
+    TMX_FPSERVER: 'test.pc',
+    TMX_ORGID: 'xyzt',
   },
 }))
 

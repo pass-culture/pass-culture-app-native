@@ -47,6 +47,8 @@ export interface Environment {
   URL_PREFIX: string
   WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string
+  TMX_FPSERVER: string
+  TMX_ORGID: string
 }
 
 export const env = parseBooleanVariables(Config) as Environment
