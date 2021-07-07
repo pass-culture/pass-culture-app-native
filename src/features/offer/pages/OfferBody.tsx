@@ -53,10 +53,18 @@ export const OfferBody: FunctionComponent<{
     hideModal: hideReportReason,
   } = useModal(false)
 
+  const {
+    visible: isReportOtherReasonVisible,
+    showModal: showReportOtherReason,
+    hideModal: hideReportOtherReason,
+  } = useModal(false)
+
   useTrackOfferSeenDuration(offerId)
 
   const navigateToReportReason = useModalNavigation(hideReportDescription, showReportReason)
   const goBackToReportDescription = useModalNavigation(hideReportReason, showReportDescription)
+  const navigateToReportOtherReason = useModalNavigation(hideReportReason, showReportOtherReason)
+  const goBackToReportReason = useModalNavigation(hideReportOtherReason, showReportReason)
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
@@ -168,8 +176,12 @@ export const OfferBody: FunctionComponent<{
         isVisible={isReportReasonVisible}
         dismissModal={hideReportReason}
         onGoBack={goBackToReportDescription}
-        // TODO(PC-9486) redirect to ReportOfferOtherReason
-        onPressOtherReason={() => undefined}
+        onPressOtherReason={navigateToReportOtherReason}
+      />
+      <ReportOfferOtherReasonModal
+        isVisible={isReportOtherReasonVisible}
+        dismissModal={hideReportOtherReason}
+        onGoBack={goBackToReportReason}
       />
     </Container>
   )
