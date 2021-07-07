@@ -8,6 +8,9 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { OfferHero } from 'features/offer/components/OfferHero'
+import { ReportOfferDescriptionModal } from 'features/offer/components/ReportOfferDescriptionModal'
+import { ReportOfferOtherReasonModal } from 'features/offer/components/ReportOfferOtherReasonModal'
+import { ReportOfferReasonModal } from 'features/offer/components/ReportOfferReasonModal'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -27,8 +30,6 @@ import {
   AccessibilityBlock,
   OfferPartialDescription,
 } from '../components'
-import { ReportOfferDescriptionModal } from '../components/ReportOfferDescriptionModal'
-import { ReportOfferReasonModal } from '../components/ReportOfferReasonModal'
 
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 
@@ -41,26 +42,21 @@ export const OfferBody: FunctionComponent<{
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const {
-    visible: isReportOfferDescriptionVisible,
-    showModal: showReportOfferDescription,
-    hideModal: hideReportOfferDescription,
+    visible: isReportDescriptionVisible,
+    showModal: showReportDescription,
+    hideModal: hideReportDescription,
   } = useModal(false)
 
   const {
-    visible: isReportOfferReasonVisible,
-    showModal: showReportOfferReason,
-    hideModal: hideReportOfferReason,
+    visible: isReportReasonVisible,
+    showModal: showReportReason,
+    hideModal: hideReportReason,
   } = useModal(false)
 
   useTrackOfferSeenDuration(offerId)
-  const navigateToReportReason = useModalNavigation(
-    hideReportOfferDescription,
-    showReportOfferReason
-  )
-  const navigateToReportDescription = useModalNavigation(
-    hideReportOfferReason,
-    showReportOfferDescription
-  )
+
+  const navigateToReportReason = useModalNavigation(hideReportDescription, showReportReason)
+  const goBackToReportDescription = useModalNavigation(hideReportReason, showReportDescription)
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
@@ -157,21 +153,21 @@ export const OfferBody: FunctionComponent<{
               inline
               title={t`Signaler l'offre`}
               icon={() => <Flag size={24} />}
-              onPress={showReportOfferDescription}
+              onPress={showReportDescription}
             />
           </SectionBody>
         </Section>
       )}
 
       <ReportOfferDescriptionModal
-        isVisible={isReportOfferDescriptionVisible}
-        dismissModal={hideReportOfferDescription}
+        isVisible={isReportDescriptionVisible}
+        dismissModal={hideReportDescription}
         onPressReportOffer={navigateToReportReason}
       />
       <ReportOfferReasonModal
-        isVisible={isReportOfferReasonVisible}
-        dismissModal={hideReportOfferReason}
-        onGoBack={navigateToReportDescription}
+        isVisible={isReportReasonVisible}
+        dismissModal={hideReportReason}
+        onGoBack={goBackToReportDescription}
         // TODO(PC-9486) redirect to ReportOfferOtherReason
         onPressOtherReason={() => undefined}
       />
