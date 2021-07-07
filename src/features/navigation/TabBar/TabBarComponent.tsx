@@ -29,11 +29,12 @@ export const TabBarComponent: React.FC<TabComponentInterface> = (props) => {
         />
       )}
       <Spacer.Flex />
-      {props.bicolorIcon({
-        color: props.isSelected ? undefined : ColorsEnum.GREY_DARK,
-        size: getSpacing(11),
-        thin: !props.isSelected,
-      })}
+      {props.bicolorIcon &&
+        props.bicolorIcon({
+          color: props.isSelected ? undefined : ColorsEnum.GREY_DARK,
+          size: getSpacing(11),
+          thin: !props.isSelected,
+        })}
       <Spacer.Flex />
       {!!props.isSelected && <BicolorSelectorPlaceholder />}
     </TabComponentContainer>
