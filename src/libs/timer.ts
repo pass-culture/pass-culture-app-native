@@ -19,7 +19,7 @@ export function useTimer(
     }
 
     // launch timer
-    timerIdRef.current = setInterval(() => {
+    timerIdRef.current = global.setInterval(() => {
       const newElapsedTime = currentTimestamp() - (startTime ?? 0)
 
       // stop timer conditionally

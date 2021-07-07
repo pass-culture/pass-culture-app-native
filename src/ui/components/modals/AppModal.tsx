@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { ScrollView, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { ScrollView, TouchableOpacity, View } from 'react-native'
 import RNModal from 'react-native-modal'
 import styled from 'styled-components/native'
 
@@ -23,7 +23,6 @@ interface Props extends ModalStyles {
   isScrollable?: boolean
   disableBackdropTap?: boolean
   shouldDisplayOverlay?: boolean
-  style?: ViewStyle
   onBackdropPress?: () => void
 }
 
@@ -33,7 +32,6 @@ export const AppModal: FunctionComponent<Props> = ({
   height,
   maxWidth,
   layout,
-  style,
   title,
   visible,
   leftIcon,
@@ -82,7 +80,7 @@ export const AppModal: FunctionComponent<Props> = ({
         backdropColor={UniqueColors.GREY_OVERLAY}
         isVisible={visible}
         onBackdropPress={handleOnBackdropPress()}
-        style={[styles.container, styles.topOffset, style]}
+        style={[styles.container, styles.topOffset]}
         testID="modal">
         <ClicAwayArea
           activeOpacity={1}
