@@ -101,18 +101,6 @@ const App: FunctionComponent = function () {
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
                           <IdCheckContextProvider
-                            cameraOptions={{
-                              mediaType: 'photo',
-                              maxWidth: 3000,
-                              maxHeight: 3000,
-                              quality: 0.7,
-                            }}
-                            imageLibraryOptions={{
-                              mediaType: 'photo',
-                              maxWidth: 3000,
-                              maxHeight: 3000,
-                              quality: 0.7,
-                            }}
                             apiBaseUrl={env.ID_CHECK_API_URL}
                             supportEmail={env.SUPPORT_EMAIL_ADDRESS}
                             dsmUrl={env.DSM_URL}
