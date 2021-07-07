@@ -145,11 +145,16 @@ jobs:
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_TESTING
+            export BATCH_API_KEY_ANDROID=$BATCH_API_KEY_ANDROID_TESTING
+            export CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_TESTING
+            export ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_TESTING
+            export APP_SEARCH_KEY=$APP_SEARCH_KEY_TESTING
             ./scripts/deploy.sh -o android -t soft -e testing
       - run:
           name: Deploy IOS App for testing environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
+            export BATCH_API_KEY_IOS=$BATCH_API_KEY_IOS_TESTING
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
             ./scripts/deploy.sh -o ios -t soft -e testing
 
@@ -165,6 +170,10 @@ jobs:
       - run:
           name: Setup production keystore for production environment
           command: |
+            export BATCH_API_KEY_ANDROID=$BATCH_API_KEY_ANDROID_PRODUCTION
+            export CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_PRODUCTION
+            export ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_PRODUCTION
+            export APP_SEARCH_KEY=$APP_SEARCH_KEY_PRODUCTION
             mkdir -p android/keystores
             echo $ANDROID_KEYSTORE_PRODUCTION | base64 -di > android/keystores/production.keystore
             echo "keyAlias=android-app" >> android/keystores/production.keystore.properties
@@ -198,6 +207,10 @@ jobs:
           name: Build IOS App for production environment
           no_output_timeout: 30m
           command: |
+            export BATCH_API_KEY_IOS=$BATCH_API_KEY_IOS_PRODUCTION
+            export CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_PRODUCTION
+            export ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_PRODUCTION
+            export APP_SEARCH_KEY=$APP_SEARCH_KEY_PRODUCTION
             bundle exec fastlane ios download_certificates --env production
             bundle exec fastlane ios build --env production --verbose
 
@@ -224,6 +237,10 @@ jobs:
           name: Deploy Android App for testing environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
+            export BATCH_API_KEY_ANDROID=$BATCH_API_KEY_ANDROID_TESTING
+            export CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_TESTING
+            export ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_TESTING
+            export APP_SEARCH_KEY=$APP_SEARCH_KEY_TESTING
             ./scripts/deploy.sh -o android -t hard -e testing
 
   deploy-ios-testing-hard:
@@ -248,6 +265,10 @@ jobs:
           no_output_timeout: 30m
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
+            export BATCH_API_KEY_IOS=$BATCH_API_KEY_IOS_TESTING
+            export CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_TESTING
+            export ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_TESTING
+            export APP_SEARCH_KEY=$APP_SEARCH_KEY_TESTING
             ./scripts/deploy.sh -o ios -t hard -e testing
 
   deploy-ios-staging-hard:
@@ -272,6 +293,10 @@ jobs:
           no_output_timeout: 30m
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
+            export BATCH_API_KEY_IOS=$BATCH_API_KEY_IOS_STAGING
+            export CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_STAGING
+            export ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_STAGING
+            export APP_SEARCH_KEY=$APP_SEARCH_KEY_STAGING
             ./scripts/deploy.sh -o ios -t hard -e staging
 
   deploy-android-staging-hard:
@@ -297,6 +322,10 @@ jobs:
           name: Deploy Android App for staging environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
+            export BATCH_API_KEY_ANDROID=$BATCH_API_KEY_ANDROID_STAGING
+            export CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_STAGING
+            export ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_STAGING
+            export APP_SEARCH_KEY=$APP_SEARCH_KEY_STAGING
             ./scripts/deploy.sh -o android -t hard -e staging
 
   deploy-soft-staging:
@@ -312,11 +341,16 @@ jobs:
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_STAGING
+            export BATCH_API_KEY_ANDROID=$BATCH_API_KEY_ANDROID_STAGING
+            export CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_STAGING
+            export ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_STAGING
+            export APP_SEARCH_KEY=$APP_SEARCH_KEY_STAGING
             ./scripts/deploy.sh -o android -t soft -e staging
       - run:
           name: Deploy IOS Code push for staging environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
+            export BATCH_API_KEY_IOS=$BATCH_API_KEY_IOS_STAGING
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_STAGING
             ./scripts/deploy.sh -o ios -t soft -e staging
       - notify-release
@@ -382,11 +416,16 @@ jobs:
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_PRODUCTION_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_PRODUCTION
+            export BATCH_API_KEY_ANDROID=$BATCH_API_KEY_ANDROID_PRODUCTION
+            export CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_PRODUCTION
+            export ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_PRODUCTION
+            export APP_SEARCH_KEY=$APP_SEARCH_KEY_PRODUCTION
             ./scripts/deploy.sh -o android -t soft -e production
       - run:
           name: Deploy IOS Code push for production environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_PRODUCTION_APPCENTER_API_TOKEN
+            export BATCH_API_KEY_IOS=$BATCH_API_KEY_IOS_PRODUCTION
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_PRODUCTION
             ./scripts/deploy.sh -o ios -t soft -e production
       - notify-release
