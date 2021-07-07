@@ -68,11 +68,6 @@ describe('TabBar', () => {
     expect(tabsTestIds).toEqual(expectedTabsTestIds)
   })
 
-  it('should NOT display InitialRoutingScreen tab', () => {
-    const tabBar = renderTabBar()
-    expect(tabBar.queryByTestId('InitialRoutingScreen tab')).toBeFalsy()
-  })
-
   it('displays only one selected at a time', () => {
     const tabBar = renderTabBar()
     expect(tabBar.queryAllByTestId(/selected/)).toHaveLength(1)
