@@ -42,7 +42,8 @@ export const ReportOfferReasonModal: FunctionComponent<Props> = (props) => {
       rightIcon={Close}
       onRightIconPress={props.dismissModal}
       leftIcon={ArrowPrevious}
-      onLeftIconPress={props.onGoBack}>
+      onLeftIconPress={props.onGoBack}
+      onBackdropPress={props.dismissModal}>
       <ModalContent>
         <Spacer.Column numberOfSpaces={3} />
         <RadioButton choices={REASONS_FOR_REPORTING} onSelect={setSelectedReason} />

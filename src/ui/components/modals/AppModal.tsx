@@ -24,6 +24,7 @@ interface Props extends ModalStyles {
   disableBackdropTap?: boolean
   shouldDisplayOverlay?: boolean
   style?: ViewStyle
+  onBackdropPress?: () => void
 }
 
 const webcss = `div[aria-modal="true"] { align-items: center }`
@@ -44,6 +45,7 @@ export const AppModal: FunctionComponent<Props> = ({
   isScrollable = false,
   disableBackdropTap,
   shouldDisplayOverlay = true,
+  onBackdropPress,
 }) => {
   const styles = useModalStyles({
     layout: layout || 'bottom',
@@ -63,6 +65,13 @@ export const AppModal: FunctionComponent<Props> = ({
     },
   })
 
+  function handleOnBackdropPress() {
+    if (disableBackdropTap) {
+      return undefined
+    }
+    return onBackdropPress ?? onLeftIconPress ?? onRightIconPress
+  }
+
   return (
     <React.Fragment>
       <Style>{webcss}</Style>
@@ -72,7 +81,7 @@ export const AppModal: FunctionComponent<Props> = ({
         hasBackdrop={shouldDisplayOverlay}
         backdropColor={UniqueColors.GREY_OVERLAY}
         isVisible={visible}
-        onBackdropPress={disableBackdropTap ? undefined : onLeftIconPress ?? onRightIconPress}
+        onBackdropPress={handleOnBackdropPress()}
         style={[styles.container, styles.topOffset, style]}
         testID="modal">
         <ClicAwayArea
