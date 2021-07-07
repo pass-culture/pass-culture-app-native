@@ -16,9 +16,7 @@ import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 import { TabBarComponent } from './TabBarComponent'
 import { TabRouteName, TabParamList } from './types'
 
-const mapRouteToIcon = (
-  route: Exclude<TabRouteName, 'InitialRoutingScreen'>
-): ((props: BicolorIconInterface) => React.ReactNode) => {
+function mapRouteToIcon(route: TabRouteName): (props: BicolorIconInterface) => React.ReactNode {
   switch (route) {
     case 'Home':
       return BicolorLogo
@@ -32,6 +30,7 @@ const mapRouteToIcon = (
       return BicolorProfile
   }
 }
+
 export const TabBar: React.FC<Pick<
   BottomTabBarProps<BottomTabBarOptions>,
   'state' | 'navigation'
@@ -43,13 +42,9 @@ export const TabBar: React.FC<Pick<
       <RowContainer>
         <Spacer.Row numberOfSpaces={4} />
         {routes.map((route, index) => {
-          if (route.name === 'InitialRoutingScreen') {
-            return null
-          }
           const isSelected = state.index === index
           const onPress = () => {
             if (isSelected) return
-
             const event = navigation.emit({
               type: 'tabPress',
               target: route.key,

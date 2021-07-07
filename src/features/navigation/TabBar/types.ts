@@ -5,7 +5,6 @@ import { SearchParameters } from 'features/search/types'
 export type TabRouteName = keyof TabParamList
 
 export type TabParamList = {
-  InitialRoutingScreen: undefined
   Home: { entryId: string } | undefined
   Search: { parameters: SearchParameters | null } | undefined
   Bookings: undefined
