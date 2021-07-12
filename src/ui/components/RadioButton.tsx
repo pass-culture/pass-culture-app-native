@@ -1,51 +1,38 @@
 import React from 'react'
-import { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-interface RadioButtonItem {
+interface RadioButtonProps {
   id: string
   title: string
-  subtitle?: string
-}
-
-interface RadioButtonProps {
-  choices: RadioButtonItem[]
+  description?: string
   onSelect: (value: string) => void
+  selectedValue: string
 }
 
 export function RadioButton(props: RadioButtonProps) {
-  const [selectedValue, setSelectedValue] = useState('')
-
   function onSelect(value: string) {
-    setSelectedValue(value)
     props.onSelect(value)
   }
 
   return (
     <React.Fragment>
-      {props.choices.map((choice, index) => {
-        return (
-          <React.Fragment key={index}>
-            <PressableContainer
-              key={choice.id}
-              onPress={() => onSelect(choice.id)}
-              testID={`radio-button-${index}`}>
-              <TitleContainer>
-                <Title color={selectedValue === choice.id ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
-                  {choice.title}
-                </Title>
-                {!!choice.subtitle && <Subtitle>{choice.subtitle}</Subtitle>}
-              </TitleContainer>
+      <PressableContainer
+        key={props.id}
+        onPress={() => onSelect(props.id)}
+        testID={`radio-button-${props.id}`}>
+        <TitleContainer>
+          <Title color={props.selectedValue === props.id ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
+            {props.title}
+          </Title>
+          {!!props.description && <Subtitle>{props.description}</Subtitle>}
+        </TitleContainer>
 
-              {selectedValue === choice.id && <Validate color={ColorsEnum.PRIMARY} />}
-            </PressableContainer>
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
-        )
-      })}
+        {props.selectedValue === props.id && <Validate color={ColorsEnum.PRIMARY} />}
+      </PressableContainer>
+      <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
 }
