@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
@@ -8,44 +7,40 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 interface RadioButtonItem {
   id: string
   title: string
-  subtitle?: string
+  description?: string
 }
 
 interface RadioButtonProps {
-  choices: RadioButtonItem[]
+  choices: RadioButtonItem
   onSelect: (value: string) => void
+  selectedValue: string
 }
 
 export function RadioButton(props: RadioButtonProps) {
-  const [selectedValue, setSelectedValue] = useState('')
-
   function onSelect(value: string) {
-    setSelectedValue(value)
     props.onSelect(value)
   }
 
   return (
     <React.Fragment>
-      {props.choices.map((choice, index) => {
-        return (
-          <React.Fragment key={index}>
-            <PressableContainer
-              key={choice.id}
-              onPress={() => onSelect(choice.id)}
-              testID={`radio-button-${index}`}>
-              <TitleContainer>
-                <Title color={selectedValue === choice.id ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
-                  {choice.title}
-                </Title>
-                {!!choice.subtitle && <Subtitle>{choice.subtitle}</Subtitle>}
-              </TitleContainer>
+      <PressableContainer
+        key={props.choices.id}
+        onPress={() => onSelect(props.choices.id)}
+        // testID={`radio-button-${index}`}
+      >
+        <TitleContainer>
+          <Title
+            color={
+              props.selectedValue === props.choices.id ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
+            }>
+            {props.choices.title}
+          </Title>
+          {!!props.choices.description && <Subtitle>{props.choices.description}</Subtitle>}
+        </TitleContainer>
 
-              {selectedValue === choice.id && <Validate color={ColorsEnum.PRIMARY} />}
-            </PressableContainer>
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
-        )
-      })}
+        {props.selectedValue === props.choices.id && <Validate color={ColorsEnum.PRIMARY} />}
+      </PressableContainer>
+      <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
 }

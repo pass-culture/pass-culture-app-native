@@ -187,7 +187,7 @@ export const OfferBody: FunctionComponent<{
         onPressReportOffer={navigateToReportReason}
       />
       <ReportOfferReasonModal
-        isVisible={isReportReasonVisible}
+        isVisible={true}
         dismissModal={hideReportReason}
         onGoBack={goBackToReportDescription}
         onPressOtherReason={navigateToReportOtherReason}
