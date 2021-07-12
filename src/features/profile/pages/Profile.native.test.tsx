@@ -8,7 +8,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers'
-import { Tab } from 'features/navigation/TabBar/TabNavigator'
+import { Navigator, Screen } from 'features/navigation/TabBar/TabNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { GeolocPermissionState } from 'libs/geolocation'
@@ -294,9 +294,9 @@ async function renderProfile(options: Options = defaultOptions) {
   const { wrapper } = { ...defaultOptions, ...options }
   const renderAPI = render(
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Profile">
-        <Tab.Screen name="Profile" component={Profile} />
-      </Tab.Navigator>
+      <Navigator initialRouteName="Profile">
+        <Screen name="Profile" component={Profile} />
+      </Navigator>
     </NavigationContainer>,
     { wrapper }
   )

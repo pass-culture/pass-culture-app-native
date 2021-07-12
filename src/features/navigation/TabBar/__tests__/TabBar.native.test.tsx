@@ -5,8 +5,8 @@ import React from 'react'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
+import { routes as tabBarRoutes } from '../routes'
 import { TabBar } from '../TabBar'
-import { tabBarRoutes } from '../TabNavigator'
 
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),

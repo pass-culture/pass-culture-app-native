@@ -1,5 +1,5 @@
 import { IdCheckRoute, IdCheckRootStackParamList } from '@pass-culture/id-check'
-import { RouteProp } from '@react-navigation/native'
+import { LinkingOptions, RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { StackNavigationOptions } from '@react-navigation/stack/lib/typescript/src/types'
 import { ComponentType } from 'react'
@@ -145,4 +145,5 @@ export type RouteParams<
  */
 export interface Route extends IdCheckRoute<StackNavigationOptions, RootStackParamList> {
   hoc?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
+  linking?: Partial<LinkingOptions>
 }
