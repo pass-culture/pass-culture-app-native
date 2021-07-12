@@ -175,7 +175,10 @@ jobs:
       - setup_android_google_services_config
       - run:
           name: Build Android App for production environment
-          command: ./scripts/check_diff.sh && bundle exec fastlane android build --env production --verbose
+          command: |
+            if ./scripts/check_diff.sh; then
+              bundle exec fastlane android build --env production --verbose
+            fi
 
   build-ios-production-hard:
     macos:
