@@ -47,6 +47,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
   name: offer.name || '',
   isDigital: false,
   isExpired: false,
+  isEducational: false,
   isReleased: false,
   isSoldOut: false,
   id: offer.offerId,

@@ -171,6 +171,12 @@ export interface BeneficiaryInformationUpdateRequest {
      * @type {string}
      * @memberof BeneficiaryInformationUpdateRequest
      */
+    phone?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof BeneficiaryInformationUpdateRequest
+     */
     postalCode: string;
 }/**
  * An enumeration.
@@ -1106,6 +1112,12 @@ export interface OfferResponse {
      * @type {boolean}
      * @memberof OfferResponse
      */
+    isEducational: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferResponse
+     */
     isExpired: boolean;
     /**
      * 
@@ -1294,6 +1306,16 @@ export interface PaginatedFavoritesResponse {
      */
     page: number;
 }/**
+ * Describe possible reason codes to used when reporting an offer.  The whole meta part is only consumed by the api client, it has no meaning inside the whole API code.  Note: when adding a new enum symbol, do not forget to update the meta method.
+ * @export
+ * @enum {string}
+ */
+export enum Reason {
+    IMPROPER = 'IMPROPER',
+    PRICETOOHIGH = 'PRICE_TOO_HIGH',
+    INAPPROPRIATE = 'INAPPROPRIATE',
+    OTHER = 'OTHER'
+}/**
  * 
  * @export
  * @interface ReasonMeta
@@ -1323,6 +1345,42 @@ export interface RefreshResponse {
      * @memberof RefreshResponse
      */
     accessToken: string;
+}/**
+ * 
+ * @export
+ * @interface ReportedOffer
+ */
+export interface ReportedOffer {
+    /**
+     * 
+     * @type {number}
+     * @memberof ReportedOffer
+     */
+    id: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReportedOffer
+     */
+    offerId: number;
+    /**
+     * 
+     * @type {Reason}
+     * @memberof ReportedOffer
+     */
+    reason: Reason;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ReportedOffer
+     */
+    reportedAt: Date;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReportedOffer
+     */
+    userId: number;
 }/**
  * 
  * @export
@@ -1654,6 +1712,18 @@ export interface UserProfilingFraudRequest {
      */
     session_id: string;
 }/**
+ * 
+ * @export
+ * @interface UserReportedOffersResponse
+ */
+export interface UserReportedOffersResponse {
+    /**
+     * 
+     * @type {Array<ReportedOffer>}
+     * @memberof UserReportedOffersResponse
+     */
+    reportedOffers: Array<ReportedOffer>;
+}/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1662,7 +1732,8 @@ export enum UserRole {
     ADMIN = 'ADMIN',
     BENEFICIARY = 'BENEFICIARY',
     INSTITUTIONALPROJECTREDACTOR = 'INSTITUTIONAL_PROJECT_REDACTOR',
-    PRO = 'PRO'
+    PRO = 'PRO',
+    JOUVE = 'JOUVE'
 }/**
  * 
  * @export
@@ -1885,6 +1956,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          */
         async getnativev1offerreportreasons(options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/offer/report/reasons`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary user_reported_offers <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1offersreports(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/offers/reports`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
@@ -2665,6 +2758,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary user_reported_offers <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1offersreports(basePath: string, options?: any): Promise<UserReportedOffersResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1offersreports(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary get_settings <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3071,6 +3175,17 @@ export class DefaultApi extends BaseAPI {
     public async getnativev1offerreportreasons(options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.getnativev1offerreportreasons(this.basePath, options)
+    }
+    /**
+     * 
+     * @summary user_reported_offers <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1offersreports(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1offersreports(this.basePath, options)
     }
     /**
      * 

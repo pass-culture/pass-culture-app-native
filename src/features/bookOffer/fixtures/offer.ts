@@ -30,6 +30,7 @@ export const mockOffer: OfferAdaptedResponse = {
   isSoldOut: false,
   isDigital: false,
   isDuo: true,
+  isEducational: false,
   name: 'Je ne sais pas ce que je dis',
   category: {
     categoryType: CategoryType.Event,
@@ -121,6 +122,7 @@ export const mockDigitalOffer: OfferAdaptedResponse = {
   isSoldOut: false,
   isDigital: true,
   isDuo: true,
+  isEducational: false,
   name: 'Je ne sais pas ce que je dis',
   category: {
     categoryType: CategoryType.Thing,

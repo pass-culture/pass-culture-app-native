@@ -14,6 +14,7 @@ export const offerResponseSnap: OfferResponse = {
   expenseDomains: [ExpenseDomain.All],
   isDigital: false,
   isDuo: true,
+  isEducational: false,
   name: 'Sous les étoiles de Paris - VF',
   category: { label: 'Cinéma', categoryType: CategoryType.Event, name: CategoryNameEnum.CINEMA },
   isReleased: true,
