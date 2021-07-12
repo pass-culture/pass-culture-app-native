@@ -658,11 +658,11 @@ export const AppComponents: FunctionComponent = () => {
 
       <AccordionItem title="Radio button">
         <RadioButton
-          choices={[
-            { id: '1', title: 'item 1', subtitle: 'description 1' },
-            { id: '2', title: 'item 2', subtitle: 'description 2' },
-          ]}
+          id="1"
+          title="item 1"
+          description="description 1"
           onSelect={setRadioButtonChoice}
+          selectedValue={radioButtonChoice}
         />
         <Typo.Caption>{`Selected : ${radioButtonChoice}`}</Typo.Caption>
       </AccordionItem>

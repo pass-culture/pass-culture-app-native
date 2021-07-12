@@ -2605,7 +2605,7 @@ cette offre ?
                                           "width": "100%",
                                         }
                                       }
-                                      testID="radio-button-0"
+                                      testID="radio-button-IMPROPER"
                                     >
                                       <View
                                         style={
@@ -2646,7 +2646,7 @@ cette offre ?
                                             ]
                                           }
                                         >
-                                          (La date ne correspond pas, mauvaise description…)
+                                          La date ne correspond pas, mauvaise description...
                                         </Text>
                                       </View>
                                     </View>
@@ -2679,81 +2679,7 @@ cette offre ?
                                           "width": "100%",
                                         }
                                       }
-                                      testID="radio-button-1"
-                                    >
-                                      <View
-                                        style={
-                                          Array [
-                                            Object {
-                                              "flexBasis": 0,
-                                              "flexDirection": "column",
-                                              "flexGrow": 0.9,
-                                              "flexShrink": 1,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        <Text
-                                          color="#151515"
-                                          style={
-                                            Array [
-                                              Object {
-                                                "color": "#151515",
-                                                "fontFamily": "Montserrat-Bold",
-                                                "fontSize": 15,
-                                                "lineHeight": 20,
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          Le tarif est trop élevé
-                                        </Text>
-                                        <Text
-                                          style={
-                                            Array [
-                                              Object {
-                                                "color": "#626262",
-                                                "fontFamily": "Montserrat-SemiBold",
-                                                "fontSize": 12,
-                                                "lineHeight": 16,
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          (comparé à l’offre public)
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <View
-                                      numberOfSpaces={6}
-                                      style={
-                                        Array [
-                                          Object {
-                                            "height": 24,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                    <View
-                                      accessible={true}
-                                      focusable={true}
-                                      onClick={[Function]}
-                                      onResponderGrant={[Function]}
-                                      onResponderMove={[Function]}
-                                      onResponderRelease={[Function]}
-                                      onResponderTerminate={[Function]}
-                                      onResponderTerminationRequest={[Function]}
-                                      onStartShouldSetResponder={[Function]}
-                                      style={
-                                        Object {
-                                          "alignItems": "center",
-                                          "flexDirection": "row",
-                                          "justifyContent": "space-between",
-                                          "opacity": 1,
-                                          "width": "100%",
-                                        }
-                                      }
-                                      testID="radio-button-2"
+                                      testID="radio-button-INAPPROPRIATE"
                                     >
                                       <View
                                         style={
@@ -2794,7 +2720,7 @@ cette offre ?
                                             ]
                                           }
                                         >
-                                          (violence, incitation à la haine, nudité...)
+                                          violence, incitation à la haine, nudité...
                                         </Text>
                                       </View>
                                     </View>
@@ -2886,6 +2812,80 @@ cette offre ?
                                         </View>
                                       </View>
                                     </View>
+                                    <View
+                                      accessible={true}
+                                      focusable={true}
+                                      onClick={[Function]}
+                                      onResponderGrant={[Function]}
+                                      onResponderMove={[Function]}
+                                      onResponderRelease={[Function]}
+                                      onResponderTerminate={[Function]}
+                                      onResponderTerminationRequest={[Function]}
+                                      onStartShouldSetResponder={[Function]}
+                                      style={
+                                        Object {
+                                          "alignItems": "center",
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-between",
+                                          "opacity": 1,
+                                          "width": "100%",
+                                        }
+                                      }
+                                      testID="radio-button-PRICE_TOO_HIGH"
+                                    >
+                                      <View
+                                        style={
+                                          Array [
+                                            Object {
+                                              "flexBasis": 0,
+                                              "flexDirection": "column",
+                                              "flexGrow": 0.9,
+                                              "flexShrink": 1,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <Text
+                                          color="#151515"
+                                          style={
+                                            Array [
+                                              Object {
+                                                "color": "#151515",
+                                                "fontFamily": "Montserrat-Bold",
+                                                "fontSize": 15,
+                                                "lineHeight": 20,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Le tarif est trop élevé
+                                        </Text>
+                                        <Text
+                                          style={
+                                            Array [
+                                              Object {
+                                                "color": "#626262",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 16,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          comparé à l'offre public
+                                        </Text>
+                                      </View>
+                                    </View>
+                                    <View
+                                      numberOfSpaces={6}
+                                      style={
+                                        Array [
+                                          Object {
+                                            "height": 24,
+                                          },
+                                        ]
+                                      }
+                                    />
                                     <View
                                       numberOfSpaces={10.5}
                                       style={
@@ -6276,7 +6276,7 @@ cette offre ?
                                           "width": "100%",
                                         }
                                       }
-                                      testID="radio-button-0"
+                                      testID="radio-button-IMPROPER"
                                     >
                                       <View
                                         style={
@@ -6317,7 +6317,7 @@ cette offre ?
                                             ]
                                           }
                                         >
-                                          (La date ne correspond pas, mauvaise description…)
+                                          La date ne correspond pas, mauvaise description...
                                         </Text>
                                       </View>
                                     </View>
@@ -6350,81 +6350,7 @@ cette offre ?
                                           "width": "100%",
                                         }
                                       }
-                                      testID="radio-button-1"
-                                    >
-                                      <View
-                                        style={
-                                          Array [
-                                            Object {
-                                              "flexBasis": 0,
-                                              "flexDirection": "column",
-                                              "flexGrow": 0.9,
-                                              "flexShrink": 1,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        <Text
-                                          color="#151515"
-                                          style={
-                                            Array [
-                                              Object {
-                                                "color": "#151515",
-                                                "fontFamily": "Montserrat-Bold",
-                                                "fontSize": 15,
-                                                "lineHeight": 20,
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          Le tarif est trop élevé
-                                        </Text>
-                                        <Text
-                                          style={
-                                            Array [
-                                              Object {
-                                                "color": "#626262",
-                                                "fontFamily": "Montserrat-SemiBold",
-                                                "fontSize": 12,
-                                                "lineHeight": 16,
-                                              },
-                                            ]
-                                          }
-                                        >
-                                          (comparé à l’offre public)
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <View
-                                      numberOfSpaces={6}
-                                      style={
-                                        Array [
-                                          Object {
-                                            "height": 24,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                    <View
-                                      accessible={true}
-                                      focusable={true}
-                                      onClick={[Function]}
-                                      onResponderGrant={[Function]}
-                                      onResponderMove={[Function]}
-                                      onResponderRelease={[Function]}
-                                      onResponderTerminate={[Function]}
-                                      onResponderTerminationRequest={[Function]}
-                                      onStartShouldSetResponder={[Function]}
-                                      style={
-                                        Object {
-                                          "alignItems": "center",
-                                          "flexDirection": "row",
-                                          "justifyContent": "space-between",
-                                          "opacity": 1,
-                                          "width": "100%",
-                                        }
-                                      }
-                                      testID="radio-button-2"
+                                      testID="radio-button-INAPPROPRIATE"
                                     >
                                       <View
                                         style={
@@ -6465,7 +6391,7 @@ cette offre ?
                                             ]
                                           }
                                         >
-                                          (violence, incitation à la haine, nudité...)
+                                          violence, incitation à la haine, nudité...
                                         </Text>
                                       </View>
                                     </View>
@@ -6557,6 +6483,80 @@ cette offre ?
                                         </View>
                                       </View>
                                     </View>
+                                    <View
+                                      accessible={true}
+                                      focusable={true}
+                                      onClick={[Function]}
+                                      onResponderGrant={[Function]}
+                                      onResponderMove={[Function]}
+                                      onResponderRelease={[Function]}
+                                      onResponderTerminate={[Function]}
+                                      onResponderTerminationRequest={[Function]}
+                                      onStartShouldSetResponder={[Function]}
+                                      style={
+                                        Object {
+                                          "alignItems": "center",
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-between",
+                                          "opacity": 1,
+                                          "width": "100%",
+                                        }
+                                      }
+                                      testID="radio-button-PRICE_TOO_HIGH"
+                                    >
+                                      <View
+                                        style={
+                                          Array [
+                                            Object {
+                                              "flexBasis": 0,
+                                              "flexDirection": "column",
+                                              "flexGrow": 0.9,
+                                              "flexShrink": 1,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <Text
+                                          color="#151515"
+                                          style={
+                                            Array [
+                                              Object {
+                                                "color": "#151515",
+                                                "fontFamily": "Montserrat-Bold",
+                                                "fontSize": 15,
+                                                "lineHeight": 20,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Le tarif est trop élevé
+                                        </Text>
+                                        <Text
+                                          style={
+                                            Array [
+                                              Object {
+                                                "color": "#626262",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 16,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          comparé à l'offre public
+                                        </Text>
+                                      </View>
+                                    </View>
+                                    <View
+                                      numberOfSpaces={6}
+                                      style={
+                                        Array [
+                                          Object {
+                                            "height": 24,
+                                          },
+                                        ]
+                                      }
+                                    />
                                     <View
                                       numberOfSpaces={10.5}
                                       style={

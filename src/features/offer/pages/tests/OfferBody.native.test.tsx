@@ -6,6 +6,31 @@ import { renderOfferBodyPage } from './renderOfferPageTestUtil'
 
 jest.mock('api/api')
 
+jest.mock('features/offer/services/useReasonsForReporting', () => ({
+  useReasonsForReporting: jest.fn(() => ({
+    data: {
+      reasons: {
+        IMPROPER: {
+          description: 'La date ne correspond pas, mauvaise description...',
+          title: 'La description est non conforme',
+        },
+        INAPPROPRIATE: {
+          description: 'violence, incitation à la haine, nudité...',
+          title: 'Le contenu est inapproprié',
+        },
+        OTHER: {
+          description: '',
+          title: 'Autre',
+        },
+        PRICE_TOO_HIGH: {
+          description: "comparé à l'offre public",
+          title: 'Le tarif est trop élevé',
+        },
+      },
+    },
+  })),
+}))
+
 describe('<OfferBody />', () => {
   beforeAll(() => {
     mockdate.set(new Date(2021, 0, 1))
