@@ -8,11 +8,11 @@ check_diff(){
   echo "Diff $base_sha..$CIRCLE_SHA1"
 
   if git diff --name-only "$base_sha..$CIRCLE_SHA1" | grep -E -v "$filter" ; then
-    echo "Skipping build hard"
-    exit 1
-  else
     echo "Running build hard"
     exit 0
+  else
+    echo "Skipping build hard"
+    exit 1
   fi
 }
 
