@@ -45,6 +45,7 @@ import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { Maintenance } from 'features/maintenance/Maintenance'
+import { linking as tabNavigatorLinking } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
@@ -62,7 +63,9 @@ import { SearchFilter } from 'features/search/pages/SearchFilter'
 
 import { Route } from './types'
 
-const routes: Array<Route> = [
+export const initialRouteName = 'TabNavigator'
+
+export const routes: Array<Route> = [
   { name: 'ABTestingPOC', component: ABTestingPOC },
   { name: 'AcceptCgu', component: AcceptCgu, hoc: withAsyncErrorBoundary },
   { name: 'AccountCreated', component: AccountCreated },
@@ -125,7 +128,7 @@ const routes: Array<Route> = [
   { name: 'SetPostalCode', component: SetPostalCode },
   { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
-  { name: 'TabNavigator', component: TabNavigator },
+  { name: 'TabNavigator', component: TabNavigator, linking: tabNavigatorLinking },
   { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep },
   { name: 'SetPhoneNumber', component: SetPhoneNumber },
   { name: 'SetPhoneValidationCode', component: SetPhoneValidationCode },
@@ -141,11 +144,14 @@ const routes: Array<Route> = [
 export const linking: LinkingOptions = {
   prefixes: [],
   config: {
-    screens: routes.reduce(
-      (route, currentRoute) => ({ ...route, [currentRoute.name]: currentRoute.path }),
-      {}
-    ),
+    screens: {
+      ...routes.reduce(
+        (route, currentRoute) => ({
+          ...route,
+          [currentRoute.name]: currentRoute.linking?.config || currentRoute.path,
+        }),
+        {}
+      ),
+    },
   },
 }
-
-export default routes
