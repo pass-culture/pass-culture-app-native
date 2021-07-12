@@ -283,6 +283,7 @@ module.exports = function (webpackEnv) {
         'react-native-svg': 'react-native-svg-web',
         'lottie-react-native': 'react-native-web-lottie',
         'react-native-linear-gradient': 'react-native-web-linear-gradient',
+        '@sentry/react-native$': '@sentry/react',
 
         // /**
         //  * These will replace react navigation entirely.
