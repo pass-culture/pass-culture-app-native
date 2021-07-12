@@ -17,4 +17,5 @@ export type TabRoute = {
   component: ComponentType
   params?: TabParamList[TabRouteName]
   key: string
+  path: string
 }

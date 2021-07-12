@@ -6,7 +6,7 @@ import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { useSplashScreenContext } from 'libs/splashscreen'
 
-import routes from './routes'
+import { initialRouteName, routes } from './routes'
 import { RootStackParamList, Route } from './types'
 
 export const RootStack = createStackNavigator<RootStackParamList>()
@@ -42,7 +42,7 @@ export const RootNavigator: React.FC = () => {
         <ForceUpdate />
       ) : (
         <RootStack.Navigator
-          initialRouteName="TabNavigator"
+          initialRouteName={initialRouteName}
           headerMode="screen"
           screenOptions={{ headerShown: false }}>
           {screens}

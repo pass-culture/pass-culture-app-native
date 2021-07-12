@@ -1,35 +1,14 @@
 import 'react-app-polyfill/ie9'
 import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
-import { LinkingOptions, NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
-import { env } from 'libs/environment'
+import { routes, linking } from 'features/navigation/RootNavigator/routes'
 
-const LINKING_PREFIXES = [
-  `https://app.passculture-${env.ENV}.gouv.fr/`,
-  `https://*.app.passculture-${env.ENV}.gouv.fr/`,
-  'passculture://',
-]
-
-const LINKING_CONFIG = {
-  initialRouteName: 'TabNavigator',
-  screens: {
-    Home: '',
-    Page1: 'page1',
-    TabNavigator: {
-      initialRouteName: 'Page3',
-      screens: {
-        Page2: 'page2',
-        Page3: 'page3',
-      },
-    },
-  },
-}
+const StackNavigator = createStackNavigator()
 
 const NAVIGATOR_SCREEN_OPTIONS = {
   headerShown: false,
@@ -38,27 +17,6 @@ const NAVIGATOR_SCREEN_OPTIONS = {
     flex: 1,
   },
 }
-
-const linking: LinkingOptions = { prefixes: LINKING_PREFIXES, config: LINKING_CONFIG }
-
-const StackNavigator = createStackNavigator()
-
-const Home = () => (
-  <Page>
-    <Text>Home</Text>
-  </Page>
-)
-const Page1 = () => (
-  <Page>
-    <Text>Page 1</Text>
-  </Page>
-)
-
-const routes = [
-  { name: 'Home', component: Home },
-  { name: 'Page1', component: Page1 },
-  { name: 'TabNavigator', component: TabNavigator },
-]
 
 export function App() {
   return (
@@ -108,11 +66,5 @@ const AppContent = styled.View({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
-})
-
-const Page = styled.View({
-  flex: 1,
-  alignItems: 'center',
   justifyContent: 'center',
 })
