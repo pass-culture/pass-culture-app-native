@@ -11,7 +11,9 @@ export const dehumanizeId = (humanId: string) => {
 const byteArrayToInt = (bytes: number[]) =>
   bytes.reduce((result, byte, index) => result + byte * Math.pow(256, bytes.length - 1 - index), 0)
 
-const intToByteArray = (x: number): number[] => [x << 8, x << 16, x << 24].map((z) => z >>> 24)
+const intToByteArray = (x: number): number[] => {
+  return [x, x << 8, x << 16, x << 24].map((z) => z >>> 24).filter((z) => z > 0)
+}
 
 export const humanizeId = (dehumanizedId: number) => {
   try {
