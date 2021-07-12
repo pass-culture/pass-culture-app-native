@@ -29,7 +29,10 @@ export function RadioButton(props: RadioButtonProps) {
       {props.choices.map((choice, index) => {
         return (
           <React.Fragment key={index}>
-            <PressableContainer key={choice.id} onPress={() => onSelect(choice.id)}>
+            <PressableContainer
+              key={choice.id}
+              onPress={() => onSelect(choice.id)}
+              testID={`radio-button-${index}`}>
               <TitleContainer>
                 <Title color={selectedValue === choice.id ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
                   {choice.title}
