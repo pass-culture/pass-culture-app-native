@@ -9,6 +9,7 @@ export enum QueryKeys {
   PHONE_VALIDATION_CODE = 'phoneValidationCode',
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',
+  REPORTED_OFFERS = 'reportedOffers',
   RESET_PASSWORD_EXPIRED_LINK = 'resetPasswordExpiredLink',
   SEARCH_RESULTS = 'searchResults',
   SETTINGS = 'settings',
