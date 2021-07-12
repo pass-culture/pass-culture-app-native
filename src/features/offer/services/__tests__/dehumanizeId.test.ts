@@ -21,4 +21,22 @@ describe('dehumanizeId', () => {
       expect(humanizeId(dehumanizedId)).toBe(humanizedId)
     }
   )
+
+  it.each`
+    dehumanizedId | humanizedId
+    ${27101402}   | ${'AG8YRWQ'}
+    ${116}        | ${'8Q'}
+    ${116853}     | ${'AHEHK'}
+    ${116664}     | ${'AHD3Q'}
+    ${116659}     | ${'AHD3G'}
+    ${116657}     | ${'AHD3C'}
+    ${6303845}    | ${'MAYGK'}
+    ${116659}     | ${'AHD3G'}
+  `(
+    'a given dehumanizedId: $dehumanizedId becomes a humanizedId: $humanizedId',
+    ({ dehumanizedId, humanizedId }: HumToDehumTest) => {
+      expect(humanizeId(dehumanizedId)).toBe(humanizedId)
+      expect(dehumanizeId(humanizedId)).toBe(dehumanizedId)
+    }
+  )
 })
