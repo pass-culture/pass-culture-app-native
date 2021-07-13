@@ -27,7 +27,9 @@ interface Props {
 }
 
 const useReasonsForReporting = () => {
-  const { data } = useQuery(QueryKeys.OFFER, () => api.getnativev1offerreportreasons())
+  const { data } = useQuery(QueryKeys.REPORT_OFFER_REASONS, () =>
+    api.getnativev1offerreportreasons()
+  )
   return data?.reasons || []
 }
 
@@ -78,7 +80,9 @@ export const ReportOfferReasonModal: FunctionComponent<Props> = (props) => {
           reason.id !== 'OTHER' ? (
             <RadioButton
               key={index}
-              choices={reason}
+              id={reason.id}
+              title={reason.title}
+              description={reason.description}
               onSelect={setSelectedReason}
               selectedValue={selectedReason}
             />

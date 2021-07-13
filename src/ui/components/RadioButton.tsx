@@ -4,14 +4,10 @@ import styled from 'styled-components/native'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-interface RadioButtonItem {
+interface RadioButtonProps {
   id: string
   title: string
   description?: string
-}
-
-interface RadioButtonProps {
-  choices: RadioButtonItem
   onSelect: (value: string) => void
   selectedValue: string
 }
@@ -24,21 +20,18 @@ export function RadioButton(props: RadioButtonProps) {
   return (
     <React.Fragment>
       <PressableContainer
-        key={props.choices.id}
-        onPress={() => onSelect(props.choices.id)}
+        key={props.id}
+        onPress={() => onSelect(props.id)}
         // testID={`radio-button-${index}`}
       >
         <TitleContainer>
-          <Title
-            color={
-              props.selectedValue === props.choices.id ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
-            }>
-            {props.choices.title}
+          <Title color={props.selectedValue === props.id ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
+            {props.title}
           </Title>
-          {!!props.choices.description && <Subtitle>{props.choices.description}</Subtitle>}
+          {!!props.description && <Subtitle>{props.description}</Subtitle>}
         </TitleContainer>
 
-        {props.selectedValue === props.choices.id && <Validate color={ColorsEnum.PRIMARY} />}
+        {props.selectedValue === props.id && <Validate color={ColorsEnum.PRIMARY} />}
       </PressableContainer>
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
