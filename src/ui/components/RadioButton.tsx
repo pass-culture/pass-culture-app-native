@@ -10,6 +10,7 @@ interface RadioButtonProps {
   description?: string
   onSelect: (value: string) => void
   selectedValue: string
+  index: number
 }
 
 export function RadioButton(props: RadioButtonProps) {
@@ -22,8 +23,7 @@ export function RadioButton(props: RadioButtonProps) {
       <PressableContainer
         key={props.id}
         onPress={() => onSelect(props.id)}
-        // testID={`radio-button-${index}`}
-      >
+        testID={`radio-button-${props.index}`}>
         <TitleContainer>
           <Title color={props.selectedValue === props.id ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
             {props.title}

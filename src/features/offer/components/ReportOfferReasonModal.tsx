@@ -79,12 +79,13 @@ export const ReportOfferReasonModal: FunctionComponent<Props> = (props) => {
         {reasonsForReporting.map((reason, index) =>
           reason.id !== 'OTHER' ? (
             <RadioButton
-              key={index}
+              key={reason.id}
               id={reason.id}
               title={reason.title}
               description={reason.description}
               onSelect={setSelectedReason}
               selectedValue={selectedReason}
+              index={index}
             />
           ) : (
             <SectionRow
