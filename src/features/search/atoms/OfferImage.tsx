@@ -1,4 +1,5 @@
 import React from 'react'
+import { useMemo } from 'react'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
@@ -11,23 +12,23 @@ interface Props {
   categoryName?: CategoryNameEnum | null
 }
 
-export const OfferImage: React.FC<Props> = ({ categoryName, imageUrl }) => (
-  <Container>
-    {imageUrl ? (
-      <FastImage
-        style={imageStyle}
-        source={{ uri: imageUrl }}
-        resizeMode={FastImage.resizeMode.cover}
-      />
-    ) : (
-      <ImagePlaceholder
-        categoryName={categoryName || null}
-        size={getSpacing(10)}
-        borderRadius={borderRadius}
-      />
-    )}
-  </Container>
-)
+export const OfferImage: React.FC<Props> = ({ categoryName, imageUrl }) => {
+  const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
+
+  return (
+    <Container>
+      {imageUrl ? (
+        <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
+      ) : (
+        <ImagePlaceholder
+          categoryName={categoryName || null}
+          size={getSpacing(10)}
+          borderRadius={borderRadius}
+        />
+      )}
+    </Container>
+  )
+}
 
 const borderRadius = 4
 const width = getSpacing(16)

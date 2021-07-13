@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useMemo } from 'react'
-import { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { Dimensions, PixelRatio } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
