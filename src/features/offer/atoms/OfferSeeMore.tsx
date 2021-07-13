@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
+import { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -16,10 +17,10 @@ interface Props {
 export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const onPressSeeMore = () => {
+  const onPressSeeMore = useCallback(() => {
     analytics.logConsultDescriptionDetails(id)
     navigate('OfferDescription', { id })
-  }
+  }, [id])
 
   return (
     <Container>

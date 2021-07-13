@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
@@ -17,17 +17,15 @@ interface Props {
 
 export const OfferHero: React.FC<Props> = ({ imageUrl, categoryName }) => {
   const { top } = useCustomSafeInsets()
+  const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
   const imageHeight = blurImageHeight + top
+
   return (
     <HeroHeader imageHeight={imageHeight} categoryName={categoryName} imageUrl={imageUrl || ''}>
       <Spacer.Column numberOfSpaces={22} />
       <ImageContainer>
         {imageUrl ? (
-          <FastImage
-            style={imageStyle}
-            source={{ uri: imageUrl }}
-            resizeMode={FastImage.resizeMode.cover}
-          />
+          <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
         ) : (
           <ImagePlaceholder categoryName={categoryName || null} size={getSpacing(24)} />
         )}
