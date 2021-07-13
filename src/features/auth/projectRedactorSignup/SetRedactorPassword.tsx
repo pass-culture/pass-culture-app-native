@@ -4,7 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { useSignInNumberOfSteps } from 'features/auth/api'
+import { useRedactorSignUpNumberOfSteps } from 'features/auth/api'
 import {
   isPasswordCorrect,
   PasswordSecurityRules,
@@ -12,8 +12,6 @@ import {
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { StyledInput, StyledStepDots } from 'features/auth/components/signupComponents'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
-import { env } from 'libs/environment'
-import { randomPassword } from 'libs/random'
 import { testID } from 'tests/utils'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -24,21 +22,14 @@ import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type Props = StackScreenProps<RootStackParamList, 'SetPassword'>
+type Props = StackScreenProps<RootStackParamList, 'SetRedactorPassword'>
 
-let INITIAL_PASSWORD = ''
-
-if (__DEV__ && env.SIGNUP_RANDOM_PASSWORD) {
-  INITIAL_PASSWORD = randomPassword()
-}
-
-export const SetPassword: FunctionComponent<Props> = ({ route }) => {
-  const [password, setPassword] = useState(INITIAL_PASSWORD)
+export const SetRedactorPassword: FunctionComponent<Props> = ({ route }) => {
+  const [password, setPassword] = useState('')
   const { goBack, navigate } = useNavigation<UseNavigationType>()
   const email = route.params.email
-  const isNewsletterChecked = route.params.isNewsletterChecked
 
   const passwordInput = useRef<RNTextInput | null>(null)
 
@@ -47,10 +38,10 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(false)
-  const numberOfSteps = useSignInNumberOfSteps()
+  const numberOfSteps = useRedactorSignUpNumberOfSteps()
 
   function submitPassword() {
-    navigate('SetBirthday', { email, isNewsletterChecked, password })
+    navigate('AcceptRedactorCgu', { email, password })
   }
 
   function showQuitSignupModal() {
@@ -62,7 +53,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
     <React.Fragment>
       <BottomContentPage>
         <ModalHeader
-          title={t`Ton mot de passe`}
+          title={t`Votre mot de passe`}
           rightIcon={Close}
           onRightIconPress={showQuitSignupModal}
           leftIcon={ArrowPrevious}
@@ -77,7 +68,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
               value={password}
               autoFocus={true}
               onChangeText={setPassword}
-              placeholder={t`Ton mot de passe`}
+              placeholder={t`Votre mot de passe`}
               ref={passwordInput}
               {...testID('Entrée pour le mot de passe')}
             />
@@ -99,7 +90,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
         testIdSuffix="password-quit-signup"
-        signupStep={SignupSteps.Password}
+        signupStep={SignupSteps.RedactorPassword}
       />
     </React.Fragment>
   )

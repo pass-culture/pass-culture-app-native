@@ -129,6 +129,10 @@ export function useSignInNumberOfSteps() {
   // return settings?.wholeFranceOpening ? 4 : 5
 }
 
+export function useRedactorSignUpNumberOfSteps() {
+  return 3 // email, password, cgu
+}
+
 export function useSendPhoneValidationMutation({
   onSuccess,
   onError,

@@ -19,6 +19,9 @@ export enum SignupSteps {
   PostalCode = 'PostalCode',
   CGU = 'CGU',
   PhoneNumber = 'PhoneNumber',
+  RedactorEmail = 'RedactorEmail',
+  RedactorPassword = 'RedactorPassword',
+  RedactorCGU = 'RedactorCGU',
 }
 
 interface Props {

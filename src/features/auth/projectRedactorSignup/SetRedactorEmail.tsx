@@ -1,20 +1,17 @@
 import { t } from '@lingui/macro'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSignInNumberOfSteps } from 'features/auth/api'
+import { useRedactorSignUpNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { ModalContent, StyledInput } from 'features/auth/components/signupComponents'
 import { useBackNavigation } from 'features/navigation/backNavigation'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
-import { env } from 'libs/environment'
-import { randomAlphaString } from 'libs/random'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { testID } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -24,20 +21,12 @@ import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { padding, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
-let INITIAL_EMAIL = ''
-
-if (__DEV__ && env.SIGNUP_RANDOM_EMAIL) {
-  INITIAL_EMAIL = `${randomAlphaString()}@${randomAlphaString()}.com`
-}
-
-export const SetEmail: FunctionComponent = () => {
-  const [email, setEmail] = useState(INITIAL_EMAIL)
+export const SetRedactorEmail: FunctionComponent = () => {
+  const [email, setEmail] = useState('')
   const [hasError, setHasError] = useState(false)
-  const [isNewsletterChecked, setIsNewsletterChecked] = useState(false)
 
-  const { params } = useRoute<UseRouteType<'SetEmail'>>()
   const navigation = useNavigation<UseNavigationType>()
 
   const shouldDisableValidateButton = isValueEmpty(email)
@@ -51,7 +40,7 @@ export const SetEmail: FunctionComponent = () => {
   } = useModal(false)
 
   const complexGoBack = useBackNavigation()
-  const numberOfSteps = useSignInNumberOfSteps()
+  const numberOfSteps = useRedactorSignUpNumberOfSteps()
 
   function onChangeEmail(email: string) {
     if (hasError) {
@@ -62,7 +51,7 @@ export const SetEmail: FunctionComponent = () => {
 
   async function validateEmail() {
     if (isEmailValid(email)) {
-      navigation.navigate(`SetPassword`, { email, isNewsletterChecked })
+      navigation.navigate(`SetRedactorPassword`, { email })
     } else {
       setHasError(true)
     }
@@ -77,10 +66,10 @@ export const SetEmail: FunctionComponent = () => {
     <React.Fragment>
       <BottomContentPage>
         <ModalHeader
-          title={t`Ton e-mail`}
+          title={t`Votre e-mail`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={complexGoBack}
-          rightIcon={params?.preventCancellation ? undefined : Close}
+          rightIcon={Close}
           onRightIconPress={showQuitSignupModal}
         />
         <ModalContent>
@@ -92,7 +81,7 @@ export const SetEmail: FunctionComponent = () => {
               autoFocus={true}
               keyboardType="email-address"
               onChangeText={onChangeEmail}
-              placeholder={t`tonadresse@email.com`}
+              placeholder={t`votreadresse@email.com`}
               ref={emailInput}
               textContentType="emailAddress"
               value={email}
@@ -104,13 +93,6 @@ export const SetEmail: FunctionComponent = () => {
               numberOfSpacesTop={1}
             />
           </StyledInput>
-          <Spacer.Column numberOfSpaces={4} />
-          <StyledCheckBox>
-            <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
-            <CheckBoxText>
-              {t`Reçois nos recommandations culturelles à proximité de chez toi par e-mail.`}
-            </CheckBoxText>
-          </StyledCheckBox>
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
             title={t`Continuer`}
@@ -126,20 +108,8 @@ export const SetEmail: FunctionComponent = () => {
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
         testIdSuffix="email-quit-signup"
-        signupStep={SignupSteps.Email}
+        signupStep={SignupSteps.RedactorEmail}
       />
     </React.Fragment>
   )
 }
-
-const CheckBoxText = styled(Typo.Body)({
-  alignSelf: 'center',
-  ...padding(0, 8, 0, 4),
-})
-
-const StyledCheckBox = styled.View({
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  width: '100%',
-})
