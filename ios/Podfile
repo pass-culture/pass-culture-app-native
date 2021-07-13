@@ -16,7 +16,7 @@ target 'PassCulture' do
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable these next few lines.
-  use_flipper!({ 'Flipper' => '0.92.0' , 'Flipper-Folly' => '~> 2.5'})
+  use_flipper!({ 'Flipper' => '0.95.0', 'Flipper-Folly' => '2.6.7', 'Flipper-DoubleConversion' => '3.1.7' })
 
   permissions_path = '../node_modules/react-native-permissions/ios'
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
@@ -34,6 +34,8 @@ target 'PassCulture' do
 
   post_install do |installer|
     flipper_post_install(installer)
+    react_native_post_install(installer)
+
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
         config.build_settings['ENABLE_BITCODE'] = 'NO'
