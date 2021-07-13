@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useMemo } from 'react'
+import { useCallback } from 'react'
 import { Dimensions, PixelRatio } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
@@ -14,13 +15,15 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const handlePressExclu = () => {
+  const handlePressExclu = useCallback(() => {
     const id = dehumanizeId(offerId)
     if (typeof id === 'number') {
       navigate('Offer', { id, from: 'home' })
       analytics.logClickExclusivityBlock(id)
     }
-  }
+  }, [offerId])
+
+  const source = useMemo(() => ({ uri: image }), [image])
 
   return (
     <Row>
@@ -28,7 +31,7 @@ export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
       <ImageContainer>
         <TouchableHighlight onPress={handlePressExclu}>
           <FastImage
-            source={{ uri: image }}
+            source={source}
             accessible={!!alt}
             accessibilityLabel={alt}
             testID="imageExclu"
