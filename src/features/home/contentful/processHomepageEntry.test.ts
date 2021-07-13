@@ -1,6 +1,7 @@
+import { AlgoliaParameters } from 'features/home/contentful/contentful'
 import { adaptedHomepageEntry } from 'tests/fixtures/homepageEntries'
 
-import { processHomepageEntry } from './processHomepageEntry'
+import { buildSearchParams, processHomepageEntry } from './processHomepageEntry'
 
 describe('processHomepageEntry', () => {
   beforeEach(() => {
@@ -31,5 +32,50 @@ describe('processHomepageEntry', () => {
       },
     }
     expect(processHomepageEntry(emptyModulesHomepageEntries)).toEqual([])
+  })
+
+  describe('buildSearchParams', () => {
+    const algoliaParameters = {
+      metadata: { tags: [] },
+      sys: {
+        space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
+        id: 'XSfVIg1577cOcs23K6m3n',
+        type: 'Entry',
+        createdAt: '2020-11-12T11:10:41.542Z',
+        updatedAt: '2021-07-07T08:53:35.350Z',
+        environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
+        revision: 35,
+        contentType: {
+          sys: { type: 'Link', linkType: 'ContentType', id: 'algoliaParameters' },
+        },
+        locale: 'en-US',
+      },
+      fields: { title: 'Livre', hitsPerPage: 1 },
+    }
+
+    it('should filter out unpublished modules', () => {
+      const additionalAlgoliaParameters = ([
+        { sys: { type: 'Link', linkType: 'Entry', id: '2nYjyMYFD6HXrrycEW74Km' } },
+      ] as unknown) as AlgoliaParameters[]
+
+      const search = buildSearchParams(algoliaParameters, additionalAlgoliaParameters)
+      expect(search).toHaveLength(1)
+      expect(search[0]).toStrictEqual({ title: 'Livre', hitsPerPage: 1 })
+    })
+
+    it('should compose a playlist with additional parameters', () => {
+      const additionalAlgoliaParameters = ([
+        { ...algoliaParameters, fields: { title: 'Musique', categories: ['Musique'] } },
+        { ...algoliaParameters, fields: { title: 'Ciné', categories: ['Cinéma'] } },
+      ] as unknown) as AlgoliaParameters[]
+
+      const search = buildSearchParams(algoliaParameters, additionalAlgoliaParameters)
+      expect(search).toHaveLength(3)
+      expect(search).toStrictEqual([
+        { title: 'Livre', hitsPerPage: 1 },
+        { title: 'Musique', categories: ['Musique'] },
+        { title: 'Ciné', categories: ['Cinéma'] },
+      ])
+    })
   })
 })

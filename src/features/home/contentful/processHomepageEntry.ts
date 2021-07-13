@@ -7,6 +7,8 @@ import {
   CONTENT_TYPES,
   Image,
   RecommendationFields,
+  AlgoliaParameters,
+  SearchParametersFields,
 } from './contentful'
 import {
   Offers,
@@ -36,12 +38,9 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
         cover,
         additionalAlgoliaParameters = [],
       } = fields as AlgoliaFields
-      if (!hasAtLeastOneField(algoliaParameters)) return
+      const search = buildSearchParams(algoliaParameters, additionalAlgoliaParameters)
+      if (search.length === 0) return
 
-      const search = [
-        algoliaParameters.fields,
-        ...additionalAlgoliaParameters.filter(hasAtLeastOneField).map(({ fields }) => fields),
-      ]
       const { fields: display } = displayParameters
 
       if (cover && hasAtLeastOneField(cover)) {
@@ -95,6 +94,18 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
   })
 
   return processedModules.filter(Boolean) as ProcessedModule[]
+}
+
+export const buildSearchParams = (
+  params: AlgoliaParameters,
+  additionalParams: AlgoliaParameters[]
+): SearchParametersFields[] => {
+  const allParams = [params, ...additionalParams]
+  const publishedAdditionalSearchParams = allParams
+    .filter((params) => params.fields && hasAtLeastOneField(params.fields))
+    .map(({ fields }) => fields)
+
+  return publishedAdditionalSearchParams
 }
 
 const buildImageUrl = (image: Image): string | null => {
