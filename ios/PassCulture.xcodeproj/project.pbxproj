@@ -12,6 +12,7 @@
 		2A5B3D8DAFAA4030AF31D9D7 /* libPods-PassCulture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F625F4D6377B4766806FA581 /* libPods-PassCulture.a */; };
 		3CBC0349590140A1865DA48C /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD221C6CACA34DB9AF0A9DFA /* Montserrat-ExtraBoldItalic.ttf */; };
 		3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */; };
+		42929549269DA76A00625EA7 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 866FC5E348B2460296FB5F7B /* main.jsbundle */; };
 		6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */; };
 		7323393B84C441F488A4C363 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D886722584EDD87A2BB44 /* main.m */; };
 		784AD86F267B9F1300A0EF45 /* TMXProfiling.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784AD86B267B9F0B00A0EF45 /* TMXProfiling.xcframework */; };
@@ -255,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42929549269DA76A00625EA7 /* main.jsbundle in Resources */,
 				CE363314E2974BF48FF6C850 /* Images.xcassets in Resources */,
 				DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */,
 				8FEB737BACB244CF8BB8C051 /* SplashScreen.storyboard in Resources */,
