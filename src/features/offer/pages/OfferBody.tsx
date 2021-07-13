@@ -1,9 +1,11 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
-import { CategoryType } from 'api/gen'
+import { api } from 'api/api'
+import { CategoryType, ReportedOffer, UserReportedOffersResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
@@ -16,6 +18,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { QueryKeys } from 'libs/queryKeys'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { useModalNavigation } from 'ui/components/modals/useModalNavigation'
@@ -65,6 +68,14 @@ export const OfferBody: FunctionComponent<{
   const goBackToReportDescription = useModalNavigation(hideReportReason, showReportDescription)
   const navigateToReportOtherReason = useModalNavigation(hideReportReason, showReportOtherReason)
   const goBackToReportReason = useModalNavigation(hideReportOtherReason, showReportReason)
+
+  const { data } = useQuery<UserReportedOffersResponse>(QueryKeys.REPORTED_OFFERS, () =>
+    api.getnativev1offersreports()
+  )
+  const reportedOffers = data?.reportedOffers
+  const isOfferAlreadyReported = reportedOffers?.find((reportedOffer: ReportedOffer) => {
+    return reportedOffer.offerId === offerId
+  })
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
@@ -159,7 +170,10 @@ export const OfferBody: FunctionComponent<{
           <SectionBody>
             <ButtonTertiaryBlack
               inline
-              title={t`Signaler l'offre`}
+              title={
+                isOfferAlreadyReported ? t`Tu as déjà signalé cette offre` : t`Signaler l'offre`
+              }
+              disabled={!!isOfferAlreadyReported}
               icon={() => <Flag size={24} />}
               onPress={showReportDescription}
             />
