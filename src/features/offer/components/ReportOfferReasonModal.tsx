@@ -2,8 +2,10 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { useState } from 'react'
 import { useQueryClient } from 'react-query'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
+import { api } from 'api/api'
 import { extractApiErrorMessage } from 'api/helpers'
 import { useReportOfferMutation } from 'features/offer/services/useReportOffer'
 import { QueryKeys } from 'libs/queryKeys'
@@ -24,29 +26,25 @@ interface Props {
   offerId: number
 }
 
-// TODO(PC-9943) get report offer reasons from api.getnativev1offerreportreasons
-const REASONS_FOR_REPORTING = [
-  {
-    id: 'IMPROPER',
-    title: t`La description est non conforme`,
-    subtitle: t`(La date ne correspond pas, mauvaise description…)`,
-  },
-  {
-    id: 'PRICE_TOO_HIGH',
-    title: t`Le tarif est trop élevé`,
-    subtitle: t`(comparé à l’offre public)`,
-  },
-  {
-    id: 'INAPPROPRIATE',
-    title: t`Le contenu est inapproprié`,
-    subtitle: t`(violence, incitation à la haine, nudité...)`,
-  },
-]
+const useReasonsForReporting = () => {
+  const { data } = useQuery(QueryKeys.REPORT_OFFER_REASONS, () =>
+    api.getnativev1offerreportreasons()
+  )
+  return data?.reasons || []
+}
 
 export const ReportOfferReasonModal: FunctionComponent<Props> = (props) => {
+  const reasons = useReasonsForReporting()
   const [selectedReason, setSelectedReason] = useState('')
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const queryClient = useQueryClient()
+
+  const reasonsForReporting = Object.entries(reasons).map(([key, value]) => {
+    return {
+      id: key,
+      ...value,
+    }
+  })
 
   const { mutate } = useReportOfferMutation({
     offerId: props.offerId,
@@ -78,8 +76,25 @@ export const ReportOfferReasonModal: FunctionComponent<Props> = (props) => {
       onBackdropPress={props.dismissModal}>
       <ModalContent>
         <Spacer.Column numberOfSpaces={3} />
-        <RadioButton choices={REASONS_FOR_REPORTING} onSelect={setSelectedReason} />
-        <SectionRow title={t`Autre`} type={'navigable'} onPress={props.onPressOtherReason} />
+        {reasonsForReporting.map((reason, index) =>
+          reason.id !== 'OTHER' ? (
+            <RadioButton
+              key={reason.id}
+              id={reason.id}
+              title={reason.title}
+              description={reason.description}
+              onSelect={setSelectedReason}
+              selectedValue={selectedReason}
+              index={index}
+            />
+          ) : (
+            <SectionRow
+              title={reason.title}
+              type={'navigable'}
+              onPress={props.onPressOtherReason}
+            />
+          )
+        )}
         <Spacer.Column numberOfSpaces={10.5} />
         <ButtonPrimary
           title={t`Signaler l'offre`}
