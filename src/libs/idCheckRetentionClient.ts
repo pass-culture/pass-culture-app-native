@@ -27,9 +27,6 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
     let error, queryParams
     try {
       queryParams = await LocalStorageService.getQueryParams()
-      errorMonitoring.captureMessage(
-        `[retention][retentionClient.uploadDocument] ${JSON.stringify(queryParams || {})}`
-      )
       await LocalStorageService.resetLicenceToken()
       if (!queryParams.licenceToken) {
         error = new IdCheckApiError('Auth required', 400, {
@@ -53,7 +50,6 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
         body: data,
       })
     } catch (err) {
-      errorMonitoring.captureException(err)
       error = err
       if (err instanceof ApiError) {
         if (err.content.code === 'EXPIRED_TOKEN') {
@@ -78,19 +74,12 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
         error = new IdCheckApiError('File exceeded the maximum size of 10Mo', 413, {
           code: IdCheckErrors['file-size-exceeded'],
         })
-        errorMonitoring.captureMessage(`[retention] restore queryParams`)
         if (queryParams) {
-          errorMonitoring.captureMessage(
-            `[retention] save queryParams ${JSON.stringify(queryParams)}`
-          )
           await LocalStorageService.saveQueryParams(queryParams)
         }
       }
-      errorMonitoring.captureMessage(
-        `[retention][retentionClient.uploadDocument][error] ${JSON.stringify(
-          err
-        )} [edited] ${JSON.stringify(error)}`
-      )
+      errorMonitoring.captureException(error)
+
       return Promise.reject(error)
     }
   },
