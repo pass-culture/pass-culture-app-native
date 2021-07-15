@@ -6,8 +6,8 @@ interface UseKeyboardReturnData {
   keyboardShown: boolean
   keyboardHeight: number
   coordinates: {
-    start: ScreenRect
-    end: ScreenRect
+    start: ScreenRect | undefined
+    end: ScreenRect | undefined
   }
 }
 
