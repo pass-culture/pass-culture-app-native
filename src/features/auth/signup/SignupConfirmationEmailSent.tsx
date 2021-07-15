@@ -3,8 +3,12 @@ import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
-import styled from 'styled-components/native'
 
+import {
+  CenteredText,
+  Description,
+  EmailSentModalContent,
+} from 'features/auth/components/signupComponents'
 import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
@@ -17,7 +21,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
@@ -46,7 +50,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
         rightIcon={Close}
         onRightIconPress={onClose}
       />
-      <ModalContent>
+      <EmailSentModalContent>
         <Description>
           <Typo.Body>{t`Clique sur le lien reçu à l'adresse :`}</Typo.Body>
           <Typo.Body>{route.params.email}</Typo.Body>
@@ -68,22 +72,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
         </Description>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary title={t`Consulter mes e-mails`} onPress={openInbox} icon={ExternalSite} />
-      </ModalContent>
+      </EmailSentModalContent>
     </BottomContentPage>
   )
 }
-
-const ModalContent = styled.View({
-  ...padding(4, 1),
-  alignItems: 'center',
-  width: '100%',
-  maxWidth: getSpacing(125),
-})
-
-const Description = styled.View({
-  alignItems: 'center',
-})
-
-const CenteredText = styled.Text({
-  textAlign: 'center',
-})

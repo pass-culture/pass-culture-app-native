@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
-import styled from 'styled-components/native'
 
 import { useSignInNumberOfSteps } from 'features/auth/api'
 import {
@@ -11,6 +10,7 @@ import {
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { StyledInput, StyledStepDots } from 'features/auth/components/signupComponents'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { randomPassword } from 'libs/random'
@@ -24,7 +24,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SetPassword'>
 
@@ -104,13 +104,3 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
     </React.Fragment>
   )
 }
-
-const StyledInput = styled.View({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  width: '100%',
-  maxWidth: getSpacing(125),
-})
-
-const StyledStepDots = styled.View({ width: '100%', alignItems: 'center' })
