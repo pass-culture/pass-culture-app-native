@@ -5,11 +5,6 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import {
-  CenteredText,
-  Description,
-  EmailSentModalContent,
-} from 'features/auth/components/signupComponents'
 import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
@@ -22,16 +17,16 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
 
-type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
+type Props = StackScreenProps<RootStackParamList, 'RedactorSignupConfirmationEmailSent'>
 
-export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route }) => {
+export const RedactorSignupConfirmationEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation<UseNavigationType>()
   const previousRoute = usePreviousRoute()
   /* Note : we have issues with previously successfully valided ReCAPTCHA not being able
   to redo the challenge, so we block the user from going back to ReCAPTCHA screen */
-  const shouldBeAbleToGoBack = previousRoute?.name !== 'AcceptCgu'
+  const shouldBeAbleToGoBack = previousRoute?.name !== 'AcceptRedactorCgu'
 
   function onClose() {
     navigateToHome()
@@ -45,25 +40,25 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
   return (
     <BottomContentPage>
       <ModalHeader
-        title={t`Confirme ton e\u2011mail`}
+        title={t`Confirmez votre e\u2011mail`}
         leftIcon={shouldBeAbleToGoBack ? ArrowPrevious : undefined}
         onLeftIconPress={shouldBeAbleToGoBack ? goBack : undefined}
         rightIcon={Close}
         onRightIconPress={onClose}
       />
-      <EmailSentModalContent>
+      <ModalContent>
         <Description>
-          <Typo.Body>{t`Clique sur le lien reçu à l'adresse :`}</Typo.Body>
+          <Typo.Body>{t`Cliquez sur le lien reçu à l'adresse :`}</Typo.Body>
           <Typo.Body>{route.params.email}</Typo.Body>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
             <Typo.Body>
-              {t`Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver.`}
+              {t`Nous devons vérifier vos informations : l'email peut prendre quelques minutes pour arriver.`}
             </Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
-            <Typo.Body>{t`Si tu rencontres des difficultés, tu peux consulter notre centre d'aide.`}</Typo.Body>
+            <Typo.Body>{t`Si vous rencontrez des difficultés, vous pouvez consulter notre centre d'aide.`}</Typo.Body>
           </CenteredText>
           <ButtonTertiary
             title={t`Consulter notre centre d'aide`}
@@ -73,7 +68,22 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
         </Description>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary title={t`Consulter mes e-mails`} onPress={openInbox} icon={ExternalSite} />
-      </EmailSentModalContent>
+      </ModalContent>
     </BottomContentPage>
   )
 }
+
+const ModalContent = styled.View({
+  ...padding(4, 1),
+  alignItems: 'center',
+  width: '100%',
+  maxWidth: getSpacing(125),
+})
+
+const Description = styled.View({
+  alignItems: 'center',
+})
+
+const CenteredText = styled.Text({
+  textAlign: 'center',
+})

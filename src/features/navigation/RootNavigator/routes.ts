@@ -11,6 +11,10 @@ import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPas
 import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
 import { IdCheckUnavailable } from 'features/auth/idcheckUnavailable/IdCheckUnavailable'
 import { Login } from 'features/auth/login/Login'
+import { AcceptRedactorCgu } from 'features/auth/projectRedactorSignup/AcceptRedactorCGU'
+import { RedactorSignupConfirmationEmailSent } from 'features/auth/projectRedactorSignup/RedactorSignupConfirmationEmailSent'
+import { SetRedactorEmail } from 'features/auth/projectRedactorSignup/SetRedactorEmail'
+import { SetRedactorPassword } from 'features/auth/projectRedactorSignup/SetRedactorPassword'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
@@ -65,6 +69,7 @@ import { Route } from './types'
 const routes: Array<Route> = [
   { name: 'ABTestingPOC', component: ABTestingPOC },
   { name: 'AcceptCgu', component: AcceptCgu, hoc: withAsyncErrorBoundary },
+  { name: 'AcceptRedactorCgu', component: AcceptRedactorCgu },
   { name: 'AccountCreated', component: AccountCreated },
   { name: 'AfterSignupEmailValidationBuffer', component: AfterSignupEmailValidationBuffer },
   { name: 'AppComponents', component: AppComponents },
@@ -122,8 +127,11 @@ const routes: Array<Route> = [
   { name: 'SetBirthday', component: SetBirthday },
   { name: 'SetEmail', component: SetEmail },
   { name: 'SetPassword', component: SetPassword },
+  { name: 'SetRedactorEmail', component: SetRedactorEmail },
+  { name: 'SetRedactorPassword', component: SetRedactorPassword },
   { name: 'SetPostalCode', component: SetPostalCode },
   { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
+  { name: 'RedactorSignupConfirmationEmailSent', component: RedactorSignupConfirmationEmailSent },
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'TabNavigator', component: TabNavigator },
   { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep },
