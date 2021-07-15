@@ -1,7 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useState, FunctionComponent, useCallback } from 'react'
 import { NativeSyntheticEvent, NativeScrollEvent, ScrollView } from 'react-native'
-import styled from 'styled-components/native'
 
 import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { HomeBodyPlaceholder, HomeHeader } from 'features/home/components'
@@ -51,6 +50,20 @@ export const Home: FunctionComponent = function () {
     },
     [recommendationY, displayedModules.length]
   )
+  if (showSkeleton) {
+    return (
+      <ScrollView
+        testID="homeScrollView"
+        scrollEventThrottle={400}
+        bounces={false}
+        onScroll={onScroll}>
+        <Spacer.TopScreen />
+        <HomeHeader />
+        <HomeBodyPlaceholder />
+        <Spacer.TabBar />
+      </ScrollView>
+    )
+  }
 
   return (
     <ScrollView
@@ -60,22 +73,13 @@ export const Home: FunctionComponent = function () {
       onScroll={onScroll}>
       <Spacer.TopScreen />
       <HomeHeader />
-
-      {showSkeleton ? <HomeBodyPlaceholder /> : null}
-      <HomeBodyLoadingContainer isLoading={showSkeleton}>
-        <HomeBody
-          modules={displayedModules}
-          homeModules={homeModules}
-          recommendedHits={recommendedHits}
-          setRecommendationY={setRecommendationY}
-        />
-      </HomeBodyLoadingContainer>
+      <HomeBody
+        modules={displayedModules}
+        homeModules={homeModules}
+        recommendedHits={recommendedHits}
+        setRecommendationY={setRecommendationY}
+      />
       <Spacer.TabBar />
     </ScrollView>
   )
 }
-
-const HomeBodyLoadingContainer = styled.View<{ isLoading: boolean }>(({ isLoading }) => ({
-  height: isLoading ? 0 : undefined,
-  overflow: 'hidden',
-}))
