@@ -26,6 +26,10 @@ export type RootStackParamList = {
     birthday: string
     postalCode: string | undefined
   }
+  AcceptRedactorCgu: {
+    email: string
+    password: string
+  }
   AccountCreated: undefined
   AfterSignupEmailValidationBuffer: { token: string; expirationTimestamp: number; email: string }
   AppComponents: undefined
@@ -80,6 +84,9 @@ export type RootStackParamList = {
   SetEmail: { preventCancellation?: boolean } | undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
   SetPostalCode: { email: string; isNewsletterChecked: boolean; password: string; birthday: string }
+  SetRedactorEmail: undefined
+  SetRedactorPassword: { email: string }
+  RedactorSignupConfirmationEmailSent: { email: string }
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: {

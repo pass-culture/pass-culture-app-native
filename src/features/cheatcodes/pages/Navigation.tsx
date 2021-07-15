@@ -307,6 +307,12 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('PhoneValidationTooManyAttempts')}
           />
         </Row>
+        <Row>
+          <NavigationButton
+            title={`Inscription rédacteur de projet`}
+            onPress={() => navigation.navigate('SetRedactorEmail')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
