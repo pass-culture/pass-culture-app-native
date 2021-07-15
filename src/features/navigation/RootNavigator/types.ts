@@ -77,7 +77,7 @@ export type RootStackParamList = {
   SearchCategories: undefined
   SearchFilter: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
-  SetEmail: { preventCancellation?: boolean } | { preventCancellation?: boolean } | undefined
+  SetEmail: { preventCancellation?: boolean } | undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
   SetPostalCode: { email: string; isNewsletterChecked: boolean; password: string; birthday: string }
   SignupConfirmationEmailSent: { email: string }
