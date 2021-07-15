@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { useSignInNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { SetEmailModalContent, StyledInput } from 'features/auth/components/signupComponents'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
@@ -23,7 +24,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
+import { padding, Spacer, Typo } from 'ui/theme'
 
 let INITIAL_EMAIL = ''
 
@@ -82,7 +83,7 @@ export const SetEmail: FunctionComponent = () => {
           rightIcon={params?.preventCancellation ? undefined : Close}
           onRightIconPress={showQuitSignupModal}
         />
-        <ModalContent>
+        <SetEmailModalContent>
           <StyledInput>
             <Typo.Body>{t`Adresse e-mail`}</Typo.Body>
             <Spacer.Column numberOfSpaces={2} />
@@ -119,7 +120,7 @@ export const SetEmail: FunctionComponent = () => {
           />
           <Spacer.Column numberOfSpaces={5} />
           <StepDots numberOfSteps={numberOfSteps} currentStep={1} />
-        </ModalContent>
+        </SetEmailModalContent>
       </BottomContentPage>
       <QuitSignupModal
         visible={fullPageModalVisible}
@@ -131,13 +132,6 @@ export const SetEmail: FunctionComponent = () => {
   )
 }
 
-const ModalContent = styled.View({
-  paddingTop: getSpacing(7),
-  alignItems: 'center',
-  width: '100%',
-  maxWidth: getSpacing(125),
-})
-
 const CheckBoxText = styled(Typo.Body)({
   alignSelf: 'center',
   ...padding(0, 8, 0, 4),
@@ -147,12 +141,5 @@ const StyledCheckBox = styled.View({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  width: '100%',
-})
-
-const StyledInput = styled.View({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
   width: '100%',
 })

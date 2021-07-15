@@ -3,9 +3,9 @@ import { useNetInfo } from '@react-native-community/netinfo'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FC, useEffect, useState } from 'react'
-import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
 import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
@@ -198,14 +198,3 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     </React.Fragment>
   )
 }
-
-const CardContent = styled.View({
-  width: '100%',
-  alignItems: 'center',
-})
-
-const Paragraphe = styled.Text({
-  flexWrap: 'wrap',
-  flexShrink: 1,
-  textAlign: 'center',
-})
