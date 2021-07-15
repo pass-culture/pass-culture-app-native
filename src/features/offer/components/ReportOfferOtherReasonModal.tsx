@@ -1,10 +1,15 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
+import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
+import { extractApiErrorMessage } from 'api/helpers'
+import { useReportOfferMutation } from 'features/offer/services/useReportOffer'
+import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
@@ -13,10 +18,32 @@ interface Props {
   isVisible: boolean
   dismissModal: () => void
   onGoBack: () => void
+  offerId: number
 }
 
 export const ReportOfferOtherReasonModal: FunctionComponent<Props> = (props) => {
   const [inputText, setInputText] = useState('')
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+  const queryClient = useQueryClient()
+
+  const { mutate } = useReportOfferMutation({
+    offerId: props.offerId,
+    onSuccess: () => {
+      queryClient.invalidateQueries(QueryKeys.REPORTED_OFFERS)
+      showSuccessSnackBar({
+        message: t`Ton signalement a bien été pris en compte`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      props.dismissModal()
+    },
+    onError: (error) => {
+      showErrorSnackBar({ message: extractApiErrorMessage(error), timeout: SNACK_BAR_TIME_OUT })
+    },
+  })
+
+  function reportOtherOffer() {
+    mutate({ reason: 'OTHER', customReason: inputText })
+  }
 
   return (
     <AppModal
@@ -34,7 +61,12 @@ export const ReportOfferOtherReasonModal: FunctionComponent<Props> = (props) => 
         <Spacer.Column numberOfSpaces={2} />
         <LargeTextInput value={inputText} onChangeText={setInputText} maxLength={200} />
         <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary title={t`Signaler l'offre`} disabled={!inputText} />
+        <ButtonPrimary
+          title={t`Signaler l'offre`}
+          disabled={!inputText}
+          onPress={reportOtherOffer}
+          testId="report-other-button"
+        />
       </ModalContent>
     </AppModal>
   )

@@ -202,6 +202,7 @@ export const OfferBody: FunctionComponent<{
         isVisible={isReportOtherReasonVisible}
         dismissModal={hideReportOtherReason}
         onGoBack={goBackToReportReason}
+        offerId={offerId}
       />
     </Container>
   )
