@@ -121,6 +121,7 @@ export function useDepositAmount() {
   return formatToFrenchDecimal(amount)
 }
 
+//TODO(anoukhello) define a constant instead of this hook
 export function useSignInNumberOfSteps() {
   // FIXME: we disabled this after gen cause it was displaying postal code during registration
   const signInNumberOfSteps = 4
@@ -128,6 +129,8 @@ export function useSignInNumberOfSteps() {
   // const { data: settings } = useAppSettings()
   // return settings?.wholeFranceOpening ? 4 : 5
 }
+
+export const REDACTOR_SIGNUP_NUMBER_OF_STEPS = 3 // email, password, cgu
 
 export function useSendPhoneValidationMutation({
   onSuccess,
