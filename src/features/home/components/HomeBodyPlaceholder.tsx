@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { View, Dimensions, PixelRatio } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { SkeletonTile } from 'features/home/atoms/SkeletonTile'
@@ -38,23 +39,34 @@ export const HomeBodyPlaceholder = () => (
 const OfferModulePlaceholder: React.FC<{ size: TileSize; numberOfTiles: number }> = ({
   size,
   numberOfTiles,
-}) => (
-  <Row>
-    <Spacer.Row numberOfSpaces={6} />
-    <View>
-      <ModuleTitlePlaceholder />
-      <Spacer.Column numberOfSpaces={4} />
-      <Row>
-        {new Array(numberOfTiles).fill(null).map((_, index) => (
-          <React.Fragment key={`placeholder-${index}`}>
-            <OfferTilePlaceholder size={size} />
-            <Spacer.Row numberOfSpaces={4} />
-          </React.Fragment>
-        ))}
-      </Row>
-    </View>
-  </Row>
-)
+}) => {
+  const data = new Array(numberOfTiles)
+    .fill(null)
+    .map((_, index: number) => ({ key: index.toString() }))
+
+  const renderPlaceholder = useCallback(() => {
+    return <OfferTilePlaceholder size={size} />
+  }, [size])
+
+  return (
+    <Row>
+      <Spacer.Row numberOfSpaces={6} />
+      <View>
+        <ModuleTitlePlaceholder />
+        <Spacer.Column numberOfSpaces={4} />
+        <Row>
+          <FlatList
+            horizontal
+            data={data}
+            renderItem={renderPlaceholder}
+            ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
+            showsHorizontalScrollIndicator={false}
+          />
+        </Row>
+      </View>
+    </Row>
+  )
+}
 
 const ModuleTitlePlaceholder = () => (
   <SkeletonTile width={getSpacing(40)} height={getSpacing(4)} borderRadius={2} />
