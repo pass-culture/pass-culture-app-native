@@ -1,8 +1,7 @@
-import { getSpacing } from '@pass-culture/id-check'
 import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, padding } from 'ui/theme'
+import { ColorsEnum, getSpacing, padding } from 'ui/theme'
 
 type Props = {
   isError?: boolean
