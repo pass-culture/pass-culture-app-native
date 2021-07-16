@@ -142,7 +142,7 @@ describe('Home component - Analytics', () => {
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
     const home = await homeRenderer({ isLoggedIn: false })
-    const scrollView = home.getByTestId('homeScrollView')
+    const scrollView = home.getByTestId('homeBodyScrollView')
     await act(async () => {
       await flushAllPromises()
     })
@@ -161,7 +161,7 @@ describe('Home component - Analytics', () => {
 
   it('should trigger logEvent "AllModulesSeen" only once', async () => {
     const home = await homeRenderer({ isLoggedIn: false })
-    const scrollView = home.getByTestId('homeScrollView')
+    const scrollView = home.getByTestId('homeBodyScrollView')
 
     await act(async () => {
       await flushAllPromises()
@@ -194,7 +194,7 @@ describe('Home component - Analytics', () => {
       }),
     ]
     const home = await homeRenderer({ isLoggedIn: false })
-    const scrollView = home.getByTestId('homeScrollView')
+    const scrollView = home.getByTestId('homeBodyScrollView')
 
     await act(async () =>
       home

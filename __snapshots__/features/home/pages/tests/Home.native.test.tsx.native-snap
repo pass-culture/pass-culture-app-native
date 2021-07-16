@@ -1,180 +1,195 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home component should render correctly without login modal 1`] = `
-<RCTScrollView
-  bounces={false}
-  onScroll={[Function]}
-  scrollEventThrottle={400}
-  testID="homeScrollView"
+<View
+  style={
+    Array [
+      Object {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
 >
-  <View>
-    <View
-      customHeight={16}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "left": 0,
-            "position": "absolute",
-            "top": 0,
-            "zIndex": 0,
-          },
-        ]
-      }
-    >
+  <RCTScrollView
+    ItemSeparatorComponent={[Function]}
+    ListFooterComponent={<TabBarSpacer />}
+    ListHeaderComponent={[Function]}
+    bounces={false}
+    data={Array []}
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={400}
+    stickyHeaderIndices={Array []}
+    testID="homeBodyScrollView"
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
       <View
-        height={280}
-        width={754}
+        onLayout={[Function]}
       >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            customHeight={16}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "zIndex": 0,
+                },
+              ]
+            }
+          >
+            <View
+              height={280}
+              width={754}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          >
+            <View
+              numberOfSpaces={8}
+              style={
+                Array [
+                  Object {
+                    "height": 32,
+                  },
+                ]
+              }
+            />
+            <Text
+              color="#ffffff"
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-ExtraBoldItalic",
+                    "fontSize": 28,
+                    "lineHeight": 34,
+                    "marginHorizontal": 32,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Bienvenue !
+            </Text>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <Text
+              color="#ffffff"
+              style={
+                Array [
+                  Object {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Toute la culture à portée de main
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+      >
+        <View
+          customHeight={72}
+          style={
+            Array [
+              Object {
+                "height": 72,
+              },
+            ]
+          }
+        />
       </View>
     </View>
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    >
-      <View
-        numberOfSpaces={8}
-        style={
-          Array [
-            Object {
-              "height": 32,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        numberOfLines={2}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-ExtraBoldItalic",
-              "fontSize": 28,
-              "lineHeight": 34,
-              "marginHorizontal": 32,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Bienvenue !
-      </Text>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Toute la culture à portée de main
-      </Text>
-    </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        Array [
-          Object {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "flex-start",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    >
-      <RCTScrollView
-        ItemSeparatorComponent={[Function]}
-        data={Array []}
-        disableVirtualization={false}
-        getItem={[Function]}
-        getItemCount={[Function]}
-        horizontal={false}
-        initialNumToRender={10}
-        keyExtractor={[Function]}
-        maxToRenderPerBatch={10}
-        onContentSizeChange={[Function]}
-        onEndReachedThreshold={2}
-        onLayout={[Function]}
-        onMomentumScrollEnd={[Function]}
-        onScroll={[Function]}
-        onScrollBeginDrag={[Function]}
-        onScrollEndDrag={[Function]}
-        removeClippedSubviews={false}
-        renderItem={[Function]}
-        scrollEventThrottle={50}
-        stickyHeaderIndices={Array []}
-        updateCellsBatchingPeriod={50}
-        viewabilityConfigCallbackPairs={Array []}
-        windowSize={21}
-      >
-        <View />
-      </RCTScrollView>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      customHeight={72}
-      style={
-        Array [
-          Object {
-            "height": 72,
-          },
-        ]
-      }
-    />
-  </View>
-</RCTScrollView>
+  </RCTScrollView>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+</View>
 `;

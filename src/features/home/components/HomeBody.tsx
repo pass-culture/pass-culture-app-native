@@ -3,6 +3,7 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BusinessModule, ExclusivityModule, OffersModule } from 'features/home/components'
+import { HomeHeader } from 'features/home/components/HomeHeader'
 import {
   BusinessPane,
   ExclusivityPane,
@@ -25,12 +26,20 @@ interface HomeBodyProps {
   homeModules: HomeModuleResponse
   recommendedHits: SearchHit[]
   setRecommendationY: (y: number) => void
+  onScroll: (input: any) => void
 }
 
 const keyExtractor = (item: ProcessedModule, index: number) =>
   'moduleId' in item ? item.moduleId : `recommendation${index}`
 
 const ItemSeparatorComponent = () => <Spacer.Column numberOfSpaces={6} />
+
+const ListHeaderComponent = () => (
+  <Container>
+    <Spacer.TopScreen />
+    <HomeHeader />
+  </Container>
+)
 
 export const HomeBody = (props: HomeBodyProps) => {
   const { modules, homeModules, recommendedHits, setRecommendationY } = props
@@ -82,9 +91,15 @@ export const HomeBody = (props: HomeBodyProps) => {
   return (
     <Container>
       <FlatList
+        testID="homeBodyScrollView"
+        scrollEventThrottle={400}
+        bounces={false}
+        onScroll={props.onScroll}
         data={modules}
         renderItem={renderModule}
         keyExtractor={keyExtractor}
+        ListHeaderComponent={ListHeaderComponent}
+        ListFooterComponent={<Spacer.TabBar />}
         ItemSeparatorComponent={ItemSeparatorComponent}
       />
       <Spacer.Column numberOfSpaces={6} />
@@ -92,7 +107,4 @@ export const HomeBody = (props: HomeBodyProps) => {
   )
 }
 
-const Container = styled.View({
-  flex: 1,
-  alignItems: 'flex-start',
-})
+const Container = styled.View({ flex: 1 })

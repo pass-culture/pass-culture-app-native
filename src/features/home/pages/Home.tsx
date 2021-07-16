@@ -66,20 +66,12 @@ export const Home: FunctionComponent = function () {
   }
 
   return (
-    <ScrollView
-      testID="homeScrollView"
-      scrollEventThrottle={400}
-      bounces={false}
-      onScroll={onScroll}>
-      <Spacer.TopScreen />
-      <HomeHeader />
-      <HomeBody
-        modules={displayedModules}
-        homeModules={homeModules}
-        recommendedHits={recommendedHits}
-        setRecommendationY={setRecommendationY}
-      />
-      <Spacer.TabBar />
-    </ScrollView>
+    <HomeBody
+      modules={displayedModules}
+      homeModules={homeModules}
+      recommendedHits={recommendedHits}
+      setRecommendationY={setRecommendationY}
+      onScroll={onScroll}
+    />
   )
 }
