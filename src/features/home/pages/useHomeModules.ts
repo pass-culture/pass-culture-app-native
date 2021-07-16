@@ -1,7 +1,8 @@
 import { MultipleQueriesResponse } from '@algolia/client-search'
 import flatten from 'lodash.flatten'
 import uniqBy from 'lodash.uniqby'
-import { useEffect, useState } from 'react'
+import isEmpty from 'lodash/isEmpty'
+import { useEffect, useMemo, useState } from 'react'
 import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
@@ -54,32 +55,45 @@ export const useHomeModules = (
       return {
         queryKey: [QueryKeys.HOME_MODULE, moduleId],
         queryFn: fetchModule,
-        onSuccess: (response) => {
-          let hits: SearchHit[] = []
-          let nbHits = 0
-
-          if (isMultipleAlgoliaHit(response)) {
-            hits = flatten(response.results.map(({ hits }) => hits))
-            nbHits = response.results.reduce((prev, curr) => prev + curr.nbHits, 0)
-          } else if (isMultipleSearchHit(response)) {
-            hits = response.hits
-            nbHits = response.nbHits
-          } else {
-            return
-          }
-
-          setHomeModules((prevHomeModules) => ({
-            ...prevHomeModules,
-            [response.moduleId]: {
-              hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID'),
-              nbHits,
-            },
-          }))
-        },
         enabled,
       }
     })
   )
+
+  const newStateArray = queries.map((query) => {
+    let hits: SearchHit[] = []
+    let nbHits = 0
+
+    if (!query.isSuccess) return
+
+    const data = query.data
+    if (isMultipleAlgoliaHit(data)) {
+      hits = flatten(data.results.map(({ hits }) => hits))
+      nbHits = data.results.reduce((prev, curr) => prev + curr.nbHits, 0)
+    } else if (isMultipleSearchHit(data)) {
+      hits = data.hits
+      nbHits = data.nbHits
+    } else {
+      return
+    }
+
+    return {
+      [data.moduleId]: {
+        hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID'),
+        nbHits,
+      },
+    }
+  })
+
+  const newState = useMemo(() => ({ ...Object.assign({}, ...newStateArray) }), [newStateArray])
+
+  useEffect(() => {
+    !isEmpty(newState) &&
+      setHomeModules((prevHomeModules) => ({
+        ...prevHomeModules,
+        ...newState,
+      }))
+  }, [newState])
 
   useEffect(() => {
     // When we enable or disable the geolocation, we want to refetch the home modules
