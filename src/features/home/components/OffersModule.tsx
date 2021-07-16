@@ -1,6 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, ScrollView } from 'react-native'
+import {
+  FlatList,
+  ListRenderItem,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  ScrollView,
+} from 'react-native'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
@@ -27,6 +33,8 @@ type OffersModuleProps = {
   index: number
 }
 
+const keyExtractor = (item: SearchHit) => item.objectID
+
 export const OffersModule = (props: OffersModuleProps) => {
   const { nbHits, display, search: parameters, position, index, isBeneficiary, hits } = props
   const { navigate } = useNavigation<UseNavigationType>()
@@ -36,22 +44,22 @@ export const OffersModule = (props: OffersModuleProps) => {
     analytics.logAllTilesSeen(moduleName, hits.length)
   )
 
-  const renderItem = useCallback(
-    (hit: SearchHit) => {
-      const timestampsInMillis = hit.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+  const renderItem: ListRenderItem<SearchHit> = useCallback(
+    ({ item }) => {
+      const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
-        <Row key={hit.objectID}>
+        <Row key={item.objectID}>
           <OfferTile
-            category={parseCategory(hit.offer.category)}
-            categoryName={hit.offer.category}
-            offerId={+hit.objectID}
-            description={hit.offer.description || ''}
-            distance={formatDistance(hit._geoloc, position)}
-            name={hit.offer.name}
+            category={parseCategory(item.offer.category)}
+            categoryName={item.offer.category}
+            offerId={+item.objectID}
+            description={item.offer.description || ''}
+            distance={formatDistance(item._geoloc, position)}
+            name={item.offer.name}
             date={formatDates(timestampsInMillis)}
-            isDuo={hit.offer.isDuo}
-            thumbUrl={hit.offer.thumbUrl}
-            price={getDisplayPrice(hit.offer.prices)}
+            isDuo={item.offer.isDuo}
+            thumbUrl={item.offer.thumbUrl}
+            price={getDisplayPrice(item.offer.prices)}
             layout={display.layout}
             isBeneficiary={isBeneficiary}
             moduleName={moduleName}
@@ -110,7 +118,14 @@ export const OffersModule = (props: OffersModuleProps) => {
             <Spacer.Row numberOfSpaces={4} />
           </Row>
         )}
-        {hits.map(renderItem)}
+        <FlatList
+          data={hits}
+          renderItem={renderItem}
+          showsHorizontalScrollIndicator={false}
+          scrollEventThrottle={200}
+          horizontal={true}
+          keyExtractor={keyExtractor}
+        />
         {!!showSeeMore && <SeeMore layout={display.layout} onPress={onPressSeeMore} />}
         <Spacer.Row numberOfSpaces={6} />
       </ScrollView>
