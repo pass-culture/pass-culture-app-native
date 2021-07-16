@@ -25,10 +25,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<ReportOfferOtherReasonModal />', () => {
-  describe('Report other offer button', () => {
+  describe('Report offer button', () => {
     const queryClient = useQueryClient()
 
-    it('should enabled the button when reason description is typing', async () => {
+    it('should enabled the button when large input is filled', async () => {
       const { getByTestId } = renderReportOtherReasonModal()
 
       const reportButton = getByTestId('report-other-button')

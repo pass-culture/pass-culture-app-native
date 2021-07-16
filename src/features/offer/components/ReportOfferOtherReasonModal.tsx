@@ -41,7 +41,7 @@ export const ReportOfferOtherReasonModal: FunctionComponent<Props> = (props) => 
     },
   })
 
-  function reportOtherOffer() {
+  function reportOffer() {
     mutate({ reason: 'OTHER', customReason: inputText })
   }
 
@@ -64,7 +64,7 @@ export const ReportOfferOtherReasonModal: FunctionComponent<Props> = (props) => 
         <ButtonPrimary
           title={t`Signaler l'offre`}
           disabled={!inputText}
-          onPress={reportOtherOffer}
+          onPress={reportOffer}
           testId="report-other-button"
         />
       </ModalContent>
