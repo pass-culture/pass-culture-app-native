@@ -1,1 +1,1 @@
-export const api = { postnativev1bookingsbookingIdcancel: jest.fn() }
+export const api = { postnativev1bookingsbookingIdcancel: jest.fn(), getnativev1offersreports: jest.fn() }

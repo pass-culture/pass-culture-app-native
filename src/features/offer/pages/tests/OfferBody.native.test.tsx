@@ -1,11 +1,17 @@
 import mockdate from 'mockdate'
 
+import { api } from 'api/api'
+
 import { renderOfferBodyPage } from './renderOfferPageTestUtil'
 
-describe.skip('<OfferBody />', () => {
+jest.mock('api/api')
+
+describe('<OfferBody />', () => {
   beforeAll(() => {
     mockdate.set(new Date(2021, 0, 1))
   })
+
+  beforeEach(jest.clearAllMocks)
 
   it('should match snapshot for physical offer', async () => {
     const { toJSON } = await renderOfferBodyPage({ isDigital: false })
@@ -64,5 +70,15 @@ describe.skip('<OfferBody />', () => {
     })
     expect(wrapper.queryByText("Voir l'itinéraire")).toBeFalsy()
     expect(wrapper.queryByText('Distance')).toBeFalsy()
+  })
+
+  it('should request /native/v1/offers/reports if user is logged in', async () => {
+    await renderOfferBodyPage()
+    expect(api.getnativev1offersreports).toHaveBeenCalled()
+  })
+
+  it('should not request /native/v1/offers/reports if user is not logged in', async () => {
+    await renderOfferBodyPage(undefined, undefined, { isLoggedIn: false })
+    expect(api.getnativev1offersreports).not.toHaveBeenCalled()
   })
 })

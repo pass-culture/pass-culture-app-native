@@ -4,6 +4,7 @@ import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { RootStack } from 'features/navigation/RootNavigator'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
@@ -20,9 +21,8 @@ jest.mock('@react-navigation/native', () => ({
   useFocusEffect: jest.fn(),
 }))
 
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
@@ -62,10 +62,14 @@ export const offerId = 116656
 
 export async function renderOfferBodyPage(
   extraOffer?: Partial<Omit<OfferResponse, 'id'>>,
-  user?: Partial<UserProfileResponse>
+  user?: Partial<UserProfileResponse>,
+  { isLoggedIn } = { isLoggedIn: true }
 ) {
   mockedOffer = { ...offerResponseSnap, ...extraOffer }
   mockedUser = { ...baseUser, ...user }
+
+  const setIsLoggedIn = jest.fn()
+  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn, setIsLoggedIn }))
 
   const wrapper = render(
     reactQueryProviderHOC(
