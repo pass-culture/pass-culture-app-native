@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BusinessModule, ExclusivityModule, OffersModule } from 'features/home/components'
@@ -26,58 +27,66 @@ interface HomeBodyProps {
   setRecommendationY: (y: number) => void
 }
 
+const keyExtractor = (item: ProcessedModule, index: number) =>
+  'moduleId' in item ? item.moduleId : `recommendation${index}`
+
+const ItemSeparatorComponent = () => <Spacer.Column numberOfSpaces={6} />
+
 export const HomeBody = (props: HomeBodyProps) => {
   const { modules, homeModules, recommendedHits, setRecommendationY } = props
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
 
+  const renderModule = useCallback(
+    ({ item, index }: { item: ProcessedModule; index: number }) => {
+      if (isOfferModuleTypeguard(item)) {
+        const { hits, nbHits } = homeModules[item.moduleId]
+        return (
+          <OffersModule
+            key={item.moduleId}
+            search={item.search[0]}
+            display={item.display}
+            isBeneficiary={profile?.isBeneficiary}
+            position={position}
+            hits={hits}
+            nbHits={nbHits}
+            cover={item instanceof OffersWithCover ? item.cover : null}
+            index={index}
+          />
+        )
+      }
+      if (item instanceof RecommendationPane) {
+        return (
+          <RecommendationModule
+            key={`recommendation${index}`}
+            isBeneficiary={profile?.isBeneficiary}
+            hits={recommendedHits}
+            position={position}
+            index={index}
+            setRecommendationY={setRecommendationY}
+            {...item}
+          />
+        )
+      }
+      if (item instanceof ExclusivityPane) {
+        return <ExclusivityModule key={item.moduleId} {...item} />
+      }
+      if (item instanceof BusinessPane) {
+        return <BusinessModule key={item.moduleId} {...item} />
+      }
+      return null
+    },
+    [Object.keys(homeModules), position, recommendedHits]
+  )
+
   return (
     <Container>
-      {modules
-        .map((module: ProcessedModule, index: number) => {
-          if (isOfferModuleTypeguard(module)) {
-            const { hits, nbHits } = homeModules[module.moduleId]
-            return (
-              <OffersModule
-                key={module.moduleId}
-                search={module.search[0]}
-                display={module.display}
-                isBeneficiary={profile?.isBeneficiary}
-                position={position}
-                hits={hits}
-                nbHits={nbHits}
-                cover={module instanceof OffersWithCover ? module.cover : null}
-                index={index}
-              />
-            )
-          }
-          if (module instanceof RecommendationPane) {
-            return (
-              <RecommendationModule
-                key="recommendation"
-                isBeneficiary={profile?.isBeneficiary}
-                hits={recommendedHits}
-                position={position}
-                index={index}
-                setRecommendationY={setRecommendationY}
-                {...module}
-              />
-            )
-          }
-          if (module instanceof ExclusivityPane) {
-            return <ExclusivityModule key={module.moduleId} {...module} />
-          }
-          if (module instanceof BusinessPane) {
-            return <BusinessModule key={module.moduleId} {...module} />
-          }
-          return null
-        })
-        .map((children) => (
-          <React.Fragment key={children?.key}>
-            {children}
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
-        ))}
+      <FlatList
+        data={modules}
+        renderItem={renderModule}
+        keyExtractor={keyExtractor}
+        ItemSeparatorComponent={ItemSeparatorComponent}
+      />
       <Spacer.Column numberOfSpaces={6} />
     </Container>
   )
