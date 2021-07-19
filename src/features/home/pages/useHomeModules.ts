@@ -55,6 +55,7 @@ export const useHomeModules = (
         queryKey: [QueryKeys.HOME_MODULE, moduleId],
         queryFn: fetchModule,
         enabled,
+        notifyOnChangeProps: ['data'],
       }
     })
   )
