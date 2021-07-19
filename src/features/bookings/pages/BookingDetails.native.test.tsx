@@ -32,8 +32,7 @@ jest.mock('features/auth/settings', () => ({
   })),
 }))
 
-// FIXME: web integration
-describe.skip('BookingDetails', () => {
+describe('BookingDetails', () => {
   afterEach(jest.restoreAllMocks)
 
   beforeAll(() => {
