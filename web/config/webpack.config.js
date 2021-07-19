@@ -284,6 +284,7 @@ module.exports = function (webpackEnv) {
         'lottie-react-native': 'react-native-web-lottie',
         'react-native-linear-gradient': 'react-native-web-linear-gradient',
         '@sentry/react-native': '@sentry/react',
+        '@bam.tech/react-native-batch': path.join(paths.appSrc, 'libs/react-native-batch'),
 
         // /**
         //  * These will replace react navigation entirely.
@@ -627,17 +628,6 @@ module.exports = function (webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
-      // ['production', 'staging', 'testing'].includes(process.env.REACT_APP_ENVIRONMENT) &&
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: `twa-asset-links/assetlinks-${process.env.REACT_APP_ENVIRONMENT}.json`,
-            to: `.well-known/assetlinks.json`,
-            noErrorOnMissing:
-              console.log('----------------------> ' + process.env.REACT_APP_ENVIRONMENT) || true,
-          },
-        ],
-      }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.
