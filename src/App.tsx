@@ -7,12 +7,7 @@ import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 import { AppState, AppStateStatus, LogBox } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import {
-  focusManager as reactQueryFocusManager,
-  QueryCache,
-  QueryClient,
-  QueryClientProvider,
-} from 'react-query'
+import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 import { ThemeProvider } from 'styled-components/native'
 
@@ -38,21 +33,11 @@ import { activate } from 'libs/i18n'
 import { idCheckAnalytics } from 'libs/idCheckAnalytics'
 import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
 import { useStartBatchNotification } from 'libs/notifications'
+import { queryClient } from 'libs/queryClient'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 LogBox.ignoreLogs(['Setting a timer', 'Expected style "elevation:'])
-
-const queryCache = new QueryCache()
-const queryClient = new QueryClient({
-  queryCache,
-  defaultOptions: {
-    queries: {
-      retry: 0,
-      useErrorBoundary: true,
-    },
-  },
-})
 
 if (__DEV__ && process.env.JEST !== 'true') {
   addPlugin({ queryClient })

@@ -18,6 +18,7 @@ import { BookingDetails } from './BookingDetails'
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: undefined })),
 }))
+
 jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))

@@ -278,12 +278,12 @@ module.exports = function (webpackEnv) {
       alias: {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-        'react-native$': 'react-native-web',
-        'react-native-modal$': 'modal-enhanced-react-native-web',
+        'react-native': 'react-native-web',
+        'react-native-modal': 'modal-enhanced-react-native-web',
         'react-native-svg': 'react-native-svg-web',
         'lottie-react-native': 'react-native-web-lottie',
         'react-native-linear-gradient': 'react-native-web-linear-gradient',
-        '@sentry/react-native$': '@sentry/react',
+        '@sentry/react-native': '@sentry/react',
 
         // /**
         //  * These will replace react navigation entirely.
@@ -362,13 +362,14 @@ module.exports = function (webpackEnv) {
               test: /\.(js|mjs|jsx|ts|tsx)$/,
               include: [
                 paths.appSrc,
+                /node_modules\/react-native-animatable/,
                 /node_modules\/@pass-culture\/id-check\/src/,
                 /id-check-front\/packages\/id-check\/src/,
+                /node_modules\/@pass-culture\/react-native-profiling\/src/,
               ],
               loader: require.resolve('babel-loader'),
               options: {
                 customize: require.resolve('babel-preset-react-app/webpack-overrides'),
-                presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
                 plugins: [
                   [
                     require.resolve('babel-plugin-named-asset-import'),
