@@ -1,7 +1,3 @@
-import Config from '@bam.tech/react-native-config'
-
-import { parseBooleanVariables } from './parseBooleanVariables'
-
 export interface Environment {
   ACCESSIBILITY_LINK: string
   ALGOLIA_APPLICATION_ID: string
@@ -51,4 +47,4 @@ export interface Environment {
   TMX_ORGID: string
 }
 
-export const env = parseBooleanVariables(Config) as Environment
+export * from './env'

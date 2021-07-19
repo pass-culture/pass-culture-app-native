@@ -1,12 +1,12 @@
 'use strict';
 /* eslint-disable */
-const fs = require('fs');
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const evalSourceMapMiddleware = require('react-dev-utils/evalSourceMapMiddleware');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
 const ignoredFiles = require('react-dev-utils/ignoredFiles');
 const redirectServedPath = require('react-dev-utils/redirectServedPathMiddleware');
 const paths = require('./paths');
+const getClientEnvironment = require('./env')
 const getHttpsConfig = require('./getHttpsConfig');
 
 const host = process.env.HOST || '0.0.0.0';
@@ -15,6 +15,11 @@ const sockPath = process.env.WDS_SOCKET_PATH; // default: '/sockjs-node'
 const sockPort = process.env.WDS_SOCKET_PORT;
 
 module.exports = function (proxy, allowedHost) {
+    // We will provide `paths.publicUrlOrPath` to our app
+    // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
+    // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
+    // Get environment variables to inject into our app.
+    const { raw } = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1))
     return {
         // WebpackDevServer 2.4.3 introduced a security fix that prevents remote
         // websites from potentially accessing local content through DNS rebinding:
@@ -100,7 +105,14 @@ module.exports = function (proxy, allowedHost) {
         },
         public: allowedHost,
         // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
-        proxy,
+        proxy: {
+            ...proxy,
+            // This `proxy` is handy until pc backend accept CORS request (or fetch client is configured)
+            '/native': {
+                target: raw.API_BASE_URL,
+                changeOrigin: true,
+            }
+        },
         before(app, server) {
             // Keep `evalSourceMapMiddleware` and `errorOverlayMiddleware`
             // middlewares before `redirectServedPath` otherwise will not have any effect
