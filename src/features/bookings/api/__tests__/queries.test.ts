@@ -1,68 +1,52 @@
+import { renderHook } from '@testing-library/react-hooks'
+import { rest } from 'msw'
+
+import { BookingsResponse } from 'api/gen'
+import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
+import { env } from 'libs/environment'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
+
 import { useOngoingOrEndedBooking } from '../queries'
 
-jest.mock('react-query')
+server.use(
+  rest.get<BookingsResponse>(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+    res(ctx.status(200), ctx.json(bookingsSnap))
+  )
+)
 
 describe('[API] booking queries', () => {
   describe('[Method] useOngoingOrEndedBooking', () => {
-    it('should return ongoing_bookings where there is one', async () => {
-      const bookingId = 123
-      const bookingResult = useOngoingOrEndedBooking(bookingId)
-      expect(bookingResult).toMatchInlineSnapshot(`
-        Object {
-          "id": 123,
-          "quantity": 3,
-          "stock": Object {
-            "id": 431,
-            "offer": Object {
-              "category": Object {
-                "categoryType": "Event",
-                "label": "categoryLabel",
-              },
-              "id": 32871,
-              "isDigital": true,
-              "isPermanent": true,
-              "name": "mockedBookingName",
-              "venue": Object {
-                "coordinates": Object {},
-                "id": 3131,
-                "name": "venueName",
-              },
-            },
-          },
-          "token": "bookingToken",
-          "totalAmount": 4,
-        }
-      `)
+    it('should return ongoing_bookings when there is one', async () => {
+      const booking = bookingsSnap.ongoing_bookings[0]
+      const { result, waitFor } = renderHook(() => useOngoingOrEndedBooking(booking.id), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await waitFor(() => result.current !== undefined)
+      expect(result.current?.id).toEqual(booking.id)
+      expect(result.current?.stock.id).toEqual(booking.stock.id)
     })
-    it('should not return ended_bookings where there is one', async () => {
-      const bookingId = 321
-      const bookingResult = useOngoingOrEndedBooking(bookingId)
-      expect(bookingResult).toMatchInlineSnapshot(`
-        Object {
-          "id": 321,
-          "quantity": 3,
-          "stock": Object {
-            "id": 431,
-            "offer": Object {
-              "category": Object {
-                "categoryType": "Event",
-                "label": "categoryLabel",
-              },
-              "id": 32871,
-              "isDigital": true,
-              "isPermanent": true,
-              "name": "mockedBookingName",
-              "venue": Object {
-                "coordinates": Object {},
-                "id": 3131,
-                "name": "venueName",
-              },
-            },
-          },
-          "token": "bookingToken",
-          "totalAmount": 4,
-        }
-      `)
+
+    it('should return ended_bookings when there is one', async () => {
+      const booking = bookingsSnap.ended_bookings[0]
+      const { result, waitFor } = renderHook(() => useOngoingOrEndedBooking(booking.id), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await waitFor(() => result.current !== undefined)
+      expect(result.current?.id).toEqual(booking.id)
+      expect(result.current?.stock.id).toEqual(booking.stock.id)
+    })
+
+    it('should not return any booking if not ongoing nor ended', async () => {
+      const bookingId = 1230912039
+      const { result, waitFor } = renderHook(() => useOngoingOrEndedBooking(bookingId), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await waitFor(() => result.current === undefined)
+      expect(result.current).toBeUndefined()
     })
   })
 })
