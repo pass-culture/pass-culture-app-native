@@ -26,6 +26,7 @@ import styled from 'styled-components/native'
 
 //
 // import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
+import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { Route } from 'features/navigation/RootNavigator/types'
 import { linking as tabNavigatorLinking } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
@@ -96,12 +97,20 @@ const ABTestingPOC = () => (
     <Link to={'/search'}>
       <Text>Go to TabNavigator/Search</Text>
     </Link>
+    <Link to={'/eighteen'}>
+      <Text>Go to TabNavigator/Eighteen</Text>
+    </Link>
   </Page>
 )
 
 export const routes: Array<Route> = [
   { name: 'ABTestingPOC', component: ABTestingPOC, path: '/abtesting' },
   { name: 'TabNavigator', component: TabNavigator, linking: tabNavigatorLinking },
+  {
+    name: 'EighteenBirthday',
+    component: EighteenBirthday,
+    path: '/eighteen',
+  },
   //   // { name: 'ABTestingPOC', component: ABTestingPOC },
   //   // { name: 'AcceptCgu', component: AcceptCgu, hoc: withAsyncErrorBoundary },
   //   // { name: 'AccountCreated', component: AccountCreated },

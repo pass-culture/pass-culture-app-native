@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
-import appsFlyer from 'react-native-appsflyer'
+import appsFlyerDefault from 'react-native-appsflyer'
 
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { MonitoringError } from 'libs/errorMonitoring'
 import { useTrackingConsent } from 'libs/trackingConsent'
+
+export const appsFlyer = appsFlyerDefault
 
 // We ask for the user's consent on app launch. We defer the sending of events to AppsFlyer,
 // depending on the user's response, by the following delay.
