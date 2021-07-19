@@ -67,7 +67,7 @@ export const Home: FunctionComponent = function () {
 
   return (
     <HomeBody
-      modules={displayedModules}
+      displayedModules={displayedModules}
       homeModules={homeModules}
       recommendedHits={recommendedHits}
       setRecommendationY={setRecommendationY}

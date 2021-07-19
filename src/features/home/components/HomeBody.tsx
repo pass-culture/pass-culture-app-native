@@ -22,7 +22,7 @@ import { isOfferModuleTypeguard } from '../typeguards'
 import { RecommendationModule } from './RecommendationModule'
 
 interface HomeBodyProps {
-  modules: ProcessedModule[]
+  displayedModules: ProcessedModule[]
   homeModules: HomeModuleResponse
   recommendedHits: SearchHit[]
   setRecommendationY: (y: number) => void
@@ -42,7 +42,7 @@ const ListHeaderComponent = () => (
 )
 
 export const HomeBody = (props: HomeBodyProps) => {
-  const { modules, homeModules, recommendedHits, setRecommendationY } = props
+  const { displayedModules, homeModules, recommendedHits, setRecommendationY } = props
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
 
@@ -95,7 +95,7 @@ export const HomeBody = (props: HomeBodyProps) => {
         scrollEventThrottle={400}
         bounces={false}
         onScroll={props.onScroll}
-        data={modules}
+        data={displayedModules}
         renderItem={renderModule}
         keyExtractor={keyExtractor}
         ListHeaderComponent={ListHeaderComponent}
