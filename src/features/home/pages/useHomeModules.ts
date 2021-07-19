@@ -1,8 +1,7 @@
 import { MultipleQueriesResponse } from '@algolia/client-search'
 import flatten from 'lodash.flatten'
 import uniqBy from 'lodash.uniqby'
-import isEmpty from 'lodash/isEmpty'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect } from 'react'
 import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
@@ -38,7 +37,7 @@ export const useHomeModules = (
   offerModules: Array<Offers | OffersWithCover>
 ): HomeModuleResponse => {
   const { position } = useGeolocation()
-  const [homeModules, setHomeModules] = useState<HomeModuleResponse>({})
+  const homeModules: HomeModuleResponse = {}
   const { enabled, fetchMultipleHits, filterHits, transformHits } = useFetchMultipleHits()
 
   const queries = useQueries(
@@ -60,7 +59,7 @@ export const useHomeModules = (
     })
   )
 
-  const newStateArray = queries.map((query) => {
+  queries.forEach((query) => {
     let hits: SearchHit[] = []
     let nbHits = 0
 
@@ -77,23 +76,11 @@ export const useHomeModules = (
       return
     }
 
-    return {
-      [data.moduleId]: {
-        hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID'),
-        nbHits,
-      },
+    homeModules[data.moduleId] = {
+      hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID'),
+      nbHits,
     }
   })
-
-  const newState = useMemo(() => ({ ...Object.assign({}, ...newStateArray) }), [newStateArray])
-
-  useEffect(() => {
-    !isEmpty(newState) &&
-      setHomeModules((prevHomeModules) => ({
-        ...prevHomeModules,
-        ...newState,
-      }))
-  }, [newState])
 
   useEffect(() => {
     // When we enable or disable the geolocation, we want to refetch the home modules
