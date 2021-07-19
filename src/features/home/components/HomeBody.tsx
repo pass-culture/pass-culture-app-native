@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react'
-import { FlatList } from 'react-native'
+import React, { useCallback, useState } from 'react'
+import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BusinessModule, ExclusivityModule, OffersModule } from 'features/home/components'
@@ -10,6 +10,9 @@ import {
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
+import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
+import { analytics } from 'libs/analytics'
+import { isCloseToBottom } from 'libs/analytics.utils'
 import { useGeolocation } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
 import { Spacer } from 'ui/theme'
@@ -25,8 +28,6 @@ interface HomeBodyProps {
   displayedModules: ProcessedModule[]
   homeModules: HomeModuleResponse
   recommendedHits: SearchHit[]
-  setRecommendationY: (y: number) => void
-  onScroll: (input: any) => void
 }
 
 const keyExtractor = (item: ProcessedModule, index: number) =>
@@ -42,9 +43,33 @@ const ListHeaderComponent = () => (
 )
 
 export const HomeBody = (props: HomeBodyProps) => {
-  const { displayedModules, homeModules, recommendedHits, setRecommendationY } = props
+  const { displayedModules, homeModules, recommendedHits } = props
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
+
+  const [recommendationY, setRecommendationY] = useState<number>(Infinity)
+  const logHasSeenAllModules = useFunctionOnce(() =>
+    analytics.logAllModulesSeen(displayedModules.length)
+  )
+
+  const logHasSeenRecommendationModule = useFunctionOnce(() => {
+    const recommendationModule = displayedModules.find((m) => m instanceof RecommendationPane)
+    if (recommendationModule && recommendedHits.length > 0) {
+      analytics.logRecommendationModuleSeen(
+        (recommendationModule as RecommendationPane).display.title,
+        recommendedHits.length
+      )
+    }
+  })
+
+  const onScroll = useCallback(
+    ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+      if (isCloseToBottom(nativeEvent)) logHasSeenAllModules()
+      const padding = nativeEvent.contentSize.height - recommendationY
+      if (isCloseToBottom({ ...nativeEvent, padding })) logHasSeenRecommendationModule()
+    },
+    [recommendationY, displayedModules.length]
+  )
 
   const renderModule = useCallback(
     ({ item, index }: { item: ProcessedModule; index: number }) => {
@@ -94,7 +119,7 @@ export const HomeBody = (props: HomeBodyProps) => {
         testID="homeBodyScrollView"
         scrollEventThrottle={400}
         bounces={false}
-        onScroll={props.onScroll}
+        onScroll={onScroll}
         data={displayedModules}
         renderItem={renderModule}
         keyExtractor={keyExtractor}
