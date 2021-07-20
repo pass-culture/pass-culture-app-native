@@ -14,10 +14,6 @@ import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
 
-let mockDepositAmount = '300 €'
-jest.mock('features/auth/api', () => ({
-  useDepositAmount: () => mockDepositAmount,
-}))
 jest.mock('features/auth/settings')
 const mockedUseAppSettings = mocked(useAppSettings, true)
 
@@ -51,17 +47,10 @@ describe('SetBirthday Page', () => {
   })
 
   it('should show the correct deposit amount', async () => {
-    mockDepositAmount = '300 €'
-    let component = renderSetBirthday()
+    const component = renderSetBirthday()
     fireEvent.press(component.getByTestId('Pourquoi ?'))
     expect(component.queryByText(/une aide financière de/)).toBeTruthy()
     expect(component.queryByText(/300 €/)).toBeTruthy()
-
-    mockDepositAmount = '500 €'
-    component = renderSetBirthday()
-    fireEvent.press(component.getByTestId('Pourquoi ?'))
-    expect(component.queryByText(/une aide financière de/)).toBeTruthy()
-    expect(component.queryByText(/500 €/)).toBeTruthy()
   })
 
   it('should display the error message "date incorrecte" when the date is too old', () => {

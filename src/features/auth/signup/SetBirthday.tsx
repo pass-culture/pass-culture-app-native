@@ -100,13 +100,16 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   }
 
   function goToNextStep() {
-    const nextPage = 'AcceptCgu'
-    // FIXME: we disabled this after gen cause it was displaying postal code during registration
-    // const nextPage = settings?.wholeFranceOpening ? 'AcceptCgu' : 'SetPostalCode'
     const { date } = state
     if (date) {
       const birthday = formatDateToISOStringWithoutTime(date)
-      navigate(nextPage, { email, isNewsletterChecked, password, birthday, postalCode: undefined })
+      navigate('AcceptCgu', {
+        email,
+        isNewsletterChecked,
+        password,
+        birthday,
+        postalCode: undefined,
+      })
     }
   }
 
