@@ -6,10 +6,6 @@ import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
-jest.mock('features/auth/api', () => ({
-  useSignInNumberOfSteps: () => 5,
-}))
-
 describe('<SetEmail />', () => {
   beforeEach(() =>
     useRoute.mockImplementation(() => ({
@@ -35,10 +31,10 @@ describe('<SetEmail />', () => {
     expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
   })
 
-  it('should display 5 step dots with the first one as current step', () => {
+  it('should display 4 step dots with the first one as current step', () => {
     const { getAllByTestId } = renderPage()
     const dots = getAllByTestId('dot-icon')
-    expect(dots.length).toBe(5)
+    expect(dots.length).toBe(4)
     expect(dots[0].props.fill).toEqual(ColorsEnum.PRIMARY)
   })
 

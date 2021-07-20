@@ -5,7 +5,7 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSignInNumberOfSteps } from 'features/auth/api'
+import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
@@ -28,7 +28,7 @@ let INITIAL_POSTAL_CODE = ''
 if (__DEV__ && env.SIGNUP_POSTAL_CODE) {
   INITIAL_POSTAL_CODE = env.SIGNUP_POSTAL_CODE // '93000'
 }
-
+// TODO(anoukhello) delete this page since we don't need postal code for registration anymore
 export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
   const [postalCode, setPostalCode] = useState(INITIAL_POSTAL_CODE)
   const [hasError, setHasError] = useState(false)
@@ -41,8 +41,6 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(false)
-
-  const numberOfSteps = useSignInNumberOfSteps()
 
   const { email, isNewsletterChecked, password, birthday } = route.params
 
@@ -114,7 +112,7 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
             disabled={!isPostalCodeCorrect}
           />
           <Spacer.Column numberOfSpaces={5} />
-          <StepDots numberOfSteps={numberOfSteps} currentStep={4} />
+          <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={4} />
         </ModalContent>
       </BottomContentPage>
       <QuitSignupModal

@@ -24,7 +24,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-import { useSignInNumberOfSteps, useSignUp } from '../api'
+import { SIGNUP_NUMBER_OF_STEPS, useSignUp } from '../api'
 import { useAppSettings } from '../settings'
 
 type Props = StackScreenProps<RootStackParamList, 'AcceptCgu'>
@@ -43,7 +43,6 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const numberOfSteps = useSignInNumberOfSteps()
 
   useEffect(() => {
     if (!networkInfo.isConnected) {
@@ -185,7 +184,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
               <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />
             )}
             <Spacer.Column numberOfSpaces={5} />
-            <StepDots numberOfSteps={numberOfSteps} currentStep={numberOfSteps} />
+            <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={SIGNUP_NUMBER_OF_STEPS} />
           </CardContent>
         </BottomCardContentContainer>
       </BottomContentPage>

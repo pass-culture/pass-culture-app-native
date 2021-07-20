@@ -17,7 +17,6 @@ import { SetBirthday } from './SetBirthday'
 let mockDepositAmount = '300 €'
 jest.mock('features/auth/api', () => ({
   useDepositAmount: () => mockDepositAmount,
-  useSignInNumberOfSteps: () => 5,
 }))
 jest.mock('features/auth/settings')
 const mockedUseAppSettings = mocked(useAppSettings, true)
@@ -150,10 +149,10 @@ describe('SetBirthday Page', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should display 5 step dots with the third one as current step', () => {
+  it('should display 4 step dots with the third one as current step', () => {
     const { getAllByTestId } = renderSetBirthday()
     const dots = getAllByTestId('dot-icon')
-    expect(dots.length).toBe(5)
+    expect(dots.length).toBe(4)
     expect(dots[2].props.fill).toEqual(ColorsEnum.PRIMARY)
   })
 
