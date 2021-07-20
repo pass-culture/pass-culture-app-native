@@ -103,24 +103,16 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
     swipeThreshold={100}
   >
     <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "height": "100%",
-          "justifyContent": "flex-start",
-          "opacity": 1,
-          "width": "100%",
-        }
+        Array [
+          Object {
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "justifyContent": "flex-start",
+            "width": "100%",
+          },
+        ]
       }
       testID="click-away-area"
     >
