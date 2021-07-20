@@ -258,7 +258,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="click-away-area"
-            style="flex-direction: column; flex-grow: 1; height: 100%; justify-content: flex-start; width: 100%;"
+            style="flex-grow: 1; width: 100%;"
           >
             <div
               class="css-view-1dbjc4n"

@@ -1974,10 +1974,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               style={
                                 Array [
                                   Object {
-                                    "flexDirection": "column",
                                     "flexGrow": 1,
-                                    "height": "100%",
-                                    "justifyContent": "flex-start",
                                     "width": "100%",
                                   },
                                 ]
@@ -2422,10 +2419,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               style={
                                 Array [
                                   Object {
-                                    "flexDirection": "column",
                                     "flexGrow": 1,
-                                    "height": "100%",
-                                    "justifyContent": "flex-start",
                                     "width": "100%",
                                   },
                                 ]
@@ -3064,10 +3058,7 @@ cette offre ?
                               style={
                                 Array [
                                   Object {
-                                    "flexDirection": "column",
                                     "flexGrow": 1,
-                                    "height": "100%",
-                                    "justifyContent": "flex-start",
                                     "width": "100%",
                                   },
                                 ]
@@ -5654,10 +5645,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               style={
                                 Array [
                                   Object {
-                                    "flexDirection": "column",
                                     "flexGrow": 1,
-                                    "height": "100%",
-                                    "justifyContent": "flex-start",
                                     "width": "100%",
                                   },
                                 ]
@@ -6102,10 +6090,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               style={
                                 Array [
                                   Object {
-                                    "flexDirection": "column",
                                     "flexGrow": 1,
-                                    "height": "100%",
-                                    "justifyContent": "flex-start",
                                     "width": "100%",
                                   },
                                 ]
@@ -6744,10 +6729,7 @@ cette offre ?
                               style={
                                 Array [
                                   Object {
-                                    "flexDirection": "column",
                                     "flexGrow": 1,
-                                    "height": "100%",
-                                    "justifyContent": "flex-start",
                                     "width": "100%",
                                   },
                                 ]
