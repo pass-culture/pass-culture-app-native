@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import { Calendar as RNCalendar, CalendarTheme, LocaleConfig } from 'react-native-calendars'
 import styled from 'styled-components/native'
 
@@ -10,9 +9,10 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
-import { DayComponent } from './DayComponent'
+import { DayComponent, useSelectDay } from './DayComponent'
 import { MonthHeader } from './MonthHeader'
 import { defaultMarking, Marking, useMarkedDates, MarkedDates } from './useMarkedDates'
 
@@ -63,6 +63,7 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId }) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
   const minDate = getMinAvailableDate(markedDates) || new Date()
+  const selectDay = useSelectDay()
 
   return (
     <RNCalendar
@@ -82,8 +83,11 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
         if (selected && offerId) {
           analytics.logBookingOfferConfirmDates(offerId)
         }
+
+        const onPress = selectDay({ date, selected, status })
+
         return (
-          <StyledView>
+          <Container onPress={onPress} disabled={!onPress}>
             <DayComponent status={status} selected={selected} date={date} />
             {typeof price === 'number' ? (
               <Typo.Caption
@@ -93,11 +97,21 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
             ) : (
               <Spacer.Column numberOfSpaces={getSpacing(1)} />
             )}
-          </StyledView>
+          </Container>
         )
       }}
     />
   )
 }
 
-const StyledView = styled(View)({ alignItems: 'center' })
+// Only works for iOS but still useful
+const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
+
+const Container = styled.TouchableOpacity.attrs(() => ({
+  activeOpacity: ACTIVE_OPACITY,
+  hitSlop,
+}))({
+  alignItems: 'center',
+  height: getSpacing(8),
+  width: getSpacing(8),
+})
