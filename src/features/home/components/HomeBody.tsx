@@ -132,4 +132,4 @@ export const HomeBody = (props: HomeBodyProps) => {
   )
 }
 
-const Container = styled.View({ flex: 1 })
+const Container = styled.View({ flexBasis: 1, flexGrow: 1, flexShrink: 0 })
