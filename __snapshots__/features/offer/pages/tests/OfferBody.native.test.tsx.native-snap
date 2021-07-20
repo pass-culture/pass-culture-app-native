@@ -3351,6 +3351,7 @@ cette offre ?
                                             },
                                           ]
                                         }
+                                        testID="large-text-input"
                                         underlineColorAndroid="transparent"
                                         value=""
                                       />
@@ -3366,7 +3367,7 @@ cette offre ?
                                       }
                                     />
                                     <View
-                                      accessibilityLabel="Signaler l'offre"
+                                      accessibilityLabel="report-other-button"
                                       accessible={true}
                                       focusable={false}
                                       onClick={[Function]}
@@ -3394,7 +3395,7 @@ cette offre ?
                                           "width": "100%",
                                         }
                                       }
-                                      testID="Signaler l'offre"
+                                      testID="report-other-button"
                                     >
                                       <Text
                                         adjustsFontSizeToFit={false}
@@ -7054,6 +7055,7 @@ cette offre ?
                                             },
                                           ]
                                         }
+                                        testID="large-text-input"
                                         underlineColorAndroid="transparent"
                                         value=""
                                       />
@@ -7069,7 +7071,7 @@ cette offre ?
                                       }
                                     />
                                     <View
-                                      accessibilityLabel="Signaler l'offre"
+                                      accessibilityLabel="report-other-button"
                                       accessible={true}
                                       focusable={false}
                                       onClick={[Function]}
@@ -7097,7 +7099,7 @@ cette offre ?
                                           "width": "100%",
                                         }
                                       }
-                                      testID="Signaler l'offre"
+                                      testID="report-other-button"
                                     >
                                       <Text
                                         adjustsFontSizeToFit={false}
