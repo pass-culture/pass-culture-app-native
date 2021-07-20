@@ -39,6 +39,7 @@ const NotAuthenticatedCalls = [
   'native/v1/signin',
   'native/v1/validate_email',
   'native/v1/offer',
+  'native/v1/institutional-project-redactor-account',
 ]
 
 /**
