@@ -8,7 +8,7 @@ import { IconInterface } from './types'
 export function Profile({ size = 32, color = ColorsEnum.BLACK, testID }: IconInterface) {
   return (
     <Svg width={size} height={size} fill={color} viewBox="0 0 32 32" testID={testID}>
-      <G fill="none" fill-rule="evenodd">
+      <G fill="none" fillRule="evenodd">
         <G fill={color}>
           <G>
             <Path

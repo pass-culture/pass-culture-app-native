@@ -9,7 +9,7 @@ export const LogoMinistere = (): JSX.Element => {
         <Path id="5rklzm986c" d="M0 0.283L25.685 0.283 25.685 20.778 0 20.778z" />
         <Path id="qr3j3hznve" d="M0 115L161 115 161 1 0 1z" />
       </Defs>
-      <G fill="none" fill-rule="evenodd">
+      <G fill="none" fillRule="evenodd">
         <G>
           <G transform="translate(-22 -1117) translate(22 1117)">
             <Path

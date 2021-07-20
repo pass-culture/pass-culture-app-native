@@ -20,6 +20,7 @@ Array [
             "position": "absolute",
             "top": 0,
             "width": "100%",
+            "zIndex": -1,
           },
         ]
       }
@@ -1041,6 +1042,7 @@ exports[`SetBirthday Page should render properly 1`] = `
           "position": "absolute",
           "top": 0,
           "width": "100%",
+          "zIndex": -1,
         },
       ]
     }

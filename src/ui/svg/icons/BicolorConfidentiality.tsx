@@ -18,7 +18,7 @@ export const BicolorConfidentiality: React.FC<BicolorIconInterface> = ({
         <Stop offset="100%" stopColor={color2 ?? ColorsEnum.SECONDARY} />
       </LinearGradient>
     </Defs>
-    <G fill="none" fill-rule="evenodd">
+    <G fill="none" fillRule="evenodd">
       <G fill="url(#zvc8cqtu5a)" transform="translate(-22.000000, -514.000000)">
         <G>
           <G>

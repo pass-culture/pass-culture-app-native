@@ -11,7 +11,7 @@ export const ArrowPrevious: React.FunctionComponent<IconInterface> = ({
   testID,
 }) => (
   <Svg width={size} height={size} viewBox="0 0 32 32" testID={testID}>
-    <G fill="none" fill-rule="evenodd">
+    <G fill="none" fillRule="evenodd">
       <G fill={color}>
         <G>
           <G>

@@ -7,7 +7,7 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;"
+        style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -88,7 +88,7 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;"
+      style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
     >
       <div
         class="css-view-1dbjc4n"
