@@ -37,7 +37,12 @@ import { queryClient } from 'libs/queryClient'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
-LogBox.ignoreLogs(['Setting a timer', 'Expected style "elevation:'])
+LogBox.ignoreLogs([
+  'Setting a timer',
+  'Expected style "elevation:',
+  // TODO(antoinewg): remove once https://github.com/lingui/js-lingui/issues/1099 is resolved
+  'Cannot update a component (`I18nProvider`) while rendering a different component',
+])
 
 if (__DEV__ && process.env.JEST !== 'true') {
   addPlugin({ queryClient })
