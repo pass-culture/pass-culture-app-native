@@ -128,6 +128,7 @@ export interface SearchOptions<FieldsEnum> {
   search_fields?: SearchFields<FieldsEnum>
   result_fields?: ResultFields<FieldsEnum>
   filters?: Filters<FieldsEnum>
+  group?: { field: FieldsEnum }
   page?: Page
   sort?: Sort<FieldsEnum>
 }
