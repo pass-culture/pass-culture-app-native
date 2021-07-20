@@ -82,10 +82,7 @@ export const AppModal: FunctionComponent<Props> = ({
         onBackdropPress={handleOnBackdropPress()}
         style={[styles.container, styles.topOffset]}
         testID="modal">
-        <ClicAwayArea
-          activeOpacity={1}
-          onPress={disableBackdropTap ? undefined : onRightIconPress}
-          testID="click-away-area">
+        <ClicAwayArea testID="click-away-area">
           <Container activeOpacity={1}>
             <ModalHeader
               title={title}
@@ -118,7 +115,7 @@ export const AppModal: FunctionComponent<Props> = ({
   )
 }
 
-const ClicAwayArea = styled(TouchableOpacity)({
+const ClicAwayArea = styled(View)({
   flexGrow: 1,
   flexDirection: 'column',
   justifyContent: 'flex-start',
