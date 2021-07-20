@@ -7,7 +7,7 @@ import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen/api'
-import { useSignInNumberOfSteps } from 'features/auth/api'
+import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
@@ -148,7 +148,6 @@ export const AppComponents: FunctionComponent = () => {
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
   const [radioButtonChoice, setRadioButtonChoice] = useState('')
-  const numberOfSteps = useSignInNumberOfSteps()
 
   function navigateToIdCheckUnavailable() {
     navigate('IdCheckUnavailable')
@@ -754,7 +753,7 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
 
         <AlignedText>
-          <StepDots numberOfSteps={numberOfSteps} currentStep={currentStep} />
+          <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={currentStep} />
           <Text> - Steps </Text>
         </AlignedText>
         <AlignedText>
@@ -765,7 +764,9 @@ export const AppComponents: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={2} />
           <Button
             title="Next"
-            onPress={() => setCurrentStep((step) => (step === numberOfSteps ? step : step + 1))}
+            onPress={() =>
+              setCurrentStep((step) => (step === SIGNUP_NUMBER_OF_STEPS ? step : step + 1))
+            }
           />
         </AlignedText>
         <AlignedText>

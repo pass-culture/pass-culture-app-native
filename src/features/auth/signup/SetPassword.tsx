@@ -4,7 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { useSignInNumberOfSteps } from 'features/auth/api'
+import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import {
   isPasswordCorrect,
   PasswordSecurityRules,
@@ -47,7 +47,6 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(false)
-  const numberOfSteps = useSignInNumberOfSteps()
 
   function submitPassword() {
     navigate('SetBirthday', { email, isNewsletterChecked, password })
@@ -91,7 +90,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
           />
           <Spacer.Column numberOfSpaces={5} />
           <StyledStepDots>
-            <StepDots numberOfSteps={numberOfSteps} currentStep={2} />
+            <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={2} />
           </StyledStepDots>
         </BottomCardContentContainer>
       </BottomContentPage>

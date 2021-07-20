@@ -5,7 +5,7 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useDepositAmount, useSignInNumberOfSteps } from 'features/auth/api'
+import { SIGNUP_NUMBER_OF_STEPS, useDepositAmount } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -88,7 +88,6 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const password = route.params.password
 
   const dateInputRef = useRef<DateInputRef>(null)
-  const numberOfSteps = useSignInNumberOfSteps()
 
   function onChangeValue(date: Date | null, validation: DateValidation) {
     setState({
@@ -188,7 +187,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
                 onPress={goToNextStep}
               />
               <Spacer.Column numberOfSpaces={5} />
-              <StepDots numberOfSteps={numberOfSteps} currentStep={3} />
+              <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={3} />
             </InnerContainer>
           </TouchableWithoutFeedback>
         </BottomCardContentContainer>
