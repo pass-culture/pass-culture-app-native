@@ -23,6 +23,12 @@ export const buildQueryOptions = (
     current: page || 1,
     size: params.hitsPerPage || 20,
   },
+  group: {
+    // This ensures that only one offer of each group is retrieved.
+    // Ex: when we look for a book, we only show one per isbn (one per visa for the movies).
+    // See https://www.elastic.co/fr/blog/advanced-search-queries-in-elastic-app-search
+    field: AppSearchFields.group,
+  },
   sort: SORT_OPTIONS,
   // TODO(antoinewg): use boosts to sort by proximity. Or use _.sortBy ? pagination ?
   // Although doesn't seem to work for offers without position or negative factor
