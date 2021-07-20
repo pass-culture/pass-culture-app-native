@@ -186,6 +186,7 @@ export const OfferBody: FunctionComponent<{
         </Section>
       )}
 
+      {/* TODO(anoukhello) use one modal for the entire report process (see bookoffer process)*/}
       <ReportOfferDescriptionModal
         isVisible={isReportDescriptionVisible}
         dismissModal={hideReportDescription}
