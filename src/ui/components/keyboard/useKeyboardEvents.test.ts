@@ -1,62 +1,52 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { renderHook } from '@testing-library/react-hooks'
-import { Keyboard, KeyboardEventListener, KeyboardEvent, Platform } from 'react-native'
+import { Keyboard, KeyboardEvent, Platform } from 'react-native'
 
 import { useKeyboardEvents } from './useKeyboardEvents'
-/**
- * Simulate event calls with addListener and removeListeners mocks
- */
+
 const addKeyboardEventListener = jest.spyOn(Keyboard, 'addListener')
-const removeKeyboardEventListener = jest.spyOn(Keyboard, 'removeListener')
-const listeners: { [eventName: string]: KeyboardEventListener[] } = {}
-// @ts-ignore
-addKeyboardEventListener.mockImplementation((eventName, listener) => {
-  if (listeners[eventName]) listeners[eventName].push(listener)
-  else listeners[eventName] = [listener]
-})
-removeKeyboardEventListener.mockImplementation((eventName, listener: KeyboardEventListener) => {
-  if (listeners[eventName].includes(listener)) {
-    listeners[eventName] = listeners[eventName].filter((l) => l !== listener)
-  }
-})
+
 const onBeforeShowMock = jest.fn()
 const onBeforeHideMock = jest.fn()
-// @ts-ignore
+
 const keyboardEvent: KeyboardEvent = {
   startCoordinates: { height: 0, screenX: 0, screenY: 800, width: 450 },
   endCoordinates: { height: 300, screenX: 0, screenY: 500, width: 450 },
+  duration: 0,
+  easing: 'keyboard',
 }
+
 describe('useKeyboardEvents', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
+  beforeEach(jest.clearAllMocks)
+
   it('creates event listeners', () => {
     renderHook(useKeyboardEvents, {
       initialProps: { onBeforeHide: jest.fn(), onBeforeShow: jest.fn() },
     })
     expect(addKeyboardEventListener).toHaveBeenCalledTimes(4)
-    expect(listeners.keyboardWillShow).toHaveLength(1)
-    expect(listeners.keyboardWillHide).toHaveLength(1)
-    expect(listeners.keyboardDidShow).toHaveLength(1)
-    expect(listeners.keyboardDidHide).toHaveLength(1)
+    expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardWillShow', expect.any(Function))
+    expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardDidShow', expect.any(Function))
+    expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardWillHide', expect.any(Function))
+    expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardDidHide', expect.any(Function))
   })
+
   it('changes the event listeners when the props change', () => {
     const keyboardEventsHook = renderHook(useKeyboardEvents, {
       initialProps: { onBeforeHide: jest.fn(), onBeforeShow: jest.fn() },
     })
     addKeyboardEventListener.mockClear()
     keyboardEventsHook.rerender({ onBeforeShow: onBeforeShowMock, onBeforeHide: onBeforeHideMock })
-    expect(removeKeyboardEventListener).toHaveBeenCalledTimes(4)
     expect(addKeyboardEventListener).toHaveBeenCalledTimes(4)
-    expect(listeners.keyboardWillShow).toHaveLength(1)
-    expect(listeners.keyboardWillHide).toHaveLength(1)
-    expect(listeners.keyboardDidShow).toHaveLength(1)
-    expect(listeners.keyboardDidHide).toHaveLength(1)
+    expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardWillShow', expect.any(Function))
+    expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardDidShow', expect.any(Function))
+    expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardWillHide', expect.any(Function))
+    expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardDidHide', expect.any(Function))
   })
+
   describe('on iOS', () => {
     beforeEach(() => {
       Platform.OS = 'ios'
     })
+
     it.each`
       action    | functionMock        | expectedKeyboardShown
       ${'Show'} | ${onBeforeShowMock} | ${true}
@@ -70,7 +60,7 @@ describe('useKeyboardEvents', () => {
             onBeforeShow: action === 'Show' ? functionMock : jest.fn(),
           },
         })
-        listeners[`keyboardWill${action}`][0](keyboardEvent)
+        Keyboard.emit(`keyboardWill${action}`, keyboardEvent)
         expect(functionMock).toHaveBeenCalledWith({
           keyboardShown: expectedKeyboardShown,
           keyboardHeight: 300,
@@ -78,6 +68,7 @@ describe('useKeyboardEvents', () => {
         })
       }
     )
+
     it.each`
       action    | functionMock
       ${'Show'} | ${onBeforeShowMock}
@@ -89,14 +80,16 @@ describe('useKeyboardEvents', () => {
           onBeforeShow: action === 'Show' ? functionMock : jest.fn(),
         },
       })
-      listeners[`keyboardDid${action}`][0](keyboardEvent)
+      Keyboard.emit(`keyboardDid${action}`, keyboardEvent)
       expect(functionMock).not.toHaveBeenCalled()
     })
   })
+
   describe('on Android', () => {
     beforeEach(() => {
       Platform.OS = 'android'
     })
+
     it.each`
       action    | functionMock        | expectedKeyboardShown
       ${'Show'} | ${onBeforeShowMock} | ${true}
@@ -110,7 +103,7 @@ describe('useKeyboardEvents', () => {
             onBeforeShow: action === 'Show' ? functionMock : jest.fn(),
           },
         })
-        listeners[`keyboardDid${action}`][0](keyboardEvent)
+        Keyboard.emit(`keyboardWill${action}`, keyboardEvent)
         expect(functionMock).toHaveBeenCalledWith({
           keyboardShown: expectedKeyboardShown,
           keyboardHeight: 300,

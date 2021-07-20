@@ -58,15 +58,16 @@ export const useKeyboardEvents = ({ onBeforeShow, onBeforeHide }: UseKeyboardEve
     // If needed, implement iOS behavior here
   }
   useEffect(() => {
-    Keyboard.addListener('keyboardWillShow', handleKeyboardWillShow)
-    Keyboard.addListener('keyboardDidShow', handleKeyboardDidShow)
-    Keyboard.addListener('keyboardWillHide', handleKeyboardWillHide)
-    Keyboard.addListener('keyboardDidHide', handleKeyboardDidHide)
+    const keyboardWillShow = Keyboard.addListener('keyboardWillShow', handleKeyboardWillShow)
+    const keyboardDidShow = Keyboard.addListener('keyboardDidShow', handleKeyboardDidShow)
+    const keyboardWillHide = Keyboard.addListener('keyboardWillHide', handleKeyboardWillHide)
+    const keyboardDidHide = Keyboard.addListener('keyboardDidHide', handleKeyboardDidHide)
+
     return () => {
-      Keyboard.removeListener('keyboardWillShow', handleKeyboardWillShow)
-      Keyboard.removeListener('keyboardDidShow', handleKeyboardDidShow)
-      Keyboard.removeListener('keyboardWillHide', handleKeyboardWillHide)
-      Keyboard.removeListener('keyboardDidHide', handleKeyboardDidHide)
+      keyboardWillShow.remove()
+      keyboardDidShow.remove()
+      keyboardWillHide.remove()
+      keyboardDidHide.remove()
     }
   }, [onBeforeHide, onBeforeShow])
 }
