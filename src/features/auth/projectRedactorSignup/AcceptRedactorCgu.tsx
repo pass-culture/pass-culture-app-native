@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
-import { REDACTOR_SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
+import { REDACTOR_SIGNUP_NUMBER_OF_STEPS, useRedactorSignUp } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
 import { contactSupport } from 'features/auth/support.services'
@@ -12,6 +12,7 @@ import { BottomCardContentContainer, BottomContentPage } from 'ui/components/Bot
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
+import { InputError } from 'ui/components/inputs/InputError'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
@@ -28,10 +29,23 @@ export const AcceptRedactorCgu: FC = () => {
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(false)
+  const redactorSignUp = useRedactorSignUp()
+  const [isFetching, setIsFetching] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  function subscribe() {
-    // TODO(PC-9925) request /native/v1/institutional-project-redactor-account
-    navigate('RedactorSignupConfirmationEmailSent', { email: params.email })
+  async function subscribe() {
+    setErrorMessage(null)
+    setIsFetching(true)
+    const { isSuccess } = await redactorSignUp(params)
+    setIsFetching(false)
+
+    if (isSuccess) {
+      navigate('RedactorSignupConfirmationEmailSent', { email: params.email })
+    } else {
+      setErrorMessage(
+        t`Un problème est survenu pendant l'inscription, veuillez réessayer plus tard.`
+      )
+    }
   }
 
   return (
@@ -76,7 +90,14 @@ export const AcceptRedactorCgu: FC = () => {
               icon={Email}
             />
             <Spacer.Column numberOfSpaces={6} />
-            <ButtonPrimary title={t`Accepter et s’inscrire`} onPress={subscribe} />
+            <ButtonPrimary
+              title={t`Accepter et s’inscrire`}
+              onPress={subscribe}
+              isLoading={isFetching}
+            />
+            {!!errorMessage && (
+              <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />
+            )}
             <Spacer.Column numberOfSpaces={5} />
             <StepDots
               numberOfSteps={REDACTOR_SIGNUP_NUMBER_OF_STEPS}

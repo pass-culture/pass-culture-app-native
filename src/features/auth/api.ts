@@ -2,7 +2,12 @@ import { Platform } from 'react-native'
 import { useMutation, useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import { AccountRequest, GetIdCheckTokenResponse, SigninRequest } from 'api/gen'
+import {
+  AccountRequest,
+  GetIdCheckTokenResponse,
+  InstitutionalProjectRedactorAccountRequest,
+  SigninRequest,
+} from 'api/gen'
 import { ApiError, isApiError } from 'api/helpers'
 import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
@@ -76,6 +81,24 @@ export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse
         { ...body, appsFlyerPlatform: Platform.OS, appsFlyerUserId },
         { credentials: 'omit' }
       )
+      return { isSuccess: !!response }
+    } catch (error) {
+      return {
+        isSuccess: false,
+        content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
+      }
+    }
+  }
+}
+
+export function useRedactorSignUp(): (
+  data: InstitutionalProjectRedactorAccountRequest
+) => Promise<SignUpResponse> {
+  return async (body: InstitutionalProjectRedactorAccountRequest) => {
+    try {
+      const response = await api.postnativev1institutionalProjectRedactorAccount(body, {
+        credentials: 'omit',
+      })
       return { isSuccess: !!response }
     } catch (error) {
       return {

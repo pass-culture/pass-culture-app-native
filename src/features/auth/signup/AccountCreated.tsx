@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { UserRole } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -31,8 +32,11 @@ export function AccountCreated() {
     if (user?.id) appsFlyer.logEvent(CampaignEvents.COMPLETE_REGISTRATION, { af_user_id: user?.id })
   }, [user?.id])
 
+  const isUserRedactor = user?.roles?.find((role) => role === UserRole.INSTITUTIONALPROJECTREDACTOR)
+  const title = isUserRedactor ? t`Votre compte a été activé !` : t`Ton compte a été activé !`
+
   return (
-    <GenericInfoPage title={t`Ton compte a été activé !`} animation={IlluminatedSmileyAnimation}>
+    <GenericInfoPage title={title} animation={IlluminatedSmileyAnimation}>
       {!!shouldNavigateToCulturalSurvey && (
         <StyledBody>
           {t`Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées.`}
