@@ -1,13 +1,12 @@
 import debounce from 'lodash.debounce'
-import React, { useRef } from 'react'
-import { View, TouchableOpacity } from 'react-native'
+import React, { useCallback, useRef } from 'react'
+import { View } from 'react-native'
 import { DateObject } from 'react-native-calendars'
 import styled from 'styled-components/native'
 
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { OfferStatus } from '../../services/utils'
 
@@ -19,32 +18,36 @@ interface Props {
   date: DateObject
 }
 
-const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
+type VoidFn = () => void
 
-export const DayComponent: React.FC<Props> = ({ status, selected, date }) => {
+export const useSelectDay = (): ((props: Props) => VoidFn | undefined) => {
   const { dispatch } = useBooking()
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
 
-  const selectDate = () => {
+  const selectDate = (date: DateObject) => () => {
     dispatch({ type: 'SELECT_DATE', payload: new Date(date.year, date.month - 1, date.day) })
     debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
   }
 
+  return useCallback(({ date, selected, status }: Props) => {
+    if (selected) return selectDate(date)
+    if (status === OfferStatus.BOOKABLE) return selectDate(date)
+    return undefined
+  }, [])
+}
+
+export const DayComponent: React.FC<Props> = ({ status, selected, date }) => {
   if (selected)
     return (
       <SelectedDay>
-        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={selectDate} hitSlop={hitSlop}>
-          <SelectedDayNumber color={ColorsEnum.WHITE}>{date.day}</SelectedDayNumber>
-        </TouchableOpacity>
+        <SelectedDayNumber color={ColorsEnum.WHITE}>{date.day}</SelectedDayNumber>
       </SelectedDay>
     )
 
   if (status === OfferStatus.BOOKABLE)
     return (
       <DayContainer>
-        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={selectDate} hitSlop={hitSlop}>
-          <Day color={ColorsEnum.PRIMARY}>{date.day}</Day>
-        </TouchableOpacity>
+        <Day color={ColorsEnum.PRIMARY}>{date.day}</Day>
       </DayContainer>
     )
 
@@ -78,9 +81,7 @@ const SelectedDay = styled(View)({
   justifyContent: 'center',
 })
 
-const SelectedDayNumber = styled(Typo.ButtonText)({
-  alignSelf: 'center',
-})
+const SelectedDayNumber = styled(Typo.ButtonText)({ alignSelf: 'center' })
 
 const DayContainer = styled(View)({
   height: getSpacing(6),
