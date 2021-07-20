@@ -18,7 +18,7 @@ export const Everywhere: React.FunctionComponent<BicolorIconInterface> = ({
         <Stop offset="100%" stopColor={color2} />
       </LinearGradient>
     </Defs>
-    <G fill="none" fill-rule="evenodd">
+    <G fill="none" fillRule="evenodd">
       <G fill="url(#rb3uzw8rsa)" transform="translate(-21 -320)">
         <G>
           <Path

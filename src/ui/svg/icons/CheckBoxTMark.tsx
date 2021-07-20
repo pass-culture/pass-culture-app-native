@@ -12,7 +12,7 @@ export const CheckboxMark: React.FunctionComponent<RectangleIconInterface> = ({
   testID,
 }) => (
   <Svg width={width} height={height} viewBox="0 0 17 11" testID={testID}>
-    <G fill="none" fill-rule="evenodd">
+    <G fill="none" fillRule="evenodd">
       <G fill={color}>
         <G>
           <G>

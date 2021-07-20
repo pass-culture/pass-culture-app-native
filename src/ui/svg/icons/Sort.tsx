@@ -8,7 +8,7 @@ import { IconInterface } from './types'
 export function Sort({ size = 32, color = ColorsEnum.BLACK, testID }: IconInterface) {
   return (
     <Svg width={size} height={size} fill={color} viewBox="0 0 32 32" testID={testID}>
-      <G fill="none" fill-rule="evenodd">
+      <G fill="none" fillRule="evenodd">
         <G fill="#FFF">
           <Path
             d="M16 21.333c.368 0 .667.299.667.667 0 .368-.299.667-.667.667H8c-.368 0-.667-.299-.667-.667 0-.368.299-.667.667-.667h8zm4-6c.368 0 .667.299.667.667 0 .368-.299.667-.667.667H8c-.368 0-.667-.299-.667-.667 0-.368.299-.667.667-.667h12zm4-6c.368 0 .667.299.667.667 0 .368-.299.667-.667.667H8c-.368 0-.667-.299-.667-.667 0-.368.299-.667.667-.667h16z"

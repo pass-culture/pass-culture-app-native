@@ -11,7 +11,7 @@ export const Pastille: React.FunctionComponent<IconInterface> = ({ size = 21, co
         <Stop offset="100%" stopColor="#320096" />
       </LinearGradient>
     </Defs>
-    <G fill="none" fill-rule="evenodd">
+    <G fill="none" fillRule="evenodd">
       <G fill={color || 'url(#pastille)'} transform="translate(-391 -426)">
         <G>
           <G transform="translate(131 405) translate(238 10)">

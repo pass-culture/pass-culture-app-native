@@ -8,7 +8,7 @@ import { RectangleIconInterface } from './types'
 export function Star({ height = 167, color = ColorsEnum.WHITE, testID }: RectangleIconInterface) {
   return (
     <Svg width={height} height={height} viewBox="0 0 168 168" testID={testID}>
-      <G fill="none" fill-rule="evenodd">
+      <G fill="none" fillRule="evenodd">
         <G fill={color}>
           <G>
             <Path

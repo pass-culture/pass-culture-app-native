@@ -22,6 +22,7 @@ exports[`wrapRoute() should display force update page when global variable is se
           "position": "absolute",
           "top": 0,
           "width": "100%",
+          "zIndex": -1,
         },
       ]
     }

@@ -4,7 +4,7 @@ import Svg, { Path, G } from 'react-native-svg'
 export const NextArrowIcon: React.FC = (): JSX.Element => {
   return (
     <Svg width="32" height="32" viewBox="0 0 32 32">
-      <G fill="none" fill-rule="evenodd">
+      <G fill="none" fillRule="evenodd">
         <G fill="#FFF">
           <G>
             <Path

@@ -13,7 +13,7 @@ export function MaintenanceCone({
 }: RectangleIconInterface) {
   return (
     <Svg width={width} height={height} viewBox="0 0 197 124" testID={testID}>
-      <G fill="none" fill-rule="evenodd">
+      <G fill="none" fillRule="evenodd">
         <G fill={color}>
           <G>
             <Path

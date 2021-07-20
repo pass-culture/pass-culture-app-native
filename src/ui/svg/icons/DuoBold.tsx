@@ -12,7 +12,7 @@ export function DuoBold({
 }: Omit<IconInterface, 'size'>): JSX.Element {
   return (
     <Svg width={32} height={15} testID={testID} fill={color} viewBox="0 0 32 15">
-      <G fill="none" fill-rule="evenodd">
+      <G fill="none" fillRule="evenodd">
         <G fill={color}>
           <G>
             <Path

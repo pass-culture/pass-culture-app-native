@@ -11,8 +11,8 @@ export const Facebook: React.FunctionComponent<IconInterface> = ({
   testID,
 }) => (
   <Svg width={size} height={size} viewBox="0 0 25 24" testID={testID}>
-    <G fill="none" fill-rule="evenodd">
-      <G fill-rule="nonzero">
+    <G fill="none" fillRule="evenodd">
+      <G fillRule="nonzero">
         <G>
           <Path
             fill="#1978F2"
