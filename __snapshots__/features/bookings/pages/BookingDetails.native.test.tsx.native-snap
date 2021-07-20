@@ -721,10 +721,7 @@ Array [
         style={
           Array [
             Object {
-              "flexDirection": "column",
               "flexGrow": 1,
-              "height": "100%",
-              "justifyContent": "flex-start",
               "width": "100%",
             },
           ]
@@ -1129,10 +1126,7 @@ Array [
         style={
           Array [
             Object {
-              "flexDirection": "column",
               "flexGrow": 1,
-              "height": "100%",
-              "justifyContent": "flex-start",
               "width": "100%",
             },
           ]

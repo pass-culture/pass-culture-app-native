@@ -117,9 +117,6 @@ export const AppModal: FunctionComponent<Props> = ({
 
 const ClicAwayArea = styled(View)({
   flexGrow: 1,
-  flexDirection: 'column',
-  justifyContent: 'flex-start',
-  height: '100%',
   width: '100%',
 })
 

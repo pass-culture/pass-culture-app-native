@@ -106,10 +106,7 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
       style={
         Array [
           Object {
-            "flexDirection": "column",
             "flexGrow": 1,
-            "height": "100%",
-            "justifyContent": "flex-start",
             "width": "100%",
           },
         ]
