@@ -6,7 +6,6 @@ import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 import { AppState, AppStateStatus, LogBox } from 'react-native'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 import { ThemeProvider } from 'styled-components/native'
@@ -21,7 +20,6 @@ import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/Async
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { useBlockForMaintenance } from 'features/maintenance/useMaintenance'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
-import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
 import { useCampaignTracker } from 'libs/campaign'
@@ -34,6 +32,7 @@ import { idCheckAnalytics } from 'libs/idCheckAnalytics'
 import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
 import { useStartBatchNotification } from 'libs/notifications'
 import { queryClient } from 'libs/queryClient'
+import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -80,8 +79,8 @@ const App: FunctionComponent = function () {
 
   return (
     <ABTestingProvider>
-      <SafeAreaProvider>
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <SafeAreaProvider>
           <QueryClientProvider client={queryClient}>
             <AuthWrapper>
               <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
@@ -101,9 +100,7 @@ const App: FunctionComponent = function () {
                             retentionClient={idCheckRetentionClient}
                             requestLicenceToken={() => api.getnativev1idCheckToken()}>
                             <SplashScreenProvider>
-                              <AppNavigationContainer>
-                                <RootNavigator />
-                              </AppNavigationContainer>
+                              <AppNavigationContainer />
                             </SplashScreenProvider>
                           </IdCheckContextProvider>
                         </SnackBarProvider>
@@ -114,8 +111,8 @@ const App: FunctionComponent = function () {
               </ErrorBoundary>
             </AuthWrapper>
           </QueryClientProvider>
-        </ThemeProvider>
-      </SafeAreaProvider>
+        </SafeAreaProvider>
+      </ThemeProvider>
     </ABTestingProvider>
   )
 }

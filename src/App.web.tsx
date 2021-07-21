@@ -1,31 +1,27 @@
 import 'react-app-polyfill/ie9'
 import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
-import { theme } from '@pass-culture/id-check'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { i18n } from '@lingui/core'
+import { I18nProvider } from '@lingui/react'
+import { IdCheckContextProvider, theme } from '@pass-culture/id-check'
 import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryClientProvider } from 'react-query'
-import styled, { ThemeProvider } from 'styled-components/native'
+import { ThemeProvider } from 'styled-components/native'
 
+import { api } from 'api/api'
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
-import { routes, linking, initialRouteName } from 'features/navigation/RootNavigator/routes'
+import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
+import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
+import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { activate } from 'libs/i18n'
+import { idCheckAnalytics } from 'libs/idCheckAnalytics'
+import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
 import { queryClient } from 'libs/queryClient'
-
-const StackNavigator = createStackNavigator()
-
-const NAVIGATOR_SCREEN_OPTIONS = {
-  headerShown: false,
-  cardStyle: {
-    backgroundColor: 'transparent',
-    flex: 1,
-  },
-}
+import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
+import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 export function App() {
   useEffect(() => {
@@ -38,64 +34,32 @@ export function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledSafeAreaProvider>
+      <SafeAreaProvider>
         <QueryClientProvider client={queryClient}>
           <AuthWrapper>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              <AppContainer>
-                <AppBackground>
-                  <AppContent>
-                    <NavigationContainer linking={linking}>
-                      <StackNavigator.Navigator
-                        initialRouteName={initialRouteName}
-                        headerMode="screen"
-                        screenOptions={NAVIGATOR_SCREEN_OPTIONS}>
-                        {routes.map((route) => (
-                          <StackNavigator.Screen
-                            name={route.name}
-                            component={route.component}
-                            key={route.name}
-                          />
-                        ))}
-                      </StackNavigator.Navigator>
-                    </NavigationContainer>
-                  </AppContent>
-                </AppBackground>
-              </AppContainer>
+              <FavoritesWrapper>
+                <I18nProvider i18n={i18n}>
+                  <SnackBarProvider>
+                    <IdCheckContextProvider
+                      apiBaseUrl={env.ID_CHECK_API_URL}
+                      supportEmail={env.SUPPORT_EMAIL_ADDRESS}
+                      dsmUrl={env.DSM_URL}
+                      personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
+                      cguDocUrl={env.DOC_CGU_URL}
+                      errorMonitoring={errorMonitoring}
+                      analytics={idCheckAnalytics}
+                      retentionClient={idCheckRetentionClient}
+                      requestLicenceToken={() => api.getnativev1idCheckToken()}>
+                      <AppNavigationContainer />
+                    </IdCheckContextProvider>
+                  </SnackBarProvider>
+                </I18nProvider>
+              </FavoritesWrapper>
             </ErrorBoundary>
           </AuthWrapper>
         </QueryClientProvider>
-      </StyledSafeAreaProvider>
+      </SafeAreaProvider>
     </ThemeProvider>
   )
 }
-
-const StyledSafeAreaProvider = styled(SafeAreaProvider)({
-  height: '100%',
-})
-
-const AppContainer = styled.View({
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-})
-
-const AppBackground = styled.View({
-  height: '100%',
-  maxWidth: '500px',
-  maxHeight: '100%',
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  backgroundColor: '#eb0055',
-})
-
-const AppContent = styled.View({
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-})
