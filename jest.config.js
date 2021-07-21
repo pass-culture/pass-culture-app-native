@@ -5,6 +5,7 @@ module.exports = {
     '^api(.*)$': '<rootDir>/src/api$1',
     '^features(.*)$': '<rootDir>/src/features$1',
     '^libs(.*)$': '<rootDir>/src/libs$1',
+    '^theme(.*)$': '<rootDir>/src/theme$1',
     '^locales(.*)$': '<rootDir>/src/locales$1',
     '^types(.*)$': '<rootDir>/src/types$1',
     '^tests(.*)$': '<rootDir>/src/tests$1',
