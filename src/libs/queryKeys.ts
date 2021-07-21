@@ -16,4 +16,5 @@ export enum QueryKeys {
   SIGNUP_CONFIRMATION_EXPIRED_LINK = 'signupConfirmationExpiredLink',
   USER_PROFILE = 'userProfile',
   REPORT_OFFER_REASONS = 'reportOfferReasons',
+  VENUE = 'venue',
 }
