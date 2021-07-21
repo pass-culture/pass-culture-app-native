@@ -64,6 +64,7 @@ import { Categories as SearchCategories } from 'features/search/pages/Categories
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
+import { Venue } from 'features/venue'
 
 import { Route } from './types'
 
@@ -145,6 +146,7 @@ export const routes: Array<Route> = [
   { name: 'FirstTutorial', component: FirstTutorial },
   { name: 'ForceUpdate', component: ForceUpdate },
   { name: 'IdCheckUnavailable', component: IdCheckUnavailable },
+  { name: 'Venue', component: Venue, hoc: withAsyncErrorBoundary },
   ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
   { name: idCheckInitialRouteName, component: IdCheckV2 },
 ]
