@@ -36,7 +36,6 @@ export enum AnalyticsEvent {
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
   CONSULT_WHY_ANNIVERSARY = 'ConsultModalWhyAnniversary',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
-  CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT = 'ContactSupportResetPassword',
   HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'HelpCenterContactSignUpConfirmation',
   DISCOVER_OFFERS = 'DiscoverOffers',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
@@ -176,9 +175,6 @@ const logHasAddedOfferToFavorites = (params: {
 const logConsultWhyAnniversary = () => logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY)
 
 const logCancelSignup = (pageName: string) => logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName })
-
-const logContactSupportResetPasswordEmailSent = () =>
-  logEvent(AnalyticsEvent.CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT)
 
 const logHelpCenterContactSignupConfirmationEmailSent = () =>
   logEvent(AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT)
@@ -331,7 +327,6 @@ export const analytics = {
   logConsultWholeOffer,
   logConsultWhyAnniversary,
   logConsultWithdrawal,
-  logContactSupportResetPasswordEmailSent,
   logDiscoverOffers,
   logLocationToggle,
   logOpenLocationSettings,
