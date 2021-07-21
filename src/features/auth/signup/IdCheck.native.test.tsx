@@ -8,21 +8,14 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, waitFor } from 'tests/utils'
+import { act, cleanup, render, waitFor } from 'tests/utils'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
-/* Explanation for allowConsole :
-The test `should display web page with url with user_consent_data_collection set to true`
-fails because of `Warning: You called act(async () => ...) without await...`.
-Adding `await superFlushWithAct` does not fix the console.error.
-*/
 
 describe('<IdCheck />', () => {
   afterEach(async () => {
     await storage.clear('has_accepted_cookie')
+    cleanup()
   })
 
   it('should render correctly', async () => {
@@ -32,7 +25,20 @@ describe('<IdCheck />', () => {
     })
   })
 
+  it('should display web page with url with user_consent_data_collection unset', async () => {
+    const renderAPI = renderIdCheckWithNavigation()
+
+    await waitFor(() => {
+      const webview = renderAPI.getByTestId('idcheck-webview')
+      expect(webview.props.source.uri).toEqual(
+        env.ID_CHECK_URL +
+          '/?email=john%2B1%40wick.com&user_consent_data_collection=false&licence_token=XxLicenceTokenxX&expiration_timestamp=1622065697871&expiration_timestamp=1622065697871'
+      )
+    })
+  })
+
   it('should display web page with url with user_consent_data_collection set to false', async () => {
+    storage.saveObject('has_accepted_cookie', false)
     const renderAPI = renderIdCheckWithNavigation()
 
     await waitFor(() => {
@@ -45,8 +51,7 @@ describe('<IdCheck />', () => {
   })
 
   it('should display web page with url with user_consent_data_collection set to true', async () => {
-    await storage.saveObject('has_accepted_cookie', true)
-
+    storage.saveObject('has_accepted_cookie', true)
     const renderAPI = renderIdCheckWithNavigation()
 
     await waitFor(() => {

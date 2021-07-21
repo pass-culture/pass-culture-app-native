@@ -94,10 +94,7 @@ export const IdCheck: React.FC<Props> = function (props) {
     const { email, licence_token, expiration_timestamp } = props.route.params
     const encodedEmail = encodeURIComponent(email)
     storage.readObject<boolean>('has_accepted_cookie').then((hasAcceptedCookies) => {
-      let userConsentDataCollection = false
-      if (hasAcceptedCookies) {
-        userConsentDataCollection = true
-      }
+      const userConsentDataCollection = hasAcceptedCookies ?? false
       const uri = `${env.ID_CHECK_URL}/?email=${encodedEmail}&user_consent_data_collection=${userConsentDataCollection}`
       if (licence_token && expiration_timestamp) {
         const expiration = expiration_timestamp
