@@ -1,6 +1,7 @@
 import { NavigationContainer, NavigationContainerRef, Theme } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 
+import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/routes'
 import { ColorsEnum } from 'ui/theme'
 
@@ -9,7 +10,7 @@ import { onNavigationStateChange } from './services'
 
 const NAV_THEME = { colors: { background: ColorsEnum.WHITE } } as Theme
 
-export const AppNavigationContainer: React.FC<{ children: JSX.Element }> = ({ children }) => {
+export const AppNavigationContainer = () => {
   const [isRefDefined, setIsRefDefined] = useState(false)
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export const AppNavigationContainer: React.FC<{ children: JSX.Element }> = ({ ch
         isNavigationReadyRef.current = true
       }}
       theme={NAV_THEME}>
-      {isRefDefined && children}
+      {isRefDefined ? <RootNavigator /> : null}
     </NavigationContainer>
   )
 }

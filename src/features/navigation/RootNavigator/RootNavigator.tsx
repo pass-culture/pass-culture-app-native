@@ -9,6 +9,14 @@ import { useSplashScreenContext } from 'libs/splashscreen'
 import { initialRouteName, routes } from './routes'
 import { RootStackParamList, Route } from './types'
 
+const NAVIGATOR_SCREEN_OPTIONS = {
+  headerShown: false,
+  cardStyle: {
+    backgroundColor: 'transparent',
+    flex: 1,
+  },
+}
+
 export const RootStack = createStackNavigator<RootStackParamList>()
 
 export function wrapRoute(route: Route) {
@@ -44,7 +52,7 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Navigator
           initialRouteName={initialRouteName}
           headerMode="screen"
-          screenOptions={{ headerShown: false }}>
+          screenOptions={NAVIGATOR_SCREEN_OPTIONS}>
           {screens}
         </RootStack.Navigator>
       )}
