@@ -7,20 +7,14 @@ import styled from 'styled-components/native'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { navigateToHome, openExternalUrl, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-// import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
-// import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-// import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-// import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { padding, Spacer, Typo } from 'ui/theme'
-
-// import { contactSupport } from 'features/auth/support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
@@ -31,15 +25,6 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   to redo the challenge, so we block the user from going back to ReCAPTCHA screen */
   const shouldBeAbleToGoBack = previousRoute?.name !== 'ForgottenPassword'
 
-  function onClose() {
-    navigateToHome()
-  }
-
-  // function onContactSupport() {
-  //   analytics.logContactSupportResetPasswordEmailSent()
-  //   contactSupport.forResetPasswordEmailNotReceived(route.params.email)
-  // }
-
   return (
     <BottomContentPage>
       <ModalHeader
@@ -47,7 +32,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
         leftIcon={shouldBeAbleToGoBack ? ArrowPrevious : undefined}
         onLeftIconPress={shouldBeAbleToGoBack ? complexGoBack : undefined}
         rightIcon={Close}
-        onRightIconPress={onClose}
+        onRightIconPress={navigateToHome}
       />
       <ModalContent>
         <Description>
@@ -69,9 +54,6 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
             }
             icon={ExternalSite}
           />
-          {/*<Spacer.Column numberOfSpaces={5} />*/}
-          {/*<Typo.Body>{t`Si l'e-mail n'arrive pas, tu peux : `}</Typo.Body>*/}
-          {/*<ButtonTertiary title={t`Contacter le support`} onPress={onContactSupport} icon={Email} />*/}
         </Description>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary title={t`Consulter mes e-mails`} onPress={openInbox} icon={ExternalSite} />

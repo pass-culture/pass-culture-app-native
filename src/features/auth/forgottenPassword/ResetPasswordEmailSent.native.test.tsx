@@ -5,21 +5,18 @@ import { Text } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
-import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { analytics } from 'libs/analytics'
-import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
+import { flushAllPromises, act, fireEvent, render, cleanup } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/navigation/helpers')
 
 describe('<ResetPasswordEmailSent />', () => {
+  afterEach(cleanup)
+
   it('should match snapshot', async () => {
     const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
     expect(renderAPI).toMatchSnapshot()
@@ -31,8 +28,8 @@ describe('<ResetPasswordEmailSent />', () => {
     await act(async () => {
       navigationRef.current?.navigate('ResetPasswordEmailSent')
     })
-    const leftIcon = renderAPI.getByTestId('leftIcon')
-    fireEvent.press(leftIcon)
+
+    fireEvent.press(renderAPI.getByTestId('leftIcon'))
 
     await waitForExpect(() => {
       expect(renderAPI.queryByText('PreviousScreenText')).toBeTruthy()
@@ -56,21 +53,6 @@ describe('<ResetPasswordEmailSent />', () => {
 
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalled()
-    })
-  })
-
-  it.skip('should open mail app when clicking on contact support button', async () => {
-    const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
-
-    const contactSupportButton = renderAPI.getByText('Contacter le support')
-    fireEvent.press(contactSupportButton)
-
-    await waitForExpect(() => {
-      expect(analytics.logContactSupportResetPasswordEmailSent).toBeCalledTimes(1)
-      expect(contactSupport.forResetPasswordEmailNotReceived).toHaveBeenCalledTimes(1)
-      expect(contactSupport.forResetPasswordEmailNotReceived).toHaveBeenCalledWith(
-        'john.doe@gmail.com'
-      )
     })
   })
 
@@ -116,8 +98,6 @@ async function renderInitialPage(initialScreenName: keyof StackParams) {
       </TestStack.Navigator>
     </NavigationContainer>
   )
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await act(flushAllPromises)
   return renderAPI
 }
