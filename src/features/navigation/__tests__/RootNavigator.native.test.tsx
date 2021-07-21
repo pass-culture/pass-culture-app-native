@@ -21,7 +21,7 @@ jest.mock('features/navigation/TabBar/TabNavigator', () => ({
   TabNavigator: () => null,
 }))
 
-describe.skip('<RootNavigator />', () => {
+describe('<RootNavigator />', () => {
   afterEach(async () => {
     jest.clearAllMocks()
     await storage.clear('has_accepted_cookie')
