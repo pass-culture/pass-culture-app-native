@@ -3,7 +3,7 @@ import React from 'react'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils'
+import { cleanup, fireEvent, render } from 'tests/utils'
 
 import { BookingOfferModalComponent } from '../BookingOfferModal'
 import { Step } from '../reducer'
@@ -22,10 +22,10 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
-// FIXME: Web integration
-describe.skip('<BookingOfferModalComponent />', () => {
+describe('<BookingOfferModalComponent />', () => {
   afterEach(() => {
     jest.clearAllMocks()
+    cleanup()
   })
 
   it('should dismiss modal when click on rightIconButton and reset state', () => {
