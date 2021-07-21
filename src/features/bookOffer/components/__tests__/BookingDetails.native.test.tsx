@@ -18,6 +18,9 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails } from '../BookingDetails'
 
+// eslint-disable-next-line local-rules/no-allow-console
+allowConsole({ error: true })
+
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
