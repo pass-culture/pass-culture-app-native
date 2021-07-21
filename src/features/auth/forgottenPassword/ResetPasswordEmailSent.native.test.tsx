@@ -11,6 +11,9 @@ import { flushAllPromises, act, fireEvent, render, cleanup } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
+// eslint-disable-next-line local-rules/no-allow-console
+allowConsole({ error: true })
+
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/navigation/helpers')
 
