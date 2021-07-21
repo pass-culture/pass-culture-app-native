@@ -66,7 +66,9 @@ type Filter<Enum> = Enum extends string
   ? Partial<Record<Enum, RangeFilter | GeoFilter | ValueFilter>>
   : never
 
-export type FilterArray<FieldsEnum> = Array<Filter<FieldsEnum>>
+export type FilterArray<FieldsEnum> = Array<
+  Filter<FieldsEnum> | Partial<Record<Pick<BooleanQueryType>, Array<Filter<FieldsEnum>>>>
+>
 
 export type Filters<FieldsEnum> =
   | Record<Pick<BooleanQueryType>, Filter<FieldsEnum> | FilterArray<FieldsEnum>>

@@ -28,7 +28,7 @@ const buildOfferTypesFilter = ({
   if (isDigital) {
     if (!isEvent && !isThing) return [DIGITAL]
     if (!isEvent && isThing) return [THING]
-    if (isEvent && !isThing) return [DIGITAL, EVENT]
+    if (isEvent && !isThing) return [{ any: [DIGITAL, EVENT] }]
   } else {
     if (!isEvent && isThing) return [NOT_DIGITAL, THING]
     if (isEvent && !isThing) return [EVENT]
