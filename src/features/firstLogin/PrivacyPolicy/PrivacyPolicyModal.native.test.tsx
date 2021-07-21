@@ -3,7 +3,7 @@ import React from 'react'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
-import { superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { superFlushWithAct, fireEvent, render, cleanup } from 'tests/utils'
 
 import { PrivacyPolicyModal, Props as Options } from './PrivacyPolicyModal'
 
@@ -13,9 +13,9 @@ const onApproval = jest.fn()
 const onRefusal = jest.fn()
 const visible = true
 
-// FIXME: web integration
-describe.skip('<PrivacyPolicyModal />', () => {
+describe('<PrivacyPolicyModal />', () => {
   beforeEach(jest.clearAllMocks)
+  afterEach(cleanup)
 
   it('should render correctly', () => {
     const renderAPI = renderPrivacyModal({
@@ -32,6 +32,7 @@ describe.skip('<PrivacyPolicyModal />', () => {
       onApproval,
       visible,
     })
+
     fireEvent.press(getByTestId('rightIconButton'))
     expect(onRefusal).toBeCalledTimes(1)
     expect(onApproval).not.toBeCalled()
