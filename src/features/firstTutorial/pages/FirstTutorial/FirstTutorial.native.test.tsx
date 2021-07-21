@@ -16,8 +16,7 @@ const props = {
   },
 } as StackScreenProps<RootStackParamList, 'FirstTutorial'>
 
-// FIXME: web integration
-describe.skip('FirstTutorial page', () => {
+describe('FirstTutorial page', () => {
   it('should render first tutorial', () => {
     const firstTutorial = render(reactQueryProviderHOC(<FirstTutorial {...props} />))
     expect(firstTutorial).toMatchSnapshot()
