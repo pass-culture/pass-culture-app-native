@@ -68,7 +68,7 @@ async function renderBookingProperties(booking: Booking) {
           objectStorageUrl: 'http://localhost',
           displayDmsRedirection: true,
           idCheckAddressAutocompletion: false,
-          useAppSearch: false,
+          useAppSearch: true,
         }}
       />
     )

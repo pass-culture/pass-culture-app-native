@@ -15,7 +15,7 @@ const data: SettingsResponse = {
   enableNativeIdCheckVerboseDebugging: false,
   idCheckAddressAutocompletion: false,
   objectStorageUrl: 'http://localhost-storage',
-  useAppSearch: false,
+  useAppSearch: true,
 }
 
 export const useAppSettings: typeof actualUseAppSettings = jest.fn(

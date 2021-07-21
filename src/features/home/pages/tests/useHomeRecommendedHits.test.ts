@@ -2,7 +2,7 @@ import { renderHook, cleanup } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
 import { RecommendationPane } from 'features/home/contentful/moduleTypes'
-import * as AlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
+import * as SearchModule from 'libs/search/fetch/search'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -15,13 +15,13 @@ jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { id: mockUserId } })),
 }))
 jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({ data: { useAppSearch: false } })),
+  useAppSettings: jest.fn(() => ({ data: { useAppSearch: true } })),
 }))
 
 const objectIds = mockedAlgoliaResponse.hits.map(({ objectID }) => objectID)
 
-const fetchHits = jest.fn().mockResolvedValue({ results: mockedAlgoliaResponse.hits })
-jest.spyOn(AlgoliaModule, 'fetchAlgoliaHits').mockImplementation(fetchHits)
+const fetchObjects = jest.fn().mockResolvedValue({ results: mockedAlgoliaResponse.hits })
+jest.spyOn(SearchModule, 'fetchObjects').mockImplementation(fetchObjects)
 
 const endpoint = getRecommendationEndpoint(mockUserId, null) as string
 
@@ -45,13 +45,13 @@ describe('useHomeRecommendedHits', () => {
     })
 
     await waitFor(() => {
-      expect(fetchHits).not.toHaveBeenCalled()
+      expect(fetchObjects).not.toHaveBeenCalled()
       expect(queryCache.get('recommendationOfferIds')).toBeUndefined()
       expect(queryCache.get('recommendationHits')).toBeUndefined()
     })
   })
 
-  it('calls fetchAlgolia with params and returns data', async () => {
+  it('calls fetchObjects with params and returns data', async () => {
     const recommendationModule = new RecommendationPane({
       display: { title: 'Offres recommandées', layout: 'one-item-medium', minOffers: 4 },
     })
@@ -61,8 +61,8 @@ describe('useHomeRecommendedHits', () => {
 
     await waitFor(() => {
       expect(result.current).toHaveLength(4)
-      expect(fetchHits).toHaveBeenCalledTimes(1)
-      expect(fetchHits).toHaveBeenCalledWith(objectIds)
+      expect(fetchObjects).toHaveBeenCalledTimes(1)
+      expect(fetchObjects).toHaveBeenCalledWith(objectIds)
     })
   })
 })
