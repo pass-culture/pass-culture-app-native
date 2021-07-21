@@ -12,6 +12,7 @@ module.exports = {
           api: './src/api',
           features: './src/features',
           libs: './src/libs',
+          theme: './src/theme',
           locales: './src/locales',
           types: './src/types',
           tests: './src/tests',
