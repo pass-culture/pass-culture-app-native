@@ -31,6 +31,7 @@ export type DeepLinksToScreenConfiguration = {
     | ScreenConfiguration<'ResetPasswordExpiredLink'>
     | ScreenConfiguration<'TabNavigator'>
   offer: (params: SerializedParams) => ScreenConfiguration<'Offer'>
+  venue: (params: SerializedParams) => ScreenConfiguration<'Venue'>
   profil: (params?: SerializedParams) => ScreenConfiguration<'Profile'>
   recherche: (params?: SerializedParams) => ScreenConfiguration<'Search'>
   'signup-confirmation': (
