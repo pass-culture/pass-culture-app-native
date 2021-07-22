@@ -57,20 +57,19 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
       },
     }
   },
-  venue: (params) => {
-    return {
-      screen: 'Venue',
-      params: {
-        id: params?.id ? Number(params.id) : 0,
-        from: 'deeplink',
-      },
-    }
-  },
   profil() {
     return { screen: 'Profile', params: undefined }
   },
   recherche() {
     return { screen: 'Search', params: undefined }
+  },
+  venue: (params) => {
+    return {
+      screen: 'Venue',
+      params: {
+        id: params?.id ? Number(params.id) : 0,
+      },
+    }
   },
   'signup-confirmation'(params) {
     if (params && params.token && params.email && params.expiration_timestamp) {

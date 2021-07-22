@@ -143,6 +143,16 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
     })
   })
 
+  describe('link venue', () => {
+    it('should return Venue page with offer id as params', () => {
+      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['venue']({ id: '12345' })
+      expect(configureScreen.screen).toBe('Venue')
+      expect(configureScreen.params).toEqual({
+        id: 12345,
+      })
+    })
+  })
+
   describe('link id-check', () => {
     it('should return Home page when no params are passed', () => {
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['id-check']()
