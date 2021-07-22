@@ -13,18 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/offer/components/ReportOfferReasonModal.tsx
-msgid "(La date ne correspond pas, mauvaise description…)"
-msgstr "(La date ne correspond pas, mauvaise description…)"
-
-#: src/features/offer/components/ReportOfferReasonModal.tsx
-msgid "(comparé à l’offre public)"
-msgstr "(comparé à l’offre public)"
-
-#: src/features/offer/components/ReportOfferReasonModal.tsx
-msgid "(violence, incitation à la haine, nudité...)"
-msgstr "(violence, incitation à la haine, nudité...)"
-
 #: src/features/favorites/atoms/BicolorFavoriteCount.tsx
 msgid "+"
 msgstr "+"
@@ -159,6 +147,7 @@ msgid "Aucun lieu ne correspond à ta recherche"
 msgstr "Aucun lieu ne correspond à ta recherche"
 
 #: src/libs/keychain.ts
+#: src/libs/keychain.web.ts
 msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
 
@@ -194,10 +183,6 @@ msgstr "Autoriser l’utilisation de mes données de navigation"
 #: src/features/search/components/locationChoice.utils.tsx
 msgid "Autour de moi"
 msgstr "Autour de moi"
-
-#: src/features/offer/components/ReportOfferReasonModal.tsx
-msgid "Autre"
-msgstr "Autre"
 
 #: src/features/offer/components/ReportOfferOtherReasonModal.tsx
 msgid "Autre raison"
@@ -700,6 +685,9 @@ msgstr "Je veux être alerté des actualités et des meilleures offres du pass C
 #: src/libs/keychain.ts
 #: src/libs/keychain.ts
 #: src/libs/keychain.ts
+#: src/libs/keychain.web.ts
+#: src/libs/keychain.web.ts
+#: src/libs/keychain.web.ts
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
@@ -729,10 +717,6 @@ msgstr "L'offre n'a pas été retirée de tes favoris"
 msgid "La date choisie est incorrecte"
 msgstr "La date choisie est incorrecte"
 
-#: src/features/offer/components/ReportOfferReasonModal.tsx
-msgid "La description est non conforme"
-msgstr "La description est non conforme"
-
 #: src/libs/geolocation/getPosition.ts
 msgid "La géolocalisation est désactivée sur l'application"
 msgstr "La géolocalisation est désactivée sur l'application"
@@ -759,10 +743,6 @@ msgstr "La réservation est annulable jusqu'au"
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 
-#: src/features/offer/components/ReportOfferReasonModal.tsx
-msgid "Le contenu est inapproprié"
-msgstr "Le contenu est inapproprié"
-
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx
 msgid "Le lien est expiré !"
@@ -787,10 +767,6 @@ msgstr ""
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
-
-#: src/features/offer/components/ReportOfferReasonModal.tsx
-msgid "Le tarif est trop élevé"
-msgstr "Le tarif est trop élevé"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/signup/AcceptCgu.tsx
@@ -1394,6 +1370,7 @@ msgstr "Ton mot de passe actuel"
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
+#: src/features/offer/components/ReportOfferOtherReasonModal.tsx
 #: src/features/offer/components/ReportOfferReasonModal.tsx
 msgid "Ton signalement a bien été pris en compte"
 msgstr "Ton signalement a bien été pris en compte"
@@ -1566,6 +1543,10 @@ msgstr "Un lien ne fonctionne pas ?"
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
+#: src/features/auth/projectRedactorSignup/AcceptRedactorCgu.tsx
+msgid "Un problème est survenu pendant l'inscription, veuillez réessayer plus tard."
+msgstr "Un problème est survenu pendant l'inscription, veuillez réessayer plus tard."
+
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
@@ -1659,6 +1640,10 @@ msgstr "Voir ma réservation"
 #: src/features/offer/atoms/OfferSeeMore.tsx
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
+
+#: src/features/auth/signup/AccountCreated.tsx
+msgid "Votre compte a été activé !"
+msgstr "Votre compte a été activé !"
 
 #: src/features/auth/projectRedactorSignup/SetRedactorEmail.tsx
 msgid "Votre e-mail"
