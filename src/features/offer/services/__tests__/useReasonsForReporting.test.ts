@@ -3,7 +3,7 @@ import { rest } from 'msw'
 
 import { OfferReportReasons } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { offerReportReasonSnap } from 'features/offer/api/snaps/offerReportReasonSnap'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -16,7 +16,7 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 server.use(
   rest.get<OfferReportReasons>(
     env.API_BASE_URL + '/native/v1/offer/report/reasons',
-    (req, res, ctx) => res(ctx.status(200), ctx.json(offerResponseSnap))
+    (req, res, ctx) => res(ctx.status(200), ctx.json(offerReportReasonSnap))
   )
 )
 
@@ -36,6 +36,7 @@ describe('useReasonsForReporting hook', () => {
     await waitFor(() => result.current.isSuccess)
 
     expect(result.current.isSuccess).toEqual(true)
+    expect(result.current.data?.reasons.length).toEqual(offerReportReasonSnap.reasons.length)
   })
 
   it('should return null when not logged in', async () => {
