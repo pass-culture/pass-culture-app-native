@@ -171,7 +171,7 @@ export interface ResultList<FieldsEnum> {
 
 interface AppSearchClient {
   /** https://github.com/elastic/app-search-javascript#searching */
-  search: <Field>(query: string, searchOptions: SearchOptions<Field>) => Promise<ResultList>
+  search: <Field>(query: string, searchOptions: SearchOptions<Field>) => Promise<ResultList<Field>>
 
   /** https://github.com/elastic/app-search-javascript#multi-search */
   multiSearch: <Field>(
