@@ -5,8 +5,8 @@ import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/routes'
 import { ColorsEnum } from 'ui/theme'
 
-import { isNavigationReadyRef, navigationRef } from './navigationRef'
-import { onNavigationStateChange } from './services'
+import { isNavigationReadyRef, navigationRef } from '../navigationRef'
+import { onNavigationStateChange } from '../services'
 
 const NAV_THEME = { colors: { background: ColorsEnum.WHITE } } as Theme
 
