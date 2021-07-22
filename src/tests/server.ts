@@ -14,9 +14,11 @@ import {
   UserProfileResponse,
   ValidateEmailRequest,
   ValidateEmailResponse,
+  VenueResponse,
 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 
@@ -57,6 +59,10 @@ export const server = setupServer(
   rest.get<OfferResponse>(
     env.API_BASE_URL + '/native/v1/offer/' + offerResponseSnap.id,
     (req, res, ctx) => res(ctx.status(200), ctx.json(offerResponseSnap))
+  ),
+  rest.get<VenueResponse>(
+    env.API_BASE_URL + '/native/v1/venue/' + venueResponseSnap.id,
+    (req, res, ctx) => res(ctx.status(200), ctx.json(venueResponseSnap))
   ),
   rest.post<CulturalSurveyRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/me/cultural_survey',

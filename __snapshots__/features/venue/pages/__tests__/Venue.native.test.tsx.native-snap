@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Venue /> should match snapshot 1`] = `
+<RCTScrollView
+  accessibilityLabel="Page de détail du lieu"
+  accessible={true}
+  style={
+    Array [
+      Object {},
+    ]
+  }
+  testID="Page de détail du lieu"
+>
+  <View>
+    <View
+      customHeight={16}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      5543
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      Le Petit Rintintin 1
+    </Text>
+  </View>
+</RCTScrollView>
+`;
