@@ -4,18 +4,11 @@ import React, { useState } from 'react'
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { navigationRef } from 'features/navigation/navigationRef'
+import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { useSplashScreenContext } from 'libs/splashscreen'
 
 import { initialRouteName, routes } from './routes'
 import { RootStackParamList, Route } from './types'
-
-const NAVIGATOR_SCREEN_OPTIONS = {
-  headerShown: false,
-  cardStyle: {
-    backgroundColor: 'transparent',
-    flex: 1,
-  },
-}
 
 export const RootStack = createStackNavigator<RootStackParamList>()
 
