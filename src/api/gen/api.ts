@@ -1356,12 +1356,6 @@ export interface ReportedOffer {
      * @type {number}
      * @memberof ReportedOffer
      */
-    id: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReportedOffer
-     */
     offerId: number;
     /**
      * 
@@ -1375,12 +1369,6 @@ export interface ReportedOffer {
      * @memberof ReportedOffer
      */
     reportedAt: Date;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReportedOffer
-     */
-    userId: number;
 }/**
  * 
  * @export
@@ -1776,6 +1764,78 @@ export interface ValidatePhoneNumberRequest {
      * @memberof ValidatePhoneNumberRequest
      */
     code: string;
+}/**
+ * 
+ * @export
+ * @interface VenueResponse
+ */
+export interface VenueResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof VenueResponse
+     */
+    address?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof VenueResponse
+     */
+    city?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof VenueResponse
+     */
+    id: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VenueResponse
+     */
+    isPermanent?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VenueResponse
+     */
+    isVirtual: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof VenueResponse
+     */
+    latitude?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof VenueResponse
+     */
+    longitude?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof VenueResponse
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VenueResponse
+     */
+    postalCode: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VenueResponse
+     */
+    publicName?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof VenueResponse
+     */
+    withdrawalDetails?: string | null;
 }
 /**
  * DefaultApi - fetch parameter creator
@@ -2000,6 +2060,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          */
         async getnativev1settings(options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/settings`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary get_venue <GET>
+         * @param {number} venue_id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1venuevenueId(venue_id: number, options: any = {}): Promise<FetchArgs> {
+            // verify required parameter 'venue_id' is not null or undefined
+            if (venue_id === null || venue_id === undefined) {
+                throw new RequiredError('venue_id','Required parameter venue_id was null or undefined when calling getnativev1venuevenueId.');
+            }
+            const localVarPath = `/native/v1/venue/{venue_id}`
+                .replace(`{${"venue_id"}}`, encodeURIComponent(String(venue_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
@@ -2780,6 +2867,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary get_venue <GET>
+         * @param {number} venue_id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1venuevenueId(basePath: string, venue_id: number, options?: any): Promise<VenueResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1venuevenueId(venue_id, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary update_beneficiary_mandatory_information <PATCH>
          * @param {BeneficiaryInformationUpdateRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -3197,6 +3296,18 @@ export class DefaultApi extends BaseAPI {
     public async getnativev1settings(options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.getnativev1settings(this.basePath, options)
+    }
+    /**
+     * 
+     * @summary get_venue <GET>
+     * @param {number} venue_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1venuevenueId(venue_id: number, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1venuevenueId(this.basePath, venue_id, options)
     }
     /**
      * 
