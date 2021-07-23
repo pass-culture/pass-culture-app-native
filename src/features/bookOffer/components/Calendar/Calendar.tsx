@@ -112,6 +112,5 @@ const Container = styled.TouchableOpacity.attrs(() => ({
   hitSlop,
 }))({
   alignItems: 'center',
-  height: getSpacing(8),
   width: getSpacing(8),
 })
