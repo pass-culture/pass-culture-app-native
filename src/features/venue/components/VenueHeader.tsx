@@ -20,6 +20,8 @@ interface Props {
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
+
+// TODO(antoinewg) factoriser avec OfferHeader
 export const VenueHeader: React.FC<Props> = (props) => {
   const { headerTransition } = props
   const { goBack } = useNavigation<UseNavigationType>()
