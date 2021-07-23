@@ -49,6 +49,7 @@ export type CodeInputProps = {
     }
 )
 
+// TODO(anoukhello) delete this component (use input masks instead of separated inputs)
 export const CodeInput = (props: CodeInputProps) => {
   const inputsRef = useRef(
     createMap<RefObject<TextInput>>({}, props.codeLength, () => React.createRef())

@@ -5,6 +5,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, FC, useState, useMemo } from 'react'
 import { Dimensions } from 'react-native'
+import TextInputMask from 'react-native-text-input-mask'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -24,7 +25,6 @@ import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
-import { CodeInput, CodeValidation } from 'ui/components/inputs/CodeInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -32,7 +32,7 @@ import { Separator } from 'ui/components/Separator'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const CODE_INPUT_LENGTH = 6
 
@@ -43,10 +43,6 @@ export interface SetPhoneValidationCodeModalProps {
   dismissModal: () => void
   phoneNumber: string
   onGoBack: () => void
-}
-
-interface CodeInputState extends CodeValidation {
-  code: string | null
 }
 
 const TIMER = 60
@@ -60,9 +56,8 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
   const { data: settings } = useAppSettings()
   const { phoneNumber, countryCode } = route.params
   const { navigate, canGoBack, goBack } = useNavigation<UseNavigationType>()
-  const [codeInputState, setCodeInputState] = useState<CodeInputState>({
-    code: null,
-    isComplete: false,
+  const [codeInputState, setCodeInputState] = useState({
+    code: '',
     isValid: false,
   })
   const [errorMessage, setErrorMessage] = useState('')
@@ -142,10 +137,10 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
     setValidationCodeRequestTimestamp(now)
   }
 
-  function onChangeValue(value: string | null, validation: CodeValidation) {
+  function onChangeValue(value: string) {
     setCodeInputState({
       code: value,
-      ...validation,
+      isValid: !!value && value.length === CODE_INPUT_LENGTH,
     })
   }
 
@@ -212,14 +207,16 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
             <Typo.Body>{validationCodeInformation}</Typo.Body>
           </Paragraphe>
           <Spacer.Column numberOfSpaces={6} />
-          <CodeInput
-            codeLength={CODE_INPUT_LENGTH}
-            placeholder={'0'}
-            enableValidation
-            isValid={isCodeValid}
-            isInputValid={isInputValid}
-            onChangeValue={onChangeValue}
-          />
+          <CodeInputContainer>
+            <CodeInput
+              onChangeText={(_formatted, extracted) => onChangeValue(extracted ?? '')}
+              placeholder={codeInputPlaceholder}
+              placeholderTextColor={ColorsEnum.GREY_DARK}
+              mask={codeInputMask}
+              keyboardType="number-pad"
+              testID="code-input"
+            />
+          </CodeInputContainer>
           {errorMessage ? (
             <React.Fragment>
               <InputError visible messageId={errorMessage} numberOfSpacesTop={3} />
@@ -274,19 +271,27 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
   )
 }
 
+const codeInputPlaceholder = ('0' + '\u00a0'.repeat(5)).repeat(5) + '0'
+const codeInputMask = ('[0]' + ' '.repeat(5)).repeat(5) + '[0]'
+
+const CodeInput = styled(TextInputMask)({
+  fontSize: 20,
+  marginLeft: getSpacing(4),
+  color: ColorsEnum.BLACK,
+  fontFamily: 'Montserrat-Regular',
+})
+
+const CodeInputContainer = styled.View({
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  width: 240,
+})
+
 /** returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces
  */
 export const formatPhoneNumber = (phoneNumber: string, countryCode: CountryCode) => {
   const parsedPhoneNumber = parsePhoneNumber(phoneNumber, countryCode)
   return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0')
-}
-
-const isCodeValid = (code: string | null, _isComplete: boolean) => {
-  return code !== null && !isNaN(Number(code)) && code.length === CODE_INPUT_LENGTH
-}
-
-const isInputValid = (inputValue: string, _position: number) => {
-  return !isNaN(Number(inputValue)) && inputValue.length === 1
 }
 
 const Break = styled.View({
