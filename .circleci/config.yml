@@ -117,6 +117,29 @@ commands:
             BOT_MESSAGE="'[App Native] Version *"$CIRCLE_TAG"* has been successfully deployed :muscle:'"
             curl -X POST -H 'Content-type: application/json' --data "{'text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
 
+  authenticate_gcp:
+    description: Authenticate to a GCP project
+    parameters:
+      gcp_key_name:
+        type: env_var_name
+    steps:
+      - run: echo ${<< parameters.gcp_key_name >>} > ${HOME}/gcp-key.json
+      - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
+      - run: gcloud --quiet config set project ${GCP_PROJECT}
+  build:
+    description: Build decliweb
+    steps:
+      - install_node_modules
+      - run: |
+          yarn build:testing
+  push-to-bucket:
+    description: Push the built decliweb to a cloudstorage bucket
+    steps:
+      - run: |
+          set +eo pipefail
+          gsutil rsync -r ./build gs://passculture-metier-ehp-testing-decliweb
+          true
+
 jobs:
   run-tests:
     docker:
@@ -432,6 +455,21 @@ jobs:
             ./scripts/deploy.sh -o ios -t soft -e production
       - notify-release
 
+  deploy-web-testing:
+    docker:
+      - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
+        auth:
+            username: _json_key  # default username when using a JSON key file to authenticate
+            password: $GCP_INFRA_KEY
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+      - authenticate_gcp:
+          gcp_key_name: GCP_METIER_KEY
+      - build
+      - push-to-bucket
+
 workflows:
   version: 2.1
   commit:
@@ -558,3 +596,14 @@ workflows:
               ignore: /.*/
           requires:
             - run-tests
+      - deploy-web-testing:
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: master
+          requires:
+            - run-tests
+          context:
+            - GCP
+            - GCP_EHP
