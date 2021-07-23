@@ -11,10 +11,12 @@ import {
   iconBorderInterpolation,
 } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
-import { Spacer } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
+  title: string
+  venueId: number
 }
 
 /**
@@ -23,8 +25,13 @@ interface Props {
 
 // TODO(antoinewg) factoriser avec OfferHeader
 export const VenueHeader: React.FC<Props> = (props) => {
-  const { headerTransition } = props
+  const { headerTransition, title, venueId } = props
   const { goBack } = useNavigation<UseNavigationType>()
+
+  // TODO : Create useShareVenue(venueId) (PC-10037)
+  const shareOffer = () => {
+    venueId
+  }
 
   const iconBackgroundColor = headerTransition.interpolate(iconBackgroundInterpolation)
   const iconBorderColor = headerTransition.interpolate(iconBorderInterpolation)
@@ -45,6 +52,19 @@ export const VenueHeader: React.FC<Props> = (props) => {
           testID={t`Revenir en arrière`}
         />
         <Spacer.Flex />
+
+        <Title testID="offerHeaderName" style={{ opacity: headerTransition }}>
+          <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
+        </Title>
+
+        <Spacer.Flex />
+        <HeaderIcon
+          animationState={animationState}
+          iconName="share"
+          onPress={shareOffer}
+          testID={t`Partager`}
+        />
+        <Spacer.Row numberOfSpaces={6} />
       </Row>
       <Spacer.Column numberOfSpaces={2} />
     </HeaderContainer>
@@ -60,4 +80,8 @@ const Row = styled.View({
   flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
+})
+const Title = styled(Animated.Text).attrs({ numberOfLines: 1 })({
+  flexShrink: 1,
+  textAlign: 'center',
 })
