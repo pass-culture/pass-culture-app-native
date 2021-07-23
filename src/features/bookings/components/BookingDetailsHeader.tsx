@@ -5,12 +5,12 @@ import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { HeaderIcon } from 'features/offer/atoms'
 import {
   headerBackgroundInterpolation,
   iconBackgroundInterpolation,
   iconBorderInterpolation,
 } from 'ui/components/headers/animationHelpers'
+import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
