@@ -6,16 +6,12 @@ import {
   initialRouteName as idCheckInitialRouteName,
   // withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
 } from '@pass-culture/id-check'
-// // eslint-disable-next-line import/order
 import { Link, LinkingOptions } from '@react-navigation/native'
-//
 // // import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 // // import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
 // // import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
 // // import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
 // // import { IdCheckUnavailable } from 'features/auth/idcheckUnavailable/IdCheckUnavailable'
-// // import { Login } from 'features/auth/login/Login'
-// // import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 // // import { AccountCreated } from 'features/auth/signup/AccountCreated'
 // // import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 // // import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
@@ -24,9 +20,14 @@ import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
-//
-// import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
+import { Login } from 'features/auth/login/Login'
+// import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
+import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
+import { SetBirthday } from 'features/auth/signup/SetBirthday'
+import { SetEmail } from 'features/auth/signup/SetEmail'
+import { SetPassword } from 'features/auth/signup/SetPassword'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
+import { withAsyncErrorBoundary } from 'features/errors'
 import { Route } from 'features/navigation/RootNavigator/types'
 import { linking as tabNavigatorLinking } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
@@ -37,9 +38,6 @@ import { env } from 'libs/environment'
 // // import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
 // // import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 // // import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
-// // import { SetBirthday } from 'features/auth/signup/SetBirthday'
-// // import { SetEmail } from 'features/auth/signup/SetEmail'
-// // import { SetPassword } from 'features/auth/signup/SetPassword'
 // // import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
 // // import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 // // import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
@@ -54,8 +52,6 @@ import { env } from 'libs/environment'
 // // import { Navigation } from 'features/cheatcodes/pages/Navigation'
 // // import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
 // // import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
-// // import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
-// // import { withAsyncErrorBoundary } from 'features/errors'
 // // import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 // // import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 // // import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
@@ -76,6 +72,7 @@ import { env } from 'libs/environment'
 // // import { LocationPicker } from 'features/search/pages/LocationPicker'
 // // import { SearchFilter } from 'features/search/pages/SearchFilter'
 //
+import { ColorsEnum, Typo } from 'ui/theme'
 
 export const initialRouteName = 'ABTestingPOC'
 
@@ -91,14 +88,20 @@ const Page = styled.View({
   justifyContent: 'center',
 })
 
-const ABTestingPOC = () => (
+const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
   <Page>
-    <Text>ABTestingPOC</Text>
+    <Typo.Title3 color={ColorsEnum.PRIMARY}>{title}</Typo.Title3>
     <Link to={'/search'}>
       <Text>Go to TabNavigator/Search</Text>
     </Link>
     <Link to={'/eighteen'}>
-      <Text>Go to TabNavigator/Eighteen</Text>
+      <Text>Go to EighteenBirthday</Text>
+    </Link>
+    <Link to={'/login'}>
+      <Text>Go to Login</Text>
+    </Link>
+    <Link to={'/setemail'}>
+      <Text>Register</Text>
     </Link>
   </Page>
 )
@@ -112,7 +115,7 @@ export const routes: Array<Route> = [
     path: '/eighteen',
   },
   //   // { name: 'ABTestingPOC', component: ABTestingPOC },
-  //   // { name: 'AcceptCgu', component: AcceptCgu, hoc: withAsyncErrorBoundary },
+  // { name: 'AcceptCgu', component: AcceptCgu, path: '/cgu', hoc: withAsyncErrorBoundary },
   //   // { name: 'AccountCreated', component: AccountCreated },
   //   // { name: 'AfterSignupEmailValidationBuffer', component: AfterSignupEmailValidationBuffer },
   //   // { name: 'AppComponents', component: AppComponents },
@@ -144,7 +147,7 @@ export const routes: Array<Route> = [
   //   // { name: 'DeleteProfileSuccess', component: DeleteProfileSuccess },
   //   // { name: 'LocationFilter', component: LocationFilter },
   //   // { name: 'LocationPicker', component: LocationPicker },
-  //   // { name: 'Login', component: Login, hoc: withAsyncErrorBoundary },
+  { name: 'Login', component: Login, hoc: withAsyncErrorBoundary, path: '/login' },
   //   // { name: 'Maintenance', component: Maintenance },
   //   // { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary },
   //   // {
@@ -167,9 +170,9 @@ export const routes: Array<Route> = [
   //   // },
   //   // { name: 'SearchCategories', component: SearchCategories },
   //   // { name: 'SearchFilter', component: SearchFilter },
-  //   // { name: 'SetBirthday', component: SetBirthday },
-  //   // { name: 'SetEmail', component: SetEmail },
-  //   // { name: 'SetPassword', component: SetPassword },
+  { name: 'SetBirthday', component: SetBirthday, path: '/setbirthday' },
+  { name: 'SetEmail', component: SetEmail, path: '/setemail' },
+  { name: 'SetPassword', component: SetPassword, path: '/setpassword' },
   //   // { name: 'SetPostalCode', component: SetPostalCode },
   //   // { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
   //   // { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
@@ -183,7 +186,7 @@ export const routes: Array<Route> = [
   //   // { name: 'ForceUpdate', component: ForceUpdate },
   //   // { name: 'IdCheckUnavailable', component: IdCheckUnavailable },
   ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
-  // { name: idCheckInitialRouteName, component: IdCheckV2 },
+  { name: idCheckInitialRouteName, component: IdCheckV2, path: '/idcheckv2' },
 ]
 
 export const linking: LinkingOptions = {
