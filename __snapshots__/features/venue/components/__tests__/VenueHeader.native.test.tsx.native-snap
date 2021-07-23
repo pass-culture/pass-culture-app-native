@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VenueHeader /> should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgba(255, 255, 255, 0)",
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    customHeight={16}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    numberOfSpaces={2}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "width": 24,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Revenir en arrière"
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="Revenir en arrière"
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "aspectRatio": 1,
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "borderColor": "rgba(245, 245, 245, 1)",
+            "borderRadius": 40,
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "transform": undefined,
+            "width": 40,
+          }
+        }
+        testID="headerIconRoundContainer"
+      >
+        <View
+          size={32}
+          style={
+            Array [
+              Object {
+                "height": 32,
+                "width": 32,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Object {
+                "opacity": 1,
+                "position": "absolute",
+              }
+            }
+            testID="initial-icon-container"
+          >
+            <View
+              height={32}
+              testID="icon-back"
+              width={32}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "opacity": 0,
+                "position": "absolute",
+              }
+            }
+            testID="final-icon-container"
+          >
+            <View
+              height={32}
+              testID="final-icon-back"
+              width={32}
+            >
+              <Text>
+                final-icon-back-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+  </View>
+  <View
+    numberOfSpaces={2}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />
+</View>
+`;
