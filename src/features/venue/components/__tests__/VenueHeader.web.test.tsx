@@ -3,14 +3,14 @@ import { Animated } from 'react-native'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils/web'
 
 import { VenueHeader } from '../VenueHeader'
 
 describe('<VenueHeader />', () => {
   it('should render correctly', async () => {
-    const { toJSON } = await renderVenueHeader()
-    expect(toJSON()).toMatchSnapshot()
+    const renderAPI = await renderVenueHeader()
+    expect(renderAPI).toMatchSnapshot()
   })
 
   it('should render back icon', async () => {
@@ -20,7 +20,7 @@ describe('<VenueHeader />', () => {
 
   it('should goBack when we press on the back button', async () => {
     const { getByTestId } = await renderVenueHeader()
-    fireEvent.press(getByTestId('icon-back'))
+    fireEvent.click(getByTestId('icon-back'))
     expect(goBack).toBeCalledTimes(1)
   })
 })
