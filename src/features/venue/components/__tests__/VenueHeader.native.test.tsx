@@ -27,6 +27,5 @@ describe('<VenueHeader />', () => {
 
 async function renderVenueHeader() {
   const animatedValue = new Animated.Value(0)
-  const wrapper = render(reactQueryProviderHOC(<VenueHeader headerTransition={animatedValue} />))
-  return { ...wrapper, animatedValue }
+  return render(reactQueryProviderHOC(<VenueHeader headerTransition={animatedValue} />))
 }

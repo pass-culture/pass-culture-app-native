@@ -2,7 +2,6 @@
 
 exports[`<VenueHeader /> should render correctly 1`] = `
 Object {
-  "animatedValue": 0,
   "asFragment": [Function],
   "baseElement": <body>
     <div>
