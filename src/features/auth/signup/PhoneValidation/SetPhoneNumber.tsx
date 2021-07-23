@@ -12,8 +12,10 @@ import styled from 'styled-components/native'
 import { ApiError, extractApiErrorMessage } from 'api/helpers'
 import { useSendPhoneValidationMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { currentTimestamp } from 'libs/dates'
+import { MonitoringError } from 'libs/errorMonitoring'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
@@ -44,6 +46,7 @@ const ALLOWED_COUNTRY_CODES: CountryCode[] = [
 ]
 
 export const SetPhoneNumber: FunctionComponent = () => {
+  const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
   const [phoneNumber, setPhoneNumber] = useState('')
   const [invalidPhoneNumberMessage, setInvalidPhoneNumberMessage] = useSafeState('')
@@ -102,6 +105,12 @@ export const SetPhoneNumber: FunctionComponent = () => {
     if (isRequestTimestampExpired) {
       setInvalidPhoneNumberMessage('')
       const phoneNumberWithPrefix = '+' + phoneNumberPrefix + formatPhoneNumber(phoneNumber)
+      if (settings?.enableNativeIdCheckVerboseDebugging) {
+        const errorMessage = `Request info : ${JSON.stringify({
+          phoneNumber: phoneNumberWithPrefix,
+        })}`
+        new MonitoringError(errorMessage, 'sendPhoneValidationCode')
+      }
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
   }

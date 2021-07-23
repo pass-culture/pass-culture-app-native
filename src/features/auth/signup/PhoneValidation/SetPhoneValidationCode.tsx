@@ -11,12 +11,13 @@ import { api } from 'api/api'
 import { ApiError, extractApiErrorMessage } from 'api/helpers'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { useAppSettings } from 'features/auth/settings'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { currentTimestamp } from 'libs/dates'
 import { env } from 'libs/environment'
-import { errorMonitoring } from 'libs/errorMonitoring'
+import { errorMonitoring, MonitoringError } from 'libs/errorMonitoring'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -56,6 +57,7 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 >
 
 export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route }) => {
+  const { data: settings } = useAppSettings()
   const { phoneNumber, countryCode } = route.params
   const { navigate, canGoBack, goBack } = useNavigation<UseNavigationType>()
   const [codeInputState, setCodeInputState] = useState<CodeInputState>({
@@ -151,6 +153,12 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
     setErrorMessage('')
     const { code } = codeInputState
     if (code) {
+      if (settings?.enableNativeIdCheckVerboseDebugging) {
+        const errorMessage = `Request info : ${JSON.stringify({
+          code,
+        })}`
+        new MonitoringError(errorMessage, 'validatePhoneNumber')
+      }
       validatePhoneNumber(code)
     }
   }
