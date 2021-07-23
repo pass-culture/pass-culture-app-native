@@ -4,6 +4,8 @@ import { theme as idCheckTheme } from '../../src/theme'
 
 const MockIdCheckErrorComponent = () => null
 
+const actual = jest.requireActual('@pass-culture/id-check')
+
 export const useIdCheckContext = () => ({
   setContextValue: jest.fn()
 })
@@ -35,3 +37,5 @@ export const IdCheckContextProvider: React.FC = (props) => {
 }
 
 export const theme = idCheckTheme
+
+export const Background = actual.Background

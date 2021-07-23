@@ -1,204 +1,267 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="%PUBLIC_URL%/images/app-icon-iphone.png" />
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no, shrink-to-fit=no" />
-    <meta name="HandheldFriendly" content="true">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no, shrink-to-fit=no"
+    />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="theme-color" content="#eb0055" />
-    <meta name="description" content="Pass Culture"/>
-    <meta name="version" content="%VERSION%">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/images/app-icon-iphone.png">
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/app-icon-iphone@3x.png">
-    <link href="%PUBLIC_URL%/iosSplashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-    <link href="%PUBLIC_URL%/iosSplashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-    <link href="%PUBLIC_URL%/iosSplashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image">
-    <link href="%PUBLIC_URL%/iosSplashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image">
-    <link href="%PUBLIC_URL%/iosSplashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-    <link href="%PUBLIC_URL%/iosSplashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image">
-    <link href="%PUBLIC_URL%/iosSplashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-    <link href="%PUBLIC_URL%/iosSplashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-    <link href="%PUBLIC_URL%/iosSplashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-    <link href="%PUBLIC_URL%/iosSplashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <meta name="description" content="Pass Culture" />
+    <meta name="version" content="%VERSION%" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/images/app-icon-iphone.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/app-icon-iphone@3x.png" />
+    <link
+      href="%PUBLIC_URL%/iosSplashscreens/iphone5_splash.png"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="%PUBLIC_URL%/iosSplashscreens/iphone6_splash.png"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="%PUBLIC_URL%/iosSplashscreens/iphoneplus_splash.png"
+      media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="%PUBLIC_URL%/iosSplashscreens/iphonex_splash.png"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="%PUBLIC_URL%/iosSplashscreens/iphonexr_splash.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="%PUBLIC_URL%/iosSplashscreens/iphonexsmax_splash.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="%PUBLIC_URL%/iosSplashscreens/ipad_splash.png"
+      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="%PUBLIC_URL%/iosSplashscreens/ipadpro1_splash.png"
+      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="%PUBLIC_URL%/iosSplashscreens/ipadpro3_splash.png"
+      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="%PUBLIC_URL%/iosSplashscreens/ipadpro2_splash.png"
+      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- See usage of `window.grecaptcha` in ReCaptcha.web.tsx -->
+    <script src="https://www.google.com/recaptcha/api.js?hl=fr" async defer></script>
     <title>Pass Culture</title>
     <style type="text/css">
-        @font-face {
-            font-family: 'Montserrat-MediumItalic';
-            font-style: italic;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUPjIg1_i6t8kCHKm459WxZOg3z_PZw.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
+      @font-face {
+        font-family: 'Montserrat-MediumItalic';
+        font-style: italic;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUPjIg1_i6t8kCHKm459WxZOg3z_PZw.woff2)
+          format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
 
-        @font-face {
-            font-family: 'Montserrat-Bold';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_dJE3gnD_g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        @font-face {
-            font-family: 'Montserrat-Medium';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        @font-face {
-            font-family: 'Montserrat-Regular';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_ZpC3gnD_g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        @font-face {
-            font-family: 'Montserrat-SemiBold';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_bZF3gnD_g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
+      @font-face {
+        font-family: 'Montserrat-Bold';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_dJE3gnD_g.woff2)
+          format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Montserrat-Medium';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2)
+          format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Montserrat-Regular';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_ZpC3gnD_g.woff2)
+          format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Montserrat-SemiBold';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_bZF3gnD_g.woff2)
+          format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
 
-        html {
-            width: 100vw;
-            height: 100vh;
-            min-height: 100%;
-            -ms-scroll-chaining: none;
-            overscroll-behavior: contain;
-            touch-action: pan-y;
-            -webkit-overflow-scrolling: touch;
-            overflow: hidden;
-        }
+      html {
+        width: 100vw;
+        height: 100vh;
+        min-height: 100%;
+        -ms-scroll-chaining: none;
+        overscroll-behavior: contain;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        overflow: hidden;
+      }
 
-        body {
-            min-height: 320px;
-            max-height: 100%;
-            margin: 0;
-            position: fixed;
-        }
+      body {
+        min-height: 320px;
+        max-height: 100%;
+        margin: 0;
+        position: fixed;
+      }
 
-        body,
-        body #root {
-            width: 100%;
-            height: 100%;
-        }
+      body,
+      body #root {
+        width: 100%;
+        height: 100%;
+      }
 
-        body #root {
-            perspective: 900000px;
-            z-index: 1;
-            transform: translateZ(0);
-        }
+      body #root {
+        perspective: 900000px;
+        z-index: 1;
+        transform: translateZ(0);
+      }
 
-        textarea, select, input, button {
-            outline: none;
-        }
+      textarea,
+      select,
+      input,
+      button {
+        outline: none;
+      }
 
-        .App {
-            text-align: center;
-            background-color: #151515;
-            min-height: 100%;
-            align-items: center;
-        }
+      .App {
+        text-align: center;
+        background-color: #151515;
+        min-height: 100%;
+        align-items: center;
+      }
 
-        .App,
-        .App .App-background,
-        .App .App-background .App-content{
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+      .App,
+      .App .App-background,
+      .App .App-background .App-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
 
+      .App .App-background {
+        background-color: #eb0055;
+        max-width: 500px;
+        max-height: 100%;
+        width: 100%;
+      }
+
+      .App .App-background .App-landscape-only {
+        display: none;
+      }
+
+      #loading-svg {
+        display: block;
+        margin: auto;
+      }
+
+      @media screen and (max-width: 767px) {
+        .App .App-background .App-content {
+          width: 100%;
+          max-height: 100%;
+          margin: 0;
+        }
+      }
+
+      @media only screen and (max-width: 1023px) and (min-aspect-ratio: 23/16) and (orientation: landscape) {
         .App .App-background {
-            background-color: #eb0055;
-            max-width: 500px;
-            max-height: 100%;
-            width: 100%;
+          background-image: linear-gradient(90deg, #eb0055 -43%, #320096 154%);
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .App .App-background .App-content {
+          display: none;
         }
 
         .App .App-background .App-landscape-only {
-            display: none;
+          display: block;
+          color: #fff;
+          font-family: Montserrat-Medium;
         }
+      }
 
-        #loading-svg {
-            display: block;
-            margin:auto;
+      @media only screen and (max-width: 1023px) and (min-aspect-ratio: 23/16) and (orientation: landscape) and (max-width: 320px) {
+        .App .App-background .App-landscape-only img {
+          max-height: 100px;
         }
-
-        @media screen and (max-width: 767px) {
-            .App .App-background .App-content {
-                width: 100%;
-                max-height: 100%;
-                margin: 0;
-            }
-        }
-
-        @media only screen and (max-width: 1023px) and (min-aspect-ratio: 23/16) and (orientation: landscape) {
-            .App .App-background {
-                background-image: linear-gradient(90deg, #eb0055 -43%, #320096 154%);
-                width: 100%;
-                max-width: 100%;
-            }
-
-            .App .App-background .App-content {
-                display: none;
-            }
-
-            .App .App-background .App-landscape-only {
-                display: block;
-                color: #fff;
-                font-family: Montserrat-Medium;
-            }
-        }
-
-        @media only screen and (max-width: 1023px) and (min-aspect-ratio: 23/16) and (orientation: landscape) and (max-width: 320px) {
-            .App .App-background .App-landscape-only img {
-                max-height: 100px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <noscript>Vous devez activer JavaScript pour utiliser cette application.</noscript>
-    <div id="root">
-    </div>
-    <svg id="loading-svg" width="100%" height="100%" viewBox="0 0 375 667" preserveAspectRatio="none">
-        <defs>
-            <linearGradient id="prefix__b" x1="65.805%" x2="47.731%" y1="26.588%" y2="116.28%">
-                <stop offset="0%" stop-color="#EB0055" />
-                <stop offset="100%" stop-color="#320096" />
-            </linearGradient>
-            <linearGradient id="prefix__d" x1="29.678%" x2="32.571%" y1="71.761%" y2="14.036%">
-                <stop offset="0%" stop-color="#EB0055" />
-                <stop offset="100%" stop-color="#320096" />
-            </linearGradient>
-            <path id="prefix__a" d="M0 0h375v667H0z" />
-            <path
-                    id="prefix__e"
-                    d="M574.848 685.018c44.64 237.462 197.943-58.73 172.765-186.83-25.178-128.1-120.317-395.218-387.196-385.031-266.88 10.187-281.873 242.282-174.83 360.46 107.043 118.179 344.621-26.06 389.26 211.401z"
-            />
-        </defs>
-        <g fill="none" fill-rule="evenodd">
-            <mask id="prefix__c" fill="#fff">
-                <use xlinkHref="#prefix__a" />
-            </mask>
-            <use fill="url(#prefix__b)" transform="matrix(-1 0 0 1 375 0)" xlink:href="#prefix__a" />
-            <g mask="url(#prefix__c)">
-                <use
-                        fill="url(#prefix__d)"
-                        transform="rotate(-150 256.422 462.025)"
-                        xlink:href="#prefix__e"
-                />
-            </g>
+    <div id="root"></div>
+    <svg
+      id="loading-svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 375 667"
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <linearGradient id="prefix__b" x1="65.805%" x2="47.731%" y1="26.588%" y2="116.28%">
+          <stop offset="0%" stop-color="#EB0055" />
+          <stop offset="100%" stop-color="#320096" />
+        </linearGradient>
+        <linearGradient id="prefix__d" x1="29.678%" x2="32.571%" y1="71.761%" y2="14.036%">
+          <stop offset="0%" stop-color="#EB0055" />
+          <stop offset="100%" stop-color="#320096" />
+        </linearGradient>
+        <path id="prefix__a" d="M0 0h375v667H0z" />
+        <path
+          id="prefix__e"
+          d="M574.848 685.018c44.64 237.462 197.943-58.73 172.765-186.83-25.178-128.1-120.317-395.218-387.196-385.031-266.88 10.187-281.873 242.282-174.83 360.46 107.043 118.179 344.621-26.06 389.26 211.401z"
+        />
+      </defs>
+      <g fill="none" fill-rule="evenodd">
+        <mask id="prefix__c" fill="#fff">
+          <use xlinkHref="#prefix__a" />
+        </mask>
+        <use fill="url(#prefix__b)" transform="matrix(-1 0 0 1 375 0)" xlink:href="#prefix__a" />
+        <g mask="url(#prefix__c)">
+          <use
+            fill="url(#prefix__d)"
+            transform="rotate(-150 256.422 462.025)"
+            xlink:href="#prefix__e"
+          />
         </g>
+      </g>
     </svg>
-</body>
+  </body>
 </html>

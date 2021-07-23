@@ -21,7 +21,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Login } from 'features/auth/login/Login'
-// import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
+import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
@@ -115,7 +115,7 @@ export const routes: Array<Route> = [
     path: '/eighteen',
   },
   //   // { name: 'ABTestingPOC', component: ABTestingPOC },
-  // { name: 'AcceptCgu', component: AcceptCgu, path: '/cgu', hoc: withAsyncErrorBoundary },
+  { name: 'AcceptCgu', component: AcceptCgu, path: '/cgu', hoc: withAsyncErrorBoundary },
   //   // { name: 'AccountCreated', component: AccountCreated },
   //   // { name: 'AfterSignupEmailValidationBuffer', component: AfterSignupEmailValidationBuffer },
   //   // { name: 'AppComponents', component: AppComponents },
