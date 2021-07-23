@@ -14,6 +14,7 @@ import { useSendPhoneValidationMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { currentTimestamp } from 'libs/dates'
+import { MonitoringError } from 'libs/errorMonitoring'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
@@ -102,6 +103,10 @@ export const SetPhoneNumber: FunctionComponent = () => {
     if (isRequestTimestampExpired) {
       setInvalidPhoneNumberMessage('')
       const phoneNumberWithPrefix = '+' + phoneNumberPrefix + formatPhoneNumber(phoneNumber)
+      const errorMessage = `Request info : ${JSON.stringify({
+        phoneNumber: phoneNumberWithPrefix,
+      })}`
+      new MonitoringError(errorMessage, 'sendPhoneValidationCode')
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
   }

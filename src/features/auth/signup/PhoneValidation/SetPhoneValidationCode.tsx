@@ -16,7 +16,7 @@ import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { currentTimestamp } from 'libs/dates'
 import { env } from 'libs/environment'
-import { errorMonitoring } from 'libs/errorMonitoring'
+import { errorMonitoring, MonitoringError } from 'libs/errorMonitoring'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -151,6 +151,10 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
     setErrorMessage('')
     const { code } = codeInputState
     if (code) {
+      const errorMessage = `Request info : ${JSON.stringify({
+        code,
+      })}`
+      new MonitoringError(errorMessage, 'validatePhoneNumber')
       validatePhoneNumber(code)
     }
   }
