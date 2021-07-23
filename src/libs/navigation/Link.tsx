@@ -11,11 +11,11 @@ declare type Props = {
 } & (TextProps & {
   children: React.ReactNode
 }) & {
-    params?: string | string[][] | Record<string, string | any> | URLSearchParams
+    params?: string | string[][] | Record<string, unknown> | URLSearchParams
   }
 
 export const Link = function Link({ to, action, target, onPress, children, params }: Props) {
-  const searchParams = new URLSearchParams(params)
+  const searchParams = new URLSearchParams(params as Record<string, string>)
 
   return (
     <DefaultLink
