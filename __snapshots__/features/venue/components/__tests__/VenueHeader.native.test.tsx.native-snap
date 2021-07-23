@@ -153,6 +153,144 @@ exports[`<VenueHeader /> should render correctly 1`] = `
         ]
       }
     />
+    <Text
+      numberOfLines={1}
+      style={
+        Object {
+          "flexShrink": 1,
+          "opacity": 0,
+          "textAlign": "center",
+        }
+      }
+      testID="offerHeaderName"
+    >
+      <Text
+        color="#ffffff"
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Le Petit Rintintin 1
+      </Text>
+    </Text>
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Partager"
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="Partager"
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "aspectRatio": 1,
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "borderColor": "rgba(245, 245, 245, 1)",
+            "borderRadius": 40,
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "transform": undefined,
+            "width": 40,
+          }
+        }
+        testID="headerIconRoundContainer"
+      >
+        <View
+          size={32}
+          style={
+            Array [
+              Object {
+                "height": 32,
+                "width": 32,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Object {
+                "opacity": 1,
+                "position": "absolute",
+              }
+            }
+            testID="initial-icon-container"
+          >
+            <View
+              fill="#151515"
+              height={32}
+              testID="icon-share"
+              width={32}
+            >
+              <Text>
+                icon-share-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "opacity": 0,
+                "position": "absolute",
+              }
+            }
+            testID="final-icon-container"
+          >
+            <View
+              fill="#ffffff"
+              height={32}
+              testID="final-icon-share"
+              width={32}
+            >
+              <Text>
+                final-icon-share-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "width": 24,
+          },
+        ]
+      }
+    />
   </View>
   <View
     numberOfSpaces={2}

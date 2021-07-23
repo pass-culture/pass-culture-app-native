@@ -2,6 +2,7 @@ import React from 'react'
 import { Animated } from 'react-native'
 
 import { goBack } from '__mocks__/@react-navigation/native'
+import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'
 
@@ -27,5 +28,13 @@ describe('<VenueHeader />', () => {
 
 async function renderVenueHeader() {
   const animatedValue = new Animated.Value(0)
-  return render(reactQueryProviderHOC(<VenueHeader headerTransition={animatedValue} />))
+  return render(
+    reactQueryProviderHOC(
+      <VenueHeader
+        headerTransition={animatedValue}
+        title={venueResponseSnap.name}
+        venueId={venueResponseSnap.id}
+      />
+    )
+  )
 }
