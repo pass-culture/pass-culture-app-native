@@ -10,6 +10,8 @@ import { act, render, flushAllPromises } from 'tests/utils'
 
 import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
 
+jest.mock('react-native-text-input-mask', () => () => null)
+
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),

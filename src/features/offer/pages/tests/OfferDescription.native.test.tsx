@@ -20,6 +20,7 @@ import {
 } from '../OfferDescription'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+jest.mock('react-native-text-input-mask', () => () => null)
 
 describe('<OfferDescription />', () => {
   it('should render', async () => {
