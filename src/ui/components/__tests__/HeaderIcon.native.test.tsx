@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { fireEvent, render } from 'tests/utils'
 
-import { HeaderIcon } from '../HeaderIcon'
+import { HeaderIcon } from '../headers/HeaderIcon'
 
 const animatedValue = new Animated.Value(0)
 const DummyComponent: React.FC = () => {

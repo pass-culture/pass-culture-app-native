@@ -10,9 +10,8 @@ import {
   iconBackgroundInterpolation,
   iconBorderInterpolation,
 } from 'ui/components/headers/animationHelpers'
+import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { Spacer } from 'ui/theme'
-
-import { HeaderIcon } from '../atoms'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation

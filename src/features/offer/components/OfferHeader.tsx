@@ -19,11 +19,11 @@ import {
   iconBackgroundInterpolation,
   iconBorderInterpolation,
 } from 'ui/components/headers/animationHelpers'
+import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-import { HeaderIcon } from '../atoms'
 import { useShareOffer } from '../services/useShareOffer'
 
 interface Props {
