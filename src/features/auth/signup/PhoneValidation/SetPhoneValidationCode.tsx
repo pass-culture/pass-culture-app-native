@@ -88,7 +88,7 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
 
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
 
-  const { mutate: validatePhoneNumber } = useValidatePhoneNumberMutation({
+  const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: onValidateSuccess,
     onError,
   })
@@ -232,6 +232,7 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
             title={t`Continuer`}
             disabled={!codeInputState.isValid}
             onPress={validateCode}
+            isLoading={isLoading}
           />
           <Spacer.Column numberOfSpaces={4} />
           <HelpRow>

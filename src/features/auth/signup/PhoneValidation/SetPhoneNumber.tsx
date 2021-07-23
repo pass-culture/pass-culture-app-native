@@ -96,7 +96,7 @@ export const SetPhoneNumber: FunctionComponent = () => {
     }
   }
 
-  const { mutate: sendPhoneValidationCode } = useSendPhoneValidationMutation({
+  const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
     onSuccess,
     onError,
   })
@@ -200,6 +200,7 @@ export const SetPhoneNumber: FunctionComponent = () => {
             title={getButtonTitle()}
             disabled={!isContinueButtonEnabled}
             onPress={requestSendPhoneValidationCode}
+            isLoading={isLoading}
           />
         </ModalContent>
       </BottomContentPage>
