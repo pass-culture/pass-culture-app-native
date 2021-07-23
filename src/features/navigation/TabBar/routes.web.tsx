@@ -4,6 +4,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { TabRoute } from 'features/navigation/TabBar/types'
+import { ColorsEnum, Typo } from 'ui/theme'
 
 // import { withAsyncErrorBoundary } from 'features/errors'
 // import { Home as HomeComponent } from 'features/home/pages/Home'
@@ -18,14 +19,20 @@ const Page = styled.View({
   justifyContent: 'center',
 })
 
-const Search = () => (
+const Search = ({ title } = { title: 'Search Page' }) => (
   <Page>
-    <Text>Search page</Text>
+    <Typo.Title3 color={ColorsEnum.PRIMARY}>{title}</Typo.Title3>
     <Link to={'/abtesting'}>
       <Text>Go to ABTestingPOC</Text>
     </Link>
+    <Link to={'/login'}>
+      <Text>Go to Login</Text>
+    </Link>
+    <Link to={'/eighteen'}>
+      <Text>Go to EighteenBirthday</Text>
+    </Link>
     <Link to={'/favorites'}>
-      <Text>Go to Favorites</Text>
+      <Text>Go to TabNavigator/Favorites</Text>
     </Link>
   </Page>
 )

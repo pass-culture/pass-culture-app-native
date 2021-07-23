@@ -276,6 +276,10 @@ module.exports = function (webpackEnv) {
         .map((ext) => `.${ext}`)
         .filter((ext) => useTypeScript || !ext.includes('ts')),
       alias: {
+        // Prevent "You might have more than one copy of React in the same app" error, useful for linking react modules
+        'react': 'react',
+        'react-dom': 'react-dom',
+
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
