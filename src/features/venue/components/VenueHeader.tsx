@@ -29,7 +29,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
   const { goBack } = useNavigation<UseNavigationType>()
 
   // TODO : Create useShareVenue(venueId) (PC-10037)
-  const shareOffer = () => {
+  const shareVenue = () => {
     venueId
   }
 
@@ -53,7 +53,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
         />
         <Spacer.Flex />
 
-        <Title testID="offerHeaderName" style={{ opacity: headerTransition }}>
+        <Title testID="venueHeaderName" style={{ opacity: headerTransition }}>
           <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
         </Title>
 
@@ -61,7 +61,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
         <HeaderIcon
           animationState={animationState}
           iconName="share"
-          onPress={shareOffer}
+          onPress={shareVenue}
           testID={t`Partager`}
         />
         <Spacer.Row numberOfSpaces={6} />

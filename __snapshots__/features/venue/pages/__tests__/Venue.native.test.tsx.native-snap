@@ -246,7 +246,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             "textAlign": "center",
           }
         }
-        testID="offerHeaderName"
+        testID="venueHeaderName"
       >
         <Text
           color="#ffffff"

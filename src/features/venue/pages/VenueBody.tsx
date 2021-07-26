@@ -13,6 +13,7 @@ export const VenueBody: FunctionComponent<{
   const { data: venueResponse } = useVenue(venueId)
   const scrollViewRef = useRef<ScrollView | null>(null)
 
+  // TODO : Remove after add all venue informations - (it's just for scroll)
   const lorem =
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.'
 
