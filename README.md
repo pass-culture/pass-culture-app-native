@@ -82,31 +82,39 @@ The token is available in your sentry account: https://sentry.internal-passcultu
 
 In order to launch the app in your simulator, you need to go to Android Studio first.
 Then open the Android Virtual Devices Manager and select (or create) a Virtual Device with the android version you want to run.
-Once the emulator is up and running, go to your terminal in the project workspace and run the following command:
-`yarn install yarn android:testing`
 
-##### Development environment
+##### testing/staging/production environment
 
-To run the app on a development environment in order to request a local API, you need to create a `.env.development` file,
-copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address.
-
-Make sure you also overload the `BATCH_API_KEY_ANDROID` and `BATCH_API_KEY_IOS` variables with the _dev_ values of the _testing_ [batch project](https://dashboard.batch.com/).
+Download the appropriate keystore file from 1password, for example `testing.keystore`, and place it under the `/android/keystores` directory.
 
 Then create a
-`keystores/development.keystore.properties` under `/android` directory with this configuration (required in `build.gradle`):
+`keystores/testing.keystore.properties` file in `/android/keystores` directory with this configuration (required in `build.gradle`):
 
 ```
 keyAlias=passculture
-storeFile=development.keystore
+storeFile=testing.keystore
 storePassword=
 keyPassword=
 ```
 
-You will also need to copy the `google-services.json` file (you can find it in 1password) in `android/app` directory.
+Download the `google-services.json` file (1password) and place it under the `android/app` directory.
 
-Then run the app with this command:
+Install the Node dependencies : `yarn install`
 
-`yarn android`
+Start the metro server : `yarn start`
+
+Then build the app : `yarn android:testing`
+
+##### Development environment
+
+To run the app on a development environment with a local API, you need to create a `.env.development` file : 
+copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address.
+
+Make sure you also overload the `BATCH_API_KEY_ANDROID` and `BATCH_API_KEY_IOS` variables with the _dev_ values of the _testing_ [batch project](https://dashboard.batch.com/).
+
+Then copy `testing.keystore` into `development.keystore` and `testing.keystore.properties` into `development.keystore.properties`. Replace the `storeFile` value in `development.keystore.properties`.
+
+Build the development app : `yarn android`
 
 #### IOS
 
