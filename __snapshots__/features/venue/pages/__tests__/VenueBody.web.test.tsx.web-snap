@@ -33,6 +33,33 @@ Object {
               5543
             </div>
             <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-direction: row; margin-top: 40px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="margin-right: 4px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-text-901oao css-textOneLine-bfa6kz"
+                dir="auto"
+                style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
+              >
+                1 boulevard Poissonnière, 75000 Paris
+              </div>
+            </div>
+            <div
               class="css-text-901oao"
               dir="auto"
               style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
@@ -71,6 +98,33 @@ Object {
             style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
           >
             5543
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; flex-direction: row; margin-top: 40px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="margin-right: 4px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-text-901oao css-textOneLine-bfa6kz"
+              dir="auto"
+              style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
+            >
+              1 boulevard Poissonnière, 75000 Paris
+            </div>
           </div>
           <div
             class="css-text-901oao"
