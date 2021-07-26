@@ -68,6 +68,53 @@ exports[`<Venue /> should match snapshot 1`] = `
         >
           5543
         </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "marginTop": 40,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginRight": 4,
+                },
+              ]
+            }
+          >
+            <View
+              height={16}
+              width={16}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "textTransform": "capitalize",
+                },
+              ]
+            }
+          >
+            1 boulevard Poissonnière, 75000 Paris
+          </Text>
+        </View>
         <Text
           style={
             Array [
