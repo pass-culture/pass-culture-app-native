@@ -12,7 +12,8 @@ import { emptyBookingsSnap, bookingsSnap } from '../api/bookingsSnap'
 
 import { Bookings } from './Bookings'
 
-describe('Bookings', () => {
+// TODO WEB : once the web version of <Bookings /> is implemented, remove skip()
+describe.skip('Bookings', () => {
   afterEach(jest.restoreAllMocks)
 
   it('should always execute the query (in cache or in network)', () => {

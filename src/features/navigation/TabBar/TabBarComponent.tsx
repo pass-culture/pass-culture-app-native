@@ -11,11 +11,12 @@ const SELECTOR_HEIGHT = computeBicolorSelectorHeight(SELECTOR_WIDTH)
 
 interface TabComponentInterface {
   isSelected?: boolean
-  bicolorIcon: (props: BicolorIconInterface) => React.ReactNode
+  bicolorIcon: React.FC<BicolorIconInterface>
   onPress: () => void
   tabName: string
 }
 export const TabBarComponent: React.FC<TabComponentInterface> = (props) => {
+  const Icon = props.bicolorIcon
   return (
     <TabComponentContainer
       onPress={props.onPress}
@@ -29,12 +30,13 @@ export const TabBarComponent: React.FC<TabComponentInterface> = (props) => {
         />
       )}
       <Spacer.Flex />
-      {props.bicolorIcon &&
-        props.bicolorIcon({
-          color: props.isSelected ? undefined : ColorsEnum.GREY_DARK,
-          size: getSpacing(11),
-          thin: !props.isSelected,
-        })}
+      {!!Icon && (
+        <Icon
+          color={props.isSelected ? undefined : ColorsEnum.GREY_DARK}
+          size={getSpacing(11)}
+          thin={!props.isSelected}
+        />
+      )}
       <Spacer.Flex />
       {!!props.isSelected && <BicolorSelectorPlaceholder />}
     </TabComponentContainer>

@@ -16,7 +16,7 @@ import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 import { TabBarComponent } from './TabBarComponent'
 import { TabRouteName, TabParamList } from './types'
 
-function mapRouteToIcon(route: TabRouteName): (props: BicolorIconInterface) => React.ReactNode {
+function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
   switch (route) {
     case 'Home':
       return BicolorLogo
