@@ -2608,11 +2608,11 @@ cette offre ?
                                       testID="radio-button-IMPROPER"
                                     >
                                       <View
+                                        flex={0.9}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
-                                              "flexDirection": "column",
                                               "flexGrow": 0.9,
                                               "flexShrink": 1,
                                             },
@@ -2649,6 +2649,18 @@ cette offre ?
                                           La date ne correspond pas, mauvaise description...
                                         </Text>
                                       </View>
+                                      <View
+                                        flex={0.1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "flexBasis": 0,
+                                              "flexGrow": 0.1,
+                                              "flexShrink": 1,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}
@@ -2682,11 +2694,11 @@ cette offre ?
                                       testID="radio-button-INAPPROPRIATE"
                                     >
                                       <View
+                                        flex={0.9}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
-                                              "flexDirection": "column",
                                               "flexGrow": 0.9,
                                               "flexShrink": 1,
                                             },
@@ -2723,6 +2735,18 @@ cette offre ?
                                           violence, incitation à la haine, nudité...
                                         </Text>
                                       </View>
+                                      <View
+                                        flex={0.1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "flexBasis": 0,
+                                              "flexGrow": 0.1,
+                                              "flexShrink": 1,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}
@@ -2834,11 +2858,11 @@ cette offre ?
                                       testID="radio-button-PRICE_TOO_HIGH"
                                     >
                                       <View
+                                        flex={0.9}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
-                                              "flexDirection": "column",
                                               "flexGrow": 0.9,
                                               "flexShrink": 1,
                                             },
@@ -2875,6 +2899,18 @@ cette offre ?
                                           comparé à l'offre public
                                         </Text>
                                       </View>
+                                      <View
+                                        flex={0.1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "flexBasis": 0,
+                                              "flexGrow": 0.1,
+                                              "flexShrink": 1,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}
@@ -6279,11 +6315,11 @@ cette offre ?
                                       testID="radio-button-IMPROPER"
                                     >
                                       <View
+                                        flex={0.9}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
-                                              "flexDirection": "column",
                                               "flexGrow": 0.9,
                                               "flexShrink": 1,
                                             },
@@ -6320,6 +6356,18 @@ cette offre ?
                                           La date ne correspond pas, mauvaise description...
                                         </Text>
                                       </View>
+                                      <View
+                                        flex={0.1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "flexBasis": 0,
+                                              "flexGrow": 0.1,
+                                              "flexShrink": 1,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}
@@ -6353,11 +6401,11 @@ cette offre ?
                                       testID="radio-button-INAPPROPRIATE"
                                     >
                                       <View
+                                        flex={0.9}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
-                                              "flexDirection": "column",
                                               "flexGrow": 0.9,
                                               "flexShrink": 1,
                                             },
@@ -6394,6 +6442,18 @@ cette offre ?
                                           violence, incitation à la haine, nudité...
                                         </Text>
                                       </View>
+                                      <View
+                                        flex={0.1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "flexBasis": 0,
+                                              "flexGrow": 0.1,
+                                              "flexShrink": 1,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}
@@ -6505,11 +6565,11 @@ cette offre ?
                                       testID="radio-button-PRICE_TOO_HIGH"
                                     >
                                       <View
+                                        flex={0.9}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
-                                              "flexDirection": "column",
                                               "flexGrow": 0.9,
                                               "flexShrink": 1,
                                             },
@@ -6546,6 +6606,18 @@ cette offre ?
                                           comparé à l'offre public
                                         </Text>
                                       </View>
+                                      <View
+                                        flex={0.1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "flexBasis": 0,
+                                              "flexGrow": 0.1,
+                                              "flexShrink": 1,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}

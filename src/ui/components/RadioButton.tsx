@@ -13,24 +13,22 @@ interface RadioButtonProps {
 }
 
 export function RadioButton(props: RadioButtonProps) {
-  function onSelect(value: string) {
-    props.onSelect(value)
-  }
-
   return (
     <React.Fragment>
       <PressableContainer
         key={props.id}
-        onPress={() => onSelect(props.id)}
+        onPress={() => props.onSelect(props.id)}
         testID={`radio-button-${props.id}`}>
-        <TitleContainer>
+        <Spacer.Flex flex={0.9}>
           <Title color={props.selectedValue === props.id ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
             {props.title}
           </Title>
           {!!props.description && <Subtitle>{props.description}</Subtitle>}
-        </TitleContainer>
+        </Spacer.Flex>
 
-        {props.selectedValue === props.id && <Validate color={ColorsEnum.PRIMARY} />}
+        <Spacer.Flex flex={0.1}>
+          {props.selectedValue === props.id && <Validate color={ColorsEnum.PRIMARY} />}
+        </Spacer.Flex>
       </PressableContainer>
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
@@ -42,11 +40,6 @@ const PressableContainer = styled.TouchableOpacity({
   width: '100%',
   alignItems: 'center',
   justifyContent: 'space-between',
-})
-
-const TitleContainer = styled.View({
-  flexDirection: 'column',
-  flex: 0.9,
 })
 
 const Title = styled(Typo.ButtonText)<{ color: ColorsEnum }>(({ color }) => ({
