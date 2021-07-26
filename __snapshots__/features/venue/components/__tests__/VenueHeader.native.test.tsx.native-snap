@@ -162,7 +162,7 @@ exports[`<VenueHeader /> should render correctly 1`] = `
           "textAlign": "center",
         }
       }
-      testID="offerHeaderName"
+      testID="venueHeaderName"
     >
       <Text
         color="#ffffff"

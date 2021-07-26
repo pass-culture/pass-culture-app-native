@@ -85,7 +85,7 @@ Object {
           />
           <div
             class="css-text-901oao css-textOneLine-bfa6kz"
-            data-testid="offerHeaderName"
+            data-testid="venueHeaderName"
             dir="auto"
             style="flex-shrink: 1; opacity: 0; text-align: center;"
           >
@@ -247,7 +247,7 @@ Object {
         />
         <div
           class="css-text-901oao css-textOneLine-bfa6kz"
-          data-testid="offerHeaderName"
+          data-testid="venueHeaderName"
           dir="auto"
           style="flex-shrink: 1; opacity: 0; text-align: center;"
         >
