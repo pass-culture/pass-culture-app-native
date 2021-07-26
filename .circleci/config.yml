@@ -53,6 +53,36 @@ commands:
     description: Setup android Google services config
     steps:
       - run: echo $ANDROID_GOOGLE_SERVICES_JSON > android/app/google-services.json
+  setup_staging_secrets:
+    description: Setup staging secrets env variables
+    steps:
+      - run:
+          name: Setup secrets env variables
+          command: |
+            echo "CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_STAGING" >> .env.staging
+            echo "CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_STAGING" >> .env.staging
+            echo "BATCH_API_KEY_ANDROID=$BATCH_API_KEY_ANDROID_STAGING" >> .env.staging
+            echo "BATCH_API_KEY_IOS=$BATCH_API_KEY_IOS_STAGING" >> .env.staging
+            echo "CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_STAGING" >> .env.staging
+            echo "ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_STAGING" >> .env.staging
+            echo "APP_SEARCH_KEY=$APP_SEARCH_KEY_STAGING" >> .env.staging
+            echo "RECOMMENDATION_TOKEN=$RECOMMENDATION_TOKEN_STAGING" >> .env.staging
+            echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.staging
+  setup_production_secrets:
+    description: Setup production secrets env variables
+    steps:
+      - run:
+          name: Setup secrets env variables
+          command: |
+            echo "CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_PRODUCTION" >> .env.production
+            echo "CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_PRODUCTION" >> .env.production
+            echo "BATCH_API_KEY_ANDROID=$BATCH_API_KEY_ANDROID_PRODUCTION" >> .env.production
+            echo "BATCH_API_KEY_IOS=$BATCH_API_KEY_IOS_PRODUCTION" >> .env.production
+            echo "CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN_PRODUCTION" >> .env.production
+            echo "ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_PRODUCTION" >> .env.production
+            echo "APP_SEARCH_KEY=$APP_SEARCH_KEY_PRODUCTION" >> .env.production
+            echo "RECOMMENDATION_TOKEN=$RECOMMENDATION_TOKEN_PRODUCTION" >> .env.production
+            echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.production
   install_cocoapods:
     description: Install cocoapods
     steps:
@@ -162,6 +192,7 @@ jobs:
       - checkout
       - install_node_modules
       - install_ruby_modules
+      - setup_production_secrets
       - run:
           name: Setup production keystore for production environment
           command: |
@@ -194,6 +225,7 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
+      - setup_production_secrets
       - run:
           name: Setup iOS Google services config
           command: echo $IOS_GOOGLE_SERVICES_PLIST_PRODUCTION > ios/GoogleService-Info.plist
@@ -269,6 +301,7 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
+      - setup_staging_secrets
       - run:
           name: Setup iOS Google services config
           command: echo $IOS_GOOGLE_SERVICES_PLIST_STAGING > ios/GoogleService-Info.plist
@@ -288,6 +321,7 @@ jobs:
       - checkout
       - install_node_modules
       - install_ruby_modules
+      - setup_staging_secrets
       - run:
           name: Setup android keystore for staging environment
           command: |
@@ -312,6 +346,7 @@ jobs:
       - checkout
       - install_node_modules
       - install_ruby_modules
+      - setup_staging_secrets
       - run:
           name: Deploy Android Code push for staging environment
           command: |
@@ -335,6 +370,7 @@ jobs:
       - checkout
       - install_node_modules
       - install_ruby_modules
+      - setup_production_secrets
       - run:
           name: Setup production keystore for production environment
           command: |
@@ -365,6 +401,7 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
+      - setup_production_secrets
       - run:
           name: Setup iOS Google services config
           command: echo $IOS_GOOGLE_SERVICES_PLIST_PRODUCTION > ios/GoogleService-Info.plist
@@ -382,6 +419,7 @@ jobs:
       - checkout
       - install_node_modules
       - install_ruby_modules
+      - setup_production_secrets
       - run:
           name: Deploy Android Code push for production environment
           command: |
