@@ -2613,7 +2613,7 @@ cette offre ?
                                             Object {
                                               "flexBasis": 0,
                                               "flexDirection": "column",
-                                              "flexGrow": 0.9,
+                                              "flexGrow": 0.95,
                                               "flexShrink": 1,
                                             },
                                           ]
@@ -2649,6 +2649,15 @@ cette offre ?
                                           La date ne correspond pas, mauvaise description...
                                         </Text>
                                       </View>
+                                      <View
+                                        style={
+                                          Array [
+                                            Object {
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}
@@ -2687,7 +2696,7 @@ cette offre ?
                                             Object {
                                               "flexBasis": 0,
                                               "flexDirection": "column",
-                                              "flexGrow": 0.9,
+                                              "flexGrow": 0.95,
                                               "flexShrink": 1,
                                             },
                                           ]
@@ -2723,6 +2732,15 @@ cette offre ?
                                           violence, incitation à la haine, nudité...
                                         </Text>
                                       </View>
+                                      <View
+                                        style={
+                                          Array [
+                                            Object {
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}
@@ -2839,7 +2857,7 @@ cette offre ?
                                             Object {
                                               "flexBasis": 0,
                                               "flexDirection": "column",
-                                              "flexGrow": 0.9,
+                                              "flexGrow": 0.95,
                                               "flexShrink": 1,
                                             },
                                           ]
@@ -2875,6 +2893,15 @@ cette offre ?
                                           comparé à l'offre public
                                         </Text>
                                       </View>
+                                      <View
+                                        style={
+                                          Array [
+                                            Object {
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}
@@ -6284,7 +6311,7 @@ cette offre ?
                                             Object {
                                               "flexBasis": 0,
                                               "flexDirection": "column",
-                                              "flexGrow": 0.9,
+                                              "flexGrow": 0.95,
                                               "flexShrink": 1,
                                             },
                                           ]
@@ -6320,6 +6347,15 @@ cette offre ?
                                           La date ne correspond pas, mauvaise description...
                                         </Text>
                                       </View>
+                                      <View
+                                        style={
+                                          Array [
+                                            Object {
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}
@@ -6358,7 +6394,7 @@ cette offre ?
                                             Object {
                                               "flexBasis": 0,
                                               "flexDirection": "column",
-                                              "flexGrow": 0.9,
+                                              "flexGrow": 0.95,
                                               "flexShrink": 1,
                                             },
                                           ]
@@ -6394,6 +6430,15 @@ cette offre ?
                                           violence, incitation à la haine, nudité...
                                         </Text>
                                       </View>
+                                      <View
+                                        style={
+                                          Array [
+                                            Object {
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}
@@ -6510,7 +6555,7 @@ cette offre ?
                                             Object {
                                               "flexBasis": 0,
                                               "flexDirection": "column",
-                                              "flexGrow": 0.9,
+                                              "flexGrow": 0.95,
                                               "flexShrink": 1,
                                             },
                                           ]
@@ -6546,6 +6591,15 @@ cette offre ?
                                           comparé à l'offre public
                                         </Text>
                                       </View>
+                                      <View
+                                        style={
+                                          Array [
+                                            Object {
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      />
                                     </View>
                                     <View
                                       numberOfSpaces={6}

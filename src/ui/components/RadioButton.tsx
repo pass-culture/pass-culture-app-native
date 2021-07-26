@@ -30,7 +30,9 @@ export function RadioButton(props: RadioButtonProps) {
           {!!props.description && <Subtitle>{props.description}</Subtitle>}
         </TitleContainer>
 
-        {props.selectedValue === props.id && <Validate color={ColorsEnum.PRIMARY} />}
+        <IconContainer>
+          {props.selectedValue === props.id && <Validate color={ColorsEnum.PRIMARY} />}
+        </IconContainer>
       </PressableContainer>
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
@@ -46,7 +48,7 @@ const PressableContainer = styled.TouchableOpacity({
 
 const TitleContainer = styled.View({
   flexDirection: 'column',
-  flex: 0.9,
+  flex: 0.95,
 })
 
 const Title = styled(Typo.ButtonText)<{ color: ColorsEnum }>(({ color }) => ({
@@ -55,4 +57,8 @@ const Title = styled(Typo.ButtonText)<{ color: ColorsEnum }>(({ color }) => ({
 
 const Subtitle = styled(Typo.Caption)({
   color: ColorsEnum.GREY_DARK,
+})
+
+const IconContainer = styled.View({
+  width: 32,
 })
