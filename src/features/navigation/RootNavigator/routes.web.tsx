@@ -29,6 +29,7 @@ import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
+import { Maintenance } from 'features/maintenance/Maintenance'
 import { Route } from 'features/navigation/RootNavigator/types'
 import { linking as tabNavigatorLinking } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
@@ -58,7 +59,6 @@ import { Link } from 'libs/navigation/Link'
 // // import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 // // import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 // // import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
-// // import { Maintenance } from 'features/maintenance/Maintenance'
 // // import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 // // import { Offer, OfferDescription } from 'features/offer'
 // // import { ChangePassword } from 'features/profile/pages/ChangePassword'
@@ -104,6 +104,9 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     </Link>
     <Link to={'/setemail'}>
       <Text>Register</Text>
+    </Link>
+    <Link to={'/maintenance'}>
+      <Text>Maintenance</Text>
     </Link>
     <Link
       to={'/cgu'}
@@ -161,7 +164,7 @@ export const routes: Array<Route> = [
   //   // { name: 'LocationFilter', component: LocationFilter },
   //   // { name: 'LocationPicker', component: LocationPicker },
   { name: 'Login', component: Login, hoc: withAsyncErrorBoundary, path: '/login' },
-  //   // { name: 'Maintenance', component: Maintenance },
+  { name: 'Maintenance', component: Maintenance, path: '/maintenance' },
   //   // { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary },
   //   // {
   //   //   name: 'NavigationIdCheckErrors',
