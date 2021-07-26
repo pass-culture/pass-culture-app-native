@@ -6,7 +6,8 @@ import {
   initialRouteName as idCheckInitialRouteName,
   // withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
 } from '@pass-culture/id-check'
-import { Link, LinkingOptions } from '@react-navigation/native'
+// // eslint-disable-next-line import/order
+import { LinkingOptions } from '@react-navigation/native'
 // // import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 // // import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
 // // import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
@@ -32,6 +33,7 @@ import { Route } from 'features/navigation/RootNavigator/types'
 import { linking as tabNavigatorLinking } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { env } from 'libs/environment'
+import { Link } from 'libs/navigation/Link'
 //
 //
 // // import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
@@ -102,6 +104,17 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     </Link>
     <Link to={'/setemail'}>
       <Text>Register</Text>
+    </Link>
+    <Link
+      to={'/cgu'}
+      params={{
+        email: 'test@test.com',
+        isNewsletterChecked: true,
+        password: 'user@AZERTY123',
+        birthday: '01/01/2003',
+        postalCode: '93000',
+      }}>
+      <Text>AcceptCGU (Link with params test)</Text>
     </Link>
   </Page>
 )
