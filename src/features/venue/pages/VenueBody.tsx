@@ -4,10 +4,10 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
-import { AccordionItem } from 'features/offer/components'
 import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { AccordionItem } from 'ui/components/AccordionItem'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
