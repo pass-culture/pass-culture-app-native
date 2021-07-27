@@ -4,17 +4,17 @@ import { act } from 'react-test-renderer'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
-import { OfferWhereSection } from '../OfferWhereSection'
+import { WhereSection } from '../WhereSection'
 
 jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
 
-describe('OfferWhereSection', () => {
+describe('WhereSection', () => {
   describe('Analytics', () => {
     it('should log ConsultLocationItinerary when clicking on "voir l\'itinéraire"', () => {
       const { getByText } = render(
-        <OfferWhereSection
+        <WhereSection
           address="Address"
           offerCoordinates={{ latitude: 2, longitude: 4 }}
           offerId={30}

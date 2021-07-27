@@ -16,7 +16,7 @@ type Props = {
   offerCoordinates: Coordinates
 }
 
-export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, offerId }) => {
+export const WhereSection: React.FC<Props> = ({ address, offerCoordinates, offerId }) => {
   const { latitude: lat, longitude: lng } = offerCoordinates
   const distanceToOffer = useDistance({ lat, lng })
   const { canOpenItinerary, openItinerary } = useOpenItinerary(lat, lng, () =>

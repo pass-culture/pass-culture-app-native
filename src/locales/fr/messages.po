@@ -85,7 +85,7 @@ msgstr "Active la géolocalisation pour découvrir toutes les offres existantes 
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
-#: src/features/offer/components/OfferWhereSection.tsx
+#: src/features/offer/components/WhereSection.tsx
 msgid "Adresse"
 msgstr "Adresse"
 
@@ -481,7 +481,7 @@ msgstr "Des nouveautés"
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
 
-#: src/features/offer/components/OfferWhereSection.tsx
+#: src/features/offer/components/WhereSection.tsx
 msgid "Distance"
 msgstr "Distance"
 
@@ -979,7 +979,7 @@ msgstr "Oups, cette offre n’est plus disponible !"
 msgid "Où"
 msgstr "Où"
 
-#: src/features/offer/components/OfferWhereSection.tsx
+#: src/features/offer/components/WhereSection.tsx
 msgid "Où ?"
 msgstr "Où ?"
 
