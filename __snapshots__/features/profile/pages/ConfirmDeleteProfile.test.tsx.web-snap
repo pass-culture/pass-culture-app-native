@@ -26,11 +26,11 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
     className="css-view-1dbjc4n"
     style={
       Object {
-        "height": "100%",
+        "bottom": "0px",
         "left": "0px",
         "position": "absolute",
+        "right": "0px",
         "top": "0px",
-        "width": "100%",
         "zIndex": -1,
       }
     }
