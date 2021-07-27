@@ -47,8 +47,8 @@ jest.mock('jwt-decode', () => () => ({
 
 jest.mock('features/auth/support.services')
 
-/* Cf. the corresponding mock in libs/__mocks__ */
-jest.mock('libs/analytics')
+/* Cf. the corresponding mock in libs/analytics/__mocks__ */
+jest.mock('libs/analytics/analytics')
 
 /* No need to actually fetch Firebase's A/B testing config in tests */
 jest.mock('libs/ABTesting/ABTesting.services')

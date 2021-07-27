@@ -11,8 +11,7 @@ import {
   ProcessedModule,
 } from 'features/home/contentful'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
-import { analytics } from 'libs/analytics'
-import { isCloseToBottom } from 'libs/analytics.utils'
+import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
 import { Spacer } from 'ui/theme'

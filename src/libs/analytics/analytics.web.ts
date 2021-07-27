@@ -1,79 +1,23 @@
-import firebaseAnalyticsModule from '@react-native-firebase/analytics'
+import { IdCheckAnalyticsInterface } from '@pass-culture/id-check'
 import { Platform } from 'react-native'
 
 import { Referrals } from 'features/navigation/RootNavigator'
 
-export const firebaseAnalytics = firebaseAnalyticsModule()
+import { AnalyticsEvent, IdCheckAnalyticsEvent } from './events'
 
-export const STRING_VALUE_MAX_LENGTH = 100
+const firebaseAnalytics = {
+  logScreenView: console.log, // eslint-disable-line no-console
+  logLogin: console.log, // eslint-disable-line no-console
+  logEvent: (...arg: any[]) => Promise.resolve(console.log(arg)), // eslint-disable-line no-console
+  setUserId: console.log, // eslint-disable-line no-console
+  setAnalyticsCollectionEnabled: console.log, // eslint-disable-line no-console
+}
+
+const STRING_VALUE_MAX_LENGTH = 100
 
 const setUserId = (userId: number) => firebaseAnalytics.setUserId(userId.toString())
 
-// Event names can be up to 40 characters long, may only contain alphanumeric characters and underscores
-export enum AnalyticsEvent {
-  ACCESS_EXTERNAL_OFFER = 'AccessExternalOffer',
-  ALL_MODULES_SEEN = 'AllModulesSeen',
-  ALL_TILES_SEEN = 'AllTilesSeen',
-  BOOKING_CONFIRMATION = 'BookingConfirmation',
-  BOOKING_ERROR = 'BookingError',
-  BOOKING_IMPOSSIBLE_IOS = 'BookingImpossibleiOS',
-  BOOKING_OFFER_CONFIRM_DATES = 'BookOfferConfirmDates',
-  BOOKING_PROCESS_START = 'BookingProcessStart',
-  BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
-  BOOKING_DETAILS_SCROLLED_TO_BOTTOM = 'BookingDetailsScrolledToBottom',
-  BOOKINGS_SCROLLED_TO_BOTTOM = 'BookingsScrolledToBottom',
-  CAMPAIGN_TRACKER_ENABLED = 'CampaignTrackerEnabled',
-  CANCEL_BOOKING = 'CancelBooking',
-  CANCEL_SIGNUP = 'CancelSignup',
-  CLICK_BOOK_OFFER = 'ClickBookOffer',
-  CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
-  CONFIRM_BOOKING_CANCELLATION = 'ConfirmBookingCancellation',
-  CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
-  CONSULT_AVAILABLE_DATES = 'ConsultAvailableDates',
-  CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
-  CONSULT_ITINERARY = 'ConsultLocationItinerary',
-  CONSULT_OFFER = 'ConsultOffer',
-  CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
-  CONSULT_WHY_ANNIVERSARY = 'ConsultModalWhyAnniversary',
-  CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
-  HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'HelpCenterContactSignUpConfirmation',
-  DISCOVER_OFFERS = 'DiscoverOffers',
-  EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
-  HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
-  HAS_ADDED_OFFER_TO_FAVORITES = 'HasAddedOfferToFavorites',
-  HAS_APPLIED_FAVORITES_SORTING = 'HasAppliedFavoritesSorting',
-  HAS_CHANGED_PASSWORD = 'HasChangedPassword',
-  HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
-  ID_CHECK = 'IdCheck',
-  LOCATION_TOGGLE = 'LocationToggle',
-  LOGOUT = 'Logout',
-  MAIL_TO = 'MailTo',
-  NOTIFICATION_TOGGLE = 'NotificationToggle',
-  NO_SEARCH_RESULT = 'NoSearchResult',
-  OFFER_SEEN_DURATION = 'OfferSeenDuration',
-  OPEN_EXTERNAL_URL = 'OpenExternalURL',
-  OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
-  OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
-  PROFIL_SCROLLED_TO_BOTTOM = 'ProfilScrolledToBottom',
-  PROFIL_SIGN_UP = 'ProfilSignUp',
-  RECOMMENDATION_MODULE_SEEN = 'RecommendationModuleSeen',
-  REINITIALIZE_FILTERS = 'ReinitializeFilters',
-  RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
-  RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK = 'ResendEmailSignupConfirmationExpiredLink',
-  SCREEN_VIEW = 'screen_view',
-  SEARCH_QUERY = 'SearchQuery',
-  SEARCH_SCROLL_TO_PAGE = 'SearchScrollToPage',
-  SEE_MORE_CLICKED = 'SeeMoreClicked',
-  SEE_MY_BOOKING = 'SeeMyBooking',
-  SHARE_OFFER = 'Share',
-  SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
-  SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
-  USE_FILTER = 'UseFilter',
-  HAS_REFUSED_COOKIE = 'HasRefusedCookie',
-}
-
 const logScreenView = async (screenName: string) => {
-  // We log an event screen_view so that Firebase knows the screen of the user
   await firebaseAnalytics.logScreenView({ screen_name: screenName, screen_class: screenName })
 }
 
@@ -300,6 +244,8 @@ const logConfirmBookingCancellation = (offerId: number) =>
   logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId })
 
 export const analytics = {
+  disableCollection: () => firebaseAnalytics.setAnalyticsCollectionEnabled(false),
+  enableCollection: () => firebaseAnalytics.setAnalyticsCollectionEnabled(true),
   logAccessExternalOffer,
   logAllModulesSeen,
   logAllTilesSeen,
@@ -328,23 +274,24 @@ export const analytics = {
   logConsultWhyAnniversary,
   logConsultWithdrawal,
   logDiscoverOffers,
-  logLocationToggle,
-  logOpenLocationSettings,
-  logOpenNotificationSettings,
   logHasActivateGeolocFromTutorial,
   logHasAddedOfferToFavorites,
   logHasAppliedFavoritesSorting,
   logHasChangedPassword,
-  logHasSkippedTutorial,
   logHasRefusedCookie,
+  logHasSkippedTutorial,
   logHelpCenterContactSignupConfirmationEmailSent,
+  logIdCheck,
+  logLocationToggle,
+  logLogin: firebaseAnalytics.logLogin,
   logLogout,
   logMailTo,
   logNoSearchResult,
   logNotificationToggle,
-  logOpenExternalUrl,
   logOfferSeenDuration,
-  logIdCheck,
+  logOpenExternalUrl,
+  logOpenLocationSettings,
+  logOpenNotificationSettings,
   logProfilScrolledToBottom,
   logProfilSignUp,
   logRecommendationModuleSeen,
@@ -362,23 +309,121 @@ export const analytics = {
   setUserId,
 }
 
-const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']
-
-const FIREBASE_NAME_FORMAT = /^[a-zA-Z][0-9a-zA-Z_]+$/
-
-/* Firebase event naming rules :
-https://firebase.google.com/docs/reference/cpp/group/event-names#:~:text=Event%20names%20can%20be%20up,and%20should%20not%20be%20used */
-export function validateAnalyticsEvent(eventName: string) {
-  if (eventName.length > 40) {
-    return false
-  }
-  for (const reservedKeyword of RESERVED_PREFIXES) {
-    if (eventName.startsWith(reservedKeyword)) {
-      return false
-    }
-  }
-  if (!eventName.match(FIREBASE_NAME_FORMAT)) {
-    return false
-  }
-  return true
+export const idCheckAnalytics: IdCheckAnalyticsInterface = {
+  cancelSignUp({ pageName }: { pageName: string }) {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.CANCEL_SIGN_UP, {
+      pageName,
+    })
+  },
+  identityError() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.IDENTITY_ERROR)
+  },
+  idValid() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.ID_VALID)
+  },
+  invalidAge() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.INVALID_AGE)
+  },
+  invalidDate() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.INVALID_DATE)
+  },
+  invalidDocument() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.INVALID_DOCUMENT)
+  },
+  invalidTwice() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.INVALID_TWICE)
+  },
+  processCompleted() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.PROCESS_COMPLETED)
+  },
+  wrongSideDocument() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.WRONG_SIDE_DOCUMENT)
+  },
+  missingDocument() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.MISSING_DOCUMENT)
+  },
+  externalLink({ href, canOpen }: { href: string; canOpen?: boolean }) {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.EXTERNAL_LINK, {
+      href: href.slice(0, STRING_VALUE_MAX_LENGTH),
+      canOpen: canOpen ? 'true' : 'false',
+    })
+  },
+  hasValidSession({
+    valid,
+    accessToken,
+    accessTokenExpiresAt,
+  }: {
+    valid: boolean
+    accessToken: string | undefined
+    accessTokenExpiresAt: string | undefined
+  }) {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.HAS_VALID_SESSION, {
+      valid,
+      accessToken,
+      accessTokenExpiresAt,
+    })
+  },
+  startCheckTokens() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.START_CHECK_TOKENS)
+  },
+  endCheckTokens() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.END_CHECK_TOKENS)
+  },
+  fileSizeExceeded() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.FILE_SIZE_EXCEEDED)
+  },
+  permissionsBlocked() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.PERMISSION_BLOCKED)
+  },
+  cameraUnavailable() {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.CALMERA_UNAVAILABLE)
+  },
+  getJouveToken({
+    appIsAllowedToRenewLicenceToken,
+    isLocalLicenceToken,
+    licenceToken,
+    licenceTokenExpirationTimestamp,
+    success,
+    accessToken,
+    accessTokenExpiresAt,
+  }: {
+    appIsAllowedToRenewLicenceToken: boolean
+    isLocalLicenceToken: boolean
+    licenceToken: string
+    licenceTokenExpirationTimestamp: string | null | undefined
+    success: boolean
+    accessToken: string | undefined
+    accessTokenExpiresAt: string | undefined
+  }) {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.GET_JOUVE_TOKEN, {
+      appIsAllowedToRenewLicenceToken,
+      isLocalLicenceToken,
+      licenceToken,
+      licenceTokenExpirationTimestamp,
+      success,
+      accessToken,
+      accessTokenExpiresAt,
+    })
+  },
+  getLicenceToken({
+    isError,
+    errorCode,
+    licenceToken,
+    licenceTokenExpirationTimestamp,
+  }: {
+    isError: boolean
+    errorCode: string | undefined
+    licenceToken: string | null | undefined
+    licenceTokenExpirationTimestamp: string | null | undefined
+  }) {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.GET_LICENCE_TOKEN, {
+      isError,
+      errorCode,
+      licenceToken,
+      licenceTokenExpirationTimestamp,
+    })
+  },
+  idDocumentAcquisitionType(type: 'Camera' | 'ImageLibrary') {
+    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.ID_DOCUMENT_ACQUISITION_TYPE, { type })
+  },
 }

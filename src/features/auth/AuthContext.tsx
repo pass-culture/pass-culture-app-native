@@ -4,7 +4,7 @@ import React, { useCallback, useContext, useEffect, useMemo, useState } from 're
 import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
-import { analytics, firebaseAnalytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
@@ -76,7 +76,7 @@ export function useLoginRoutine() {
     connectUserToBatchAndFirebase(response.accessToken)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
-    firebaseAnalytics.logLogin({ method })
+    analytics.logLogin({ method })
     setIsLoggedIn(true)
   }
 
