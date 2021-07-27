@@ -126,6 +126,61 @@ type SortOption<FieldsEnum> = FieldsEnum extends string
 
 export type Sort<FieldsEnum> = SortOption<FieldsEnum> | Array<SortOption<FieldsEnum>>
 
+/** A Value Boost will boost the score of a document based on a direct value match.
+ * Available on text, number, and date fields.
+ * A document's overall score will only be boosted once.
+ *
+ * https://swiftype.com/documentation/app-search/api/search/boosts#value-boosts
+ */
+interface ValueBooost {
+  type: 'value'
+  /** The value to exact match on. Use an array to match on multiple values. */
+  value: number | string
+  /** The arithmetic operation used to combine the original document score with your boost value. Defaults to add. */
+  operation?: 'add' | 'multiply'
+  /** Factor to alter the impact of a boost on the score of a document. Must be between -10 and 10. Defaults to 1.0 */
+  factor?: number
+}
+
+/** A functional boost will apply a function to the overall document score.
+ * Only available on number fields.
+ *
+ * https://swiftype.com/documentation/app-search/api/search/boosts#functional-boosts
+ */
+interface FunctionalBooost {
+  type: 'functional'
+  /** Type of function to calculate the boost value */
+  function: 'linear' | 'exponential' | 'logarithmic'
+  /** The arithmetic operation used to combine the original document score with your boost value. Defaults to add. */
+  operation?: 'add' | 'multiply'
+  /** Factor to alter the impact of a boost on the score of a document. Must be between -10 and 10. Defaults to 1.0 */
+  factor?: number
+}
+
+/** Boost on the difference of a document value and a given value from the center parameter.
+ * Available on number and geolocation fields.
+ *
+ * https://swiftype.com/documentation/app-search/api/search/boosts#proximity-boosts
+ */
+interface ProximityBooost {
+  type: 'proximity'
+  /** The mode of the distribution */
+  center: string
+  /** Type of function to calculate the boost value */
+  function: 'linear' | 'exponential' | 'gaussian'
+  /** Factor to alter the impact of a boost on the score of a document. Must be between -10 and 10. Defaults to 1.0 */
+  factor?: number
+}
+
+/** Boosts affect the score of the entire document.
+ * Provide a field to boost, then increase or decrease document relevance based on values.
+ *
+ * https://swiftype.com/documentation/app-search/api/search/boosts
+ */
+export type Boosts<FieldsEnum> = FieldsEnum extends string
+  ? Partial<Record<FieldsEnum, ValueBooost | FunctionalBooost | ProximityBooost>>
+  : never
+
 export interface SearchOptions<FieldsEnum> {
   search_fields?: SearchFields<FieldsEnum>
   result_fields?: ResultFields<FieldsEnum>
@@ -133,6 +188,7 @@ export interface SearchOptions<FieldsEnum> {
   group?: { field: FieldsEnum }
   page?: Page
   sort?: Sort<FieldsEnum>
+  boosts?: Boosts<FieldsEnum>
 }
 
 export interface Info {
