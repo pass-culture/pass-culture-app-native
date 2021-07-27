@@ -5,6 +5,7 @@ jest.mock('@react-native-firebase/analytics', () => () => ({
   logEvent: mockLogEvent,
 }))
 
+jest.unmock('./provider')
 const { analytics } = jest.requireActual('./analytics')
 
 describe('analytics', () => {
