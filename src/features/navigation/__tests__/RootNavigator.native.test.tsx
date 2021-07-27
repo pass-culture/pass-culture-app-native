@@ -3,7 +3,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
-import { AccountCreated } from 'features/auth/signup/AccountCreated'
+import { AccountCreated } from 'features/auth/signup/AccountCreated/AccountCreated'
 import * as splashScreenModule from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { act, render, flushAllPromises } from 'tests/utils'

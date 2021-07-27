@@ -8,7 +8,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { render, fireEvent } from 'tests/utils'
 
-import { AccountCreated } from './AccountCreated'
+import { AccountCreated } from '../AccountCreated'
 
 const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
 jest.mock('features/home/api')

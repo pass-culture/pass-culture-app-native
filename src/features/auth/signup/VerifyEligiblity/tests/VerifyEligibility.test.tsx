@@ -6,7 +6,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { render, fireEvent } from 'tests/utils'
 
-import { VerifyEligibility } from './VerifyEligibility'
+import { VerifyEligibility } from '../VerifyEligibility'
 
 beforeEach(() => {
   jest.clearAllMocks()

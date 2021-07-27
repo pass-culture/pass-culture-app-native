@@ -1,7 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
+import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts'
 import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome } from 'features/navigation/helpers'
 import { fireEvent, render } from 'tests/utils'

@@ -10,8 +10,8 @@ import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-import { useLoginRoutine } from '../AuthContext'
-import { useValidateEmailMutation } from '../mutations'
+import { useLoginRoutine } from '../../AuthContext'
+import { useValidateEmailMutation } from '../../mutations'
 
 export function AfterSignupEmailValidationBuffer() {
   const { showInfoSnackBar } = useSnackBarContext()
