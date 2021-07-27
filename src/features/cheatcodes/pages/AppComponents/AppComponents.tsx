@@ -12,12 +12,15 @@ import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTic
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { AccordionItem, CallToAction } from 'features/offer/components'
+import { CallToAction } from 'features/offer/components'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
+import { accordionStyle } from 'features/profile/components/reusables'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
+import { analytics } from 'libs/analytics'
 import { mapCategoryToIcon } from 'libs/parsers'
+import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner, BannerType } from 'ui/components/Banner'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
@@ -160,10 +163,23 @@ export const AppComponents: FunctionComponent = () => {
 
   const { goBack } = useNavigation<UseNavigationType>()
 
+  const someID = 1234
+
   return (
     <StyledScrollView>
       <Spacer.TopScreen />
       <ModalHeader title="App components" leftIcon={ArrowPrevious} onLeftIconPress={goBack} />
+
+      {/* AccordionItem */}
+      <AccordionItem
+        title="Accordion Item"
+        defaultOpen={true}
+        onOpenOnce={() => analytics.logConsultWithdrawal(someID)}
+        onOpen={() => analytics.logConsultWithdrawal(someID)}
+        titleStyle={accordionStyle.title}
+        bodyStyle={accordionStyle.body}>
+        <View />
+      </AccordionItem>
 
       {/* Typos */}
       <AccordionItem title="Typos">
