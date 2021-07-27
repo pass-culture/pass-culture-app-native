@@ -9,7 +9,7 @@ export const venueResponseSnap: VenueResponse = {
   publicName: 'Le Petit Rintintin 1',
   isVirtual: false,
   isPermanent: true,
-  withdrawalDetails: null,
+  withdrawalDetails: 'How to withdraw, https://test.com',
   address: '1 boulevard Poissonnière',
   postalCode: '75000',
 }
