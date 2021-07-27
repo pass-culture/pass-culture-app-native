@@ -1,11 +1,11 @@
 import { mocked } from 'ts-jest/utils'
 
-import { useDistance } from 'features/offer/components/useDistance'
 import { useGeolocation } from 'libs/geolocation'
 import {
   emptyGeolocationContext,
   geolocalisationContext,
 } from 'libs/geolocation/fixtures/geolocationContext'
+import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDistance } from 'libs/parsers'
 
 jest.mock('libs/parsers')

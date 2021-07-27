@@ -4,12 +4,11 @@ import styled from 'styled-components/native'
 
 import { Coordinates } from 'api/gen'
 import { analytics } from 'libs/analytics'
+import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Typo, ColorsEnum } from 'ui/theme'
-
-import { useDistance } from './useDistance'
 
 type Props = {
   address: string | null
