@@ -11,10 +11,9 @@ import { server } from 'tests/server'
 import { render, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { loginRoutine } from '../__mocks__/AuthContext'
-import * as Auth from '../AuthContext'
-
-import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBuffer'
+import { loginRoutine } from '../../../__mocks__/AuthContext'
+import * as Auth from '../../../AuthContext'
+import { AfterSignupEmailValidationBuffer } from '../AfterSignupEmailValidationBuffer'
 
 jest.mock('features/auth/settings')
 jest.mock('features/auth/AuthContext')

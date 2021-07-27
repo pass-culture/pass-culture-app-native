@@ -22,6 +22,7 @@ describe('<IdCheckUnavailable/>', () => {
     fireEvent.press(getByText(`Transmettre un dossier`))
     expect(openExternalUrl).toBeCalledWith(env.DSM_URL)
   })
+
   it('should go back WHEN go back is clicked', () => {
     const canGoBack = jest.spyOn(NativeHelpers, 'canGoBack').mockReturnValue(true)
     const goBack = jest.spyOn(NativeHelpers, 'goBack')
