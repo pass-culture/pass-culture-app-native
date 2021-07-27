@@ -17,6 +17,7 @@ import { ReportOfferReasonModal } from 'features/offer/components/ReportOfferRea
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { QueryKeys } from 'libs/queryKeys'
@@ -30,7 +31,6 @@ import { useOffer } from '../api/useOffer'
 import {
   AccordionItem,
   OfferIconCaptions,
-  WhereSection,
   AccessibilityBlock,
   OfferPartialDescription,
 } from '../components'
