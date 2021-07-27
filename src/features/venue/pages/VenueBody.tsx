@@ -66,7 +66,7 @@ export const VenueBody: FunctionComponent<{
         />
       </MarginContainer>
 
-      <Section visible={!!venueResponse.withdrawalDetails && !!user?.isBeneficiary}>
+      <Section visible={!!venueResponse.withdrawalDetails && !!user}>
         <AccordionItem
           title={t`Modalités de retrait`}
           onOpenOnce={() => analytics.logConsultWithdrawal(venueResponse.id)}>

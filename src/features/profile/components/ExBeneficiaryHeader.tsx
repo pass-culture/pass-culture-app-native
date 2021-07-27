@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
-import { AccordionItem } from 'features/offer/components'
+import { AccordionItem } from 'ui/components/AccordionItem'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, ColorsEnum, Typo, Spacer, ScreenWidth } from 'ui/theme'
 

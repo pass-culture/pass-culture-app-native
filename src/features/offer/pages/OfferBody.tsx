@@ -20,6 +20,7 @@ import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { QueryKeys } from 'libs/queryKeys'
+import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { useModalNavigation } from 'ui/components/modals/useModalNavigation'
@@ -27,12 +28,7 @@ import { Flag } from 'ui/svg/icons/Flag'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useOffer } from '../api/useOffer'
-import {
-  AccordionItem,
-  OfferIconCaptions,
-  AccessibilityBlock,
-  OfferPartialDescription,
-} from '../components'
+import { OfferIconCaptions, AccessibilityBlock, OfferPartialDescription } from '../components'
 
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 

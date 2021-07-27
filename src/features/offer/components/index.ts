@@ -1,4 +1,3 @@
-export { AccordionItem } from './AccordionItem'
 export { CallToAction } from './CallToAction'
 export { OfferHeader } from './OfferHeader'
 export { OfferIconCaptions } from './OfferIconCaptions'

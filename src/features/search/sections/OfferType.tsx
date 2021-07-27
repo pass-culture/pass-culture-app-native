@@ -2,12 +2,12 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { AccordionItem } from 'features/offer/components'
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
+import { AccordionItem } from 'ui/components/AccordionItem'
 import { getSpacing } from 'ui/theme'
 
 type OfferType = keyof SearchState['offerTypes']

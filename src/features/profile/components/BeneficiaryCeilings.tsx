@@ -3,9 +3,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DomainsCredit, ExpenseDomain } from 'api/gen'
-import { AccordionItem } from 'features/offer/components'
 import { CreditCeiling } from 'features/profile/components/CreditCeiling'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { AccordionItem } from 'ui/components/AccordionItem'
 import { DashedSeparator } from 'ui/components/DashedSeparator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
