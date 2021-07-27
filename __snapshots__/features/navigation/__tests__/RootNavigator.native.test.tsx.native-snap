@@ -17,11 +17,11 @@ exports[`wrapRoute() should display force update page when global variable is se
     style={
       Array [
         Object {
-          "bottom": 0,
+          "height": "100%",
           "left": 0,
           "position": "absolute",
-          "right": 0,
           "top": 0,
+          "width": "100%",
           "zIndex": -1,
         },
       ]
