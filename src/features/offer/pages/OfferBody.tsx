@@ -134,7 +134,7 @@ export const OfferBody: FunctionComponent<{
         <WhereSection
           address={offerResponse.fullAddress}
           offerCoordinates={venue.coordinates}
-          offerId={offerResponse.id}
+          beforeNavigateToItinerary={() => analytics.logConsultItinerary(offerResponse.id, 'offer')}
         />
       </Section>
 

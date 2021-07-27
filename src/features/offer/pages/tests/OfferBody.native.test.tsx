@@ -1,8 +1,10 @@
 import mockdate from 'mockdate'
 
 import { api } from 'api/api'
+import { analytics } from 'libs/analytics'
+import { act, fireEvent } from 'tests/utils'
 
-import { renderOfferBodyPage } from './renderOfferPageTestUtil'
+import { offerId, renderOfferBodyPage } from './renderOfferPageTestUtil'
 
 jest.mock('api/api')
 
@@ -105,5 +107,13 @@ describe('<OfferBody />', () => {
   it('should not request /native/v1/offers/reports if user is not logged in', async () => {
     await renderOfferBodyPage(undefined, undefined, { isLoggedIn: false })
     expect(api.getnativev1offersreports).not.toHaveBeenCalled()
+  })
+
+  it('should log itinerary analytics', async () => {
+    const wrapper = await renderOfferBodyPage()
+    act(() => {
+      fireEvent.press(wrapper.getByText("Voir l'itinéraire"))
+    })
+    expect(analytics.logConsultItinerary).toHaveBeenCalledWith(offerId, 'offer')
   })
 })
