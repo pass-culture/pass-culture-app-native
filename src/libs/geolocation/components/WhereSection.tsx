@@ -12,19 +12,19 @@ import { Typo, ColorsEnum } from 'ui/theme'
 type Props = {
   address: string | null
   beforeNavigateToItinerary?: () => Promise<void>
-  offerCoordinates: Coordinates
+  locationCoordinates: Coordinates
 }
 
 export const WhereSection: React.FC<Props> = ({
   address,
-  offerCoordinates,
+  locationCoordinates,
   beforeNavigateToItinerary,
 }) => {
-  const { latitude: lat, longitude: lng } = offerCoordinates
-  const distanceToOffer = useDistance({ lat, lng })
+  const { latitude: lat, longitude: lng } = locationCoordinates
+  const distanceToLocation = useDistance({ lat, lng })
   const { canOpenItinerary, openItinerary } = useOpenItinerary(lat, lng, beforeNavigateToItinerary)
 
-  if (distanceToOffer === undefined && address === null) return null
+  if (distanceToLocation === undefined && address === null) return null
 
   return (
     <React.Fragment>
@@ -38,12 +38,12 @@ export const WhereSection: React.FC<Props> = ({
           <StyledAddress>{address}</StyledAddress>
         </React.Fragment>
       )}
-      {!!distanceToOffer && (
+      {!!distanceToLocation && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <Typo.Caption>{t`Distance`}</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
-          <Typo.Body>{distanceToOffer}</Typo.Body>
+          <Typo.Body>{distanceToLocation}</Typo.Body>
         </React.Fragment>
       )}
 

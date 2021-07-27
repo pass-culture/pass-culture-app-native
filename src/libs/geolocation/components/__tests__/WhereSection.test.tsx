@@ -15,7 +15,7 @@ describe('WhereSection', () => {
       const { getByText } = render(
         <WhereSection
           address="Address"
-          offerCoordinates={{ latitude: 2, longitude: 4 }}
+          locationCoordinates={{ latitude: 2, longitude: 4 }}
           beforeNavigateToItinerary={beforeNavigateToItinerary}
         />
       )
