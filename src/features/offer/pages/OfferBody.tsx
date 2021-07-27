@@ -30,7 +30,7 @@ import { useOffer } from '../api/useOffer'
 import {
   AccordionItem,
   OfferIconCaptions,
-  OfferWhereSection,
+  WhereSection,
   AccessibilityBlock,
   OfferPartialDescription,
 } from '../components'
@@ -131,7 +131,7 @@ export const OfferBody: FunctionComponent<{
       </Section>
 
       <Section visible={!offerResponse.isDigital} margin={true}>
-        <OfferWhereSection
+        <WhereSection
           address={offerResponse.fullAddress}
           offerCoordinates={venue.coordinates}
           offerId={offerResponse.id}
