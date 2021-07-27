@@ -1,344 +1,194 @@
 import { IdCheckAnalyticsInterface } from '@pass-culture/id-check'
-import firebaseAnalyticsModule from '@react-native-firebase/analytics'
 import { Platform } from 'react-native'
 
 import { Referrals } from 'features/navigation/RootNavigator'
 
 import { AnalyticsEvent, IdCheckAnalyticsEvent } from './events'
-
-const firebaseAnalytics = firebaseAnalyticsModule()
+import { analyticsProvider } from './provider'
+import { LoginRoutineMethod } from './types'
 
 const STRING_VALUE_MAX_LENGTH = 100
 
-const setUserId = (userId: number) => firebaseAnalytics.setUserId(userId.toString())
-
-const logScreenView = async (screenName: string) => {
-  await firebaseAnalytics.logScreenView({ screen_name: screenName, screen_class: screenName })
-}
-
-const logEvent = <P extends Record<string, unknown>>(
-  name: AnalyticsEvent,
-  params?: P
-): Promise<void> => {
-  if (!params) return firebaseAnalytics.logEvent(name)
-
-  // We don't send integers to firebase because they will be cast into int_value, float_value,
-  // or double_value in BigQuery depending on its value. To facilitate the work of the team,
-  // we just cast it to string.
-  const newParams = Object.keys(params).reduce((acc: Record<string, unknown>, key) => {
-    acc[key] = typeof params[key] === 'number' ? (params[key] as number).toString() : params[key]
-    return acc
-  }, {})
-
-  return firebaseAnalytics.logEvent(name, newParams)
-}
-
-/**
- * First Tutorial
- */
-const logHasSkippedTutorial = (pageName: string) =>
-  logEvent(AnalyticsEvent.HAS_SKIPPED_TUTORIAL, { pageName })
-
-const logHasActivateGeolocFromTutorial = () =>
-  logEvent(AnalyticsEvent.HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL)
-
-/**
- * Home
- */
-const logAllModulesSeen = (numberOfModules: number) =>
-  logEvent(AnalyticsEvent.ALL_MODULES_SEEN, { numberOfModules })
-
-const logAllTilesSeen = (moduleName: string, numberOfTiles: number) =>
-  logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles })
-
-const logConsultOffer = (params: {
-  offerId: number
-  from: Referrals
-  moduleName?: string
-  query?: string
-}) => logEvent(AnalyticsEvent.CONSULT_OFFER, params)
-
-const logClickExclusivityBlock = (offerId: number) =>
-  logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId })
-
-const logClickSeeMore = (moduleName: string) =>
-  logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName })
-
-const logClickBusinessBlock = (moduleName: string) =>
-  logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName })
-
-const logRecommendationModuleSeen = (moduleName: string, numberOfTiles: number) =>
-  logEvent(AnalyticsEvent.RECOMMENDATION_MODULE_SEEN, {
-    moduleName,
-    numberOfTiles,
-  })
-
-/**
- * Offer
- */
-const logConsultAccessibility = (offerId: number) =>
-  logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, { offerId })
-
-const logConsultWithdrawal = (offerId: number) =>
-  logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, { offerId })
-
-const logShareOffer = (offerId: number) => logEvent(AnalyticsEvent.SHARE_OFFER, { offerId })
-
-const logConsultDescriptionDetails = (offerId: number) =>
-  logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId })
-
-const logConsultWholeOffer = (offerId: number) =>
-  logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId })
-
-const logConsultItinerary = (offerId: number, from: Referrals) =>
-  logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId, from })
-
-const logConsultAvailableDates = (offerId: number) =>
-  logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })
-
-const logClickBookOffer = (offerId: number) =>
-  logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId })
-
-const logOfferSeenDuration = (offerId: number, duration: number) =>
-  logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
-
-const logHasAddedOfferToFavorites = (params: {
-  from: Referrals | 'BookingImpossible'
-  offerId: number
-  moduleName?: string
-}) => logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params)
-
-/**
- * Sign up
- */
-const logConsultWhyAnniversary = () => logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY)
-
-const logCancelSignup = (pageName: string) => logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName })
-
-const logHelpCenterContactSignupConfirmationEmailSent = () =>
-  logEvent(AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT)
-
-const logResendEmailResetPasswordExpiredLink = () =>
-  logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK)
-
-const logResendEmailSignupConfirmationExpiredLink = () =>
-  logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK)
-
-const logSignUpBetween14And15Included = () =>
-  logEvent(AnalyticsEvent.SIGN_UP_BETWEEN_14_AND_15_INCLUDED)
-
-const logSignUpLessThanOrEqualTo13 = () => logEvent(AnalyticsEvent.SIGN_UP_LESS_THAN_OR_EQUAL_TO_13)
-
-/**
- * Search
- */
-const logReinitializeFilters = () => logEvent(AnalyticsEvent.REINITIALIZE_FILTERS)
-
-const logUseFilter = (filter: string) => logEvent(AnalyticsEvent.USE_FILTER, { filter })
-
-const logSearchQuery = (query: string) => logEvent(AnalyticsEvent.SEARCH_QUERY, { query })
-
-const logSearchScrollToPage = (page: number) =>
-  logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page })
-
-const logNoSearchResult = (query: string) => logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
-
-/**
- * Others
- */
-const logOpenLocationSettings = () => logEvent(AnalyticsEvent.OPEN_LOCATION_SETTINGS)
-
-const logOpenNotificationSettings = () => logEvent(AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS)
-
-const logIdCheck = (from: 'Profile') => logEvent(AnalyticsEvent.ID_CHECK, { from })
-
-const logProfilScrolledToBottom = () => logEvent(AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM)
-
-const logLocationToggle = (enabled: boolean) =>
-  logEvent(AnalyticsEvent.LOCATION_TOGGLE, { enabled })
-
-const logNotificationToggle = (enableEmail: boolean, enablePush?: boolean) =>
-  logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
-    enableEmail,
-    enablePush: Platform.OS === 'android' ? true : enablePush,
-  })
-
-const logHasChangedPassword = (reason: 'changePassword' | 'resetPassword') =>
-  logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD, { reason })
-
-const logProfilSignUp = () => logEvent(AnalyticsEvent.PROFIL_SIGN_UP)
-
-const logLogout = () => logEvent(AnalyticsEvent.LOGOUT)
-
-const logHasRefusedCookie = () => logEvent(AnalyticsEvent.HAS_REFUSED_COOKIE)
-
-const logClickSocialNetwork = (network: string) =>
-  logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network })
-
-const logOpenExternalUrl = (url: string) =>
-  logEvent(AnalyticsEvent.OPEN_EXTERNAL_URL, {
-    url: url.slice(0, STRING_VALUE_MAX_LENGTH),
-  })
-
-const logMailTo = (
-  reason:
-    | 'forGenericQuestion'
-    | 'forSignupConfirmationEmailNotReceived'
-    | 'forSignupConfirmationExpiredLink'
-    | 'forResetPasswordEmailNotReceived'
-    | 'forResetPasswordExpiredLink'
-    | 'forAccountDeletion'
-    | 'forPhoneNumberConfirmation'
-) => logEvent(AnalyticsEvent.MAIL_TO, { reason })
-
-const logCampaignTrackerEnabled = () => logEvent(AnalyticsEvent.CAMPAIGN_TRACKER_ENABLED)
-
-/**
- * Favorites
- */
 type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
-const logHasAppliedFavoritesSorting = ({ sortBy }: { sortBy: FavoriteSortBy }) =>
-  logEvent(AnalyticsEvent.HAS_APPLIED_FAVORITES_SORTING, { type: sortBy })
-
-/**
- * Tunnel de résa / bookOffer
- */
-const logBookingProcessStart = (offerId: number) =>
-  logEvent(AnalyticsEvent.BOOKING_PROCESS_START, { offerId })
-
-const logSeeMyBooking = (offerId: number) => logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId })
-
-const logBookingOfferConfirmDates = (offerId: number) =>
-  logEvent(AnalyticsEvent.BOOKING_OFFER_CONFIRM_DATES, { offerId })
-
-const logBookingImpossibleiOS = (offerId: number) =>
-  logEvent(AnalyticsEvent.BOOKING_IMPOSSIBLE_IOS, { offerId })
-
-const logBookingError = (offerId: number, code: string) =>
-  logEvent(AnalyticsEvent.BOOKING_ERROR, { offerId, code })
-
-const logBookingConfirmation = (offerId: number, bookingId: number) =>
-  logEvent(AnalyticsEvent.BOOKING_CONFIRMATION, { offerId, bookingId })
-
-/**
- * Bookings
- */
-const logBookingsScrolledToBottom = () => logEvent(AnalyticsEvent.BOOKINGS_SCROLLED_TO_BOTTOM)
-
-const logBookingDetailsScrolledToBottom = (offerId: number) =>
-  logEvent(AnalyticsEvent.BOOKING_DETAILS_SCROLLED_TO_BOTTOM, { offerId })
-
-const logDiscoverOffers = (from: Referrals) => logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from })
-
-const logCancelBooking = (offerId: number) => logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId })
-
-const logAccessExternalOffer = (offerId: number) =>
-  logEvent(AnalyticsEvent.ACCESS_EXTERNAL_OFFER, { offerId })
-
-const logConfirmBookingCancellation = (offerId: number) =>
-  logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId })
 
 export const analytics = {
-  disableCollection: () => firebaseAnalytics.setAnalyticsCollectionEnabled(false),
-  enableCollection: () => firebaseAnalytics.setAnalyticsCollectionEnabled(true),
-  logAccessExternalOffer,
-  logAllModulesSeen,
-  logAllTilesSeen,
-  logBookingConfirmation,
-  logBookingDetailsScrolledToBottom,
-  logBookingError,
-  logBookingImpossibleiOS,
-  logBookingOfferConfirmDates,
-  logBookingProcessStart,
-  logBookingsScrolledToBottom,
-  logCampaignTrackerEnabled,
-  logCancelBooking,
-  logCancelSignup,
-  logClickBookOffer,
-  logClickBusinessBlock,
-  logClickExclusivityBlock,
-  logClickSeeMore,
-  logClickSocialNetwork,
-  logConfirmBookingCancellation,
-  logConsultAccessibility,
-  logConsultAvailableDates,
-  logConsultDescriptionDetails,
-  logConsultItinerary,
-  logConsultOffer,
-  logConsultWholeOffer,
-  logConsultWhyAnniversary,
-  logConsultWithdrawal,
-  logDiscoverOffers,
-  logHasActivateGeolocFromTutorial,
-  logHasAddedOfferToFavorites,
-  logHasAppliedFavoritesSorting,
-  logHasChangedPassword,
-  logHasRefusedCookie,
-  logHasSkippedTutorial,
-  logHelpCenterContactSignupConfirmationEmailSent,
-  logIdCheck,
-  logLocationToggle,
-  logLogin: firebaseAnalytics.logLogin,
-  logLogout,
-  logMailTo,
-  logNoSearchResult,
-  logNotificationToggle,
-  logOfferSeenDuration,
-  logOpenExternalUrl,
-  logOpenLocationSettings,
-  logOpenNotificationSettings,
-  logProfilScrolledToBottom,
-  logProfilSignUp,
-  logRecommendationModuleSeen,
-  logReinitializeFilters,
-  logResendEmailResetPasswordExpiredLink,
-  logResendEmailSignupConfirmationExpiredLink,
-  logScreenView,
-  logSearchQuery,
-  logSearchScrollToPage,
-  logSeeMyBooking,
-  logShareOffer,
-  logSignUpBetween14And15Included,
-  logSignUpLessThanOrEqualTo13,
-  logUseFilter,
-  setUserId,
+  enableCollection: analyticsProvider.enableCollection,
+  disableCollection: analyticsProvider.disableCollection,
+  setUserId: analyticsProvider.setUserId,
+  logLogin({ method }: { method: LoginRoutineMethod }) {
+    analyticsProvider.logLogin({ method })
+  },
+  logScreenView: analyticsProvider.logScreenView,
+  logHasSkippedTutorial: (pageName: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_SKIPPED_TUTORIAL, { pageName }),
+  logHasActivateGeolocFromTutorial: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL),
+  logAllModulesSeen: (numberOfModules: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.ALL_MODULES_SEEN, { numberOfModules }),
+  logAllTilesSeen: (moduleName: string, numberOfTiles: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles }),
+  logConsultOffer: (params: {
+    offerId: number
+    from: Referrals
+    moduleName?: string
+    query?: string
+  }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_OFFER, params),
+  logClickExclusivityBlock: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId }),
+  logClickSeeMore: (moduleName: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName }),
+  logClickBusinessBlock: (moduleName: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName }),
+  logRecommendationModuleSeen: (moduleName: string, numberOfTiles: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.RECOMMENDATION_MODULE_SEEN, {
+      moduleName,
+      numberOfTiles,
+    }),
+  logConsultAccessibility: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, { offerId }),
+  logConsultWithdrawal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, { offerId }),
+  logShareOffer: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId }),
+  logConsultDescriptionDetails: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId }),
+  logConsultWholeOffer: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId }),
+  logConsultItinerary: (offerId: number, from: Referrals) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId, from }),
+  logConsultAvailableDates: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId }),
+  logClickBookOffer: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId }),
+  logOfferSeenDuration: (offerId: number, duration: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration }),
+  logHasAddedOfferToFavorites: (params: {
+    from: Referrals | 'BookingImpossible'
+    offerId: number
+    moduleName?: string
+  }) => analyticsProvider.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params),
+  logConsultWhyAnniversary: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY),
+  logCancelSignup: (pageName: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName }),
+  logHelpCenterContactSignupConfirmationEmailSent: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT),
+  logResendEmailResetPasswordExpiredLink: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK),
+  logResendEmailSignupConfirmationExpiredLink: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK),
+  logSignUpBetween14And15Included: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_BETWEEN_14_AND_15_INCLUDED),
+  logSignUpLessThanOrEqualTo13: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_LESS_THAN_OR_EQUAL_TO_13),
+  logReinitializeFilters: () => analyticsProvider.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS),
+  logUseFilter: (filter: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.USE_FILTER, { filter }),
+  logSearchQuery: (query: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SEARCH_QUERY, { query }),
+  logSearchScrollToPage: (page: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page }),
+  logNoSearchResult: (query: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query }),
+  logOpenLocationSettings: () => analyticsProvider.logEvent(AnalyticsEvent.OPEN_LOCATION_SETTINGS),
+  logOpenNotificationSettings: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS),
+  logIdCheck: (from: 'Profile') => analyticsProvider.logEvent(AnalyticsEvent.ID_CHECK, { from }),
+  logProfilScrolledToBottom: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM),
+  logLocationToggle: (enabled: boolean) =>
+    analyticsProvider.logEvent(AnalyticsEvent.LOCATION_TOGGLE, { enabled }),
+  logNotificationToggle: (enableEmail: boolean, enablePush?: boolean) =>
+    analyticsProvider.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
+      enableEmail,
+      enablePush: Platform.OS === 'android' ? true : enablePush,
+    }),
+  logHasChangedPassword: (reason: 'changePassword' | 'resetPassword') =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD, { reason }),
+  logProfilSignUp: () => analyticsProvider.logEvent(AnalyticsEvent.PROFIL_SIGN_UP),
+  logLogout: () => analyticsProvider.logEvent(AnalyticsEvent.LOGOUT),
+  logHasRefusedCookie: () => analyticsProvider.logEvent(AnalyticsEvent.HAS_REFUSED_COOKIE),
+  logClickSocialNetwork: (network: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network }),
+  logOpenExternalUrl: (url: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.OPEN_EXTERNAL_URL, {
+      url: url.slice(0, STRING_VALUE_MAX_LENGTH),
+    }),
+  logMailTo: (
+    reason:
+      | 'forGenericQuestion'
+      | 'forSignupConfirmationEmailNotReceived'
+      | 'forSignupConfirmationExpiredLink'
+      | 'forResetPasswordEmailNotReceived'
+      | 'forResetPasswordExpiredLink'
+      | 'forAccountDeletion'
+      | 'forPhoneNumberConfirmation'
+  ) => analyticsProvider.logEvent(AnalyticsEvent.MAIL_TO, { reason }),
+  logCampaignTrackerEnabled: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.CAMPAIGN_TRACKER_ENABLED),
+  logHasAppliedFavoritesSorting: ({ sortBy }: { sortBy: FavoriteSortBy }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_APPLIED_FAVORITES_SORTING, { type: sortBy }),
+  logBookingProcessStart: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BOOKING_PROCESS_START, { offerId }),
+  logSeeMyBooking: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId }),
+  logBookingOfferConfirmDates: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BOOKING_OFFER_CONFIRM_DATES, { offerId }),
+  logBookingImpossibleiOS: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BOOKING_IMPOSSIBLE_IOS, { offerId }),
+  logBookingError: (offerId: number, code: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BOOKING_ERROR, { offerId, code }),
+  logBookingConfirmation: (offerId: number, bookingId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BOOKING_CONFIRMATION, { offerId, bookingId }),
+  logBookingsScrolledToBottom: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.BOOKINGS_SCROLLED_TO_BOTTOM),
+  logBookingDetailsScrolledToBottom: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BOOKING_DETAILS_SCROLLED_TO_BOTTOM, { offerId }),
+  logDiscoverOffers: (from: Referrals) =>
+    analyticsProvider.logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from }),
+  logCancelBooking: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId }),
+  logAccessExternalOffer: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.ACCESS_EXTERNAL_OFFER, { offerId }),
+  logConfirmBookingCancellation: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId }),
 }
 
 export const idCheckAnalytics: IdCheckAnalyticsInterface = {
   cancelSignUp({ pageName }: { pageName: string }) {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.CANCEL_SIGN_UP, {
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.CANCEL_SIGN_UP, {
       pageName,
     })
   },
   identityError() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.IDENTITY_ERROR)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.IDENTITY_ERROR)
   },
   idValid() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.ID_VALID)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.ID_VALID)
   },
   invalidAge() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.INVALID_AGE)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.INVALID_AGE)
   },
   invalidDate() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.INVALID_DATE)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.INVALID_DATE)
   },
   invalidDocument() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.INVALID_DOCUMENT)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.INVALID_DOCUMENT)
   },
   invalidTwice() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.INVALID_TWICE)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.INVALID_TWICE)
   },
   processCompleted() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.PROCESS_COMPLETED)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.PROCESS_COMPLETED)
   },
   wrongSideDocument() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.WRONG_SIDE_DOCUMENT)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.WRONG_SIDE_DOCUMENT)
   },
   missingDocument() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.MISSING_DOCUMENT)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.MISSING_DOCUMENT)
   },
   externalLink({ href, canOpen }: { href: string; canOpen?: boolean }) {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.EXTERNAL_LINK, {
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.EXTERNAL_LINK, {
       href: href.slice(0, STRING_VALUE_MAX_LENGTH),
       canOpen: canOpen ? 'true' : 'false',
     })
@@ -352,26 +202,26 @@ export const idCheckAnalytics: IdCheckAnalyticsInterface = {
     accessToken: string | undefined
     accessTokenExpiresAt: string | undefined
   }) {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.HAS_VALID_SESSION, {
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.HAS_VALID_SESSION, {
       valid,
       accessToken,
       accessTokenExpiresAt,
     })
   },
   startCheckTokens() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.START_CHECK_TOKENS)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.START_CHECK_TOKENS)
   },
   endCheckTokens() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.END_CHECK_TOKENS)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.END_CHECK_TOKENS)
   },
   fileSizeExceeded() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.FILE_SIZE_EXCEEDED)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.FILE_SIZE_EXCEEDED)
   },
   permissionsBlocked() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.PERMISSION_BLOCKED)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.PERMISSION_BLOCKED)
   },
   cameraUnavailable() {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.CALMERA_UNAVAILABLE)
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.CALMERA_UNAVAILABLE)
   },
   getJouveToken({
     appIsAllowedToRenewLicenceToken,
@@ -390,7 +240,7 @@ export const idCheckAnalytics: IdCheckAnalyticsInterface = {
     accessToken: string | undefined
     accessTokenExpiresAt: string | undefined
   }) {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.GET_JOUVE_TOKEN, {
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.GET_JOUVE_TOKEN, {
       appIsAllowedToRenewLicenceToken,
       isLocalLicenceToken,
       licenceToken,
@@ -411,7 +261,7 @@ export const idCheckAnalytics: IdCheckAnalyticsInterface = {
     licenceToken: string | null | undefined
     licenceTokenExpirationTimestamp: string | null | undefined
   }) {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.GET_LICENCE_TOKEN, {
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.GET_LICENCE_TOKEN, {
       isError,
       errorCode,
       licenceToken,
@@ -419,6 +269,6 @@ export const idCheckAnalytics: IdCheckAnalyticsInterface = {
     })
   },
   idDocumentAcquisitionType(type: 'Camera' | 'ImageLibrary') {
-    firebaseAnalytics.logEvent(IdCheckAnalyticsEvent.ID_DOCUMENT_ACQUISITION_TYPE, { type })
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.ID_DOCUMENT_ACQUISITION_TYPE, { type })
   },
 }

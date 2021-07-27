@@ -3,7 +3,7 @@ import { useItinerary } from 'libs/itinerary/useItinerary'
 export default function useOpenItinerary(
   latitude?: number | null,
   longitude?: number | null,
-  beforeNavigate?: () => Promise<void>
+  beforeNavigate?: () => Promise<void> | void
 ) {
   const { availableApps, navigateTo } = useItinerary()
 

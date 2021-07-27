@@ -4,7 +4,7 @@ import React, { useCallback, useContext, useEffect, useMemo, useState } from 're
 import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
-import { analytics } from 'libs/analytics'
+import { analytics, LoginRoutineMethod } from 'libs/analytics'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
@@ -61,8 +61,6 @@ export const AuthWrapper = ({ children }: { children: JSX.Element }) => {
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>{children}</AuthContext.Provider>
   )
 }
-
-export type LoginRoutineMethod = 'fromLogin' | 'fromSignup'
 
 export function useLoginRoutine() {
   const { setIsLoggedIn } = useAuthContext()

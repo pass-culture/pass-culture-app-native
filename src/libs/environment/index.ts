@@ -5,9 +5,9 @@ export interface Environment {
   ALGOLIA_SEARCH_API_KEY: string
   ANDROID_APP_ID: string
   API_BASE_URL: string
-  APPS_FLYER_DEV_KEY: string
-  APP_SEARCH_KEY: string
   APP_SEARCH_ENDPOINT: string
+  APP_SEARCH_KEY: string
+  APPS_FLYER_DEV_KEY: string
   CGU_LINK: string
   CONTENTFUL_ACCESS_TOKEN: string
   CONTENTFUL_ENVIRONMENT: string
@@ -22,7 +22,13 @@ export interface Environment {
   ENV: string
   FAQ_LINK: string
   FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: boolean
+  FIREBASE_APIKEY: string
+  FIREBASE_APPID: string
+  FIREBASE_AUTHDOMAIN: string
   FIREBASE_DYNAMIC_LINK: string
+  FIREBASE_MESSAGINGSENDERID: string
+  FIREBASE_PROJECTID: string
+  FIREBASE_STORAGEBUCKET: string
   ID_CHECK_API_URL: string
   ID_CHECK_URL: string
   IOS_APP_ID: string
@@ -39,12 +45,12 @@ export interface Environment {
   SIGNUP_RANDOM_PASSWORD: boolean
   SITE_KEY: string
   SUPPORT_EMAIL_ADDRESS: string
+  TMX_FPSERVER: string
+  TMX_ORGID: string
   UNIVERSAL_LINK: string
   URL_PREFIX: string
   WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string
-  TMX_FPSERVER: string
-  TMX_ORGID: string
 }
 
 export * from './env'
