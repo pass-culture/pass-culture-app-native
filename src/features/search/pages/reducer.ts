@@ -118,6 +118,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
         locationType: LocationType.AROUND_ME,
         geolocation: action.payload,
         place: null,
+        aroundRadius: 100,
       }
     case 'LOCATION_EVERYWHERE':
       return {
@@ -125,6 +126,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
         locationType: LocationType.EVERYWHERE,
         geolocation: null,
         place: null,
+        aroundRadius: null,
       }
     case 'LOCATION_PLACE':
       return {
@@ -132,6 +134,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
         locationType: LocationType.PLACE,
         geolocation: action.payload.geolocation,
         place: action.payload,
+        aroundRadius: 100,
       }
     case 'SET_QUERY':
       return {
