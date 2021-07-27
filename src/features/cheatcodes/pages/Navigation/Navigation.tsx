@@ -196,7 +196,7 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title="Venue"
-            onPress={() => navigation.navigate('Venue', { id: 5577 })}
+            onPress={() => navigation.navigate('Venue', { id: 5576 })}
           />
         </Row>
         <Row>

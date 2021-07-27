@@ -1,10 +1,15 @@
+import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useUserProfileInfo } from 'features/home/api'
+import { AccordionItem } from 'features/offer/components'
+import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
+import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 import { useVenue } from '../api/useVenue'
 
@@ -13,6 +18,7 @@ export const VenueBody: FunctionComponent<{
   onScroll: () => void
 }> = ({ venueId, onScroll }) => {
   const { data: venueResponse } = useVenue(venueId)
+  const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
   // TODO : Remove after add all venue informations - (it's just for scroll)
@@ -59,7 +65,34 @@ export const VenueBody: FunctionComponent<{
           }}
         />
       </MarginContainer>
+
+      <Section visible={!!venueResponse.withdrawalDetails && !!user?.isBeneficiary}>
+        <AccordionItem
+          title={t`Modalités de retrait`}
+          onOpenOnce={() => analytics.logConsultWithdrawal(venueResponse.id)}>
+          <Typo.Body>
+            {venueResponse.withdrawalDetails && highlightLinks(venueResponse.withdrawalDetails)}
+          </Typo.Body>
+        </AccordionItem>
+      </Section>
     </Container>
+  )
+}
+
+interface SectionProps {
+  visible: boolean
+  children: JSX.Element | JSX.Element[]
+  margin?: boolean
+}
+
+const Section = ({ visible, children, margin = false }: SectionProps) => {
+  if (!visible) return <React.Fragment></React.Fragment>
+
+  return (
+    <React.Fragment>
+      <Divider />
+      {margin ? <MarginContainer>{children}</MarginContainer> : children}
+    </React.Fragment>
   )
 }
 
@@ -83,4 +116,9 @@ const IconContainer = styled.View({
 const StyledText = styled(Typo.Caption)({
   flexShrink: 1,
   textTransform: 'capitalize',
+})
+
+const Divider = styled.View({
+  height: getSpacing(2),
+  backgroundColor: ColorsEnum.GREY_LIGHT,
 })
