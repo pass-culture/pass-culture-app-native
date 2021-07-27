@@ -2,9 +2,8 @@ import React from 'react'
 import { act } from 'react-test-renderer'
 
 import { analytics } from 'libs/analytics'
+import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { fireEvent, render } from 'tests/utils'
-
-import { WhereSection } from '../WhereSection'
 
 jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
