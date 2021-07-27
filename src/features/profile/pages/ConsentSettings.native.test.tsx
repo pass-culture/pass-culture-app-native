@@ -5,7 +5,7 @@ import React from 'react'
 import { goBack } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { firebaseAnalytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { superFlushWithAct, render, fireEvent, waitFor } from 'tests/utils'
@@ -72,7 +72,7 @@ describe('ConsentSettings', () => {
       const saveButton = getByText('Enregistrer')
       fireEvent.press(saveButton)
       expect(await storage.readObject('has_accepted_cookie')).toBe(true)
-      expect(firebaseAnalytics.setAnalyticsCollectionEnabled).toHaveBeenCalled()
+      expect(analytics.enableCollection).toHaveBeenCalled()
     })
   })
 

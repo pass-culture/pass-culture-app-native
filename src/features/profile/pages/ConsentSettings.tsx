@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { openExternalUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { firebaseAnalytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -48,7 +48,11 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   function save() {
     storage.saveObject('has_accepted_cookie', isTrackingSwitchActive).then(() => {
       setIsSaveButtonDisabled((prevValue) => !prevValue)
-      firebaseAnalytics.setAnalyticsCollectionEnabled(isTrackingSwitchActive)
+      if (isTrackingSwitchActive) {
+        analytics.enableCollection()
+      } else {
+        analytics.disableCollection()
+      }
     })
     goBack()
   }
