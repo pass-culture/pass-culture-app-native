@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Coordinates } from 'api/gen'
-import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
@@ -12,16 +11,18 @@ import { Typo, ColorsEnum } from 'ui/theme'
 
 type Props = {
   address: string | null
-  offerId: number
+  beforeNavigateToItinerary?: () => Promise<void>
   offerCoordinates: Coordinates
 }
 
-export const WhereSection: React.FC<Props> = ({ address, offerCoordinates, offerId }) => {
+export const WhereSection: React.FC<Props> = ({
+  address,
+  offerCoordinates,
+  beforeNavigateToItinerary,
+}) => {
   const { latitude: lat, longitude: lng } = offerCoordinates
   const distanceToOffer = useDistance({ lat, lng })
-  const { canOpenItinerary, openItinerary } = useOpenItinerary(lat, lng, () =>
-    analytics.logConsultItinerary(offerId, 'offer')
-  )
+  const { canOpenItinerary, openItinerary } = useOpenItinerary(lat, lng, beforeNavigateToItinerary)
 
   if (distanceToOffer === undefined && address === null) return null
 
