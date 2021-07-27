@@ -15,7 +15,7 @@ const hit = mockedAlgoliaResponse.hits[0]
 const offerId = +hit.objectID
 
 let mockDistance: string | null = null
-jest.mock('features/offer/components/useDistance', () => ({
+jest.mock('libs/geolocation/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
 
