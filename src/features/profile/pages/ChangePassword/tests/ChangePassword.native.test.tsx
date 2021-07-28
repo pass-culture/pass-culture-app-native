@@ -13,7 +13,7 @@ import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarCo
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum } from 'ui/theme'
 
-import { ChangePassword } from './ChangePassword'
+import { ChangePassword } from '../ChangePassword'
 
 const mockedUseSnackBarContext = useSnackBarContext as jest.Mock
 

@@ -1,7 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
 import waitForExpect from 'wait-for-expect'
 
 import { goBack } from '__mocks__/@react-navigation/native'
@@ -9,9 +8,9 @@ import { contactSupport } from 'features/auth/support.services'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
-import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
+import { SignupConfirmationEmailSent } from '../../SignupConfirmationEmailSent/SignupConfirmationEmailSent'
 
 const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
 jest.mock('features/navigation/helpers')
@@ -25,7 +24,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     const { findByTestId } = renderPage()
 
     const leftIconButton = await findByTestId('leftIcon')
-    fireEvent.click(leftIconButton)
+    fireEvent.press(leftIconButton)
 
     await waitForExpect(() => {
       expect(goBack).toHaveBeenCalledTimes(1)
@@ -48,7 +47,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     const { findByTestId } = renderPage()
 
     const rightIconButton = await findByTestId('rightIconButton')
-    fireEvent.click(rightIconButton)
+    fireEvent.press(rightIconButton)
 
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalledTimes(1)
@@ -59,7 +58,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     const { findByText } = renderPage()
 
     const consultHelpSupportButton = await findByText("Consulter notre centre d'aide")
-    fireEvent.click(consultHelpSupportButton)
+    fireEvent.press(consultHelpSupportButton)
 
     await waitForExpect(() => {
       expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toBeCalledTimes(1)
@@ -71,7 +70,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     const { findByText } = renderPage()
 
     const checkEmailsButton = await findByText('Consulter mes e-mails')
-    fireEvent.click(checkEmailsButton)
+    fireEvent.press(checkEmailsButton)
 
     await waitForExpect(() => {
       expect(openInbox).toHaveBeenCalled()
@@ -83,9 +82,5 @@ function renderPage() {
   const navigationProps = {
     route: { params: { email: 'john.doe@gmail.com' } },
   } as StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
-  return render(
-    <SafeAreaProvider>
-      <SignupConfirmationEmailSent {...navigationProps} />
-    </SafeAreaProvider>
-  )
+  return render(<SignupConfirmationEmailSent {...navigationProps} />)
 }
