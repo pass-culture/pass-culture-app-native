@@ -12,7 +12,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils'
 
-import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
+import { ResetPasswordExpiredLink } from '../ResetPasswordExpiredLink'
 
 jest.mock('features/navigation/helpers')
 

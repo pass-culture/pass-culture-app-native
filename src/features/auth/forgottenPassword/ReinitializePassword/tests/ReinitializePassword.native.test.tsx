@@ -7,7 +7,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
-import { ReinitializePassword } from './ReinitializePassword'
+import { ReinitializePassword } from '../ReinitializePassword'
 
 describe('ReinitializePassword Page', () => {
   beforeAll(() => {
