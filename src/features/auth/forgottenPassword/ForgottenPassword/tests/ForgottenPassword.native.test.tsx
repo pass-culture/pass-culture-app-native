@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/helpers'
-import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
+import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { MonitoringError } from 'libs/errorMonitoring'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, superFlushWithAct, fireEvent, render } from 'tests/utils'

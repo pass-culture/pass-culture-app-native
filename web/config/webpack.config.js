@@ -288,7 +288,10 @@ module.exports = function (webpackEnv) {
         'lottie-react-native': 'react-native-web-lottie',
         'react-native-linear-gradient': 'react-native-web-linear-gradient',
         '@sentry/react-native': '@sentry/react',
+
+        // Those libs are mocked until we implement web specific solutions
         '@bam.tech/react-native-batch': path.join(paths.appSrc, 'libs/react-native-batch'),
+        'react-native-email-link': path.join(paths.appSrc, 'libs/react-native-email-link'),
 
         // /**
         //  * These will replace react navigation entirely.
