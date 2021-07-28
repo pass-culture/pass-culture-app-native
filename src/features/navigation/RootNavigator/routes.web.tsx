@@ -7,9 +7,7 @@ import {
   // withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
 } from '@pass-culture/id-check'
 import { LinkingOptions } from '@react-navigation/native'
-// import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 // import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
-// import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
 // import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
 // import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
 // import { IdCheck } from 'features/auth/signup/IdCheck'
@@ -17,6 +15,8 @@ import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
+import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
+import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
 import { IdCheckUnavailable } from 'features/auth/IdcheckUnavailable'
 import { Login } from 'features/auth/login/Login'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
@@ -122,6 +122,9 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     <Link to={'/maintenance'}>
       <Text>Maintenance</Text>
     </Link>
+    <Link to={'/forgotten-password'}>
+      <Text>ForgottenPassword</Text>
+    </Link>
     <Link
       to={'/cgu'}
       params={{
@@ -166,11 +169,12 @@ export const routes: Array<Route> = [
   //   //   name: 'FavoritesSorts',
   //   //   component: FavoritesSorts,
   //   // },
-  //   // {
-  //   //   name: 'ForgottenPassword',
-  //   //   component: ForgottenPassword,
-  //   //   hoc: withAsyncErrorBoundary,
-  //   // },
+  {
+    name: 'ForgottenPassword',
+    component: ForgottenPassword,
+    hoc: withAsyncErrorBoundary,
+    path: '/forgotten-password',
+  },
   //   // { name: 'IdCheck', component: IdCheck, hoc: withIdCheckAsyncErrorBoundary },
   { name: 'LegalNotices', component: LegalNotices, path: '/legal-notices' },
   //   // { name: 'ConfirmDeleteProfile', component: ConfirmDeleteProfile },
@@ -192,7 +196,11 @@ export const routes: Array<Route> = [
   //   // { name: 'PersonalData', component: PersonalData },
   //   // { name: 'ChangePassword', component: ChangePassword },
   //   // { name: 'ReinitializePassword', component: ReinitializePassword },
-  //   // { name: 'ResetPasswordEmailSent', component: ResetPasswordEmailSent },
+  {
+    name: 'ResetPasswordEmailSent',
+    component: ResetPasswordEmailSent,
+    path: '/reset-password-email-sent',
+  },
   //   // {
   //   //   name: 'ResetPasswordExpiredLink',
   //   //   component: ResetPasswordExpiredLink,

@@ -7,19 +7,14 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { flushAllPromises, act, fireEvent, render, cleanup } from 'tests/utils'
+import { flushAllPromises, act, fireEvent, render } from 'tests/utils/web'
 
-import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
+import { ResetPasswordEmailSent } from '../ResetPasswordEmailSent'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/navigation/helpers')
 
 describe('<ResetPasswordEmailSent />', () => {
-  afterEach(cleanup)
-
   it('should match snapshot', async () => {
     const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
     expect(renderAPI).toMatchSnapshot()
@@ -31,8 +26,8 @@ describe('<ResetPasswordEmailSent />', () => {
     await act(async () => {
       navigationRef.current?.navigate('ResetPasswordEmailSent')
     })
-
-    fireEvent.press(renderAPI.getByTestId('leftIcon'))
+    const leftIcon = renderAPI.getByTestId('leftIcon')
+    fireEvent.click(leftIcon)
 
     await waitForExpect(() => {
       expect(renderAPI.queryByText('PreviousScreenText')).toBeTruthy()
@@ -52,7 +47,7 @@ describe('<ResetPasswordEmailSent />', () => {
   it('should redirect to Home when clicking on Close icon', async () => {
     const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
 
-    fireEvent.press(renderAPI.getByTestId('rightIcon'))
+    fireEvent.click(renderAPI.getByTestId('rightIcon'))
 
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalled()
@@ -63,7 +58,7 @@ describe('<ResetPasswordEmailSent />', () => {
     const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
 
     const checkEmailsButton = renderAPI.getByText('Consulter mes e-mails')
-    fireEvent.press(checkEmailsButton)
+    fireEvent.click(checkEmailsButton)
 
     await waitForExpect(() => {
       expect(openInbox).toHaveBeenCalled()
@@ -101,6 +96,8 @@ async function renderInitialPage(initialScreenName: keyof StackParams) {
       </TestStack.Navigator>
     </NavigationContainer>
   )
-  await act(flushAllPromises)
+  await act(async () => {
+    await flushAllPromises()
+  })
   return renderAPI
 }
