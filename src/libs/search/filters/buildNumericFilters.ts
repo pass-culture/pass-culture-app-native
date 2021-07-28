@@ -30,6 +30,9 @@ const buildOfferPriceRangePredicate = (params: SearchParameters): FilterArray<Ap
   return [{ [AppSearchFields.prices]: { from, to } }]
 }
 
+const roundToNearestFiveMinutes = (date: Date): Date =>
+  new Date(Math.round(date.getTime() / FIVE_MINUTES) * FIVE_MINUTES)
+
 const buildDatePredicate = (params: SearchParameters): FilterArray<AppSearchFields> => {
   const { date, timeRange } = params
   if (date && timeRange) return buildDateAndTimePredicate({ date, timeRange })
@@ -43,8 +46,8 @@ const buildHomepageDatePredicate = (params: SearchParameters): FilterArray<AppSe
   if (!beginningDatetime && !endingDatetime) return []
 
   const filter: RangeFilter = {}
-  if (beginningDatetime) filter['from'] = TIMESTAMP.getFromDate(beginningDatetime)
-  if (endingDatetime) filter['to'] = TIMESTAMP.getFromDate(endingDatetime)
+  if (beginningDatetime) filter['from'] = roundToNearestFiveMinutes(beginningDatetime).toISOString()
+  if (endingDatetime) filter['to'] = roundToNearestFiveMinutes(endingDatetime).toISOString()
 
   return [{ [AppSearchFields.dates]: filter }]
 }
@@ -102,14 +105,17 @@ const buildDateOnlyPredicate = (
   return [{ [AppSearchFields.dates]: { from, to } }]
 }
 
+const FIVE_MINUTES = 1000 * 60 * 5
+
 const buildNewestOffersPredicate = (params: SearchParameters): FilterArray<AppSearchFields> => {
   const { offerIsNew } = params
   if (!offerIsNew) return []
 
-  const now = new Date()
-  const fifteenDaysAgo = new Date().setDate(now.getDate() - 15)
-  const from = TIMESTAMP.getFromDate(new Date(fifteenDaysAgo))
-  const to = TIMESTAMP.getFromDate(now)
+  const now = roundToNearestFiveMinutes(new Date())
+  const to = now.toISOString()
+
+  const fifteenDaysAgo = new Date(now.setDate(now.getDate() - 15))
+  const from = fifteenDaysAgo.toISOString()
 
   return [{ [AppSearchFields.stocks_date_created]: { from, to } }]
 }
