@@ -193,12 +193,6 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('CulturalSurvey')}
           />
         </Row>
-        <Row half>
-          <NavigationButton
-            title="Venue"
-            onPress={() => navigation.navigate('Venue', { id: 5543 })}
-          />
-        </Row>
         <Row>
           <NavigationButton
             title={'Mauvais deeplink unknown'}
