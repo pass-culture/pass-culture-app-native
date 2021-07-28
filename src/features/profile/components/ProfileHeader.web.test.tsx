@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
@@ -29,17 +30,23 @@ const user: UserProfileResponse = {
 
 const exBeneficiaryUser: UserProfileResponse = {
   ...user,
-  depositExpirationDate: new Date('2020-01-01T00:00:00'),
+  depositExpirationDate: new Date('2020-01-01T03:04:05'),
 }
 
 describe('ProfileHeader', () => {
+  beforeEach(() => {
+    mockdate.set(new Date('2021-07-01T00:00:00Z'))
+  })
+
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
-    const { getByTestId } = render(<ProfileHeader user={user} />)
+    const { getByTestId, getByText } = render(<ProfileHeader user={user} />)
     expect(getByTestId('beneficiary-header')).toBeTruthy()
+    expect(getByText("crédit valable jusqu'au 09/02/2023 à 11h17")).toBeTruthy()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
-    const { getByTestId } = render(<ProfileHeader user={exBeneficiaryUser} />)
+    const { getByTestId, getByText } = render(<ProfileHeader user={exBeneficiaryUser} />)
     expect(getByTestId('ex-beneficiary-header')).toBeTruthy()
+    expect(getByText('crédit expiré le 01/01/2020 à 03h04')).toBeTruthy()
   })
 })
