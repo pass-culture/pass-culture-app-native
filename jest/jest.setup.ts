@@ -112,3 +112,6 @@ jest.mock('api/helpers')
 jest.mock('react-native-text-input-mask', () => ({
   default: jest.fn(),
 }))
+
+// Mock files sourced from /public folder (see corresponding /__mock__ folders)
+jest.mock('ui/components/ModuleBanner/backgroundImageSource')

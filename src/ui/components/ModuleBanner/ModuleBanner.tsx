@@ -6,6 +6,8 @@ import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
+import { BACKGROUND_IMAGE_SOURCE } from './backgroundImageSource'
+
 interface ModuleBannerProps {
   onPress: () => void
   leftIcon: JSX.Element
@@ -19,9 +21,7 @@ export function ModuleBanner(props: ModuleBannerProps) {
   return (
     <TouchableHighlight onPress={props.onPress} testID={props.testID}>
       <ImageContainer>
-        <ImageBackground
-          source={require('../../../assets/images/BannerRectangle.png')}
-          testID="module-background">
+        <ImageBackground source={BACKGROUND_IMAGE_SOURCE} testID="module-background">
           <Container>
             <IconContainer>{props.leftIcon}</IconContainer>
             <TextContainer>
