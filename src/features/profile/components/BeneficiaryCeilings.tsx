@@ -1,12 +1,12 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import Dash from 'react-native-dash'
 import styled from 'styled-components/native'
 
 import { DomainsCredit, ExpenseDomain } from 'api/gen'
 import { AccordionItem } from 'features/offer/components'
 import { CreditCeiling } from 'features/profile/components/CreditCeiling'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { DashedSeparator } from 'ui/components/DashedSeparator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { accordionStyle, GreyContainer, Description } from './reusables'
@@ -68,7 +68,7 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
         </CeilingsRow>
       )}
       <Spacer.Column numberOfSpaces={6} />
-      <Separator dashGap={4} dashLength={1} dashThickness={1} />
+      <DashedSeparator dashGap={4} dashLength={1} dashThickness={1} />
       <AccordionItem
         title={<Typo.ButtonText>{question}</Typo.ButtonText>}
         titleStyle={accordionStyle.title}
@@ -88,11 +88,4 @@ const CeilingsRow = styled.View({
   paddingHorizontal: getSpacing(3),
   flexDirection: 'row',
   alignItems: 'flex-start',
-})
-
-const Separator = styled(Dash)({
-  borderRadius: 100,
-  overflow: 'hidden',
-  width: '99%', // a 100% width put the first dot on the border of the view and a space at the end
-  alignSelf: 'center',
 })
