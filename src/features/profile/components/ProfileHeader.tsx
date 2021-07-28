@@ -1,7 +1,9 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { formatToHour } from 'libs/parsers'
 
 import { BeneficiaryHeader } from './BeneficiaryHeader'
 import { ExBeneficiaryHeader } from './ExBeneficiaryHeader'
@@ -20,13 +22,22 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   }
 
   if (user.isBeneficiary) {
-    const depositExpirationDate = user.depositExpirationDate
-      ? formatToSlashedFrenchDate(user.depositExpirationDate.toString())
+    const expirationDate = user.depositExpirationDate
+      ? new Date(user.depositExpirationDate)
       : undefined
 
-    const isExpired = user.depositExpirationDate
-      ? new Date(user.depositExpirationDate) < new Date()
-      : false
+    const depositExpirationDate = expirationDate
+      ? t({
+          id: 'profile expiration date',
+          values: {
+            day: formatToSlashedFrenchDate(expirationDate.toISOString()),
+            hour: formatToHour(expirationDate),
+          },
+          message: '{day} à {hour}',
+        })
+      : undefined
+
+    const isExpired = expirationDate ? expirationDate < new Date() : false
 
     if (isExpired) {
       return (
