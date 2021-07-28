@@ -11,7 +11,7 @@ import { Typo, ColorsEnum } from 'ui/theme'
 
 type Props = {
   address: string | null
-  beforeNavigateToItinerary?: () => Promise<void>
+  beforeNavigateToItinerary?: () => Promise<void> | void
   locationCoordinates: Coordinates
 }
 
