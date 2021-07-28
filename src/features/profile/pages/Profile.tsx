@@ -2,8 +2,7 @@ import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Linking, NativeScrollEvent, StyleSheet } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { Linking, NativeScrollEvent, StyleSheet, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
