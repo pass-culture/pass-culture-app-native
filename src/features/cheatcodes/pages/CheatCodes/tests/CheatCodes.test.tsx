@@ -5,7 +5,7 @@ import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises, act, render } from 'tests/utils'
 
-import { CheatCodes } from './CheatCodes'
+import { CheatCodes } from '../CheatCodes'
 
 const installationID = 'installationID'
 

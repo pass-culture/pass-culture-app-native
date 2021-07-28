@@ -19,7 +19,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
-import { CheatCodesButton } from '../components/CheatCodesButton'
+import { CheatCodesButton } from '../../components/CheatCodesButton'
 
 const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
 const LoginDeeplink = DEEPLINK_DOMAIN + 'login'
