@@ -12,7 +12,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { EmptyResponse } from 'libs/fetch'
 import { render, fireEvent } from 'tests/utils'
 
-import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
+import { BeneficiaryRequestSent } from '../BeneficiaryRequestSent'
 
 const mockedUseAppSettings = mocked(useAppSettings, true)
 const mockedUseUserProfileInfo = mocked(useUserProfileInfo)

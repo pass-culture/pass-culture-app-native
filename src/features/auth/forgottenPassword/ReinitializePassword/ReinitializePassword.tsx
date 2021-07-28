@@ -20,7 +20,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useResetPasswordMutation } from '../mutations'
+import { useResetPasswordMutation } from '../../mutations'
 
 const MILLISECONDS_IN_A_SECOND = 1000
 

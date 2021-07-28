@@ -7,22 +7,23 @@ import {
   // withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
 } from '@pass-culture/id-check'
 import { LinkingOptions } from '@react-navigation/native'
-// import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
-// import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
-// import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
 // import { IdCheck } from 'features/auth/signup/IdCheck'
 import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
+import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
+import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
 import { IdCheckUnavailable } from 'features/auth/IdcheckUnavailable'
 import { Login } from 'features/auth/login/Login'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
+import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
+import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
@@ -37,7 +38,6 @@ import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { env } from 'libs/environment'
 import { Link } from 'libs/navigation/Link'
-// import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
 // import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 // import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 // import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
@@ -125,6 +125,18 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     <Link to={'/forgotten-password'}>
       <Text>ForgottenPassword</Text>
     </Link>
+    <Link to={'/reset-password-expired-link'}>
+      <Text>ResetPasswordExpiredLink</Text>
+    </Link>
+    <Link to={'/reinitialize-password'}>
+      <Text>ReinitializePassword</Text>
+    </Link>
+    <Link to={'/beneficiary-request-sent'}>
+      <Text>BeneficiaryRequestSent</Text>
+    </Link>
+    <Link to={'/next-beneficiary-step'}>
+      <Text>NextBeneficiaryStep</Text>
+    </Link>
     <Link
       to={'/cgu'}
       params={{
@@ -147,7 +159,6 @@ export const routes: Array<Route> = [
     component: EighteenBirthday,
     path: '/eighteen',
   },
-  // { name: 'ABTestingPOC', component: ABTestingPOC },
   { name: 'AcceptCgu', component: AcceptCgu, path: '/cgu', hoc: withAsyncErrorBoundary },
   { name: 'AccountCreated', component: AccountCreated, path: '/account-created' },
   {
@@ -159,7 +170,11 @@ export const routes: Array<Route> = [
   //   // { name: 'CheatCodes', component: CheatCodes },
   //   // { name: 'CheatMenu', component: CheatMenu },
   //   // { name: 'ConsentSettings', component: ConsentSettings },
-  //   // { name: 'BeneficiaryRequestSent', component: BeneficiaryRequestSent },
+  {
+    name: 'BeneficiaryRequestSent',
+    component: BeneficiaryRequestSent,
+    path: '/beneficiary-request-sent',
+  },
   //   // { name: 'BookingConfirmation', component: BookingConfirmation },
   //   // { name: 'BookingDetails', component: BookingDetails },
   //   // { name: 'CulturalSurvey', component: CulturalSurvey },
@@ -195,17 +210,18 @@ export const routes: Array<Route> = [
   //   // { name: 'Profile', component: Profile },
   //   // { name: 'PersonalData', component: PersonalData },
   //   // { name: 'ChangePassword', component: ChangePassword },
-  //   // { name: 'ReinitializePassword', component: ReinitializePassword },
+  { name: 'ReinitializePassword', component: ReinitializePassword, path: '/reinitialize-password' },
   {
     name: 'ResetPasswordEmailSent',
     component: ResetPasswordEmailSent,
     path: '/reset-password-email-sent',
   },
-  //   // {
-  //   //   name: 'ResetPasswordExpiredLink',
-  //   //   component: ResetPasswordExpiredLink,
-  //   //   hoc: withAsyncErrorBoundary,
-  //   // },
+  {
+    name: 'ResetPasswordExpiredLink',
+    component: ResetPasswordExpiredLink,
+    hoc: withAsyncErrorBoundary,
+    path: '/reset-password-expired-link',
+  },
   //   // { name: 'SearchCategories', component: SearchCategories },
   //   // { name: 'SearchFilter', component: SearchFilter },
   { name: 'SetBirthday', component: SetBirthday, path: '/setbirthday' },
@@ -215,7 +231,7 @@ export const routes: Array<Route> = [
   //   // { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
   //   // { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   //   // { name: 'TabNavigator', component: TabNavigator },
-  //   // { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep },
+  { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep, path: '/next-beneficiary-step' },
   //   // { name: 'SetPhoneNumber', component: SetPhoneNumber },
   //   // { name: 'SetPhoneValidationCode', component: SetPhoneValidationCode },
   {
