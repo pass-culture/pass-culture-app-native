@@ -13,8 +13,8 @@ const timestamp = TIMESTAMP as any
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const computeTimeRange = computeTimeRangeFromHoursToSeconds as any
 
-const selectedDate = new Date('2021-07-05T00:00:00Z')
-const now = new Date('2021-07-01T00:00:00Z')
+const selectedDate = new Date('2021-07-05T01:02:03Z')
+const now = new Date('2021-07-01T02:03:04Z')
 
 jest.mock('libs/search/datetime/time')
 
@@ -61,13 +61,15 @@ describe('buildNumericFilters', () => {
     })
 
     it('should fetch with numericFilters when offerIsNew is true', () => {
-      timestamp.getFromDate.mockReturnValueOnce(1588762412).mockReturnValueOnce(1589453612)
-
       const filters = buildNumericFilters({ offerIsNew: true } as SearchParameters)
-      expect(timestamp.getFromDate).toHaveBeenLastCalledWith(now)
       expect(filters).toStrictEqual([
         { [AppSearchFields.prices]: { to: 30000 } },
-        { [AppSearchFields.stocks_date_created]: { from: 1588762412, to: 1589453612 } },
+        {
+          [AppSearchFields.stocks_date_created]: {
+            from: '2021-06-16T02:05:00.000Z',
+            to: '2021-07-01T02:05:00.000Z',
+          },
+        },
       ])
     })
   })
@@ -266,43 +268,33 @@ describe('buildNumericFilters', () => {
   })
 
   describe('beginningDatetime & endingDatetime', () => {
+    const beginningDatetime = new Date(2020, 8, 1, 2, 3, 4)
+    const endingDatetime = new Date(2020, 8, 2, 3, 4, 5)
+
+    const from = '2020-09-01T02:05:00.000Z'
+    const to = '2020-09-02T03:05:00.000Z'
+
     it('should fetch from the beginning datetime', () => {
-      const beginningDatetime = new Date(2020, 8, 1)
-      timestamp.getFromDate.mockReturnValueOnce(1596240000)
-
       const filters = buildNumericFilters({ beginningDatetime } as SearchParameters)
-
-      expect(timestamp.getFromDate).toHaveBeenCalledWith(beginningDatetime)
       expect(filters).toStrictEqual([
         { [AppSearchFields.prices]: { to: 30000 } },
-        { [AppSearchFields.dates]: { from: 1596240000 } },
+        { [AppSearchFields.dates]: { from } },
       ])
     })
 
     it('should fetch until the ending datetime', () => {
-      const endingDatetime = new Date(2020, 8, 1)
-      timestamp.getFromDate.mockReturnValueOnce(1596240000)
-
       const filters = buildNumericFilters({ endingDatetime } as SearchParameters)
-
-      expect(timestamp.getFromDate).toHaveBeenCalledWith(endingDatetime)
       expect(filters).toStrictEqual([
         { [AppSearchFields.prices]: { to: 30000 } },
-        { [AppSearchFields.dates]: { to: 1596240000 } },
+        { [AppSearchFields.dates]: { to } },
       ])
     })
 
     it('should fetch from the beginning datetime to the ending datetime', () => {
-      const beginningDatetime = new Date(2020, 8, 1)
-      const endingDatetime = new Date(2020, 8, 2)
-      timestamp.getFromDate.mockReturnValueOnce(1596240000).mockReturnValueOnce(1596326400)
-
       const filters = buildNumericFilters({ beginningDatetime, endingDatetime } as SearchParameters)
-
-      expect(timestamp.getFromDate).toHaveBeenCalledTimes(2)
       expect(filters).toStrictEqual([
         { [AppSearchFields.prices]: { to: 30000 } },
-        { [AppSearchFields.dates]: { from: 1596240000, to: 1596326400 } },
+        { [AppSearchFields.dates]: { from, to } },
       ])
     })
   })
