@@ -4,10 +4,9 @@
 import {
   routes as idCheckRoutes,
   initialRouteName as idCheckInitialRouteName,
-  // withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
+  withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
 } from '@pass-culture/id-check'
 import { LinkingOptions } from '@react-navigation/native'
-// import { IdCheck } from 'features/auth/signup/IdCheck'
 import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
@@ -29,6 +28,9 @@ import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
+import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
+import { Navigation } from 'features/cheatcodes/pages/Navigation'
+import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { Maintenance } from 'features/maintenance/Maintenance'
@@ -38,6 +40,11 @@ import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { env } from 'libs/environment'
 import { Link } from 'libs/navigation/Link'
+/** those screens are not yet web compatible */
+// import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
+// import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
+/** those screens are not yet tested */
+// import { IdCheck } from 'features/auth/signup/IdCheck'
 // import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 // import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 // import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
@@ -47,11 +54,6 @@ import { Link } from 'libs/navigation/Link'
 // import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 // import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 // import { ABTestingPOC } from 'features/cheatcodes/pages/ABTestingPOC'
-// import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
-// import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
-// import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
-// import { Navigation } from 'features/cheatcodes/pages/Navigation'
-// import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
 // import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 // import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 // import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
@@ -72,7 +74,7 @@ import { Link } from 'libs/navigation/Link'
 // import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { ColorsEnum, Typo } from 'ui/theme'
 
-export const initialRouteName = 'ABTestingPOC'
+export const initialRouteName = 'TabNavigator'
 
 const LINKING_PREFIXES = [
   `https://app.passculture-${env.ENV}.gouv.fr/`,
@@ -137,6 +139,9 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     <Link to={'/next-beneficiary-step'}>
       <Text>NextBeneficiaryStep</Text>
     </Link>
+    <Link to={'/cheat-menu'}>
+      <Text>CheatMenu</Text>
+    </Link>
     <Link
       to={'/cgu'}
       params={{
@@ -166,50 +171,51 @@ export const routes: Array<Route> = [
     component: AfterSignupEmailValidationBuffer,
     path: '/after-signup-email-validation-buffer',
   },
-  //   // { name: 'AppComponents', component: AppComponents },
-  //   // { name: 'CheatCodes', component: CheatCodes },
-  //   // { name: 'CheatMenu', component: CheatMenu },
-  //   // { name: 'ConsentSettings', component: ConsentSettings },
+  // { name: 'AppComponents', component: AppComponents, path: '/app-components' },
+  // { name: 'CheatCodes', component: CheatCodes, path: '/cheat-codes' },
+  { name: 'CheatMenu', component: CheatMenu, path: '/cheat-menu' },
+  // { name: 'ConsentSettings', component: ConsentSettings },
   {
     name: 'BeneficiaryRequestSent',
     component: BeneficiaryRequestSent,
     path: '/beneficiary-request-sent',
   },
-  //   // { name: 'BookingConfirmation', component: BookingConfirmation },
-  //   // { name: 'BookingDetails', component: BookingDetails },
-  //   // { name: 'CulturalSurvey', component: CulturalSurvey },
-  //   // { name: 'DeeplinkImporter', component: DeeplinkImporter },
-  //   // { name: 'EndedBookings', component: EndedBookings },
-  //   // {
-  //   //   name: 'FavoritesSorts',
-  //   //   component: FavoritesSorts,
-  //   // },
+  // { name: 'BookingConfirmation', component: BookingConfirmation },
+  // { name: 'BookingDetails', component: BookingDetails },
+  // { name: 'CulturalSurvey', component: CulturalSurvey },
+  // { name: 'DeeplinkImporter', component: DeeplinkImporter },
+  // { name: 'EndedBookings', component: EndedBookings },
+  // {
+  //   name: 'FavoritesSorts',
+  //   component: FavoritesSorts,
+  // },
   {
     name: 'ForgottenPassword',
     component: ForgottenPassword,
     hoc: withAsyncErrorBoundary,
     path: '/forgotten-password',
   },
-  //   // { name: 'IdCheck', component: IdCheck, hoc: withIdCheckAsyncErrorBoundary },
+  // { name: 'IdCheck', component: IdCheck, hoc: withIdCheckAsyncErrorBoundary },
   { name: 'LegalNotices', component: LegalNotices, path: '/legal-notices' },
-  //   // { name: 'ConfirmDeleteProfile', component: ConfirmDeleteProfile },
-  //   // { name: 'DeleteProfileSuccess', component: DeleteProfileSuccess },
-  //   // { name: 'LocationFilter', component: LocationFilter },
-  //   // { name: 'LocationPicker', component: LocationPicker },
+  // { name: 'ConfirmDeleteProfile', component: ConfirmDeleteProfile },
+  // { name: 'DeleteProfileSuccess', component: DeleteProfileSuccess },
+  // { name: 'LocationFilter', component: LocationFilter },
+  // { name: 'LocationPicker', component: LocationPicker },
   { name: 'Login', component: Login, hoc: withAsyncErrorBoundary, path: '/login' },
   { name: 'Maintenance', component: Maintenance, path: '/maintenance' },
-  //   // { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary },
-  //   // {
-  //   //   name: 'NavigationIdCheckErrors',
-  //   //   component: NavigationIdCheckErrors,
-  //   //   hoc: withIdCheckAsyncErrorBoundary,
-  //   // },
-  //   // { name: 'NotificationSettings', component: NotificationSettings },
-  //   // { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary },
-  //   // { name: 'OfferDescription', component: OfferDescription, hoc: withAsyncErrorBoundary },
-  //   // { name: 'Profile', component: Profile },
-  //   // { name: 'PersonalData', component: PersonalData },
-  //   // { name: 'ChangePassword', component: ChangePassword },
+  { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary, path: '/navigation' },
+  {
+    name: 'NavigationIdCheckErrors',
+    component: NavigationIdCheckErrors,
+    hoc: withIdCheckAsyncErrorBoundary,
+    path: '/navigation-id-check-errors',
+  },
+  // { name: 'NotificationSettings', component: NotificationSettings },
+  // { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary },
+  // { name: 'OfferDescription', component: OfferDescription, hoc: withAsyncErrorBoundary },
+  // { name: 'Profile', component: Profile },
+  // { name: 'PersonalData', component: PersonalData },
+  // { name: 'ChangePassword', component: ChangePassword },
   { name: 'ReinitializePassword', component: ReinitializePassword, path: '/reinitialize-password' },
   {
     name: 'ResetPasswordEmailSent',
@@ -222,26 +228,25 @@ export const routes: Array<Route> = [
     hoc: withAsyncErrorBoundary,
     path: '/reset-password-expired-link',
   },
-  //   // { name: 'SearchCategories', component: SearchCategories },
-  //   // { name: 'SearchFilter', component: SearchFilter },
+  // { name: 'SearchCategories', component: SearchCategories },
+  // { name: 'SearchFilter', component: SearchFilter },
   { name: 'SetBirthday', component: SetBirthday, path: '/setbirthday' },
   { name: 'SetEmail', component: SetEmail, path: '/setemail' },
   { name: 'SetPassword', component: SetPassword, path: '/setpassword' },
-  //   // { name: 'SetPostalCode', component: SetPostalCode },
-  //   // { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
-  //   // { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
-  //   // { name: 'TabNavigator', component: TabNavigator },
+  // { name: 'SetPostalCode', component: SetPostalCode },
+  // { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
+  // { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep, path: '/next-beneficiary-step' },
-  //   // { name: 'SetPhoneNumber', component: SetPhoneNumber },
-  //   // { name: 'SetPhoneValidationCode', component: SetPhoneValidationCode },
+  // { name: 'SetPhoneNumber', component: SetPhoneNumber },
+  // { name: 'SetPhoneValidationCode', component: SetPhoneValidationCode },
   {
     name: 'PhoneValidationTooManyAttempts',
     component: PhoneValidationTooManyAttempts,
     path: '/phone-validation-too-many-attempts',
   },
   { name: 'VerifyEligibility', component: VerifyEligibility, path: '/verify-eligibility' },
-  //   // { name: 'FirstTutorial', component: FirstTutorial },
-  //   // { name: 'ForceUpdate', component: ForceUpdate },
+  // { name: 'FirstTutorial', component: FirstTutorial },
+  // { name: 'ForceUpdate', component: ForceUpdate },
   { name: 'IdCheckUnavailable', component: IdCheckUnavailable, path: '/idcheck-unavailable' },
   ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
   { name: idCheckInitialRouteName, component: IdCheckV2, path: '/idcheckv2' },
