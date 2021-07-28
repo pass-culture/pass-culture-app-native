@@ -2,6 +2,7 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -50,6 +51,13 @@ export const VenueBody: FunctionComponent<{
           <StyledText numberOfLines={1}>{venueAddress}</StyledText>
         </VenueAddressContainer>
         <Typo.Body>{lorem.repeat(12)}</Typo.Body>
+        <WhereSection
+          address={venueAddress}
+          locationCoordinates={{
+            latitude: venueResponse.latitude,
+            longitude: venueResponse.longitude,
+          }}
+        />
       </MarginContainer>
     </Container>
   )
