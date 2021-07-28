@@ -22,8 +22,6 @@ describe('<VenueBody />', () => {
   it('should render correctly', async () => {
     const venue = await renderVenueBody(venueId)
     expect(venue).toMatchSnapshot()
-
-    venue.getByText('1 boulevard Poissonnière, 75000 Paris')
   })
 
   it('should render public name, postalcode and city if no address', async () => {
@@ -32,8 +30,8 @@ describe('<VenueBody />', () => {
 
     const venueWithNoAddressId = venueWithNoAddressResponseSnap.id
     const venue = await renderVenueBody(venueWithNoAddressId)
-
-    venue.getByText('Le Petit Rintintin 3, 15000 Milan')
+    const adressTexts = venue.getAllByText('Le Petit Rintintin 3, 15000 Milan')
+    expect(adressTexts.length).toEqual(2)
   })
 })
 
