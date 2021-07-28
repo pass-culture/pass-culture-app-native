@@ -13,7 +13,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { render, fireEvent } from 'tests/utils/web'
 
-import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
+import { SignupConfirmationExpiredLink } from '../../SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 
 jest.mock('features/navigation/helpers')
 

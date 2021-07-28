@@ -27,6 +27,8 @@ import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValida
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
+import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
+import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
@@ -37,6 +39,7 @@ import { Maintenance } from 'features/maintenance/Maintenance'
 import { Route } from 'features/navigation/RootNavigator/types'
 import { linking as tabNavigatorLinking } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
+import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { env } from 'libs/environment'
 import { Link } from 'libs/navigation/Link'
@@ -48,8 +51,6 @@ import { Link } from 'libs/navigation/Link'
 // import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 // import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 // import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
-// import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
-// import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 // import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 // import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 // import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
@@ -61,7 +62,6 @@ import { Link } from 'libs/navigation/Link'
 // import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 // import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 // import { Offer, OfferDescription } from 'features/offer'
-// import { ChangePassword } from 'features/profile/pages/ChangePassword'
 // import { ConfirmDeleteProfile } from 'features/profile/pages/ConfirmDeleteProfile'
 // import { ConsentSettings } from 'features/profile/pages/ConsentSettings'
 // import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfileSuccess'
@@ -76,6 +76,7 @@ import { ColorsEnum, Typo } from 'ui/theme'
 
 export const initialRouteName = 'TabNavigator'
 
+// TODO: see if necessary and if necessary, update URLs with real ones
 const LINKING_PREFIXES = [
   `https://app.passculture-${env.ENV}.gouv.fr/`,
   `https://*.app.passculture-${env.ENV}.gouv.fr/`,
@@ -127,6 +128,9 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     <Link to={'/forgotten-password'}>
       <Text>ForgottenPassword</Text>
     </Link>
+    <Link to={'/change-password'}>
+      <Text>ChangePassword</Text>
+    </Link>
     <Link to={'/reset-password-expired-link'}>
       <Text>ResetPasswordExpiredLink</Text>
     </Link>
@@ -141,6 +145,12 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     </Link>
     <Link to={'/cheat-menu'}>
       <Text>CheatMenu</Text>
+    </Link>
+    <Link to={'/signup-confirmation-email-sent'}>
+      <Text>SignupConfirmationEmailSent</Text>
+    </Link>
+    <Link to={'/signup-confirmation-expired-link'}>
+      <Text>SignupConfirmationExpiredLink</Text>
     </Link>
     <Link
       to={'/cgu'}
@@ -215,7 +225,7 @@ export const routes: Array<Route> = [
   // { name: 'OfferDescription', component: OfferDescription, hoc: withAsyncErrorBoundary },
   // { name: 'Profile', component: Profile },
   // { name: 'PersonalData', component: PersonalData },
-  // { name: 'ChangePassword', component: ChangePassword },
+  { name: 'ChangePassword', component: ChangePassword, path: '/change-password' },
   { name: 'ReinitializePassword', component: ReinitializePassword, path: '/reinitialize-password' },
   {
     name: 'ResetPasswordEmailSent',
@@ -234,11 +244,19 @@ export const routes: Array<Route> = [
   { name: 'SetEmail', component: SetEmail, path: '/setemail' },
   { name: 'SetPassword', component: SetPassword, path: '/setpassword' },
   // { name: 'SetPostalCode', component: SetPostalCode },
-  // { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
-  // { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
+  {
+    name: 'SignupConfirmationEmailSent',
+    component: SignupConfirmationEmailSent,
+    path: '/signup-confirmation-email-sent',
+  },
+  {
+    name: 'SignupConfirmationExpiredLink',
+    component: SignupConfirmationExpiredLink,
+    path: '/signup-confirmation-expired-link',
+  },
   { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep, path: '/next-beneficiary-step' },
-  // { name: 'SetPhoneNumber', component: SetPhoneNumber },
-  // { name: 'SetPhoneValidationCode', component: SetPhoneValidationCode },
+  // { name: 'SetPhoneNumber', component: SetPhoneNumber, path: '/set-phone-number' },
+  // { name: 'SetPhoneValidationCode', component: SetPhoneValidationCode, path: '/set-phone-validation' },
   {
     name: 'PhoneValidationTooManyAttempts',
     component: PhoneValidationTooManyAttempts,
