@@ -6,7 +6,9 @@ import { AppSearchFields, TRUE } from 'libs/search/filters/constants'
 
 // TODO(antoinewg) We need this function temporarily but delete when we migrate completely to App Search
 export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): AlgoliaHit => {
-  const dates = (searchHit.getRaw(AppSearchFields.dates) as string[]).map((ts: string) => +ts)
+  const dates = (searchHit.getRaw(AppSearchFields.dates) as string[]).map(
+    (ts: string) => new Date(ts).getTime() / 1000
+  )
   const prices = (searchHit.getRaw(AppSearchFields.prices) as string[]).map((p: string) => +p / 100)
   const geoloc = searchHit.getRaw(AppSearchFields.venue_position) as string
   const [lat, lng] = (geoloc || ',').split(',')

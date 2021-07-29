@@ -18,7 +18,6 @@ export const buildNumericFilters = (params: SearchParameters): FilterArray<AppSe
 
 const MAX_PRICE = 30000
 
-// Filter okey on search a long as we store prices as cents
 const buildOfferPriceRangePredicate = (params: SearchParameters): FilterArray<AppSearchFields> => {
   const { offerIsFree, priceRange } = params
   if (offerIsFree) return [{ [AppSearchFields.prices]: { to: 1 } }] // to is exclusive
@@ -76,7 +75,12 @@ const buildDateAndTimePredicate = ({
       dateFilter = [TIMESTAMP.getAllFromTimeRangeAndDate(date.selectedDate, timeRange)]
   }
 
-  return dateFilter.map(([from, to]) => ({ [AppSearchFields.dates]: { from, to } }))
+  return dateFilter.map(([from, to]) => ({
+    [AppSearchFields.dates]: {
+      from: new Date(from).toISOString(),
+      to: new Date(to).toISOString(),
+    },
+  }))
 }
 
 const buildDateOnlyPredicate = (
@@ -102,7 +106,14 @@ const buildDateOnlyPredicate = (
       break
   }
 
-  return [{ [AppSearchFields.dates]: { from, to } }]
+  return [
+    {
+      [AppSearchFields.dates]: {
+        from: new Date(from).toISOString(),
+        to: new Date(to).toISOString(),
+      },
+    },
+  ]
 }
 
 const FIVE_MINUTES = 1000 * 60 * 5
