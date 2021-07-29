@@ -1823,7 +1823,7 @@ export interface VenueResponse {
      * @type {string}
      * @memberof VenueResponse
      */
-    postalCode: string;
+    postalCode?: string | null;
     /**
      * 
      * @type {string}
