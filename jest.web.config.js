@@ -21,7 +21,6 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/__mocks__/fileMock.ts',
 
     // temporary mock things until implemented
-    'react-native-dash': '<rootDir>/__mocks__/fragmentMock.ts',
     'react-native-fast-image': '<rootDir>/__mocks__/fragmentMock.ts',
   },
   collectCoverageFrom: [...base.collectCoverageFrom, '!**/*.(native|ios|android).*'],

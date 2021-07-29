@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import AnimatedLottieView from 'lottie-react-native'
+import LottieView from 'lottie-react-native'
 import React, { FunctionComponent, RefObject, useEffect } from 'react'
 import { View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
@@ -40,7 +40,7 @@ export let didFadeIn = false
 export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
   props: AchievementCardProps
 ) => {
-  const animationRef = React.useRef<AnimatedLottieView>(null)
+  const animationRef = React.useRef<LottieView>(null)
   const animatedButtonRef = React.useRef<Animatable.View & View>(null)
 
   if (props.index === undefined || props.lastIndex === undefined) {
@@ -61,10 +61,16 @@ Those props are provided by the GenericAchievementCard and must be passed down t
 
   didFadeIn = false
   useEffect(() => {
+    const lottieAnimation = animationRef.current
+    if (!lottieAnimation) return
     if (props.index === props.activeIndex) {
-      animationRef.current?.play(0, props.pauseAnimationOnRenderAtFrame)
+      lottieAnimation.play(0, props.pauseAnimationOnRenderAtFrame)
     } else {
-      animationRef.current?.pause()
+      // !!! : pause() does not exit on lottie-react-native web API and the typing is not showing it.
+      // Even without pause(), the animation still behave as expected on the web.
+      if (lottieAnimation.pause) {
+        lottieAnimation.pause()
+      }
     }
   }, [props.pauseAnimationOnRenderAtFrame, animationRef, props.index, props.activeIndex])
 
@@ -153,7 +159,7 @@ const GenericCardContainer = styled.View({
   paddingHorizontal: getSpacing(5),
 })
 
-const StyledLottieView = styled(AnimatedLottieView)({
+const StyledLottieView = styled(LottieView)({
   flexGrow: 1,
 })
 

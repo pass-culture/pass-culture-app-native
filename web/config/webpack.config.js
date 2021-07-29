@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const resolve = require('resolve')
 const PnpWebpackPlugin = require('pnp-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
 const TerserPlugin = require('terser-webpack-plugin')
@@ -277,7 +277,7 @@ module.exports = function (webpackEnv) {
         .filter((ext) => useTypeScript || !ext.includes('ts')),
       alias: {
         // Prevent "You might have more than one copy of React in the same app" error, useful for linking react modules
-        'react': 'react',
+        react: 'react',
         'react-dom': 'react-dom',
 
         // Support React Native Web
@@ -292,6 +292,7 @@ module.exports = function (webpackEnv) {
         // Those libs are mocked until we implement web specific solutions
         '@bam.tech/react-native-batch': path.join(paths.appSrc, 'libs/react-native-batch'),
         'react-native-email-link': path.join(paths.appSrc, 'libs/react-native-email-link'),
+        'react-native-permissions': path.join(paths.appSrc, 'libs/react-native-permissions'),
 
         // /**
         //  * These will replace react navigation entirely.
