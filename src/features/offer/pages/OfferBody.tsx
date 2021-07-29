@@ -16,7 +16,6 @@ import { ReportOfferOtherReasonModal } from 'features/offer/components/ReportOff
 import { ReportOfferReasonModal } from 'features/offer/components/ReportOfferReasonModal'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -164,27 +163,22 @@ export const OfferBody: FunctionComponent<{
         </AccordionItem>
       </Section>
 
-      {/* TODO(PC-9481) remove testing condition to display the report button */}
-      {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
-        <Section
-          visible={
-            !!user && !!credit && (isUserBeneficiary(user) || isUserExBeneficiary(user, credit))
-          }
-          margin={true}>
-          <Spacer.Column numberOfSpaces={7} />
-          <SectionBody>
-            <ButtonTertiaryBlack
-              inline
-              title={
-                isOfferAlreadyReported ? t`Tu as déjà signalé cette offre` : t`Signaler l'offre`
-              }
-              disabled={!!isOfferAlreadyReported}
-              icon={() => <Flag size={24} />}
-              onPress={showReportDescription}
-            />
-          </SectionBody>
-        </Section>
-      )}
+      <Section
+        visible={
+          !!user && !!credit && (isUserBeneficiary(user) || isUserExBeneficiary(user, credit))
+        }
+        margin={true}>
+        <Spacer.Column numberOfSpaces={7} />
+        <SectionBody>
+          <ButtonTertiaryBlack
+            inline
+            title={isOfferAlreadyReported ? t`Tu as déjà signalé cette offre` : t`Signaler l'offre`}
+            disabled={!!isOfferAlreadyReported}
+            icon={() => <Flag size={24} />}
+            onPress={showReportDescription}
+          />
+        </SectionBody>
+      </Section>
 
       {/* TODO(anoukhello) use one modal for the entire report process (see bookoffer process)*/}
       <ReportOfferDescriptionModal
