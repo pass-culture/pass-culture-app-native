@@ -41,6 +41,7 @@ import { Maintenance } from 'features/maintenance/Maintenance'
 import { Route } from 'features/navigation/RootNavigator/types'
 import { linking as tabNavigatorLinking } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
+import { Offer, OfferDescription } from 'features/offer'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
@@ -64,7 +65,6 @@ import { Link } from 'libs/navigation/Link'
 // import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 // import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 // import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
-// import { Offer, OfferDescription } from 'features/offer'
 // import { ConfirmDeleteProfile } from 'features/profile/pages/ConfirmDeleteProfile'
 // import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfileSuccess'
 // import { Categories as SearchCategories } from 'features/search/pages/Categories'
@@ -145,6 +145,12 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     <Link to={'/cheat-menu'}>
       <Text>CheatMenu</Text>
     </Link>
+    <Link to={'/offer'} params={{ id: '223139' }}>
+      <Text>Offer via /offer?id=223139</Text>
+    </Link>
+    <Link to={'/offer/223139'}>
+      <Text>Offer via /offer/223139</Text>
+    </Link>
     <Link to={'/signup-confirmation-email-sent'}>
       <Text>SignupConfirmationEmailSent</Text>
     </Link>
@@ -220,8 +226,13 @@ export const routes: Array<Route> = [
     path: '/navigation-id-check-errors',
   },
   { name: 'NotificationSettings', component: NotificationSettings, path: '/notification-settings' },
-  // { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary },
-  // { name: 'OfferDescription', component: OfferDescription, hoc: withAsyncErrorBoundary },
+  { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary, path: '/offer/:id' },
+  {
+    name: 'OfferDescription',
+    component: OfferDescription,
+    hoc: withAsyncErrorBoundary,
+    path: '/offer/:id/description',
+  },
   { name: 'PersonalData', component: PersonalData, path: '/personal-data' },
   { name: 'ChangePassword', component: ChangePassword, path: '/change-password' },
   { name: 'ReinitializePassword', component: ReinitializePassword, path: '/reinitialize-password' },
