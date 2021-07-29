@@ -14,6 +14,7 @@ import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
+import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { idCheckAnalytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
@@ -40,22 +41,24 @@ export function App() {
           <AuthWrapper>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
               <FavoritesWrapper>
-                <I18nProvider i18n={i18n}>
-                  <SnackBarProvider>
-                    <IdCheckContextProvider
-                      apiBaseUrl={env.ID_CHECK_API_URL}
-                      supportEmail={env.SUPPORT_EMAIL_ADDRESS}
-                      dsmUrl={env.DSM_URL}
-                      personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
-                      cguDocUrl={env.DOC_CGU_URL}
-                      errorMonitoring={errorMonitoring}
-                      analytics={idCheckAnalytics}
-                      retentionClient={idCheckRetentionClient}
-                      requestLicenceToken={() => api.getnativev1idCheckToken()}>
-                      <AppNavigationContainer />
-                    </IdCheckContextProvider>
-                  </SnackBarProvider>
-                </I18nProvider>
+                <SearchWrapper>
+                  <I18nProvider i18n={i18n}>
+                    <SnackBarProvider>
+                      <IdCheckContextProvider
+                        apiBaseUrl={env.ID_CHECK_API_URL}
+                        supportEmail={env.SUPPORT_EMAIL_ADDRESS}
+                        dsmUrl={env.DSM_URL}
+                        personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
+                        cguDocUrl={env.DOC_CGU_URL}
+                        errorMonitoring={errorMonitoring}
+                        analytics={idCheckAnalytics}
+                        retentionClient={idCheckRetentionClient}
+                        requestLicenceToken={() => api.getnativev1idCheckToken()}>
+                        <AppNavigationContainer />
+                      </IdCheckContextProvider>
+                    </SnackBarProvider>
+                  </I18nProvider>
+                </SearchWrapper>
               </FavoritesWrapper>
             </ErrorBoundary>
           </AuthWrapper>
