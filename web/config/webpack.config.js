@@ -293,6 +293,7 @@ module.exports = function (webpackEnv) {
         '@bam.tech/react-native-batch': path.join(paths.appSrc, 'libs/react-native-batch'),
         'react-native-email-link': path.join(paths.appSrc, 'libs/react-native-email-link'),
         'react-native-permissions': path.join(paths.appSrc, 'libs/react-native-permissions'),
+        'react-native-fast-image': path.join(paths.appSrc, 'libs/react-native-web-fast-image'),
 
         // /**
         //  * These will replace react navigation entirely.
@@ -375,6 +376,8 @@ module.exports = function (webpackEnv) {
                 /node_modules\/@pass-culture\/id-check\/src/,
                 /id-check-front\/packages\/id-check\/src/,
                 /node_modules\/@pass-culture\/react-native-profiling\/src/,
+                /node_modules\/react-native-calendars/,
+                /node_modules\/react-native-swipe-gestures/,
               ],
               loader: require.resolve('babel-loader'),
               options: {
