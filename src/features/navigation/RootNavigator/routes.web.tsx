@@ -36,6 +36,7 @@ import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdC
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
+import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { Maintenance } from 'features/maintenance/Maintenance'
 import { Route } from 'features/navigation/RootNavigator/types'
@@ -61,7 +62,6 @@ import { Link } from 'libs/navigation/Link'
 // import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 // import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 // import { ABTestingPOC } from 'features/cheatcodes/pages/ABTestingPOC'
-// import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 // import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 // import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 // import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
@@ -157,6 +157,9 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     <Link to={'/signup-confirmation-expired-link'}>
       <Text>SignupConfirmationExpiredLink</Text>
     </Link>
+    <Link to={'/favorites'}>
+      <Text>Favorites</Text>
+    </Link>
     <Link
       to={'/cgu'}
       params={{
@@ -200,10 +203,11 @@ export const routes: Array<Route> = [
   // { name: 'CulturalSurvey', component: CulturalSurvey },
   { name: 'DeeplinkImporter', component: DeeplinkImporter, path: '/deeplink-importer' },
   // { name: 'EndedBookings', component: EndedBookings },
-  // {
-  //   name: 'FavoritesSorts',
-  //   component: FavoritesSorts,
-  // },
+  {
+    name: 'FavoritesSorts',
+    component: FavoritesSorts,
+    path: '/favorites/sorts',
+  },
   {
     name: 'ForgottenPassword',
     component: ForgottenPassword,
