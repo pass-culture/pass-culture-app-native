@@ -108,6 +108,85 @@ Object {
                 style="height: 24px;"
               />
             </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(245, 245, 245); height: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              data-focusable="true"
+              style="align-items: center; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+              tabindex="0"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              >
+                Modalités de retrait
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accordionArrow"
+                style="transform: rotateZ(1.5707963267948966rad);"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionBody"
+              style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accordionBodyContainer"
+                style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                >
+                  How to withdraw, 
+                  <span
+                    class="css-text-901oao css-textHasAncestor-16my406"
+                    style="color: rgb(21, 21, 21); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="display: inline-flex; width: 4px;"
+                    />
+                    <span
+                      class="css-text-901oao css-textHasAncestor-16my406"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="externalSiteIcon"
+                        style="display: inline-flex;"
+                      >
+                        <span
+                          class="css-text-901oao css-textHasAncestor-16my406"
+                        >
+                          externalSiteIcon-SVG-Mock
+                        </span>
+                      </div>
+                      
+                    </span>
+                     https://test.com
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div
@@ -375,6 +454,85 @@ Object {
               class="css-view-1dbjc4n"
               style="height: 24px;"
             />
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(245, 245, 245); height: 8px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            data-focusable="true"
+            style="align-items: center; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+            tabindex="0"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+            >
+              Modalités de retrait
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionArrow"
+              style="transform: rotateZ(1.5707963267948966rad);"
+            >
+              <div
+                class="css-view-1dbjc4n"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            data-testid="accordionBody"
+            style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionBodyContainer"
+              style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+              >
+                How to withdraw, 
+                <span
+                  class="css-text-901oao css-textHasAncestor-16my406"
+                  style="color: rgb(21, 21, 21); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="display: inline-flex; width: 4px;"
+                  />
+                  <span
+                    class="css-text-901oao css-textHasAncestor-16my406"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      data-testid="externalSiteIcon"
+                      style="display: inline-flex;"
+                    >
+                      <span
+                        class="css-text-901oao css-textHasAncestor-16my406"
+                      >
+                        externalSiteIcon-SVG-Mock
+                      </span>
+                    </div>
+                    
+                  </span>
+                   https://test.com
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

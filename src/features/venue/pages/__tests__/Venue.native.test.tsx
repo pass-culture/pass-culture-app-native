@@ -10,6 +10,8 @@ jest.mock('react-query')
 
 jest.mock('features/venue/api/useVenue')
 
+jest.mock('features/home/api')
+
 const venueId = venueResponseSnap.id
 
 describe('<Venue />', () => {
