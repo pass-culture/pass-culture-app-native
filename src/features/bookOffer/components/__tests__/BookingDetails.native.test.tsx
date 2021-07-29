@@ -3,13 +3,12 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import appsFlyer from '__mocks__/react-native-appsflyer'
 import { OfferStockResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
 import { analytics } from 'libs/analytics'
-import { CampaignEvents } from 'libs/campaign/events'
+import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -107,7 +106,7 @@ describe('<BookingDetails />', () => {
     await waitForExpect(() => {
       expect(mockDismissModal).toHaveBeenCalled()
       expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(mockOfferId, undefined)
-      expect(appsFlyer.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
+      expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
         af_offer_id: mockOffer.id,
         af_booking_id: mockBookingStock?.id,
         af_price: mockBookingStock?.price,

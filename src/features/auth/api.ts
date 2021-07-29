@@ -11,7 +11,7 @@ import {
 import { ApiError, isApiError } from 'api/helpers'
 import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
-import { getCustomerUniqueId } from 'libs/campaign/useCampaignTracker'
+import { campaignTracker } from 'libs/campaign'
 import { QueryKeys } from 'libs/queryKeys'
 
 import { formatToFrenchDecimal } from '../../libs/parsers'
@@ -76,7 +76,8 @@ type appAccountRequest = Omit<AccountRequest, 'appsFlyerPlatform' | 'appsFlyerUs
 export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse> {
   return async (body: appAccountRequest) => {
     try {
-      const appsFlyerUserId = await getCustomerUniqueId()
+      const appsFlyerUserId = await campaignTracker.getUserId()
+
       const response = await api.postnativev1account(
         { ...body, appsFlyerPlatform: Platform.OS, appsFlyerUserId },
         { credentials: 'omit' }

@@ -1,2 +1,2 @@
 export { campaignTracker } from './campaignTracker'
-export { CampaignEvents } from './events'
+export { CampaignEvents } from '../events'

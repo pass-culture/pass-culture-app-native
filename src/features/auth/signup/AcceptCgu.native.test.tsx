@@ -23,7 +23,6 @@ import { ColorsEnum } from 'ui/theme'
 import { AcceptCgu } from './AcceptCgu'
 
 jest.mock('features/auth/settings')
-jest.mock('libs/campaign/useCampaignTracker')
 jest.mock('libs/errorMonitoring')
 
 afterEach(jest.clearAllMocks)
