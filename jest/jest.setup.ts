@@ -54,6 +54,9 @@ jest.mock('libs/analytics/provider')
 /* See the corresponding mock in libs/firebase/__mocks__ */
 jest.mock('libs/firebase/firebase')
 
+/* See the corresponding mocks in libs/campaign/__mocks__ */
+jest.mock('libs/campaign')
+
 /* No need to actually fetch Firebase's A/B testing config in tests */
 jest.mock('libs/ABTesting/ABTesting.services')
 

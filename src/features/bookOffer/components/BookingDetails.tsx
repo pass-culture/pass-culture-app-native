@@ -7,8 +7,7 @@ import { OfferStockResponse } from 'api/gen'
 import { isApiError } from 'api/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { CampaignEvents } from 'libs/campaign/events'
-import { appsFlyer } from 'libs/campaign/useCampaignTracker'
+import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -47,7 +46,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       if (offerId) {
         analytics.logBookingConfirmation(offerId, bookingId)
         if (!!stock && !!offer)
-          appsFlyer.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
+          campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
             af_offer_id: offer.id,
             af_booking_id: stock.id,
             af_price: stock.price,

@@ -7,8 +7,7 @@ import { UserRole } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { CampaignEvents } from 'libs/campaign/events'
-import { appsFlyer } from 'libs/campaign/useCampaignTracker'
+import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -29,7 +28,8 @@ export function AccountCreated() {
   }
 
   useEffect(() => {
-    if (user?.id) appsFlyer.logEvent(CampaignEvents.COMPLETE_REGISTRATION, { af_user_id: user?.id })
+    if (user?.id)
+      campaignTracker.logEvent(CampaignEvents.COMPLETE_REGISTRATION, { af_user_id: user?.id })
   }, [user?.id])
 
   const isUserRedactor = user?.roles?.find((role) => role === UserRole.INSTITUTIONALPROJECTREDACTOR)

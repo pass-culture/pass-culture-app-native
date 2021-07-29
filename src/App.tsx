@@ -23,7 +23,7 @@ import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
 import { idCheckAnalytics } from 'libs/analytics'
-import { useCampaignTracker } from 'libs/campaign'
+import { campaignTracker } from 'libs/campaign'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
 import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
@@ -65,7 +65,7 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
 })
 
 const App: FunctionComponent = function () {
-  useCampaignTracker()
+  campaignTracker.useInit()
   useStartBatchNotification()
 
   useBlockForMaintenance()
