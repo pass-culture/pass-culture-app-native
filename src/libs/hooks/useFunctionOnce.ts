@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-const useFunctionOnce = (callback: (() => void) | undefined) => {
+export default function useFunctionOnce(callback: (() => void) | undefined) {
   const hasRenderedOnce = useRef<boolean>(false)
 
   return () => {
@@ -10,5 +10,3 @@ const useFunctionOnce = (callback: (() => void) | undefined) => {
     }
   }
 }
-
-export default useFunctionOnce
