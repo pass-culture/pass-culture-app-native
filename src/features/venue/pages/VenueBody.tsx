@@ -8,8 +8,9 @@ import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { AccordionItem } from 'ui/components/AccordionItem'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { useVenue } from '../api/useVenue'
 
@@ -66,7 +67,7 @@ export const VenueBody: FunctionComponent<{
         />
       </MarginContainer>
 
-      <Section visible={!!venueResponse.withdrawalDetails && !!user}>
+      <SectionWithDivider visible={!!venueResponse.withdrawalDetails && !!user}>
         <AccordionItem
           title={t`Modalités de retrait`}
           onOpenOnce={() => analytics.logConsultWithdrawal(venueResponse.id)}>
@@ -74,25 +75,8 @@ export const VenueBody: FunctionComponent<{
             {venueResponse.withdrawalDetails && highlightLinks(venueResponse.withdrawalDetails)}
           </Typo.Body>
         </AccordionItem>
-      </Section>
+      </SectionWithDivider>
     </Container>
-  )
-}
-
-interface SectionProps {
-  visible: boolean
-  children: JSX.Element | JSX.Element[]
-  margin?: boolean
-}
-
-const Section = ({ visible, children, margin = false }: SectionProps) => {
-  if (!visible) return <React.Fragment></React.Fragment>
-
-  return (
-    <React.Fragment>
-      <Divider />
-      {margin ? <MarginContainer>{children}</MarginContainer> : children}
-    </React.Fragment>
   )
 }
 
@@ -116,9 +100,4 @@ const IconContainer = styled.View({
 const StyledText = styled(Typo.Caption)({
   flexShrink: 1,
   textTransform: 'capitalize',
-})
-
-const Divider = styled.View({
-  height: getSpacing(2),
-  backgroundColor: ColorsEnum.GREY_LIGHT,
 })

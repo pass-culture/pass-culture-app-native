@@ -24,8 +24,9 @@ import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { useModalNavigation } from 'ui/components/modals/useModalNavigation'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Flag } from 'ui/svg/icons/Flag'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useOffer } from '../api/useOffer'
 import { OfferIconCaptions, AccessibilityBlock, OfferPartialDescription } from '../components'
@@ -120,20 +121,20 @@ export const OfferBody: FunctionComponent<{
       <OfferPartialDescription description={offerResponse.description || ''} id={offerId} />
       <Spacer.Column numberOfSpaces={4} />
 
-      <Section visible={shouldDisplayWhenBlock} margin={true}>
+      <SectionWithDivider visible={shouldDisplayWhenBlock} margin={true}>
         <SectionTitle>{t`Quand ?`}</SectionTitle>
         <SectionBody>{formattedDate}</SectionBody>
-      </Section>
+      </SectionWithDivider>
 
-      <Section visible={!offerResponse.isDigital} margin={true}>
+      <SectionWithDivider visible={!offerResponse.isDigital} margin={true}>
         <WhereSection
           address={offerResponse.fullAddress}
           locationCoordinates={venue.coordinates}
           beforeNavigateToItinerary={() => analytics.logConsultItinerary(offerResponse.id, 'offer')}
         />
-      </Section>
+      </SectionWithDivider>
 
-      <Section visible={!!offerResponse.withdrawalDetails && !!user?.isBeneficiary}>
+      <SectionWithDivider visible={!!offerResponse.withdrawalDetails && !!user?.isBeneficiary}>
         <AccordionItem
           title={t`Modalités de retrait`}
           onOpenOnce={() => analytics.logConsultWithdrawal(offerResponse.id)}>
@@ -141,9 +142,9 @@ export const OfferBody: FunctionComponent<{
             {offerResponse.withdrawalDetails && highlightLinks(offerResponse.withdrawalDetails)}
           </Typo.Body>
         </AccordionItem>
-      </Section>
+      </SectionWithDivider>
 
-      <Section
+      <SectionWithDivider
         visible={Object.values(accessibility).some(
           (value) => value !== undefined && value !== null
         )}>
@@ -157,9 +158,9 @@ export const OfferBody: FunctionComponent<{
           onOpenOnce={() => analytics.logConsultAccessibility(offerResponse.id)}>
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>
-      </Section>
+      </SectionWithDivider>
 
-      <Section
+      <SectionWithDivider
         visible={
           !!user && !!credit && (isUserBeneficiary(user) || isUserExBeneficiary(user, credit))
         }
@@ -174,7 +175,7 @@ export const OfferBody: FunctionComponent<{
             onPress={showReportDescription}
           />
         </SectionBody>
-      </Section>
+      </SectionWithDivider>
 
       {/* TODO(anoukhello) use one modal for the entire report process (see bookoffer process)*/}
       <ReportOfferDescriptionModal
@@ -199,23 +200,6 @@ export const OfferBody: FunctionComponent<{
   )
 }
 
-interface SectionProps {
-  visible: boolean
-  children: JSX.Element | JSX.Element[]
-  margin?: boolean
-}
-
-const Section = ({ visible, children, margin = false }: SectionProps) => {
-  if (!visible) return <React.Fragment></React.Fragment>
-
-  return (
-    <React.Fragment>
-      <Divider />
-      {margin ? <MarginContainer>{children}</MarginContainer> : children}
-    </React.Fragment>
-  )
-}
-
 const Container = styled.ScrollView({ overflow: 'visible' })
 const OfferTitle = styled(Typo.Title3)({ textAlign: 'center' })
 const SectionTitle = styled(Typo.Title4)({ paddingVertical: getSpacing(6) })
@@ -223,9 +207,4 @@ const SectionBody = styled(Typo.Body)({ marginTop: -getSpacing(2), paddingBottom
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
-})
-
-const Divider = styled.View({
-  height: getSpacing(2),
-  backgroundColor: ColorsEnum.GREY_LIGHT,
 })
