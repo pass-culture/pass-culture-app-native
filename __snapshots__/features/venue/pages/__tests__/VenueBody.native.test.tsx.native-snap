@@ -58,7 +58,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
           ]
         }
       >
-        5576
+        5543
       </Text>
       <View
         style={
