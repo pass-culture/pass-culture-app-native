@@ -1,8 +1,10 @@
 import React from 'react'
+import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { UserProfileResponse, VenueResponse } from 'api/gen'
+import { useUserProfileInfo } from 'features/home/api'
 import { useVenue } from 'features/venue/api/useVenue'
 import {
   venueWithNoAddressResponseSnap,
@@ -17,8 +19,8 @@ jest.mock('react-query')
 jest.mock('features/venue/api/useVenue')
 const mockedUseVenue = mocked(useVenue)
 
-jest.mock('features/auth/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.Mock
+jest.mock('features/home/api')
+const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
 
 const venueId = venueResponseSnap.id
 
@@ -29,8 +31,9 @@ describe('<VenueBody />', () => {
   })
 
   it('should render public name, postalcode and city if no address', async () => {
-    // @ts-ignore ts(2345)
-    mockedUseVenue.mockReturnValueOnce({ data: venueWithNoAddressResponseSnap })
+    mockedUseVenue.mockReturnValueOnce({
+      data: venueWithNoAddressResponseSnap,
+    } as UseQueryResult<VenueResponse>)
 
     const venueWithNoAddressId = venueWithNoAddressResponseSnap.id
     const venue = await renderVenueBody(venueWithNoAddressId)
@@ -45,22 +48,25 @@ describe('<VenueBody />', () => {
   })
 
   it('should not show withdrawalDetails for non logged user', async () => {
-    const venue = await renderVenueBody(venueId, { isLoggedIn: false })
+    mockedUseUserProfileInfo.mockReturnValueOnce({
+      data: undefined,
+    } as UseQueryResult<UserProfileResponse>)
+
+    const venue = await renderVenueBody(venueId)
     expect(venue.queryByText('Modalités de retrait')).toBeFalsy()
   })
 
-  it('should not show withdrawalDetails', async () => {
+  it('should not show withdrawalDetails if withdrawalDetails is null', async () => {
+    mockedUseVenue.mockReturnValueOnce({
+      data: { ...venueResponseSnap, withdrawalDetails: null },
+    } as UseQueryResult<VenueResponse>)
     const venue = await renderVenueBody(venueId)
     expect(venue.queryByText('Modalités de retrait')).toBeFalsy()
   })
 })
 
-async function renderVenueBody(id: number, { isLoggedIn } = { isLoggedIn: true }) {
+async function renderVenueBody(id: number) {
   useRoute.mockImplementation(() => ({ params: { id } }))
-
-  const setIsLoggedIn = jest.fn()
-  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn, setIsLoggedIn }))
-
   const wrapper = render(<VenueBody venueId={id} onScroll={jest.fn()} />)
   await waitFor(() => wrapper.getByTestId('venue-container'))
   return wrapper
