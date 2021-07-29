@@ -294,6 +294,7 @@ module.exports = function (webpackEnv) {
         'react-native-email-link': path.join(paths.appSrc, 'libs/react-native-email-link'),
         'react-native-permissions': path.join(paths.appSrc, 'libs/react-native-permissions'),
         'react-native-fast-image': path.join(paths.appSrc, 'libs/react-native-web-fast-image'),
+        'react-native-appsflyer': path.join(paths.appSrc, 'libs/react-native-appsflyer'),
 
         // /**
         //  * These will replace react navigation entirely.
