@@ -10,7 +10,8 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useFunctionOnce } from '../../libs/hooks'
+import { useFunctionOnce } from 'libs/hooks'
+
 import { ArrowNext } from '../svg/icons/ArrowNext'
 import { getSpacing, Typo } from '../theme'
 

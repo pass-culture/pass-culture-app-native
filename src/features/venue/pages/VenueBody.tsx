@@ -3,8 +3,6 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useUserProfileInfo } from 'features/home/api'
-import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -19,7 +17,6 @@ export const VenueBody: FunctionComponent<{
   onScroll: () => void
 }> = ({ venueId, onScroll }) => {
   const { data: venueResponse } = useVenue(venueId)
-  const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
   // TODO : Remove after add all venue informations - (it's just for scroll)
@@ -28,7 +25,15 @@ export const VenueBody: FunctionComponent<{
 
   if (!venueResponse) return <React.Fragment></React.Fragment>
 
-  const { address, postalCode, city, publicName } = venueResponse
+  const {
+    address,
+    postalCode,
+    city,
+    publicName,
+    withdrawalDetails,
+    latitude,
+    longitude,
+  } = venueResponse
   const venueAddress = address
     ? `${address}, ${postalCode} ${city}`
     : `${publicName}, ${postalCode} ${city}`
@@ -61,19 +66,15 @@ export const VenueBody: FunctionComponent<{
         <WhereSection
           address={venueAddress}
           locationCoordinates={{
-            latitude: venueResponse.latitude,
-            longitude: venueResponse.longitude,
+            latitude,
+            longitude,
           }}
         />
       </MarginContainer>
 
-      <SectionWithDivider visible={!!venueResponse.withdrawalDetails && !!user}>
-        <AccordionItem
-          title={t`Modalités de retrait`}
-          onOpenOnce={() => analytics.logConsultWithdrawal(venueResponse.id)}>
-          <Typo.Body>
-            {venueResponse.withdrawalDetails && highlightLinks(venueResponse.withdrawalDetails)}
-          </Typo.Body>
+      <SectionWithDivider visible={!!withdrawalDetails}>
+        <AccordionItem title={t`Modalités de retrait`}>
+          <Typo.Body>{withdrawalDetails && highlightLinks(withdrawalDetails)}</Typo.Body>
         </AccordionItem>
       </SectionWithDivider>
     </Container>

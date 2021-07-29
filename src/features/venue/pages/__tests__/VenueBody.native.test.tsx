@@ -3,8 +3,7 @@ import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse, VenueResponse } from 'api/gen'
-import { useUserProfileInfo } from 'features/home/api'
+import { VenueResponse } from 'api/gen'
 import { useVenue } from 'features/venue/api/useVenue'
 import {
   venueWithNoAddressResponseSnap,
@@ -18,9 +17,6 @@ jest.mock('react-query')
 
 jest.mock('features/venue/api/useVenue')
 const mockedUseVenue = mocked(useVenue)
-
-jest.mock('features/home/api')
-const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
 
 const venueId = venueResponseSnap.id
 
@@ -45,15 +41,6 @@ describe('<VenueBody />', () => {
   it('should show withdrawalDetails', async () => {
     const venue = await renderVenueBody(venueId)
     expect(venue.queryByText('Modalités de retrait')).toBeTruthy()
-  })
-
-  it('should not show withdrawalDetails for non logged user', async () => {
-    mockedUseUserProfileInfo.mockReturnValueOnce({
-      data: undefined,
-    } as UseQueryResult<UserProfileResponse>)
-
-    const venue = await renderVenueBody(venueId)
-    expect(venue.queryByText('Modalités de retrait')).toBeFalsy()
   })
 
   it('should not show withdrawalDetails if withdrawalDetails is null', async () => {
