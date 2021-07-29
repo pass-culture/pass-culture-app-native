@@ -5,7 +5,7 @@ const SATURDAY_INDEX_IN_A_WEEK = 6
 const SUNDAY_INDEX_IN_A_WEEK = 0
 
 const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000
-const FIVE_MINUTES = 5 * 1000
+const FIVE_MINUTES = 5 * 60 * 1000
 
 /**
  * Transform functions: from one date, get a specific time of this date:
@@ -41,7 +41,7 @@ const getEndOfWeek = (date: Date): Date => {
 const getStartOfWeekEnd = (date: Date) => {
   const dayOfTheWeek = date.getDay()
   if (dayOfTheWeek === SUNDAY_INDEX_IN_A_WEEK || dayOfTheWeek === SATURDAY_INDEX_IN_A_WEEK)
-    return date
+    return getStartOfDay(date)
 
   const daysUntilSaturday = SATURDAY_INDEX_IN_A_WEEK - dayOfTheWeek
   const dateOfNextSaturday = date.getTime() + MILLISECONDS_IN_A_DAY * daysUntilSaturday
@@ -88,13 +88,14 @@ const getTimestampsFromTimeRangeAndDates = (
 const getWeekTimestampsFromTimeRangeAndDate = (
   date: Date,
   timeRange: Range<number>
-): Array<Range<Date>> => getTimestampsFromTimeRangeAndDates(getWeekDatesFromDate(date), timeRange)
+): Array<Range<Date>> =>
+  getTimestampsFromTimeRangeAndDates(TIME.WEEK.getWeekDatesFromDate(date), timeRange)
 
 const getWeekEndTimestampsFromTimeRangeAndDate = (
   date: Date,
   timeRange: Range<number>
 ): Array<Range<Date>> =>
-  getTimestampsFromTimeRangeAndDates(getWeekEndDatesFromDate(date), timeRange)
+  getTimestampsFromTimeRangeAndDates(TIME.WEEK_END.getWeekEndDatesFromDate(date), timeRange)
 
 /**
  * Utils functions
@@ -109,14 +110,17 @@ const computeTimeRangeFromHoursToSeconds = (timeRange: Range<number>) => {
 
 export const TIME = {
   getStartOfDay,
+  getDateAtGivenHour,
   getEndOfDay,
   getStartOfWeekEnd,
   getEndOfWeek,
   getAllFromTimeRangeAndDate: getTimestampsFromTimeRangeAndDate,
   WEEK_END: {
+    getWeekEndDatesFromDate,
     getAllFromTimeRangeAndDate: getWeekEndTimestampsFromTimeRangeAndDate,
   },
   WEEK: {
+    getWeekDatesFromDate,
     getAllFromTimeRangeAndDate: getWeekTimestampsFromTimeRangeAndDate,
   },
   computeTimeRangeFromHoursToSeconds,

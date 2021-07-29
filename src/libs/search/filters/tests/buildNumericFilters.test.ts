@@ -1,26 +1,16 @@
-/* eslint-disable local-rules/independant-mocks */
 import mockdate from 'mockdate'
 
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchParameters } from 'features/search/types'
-import { computeTimeRangeFromHoursToSeconds, TIMESTAMP } from 'libs/search/datetime/time'
 import { AppSearchFields } from 'libs/search/filters/constants'
 
 import { buildNumericFilters } from '../buildNumericFilters'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const timestamp = TIMESTAMP as any
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const computeTimeRange = computeTimeRangeFromHoursToSeconds as any
-
-const selectedDate = new Date('2021-07-05T01:02:03Z')
-const now = new Date('2021-07-01T02:03:04Z')
-
-jest.mock('libs/search/datetime/time')
+const selectedDate = new Date(2021, 4, 5, 9, 30)
 
 describe('buildNumericFilters', () => {
   beforeEach(() => {
-    mockdate.set(now)
+    mockdate.set(new Date('2021-07-01T02:03:04'))
     jest.clearAllMocks()
   })
 
@@ -76,10 +66,13 @@ describe('buildNumericFilters', () => {
 
   describe('date', () => {
     describe('by date only', () => {
-      it('should fetch with date filter when date and today option are provided', () => {
-        timestamp.getFromDate.mockReturnValue(123456789)
-        timestamp.getLastOfDate.mockReturnValue(987654321)
+      const startOfDay = '2021-05-05T00:00:00.000Z'
+      const from = '2021-05-05T09:30:00.000Z'
+      const endOfDay = '2021-05-05T23:59:59.000Z'
+      const endOfWeek = '2021-05-09T23:59:59.000Z'
+      const startNextWeekEnd = '2021-05-08T00:00:00.000Z'
 
+      it('should fetch with date filter when date and today option are provided', () => {
         const filters = buildNumericFilters({
           date: {
             option: DATE_FILTER_OPTIONS.TODAY,
@@ -87,18 +80,13 @@ describe('buildNumericFilters', () => {
           },
         } as SearchParameters)
 
-        expect(TIMESTAMP.getFromDate).toHaveBeenCalledWith(selectedDate)
-        expect(TIMESTAMP.getLastOfDate).toHaveBeenCalledWith(selectedDate)
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
-          { [AppSearchFields.dates]: { from: 123456789, to: 987654321 } },
+          { [AppSearchFields.dates]: { from, to: endOfDay } },
         ])
       })
 
       it('should fetch with date filter when date and currentWeek option are provided', () => {
-        timestamp.getFromDate.mockReturnValue(123456789)
-        timestamp.WEEK.getLastFromDate.mockReturnValue(987654321)
-
         const filters = buildNumericFilters({
           date: {
             option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
@@ -106,18 +94,13 @@ describe('buildNumericFilters', () => {
           },
         } as SearchParameters)
 
-        expect(timestamp.getFromDate).toHaveBeenCalledWith(selectedDate)
-        expect(timestamp.WEEK.getLastFromDate).toHaveBeenCalledWith(selectedDate)
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
-          { [AppSearchFields.dates]: { from: 123456789, to: 987654321 } },
+          { [AppSearchFields.dates]: { from, to: endOfWeek } },
         ])
       })
 
       it('should fetch with date filter when date and currentWeekEnd option are provided', () => {
-        timestamp.WEEK_END.getFirstFromDate.mockReturnValue(123456789)
-        timestamp.WEEK.getLastFromDate.mockReturnValue(987654321)
-
         const filters = buildNumericFilters({
           date: {
             option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
@@ -125,18 +108,13 @@ describe('buildNumericFilters', () => {
           },
         } as SearchParameters)
 
-        expect(timestamp.WEEK_END.getFirstFromDate).toHaveBeenCalledWith(selectedDate)
-        expect(timestamp.WEEK.getLastFromDate).toHaveBeenCalledWith(selectedDate)
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
-          { [AppSearchFields.dates]: { from: 123456789, to: 987654321 } },
+          { [AppSearchFields.dates]: { from: startNextWeekEnd, to: endOfWeek } },
         ])
       })
 
       it('should fetch with date filter when date and picked option are provided', () => {
-        timestamp.getFirstOfDate.mockReturnValue(123456789)
-        timestamp.getLastOfDate.mockReturnValue(987654321)
-
         const filters = buildNumericFilters({
           date: {
             option: DATE_FILTER_OPTIONS.USER_PICK,
@@ -144,11 +122,9 @@ describe('buildNumericFilters', () => {
           },
         } as SearchParameters)
 
-        expect(timestamp.getFirstOfDate).toHaveBeenCalledWith(selectedDate)
-        expect(timestamp.getLastOfDate).toHaveBeenCalledWith(selectedDate)
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
-          { [AppSearchFields.dates]: { from: 123456789, to: 987654321 } },
+          { [AppSearchFields.dates]: { from: startOfDay, to: endOfDay } },
         ])
       })
     })
@@ -156,11 +132,8 @@ describe('buildNumericFilters', () => {
     describe('by time only', () => {
       it('should fetch with time filter when timeRange is provided', () => {
         const timeRange = [18, 22]
-        computeTimeRange.mockReturnValue([64800, 79200])
-
         const filters = buildNumericFilters({ timeRange } as SearchParameters)
 
-        expect(computeTimeRange).toHaveBeenCalledWith(timeRange)
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.times]: { from: 64800, to: 79200 } },
@@ -169,11 +142,11 @@ describe('buildNumericFilters', () => {
     })
 
     describe('by date and time', () => {
-      it('should fetch with date filter when timeRange, date and today option are provided', () => {
-        const timeRange = [18, 22]
-        computeTimeRange.mockReturnValue([64800, 79200])
-        timestamp.getAllFromTimeRangeAndDate.mockReturnValue([123, 124])
+      const timeRange = [18, 22]
+      const from = '2021-05-05T18:00:00.000Z'
+      const to = '2021-05-05T22:00:00.000Z'
 
+      it('should fetch with date filter when timeRange, date and today option are provided', () => {
         const filters = buildNumericFilters({
           date: {
             option: DATE_FILTER_OPTIONS.TODAY,
@@ -182,22 +155,13 @@ describe('buildNumericFilters', () => {
           timeRange,
         } as SearchParameters)
 
-        expect(timestamp.getAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
-          { [AppSearchFields.dates]: { from: 123, to: 124 } },
+          { [AppSearchFields.dates]: { from, to } },
         ])
       })
 
       it('should fetch with date filter when timeRange, date and currentWeek option are provided', () => {
-        const timeRange = [18, 22]
-        computeTimeRange.mockReturnValue([64800, 79200])
-        timestamp.WEEK.getAllFromTimeRangeAndDate.mockReturnValue([
-          [123, 124],
-          [225, 226],
-          [327, 328],
-        ])
-
         const filters = buildNumericFilters({
           date: {
             option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
@@ -206,26 +170,18 @@ describe('buildNumericFilters', () => {
           timeRange,
         } as SearchParameters)
 
-        expect(timestamp.WEEK.getAllFromTimeRangeAndDate).toHaveBeenCalledWith(
-          selectedDate,
-          timeRange
-        )
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
-          { [AppSearchFields.dates]: { from: 123, to: 124 } },
-          { [AppSearchFields.dates]: { from: 225, to: 226 } },
-          { [AppSearchFields.dates]: { from: 327, to: 328 } },
+          ...[5, 6, 7, 8, 9].map((day) => ({
+            [AppSearchFields.dates]: {
+              from: `2021-05-0${day}T18:00:00.000Z`,
+              to: `2021-05-0${day}T22:00:00.000Z`,
+            },
+          })),
         ])
       })
 
       it('should fetch with date filter when timeRange, date and currentWeekEnd option are provided', () => {
-        const timeRange = [18, 22]
-        computeTimeRange.mockReturnValue([64800, 79200])
-        timestamp.WEEK_END.getAllFromTimeRangeAndDate.mockReturnValue([
-          [123, 124],
-          [225, 226],
-        ])
-
         const filters = buildNumericFilters({
           date: {
             option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
@@ -234,22 +190,18 @@ describe('buildNumericFilters', () => {
           timeRange,
         } as SearchParameters)
 
-        expect(timestamp.WEEK_END.getAllFromTimeRangeAndDate).toHaveBeenCalledWith(
-          selectedDate,
-          timeRange
-        )
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
-          { [AppSearchFields.dates]: { from: 123, to: 124 } },
-          { [AppSearchFields.dates]: { from: 225, to: 226 } },
+          ...[8, 9].map((day) => ({
+            [AppSearchFields.dates]: {
+              from: `2021-05-0${day}T18:00:00.000Z`,
+              to: `2021-05-0${day}T22:00:00.000Z`,
+            },
+          })),
         ])
       })
 
       it('should fetch with date filter when timeRange, date and picked option are provided', () => {
-        const timeRange = [18, 22]
-        computeTimeRange.mockReturnValue([64800, 79200])
-        timestamp.getAllFromTimeRangeAndDate.mockReturnValue([123, 124])
-
         const filters = buildNumericFilters({
           date: {
             option: DATE_FILTER_OPTIONS.USER_PICK,
@@ -258,10 +210,9 @@ describe('buildNumericFilters', () => {
           timeRange,
         } as SearchParameters)
 
-        expect(timestamp.getAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
-          { [AppSearchFields.dates]: { from: 123, to: 124 } },
+          { [AppSearchFields.dates]: { from, to } },
         ])
       })
     })
