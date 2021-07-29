@@ -1,17 +1,10 @@
-/* eslint-disable local-rules/independant-mocks */
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchParameters } from 'features/search/types'
-import { computeTimeRangeFromHoursToSeconds, TIMESTAMP } from 'libs/search/datetime/time'
 import { AppSearchFields } from 'libs/search/filters/constants'
 
 import { buildQueryOptions } from '../index'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const timestamp = TIMESTAMP as any
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const computeTimeRange = computeTimeRangeFromHoursToSeconds as any
-
-jest.mock('libs/search/datetime/time')
+const HOUR = 60 * 60
 
 const baseParams: Partial<SearchParameters> = {
   offerTypes: {
@@ -24,9 +17,9 @@ const baseParams: Partial<SearchParameters> = {
 describe('buildQueryOptions', () => {
   describe('multiple parameters', () => {
     it('should fetch with price and date numericFilters', () => {
-      timestamp.getFirstOfDate.mockReturnValue(123456789)
-      timestamp.getLastOfDate.mockReturnValue(987654321)
       const selectedDate = new Date(2020, 3, 19, 11)
+      const from = '2020-04-19T00:00:00.000Z'
+      const to = '2020-04-19T23:59:59.000Z'
 
       const filters = buildQueryOptions({
         ...baseParams,
@@ -38,39 +31,31 @@ describe('buildQueryOptions', () => {
       } as SearchParameters)
 
       expect(filters.filters).toStrictEqual({
-        all: [
-          { [AppSearchFields.prices]: { to: 1 } },
-          { [AppSearchFields.dates]: { from: 123456789, to: 987654321 } },
-        ],
+        all: [{ [AppSearchFields.prices]: { to: 1 } }, { [AppSearchFields.dates]: { from, to } }],
       })
     })
 
     it('should fetch with price and time numericFilters', () => {
-      computeTimeRange.mockReturnValue([123456789, 987654321])
       const timeRange = [10, 17]
-
       const filters = buildQueryOptions({
         ...baseParams,
         offerIsFree: true,
         timeRange,
       } as SearchParameters)
 
-      expect(computeTimeRange).toHaveBeenCalledWith(timeRange)
       expect(filters.filters).toStrictEqual({
         all: [
           { [AppSearchFields.prices]: { to: 1 } },
-          { [AppSearchFields.times]: { from: 123456789, to: 987654321 } },
+          { [AppSearchFields.times]: { from: 10 * HOUR, to: 17 * HOUR } },
         ],
       })
     })
 
     it('should fetch with price, date and time numericFilters', () => {
-      const timeRange = [18, 22]
       const selectedDate = new Date(2020, 3, 19, 11)
-      timestamp.WEEK_END.getAllFromTimeRangeAndDate.mockReturnValue([
-        [123456789, 987654321],
-        [123, 1234],
-      ])
+      const timeRange = [18, 22]
+      const sundayFrom = '2020-04-19T18:00:00.000Z'
+      const sundayTo = '2020-04-19T22:00:00.000Z'
 
       const filters = buildQueryOptions({
         ...baseParams,
@@ -82,16 +67,10 @@ describe('buildQueryOptions', () => {
         timeRange,
       } as SearchParameters)
 
-      expect(timestamp.WEEK_END.getAllFromTimeRangeAndDate).toHaveBeenCalledWith(
-        selectedDate,
-        timeRange
-      )
-
       expect(filters.filters).toStrictEqual({
         all: [
           { [AppSearchFields.prices]: { to: 1 } },
-          { [AppSearchFields.dates]: { from: 123456789, to: 987654321 } },
-          { [AppSearchFields.dates]: { from: 123, to: 1234 } },
+          { [AppSearchFields.dates]: { from: sundayFrom, to: sundayTo } },
         ],
       })
     })
