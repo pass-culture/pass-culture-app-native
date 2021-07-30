@@ -13,19 +13,15 @@ import { VenueBody } from './VenueBody'
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
-  const { data: venueResponse } = useVenue(params.id)
+  const { data: venue } = useVenue(params.id)
   const { headerTransition, onScroll } = useHeaderTransition()
 
-  if (!venueResponse) return <React.Fragment></React.Fragment>
+  if (!venue) return <React.Fragment></React.Fragment>
 
   return (
     <Container {...testID('Page de détail du lieu')}>
       <VenueBody venueId={params.id} onScroll={onScroll} />
-      <VenueHeader
-        headerTransition={headerTransition}
-        title={venueResponse.name}
-        venueId={venueResponse.id}
-      />
+      <VenueHeader headerTransition={headerTransition} title={venue.name} venueId={venue.id} />
     </Container>
   )
 }
