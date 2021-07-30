@@ -4,7 +4,7 @@ import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
-import { ImagePlaceholder } from 'features/offer/atoms/ImagePlaceholder'
+import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
 
 interface Props {
