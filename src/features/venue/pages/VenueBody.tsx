@@ -12,28 +12,21 @@ import { Spacer, getSpacing, Typo } from 'ui/theme'
 
 import { useVenue } from '../api/useVenue'
 
-export const VenueBody: FunctionComponent<{
+interface Props {
   venueId: number
   onScroll: () => void
-}> = ({ venueId, onScroll }) => {
-  const { data: venueResponse } = useVenue(venueId)
+}
+
+const lorem =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.'
+
+export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
+  const { data: venue } = useVenue(venueId)
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  // TODO : Remove after add all venue informations - (it's just for scroll)
-  const lorem =
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.'
+  if (!venue) return <React.Fragment></React.Fragment>
 
-  if (!venueResponse) return <React.Fragment></React.Fragment>
-
-  const {
-    address,
-    postalCode,
-    city,
-    publicName,
-    withdrawalDetails,
-    latitude,
-    longitude,
-  } = venueResponse
+  const { address, postalCode, city, publicName, withdrawalDetails, latitude, longitude } = venue
   const venueAddress = address
     ? `${address}, ${postalCode} ${city}`
     : `${publicName}, ${postalCode} ${city}`
@@ -51,35 +44,42 @@ export const VenueBody: FunctionComponent<{
       <Spacer.TopScreen />
       <Spacer.TopScreen />
       <Spacer.TopScreen />
+
       <MarginContainer>
         <VenueTitle
           testID="venueTitle"
           numberOfLines={2}
           adjustsFontSizeToFit
           allowFontScaling={false}>
-          {venueResponse.name}
+          {venue.name}
         </VenueTitle>
-        <Typo.Body>{venueResponse.id}</Typo.Body>
+
         <VenueAddressContainer>
           <IconContainer>
             <LocationPointer size={getSpacing(4)} />
           </IconContainer>
           <StyledText numberOfLines={1}>{venueAddress}</StyledText>
         </VenueAddressContainer>
-        <Typo.Body>{lorem.repeat(12)}</Typo.Body>
-        <WhereSection
-          address={venueAddress}
-          locationCoordinates={{
-            latitude,
-            longitude,
-          }}
-        />
+        <Spacer.Column numberOfSpaces={6} />
       </MarginContainer>
+
+      {/* TODO(antoinewg) Remove after add all venue informations - (it's just for scroll) */}
+      <SectionWithDivider margin visible>
+        <Typo.Body>{lorem.repeat(6)}</Typo.Body>
+      </SectionWithDivider>
+
+      <SectionWithDivider visible margin>
+        <WhereSection address={venueAddress} locationCoordinates={{ latitude, longitude }} />
+      </SectionWithDivider>
 
       <SectionWithDivider visible={!!withdrawalDetails}>
         <AccordionItem title={t`Modalités de retrait`}>
           <Typo.Body>{withdrawalDetails && highlightLinks(withdrawalDetails)}</Typo.Body>
         </AccordionItem>
+      </SectionWithDivider>
+
+      <SectionWithDivider visible>
+        <Spacer.Column numberOfSpaces={6} />
       </SectionWithDivider>
     </Container>
   )
