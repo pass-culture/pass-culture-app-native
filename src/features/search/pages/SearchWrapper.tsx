@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer } from 'react'
+import React, { memo, useContext, useEffect, useReducer } from 'react'
 
 import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
@@ -13,7 +13,7 @@ export interface ISearchContext {
 
 export const SearchContext = React.createContext<ISearchContext | null>(null)
 
-export const SearchWrapper = ({ children }: { children: JSX.Element }) => {
+export const SearchWrapper = memo(function SearchWrapper({ children }: { children: JSX.Element }) {
   const { position } = useGeolocation()
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
   const [stagedSearchState, stagedDispatch] = useReducer(searchReducer, initialSearchState)
@@ -32,7 +32,7 @@ export const SearchWrapper = ({ children }: { children: JSX.Element }) => {
       {children}
     </SearchContext.Provider>
   )
-}
+})
 
 export const useSearch = (): Pick<ISearchContext, 'searchState' | 'dispatch'> => {
   // The searchState is initialized so this can't be null

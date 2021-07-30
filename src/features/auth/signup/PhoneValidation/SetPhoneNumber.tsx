@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { Animated } from 'react-native'
 import CountryPicker, {
   Country,
@@ -45,7 +45,7 @@ const ALLOWED_COUNTRY_CODES: CountryCode[] = [
   'NC',
 ]
 
-export const SetPhoneNumber: FunctionComponent = () => {
+export const SetPhoneNumber = memo(() => {
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -212,7 +212,7 @@ export const SetPhoneNumber: FunctionComponent = () => {
       />
     </React.Fragment>
   )
-}
+})
 
 const ModalContent = styled.View({
   paddingTop: getSpacing(7),

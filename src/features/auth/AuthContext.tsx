@@ -1,6 +1,6 @@
 import { BatchUser } from '@bam.tech/react-native-batch'
 import { LocalStorageService } from '@pass-culture/id-check'
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
@@ -34,7 +34,7 @@ export function useAuthContext(): IAuthContext {
   return useContext(AuthContext)
 }
 
-export const AuthWrapper = ({ children }: { children: JSX.Element }) => {
+export const AuthWrapper = memo(function AuthWrapper({ children }: { children: JSX.Element }) {
   const [isWaitingForLoggedInState, setIsWaitingForLoggedInState] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -60,7 +60,7 @@ export const AuthWrapper = ({ children }: { children: JSX.Element }) => {
   return (
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>{children}</AuthContext.Provider>
   )
-}
+})
 
 export function useLoginRoutine() {
   const { setIsLoggedIn } = useAuthContext()

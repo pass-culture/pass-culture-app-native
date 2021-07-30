@@ -1,4 +1,4 @@
-import React, { useMemo, useContext, useReducer } from 'react'
+import React, { memo, useMemo, useContext, useReducer } from 'react'
 
 import {
   initialFavoritesState,
@@ -8,7 +8,11 @@ import {
 
 export const FavoritesContext = React.createContext<FavoritesContextType | null>(null)
 
-export const FavoritesWrapper = ({ children }: { children: JSX.Element }) => {
+export const FavoritesWrapper = memo<{ children: JSX.Element }>(function FavoritesWrapper({
+  children,
+}: {
+  children: JSX.Element
+}) {
   const [contextValueWithoutDispatch, dispatch] = useReducer(
     favoritesReducer,
     initialFavoritesState
@@ -18,7 +22,7 @@ export const FavoritesWrapper = ({ children }: { children: JSX.Element }) => {
     dispatch,
   ])
   return <FavoritesContext.Provider value={contextValue}>{children}</FavoritesContext.Provider>
-}
+})
 
 export const useFavoritesState = (): FavoritesContextType => {
   return useContext(FavoritesContext) as FavoritesContextType

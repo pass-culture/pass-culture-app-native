@@ -1,4 +1,4 @@
-import React, { createContext, FunctionComponent, useContext, useRef, useState } from 'react'
+import React, { createContext, memo, useContext, useRef, useState } from 'react'
 
 import { ColorsEnum } from 'ui/theme'
 
@@ -22,7 +22,7 @@ const SnackBarContext = createContext<SnackBarContextValue>({
   hideSnackBar: () => null,
 })
 
-export const SnackBarProvider: FunctionComponent = ({ children }) => {
+export const SnackBarProvider = memo(({ children }) => {
   const [snackBarProps, setSnackBarProps] = useState<SnackBarProps>({
     visible: false,
     message: '',
@@ -77,7 +77,7 @@ export const SnackBarProvider: FunctionComponent = ({ children }) => {
       </SnackBarContext.Provider>
     </React.Fragment>
   )
-}
+})
 
 export function useSnackBarContext(): SnackBarContextValue {
   return useContext(SnackBarContext)

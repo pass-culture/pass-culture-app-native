@@ -1,6 +1,5 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { IdCheckContextProvider } from '@pass-culture/id-check'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
@@ -14,7 +13,6 @@ import './why-did-you-render'
 import 'intl'
 import 'intl/locale-data/jsonp/en'
 
-import { api } from 'api/api'
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
@@ -22,14 +20,12 @@ import { useBlockForMaintenance } from 'features/maintenance/useMaintenance'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
-import { idCheckAnalytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
-import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
-import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
+import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
 import { useStartBatchNotification } from 'libs/notifications'
 import { queryClient } from 'libs/queryClient'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
@@ -90,16 +86,7 @@ const App: FunctionComponent = function () {
                     <SearchWrapper>
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
-                          <IdCheckContextProvider
-                            apiBaseUrl={env.ID_CHECK_API_URL}
-                            supportEmail={env.SUPPORT_EMAIL_ADDRESS}
-                            dsmUrl={env.DSM_URL}
-                            personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
-                            cguDocUrl={env.DOC_CGU_URL}
-                            errorMonitoring={errorMonitoring}
-                            analytics={idCheckAnalytics}
-                            retentionClient={idCheckRetentionClient}
-                            requestLicenceToken={() => api.getnativev1idCheckToken()}>
+                          <IdCheckContextProvider>
                             <SplashScreenProvider>
                               <AppNavigationContainer />
                             </SplashScreenProvider>
