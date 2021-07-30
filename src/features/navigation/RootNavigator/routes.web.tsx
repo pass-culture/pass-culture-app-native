@@ -24,12 +24,16 @@ import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestS
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
+import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
+// import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
+import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
+import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
@@ -59,12 +63,8 @@ import { Link } from 'libs/navigation/Link'
 // import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 /** those screens are not yet tested */
 // import { IdCheck } from 'features/auth/signup/IdCheck'
-// import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
-// import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
-// import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
 // import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 // import { EndedBookings } from 'features/bookings/pages/EndedBookings'
-// import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 // import { ABTestingPOC } from 'features/cheatcodes/pages/ABTestingPOC'
 // import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 // import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
@@ -160,6 +160,9 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     <Link to={'/favorites'}>
       <Text>Favorites</Text>
     </Link>
+    <Link to={'/setpostalcode'}>
+      <Text>SetPostalCode</Text>
+    </Link>
     <Link
       to={'/cgu'}
       params={{
@@ -198,7 +201,7 @@ export const routes: Array<Route> = [
     component: BeneficiaryRequestSent,
     path: '/beneficiary-request-sent',
   },
-  // { name: 'BookingConfirmation', component: BookingConfirmation },
+  { name: 'BookingConfirmation', component: BookingConfirmation, path: '/booking/confirmation' },
   // { name: 'BookingDetails', component: BookingDetails },
   // { name: 'CulturalSurvey', component: CulturalSurvey },
   { name: 'DeeplinkImporter', component: DeeplinkImporter, path: '/deeplink-importer' },
@@ -256,7 +259,7 @@ export const routes: Array<Route> = [
   { name: 'SetBirthday', component: SetBirthday, path: '/setbirthday' },
   { name: 'SetEmail', component: SetEmail, path: '/setemail' },
   { name: 'SetPassword', component: SetPassword, path: '/setpassword' },
-  // { name: 'SetPostalCode', component: SetPostalCode },
+  { name: 'SetPostalCode', component: SetPostalCode, path: '/setpostalcode' },
   {
     name: 'SignupConfirmationEmailSent',
     component: SignupConfirmationEmailSent,
@@ -268,8 +271,13 @@ export const routes: Array<Route> = [
     path: '/signup-confirmation-expired-link',
   },
   { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep, path: '/next-beneficiary-step' },
-  // { name: 'SetPhoneNumber', component: SetPhoneNumber, path: '/set-phone-number' },
-  // { name: 'SetPhoneValidationCode', component: SetPhoneValidationCode, path: '/set-phone-validation' },
+  { name: 'SetPhoneNumber', component: SetPhoneNumber, path: '/set-phone-number' },
+  // TODO: use react-input-mask on the web instead of react-native-text-input-mask
+  // {
+  //   name: 'SetPhoneValidationCode',
+  //   component: SetPhoneValidationCode,
+  //   path: '/set-phone-validation',
+  // },
   {
     name: 'PhoneValidationTooManyAttempts',
     component: PhoneValidationTooManyAttempts,
