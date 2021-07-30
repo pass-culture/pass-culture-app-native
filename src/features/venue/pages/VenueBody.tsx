@@ -3,6 +3,7 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { VenueOffers } from 'features/venue/components/VenueOffers'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -66,6 +67,10 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       {/* TODO(antoinewg) Remove after add all venue informations - (it's just for scroll) */}
       <SectionWithDivider margin visible>
         <Typo.Body>{lorem.repeat(6)}</Typo.Body>
+      </SectionWithDivider>
+
+      <SectionWithDivider visible margin>
+        <VenueOffers venueId={venueId} />
       </SectionWithDivider>
 
       <SectionWithDivider visible margin>
