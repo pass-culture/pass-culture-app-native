@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native'
 
-import { blurImageHeight } from 'ui/components/headers/HeroHeader'
+import { blurImageHeight } from 'ui/components/hero/HeroHeader'
 import { ticketFooterRatio } from 'ui/svg/TicketFooter'
 import { getSpacing } from 'ui/theme'
 

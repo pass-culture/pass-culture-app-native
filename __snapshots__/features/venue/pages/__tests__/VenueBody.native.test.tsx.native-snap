@@ -86,6 +86,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             },
           ]
         }
+        testID="image-container"
       >
         <BVLinearGradient
           borderRadius={8}

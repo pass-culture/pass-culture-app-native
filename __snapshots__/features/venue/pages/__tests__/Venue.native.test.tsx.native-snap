@@ -96,6 +96,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               },
             ]
           }
+          testID="image-container"
         >
           <BVLinearGradient
             borderRadius={8}
