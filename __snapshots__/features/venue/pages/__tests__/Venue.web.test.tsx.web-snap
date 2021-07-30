@@ -6,8 +6,11 @@ Object {
   "baseElement": <body>
     <div>
       <div
+        aria-label="Page de détail du lieu"
         class="css-view-1dbjc4n"
+        data-focusable="true"
         data-testid="Page de détail du lieu"
+        tabindex="0"
       >
         <div
           class="css-view-1dbjc4n"
@@ -17,6 +20,18 @@ Object {
           <div
             class="css-view-1dbjc4n"
           >
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
             <div
               class="css-view-1dbjc4n"
               style="margin-right: 24px; margin-left: 24px;"
@@ -353,8 +368,11 @@ Object {
   </body>,
   "container": <div>
     <div
+      aria-label="Page de détail du lieu"
       class="css-view-1dbjc4n"
+      data-focusable="true"
       data-testid="Page de détail du lieu"
+      tabindex="0"
     >
       <div
         class="css-view-1dbjc4n"
@@ -364,6 +382,18 @@ Object {
         <div
           class="css-view-1dbjc4n"
         >
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
           <div
             class="css-view-1dbjc4n"
             style="margin-right: 24px; margin-left: 24px;"

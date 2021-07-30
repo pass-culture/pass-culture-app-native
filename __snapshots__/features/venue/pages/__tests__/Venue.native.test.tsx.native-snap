@@ -29,6 +29,36 @@ exports[`<Venue /> should match snapshot 1`] = `
   >
     <View>
       <View
+        customHeight={16}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        customHeight={16}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        customHeight={16}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
         style={
           Array [
             Object {

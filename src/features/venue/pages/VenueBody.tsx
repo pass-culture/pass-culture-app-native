@@ -8,7 +8,7 @@ import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { getSpacing, Typo } from 'ui/theme'
+import { Spacer, getSpacing, Typo } from 'ui/theme'
 
 import { useVenue } from '../api/useVenue'
 
@@ -47,6 +47,10 @@ export const VenueBody: FunctionComponent<{
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
+      {/* TODO(antoinewg) remove the topscreens when adding the image */}
+      <Spacer.TopScreen />
+      <Spacer.TopScreen />
+      <Spacer.TopScreen />
       <MarginContainer>
         <VenueTitle
           testID="venueTitle"
