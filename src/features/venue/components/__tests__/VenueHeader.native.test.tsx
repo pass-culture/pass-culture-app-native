@@ -10,6 +10,9 @@ import { fireEvent, render } from 'tests/utils'
 import { VenueHeader } from '../VenueHeader'
 
 describe('<VenueHeader />', () => {
+  beforeAll(jest.useFakeTimers)
+  afterAll(jest.useRealTimers)
+
   it('should render correctly', async () => {
     const { toJSON } = await renderVenueHeader()
     expect(toJSON()).toMatchSnapshot()
@@ -31,6 +34,7 @@ describe('<VenueHeader />', () => {
     const { animatedValue, getByTestId } = await renderVenueHeader()
     expect(getByTestId('venueHeaderName').props.style.opacity).toBe(0)
     Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
+    jest.advanceTimersByTime(100)
     await waitForExpect(() => expect(getByTestId('venueHeaderName').props.style.opacity).toBe(1))
   })
 })

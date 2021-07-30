@@ -14,11 +14,7 @@ import {
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { analytics } from 'libs/analytics'
-import {
-  headerBackgroundInterpolation,
-  iconBackgroundInterpolation,
-  iconBorderInterpolation,
-} from 'ui/components/headers/animationHelpers'
+import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -76,12 +72,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
     },
   })
 
-  const iconBackgroundColor = headerTransition.interpolate(iconBackgroundInterpolation)
-  const iconBorderColor = headerTransition.interpolate(iconBorderInterpolation)
-  const headerBackgroundColor = headerTransition.interpolate(headerBackgroundInterpolation)
-
-  const animationState = { iconBackgroundColor, iconBorderColor, transition: headerTransition }
-
+  const { animationState, backgroundColor } = getAnimationState(headerTransition)
   const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
 
   function pressFavorite() {
@@ -97,7 +88,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
 
   return (
     <React.Fragment>
-      <HeaderContainer style={{ backgroundColor: headerBackgroundColor }}>
+      <HeaderContainer style={{ backgroundColor }}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={2} />
         <Row>

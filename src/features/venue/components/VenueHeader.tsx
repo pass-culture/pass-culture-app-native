@@ -5,11 +5,7 @@ import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import {
-  headerBackgroundInterpolation,
-  iconBackgroundInterpolation,
-  iconBorderInterpolation,
-} from 'ui/components/headers/animationHelpers'
+import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
@@ -33,14 +29,10 @@ export const VenueHeader: React.FC<Props> = (props) => {
     venueId
   }
 
-  const iconBackgroundColor = headerTransition.interpolate(iconBackgroundInterpolation)
-  const iconBorderColor = headerTransition.interpolate(iconBorderInterpolation)
-  const headerBackgroundColor = headerTransition.interpolate(headerBackgroundInterpolation)
-
-  const animationState = { iconBackgroundColor, iconBorderColor, transition: headerTransition }
+  const { animationState, backgroundColor } = getAnimationState(headerTransition)
 
   return (
-    <HeaderContainer style={{ backgroundColor: headerBackgroundColor }}>
+    <HeaderContainer style={{ backgroundColor }}>
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={2} />
       <Row>

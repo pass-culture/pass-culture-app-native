@@ -1,28 +1,55 @@
-import { Animated, Easing } from 'react-native'
+import { useRef } from 'react'
+import { Animated, Easing, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
 export const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 
-export const interpolationConfig = {
+const interpolationConfig = {
   inputRange: [0, HEIGHT_END_OF_TRANSITION],
   outputRange: [0, 1],
   extrapolate: 'clamp' as Animated.ExtrapolateType,
 }
 
-export const iconBackgroundInterpolation = {
+const iconBackgroundInterpolation = {
   inputRange: [0, 1],
   outputRange: [ColorsEnum.WHITE, 'rgba(255, 255, 255, 0)'],
   easing: Easing.bezier(0, 0.75, 0, 0.75),
 }
 
-export const iconBorderInterpolation = {
+const iconBorderInterpolation = {
   inputRange: [0, 1],
   outputRange: [ColorsEnum.GREY_LIGHT, 'rgba(255, 255, 255, 0)'],
   easing: Easing.bezier(0, 1, 0, 1),
 }
 
-export const headerBackgroundInterpolation = {
+const headerBackgroundInterpolation = {
   inputRange: [0, 1],
   outputRange: ['rgba(255, 255, 255, 0)', ColorsEnum.PRIMARY],
+}
+
+export const getAnimationState = (headerTransition: Animated.AnimatedInterpolation) => ({
+  animationState: {
+    iconBackgroundColor: headerTransition.interpolate(iconBackgroundInterpolation),
+    iconBorderColor: headerTransition.interpolate(iconBorderInterpolation),
+    transition: headerTransition,
+  },
+  backgroundColor: headerTransition.interpolate(headerBackgroundInterpolation),
+})
+
+interface Props {
+  listener?: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => void
+}
+
+export const useHeaderTransition = ({ listener }: Props = {}) => {
+  const headerScroll = useRef(new Animated.Value(0)).current
+
+  const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
+    useNativeDriver: false,
+    listener,
+  })
+
+  const headerTransition = headerScroll.interpolate(interpolationConfig)
+
+  return { headerTransition, onScroll }
 }

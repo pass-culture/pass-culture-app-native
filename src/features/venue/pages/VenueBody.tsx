@@ -41,7 +41,7 @@ export const VenueBody: FunctionComponent<{
   return (
     <Container
       testID="venue-container"
-      scrollEventThrottle={10}
+      scrollEventThrottle={20}
       scrollIndicatorInsets={{ right: 1 }}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={scrollViewRef as any}

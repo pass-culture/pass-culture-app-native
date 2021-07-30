@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useRef } from 'react'
-import { Animated, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -22,7 +21,7 @@ import { analytics, isCloseToBottom } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { interpolationConfig } from 'ui/components/headers/animationHelpers'
+import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { blurImageHeight, HeroHeader } from 'ui/components/headers/HeroHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
@@ -46,7 +45,6 @@ export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const booking = useOngoingOrEndedBooking(params.id)
-  const headerScroll = useRef(new Animated.Value(0)).current
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
     visible: archiveModalVisible,
@@ -68,22 +66,13 @@ export function BookingDetails() {
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
   )
 
-  if (!booking) return <React.Fragment></React.Fragment>
-
-  const headerTransition = headerScroll.interpolate(interpolationConfig)
-
-  const checkIfAllPageHaveBeenSeen = ({ nativeEvent }: { nativeEvent: NativeScrollEvent }) => {
-    if (isCloseToBottom(nativeEvent)) {
-      logConsultWholeBooking()
-    }
-  }
-
-  const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
-    useNativeDriver: false,
-    listener: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
-      checkIfAllPageHaveBeenSeen({ nativeEvent })
+  const { headerTransition, onScroll } = useHeaderTransition({
+    listener: ({ nativeEvent }) => {
+      if (isCloseToBottom(nativeEvent)) logConsultWholeBooking()
     },
   })
+
+  if (!booking) return <React.Fragment></React.Fragment>
 
   const properties = getBookingProperties(booking)
   const { offer } = booking.stock
@@ -110,7 +99,7 @@ export function BookingDetails() {
     <React.Fragment>
       <ScrollView
         onScroll={onScroll}
-        scrollEventThrottle={10}
+        scrollEventThrottle={20}
         scrollIndicatorInsets={{ right: 1 }}
         onContentSizeChange={(_w: number, h: number) => {
           if (h <= contentHeight) {

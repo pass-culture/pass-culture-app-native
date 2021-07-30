@@ -92,7 +92,7 @@ export const OfferBody: FunctionComponent<{
   return (
     <Container
       testID="offer-container"
-      scrollEventThrottle={10}
+      scrollEventThrottle={20}
       scrollIndicatorInsets={{ right: 1 }}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={scrollViewRef as any}
