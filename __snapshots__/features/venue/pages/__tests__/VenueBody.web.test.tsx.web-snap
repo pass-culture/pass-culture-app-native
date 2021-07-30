@@ -49,6 +49,7 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
+              data-testid="image-container"
               style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); height: 252px; width: 976px;"
             >
               <div
@@ -353,6 +354,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
+            data-testid="image-container"
             style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); height: 252px; width: 976px;"
           >
             <div

@@ -5,11 +5,12 @@ import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
 
-import { blurImageHeight, HeroHeader } from '../../components/headers/HeroHeader'
 import { ImagePlaceholder } from '../../components/ImagePlaceholder'
 import { ColorsEnum, getSpacing, Spacer, getShadow } from '../../theme'
 import { BorderRadiusEnum } from '../../theme/grid'
 import { useCustomSafeInsets } from '../../theme/useCustomSafeInsets'
+
+import { blurImageHeight, HeroHeader } from './HeroHeader'
 
 interface Props {
   imageUrl: string
@@ -44,7 +45,7 @@ export const Hero: React.FC<Props> = ({ imageUrl, categoryName, isLandscapeHero 
       categoryName={categoryName}
       imageUrl={imageUrl || ''}>
       <Spacer.Column numberOfSpaces={numberOfSpacesColumn} />
-      <ImageContainer style={imageStyle}>
+      <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (
           <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
         ) : (

@@ -383,6 +383,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 },
                               ]
                             }
+                            testID="image-container"
                           >
                             <View
                               style={
@@ -3825,6 +3826,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 },
                               ]
                             }
+                            testID="image-container"
                           >
                             <View
                               style={
