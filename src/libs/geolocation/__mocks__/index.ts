@@ -1,9 +1,10 @@
-import { geolocalisationContext } from 'libs/geolocation/fixtures/geolocationContext'
+import { geolocalisationContext } from '../fixtures/geolocationContext'
+
+export {
+  GEOLOCATION_USER_ERROR_MESSAGE,
+  GeolocPermissionState,
+  GeolocPositionError,
+} from '../enums'
+export type { GeoCoordinates, GeolocationError, IGeolocationContext } from '../types'
 
 export const useGeolocation = jest.fn(() => geolocalisationContext)
-
-export enum GeolocPermissionState {
-  GRANTED = 'granted',
-  DENIED = 'denied',
-  NEVER_ASK_AGAIN = 'never_ask_again',
-}

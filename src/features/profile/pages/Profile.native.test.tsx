@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { NamedExoticComponent } from 'react'
-import { GeoCoordinates, PositionError } from 'react-native-geolocation-service'
 import { UseQueryResult } from 'react-query'
 
 import { GetIdCheckTokenResponse, UserProfileResponse } from 'api/gen'
@@ -11,8 +10,13 @@ import * as NavigationHelpers from 'features/navigation/helpers'
 import { Navigator, Screen } from 'features/navigation/TabBar/TabNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { GeolocPermissionState } from 'libs/geolocation'
-import { GeolocationError, GEOLOCATION_USER_ERROR_MESSAGE } from 'libs/geolocation/getPosition'
+import {
+  GeolocPositionError,
+  GeolocPermissionState,
+  GeolocationError,
+  GeoCoordinates,
+  GEOLOCATION_USER_ERROR_MESSAGE,
+} from 'libs/geolocation'
 import { flushAllPromises, render, act, fireEvent } from 'tests/utils'
 
 import { Profile } from './Profile'
@@ -124,8 +128,8 @@ describe('Profile component', () => {
         mockPermissionState = GeolocPermissionState.GRANTED
         mockPosition = null
         mockPositionError = {
-          type: PositionError.SETTINGS_NOT_SATISFIED,
-          message: GEOLOCATION_USER_ERROR_MESSAGE[PositionError.SETTINGS_NOT_SATISFIED],
+          type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
+          message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
         }
 
         const { getByText } = await renderProfile()

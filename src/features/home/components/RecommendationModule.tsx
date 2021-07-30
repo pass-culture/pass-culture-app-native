@@ -5,13 +5,13 @@ import {
   NativeSyntheticEvent,
   ScrollView,
 } from 'react-native'
-import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { DisplayParametersFields } from 'features/home/contentful'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
+import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { ColorsEnum, Spacer } from 'ui/theme'

@@ -6,8 +6,8 @@ import Geolocation from 'react-native-geolocation-service'
 import { GeolocationWrapper, useGeolocation, requestGeolocPermission } from 'libs/geolocation'
 import { waitFor } from 'tests/utils'
 
+import { GeolocPermissionState } from './enums'
 import { getPosition } from './getPosition'
-import { GeolocPermissionState } from './permissionState.d'
 
 const mockRequestGeolocPermission = requestGeolocPermission as jest.Mock
 
@@ -88,21 +88,19 @@ describe('useGeolocation()', () => {
 
   it('should set position when permission is granted', async () => {
     mockCheckGeolocPermission = 'granted'
-    const { result } = renderGeolocationHook()
-    result.current.checkGeolocPermission()
+    renderGeolocationHook()
 
     await waitFor(() => {
-      expect(getPosition).toHaveBeenCalled()
+      expect(getPosition).toBeCalled()
     })
   })
 
   it('should not set position when permission is denied', async () => {
     mockCheckGeolocPermission = 'never_ask_again'
-    const { result } = renderGeolocationHook()
-    result.current.checkGeolocPermission()
+    renderGeolocationHook()
 
     await waitFor(() => {
-      expect(result.current.position).toBeNull()
+      expect(getPosition).not.toBeCalled()
     })
   })
 })

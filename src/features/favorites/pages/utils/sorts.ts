@@ -1,6 +1,5 @@
-import { GeoCoordinates } from 'react-native-geolocation-service'
-
 import { FavoriteResponse } from 'api/gen'
+import { GeoCoordinates } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
 
 export function sortByAscendingPrice(a: FavoriteResponse, b: FavoriteResponse) {

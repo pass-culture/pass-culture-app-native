@@ -1,7 +1,6 @@
-import { GeoCoordinates } from 'react-native-geolocation-service'
-
 import { ExpenseDomain, FavoriteResponse } from 'api/gen'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/api/snaps/favorisResponseSnap'
+import { GeoCoordinates } from 'libs/geolocation'
 
 import { sortByIdDesc, sortByAscendingPrice, sortByDistanceAroundMe } from '../sorts'
 

@@ -1,12 +1,13 @@
-import { t } from '@lingui/macro'
 import { Dispatch, SetStateAction } from 'react'
 import AgonTukGeolocation, {
-  GeoCoordinates,
   GeoOptions,
-  PositionError,
+  PositionError as AgonTukPositionError,
 } from 'react-native-geolocation-service'
 
 import { MonitoringError } from 'libs/errorMonitoring'
+
+import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from './enums'
+import { GeolocationError, GeoCoordinates } from './types'
 
 const GET_POSITION_SETTINGS: GeoOptions = {
   enableHighAccuracy: false,
@@ -16,18 +17,13 @@ const GET_POSITION_SETTINGS: GeoOptions = {
   forceRequestLocation: false,
 }
 
-export const GEOLOCATION_USER_ERROR_MESSAGE: Record<PositionError, string> = {
-  [PositionError.PERMISSION_DENIED]: t`La géolocalisation est désactivée sur l'application`,
-  [PositionError.POSITION_UNAVAILABLE]: t`La géolocalisation est temporairement inutilisable`,
-  [PositionError.TIMEOUT]: t`La géolocalisation est temporairement inutilisable`,
-  [PositionError.PLAY_SERVICE_NOT_AVAILABLE]: t`L'absence des services Google Play bloquent possiblement la géolocalisation`,
-  [PositionError.SETTINGS_NOT_SATISFIED]: t`Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation`,
-  [PositionError.INTERNAL_ERROR]: t`La géolocalisation est temporairement inutilisable`,
-}
-
-export type GeolocationError = {
-  type: PositionError
-  message: string
+const ERROR_MAPPING: Record<AgonTukPositionError, GeolocPositionError> = {
+  [AgonTukPositionError.PERMISSION_DENIED]: GeolocPositionError.PERMISSION_DENIED,
+  [AgonTukPositionError.POSITION_UNAVAILABLE]: GeolocPositionError.POSITION_UNAVAILABLE,
+  [AgonTukPositionError.TIMEOUT]: GeolocPositionError.TIMEOUT,
+  [AgonTukPositionError.PLAY_SERVICE_NOT_AVAILABLE]: GeolocPositionError.PLAY_SERVICE_NOT_AVAILABLE,
+  [AgonTukPositionError.SETTINGS_NOT_SATISFIED]: GeolocPositionError.SETTINGS_NOT_SATISFIED,
+  [AgonTukPositionError.INTERNAL_ERROR]: GeolocPositionError.INTERNAL_ERROR,
 }
 
 export const getPosition = (
@@ -37,41 +33,45 @@ export const getPosition = (
   AgonTukGeolocation.getCurrentPosition(
     (position) => {
       setPositionError(null)
-      setPosition(position.coords)
+      setPosition({
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude,
+      })
     },
     ({ code, message }) => {
-      switch (code) {
-        case PositionError.PERMISSION_DENIED:
+      const type = ERROR_MAPPING[code]
+      switch (type) {
+        case GeolocPositionError.PERMISSION_DENIED:
           setPositionError(null)
           setPosition(null)
           break
-        case PositionError.POSITION_UNAVAILABLE:
+        case GeolocPositionError.POSITION_UNAVAILABLE:
           // Location provider not available
           // or old iPhones (5s, 6s confirmed) only : global localisation setting is off with message "Location service is turned off"
-          setPositionError({ type: code, message: GEOLOCATION_USER_ERROR_MESSAGE[code] })
+          setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
           new MonitoringError(message, 'PositionError_PositionUnavailable')
           break
-        case PositionError.TIMEOUT:
+        case GeolocPositionError.TIMEOUT:
           // Location request timed out
           // TODO: we could implement a retry pattern
-          setPositionError({ type: code, message: GEOLOCATION_USER_ERROR_MESSAGE[code] })
+          setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
           setPosition(null)
           new MonitoringError(message, 'PositionError_Timeout')
           break
-        case PositionError.PLAY_SERVICE_NOT_AVAILABLE:
-          setPositionError({ type: code, message: GEOLOCATION_USER_ERROR_MESSAGE[code] })
+        case GeolocPositionError.PLAY_SERVICE_NOT_AVAILABLE:
+          setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
           setPosition(null)
           new MonitoringError(message, 'PositionError_PlayServiceNotAvailable')
           break
-        case PositionError.SETTINGS_NOT_SATISFIED:
+        case GeolocPositionError.SETTINGS_NOT_SATISFIED:
           // Android only : location service is disabled or location mode is not appropriate for the current request
-          setPositionError({ type: code, message: GEOLOCATION_USER_ERROR_MESSAGE[code] })
+          setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
           setPosition(null)
           new MonitoringError(message, 'PositionError_SettingsNotSatisfied')
           break
-        case PositionError.INTERNAL_ERROR:
+        case GeolocPositionError.INTERNAL_ERROR:
           /// Android only : library crashed for some reason or getCurrentActivity() returned null
-          setPositionError({ type: code, message: GEOLOCATION_USER_ERROR_MESSAGE[code] })
+          setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
           setPosition(null)
           new MonitoringError(message, 'PositionError_InternalError')
           break

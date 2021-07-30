@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList } from 'react-native'
-import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
@@ -20,7 +19,7 @@ import {
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
-import { useGeolocation } from 'libs/geolocation'
+import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()

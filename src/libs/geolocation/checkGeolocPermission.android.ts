@@ -1,6 +1,6 @@
 import { checkMultiple, PERMISSIONS } from 'react-native-permissions'
 
-import { GeolocPermissionState } from './permissionState.d'
+import { GeolocPermissionState } from './enums'
 
 export const checkGeolocPermission = async (): Promise<GeolocPermissionState> => {
   const permissions = await checkMultiple([

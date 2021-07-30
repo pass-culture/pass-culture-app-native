@@ -3,23 +3,20 @@ import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { IdCheckContextProvider } from '@pass-culture/id-check'
 import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { QueryClientProvider } from 'react-query'
 import { ThemeProvider } from 'styled-components/native'
 
-import { api } from 'api/api'
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
-import { idCheckAnalytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
+import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
-import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
+import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
 import { queryClient } from 'libs/queryClient'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { theme } from 'theme'
@@ -40,26 +37,19 @@ export function App() {
         <QueryClientProvider client={queryClient}>
           <AuthWrapper>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              <FavoritesWrapper>
-                <SearchWrapper>
-                  <I18nProvider i18n={i18n}>
-                    <SnackBarProvider>
-                      <IdCheckContextProvider
-                        apiBaseUrl={env.ID_CHECK_API_URL}
-                        supportEmail={env.SUPPORT_EMAIL_ADDRESS}
-                        dsmUrl={env.DSM_URL}
-                        personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
-                        cguDocUrl={env.DOC_CGU_URL}
-                        errorMonitoring={errorMonitoring}
-                        analytics={idCheckAnalytics}
-                        retentionClient={idCheckRetentionClient}
-                        requestLicenceToken={() => api.getnativev1idCheckToken()}>
-                        <AppNavigationContainer />
-                      </IdCheckContextProvider>
-                    </SnackBarProvider>
-                  </I18nProvider>
-                </SearchWrapper>
-              </FavoritesWrapper>
+              <GeolocationWrapper>
+                <FavoritesWrapper>
+                  <SearchWrapper>
+                    <I18nProvider i18n={i18n}>
+                      <SnackBarProvider>
+                        <IdCheckContextProvider>
+                          <AppNavigationContainer />
+                        </IdCheckContextProvider>
+                      </SnackBarProvider>
+                    </I18nProvider>
+                  </SearchWrapper>
+                </FavoritesWrapper>
+              </GeolocationWrapper>
             </ErrorBoundary>
           </AuthWrapper>
         </QueryClientProvider>
