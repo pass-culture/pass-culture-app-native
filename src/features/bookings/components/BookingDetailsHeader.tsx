@@ -5,11 +5,7 @@ import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import {
-  headerBackgroundInterpolation,
-  iconBackgroundInterpolation,
-  iconBorderInterpolation,
-} from 'ui/components/headers/animationHelpers'
+import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 interface Props {
@@ -23,16 +19,11 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
   const { headerTransition, title } = props
   const { goBack } = useNavigation<UseNavigationType>()
 
-  const iconBackgroundColor = headerTransition.interpolate(iconBackgroundInterpolation)
-  const iconBorderColor = headerTransition.interpolate(iconBorderInterpolation)
-  const headerBackgroundColor = (headerTransition.interpolate(
-    headerBackgroundInterpolation
-  ) as unknown) as string
+  const { animationState, backgroundColor } = getAnimationState(headerTransition)
 
-  const animationState = { iconBackgroundColor, iconBorderColor, transition: headerTransition }
   return (
     <React.Fragment>
-      <HeaderContainer style={{ backgroundColor: headerBackgroundColor }}>
+      <HeaderContainer style={{ backgroundColor }}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={2} />
         <Row>

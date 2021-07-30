@@ -9,7 +9,7 @@ Array [
     onGestureHandlerEvent={[Function]}
     onGestureHandlerStateChange={[Function]}
     onScroll={[Function]}
-    scrollEventThrottle={10}
+    scrollEventThrottle={20}
     scrollIndicatorInsets={
       Object {
         "right": 1,

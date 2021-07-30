@@ -1,12 +1,11 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useRef, useState } from 'react'
-import { Animated, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics, isCloseToBottom } from 'libs/analytics'
-import { interpolationConfig } from 'ui/components/headers/animationHelpers'
+import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { getSpacing, Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -21,11 +20,7 @@ export const Offer: FunctionComponent = () => {
   const { bottom } = useCustomSafeInsets()
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const { data: offerResponse } = useOffer({ offerId: params.id })
-  const headerScroll = useRef(new Animated.Value(0)).current
   const [showBookingOfferModal, setShowBookingOfferModal] = useState<boolean>(false)
-
-  const { wording, onPress: onPressCTA, isExternal } =
-    useCtaWordingAndAction({ offerId: params.id }) || {}
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     if (offerResponse) {
@@ -33,26 +28,20 @@ export const Offer: FunctionComponent = () => {
     }
   })
 
-  if (!offerResponse) return <React.Fragment></React.Fragment>
-
-  const headerTransition = headerScroll.interpolate(interpolationConfig)
-
-  const checkIfAllPageHaveBeenSeen = ({ nativeEvent }: { nativeEvent: NativeScrollEvent }) => {
-    if (isCloseToBottom(nativeEvent)) {
-      logConsultWholeOffer()
-    }
-  }
-
-  const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
-    useNativeDriver: false,
-    listener: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) =>
-      checkIfAllPageHaveBeenSeen({ nativeEvent }),
+  const { headerTransition, onScroll } = useHeaderTransition({
+    listener: ({ nativeEvent }) => {
+      if (isCloseToBottom(nativeEvent)) logConsultWholeOffer()
+    },
   })
+
+  const { wording, onPress: onPressCTA, isExternal } =
+    useCtaWordingAndAction({ offerId: params.id }) || {}
+
+  if (!offerResponse) return <React.Fragment></React.Fragment>
 
   return (
     <React.Fragment>
       <OfferBody offerId={params.id} onScroll={onScroll} />
-
       {wording ? (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
           <CallToAction

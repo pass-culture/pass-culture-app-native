@@ -2,6 +2,8 @@
 
 exports[`<Venue /> should match snapshot 1`] = `
 <View
+  accessibilityLabel="Page de détail du lieu"
+  accessible={true}
   style={
     Array [
       Object {},
@@ -12,7 +14,7 @@ exports[`<Venue /> should match snapshot 1`] = `
   <RCTScrollView
     bounces={false}
     onScroll={[Function]}
-    scrollEventThrottle={10}
+    scrollEventThrottle={20}
     scrollIndicatorInsets={
       Object {
         "right": 1,

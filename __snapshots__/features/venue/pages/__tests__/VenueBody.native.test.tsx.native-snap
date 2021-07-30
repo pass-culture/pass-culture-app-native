@@ -4,7 +4,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
 <RCTScrollView
   bounces={false}
   onScroll={[MockFunction]}
-  scrollEventThrottle={10}
+  scrollEventThrottle={20}
   scrollIndicatorInsets={
     Object {
       "right": 1,
