@@ -9,12 +9,12 @@ import { VenueOffers } from 'features/venue/components/VenueOffers'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { AccordionItem } from 'ui/components/AccordionItem'
+import { Hero } from 'ui/components/hero/Hero'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useVenue } from '../api/useVenue'
-import { VenueHero } from '../components/VenueHero'
 
 interface Props {
   venueId: number
@@ -45,7 +45,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      <VenueHero categoryName={CategoryNameEnum.MUSIQUE} imageUrl="" />
+      <Hero categoryName={CategoryNameEnum.MUSIQUE} imageUrl="" isLandscapeHero />
       <Spacer.Column numberOfSpaces={4} />
       <MarginContainer>
         <VenueTitle

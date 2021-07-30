@@ -39,7 +39,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
         }
       >
         <View
-          height={312}
+          height={243.69230769230768}
           testID="BackgroundPlaceholder"
           width={751}
         >
@@ -57,11 +57,11 @@ exports[`<VenueBody /> should render correctly 1`] = `
         </View>
       </View>
       <View
-        numberOfSpaces={22}
+        numberOfSpaces={24}
         style={
           Array [
             Object {
-              "height": 88,
+              "height": 96,
             },
           ]
         }
@@ -70,9 +70,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
         style={
           Array [
             Object {
-              "borderRadius": 8,
               "bottom": 0,
-              "height": 316,
               "shadowColor": "#151515",
               "shadowOffset": Object {
                 "height": 8,
@@ -80,7 +78,11 @@ exports[`<VenueBody /> should render correctly 1`] = `
               },
               "shadowOpacity": 0.2,
               "shadowRadius": 12,
-              "width": 212,
+            },
+            Object {
+              "borderRadius": 8,
+              "height": 252,
+              "width": 702,
             },
           ]
         }
