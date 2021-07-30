@@ -3,6 +3,7 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { VenueOffers } from 'features/venue/components/VenueOffers'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -24,6 +25,7 @@ const lorem =
 export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const { data: venue } = useVenue(venueId)
   const scrollViewRef = useRef<ScrollView | null>(null)
+  const { data: settings } = useAppSettings()
 
   if (!venue) return <React.Fragment></React.Fragment>
 
@@ -69,7 +71,8 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         <Typo.Body>{lorem.repeat(6)}</Typo.Body>
       </SectionWithDivider>
 
-      <SectionWithDivider visible margin>
+      {/* TODO(antoinewg) Show only if app search is enabled */}
+      <SectionWithDivider margin visible={!settings?.useAppSearch}>
         <VenueOffers venueId={venueId} />
       </SectionWithDivider>
 

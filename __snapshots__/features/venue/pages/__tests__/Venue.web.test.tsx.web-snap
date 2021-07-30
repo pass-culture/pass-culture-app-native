@@ -109,6 +109,43 @@ Object {
                 dir="auto"
                 style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
+                Offres
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 16px;"
+              />
+              <div
+                class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 24px;"
+              />
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(245, 245, 245); height: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="margin-right: 24px; margin-left: 24px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 24px;"
+              />
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              >
                 Où ?
               </div>
               <div
@@ -476,6 +513,43 @@ Object {
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.
             </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(245, 245, 245); height: 8px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="margin-right: 24px; margin-left: 24px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 24px;"
+            />
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+            >
+              Offres
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
+            <div
+              class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+              style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
+              />
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 24px;"
+            />
           </div>
           <div
             class="css-view-1dbjc4n"

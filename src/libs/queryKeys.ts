@@ -17,4 +17,5 @@ export enum QueryKeys {
   USER_PROFILE = 'userProfile',
   REPORT_OFFER_REASONS = 'reportOfferReasons',
   VENUE = 'venue',
+  VENUE_OFFERS = 'venue_offers',
 }

@@ -43,3 +43,6 @@ export const useFetchQuery = () => {
 
   return { enabled, ...(isAppSearchBackend ? searchQuery : algoliaQuery) }
 }
+
+// Venue page
+export { fetchVenueOffers } from './search'
