@@ -48,6 +48,10 @@ import { ConsentSettings } from 'features/profile/pages/ConsentSettings'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData'
+import { Categories as SearchCategories } from 'features/search/pages/Categories'
+import { LocationFilter } from 'features/search/pages/LocationFilter'
+import { LocationPicker } from 'features/search/pages/LocationPicker'
+import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { env } from 'libs/environment'
 import { Link } from 'libs/navigation/Link'
 /** those screens are not yet web compatible */
@@ -67,10 +71,6 @@ import { Link } from 'libs/navigation/Link'
 // import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 // import { ConfirmDeleteProfile } from 'features/profile/pages/ConfirmDeleteProfile'
 // import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfileSuccess'
-// import { Categories as SearchCategories } from 'features/search/pages/Categories'
-// import { LocationFilter } from 'features/search/pages/LocationFilter'
-// import { LocationPicker } from 'features/search/pages/LocationPicker'
-// import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { ColorsEnum, Typo } from 'ui/theme'
 
 export const initialRouteName = 'TabNavigator'
@@ -218,8 +218,8 @@ export const routes: Array<Route> = [
   { name: 'LegalNotices', component: LegalNotices, path: '/legal-notices' },
   // { name: 'ConfirmDeleteProfile', component: ConfirmDeleteProfile },
   // { name: 'DeleteProfileSuccess', component: DeleteProfileSuccess },
-  // { name: 'LocationFilter', component: LocationFilter },
-  // { name: 'LocationPicker', component: LocationPicker },
+  { name: 'LocationFilter', component: LocationFilter, path: '/location/filter' },
+  { name: 'LocationPicker', component: LocationPicker, path: '/location/picker' },
   { name: 'Login', component: Login, hoc: withAsyncErrorBoundary, path: '/login' },
   { name: 'Maintenance', component: Maintenance, path: '/maintenance' },
   { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary, path: '/navigation' },
@@ -251,8 +251,8 @@ export const routes: Array<Route> = [
     hoc: withAsyncErrorBoundary,
     path: '/reset-password-expired-link',
   },
-  // { name: 'SearchCategories', component: SearchCategories },
-  // { name: 'SearchFilter', component: SearchFilter },
+  { name: 'SearchCategories', component: SearchCategories, path: '/search/categories' },
+  { name: 'SearchFilter', component: SearchFilter, path: '/search/filter' },
   { name: 'SetBirthday', component: SetBirthday, path: '/setbirthday' },
   { name: 'SetEmail', component: SetEmail, path: '/setemail' },
   { name: 'SetPassword', component: SetPassword, path: '/setpassword' },

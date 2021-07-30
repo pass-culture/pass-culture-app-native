@@ -373,6 +373,8 @@ module.exports = function (webpackEnv) {
               test: /\.(js|mjs|jsx|ts|tsx)$/,
               include: [
                 paths.appSrc,
+                /node_modules\/@ptomasroos\/react-native-multi-slider/,
+                /node_modules\/react-native-gesture-handler/,
                 /node_modules\/react-native-animatable/,
                 /node_modules\/@pass-culture\/id-check\/src/,
                 /id-check-front\/packages\/id-check\/src/,
