@@ -3,7 +3,7 @@ import Profiling from '@pass-culture/react-native-profiling'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
-import React, { useCallback, FC, useState, useMemo } from 'react'
+import React, { useCallback, useState, useMemo, memo } from 'react'
 import { Dimensions } from 'react-native'
 import TextInputMask from 'react-native-text-input-mask'
 import styled from 'styled-components/native'
@@ -52,7 +52,7 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
   'SetPhoneValidationCode'
 >
 
-export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route }) => {
+export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodeProps) => {
   const { data: settings } = useAppSettings()
   const { phoneNumber, countryCode } = route.params
   const { navigate, canGoBack, goBack } = useNavigation<UseNavigationType>()
@@ -269,7 +269,7 @@ export const SetPhoneValidationCode: FC<SetPhoneValidationCodeProps> = ({ route 
       />
     </React.Fragment>
   )
-}
+})
 
 const codeInputPlaceholder = ('0' + '\u00a0'.repeat(5)).repeat(5) + '0'
 const codeInputMask = ('[0]' + ' '.repeat(5)).repeat(5) + '[0]'

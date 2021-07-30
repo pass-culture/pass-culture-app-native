@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { memo, useContext, useEffect } from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { useAppStateChange } from 'libs/appState'
@@ -39,7 +39,11 @@ export const GeolocationContext = React.createContext<IGeolocationContext>({
   triggerPositionUpdate: () => undefined,
 })
 
-export const GeolocationWrapper = ({ children }: { children: JSX.Element }) => {
+export const GeolocationWrapper = memo(function GeolocationWrapper({
+  children,
+}: {
+  children: JSX.Element
+}) {
   const [position, setPosition] = useSafeState<GeoCoordinates | null>(null)
   const [positionError, setPositionError] = useSafeState<GeolocationError | null>(null)
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState>(
@@ -105,7 +109,7 @@ export const GeolocationWrapper = ({ children }: { children: JSX.Element }) => {
       {children}
     </GeolocationContext.Provider>
   )
-}
+})
 
 export function useGeolocation(): IGeolocationContext {
   return useContext(GeolocationContext)

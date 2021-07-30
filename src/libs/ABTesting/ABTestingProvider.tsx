@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { memo, createContext, useContext, useEffect, useState } from 'react'
 
 import { DEFAULT_REMOTE_CONFIG } from './ABTesting.constants'
 import { abTesting } from './ABTesting.services'
@@ -10,7 +10,7 @@ export function useABTestingContext() {
   return useContext<CustomRemoteConfig>(Context)
 }
 
-export function ABTestingProvider(props: { children: JSX.Element }) {
+export const ABTestingProvider = memo(function ABTestingProvider(props: { children: JSX.Element }) {
   const [contextValue, setContextValue] = useState<CustomRemoteConfig>(DEFAULT_REMOTE_CONFIG)
 
   useEffect(() => {
@@ -24,4 +24,4 @@ export function ABTestingProvider(props: { children: JSX.Element }) {
   }, [])
 
   return <Context.Provider value={contextValue}>{props.children}</Context.Provider>
-}
+})

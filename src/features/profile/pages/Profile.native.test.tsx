@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import React from 'react'
+import React, { NamedExoticComponent } from 'react'
 import { GeoCoordinates, PositionError } from 'react-native-geolocation-service'
 import { UseQueryResult } from 'react-query'
 
@@ -283,7 +283,7 @@ const bottomScrollEvent = {
 }
 
 interface Options {
-  wrapper?: (({ children }: { children: JSX.Element }) => JSX.Element) | undefined
+  wrapper?: NamedExoticComponent<{ children: JSX.Element }> | undefined
 }
 
 const defaultOptions = {

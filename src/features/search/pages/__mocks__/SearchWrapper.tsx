@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { View } from 'react-native'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 
 import { SearchWrapper as ActualSearchWrapper } from '../SearchWrapper'
 
-export const SearchWrapper: typeof ActualSearchWrapper = ({ children }) => <View>{children}</View>
+export const SearchWrapper: typeof ActualSearchWrapper = memo(({ children }) => <View>{children}</View>)
 
 export const useSearch = () => ({
     searchState: initialSearchState,

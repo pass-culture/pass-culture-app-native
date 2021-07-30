@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext } from 'react'
+import { createContext, useCallback, useContext, memo } from 'react'
 import React from 'react'
 import SplashScreen from 'react-native-splash-screen'
 
@@ -15,7 +15,9 @@ export function useSplashScreenContext() {
   return useContext<SplashScreenContext>(SplashScreenContext)
 }
 
-export function SplashScreenProvider(props: { children: JSX.Element }) {
+export const SplashScreenProvider = memo(function SplashScreenProvider(props: {
+  children: JSX.Element
+}) {
   const [isSplashScreenHidden, setIsSplashScreenHidden] = useSafeState<boolean>(false)
 
   const hideSplashScreen = useCallback(() => {
@@ -28,4 +30,4 @@ export function SplashScreenProvider(props: { children: JSX.Element }) {
       {props.children}
     </SplashScreenContext.Provider>
   )
-}
+})
