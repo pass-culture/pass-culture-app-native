@@ -30,6 +30,8 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import FilterSwitch from 'ui/components/FilterSwitch'
+import { Hero } from 'ui/components/hero/Hero'
+import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { CodeInput } from 'ui/components/inputs/CodeInput'
 import { DateInput, DatePartType } from 'ui/components/inputs/DateInput'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
@@ -257,6 +259,32 @@ export const AppComponents: FunctionComponent = () => {
 
       <Divider />
 
+      {/* Heros */}
+      <AccordionItem title="Heros">
+        {/* Default Hero */}
+        <Typo.Title4>Default Hero - Offer</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <Hero imageUrl={''} />
+        <Spacer.Column numberOfSpaces={4} />
+        {/* Landscape Hero */}
+        <Typo.Title4>Landscape Hero - Venue</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <Hero imageUrl={''} isLandscapeHero />
+      </AccordionItem>
+
+      <Divider />
+
+      {/* ImagePlaceholder */}
+      <AccordionItem title="ImagePlaceholder">
+        <ImagePlaceholder
+          categoryName={CategoryNameEnum.MUSIQUE}
+          size={getSpacing(24)}
+          borderRadius={4}
+        />
+      </AccordionItem>
+
+      <Divider />
+
       {/* Modals */}
       <AccordionItem title="Modals">
         <TouchableOpacity onPress={showBasicModal}>
@@ -281,9 +309,20 @@ export const AppComponents: FunctionComponent = () => {
       <Divider />
 
       {/* Sections */}
-      <SectionWithDivider visible margin>
-        <View />
-      </SectionWithDivider>
+      <AccordionItem title="Sections">
+        <SectionWithDivider visible margin>
+          <View>
+            <Typo.Title4>Section with divider</Typo.Title4>
+            <Typo.Body>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quas aut laborum,
+              dolor sapiente quos doloribus sequi reprehenderit ullam porro rem corrupti libero
+              repellendus nam vel suscipit consequuntur blanditiis omnis.
+            </Typo.Body>
+          </View>
+        </SectionWithDivider>
+      </AccordionItem>
+
+      <Divider />
 
       {/* Switches */}
       <AccordionItem title="Switches">
