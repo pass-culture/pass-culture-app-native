@@ -1,9 +1,13 @@
 import React from 'react'
-import { GeoCoordinates, PositionError } from 'react-native-geolocation-service'
 
 import { initialSearchState } from 'features/search/pages/reducer'
-import { GeolocPermissionState } from 'libs/geolocation'
-import { GeolocationError, GEOLOCATION_USER_ERROR_MESSAGE } from 'libs/geolocation/getPosition'
+import {
+  GeolocPositionError,
+  GeolocPermissionState,
+  GeolocationError,
+  GeoCoordinates,
+  GEOLOCATION_USER_ERROR_MESSAGE,
+} from 'libs/geolocation'
 import { fireEvent, render } from 'tests/utils'
 
 import { LocationFilter } from '../LocationFilter'
@@ -47,8 +51,8 @@ describe('LocationFilter component', () => {
   it('should display error message when (position=null, type=AROUND_ME)', async () => {
     mockPosition = null
     mockPositionError = {
-      type: PositionError.SETTINGS_NOT_SATISFIED,
-      message: GEOLOCATION_USER_ERROR_MESSAGE[PositionError.SETTINGS_NOT_SATISFIED],
+      type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
+      message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     }
     const { getByText, getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-aroundMe'))

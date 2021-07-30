@@ -1,7 +1,7 @@
 import { Platform } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 
-import { GeolocPermissionState } from './permissionState.d'
+import { GeolocPermissionState } from './enums'
 import { requestGeolocPermission } from './requestGeolocPermission.ios'
 
 describe('requestGeolocPermission ios', () => {

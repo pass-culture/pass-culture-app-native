@@ -4,7 +4,6 @@ import { GeoPosition, GeoError } from 'react-native-geolocation-service'
 export const EiffelTourCoordinates = {
   latitude: 48.85,
   longitude: 2.29,
-  altitude: 100,
 }
 
 export const getCurrentPositionFail = (

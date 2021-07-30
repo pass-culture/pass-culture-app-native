@@ -9,14 +9,21 @@ import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
+import { GeolocPermissionState } from '../enums'
 import { useGeolocation } from '../GeolocationWrapper'
-import { GeolocPermissionState } from '../permissionState.d'
 
 type Props = {
   hideGeolocPermissionModal: () => void
   isGeolocPermissionModalVisible: boolean
   onPressGeolocPermissionModalButton: () => void
 }
+
+const informationText = Platform.select({
+  android: t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation.`,
+  ios: t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone.`,
+  web: t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton navigateur.`,
+})
+const isNative = Platform.OS === 'android' || Platform.OS === 'ios'
 
 export const GeolocationActivationModal: React.FC<Props> = ({
   isGeolocPermissionModalVisible,
@@ -45,20 +52,17 @@ export const GeolocationActivationModal: React.FC<Props> = ({
           {t`Retrouve toutes les offres autour de chez toi en activant les données de localisation.`}
         </InformationText>
         <Spacer.Column numberOfSpaces={4} />
-
-        <InformationText>
-          {Platform.OS === 'android'
-            ? t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation.`
-            : t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone.`}
-        </InformationText>
+        <InformationText>{informationText}</InformationText>
         <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary
-          title={callToActionMessage}
-          onPress={() => {
-            analytics.logOpenLocationSettings()
-            onPressGeolocPermissionModalButton()
-          }}
-        />
+        {isNative ? (
+          <ButtonPrimary
+            title={callToActionMessage}
+            onPress={() => {
+              analytics.logOpenLocationSettings()
+              onPressGeolocPermissionModalButton()
+            }}
+          />
+        ) : null}
       </React.Fragment>
     </AppInformationModal>
   )

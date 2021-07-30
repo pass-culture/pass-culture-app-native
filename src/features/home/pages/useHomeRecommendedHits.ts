@@ -1,9 +1,8 @@
-import { GeoCoordinates } from 'react-native-geolocation-service'
 import { useQuery } from 'react-query'
 
 import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
-import { useGeolocation } from 'libs/geolocation'
+import { GeoCoordinates, useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useFetchHits } from 'libs/search'
 

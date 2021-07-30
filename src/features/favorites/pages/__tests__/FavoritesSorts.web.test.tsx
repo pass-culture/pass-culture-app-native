@@ -1,11 +1,15 @@
 import React from 'react'
-import { GeoCoordinates, PositionError } from 'react-native-geolocation-service'
 import waitForExpect from 'wait-for-expect'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState } from 'libs/geolocation'
-import { GeolocationError, GEOLOCATION_USER_ERROR_MESSAGE } from 'libs/geolocation/getPosition'
+import {
+  GeolocPositionError,
+  GeolocPermissionState,
+  GeolocationError,
+  GeoCoordinates,
+  GEOLOCATION_USER_ERROR_MESSAGE,
+} from 'libs/geolocation'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils/web'
 
 import { FavoriteSortBy, FavoritesSorts } from '../FavoritesSorts'
@@ -79,8 +83,8 @@ describe('FavoritesSorts component', () => {
   it('should display error message when clicking on "Proximité géographique" and position is unavailable', async () => {
     mockPosition = null
     mockPositionError = {
-      type: PositionError.SETTINGS_NOT_SATISFIED,
-      message: GEOLOCATION_USER_ERROR_MESSAGE[PositionError.SETTINGS_NOT_SATISFIED],
+      type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
+      message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     }
     const renderAPI = await renderFavoritesSort()
 

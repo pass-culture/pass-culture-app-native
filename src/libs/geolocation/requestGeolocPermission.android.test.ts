@@ -1,6 +1,6 @@
 import { Permission, PermissionsAndroid, PermissionStatus, Platform } from 'react-native'
 
-import { GeolocPermissionState } from './permissionState.d'
+import { GeolocPermissionState } from './enums'
 import { requestGeolocPermission } from './requestGeolocPermission.android'
 
 describe('requestGeolocPermission android', () => {

@@ -1,39 +1,24 @@
 import React, { memo, useContext, useEffect } from 'react'
-import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { useAppStateChange } from 'libs/appState'
 import { useSafeState } from 'libs/hooks'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
-import { getPosition, GeolocationError } from './getPosition'
-import { GeolocPermissionState } from './permissionState.d'
+import { GeolocPermissionState } from './enums'
+import { getPosition } from './getPosition'
 import { requestGeolocPermission } from './requestGeolocPermission'
-
-type RequestGeolocPermissionParams = {
-  onAcceptance?: () => void
-  onRefusal?: () => void
-  onSubmit?: () => void
-}
-
-export interface IGeolocationContext {
-  position: GeoCoordinates | null
-  positionError: GeolocationError | null
-  setPosition: (position: GeoCoordinates | null) => void
-  permissionState: GeolocPermissionState
-  requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
-  checkGeolocPermission: () => Promise<void>
-  triggerPositionUpdate: () => void
-}
+import {
+  GeolocationError,
+  GeoCoordinates,
+  IGeolocationContext,
+  RequestGeolocPermissionParams,
+} from './types'
 
 export const GeolocationContext = React.createContext<IGeolocationContext>({
   position: null,
   positionError: null,
-  setPosition: () => undefined,
   permissionState: GeolocPermissionState.DENIED,
   requestGeolocPermission: async () => {
-    // nothing
-  },
-  checkGeolocPermission: async () => {
     // nothing
   },
   triggerPositionUpdate: () => undefined,
@@ -100,10 +85,8 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
       value={{
         position,
         positionError,
-        setPosition,
         permissionState,
         requestGeolocPermission: contextualRequestGeolocPermission,
-        checkGeolocPermission: contextualCheckPermission,
         triggerPositionUpdate,
       }}>
       {children}
