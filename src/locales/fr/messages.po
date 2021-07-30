@@ -956,6 +956,10 @@ msgstr "Offre réservée"
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
+#: src/features/venue/components/VenueOffers.tsx
+msgid "Offres"
+msgstr "Offres"
+
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 #: src/features/auth/signup/BeneficiaryRequestSent/BeneficiaryRequestSent.tsx
 msgid "On y va !"
