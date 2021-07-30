@@ -13,7 +13,6 @@ interface Props {
   borderRadius?: number
 }
 
-// TODO: factoriser avec ui/components/ImagePlaceholder
 export const ImagePlaceholder: React.FC<Props> = ({
   categoryName,
   size,
@@ -25,7 +24,7 @@ export const ImagePlaceholder: React.FC<Props> = ({
     <StyledLinearGradient
       colors={[ColorsEnum.GREY_LIGHT, ColorsEnum.GREY_MEDIUM]}
       borderRadius={borderRadius}
-      testID="offerPlaceholder">
+      testID="imagePlaceholder">
       <CategoryIcon testID="categoryIcon" size={size} color={ColorsEnum.GREY_MEDIUM} />
     </StyledLinearGradient>
   )

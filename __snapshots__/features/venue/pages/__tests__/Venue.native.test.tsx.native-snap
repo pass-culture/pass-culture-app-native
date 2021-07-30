@@ -29,27 +29,121 @@ exports[`<Venue /> should match snapshot 1`] = `
   >
     <View>
       <View
-        customHeight={16}
         style={
           Array [
             Object {
-              "height": 16,
+              "alignItems": "center",
+              "minHeight": 0,
             },
           ]
         }
-      />
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "position": "absolute",
+              },
+            ]
+          }
+        >
+          <View
+            height={312}
+            testID="BackgroundPlaceholder"
+            width={751}
+          >
+            <Text>
+              BackgroundPlaceholder-SVG-Mock
+            </Text>
+          </View>
+          <View
+            height={8}
+            width={751}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={22}
+          style={
+            Array [
+              Object {
+                "height": 88,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "borderRadius": 8,
+                "bottom": 0,
+                "height": 316,
+                "shadowColor": "#151515",
+                "shadowOffset": Object {
+                  "height": 8,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 12,
+                "width": 212,
+              },
+            ]
+          }
+        >
+          <BVLinearGradient
+            borderRadius={8}
+            colors={
+              Array [
+                4294309365,
+                4291282892,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              Object {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderRadius": 8,
+                  "height": "100%",
+                  "justifyContent": "center",
+                  "width": "100%",
+                },
+              ]
+            }
+            testID="imagePlaceholder"
+          >
+            <View
+              fill="#c7c7cc"
+              height={96}
+              testID="categoryIcon"
+              width={96}
+            >
+              <Text>
+                categoryIcon-SVG-Mock
+              </Text>
+            </View>
+          </BVLinearGradient>
+        </View>
+      </View>
       <View
-        customHeight={16}
-        style={
-          Array [
-            Object {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        customHeight={16}
+        numberOfSpaces={4}
         style={
           Array [
             Object {

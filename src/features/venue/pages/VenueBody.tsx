@@ -3,6 +3,7 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CategoryNameEnum } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { VenueOffers } from 'features/venue/components/VenueOffers'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
@@ -10,9 +11,10 @@ import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { Spacer, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useVenue } from '../api/useVenue'
+import { VenueHero } from '../components/VenueHero'
 
 interface Props {
   venueId: number
@@ -43,11 +45,8 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      {/* TODO(antoinewg) remove the topscreens when adding the image */}
-      <Spacer.TopScreen />
-      <Spacer.TopScreen />
-      <Spacer.TopScreen />
-
+      <VenueHero categoryName={CategoryNameEnum.MUSIQUE} imageUrl="" />
+      <Spacer.Column numberOfSpaces={4} />
       <MarginContainer>
         <VenueTitle
           testID="venueTitle"
