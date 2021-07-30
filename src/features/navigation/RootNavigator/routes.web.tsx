@@ -44,7 +44,9 @@ import { linking as tabNavigatorLinking } from 'features/navigation/TabBar/route
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
+import { ConfirmDeleteProfile } from 'features/profile/pages/ConfirmDeleteProfile'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings'
+import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfileSuccess'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData'
@@ -69,8 +71,6 @@ import { Link } from 'libs/navigation/Link'
 // import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 // import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 // import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
-// import { ConfirmDeleteProfile } from 'features/profile/pages/ConfirmDeleteProfile'
-// import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfileSuccess'
 import { ColorsEnum, Typo } from 'ui/theme'
 
 export const initialRouteName = 'TabNavigator'
@@ -157,6 +157,12 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     <Link to={'/signup-confirmation-expired-link'}>
       <Text>SignupConfirmationExpiredLink</Text>
     </Link>
+    <Link to={'/profile/delete'}>
+      <Text>ConfirmDeleteProfile</Text>
+    </Link>
+    <Link to={'/profile/delete/success'}>
+      <Text>DeleteProfileSuccess</Text>
+    </Link>
     <Link to={'/favorites'}>
       <Text>Favorites</Text>
     </Link>
@@ -216,8 +222,12 @@ export const routes: Array<Route> = [
   },
   // { name: 'IdCheck', component: IdCheck, hoc: withIdCheckAsyncErrorBoundary },
   { name: 'LegalNotices', component: LegalNotices, path: '/legal-notices' },
-  // { name: 'ConfirmDeleteProfile', component: ConfirmDeleteProfile },
-  // { name: 'DeleteProfileSuccess', component: DeleteProfileSuccess },
+  { name: 'ConfirmDeleteProfile', component: ConfirmDeleteProfile, path: '/profile/delete' },
+  {
+    name: 'DeleteProfileSuccess',
+    component: DeleteProfileSuccess,
+    path: '/profile/delete/success',
+  },
   { name: 'LocationFilter', component: LocationFilter, path: '/location/filter' },
   { name: 'LocationPicker', component: LocationPicker, path: '/location/picker' },
   { name: 'Login', component: Login, hoc: withAsyncErrorBoundary, path: '/login' },
