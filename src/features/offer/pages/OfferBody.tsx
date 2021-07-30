@@ -10,7 +10,6 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
-import { OfferHero } from 'features/offer/components/OfferHero'
 import { ReportOfferDescriptionModal } from 'features/offer/components/ReportOfferDescriptionModal'
 import { ReportOfferOtherReasonModal } from 'features/offer/components/ReportOfferOtherReasonModal'
 import { ReportOfferReasonModal } from 'features/offer/components/ReportOfferReasonModal'
@@ -22,6 +21,7 @@ import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { QueryKeys } from 'libs/queryKeys'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { Hero } from 'ui/components/hero/Hero'
 import { useModal } from 'ui/components/modals/useModal'
 import { useModalNavigation } from 'ui/components/modals/useModalNavigation'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -98,7 +98,7 @@ export const OfferBody: FunctionComponent<{
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      <OfferHero categoryName={category.name} imageUrl={offerResponse.image?.url || ''} />
+      <Hero categoryName={category.name} imageUrl={offerResponse.image?.url || ''} />
       <Spacer.Column numberOfSpaces={4} />
       <LocationCaption venue={venue} isDigital={offerResponse.isDigital} />
       <Spacer.Column numberOfSpaces={2} />
