@@ -49,7 +49,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
         >
           <View
-            height={243.69230769230768}
+            height={227.42857142857144}
             testID="BackgroundPlaceholder"
             width={751}
           >
@@ -67,11 +67,11 @@ exports[`<Venue /> should match snapshot 1`] = `
           </View>
         </View>
         <View
-          numberOfSpaces={24}
+          numberOfSpaces={25}
           style={
             Array [
               Object {
-                "height": 96,
+                "height": 100,
               },
             ]
           }
@@ -91,7 +91,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               },
               Object {
                 "borderRadius": 8,
-                "height": 252,
+                "height": 232,
                 "width": 702,
               },
             ]

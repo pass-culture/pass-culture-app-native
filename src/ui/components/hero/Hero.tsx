@@ -1,53 +1,60 @@
 import React, { useMemo } from 'react'
-import { Dimensions } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
+import { HeroLandscape } from 'ui/components/hero/HeroLandscape'
+import { HeroPortrait } from 'ui/components/hero/HeroPortrait'
+import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
+import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
 
-import { ImagePlaceholder } from '../../components/ImagePlaceholder'
-import { ColorsEnum, getSpacing, Spacer, getShadow } from '../../theme'
-import { BorderRadiusEnum } from '../../theme/grid'
-import { useCustomSafeInsets } from '../../theme/useCustomSafeInsets'
-
-import { blurImageHeight, HeroHeader } from './HeroHeader'
+import { HeroHeader } from './HeroHeader'
 
 interface Props {
   imageUrl: string
   categoryName?: CategoryNameEnum | null
-  isLandscapeHero?: boolean | false
+  landscape?: boolean | false
 }
 
-export const Hero: React.FC<Props> = ({ imageUrl, categoryName, isLandscapeHero }) => {
-  const { top } = useCustomSafeInsets()
+export const Hero: React.FC<Props> = ({ imageUrl, categoryName, landscape }) => {
   const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
+  const heroLandscape = HeroLandscape()
+  const heroPortrait = HeroPortrait()
 
-  const numberOfSpacesColumn = isLandscapeHero ? 24 : 22
-
-  const imageHeightBackground = isLandscapeHero
-    ? blurImageHeight / 1.3 + top
-    : blurImageHeight + top
-
-  const columnMargin = 2 * 6
-  const { width } = Dimensions.get('window')
-  const imageWidth = isLandscapeHero ? width - getSpacing(columnMargin) : getSpacing(53)
-  const imageHeight = isLandscapeHero ? getSpacing(63) : getSpacing(79)
-
-  const imageStyle = {
-    borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-    height: imageHeight,
-    width: imageWidth,
+  if (landscape) {
+    return (
+      <HeroHeader
+        imageHeight={heroLandscape.imageHeightBackground}
+        categoryName={categoryName}
+        imageUrl={imageUrl || ''}>
+        <Spacer.Column numberOfSpaces={heroLandscape.numberOfSpacesColumn} />
+        <ImageContainer style={heroLandscape.imageStyle} testID="image-container">
+          {imageUrl ? (
+            <FastImage
+              style={heroLandscape.imageStyle}
+              source={source}
+              resizeMode={FastImage.resizeMode.cover}
+            />
+          ) : (
+            <ImagePlaceholder categoryName={categoryName || null} size={getSpacing(24)} />
+          )}
+        </ImageContainer>
+      </HeroHeader>
+    )
   }
-
   return (
     <HeroHeader
-      imageHeight={imageHeightBackground}
+      imageHeight={heroPortrait.imageHeightBackground}
       categoryName={categoryName}
       imageUrl={imageUrl || ''}>
-      <Spacer.Column numberOfSpaces={numberOfSpacesColumn} />
-      <ImageContainer style={imageStyle} testID="image-container">
+      <Spacer.Column numberOfSpaces={heroPortrait.numberOfSpacesColumn} />
+      <ImageContainer style={heroPortrait.imageStyle} testID="image-container">
         {imageUrl ? (
-          <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
+          <FastImage
+            style={heroPortrait.imageStyle}
+            source={source}
+            resizeMode={FastImage.resizeMode.cover}
+          />
         ) : (
           <ImagePlaceholder categoryName={categoryName || null} size={getSpacing(24)} />
         )}
