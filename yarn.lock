@@ -207,7 +207,7 @@
     semver "^6.3.0"
     source-map "^0.5.0"
 
-"@babel/core@^7.11.1":
+"@babel/core@^7.11.1", "@babel/core@^7.8.4":
   version "7.14.8"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.14.8.tgz#20cdf7c84b5d86d83fac8710a8bc605a7ba3f010"
   integrity sha512-/AtaeEhT6ErpDhInbXmjHcUQXH0L0TEgscfcxk1qbOvLuKCa5aZT0SOOtDKFY96/CLROwbLSKyFor6idgNaU4Q==
@@ -1849,14 +1849,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-transform-react-display-name@^7.14.5":
-  version "7.14.5"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-display-name/-/plugin-transform-react-display-name-7.14.5.tgz#baa92d15c4570411301a85a74c13534873885b65"
-  integrity sha512-07aqY1ChoPgIxsuDviptRpVkWCSbXWmzQqcgy65C6YSFOfPFvb/DX3bBRHh7pCd/PMEEYHYWUTSVkCbkVainYQ==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.14.5"
-
-"@babel/plugin-transform-react-jsx-development@^7.12.1", "@babel/plugin-transform-react-jsx-development@^7.14.5":
+"@babel/plugin-transform-react-jsx-development@^7.12.1":
   version "7.14.5"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-development/-/plugin-transform-react-jsx-development-7.14.5.tgz#1a6c73e2f7ed2c42eebc3d2ad60b0c7494fcb9af"
   integrity sha512-rdwG/9jC6QybWxVe2UVOa7q6cnTpw8JRRHOxntG/h6g/guAOe6AhtQHJuJh5FwmnXIT1bdm5vC2/5huV8ZOorQ==
@@ -1939,14 +1932,6 @@
   dependencies:
     "@babel/helper-annotate-as-pure" "^7.10.4"
     "@babel/helper-plugin-utils" "^7.10.4"
-
-"@babel/plugin-transform-react-pure-annotations@^7.14.5":
-  version "7.14.5"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-pure-annotations/-/plugin-transform-react-pure-annotations-7.14.5.tgz#18de612b84021e3a9802cbc212c9d9f46d0d11fc"
-  integrity sha512-3X4HpBJimNxW4rhUy/SONPyNQHp5YRr0HhJdT2OH1BRp0of7u3Dkirc7x9FRJMKMqTBI079VZ1hzv7Ouuz///g==
-  dependencies:
-    "@babel/helper-annotate-as-pure" "^7.14.5"
-    "@babel/helper-plugin-utils" "^7.14.5"
 
 "@babel/plugin-transform-regenerator@^7.0.0":
   version "7.7.4"
@@ -2358,18 +2343,6 @@
     "@babel/plugin-transform-react-jsx-self" "^7.12.1"
     "@babel/plugin-transform-react-jsx-source" "^7.12.1"
     "@babel/plugin-transform-react-pure-annotations" "^7.12.1"
-
-"@babel/preset-react@^7.12.10":
-  version "7.14.5"
-  resolved "https://registry.yarnpkg.com/@babel/preset-react/-/preset-react-7.14.5.tgz#0fbb769513f899c2c56f3a882fa79673c2d4ab3c"
-  integrity sha512-XFxBkjyObLvBaAvkx1Ie95Iaq4S/GUEIrejyrntQ/VCMKUYvKLoyKxOBzJ2kjA3b6rC9/KL6KXfDC2GqvLiNqQ==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.14.5"
-    "@babel/helper-validator-option" "^7.14.5"
-    "@babel/plugin-transform-react-display-name" "^7.14.5"
-    "@babel/plugin-transform-react-jsx" "^7.14.5"
-    "@babel/plugin-transform-react-jsx-development" "^7.14.5"
-    "@babel/plugin-transform-react-pure-annotations" "^7.14.5"
 
 "@babel/preset-react@^7.12.5":
   version "7.12.5"
@@ -16768,16 +16741,13 @@ sanitize.css@*:
   resolved "https://registry.yarnpkg.com/sanitize.css/-/sanitize.css-12.0.1.tgz#f20369357557ba2b41d7278eeb3ea691a3bee514"
   integrity sha512-QbusSBnWHaRBZeTxsJyknwI0q+q6m1NtLBmB76JfW/rdVN7Ws6Zz70w65+430/ouVcdNVT3qwrDgrM6PaYyRtw==
 
-sass-loader@^10.0.5:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-10.2.0.tgz#3d64c1590f911013b3fa48a0b22a83d5e1494716"
-  integrity sha512-kUceLzC1gIHz0zNJPpqRsJyisWatGYNFRmv2CKZK2/ngMJgLqxTbXwe/hJ85luyvZkgqU3VlJ33UVF2T/0g6mw==
+sass-loader@^11.0.1:
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-11.1.1.tgz#0db441bbbe197b2af96125bebb7f4be6476b13a7"
+  integrity sha512-fOCp/zLmj1V1WHDZbUbPgrZhA7HKXHEqkslzB+05U5K9SbSbcmH91C7QLW31AsXikxUMaxXRhhcqWZAxUMLDyA==
   dependencies:
     klona "^2.0.4"
-    loader-utils "^2.0.0"
     neo-async "^2.6.2"
-    schema-utils "^3.0.0"
-    semver "^7.3.2"
 
 sax@0.5.x:
   version "0.5.8"
