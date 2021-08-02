@@ -5,6 +5,8 @@ import { ColorsEnum } from 'ui/theme'
 
 import { BicolorIconInterface } from './types'
 
+const LINEAR_GRADIENT_ID = 'BicolorSelector-LinearGradient'
+
 export const computeBicolorSelectorHeight = (width: number) => Math.ceil((3 / 44) * width)
 
 export const BicolorSelector: React.FC<
@@ -19,7 +21,12 @@ export const BicolorSelector: React.FC<
       accessible={accessible}
       accessibilityLabel={accessibilityLabel}>
       <Defs>
-        <LinearGradient id="prefix__a" x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
+        <LinearGradient
+          id={LINEAR_GRADIENT_ID}
+          x1="-42.969%"
+          x2="153.672%"
+          y1="52.422%"
+          y2="52.422%">
           <Stop offset="0%" stopColor={color ?? ColorsEnum.PRIMARY} />
           <Stop offset="100%" stopColor={color2 ?? color ?? ColorsEnum.SECONDARY} />
         </LinearGradient>
@@ -27,7 +34,7 @@ export const BicolorSelector: React.FC<
       <Path
         d="M310 0h44v1a2 2 0 01-2 2h-40a2 2 0 01-2-2V0z"
         transform="translate(-310)"
-        fill="url(#prefix__a)"
+        fill={`url(#${LINEAR_GRADIENT_ID})`}
         fillRule="nonzero"
       />
     </Svg>
