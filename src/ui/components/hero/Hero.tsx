@@ -3,8 +3,7 @@ import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
-import { HeroLandscape } from 'ui/components/hero/HeroLandscape'
-import { HeroPortrait } from 'ui/components/hero/HeroPortrait'
+import { useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
 
@@ -18,43 +17,16 @@ interface Props {
 
 export const Hero: React.FC<Props> = ({ imageUrl, categoryName, landscape }) => {
   const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
-  const heroLandscape = HeroLandscape()
-  const heroPortrait = HeroPortrait()
-
-  if (landscape) {
-    return (
-      <HeroHeader
-        imageHeight={heroLandscape.imageHeightBackground}
-        categoryName={categoryName}
-        imageUrl={imageUrl || ''}>
-        <Spacer.Column numberOfSpaces={heroLandscape.numberOfSpacesColumn} />
-        <ImageContainer style={heroLandscape.imageStyle} testID="image-container">
-          {imageUrl ? (
-            <FastImage
-              style={heroLandscape.imageStyle}
-              source={source}
-              resizeMode={FastImage.resizeMode.cover}
-            />
-          ) : (
-            <ImagePlaceholder categoryName={categoryName || null} size={getSpacing(24)} />
-          )}
-        </ImageContainer>
-      </HeroHeader>
-    )
-  }
+  const { numberOfSpacesColumn, backgroundHeight, imageStyle } = useHeroDimensions(!!landscape)
   return (
     <HeroHeader
-      imageHeight={heroPortrait.imageHeightBackground}
+      imageHeight={backgroundHeight}
       categoryName={categoryName}
       imageUrl={imageUrl || ''}>
-      <Spacer.Column numberOfSpaces={heroPortrait.numberOfSpacesColumn} />
-      <ImageContainer style={heroPortrait.imageStyle} testID="image-container">
+      <Spacer.Column numberOfSpaces={numberOfSpacesColumn} />
+      <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (
-          <FastImage
-            style={heroPortrait.imageStyle}
-            source={source}
-            resizeMode={FastImage.resizeMode.cover}
-          />
+          <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
         ) : (
           <ImagePlaceholder categoryName={categoryName || null} size={getSpacing(24)} />
         )}
