@@ -6,6 +6,7 @@
   "engines": {
     "node": ">=12.13.0 <13.0.0"
   },
+  "homepage": "http://localhost:3000",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -193,6 +194,19 @@
     "@typescript-eslint/parser": "^4.8.2",
     "@vue/preload-webpack-plugin": "^2.0.0",
     "@welldone-software/why-did-you-render": "^6.0.0-rc.1",
+    "web-vitals": "^2.1.0",
+    "workbox-background-sync": "^6.1.5",
+    "workbox-broadcast-update": "^6.1.5",
+    "workbox-cacheable-response": "^6.1.5",
+    "workbox-core": "^6.1.5",
+    "workbox-expiration": "^6.1.5",
+    "workbox-google-analytics": "^6.1.5",
+    "workbox-navigation-preload": "^6.1.5",
+    "workbox-precaching": "^6.1.5",
+    "workbox-range-requests": "^6.1.5",
+    "workbox-routing": "^6.1.5",
+    "workbox-strategies": "^6.1.5",
+    "workbox-streams": "^6.1.5",
     "appcenter-cli": "2.7.3",
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
