@@ -22,7 +22,6 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
-import { interpolationConfig } from 'ui/components/headers/animationHelpers'
 import { blurImageHeight, HeroHeader } from 'ui/components/hero/HeroHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'

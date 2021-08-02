@@ -269,7 +269,7 @@ export const AppComponents: FunctionComponent = () => {
         {/* Landscape Hero */}
         <Typo.Title4>Landscape Hero - Venue</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <Hero imageUrl={''} isLandscapeHero />
+        <Hero imageUrl={''} landscape />
       </AccordionItem>
 
       <Divider />
