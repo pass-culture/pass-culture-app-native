@@ -3,6 +3,8 @@ import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 
 import { RectangleIconInterface } from './icons/types'
 
+const LINEAR_GRADIENT_ID = 'BackgroundPlaceholder-LinearGradient'
+
 export const BackgroundPlaceholder: React.FC<RectangleIconInterface> = ({
   height = 32,
   width = 38,
@@ -16,12 +18,12 @@ export const BackgroundPlaceholder: React.FC<RectangleIconInterface> = ({
       testID={testID}
       preserveAspectRatio="none">
       <Defs>
-        <LinearGradient id="prefix__a" x1="50%" x2="50%" y1="0%" y2="100%">
+        <LinearGradient id={LINEAR_GRADIENT_ID} x1="50%" x2="50%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor="#ECF0F1" />
           <Stop offset="100%" stopColor="#C7C7CC" />
         </LinearGradient>
       </Defs>
-      <Path d="M0 0h375v317H0z" fill="url(#prefix__a)" fillRule="evenodd" />
+      <Path d="M0 0h375v317H0z" fill={`url(#${LINEAR_GRADIENT_ID})`} fillRule="evenodd" />
     </Svg>
   )
 }

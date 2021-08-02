@@ -235,30 +235,46 @@
       preserveAspectRatio="none"
     >
       <defs>
-        <linearGradient id="prefix__b" x1="65.805%" x2="47.731%" y1="26.588%" y2="116.28%">
+        <linearGradient
+          id="loading-svg-linear-gradient-1"
+          x1="65.805%"
+          x2="47.731%"
+          y1="26.588%"
+          y2="116.28%"
+        >
           <stop offset="0%" stop-color="#EB0055" />
           <stop offset="100%" stop-color="#320096" />
         </linearGradient>
-        <linearGradient id="prefix__d" x1="29.678%" x2="32.571%" y1="71.761%" y2="14.036%">
+        <linearGradient
+          id="loading-svg-linear-gradient-2"
+          x1="29.678%"
+          x2="32.571%"
+          y1="71.761%"
+          y2="14.036%"
+        >
           <stop offset="0%" stop-color="#EB0055" />
           <stop offset="100%" stop-color="#320096" />
         </linearGradient>
-        <path id="prefix__a" d="M0 0h375v667H0z" />
+        <path id="loading-svg-path-1" d="M0 0h375v667H0z" />
         <path
-          id="prefix__e"
+          id="loading-svg-path-2"
           d="M574.848 685.018c44.64 237.462 197.943-58.73 172.765-186.83-25.178-128.1-120.317-395.218-387.196-385.031-266.88 10.187-281.873 242.282-174.83 360.46 107.043 118.179 344.621-26.06 389.26 211.401z"
         />
       </defs>
       <g fill="none" fill-rule="evenodd">
-        <mask id="prefix__c" fill="#fff">
-          <use xlinkHref="#prefix__a" />
+        <mask id="loading-svg-mask" fill="#fff">
+          <use xlinkHref="#loading-svg-path-1" />
         </mask>
-        <use fill="url(#prefix__b)" transform="matrix(-1 0 0 1 375 0)" xlink:href="#prefix__a" />
-        <g mask="url(#prefix__c)">
+        <use
+          fill="url(#loading-svg-linear-gradient-1)"
+          transform="matrix(-1 0 0 1 375 0)"
+          xlink:href="#loading-svg-path-1"
+        />
+        <g mask="url(#loading-svg-mask)">
           <use
-            fill="url(#prefix__d)"
+            fill="url(#loading-svg-linear-gradient-2)"
             transform="rotate(-150 256.422 462.025)"
-            xlink:href="#prefix__e"
+            xlink:href="#loading-svg-path-2"
           />
         </g>
       </g>
