@@ -8,6 +8,10 @@ export interface Environment {
   APP_SEARCH_ENDPOINT: string
   APP_SEARCH_KEY: string
   APPS_FLYER_DEV_KEY: string
+  BATCH_API_KEY_WEB: string
+  BATCH_AUTH_KEY: string
+  BATCH_SUBDOMAIN: string
+  BATCH_VAPID_PUBLIC_KEY: string
   CGU_LINK: string
   CONTENTFUL_ACCESS_TOKEN: string
   CONTENTFUL_ENVIRONMENT: string
