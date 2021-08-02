@@ -1,23 +1,25 @@
 import * as React from 'react'
 import { Dimensions } from 'react-native'
 import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
+import { v1 as uuidv1 } from 'uuid'
 
 import { getSpacing } from '../theme'
 
-const LINEAR_GRADIENT_1_ID = 'HeaderBackground-LinearGradient1'
-const LINEAR_GRADIENT_2_ID = 'HeaderBackground-LinearGradient2'
-const PATH_ID = 'HeaderBackground-Path'
-const MASK_ID = 'HeaderBackground-Mask'
-
-interface HeaderBackgroundProps {
+interface Props {
   width?: number | string
 }
 
-export const HeaderBackground: React.FC<HeaderBackgroundProps> = (props): JSX.Element => {
+const defaultProps = { width: Dimensions.get('screen').width + getSpacing(1) }
+
+const NotMemoizedHeaderBackground: React.FC<Props> = (props): JSX.Element => {
+  const LINEAR_GRADIENT_1_ID = uuidv1()
+  const LINEAR_GRADIENT_2_ID = uuidv1()
+  const PATH_ID = uuidv1()
+  const MASK_ID = uuidv1()
   return (
     <Svg
       preserveAspectRatio="none"
-      width={props.width || defaultWidth}
+      width={props.width}
       height={getSpacing(70)}
       viewBox={`0 0 375 352`}>
       <Defs>
@@ -51,4 +53,6 @@ export const HeaderBackground: React.FC<HeaderBackgroundProps> = (props): JSX.El
   )
 }
 
-const defaultWidth = Dimensions.get('screen').width + getSpacing(1)
+NotMemoizedHeaderBackground.defaultProps = defaultProps
+
+export const HeaderBackground = React.memo(NotMemoizedHeaderBackground)

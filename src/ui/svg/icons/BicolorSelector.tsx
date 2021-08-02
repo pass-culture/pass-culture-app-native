@@ -1,17 +1,17 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
+import { v1 as uuidv1 } from 'uuid'
 
 import { ColorsEnum } from 'ui/theme'
 
 import { BicolorIconInterface } from './types'
-
-const LINEAR_GRADIENT_ID = 'BicolorSelector-LinearGradient'
 
 export const computeBicolorSelectorHeight = (width: number) => Math.ceil((3 / 44) * width)
 
 export const BicolorSelector: React.FC<
   Omit<BicolorIconInterface, 'size'> & { width: number; height?: number }
 > = ({ accessible, accessibilityLabel, width, height, color, color2, testID }) => {
+  const LINEAR_GRADIENT_ID = uuidv1()
   return (
     <Svg
       width={width}

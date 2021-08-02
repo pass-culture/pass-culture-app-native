@@ -1,15 +1,15 @@
 import React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
+import { v1 as uuidv1 } from 'uuid'
 
 import { RectangleIconInterface } from './icons/types'
 
-const LINEAR_GRADIENT_ID = 'BackgroundPlaceholder-LinearGradient'
-
-export const BackgroundPlaceholder: React.FC<RectangleIconInterface> = ({
+const NotMemoizedBackgroundPlaceholder: React.FC<RectangleIconInterface> = ({
   height = 32,
   width = 38,
   testID,
 }) => {
+  const LINEAR_GRADIENT_ID = uuidv1()
   return (
     <Svg
       width={width}
@@ -27,3 +27,5 @@ export const BackgroundPlaceholder: React.FC<RectangleIconInterface> = ({
     </Svg>
   )
 }
+
+export const BackgroundPlaceholder = React.memo(NotMemoizedBackgroundPlaceholder)

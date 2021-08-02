@@ -1,19 +1,19 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, G, Path } from 'react-native-svg'
+import { v1 as uuidv1 } from 'uuid'
 
 import { ColorsEnum } from 'ui/theme'
 
 import { BicolorIconInterface } from './types'
 
-const LINEAR_GRADIENT_ID = 'BicolorSearch-LinearGradient'
-
-export const NotMemoizedBicolorSearch: React.FC<BicolorIconInterface> = ({
+const NotMemoizedBicolorSearch: React.FC<BicolorIconInterface> = ({
   size = 32,
   color,
   color2,
   thin = false,
   testID,
 }) => {
+  const LINEAR_GRADIENT_ID = uuidv1()
   const primaryColor = color || ColorsEnum.PRIMARY
   const secondaryColor = color2 || color || ColorsEnum.SECONDARY
   return (

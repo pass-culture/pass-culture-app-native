@@ -1,17 +1,17 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path, G } from 'react-native-svg'
+import { v1 as uuidv1 } from 'uuid'
 
 import { ColorsEnum, getSpacing } from '../theme'
 
 import { IconInterface } from './icons/types'
 
-const LINEAR_GRADIENT_ID = 'Rectangle-LinearGradient'
-
-export const Rectangle: React.FC<Omit<IconInterface, 'color'> & { height?: number }> = ({
+const NotMemoizedRectangle: React.FC<Omit<IconInterface, 'color'> & { height?: number }> = ({
   size = 32,
   height = getSpacing(2),
   testID,
 }) => {
+  const LINEAR_GRADIENT_ID = uuidv1()
   return (
     <Svg
       width={size}
@@ -36,3 +36,5 @@ export const Rectangle: React.FC<Omit<IconInterface, 'color'> & { height?: numbe
     </Svg>
   )
 }
+
+export const Rectangle = React.memo(NotMemoizedRectangle)
