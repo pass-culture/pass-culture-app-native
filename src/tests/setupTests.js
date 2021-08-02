@@ -47,21 +47,24 @@ global.afterEach(async () => {
   await flushAllPromises()
 })
 
-// WEB GEOLOCATION MOCKS
-// GeolocationPositionError and navigator.geolocation are should be defined globally in the browser.
-// To replicate this behaviour in our node test environement (jsdom), we have to make the following mocks :
+// WEB MOCKS
+// To replicate the browser behaviour in our node test environement (jsdom), we have to make the following mocks :
 global.GeolocationPositionError = {
   PERMISSION_DENIED: 1,
   POSITION_UNAVAILABLE: 2,
   TIMEOUT: 3,
 }
-const mockGeolocation = {
+const geolocation = {
   getCurrentPosition: jest.fn((success) =>
     Promise.resolve(success({ coords: { latitude: 48.85, longitude: 2.29 } }))
   ),
 }
+const permissions = {
+  query: jest.fn(async () => ({ state: 'granted' })),
+}
 if (!global.navigator) {
-  global.navigator = { geolocation: mockGeolocation }
+  global.navigator = { geolocation, permissions }
 } else {
-  global.navigator.geolocation = mockGeolocation
+  global.navigator.geolocation = geolocation
+  global.navigator.permissions = permissions
 }
