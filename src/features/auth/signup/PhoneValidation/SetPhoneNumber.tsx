@@ -75,7 +75,7 @@ export const SetPhoneNumber = memo(() => {
 
   useEffect(() => {
     storage.readObject('phone_validation_code_asked_at').then((value) => {
-      setValidationCodeRequestTimestamp(value as unknown)
+      setValidationCodeRequestTimestamp(value as number)
     })
   }, [])
 
