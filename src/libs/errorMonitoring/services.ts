@@ -6,27 +6,28 @@ import { env } from 'libs/environment'
 
 import { version } from '../../../package.json'
 
-export const errorMonitoring: IdCheckErrorMonitoringInterface<
+const SENTRY_CONFIG = {
+  dsn: env.SENTRY_DSN,
+  environment: env.ENV,
+  release: version,
+}
+
+type ErrorMonitoring = IdCheckErrorMonitoringInterface<
   SentryModule.Scope,
   User,
   CaptureContext,
   Event,
   Severity
-> = {
+>
+
+export const errorMonitoring: ErrorMonitoring = {
   captureException: SentryModule.captureException,
   captureMessage: SentryModule.captureMessage,
   captureEvent: SentryModule.captureEvent,
   configureScope: SentryModule.configureScope,
-  init,
   setUser: SentryModule.setUser,
-}
-
-function init({ enabled } = { enabled: true }) {
-  if (!enabled) return
-
-  SentryModule.init({
-    dsn: env.SENTRY_DSN,
-    environment: env.ENV,
-    release: version,
-  })
+  init({ enabled } = { enabled: true }) {
+    if (!enabled) return
+    SentryModule.init(SENTRY_CONFIG)
+  },
 }
