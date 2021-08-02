@@ -47,16 +47,18 @@ const resolveModule = (resolveFn, filePath) => {
 
 // config after eject: we're in ./config/
 module.exports = {
-    dotenv: resolveApp('.env'),
-    appPath: resolveApp('.'),
-    appBuild: resolveApp('build'),
-    appPublic: resolveApp('public'),
-    appHtml: resolveApp('public/index.html'),
-    appIndexJs: resolveModule(resolveApp, 'src/index'),
-    appPackageJson: resolveApp('package.json'),
-    appSrc: resolveApp('src'),
-    appNodeModules: resolveApp('node_modules'),
-    publicUrlOrPath,
-};
+  dotenv: resolveApp('.env'),
+  appPath: resolveApp('.'),
+  appBuild: resolveApp('build'),
+  appPublic: resolveApp('public'),
+  appHtml: resolveApp('public/index.html'),
+  appIndexJs: resolveModule(resolveApp, 'src/index'),
+  appPackageJson: resolveApp('package.json'),
+  appSrc: resolveApp('src'),
+  appNodeModules: resolveApp('node_modules'),
+  batchNotificationSrc: resolveModule(resolveApp, 'public/batchsdk-shared-worker'),
+  swSrc: resolveModule(resolveApp, 'src/service-worker'),
+  publicUrlOrPath,
+}
 
 module.exports.moduleFileExtensions = moduleFileExtensions;

@@ -17,12 +17,15 @@ import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
+import { useStartBatchNotification } from 'libs/notifications'
 import { queryClient } from 'libs/queryClient'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 export function App() {
+  useStartBatchNotification()
+
   useEffect(() => {
     activate('fr')
   }, [])

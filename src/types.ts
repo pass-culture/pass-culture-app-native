@@ -48,5 +48,37 @@ declare global {
       ) => void
       reset?: () => void
     }
+    batchSDK: (
+      type?:
+        | string
+        | ((api: {
+            setCustomUserID: (id: string) => void
+            ui: { show: (type: string) => void }
+          }) => void),
+      options?: {
+        apiKey: string | undefined
+        subdomain: string | undefined
+        authKey: string | undefined
+        vapidPublicKey: string | undefined
+        ui: {
+          native?: unknown
+          alert?: {
+            attach: string
+            autoShow: boolean
+            btnWidth: string
+            positiveSubBtnLabel: string
+            negativeBtnLabel: string
+            positiveBtnStyle: { backgroundColor: string; hoverBackgroundColor: string }
+            icon: string
+            text: string
+          }
+        }
+        defaultIcon: string
+        smallIcon: string
+        sameOrigin: boolean
+        useExistingServiceWorker: boolean
+        dev: boolean
+      }
+    ) => void
   }
 }
