@@ -4160,18 +4160,6 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
-"@types/algoliasearch-helper@*":
-  version "2.26.1"
-  resolved "https://registry.yarnpkg.com/@types/algoliasearch-helper/-/algoliasearch-helper-2.26.1.tgz#60cf377e7cb4bd9a55f7eba35182792763230a24"
-  integrity sha512-JN1wq/yLxxBcc6MeSe57F9Aqv8wL964L0nBOUTSQ5OECzWxaECuGYV06VnGKn/c+9AGB97RAgqx2PUbYflZNqA==
-  dependencies:
-    "@types/algoliasearch" "*"
-
-"@types/algoliasearch@*":
-  version "3.34.11"
-  resolved "https://registry.yarnpkg.com/@types/algoliasearch/-/algoliasearch-3.34.11.tgz#a7f3b89a95578be3acd972167bdbadb5dcf71660"
-  integrity sha512-FFMbpmXCHcgbypnOUY98SDEoiLc2bXO51gxgX02ypb8srZZnZCPV/8VKknuEtgr1VkgYLrqLi5BoYzZRVni6Fw==
-
 "@types/aria-query@^4.2.0":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-4.2.1.tgz#78b5433344e2f92e8b306c06a5622c50c245bf6b"
@@ -4569,22 +4557,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-instantsearch-core@*":
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/@types/react-instantsearch-core/-/react-instantsearch-core-6.8.0.tgz#32ac68bfc47cbb67caf8f7bceb01dc19025832bf"
-  integrity sha512-rrFgUClvorTiVNWgzuMrkVtyWOS8YGv0SOkimZV9AepaRk5l8xquvoGN34avMVwQZB4Zqww0zvuG4GfzEURfoA==
-  dependencies:
-    "@types/algoliasearch-helper" "*"
-    "@types/react" "*"
-
-"@types/react-instantsearch-native@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@types/react-instantsearch-native/-/react-instantsearch-native-6.3.0.tgz#3aa905763120007567ba7a8444121b2578a56849"
-  integrity sha512-w3LS/rxgRQTEUamKJznrj1jqPkN3RdA3SyQF0ELelc7B1TqGJp2rOjEeE9iRsxq4ta3jF2GH/DtQCHo5kQMLRQ==
-  dependencies:
-    "@types/react" "*"
-    "@types/react-instantsearch-core" "*"
-
 "@types/react-native-calendars@^1.505.0":
   version "1.505.0"
   resolved "https://registry.yarnpkg.com/@types/react-native-calendars/-/react-native-calendars-1.505.0.tgz#ee60af5cd131a6b6423eec75fa069949778b21f4"
@@ -4622,13 +4594,6 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
-
-"@types/recompose@^0.30.7":
-  version "0.30.7"
-  resolved "https://registry.yarnpkg.com/@types/recompose/-/recompose-0.30.7.tgz#0d47f3da3bdf889a4f36d4ca7531fac1eee1c6bd"
-  integrity sha512-kEvD7XMguXgG7jJJS//cE1QTbkFj2qDtIPAg1FvXxE8D6jD1C0WabJjT7cVitC7TK0N5I3yp2955hqNFFZV0wg==
-  dependencies:
-    "@types/react" "*"
 
 "@types/resolve@1.17.1":
   version "1.17.1"
@@ -9846,6 +9811,11 @@ gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==
+
+geojson@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/geojson/-/geojson-0.5.0.tgz#3cd6c96399be65b56ee55596116fe9191ce701c0"
+  integrity sha1-PNbJY5m+ZbVu5VWWEW/pGRznAcA=
 
 get-caller-file@^1.0.1:
   version "1.0.3"
