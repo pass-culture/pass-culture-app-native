@@ -32,7 +32,6 @@ import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { Hero } from 'ui/components/hero/Hero'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
-import { CodeInput } from 'ui/components/inputs/CodeInput'
 import { DateInput, DatePartType } from 'ui/components/inputs/DateInput'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
@@ -640,22 +639,6 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption color={ColorsEnum.BLACK}>is valid if number of 5 digits</Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
-        <Spacer.Flex flex={1}>
-          <CodeInput
-            codeLength={20}
-            placeholder="0"
-            enableValidation
-            isValid={(code, _isComplete) => {
-              return code !== null && !isNaN(Number(code)) && code.length >= 5
-            }}
-            isInputValid={(inputValue, _position) => {
-              return !isNaN(Number(inputValue)) && inputValue.length === 1
-            }}
-            onChangeValue={(code, validation) => {
-              setInputText(validation.isValid ? `CODE: ${code} OK` : `CODE: ${code} KO`)
-            }}
-          />
-        </Spacer.Flex>
         <Typo.Caption color={ColorsEnum.BLACK}>{inputText}</Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
 
