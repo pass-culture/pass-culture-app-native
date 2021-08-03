@@ -77,4 +77,5 @@ self.addEventListener('message', (event) => {
   }
 })
 
-// Any other custom service worker logic can go here.
+// This is for web push notifications with batch
+self.importScripts(process.env.PUBLIC_URL + '/batchsdk-shared-worker.js')
