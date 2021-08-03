@@ -30,6 +30,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -59,6 +60,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -88,6 +90,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -117,6 +120,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -146,6 +150,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -175,6 +180,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -204,6 +210,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -233,6 +240,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -262,6 +270,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -293,6 +302,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -322,6 +332,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -351,6 +362,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -381,6 +393,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -410,6 +423,7 @@ describe('src | components | parseSearchParameters', () => {
       locationType: LocationType.EVERYWHERE,
       tags: [],
       timeRange: null,
+      venueId: null,
     })
   })
 
@@ -445,6 +459,7 @@ describe('src | components | parseSearchParameters', () => {
         locationType: LocationType.AROUND_ME,
         tags: [],
         timeRange: null,
+        venueId: null,
       })
     })
 
@@ -475,6 +490,7 @@ describe('src | components | parseSearchParameters', () => {
         locationType: LocationType.AROUND_ME,
         tags: [],
         timeRange: null,
+        venueId: null,
       })
     })
 
@@ -542,6 +558,7 @@ describe('src | components | parseSearchParameters', () => {
         locationType: LocationType.EVERYWHERE,
         tags: [],
         timeRange: null,
+        venueId: null,
       })
     })
 
@@ -573,6 +590,7 @@ describe('src | components | parseSearchParameters', () => {
         locationType: LocationType.EVERYWHERE,
         tags: [],
         timeRange: null,
+        venueId: null,
       })
     })
 
@@ -607,6 +625,7 @@ describe('src | components | parseSearchParameters', () => {
         locationType: LocationType.EVERYWHERE,
         tags: [],
         timeRange: null,
+        venueId: null,
       })
     })
   })

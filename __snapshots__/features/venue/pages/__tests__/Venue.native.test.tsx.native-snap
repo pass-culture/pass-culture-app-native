@@ -289,6 +289,16 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
         style={
           Array [
             Object {
@@ -297,16 +307,6 @@ exports[`<Venue /> should match snapshot 1`] = `
           ]
         }
       >
-        <View
-          numberOfSpaces={6}
-          style={
-            Array [
-              Object {
-                "height": 24,
-              },
-            ]
-          }
-        />
         <Text
           style={
             Array [
@@ -321,54 +321,83 @@ exports[`<Venue /> should match snapshot 1`] = `
         >
           Offres
         </Text>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <RCTScrollView
-          ItemSeparatorComponent={[Function]}
-          disableVirtualization={false}
-          getItem={[Function]}
-          getItemCount={[Function]}
-          horizontal={true}
-          initialNumToRender={10}
-          keyExtractor={[Function]}
-          maxToRenderPerBatch={10}
-          onContentSizeChange={[Function]}
-          onEndReachedThreshold={2}
-          onLayout={[Function]}
-          onMomentumScrollEnd={[Function]}
-          onScroll={[Function]}
-          onScrollBeginDrag={[Function]}
-          onScrollEndDrag={[Function]}
-          removeClippedSubviews={false}
-          renderItem={[Function]}
-          scrollEventThrottle={50}
-          showsHorizontalScrollIndicator={false}
-          stickyHeaderIndices={Array []}
-          updateCellsBatchingPeriod={50}
-          viewabilityConfigCallbackPairs={Array []}
-          windowSize={21}
-        >
-          <View />
-        </RCTScrollView>
-        <View
-          numberOfSpaces={6}
-          style={
-            Array [
-              Object {
-                "height": 24,
-              },
-            ]
-          }
-        />
       </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <RCTScrollView
+        horizontal={true}
+        scrollEventThrottle={200}
+        showsHorizontalScrollIndicator={false}
+        testID="offersModuleList"
+      >
+        <View>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "width": 24,
+                },
+              ]
+            }
+          />
+          <RCTScrollView
+            ItemSeparatorComponent={[Function]}
+            disableVirtualization={false}
+            getItem={[Function]}
+            getItemCount={[Function]}
+            horizontal={true}
+            initialNumToRender={10}
+            keyExtractor={[Function]}
+            maxToRenderPerBatch={10}
+            onContentSizeChange={[Function]}
+            onEndReachedThreshold={2}
+            onLayout={[Function]}
+            onMomentumScrollEnd={[Function]}
+            onScroll={[Function]}
+            onScrollBeginDrag={[Function]}
+            onScrollEndDrag={[Function]}
+            removeClippedSubviews={false}
+            renderItem={[Function]}
+            scrollEventThrottle={50}
+            showsHorizontalScrollIndicator={false}
+            stickyHeaderIndices={Array []}
+            updateCellsBatchingPeriod={50}
+            viewabilityConfigCallbackPairs={Array []}
+            windowSize={21}
+          >
+            <View />
+          </RCTScrollView>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "width": 24,
+                },
+              ]
+            }
+          />
+        </View>
+      </RCTScrollView>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
       <View
         style={
           Array [

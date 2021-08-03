@@ -28,6 +28,7 @@ export const initialSearchState: SearchState = {
   showResults: false,
   tags: [],
   timeRange: null,
+  venueId: null,
 }
 
 export type Action =

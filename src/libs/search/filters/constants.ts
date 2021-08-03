@@ -44,6 +44,7 @@ export const RESULT_FIELDS: ResultFields<AppSearchFields> = {
   [AppSearchFields.name]: { raw: {} },
   [AppSearchFields.prices]: { raw: {} },
   [AppSearchFields.thumb_url]: { raw: {} },
+  [AppSearchFields.venue_id]: { raw: {} },
   [AppSearchFields.venue_position]: { raw: {} },
 }
 

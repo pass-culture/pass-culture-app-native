@@ -57,6 +57,7 @@ interface SearchParameters {
   locationType: LocationType
   timeRange: Range<number> | null
   tags: string[]
+  venueId: number | null
 }
 
 // The actual search state will have some additional values:
