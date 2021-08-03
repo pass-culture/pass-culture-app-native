@@ -50,6 +50,11 @@ describe('<OfferBody />', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
+  it('should show venue banner in where section', async () => {
+    const venue = await renderOfferBodyPage({ isDigital: false })
+    expect(venue.queryByTestId('VenueBannerComponent')).toBeTruthy()
+  })
+
   it('should show accessibilityDetails', async () => {
     let wrapper = await renderOfferBodyPage()
     expect(wrapper.queryByText('Accessibilité')).toBeTruthy()

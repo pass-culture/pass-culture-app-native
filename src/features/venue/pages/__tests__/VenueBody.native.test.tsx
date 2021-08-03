@@ -40,6 +40,11 @@ describe('<VenueBody />', () => {
     expect(adressTexts.length).toEqual(2)
   })
 
+  it('should not show venue banner in where section', async () => {
+    const venue = await renderVenueBody(venueId)
+    expect(venue.queryByTestId('VenueBannerComponent')).toBeFalsy()
+  })
+
   it('should show withdrawalDetails', async () => {
     const venue = await renderVenueBody(venueId)
     expect(venue.queryByText('Modalités de retrait')).toBeTruthy()

@@ -79,7 +79,11 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       </SectionWithDivider>
 
       <SectionWithDivider visible margin>
-        <WhereSection address={venueAddress} locationCoordinates={{ latitude, longitude }} />
+        <WhereSection
+          venue={venue}
+          address={venueAddress}
+          locationCoordinates={{ latitude, longitude }}
+        />
       </SectionWithDivider>
 
       <SectionWithDivider visible={!!withdrawalDetails}>

@@ -128,9 +128,11 @@ export const OfferBody: FunctionComponent<{
 
       <SectionWithDivider visible={!offerResponse.isDigital} margin={true}>
         <WhereSection
+          beforeNavigateToItinerary={() => analytics.logConsultItinerary(offerResponse.id, 'offer')}
+          venue={venue}
           address={offerResponse.fullAddress}
           locationCoordinates={venue.coordinates}
-          beforeNavigateToItinerary={() => analytics.logConsultItinerary(offerResponse.id, 'offer')}
+          showVenueBanner
         />
       </SectionWithDivider>
 
