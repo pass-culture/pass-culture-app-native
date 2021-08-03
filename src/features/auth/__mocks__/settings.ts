@@ -7,7 +7,7 @@ const data: SettingsResponse = {
   isRecaptchaEnabled: true,
   allowIdCheckRegistration: true,
   enableNativeIdCheckVersion: false,
-  wholeFranceOpening: false,
+  wholeFranceOpening: true,
   enablePhoneValidation: true,
   displayDmsRedirection: true,
   autoActivateDigitalBookings: true,
