@@ -4,7 +4,7 @@ interface AccessToken {
   exp: number
   fresh: false
   iat: number
-  identity: string
+  sub: string
   jti: string
   nbf: number
   type: string
