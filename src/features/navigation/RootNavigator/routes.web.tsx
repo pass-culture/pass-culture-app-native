@@ -29,7 +29,6 @@ import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNum
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
-import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
@@ -166,9 +165,6 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     <Link to={'/favorites'}>
       <Text>Favorites</Text>
     </Link>
-    <Link to={'/setpostalcode'}>
-      <Text>SetPostalCode</Text>
-    </Link>
     <Link
       to={'/cgu'}
       params={{
@@ -269,7 +265,6 @@ export const routes: Array<Route> = [
   { name: 'SetBirthday', component: SetBirthday, path: '/setbirthday' },
   { name: 'SetEmail', component: SetEmail, path: '/setemail' },
   { name: 'SetPassword', component: SetPassword, path: '/setpassword' },
-  { name: 'SetPostalCode', component: SetPostalCode, path: '/setpostalcode' },
   {
     name: 'SignupConfirmationEmailSent',
     component: SignupConfirmationEmailSent,

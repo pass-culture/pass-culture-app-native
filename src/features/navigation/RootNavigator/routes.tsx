@@ -28,7 +28,6 @@ import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/Set
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
-import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
@@ -133,7 +132,6 @@ export const routes: Array<Route> = [
   { name: 'SetPassword', component: SetPassword },
   { name: 'SetRedactorEmail', component: SetRedactorEmail },
   { name: 'SetRedactorPassword', component: SetRedactorPassword },
-  { name: 'SetPostalCode', component: SetPostalCode },
   { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
   { name: 'RedactorSignupConfirmationEmailSent', component: RedactorSignupConfirmationEmailSent },
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },

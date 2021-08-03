@@ -80,24 +80,6 @@ describe('SetBirthday Page', () => {
     expect(message).toBeTruthy()
   })
 
-  it.skip('should enable the button "Continuer" when the date is correct', () => {
-    const renderAPI = renderSetBirthday()
-
-    changeDate(renderAPI, '16', '01', '1995')
-
-    const continueButton = renderAPI.getByText('Continuer')
-    fireEvent.press(continueButton)
-
-    const buttonContainer = renderAPI.getByTestId('Continuer')
-    expect(buttonContainer.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
-    expect(renderAPI.queryByText('La date choisie est incorrecte')).toBeFalsy()
-    expect(navigate).toBeCalledWith('SetPostalCode', {
-      birthday: '1995-01-16',
-      email: 'john.doe@example.com',
-      isNewsletterChecked: true,
-      password: 'password',
-    })
-  })
   it('should navigate to CGU when app is open to the whole France', () => {
     const mockedSettings = {
       data: {

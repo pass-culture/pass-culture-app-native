@@ -83,7 +83,6 @@ export type RootStackParamList = {
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
   SetEmail: { preventCancellation?: boolean } | undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
-  SetPostalCode: { email: string; isNewsletterChecked: boolean; password: string; birthday: string }
   SetRedactorEmail: undefined
   SetRedactorPassword: { email: string }
   RedactorSignupConfirmationEmailSent: { email: string }

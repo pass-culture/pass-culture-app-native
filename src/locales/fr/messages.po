@@ -250,10 +250,6 @@ msgstr "Cependant, tu peux nous transmettre ton dossier via la plateforme Démar
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
-#: src/features/auth/signup/SetPostalCode.tsx
-msgid "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
-msgstr "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
-
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "Cette réservation est annulable"
 msgstr "Cette réservation est annulable"
@@ -304,14 +300,6 @@ msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 #: src/features/auth/projectRedactorSignup/RedactorSignupConfirmationEmailSent.tsx
 msgid "Cliquez sur le lien reçu à l'adresse :"
 msgstr "Cliquez sur le lien reçu à l'adresse :"
-
-#: src/features/auth/signup/SetPostalCode.tsx
-msgid "Code postal"
-msgstr "Code postal"
-
-#: src/features/auth/signup/SetPostalCode.tsx
-msgid "Code postal introuvable"
-msgstr "Code postal introuvable"
 
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Colle ton lien ici ..."
@@ -419,7 +407,6 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
-#: src/features/auth/signup/SetPostalCode.tsx
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
@@ -579,10 +566,6 @@ msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgid "Es-tu sûr de vouloir supprimer ton compte ?"
 msgstr "Es-tu sûr de vouloir supprimer ton compte ?"
 
-#: src/features/auth/signup/SetPostalCode.tsx
-msgid "Ex: 35000"
-msgstr "Ex: 35000"
-
 #: src/features/bookings/components/NoBookingsView.tsx
 #: src/features/favorites/components/NoFavoritesResult.tsx
 msgid "Explorer les offres"
@@ -691,7 +674,7 @@ msgstr "Je veux être alerté des actualités et des meilleures offres du pass C
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
-#: src/libs/geolocation/getPosition.ts
+#: src/libs/geolocation/enums.ts
 msgid "L'absence des services Google Play bloquent possiblement la géolocalisation"
 msgstr "L'absence des services Google Play bloquent possiblement la géolocalisation"
 
@@ -717,13 +700,13 @@ msgstr "L'offre n'a pas été retirée de tes favoris"
 msgid "La date choisie est incorrecte"
 msgstr "La date choisie est incorrecte"
 
-#: src/libs/geolocation/getPosition.ts
+#: src/libs/geolocation/enums.ts
 msgid "La géolocalisation est désactivée sur l'application"
 msgstr "La géolocalisation est désactivée sur l'application"
 
-#: src/libs/geolocation/getPosition.ts
-#: src/libs/geolocation/getPosition.ts
-#: src/libs/geolocation/getPosition.ts
+#: src/libs/geolocation/enums.ts
+#: src/libs/geolocation/enums.ts
+#: src/libs/geolocation/enums.ts
 msgid "La géolocalisation est temporairement inutilisable"
 msgstr "La géolocalisation est temporairement inutilisable"
 
@@ -785,7 +768,7 @@ msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 msgid "Les informations que vous avez renseignées ne seront pas enregistrées"
 msgstr "Les informations que vous avez renseignées ne seront pas enregistrées"
 
-#: src/libs/geolocation/getPosition.ts
+#: src/libs/geolocation/enums.ts
 msgid "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
 msgstr "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
 
@@ -1328,10 +1311,6 @@ msgstr "Titre, artiste, lieu..."
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
-#: src/features/auth/signup/SetPostalCode.tsx
-msgid "Ton code postal"
-msgstr "Ton code postal"
-
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
@@ -1480,6 +1459,10 @@ msgstr ""
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation."
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation."
+
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx
+msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton navigateur."
+msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton navigateur."
 
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone."
