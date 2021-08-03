@@ -26,6 +26,7 @@
     "downlevelIteration": true
   },
   "exclude": [
+    "build/**",
     "node_modules",
     "src/types",
     "babel.config.js",
