@@ -8,8 +8,6 @@ import { flushAllPromises, render } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
-let mockDepositAmount = '300 €'
-
 jest.mock('features/auth/api', () => ({
   useGetIdCheckToken: jest.fn(
     () =>
@@ -18,7 +16,7 @@ jest.mock('features/auth/api', () => ({
         data: { token: 'thisIsATokenForIdCheck' },
       } as UseQueryResult<GetIdCheckTokenResponse>)
   ),
-  useDepositAmount: () => mockDepositAmount,
+  useDepositAmount: () => '300 €',
 }))
 jest.mock('features/auth/settings')
 
@@ -91,6 +89,7 @@ describe('NonBeneficiaryHeader  ', () => {
 
     getByTestId('body-container-18')
   })
+
   it('should render the right body for 18 years old users if user has completed idcheck', async () => {
     const today = '2021-02-30T00:00:00Z'
     mockdate.set(new Date(today))
@@ -138,9 +137,8 @@ describe('NonBeneficiaryHeader  ', () => {
     expect(container).toBeNull()
   })
 
-  it.skip('should display correct depositAmount', () => {
-    mockDepositAmount = '300 €'
-    let { queryByText } = render(
+  it('should display correct depositAmount', () => {
+    const { queryByText } = render(
       <NonBeneficiaryHeader
         email="john@doe.com"
         eligibilityStartDatetime="2021-02-30T00:00Z"
@@ -149,16 +147,5 @@ describe('NonBeneficiaryHeader  ', () => {
       />
     )
     expect(queryByText(/Profite de 300€/)).toBeTruthy()
-
-    mockDepositAmount = '500 €'
-    queryByText = render(
-      <NonBeneficiaryHeader
-        email="john@doe.com"
-        eligibilityStartDatetime="2021-02-30T00:00Z"
-        eligibilityEndDatetime="2022-02-30T00:00Z"
-        nextBeneficiaryValidationStep={BeneficiaryValidationStep.IdCheck}
-      />
-    ).queryByText
-    expect(queryByText(/Profite de 500€/)).toBeTruthy()
   })
 })

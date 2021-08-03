@@ -5,8 +5,7 @@ import { fireEvent, render } from 'tests/utils'
 
 import { SecondCard } from './SecondCard'
 
-let mockDepositAmount = '300 €'
-jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
+jest.mock('features/auth/api', () => ({ useDepositAmount: () => '300 €' }))
 
 describe('SecondCard', () => {
   beforeEach(jest.clearAllMocks)
@@ -16,13 +15,8 @@ describe('SecondCard', () => {
   })
 
   it('should show the correct deposit amount', async () => {
-    mockDepositAmount = '300 €'
-    let queryByText = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />).queryByText
+    const queryByText = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />).queryByText
     expect(queryByText(/un montant de 300€ à dépenser/)).toBeTruthy()
-
-    mockDepositAmount = '500 €'
-    queryByText = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />).queryByText
-    expect(queryByText(/un montant de 500€ à dépenser/)).toBeTruthy()
   })
 
   it('should swipe to next card on button press', () => {
