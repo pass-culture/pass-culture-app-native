@@ -23,7 +23,8 @@ export const useHeroDimensions = (landscape: boolean) => {
         heroBackgroundHeight: top + heroBackgroundHeight / RATIO_LANDSCAPE,
         imageStyle: {
           borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-          height: Math.round(blurImageHeight * RATIO_LANDSCAPE),
+          maxWidth: LENGTH_L * RATIO_LANDSCAPE,
+          height: Math.min(LENGTH_L, fullWidth / RATIO_LANDSCAPE),
           width: fullWidth,
           maxHeight: LENGTH_L,
           aspectRatio: RATIO_LANDSCAPE,
