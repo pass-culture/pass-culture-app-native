@@ -381,6 +381,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   "borderRadius": 8,
                                   "height": 296,
                                   "maxWidth": 702,
+                                  "width": 197,
                                 },
                               ]
                             }
@@ -397,6 +398,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                     "borderRadius": 8,
                                     "height": 296,
                                     "maxWidth": 702,
+                                    "width": 197,
                                   },
                                 ]
                               }
@@ -3826,6 +3828,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   "borderRadius": 8,
                                   "height": 296,
                                   "maxWidth": 702,
+                                  "width": 197,
                                 },
                               ]
                             }
@@ -3842,6 +3845,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                     "borderRadius": 8,
                                     "height": 296,
                                     "maxWidth": 702,
+                                    "width": 197,
                                   },
                                 ]
                               }

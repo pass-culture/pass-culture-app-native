@@ -82,7 +82,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
             Object {
               "aspectRatio": 1.5,
               "borderRadius": 8,
+              "height": 288,
               "maxHeight": 288,
+              "maxWidth": 432,
               "width": 702,
             },
           ]
