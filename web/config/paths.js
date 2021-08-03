@@ -56,7 +56,6 @@ module.exports = {
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appNodeModules: resolveApp('node_modules'),
-  batchNotificationSrc: resolveModule(resolveApp, 'public/batchsdk-shared-worker'),
   swSrc: resolveModule(resolveApp, 'src/service-worker'),
   publicUrlOrPath,
 }

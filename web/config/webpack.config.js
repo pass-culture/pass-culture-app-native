@@ -45,9 +45,6 @@ const useTypeScript = true
 // Get the path to the uncompiled service worker (if it exists).
 const swSrc = paths.swSrc
 
-// Get the path to the uncompiled batch service worker.
-const batchNotificationSrc = paths.batchNotificationSrc
-
 // style files regexes
 const cssRegex = /\.css$/
 const cssModuleRegex = /\.module\.css$/
@@ -638,7 +635,6 @@ module.exports = function (webpackEnv) {
         fs.existsSync(swSrc) &&
         new WorkboxWebpackPlugin.InjectManifest({
           swSrc,
-          batchNotificationSrc,
           dontCacheBustURLsMatching: /\.[0-9a-f]{8}\./,
           exclude: [/\.map$/, /asset-manifest\.json$/, /LICENSE/],
           // Bump up the default maximum size (2mb) that's precached,
