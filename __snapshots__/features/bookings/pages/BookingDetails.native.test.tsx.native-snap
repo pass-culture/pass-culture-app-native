@@ -39,7 +39,7 @@ Array [
           }
         >
           <View
-            height={360}
+            height={296}
             testID="BackgroundPlaceholder"
             width={751}
           >
@@ -57,11 +57,11 @@ Array [
           </View>
         </View>
         <View
-          numberOfSpaces={28}
+          numberOfSpaces={26}
           style={
             Array [
               Object {
-                "height": 112,
+                "height": 104,
               },
             ]
           }

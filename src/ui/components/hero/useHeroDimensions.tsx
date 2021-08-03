@@ -11,8 +11,8 @@ const RATIO_PORTRAIT = 2 / 3
 
 const fullWidth = Dimensions.get('window').width - 2 * MARGIN_DP
 
-export const heroBackgroundHeight = blurImageHeight + getSpacing(16)
-export const heroMarginTop = MARGIN_DP + getSpacing(1)
+export const heroBackgroundHeight = blurImageHeight
+export const heroMarginTop = MARGIN_DP + getSpacing(0.5)
 
 export const useHeroDimensions = (landscape: boolean) => {
   const { top } = useCustomSafeInsets()
@@ -31,7 +31,7 @@ export const useHeroDimensions = (landscape: boolean) => {
     }
 
     return {
-      heroBackgroundHeight: heroBackgroundHeight,
+      heroBackgroundHeight: top + heroBackgroundHeight,
       imageStyle: {
         borderRadius: BorderRadiusEnum.BORDER_RADIUS,
         height: blurImageHeight,

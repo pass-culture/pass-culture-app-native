@@ -328,7 +328,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                           >
                             <Image
                               blurRadius={20}
-                              height={360}
+                              height={312}
                               resizeMode="cover"
                               source={
                                 Object {
@@ -338,7 +338,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "height": 360,
+                                    "height": 312,
                                     "width": 751,
                                   },
                                 ]
@@ -354,11 +354,11 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                             </View>
                           </View>
                           <View
-                            numberOfSpaces={28}
+                            numberOfSpaces={26}
                             style={
                               Array [
                                 Object {
-                                  "height": 112,
+                                  "height": 104,
                                 },
                               ]
                             }
@@ -3773,7 +3773,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                           >
                             <Image
                               blurRadius={20}
-                              height={360}
+                              height={312}
                               resizeMode="cover"
                               source={
                                 Object {
@@ -3783,7 +3783,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "height": 360,
+                                    "height": 312,
                                     "width": 751,
                                   },
                                 ]
@@ -3799,11 +3799,11 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                             </View>
                           </View>
                           <View
-                            numberOfSpaces={28}
+                            numberOfSpaces={26}
                             style={
                               Array [
                                 Object {
-                                  "height": 112,
+                                  "height": 104,
                                 },
                               ]
                             }
