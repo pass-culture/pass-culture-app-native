@@ -52,12 +52,12 @@ Object {
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="height: 100px;"
+                style="height: 112px;"
               />
               <div
                 class="css-view-1dbjc4n"
                 data-testid="image-container"
-                style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); height: 232px; width: 976px;"
+                style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); max-height: 288px; width: 976px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -524,12 +524,12 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="height: 100px;"
+              style="height: 112px;"
             />
             <div
               class="css-view-1dbjc4n"
               data-testid="image-container"
-              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); height: 232px; width: 976px;"
+              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); max-height: 288px; width: 976px;"
             >
               <div
                 class="css-view-1dbjc4n"

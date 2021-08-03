@@ -3,28 +3,41 @@ import { Dimensions } from 'react-native'
 
 import { blurImageHeight } from 'ui/components/hero/HeroHeader'
 import { getSpacing } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { BorderRadiusEnum, LENGTH_L, MARGIN_DP } from 'ui/theme/grid'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-const columnMargin = 2 * 6
-const { width } = Dimensions.get('window')
+const RATIO_LANDSCAPE = 3 / 2
+const RATIO_PORTRAIT = 2 / 3
+
+const fullWidth = Dimensions.get('window').width - 2 * MARGIN_DP
+
+export const heroBackgroundHeight = blurImageHeight + getSpacing(16)
+export const heroMarginTop = MARGIN_DP + getSpacing(1)
 
 export const useHeroDimensions = (landscape: boolean) => {
   const { top } = useCustomSafeInsets()
-  const imageWidth = landscape ? width - getSpacing(columnMargin) : getSpacing(53)
-  const imageHeight = landscape ? getSpacing(58) : getSpacing(79)
-  const backgroundHeight = landscape ? blurImageHeight / 1.4 + top : blurImageHeight + top
-  const numberOfSpacesColumn = landscape ? 25 : 22
-  return useMemo(
-    () => ({
-      numberOfSpacesColumn,
-      backgroundHeight,
+
+  return useMemo(() => {
+    if (landscape) {
+      return {
+        heroBackgroundHeight: top + heroBackgroundHeight / RATIO_LANDSCAPE,
+        imageStyle: {
+          borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+          width: fullWidth,
+          maxHeight: LENGTH_L,
+          aspectRatio: RATIO_LANDSCAPE,
+        },
+      }
+    }
+
+    return {
+      heroBackgroundHeight: heroBackgroundHeight,
       imageStyle: {
         borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-        height: imageHeight,
-        width: imageWidth,
+        height: blurImageHeight,
+        maxWidth: fullWidth,
+        aspectRatio: RATIO_PORTRAIT,
       },
-    }),
-    [landscape]
-  )
+    }
+  }, [landscape, top])
 }

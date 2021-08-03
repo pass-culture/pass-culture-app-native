@@ -22,7 +22,8 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
-import { blurImageHeight, HeroHeader } from 'ui/components/hero/HeroHeader'
+import { HeroHeader } from 'ui/components/hero/HeroHeader'
+import { heroBackgroundHeight, heroMarginTop } from 'ui/components/hero/useHeroDimensions'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -40,6 +41,8 @@ const getOfferRules = (
     return t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
   return ''
 }
+
+const scrollIndicatorInsets = { right: 1 }
 
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
@@ -100,7 +103,7 @@ export function BookingDetails() {
       <ScrollView
         onScroll={onScroll}
         scrollEventThrottle={20}
-        scrollIndicatorInsets={{ right: 1 }}
+        scrollIndicatorInsets={scrollIndicatorInsets}
         onContentSizeChange={(_w: number, h: number) => {
           if (h <= contentHeight) {
             logConsultWholeBooking()
@@ -109,10 +112,10 @@ export function BookingDetails() {
         testID="BookingDetailsScrollView"
         bounces={false}>
         <HeroHeader
-          imageHeight={blurImageHeight + getSpacing(16)}
+          imageHeight={heroBackgroundHeight}
           categoryName={offer.category.name}
           imageUrl={offer.image?.url}>
-          <Spacer.Column numberOfSpaces={22} />
+          <Spacer.Column numberOfSpaces={heroMarginTop} />
           <ThreeShapesTicket>
             <BookingDetailsTicketContent
               booking={booking}

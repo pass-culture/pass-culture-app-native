@@ -57,11 +57,11 @@ Array [
           </View>
         </View>
         <View
-          numberOfSpaces={22}
+          numberOfSpaces={28}
           style={
             Array [
               Object {
-                "height": 88,
+                "height": 112,
               },
             ]
           }
