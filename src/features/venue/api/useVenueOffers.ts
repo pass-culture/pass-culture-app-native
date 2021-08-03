@@ -24,10 +24,11 @@ export const useVenueOffers = (venueId: number) => {
     offerIsNew: false,
     offerTypes: { isDigital: false, isEvent: false, isThing: false },
     priceRange: [0, 300],
-    locationType: position ? LocationType.AROUND_ME : LocationType.EVERYWHERE,
+    locationType: LocationType.EVERYWHERE,
     tags: [],
     date: null,
     timeRange: null,
+    venueId,
   }
 
   return useQuery<SearchHit[]>([QueryKeys.VENUE_OFFERS, venueId], () => fetchVenueOffers(params), {

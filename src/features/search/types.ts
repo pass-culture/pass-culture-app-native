@@ -29,6 +29,7 @@ export interface SearchParameters {
   locationType: LocationType
   timeRange: Range<number> | null
   tags: string[]
+  venueId: number | null
 }
 
 export type SearchState = SearchParameters & {
