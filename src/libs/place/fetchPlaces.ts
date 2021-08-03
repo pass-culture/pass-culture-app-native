@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { FeatureCollection, Point } from 'geojson'
 
 import { Properties, SuggestedPlace } from './types'
