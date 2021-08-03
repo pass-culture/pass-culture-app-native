@@ -3,11 +3,10 @@ import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
-import { useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
+import { HeroHeader } from 'ui/components/hero/HeroHeader'
+import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
-
-import { HeroHeader } from './HeroHeader'
 
 interface Props {
   imageUrl: string
@@ -17,13 +16,14 @@ interface Props {
 
 export const Hero: React.FC<Props> = ({ imageUrl, categoryName, landscape }) => {
   const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
-  const { numberOfSpacesColumn, backgroundHeight, imageStyle } = useHeroDimensions(!!landscape)
+  const { heroBackgroundHeight, imageStyle } = useHeroDimensions(!!landscape)
+
   return (
     <HeroHeader
-      imageHeight={backgroundHeight}
+      imageHeight={heroBackgroundHeight}
       categoryName={categoryName}
       imageUrl={imageUrl || ''}>
-      <Spacer.Column numberOfSpaces={numberOfSpacesColumn} />
+      <Spacer.Column numberOfSpaces={heroMarginTop} />
       <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (
           <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
