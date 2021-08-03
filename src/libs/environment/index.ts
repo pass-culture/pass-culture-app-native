@@ -26,7 +26,6 @@ export interface Environment {
   ENV: string
   FAQ_LINK: string
   FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: boolean
-  FEATURE_FLIPPING_VENUE_PAGE: boolean
   FIREBASE_APIKEY: string
   FIREBASE_APPID: string
   FIREBASE_AUTHDOMAIN: string
