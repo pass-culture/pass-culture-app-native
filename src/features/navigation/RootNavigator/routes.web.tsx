@@ -57,6 +57,7 @@ import { Categories as SearchCategories } from 'features/search/pages/Categories
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
+import { Venue } from 'features/venue'
 import { env } from 'libs/environment'
 import { Link } from 'libs/navigation/Link'
 /** those screens are not yet web compatible */
@@ -294,6 +295,7 @@ export const routes: Array<Route> = [
   { name: 'IdCheckUnavailable', component: IdCheckUnavailable, path: '/idcheck-unavailable' },
   ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
   { name: idCheckInitialRouteName, component: IdCheckV2, path: '/idcheckv2' },
+  { name: 'Venue', component: Venue, hoc: withAsyncErrorBoundary, path: '/venue' },
 ]
 
 export const linking: LinkingOptions = {
