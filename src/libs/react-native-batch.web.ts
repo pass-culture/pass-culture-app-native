@@ -12,32 +12,15 @@ export const Batch = {
     if (navigator.userAgent.indexOf('Firefox') !== -1) {
       batchSDKUIConfig = {
         alert: {
-          attach: 'top center',
-          autoShow: false,
-          btnWidth: '200',
-          positiveSubBtnLabel: 'Activer les notifications',
-          negativeBtnLabel: 'Plus tard',
-          positiveBtnStyle: { backgroundColor: '#eb0055', hoverBackgroundColor: '#c10046' },
           icon: 'favicon.ico',
-          text:
-            'Découvre les nouvelles offres en exclusivité sur ton pass en activant les notifications !',
         },
       }
     } else {
       batchSDKUIConfig = {
-        alert: {
-          attach: 'top center',
-          autoShow: false,
-          btnWidth: '200',
-          positiveSubBtnLabel: 'Activer les notifications',
-          negativeBtnLabel: 'Plus tard',
-          positiveBtnStyle: { backgroundColor: '#eb0055', hoverBackgroundColor: '#c10046' },
-          icon: 'favicon.ico',
-          text:
-            'Découvre les nouvelles offres en exclusivité sur ton pass en activant les notifications !',
-        },
+        native: {},
       }
     }
+
     /* Finalize the Batch SDK setup */
     /* eslint-disable-next-line */
     window.batchSDK('setup', {
@@ -46,11 +29,10 @@ export const Batch = {
       authKey: env.BATCH_AUTH_KEY,
       vapidPublicKey: env.BATCH_VAPID_PUBLIC_KEY,
       ui: batchSDKUIConfig,
-      defaultIcon: 'favicon.ico', // for Chrome desktop
-      smallIcon: 'favicon.ico', // for Chrome Android
-      sameOrigin: false,
       useExistingServiceWorker: true,
-      dev: true,
+      dev: true, // remove this for prod
+      // defaultIcon: 'https://path.to/my/logo-192/png', // for Chrome desktop
+      // smallIcon: 'https://path.to/my/icon-96.png', // for Chrome Android
     })
     window.batchSDK((api) => {
       api.ui.show('alert')
