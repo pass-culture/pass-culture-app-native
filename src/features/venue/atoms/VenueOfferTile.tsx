@@ -5,11 +5,9 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum, ExpenseDomain, OfferResponse, OfferStockResponse } from 'api/gen'
-import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
-import { analytics } from 'libs/analytics'
-import { LENGTH_M, LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
+import { LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 // TODO : Add OfferCaption to ui components ?
@@ -19,14 +17,12 @@ interface OfferTileProps {
   category: string
   categoryName: CategoryNameEnum | null | undefined
   description?: string | null
-  distance?: string
   date?: string
   name?: string
   isDuo?: boolean
   offerId: number
   price: string
   thumbUrl?: string
-  layout?: Layout
   isBeneficiary?: boolean
   moduleName: string
 }
@@ -78,15 +74,12 @@ const ImageTile = (props: { imageWidth: number; imageHeight: number; uri?: strin
 
 export const VenueOfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
-  const { layout = 'one-item-medium', moduleName, isBeneficiary, ...offer } = props
-  const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
-  const imageWidth = imageHeight * RATIO_HOME_IMAGE
+  const { moduleName, isBeneficiary, ...offer } = props
   const queryClient = useQueryClient()
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData(['offer', offer.offerId], mergeOfferData(offer))
-    analytics.logConsultOffer({ offerId: offer.offerId, from: 'home', moduleName })
     navigation.navigate('Offer', {
       id: offer.offerId,
       from: 'home',
@@ -110,6 +103,9 @@ export const VenueOfferTile = (props: OfferTileProps) => {
     </Container>
   )
 }
+
+const imageHeight = LENGTH_L
+const imageWidth = imageHeight * RATIO_HOME_IMAGE
 
 const Container = styled.View({ flex: 1 })
 
