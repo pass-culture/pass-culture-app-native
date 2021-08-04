@@ -175,6 +175,10 @@ Object {
               style="height: 16px;"
             />
             <div
+              class="css-view-1dbjc4n"
+              style="width: 24px;"
+            />
+            <div
               class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
               data-testid="offersModuleList"
               style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
@@ -185,23 +189,26 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="width: 24px;"
-                />
-                <div
-                  class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                  style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-direction: row;"
+                    style="width: 24px;"
                   />
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  style="width: 24px;"
-                />
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 24px;"
+                  />
+                </div>
               </div>
             </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="width: 24px;"
+            />
             <div
               class="css-view-1dbjc4n"
               style="height: 24px;"
@@ -674,6 +681,10 @@ Object {
             style="height: 16px;"
           />
           <div
+            class="css-view-1dbjc4n"
+            style="width: 24px;"
+          />
+          <div
             class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
             data-testid="offersModuleList"
             style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
@@ -684,23 +695,26 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                style="width: 24px;"
-              />
-              <div
-                class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="flex-direction: row;"
+                  style="width: 24px;"
                 />
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="width: 24px;"
-              />
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 24px;"
+                />
+              </div>
             </div>
           </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 24px;"
+          />
           <div
             class="css-view-1dbjc4n"
             style="height: 24px;"

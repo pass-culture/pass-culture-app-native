@@ -1,13 +1,13 @@
 import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
-import { FlatList, ListRenderItem, ScrollView } from 'react-native'
+import { FlatList, ListRenderItem } from 'react-native'
 
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { TitleVenueOfferTile } from 'features/venue/atoms/TitleVenueOfferTile'
 import { VenueOfferTile } from 'features/venue/atoms/VenueOfferTile'
 import { useGeolocation } from 'libs/geolocation'
-import { formatDates, formatDistance, getDisplayPrice, parseCategory } from 'libs/parsers'
+import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { Spacer } from 'ui/theme'
 
@@ -32,13 +32,11 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
           categoryName={item.offer.category}
           offerId={+item.objectID}
           description={item.offer.description || ''}
-          distance={formatDistance(item._geoloc, position)}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}
           thumbUrl={item.offer.thumbUrl}
           price={getDisplayPrice(item.offer.prices)}
-          layout="one-item-medium"
           moduleName="moduleName"
         />
       )
@@ -53,25 +51,23 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
       <Spacer.Column numberOfSpaces={6} />
       <TitleVenueOfferTile title={t`Offres`} />
       <Spacer.Column numberOfSpaces={4} />
-      <ScrollView
-        horizontal={true}
+      <Spacer.Row numberOfSpaces={6} />
+      <FlatList
         testID="offersModuleList"
+        ListHeaderComponent={HorizontalMargin}
+        ListFooterComponent={HorizontalMargin}
+        data={offers}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        horizontal={true}
         showsHorizontalScrollIndicator={false}
-        scrollEventThrottle={200}>
-        <Spacer.Row numberOfSpaces={6} />
-        <FlatList
-          data={offers}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          ItemSeparatorComponent={ItemSeparatorComponent}
-        />
-        <Spacer.Row numberOfSpaces={6} />
-      </ScrollView>
+        ItemSeparatorComponent={ItemSeparatorComponent}
+      />
+      <Spacer.Row numberOfSpaces={6} />
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
 }
 
 const ItemSeparatorComponent = () => <Spacer.Row numberOfSpaces={4} />
+const HorizontalMargin = () => <Spacer.Row numberOfSpaces={6} />

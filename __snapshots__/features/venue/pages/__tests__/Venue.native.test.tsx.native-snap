@@ -353,62 +353,85 @@ exports[`<Venue /> should match snapshot 1`] = `
           ]
         }
       />
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "width": 24,
+            },
+          ]
+        }
+      />
       <RCTScrollView
+        ItemSeparatorComponent={[Function]}
+        ListFooterComponent={[Function]}
+        ListHeaderComponent={[Function]}
+        disableVirtualization={false}
+        getItem={[Function]}
+        getItemCount={[Function]}
         horizontal={true}
-        scrollEventThrottle={200}
+        initialNumToRender={10}
+        keyExtractor={[Function]}
+        maxToRenderPerBatch={10}
+        onContentSizeChange={[Function]}
+        onEndReachedThreshold={2}
+        onLayout={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
         showsHorizontalScrollIndicator={false}
+        stickyHeaderIndices={Array []}
         testID="offersModuleList"
+        updateCellsBatchingPeriod={50}
+        viewabilityConfigCallbackPairs={Array []}
+        windowSize={21}
       >
         <View>
           <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <RCTScrollView
-            ItemSeparatorComponent={[Function]}
-            disableVirtualization={false}
-            getItem={[Function]}
-            getItemCount={[Function]}
-            horizontal={true}
-            initialNumToRender={10}
-            keyExtractor={[Function]}
-            maxToRenderPerBatch={10}
-            onContentSizeChange={[Function]}
-            onEndReachedThreshold={2}
             onLayout={[Function]}
-            onMomentumScrollEnd={[Function]}
-            onScroll={[Function]}
-            onScrollBeginDrag={[Function]}
-            onScrollEndDrag={[Function]}
-            removeClippedSubviews={false}
-            renderItem={[Function]}
-            scrollEventThrottle={50}
-            showsHorizontalScrollIndicator={false}
-            stickyHeaderIndices={Array []}
-            updateCellsBatchingPeriod={50}
-            viewabilityConfigCallbackPairs={Array []}
-            windowSize={21}
           >
-            <View />
-          </RCTScrollView>
+            <View
+              numberOfSpaces={6}
+              style={
+                Array [
+                  Object {
+                    "width": 24,
+                  },
+                ]
+              }
+            />
+          </View>
           <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
+            onLayout={[Function]}
+          >
+            <View
+              numberOfSpaces={6}
+              style={
+                Array [
+                  Object {
+                    "width": 24,
+                  },
+                ]
+              }
+            />
+          </View>
         </View>
       </RCTScrollView>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "width": 24,
+            },
+          ]
+        }
+      />
       <View
         numberOfSpaces={6}
         style={
