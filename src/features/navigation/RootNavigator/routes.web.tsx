@@ -32,6 +32,8 @@ import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
+import { BookingDetails } from 'features/bookings/pages/BookingDetails'
+import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
@@ -66,8 +68,6 @@ import { Link } from 'libs/navigation/Link'
 // import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 /** those screens are not yet tested */
 // import { IdCheck } from 'features/auth/signup/IdCheck'
-// import { BookingDetails } from 'features/bookings/pages/BookingDetails'
-// import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 // import { ABTestingPOC } from 'features/cheatcodes/pages/ABTestingPOC'
 // import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 // import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
@@ -182,15 +182,15 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
 )
 
 export const routes: Array<Route> = [
-  { name: 'ABTestingPOC', component: ABTestingPOC, path: '/abtesting' },
+  { name: 'ABTestingPOC', component: ABTestingPOC, path: 'abtesting' },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
   {
     name: 'EighteenBirthday',
     component: EighteenBirthday,
-    path: '/eighteen',
+    path: 'eighteen',
   },
-  { name: 'AcceptCgu', component: AcceptCgu, path: '/cgu', hoc: withAsyncErrorBoundary },
-  { name: 'AccountCreated', component: AccountCreated, path: '/account-created' },
+  { name: 'AcceptCgu', component: AcceptCgu, path: 'cgu', hoc: withAsyncErrorBoundary },
+  { name: 'AccountCreated', component: AccountCreated, path: 'account-created' },
   {
     name: 'AfterSignupEmailValidationBuffer',
     component: AfterSignupEmailValidationBuffer,
@@ -199,107 +199,118 @@ export const routes: Array<Route> = [
       parse: screenParamsParser['signup-confirmation'],
     },
   },
-  // { name: 'AppComponents', component: AppComponents, path: '/app-components' },
-  // { name: 'CheatCodes', component: CheatCodes, path: '/cheat-codes' },
-  { name: 'CheatMenu', component: CheatMenu, path: '/cheat-menu' },
-  { name: 'ConsentSettings', component: ConsentSettings, path: '/consent-settings' },
+  // { name: 'AppComponents', component: AppComponents, path: 'app-components' },
+  // { name: 'CheatCodes', component: CheatCodes, path: 'cheat-codes' },
+  { name: 'CheatMenu', component: CheatMenu, path: 'cheat-menu' },
+  { name: 'ConsentSettings', component: ConsentSettings, path: 'consent-settings' },
   {
     name: 'BeneficiaryRequestSent',
     component: BeneficiaryRequestSent,
-    path: '/beneficiary-request-sent',
+    path: 'beneficiary-request-sent',
   },
-  { name: 'BookingConfirmation', component: BookingConfirmation, path: '/booking/confirmation' },
-  // { name: 'BookingDetails', component: BookingDetails },
+  {
+    name: 'BookingConfirmation',
+    component: BookingConfirmation,
+    path: 'booking/:offerId/confirmation',
+  },
+  {
+    name: 'BookingDetails',
+    component: BookingDetails,
+    pathConfig: {
+      path: 'booking/:id/details',
+      parse: screenParamsParser['booking-details'],
+    },
+  },
   // { name: 'CulturalSurvey', component: CulturalSurvey },
-  { name: 'DeeplinkImporter', component: DeeplinkImporter, path: '/deeplink-importer' },
-  // { name: 'EndedBookings', component: EndedBookings },
+  { name: 'DeeplinkImporter', component: DeeplinkImporter, path: 'deeplink-importer' },
+  { name: 'EndedBookings', component: EndedBookings, path: 'ended-bookings' },
   {
     name: 'FavoritesSorts',
     component: FavoritesSorts,
-    path: '/favorites/sorts',
+    path: 'favorites/sorts',
   },
   {
     name: 'ForgottenPassword',
     component: ForgottenPassword,
     hoc: withAsyncErrorBoundary,
-    path: '/forgotten-password',
+    path: 'forgotten-password',
   },
   // { name: 'IdCheck', component: IdCheck, hoc: withIdCheckAsyncErrorBoundary },
-  { name: 'LegalNotices', component: LegalNotices, path: '/legal-notices' },
-  { name: 'ConfirmDeleteProfile', component: ConfirmDeleteProfile, path: '/profile/delete' },
+  { name: 'LegalNotices', component: LegalNotices, path: 'legal-notices' },
+  { name: 'ConfirmDeleteProfile', component: ConfirmDeleteProfile, path: 'profile/delete' },
   {
     name: 'DeleteProfileSuccess',
     component: DeleteProfileSuccess,
-    path: '/profile/delete/success',
+    path: 'profile/delete/success',
   },
-  { name: 'LocationFilter', component: LocationFilter, path: '/location/filter' },
-  { name: 'LocationPicker', component: LocationPicker, path: '/location/picker' },
-  { name: 'Login', component: Login, hoc: withAsyncErrorBoundary, path: '/login' },
-  { name: 'Maintenance', component: Maintenance, path: '/maintenance' },
-  { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary, path: '/navigation' },
+  { name: 'LocationFilter', component: LocationFilter, path: 'location/filter' },
+  { name: 'LocationPicker', component: LocationPicker, path: 'location/picker' },
+  { name: 'Login', component: Login, hoc: withAsyncErrorBoundary, path: 'login' },
+  { name: 'Maintenance', component: Maintenance, path: 'maintenance' },
+  { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary, path: 'navigation' },
   {
     name: 'NavigationIdCheckErrors',
     component: NavigationIdCheckErrors,
     hoc: withIdCheckAsyncErrorBoundary,
-    path: '/navigation-id-check-errors',
+    path: 'navigation-id-check-errors',
   },
-  { name: 'NotificationSettings', component: NotificationSettings, path: '/notification-settings' },
-  { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary, path: '/offer/:id' },
+  { name: 'NotificationSettings', component: NotificationSettings, path: 'notification-settings' },
+  { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary, path: 'offer/:id' },
   {
     name: 'OfferDescription',
     component: OfferDescription,
     hoc: withAsyncErrorBoundary,
-    path: '/offer/:id/description',
+    path: 'offer/:id/description',
   },
-  { name: 'PersonalData', component: PersonalData, path: '/personal-data' },
-  { name: 'ChangePassword', component: ChangePassword, path: '/change-password' },
-  { name: 'ReinitializePassword', component: ReinitializePassword, path: '/reinitialize-password' },
+  { name: 'PersonalData', component: PersonalData, path: 'personal-data' },
+  { name: 'ChangePassword', component: ChangePassword, path: 'change-password' },
+  { name: 'ReinitializePassword', component: ReinitializePassword, path: 'reinitialize-password' },
   {
     name: 'ResetPasswordEmailSent',
     component: ResetPasswordEmailSent,
-    path: '/reset-password-email-sent',
+    path: 'reset-password-email-sent',
   },
   {
     name: 'ResetPasswordExpiredLink',
     component: ResetPasswordExpiredLink,
     hoc: withAsyncErrorBoundary,
-    path: '/reset-password-expired-link',
+    path: 'reset-password-expired-link',
   },
-  { name: 'SearchCategories', component: SearchCategories, path: '/search/categories' },
-  { name: 'SearchFilter', component: SearchFilter, path: '/search/filter' },
-  { name: 'SetBirthday', component: SetBirthday, path: '/setbirthday' },
-  { name: 'SetEmail', component: SetEmail, path: '/setemail' },
-  { name: 'SetPassword', component: SetPassword, path: '/setpassword' },
+  { name: 'SearchCategories', component: SearchCategories, path: 'search/categories' },
+  { name: 'SearchFilter', component: SearchFilter, path: 'search/filter' },
+  { name: 'SetBirthday', component: SetBirthday, path: 'setbirthday' },
+  { name: 'SetEmail', component: SetEmail, path: 'setemail' },
+  { name: 'SetPassword', component: SetPassword, path: 'setpassword' },
   {
     name: 'SignupConfirmationEmailSent',
     component: SignupConfirmationEmailSent,
-    path: '/signup-confirmation-email-sent',
+    path: 'signup-confirmation-email-sent',
   },
   {
     name: 'SignupConfirmationExpiredLink',
     component: SignupConfirmationExpiredLink,
-    path: '/signup-confirmation-expired-link',
+    path: 'signup-confirmation-expired-link',
   },
-  { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep, path: '/next-beneficiary-step' },
-  { name: 'SetPhoneNumber', component: SetPhoneNumber, path: '/set-phone-number' },
+  { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep, path: 'next-beneficiary-step' },
+  { name: 'SetPhoneNumber', component: SetPhoneNumber, path: 'set-phone-number' },
   // TODO: use react-input-mask on the web instead of react-native-text-input-mask
   // {
   //   name: 'SetPhoneValidationCode',
   //   component: SetPhoneValidationCode,
-  //   path: '/set-phone-validation',
+  //   path: 'set-phone-validation',
   // },
   {
     name: 'PhoneValidationTooManyAttempts',
     component: PhoneValidationTooManyAttempts,
-    path: '/phone-validation-too-many-attempts',
+    path: 'phone-validation-too-many-attempts',
   },
-  { name: 'VerifyEligibility', component: VerifyEligibility, path: '/verify-eligibility' },
-  { name: 'FirstTutorial', component: FirstTutorial, path: '/first-tutorial' },
+  { name: 'VerifyEligibility', component: VerifyEligibility, path: 'verify-eligibility' },
+  { name: 'FirstTutorial', component: FirstTutorial, path: 'first-tutorial' },
   // { name: 'ForceUpdate', component: ForceUpdate },
-  { name: 'IdCheckUnavailable', component: IdCheckUnavailable, path: '/idcheck-unavailable' },
+  { name: 'IdCheckUnavailable', component: IdCheckUnavailable, path: 'idcheck-unavailable' },
   ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
-  { name: idCheckInitialRouteName, component: IdCheckV2, path: '/idcheckv2' },
-  { name: 'Venue', component: Venue, hoc: withAsyncErrorBoundary, path: '/venue' },
+  { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheckv2' },
+  { name: 'Venue', component: Venue, hoc: withAsyncErrorBoundary, path: 'venue' },
 ]
 
 export const linking: LinkingOptions = {

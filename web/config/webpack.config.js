@@ -386,6 +386,7 @@ module.exports = function (webpackEnv) {
                 /node_modules\/@pass-culture\/react-native-profiling\/src/,
                 /node_modules\/react-native-calendars/,
                 /node_modules\/react-native-swipe-gestures/,
+                /node_modules\/react-native-qrcode-svg/
               ],
               loader: require.resolve('babel-loader'),
               options: {
