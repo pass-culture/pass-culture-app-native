@@ -43,7 +43,8 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { Maintenance } from 'features/maintenance/Maintenance'
 import { Route } from 'features/navigation/RootNavigator/types'
-import { linking as tabNavigatorLinking } from 'features/navigation/TabBar/routes'
+import { screenParamsParser } from 'features/navigation/screenParamsParser'
+import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
@@ -115,7 +116,7 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
     <Link to={'/phone-validation-too-many-attempts'}>
       <Text>Phone validation too many attempts</Text>
     </Link>
-    <Link to={'/after-signup-email-validation-buffer'}>
+    <Link to={'/signup-confirmation'}>
       <Text>After signup validation buffer</Text>
     </Link>
     <Link to={'/legal-notices'}>
@@ -182,7 +183,7 @@ const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
 
 export const routes: Array<Route> = [
   { name: 'ABTestingPOC', component: ABTestingPOC, path: '/abtesting' },
-  { name: 'TabNavigator', component: TabNavigator, linking: tabNavigatorLinking },
+  { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
   {
     name: 'EighteenBirthday',
     component: EighteenBirthday,
@@ -193,7 +194,10 @@ export const routes: Array<Route> = [
   {
     name: 'AfterSignupEmailValidationBuffer',
     component: AfterSignupEmailValidationBuffer,
-    path: '/after-signup-email-validation-buffer',
+    pathConfig: {
+      path: 'signup-confirmation',
+      parse: screenParamsParser['signup-confirmation'],
+    },
   },
   // { name: 'AppComponents', component: AppComponents, path: '/app-components' },
   // { name: 'CheatCodes', component: CheatCodes, path: '/cheat-codes' },
@@ -305,7 +309,7 @@ export const linking: LinkingOptions = {
       ...routes.reduce(
         (route, currentRoute) => ({
           ...route,
-          [currentRoute.name]: currentRoute.linking?.config || currentRoute.path,
+          [currentRoute.name]: currentRoute.pathConfig || currentRoute.path,
         }),
         {}
       ),

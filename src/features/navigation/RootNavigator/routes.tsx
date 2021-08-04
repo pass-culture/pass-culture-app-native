@@ -48,7 +48,7 @@ import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { Maintenance } from 'features/maintenance/Maintenance'
-import { linking as tabNavigatorLinking } from 'features/navigation/TabBar/routes'
+import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
@@ -135,7 +135,7 @@ export const routes: Array<Route> = [
   { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
   { name: 'RedactorSignupConfirmationEmailSent', component: RedactorSignupConfirmationEmailSent },
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
-  { name: 'TabNavigator', component: TabNavigator, linking: tabNavigatorLinking },
+  { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
   { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep },
   { name: 'SetPhoneNumber', component: SetPhoneNumber },
   { name: 'SetPhoneValidationCode', component: SetPhoneValidationCode },
@@ -156,7 +156,7 @@ export const linking: LinkingOptions = {
       ...routes.reduce(
         (route, currentRoute) => ({
           ...route,
-          [currentRoute.name]: currentRoute.linking?.config || currentRoute.path,
+          [currentRoute.name]: currentRoute.pathConfig || currentRoute.path,
         }),
         {}
       ),

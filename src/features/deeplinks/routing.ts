@@ -1,4 +1,5 @@
 import { homeNavigateConfig } from 'features/navigation/helpers'
+import { screenParamsParser } from 'features/navigation/screenParamsParser'
 import { isTimestampExpired } from 'libs/dates'
 
 import { DeepLinksToScreenConfiguration } from './types'
@@ -72,14 +73,14 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     }
   },
   'signup-confirmation'(params) {
+    const parser = screenParamsParser['signup-confirmation']
     if (params && params.token && params.email && params.expiration_timestamp) {
-      const parsedEmail = decodeURIComponent(params.email)
       return {
         screen: 'AfterSignupEmailValidationBuffer',
         params: {
-          email: parsedEmail,
-          token: params.token,
-          expirationTimestamp: Number(params.expiration_timestamp),
+          email: parser.email(params.email),
+          token: parser.token(params.token),
+          expiration_timestamp: parser.expiration_timestamp(params.expiration_timestamp),
         },
       }
     }

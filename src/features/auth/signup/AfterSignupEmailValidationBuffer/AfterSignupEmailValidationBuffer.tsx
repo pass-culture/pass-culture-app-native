@@ -34,7 +34,7 @@ export function AfterSignupEmailValidationBuffer() {
   )
 
   function beforeEmailValidation() {
-    if (isTimestampExpired(params.expirationTimestamp)) {
+    if (isTimestampExpired(params.expiration_timestamp)) {
       delayedNavigate('SignupConfirmationExpiredLink', { email: params.email })
       return
     }
