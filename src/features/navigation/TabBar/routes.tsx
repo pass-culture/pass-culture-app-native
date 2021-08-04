@@ -40,14 +40,12 @@ export const routes: Array<TabRoute> = [
   },
 ].map((r) => ({ ...r, key: r.name } as TabRoute))
 
-export const linking: Partial<LinkingOptions> = {
-  config: {
-    initialRouteName,
-    screens: {
-      ...routes.reduce(
-        (route, currentRoute) => ({ ...route, [currentRoute.name]: currentRoute.path }),
-        {}
-      ),
-    },
+export const tabNavigatorPathConfig: LinkingOptions['config'] = {
+  initialRouteName,
+  screens: {
+    ...routes.reduce(
+      (route, currentRoute) => ({ ...route, [currentRoute.name]: currentRoute.path }),
+      {}
+    ),
   },
 }

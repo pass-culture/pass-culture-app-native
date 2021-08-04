@@ -1,5 +1,5 @@
 import { IdCheckRoute, IdCheckRootStackParamList } from '@pass-culture/id-check'
-import { LinkingOptions, RouteProp } from '@react-navigation/native'
+import { PathConfig, RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { StackNavigationOptions } from '@react-navigation/stack/lib/typescript/src/types'
 import { ComponentType } from 'react'
@@ -31,7 +31,7 @@ export type RootStackParamList = {
     password: string
   }
   AccountCreated: undefined
-  AfterSignupEmailValidationBuffer: { token: string; expirationTimestamp: number; email: string }
+  AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
   AppComponents: undefined
   ChangePassword: undefined
   CheatCodes: undefined
@@ -152,5 +152,5 @@ export type RouteParams<
  */
 export interface Route extends IdCheckRoute<StackNavigationOptions, RootStackParamList> {
   hoc?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
-  linking?: Partial<LinkingOptions>
+  pathConfig?: PathConfig
 }

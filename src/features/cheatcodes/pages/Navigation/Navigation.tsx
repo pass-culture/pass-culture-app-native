@@ -146,7 +146,7 @@ export function Navigation(): JSX.Element {
             onPress={() =>
               navigation.navigate('AfterSignupEmailValidationBuffer', {
                 token: 'whichTokenDoYouWantReally',
-                expirationTimestamp: 456789123,
+                expiration_timestamp: 456789123,
                 email: 'john@wick.com',
               })
             }

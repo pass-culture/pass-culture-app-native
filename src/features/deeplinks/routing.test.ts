@@ -80,7 +80,7 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
       expect(configureScreen.screen).toBe('AfterSignupEmailValidationBuffer')
       expect(configureScreen.params).toEqual({
         email: 'test+k@passculture.app',
-        expirationTimestamp: 11111,
+        expiration_timestamp: 11111,
         token: params.token,
       })
     })

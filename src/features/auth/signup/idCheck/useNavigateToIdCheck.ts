@@ -24,7 +24,7 @@ export function useNavigateToIdCheck({
   function navigateToIdCheck(
     email: string,
     licenceToken?: string,
-    expirationTimestamp?: Date | number | null
+    expiration_timestamp?: Date | number | null
   ) {
     const shouldNavigateToIdCheck =
       !shouldControlNavWithSetting || settings?.allowIdCheckRegistration
@@ -34,18 +34,18 @@ export function useNavigateToIdCheck({
           email,
           licence_token: licenceToken,
           expiration_timestamp:
-            expirationTimestamp instanceof Date
-              ? expirationTimestamp.getTime()
-              : expirationTimestamp,
+            expiration_timestamp instanceof Date
+              ? expiration_timestamp.getTime()
+              : expiration_timestamp,
         })
       } else {
         navigate('IdCheck', {
           email,
           licence_token: licenceToken,
           expiration_timestamp:
-            expirationTimestamp instanceof Date
-              ? expirationTimestamp.getTime()
-              : expirationTimestamp,
+            expiration_timestamp instanceof Date
+              ? expiration_timestamp.getTime()
+              : expiration_timestamp,
         })
       }
     } else {
