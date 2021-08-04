@@ -1,12 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useMemo } from 'react'
-import FastImage from 'react-native-fast-image'
+import React from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum, ExpenseDomain, OfferResponse, OfferStockResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
+import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
 import { LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
@@ -54,22 +54,6 @@ export const mergeOfferData = (offer: PartialOffer) => (
   venue: { coordinates: {} } as OfferResponse['venue'],
   ...(prevData || {}),
 })
-
-// TODO : Add ImageTile to ui components ?
-const ImageTile = (props: { imageWidth: number; imageHeight: number; uri?: string }) => {
-  const style = useMemo(
-    () => ({
-      height: props.imageHeight,
-      width: props.imageWidth,
-      borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-    }),
-    [props.imageHeight, props.imageWidth]
-  )
-
-  const source = useMemo(() => ({ uri: props.uri }), [props.uri])
-
-  return props.uri ? <FastImage style={style} source={source} testID="offerTileImage" /> : null
-}
 
 export const VenueOfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
