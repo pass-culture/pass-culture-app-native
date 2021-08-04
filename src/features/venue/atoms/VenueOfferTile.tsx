@@ -7,11 +7,9 @@ import styled from 'styled-components/native'
 import { CategoryNameEnum, ExpenseDomain, OfferResponse, OfferStockResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
+import { OfferCaption } from 'ui/components/OfferCaption'
 import { LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
-
-// TODO : Add OfferCaption to ui components ?
-import { OfferCaption } from '../../home/atoms/OfferCaption'
 
 interface OfferTileProps {
   category: string
@@ -57,6 +55,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
   ...(prevData || {}),
 })
 
+// TODO : Add ImageTile to ui components ?
 const ImageTile = (props: { imageWidth: number; imageHeight: number; uri?: string }) => {
   const style = useMemo(
     () => ({
