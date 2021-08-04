@@ -22,7 +22,6 @@ interface OfferTileProps {
   price: string
   thumbUrl?: string
   isBeneficiary?: boolean
-  moduleName: string
 }
 
 type PartialOffer = Pick<
@@ -57,7 +56,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
 
 export const VenueOfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
-  const { moduleName, isBeneficiary, ...offer } = props
+  const { isBeneficiary, ...offer } = props
   const queryClient = useQueryClient()
 
   function handlePressOffer() {
@@ -65,8 +64,7 @@ export const VenueOfferTile = (props: OfferTileProps) => {
     queryClient.setQueryData(['offer', offer.offerId], mergeOfferData(offer))
     navigation.navigate('Offer', {
       id: offer.offerId,
-      from: 'home',
-      moduleName,
+      from: 'venue',
     })
   }
 
