@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
@@ -15,7 +16,12 @@ export function useBookings() {
 
 export function useOngoingOrEndedBooking(id: number): BookingReponse | undefined {
   const { data: bookings } = useBookings()
-  const onGoingBooking = bookings?.ongoing_bookings?.find((item) => item.id === id)
-  const endedBooking = bookings?.ended_bookings?.find((item) => item.id === id)
-  return onGoingBooking || endedBooking
+  return useMemo(() => {
+    if (!bookings) {
+      return undefined
+    }
+    const onGoingBooking = bookings.ongoing_bookings.find((item) => item.id === id)
+    const endedBooking = bookings.ended_bookings.find((item) => item.id === id)
+    return onGoingBooking || endedBooking
+  }, [bookings, id])
 }

@@ -7,10 +7,14 @@ type ParamsParsers<ScreenName extends ScreenNames> = {
 }
 
 type ScreenParamsParsers = {
+  'booking-details': ParamsParsers<'BookingDetails'>
   'signup-confirmation': ParamsParsers<'AfterSignupEmailValidationBuffer'>
 }
 
 export const screenParamsParser: ScreenParamsParsers = {
+  'booking-details': {
+    id: (value) => Number(value),
+  },
   'signup-confirmation': {
     email: (value) => decodeURIComponent(value),
     token: (value) => value,
