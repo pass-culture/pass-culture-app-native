@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
+import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -26,6 +27,7 @@ const lorem =
 
 export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const { data: venue } = useVenue(venueId)
+  const { data: offers } = useVenueOffers(venueId)
   const scrollViewRef = useRef<ScrollView | null>(null)
   const { data: settings } = useAppSettings()
 
@@ -71,7 +73,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       </SectionWithDivider>
 
       {/* TODO(antoinewg) Show only if app search is enabled */}
-      <SectionWithDivider visible={!settings?.useAppSearch}>
+      <SectionWithDivider visible={!settings?.useAppSearch && !!offers && offers?.length > 0}>
         <VenueOffers venueId={venueId} />
       </SectionWithDivider>
 
