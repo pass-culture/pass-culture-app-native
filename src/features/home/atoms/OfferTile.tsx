@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useMemo } from 'react'
+import React from 'react'
 import { View, PixelRatio } from 'react-native'
-import FastImage from 'react-native-fast-image'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -10,6 +9,7 @@ import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
+import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
 import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
@@ -62,22 +62,6 @@ export const mergeOfferData = (offer: PartialOffer) => (
   ...(prevData || {}),
 })
 
-const ImageTile = (props: { imageWidth: number; imageHeight: number; uri?: string }) => {
-  const style = useMemo(
-    () => ({
-      height: props.imageHeight,
-      width: props.imageWidth,
-      borderTopLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
-      borderTopRightRadius: BorderRadiusEnum.BORDER_RADIUS,
-    }),
-    [props.imageHeight, props.imageWidth]
-  )
-
-  const source = useMemo(() => ({ uri: props.uri }), [props.uri])
-
-  return props.uri ? <FastImage style={style} source={source} testID="offerTileImage" /> : null
-}
-
 export const OfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
   const { layout = 'one-item-medium', moduleName, isBeneficiary, ...offer } = props
@@ -100,7 +84,12 @@ export const OfferTile = (props: OfferTileProps) => {
     <Container>
       <TouchableHighlight imageHeight={imageHeight} onPress={handlePressOffer}>
         <View>
-          <ImageTile imageWidth={imageWidth} imageHeight={imageHeight} uri={offer.thumbUrl} />
+          <ImageTile
+            imageWidth={imageWidth}
+            imageHeight={imageHeight}
+            uri={offer.thumbUrl}
+            onlyTopBorderRadius
+          />
           <ImageCaption
             imageWidth={imageWidth}
             category={offer.category}
