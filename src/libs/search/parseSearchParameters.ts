@@ -50,6 +50,7 @@ export const parseSearchParameters = ({
     tags: parameters.tags || [],
     date: null,
     timeRange: null,
+    venueId: null,
   }
 }
 

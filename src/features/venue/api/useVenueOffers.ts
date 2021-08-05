@@ -8,9 +8,8 @@ import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, fetchVenueOffers } from 'libs/search'
 
-export const useVenueOffers = (venueId: number) => {
+export const useVenueSearchParameters = (venueId: number): SearchParameters => {
   const { position } = useGeolocation()
-  const transformHits = useTransformAlgoliaHits()
 
   const params: SearchParameters = {
     aroundRadius: position ? 100 : null,
@@ -28,7 +27,15 @@ export const useVenueOffers = (venueId: number) => {
     tags: [],
     date: null,
     timeRange: null,
+    venueId,
   }
+
+  return params
+}
+
+export const useVenueOffers = (venueId: number) => {
+  const transformHits = useTransformAlgoliaHits()
+  const params = useVenueSearchParameters(venueId)
 
   return useQuery<SearchHit[]>([QueryKeys.VENUE_OFFERS, venueId], () => fetchVenueOffers(params), {
     select: (hits) => uniqBy(hits.filter(filterAlgoliaHit).map(transformHits), 'objectID'),

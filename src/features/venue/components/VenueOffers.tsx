@@ -1,13 +1,16 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 
 import { OfferTile } from 'features/home/atoms'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useVenue } from 'features/venue/api/useVenue'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
+import { useVenueOffers, useVenueSearchParameters } from 'features/venue/api/useVenueOffers'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -20,6 +23,8 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   const { data: venue } = useVenue(venueId)
   const { data: offers } = useVenueOffers(venueId)
   const { position } = useGeolocation()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const params = useVenueSearchParameters(venueId)
 
   const renderItem: ListRenderItem<SearchHit> = useCallback(
     ({ item }) => {
@@ -45,6 +50,10 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
     [position]
   )
 
+  const seeAllOffers = useCallback(() => {
+    navigate('Search', { parameters: params })
+  }, [params])
+
   if (!venue) return <React.Fragment></React.Fragment>
 
   return (
@@ -60,6 +69,8 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={ItemSeparatorComponent}
       />
+      <Spacer.Column numberOfSpaces={6} />
+      <ButtonPrimary title={t`Voir toutes les offres`} onPress={seeAllOffers} />
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
