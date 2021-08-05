@@ -196,7 +196,7 @@ export const routes: Array<Route> = [
     component: AfterSignupEmailValidationBuffer,
     pathConfig: {
       path: 'signup-confirmation',
-      parse: screenParamsParser['signup-confirmation'],
+      parse: screenParamsParser['AfterSignupEmailValidationBuffer'],
     },
   },
   // { name: 'AppComponents', component: AppComponents, path: 'app-components' },
@@ -218,7 +218,7 @@ export const routes: Array<Route> = [
     component: BookingDetails,
     pathConfig: {
       path: 'booking/:id/details',
-      parse: screenParamsParser['booking-details'],
+      parse: screenParamsParser['BookingDetails'],
     },
   },
   // { name: 'CulturalSurvey', component: CulturalSurvey },

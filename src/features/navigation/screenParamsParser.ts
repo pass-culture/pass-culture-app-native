@@ -1,21 +1,23 @@
 import { AllNavParamList, RouteParams, ScreenNames } from 'features/navigation/RootNavigator'
 
-type ParamsParsers<ScreenName extends ScreenNames> = {
-  [ParamName in keyof RouteParams<AllNavParamList, ScreenName>]: (
-    value: string
-  ) => RouteParams<AllNavParamList, ScreenName>[ParamName]
+type ScreensRequiringParsing = Extract<
+  ScreenNames,
+  'AfterSignupEmailValidationBuffer' | 'BookingDetails'
+>
+
+type ParamsParsers = {
+  [Screen in ScreensRequiringParsing]: {
+    [Param in keyof RouteParams<AllNavParamList, Screen>]: (
+      value: string
+    ) => RouteParams<AllNavParamList, Screen>[Param]
+  }
 }
 
-type ScreenParamsParsers = {
-  'booking-details': ParamsParsers<'BookingDetails'>
-  'signup-confirmation': ParamsParsers<'AfterSignupEmailValidationBuffer'>
-}
-
-export const screenParamsParser: ScreenParamsParsers = {
-  'booking-details': {
+export const screenParamsParser: ParamsParsers = {
+  BookingDetails: {
     id: (value) => Number(value),
   },
-  'signup-confirmation': {
+  AfterSignupEmailValidationBuffer: {
     email: (value) => decodeURIComponent(value),
     token: (value) => value,
     expiration_timestamp: (value) => Number(value),

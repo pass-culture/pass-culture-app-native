@@ -73,7 +73,7 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     }
   },
   'signup-confirmation'(params) {
-    const parser = screenParamsParser['signup-confirmation']
+    const parser = screenParamsParser['AfterSignupEmailValidationBuffer']
     if (params && params.token && params.email && params.expiration_timestamp) {
       return {
         screen: 'AfterSignupEmailValidationBuffer',
