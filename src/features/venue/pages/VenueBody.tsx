@@ -71,7 +71,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       </SectionWithDivider>
 
       {/* TODO(antoinewg) Show only if app search is enabled */}
-      <SectionWithDivider margin visible={!settings?.useAppSearch}>
+      <SectionWithDivider margin visible={!!settings?.useAppSearch}>
         <VenueOffers venueId={venueId} />
       </SectionWithDivider>
 
