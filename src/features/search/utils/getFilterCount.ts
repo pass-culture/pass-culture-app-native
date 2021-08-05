@@ -24,6 +24,8 @@ export const getFilterCount = (searchState: SearchState): number => {
     // Date
     +!!searchState.date +
     // Heure
-    +!!searchState.timeRange
+    +!!searchState.timeRange +
+    // Lieu
+    +!!searchState.venueId
   )
 }
