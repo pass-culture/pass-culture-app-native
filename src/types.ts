@@ -41,9 +41,7 @@ declare global {
         vapidPublicKey: string | undefined
         ui: {
           native?: unknown
-          alert?: {
-            icon: string
-          }
+          alert?: unknown
         }
         defaultIcon?: string
         smallIcon?: string
