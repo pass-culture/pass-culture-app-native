@@ -46,7 +46,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       bounces={false}
       onScroll={onScroll}>
       <Hero categoryName={CategoryNameEnum.MUSIQUE} imageUrl="" landscape />
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={6} />
       <MarginContainer>
         <VenueTitle
           testID="venueTitle"
@@ -55,7 +55,6 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
           allowFontScaling={false}>
           {venue.name}
         </VenueTitle>
-
         <VenueAddressContainer>
           <IconContainer>
             <LocationPointer size={getSpacing(4)} />
@@ -67,7 +66,9 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
 
       {/* TODO(antoinewg) Remove after add all venue informations - (it's just for scroll) */}
       <SectionWithDivider margin visible>
-        <Typo.Body>{lorem.repeat(6)}</Typo.Body>
+        <Spacer.Column numberOfSpaces={6} />
+        <Typo.Body>{lorem}</Typo.Body>
+        <Spacer.Column numberOfSpaces={6} />
       </SectionWithDivider>
 
       {/* TODO(antoinewg) Show only if app search is enabled */}
@@ -102,7 +103,8 @@ const MarginContainer = styled.View({
 const VenueAddressContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
-  marginTop: getSpacing(10),
+  justifyContent: 'center',
+  marginTop: getSpacing(2),
 })
 
 const IconContainer = styled.View({

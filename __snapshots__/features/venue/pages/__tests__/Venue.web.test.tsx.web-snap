@@ -80,7 +80,7 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="height: 16px;"
+              style="height: 24px;"
             />
             <div
               class="css-view-1dbjc4n"
@@ -96,7 +96,7 @@ Object {
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: center; flex-direction: row; margin-top: 40px;"
+                style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -135,12 +135,20 @@ Object {
               style="margin-right: 24px; margin-left: 24px;"
             >
               <div
+                class="css-view-1dbjc4n"
+                style="height: 24px;"
+              />
+              <div
                 class="css-text-901oao"
                 dir="auto"
                 style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.
               </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 24px;"
+              />
             </div>
             <div
               class="css-view-1dbjc4n"
@@ -552,7 +560,7 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="height: 16px;"
+            style="height: 24px;"
           />
           <div
             class="css-view-1dbjc4n"
@@ -568,7 +576,7 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; margin-top: 40px;"
+              style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -607,12 +615,20 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <div
+              class="css-view-1dbjc4n"
+              style="height: 24px;"
+            />
+            <div
               class="css-text-901oao"
               dir="auto"
               style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.
             </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 24px;"
+            />
           </div>
           <div
             class="css-view-1dbjc4n"
