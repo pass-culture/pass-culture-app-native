@@ -1631,6 +1631,10 @@ msgstr "Voir ma réservation"
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
+#: src/features/venue/components/VenueOffers.tsx
+msgid "Voir toutes les offres"
+msgstr "Voir toutes les offres"
+
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 msgid "Votre compte a été activé !"
 msgstr "Votre compte a été activé !"
