@@ -30,7 +30,6 @@ export const Batch = {
       vapidPublicKey: env.BATCH_VAPID_PUBLIC_KEY,
       ui: batchSDKUIConfig,
       useExistingServiceWorker: true,
-      dev: true, // remove this for prod
       // defaultIcon: 'https://path.to/my/logo-192/png', // for Chrome desktop
       // smallIcon: 'https://path.to/my/icon-96.png', // for Chrome Android
     })
