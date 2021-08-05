@@ -5,12 +5,13 @@ import { SearchParameters } from 'features/search/types'
 import { AppSearchFields, FALSE, TRUE } from './constants'
 
 export const buildFacetFilters = (params: SearchParameters): FilterArray<AppSearchFields> => {
-  const { offerCategories, offerIsDuo, tags, offerTypes } = params
+  const { offerCategories, offerIsDuo, tags, offerTypes, venueId } = params
 
   const facetFilters: FilterArray<AppSearchFields> = buildOfferTypesFilter(offerTypes)
   if (offerCategories?.length) facetFilters.push({ [AppSearchFields.category]: offerCategories })
   if (offerIsDuo) facetFilters.push({ [AppSearchFields.is_duo]: TRUE })
   if (tags?.length) facetFilters.push({ [AppSearchFields.tags]: tags })
+  if (venueId) facetFilters.push({ [AppSearchFields.venue_id]: venueId })
 
   return facetFilters
 }
