@@ -1,6 +1,5 @@
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { screenParamsParser } from 'features/navigation/screenParamsParser'
-import { isTimestampExpired } from 'libs/dates'
 
 import { DeepLinksToScreenConfiguration } from './types'
 
@@ -30,20 +29,15 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     return { screen: 'SetEmail', params: undefined }
   },
   'mot-de-passe-perdu'(params) {
+    const screen = 'ReinitializePassword'
+    const parser = screenParamsParser[screen]
     if (params && params.token && params.email && params.expiration_timestamp) {
-      const parsedExpirationTimestamp = Number(params.expiration_timestamp)
-      const parsedEmail = decodeURIComponent(params.email)
-      if (isTimestampExpired(parsedExpirationTimestamp)) {
-        return {
-          screen: 'ResetPasswordExpiredLink',
-          params: { email: parsedEmail },
-        }
-      }
       return {
-        screen: 'ReinitializePassword',
+        screen,
         params: {
-          token: params.token,
-          expiration_timestamp: parsedExpirationTimestamp,
+          email: parser.email(params.email),
+          token: parser.token(params.token),
+          expiration_timestamp: parser.expiration_timestamp(params.expiration_timestamp),
         },
       }
     }
@@ -73,10 +67,11 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     }
   },
   'signup-confirmation'(params) {
-    const parser = screenParamsParser['AfterSignupEmailValidationBuffer']
+    const screen = 'AfterSignupEmailValidationBuffer'
+    const parser = screenParamsParser[screen]
     if (params && params.token && params.email && params.expiration_timestamp) {
       return {
-        screen: 'AfterSignupEmailValidationBuffer',
+        screen,
         params: {
           email: parser.email(params.email),
           token: parser.token(params.token),
