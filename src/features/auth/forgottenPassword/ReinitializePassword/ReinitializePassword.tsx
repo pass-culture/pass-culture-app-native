@@ -1,6 +1,8 @@
 import { t } from '@lingui/macro'
-import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
+import { LoadingPage } from '@pass-culture/id-check/src/ui/components/loaders/LoadingPage'
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
+import React, { useState } from 'react'
+import { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import {
@@ -8,8 +10,9 @@ import {
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
 import { navigateToHome } from 'features/navigation/helpers'
-import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { isTimestampExpired } from 'libs/dates'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -22,22 +25,29 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useResetPasswordMutation } from '../../mutations'
 
-const MILLISECONDS_IN_A_SECOND = 1000
-
 export const ReinitializePassword = () => {
-  const { params } = useRoute<UseRouteType<'ReinitializePassword'>>()
-  const { navigate } = useNavigation<UseNavigationType>()
-
+  const route = useRoute<UseRouteType<'ReinitializePassword'>>()
+  const navigation = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar } = useSnackBarContext()
 
+  const [isTimestampExpirationVerified, setIsTimestampExpirationVerified] = useState(false)
   const [password, setPassword] = useState('')
-  const [shouldShowPasswordError] = useState(false)
   const [confirmedPassword, setConfirmedPassword] = useState('')
-  const [shouldShowConfirmationError] = useState(false)
 
   const allowSubmission = isPasswordCorrect(password) && confirmedPassword === password
-
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
+
+  useFocusEffect(
+    useCallback(() => {
+      setIsTimestampExpirationVerified(false)
+      const { expiration_timestamp, email } = route.params
+      if (isTimestampExpired(expiration_timestamp)) {
+        navigation.replace('ResetPasswordExpiredLink', { email })
+      } else {
+        setIsTimestampExpirationVerified(true)
+      }
+    }, [route.params])
+  )
 
   const { mutate: resetPassword, isLoading } = useResetPasswordMutation(() => {
     showSuccessSnackBar({
@@ -45,22 +55,19 @@ export const ReinitializePassword = () => {
       timeout: SNACK_BAR_TIME_OUT,
     })
     analytics.logHasChangedPassword('resetPassword')
-    navigate('Login')
+    navigation.navigate('Login')
   })
 
   function submitPassword() {
     resetPassword({
       newPassword: password,
-      resetPasswordToken: params.token,
+      resetPasswordToken: route.params.token,
     })
   }
 
-  useEffect(() => {
-    if (params.expiration_timestamp * MILLISECONDS_IN_A_SECOND < new Date().getTime()) {
-      navigate('Login')
-    }
-  }, [])
-
+  if (!isTimestampExpirationVerified) {
+    return <LoadingPage />
+  }
   return (
     <BottomContentPage>
       <ModalHeader
@@ -78,7 +85,6 @@ export const ReinitializePassword = () => {
             autoFocus
             onChangeText={setPassword}
             placeholder={t`Ton mot de passe`}
-            isError={shouldShowPasswordError}
           />
         </StyledInput>
         <PasswordSecurityRules password={password} />
@@ -90,7 +96,6 @@ export const ReinitializePassword = () => {
             value={confirmedPassword}
             onChangeText={setConfirmedPassword}
             placeholder={t`Confirmer le mot de passe`}
-            isError={shouldShowConfirmationError}
           />
         </StyledInput>
         <Spacer.Column numberOfSpaces={2} />

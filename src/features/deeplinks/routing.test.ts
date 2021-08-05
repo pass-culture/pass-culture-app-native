@@ -1,5 +1,4 @@
 import { homeNavigateConfig } from 'features/navigation/helpers'
-import * as datesLib from 'libs/dates'
 
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
 
@@ -20,36 +19,15 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
       expect(configureScreen).toEqual(homeNavigateConfig)
     })
 
-    it('should return ResetPasswordExpiredLink page when expiration_timestamp is expired', () => {
-      // eslint-disable-next-line local-rules/independant-mocks
-      jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(true)
+    it('should return ReinitializePassword when all params are present', () => {
       const params = { token: 'token', expiration_timestamp: '11111', email: 'test@gmail.com' }
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['mot-de-passe-perdu'](params)
-
-      expect(configureScreen.screen).toBe('ResetPasswordExpiredLink')
-      expect(configureScreen.params).toEqual({ email: params.email })
-    })
-
-    it('should return ResetPasswordExpiredLink with correctly parsed email', () => {
-      const params = {
-        token: 'token',
-        expiration_timestamp: '11111',
-        email: 'test%2Bk%40passculture.app',
-      }
-      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['mot-de-passe-perdu'](params)
-
-      expect(configureScreen.screen).toBe('ResetPasswordExpiredLink')
-      expect(configureScreen.params).toEqual({ email: 'test+k@passculture.app' })
-    })
-
-    it('should return ReinitializePassword page when expiration_timestamp is NOT expired', () => {
-      // eslint-disable-next-line local-rules/independant-mocks
-      jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
-      const params = { token: 'token', expiration_timestamp: '11111', email: 'test@gmail.com' }
-      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['mot-de-passe-perdu'](params)
-
       expect(configureScreen.screen).toBe('ReinitializePassword')
-      expect(configureScreen.params).toEqual({ token: params.token, expiration_timestamp: 11111 })
+      expect(configureScreen.params).toEqual({
+        token: params.token,
+        expiration_timestamp: 11111,
+        email: 'test@gmail.com',
+      })
     })
   })
 
@@ -76,7 +54,6 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
         email: 'test%2Bk%40passculture.app',
       }
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['signup-confirmation'](params)
-
       expect(configureScreen.screen).toBe('AfterSignupEmailValidationBuffer')
       expect(configureScreen.params).toEqual({
         email: 'test+k@passculture.app',

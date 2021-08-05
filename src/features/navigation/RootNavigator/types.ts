@@ -69,7 +69,7 @@ export type RootStackParamList = {
     moduleName?: string
   }
   OfferDescription: { id: number }
-  ReinitializePassword: { token: string; expiration_timestamp: number }
+  ReinitializePassword: { email: string; token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
