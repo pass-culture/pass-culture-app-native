@@ -1,7 +1,8 @@
 import React from 'react'
-import Svg, { ClipPath, Defs, G, Image, Path, Use, LinearGradient, Stop } from 'react-native-svg'
+import Svg, { ClipPath, Defs, G, Path, Use, LinearGradient, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
+import { Image } from 'libs/react-native-svg/Image'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getShadow } from 'ui/theme'
