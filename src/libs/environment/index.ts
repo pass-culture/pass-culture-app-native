@@ -54,6 +54,7 @@ export interface Environment {
   UNIVERSAL_LINK: string
   URL_PREFIX: string
   WEBAPP_URL: string
+  WEBAPP_V2_DOMAIN: string
   WEBSOCKET_ENDPOINT: string
 }
 
