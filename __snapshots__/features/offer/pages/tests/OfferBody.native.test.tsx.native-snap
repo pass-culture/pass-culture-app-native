@@ -4503,6 +4503,16 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             Où ?
                           </Text>
                           <View
+                            numberOfSpaces={2}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 8,
+                                },
+                              ]
+                            }
+                          />
+                          <View
                             accessible={true}
                             focusable={true}
                             onClick={[Function]}
@@ -4514,21 +4524,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             onStartShouldSetResponder={[Function]}
                             style={
                               Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
                                 "opacity": 1,
                               }
                             }
                             testID="VenueBannerComponent"
                           >
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                Array [
-                                  Object {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               style={
                                 Array [
@@ -4537,12 +4539,31 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
                                     "lineHeight": 20,
+                                    "textTransform": "capitalize",
                                   },
                                 ]
                               }
                             >
                               PATHE BEAUGRENELLE
                             </Text>
+                            <View
+                              numberOfSpaces={1}
+                              style={
+                                Array [
+                                  Object {
+                                    "width": 4,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
                           </View>
                           <View
                             numberOfSpaces={4}
