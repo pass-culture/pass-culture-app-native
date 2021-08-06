@@ -50,7 +50,7 @@ export const WhereSection: React.FC<Props> = ({
           <Typo.Body>{venue.name}</Typo.Body>
         </VenueName>
       )}
-      {!!venue.address && (
+      {!!address && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <Typo.Caption>{t`Adresse`}</Typo.Caption>
