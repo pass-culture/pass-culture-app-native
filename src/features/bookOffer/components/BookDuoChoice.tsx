@@ -11,13 +11,14 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { DuoChoice } from '../atoms/DuoChoice'
-import { useBooking, useBookingStock } from '../pages/BookingOfferWrapper'
+import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
 import { Step } from '../pages/reducer'
 
 export const BookDuoChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
   const stock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId || 0)
+  const { isDuo } = useBookingOffer() || {}
 
   const getChoiceInfosForQuantity = (quantity: 1 | 2) => {
     const enoughCredit = stock ? quantity * stock.price <= offerCredit : false
@@ -45,7 +46,7 @@ export const BookDuoChoice: React.FC = () => {
       {bookingState.step === Step.DUO ? (
         <DuoChoiceContainer>
           <DuoChoice {...getChoiceInfosForQuantity(1)} testID={`DuoChoice1`} />
-          <DuoChoice {...getChoiceInfosForQuantity(2)} testID={`DuoChoice2`} />
+          {isDuo ? <DuoChoice {...getChoiceInfosForQuantity(2)} testID={`DuoChoice2`} /> : null}
         </DuoChoiceContainer>
       ) : (
         <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeQuantity}>
