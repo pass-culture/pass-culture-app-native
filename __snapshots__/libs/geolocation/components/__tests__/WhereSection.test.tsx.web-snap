@@ -27,6 +27,14 @@ Array [
   </div>,
   <div
     className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "8px",
+      }
+    }
+  />,
+  <div
+    className="css-view-1dbjc4n"
     data-focusable={true}
     data-testid="VenueBannerComponent"
     onClick={[Function]}
@@ -36,10 +44,19 @@ Array [
       Object {
         "MozTransitionProperty": "opacity",
         "MozUserSelect": "none",
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitFlexDirection": "row",
         "WebkitTransitionDuration": "0s",
         "WebkitTransitionProperty": "opacity",
         "WebkitUserSelect": "none",
+        "alignItems": "center",
         "cursor": "pointer",
+        "flexDirection": "row",
+        "msFlexAlign": "center",
+        "msFlexDirection": "row",
         "msTouchAction": "manipulation",
         "msUserSelect": "none",
         "touchAction": "manipulation",
@@ -51,14 +68,6 @@ Array [
     tabIndex="0"
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "8px",
-        }
-      }
-    />
-    <div
       className="css-text-901oao"
       dir="auto"
       onClick={[Function]}
@@ -68,10 +77,30 @@ Array [
           "fontFamily": "Montserrat-Regular",
           "fontSize": "15px",
           "lineHeight": "20px",
+          "textTransform": "capitalize",
         }
       }
     >
       Le Petit Rintintin 1
+    </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "width": "4px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-text-901oao"
+        dir="auto"
+        onClick={[Function]}
+      >
+        undefined-SVG-Mock
+      </div>
     </div>
   </div>,
   <div

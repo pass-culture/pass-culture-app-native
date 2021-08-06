@@ -10,7 +10,8 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { Typo, ColorsEnum } from 'ui/theme'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
@@ -45,10 +46,14 @@ export const WhereSection: React.FC<Props> = ({
       {/* TODO : Remove testing condition to display the link to venue button */}
       {/* eslint-disable-next-line local-rules/no-string-check-before-component*/}
       {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && !!showVenueBanner && (
-        <VenueName onPress={navigateToVenuePage} testID="VenueBannerComponent">
+        <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body>{venue.name}</Typo.Body>
-        </VenueName>
+          <VenueName onPress={navigateToVenuePage} testID="VenueBannerComponent">
+            <StyledAddress>{venue.name}</StyledAddress>
+            <Spacer.Row numberOfSpaces={1} />
+            <ArrowNext size={getSpacing(6)} />
+          </VenueName>
+        </React.Fragment>
       )}
       {!!address && (
         <React.Fragment>
@@ -88,4 +93,7 @@ const Separator = styled.View({
   backgroundColor: ColorsEnum.GREY_MEDIUM,
 })
 
-const VenueName = styled.TouchableOpacity({})
+const VenueName = styled.TouchableOpacity({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
