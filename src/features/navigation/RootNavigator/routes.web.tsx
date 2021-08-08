@@ -25,7 +25,7 @@ import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
 import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
-// import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
+import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
@@ -293,12 +293,11 @@ export const routes: Array<Route> = [
   },
   { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep, path: 'next-beneficiary-step' },
   { name: 'SetPhoneNumber', component: SetPhoneNumber, path: 'set-phone-number' },
-  // TODO: use react-input-mask on the web instead of react-native-text-input-mask
-  // {
-  //   name: 'SetPhoneValidationCode',
-  //   component: SetPhoneValidationCode,
-  //   path: 'set-phone-validation',
-  // },
+  {
+    name: 'SetPhoneValidationCode',
+    component: SetPhoneValidationCode,
+    path: 'set-phone-validation',
+  },
   {
     name: 'PhoneValidationTooManyAttempts',
     component: PhoneValidationTooManyAttempts,

@@ -27,7 +27,6 @@ import * as ModalModule from 'ui/components/modals/useModal'
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
-jest.mock('react-native-text-input-mask', () => () => null)
 jest.mock('react-query')
 jest.mock('features/auth/settings')
 jest.mock('features/home/api', () => ({
@@ -106,7 +105,6 @@ describe('SetPhoneValidationCode', () => {
     })
   })
 
-  // FIXME(anoukhello) mock react-native-text-input-mask correctly to unskip this block
   describe.skip('Continue button', () => {
     it('should enable continue button if input is valid and complete', async () => {
       const { getByTestId } = renderModalWithFilledCodeInput('123456')
@@ -242,13 +240,11 @@ function renderModalWithFilledCodeInput(code: string) {
       },
     },
   } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
-  for (let i = 0; i < code.length; i++) {
-    fireEvent.change(renderAPI.getByTestId(`input-${i}`), code[i])
-    renderAPI.rerender(
-      <SafeAreaProvider>
-        <SetPhoneValidationCode {...navigationProps} />
-      </SafeAreaProvider>
-    )
-  }
+  fireEvent.change(renderAPI.getByTestId('code-input'), code)
+  renderAPI.rerender(
+    <SafeAreaProvider>
+      <SetPhoneValidationCode {...navigationProps} />
+    </SafeAreaProvider>
+  )
   return renderAPI
 }

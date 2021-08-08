@@ -5,7 +5,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, useState, useMemo, memo } from 'react'
 import { Dimensions } from 'react-native'
-import TextInputMask from 'react-native-text-input-mask'
+import { MaskedTextInput } from 'react-native-mask-text'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -118,7 +118,6 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
     } catch (err) {
       errorMonitoring.captureException(err)
     }
-
     navigateToNextBeneficiaryValidationStep()
   }
 
@@ -209,10 +208,13 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
           <Spacer.Column numberOfSpaces={6} />
           <CodeInputContainer>
             <CodeInput
-              onChangeText={(_formatted, extracted) => onChangeValue(extracted ?? '')}
+              onChangeText={(text, rawText) => {
+                onChangeValue(rawText ?? '')
+              }}
               placeholder={codeInputPlaceholder}
               placeholderTextColor={ColorsEnum.GREY_DARK}
               mask={codeInputMask}
+              maxLength={codeInputPlaceholder.length}
               keyboardType="number-pad"
               testID="code-input"
             />
@@ -271,14 +273,16 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
   )
 })
 
-const codeInputPlaceholder = ('0' + '\u00a0'.repeat(5)).repeat(5) + '0'
-const codeInputMask = ('[0]' + ' '.repeat(5)).repeat(5) + '[0]'
+const codeInputPlaceholder = '000000'
+const codeInputMask = '999999'
 
-const CodeInput = styled(TextInputMask)({
+const CodeInput = styled(MaskedTextInput)({
   fontSize: 20,
-  marginLeft: getSpacing(4),
+  marginLeft: getSpacing(8),
   color: ColorsEnum.BLACK,
   fontFamily: 'Montserrat-Regular',
+  letterSpacing: getSpacing(4),
+  width: getSpacing(55),
 })
 
 const CodeInputContainer = styled.View({
