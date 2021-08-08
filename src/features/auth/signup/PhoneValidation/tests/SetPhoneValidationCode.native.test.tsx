@@ -24,7 +24,6 @@ import {
 import * as ModalModule from 'ui/components/modals/useModal'
 import { ColorsEnum } from 'ui/theme'
 
-jest.mock('react-native-text-input-mask', () => () => null)
 jest.mock('react-query')
 jest.mock('features/auth/settings')
 jest.mock('features/home/api', () => ({
@@ -92,9 +91,9 @@ describe('SetPhoneValidationCode', () => {
 
   describe('Contact support button', () => {
     it('should open mail app when clicking on contact support button', async () => {
-      const { getByText } = renderSetPhoneValidationCode()
+      const { findByText } = renderSetPhoneValidationCode()
 
-      const contactSupportButton = getByText('Contacter le support')
+      const contactSupportButton = await findByText('Contacter le support')
       fireEvent.press(contactSupportButton)
 
       await waitForExpect(() => {
@@ -103,8 +102,7 @@ describe('SetPhoneValidationCode', () => {
     })
   })
 
-  // FIXME(anoukhello) mock react-native-text-input-mask correctly to unskip this block
-  describe.skip('Continue button', () => {
+  describe('Continue button', () => {
     it('should enable continue button if input is valid and complete', async () => {
       const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
@@ -114,9 +112,8 @@ describe('SetPhoneValidationCode', () => {
       })
     })
 
-    it.each([
+    it.only.each([
       ['empty', ''],
-      ['includes string', 's09453'],
       ['is too short', '54'],
     ])('should not enable continue button when "%s"', async (_reason, codeTyped) => {
       const { getByTestId } = renderModalWithFilledCodeInput(codeTyped)
@@ -235,9 +232,7 @@ function renderModalWithFilledCodeInput(code: string) {
       },
     },
   } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
-  for (let i = 0; i < code.length; i++) {
-    fireEvent.changeText(renderAPI.getByTestId(`input-${i}`), code[i])
-    renderAPI.rerender(<SetPhoneValidationCode {...navigationProps} />)
-  }
+  fireEvent.changeText(renderAPI.getByTestId('code-input'), code)
+  renderAPI.rerender(<SetPhoneValidationCode {...navigationProps} />)
   return renderAPI
 }

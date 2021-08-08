@@ -15,7 +15,6 @@ import { Offer } from '../Offer'
 import { OfferBody } from '../OfferBody'
 
 jest.mock('libs/geolocation')
-jest.mock('react-native-text-input-mask', () => () => null)
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual<Record<string, unknown>>('@react-navigation/native'),
