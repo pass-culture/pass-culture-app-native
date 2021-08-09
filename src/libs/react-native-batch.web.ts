@@ -28,7 +28,6 @@ export const Batch = {
         native: {},
       }
     }
-
     /* Finalize the Batch SDK setup */
     /* eslint-disable-next-line */
     window.batchSDK('setup', {
@@ -40,7 +39,7 @@ export const Batch = {
       defaultIcon: 'favicon.ico', // for Chrome desktop
       smallIcon: 'favicon.ico', // for Chrome Android
       useExistingServiceWorker: true,
-      sameOrigin: env.ENV === 'production',
+      sameOrigin: !__DEV__,
     })
     window.batchSDK((api) => {
       api.ui.show('alert')
