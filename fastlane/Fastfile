@@ -76,9 +76,11 @@ platform :android do
     UI.important("env: #{options[:env]}")
     supply(
       package_name: ENV['ANDROID_APP_ID'],
+      aab: "android/app/build/outputs/bundle/productionRelease/app-production-release.aab",
       skip_upload_metadata: true, 
+      skip_upload_apk: true,
       skip_upload_images: true, 
-      skip_upload_screenshots: true  
+      skip_upload_screenshots: true
     )
   end
   lane :deploy_appCenter do |options|
