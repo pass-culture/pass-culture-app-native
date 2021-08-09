@@ -37,6 +37,7 @@ export interface Environment {
   ID_CHECK_URL: string
   IOS_APP_ID: string
   IOS_APP_STORE_ID: string
+  PUBLIC_URL: string
   PRIVACY_POLICY_LINK: string
   RECOMMENDATION_ENDPOINT: string
   RECOMMENDATION_TOKEN: string
