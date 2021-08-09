@@ -492,7 +492,9 @@ workflows:
       - deploy-android-production-hard:
           filters:
             tags:
-              only: /^prod-hard-deploy.*/
+              only:
+                - /^prod-hard-deploy.*/
+                - /^aab-prod-hard-deploy.*/
             branches:
               ignore: /.*/
           requires:
