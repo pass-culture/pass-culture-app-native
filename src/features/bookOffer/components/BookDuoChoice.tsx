@@ -24,14 +24,19 @@ export const BookDuoChoice: React.FC = () => {
     const enoughCredit = stock ? quantity * stock.price <= offerCredit : false
     return {
       price:
-        enoughCredit && stock
+        enoughCredit && stock && quantity === 1
           ? formatToFrenchDecimal(quantity * stock.price).replace(' ', '')
+          : enoughCredit && stock && quantity === 2 && isDuo
+          ? formatToFrenchDecimal(quantity * stock.price).replace(' ', '')
+          : quantity === 2 && !isDuo
+          ? t`non disponible`
           : t`crédit insuffisant`,
       title: quantity === 1 ? t`Solo` : t`Duo`,
       selected: bookingState.quantity === quantity,
       icon: quantity === 1 ? Profile : DuoPerson,
       onPress: () => dispatch({ type: 'SELECT_QUANTITY', payload: quantity }),
       hasEnoughCredit: enoughCredit,
+      isDuo: quantity === 2 && !isDuo,
     }
   }
 
@@ -46,7 +51,7 @@ export const BookDuoChoice: React.FC = () => {
       {bookingState.step === Step.DUO ? (
         <DuoChoiceContainer>
           <DuoChoice {...getChoiceInfosForQuantity(1)} testID={`DuoChoice1`} />
-          {isDuo ? <DuoChoice {...getChoiceInfosForQuantity(2)} testID={`DuoChoice2`} /> : null}
+          <DuoChoice {...getChoiceInfosForQuantity(2)} testID={`DuoChoice2`} />
         </DuoChoiceContainer>
       ) : (
         <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeQuantity}>

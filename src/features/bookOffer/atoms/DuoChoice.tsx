@@ -14,6 +14,7 @@ interface Props {
   onPress: () => void
   hasEnoughCredit: boolean
   testID: string
+  isDuo: boolean
 }
 
 export const DuoChoice: React.FC<Props> = ({
@@ -24,8 +25,9 @@ export const DuoChoice: React.FC<Props> = ({
   onPress,
   hasEnoughCredit,
   testID,
+  isDuo,
 }) => {
-  const disabled = !hasEnoughCredit
+  const disabled = !hasEnoughCredit || isDuo
   const textColor = getTextColor(selected, disabled)
 
   return (
@@ -43,7 +45,7 @@ export const DuoChoice: React.FC<Props> = ({
 }
 
 const Container = styled.View({
-  minHeight: getSpacing(20),
+  minHeight: getSpacing(22),
   justifyContent: 'center',
   alignItems: 'center',
 })

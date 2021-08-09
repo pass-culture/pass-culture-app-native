@@ -306,7 +306,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
               Object {
                 "alignItems": "center",
                 "justifyContent": "center",
-                "minHeight": 80,
+                "minHeight": 88,
               },
             ]
           }
@@ -430,7 +430,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
               Object {
                 "alignItems": "center",
                 "justifyContent": "center",
-                "minHeight": 80,
+                "minHeight": 88,
               },
             ]
           }
