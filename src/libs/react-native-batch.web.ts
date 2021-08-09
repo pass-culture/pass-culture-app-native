@@ -36,8 +36,8 @@ export const Batch = {
       authKey: env.BATCH_AUTH_KEY,
       vapidPublicKey: env.BATCH_VAPID_PUBLIC_KEY,
       ui: batchSDKUIConfig,
-      defaultIcon: 'images/ic_launcher_xxxhdpi.png',
-      smallIcon: 'images/app-icon-android-notif-mask.png', // for Chrome Android
+      defaultIcon: env.PUBLIC_URL + '/images/ic_launcher_xxxhdpi.png',
+      smallIcon: env.PUBLIC_URL + '/images/app-icon-android-notif-mask.png', // for Chrome Android
       useExistingServiceWorker: true,
       sameOrigin: !__DEV__,
     })
