@@ -149,11 +149,11 @@ exports[`<Venue /> should match snapshot 1`] = `
         </View>
       </View>
       <View
-        numberOfSpaces={6}
+        numberOfSpaces={4}
         style={
           Array [
             Object {
-              "height": 24,
+              "height": 16,
             },
           ]
         }
@@ -167,25 +167,6 @@ exports[`<Venue /> should match snapshot 1`] = `
           ]
         }
       >
-        <Text
-          adjustsFontSizeToFit={true}
-          allowFontScaling={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
-                "textAlign": "center",
-              },
-            ]
-          }
-          testID="venueTitle"
-        >
-          Le Petit Rintintin 1
-        </Text>
         <View
           style={
             Array [
@@ -235,98 +216,137 @@ exports[`<Venue /> should match snapshot 1`] = `
           </Text>
         </View>
         <View
+          numberOfSpaces={2}
           style={
             Array [
               Object {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
+                "height": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          adjustsFontSizeToFit={true}
+          allowFontScaling={false}
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+                "textAlign": "center",
+              },
+            ]
+          }
+          testID="venueTitle"
+        >
+          Le Petit Rintintin 1
+        </Text>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ]
           }
         >
           <View
-            numberOfSpaces={6}
             style={
               Array [
                 Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
                 },
               ]
             }
           >
             <View
-              style={
-                Array [
-                  Object {
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
+              fill="#626262"
+              height={40}
+              width={40}
             >
-              <View
-                fill="#626262"
-                height={40}
-                width={40}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
+              <Text>
+                undefined-SVG-Mock
+              </Text>
             </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                    "textAlign": "center",
-                  },
-                ]
-              }
-              testID="caption-undefined"
-            >
-              tutu
-            </Text>
           </View>
-          <View
-            numberOfSpaces={6}
+          <Text
             style={
               Array [
                 Object {
-                  "width": 24,
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "textAlign": "center",
                 },
               ]
             }
-          />
+            testID="caption-undefined"
+          >
+            Autre
+          </Text>
         </View>
         <View
           numberOfSpaces={6}
           style={
             Array [
               Object {
-                "height": 24,
+                "width": 24,
               },
             ]
           }
         />
       </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
       <View
         style={
           Array [

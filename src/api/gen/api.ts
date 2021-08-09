@@ -1497,12 +1497,6 @@ export interface SettingsResponse {
     isRecaptchaEnabled: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    isWebappV2Enabled: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof SettingsResponse
      */

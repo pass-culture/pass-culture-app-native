@@ -36,27 +36,27 @@ export const parseType = (types: VenueTypeCode | null | undefined): string => {
 export const MAP_TYPE_TO_ICON: {
   [k in VenueTypeCode]: React.FC<IconInterface>
 } = {
-  ARTISTIC_COURSE: Type.Cinema,
-  BOOKSTORE: Type.Cinema,
-  CONCERT_HALL: Type.Cinema,
-  CREATIVE_ARTS_STORE: Type.Cinema,
-  CULTURAL_CENTRE: Type.Cinema,
-  DIGITAL: Type.Cinema,
-  FESTIVAL: Type.Cinema,
-  GAMES: Type.Cinema,
-  LIBRARY: Type.Cinema,
-  MUSEUM: Type.Cinema,
-  MUSICAL_INSTRUMENT_STORE: Type.Cinema,
-  MOVIE: Type.Cinema,
-  OTHER: Type.Cinema,
-  PATRIMONY_TOURISM: Type.Cinema,
-  PERFORMING_ARTS: Type.Cinema,
-  RECORD_STORE: Type.Cinema,
-  SCIENTIFIC_CULTURE: Type.Cinema,
-  VISUAL_ARTS: Type.Cinema,
+  ARTISTIC_COURSE: Type.ArtisticCourse,
+  BOOKSTORE: Type.Bookstore,
+  CONCERT_HALL: Type.ConcertHall,
+  CREATIVE_ARTS_STORE: Type.Other,
+  CULTURAL_CENTRE: Type.CulturalCentre,
+  DIGITAL: Type.Digital,
+  FESTIVAL: Type.Festival,
+  GAMES: Type.Games,
+  LIBRARY: Type.Library,
+  MUSEUM: Type.Museum,
+  MUSICAL_INSTRUMENT_STORE: Type.MusicalInstrumentStore,
+  MOVIE: Type.Movie,
+  OTHER: Type.Other,
+  PATRIMONY_TOURISM: Type.PatrimonyTourism,
+  PERFORMING_ARTS: Type.PerformingArts,
+  RECORD_STORE: Type.RecordStore,
+  SCIENTIFIC_CULTURE: Type.ScientificCulture,
+  VISUAL_ARTS: Type.VisualArt,
 }
 
-export const mapTypeToIcon = (types: VenueTypeCode | null | undefined): React.FC<IconInterface> => {
+export const mapTypeToIcon = (types: VenueTypeCode | null): React.FC<IconInterface> => {
   if (types && types in MAP_TYPE_TO_ICON) return MAP_TYPE_TO_ICON[types]
-  return Type.Cinema
+  return Type.Other
 }

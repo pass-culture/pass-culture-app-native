@@ -6,7 +6,7 @@ import { Spacer } from 'ui/theme'
 
 import { VenueType } from '../atoms/VenueType'
 
-type Props = { type: VenueTypeCode | null | undefined; label: string }
+type Props = { type: VenueTypeCode | null; label: string }
 
 export const VenueIconCaptions: React.FC<Props> = ({ type, label }) => {
   return (
