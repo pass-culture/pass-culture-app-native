@@ -6,7 +6,7 @@ import { mapTypeToIcon } from 'libs/parsers'
 import { IconWithCaption } from './IconWithCaption'
 
 interface VenueTypeProps {
-  type: VenueTypeCode | null | undefined
+  type: VenueTypeCode | null
   label?: string
 }
 
