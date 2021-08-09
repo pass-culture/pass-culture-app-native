@@ -5,31 +5,33 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -283,10 +283,11 @@
+@@ -283,11 +283,11 @@
                       },
                     ]
                   }
                   textContentType=\\"emailAddress\\"
                   underlineColorAndroid=\\"transparent\\"
+-                 value=\\"\\"
 +                 value=\\"email@gmail.com\\"
                 />
               </View>
             </View>
             <View
               numberOfSpaces={6}
-@@ -397,10 +398,11 @@
+@@ -398,11 +398,11 @@
                       },
                     ]
                   }
                   textContentType=\\"password\\"
                   underlineColorAndroid=\\"transparent\\"
+-                 value=\\"\\"
 +                 value=\\"mypassword\\"
                 />
                 <View
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -499,22 +501,22 @@
+@@ -501,22 +501,22 @@
               }
             />
             <View
@@ -54,7 +56,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -533,20 +535,20 @@
+@@ -535,20 +535,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -165,7 +167,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -334,18 +383,18 @@
+@@ -335,18 +384,18 @@
                     },
                   ]
                 }
@@ -274,7 +276,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -334,18 +383,18 @@
+@@ -335,18 +384,18 @@
                     },
                   ]
                 }
@@ -383,7 +385,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -334,18 +383,18 @@
+@@ -335,18 +384,18 @@
                     },
                   ]
                 }

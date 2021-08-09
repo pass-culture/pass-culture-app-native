@@ -4,12 +4,6 @@ import { IAuthContext } from 'features/auth/AuthContext'
 import { shouldDisplayTabIconPredicate } from '../helpers'
 import { TabRoute } from '../types'
 
-jest.mock('libs/environment', () => ({
-  env: {
-    FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: false,
-  },
-}))
-
 describe('TabNavigator', () => {
   describe('shouldDisplayTabIconPredicate', () => {
     it('should display "Bookings" icon for authenticated and beneficiary users', () => {

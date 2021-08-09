@@ -129,7 +129,7 @@ describe('<Login/>', () => {
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
-        email: undefined,
+        email: '',
       })
     })
   })

@@ -17,7 +17,7 @@ import { MonitoringError } from 'libs/errorMonitoring'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { simulateWebviewMessage, fireEvent, render, waitFor } from 'tests/utils'
+import { simulateWebviewMessage, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { AcceptCgu } from './AcceptCgu'
@@ -55,6 +55,7 @@ describe('AcceptCgu Page', () => {
 
     const contactSupportButton = await findByText('Contacter le support')
     fireEvent.press(contactSupportButton)
+    await superFlushWithAct()
 
     await waitForExpect(() => {
       expect(contactSupport.forGenericQuestion).toBeCalledTimes(1)

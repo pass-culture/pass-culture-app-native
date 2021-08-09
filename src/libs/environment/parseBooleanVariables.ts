@@ -1,6 +1,6 @@
 import { NativeConfig } from '@bam.tech/react-native-config'
 
-import { Environment } from '.'
+import { Environment } from './types'
 
 export const parseBooleanVariables = (config: NativeConfig): Environment => {
   const configWithActualBooleans = { ...config }
