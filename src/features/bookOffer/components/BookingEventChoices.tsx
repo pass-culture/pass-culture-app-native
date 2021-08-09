@@ -51,7 +51,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       )}
-      {!!((step && step >= Step.DUO) || bookingState.quantity) && (
+      {!!(step && step >= Step.DUO) && (
         <React.Fragment>
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
