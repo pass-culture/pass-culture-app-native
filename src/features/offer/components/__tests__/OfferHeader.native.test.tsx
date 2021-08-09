@@ -104,7 +104,7 @@ describe('<OfferHeader />', () => {
     const url = generateLongFirebaseDynamicLink(
       'offer',
       'id=116656',
-      '&ofl=undefined/accueil/details/AHD3A'
+      `&ofl=${env.WEBAPP_URL}/accueil/details/AHD3A`
     )
     const message =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
@@ -125,7 +125,7 @@ describe('<OfferHeader />', () => {
     const url = generateLongFirebaseDynamicLink(
       'offer',
       'id=116656',
-      '&ofl=undefined/accueil/details/AHD3A'
+      `&ofl=${env.WEBAPP_URL}/accueil/details/AHD3A`
     )
     const messageWithUrl =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +

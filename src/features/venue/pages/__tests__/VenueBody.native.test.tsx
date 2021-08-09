@@ -9,6 +9,7 @@ import {
   venueWithNoAddressResponseSnap,
   venueResponseSnap,
 } from 'features/venue/fixtures/venueResponseSnap'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, waitFor } from 'tests/utils'
 
 import { VenueBody } from '../VenueBody'
@@ -61,7 +62,9 @@ describe('<VenueBody />', () => {
 
 async function renderVenueBody(id: number) {
   useRoute.mockImplementation(() => ({ params: { id } }))
-  const wrapper = render(<VenueBody venueId={id} onScroll={jest.fn()} />)
+  const wrapper = render(<VenueBody venueId={id} onScroll={jest.fn()} />, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
   await waitFor(() => wrapper.getByTestId('venue-container'))
   return wrapper
 }

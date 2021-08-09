@@ -5,16 +5,11 @@ import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
 
-import { env } from 'libs/environment'
+import { useWebAppUrl } from 'libs/environment'
 
 import { reCaptchaWebviewHTML } from './webviewHTML'
 
 const ORIGIN_WHITELIST = ['*']
-
-const WEBVIEW_SOURCE = {
-  html: reCaptchaWebviewHTML,
-  baseUrl: env.WEBAPP_URL,
-}
 
 type MessagePayload =
   | { message: 'close' }
@@ -33,12 +28,18 @@ type Props = {
   isVisible: boolean
 }
 
-export function ReCaptcha(props: Props) {
+export const ReCaptcha: React.FC<Props> = (props) => {
+  const webAppUrl = useWebAppUrl()
   const webViewRef = useRef<WebView>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [keyToReCreateWebViewFromScratch, setKeyToReCreateWebViewFromScratch] = useState<
     string | null
   >(null)
+
+  const webviewSource = {
+    html: reCaptchaWebviewHTML,
+    baseUrl: webAppUrl,
+  }
 
   useEffect(() => {
     props.isVisible && setKeyToReCreateWebViewFromScratch(uuidv1())
@@ -109,7 +110,7 @@ export function ReCaptcha(props: Props) {
           onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
           originWhitelist={ORIGIN_WHITELIST}
           ref={webViewRef}
-          source={WEBVIEW_SOURCE}
+          source={webviewSource}
           testID="recaptcha-webview"
         />
       ) : null}

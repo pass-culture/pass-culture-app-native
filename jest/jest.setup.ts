@@ -63,48 +63,11 @@ jest.mock('libs/ABTesting/ABTesting.services')
 /* Flipper only using during manual debbuging */
 jest.mock('react-native-flipper')
 
-jest.mock('libs/environment', () => ({
-  env: {
-    ACCESSIBILITY_LINK: 'https://passculture.accessibility',
-    ALGOLIA_APPLICATION_ID: 'algoliaAppId',
-    ALGOLIA_INDEX_NAME: 'algoliaIndexName',
-    ALGOLIA_SEARCH_API_KEY: 'algoliaApiKey',
-    ANDROID_APP_ID: 'app.android',
-    API_BASE_URL: 'http://localhost',
-    APP_SEARCH_ENDPOINT: 'appSearchEndpoint',
-    APP_SEARCH_KEY: 'appSearchKey',
-    APPS_FLYER_DEV_KEY: 'appsFlyerDevKey',
-    CGU_LINK: 'https://passculture.cgu',
-    CONTENTFUL_ACCESS_TOKEN: 'accessToken',
-    CONTENTFUL_ENVIRONMENT: 'environment',
-    CONTENTFUL_SPACE_ID: 'contentfulSpaceId',
-    COOKIES_POLICY_LINK: 'https://passculture.cookies',
-    DATA_PRIVACY_CHART_LINK: 'https://passculture.data-privacy-chart',
-    DOC_CGU_URL:
-      'https//docs.passculture.app/textes-normatifs/mentions-legales-et-conditions-generales-dutilisation-de-lapplication-pass-culture',
-    DOC_PERSONAL_DATA_URL:
-      'https://docs.passculture.app/textes-normatifs/charte-des-donnees-personnelles',
-    DSM_URL: '//www.demarches-simplifiees.fr/commencer/inscription-pass-culture',
-    ENV: 'testing',
-    FAQ_LINK: 'https://passculture.faq',
-    FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: true,
-    FIREBASE_DYNAMIC_LINK: 'passcultureapptesting.page.link',
-    ID_CHECK_API_URL: 'https://passculture.idcheck',
-    ID_CHECK_URL: 'https://id-check-unit-tests',
-    IOS_APP_ID: 'app.ios',
-    IOS_APP_STORE_ID: 1557887412,
-    PRIVACY_POLICY_LINK: 'https://passculture.privacy',
-    RECOMMENDATION_ENDPOINT: 'https://recommmendation-endpoint',
-    RECOMMENDATION_TOKEN: 'recommmendation-token',
-    SITE_KEY: 'SITE_KEY',
-    SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
-    TMX_FPSERVER: 'test.pc',
-    TMX_ORGID: 'xyzt',
-    UNIVERSAL_LINK: 'app.passculture-testing.beta.gouv.fr',
-    URL_PREFIX: 'passculture',
-    WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',
-  },
-}))
+/* See the corresponding mock in libs/environment/__mocks__ */
+jest.mock('libs/environment/env')
+
+/* See the corresponding mock in libs/deeplinks/__mocks__ */
+jest.mock('features/deeplinks/listener')
 
 jest.mock('features/search/pages/SearchWrapper')
 

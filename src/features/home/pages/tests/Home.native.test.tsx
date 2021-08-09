@@ -16,12 +16,6 @@ import { flushAllPromises, superFlushWithAct, render, act } from 'tests/utils'
 
 import { Home } from '../Home'
 
-jest.mock('libs/environment', () => ({
-  env: {
-    FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: false,
-  },
-}))
-
 jest.mock('features/home/pages/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
@@ -38,24 +32,22 @@ jest.mock('features/home/pages/useDisplayedHomeModules', () => ({
 }))
 
 function simulateAuthenticatedUser(partialUser?: Partial<UserProfileResponse>) {
+  const user = {
+    email: 'email@domain.ext',
+    firstName: 'Jean',
+    isBeneficiary: true,
+    depositExpirationDate: '2023-02-16T17:16:04.735235',
+    domainsCredit: {
+      all: { initial: 50000, remaining: 49600 },
+      physical: { initial: 20000, remaining: 0 },
+      digital: { initial: 20000, remaining: 19600 },
+    },
+    ...(partialUser || {}),
+  }
   server.use(
-    rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          email: 'email@domain.ext',
-          firstName: 'Jean',
-          isBeneficiary: true,
-          depositExpirationDate: '2023-02-16T17:16:04.735235',
-          domainsCredit: {
-            all: { initial: 50000, remaining: 49600 },
-            physical: { initial: 20000, remaining: 0 },
-            digital: { initial: 20000, remaining: 19600 },
-          },
-          ...(partialUser || {}),
-        } as UserProfileResponse)
-      )
-    })
+    rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) =>
+      res(ctx.status(200), ctx.json(user))
+    )
   )
 }
 
@@ -215,25 +207,26 @@ describe('Home component - Analytics', () => {
   })
 })
 
-interface Props {
+interface Params {
   isLoggedIn?: boolean | undefined
   partialUser?: Partial<UserProfileResponse>
 }
 
-async function homeRenderer(
-  { isLoggedIn, partialUser }: Props = {
-    isLoggedIn: false,
-    partialUser: {},
-  }
-) {
+const defaultParams: Params = {
+  isLoggedIn: false,
+  partialUser: {},
+}
+
+async function homeRenderer({ isLoggedIn, partialUser }: Params = defaultParams) {
   if (isLoggedIn) simulateAuthenticatedUser(partialUser)
-  const renderAPI = render(
-    reactQueryProviderHOC(
-      <AuthContext.Provider value={{ isLoggedIn: !!isLoggedIn, setIsLoggedIn: jest.fn() }}>
-        <Home />
-      </AuthContext.Provider>
-    )
-  )
+  const renderAPI = render(<Home />, {
+    wrapper: ({ children }) =>
+      reactQueryProviderHOC(
+        <AuthContext.Provider value={{ isLoggedIn: !!isLoggedIn, setIsLoggedIn: jest.fn() }}>
+          {children}
+        </AuthContext.Provider>
+      ),
+  })
   await superFlushWithAct(50)
   return renderAPI
 }

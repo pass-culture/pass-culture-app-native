@@ -6,6 +6,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/helpers'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { MonitoringError } from 'libs/errorMonitoring'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, superFlushWithAct, fireEvent, render } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
@@ -27,7 +28,7 @@ afterEach(() => {
 
 describe('<ForgottenPassword />', () => {
   it('should enable validate button when email input is filled', async () => {
-    const { getByPlaceholderText, toJSON } = render(<ForgottenPassword />)
+    const { getByPlaceholderText, toJSON } = renderForgottenPassword()
     const disabledButtonSnapshot = toJSON()
 
     const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -40,7 +41,7 @@ describe('<ForgottenPassword />', () => {
   })
 
   it('should redirect to Login when clicking on ArrowPrevious icon', async () => {
-    const { getByTestId } = render(<ForgottenPassword />)
+    const { getByTestId } = renderForgottenPassword()
 
     const leftIcon = getByTestId('leftIcon')
     fireEvent.press(leftIcon)
@@ -53,7 +54,7 @@ describe('<ForgottenPassword />', () => {
 
   it("should NOT open reCAPTCHA challenge's modal when there is no network", () => {
     simulateNoNetwork()
-    const renderAPI = render(<ForgottenPassword />)
+    const renderAPI = renderForgottenPassword()
     const recaptchaWebviewModal = renderAPI.getByTestId('recaptcha-webview-modal')
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
@@ -68,7 +69,7 @@ describe('<ForgottenPassword />', () => {
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on validate button", () => {
-    const renderAPI = render(<ForgottenPassword />)
+    const renderAPI = renderForgottenPassword()
     const recaptchaWebviewModal = renderAPI.getByTestId('recaptcha-webview-modal')
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
@@ -81,7 +82,7 @@ describe('<ForgottenPassword />', () => {
   })
 
   it('should redirect to ResetPasswordEmailSent when password reset request is successful', async () => {
-    const renderAPI = render(<ForgottenPassword />)
+    const renderAPI = renderForgottenPassword()
 
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
@@ -100,7 +101,7 @@ describe('<ForgottenPassword />', () => {
   })
 
   it('should NOT redirect to ResetPasswordEmailSent when reCAPTCHA challenge has failed', async () => {
-    const renderAPI = render(<ForgottenPassword />)
+    const renderAPI = renderForgottenPassword()
 
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
@@ -127,7 +128,7 @@ describe('<ForgottenPassword />', () => {
 
   it('should NOT redirect to ResetPasswordEmailSent when reset password request API call has failed', async () => {
     server.use(requestPasswordResetFail())
-    const renderAPI = render(<ForgottenPassword />)
+    const renderAPI = renderForgottenPassword()
 
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
@@ -160,7 +161,7 @@ describe('<ForgottenPassword />', () => {
     it('should NOT display invalid email format when email format is valid', () => {
       const isEmailValid = jest.spyOn(emailCheck, 'isEmailValid')
 
-      const { getByText, getByPlaceholderText, queryByText } = render(<ForgottenPassword />)
+      const { getByText, getByPlaceholderText, queryByText } = renderForgottenPassword()
 
       const emailInput = getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
@@ -173,7 +174,7 @@ describe('<ForgottenPassword />', () => {
     })
 
     it('should display invalid email format when email format is valid', () => {
-      const { getByText, getByPlaceholderText, queryByText } = render(<ForgottenPassword />)
+      const { getByText, getByPlaceholderText, queryByText } = renderForgottenPassword()
 
       const emailInput = getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe')
@@ -196,4 +197,10 @@ function simulateConnectedNetwork() {
   jest.spyOn(netInfoModule, 'useNetInfo').mockReturnValue({
     isConnected: true,
   } as netInfoModule.NetInfoState)
+}
+
+function renderForgottenPassword() {
+  return render(<ForgottenPassword />, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
 }

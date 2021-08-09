@@ -69,6 +69,7 @@ async function renderBookingProperties(booking: Booking) {
           displayDmsRedirection: true,
           idCheckAddressAutocompletion: false,
           useAppSearch: true,
+          isWebappV2Enabled: false,
         }}
       />
     )

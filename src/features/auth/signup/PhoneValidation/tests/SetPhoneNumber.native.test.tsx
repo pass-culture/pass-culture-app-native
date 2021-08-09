@@ -7,6 +7,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import {
   act,
   fireEvent,
@@ -177,5 +178,7 @@ describe('SetPhoneNumber', () => {
 })
 
 function renderSetPhoneNumber() {
-  return render(<SetPhoneNumber />)
+  return render(<SetPhoneNumber />, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
 }

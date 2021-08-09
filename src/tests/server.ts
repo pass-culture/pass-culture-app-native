@@ -125,6 +125,7 @@ export function requestSettingsSuccess(
     displayDmsRedirection: true,
     idCheckAddressAutocompletion: false,
     useAppSearch: true,
+    isWebappV2Enabled: false,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {

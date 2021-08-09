@@ -1497,6 +1497,12 @@ export interface SettingsResponse {
     isRecaptchaEnabled: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
+    isWebappV2Enabled: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof SettingsResponse
      */
@@ -1832,10 +1838,40 @@ export interface VenueResponse {
     publicName?: string | null;
     /**
      * 
+     * @type {VenueTypeCode}
+     * @memberof VenueResponse
+     */
+    venueTypeCode?: VenueTypeCode | null;
+    /**
+     * 
      * @type {string}
      * @memberof VenueResponse
      */
     withdrawalDetails?: string | null;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum VenueTypeCode {
+    VISUALARTS = 'VISUAL_ARTS',
+    CULTURALCENTRE = 'CULTURAL_CENTRE',
+    ARTISTICCOURSE = 'ARTISTIC_COURSE',
+    SCIENTIFICCULTURE = 'SCIENTIFIC_CULTURE',
+    FESTIVAL = 'FESTIVAL',
+    GAMES = 'GAMES',
+    BOOKSTORE = 'BOOKSTORE',
+    LIBRARY = 'LIBRARY',
+    MUSEUM = 'MUSEUM',
+    RECORDSTORE = 'RECORD_STORE',
+    MUSICALINSTRUMENTSTORE = 'MUSICAL_INSTRUMENT_STORE',
+    CONCERTHALL = 'CONCERT_HALL',
+    DIGITAL = 'DIGITAL',
+    PATRIMONYTOURISM = 'PATRIMONY_TOURISM',
+    MOVIE = 'MOVIE',
+    PERFORMINGARTS = 'PERFORMING_ARTS',
+    CREATIVEARTSSTORE = 'CREATIVE_ARTS_STORE',
+    OTHER = 'OTHER'
 }
 /**
  * DefaultApi - fetch parameter creator

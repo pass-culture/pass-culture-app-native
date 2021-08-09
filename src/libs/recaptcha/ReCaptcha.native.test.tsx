@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { simulateWebviewMessage, render } from 'tests/utils'
 
 import { ReCaptcha } from './ReCaptcha'
@@ -17,18 +18,18 @@ const reCaptchaProps = {
 
 describe('<ReCaptcha />', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<ReCaptcha {...reCaptchaProps} />)
+    const renderAPI = renderReCaptcha(reCaptchaProps)
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should not render webview when modal is not visible', () => {
-    const renderAPI = render(<ReCaptcha {...reCaptchaProps} isVisible={false} />)
+    const renderAPI = renderReCaptcha({ ...reCaptchaProps, isVisible: false })
     const recaptchaWebview = renderAPI.queryByTestId('recaptcha-webview')
     expect(recaptchaWebview).toBeFalsy()
   })
 
   it("should call onSuccess() callback when webview's message is success", () => {
-    const renderAPI = render(<ReCaptcha {...reCaptchaProps} />)
+    const renderAPI = renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
@@ -37,7 +38,7 @@ describe('<ReCaptcha />', () => {
   })
 
   it("should call onError() callback when webview's message is error", () => {
-    const renderAPI = render(<ReCaptcha {...reCaptchaProps} />)
+    const renderAPI = renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
@@ -46,7 +47,7 @@ describe('<ReCaptcha />', () => {
   })
 
   it("should call onClose() callback when webview's message is close", () => {
-    const renderAPI = render(<ReCaptcha {...reCaptchaProps} />)
+    const renderAPI = renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "close" }')
@@ -55,7 +56,7 @@ describe('<ReCaptcha />', () => {
   })
 
   it("should call onExpire() callback when webview's message is expire", () => {
-    const renderAPI = render(<ReCaptcha {...reCaptchaProps} />)
+    const renderAPI = renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
@@ -64,7 +65,7 @@ describe('<ReCaptcha />', () => {
   })
 
   it("should call onLoad() callback when webview's message is load", () => {
-    const renderAPI = render(<ReCaptcha {...reCaptchaProps} />)
+    const renderAPI = renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "load" }')
@@ -72,3 +73,9 @@ describe('<ReCaptcha />', () => {
     expect(reCaptchaProps.onLoad).toBeCalled()
   })
 })
+
+function renderReCaptcha(reCaptchaProps: React.ComponentProps<typeof ReCaptcha>) {
+  return render(<ReCaptcha {...reCaptchaProps} />, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
+}
