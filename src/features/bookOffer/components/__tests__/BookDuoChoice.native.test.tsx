@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render } from 'tests/utils'
@@ -26,6 +27,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
     id: '148409',
     beginningDatetime: new Date('2021-03-02T20:00:00'),
   })),
+  useBookingOffer: jest.fn(() => mockOffer),
 }))
 
 let mockCreditOffer = 50000

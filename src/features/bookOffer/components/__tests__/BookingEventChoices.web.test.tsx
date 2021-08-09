@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useBooking, useBookingOffer } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromises, render, act, fireEvent } from 'tests/utils/web'
+import { render, fireEvent, superFlushWithAct } from 'tests/utils/web'
 
 import { BookingEventChoices } from '../BookingEventChoices'
 
@@ -66,8 +66,7 @@ describe('<BookingEventChoices />', () => {
     }))
     const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-    // @ts-ignore TODO: see how to resolve typing
-    await act(flushAllPromises)
+    await superFlushWithAct()
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeTruthy()
     expect(page.queryByTestId('DuoStep')).toBeFalsy()
@@ -85,8 +84,7 @@ describe('<BookingEventChoices />', () => {
       dispatch: jest.fn(),
     }))
     const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-    // @ts-ignore TODO: see how to resolve typing
-    await act(flushAllPromises)
+    await superFlushWithAct()
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeTruthy()
     expect(page.queryByTestId('DuoStep')).toBeTruthy()
@@ -105,18 +103,18 @@ describe('<BookingEventChoices />', () => {
       dispatch: jest.fn(),
     }))
     const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-    // @ts-ignore TODO: see how to resolve typing
-    await act(flushAllPromises)
+    await superFlushWithAct()
     expect(page).toMatchSnapshot()
   })
-  it('should skip duo step if quantity is already selected', async () => {
+
+  it('should skip duo step if isDuo is not defined', async () => {
     // eslint-disable-next-line local-rules/independant-mocks
     mockUseBooking.mockImplementation(() => ({
       bookingState: {
         offerId: 1,
         stockId: 1,
         step: Step.HOUR,
-        quantity: 1,
+        quantity: undefined,
         date: new Date('02/01/2021'),
       },
       dispatch: mockDispatch,
@@ -124,7 +122,7 @@ describe('<BookingEventChoices />', () => {
     // eslint-disable-next-line local-rules/independant-mocks
     mockUseBookingOffer.mockImplementation(() => ({
       id: 1,
-      isDuo: true,
+      isDuo: false,
       stocks: [
         {
           id: 1,
@@ -137,23 +135,12 @@ describe('<BookingEventChoices />', () => {
       ],
     }))
 
-    const debouncedFunction = jest.fn()
-    // eslint-disable-next-line local-rules/independant-mocks
-    jest.spyOn(React, 'useRef').mockReturnValue({
-      current: debouncedFunction,
-    })
-
     const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-    // @ts-ignore TODO: see how to resolve typing
-    await act(flushAllPromises)
-
+    await superFlushWithAct()
     const hourBloc = page.getByTestId('HourChoice1')
     fireEvent.click(hourBloc)
 
+    expect(page.queryByTestId('DuoStep')).toBeFalsy()
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1 })
-    expect(debouncedFunction).toHaveBeenCalledWith({
-      type: 'CHANGE_STEP',
-      payload: Step.PRE_VALIDATION,
-    })
   })
 })
