@@ -123,6 +123,47 @@ Object {
               </div>
               <div
                 class="css-view-1dbjc4n"
+                style="align-items: flex-start; flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 24px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="padding: 4px 4px 4px 4px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    data-testid="caption-undefined"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                  >
+                    tutu
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 24px;"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
                 style="height: 24px;"
               />
             </div>
@@ -755,6 +796,47 @@ Object {
               >
                 1 boulevard Poissonnière, 75000 Paris
               </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: flex-start; flex-direction: row;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 24px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="padding: 4px 4px 4px 4px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-text-901oao"
+                  data-testid="caption-undefined"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                >
+                  tutu
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 24px;"
+              />
             </div>
             <div
               class="css-view-1dbjc4n"

@@ -3,9 +3,10 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryNameEnum, VenueTypeCode } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
+import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions'
 import { VenueOffers } from 'features/venue/components/VenueOffers'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -66,6 +67,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
           </IconContainer>
           <StyledText numberOfLines={1}>{venueAddress}</StyledText>
         </VenueAddressContainer>
+        <VenueIconCaptions type={VenueTypeCode.MOVIE} label="tutu" />
         <Spacer.Column numberOfSpaces={6} />
       </MarginContainer>
 
