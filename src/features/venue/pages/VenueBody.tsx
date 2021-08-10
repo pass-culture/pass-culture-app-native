@@ -3,7 +3,6 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions'
@@ -62,7 +61,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      <Hero categoryName={CategoryNameEnum.MUSIQUE} imageUrl="" landscape />
+      <Hero categoryName={venueTypeCode} imageUrl="" landscape />
       <Spacer.Column numberOfSpaces={4} />
       <MarginContainer>
         <VenueAddressContainer>
