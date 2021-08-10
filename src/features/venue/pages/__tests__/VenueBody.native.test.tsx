@@ -4,22 +4,23 @@ import { mocked } from 'ts-jest/utils'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { VenueResponse } from 'api/gen'
+import { mockDefaultSettings } from 'features/auth/__mocks__/settings'
 import { useVenue } from 'features/venue/api/useVenue'
 import {
   venueWithNoAddressResponseSnap,
   venueResponseSnap,
 } from 'features/venue/fixtures/venueResponseSnap'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, waitFor } from 'tests/utils'
 
 import { VenueBody } from '../VenueBody'
 
 jest.mock('react-query')
-
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({ data: { ...mockDefaultSettings, useAppSearch: false } })),
+}))
+jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venue/api/useVenue')
 const mockedUseVenue = mocked(useVenue)
-
-jest.mock('features/venue/api/useVenueOffers')
 
 const venueId = venueResponseSnap.id
 
@@ -62,9 +63,7 @@ describe('<VenueBody />', () => {
 
 async function renderVenueBody(id: number) {
   useRoute.mockImplementation(() => ({ params: { id } }))
-  const wrapper = render(<VenueBody venueId={id} onScroll={jest.fn()} />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  const wrapper = render(<VenueBody venueId={id} onScroll={jest.fn()} />)
   await waitFor(() => wrapper.getByTestId('venue-container'))
   return wrapper
 }
