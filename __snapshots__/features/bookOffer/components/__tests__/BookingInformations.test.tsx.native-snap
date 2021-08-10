@@ -85,6 +85,7 @@ Array [
     }
   >
     <View
+      fill="#626262"
       height={32}
       width={32}
     >
@@ -455,6 +456,7 @@ Array [
     }
   >
     <View
+      fill="#626262"
       height={32}
       width={32}
     >
@@ -685,6 +687,7 @@ Array [
     }
   >
     <View
+      fill="#626262"
       height={32}
       width={32}
     >
@@ -985,6 +988,7 @@ Array [
     }
   >
     <View
+      fill="#626262"
       height={32}
       width={32}
     >
@@ -1130,6 +1134,7 @@ Array [
     }
   >
     <View
+      fill="#626262"
       height={32}
       width={32}
     >
@@ -1430,6 +1435,7 @@ Array [
     }
   >
     <View
+      fill="#626262"
       height={32}
       width={32}
     >

@@ -110,6 +110,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       }
     >
       <View
+        fill="#626262"
         height={40}
         testID="iconPrice"
         width={40}

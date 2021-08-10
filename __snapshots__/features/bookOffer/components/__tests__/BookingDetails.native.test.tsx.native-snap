@@ -336,6 +336,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     }
   >
     <View
+      fill="#626262"
       height={32}
       width={32}
     >
