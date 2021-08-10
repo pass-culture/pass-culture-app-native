@@ -9,6 +9,7 @@ import { Search } from '../Search'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
+
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
@@ -40,21 +41,18 @@ const parameters = {
 }
 
 describe('Search component', () => {
-  beforeAll(() => {
-    useRoute.mockImplementation(() => ({ params: {} }))
-  })
-  afterAll(() => {
-    jest.resetAllMocks()
-  })
+  afterAll(jest.resetAllMocks)
+
   it('should render correctly', () => {
+    useRoute.mockReturnValueOnce({})
     const { toJSON } = render(reactQueryProviderHOC(<Search />))
     expect(toJSON()).toMatchSnapshot()
   })
-  it('should handle coming from "See More" correctly', () => {
-    // eslint-disable-next-line local-rules/independant-mocks
-    useRoute.mockImplementation(() => ({ params: { parameters } }))
+
+  it.only('should handle coming from "See More" correctly', () => {
+    useRoute.mockReturnValueOnce({ params: parameters })
     render(reactQueryProviderHOC(<Search />))
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'INIT_FROM_SEE_MORE', payload: parameters })
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SHOW_RESULTS', payload: true })
+    expect(mockDispatch).toBeCalledWith({ type: 'INIT_FROM_SEE_MORE', payload: parameters })
+    expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
   })
 })
