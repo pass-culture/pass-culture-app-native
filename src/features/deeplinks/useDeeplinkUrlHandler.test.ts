@@ -43,8 +43,8 @@ describe('useDeeplinkUrlHandler', () => {
   })
 
   describe('Url parts', () => {
-    const uri = 'my-route?param1=one&param2=2&param3=true&param4=false'
-    const uriWithoutParams = 'my-route/test' // slash will be included in the route name
+    const uri = '/my-route?param1=one&param2=2&param3=true&param4=false'
+    const uriWithoutParams = '/my-route/test' // slash will be included in the route name
 
     it.each([
       ['Android', WEBAPP_NATIVE_REDIRECTION_URL + uri],
@@ -73,7 +73,7 @@ describe('useDeeplinkUrlHandler', () => {
 
     it("doesn't take into account the trailing slash", () => {
       const { routeName, params } = decodeDeeplinkParts(
-        WEBAPP_NATIVE_REDIRECTION_URL + 'offer/?id=ABCDE'
+        WEBAPP_NATIVE_REDIRECTION_URL + '/offer/?id=ABCDE'
       )
       expect(routeName).toEqual('offer')
       expect(params).toEqual({ id: 'ABCDE' })
@@ -92,7 +92,7 @@ describe('useDeeplinkUrlHandler', () => {
 
       const url =
         WEBAPP_NATIVE_REDIRECTION_URL +
-        'my-route-to-test?param1=one&param2=2&param3=true&param4=false'
+        '/my-route-to-test?param1=one&param2=2&param3=true&param4=false'
 
       handleDeeplinkUrl({ url })
 
@@ -108,7 +108,7 @@ describe('useDeeplinkUrlHandler', () => {
       const {
         result: { current: handleDeeplinkUrl },
       } = renderHook(useDeeplinkUrlHandler)
-      const url = WEBAPP_NATIVE_REDIRECTION_URL + 'unknwon-route?param1=one&param2=2'
+      const url = WEBAPP_NATIVE_REDIRECTION_URL + '/unknwon-route?param1=one&param2=2'
 
       handleDeeplinkUrl({ url })
 

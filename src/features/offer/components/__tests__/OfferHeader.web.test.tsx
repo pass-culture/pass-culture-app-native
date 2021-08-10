@@ -101,8 +101,10 @@ describe('<OfferHeader />', () => {
 
     fireEvent.click(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
+    const webAppUrl = 'https://web.example.com'
     const url = generateLongFirebaseDynamicLink(
       'offer',
+      webAppUrl,
       'id=116656',
       '&ofl=undefined/accueil/details/AHD3A'
     )
@@ -122,8 +124,10 @@ describe('<OfferHeader />', () => {
 
     fireEvent.click(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
+    const webAppUrl = 'https://web.example.com'
     const url = generateLongFirebaseDynamicLink(
       'offer',
+      webAppUrl,
       'id=116656',
       '&ofl=undefined/accueil/details/AHD3A'
     )

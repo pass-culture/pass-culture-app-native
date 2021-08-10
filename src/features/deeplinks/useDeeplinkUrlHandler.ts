@@ -40,17 +40,13 @@ export function parseURI(uri: string) {
   return parameterFields
 }
 
+const ROUTE_NAME_REGEX = /^([a-zA-Z0-9-_]+)/g
+
 export function decodeDeeplinkParts(url: string): DeeplinkParts {
-  const route = url.replace(WEBAPP_NATIVE_REDIRECTION_URL, '')
-
-  const routeNameRegexp = /^([a-zA-Z0-9-_]+)/g
-
-  const routeName = route.match(routeNameRegexp)?.[0] || 'unknown'
-  const searchParams = route.replace(routeNameRegexp, '')
-
-  const params = parseURI(decodeURI(searchParams))
-
-  return { routeName: routeName, params }
+  const pathWithQueryString = url.replace(`${WEBAPP_NATIVE_REDIRECTION_URL}/`, '')
+  const path = pathWithQueryString.match(ROUTE_NAME_REGEX)?.[0] || 'unknown'
+  const queryString = pathWithQueryString.replace(ROUTE_NAME_REGEX, '')
+  return { routeName: path, params: parseURI(decodeURI(queryString)) }
 }
 
 const DEFAULT_ERROR_MESSAGE = t`Le lien est incorrect`

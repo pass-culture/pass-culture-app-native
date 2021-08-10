@@ -42,7 +42,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {
-          "baseUrl": undefined,
+          "baseUrl": "https://webapp.example.com",
           "html": "
     <!DOCTYPE html>
     <html lang=\\"fr\\">

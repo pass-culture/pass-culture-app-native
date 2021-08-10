@@ -16,9 +16,7 @@ describe('Formatting deeplink url', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should format properly the universal link', () => {
-    expect(WEBAPP_NATIVE_REDIRECTION_URL).toEqual(
-      `https://${env.WEBAPP_NATIVE_REDIRECTION_DOMAIN}/`
-    )
+    expect(WEBAPP_NATIVE_REDIRECTION_URL).toEqual(`https://${env.WEBAPP_NATIVE_REDIRECTION_DOMAIN}`)
   })
 
   describe('getLongDynamicLinkURI', () => {
@@ -43,11 +41,11 @@ describe('Formatting deeplink url', () => {
   describe('generateLongFirebaseDynamicLink', () => {
     it('should return a format long firebase dynamic link', () => {
       const screen = 'offer'
+      const webAppUrl = 'https://web.example.com'
       const uri = 'id=345&test_params=est_ce_que_cest_ok'
-      const url = generateLongFirebaseDynamicLink(screen, uri)
-
+      const url = generateLongFirebaseDynamicLink(screen, webAppUrl, uri)
       expect(url).toEqual(
-        `${FIREBASE_DYNAMIC_LINK_URL}?link=${WEBAPP_NATIVE_REDIRECTION_URL}${screen}?${uri}&${getLongDynamicLinkURI()}`
+        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${webAppUrl}/${screen}?${uri}&${getLongDynamicLinkURI()}`
       )
     })
   })
@@ -66,13 +64,13 @@ describe('Formatting deeplink url', () => {
   describe('isFirebaseLongDynamicLink', () => {
     it('should return true when the given firebase link has a "link" uri param', () => {
       const isLongDynamicLink = isFirebaseLongDynamicLink(
-        FIREBASE_DYNAMIC_LINK_URL + '?link=https://a.link'
+        FIREBASE_DYNAMIC_LINK_URL + '/?link=https://a.link'
       )
       expect(isLongDynamicLink).toBe(true)
     })
     it('should return false when the given firebase link has not a "link" uri param', () => {
       const isLongDynamicLink = isFirebaseLongDynamicLink(
-        FIREBASE_DYNAMIC_LINK_URL + '?not-link=https://a.link'
+        FIREBASE_DYNAMIC_LINK_URL + '/?not-link=https://a.link'
       )
       expect(isLongDynamicLink).toBe(false)
     })
@@ -82,9 +80,9 @@ describe('Formatting deeplink url', () => {
     })
   })
 
-  describe('convertLongDynamicLinkToUniversalLink', () => {
+  describe('extractUniversalLinkFromLongFirebaseDynamicLink', () => {
     it('should convert long dynamic link to the injected universal link', () => {
-      const url = FIREBASE_DYNAMIC_LINK_URL + '?link=https://a.link'
+      const url = FIREBASE_DYNAMIC_LINK_URL + '/?link=https://a.link'
       const extracted = extractUniversalLinkFromLongFirebaseDynamicLink({ url })
       expect(extracted).toBe('https://a.link')
     })
@@ -102,7 +100,7 @@ describe('Formatting deeplink url', () => {
       expect(handleDeeplinkUrl).toBeCalledWith(deeplinkEvent)
     })
     it('should extract universal link for firebase long dynamic link', () => {
-      const url = FIREBASE_DYNAMIC_LINK_URL + '?link=https://a.link'
+      const url = FIREBASE_DYNAMIC_LINK_URL + '/?link=https://a.link'
       const handleDeeplinkUrl = jest.fn()
 
       const handler = resolveHandler(handleDeeplinkUrl)
