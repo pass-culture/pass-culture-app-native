@@ -1,7 +1,7 @@
 import { Route, useNavigationState } from '@react-navigation/native'
 import { Linking } from 'react-native'
 
-import { DEEPLINK_DOMAIN } from 'features/deeplinks'
+import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { getScreenFromDeeplink } from 'features/deeplinks/useDeeplinkUrlHandler'
 import { analytics } from 'libs/analytics'
 
@@ -32,7 +32,7 @@ export function navigateToBooking(bookingId: number) {
 }
 
 export async function openExternalUrl(url: string, logEvent: boolean | undefined = true) {
-  if (url.match('^' + DEEPLINK_DOMAIN)) {
+  if (url.match('^' + WEBAPP_NATIVE_REDIRECTION_URL)) {
     const { screen, params } = getScreenFromDeeplink(url)
     return navigationRef.current?.navigate(screen, params)
   }

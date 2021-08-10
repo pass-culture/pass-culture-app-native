@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { analytics } from 'libs/analytics'
 
 import { useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
-import { DEEPLINK_DOMAIN } from './utils'
+import { WEBAPP_NATIVE_REDIRECTION_URL } from './utils'
 
 jest.mock('features/auth/settings')
 
@@ -13,7 +13,7 @@ describe('useDeeplinkUrlHandler Analytics', () => {
       result: { current: handleDeeplinkUrl },
     } = renderHook(useDeeplinkUrlHandler)
 
-    const url = DEEPLINK_DOMAIN + 'offer/?id=1234'
+    const url = WEBAPP_NATIVE_REDIRECTION_URL + 'offer/?id=1234'
 
     handleDeeplinkUrl({ url })
 

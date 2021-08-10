@@ -8,7 +8,7 @@ import { handleDeeplinkAnalytics } from './analytics'
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
 import { isAllowedRouteTypeGuard } from './typeGuard'
 import { DeeplinkEvent, DeeplinkParts } from './types'
-import { DEEPLINK_DOMAIN } from './utils'
+import { WEBAPP_NATIVE_REDIRECTION_URL } from './utils'
 
 export function sanitizeURI(uri: string) {
   return (
@@ -41,7 +41,7 @@ export function parseURI(uri: string) {
 }
 
 export function decodeDeeplinkParts(url: string): DeeplinkParts {
-  const route = url.replace(DEEPLINK_DOMAIN, '')
+  const route = url.replace(WEBAPP_NATIVE_REDIRECTION_URL, '')
 
   const routeNameRegexp = /^([a-zA-Z0-9-_]+)/g
 

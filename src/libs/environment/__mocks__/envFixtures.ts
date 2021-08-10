@@ -56,8 +56,8 @@ export const env: Environment = {
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
   TMX_FPSERVER: 'test.pc',
   TMX_ORGID: 'xyzt',
-  UNIVERSAL_LINK: 'app.passculture-testing.beta.gouv.fr',
   URL_PREFIX: 'passculture',
+  WEBAPP_NATIVE_REDIRECTION_DOMAIN: 'app.passculture-testing.beta.gouv.fr',
   WEBAPP_URL: 'https://webapp.example.com',
   WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',
 }

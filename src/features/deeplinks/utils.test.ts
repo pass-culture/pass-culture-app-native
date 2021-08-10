@@ -2,7 +2,7 @@ import { env } from 'libs/environment'
 
 import { parseURI } from './useDeeplinkUrlHandler'
 import {
-  DEEPLINK_DOMAIN,
+  WEBAPP_NATIVE_REDIRECTION_URL,
   FIREBASE_DYNAMIC_LINK_URL,
   getLongDynamicLinkURI,
   generateLongFirebaseDynamicLink,
@@ -16,7 +16,9 @@ describe('Formatting deeplink url', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should format properly the universal link', () => {
-    expect(DEEPLINK_DOMAIN).toEqual(`https://${env.UNIVERSAL_LINK}/`)
+    expect(WEBAPP_NATIVE_REDIRECTION_URL).toEqual(
+      `https://${env.WEBAPP_NATIVE_REDIRECTION_DOMAIN}/`
+    )
   })
 
   describe('getLongDynamicLinkURI', () => {
@@ -45,7 +47,7 @@ describe('Formatting deeplink url', () => {
       const url = generateLongFirebaseDynamicLink(screen, uri)
 
       expect(url).toEqual(
-        `${FIREBASE_DYNAMIC_LINK_URL}?link=${DEEPLINK_DOMAIN}${screen}?${uri}&${getLongDynamicLinkURI()}`
+        `${FIREBASE_DYNAMIC_LINK_URL}?link=${WEBAPP_NATIVE_REDIRECTION_URL}${screen}?${uri}&${getLongDynamicLinkURI()}`
       )
     })
   })
@@ -90,7 +92,7 @@ describe('Formatting deeplink url', () => {
 
   describe('handleLinks', () => {
     it('should forward deeplink event for universal link', () => {
-      const url = DEEPLINK_DOMAIN + '/home'
+      const url = WEBAPP_NATIVE_REDIRECTION_URL + '/home'
       const deeplinkEvent = { url }
       const handleDeeplinkUrl = jest.fn()
 

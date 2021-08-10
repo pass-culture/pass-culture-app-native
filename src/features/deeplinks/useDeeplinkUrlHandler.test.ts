@@ -8,7 +8,7 @@ import {
   sanitizeURI,
   parseURI,
 } from './useDeeplinkUrlHandler'
-import { DEEPLINK_DOMAIN } from './utils'
+import { WEBAPP_NATIVE_REDIRECTION_URL } from './utils'
 
 jest.mock('features/auth/settings')
 jest.mock('features/navigation/navigationRef')
@@ -47,8 +47,8 @@ describe('useDeeplinkUrlHandler', () => {
     const uriWithoutParams = 'my-route/test' // slash will be included in the route name
 
     it.each([
-      ['Android', DEEPLINK_DOMAIN + uri],
-      ['iOS', DEEPLINK_DOMAIN + uri],
+      ['Android', WEBAPP_NATIVE_REDIRECTION_URL + uri],
+      ['iOS', WEBAPP_NATIVE_REDIRECTION_URL + uri],
     ])('should parse route name and uri params for %s', (_platform, url) => {
       const { routeName, params } = decodeDeeplinkParts(url)
       expect(routeName).toEqual('my-route')
@@ -61,8 +61,8 @@ describe('useDeeplinkUrlHandler', () => {
     })
 
     it.each([
-      ['Android', DEEPLINK_DOMAIN + uriWithoutParams],
-      ['iOS', DEEPLINK_DOMAIN + uriWithoutParams],
+      ['Android', WEBAPP_NATIVE_REDIRECTION_URL + uriWithoutParams],
+      ['iOS', WEBAPP_NATIVE_REDIRECTION_URL + uriWithoutParams],
     ])('should handle url without uri params for %s', (_platform, url) => {
       const { routeName, params } = decodeDeeplinkParts(url)
       expect(routeName).toEqual('my-route')
@@ -72,7 +72,9 @@ describe('useDeeplinkUrlHandler', () => {
     })
 
     it("doesn't take into account the trailing slash", () => {
-      const { routeName, params } = decodeDeeplinkParts(DEEPLINK_DOMAIN + 'offer/?id=ABCDE')
+      const { routeName, params } = decodeDeeplinkParts(
+        WEBAPP_NATIVE_REDIRECTION_URL + 'offer/?id=ABCDE'
+      )
       expect(routeName).toEqual('offer')
       expect(params).toEqual({ id: 'ABCDE' })
     })
@@ -88,7 +90,9 @@ describe('useDeeplinkUrlHandler', () => {
         result: { current: handleDeeplinkUrl },
       } = renderHook(useDeeplinkUrlHandler)
 
-      const url = DEEPLINK_DOMAIN + 'my-route-to-test?param1=one&param2=2&param3=true&param4=false'
+      const url =
+        WEBAPP_NATIVE_REDIRECTION_URL +
+        'my-route-to-test?param1=one&param2=2&param3=true&param4=false'
 
       handleDeeplinkUrl({ url })
 
@@ -104,7 +108,7 @@ describe('useDeeplinkUrlHandler', () => {
       const {
         result: { current: handleDeeplinkUrl },
       } = renderHook(useDeeplinkUrlHandler)
-      const url = DEEPLINK_DOMAIN + 'unknwon-route?param1=one&param2=2'
+      const url = WEBAPP_NATIVE_REDIRECTION_URL + 'unknwon-route?param1=one&param2=2'
 
       handleDeeplinkUrl({ url })
 
