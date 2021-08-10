@@ -10,7 +10,7 @@ import {
   venueResponseSnap,
 } from 'features/venue/fixtures/venueResponseSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, waitFor } from 'tests/utils/web'
+import { render, superFlushWithAct, waitFor } from 'tests/utils/web'
 
 import { VenueBody } from '../VenueBody'
 
@@ -26,6 +26,7 @@ const venueId = venueResponseSnap.id
 describe('<VenueBody />', () => {
   it('should render correctly', async () => {
     const venue = await renderVenueBody(venueId)
+    await superFlushWithAct()
     expect(venue).toMatchSnapshot()
   })
 
