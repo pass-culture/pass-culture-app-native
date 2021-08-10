@@ -2,9 +2,6 @@ import { VenueTypeCode } from 'api/gen'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Type } from 'ui/svg/icons/venueTypes'
 
-// All offers without category are the 'Art' ones
-const DEFAULT_TYPE = 'Autre'
-
 // Map the facetFilter (in algolia) to the label displayed in the front
 const MAP_TYPE_TO_LABEL: { [k in VenueTypeCode]: string } = {
   ARTISTIC_COURSE: 'Cours et pratique artistiques',
@@ -29,7 +26,7 @@ const MAP_TYPE_TO_LABEL: { [k in VenueTypeCode]: string } = {
 
 export const parseType = (types: VenueTypeCode | null | undefined): string => {
   if (types && types in MAP_TYPE_TO_LABEL) return MAP_TYPE_TO_LABEL[types]
-  return DEFAULT_TYPE || ''
+  return MAP_TYPE_TO_LABEL.OTHER || ''
 }
 
 // Map the facetFilter (in algolia) to the category Icon
