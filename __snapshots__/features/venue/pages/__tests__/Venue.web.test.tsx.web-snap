@@ -168,6 +168,39 @@ Object {
               </div>
               <div
                 class="css-view-1dbjc4n"
+                style="align-self: center; background-color: rgb(199, 199, 204); height: 92%; margin-right: 8px; margin-left: 8px; width: 1px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="padding: 4px 4px 4px 4px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="iconLocation"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      iconLocation-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-text-901oao"
+                  data-testid="caption-iconLocation"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                >
+                  Géolocalisation désactivée
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
                 style="width: 24px;"
               />
             </div>
@@ -848,6 +881,39 @@ Object {
                 style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
                 Autre
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-self: center; background-color: rgb(199, 199, 204); height: 92%; margin-right: 8px; margin-left: 8px; width: 1px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="padding: 4px 4px 4px 4px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="iconLocation"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    iconLocation-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-text-901oao"
+                data-testid="caption-iconLocation"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+              >
+                Géolocalisation désactivée
               </div>
             </div>
             <div

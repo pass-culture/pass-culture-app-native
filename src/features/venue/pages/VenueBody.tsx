@@ -83,7 +83,11 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         <Spacer.Column numberOfSpaces={4} />
       </MarginContainer>
 
-      <VenueIconCaptions type={venueTypeCode || null} label={typeLabel} />
+      <VenueIconCaptions
+        type={venueTypeCode || null}
+        label={typeLabel}
+        locationCoordinates={{ latitude, longitude }}
+      />
       <Spacer.Column numberOfSpaces={4} />
 
       {/* TODO(antoinewg) Remove after add all venue informations - (it's just for scroll) */}
