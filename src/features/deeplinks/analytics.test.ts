@@ -13,7 +13,7 @@ describe('useDeeplinkUrlHandler Analytics', () => {
       result: { current: handleDeeplinkUrl },
     } = renderHook(useDeeplinkUrlHandler)
 
-    const url = WEBAPP_NATIVE_REDIRECTION_URL + 'offer/?id=1234'
+    const url = WEBAPP_NATIVE_REDIRECTION_URL + '/offer/?id=1234'
 
     handleDeeplinkUrl({ url })
 

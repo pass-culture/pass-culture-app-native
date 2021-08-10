@@ -103,6 +103,7 @@ describe('<OfferHeader />', () => {
     expect(share).toHaveBeenCalledTimes(1)
     const url = generateLongFirebaseDynamicLink(
       'offer',
+      env.WEBAPP_URL,
       'id=116656',
       `&ofl=${env.WEBAPP_URL}/accueil/details/AHD3A`
     )
@@ -124,6 +125,7 @@ describe('<OfferHeader />', () => {
     expect(share).toHaveBeenCalledTimes(1)
     const url = generateLongFirebaseDynamicLink(
       'offer',
+      env.WEBAPP_URL,
       'id=116656',
       `&ofl=${env.WEBAPP_URL}/accueil/details/AHD3A`
     )

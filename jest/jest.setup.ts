@@ -65,6 +65,7 @@ jest.mock('react-native-flipper')
 
 /* See the corresponding mock in libs/environment/__mocks__ */
 jest.mock('libs/environment/env')
+jest.mock('libs/environment/useWebAppUrl')
 
 /* See the corresponding mock in libs/deeplinks/__mocks__ */
 jest.mock('features/deeplinks/listener')

@@ -5,8 +5,8 @@ import { env } from 'libs/environment'
 
 import { DeeplinkEvent } from './types'
 
-export const WEBAPP_NATIVE_REDIRECTION_URL = `https://${env.WEBAPP_NATIVE_REDIRECTION_DOMAIN}/`
-export const FIREBASE_DYNAMIC_LINK_URL = `https://${env.FIREBASE_DYNAMIC_LINK_DOMAIN}/`
+export const WEBAPP_NATIVE_REDIRECTION_URL = `https://${env.WEBAPP_NATIVE_REDIRECTION_DOMAIN}`
+export const FIREBASE_DYNAMIC_LINK_URL = `https://${env.FIREBASE_DYNAMIC_LINK_DOMAIN}`
 
 /**
  * @param ignoreMiddlePage S'il est défini sur true («1»), ignorez la page d'aperçu de
@@ -32,10 +32,11 @@ export function getLongDynamicLinkURI(ignoreMiddlePage = true) {
  */
 export function generateLongFirebaseDynamicLink(
   screen: keyof DeepLinksToScreenConfiguration,
+  webAppUrl: string,
   universalLinksParams: string,
   customDynamicLinksParams = ''
 ) {
-  return `${FIREBASE_DYNAMIC_LINK_URL}?link=${WEBAPP_NATIVE_REDIRECTION_URL}${screen}?${universalLinksParams}&${getLongDynamicLinkURI()}${customDynamicLinksParams}`
+  return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${webAppUrl}/${screen}?${universalLinksParams}&${getLongDynamicLinkURI()}${customDynamicLinksParams}`
 }
 
 export const isUniversalLink = (url: string) => url.startsWith(WEBAPP_NATIVE_REDIRECTION_URL)
@@ -48,7 +49,7 @@ export const isFirebaseLongDynamicLink = (url: string) =>
  * so we handle it manually
  */
 export const extractUniversalLinkFromLongFirebaseDynamicLink = (event: DeeplinkEvent): string => {
-  const searchParams = event.url.replace(`${FIREBASE_DYNAMIC_LINK_URL}?`, '')
+  const searchParams = event.url.replace(`${FIREBASE_DYNAMIC_LINK_URL}/?`, '')
   const paramsString = omit(searchParams, FIREBASE_DYNAMIC_LINK_PARAMS).querystring
   return paramsString.replace(/^link=/, '')
 }

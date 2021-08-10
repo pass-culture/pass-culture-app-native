@@ -22,7 +22,7 @@ describe('Navigation helpers', () => {
 
   it('should capture links that start with the universal links domain', async () => {
     const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
-    const link = WEBAPP_NATIVE_REDIRECTION_URL + 'my-route-to-test?param1=ok'
+    const link = WEBAPP_NATIVE_REDIRECTION_URL + '/my-route-to-test?param1=ok'
     await openExternalUrl(link)
 
     expect(openUrl).not.toBeCalled()
@@ -51,7 +51,7 @@ describe('Navigation helpers', () => {
   })
 
   it('should redirect universal links to the right screen', async () => {
-    const link = WEBAPP_NATIVE_REDIRECTION_URL + 'my-route-to-test?param1=ok'
+    const link = WEBAPP_NATIVE_REDIRECTION_URL + '/my-route-to-test?param1=ok'
     await openExternalUrl(link)
 
     expect(navigationRef.current?.navigate).toBeCalledWith('UniqueTestRoute', { param1: 'ok' })

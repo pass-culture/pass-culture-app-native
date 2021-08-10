@@ -12,7 +12,7 @@ import { getLocationName } from '../atoms/LocationCaption'
 
 import { useFunctionOnce } from './useFunctionOnce'
 
-const shareOffer = async (offer: OfferResponse, webAppUrl?: string) => {
+const shareOffer = async (offer: OfferResponse, webAppUrl: string) => {
   const { id, isDigital, name, venue } = offer
   const locationName = getLocationName(venue, isDigital)
   const message = t({
@@ -22,6 +22,7 @@ const shareOffer = async (offer: OfferResponse, webAppUrl?: string) => {
   })
   const url = generateLongFirebaseDynamicLink(
     'offer',
+    webAppUrl,
     `id=${id}`,
     `&ofl=${webAppUrl}/accueil/details/${humanizeId(id)}`
   )
@@ -57,7 +58,7 @@ export const useShareOffer = (offerId: number): (() => Promise<void>) => {
 
   return async () => {
     logShareOffer()
-    if (!offerResponse) return
+    if (!offerResponse || !webAppUrl) return
     await shareOffer(offerResponse, webAppUrl)
   }
 }

@@ -21,8 +21,8 @@ import { padding, Spacer } from 'ui/theme'
 
 import { CheatCodesButton } from '../../components/CheatCodesButton'
 
-const BadDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + 'unknown'
-const LoginDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + 'login'
+const BadDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + '/unknown'
+const LoginDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + '/login'
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 

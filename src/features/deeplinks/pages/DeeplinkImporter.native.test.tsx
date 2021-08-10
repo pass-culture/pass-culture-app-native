@@ -23,7 +23,7 @@ describe('DeeplinkImporter', () => {
     })
   })
   it('should resolve the link', async () => {
-    const url = FIREBASE_DYNAMIC_LINK_URL + 'home'
+    const url = FIREBASE_DYNAMIC_LINK_URL + '/home'
 
     const resolveHandlerSpy = jest.spyOn(DeeplinkUtils, 'resolveHandler')
 
