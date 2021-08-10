@@ -2,13 +2,13 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum } from 'api/gen'
-import { mapCategoryToIcon } from 'libs/parsers'
+import { CategoryNameEnum, VenueTypeCode } from 'api/gen'
+import { mapCategoryToIcon, mapTypeToIcon } from 'libs/parsers'
 import { ColorsEnum } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
-  categoryName: CategoryNameEnum | null
+  categoryName: CategoryNameEnum | VenueTypeCode | null
   size: number
   borderRadius?: number
 }
@@ -18,7 +18,10 @@ export const ImagePlaceholder: React.FC<Props> = ({
   size,
   borderRadius = BorderRadiusEnum.BORDER_RADIUS,
 }) => {
-  const CategoryIcon = mapCategoryToIcon(categoryName)
+  const CategoryIcon =
+    categoryName && categoryName in CategoryNameEnum
+      ? mapCategoryToIcon(categoryName as CategoryNameEnum)
+      : mapTypeToIcon(categoryName as VenueTypeCode)
 
   return (
     <StyledLinearGradient

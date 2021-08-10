@@ -3,11 +3,12 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
+import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions'
 import { VenueOffers } from 'features/venue/components/VenueOffers'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
+import { parseType } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Hero } from 'ui/components/hero/Hero'
@@ -33,10 +34,22 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
 
   if (!venue) return <React.Fragment></React.Fragment>
 
-  const { address, postalCode, city, publicName, withdrawalDetails, latitude, longitude } = venue
+  const {
+    address,
+    postalCode,
+    city,
+    publicName,
+    withdrawalDetails,
+    latitude,
+    longitude,
+    venueTypeCode,
+  } = venue
+
   const venueAddress = address
     ? `${address}, ${postalCode} ${city}`
     : `${publicName}, ${postalCode} ${city}`
+
+  const typeLabel = parseType(venueTypeCode)
 
   // TODO(antoinewg) Show only if app search is enabled
   const shouldShowVenueOffers = !settings?.useAppSearch && !!offers && offers?.length > 0
@@ -50,9 +63,16 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      <Hero categoryName={CategoryNameEnum.MUSIQUE} imageUrl="" landscape />
-      <Spacer.Column numberOfSpaces={6} />
+      <Hero categoryName={venueTypeCode} imageUrl="" landscape />
+      <Spacer.Column numberOfSpaces={4} />
       <MarginContainer>
+        <VenueAddressContainer>
+          <IconContainer>
+            <LocationPointer size={getSpacing(4)} />
+          </IconContainer>
+          <StyledText numberOfLines={1}>{venueAddress}</StyledText>
+        </VenueAddressContainer>
+        <Spacer.Column numberOfSpaces={2} />
         <VenueTitle
           testID="venueTitle"
           numberOfLines={2}
@@ -60,14 +80,11 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
           allowFontScaling={false}>
           {venue.name}
         </VenueTitle>
-        <VenueAddressContainer>
-          <IconContainer>
-            <LocationPointer size={getSpacing(4)} />
-          </IconContainer>
-          <StyledText numberOfLines={1}>{venueAddress}</StyledText>
-        </VenueAddressContainer>
-        <Spacer.Column numberOfSpaces={6} />
+        <Spacer.Column numberOfSpaces={4} />
       </MarginContainer>
+
+      <VenueIconCaptions type={venueTypeCode || null} label={typeLabel} />
+      <Spacer.Column numberOfSpaces={4} />
 
       {/* TODO(antoinewg) Remove after add all venue informations - (it's just for scroll) */}
       <SectionWithDivider margin visible>
@@ -79,7 +96,6 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       <SectionWithDivider visible={shouldShowVenueOffers}>
         <VenueOffers venueId={venueId} />
       </SectionWithDivider>
-
       <SectionWithDivider visible margin>
         <WhereSection
           venue={venue}
@@ -87,13 +103,11 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
           locationCoordinates={{ latitude, longitude }}
         />
       </SectionWithDivider>
-
       <SectionWithDivider visible={!!withdrawalDetails}>
         <AccordionItem title={t`Modalités de retrait`}>
           <Typo.Body>{withdrawalDetails && highlightLinks(withdrawalDetails)}</Typo.Body>
         </AccordionItem>
       </SectionWithDivider>
-
       <SectionWithDivider visible>
         <Spacer.Column numberOfSpaces={6} />
       </SectionWithDivider>

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconWithCaption should render correctly 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitAlignItems": "center",
+      "WebkitBoxAlign": "center",
+      "WebkitBoxFlex": 1,
+      "WebkitFlexBasis": "0px",
+      "WebkitFlexGrow": 1,
+      "WebkitFlexShrink": 1,
+      "alignItems": "center",
+      "flexBasis": "0px",
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "msFlexAlign": "center",
+      "msFlexNegative": 1,
+      "msFlexPositive": 1,
+      "msFlexPreferredSize": "0px",
+    }
+  }
+>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "paddingBottom": "4px",
+        "paddingLeft": "4px",
+        "paddingRight": "4px",
+        "paddingTop": "4px",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      data-testid="Cinéma - Salle de projections"
+    >
+      <div
+        className="css-text-901oao"
+        dir="auto"
+        onClick={[Function]}
+      >
+        Cinéma - Salle de projections-SVG-Mock
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-text-901oao"
+    data-testid="caption-Cinéma - Salle de projections"
+    dir="auto"
+    onClick={[Function]}
+    style={
+      Object {
+        "color": "rgba(21,21,21,1.00)",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": "12px",
+        "lineHeight": "16px",
+        "textAlign": "center",
+      }
+    }
+  >
+    Cinéma - Salle de projections
+  </div>
+</div>
+`;
