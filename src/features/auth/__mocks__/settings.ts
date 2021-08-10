@@ -2,7 +2,7 @@ import { SettingsResponse } from 'api/gen'
 import { useAppSettings as actualUseAppSettings } from 'features/auth/settings'
 import { UseQueryResult } from 'react-query'
 
-const data: SettingsResponse = {
+export const mockDefaultSettings: SettingsResponse = {
   depositAmount: 30000,
   isRecaptchaEnabled: true,
   allowIdCheckRegistration: true,
@@ -20,5 +20,6 @@ const data: SettingsResponse = {
 }
 
 export const useAppSettings: typeof actualUseAppSettings = jest.fn(
-  () => ({ data, isLoading: false } as UseQueryResult<SettingsResponse, unknown>)
+  () =>
+    ({ data: mockDefaultSettings, isLoading: false } as UseQueryResult<SettingsResponse, unknown>)
 )

@@ -38,6 +38,9 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     ? `${address}, ${postalCode} ${city}`
     : `${publicName}, ${postalCode} ${city}`
 
+  // TODO(antoinewg) Show only if app search is enabled
+  const shouldShowVenueOffers = !settings?.useAppSearch && !!offers && offers?.length > 0
+
   return (
     <Container
       testID="venue-container"
@@ -73,8 +76,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         <Spacer.Column numberOfSpaces={6} />
       </SectionWithDivider>
 
-      {/* TODO(antoinewg) Show only if app search is enabled */}
-      <SectionWithDivider visible={!settings?.useAppSearch && !!offers && offers?.length > 0}>
+      <SectionWithDivider visible={shouldShowVenueOffers}>
         <VenueOffers venueId={venueId} />
       </SectionWithDivider>
 
