@@ -1,11 +1,11 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 // eslint-disable-next-line no-restricted-imports
-import { render, RenderOptions } from '@testing-library/react'
+import { act, render, RenderOptions } from '@testing-library/react'
 import flushPromises from 'flush-promises'
 import { fr } from 'make-plural/plurals'
 import React from 'react'
-import { act, ReactTestInstance } from 'react-test-renderer'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import { messages } from 'locales/fr/messages'
 
