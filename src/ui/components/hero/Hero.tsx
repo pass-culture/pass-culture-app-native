@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryNameEnum, VenueTypeCode } from 'api/gen'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
@@ -10,7 +10,7 @@ import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
 
 interface Props {
   imageUrl: string
-  categoryName?: CategoryNameEnum | null
+  categoryName?: CategoryNameEnum | VenueTypeCode | null
   landscape?: boolean | false
 }
 

@@ -2,14 +2,14 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryNameEnum, VenueTypeCode } from 'api/gen'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, ScreenWidth } from 'ui/theme'
 
 interface Props {
   imageUrl?: string
-  categoryName?: CategoryNameEnum | null
+  categoryName?: CategoryNameEnum | VenueTypeCode | null
   imageHeight: number
   minHeight?: number
 }
