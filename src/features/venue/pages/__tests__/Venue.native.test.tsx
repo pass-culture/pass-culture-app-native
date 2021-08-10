@@ -3,7 +3,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, waitFor } from 'tests/utils'
+import { render, waitFor, superFlushWithAct } from 'tests/utils'
 
 import { Venue } from '../Venue'
 
@@ -20,6 +20,7 @@ describe('<Venue />', () => {
 
   it('should match snapshot', async () => {
     const venue = await renderVenue(venueId)
+    await superFlushWithAct()
     expect(venue).toMatchSnapshot()
   })
 })
