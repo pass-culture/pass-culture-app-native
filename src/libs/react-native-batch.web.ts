@@ -18,7 +18,7 @@ export const Batch = {
           positiveSubBtnLabel: 'Activer les notifications',
           negativeBtnLabel: 'Plus tard',
           positiveBtnStyle: { backgroundColor: '#eb0055', hoverBackgroundColor: '#c10046' },
-          icon: 'favicon.ico',
+          icon: env.PUBLIC_URL + '/images/ic_launcher_xxxhdpi.png',
           text:
             'Découvre les nouvelles offres en exclusivité sur ton pass en activant les notifications !',
         },
