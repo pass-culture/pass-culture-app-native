@@ -49,7 +49,7 @@ describe('Search component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it.only('should handle coming from "See More" correctly', () => {
+  it('should handle coming from "See More" correctly', () => {
     useRoute.mockReturnValueOnce({ params: parameters })
     render(reactQueryProviderHOC(<Search />))
     expect(mockDispatch).toBeCalledWith({ type: 'INIT_FROM_SEE_MORE', payload: parameters })
