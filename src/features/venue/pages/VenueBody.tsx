@@ -49,6 +49,8 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     ? `${address}, ${postalCode} ${city}`
     : `${publicName}, ${postalCode} ${city}`
 
+  const typeLabel = parseType(venueTypeCode)
+
   // TODO(antoinewg) Show only if app search is enabled
   const shouldShowVenueOffers = !settings?.useAppSearch && !!offers && offers?.length > 0
 

@@ -1,6 +1,25 @@
 import { VenueTypeCode } from 'api/gen'
 import { IconInterface } from 'ui/svg/icons/types'
-import { Type } from 'ui/svg/icons/venueTypes'
+import {
+  ArtisticCourseIcon,
+  BookstoreIcon,
+  ConcertHallIcon,
+  CreativeArtsStoreIcon,
+  CulturalCentreIcon,
+  DigitalIcon,
+  FestivalIcon,
+  GamesIcon,
+  LibraryIcon,
+  MovieIcon,
+  MuseumIcon,
+  MusicalInstrumentStoreIcon,
+  OtherIcon,
+  PatrimonyTourismIcon,
+  PerformingArtsIcon,
+  RecordStoreIcon,
+  ScientificCultureIcon,
+  VisualArtIcon,
+} from 'ui/svg/icons/venueTypes'
 
 // Map the facetFilter (in algolia) to the label displayed in the front
 const MAP_TYPE_TO_LABEL: { [k in VenueTypeCode]: string } = {
@@ -26,34 +45,34 @@ const MAP_TYPE_TO_LABEL: { [k in VenueTypeCode]: string } = {
 
 export const parseType = (types: VenueTypeCode | null | undefined): string => {
   if (types && types in MAP_TYPE_TO_LABEL) return MAP_TYPE_TO_LABEL[types]
-  return MAP_TYPE_TO_LABEL.OTHER || ''
+  return MAP_TYPE_TO_LABEL.OTHER
 }
 
 // Map the facetFilter (in algolia) to the category Icon
 export const MAP_TYPE_TO_ICON: {
   [k in VenueTypeCode]: React.FC<IconInterface>
 } = {
-  ARTISTIC_COURSE: Type.ArtisticCourse,
-  BOOKSTORE: Type.Bookstore,
-  CONCERT_HALL: Type.ConcertHall,
-  CREATIVE_ARTS_STORE: Type.Other,
-  CULTURAL_CENTRE: Type.CulturalCentre,
-  DIGITAL: Type.Digital,
-  FESTIVAL: Type.Festival,
-  GAMES: Type.Games,
-  LIBRARY: Type.Library,
-  MUSEUM: Type.Museum,
-  MUSICAL_INSTRUMENT_STORE: Type.MusicalInstrumentStore,
-  MOVIE: Type.Movie,
-  OTHER: Type.Other,
-  PATRIMONY_TOURISM: Type.PatrimonyTourism,
-  PERFORMING_ARTS: Type.PerformingArts,
-  RECORD_STORE: Type.RecordStore,
-  SCIENTIFIC_CULTURE: Type.ScientificCulture,
-  VISUAL_ARTS: Type.VisualArt,
+  ARTISTIC_COURSE: ArtisticCourseIcon,
+  BOOKSTORE: BookstoreIcon,
+  CONCERT_HALL: ConcertHallIcon,
+  CREATIVE_ARTS_STORE: CreativeArtsStoreIcon,
+  CULTURAL_CENTRE: CulturalCentreIcon,
+  DIGITAL: DigitalIcon,
+  FESTIVAL: FestivalIcon,
+  GAMES: GamesIcon,
+  LIBRARY: LibraryIcon,
+  MUSEUM: MuseumIcon,
+  MUSICAL_INSTRUMENT_STORE: MusicalInstrumentStoreIcon,
+  MOVIE: MovieIcon,
+  OTHER: OtherIcon,
+  PATRIMONY_TOURISM: PatrimonyTourismIcon,
+  PERFORMING_ARTS: PerformingArtsIcon,
+  RECORD_STORE: RecordStoreIcon,
+  SCIENTIFIC_CULTURE: ScientificCultureIcon,
+  VISUAL_ARTS: VisualArtIcon,
 }
 
 export const mapTypeToIcon = (types: VenueTypeCode | null): React.FC<IconInterface> => {
   if (types && types in MAP_TYPE_TO_ICON) return MAP_TYPE_TO_ICON[types]
-  return Type.Other
+  return OtherIcon
 }
