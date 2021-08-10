@@ -91,7 +91,7 @@ export const Login: FunctionComponent = function () {
     } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
       setIsLoading(false)
       setErrorMessage(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie.`)
-    } else if (response.statusCode === 429) {
+    } else if (response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
       setIsLoading(false)
       setErrorMessage(t`Nombre de tentatives dépassé. Réessaye dans 1 minute.`)
     } else {
