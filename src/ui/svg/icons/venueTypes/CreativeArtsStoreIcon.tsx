@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from '../types'
 
-export function ArtisticCourse({
+export function CreativeArtsStoreIcon({
   size = 32,
   color = ColorsEnum.BLACK,
   testID,

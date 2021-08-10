@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from '../types'
 
-export function Digital({
+export function DigitalIcon({
   size = 32,
   color = ColorsEnum.BLACK,
   testID,

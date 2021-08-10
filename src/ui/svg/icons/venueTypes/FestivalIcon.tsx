@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from '../types'
 
-export function Festival({
+export function FestivalIcon({
   size = 32,
   color = ColorsEnum.BLACK,
   testID,

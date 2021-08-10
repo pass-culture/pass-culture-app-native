@@ -1,37 +1,18 @@
-import { ArtisticCourse } from './ArtisticCourse'
-import { Bookstore } from './Bookstore'
-import { ConcertHall } from './ConcertHall'
-import { CulturalCentre } from './CulturalCentre'
-import { Digital } from './Digital'
-import { Festival } from './Festival'
-import { Games } from './Games'
-import { Library } from './Library'
-import { Movie } from './Movie'
-import { Museum } from './Museum'
-import { MusicalInstrumentStore } from './MusicalInstrumentStore'
-import { Other } from './Other'
-import { PatrimonyTourism } from './PatrimonyTourism'
-import { PerformingArts } from './PerformingArts'
-import { RecordStore } from './RecordStore'
-import { ScientificCulture } from './ScientificCulture'
-import { VisualArt } from './VisualArt'
-
-export const Type = {
-  ArtisticCourse,
-  Bookstore,
-  ConcertHall,
-  CulturalCentre,
-  Digital,
-  Festival,
-  Games,
-  Library,
-  Movie,
-  Museum,
-  MusicalInstrumentStore,
-  Other,
-  PatrimonyTourism,
-  PerformingArts,
-  RecordStore,
-  ScientificCulture,
-  VisualArt,
-}
+export { ArtisticCourseIcon } from './ArtisticCourseIcon'
+export { BookstoreIcon } from './BookstoreIcon'
+export { ConcertHallIcon } from './ConcertHallIcon'
+export { CreativeArtsStoreIcon } from './CreativeArtsStoreIcon'
+export { CulturalCentreIcon } from './CulturalCentreIcon'
+export { DigitalIcon } from './DigitalIcon'
+export { FestivalIcon } from './FestivalIcon'
+export { GamesIcon } from './GamesIcon'
+export { LibraryIcon } from './LibraryIcon'
+export { MovieIcon } from './MovieIcon'
+export { MuseumIcon } from './MuseumIcon'
+export { MusicalInstrumentStoreIcon } from './MusicalInstrumentStoreIcon'
+export { OtherIcon } from './OtherIcon'
+export { PatrimonyTourismIcon } from './PatrimonyTourismIcon'
+export { PerformingArtsIcon } from './PerformingArtsIcon'
+export { RecordStoreIcon } from './RecordStoreIcon'
+export { ScientificCultureIcon } from './ScientificCultureIcon'
+export { VisualArtIcon } from './VisualArtIcon'

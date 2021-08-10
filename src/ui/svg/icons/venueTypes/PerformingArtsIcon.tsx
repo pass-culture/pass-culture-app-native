@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from '../types'
 
-export function PerformingArts({
+export function PerformingArtsIcon({
   size = 32,
   color = ColorsEnum.BLACK,
   testID,

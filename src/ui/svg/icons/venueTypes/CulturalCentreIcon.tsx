@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from '../types'
 
-export function CulturalCentre({
+export function CulturalCentreIcon({
   size = 32,
   color = ColorsEnum.BLACK,
   testID,
