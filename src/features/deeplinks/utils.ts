@@ -5,7 +5,7 @@ import { env } from 'libs/environment'
 
 import { DeeplinkEvent } from './types'
 
-export const DEEPLINK_DOMAIN = `https://${env.UNIVERSAL_LINK}/`
+export const WEBAPP_NATIVE_REDIRECTION_URL = `https://${env.WEBAPP_NATIVE_REDIRECTION_DOMAIN}/`
 export const FIREBASE_DYNAMIC_LINK_URL = `https://${env.FIREBASE_DYNAMIC_LINK_DOMAIN}/`
 
 /**
@@ -35,10 +35,10 @@ export function generateLongFirebaseDynamicLink(
   universalLinksParams: string,
   customDynamicLinksParams = ''
 ) {
-  return `${FIREBASE_DYNAMIC_LINK_URL}?link=${DEEPLINK_DOMAIN}${screen}?${universalLinksParams}&${getLongDynamicLinkURI()}${customDynamicLinksParams}`
+  return `${FIREBASE_DYNAMIC_LINK_URL}?link=${WEBAPP_NATIVE_REDIRECTION_URL}${screen}?${universalLinksParams}&${getLongDynamicLinkURI()}${customDynamicLinksParams}`
 }
 
-export const isUniversalLink = (url: string) => url.startsWith(DEEPLINK_DOMAIN)
+export const isUniversalLink = (url: string) => url.startsWith(WEBAPP_NATIVE_REDIRECTION_URL)
 export const isFirebaseDynamicLink = (url: string) => url.startsWith(FIREBASE_DYNAMIC_LINK_URL)
 export const isFirebaseLongDynamicLink = (url: string) =>
   isFirebaseDynamicLink(url) && url.includes('?link=')

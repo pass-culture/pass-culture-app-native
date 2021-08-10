@@ -1,7 +1,7 @@
 import { Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import { DEEPLINK_DOMAIN } from 'features/deeplinks'
+import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 
@@ -22,7 +22,7 @@ describe('Navigation helpers', () => {
 
   it('should capture links that start with the universal links domain', async () => {
     const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
-    const link = DEEPLINK_DOMAIN + 'my-route-to-test?param1=ok'
+    const link = WEBAPP_NATIVE_REDIRECTION_URL + 'my-route-to-test?param1=ok'
     await openExternalUrl(link)
 
     expect(openUrl).not.toBeCalled()
@@ -51,7 +51,7 @@ describe('Navigation helpers', () => {
   })
 
   it('should redirect universal links to the right screen', async () => {
-    const link = DEEPLINK_DOMAIN + 'my-route-to-test?param1=ok'
+    const link = WEBAPP_NATIVE_REDIRECTION_URL + 'my-route-to-test?param1=ok'
     await openExternalUrl(link)
 
     expect(navigationRef.current?.navigate).toBeCalledWith('UniqueTestRoute', { param1: 'ok' })

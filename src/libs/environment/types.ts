@@ -52,8 +52,8 @@ export interface Environment {
   SUPPORT_EMAIL_ADDRESS: string
   TMX_FPSERVER: string
   TMX_ORGID: string
-  UNIVERSAL_LINK: string
   URL_PREFIX: string
+  WEBAPP_NATIVE_REDIRECTION_DOMAIN: string
   WEBAPP_URL: string
   WEBAPP_V2_DOMAIN: string
 }
