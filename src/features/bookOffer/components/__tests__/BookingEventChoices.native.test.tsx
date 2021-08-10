@@ -2,10 +2,11 @@ import * as React from 'react'
 
 import { useBooking, useBookingOffer } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, superFlushWithAct } from 'tests/utils'
+import { render, fireEvent } from 'tests/utils'
 
 import { BookingEventChoices } from '../BookingEventChoices'
+
+jest.mock('react-query')
 
 const mockUseBooking = useBooking as jest.Mock
 const mockUseBookingOffer = useBookingOffer as jest.Mock
@@ -47,7 +48,7 @@ jest.mock('features/offer/services/useHasEnoughCredit', () => ({
 
 describe('<BookingEventChoices />', () => {
   it('should display only date step at beginning', () => {
-    const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+    const page = render(<BookingEventChoices stocks={[]} />)
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeFalsy()
     expect(page.queryByTestId('DuoStep')).toBeFalsy()
@@ -64,8 +65,7 @@ describe('<BookingEventChoices />', () => {
       },
       dispatch: jest.fn(),
     }))
-    const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-    await superFlushWithAct()
+    const page = render(<BookingEventChoices stocks={[]} />)
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeTruthy()
     expect(page.queryByTestId('DuoStep')).toBeFalsy()
@@ -82,8 +82,7 @@ describe('<BookingEventChoices />', () => {
       },
       dispatch: jest.fn(),
     }))
-    const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-    await superFlushWithAct()
+    const page = render(<BookingEventChoices stocks={[]} />)
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeTruthy()
     expect(page.queryByTestId('DuoStep')).toBeTruthy()
@@ -101,8 +100,7 @@ describe('<BookingEventChoices />', () => {
       },
       dispatch: jest.fn(),
     }))
-    const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-    await superFlushWithAct()
+    const page = render(<BookingEventChoices stocks={[]} />)
     expect(page.toJSON()).toMatchSnapshot()
   })
 
@@ -134,8 +132,7 @@ describe('<BookingEventChoices />', () => {
       ],
     }))
 
-    const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-    await superFlushWithAct()
+    const page = render(<BookingEventChoices stocks={[]} />)
 
     const hourBloc = page.getByTestId('HourChoice1')
     fireEvent.press(hourBloc)
