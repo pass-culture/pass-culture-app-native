@@ -6,7 +6,7 @@ import { env } from 'libs/environment'
 import { DeeplinkEvent } from './types'
 
 export const DEEPLINK_DOMAIN = `https://${env.UNIVERSAL_LINK}/`
-export const FIREBASE_DYNAMIC_LINK_DOMAIN = `https://${env.FIREBASE_DYNAMIC_LINK}/`
+export const FIREBASE_DYNAMIC_LINK_URL = `https://${env.FIREBASE_DYNAMIC_LINK_DOMAIN}/`
 
 /**
  * @param ignoreMiddlePage S'il est défini sur true («1»), ignorez la page d'aperçu de
@@ -35,11 +35,11 @@ export function generateLongFirebaseDynamicLink(
   universalLinksParams: string,
   customDynamicLinksParams = ''
 ) {
-  return `${FIREBASE_DYNAMIC_LINK_DOMAIN}?link=${DEEPLINK_DOMAIN}${screen}?${universalLinksParams}&${getLongDynamicLinkURI()}${customDynamicLinksParams}`
+  return `${FIREBASE_DYNAMIC_LINK_URL}?link=${DEEPLINK_DOMAIN}${screen}?${universalLinksParams}&${getLongDynamicLinkURI()}${customDynamicLinksParams}`
 }
 
 export const isUniversalLink = (url: string) => url.startsWith(DEEPLINK_DOMAIN)
-export const isFirebaseDynamicLink = (url: string) => url.startsWith(FIREBASE_DYNAMIC_LINK_DOMAIN)
+export const isFirebaseDynamicLink = (url: string) => url.startsWith(FIREBASE_DYNAMIC_LINK_URL)
 export const isFirebaseLongDynamicLink = (url: string) =>
   isFirebaseDynamicLink(url) && url.includes('?link=')
 
@@ -48,7 +48,7 @@ export const isFirebaseLongDynamicLink = (url: string) =>
  * so we handle it manually
  */
 export const extractUniversalLinkFromLongFirebaseDynamicLink = (event: DeeplinkEvent): string => {
-  const searchParams = event.url.replace(`${FIREBASE_DYNAMIC_LINK_DOMAIN}?`, '')
+  const searchParams = event.url.replace(`${FIREBASE_DYNAMIC_LINK_URL}?`, '')
   const paramsString = omit(searchParams, FIREBASE_DYNAMIC_LINK_PARAMS).querystring
   return paramsString.replace(/^link=/, '')
 }
@@ -70,7 +70,7 @@ export const resolveHandler = (
   // Short Firebase Dynamic Links: https://passcultureapp{env}.page.link/<routeName>
   // => handled with dynamicLinks().onLink
   if (listenShortLinks) {
-    handleDeeplinkUrl({ url: event.url.replace(FIREBASE_DYNAMIC_LINK_DOMAIN, '') })
+    handleDeeplinkUrl({ url: event.url.replace(FIREBASE_DYNAMIC_LINK_URL, '') })
   }
 }
 
