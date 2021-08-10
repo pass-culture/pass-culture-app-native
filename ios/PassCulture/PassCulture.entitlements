@@ -8,7 +8,7 @@
 	<array>
 		<string>applinks:$(UNIVERSAL_LINK)</string>
 		<string>applinks:$(WEBAPP_V2_DOMAIN)</string>
-		<string>applinks:$(FIREBASE_DYNAMIC_LINK)</string>
+		<string>applinks:$(FIREBASE_DYNAMIC_LINK_DOMAIN)</string>
 	</array>
 </dict>
 </plist>

@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 import { goBack } from '__mocks__/@react-navigation/native'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
-import { FIREBASE_DYNAMIC_LINK_DOMAIN } from 'features/deeplinks/utils'
+import { FIREBASE_DYNAMIC_LINK_URL } from 'features/deeplinks/utils'
 import * as DeeplinkUtils from 'features/deeplinks/utils'
 import { render, fireEvent } from 'tests/utils'
 
@@ -23,7 +23,7 @@ describe('DeeplinkImporter', () => {
     })
   })
   it('should resolve the link', async () => {
-    const url = FIREBASE_DYNAMIC_LINK_DOMAIN + 'home'
+    const url = FIREBASE_DYNAMIC_LINK_URL + 'home'
 
     const resolveHandlerSpy = jest.spyOn(DeeplinkUtils, 'resolveHandler')
 
