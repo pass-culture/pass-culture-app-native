@@ -197,7 +197,6 @@ PODS:
   - GoogleUtilities/UserDefaults (7.5.0):
     - GoogleUtilities/Logger
   - hermes-engine (0.7.2)
-  - InputMask (6.1.0)
   - JWT (3.0.0-beta.14):
     - Base64 (~> 1.1.2)
   - libevent (2.1.12)
@@ -457,10 +456,6 @@ PODS:
     - React-Core
   - react-native-splash-screen (3.2.0):
     - React
-  - react-native-text-input-mask (3.1.4):
-    - InputMask (~> 6.1.0)
-    - React-Core
-    - React-RCTText
   - react-native-tracking-transparency (0.1.0):
     - React
   - react-native-webview (10.10.0):
@@ -662,7 +657,6 @@ DEPENDENCIES:
   - "react-native-profiling (from `../node_modules/@pass-culture/react-native-profiling`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
-  - react-native-text-input-mask (from `../node_modules/react-native-text-input-mask`)
   - react-native-tracking-transparency (from `../node_modules/react-native-tracking-transparency`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -730,7 +724,6 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - hermes-engine
-    - InputMask
     - JWT
     - libevent
     - libwebp
@@ -812,8 +805,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
-  react-native-text-input-mask:
-    :path: "../node_modules/react-native-text-input-mask"
   react-native-tracking-transparency:
     :path: "../node_modules/react-native-tracking-transparency"
   react-native-webview:
@@ -928,7 +919,6 @@ SPEC CHECKSUMS:
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: eea970f4a389963963bffe8d8fabe43540678b9c
   hermes-engine: 7d97ba46a1e29bacf3e3c61ecb2804a5ddd02d4f
-  InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   JWT: ef71dfb03e1f842081e64dc42eef0e164f35d251
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
@@ -962,7 +952,6 @@ SPEC CHECKSUMS:
   react-native-profiling: b2347e07636abdbb623514d2f96e7e1c804485e0
   react-native-safe-area-context: 79fea126c6830c85f65947c223a5e3058a666937
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
-  react-native-text-input-mask: 36a546b378fadd2efe1b7484a859d34bc2c80395
   react-native-tracking-transparency: c1c4b412fcdcb0a02e23bb42b123def5a6d86a56
   react-native-webview: 73e409ecc987c189772bda27ba7f0e2f3dcd2e81
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737
