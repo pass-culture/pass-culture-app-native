@@ -148,4 +148,5 @@ const ShowResultsContainer = styled.View({
   position: 'absolute',
   bottom: getSpacing(6),
   paddingHorizontal: getSpacing(6),
+  alignItems: 'center',
 })
