@@ -7,6 +7,7 @@ import { render } from 'tests/utils'
 import { IconWithCaption } from '../IconWithCaption'
 
 const typeLabel = parseType(VenueTypeCode.MOVIE)
+const typeLabelNull = parseType(null)
 const icon = mapTypeToIcon(VenueTypeCode.MOVIE)
 
 describe('IconWithCaption', () => {
@@ -17,8 +18,19 @@ describe('IconWithCaption', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should display a correctly caption', () => {
+  it('should display a default label "Autre" for venue type if type is null', async () => {
+    const { getByText } = render(<IconWithCaption Icon={icon} caption={typeLabelNull} />)
+    expect(getByText('Autre')).toBeTruthy()
+  })
+
+  it('should display correct label for venue type if type is not null', () => {
     const { getByText } = render(<IconWithCaption Icon={icon} caption={typeLabel} />)
     expect(getByText('Cinéma - Salle de projections')).toBeTruthy()
+  })
+
+  it('should render different when isDisabled is true', () => {
+    const enabled = render(<IconWithCaption Icon={icon} caption={typeLabel} />).toJSON()
+    const disabled = render(<IconWithCaption Icon={icon} caption={typeLabel} isDisabled />).toJSON()
+    expect(enabled).toMatchDiffSnapshot(disabled)
   })
 })

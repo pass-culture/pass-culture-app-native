@@ -37,11 +37,11 @@ exports[`IconWithCaption should render correctly 1`] = `
     </View>
   </View>
   <Text
-    color="#626262"
+    color="#151515"
     style={
       Array [
         Object {
-          "color": "#626262",
+          "color": "#151515",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
@@ -54,4 +54,29 @@ exports[`IconWithCaption should render correctly 1`] = `
     Cinéma - Salle de projections
   </Text>
 </View>
+`;
+
+exports[`IconWithCaption should render different when isDisabled is true 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -31,15 +31,15 @@
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <Text
+-     color=\\"#151515\\"
++     color=\\"#626262\\"
+      style={
+        Array [
+          Object {
+-           \\"color\\": \\"#151515\\",
++           \\"color\\": \\"#626262\\",
+            \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+            \\"fontSize\\": 12,
+            \\"lineHeight\\": 16,
+            \\"textAlign\\": \\"center\\",
+          },"
 `;
