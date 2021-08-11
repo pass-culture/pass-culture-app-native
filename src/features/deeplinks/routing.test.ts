@@ -131,21 +131,6 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
   })
 
   describe('link id-check', () => {
-    it('should return Home page when no params are passed', () => {
-      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['id-check']()
-      expect(configureScreen).toEqual(homeNavigateConfig)
-    })
-
-    it.each`
-      params
-      ${{ email: '', licenceToken: '' }}
-      ${{ emai: 'data', licenceToken: '' }}
-      ${{ email: 'data', licenceToke: 'data' }}
-    `('should return Home page when params are invalid', ({ params }) => {
-      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['id-check'](params)
-      expect(configureScreen).toEqual(homeNavigateConfig)
-    })
-
     it('should return IdCheck page when email and licenseToken are set', () => {
       const params = {
         email: 'user@site',
@@ -154,9 +139,7 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
 
       expect(configureScreen.screen).toBe('Login')
       expect(configureScreen.params).toEqual({
-        follow: {
-          screen: 'NextBeneficiaryStep',
-        },
+        followScreen: 'NextBeneficiaryStep',
       })
     })
   })

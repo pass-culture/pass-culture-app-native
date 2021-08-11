@@ -6,6 +6,7 @@ import { env } from 'libs/environment'
 import { DeeplinkEvent } from './types'
 
 export const WEBAPP_NATIVE_REDIRECTION_URL = `https://${env.WEBAPP_NATIVE_REDIRECTION_DOMAIN}`
+export const WEBAPP_V2_URL = `https://${env.WEBAPP_V2_DOMAIN}`
 export const FIREBASE_DYNAMIC_LINK_URL = `https://${env.FIREBASE_DYNAMIC_LINK_DOMAIN}`
 
 /**

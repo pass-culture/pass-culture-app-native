@@ -8,12 +8,14 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     return homeNavigateConfig
   },
   home: (params) => {
+    const screen = 'Home'
+    const parser = screenParamsParser[screen]
     if (params?.entryId) {
       return {
         screen: 'TabNavigator',
         params: {
-          screen: 'Home',
-          params: { entryId: params.entryId },
+          screen,
+          params: { entryId: parser.entryId(params.entryId) },
         },
       }
     }
@@ -44,11 +46,13 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     return homeNavigateConfig
   },
   offer: (params) => {
+    const screen = 'Offer'
+    const parser = screenParamsParser[screen]
     return {
-      screen: 'Offer',
+      screen,
       params: {
-        id: params?.id ? Number(params.id) : 0,
-        from: 'deeplink',
+        id: parser.id(params.id),
+        from: parser.from('deeplink'),
       },
     }
   },
@@ -59,10 +63,12 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     return { screen: 'Search', params: undefined }
   },
   venue: (params) => {
+    const screen = 'Venue'
+    const parser = screenParamsParser[screen]
     return {
-      screen: 'Venue',
+      screen,
       params: {
-        id: params?.id ? Number(params.id) : 0,
+        id: parser.id(params.id),
       },
     }
   },
@@ -81,17 +87,14 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     }
     return homeNavigateConfig
   },
-  'id-check'(params) {
-    if (params?.email?.includes('@')) {
-      return {
-        screen: 'Login',
-        params: {
-          follow: {
-            screen: 'NextBeneficiaryStep',
-          },
-        },
-      }
+  'id-check'() {
+    const screen = 'Login'
+    const parser = screenParamsParser[screen]
+    return {
+      screen,
+      params: {
+        followScreen: parser.followScreen('NextBeneficiaryStep'),
+      },
     }
-    return homeNavigateConfig
   },
 }

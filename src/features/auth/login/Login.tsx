@@ -49,13 +49,10 @@ export const Login: FunctionComponent = function () {
 
   useFocusEffect(
     useCallback(() => {
-      if (params?.follow) {
-        const { screen, params: idCheckParams } = params.follow
-        if (isLoggedIn && screen) {
-          navigate(screen, idCheckParams)
-        }
+      if (params?.followScreen && isLoggedIn) {
+        navigate(params.followScreen, params.followParams)
       }
-    }, [params?.follow])
+    }, [params])
   )
 
   async function handleSignin() {
@@ -74,8 +71,8 @@ export const Login: FunctionComponent = function () {
       const user = await api.getnativev1me()
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
 
-      if (params?.follow) {
-        navigate(params.follow.screen, params.follow.params)
+      if (params?.followScreen) {
+        navigate(params.followScreen, params.followParams)
       } else if (!hasSeenEligibleCard && user.showEligibleCard) {
         navigate('EighteenBirthday')
       } else if (user.isBeneficiary && user.needsToFillCulturalSurvey) {
@@ -116,7 +113,7 @@ export const Login: FunctionComponent = function () {
     navigate('ForgottenPassword')
   }
 
-  if (isLoggedIn && params?.follow?.screen) {
+  if (isLoggedIn && params?.followScreen) {
     return <LoadingPage />
   }
 

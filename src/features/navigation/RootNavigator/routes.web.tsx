@@ -245,7 +245,15 @@ export const routes: Array<Route> = [
   },
   { name: 'LocationFilter', component: LocationFilter, path: 'location/filter' },
   { name: 'LocationPicker', component: LocationPicker, path: 'location/picker' },
-  { name: 'Login', component: Login, hoc: withAsyncErrorBoundary, path: 'login' },
+  {
+    name: 'Login',
+    component: Login,
+    hoc: withAsyncErrorBoundary,
+    pathConfig: {
+      path: 'login',
+      parse: screenParamsParser['Login'],
+    },
+  },
   { name: 'Maintenance', component: Maintenance, path: 'maintenance' },
   { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary, path: 'navigation' },
   {
@@ -255,7 +263,15 @@ export const routes: Array<Route> = [
     path: 'navigation-id-check-errors',
   },
   { name: 'NotificationSettings', component: NotificationSettings, path: 'notification-settings' },
-  { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary, path: 'offer/:id' },
+  {
+    name: 'Offer',
+    component: Offer,
+    hoc: withAsyncErrorBoundary,
+    pathConfig: {
+      path: 'offer/:id',
+      parse: screenParamsParser['Offer'],
+    },
+  },
   {
     name: 'OfferDescription',
     component: OfferDescription,
@@ -264,7 +280,14 @@ export const routes: Array<Route> = [
   },
   { name: 'PersonalData', component: PersonalData, path: 'personal-data' },
   { name: 'ChangePassword', component: ChangePassword, path: 'change-password' },
-  { name: 'ReinitializePassword', component: ReinitializePassword, path: 'reinitialize-password' },
+  {
+    name: 'ReinitializePassword',
+    component: ReinitializePassword,
+    pathConfig: {
+      path: 'mot-de-passe-perdu',
+      parse: screenParamsParser['ReinitializePassword'],
+    },
+  },
   {
     name: 'ResetPasswordEmailSent',
     component: ResetPasswordEmailSent,
@@ -309,7 +332,15 @@ export const routes: Array<Route> = [
   { name: 'IdCheckUnavailable', component: IdCheckUnavailable, path: 'idcheck-unavailable' },
   ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
   { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheckv2' },
-  { name: 'Venue', component: Venue, hoc: withAsyncErrorBoundary, path: 'venue' },
+  {
+    name: 'Venue',
+    component: Venue,
+    hoc: withAsyncErrorBoundary,
+    pathConfig: {
+      path: 'venue/:id',
+      parse: screenParamsParser['Venue'],
+    },
+  },
 ]
 
 export const linking: LinkingOptions = {

@@ -4,6 +4,7 @@ import { Bookings } from 'features/bookings/pages/Bookings'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
+import { screenParamsParser } from 'features/navigation/screenParamsParser'
 import { TabRoute } from 'features/navigation/TabBar/types'
 import { Profile } from 'features/profile/pages/Profile'
 import { Search } from 'features/search/pages/Search'
@@ -16,27 +17,30 @@ export const routes: Array<TabRoute> = [
   {
     name: 'Home',
     component: Home,
-    path: '/home',
+    pathConfig: {
+      path: 'home',
+      parse: screenParamsParser['Home'],
+    },
   },
   {
     name: 'Search',
     component: Search,
-    path: '/search',
+    path: 'search',
   },
   {
     name: 'Bookings',
     component: Bookings,
-    path: '/bookings',
+    path: 'bookings',
   },
   {
     name: 'Favorites',
     component: Favorites,
-    path: '/favorites',
+    path: 'favorites',
   },
   {
     name: 'Profile',
     component: Profile,
-    path: '/profile',
+    path: 'profile',
   },
 ].map((r) => ({ ...r, key: r.name } as TabRoute))
 
@@ -44,7 +48,10 @@ export const tabNavigatorPathConfig: LinkingOptions['config'] = {
   initialRouteName,
   screens: {
     ...routes.reduce(
-      (route, currentRoute) => ({ ...route, [currentRoute.name]: currentRoute.path }),
+      (route, currentRoute) => ({
+        ...route,
+        [currentRoute.name]: currentRoute.pathConfig || currentRoute.path,
+      }),
       {}
     ),
   },
