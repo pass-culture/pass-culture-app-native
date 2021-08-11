@@ -3002,6 +3002,7 @@ Array [
     style={
       Array [
         Object {
+          "alignItems": "center",
           "bottom": 24,
           "paddingHorizontal": 24,
           "position": "absolute",
