@@ -57,6 +57,9 @@ export const screenParamsParser: ParamsParsers = {
   },
 }
 
+// We allow to use `any` (instead of `string`) in order to support enum members
+// like Referrals, ScreenNames, etc... Waiting for a better typing solution.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function identityFn(value: any) {
   return value
 }
