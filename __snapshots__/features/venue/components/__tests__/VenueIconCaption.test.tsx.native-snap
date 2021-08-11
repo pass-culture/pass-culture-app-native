@@ -56,11 +56,11 @@ exports[`<VenueIconCaptions /> should match snapshot 1`] = `
       </View>
     </View>
     <Text
-      color="#626262"
+      color="#151515"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#151515",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -122,11 +122,11 @@ exports[`<VenueIconCaptions /> should match snapshot 1`] = `
       </View>
     </View>
     <Text
-      color="#626262"
+      color="#151515"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#151515",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -136,7 +136,7 @@ exports[`<VenueIconCaptions /> should match snapshot 1`] = `
       }
       testID="caption-iconLocation"
     >
-      Géolocalisation désactivée
+      10 km
     </Text>
   </View>
   <View

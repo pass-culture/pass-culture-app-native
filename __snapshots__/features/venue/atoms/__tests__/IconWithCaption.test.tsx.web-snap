@@ -53,7 +53,7 @@ exports[`IconWithCaption should render correctly 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "color": "rgba(98,98,98,1.00)",
+        "color": "rgba(21,21,21,1.00)",
         "fontFamily": "Montserrat-SemiBold",
         "fontSize": "12px",
         "lineHeight": "16px",
@@ -64,4 +64,24 @@ exports[`IconWithCaption should render correctly 1`] = `
     Cinéma - Salle de projections
   </div>
 </div>
+`;
+
+exports[`IconWithCaption should render different when isDisabled is true 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -47,11 +47,11 @@
+      data-testid=\\"caption-undefined\\"
+      dir=\\"auto\\"
+      onClick={[Function handleClick]}
+      style={
+        Object {
+-         \\"color\\": \\"rgba(21,21,21,1.00)\\",
++         \\"color\\": \\"rgba(98,98,98,1.00)\\",
+          \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+          \\"fontSize\\": \\"12px\\",
+          \\"lineHeight\\": \\"16px\\",
+          \\"textAlign\\": \\"center\\",
+        }"
 `;

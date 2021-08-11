@@ -13,18 +13,18 @@ interface IconWithCaptionProps {
 
 export const IconWithCaption = ({ Icon, caption, testID, isDisabled }: IconWithCaptionProps) => {
   const getTextColor = (isDisabled: boolean) => {
-    if (isDisabled) return ColorsEnum.GREY_MEDIUM
-    return ColorsEnum.GREY_DARK
+    if (isDisabled) return ColorsEnum.GREY_DARK
+    return ColorsEnum.BLACK
   }
 
-  const color = getTextColor(isDisabled as boolean)
+  const textColor = getTextColor(isDisabled as boolean)
 
   return (
     <Container>
       <IconContainer>
-        <Icon size={getSpacing(10)} color={color} testID={testID} />
+        <Icon size={getSpacing(10)} color={ColorsEnum.GREY_DARK} testID={testID} />
       </IconContainer>
-      <Caption testID={`caption-${testID}`} color={color}>
+      <Caption testID={`caption-${testID}`} color={textColor}>
         {caption}
       </Caption>
     </Container>
