@@ -8,7 +8,7 @@ import {
   sanitizeURI,
   parseURI,
 } from './useDeeplinkUrlHandler'
-import { WEBAPP_NATIVE_REDIRECTION_URL } from './utils'
+import { WEBAPP_NATIVE_REDIRECTION_URL, WEBAPP_V2_URL } from './utils'
 
 jest.mock('features/auth/settings')
 jest.mock('features/navigation/navigationRef')
@@ -49,6 +49,8 @@ describe('useDeeplinkUrlHandler', () => {
     it.each([
       ['Android', WEBAPP_NATIVE_REDIRECTION_URL + uri],
       ['iOS', WEBAPP_NATIVE_REDIRECTION_URL + uri],
+      ['Android', WEBAPP_V2_URL + uri],
+      ['iOS', WEBAPP_V2_URL + uri],
     ])('should parse route name and uri params for %s', (_platform, url) => {
       const { routeName, params } = decodeDeeplinkParts(url)
       expect(routeName).toEqual('my-route')
@@ -63,20 +65,14 @@ describe('useDeeplinkUrlHandler', () => {
     it.each([
       ['Android', WEBAPP_NATIVE_REDIRECTION_URL + uriWithoutParams],
       ['iOS', WEBAPP_NATIVE_REDIRECTION_URL + uriWithoutParams],
+      ['Android', WEBAPP_V2_URL + uriWithoutParams],
+      ['iOS', WEBAPP_V2_URL + uriWithoutParams],
     ])('should handle url without uri params for %s', (_platform, url) => {
       const { routeName, params } = decodeDeeplinkParts(url)
       expect(routeName).toEqual('my-route')
       expect(params).toEqual({
         test: '',
       })
-    })
-
-    it("doesn't take into account the trailing slash", () => {
-      const { routeName, params } = decodeDeeplinkParts(
-        WEBAPP_NATIVE_REDIRECTION_URL + '/offer/?id=ABCDE'
-      )
-      expect(routeName).toEqual('offer')
-      expect(params).toEqual({ id: 'ABCDE' })
     })
   })
 

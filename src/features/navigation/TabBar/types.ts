@@ -1,3 +1,4 @@
+import { PathConfig } from '@react-navigation/native'
 import { ComponentType } from 'react'
 
 import { SearchParameters } from 'features/search/types'
@@ -5,7 +6,7 @@ import { SearchParameters } from 'features/search/types'
 export type TabRouteName = keyof TabParamList
 
 export type TabParamList = {
-  Home: { entryId: string } | undefined
+  Home?: { entryId?: string }
   Search: { parameters: SearchParameters | null } | undefined
   Bookings: undefined
   Favorites: undefined
@@ -15,7 +16,8 @@ export type TabParamList = {
 export type TabRoute = {
   name: TabRouteName
   component: ComponentType
-  params?: TabParamList[TabRouteName]
   key: string
-  path: string
+  params?: TabParamList[TabRouteName]
+  path?: string
+  pathConfig?: PathConfig
 }

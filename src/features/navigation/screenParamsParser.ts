@@ -4,33 +4,68 @@ type ScreensRequiringParsing = Extract<
   ScreenNames,
   | 'AfterSignupEmailValidationBuffer'
   | 'BookingDetails'
+  | 'Home'
+  | 'Login'
+  | 'Offer'
   | 'ReinitializePassword'
   | 'ResetPasswordExpiredLink'
+  | 'Venue'
 >
+
+type ParamsList = Required<AllNavParamList>
 
 type ParamsParsers = {
   [Screen in ScreensRequiringParsing]: {
-    [Param in keyof RouteParams<AllNavParamList, Screen>]: (
+    [Param in keyof Required<RouteParams<ParamsList, Screen>>]: (
       value: string
-    ) => RouteParams<AllNavParamList, Screen>[Param]
+    ) => RouteParams<ParamsList, Screen>[Param]
   }
 }
 
 export const screenParamsParser: ParamsParsers = {
   AfterSignupEmailValidationBuffer: {
-    email: (value) => decodeURIComponent(value),
-    token: (value) => value,
-    expiration_timestamp: (value) => Number(value),
+    email: decodeURIComponent,
+    token: identityFn,
+    expiration_timestamp: Number,
   },
   BookingDetails: {
-    id: (value) => Number(value),
+    id: Number,
+  },
+  Login: {
+    preventCancellation: parseObject,
+    followScreen: identityFn,
+    followParams: parseObject,
+  },
+  Offer: {
+    id: (value) => (value ? Number(value) : 0),
+    from: identityFn,
+    moduleName: identityFn,
+  },
+  Home: {
+    entryId: identityFn,
   },
   ReinitializePassword: {
-    token: (value) => value,
-    email: (value) => decodeURIComponent(value),
-    expiration_timestamp: (value) => Number(value),
+    token: identityFn,
+    email: decodeURIComponent,
+    expiration_timestamp: Number,
   },
   ResetPasswordExpiredLink: {
-    email: (value) => decodeURIComponent(value),
+    email: decodeURIComponent,
   },
+  Venue: {
+    id: (value) => (value ? Number(value) : 0),
+  },
+}
+
+function identityFn(value: any) {
+  return value
+}
+
+function parseObject(value?: string) {
+  if (!value) return undefined
+  try {
+    return JSON.parse(value)
+  } catch {
+    return undefined
+  }
 }

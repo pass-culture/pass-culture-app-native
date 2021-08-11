@@ -8,7 +8,7 @@ import { handleDeeplinkAnalytics } from './analytics'
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
 import { isAllowedRouteTypeGuard } from './typeGuard'
 import { DeeplinkEvent, DeeplinkParts } from './types'
-import { WEBAPP_NATIVE_REDIRECTION_URL } from './utils'
+import { WEBAPP_NATIVE_REDIRECTION_URL, WEBAPP_V2_URL } from './utils'
 
 export function sanitizeURI(uri: string) {
   return (
@@ -43,7 +43,10 @@ export function parseURI(uri: string) {
 const ROUTE_NAME_REGEX = /^([a-zA-Z0-9-_]+)/g
 
 export function decodeDeeplinkParts(url: string): DeeplinkParts {
-  const pathWithQueryString = url.replace(`${WEBAPP_NATIVE_REDIRECTION_URL}/`, '')
+  // We have to try 2 replaces since we support both pre and post-decliweb versions
+  const pathWithQueryString = url
+    .replace(`${WEBAPP_NATIVE_REDIRECTION_URL}/`, '')
+    .replace(`${WEBAPP_V2_URL}/`, '')
   const path = pathWithQueryString.match(ROUTE_NAME_REGEX)?.[0] || 'unknown'
   const queryString = pathWithQueryString.replace(ROUTE_NAME_REGEX, '')
   return { routeName: path, params: parseURI(decodeURI(queryString)) }

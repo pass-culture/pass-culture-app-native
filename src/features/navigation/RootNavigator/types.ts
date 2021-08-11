@@ -50,15 +50,11 @@ export type RootStackParamList = {
   IdCheck: { email: string; licence_token?: string; expiration_timestamp?: number | null }
   IdCheckUnavailable: undefined
   IdCheckTooManyAttempts: undefined
-  Login:
-    | {
-        preventCancellation?: boolean
-        follow?: {
-          screen: 'NextBeneficiaryStep'
-          params?: RootStackParamList['NextBeneficiaryStep']
-        }
-      }
-    | undefined
+  Login?: {
+    preventCancellation?: boolean
+    followScreen?: 'NextBeneficiaryStep'
+    followParams?: RootStackParamList['NextBeneficiaryStep']
+  }
   Maintenance: undefined
   Navigation: undefined
   NavigationIdCheckErrors: undefined
