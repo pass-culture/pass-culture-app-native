@@ -10,6 +10,7 @@ type ScreensRequiringParsing = Extract<
   | 'ReinitializePassword'
   | 'ResetPasswordExpiredLink'
   | 'Venue'
+  | 'Search'
 >
 
 type ParamsList = Required<AllNavParamList>
@@ -55,6 +56,27 @@ export const screenParamsParser: ParamsParsers = {
   Venue: {
     id: (value) => (value ? Number(value) : 0),
   },
+  Search: {
+    aroundRadius: Number,
+    beginningDatetime: identityFn,
+    date: JSON.parse,
+    endingDatetime: identityFn,
+    geolocation: JSON.parse,
+    hitsPerPage: Number,
+    locationType: identityFn,
+    offerCategories: identityFn,
+    offerIsDuo: identityFn,
+    offerIsFree: identityFn,
+    offerIsNew: identityFn,
+    offerTypes: JSON.parse,
+    place: JSON.parse,
+    priceRange: identityFn,
+    query: identityFn,
+    showResults: identityFn,
+    tags: identityFn,
+    timeRange: identityFn,
+    venueId: Number,
+  },
 }
 
 // We allow to use `any` (instead of `string`) in order to support enum members
@@ -71,4 +93,37 @@ function parseObject(value?: string) {
   } catch {
     return undefined
   }
+}
+
+type ScreensRequiringStringifying = Extract<ScreenNames, 'Search'>
+type ParamsStringifiers = {
+  [Screen in ScreensRequiringStringifying]: {
+    [Param in keyof Required<RouteParams<ParamsList, Screen>>]: (
+      value: RouteParams<ParamsList, Screen>[Param]
+    ) => string
+  }
+}
+
+export const screenParamsStringifier: ParamsStringifiers = {
+  Search: {
+    aroundRadius: identityFn,
+    beginningDatetime: identityFn,
+    date: JSON.stringify,
+    endingDatetime: identityFn,
+    geolocation: JSON.stringify,
+    hitsPerPage: identityFn,
+    locationType: identityFn,
+    offerCategories: identityFn,
+    offerIsDuo: identityFn,
+    offerIsFree: identityFn,
+    offerIsNew: identityFn,
+    offerTypes: JSON.stringify,
+    place: JSON.stringify,
+    priceRange: identityFn,
+    query: identityFn,
+    showResults: identityFn,
+    tags: identityFn,
+    timeRange: identityFn,
+    venueId: identityFn,
+  },
 }
