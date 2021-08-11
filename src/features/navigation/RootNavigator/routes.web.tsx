@@ -89,97 +89,153 @@ const Page = styled.View({
   justifyContent: 'center',
 })
 
-const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => (
-  <Page>
-    <Typo.Title3 color={ColorsEnum.PRIMARY}>{title}</Typo.Title3>
-    <Link to={'/search'}>
-      <Text>Go to TabNavigator/Search</Text>
-    </Link>
-    <Link to={'/eighteen'}>
-      <Text>Go to EighteenBirthday</Text>
-    </Link>
-    <Link to={'/login'}>
-      <Text>Go to Login</Text>
-    </Link>
-    <Link to={'/setemail'}>
-      <Text>Register</Text>
-    </Link>
-    <Link to={'/account-created'}>
-      <Text>Account Created</Text>
-    </Link>
-    <Link to={'/idcheck-unavailable'}>
-      <Text>Id Check unavailable</Text>
-    </Link>
-    <Link to={'/verify-eligibility'}>
-      <Text>Verify eligiblity</Text>
-    </Link>
-    <Link to={'/phone-validation-too-many-attempts'}>
-      <Text>Phone validation too many attempts</Text>
-    </Link>
-    <Link to={'/signup-confirmation'}>
-      <Text>After signup validation buffer</Text>
-    </Link>
-    <Link to={'/legal-notices'}>
-      <Text>Legal notices</Text>
-    </Link>
-    <Link to={'/maintenance'}>
-      <Text>Maintenance</Text>
-    </Link>
-    <Link to={'/forgotten-password'}>
-      <Text>ForgottenPassword</Text>
-    </Link>
-    <Link to={'/change-password'}>
-      <Text>ChangePassword</Text>
-    </Link>
-    <Link to={'/reset-password-expired-link'}>
-      <Text>ResetPasswordExpiredLink</Text>
-    </Link>
-    <Link to={'/reinitialize-password'}>
-      <Text>ReinitializePassword</Text>
-    </Link>
-    <Link to={'/beneficiary-request-sent'}>
-      <Text>BeneficiaryRequestSent</Text>
-    </Link>
-    <Link to={'/next-beneficiary-step'}>
-      <Text>NextBeneficiaryStep</Text>
-    </Link>
-    <Link to={'/cheat-menu'}>
-      <Text>CheatMenu</Text>
-    </Link>
-    <Link to={'/offer'} params={{ id: '223139' }}>
-      <Text>Offer via /offer?id=223139</Text>
-    </Link>
-    <Link to={'/offer/223139'}>
-      <Text>Offer via /offer/223139</Text>
-    </Link>
-    <Link to={'/signup-confirmation-email-sent'}>
-      <Text>SignupConfirmationEmailSent</Text>
-    </Link>
-    <Link to={'/signup-confirmation-expired-link'}>
-      <Text>SignupConfirmationExpiredLink</Text>
-    </Link>
-    <Link to={'/profile/delete'}>
-      <Text>ConfirmDeleteProfile</Text>
-    </Link>
-    <Link to={'/profile/delete/success'}>
-      <Text>DeleteProfileSuccess</Text>
-    </Link>
-    <Link to={'/favorites'}>
-      <Text>Favorites</Text>
-    </Link>
-    <Link
-      to={'/cgu'}
-      params={{
-        email: 'test@test.com',
-        isNewsletterChecked: true,
-        password: 'user@AZERTY123',
-        birthday: '01/01/2003',
-        postalCode: '93000',
-      }}>
-      <Text>AcceptCGU (Link with params test)</Text>
-    </Link>
-  </Page>
-)
+const ABTestingPOC = ({ title } = { title: 'ABTestingPog' }) => {
+  const screens = linking.config?.screens
+  return (
+    <Page>
+      <Typo.Title3 color={ColorsEnum.PRIMARY}>{title}</Typo.Title3>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.TabNavigator?.screens?.Search?.path}>
+        <Text>Go to TabNavigator/Search</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.EighteenBirthday}>
+        <Text>Go to EighteenBirthday</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        // @ts-ignore testing code
+        to={screens?.Login?.path}>
+        <Text>Go to Login</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.SetEmail}>
+        <Text>Register</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.AccountCreated}>
+        <Text>Account Created</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.IdCheckUnavailable}>
+        <Text>Id Check unavailable</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.VerifyEligibility}>
+        <Text>Verify eligiblity</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.PhoneValidationTooManyAttempts}>
+        <Text>Phone validation too many attempts</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.AfterSignupEmailValidationBuffer?.path}>
+        <Text>After signup validation buffer</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.LegalNotices}>
+        <Text>Legal notices</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.Maintenance}>
+        <Text>Maintenance</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.ForgottenPassword}>
+        <Text>ForgottenPassword</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.ChangePassword}>
+        <Text>ChangePassword</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.ResetPasswordExpiredLink}>
+        <Text>ResetPasswordExpiredLink</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.ReinitializePassword?.path}>
+        <Text>ReinitializePassword</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.BeneficiaryRequestSent}>
+        <Text>BeneficiaryRequestSent</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.NextBeneficiaryStep}>
+        <Text>NextBeneficiaryStep</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.CheatMenu}>
+        <Text>CheatMenu</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.Offer?.path.replace('/:id', '')}
+        params={{ id: '223139' }}>
+        <Text>Offer via /offer?id=223139</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.Offer?.path.replace('/:id', '/223139')}>
+        <Text>Offer via /offer/223139</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.SignupConfirmationEmailSent}>
+        <Text>SignupConfirmationEmailSent</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.SignupConfirmationExpiredLink}>
+        <Text>SignupConfirmationExpiredLink</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.ConfirmDeleteProfile}>
+        <Text>ConfirmDeleteProfile</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.DeleteProfileSuccess}>
+        <Text>DeleteProfileSuccess</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.TabNavigator?.screens?.Favorites}>
+        <Text>Favorites</Text>
+      </Link>
+      <Link
+        // @ts-ignore testing code
+        to={screens?.AcceptCgu}
+        params={{
+          email: 'test@test.com',
+          isNewsletterChecked: true,
+          password: 'user@AZERTY123',
+          birthday: '01/01/2003',
+          postalCode: '93000',
+        }}>
+        <Text>AcceptCGU (Link with params test)</Text>
+      </Link>
+    </Page>
+  )
+}
 
 export const routes: Array<Route> = [
   { name: 'ABTestingPOC', component: ABTestingPOC, path: 'abtesting' },
@@ -243,8 +299,8 @@ export const routes: Array<Route> = [
     component: DeleteProfileSuccess,
     path: 'profile/delete/success',
   },
-  { name: 'LocationFilter', component: LocationFilter, path: 'location/filter' },
-  { name: 'LocationPicker', component: LocationPicker, path: 'location/picker' },
+  { name: 'LocationFilter', component: LocationFilter, path: 'rechercher/location/filter' },
+  { name: 'LocationPicker', component: LocationPicker, path: 'rechercher/location/picker' },
   {
     name: 'Login',
     component: Login,
@@ -299,8 +355,8 @@ export const routes: Array<Route> = [
     hoc: withAsyncErrorBoundary,
     path: 'reset-password-expired-link',
   },
-  { name: 'SearchCategories', component: SearchCategories, path: 'search/categories' },
-  { name: 'SearchFilter', component: SearchFilter, path: 'search/filter' },
+  { name: 'SearchCategories', component: SearchCategories, path: 'rechercher/categories' },
+  { name: 'SearchFilter', component: SearchFilter, path: 'rechercher/filter' },
   { name: 'SetBirthday', component: SetBirthday, path: 'setbirthday' },
   { name: 'SetEmail', component: SetEmail, path: 'setemail' },
   { name: 'SetPassword', component: SetPassword, path: 'setpassword' },
