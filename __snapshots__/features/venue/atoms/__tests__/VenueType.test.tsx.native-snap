@@ -36,10 +36,11 @@ exports[`VenueType should render correctly 1`] = `
     </View>
   </View>
   <Text
+    color="#626262"
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#626262",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,

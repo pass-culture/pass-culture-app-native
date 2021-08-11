@@ -56,10 +56,11 @@ exports[`<VenueIconCaptions /> should match snapshot 1`] = `
       </View>
     </View>
     <Text
+      color="#626262"
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#626262",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -121,10 +122,11 @@ exports[`<VenueIconCaptions /> should match snapshot 1`] = `
       </View>
     </View>
     <Text
+      color="#626262"
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#626262",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
