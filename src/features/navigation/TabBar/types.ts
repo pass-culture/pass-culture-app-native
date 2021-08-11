@@ -7,7 +7,7 @@ export type TabRouteName = keyof TabParamList
 
 export type TabParamList = {
   Home?: { entryId?: string }
-  Search: Partial<SearchState>
+  Search?: Partial<SearchState>
   Bookings: undefined
   Favorites: undefined
   Profile: undefined

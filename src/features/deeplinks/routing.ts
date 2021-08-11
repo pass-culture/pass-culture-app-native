@@ -1,5 +1,5 @@
 import { homeNavigateConfig } from 'features/navigation/helpers'
-import { screenParamsParser } from 'features/navigation/screenParamsParser'
+import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 
 import { DeepLinksToScreenConfiguration } from './types'
 

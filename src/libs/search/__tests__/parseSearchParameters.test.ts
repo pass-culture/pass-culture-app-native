@@ -508,7 +508,7 @@ describe('src | components | parseSearchParameters', () => {
       })
 
       // then
-      expect(result).toBeNull()
+      expect(result).toBeUndefined()
     })
 
     it('should return null when isGeolocated is false & around radius is provided', () => {
@@ -525,7 +525,7 @@ describe('src | components | parseSearchParameters', () => {
       })
 
       // then
-      expect(result).toBeNull()
+      expect(result).toBeUndefined()
     })
   })
 

@@ -1,6 +1,6 @@
 import { SearchParametersFields } from 'features/home/contentful'
 import { LocationType, CATEGORY_CRITERIA } from 'features/search/enums'
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 
 export const parseSearchParameters = ({
@@ -9,14 +9,14 @@ export const parseSearchParameters = ({
 }: {
   geolocation: GeoCoordinates | null
   parameters: SearchParametersFields
-}): SearchParameters | null => {
+}): Partial<SearchState> | undefined => {
   const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
 
   const notGeolocatedButRadiusIsProvided = !isGeolocated && aroundRadius
   const geolocatedButGeolocationIsInvalid = isGeolocated && !geolocation
 
   if (notGeolocatedButRadiusIsProvided || geolocatedButGeolocationIsInvalid) {
-    return null
+    return undefined
   }
 
   const beginningDatetime = parameters.beginningDatetime

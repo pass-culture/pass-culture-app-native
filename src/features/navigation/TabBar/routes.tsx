@@ -4,7 +4,7 @@ import { Bookings } from 'features/bookings/pages/Bookings'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
-import { screenParamsParser } from 'features/navigation/screenParamsParser'
+import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { TabRoute } from 'features/navigation/TabBar/types'
 import { Profile } from 'features/profile/pages/Profile'
 import { Search } from 'features/search/pages/Search'
@@ -25,7 +25,11 @@ export const routes: Array<TabRoute> = [
   {
     name: 'Search',
     component: Search,
-    path: 'search',
+    pathConfig: {
+      path: 'search',
+      parse: screenParamsParser['Search'],
+      stringify: screenParamsStringifier['Search'],
+    },
   },
   {
     name: 'Bookings',
