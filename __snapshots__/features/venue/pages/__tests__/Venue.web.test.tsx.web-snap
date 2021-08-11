@@ -161,7 +161,7 @@ Object {
                   class="css-text-901oao"
                   data-testid="caption-undefined"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                  style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
                 >
                   Autre
                 </div>
@@ -194,7 +194,7 @@ Object {
                   class="css-text-901oao"
                   data-testid="caption-iconLocation"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                  style="color: rgb(199, 199, 204); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
                 >
                   Géolocalisation désactivée
                 </div>
@@ -878,7 +878,7 @@ Object {
                 class="css-text-901oao"
                 data-testid="caption-undefined"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
                 Autre
               </div>
@@ -911,7 +911,7 @@ Object {
                 class="css-text-901oao"
                 data-testid="caption-iconLocation"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                style="color: rgb(199, 199, 204); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
                 Géolocalisation désactivée
               </div>

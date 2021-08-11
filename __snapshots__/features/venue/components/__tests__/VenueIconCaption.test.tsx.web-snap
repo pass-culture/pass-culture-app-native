@@ -76,7 +76,7 @@ exports[`<VenueIconCaptions /> should match snapshot 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(98,98,98,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -155,7 +155,7 @@ exports[`<VenueIconCaptions /> should match snapshot 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(98,98,98,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",

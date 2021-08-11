@@ -16,24 +16,21 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
   const { latitude: lat, longitude: lng } = locationCoordinates
   const distanceToLocation = useDistance({ lat, lng })
 
+  const getInformationsForLocation = () => {
+    return {
+      testID: 'iconLocation',
+      Icon: distanceToLocation ? PointerLocationNotFilled : PointerLocationNotFilledDisabled,
+      caption: distanceToLocation ? distanceToLocation : 'Géolocalisation désactivée',
+      isDisabled: distanceToLocation === undefined ? true : false,
+    }
+  }
+
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
       <VenueType type={type} label={label} />
       <Separator />
-      {distanceToLocation ? (
-        <IconWithCaption
-          testID="iconLocation"
-          Icon={PointerLocationNotFilled}
-          caption={distanceToLocation}
-        />
-      ) : (
-        <IconWithCaption
-          testID="iconLocation"
-          Icon={PointerLocationNotFilledDisabled}
-          caption="Géolocalisation désactivée"
-        />
-      )}
+      <IconWithCaption {...getInformationsForLocation()} />
       <Spacer.Row numberOfSpaces={6} />
     </Row>
   )

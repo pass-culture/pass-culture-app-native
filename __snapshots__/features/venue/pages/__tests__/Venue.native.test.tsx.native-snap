@@ -310,10 +310,11 @@ exports[`<Venue /> should match snapshot 1`] = `
             </View>
           </View>
           <Text
+            color="#626262"
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#626262",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,
@@ -364,7 +365,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           >
             <View
-              fill="#626262"
+              fill="#c7c7cc"
               height={40}
               testID="iconLocation"
               width={40}
@@ -375,10 +376,11 @@ exports[`<Venue /> should match snapshot 1`] = `
             </View>
           </View>
           <Text
+            color="#c7c7cc"
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#c7c7cc",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,
