@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { testID } from 'tests/utils'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
@@ -14,13 +15,13 @@ interface Props {
   isExternal?: boolean
 }
 
-export const CallToAction: React.FC<Props> = ({
+export const ButtonWithLinearGradient: React.FC<Props> = ({
   wording,
   onPress,
   isDisabled,
   isExternal = false,
 }) => (
-  <Container onPress={onPress} disabled={isDisabled}>
+  <Container onPress={onPress} disabled={isDisabled} {...testID(wording)}>
     {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
     <LegendContainer>
       {!!isExternal && <ExternalLinkSite color={ColorsEnum.WHITE} />}

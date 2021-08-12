@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CallToAction /> should render disabled 1`] = `
+exports[`< ButtonWithLinearGradient /> should render disabled 1`] = `
 <View
+  accessibilityLabel="Wording to display"
   accessible={true}
-  focusable={false}
+  focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
@@ -20,6 +21,7 @@ exports[`<CallToAction /> should render disabled 1`] = `
       "overflow": "hidden",
     }
   }
+  testID="Wording to display"
 >
   <View
     style={
@@ -67,8 +69,9 @@ exports[`<CallToAction /> should render disabled 1`] = `
 </View>
 `;
 
-exports[`<CallToAction /> should render not disabled 1`] = `
+exports[`< ButtonWithLinearGradient /> should render not disabled 1`] = `
 <View
+  accessibilityLabel="Wording to display"
   accessible={true}
   focusable={true}
   onClick={[Function]}
@@ -87,6 +90,7 @@ exports[`<CallToAction /> should render not disabled 1`] = `
       "overflow": "hidden",
     }
   }
+  testID="Wording to display"
 >
   <View
     height={48}

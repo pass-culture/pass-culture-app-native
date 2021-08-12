@@ -2,17 +2,14 @@ import React from 'react'
 
 import { render } from 'tests/utils'
 
-import { CallToAction } from '../CallToAction'
+import { ButtonWithLinearGradient } from './ButtonWithLinearGradient'
 
-describe('<CallToAction />', () => {
+const onPress = jest.fn()
+
+describe('< ButtonWithLinearGradient />', () => {
   it('should render not disabled', () => {
     const { toJSON, queryByText } = render(
-      <CallToAction
-        wording="Wording to display"
-        // eslint-disable-next-line no-console
-        onPress={() => console.log('test')}
-        isDisabled={false}
-      />
+      <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} isDisabled={false} />
     )
     expect(queryByText('Wording to display')).toBeTruthy()
     expect(toJSON()).toMatchSnapshot()
@@ -20,7 +17,7 @@ describe('<CallToAction />', () => {
 
   it('should render disabled', () => {
     const { toJSON, queryByText } = render(
-      <CallToAction wording="Wording to display" onPress={undefined} isDisabled={true} />
+      <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} isDisabled={true} />
     )
     expect(queryByText('Wording to display')).toBeTruthy()
     expect(toJSON()).toMatchSnapshot()

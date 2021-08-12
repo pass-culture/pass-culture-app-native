@@ -439,27 +439,38 @@ exports[`Search component should render correctly 1`] = `
           undefined-SVG-Mock
         </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={true}
-        numberOfLines={1}
+      <View
         style={
           Array [
             Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "paddingBottom": 20,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 20,
+              "alignItems": "center",
+              "flexDirection": "row",
               "position": "absolute",
             },
           ]
         }
       >
-        Rechercher
-      </Text>
+        <Text
+          adjustsFontSizeToFit={true}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "paddingBottom": 20,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 20,
+              },
+            ]
+          }
+        >
+          Rechercher
+        </Text>
+      </View>
     </View>
     <View
       customHeight={8}
