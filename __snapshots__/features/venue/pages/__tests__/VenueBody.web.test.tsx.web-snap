@@ -510,7 +510,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-focusable="true"
-            style="align-items: center; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
             tabindex="0"
           >
             <div
@@ -1100,7 +1100,7 @@ Object {
         <div
           class="css-view-1dbjc4n"
           data-focusable="true"
-          style="align-items: center; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+          style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
           tabindex="0"
         >
           <div
