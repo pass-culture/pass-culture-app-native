@@ -9,13 +9,15 @@ import { VenueOfferTile } from 'features/venue/atoms/VenueOfferTile'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
+import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
-
 interface Props {
   venueId: number
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
+
+const VENUE_OFFERS_CTA_WORDING = t`Voir toutes les offres`
 
 export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   const { data: venue } = useVenue(venueId)
@@ -42,15 +44,19 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
     [position]
   )
 
+  const onPress = () => {
+    // TODO : Search all offers ?
+  }
+
   if (!venue) return <React.Fragment></React.Fragment>
 
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <TitleContainer>
+      <MarginContainer>
         <Typo.Title4>{t`Offres`}</Typo.Title4>
-      </TitleContainer>
-      <Spacer.Column numberOfSpaces={4} />
+      </MarginContainer>
+      <Spacer.Column numberOfSpaces={6} />
       <FlatList
         testID="offersModuleList"
         ListHeaderComponent={HorizontalMargin}
@@ -63,11 +69,19 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
         ItemSeparatorComponent={ItemSeparatorComponent}
       />
       <Spacer.Column numberOfSpaces={6} />
+      <MarginContainer>
+        <ButtonWithLinearGradient
+          wording={VENUE_OFFERS_CTA_WORDING}
+          onPress={onPress}
+          isDisabled={false}
+        />
+      </MarginContainer>
+      <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
 }
 
-const TitleContainer = styled.View({
+const MarginContainer = styled.View({
   marginHorizontal: PixelRatio.roundToNearestPixel(MARGIN_DP),
 })
 const ItemSeparatorComponent = () => <Spacer.Row numberOfSpaces={4} />

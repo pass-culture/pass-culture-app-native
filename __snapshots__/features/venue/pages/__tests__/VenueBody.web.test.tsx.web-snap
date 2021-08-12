@@ -214,7 +214,7 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="height: 16px;"
+            style="height: 24px;"
           />
           <div
             class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
@@ -377,6 +377,46 @@ Object {
                   class="css-view-1dbjc4n"
                   style="width: 24px;"
                 />
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 24px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="margin-right: 24px; margin-left: 24px;"
+          >
+            <div
+              aria-label="Voir toutes les offres"
+              class="css-view-1dbjc4n"
+              data-focusable="true"
+              data-testid="Voir toutes les offres"
+              style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; justify-content: center; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-1dbjc4n"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row; position: absolute;"
+              >
+                <div
+                  class="css-text-901oao css-textOneLine-bfa6kz"
+                  dir="auto"
+                  style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
+                >
+                  Voir toutes les offres
+                </div>
               </div>
             </div>
           </div>
@@ -731,7 +771,7 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="height: 16px;"
+          style="height: 24px;"
         />
         <div
           class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
@@ -894,6 +934,46 @@ Object {
                 class="css-view-1dbjc4n"
                 style="width: 24px;"
               />
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 24px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="margin-right: 24px; margin-left: 24px;"
+        >
+          <div
+            aria-label="Voir toutes les offres"
+            class="css-view-1dbjc4n"
+            data-focusable="true"
+            data-testid="Voir toutes les offres"
+            style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; justify-content: center; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            tabindex="0"
+          >
+            <div
+              class="css-view-1dbjc4n"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-direction: row; position: absolute;"
+            >
+              <div
+                class="css-text-901oao css-textOneLine-bfa6kz"
+                dir="auto"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
+              >
+                Voir toutes les offres
+              </div>
             </div>
           </div>
         </div>

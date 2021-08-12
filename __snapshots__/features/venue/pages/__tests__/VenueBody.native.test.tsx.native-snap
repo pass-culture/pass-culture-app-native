@@ -436,11 +436,11 @@ exports[`<VenueBody /> should render correctly 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={4}
+      numberOfSpaces={6}
       style={
         Array [
           Object {
-            "height": 16,
+            "height": 24,
           },
         ]
       }
@@ -1011,6 +1011,89 @@ exports[`<VenueBody /> should render correctly 1`] = `
         </View>
       </View>
     </RCTScrollView>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "marginHorizontal": 24,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Voir toutes les offres"
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "justifyContent": "center",
+            "opacity": 1,
+            "overflow": "hidden",
+          }
+        }
+        testID="Voir toutes les offres"
+      >
+        <View
+          height={48}
+          width="100%"
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "position": "absolute",
+              },
+            ]
+          }
+        >
+          <Text
+            adjustsFontSizeToFit={true}
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 20,
+                },
+              ]
+            }
+          >
+            Voir toutes les offres
+          </Text>
+        </View>
+      </View>
+    </View>
     <View
       numberOfSpaces={6}
       style={

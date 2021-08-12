@@ -12,7 +12,6 @@ import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTic
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { CallToAction } from 'features/offer/components'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
@@ -28,6 +27,7 @@ import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { Hero } from 'ui/components/hero/Hero'
@@ -251,9 +251,27 @@ export const AppComponents: FunctionComponent = () => {
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Close} disabled />
-        <CallToAction wording="CallToAction" onPress={onButtonPress} isDisabled={false} />
+        {/* Buttons: With linear gradient */}
+        <Typo.Title4>Button - With linear gradient</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <CallToAction wording="Disabled CallToAction" onPress={undefined} isDisabled={false} />
+        <ButtonWithLinearGradient
+          wording="CallToAction"
+          onPress={onButtonPress}
+          isDisabled={false}
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonWithLinearGradient
+          wording="CallToAction external"
+          onPress={onButtonPress}
+          isDisabled={false}
+          isExternal
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonWithLinearGradient
+          wording="Disabled CallToAction"
+          onPress={onButtonPress}
+          isDisabled={true}
+        />
       </AccordionItem>
 
       <Divider />

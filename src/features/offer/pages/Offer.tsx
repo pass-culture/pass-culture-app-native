@@ -5,12 +5,13 @@ import styled from 'styled-components/native'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { getSpacing, Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { useOffer } from '../api/useOffer'
-import { CallToAction, OfferHeader } from '../components'
+import { OfferHeader } from '../components'
 import { useCtaWordingAndAction } from '../services/useCtaWordingAndAction'
 import { useFunctionOnce } from '../services/useFunctionOnce'
 
@@ -44,7 +45,7 @@ export const Offer: FunctionComponent = () => {
       <OfferBody offerId={params.id} onScroll={onScroll} />
       {wording ? (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
-          <CallToAction
+          <ButtonWithLinearGradient
             wording={wording}
             onPress={() => {
               onPressCTA && onPressCTA()
