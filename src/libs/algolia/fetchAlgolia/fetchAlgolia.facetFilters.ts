@@ -34,6 +34,7 @@ export const buildFacetFilters = ({
 const buildOfferCategoriesPredicate = (
   offerCategories: SearchParametersQuery['offerCategories']
 ): string[] => {
+  console.log(offerCategories)
   return offerCategories.map((category: string) => `${FACETS_ENUM.OFFER_CATEGORY}:${category}`)
 }
 

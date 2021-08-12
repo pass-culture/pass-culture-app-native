@@ -64,15 +64,15 @@ export const screenParamsParser: ParamsParsers = {
     geolocation: JSON.parse,
     hitsPerPage: Number,
     locationType: identityFn,
-    offerCategories: identityFn,
-    offerIsDuo: identityFn,
-    offerIsFree: identityFn,
-    offerIsNew: identityFn,
+    offerCategories: JSON.parse,
+    offerIsDuo: Boolean,
+    offerIsFree: Boolean,
+    offerIsNew: Boolean,
     offerTypes: JSON.parse,
     place: JSON.parse,
     priceRange: identityFn,
     query: identityFn,
-    showResults: identityFn,
+    showResults: Boolean,
     tags: identityFn,
     timeRange: identityFn,
     venueId: Number,
@@ -98,9 +98,9 @@ function parseObject(value?: string) {
 type ScreensRequiringStringifying = Extract<ScreenNames, 'Search'>
 type ParamsStringifiers = {
   [Screen in ScreensRequiringStringifying]: {
-    [Param in keyof Required<RouteParams<ParamsList, Screen>>]: (
-      value: RouteParams<ParamsList, Screen>[Param]
-    ) => string
+    [Param in keyof Required<RouteParams<ParamsList, Screen>>]:
+      | ((value: RouteParams<ParamsList, Screen>[Param]) => string)
+      | undefined
   }
 }
 
@@ -113,16 +113,17 @@ export const screenParamsStringifier: ParamsStringifiers = {
     geolocation: JSON.stringify,
     hitsPerPage: identityFn,
     locationType: identityFn,
-    offerCategories: identityFn,
-    offerIsDuo: identityFn,
-    offerIsFree: identityFn,
-    offerIsNew: identityFn,
+    // @ts-ignore this is a test
+    offerCategories: undefined,
+    offerIsDuo: String,
+    offerIsFree: String,
+    offerIsNew: String,
     offerTypes: JSON.stringify,
     place: JSON.stringify,
     priceRange: identityFn,
     query: identityFn,
-    showResults: identityFn,
-    tags: identityFn,
+    showResults: String,
+    tags: undefined,
     timeRange: identityFn,
     venueId: identityFn,
   },
