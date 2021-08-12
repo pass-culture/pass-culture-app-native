@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import {
+  Platform,
   TouchableWithoutFeedback,
   Animated,
   Easing,
@@ -96,6 +97,7 @@ const styles = StyleSheet.create({
     paddingBottom: getSpacing(4),
     paddingHorizontal: getSpacing(6),
     paddingTop: getSpacing(6),
+    ...(Platform.OS === 'web' ? { cursor: 'pointer' } : {}),
   },
   bodyContainer: {
     position: 'absolute',
