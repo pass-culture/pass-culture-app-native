@@ -1,8 +1,11 @@
-import React, { memo, useContext, useEffect, useReducer } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
+import { useSetParamsWithStringifier } from 'libs/navigation/useSetParamsWithStringifier'
 
 export interface ISearchContext {
   searchState: SearchState
@@ -48,7 +51,18 @@ export const useStagedSearch = (): Pick<ISearchContext, 'searchState' | 'dispatc
 }
 
 export const useCommit = (): { commit: () => void } => {
+  const { navigate } = useNavigation<UseNavigationType>()
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { stagedSearchState, dispatch } = useContext(SearchContext)!
-  return { commit: () => dispatch({ type: 'SET_STATE', payload: stagedSearchState }) }
+  return useMemo(
+    () => ({
+      commit: () => {
+        console.log('commit', stagedSearchState)
+        // setParams(stagedSearchState)
+        navigate('Search', stagedSearchState)
+        // dispatch({ type: 'SET_STATE', payload: stagedSearchState })
+      },
+    }),
+    [stagedSearchState]
+  )
 }
