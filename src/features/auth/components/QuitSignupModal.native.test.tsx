@@ -52,13 +52,13 @@ describe('QuitSignupModal', () => {
       'formal',
       true,
       "Voulez-vous abandonner l'inscription ?",
-      'Les informations que vous avez renseignées ne seront pas enregistrées',
+      'Les informations que vous avez renseignées ne seront pas enregistrées.',
     ],
     [
       'informal',
       false,
       "Veux-tu abandonner l'inscription ?",
-      'Les informations que tu as renseignées ne seront pas enregistrées',
+      'Les informations que tu as renseignées ne seront pas enregistrées.',
     ],
   ])(
     'should display %s title and description if isRedactor is %s',
