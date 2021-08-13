@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -16,6 +15,7 @@ export function LoggedOutHeader() {
   const { navigate } = useNavigation<UseNavigationType>()
   return (
     <Container>
+      <Spacer.TopScreen />
       <HeaderBackgroundWrapper>
         <HeaderBackground width={ScreenWidth} />
       </HeaderBackgroundWrapper>
@@ -63,7 +63,6 @@ const HeaderContent = styled.View({
   alignItems: 'center',
   paddingHorizontal: getSpacing(5),
   width: '100%',
-  marginTop: getStatusBarHeight(true),
 })
 
 const LoginCta = styled.View({

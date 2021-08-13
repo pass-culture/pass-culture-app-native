@@ -1,17 +1,19 @@
 import React from 'react'
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, getSpacing, Typo, ScreenWidth } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface SvgPageHeaderProps {
   title: string
 }
 
 export default function SvgPageHeader({ title }: SvgPageHeaderProps) {
+  const { top } = useCustomSafeInsets()
+
   return (
-    <HeaderBackgroundWrapper>
+    <HeaderBackgroundWrapper style={{ maxHeight: getSpacing(14) + top }}>
       <HeaderBackground width={ScreenWidth} />
       <Title>{title}</Title>
     </HeaderBackgroundWrapper>
@@ -19,7 +21,6 @@ export default function SvgPageHeader({ title }: SvgPageHeaderProps) {
 }
 
 const HeaderBackgroundWrapper = styled.View({
-  maxHeight: getSpacing(14) + getStatusBarHeight(true),
   overflow: 'hidden',
   position: 'relative',
   alignItems: 'center',

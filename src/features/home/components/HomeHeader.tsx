@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
@@ -13,13 +12,13 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
-
-const statusBarHeight = getStatusBarHeight(true)
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const HomeHeader: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
   const { data: userInfos } = useUserProfileInfo()
   const availableCredit = useAvailableCredit()
+  const { top } = useCustomSafeInsets()
 
   const welcomeTitle = userInfos?.firstName
     ? t({
@@ -46,7 +45,9 @@ export const HomeHeader: FunctionComponent = function () {
         <HeaderBackground />
       </HeaderBackgroundWrapper>
       {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
-        <CheatCodeButtonContainer onPress={() => navigation.navigate('CheatMenu')}>
+        <CheatCodeButtonContainer
+          onPress={() => navigation.navigate('CheatMenu')}
+          style={{ top: getSpacing(3) + top }}>
           <Text>{t`CheatMenu`}</Text>
         </CheatCodeButtonContainer>
       )}
@@ -86,7 +87,6 @@ const CheatCodeButtonContainer = styled.TouchableOpacity.attrs({
 })({
   position: 'absolute',
   right: getSpacing(2),
-  top: getSpacing(3) + statusBarHeight,
   zIndex: 1,
   border: 1,
   padding: getSpacing(1),
