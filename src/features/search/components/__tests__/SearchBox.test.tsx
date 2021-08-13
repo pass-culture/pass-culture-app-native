@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
@@ -24,7 +25,8 @@ describe('SearchBox component', () => {
     const { getByPlaceholderText } = render(<SearchBox />)
     const searchInput = getByPlaceholderText('Titre, artiste, lieu...')
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
-    expect(analytics.logSearchQuery).toHaveBeenCalledWith('jazzaza')
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SHOW_RESULTS', payload: true })
+    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
+    expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
+    expect(navigate).toBeCalledWith('Search', { query: 'jazzaza', showResults: true })
   })
 })
