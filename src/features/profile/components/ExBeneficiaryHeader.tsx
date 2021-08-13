@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
@@ -25,7 +26,7 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
       <HeaderBackgroundWrapper>
         <HeaderBackground width={ScreenWidth} />
       </HeaderBackgroundWrapper>
-      <Spacer.Column numberOfSpaces={12} />
+      <Spacer.Column numberOfSpaces={6} />
       <TitleContainer>
         <Typo.Title4 color={ColorsEnum.WHITE}>{name}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4.5} />
@@ -75,6 +76,7 @@ const HeaderBackgroundWrapper = styled.View({
 
 const TitleContainer = styled.View({
   alignItems: 'center',
+  marginTop: getStatusBarHeight(true),
 })
 
 const DescriptionContainer = styled(GreyContainer)({})
