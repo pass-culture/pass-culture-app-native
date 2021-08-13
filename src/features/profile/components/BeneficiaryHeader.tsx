@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { PropsWithChildren } from 'react'
+import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
@@ -26,7 +27,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
       <HeaderBackgroundWrapper>
         <HeaderBackground width={ScreenWidth} />
       </HeaderBackgroundWrapper>
-      <Spacer.Column numberOfSpaces={12} />
+      <Spacer.Column numberOfSpaces={6} />
       <UserNameAndCredit>
         <Typo.Title4 color={ColorsEnum.WHITE}>{name}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4.5} />
@@ -55,6 +56,7 @@ const HeaderBackgroundWrapper = styled.View({
 })
 
 const UserNameAndCredit = styled.View({
+  marginTop: getStatusBarHeight(true),
   alignItems: 'center',
 })
 
