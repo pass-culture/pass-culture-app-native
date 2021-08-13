@@ -26,7 +26,7 @@ export const routes: Array<TabRoute> = [
     name: 'Search',
     component: Search,
     pathConfig: {
-      path: 'rechercher',
+      path: 'recherche',
       parse: screenParamsParser['Search'],
       stringify: screenParamsStringifier['Search'],
     },
