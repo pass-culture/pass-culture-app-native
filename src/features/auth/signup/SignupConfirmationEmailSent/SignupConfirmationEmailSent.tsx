@@ -44,7 +44,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
   return (
     <BottomContentPage>
       <ModalHeader
-        title={t`Confirme ton e\u2011mail`}
+        title={t`Confirme ton e-mail`}
         leftIcon={shouldBeAbleToGoBack ? ArrowPrevious : undefined}
         onLeftIconPress={shouldBeAbleToGoBack ? goBack : undefined}
         rightIcon={Close}
@@ -53,7 +53,9 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
       <EmailSentModalContent>
         <Description>
           <Typo.Body>{t`Clique sur le lien reçu à l'adresse :`}</Typo.Body>
-          <Typo.Body>{route.params.email}</Typo.Body>
+          <CenteredText>
+            <Typo.Body>{route.params.email}</Typo.Body>
+          </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
             <Typo.Body>
