@@ -49,8 +49,8 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
     : t`Veux-tu abandonner l'inscription ?`
 
   const description = isRedactor
-    ? t`Les informations que vous avez renseignées ne seront pas enregistrées`
-    : t`Les informations que tu as renseignées ne seront pas enregistrées`
+    ? t`Les informations que vous avez renseignées ne seront pas enregistrées.`
+    : t`Les informations que tu as renseignées ne seront pas enregistrées.`
 
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
