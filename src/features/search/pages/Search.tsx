@@ -48,7 +48,6 @@ export const Search: React.FC = () => {
     }
   }, [params])
 
-  console.log('search', params)
   return (
     <Container>
       <SearchHeader />
