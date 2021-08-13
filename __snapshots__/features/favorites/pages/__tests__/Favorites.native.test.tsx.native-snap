@@ -25,7 +25,7 @@ exports[`Favorites component should render correctly 1`] = `
     }
   >
     <View
-      height={280}
+      height={294}
       width={751}
     >
       <Text>

@@ -28,7 +28,7 @@ exports[`Search component should render correctly 1`] = `
     }
   >
     <View
-      height={280}
+      height={294}
       width={754}
     >
       <Text>

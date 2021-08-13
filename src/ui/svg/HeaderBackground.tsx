@@ -20,7 +20,7 @@ const NotMemoizedHeaderBackground: React.FC<Props> = (props): JSX.Element => {
     <Svg
       preserveAspectRatio="none"
       width={props.width}
-      height={getSpacing(70)}
+      height={getSpacing(73.5)}
       viewBox={`0 0 375 352`}>
       <Defs>
         <LinearGradient
