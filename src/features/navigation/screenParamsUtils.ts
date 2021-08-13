@@ -58,9 +58,9 @@ export const screenParamsParser: ParamsParsers = {
   },
   Search: {
     aroundRadius: JSON.parse,
-    beginningDatetime: JSON.parse,
-    date: JSON.parse,
-    endingDatetime: JSON.parse,
+    beginningDatetime: parseDataWithISODates,
+    date: parseDataWithISODates,
+    endingDatetime: parseDataWithISODates,
     geolocation: JSON.parse,
     hitsPerPage: JSON.parse,
     locationType: JSON.parse,
@@ -93,6 +93,18 @@ function parseObject(value?: string) {
   } catch {
     return undefined
   }
+}
+
+const DATE_ISO8601_FORMAT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{2,6}Z$/
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function parseDataWithISODates(data: any) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function reviver(key: string, value: any) {
+    return typeof value === 'string' && DATE_ISO8601_FORMAT.test(value) ? new Date(value) : value
+  }
+
+  return JSON.parse(typeof data === 'string' ? data : JSON.stringify(data), reviver)
 }
 
 type ScreensRequiringStringifying = Extract<ScreenNames, 'Search'>

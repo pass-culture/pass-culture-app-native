@@ -19,7 +19,7 @@ export const Link = function Link({ to, action, target, onPress, children, param
 
   return (
     <DefaultLink
-      to={`${to && to[0] !== '/' ? `/${to}` : to}${params ? `?${searchParams.toString()}` : ''}`}
+      to={`${to.startsWith('/') ? to : `/${to}`}${params ? `?${searchParams.toString()}` : ''}`}
       action={action}
       target={target}
       onPress={onPress}>
