@@ -17,9 +17,11 @@ exports[`Favorites component should render correctly 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "maxHeight": 76,
           "overflow": "hidden",
           "position": "relative",
+        },
+        Object {
+          "maxHeight": 72,
         },
       ]
     }
