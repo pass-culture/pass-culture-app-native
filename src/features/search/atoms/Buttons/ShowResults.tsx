@@ -1,8 +1,6 @@
 import { t, plural } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useCommit } from 'features/search/pages/SearchWrapper'
 import { useStagedSearchResults } from 'features/search/pages/useSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -17,7 +15,6 @@ const formatNbHits = (nbHits: number) => {
 }
 
 export const ShowResults: React.FC = () => {
-  const { goBack } = useNavigation<UseNavigationType>()
   const { commit } = useCommit()
   const { data, isFetching } = useStagedSearchResults()
   const [nbHits, setNbHits] = useState<number>(data && data.pages ? data.pages[0].nbHits : 0)
@@ -30,7 +27,6 @@ export const ShowResults: React.FC = () => {
 
   const onPress = () => {
     commit()
-    goBack()
   }
 
   return (

@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import {
   NativeSyntheticEvent,
@@ -7,6 +8,7 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -34,6 +36,7 @@ const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (prop
   ) : null
 
 export const SearchBox: React.FC = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
   const [query, setQuery] = useState<string>('')
 
@@ -42,8 +45,10 @@ export const SearchBox: React.FC = () => {
   }, [searchState.query])
 
   const resetSearch = () => {
+    navigate('Search', {
+      query: '',
+    })
     setQuery('')
-    dispatch({ type: 'SET_QUERY', payload: '' })
   }
 
   const onPressArrowBack = () => {
@@ -54,6 +59,10 @@ export const SearchBox: React.FC = () => {
   }
 
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+    navigate('Search', {
+      query,
+      showResults: true,
+    })
     dispatch({ type: 'SET_QUERY', payload: query })
     dispatch({ type: 'SHOW_RESULTS', payload: true })
     analytics.logSearchQuery(event.nativeEvent.text)
