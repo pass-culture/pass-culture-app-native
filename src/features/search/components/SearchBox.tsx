@@ -60,10 +60,10 @@ export const SearchBox: React.FC = () => {
 
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
     navigate('Search', {
-      query,
+      query: event.nativeEvent.text,
       showResults: true,
     })
-    dispatch({ type: 'SET_QUERY', payload: query })
+    dispatch({ type: 'SET_QUERY', payload: event.nativeEvent.text })
     dispatch({ type: 'SHOW_RESULTS', payload: true })
     analytics.logSearchQuery(event.nativeEvent.text)
   }
