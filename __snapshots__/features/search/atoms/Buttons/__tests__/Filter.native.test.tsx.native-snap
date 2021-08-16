@@ -95,6 +95,57 @@ exports[`Filter component should render correctly 1`] = `
         ]
       }
     />
+    <View
+      numberOfSpaces={1}
+      style={
+        Array [
+          Object {
+            "width": 4,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "aspectRatio": 1,
+            "backgroundColor": "#ffffff",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": 24,
+          },
+        ]
+      }
+    >
+      <Text
+        color="#eb0055"
+        style={
+          Array [
+            Object {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        1
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={1}
+      style={
+        Array [
+          Object {
+            "width": 4,
+          },
+        ]
+      }
+    />
   </BVLinearGradient>
 </View>
 `;
