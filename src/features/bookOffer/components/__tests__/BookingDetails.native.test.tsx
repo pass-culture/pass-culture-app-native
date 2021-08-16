@@ -7,6 +7,7 @@ import { OfferStockResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
+import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
 import { analytics } from 'libs/analytics'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { env } from 'libs/environment'
@@ -70,6 +71,27 @@ describe('<BookingDetails />', () => {
     await renderBookingDetails(mockDigitalStocks)
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148401 })
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
+  })
+
+  it('should initialize the state when offer isDigital only with first bookable stocks', async () => {
+    mockBookingState = {
+      bookingState: mockInitialBookingState as BookingState,
+      dismissModal: mockDismissModal,
+      dispatch: mockDispatch,
+    }
+    mockBookingStock = undefined
+
+    await renderBookingDetails([{ ...notExpiredStock, isBookable: false, id: 123456 }])
+    expect(mockDispatch).not.toHaveBeenCalled()
+
+    await renderBookingDetails([
+      { ...notExpiredStock, isBookable: false, id: 123456 },
+      { ...notExpiredStock, isBookable: true, id: 1234567 },
+      { ...notExpiredStock, isBookable: true, id: 12345678 },
+    ])
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1234567 })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
+    expect(mockDispatch).not.toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 12345678 })
   })
 
   it('should render correctly when user has selected options and offer is an event', async () => {
