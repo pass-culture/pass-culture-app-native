@@ -41,6 +41,26 @@ Object {
             class="css-view-1dbjc4n"
             style="width: 8px;"
           />
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 4px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; flex-direction: row; justify-content: center; width: 24px;"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+            >
+              1
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 4px;"
+          />
         </div>
       </div>
     </div>
@@ -81,6 +101,26 @@ Object {
         <div
           class="css-view-1dbjc4n"
           style="width: 8px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="width: 4px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; flex-direction: row; justify-content: center; width: 24px;"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+          >
+            1
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="width: 4px;"
         />
       </div>
     </div>
