@@ -37,7 +37,6 @@ export const Filter: React.FC = () => {
           <React.Fragment>
             <Spacer.Row numberOfSpaces={1} />
             <WhiteBackgroundContainer>
-              <Spacer.Row numberOfSpaces={0.5} />
               <Typo.ButtonText color={ColorsEnum.PRIMARY}>{filterCount}</Typo.ButtonText>
             </WhiteBackgroundContainer>
             <Spacer.Row numberOfSpaces={1} />
