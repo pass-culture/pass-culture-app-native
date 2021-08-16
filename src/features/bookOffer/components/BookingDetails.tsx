@@ -35,7 +35,7 @@ const errorCodeToMessage: Record<string, string> = {
 export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { bookingState, dismissModal, dispatch } = useBooking()
-  const stock = useBookingStock()
+  const selectedStock = useBookingStock()
   const offer = useBookingOffer()
   const { showErrorSnackBar } = useSnackBarContext()
   const { quantity, offerId } = bookingState
@@ -45,11 +45,11 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       dismissModal()
       if (offerId) {
         analytics.logBookingConfirmation(offerId, bookingId)
-        if (!!stock && !!offer)
+        if (!!selectedStock && !!offer)
           campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
             af_offer_id: offer.id,
-            af_booking_id: stock.id,
-            af_price: stock.price,
+            af_booking_id: selectedStock.id,
+            af_price: selectedStock.price,
             af_category: offer.category.label,
           })
         navigate('BookingConfirmation', { offerId, bookingId })
@@ -73,19 +73,21 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   })
 
   useEffect(() => {
-    const { id } = stocks[0] || {}
-
-    if (!stock && typeof id === 'number') {
-      dispatch({ type: 'SELECT_STOCK', payload: id })
+    // For offers of type Thing, we don't manually select a date (thus a stock).
+    // So we select it programatically given the bookable stocks.
+    const firstBookableStock = stocks.find(({ isBookable }) => isBookable)
+    if (!selectedStock && firstBookableStock) {
+      dispatch({ type: 'SELECT_STOCK', payload: firstBookableStock.id })
       dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
     }
   }, [])
 
-  if (!stock || typeof quantity !== 'number') return <React.Fragment />
+  if (!selectedStock || typeof quantity !== 'number') return <React.Fragment />
 
-  const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : undefined
+  const price =
+    selectedStock.price > 0 ? formatToFrenchDecimal(quantity * selectedStock.price) : undefined
 
-  const onPressBookOffer = () => mutate({ quantity, stockId: stock.id })
+  const onPressBookOffer = () => mutate({ quantity, stockId: selectedStock.id })
 
   const deductedAmount = t({
     id: 'montant déduit',
