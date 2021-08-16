@@ -108,13 +108,15 @@ const ImageBackground = styled.ImageBackground({
 const Container = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
-  padding: getSpacing(2),
+  paddingVertical: getSpacing(2),
+  paddingHorizontal: getSpacing(1.5),
 })
 
 const TextContainer = styled.View({
   flex: 1,
   flexDirection: 'column',
-  padding: getSpacing(1),
+  paddingVertical: getSpacing(1),
+  paddingHorizontal: getSpacing(0.5),
 })
 
 const IconContainer = styled.View({

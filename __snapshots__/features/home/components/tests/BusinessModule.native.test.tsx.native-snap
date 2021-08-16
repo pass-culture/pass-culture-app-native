@@ -92,10 +92,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
               Object {
                 "alignItems": "center",
                 "flexDirection": "row",
-                "paddingBottom": 8,
-                "paddingLeft": 8,
-                "paddingRight": 8,
-                "paddingTop": 8,
+                "paddingHorizontal": 6,
+                "paddingVertical": 8,
               },
             ]
           }
@@ -126,10 +124,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
                   "flexDirection": "column",
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "paddingBottom": 4,
-                  "paddingLeft": 4,
-                  "paddingRight": 4,
-                  "paddingTop": 4,
+                  "paddingHorizontal": 2,
+                  "paddingVertical": 4,
                 },
               ]
             }
@@ -297,10 +293,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
               Object {
                 "alignItems": "center",
                 "flexDirection": "row",
-                "paddingBottom": 8,
-                "paddingLeft": 8,
-                "paddingRight": 8,
-                "paddingTop": 8,
+                "paddingHorizontal": 6,
+                "paddingVertical": 8,
               },
             ]
           }
@@ -342,10 +336,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
                   "flexDirection": "column",
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "paddingBottom": 4,
-                  "paddingLeft": 4,
-                  "paddingRight": 4,
-                  "paddingTop": 4,
+                  "paddingHorizontal": 2,
+                  "paddingVertical": 4,
                 },
               ]
             }
