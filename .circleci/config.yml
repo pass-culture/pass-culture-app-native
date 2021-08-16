@@ -131,13 +131,16 @@ commands:
     steps:
       - install_node_modules
       - run: |
-          yarn build:testing
+          yarn build:${CIRCLE_BRANCH}
   push-to-bucket:
     description: Push the built decliweb to a cloudstorage bucket
+    parameters:
+      bucket_name:
+        type: string
     steps:
       - run: |
           set +eo pipefail
-          gsutil rsync -r ./build gs://passculture-metier-ehp-testing-decliweb
+          gsutil rsync -r ./build gs://<< parameters.bucket_name >>
           true
 
 jobs:
@@ -468,7 +471,24 @@ jobs:
       - authenticate_gcp:
           gcp_key_name: GCP_METIER_KEY
       - build
-      - push-to-bucket
+      - push-to-bucket:
+          bucket_name: "passculture-metier-ehp-testing-decliweb"
+
+  deploy-web-staging:
+    docker:
+      - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
+        auth:
+            username: _json_key  # default username when using a JSON key file to authenticate
+            password: $GCP_INFRA_KEY
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+      - authenticate_gcp:
+          gcp_key_name: GCP_METIER_KEY
+      - build
+      - push-to-bucket:
+          bucket_name: "passculture-metier-ehp-staging-decliweb"
 
 workflows:
   version: 2.1
@@ -604,6 +624,15 @@ workflows:
               only: master
           requires:
             - run-tests
+          context:
+            - GCP
+            - GCP_EHP
+      - deploy-web-staging:
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: staging
           context:
             - GCP
             - GCP_EHP
