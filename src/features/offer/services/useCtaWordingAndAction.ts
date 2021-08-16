@@ -49,8 +49,8 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  // Non beneficiary
-  if (!isLoggedIn || !isBeneficiary) {
+  // Non beneficiary or educational offer
+  if (!isLoggedIn || !isBeneficiary || offer.isEducational) {
     const isEvent = category.categoryType === CategoryType.Event
     if (!externalTicketOfficeUrl) return { wording: undefined }
 

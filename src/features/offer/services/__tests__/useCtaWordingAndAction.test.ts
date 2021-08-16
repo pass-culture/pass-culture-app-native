@@ -40,6 +40,40 @@ describe('getCtaWordingAndAction', () => {
       }
     )
   })
+
+  // same as non beneficiary use cases, beneficiary users should not be able to book educational offers
+  describe('educational offer', () => {
+    it.each`
+      type                  | url                     | bookedOffers                 | expected                      | disabled | isExternal
+      ${CategoryType.Event} | ${undefined}            | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${CategoryType.Event} | ${'http://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${true}
+      ${CategoryType.Thing} | ${undefined}            | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${CategoryType.Thing} | ${'http://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${true}
+      ${CategoryType.Thing} | ${undefined}            | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${true}
+    `(
+      'CTA(disabled=$disabled) = "$expected" for categoryType=$type and url=$url',
+      ({ disabled, expected, type, url, bookedOffers, isExternal }) => {
+        const offer = buildOffer({
+          externalTicketOfficeUrl: url,
+          category: { ...baseOffer.category, categoryType: type },
+          isEducational: true,
+        })
+
+        const result = getCtaWordingAndAction({
+          isLoggedIn: true,
+          isBeneficiary: true,
+          offer,
+          hasEnoughCredit: true,
+          bookedOffers,
+        })
+        const { wording, onPress } = result || {}
+        expect(wording).toEqual(expected)
+        expect(onPress === undefined).toBe(disabled)
+        expect(result?.isExternal).toEqual(isExternal)
+      }
+    )
+  })
+
   describe('Beneficiary', () => {
     const getCta = (
       partialOffer: Partial<OfferAdaptedResponse>,
