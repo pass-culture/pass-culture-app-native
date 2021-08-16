@@ -2162,7 +2162,7 @@ Array [
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
-                      "marginLeft": 0,
+                      "marginLeft": 2,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2309,7 +2309,7 @@ Array [
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
-                      "marginLeft": 0,
+                      "marginLeft": 2,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2455,7 +2455,7 @@ Array [
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
-                      "marginLeft": 0,
+                      "marginLeft": 2,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2601,7 +2601,7 @@ Array [
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
-                      "marginLeft": 0,
+                      "marginLeft": 2,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2772,7 +2772,7 @@ Array [
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
-                      "marginLeft": 0,
+                      "marginLeft": 2,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,

@@ -13,13 +13,17 @@ interface Props {
   toggle: () => void
 }
 
+const TOGGLE_WIDTH = getSpacing(7)
+const TOGGLE_PATH_START = 2
+const TOGGLE_PATH_END = TOGGLE_WIDTH - TOGGLE_PATH_START
+
 const FilterSwitch: React.FC<Props> = (props: Props) => {
   const { toggle, active = false, disabled = false } = props
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
 
   const marginLeft = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, 28],
+    outputRange: [TOGGLE_PATH_START, TOGGLE_PATH_END],
   })
 
   useEffect(() => {
@@ -67,7 +71,7 @@ const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'c
 
 const StyledToggle = styled(Animated.View)({
   aspectRatio: '1',
-  width: getSpacing(7),
+  width: TOGGLE_WIDTH,
   height: getSpacing(7),
   backgroundColor: ColorsEnum.WHITE,
   borderRadius: getSpacing(7),
