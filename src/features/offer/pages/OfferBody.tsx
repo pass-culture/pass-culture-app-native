@@ -70,7 +70,7 @@ export const OfferBody: FunctionComponent<{
   const { data } = useQuery<UserReportedOffersResponse>(
     QueryKeys.REPORTED_OFFERS,
     () => api.getnativev1offersreports(),
-    { enabled: isLoggedIn }
+    { enabled: isLoggedIn, retry: true }
   )
 
   const reportedOffers = data?.reportedOffers
