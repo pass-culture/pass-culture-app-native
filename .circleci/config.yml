@@ -634,7 +634,6 @@ workflows:
             branches:
               only:
                 - staging
-                - PC-9851/mettre-en-place-ci-staging
           context:
             - GCP
             - GCP_EHP
