@@ -11,5 +11,6 @@ export const useReasonsForReporting = () => {
   return useQuery(QueryKeys.REPORT_OFFER_REASONS, () => api.getnativev1offerreportreasons(), {
     enabled: isLoggedIn,
     staleTime: STALE_TIME_REPORT_OFFER_REASONS,
+    retry: true,
   })
 }
