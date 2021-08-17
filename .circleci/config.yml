@@ -134,9 +134,6 @@ commands:
           yarn build:testing
   push-to-bucket:
     description: Push the built decliweb to a cloudstorage bucket
-    parameters:
-      bucket_name:
-        type: string
     steps:
       - run: |
           set +eo pipefail
