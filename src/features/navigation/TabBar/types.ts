@@ -1,13 +1,13 @@
 import { PathConfig } from '@react-navigation/native'
 import { ComponentType } from 'react'
 
-import { SearchState } from 'features/search/types'
+import { RecursivePartial, SearchState } from 'features/search/types'
 
 export type TabRouteName = keyof TabParamList
 
 export type TabParamList = {
   Home?: { entryId?: string }
-  Search?: Partial<SearchState>
+  Search?: RecursivePartial<SearchState>
   Bookings: undefined
   Favorites: undefined
   Profile: undefined

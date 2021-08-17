@@ -1,4 +1,5 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { clampPrice } from 'features/search/pages/reducer.helpers'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/search/datetime/time'
@@ -45,8 +46,8 @@ const buildOfferPriceRangePredicate = ({
   priceRange,
 }: Pick<SearchParametersQuery, 'offerIsFree' | 'priceRange'>): FiltersArray[0] | undefined => {
   if (offerIsFree) return [`${FACETS_ENUM.OFFER_PRICE} = 0`]
-  if (priceRange) return [`${FACETS_ENUM.OFFER_PRICE}: ${priceRange.join(' TO ')}`]
-  return undefined
+  if (priceRange) return [`${FACETS_ENUM.OFFER_PRICE}: ${clampPrice(priceRange).join(' TO ')}`]
+  return [`${FACETS_ENUM.OFFER_PRICE}: 0 TO 300`]
 }
 
 const buildDatePredicate = ({

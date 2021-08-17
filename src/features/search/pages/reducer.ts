@@ -1,9 +1,10 @@
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { SearchState } from 'features/search/types'
+import { searchRouteParamsToSearchState } from 'features/search/pages/SearchWrapper'
+import { RecursivePartial, SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 
-import { clampPrice, addOrRemove } from './reducer.helpers'
+import { addOrRemove } from './reducer.helpers'
 
 export const initialSearchState: SearchState = {
   aroundRadius: null,
@@ -34,7 +35,7 @@ export const initialSearchState: SearchState = {
 export type Action =
   | { type: 'INIT' }
   | { type: 'SET_STATE'; payload: Partial<SearchState> }
-  | { type: 'INIT_FROM_SEE_MORE'; payload: Partial<SearchState> }
+  | { type: 'INIT_FROM_SEE_MORE'; payload: RecursivePartial<SearchState> }
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
   | { type: 'RADIUS'; payload: number }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
@@ -63,11 +64,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'SHOW_RESULTS':
       return { ...state, showResults: action.payload }
     case 'INIT_FROM_SEE_MORE':
-      return {
-        ...state,
-        ...action.payload,
-        priceRange: clampPrice(action.payload.priceRange),
-      }
+      return searchRouteParamsToSearchState(action.payload)
     case 'PRICE_RANGE':
       return { ...state, priceRange: action.payload }
     case 'RADIUS':
