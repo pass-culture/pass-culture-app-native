@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 export const useStartBatchNotification = (): void => {
   useEffect(() => {
-    Batch.start()
+    Batch.optIn()
     BatchPush.registerForRemoteNotifications() //  No effect on Android
   }, [])
 }

@@ -6,7 +6,7 @@ import { useStartBatchNotification } from './useStartBatchNotification'
 describe('startBatchNotification', () => {
   it('should call Batch.start', () => {
     renderHook(useStartBatchNotification)
-    expect(Batch.start).toHaveBeenCalledTimes(1)
+    expect(Batch.optIn).toHaveBeenCalledTimes(1)
   })
 
   it('should call BatchPush.registerForRemoteNotifications', () => {

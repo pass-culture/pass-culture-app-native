@@ -1380,7 +1380,7 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
-"@bam.tech/react-native-batch@^6.0.0-rc.1":
+"@bam.tech/react-native-batch@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@bam.tech/react-native-batch/-/react-native-batch-6.0.0.tgz#857a3d864c8d6635235ffb78efbe85525a15446f"
   integrity sha512-MBMJ1R0fPjJDaukzReCIvySOO4XUGEpnFvqRSsMMpwYCmYp/ieLAIkscScyAa6wUxJyad+/meawYjcYWZ1JUGg==

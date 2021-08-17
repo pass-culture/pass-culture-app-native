@@ -17,6 +17,8 @@ export const navigationTestProps: StackScreenProps<RootStackParamList> = {
     canGoBack: jest.fn(),
     dangerouslyGetParent: jest.fn(),
     dangerouslyGetState: jest.fn(),
+    getParent: jest.fn(),
+    getState: jest.fn(),
     setParams: jest.fn(),
     setOptions: jest.fn(),
     addListener: jest.fn(),
