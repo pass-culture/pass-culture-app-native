@@ -13,6 +13,7 @@ import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
+import { sanitizeSearchStateParams } from 'features/search/pages/SearchWrapper'
 import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
@@ -89,8 +90,11 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const onPressSeeMore = useCallback(() => {
     analytics.logClickSeeMore(moduleName)
-    const params = parseSearchParameters({ geolocation: position, parameters })
-    navigate('Search', params)
+    const params = parseSearchParameters({
+      geolocation: position,
+      parameters,
+    })
+    navigate('Search', sanitizeSearchStateParams(params))
   }, [position])
 
   const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers

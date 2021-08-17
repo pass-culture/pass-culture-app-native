@@ -43,7 +43,10 @@ export const Search: React.FC = () => {
 
   useEffect(() => {
     if (params) {
-      dispatch({ type: 'INIT_FROM_SEE_MORE', payload: params })
+      dispatch({
+        type: 'INIT_FROM_SEE_MORE',
+        payload: params,
+      })
       dispatch({ type: 'SHOW_RESULTS', payload: true })
     }
   }, [params])

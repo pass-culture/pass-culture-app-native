@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, superFlushWithAct } from 'tests/utils'
 
 import { SearchBox } from '../SearchBox'
 
@@ -21,12 +21,12 @@ describe('SearchBox component', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
-  it('should call logSearchQuery on submit', () => {
+  it('should call logSearchQuery on submit', async () => {
     const { getByPlaceholderText } = render(<SearchBox />)
     const searchInput = getByPlaceholderText('Titre, artiste, lieu...')
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
     expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
-    expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
+    await superFlushWithAct()
     expect(navigate).toBeCalledWith('Search', { query: 'jazzaza', showResults: true })
   })
 })
