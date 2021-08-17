@@ -98,7 +98,7 @@ Then build the app : `yarn android:testing`
 
 ##### Development environment
 
-To run the app on a development environment with a local API, you need to create a `.env.development` file : 
+To run the app on a development environment with a local API, you need to create a `.env.development` file :
 copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address.
 
 Make sure you also overload the `BATCH_API_KEY_ANDROID` and `BATCH_API_KEY_IOS` variables with the _dev_ values of the _testing_ [batch project](https://dashboard.batch.com/).
@@ -143,23 +143,6 @@ We recommend installing the plugin `react-query-native-devtools` to analyze reac
 ## Deployment
 
 See doc [here](./doc/deployment/deployment.md)
-
-## Features
-
-When you generated the repository with [react-native-make](https://github.com/bamlab/react-native-make) the following feature must be present:
-
-- A repository should have been created at https://github.com/bamlab/project-name
-- An application have been created and deployed on appcenter
-- You can deploy automatically with fastlane to appcenter
-- You can deploy with codepush to staging too
-- We installed the following libraries for you:
-  - @react-native-async-storage/async-storage
-  - react-native-localize
-  - lingui-js
-  - typesafe-actions
-  - jest
-  - prettier
-  - eslint
 
 ## Finding specific features location
 
