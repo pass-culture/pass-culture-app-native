@@ -632,7 +632,9 @@ workflows:
             tags:
               ignore: /.*/
             branches:
-              only: staging
+              only:
+                - staging
+                - PC-9851/mettre-en-place-ci-staging
           context:
             - GCP
             - GCP_EHP
