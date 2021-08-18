@@ -54,9 +54,9 @@ describe('LocationFilter component', () => {
       type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
       message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     }
-    const { getByText, getByTestId } = render(<LocationFilter />)
+    const { findByText, getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
-    getByText(mockPositionError.message)
+    findByText(mockPositionError.message)
     expect(mockDispatch).not.toBeCalled()
   })
 

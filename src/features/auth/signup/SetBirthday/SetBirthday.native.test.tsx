@@ -128,12 +128,12 @@ describe('SetBirthday Page', () => {
   })
 
   it('should call clear focuses', () => {
-    const { getByTestId, getByText } = renderSetBirthday()
+    const { getByTestId, findByText } = renderSetBirthday()
     const quitSignupModalButton = getByTestId('rightIconButton')
 
     fireEvent.press(quitSignupModalButton)
 
-    expect(getByText("Continuer l'inscription")).toBeTruthy()
+    expect(findByText("Continuer l'inscription")).toBeTruthy()
   })
 
   describe('SetBirthday - analytics', () => {

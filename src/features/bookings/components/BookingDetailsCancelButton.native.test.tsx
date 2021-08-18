@@ -85,8 +85,8 @@ describe('<BookingDetailsCancelButton />', () => {
   it('should block user if cancellation date is over', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = new Date('2020-11-01T00:00:00Z')
-    const { getByText } = renderBookingDetailsCancelButton(booking)
-    getByText(
+    const { findByText } = renderBookingDetailsCancelButton(booking)
+    findByText(
       'Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1 novembre 2020'
     )
   })
@@ -94,8 +94,8 @@ describe('<BookingDetailsCancelButton />', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = new Date('2020-11-01T00:00:00Z')
     mockedisUserExBeneficiary.mockReturnValueOnce(true)
-    const { getByText } = renderBookingDetailsCancelButton(booking)
-    getByText(
+    const { findByText } = renderBookingDetailsCancelButton(booking)
+    findByText(
       'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation : elle devait être annulée avant le 1 novembre 2020'
     )
   })

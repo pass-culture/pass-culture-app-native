@@ -36,10 +36,9 @@ describe('AcceptCgu Page', () => {
   })
 
   it('should open mail app when clicking on contact support button', async () => {
-    const { findByText } = renderAcceptRedactorCgu()
+    const { getByText } = renderAcceptRedactorCgu()
 
-    const contactSupportButton = await findByText('Contacter le support')
-    fireEvent.press(contactSupportButton)
+    fireEvent.press(getByText('Contacter le support'))
 
     await waitForExpect(() => {
       expect(contactSupport.forGenericQuestion).toBeCalledTimes(1)

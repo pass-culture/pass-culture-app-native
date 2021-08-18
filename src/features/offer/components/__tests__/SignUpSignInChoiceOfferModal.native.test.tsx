@@ -12,10 +12,10 @@ describe('SignUpSignInChoiceOfferModal', () => {
   })
 
   it('renders the modal', () => {
-    const { getByText } = render(
+    const { findByText } = render(
       <SignUpSignInChoiceOfferModal visible={true} dismissModal={dismissModal} />
     )
-    expect(getByText('Connecte-toi pour profiter de cette fonctionnalité')).toBeTruthy()
+    expect(findByText('Connecte-toi pour profiter de cette fonctionnalité')).toBeTruthy()
   })
 
   it('go to login on click button', () => {

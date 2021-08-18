@@ -23,24 +23,24 @@ jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigatio
 
 describe('<OfferDescription />', () => {
   it('should render', async () => {
-    const { toJSON, queryByText, getByText } = await renderOfferDescription()
+    const { toJSON, queryByText, findByText } = await renderOfferDescription()
     expect(toJSON()).toMatchSnapshot()
 
     await waitForExpect(() => {
-      expect(getByText('En détails')).toBeTruthy()
+      expect(findByText('En détails')).toBeTruthy()
       expect(queryByText('Durée')).toBeFalsy()
     })
   })
 
   it('should render without description', async () => {
-    const { queryByText, getByText } = await renderOfferDescription({
+    const { queryByText, findByText } = await renderOfferDescription({
       extraData: { durationMinutes: 20 },
       description: '',
     })
 
     await waitForExpect(() => {
-      expect(getByText('Durée')).toBeTruthy()
-      expect(getByText('Author: photo credit author')).toBeTruthy()
+      expect(findByText('Durée')).toBeTruthy()
+      expect(findByText('Author: photo credit author')).toBeTruthy()
       expect(queryByText('En détails')).toBeFalsy()
     })
   })

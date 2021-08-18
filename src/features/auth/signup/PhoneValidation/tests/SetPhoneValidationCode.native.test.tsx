@@ -143,7 +143,7 @@ describe('SetPhoneValidationCode', () => {
         name: 'ApiError',
       }
 
-      const { getByTestId, getByText } = renderModalWithFilledCodeInput('123456')
+      const { getByTestId, findByText } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
 
       fireEvent.press(continueButton)
@@ -152,7 +152,7 @@ describe('SetPhoneValidationCode', () => {
         useMutationCallbacks.onError(response)
       })
 
-      const errorMessage = getByText('Le code est invalide')
+      const errorMessage = findByText('Le code est invalide')
       await waitForExpect(() => {
         expect(errorMessage).toBeTruthy()
       })

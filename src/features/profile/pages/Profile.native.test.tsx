@@ -132,8 +132,8 @@ describe('Profile component', () => {
           message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
         }
 
-        const { getByText } = await renderProfile()
-        getByText(mockPositionError.message)
+        const { findByText } = await renderProfile()
+        findByText(mockPositionError.message)
       })
 
       it('should display switch OFF if geoloc permission is denied', async () => {
@@ -146,7 +146,7 @@ describe('Profile component', () => {
       it('should open "Deactivate geoloc" modal when clicking on ACTIVE switch and call mockFavoriteDispatch()', async () => {
         // geolocation switch is ON and user wants to switch it OFF
         mockPermissionState = GeolocPermissionState.GRANTED
-        const { getByTestId, getByText } = await renderProfile({
+        const { getByTestId, findByText } = await renderProfile({
           wrapper: FavoritesWrapper,
         })
 
@@ -157,7 +157,7 @@ describe('Profile component', () => {
           payload: 'RECENTLY_ADDED',
         })
         expect(getByTestId('modal-geoloc-permission-modal').props.visible).toBe(true)
-        expect(getByText('Désactiver la géolocalisation'))
+        expect(findByText('Désactiver la géolocalisation'))
       })
     })
     it('should navigate when the notifications row is clicked', async () => {

@@ -31,14 +31,14 @@ describe('<GenericAchievement />', () => {
 
   it('should redirect on home and run analytics when pressing skip all button', async () => {
     const name = 'FirstTutorial'
-    const { getByText } = renderGenericAchievementComponent({
+    const { findByText } = renderGenericAchievementComponent({
       screenName: name,
       children: [
         <TestCard activeIndex={0} index={0} key={0} />,
         <TestCard activeIndex={0} index={1} key={1} />,
       ],
     })
-    const skipAll = await getByText('Tout passer')
+    const skipAll = await findByText('Tout passer')
     fireEvent.press(skipAll)
     expect(reset).toHaveBeenCalledTimes(1)
     expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavigateConfig.screen }] })
@@ -46,26 +46,26 @@ describe('<GenericAchievement />', () => {
   })
 
   it('should have a swiperRef passed to each children', () => {
-    const { getByText } = renderGenericAchievementComponent({
+    const { findByText } = renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
-    expect(getByText('swipeRef exist')).toBeTruthy()
-    expect(() => getByText('swipeRef does not exist')).toThrow()
+    expect(findByText('swipeRef exist')).toBeTruthy()
+    expect(() => findByText('swipeRef does not exist')).toThrow()
   })
 
   it('should have an automatically set name passed to each children', async () => {
-    const { getByText } = renderGenericAchievementComponent({
+    const { findByText } = renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
-    expect(await getByText('name exist')).toBeTruthy()
-    expect(() => getByText('name does not exist')).toThrow()
+    expect(await findByText('name exist')).toBeTruthy()
+    expect(() => findByText('name does not exist')).toThrow()
   })
 
   it('should call skip custom function on skip', async () => {
     const skip = jest.fn()
-    const { getByText } = renderGenericAchievementComponent({
+    const { findByText } = renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [
         <TestCard activeIndex={0} index={0} key={0} />,
@@ -73,7 +73,7 @@ describe('<GenericAchievement />', () => {
       ],
       skip,
     })
-    const button = await getByText('Tout passer')
+    const button = await findByText('Tout passer')
     fireEvent.press(button)
     await waitForExpect(() => {
       expect(skip).toHaveBeenCalled()

@@ -73,7 +73,7 @@ describe('<IdCheck />', () => {
     await waitFor(() => {
       const webview = renderAPI.queryByTestId('idcheck-webview')
       expect(webview).toBeFalsy()
-      const notWebviewText = renderAPI.getByText('NotIdCheck Page')
+      const notWebviewText = renderAPI.findByText('NotIdCheck Page')
       expect(notWebviewText).toBeTruthy()
     })
   })

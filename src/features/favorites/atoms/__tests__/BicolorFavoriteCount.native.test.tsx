@@ -31,7 +31,7 @@ describe('BicolorFavoriteCount component', () => {
   })
 
   it('should show 99+ badge when nbFavorites is greater than or equal to 100', async () => {
-    const { getByText } = await renderBicolorFavoriteCount({
+    const { findByText } = await renderBicolorFavoriteCount({
       isLoggedIn: true,
       favoritesResponse: {
         page: 1,
@@ -40,21 +40,21 @@ describe('BicolorFavoriteCount component', () => {
       },
     })
     await waitForExpect(() => {
-      expect(getByText('99')).toBeTruthy()
+      expect(findByText('99')).toBeTruthy()
     })
   })
 
   it('should show nbFavorites within badge', async () => {
-    const { getByText } = await renderBicolorFavoriteCount({
+    const { findByText } = await renderBicolorFavoriteCount({
       isLoggedIn: true,
     })
     await waitForExpect(() => {
-      expect(getByText(paginatedFavoritesResponseSnap.nbFavorites.toString())).toBeTruthy()
+      expect(findByText(paginatedFavoritesResponseSnap.nbFavorites.toString())).toBeTruthy()
     })
   })
 
   it('should show 0 within badge when no favorite', async () => {
-    const { getByText } = await renderBicolorFavoriteCount({
+    const { findByText } = await renderBicolorFavoriteCount({
       isLoggedIn: true,
       favoritesResponse: {
         page: 1,
@@ -64,7 +64,7 @@ describe('BicolorFavoriteCount component', () => {
     })
     await superFlushWithAct()
     await waitForExpect(() => {
-      expect(getByText('0')).toBeTruthy()
+      expect(findByText('0')).toBeTruthy()
     })
   })
 })

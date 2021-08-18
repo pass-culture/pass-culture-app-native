@@ -39,14 +39,14 @@ describe('ProfileHeader', () => {
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
-    const { getByTestId, getByText } = render(<ProfileHeader user={user} />)
+    const { getByTestId, findByText } = render(<ProfileHeader user={user} />)
     expect(getByTestId('beneficiary-header')).toBeTruthy()
-    expect(getByText("crédit valable jusqu'au\u00a009/02/2023 à 11h17")).toBeTruthy()
+    expect(findByText("crédit valable jusqu'au\u00a009/02/2023 à 11h17")).toBeTruthy()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
-    const { getByTestId, getByText } = render(<ProfileHeader user={exBeneficiaryUser} />)
+    const { getByTestId, findByText } = render(<ProfileHeader user={exBeneficiaryUser} />)
     expect(getByTestId('ex-beneficiary-header')).toBeTruthy()
-    expect(getByText('crédit expiré le 01/01/2020 à 03h04')).toBeTruthy()
+    expect(findByText('crédit expiré le 01/01/2020 à 03h04')).toBeTruthy()
   })
 })

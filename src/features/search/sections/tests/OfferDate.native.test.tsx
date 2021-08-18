@@ -74,11 +74,14 @@ describe('OfferDate component', () => {
     }
   })
 
-  it("shows the the correct date when we choose 'Date précise'", () => {
+  it("shows the the correct date when we choose 'Date précise' - today", async () => {
     mockSearchState.date = { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: Today }
-    expect(render(<OfferDate />).getByText('Dimanche 1 novembre 2020')).toBeTruthy()
+    expect(render(<OfferDate />).findByText('Dimanche 1 novembre 2020')).toBeTruthy()
+  })
+
+  it("shows the the correct date when we choose 'Date précise' - tomorrow", async () => {
     mockSearchState.date = { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: Tomorrow }
-    expect(render(<OfferDate />).getByText('Lundi 2 novembre 2020')).toBeTruthy()
+    expect(render(<OfferDate />).findByText('Lundi 2 novembre 2020')).toBeTruthy()
   })
 
   it('should hide and show the CalendarPicker', () => {

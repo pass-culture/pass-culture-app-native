@@ -63,10 +63,10 @@ describe('QuitSignupModal', () => {
   ])(
     'should display %s title and description if isRedactor is %s',
     (_type, isRedactor, title, description) => {
-      const { getByText } = renderQuitSignupModal(true, isRedactor)
+      const { findByText } = renderQuitSignupModal(true, isRedactor)
 
-      expect(getByText(title)).toBeTruthy()
-      expect(getByText(description)).toBeTruthy()
+      expect(findByText(title)).toBeTruthy()
+      expect(findByText(description)).toBeTruthy()
     }
   )
 

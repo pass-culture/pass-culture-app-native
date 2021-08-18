@@ -37,14 +37,14 @@ describe('ExternalLink', () => {
 
   it('should display url with non breaking space when no text provided', () => {
     const text = undefined
-    const { getByText } = render(<ExternalLink text={text} url={someUrl} />)
-    expect(getByText('\u00a0' + someUrl))
+    const { findByText } = render(<ExternalLink text={text} url={someUrl} />)
+    expect(findByText('\u00a0' + someUrl))
   })
 
   it('should display splitted text with non breaking space on first word', () => {
     const text = 'some text with several words'
-    const { getByText } = render(<ExternalLink text={text} url={someUrl} />)
-    expect(getByText('\u00a0some'))
-    expect(getByText(' text with several words'))
+    const { findByText } = render(<ExternalLink text={text} url={someUrl} />)
+    expect(findByText('\u00a0some'))
+    expect(findByText(' text with several words'))
   })
 })

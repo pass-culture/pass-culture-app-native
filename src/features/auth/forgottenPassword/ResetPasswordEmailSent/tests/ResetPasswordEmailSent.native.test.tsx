@@ -62,8 +62,7 @@ describe('<ResetPasswordEmailSent />', () => {
   it('should open mail app when clicking on check email button', async () => {
     const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
 
-    const checkEmailsButton = renderAPI.getByText('Consulter mes e-mails')
-    fireEvent.press(checkEmailsButton)
+    fireEvent.press(renderAPI.getByText('Consulter mes e-mails'))
 
     await waitForExpect(() => {
       expect(openInbox).toHaveBeenCalled()

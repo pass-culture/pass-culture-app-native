@@ -1,4 +1,5 @@
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/analytics'
@@ -28,13 +29,15 @@ describe('NoSearchResult component', () => {
   })
 
   it('should show the message depending on the query', () => {
-    let text = render(<NoSearchResult />).getByText('Pas de résultat trouvé.')
+    let text = render(<NoSearchResult />).findByText('Pas de résultat trouvé.')
     expect(text).toBeTruthy()
 
     mockSearchState.query = 'ZZZZZZ'
-    text = render(<NoSearchResult />).getByText('Pas de résultat trouvé pour "ZZZZZZ"')
+
+    text = render(<NoSearchResult />).findByText('Pas de résultat trouvé pour "ZZZZZZ"')
     expect(text).toBeTruthy()
   })
+
   it('should dispatch the right actions when pressing "autour de toi" - no location', () => {
     const button = render(<NoSearchResult />).getByText('autour de toi')
     fireEvent.press(button)
@@ -43,6 +46,7 @@ describe('NoSearchResult component', () => {
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_QUERY', payload: '' })
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'LOCATION_EVERYWHERE' })
   })
+
   it('should dispatch the right actions when pressing "autour de toi" - with location', () => {
     mockPosition = { latitude: 2, longitude: 40 }
     const button = render(<NoSearchResult />).getByText('autour de toi')
@@ -57,11 +61,15 @@ describe('NoSearchResult component', () => {
   it('should log NoSearchResult with the query', () => {
     mockSearchState.query = ''
     render(<NoSearchResult />)
-    expect(analytics.logNoSearchResult).toHaveBeenLastCalledWith('')
+    waitForExpect(() => {
+      expect(analytics.logNoSearchResult).toHaveBeenLastCalledWith('')
+    })
 
     mockSearchState.query = 'no result query'
     render(<NoSearchResult />)
-    expect(analytics.logNoSearchResult).toHaveBeenLastCalledWith('no result query')
-    expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(2)
+    waitForExpect(() => {
+      expect(analytics.logNoSearchResult).toHaveBeenLastCalledWith('no result query')
+      expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(2)
+    })
   })
 })

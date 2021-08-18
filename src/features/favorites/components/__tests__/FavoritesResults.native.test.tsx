@@ -54,8 +54,8 @@ describe('FavoritesResults component', () => {
       isFetching: false,
     } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
-    const { getByText, queryByText } = renderFavoritesResults()
-    const button = getByText('Explorer les offres')
+    const { findByText, queryByText } = renderFavoritesResults()
+    const button = findByText('Explorer les offres')
     const sortByButton = queryByText('Trier')
     expect(button).toBeTruthy()
     expect(sortByButton).toBeFalsy()
@@ -82,10 +82,10 @@ describe('FavoritesResults component', () => {
     mockUseRemoveFavorites.mockReturnValue({
       mutate,
     } as unknown as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
-    const { getByText } = render(reactQueryProviderHOC(<FavoritesResults />))
-    const container = getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
+    const { findByText } = render(reactQueryProviderHOC(<FavoritesResults />))
+    const container = findByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
     expect(container).toBeTruthy()
-    const sortByButton = getByText('Trier')
+    const sortByButton = findByText('Trier')
     expect(sortByButton).toBeTruthy()
   })
 })

@@ -21,7 +21,7 @@ describe('<GenericAchievementCard />', () => {
   beforeEach(jest.resetAllMocks)
 
   it('should render correctly', () => {
-    const { getByText } = renderGenericAchievementCardComponent({
+    const { getByText, findByText } = renderGenericAchievementCardComponent({
       buttonText,
       animation,
       buttonCallback,
@@ -33,9 +33,9 @@ describe('<GenericAchievementCard />', () => {
       index: 0,
       lastIndex: 0,
     })
-    expect(getByText(title)).toBeTruthy()
-    expect(getByText(subTitle)).toBeTruthy()
-    expect(getByText(text)).toBeTruthy()
+    expect(findByText(title)).toBeTruthy()
+    expect(findByText(subTitle)).toBeTruthy()
+    expect(findByText(text)).toBeTruthy()
     const button = getByText(buttonText)
     expect(button).toBeTruthy()
     fireEvent.press(button)
@@ -43,7 +43,7 @@ describe('<GenericAchievementCard />', () => {
   })
 
   it('should fail to render if not children of GenericAchievement', () => {
-    const { getByText } = renderGenericAchievementCardComponent({
+    const { getByText, findByText } = renderGenericAchievementCardComponent({
       buttonText,
       animation,
       buttonCallback,
@@ -55,9 +55,9 @@ describe('<GenericAchievementCard />', () => {
       index: 0,
       lastIndex: 0,
     })
-    expect(getByText(title)).toBeTruthy()
-    expect(getByText(subTitle)).toBeTruthy()
-    expect(getByText(text)).toBeTruthy()
+    expect(findByText(title)).toBeTruthy()
+    expect(findByText(subTitle)).toBeTruthy()
+    expect(findByText(text)).toBeTruthy()
     const button = getByText(buttonText)
     expect(button).toBeTruthy()
     fireEvent.press(button)
@@ -138,7 +138,7 @@ describe('<GenericAchievementCard />', () => {
   })
 
   it('should have a button and no invisible-button-height when active index', () => {
-    const { queryByTestId, getByText } = render(
+    const { queryByTestId, findByText } = render(
       <GenericAchievementCard
         buttonText={buttonText}
         animation={animation}
@@ -152,7 +152,7 @@ describe('<GenericAchievementCard />', () => {
         lastIndex={1}
       />
     )
-    expect(getByText(buttonText)).toBeTruthy()
+    expect(findByText(buttonText)).toBeTruthy()
     expect(queryByTestId('invisible-button-height')).toBeFalsy()
   })
 

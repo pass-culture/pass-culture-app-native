@@ -90,7 +90,7 @@ describe('FavoritesSorts component', () => {
 
     fireEvent.press(renderAPI.getByText('Proximité géographique'))
 
-    renderAPI.getByText(mockPositionError.message)
+    renderAPI.findByText(mockPositionError.message)
   })
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {

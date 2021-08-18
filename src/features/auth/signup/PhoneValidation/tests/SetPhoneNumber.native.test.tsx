@@ -107,7 +107,7 @@ describe('SetPhoneNumber', () => {
         name: 'ApiError',
       }
 
-      const { getByTestId, getByPlaceholderText, getByText, rerender } = renderSetPhoneNumber()
+      const { getByTestId, getByPlaceholderText, findByText, rerender } = renderSetPhoneNumber()
       const continueButton = getByTestId('Continuer')
       const input = getByPlaceholderText('6 12 34 56 78')
       fireEvent.changeText(input, '600000000')
@@ -120,7 +120,7 @@ describe('SetPhoneNumber', () => {
         useMutationCallbacks.onError(response)
       })
 
-      const errorMessage = getByText('Le numéro est invalide.')
+      const errorMessage = findByText('Le numéro est invalide.')
       await waitForExpect(() => {
         expect(errorMessage).toBeTruthy()
       })

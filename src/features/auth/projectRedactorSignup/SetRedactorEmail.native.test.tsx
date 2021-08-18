@@ -64,6 +64,7 @@ describe('<SetRedactorEmail />', () => {
 
       expect(queryByText("Format de l'e-mail incorrect")).toBeFalsy()
     })
+
     it('should reject email', () => {
       const { getByText, getByPlaceholderText, queryByText } = renderPage()
 

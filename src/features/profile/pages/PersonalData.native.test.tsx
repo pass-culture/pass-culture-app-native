@@ -28,18 +28,18 @@ describe('PersonalData', () => {
   afterEach(() => jest.clearAllMocks())
 
   it('should render for beneficiary profile', async () => {
-    const { getByText } = await renderPersonalData({
+    const { findByText } = await renderPersonalData({
       isBeneficiary: true,
       ...mockedIdentity,
     } as UserProfileResponse)
 
     await waitForExpect(() => {
-      expect(getByText('Prénom et nom')).toBeTruthy()
-      expect(getByText('Rosa Bonheur')).toBeTruthy()
-      expect(getByText('E-mail')).toBeTruthy()
-      expect(getByText('rosa.bonheur@gmail.com')).toBeTruthy()
-      expect(getByText('Numéro de téléphone')).toBeTruthy()
-      expect(getByText('+33685974563')).toBeTruthy()
+      expect(findByText('Prénom et nom')).toBeTruthy()
+      expect(findByText('Rosa Bonheur')).toBeTruthy()
+      expect(findByText('E-mail')).toBeTruthy()
+      expect(findByText('rosa.bonheur@gmail.com')).toBeTruthy()
+      expect(findByText('Numéro de téléphone')).toBeTruthy()
+      expect(findByText('+33685974563')).toBeTruthy()
     })
   })
 

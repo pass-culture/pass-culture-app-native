@@ -17,28 +17,28 @@ const domains_credit_v2 = {
 
 describe('BeneficiaryCeilings', () => {
   it('should render properly with deposit version 1', () => {
-    const { getAllByTestId, getByText } = render(
+    const { getAllByTestId, findByText } = render(
       <BeneficiaryCeilings domainsCredit={domains_credit_v1} />
     )
 
     const progressBars = getAllByTestId('progress-bar')
     expect(progressBars.length).toBe(3)
 
-    const ceilingQuestion = getByText(
+    const ceilingQuestion = findByText(
       'Pourquoi les biens physiques et numériques sont-ils limités ?'
     )
     expect(ceilingQuestion).toBeTruthy()
   })
 
   it('should render properly with deposit version 2', () => {
-    const { getAllByTestId, getByText } = render(
+    const { getAllByTestId, findByText } = render(
       <BeneficiaryCeilings domainsCredit={domains_credit_v2} />
     )
 
     const progressBars = getAllByTestId('progress-bar')
     expect(progressBars.length).toBe(2)
 
-    const ceilingQuestion = getByText('Pourquoi les biens numériques sont-ils limités ?')
+    const ceilingQuestion = findByText('Pourquoi les biens numériques sont-ils limités ?')
     expect(ceilingQuestion).toBeTruthy()
   })
 })

@@ -15,10 +15,10 @@ describe('<BookingPropertiesSection />', () => {
   const booking = bookingsSnap.ongoing_bookings[0]
 
   it('should display user firstname and lastname', async () => {
-    const { getByText } = await renderBookingProperties(booking)
+    const { findByText } = await renderBookingProperties(booking)
 
     await waitForExpect(() => {
-      expect(getByText('Christophe\u00a0Dupont')).toBeTruthy()
+      expect(findByText('Christophe\u00a0Dupont')).toBeTruthy()
     })
   })
 
@@ -32,19 +32,19 @@ describe('<BookingPropertiesSection />', () => {
   })
 
   it('should display date label', async () => {
-    const { getByText } = await renderBookingProperties(booking)
+    const { findByText } = await renderBookingProperties(booking)
 
     await waitForExpect(() => {
-      expect(getByText('Le 15 mars 2021 à 20h00')).toBeTruthy()
+      expect(findByText('Le 15 mars 2021 à 20h00')).toBeTruthy()
     })
   })
 
   it('should display location label if offer is not permanent and not a digital event', async () => {
     booking.stock.offer.isDigital = false
     booking.stock.offer.isPermanent = false
-    const { getByText } = await renderBookingProperties(booking)
+    const { findByText } = await renderBookingProperties(booking)
     await waitForExpect(() => {
-      expect(getByText('Maison de la Brique, Drancy')).toBeTruthy()
+      expect(findByText('Maison de la Brique, Drancy')).toBeTruthy()
     })
   })
 })

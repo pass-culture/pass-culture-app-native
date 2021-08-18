@@ -13,8 +13,8 @@ describe('NumberOfResults component', () => {
         other: '# résultats',
       })
     expect(render(<NumberOfResults nbHits={0} />).toJSON()).toBeNull()
-    expect(render(<NumberOfResults nbHits={1} />).getByText(getResultText(1))).toBeTruthy()
-    expect(render(<NumberOfResults nbHits={2} />).getByText(getResultText(2))).toBeTruthy()
-    expect(render(<NumberOfResults nbHits={1234} />).getByText(getResultText(1234))).toBeTruthy()
+    expect(render(<NumberOfResults nbHits={1} />).findByText(getResultText(1))).toBeTruthy()
+    expect(render(<NumberOfResults nbHits={2} />).findByText(getResultText(2))).toBeTruthy()
+    expect(render(<NumberOfResults nbHits={1234} />).findByText(getResultText(1234))).toBeTruthy()
   })
 })

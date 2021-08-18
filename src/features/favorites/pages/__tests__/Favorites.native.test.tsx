@@ -30,8 +30,8 @@ describe('Favorites component', () => {
   })
 
   it('should show non connected page when not logged in', () => {
-    const { getByText } = renderFavorites({ isLoggedIn: false })
-    expect(getByText('Connecte-toi pour profiter de cette fonctionnalité !')).toBeTruthy()
+    const { findByText } = renderFavorites({ isLoggedIn: false })
+    expect(findByText('Connecte-toi pour profiter de cette fonctionnalité !')).toBeTruthy()
   })
 
   it('should show loading when not logged in', () => {

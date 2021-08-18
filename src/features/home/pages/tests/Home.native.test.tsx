@@ -65,26 +65,26 @@ describe('Home component', () => {
   })
 
   it('should have a personalized welcome message when user is logged in', async () => {
-    const { getByText } = await homeRenderer({ isLoggedIn: true })
+    const { findByText } = await homeRenderer({ isLoggedIn: true })
     await waitForExpect(() => {
-      expect(getByText('Bonjour Jean')).toBeTruthy()
+      expect(findByText('Bonjour Jean')).toBeTruthy()
     })
   })
 
   it('should show the available credit to the user - remaining', async () => {
-    const { getByText } = await homeRenderer({ isLoggedIn: true })
+    const { findByText } = await homeRenderer({ isLoggedIn: true })
     await waitForExpect(() => {
-      expect(getByText('Tu as 496 € sur ton pass')).toBeTruthy()
+      expect(findByText('Tu as 496 € sur ton pass')).toBeTruthy()
     })
   })
 
   it('should show the available credit to the user - expired', async () => {
-    const { queryByText, getByText } = await homeRenderer({
+    const { queryByText, findByText } = await homeRenderer({
       isLoggedIn: true,
       partialUser: { depositExpirationDate: new Date('2020-02-16T17:16:04.735235') },
     })
     await waitForExpect(() => {
-      expect(getByText('Ton crédit est expiré')).toBeTruthy()
+      expect(findByText('Ton crédit est expiré')).toBeTruthy()
       expect(queryByText('Tu as 496 € sur ton pass')).toBeFalsy()
     })
   })

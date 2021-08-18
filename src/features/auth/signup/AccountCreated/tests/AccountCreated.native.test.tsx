@@ -75,8 +75,8 @@ describe('<AccountCreated />', () => {
     mockedUseUserProfileInfo.mockReturnValueOnce({
       data: { isBeneficiary: true, needsToFillCulturalSurvey: true, roles: roles },
     } as UseQueryResult<UserProfileResponse>)
-    const { getByText } = render(<AccountCreated />)
+    const { findByText } = render(<AccountCreated />)
 
-    expect(getByText(title)).toBeTruthy()
+    expect(findByText(title)).toBeTruthy()
   })
 })

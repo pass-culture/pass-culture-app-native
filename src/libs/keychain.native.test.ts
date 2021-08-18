@@ -51,6 +51,7 @@ describe('getRefreshToken()', () => {
   })
 
   it('should return false when no credentials are found', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Keychain.getGenericPassword.mockImplementationOnce(async () => false as any)
 
     const refreshToken = await getRefreshToken()

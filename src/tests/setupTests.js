@@ -24,16 +24,17 @@ global.allowConsole({
   debug: false,
   error: false,
   log: false,
-  warn: false,
+  warn: true,
+})
+
+consoleFailTestModule.cft({
+  testFramework: 'jest',
+  spyLibrary: 'jest',
+  console: allowConsoleRuntimeConfig,
 })
 
 global.beforeAll(() => {
   server.listen()
-  consoleFailTestModule.cft({
-    testFramework: 'jest',
-    spyLibrary: 'jest',
-    console: allowConsoleRuntimeConfig,
-  })
 })
 
 global.afterAll(() => {

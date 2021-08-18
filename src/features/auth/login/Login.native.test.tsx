@@ -143,7 +143,7 @@ describe('<Login/>', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(renderAPI.getByText('E-mail ou mot de passe incorrect.')).toBeTruthy()
+      expect(renderAPI.findByText('E-mail ou mot de passe incorrect.')).toBeTruthy()
       const errorSnapshot = renderAPI.toJSON()
       expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
     })

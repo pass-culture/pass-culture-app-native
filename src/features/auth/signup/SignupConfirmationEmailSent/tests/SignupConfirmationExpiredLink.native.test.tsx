@@ -38,9 +38,9 @@ function renderSignupConfirmationExpiredLink() {
 
 describe('<SignupConfirmationExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    const { findByText } = renderSignupConfirmationExpiredLink()
+    const { getByText } = renderSignupConfirmationExpiredLink()
 
-    const button = await findByText("Retourner à l'accueil")
+    const button = await getByText("Retourner à l'accueil")
     fireEvent.press(button)
 
     await waitForExpect(() => {
@@ -49,9 +49,9 @@ describe('<SignupConfirmationExpiredLink/>', () => {
   })
 
   it.skip('should contact support WHEN contact support button is clicked', async () => {
-    const { findByText } = renderSignupConfirmationExpiredLink()
+    const { getByText } = renderSignupConfirmationExpiredLink()
 
-    const button = await findByText('Contacter le support')
+    const button = await getByText('Contacter le support')
     fireEvent.press(button)
 
     await waitForExpect(() => {

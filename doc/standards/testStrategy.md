@@ -11,10 +11,10 @@ Why ?
 
 ```jsx
 it('should render correctly without login modal', async () => {
-   const home = await homeRenderer(false)
+  const home = await homeRenderer(false)
 
-   expect(home).toMatchSnapshot()
-   home.unmount()
+  expect(home).toMatchSnapshot()
+  home.unmount()
 })
 ```
 
@@ -43,16 +43,16 @@ We do not allow snapshots tests for component, you can still use diff snapshot f
 - Why pages' snapshots and not components ones ?
 
 You may not anticipate changes to all screens of the app when you make changes to a component. In such a case, a snapshot failing would be a warning to you : does this screen still displays correctly ?
-Think of it as a poor man's visual testing. 
+Think of it as a poor man's visual testing.
 
 ```jsx
 it('should render modal correctly', async () => {
-    const homeWithLoginModal = await homeRenderer(true)
-    const homeWithoutLoginModal = await homeRenderer(false)
+  const homeWithLoginModal = await homeRenderer(true)
+  const homeWithoutLoginModal = await homeRenderer(false)
 
-    expect(homeWithoutLoginModal).toMatchDiffSnapshot(homeWithLoginModal)
-    homeWithLoginModal.unmount()
-    homeWithoutLoginModal.unmount()
+  expect(homeWithoutLoginModal).toMatchDiffSnapshot(homeWithLoginModal)
+  homeWithLoginModal.unmount()
+  homeWithoutLoginModal.unmount()
 })
 ```
 
@@ -68,20 +68,20 @@ it('should be hidden when the icon is not provided', () => {
 
 ```jsx
 it('should display the error message when the date is not correct', () => {
-    const { getByText, getByPlaceholderText } = render(<SetBirthday />)
+  const { findByText, getByPlaceholderText } = render(<SetBirthday />)
 
-    const day = getByPlaceholderText('JJ')
-    const month = getByPlaceholderText('MM')
-    const year = getByPlaceholderText('YYYY')
+  const day = getByPlaceholderText('JJ')
+  const month = getByPlaceholderText('MM')
+  const year = getByPlaceholderText('YYYY')
 
-    fireEvent.changeText(day, '29')
-    fireEvent.changeText(month, '02')
-    fireEvent.changeText(year, '2005')
+  fireEvent.changeText(day, '29')
+  fireEvent.changeText(month, '02')
+  fireEvent.changeText(year, '2005')
 
-    const continueButton = getByText('Continuer')
-    fireEvent.press(continueButton)
+  const continueButton = findByText('Continuer')
+  fireEvent.press(continueButton)
 
-    getByText('La date choisie est incorrecte')
+  findByText('La date choisie est incorrecte')
 })
 ```
 
@@ -96,16 +96,16 @@ These are tips to avoid `console` within your tests.
 - Use `queryBy` methods to test the inexistence of an element.
 - Use `getBy` methods when you know it's truthy
 - To avoid `act` warnings:
-  - try to add `await superFlushWithAct()`, and pass a `number` greater than `10` *(default)* to flush more promises
+  - try to add `await superFlushWithAct()`, and pass a `number` greater than `10` _(default)_ to flush more promises
   - try to use `waitForExpect` each time you anticipate expectations that should be made after the execution of asynchrone actions.
 - To test an expected error, clean it from your test (we already have the test description):
   - Use `jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)` before each test and `jest.clearAllMocks()` after each test
-  
-If none of those methods works, and your test still fail: 
+
+If none of those methods works, and your test still fail:
 
 - ask other developers for help you resolve `console` within your tests
-- if agreed, use at the top of your test `allowConsole({ error: true })`, 
-this will pollute the test log output, but it will pass (aka volkswagen)  
+- if agreed, use at the top of your test `allowConsole({ error: true })`,
+  this will pollute the test log output, but it will pass (aka volkswagen)
 
 ## Test cook book
 
@@ -141,37 +141,38 @@ Don't forget to use `afterEach(jest.clearAllMocks)` to clear mocks after each te
 
 ### Navigation
 
-To test our `navigate` call, we can do: 
+To test our `navigate` call, we can do:
 
 ```jsx
 it('should navigate to the previous when back navigation triggered', () => {
-    const { getByTestId } = render(<SetBirthday />)
-    fireEvent.press(getByTestId('leftIcon'))
+  const { getByTestId } = render(<SetBirthday />)
+  fireEvent.press(getByTestId('leftIcon'))
 
-    expect(goBack).toBeCalledTimes(1)
+  expect(goBack).toBeCalledTimes(1)
 })
 ```
 
-If `act` warnings appear, try to use `await superFlushWithAct(times)` or wrap the `expect` around `waitForExpect`: 
+If `act` warnings appear, try to use `await superFlushWithAct(times)` or wrap the `expect` around `waitForExpect`:
 
 ```jsx
 it('should redirect to home page WHEN signin is successful', async () => {
-    const { findByText } = renderLogin()
-    mockSignIn.mockImplementationOnce(() => true)
+  const { findByText } = renderLogin()
+  mockSignIn.mockImplementationOnce(() => true)
 
-    const connexionButton = await findByText('Se connecter')
-    fireEvent.press(connexionButton)
+  const connexionButton = await findByText('Se connecter')
+  fireEvent.press(connexionButton)
 
-    await waitForExpect(() => {
-      expect(mockSignIn).toBeCalledTimes(1)
-      expect(navigate).toBeCalledTimes(1)
-    })
+  await waitForExpect(() => {
+    expect(mockSignIn).toBeCalledTimes(1)
+    expect(navigate).toBeCalledTimes(1)
+  })
 })
 ```
 
 #### Mock route params
 
 When the tested component use route params through `useRoute` hook, `params` can be mocked like follow:
+
 ```tsx
 import { useRoute } from '__mocks__/@react-navigation/native'
 
@@ -182,7 +183,6 @@ useRoute.mockReturnValue({
   },
 })
 ```
-
 
 ### React Query and API calls
 

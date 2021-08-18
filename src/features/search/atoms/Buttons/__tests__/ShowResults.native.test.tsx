@@ -25,8 +25,8 @@ describe('<ShowResults />', () => {
     'should display the correct translation ($expected) and be disabled=$disabled',
     ({ nbHits, expected, disabled }) => {
       mockData = { pages: [{ nbHits }] }
-      const { getByText, getByTestId } = render(<ShowResults />)
-      getByText(expected)
+      const { findByText, getByTestId } = render(<ShowResults />)
+      findByText(expected)
 
       const expectedColor = disabled ? ColorsEnum.GREY_LIGHT : ColorsEnum.PRIMARY
       expect(getByTestId(expected).props.style.backgroundColor).toBe(expectedColor)

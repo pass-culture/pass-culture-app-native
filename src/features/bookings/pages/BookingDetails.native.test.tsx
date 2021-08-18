@@ -60,8 +60,8 @@ describe('BookingDetails', () => {
   describe('<DetailedBookingTicket />', () => {
     it('should display booking token', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
-      const { getByText } = renderBookingDetails(booking)
-      getByText('352UW4')
+      const { findByText } = renderBookingDetails(booking)
+      findByText('352UW4')
     })
 
     it('should display offer link button if offer is digital and open url on press', async () => {
@@ -90,8 +90,8 @@ describe('BookingDetails', () => {
     it('should display EAN code if offer is a book (digital or physical)', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.category.name = CategoryNameEnum.LIVRE
-      const { getByText } = renderBookingDetails(booking)
-      getByText('123456789')
+      const { findByText } = renderBookingDetails(booking)
+      findByText('123456789')
     })
   })
 
@@ -100,9 +100,9 @@ describe('BookingDetails', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.stock.offer.isDigital = true
 
-      const { getByText } = renderBookingDetails(booking)
+      const { findByText } = renderBookingDetails(booking)
 
-      getByText(
+      findByText(
         'Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
     })
@@ -114,9 +114,9 @@ describe('BookingDetails', () => {
         code: 'fdfdfsds',
       }
 
-      const { getByText } = renderBookingDetails(booking)
+      const { findByText } = renderBookingDetails(booking)
 
-      getByText(
+      findByText(
         'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
     })
@@ -135,9 +135,9 @@ describe('BookingDetails', () => {
       booking.stock.offer.isDigital = false
       prepareBooking(booking)
 
-      const { getByText } = renderBookingDetails(booking)
+      const { findByText } = renderBookingDetails(booking)
 
-      getByText(
+      findByText(
         'Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
     })
@@ -147,10 +147,10 @@ describe('BookingDetails', () => {
     it('should display withdrawal details', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.withdrawalDetails = 'Voici comment récupérer ton bien'
-      const { getByText } = renderBookingDetails(booking)
+      const { findByText } = renderBookingDetails(booking)
 
-      getByText('Modalités de retrait')
-      getByText(booking.stock.offer.withdrawalDetails)
+      findByText('Modalités de retrait')
+      findByText(booking.stock.offer.withdrawalDetails)
     })
 
     it('should not display withdrawal details', () => {
@@ -209,8 +209,8 @@ describe('BookingDetails', () => {
         .mockReturnValue(dataProvider)
 
       const booking = bookingsSnap.ongoing_bookings[0]
-      const { getByText } = renderBookingDetails(booking)
-      getByText("Voir l'itinéraire")
+      const { findByText } = renderBookingDetails(booking)
+      findByText("Voir l'itinéraire")
 
       openItinerary.mockRestore()
       getBookingProperties.mockRestore()

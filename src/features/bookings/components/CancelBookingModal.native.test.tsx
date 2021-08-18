@@ -72,28 +72,28 @@ describe('<CancelBookingModal />', () => {
 
   it('should display offer name', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
+    const { findByText } = render(
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
-    getByText('Avez-vous déjà vu ?')
+    findByText('Avez-vous déjà vu ?')
   })
 
   it('should display refund rule if user is beneficiary and offer is not free', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
+    const { findByText } = render(
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
-    getByText('19 € seront recrédités sur ton pass Culture.')
+    findByText('19 € seront recrédités sur ton pass Culture.')
   })
 
   it('should display refund rule if user is ex beneficiary and offer is not free', () => {
     mockIsCreditExpired = true
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
+    const { findByText } = render(
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
 
-    getByText('Les 19 € ne seront pas recrédités sur ton pass Culture car il est expiré.')
+    findByText('Les 19 € ne seront pas recrédités sur ton pass Culture car il est expiré.')
   })
 
   it('should navigate to bookings and show error snackbar if cancel booking request fails', async () => {
