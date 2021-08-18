@@ -14,12 +14,8 @@ allowConsole({ error: true })
 jest.mock('./libs/notifications', () => ({
   useStartBatchNotification: jest.fn(),
 }))
-
 jest.mock('features/navigation/RootNavigator', () => ({
   RootNavigator: () => 'Placeholder for RootNavigator',
-}))
-jest.mock('features/navigation/RootNavigator/routes', () => ({
-  linking: { prefixes: [], config: { screens: [] } },
 }))
 
 describe('<App /> with mocked RootNavigator', () => {

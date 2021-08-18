@@ -2,12 +2,13 @@ import { Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
+import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 
-import { openExternalUrl, navigateToBooking } from '../helpers'
+import { openExternalUrl, navigateToBooking, homeNavigateConfig } from '../helpers'
 
-// Jest.Mocks are located at the end of file for a better reading
+jest.mock('features/navigation/navigationRef')
 
 describe('Navigation helpers', () => {
   afterEach(jest.clearAllMocks)
@@ -16,16 +17,27 @@ describe('Navigation helpers', () => {
     const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
     await openExternalUrl(link)
-
-    expect(openUrl).toBeCalled()
+    expect(openUrl).toBeCalledWith(link)
   })
 
-  it('should capture links that start with the universal links domain', async () => {
+  it('should navigate to in-app screen and navigate to it (ex: Offer)', async () => {
     const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
-    const link = WEBAPP_NATIVE_REDIRECTION_URL + '/my-route-to-test?param1=ok'
+    const path = new DeeplinkPathWithPathParams(DeeplinkPath.OFFER, { id: '1' }).getFullPath()
+    const link = WEBAPP_NATIVE_REDIRECTION_URL + `/${path}`
     await openExternalUrl(link)
-
     expect(openUrl).not.toBeCalled()
+    expect(navigationRef.current?.navigate).toBeCalledWith('Offer', { id: 1 })
+  })
+
+  it('should navigate to home when in-app screen cannot be found (ex: Offer)', async () => {
+    const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
+    const link = WEBAPP_NATIVE_REDIRECTION_URL + '/unknown'
+    await openExternalUrl(link)
+    expect(openUrl).not.toBeCalled()
+    expect(navigationRef.current?.navigate).toBeCalledWith(
+      homeNavigateConfig.screen,
+      homeNavigateConfig.params
+    )
   })
 
   it('should log analytics when logEvent is true', async () => {
@@ -50,13 +62,6 @@ describe('Navigation helpers', () => {
     })
   })
 
-  it('should redirect universal links to the right screen', async () => {
-    const link = WEBAPP_NATIVE_REDIRECTION_URL + '/my-route-to-test?param1=ok'
-    await openExternalUrl(link)
-
-    expect(navigationRef.current?.navigate).toBeCalledWith('UniqueTestRoute', { param1: 'ok' })
-  })
-
   describe('[Method] navigateToBooking', () => {
     it('should navigate to BookingDetails', async () => {
       const bookingId = 37815152
@@ -65,20 +70,3 @@ describe('Navigation helpers', () => {
     })
   })
 })
-
-jest.mock('features/navigation/navigationRef')
-
-/** FAKING DEEPLINKS ROUTING */
-jest.mock('features/deeplinks/routing', () => ({
-  DEEPLINK_TO_SCREEN_CONFIGURATION: {
-    'my-route-to-test': function (params: Record<string, string>) {
-      return {
-        screen: 'UniqueTestRoute',
-        params: {
-          param1: params.param1,
-        },
-      }
-    },
-  },
-}))
-/** FAKING DEEPLINKS ROUTING END */

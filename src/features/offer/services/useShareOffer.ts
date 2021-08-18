@@ -3,29 +3,39 @@ import { Platform, Share } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
+import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
 import { humanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
-import { useWebAppUrl } from 'libs/environment'
+import { env, useWebAppUrl, WEBAPP_V2_URL } from 'libs/environment'
+import { MonitoringError } from 'libs/errorMonitoring'
 
 import { useOffer } from '../api/useOffer'
 import { getLocationName } from '../atoms/LocationCaption'
 
 import { useFunctionOnce } from './useFunctionOnce'
 
-const shareOffer = async (offer: OfferResponse, webAppUrl: string) => {
-  const { id, isDigital, name, venue } = offer
-  const locationName = getLocationName(venue, isDigital)
+export function getWebappOfferUrl(offerId: number, webAppUrl: string) {
+  if (webAppUrl === WEBAPP_V2_URL) {
+    const path = new DeeplinkPathWithPathParams(DeeplinkPath.OFFER, { id: offerId.toString() })
+    return `${webAppUrl}/${path.getFullPath()}`
+  }
+  if (webAppUrl === env.WEBAPP_URL) {
+    return `${webAppUrl}/accueil/details/${humanizeId(offerId)}`
+  }
+  throw new MonitoringError(
+    `webAppUrl=${webAppUrl} should be equal to WEBAPP_V2_URL=${WEBAPP_V2_URL} or env.WEBAPP_URL=${env.WEBAPP_URL}`
+  )
+}
+
+async function shareOffer(offer: OfferResponse, webAppUrl: string) {
+  const locationName = getLocationName(offer.venue, offer.isDigital)
   const message = t({
     id: 'share offer message',
-    values: { name, locationName },
+    values: { name: offer.name, locationName },
     message: 'Retrouve "{name}" chez "{locationName}" sur le pass Culture',
   })
-  const url = generateLongFirebaseDynamicLink(
-    'offer',
-    webAppUrl,
-    `id=${id}`,
-    `&ofl=${webAppUrl}/accueil/details/${humanizeId(id)}`
-  )
+  const fullWebAppUrlWithParams = getWebappOfferUrl(offer.id, webAppUrl)
+  const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
 
   // url share content param is only for iOs, so we add url in message for android
   const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)

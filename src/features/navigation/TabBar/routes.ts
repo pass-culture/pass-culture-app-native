@@ -1,6 +1,7 @@
 import { LinkingOptions } from '@react-navigation/native'
 
 import { Bookings } from 'features/bookings/pages/Bookings'
+import { DeeplinkPath } from 'features/deeplinks/enums'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
@@ -18,7 +19,7 @@ export const routes: Array<TabRoute> = [
     name: 'Home',
     component: Home,
     pathConfig: {
-      path: 'home',
+      path: DeeplinkPath.HOME,
       parse: screenParamsParser['Home'],
     },
   },
@@ -26,7 +27,7 @@ export const routes: Array<TabRoute> = [
     name: 'Search',
     component: Search,
     pathConfig: {
-      path: 'recherche',
+      path: DeeplinkPath.SEARCH,
       parse: screenParamsParser['Search'],
       stringify: screenParamsStringifier['Search'],
     },
@@ -39,12 +40,12 @@ export const routes: Array<TabRoute> = [
   {
     name: 'Favorites',
     component: Favorites,
-    path: 'favorites',
+    path: DeeplinkPath.FAVORIS,
   },
   {
     name: 'Profile',
     component: Profile,
-    path: 'profile',
+    path: DeeplinkPath.PROFILE,
   },
 ].map((r) => ({ ...r, key: r.name } as TabRoute))
 

@@ -1,6 +1,5 @@
 import { env } from 'libs/environment'
 
-import { parseURI } from './useDeeplinkUrlHandler'
 import {
   WEBAPP_NATIVE_REDIRECTION_URL,
   FIREBASE_DYNAMIC_LINK_URL,
@@ -20,32 +19,20 @@ describe('Formatting deeplink url', () => {
   })
 
   describe('getLongDynamicLinkURI', () => {
-    it.each([
-      [false, 0],
-      [true, 1],
-    ])(
-      'should create the right URI for Firebase Dynamic Links',
-      (ignoreMiddlePage, expectedIgnoreMiddlePage) => {
-        const parsed = parseURI(getLongDynamicLinkURI(ignoreMiddlePage))
-
-        expect(parsed).toEqual({
-          apn: env.ANDROID_APP_ID,
-          isi: String(env.IOS_APP_STORE_ID),
-          ibi: env.IOS_APP_ID,
-          efr: String(expectedIgnoreMiddlePage),
-        })
-      }
-    )
+    it('should create the right URI for Firebase Dynamic Links', () => {
+      const params = new URLSearchParams(getLongDynamicLinkURI())
+      expect(params.get('apn')).toEqual(env.ANDROID_APP_ID)
+      expect(params.get('isi')).toEqual(String(env.IOS_APP_STORE_ID))
+      expect(params.get('ibi')).toEqual(env.IOS_APP_ID)
+    })
   })
 
   describe('generateLongFirebaseDynamicLink', () => {
     it('should return a format long firebase dynamic link', () => {
-      const screen = 'offer'
-      const webAppUrl = 'https://web.example.com'
-      const uri = 'id=345&test_params=est_ce_que_cest_ok'
-      const url = generateLongFirebaseDynamicLink(screen, webAppUrl, uri)
-      expect(url).toEqual(
-        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${webAppUrl}/${screen}?${uri}&${getLongDynamicLinkURI()}`
+      const fullWebAppUrlWithParams = 'https://web.example.com/offre/1'
+      const dynamicLink = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
+      expect(dynamicLink).toEqual(
+        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${fullWebAppUrlWithParams}&${getLongDynamicLinkURI()}`
       )
     })
   })
