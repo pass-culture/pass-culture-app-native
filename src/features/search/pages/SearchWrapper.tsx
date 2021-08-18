@@ -104,9 +104,11 @@ export const sanitizeSearchStateParams = (searchState: RecursivePartial<SearchSt
     ...(offerIsNew ? { offerIsNew } : {}),
     ...(offerTypes?.isDigital || offerTypes?.isEvent || offerTypes?.isThing
       ? {
-          ...(offerTypes?.isDigital ? { isDigital: offerTypes?.isDigital } : {}),
-          ...(offerTypes?.isEvent ? { isEvent: offerTypes?.isEvent } : {}),
-          ...(offerTypes?.isThing ? { isThing: offerTypes?.isThing } : {}),
+          offerTypes: {
+            ...(offerTypes?.isDigital ? { isDigital: offerTypes?.isDigital } : {}),
+            ...(offerTypes?.isEvent ? { isEvent: offerTypes?.isEvent } : {}),
+            ...(offerTypes?.isThing ? { isThing: offerTypes?.isThing } : {}),
+          },
         }
       : {}),
     ...(place ? { place } : {}),
