@@ -1378,10 +1378,10 @@
   resolved "https://registry.yarnpkg.com/@bam.tech/react-native-batch/-/react-native-batch-6.0.0.tgz#857a3d864c8d6635235ffb78efbe85525a15446f"
   integrity sha512-MBMJ1R0fPjJDaukzReCIvySOO4XUGEpnFvqRSsMMpwYCmYp/ieLAIkscScyAa6wUxJyad+/meawYjcYWZ1JUGg==
 
-"@bam.tech/react-native-config@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@bam.tech/react-native-config/-/react-native-config-0.13.0.tgz#e42314b07cbd1dd7f0301a455846be78f641dee8"
-  integrity sha512-pH43w9pvQO/SRL+ADGT/3j6aXDGdNrRPEibtSEnb4lKGpeoFe7xUjid4VTmrf38VEY6RK0//Uqg+cC/vlEGvng==
+"@bam.tech/react-native-config@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@bam.tech/react-native-config/-/react-native-config-1.4.2.tgz#05cfa706751b32bb2a3807ddfd39bb358f20ca6d"
+  integrity sha512-2Wbw7nJQLnm3EBid8VGkn+4pZxHLi1z1uPiGsGexcP76Rnztz/iDQNqjgi3QZViISNOYSQU70KF7pOlxxyMFng==
 
 "@bam.tech/react-native-make@^3.0.0":
   version "3.0.3"
