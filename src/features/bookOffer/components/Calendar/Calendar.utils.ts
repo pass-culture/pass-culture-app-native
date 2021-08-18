@@ -1,3 +1,5 @@
+export const today = "Aujourd'hui"
+
 export const monthNames = [
   'Janvier',
   'Février',
