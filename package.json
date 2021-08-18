@@ -243,7 +243,7 @@
     "prettier": "^2.1.2",
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.4",
-    "react-dom": "16.11.0",
+    "react-dom": "^17.0.2",
     "react-native-appsflyer": "^6.2.42",
     "react-native-flipper": "^0.98.0",
     "react-native-svg-web": "^1.0.9",
