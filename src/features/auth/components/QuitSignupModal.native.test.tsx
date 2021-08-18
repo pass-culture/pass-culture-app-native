@@ -11,7 +11,7 @@ const resumeMock = jest.fn()
 
 describe('QuitSignupModal', () => {
   beforeEach(() => {
-    // @ts-ignore: logCancelSignup is the mock function but is seen as the real function
+    // @ts-expect-error: logCancelSignup is the mock function but is seen as the real function
     analytics.logCancelSignup.mockClear()
   })
 

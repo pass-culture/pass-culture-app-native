@@ -15,14 +15,14 @@ export const AppNavigationContainer = () => {
 
   useEffect(() => {
     return () => {
-      /* @ts-ignore : Cannot assign to 'current' because it is a read-only property. */
+      /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
       isNavigationReadyRef.current = false
     }
   }, [])
 
   function setRef(ref: NavigationContainerRef | null) {
     if (ref) {
-      /* @ts-ignore : Cannot assign to 'current' because it is a read-only property. */
+      /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
       navigationRef.current = ref
       setIsRefDefined(true)
     }
@@ -34,7 +34,7 @@ export const AppNavigationContainer = () => {
       onStateChange={onNavigationStateChange}
       ref={setRef}
       onReady={() => {
-        /* @ts-ignore : Cannot assign to 'current' because it is a read-only property. */
+        /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
         isNavigationReadyRef.current = true
       }}
       theme={NAV_THEME}>

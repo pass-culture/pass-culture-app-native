@@ -11,7 +11,7 @@ describe('remoteStore', () => {
     firestore()
       .collection('maintenance')
       .doc('testing')
-      // @ts-ignore is a mock
+      // @ts-expect-error is a mock
       .onSnapshot.mockImplementationOnce((localOnNext) => {
         onNext = localOnNext
       })
@@ -28,7 +28,7 @@ describe('remoteStore', () => {
     })
     it('should set up listener with given callback', () => {
       const get = jest.fn().mockReturnValue('getReturn')
-      // @ts-ignore is an incomplete mock
+      // @ts-expect-error is an incomplete mock
       const docSnapshot: FirebaseFirestoreTypes.DocumentSnapshot = { get }
       onNext(docSnapshot)
       expect(get).toHaveBeenCalledWith('maintenanceIsOn')

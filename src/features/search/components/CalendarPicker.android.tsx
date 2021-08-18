@@ -27,7 +27,7 @@ export const CalendarPicker: React.FC<Props> = ({
       mode="date"
       is24Hour={true}
       display="spinner"
-      // @ts-ignore FIXME: Types of parameters 'event' and 'event' are incompatible. Type 'Event' is not assignable to type 'AndroidEvent'. Added with PR #1272 when adding Web support
+      // @ts-expect-error FIXME: Types of parameters 'event' and 'event' are incompatible. Type 'Event' is not assignable to type 'AndroidEvent'. Added with PR #1272 when adding Web support
       onChange={onChange}
     />
   )

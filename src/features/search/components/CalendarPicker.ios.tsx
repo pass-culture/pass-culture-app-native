@@ -36,7 +36,7 @@ export const CalendarPicker: React.FC<Props> = ({
           mode="date"
           is24Hour={true}
           display="spinner"
-          // @ts-ignore FIXME: Type '(_event: Event, newDate: Date | undefined) => void' is not assignable to type '(event: Event, date?: Date | undefined) => void'. Added with PR #1272 when adding Web support
+          // @ts-expect-error FIXME: Type '(_event: Event, newDate: Date | undefined) => void' is not assignable to type '(event: Event, date?: Date | undefined) => void'. Added with PR #1272 when adding Web support
           onChange={onChange}
           textColor={ColorsEnum.BLACK}
           locale="fr-FR"

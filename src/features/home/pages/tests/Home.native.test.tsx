@@ -166,7 +166,7 @@ describe('Home component - Analytics', () => {
     })
     expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(0)
 
-    // @ts-ignore: logAllModulesSeen is the mock function but is seen as the real function
+    // @ts-expect-error: logAllModulesSeen is the mock function but is seen as the real function
     analytics.logAllModulesSeen.mockClear()
 
     await act(async () => {

@@ -34,7 +34,7 @@ const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> 
   dangerouslyGetParent: jest.fn(),
   dangerouslyGetState: jest.fn(),
   dispatch: jest.fn(),
-  // @ts-ignore : ignore type of emit to facilitate testing
+  // @ts-expect-error : ignore type of emit to facilitate testing
   emit: jest.fn(() => ({ defaultPrevented: false })),
   goBack: jest.fn(),
   isFocused: jest.fn(),

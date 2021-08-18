@@ -53,9 +53,9 @@ describe('<BookingImpossible />', () => {
     )
 
     mockedUseMutation
-      // @ts-ignore ts(2345)
+      // @ts-expect-error ts(2345)
       .mockImplementationOnce(mockUseMutationNotifyWebappLinkSent)
-      // @ts-ignore ts(2345)
+      // @ts-expect-error ts(2345)
       .mockImplementationOnce(useMutationFactory(useMutationAddFavoriteCallbacks))
 
     const { getByText } = render(<BookingImpossible />)

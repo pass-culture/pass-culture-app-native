@@ -14,14 +14,14 @@ describe('OfferPartialDescription', () => {
   it('centers CTA when provided description is empty', async () => {
     const { getByTestId } = await renderOfferDescription('')
     const offerSeeMoreContainer = getByTestId('offerSeeMoreContainer')
-    // @ts-ignore FIXME see how to fix typing
+    // @ts-expect-error FIXME see how to fix typing
     const { 'align-self': alignSelf } = offerSeeMoreContainer.style
     expect(alignSelf).toBe('center')
   })
   it('places CTA on flex-end when provided a description', async () => {
     const { getByTestId } = await renderOfferDescription(description)
     const offerSeeMoreContainer = getByTestId('offerSeeMoreContainer')
-    // @ts-ignore FIXME see how to fix typing
+    // @ts-expect-error FIXME see how to fix typing
     const { 'align-self': alignSelf } = offerSeeMoreContainer.style
     expect(alignSelf).toBe('flex-end')
   })
