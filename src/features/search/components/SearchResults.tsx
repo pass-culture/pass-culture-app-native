@@ -16,15 +16,8 @@ const keyExtractor = (item: SearchHit) => item.objectID
 
 export const SearchResults: React.FC = () => {
   const flatListRef = useRef<FlatList<SearchHit> | null>(null)
-  const {
-    hasNextPage,
-    fetchNextPage,
-    data,
-    hits,
-    nbHits,
-    isLoading,
-    isFetchingNextPage,
-  } = useSearchResults()
+  const { hasNextPage, fetchNextPage, data, hits, nbHits, isLoading, isFetchingNextPage } =
+    useSearchResults()
   const { searchState } = useSearch()
 
   useEffect(

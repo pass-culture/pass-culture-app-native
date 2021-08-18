@@ -46,8 +46,7 @@ const favorite: FavoriteResponse = {
     id: 146105,
     image: {
       credit: null,
-      url:
-        'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
+      url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
     },
     name: 'Un lit sous une rivière',
     price: null,

@@ -67,15 +67,8 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
     }
 
     if (contentType === CONTENT_TYPES.BUSINESS) {
-      const {
-        title,
-        firstLine,
-        secondLine,
-        leftIcon,
-        url,
-        image,
-        targetNotConnectedUsersOnly,
-      } = fields as BusinessFields
+      const { title, firstLine, secondLine, leftIcon, url, image, targetNotConnectedUsersOnly } =
+        fields as BusinessFields
 
       return new BusinessPane({
         title,

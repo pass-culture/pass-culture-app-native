@@ -54,12 +54,8 @@ export const Profile: React.FC = () => {
   const signOutFromIdCheck = useIdCheckLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  const {
-    positionError,
-    permissionState,
-    requestGeolocPermission,
-    triggerPositionUpdate,
-  } = useGeolocation()
+  const { positionError, permissionState, requestGeolocPermission, triggerPositionUpdate } =
+    useGeolocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(false)
 
   useFocusEffect(

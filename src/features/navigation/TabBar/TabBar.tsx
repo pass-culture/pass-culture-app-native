@@ -31,10 +31,9 @@ function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
   }
 }
 
-export const TabBar: React.FC<Pick<
-  BottomTabBarProps<BottomTabBarOptions>,
-  'state' | 'navigation'
->> = ({ navigation, state }) => {
+export const TabBar: React.FC<
+  Pick<BottomTabBarProps<BottomTabBarOptions>, 'state' | 'navigation'>
+> = ({ navigation, state }) => {
   const { bottom } = useCustomSafeInsets()
   const routes = state.routes as Route<TabRouteName, TabParamList>[]
   return (
