@@ -108,6 +108,8 @@ exports[`<IdCheck /> should render correctly 1`] = `
               <Text
                 accessibilityRole="header"
                 aria-level="1"
+                collapsable={false}
+                nativeID="animatedComponent"
                 numberOfLines={1}
                 onLayout={[Function]}
                 style={
@@ -209,6 +211,8 @@ exports[`<IdCheck /> should render correctly 1`] = `
           }
         >
           <View
+            collapsable={false}
+            nativeID="animatedComponent"
             needsOffscreenAlphaCompositing={false}
             pointerEvents="box-none"
             style={

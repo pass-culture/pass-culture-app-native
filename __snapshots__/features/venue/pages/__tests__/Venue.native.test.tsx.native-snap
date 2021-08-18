@@ -605,16 +605,13 @@ exports[`<Venue /> should match snapshot 1`] = `
             },
           ]
         }
-        disableVirtualization={false}
         getItem={[Function]}
         getItemCount={[Function]}
         horizontal={true}
-        initialNumToRender={10}
         keyExtractor={[Function]}
-        maxToRenderPerBatch={10}
         onContentSizeChange={[Function]}
-        onEndReachedThreshold={2}
         onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
         onMomentumScrollEnd={[Function]}
         onScroll={[Function]}
         onScrollBeginDrag={[Function]}
@@ -625,9 +622,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         showsHorizontalScrollIndicator={false}
         stickyHeaderIndices={Array []}
         testID="offersModuleList"
-        updateCellsBatchingPeriod={50}
         viewabilityConfigCallbackPairs={Array []}
-        windowSize={21}
       >
         <View>
           <View
@@ -1110,7 +1105,9 @@ exports[`<Venue /> should match snapshot 1`] = `
         <View
           accessibilityLabel="Voir toutes les offres"
           accessible={true}
+          collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -1315,7 +1312,9 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             accessibilityLabel="Voir l'itinéraire"
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -1436,6 +1435,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           Modalités de retrait
         </Text>
         <View
+          collapsable={false}
+          nativeID="animatedComponent"
           style={
             Object {
               "transform": Array [
@@ -1458,6 +1459,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         </View>
       </View>
       <View
+        collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "height": 0,
@@ -1559,6 +1562,8 @@ exports[`<Venue /> should match snapshot 1`] = `
     </View>
   </RCTScrollView>
   <View
+    collapsable={false}
+    nativeID="animatedComponent"
     style={
       Object {
         "backgroundColor": "rgba(255, 255, 255, 0)",
@@ -1614,7 +1619,9 @@ exports[`<Venue /> should match snapshot 1`] = `
       <View
         accessibilityLabel="Revenir en arrière"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -1630,6 +1637,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="Revenir en arrière"
       >
         <View
+          collapsable={false}
+          nativeID="animatedComponent"
           style={
             Object {
               "alignItems": "center",
@@ -1659,6 +1668,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           >
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "opacity": 1,
@@ -1678,6 +1689,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               </View>
             </View>
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "opacity": 0,
@@ -1711,6 +1724,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <Text
+        collapsable={false}
+        nativeID="animatedComponent"
         numberOfLines={1}
         style={
           Object {
@@ -1751,7 +1766,9 @@ exports[`<Venue /> should match snapshot 1`] = `
       <View
         accessibilityLabel="Partager"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -1767,6 +1784,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="Partager"
       >
         <View
+          collapsable={false}
+          nativeID="animatedComponent"
           style={
             Object {
               "alignItems": "center",
@@ -1796,6 +1815,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           >
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "opacity": 1,
@@ -1816,6 +1837,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               </View>
             </View>
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "opacity": 0,

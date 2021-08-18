@@ -179,7 +179,9 @@ Array [
                   <View
                     accessibilityLabel="Accéder à l'offre"
                     accessible={true}
+                    collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -322,7 +324,9 @@ Array [
           />
           <View
             accessible={true}
+            collapsable={false}
             focusable={false}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -459,7 +463,9 @@ Array [
           <View
             accessibilityLabel="Voir l'itinéraire"
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -530,7 +536,9 @@ Array [
         <View
           accessibilityLabel="Voir le détail de l’offre"
           accessible={true}
+          collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -646,8 +654,10 @@ Array [
   >
     <View
       accessible={true}
+      collapsable={false}
       focusable={true}
       forwardedRef={[Function]}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -670,10 +680,12 @@ Array [
       }
     />
     <View
+      collapsable={false}
       deviceHeight={null}
       deviceWidth={null}
       forwardedRef={[Function]}
       hideModalContentWhileAnimating={false}
+      nativeID="animatedComponent"
       onBackdropPress={[Function]}
       onModalHide={[Function]}
       onModalWillHide={[Function]}
@@ -730,7 +742,9 @@ Array [
       >
         <View
           accessible={true}
+          collapsable={false}
           focusable={false}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -771,7 +785,9 @@ Array [
           >
             <View
               accessible={true}
+              collapsable={false}
               focusable={false}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -812,7 +828,9 @@ Array [
             </Text>
             <View
               accessible={true}
+              collapsable={false}
               focusable={true}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -896,7 +914,9 @@ Array [
               <View
                 accessibilityLabel="Annuler ma réservation"
                 accessible={true}
+                collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -957,7 +977,9 @@ Array [
               <View
                 accessibilityLabel="Retourner à ma réservation"
                 accessible={true}
+                collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -1051,8 +1073,10 @@ Array [
   >
     <View
       accessible={true}
+      collapsable={false}
       focusable={true}
       forwardedRef={[Function]}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -1075,10 +1099,12 @@ Array [
       }
     />
     <View
+      collapsable={false}
       deviceHeight={null}
       deviceWidth={null}
       forwardedRef={[Function]}
       hideModalContentWhileAnimating={false}
+      nativeID="animatedComponent"
       onBackdropPress={[Function]}
       onModalHide={[Function]}
       onModalWillHide={[Function]}
@@ -1135,7 +1161,9 @@ Array [
       >
         <View
           accessible={true}
+          collapsable={false}
           focusable={false}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -1176,7 +1204,9 @@ Array [
           >
             <View
               accessible={true}
+              collapsable={false}
               focusable={false}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1217,7 +1247,9 @@ Array [
             </Text>
             <View
               accessible={true}
+              collapsable={false}
               focusable={true}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1318,7 +1350,9 @@ Array [
               <View
                 accessibilityLabel="Terminer ma réservation"
                 accessible={true}
+                collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -1379,7 +1413,9 @@ Array [
               <View
                 accessibilityLabel="Retourner à ma réservation"
                 accessible={true}
+                collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -1434,6 +1470,8 @@ Array [
     </View>
   </Modal>,
   <View
+    collapsable={false}
+    nativeID="animatedComponent"
     style={
       Object {
         "backgroundColor": "rgba(255, 255, 255, 0)",
@@ -1489,7 +1527,9 @@ Array [
         <View
           accessibilityLabel="Revenir en arrière"
           accessible={true}
+          collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -1505,6 +1545,8 @@ Array [
           testID="Revenir en arrière"
         >
           <View
+            collapsable={false}
+            nativeID="animatedComponent"
             style={
               Object {
                 "alignItems": "center",
@@ -1534,6 +1576,8 @@ Array [
               }
             >
               <View
+                collapsable={false}
+                nativeID="animatedComponent"
                 style={
                   Object {
                     "opacity": 1,
@@ -1553,6 +1597,8 @@ Array [
                 </View>
               </View>
               <View
+                collapsable={false}
+                nativeID="animatedComponent"
                 style={
                   Object {
                     "opacity": 0,
@@ -1576,6 +1622,8 @@ Array [
         </View>
       </View>
       <Text
+        collapsable={false}
+        nativeID="animatedComponent"
         numberOfLines={1}
         style={
           Object {

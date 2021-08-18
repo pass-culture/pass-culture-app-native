@@ -108,6 +108,8 @@ exports[`<OfferDescription /> should render 1`] = `
               <Text
                 accessibilityRole="header"
                 aria-level="1"
+                collapsable={false}
+                nativeID="animatedComponent"
                 numberOfLines={1}
                 onLayout={[Function]}
                 style={
@@ -209,6 +211,8 @@ exports[`<OfferDescription /> should render 1`] = `
           }
         >
           <View
+            collapsable={false}
+            nativeID="animatedComponent"
             needsOffscreenAlphaCompositing={false}
             pointerEvents="box-none"
             style={
@@ -329,16 +333,12 @@ Tous les détails du film sur AlloCiné: ",
                           },
                         ]
                       }
-                      disableVirtualization={false}
                       getItem={[Function]}
                       getItemCount={[Function]}
-                      horizontal={false}
-                      initialNumToRender={10}
                       keyExtractor={[Function]}
-                      maxToRenderPerBatch={10}
                       onContentSizeChange={[Function]}
-                      onEndReachedThreshold={2}
                       onLayout={[Function]}
+                      onMomentumScrollBegin={[Function]}
                       onMomentumScrollEnd={[Function]}
                       onScroll={[Function]}
                       onScrollBeginDrag={[Function]}
@@ -349,9 +349,7 @@ Tous les détails du film sur AlloCiné: ",
                       showsHorizontalScrollIndicator={false}
                       stickyHeaderIndices={Array []}
                       testID="offer-description-list"
-                      updateCellsBatchingPeriod={50}
                       viewabilityConfigCallbackPairs={Array []}
-                      windowSize={21}
                     >
                       <View>
                         <View

@@ -108,6 +108,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
               <Text
                 accessibilityRole="header"
                 aria-level="1"
+                collapsable={false}
+                nativeID="animatedComponent"
                 numberOfLines={1}
                 onLayout={[Function]}
                 style={
@@ -209,6 +211,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
           }
         >
           <View
+            collapsable={false}
+            nativeID="animatedComponent"
             needsOffscreenAlphaCompositing={false}
             pointerEvents="box-none"
             style={
@@ -817,7 +821,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               <View
                                 accessibilityLabel="description-details-button"
                                 accessible={true}
+                                collapsable={false}
                                 focusable={true}
+                                nativeID="animatedComponent"
                                 onClick={[Function]}
                                 onResponderGrant={[Function]}
                                 onResponderMove={[Function]}
@@ -2268,7 +2274,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     <View
                                       accessibilityLabel="Signaler l'offre"
                                       accessible={true}
+                                      collapsable={false}
                                       focusable={true}
+                                      nativeID="animatedComponent"
                                       onClick={[Function]}
                                       onResponderGrant={[Function]}
                                       onResponderMove={[Function]}
@@ -3333,7 +3341,6 @@ cette offre ?
                                       }
                                     >
                                       <TextInput
-                                        allowFontScaling={true}
                                         maxLength={200}
                                         multiline={true}
                                         onBlur={[Function]}
@@ -3341,7 +3348,6 @@ cette offre ?
                                         onFocus={[Function]}
                                         placeholder=""
                                         placeholderTextColor="#626262"
-                                        rejectResponderTermination={true}
                                         style={
                                           Array [
                                             Object {
@@ -3363,7 +3369,6 @@ cette offre ?
                                           ]
                                         }
                                         testID="large-text-input"
-                                        underlineColorAndroid="transparent"
                                         value=""
                                       />
                                     </View>
@@ -3556,6 +3561,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
               <Text
                 accessibilityRole="header"
                 aria-level="1"
+                collapsable={false}
+                nativeID="animatedComponent"
                 numberOfLines={1}
                 onLayout={[Function]}
                 style={
@@ -3657,6 +3664,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           }
         >
           <View
+            collapsable={false}
+            nativeID="animatedComponent"
             needsOffscreenAlphaCompositing={false}
             pointerEvents="box-none"
             style={
@@ -4330,7 +4339,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               <View
                                 accessibilityLabel="description-details-button"
                                 accessible={true}
+                                collapsable={false}
                                 focusable={true}
+                                nativeID="animatedComponent"
                                 onClick={[Function]}
                                 onResponderGrant={[Function]}
                                 onResponderMove={[Function]}
@@ -6046,7 +6057,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     <View
                                       accessibilityLabel="Signaler l'offre"
                                       accessible={true}
+                                      collapsable={false}
                                       focusable={true}
+                                      nativeID="animatedComponent"
                                       onClick={[Function]}
                                       onResponderGrant={[Function]}
                                       onResponderMove={[Function]}
@@ -7111,7 +7124,6 @@ cette offre ?
                                       }
                                     >
                                       <TextInput
-                                        allowFontScaling={true}
                                         maxLength={200}
                                         multiline={true}
                                         onBlur={[Function]}
@@ -7119,7 +7131,6 @@ cette offre ?
                                         onFocus={[Function]}
                                         placeholder=""
                                         placeholderTextColor="#626262"
-                                        rejectResponderTermination={true}
                                         style={
                                           Array [
                                             Object {
@@ -7141,7 +7152,6 @@ cette offre ?
                                           ]
                                         }
                                         testID="large-text-input"
-                                        underlineColorAndroid="transparent"
                                         value=""
                                       />
                                     </View>

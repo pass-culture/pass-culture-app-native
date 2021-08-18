@@ -203,7 +203,9 @@ exports[`CodePushButton prints undefined 1`] = `
 exports[`CodePushButton renders correctly 1`] = `
 <View
   accessible={true}
+  collapsable={false}
   focusable={true}
+  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
