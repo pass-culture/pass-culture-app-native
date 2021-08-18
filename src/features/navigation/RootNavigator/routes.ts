@@ -3,7 +3,6 @@ import {
   initialRouteName as idCheckInitialRouteName,
   withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
 } from '@pass-culture/id-check'
-import { LinkingOptions } from '@react-navigation/native'
 
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
@@ -40,6 +39,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
+import { DeeplinkPath } from 'features/deeplinks/enums'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -78,7 +78,7 @@ export const routes: Array<Route> = [
     name: 'AfterSignupEmailValidationBuffer',
     component: AfterSignupEmailValidationBuffer,
     pathConfig: {
-      path: 'signup-confirmation',
+      path: DeeplinkPath.SIGNUP_CONFIRMATION,
       parse: screenParamsParser['AfterSignupEmailValidationBuffer'],
     },
   },
@@ -134,7 +134,7 @@ export const routes: Array<Route> = [
     component: Login,
     hoc: withAsyncErrorBoundary,
     pathConfig: {
-      path: 'login',
+      path: DeeplinkPath.LOGIN,
       parse: screenParamsParser['Login'],
     },
   },
@@ -152,7 +152,7 @@ export const routes: Array<Route> = [
     component: Offer,
     hoc: withAsyncErrorBoundary,
     pathConfig: {
-      path: 'offer/:id',
+      path: DeeplinkPath.OFFER,
       parse: screenParamsParser['Offer'],
     },
   },
@@ -160,7 +160,7 @@ export const routes: Array<Route> = [
     name: 'OfferDescription',
     component: OfferDescription,
     hoc: withAsyncErrorBoundary,
-    path: 'offer/:id/description',
+    path: 'offre/:id/description',
   },
   { name: 'PersonalData', component: PersonalData, path: 'personal-data' },
   { name: 'ChangePassword', component: ChangePassword, path: 'change-password' },
@@ -168,7 +168,7 @@ export const routes: Array<Route> = [
     name: 'ReinitializePassword',
     component: ReinitializePassword,
     pathConfig: {
-      path: 'mot-de-passe-perdu',
+      path: DeeplinkPath.FORGOTTEN_PASSWORD,
       parse: screenParamsParser['ReinitializePassword'],
     },
   },
@@ -186,7 +186,7 @@ export const routes: Array<Route> = [
   { name: 'SearchCategories', component: SearchCategories, path: 'recherche/categories' },
   { name: 'SearchFilter', component: SearchFilter, path: 'recherche/filtres' },
   { name: 'SetBirthday', component: SetBirthday, path: 'setbirthday' },
-  { name: 'SetEmail', component: SetEmail, path: 'setemail' },
+  { name: 'SetEmail', component: SetEmail, path: DeeplinkPath.SET_EMAIL },
   { name: 'SetPassword', component: SetPassword, path: 'setpassword' },
   { name: 'SetRedactorEmail', component: SetRedactorEmail, path: 'setredactoremail' },
   { name: 'SetRedactorPassword', component: SetRedactorPassword, path: 'setredactorpassword' },
@@ -206,7 +206,11 @@ export const routes: Array<Route> = [
     path: 'signup-confirmation-expired-link',
   },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
-  { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep, path: 'next-beneficiary-step' },
+  {
+    name: 'NextBeneficiaryStep',
+    component: NextBeneficiaryStep,
+    path: DeeplinkPath.NEXT_BENEFECIARY_STEP,
+  },
   { name: 'SetPhoneNumber', component: SetPhoneNumber, path: 'set-phone-number' },
   {
     name: 'SetPhoneValidationCode',
@@ -222,22 +226,15 @@ export const routes: Array<Route> = [
   { name: 'FirstTutorial', component: FirstTutorial, path: 'first-tutorial' },
   { name: 'ForceUpdate', component: ForceUpdate, path: 'force-update' },
   { name: 'IdCheckUnavailable', component: IdCheckUnavailable, path: 'idcheck-unavailable' },
-  { name: 'Venue', component: Venue, hoc: withAsyncErrorBoundary, path: 'venue' },
+  {
+    name: 'Venue',
+    component: Venue,
+    hoc: withAsyncErrorBoundary,
+    pathConfig: {
+      path: DeeplinkPath.VENUE,
+      parse: screenParamsParser['Venue'],
+    },
+  },
   ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
   { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheckv2' },
 ]
-
-export const linking: LinkingOptions = {
-  prefixes: [],
-  config: {
-    screens: {
-      ...routes.reduce(
-        (route, currentRoute) => ({
-          ...route,
-          [currentRoute.name]: currentRoute.pathConfig || currentRoute.path,
-        }),
-        {}
-      ),
-    },
-  },
-}

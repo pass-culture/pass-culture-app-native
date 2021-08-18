@@ -5,6 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { goBack } from '__mocks__/@react-navigation/native'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { getWebappVenueUrl } from 'features/venue/services/useShareVenue'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
@@ -56,7 +57,8 @@ describe('<VenueHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
 
     expect(share).toHaveBeenCalledTimes(1)
-    const url = generateLongFirebaseDynamicLink('venue', env.WEBAPP_URL, 'id=5543')
+    const fullWebappUrlWithParams = getWebappVenueUrl(5543, env.WEBAPP_URL)
+    const url = generateLongFirebaseDynamicLink(fullWebappUrlWithParams)
     const message = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
     expect(share).toHaveBeenCalledWith(
       { message, title: message, url },
@@ -72,7 +74,8 @@ describe('<VenueHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
 
     expect(share).toHaveBeenCalledTimes(1)
-    const url = generateLongFirebaseDynamicLink('venue', env.WEBAPP_URL, 'id=5543')
+    const fullWebappUrlWithParams = getWebappVenueUrl(5543, env.WEBAPP_URL)
+    const url = generateLongFirebaseDynamicLink(fullWebappUrlWithParams)
     const message = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
     const messageWithUrl = `${message}\n\n${url}`
     expect(share).toHaveBeenCalledWith(

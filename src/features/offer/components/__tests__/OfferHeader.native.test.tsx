@@ -12,6 +12,7 @@ import {
   addFavoriteJsonResponseSnap,
 } from 'features/favorites/api/snaps/favorisResponseSnap'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { getWebappOfferUrl } from 'features/offer/services/useShareOffer'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -101,12 +102,8 @@ describe('<OfferHeader />', () => {
 
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
-    const url = generateLongFirebaseDynamicLink(
-      'offer',
-      env.WEBAPP_URL,
-      'id=116656',
-      `&ofl=${env.WEBAPP_URL}/accueil/details/AHD3A`
-    )
+    const fullWebAppUrlWithParams = getWebappOfferUrl(116656, env.WEBAPP_URL)
+    const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
     const message =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
     const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
@@ -123,12 +120,8 @@ describe('<OfferHeader />', () => {
 
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
-    const url = generateLongFirebaseDynamicLink(
-      'offer',
-      env.WEBAPP_URL,
-      'id=116656',
-      `&ofl=${env.WEBAPP_URL}/accueil/details/AHD3A`
-    )
+    const fullWebAppUrlWithParams = getWebappOfferUrl(116656, env.WEBAPP_URL)
+    const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
     const messageWithUrl =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
       url

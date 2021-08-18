@@ -2,8 +2,9 @@ import { Route, useNavigationState } from '@react-navigation/native'
 import { Linking } from 'react-native'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
-import { getScreenFromDeeplink } from 'features/deeplinks/useDeeplinkUrlHandler'
+import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
 import { analytics } from 'libs/analytics'
+import { WEBAPP_V2_URL } from 'libs/environment'
 
 import { navigationRef } from './navigationRef'
 
@@ -32,9 +33,15 @@ export function navigateToBooking(bookingId: number) {
 }
 
 export async function openExternalUrl(url: string, logEvent: boolean | undefined = true) {
-  if (url.match('^' + WEBAPP_NATIVE_REDIRECTION_URL)) {
-    const { screen, params } = getScreenFromDeeplink(url)
-    return navigationRef.current?.navigate(screen, params)
+  const isAppUrl = url.match('^' + WEBAPP_NATIVE_REDIRECTION_URL) || url.match('^' + WEBAPP_V2_URL)
+  if (isAppUrl) {
+    try {
+      const { screen, params } = getScreenFromDeeplink(url)
+      return navigationRef.current?.navigate(screen, params)
+    } catch {
+      // If an error is thrown, that means that no routes were matched
+      return navigateToHome()
+    }
   }
 
   const canOpen = await Linking.canOpenURL(url)

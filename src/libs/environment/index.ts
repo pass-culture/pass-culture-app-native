@@ -1,2 +1,2 @@
 export { env } from './env'
-export { useWebAppUrl } from './useWebAppUrl'
+export { useWebAppUrl, WEBAPP_V2_URL } from './useWebAppUrl'

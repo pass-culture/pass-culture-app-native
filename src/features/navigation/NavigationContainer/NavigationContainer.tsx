@@ -2,7 +2,7 @@ import { NavigationContainer, NavigationContainerRef, Theme } from '@react-navig
 import React, { useEffect, useState } from 'react'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
-import { linking } from 'features/navigation/RootNavigator/routes'
+import { linking } from 'features/navigation/RootNavigator/linking'
 import { ColorsEnum } from 'ui/theme'
 
 import { isNavigationReadyRef, navigationRef } from '../navigationRef'

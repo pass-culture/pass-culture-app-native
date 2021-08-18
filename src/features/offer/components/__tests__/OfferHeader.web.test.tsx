@@ -101,13 +101,8 @@ describe('<OfferHeader />', () => {
 
     fireEvent.click(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
-    const webAppUrl = 'https://web.example.com'
-    const url = generateLongFirebaseDynamicLink(
-      'offer',
-      webAppUrl,
-      'id=116656',
-      '&ofl=undefined/accueil/details/AHD3A'
-    )
+    const fullWebappUrlWithParams = 'https://web.example.com/offre/116656'
+    const url = generateLongFirebaseDynamicLink(fullWebappUrlWithParams)
     const message =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
     const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
@@ -124,13 +119,8 @@ describe('<OfferHeader />', () => {
 
     fireEvent.click(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
-    const webAppUrl = 'https://web.example.com'
-    const url = generateLongFirebaseDynamicLink(
-      'offer',
-      webAppUrl,
-      'id=116656',
-      '&ofl=undefined/accueil/details/AHD3A'
-    )
+    const fullWebappUrlWithParams = 'https://web.example.com/offre/116656'
+    const url = generateLongFirebaseDynamicLink(fullWebappUrlWithParams)
     const messageWithUrl =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
       url
