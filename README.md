@@ -22,7 +22,7 @@ You can follow this tutorial:
 #### Install nodejs
 
 If you have already installed NVM, a .nvmrc file at project root allow you to directly setup the expected version like this:
-`nvm use`
+`nvm use`. Install node 12.22.0 and use it: `nvm install 12.22.0` and `nvm use 12.22.0`.
 
 #### Install React Native CLI
 
