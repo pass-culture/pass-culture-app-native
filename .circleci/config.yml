@@ -126,18 +126,24 @@ commands:
       - run: echo ${<< parameters.gcp_key_name >>} > ${HOME}/gcp-key.json
       - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
       - run: gcloud --quiet config set project ${GCP_PROJECT}
-  build:
+  build_web:
     description: Build decliweb
+    parameters:
+      env:
+        type: string
     steps:
       - install_node_modules
       - run: |
-          yarn build:testing
+          yarn build:<< parameters.env >>
   push-to-bucket:
     description: Push the built decliweb to a cloudstorage bucket
+    parameters:
+      bucket_name:
+        type: string
     steps:
       - run: |
           set +eo pipefail
-          gsutil rsync -r ./build gs://passculture-metier-ehp-testing-decliweb
+          gsutil rsync -r ./build gs://<< parameters.bucket_name >>
           true
 
 jobs:
@@ -467,8 +473,10 @@ jobs:
       - install_node_modules
       - authenticate_gcp:
           gcp_key_name: GCP_METIER_KEY
-      - build
-      - push-to-bucket
+      - build_web:
+          env: testing
+      - push-to-bucket:
+          bucket_name: passculture-metier-ehp-testing-decliweb
 
   deploy-web-staging:
     docker:
@@ -482,8 +490,10 @@ jobs:
       - install_node_modules
       - authenticate_gcp:
           gcp_key_name: GCP_METIER_KEY
-      - build
-      - push-to-bucket
+      - build_web:
+          env: staging
+      - push-to-bucket:
+          bucket_name: passculture-metier-ehp-staging-decliweb
 
 workflows:
   version: 2.1
