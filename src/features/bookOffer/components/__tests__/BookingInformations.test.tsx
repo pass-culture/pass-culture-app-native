@@ -41,7 +41,7 @@ describe('<BookingInformations />', () => {
   })
 
   it('should render event date section when event', async () => {
-    // @ts-ignore mock is not real type
+    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       category: { categoryType: CategoryType.Event, label: 'categoryLabel' },
       isDigital: false,
@@ -54,7 +54,7 @@ describe('<BookingInformations />', () => {
   })
 
   it('should display free wording is free', async () => {
-    // @ts-ignore mock is not real type
+    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       category: { categoryType: CategoryType.Event, label: 'categoryLabel' },
       isDigital: false,
@@ -62,7 +62,7 @@ describe('<BookingInformations />', () => {
       name: 'mon nom',
       stocks: [],
     })
-    // @ts-ignore mock is not real type
+    // @ts-expect-error mock is not real type
     mockedUseBookingStock.mockReturnValueOnce({
       beginningDatetime: new Date('2020-12-01T00:00:00Z'),
       price: 0,
@@ -72,7 +72,7 @@ describe('<BookingInformations />', () => {
     expect(myComponent).toMatchSnapshot()
   })
   it('should display unique price when quantity is unique', async () => {
-    // @ts-ignore mock is not real type
+    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       category: { categoryType: CategoryType.Event, label: 'categoryLabel' },
       isDigital: false,
@@ -94,7 +94,7 @@ describe('<BookingInformations />', () => {
   })
 
   it('should display expirationDate section when offer is digital and has expirationDate', async () => {
-    // @ts-ignore mock is not real type
+    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       category: { categoryType: CategoryType.Thing, label: 'categoryLabel' },
       isDigital: true,
@@ -106,7 +106,7 @@ describe('<BookingInformations />', () => {
     expect(myComponent).toMatchSnapshot()
   })
   it('should not display expirationDate section when offer is digital and has no expirationDate', async () => {
-    // @ts-ignore mock is not real type
+    // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       category: { categoryType: CategoryType.Thing, label: 'categoryLabel' },
       isDigital: true,
@@ -114,7 +114,7 @@ describe('<BookingInformations />', () => {
       name: 'mon nom',
       stocks: [],
     })
-    // @ts-ignore mock is not real type
+    // @ts-expect-error mock is not real type
     mockedUseBookingStock.mockReturnValueOnce({
       beginningDatetime: new Date('2020-12-01T00:00:00Z'),
       price: 0,

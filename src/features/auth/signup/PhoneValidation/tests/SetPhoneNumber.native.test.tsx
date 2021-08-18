@@ -36,7 +36,7 @@ let mockedSendSetPhoneNumberCode = jest.fn()
 describe('SetPhoneNumber', () => {
   beforeEach(() => {
     mockedSendSetPhoneNumberCode = mockedUseMutation.mockImplementation(
-      // @ts-ignore ts(2345)
+      // @ts-expect-error ts(2345)
       useMutationFactory(useMutationCallbacks)
     )
   })
@@ -147,7 +147,6 @@ describe('SetPhoneNumber', () => {
 
         await flushAllPromises()
 
-        // @ts-ignore use mock to get inner mutate
         const sendSetPhoneNumberCode = mockedSendSetPhoneNumberCode().mutate
         expect(sendSetPhoneNumberCode).toHaveBeenCalledTimes(numberOfCall)
       }

@@ -213,7 +213,7 @@ export function Navigation(): JSX.Element {
             title={'Erreur rendering'}
             onPress={() => {
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
+              // @ts-expect-error
               setRenderedError(createElement(CenteredText, { children: CenteredText }))
             }}
           />

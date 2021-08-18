@@ -58,11 +58,11 @@ describe('useItinerary', () => {
       { cancelable: true }
     )
 
-    // @ts-ignore: precedent expect garanties what follows
+    // @ts-expect-error: precedent expect garanties what follows
     const wazeAlertButton = alertMock.mock.calls[0][2][1]
     expect(wazeAlertButton.text).toBe('Waze')
 
-    // @ts-ignore: same reason
+    // @ts-expect-error: same reason
     wazeAlertButton.onPress()
     expect(navigate).toHaveBeenCalledWith([48.85837, 2.294481], { app: 'waze' })
   })
@@ -157,9 +157,9 @@ describe('useItinerary', () => {
       ],
       { cancelable: true }
     )
-    // @ts-ignore: precedent assertion garanties next line
+    // @ts-expect-error: precedent assertion garanties next line
     const { onPress: onWazePress } = alertMock.mock.calls[0][2][1]
-    // @ts-ignore: same reason
+    // @ts-expect-error: same reason
     onWazePress()
     await waitForExpect(() =>
       expect(mockShowInfoSnackBar).toHaveBeenCalledWith({

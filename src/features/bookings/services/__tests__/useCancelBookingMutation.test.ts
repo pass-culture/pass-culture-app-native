@@ -27,7 +27,7 @@ describe('[hook] useCancelBookingMutation', () => {
 
   it('invalidates me and bookings after successfully cancel a booking', () => {
     const returnedMutationValue = useCancelBookingMutation({ onSuccess, onError })
-    // @ts-ignore returned value is mocked
+    // @ts-expect-error returned value is mocked
     const { mutationOptions } = returnedMutationValue
     mutationOptions.onSuccess()
     expect(onSuccess).toHaveBeenCalledWith()
@@ -37,14 +37,14 @@ describe('[hook] useCancelBookingMutation', () => {
 
   it('call api to cancel a booking', () => {
     const returnedMutationValue = useCancelBookingMutation({ onSuccess, onError })
-    // @ts-ignore returned value is mocked
+    // @ts-expect-error returned value is mocked
     const { mutationFunction } = returnedMutationValue
     mutationFunction('bookingId')
     expect(api.postnativev1bookingsbookingIdcancel).toHaveBeenCalledWith('bookingId')
   })
   it('call onError input after cancel a booking on error', () => {
     const returnedMutationValue = useCancelBookingMutation({ onSuccess, onError })
-    // @ts-ignore returned value is mocked
+    // @ts-expect-error returned value is mocked
     const { mutationOptions } = returnedMutationValue
     mutationOptions.onError()
     expect(onError).toHaveBeenCalledWith()

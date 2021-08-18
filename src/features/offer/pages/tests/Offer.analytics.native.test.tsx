@@ -99,7 +99,7 @@ describe('<Offer /> - Analytics', () => {
     await superFlushWithAct(25)
     expect(analytics.logConsultWholeOffer).toHaveBeenCalledWith(offerId)
 
-    // @ts-ignore: logConsultWholeOffer is the mock function but is seen as the real function
+    // @ts-expect-error: logConsultWholeOffer is the mock function but is seen as the real function
     analytics.logConsultWholeOffer.mockClear()
 
     await act(async () => {

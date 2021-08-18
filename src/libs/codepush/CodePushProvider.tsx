@@ -13,11 +13,11 @@ const codePushOptionsAuto = {
 const CodePushWrapper = (AppComponent: React.Component) =>
   CodePush(codePushOptionsAuto)(AppComponent)
 
-// @ts-ignore no-param
+// @ts-expect-error no-param
 const CodePushContext = createContext<CodePushContext>({})
 
 export const CodePushProvider = CodePushWrapper(
-  // @ts-ignore no-param
+  // @ts-expect-error no-param
   class App extends React.Component<Record<string, unknown>, CodePushContext> {
     state = {
       status: null,

@@ -70,7 +70,7 @@ export const safeFetch = async (
     }
   }
 
-  // @ts-ignore
+  // @ts-expect-error
   const authorizationHeader: string = options.headers?.['Authorization'] || ''
   const token = authorizationHeader.replace('Bearer ', '')
   const tokenContent = decodeAccessToken(token)
@@ -185,4 +185,3 @@ export function extractApiErrorMessage(error: unknown) {
   }
   return message
 }
-

@@ -13,7 +13,7 @@ describe('HeroImage', () => {
   })
 
   it('shows both placeholders when url is undefined', () => {
-    // @ts-ignore : for test purpose
+    // @ts-expect-error : for test purpose
     const { queryByTestId } = render(<Hero imageUrl={undefined} />)
     expect(queryByTestId('BackgroundPlaceholder')).toBeTruthy()
     expect(queryByTestId('categoryIcon')).toBeTruthy()

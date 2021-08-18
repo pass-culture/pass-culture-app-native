@@ -47,7 +47,7 @@ describe('<ReportOfferOtherReasonModal />', () => {
         onSuccess: () => {},
         onError: () => {},
       }
-      // @ts-ignore ts(2345)
+      // @ts-expect-error ts(2345)
       mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
 
       const { getByTestId } = renderReportOtherReasonModal()
@@ -69,7 +69,7 @@ describe('<ReportOfferOtherReasonModal />', () => {
         onSuccess: () => {},
         onError: () => {},
       }
-      // @ts-ignore ts(2345)
+      // @ts-expect-error ts(2345)
       mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
       const response = {
         content: { code: 'ERROR', message: "Une erreur s'est produite" },

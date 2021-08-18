@@ -101,7 +101,7 @@ describe('<CancelBookingModal />', () => {
       onSuccess: () => {},
       onError: () => {},
     }
-    // @ts-ignore ts(2345)
+    // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     const response = {
       content: { code: 'ALREADY_USED', message: 'La réservation a déjà été utilisée.' },

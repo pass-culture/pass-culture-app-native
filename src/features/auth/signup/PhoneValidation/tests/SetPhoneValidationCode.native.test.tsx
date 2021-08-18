@@ -49,7 +49,7 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
 
 describe('SetPhoneValidationCode', () => {
   beforeEach(() => {
-    // @ts-ignore ts(2345)
+    // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
   })
 

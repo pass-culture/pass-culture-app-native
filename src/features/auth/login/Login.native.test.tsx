@@ -242,7 +242,7 @@ function simulateSigninWrongCredentials() {
       async (req, res, ctx) =>
         res(
           ctx.status(400),
-          // @ts-ignore: signin response type does not account for "not success" responses
+          // @ts-expect-error: signin response type does not account for "not success" responses
           ctx.json({
             general: ['Identifiant ou Mot de passe incorrect'],
           })
@@ -258,7 +258,7 @@ function simulateSigninRateLimitExceeded() {
       async (req, res, ctx) =>
         res(
           ctx.status(429),
-          // @ts-ignore: signin response type does not account for "not success" responses
+          // @ts-expect-error: signin response type does not account for "not success" responses
           ctx.json({
             general: [
               'Nombre de tentative de connexion dépassé. Veuillez réessayer dans 1 minute.',
@@ -276,7 +276,7 @@ function simulateSigninEmailNotValidated() {
       async (req, res, ctx) =>
         res(
           ctx.status(400),
-          // @ts-ignore: signin response type does not account for "not success" responses
+          // @ts-expect-error: signin response type does not account for "not success" responses
           ctx.json({
             code: 'EMAIL_NOT_VALIDATED',
             general: ["L'email n'a pas été validé."],

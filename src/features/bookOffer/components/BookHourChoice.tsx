@@ -53,7 +53,7 @@ export const BookHourChoice: React.FC = () => {
         })
         .sort(
           (a, b) =>
-            //@ts-ignore : stocks with no beginningDatetime was filtered
+            //@ts-expect-error : stocks with no beginningDatetime was filtered
             new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
         )
         .map((stock) => (

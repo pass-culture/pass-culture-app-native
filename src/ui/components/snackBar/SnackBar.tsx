@@ -113,7 +113,6 @@ const _SnackBar = (props: SnackBarProps) => {
         backgroundColor={props.backgroundColor}
         easing="ease"
         duration={animationDuration}
-        // @ts-ignore: incompatible types relative to animatable
         ref={containerRef}>
         <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
           {!!Icon && <Icon testID="snackbar-icon" size={32} color={props.color} />}
@@ -130,7 +129,6 @@ const _SnackBar = (props: SnackBarProps) => {
           </TouchableOpacity>
         </SnackBarContainer>
       </ColoredAnimatableView>
-      {/* @ts-ignore: incompatible types relattive to animatable */}
       <AnimatableView easing="ease" duration={animationDuration} ref={progressBarContainerRef}>
         <ProgressBar
           testID="snackbar-progressbar"
@@ -184,6 +182,6 @@ const ProgressBar = styled(Animated.View)<{
   display: isVisible ? 'flex' : 'none',
   height: 4,
   backgroundColor: backgroundColor,
-  // @ts-ignore: avoid typescript error due to not supported Animated Css/Styles types
+  // @ts-expect-error: avoid typescript error due to not supported Animated Css/Styles types
   width: width._value /* The alternative is to use inline style */,
 }))

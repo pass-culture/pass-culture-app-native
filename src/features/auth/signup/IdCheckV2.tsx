@@ -97,7 +97,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
     return <LoadingPage />
   }
 
-  // @ts-ignore : props typing issue with IdCheck screen from module.
+  // @ts-expect-error : props typing issue with IdCheck screen from module.
   // Probably needs some change on the side of the module.
   return <IdCheckHomePage {...props} />
 }

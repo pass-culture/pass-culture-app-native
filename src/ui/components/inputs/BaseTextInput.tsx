@@ -52,10 +52,10 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
       placeholder={restOfProps.placeholder || ''}
       ref={(ref) => {
         if (ref) {
-          /* @ts-ignore Conflicts between types */
+          /* @ts-expect-error Conflicts between types */
           inputRef.current = ref
           if (forwardedRef) {
-            /* @ts-ignore Conflicts between types */
+            /* @ts-expect-error Conflicts between types */
             forwardedRef.current = ref
           }
         }

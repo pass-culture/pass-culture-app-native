@@ -50,7 +50,7 @@ describe('requestGeolocPermission web', () => {
   })
 
   it('should return NEVER_ASK_AGAIN if web permission is something else', async () => {
-    // @ts-ignore : we purposely return an "impossible value" for the sake of the test
+    // @ts-expect-error : we purposely return an "impossible value" for the sake of the test
     mockQuery.mockResolvedValueOnce({ state: 'something else' })
     const state = await requestGeolocPermission()
     expect(state).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)

@@ -108,7 +108,6 @@ Those props are provided by the GenericAchievementCard and must be passed down t
       <StyledBody>{props.text}</StyledBody>
       <Spacer.Flex flex={2} />
       <BottomButtonsContainer>
-        {/* @ts-ignore: incompatible types relative to animatable */}
         <Animatable.View ref={animatedButtonRef}>
           {props.activeIndex === props.index ? (
             <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />

@@ -38,7 +38,7 @@ describe('ConfirmDeleteProfile component', () => {
     const useMutationCallbacks: { onSuccess: () => void } = {
       onSuccess: () => {},
     }
-    // @ts-ignore ts(2345)
+    // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     fireEvent.press(renderAPI.getByText('Supprimer mon compte'))
@@ -55,7 +55,7 @@ describe('ConfirmDeleteProfile component', () => {
     const useMutationCallbacks: { onError: (error: unknown) => void } = {
       onError: () => {},
     }
-    // @ts-ignore ts(2345)
+    // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     fireEvent.press(renderAPI.getByText('Supprimer mon compte'))
