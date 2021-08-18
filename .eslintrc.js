@@ -26,6 +26,7 @@ module.exports = {
       2, // error
       {
         'ts-ignore': 'allow-with-description',
+        'ts-expect-error': 'allow-with-description',
         minimumDescriptionLength: 5,
       },
     ],
