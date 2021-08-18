@@ -1,4 +1,4 @@
-import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom-tabs'
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import { Route } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -31,9 +31,10 @@ function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
   }
 }
 
-export const TabBar: React.FC<
-  Pick<BottomTabBarProps<BottomTabBarOptions>, 'state' | 'navigation'>
-> = ({ navigation, state }) => {
+export const TabBar: React.FC<Pick<BottomTabBarProps, 'state' | 'navigation'>> = ({
+  navigation,
+  state,
+}) => {
   const { bottom } = useCustomSafeInsets()
   const routes = state.routes as Route<TabRouteName, TabParamList>[]
   return (
@@ -69,9 +70,7 @@ export const TabBar: React.FC<
     </MainContainer>
   )
 }
-const RowContainer = styled.View({
-  flexDirection: 'row',
-})
+const RowContainer = styled.View({ flexDirection: 'row' })
 const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight }) => ({
   height: safeHeight,
 }))

@@ -5,7 +5,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 export const navigationTestProps: StackScreenProps<RootStackParamList> = {
   route: {
     key: '',
-    name: '',
+    name: 'AcceptCgu',
     params: undefined,
   },
   navigation: {
@@ -15,8 +15,8 @@ export const navigationTestProps: StackScreenProps<RootStackParamList> = {
     goBack: jest.fn(),
     isFocused: jest.fn(),
     canGoBack: jest.fn(),
-    dangerouslyGetParent: jest.fn(),
-    dangerouslyGetState: jest.fn(),
+    getParent: jest.fn(),
+    getState: jest.fn(),
     setParams: jest.fn(),
     setOptions: jest.fn(),
     addListener: jest.fn(),

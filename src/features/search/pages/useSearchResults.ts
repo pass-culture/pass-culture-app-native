@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 import flatten from 'lodash.flatten'
 import { useMemo } from 'react'
-import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
+import { useInfiniteQuery } from 'react-query'
 
 import { SearchParameters } from 'features/search/types'
 import { QueryKeys } from 'libs/queryKeys'
@@ -16,9 +16,9 @@ const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
   const { enabled, fetchHits, transformHits } = useFetchQuery()
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, searchState],
-    async (context: QueryFunctionContext<[string, PartialSearchState], number>) => {
+    async (context) => {
       const page = context.pageParam || 0
-      const searchState = context.queryKey[1]
+      const searchState = context.queryKey[1] as PartialSearchState
 
       return await fetchHits({ page, ...searchState })
     },

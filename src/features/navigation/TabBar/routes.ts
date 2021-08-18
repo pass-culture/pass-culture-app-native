@@ -5,7 +5,7 @@ import { withAsyncErrorBoundary } from 'features/errors'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
-import { TabRoute } from 'features/navigation/TabBar/types'
+import { TabParamList, TabRoute } from 'features/navigation/TabBar/types'
 import { Profile } from 'features/profile/pages/Profile'
 import { Search } from 'features/search/pages/Search'
 
@@ -48,7 +48,7 @@ export const routes: Array<TabRoute> = [
   },
 ].map((r) => ({ ...r, key: r.name } as TabRoute))
 
-export const tabNavigatorPathConfig: LinkingOptions['config'] = {
+export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
   initialRouteName,
   screens: {
     ...routes.reduce(

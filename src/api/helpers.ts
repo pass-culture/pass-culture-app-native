@@ -3,7 +3,7 @@ import { t } from '@lingui/macro'
 import { IdCheckError } from '@pass-culture/id-check'
 import { getUniqueId } from 'react-native-device-info'
 
-import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigationRef'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
@@ -14,7 +14,7 @@ import Package from '../../package.json'
 import { DefaultApi } from './gen'
 
 export function navigateToLogin() {
-  if (isNavigationReadyRef.current && navigationRef.current) {
+  if (navigationRef.current && navigationRef.current.isReady()) {
     navigationRef.current.navigate('Login')
   }
 }
@@ -145,6 +145,7 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   }
   const responseBody = await response.json()
   if (mustUpdateApp(response, responseBody)) {
+    // @ts-expect-error
     global.setMustUpdateApp && global.setMustUpdateApp(true)
     return {}
   }

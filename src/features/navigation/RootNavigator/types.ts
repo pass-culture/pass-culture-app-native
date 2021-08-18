@@ -148,5 +148,5 @@ export type RouteParams<
  */
 export interface Route extends IdCheckRoute<StackNavigationOptions, RootStackParamList> {
   hoc?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
-  pathConfig?: PathConfig
+  pathConfig?: PathConfig<AllNavParamList>
 }

@@ -31,8 +31,8 @@ const state: TabNavigationState<Record<string, Record<string, unknown> | undefin
 
 const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> = {
   canGoBack: jest.fn(),
-  dangerouslyGetParent: jest.fn(),
-  dangerouslyGetState: jest.fn(),
+  getParent: jest.fn(),
+  getState: jest.fn(),
   dispatch: jest.fn(),
   // @ts-ignore : ignore type of emit to facilitate testing
   emit: jest.fn(() => ({ defaultPrevented: false })),

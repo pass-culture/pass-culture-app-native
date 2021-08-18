@@ -2,6 +2,7 @@ import { PathConfig } from '@react-navigation/native'
 import { ComponentType } from 'react'
 
 import { RecursivePartial, SearchState } from 'features/search/types'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 
 export type TabRouteName = keyof TabParamList
 
@@ -19,5 +20,5 @@ export type TabRoute = {
   key: string
   params?: TabParamList[TabRouteName]
   path?: string
-  pathConfig?: PathConfig
+  pathConfig?: PathConfig<RootStackParamList>
 }

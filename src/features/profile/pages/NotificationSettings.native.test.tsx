@@ -274,7 +274,7 @@ describe('NotificationSettings', () => {
 
 const Stack = createStackNavigator<RootStackParamList>()
 
-const navigationRef = React.createRef<RNNavigation.NavigationContainerRef>()
+const navigationRef = React.createRef<RNNavigation.NavigationContainerRef<RootStackParamList>>()
 
 async function renderNotificationSettings(
   expectedPermission: NotificationsResponse['status'],

@@ -86,7 +86,7 @@ type StackParamList = {
 
 const Stack = createStackNavigator<StackParamList>()
 
-const navigationRef = React.createRef<NavigationContainerRef>()
+const navigationRef = React.createRef<NavigationContainerRef<Record<string, unknown>>>()
 
 function navigate(name: string) {
   navigationRef.current?.navigate(name)

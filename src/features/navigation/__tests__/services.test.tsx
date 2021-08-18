@@ -107,7 +107,7 @@ const Stack = createStackNavigator<StackParamList>()
 const Stack2 = createStackNavigator<StackParamList2>()
 const TabNavigator = createBottomTabNavigator<TabParamList>()
 
-const navigationRef = React.createRef<NavigationContainerRef>()
+const navigationRef = React.createRef<NavigationContainerRef<Record<string, unknown>>>()
 
 function navigate(name: string) {
   navigationRef.current?.navigate(name)

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { getUniqueId } from 'react-native-device-info'
 
-import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigationRef'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
@@ -13,7 +13,7 @@ import { DefaultApi } from '../gen'
 import { t } from '@lingui/macro'
 
 export function navigateToLogin() {
-  if (isNavigationReadyRef.current && navigationRef.current) {
+  if (navigationRef.current && navigationRef.current.isReady()) {
     navigationRef.current.navigate('Login')
   }
 }
@@ -141,6 +141,7 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   }
 
   if (mustUpdateApp(response)) {
+    // @ts-expect-error
     global.setMustUpdateApp && global.setMustUpdateApp(true)
     return {}
   }
@@ -185,4 +186,3 @@ export function extractApiErrorMessage(error: unknown) {
   }
   return message
 }
-

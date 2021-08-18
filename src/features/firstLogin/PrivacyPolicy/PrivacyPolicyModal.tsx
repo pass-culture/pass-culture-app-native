@@ -4,6 +4,7 @@ import React, { useCallback, useState, FunctionComponent, RefObject } from 'reac
 import styled from 'styled-components/native'
 
 import { openExternalUrl } from 'features/navigation/helpers'
+import { AllNavParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -17,7 +18,7 @@ export interface Props {
   visible: boolean
   onApproval: () => void
   onRefusal: () => void
-  navigationRef?: RefObject<NavigationContainerRef>
+  navigationRef?: RefObject<NavigationContainerRef<AllNavParamList>>
   disableBackdropTap?: boolean
 }
 

@@ -35,6 +35,7 @@ export const RootNavigator: React.FC = () => {
 
   const [mustUpdateApp, setMustUpdateApp] = useState(false)
 
+  // @ts-expect-error we enhance global with setMustUpdateApp
   global.setMustUpdateApp = setMustUpdateApp
 
   return (
@@ -44,7 +45,6 @@ export const RootNavigator: React.FC = () => {
       ) : (
         <RootStack.Navigator
           initialRouteName={initialRouteName}
-          headerMode="screen"
           screenOptions={NAVIGATOR_SCREEN_OPTIONS}>
           {screens}
         </RootStack.Navigator>

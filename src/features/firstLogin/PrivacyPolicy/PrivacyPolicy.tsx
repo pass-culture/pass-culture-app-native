@@ -2,11 +2,12 @@ import { NavigationContainerRef } from '@react-navigation/native'
 import React, { RefObject, useEffect, useState } from 'react'
 
 import { PrivacyPolicyModal } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicyModal'
+import { AllNavParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 
 interface Props {
-  navigationRef?: RefObject<NavigationContainerRef>
+  navigationRef?: RefObject<NavigationContainerRef<AllNavParamList>>
 }
 
 export function PrivacyPolicy(props: Props) {

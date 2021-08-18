@@ -24,7 +24,7 @@ describe('<ResetPasswordEmailSent />', () => {
     const renderAPI = await renderInitialPage('PreviousScreen')
 
     await act(async () => {
-      navigationRef.current?.navigate('ResetPasswordEmailSent')
+      navigationRef.current?.navigate('ResetPasswordEmailSent', { email: '' })
     })
     const leftIcon = renderAPI.getByTestId('leftIcon')
     fireEvent.click(leftIcon)
@@ -66,7 +66,7 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 })
 
-const navigationRef = React.createRef<NavigationContainerRef>()
+const navigationRef = React.createRef<NavigationContainerRef<StackParams>>()
 
 type StackParams = {
   ForgottenPassword: RootStackParamList['ForgottenPassword']

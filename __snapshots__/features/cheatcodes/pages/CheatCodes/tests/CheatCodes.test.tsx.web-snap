@@ -34,14 +34,6 @@ exports[`CheatCodes component should render correctly 1`] = `
     className="css-view-1dbjc4n"
     style={
       Object {
-<<<<<<< HEAD
-        "bottom": "0px",
-        "left": "0px",
-        "position": "absolute",
-        "right": "0px",
-        "top": "0px",
-        "zIndex": -1,
-=======
         "height": "16px",
       }
     }
@@ -346,14 +338,10 @@ exports[`CheatCodes component should render correctly 1`] = `
         "transitionDuration": "0s",
         "transitionProperty": "opacity",
         "userSelect": "none",
->>>>>>> 0974e2b0 ((PC-9998) update web snapshots)
       }
     }
   >
     <div
-<<<<<<< HEAD
-      className="css-view-1dbjc4n"
-=======
       className="css-text-901oao"
       dir="auto"
       style={
@@ -368,7 +356,6 @@ exports[`CheatCodes component should render correctly 1`] = `
           "textTransform": "uppercase",
         }
       }
->>>>>>> 0974e2b0 ((PC-9998) update web snapshots)
     >
       <div
         className="css-text-901oao"
@@ -380,10 +367,6 @@ exports[`CheatCodes component should render correctly 1`] = `
     </div>
   </div>
   <div
-<<<<<<< HEAD
-    className="css-view-1dbjc4n"
-    data-testid="Loading-Animation"
-=======
     className="css-text-901oao"
     dir="auto"
   >
@@ -416,13 +399,10 @@ exports[`CheatCodes component should render correctly 1`] = `
   <div
     className="css-text-901oao"
     dir="auto"
->>>>>>> 0974e2b0 ((PC-9998) update web snapshots)
   >
     Loading-Animation-Lottie-Mock
   </div>
   <div
-<<<<<<< HEAD
-=======
     className="css-view-1dbjc4n"
     style={
       Object {
@@ -471,7 +451,6 @@ exports[`CheatCodes component should render correctly 1`] = `
     }
   />
   <div
->>>>>>> 0974e2b0 ((PC-9998) update web snapshots)
     className="css-text-901oao"
     dir="auto"
     style={
@@ -485,10 +464,6 @@ exports[`CheatCodes component should render correctly 1`] = `
       }
     }
   >
-<<<<<<< HEAD
-    Chargement en cours...
-  </div>
-=======
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
     <span
       className="css-text-901oao css-textHasAncestor-16my406"
@@ -628,6 +603,5 @@ exports[`CheatCodes component should render correctly 1`] = `
       }
     }
   />
->>>>>>> 0974e2b0 ((PC-9998) update web snapshots)
 </div>
 `;
