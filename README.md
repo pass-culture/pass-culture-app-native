@@ -144,23 +144,6 @@ We recommend installing the plugin `react-query-native-devtools` to analyze reac
 
 See doc [here](./doc/deployment/deployment.md)
 
-## Features
-
-When you generated the repository with [react-native-make](https://github.com/bamlab/react-native-make) the following feature must be present:
-
-- A repository should have been created at https://github.com/bamlab/project-name
-- An application have been created and deployed on appcenter
-- You can deploy automatically with fastlane to appcenter
-- You can deploy with codepush to staging too
-- We installed the following libraries for you:
-  - @react-native-async-storage/async-storage
-  - react-native-localize
-  - lingui-js
-  - typesafe-actions
-  - jest
-  - prettier
-  - eslint
-
 ## Finding specific features location
 
 To find where a feature is installed / used, run a search on the whole project using the tag
