@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
@@ -13,6 +14,8 @@ import {
 import { render, waitFor } from 'tests/utils'
 
 import { VenueBody } from '../VenueBody'
+
+mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('react-query')
 jest.mock('features/auth/settings', () => ({
