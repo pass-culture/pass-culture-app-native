@@ -98,7 +98,7 @@ Then build the app : `yarn android:testing`
 
 ##### Development environment
 
-To run the app on a development environment with a local API, you need to create a `.env.development` file : 
+To run the app on a development environment with a local API, you need to create a `.env.development` file :
 copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address.
 
 Make sure you also overload the `BATCH_API_KEY_ANDROID` and `BATCH_API_KEY_IOS` variables with the _dev_ values of the _testing_ [batch project](https://dashboard.batch.com/).
@@ -250,3 +250,38 @@ To update the API schema,
 - run: `yarn generate:api:client`
 
 If the file `src/api/gen/.swagger-codegen/VERSION` changes, make sure you locally have the desired version of `swagger-codegen-cli`, otherwise run `docker pull swaggerapi/swagger-codegen-cli-v3:3.0.24`
+
+## Mettre à jour le package @pass-culture/id-check
+
+> Attention : pour executer `npm publish`, vous devez être dans le group `@pass-culture` sur npm (voir avec Alexis Pibrac).
+
+Dans le repo [**id-check-front**](https://github.com/pass-culture/id-check-front) :
+
+1. `git checkout master`
+2. Ouvrir les 4 `package.json`, et bumper la version dans les 4 fichiers en suivant la convention [**semver**](https://semver.org/).
+3. Commiter les 4 `package.json` avec le message suivant : `"bump version to X.X.X"`
+4. `git tag vX.X.X`
+5. `cd packages/id-check`
+6. Publier le module sur NPM: `npm publish --registry https://registry.npmjs.com`
+
+Dans le repo [**pass-culture-app-native**](https://github.com/pass-culture/pass-culture-app-native) :
+
+1. `git checkout master`
+2. Ouvrir `package.json` et mettre à jour la version de `@pass-culture/id-check`
+3. Executer le script suivant :
+
+```bash
+IDCHECK_VERSION=$(cat package.json | jq -r '.["dependencies"]["@pass-culture/id-check"]' | cut -c2-)
+JIRA_TICKET_ID=${JIRA_TICKET_ID:-Tech}
+
+rm -rf node_modules
+nvm use
+yarn --force --registry https://registry.yarnpkg.com
+git checkout -b id-check-v${IDCHECK_VERSION}
+git add -A
+git commit  -n -m "(${JIRA_TICKET_ID}) bump to ${IDCHECK_VERSION} @pass-culture/id-check"
+git push origin id-check-v${IDCHECK_VERSION}
+```
+
+Ce script créer une feature branche prête à être mergée sur `master`.
+Si vous avez des modifications à faire côté app native, c'est la branch pour.
