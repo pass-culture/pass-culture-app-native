@@ -744,7 +744,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   ]
                 }
               >
-                Dès le 18 août 2021
+                Dès le 20 août 2021
               </Text>
               <Text
                 color="#626262"
@@ -890,7 +890,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   ]
                 }
               >
-                Dès le 18 août 2021
+                Dès le 20 août 2021
               </Text>
               <Text
                 color="#626262"
@@ -1036,7 +1036,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   ]
                 }
               >
-                Dès le 18 août 2021
+                Dès le 20 août 2021
               </Text>
               <Text
                 color="#626262"

@@ -25,7 +25,7 @@ export function testID(id: string) {
 
 export async function flushAllPromises() {
   await flushPromises()
-  return new Promise((resolve) => setImmediate(resolve))
+  return new Promise((resolve) => setTimeout(resolve, 0))
 }
 
 /**
