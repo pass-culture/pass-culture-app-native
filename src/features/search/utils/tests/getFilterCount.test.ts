@@ -4,7 +4,7 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
 
-import { getFilterCount } from './getFilterCount'
+import { getFilterCount } from '../getFilterCount'
 
 const date = { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: new Date() }
 const timeRange = DEFAULT_TIME_RANGE

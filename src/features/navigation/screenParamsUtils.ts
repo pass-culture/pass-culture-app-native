@@ -110,9 +110,9 @@ export function parseDataWithISODates(data: any) {
 type ScreensRequiringStringifying = Extract<ScreenNames, 'Search'>
 type ParamsStringifiers = {
   [Screen in ScreensRequiringStringifying]: {
-    [Param in keyof Required<RouteParams<ParamsList, Screen>>]:
-      | ((value: RouteParams<ParamsList, Screen>[Param]) => string)
-      | undefined
+    [Param in keyof Required<RouteParams<ParamsList, Screen>>]: (
+      value: RouteParams<ParamsList, Screen>[Param]
+    ) => string
   }
 }
 

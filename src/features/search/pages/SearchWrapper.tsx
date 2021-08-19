@@ -2,10 +2,9 @@ import { useNavigation } from '@react-navigation/native'
 import React, { memo, useContext, useEffect, useReducer } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { LocationType } from 'features/search/enums'
 import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
-import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
-import { RecursivePartial, SearchState } from 'features/search/types'
+import { SearchState } from 'features/search/types'
+import { sanitizeSearchStateParams } from 'features/search/utils/sanitizeSearchStateParams'
 import { useGeolocation } from 'libs/geolocation'
 
 export interface ISearchContext {
@@ -49,76 +48,6 @@ export const useStagedSearch = (): Pick<ISearchContext, 'searchState' | 'dispatc
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { stagedSearchState: searchState, stagedDispatch: dispatch } = useContext(SearchContext)!
   return { searchState, dispatch }
-}
-
-export const searchRouteParamsToSearchState = (
-  searchRouteParams: RecursivePartial<SearchState>
-) => {
-  const { offerTypes, ...params } = searchRouteParams
-  const searchState: SearchState = {
-    ...initialSearchState,
-    ...params,
-    offerTypes: {
-      isDigital: offerTypes?.isDigital || initialSearchState.offerTypes.isDigital,
-      isEvent: offerTypes?.isEvent || initialSearchState.offerTypes.isEvent,
-      isThing: offerTypes?.isThing || initialSearchState.offerTypes.isThing,
-    },
-  }
-  return searchState
-}
-
-export const sanitizeSearchStateParams = (searchState: RecursivePartial<SearchState> = {}) => {
-  const {
-    aroundRadius,
-    beginningDatetime,
-    date,
-    endingDatetime,
-    geolocation,
-    hitsPerPage,
-    locationType,
-    offerCategories,
-    offerTypes,
-    offerIsDuo,
-    offerIsFree,
-    offerIsNew,
-    place,
-    query,
-    showResults,
-    tags,
-    timeRange,
-    venueId,
-  } = searchState
-  const priceRange = searchState.priceRange ?? [0, MAX_PRICE]
-
-  return {
-    ...(aroundRadius ? { aroundRadius } : {}),
-    ...(beginningDatetime ? { beginningDatetime } : {}),
-    ...(date ? { date } : {}),
-    ...(endingDatetime ? { endingDatetime } : {}),
-    ...(geolocation ? { geolocation } : {}),
-    ...(hitsPerPage ? { hitsPerPage } : {}),
-    ...(locationType !== LocationType.EVERYWHERE ? { locationType } : {}),
-    offerCategories: offerCategories || [],
-    ...(offerIsDuo ? { offerIsDuo } : {}),
-    ...(offerIsFree ? { offerIsFree } : {}),
-    ...(offerIsNew ? { offerIsNew } : {}),
-    ...(offerTypes?.isDigital || offerTypes?.isEvent || offerTypes?.isThing
-      ? {
-          offerTypes: {
-            ...(offerTypes?.isDigital ? { isDigital: offerTypes?.isDigital } : {}),
-            ...(offerTypes?.isEvent ? { isEvent: offerTypes?.isEvent } : {}),
-            ...(offerTypes?.isThing ? { isThing: offerTypes?.isThing } : {}),
-          },
-        }
-      : {}),
-    ...(place ? { place } : {}),
-    ...(priceRange[0] > 0 || priceRange[1] < MAX_PRICE ? { priceRange } : {}),
-    query: query || '',
-    ...(showResults ? { showResults } : {}),
-    tags: tags || [],
-    ...(timeRange ? { timeRange } : {}),
-    ...(venueId ? { venueId } : {}),
-  }
 }
 
 export const useCommit = (): { commit: () => void } => {
