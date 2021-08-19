@@ -41,6 +41,10 @@ jest.mock('features/home/api', () => ({
   })),
 }))
 
+jest.mock('@pass-culture/react-native-profiling', () => ({
+  profileDevice: jest.fn(),
+}))
+
 const mockedUseMutation = mocked(useMutation)
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
   onSuccess: () => {},
@@ -112,7 +116,7 @@ describe('SetPhoneValidationCode', () => {
       })
     })
 
-    it.only.each([
+    it.each([
       ['empty', ''],
       ['is too short', '54'],
     ])('should not enable continue button when "%s"', async (_reason, codeTyped) => {
