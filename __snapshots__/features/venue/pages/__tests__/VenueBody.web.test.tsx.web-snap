@@ -165,31 +165,38 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              data-focusable="true"
+              style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              tabindex="0"
             >
               <div
                 class="css-view-1dbjc4n"
-                style="padding: 4px 4px 4px 4px;"
+                style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="iconLocation"
+                  style="padding: 4px 4px 4px 4px;"
                 >
                   <div
-                    class="css-text-901oao"
-                    dir="auto"
+                    class="css-view-1dbjc4n"
+                    data-testid="iconLocation"
                   >
-                    iconLocation-SVG-Mock
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      iconLocation-SVG-Mock
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="css-text-901oao"
-                data-testid="caption-iconLocation"
-                dir="auto"
-                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
-              >
-                Géolocalisation désactivée
+                <div
+                  class="css-text-901oao"
+                  data-testid="caption-iconLocation"
+                  dir="auto"
+                  style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                >
+                  Géolocalisation désactivée
+                </div>
               </div>
             </div>
             <div
@@ -755,31 +762,38 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            data-focusable="true"
+            style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            tabindex="0"
           >
             <div
               class="css-view-1dbjc4n"
-              style="padding: 4px 4px 4px 4px;"
+              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="iconLocation"
+                style="padding: 4px 4px 4px 4px;"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
+                  class="css-view-1dbjc4n"
+                  data-testid="iconLocation"
                 >
-                  iconLocation-SVG-Mock
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    iconLocation-SVG-Mock
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              class="css-text-901oao"
-              data-testid="caption-iconLocation"
-              dir="auto"
-              style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
-            >
-              Géolocalisation désactivée
+              <div
+                class="css-text-901oao"
+                data-testid="caption-iconLocation"
+                dir="auto"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+              >
+                Géolocalisation désactivée
+              </div>
             </div>
           </div>
           <div

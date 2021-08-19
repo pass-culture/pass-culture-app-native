@@ -105,65 +105,100 @@ exports[`<VenueIconCaptions /> should match snapshot 1`] = `
   />
   <div
     className="css-view-1dbjc4n"
+    data-focusable={true}
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onKeyDown={[Function]}
     style={
       Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
+        "MozTransitionProperty": "opacity",
+        "MozUserSelect": "none",
         "WebkitBoxFlex": 1,
         "WebkitFlexBasis": "0px",
         "WebkitFlexGrow": 1,
         "WebkitFlexShrink": 1,
-        "alignItems": "center",
+        "WebkitTransitionDuration": "0s",
+        "WebkitTransitionProperty": "opacity",
+        "WebkitUserSelect": "none",
+        "cursor": "pointer",
         "flexBasis": "0px",
         "flexGrow": 1,
         "flexShrink": 1,
-        "msFlexAlign": "center",
         "msFlexNegative": 1,
         "msFlexPositive": 1,
         "msFlexPreferredSize": "0px",
+        "msTouchAction": "manipulation",
+        "msUserSelect": "none",
+        "touchAction": "manipulation",
+        "transitionDuration": "0s",
+        "transitionProperty": "opacity",
+        "userSelect": "none",
       }
     }
+    tabIndex="0"
   >
     <div
       className="css-view-1dbjc4n"
       style={
         Object {
-          "paddingBottom": "4px",
-          "paddingLeft": "4px",
-          "paddingRight": "4px",
-          "paddingTop": "4px",
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
+          "WebkitBoxFlex": 1,
+          "WebkitFlexBasis": "0px",
+          "WebkitFlexGrow": 1,
+          "WebkitFlexShrink": 1,
+          "alignItems": "center",
+          "flexBasis": "0px",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "msFlexAlign": "center",
+          "msFlexNegative": 1,
+          "msFlexPositive": 1,
+          "msFlexPreferredSize": "0px",
         }
       }
     >
       <div
         className="css-view-1dbjc4n"
-        data-testid="iconLocation"
+        style={
+          Object {
+            "paddingBottom": "4px",
+            "paddingLeft": "4px",
+            "paddingRight": "4px",
+            "paddingTop": "4px",
+          }
+        }
       >
         <div
-          className="css-text-901oao"
-          dir="auto"
-          onClick={[Function]}
+          className="css-view-1dbjc4n"
+          data-testid="iconLocation"
         >
-          iconLocation-SVG-Mock
+          <div
+            className="css-text-901oao"
+            dir="auto"
+            onClick={[Function]}
+          >
+            iconLocation-SVG-Mock
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      className="css-text-901oao"
-      data-testid="caption-iconLocation"
-      dir="auto"
-      onClick={[Function]}
-      style={
-        Object {
-          "color": "rgba(21,21,21,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-          "textAlign": "center",
+      <div
+        className="css-text-901oao"
+        data-testid="caption-iconLocation"
+        dir="auto"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "rgba(21,21,21,1.00)",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": "12px",
+            "lineHeight": "16px",
+            "textAlign": "center",
+          }
         }
-      }
-    >
-      10 km
+      >
+        10 km
+      </div>
     </div>
   </div>
   <div

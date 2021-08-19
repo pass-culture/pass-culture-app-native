@@ -331,57 +331,77 @@ exports[`<VenueBody /> should render correctly 1`] = `
         }
       />
       <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "opacity": 1,
+          }
         }
       >
         <View
           style={
             Array [
               Object {
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ]
           }
         >
           <View
-            fill="#626262"
-            height={40}
-            testID="iconLocation"
-            width={40}
+            style={
+              Array [
+                Object {
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
+                },
+              ]
+            }
           >
-            <Text>
-              iconLocation-SVG-Mock
-            </Text>
+            <View
+              fill="#626262"
+              height={40}
+              testID="iconLocation"
+              width={40}
+            >
+              <Text>
+                iconLocation-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            color="#626262"
+            style={
+              Array [
+                Object {
+                  "color": "#626262",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "textAlign": "center",
+                },
+              ]
+            }
+            testID="caption-iconLocation"
+          >
+            Géolocalisation désactivée
+          </Text>
         </View>
-        <Text
-          color="#626262"
-          style={
-            Array [
-              Object {
-                "color": "#626262",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-                "textAlign": "center",
-              },
-            ]
-          }
-          testID="caption-iconLocation"
-        >
-          Géolocalisation désactivée
-        </Text>
       </View>
       <View
         numberOfSpaces={6}
