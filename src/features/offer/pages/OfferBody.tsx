@@ -13,7 +13,7 @@ import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { ReportOfferDescriptionModal } from 'features/offer/components/ReportOfferDescriptionModal'
 import { ReportOfferOtherReasonModal } from 'features/offer/components/ReportOfferOtherReasonModal'
 import { ReportOfferReasonModal } from 'features/offer/components/ReportOfferReasonModal'
-import { useReportOffer } from 'features/offer/components/useReportOffer'
+import { ReportSteps, useReportOffer } from 'features/offer/components/useReportOffer'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
@@ -45,16 +45,16 @@ export const OfferBody: FunctionComponent<{
 
   const { reportStep, setReportStep } = useReportOffer()
 
-  const hideReportModal = () => setReportStep(null)
+  const hideReportModal = () => setReportStep(ReportSteps.NOT_VISIBLE)
 
-  const isReportDescriptionVisible = reportStep === 0
-  const showReportDescription = () => setReportStep(0)
+  const isReportDescriptionVisible = reportStep === ReportSteps.REPORT_OFFER_DESCRIPTION
+  const showReportDescription = () => setReportStep(ReportSteps.REPORT_OFFER_DESCRIPTION)
 
-  const isReportReasonVisible = reportStep === 1
-  const showReportReason = () => setReportStep(1)
+  const isReportReasonVisible = reportStep === ReportSteps.REPORT_OFFER_REASON
+  const showReportReason = () => setReportStep(ReportSteps.REPORT_OFFER_REASON)
 
-  const isReportOtherReasonVisible = reportStep === 2
-  const showReportOtherReason = () => setReportStep(2)
+  const isReportOtherReasonVisible = reportStep === ReportSteps.REPORT_OFFER_OTHER_REASON
+  const showReportOtherReason = () => setReportStep(ReportSteps.REPORT_OFFER_OTHER_REASON)
 
   useTrackOfferSeenDuration(offerId)
 
