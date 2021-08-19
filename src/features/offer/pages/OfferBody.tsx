@@ -45,24 +45,23 @@ export const OfferBody: FunctionComponent<{
 
   const { reportStep, setReportStep } = useReportOffer()
 
+  const hideReportModal = () => setReportStep(null)
+
   const isReportDescriptionVisible = reportStep === 0
-  const hideReportDescription = () => setReportStep(null)
   const showReportDescription = () => setReportStep(0)
 
   const isReportReasonVisible = reportStep === 1
-  const hideReportReason = () => setReportStep(null)
   const showReportReason = () => setReportStep(1)
 
   const isReportOtherReasonVisible = reportStep === 2
-  const hideReportOtherReason = () => setReportStep(null)
   const showReportOtherReason = () => setReportStep(2)
 
   useTrackOfferSeenDuration(offerId)
 
-  const navigateToReportReason = useModalNavigation(hideReportDescription, showReportReason)
-  const goBackToReportDescription = useModalNavigation(hideReportReason, showReportDescription)
-  const navigateToReportOtherReason = useModalNavigation(hideReportReason, showReportOtherReason)
-  const goBackToReportReason = useModalNavigation(hideReportOtherReason, showReportReason)
+  const navigateToReportReason = useModalNavigation(hideReportModal, showReportReason)
+  const goBackToReportDescription = useModalNavigation(hideReportModal, showReportDescription)
+  const navigateToReportOtherReason = useModalNavigation(hideReportModal, showReportOtherReason)
+  const goBackToReportReason = useModalNavigation(hideReportModal, showReportReason)
 
   const { data } = useQuery<UserReportedOffersResponse>(
     QueryKeys.REPORTED_OFFERS,
@@ -179,19 +178,19 @@ export const OfferBody: FunctionComponent<{
       {/* TODO(anoukhello) use one modal for the entire report process (see bookoffer process)*/}
       <ReportOfferDescriptionModal
         isVisible={isReportDescriptionVisible}
-        dismissModal={hideReportDescription}
+        dismissModal={hideReportModal}
         onPressReportOffer={navigateToReportReason}
       />
       <ReportOfferReasonModal
         isVisible={isReportReasonVisible}
-        dismissModal={hideReportReason}
+        dismissModal={hideReportModal}
         onGoBack={goBackToReportDescription}
         onPressOtherReason={navigateToReportOtherReason}
         offerId={offerId}
       />
       <ReportOfferOtherReasonModal
         isVisible={isReportOtherReasonVisible}
-        dismissModal={hideReportOtherReason}
+        dismissModal={hideReportModal}
         onGoBack={goBackToReportReason}
         offerId={offerId}
       />
