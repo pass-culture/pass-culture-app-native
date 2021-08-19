@@ -447,10 +447,8 @@ PODS:
   - react-native-appsflyer (6.3.20):
     - AppsFlyerFramework (= 6.3.2)
     - React
-  - react-native-config (1.4.2):
-    - react-native-config/App (= 1.4.2)
-  - react-native-config/App (1.4.2):
-    - React-Core
+  - react-native-config (0.13.0):
+    - React
   - react-native-flipper (0.98.0):
     - React-Core
   - react-native-geolocation-service (5.3.0-beta.1):
@@ -459,7 +457,7 @@ PODS:
     - React-Core
   - react-native-image-picker (4.0.3):
     - React-Core
-  - react-native-netinfo (6.0.0):
+  - react-native-netinfo (5.9.10):
     - React-Core
   - react-native-profiling (1.0.19):
     - React
@@ -959,12 +957,12 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 43f2542aed3c26e42175b339f8d37fe3dd683765
   React-jsinspector: 41e58e5b8e3e0bf061fdf725b03f2144014a8fb0
   react-native-appsflyer: 0f31d34f73fb3a32f29ddece86b45a1e3af8251e
-  react-native-config: 8394eaccfc90e286e4dd225c38ac71a5b9b9d6c7
+  react-native-config: 056581a0891d0269428219c45c696dd91c6f9eee
   react-native-flipper: 80b71629f5bf7b942dfae7af0c5f88526d19b3ca
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
   react-native-get-random-values: 237bffb1c7e05fb142092681531810a29ba53015
   react-native-image-picker: 474cf2c33c2b6671da53d293a16c97995f0aec15
-  react-native-netinfo: e849fc21ca2f4128a5726c801a82fc6f4a6db50d
+  react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
   react-native-profiling: b2347e07636abdbb623514d2f96e7e1c804485e0
   react-native-safe-area-context: 61c8c484a3a9e7d1fda19f7b1794b35bbfd2262a
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
