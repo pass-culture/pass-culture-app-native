@@ -11,7 +11,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
+import { monthNames, monthNamesShort, dayNames, dayNamesShort, today } from './Calendar.utils'
 import { DayComponent, useSelectDay } from './DayComponent'
 import { MonthHeader } from './MonthHeader'
 import { defaultMarking, Marking, useMarkedDates, MarkedDates } from './useMarkedDates'
@@ -21,6 +21,7 @@ LocaleConfig.locales['fr'] = {
   monthNamesShort,
   dayNames,
   dayNamesShort,
+  today,
 }
 LocaleConfig.defaultLocale = 'fr'
 
