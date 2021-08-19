@@ -495,6 +495,23 @@ jobs:
       - push-to-bucket:
           bucket_name: passculture-metier-ehp-staging-decliweb
 
+  deploy-web-prod:
+    docker:
+      - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
+        auth:
+            username: _json_key  # default username when using a JSON key file to authenticate
+            password: $GCP_INFRA_KEY
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+      - authenticate_gcp:
+          gcp_key_name: GCP_METIER_KEY
+      - build_web:
+          env: production
+      - push-to-bucket:
+          bucket_name: passculture-metier-prod-production-decliweb
+
 workflows:
   version: 2.1
   commit:
@@ -645,3 +662,16 @@ workflows:
           context:
             - GCP
             - GCP_EHP
+      - deploy-web-prod:
+          filters:
+            tags:
+              only:
+                - /^v.*/
+                - /^hotfix-prod.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - run-tests
+          context:
+            - GCP
+            - GCP_PROD
