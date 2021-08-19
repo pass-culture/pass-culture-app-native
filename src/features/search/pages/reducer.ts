@@ -1,7 +1,7 @@
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { searchRouteParamsToSearchState } from 'features/search/pages/SearchWrapper'
 import { RecursivePartial, SearchState } from 'features/search/types'
+import { searchRouteParamsToSearchState } from 'features/search/utils/searchRouteParamsToSearchState'
 import { SuggestedPlace } from 'libs/place'
 
 import { addOrRemove } from './reducer.helpers'

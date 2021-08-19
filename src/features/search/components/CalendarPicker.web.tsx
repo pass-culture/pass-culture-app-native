@@ -12,7 +12,7 @@ const Option = ({ label, value }: OptionProps) => <option value={value}>{label}<
 interface DateTimePickerProps {
   style?: CSSProperties
   value: Date
-  onChange: (event: any, newDate: Date | undefined) => void
+  onChange: (event: any, newDate: Date | undefined) => void // eslint-disable-line @typescript-eslint/no-explicit-any
   options?: Array<OptionProps>
 }
 
@@ -36,6 +36,7 @@ export const CalendarPicker: React.FC<Props> = ({
   const [currentDate, setCurrentDate] = useState<Date>(selectedDate)
   if (!visible) return <React.Fragment />
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onChange = (event: any, newDate: Date | undefined) => {
     hideCalendar()
     if (event.type === 'set') {
