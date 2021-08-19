@@ -28,3 +28,4 @@ export const monthNamesShort = [
 ]
 export const dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
 export const dayNamesShort = ['D', 'L', 'M', 'M', 'J', 'V', 'S']
+export const today = "Aujourd'hui"

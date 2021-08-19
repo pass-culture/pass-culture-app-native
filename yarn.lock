@@ -4550,10 +4550,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-native-calendars@^1.505.0":
-  version "1.505.0"
-  resolved "https://registry.yarnpkg.com/@types/react-native-calendars/-/react-native-calendars-1.505.0.tgz#ee60af5cd131a6b6423eec75fa069949778b21f4"
-  integrity sha512-2Th/n4AG000Yas9IgfOAyobrrvL4lrXcHEMrNwMd9toe+Q4oiPe1wrhh3T6uqQ+n+771Kuq9/sQv3NLBcZUOxg==
+"@types/react-native-calendars@^1.1264.2":
+  version "1.1264.2"
+  resolved "https://registry.yarnpkg.com/@types/react-native-calendars/-/react-native-calendars-1.1264.2.tgz#127ef93ccbc707de87373176b61c195b73d9d0b0"
+  integrity sha512-nsNwzqF7s4FzNtxSG4Rcr3FQ9qOdZUJcrXKo7aCEgvR9QmU5K09QhobR+PTe93opB4a1ldvLmsFGTiOAYeeaBg==
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
@@ -12504,6 +12504,11 @@ memfs@^3.1.2:
   dependencies:
     fs-monkey "1.0.3"
 
+memoize-one@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
+  integrity sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==
+
 memory-fs@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/memory-fs/-/memory-fs-0.4.1.tgz#3a9a20b8462523e447cfbc7e8bb80ed667bfc552"
@@ -15574,18 +15579,20 @@ react-native-appsflyer@^6.2.42:
   resolved "https://registry.yarnpkg.com/react-native-appsflyer/-/react-native-appsflyer-6.2.42.tgz#66293a47bbbb0789c381da5c40653912963e6408"
   integrity sha512-eu5nsuJY/V/kw2VpuONavNUCknmFYbZSfpRu7X8UC4tKc8cW68CMxxw5vmzQ7BfT3WBFVNQSy7x22Xv4EwWuRQ==
 
-react-native-calendars@^1.1249.0:
-  version "1.1249.0"
-  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.1249.0.tgz#e94deb0e77186b4fc15b11d18a7eeece452d331b"
-  integrity sha512-DJqF8OJ4C4btkltJOzGS27FdWBVczkQmBHRYVaKuy3qUvoZ6/l/pdSQuTPNJHN/WCCCy9Uc+bXPsws2BAHh6Kg==
+react-native-calendars@^1.1264.0:
+  version "1.1264.0"
+  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.1264.0.tgz#98d1905b7bfe9f44cba80c9c34a0b8441fe1c1a1"
+  integrity sha512-MX9Dy9xDtdmvGEA9rQWas1NVxvC2T6tEYrx7NvX8w0pWpYqsq5sVS4N+Y/vHBmcbiykStgrHTcWCP1bBLee3yg==
   dependencies:
     hoist-non-react-statics "^3.3.1"
     immutable "^4.0.0-rc.12"
     lodash "^4.17.15"
-    moment "^2.24.0"
+    memoize-one "^5.2.1"
     prop-types "^15.5.10"
     react-native-swipe-gestures "^1.0.5"
     xdate "^0.8.0"
+  optionalDependencies:
+    moment "^2.24.0"
 
 react-native-code-push@^6.2.0:
   version "6.3.0"
