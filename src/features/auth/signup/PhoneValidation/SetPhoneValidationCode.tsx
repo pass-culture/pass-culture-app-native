@@ -9,6 +9,7 @@ import { MaskedTextInput } from 'react-native-mask-text'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
+import { UserProfilingFraudRequest } from 'api/gen'
 import { ApiError, extractApiErrorMessage } from 'api/helpers'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
@@ -56,6 +57,7 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
   const { data: settings } = useAppSettings()
   const { phoneNumber, countryCode } = route.params
   const { navigate, canGoBack, goBack } = useNavigation<UseNavigationType>()
+  const [sessionId, setSessionId] = useState<string | undefined>()
   const [codeInputState, setCodeInputState] = useState({
     code: '',
     isValid: false,
@@ -95,6 +97,11 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
 
   useFocusEffect(
     useCallback(() => {
+      Profiling.profileDevice(env.TMX_ORGID, env.TMX_FPSERVER, setSessionId)
+    }, [])
+  )
+  useFocusEffect(
+    useCallback(() => {
       storage.readObject('phone_validation_code_asked_at').then((value) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         setValidationCodeRequestTimestamp(value as any)
@@ -103,20 +110,14 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
   )
 
   function onValidateSuccess() {
-    try {
-      Profiling.profileDevice(env.TMX_ORGID, env.TMX_FPSERVER, (sessionId) => {
-        if (!sessionId) {
-          errorMonitoring.captureException(new Error('TMX sessionId is null'))
-          return
-        }
-        api
-          .postnativev1userProfiling({
-            session_id: sessionId,
-          })
-          .catch(errorMonitoring.captureException)
-      })
-    } catch (err) {
-      errorMonitoring.captureException(err)
+    if (!sessionId) {
+      errorMonitoring.captureException(new Error('TMX sessionId is null'))
+    } else {
+      api
+        .postnativev1userProfiling({
+          session_id: sessionId,
+        } as UserProfilingFraudRequest)
+        .catch(errorMonitoring.captureException)
     }
     navigateToNextBeneficiaryValidationStep()
   }
