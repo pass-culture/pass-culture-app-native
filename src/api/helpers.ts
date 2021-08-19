@@ -145,6 +145,7 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   }
   const responseBody = await response.json()
   if (mustUpdateApp(response, responseBody)) {
+    // @ts-expect-error we override global on purpose
     global.setMustUpdateApp && global.setMustUpdateApp(true)
     return {}
   }

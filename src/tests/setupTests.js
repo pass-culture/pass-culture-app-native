@@ -33,6 +33,8 @@ consoleFailTestModule.cft({
   console: allowConsoleRuntimeConfig,
 })
 
+jest.setTimeout(30000)
+
 global.beforeAll(() => {
   server.listen()
 })
