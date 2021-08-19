@@ -17,7 +17,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
-import { flushAllPromises, render, act, fireEvent } from 'tests/utils'
+import { flushAllPromises, render, act, fireEvent, cleanup } from 'tests/utils'
 
 import { Profile } from './Profile'
 
@@ -90,6 +90,7 @@ describe('Profile component', () => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION
     mockPositionError = null
+    cleanup()
   })
 
   describe('user settings section', () => {
@@ -173,28 +174,20 @@ describe('Profile component', () => {
   describe('help section', () => {
     it('should navigate when the how-it-works row is clicked', async () => {
       const { getByTestId } = await renderProfile()
-
-      const row = getByTestId('row-how-it-works')
-      fireEvent.press(row)
-
+      fireEvent.press(getByTestId('row-how-it-works'))
       expect(mockNavigate).toBeCalledWith('FirstTutorial', { shouldCloseAppOnBackAction: false })
     })
 
     it('should navigate when the faq row is clicked', async () => {
       const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
       const { getByTestId } = await renderProfile()
-
-      const row = getByTestId('row-faq')
-      fireEvent.press(row)
-
+      fireEvent.press(getByTestId('row-faq'))
       expect(openExternalUrl).toBeCalledWith(env.FAQ_LINK)
     })
+
     it('should navigate when the how-import-deeplink row is clicked', async () => {
       const { getByTestId } = await renderProfile()
-
-      const row = getByTestId('row-import-deeplink')
-      fireEvent.press(row)
-
+      fireEvent.press(getByTestId('row-import-deeplink'))
       expect(mockNavigate).toBeCalledWith('DeeplinkImporter')
     })
   })

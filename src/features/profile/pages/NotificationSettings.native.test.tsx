@@ -52,6 +52,7 @@ describe('NotificationSettings', () => {
       queryByText('Autoriser les notifications marketing')
     })
   })
+
   it('should only display the email switch on android', async () => {
     Platform.OS = 'android'
     const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
@@ -76,6 +77,7 @@ describe('NotificationSettings', () => {
         expect(pushSwitch.parent?.props.accessibilityValue.text).toBe('true')
       )
     })
+
     it.each<[PermissionStatus, boolean]>([
       ['unavailable', true],
       ['blocked', true],
@@ -124,6 +126,7 @@ describe('NotificationSettings', () => {
         )
       })
     })
+
     it('should disable the switch when permission=="granted" and push previously allowed', async () => {
       const { getByTestId } = await renderNotificationSettings('granted', {
         subscriptions: {
@@ -146,6 +149,7 @@ describe('NotificationSettings', () => {
         )
       })
     })
+
     it.each<PermissionStatus>(['unavailable', 'blocked', 'denied', 'limited'])(
       'should open the modal when permission!="granted" (==%s) and trying to allow',
       async (permission) => {
@@ -185,6 +189,7 @@ describe('NotificationSettings', () => {
         expect(saveButton).toBeFalsy()
       })
     })
+
     it('should enable the save button when the email switch changed', async () => {
       mockApiUpdateProfile({
         subscriptions: {
@@ -224,6 +229,7 @@ describe('NotificationSettings', () => {
         expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
       })
     })
+
     it('should enable the save button when the push switch changed and call analytics when pressed', async () => {
       Platform.OS = 'ios'
       mockApiUpdateProfile({

@@ -19,9 +19,10 @@ export const useAppStateChange = (
   }
 
   useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange)
+    const listener = AppState.addEventListener('change', handleAppStateChange)
     return () => {
-      AppState.removeEventListener('change', handleAppStateChange)
+      // @ts-expect-error waiting for @types/react-native v0.65.+
+      listener.remove()
     }
   }, deps)
   return appState

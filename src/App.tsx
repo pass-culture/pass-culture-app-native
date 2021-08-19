@@ -54,9 +54,10 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
       handleFocus()
     }
   }
-  AppState.addEventListener('change', triggerReactQueryFocusOnBecomeActive)
+  const listener = AppState.addEventListener('change', triggerReactQueryFocusOnBecomeActive)
   return () => {
-    AppState.removeEventListener('change', triggerReactQueryFocusOnBecomeActive)
+    // @ts-expect-error waiting for @types/react-native v0.65.+
+    listener.remove()
   }
 })
 
