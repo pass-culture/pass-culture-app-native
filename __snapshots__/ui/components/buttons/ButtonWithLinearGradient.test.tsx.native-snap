@@ -4,7 +4,9 @@ exports[`< ButtonWithLinearGradient /> should render disabled 1`] = `
 <View
   accessibilityLabel="Wording to display"
   accessible={true}
+  collapsable={false}
   focusable={true}
+  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
@@ -73,7 +75,9 @@ exports[`< ButtonWithLinearGradient /> should render not disabled 1`] = `
 <View
   accessibilityLabel="Wording to display"
   accessible={true}
+  collapsable={false}
   focusable={true}
+  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}

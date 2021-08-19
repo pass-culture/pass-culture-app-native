@@ -176,6 +176,8 @@ Array [
         }
       />
       <Text
+        collapsable={false}
+        nativeID="animatedComponent"
         numberOfLines={1}
         style={
           Object {

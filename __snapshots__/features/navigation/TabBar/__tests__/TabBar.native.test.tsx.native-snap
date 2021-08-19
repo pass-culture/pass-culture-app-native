@@ -46,7 +46,9 @@ exports[`TabBar renders correctly 1`] = `
     <View
       accessibilityLabel="Home tab"
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -119,7 +121,9 @@ exports[`TabBar renders correctly 1`] = `
     <View
       accessibilityLabel="Search tab"
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -174,7 +178,9 @@ exports[`TabBar renders correctly 1`] = `
     <View
       accessibilityLabel="Bookings tab"
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -229,7 +235,9 @@ exports[`TabBar renders correctly 1`] = `
     <View
       accessibilityLabel="Favorites tab"
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -284,7 +292,9 @@ exports[`TabBar renders correctly 1`] = `
     <View
       accessibilityLabel="Profile tab"
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

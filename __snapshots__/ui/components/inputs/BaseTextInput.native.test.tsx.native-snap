@@ -2,10 +2,8 @@
 
 exports[`<BaseTextInput /> should render correctly 1`] = `
 <TextInput
-  allowFontScaling={true}
   placeholder="placeholder"
   placeholderTextColor="#626262"
-  rejectResponderTermination={true}
   style={
     Array [
       Object {
@@ -23,7 +21,6 @@ exports[`<BaseTextInput /> should render correctly 1`] = `
       },
     ]
   }
-  underlineColorAndroid="transparent"
   value="value"
 />
 `;

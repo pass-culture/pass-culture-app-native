@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -75,16 +75,16 @@
+@@ -77,16 +77,16 @@
                 },
               ]
             }
@@ -24,7 +24,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -101,10 +101,18 @@
+@@ -103,10 +103,18 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -41,9 +41,9 @@ exports[`Categories component should match diff snapshot when new category is se
         </View>
         <View
           accessible={true}
+          collapsable={false}
           focusable={true}
-          onClick={[Function onClick]}
-@@ -151,16 +159,16 @@
+@@ -155,16 +163,16 @@
                 },
               ]
             }
@@ -62,7 +62,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -177,18 +185,10 @@
+@@ -181,18 +189,10 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -79,8 +79,8 @@ exports[`Categories component should match diff snapshot when new category is se
         </View>
         <View
           accessible={true}
-          focusable={true}
-          onClick={[Function onClick]}"
+          collapsable={false}
+          focusable={true}"
 `;
 
 exports[`Categories component should render correctly 1`] = `
@@ -116,7 +116,9 @@ Array [
       />
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -200,7 +202,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -276,7 +280,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -352,7 +358,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -428,7 +436,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -504,7 +514,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -580,7 +592,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -656,7 +670,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -732,7 +748,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -808,7 +826,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -884,7 +904,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -960,7 +982,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -1036,7 +1060,9 @@ Array [
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -1175,7 +1201,9 @@ Array [
         <View
           accessibilityLabel="Revenir en arrière"
           accessible={true}
+          collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}

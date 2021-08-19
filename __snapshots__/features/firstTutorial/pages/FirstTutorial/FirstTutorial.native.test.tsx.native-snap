@@ -83,7 +83,9 @@ Array [
           <View
             accessibilityLabel="Tout passer"
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -169,6 +171,8 @@ Array [
             }
           >
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               onMoveShouldSetResponder={[Function]}
               onMoveShouldSetResponderCapture={[Function]}
               onResponderEnd={[Function]}
@@ -353,7 +357,9 @@ Array [
                       <View
                         accessibilityLabel="Continuer"
                         accessible={true}
+                        collapsable={false}
                         focusable={true}
+                        nativeID="animatedComponent"
                         onClick={[Function]}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}
@@ -560,7 +566,9 @@ Array [
                     }
                   >
                     <View
+                      collapsable={false}
                       forwardedRef={[Function]}
+                      nativeID="animatedComponent"
                       style={Object {}}
                     >
                       <View
@@ -732,7 +740,9 @@ Array [
                     }
                   >
                     <View
+                      collapsable={false}
                       forwardedRef={[Function]}
+                      nativeID="animatedComponent"
                       style={Object {}}
                     >
                       <View
@@ -904,7 +914,9 @@ Array [
                     }
                   >
                     <View
+                      collapsable={false}
                       forwardedRef={[Function]}
+                      nativeID="animatedComponent"
                       style={Object {}}
                     >
                       <View
@@ -1289,7 +1301,9 @@ Array [
                   <View
                     accessibilityLabel="Next"
                     accessible={true}
+                    collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}

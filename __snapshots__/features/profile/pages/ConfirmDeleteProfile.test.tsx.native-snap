@@ -184,7 +184,9 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       <View
         accessibilityLabel="Supprimer mon compte"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -245,7 +247,9 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       <View
         accessibilityLabel="Abandonner"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

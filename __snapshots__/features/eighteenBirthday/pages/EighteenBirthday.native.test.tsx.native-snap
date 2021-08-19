@@ -98,6 +98,8 @@ Array [
             }
           >
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               onMoveShouldSetResponder={[Function]}
               onMoveShouldSetResponderCapture={[Function]}
               onResponderEnd={[Function]}
@@ -282,7 +284,9 @@ Array [
                       <View
                         accessibilityLabel="Vérifier mon identité"
                         accessible={true}
+                        collapsable={false}
                         focusable={true}
+                        nativeID="animatedComponent"
                         onClick={[Function]}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}
@@ -344,7 +348,9 @@ Array [
                       <View
                         accessibilityLabel="Passer"
                         accessible={true}
+                        collapsable={false}
                         focusable={true}
+                        nativeID="animatedComponent"
                         onClick={[Function]}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}

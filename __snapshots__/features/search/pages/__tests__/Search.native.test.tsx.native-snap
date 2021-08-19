@@ -118,7 +118,6 @@ exports[`Search component should render correctly 1`] = `
           }
         />
         <TextInput
-          allowFontScaling={true}
           autoCorrect={false}
           onBlur={[Function]}
           onChangeText={[Function]}
@@ -126,7 +125,6 @@ exports[`Search component should render correctly 1`] = `
           onSubmitEditing={[Function]}
           placeholder="Titre, artiste, lieu..."
           placeholderTextColor="#626262"
-          rejectResponderTermination={true}
           returnKeyType="search"
           selectionColor="#626262"
           style={
@@ -146,7 +144,6 @@ exports[`Search component should render correctly 1`] = `
               },
             ]
           }
-          underlineColorAndroid="transparent"
           value=""
         />
       </View>
@@ -175,7 +172,9 @@ exports[`Search component should render correctly 1`] = `
       />
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -286,7 +285,9 @@ exports[`Search component should render correctly 1`] = `
       />
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -412,7 +413,9 @@ exports[`Search component should render correctly 1`] = `
     <View
       accessibilityLabel="Rechercher"
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
