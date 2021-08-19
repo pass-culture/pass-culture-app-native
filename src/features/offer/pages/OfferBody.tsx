@@ -23,7 +23,6 @@ import { QueryKeys } from 'libs/queryKeys'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Hero } from 'ui/components/hero/Hero'
-import { useModal } from 'ui/components/modals/useModal'
 import { useModalNavigation } from 'ui/components/modals/useModalNavigation'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Flag } from 'ui/svg/icons/Flag'
@@ -50,17 +49,13 @@ export const OfferBody: FunctionComponent<{
   const hideReportDescription = () => setReportStep(null)
   const showReportDescription = () => setReportStep(0)
 
-  const {
-    visible: isReportReasonVisible,
-    showModal: showReportReason,
-    hideModal: hideReportReason,
-  } = useModal(false)
+  const isReportReasonVisible = reportStep === 1
+  const hideReportReason = () => setReportStep(null)
+  const showReportReason = () => setReportStep(1)
 
-  const {
-    visible: isReportOtherReasonVisible,
-    showModal: showReportOtherReason,
-    hideModal: hideReportOtherReason,
-  } = useModal(false)
+  const isReportOtherReasonVisible = reportStep === 2
+  const hideReportOtherReason = () => setReportStep(null)
+  const showReportOtherReason = () => setReportStep(2)
 
   useTrackOfferSeenDuration(offerId)
 
