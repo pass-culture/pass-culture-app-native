@@ -13,6 +13,7 @@ import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { ReportOfferDescriptionModal } from 'features/offer/components/ReportOfferDescriptionModal'
 import { ReportOfferOtherReasonModal } from 'features/offer/components/ReportOfferOtherReasonModal'
 import { ReportOfferReasonModal } from 'features/offer/components/ReportOfferReasonModal'
+import { useReportOffer } from 'features/offer/components/useReportOffer'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
@@ -42,11 +43,12 @@ export const OfferBody: FunctionComponent<{
   const { isLoggedIn } = useAuthContext()
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
-  const {
-    visible: isReportDescriptionVisible,
-    showModal: showReportDescription,
-    hideModal: hideReportDescription,
-  } = useModal(false)
+
+  const { reportStep, setReportStep } = useReportOffer()
+
+  const isReportDescriptionVisible = reportStep === 0
+  const hideReportDescription = () => setReportStep(null)
+  const showReportDescription = () => setReportStep(0)
 
   const {
     visible: isReportReasonVisible,
