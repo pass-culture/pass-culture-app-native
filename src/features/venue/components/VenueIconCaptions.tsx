@@ -55,7 +55,7 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
         <Spacer.Row numberOfSpaces={6} />
         <VenueType type={type} label={label} />
         <Separator />
-        <ActiveGeolocationButton onPress={onPressActiveGeolocation}>
+        <ActiveGeolocationButton onPress={onPressActiveGeolocation} disabled={!!distanceToLocation}>
           <IconWithCaption {...getInformationsForLocation()} />
         </ActiveGeolocationButton>
         <Spacer.Row numberOfSpaces={6} />
