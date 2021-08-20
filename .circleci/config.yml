@@ -147,12 +147,17 @@ commands:
           true
 
 jobs:
-  run-tests:
+  checkout-and-install-deps:
     docker:
       - image: cimg/node:12.16
-        auth:
-          username: $DOCKERHUB_USER
-          password: $DOCKERHUB_PASSWORD
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+
+  test-lint-and-types:
+    docker:
+      - image: cimg/node:12.16
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -163,16 +168,29 @@ jobs:
             yarn test:lint
       - run:
           name: Typescript Type Check
-          command: |
-            yarn test:types
+          command: yarn test:types
+
+  test-native:
+    docker:
+      - image: cimg/node:12.16
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
       - run:
           name: Unit Tests Native
-          command: |
-            yarn test:unit:ci
+          command: yarn test:unit:ci
+
+  test-web:
+    docker:
+      - image: cimg/node:12.16
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
       - run:
           name: Unit Tests Web
-          command: |
-            yarn test:unit:web:ci
+          command: yarn test:unit:web:ci
 
   upload-sourcemaps:
     docker:
@@ -499,20 +517,26 @@ workflows:
   version: 2.1
   commit:
     jobs:
-      - run-tests:
-          # Need to tell job run-tests to been launched for all tags
-          # as it is a required step for some jobs, triggered by tags
-          # see: https://discuss.circleci.com/t/tag-filter-not-firing-in-workflow/25534/3
+      - checkout-and-install-deps:
           filters:
             tags:
               only: /.*/
+      - test-lint-and-types:
+          requires:
+            - checkout-and-install-deps
+      - test-native:
+          requires:
+            - checkout-and-install-deps
+      - test-web:
+          requires:
+            - checkout-and-install-deps
       - deploy-soft-testing:
           filters:
             branches:
               only:
                 - master
           requires:
-            - run-tests
+            - checkout-and-install-deps
       - build-android-production-hard:
           filters:
             tags:
@@ -520,7 +544,8 @@ workflows:
             branches:
               only: master
           requires:
-            - run-tests
+            - test-lint-and-types
+            - test-native
       - build-ios-production-hard:
           filters:
             tags:
@@ -528,7 +553,8 @@ workflows:
             branches:
               only: master
           requires:
-            - run-tests
+            - test-lint-and-types
+            - test-native
       - deploy-android-testing-hard:
           filters:
             tags:
@@ -536,7 +562,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - run-tests
+            - checkout-and-install-deps
       - deploy-ios-testing-hard:
           filters:
             tags:
@@ -544,7 +570,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - run-tests
+            - checkout-and-install-deps
       - upload-sourcemaps:
           filters:
             tags:
@@ -562,7 +588,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - run-tests
+            - checkout-and-install-deps
       - deploy-ios-staging-hard:
           filters:
             tags:
@@ -570,7 +596,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - run-tests
+            - checkout-and-install-deps
       - notify-hard-release:
           filters:
             tags:
@@ -587,7 +613,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - run-tests
+            - checkout-and-install-deps
       - deploy-android-production-hard:
           filters:
             tags:
@@ -595,7 +621,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - run-tests
+            - checkout-and-install-deps
       - deploy-ios-production-hard:
           filters:
             tags:
@@ -603,7 +629,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - run-tests
+            - checkout-and-install-deps
       - notify-hard-release:
           filters:
             tags:
@@ -620,7 +646,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - run-tests
+            - checkout-and-install-deps
       - deploy-web-testing:
           filters:
             tags:
@@ -628,7 +654,8 @@ workflows:
             branches:
               only: master
           requires:
-            - run-tests
+            - test-lint-and-types
+            - test-web
           context:
             - GCP
             - GCP_EHP
@@ -641,7 +668,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - run-tests
+            - checkout-and-install-deps
           context:
             - GCP
             - GCP_EHP
