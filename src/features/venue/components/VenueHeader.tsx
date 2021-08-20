@@ -5,6 +5,7 @@ import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { isSharingSupported } from 'features/offer/services/isSharingSupported'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
@@ -46,12 +47,15 @@ export const VenueHeader: React.FC<Props> = (props) => {
         </Title>
 
         <Spacer.Flex />
-        <HeaderIcon
-          animationState={animationState}
-          iconName="share"
-          onPress={shareVenue}
-          testID={t`Partager`}
-        />
+        {/* TODO WEB : display button only if sharing is supported : https://passculture.atlassian.net/browse/PC-10510 */}
+        {isSharingSupported() ? (
+          <HeaderIcon
+            animationState={animationState}
+            iconName="share"
+            onPress={shareVenue}
+            testID={t`Partager`}
+          />
+        ) : null}
         <Spacer.Row numberOfSpaces={6} />
       </Row>
       <Spacer.Column numberOfSpaces={2} />

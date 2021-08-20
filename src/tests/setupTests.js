@@ -62,9 +62,11 @@ const geolocation = {
 const permissions = {
   query: jest.fn(async () => ({ state: 'granted' })),
 }
+const share = jest.fn()
 if (!global.navigator) {
-  global.navigator = { geolocation, permissions }
+  global.navigator = { geolocation, permissions, share }
 } else {
   global.navigator.geolocation = geolocation
   global.navigator.permissions = permissions
+  global.navigator.share = share
 }
