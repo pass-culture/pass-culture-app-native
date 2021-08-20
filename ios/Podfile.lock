@@ -447,8 +447,10 @@ PODS:
   - react-native-appsflyer (6.3.20):
     - AppsFlyerFramework (= 6.3.2)
     - React
-  - react-native-config (0.13.0):
-    - React
+  - react-native-config (1.4.2):
+    - react-native-config/App (= 1.4.2)
+  - react-native-config/App (1.4.2):
+    - React-Core
   - react-native-flipper (0.98.0):
     - React-Core
   - react-native-geolocation-service (5.3.0-beta.1):
@@ -957,7 +959,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 43f2542aed3c26e42175b339f8d37fe3dd683765
   React-jsinspector: 41e58e5b8e3e0bf061fdf725b03f2144014a8fb0
   react-native-appsflyer: 0f31d34f73fb3a32f29ddece86b45a1e3af8251e
-  react-native-config: 056581a0891d0269428219c45c696dd91c6f9eee
+  react-native-config: 8394eaccfc90e286e4dd225c38ac71a5b9b9d6c7
   react-native-flipper: 80b71629f5bf7b942dfae7af0c5f88526d19b3ca
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
   react-native-get-random-values: 237bffb1c7e05fb142092681531810a29ba53015
