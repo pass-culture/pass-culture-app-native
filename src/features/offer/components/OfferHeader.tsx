@@ -13,6 +13,7 @@ import {
 } from 'features/favorites/pages/useFavorites'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
+import { isSharingSupported } from 'features/offer/services/isSharingSupported'
 import { analytics } from 'libs/analytics'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
@@ -108,12 +109,15 @@ export const OfferHeader: React.FC<Props> = (props) => {
           </Title>
 
           <Spacer.Flex />
-          <HeaderIcon
-            animationState={animationState}
-            iconName="share"
-            onPress={shareOffer}
-            testID={t`Partager`}
-          />
+          {/* TODO WEB : display button only if sharing is supported : https://passculture.atlassian.net/browse/PC-10510 */}
+          {isSharingSupported() ? (
+            <HeaderIcon
+              animationState={animationState}
+              iconName="share"
+              onPress={shareOffer}
+              testID={t`Partager`}
+            />
+          ) : null}
           <Spacer.Row numberOfSpaces={3} />
           <HeaderIcon
             animationState={animationState}
