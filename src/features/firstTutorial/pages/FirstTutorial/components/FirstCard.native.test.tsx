@@ -18,7 +18,7 @@ describe('FirstCard', () => {
         lastIndex={0}
         activeIndex={0}
         index={0}
-        swiperRef={(ref as unknown) as RefObject<Swiper>}
+        swiperRef={ref as unknown as RefObject<Swiper>}
       />
     )
 

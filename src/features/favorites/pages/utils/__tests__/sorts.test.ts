@@ -53,8 +53,7 @@ describe('Favorites sorts', () => {
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
-            url:
-              'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
+            url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
           },
           coordinates: {
             latitude: 5.15839,
@@ -81,8 +80,7 @@ describe('Favorites sorts', () => {
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
-            url:
-              'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
+            url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
           },
           coordinates: {
             latitude: 48.9263,
@@ -109,8 +107,7 @@ describe('Favorites sorts', () => {
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
-            url:
-              'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
+            url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
           },
           coordinates: {
             latitude: 48.94538,
@@ -145,8 +142,7 @@ describe('Favorites sorts', () => {
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
-            url:
-              'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
+            url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
           },
           coordinates: {
             latitude: 48.9263,
@@ -173,8 +169,7 @@ describe('Favorites sorts', () => {
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
-            url:
-              'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
+            url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
           },
           coordinates: {
             latitude: 48.94538,
@@ -225,8 +220,7 @@ describe('Favorites sorts', () => {
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
-            url:
-              'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
+            url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
           },
           coordinates: {
             latitude: 5.15839,

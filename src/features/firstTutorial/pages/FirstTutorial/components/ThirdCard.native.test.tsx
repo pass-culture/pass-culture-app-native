@@ -21,7 +21,7 @@ describe('ThirdCard', () => {
       <GeolocationWrapper>
         <GenericAchievement screenName="FirstTutorial">
           <ThirdCard
-            swiperRef={(ref as unknown) as RefObject<Swiper>}
+            swiperRef={ref as unknown as RefObject<Swiper>}
             index={0}
             activeIndex={0}
             lastIndex={0}
@@ -42,7 +42,7 @@ describe('ThirdCard', () => {
       <GeolocationWrapper>
         <GenericAchievement screenName="FirstTutorial">
           <ThirdCard
-            swiperRef={(ref as unknown) as RefObject<Swiper>}
+            swiperRef={ref as unknown as RefObject<Swiper>}
             index={0}
             activeIndex={0}
             lastIndex={0}
@@ -63,7 +63,7 @@ describe('ThirdCard', () => {
       <GeolocationWrapper>
         <ThirdCard
           lastIndex={0}
-          swiperRef={(ref as unknown) as RefObject<Swiper>}
+          swiperRef={ref as unknown as RefObject<Swiper>}
           index={0}
           activeIndex={0}
         />

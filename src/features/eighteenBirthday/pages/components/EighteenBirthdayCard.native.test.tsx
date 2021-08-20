@@ -85,7 +85,7 @@ async function renderEighteenBirthdayCard({ isLoggedIn } = { isLoggedIn: true })
           activeIndex={0}
           index={0}
           lastIndex={0}
-          swiperRef={(ref as unknown) as RefObject<Swiper>}
+          swiperRef={ref as unknown as RefObject<Swiper>}
         />
       </AuthContext.Provider>
     )

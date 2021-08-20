@@ -71,8 +71,8 @@ export const useBeneficiaryValidationNavigation = () => {
     }
   }
 
-  return useMemo(() => ({ error, navigateToNextBeneficiaryValidationStep }), [
-    error,
-    navigateToNextBeneficiaryValidationStep,
-  ])
+  return useMemo(
+    () => ({ error, navigateToNextBeneficiaryValidationStep }),
+    [error, navigateToNextBeneficiaryValidationStep]
+  )
 }

@@ -36,26 +36,28 @@ export const extractUniversalLinkFromLongFirebaseDynamicLink = (event: DeeplinkE
   return paramsString.replace(/^link=/, '')
 }
 
-export const resolveHandler = (
-  handleDeeplinkUrl: (event: DeeplinkEvent) => void,
-  listenShortLinks?: boolean // This option should not be passed when using resolveHandler into the ios listener
-) => (event: DeeplinkEvent) => {
-  if (isUniversalLink(event.url)) {
-    // Universal links: https://app.passculture-{env}.beta.gouv.fr/<routeName>
-    return handleDeeplinkUrl(event)
-  }
+export const resolveHandler =
+  (
+    handleDeeplinkUrl: (event: DeeplinkEvent) => void,
+    listenShortLinks?: boolean // This option should not be passed when using resolveHandler into the ios listener
+  ) =>
+  (event: DeeplinkEvent) => {
+    if (isUniversalLink(event.url)) {
+      // Universal links: https://app.passculture-{env}.beta.gouv.fr/<routeName>
+      return handleDeeplinkUrl(event)
+    }
 
-  // Long Firebase Dynamic Links: https://passcultureapp{env}.page.link/?link=https://app.passculture-{env}.beta.gouv.fr/<routeName>?param=214906&apn=app.passculture.testing&isi=1557887412&ibi=app.passculture.test&efr=1
-  if (isFirebaseLongDynamicLink(event.url)) {
-    return handleDeeplinkUrl({ url: extractUniversalLinkFromLongFirebaseDynamicLink(event) })
-  }
+    // Long Firebase Dynamic Links: https://passcultureapp{env}.page.link/?link=https://app.passculture-{env}.beta.gouv.fr/<routeName>?param=214906&apn=app.passculture.testing&isi=1557887412&ibi=app.passculture.test&efr=1
+    if (isFirebaseLongDynamicLink(event.url)) {
+      return handleDeeplinkUrl({ url: extractUniversalLinkFromLongFirebaseDynamicLink(event) })
+    }
 
-  // Short Firebase Dynamic Links: https://passcultureapp{env}.page.link/<routeName>
-  // => handled with dynamicLinks().onLink
-  if (listenShortLinks) {
-    handleDeeplinkUrl({ url: event.url.replace(FIREBASE_DYNAMIC_LINK_URL, '') })
+    // Short Firebase Dynamic Links: https://passcultureapp{env}.page.link/<routeName>
+    // => handled with dynamicLinks().onLink
+    if (listenShortLinks) {
+      handleDeeplinkUrl({ url: event.url.replace(FIREBASE_DYNAMIC_LINK_URL, '') })
+    }
   }
-}
 
 /**
  * For all params

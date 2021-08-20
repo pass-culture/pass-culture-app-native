@@ -190,9 +190,9 @@ describe('SetPhoneValidationCode', () => {
     it('should request new validation code on press', async () => {
       const sendPhoneValidationCode = jest.fn()
       // eslint-disable-next-line local-rules/independant-mocks
-      jest.spyOn(AuthApi, 'useSendPhoneValidationMutation').mockReturnValue(({
+      jest.spyOn(AuthApi, 'useSendPhoneValidationMutation').mockReturnValue({
         mutate: sendPhoneValidationCode,
-      } as unknown) as UseMutationResult<EmptyResponse, unknown, string, unknown>)
+      } as unknown as UseMutationResult<EmptyResponse, unknown, string, unknown>)
 
       const { getByTestId } = renderSetPhoneValidationCode()
       await superFlushWithAct()

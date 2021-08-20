@@ -103,7 +103,7 @@ describe('ConsentSettings', () => {
 function renderConsentSettings() {
   jest
     .spyOn(NavigationHelpers, 'usePreviousRoute')
-    .mockReturnValue((jest.fn() as unknown) as Route<string>)
+    .mockReturnValue(jest.fn() as unknown as Route<string>)
 
   const onGoBack = jest.fn() as () => void
   const navigationProps = {
