@@ -567,8 +567,8 @@ PODS:
     - Firebase/RemoteConfig (= 8.6.0)
     - React-Core
     - RNFBApp
-  - RNGestureHandler (1.8.0):
-    - React
+  - RNGestureHandler (1.10.3):
+    - React-Core
   - RNKeychain (6.2.0):
     - React
   - RNLaunchNavigator (1.0.8):
@@ -897,14 +897,14 @@ SPEC CHECKSUMS:
   CodePush: 69186fd1143f7e5e5c6f65383cf14f4927e28213
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: d41741890e730dcd8ec0b7635e6d690654325e84
+  FBReactNativeSpec: 009b9e3b175a7b35f54a51d96f6373b58aa61394
   Firebase: 21ac9f28b09a8bdfc005f34c984fca84e7e8786d
   FirebaseABTesting: c3e48ebf5e7e5c674c5a131c68e941d7921d83dc
   FirebaseAnalytics: 8f32ae54ad42754f503354782575c4ddfc1425c3
   FirebaseCore: 620b677f70f5470a8e59cb77f3ddc666f6f09785
   FirebaseCoreDiagnostics: 3721920bde3a9a6d5aa093c1d25e9d3e47f694af
   FirebaseDynamicLinks: 406d67290fd123e133641f93a333b4957af22c09
-  FirebaseFirestore: 6aede2ff41be2e1e2ef65ff2f08d765b1f3c5f3d
+  FirebaseFirestore: 113b2724b363d79c98c965f43e8af970745c13f3
   FirebaseInstallations: 0ede6ffcd215b8f93c19d9b06c1c54e2d4107e98
   FirebasePerformance: 868249ceda5e3399f581b5b53454d963feaa8164
   FirebaseRemoteConfig: 9ee4672d4eacf646256e26cfac61021b3a390ea4
@@ -980,7 +980,7 @@ SPEC CHECKSUMS:
   RNFBFirestore: 1c8404a41b757195bdf3298eca559f060a2b133f
   RNFBPerf: fc4d5968348b1bb157ebaf044a218fbd58c2318f
   RNFBRemoteConfig: 5d4d2e2d939bc6131bc7bd80633e883f51a25bac
-  RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
   RNLocalize: 49634a6a605dcdeb319e9c42a5c2f1aec508694b
