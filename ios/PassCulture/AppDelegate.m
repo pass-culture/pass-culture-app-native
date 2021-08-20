@@ -56,7 +56,7 @@ static void InitializeFlipper(UIApplication *application) {
                                                    moduleName:@"PassCulture"
                                             initialProperties:nil];
 
-  [RNBatch start:false]; // or true if you want the do not disturb mode
+  [RNBatch start];
   [BatchUNUserNotificationCenterDelegate registerAsDelegate];
   [BatchUNUserNotificationCenterDelegate sharedInstance].showForegroundNotifications = true;
   [BatchEventDispatcher addDispatcher:[BatchFirebaseDispatcher instance]];
