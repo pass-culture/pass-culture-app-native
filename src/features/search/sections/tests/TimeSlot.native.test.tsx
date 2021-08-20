@@ -21,6 +21,7 @@ describe('TimeSlot component', () => {
     mockSearchState = { ...initialSearchState, timeRange: [6, 20] }
     expect(render(<TimeSlot />).queryByText('6h - 20h')).toBeTruthy()
   })
+
   it('should dispatch TIME_RANGE onPress', () => {
     const { getByTestId } = render(<TimeSlot />)
     const slider = getByTestId('slider').children[0] as ReactTestInstance

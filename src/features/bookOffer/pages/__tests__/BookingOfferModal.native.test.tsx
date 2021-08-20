@@ -3,7 +3,7 @@ import React from 'react'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { cleanup, fireEvent, render } from 'tests/utils'
+import { cleanup, fireEvent, render, superFlushWithAct } from 'tests/utils'
 
 import { BookingOfferModalComponent } from '../BookingOfferModal'
 import { Step } from '../reducer'
@@ -28,26 +28,28 @@ describe('<BookingOfferModalComponent />', () => {
     cleanup()
   })
 
-  it('should dismiss modal when click on rightIconButton and reset state', () => {
+  it('should dismiss modal when click on rightIconButton and reset state', async () => {
     const page = render(
       reactQueryProviderHOC(<BookingOfferModalComponent visible={true} offerId={20} />)
     )
 
-    const dismissModalButton = page.getByTestId('rightIconButton')
+    fireEvent.press(page.getByTestId('rightIconButton'))
+    await superFlushWithAct()
 
-    fireEvent.press(dismissModalButton)
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })
     expect(mockDismissModal).toHaveBeenCalled()
   })
 
-  it('should not log event BookingProcessStart when modal is not visible', () => {
+  it('should not log event BookingProcessStart when modal is not visible', async () => {
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible={false} offerId={20} />))
+    await superFlushWithAct()
     expect(analytics.logBookingProcessStart).not.toHaveBeenCalled()
   })
 
-  it('should log event BookingProcessStart when modal opens', () => {
+  it('should log event BookingProcessStart when modal opens', async () => {
     const offerId = 30
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible={true} offerId={offerId} />))
+    await superFlushWithAct()
     expect(analytics.logBookingProcessStart).toHaveBeenCalledWith(offerId)
   })
 })

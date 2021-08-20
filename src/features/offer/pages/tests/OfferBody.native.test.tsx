@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { api } from 'api/api'
 import { analytics } from 'libs/analytics'
-import { act, fireEvent } from 'tests/utils'
+import { act, fireEvent, superFlushWithAct } from 'tests/utils'
 
 import { offerId, renderOfferBodyPage } from './renderOfferPageTestUtil'
 
@@ -41,54 +41,63 @@ describe('<OfferBody />', () => {
   beforeEach(jest.clearAllMocks)
 
   it('should match snapshot for physical offer', async () => {
-    const { toJSON } = await renderOfferBodyPage({ isDigital: false })
+    const { toJSON } = renderOfferBodyPage({ isDigital: false })
+    await superFlushWithAct()
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should match snapshot for digital offer', async () => {
-    const { toJSON } = await renderOfferBodyPage({ isDigital: true, isDuo: false })
+    const { toJSON } = renderOfferBodyPage({ isDigital: true, isDuo: false })
+    await superFlushWithAct()
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should show venue banner in where section', async () => {
-    const venue = await renderOfferBodyPage({ isDigital: false })
+    const venue = renderOfferBodyPage({ isDigital: false })
+    await superFlushWithAct()
     expect(venue.queryByTestId('VenueBannerComponent')).toBeTruthy()
   })
 
   it('should show accessibilityDetails', async () => {
-    let wrapper = await renderOfferBodyPage()
+    let wrapper = renderOfferBodyPage()
+    await superFlushWithAct()
     expect(wrapper.queryByText('Accessibilité')).toBeTruthy()
 
-    wrapper = await renderOfferBodyPage({ accessibility: { visualDisability: false } })
+    wrapper = renderOfferBodyPage({ accessibility: { visualDisability: false } })
+    await superFlushWithAct()
     expect(wrapper.queryByText('Accessibilité')).toBeTruthy()
 
-    wrapper = await renderOfferBodyPage({ accessibility: {} })
+    wrapper = renderOfferBodyPage({ accessibility: {} })
+    await superFlushWithAct()
     expect(wrapper.queryByText('Accessibilité')).toBeFalsy()
   })
 
   it('should show withdrawalDetails', async () => {
-    const wrapper = await renderOfferBodyPage(
+    const wrapper = renderOfferBodyPage(
       { withdrawalDetails: 'How to withdraw' },
       { isBeneficiary: true }
     )
+    await superFlushWithAct()
     expect(wrapper.queryByText('Modalités de retrait')).toBeTruthy()
   })
 
   it('should show withdrawalDetails for non beneficiary user', async () => {
-    const wrapper = await renderOfferBodyPage(
+    const wrapper = renderOfferBodyPage(
       { withdrawalDetails: 'How to withdraw' },
       { isBeneficiary: false }
     )
+    await superFlushWithAct()
     expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
   })
 
   it('should not show withdrawalDetails', async () => {
-    const wrapper = await renderOfferBodyPage({ withdrawalDetails: undefined })
+    const wrapper = renderOfferBodyPage({ withdrawalDetails: undefined })
+    await superFlushWithAct()
     expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
   })
 
   it('should not show distance and go to button', async () => {
-    const wrapper = await renderOfferBodyPage({
+    const wrapper = renderOfferBodyPage({
       venue: {
         id: 1664,
         address: '2 RUE LAMENNAIS',
@@ -100,22 +109,26 @@ describe('<OfferBody />', () => {
         coordinates: {},
       },
     })
+    await superFlushWithAct()
     expect(wrapper.queryByText("Voir l'itinéraire")).toBeFalsy()
     expect(wrapper.queryByText('Distance')).toBeFalsy()
   })
 
   it('should request /native/v1/offers/reports if user is logged in', async () => {
-    await renderOfferBodyPage()
+    renderOfferBodyPage()
+    await superFlushWithAct()
     expect(api.getnativev1offersreports).toHaveBeenCalled()
   })
 
   it('should not request /native/v1/offers/reports if user is not logged in', async () => {
-    await renderOfferBodyPage(undefined, undefined, { isLoggedIn: false })
+    renderOfferBodyPage(undefined, undefined, { isLoggedIn: false })
+    await superFlushWithAct()
     expect(api.getnativev1offersreports).not.toHaveBeenCalled()
   })
 
   it('should log itinerary analytics', async () => {
-    const wrapper = await renderOfferBodyPage()
+    const wrapper = renderOfferBodyPage()
+    await superFlushWithAct()
     act(() => {
       fireEvent.press(wrapper.getByText("Voir l'itinéraire"))
     })

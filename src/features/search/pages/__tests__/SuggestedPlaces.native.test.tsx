@@ -33,13 +33,15 @@ describe('SuggestedPlaces component', () => {
   })
 
   it('should show empty component only when query is not empty and the results are not loading', () => {
-    const { getByText } = render(<SuggestedPlaces places={[]} query="paris" isLoading={false} />)
-    expect(getByText('Aucun lieu ne correspond à ta recherche')).toBeTruthy()
+    const { findByText } = render(<SuggestedPlaces places={[]} query="paris" isLoading={false} />)
+    expect(findByText('Aucun lieu ne correspond à ta recherche')).toBeTruthy()
   })
+
   it('should not show empty component if the query is empty and the results are not loading', () => {
     const { queryByText } = render(<SuggestedPlaces places={[]} query="" isLoading={false} />)
     expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeFalsy()
   })
+
   it('should not show empty component if the results are still loading', () => {
     const { queryByText } = render(<SuggestedPlaces places={[]} query="paris" isLoading={true} />)
     expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeFalsy()

@@ -5,6 +5,7 @@ import { QueryClient } from 'react-query'
 import { env } from 'libs/environment'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { superFlushWithAct } from 'tests/utils'
 
 import { useBookOfferMutation } from '../useBookOfferMutation'
 
@@ -26,7 +27,7 @@ describe('useBookOfferMutation', () => {
       rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
     )
 
-    const { result, waitForNextUpdate } = renderHook(
+    const { result } = renderHook(
       () => useBookOfferMutation(props),
       // eslint-disable-next-line react/display-name
       { wrapper: ({ children }) => reactQueryProviderHOC(children, setup) }
@@ -35,10 +36,10 @@ describe('useBookOfferMutation', () => {
     expect(queryCache.find('userProfile')).toBeDefined()
     expect(queryCache.find('userProfile')?.state.isInvalidated).toBeFalsy()
 
-    await act(async () => {
-      await result.current.mutate({ quantity: 1, stockId: 10 })
-      await waitForNextUpdate()
+    act(() => {
+      result.current.mutate({ quantity: 1, stockId: 10 })
     })
+    await superFlushWithAct()
 
     expect(props.onSuccess).toHaveBeenCalled()
     expect(props.onError).not.toHaveBeenCalled()
@@ -52,7 +53,7 @@ describe('useBookOfferMutation', () => {
       )
     )
 
-    const { result, waitForNextUpdate } = renderHook(
+    const { result } = renderHook(
       () => useBookOfferMutation(props),
       // eslint-disable-next-line react/display-name
       { wrapper: ({ children }) => reactQueryProviderHOC(children, setup) }
@@ -61,10 +62,10 @@ describe('useBookOfferMutation', () => {
     expect(queryCache.find('userProfile')).toBeDefined()
     expect(queryCache.find('userProfile')?.state.isInvalidated).toBeFalsy()
 
-    await act(async () => {
-      await result.current.mutate({ quantity: 1, stockId: 10 })
-      await waitForNextUpdate()
+    act(() => {
+      result.current.mutate({ quantity: 1, stockId: 10 })
     })
+    await superFlushWithAct()
 
     expect(props.onSuccess).not.toHaveBeenCalled()
     expect(props.onError).toHaveBeenCalled()
