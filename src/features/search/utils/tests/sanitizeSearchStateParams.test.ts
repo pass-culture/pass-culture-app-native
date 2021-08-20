@@ -1,4 +1,5 @@
 import { LocationType } from 'features/search/enums'
+import { SearchState } from 'features/search/types'
 import {
   sanitizeSearchStateParams,
   sanitizedSearchStateRequiredDefaults,
@@ -10,52 +11,32 @@ describe('sanitizeSearchStateParams', () => {
   })
 
   it('should sanitize query to empty string when not provided', () => {
-    expect(sanitizeSearchStateParams({ query: 'test' })).toEqual({
-      ...sanitizedSearchStateRequiredDefaults,
-      query: 'test',
-    })
-    expect(sanitizeSearchStateParams({})).toEqual({
-      ...sanitizedSearchStateRequiredDefaults,
-      query: '',
-    })
+    const searchStateParams = sanitizeSearchStateParams({ query: 'test' })
+    expect(searchStateParams).toEqual({ ...sanitizedSearchStateRequiredDefaults, query: 'test' })
+    const emptySearchStateParams = sanitizeSearchStateParams({})
+    expect(emptySearchStateParams).toEqual({ ...sanitizedSearchStateRequiredDefaults, query: '' })
   })
 
   it('should sanitize offerCategories to empty array when not provided', () => {
-    expect(
-      sanitizeSearchStateParams({
-        offerCategories: ['CINEMA'],
-      })
-    ).toEqual({
-      ...sanitizedSearchStateRequiredDefaults,
-      offerCategories: ['CINEMA'],
-    })
-    const undefParams = sanitizeSearchStateParams({
-      offerCategories: undefined,
-    })
-    expect(undefParams).toEqual({
-      ...sanitizedSearchStateRequiredDefaults,
-      offerCategories: sanitizedSearchStateRequiredDefaults.offerCategories,
-    })
-    expect(undefParams.offerCategories).not.toBeUndefined()
+    let { offerCategories } = sanitizeSearchStateParams({ offerCategories: ['CINEMA'] })
+    expect(offerCategories).toEqual(['CINEMA'])
+    offerCategories = sanitizeSearchStateParams({ offerCategories: undefined }).offerCategories
+    expect(offerCategories).toEqual([])
+    expect(offerCategories).not.toBeUndefined()
   })
 
   it('should sanitize tags to empty array when not provided', () => {
-    expect(
-      sanitizeSearchStateParams({
-        tags: ['special'],
-      })
-    ).toEqual({
+    const sanitizedSearchStateParams = sanitizeSearchStateParams({ tags: ['special'] })
+    expect(sanitizedSearchStateParams).toEqual({
       ...sanitizedSearchStateRequiredDefaults,
       tags: ['special'],
     })
-    const undefParams = sanitizeSearchStateParams({
-      tags: undefined,
-    })
+    const undefParams = sanitizeSearchStateParams({ tags: undefined })
     expect(undefParams).toEqual({
       ...sanitizedSearchStateRequiredDefaults,
       tags: sanitizedSearchStateRequiredDefaults.tags,
     })
-    expect(undefParams.offerCategories).not.toBeUndefined()
+    expect(undefParams.tags).not.toBeUndefined()
   })
 
   it.each`
@@ -78,50 +59,37 @@ describe('sanitizeSearchStateParams', () => {
       parameter,
       value,
     }: {
-      parameter: string
+      parameter: keyof SearchState
       value: boolean | number | string | Date | Record<string, unknown> | undefined | null
     }) => {
-      expect(
-        sanitizeSearchStateParams({
-          [parameter]: value,
-        })
-      ).toEqual({
-        ...sanitizedSearchStateRequiredDefaults,
-        [parameter]: value,
-      })
-      expect(
-        sanitizeSearchStateParams({
-          [parameter]: undefined,
-        })
-      ).toEqual({
-        ...sanitizedSearchStateRequiredDefaults,
-        [parameter]: undefined,
-      })
+      const definedParams = sanitizeSearchStateParams({ [parameter]: value })
+      expect(definedParams[parameter]).toEqual(value)
+
+      const undefinedParams = sanitizeSearchStateParams({ [parameter]: undefined })
+      expect(undefinedParams[parameter]).toBeUndefined()
     }
   )
 
   it.each<Array<LocationType>>([
     [LocationType.PLACE, LocationType.AROUND_ME, LocationType.EVERYWHERE],
   ])(`should sanitize locationType if %s is ${LocationType.EVERYWHERE}`, (locationType) => {
-    expect(
-      sanitizeSearchStateParams({
-        locationType: locationType as LocationType,
-      })
-    ).toEqual({
+    const sanitizedSearchStateParams = sanitizeSearchStateParams({
+      locationType: locationType as LocationType,
+    })
+    expect(sanitizedSearchStateParams).toEqual({
       ...(locationType === LocationType.EVERYWHERE ? {} : { locationType }),
       ...sanitizedSearchStateRequiredDefaults,
     })
   })
 
   it('should sanitize offerTypes when passed', () => {
-    expect(
-      sanitizeSearchStateParams({
-        offerTypes: {
-          isEvent: true,
-          isDigital: false,
-        },
-      })
-    ).toEqual({
+    const sanitizedSearchStateParams = sanitizeSearchStateParams({
+      offerTypes: {
+        isEvent: true,
+        isDigital: false,
+      },
+    })
+    expect(sanitizedSearchStateParams).toEqual({
       ...sanitizedSearchStateRequiredDefaults,
       offerTypes: {
         isEvent: true,
@@ -130,11 +98,10 @@ describe('sanitizeSearchStateParams', () => {
   })
 
   it('should sanitize priceRange and clampPrice', () => {
-    expect(
-      sanitizeSearchStateParams({
-        priceRange: [0, 500],
-      })
-    ).toEqual({
+    const sanitizedSearchStateParams = sanitizeSearchStateParams({
+      priceRange: [0, 500],
+    })
+    expect(sanitizedSearchStateParams).toEqual({
       ...sanitizedSearchStateRequiredDefaults,
       priceRange: [0, 300],
     })
