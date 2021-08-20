@@ -58,9 +58,9 @@ const buildTimeOnlyPredicate = (timeRange: Range<number>): FilterArray<AppSearch
 const buildDateAndTimePredicate = ({
   date,
   timeRange,
-}: NoNullProperties<Required<Pick<SearchParameters, 'date' | 'timeRange'>>>): FilterArray<
-  AppSearchFields
-> => {
+}: NoNullProperties<
+  Required<Pick<SearchParameters, 'date' | 'timeRange'>>
+>): FilterArray<AppSearchFields> => {
   let dateFilter
   switch (date.option) {
     case DATE_FILTER_OPTIONS.CURRENT_WEEK:

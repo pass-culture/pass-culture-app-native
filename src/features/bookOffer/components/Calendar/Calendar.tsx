@@ -79,7 +79,7 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
       dayComponent={({ date, marking = defaultMarking }) => {
         // problem in the definition of marking in the library:
         // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
-        const { price, status, selected } = (marking as unknown) as Marking
+        const { price, status, selected } = marking as unknown as Marking
 
         if (selected && offerId) {
           analytics.logBookingOfferConfirmDates(offerId)

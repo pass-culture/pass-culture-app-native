@@ -26,7 +26,7 @@ export async function getRefreshToken(): Promise<string | null> {
   try {
     const credentials = { password: await AsyncStorage.getItem(REFRESH_TOKEN_KEY) }
     if (credentials) {
-      return ((credentials as unknown) as { password: string }).password
+      return (credentials as unknown as { password: string }).password
     }
     return null
   } catch (error) {

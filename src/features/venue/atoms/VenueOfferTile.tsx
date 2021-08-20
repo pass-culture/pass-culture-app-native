@@ -29,30 +29,30 @@ type PartialOffer = Pick<
   'category' | 'categoryName' | 'description' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId'
 >
 
-export const mergeOfferData = (offer: PartialOffer) => (
-  prevData: OfferAdaptedResponse | undefined
-): OfferAdaptedResponse => ({
-  fullAddress: null,
-  description: offer.description,
-  image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
-  isDuo: offer.isDuo || false,
-  name: offer.name || '',
-  isDigital: false,
-  isExpired: false,
-  isEducational: false,
-  isReleased: false,
-  isSoldOut: false,
-  id: offer.offerId,
-  stocks: [] as Array<OfferStockResponse>,
-  expenseDomains: [] as Array<ExpenseDomain>,
-  accessibility: {},
-  category: {
-    label: offer.category,
-    name: offer.categoryName || undefined,
-  } as OfferResponse['category'],
-  venue: { coordinates: {} } as OfferResponse['venue'],
-  ...(prevData || {}),
-})
+export const mergeOfferData =
+  (offer: PartialOffer) =>
+  (prevData: OfferAdaptedResponse | undefined): OfferAdaptedResponse => ({
+    fullAddress: null,
+    description: offer.description,
+    image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
+    isDuo: offer.isDuo || false,
+    name: offer.name || '',
+    isDigital: false,
+    isExpired: false,
+    isEducational: false,
+    isReleased: false,
+    isSoldOut: false,
+    id: offer.offerId,
+    stocks: [] as Array<OfferStockResponse>,
+    expenseDomains: [] as Array<ExpenseDomain>,
+    accessibility: {},
+    category: {
+      label: offer.category,
+      name: offer.categoryName || undefined,
+    } as OfferResponse['category'],
+    venue: { coordinates: {} } as OfferResponse['venue'],
+    ...(prevData || {}),
+  })
 
 export const VenueOfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()

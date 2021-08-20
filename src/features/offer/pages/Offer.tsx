@@ -35,8 +35,11 @@ export const Offer: FunctionComponent = () => {
     },
   })
 
-  const { wording, onPress: onPressCTA, isExternal } =
-    useCtaWordingAndAction({ offerId: params.id }) || {}
+  const {
+    wording,
+    onPress: onPressCTA,
+    isExternal,
+  } = useCtaWordingAndAction({ offerId: params.id }) || {}
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
 

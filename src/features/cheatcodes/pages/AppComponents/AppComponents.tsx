@@ -1012,12 +1012,8 @@ const ExampleSwitch: React.FC = () => {
 }
 
 const SnackBars = () => {
-  const {
-    showInfoSnackBar,
-    showSuccessSnackBar,
-    showErrorSnackBar,
-    hideSnackBar,
-  } = useSnackBarContext()
+  const { showInfoSnackBar, showSuccessSnackBar, showErrorSnackBar, hideSnackBar } =
+    useSnackBarContext()
 
   const snackbars = [
     {
