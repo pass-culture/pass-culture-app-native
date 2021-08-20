@@ -88,11 +88,13 @@ describe('wrapRoute()', () => {
     await storage.saveObject('has_accepted_cookie', false)
     const rootNavigator = await renderRootNavigator()
     act(() => {
+      // @ts-expect-error we override global on purpose
       global.setMustUpdateApp && global.setMustUpdateApp(true)
     })
     expect(rootNavigator).toMatchSnapshot()
     expect(rootNavigator.queryByText("Mise à jour de l'application")).toBeTruthy()
     act(() => {
+      // @ts-expect-error we override global on purpose
       global.setMustUpdateApp && global.setMustUpdateApp(false)
     })
     expect(rootNavigator.queryByText("Mise à jour de l'application")).toBeFalsy()

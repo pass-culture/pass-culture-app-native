@@ -35,6 +35,7 @@ export const RootNavigator: React.FC = () => {
 
   const [mustUpdateApp, setMustUpdateApp] = useState(false)
 
+  // @ts-expect-error we override global on purpose
   global.setMustUpdateApp = setMustUpdateApp
 
   return (
