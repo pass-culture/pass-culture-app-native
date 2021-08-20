@@ -26,12 +26,15 @@ let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 let mockPermissionState = GeolocPermissionState.GRANTED
 let mockPositionError: GeolocationError | null = null
 const mockTriggerPositionUpdate = jest.fn()
+const mockShowGeolocPermissionModal = jest.fn()
+
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     permissionState: mockPermissionState,
     position: mockPosition,
     positionError: mockPositionError,
     triggerPositionUpdate: mockTriggerPositionUpdate,
+    showGeolocPermissionModal: mockShowGeolocPermissionModal,
   }),
 }))
 
