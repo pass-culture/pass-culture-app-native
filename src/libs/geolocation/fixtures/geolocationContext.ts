@@ -3,9 +3,10 @@ import { GeolocPermissionState, IGeolocationContext } from 'libs/geolocation'
 export const emptyGeolocationContext: IGeolocationContext = {
   position: null,
   positionError: null,
-  triggerPositionUpdate: () => undefined,
-  requestGeolocPermission: () => Promise.resolve(),
   permissionState: GeolocPermissionState.GRANTED,
+  requestGeolocPermission: () => Promise.resolve(),
+  triggerPositionUpdate: () => undefined,
+  showGeolocPermissionModal: () => undefined,
 }
 
 export const geolocalisationContext: IGeolocationContext = {

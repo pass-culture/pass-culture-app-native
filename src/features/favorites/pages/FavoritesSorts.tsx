@@ -1,17 +1,15 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
-import { Linking, ScrollView, ViewStyle } from 'react-native'
+import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
-import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
-import { useModal } from 'ui/components/modals/useModal'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -26,14 +24,15 @@ const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy,
 
 export const FavoritesSorts: React.FC = () => {
   const { goBack } = useNavigation()
-  const { position, positionError, permissionState, requestGeolocPermission } = useGeolocation()
+  const {
+    position,
+    positionError,
+    permissionState,
+    requestGeolocPermission,
+    showGeolocPermissionModal,
+  } = useGeolocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
-  const {
-    visible: isGeolocPermissionModalVisible,
-    showModal: showGeolocPermissionModal,
-    hideModal: hideGeolocPermissionModal,
-  } = useModal(false)
 
   async function onSortBySelection(sortBy: FavoriteSortBy) {
     function updateSortBySelection() {
@@ -60,11 +59,6 @@ export const FavoritesSorts: React.FC = () => {
     analytics.logHasAppliedFavoritesSorting({ sortBy: stagedSelectedSortBy })
     dispatch({ type: 'SET_SORT_BY', payload: stagedSelectedSortBy })
     goBack()
-  }
-
-  function onPressCustomGeolocPermissionModalButton() {
-    Linking.openSettings()
-    hideGeolocPermissionModal()
   }
 
   return (
@@ -108,11 +102,6 @@ export const FavoritesSorts: React.FC = () => {
       <ButtonContainer>
         <ButtonPrimary title={t`Valider`} onPress={onValidation} />
       </ButtonContainer>
-      <GeolocationActivationModal
-        isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
-        hideGeolocPermissionModal={hideGeolocPermissionModal}
-        onPressGeolocPermissionModalButton={onPressCustomGeolocPermissionModalButton}
-      />
     </React.Fragment>
   )
 }

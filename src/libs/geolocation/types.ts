@@ -22,4 +22,5 @@ export type IGeolocationContext = {
   permissionState: GeolocPermissionState
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   triggerPositionUpdate: () => void
+  showGeolocPermissionModal: () => void
 }

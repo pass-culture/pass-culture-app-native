@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
-import { ScrollView, ViewStyle, Linking } from 'react-native'
+import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -10,25 +10,24 @@ import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
-import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { Banner } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
-import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
-  const { position, positionError, permissionState, requestGeolocPermission } = useGeolocation()
+  const {
+    position,
+    positionError,
+    permissionState,
+    requestGeolocPermission,
+    showGeolocPermissionModal,
+  } = useGeolocation()
   const { dispatch } = useStagedSearch()
   const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_CALLBACK)).current
-  const {
-    visible: isGeolocPermissionModalVisible,
-    showModal: showGeolocPermissionModal,
-    hideModal: hideGeolocPermissionModal,
-  } = useModal(false)
 
   const onPressPickPlace = () => {
     if (debouncedGoBack) debouncedGoBack.cancel()
@@ -57,12 +56,6 @@ export const LocationFilter: React.FC = () => {
 
   const onPressEverywhere = () => {
     dispatch({ type: 'LOCATION_EVERYWHERE' })
-    debouncedGoBack()
-  }
-
-  const onPressGeolocPermissionModalButton = () => {
-    Linking.openSettings()
-    hideGeolocPermissionModal()
     debouncedGoBack()
   }
 
@@ -100,13 +93,7 @@ export const LocationFilter: React.FC = () => {
           onPress={onPressEverywhere}
         />
       </ScrollView>
-
       <PageHeader title={t`Localisation`} />
-      <GeolocationActivationModal
-        isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
-        hideGeolocPermissionModal={hideGeolocPermissionModal}
-        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
-      />
     </React.Fragment>
   )
 }

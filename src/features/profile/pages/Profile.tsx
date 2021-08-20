@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Linking, NativeScrollEvent, StyleSheet, ScrollView } from 'react-native'
+import { NativeScrollEvent, StyleSheet, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
@@ -18,11 +18,9 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
-import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { testID } from 'tests/utils'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputError } from 'ui/components/inputs/InputError'
-import { useModal } from 'ui/components/modals/useModal'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
@@ -59,6 +57,7 @@ export const Profile: React.FC = () => {
     permissionState,
     requestGeolocPermission,
     triggerPositionUpdate,
+    showGeolocPermissionModal,
   } = useGeolocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(false)
 
@@ -72,12 +71,6 @@ export const Profile: React.FC = () => {
       }
     }, [positionError, permissionState])
   )
-
-  const {
-    visible: isGeolocPermissionModalVisible,
-    showModal: showGeolocPermissionModal,
-    hideModal: hideGeolocPermissionModal,
-  } = useModal(false)
 
   const switchGeolocation = useCallback(async () => {
     if (permissionState === GeolocPermissionState.GRANTED) {
@@ -95,11 +88,6 @@ export const Profile: React.FC = () => {
     []
   )
 
-  function onPressGeolocPermissionModalButton() {
-    Linking.openSettings()
-    hideGeolocPermissionModal()
-  }
-
   function scrollToTop() {
     if (scrollViewRef && scrollViewRef.current) {
       scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
@@ -112,6 +100,7 @@ export const Profile: React.FC = () => {
       debouncedScrollToTop()
     }
   }, [isLoggedIn])
+
   const logProfilScrolledToBottom = useFunctionOnce(analytics.logProfilScrolledToBottom)
 
   function onScroll({ nativeEvent }: { nativeEvent: NativeScrollEvent }) {
@@ -265,11 +254,6 @@ export const Profile: React.FC = () => {
           <Spacer.Column numberOfSpaces={4} />
         </ProfileSection>
       </ProfileContainer>
-      <GeolocationActivationModal
-        isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
-        hideGeolocPermissionModal={hideGeolocPermissionModal}
-        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
-      />
       <BottomSpacing />
     </ScrollView>
   )
