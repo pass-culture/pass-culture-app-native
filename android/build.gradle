@@ -14,6 +14,7 @@ buildscript {
         targetSdkVersion = 30
         supportLibVersion = "28.0.0"
         googlePlayServicesVersion = "17.0.0"
+        batchSdkVersion = "1.17+"
     }
     repositories {
         google()
