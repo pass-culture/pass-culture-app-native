@@ -61,6 +61,9 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
   )[0]
 }
 
+// Hack to remove unnecessary calendar horizontal margins
+const RNCalendarTheme = { marginHorizontal: getSpacing(-2) }
+
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId }) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
   const minDate = getMinAvailableDate(markedDates) || new Date()
@@ -68,6 +71,7 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
 
   return (
     <RNCalendar
+      style={RNCalendarTheme}
       current={minDate}
       firstDay={1}
       enableSwipeMonths={true}
@@ -113,5 +117,5 @@ const Container = styled.TouchableOpacity.attrs(() => ({
   hitSlop,
 }))({
   alignItems: 'center',
-  width: getSpacing(8),
+  width: getSpacing(9.25), // Max width limite for small devices
 })
