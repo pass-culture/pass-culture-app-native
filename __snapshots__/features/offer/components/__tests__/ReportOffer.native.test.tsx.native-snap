@@ -391,7 +391,7 @@ Array [
                 }
               />
               <View
-                accessibilityLabel="Signaler l'offre"
+                accessibilityLabel="go-to-reason-report-button"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -419,7 +419,7 @@ Array [
                     "width": "100%",
                   }
                 }
-                testID="Signaler l'offre"
+                testID="go-to-reason-report-button"
               >
                 <Text
                   adjustsFontSizeToFit={false}
@@ -1617,7 +1617,7 @@ Array [
                 }
               />
               <View
-                accessibilityLabel="Signaler l'offre"
+                accessibilityLabel="go-to-reason-report-button"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -1645,7 +1645,7 @@ Array [
                     "width": "100%",
                   }
                 }
-                testID="Signaler l'offre"
+                testID="go-to-reason-report-button"
               >
                 <Text
                   adjustsFontSizeToFit={false}
@@ -2843,7 +2843,7 @@ Array [
                 }
               />
               <View
-                accessibilityLabel="Signaler l'offre"
+                accessibilityLabel="go-to-reason-report-button"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -2871,7 +2871,7 @@ Array [
                     "width": "100%",
                   }
                 }
-                testID="Signaler l'offre"
+                testID="go-to-reason-report-button"
               >
                 <Text
                   adjustsFontSizeToFit={false}
