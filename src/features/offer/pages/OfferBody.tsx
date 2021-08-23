@@ -89,7 +89,7 @@ export const OfferBody: FunctionComponent<{
     <Container
       testID="offer-container"
       scrollEventThrottle={20}
-      scrollIndicatorInsets={{ right: 1 }}
+      scrollIndicatorInsets={scrollIndicatorInsets}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={scrollViewRef as any}
       bounces={false}
@@ -197,6 +197,8 @@ export const OfferBody: FunctionComponent<{
     </Container>
   )
 }
+
+const scrollIndicatorInsets = { right: 1 }
 
 const Container = styled.ScrollView({ overflow: 'visible' })
 const OfferTitle = styled(Typo.Title3)({ textAlign: 'center' })
