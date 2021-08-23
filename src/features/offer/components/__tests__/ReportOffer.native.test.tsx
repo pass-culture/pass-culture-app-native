@@ -120,4 +120,43 @@ describe('ReportOffer', () => {
       fireEvent.press(closeModalButtons[2])
       expect(hideReportModal).toHaveBeenCalledWith()
     })
+
+    it("should close the 2nd modal upon clicking on 'signaler l'offre'", async () => {
+      const ReportOfferComponent = render(
+        <ReportOfferModalWrapper
+          isReportDescriptionVisible={isReportDescriptionVisible}
+          isReportReasonVisible
+          isReportOtherReasonVisible={isReportOtherReasonVisible}
+          offerId={offerId}
+          hideReportModal={hideReportModal}
+          navigateToReportReason={navigateToReportReason}
+          goBackToReportDescription={goBackToReportDescription}
+          navigateToReportOtherReason={navigateToReportOtherReason}
+          goBackToReportReason={goBackToReportReason}
+        />
+      )
+
+      const reportOfferButton = await ReportOfferComponent.findByTestId('report-button')
+      fireEvent.press(reportOfferButton)
+      expect(hideReportModal).toHaveBeenCalledWith()
+    })
+    it("should close the 3rd modal upon clicking on 'signaler l'offre'", async () => {
+      const ReportOfferComponent = render(
+        <ReportOfferModalWrapper
+          isReportDescriptionVisible={isReportDescriptionVisible}
+          isReportReasonVisible
+          isReportOtherReasonVisible={isReportOtherReasonVisible}
+          offerId={offerId}
+          hideReportModal={hideReportModal}
+          navigateToReportReason={navigateToReportReason}
+          goBackToReportDescription={goBackToReportDescription}
+          navigateToReportOtherReason={navigateToReportOtherReason}
+          goBackToReportReason={goBackToReportReason}
+        />
+      )
+
+      const reportOfferButton = await ReportOfferComponent.findByTestId('report-other-button')
+      fireEvent.press(reportOfferButton)
+      expect(hideReportModal).toHaveBeenCalledWith()
+    })
 })
