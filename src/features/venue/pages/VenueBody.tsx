@@ -49,7 +49,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const typeLabel = parseType(venueTypeCode)
 
   // TODO(antoinewg) Show only if app search is enabled
-  const shouldShowVenueOffers = !settings?.useAppSearch && !!offers && offers?.length > 0
+  const shouldShowVenueOffers = !settings?.useAppSearch && !!offers && offers?.hits.length > 0
 
   return (
     <Container
@@ -87,9 +87,12 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       />
       <Spacer.Column numberOfSpaces={4} />
 
+      {/* Offres */}
       <SectionWithDivider visible={shouldShowVenueOffers}>
         <VenueOffers venueId={venueId} />
       </SectionWithDivider>
+
+      {/* Où */}
       <SectionWithDivider visible margin>
         <WhereSection
           venue={venue}
@@ -97,11 +100,14 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
           locationCoordinates={{ latitude, longitude }}
         />
       </SectionWithDivider>
+
+      {/* Modalités de retrait */}
       <SectionWithDivider visible={!!withdrawalDetails}>
         <AccordionItem title={t`Modalités de retrait`}>
           <Typo.Body>{withdrawalDetails && highlightLinks(withdrawalDetails)}</Typo.Body>
         </AccordionItem>
       </SectionWithDivider>
+
       <SectionWithDivider visible>
         <Spacer.Column numberOfSpaces={6} />
       </SectionWithDivider>

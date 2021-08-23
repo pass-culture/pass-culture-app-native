@@ -1,8 +1,11 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { FlatList, ListRenderItem, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SeeMore } from 'features/home/atoms'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOfferTile } from 'features/venue/atoms/VenueOfferTile'
@@ -10,7 +13,8 @@ import { useGeolocation } from 'libs/geolocation'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
-import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
+import { LENGTH_L, MARGIN_DP, Spacer, Typo } from 'ui/theme'
+
 interface Props {
   venueId: number
 }
@@ -21,8 +25,9 @@ const VENUE_OFFERS_CTA_WORDING = t`Voir toutes les offres`
 
 export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   const { data: venue } = useVenue(venueId)
-  const { data: offers } = useVenueOffers(venueId)
+  const { data: venueOffers } = useVenueOffers(venueId)
   const { position } = useGeolocation()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const renderItem: ListRenderItem<SearchHit> = useCallback(
     ({ item }) => {
@@ -48,7 +53,24 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
     // TODO : Search all offers ?
   }
 
-  if (!venue) return <React.Fragment></React.Fragment>
+  const onPressSeeMore = useCallback(() => {
+    // TODO(antoinewg) add search params
+    navigate('Search', {})
+  }, [])
+
+  if (!venue || !venueOffers || venueOffers.hits.length === 0) {
+    return <React.Fragment></React.Fragment>
+  }
+
+  const ListFooterComponent =
+    venueOffers.hits.length === 0 ? (
+      <HorizontalMargin />
+    ) : (
+      <React.Fragment>
+        <SeeMore containerHeight={LENGTH_L} onPress={onPressSeeMore} />
+        <HorizontalMargin />
+      </React.Fragment>
+    )
 
   return (
     <React.Fragment>
@@ -60,8 +82,8 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
       <FlatList
         testID="offersModuleList"
         ListHeaderComponent={HorizontalMargin}
-        ListFooterComponent={HorizontalMargin}
-        data={offers}
+        ListFooterComponent={ListFooterComponent}
+        data={venueOffers.hits}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         horizontal={true}

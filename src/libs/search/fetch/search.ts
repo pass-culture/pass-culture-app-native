@@ -50,9 +50,16 @@ export const fetchHits = async (params: SearchParametersQuery): Promise<Response
   }
 }
 
-export const fetchVenueOffers = async (params: SearchParameters): Promise<SearchHit[]> => {
+export const fetchVenueOffers = async (
+  params: SearchParameters
+): Promise<{ hits: SearchHit[]; nbHits: number }> => {
   const options = buildQueryOptions(params)
 
   const response = await client.search<AppSearchFields>('', options)
-  return response.results.map(buildAlgoliaHit)
+  const { meta } = response.info
+
+  return {
+    hits: response.results.map(buildAlgoliaHit),
+    nbHits: meta.page.total_results,
+  }
 }
