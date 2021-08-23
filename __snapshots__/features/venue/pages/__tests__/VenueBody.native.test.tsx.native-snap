@@ -690,43 +690,95 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 Array [
                   Object {
                     "borderRadius": 8,
-                    "height": 288,
+                    "height": 312,
                   },
                 ]
               }
             >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "overflow": "hidden",
-                    },
-                    Object {
-                      "borderRadius": 8,
-                      "height": 288,
-                      "width": 192,
-                    },
-                  ]
-                }
-              >
-                <FastImageView
-                  resizeMode="cover"
-                  source={
-                    Object {
-                      "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                    }
-                  }
+              <View>
+                <View
                   style={
-                    Object {
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                    }
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Object {
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "height": 288,
+                        "width": 192,
+                      },
+                    ]
                   }
-                  testID="offerTileImage"
-                />
+                >
+                  <FastImageView
+                    resizeMode="cover"
+                    source={
+                      Object {
+                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                      }
+                    }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      }
+                    }
+                    testID="offerTileImage"
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#151515",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "flexDirection": "row",
+                        "height": 24,
+                        "width": 192,
+                      },
+                    ]
+                  }
+                  width={192}
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 2,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      color="#ffffff"
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                      testID="categoryImageCaption"
+                    >
+                      Cinéma
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
             <View
@@ -836,43 +888,95 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 Array [
                   Object {
                     "borderRadius": 8,
-                    "height": 288,
+                    "height": 312,
                   },
                 ]
               }
             >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "overflow": "hidden",
-                    },
-                    Object {
-                      "borderRadius": 8,
-                      "height": 288,
-                      "width": 192,
-                    },
-                  ]
-                }
-              >
-                <FastImageView
-                  resizeMode="cover"
-                  source={
-                    Object {
-                      "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                    }
-                  }
+              <View>
+                <View
                   style={
-                    Object {
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                    }
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Object {
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "height": 288,
+                        "width": 192,
+                      },
+                    ]
                   }
-                  testID="offerTileImage"
-                />
+                >
+                  <FastImageView
+                    resizeMode="cover"
+                    source={
+                      Object {
+                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                      }
+                    }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      }
+                    }
+                    testID="offerTileImage"
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#151515",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "flexDirection": "row",
+                        "height": 24,
+                        "width": 192,
+                      },
+                    ]
+                  }
+                  width={192}
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 2,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      color="#ffffff"
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                      testID="categoryImageCaption"
+                    >
+                      Cinéma
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
             <View
@@ -982,43 +1086,95 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 Array [
                   Object {
                     "borderRadius": 8,
-                    "height": 288,
+                    "height": 312,
                   },
                 ]
               }
             >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "overflow": "hidden",
-                    },
-                    Object {
-                      "borderRadius": 8,
-                      "height": 288,
-                      "width": 192,
-                    },
-                  ]
-                }
-              >
-                <FastImageView
-                  resizeMode="cover"
-                  source={
-                    Object {
-                      "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                    }
-                  }
+              <View>
+                <View
                   style={
-                    Object {
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                    }
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Object {
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "height": 288,
+                        "width": 192,
+                      },
+                    ]
                   }
-                  testID="offerTileImage"
-                />
+                >
+                  <FastImageView
+                    resizeMode="cover"
+                    source={
+                      Object {
+                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                      }
+                    }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      }
+                    }
+                    testID="offerTileImage"
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#151515",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "flexDirection": "row",
+                        "height": 24,
+                        "width": 192,
+                      },
+                    ]
+                  }
+                  width={192}
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 2,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      color="#ffffff"
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                      testID="categoryImageCaption"
+                    >
+                      Cinéma
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
             <View

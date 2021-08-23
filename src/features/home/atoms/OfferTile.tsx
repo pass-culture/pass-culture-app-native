@@ -9,12 +9,11 @@ import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
+import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
 import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
-
-import { ImageCaption } from './ImageCaption'
 
 interface OfferTileProps {
   category: string
