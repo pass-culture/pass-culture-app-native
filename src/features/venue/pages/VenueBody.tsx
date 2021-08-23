@@ -23,9 +23,6 @@ interface Props {
   onScroll: () => void
 }
 
-const lorem =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestiae ea sunt. Voluptatibus, ipsam eum! Sapiente, corrupti laborum! Magni officiis nihil nostrum ad culpa quidem neque asperiores adipisci. Maiores, nostrum.'
-
 export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const { data: venue } = useVenue(venueId)
   const { data: offers } = useVenueOffers(venueId)
@@ -89,13 +86,6 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         locationCoordinates={{ latitude, longitude }}
       />
       <Spacer.Column numberOfSpaces={4} />
-
-      {/* TODO(antoinewg) Remove after add all venue informations - (it's just for scroll) */}
-      <SectionWithDivider margin visible>
-        <Spacer.Column numberOfSpaces={6} />
-        <Typo.Body>{lorem}</Typo.Body>
-        <Spacer.Column numberOfSpaces={6} />
-      </SectionWithDivider>
 
       <SectionWithDivider visible={shouldShowVenueOffers}>
         <VenueOffers venueId={venueId} />
