@@ -42,7 +42,7 @@ import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdC
 import { DeeplinkPath } from 'features/deeplinks/enums'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
-import { withAsyncErrorBoundary } from 'features/errors'
+import { withAsyncErrorBoundary, withOfferNotFoundErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
@@ -64,6 +64,7 @@ import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { Venue } from 'features/venue'
+import { compose } from 'libs/compose'
 
 import { Route } from './types'
 
@@ -150,7 +151,7 @@ export const routes: Array<Route> = [
   {
     name: 'Offer',
     component: Offer,
-    hoc: withAsyncErrorBoundary,
+    hoc: compose(withAsyncErrorBoundary, withOfferNotFoundErrorBoundary),
     pathConfig: {
       path: DeeplinkPath.OFFER,
       parse: screenParamsParser['Offer'],

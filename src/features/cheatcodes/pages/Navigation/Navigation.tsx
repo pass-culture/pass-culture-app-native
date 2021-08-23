@@ -319,6 +319,12 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('SetRedactorEmail')}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={`Offre inexistante`}
+            onPress={() => navigation.navigate('Offer', { id: 0, from: 'search' })}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

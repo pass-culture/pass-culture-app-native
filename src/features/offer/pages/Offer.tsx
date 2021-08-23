@@ -19,9 +19,11 @@ import { useFunctionOnce } from '../services/useFunctionOnce'
 import { OfferBody } from './OfferBody'
 
 export const Offer: FunctionComponent = () => {
+  const route = useRoute<UseRouteType<'Offer'>>()
+  const offerId = route.params && route.params.id
+
   const { bottom } = useCustomSafeInsets()
-  const { params } = useRoute<UseRouteType<'Offer'>>()
-  const { data: offerResponse } = useOffer({ offerId: params.id })
+  const { data: offerResponse } = useOffer({ offerId })
   const [showBookingOfferModal, setShowBookingOfferModal] = useState<boolean>(false)
 
   const logConsultWholeOffer = useFunctionOnce(() => {
@@ -36,15 +38,14 @@ export const Offer: FunctionComponent = () => {
     },
   })
 
-  const { wording, onPress: onPressCTA, isExternal } =
-    useCtaWordingAndAction({ offerId: params.id }) || {}
+  const { wording, onPress: onPressCTA, isExternal } = useCtaWordingAndAction({ offerId }) || {}
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
 
   return (
     <React.Fragment>
       <OfferWebHead offer={offerResponse} />
-      <OfferBody offerId={params.id} onScroll={onScroll} />
+      <OfferBody offerId={offerId} onScroll={onScroll} />
       {wording ? (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
           <ButtonWithLinearGradient

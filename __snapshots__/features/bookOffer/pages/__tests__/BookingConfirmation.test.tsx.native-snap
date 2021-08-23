@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BookingConfirmation /> should render correctly 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       Array [
@@ -24,7 +35,7 @@ Array [
         undefined-SVG-Mock
       </Text>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       Object {
@@ -32,6 +43,7 @@ Array [
         "flexDirection": "column",
         "flexGrow": 1,
         "justifyContent": "center",
+        "maxWidth": 360,
         "paddingHorizontal": 16,
       }
     }
@@ -266,6 +278,6 @@ Array [
         }
       />
     </View>
-  </RCTScrollView>,
-]
+  </RCTScrollView>
+</View>
 `;
