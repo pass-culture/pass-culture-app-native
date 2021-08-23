@@ -10,9 +10,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
-import { ReportOfferDescriptionModal } from 'features/offer/components/ReportOfferDescriptionModal'
-import { ReportOfferOtherReasonModal } from 'features/offer/components/ReportOfferOtherReasonModal'
-import { ReportOfferReasonModal } from 'features/offer/components/ReportOfferReasonModal'
+import { ReportOfferModalWrapper } from 'features/offer/components/ReportOfferModalWrapper'
 import { ReportSteps, useReportOffer } from 'features/offer/components/useReportOffer'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
@@ -176,23 +174,16 @@ export const OfferBody: FunctionComponent<{
       </SectionWithDivider>
 
       {/* TODO(anoukhello) use one modal for the entire report process (see bookoffer process)*/}
-      <ReportOfferDescriptionModal
-        isVisible={isReportDescriptionVisible}
-        dismissModal={hideReportModal}
-        onPressReportOffer={navigateToReportReason}
-      />
-      <ReportOfferReasonModal
-        isVisible={isReportReasonVisible}
-        dismissModal={hideReportModal}
-        onGoBack={goBackToReportDescription}
-        onPressOtherReason={navigateToReportOtherReason}
+      <ReportOfferModalWrapper
+        isReportDescriptionVisible={isReportDescriptionVisible}
+        hideReportModal={hideReportModal}
+        navigateToReportReason={navigateToReportReason}
+        isReportReasonVisible={isReportReasonVisible}
+        goBackToReportDescription={goBackToReportDescription}
+        navigateToReportOtherReason={navigateToReportOtherReason}
         offerId={offerId}
-      />
-      <ReportOfferOtherReasonModal
-        isVisible={isReportOtherReasonVisible}
-        dismissModal={hideReportModal}
-        onGoBack={goBackToReportReason}
-        offerId={offerId}
+        isReportOtherReasonVisible={isReportOtherReasonVisible}
+        goBackToReportReason={goBackToReportReason}
       />
     </Container>
   )
