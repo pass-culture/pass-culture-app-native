@@ -13,6 +13,7 @@ import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/Async
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
+import { AppWebHead } from 'libs/appWebHead'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
@@ -46,6 +47,7 @@ export function App() {
                     <I18nProvider i18n={i18n}>
                       <SnackBarProvider>
                         <IdCheckContextProvider>
+                          <AppWebHead />
                           <AppNavigationContainer />
                         </IdCheckContextProvider>
                       </SnackBarProvider>

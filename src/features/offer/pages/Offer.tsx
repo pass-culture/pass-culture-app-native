@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { UseRouteType } from 'features/navigation/RootNavigator'
+import { OfferWebHead } from 'features/offer/pages/OfferWebHead/OfferWebHead'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
@@ -42,6 +43,7 @@ export const Offer: FunctionComponent = () => {
 
   return (
     <React.Fragment>
+      <OfferWebHead offer={offerResponse} />
       <OfferBody offerId={params.id} onScroll={onScroll} />
       {wording ? (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
