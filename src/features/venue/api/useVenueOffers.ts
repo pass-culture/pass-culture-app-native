@@ -6,7 +6,7 @@ import { SearchParameters } from 'features/search/types'
 import { filterAlgoliaHit, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
-import { SearchHit, fetchVenueOffers } from 'libs/search'
+import { fetchVenueOffers } from 'libs/search'
 
 export const useVenueOffers = (venueId: number) => {
   const { position } = useGeolocation()
@@ -31,7 +31,10 @@ export const useVenueOffers = (venueId: number) => {
     venueId,
   }
 
-  return useQuery<SearchHit[]>([QueryKeys.VENUE_OFFERS, venueId], () => fetchVenueOffers(params), {
-    select: (hits) => uniqBy(hits.filter(filterAlgoliaHit).map(transformHits), 'objectID'),
+  return useQuery([QueryKeys.VENUE_OFFERS, venueId], () => fetchVenueOffers(params), {
+    select: ({ hits, nbHits }) => ({
+      hits: uniqBy(hits.filter(filterAlgoliaHit).map(transformHits), 'objectID'),
+      nbHits,
+    }),
   })
 }

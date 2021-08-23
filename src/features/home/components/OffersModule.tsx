@@ -18,7 +18,7 @@ import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { SearchHit, parseSearchParameters } from 'libs/search'
-import { ColorsEnum, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
+import { ColorsEnum, LENGTH_L, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 
 import { Cover } from '../atoms/Cover'
 
@@ -128,7 +128,12 @@ export const OffersModule = (props: OffersModuleProps) => {
           horizontal={true}
           keyExtractor={keyExtractor}
         />
-        {!!showSeeMore && <SeeMore layout={display.layout} onPress={onPressSeeMore} />}
+        {!!showSeeMore && (
+          <SeeMore
+            containerHeight={display.layout === 'two-items' ? LENGTH_M : LENGTH_L}
+            onPress={onPressSeeMore}
+          />
+        )}
         <Spacer.Row numberOfSpaces={6} />
       </ScrollView>
     </React.Fragment>

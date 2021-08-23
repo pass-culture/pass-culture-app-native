@@ -3,34 +3,31 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ColorsEnum, getSpacing, LENGTH_L, LENGTH_M, Spacer, Typo, getShadow } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo, getShadow, LENGTH_L } from 'ui/theme'
 
-import { Layout } from '../contentful'
 interface SeeMoreProps {
-  layout?: Layout
+  containerHeight?: number
   onPress: () => void
 }
-export const SeeMore: React.FC<SeeMoreProps> = ({ layout, onPress }) => {
-  const containerHeight = layout && layout === 'two-items' ? LENGTH_M : LENGTH_L
-  return (
-    <Container containerHeight={containerHeight}>
+
+export const SeeMore: React.FC<SeeMoreProps> = ({ containerHeight, onPress }) => (
+  <Container containerHeight={containerHeight || LENGTH_L}>
+    <Spacer.Column numberOfSpaces={2} />
+    <ClickableArea activeOpacity={1} onPress={onPress}>
+      <Row>
+        <Spacer.Row numberOfSpaces={16} />
+        <RoundContainer onPress={onPress}>
+          <ArrowNext size={56} color={ColorsEnum.PRIMARY} testID={'arrow-next'} />
+        </RoundContainer>
+        <Spacer.Row numberOfSpaces={16} />
+      </Row>
       <Spacer.Column numberOfSpaces={2} />
-      <ClickableArea activeOpacity={1} onPress={onPress}>
-        <Row>
-          <Spacer.Row numberOfSpaces={16} />
-          <RoundContainer onPress={onPress}>
-            <ArrowNext size={56} color={ColorsEnum.PRIMARY} testID={'arrow-next'} />
-          </RoundContainer>
-          <Spacer.Row numberOfSpaces={16} />
-        </Row>
-        <Spacer.Column numberOfSpaces={2} />
-        <Row>
-          <Typo.ButtonText color={ColorsEnum.PRIMARY}>{t`En voir plus`}</Typo.ButtonText>
-        </Row>
-      </ClickableArea>
-    </Container>
-  )
-}
+      <Row>
+        <Typo.ButtonText color={ColorsEnum.PRIMARY}>{t`En voir plus`}</Typo.ButtonText>
+      </Row>
+    </ClickableArea>
+  </Container>
+)
 
 const Row = styled.View({ flexDirection: 'row' })
 const Container = styled.View<{ containerHeight: number }>(({ containerHeight }) => ({
