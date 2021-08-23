@@ -159,4 +159,55 @@ describe('ReportOffer', () => {
       fireEvent.press(reportOfferButton)
       expect(hideReportModal).toHaveBeenCalledWith()
     })
+    describe('Report offer snapshots', () => {
+      it('should match report offer description snapshot', () => {
+        const ReportOfferFirstModalComponent = render(
+          <ReportOfferModalWrapper
+            isReportDescriptionVisible
+            isReportReasonVisible={isReportReasonVisible}
+            isReportOtherReasonVisible={isReportOtherReasonVisible}
+            offerId={offerId}
+            hideReportModal={hideReportModal}
+            navigateToReportReason={navigateToReportReason}
+            goBackToReportDescription={goBackToReportDescription}
+            navigateToReportOtherReason={navigateToReportOtherReason}
+            goBackToReportReason={goBackToReportReason}
+          />
+        )
+        expect(ReportOfferFirstModalComponent).toMatchSnapshot()
+      })
+      it('should match report offer other reason snapshot', () => {
+        const ReportOfferThirdModalComponent = render(
+          <ReportOfferModalWrapper
+            isReportDescriptionVisible={isReportDescriptionVisible}
+            isReportReasonVisible={isReportReasonVisible}
+            isReportOtherReasonVisible
+            offerId={offerId}
+            hideReportModal={hideReportModal}
+            navigateToReportReason={navigateToReportReason}
+            goBackToReportDescription={goBackToReportDescription}
+            navigateToReportOtherReason={navigateToReportOtherReason}
+            goBackToReportReason={goBackToReportReason}
+          />
+        )
+        expect(ReportOfferThirdModalComponent).toMatchSnapshot()
+      })
+      it('should match report offer reason snapshot', () => {
+        const ReportOfferSecondModalComponent = render(
+          <ReportOfferModalWrapper
+            isReportDescriptionVisible={isReportDescriptionVisible}
+            isReportReasonVisible
+            isReportOtherReasonVisible={isReportOtherReasonVisible}
+            offerId={offerId}
+            hideReportModal={hideReportModal}
+            navigateToReportReason={navigateToReportReason}
+            goBackToReportDescription={goBackToReportDescription}
+            navigateToReportOtherReason={navigateToReportOtherReason}
+            goBackToReportReason={goBackToReportReason}
+          />
+        )
+        expect(ReportOfferSecondModalComponent).toMatchSnapshot()
+      })
+    })
+  })
 })
