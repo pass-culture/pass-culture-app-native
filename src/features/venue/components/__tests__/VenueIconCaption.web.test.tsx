@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { VenueTypeCode } from 'api/gen'
-import { GeolocationWrapper, GeolocPermissionState } from 'libs/geolocation'
+import { GeolocPermissionState } from 'libs/geolocation'
 import { parseType } from 'libs/parsers'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils/web'
 
 import { VenueIconCaptions } from '../VenueIconCaptions'
 
@@ -31,14 +31,14 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 describe('<VenueIconCaptions />', () => {
   it('should match snapshot', async () => {
     mockDistance = '10 km'
-    const { toJSON } = render(
+    const renderAPI = render(
       <VenueIconCaptions
         label={typeLabel}
         type={VenueTypeCode.MOVIE}
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(toJSON()).toMatchSnapshot()
+    expect(renderAPI).toMatchSnapshot()
   })
 
   it('should display a default label "Autre" for venue type if type is null', async () => {
@@ -88,21 +88,17 @@ describe('<VenueIconCaptions />', () => {
     expect(queryByText('Géolocalisation désactivée')).toBeTruthy()
   })
 
-  it('should open "Activate geoloc" modal when clicking on iconLocation if geolocation disabled', () => {
+  it('should open "Activate geolocation" modal when clicking on iconLocation if geolocation disabled', () => {
     mockDistance = null
 
-    const { getByTestId, getByText } = render(
+    const { getByTestId } = render(
       <VenueIconCaptions
         type={null}
         label={VenueTypeCode.MOVIE}
         locationCoordinates={locationCoordinates}
-      />,
-      {
-        wrapper: GeolocationWrapper,
-      }
+      />
     )
-    fireEvent.press(getByTestId('iconLocation'))
-    expect(getByTestId('modal-geoloc-permission-modal').props.visible).toBe(true)
-    expect(getByText('Activer la géolocalisation'))
+    fireEvent.click(getByTestId('iconLocation'))
+    expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
   })
 })
