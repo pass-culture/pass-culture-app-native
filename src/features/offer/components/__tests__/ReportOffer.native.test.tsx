@@ -24,7 +24,24 @@ describe('ReportOffer', () => {
     const navigateToReportOtherReason = jest.fn()
     const goBackToReportReason = jest.fn()
 
-    it("should switch to report offer reasons upon clicking on 'signaler l'offre' from 1st modal", () => {})
+    it("should switch to report offer reasons upon clicking on 'signaler l'offre' from 1st modal", async () => {
+      const ReportOfferComponent = render(
+        <ReportOfferModalWrapper
+          isReportDescriptionVisible={isReportDescriptionVisible}
+          isReportReasonVisible
+          isReportOtherReasonVisible={isReportOtherReasonVisible}
+          offerId={offerId}
+          hideReportModal={hideReportModal}
+          navigateToReportReason={navigateToReportReason}
+          goBackToReportDescription={goBackToReportDescription}
+          navigateToReportOtherReason={navigateToReportOtherReason}
+          goBackToReportReason={goBackToReportReason}
+        />
+      )
+      const goToReasonButton = await ReportOfferComponent.findByTestId('go-to-reason-report-button')
+      fireEvent.press(goToReasonButton)
+      expect(navigateToReportReason).toHaveBeenCalledWith()
+    })
     it("should go back to report offer description upon clicking on the left arrow from 'report reason'", async () => {
       const ReportOfferComponent = render(
         <ReportOfferModalWrapper
