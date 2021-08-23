@@ -40,926 +40,878 @@ Array [
     }
   />,
   <RCTScrollView
+    ItemSeparatorComponent={[Function]}
+    ListFooterComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    data={
+      Array [
+        Object {
+          "_geoloc": Object {
+            "lat": 48.94374,
+            "lng": 2.48171,
+          },
+          "objectID": "102280",
+          "offer": Object {
+            "category": "MUSIQUE",
+            "dates": Array [],
+            "description": "Bel astre voyageur, hôte qui nous arrives, Des profondeurs du ciel et qu'on n'attendait pas, Où vas-tu ? Quel dessein pousse vers nous tes pas ? Toi qui vogues au large en cette mer sans rives",
+            "isDigital": false,
+            "isDuo": false,
+            "name": "Mensch ! Où sont les Hommes ?",
+            "prices": Array [
+              2800,
+            ],
+            "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
+          },
+        },
+        Object {
+          "_geoloc": Object {
+            "lat": 48.91265,
+            "lng": 2.4513,
+          },
+          "objectID": "102272",
+          "offer": Object {
+            "category": "MUSIQUE",
+            "dates": Array [],
+            "description": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
+            "isDigital": false,
+            "isDuo": false,
+            "name": "I want something more",
+            "prices": Array [
+              2300,
+            ],
+            "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
+          },
+        },
+        Object {
+          "_geoloc": Object {
+            "lat": 4.90339,
+            "lng": -52.31663,
+          },
+          "objectID": "102249",
+          "offer": Object {
+            "category": "MUSIQUE",
+            "dates": Array [
+              1605643200,
+            ],
+            "description": null,
+            "isDigital": false,
+            "isDuo": true,
+            "name": "Un lit sous une rivière",
+            "prices": Array [
+              3400,
+            ],
+            "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
+          },
+        },
+        Object {
+          "_geoloc": Object {
+            "lat": 4.90339,
+            "lng": -52.31663,
+          },
+          "objectID": "102310",
+          "offer": Object {
+            "category": "MUSIQUE",
+            "dates": Array [],
+            "description": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
+            "isDigital": false,
+            "isDuo": false,
+            "name": "I want something more",
+            "prices": Array [
+              2800,
+            ],
+            "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
+          },
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
     horizontal={true}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
     onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
     scrollEventThrottle={200}
     showsHorizontalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
     testID="offersModuleList"
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
   >
     <View>
       <View
-        numberOfSpaces={6}
+        onLayout={[Function]}
+      >
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
         style={
           Array [
             Object {
-              "width": 24,
+              "flexDirection": "row",
             },
+            null,
           ]
         }
-      />
-      <RCTScrollView
-        data={
-          Array [
-            Object {
-              "_geoloc": Object {
-                "lat": 48.94374,
-                "lng": 2.48171,
-              },
-              "objectID": "102280",
-              "offer": Object {
-                "category": "MUSIQUE",
-                "dates": Array [],
-                "description": "Bel astre voyageur, hôte qui nous arrives, Des profondeurs du ciel et qu'on n'attendait pas, Où vas-tu ? Quel dessein pousse vers nous tes pas ? Toi qui vogues au large en cette mer sans rives",
-                "isDigital": false,
-                "isDuo": false,
-                "name": "Mensch ! Où sont les Hommes ?",
-                "prices": Array [
-                  2800,
-                ],
-                "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
-              },
-            },
-            Object {
-              "_geoloc": Object {
-                "lat": 48.91265,
-                "lng": 2.4513,
-              },
-              "objectID": "102272",
-              "offer": Object {
-                "category": "MUSIQUE",
-                "dates": Array [],
-                "description": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
-                "isDigital": false,
-                "isDuo": false,
-                "name": "I want something more",
-                "prices": Array [
-                  2300,
-                ],
-                "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
-              },
-            },
-            Object {
-              "_geoloc": Object {
-                "lat": 4.90339,
-                "lng": -52.31663,
-              },
-              "objectID": "102249",
-              "offer": Object {
-                "category": "MUSIQUE",
-                "dates": Array [
-                  1605643200,
-                ],
-                "description": null,
-                "isDigital": false,
-                "isDuo": true,
-                "name": "Un lit sous une rivière",
-                "prices": Array [
-                  3400,
-                ],
-                "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
-              },
-            },
-            Object {
-              "_geoloc": Object {
-                "lat": 4.90339,
-                "lng": -52.31663,
-              },
-              "objectID": "102310",
-              "offer": Object {
-                "category": "MUSIQUE",
-                "dates": Array [],
-                "description": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
-                "isDigital": false,
-                "isDuo": false,
-                "name": "I want something more",
-                "prices": Array [
-                  2800,
-                ],
-                "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
-              },
-            },
-          ]
-        }
-        disableVirtualization={false}
-        getItem={[Function]}
-        getItemCount={[Function]}
-        horizontal={true}
-        initialNumToRender={10}
-        keyExtractor={[Function]}
-        maxToRenderPerBatch={10}
-        onContentSizeChange={[Function]}
-        onEndReachedThreshold={2}
-        onLayout={[Function]}
-        onMomentumScrollEnd={[Function]}
-        onScroll={[Function]}
-        onScrollBeginDrag={[Function]}
-        onScrollEndDrag={[Function]}
-        removeClippedSubviews={false}
-        renderItem={[Function]}
-        scrollEventThrottle={200}
-        showsHorizontalScrollIndicator={false}
-        stickyHeaderIndices={Array []}
-        updateCellsBatchingPeriod={50}
-        viewabilityConfigCallbackPairs={Array []}
-        windowSize={21}
       >
-        <View>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
           <View
-            onLayout={[Function]}
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
-                  "flexDirection": "row",
+                  "borderRadius": 8,
+                  "height": 312,
                 },
-                null,
               ]
             }
           >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+            <View>
               <View
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "height": 288,
+                      "width": 192,
                     },
                   ]
                 }
               >
-                <View
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Array [
-                      Object {
-                        "borderRadius": 8,
-                        "height": 312,
-                      },
-                    ]
+                <FastImageView
+                  resizeMode="cover"
+                  source={
+                    Object {
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDNQ",
+                    }
                   }
-                >
-                  <View>
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "overflow": "hidden",
-                          },
-                          Object {
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "height": 288,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                    >
-                      <FastImageView
-                        resizeMode="cover"
-                        source={
-                          Object {
-                            "uri": "fakeUrlPrefix/thumbs/mediations/CDNQ",
-                          }
-                        }
-                        style={
-                          Object {
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                          }
-                        }
-                        testID="offerTileImage"
-                      />
-                    </View>
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#151515",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "flexDirection": "row",
-                            "height": 24,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                      width={192}
-                    >
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "justifyContent": "center",
-                              "paddingHorizontal": 2,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          color="#ffffff"
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
-                              },
-                            ]
-                          }
-                          testID="categoryImageCaption"
-                        >
-                          Musique
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                  testID="offerTileImage"
+                />
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#151515",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": 192,
+                    },
+                  ]
+                }
+                width={192}
+              >
                 <View
-                  imageWidth={192}
                   style={
                     Array [
                       Object {
-                        "marginTop": 8,
-                        "maxWidth": 192,
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 2,
                       },
                     ]
                   }
                 >
                   <Text
+                    color="#ffffff"
                     numberOfLines={1}
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 16,
                         },
                       ]
                     }
+                    testID="categoryImageCaption"
                   >
-                    Mensch ! Où sont les Hommes ?
-                  </Text>
-                  <Text
-                    color="#626262"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#626262",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                    testID="priceIsDuo"
-                  >
-                    28 €
+                    Musique
                   </Text>
                 </View>
               </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  Array [
-                    Object {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
             </View>
           </View>
           <View
-            onLayout={[Function]}
+            imageWidth={192}
             style={
               Array [
                 Object {
-                  "flexDirection": "row",
+                  "marginTop": 8,
+                  "maxWidth": 192,
                 },
-                null,
               ]
             }
           >
-            <View
+            <Text
+              numberOfLines={1}
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
                   },
                 ]
               }
             >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Array [
-                      Object {
-                        "borderRadius": 8,
-                        "height": 312,
-                      },
-                    ]
-                  }
-                >
-                  <View>
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "overflow": "hidden",
-                          },
-                          Object {
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "height": 288,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                    >
-                      <FastImageView
-                        resizeMode="cover"
-                        source={
-                          Object {
-                            "uri": "fakeUrlPrefix/thumbs/mediations/CDKQ",
-                          }
-                        }
-                        style={
-                          Object {
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                          }
-                        }
-                        testID="offerTileImage"
-                      />
-                    </View>
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#151515",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "flexDirection": "row",
-                            "height": 24,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                      width={192}
-                    >
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "justifyContent": "center",
-                              "paddingHorizontal": 2,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          color="#ffffff"
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
-                              },
-                            ]
-                          }
-                          testID="categoryImageCaption"
-                        >
-                          Musique
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  imageWidth={192}
-                  style={
-                    Array [
-                      Object {
-                        "marginTop": 8,
-                        "maxWidth": 192,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#151515",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    I want something more
-                  </Text>
-                  <Text
-                    color="#626262"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#626262",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                    testID="priceIsDuo"
-                  >
-                    23 €
-                  </Text>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  Array [
-                    Object {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-          <View
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
+              Mensch ! Où sont les Hommes ?
+            </Text>
+            <Text
+              color="#626262"
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
                   },
                 ]
               }
+              testID="priceIsDuo"
             >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Array [
-                      Object {
-                        "borderRadius": 8,
-                        "height": 312,
-                      },
-                    ]
-                  }
-                >
-                  <View>
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "overflow": "hidden",
-                          },
-                          Object {
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "height": 288,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                    >
-                      <FastImageView
-                        resizeMode="cover"
-                        source={
-                          Object {
-                            "uri": "fakeUrlPrefix/thumbs/mediations/CDBA",
-                          }
-                        }
-                        style={
-                          Object {
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                          }
-                        }
-                        testID="offerTileImage"
-                      />
-                    </View>
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#151515",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "flexDirection": "row",
-                            "height": 24,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                      width={192}
-                    >
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "justifyContent": "center",
-                              "paddingHorizontal": 2,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          color="#ffffff"
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
-                              },
-                            ]
-                          }
-                          testID="categoryImageCaption"
-                        >
-                          Musique
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  imageWidth={192}
-                  style={
-                    Array [
-                      Object {
-                        "marginTop": 8,
-                        "maxWidth": 192,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#151515",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Un lit sous une rivière
-                  </Text>
-                  <Text
-                    color="#626262"
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#626262",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    17 novembre 2020
-                  </Text>
-                  <Text
-                    color="#626262"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#626262",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                    testID="priceIsDuo"
-                  >
-                    34 €
-                  </Text>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  Array [
-                    Object {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-          <View
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Array [
-                      Object {
-                        "borderRadius": 8,
-                        "height": 312,
-                      },
-                    ]
-                  }
-                >
-                  <View>
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "overflow": "hidden",
-                          },
-                          Object {
-                            "borderTopLeftRadius": 8,
-                            "borderTopRightRadius": 8,
-                            "height": 288,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                    >
-                      <FastImageView
-                        resizeMode="cover"
-                        source={
-                          Object {
-                            "uri": "fakeUrlPrefix/thumbs/mediations/CDZQ",
-                          }
-                        }
-                        style={
-                          Object {
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                          }
-                        }
-                        testID="offerTileImage"
-                      />
-                    </View>
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#151515",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "flexDirection": "row",
-                            "height": 24,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                      width={192}
-                    >
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "justifyContent": "center",
-                              "paddingHorizontal": 2,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          color="#ffffff"
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
-                              },
-                            ]
-                          }
-                          testID="categoryImageCaption"
-                        >
-                          Musique
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  imageWidth={192}
-                  style={
-                    Array [
-                      Object {
-                        "marginTop": 8,
-                        "maxWidth": 192,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#151515",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    I want something more
-                  </Text>
-                  <Text
-                    color="#626262"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#626262",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                    testID="priceIsDuo"
-                  >
-                    28 €
-                  </Text>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  Array [
-                    Object {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
-            </View>
+              28 €
+            </Text>
           </View>
         </View>
-      </RCTScrollView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
       <View
-        numberOfSpaces={6}
+        onLayout={[Function]}
         style={
           Array [
             Object {
-              "width": 24,
+              "flexDirection": "row",
             },
+            null,
           ]
         }
-      />
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "borderRadius": 8,
+                  "height": 312,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "height": 288,
+                      "width": 192,
+                    },
+                  ]
+                }
+              >
+                <FastImageView
+                  resizeMode="cover"
+                  source={
+                    Object {
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDKQ",
+                    }
+                  }
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                  testID="offerTileImage"
+                />
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#151515",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": 192,
+                    },
+                  ]
+                }
+                width={192}
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                    testID="categoryImageCaption"
+                  >
+                    Musique
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            imageWidth={192}
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 192,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              I want something more
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="priceIsDuo"
+            >
+              23 €
+            </Text>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "borderRadius": 8,
+                  "height": 312,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "height": 288,
+                      "width": 192,
+                    },
+                  ]
+                }
+              >
+                <FastImageView
+                  resizeMode="cover"
+                  source={
+                    Object {
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDBA",
+                    }
+                  }
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                  testID="offerTileImage"
+                />
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#151515",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": 192,
+                    },
+                  ]
+                }
+                width={192}
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                    testID="categoryImageCaption"
+                  >
+                    Musique
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            imageWidth={192}
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 192,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Un lit sous une rivière
+            </Text>
+            <Text
+              color="#626262"
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              17 novembre 2020
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="priceIsDuo"
+            >
+              34 €
+            </Text>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "borderRadius": 8,
+                  "height": 312,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "height": 288,
+                      "width": 192,
+                    },
+                  ]
+                }
+              >
+                <FastImageView
+                  resizeMode="cover"
+                  source={
+                    Object {
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDZQ",
+                    }
+                  }
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                  testID="offerTileImage"
+                />
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#151515",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": 192,
+                    },
+                  ]
+                }
+                width={192}
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                    testID="categoryImageCaption"
+                  >
+                    Musique
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            imageWidth={192}
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 192,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              I want something more
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="priceIsDuo"
+            >
+              28 €
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+      >
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
     </View>
   </RCTScrollView>,
 ]

@@ -467,71 +467,80 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    style="align-items: center; height: 288px; justify-content: center;"
+                    style="flex-direction: row;"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="height: 8px;"
+                      style="width: 16px;"
                     />
                     <div
                       class="css-view-1dbjc4n"
-                      data-focusable="true"
-                      style="align-items: center; cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                      tabindex="0"
+                      style="align-items: center; height: 288px; justify-content: center;"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-direction: row;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="width: 64px;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-focusable="true"
-                          style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); cursor: pointer; justify-content: center; transition-duration: 0s; transition-property: opacity; user-select: none; width: 64px;"
-                          tabindex="0"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            data-testid="arrow-next"
-                          >
-                            <div
-                              class="css-text-901oao"
-                              dir="auto"
-                            >
-                              arrow-next-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="width: 64px;"
-                        />
-                      </div>
                       <div
                         class="css-view-1dbjc4n"
                         style="height: 8px;"
                       />
                       <div
                         class="css-view-1dbjc4n"
-                        style="flex-direction: row;"
+                        data-focusable="true"
+                        style="align-items: center; cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                        tabindex="0"
                       >
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                          class="css-view-1dbjc4n"
+                          style="flex-direction: row;"
                         >
-                          En voir plus
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="width: 64px;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-focusable="true"
+                            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); cursor: pointer; justify-content: center; transition-duration: 0s; transition-property: opacity; user-select: none; width: 64px;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              data-testid="arrow-next"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                              >
+                                arrow-next-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="width: 64px;"
+                          />
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 8px;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-direction: row;"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="auto"
+                            style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                          >
+                            En voir plus
+                          </div>
                         </div>
                       </div>
                     </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 24px;"
+                    />
                   </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="width: 24px;"
-                  />
                 </div>
               </div>
             </div>
@@ -1339,71 +1348,80 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="align-items: center; height: 288px; justify-content: center;"
+                  style="flex-direction: row;"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    style="height: 8px;"
+                    style="width: 16px;"
                   />
                   <div
                     class="css-view-1dbjc4n"
-                    data-focusable="true"
-                    style="align-items: center; cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                    tabindex="0"
+                    style="align-items: center; height: 288px; justify-content: center;"
                   >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-direction: row;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="width: 64px;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-focusable="true"
-                        style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); cursor: pointer; justify-content: center; transition-duration: 0s; transition-property: opacity; user-select: none; width: 64px;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-testid="arrow-next"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="auto"
-                          >
-                            arrow-next-SVG-Mock
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="width: 64px;"
-                      />
-                    </div>
                     <div
                       class="css-view-1dbjc4n"
                       style="height: 8px;"
                     />
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-direction: row;"
+                      data-focusable="true"
+                      style="align-items: center; cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                      tabindex="0"
                     >
                       <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                        class="css-view-1dbjc4n"
+                        style="flex-direction: row;"
                       >
-                        En voir plus
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="width: 64px;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-focusable="true"
+                          style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); cursor: pointer; justify-content: center; transition-duration: 0s; transition-property: opacity; user-select: none; width: 64px;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="arrow-next"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                            >
+                              arrow-next-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="width: 64px;"
+                        />
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="height: 8px;"
+                      />
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="flex-direction: row;"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                          style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                        >
+                          En voir plus
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 24px;"
+                  />
                 </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 24px;"
-                />
               </div>
             </div>
           </div>

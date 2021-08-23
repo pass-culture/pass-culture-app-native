@@ -28,6 +28,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   const { data: venueOffers } = useVenueOffers(venueId)
   const { position } = useGeolocation()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { hits = [], nbHits = 0 } = venueOffers || {}
 
   const renderItem: ListRenderItem<SearchHit> = useCallback(
     ({ item }) => {
@@ -58,19 +59,20 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
     navigate('Search', {})
   }, [])
 
+  const ListFooterComponent = useCallback(() => {
+    if (nbHits > hits.length) return <HorizontalMargin />
+    return (
+      <Row>
+        <ItemSeparatorComponent />
+        <SeeMore containerHeight={LENGTH_L} onPress={onPressSeeMore} />
+        <HorizontalMargin />
+      </Row>
+    )
+  }, [nbHits, hits.length])
+
   if (!venue || !venueOffers || venueOffers.hits.length === 0) {
     return <React.Fragment></React.Fragment>
   }
-
-  const ListFooterComponent =
-    venueOffers.hits.length === 0 ? (
-      <HorizontalMargin />
-    ) : (
-      <React.Fragment>
-        <SeeMore containerHeight={LENGTH_L} onPress={onPressSeeMore} />
-        <HorizontalMargin />
-      </React.Fragment>
-    )
 
   return (
     <React.Fragment>
@@ -103,6 +105,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   )
 }
 
+const Row = styled.View({ flexDirection: 'row' })
 const MarginContainer = styled.View({
   marginHorizontal: PixelRatio.roundToNearestPixel(MARGIN_DP),
 })
