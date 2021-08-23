@@ -127,7 +127,7 @@ Download the iOS certificates to your computer:
 4. Download the private key via fastlane
    `bundle exec fastlane ios download_certificates --env testing`
 5. Add the URL of the private certificates git repository named "pass-culture-app-native-certificates".
-6. Get the passphrase on 1password in the "Tech" vault.
+6. Get the `match repo passphrase` on 1password in the "Tech" vault.
 
 Connect your device to the computer and:
 run `yarn ios:testing --device`
