@@ -58,7 +58,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     <Container
       testID="venue-container"
       scrollEventThrottle={20}
-      scrollIndicatorInsets={{ right: 1 }}
+      scrollIndicatorInsets={scrollIndicatorInsets}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={scrollViewRef as any}
       bounces={false}
@@ -118,6 +118,8 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     </Container>
   )
 }
+
+const scrollIndicatorInsets = { right: 1 }
 
 const Container = styled.ScrollView({})
 const VenueTitle = styled(Typo.Title3)({ textAlign: 'center' })
