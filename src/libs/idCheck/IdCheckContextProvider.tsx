@@ -10,7 +10,7 @@ import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
 export const IdCheckContextProvider = memo(function IdCheckContextProvider({
   children,
 }: {
-  children: JSX.Element
+  children: JSX.Element | JSX.Element[]
 }) {
   return (
     <IdCheckContextProviderDefault
