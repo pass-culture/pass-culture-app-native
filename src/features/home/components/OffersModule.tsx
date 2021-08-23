@@ -1,12 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import {
-  FlatList,
-  ListRenderItem,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  ScrollView,
-} from 'react-native'
+import { FlatList, ListRenderItem, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
@@ -48,24 +42,21 @@ export const OffersModule = (props: OffersModuleProps) => {
     ({ item }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
-        <Row key={item.objectID}>
-          <OfferTile
-            category={parseCategory(item.offer.category)}
-            categoryName={item.offer.category}
-            offerId={+item.objectID}
-            description={item.offer.description || ''}
-            distance={formatDistance(item._geoloc, position)}
-            name={item.offer.name}
-            date={formatDates(timestampsInMillis)}
-            isDuo={item.offer.isDuo}
-            thumbUrl={item.offer.thumbUrl}
-            price={getDisplayPrice(item.offer.prices)}
-            layout={display.layout}
-            isBeneficiary={isBeneficiary}
-            moduleName={moduleName}
-          />
-          <Spacer.Row numberOfSpaces={4} />
-        </Row>
+        <OfferTile
+          category={parseCategory(item.offer.category)}
+          categoryName={item.offer.category}
+          offerId={+item.objectID}
+          description={item.offer.description || ''}
+          distance={formatDistance(item._geoloc, position)}
+          name={item.offer.name}
+          date={formatDates(timestampsInMillis)}
+          isDuo={item.offer.isDuo}
+          thumbUrl={item.offer.thumbUrl}
+          price={getDisplayPrice(item.offer.prices)}
+          layout={display.layout}
+          isBeneficiary={isBeneficiary}
+          moduleName={moduleName}
+        />
       )
     },
     [position, isBeneficiary]
@@ -97,6 +88,31 @@ export const OffersModule = (props: OffersModuleProps) => {
     navigate('Search', sanitizeSearchStateParams(params))
   }, [position])
 
+  const ListHeaderComponent = useCallback(() => {
+    if (!props.cover) return <HorizontalMargin />
+    return (
+      <Row>
+        <HorizontalMargin />
+        <Cover layout={display.layout} uri={props.cover} />
+        <ItemSeparatorComponent />
+      </Row>
+    )
+  }, [props.cover])
+
+  const ListFooterComponent = useCallback(() => {
+    if (!showSeeMore) return <HorizontalMargin />
+    return (
+      <Row>
+        <ItemSeparatorComponent />
+        <SeeMore
+          containerHeight={display.layout === 'two-items' ? LENGTH_M : LENGTH_L}
+          onPress={onPressSeeMore}
+        />
+        <HorizontalMargin />
+      </Row>
+    )
+  }, [showSeeMore, display.layout])
+
   const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers
   if (!shouldModuleBeDisplayed) return <React.Fragment />
 
@@ -107,37 +123,23 @@ export const OffersModule = (props: OffersModuleProps) => {
         color={index === 0 ? ColorsEnum.WHITE : ColorsEnum.BLACK}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <ScrollView
-        horizontal={true}
+      <FlatList
         testID="offersModuleList"
+        data={hits}
+        renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={200}
-        onScroll={checkIfAllTilesHaveBeenSeen}>
-        <Spacer.Row numberOfSpaces={6} />
-        {!!props.cover && (
-          <Row>
-            <Cover layout={display.layout} uri={props.cover} />
-            <Spacer.Row numberOfSpaces={4} />
-          </Row>
-        )}
-        <FlatList
-          data={hits}
-          renderItem={renderItem}
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={200}
-          horizontal={true}
-          keyExtractor={keyExtractor}
-        />
-        {!!showSeeMore && (
-          <SeeMore
-            containerHeight={display.layout === 'two-items' ? LENGTH_M : LENGTH_L}
-            onPress={onPressSeeMore}
-          />
-        )}
-        <Spacer.Row numberOfSpaces={6} />
-      </ScrollView>
+        onScroll={checkIfAllTilesHaveBeenSeen}
+        horizontal={true}
+        keyExtractor={keyExtractor}
+        ItemSeparatorComponent={ItemSeparatorComponent}
+        ListHeaderComponent={ListHeaderComponent}
+        ListFooterComponent={ListFooterComponent}
+      />
     </React.Fragment>
   )
 }
 
 const Row = styled.View({ flexDirection: 'row' })
+const ItemSeparatorComponent = () => <Spacer.Row numberOfSpaces={4} />
+const HorizontalMargin = () => <Spacer.Row numberOfSpaces={6} />

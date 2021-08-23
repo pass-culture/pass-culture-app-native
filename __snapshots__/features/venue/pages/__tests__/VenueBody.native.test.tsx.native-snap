@@ -480,15 +480,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
     />
     <RCTScrollView
       ItemSeparatorComponent={[Function]}
-      ListFooterComponent={
-        <React.Fragment>
-          <SeeMore
-            containerHeight={288}
-            onPress={[Function]}
-          />
-          <HorizontalMargin />
-        </React.Fragment>
-      }
+      ListFooterComponent={[Function]}
       ListHeaderComponent={[Function]}
       data={
         Array [
@@ -1196,116 +1188,36 @@ exports[`<VenueBody /> should render correctly 1`] = `
           onLayout={[Function]}
         >
           <View
-            containerHeight={288}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "height": 288,
-                  "justifyContent": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
             <View
-              numberOfSpaces={2}
+              numberOfSpaces={4}
               style={
                 Array [
                   Object {
-                    "height": 8,
+                    "width": 16,
                   },
                 ]
               }
             />
             <View
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              containerHeight={288}
               style={
-                Object {
-                  "alignItems": "center",
-                  "opacity": 1,
-                }
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 288,
+                    "justifyContent": "center",
+                  },
+                ]
               }
             >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexDirection": "row",
-                    },
-                  ]
-                }
-              >
-                <View
-                  numberOfSpaces={16}
-                  style={
-                    Array [
-                      Object {
-                        "width": 64,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "aspectRatio": 1,
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#f5f5f5",
-                      "borderRadius": 32,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "justifyContent": "center",
-                      "opacity": 1,
-                      "shadowColor": "#151515",
-                      "shadowOffset": Object {
-                        "height": 8,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 12,
-                      "width": 64,
-                    }
-                  }
-                >
-                  <View
-                    height={56}
-                    testID="arrow-next"
-                    width={56}
-                  >
-                    <Text>
-                      arrow-next-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  numberOfSpaces={16}
-                  style={
-                    Array [
-                      Object {
-                        "width": 64,
-                      },
-                    ]
-                  }
-                />
-              </View>
               <View
                 numberOfSpaces={2}
                 style={
@@ -1317,42 +1229,142 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               />
               <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "flexDirection": "row",
-                    },
-                  ]
+                  Object {
+                    "alignItems": "center",
+                    "opacity": 1,
+                  }
                 }
               >
-                <Text
-                  color="#eb0055"
+                <View
                   style={
                     Array [
                       Object {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  En voir plus
-                </Text>
+                  <View
+                    numberOfSpaces={16}
+                    style={
+                      Array [
+                        Object {
+                          "width": 64,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "aspectRatio": 1,
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#f5f5f5",
+                        "borderRadius": 32,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "justifyContent": "center",
+                        "opacity": 1,
+                        "shadowColor": "#151515",
+                        "shadowOffset": Object {
+                          "height": 8,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.15,
+                        "shadowRadius": 12,
+                        "width": 64,
+                      }
+                    }
+                  >
+                    <View
+                      height={56}
+                      testID="arrow-next"
+                      width={56}
+                    >
+                      <Text>
+                        arrow-next-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    numberOfSpaces={16}
+                    style={
+                      Array [
+                        Object {
+                          "width": 64,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+                      Object {
+                        "height": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#eb0055"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#eb0055",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    En voir plus
+                  </Text>
+                </View>
               </View>
             </View>
+            <View
+              numberOfSpaces={6}
+              style={
+                Array [
+                  Object {
+                    "width": 24,
+                  },
+                ]
+              }
+            />
           </View>
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
         </View>
       </View>
     </RCTScrollView>
