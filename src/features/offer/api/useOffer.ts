@@ -2,6 +2,8 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { OfferResponse } from 'api/gen'
+import { ApiError } from 'api/helpers'
+import { OfferNotFoundError } from 'libs/errorMonitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
 export interface OfferAdaptedResponse extends OfferResponse {
@@ -36,10 +38,19 @@ const adaptOfferResponse = (offerApiResponse: OfferResponse): OfferAdaptedRespon
   ),
 })
 
-const getOfferById = async (offerId: number) => {
-  if (!offerId) return
-  const offerApiResponse = await api.getnativev1offerofferId(offerId)
-  return adaptOfferResponse(offerApiResponse)
+async function getOfferById(offerId: number) {
+  if (!offerId) {
+    throw new OfferNotFoundError(offerId)
+  }
+  try {
+    const offerApiResponse = await api.getnativev1offerofferId(offerId)
+    return adaptOfferResponse(offerApiResponse)
+  } catch (error) {
+    if (error instanceof ApiError && error.statusCode === 404) {
+      throw new OfferNotFoundError(offerId)
+    }
+    throw error
+  }
 }
 
 export const useOffer = ({ offerId }: { offerId: number }) =>

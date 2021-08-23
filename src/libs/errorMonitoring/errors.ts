@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { CaptureContext } from '@sentry/types'
 
 import { errorMonitoring } from 'libs/errorMonitoring/services'
@@ -27,5 +28,13 @@ export class AsyncError extends MonitoringError {
   ) {
     super(message, name, captureContext)
     this.retry = retry
+  }
+}
+
+export class OfferNotFoundError extends MonitoringError {
+  constructor(offerId: number | undefined, captureContext?: CaptureContext) {
+    const message = offerId ? t`Offer ${offerId} could not be retrieved` : t`offerId is undefined`
+    const name = 'OfferNotFoundError'
+    super(message, name, captureContext)
   }
 }

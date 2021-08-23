@@ -38,7 +38,7 @@ export const screenParamsParser: ParamsParsers = {
     followParams: parseObject,
   },
   Offer: {
-    id: (value) => (value ? Number(value) : 0),
+    id: Number,
     from: identityFn,
     moduleName: identityFn,
   },
