@@ -1,15 +1,17 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
+import { PixelRatio, View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum, ExpenseDomain, OfferResponse, OfferStockResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
+import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
 import { LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { BorderRadiusEnum, MARGIN_DP } from 'ui/theme/grid'
 
 interface OfferTileProps {
   category: string
@@ -54,6 +56,12 @@ export const mergeOfferData = (offer: PartialOffer) => (
   ...(prevData || {}),
 })
 
+/* TODO : When we add categories of offers at the top of the carousel
+    - Remove <ImageCaption/>
+    - Remove onlyTopBorderRadius
+    - Remove rowHeight
+  */
+
 export const VenueOfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
   const { isBeneficiary, ...offer } = props
@@ -71,7 +79,15 @@ export const VenueOfferTile = (props: OfferTileProps) => {
   return (
     <Container>
       <TouchableHighlight imageHeight={imageHeight} onPress={handlePressOffer}>
-        <ImageTile imageWidth={imageWidth} imageHeight={imageHeight} uri={offer.thumbUrl} />
+        <View>
+          <ImageTile
+            imageWidth={imageWidth}
+            imageHeight={imageHeight}
+            uri={offer.thumbUrl}
+            onlyTopBorderRadius
+          />
+          <ImageCaption imageWidth={imageWidth} category={offer.category} />
+        </View>
       </TouchableHighlight>
       <OfferCaption
         imageWidth={imageWidth}
@@ -87,12 +103,13 @@ export const VenueOfferTile = (props: OfferTileProps) => {
 
 const imageHeight = LENGTH_L
 const imageWidth = imageHeight * RATIO_HOME_IMAGE
+const rowHeight = PixelRatio.roundToNearestPixel(MARGIN_DP)
 
 const Container = styled.View({ flex: 1 })
 
 const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(
   ({ imageHeight }) => ({
     borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-    height: imageHeight,
+    height: imageHeight + rowHeight,
   })
 )

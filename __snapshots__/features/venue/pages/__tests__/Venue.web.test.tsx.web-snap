@@ -284,9 +284,32 @@ Object {
                     <div
                       class="css-view-1dbjc4n"
                       data-focusable="true"
-                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                       tabindex="0"
-                    />
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textOneLine-bfa6kz"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div
                       class="css-view-1dbjc4n"
                       style="margin-top: 8px; max-width: 192px;"
@@ -331,9 +354,32 @@ Object {
                     <div
                       class="css-view-1dbjc4n"
                       data-focusable="true"
-                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                       tabindex="0"
-                    />
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textOneLine-bfa6kz"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div
                       class="css-view-1dbjc4n"
                       style="margin-top: 8px; max-width: 192px;"
@@ -378,9 +424,32 @@ Object {
                     <div
                       class="css-view-1dbjc4n"
                       data-focusable="true"
-                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                       tabindex="0"
-                    />
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textOneLine-bfa6kz"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div
                       class="css-view-1dbjc4n"
                       style="margin-top: 8px; max-width: 192px;"
@@ -1041,9 +1110,32 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-focusable="true"
-                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                     tabindex="0"
-                  />
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-bfa6kz"
+                            data-testid="categoryImageCaption"
+                            dir="auto"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div
                     class="css-view-1dbjc4n"
                     style="margin-top: 8px; max-width: 192px;"
@@ -1088,9 +1180,32 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-focusable="true"
-                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                     tabindex="0"
-                  />
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-bfa6kz"
+                            data-testid="categoryImageCaption"
+                            dir="auto"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div
                     class="css-view-1dbjc4n"
                     style="margin-top: 8px; max-width: 192px;"
@@ -1135,9 +1250,32 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-focusable="true"
-                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                     tabindex="0"
-                  />
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-bfa6kz"
+                            data-testid="categoryImageCaption"
+                            dir="auto"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div
                     class="css-view-1dbjc4n"
                     style="margin-top: 8px; max-width: 192px;"
