@@ -149,7 +149,7 @@ describe('Profile component', () => {
       it('should open "Deactivate geoloc" modal when clicking on ACTIVE switch and call mockFavoriteDispatch()', async () => {
         // geolocation switch is ON and user wants to switch it OFF
         mockPermissionState = GeolocPermissionState.GRANTED
-        const { getByTestId, getByText } = await renderProfile({
+        const { getByTestId } = await renderProfile({
           wrapper: FavoritesWrapper,
         })
 
@@ -159,8 +159,7 @@ describe('Profile component', () => {
           type: 'SET_SORT_BY',
           payload: 'RECENTLY_ADDED',
         })
-        expect(getByTestId('modal-geoloc-permission-modal').props.visible).toBe(true)
-        expect(getByText('Désactiver la géolocalisation'))
+        expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
       })
     })
     it('should navigate when the notifications row is clicked', async () => {
