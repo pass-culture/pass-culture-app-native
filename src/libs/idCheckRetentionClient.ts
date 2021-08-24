@@ -10,7 +10,7 @@ import {
 import { api } from 'api/api'
 import { ActivityEnum, BeneficiaryInformationUpdateRequest } from 'api/gen'
 import { ApiError } from 'api/helpers'
-import { errorMonitoring } from 'libs/errorMonitoring'
+import { errorMonitoring } from 'libs/monitoring'
 
 export const idCheckRetentionClient: IdCheckRetentionClient = {
   confirmProfile(values?: Partial<UserProfile>) {

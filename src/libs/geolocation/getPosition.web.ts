@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { MonitoringError } from 'libs/errorMonitoring'
+import { MonitoringError } from 'libs/monitoring'
 
 import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from './enums'
 import { GeolocationError, GeoCoordinates } from './types'

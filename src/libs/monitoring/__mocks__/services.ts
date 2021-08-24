@@ -1,4 +1,4 @@
-import { errorMonitoring as actualErrorMonitoring } from 'libs/errorMonitoring/services'
+import { errorMonitoring as actualErrorMonitoring } from 'libs/monitoring/services'
 
 export const errorMonitoring: typeof actualErrorMonitoring = {
   captureException: jest.fn(),

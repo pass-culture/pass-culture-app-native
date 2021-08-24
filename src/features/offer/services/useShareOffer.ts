@@ -7,7 +7,7 @@ import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enu
 import { humanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
 import { env, useWebAppUrl, WEBAPP_V2_URL } from 'libs/environment'
-import { MonitoringError } from 'libs/errorMonitoring'
+import { MonitoringError } from 'libs/monitoring'
 
 import { useOffer } from '../api/useOffer'
 import { getLocationName } from '../atoms/LocationCaption'

@@ -4,7 +4,7 @@ import AgonTukGeolocation, {
   PositionError as AgonTukPositionError,
 } from 'react-native-geolocation-service'
 
-import { MonitoringError } from 'libs/errorMonitoring'
+import { MonitoringError } from 'libs/monitoring'
 
 import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from './enums'
 import { GeolocationError, GeoCoordinates } from './types'

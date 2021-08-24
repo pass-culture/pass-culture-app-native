@@ -9,7 +9,7 @@ import { CardContent, Paragraphe } from 'features/auth/components/signupComponen
 import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { AsyncError, MonitoringError } from 'libs/errorMonitoring'
+import { AsyncError, MonitoringError } from 'libs/monitoring'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomCardContentContainer, BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import { api } from 'api/api'
 import { OfferResponse } from 'api/gen'
 import { ApiError } from 'api/helpers'
-import { OfferNotFoundError } from 'libs/errorMonitoring'
+import { OfferNotFoundError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
 export interface OfferAdaptedResponse extends OfferResponse {

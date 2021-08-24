@@ -3,7 +3,7 @@ import appsFlyer from 'react-native-appsflyer'
 
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { MonitoringError } from 'libs/errorMonitoring'
+import { MonitoringError } from 'libs/monitoring'
 import { useTrackingConsent } from 'libs/trackingConsent'
 
 import { CampaignEvents } from './events'

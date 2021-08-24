@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { canGoBack, goBack } from '__mocks__/@react-navigation/native'
-import { AsyncError } from 'libs/errorMonitoring'
+import { AsyncError } from 'libs/monitoring'
 import { render, fireEvent } from 'tests/utils'
 
 import { AsyncErrorBoundary } from '../AsyncErrorBoundary'
 
-jest.mock('libs/errorMonitoring/services')
+jest.mock('libs/monitoring/services')
 
 describe('AsyncErrorBoundary component', () => {
   it('should render', () => {

@@ -1,7 +1,7 @@
 import firestore from '@react-native-firebase/firestore'
 
 import { env } from 'libs/environment'
-import { MonitoringError } from 'libs/errorMonitoring'
+import { MonitoringError } from 'libs/monitoring'
 
 const firestoreRemoteStore = firestore()
 
