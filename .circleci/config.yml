@@ -707,7 +707,8 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - run-tests
+            - test-lint-and-types
+            - test-web
           context:
             - GCP
             - GCP_PROD
