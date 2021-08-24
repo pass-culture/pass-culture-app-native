@@ -2266,7 +2266,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       }
                                     />
                                     <View
-                                      accessibilityLabel="Signaler l'offre"
+                                      accessibilityLabel="go-to-reason-report-button"
                                       accessible={true}
                                       focusable={true}
                                       onClick={[Function]}
@@ -2294,7 +2294,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "width": "100%",
                                         }
                                       }
-                                      testID="Signaler l'offre"
+                                      testID="go-to-reason-report-button"
                                     >
                                       <Text
                                         adjustsFontSizeToFit={false}
@@ -6044,7 +6044,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       }
                                     />
                                     <View
-                                      accessibilityLabel="Signaler l'offre"
+                                      accessibilityLabel="go-to-reason-report-button"
                                       accessible={true}
                                       focusable={true}
                                       onClick={[Function]}
@@ -6072,7 +6072,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "width": "100%",
                                         }
                                       }
-                                      testID="Signaler l'offre"
+                                      testID="go-to-reason-report-button"
                                     >
                                       <Text
                                         adjustsFontSizeToFit={false}
