@@ -169,6 +169,7 @@ export const OfferBody: FunctionComponent<{
             disabled={!!isOfferAlreadyReported}
             icon={() => <Flag size={24} />}
             onPress={showReportDescription}
+            testId={'report-offer-body'}
           />
         </SectionBody>
       </SectionWithDivider>
