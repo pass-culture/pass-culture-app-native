@@ -1,6 +1,6 @@
 export { AsyncErrorBoundary } from './pages/AsyncErrorBoundary'
 export {
-  OfferNotFoundErrorBoundary,
+  OfferNotFoundErrorFallback,
   withOfferNotFoundErrorBoundary,
 } from './pages/OfferNotFoundErrorBoundary'
 export { withAsyncErrorBoundary } from './hocs/withAsyncErrorBoundary'
