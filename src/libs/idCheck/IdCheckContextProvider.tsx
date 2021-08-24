@@ -5,7 +5,7 @@ import { api } from 'api/api'
 import { idCheckAnalytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
-import { errorMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
 
 export const IdCheckContextProvider = memo(function IdCheckContextProvider({
   children,
@@ -19,7 +19,7 @@ export const IdCheckContextProvider = memo(function IdCheckContextProvider({
       dsmUrl={env.DSM_URL}
       personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
       cguDocUrl={env.DOC_CGU_URL}
-      errorMonitoring={errorMonitoring}
+      errorMonitoring={eventMonitoring}
       analytics={idCheckAnalytics}
       retentionClient={idCheckRetentionClient}
       requestLicenceToken={() => api.getnativev1idCheckToken()}>

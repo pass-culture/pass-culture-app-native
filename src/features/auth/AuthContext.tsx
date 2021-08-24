@@ -5,9 +5,9 @@ import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
 import { analytics, LoginRoutineMethod } from 'libs/analytics'
-import { errorMonitoring } from 'libs/monitoring'
 import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
+import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { storage } from 'libs/storage'
 
@@ -21,7 +21,7 @@ const connectUserToBatchAndFirebase = (accessToken: string) => {
   if (userId) {
     BatchUser.editor().setIdentifier(userId.toString()).save()
     analytics.setUserId(userId)
-    errorMonitoring.setUser({ id: userId.toString() })
+    eventMonitoring.setUser({ id: userId.toString() })
   }
 }
 
@@ -103,7 +103,7 @@ export function useLogoutRoutine(): () => Promise<void> {
       await cleanProfile()
       await cleanFavorites()
     } catch (err) {
-      errorMonitoring.captureException(err)
+      eventMonitoring.captureException(err)
     } finally {
       setIsLoggedIn(false)
     }

@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AsyncError, MonitoringError } from 'libs/monitoring'
-import { errorMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
@@ -31,7 +31,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   useEffect(() => {
     // we already captures MonitoringError exceptions (in constructor)
     if (!(error instanceof MonitoringError)) {
-      errorMonitoring.captureException(error)
+      eventMonitoring.captureException(error)
     }
   }, [error])
 

@@ -19,7 +19,7 @@ import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { currentTimestamp } from 'libs/dates'
 import { env } from 'libs/environment'
-import { errorMonitoring, MonitoringError } from 'libs/monitoring'
+import { eventMonitoring, MonitoringError } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -111,13 +111,13 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
 
   function onValidateSuccess() {
     if (!sessionId) {
-      errorMonitoring.captureException(new Error('TMX sessionId is null'))
+      eventMonitoring.captureException(new Error('TMX sessionId is null'))
     } else {
       api
         .postnativev1userProfiling({
           session_id: sessionId,
         } as UserProfilingFraudRequest)
-        .catch(errorMonitoring.captureException)
+        .catch(eventMonitoring.captureException)
     }
     navigateToNextBeneficiaryValidationStep()
   }

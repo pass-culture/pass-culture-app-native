@@ -9,7 +9,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { errorMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 type PrefetchedInfo = {
@@ -57,7 +57,7 @@ export const useBeneficiaryValidationNavigation = () => {
           analytics.logIdCheck('Profile')
           navigateToIdCheck(email)
         } catch (err) {
-          errorMonitoring.captureException(err, { isEligible: true })
+          eventMonitoring.captureException(err, { isEligible: true })
           showErrorSnackBar({
             message: t`Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures.`,
             timeout: SNACK_BAR_TIME_OUT,

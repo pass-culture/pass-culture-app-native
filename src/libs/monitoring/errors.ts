@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { CaptureContext } from '@sentry/types'
 
-import { errorMonitoring } from 'libs/monitoring/services'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 export class MonitoringError extends Error {
   constructor(message: string, name?: string | CaptureContext, captureContext?: CaptureContext) {
@@ -12,7 +12,7 @@ export class MonitoringError extends Error {
     } else if (name) {
       ctx = name as CaptureContext
     }
-    errorMonitoring.captureException(this, ctx)
+    eventMonitoring.captureException(this, ctx)
   }
 }
 
