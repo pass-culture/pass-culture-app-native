@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { MonitoringError } from 'libs/monitoring'
+import { MonitoringError, MonitoringMessage } from 'libs/monitoring'
 
 import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from './enums'
 import { GeolocationError, GeoCoordinates } from './types'
@@ -39,7 +39,7 @@ export const getPosition = (
         case GeolocPositionError.POSITION_UNAVAILABLE:
           // Location provider not available
           setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
-          new MonitoringError(message, 'PositionError_PositionUnavailable')
+          new MonitoringMessage('PositionError_PositionUnavailable' + message)
           break
         case GeolocPositionError.TIMEOUT:
           // Location request timed out
