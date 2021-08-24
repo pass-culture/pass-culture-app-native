@@ -10,9 +10,4 @@ describe('MonitoringMessage', () => {
     new MonitoringMessage(message)
     expect(eventMonitoring.captureMessage).toBeCalledWith(message, { level: Severity.Info })
   })
-
-  it('should call eventMonitoring.captureMessage() on new MonitoringMessage instance with specific info level', () => {
-    new MonitoringMessage(message, Severity.Fatal)
-    expect(eventMonitoring.captureMessage).toBeCalledWith(message, { level: Severity.Fatal })
-  })
 })
