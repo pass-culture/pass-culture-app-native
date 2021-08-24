@@ -23,7 +23,7 @@ commands:
             - node-modules-v5-{{ checksum "yarn.lock" }}-{{ arch }}
       - run:
           name: Install Dependencies
-          command: yarn install --immutable
+          command: yarn install --immutable --registry https://registry.npmjs.com # set registry to npm while yarnpkg registry is having issue with cloudflare
       - save_cache:
           name: Save Node Modules
           key: node-modules-v5-{{ checksum "yarn.lock" }}-{{ arch }}
