@@ -1,6 +1,6 @@
 import { CaptureContext, Extras } from '@sentry/types'
 
-import { errorMonitoring } from 'libs/errorMonitoring'
+import { errorMonitoring } from 'libs/monitoring'
 
 import { MonitoringError } from '../errors'
 

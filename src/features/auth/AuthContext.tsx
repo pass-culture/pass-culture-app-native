@@ -5,7 +5,7 @@ import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
 import { analytics, LoginRoutineMethod } from 'libs/analytics'
-import { errorMonitoring } from 'libs/errorMonitoring'
+import { errorMonitoring } from 'libs/monitoring'
 import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { QueryKeys } from 'libs/queryKeys'

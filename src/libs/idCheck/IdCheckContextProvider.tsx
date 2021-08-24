@@ -4,8 +4,8 @@ import React, { memo } from 'react'
 import { api } from 'api/api'
 import { idCheckAnalytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { errorMonitoring } from 'libs/errorMonitoring'
 import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
+import { errorMonitoring } from 'libs/monitoring'
 
 export const IdCheckContextProvider = memo(function IdCheckContextProvider({
   children,

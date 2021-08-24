@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query'
 
 import { env } from 'libs/environment'
-import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeoCoordinates, useGeolocation } from 'libs/geolocation'
+import { errorMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useFetchHits } from 'libs/search'
 

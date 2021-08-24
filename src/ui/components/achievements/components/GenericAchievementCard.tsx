@@ -7,7 +7,7 @@ import Swiper from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics'
-import { MonitoringError } from 'libs/errorMonitoring'
+import { MonitoringError } from 'libs/monitoring'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'

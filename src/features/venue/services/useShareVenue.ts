@@ -5,7 +5,7 @@ import { VenueResponse } from 'api/gen'
 import { generateLongFirebaseDynamicLink, WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
 import { env, useWebAppUrl, WEBAPP_V2_URL } from 'libs/environment'
-import { MonitoringError } from 'libs/errorMonitoring'
+import { MonitoringError } from 'libs/monitoring'
 
 import { useVenue } from '../api/useVenue'
 

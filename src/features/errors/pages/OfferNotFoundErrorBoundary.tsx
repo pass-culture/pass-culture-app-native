@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { OfferNotFoundError } from 'libs/errorMonitoring'
+import { OfferNotFoundError } from 'libs/monitoring'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'

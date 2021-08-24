@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/helpers'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword'
-import { MonitoringError } from 'libs/errorMonitoring'
+import { MonitoringError } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, superFlushWithAct, fireEvent, render } from 'tests/utils'
@@ -15,7 +15,7 @@ jest.mock('features/navigation/helpers')
 
 jest.mock('features/auth/settings')
 
-jest.mock('libs/errorMonitoring')
+jest.mock('libs/monitoring')
 
 beforeEach(() => {
   simulateConnectedNetwork()

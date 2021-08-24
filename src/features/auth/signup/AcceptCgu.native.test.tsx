@@ -13,8 +13,8 @@ import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { MonitoringError } from 'libs/errorMonitoring'
 import { EmptyResponse } from 'libs/fetch'
+import { MonitoringError } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { simulateWebviewMessage, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
@@ -23,7 +23,7 @@ import { ColorsEnum } from 'ui/theme'
 import { AcceptCgu } from './AcceptCgu'
 
 jest.mock('features/auth/settings')
-jest.mock('libs/errorMonitoring')
+jest.mock('libs/monitoring')
 
 afterEach(jest.clearAllMocks)
 
