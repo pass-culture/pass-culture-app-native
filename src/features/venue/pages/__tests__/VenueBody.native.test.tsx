@@ -19,9 +19,10 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('react-query')
 jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({ data: { ...mockDefaultSettings, useAppSearch: false } })),
+  useAppSettings: jest.fn(() => ({ data: { ...mockDefaultSettings, useAppSearch: true } })),
 }))
 jest.mock('features/venue/api/useVenueOffers')
+jest.mock('features/venue/api/useVenueSearchParameters')
 jest.mock('features/venue/api/useVenue')
 const mockedUseVenue = mocked(useVenue)
 
