@@ -3,6 +3,7 @@ import { clampPrice } from 'features/search/pages/reducer.helpers'
 import { RecursivePartial, SearchState } from 'features/search/types'
 
 export const sanitizedSearchStateRequiredDefaults = {
+  geolocation: null,
   offerCategories: [],
   query: '',
   tags: [],
@@ -36,7 +37,7 @@ export const sanitizeSearchStateParams = (searchState: RecursivePartial<SearchSt
     ...(beginningDatetime ? { beginningDatetime } : {}),
     ...(date ? { date } : {}),
     ...(endingDatetime ? { endingDatetime } : {}),
-    ...(geolocation ? { geolocation } : {}),
+    geolocation: geolocation || sanitizedSearchStateRequiredDefaults.geolocation,
     ...(hitsPerPage ? { hitsPerPage } : {}),
     ...(locationType !== LocationType.EVERYWHERE ? { locationType } : {}),
     offerCategories: offerCategories || sanitizedSearchStateRequiredDefaults.offerCategories,
