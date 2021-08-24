@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { SeeMore } from 'features/home/atoms'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useVenue } from 'features/venue/api/useVenue'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
+import { useVenueOffers, useVenueSearchParameters } from 'features/venue/api/useVenueOffers'
 import { VenueOfferTile } from 'features/venue/atoms/VenueOfferTile'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
@@ -28,6 +28,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   const { data: venueOffers } = useVenueOffers(venueId)
   const { position } = useGeolocation()
   const { navigate } = useNavigation<UseNavigationType>()
+  const params = useVenueSearchParameters(venueId)
   const { hits = [], nbHits = 0 } = venueOffers || {}
 
   const renderItem: ListRenderItem<SearchHit> = useCallback(
@@ -50,9 +51,9 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
     [position]
   )
 
-  const onPress = () => {
-    // TODO : Search all offers ?
-  }
+  const seeAllOffers = useCallback(() => {
+    navigate('Search', { parameters: params })
+  }, [params])
 
   const onPressSeeMore = useCallback(() => {
     // TODO(antoinewg) add search params
@@ -96,7 +97,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
       <MarginContainer>
         <ButtonWithLinearGradient
           wording={VENUE_OFFERS_CTA_WORDING}
-          onPress={onPress}
+          onPress={seeAllOffers}
           isDisabled={false}
         />
       </MarginContainer>
