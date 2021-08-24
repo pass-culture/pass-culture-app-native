@@ -1,1 +1,1 @@
-export const useUserProfileInfo = jest.fn().mockReturnValue({ data: {} })
+export const useUserProfileInfo = jest.fn().mockReturnValue({ data: { isBeneficiary: true } })
