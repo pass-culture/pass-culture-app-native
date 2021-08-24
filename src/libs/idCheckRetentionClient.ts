@@ -10,7 +10,7 @@ import {
 import { api } from 'api/api'
 import { ActivityEnum, BeneficiaryInformationUpdateRequest } from 'api/gen'
 import { ApiError } from 'api/helpers'
-import { errorMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
 
 export const idCheckRetentionClient: IdCheckRetentionClient = {
   confirmProfile(values?: Partial<UserProfile>) {
@@ -34,7 +34,7 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
         })
       }
     } catch (err) {
-      errorMonitoring.captureException(err)
+      eventMonitoring.captureException(err)
       error = err
     }
     if (error) {
@@ -78,7 +78,7 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
           await LocalStorageService.saveQueryParams(queryParams)
         }
       }
-      errorMonitoring.captureException(error)
+      eventMonitoring.captureException(error)
 
       return Promise.reject(error)
     }

@@ -25,7 +25,7 @@ import CodePushProvider from 'libs/codepush/CodePushProvider'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
-import { errorMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
 import { useStartBatchNotification } from 'libs/notifications'
 import { queryClient } from 'libs/queryClient'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
@@ -71,7 +71,7 @@ const App: FunctionComponent = function () {
   }, [])
 
   useEffect(() => {
-    errorMonitoring.init({ enabled: !__DEV__ })
+    eventMonitoring.init({ enabled: !__DEV__ })
   }, [])
 
   return (

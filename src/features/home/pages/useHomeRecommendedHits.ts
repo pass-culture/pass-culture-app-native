@@ -2,7 +2,7 @@ import { useQuery } from 'react-query'
 
 import { env } from 'libs/environment'
 import { GeoCoordinates, useGeolocation } from 'libs/geolocation'
-import { errorMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useFetchHits } from 'libs/search'
 
@@ -44,7 +44,7 @@ const useRecommendedOfferIds = (recommendationModule: RecommendationPane | undef
       if (response.ok) {
         return response.json() as Promise<{ recommended_offers: string[] }>
       } else {
-        errorMonitoring.captureException(
+        eventMonitoring.captureException(
           new Error(
             `Error with recommendation endpoint: ${recommendationEndpoint}. status code ${response.status}`
           )

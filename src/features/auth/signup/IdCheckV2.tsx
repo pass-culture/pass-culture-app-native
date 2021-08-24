@@ -15,7 +15,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { ScreenNavigationProp, UseNavigationType } from 'features/navigation/RootNavigator'
-import { errorMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
@@ -72,7 +72,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
           })
         })
         .catch((error) => {
-          errorMonitoring.captureException(error)
+          eventMonitoring.captureException(error)
           setContextValue({
             onAbandon,
             onSuccess,

@@ -1,19 +1,19 @@
 import { CaptureContext, Extras } from '@sentry/types'
 
-import { errorMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
 
 import { MonitoringError } from '../errors'
 
 describe('MonitoringError', () => {
-  it('should call errorMonitoring.captureException() on new MonitoringError instance', () => {
+  it('should call eventMonitoring.captureException() on new MonitoringError instance', () => {
     const error = new MonitoringError('error')
-    expect(errorMonitoring.captureException).toBeCalledWith(error, undefined)
+    expect(eventMonitoring.captureException).toBeCalledWith(error, undefined)
     expect(error.name).toBe(MonitoringError.name)
   })
 
   it('should rename MonitoringError to RenamedError', () => {
     const error = new MonitoringError('error', 'RenamedError')
-    expect(errorMonitoring.captureException).toBeCalledWith(error, undefined)
+    expect(eventMonitoring.captureException).toBeCalledWith(error, undefined)
     expect(error.name).toBe('RenamedError')
   })
 
@@ -23,7 +23,7 @@ describe('MonitoringError', () => {
       extra,
     }
     const error = new MonitoringError('error', captureContext)
-    expect(errorMonitoring.captureException).toBeCalledWith(error, captureContext)
+    expect(eventMonitoring.captureException).toBeCalledWith(error, captureContext)
     expect(error.name).toBe('MonitoringError')
   })
 
@@ -33,7 +33,7 @@ describe('MonitoringError', () => {
       extra,
     }
     const error = new MonitoringError('error', 'RenamedError', captureContext)
-    expect(errorMonitoring.captureException).toBeCalledWith(error, captureContext)
+    expect(eventMonitoring.captureException).toBeCalledWith(error, captureContext)
     expect(error.name).toBe('RenamedError')
   })
 })

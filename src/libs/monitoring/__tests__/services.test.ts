@@ -3,14 +3,14 @@ import * as SentryModule from '@sentry/react-native'
 import { env } from 'libs/environment'
 
 import { version } from '../../../../package.json'
-import { errorMonitoring } from '../services'
+import { eventMonitoring } from '../services'
 
 afterEach(jest.clearAllMocks)
 
-describe('errorMonitoring', () => {
+describe('eventMonitoring', () => {
   describe('init()', () => {
     it("should call sentry's init() when enabled", () => {
-      errorMonitoring.init({ enabled: true })
+      eventMonitoring.init({ enabled: true })
       expect(SentryModule.init).toBeCalledWith({
         dsn: env.SENTRY_DSN,
         environment: env.ENV,
@@ -19,7 +19,7 @@ describe('errorMonitoring', () => {
     })
 
     it("should NOT call sentry's init() when disabled", () => {
-      errorMonitoring.init({ enabled: false })
+      eventMonitoring.init({ enabled: false })
       expect(SentryModule.init).not.toBeCalled()
     })
   })

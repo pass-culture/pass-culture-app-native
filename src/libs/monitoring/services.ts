@@ -12,7 +12,7 @@ const SENTRY_CONFIG = {
   release: version,
 }
 
-type ErrorMonitoring = IdCheckErrorMonitoringInterface<
+type EventMonitoring = IdCheckErrorMonitoringInterface<
   SentryModule.Scope,
   User,
   CaptureContext,
@@ -20,7 +20,7 @@ type ErrorMonitoring = IdCheckErrorMonitoringInterface<
   Severity
 >
 
-export const errorMonitoring: ErrorMonitoring = {
+export const eventMonitoring: EventMonitoring = {
   captureException: SentryModule.captureException,
   captureMessage: SentryModule.captureMessage,
   captureEvent: SentryModule.captureEvent,
