@@ -1,10 +1,11 @@
 import { plural } from '@lingui/macro'
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useVenueName } from 'features/venue/api/useVenue'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-
+import { ClippedTag } from 'ui/components/ClippedTag'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 interface Props {
   nbHits: number
   venueId: number | null
@@ -12,20 +13,29 @@ interface Props {
 
 export const NumberOfResults: React.FC<Props> = ({ nbHits, venueId }) => {
   const venueName = useVenueName(venueId)
-  if (!nbHits) return <React.Fragment></React.Fragment>
+  const { dispatch } = useSearch()
+
+  const removeVenueId = useCallback(() => {
+    dispatch({ type: 'SET_VENUE_ID', payload: null })
+  }, [])
 
   const numberOfResults = plural(nbHits, {
     one: '# résultat',
     other: '# résultats',
   })
+
   const resultsWithSuffix = `${numberOfResults} pour `
+
+  if (!nbHits) return <React.Fragment></React.Fragment>
 
   return (
     <Container>
       {venueName ? (
         <React.Fragment>
           <Body>{resultsWithSuffix}</Body>
-          <BoldBody>{venueName}</BoldBody>
+          <Spacer.Column numberOfSpaces={4} />
+          <ClippedTag label={venueName} onPress={removeVenueId} testId="Enlever le lieu" />
+          <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       ) : (
         <Body>{numberOfResults}</Body>
@@ -35,9 +45,8 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits, venueId }) => {
 }
 
 const Container = styled.View({
-  flexDirection: 'row',
   margin: getSpacing(6),
   marginBottom: getSpacing(4),
 })
+
 const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
-const BoldBody = styled(Typo.ButtonText)({ color: ColorsEnum.GREY_DARK })

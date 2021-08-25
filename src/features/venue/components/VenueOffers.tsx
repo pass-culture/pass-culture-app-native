@@ -52,13 +52,14 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   )
 
   const seeAllOffers = useCallback(() => {
-    navigate('Search', {})
-  }, [])
-
-  const onPressSeeMore = useCallback(() => {
-    // @ts-ignore : TODO(antoinewg) add search params
+    // @ts-ignore : TODO (Lucasbeneston)
     navigate('Search', { parameters: params })
   }, [params])
+
+  const onPressSeeMore = useCallback(() => {
+    // TODO(antoinewg) add search params
+    navigate('Search', {})
+  }, [])
 
   const ListFooterComponent = useCallback(() => {
     if (nbHits > hits.length) return <HorizontalMargin />

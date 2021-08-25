@@ -23,7 +23,7 @@ export const useVenueSearchParameters = (venueId: number): SearchParameters => {
     offerIsNew: false,
     offerTypes: { isDigital: false, isEvent: false, isThing: false },
     priceRange: [0, 300],
-    locationType: LocationType.EVERYWHERE,
+    locationType: position ? LocationType.AROUND_ME : LocationType.EVERYWHERE,
     tags: [],
     date: null,
     timeRange: null,
