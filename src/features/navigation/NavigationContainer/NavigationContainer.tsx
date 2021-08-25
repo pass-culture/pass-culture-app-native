@@ -47,3 +47,5 @@ export const AppNavigationContainer = () => {
     </NavigationContainer>
   )
 }
+
+export default AppNavigationContainer

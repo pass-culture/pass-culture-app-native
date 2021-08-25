@@ -3,7 +3,7 @@ import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { QueryClientProvider } from 'react-query'
 import { ThemeProvider } from 'styled-components/native'
@@ -22,6 +22,7 @@ import { useStartBatchNotification } from 'libs/notifications'
 import { queryClient } from 'libs/queryClient'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { theme } from 'theme'
+import { LoadingPage } from 'ui/components/LoadingPage'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 export function App() {
@@ -48,7 +49,9 @@ export function App() {
                       <SnackBarProvider>
                         <IdCheckContextProvider>
                           <AppWebHead />
-                          <AppNavigationContainer />
+                          <Suspense fallback={<LoadingPage />}>
+                            <AppNavigationContainer />
+                          </Suspense>
                         </IdCheckContextProvider>
                       </SnackBarProvider>
                     </I18nProvider>
