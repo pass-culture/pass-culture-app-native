@@ -23,7 +23,6 @@ export const OfferWebHead = ({ offer }: Props) => (
       image: offer.image?.url,
     })}
     {openGraphMetas({
-      url: window.location.href,
       locale: 'fr-FR',
       description: offer.description || description,
       title: offer.name,
