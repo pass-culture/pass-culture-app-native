@@ -3,7 +3,7 @@ import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse, UserRole } from 'api/gen'
+import { UserProfileResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { render, fireEvent } from 'tests/utils'
@@ -61,22 +61,5 @@ describe('<AccountCreated />', () => {
 
     expect(navigateToHome).toBeCalledTimes(1)
     expect(navigate).not.toBeCalledWith('CulturalSurvey')
-  })
-
-  it.each([
-    [
-      'formal',
-      'project redactor',
-      [UserRole.INSTITUTIONALPROJECTREDACTOR],
-      'Votre compte a été activé !',
-    ],
-    ['informal', 'beneficiary', [UserRole.BENEFICIARY], 'Ton compte a été activé !'],
-  ])('should display %s title and description if user is %s', (_type, _role, roles, title) => {
-    mockedUseUserProfileInfo.mockReturnValueOnce({
-      data: { isBeneficiary: true, needsToFillCulturalSurvey: true, roles: roles },
-    } as UseQueryResult<UserProfileResponse>)
-    const { getByText } = render(<AccountCreated />)
-
-    expect(getByText(title)).toBeTruthy()
   })
 })

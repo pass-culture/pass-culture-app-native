@@ -2,12 +2,7 @@ import { Platform } from 'react-native'
 import { useMutation, useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import {
-  AccountRequest,
-  GetIdCheckTokenResponse,
-  InstitutionalProjectRedactorAccountRequest,
-  SigninRequest,
-} from 'api/gen'
+import { AccountRequest, GetIdCheckTokenResponse, SigninRequest } from 'api/gen'
 import { ApiError, isApiError } from 'api/helpers'
 import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
@@ -92,24 +87,6 @@ export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse
   }
 }
 
-export function useRedactorSignUp(): (
-  data: InstitutionalProjectRedactorAccountRequest
-) => Promise<SignUpResponse> {
-  return async (body: InstitutionalProjectRedactorAccountRequest) => {
-    try {
-      const response = await api.postnativev1institutionalProjectRedactorAccount(body, {
-        credentials: 'omit',
-      })
-      return { isSuccess: !!response }
-    } catch (error) {
-      return {
-        isSuccess: false,
-        content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
-      }
-    }
-  }
-}
-
 export function useGetIdCheckToken(
   queryCondition?: boolean,
   onError?: (error: ApiError | unknown) => void
@@ -146,8 +123,6 @@ export function useDepositAmount() {
 }
 
 export const SIGNUP_NUMBER_OF_STEPS = 4 // email, password, birthday, cgu
-
-export const REDACTOR_SIGNUP_NUMBER_OF_STEPS = 3 // email, password, cgu
 
 export function useSendPhoneValidationMutation({
   onSuccess,

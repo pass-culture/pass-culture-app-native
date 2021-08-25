@@ -19,9 +19,6 @@ export enum SignupSteps {
   PostalCode = 'PostalCode',
   CGU = 'CGU',
   PhoneNumber = 'PhoneNumber',
-  RedactorEmail = 'RedactorEmail',
-  RedactorPassword = 'RedactorPassword',
-  RedactorCGU = 'RedactorCGU',
 }
 
 interface Props {
@@ -29,7 +26,6 @@ interface Props {
   signupStep: SignupSteps
   resume: () => void
   testIdSuffix?: string
-  isRedactor?: boolean
 }
 
 export const QuitSignupModal: FunctionComponent<Props> = ({
@@ -37,20 +33,14 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
   resume,
   testIdSuffix,
   signupStep,
-  isRedactor,
 }) => {
   function quitSignup() {
     analytics.logCancelSignup(signupStep)
     navigateToHome()
   }
 
-  const title = isRedactor
-    ? t`Voulez-vous abandonner l'inscription ?`
-    : t`Veux-tu abandonner l'inscription ?`
-
-  const description = isRedactor
-    ? t`Les informations que vous avez renseignées ne seront pas enregistrées.`
-    : t`Les informations que tu as renseignées ne seront pas enregistrées.`
+  const title = t`Veux-tu abandonner l'inscription ?`
+  const description = t`Les informations que tu as renseignées ne seront pas enregistrées.`
 
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>

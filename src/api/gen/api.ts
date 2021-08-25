@@ -822,24 +822,6 @@ export interface GetIdCheckTokenResponse {
 }/**
  * 
  * @export
- * @interface InstitutionalProjectRedactorAccountRequest
- */
-export interface InstitutionalProjectRedactorAccountRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof InstitutionalProjectRedactorAccountRequest
-     */
-    email: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InstitutionalProjectRedactorAccountRequest
-     */
-    password: string;
-}/**
- * 
- * @export
  * @interface NotificationSubscriptions
  */
 export interface NotificationSubscriptions {
@@ -1725,7 +1707,6 @@ export interface UserReportedOffersResponse {
 export enum UserRole {
     ADMIN = 'ADMIN',
     BENEFICIARY = 'BENEFICIARY',
-    INSTITUTIONALPROJECTREDACTOR = 'INSTITUTIONAL_PROJECT_REDACTOR',
     PRO = 'PRO',
     JOUVE = 'JOUVE'
 }/**
@@ -2367,31 +2348,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary create_institutional_project_redactor_account <POST>
-         * @param {InstitutionalProjectRedactorAccountRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1institutionalProjectRedactorAccount(body?: InstitutionalProjectRedactorAccountRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/institutional-project-redactor-account`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"InstitutionalProjectRedactorAccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary update_cultural_survey <POST>
          * @param {CulturalSurveyRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -3021,18 +2977,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
-         * @summary create_institutional_project_redactor_account <POST>
-         * @param {InstitutionalProjectRedactorAccountRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1institutionalProjectRedactorAccount(basePath: string, body?: InstitutionalProjectRedactorAccountRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1institutionalProjectRedactorAccount(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
          * @summary update_cultural_survey <POST>
          * @param {CulturalSurveyRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -3450,18 +3394,6 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1identityDocument(options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1identityDocument(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary create_institutional_project_redactor_account <POST>
-     * @param {InstitutionalProjectRedactorAccountRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1institutionalProjectRedactorAccount(body?: InstitutionalProjectRedactorAccountRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1institutionalProjectRedactorAccount(this.basePath, body, options)
     }
     /**
      * 
