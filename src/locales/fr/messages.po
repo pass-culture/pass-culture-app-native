@@ -53,7 +53,6 @@ msgstr "Abandonner"
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
-#: src/features/auth/projectRedactorSignup/AcceptRedactorCgu.tsx
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
@@ -91,7 +90,6 @@ msgstr "Adresse"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/login/Login.tsx
-#: src/features/auth/projectRedactorSignup/SetRedactorEmail.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
@@ -184,7 +182,7 @@ msgstr "Autoriser l’utilisation de mes données de navigation"
 msgid "Autour de moi"
 msgstr "Autour de moi"
 
-#: src/features/offer/components/ReportOfferOtherReasonModal.tsx
+#: src/features/offer/components/ReportOfferOtherReason.tsx
 msgid "Autre raison"
 msgstr "Autre raison"
 
@@ -196,7 +194,7 @@ msgstr "Autres"
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
-#: src/features/offer/components/ReportOfferDescriptionModal.tsx
+#: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU."
 msgstr "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU."
 
@@ -208,7 +206,6 @@ msgstr "Bienvenue !"
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
-#: src/features/auth/projectRedactorSignup/AcceptRedactorCgu.tsx
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "CGU & Données"
 msgstr "CGU & Données"
@@ -297,10 +294,6 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/auth/projectRedactorSignup/RedactorSignupConfirmationEmailSent.tsx
-msgid "Cliquez sur le lien reçu à l'adresse :"
-msgstr "Cliquez sur le lien reçu à l'adresse :"
-
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Colle ton lien ici ..."
 msgstr "Colle ton lien ici ..."
@@ -317,7 +310,6 @@ msgstr "Composants"
 msgid "Compte désactivé"
 msgstr "Compte désactivé"
 
-#: src/features/auth/projectRedactorSignup/AcceptRedactorCgu.tsx
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
@@ -335,8 +327,8 @@ msgid "Confidentialité"
 msgstr "Confidentialité"
 
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
-msgid "Confirme ton e‑mail"
-msgstr "Confirme ton e‑mail"
+msgid "Confirme ton e-mail"
+msgstr "Confirme ton e-mail"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
@@ -353,10 +345,6 @@ msgstr "Confirmer la réservation"
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
-
-#: src/features/auth/projectRedactorSignup/RedactorSignupConfirmationEmailSent.tsx
-msgid "Confirmez votre e‑mail"
-msgstr "Confirmez votre e‑mail"
 
 #: src/features/profile/components/LoggedOutHeader.tsx
 #: src/features/profile/components/LoggedOutHeader.tsx
@@ -382,17 +370,14 @@ msgid "Consulter l'article d'aide"
 msgstr "Consulter l'article d'aide"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
-#: src/features/auth/projectRedactorSignup/RedactorSignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
-#: src/features/auth/projectRedactorSignup/RedactorSignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Consulter notre centre d'aide"
 msgstr "Consulter notre centre d'aide"
 
-#: src/features/auth/projectRedactorSignup/AcceptRedactorCgu.tsx
 #: src/features/auth/signup/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
@@ -400,8 +385,6 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
-#: src/features/auth/projectRedactorSignup/SetRedactorEmail.tsx
-#: src/features/auth/projectRedactorSignup/SetRedactorPassword.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
@@ -478,7 +461,7 @@ msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train d
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/bookOffer/components/BookDuoChoice.tsx
-#: src/features/home/atoms/OfferCaption.tsx
+#: src/ui/components/OfferCaption.tsx
 msgid "Duo"
 msgstr "Duo"
 
@@ -491,7 +474,7 @@ msgstr "Déconnexion"
 msgid "Découvrir"
 msgstr "Découvrir"
 
-#: src/features/offer/components/ReportOfferOtherReasonModal.tsx
+#: src/features/offer/components/ReportOfferOtherReason.tsx
 msgid "Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre."
 msgstr "Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre."
 
@@ -531,10 +514,6 @@ msgstr "Email enregistré. Tu seras averti lors du retour du service."
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
-
-#: src/features/auth/projectRedactorSignup/AcceptRedactorCgu.tsx
-msgid "En cliquant sur “Accepter et s’inscrire”, vous acceptez nos"
-msgstr "En cliquant sur “Accepter et s’inscrire”, vous acceptez nos"
 
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
@@ -577,7 +556,6 @@ msgid "Filtrer"
 msgstr "Filtrer"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/projectRedactorSignup/SetRedactorEmail.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 msgid "Format de l'e-mail incorrect"
 msgstr "Format de l'e-mail incorrect"
@@ -628,9 +606,13 @@ msgstr "Hors connexion : en attente du réseau."
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/offer/components/ReportOfferDescriptionModal.tsx
+#: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
+
+#: src/features/errors/pages/OfferNotFoundErrorBoundary.tsx
+msgid "Il est possible que cette offre soit désactivée ou n'existe pas."
+msgstr "Il est possible que cette offre soit désactivée ou n'existe pas."
 
 #: src/features/auth/login/Login.tsx
 msgid "Il y a eu un problème. Tu peux réessayer plus tard."
@@ -761,12 +743,8 @@ msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
 #: src/features/auth/components/QuitSignupModal.tsx
-msgid "Les informations que tu as renseignées ne seront pas enregistrées"
-msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
-
-#: src/features/auth/components/QuitSignupModal.tsx
-msgid "Les informations que vous avez renseignées ne seront pas enregistrées"
-msgstr "Les informations que vous avez renseignées ne seront pas enregistrées"
+msgid "Les informations que tu as renseignées ne seront pas enregistrées."
+msgstr "Les informations que tu as renseignées ne seront pas enregistrées."
 
 #: src/libs/geolocation/enums.ts
 msgid "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
@@ -842,7 +820,6 @@ msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
 
 #: src/features/auth/login/Login.tsx
-#: src/features/auth/projectRedactorSignup/SetRedactorPassword.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 #: src/features/profile/pages/Profile.tsx
@@ -894,10 +871,6 @@ msgstr "Notifications"
 msgid "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
 msgstr "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
 
-#: src/features/auth/projectRedactorSignup/RedactorSignupConfirmationEmailSent.tsx
-msgid "Nous devons vérifier vos informations : l'email peut prendre quelques minutes pour arriver."
-msgstr "Nous devons vérifier vos informations : l'email peut prendre quelques minutes pour arriver."
-
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
@@ -915,11 +888,23 @@ msgstr "Nouveau mot de passe"
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
 
+#: src/libs/monitoring/errors.ts
+msgid "Offer {offerId} could not be retrieved"
+msgstr "Offer {offerId} could not be retrieved"
+
 #: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Offre expirée"
 msgstr "Offre expirée"
+
+#: src/features/errors/pages/OfferNotFoundErrorBoundary.tsx
+msgid "Offre introuvable !"
+msgstr "Offre introuvable !"
+
+#: src/features/errors/pages/OfferNotFoundErrorBoundary.tsx
+msgid "Offre introuvable | Pass Culture"
+msgstr "Offre introuvable | Pass Culture"
 
 #: src/features/search/sections/OfferType.tsx
 msgid "Offre numérique"
@@ -1025,7 +1010,6 @@ msgstr "Permanent"
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
-#: src/features/auth/projectRedactorSignup/AcceptRedactorCgu.tsx
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
@@ -1033,10 +1017,6 @@ msgstr "Politique de confidentialité."
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
-
-#: src/features/auth/projectRedactorSignup/AcceptRedactorCgu.tsx
-msgid "Pour en savoir plus sur la gestion de vos données personnelles et exercer vos droits vous pouvez :"
-msgstr "Pour en savoir plus sur la gestion de vos données personnelles et exercer vos droits vous pouvez :"
 
 #: src/features/profile/pages/ConsentSettings.tsx
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
@@ -1142,6 +1122,7 @@ msgstr "Retour"
 #: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
+#: src/features/errors/pages/OfferNotFoundErrorBoundary.tsx
 #: src/features/profile/pages/DeleteProfileSuccess.tsx
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
@@ -1255,13 +1236,9 @@ msgstr "Si tu n’arrives pas à récupérer ton code tu peux"
 msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 msgstr "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 
-#: src/features/auth/projectRedactorSignup/RedactorSignupConfirmationEmailSent.tsx
-msgid "Si vous rencontrez des difficultés, vous pouvez consulter notre centre d'aide."
-msgstr "Si vous rencontrez des difficultés, vous pouvez consulter notre centre d'aide."
-
-#: src/features/offer/components/ReportOfferDescriptionModal.tsx
-#: src/features/offer/components/ReportOfferOtherReasonModal.tsx
-#: src/features/offer/components/ReportOfferReasonModal.tsx
+#: src/features/offer/components/ReportOfferDescription.tsx
+#: src/features/offer/components/ReportOfferOtherReason.tsx
+#: src/features/offer/components/ReportOfferReason.tsx
 #: src/features/offer/pages/OfferBody.tsx
 msgid "Signaler l'offre"
 msgstr "Signaler l'offre"
@@ -1332,7 +1309,7 @@ msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure con
 msgid "Ton e-mail"
 msgstr "Ton e-mail"
 
-#: src/features/offer/components/ReportOfferDescriptionModal.tsx
+#: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Ton identité restera anonyme auprès des acteurs culturels."
 msgstr "Ton identité restera anonyme auprès des acteurs culturels."
 
@@ -1356,8 +1333,8 @@ msgstr "Ton mot de passe actuel"
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
-#: src/features/offer/components/ReportOfferOtherReasonModal.tsx
-#: src/features/offer/components/ReportOfferReasonModal.tsx
+#: src/features/offer/components/ReportOfferOtherReason.tsx
+#: src/features/offer/components/ReportOfferReason.tsx
 msgid "Ton signalement a bien été pris en compte"
 msgstr "Ton signalement a bien été pris en compte"
 
@@ -1533,10 +1510,6 @@ msgstr "Un lien ne fonctionne pas ?"
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
-#: src/features/auth/projectRedactorSignup/AcceptRedactorCgu.tsx
-msgid "Un problème est survenu pendant l'inscription, veuillez réessayer plus tard."
-msgstr "Un problème est survenu pendant l'inscription, veuillez réessayer plus tard."
-
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
@@ -1631,22 +1604,9 @@ msgstr "Voir ma réservation"
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
-#: src/features/auth/signup/AccountCreated/AccountCreated.tsx
-msgid "Votre compte a été activé !"
-msgstr "Votre compte a été activé !"
-
-#: src/features/auth/projectRedactorSignup/SetRedactorEmail.tsx
-msgid "Votre e-mail"
-msgstr "Votre e-mail"
-
-#: src/features/auth/projectRedactorSignup/SetRedactorPassword.tsx
-#: src/features/auth/projectRedactorSignup/SetRedactorPassword.tsx
-msgid "Votre mot de passe"
-msgstr "Votre mot de passe"
-
-#: src/features/auth/components/QuitSignupModal.tsx
-msgid "Voulez-vous abandonner l'inscription ?"
-msgstr "Voulez-vous abandonner l'inscription ?"
+#: src/features/venue/components/VenueOffers.tsx
+msgid "Voir toutes les offres"
+msgstr "Voir toutes les offres"
 
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 msgid "Vous êtes actuellement très nombreux à demander les 300€ et notre service rencontre quelques difficultés."
@@ -1676,7 +1636,6 @@ msgstr "À activer avant le {dateLimit}"
 msgid "activation message"
 msgstr "À activer avant le {date}"
 
-#: src/features/auth/projectRedactorSignup/AcceptRedactorCgu.tsx
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
@@ -1806,6 +1765,10 @@ msgstr ""
 msgid "not refunded because expired"
 msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré."
 
+#: src/libs/monitoring/errors.ts
+msgid "offerId is undefined"
+msgstr "offerId is undefined"
+
 #: src/features/profile/components/YoungerBadge.tsx
 msgid "offerts à dépenser sur l’application."
 msgstr "offerts à dépenser sur l’application."
@@ -1872,10 +1835,6 @@ msgstr "une initiative du Gouvernement financée par le ministère de la Culture
 #: src/features/offer/atoms/OfferSeeMore.tsx
 msgid "voir plus"
 msgstr "voir plus"
-
-#: src/features/auth/projectRedactorSignup/SetRedactorEmail.tsx
-msgid "votreadresse@email.com"
-msgstr "votreadresse@email.com"
 
 #: src/features/bookings/helpers.ts
 msgid "withdraw before date"
