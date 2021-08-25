@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-FR">
   <head>
     <meta charset="utf-8" />
+    <title>%TITLE%</title>
     <link rel="icon" type="image/png" href="%PUBLIC_URL%/images/app-icon-iphone.png" />
     <meta
       name="viewport"
@@ -11,8 +12,30 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="theme-color" content="#eb0055" />
-    <meta name="description" content="%DESCRIPTION%" />
     <meta name="version" content="%VERSION%" />
+    %META_NO_INDEX%
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="%TITLE%">
+    <meta name="description" content="%DESCRIPTION%">
+    <meta name="author" content="%AUTHOR%" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="%PUBLIC_URL%">
+    <meta property="og:title" content="%TITLE%">
+    <meta property="og:description" content="%DESCRIPTION%">
+    <meta property="og:image" content="%PUBLIC_URL%/images/app-icon-512px.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="%DESCRIPTION%">
+    <meta name="twitter:url" content="%PUBLIC_URL%">
+    <meta name="twitter:title" content="%TITLE%">
+    <meta name="twitter:description" content="%DESCRIPTION%">
+    <meta name="twitter:image" content="%PUBLIC_URL%/images/app-icon-512px.png">
+    <meta name="twitter:site" content="%TWITTER_SITE%" />
+
+    <!-- iPhone -->
     <link rel="shortcut icon" href="%PUBLIC_URL%/images/app-icon-iphone.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/app-icon-iphone@3x.png" />
     <link
@@ -68,7 +91,6 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!-- See usage of `window.grecaptcha` in ReCaptcha.web.tsx -->
     <script src="https://www.google.com/recaptcha/api.js?hl=fr" async defer></script>
-    <title>Pass Culture</title>
     <style type="text/css">
       @font-face {
         font-family: 'Montserrat-MediumItalic';

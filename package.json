@@ -1,10 +1,11 @@
 {
   "name": "PassCulture",
-  "description": "Le pass Culture, dispositif porté par le ministère de la Culture, a pour but de faciliter l'accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l'application pass Culture.",
+  "description": "Dispositif porté par le ministère de la Culture, a pour but de faciliter l'accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l'application pass Culture.",
   "author": {
     "email": "support@passculture.app",
     "url": "https://pass.culture.fr",
-    "name": "pass Culture"
+    "name": "pass Culture",
+    "twitter": "@pass_Culture"
   },
   "version": "1.149.1",
   "build": 10149001,
