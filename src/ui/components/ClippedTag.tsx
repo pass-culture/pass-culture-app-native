@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dimensions } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { testID } from 'tests/utils'
@@ -15,9 +15,11 @@ interface Props {
 }
 
 export const ClippedTag: React.FC<Props> = ({ label, onPress, testId }) => {
+  const { width } = useWindowDimensions()
+
   return (
     <Container>
-      <VenueLabelContainer>
+      <VenueLabelContainer style={{ maxWidth: width * 0.7 }}>
         <VenueLabel>{label}</VenueLabel>
       </VenueLabelContainer>
       <TouchableOpacity onPress={onPress}>
@@ -31,12 +33,10 @@ const Container = styled.View({
   flexDirection: 'row',
 })
 
-const screenWidth = Dimensions.get('screen').width
 const VenueLabelContainer = styled.View({
   backgroundColor: ColorsEnum.PRIMARY,
   paddingVertical: getSpacing(2),
   paddingLeft: getSpacing(3),
-  maxWidth: screenWidth * 0.7,
   borderTopLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
   borderBottomLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
 })

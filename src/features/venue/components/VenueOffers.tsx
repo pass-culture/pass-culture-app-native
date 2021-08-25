@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { sanitizeSearchStateParams } from 'features/search/utils/sanitizeSearchStateParams'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers, useVenueSearchParameters } from 'features/venue/api/useVenueOffers'
 import { VenueOfferTile } from 'features/venue/atoms/VenueOfferTile'
@@ -52,8 +53,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   )
 
   const seeAllOffers = useCallback(() => {
-    // @ts-ignore : TODO (Lucasbeneston)
-    navigate('Search', { parameters: params })
+    navigate('Search', sanitizeSearchStateParams(params))
   }, [params])
 
   const onPressSeeMore = useCallback(() => {
