@@ -8,6 +8,8 @@ import { NumberOfResults } from '../NumberOfResults'
 
 const venueId = venueResponseSnap.id
 
+jest.mock('react-query')
+
 describe('NumberOfResults component', () => {
   it('should correctly format the number of hit', () => {
     const getResultText = (count: number) =>

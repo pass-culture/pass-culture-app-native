@@ -17,9 +17,9 @@ interface Props {
 export const ClippedTag: React.FC<Props> = ({ label, onPress, testId }) => {
   return (
     <Container>
-      <BoldBodyContainer>
-        <BoldBody>{label}</BoldBody>
-      </BoldBodyContainer>
+      <VenueLabelContainer>
+        <VenueLabel>{label}</VenueLabel>
+      </VenueLabelContainer>
       <TouchableOpacity onPress={onPress}>
         <ClearIcon size={20} {...testID(testId)} color={ColorsEnum.WHITE} />
       </TouchableOpacity>
@@ -32,7 +32,7 @@ const Container = styled.View({
 })
 
 const screenWidth = Dimensions.get('screen').width
-const BoldBodyContainer = styled.View({
+const VenueLabelContainer = styled.View({
   backgroundColor: ColorsEnum.PRIMARY,
   paddingVertical: getSpacing(2),
   paddingLeft: getSpacing(3),
@@ -41,7 +41,7 @@ const BoldBodyContainer = styled.View({
   borderBottomLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
 })
 
-const BoldBody = styled(Typo.ButtonText).attrs(() => ({
+const VenueLabel = styled(Typo.ButtonText).attrs(() => ({
   numberOfLines: 1,
   color: ColorsEnum.WHITE,
 }))({})

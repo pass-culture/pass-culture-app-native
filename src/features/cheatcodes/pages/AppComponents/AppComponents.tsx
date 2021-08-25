@@ -29,6 +29,7 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
+import { ClippedTag } from 'ui/components/ClippedTag'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { Hero } from 'ui/components/hero/Hero'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
@@ -287,6 +288,13 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Title4>Landscape Hero - Venue</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <Hero imageUrl={''} landscape />
+      </AccordionItem>
+
+      <Divider />
+
+      {/* Tags */}
+      <AccordionItem title="Tags">
+        <ClippedTag label="Musée du Louvre" onPress={onButtonPress} testId="Enlever le lieu" />
       </AccordionItem>
 
       <Divider />
