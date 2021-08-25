@@ -6,7 +6,6 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { ScreenConfiguration } from 'features/deeplinks/types'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
-import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 
 import { homeNavigateConfig } from '../helpers'
@@ -21,7 +20,6 @@ export type InitialScreenConfiguration =
 
 export function useInitialScreenConfig(): void {
   const { navigate, reset } = useNavigation<UseNavigationType>()
-  const { hideSplashScreen } = useSplashScreenContext()
   const { isLoggedIn } = useAuthContext()
 
   const [initialScreenConfig, setInitialScreenConfig] = useSafeState<
@@ -36,7 +34,7 @@ export function useInitialScreenConfig(): void {
   }, [isLoggedIn])
 
   useEffect(() => {
-    if (!initialScreenConfig || !hideSplashScreen) {
+    if (!initialScreenConfig) {
       return
     }
     if (initialScreenConfig.screen !== 'TabNavigator') {
@@ -45,8 +43,7 @@ export function useInitialScreenConfig(): void {
     } else {
       navigate(initialScreenConfig.screen, initialScreenConfig.params)
     }
-    hideSplashScreen()
-  }, [initialScreenConfig, hideSplashScreen])
+  }, [initialScreenConfig])
 }
 
 async function getInitialScreenConfig({
