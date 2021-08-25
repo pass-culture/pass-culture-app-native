@@ -533,8 +533,6 @@ PODS:
     - React
   - RNCAsyncStorage (1.15.5):
     - React-Core
-  - RNCMaskedView (0.1.10):
-    - React
   - RNDateTimePicker (3.0.9):
     - React-Core
   - RNDeviceInfo (8.1.2):
@@ -677,7 +675,6 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNBatchPush (from `../node_modules/@bam.tech/react-native-batch/ios`)"
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
-  - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFastImage (from `../node_modules/react-native-fast-image`)
@@ -840,8 +837,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@bam.tech/react-native-batch/ios"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
-  RNCMaskedView:
-    :path: "../node_modules/@react-native-community/masked-view"
   RNDateTimePicker:
     :path: "../node_modules/@react-native-community/datetimepicker"
   RNDeviceInfo:
@@ -970,7 +965,6 @@ SPEC CHECKSUMS:
   ReactCommon: 149906e01aa51142707a10665185db879898e966
   RNBatchPush: 8b5ce832fcdb4f4ba94033f20e45df9157a73a5b
   RNCAsyncStorage: 56a3355a10b5d660c48c6e37325ac85ebfd09885
-  RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNDateTimePicker: 8a51a2216c307769e69ef827293d59549ab1ca23
   RNDeviceInfo: 3266783bcb6aa4b0c785d6080a407f8a5fc68326
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
