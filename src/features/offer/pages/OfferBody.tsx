@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
@@ -10,8 +10,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
-import { ReportOfferModalWrapper } from 'features/offer/components/ReportOfferModalWrapper'
-import { ReportSteps, useReportOffer } from 'features/offer/components/useReportOffer'
+import { ReportOfferModal } from 'features/offer/components/ReportOfferModal'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
@@ -21,7 +20,6 @@ import { QueryKeys } from 'libs/queryKeys'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Hero } from 'ui/components/hero/Hero'
-import { useModalNavigation } from 'ui/components/modals/useModalNavigation'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Flag } from 'ui/svg/icons/Flag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -41,25 +39,11 @@ export const OfferBody: FunctionComponent<{
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  const { reportStep, setReportStep } = useReportOffer()
-
-  const hideReportModal = () => setReportStep(ReportSteps.NOT_VISIBLE)
-
-  const isReportDescriptionVisible = reportStep === ReportSteps.REPORT_OFFER_DESCRIPTION
-  const showReportDescription = () => setReportStep(ReportSteps.REPORT_OFFER_DESCRIPTION)
-
-  const isReportReasonVisible = reportStep === ReportSteps.REPORT_OFFER_REASON
-  const showReportReason = () => setReportStep(ReportSteps.REPORT_OFFER_REASON)
-
-  const isReportOtherReasonVisible = reportStep === ReportSteps.REPORT_OFFER_OTHER_REASON
-  const showReportOtherReason = () => setReportStep(ReportSteps.REPORT_OFFER_OTHER_REASON)
+  const [isReportOfferModalVisible, setIsReportOfferModalVisible] = useState(false)
+  const showReportDescription = () => setIsReportOfferModalVisible(true)
+  const dismissModal = () => setIsReportOfferModalVisible(false)
 
   useTrackOfferSeenDuration(offerId)
-
-  const navigateToReportReason = useModalNavigation(hideReportModal, showReportReason)
-  const goBackToReportDescription = useModalNavigation(hideReportModal, showReportDescription)
-  const navigateToReportOtherReason = useModalNavigation(hideReportModal, showReportOtherReason)
-  const goBackToReportReason = useModalNavigation(hideReportModal, showReportReason)
 
   const { data } = useQuery<UserReportedOffersResponse>(
     QueryKeys.REPORTED_OFFERS,
@@ -174,17 +158,10 @@ export const OfferBody: FunctionComponent<{
         </SectionBody>
       </SectionWithDivider>
 
-      {/* TODO(anoukhello) use one modal for the entire report process (see bookoffer process)*/}
-      <ReportOfferModalWrapper
-        isReportDescriptionVisible={isReportDescriptionVisible}
-        hideReportModal={hideReportModal}
-        navigateToReportReason={navigateToReportReason}
-        isReportReasonVisible={isReportReasonVisible}
-        goBackToReportDescription={goBackToReportDescription}
-        navigateToReportOtherReason={navigateToReportOtherReason}
+      <ReportOfferModal
+        isVisible={isReportOfferModalVisible}
+        dismissModal={dismissModal}
         offerId={offerId}
-        isReportOtherReasonVisible={isReportOtherReasonVisible}
-        goBackToReportReason={goBackToReportReason}
       />
     </Container>
   )
