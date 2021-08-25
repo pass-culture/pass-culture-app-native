@@ -2,7 +2,6 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { ScrollView } from 'react-native'
 
-import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { HomeBodyPlaceholder, HomeHeader } from 'features/home/components'
 import { HomeBody } from 'features/home/components/HomeBody'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
@@ -20,7 +19,6 @@ export const Home: FunctionComponent = function () {
   )
 
   useInitialScreenConfig()
-  useListenDeepLinksEffect()
 
   if (showSkeleton) {
     return (
