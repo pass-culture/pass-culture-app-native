@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { env } from 'libs/environment'
+// import { env } from 'libs/environment'
 import { Helmet } from 'libs/react-helmet/Helmet'
 
 import { author, description } from '../../package.json'
@@ -19,7 +19,7 @@ export const AppWebHead = () => {
       <meta charSet="utf-8" />
       <title>{description}</title>
       <meta name="author" content={author.name} />
-      {env.ENV !== 'production' && <meta name="robots" content="noindex" />}
+      {/* TODO: uncomment after tests // env.ENV !== 'production' && <meta name="robots" content="noindex" /> */}
     </Helmet>
   )
 }
