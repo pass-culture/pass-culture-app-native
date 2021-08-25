@@ -54,6 +54,7 @@ export type Action =
   | { type: 'LOCATION_EVERYWHERE' }
   | { type: 'LOCATION_PLACE'; payload: SuggestedPlace }
   | { type: 'SET_QUERY'; payload: string }
+  | { type: 'SET_VENUE_ID'; payload: SearchState['venueId'] }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -138,6 +139,11 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return {
         ...state,
         query: action.payload,
+      }
+    case 'SET_VENUE_ID':
+      return {
+        ...state,
+        venueId: action.payload,
       }
     default:
       return state
