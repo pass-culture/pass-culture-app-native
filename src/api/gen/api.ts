@@ -243,7 +243,8 @@ export enum BookingCancellationReasons {
     OFFERER = 'OFFERER',
     BENEFICIARY = 'BENEFICIARY',
     EXPIRED = 'EXPIRED',
-    FRAUD = 'FRAUD'
+    FRAUD = 'FRAUD',
+    REFUSEDBYINSTITUTE = 'REFUSED_BY_INSTITUTE'
 }/**
  * 
  * @export
@@ -1708,7 +1709,8 @@ export enum UserRole {
     ADMIN = 'ADMIN',
     BENEFICIARY = 'BENEFICIARY',
     PRO = 'PRO',
-    JOUVE = 'JOUVE'
+    JOUVE = 'JOUVE',
+    UNDERAGEBENEFICIARY = 'UNDERAGE_BENEFICIARY'
 }/**
  * 
  * @export
@@ -1754,6 +1756,36 @@ export interface ValidatePhoneNumberRequest {
 }/**
  * 
  * @export
+ * @interface VenueContactModel
+ */
+export interface VenueContactModel {
+    /**
+     * 
+     * @type {string}
+     * @memberof VenueContactModel
+     */
+    email?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VenueContactModel
+     */
+    phoneNumber?: string;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof VenueContactModel
+     */
+    socialMedias?: { [key: string]: string; };
+    /**
+     * 
+     * @type {string}
+     * @memberof VenueContactModel
+     */
+    website?: string;
+}/**
+ * 
+ * @export
  * @interface VenueResponse
  */
 export interface VenueResponse {
@@ -1765,10 +1797,28 @@ export interface VenueResponse {
     address?: string | null;
     /**
      * 
+     * @type {boolean}
+     * @memberof VenueResponse
+     */
+    audioDisabilityCompliant?: boolean | null;
+    /**
+     * 
      * @type {string}
      * @memberof VenueResponse
      */
     city?: string | null;
+    /**
+     * 
+     * @type {VenueContactModel}
+     * @memberof VenueResponse
+     */
+    contact?: VenueContactModel | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof VenueResponse
+     */
+    description?: string | null;
     /**
      * 
      * @type {number}
@@ -1801,6 +1851,18 @@ export interface VenueResponse {
     longitude?: number | null;
     /**
      * 
+     * @type {boolean}
+     * @memberof VenueResponse
+     */
+    mentalDisabilityCompliant?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VenueResponse
+     */
+    motorDisabilityCompliant?: boolean | null;
+    /**
+     * 
      * @type {string}
      * @memberof VenueResponse
      */
@@ -1823,6 +1885,12 @@ export interface VenueResponse {
      * @memberof VenueResponse
      */
     venueTypeCode?: VenueTypeCode | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VenueResponse
+     */
+    visualDisabilityCompliant?: boolean | null;
     /**
      * 
      * @type {string}
