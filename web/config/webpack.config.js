@@ -574,6 +574,12 @@ module.exports = function (webpackEnv) {
       new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
       new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
         DESCRIPTION: appPackageJson.description,
+        AUTHOR: appPackageJson.author.name,
+        TITLE: appPackageJson.author.name,
+        TWITTER_SITE: appPackageJson.author.twitter,
+        // TODO: uncomment below on WebApp v2 public release
+        // META_NO_INDEX: env.raw.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
+        META_NO_INDEX: `<meta name="robots" content="noindex" />`,
       }),
       // This gives some necessary context to module not found errors, such as
       // the requesting resource.
