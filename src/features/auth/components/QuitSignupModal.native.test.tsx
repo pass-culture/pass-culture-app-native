@@ -47,29 +47,6 @@ describe('QuitSignupModal', () => {
     expect(navigateToHome).toBeCalled()
   })
 
-  it.each([
-    [
-      'formal',
-      true,
-      "Voulez-vous abandonner l'inscription ?",
-      'Les informations que vous avez renseignées ne seront pas enregistrées.',
-    ],
-    [
-      'informal',
-      false,
-      "Veux-tu abandonner l'inscription ?",
-      'Les informations que tu as renseignées ne seront pas enregistrées.',
-    ],
-  ])(
-    'should display %s title and description if isRedactor is %s',
-    (_type, isRedactor, title, description) => {
-      const { getByText } = renderQuitSignupModal(true, isRedactor)
-
-      expect(getByText(title)).toBeTruthy()
-      expect(getByText(description)).toBeTruthy()
-    }
-  )
-
   describe('QuitSignupModal - Analytics', () => {
     it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
       const { getByText } = renderQuitSignupModal(true)
@@ -83,12 +60,11 @@ describe('QuitSignupModal', () => {
   })
 })
 
-function renderQuitSignupModal(visible: boolean, isRedactor = false) {
+function renderQuitSignupModal(visible: boolean) {
   const props = {
     visible: visible,
     resume: resumeMock,
     signupStep: SignupSteps.Birthday,
-    isRedactor: isRedactor,
   }
   return render(<QuitSignupModal {...props} />)
 }

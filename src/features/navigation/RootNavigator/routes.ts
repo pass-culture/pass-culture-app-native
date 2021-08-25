@@ -10,10 +10,6 @@ import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPas
 import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
 import { IdCheckUnavailable } from 'features/auth/IdcheckUnavailable'
 import { Login } from 'features/auth/login/Login'
-import { AcceptRedactorCgu } from 'features/auth/projectRedactorSignup/AcceptRedactorCgu'
-import { RedactorSignupConfirmationEmailSent } from 'features/auth/projectRedactorSignup/RedactorSignupConfirmationEmailSent'
-import { SetRedactorEmail } from 'features/auth/projectRedactorSignup/SetRedactorEmail'
-import { SetRedactorPassword } from 'features/auth/projectRedactorSignup/SetRedactorPassword'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
@@ -73,7 +69,6 @@ export const initialRouteName = 'TabNavigator'
 export const routes: Array<Route> = [
   { name: 'ABTestingPOC', component: ABTestingPOC, path: 'abtesting' },
   { name: 'AcceptCgu', component: AcceptCgu, hoc: withAsyncErrorBoundary, path: 'cgu' },
-  { name: 'AcceptRedactorCgu', component: AcceptRedactorCgu, path: 'accept-redactor-cgu' },
   { name: 'AccountCreated', component: AccountCreated, path: 'account-created' },
   {
     name: 'AfterSignupEmailValidationBuffer',
@@ -189,17 +184,10 @@ export const routes: Array<Route> = [
   { name: 'SetBirthday', component: SetBirthday, path: 'setbirthday' },
   { name: 'SetEmail', component: SetEmail, path: DeeplinkPath.SET_EMAIL },
   { name: 'SetPassword', component: SetPassword, path: 'setpassword' },
-  { name: 'SetRedactorEmail', component: SetRedactorEmail, path: 'setredactoremail' },
-  { name: 'SetRedactorPassword', component: SetRedactorPassword, path: 'setredactorpassword' },
   {
     name: 'SignupConfirmationEmailSent',
     component: SignupConfirmationEmailSent,
     path: 'signup-confirmation-email-sent',
-  },
-  {
-    name: 'RedactorSignupConfirmationEmailSent',
-    component: RedactorSignupConfirmationEmailSent,
-    path: 'redactor-signup-confirmation-email-sent',
   },
   {
     name: 'SignupConfirmationExpiredLink',

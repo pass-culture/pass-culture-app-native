@@ -313,12 +313,6 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('PhoneValidationTooManyAttempts')}
           />
         </Row>
-        <Row>
-          <NavigationButton
-            title={`Inscription rédacteur de projet`}
-            onPress={() => navigation.navigate('SetRedactorEmail')}
-          />
-        </Row>
         <Row half>
           <NavigationButton
             title={`Offre inexistante`}
