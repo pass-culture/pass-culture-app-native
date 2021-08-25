@@ -95,6 +95,7 @@ const TextPlaceholder = ({ width, height }: { width: number; height?: number }) 
   <SkeletonTile height={height ?? getSpacing(3)} width={width} borderRadius={2} />
 )
 
+// eslint-disable-next-line no-restricted-properties
 const businessWidth = Dimensions.get('window').width - 2 * MARGIN_DP
 const businessHeight = PixelRatio.roundToNearestPixel(businessWidth * RATIO_BUSINESS)
 const BusinessModulePlaceholder = () => (

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Dimensions } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
 import { v1 as uuidv1 } from 'uuid'
 
@@ -9,19 +9,15 @@ interface Props {
   width?: number | string
 }
 
-const defaultProps = { width: Dimensions.get('screen').width + getSpacing(1) }
-
-const NotMemoizedHeaderBackground: React.FC<Props> = (props): JSX.Element => {
+const NotMemoizedHeaderBackground: React.FC<Props> = (props) => {
+  const defaultWidth = useWindowDimensions().width + getSpacing(1)
+  const width = props.width || defaultWidth
   const LINEAR_GRADIENT_1_ID = uuidv1()
   const LINEAR_GRADIENT_2_ID = uuidv1()
   const PATH_ID = uuidv1()
   const MASK_ID = uuidv1()
   return (
-    <Svg
-      preserveAspectRatio="none"
-      width={props.width}
-      height={getSpacing(73.5)}
-      viewBox={`0 0 375 352`}>
+    <Svg preserveAspectRatio="none" width={width} height={getSpacing(73.5)} viewBox={`0 0 375 352`}>
       <Defs>
         <LinearGradient
           id={LINEAR_GRADIENT_1_ID}
@@ -52,7 +48,5 @@ const NotMemoizedHeaderBackground: React.FC<Props> = (props): JSX.Element => {
     </Svg>
   )
 }
-
-NotMemoizedHeaderBackground.defaultProps = defaultProps
 
 export const HeaderBackground = React.memo(NotMemoizedHeaderBackground)

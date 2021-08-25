@@ -30,5 +30,6 @@ export const Title = styled(Typo.ButtonText)({
 })
 
 export function getTitleWidth(excludedRowWidth: number) {
+  // eslint-disable-next-line no-restricted-properties
   return Dimensions.get('screen').width - excludedRowWidth - getSpacing(12)
 }

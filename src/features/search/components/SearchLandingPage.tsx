@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Dimensions, ScrollView, ViewStyle } from 'react-native'
+import { ScrollView, ViewStyle } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
@@ -14,9 +15,8 @@ import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-const { width } = Dimensions.get('window')
-
 export const SearchLandingPage: React.FC = () => {
+  const windowWidth = useWindowDimensions().width
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useStagedSearch()
   const [selectedCategory] = searchState.offerCategories
@@ -32,7 +32,7 @@ export const SearchLandingPage: React.FC = () => {
           <BicolorListItem title={label} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
 
-        <Separator />
+        <Separator windowWidth={windowWidth} />
 
         <TouchableOpacity onPress={() => navigate('LocationFilter')}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
@@ -40,7 +40,7 @@ export const SearchLandingPage: React.FC = () => {
 
         <Spacer.Flex flex={2} />
       </ScrollView>
-      <SearchButtonContainer>
+      <SearchButtonContainer windowWidth={windowWidth}>
         <SearchButton />
         <Spacer.BottomScreen />
       </SearchButtonContainer>
@@ -53,18 +53,18 @@ const contentContainerStyle: ViewStyle = {
   flexGrow: 1,
   marginHorizontal: getSpacing(6),
 }
-const Separator = styled.View({
+const Separator = styled.View<{ windowWidth: number }>((props) => ({
   height: 2,
-  width: width - getSpacing(2 * 6),
+  width: props.windowWidth - getSpacing(2 * 6),
   backgroundColor: ColorsEnum.GREY_LIGHT,
   marginVertical: getSpacing(8),
-})
-const SearchButtonContainer = styled.View({
+}))
+const SearchButtonContainer = styled.View<{ windowWidth: number }>((props) => ({
   alignSelf: 'center',
   position: 'absolute',
   bottom: TAB_BAR_COMP_HEIGHT + getSpacing(6),
-  width: width - getSpacing(2 * 6),
-})
+  width: props.windowWidth - getSpacing(2 * 6),
+}))
 
 const TouchableOpacity = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,

@@ -68,8 +68,9 @@ exports[`Search component should render correctly 1`] = `
       }
     >
       <View
-        inputHeight="tall"
-        isFocus={false}
+        borderColor="#c7c7cc"
+        height="tall"
+        maxWidth={400}
         style={
           Array [
             Object {
@@ -81,7 +82,7 @@ exports[`Search component should render correctly 1`] = `
               "borderWidth": 1,
               "flexDirection": "row",
               "height": 48,
-              "maxWidth": 675,
+              "maxWidth": 400,
               "paddingBottom": 4,
               "paddingLeft": 16,
               "paddingRight": 16,
@@ -283,6 +284,7 @@ exports[`Search component should render correctly 1`] = `
             },
           ]
         }
+        windowWidth={750}
       />
       <View
         accessible={true}
@@ -408,6 +410,7 @@ exports[`Search component should render correctly 1`] = `
         },
       ]
     }
+    windowWidth={750}
   >
     <View
       accessibilityLabel="Rechercher"

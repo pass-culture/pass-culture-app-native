@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useRef } from 'react'
-import { Dimensions, LayoutChangeEvent, ScrollView } from 'react-native'
+import { LayoutChangeEvent, ScrollView } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
@@ -11,9 +12,8 @@ import Section from 'features/search/sections'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
-const { height } = Dimensions.get('window')
-
 const useScrollToEndOnTimeOrDateActivation = () => {
+  const windowHeight = useWindowDimensions().height
   const { searchState } = useStagedSearch()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const shouldScrollRef = useRef<boolean>(false)
@@ -29,7 +29,7 @@ const useScrollToEndOnTimeOrDateActivation = () => {
   const scrollToEnd = (event: LayoutChangeEvent) => {
     const { y } = event.nativeEvent.layout
     if (scrollViewRef.current !== null && shouldScrollRef.current) {
-      scrollViewRef.current.scrollTo({ y: y - (4 * height) / 5 })
+      scrollViewRef.current.scrollTo({ y: y - (4 * windowHeight) / 5 })
       shouldScrollRef.current = false
     }
   }
@@ -38,6 +38,7 @@ const useScrollToEndOnTimeOrDateActivation = () => {
 }
 
 export const SearchFilter: React.FC = () => {
+  const windowWidth = useWindowDimensions().width
   const { searchState } = useStagedSearch()
   const { data: profile } = useUserProfileInfo()
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
@@ -52,7 +53,7 @@ export const SearchFilter: React.FC = () => {
           {/* Localisation */}
           <Section.Location />
           <Spacer.Column numberOfSpaces={6} />
-          <Separator />
+          <Separator windowWidth={windowWidth} />
 
           {/* Rayon */}
           {searchState.locationType !== LocationType.EVERYWHERE && (
@@ -60,50 +61,50 @@ export const SearchFilter: React.FC = () => {
               <Spacer.Column numberOfSpaces={6} />
               <Section.Radius />
               <Spacer.Column numberOfSpaces={6} />
-              <Separator />
+              <Separator windowWidth={windowWidth} />
             </React.Fragment>
           )}
 
           {/* Catégories */}
           <Section.Category />
           <Spacer.Column numberOfSpaces={2} />
-          <Separator />
+          <Separator windowWidth={windowWidth} />
 
           {/* Type d'offre */}
           <Section.OfferType />
           <Spacer.Column numberOfSpaces={2} />
-          <Separator />
+          <Separator windowWidth={windowWidth} />
           <Spacer.Column numberOfSpaces={6} />
 
           {/* Prix */}
           <Section.Price />
-          <Separator marginVertical={getSpacing(6)} />
+          <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
 
           {/* Uniquement les offres gratuites */}
           <Section.FreeOffer />
-          <Separator marginVertical={getSpacing(6)} />
+          <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
 
           {/* Uniquement les offres duo */}
           {!!profile?.isBeneficiary && (
             <React.Fragment>
               <Section.DuoOffer />
-              <Separator marginVertical={getSpacing(6)} />
+              <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
             </React.Fragment>
           )}
 
           {/* Uniquement les nouveautés */}
           <Section.NewOffer />
-          <Separator marginVertical={getSpacing(6)} />
+          <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
 
           {/* Date */}
           <Section.Date />
-          <Separator marginVertical={getSpacing(6)} />
+          <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
 
           {/* Date de l'offre */}
           {!!searchState.date && (
             <React.Fragment>
               <Section.OfferDate />
-              <Separator marginVertical={getSpacing(6)} />
+              <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
               <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
             </React.Fragment>
           )}
@@ -114,7 +115,7 @@ export const SearchFilter: React.FC = () => {
           {/*Créneau horaire */}
           {!!searchState.timeRange && (
             <React.Fragment>
-              <Separator marginVertical={getSpacing(6)} />
+              <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
               <Section.TimeSlot />
               <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
             </React.Fragment>
@@ -134,14 +135,13 @@ export const SearchFilter: React.FC = () => {
   )
 }
 
-const { width } = Dimensions.get('window')
 const StyledScrollView = styled(ScrollView)({ flex: 1 })
-const Separator = styled.View<{ marginVertical?: number }>(({ marginVertical = 0 }) => ({
-  width: width - getSpacing(2 * 6),
+const Separator = styled.View<{ marginVertical?: number; windowWidth: number }>((props) => ({
+  width: props.windowWidth - getSpacing(2 * 6),
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
   alignSelf: 'center',
-  marginVertical: marginVertical,
+  marginVertical: props.marginVertical || 0,
 }))
 const ShowResultsContainer = styled.View({
   width: '100%',

@@ -126,6 +126,7 @@ interface TitleProps {
 }
 
 const Title = styled(Typo.ButtonText)<TitleProps>(({ textColor, textSize }) => ({
+  // eslint-disable-next-line no-restricted-properties
   maxWidth: Dimensions.get('screen').width - getSpacing(25),
   color: textColor,
   fontSize: textSize,

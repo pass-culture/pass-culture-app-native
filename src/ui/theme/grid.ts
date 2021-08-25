@@ -23,6 +23,7 @@ export const RATIO_BUSINESS = 1 / 3
 export const RATIO_HOME_IMAGE = 2 / 3
 export const RATIO_EXCLU = 5 / 6
 
+// eslint-disable-next-line no-restricted-properties
 export const dimensions = Dimensions.get('window')
 
 export enum Breakpoints {

@@ -3310,7 +3310,8 @@ cette offre ?
                                       }
                                     />
                                     <View
-                                      isFocus={false}
+                                      borderColor="#c7c7cc"
+                                      maxWidth={480}
                                       style={
                                         Array [
                                           Object {
@@ -3322,7 +3323,7 @@ cette offre ?
                                             "borderWidth": 1,
                                             "flexDirection": "row",
                                             "height": 94,
-                                            "maxWidth": 675,
+                                            "maxWidth": 480,
                                             "paddingBottom": 8,
                                             "paddingLeft": 12,
                                             "paddingRight": 12,
@@ -7088,7 +7089,8 @@ cette offre ?
                                       }
                                     />
                                     <View
-                                      isFocus={false}
+                                      borderColor="#c7c7cc"
+                                      maxWidth={480}
                                       style={
                                         Array [
                                           Object {
@@ -7100,7 +7102,7 @@ cette offre ?
                                             "borderWidth": 1,
                                             "flexDirection": "row",
                                             "height": 94,
-                                            "maxWidth": 675,
+                                            "maxWidth": 480,
                                             "paddingBottom": 8,
                                             "paddingLeft": 12,
                                             "paddingRight": 12,

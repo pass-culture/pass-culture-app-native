@@ -75,6 +75,7 @@ export const BusinessModule = (businessPane: BusinessPane) => {
   )
 }
 
+// eslint-disable-next-line no-restricted-properties
 const imageWidth = Dimensions.get('window').width - 2 * MARGIN_DP
 const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_BUSINESS)
 

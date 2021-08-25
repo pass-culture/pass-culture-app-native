@@ -109,6 +109,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         },
       ]
     }
+    width={750}
   >
     <View
       height={32}
@@ -179,6 +180,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         },
       ]
     }
+    width={750}
   >
     <View
       height={32}
@@ -249,6 +251,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         },
       ]
     }
+    width={750}
   >
     <View
       height={32}
@@ -334,6 +337,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         },
       ]
     }
+    width={750}
   >
     <View
       fill="#626262"

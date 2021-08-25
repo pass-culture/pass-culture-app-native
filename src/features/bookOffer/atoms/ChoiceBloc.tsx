@@ -10,6 +10,7 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 const LINE_THICKNESS = 1
 const CHOICE_BLOCS_BY_LINE = 3
 const buttonWidth =
+  // eslint-disable-next-line no-restricted-properties
   (Dimensions.get('window').width - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * getSpacing(2)) /
   CHOICE_BLOCS_BY_LINE
 
