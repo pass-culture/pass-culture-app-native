@@ -48,6 +48,7 @@ import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { Maintenance } from 'features/maintenance/Maintenance'
+import { PageNotFound } from 'features/navigation/PageNotFound'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
@@ -71,6 +72,7 @@ import { Route } from './types'
 export const initialRouteName = 'TabNavigator'
 
 export const routes: Array<Route> = [
+  { name: 'PageNotFound', component: PageNotFound, path: '*' },
   { name: 'ABTestingPOC', component: ABTestingPOC, path: 'abtesting' },
   { name: 'AcceptCgu', component: AcceptCgu, hoc: withAsyncErrorBoundary, path: 'cgu' },
   { name: 'AcceptRedactorCgu', component: AcceptRedactorCgu, path: 'accept-redactor-cgu' },

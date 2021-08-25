@@ -95,6 +95,7 @@ export type RootStackParamList = {
   FirstTutorial: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   ForceUpdate: undefined
+  PageNotFound: undefined
   Venue: { id: number }
 } & IdCheckRootStackParamList
 
