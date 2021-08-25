@@ -7,7 +7,8 @@ import React, {
   useState,
   memo,
 } from 'react'
-import { Animated, Dimensions, TouchableOpacity, View, ViewProps, ViewStyle } from 'react-native'
+import { useWindowDimensions } from 'react-native'
+import { Animated, TouchableOpacity, View, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -42,6 +43,7 @@ export type SnackBarProps = {
 const _SnackBar = (props: SnackBarProps) => {
   const Icon = props.icon
   const animationDuration = props.animationDuration || 500
+  const windowWidth = useWindowDimensions().width
 
   const containerRef: RefType = useRef(null)
   const progressBarContainerRef: RefType = useRef(null)
@@ -51,7 +53,7 @@ const _SnackBar = (props: SnackBarProps) => {
   function animateProgressBarWidth() {
     props.timeout &&
       Animated.timing(progressBarWidth, {
-        toValue: Dimensions.get('screen').width,
+        toValue: windowWidth,
         duration: props.timeout,
         useNativeDriver: false,
       }).start()
@@ -117,7 +119,7 @@ const _SnackBar = (props: SnackBarProps) => {
         <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
           {!!Icon && <Icon testID="snackbar-icon" size={32} color={props.color} />}
           <Spacer.Flex flex={1}>
-            <Text testID="snackbar-message" color={props.color}>
+            <Text windowWidth={windowWidth} testID="snackbar-message" color={props.color}>
               {props.message}
             </Text>
           </Spacer.Flex>
@@ -166,11 +168,11 @@ const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>
   })
 )
 
-const Text = styled(Typo.Body)<{ color: string }>(({ color }) => ({
-  color,
+const Text = styled(Typo.Body)<{ color: string; windowWidth: number }>((props) => ({
+  color: props.color,
   marginLeft: getSpacing(3),
   flexGrow: 0,
-  maxWidth: Dimensions.get('window').width - getSpacing(20),
+  maxWidth: props.windowWidth - getSpacing(20),
   flexWrap: 'wrap',
 }))
 

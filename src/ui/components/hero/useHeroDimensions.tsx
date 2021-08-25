@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Dimensions } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 
 import { blurImageHeight } from 'ui/components/hero/HeroHeader'
 import { getSpacing } from 'ui/theme'
@@ -9,13 +9,12 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 const RATIO_LANDSCAPE = 3 / 2
 const RATIO_PORTRAIT = 2 / 3
 
-const fullWidth = Dimensions.get('window').width - 2 * MARGIN_DP
-
 export const heroBackgroundHeight = blurImageHeight
 export const heroMarginTop = MARGIN_DP + getSpacing(0.5)
 
 export const useHeroDimensions = (landscape: boolean) => {
   const { top } = useCustomSafeInsets()
+  const fullWidth = useWindowDimensions().width - 2 * MARGIN_DP
 
   return useMemo(() => {
     if (landscape) {

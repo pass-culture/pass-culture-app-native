@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { Dimensions } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -17,8 +17,6 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
 
 import { formatDate } from './CancellationDetails'
-
-const { width } = Dimensions.get('window')
 
 const ExpirationDate: React.FC<{
   autoActivateDigitalBookings: boolean | undefined
@@ -105,22 +103,25 @@ const Item: React.FC<{
   Icon: React.FC<IconInterface>
   message: JSX.Element | string
   subtext?: string
-}> = ({ Icon, message, subtext = '' }) => (
-  <Row>
-    <Icon color={ColorsEnum.GREY_DARK} />
-    <Spacer.Row numberOfSpaces={2} />
-    {typeof message === 'string' ? <Typo.Caption>{message}</Typo.Caption> : message}
-    <Spacer.Row numberOfSpaces={2} />
-    <Typo.Caption color={ColorsEnum.GREY_DARK}>{subtext}</Typo.Caption>
-  </Row>
-)
+}> = ({ Icon, message, subtext = '' }) => {
+  const { width } = useWindowDimensions()
+  return (
+    <Row width={width}>
+      <Icon color={ColorsEnum.GREY_DARK} />
+      <Spacer.Row numberOfSpaces={2} />
+      {typeof message === 'string' ? <Typo.Caption>{message}</Typo.Caption> : message}
+      <Spacer.Row numberOfSpaces={2} />
+      <Typo.Caption color={ColorsEnum.GREY_DARK}>{subtext}</Typo.Caption>
+    </Row>
+  )
+}
 
-const Row = styled.View({
+const Row = styled.View<{ width: number }>((props) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  width: width - getSpacing(4 * 6),
+  width: props.width - getSpacing(24),
   paddingVertical: getSpacing(0.5),
-})
+}))
 const StyledAddress = styled(Typo.Body)({
   textTransform: 'capitalize',
   alignItems: 'center',

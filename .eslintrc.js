@@ -67,6 +67,15 @@ module.exports = {
         message: 'Use test/utils instead',
       },
     ],
+    'no-restricted-properties': [
+      2,
+      {
+        object: 'Dimensions',
+        property: 'get',
+        message:
+          'Please use the hook `useWindowDimensions()` from `react-native` instead for dynamic resizing.',
+      },
+    ],
     strict: ['error', 'global'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'prettier/prettier': 'error',

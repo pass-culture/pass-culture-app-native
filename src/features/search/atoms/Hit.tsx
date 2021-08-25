@@ -83,6 +83,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
   )
 }
 
+// eslint-disable-next-line no-restricted-properties
 const { width } = Dimensions.get('window')
 const imageWidth = getSpacing(16)
 

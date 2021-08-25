@@ -4,7 +4,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, useState, useMemo, memo } from 'react'
-import { Dimensions } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import { MaskedTextInput } from 'react-native-mask-text'
 import styled from 'styled-components/native'
 
@@ -37,8 +37,6 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const CODE_INPUT_LENGTH = 6
 
-const screenWidth = Dimensions.get('window').width
-
 export interface SetPhoneValidationCodeModalProps {
   visible: boolean
   dismissModal: () => void
@@ -54,6 +52,7 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 >
 
 export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodeProps) => {
+  const { width: windowWidth } = useWindowDimensions()
   const { data: settings } = useAppSettings()
   const { phoneNumber, countryCode } = route.params
   const { navigate, canGoBack, goBack } = useNavigation<UseNavigationType>()
@@ -238,7 +237,7 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
           <HelpRow>
             <Typo.Body>{t`Tu n'as pas reçu le sms ?`}</Typo.Body>
             {/* force button to wrap on small screen, otherwise timer will "unwrap" when timer is under 10 seconds */}
-            {screenWidth <= 320 ? <Break /> : null}
+            {windowWidth <= 320 ? <Break /> : null}
             <ButtonTertiary
               title={getRetryButtonTitle()}
               testId={'Réessayer'}

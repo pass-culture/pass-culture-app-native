@@ -19,6 +19,7 @@ const DEFAULT_MAX = 100
 const DEFAULT_STEP = 1
 const DEFAULT_VALUES = [DEFAULT_MIN, DEFAULT_MAX]
 
+// eslint-disable-next-line no-restricted-properties
 const { width } = Dimensions.get('window')
 
 export const Slider: React.FC<Props> = (props) => {

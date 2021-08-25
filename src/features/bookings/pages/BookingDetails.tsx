@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
+import { useWindowDimensions } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -13,7 +14,6 @@ import { BookingDetailsTicketContent } from 'features/bookings/components/Bookin
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { contentHeight } from 'features/bookings/components/ThreeShapesTicket.constants'
 import { BookingProperties, getBookingProperties } from 'features/bookings/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
@@ -22,7 +22,7 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
-import { HeroHeader } from 'ui/components/hero/HeroHeader'
+import { blurImageHeight, HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroBackgroundHeight, heroMarginTop } from 'ui/components/hero/useHeroDimensions'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
@@ -45,6 +45,7 @@ const getOfferRules = (
 const scrollIndicatorInsets = { right: 1 }
 
 export function BookingDetails() {
+  const windowHeight = useWindowDimensions().height - blurImageHeight
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const booking = useOngoingOrEndedBooking(params.id)
@@ -105,7 +106,7 @@ export function BookingDetails() {
         scrollEventThrottle={20}
         scrollIndicatorInsets={scrollIndicatorInsets}
         onContentSizeChange={(_w: number, h: number) => {
-          if (h <= contentHeight) {
+          if (h <= windowHeight) {
             logConsultWholeBooking()
           }
         }}
