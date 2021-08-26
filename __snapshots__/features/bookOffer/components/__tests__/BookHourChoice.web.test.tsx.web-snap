@@ -25,13 +25,11 @@ Object {
           aria-disabled="true"
           class="css-view-1dbjc4n"
           data-testid="HourChoice148411"
-          disabled=""
           style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+          tabindex="-1"
         >
           <div
-            aria-disabled="true"
             class="css-view-1dbjc4n"
-            disabled=""
             style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; padding-right: 13px; padding-left: 13px;"
           >
             <div
@@ -61,13 +59,12 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(199, 199, 204); border-top-left-radius: 0.5px; border-top-right-radius: 0.5px; border-bottom-right-radius: 0.5px; border-bottom-left-radius: 0.5px; height: 1px; position: absolute; transform: rotate(-13.842302982032358deg); width: 346.6666666666667px;"
+              style="background-color: rgb(199, 199, 204); border-top-left-radius: 0.5px; border-top-right-radius: 0.5px; border-bottom-right-radius: 0.5px; border-bottom-left-radius: 0.5px; height: 1px; position: absolute; transform: rotate(-101.76828893202065deg); width: 5.333333333333332px;"
             />
           </div>
         </div>
         <div
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="HourChoice148409"
           style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
           tabindex="0"
@@ -127,13 +124,11 @@ Object {
         aria-disabled="true"
         class="css-view-1dbjc4n"
         data-testid="HourChoice148411"
-        disabled=""
         style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+        tabindex="-1"
       >
         <div
-          aria-disabled="true"
           class="css-view-1dbjc4n"
-          disabled=""
           style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; padding-right: 13px; padding-left: 13px;"
         >
           <div
@@ -163,13 +158,12 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(199, 199, 204); border-top-left-radius: 0.5px; border-top-right-radius: 0.5px; border-bottom-right-radius: 0.5px; border-bottom-left-radius: 0.5px; height: 1px; position: absolute; transform: rotate(-13.842302982032358deg); width: 346.6666666666667px;"
+            style="background-color: rgb(199, 199, 204); border-top-left-radius: 0.5px; border-top-right-radius: 0.5px; border-bottom-right-radius: 0.5px; border-bottom-left-radius: 0.5px; height: 1px; position: absolute; transform: rotate(-101.76828893202065deg); width: 5.333333333333332px;"
           />
         </div>
       </div>
       <div
         class="css-view-1dbjc4n"
-        data-focusable="true"
         data-testid="HourChoice148409"
         style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
         tabindex="0"
@@ -280,7 +274,6 @@ Object {
       />
       <div
         class="css-view-1dbjc4n"
-        data-focusable="true"
         style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
         tabindex="0"
       >
@@ -309,7 +302,6 @@ Object {
     />
     <div
       class="css-view-1dbjc4n"
-      data-focusable="true"
       style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
       tabindex="0"
     >

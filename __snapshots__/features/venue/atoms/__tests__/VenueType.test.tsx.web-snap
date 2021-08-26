@@ -39,7 +39,6 @@ exports[`VenueType should render correctly 1`] = `
       <div
         className="css-text-901oao"
         dir="auto"
-        onClick={[Function]}
       >
         undefined-SVG-Mock
       </div>
@@ -49,7 +48,6 @@ exports[`VenueType should render correctly 1`] = `
     className="css-text-901oao"
     data-testid="caption-undefined"
     dir="auto"
-    onClick={[Function]}
     style={
       Object {
         "color": "rgba(21,21,21,1.00)",

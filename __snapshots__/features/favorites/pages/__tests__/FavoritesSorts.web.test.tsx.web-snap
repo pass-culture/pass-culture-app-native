@@ -43,7 +43,6 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="RECENTLY_ADDED"
             style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -80,7 +79,6 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="ASCENDING_PRICE"
             style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -107,7 +105,6 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="AROUND_ME"
             style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -157,7 +154,6 @@ Object {
             <div
               aria-label="Revenir en arrière"
               class="css-view-1dbjc4n"
-              data-focusable="true"
               data-testid="Revenir en arrière"
               style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
@@ -176,7 +172,7 @@ Object {
             </div>
           </div>
           <div
-            class="css-text-901oao css-textOneLine-bfa6kz"
+            class="css-text-901oao css-textOneLine-vcwn7f"
             dir="auto"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
@@ -199,13 +195,12 @@ Object {
         <div
           aria-label="Valider"
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="Valider"
           style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
           tabindex="0"
         >
           <div
-            class="css-text-901oao css-textOneLine-bfa6kz"
+            class="css-text-901oao css-textOneLine-vcwn7f"
             dir="auto"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
           >
@@ -254,7 +249,6 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="RECENTLY_ADDED"
           style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="0"
@@ -291,7 +285,6 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="ASCENDING_PRICE"
           style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="0"
@@ -318,7 +311,6 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="AROUND_ME"
           style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="0"
@@ -368,7 +360,6 @@ Object {
           <div
             aria-label="Revenir en arrière"
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="Revenir en arrière"
             style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -387,7 +378,7 @@ Object {
           </div>
         </div>
         <div
-          class="css-text-901oao css-textOneLine-bfa6kz"
+          class="css-text-901oao css-textOneLine-vcwn7f"
           dir="auto"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
@@ -410,13 +401,12 @@ Object {
       <div
         aria-label="Valider"
         class="css-view-1dbjc4n"
-        data-focusable="true"
         data-testid="Valider"
         style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
         tabindex="0"
       >
         <div
-          class="css-text-901oao css-textOneLine-bfa6kz"
+          class="css-text-901oao css-textOneLine-vcwn7f"
           dir="auto"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
         >

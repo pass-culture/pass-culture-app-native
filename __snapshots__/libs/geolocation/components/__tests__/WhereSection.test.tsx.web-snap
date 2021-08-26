@@ -13,7 +13,6 @@ Array [
   <div
     className="css-text-901oao"
     dir="auto"
-    onClick={[Function]}
     style={
       Object {
         "color": "rgba(21,21,21,1.00)",
@@ -35,7 +34,6 @@ Array [
   />,
   <div
     className="css-view-1dbjc4n"
-    data-focusable={true}
     data-testid="VenueBannerComponent"
     onClick={[Function]}
     onContextMenu={[Function]}
@@ -70,7 +68,6 @@ Array [
     <div
       className="css-text-901oao"
       dir="auto"
-      onClick={[Function]}
       style={
         Object {
           "color": "rgba(21,21,21,1.00)",
@@ -97,7 +94,6 @@ Array [
       <div
         className="css-text-901oao"
         dir="auto"
-        onClick={[Function]}
       >
         undefined-SVG-Mock
       </div>
@@ -114,7 +110,6 @@ Array [
   <div
     className="css-text-901oao"
     dir="auto"
-    onClick={[Function]}
     style={
       Object {
         "color": "rgba(21,21,21,1.00)",
@@ -137,7 +132,6 @@ Array [
   <div
     className="css-text-901oao"
     dir="auto"
-    onClick={[Function]}
     style={
       Object {
         "color": "rgba(21,21,21,1.00)",
@@ -189,7 +183,6 @@ Array [
     <div
       aria-label="Voir l'itinéraire"
       className="css-view-1dbjc4n"
-      data-focusable={true}
       data-testid="Voir l'itinéraire"
       onClick={[Function]}
       onContextMenu={[Function]}
@@ -248,15 +241,13 @@ Array [
         <div
           className="css-text-901oao"
           dir="auto"
-          onClick={[Function]}
         >
           undefined-SVG-Mock
         </div>
       </div>
       <div
-        className="css-text-901oao css-textOneLine-bfa6kz"
+        className="css-text-901oao css-textOneLine-vcwn7f"
         dir="auto"
-        onClick={[Function]}
         style={
           Object {
             "color": "rgba(21,21,21,1.00)",

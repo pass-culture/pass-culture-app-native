@@ -5,9 +5,9 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -121,11 +121,11 @@
+@@ -120,11 +120,11 @@
+            className=\\"css-text-901oao css-textMultiLine-cens5h\\"
             dir=\\"auto\\"
-            onClick={[Function handleClick]}
             style={
               Object {
                 \\"WebkitLineClamp\\": 2,
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
                 \\"lineHeight\\": \\"20px\\",
               }
             }
-@@ -147,10 +147,21 @@
+@@ -146,10 +146,20 @@
                 \\"msFlexPositive\\": 1,
                 \\"msFlexPreferredSize\\": \\"0px\\",
               }
@@ -30,7 +30,6 @@ exports[`Categories component should match diff snapshot when new category is se
 +           <div
 +             className=\\"css-text-901oao\\"
 +             dir=\\"auto\\"
-+             onClick={[Function handleClick]}
 +           >
 +             undefined-SVG-Mock
 +           </div>
@@ -38,11 +37,11 @@ exports[`Categories component should match diff snapshot when new category is se
         </div>
         <div
           className=\\"css-view-1dbjc4n\\"
-          data-focusable={true}
           data-testid=\\"CINEMA\\"
-@@ -217,11 +228,11 @@
+          onClick={[Function onClick]}
+@@ -213,11 +223,11 @@
+            className=\\"css-text-901oao css-textMultiLine-cens5h\\"
             dir=\\"auto\\"
-            onClick={[Function handleClick]}
             style={
               Object {
                 \\"WebkitLineClamp\\": 2,
@@ -53,7 +52,7 @@ exports[`Categories component should match diff snapshot when new category is se
                 \\"lineHeight\\": \\"20px\\",
               }
             }
-@@ -243,21 +254,10 @@
+@@ -239,20 +249,10 @@
                 \\"msFlexPositive\\": 1,
                 \\"msFlexPreferredSize\\": \\"0px\\",
               }
@@ -65,7 +64,6 @@ exports[`Categories component should match diff snapshot when new category is se
 -           <div
 -             className=\\"css-text-901oao\\"
 -             dir=\\"auto\\"
--             onClick={[Function handleClick]}
 -           >
 -             undefined-SVG-Mock
 -           </div>
@@ -73,8 +71,8 @@ exports[`Categories component should match diff snapshot when new category is se
         </div>
         <div
           className=\\"css-view-1dbjc4n\\"
-          data-focusable={true}
-          data-testid=\\"VISITE\\""
+          data-testid=\\"VISITE\\"
+          onClick={[Function onClick]}"
 `;
 
 exports[`Categories component should render correctly 1`] = `
@@ -82,7 +80,9 @@ Array [
   <div
     className="css-view-1dbjc4n"
     onScroll={[Function]}
+    onTouchEnd={[Function]}
     onTouchMove={[Function]}
+    onTouchStart={[Function]}
     onWheel={[Function]}
     style={
       Object {
@@ -136,7 +136,6 @@ Array [
       />
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="ALL"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -183,7 +182,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -199,7 +197,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -235,7 +232,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -243,7 +239,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="CINEMA"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -290,7 +285,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -306,7 +300,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -339,7 +332,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="VISITE"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -386,7 +378,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -402,7 +393,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -435,7 +425,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="MUSIQUE"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -482,7 +471,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -498,7 +486,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -531,7 +518,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="SPECTACLE"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -578,7 +564,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -594,7 +579,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -627,7 +611,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="LECON"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -674,7 +657,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -690,7 +672,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -723,7 +704,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="LIVRE"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -770,7 +750,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -786,7 +765,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -819,7 +797,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="FILM"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -866,7 +843,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -882,7 +858,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -915,7 +890,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="PRESSE"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -962,7 +936,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -978,7 +951,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -1011,7 +983,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="JEUX_VIDEO"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1058,7 +1029,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -1074,7 +1044,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -1107,7 +1076,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="CONFERENCE"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1154,7 +1122,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -1170,7 +1137,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -1203,7 +1169,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="INSTRUMENT"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1250,7 +1215,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -1266,7 +1230,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -1299,7 +1262,6 @@ Array [
       </div>
       <div
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="MATERIEL_ART_CREA"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1346,7 +1308,6 @@ Array [
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
           >
             undefined-SVG-Mock
           </div>
@@ -1362,7 +1323,6 @@ Array [
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "WebkitLineClamp": 2,
@@ -1477,7 +1437,6 @@ Array [
         <div
           aria-label="Revenir en arrière"
           className="css-view-1dbjc4n"
-          data-focusable={true}
           data-testid="Revenir en arrière"
           onClick={[Function]}
           onContextMenu={[Function]}
@@ -1507,7 +1466,6 @@ Array [
             <div
               className="css-text-901oao"
               dir="auto"
-              onClick={[Function]}
             >
               icon-back-SVG-Mock
             </div>
@@ -1515,9 +1473,8 @@ Array [
         </div>
       </div>
       <div
-        className="css-text-901oao css-textOneLine-bfa6kz"
+        className="css-text-901oao css-textOneLine-vcwn7f"
         dir="auto"
-        onClick={[Function]}
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",

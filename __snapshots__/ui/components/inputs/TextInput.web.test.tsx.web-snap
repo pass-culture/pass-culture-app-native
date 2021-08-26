@@ -14,7 +14,6 @@ Object {
           autocomplete="on"
           autocorrect="on"
           class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
-          data-focusable="true"
           dir="auto"
           placeholder="placeholder"
           spellcheck="true"
@@ -35,7 +34,6 @@ Object {
         autocomplete="on"
         autocorrect="on"
         class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
-        data-focusable="true"
         dir="auto"
         placeholder="placeholder"
         spellcheck="true"
@@ -104,7 +102,7 @@ exports[`<TextInput /> should render correctly when in error 1`] = `
 - First value
 + Second value
 
-@@ -43,11 +43,11 @@
+@@ -41,11 +41,11 @@
       </div>
     </body>,
     \\"container\\": <div>

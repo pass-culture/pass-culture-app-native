@@ -8,6 +8,7 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
+        id="animatedComponent"
         style="background-color: rgba(255, 255, 255, 0); position: absolute; top: 0px; width: 100%;"
       >
         <div
@@ -29,7 +30,6 @@ Object {
           <div
             aria-label="Revenir en arrière"
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="Revenir en arrière"
             style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -37,6 +37,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
+              id="animatedComponent"
               style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
             >
               <div
@@ -46,6 +47,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="initial-icon-container"
+                  id="animatedComponent"
                   style="opacity: 1; position: absolute;"
                 >
                   <div
@@ -63,6 +65,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="final-icon-container"
+                  id="animatedComponent"
                   style="opacity: 0; position: absolute;"
                 >
                   <div
@@ -94,9 +97,10 @@ Object {
             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           />
           <div
-            class="css-text-901oao css-textOneLine-bfa6kz"
+            class="css-text-901oao css-textOneLine-vcwn7f"
             data-testid="offerHeaderName"
             dir="auto"
+            id="animatedComponent"
             style="flex-shrink: 1; opacity: 0; text-align: center;"
           >
             <span
@@ -113,7 +117,6 @@ Object {
           <div
             aria-label="Partager"
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="Partager"
             style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -121,6 +124,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
+              id="animatedComponent"
               style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
             >
               <div
@@ -130,6 +134,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="initial-icon-container"
+                  id="animatedComponent"
                   style="opacity: 1; position: absolute;"
                 >
                   <div
@@ -147,6 +152,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="final-icon-container"
+                  id="animatedComponent"
                   style="opacity: 0; position: absolute;"
                 >
                   <div
@@ -171,7 +177,6 @@ Object {
           <div
             aria-label="Mettre en favoris"
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="Mettre en favoris"
             style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -179,6 +184,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
+              id="animatedComponent"
               style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; transform: scale(1); width: 40px;"
             >
               <div
@@ -188,6 +194,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="initial-icon-container"
+                  id="animatedComponent"
                   style="opacity: 1; position: absolute;"
                 >
                   <div
@@ -205,6 +212,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="final-icon-container"
+                  id="animatedComponent"
                   style="opacity: 0; position: absolute;"
                 >
                   <div
@@ -242,17 +250,19 @@ Object {
       <div
         aria-modal="true"
         class="css-view-1dbjc4n"
+        id="animatedComponent"
         style="background-color: rgba(0, 0, 0, 0); bottom: 0px; display: none; left: 0px; position: fixed; right: 0px; top: 0px; z-index: 9999;"
       >
         <div
           class="css-view-1dbjc4n"
-          data-focusable="true"
+          id="animatedComponent"
           style="background-color: rgba(0, 0, 0, 0.5); bottom: 0px; height: 100%; left: 0px; opacity: 0; position: fixed; right: 0px; top: 0px; width: 100%;"
           tabindex="0"
         />
         <div
           class="css-view-1dbjc4n r-pointerEvents-12vffkv"
           data-testid="modal"
+          id="animatedComponent"
           style="background-color: rgb(255, 255, 255); border-top-left-radius: 20px; border-top-right-radius: 20px; bottom: 0px; flex: 1; justify-content: center; margin: auto 0px 0px 0px; padding: 4px 4px 4px 4px; position: absolute; transform: translateY(0px); width: 100%;"
         >
           <div
@@ -262,7 +272,6 @@ Object {
           >
             <div
               class="css-view-1dbjc4n"
-              data-focusable="true"
               style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 16px; border-top-right-radius: 16px; cursor: pointer; flex-direction: column; justify-content: flex-start; max-height: 90%; padding: 20px 20px 20px 20px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
               tabindex="0"
             >
@@ -272,7 +281,6 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-focusable="true"
                   data-testid="leftIconButton"
                   style="align-items: flex-start; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; margin-left: -4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
                   tabindex="0"
@@ -286,7 +294,6 @@ Object {
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  data-focusable="true"
                   data-testid="rightIconButton"
                   style="align-items: flex-end; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; margin-right: -4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
                   tabindex="0"
@@ -323,13 +330,12 @@ Object {
                 <div
                   aria-label="S'inscrire"
                   class="css-view-1dbjc4n"
-                  data-focusable="true"
                   data-testid="S'inscrire"
                   style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
                   tabindex="0"
                 >
                   <div
-                    class="css-text-901oao css-textOneLine-bfa6kz"
+                    class="css-text-901oao css-textOneLine-vcwn7f"
                     dir="auto"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
                   >
@@ -343,13 +349,12 @@ Object {
                 <div
                   aria-label="Se connecter"
                   class="css-view-1dbjc4n"
-                  data-focusable="true"
                   data-testid="Se connecter"
                   style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
                   tabindex="0"
                 >
                   <div
-                    class="css-text-901oao css-textOneLine-bfa6kz"
+                    class="css-text-901oao css-textOneLine-vcwn7f"
                     dir="auto"
                     style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
                   >
@@ -366,6 +371,7 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
+      id="animatedComponent"
       style="background-color: rgba(255, 255, 255, 0); position: absolute; top: 0px; width: 100%;"
     >
       <div
@@ -387,7 +393,6 @@ Object {
         <div
           aria-label="Revenir en arrière"
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="Revenir en arrière"
           style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="0"
@@ -395,6 +400,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="headerIconRoundContainer"
+            id="animatedComponent"
             style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
           >
             <div
@@ -404,6 +410,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="initial-icon-container"
+                id="animatedComponent"
                 style="opacity: 1; position: absolute;"
               >
                 <div
@@ -421,6 +428,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="final-icon-container"
+                id="animatedComponent"
                 style="opacity: 0; position: absolute;"
               >
                 <div
@@ -452,9 +460,10 @@ Object {
           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         />
         <div
-          class="css-text-901oao css-textOneLine-bfa6kz"
+          class="css-text-901oao css-textOneLine-vcwn7f"
           data-testid="offerHeaderName"
           dir="auto"
+          id="animatedComponent"
           style="flex-shrink: 1; opacity: 0; text-align: center;"
         >
           <span
@@ -471,7 +480,6 @@ Object {
         <div
           aria-label="Partager"
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="Partager"
           style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="0"
@@ -479,6 +487,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="headerIconRoundContainer"
+            id="animatedComponent"
             style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
           >
             <div
@@ -488,6 +497,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="initial-icon-container"
+                id="animatedComponent"
                 style="opacity: 1; position: absolute;"
               >
                 <div
@@ -505,6 +515,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="final-icon-container"
+                id="animatedComponent"
                 style="opacity: 0; position: absolute;"
               >
                 <div
@@ -529,7 +540,6 @@ Object {
         <div
           aria-label="Mettre en favoris"
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="Mettre en favoris"
           style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="0"
@@ -537,6 +547,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="headerIconRoundContainer"
+            id="animatedComponent"
             style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; transform: scale(1); width: 40px;"
           >
             <div
@@ -546,6 +557,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="initial-icon-container"
+                id="animatedComponent"
                 style="opacity: 1; position: absolute;"
               >
                 <div
@@ -563,6 +575,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="final-icon-container"
+                id="animatedComponent"
                 style="opacity: 0; position: absolute;"
               >
                 <div

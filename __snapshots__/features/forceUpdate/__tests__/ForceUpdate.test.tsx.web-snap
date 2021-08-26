@@ -41,7 +41,6 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       <div
         className="css-text-901oao"
         dir="auto"
-        onClick={[Function]}
       >
         undefined-SVG-Mock
       </div>
@@ -108,7 +107,6 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         <div
           className="css-text-901oao"
           dir="auto"
-          onClick={[Function]}
         >
           undefined-SVG-Mock
         </div>
@@ -186,7 +184,6 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       <div
         className="css-text-901oao"
         dir="auto"
-        onClick={[Function]}
         style={
           Object {
             "textAlign": "center",
@@ -195,12 +192,11 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       >
         <span
           className="css-text-901oao css-textHasAncestor-16my406"
-          onClick={[Function]}
           style={
             Object {
               "color": "rgba(255,255,255,1.00)",
               "fontFamily": "Montserrat-MediumItalic",
-              "fontSize": "24px",
+              "fontSize": "22px",
               "lineHeight": "28px",
             }
           }
@@ -231,7 +227,6 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
           <div
             className="css-text-901oao"
             dir="auto"
-            onClick={[Function]}
             style={
               Object {
                 "textAlign": "center",
@@ -240,7 +235,6 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
           >
             <span
               className="css-text-901oao css-textHasAncestor-16my406"
-              onClick={[Function]}
               style={
                 Object {
                   "color": "rgba(255,255,255,1.00)",
@@ -278,7 +272,6 @@ Pour des questions de performance et de sécurité merci de télécharger la der
       <div
         aria-label="Télécharger la dernière version"
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="Télécharger la dernière version"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -331,9 +324,8 @@ Pour des questions de performance et de sécurité merci de télécharger la der
         tabIndex="0"
       >
         <div
-          className="css-text-901oao css-textOneLine-bfa6kz"
+          className="css-text-901oao css-textOneLine-vcwn7f"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "color": "rgba(235,0,85,1.00)",

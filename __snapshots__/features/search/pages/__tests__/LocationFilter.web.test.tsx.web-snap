@@ -75,7 +75,6 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="locationChoice-pickPlace"
             style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -127,7 +126,6 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="locationChoice-aroundMe"
             style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -169,7 +167,6 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="locationChoice-everywhere"
             style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -246,7 +243,6 @@ Object {
             <div
               aria-label="Revenir en arrière"
               class="css-view-1dbjc4n"
-              data-focusable="true"
               data-testid="Revenir en arrière"
               style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
@@ -265,7 +261,7 @@ Object {
             </div>
           </div>
           <div
-            class="css-text-901oao css-textOneLine-bfa6kz"
+            class="css-text-901oao css-textOneLine-vcwn7f"
             dir="auto"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
@@ -354,7 +350,6 @@ Object {
         />
         <div
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="locationChoice-pickPlace"
           style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="0"
@@ -406,7 +401,6 @@ Object {
         />
         <div
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="locationChoice-aroundMe"
           style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="0"
@@ -448,7 +442,6 @@ Object {
         />
         <div
           class="css-view-1dbjc4n"
-          data-focusable="true"
           data-testid="locationChoice-everywhere"
           style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="0"
@@ -525,7 +518,6 @@ Object {
           <div
             aria-label="Revenir en arrière"
             class="css-view-1dbjc4n"
-            data-focusable="true"
             data-testid="Revenir en arrière"
             style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -544,7 +536,7 @@ Object {
           </div>
         </div>
         <div
-          class="css-text-901oao css-textOneLine-bfa6kz"
+          class="css-text-901oao css-textOneLine-vcwn7f"
           dir="auto"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
