@@ -6,6 +6,7 @@ import { render } from 'tests/utils'
 
 import { SearchResults } from '../SearchResults'
 
+jest.mock('react-query')
 const mockSearchState = initialSearchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({

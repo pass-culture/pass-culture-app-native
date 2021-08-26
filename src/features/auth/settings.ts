@@ -12,7 +12,5 @@ export function useAppSettings(options = {}) {
     enabled: true,
     ...options,
     staleTime: STALE_TIME_APP_SETTINGS,
-    // TODO(antoinewg): enable app search by default. [WIP]
-    select: (settings) => ({ ...settings, useAppSearch: true }),
   })
 }
