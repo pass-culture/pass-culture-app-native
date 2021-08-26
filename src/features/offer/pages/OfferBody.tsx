@@ -40,8 +40,8 @@ export const OfferBody: FunctionComponent<{
   const scrollViewRef = useRef<ScrollView | null>(null)
 
   const [isReportOfferModalVisible, setIsReportOfferModalVisible] = useState(false)
-  const showReportDescription = () => setIsReportOfferModalVisible(true)
-  const dismissModal = () => setIsReportOfferModalVisible(false)
+  const showReportOfferDescription = () => setIsReportOfferModalVisible(true)
+  const hideReportOfferDescription = () => setIsReportOfferModalVisible(false)
 
   useTrackOfferSeenDuration(offerId)
 
@@ -152,7 +152,7 @@ export const OfferBody: FunctionComponent<{
             title={isOfferAlreadyReported ? t`Tu as déjà signalé cette offre` : t`Signaler l'offre`}
             disabled={!!isOfferAlreadyReported}
             icon={() => <Flag size={24} />}
-            onPress={showReportDescription}
+            onPress={showReportOfferDescription}
             testId={'report-offer-body'}
           />
         </SectionBody>
@@ -160,7 +160,7 @@ export const OfferBody: FunctionComponent<{
 
       <ReportOfferModal
         isVisible={isReportOfferModalVisible}
-        dismissModal={dismissModal}
+        dismissModal={hideReportOfferDescription}
         offerId={offerId}
       />
     </Container>
