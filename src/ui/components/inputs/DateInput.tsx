@@ -52,7 +52,7 @@ export const FULL_DATE_VALIDATOR = {
       date instanceof Date &&
       date.getFullYear() == year &&
       date.getMonth() == month - 1 &&
-      date.getUTCDate() == day
+      date.getDate() == day
     )
   },
 }
@@ -79,7 +79,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   const dayNb = Number(day)
   const monthNb = Number(month)
   const yearNb = Number(year)
-  const date = new Date(Date.UTC(yearNb, monthNb - 1, dayNb))
+  const date = new Date(yearNb, monthNb - 1, dayNb)
 
   const isDayValid = DAY_VALIDATOR.isValid(dayNb) && DAY_VALIDATOR.hasRightLength(day)
   const isMonthValid = MONTH_VALIDATOR.isValid(monthNb) && MONTH_VALIDATOR.hasRightLength(month)

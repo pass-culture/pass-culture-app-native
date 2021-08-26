@@ -1,4 +1,5 @@
 import React from 'react'
+import timezoneMock from 'timezone-mock'
 
 import { fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
@@ -7,7 +8,6 @@ import { DateInput, DateInputRef, FULL_DATE_VALIDATOR } from './DateInput'
 
 describe('DateInput Component', () => {
   it('should render ref and give access to clearFocuses function', () => {
-    // given
     const myRef = React.createRef<DateInputRef>()
     render(<DateInput ref={myRef} />)
 
@@ -229,11 +229,12 @@ describe('DateInput Component', () => {
       [31, 9, 2005],
       [31, 11, 2005],
     ])('should return false when the date is invalid (DD-MM-AAAA) %s-%s-%s', (day, month, year) => {
-      const date = new Date(Date.UTC(year, month - 1, day))
+      const date = new Date(year, month - 1, day)
       expect(FULL_DATE_VALIDATOR.isValid(date, year, month, day)).toBeFalsy()
     })
 
-    it.each([
+    const VALID_DATES = [
+      [1, 2, 2003],
       [29, 2, 2004], // leap year
       [29, 2, 2008], // leap year
       [29, 2, 2012], // leap year
@@ -241,10 +242,23 @@ describe('DateInput Component', () => {
       [31, 5, 2005],
       [31, 7, 2005],
       [31, 8, 2005],
-    ])('should return true when the date is valid (DD-MM-AAAA) %s-%s-%s', (day, month, year) => {
-      const date = new Date(Date.UTC(year, month - 1, day))
-      expect(FULL_DATE_VALIDATOR.isValid(date, year, month, day)).toBeTruthy()
-    })
+    ]
+    it.each(VALID_DATES)(
+      'should return true when the date is valid (DD-MM-AAAA) %s-%s-%s with timezone Brazil/East',
+      (day, month, year) => {
+        timezoneMock.register('Brazil/East')
+        const date = new Date(year, month - 1, day)
+        expect(FULL_DATE_VALIDATOR.isValid(date, year, month, day)).toBeTruthy()
+      }
+    )
+    it.each(VALID_DATES)(
+      'should return true when the date is valid (DD-MM-AAAA) %s-%s-%s with timezone Europe/London',
+      (day, month, year) => {
+        timezoneMock.register('Europe/London')
+        const date = new Date(year, month - 1, day)
+        expect(FULL_DATE_VALIDATOR.isValid(date, year, month, day)).toBeTruthy()
+      }
+    )
   })
 
   describe('with date limits', () => {
