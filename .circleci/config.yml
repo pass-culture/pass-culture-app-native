@@ -561,6 +561,7 @@ workflows:
             branches:
               only: master
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - build-ios-production-hard:
@@ -570,6 +571,7 @@ workflows:
             branches:
               only: master
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - deploy-android-testing-hard:
@@ -589,6 +591,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - upload-sourcemaps:
@@ -599,6 +602,9 @@ workflows:
               only:
                 - master
           requires:
+            - checkout-and-install-deps
+            - test-lint-and-types
+            - test-native
             - deploy-android-testing-hard
             - deploy-ios-testing-hard
       - deploy-android-staging-hard:
@@ -608,6 +614,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - deploy-ios-staging-hard:
@@ -626,6 +633,9 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
+            - test-lint-and-types
+            - test-native
             - deploy-ios-staging-hard
             - deploy-android-staging-hard
       - deploy-soft-staging:
@@ -635,6 +645,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - deploy-android-production-hard:
@@ -644,6 +655,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - deploy-ios-production-hard:
@@ -653,6 +665,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - notify-hard-release:
@@ -662,6 +675,9 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
+            - test-lint-and-types
+            - test-native
             - deploy-ios-production-hard
             - deploy-android-production-hard
       - deploy-soft-production:
@@ -671,6 +687,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - deploy-web-testing:
@@ -680,6 +697,7 @@ workflows:
             branches:
               only: master
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-web
           context:
@@ -694,6 +712,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-web
           context:
@@ -708,6 +727,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-web
           context:
