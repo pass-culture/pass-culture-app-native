@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { View, Dimensions, PixelRatio } from 'react-native'
+import { View, PixelRatio, useWindowDimensions } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -95,16 +95,14 @@ const TextPlaceholder = ({ width, height }: { width: number; height?: number }) 
   <SkeletonTile height={height ?? getSpacing(3)} width={width} borderRadius={2} />
 )
 
-// eslint-disable-next-line no-restricted-properties
-const businessWidth = Dimensions.get('window').width - 2 * MARGIN_DP
-const businessHeight = PixelRatio.roundToNearestPixel(businessWidth * RATIO_BUSINESS)
-const BusinessModulePlaceholder = () => (
-  <SkeletonTile
-    height={businessHeight}
-    width={businessWidth}
-    borderRadius={BorderRadiusEnum.BORDER_RADIUS}
-  />
-)
+const BusinessModulePlaceholder = () => {
+  const windowWidth = useWindowDimensions().width
+  const width = windowWidth - 2 * MARGIN_DP
+  const height = PixelRatio.roundToNearestPixel(width * RATIO_BUSINESS)
+  return (
+    <SkeletonTile height={height} width={width} borderRadius={BorderRadiusEnum.BORDER_RADIUS} />
+  )
+}
 
 const Row = styled.View({ flexDirection: 'row' })
 

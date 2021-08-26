@@ -5,7 +5,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -284,11 +284,11 @@
+@@ -282,11 +282,11 @@
                       },
                     ]
                   }
@@ -18,7 +18,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
             </View>
             <View
               numberOfSpaces={6}
-@@ -400,11 +400,11 @@
+@@ -396,11 +396,11 @@
                       },
                     ]
                   }
@@ -31,7 +31,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -503,22 +503,22 @@
+@@ -499,22 +499,22 @@
               }
             />
             <View
@@ -56,7 +56,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -537,20 +537,20 @@
+@@ -533,20 +533,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -68,7 +68,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                       \\"fontSize\\": 15,
                       \\"lineHeight\\": 20,
                       \\"marginLeft\\": 5,
-                      \\"maxWidth\\": 650,
+                      \\"maxWidth\\": \\"100%\\",
                     },
                   ]
                 }
@@ -146,7 +146,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -224,19 +273,19 @@
+@@ -224,18 +273,18 @@
                     },
                   ]
                 }
@@ -155,7 +155,6 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 -               borderColor=\\"#c7c7cc\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
-                maxWidth={400}
                 style={
                   Array [
                     Object {
@@ -168,7 +167,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -336,19 +385,19 @@
+@@ -334,18 +383,18 @@
                     },
                   ]
                 }
@@ -177,7 +176,6 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 -               borderColor=\\"#c7c7cc\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
-                maxWidth={400}
                 style={
                   Array [
                     Object {
@@ -257,7 +255,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -224,19 +273,19 @@
+@@ -224,18 +273,18 @@
                     },
                   ]
                 }
@@ -266,7 +264,6 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 -               borderColor=\\"#c7c7cc\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
-                maxWidth={400}
                 style={
                   Array [
                     Object {
@@ -279,7 +276,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -336,19 +385,19 @@
+@@ -334,18 +383,18 @@
                     },
                   ]
                 }
@@ -288,7 +285,6 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 -               borderColor=\\"#c7c7cc\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
-                maxWidth={400}
                 style={
                   Array [
                     Object {
@@ -368,7 +364,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -224,19 +273,19 @@
+@@ -224,18 +273,18 @@
                     },
                   ]
                 }
@@ -377,7 +373,6 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 -               borderColor=\\"#c7c7cc\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
-                maxWidth={400}
                 style={
                   Array [
                     Object {
@@ -390,7 +385,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -336,19 +385,19 @@
+@@ -334,18 +383,18 @@
                     },
                   ]
                 }
@@ -399,7 +394,6 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 -               borderColor=\\"#c7c7cc\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
-                maxWidth={400}
                 style={
                   Array [
                     Object {

@@ -54,103 +54,92 @@ exports[`Search component should render correctly 1`] = `
           "height": 48,
           "marginBottom": 24,
           "marginTop": 8,
+          "width": "90%",
         },
       ]
     }
   >
     <View
+      borderColor="#c7c7cc"
+      height="tall"
       style={
         Array [
           Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#c7c7cc",
+            "borderRadius": 22,
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "height": 48,
+            "paddingBottom": 4,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 4,
+            "shadowColor": "#151515",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.15,
+            "shadowRadius": 6,
             "width": "100%",
           },
         ]
       }
     >
       <View
-        borderColor="#c7c7cc"
-        height="tall"
-        maxWidth={400}
+        fill="#151515"
+        height={32}
+        width={32}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={2}
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#c7c7cc",
-              "borderRadius": 22,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "height": 48,
-              "maxWidth": 400,
-              "paddingBottom": 4,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 4,
-              "shadowColor": "#151515",
-              "shadowOffset": Object {
-                "height": 2,
-                "width": 0,
-              },
-              "shadowOpacity": 0.15,
-              "shadowRadius": 6,
-              "width": "100%",
+              "width": 8,
             },
           ]
         }
-      >
-        <View
-          fill="#151515"
-          height={32}
-          width={32}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "width": 8,
-              },
-            ]
-          }
-        />
-        <TextInput
-          allowFontScaling={true}
-          autoCorrect={false}
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          onFocus={[Function]}
-          onSubmitEditing={[Function]}
-          placeholder="Titre, artiste, lieu..."
-          placeholderTextColor="#626262"
-          rejectResponderTermination={true}
-          returnKeyType="search"
-          selectionColor="#626262"
-          style={
-            Array [
-              Object {
-                "color": "#151515",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "height": "100%",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-              },
-            ]
-          }
-          underlineColorAndroid="transparent"
-          value=""
-        />
-      </View>
+      />
+      <TextInput
+        allowFontScaling={true}
+        autoCorrect={false}
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        onSubmitEditing={[Function]}
+        placeholder="Titre, artiste, lieu..."
+        placeholderTextColor="#626262"
+        rejectResponderTermination={true}
+        returnKeyType="search"
+        selectionColor="#626262"
+        style={
+          Array [
+            Object {
+              "color": "#151515",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "height": "100%",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+            },
+          ]
+        }
+        underlineColorAndroid="transparent"
+        value=""
+      />
     </View>
   </View>
   <RCTScrollView

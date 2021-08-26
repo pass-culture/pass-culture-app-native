@@ -202,7 +202,7 @@ Object {
           <div
             class="css-text-901oao css-textOneLine-vcwn7f"
             dir="auto"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
           >
             Valider
           </div>
@@ -408,7 +408,7 @@ Object {
         <div
           class="css-text-901oao css-textOneLine-vcwn7f"
           dir="auto"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
         >
           Valider
         </div>

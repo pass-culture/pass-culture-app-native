@@ -255,7 +255,7 @@ Array [
             "fontSize": "15px",
             "lineHeight": "20px",
             "marginLeft": "5px",
-            "maxWidth": "-100px",
+            "maxWidth": "100%",
           }
         }
       >

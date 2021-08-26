@@ -4,7 +4,6 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
 <View
   borderColor="#c7c7cc"
   height="small"
-  maxWidth={400}
   style={
     Array [
       Object {
@@ -16,7 +15,6 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
         "borderWidth": 1,
         "flexDirection": "row",
         "height": 40,
-        "maxWidth": 400,
         "paddingBottom": 4,
         "paddingLeft": 16,
         "paddingRight": 16,
@@ -68,12 +66,11 @@ exports[`<TextInput /> should render correctly when focused 1`] = `
 - First value
 + Second value
 
-@@ -1,15 +1,15 @@
+@@ -1,14 +1,14 @@
   <View
 -   borderColor=\\"#c7c7cc\\"
 +   borderColor=\\"#eb0055\\"
     height=\\"small\\"
-    maxWidth={400}
     style={
       Array [
         Object {
@@ -93,12 +90,11 @@ exports[`<TextInput /> should render correctly when in error 1`] = `
 - First value
 + Second value
 
-@@ -1,15 +1,15 @@
+@@ -1,14 +1,14 @@
   <View
 -   borderColor=\\"#c7c7cc\\"
 +   borderColor=\\"#b60025\\"
     height=\\"small\\"
-    maxWidth={400}
     style={
       Array [
         Object {
