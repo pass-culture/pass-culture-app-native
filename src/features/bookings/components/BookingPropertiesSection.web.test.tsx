@@ -70,6 +70,7 @@ async function renderBookingProperties(booking: Booking) {
           idCheckAddressAutocompletion: false,
           useAppSearch: true,
           isWebappV2Enabled: false,
+          enableNativeEacIndividual: false,
         }}
       />
     )

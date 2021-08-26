@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { useDepositAmount } from 'features/auth/api'
+import { useAppSettings } from 'features/auth/settings'
 import TutorialOffers from 'ui/animations/tutorial_offers.json'
 import {
   AchievementCardKeyProps,

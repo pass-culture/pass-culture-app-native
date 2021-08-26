@@ -126,6 +126,7 @@ export function requestSettingsSuccess(
     idCheckAddressAutocompletion: false,
     useAppSearch: true,
     isWebappV2Enabled: false,
+    enableNativeEacIndividual: false,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {
