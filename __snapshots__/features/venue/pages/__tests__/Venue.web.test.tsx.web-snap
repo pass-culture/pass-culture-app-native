@@ -456,7 +456,498 @@ Object {
                       </div>
                     </div>
                   </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
                 </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="margin-top: 8px; max-width: 192px;"
+                    >
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Black Widow 2 - VF
+                      </div>
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Dès le 18 août 2021
+                      </div>
+                      <div
+                        class="css-text-901oao"
+                        data-testid="priceIsDuo"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Gratuit
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="margin-top: 8px; max-width: 192px;"
+                    >
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Black Widow 3 - VF
+                      </div>
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Dès le 18 août 2021
+                      </div>
+                      <div
+                        class="css-text-901oao"
+                        data-testid="priceIsDuo"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Gratuit
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="margin-top: 8px; max-width: 192px;"
+                    >
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Black Widow 4 - VF
+                      </div>
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Dès le 18 août 2021
+                      </div>
+                      <div
+                        class="css-text-901oao"
+                        data-testid="priceIsDuo"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Gratuit
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="margin-top: 8px; max-width: 192px;"
+                    >
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Black Widow 5 - VF
+                      </div>
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Dès le 18 août 2021
+                      </div>
+                      <div
+                        class="css-text-901oao"
+                        data-testid="priceIsDuo"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Gratuit
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="margin-top: 8px; max-width: 192px;"
+                    >
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Black Widow 6 - VF
+                      </div>
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Dès le 18 août 2021
+                      </div>
+                      <div
+                        class="css-text-901oao"
+                        data-testid="priceIsDuo"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Gratuit
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="margin-top: 8px; max-width: 192px;"
+                    >
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Black Widow 7 - VF
+                      </div>
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Dès le 18 août 2021
+                      </div>
+                      <div
+                        class="css-text-901oao"
+                        data-testid="priceIsDuo"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Gratuit
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="margin-top: 8px; max-width: 192px;"
+                    >
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Black Widow 8 - VF
+                      </div>
+                      <div
+                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Dès le 18 août 2021
+                      </div>
+                      <div
+                        class="css-text-901oao"
+                        data-testid="priceIsDuo"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Gratuit
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 0px;"
+                />
                 <div
                   class="css-view-1dbjc4n"
                 >
@@ -1336,7 +1827,498 @@ Object {
                     </div>
                   </div>
                 </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 16px;"
+                />
               </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            data-testid="categoryImageCaption"
+                            dir="auto"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="margin-top: 8px; max-width: 192px;"
+                  >
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Black Widow 2 - VF
+                    </div>
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Dès le 18 août 2021
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      data-testid="priceIsDuo"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Gratuit
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 16px;"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            data-testid="categoryImageCaption"
+                            dir="auto"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="margin-top: 8px; max-width: 192px;"
+                  >
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Black Widow 3 - VF
+                    </div>
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Dès le 18 août 2021
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      data-testid="priceIsDuo"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Gratuit
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 16px;"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            data-testid="categoryImageCaption"
+                            dir="auto"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="margin-top: 8px; max-width: 192px;"
+                  >
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Black Widow 4 - VF
+                    </div>
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Dès le 18 août 2021
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      data-testid="priceIsDuo"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Gratuit
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 16px;"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            data-testid="categoryImageCaption"
+                            dir="auto"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="margin-top: 8px; max-width: 192px;"
+                  >
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Black Widow 5 - VF
+                    </div>
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Dès le 18 août 2021
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      data-testid="priceIsDuo"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Gratuit
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 16px;"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            data-testid="categoryImageCaption"
+                            dir="auto"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="margin-top: 8px; max-width: 192px;"
+                  >
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Black Widow 6 - VF
+                    </div>
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Dès le 18 août 2021
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      data-testid="priceIsDuo"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Gratuit
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 16px;"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            data-testid="categoryImageCaption"
+                            dir="auto"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="margin-top: 8px; max-width: 192px;"
+                  >
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Black Widow 7 - VF
+                    </div>
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Dès le 18 août 2021
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      data-testid="priceIsDuo"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Gratuit
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 16px;"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            data-testid="categoryImageCaption"
+                            dir="auto"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="margin-top: 8px; max-width: 192px;"
+                  >
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Black Widow 8 - VF
+                    </div>
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Dès le 18 août 2021
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      data-testid="priceIsDuo"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Gratuit
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 16px;"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 0px;"
+              />
               <div
                 class="css-view-1dbjc4n"
               >

@@ -4,7 +4,7 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 
 export const useVenueOffers = jest
   .fn()
-  .mockReturnValue({ data: { hits: VenueOffersResponseSnap, nbHits: 3 } })
+  .mockReturnValue({ data: { hits: VenueOffersResponseSnap, nbHits: 12 } })
 
 const venueId = venueResponseSnap.id
 
