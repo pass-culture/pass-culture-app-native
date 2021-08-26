@@ -1453,6 +1453,12 @@ export interface SettingsResponse {
      * @type {boolean}
      * @memberof SettingsResponse
      */
+    enableNativeEacIndividual: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
     enableNativeIdCheckVerboseDebugging: boolean;
     /**
      * 
