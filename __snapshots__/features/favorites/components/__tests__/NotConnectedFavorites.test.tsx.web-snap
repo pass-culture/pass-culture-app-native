@@ -253,7 +253,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
               "fontSize": "15px",
               "lineHeight": "20px",
               "marginLeft": "5px",
-              "maxWidth": "-100px",
+              "maxWidth": "100%",
             }
           }
         >
@@ -332,7 +332,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
               "fontSize": "15px",
               "lineHeight": "20px",
               "marginLeft": "5px",
-              "maxWidth": "-100px",
+              "maxWidth": "100%",
             }
           }
         >

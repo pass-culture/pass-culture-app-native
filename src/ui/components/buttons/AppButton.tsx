@@ -1,5 +1,5 @@
 import React, { Fragment, FunctionComponent, memo } from 'react'
-import { Dimensions, GestureResponderEvent } from 'react-native'
+import { GestureResponderEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { testID } from 'tests/utils'
@@ -125,10 +125,9 @@ interface TitleProps {
   textSize?: number
 }
 
-const Title = styled(Typo.ButtonText)<TitleProps>(({ textColor, textSize }) => ({
-  // eslint-disable-next-line no-restricted-properties
-  maxWidth: Dimensions.get('screen').width - getSpacing(25),
-  color: textColor,
-  fontSize: textSize,
+const Title = styled(Typo.ButtonText)<TitleProps>((props) => ({
+  maxWidth: '100%',
+  color: props.textColor,
+  fontSize: props.textSize,
   marginLeft: 5,
 }))

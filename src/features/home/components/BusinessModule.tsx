@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useState } from 'react'
-import { Dimensions, PixelRatio } from 'react-native'
+import { PixelRatio, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
@@ -17,6 +17,9 @@ import { fillUrlEmail, shouldUrlBeFilled } from './BusinessModule.utils'
 
 export const BusinessModule = (businessPane: BusinessPane) => {
   const { title, firstLine, secondLine, leftIcon, image, url } = businessPane
+  const windowWidth = useWindowDimensions().width
+  const imageWidth = windowWidth - 2 * MARGIN_DP
+  const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_BUSINESS)
 
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
@@ -50,7 +53,11 @@ export const BusinessModule = (businessPane: BusinessPane) => {
       <Spacer.Row numberOfSpaces={6} />
       <TouchableHighlight onPress={() => setShouldRedirect(true)}>
         <ImageContainer>
-          <ImageBackground source={{ uri: image }} testID="imageBusiness">
+          <ImageBackground
+            source={{ uri: image }}
+            height={imageHeight}
+            width={imageWidth}
+            testID="imageBusiness">
             <Container>
               <IconContainer>
                 {leftIcon ? <Image source={{ uri: leftIcon }} /> : <IdeaIcon />}
@@ -75,10 +82,6 @@ export const BusinessModule = (businessPane: BusinessPane) => {
   )
 }
 
-// eslint-disable-next-line no-restricted-properties
-const imageWidth = Dimensions.get('window').width - 2 * MARGIN_DP
-const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_BUSINESS)
-
 const Row = styled.View({
   flexDirection: 'row',
 })
@@ -99,12 +102,12 @@ const Image = styled.Image({
   tintColor: ColorsEnum.WHITE,
 })
 
-const ImageBackground = styled.ImageBackground({
-  height: imageHeight,
-  width: imageWidth,
+const ImageBackground = styled.ImageBackground<{ width: number; height: number }>((props) => ({
+  height: props.height,
+  width: props.width,
   justifyContent: 'center',
   maxHeight: LENGTH_S,
-})
+}))
 
 const Container = styled.View({
   flexDirection: 'row',

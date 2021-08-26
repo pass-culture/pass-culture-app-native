@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
-import { Dimensions, PixelRatio } from 'react-native'
+import { PixelRatio, useWindowDimensions } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
@@ -13,6 +13,14 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const windowWidth = useWindowDimensions().width
+  const imageWidth = windowWidth - 2 * MARGIN_DP
+  const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_EXCLU)
+  const imageStyle = {
+    height: imageHeight,
+    borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+    maxHeight: LENGTH_XL,
+  }
 
   const handlePressExclu = useCallback(() => {
     const id = dehumanizeId(offerId)
@@ -43,10 +51,6 @@ export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
   )
 }
 
-// eslint-disable-next-line no-restricted-properties
-const imageWidth = Dimensions.get('window').width - 2 * MARGIN_DP
-const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_EXCLU)
-
 const Row = styled.View({
   flexDirection: 'row',
 })
@@ -60,9 +64,3 @@ const TouchableHighlight = styled.TouchableHighlight({
   borderRadius: BorderRadiusEnum.BORDER_RADIUS,
   maxHeight: LENGTH_XL,
 })
-
-const imageStyle = {
-  height: imageHeight,
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-  maxHeight: LENGTH_XL,
-}

@@ -333,7 +333,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
               "fontSize": "15px",
               "lineHeight": "20px",
               "marginLeft": "5px",
-              "maxWidth": "-100px",
+              "maxWidth": "100%",
             }
           }
         >
