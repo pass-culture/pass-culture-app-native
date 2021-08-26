@@ -6,7 +6,6 @@ exports[`< ButtonWithLinearGradient /> should render disabled 1`] = `
   aria-label="Wording to display"
   className="css-view-1dbjc4n"
   data-testid="Wording to display"
-  disabled={true}
   onClick={[Function]}
   onContextMenu={[Function]}
   onKeyDown={[Function]}
@@ -37,6 +36,7 @@ exports[`< ButtonWithLinearGradient /> should render disabled 1`] = `
       "userSelect": "none",
     }
   }
+  tabIndex="-1"
 >
   <div
     className="css-view-1dbjc4n"
@@ -66,9 +66,8 @@ exports[`< ButtonWithLinearGradient /> should render disabled 1`] = `
     }
   >
     <div
-      className="css-text-901oao css-textOneLine-bfa6kz"
+      className="css-text-901oao css-textOneLine-vcwn7f"
       dir="auto"
-      onClick={[Function]}
       style={
         Object {
           "color": "rgba(255,255,255,1.00)",
@@ -92,7 +91,6 @@ exports[`< ButtonWithLinearGradient /> should render not disabled 1`] = `
 <div
   aria-label="Wording to display"
   className="css-view-1dbjc4n"
-  data-focusable={true}
   data-testid="Wording to display"
   onClick={[Function]}
   onContextMenu={[Function]}
@@ -135,7 +133,6 @@ exports[`< ButtonWithLinearGradient /> should render not disabled 1`] = `
     <div
       className="css-text-901oao"
       dir="auto"
-      onClick={[Function]}
     >
       undefined-SVG-Mock
     </div>
@@ -158,9 +155,8 @@ exports[`< ButtonWithLinearGradient /> should render not disabled 1`] = `
     }
   >
     <div
-      className="css-text-901oao css-textOneLine-bfa6kz"
+      className="css-text-901oao css-textOneLine-vcwn7f"
       dir="auto"
-      onClick={[Function]}
       style={
         Object {
           "color": "rgba(255,255,255,1.00)",

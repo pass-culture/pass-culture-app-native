@@ -8,7 +8,6 @@ Object {
       <div
         aria-label="Testing inline"
         class="css-view-1dbjc4n"
-        data-focusable="true"
         data-testid="Testing inline"
         style="align-items: center; border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 16px; justify-content: center; margin-top: 0px; max-width: 500px; padding: 0px 0px 0px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: auto;"
         tabindex="0"
@@ -25,7 +24,7 @@ Object {
           </div>
         </div>
         <div
-          class="css-text-901oao css-textOneLine-bfa6kz"
+          class="css-text-901oao css-textOneLine-vcwn7f"
           dir="auto"
           style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
         >
@@ -38,7 +37,6 @@ Object {
     <div
       aria-label="Testing inline"
       class="css-view-1dbjc4n"
-      data-focusable="true"
       data-testid="Testing inline"
       style="align-items: center; border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 16px; justify-content: center; margin-top: 0px; max-width: 500px; padding: 0px 0px 0px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: auto;"
       tabindex="0"
@@ -55,7 +53,7 @@ Object {
         </div>
       </div>
       <div
-        class="css-text-901oao css-textOneLine-bfa6kz"
+        class="css-text-901oao css-textOneLine-vcwn7f"
         dir="auto"
         style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
       >

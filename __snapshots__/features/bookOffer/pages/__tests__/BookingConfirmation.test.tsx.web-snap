@@ -41,7 +41,6 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       <div
         className="css-text-901oao"
         dir="auto"
-        onClick={[Function]}
       >
         undefined-SVG-Mock
       </div>
@@ -50,7 +49,9 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
   <div
     className="css-view-1dbjc4n"
     onScroll={[Function]}
+    onTouchEnd={[Function]}
     onTouchMove={[Function]}
+    onTouchStart={[Function]}
     onWheel={[Function]}
     style={
       Object {
@@ -115,7 +116,6 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         <div
           className="css-text-901oao"
           dir="auto"
-          onClick={[Function]}
         >
           undefined-SVG-Mock
         </div>
@@ -131,12 +131,11 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       <div
         className="css-text-901oao"
         dir="auto"
-        onClick={[Function]}
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",
             "fontFamily": "Montserrat-MediumItalic",
-            "fontSize": "24px",
+            "fontSize": "22px",
             "lineHeight": "28px",
             "textAlign": "center",
           }
@@ -155,7 +154,6 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       <div
         className="css-text-901oao"
         dir="auto"
-        onClick={[Function]}
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",
@@ -179,7 +177,6 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       <div
         className="css-text-901oao"
         dir="auto"
-        onClick={[Function]}
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",
@@ -203,7 +200,6 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       <div
         aria-label="Voir ma réservation"
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="Voir ma réservation"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -256,9 +252,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         tabIndex="0"
       >
         <div
-          className="css-text-901oao css-textOneLine-bfa6kz"
+          className="css-text-901oao css-textOneLine-vcwn7f"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "color": "rgba(235,0,85,1.00)",
@@ -284,7 +279,6 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       <div
         aria-label="Retourner à l'accueil"
         className="css-view-1dbjc4n"
-        data-focusable={true}
         data-testid="Retourner à l'accueil"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -337,9 +331,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         tabIndex="0"
       >
         <div
-          className="css-text-901oao css-textOneLine-bfa6kz"
+          className="css-text-901oao css-textOneLine-vcwn7f"
           dir="auto"
-          onClick={[Function]}
           style={
             Object {
               "color": "rgba(255,255,255,1.00)",

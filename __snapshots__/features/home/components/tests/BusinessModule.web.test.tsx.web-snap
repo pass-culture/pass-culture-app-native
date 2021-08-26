@@ -15,7 +15,6 @@ Object {
         />
         <div
           class="css-view-1dbjc4n"
-          data-focusable="true"
           style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
           tabindex="0"
         >
@@ -25,12 +24,12 @@ Object {
           >
             <div
               class="css-view-1dbjc4n"
-              style="height: 325px; justify-content: center; max-height: 144px; width: 976px;"
+              style="height: -16px; justify-content: center; max-height: 144px; width: -48px;"
             >
               <div
                 class="css-view-1dbjc4n"
                 data-testid="imageBusiness"
-                style="bottom: 0px; flex-basis: auto; height: 325px; left: 0px; overflow-x: hidden; overflow-y: hidden; position: absolute; right: 0px; top: 0px; width: 976px; z-index: -1;"
+                style="bottom: 0px; flex-basis: auto; height: -16px; left: 0px; overflow-x: hidden; overflow-y: hidden; position: absolute; right: 0px; top: 0px; width: -48px; z-index: -1;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -119,7 +118,6 @@ Object {
       />
       <div
         class="css-view-1dbjc4n"
-        data-focusable="true"
         style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
         tabindex="0"
       >
@@ -129,12 +127,12 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="height: 325px; justify-content: center; max-height: 144px; width: 976px;"
+            style="height: -16px; justify-content: center; max-height: 144px; width: -48px;"
           >
             <div
               class="css-view-1dbjc4n"
               data-testid="imageBusiness"
-              style="bottom: 0px; flex-basis: auto; height: 325px; left: 0px; overflow-x: hidden; overflow-y: hidden; position: absolute; right: 0px; top: 0px; width: 976px; z-index: -1;"
+              style="bottom: 0px; flex-basis: auto; height: -16px; left: 0px; overflow-x: hidden; overflow-y: hidden; position: absolute; right: 0px; top: 0px; width: -48px; z-index: -1;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -280,7 +278,6 @@ Object {
         />
         <div
           class="css-view-1dbjc4n"
-          data-focusable="true"
           style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
           tabindex="0"
         >
@@ -290,12 +287,12 @@ Object {
           >
             <div
               class="css-view-1dbjc4n"
-              style="height: 325px; justify-content: center; max-height: 144px; width: 976px;"
+              style="height: -16px; justify-content: center; max-height: 144px; width: -48px;"
             >
               <div
                 class="css-view-1dbjc4n"
                 data-testid="imageBusiness"
-                style="bottom: 0px; flex-basis: auto; height: 325px; left: 0px; overflow-x: hidden; overflow-y: hidden; position: absolute; right: 0px; top: 0px; width: 976px; z-index: -1;"
+                style="bottom: 0px; flex-basis: auto; height: -16px; left: 0px; overflow-x: hidden; overflow-y: hidden; position: absolute; right: 0px; top: 0px; width: -48px; z-index: -1;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -406,7 +403,6 @@ Object {
       />
       <div
         class="css-view-1dbjc4n"
-        data-focusable="true"
         style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
         tabindex="0"
       >
@@ -416,12 +412,12 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="height: 325px; justify-content: center; max-height: 144px; width: 976px;"
+            style="height: -16px; justify-content: center; max-height: 144px; width: -48px;"
           >
             <div
               class="css-view-1dbjc4n"
               data-testid="imageBusiness"
-              style="bottom: 0px; flex-basis: auto; height: 325px; left: 0px; overflow-x: hidden; overflow-y: hidden; position: absolute; right: 0px; top: 0px; width: 976px; z-index: -1;"
+              style="bottom: 0px; flex-basis: auto; height: -16px; left: 0px; overflow-x: hidden; overflow-y: hidden; position: absolute; right: 0px; top: 0px; width: -48px; z-index: -1;"
             >
               <div
                 class="css-view-1dbjc4n"
