@@ -10,12 +10,17 @@ import {
 } from 'ui/components/achievements/components/GenericAchievementCard'
 
 export function SecondCard(props: AchievementCardKeyProps) {
+  const { data: settings } = useAppSettings()
   const depositAmount = useDepositAmount()
   const deposit = depositAmount.replace(' ', '')
 
   function onButtonPress() {
     props.swiperRef?.current?.goToNext()
   }
+
+  const text = settings?.enableNativeEacIndividual
+    ? t`dans l’année de tes 15 à 18 ans, obtiens l’aide financière pass Culture d’un montant de 20€ à ${deposit} à dépenser dans l’application.`
+    : t`dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de ${deposit} à dépenser dans l’application.`
 
   return (
     <GenericAchievementCard
@@ -24,7 +29,7 @@ export function SecondCard(props: AchievementCardKeyProps) {
       buttonText={t`Continuer`}
       pauseAnimationOnRenderAtFrame={62}
       subTitle={t`et si tu es...`}
-      text={t`dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de ${deposit} à dépenser dans l’application.`}
+      text={text}
       title={t`Des offres pour tous`}
       swiperRef={props.swiperRef}
       name={props.name}
