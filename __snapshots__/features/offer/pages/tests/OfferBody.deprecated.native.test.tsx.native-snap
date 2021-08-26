@@ -4876,26 +4876,11 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       }
                                     />
                                     <View
-<<<<<<< HEAD
-                                      borderColor="#c7c7cc"
-                                      maxWidth={480}
-=======
->>>>>>> 81b45b74 (:recycle: (pc-10508) replace 3 modals with one)
                                       style={
                                         Array [
                                           Object {
                                             "alignItems": "center",
                                             "flexDirection": "row",
-<<<<<<< HEAD
-                                            "height": 94,
-                                            "maxWidth": 480,
-                                            "paddingBottom": 8,
-                                            "paddingLeft": 12,
-                                            "paddingRight": 12,
-                                            "paddingTop": 8,
-                                            "width": "100%",
-=======
->>>>>>> 81b45b74 (:recycle: (pc-10508) replace 3 modals with one)
                                           },
                                         ]
                                       }
