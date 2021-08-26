@@ -42,7 +42,6 @@ if (__DEV__ && env.SIGNUP_DATE) {
 }
 
 const YOUNGEST_AGE = 16
-
 const MIN_DATE = new Date('1900-01-01T00:00:00Z')
 
 interface State {
@@ -66,9 +65,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const deposit = useDepositAmount()
 
   const now = new Date()
-  const currentYear = now.getUTCFullYear()
-  const maxDate = new Date(now)
-  maxDate.setFullYear(currentYear - YOUNGEST_AGE)
+  const maxYear = now.getFullYear() - YOUNGEST_AGE
+  const maxDate = new Date(maxYear, now.getMonth(), now.getDate())
 
   const {
     visible: informationModalVisible,
