@@ -20,18 +20,19 @@ export const SearchHeader: React.FC = () => {
         <HeaderBackground />
       </HeaderBackgroundWrapper>
       <Spacer.TopScreen />
-      <Container>
+      <SearchBoxContainer>
         <SearchBox />
-      </Container>
+      </SearchBoxContainer>
     </React.Fragment>
   )
 }
 
-const Container = styled.View({
+const SearchBoxContainer = styled.View({
   alignSelf: 'center',
   height: inputHeight,
   marginTop,
   marginBottom,
+  width: '90%',
 })
 
 const HeaderBackgroundWrapper = styled.View<{ height: number }>(({ height }) => ({

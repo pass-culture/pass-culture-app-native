@@ -1,5 +1,4 @@
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsEnum, getShadow, getSpacing, padding } from 'ui/theme'
@@ -10,8 +9,6 @@ type Props = {
   inputHeight?: 'small' | 'tall'
 }
 
-const MAX_WIDTH = getSpacing(100)
-
 const defaultProps: Props = {
   isError: false,
   isFocus: false,
@@ -19,9 +16,6 @@ const defaultProps: Props = {
 }
 
 export const InputContainer: React.FC<Props> = (props) => {
-  const windowWidth = useWindowDimensions().width
-  const maxWidth = Math.min(windowWidth * 0.9, MAX_WIDTH)
-
   let borderColor = ColorsEnum.GREY_MEDIUM
   if (props.isFocus) {
     borderColor = ColorsEnum.PRIMARY
@@ -30,7 +24,7 @@ export const InputContainer: React.FC<Props> = (props) => {
   }
 
   return (
-    <StyledView height={props.inputHeight} maxWidth={maxWidth} borderColor={borderColor}>
+    <StyledView height={props.inputHeight} borderColor={borderColor}>
       {props.children}
     </StyledView>
   )
@@ -40,12 +34,10 @@ InputContainer.defaultProps = defaultProps
 
 const StyledView = styled.View<{
   height: Props['inputHeight']
-  maxWidth: number
   borderColor: ColorsEnum
 }>((props) => ({
   width: '100%',
   height: props.height === 'tall' ? getSpacing(12) : getSpacing(10),
-  maxWidth: props.maxWidth,
   flexDirection: 'row',
   alignItems: 'center',
   ...padding(1, 4),

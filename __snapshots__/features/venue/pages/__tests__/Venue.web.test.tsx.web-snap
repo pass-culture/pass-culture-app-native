@@ -8,6 +8,7 @@ Object {
       <div
         aria-label="Page de détail du lieu"
         class="css-view-1dbjc4n"
+        data-focusable="true"
         data-testid="Page de détail du lieu"
         tabindex="0"
       >
@@ -56,7 +57,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="image-container"
-                style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); height: -32px; max-height: 288px; max-width: 432px; width: -48px;"
+                style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); height: 288px; max-height: 288px; max-width: 432px; width: 976px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -105,7 +106,7 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  class="css-text-901oao css-textOneLine-bfa6kz"
                   dir="auto"
                   style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
                 >
@@ -171,6 +172,7 @@ Object {
               />
               <div
                 class="css-view-1dbjc4n"
+                data-focusable="true"
                 style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
                 tabindex="0"
               >
@@ -264,6 +266,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
+                      data-focusable="true"
                       style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                       tabindex="0"
                     >
@@ -279,7 +282,7 @@ Object {
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              class="css-text-901oao css-textOneLine-bfa6kz"
                               data-testid="categoryImageCaption"
                               dir="auto"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -295,14 +298,14 @@ Object {
                       style="margin-top: 8px; max-width: 192px;"
                     >
                       <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        class="css-text-901oao css-textOneLine-bfa6kz"
                         dir="auto"
                         style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Titane - VF
                       </div>
                       <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        class="css-text-901oao css-textOneLine-bfa6kz"
                         dir="auto"
                         style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
@@ -333,6 +336,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
+                      data-focusable="true"
                       style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                       tabindex="0"
                     >
@@ -348,7 +352,7 @@ Object {
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              class="css-text-901oao css-textOneLine-bfa6kz"
                               data-testid="categoryImageCaption"
                               dir="auto"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -364,14 +368,14 @@ Object {
                       style="margin-top: 8px; max-width: 192px;"
                     >
                       <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        class="css-text-901oao css-textOneLine-bfa6kz"
                         dir="auto"
                         style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Bac Nord - VF
                       </div>
                       <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        class="css-text-901oao css-textOneLine-bfa6kz"
                         dir="auto"
                         style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
@@ -402,6 +406,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
+                      data-focusable="true"
                       style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                       tabindex="0"
                     >
@@ -417,7 +422,7 @@ Object {
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              class="css-text-901oao css-textOneLine-bfa6kz"
                               data-testid="categoryImageCaption"
                               dir="auto"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -433,14 +438,14 @@ Object {
                       style="margin-top: 8px; max-width: 192px;"
                     >
                       <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        class="css-text-901oao css-textOneLine-bfa6kz"
                         dir="auto"
                         style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Black Widow - VF
                       </div>
                       <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        class="css-text-901oao css-textOneLine-bfa6kz"
                         dir="auto"
                         style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
@@ -478,6 +483,7 @@ Object {
                       />
                       <div
                         class="css-view-1dbjc4n"
+                        data-focusable="true"
                         style="align-items: center; cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
                         tabindex="0"
                       >
@@ -491,6 +497,7 @@ Object {
                           />
                           <div
                             class="css-view-1dbjc4n"
+                            data-focusable="true"
                             style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); cursor: pointer; justify-content: center; transition-duration: 0s; transition-property: opacity; user-select: none; width: 64px;"
                             tabindex="0"
                           >
@@ -548,6 +555,7 @@ Object {
               <div
                 aria-label="Voir toutes les offres"
                 class="css-view-1dbjc4n"
+                data-focusable="true"
                 data-testid="Voir toutes les offres"
                 style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; justify-content: center; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
                 tabindex="0"
@@ -567,7 +575,7 @@ Object {
                   style="align-items: center; flex-direction: row; position: absolute;"
                 >
                   <div
-                    class="css-text-901oao css-textOneLine-vcwn7f"
+                    class="css-text-901oao css-textOneLine-bfa6kz"
                     dir="auto"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
                   >
@@ -632,6 +640,7 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
+              data-focusable="true"
               style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
               tabindex="0"
             >
@@ -645,7 +654,6 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionArrow"
-                id="animatedComponent"
                 style="transform: rotateZ(1.5707963267948966rad);"
               >
                 <div
@@ -663,7 +671,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionBody"
-              id="animatedComponent"
               style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
             >
               <div
@@ -718,7 +725,6 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          id="animatedComponent"
           style="background-color: rgba(255, 255, 255, 0); position: absolute; top: 0px; width: 100%;"
         >
           <div
@@ -740,6 +746,7 @@ Object {
             <div
               aria-label="Revenir en arrière"
               class="css-view-1dbjc4n"
+              data-focusable="true"
               data-testid="Revenir en arrière"
               style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
@@ -747,7 +754,6 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="headerIconRoundContainer"
-                id="animatedComponent"
                 style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
               >
                 <div
@@ -757,7 +763,6 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="initial-icon-container"
-                    id="animatedComponent"
                     style="opacity: 1; position: absolute;"
                   >
                     <div
@@ -775,7 +780,6 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="final-icon-container"
-                    id="animatedComponent"
                     style="opacity: 0; position: absolute;"
                   >
                     <div
@@ -798,10 +802,9 @@ Object {
               style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             />
             <div
-              class="css-text-901oao css-textOneLine-vcwn7f"
+              class="css-text-901oao css-textOneLine-bfa6kz"
               data-testid="venueHeaderName"
               dir="auto"
-              id="animatedComponent"
               style="flex-shrink: 1; opacity: 0; text-align: center;"
             >
               <span
@@ -818,6 +821,7 @@ Object {
             <div
               aria-label="Partager"
               class="css-view-1dbjc4n"
+              data-focusable="true"
               data-testid="Partager"
               style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
@@ -825,7 +829,6 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="headerIconRoundContainer"
-                id="animatedComponent"
                 style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
               >
                 <div
@@ -835,7 +838,6 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="initial-icon-container"
-                    id="animatedComponent"
                     style="opacity: 1; position: absolute;"
                   >
                     <div
@@ -853,7 +855,6 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="final-icon-container"
-                    id="animatedComponent"
                     style="opacity: 0; position: absolute;"
                   >
                     <div
@@ -888,6 +889,7 @@ Object {
     <div
       aria-label="Page de détail du lieu"
       class="css-view-1dbjc4n"
+      data-focusable="true"
       data-testid="Page de détail du lieu"
       tabindex="0"
     >
@@ -936,7 +938,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="image-container"
-              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); height: -32px; max-height: 288px; max-width: 432px; width: -48px;"
+              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); height: 288px; max-height: 288px; max-width: 432px; width: 976px;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -985,7 +987,7 @@ Object {
                 </div>
               </div>
               <div
-                class="css-text-901oao css-textOneLine-vcwn7f"
+                class="css-text-901oao css-textOneLine-bfa6kz"
                 dir="auto"
                 style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
               >
@@ -1051,6 +1053,7 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
+              data-focusable="true"
               style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
             >
@@ -1144,6 +1147,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
+                    data-focusable="true"
                     style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                     tabindex="0"
                   >
@@ -1159,7 +1163,7 @@ Object {
                           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                         >
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            class="css-text-901oao css-textOneLine-bfa6kz"
                             data-testid="categoryImageCaption"
                             dir="auto"
                             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -1175,14 +1179,14 @@ Object {
                     style="margin-top: 8px; max-width: 192px;"
                   >
                     <div
-                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      class="css-text-901oao css-textOneLine-bfa6kz"
                       dir="auto"
                       style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                     >
                       Titane - VF
                     </div>
                     <div
-                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      class="css-text-901oao css-textOneLine-bfa6kz"
                       dir="auto"
                       style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                     >
@@ -1213,6 +1217,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
+                    data-focusable="true"
                     style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                     tabindex="0"
                   >
@@ -1228,7 +1233,7 @@ Object {
                           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                         >
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            class="css-text-901oao css-textOneLine-bfa6kz"
                             data-testid="categoryImageCaption"
                             dir="auto"
                             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -1244,14 +1249,14 @@ Object {
                     style="margin-top: 8px; max-width: 192px;"
                   >
                     <div
-                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      class="css-text-901oao css-textOneLine-bfa6kz"
                       dir="auto"
                       style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                     >
                       Bac Nord - VF
                     </div>
                     <div
-                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      class="css-text-901oao css-textOneLine-bfa6kz"
                       dir="auto"
                       style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                     >
@@ -1282,6 +1287,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
+                    data-focusable="true"
                     style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
                     tabindex="0"
                   >
@@ -1297,7 +1303,7 @@ Object {
                           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                         >
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            class="css-text-901oao css-textOneLine-bfa6kz"
                             data-testid="categoryImageCaption"
                             dir="auto"
                             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -1313,14 +1319,14 @@ Object {
                     style="margin-top: 8px; max-width: 192px;"
                   >
                     <div
-                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      class="css-text-901oao css-textOneLine-bfa6kz"
                       dir="auto"
                       style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                     >
                       Black Widow - VF
                     </div>
                     <div
-                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      class="css-text-901oao css-textOneLine-bfa6kz"
                       dir="auto"
                       style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                     >
@@ -1358,6 +1364,7 @@ Object {
                     />
                     <div
                       class="css-view-1dbjc4n"
+                      data-focusable="true"
                       style="align-items: center; cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
                       tabindex="0"
                     >
@@ -1371,6 +1378,7 @@ Object {
                         />
                         <div
                           class="css-view-1dbjc4n"
+                          data-focusable="true"
                           style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); cursor: pointer; justify-content: center; transition-duration: 0s; transition-property: opacity; user-select: none; width: 64px;"
                           tabindex="0"
                         >
@@ -1428,6 +1436,7 @@ Object {
             <div
               aria-label="Voir toutes les offres"
               class="css-view-1dbjc4n"
+              data-focusable="true"
               data-testid="Voir toutes les offres"
               style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; justify-content: center; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
@@ -1447,7 +1456,7 @@ Object {
                 style="align-items: center; flex-direction: row; position: absolute;"
               >
                 <div
-                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  class="css-text-901oao css-textOneLine-bfa6kz"
                   dir="auto"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
                 >
@@ -1512,6 +1521,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
+            data-focusable="true"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
             tabindex="0"
           >
@@ -1525,7 +1535,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionArrow"
-              id="animatedComponent"
               style="transform: rotateZ(1.5707963267948966rad);"
             >
               <div
@@ -1543,7 +1552,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionBody"
-            id="animatedComponent"
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
@@ -1598,7 +1606,6 @@ Object {
       </div>
       <div
         class="css-view-1dbjc4n"
-        id="animatedComponent"
         style="background-color: rgba(255, 255, 255, 0); position: absolute; top: 0px; width: 100%;"
       >
         <div
@@ -1620,6 +1627,7 @@ Object {
           <div
             aria-label="Revenir en arrière"
             class="css-view-1dbjc4n"
+            data-focusable="true"
             data-testid="Revenir en arrière"
             style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -1627,7 +1635,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
-              id="animatedComponent"
               style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
             >
               <div
@@ -1637,7 +1644,6 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="initial-icon-container"
-                  id="animatedComponent"
                   style="opacity: 1; position: absolute;"
                 >
                   <div
@@ -1655,7 +1661,6 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="final-icon-container"
-                  id="animatedComponent"
                   style="opacity: 0; position: absolute;"
                 >
                   <div
@@ -1678,10 +1683,9 @@ Object {
             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           />
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
+            class="css-text-901oao css-textOneLine-bfa6kz"
             data-testid="venueHeaderName"
             dir="auto"
-            id="animatedComponent"
             style="flex-shrink: 1; opacity: 0; text-align: center;"
           >
             <span
@@ -1698,6 +1702,7 @@ Object {
           <div
             aria-label="Partager"
             class="css-view-1dbjc4n"
+            data-focusable="true"
             data-testid="Partager"
             style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
@@ -1705,7 +1710,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
-              id="animatedComponent"
               style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
             >
               <div
@@ -1715,7 +1719,6 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="initial-icon-container"
-                  id="animatedComponent"
                   style="opacity: 1; position: absolute;"
                 >
                   <div
@@ -1733,7 +1736,6 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="final-icon-container"
-                  id="animatedComponent"
                   style="opacity: 0; position: absolute;"
                 >
                   <div

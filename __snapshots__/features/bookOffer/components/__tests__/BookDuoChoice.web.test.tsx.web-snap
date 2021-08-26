@@ -23,6 +23,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
+          data-focusable="true"
           data-testid="DuoChoice1"
           style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
           tabindex="0"
@@ -80,6 +81,7 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
+          data-focusable="true"
           data-testid="DuoChoice2"
           style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
           tabindex="0"
@@ -146,6 +148,7 @@ Object {
     >
       <div
         class="css-view-1dbjc4n"
+        data-focusable="true"
         data-testid="DuoChoice1"
         style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
         tabindex="0"
@@ -203,6 +206,7 @@ Object {
       </div>
       <div
         class="css-view-1dbjc4n"
+        data-focusable="true"
         data-testid="DuoChoice2"
         style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
         tabindex="0"

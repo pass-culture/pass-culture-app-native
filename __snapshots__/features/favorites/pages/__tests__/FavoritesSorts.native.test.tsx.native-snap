@@ -481,7 +481,7 @@ Array [
               "fontSize": 15,
               "lineHeight": 20,
               "marginLeft": 5,
-              "maxWidth": 650,
+              "maxWidth": "100%",
             },
           ]
         }

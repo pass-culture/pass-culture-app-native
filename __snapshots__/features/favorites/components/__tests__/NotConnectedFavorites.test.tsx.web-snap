@@ -41,6 +41,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       <div
         className="css-text-901oao"
         dir="auto"
+        onClick={[Function]}
       >
         undefined-SVG-Mock
       </div>
@@ -77,6 +78,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     <div
       className="css-text-901oao"
       dir="auto"
+      onClick={[Function]}
     >
       undefined-SVG-Mock
     </div>
@@ -106,6 +108,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     <div
       className="css-text-901oao"
       dir="auto"
+      onClick={[Function]}
       style={
         Object {
           "color": "rgba(255,255,255,1.00)",
@@ -137,6 +140,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       <div
         className="css-text-901oao"
         dir="auto"
+        onClick={[Function]}
         style={
           Object {
             "textAlign": "center",
@@ -145,6 +149,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       >
         <span
           className="css-text-901oao css-textHasAncestor-16my406"
+          onClick={[Function]}
           style={
             Object {
               "color": "rgba(255,255,255,1.00)",
@@ -192,6 +197,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       <div
         aria-label="S'inscrire"
         className="css-view-1dbjc4n"
+        data-focusable={true}
         data-testid="S'inscrire"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -244,8 +250,9 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         tabIndex="0"
       >
         <div
-          className="css-text-901oao css-textOneLine-vcwn7f"
+          className="css-text-901oao css-textOneLine-bfa6kz"
           dir="auto"
+          onClick={[Function]}
           style={
             Object {
               "color": "rgba(235,0,85,1.00)",
@@ -253,7 +260,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
               "fontSize": "15px",
               "lineHeight": "20px",
               "marginLeft": "5px",
-              "maxWidth": "-100px",
+              "maxWidth": "100%",
             }
           }
         >
@@ -271,6 +278,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       <div
         aria-label="Se connecter"
         className="css-view-1dbjc4n"
+        data-focusable={true}
         data-testid="Se connecter"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -323,8 +331,9 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         tabIndex="0"
       >
         <div
-          className="css-text-901oao css-textOneLine-vcwn7f"
+          className="css-text-901oao css-textOneLine-bfa6kz"
           dir="auto"
+          onClick={[Function]}
           style={
             Object {
               "color": "rgba(255,255,255,1.00)",
@@ -332,7 +341,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
               "fontSize": "15px",
               "lineHeight": "20px",
               "marginLeft": "5px",
-              "maxWidth": "-100px",
+              "maxWidth": "100%",
             }
           }
         >

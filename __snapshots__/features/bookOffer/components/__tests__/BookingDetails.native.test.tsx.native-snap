@@ -528,7 +528,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
             "fontSize": 15,
             "lineHeight": 20,
             "marginLeft": 5,
-            "maxWidth": 650,
+            "maxWidth": "100%",
           },
         ]
       }

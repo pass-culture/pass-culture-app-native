@@ -48,8 +48,8 @@ Object {
         <div
           aria-disabled="true"
           class="css-view-1dbjc4n"
+          disabled=""
           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
-          tabindex="-1"
         >
           <div
             class="css-view-1dbjc4n"
@@ -132,8 +132,8 @@ Object {
       <div
         aria-disabled="true"
         class="css-view-1dbjc4n"
+        disabled=""
         style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
-        tabindex="-1"
       >
         <div
           class="css-view-1dbjc4n"

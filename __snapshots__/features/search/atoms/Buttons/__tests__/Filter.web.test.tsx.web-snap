@@ -7,6 +7,7 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
+        data-focusable="true"
         data-testid="FilterButton"
         style="cursor: pointer; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
         tabindex="0"
@@ -67,6 +68,7 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
+      data-focusable="true"
       data-testid="FilterButton"
       style="cursor: pointer; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
       tabindex="0"

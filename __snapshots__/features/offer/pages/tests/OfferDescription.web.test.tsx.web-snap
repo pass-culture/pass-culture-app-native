@@ -35,17 +35,15 @@ Object {
                 />
                 <div
                   class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                  id="animatedComponent"
                   style="flex: 1;"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    id="animatedComponent"
                     style="flex: 1;"
                   >
                     <div
                       class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                      style="background-color: rgb(242, 242, 242); min-height: 100%;"
+                      style="background-color: rgb(242, 242, 242); overflow-x: hidden; overflow-y: hidden; flex: 1;"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -112,6 +110,7 @@ Object {
                                 <div
                                   aria-label="Revenir en arrière"
                                   class="css-view-1dbjc4n"
+                                  data-focusable="true"
                                   data-testid="Revenir en arrière"
                                   style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
                                   tabindex="0"
@@ -130,7 +129,7 @@ Object {
                                 </div>
                               </div>
                               <div
-                                class="css-text-901oao css-textOneLine-vcwn7f"
+                                class="css-text-901oao css-textOneLine-bfa6kz"
                                 dir="auto"
                                 style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                               >
@@ -149,25 +148,21 @@ Object {
                         </div>
                         <div
                           class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                          id="animatedComponent"
                         >
                           <div
                             class="css-view-1dbjc4n r-pointerEvents-12vffkv"
                           >
                             <div
                               class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                              id="animatedComponent"
                               style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: 0;"
                             >
                               <div
                                 class="css-view-1dbjc4n"
-                                id="animatedComponent"
                                 style="background-color: rgb(255, 255, 255); border-bottom-color: rgba(216,216,216,1.00); border-bottom-width: 1px; box-shadow: 0px 0px 0px rgba(216,216,216,1.00); flex: 1;"
                               />
                             </div>
                             <div
                               class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                              id="animatedComponent"
                               style="height: 64px;"
                             >
                               <div
@@ -180,14 +175,12 @@ Object {
                               >
                                 <div
                                   class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                                  id="animatedComponent"
                                   style="left: 16px; position: absolute; right: 16px;"
                                 >
                                   <h1
                                     aria-level="1"
-                                    class="css-reset-4rbku5 css-text-901oao css-textOneLine-vcwn7f"
+                                    class="css-reset-4rbku5 css-text-901oao css-textOneLine-bfa6kz"
                                     dir="auto"
-                                    id="animatedComponent"
                                     role="heading"
                                     style="color: rgb(28, 28, 30); font-size: 18px; font-weight: 500;"
                                   >
@@ -243,17 +236,15 @@ Object {
               />
               <div
                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                id="animatedComponent"
                 style="flex: 1;"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style="flex: 1;"
                 >
                   <div
                     class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                    style="background-color: rgb(242, 242, 242); min-height: 100%;"
+                    style="background-color: rgb(242, 242, 242); overflow-x: hidden; overflow-y: hidden; flex: 1;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -320,6 +311,7 @@ Object {
                               <div
                                 aria-label="Revenir en arrière"
                                 class="css-view-1dbjc4n"
+                                data-focusable="true"
                                 data-testid="Revenir en arrière"
                                 style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
                                 tabindex="0"
@@ -338,7 +330,7 @@ Object {
                               </div>
                             </div>
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              class="css-text-901oao css-textOneLine-bfa6kz"
                               dir="auto"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                             >
@@ -357,25 +349,21 @@ Object {
                       </div>
                       <div
                         class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                        id="animatedComponent"
                       >
                         <div
                           class="css-view-1dbjc4n r-pointerEvents-12vffkv"
                         >
                           <div
                             class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                            id="animatedComponent"
                             style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: 0;"
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              id="animatedComponent"
                               style="background-color: rgb(255, 255, 255); border-bottom-color: rgba(216,216,216,1.00); border-bottom-width: 1px; box-shadow: 0px 0px 0px rgba(216,216,216,1.00); flex: 1;"
                             />
                           </div>
                           <div
                             class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                            id="animatedComponent"
                             style="height: 64px;"
                           >
                             <div
@@ -388,14 +376,12 @@ Object {
                             >
                               <div
                                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                                id="animatedComponent"
                                 style="left: 16px; position: absolute; right: 16px;"
                               >
                                 <h1
                                   aria-level="1"
-                                  class="css-reset-4rbku5 css-text-901oao css-textOneLine-vcwn7f"
+                                  class="css-reset-4rbku5 css-text-901oao css-textOneLine-bfa6kz"
                                   dir="auto"
-                                  id="animatedComponent"
                                   role="heading"
                                   style="color: rgb(28, 28, 30); font-size: 18px; font-weight: 500;"
                                 >

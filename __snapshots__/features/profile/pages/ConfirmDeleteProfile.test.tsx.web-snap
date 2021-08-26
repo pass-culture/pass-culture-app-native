@@ -41,6 +41,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       <div
         className="css-text-901oao"
         dir="auto"
+        onClick={[Function]}
       >
         undefined-SVG-Mock
       </div>
@@ -77,6 +78,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
     <div
       className="css-text-901oao"
       dir="auto"
+      onClick={[Function]}
     >
       undefined-SVG-Mock
     </div>
@@ -110,6 +112,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
     <div
       className="css-text-901oao"
       dir="auto"
+      onClick={[Function]}
       style={
         Object {
           "textAlign": "center",
@@ -118,11 +121,12 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
     >
       <span
         className="css-text-901oao css-textHasAncestor-16my406"
+        onClick={[Function]}
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",
             "fontFamily": "Montserrat-MediumItalic",
-            "fontSize": "22px",
+            "fontSize": "24px",
             "lineHeight": "28px",
           }
         }
@@ -141,6 +145,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
     <div
       className="css-text-901oao"
       dir="auto"
+      onClick={[Function]}
       style={
         Object {
           "textAlign": "center",
@@ -149,6 +154,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
     >
       <span
         className="css-text-901oao css-textHasAncestor-16my406"
+        onClick={[Function]}
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",
@@ -214,6 +220,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       <div
         aria-label="Supprimer mon compte"
         className="css-view-1dbjc4n"
+        data-focusable={true}
         data-testid="Supprimer mon compte"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -266,8 +273,9 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         tabIndex="0"
       >
         <div
-          className="css-text-901oao css-textOneLine-vcwn7f"
+          className="css-text-901oao css-textOneLine-bfa6kz"
           dir="auto"
+          onClick={[Function]}
           style={
             Object {
               "color": "rgba(235,0,85,1.00)",
@@ -275,7 +283,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               "fontSize": "15px",
               "lineHeight": "20px",
               "marginLeft": "5px",
-              "maxWidth": "-100px",
+              "maxWidth": "100%",
             }
           }
         >
@@ -293,6 +301,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       <div
         aria-label="Abandonner"
         className="css-view-1dbjc4n"
+        data-focusable={true}
         data-testid="Abandonner"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -345,8 +354,9 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         tabIndex="0"
       >
         <div
-          className="css-text-901oao css-textOneLine-vcwn7f"
+          className="css-text-901oao css-textOneLine-bfa6kz"
           dir="auto"
+          onClick={[Function]}
           style={
             Object {
               "color": "rgba(255,255,255,1.00)",
@@ -354,7 +364,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               "fontSize": "15px",
               "lineHeight": "20px",
               "marginLeft": "5px",
-              "maxWidth": "-100px",
+              "maxWidth": "100%",
             }
           }
         >

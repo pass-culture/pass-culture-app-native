@@ -6,7 +6,6 @@ import {
   TextInputSubmitEditingEventData,
   TouchableOpacity,
 } from 'react-native'
-import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSearch } from 'features/search/pages/SearchWrapper'
@@ -21,9 +20,9 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
   const { searchState } = useSearch()
   if (searchState.showResults)
     return (
-      <ArrowPreviousContainer onPress={onPressArrowBack}>
+      <TouchableOpacity onPress={onPressArrowBack}>
         <ArrowPrevious />
-      </ArrowPreviousContainer>
+      </TouchableOpacity>
     )
   return <MagnifyingGlass />
 }
@@ -67,20 +66,15 @@ export const SearchBox: React.FC = () => {
   }
 
   return (
-    <StyledInput>
-      <SearchInput
-        value={query}
-        onChangeText={setQuery}
-        placeholder={t`Titre, artiste, lieu...`}
-        autoFocus={false}
-        inputHeight="tall"
-        LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
-        RightIcon={() => <RightIcon currentValue={query} onPress={resetSearch} />}
-        onSubmitEditing={onSubmitQuery}
-      />
-    </StyledInput>
+    <SearchInput
+      value={query}
+      onChangeText={setQuery}
+      placeholder={t`Titre, artiste, lieu...`}
+      autoFocus={false}
+      inputHeight="tall"
+      LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
+      RightIcon={() => <RightIcon currentValue={query} onPress={resetSearch} />}
+      onSubmitEditing={onSubmitQuery}
+    />
   )
 }
-
-const StyledInput = styled.View({ width: '100%' })
-const ArrowPreviousContainer = styled.TouchableOpacity({})

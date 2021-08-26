@@ -41,6 +41,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       <div
         className="css-text-901oao"
         dir="auto"
+        onClick={[Function]}
       >
         undefined-SVG-Mock
       </div>
@@ -77,6 +78,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
     <div
       className="css-text-901oao"
       dir="auto"
+      onClick={[Function]}
     >
       undefined-SVG-Mock
     </div>
@@ -110,6 +112,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
     <div
       className="css-text-901oao"
       dir="auto"
+      onClick={[Function]}
       style={
         Object {
           "textAlign": "center",
@@ -118,11 +121,12 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
     >
       <span
         className="css-text-901oao css-textHasAncestor-16my406"
+        onClick={[Function]}
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",
             "fontFamily": "Montserrat-MediumItalic",
-            "fontSize": "22px",
+            "fontSize": "24px",
             "lineHeight": "28px",
           }
         }
@@ -141,6 +145,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
     <div
       className="css-text-901oao"
       dir="auto"
+      onClick={[Function]}
       style={
         Object {
           "textAlign": "center",
@@ -149,6 +154,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
     >
       <span
         className="css-text-901oao css-textHasAncestor-16my406"
+        onClick={[Function]}
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",
@@ -172,6 +178,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
     <div
       className="css-text-901oao"
       dir="auto"
+      onClick={[Function]}
       style={
         Object {
           "textAlign": "center",
@@ -180,6 +187,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
     >
       <span
         className="css-text-901oao css-textHasAncestor-16my406"
+        onClick={[Function]}
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",
@@ -245,6 +253,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       <div
         aria-label="Retourner à l'accueil"
         className="css-view-1dbjc4n"
+        data-focusable={true}
         data-testid="Retourner à l'accueil"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -297,8 +306,9 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         tabIndex="0"
       >
         <div
-          className="css-text-901oao css-textOneLine-vcwn7f"
+          className="css-text-901oao css-textOneLine-bfa6kz"
           dir="auto"
+          onClick={[Function]}
           style={
             Object {
               "color": "rgba(235,0,85,1.00)",
@@ -306,7 +316,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
               "fontSize": "15px",
               "lineHeight": "20px",
               "marginLeft": "5px",
-              "maxWidth": "-100px",
+              "maxWidth": "100%",
             }
           }
         >

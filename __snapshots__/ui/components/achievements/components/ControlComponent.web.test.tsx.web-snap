@@ -8,6 +8,7 @@ Object {
       <div
         aria-label="Next"
         class="css-view-1dbjc4n"
+        data-focusable="true"
         data-testid="controlButton"
         style="cursor: pointer; margin-right: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
         tabindex="0"
@@ -30,6 +31,7 @@ Object {
     <div
       aria-label="Next"
       class="css-view-1dbjc4n"
+      data-focusable="true"
       data-testid="controlButton"
       style="cursor: pointer; margin-right: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
       tabindex="0"
@@ -109,6 +111,7 @@ Object {
       <div
         aria-label="Previous"
         class="css-view-1dbjc4n"
+        data-focusable="true"
         data-testid="controlButton"
         style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
         tabindex="0"
@@ -131,6 +134,7 @@ Object {
     <div
       aria-label="Previous"
       class="css-view-1dbjc4n"
+      data-focusable="true"
       data-testid="controlButton"
       style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
       tabindex="0"
@@ -210,6 +214,7 @@ Object {
       <div
         aria-label="Previous"
         class="css-view-1dbjc4n"
+        data-focusable="true"
         data-testid="controlButton"
         style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
         tabindex="0"
@@ -232,6 +237,7 @@ Object {
     <div
       aria-label="Previous"
       class="css-view-1dbjc4n"
+      data-focusable="true"
       data-testid="controlButton"
       style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
       tabindex="0"

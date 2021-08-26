@@ -11,6 +11,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
+          data-focusable="true"
           style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
           tabindex="0"
         >
@@ -26,7 +27,7 @@ Object {
                 style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
               >
                 <div
-                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  class="css-text-901oao css-textOneLine-bfa6kz"
                   data-testid="categoryImageCaption"
                   dir="auto"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -59,14 +60,14 @@ Object {
           style="margin-top: 8px; max-width: 192px;"
         >
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
+            class="css-text-901oao css-textOneLine-bfa6kz"
             dir="auto"
             style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
             Mensch ! Où sont les Hommes ?
           </div>
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
+            class="css-text-901oao css-textOneLine-bfa6kz"
             dir="auto"
             style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
@@ -91,6 +92,7 @@ Object {
     >
       <div
         class="css-view-1dbjc4n"
+        data-focusable="true"
         style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
         tabindex="0"
       >
@@ -106,7 +108,7 @@ Object {
               style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
             >
               <div
-                class="css-text-901oao css-textOneLine-vcwn7f"
+                class="css-text-901oao css-textOneLine-bfa6kz"
                 data-testid="categoryImageCaption"
                 dir="auto"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -139,14 +141,14 @@ Object {
         style="margin-top: 8px; max-width: 192px;"
       >
         <div
-          class="css-text-901oao css-textOneLine-vcwn7f"
+          class="css-text-901oao css-textOneLine-bfa6kz"
           dir="auto"
           style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           Mensch ! Où sont les Hommes ?
         </div>
         <div
-          class="css-text-901oao css-textOneLine-vcwn7f"
+          class="css-text-901oao css-textOneLine-bfa6kz"
           dir="auto"
           style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >

@@ -19,6 +19,7 @@ exports[`CoordinatesView component should render correctly 1`] = `
   <div
     className="css-text-901oao"
     dir="auto"
+    onClick={[Function]}
     style={
       Object {
         "fontSize": "9px",
@@ -27,6 +28,7 @@ exports[`CoordinatesView component should render correctly 1`] = `
   >
     <span
       className="css-text-901oao css-textHasAncestor-16my406"
+      onClick={[Function]}
       style={
         Object {
           "color": "rgba(0,102,255,1.00)",
@@ -40,6 +42,7 @@ exports[`CoordinatesView component should render correctly 1`] = `
   <div
     className="css-text-901oao"
     dir="auto"
+    onClick={[Function]}
     style={
       Object {
         "fontSize": "9px",
@@ -48,6 +51,7 @@ exports[`CoordinatesView component should render correctly 1`] = `
   >
     <span
       className="css-text-901oao css-textHasAncestor-16my406"
+      onClick={[Function]}
       style={
         Object {
           "color": "rgba(0,102,255,1.00)",
@@ -61,6 +65,7 @@ exports[`CoordinatesView component should render correctly 1`] = `
   <div
     className="css-text-901oao"
     dir="auto"
+    onClick={[Function]}
     style={
       Object {
         "fontSize": "9px",
@@ -69,6 +74,7 @@ exports[`CoordinatesView component should render correctly 1`] = `
   >
     <span
       className="css-text-901oao css-textHasAncestor-16my406"
+      onClick={[Function]}
       style={
         Object {
           "color": "rgba(0,102,255,1.00)",
