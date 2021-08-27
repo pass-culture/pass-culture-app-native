@@ -4,7 +4,6 @@ import {
   NavigationContainerRef,
   Theme,
 } from '@react-navigation/native'
-import upperFirst from 'lodash/upperFirst'
 import React, { useCallback, useEffect } from 'react'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
@@ -18,7 +17,7 @@ import { isNavigationReadyRef, navigationRef } from '../navigationRef'
 import { onNavigationStateChange } from '../services'
 
 const NAV_THEME_CONFIG = { colors: { background: ColorsEnum.WHITE } } as Theme
-const SECONDARY_TITLE = author?.name ? upperFirst(author.name) : 'Pass Culture'
+const SECONDARY_TITLE = author?.name || 'pass Culture'
 const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
   formatter(options, _route) {
     if (options?.title) {
