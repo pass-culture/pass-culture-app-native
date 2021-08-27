@@ -13,7 +13,6 @@ export const PageNotFound: React.FC = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Page introuvable | Pass Culture`}</title>
         <meta name="robots" content="noindex" />
       </Helmet>
       <GenericInfoPage
