@@ -6,10 +6,15 @@ import { DeeplinkPath } from 'features/deeplinks/enums'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { WEBAPP_V2_URL } from 'libs/environment'
 
-import { routes } from './routes'
+import { routes } from '../routes'
+
+import { getInitialURL } from './getInitialUrl'
+import { subscribe } from './subscribe'
 
 export const linking: LinkingOptions = {
   prefixes: [WEBAPP_V2_URL, WEBAPP_NATIVE_REDIRECTION_URL, 'passculture://'],
+  getInitialURL: getInitialURL,
+  subscribe: subscribe,
   config: {
     screens: {
       ...routes.reduce(
