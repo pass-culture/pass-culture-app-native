@@ -22,7 +22,7 @@ const NotMemoizedBicolorConfidentiality: React.FC<BicolorIconInterface> = ({
         </LinearGradient>
       </Defs>
       <G fill="none" fillRule="evenodd">
-        <G fill={`url(#${LINEAR_GRADIENT_ID}`} transform="translate(-22.000000, -514.000000)">
+        <G fill={`url(#${LINEAR_GRADIENT_ID})`} transform="translate(-22.000000, -514.000000)">
           <G>
             <G>
               <Path
