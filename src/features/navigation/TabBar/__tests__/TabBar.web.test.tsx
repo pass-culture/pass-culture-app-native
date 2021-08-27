@@ -24,7 +24,7 @@ const state: TabNavigationState<Record<string, Record<string, unknown> | undefin
   index: 0,
   key: 'tab',
   routeNames: tabBarRoutes.map((route) => route.name),
-  routes: tabBarRoutes,
+  routes: tabBarRoutes.map((route) => ({ ...route, key: route.name })),
   stale: false,
   type: 'tab',
 }

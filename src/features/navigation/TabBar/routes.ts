@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { LinkingOptions } from '@react-navigation/native'
 
 import { Bookings } from 'features/bookings/pages/Bookings'
@@ -31,23 +32,27 @@ export const routes: Array<TabRoute> = [
       parse: screenParamsParser['Search'],
       stringify: screenParamsStringifier['Search'],
     },
+    options: { title: t`Recherche des offres` },
   },
   {
     name: 'Bookings',
     component: Bookings,
     path: 'bookings',
+    options: { title: t`Réservations` },
   },
   {
     name: 'Favorites',
     component: Favorites,
     path: DeeplinkPath.FAVORIS,
+    options: { title: t`Favoris` },
   },
   {
     name: 'Profile',
     component: Profile,
     path: DeeplinkPath.PROFILE,
+    options: { title: t`Profil` },
   },
-].map((r) => ({ ...r, key: r.name } as TabRoute))
+]
 
 export const tabNavigatorPathConfig: LinkingOptions['config'] = {
   initialRouteName,

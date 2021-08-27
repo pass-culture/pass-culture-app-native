@@ -31,8 +31,8 @@ export const TabNavigator: React.FC = () => {
         <Screen
           name={route.name}
           component={route.component}
-          initialParams={route.params}
-          key={route.key}
+          options={route.options}
+          key={route.name}
         />
       ))}
     </Navigator>
