@@ -278,16 +278,14 @@ const codeInputMask = '999999'
 
 const CodeInput = styled(MaskedTextInput)({
   fontSize: 20,
-  marginLeft: getSpacing(8),
+  marginLeft: getSpacing(2),
   color: ColorsEnum.BLACK,
+  textAlign: 'center',
   fontFamily: 'Montserrat-Regular',
   letterSpacing: getSpacing(4),
-  width: getSpacing(55),
 })
 
 const CodeInputContainer = styled.View({
-  flexDirection: 'column',
-  alignItems: 'flex-start',
   width: 240,
 })
 
