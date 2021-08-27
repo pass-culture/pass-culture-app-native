@@ -624,6 +624,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - notify-hard-release:
