@@ -8,7 +8,7 @@ import { OfferWebHead } from 'features/offer/pages/OfferWebHead/OfferWebHead'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { useOffer } from '../api/useOffer'
@@ -46,7 +46,7 @@ export const Offer: FunctionComponent = () => {
     <React.Fragment>
       <OfferWebHead offer={offerResponse} />
       <OfferBody offerId={offerId} onScroll={onScroll} />
-      {wording ? (
+      {!!wording && (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
           <ButtonWithLinearGradient
             wording={wording}
@@ -60,8 +60,6 @@ export const Offer: FunctionComponent = () => {
             isDisabled={onPressCTA === undefined}
           />
         </CallToActionContainer>
-      ) : (
-        <Spacer.Column numberOfSpaces={10} />
       )}
 
       <BookingOfferModal
