@@ -30,7 +30,7 @@ export const GenericInfoPage: FunctionComponent<Props> = (props) => {
   return (
     <Container>
       <Background />
-      <ScrollView contentContainerStyle={scrollViewContentContainerStyle}>
+      <ScrollView bounces={false} contentContainerStyle={scrollViewContentContainerStyle}>
         <Spacer.Column numberOfSpaces={spacingMatrix.top} />
         {Icon ? (
           <React.Fragment>
