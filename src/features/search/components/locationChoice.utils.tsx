@@ -3,9 +3,8 @@ import React from 'react'
 
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { buildPlaceLabel } from 'libs/place'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
-import { BicolorLocationPointer as Place } from 'ui/svg/icons/BicolorLocationPointer'
+import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
@@ -21,5 +20,5 @@ export const useLocationChoice = (
     return { Icon: AroundMe, label: t`Autour de moi`, isSelected }
 
   const { place } = searchState
-  return { Icon: Place, label: place ? buildPlaceLabel(place) : t`Choisir un lieu`, isSelected }
+  return { Icon: LocationPointer, label: place ? place.label : t`Choisir un lieu`, isSelected }
 }
