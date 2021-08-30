@@ -18,14 +18,10 @@ describe('NumberOfResults component', () => {
         other: '# résultats',
       })
     expect(render(<NumberOfResults nbHits={0} venueId={venueId} />).toJSON()).toBeNull()
-    expect(
-      render(<NumberOfResults nbHits={1} venueId={venueId} />).getByText(getResultText(1))
-    ).toBeTruthy()
-    expect(
-      render(<NumberOfResults nbHits={2} venueId={venueId} />).getByText(getResultText(2))
-    ).toBeTruthy()
+    expect(render(<NumberOfResults nbHits={1} venueId={venueId} />).getByText(getResultText(1)))
+    expect(render(<NumberOfResults nbHits={2} venueId={venueId} />).getByText(getResultText(2)))
     expect(
       render(<NumberOfResults nbHits={1234} venueId={venueId} />).getByText(getResultText(1234))
-    ).toBeTruthy()
+    )
   })
 })

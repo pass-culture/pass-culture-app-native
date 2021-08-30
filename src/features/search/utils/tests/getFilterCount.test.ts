@@ -12,13 +12,15 @@ const zeroOfferType = { isDigital: false, isEvent: false, isThing: false }
 const oneOfferType = { isDigital: true, isEvent: false, isThing: false }
 const twoOfferTypes = { isDigital: true, isEvent: true, isThing: false }
 const threeOfferTypes = { isDigital: true, isEvent: true, isThing: true }
+const venueId = 5959
 
-const sevenFilters = {
+const eightFilters = {
   offerCategories: ['CINEMA', 'PRESSE'], // 2
   offerTypes: twoOfferTypes, // 2
   offerIsNew: true, // 1
   timeRange, // 1
   priceRange: [1, MAX_PRICE], // 1
+  venueId, // 1
 }
 
 describe('getFilterCount', () => {
@@ -44,7 +46,8 @@ describe('getFilterCount', () => {
     ${'offerTypes - 1'}              | ${{ offerTypes: oneOfferType }}              | ${1}
     ${'offerTypes - 2'}              | ${{ offerTypes: twoOfferTypes }}             | ${2}
     ${'offerTypes - 3'}              | ${{ offerTypes: threeOfferTypes }}           | ${3}
-    ${'sevenFilters'}                | ${sevenFilters}                              | ${7}
+    ${'venueId'}                     | ${{ venueId }}                               | ${1}
+    ${'eightFilters'}                | ${eightFilters}                              | ${8}
   `(
     'should return the correct number of activated filters | $section',
     ({ partialSearchState, expected }) => {

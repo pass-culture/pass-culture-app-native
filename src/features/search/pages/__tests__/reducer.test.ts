@@ -229,4 +229,13 @@ describe('Search reducer', () => {
     expect(newState.geolocation).toEqual(Kourou.geolocation)
     expect(newState.place).toStrictEqual(Kourou)
   })
+
+  it('should handle SET_VENUE_ID', () => {
+    const action: Action = { type: 'SET_VENUE_ID', payload: 5959 }
+    let newState = searchReducer(state, action)
+    expect(newState.venueId).toStrictEqual(5959)
+
+    newState = searchReducer(newState, { type: 'SET_VENUE_ID', payload: null })
+    expect(newState.venueId).toStrictEqual(null)
+  })
 })

@@ -15,13 +15,11 @@ exports[`<ClippedTag/> should render correctly 1`] = `
       Array [
         Object {
           "backgroundColor": "#eb0055",
-          "borderBottomLeftRadius": 8,
-          "borderTopLeftRadius": 8,
+          "borderBottomLeftRadius": 4,
+          "borderTopLeftRadius": 4,
+          "maxWidth": "70%",
           "paddingLeft": 12,
           "paddingVertical": 8,
-        },
-        Object {
-          "maxWidth": 525,
         },
       ]
     }
