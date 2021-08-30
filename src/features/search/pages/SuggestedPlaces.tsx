@@ -6,6 +6,7 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
+import { usePlaces } from 'features/search/api/usePlaces'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SuggestedPlace } from 'libs/place'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
@@ -29,13 +30,8 @@ const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ pl
   </ItemContainer>
 )
 
-interface Props {
-  places: SuggestedPlace[]
-  query: string
-  isLoading: boolean
-}
-
-export const SuggestedPlaces: React.FC<Props> = ({ places, query, isLoading }) => {
+export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
+  const { data: places = [], isLoading } = usePlaces(query)
   const { goBack } = useNavigation()
   const { dispatch } = useStagedSearch()
 
