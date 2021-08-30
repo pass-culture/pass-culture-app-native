@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import { getPathFromState, getStateFromPath, LinkingOptions } from '@react-navigation/native'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
-import { DeeplinkPath } from 'features/deeplinks/enums'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { WEBAPP_V2_URL } from 'libs/environment'
 
@@ -28,13 +27,16 @@ export const linking: LinkingOptions = {
   },
   getStateFromPath: (path, config) => {
     const state = getStateFromPath(path, config)
-    // TO DO web : use a unique screen for DeeplinkPath.NEXT_BENEFECIARY_STEP path (and not Login)
-    if (state && path.includes(DeeplinkPath.NEXT_BENEFECIARY_STEP)) {
-      const name: ScreenNames = 'Login'
-      // @ts-expect-error : `routeNames` is a read-only property
-      state.routeNames = [name]
-      // @ts-expect-error : `routes` is a read-only property
-      state.routes = [{ key: 'login-1', name, params: { followScreen: 'NextBeneficiaryStep' } }]
+    if (state && state.routes) {
+      const screenName = state.routes[0].name as ScreenNames
+      // TO DO web : use a unique screen for DeeplinkPath.NEXT_BENEFECIARY_STEP path (and not Login)
+      if (screenName === 'NextBeneficiaryStep') {
+        const name: ScreenNames = 'Login'
+        return {
+          ...state,
+          routes: [{ key: 'login-1', name, params: { followScreen: 'NextBeneficiaryStep' } }],
+        }
+      }
     }
     return state
   },

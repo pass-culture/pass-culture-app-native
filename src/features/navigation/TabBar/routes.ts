@@ -10,12 +10,13 @@ import { screenParamsParser, screenParamsStringifier } from 'features/navigation
 import { TabRoute } from 'features/navigation/TabBar/types'
 import { Profile } from 'features/profile/pages/Profile'
 import { Search } from 'features/search/pages/Search'
+import { redirectUnreleasedScreens } from 'libs/web'
 
 export const initialRouteName = 'Home'
 
 const Home = withAsyncErrorBoundary(HomeComponent)
 
-export const routes: Array<TabRoute> = [
+const routesBeforeReleaseCheck: TabRoute[] = [
   {
     name: 'Home',
     component: Home,
@@ -53,6 +54,8 @@ export const routes: Array<TabRoute> = [
     options: { title: t`Profil` },
   },
 ]
+
+export const routes = redirectUnreleasedScreens(routesBeforeReleaseCheck)
 
 export const tabNavigatorPathConfig: LinkingOptions['config'] = {
   initialRouteName,

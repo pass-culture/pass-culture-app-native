@@ -70,6 +70,7 @@ export type RootStackParamList = {
   NextBeneficiaryStep: undefined
   Profile: undefined
   PersonalData: undefined
+  RedirectWebToNative: undefined
   SearchCategories: undefined
   SearchFilter: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
