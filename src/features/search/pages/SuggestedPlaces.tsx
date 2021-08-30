@@ -3,11 +3,12 @@ import { useNavigation } from '@react-navigation/native'
 import isEqual from 'lodash.isequal'
 import uniqWith from 'lodash.uniqwith'
 import React from 'react'
-import { FlatList, Text } from 'react-native'
+import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SuggestedPlace } from 'libs/place'
+import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
 
@@ -18,6 +19,8 @@ export const keyExtractor = (place: SuggestedPlace) => {
 
 const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => (
   <ItemContainer onPress={onPress} testID={keyExtractor(place)}>
+    <BicolorLocationPointer size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
+    <Spacer.Row numberOfSpaces={2} />
     <Text numberOfLines={2}>
       <Typo.ButtonText>{place.label}</Typo.ButtonText>
       <Spacer.Row numberOfSpaces={1} />
@@ -77,6 +80,8 @@ const ItemContainer = styled.TouchableOpacity.attrs({
   paddingVertical: getSpacing(4),
   alignItems: 'center',
 })
+
+const Text = styled.Text({ flex: 1 })
 
 const Separator = styled.View({
   height: 2,
