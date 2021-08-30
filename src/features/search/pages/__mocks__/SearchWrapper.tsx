@@ -5,7 +5,10 @@ import { initialSearchState } from 'features/search/pages/reducer'
 
 const { SearchWrapper: ActualSearchWrapper } = jest.requireActual('../SearchWrapper')
 
-export const SearchWrapper: typeof ActualSearchWrapper = memo(({ children }) => <View>{children}</View>)
+// eslint-disable-next-line react/display-name
+export const SearchWrapper: typeof ActualSearchWrapper = memo(({ children }) => (
+  <View>{children}</View>
+))
 
 export const useSearch = () => ({
   searchState: initialSearchState,
@@ -18,6 +21,5 @@ export const useStagedSearch = () => ({
 })
 
 export const useCommit = () => ({
-    commit: jest.fn(),
+  commit: jest.fn(),
 })
-

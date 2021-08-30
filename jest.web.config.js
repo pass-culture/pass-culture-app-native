@@ -6,7 +6,11 @@ module.exports = {
   preset: 'react-native-web',
   testEnvironment: 'jest-environment-jsdom',
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
-  setupFiles: ['react-native-web/jest/setup.js', ...base.setupFiles, '<rootDir>/jest/jest.web.setup.ts'],
+  setupFiles: [
+    'react-native-web/jest/setup.js',
+    ...base.setupFiles,
+    '<rootDir>/jest/jest.web.setup.ts',
+  ],
   testRegex: '(?<!.(?:native|ios|android)).(?:test|spec).(?:tsx?|js)$',
   moduleFileExtensions: ['web.tsx', 'web.ts', 'web.js', 'web.jsx', ...base.moduleFileExtensions],
   moduleNameMapper: {

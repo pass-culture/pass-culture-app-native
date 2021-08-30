@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
+
 import { theme as idCheckTheme } from '../../src/theme'
 
 const MockIdCheckErrorComponent = () => null
@@ -7,7 +8,7 @@ const MockIdCheckErrorComponent = () => null
 const actual = jest.requireActual('@pass-culture/id-check')
 
 export const useIdCheckContext = () => ({
-  setContextValue: jest.fn()
+  setContextValue: jest.fn(),
 })
 
 export const pages = {

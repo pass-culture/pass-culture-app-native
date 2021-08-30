@@ -36,7 +36,6 @@
     "lingui.config.js",
     "react-native.config.js",
     "rn-cli.config.js",
-    "__mocks__/**",
     "coverage/**"
   ]
 }

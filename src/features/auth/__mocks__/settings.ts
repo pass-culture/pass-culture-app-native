@@ -1,6 +1,7 @@
+import { UseQueryResult } from 'react-query'
+
 import { SettingsResponse } from 'api/gen'
 import { useAppSettings as actualUseAppSettings } from 'features/auth/settings'
-import { UseQueryResult } from 'react-query'
 
 export const mockDefaultSettings: SettingsResponse = {
   depositAmount: 30000,

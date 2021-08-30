@@ -6,7 +6,7 @@ export const BatchUser = {
   getInstallationID: jest.fn(),
   editor: jest.fn().mockReturnThis(),
   setIdentifier: jest.fn().mockReturnThis(),
-  save: jest.fn()
+  save: jest.fn(),
 }
 
 export const BatchPush = {

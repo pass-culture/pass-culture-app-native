@@ -186,7 +186,7 @@ module.exports = {
   // Test overrides
   overrides: [
     {
-      files: ['**/*.test.ts', '**/*.test.tsx'],
+      files: ['**/*.test.ts', '**/*.test.tsx', '__mocks__'],
       env: {
         jest: true,
       },
