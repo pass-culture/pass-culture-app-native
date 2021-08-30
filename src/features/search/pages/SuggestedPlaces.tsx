@@ -14,26 +14,17 @@ import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
 
-export enum HitType {
-  PLACE = 'place',
-  VENUE = 'venue',
-}
-interface Hit extends SuggestedPlace {
-  type: HitType
-}
-
-export const keyExtractor = (hit: Hit) => {
-  const { label, info, geolocation, type } = hit
+export const keyExtractor = (hit: SuggestedPlace) => {
+  const { label, info, geolocation, venueId } = hit
   return geolocation
-    ? `${type}-${label}-${info}-${geolocation.latitude}-${geolocation.longitude}`
-    : `${type}-${label}-${info}`
+    ? `${venueId}-${label}-${info}-${geolocation.latitude}-${geolocation.longitude}`
+    : `${venueId}-${label}-${info}`
 }
 
-const Hit: React.FC<{ hit: Hit; onPress: () => void }> = ({ hit, onPress }) => {
-  const Icon =
-    hit.type === HitType.PLACE
-      ? () => <BicolorLocationPointer size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
-      : () => <LocationBuilding size={getSpacing(10)} color={ColorsEnum.PRIMARY} />
+const Hit: React.FC<{ hit: SuggestedPlace; onPress: () => void }> = ({ hit, onPress }) => {
+  const Icon = !hit.venueId
+    ? () => <BicolorLocationPointer size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
+    : () => <LocationBuilding size={getSpacing(10)} color={ColorsEnum.PRIMARY} />
 
   return (
     <ItemContainer onPress={onPress} testID={keyExtractor(hit)}>
@@ -54,20 +45,18 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
   const { goBack } = useNavigation()
   const { dispatch } = useStagedSearch()
 
-  const onPickPlace = (place: Hit) => () => {
+  const onPickPlace = (place: SuggestedPlace) => () => {
     if (place.geolocation) {
-      const { type: _type, ...payload } = place
+      const { venueId, ...payload } = place
       dispatch({ type: 'LOCATION_PLACE', payload })
+      dispatch({ type: 'SET_VENUE_ID', payload: venueId })
     }
     // We go straight to Search page (we skip the Location page)
     goBack()
     goBack()
   }
 
-  const filteredPlaces = [
-    ...venues.slice(0, 5).map((venue) => ({ ...venue, type: HitType.VENUE })),
-    ...uniqWith(places, isEqual).map((place) => ({ ...place, type: HitType.PLACE })),
-  ]
+  const filteredPlaces = [...venues.slice(0, 5), ...uniqWith(places, isEqual)]
   const isLoading = isLoadingPlaces || isLoadingVenues
 
   return (

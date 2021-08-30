@@ -39,9 +39,12 @@ export const buildVenues = (searchHit: ResultItem<AppSearchFields>): SuggestedPl
   const latitude = isNaN(parseFloat(lat)) ? null : parseFloat(lat)
   const longitude = isNaN(parseFloat(lng)) ? null : parseFloat(lng)
 
+  const venueId = searchHit.getRaw(AppSearchFields.venue_id) as string
+
   return {
     label: searchHit.getRaw(AppSearchFields.venue_name) as string,
     info: searchHit.getRaw(AppSearchFields.offerer_name) as string,
     geolocation: latitude && longitude ? { latitude, longitude } : null,
+    venueId: isNaN(parseFloat(venueId)) ? null : parseFloat(venueId),
   }
 }

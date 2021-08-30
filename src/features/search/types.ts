@@ -33,7 +33,7 @@ export interface SearchParameters {
 }
 
 export type SearchState = SearchParameters & {
-  place: SuggestedPlace | null
+  place: Omit<SuggestedPlace, 'venueId'> | null
   showResults: boolean
   query: string
 }
