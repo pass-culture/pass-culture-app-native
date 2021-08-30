@@ -8,7 +8,7 @@ import { fetchPlaces, SuggestedPlace } from 'libs/place'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { SuggestedPlaces } from './SuggestedPlaces'
@@ -68,4 +68,4 @@ export const LocationPicker: React.FC = () => {
   )
 }
 
-const StyledInput = styled.View({ alignItems: 'center' })
+const StyledInput = styled.View({ alignItems: 'center', marginHorizontal: getSpacing(6) })
