@@ -37,6 +37,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
     </View>
   </View>
   <RCTScrollView
+    bounces={false}
     contentContainerStyle={
       Object {
         "alignItems": "center",
