@@ -1,8 +1,13 @@
-import { theme as idCheckTheme } from '@pass-culture/id-check/src/theme'
+import {
+  theme as idCheckTheme,
+  ThemeType as IdCheckThemeType,
+} from '@pass-culture/id-check/src/theme'
 import deepmerge from 'deepmerge'
-import { DefaultTheme } from 'styled-components/native'
-import './styled.d'
 
-const theme: DefaultTheme = deepmerge(idCheckTheme, {})
+export interface AppThemeType extends IdCheckThemeType {
+  appBarHeight: number
+}
 
-export { theme }
+export const theme: AppThemeType = deepmerge(idCheckTheme, {
+  appBarHeight: 64,
+})

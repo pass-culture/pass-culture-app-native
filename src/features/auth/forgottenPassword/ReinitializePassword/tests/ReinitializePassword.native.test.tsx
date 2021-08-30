@@ -1,4 +1,5 @@
 import React from 'react'
+import { ThemeProvider } from 'styled-components/native'
 import waitForExpect from 'wait-for-expect'
 
 import { useRoute, navigate, replace } from '__mocks__/@react-navigation/native'
@@ -6,6 +7,7 @@ import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { theme } from 'theme'
 import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from '../ReinitializePassword'
@@ -26,9 +28,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should enable the submit button when passwords are equals and filled and password is correct', async () => {
-    const { getByPlaceholderText, getByTestId } = render(
-      reactQueryProviderHOC(<ReinitializePassword />)
-    )
+    const { getByPlaceholderText, getByTestId } = renderReinitializePassword()
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
@@ -43,9 +43,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should display the matching error when the passwords dont match', async () => {
-    const { getByPlaceholderText, getByText } = render(
-      reactQueryProviderHOC(<ReinitializePassword />)
-    )
+    const { getByPlaceholderText, getByText } = renderReinitializePassword()
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
     fireEvent.changeText(passwordInput, '123456')
@@ -60,7 +58,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should validate PasswordSecurityRules when password is correct', async () => {
-    const { toJSON, getByPlaceholderText } = render(reactQueryProviderHOC(<ReinitializePassword />))
+    const { toJSON, getByPlaceholderText } = renderReinitializePassword()
     const notValidatedRulesSnapshot = toJSON()
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
@@ -72,7 +70,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should redirect to login page WHEN password is reset', async () => {
-    const { getByText } = render(reactQueryProviderHOC(<ReinitializePassword />))
+    const { getByText } = renderReinitializePassword()
     fireEvent.press(getByText('Continuer'))
     await superFlushWithAct()
     expect(navigate).toHaveBeenNthCalledWith(1, 'Login')
@@ -82,7 +80,7 @@ describe('ReinitializePassword Page', () => {
   it('should redirect to ResetPasswordExpiredLink when expiration_timestamp is expired', async () => {
     // eslint-disable-next-line local-rules/independant-mocks
     jest.spyOn(datesLib, 'isTimestampExpired').mockImplementation(() => true)
-    render(reactQueryProviderHOC(<ReinitializePassword />))
+    renderReinitializePassword()
     await superFlushWithAct()
     expect(replace).toHaveBeenNthCalledWith(1, 'ResetPasswordExpiredLink', {
       email: ROUTE_PARAMS.email,
@@ -91,3 +89,13 @@ describe('ReinitializePassword Page', () => {
     expect(analytics.logHasChangedPassword).not.toBeCalled()
   })
 })
+
+function renderReinitializePassword() {
+  return render(
+    reactQueryProviderHOC(
+      <ThemeProvider theme={theme}>
+        <ReinitializePassword />
+      </ThemeProvider>
+    )
+  )
+}
