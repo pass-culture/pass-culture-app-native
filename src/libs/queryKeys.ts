@@ -7,6 +7,7 @@ export enum QueryKeys {
   ID_CHECK_TOKEN = 'idCheckToken',
   OFFER = 'offer',
   PHONE_VALIDATION_CODE = 'phoneValidationCode',
+  PLACES = 'places',
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',
   REPORTED_OFFERS = 'reportedOffers',

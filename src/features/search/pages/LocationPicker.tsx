@@ -1,10 +1,10 @@
 import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { fetchPlaces, SuggestedPlace } from 'libs/place'
+import { usePlaces } from 'features/search/api/usePlaces'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -23,18 +23,10 @@ const RightIcon: React.FC<{ value: string; onPress: () => void }> = (props) =>
   ) : null
 
 export const LocationPicker: React.FC = () => {
-  const [places, setPlaces] = useState<SuggestedPlace[]>([])
   const [value, setValue] = useState<string>('')
-  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [debouncedValue, setDebouncedValue] = useState<string>(value)
   const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
-
-  useEffect(() => {
-    setIsLoading(true)
-    fetchPlaces({ query: debouncedValue })
-      .then(setPlaces)
-      .finally(() => setIsLoading(false))
-  }, [debouncedValue])
+  const { data: places = [], isLoading } = usePlaces(debouncedValue)
 
   const resetSearch = () => {
     setValue('')
