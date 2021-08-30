@@ -63,12 +63,13 @@ import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { Venue } from 'features/venue'
 import { compose } from 'libs/compose'
+import { redirectUnreleasedScreens } from 'libs/web'
 
 import { Route } from './types'
 
 export const initialRouteName = 'TabNavigator'
 
-export const routes: Array<Route> = [
+const routesBeforeReleaseCheck: Route[] = [
   {
     name: 'PageNotFound',
     component: PageNotFound,
@@ -373,3 +374,5 @@ export const routes: Array<Route> = [
   ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
   { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheckv2' },
 ]
+
+export const routes = redirectUnreleasedScreens(routesBeforeReleaseCheck)
