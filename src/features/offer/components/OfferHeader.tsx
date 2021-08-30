@@ -151,11 +151,13 @@ function animateIcon(animatedValue: Animated.Value): void {
   ]).start()
 }
 
-const HeaderContainer = styled(Animated.View)({
+const HeaderContainer = styled(Animated.View)(({ theme }) => ({
   position: 'absolute',
   top: 0,
+  height: theme.appBarHeight,
   width: '100%',
-})
+}))
+
 const Row = styled.View({
   flex: 1,
   flexDirection: 'row',
