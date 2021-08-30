@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { ReportOfferOtherReasonModal } from 'features/offer/components/ReportOfferOtherReasonModal'
+import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason'
 import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -24,12 +24,12 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
-describe('<ReportOfferOtherReasonModal />', () => {
+describe('<ReportOfferOtherReason />', () => {
   describe('Report offer button', () => {
     const queryClient = useQueryClient()
 
-    it('should enabled the button when large input is filled', async () => {
-      const { getByTestId } = renderReportOtherReasonModal()
+    it('should enable the button when large input is filled', async () => {
+      const { getByTestId } = renderReportOfferOtherReason()
 
       const reportButton = getByTestId('report-other-button')
       expect(reportButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
@@ -50,7 +50,7 @@ describe('<ReportOfferOtherReasonModal />', () => {
       // @ts-expect-error ts(2345)
       mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
 
-      const { getByTestId } = renderReportOtherReasonModal()
+      const { getByTestId } = renderReportOfferOtherReason()
 
       const reportButton = getByTestId('report-other-button')
 
@@ -76,7 +76,7 @@ describe('<ReportOfferOtherReasonModal />', () => {
         name: 'ApiError',
       }
 
-      const { getByTestId } = renderReportOtherReasonModal()
+      const { getByTestId } = renderReportOfferOtherReason()
 
       const reportButton = getByTestId('report-other-button')
 
@@ -91,13 +91,6 @@ describe('<ReportOfferOtherReasonModal />', () => {
   })
 })
 
-function renderReportOtherReasonModal() {
-  return render(
-    <ReportOfferOtherReasonModal
-      isVisible
-      dismissModal={mockDismissModal}
-      onGoBack={jest.fn}
-      offerId={1234}
-    />
-  )
+function renderReportOfferOtherReason() {
+  return render(<ReportOfferOtherReason dismissModal={mockDismissModal} offerId={1234} />)
 }

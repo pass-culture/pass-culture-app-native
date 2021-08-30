@@ -2,7 +2,7 @@ import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { ReportOfferReasonModal } from 'features/offer/components/ReportOfferReasonModal'
+import { ReportOfferReason } from 'features/offer/components/ReportOfferReason'
 import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -48,20 +48,20 @@ jest.mock('features/offer/services/useReasonsForReporting', () => ({
   })),
 }))
 
-describe('<ReportOfferReasonModal />', () => {
+describe('<ReportOfferReason />', () => {
   beforeEach(jest.clearAllMocks)
 
   describe('Report offer button', () => {
     const queryClient = useQueryClient()
 
     it('should be disabled if no reason is selected', () => {
-      const { getByTestId } = renderReportReasonModal()
+      const { getByTestId } = renderReportReason()
       const reportButton = getByTestId('report-button')
       expect(reportButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
     })
 
     it('should be enabled if a reason is selected', () => {
-      const renderAPI = renderReportReasonModal()
+      const renderAPI = renderReportReason()
 
       const radioButton = renderAPI.getByTestId('radio-button-INAPPROPRIATE')
       const reportButton = renderAPI.getByTestId('report-button')
@@ -79,7 +79,7 @@ describe('<ReportOfferReasonModal />', () => {
       // @ts-expect-error ts(2345)
       mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
 
-      const { getByTestId } = renderReportReasonModal()
+      const { getByTestId } = renderReportReason()
 
       const reportButton = getByTestId('report-button')
 
@@ -105,7 +105,7 @@ describe('<ReportOfferReasonModal />', () => {
         name: 'ApiError',
       }
 
-      const { getByTestId } = renderReportReasonModal()
+      const { getByTestId } = renderReportReason()
 
       const reportButton = getByTestId('report-button')
 
@@ -120,12 +120,10 @@ describe('<ReportOfferReasonModal />', () => {
   })
 })
 
-function renderReportReasonModal() {
+function renderReportReason() {
   return render(
-    <ReportOfferReasonModal
-      isVisible
+    <ReportOfferReason
       dismissModal={mockDismissModal}
-      onGoBack={jest.fn}
       onPressOtherReason={jest.fn}
       offerId={1234}
     />
