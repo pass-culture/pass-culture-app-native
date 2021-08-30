@@ -10,3 +10,5 @@ module.exports = {
   startObserving: jest.fn(),
   stopObserving: jest.fn(),
 }
+
+export {}

@@ -5,9 +5,12 @@ import { initialFavoritesState } from 'features/favorites/pages/reducer'
 
 import { FavoritesWrapper as ActualFavoritesWrapper } from '../FavoritesWrapper'
 
-export const FavoritesWrapper: typeof ActualFavoritesWrapper = memo(({ children }) => <View>{children}</View>)
+// eslint-disable-next-line react/display-name
+export const FavoritesWrapper: typeof ActualFavoritesWrapper = memo(({ children }) => (
+  <View>{children}</View>
+))
 
 export const useFavoritesState = () => ({
-    favoritesState: initialFavoritesState,
-    dispatch: jest.fn(),
+  favoritesState: initialFavoritesState,
+  dispatch: jest.fn(),
 })

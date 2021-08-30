@@ -1,4 +1,3 @@
 export default {
-    logEvent: jest.fn(),
+  logEvent: jest.fn(),
 }
-  

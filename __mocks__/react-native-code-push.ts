@@ -1,10 +1,12 @@
+import { ReactNode } from 'react'
+
 const getUpdateMetadata = jest.fn(() =>
   Promise.resolve({ label: 'label', description: 'decription' })
-);
-const sync = jest.fn();
+)
+const sync = jest.fn()
 const InstallMode = {
   IMMEDIATE: 0,
-};
+}
 const SyncStatus = {
   UP_TO_DATE: 'UP_TO_DATE',
   UPDATE_INSTALLED: 'UPDATE_INSTALLED',
@@ -15,10 +17,10 @@ const SyncStatus = {
   AWAITING_USER_ACTION: 'AWAITING_USER_ACTION',
   DOWNLOADING_PACKAGE: 'DOWNLOADING_PACKAGE',
   INSTALLING_UPDATE: 'INSTALLING_UPDATE',
-};
-const CheckFrequency = { MANUAL: 'MANUAL' };
+}
+const CheckFrequency = { MANUAL: 'MANUAL' }
 
-const CodePush = jest.fn(() => app => app);
+const CodePush = jest.fn(() => (app: ReactNode) => app)
 
 export default Object.assign(CodePush, {
   getUpdateMetadata,
@@ -27,4 +29,4 @@ export default Object.assign(CodePush, {
   SyncStatus,
   CheckFrequency,
   CodePush,
-});
+})

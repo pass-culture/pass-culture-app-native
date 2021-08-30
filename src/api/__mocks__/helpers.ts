@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { t } from '@lingui/macro'
 import { getUniqueId } from 'react-native-device-info'
 
 import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigationRef'
@@ -8,9 +9,7 @@ import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'
 
 import Package from '../../../package.json'
-
 import { DefaultApi } from '../gen'
-import { t } from '@lingui/macro'
 
 export function navigateToLogin() {
   if (isNavigationReadyRef.current && navigationRef.current) {
