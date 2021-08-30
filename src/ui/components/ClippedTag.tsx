@@ -1,5 +1,4 @@
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { testID } from 'tests/utils'
@@ -15,11 +14,9 @@ interface Props {
 }
 
 export const ClippedTag: React.FC<Props> = ({ label, onPress, testId }) => {
-  const { width } = useWindowDimensions()
-
   return (
     <Container>
-      <VenueLabelContainer style={{ maxWidth: width * 0.7 }}>
+      <VenueLabelContainer>
         <VenueLabel>{label}</VenueLabel>
       </VenueLabelContainer>
       <TouchableOpacity onPress={onPress}>
@@ -37,8 +34,9 @@ const VenueLabelContainer = styled.View({
   backgroundColor: ColorsEnum.PRIMARY,
   paddingVertical: getSpacing(2),
   paddingLeft: getSpacing(3),
-  borderTopLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
-  borderBottomLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
+  borderTopLeftRadius: BorderRadiusEnum.CHECKBOX_RADIUS,
+  borderBottomLeftRadius: BorderRadiusEnum.CHECKBOX_RADIUS,
+  maxWidth: '70%',
 })
 
 const VenueLabel = styled(Typo.ButtonText).attrs(() => ({

@@ -8,13 +8,6 @@ const label = 'Musée du louvre'
 const removeVenueId = jest.fn()
 const testId = 'Enlever le lieu'
 
-const mockDispatchSearch = jest.fn()
-jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
-    dispatch: mockDispatchSearch,
-  }),
-}))
-
 describe('<ClippedTag/>', () => {
   it('should render correctly', () => {
     const renderAPI = render(<ClippedTag label={label} onPress={removeVenueId} testId={testId} />)
