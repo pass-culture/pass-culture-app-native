@@ -18,10 +18,8 @@ describe('NumberOfResults component', () => {
         other: '# résultats',
       })
     expect(render(<NumberOfResults nbHits={0} venueId={venueId} />).container.textContent).toBe('')
-    expect(render(<NumberOfResults nbHits={1} venueId={venueId} />).getByText(getResultText(1)))
-    expect(render(<NumberOfResults nbHits={2} venueId={venueId} />).getByText(getResultText(2)))
-    expect(
-      render(<NumberOfResults nbHits={1234} venueId={venueId} />).getByText(getResultText(1234))
-    )
+    render(<NumberOfResults nbHits={1} venueId={venueId} />).getByText(getResultText(1))
+    render(<NumberOfResults nbHits={2} venueId={venueId} />).getByText(getResultText(2))
+    render(<NumberOfResults nbHits={1234} venueId={venueId} />).getByText(getResultText(1234))
   })
 })

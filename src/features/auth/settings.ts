@@ -12,6 +12,5 @@ export function useAppSettings(options = {}) {
     enabled: true,
     ...options,
     staleTime: STALE_TIME_APP_SETTINGS,
-    select: (settings) => ({ ...settings, useAppSearch: true }),
   })
 }
