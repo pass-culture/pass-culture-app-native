@@ -19,14 +19,8 @@ export interface Properties {
 }
 
 export interface SuggestedPlace {
-  name: {
-    long: string
-    short: string
-  }
-  extraData: {
-    city: string
-    department: string
-  }
+  label: string
+  info: string
   geolocation: {
     longitude: number
     latitude: number

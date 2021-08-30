@@ -12,8 +12,8 @@ const Today = new Date(2020, 10, 1)
 const Tomorrow = new Date(2020, 10, 2)
 
 const Kourou: SuggestedPlace = {
-  name: { long: 'Kourou', short: 'Kourou' },
-  extraData: { city: 'Kourou', department: 'Guyane' },
+  label: 'Kourou',
+  info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 

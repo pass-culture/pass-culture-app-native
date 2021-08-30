@@ -7,32 +7,24 @@ import { FlatList, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { REGEX_STARTING_WITH_NUMBERS, SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
 
-export const keyExtractor = ({ geolocation, name }: SuggestedPlace) => {
-  if (geolocation) return `${geolocation.latitude}-${geolocation.longitude}`
-  return `${name.short}-${name.long}`
+export const keyExtractor = (place: SuggestedPlace) => {
+  const { label, info, geolocation } = place
+  return geolocation ? `${geolocation.latitude}-${geolocation.longitude}` : `${label}-${info}`
 }
 
-const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => {
-  const placeNameStartsWithNumbers = REGEX_STARTING_WITH_NUMBERS.test(place.name.short)
-
-  return (
-    <ItemContainer onPress={onPress} testID={keyExtractor(place)}>
-      <Text numberOfLines={2}>
-        <Typo.ButtonText>
-          {placeNameStartsWithNumbers ? place.name.short : place.name.long}
-        </Typo.ButtonText>
-        <Spacer.Row numberOfSpaces={1} />
-        <Typo.Body>
-          {placeNameStartsWithNumbers ? place.extraData.city : place.extraData.department}
-        </Typo.Body>
-      </Text>
-    </ItemContainer>
-  )
-}
+const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => (
+  <ItemContainer onPress={onPress} testID={keyExtractor(place)}>
+    <Text numberOfLines={2}>
+      <Typo.ButtonText>{place.label}</Typo.ButtonText>
+      <Spacer.Row numberOfSpaces={1} />
+      <Typo.Body>{place.info}</Typo.Body>
+    </Text>
+  </ItemContainer>
+)
 
 interface Props {
   places: SuggestedPlace[]

@@ -3,6 +3,7 @@ import { FeatureCollection, Point } from 'geojson'
 import { Properties, SuggestedPlace } from './types'
 
 const API_ADRESSE_URL = `https://api-adresse.data.gouv.fr/search`
+const REGEX_STARTING_WITH_NUMBERS = /^\d/
 
 interface Props {
   query: string
@@ -18,15 +19,14 @@ export const buildSuggestedPlaces = (
     const [, department] = context.replace(/\s+/g, '').split(',') // department number, department name, region
     const [longitude, latitude] = geometry.coordinates
 
+    const shortName = detailedPlace ? name : city
+    const longName = detailedPlace ? `${name}, ${city}` : city
+
+    const placeNameStartsWithNumbers = REGEX_STARTING_WITH_NUMBERS.test(shortName)
+
     return {
-      name: {
-        long: detailedPlace ? `${name}, ${city}` : city,
-        short: detailedPlace ? name : city,
-      },
-      extraData: {
-        city,
-        department: department || '',
-      },
+      label: placeNameStartsWithNumbers ? shortName : longName,
+      info: placeNameStartsWithNumbers ? city : department || '',
       geolocation: { longitude, latitude },
     }
   })
