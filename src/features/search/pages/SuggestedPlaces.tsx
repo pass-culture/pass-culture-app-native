@@ -6,51 +6,75 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import { usePlaces } from 'features/search/api/usePlaces'
+import { usePlaces, useVenues } from 'features/search/api'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SuggestedPlace } from 'libs/place'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
 
-export const keyExtractor = (place: SuggestedPlace) => {
-  const { label, info, geolocation } = place
-  return geolocation ? `${geolocation.latitude}-${geolocation.longitude}` : `${label}-${info}`
+export enum HitType {
+  PLACE = 'place',
+  VENUE = 'venue',
+}
+interface Hit extends SuggestedPlace {
+  type: HitType
 }
 
-const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => (
-  <ItemContainer onPress={onPress} testID={keyExtractor(place)}>
-    <BicolorLocationPointer size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
-    <Spacer.Row numberOfSpaces={2} />
-    <Text numberOfLines={2}>
-      <Typo.ButtonText>{place.label}</Typo.ButtonText>
-      <Spacer.Row numberOfSpaces={1} />
-      <Typo.Body>{place.info}</Typo.Body>
-    </Text>
-  </ItemContainer>
-)
+export const keyExtractor = (hit: Hit) => {
+  const { label, info, geolocation, type } = hit
+  return geolocation
+    ? `${type}-${geolocation.latitude}-${geolocation.longitude}`
+    : `${type}-${label}-${info}`
+}
+
+const Hit: React.FC<{ hit: Hit; onPress: () => void }> = ({ hit, onPress }) => {
+  const Icon =
+    hit.type === HitType.PLACE
+      ? () => <BicolorLocationPointer size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
+      : () => <LocationBuilding size={getSpacing(10)} color={ColorsEnum.PRIMARY} />
+
+  return (
+    <ItemContainer onPress={onPress} testID={keyExtractor(hit)}>
+      <Icon />
+      <Spacer.Row numberOfSpaces={2} />
+      <Text numberOfLines={2}>
+        <Typo.ButtonText>{hit.label}</Typo.ButtonText>
+        <Spacer.Row numberOfSpaces={1} />
+        <Typo.Body>{hit.info}</Typo.Body>
+      </Text>
+    </ItemContainer>
+  )
+}
 
 export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
-  const { data: places = [], isLoading } = usePlaces(query)
+  const { data: places = [], isLoading: isLoadingPlaces } = usePlaces(query)
+  const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
   const { goBack } = useNavigation()
   const { dispatch } = useStagedSearch()
 
-  const onPickPlace = (place: SuggestedPlace) => () => {
+  const onPickPlace = (place: Hit) => () => {
     if (place.geolocation) {
-      dispatch({ type: 'LOCATION_PLACE', payload: place })
+      const { type: _type, ...payload } = place
+      dispatch({ type: 'LOCATION_PLACE', payload })
     }
     // We go straight to Search page (we skip the Location page)
     goBack()
     goBack()
   }
 
-  const filteredPlaces = uniqWith(places, isEqual)
+  const filteredPlaces = [
+    ...venues.slice(0, 5).map((venue) => ({ ...venue, type: HitType.VENUE })),
+    ...uniqWith(places, isEqual).map((place) => ({ ...place, type: HitType.PLACE })),
+  ]
+  const isLoading = isLoadingPlaces || isLoadingVenues
 
   return (
     <FlatList
       data={filteredPlaces}
       keyExtractor={keyExtractor}
-      renderItem={({ item: place }) => <PlaceHit place={place} onPress={onPickPlace(place)} />}
+      renderItem={({ item }) => <Hit hit={item} onPress={onPickPlace(item)} />}
       ListEmptyComponent={() => <NoSuggestedPlaces show={query.length > 0 && !isLoading} />}
       ItemSeparatorComponent={Separator}
       keyboardShouldPersistTaps="handled"
