@@ -2,7 +2,7 @@ import React from 'react'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { HitType, keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
+import { keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
 import { buildSuggestedPlaces, SuggestedPlace } from 'libs/place'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { fireEvent, render } from 'tests/utils/web'
@@ -29,11 +29,12 @@ describe('SuggestedPlaces component', () => {
     mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
     const { getByTestId } = render(<SuggestedPlaces query="paris" />)
 
-    fireEvent.click(getByTestId(keyExtractor({ ...mockPlaces[1], type: HitType.PLACE })))
+    fireEvent.click(getByTestId(keyExtractor(mockPlaces[1])))
 
+    const { venueId: _venueId, ...payload } = mockPlaces[1]
     expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'LOCATION_PLACE',
-      payload: mockPlaces[1],
+      payload,
     })
     expect(goBack).toHaveBeenCalledTimes(2)
   })

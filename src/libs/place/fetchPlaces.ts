@@ -28,6 +28,7 @@ export const buildSuggestedPlaces = (
       label: placeNameStartsWithNumbers ? shortName : longName,
       info: placeNameStartsWithNumbers ? city : department || '',
       geolocation: { longitude, latitude },
+      venueId: null,
     }
   })
 

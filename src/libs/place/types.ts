@@ -25,4 +25,5 @@ export interface SuggestedPlace {
     longitude: number
     latitude: number
   } | null
+  venueId: number | null
 }

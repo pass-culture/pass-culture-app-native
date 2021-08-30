@@ -51,7 +51,7 @@ export type Action =
   | { type: 'SELECT_DATE'; payload: Date }
   | { type: 'LOCATION_AROUND_ME'; payload: SearchState['geolocation'] }
   | { type: 'LOCATION_EVERYWHERE' }
-  | { type: 'LOCATION_PLACE'; payload: SuggestedPlace }
+  | { type: 'LOCATION_PLACE'; payload: Omit<SuggestedPlace, 'venueId'> }
   | { type: 'SET_QUERY'; payload: string }
   | { type: 'SET_VENUE_ID'; payload: SearchState['venueId'] }
 

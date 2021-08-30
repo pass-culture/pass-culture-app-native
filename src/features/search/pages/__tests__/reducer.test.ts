@@ -15,6 +15,7 @@ const Kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
+  venueId: null,
 }
 
 describe('Search reducer', () => {

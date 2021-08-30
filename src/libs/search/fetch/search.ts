@@ -69,6 +69,7 @@ export const fetchVenues = async (query: string): Promise<SuggestedPlace[]> => {
   const options: SearchOptions<AppSearchFields> = {
     result_fields: {
       [AppSearchFields.offerer_name]: { raw: {} },
+      [AppSearchFields.venue_id]: { raw: {} },
       [AppSearchFields.venue_name]: { raw: {} },
       [AppSearchFields.venue_position]: { raw: {} },
     },
