@@ -25,7 +25,7 @@ interface Hit extends SuggestedPlace {
 export const keyExtractor = (hit: Hit) => {
   const { label, info, geolocation, type } = hit
   return geolocation
-    ? `${type}-${geolocation.latitude}-${geolocation.longitude}`
+    ? `${type}-${label}-${info}-${geolocation.latitude}-${geolocation.longitude}`
     : `${type}-${label}-${info}`
 }
 

@@ -4,10 +4,11 @@ import { flatten } from 'lodash'
 import { Response } from 'features/search/pages/useSearchResults'
 import { SearchParameters } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia'
+import { SuggestedPlace } from 'libs/place'
 import { SearchHit } from 'libs/search'
 import { client } from 'libs/search/client'
 import { buildQueryOptions, AppSearchFields, RESULT_FIELDS } from 'libs/search/filters'
-import { buildAlgoliaHit } from 'libs/search/utils/buildAlgoliaHit'
+import { buildAlgoliaHit, buildVenues } from 'libs/search/utils/buildAlgoliaHit'
 
 export const fetchObjects = async (ids: string[]): Promise<{ results: SearchHit[] }> => {
   const options: SearchOptions<AppSearchFields> = {
@@ -62,4 +63,24 @@ export const fetchVenueOffers = async (
     hits: response.results.map(buildAlgoliaHit),
     nbHits: meta.page.total_results,
   }
+}
+
+export const fetchVenues = async (query: string): Promise<SuggestedPlace[]> => {
+  const options: SearchOptions<AppSearchFields> = {
+    result_fields: {
+      [AppSearchFields.offerer_name]: { raw: {} },
+      [AppSearchFields.venue_name]: { raw: {} },
+      [AppSearchFields.venue_position]: { raw: {} },
+    },
+    search_fields: {
+      [AppSearchFields.offerer_name]: { weight: 1 },
+      [AppSearchFields.venue_name]: { weight: 1 },
+      [AppSearchFields.venue_public_name]: { weight: 1 },
+    },
+    group: { field: AppSearchFields.venue_id },
+  }
+
+  // TODO(antoinewg): once venues are indexed on AppSearch, use this index.
+  const response = await client.search<AppSearchFields>(query, options)
+  return response.results.map(buildVenues)
 }
