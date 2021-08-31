@@ -25,15 +25,6 @@ describe('sanitizeSearchStateParams', () => {
     expect(offerCategories).not.toBeUndefined()
   })
 
-  it('should sanitize geolocation to null when not provided', () => {
-    let { geolocation } = sanitizeSearchStateParams({
-      geolocation: { latitude: 10, longitude: 5 },
-    })
-    expect(geolocation).toEqual({ latitude: 10, longitude: 5 })
-    geolocation = sanitizeSearchStateParams({ geolocation: undefined }).geolocation
-    expect(geolocation).toBeNull()
-  })
-
   it('should sanitize tags to empty array when not provided', () => {
     const sanitizedSearchStateParams = sanitizeSearchStateParams({ tags: ['special'] })
     expect(sanitizedSearchStateParams).toEqual({
@@ -54,6 +45,7 @@ describe('sanitizeSearchStateParams', () => {
     ${`beginningDatetime`} | ${new Date('2021-01-01')}
     ${`date`}              | ${new Date('2021-01-01')}
     ${`endingDatetime`}    | ${new Date('2021-01-01')}
+    ${`geolocation`}       | ${{ latitude: 10, longitude: 20 }}
     ${`offerIsDuo`}        | ${true}
     ${`offerIsFree`}       | ${true}
     ${`offerIsNew`}        | ${true}
