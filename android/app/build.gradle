@@ -253,10 +253,10 @@ dependencies {
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.flipper'
     }
-    debugImplementation("com.facebook.flipper:flipper-leakcanary2-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.facebook.flipper'
-    }
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.6")
+    // debugImplementation("com.facebook.flipper:flipper-leakcanary2-plugin:${FLIPPER_VERSION}") {
+    //     exclude group:'com.facebook.flipper'
+    // }
+    // debugImplementation("com.squareup.leakcanary:leakcanary-android:2.6")
 
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01' // @react-navigation
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02' // @react-navigation
