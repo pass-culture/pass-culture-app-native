@@ -3,9 +3,11 @@
 exports[`<OfferHeader /> should render correctly 1`] = `
 Array [
   <View
+    safeAreaTop={16}
     style={
       Object {
         "backgroundColor": "rgba(255, 255, 255, 0)",
+        "height": 80,
         "position": "absolute",
         "top": 0,
         "width": "100%",

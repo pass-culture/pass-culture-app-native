@@ -1,6 +1,7 @@
 import { rest } from 'msw'
 import React from 'react'
 import { Animated, Share, Platform } from 'react-native'
+import { ThemeProvider } from 'styled-components/native'
 import waitForExpect from 'wait-for-expect'
 
 import { useRoute, goBack } from '__mocks__/@react-navigation/native'
@@ -18,6 +19,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { superFlushWithAct, act, cleanup, fireEvent, render } from 'tests/utils/web'
+import { theme } from 'theme'
 import {
   showSuccessSnackBar,
   showErrorSnackBar,
@@ -396,7 +398,9 @@ async function renderOfferHeader(options: Options = defaultOptions) {
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
     reactQueryProviderHOC(
-      <OfferHeader title="Some very nice offer" headerTransition={animatedValue} offerId={id} />
+      <ThemeProvider theme={theme}>
+        <OfferHeader title="Some very nice offer" headerTransition={animatedValue} offerId={id} />
+      </ThemeProvider>
     )
   )
 

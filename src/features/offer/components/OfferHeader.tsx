@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useRef } from 'react'
 import { Animated } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { isApiError } from 'api/helpers'
@@ -45,6 +46,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const favorite = useFavorite({ offerId })
   const { showErrorSnackBar } = useSnackBarContext()
+  const { top } = useSafeAreaInsets()
 
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {
@@ -89,7 +91,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
 
   return (
     <React.Fragment>
-      <HeaderContainer style={{ backgroundColor }}>
+      <HeaderContainer style={{ backgroundColor }} safeAreaTop={top}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={2} />
         <Row>
@@ -151,12 +153,14 @@ function animateIcon(animatedValue: Animated.Value): void {
   ]).start()
 }
 
-const HeaderContainer = styled(Animated.View)(({ theme }) => ({
-  position: 'absolute',
-  top: 0,
-  height: theme.appBarHeight,
-  width: '100%',
-}))
+const HeaderContainer = styled(Animated.View)<{ safeAreaTop: number }>(
+  ({ theme, safeAreaTop }) => ({
+    position: 'absolute',
+    top: 0,
+    height: theme.appBarHeight + safeAreaTop,
+    width: '100%',
+  })
+)
 
 const Row = styled.View({
   flex: 1,
