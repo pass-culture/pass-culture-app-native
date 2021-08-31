@@ -1,6 +1,12 @@
 import { LocationType } from 'features/search/enums'
-import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
+import { VenueOffersWithOneOfferResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+
+const VenueOffersResponseSnap = Array.from({ length: 11 }).map((_, index) => ({
+  ...VenueOffersWithOneOfferResponseSnap,
+  objectID: index.toString(),
+  key: index.toString(),
+}))
 
 export const useVenueOffers = jest
   .fn()
