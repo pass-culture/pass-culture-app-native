@@ -1,10 +1,15 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import {
+  BottomTabBarOptions,
+  BottomTabBarProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs'
 import React from 'react'
 import { StatusBar, Platform } from 'react-native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { initialRouteName, routes } from 'features/navigation/TabBar/routes'
+import { IS_WEB_RELEASE } from 'libs/web'
 
 import { shouldDisplayTabIconPredicate } from './helpers'
 import { TabBar } from './TabBar'
@@ -18,15 +23,18 @@ if (Platform.OS === 'android') {
 
 export const { Navigator, Screen } = createBottomTabNavigator<TabParamList>()
 
+function renderTabBar(props: BottomTabBarProps<BottomTabBarOptions>) {
+  if (IS_WEB_RELEASE) {
+    return undefined
+  }
+  return <TabBar state={props.state} navigation={props.navigation} />
+}
+
 export const TabNavigator: React.FC = () => {
   const authContext = useAuthContext()
-
   const { data: user } = useUserProfileInfo()
-
   return (
-    <Navigator
-      initialRouteName={initialRouteName}
-      tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
+    <Navigator initialRouteName={initialRouteName} tabBar={renderTabBar}>
       {routes.filter(shouldDisplayTabIconPredicate(authContext, user)).map((route) => (
         <Screen
           name={route.name}

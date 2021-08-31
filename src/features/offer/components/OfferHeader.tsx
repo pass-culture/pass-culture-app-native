@@ -16,6 +16,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { isSharingSupported } from 'features/offer/services/isSharingSupported'
 import { analytics } from 'libs/analytics'
+import { IS_WEB_RELEASE } from 'libs/web'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
@@ -112,23 +113,27 @@ export const OfferHeader: React.FC<Props> = (props) => {
 
           <Spacer.Flex />
           {/* TODO WEB : display button only if sharing is supported : https://passculture.atlassian.net/browse/PC-10510 */}
-          {isSharingSupported() ? (
+          {!!isSharingSupported() && (
             <HeaderIcon
               animationState={animationState}
               iconName="share"
               onPress={shareOffer}
               testID={t`Partager`}
             />
-          ) : null}
-          <Spacer.Row numberOfSpaces={3} />
-          <HeaderIcon
-            animationState={animationState}
-            scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
-            initialColor={favorite ? ColorsEnum.PRIMARY : undefined}
-            iconName={favorite ? 'favorite-filled' : 'favorite'}
-            onPress={pressFavorite}
-            testID={t`Mettre en favoris`}
-          />
+          )}
+          {IS_WEB_RELEASE ? null : (
+            <React.Fragment>
+              <Spacer.Row numberOfSpaces={3} />
+              <HeaderIcon
+                animationState={animationState}
+                scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
+                initialColor={favorite ? ColorsEnum.PRIMARY : undefined}
+                iconName={favorite ? 'favorite-filled' : 'favorite'}
+                onPress={pressFavorite}
+                testID={t`Mettre en favoris`}
+              />
+            </React.Fragment>
+          )}
           <Spacer.Row numberOfSpaces={6} />
         </Row>
         <Spacer.Column numberOfSpaces={2} />
