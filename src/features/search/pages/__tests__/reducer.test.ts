@@ -58,6 +58,7 @@ describe('Search reducer', () => {
       priceRange: [0, MAX_PRICE],
     })
   })
+
   it('should handle INIT_FROM_SEE_MORE - MAX_PRICE', () => {
     const parameters = {
       offerCategories: ['CINEMA', 'MUSIQUE'],
@@ -135,30 +136,35 @@ describe('Search reducer', () => {
     newState = searchReducer(newState, { type: 'SHOW_RESULTS', payload: false })
     expect(newState).toStrictEqual({ ...state, showResults: false })
   })
+
   it('should handle TOGGLE_OFFER_FREE', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_OFFER_FREE' })
     expect(newState).toStrictEqual({ ...state, offerIsFree: true })
     newState = searchReducer(newState, { type: 'TOGGLE_OFFER_FREE' })
     expect(newState).toStrictEqual({ ...state, offerIsFree: false })
   })
+
   it('should handle TOGGLE_OFFER_DUO', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_OFFER_DUO' })
     expect(newState).toStrictEqual({ ...state, offerIsDuo: true })
     newState = searchReducer(newState, { type: 'TOGGLE_OFFER_DUO' })
     expect(newState).toStrictEqual({ ...state, offerIsDuo: false })
   })
+
   it('should handle TOGGLE_OFFER_NEW', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_OFFER_NEW' })
     expect(newState).toStrictEqual({ ...state, offerIsNew: true })
     newState = searchReducer(newState, { type: 'TOGGLE_OFFER_NEW' })
     expect(newState).toStrictEqual({ ...state, offerIsNew: false })
   })
+
   it('should handle TOGGLE_DATE', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_DATE' })
     expect(newState.date).toStrictEqual({ option: DATE_FILTER_OPTIONS.TODAY, selectedDate: Today })
     newState = searchReducer(newState, { type: 'TOGGLE_DATE' })
     expect(newState.date).toBeNull()
   })
+
   it('should handle SELECT_DATE_FILTER_OPTION', () => {
     // 1. No effect if we haven't selected Date before
     let newState = searchReducer(state, {
@@ -192,6 +198,7 @@ describe('Search reducer', () => {
     })
     expect(newState.date?.option).toStrictEqual(DATE_FILTER_OPTIONS.USER_PICK)
   })
+
   it('should handle TOGGLE_HOUR', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_HOUR' })
     expect(newState.timeRange).toStrictEqual([8, 24])
@@ -218,6 +225,7 @@ describe('Search reducer', () => {
     newState = searchReducer(newState, { type: 'SET_CATEGORY', payload: [] })
     expect(newState.offerCategories).toStrictEqual([])
   })
+
   it('should handle LOCATION_AROUND_ME', () => {
     const newState = searchReducer(state, {
       type: 'LOCATION_AROUND_ME',
@@ -227,6 +235,7 @@ describe('Search reducer', () => {
     expect(newState.geolocation).toEqual({ latitude: 48.8557, longitude: 2.3469 })
     expect(newState.place).toBeNull()
   })
+
   it('should handle LOCATION_EVERYWHERE', () => {
     const newState = searchReducer(
       {
@@ -240,20 +249,29 @@ describe('Search reducer', () => {
     expect(newState.locationType).toEqual(LocationType.EVERYWHERE)
     expect(newState.geolocation).toBeNull()
     expect(newState.place).toBeNull()
+    expect(newState.venueId).toBeNull()
   })
+
   it('should handle LOCATION_PLACE', () => {
     const newState = searchReducer(state, { type: 'LOCATION_PLACE', payload: Kourou })
     expect(newState.locationType).toEqual(LocationType.PLACE)
     expect(newState.geolocation).toEqual(Kourou.geolocation)
     expect(newState.place).toStrictEqual(Kourou)
+    expect(newState.venueId).toBeNull()
   })
 
-  it('should handle SET_VENUE_ID', () => {
-    const action: Action = { type: 'SET_VENUE_ID', payload: 5959 }
-    let newState = searchReducer(state, action)
-    expect(newState.venueId).toStrictEqual(5959)
+  it('should handle LOCATION_VENUE', () => {
+    const venue = {
+      label: 'La petite librairie',
+      info: 'Michel Léon',
+      geolocation: Kourou.geolocation,
+    }
+    const action: Action = { type: 'LOCATION_VENUE', payload: { venueId: 5959, ...venue } }
+    const newState = searchReducer(state, action)
 
-    newState = searchReducer(newState, { type: 'SET_VENUE_ID', payload: null })
-    expect(newState.venueId).toStrictEqual(null)
+    expect(newState.locationType).toEqual(LocationType.PLACE)
+    expect(newState.geolocation).toEqual(Kourou.geolocation)
+    expect(newState.place).toStrictEqual(venue)
+    expect(newState.venueId).toStrictEqual(5959)
   })
 })

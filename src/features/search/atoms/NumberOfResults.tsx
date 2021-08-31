@@ -2,10 +2,12 @@ import { plural } from '@lingui/macro'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useVenueName } from 'features/venue/api/useVenue'
+import { useGeolocation } from 'libs/geolocation'
 import { ClippedTag } from 'ui/components/ClippedTag'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+
 interface Props {
   nbHits: number
   venueId: number | null
@@ -14,9 +16,12 @@ interface Props {
 export const NumberOfResults: React.FC<Props> = ({ nbHits, venueId }) => {
   const venueName = useVenueName(venueId)
   const { dispatch } = useSearch()
+  const { dispatch: stagedDispatch } = useStagedSearch()
+  const { position } = useGeolocation()
 
   const removeVenueId = useCallback(() => {
-    dispatch({ type: 'SET_VENUE_ID', payload: null })
+    dispatch({ type: 'RESET_LOCATION', payload: position })
+    stagedDispatch({ type: 'RESET_LOCATION', payload: position })
   }, [])
 
   const numberOfResults = plural(nbHits, {
