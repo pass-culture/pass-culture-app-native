@@ -2,11 +2,11 @@ import mockdate from 'mockdate'
 
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 
 import { Action, initialSearchState, searchReducer } from '../reducer'
-import { MAX_PRICE } from '../reducer.helpers'
 
 const Today = new Date(2020, 10, 1)
 const Tomorrow = new Date(2020, 10, 2)
@@ -54,7 +54,7 @@ describe('Search reducer', () => {
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       ...parameters,
-      priceRange: [0, 300],
+      priceRange: [0, MAX_PRICE],
     })
   })
   it('should handle INIT_FROM_SEE_MORE - MAX_PRICE', () => {
