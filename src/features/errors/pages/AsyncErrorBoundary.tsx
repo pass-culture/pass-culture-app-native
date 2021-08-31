@@ -1,11 +1,11 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, ReactNode } from 'react'
 import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { homeNavigateConfig } from 'features/navigation/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
@@ -85,18 +85,16 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
 }
 
 export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
-  const { canGoBack, goBack } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
   const { top } = useCustomSafeInsets()
 
   return (
     <AsyncErrorBoundaryWithoutNavigation
       {...props}
       header={
-        !!canGoBack() && (
-          <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
-            <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
-          </HeaderContainer>
-        )
+        <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
+          <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
+        </HeaderContainer>
       }
     />
   )

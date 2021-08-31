@@ -7,9 +7,9 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useBackNavigation } from 'features/navigation/backNavigation'
-import { navigateToHome } from 'features/navigation/helpers'
+import { homeNavigateConfig, navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
@@ -45,7 +45,7 @@ export const Login: FunctionComponent = function () {
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const complexGoBack = useBackNavigation()
+  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
 
   useFocusEffect(
     useCallback(() => {
@@ -122,7 +122,7 @@ export const Login: FunctionComponent = function () {
       <ModalHeader
         title={t`Connecte-toi !`}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={complexGoBack}
+        onLeftIconPress={goBack}
         rightIcon={params?.preventCancellation ? undefined : Close}
         onRightIconPress={onClose}
       />

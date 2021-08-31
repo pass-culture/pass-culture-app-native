@@ -6,6 +6,7 @@ import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
@@ -18,7 +19,8 @@ import { getSpacing, Spacer } from 'ui/theme'
 const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
-  const { navigate, goBack } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('Search')
   const {
     position,
     positionError,

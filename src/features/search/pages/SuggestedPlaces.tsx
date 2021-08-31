@@ -42,7 +42,7 @@ const Hit: React.FC<{ hit: SuggestedPlace; onPress: () => void }> = ({ hit, onPr
 export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
   const { data: places = [], isLoading: isLoadingPlaces } = usePlaces(query)
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
-  const { goBack } = useNavigation()
+  const { navigate } = useNavigation()
   const { dispatch } = useStagedSearch()
 
   const onPickPlace = (place: SuggestedPlace) => () => {
@@ -52,9 +52,9 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
     } else if (place.geolocation) {
       dispatch({ type: 'LOCATION_PLACE', payload })
     }
-    // We go straight to Search page (we skip the Location page)
-    goBack()
-    goBack()
+    // We go straight to Search page (we skip the Location page so we
+    // do not use `goBack`)
+    navigate('Search')
   }
 
   const filteredPlaces = [...venues.slice(0, 5), ...uniqWith(places, isEqual)]

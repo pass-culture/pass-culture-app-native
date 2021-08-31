@@ -7,8 +7,8 @@ import styled from 'styled-components/native'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { SetEmailModalContent, StyledInput } from 'features/auth/components/signupComponents'
-import { useBackNavigation } from 'features/navigation/backNavigation'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { randomAlphaString } from 'libs/random'
 import { testID } from 'tests/utils'
@@ -39,6 +39,7 @@ export const SetEmail: FunctionComponent = () => {
 
   const { params } = useRoute<UseRouteType<'SetEmail'>>()
   const navigation = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('Profile')
 
   const shouldDisableValidateButton = isValueEmpty(email)
 
@@ -49,8 +50,6 @@ export const SetEmail: FunctionComponent = () => {
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(false)
-
-  const complexGoBack = useBackNavigation()
 
   function onChangeEmail(email: string) {
     if (hasError) {
@@ -78,7 +77,7 @@ export const SetEmail: FunctionComponent = () => {
         <ModalHeader
           title={t`Ton e-mail`}
           leftIcon={ArrowPrevious}
-          onLeftIconPress={complexGoBack}
+          onLeftIconPress={goBack}
           rightIcon={params?.preventCancellation ? undefined : Close}
           onRightIconPress={showQuitSignupModal}
         />

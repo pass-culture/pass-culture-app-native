@@ -1,11 +1,10 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { openExternalUrl } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { homeNavigateConfig, openExternalUrl } from 'features/navigation/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -15,15 +14,8 @@ import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function IdCheckUnavailable() {
-  const { goBack, canGoBack } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
   const { data: settings } = useAppSettings()
-
-  async function goToPreviousPage() {
-    if (canGoBack()) {
-      goBack()
-    }
-  }
-
   return (
     <GenericInfoPage
       title={t`Victime de notre succès`}
@@ -42,7 +34,7 @@ export function IdCheckUnavailable() {
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite title={t`Retour`} onPress={goToPreviousPage} />
+      <ButtonTertiaryWhite title={t`Retour`} onPress={goBack} />
     </GenericInfoPage>
   )
 }

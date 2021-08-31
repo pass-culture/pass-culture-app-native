@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as NativeHelpers from '__mocks__/@react-navigation/native'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -24,14 +24,10 @@ describe('<IdCheckUnavailable/>', () => {
   })
 
   it('should go back WHEN go back is clicked', () => {
-    const canGoBack = jest.spyOn(NativeHelpers, 'canGoBack').mockReturnValue(true)
-    const goBack = jest.spyOn(NativeHelpers, 'goBack')
-
     const { getByText } = renderIdCheckUnavailable()
 
     fireEvent.press(getByText(`Retour`))
-    expect(canGoBack).toBeCalledTimes(1)
-    expect(goBack).toBeCalledTimes(1)
+    expect(mockGoBack).toBeCalledTimes(1)
   })
 })
 

@@ -1,10 +1,10 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import * as React from 'react'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/helpers'
 import { useArchiveBookingMutation } from 'features/bookings/api/mutations'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -20,7 +20,7 @@ export interface ArchiveBookingModalProps {
 }
 
 export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
-  const { goBack } = useNavigation()
+  const { goBack } = useGoBack('Bookings')
   const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
 
   const { mutate, isLoading } = useArchiveBookingMutation({

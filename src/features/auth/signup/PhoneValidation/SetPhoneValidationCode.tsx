@@ -17,6 +17,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { currentTimestamp } from 'libs/dates'
 import { env } from 'libs/environment'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
@@ -55,7 +56,8 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
   const { width: windowWidth } = useWindowDimensions()
   const { data: settings } = useAppSettings()
   const { phoneNumber, countryCode } = route.params
-  const { navigate, canGoBack, goBack } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('SetPhoneNumber')
   const [sessionId, setSessionId] = useState<string | undefined>()
   const [codeInputState, setCodeInputState] = useState({
     code: '',
@@ -159,9 +161,7 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
 
   function onGoBack() {
     setErrorMessage('')
-    if (canGoBack()) {
-      goBack()
-    }
+    goBack()
   }
 
   function getRetryButtonTitle() {

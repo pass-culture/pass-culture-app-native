@@ -3,7 +3,7 @@ import { NavigationContainerRef } from '@react-navigation/native'
 import React, { useCallback, useState, FunctionComponent, RefObject } from 'react'
 import styled from 'styled-components/native'
 
-import { openExternalUrl } from 'features/navigation/helpers'
+import { navigateToHome, openExternalUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -36,8 +36,11 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
     navigationRef?.current?.navigate('ConsentSettings', {
       onGoBack: () => {
         setIsVisible(true)
-        if (navigationRef?.current?.canGoBack()) {
-          navigationRef?.current?.goBack()
+        if (!navigationRef.current) return
+        if (navigationRef.current.canGoBack()) {
+          navigationRef.current.goBack()
+        } else {
+          navigateToHome()
         }
       },
     })

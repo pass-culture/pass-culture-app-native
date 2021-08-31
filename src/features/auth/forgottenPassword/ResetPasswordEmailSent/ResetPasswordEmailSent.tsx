@@ -4,9 +4,9 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { useBackNavigation } from 'features/navigation/backNavigation'
-import { navigateToHome, openExternalUrl, usePreviousRoute } from 'features/navigation/helpers'
+import { navigateToHome, openExternalUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -19,18 +19,13 @@ import { padding, Spacer, Typo } from 'ui/theme'
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
-  const complexGoBack = useBackNavigation()
-  const previousRoute = usePreviousRoute()
-  /* Note : we have issues with previously successfully valided ReCAPTCHA not being able
-  to redo the challenge, so we block the user from going back to ReCAPTCHA screen */
-  const shouldBeAbleToGoBack = previousRoute?.name !== 'ForgottenPassword'
-
+  const { goBack } = useGoBack('Login')
   return (
     <BottomContentPage>
       <ModalHeader
         title={t`E-mail envoyé !`}
-        leftIcon={shouldBeAbleToGoBack ? ArrowPrevious : undefined}
-        onLeftIconPress={shouldBeAbleToGoBack ? complexGoBack : undefined}
+        leftIcon={ArrowPrevious}
+        onLeftIconPress={goBack}
         rightIcon={Close}
         onRightIconPress={navigateToHome}
       />

@@ -1,7 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { goBack } from '__mocks__/@react-navigation/native'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { analytics } from 'libs/analytics'
 import {
   GeolocPositionError,
@@ -53,7 +53,7 @@ describe('FavoritesSorts component', () => {
     fireEvent.press(renderAPI.getByText('Valider'))
 
     await waitForExpect(() => {
-      expect(goBack).toBeCalled()
+      expect(mockGoBack).toBeCalled()
     })
   })
 
