@@ -5,7 +5,10 @@ import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
 import { SearchParameters } from 'features/search/types'
 import { QueryKeys } from 'libs/queryKeys'
-import { SearchHit, useFetchQuery } from 'libs/search'
+import { SearchHit } from 'libs/search'
+import { useAlgoliaQuery } from 'libs/search/fetch/useAlgoliaQuery'
+import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
+import { useSearchQuery } from 'libs/search/fetch/useSearchQuery'
 
 import { useSearch, useStagedSearch } from './SearchWrapper'
 
@@ -13,7 +16,13 @@ type PartialSearchState = SearchParameters & { query: string }
 export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
 
 const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
-  const { enabled, fetchHits, transformHits } = useFetchQuery()
+  const { enabled, isAppSearchBackend } = useAppSearchBackend()
+  const algoliaBackend = useAlgoliaQuery()
+  const searchBackend = useSearchQuery()
+
+  const backend = isAppSearchBackend ? searchBackend : algoliaBackend
+  const { fetchHits, transformHits } = backend
+
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, searchState],
     async (context: QueryFunctionContext<[string, PartialSearchState], number>) => {
@@ -25,6 +34,15 @@ const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
       enabled,
+      onSettled: () => {
+        if (!isAppSearchBackend) {
+          // Whilst app search is not activated, we still launch the request to populate
+          // App search's cache for future faster requests. Thus we build up the cache
+          // with actual requests.
+          // TODO(antoinewg): delete once the migration to AppSearch is completed
+          searchBackend.fetchHits({ page: 0, ...searchState })
+        }
+      },
     }
   )
 

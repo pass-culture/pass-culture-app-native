@@ -6,7 +6,7 @@ import { SearchParameters } from 'features/search/types'
 import { filterAlgoliaHit, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
-import { fetchVenueOffers } from 'libs/search'
+import { fetchVenueOffers } from 'libs/search/fetch/search'
 
 export const useVenueSearchParameters = (venueId: number): SearchParameters => {
   const { position } = useGeolocation()
