@@ -4,7 +4,10 @@ import { env } from 'libs/environment'
 import { GeoCoordinates, useGeolocation } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
-import { SearchHit, useFetchHits } from 'libs/search'
+import { SearchHit } from 'libs/search'
+import { useAlgoliaHits } from 'libs/search/fetch/useAlgoliaHits'
+import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
+import { useSearchHits } from 'libs/search/fetch/useSearchHits'
 
 import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
@@ -57,7 +60,12 @@ const useRecommendedOfferIds = (recommendationModule: RecommendationPane | undef
 }
 
 const useRecommendedHits = (ids: string[]): SearchHit[] => {
-  const { enabled, fetchHits, transformHits, filterHits } = useFetchHits()
+  const { enabled, isAppSearchBackend } = useAppSearchBackend()
+  const algoliaBackend = useAlgoliaHits()
+  const searchBackend = useSearchHits()
+
+  const backend = isAppSearchBackend ? searchBackend : algoliaBackend
+  const { fetchHits, filterHits, transformHits } = backend
 
   const { data } = useQuery(QueryKeys.RECOMMENDATION_HITS, async () => await fetchHits(ids), {
     enabled: ids.length > 0 && enabled,
