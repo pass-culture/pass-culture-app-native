@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-import { UserProfileResponse, DomainsCredit } from 'api/gen/api'
+import { UserProfileResponse, DomainsCredit, UserRole } from 'api/gen/api'
 import { Credit } from 'features/home/services/useAvailableCredit'
 
 export function isUserBeneficiary(user: UserProfileResponse): boolean {
@@ -13,4 +13,9 @@ export function isUserExBeneficiary(user: UserProfileResponse, credit: Credit): 
 
 export const computeCredit = (domainsCredit?: DomainsCredit | null) => {
   return domainsCredit ? domainsCredit.all.remaining : 0
+}
+
+export function isUserUnderageBeneficiary(user: UserProfileResponse): boolean {
+  const hasUserUnderageRole = user?.roles?.find((role) => role === UserRole.UNDERAGEBENEFICIARY)
+  return !!hasUserUnderageRole
 }
