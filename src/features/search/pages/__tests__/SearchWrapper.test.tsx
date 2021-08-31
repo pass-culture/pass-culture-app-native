@@ -9,11 +9,9 @@ jest.mock('libs/geolocation', () => ({
   useGeolocation: jest.fn(() => ({ latitude: 2, longitude: 40 })),
 }))
 
-describe('<SearchWrapper />', () => {
-  describe('Search component', () => {
-    it('should render correctly', () => {
-      const { toJSON } = render(<View />, { wrapper: SearchWrapper })
-      expect(toJSON()).toMatchSnapshot()
-    })
+describe('Search component', () => {
+  it('should render correctly', () => {
+    const { toJSON } = render(<View />, { wrapper: SearchWrapper })
+    expect(toJSON()).toMatchSnapshot()
   })
 })

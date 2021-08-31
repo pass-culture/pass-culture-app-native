@@ -64,7 +64,6 @@ describe('fetchAlgolia', () => {
       page: 0,
       attributesToHighlight: [],
       attributesToRetrieve,
-      numericFilters: [['offer.prices: 0 TO 300']],
     })
   })
 
@@ -85,7 +84,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -101,7 +99,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -129,7 +126,6 @@ describe('fetchAlgolia', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
-        numericFilters: [['offer.prices: 0 TO 300']],
       })
     })
 
@@ -149,7 +145,6 @@ describe('fetchAlgolia', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
-        numericFilters: [['offer.prices: 0 TO 300']],
       })
     })
 
@@ -174,7 +169,6 @@ describe('fetchAlgolia', () => {
         aroundRadius: 'all',
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -201,7 +195,6 @@ describe('fetchAlgolia', () => {
         aroundRadius: 15000,
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -228,7 +221,6 @@ describe('fetchAlgolia', () => {
         aroundRadius: 1,
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -255,7 +247,6 @@ describe('fetchAlgolia', () => {
         aroundRadius: 'all',
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -277,7 +268,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -296,7 +286,6 @@ describe('fetchAlgolia', () => {
       // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.category:LECON']],
-        numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -317,7 +306,6 @@ describe('fetchAlgolia', () => {
       // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.category:SPECTACLE', 'offer.category:LIVRE']],
-        numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -342,7 +330,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -367,7 +354,6 @@ describe('fetchAlgolia', () => {
         facetFilters: [['offer.isDigital:true']],
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -391,7 +377,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -414,7 +399,6 @@ describe('fetchAlgolia', () => {
       // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isDigital:false'], ['offer.isThing:true']],
-        numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -439,7 +423,6 @@ describe('fetchAlgolia', () => {
       // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEvent:true']],
-        numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -464,7 +447,6 @@ describe('fetchAlgolia', () => {
       // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isThing:true']],
-        numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -489,7 +471,6 @@ describe('fetchAlgolia', () => {
       // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isDigital:true', 'offer.isEvent:true']],
-        numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -514,7 +495,6 @@ describe('fetchAlgolia', () => {
       // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isDigital:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -540,7 +520,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -564,7 +543,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -585,7 +563,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -604,7 +581,6 @@ describe('fetchAlgolia', () => {
       // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isDuo:true']],
-        numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -627,7 +603,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -646,10 +621,7 @@ describe('fetchAlgolia', () => {
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
-        numericFilters: [
-          ['offer.prices: 0 TO 300'],
-          ['offer.stocksDateCreated: 1588762412 TO 1589453612'],
-        ],
+        numericFilters: [['offer.stocksDateCreated: 1588762412 TO 1589453612']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -673,7 +645,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -747,7 +718,7 @@ describe('fetchAlgolia', () => {
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mockGetLastOfDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
+          numericFilters: [[`offer.dates: 123456789 TO 987654321`]],
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve,
@@ -776,7 +747,7 @@ describe('fetchAlgolia', () => {
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mock_WEEK_getLastFromDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
+          numericFilters: [[`offer.dates: 123456789 TO 987654321`]],
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve,
@@ -805,7 +776,7 @@ describe('fetchAlgolia', () => {
         expect(mock_WEEKEND_getFirstFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mock_WEEK_getLastFromDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
+          numericFilters: [[`offer.dates: 123456789 TO 987654321`]],
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve,
@@ -834,7 +805,7 @@ describe('fetchAlgolia', () => {
         expect(mockGetFirstOfDate).toHaveBeenCalledWith(selectedDate)
         expect(mockGetLastOfDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
+          numericFilters: [[`offer.dates: 123456789 TO 987654321`]],
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve,
@@ -855,7 +826,7 @@ describe('fetchAlgolia', () => {
         // Then
         expect(mockComputeTimeRangeFromHoursToSeconds).toHaveBeenCalledWith(timeRange)
         expect(search).toHaveBeenCalledWith('', {
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.times: 64800 TO 79200`]],
+          numericFilters: [[`offer.times: 64800 TO 79200`]],
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve,
@@ -885,7 +856,7 @@ describe('fetchAlgolia', () => {
         // Then
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
+          numericFilters: [[`offer.dates: 123 TO 124`]],
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve,
@@ -918,7 +889,6 @@ describe('fetchAlgolia', () => {
         expect(mock_WEEK_getAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
           numericFilters: [
-            ['offer.prices: 0 TO 300'],
             [`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`, `offer.dates: 327 TO 328`],
           ],
           page: 0,
@@ -954,10 +924,7 @@ describe('fetchAlgolia', () => {
           timeRange
         )
         expect(search).toHaveBeenCalledWith(query, {
-          numericFilters: [
-            ['offer.prices: 0 TO 300'],
-            [`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`],
-          ],
+          numericFilters: [[`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`]],
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve,
@@ -985,7 +952,7 @@ describe('fetchAlgolia', () => {
         // Then
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
+          numericFilters: [[`offer.dates: 123 TO 124`]],
           page: 0,
           attributesToHighlight: [],
           attributesToRetrieve,
@@ -1107,7 +1074,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: page,
         facetFilters: [['offer.category:LECON', 'offer.category:VISITE'], ['offer.isDigital:true']],
-        numericFilters: [['offer.prices: 0 TO 300']],
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
         attributesToHighlight: [],
@@ -1174,7 +1140,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -1194,7 +1159,6 @@ describe('fetchAlgolia', () => {
         facetFilters: [
           ['offer.tags:Semaine du 14 juillet', 'offer.tags:Offre cinema spéciale pass culture'],
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToHighlight: [],
         attributesToRetrieve,
       })
@@ -1215,7 +1179,6 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -1234,7 +1197,6 @@ describe('fetchAlgolia', () => {
         hitsPerPage,
         page: 0,
         attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -1255,7 +1217,7 @@ describe('fetchAlgolia', () => {
 
       // Then
       expect(search).toHaveBeenCalledWith(query, {
-        numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates >= 1596240000`]],
+        numericFilters: [[`offer.dates >= 1596240000`]],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -1276,7 +1238,7 @@ describe('fetchAlgolia', () => {
 
       // Then
       expect(search).toHaveBeenCalledWith(query, {
-        numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates <= 1596240000`]],
+        numericFilters: [[`offer.dates <= 1596240000`]],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -1300,7 +1262,7 @@ describe('fetchAlgolia', () => {
 
       // Then
       expect(search).toHaveBeenCalledWith(query, {
-        numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 1596240000 TO 1596326400`]],
+        numericFilters: [[`offer.dates: 1596240000 TO 1596326400`]],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,

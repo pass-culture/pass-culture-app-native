@@ -6,6 +6,7 @@ import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 
 import { Action, initialSearchState, searchReducer } from '../reducer'
+import { MAX_PRICE } from '../reducer.helpers'
 
 const Today = new Date(2020, 10, 1)
 const Tomorrow = new Date(2020, 10, 2)
@@ -53,6 +54,22 @@ describe('Search reducer', () => {
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       ...parameters,
+      priceRange: [0, 300],
+    })
+  })
+  it('should handle INIT_FROM_SEE_MORE - MAX_PRICE', () => {
+    const parameters = {
+      offerCategories: ['CINEMA', 'MUSIQUE'],
+      priceRange: [30, 500],
+    }
+    const action: Action = {
+      type: 'INIT_FROM_SEE_MORE',
+      payload: parameters as Partial<SearchState>,
+    }
+    expect(searchReducer(state, action)).toStrictEqual({
+      ...initialSearchState,
+      offerCategories: ['CINEMA', 'MUSIQUE'],
+      priceRange: [30, MAX_PRICE],
     })
   })
 
