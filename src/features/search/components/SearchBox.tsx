@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { useEffect, useState } from 'react'
 import {
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
@@ -39,20 +39,20 @@ export const SearchBox: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const [query, setQuery] = useState<string>('')
 
-  useFocusEffect(
-    useCallback(() => {
-      setQuery(searchState.query)
-    }, [searchState.query])
-  )
+  useEffect(() => {
+    setQuery(searchState.query)
+  }, [searchState.query])
 
   const resetSearch = () => {
-    navigate('Search', { query: '' })
+    navigate('Search', {
+      query: '',
+    })
     setQuery('')
   }
 
   const onPressArrowBack = () => {
-    const query = ''
-    setQuery(query)
+    setQuery('')
+    dispatch({ type: 'SET_QUERY', payload: '' })
     dispatch({ type: 'SHOW_RESULTS', payload: false })
     dispatch({ type: 'INIT' })
   }
@@ -62,6 +62,8 @@ export const SearchBox: React.FC = () => {
       query: event.nativeEvent.text,
       showResults: true,
     })
+    dispatch({ type: 'SET_QUERY', payload: event.nativeEvent.text })
+    dispatch({ type: 'SHOW_RESULTS', payload: true })
     analytics.logSearchQuery(event.nativeEvent.text)
   }
 

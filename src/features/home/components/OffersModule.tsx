@@ -7,7 +7,6 @@ import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
-import { sanitizeSearchStateParams } from 'features/search/utils/sanitizeSearchStateParams'
 import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
@@ -43,6 +42,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <OfferTile
+          key={item.objectID}
           category={parseCategory(item.offer.category)}
           categoryName={item.offer.category}
           offerId={+item.objectID}
@@ -81,11 +81,8 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const onPressSeeMore = useCallback(() => {
     analytics.logClickSeeMore(moduleName)
-    const params = parseSearchParameters({
-      geolocation: position,
-      parameters,
-    })
-    navigate('Search', sanitizeSearchStateParams(params))
+    const params = parseSearchParameters({ geolocation: position, parameters })
+    navigate('Search', params)
   }, [position])
 
   const ListHeaderComponent = useCallback(() => {
