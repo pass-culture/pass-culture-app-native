@@ -90,6 +90,7 @@ Array [
           onStartShouldSetResponder={[Function]}
           style={
             Object {
+              "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "space-between",
@@ -98,6 +99,14 @@ Array [
           }
           testID="changeLocation"
         >
+          <View
+            height={40}
+            width={40}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
           <Text
             style={
               Array [
@@ -112,6 +121,17 @@ Array [
           >
             Autour de moi
           </Text>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          />
           <View
             height={24}
             width={24}

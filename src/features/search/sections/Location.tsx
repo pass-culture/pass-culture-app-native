@@ -11,14 +11,14 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Typo, Spacer, ColorsEnum } from 'ui/theme'
+import { Typo, Spacer, ColorsEnum, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useStagedSearch()
   const locationType = searchState.locationType
-  const { label } = useLocationChoice(locationType)
+  const { Icon, label } = useLocationChoice(locationType)
   const logUseFilter = useLogFilterOnce(SectionTitle.Location)
 
   const onPressChangeLocation = () => {
@@ -29,7 +29,9 @@ export const Location: React.FC = () => {
   return (
     <Section title={SectionTitle.Location} count={+(locationType !== LocationType.EVERYWHERE)}>
       <LocationContentContainer testID="changeLocation" onPress={onPressChangeLocation}>
+        <Icon size={getSpacing(10)} color={ColorsEnum.BLACK} />
         <Typo.ButtonText>{label}</Typo.ButtonText>
+        <Spacer.Flex />
         <ArrowNext size={24} />
       </LocationContentContainer>
       {locationType === LocationType.AROUND_ME ? (
@@ -50,4 +52,5 @@ const LocationContentContainer = styled.TouchableOpacity.attrs(() => ({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
+  alignItems: 'center',
 })
