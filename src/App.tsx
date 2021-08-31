@@ -38,6 +38,7 @@ LogBox.ignoreLogs([
   'Expected style "elevation:',
   // TODO(antoinewg): remove once https://github.com/lingui/js-lingui/issues/1099 is resolved
   'Cannot update a component (`I18nProvider`) while rendering a different component',
+  'OfferNotFoundError', // custom error
 ])
 
 if (__DEV__ && process.env.JEST !== 'true') {
