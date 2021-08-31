@@ -43,6 +43,8 @@ export const SearchFilter: React.FC = () => {
   const { data: profile } = useUserProfileInfo()
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
 
+  const showRadiusSection = getShowRadiusSection(searchState.locationType, searchState.venueId)
+
   return (
     <React.Fragment>
       <React.Fragment>
@@ -56,7 +58,7 @@ export const SearchFilter: React.FC = () => {
           <Separator windowWidth={windowWidth} />
 
           {/* Rayon */}
-          {searchState.locationType !== LocationType.EVERYWHERE && (
+          {!!showRadiusSection && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <Section.Radius />
@@ -150,3 +152,10 @@ const ShowResultsContainer = styled.View({
   paddingHorizontal: getSpacing(6),
   alignItems: 'center',
 })
+
+function getShowRadiusSection(locationType: LocationType, venueId: number | null): boolean {
+  if (locationType === LocationType.AROUND_ME) return true
+  if (locationType === LocationType.EVERYWHERE) return false
+  // We show the radius when we select an address (ex: Avignon), but not for venues (ex: Louvres).
+  return typeof venueId !== 'number'
+}
