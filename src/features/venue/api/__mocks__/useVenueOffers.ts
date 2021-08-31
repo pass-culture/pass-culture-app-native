@@ -1,16 +1,10 @@
 import { LocationType } from 'features/search/enums'
-import { VenueOffersWithOneOfferResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
+import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-
-const VenueOffersResponseSnap = Array.from({ length: 11 }).map((_, index) => ({
-  ...VenueOffersWithOneOfferResponseSnap,
-  objectID: index.toString(),
-  key: index.toString(),
-}))
 
 export const useVenueOffers = jest
   .fn()
-  .mockReturnValue({ data: { hits: VenueOffersResponseSnap, nbHits: 12 } })
+  .mockReturnValue({ data: { hits: VenueOffersResponseSnap, nbHits: 4 } })
 
 const venueId = venueResponseSnap.id
 
