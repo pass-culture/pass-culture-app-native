@@ -18,7 +18,7 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('react-query')
 jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({ data: { ...mockDefaultSettings, useAppSearch: false } })),
+  useAppSettings: jest.fn(() => ({ data: { ...mockDefaultSettings, useAppSearch: true } })),
 }))
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
@@ -30,14 +30,14 @@ describe('<VenueOffers />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should display "Voir plus" button if hits is more than 10', () => {
+  it('should display "En voir plus" button if hits is more than hits.length', () => {
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
     expect(queryByText('En voir plus')).toBeTruthy()
   })
 
-  it(`should doesn't display "Voir plus" button if hits is less or equal 10`, () => {
+  it(`should doesn't display "En voir plus" button if hits is less than hits.length`, () => {
     mockUseVenueOffers.mockReturnValueOnce(({
-      data: { hits: VenueOffersWithOneOfferResponseSnap, nbHits: 12 },
+      data: { hits: VenueOffersWithOneOfferResponseSnap, nbHits: 3 },
     } as unknown) as UseQueryResult<{ hits: AlgoliaHit[]; nbHits: number }, unknown>)
 
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
