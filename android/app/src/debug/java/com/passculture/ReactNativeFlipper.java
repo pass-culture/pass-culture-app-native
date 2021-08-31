@@ -15,8 +15,8 @@ import com.facebook.flipper.plugins.databases.DatabasesFlipperPlugin;
 import com.facebook.flipper.plugins.fresco.FrescoFlipperPlugin;
 import com.facebook.flipper.plugins.inspector.DescriptorMapping;
 import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin;
-import com.facebook.flipper.plugins.leakcanary2.FlipperLeakListener;
-import com.facebook.flipper.plugins.leakcanary2.LeakCanary2FlipperPlugin;
+// import com.facebook.flipper.plugins.leakcanary2.FlipperLeakListener;
+// import com.facebook.flipper.plugins.leakcanary2.LeakCanary2FlipperPlugin;
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor;
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin;
 import com.facebook.flipper.plugins.react.ReactFlipperPlugin;
@@ -25,7 +25,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.modules.network.NetworkingModule;
 
-import leakcanary.LeakCanary;
+// import leakcanary.LeakCanary;
 import okhttp3.OkHttpClient;
 
 public class ReactNativeFlipper {
@@ -47,12 +47,14 @@ public class ReactNativeFlipper {
           });
       client.addPlugin(networkFlipperPlugin);
 
-      LeakCanary.Config config = LeakCanary.getConfig().newBuilder()
-        .retainedVisibleThreshold(3)
-        .onHeapAnalyzedListener(new FlipperLeakListener())
-        .build();
-      LeakCanary.setConfig(config);
-      client.addPlugin(new LeakCanary2FlipperPlugin());
+      // If we want to use LeakCanary to investigate memory leaks
+      // See: https://square.github.io/leakcanary/getting_started/
+      // LeakCanary.Config config = LeakCanary.getConfig().newBuilder()
+      //   .retainedVisibleThreshold(3)
+      //   .onHeapAnalyzedListener(new FlipperLeakListener())
+      //   .build();
+      // LeakCanary.setConfig(config);
+      // client.addPlugin(new LeakCanary2FlipperPlugin());
       client.start();
       // Fresco Plugin needs to ensure that ImagePipelineFactory is initialized
       // Hence we run if after all native modules have been initialized
