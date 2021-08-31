@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
+import React, { memo, useContext, useEffect, useReducer } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
@@ -53,12 +53,9 @@ export const useCommit = (): { commit: () => void } => {
   const { navigate } = useNavigation<UseNavigationType>()
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { stagedSearchState } = useContext(SearchContext)!
-  return useMemo(
-    () => ({
-      commit: () => {
-        navigate('Search', stagedSearchState)
-      },
-    }),
-    [stagedSearchState]
-  )
+  return {
+    commit() {
+      navigate('Search', stagedSearchState)
+    },
+  }
 }

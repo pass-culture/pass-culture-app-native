@@ -42,7 +42,6 @@ export const OffersModule = (props: OffersModuleProps) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <OfferTile
-          key={item.objectID}
           category={parseCategory(item.offer.category)}
           categoryName={item.offer.category}
           offerId={+item.objectID}

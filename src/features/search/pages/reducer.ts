@@ -3,7 +3,7 @@ import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 
-import { addOrRemove } from './reducer.helpers'
+import { addOrRemove, clampPrice } from './reducer.helpers'
 
 export const initialSearchState: SearchState = {
   aroundRadius: null,
@@ -67,6 +67,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return {
         ...state,
         ...action.payload,
+        priceRange: clampPrice(action.payload.priceRange),
       }
     case 'PRICE_RANGE':
       return { ...state, priceRange: action.payload }
