@@ -13,6 +13,10 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
   }),
+  useStagedSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+  }),
 }))
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }

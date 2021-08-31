@@ -1,6 +1,7 @@
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
+import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 
 import { addOrRemove, clampPrice } from './reducer.helpers'
@@ -52,8 +53,9 @@ export type Action =
   | { type: 'LOCATION_AROUND_ME'; payload: SearchState['geolocation'] }
   | { type: 'LOCATION_EVERYWHERE' }
   | { type: 'LOCATION_PLACE'; payload: Omit<SuggestedPlace, 'venueId'> }
+  | { type: 'LOCATION_VENUE'; payload: SuggestedPlace }
+  | { type: 'RESET_LOCATION'; payload: GeoCoordinates | null }
   | { type: 'SET_QUERY'; payload: string }
-  | { type: 'SET_VENUE_ID'; payload: SearchState['venueId'] }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -121,6 +123,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
         geolocation: action.payload,
         place: null,
         aroundRadius: 100,
+        venueId: null,
       }
     case 'LOCATION_EVERYWHERE':
       return {
@@ -129,6 +132,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
         geolocation: null,
         place: null,
         aroundRadius: null,
+        venueId: null,
       }
     case 'LOCATION_PLACE':
       return {
@@ -137,17 +141,42 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
         geolocation: action.payload.geolocation,
         place: action.payload,
         aroundRadius: 100,
+        venueId: null,
+      }
+    case 'LOCATION_VENUE':
+      return {
+        ...state,
+        locationType: LocationType.PLACE,
+        geolocation: action.payload.geolocation,
+        place: {
+          label: action.payload.label,
+          info: action.payload.info,
+          geolocation: action.payload.geolocation,
+        },
+        venueId: action.payload.venueId,
+      }
+    case 'RESET_LOCATION':
+      if (action.payload) {
+        return {
+          ...state,
+          locationType: LocationType.AROUND_ME,
+          geolocation: action.payload,
+          place: null,
+          aroundRadius: 100,
+          venueId: null,
+        }
+      } else {
+        return {
+          ...state,
+          locationType: LocationType.EVERYWHERE,
+          geolocation: null,
+          place: null,
+          aroundRadius: null,
+          venueId: null,
+        }
       }
     case 'SET_QUERY':
-      return {
-        ...state,
-        query: action.payload,
-      }
-    case 'SET_VENUE_ID':
-      return {
-        ...state,
-        venueId: action.payload,
-      }
+      return { ...state, query: action.payload }
     default:
       return state
   }

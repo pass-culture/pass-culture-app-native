@@ -46,10 +46,11 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
   const { dispatch } = useStagedSearch()
 
   const onPickPlace = (place: SuggestedPlace) => () => {
-    if (place.geolocation) {
-      const { venueId, ...payload } = place
+    const { venueId, ...payload } = place
+    if (venueId) {
+      dispatch({ type: 'LOCATION_VENUE', payload: place })
+    } else if (place.geolocation) {
       dispatch({ type: 'LOCATION_PLACE', payload })
-      dispatch({ type: 'SET_VENUE_ID', payload: venueId })
     }
     // We go straight to Search page (we skip the Location page)
     goBack()
