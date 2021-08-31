@@ -39,13 +39,22 @@ describe('SearchFilter component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should not render section Radius if search everywhere', () => {
+  it('should not render section Radius if search everywhere or venue selected', () => {
     mockSearchState.locationType = LocationType.EVERYWHERE
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeFalsy()
+
     mockSearchState.locationType = LocationType.AROUND_ME
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeTruthy()
+
+    // Address
+    mockSearchState.venueId = null
     mockSearchState.locationType = LocationType.PLACE
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeTruthy()
+
+    // Venue
+    mockSearchState.venueId = 24
+    mockSearchState.locationType = LocationType.PLACE
+    expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeFalsy()
   })
 
   it('should not render Duo filter if user not beneficiary', () => {
