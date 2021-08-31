@@ -59,6 +59,7 @@ import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
+import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
@@ -512,6 +513,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <BicolorLocationPointer size={ICON_SIZE} />
           <Text> - BicolorLocationPointer </Text>
+        </AlignedText>
+        <AlignedText>
+          <BicolorLocationBuilding size={ICON_SIZE} />
+          <Text> - BicolorLocationBuilding </Text>
         </AlignedText>
         <AlignedText>
           <NoOffer size={ICON_SIZE} />
