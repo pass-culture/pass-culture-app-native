@@ -5,10 +5,9 @@ import { initialSearchState } from 'features/search/pages/reducer'
 
 const { SearchWrapper: ActualSearchWrapper } = jest.requireActual('../SearchWrapper')
 
-// eslint-disable-next-line react/display-name
-export const SearchWrapper: typeof ActualSearchWrapper = memo(({ children }) => (
-  <View>{children}</View>
-))
+export const SearchWrapper: typeof ActualSearchWrapper = memo(function SearchWrapper({ children }) {
+  return <View>{children}</View>
+})
 
 export const useSearch = () => ({
   searchState: initialSearchState,
