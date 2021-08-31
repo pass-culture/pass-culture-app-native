@@ -93,4 +93,18 @@ describe('LocationFilter component', () => {
     fireEvent.click(getByTestId('locationChoice-everywhere'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'LOCATION_EVERYWHERE' })
   })
+
+  it('should show the building icon when a venue is chosen', () => {
+    mockSearchState.venueId = 4
+    const { queryByTestId } = render(<LocationFilter />)
+    expect(queryByTestId('BicolorLocationBuilding')).toBeTruthy()
+    expect(queryByTestId('BicolorLocationPointer')).toBeFalsy()
+  })
+
+  it('should show the pointer icon when no venue is chosen', () => {
+    mockSearchState.venueId = null
+    const { queryByTestId } = render(<LocationFilter />)
+    expect(queryByTestId('BicolorLocationBuilding')).toBeFalsy()
+    expect(queryByTestId('BicolorLocationPointer')).toBeTruthy()
+  })
 })

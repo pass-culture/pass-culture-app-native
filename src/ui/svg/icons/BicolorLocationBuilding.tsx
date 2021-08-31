@@ -10,7 +10,7 @@ const NotMemoizedBicolorLocationBuilding: React.FunctionComponent<BicolorIconInt
   size = 32,
   color = ColorsEnum.PRIMARY,
   color2 = ColorsEnum.SECONDARY,
-  testID,
+  testID = 'BicolorLocationBuilding',
 }) => {
   const LINEAR_GRADIENT_ID = uuidv1()
   return (

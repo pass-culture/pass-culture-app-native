@@ -176,10 +176,11 @@ Array [
         >
           <View
             height={48}
+            testID="BicolorLocationPointer"
             width={48}
           >
             <Text>
-              undefined-SVG-Mock
+              BicolorLocationPointer-SVG-Mock
             </Text>
           </View>
           <View
