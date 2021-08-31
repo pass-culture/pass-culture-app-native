@@ -25,11 +25,15 @@ export const ShowResults: React.FC = () => {
     }
   }, [data, isFetching])
 
+  const onPress = () => {
+    commit()
+  }
+
   return (
     <ButtonPrimary
       title={formatNbHits(nbHits)}
       disabled={nbHits === 0}
-      onPress={commit}
+      onPress={onPress}
       adjustsFontSizeToFit={true}
     />
   )

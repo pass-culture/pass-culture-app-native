@@ -1,7 +1,6 @@
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { RecursivePartial, SearchState } from 'features/search/types'
-import { searchRouteParamsToSearchState } from 'features/search/utils/searchRouteParamsToSearchState'
+import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 
 import { addOrRemove } from './reducer.helpers'
@@ -35,7 +34,7 @@ export const initialSearchState: SearchState = {
 export type Action =
   | { type: 'INIT' }
   | { type: 'SET_STATE'; payload: Partial<SearchState> }
-  | { type: 'INIT_FROM_SEE_MORE'; payload: RecursivePartial<SearchState> }
+  | { type: 'INIT_FROM_SEE_MORE'; payload: Partial<SearchState> }
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
   | { type: 'RADIUS'; payload: number }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
@@ -65,7 +64,10 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'SHOW_RESULTS':
       return { ...state, showResults: action.payload }
     case 'INIT_FROM_SEE_MORE':
-      return searchRouteParamsToSearchState(action.payload)
+      return {
+        ...state,
+        ...action.payload,
+      }
     case 'PRICE_RANGE':
       return { ...state, priceRange: action.payload }
     case 'RADIUS':
