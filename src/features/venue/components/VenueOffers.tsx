@@ -61,9 +61,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
     navigate('Search', {})
   }, [])
 
-  const maxOffersDisplayInMobileCarousel = 10
-  const showSeeMore = nbHits > hits.length && hits.length > maxOffersDisplayInMobileCarousel
-
+  const showSeeMore = nbHits > hits.length
   const ListFooterComponent = useCallback(() => {
     if (!showSeeMore) return <HorizontalMargin />
     return (
