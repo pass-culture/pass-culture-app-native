@@ -4,6 +4,7 @@ import React from 'react'
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
+import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
@@ -20,5 +21,6 @@ export const useLocationChoice = (
     return { Icon: AroundMe, label: t`Autour de moi`, isSelected }
 
   const { place } = searchState
-  return { Icon: LocationPointer, label: place ? place.label : t`Choisir un lieu`, isSelected }
+  const Icon = searchState.venueId ? LocationBuilding : LocationPointer
+  return { Icon, label: place ? place.label : t`Choisir un lieu`, isSelected }
 }
