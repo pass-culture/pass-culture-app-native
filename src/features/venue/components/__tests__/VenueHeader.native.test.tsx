@@ -2,8 +2,8 @@ import React from 'react'
 import { Animated, Share, Platform } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import { goBack } from '__mocks__/@react-navigation/native'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { getWebappVenueUrl } from 'features/venue/services/useShareVenue'
 import { env } from 'libs/environment'
@@ -38,7 +38,7 @@ describe('<VenueHeader />', () => {
   it('should goBack when we press on the back button', async () => {
     const { getByTestId } = await renderVenueHeader()
     fireEvent.press(getByTestId('icon-back'))
-    expect(goBack).toBeCalledTimes(1)
+    expect(mockGoBack).toBeCalledTimes(1)
   })
 
   it('should fully display the title at the end of the animation', async () => {

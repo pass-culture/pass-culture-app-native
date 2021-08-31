@@ -1,10 +1,10 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { homeNavigateConfig } from 'features/navigation/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { testID } from 'tests/utils'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -22,12 +22,13 @@ interface HeaderIconProps {
 }
 
 const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
-  const { goBack } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
   function onPress() {
     if (onGoBack) {
-      return onGoBack()
+      onGoBack()
+    } else {
+      goBack()
     }
-    goBack()
   }
   return (
     <TouchableOpacity

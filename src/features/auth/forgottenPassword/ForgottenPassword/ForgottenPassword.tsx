@@ -23,7 +23,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ForgottenPassword: FunctionComponent = () => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, replace } = useNavigation<UseNavigationType>()
   const networkInfo = useNetInfo()
 
   const [email, setEmail] = useState('')
@@ -47,7 +47,7 @@ export const ForgottenPassword: FunctionComponent = () => {
     try {
       setIsFetching(true)
       await api.postnativev1requestPasswordReset({ email, token })
-      navigate('ResetPasswordEmailSent', { email })
+      replace('ResetPasswordEmailSent', { email })
     } catch (error) {
       setErrorMessage(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
       new MonitoringError(error, 'ForgottenPasswordRequestResetError')

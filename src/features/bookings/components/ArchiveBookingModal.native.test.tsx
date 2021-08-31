@@ -2,11 +2,11 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { goBack } from '__mocks__/@react-navigation/native'
 import {
   ArchiveBookingModal,
   ArchiveBookingModalProps,
 } from 'features/bookings/components/ArchiveBookingModal'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -63,7 +63,7 @@ describe('<ArchiveBookingModal />', () => {
         timeout: 5000,
       })
       expect(onDismiss).toBeCalled()
-      expect(goBack).toBeCalled()
+      expect(mockGoBack).toBeCalledTimes(1)
     })
     await superFlushWithAct()
   })

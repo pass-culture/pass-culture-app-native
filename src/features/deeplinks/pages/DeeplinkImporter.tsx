@@ -6,7 +6,8 @@ import styled from 'styled-components/native'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { resolveHandler } from 'features/deeplinks'
 import { useDeeplinkUrlHandler } from 'features/deeplinks/useDeeplinkUrlHandler'
-import { useBackNavigation } from 'features/navigation/backNavigation'
+import { homeNavigateConfig } from 'features/navigation/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -19,6 +20,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export const DeeplinkImporter: FunctionComponent = () => {
   const [url, setUrl] = useState('')
   const handleDeeplinkUrl = useDeeplinkUrlHandler()
+  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
 
   function resolveLink() {
     if (url.length > 0) {
@@ -33,16 +35,10 @@ export const DeeplinkImporter: FunctionComponent = () => {
 
   const { visible: fullPageModalVisible, hideModal: hideFullPageModal } = useModal(false)
 
-  const complexGoBack = useBackNavigation()
-
   return (
     <React.Fragment>
       <BottomContentPage>
-        <ModalHeader
-          title={t`Accès aux liens`}
-          leftIcon={ArrowPrevious}
-          onLeftIconPress={complexGoBack}
-        />
+        <ModalHeader title={t`Accès aux liens`} leftIcon={ArrowPrevious} onLeftIconPress={goBack} />
         <ModalContent>
           <StyledInput>
             <Typo.Body>{t`Un lien ne fonctionne pas ?`}</Typo.Body>

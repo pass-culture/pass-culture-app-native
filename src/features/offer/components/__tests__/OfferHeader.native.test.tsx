@@ -4,7 +4,7 @@ import { Animated, Share, Platform } from 'react-native'
 import { ThemeProvider } from 'styled-components/native'
 import waitForExpect from 'wait-for-expect'
 
-import { useRoute, goBack } from '__mocks__/@react-navigation/native'
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse, OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
@@ -12,6 +12,7 @@ import {
   paginatedFavoritesResponseSnap,
   addFavoriteJsonResponseSnap,
 } from 'features/favorites/api/snaps/favorisResponseSnap'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { getWebappOfferUrl } from 'features/offer/services/useShareOffer'
 import { analytics } from 'libs/analytics'
@@ -87,7 +88,7 @@ describe('<OfferHeader />', () => {
   it('should goBack when we press on the back button', async () => {
     const { getByTestId } = await renderOfferHeader({ isLoggedIn: true })
     fireEvent.press(getByTestId('icon-back'))
-    expect(goBack).toBeCalledTimes(1)
+    expect(mockGoBack).toBeCalledTimes(1)
   })
 
   it('should fully display the title at the end of the animation', async () => {

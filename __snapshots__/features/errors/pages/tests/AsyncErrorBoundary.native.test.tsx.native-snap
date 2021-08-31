@@ -58,6 +58,35 @@ exports[`AsyncErrorBoundary component should render 1`] = `
     }
   />
   <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "left": 24,
+        "opacity": 1,
+        "position": "absolute",
+        "top": 30,
+      }
+    }
+    testID="backArrow"
+  >
+    <View
+      height={40}
+      width={40}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
+  <View
     height="124"
     width="197"
   >

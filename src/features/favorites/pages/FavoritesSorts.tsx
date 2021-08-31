@@ -1,10 +1,10 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -23,7 +23,7 @@ const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
 const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy, string]>
 
 export const FavoritesSorts: React.FC = () => {
-  const { goBack } = useNavigation()
+  const { goBack } = useGoBack('Favorites')
   const {
     position,
     positionError,

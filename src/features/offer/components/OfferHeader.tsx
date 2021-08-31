@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import React, { useRef } from 'react'
 import { Animated } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -12,7 +12,8 @@ import {
   useFavorite,
   useRemoveFavorite,
 } from 'features/favorites/pages/useFavorites'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { isSharingSupported } from 'features/offer/services/isSharingSupported'
 import { analytics } from 'libs/analytics'
@@ -42,7 +43,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
     showModal: showSignInModal,
     hideModal: hideSignInModal,
   } = useModal(false)
-  const { goBack } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('Search')
   const shareOffer = useShareOffer(offerId)
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const favorite = useFavorite({ offerId })
