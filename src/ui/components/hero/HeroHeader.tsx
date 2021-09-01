@@ -3,42 +3,61 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
+import { BackgroundVenueHero } from 'ui/svg/icons/BackgroundVenueHero'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ScreenWidth } from 'ui/theme'
 
 interface Props {
   imageUrl?: string
   imageHeight: number
+  type: 'offer' | 'venue'
   minHeight?: number
 }
 
-export const HeroHeader: React.FC<Props> = (props) => (
-  <Container minHeight={props.minHeight}>
-    <HeroContainer>
-      {props.imageUrl ? (
-        <BlurImage
-          height={props.imageHeight}
-          blurRadius={Platform.OS === 'android' ? 5 : 20}
-          resizeMode="cover"
-          source={{ uri: props.imageUrl }}
-        />
-      ) : (
-        <BackgroundPlaceholder
-          testID="BackgroundPlaceholder"
-          width={ScreenWidth}
-          height={props.imageHeight}
-        />
-      )}
-      <Rectangle size={ScreenWidth} />
-    </HeroContainer>
-    {props.children}
-  </Container>
-)
+export const HeroHeader: React.FC<Props> = (props) => {
+  const backgroundImage =
+    props.type === 'offer' ? (
+      <BackgroundPlaceholder
+        testID="BackgroundPlaceholder"
+        width={ScreenWidth}
+        height={props.imageHeight}
+      />
+    ) : (
+      <BackgroundContainer>
+        {Array.from({ length: 10 }).map((_, index) => (
+          <BackgroundVenueHero key={index} testID={`BackgroundVenueHero-${index}`} />
+        ))}
+      </BackgroundContainer>
+    )
+
+  return (
+    <Container minHeight={props.minHeight}>
+      <HeroContainer>
+        {props.imageUrl ? (
+          <BlurImage
+            height={props.imageHeight}
+            blurRadius={Platform.OS === 'android' ? 5 : 20}
+            resizeMode="cover"
+            source={{ uri: props.imageUrl }}
+          />
+        ) : (
+          backgroundImage
+        )}
+        <Rectangle size={ScreenWidth} />
+      </HeroContainer>
+      {props.children}
+    </Container>
+  )
+}
 
 const Container = styled.View<{ minHeight?: number }>(({ minHeight = 0 }) => ({
   alignItems: 'center',
   minHeight,
 }))
+
+const BackgroundContainer = styled.View({
+  flexDirection: 'row',
+})
 
 const HeroContainer = styled.View({ alignItems: 'center', position: 'absolute' })
 const BlurImage = styled.Image<{ height: number }>(({ height }) => ({

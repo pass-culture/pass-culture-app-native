@@ -49,13 +49,114 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
         >
           <View
-            height={213.33333333333334}
-            testID="BackgroundPlaceholder"
-            width={751}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+              ]
+            }
           >
-            <Text>
-              BackgroundPlaceholder-SVG-Mock
-            </Text>
+            <View
+              fill="none"
+              height="259"
+              testID="BackgroundVenueHero-0"
+              width="235"
+            >
+              <Text>
+                BackgroundVenueHero-0-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="none"
+              height="259"
+              testID="BackgroundVenueHero-1"
+              width="235"
+            >
+              <Text>
+                BackgroundVenueHero-1-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="none"
+              height="259"
+              testID="BackgroundVenueHero-2"
+              width="235"
+            >
+              <Text>
+                BackgroundVenueHero-2-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="none"
+              height="259"
+              testID="BackgroundVenueHero-3"
+              width="235"
+            >
+              <Text>
+                BackgroundVenueHero-3-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="none"
+              height="259"
+              testID="BackgroundVenueHero-4"
+              width="235"
+            >
+              <Text>
+                BackgroundVenueHero-4-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="none"
+              height="259"
+              testID="BackgroundVenueHero-5"
+              width="235"
+            >
+              <Text>
+                BackgroundVenueHero-5-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="none"
+              height="259"
+              testID="BackgroundVenueHero-6"
+              width="235"
+            >
+              <Text>
+                BackgroundVenueHero-6-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="none"
+              height="259"
+              testID="BackgroundVenueHero-7"
+              width="235"
+            >
+              <Text>
+                BackgroundVenueHero-7-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="none"
+              height="259"
+              testID="BackgroundVenueHero-8"
+              width="235"
+            >
+              <Text>
+                BackgroundVenueHero-8-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="none"
+              height="259"
+              testID="BackgroundVenueHero-9"
+              width="235"
+            >
+              <Text>
+                BackgroundVenueHero-9-SVG-Mock
+              </Text>
+            </View>
           </View>
           <View
             height={8}
@@ -115,8 +216,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             testID="imagePlaceholder"
           >
             <View
-              height={288}
-              width={288}
+              height={384}
+              width={384}
             >
               <Text>
                 undefined-SVG-Mock
