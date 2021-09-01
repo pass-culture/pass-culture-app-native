@@ -7,8 +7,8 @@ export const getFilterCount = (searchState: SearchState): number => {
   const priceRange = searchState.priceRange ?? [0, MAX_PRICE]
 
   return (
-    // Localisation
-    +(searchState.locationType !== LocationType.EVERYWHERE) +
+    // Localisation + Lieu
+    +(searchState.locationType !== LocationType.EVERYWHERE || !!searchState.venueId) +
     // Catégories
     searchState.offerCategories.length +
     // Type d'offre
@@ -24,8 +24,6 @@ export const getFilterCount = (searchState: SearchState): number => {
     // Date
     +!!searchState.date +
     // Heure
-    +!!searchState.timeRange +
-    // Lieu
-    +!!searchState.venueId
+    +!!searchState.timeRange
   )
 }
