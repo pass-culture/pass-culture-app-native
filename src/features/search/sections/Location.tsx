@@ -29,7 +29,7 @@ export const Location: React.FC = () => {
   return (
     <Section title={SectionTitle.Location} count={+(locationType !== LocationType.EVERYWHERE)}>
       <LocationContentContainer testID="changeLocation" onPress={onPressChangeLocation}>
-        <Icon size={getSpacing(10)} color={ColorsEnum.BLACK} />
+        <Icon size={getSpacing(10)} color={ColorsEnum.BLACK} color2={ColorsEnum.BLACK} />
         <Typo.ButtonText>{label}</Typo.ButtonText>
         <Spacer.Flex />
         <ArrowNext size={24} />
