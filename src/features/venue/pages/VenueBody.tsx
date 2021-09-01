@@ -12,6 +12,7 @@ import { parseType } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Hero } from 'ui/components/hero/Hero'
+import { PartialAccordionDescription } from 'ui/components/PartialAccordionDescription'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -40,6 +41,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     latitude,
     longitude,
     venueTypeCode,
+    description,
   } = venue
 
   const venueAddress = address
@@ -86,6 +88,9 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         locationCoordinates={{ latitude, longitude }}
       />
       <Spacer.Column numberOfSpaces={4} />
+
+      {/* Description */}
+      <PartialAccordionDescription description={description || ''} />
 
       {/* Offres */}
       <SectionWithDivider visible={shouldShowVenueOffers}>
