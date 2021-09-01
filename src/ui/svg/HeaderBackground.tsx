@@ -6,18 +6,20 @@ import { v1 as uuidv1 } from 'uuid'
 import { getSpacing } from '../theme'
 
 interface Props {
+  height?: number
   width?: number | string
 }
 
 const NotMemoizedHeaderBackground: React.FC<Props> = (props) => {
   const defaultWidth = useWindowDimensions().width + getSpacing(1)
   const width = props.width || defaultWidth
+  const height = props.height || getSpacing(73.5)
   const LINEAR_GRADIENT_1_ID = uuidv1()
   const LINEAR_GRADIENT_2_ID = uuidv1()
   const PATH_ID = uuidv1()
   const MASK_ID = uuidv1()
   return (
-    <Svg preserveAspectRatio="none" width={width} height={getSpacing(73.5)} viewBox={`0 0 375 352`}>
+    <Svg preserveAspectRatio="none" height={height} width={width} viewBox={`0 0 375 352`}>
       <Defs>
         <LinearGradient
           id={LINEAR_GRADIENT_1_ID}

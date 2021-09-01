@@ -61,17 +61,32 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="imagePlaceholder"
-                  style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; height: 100%; justify-content: center; width: 100%;"
+                  style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; height: 100%; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 100%;"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="categoryIcon"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      categoryIcon-SVG-Mock
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="position: absolute;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      data-testid="categoryIcon"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        categoryIcon-SVG-Mock
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -941,17 +956,32 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="imagePlaceholder"
-                style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; height: 100%; justify-content: center; width: 100%;"
+                style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; height: 100%; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 100%;"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="categoryIcon"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    categoryIcon-SVG-Mock
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="position: absolute;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="categoryIcon"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      categoryIcon-SVG-Mock
+                    </div>
                   </div>
                 </div>
               </div>

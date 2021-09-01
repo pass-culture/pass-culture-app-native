@@ -50,13 +50,13 @@ function getPlaceholderContent(props: HeroProps): Omit<ImagePlaceholderProps, 's
   if (props.type === 'offer') {
     return {
       Icon: mapCategoryToIcon(props.categoryName),
-      colors: [ColorsEnum.GREY_LIGHT, ColorsEnum.GREY_MEDIUM],
+      backgroundColors: [ColorsEnum.GREY_LIGHT, ColorsEnum.GREY_MEDIUM],
       borderRadius: BorderRadiusEnum.BORDER_RADIUS,
     }
   }
   return {
     Icon: mapVenueTypeToIcon(props.venueType),
-    colors: [ColorsEnum.PRIMARY, ColorsEnum.SECONDARY],
     borderRadius: BorderRadiusEnum.BUTTON,
+    iconColor: ColorsEnum.WHITE,
   }
 }
