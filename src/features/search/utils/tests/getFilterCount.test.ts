@@ -55,4 +55,32 @@ describe('getFilterCount', () => {
       expect(getFilterCount(state)).toEqual(expected)
     }
   )
+
+  it('should return the correct number of filter for all location configurations', () => {
+    const venueSelected: SearchState = {
+      ...initialSearchState,
+      locationType: LocationType.PLACE,
+      venueId,
+    }
+    expect(getFilterCount(venueSelected)).toEqual(1)
+
+    const placeSelected: SearchState = {
+      ...initialSearchState,
+      locationType: LocationType.PLACE,
+      place: { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } },
+    }
+    expect(getFilterCount(placeSelected)).toEqual(1)
+
+    const everywhereSelected: SearchState = {
+      ...initialSearchState,
+      locationType: LocationType.EVERYWHERE,
+    }
+    expect(getFilterCount(everywhereSelected)).toEqual(0)
+
+    const aroundMeSelected: SearchState = {
+      ...initialSearchState,
+      locationType: LocationType.AROUND_ME,
+    }
+    expect(getFilterCount(aroundMeSelected)).toEqual(1)
+  })
 })
