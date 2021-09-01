@@ -12,6 +12,8 @@ export const venueResponseSnap: VenueResponse = {
   withdrawalDetails: 'How to withdraw, https://test.com',
   address: '1 boulevard Poissonnière',
   postalCode: '75000',
+  description:
+    'Lorem ipsum dolor sit amet https://pass.culture.fr/ consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.',
 }
 
 export const venueWithNoAddressResponseSnap: VenueResponse = {
@@ -25,4 +27,6 @@ export const venueWithNoAddressResponseSnap: VenueResponse = {
   isPermanent: true,
   withdrawalDetails: null,
   postalCode: '15000',
+  description:
+    'Lorem ipsum dolor sit amet https://pass.culture.fr/ consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.',
 }
