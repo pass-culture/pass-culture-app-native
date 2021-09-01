@@ -98,27 +98,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
           testID="image-container"
         >
-          <BVLinearGradient
+          <View
             borderRadius={24}
-            colors={
-              Array [
-                4293591125,
-                4281467030,
-              ]
-            }
-            endPoint={
-              Object {
-                "x": 0.5,
-                "y": 1,
-              }
-            }
-            locations={null}
-            startPoint={
-              Object {
-                "x": 0.5,
-                "y": 0,
-              }
-            }
             style={
               Array [
                 Object {
@@ -126,6 +107,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   "borderRadius": 24,
                   "height": "100%",
                   "justifyContent": "center",
+                  "overflow": "hidden",
                   "width": "100%",
                 },
               ]
@@ -133,16 +115,34 @@ exports[`<Venue /> should match snapshot 1`] = `
             testID="imagePlaceholder"
           >
             <View
-              fill="#c7c7cc"
-              height={96}
-              testID="categoryIcon"
-              width={96}
+              height={288}
+              width={288}
             >
               <Text>
-                categoryIcon-SVG-Mock
+                undefined-SVG-Mock
               </Text>
             </View>
-          </BVLinearGradient>
+            <View
+              style={
+                Array [
+                  Object {
+                    "position": "absolute",
+                  },
+                ]
+              }
+            >
+              <View
+                fill="#ffffff"
+                height={96}
+                testID="categoryIcon"
+                width={96}
+              >
+                <Text>
+                  categoryIcon-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View

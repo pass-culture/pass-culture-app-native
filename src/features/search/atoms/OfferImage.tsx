@@ -22,7 +22,12 @@ export const OfferImage: React.FC<Props> = ({ categoryName, imageUrl }) => {
       {imageUrl ? (
         <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
       ) : (
-        <ImagePlaceholder Icon={Icon} size={getSpacing(10)} borderRadius={borderRadius} />
+        <ImagePlaceholder
+          backgroundColors={backgroundColors}
+          Icon={Icon}
+          size={getSpacing(10)}
+          borderRadius={borderRadius}
+        />
       )}
     </Container>
   )
@@ -31,6 +36,7 @@ export const OfferImage: React.FC<Props> = ({ categoryName, imageUrl }) => {
 const borderRadius = 4
 const width = getSpacing(16)
 const height = getSpacing(24) // ratio 2/3
+const backgroundColors = [ColorsEnum.GREY_LIGHT, ColorsEnum.GREY_MEDIUM]
 
 const imageStyle = { borderRadius, height, width }
 
