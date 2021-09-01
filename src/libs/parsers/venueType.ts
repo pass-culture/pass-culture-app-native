@@ -72,7 +72,7 @@ export const MAP_TYPE_TO_ICON: {
   VISUAL_ARTS: VisualArtIcon,
 }
 
-export const mapTypeToIcon = (types: VenueTypeCode | null): React.FC<IconInterface> => {
+export const mapVenueTypeToIcon = (types: VenueTypeCode | null): React.FC<IconInterface> => {
   if (types && types in MAP_TYPE_TO_ICON) return MAP_TYPE_TO_ICON[types]
   return OtherIcon
 }

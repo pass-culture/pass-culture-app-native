@@ -22,8 +22,8 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
-import { blurImageHeight, HeroHeader } from 'ui/components/hero/HeroHeader'
-import { heroBackgroundHeight, heroMarginTop } from 'ui/components/hero/useHeroDimensions'
+import { HeroHeader } from 'ui/components/hero/HeroHeader'
+import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimensions'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -112,10 +112,7 @@ export function BookingDetails() {
         }}
         testID="BookingDetailsScrollView"
         bounces={false}>
-        <HeroHeader
-          imageHeight={heroBackgroundHeight}
-          categoryName={offer.category.name}
-          imageUrl={offer.image?.url}>
+        <HeroHeader imageHeight={blurImageHeight} imageUrl={offer.image?.url}>
           <Spacer.Column numberOfSpaces={heroMarginTop} />
           <ThreeShapesTicket>
             <BookingDetailsTicketContent

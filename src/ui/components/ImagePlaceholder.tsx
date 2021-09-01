@@ -2,36 +2,27 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum, VenueTypeCode } from 'api/gen'
-import { mapCategoryToIcon, mapTypeToIcon } from 'libs/parsers'
+import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-interface Props {
-  categoryName: CategoryNameEnum | VenueTypeCode | null
+export interface ImagePlaceholderProps {
+  Icon: React.FC<IconInterface>
   size: number
   borderRadius?: number
+  colors?: ColorsEnum[]
 }
 
-export const ImagePlaceholder: React.FC<Props> = ({
-  categoryName,
+export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
+  colors = [ColorsEnum.GREY_LIGHT, ColorsEnum.GREY_MEDIUM],
+  Icon,
   size,
   borderRadius = BorderRadiusEnum.BORDER_RADIUS,
-}) => {
-  const CategoryIcon =
-    categoryName && categoryName in CategoryNameEnum
-      ? mapCategoryToIcon(categoryName as CategoryNameEnum)
-      : mapTypeToIcon(categoryName as VenueTypeCode)
-
-  return (
-    <StyledLinearGradient
-      colors={[ColorsEnum.GREY_LIGHT, ColorsEnum.GREY_MEDIUM]}
-      borderRadius={borderRadius}
-      testID="imagePlaceholder">
-      <CategoryIcon testID="categoryIcon" size={size} color={ColorsEnum.GREY_MEDIUM} />
-    </StyledLinearGradient>
-  )
-}
+}) => (
+  <StyledLinearGradient colors={colors} borderRadius={borderRadius} testID="imagePlaceholder">
+    <Icon testID="categoryIcon" size={size} color={ColorsEnum.GREY_MEDIUM} />
+  </StyledLinearGradient>
+)
 
 const StyledLinearGradient = styled(LinearGradient)<{ borderRadius: number }>(
   ({ borderRadius }) => ({

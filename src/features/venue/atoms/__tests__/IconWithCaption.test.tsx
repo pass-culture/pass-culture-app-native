@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { VenueTypeCode } from 'api/gen'
-import { mapTypeToIcon, parseType } from 'libs/parsers'
+import { mapVenueTypeToIcon, parseType } from 'libs/parsers'
 import { render } from 'tests/utils'
 
 import { IconWithCaption } from '../IconWithCaption'
 
 const typeLabel = parseType(VenueTypeCode.MOVIE)
 const typeLabelNull = parseType(null)
-const icon = mapTypeToIcon(VenueTypeCode.MOVIE)
+const icon = mapVenueTypeToIcon(VenueTypeCode.MOVIE)
 
 describe('IconWithCaption', () => {
   it('should render correctly', () => {
