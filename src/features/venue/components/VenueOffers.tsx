@@ -56,9 +56,9 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   }, [params])
 
   const onPressSeeMore = useCallback(() => {
-    // TODO(antoinewg) add search params
-    navigate('Search', {})
-  }, [])
+    // TODO(antoinewg) add search params with category filter
+    navigate('Search', params)
+  }, [params])
 
   const showSeeMore = nbHits > hits.length
   const ListFooterComponent = useCallback(() => {
