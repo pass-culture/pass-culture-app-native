@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface ImagePlaceholderProps {
@@ -33,7 +33,7 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
     )
   }
 
-  const backgroundSize = 3 * iconSize
+  const backgroundSize = getSpacing(iconSize)
 
   return (
     <HeaderBackgroundWrapper borderRadius={borderRadius} testID="imagePlaceholder">

@@ -20,7 +20,7 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions(placeholderProps.type, !!imageUrl)
 
   return (
-    <HeroHeader imageHeight={heroBackgroundHeight} imageUrl={imageUrl}>
+    <HeroHeader type={placeholderProps.type} imageHeight={heroBackgroundHeight} imageUrl={imageUrl}>
       <Spacer.Column numberOfSpaces={heroMarginTop} />
       <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (
