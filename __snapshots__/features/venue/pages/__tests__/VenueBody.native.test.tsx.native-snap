@@ -80,23 +80,20 @@ exports[`<VenueBody /> should render correctly 1`] = `
               "shadowRadius": 12,
             },
             Object {
-              "aspectRatio": 1.5,
+              "aspectRatio": 1,
               "borderRadius": 8,
-              "height": 288,
-              "maxHeight": 288,
-              "maxWidth": 432,
-              "width": 702,
+              "width": 216,
             },
           ]
         }
         testID="image-container"
       >
         <BVLinearGradient
-          borderRadius={8}
+          borderRadius={24}
           colors={
             Array [
-              4294309365,
-              4291282892,
+              4293591125,
+              4281467030,
             ]
           }
           endPoint={
@@ -116,7 +113,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             Array [
               Object {
                 "alignItems": "center",
-                "borderRadius": 8,
+                "borderRadius": 24,
                 "height": "100%",
                 "justifyContent": "center",
                 "width": "100%",

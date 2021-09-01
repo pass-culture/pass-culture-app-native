@@ -4,6 +4,7 @@ import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
+import { mapCategoryToIcon } from 'libs/parsers'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
 
@@ -14,17 +15,14 @@ interface Props {
 
 export const OfferImage: React.FC<Props> = ({ categoryName, imageUrl }) => {
   const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
+  const Icon = mapCategoryToIcon(categoryName || null)
 
   return (
     <Container>
       {imageUrl ? (
         <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
       ) : (
-        <ImagePlaceholder
-          categoryName={categoryName || null}
-          size={getSpacing(10)}
-          borderRadius={borderRadius}
-        />
+        <ImagePlaceholder Icon={Icon} size={getSpacing(10)} borderRadius={borderRadius} />
       )}
     </Container>
   )

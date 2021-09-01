@@ -50,12 +50,12 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="image-container"
-              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); height: -32px; max-height: 288px; max-width: 432px; width: -48px;"
+              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); width: 216px;"
             >
               <div
                 class="css-view-1dbjc4n"
                 data-testid="imagePlaceholder"
-                style="align-items: center; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 100%; justify-content: center; width: 100%;"
+                style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; height: 100%; justify-content: center; width: 100%;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -758,12 +758,12 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="image-container"
-            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); height: -32px; max-height: 288px; max-width: 432px; width: -48px;"
+            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); width: 216px;"
           >
             <div
               class="css-view-1dbjc4n"
               data-testid="imagePlaceholder"
-              style="align-items: center; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 100%; justify-content: center; width: 100%;"
+              style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; height: 100%; justify-content: center; width: 100%;"
             >
               <div
                 class="css-view-1dbjc4n"

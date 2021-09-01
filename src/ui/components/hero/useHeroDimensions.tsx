@@ -1,38 +1,48 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 
-import { blurImageHeight } from 'ui/components/hero/HeroHeader'
 import { getSpacing } from 'ui/theme'
-import { BorderRadiusEnum, LENGTH_L, MARGIN_DP } from 'ui/theme/grid'
+import { BorderRadiusEnum, LENGTH_M, LENGTH_L, MARGIN_DP } from 'ui/theme/grid'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const RATIO_LANDSCAPE = 3 / 2
 const RATIO_PORTRAIT = 2 / 3
 
-export const heroBackgroundHeight = blurImageHeight
+export const blurImageHeight = getSpacing(74)
 export const heroMarginTop = MARGIN_DP + getSpacing(0.5)
 
-export const useHeroDimensions = (landscape: boolean) => {
+export const useHeroDimensions = (type: 'offer' | 'venue', hasImage: boolean) => {
   const { top } = useCustomSafeInsets()
   const fullWidth = useWindowDimensions().width - 2 * MARGIN_DP
 
   return useMemo(() => {
-    if (landscape) {
-      return {
-        heroBackgroundHeight: top + heroBackgroundHeight / RATIO_LANDSCAPE,
-        imageStyle: {
-          borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-          maxWidth: LENGTH_L * RATIO_LANDSCAPE,
-          height: Math.min(LENGTH_L, fullWidth / RATIO_LANDSCAPE),
-          width: fullWidth,
-          maxHeight: LENGTH_L,
-          aspectRatio: RATIO_LANDSCAPE,
-        },
+    if (type === 'venue') {
+      if (hasImage) {
+        return {
+          heroBackgroundHeight: top + blurImageHeight / RATIO_LANDSCAPE,
+          imageStyle: {
+            borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+            maxWidth: LENGTH_L * RATIO_LANDSCAPE,
+            height: Math.min(LENGTH_L, fullWidth / RATIO_LANDSCAPE),
+            width: fullWidth,
+            maxHeight: LENGTH_L,
+            aspectRatio: RATIO_LANDSCAPE,
+          },
+        }
+      } else {
+        return {
+          heroBackgroundHeight: top + blurImageHeight / RATIO_LANDSCAPE,
+          imageStyle: {
+            borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+            width: LENGTH_M,
+            aspectRatio: 1,
+          },
+        }
       }
     }
 
     return {
-      heroBackgroundHeight: top + heroBackgroundHeight,
+      heroBackgroundHeight: top + blurImageHeight,
       imageStyle: {
         borderRadius: BorderRadiusEnum.BORDER_RADIUS,
         height: blurImageHeight,
@@ -41,5 +51,5 @@ export const useHeroDimensions = (landscape: boolean) => {
         aspectRatio: RATIO_PORTRAIT,
       },
     }
-  }, [landscape, top])
+  }, [hasImage, type, top])
 }

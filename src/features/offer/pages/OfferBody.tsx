@@ -76,7 +76,7 @@ export const OfferBody: FunctionComponent<{
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      <Hero categoryName={category.name} imageUrl={offerResponse.image?.url || ''} />
+      <Hero imageUrl={offerResponse.image?.url} type="offer" categoryName={category.name || null} />
       <Spacer.Column numberOfSpaces={4} />
       <LocationCaption venue={venue} isDigital={offerResponse.isDigital} />
       <Spacer.Column numberOfSpaces={2} />

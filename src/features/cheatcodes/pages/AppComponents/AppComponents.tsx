@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum } from 'api/gen/api'
+import { CategoryNameEnum, VenueTypeCode } from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
@@ -16,7 +16,7 @@ import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeil
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { mapCategoryToIcon } from 'libs/parsers'
+import { mapCategoryToIcon, MAP_CATEGORY_TO_ICON } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner, BannerType } from 'ui/components/Banner'
@@ -280,15 +280,20 @@ export const AppComponents: FunctionComponent = () => {
 
       {/* Heros */}
       <AccordionItem title="Heros">
-        {/* Default Hero */}
         <Typo.Title4>Default Hero - Offer</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <Hero imageUrl={''} />
-        <Spacer.Column numberOfSpaces={4} />
-        {/* Landscape Hero */}
-        <Typo.Title4>Landscape Hero - Venue</Typo.Title4>
+        <Hero imageUrl={undefined} type="offer" categoryName={CategoryNameEnum.CINEMA} />
+        <Typo.Title4>Default Hero - Venue</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <Hero imageUrl={''} landscape />
+        <Hero imageUrl={undefined} type="venue" venueType={VenueTypeCode.ARTISTICCOURSE} />
+        <Spacer.Column numberOfSpaces={4} />
+        <Typo.Title4>Landscape Hero - Venue with image</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <Hero
+          imageUrl="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
+          type="venue"
+          venueType={VenueTypeCode.ARTISTICCOURSE}
+        />
       </AccordionItem>
 
       <Divider />
@@ -303,7 +308,7 @@ export const AppComponents: FunctionComponent = () => {
       {/* ImagePlaceholder */}
       <AccordionItem title="ImagePlaceholder">
         <ImagePlaceholder
-          categoryName={CategoryNameEnum.MUSIQUE}
+          Icon={MAP_CATEGORY_TO_ICON.MUSIQUE}
           size={getSpacing(24)}
           borderRadius={4}
         />
