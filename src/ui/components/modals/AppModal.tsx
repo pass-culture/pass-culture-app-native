@@ -82,48 +82,41 @@ export const AppModal: FunctionComponent<Props> = ({
         onBackdropPress={handleOnBackdropPress()}
         style={[styles.container, styles.topOffset]}
         testID="modal">
-        <ClicAwayArea testID="click-away-area">
-          <Container activeOpacity={1}>
-            <ModalHeader
-              title={title}
-              leftIcon={leftIcon}
-              onLeftIconPress={onLeftIconPress}
-              rightIcon={rightIcon}
-              onRightIconPress={onRightIconPress}
-              numberOfLines={titleNumberOfLines}
-            />
+        <Container activeOpacity={1}>
+          <ModalHeader
+            title={title}
+            leftIcon={leftIcon}
+            onLeftIconPress={onLeftIconPress}
+            rightIcon={rightIcon}
+            onRightIconPress={onRightIconPress}
+            numberOfLines={titleNumberOfLines}
+          />
 
-            <Content style={{ paddingBottom: keyboardHeight || bottom }}>
-              {isScrollable ? (
-                <StyledScrollView
-                  ref={scrollViewRef}
-                  showsVerticalScrollIndicator={false}
-                  onContentSizeChange={() =>
-                    scrollViewRef.current !== null && scrollViewRef.current.scrollTo({ y: 0 })
-                  }
-                  contentContainerStyle={{ paddingVertical: getSpacing(2) }}>
-                  <View onStartShouldSetResponder={() => true}>{children}</View>
-                </StyledScrollView>
-              ) : (
-                children
-              )}
-            </Content>
-          </Container>
-        </ClicAwayArea>
+          <Content style={{ paddingBottom: keyboardHeight || bottom }}>
+            {isScrollable ? (
+              <StyledScrollView
+                ref={scrollViewRef}
+                showsVerticalScrollIndicator={false}
+                onContentSizeChange={() =>
+                  scrollViewRef.current !== null && scrollViewRef.current.scrollTo({ y: 0 })
+                }
+                contentContainerStyle={{ paddingVertical: getSpacing(2) }}>
+                <View onStartShouldSetResponder={() => true}>{children}</View>
+              </StyledScrollView>
+            ) : (
+              children
+            )}
+          </Content>
+        </Container>
       </RNModal>
     </React.Fragment>
   )
 }
 
-const ClicAwayArea = styled(View)({
-  flexGrow: 1,
-  width: '100%',
-})
-
 const Container = styled(TouchableOpacity)({
   flexDirection: 'column',
   backgroundColor: ColorsEnum.WHITE,
-  justifyContent: 'flex-start',
+  justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
   maxHeight: '90%',
