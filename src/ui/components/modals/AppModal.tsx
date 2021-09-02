@@ -65,7 +65,7 @@ export const AppModal: FunctionComponent<Props> = ({
     return useMemo(
       () =>
         StyleSheet.create({
-          topOffset: {
+          modaleContainerStyle: {
             ...(layout === 'bottom'
               ? {
                   position: 'absolute',
@@ -74,15 +74,6 @@ export const AppModal: FunctionComponent<Props> = ({
                   bottom: 0,
                 }
               : {}),
-          },
-          topInset: {
-            ...(layout === 'bottom'
-              ? {
-                  marginTop: 0,
-                }
-              : {}),
-          },
-          container: {
             maxWidth,
             ...(layout === 'bottom'
               ? {
@@ -107,10 +98,6 @@ export const AppModal: FunctionComponent<Props> = ({
             borderTopStartRadius: getSpacing(4),
             borderTopEndRadius: getSpacing(4),
             padding: getSpacing(6),
-          },
-          contentContainer: {},
-          modaleIcon: {
-            marginTop: 20,
           },
         }),
       [layout, spacing, height, maxWidth]
@@ -152,7 +139,7 @@ export const AppModal: FunctionComponent<Props> = ({
         isVisible={visible}
         onBackdropPress={handleOnBackdropPress()}
         // TODO : remove stylesheet and use styledcomponents
-        style={[styles.container, styles.topOffset]}
+        style={styles.modaleContainerStyle}
         testID="modal"
         deviceHeight={windowHeight}
         deviceWidth={windowWidth}>
