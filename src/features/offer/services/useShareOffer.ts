@@ -6,7 +6,7 @@ import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
 import { humanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
-import { env, useWebAppUrl, WEBAPP_V2_URL } from 'libs/environment'
+import { useWebAppUrl, WEBAPP_V1_URL, WEBAPP_V2_URL } from 'libs/environment'
 import { MonitoringError } from 'libs/monitoring'
 
 import { useOffer } from '../api/useOffer'
@@ -19,11 +19,11 @@ export function getWebappOfferUrl(offerId: number, webAppUrl: string) {
     const path = new DeeplinkPathWithPathParams(DeeplinkPath.OFFER, { id: offerId.toString() })
     return `${webAppUrl}/${path.getFullPath()}`
   }
-  if (webAppUrl === env.WEBAPP_URL) {
+  if (webAppUrl === WEBAPP_V1_URL) {
     return `${webAppUrl}/accueil/details/${humanizeId(offerId)}`
   }
   throw new MonitoringError(
-    `webAppUrl=${webAppUrl} should be equal to WEBAPP_V2_URL=${WEBAPP_V2_URL} or env.WEBAPP_URL=${env.WEBAPP_URL}`
+    `webAppUrl=${webAppUrl} should be equal to WEBAPP_V2_URL=${WEBAPP_V2_URL} or WEBAPP_V1_URL=${WEBAPP_V1_URL}`
   )
 }
 

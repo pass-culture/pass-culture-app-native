@@ -172,6 +172,7 @@ android {
         resValue "string", "build_config_package", "com.passculture" // @react-native-config
         resValue "string", "BATCH_API_KEY", project.env.get("BATCH_API_KEY_ANDROID")
         resValue "string", "WEBAPP_NATIVE_REDIRECTION_DOMAIN", project.env.get("WEBAPP_NATIVE_REDIRECTION_DOMAIN")
+        resValue "string", "WEBAPP_V1_DOMAIN", project.env.get("WEBAPP_V1_DOMAIN")
         resValue "string", "WEBAPP_V2_DOMAIN", project.env.get("WEBAPP_V2_DOMAIN")
         versionCode (packageJson.build as Integer)
         versionName packageJson.version

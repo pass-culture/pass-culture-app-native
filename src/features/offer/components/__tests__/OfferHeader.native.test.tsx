@@ -15,7 +15,7 @@ import {
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { getWebappOfferUrl } from 'features/offer/services/useShareOffer'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { env, WEBAPP_V1_URL } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -103,16 +103,19 @@ describe('<OfferHeader />', () => {
     const { getByTestId } = await renderOfferHeader({ isLoggedIn: true })
 
     fireEvent.press(getByTestId('icon-share'))
-    expect(share).toHaveBeenCalledTimes(1)
-    const fullWebAppUrlWithParams = getWebappOfferUrl(116656, env.WEBAPP_URL)
-    const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
-    const message =
-      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
-    const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
-    expect(share).toHaveBeenCalledWith(
-      { message, title, url },
-      { dialogTitle: title, subject: title }
-    )
+
+    waitForExpect(() => {
+      expect(share).toHaveBeenCalledTimes(1)
+      const fullWebAppUrlWithParams = getWebappOfferUrl(116656, WEBAPP_V1_URL)
+      const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
+      const message =
+        'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
+      const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
+      expect(share).toHaveBeenCalledWith(
+        { message, title, url },
+        { dialogTitle: title, subject: title }
+      )
+    })
   })
 
   it('should call Share with the right arguments on Android', async () => {
@@ -121,17 +124,20 @@ describe('<OfferHeader />', () => {
     const { getByTestId } = await renderOfferHeader({ isLoggedIn: true })
 
     fireEvent.press(getByTestId('icon-share'))
-    expect(share).toHaveBeenCalledTimes(1)
-    const fullWebAppUrlWithParams = getWebappOfferUrl(116656, env.WEBAPP_URL)
-    const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
-    const messageWithUrl =
-      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
-      url
-    const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
-    expect(share).toHaveBeenCalledWith(
-      { message: messageWithUrl, title, url },
-      { dialogTitle: title, subject: title }
-    )
+
+    waitForExpect(() => {
+      expect(share).toHaveBeenCalledTimes(1)
+      const fullWebAppUrlWithParams = getWebappOfferUrl(116656, WEBAPP_V1_URL)
+      const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
+      const messageWithUrl =
+        'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
+        url
+      const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
+      expect(share).toHaveBeenCalledWith(
+        { message: messageWithUrl, title, url },
+        { dialogTitle: title, subject: title }
+      )
+    })
   })
 
   it('should display SignIn modal when pressing Favorite - not logged in users', async () => {

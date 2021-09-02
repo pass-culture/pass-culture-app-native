@@ -58,6 +58,6 @@ export const env: Environment = {
   TMX_ORGID: 'xyzt',
   URL_PREFIX: 'passculture',
   WEBAPP_NATIVE_REDIRECTION_DOMAIN: 'app.passculture-testing.beta.gouv.fr',
-  WEBAPP_URL: 'https://webapp.example.com',
+  WEBAPP_V1_DOMAIN: 'webapp-v1.example.com',
   WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',
 }
