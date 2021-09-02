@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { ScrollView, TouchableOpacity, View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import RNModal from 'react-native-modal'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Style } from 'ui/components/Style'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, UniqueColors } from 'ui/theme'
+import { getSpacing, UniqueColors } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
@@ -82,48 +82,34 @@ export const AppModal: FunctionComponent<Props> = ({
         onBackdropPress={handleOnBackdropPress()}
         style={[styles.container, styles.topOffset]}
         testID="modal">
-        <Container activeOpacity={1}>
-          <ModalHeader
-            title={title}
-            leftIcon={leftIcon}
-            onLeftIconPress={onLeftIconPress}
-            rightIcon={rightIcon}
-            onRightIconPress={onRightIconPress}
-            numberOfLines={titleNumberOfLines}
-          />
+        <ModalHeader
+          title={title}
+          leftIcon={leftIcon}
+          onLeftIconPress={onLeftIconPress}
+          rightIcon={rightIcon}
+          onRightIconPress={onRightIconPress}
+          numberOfLines={titleNumberOfLines}
+        />
 
-          <Content style={{ paddingBottom: keyboardHeight || bottom }}>
-            {isScrollable ? (
-              <StyledScrollView
-                ref={scrollViewRef}
-                showsVerticalScrollIndicator={false}
-                onContentSizeChange={() =>
-                  scrollViewRef.current !== null && scrollViewRef.current.scrollTo({ y: 0 })
-                }
-                contentContainerStyle={{ paddingVertical: getSpacing(2) }}>
-                <View onStartShouldSetResponder={() => true}>{children}</View>
-              </StyledScrollView>
-            ) : (
-              children
-            )}
-          </Content>
-        </Container>
+        <Content style={{ paddingBottom: keyboardHeight || bottom }}>
+          {isScrollable ? (
+            <StyledScrollView
+              ref={scrollViewRef}
+              showsVerticalScrollIndicator={false}
+              onContentSizeChange={() =>
+                scrollViewRef.current !== null && scrollViewRef.current.scrollTo({ y: 0 })
+              }
+              contentContainerStyle={{ paddingVertical: getSpacing(2) }}>
+              <View onStartShouldSetResponder={() => true}>{children}</View>
+            </StyledScrollView>
+          ) : (
+            children
+          )}
+        </Content>
       </RNModal>
     </React.Fragment>
   )
 }
-
-const Container = styled(TouchableOpacity)({
-  flexDirection: 'column',
-  backgroundColor: ColorsEnum.WHITE,
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100%',
-  maxHeight: '90%',
-  borderTopStartRadius: getSpacing(4),
-  borderTopEndRadius: getSpacing(4),
-  padding: getSpacing(5),
-})
 
 const Content = styled.View({
   paddingTop: getSpacing(5),

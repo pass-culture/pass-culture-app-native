@@ -263,98 +263,92 @@ Object {
           class="css-view-1dbjc4n r-pointerEvents-12vffkv"
           data-testid="modal"
           id="animatedComponent"
-          style="background-color: rgb(255, 255, 255); border-top-left-radius: 20px; border-top-right-radius: 20px; bottom: 0px; flex: 1; justify-content: center; margin: auto 0px 0px 0px; padding: 4px 4px 4px 4px; position: absolute; transform: translateY(0px); width: 100%;"
+          style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 16px; border-top-right-radius: 16px; bottom: 0px; flex: 1; flex-direction: column; justify-content: center; margin: auto 0px 0px 0px; max-height: 90%; padding: 48px 24px 48px 24px; position: absolute; transform: translateY(0px); width: 100%;"
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 16px; border-top-right-radius: 16px; cursor: pointer; flex-direction: column; justify-content: center; max-height: 90%; padding: 20px 20px 20px 20px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
+            style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%; z-index: 1;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%; z-index: 1;"
+              data-testid="leftIconButton"
+              style="align-items: flex-start; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; margin-left: -4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              tabindex="0"
+            />
+            <div
+              class="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.8; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+            >
+              Connecte-toi pour profiter de cette fonctionnalité
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="rightIconButton"
+              style="align-items: flex-end; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; margin-right: -4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              tabindex="0"
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="leftIconButton"
-                style="align-items: flex-start; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; margin-left: -4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                tabindex="0"
-              />
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.8; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
-              >
-                Connecte-toi pour profiter de cette fonctionnalité
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                data-testid="rightIconButton"
-                style="align-items: flex-end; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; margin-right: -4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                tabindex="0"
+                data-testid="rightIcon"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  data-testid="rightIcon"
+                  class="css-text-901oao"
+                  dir="auto"
                 >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                  >
-                    rightIcon-SVG-Mock
-                  </div>
+                  rightIcon-SVG-Mock
                 </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; max-width: 500px; padding-bottom: 8px; padding-top: 20px; width: 100%;"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="padding-bottom: 30px; text-align: center;"
+            >
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+              >
+                Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
+              </span>
+            </div>
+            <div
+              aria-label="S'inscrire"
+              class="css-view-1dbjc4n"
+              data-testid="S'inscrire"
+              style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+              tabindex="0"
+            >
+              <div
+                class="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+              >
+                S'inscrire
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; max-width: 500px; padding-bottom: 8px; padding-top: 20px; width: 100%;"
+              style="height: 12px;"
+            />
+            <div
+              aria-label="Se connecter"
+              class="css-view-1dbjc4n"
+              data-testid="Se connecter"
+              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+              tabindex="0"
             >
               <div
-                class="css-text-901oao"
+                class="css-text-901oao css-textOneLine-vcwn7f"
                 dir="auto"
-                style="padding-bottom: 30px; text-align: center;"
+                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
               >
-                <span
-                  class="css-text-901oao css-textHasAncestor-16my406"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-                >
-                  Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
-                </span>
-              </div>
-              <div
-                aria-label="S'inscrire"
-                class="css-view-1dbjc4n"
-                data-testid="S'inscrire"
-                style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                tabindex="0"
-              >
-                <div
-                  class="css-text-901oao css-textOneLine-vcwn7f"
-                  dir="auto"
-                  style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
-                >
-                  S'inscrire
-                </div>
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="height: 12px;"
-              />
-              <div
-                aria-label="Se connecter"
-                class="css-view-1dbjc4n"
-                data-testid="Se connecter"
-                style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                tabindex="0"
-              >
-                <div
-                  class="css-text-901oao css-textOneLine-vcwn7f"
-                  dir="auto"
-                  style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
-                >
-                  Se connecter
-                </div>
+                Se connecter
               </div>
             </div>
           </div>
