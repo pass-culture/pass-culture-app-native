@@ -51,6 +51,13 @@ export async function openExternalUrl(url: string, logEvent: boolean | undefined
         analytics.logOpenExternalUrl(url)
       }
     })
+  } else {
+    if (url === 'fb://page/2202916773290436' || url === 'fb://page/?id=2202916773290436')
+      Linking.openURL('https://www.facebook.com/passCultureofficiel/').then(() => {
+        if (logEvent) {
+          analytics.logOpenExternalUrl('https://www.facebook.com/passCultureofficiel/')
+        }
+      })
   }
 }
 
