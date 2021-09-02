@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { Spacer } from '@pass-culture/id-check'
 import React, { useRef, useState } from 'react'
 import {
   Animated,
@@ -12,35 +11,49 @@ import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   description?: string | undefined
 }
 
+const NUMBER_OF_LINES = 3
+const ANIMATION_DURATION = 500 //ms
+const PARTIAL_DESCRIPTION_HEIGHT = getSpacing(NUMBER_OF_LINES * 5)
+const LOREM_WITH_URL =
+  ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.'
+
 export const PartialAccordionDescription: React.FC<Props> = ({ description = '' }) => {
-  const animatedController = useRef(new Animated.Value(0)).current
   const [open, setOpen] = useState(false)
   const [totalDescriptionHeight, setTotalDescriptionHeight] = useState<number>(0)
+  const [maxLines, setMaxLines] = useState<number | undefined>(NUMBER_OF_LINES)
+  const animatedController = useRef(new Animated.Value(0)).current
 
   const toggleDescription = () => {
     Animated.timing(animatedController, {
-      duration: 500,
+      duration: ANIMATION_DURATION,
       toValue: open ? 0 : 1,
       easing: Easing.bezier(0.4, 0.0, 0.2, 1),
       useNativeDriver: false,
     }).start(() => setOpen((prevOpen) => !prevOpen))
+    switchMaxLines()
   }
 
+  const switchMaxLines = () => {
+    if (!open) {
+      setMaxLines(undefined)
+    } else {
+      setTimeout(() => {
+        setMaxLines(3)
+      }, ANIMATION_DURATION)
+    }
+  }
   const onLayout = (event: LayoutChangeEvent) =>
     setTotalDescriptionHeight(event.nativeEvent.layout.height)
 
-  const partialDescriptionHeight = getSpacing(15)
-  const isLongDescription = partialDescriptionHeight < totalDescriptionHeight
-
   const bodyDescriptionHeight = animatedController.interpolate({
     inputRange: [0, 1],
-    outputRange: [partialDescriptionHeight, totalDescriptionHeight],
+    outputRange: [PARTIAL_DESCRIPTION_HEIGHT, totalDescriptionHeight],
   })
 
   const arrowAngle = animatedController.interpolate({
@@ -50,30 +63,30 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description = '' 
 
   const buttonLabel = open ? t`voir moins` : t`voir plus`
 
-  // TODO (Lucasbeneston) : Remove before merge
-  const fakeLongDescription =
-    description +
-    ' https://pass.culture.fr/ lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.'
+  // const isLongDescription = PARTIAL_DESCRIPTION_HEIGHT <= totalDescriptionHeight
+
+  // TODO (Lucasbeneston) : Remove fakeLongDescription and use only description
+  const fakeLongDescription = description + LOREM_WITH_URL
 
   if (!description) return null
   return (
     <Container>
       <StyledAnimatedView style={{ height: bodyDescriptionHeight }} testID="accordionBody">
         <DescriptionContainer onLayout={onLayout}>
-          <Description>{highlightLinks(fakeLongDescription)}</Description>
+          <Description numberOfLines={maxLines}>{highlightLinks(fakeLongDescription)}</Description>
         </DescriptionContainer>
       </StyledAnimatedView>
-      {!!isLongDescription && (
-        <TouchableWithoutFeedback onPress={toggleDescription}>
-          <SeeMoreButton>
-            <Typo.ButtonText>{buttonLabel}</Typo.ButtonText>
-            <Spacer.Row numberOfSpaces={2} />
-            <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
-              <ArrowDown size={getSpacing(5)} />
-            </Animated.View>
-          </SeeMoreButton>
-        </TouchableWithoutFeedback>
-      )}
+      {/* {!!isLongDescription && ( */}
+      <TouchableWithoutFeedback onPress={toggleDescription}>
+        <SeeMoreButton>
+          <Typo.ButtonText>{buttonLabel}</Typo.ButtonText>
+          <Spacer.Row numberOfSpaces={2} />
+          <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
+            <ArrowDown size={getSpacing(5)} />
+          </Animated.View>
+        </SeeMoreButton>
+      </TouchableWithoutFeedback>
+      {/* )} */}
     </Container>
   )
 }

@@ -17,8 +17,7 @@ describe('PartialAccordionDescription', () => {
     expect(accordionBody.props.style).toEqual({ height: getSpacing(15), overflow: 'hidden' })
   })
 
-  // TODO (Lucasbeneston) : Why the "voir plus" button is not displayed ?
-  it.skip('we see all the description after pressing on the "voir plus" button', async () => {
+  it('we see all the description after pressing on the "voir plus" button and display "voir moins" button', async () => {
     const { getByTestId, getByText } = render(
       <PartialAccordionDescription description={description} />
     )
@@ -31,11 +30,11 @@ describe('PartialAccordionDescription', () => {
       jest.advanceTimersByTime(500)
     })
 
+    expect(getByText('voir moins'))
     expect(accordionBody.props.style).not.toEqual({ height: getSpacing(15), overflow: 'hidden' })
   })
 
-  // TODO (Lucasbeneston) : Why the "voir plus" button is not displayed ?
-  it.skip('correct arrow animation,', async () => {
+  it('correct arrow animation,', async () => {
     const { getByTestId, getByText } = render(
       <PartialAccordionDescription description={description} />
     )
