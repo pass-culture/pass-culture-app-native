@@ -28,7 +28,6 @@ interface Props extends ModalStyles {
 const webcss = `div[aria-modal="true"] { align-items: center }`
 
 export interface ModalStyles {
-  layout?: 'bottom'
   height?: number
   maxWidth?: number
 }
@@ -36,7 +35,6 @@ export interface ModalStyles {
 export const AppModal: FunctionComponent<Props> = ({
   height,
   maxWidth,
-  layout,
   title,
   visible,
   leftIcon,
@@ -52,8 +50,7 @@ export const AppModal: FunctionComponent<Props> = ({
 }) => {
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
 
-  const { layout: modalLayout, height: modalHeight, maxWidth: modalMaxWidth } = {
-    layout: layout || 'bottom',
+  const { height: modalHeight, maxWidth: modalMaxWidth } = {
     height,
     maxWidth,
   }
@@ -62,30 +59,16 @@ export const AppModal: FunctionComponent<Props> = ({
     () =>
       StyleSheet.create({
         modaleContainerStyle: {
-          ...(modalLayout === 'bottom'
-            ? {
-                position: 'absolute',
-                height: modalHeight,
-                margin: 'auto',
-                bottom: 0,
-              }
-            : {}),
+          position: 'absolute',
+          height: modalHeight,
+          margin: 'auto',
+          bottom: 0,
           maxWidth: modalMaxWidth,
-          ...(modalLayout === 'bottom'
-            ? {
-                marginBottom: 0,
-                marginRight: 0,
-                marginLeft: 0,
-                borderTopRightRadius: 20,
-                borderTopLeftRadius: 20,
-              }
-            : {
-                marginHorizontal: 'auto',
-                borderTopRightRadius: 20,
-                borderTopLeftRadius: 20,
-                borderBottomLeftRadius: 20,
-                borderBottomRightRadius: 20,
-              }),
+          marginBottom: 0,
+          marginRight: 0,
+          marginLeft: 0,
+          borderTopRightRadius: 20,
+          borderTopLeftRadius: 20,
           flexDirection: 'column',
           backgroundColor: ColorsEnum.WHITE,
           justifyContent: 'center',
@@ -96,7 +79,7 @@ export const AppModal: FunctionComponent<Props> = ({
           padding: getSpacing(6),
         },
       }),
-    [modalLayout, modalHeight, modalMaxWidth]
+    [modalHeight, modalMaxWidth]
   )
 
   const { bottom } = useCustomSafeInsets()
