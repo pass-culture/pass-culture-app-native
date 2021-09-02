@@ -5,8 +5,8 @@ import React, { useRef } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -35,6 +35,7 @@ export const useSelectCategory = (callback: () => void) => {
 export const Categories: React.FC = () => {
   const { goBack } = useNavigation()
   const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
+  const categories = useAvailableCategories()
 
   return (
     <React.Fragment>
@@ -42,7 +43,7 @@ export const Categories: React.FC = () => {
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
 
-        {Object.entries(CATEGORY_CRITERIA).map(([category, { label, icon: Icon }]) => {
+        {Object.entries(categories).map(([category, { label, icon: Icon }]) => {
           const isSelected = isCategorySelected(category)
           const color2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
           const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK

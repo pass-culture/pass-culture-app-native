@@ -16,6 +16,8 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('features/home/api')
+
 describe('Category component', () => {
   it('should not render "Toutes les catégories" categories but the rest', () => {
     const { queryByText } = render(<Category />)

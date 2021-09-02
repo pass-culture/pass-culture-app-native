@@ -14,6 +14,10 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
+}))
+
 describe('Categories component', () => {
   it('should render correctly', () => {
     const { toJSON } = render(<Categories />)

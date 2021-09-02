@@ -26,6 +26,10 @@ jest.mock('features/search/components', () => ({
     visible ? 'CalendarPicker' : 'NoCalendar',
 }))
 
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
+}))
+
 describe('Analytics - logUseFilter', () => {
   beforeEach(() => {
     jest.clearAllMocks()
