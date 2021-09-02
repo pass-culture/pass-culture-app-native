@@ -15,10 +15,15 @@ export function getLongDynamicLinkURI() {
 }
 
 /**
- * @param fullWebAppUrlWithParams The deeplink targetted path
+ * @see https://firebase.google.com/docs/dynamic-links/create-manually
+ * @param deepLink The deeplink targetted screen
+ * @param webAppLink The link to the current webapp. TODO: remove once webapp migration is complete
  */
-export function generateLongFirebaseDynamicLink(fullWebAppUrlWithParams: string) {
-  return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${fullWebAppUrlWithParams}&${getLongDynamicLinkURI()}`
+export function generateLongFirebaseDynamicLink(deepLink: string, webAppLink?: string) {
+  // TODO(antoinewg): ofl won't be necessary once the webapp supports the deeplinks (ie: after the webapp's migration)
+  // For now, we make sure we have an ofl so that when opened from a browser, the link redirects to the current webapp.
+  const ofl = webAppLink ? `&ofl=${webAppLink}` : ''
+  return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${deepLink}&${getLongDynamicLinkURI()}${ofl}`
 }
 
 export const isUniversalLink = (url: string) => url.startsWith(WEBAPP_NATIVE_REDIRECTION_URL)

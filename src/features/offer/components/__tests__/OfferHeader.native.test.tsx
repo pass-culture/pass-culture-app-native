@@ -105,7 +105,9 @@ describe('<OfferHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
     const fullWebAppUrlWithParams = getWebappOfferUrl(116656, env.WEBAPP_URL)
-    const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
+    const deepLink = `https://webapp-v2.example.com/offre/116656`
+
+    const url = generateLongFirebaseDynamicLink(deepLink, fullWebAppUrlWithParams)
     const message =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
     const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
@@ -123,7 +125,9 @@ describe('<OfferHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
     const fullWebAppUrlWithParams = getWebappOfferUrl(116656, env.WEBAPP_URL)
-    const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
+    const deepLink = `https://webapp-v2.example.com/offre/116656`
+
+    const url = generateLongFirebaseDynamicLink(deepLink, fullWebAppUrlWithParams)
     const messageWithUrl =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
       url
