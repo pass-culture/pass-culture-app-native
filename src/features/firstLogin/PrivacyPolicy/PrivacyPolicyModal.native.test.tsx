@@ -80,10 +80,8 @@ describe('<PrivacyPolicyModal />', () => {
       visible,
       navigationRef,
     })
-    const backdrop = getByTestId('click-away-area')
-    expect(() => fireEvent.press(backdrop)).toThrowError(
-      new Error('No handler function found for event: "press"')
-    )
+    const modal = getByTestId('modal')
+    modal.props.onBackdropPress()
     expect(onApproval).not.toBeCalled()
     expect(onRefusal).not.toBeCalled()
   })
