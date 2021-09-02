@@ -27,18 +27,10 @@ interface Props extends ModalStyles {
 
 const webcss = `div[aria-modal="true"] { align-items: center }`
 
-const defaultModalStyles = {
-  spacing: getSpacing(1),
-  height: getSpacing(112),
-  maxWidth: getSpacing(125),
-  layout: undefined,
-}
-
 export interface ModalStyles {
   layout?: 'bottom'
   height?: number
   maxWidth?: number
-  spacing?: number
 }
 
 export const AppModal: FunctionComponent<Props> = ({
@@ -60,8 +52,7 @@ export const AppModal: FunctionComponent<Props> = ({
 }) => {
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
 
-  const { layout: modalLayout, spacing, height: modalHeight, maxWidth: modalMaxWidth } = {
-    ...defaultModalStyles,
+  const { layout: modalLayout, height: modalHeight, maxWidth: modalMaxWidth } = {
     layout: layout || 'bottom',
     height,
     maxWidth,
@@ -105,7 +96,7 @@ export const AppModal: FunctionComponent<Props> = ({
           padding: getSpacing(6),
         },
       }),
-    [modalLayout, spacing, modalHeight, modalMaxWidth]
+    [modalLayout, modalHeight, modalMaxWidth]
   )
 
   const { bottom } = useCustomSafeInsets()
