@@ -328,7 +328,7 @@ Object {
                   style="position: absolute; top: 0px; width: 100%;"
                 >
                   <div
-                    class="css-text-901oao"
+                    class="css-text-901oao css-textMultiLine-cens5h"
                     dir="auto"
                     style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                   >
@@ -386,7 +386,41 @@ Object {
                       </span>
                        https://pass.culture.fr/
                     </span>
-                     lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.
+                     lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; align-self: flex-end; cursor: pointer; flex-direction: row; padding-top: 16px; padding-bottom: 16px;"
+                tabindex="0"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                >
+                  voir plus
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 8px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="accordionArrow"
+                  id="animatedComponent"
+                  style="transform: rotateZ(6.283185307179586rad);"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1386,7 +1420,7 @@ Object {
                 style="position: absolute; top: 0px; width: 100%;"
               >
                 <div
-                  class="css-text-901oao"
+                  class="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                 >
@@ -1444,7 +1478,41 @@ Object {
                     </span>
                      https://pass.culture.fr/
                   </span>
-                   lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.
+                   lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; align-self: flex-end; cursor: pointer; flex-direction: row; padding-top: 16px; padding-bottom: 16px;"
+              tabindex="0"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                voir plus
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accordionArrow"
+                id="animatedComponent"
+                style="transform: rotateZ(6.283185307179586rad);"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
             </div>
