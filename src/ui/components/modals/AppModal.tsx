@@ -50,20 +50,15 @@ export const AppModal: FunctionComponent<Props> = ({
 }) => {
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
 
-  const { height: modalHeight, maxWidth: modalMaxWidth } = {
-    height,
-    maxWidth,
-  }
-
   const styles = useMemo(
     () =>
       StyleSheet.create({
         modaleContainerStyle: {
           position: 'absolute',
-          height: modalHeight,
+          height,
           margin: 'auto',
           bottom: 0,
-          maxWidth: modalMaxWidth,
+          maxWidth,
           marginBottom: 0,
           marginRight: 0,
           marginLeft: 0,
@@ -79,7 +74,7 @@ export const AppModal: FunctionComponent<Props> = ({
           padding: getSpacing(6),
         },
       }),
-    [modalHeight, modalMaxWidth]
+    [height, maxWidth]
   )
 
   const { bottom } = useCustomSafeInsets()
