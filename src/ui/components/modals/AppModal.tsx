@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useRef, useState, useMemo } from 'react'
-import { ScrollView, useWindowDimensions, View, StyleSheet } from 'react-native'
+import React, { FunctionComponent, useRef, useState } from 'react'
+import { ScrollView, useWindowDimensions, View } from 'react-native'
 import RNModal from 'react-native-modal'
 import styled from 'styled-components/native'
 
@@ -50,33 +50,6 @@ export const AppModal: FunctionComponent<Props> = ({
 }) => {
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
 
-  const styles = useMemo(
-    () =>
-      StyleSheet.create({
-        modaleContainerStyle: {
-          position: 'absolute',
-          height,
-          margin: 'auto',
-          bottom: 0,
-          maxWidth,
-          marginBottom: 0,
-          marginRight: 0,
-          marginLeft: 0,
-          borderTopRightRadius: 20,
-          borderTopLeftRadius: 20,
-          flexDirection: 'column',
-          backgroundColor: ColorsEnum.WHITE,
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          borderTopStartRadius: getSpacing(4),
-          borderTopEndRadius: getSpacing(4),
-          padding: getSpacing(6),
-        },
-      }),
-    [height, maxWidth]
-  )
-
   const { bottom } = useCustomSafeInsets()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const scrollViewRef = useRef<ScrollView | null>(null)
@@ -100,18 +73,18 @@ export const AppModal: FunctionComponent<Props> = ({
   return (
     <React.Fragment>
       <Style>{webcss}</Style>
-      <RNModal
+      <StyledModal
         supportedOrientations={['portrait', 'landscape']}
         statusBarTranslucent
         hasBackdrop={shouldDisplayOverlay}
         backdropColor={UniqueColors.GREY_OVERLAY}
         isVisible={visible}
         onBackdropPress={handleOnBackdropPress()}
-        // TODO : remove stylesheet and use styledcomponents
-        style={styles.modaleContainerStyle}
         testID="modal"
         deviceHeight={windowHeight}
-        deviceWidth={windowWidth}>
+        deviceWidth={windowWidth}
+        maxWidth={maxWidth}
+        height={height}>
         <ModalHeader
           title={title}
           leftIcon={leftIcon}
@@ -136,7 +109,7 @@ export const AppModal: FunctionComponent<Props> = ({
             children
           )}
         </Content>
-      </RNModal>
+      </StyledModal>
     </React.Fragment>
   )
 }
@@ -149,3 +122,27 @@ const Content = styled.View({
 })
 
 const StyledScrollView = styled(ScrollView)({ width: '100%' })
+
+// @ts-ignore RNModal extends React.Component
+const StyledModal = styled(RNModal)<{ maxWidth: number; height: number }>(
+  ({ maxWidth, height }) => ({
+    position: 'absolute',
+    height,
+    margin: 'auto',
+    bottom: 0,
+    maxWidth,
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 0,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    flexDirection: 'column',
+    backgroundColor: ColorsEnum.WHITE,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    borderTopStartRadius: getSpacing(4),
+    borderTopEndRadius: getSpacing(4),
+    padding: getSpacing(6),
+  })
+)
