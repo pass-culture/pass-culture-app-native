@@ -40,11 +40,7 @@ export const useModalStyles = (modalStyles: ModalStyles) => {
             : {}),
         },
         container: {
-          width: '100%',
           maxWidth,
-          justifyContent: 'center',
-          backgroundColor: ColorsEnum.WHITE,
-          padding: spacing,
           ...(layout === 'bottom'
             ? {
                 marginBottom: 0,
@@ -60,6 +56,16 @@ export const useModalStyles = (modalStyles: ModalStyles) => {
                 borderBottomLeftRadius: 20,
                 borderBottomRightRadius: 20,
               }),
+          flexDirection: 'column',
+          backgroundColor: ColorsEnum.WHITE,
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          maxHeight: '90%',
+          borderTopStartRadius: getSpacing(4),
+          borderTopEndRadius: getSpacing(4),
+          paddingVertical: getSpacing(12),
+          paddingHorizontal: getSpacing(6),
         },
         contentContainer: {},
         modaleIcon: {
