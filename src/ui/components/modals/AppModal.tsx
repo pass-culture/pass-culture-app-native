@@ -60,10 +60,12 @@ export const AppModal: FunctionComponent<Props> = ({
 }) => {
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
 
-  const useModalStyles = (modalStyles: ModalStyles) => {
+  const useModalStyles = () => {
     const { layout: modalLayout, spacing, height: modalHeight, maxWidth: modalMaxWidth } = {
       ...defaultModalStyles,
-      ...modalStyles,
+      layout: layout || 'bottom',
+      height,
+      maxWidth,
     }
     return useMemo(
       () =>
@@ -106,11 +108,7 @@ export const AppModal: FunctionComponent<Props> = ({
       [modalLayout, spacing, modalHeight, modalMaxWidth]
     )
   }
-  const styles = useModalStyles({
-    layout: layout || 'bottom',
-    height,
-    maxWidth,
-  })
+  const styles = useModalStyles()
   const { bottom } = useCustomSafeInsets()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const scrollViewRef = useRef<ScrollView | null>(null)
