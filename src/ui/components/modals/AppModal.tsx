@@ -60,55 +60,54 @@ export const AppModal: FunctionComponent<Props> = ({
 }) => {
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
 
-  const useModalStyles = () => {
-    const { layout: modalLayout, spacing, height: modalHeight, maxWidth: modalMaxWidth } = {
-      ...defaultModalStyles,
-      layout: layout || 'bottom',
-      height,
-      maxWidth,
-    }
-    return useMemo(
-      () =>
-        StyleSheet.create({
-          modaleContainerStyle: {
-            ...(modalLayout === 'bottom'
-              ? {
-                  position: 'absolute',
-                  height: modalHeight,
-                  margin: 'auto',
-                  bottom: 0,
-                }
-              : {}),
-            maxWidth: modalMaxWidth,
-            ...(modalLayout === 'bottom'
-              ? {
-                  marginBottom: 0,
-                  marginRight: 0,
-                  marginLeft: 0,
-                  borderTopRightRadius: 20,
-                  borderTopLeftRadius: 20,
-                }
-              : {
-                  marginHorizontal: 'auto',
-                  borderTopRightRadius: 20,
-                  borderTopLeftRadius: 20,
-                  borderBottomLeftRadius: 20,
-                  borderBottomRightRadius: 20,
-                }),
-            flexDirection: 'column',
-            backgroundColor: ColorsEnum.WHITE,
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
-            borderTopStartRadius: getSpacing(4),
-            borderTopEndRadius: getSpacing(4),
-            padding: getSpacing(6),
-          },
-        }),
-      [modalLayout, spacing, modalHeight, modalMaxWidth]
-    )
+  const { layout: modalLayout, spacing, height: modalHeight, maxWidth: modalMaxWidth } = {
+    ...defaultModalStyles,
+    layout: layout || 'bottom',
+    height,
+    maxWidth,
   }
-  const styles = useModalStyles()
+
+  const styles = useMemo(
+    () =>
+      StyleSheet.create({
+        modaleContainerStyle: {
+          ...(modalLayout === 'bottom'
+            ? {
+                position: 'absolute',
+                height: modalHeight,
+                margin: 'auto',
+                bottom: 0,
+              }
+            : {}),
+          maxWidth: modalMaxWidth,
+          ...(modalLayout === 'bottom'
+            ? {
+                marginBottom: 0,
+                marginRight: 0,
+                marginLeft: 0,
+                borderTopRightRadius: 20,
+                borderTopLeftRadius: 20,
+              }
+            : {
+                marginHorizontal: 'auto',
+                borderTopRightRadius: 20,
+                borderTopLeftRadius: 20,
+                borderBottomLeftRadius: 20,
+                borderBottomRightRadius: 20,
+              }),
+          flexDirection: 'column',
+          backgroundColor: ColorsEnum.WHITE,
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          borderTopStartRadius: getSpacing(4),
+          borderTopEndRadius: getSpacing(4),
+          padding: getSpacing(6),
+        },
+      }),
+    [modalLayout, spacing, modalHeight, modalMaxWidth]
+  )
+
   const { bottom } = useCustomSafeInsets()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const scrollViewRef = useRef<ScrollView | null>(null)
