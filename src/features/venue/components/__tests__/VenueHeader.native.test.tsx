@@ -58,7 +58,9 @@ describe('<VenueHeader />', () => {
 
     expect(share).toHaveBeenCalledTimes(1)
     const fullWebappUrlWithParams = getWebappVenueUrl(5543, env.WEBAPP_URL)
-    const url = generateLongFirebaseDynamicLink(fullWebappUrlWithParams)
+    const deepLink = `https://webapp-v2.example.com/venue/5543`
+
+    const url = generateLongFirebaseDynamicLink(deepLink, fullWebappUrlWithParams)
     const message = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
     expect(share).toHaveBeenCalledWith(
       { message, title: message, url },
@@ -75,7 +77,9 @@ describe('<VenueHeader />', () => {
 
     expect(share).toHaveBeenCalledTimes(1)
     const fullWebappUrlWithParams = getWebappVenueUrl(5543, env.WEBAPP_URL)
-    const url = generateLongFirebaseDynamicLink(fullWebappUrlWithParams)
+    const deepLink = `https://webapp-v2.example.com/venue/5543`
+
+    const url = generateLongFirebaseDynamicLink(deepLink, fullWebappUrlWithParams)
     const message = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
     const messageWithUrl = `${message}\n\n${url}`
     expect(share).toHaveBeenCalledWith(
