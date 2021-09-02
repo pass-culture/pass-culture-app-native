@@ -61,11 +61,9 @@ export const useModalStyles = (modalStyles: ModalStyles) => {
           justifyContent: 'center',
           alignItems: 'center',
           width: '100%',
-          maxHeight: '90%',
           borderTopStartRadius: getSpacing(4),
           borderTopEndRadius: getSpacing(4),
-          paddingVertical: getSpacing(12),
-          paddingHorizontal: getSpacing(6),
+          padding: getSpacing(6),
         },
         contentContainer: {},
         modaleIcon: {

@@ -3,8 +3,8 @@
 exports[`ReportOffer General modal behavior Report offer snapshots should display report offer modal if isVisible is true 1`] = `
 <Modal
   animationType="none"
-  deviceHeight={null}
-  deviceWidth={null}
+  deviceHeight={1334}
+  deviceWidth={750}
   hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[MockFunction]}
@@ -55,8 +55,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     }
   />
   <View
-    deviceHeight={null}
-    deviceWidth={null}
+    deviceHeight={1334}
+    deviceWidth={750}
     forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[MockFunction]}
@@ -87,10 +87,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
-        "maxHeight": "90%",
         "maxWidth": undefined,
-        "paddingHorizontal": 24,
-        "paddingVertical": 48,
+        "padding": 24,
         "position": "absolute",
         "transform": Array [
           Object {
@@ -241,8 +239,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
 exports[`ReportOffer General modal behavior Report offer snapshots should not display report offer modal if isVisible is false 1`] = `
 <Modal
   animationType="none"
-  deviceHeight={null}
-  deviceWidth={null}
+  deviceHeight={1334}
+  deviceWidth={750}
   hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[MockFunction]}
@@ -293,8 +291,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
     }
   />
   <View
-    deviceHeight={null}
-    deviceWidth={null}
+    deviceHeight={1334}
+    deviceWidth={750}
     forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[MockFunction]}
@@ -325,10 +323,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
         "marginBottom": 0,
         "marginLeft": 0,
         "marginRight": 0,
-        "maxHeight": "90%",
         "maxWidth": undefined,
-        "paddingHorizontal": 24,
-        "paddingVertical": 48,
+        "padding": 24,
         "position": "absolute",
         "transform": Array [
           Object {

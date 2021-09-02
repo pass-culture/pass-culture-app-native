@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { ScrollView, View } from 'react-native'
+import { ScrollView, useWindowDimensions, View } from 'react-native'
 import RNModal from 'react-native-modal'
 import styled from 'styled-components/native'
 
@@ -45,6 +45,7 @@ export const AppModal: FunctionComponent<Props> = ({
   shouldDisplayOverlay = true,
   onBackdropPress,
 }) => {
+  const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const styles = useModalStyles({
     layout: layout || 'bottom',
     height,
@@ -81,7 +82,9 @@ export const AppModal: FunctionComponent<Props> = ({
         isVisible={visible}
         onBackdropPress={handleOnBackdropPress()}
         style={[styles.container, styles.topOffset]}
-        testID="modal">
+        testID="modal"
+        deviceHeight={windowHeight}
+        deviceWidth={windowWidth}>
         <ModalHeader
           title={title}
           leftIcon={leftIcon}

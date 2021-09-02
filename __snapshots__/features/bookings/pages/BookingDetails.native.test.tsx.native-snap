@@ -618,8 +618,8 @@ Array [
   </RCTScrollView>,
   <Modal
     animationType="none"
-    deviceHeight={null}
-    deviceWidth={null}
+    deviceHeight={1334}
+    deviceWidth={750}
     hardwareAccelerated={false}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
@@ -670,8 +670,8 @@ Array [
       }
     />
     <View
-      deviceHeight={null}
-      deviceWidth={null}
+      deviceHeight={1334}
+      deviceWidth={750}
       forwardedRef={[Function]}
       hideModalContentWhileAnimating={false}
       onBackdropPress={[Function]}
@@ -702,10 +702,8 @@ Array [
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
-          "maxHeight": "90%",
           "maxWidth": undefined,
-          "paddingHorizontal": 24,
-          "paddingVertical": 48,
+          "padding": 24,
           "position": "absolute",
           "transform": Array [
             Object {
@@ -988,8 +986,8 @@ Array [
   </Modal>,
   <Modal
     animationType="none"
-    deviceHeight={null}
-    deviceWidth={null}
+    deviceHeight={1334}
+    deviceWidth={750}
     hardwareAccelerated={false}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
@@ -1040,8 +1038,8 @@ Array [
       }
     />
     <View
-      deviceHeight={null}
-      deviceWidth={null}
+      deviceHeight={1334}
+      deviceWidth={750}
       forwardedRef={[Function]}
       hideModalContentWhileAnimating={false}
       onBackdropPress={[Function]}
@@ -1072,10 +1070,8 @@ Array [
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
-          "maxHeight": "90%",
           "maxWidth": undefined,
-          "paddingHorizontal": 24,
-          "paddingVertical": 48,
+          "padding": 24,
           "position": "absolute",
           "transform": Array [
             Object {
