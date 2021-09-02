@@ -34,8 +34,12 @@ async function shareOffer(offer: OfferResponse, webAppUrl: string) {
     values: { name: offer.name, locationName },
     message: 'Retrouve "{name}" chez "{locationName}" sur le pass Culture',
   })
-  const fullWebAppUrlWithParams = getWebappOfferUrl(offer.id, webAppUrl)
-  const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
+
+  const path = new DeeplinkPathWithPathParams(DeeplinkPath.OFFER, { id: offer.id.toString() })
+  const deepLink = `${WEBAPP_V2_URL}/${path.getFullPath()}`
+  const webAppLink = getWebappOfferUrl(offer.id, webAppUrl)
+
+  const url = generateLongFirebaseDynamicLink(deepLink, webAppLink)
 
   // url share content param is only for iOs, so we add url in message for android
   const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)

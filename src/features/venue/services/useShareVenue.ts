@@ -31,8 +31,11 @@ const shareVenue = async (venue: VenueResponse, webAppUrl: string) => {
     message: 'Retrouve "{name}" sur le pass Culture',
   })
 
-  const fullWebAppUrlWithParams = getWebappVenueUrl(venue.id, webAppUrl)
-  const url = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
+  const path = new DeeplinkPathWithPathParams(DeeplinkPath.VENUE, { id: venue.id.toString() })
+  const deepLink = `${WEBAPP_V2_URL}/${path.getFullPath()}`
+  const webAppLink = getWebappVenueUrl(venue.id, webAppUrl)
+
+  const url = generateLongFirebaseDynamicLink(deepLink, webAppLink)
 
   // url share content param is only for iOs, so we add url in message for android
   const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)
