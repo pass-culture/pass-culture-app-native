@@ -61,21 +61,24 @@ export const AppModal: FunctionComponent<Props> = ({
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
 
   const useModalStyles = (modalStyles: ModalStyles) => {
-    const { layout, spacing, height, maxWidth } = { ...defaultModalStyles, ...modalStyles }
+    const { layout: modalLayout, spacing, height: modalHeight, maxWidth: modalMaxWidth } = {
+      ...defaultModalStyles,
+      ...modalStyles,
+    }
     return useMemo(
       () =>
         StyleSheet.create({
           modaleContainerStyle: {
-            ...(layout === 'bottom'
+            ...(modalLayout === 'bottom'
               ? {
                   position: 'absolute',
-                  height,
+                  height: modalHeight,
                   margin: 'auto',
                   bottom: 0,
                 }
               : {}),
-            maxWidth,
-            ...(layout === 'bottom'
+            maxWidth: modalMaxWidth,
+            ...(modalLayout === 'bottom'
               ? {
                   marginBottom: 0,
                   marginRight: 0,
@@ -100,7 +103,7 @@ export const AppModal: FunctionComponent<Props> = ({
             padding: getSpacing(6),
           },
         }),
-      [layout, spacing, height, maxWidth]
+      [modalLayout, spacing, modalHeight, modalMaxWidth]
     )
   }
   const styles = useModalStyles({
