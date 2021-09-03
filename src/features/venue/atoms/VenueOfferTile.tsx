@@ -77,7 +77,7 @@ export const VenueOfferTile = (props: OfferTileProps) => {
   }
 
   return (
-    <Container>
+    <View>
       <TouchableHighlight imageHeight={imageHeight} onPress={handlePressOffer}>
         <View>
           <ImageTile
@@ -97,15 +97,13 @@ export const VenueOfferTile = (props: OfferTileProps) => {
         isBeneficiary={isBeneficiary}
         price={offer.price}
       />
-    </Container>
+    </View>
   )
 }
 
 const imageHeight = LENGTH_L
 const imageWidth = imageHeight * RATIO_HOME_IMAGE
 const rowHeight = PixelRatio.roundToNearestPixel(MARGIN_DP)
-
-const Container = styled.View({ flex: 1 })
 
 const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(
   ({ imageHeight }) => ({

@@ -7,7 +7,6 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -70,7 +69,6 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
     >
       <div
         class="css-view-1dbjc4n"

@@ -896,17 +896,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               ]
             }
           >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
-              }
-            >
+            <View>
               <View
                 accessible={true}
                 focusable={true}
@@ -1094,17 +1084,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               ]
             }
           >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
-              }
-            >
+            <View>
               <View
                 accessible={true}
                 focusable={true}
@@ -1292,17 +1272,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               ]
             }
           >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
-              }
-            >
+            <View>
               <View
                 accessible={true}
                 focusable={true}
