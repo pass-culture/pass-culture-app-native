@@ -11,6 +11,7 @@ import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -19,7 +20,9 @@ export const SearchLandingPage: React.FC = () => {
   const windowWidth = useWindowDimensions().width
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useStagedSearch()
-  const [selectedCategory] = searchState.offerCategories
+  const [searchCategory] = searchState.offerCategories
+  const availableCategories = useAvailableCategories()
+  const selectedCategory = searchCategory in availableCategories ? searchCategory : null
   const { icon: Icon, label } = CATEGORY_CRITERIA[(selectedCategory as CategoryNameEnum) || 'ALL']
   const { Icon: LocationIcon, label: locationLabel } = useLocationChoice(searchState.locationType)
 
