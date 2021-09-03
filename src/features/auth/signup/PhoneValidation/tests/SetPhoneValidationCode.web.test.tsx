@@ -5,13 +5,14 @@ import { useMutation, UseMutationResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate, canGoBack, goBack } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import * as AuthApi from 'features/auth/api'
 import {
   formatPhoneNumber,
   SetPhoneValidationCode,
 } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 import { contactSupport } from 'features/auth/support.services'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { EmptyResponse } from 'libs/fetch'
 import {
@@ -84,14 +85,13 @@ describe('SetPhoneValidationCode', () => {
     })
 
     it('should call onGoBack property on press left arrow', async () => {
-      canGoBack.mockImplementationOnce(() => true)
+      mockGoBack.mockImplementationOnce(() => true)
       const { getByTestId } = renderSetPhoneValidationCode()
 
       const leftArrow = getByTestId('leftIconButton')
       fireEvent.click(leftArrow)
       await waitForExpect(() => {
-        expect(canGoBack).toHaveBeenCalled()
-        expect(goBack).toHaveBeenCalled()
+        expect(mockGoBack).toHaveBeenCalled()
       })
     })
   })

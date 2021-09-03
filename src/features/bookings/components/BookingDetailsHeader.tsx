@@ -1,10 +1,9 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -17,7 +16,7 @@ interface Props {
  */
 export const BookingDetailsHeader: React.FC<Props> = (props) => {
   const { headerTransition, title } = props
-  const { goBack } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('Bookings')
 
   const { animationState, backgroundColor } = getAnimationState(headerTransition)
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { goBack } from '__mocks__/@react-navigation/native'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
 import { buildSuggestedPlaces, SuggestedPlace } from 'libs/place'
@@ -36,7 +36,7 @@ describe('SuggestedPlaces component', () => {
       type: 'LOCATION_PLACE',
       payload,
     })
-    expect(goBack).toHaveBeenCalledTimes(2)
+    expect(mockGoBack).toBeCalledTimes(1)
   })
 
   it('should show empty component only when query is not empty and the results are not loading', () => {

@@ -12,6 +12,7 @@ import {
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { StyledInput, StyledStepDots } from 'features/auth/components/signupComponents'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { randomPassword } from 'libs/random'
 import { testID } from 'tests/utils'
@@ -36,7 +37,9 @@ if (__DEV__ && env.SIGNUP_RANDOM_PASSWORD) {
 
 export const SetPassword: FunctionComponent<Props> = ({ route }) => {
   const [password, setPassword] = useState(INITIAL_PASSWORD)
-  const { goBack, navigate } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('SetEmail')
+
   const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked
 

@@ -23,17 +23,10 @@ interface HeaderIconProps {
 
 const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
   const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
-  function onPress() {
-    if (onGoBack) {
-      onGoBack()
-    } else {
-      goBack()
-    }
-  }
   return (
     <TouchableOpacity
       activeOpacity={ACTIVE_OPACITY}
-      onPress={onPress}
+      onPress={onGoBack || goBack}
       {...testID(t`Revenir en arrière`)}>
       <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
     </TouchableOpacity>

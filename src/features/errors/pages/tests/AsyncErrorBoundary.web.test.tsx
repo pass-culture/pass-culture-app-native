@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { canGoBack, goBack } from '__mocks__/@react-navigation/native'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { AsyncError } from 'libs/monitoring'
 import { render, fireEvent } from 'tests/utils/web'
 
@@ -18,14 +18,12 @@ describe('AsyncErrorBoundary component', () => {
   })
 
   it('should have back arrow if possible', () => {
-    // eslint-disable-next-line local-rules/independant-mocks
-    canGoBack.mockImplementation(() => true)
     const { getByTestId, queryByTestId } = render(
       <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />
     )
     expect(queryByTestId('backArrow')).toBeTruthy()
     fireEvent.click(getByTestId('backArrow'))
-    expect(goBack).toHaveBeenCalled()
+    expect(mockGoBack).toHaveBeenCalled()
   })
 
   it('should call retry with AsyncError', async () => {

@@ -2,10 +2,9 @@ import * as netInfoModule from '@react-native-community/netinfo'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/helpers'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { MonitoringError } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
@@ -48,7 +47,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(leftIcon)
 
     await waitForExpect(() => {
-      expect(mockGoBack).toBeCalledTimes(1)
+      expect(navigate).toBeCalledWith('Login')
     })
   })
 
@@ -92,8 +91,8 @@ describe('<ForgottenPassword />', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('ResetPasswordEmailSent', {
+      expect(replace).toBeCalledTimes(1)
+      expect(replace).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
       })
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()

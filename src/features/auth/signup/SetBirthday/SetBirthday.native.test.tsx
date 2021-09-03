@@ -4,9 +4,10 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { goBack, navigate } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, RenderAPI } from 'tests/utils'
@@ -34,7 +35,7 @@ describe('SetBirthday Page', () => {
     const leftIcon = getByTestId('leftIcon')
     fireEvent.press(leftIcon)
 
-    expect(goBack).toBeCalledTimes(1)
+    expect(mockGoBack).toBeCalledTimes(1)
   })
 
   it('should keep disabled the button "Continuer" when the date is not complete', () => {

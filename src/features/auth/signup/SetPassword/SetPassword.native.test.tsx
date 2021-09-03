@@ -3,8 +3,8 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { goBack } from '__mocks__/@react-navigation/native'
 import { SetPassword } from 'features/auth/signup/SetPassword'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, waitFor } from 'tests/utils'
@@ -55,7 +55,7 @@ describe('SetPassword Page', () => {
     const leftIcon = getByTestId('leftIcon')
     fireEvent.press(leftIcon)
 
-    expect(goBack).toBeCalledTimes(1)
+    expect(mockGoBack).toBeCalledTimes(1)
   })
 
   it('should open quit signup modal', () => {
