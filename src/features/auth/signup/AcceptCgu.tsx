@@ -8,6 +8,7 @@ import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignu
 import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
 import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { AsyncError, MonitoringError } from 'libs/monitoring'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
@@ -31,7 +32,9 @@ type Props = StackScreenProps<RootStackParamList, 'AcceptCgu'>
 
 export const AcceptCgu: FC<Props> = ({ route }) => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
-  const { goBack, navigate } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('SetBirthday', route.params)
+
   const signUp = useSignUp()
   const networkInfo = useNetInfo()
   const {
@@ -54,8 +57,8 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
   }, [networkInfo.isConnected])
 
   async function subscribe(token: string) {
-    setErrorMessage(null)
     const { birthday, email, isNewsletterChecked, password, postalCode } = route.params
+    setErrorMessage(null)
     const signUpData = {
       birthdate: birthday,
       email,

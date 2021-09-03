@@ -76,6 +76,9 @@ jest.mock('features/deeplinks/listener')
 jest.mock('features/search/pages/SearchWrapper')
 
 jest.mock('features/favorites/pages/FavoritesWrapper')
+jest.mock('features/navigation/useGoBack', () =>
+  jest.requireActual('features/navigation/__mocks__/useGoBack.ts')
+)
 
 jest.mock('../package.json')
 jest.mock('api/helpers')

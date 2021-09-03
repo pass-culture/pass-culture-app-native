@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { SIGNUP_NUMBER_OF_STEPS, useDepositAmount } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
 import { env } from 'libs/environment'
@@ -68,6 +69,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const maxYear = now.getFullYear() - YOUNGEST_AGE
   const maxDate = new Date(maxYear, now.getMonth(), now.getDate())
 
+  const { email, isNewsletterChecked, password } = route.params
+
   const {
     visible: informationModalVisible,
     showModal: showInformationModal,
@@ -80,10 +83,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     hideModal: hideFullPageModal,
   } = useModal(false)
 
-  const { goBack, navigate } = useNavigation<UseNavigationType>()
-  const email = route.params.email
-  const isNewsletterChecked = route.params.isNewsletterChecked
-  const password = route.params.password
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('SetPassword', { email, isNewsletterChecked })
 
   const dateInputRef = useRef<DateInputRef>(null)
 

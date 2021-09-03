@@ -3,7 +3,8 @@ import { useMutation } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate, goBack } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -72,6 +73,6 @@ describe('ConfirmDeleteProfile component', () => {
   it('should redirect to LegalNotices when clicking on "Abandonner" button', () => {
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     fireEvent.press(renderAPI.getByText('Abandonner'))
-    expect(goBack).toBeCalledTimes(1)
+    expect(mockGoBack).toBeCalledTimes(1)
   })
 })

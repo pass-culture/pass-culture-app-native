@@ -5,11 +5,12 @@ import React from 'react'
 import { Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate, goBack } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { AccountRequest } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
 import { contactSupport } from 'features/auth/support.services'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -46,7 +47,7 @@ describe('AcceptCgu Page', () => {
     const leftIcon = getByTestId('leftIcon')
     fireEvent.press(leftIcon)
 
-    expect(goBack).toBeCalledTimes(1)
+    expect(mockGoBack).toBeCalledTimes(1)
   })
 
   it('should open mail app when clicking on contact support button', async () => {

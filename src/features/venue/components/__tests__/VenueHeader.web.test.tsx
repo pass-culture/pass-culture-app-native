@@ -1,7 +1,7 @@
 import React from 'react'
 import { Animated } from 'react-native'
 
-import { goBack } from '__mocks__/@react-navigation/native'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'
@@ -22,7 +22,7 @@ describe('<VenueHeader />', () => {
   it('should goBack when we press on the back button', async () => {
     const { getByTestId } = await renderVenueHeader()
     fireEvent.click(getByTestId('icon-back'))
-    expect(goBack).toBeCalledTimes(1)
+    expect(mockGoBack).toBeCalledTimes(1)
   })
 })
 

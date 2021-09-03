@@ -1,11 +1,11 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import isEqual from 'lodash.isequal'
 import uniqWith from 'lodash.uniqwith'
 import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useGoBack } from 'features/navigation/useGoBack'
 import { usePlaces, useVenues } from 'features/search/api'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SuggestedPlace } from 'libs/place'
@@ -42,8 +42,8 @@ const Hit: React.FC<{ hit: SuggestedPlace; onPress: () => void }> = ({ hit, onPr
 export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
   const { data: places = [], isLoading: isLoadingPlaces } = usePlaces(query)
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
-  const { navigate } = useNavigation()
   const { dispatch } = useStagedSearch()
+  const { goBack } = useGoBack('Search')
 
   const onPickPlace = (place: SuggestedPlace) => () => {
     const { venueId, ...payload } = place
@@ -52,9 +52,7 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
     } else if (place.geolocation) {
       dispatch({ type: 'LOCATION_PLACE', payload })
     }
-    // We go straight to Search page (we skip the Location page so we
-    // do not use `goBack`)
-    navigate('Search')
+    goBack()
   }
 
   const filteredPlaces = [...venues.slice(0, 5), ...uniqWith(places, isEqual)]
