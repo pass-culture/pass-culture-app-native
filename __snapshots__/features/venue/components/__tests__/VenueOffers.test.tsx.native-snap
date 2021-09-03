@@ -179,17 +179,7 @@ Array [
           ]
         }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
+        <View>
           <View
             accessible={true}
             focusable={true}
@@ -377,17 +367,7 @@ Array [
           ]
         }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
+        <View>
           <View
             accessible={true}
             focusable={true}
@@ -575,17 +555,7 @@ Array [
           ]
         }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
+        <View>
           <View
             accessible={true}
             focusable={true}

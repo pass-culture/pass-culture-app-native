@@ -1,17 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VenueOfferTile component should render correctly 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
-  }
->
+<View>
   <View
     accessible={true}
     focusable={true}

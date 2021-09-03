@@ -110,20 +110,6 @@ Array [
       >
         <div
           className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
         >
           <div
             className="css-view-1dbjc4n"
@@ -295,20 +281,6 @@ Array [
       >
         <div
           className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
         >
           <div
             className="css-view-1dbjc4n"
@@ -480,20 +452,6 @@ Array [
       >
         <div
           className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
         >
           <div
             className="css-view-1dbjc4n"
