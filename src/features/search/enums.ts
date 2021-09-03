@@ -15,7 +15,7 @@ export enum LocationType {
   PLACE = 'PLACE',
 }
 
-type CategoryCriteria = {
+export type CategoryCriteria = {
   ALL: {
     label: string
     icon: React.FC<BicolorIconInterface>
@@ -28,6 +28,15 @@ type CategoryCriteria = {
     facetFilter: CategoryNameEnum
   }
 }
+
+export type OptionalCategoryCriteria = Pick<CategoryCriteria, 'ALL'> &
+  {
+    [category in CategoryNameEnum]?: {
+      label: string
+      icon: React.FC<BicolorIconInterface>
+      facetFilter: CategoryNameEnum
+    }
+  }
 
 export const CATEGORY_CRITERIA: CategoryCriteria = {
   ALL: {
