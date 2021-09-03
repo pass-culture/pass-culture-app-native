@@ -2,9 +2,9 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing } from 'ui/theme'
+import { ImagePlaceholderVenue } from 'ui/svg/ImagePlaceholderVenue'
+import { ColorsEnum, LENGTH_M } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface ImagePlaceholderProps {
@@ -33,11 +33,12 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
     )
   }
 
-  const backgroundSize = getSpacing(iconSize)
+  // Not too sure why but `LENGTH_M` is not enough and doesn't look good
+  const size = LENGTH_M + borderRadius
 
   return (
     <HeaderBackgroundWrapper borderRadius={borderRadius} testID="imagePlaceholder">
-      <HeaderBackground width={backgroundSize} height={backgroundSize} />
+      <ImagePlaceholderVenue width={size} height={size} />
       <IconContainer>
         <Icon testID="categoryIcon" size={iconSize} color={iconColor} />
       </IconContainer>

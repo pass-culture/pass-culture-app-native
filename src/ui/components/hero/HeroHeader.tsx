@@ -3,8 +3,8 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
-import { BackgroundVenueHero } from 'ui/svg/icons/BackgroundVenueHero'
 import { Rectangle } from 'ui/svg/Rectangle'
+import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
 import { ScreenWidth } from 'ui/theme'
 
 interface Props {
@@ -24,8 +24,8 @@ export const HeroHeader: React.FC<Props> = (props) => {
       />
     ) : (
       <BackgroundContainer>
-        {Array.from({ length: 10 }).map((_, index) => (
-          <BackgroundVenueHero key={index} testID={`BackgroundVenueHero-${index}`} />
+        {Array.from({ length: 9 }).map((_, index) => (
+          <VenueHeaderBackground key={index} />
         ))}
       </BackgroundContainer>
     )

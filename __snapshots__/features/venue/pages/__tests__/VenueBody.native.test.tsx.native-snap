@@ -50,101 +50,82 @@ exports[`<VenueBody /> should render correctly 1`] = `
           <View
             fill="none"
             height="259"
-            testID="BackgroundVenueHero-0"
-            width="235"
+            width="375"
           >
             <Text>
-              BackgroundVenueHero-0-SVG-Mock
+              undefined-SVG-Mock
             </Text>
           </View>
           <View
             fill="none"
             height="259"
-            testID="BackgroundVenueHero-1"
-            width="235"
+            width="375"
           >
             <Text>
-              BackgroundVenueHero-1-SVG-Mock
+              undefined-SVG-Mock
             </Text>
           </View>
           <View
             fill="none"
             height="259"
-            testID="BackgroundVenueHero-2"
-            width="235"
+            width="375"
           >
             <Text>
-              BackgroundVenueHero-2-SVG-Mock
+              undefined-SVG-Mock
             </Text>
           </View>
           <View
             fill="none"
             height="259"
-            testID="BackgroundVenueHero-3"
-            width="235"
+            width="375"
           >
             <Text>
-              BackgroundVenueHero-3-SVG-Mock
+              undefined-SVG-Mock
             </Text>
           </View>
           <View
             fill="none"
             height="259"
-            testID="BackgroundVenueHero-4"
-            width="235"
+            width="375"
           >
             <Text>
-              BackgroundVenueHero-4-SVG-Mock
+              undefined-SVG-Mock
             </Text>
           </View>
           <View
             fill="none"
             height="259"
-            testID="BackgroundVenueHero-5"
-            width="235"
+            width="375"
           >
             <Text>
-              BackgroundVenueHero-5-SVG-Mock
+              undefined-SVG-Mock
             </Text>
           </View>
           <View
             fill="none"
             height="259"
-            testID="BackgroundVenueHero-6"
-            width="235"
+            width="375"
           >
             <Text>
-              BackgroundVenueHero-6-SVG-Mock
+              undefined-SVG-Mock
             </Text>
           </View>
           <View
             fill="none"
             height="259"
-            testID="BackgroundVenueHero-7"
-            width="235"
+            width="375"
           >
             <Text>
-              BackgroundVenueHero-7-SVG-Mock
+              undefined-SVG-Mock
             </Text>
           </View>
           <View
             fill="none"
             height="259"
-            testID="BackgroundVenueHero-8"
-            width="235"
+            width="375"
           >
             <Text>
-              BackgroundVenueHero-8-SVG-Mock
-            </Text>
-          </View>
-          <View
-            fill="none"
-            height="259"
-            testID="BackgroundVenueHero-9"
-            width="235"
-          >
-            <Text>
-              BackgroundVenueHero-9-SVG-Mock
+              undefined-SVG-Mock
             </Text>
           </View>
         </View>
@@ -182,7 +163,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             },
             Object {
               "aspectRatio": 1,
-              "borderRadius": 8,
+              "borderRadius": 24,
               "width": 216,
             },
           ]
@@ -206,11 +187,13 @@ exports[`<VenueBody /> should render correctly 1`] = `
           testID="imagePlaceholder"
         >
           <View
-            height={384}
-            width={384}
+            fill="none"
+            height={240}
+            testID="ImagePlaceholderVenue"
+            width={240}
           >
             <Text>
-              undefined-SVG-Mock
+              ImagePlaceholderVenue-SVG-Mock
             </Text>
           </View>
           <View

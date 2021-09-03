@@ -33,112 +33,92 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="BackgroundVenueHero-0"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      BackgroundVenueHero-0-SVG-Mock
+                      undefined-SVG-Mock
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="BackgroundVenueHero-1"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      BackgroundVenueHero-1-SVG-Mock
+                      undefined-SVG-Mock
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="BackgroundVenueHero-2"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      BackgroundVenueHero-2-SVG-Mock
+                      undefined-SVG-Mock
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="BackgroundVenueHero-3"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      BackgroundVenueHero-3-SVG-Mock
+                      undefined-SVG-Mock
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="BackgroundVenueHero-4"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      BackgroundVenueHero-4-SVG-Mock
+                      undefined-SVG-Mock
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="BackgroundVenueHero-5"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      BackgroundVenueHero-5-SVG-Mock
+                      undefined-SVG-Mock
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="BackgroundVenueHero-6"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      BackgroundVenueHero-6-SVG-Mock
+                      undefined-SVG-Mock
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="BackgroundVenueHero-7"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      BackgroundVenueHero-7-SVG-Mock
+                      undefined-SVG-Mock
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="BackgroundVenueHero-8"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      BackgroundVenueHero-8-SVG-Mock
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="BackgroundVenueHero-9"
-                  >
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                    >
-                      BackgroundVenueHero-9-SVG-Mock
+                      undefined-SVG-Mock
                     </div>
                   </div>
                 </div>
@@ -160,7 +140,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="image-container"
-                style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); width: 216px;"
+                style="border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); width: 216px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -169,12 +149,13 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
+                    data-testid="ImagePlaceholderVenue"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      undefined-SVG-Mock
+                      ImagePlaceholderVenue-SVG-Mock
                     </div>
                   </div>
                   <div
@@ -1032,112 +1013,92 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="BackgroundVenueHero-0"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    BackgroundVenueHero-0-SVG-Mock
+                    undefined-SVG-Mock
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="BackgroundVenueHero-1"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    BackgroundVenueHero-1-SVG-Mock
+                    undefined-SVG-Mock
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="BackgroundVenueHero-2"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    BackgroundVenueHero-2-SVG-Mock
+                    undefined-SVG-Mock
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="BackgroundVenueHero-3"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    BackgroundVenueHero-3-SVG-Mock
+                    undefined-SVG-Mock
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="BackgroundVenueHero-4"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    BackgroundVenueHero-4-SVG-Mock
+                    undefined-SVG-Mock
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="BackgroundVenueHero-5"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    BackgroundVenueHero-5-SVG-Mock
+                    undefined-SVG-Mock
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="BackgroundVenueHero-6"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    BackgroundVenueHero-6-SVG-Mock
+                    undefined-SVG-Mock
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="BackgroundVenueHero-7"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    BackgroundVenueHero-7-SVG-Mock
+                    undefined-SVG-Mock
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="BackgroundVenueHero-8"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    BackgroundVenueHero-8-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  data-testid="BackgroundVenueHero-9"
-                >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                  >
-                    BackgroundVenueHero-9-SVG-Mock
+                    undefined-SVG-Mock
                   </div>
                 </div>
               </div>
@@ -1159,7 +1120,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="image-container"
-              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); width: 216px;"
+              style="border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); width: 216px;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -1168,12 +1129,13 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
+                  data-testid="ImagePlaceholderVenue"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    undefined-SVG-Mock
+                    ImagePlaceholderVenue-SVG-Mock
                   </div>
                 </div>
                 <div
