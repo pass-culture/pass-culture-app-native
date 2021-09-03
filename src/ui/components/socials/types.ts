@@ -17,11 +17,13 @@ export const SocialNetworkIconsMap: Record<
   {
     icon: FC<IconInterface>
     link: string
+    fallbackLink?: string
   }
 > = {
   facebook: {
     icon: Facebook,
     link: Platform.OS === 'ios' ? facebookIOSLink : facebookAndroidLink,
+    fallbackLink: 'https://www.facebook.com/passCultureofficiel/',
   },
 
   instagram: { icon: Instagram, link: 'https://www.instagram.com/passcultureofficiel/?hl=fr' },

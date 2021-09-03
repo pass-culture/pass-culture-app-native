@@ -32,7 +32,11 @@ export function navigateToBooking(bookingId: number) {
   navigationRef.current?.navigate('BookingDetails', { id: bookingId })
 }
 
-export async function openExternalUrl(url: string, logEvent: boolean | undefined = true) {
+export async function openExternalUrl(
+  url: string,
+  logEvent: boolean | undefined = true,
+  fallbackUrl?: string | undefined
+) {
   const isAppUrl = url.match('^' + WEBAPP_NATIVE_REDIRECTION_URL) || url.match('^' + WEBAPP_V2_URL)
   if (isAppUrl) {
     try {
@@ -51,13 +55,11 @@ export async function openExternalUrl(url: string, logEvent: boolean | undefined
         analytics.logOpenExternalUrl(url)
       }
     })
-  } else {
-    if (url === 'fb://page/2202916773290436' || url === 'fb://page/?id=2202916773290436')
-      Linking.openURL('https://www.facebook.com/passCultureofficiel/').then(() => {
-        if (logEvent) {
-          analytics.logOpenExternalUrl('https://www.facebook.com/passCultureofficiel/')
-        }
-      })
+  } else if (fallbackUrl) {
+    const canOpenFallBackUrl = await Linking.canOpenURL(fallbackUrl)
+    if (canOpenFallBackUrl) {
+      Linking.openURL(fallbackUrl).then(() => logEvent && analytics.logOpenExternalUrl(fallbackUrl))
+    }
   }
 }
 

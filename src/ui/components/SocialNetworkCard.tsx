@@ -14,14 +14,14 @@ interface SocialNetworkCardProps {
 
 function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   const { network } = props
-  const { icon: Icon, link } = SocialNetworkIconsMap[network]
+  const { icon: Icon, link, fallbackLink } = SocialNetworkIconsMap[network]
   const name = network[0].toUpperCase() + network.slice(1)
 
   return (
     <TouchableOpacity
       onPress={() => {
         analytics.logClickSocialNetwork(name)
-        openExternalUrl(link, false)
+        openExternalUrl(link, false, fallbackLink)
       }}>
       <Container>
         <NetworkIconBox>
