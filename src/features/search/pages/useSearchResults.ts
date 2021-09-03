@@ -3,7 +3,9 @@ import flatten from 'lodash.flatten'
 import { useMemo } from 'react'
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
+import { OptionalCategoryCriteria } from 'features/search/enums'
 import { SearchParameters } from 'features/search/types'
+import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 import { useAlgoliaQuery } from 'libs/search/fetch/useAlgoliaQuery'
@@ -15,10 +17,28 @@ import { useSearch, useStagedSearch } from './SearchWrapper'
 type PartialSearchState = SearchParameters & { query: string }
 export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
 
+// TODO(anoukhello) use parseSearchParams function to filter available categories
+function filterAvailableCategories(
+  searchState: PartialSearchState,
+  availableCategories: OptionalCategoryCriteria
+) {
+  const { offerCategories } = searchState
+  // if no category is selected, fill this field with available categories
+  if (offerCategories.length === 0) {
+    const categoryFacets = Object.values(availableCategories).map(
+      (category) => category.facetFilter
+    )
+    return { ...searchState, ...{ offerCategories: categoryFacets } }
+  }
+  const categoryFacets = offerCategories.filter((category) => category in availableCategories)
+  return { ...searchState, offerCategories: categoryFacets }
+}
+
 const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const algoliaBackend = useAlgoliaQuery()
   const searchBackend = useSearchQuery()
+  const availableCategories = useAvailableCategories()
 
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchHits, transformHits } = backend
@@ -27,8 +47,7 @@ const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
     [QueryKeys.SEARCH_RESULTS, searchState],
     async (context: QueryFunctionContext<[string, PartialSearchState], number>) => {
       const page = context.pageParam || 0
-      const searchState = context.queryKey[1]
-
+      const searchState = filterAvailableCategories(context.queryKey[1], availableCategories)
       return await fetchHits({ page, ...searchState })
     },
     {
