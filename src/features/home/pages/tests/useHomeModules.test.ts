@@ -1,6 +1,7 @@
 import { MultipleQueriesResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
+import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { SearchHit, parseSearchParameters } from 'libs/search'
 import * as SearchModule from 'libs/search/fetch/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -10,6 +11,10 @@ import { useHomeModules } from '../useHomeModules'
 
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => ({ data: { useAppSearch: true } })),
+}))
+
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
 }))
 
 const mockMultipleHits = {
@@ -55,12 +60,17 @@ describe('useHomeModules', () => {
       { wrapper: ({ children }) => reactQueryProviderHOC(children) }
     )
 
+    const { result: availableCategories } = renderHook(() => useAvailableCategories())
+
     expect(fetchMultipleHits).toHaveBeenCalledWith([
       {
-        ...parseSearchParameters({
-          geolocation: null,
-          parameters: { title: 'tile', hitsPerPage: 4 },
-        }),
+        ...parseSearchParameters(
+          {
+            geolocation: null,
+            parameters: { title: 'tile', hitsPerPage: 4 },
+          },
+          availableCategories.current
+        ),
       },
     ])
 

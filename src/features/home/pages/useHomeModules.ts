@@ -8,7 +8,7 @@ import { Offers, OffersWithCover } from 'features/home/contentful'
 import { SearchParameters } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
-import { SearchHit, parseSearchParameters } from 'libs/search'
+import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { useAlgoliaMultipleHits } from 'libs/search/fetch/useAlgoliaMultipleHits'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 import { useSearchMultipleHits } from 'libs/search/fetch/useSearchMultipleHits'
@@ -44,6 +44,7 @@ export const useHomeModules = (
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const algoliaBackend = useAlgoliaMultipleHits()
   const searchBackend = useSearchMultipleHits()
+  const parseSearchParameters = useParseSearchParameters()
 
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchMultipleHits, filterHits, transformHits } = backend
