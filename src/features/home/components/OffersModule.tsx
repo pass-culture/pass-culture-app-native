@@ -10,7 +10,7 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
-import { SearchHit, parseSearchParameters } from 'libs/search'
+import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { ColorsEnum, LENGTH_L, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 
 import { Cover } from '../atoms/Cover'
@@ -31,6 +31,7 @@ const keyExtractor = (item: SearchHit) => item.objectID
 export const OffersModule = (props: OffersModuleProps) => {
   const { nbHits, display, search: parameters, position, index, isBeneficiary, hits } = props
   const { navigate } = useNavigation<UseNavigationType>()
+  const parseSearchParameters = useParseSearchParameters()
 
   const moduleName = display.title || parameters.title
   const logHasSeenAllTiles = useFunctionOnce(() =>
