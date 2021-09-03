@@ -11,7 +11,7 @@ export const FIREBASE_DYNAMIC_LINK_URL = `https://${env.FIREBASE_DYNAMIC_LINK_DO
  * @see https://firebase.google.com/docs/dynamic-links/create-manually
  */
 export function getLongDynamicLinkURI() {
-  return `apn=${env.ANDROID_APP_ID}&isi=${env.IOS_APP_STORE_ID}&ibi=${env.IOS_APP_ID}`
+  return `apn=${env.ANDROID_APP_ID}&isi=${env.IOS_APP_STORE_ID}&ibi=${env.IOS_APP_ID}&efr=1`
 }
 
 /**
