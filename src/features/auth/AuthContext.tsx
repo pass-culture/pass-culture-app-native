@@ -4,6 +4,7 @@ import React, { memo, useCallback, useContext, useEffect, useMemo, useState } fr
 import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics, LoginRoutineMethod } from 'libs/analytics'
 import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
@@ -64,6 +65,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
 
 export function useLoginRoutine() {
   const { setIsLoggedIn } = useAuthContext()
+  const { dispatch } = useSearch()
 
   /**
    * Executes the minimal set of instructions required to proceed to the login
@@ -76,6 +78,8 @@ export function useLoginRoutine() {
     await storage.saveString('access_token', response.accessToken)
     analytics.logLogin({ method })
     setIsLoggedIn(true)
+    // initialise search state to make sure search results correspond to user available categories
+    dispatch({ type: 'INIT' })
   }
 
   return loginRoutine
