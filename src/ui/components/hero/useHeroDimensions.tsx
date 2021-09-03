@@ -33,7 +33,7 @@ export const useHeroDimensions = (type: 'offer' | 'venue', hasImage: boolean) =>
         return {
           heroBackgroundHeight: top + blurImageHeight / RATIO_LANDSCAPE,
           imageStyle: {
-            borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+            borderRadius: BorderRadiusEnum.BUTTON,
             width: LENGTH_M,
             aspectRatio: 1,
           },
