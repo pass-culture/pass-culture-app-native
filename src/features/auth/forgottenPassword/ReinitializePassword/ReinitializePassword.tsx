@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
 import { LoadingPage } from '@pass-culture/id-check/src/ui/components/loaders/LoadingPage'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
-import React, { useState } from 'react'
-import { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
@@ -65,6 +65,10 @@ export const ReinitializePassword = () => {
     })
   }
 
+  function onSubmitEditing() {
+    return Platform.OS === 'web' && allowSubmission ? submitPassword : undefined
+  }
+
   if (!isTimestampExpirationVerified) {
     return <LoadingPage />
   }
@@ -85,6 +89,7 @@ export const ReinitializePassword = () => {
             autoFocus
             onChangeText={setPassword}
             placeholder={t`Ton mot de passe`}
+            onSubmitEditing={onSubmitEditing}
           />
         </StyledInput>
         <PasswordSecurityRules password={password} />
@@ -96,6 +101,7 @@ export const ReinitializePassword = () => {
             value={confirmedPassword}
             onChangeText={setConfirmedPassword}
             placeholder={t`Confirmer le mot de passe`}
+            onSubmitEditing={onSubmitEditing}
           />
         </StyledInput>
         <Spacer.Column numberOfSpaces={2} />
