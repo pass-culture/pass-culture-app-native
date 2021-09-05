@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
+import { Platform, TextInput as RNTextInput } from 'react-native'
 
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import {
@@ -80,6 +80,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
               autoFocus={true}
               onChangeText={setPassword}
               placeholder={t`Ton mot de passe`}
+              onSubmitEditing={Platform.OS === 'web' ? submitPassword : undefined}
               ref={passwordInput}
               {...testID('Entrée pour le mot de passe')}
             />
