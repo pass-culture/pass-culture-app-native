@@ -71,7 +71,7 @@ const StyledTitle1 = styled(Typo.Title1)({
 })
 
 const CenterContainer = styled.View({
-  flex: 1,
+  flexGrow: 1,
   alignItems: 'center',
 })
 
