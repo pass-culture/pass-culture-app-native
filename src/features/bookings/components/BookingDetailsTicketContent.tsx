@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import * as React from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
@@ -95,6 +95,8 @@ const TicketContent = styled.View({
   paddingVertical: getSpacing(2),
   alignItems: 'center',
   minHeight: TICKET_MIN_HEIGHT,
+  // Improve Web spacings using non default View boxSizing
+  ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })
 
 const Title = styled(Typo.Title3)({
