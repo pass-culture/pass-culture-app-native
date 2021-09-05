@@ -57,7 +57,7 @@ describe('Search component', () => {
   it('should handle coming from "See More" correctly', () => {
     useRoute.mockReturnValueOnce({ params: parameters })
     render(reactQueryProviderHOC(<Search />))
-    expect(mockDispatch).toBeCalledWith({ type: 'INIT_FROM_SEE_MORE', payload: parameters })
+    expect(mockDispatch).toBeCalledWith({ type: 'SET_STATE_FROM_NAVIGATE', payload: parameters })
     expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
   })
 })
