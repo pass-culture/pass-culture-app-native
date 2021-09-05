@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { NativeScrollEvent, StyleSheet, ScrollView } from 'react-native'
+import { Platform, NativeScrollEvent, StyleSheet, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
@@ -187,14 +187,16 @@ export const Profile: React.FC = () => {
             style={styles.row}
             testID="row-faq"
           />
-          <Row
-            title={t`Problèmes pour ouvrir un lien ?`}
-            type="navigable"
-            onPress={() => navigate('DeeplinkImporter')}
-            icon={LifeBuoy}
-            style={styles.row}
-            testID="row-import-deeplink"
-          />
+          {Platform.OS !== 'web' && (
+            <Row
+              title={t`Problèmes pour ouvrir un lien ?`}
+              type="navigable"
+              onPress={() => navigate('DeeplinkImporter')}
+              icon={LifeBuoy}
+              style={styles.row}
+              testID="row-import-deeplink"
+            />
+          )}
         </ProfileSection>
         <ProfileSection title={t`Autres`}>
           <Row
