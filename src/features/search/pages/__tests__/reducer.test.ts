@@ -36,7 +36,7 @@ describe('Search reducer', () => {
     })
   })
 
-  it('should handle INIT_FROM_SEE_MORE', () => {
+  it('should handle SET_STATE_FROM_NAVIGATE', () => {
     const parameters = {
       geolocation: { latitude: 48.8557, longitude: 2.3469 },
       offerCategories: [
@@ -50,7 +50,7 @@ describe('Search reducer', () => {
       ],
       tags: [],
     }
-    const action: Action = { type: 'INIT_FROM_SEE_MORE', payload: parameters }
+    const action: Action = { type: 'SET_STATE_FROM_NAVIGATE', payload: parameters }
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       ...parameters,
@@ -58,13 +58,13 @@ describe('Search reducer', () => {
     })
   })
 
-  it('should handle INIT_FROM_SEE_MORE - MAX_PRICE', () => {
+  it('should handle SET_STATE_FROM_NAVIGATE - MAX_PRICE', () => {
     const parameters = {
       offerCategories: ['CINEMA', 'MUSIQUE'],
       priceRange: [30, 500],
     }
     const action: Action = {
-      type: 'INIT_FROM_SEE_MORE',
+      type: 'SET_STATE_FROM_NAVIGATE',
       payload: parameters as Partial<SearchState>,
     }
     expect(searchReducer(state, action)).toStrictEqual({
