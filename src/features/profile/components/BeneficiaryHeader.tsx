@@ -52,6 +52,8 @@ const Container = styled.View({
 const HeaderBackgroundWrapper = styled.View({
   position: 'absolute',
   top: 0,
+  left: 0,
+  right: 0,
   maxHeight: getSpacing(73.5),
 })
 
