@@ -2,7 +2,6 @@ import { NavigationContainer, NavigationContainerRef } from '@react-navigation/n
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import { Text } from 'react-native'
-import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
 import { navigateToHome } from 'features/navigation/helpers'
@@ -51,17 +50,6 @@ describe('<ResetPasswordEmailSent />', () => {
 
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalled()
-    })
-  })
-
-  it('should open mail app when clicking on check email button', async () => {
-    const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
-
-    const checkEmailsButton = renderAPI.getByText('Consulter mes e-mails')
-    fireEvent.click(checkEmailsButton)
-
-    await waitForExpect(() => {
-      expect(openInbox).toHaveBeenCalled()
     })
   })
 })

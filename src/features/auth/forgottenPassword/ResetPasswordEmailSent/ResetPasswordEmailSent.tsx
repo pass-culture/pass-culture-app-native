@@ -1,14 +1,13 @@
 import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
-import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
+import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
 import { navigateToHome, openExternalUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -50,8 +49,8 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
             icon={ExternalSite}
           />
         </Description>
-        <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary title={t`Consulter mes e-mails`} onPress={openInbox} icon={ExternalSite} />
+        <Spacer.Column numberOfSpaces={3} />
+        <OpenInboxButton />
       </ModalContent>
     </BottomContentPage>
   )

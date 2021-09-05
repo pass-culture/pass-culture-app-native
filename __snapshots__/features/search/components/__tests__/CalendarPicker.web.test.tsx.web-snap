@@ -86,7 +86,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="align-items: center; flex-direction: row; justify-content: space-between; margin-top: 6px;"
+                      style="align-items: center; flex-direction: row; justify-content: space-between; margin-top: 6px; padding-left: 10px; padding-right: 10px;"
                     >
                       <div
                         class="css-view-1dbjc4n"

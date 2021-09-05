@@ -2,8 +2,8 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
-import { openInbox } from 'react-native-email-link'
 
+import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
 import {
   CenteredText,
   Description,
@@ -14,13 +14,11 @@ import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
@@ -72,8 +70,8 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
             icon={Email}
           />
         </Description>
-        <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary title={t`Consulter mes e-mails`} onPress={openInbox} icon={ExternalSite} />
+        <Spacer.Column numberOfSpaces={3} />
+        <OpenInboxButton />
       </EmailSentModalContent>
     </BottomContentPage>
   )
