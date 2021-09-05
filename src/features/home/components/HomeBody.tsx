@@ -35,10 +35,10 @@ const keyExtractor = (item: ProcessedModule, index: number) =>
 const ItemSeparatorComponent = () => <Spacer.Column numberOfSpaces={6} />
 
 const ListHeaderComponent = () => (
-  <Container>
+  <ListHeaderContainer>
     <Spacer.TopScreen />
     <HomeHeader />
-  </Container>
+  </ListHeaderContainer>
 )
 
 export const HomeBody = (props: HomeBodyProps) => {
@@ -131,4 +131,13 @@ export const HomeBody = (props: HomeBodyProps) => {
   )
 }
 
-const Container = styled.View({ flexBasis: 1, flexGrow: 1, flexShrink: 0 })
+const Container = styled.View({
+  flexBasis: 1,
+  flexGrow: 1,
+  flexShrink: 0,
+})
+
+const ListHeaderContainer = styled.View({
+  flexGrow: 1,
+  flexShrink: 0,
+})
