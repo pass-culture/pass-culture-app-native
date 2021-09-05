@@ -1,6 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { openInbox } from 'react-native-email-link'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import waitForExpect from 'wait-for-expect'
 
@@ -64,17 +63,6 @@ describe('<SignupConfirmationEmailSent />', () => {
     await waitForExpect(() => {
       expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toBeCalledTimes(1)
       expect(contactSupport.forSignupConfirmationEmailNotReceived).toBeCalledTimes(1)
-    })
-  })
-
-  it('should open mail app when clicking on check email button', async () => {
-    const { findByText } = renderPage()
-
-    const checkEmailsButton = await findByText('Consulter mes e-mails')
-    fireEvent.click(checkEmailsButton)
-
-    await waitForExpect(() => {
-      expect(openInbox).toHaveBeenCalled()
     })
   })
 })
