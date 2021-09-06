@@ -1,18 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AccountCreated /> should render correctly 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
-  }
->
+Array [
   <View
     style={
       Array [
@@ -35,7 +24,7 @@ exports[`<AccountCreated /> should render correctly 1`] = `
         undefined-SVG-Mock
       </Text>
     </View>
-  </View>
+  </View>,
   <RCTScrollView
     bounces={false}
     contentContainerStyle={
@@ -187,6 +176,6 @@ exports[`<AccountCreated /> should render correctly 1`] = `
         }
       />
     </View>
-  </RCTScrollView>
-</View>
+  </RCTScrollView>,
+]
 `;
