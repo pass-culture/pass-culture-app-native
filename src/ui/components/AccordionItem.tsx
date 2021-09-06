@@ -70,8 +70,8 @@ export const AccordionItem = ({
   }, [open])
 
   return (
-    <View onLayout={onLayout}>
-      <TouchableWithoutFeedback onPress={toggleListItem}>
+    <React.Fragment>
+      <TouchableWithoutFeedback onPress={toggleListItem} onLayout={onLayout}>
         <View style={[styles.titleContainer, titleStyle]}>
           <Title>{title}</Title>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
@@ -79,16 +79,15 @@ export const AccordionItem = ({
           </Animated.View>
         </View>
       </TouchableWithoutFeedback>
-      {/* eslint-disable-next-line react-native/no-inline-styles */}
-      <Animated.View style={{ overflow: 'hidden', height: bodyHeight }} testID="accordionBody">
+      <StyledAnimatedView style={{ height: bodyHeight }} testID="accordionBody">
         <View
           style={[styles.bodyContainer, bodyStyle]}
           testID="accordionBodyContainer"
           onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}>
           {children}
         </View>
-      </Animated.View>
-    </View>
+      </StyledAnimatedView>
+    </React.Fragment>
   )
 }
 
@@ -115,3 +114,5 @@ const styles = StyleSheet.create({
 const Title = styled(Typo.Title4)({
   flex: '0.9',
 })
+
+const StyledAnimatedView = styled(Animated.View)({ overflow: 'hidden' })

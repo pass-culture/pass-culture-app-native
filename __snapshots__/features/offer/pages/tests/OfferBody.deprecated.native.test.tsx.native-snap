@@ -962,6 +962,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           accessible={true}
                           focusable={true}
                           onClick={[Function]}
+                          onLayout={[Function]}
                           onResponderGrant={[Function]}
                           onResponderMove={[Function]}
                           onResponderRelease={[Function]}
@@ -1114,6 +1115,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           accessible={true}
                           focusable={true}
                           onClick={[Function]}
+                          onLayout={[Function]}
                           onResponderGrant={[Function]}
                           onResponderMove={[Function]}
                           onResponderRelease={[Function]}
@@ -3593,6 +3595,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           accessible={true}
                           focusable={true}
                           onClick={[Function]}
+                          onLayout={[Function]}
                           onResponderGrant={[Function]}
                           onResponderMove={[Function]}
                           onResponderRelease={[Function]}
@@ -3745,6 +3748,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           accessible={true}
                           focusable={true}
                           onClick={[Function]}
+                          onLayout={[Function]}
                           onResponderGrant={[Function]}
                           onResponderMove={[Function]}
                           onResponderRelease={[Function]}

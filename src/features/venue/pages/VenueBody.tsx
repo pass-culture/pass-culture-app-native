@@ -39,16 +39,12 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     postalCode,
     city,
     publicName,
-    // withdrawalDetails,
+    withdrawalDetails,
     latitude,
     longitude,
     venueTypeCode,
     description,
   } = venue
-
-  // TODO (Lucasbeneston) : Remove after add accordionItem Animation
-  const withdrawalDetails =
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis commodi fugit accusantium omnis adipisci, quod libero quis natus saepe accusamus, odit mollitia ipsa iure sunt nesciunt pariatur error recusandae optio!'
 
   // TODO (Lucasbeneston) : Remove after new render API with accessibility object
   const accessibility = {
