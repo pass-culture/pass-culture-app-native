@@ -17,17 +17,17 @@ interface Props {
   description?: string | undefined
 }
 
-const NUMBER_OF_LINES = 3
+const NUMBER_OF_LINES = 5
 const ANIMATION_DURATION = 500 //ms
 const PARTIAL_DESCRIPTION_HEIGHT = getSpacing(NUMBER_OF_LINES * 5)
-const LOREM_WITH_URL =
-  ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.'
 
 export const PartialAccordionDescription: React.FC<Props> = ({ description = '' }) => {
   const [open, setOpen] = useState(false)
   const [totalDescriptionHeight, setTotalDescriptionHeight] = useState<number>(0)
   const [maxLines, setMaxLines] = useState<number | undefined>(NUMBER_OF_LINES)
   const animatedController = useRef(new Animated.Value(0)).current
+  const isLongDescription = PARTIAL_DESCRIPTION_HEIGHT <= totalDescriptionHeight
+  const buttonLabel = open ? t`voir moins` : t`voir plus`
 
   const toggleDescription = () => {
     Animated.timing(animatedController, {
@@ -44,16 +44,20 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description = '' 
       setMaxLines(undefined)
     } else {
       setTimeout(() => {
-        setMaxLines(3)
+        setMaxLines(NUMBER_OF_LINES)
       }, ANIMATION_DURATION)
     }
   }
+
   const onLayout = (event: LayoutChangeEvent) =>
     setTotalDescriptionHeight(event.nativeEvent.layout.height)
 
   const bodyDescriptionHeight = animatedController.interpolate({
     inputRange: [0, 1],
-    outputRange: [PARTIAL_DESCRIPTION_HEIGHT, totalDescriptionHeight],
+    outputRange: [
+      isLongDescription ? PARTIAL_DESCRIPTION_HEIGHT : totalDescriptionHeight,
+      totalDescriptionHeight,
+    ],
   })
 
   const arrowAngle = animatedController.interpolate({
@@ -61,49 +65,42 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description = '' 
     outputRange: [`${2 * Math.PI}rad`, `${(2 * Math.PI) / 2}rad`],
   })
 
-  const buttonLabel = open ? t`voir moins` : t`voir plus`
-
-  // const isLongDescription = PARTIAL_DESCRIPTION_HEIGHT <= totalDescriptionHeight
-
-  // TODO (Lucasbeneston) : Remove fakeLongDescription and use only description
-  const fakeLongDescription = description + LOREM_WITH_URL
-
   if (!description) return null
   return (
     <Container>
       <StyledAnimatedView style={{ height: bodyDescriptionHeight }} testID="accordionBody">
-        <DescriptionContainer onLayout={onLayout}>
-          <Description numberOfLines={maxLines}>{highlightLinks(fakeLongDescription)}</Description>
+        <DescriptionContainer onLayout={onLayout} testID="descriptionContainer">
+          <Description numberOfLines={maxLines}>{highlightLinks(description)}</Description>
         </DescriptionContainer>
       </StyledAnimatedView>
-      {/* {!!isLongDescription && ( */}
-      <TouchableWithoutFeedback onPress={toggleDescription}>
-        <SeeMoreButton>
-          <Typo.ButtonText>{buttonLabel}</Typo.ButtonText>
-          <Spacer.Row numberOfSpaces={2} />
-          <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
-            <ArrowDown size={getSpacing(5)} />
-          </Animated.View>
-        </SeeMoreButton>
-      </TouchableWithoutFeedback>
-      {/* )} */}
+      {!!isLongDescription && (
+        <TouchableWithoutFeedback onPress={toggleDescription}>
+          <SeeMoreButton>
+            <Typo.ButtonText>{buttonLabel}</Typo.ButtonText>
+            <Spacer.Row numberOfSpaces={2} />
+            <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
+              <ArrowDown size={getSpacing(5)} />
+            </Animated.View>
+          </SeeMoreButton>
+        </TouchableWithoutFeedback>
+      )}
     </Container>
   )
 }
 
 const Container = styled.View({
   paddingHorizontal: getSpacing(6),
-  paddingVertical: getSpacing(2),
+  paddingVertical: getSpacing(6),
+})
+
+const StyledAnimatedView = styled(Animated.View)({
+  overflow: 'hidden',
 })
 
 const DescriptionContainer = styled.View({
   position: 'absolute',
   top: 0,
   width: '100%',
-})
-
-const StyledAnimatedView = styled(Animated.View)({
-  overflow: 'hidden',
 })
 
 const Description = styled(Typo.Body)({
@@ -114,6 +111,6 @@ const SeeMoreButton = styled.View({
   alignItems: 'center',
   flexDirection: 'row',
   alignSelf: 'flex-end',
-  paddingVertical: getSpacing(4),
+  paddingTop: getSpacing(4),
   ...(Platform.OS === 'web' ? { cursor: 'pointer' } : {}),
 })

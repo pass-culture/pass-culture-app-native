@@ -13,7 +13,7 @@ export const venueResponseSnap: VenueResponse = {
   address: '1 boulevard Poissonnière',
   postalCode: '75000',
   description:
-    'Lorem ipsum dolor sit amet https://pass.culture.fr/ consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.',
+    ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,',
 }
 
 export const venueWithNoAddressResponseSnap: VenueResponse = {
@@ -28,5 +28,5 @@ export const venueWithNoAddressResponseSnap: VenueResponse = {
   withdrawalDetails: null,
   postalCode: '15000',
   description:
-    'Lorem ipsum dolor sit amet https://pass.culture.fr/ consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.',
+    ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,',
 }
