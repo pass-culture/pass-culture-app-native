@@ -85,16 +85,18 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
 }
 
 export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
-  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
+  const { goBack, canGoBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
   const { top } = useCustomSafeInsets()
 
   return (
     <AsyncErrorBoundaryWithoutNavigation
       {...props}
       header={
-        <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
-          <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
-        </HeaderContainer>
+        !!canGoBack() && (
+          <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
+            <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
+          </HeaderContainer>
+        )
       }
     />
   )
