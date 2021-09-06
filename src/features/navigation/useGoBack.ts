@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
+import { Platform } from 'react-native'
 
 import { AllNavParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 
@@ -20,12 +21,26 @@ export function useGoBack<RouteName extends keyof AllNavParamList>(
   const previousRoute = usePreviousRoute()
 
   function customGoBack() {
-    if (typeof previousRoute?.name !== 'undefined' && canGoBack()) {
+    const can = canGoBack()
+    if (typeof previousRoute?.name !== 'undefined' && can) {
       goBack()
+    } else if (can && Platform.OS === 'web') {
+      window.history.back()
     } else {
       navigate(...args)
     }
   }
 
-  return { goBack: customGoBack, canGoBack }
+  function customCanGoBack(): boolean {
+    if (Platform.OS !== 'web') {
+      return canGoBack()
+    }
+    let can = canGoBack()
+    if (!can && window) {
+      can = window.history.length > 2 // checked on FF & Chrome and it's 2
+    }
+    return can
+  }
+
+  return { goBack: customGoBack, canGoBack: customCanGoBack }
 }
