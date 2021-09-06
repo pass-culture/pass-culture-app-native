@@ -311,20 +311,17 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="height: 16px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="padding: 8px 24px 8px 24px;"
+              style="padding: 24px 24px 24px 24px;"
             >
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionBody"
                 id="animatedComponent"
-                style="height: 60px; overflow-x: hidden; overflow-y: hidden;"
+                style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
               >
                 <div
                   class="css-view-1dbjc4n"
+                  data-testid="descriptionContainer"
                   style="position: absolute; top: 0px; width: 100%;"
                 >
                   <div
@@ -332,7 +329,7 @@ Object {
                     dir="auto"
                     style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                   >
-                    Lorem ipsum dolor sit amet 
+                     
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
                       style="color: rgb(21, 21, 21); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
@@ -359,68 +356,7 @@ Object {
                       </span>
                        https://pass.culture.fr/
                     </span>
-                     consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. 
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                      style="color: rgb(21, 21, 21); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="display: inline-flex; width: 4px;"
-                      />
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-testid="externalSiteIcon"
-                          style="display: inline-flex;"
-                        >
-                          <span
-                            class="css-text-901oao css-textHasAncestor-16my406"
-                          >
-                            externalSiteIcon-SVG-Mock
-                          </span>
-                        </div>
-                        
-                      </span>
-                       https://pass.culture.fr/
-                    </span>
-                     lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.
-                  </div>
-                </div>
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; align-self: flex-end; cursor: pointer; flex-direction: row; padding-top: 16px; padding-bottom: 16px;"
-                tabindex="0"
-              >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                >
-                  voir plus
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 8px;"
-                />
-                <div
-                  class="css-view-1dbjc4n"
-                  data-testid="accordionArrow"
-                  id="animatedComponent"
-                  style="transform: rotateZ(6.283185307179586rad);"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                  >
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                    >
-                      undefined-SVG-Mock
-                    </div>
+                     lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
                   </div>
                 </div>
               </div>
@@ -1400,20 +1336,17 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="height: 16px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="padding: 8px 24px 8px 24px;"
+            style="padding: 24px 24px 24px 24px;"
           >
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionBody"
               id="animatedComponent"
-              style="height: 60px; overflow-x: hidden; overflow-y: hidden;"
+              style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
             >
               <div
                 class="css-view-1dbjc4n"
+                data-testid="descriptionContainer"
                 style="position: absolute; top: 0px; width: 100%;"
               >
                 <div
@@ -1421,7 +1354,7 @@ Object {
                   dir="auto"
                   style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                 >
-                  Lorem ipsum dolor sit amet 
+                   
                   <span
                     class="css-text-901oao css-textHasAncestor-16my406"
                     style="color: rgb(21, 21, 21); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
@@ -1448,68 +1381,7 @@ Object {
                     </span>
                      https://pass.culture.fr/
                   </span>
-                   consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. 
-                  <span
-                    class="css-text-901oao css-textHasAncestor-16my406"
-                    style="color: rgb(21, 21, 21); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; width: 4px;"
-                    />
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-testid="externalSiteIcon"
-                        style="display: inline-flex;"
-                      >
-                        <span
-                          class="css-text-901oao css-textHasAncestor-16my406"
-                        >
-                          externalSiteIcon-SVG-Mock
-                        </span>
-                      </div>
-                      
-                    </span>
-                     https://pass.culture.fr/
-                  </span>
-                   lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; align-self: flex-end; cursor: pointer; flex-direction: row; padding-top: 16px; padding-bottom: 16px;"
-              tabindex="0"
-            >
-              <div
-                class="css-text-901oao"
-                dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-              >
-                voir plus
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 8px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                data-testid="accordionArrow"
-                id="animatedComponent"
-                style="transform: rotateZ(6.283185307179586rad);"
-              >
-                <div
-                  class="css-view-1dbjc4n"
-                >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                  >
-                    undefined-SVG-Mock
-                  </div>
+                   lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
                 </div>
               </div>
             </div>

@@ -87,7 +87,6 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         label={typeLabel}
         locationCoordinates={{ latitude, longitude }}
       />
-      <Spacer.Column numberOfSpaces={4} />
 
       {/* Description */}
       <PartialAccordionDescription description={description || ''} />

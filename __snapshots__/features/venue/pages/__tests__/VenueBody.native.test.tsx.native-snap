@@ -496,21 +496,11 @@ exports[`<VenueBody /> should render correctly 1`] = `
       />
     </View>
     <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
       style={
         Array [
           Object {
             "paddingHorizontal": 24,
-            "paddingVertical": 8,
+            "paddingVertical": 24,
           },
         ]
       }
@@ -518,7 +508,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
       <View
         style={
           Object {
-            "height": 60,
+            "height": 0,
             "overflow": "hidden",
           }
         }
@@ -535,9 +525,10 @@ exports[`<VenueBody /> should render correctly 1`] = `
               },
             ]
           }
+          testID="descriptionContainer"
         >
           <Text
-            numberOfLines={3}
+            numberOfLines={5}
             style={
               Array [
                 Object {
@@ -550,7 +541,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               ]
             }
           >
-            Lorem ipsum dolor sit amet 
+             
             <Text
               onPress={[Function]}
               style={
@@ -588,114 +579,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
               </Text>
                https://pass.culture.fr/
             </Text>
-             consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. 
-            <Text
-              onPress={[Function]}
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              <View
-                numberOfSpaces={1}
-                style={
-                  Array [
-                    Object {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
-              <Text>
-                <View
-                  height={16}
-                  testID="externalSiteIcon"
-                  width={15}
-                >
-                  <Text>
-                    externalSiteIcon-SVG-Mock
-                  </Text>
-                </View>
-                
-              </Text>
-               https://pass.culture.fr/
-            </Text>
-             lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus.
+             lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
           </Text>
-        </View>
-      </View>
-      <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "alignSelf": "flex-end",
-              "flexDirection": "row",
-              "paddingVertical": 16,
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          voir plus
-        </Text>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "width": 8,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Object {
-              "transform": Array [
-                Object {
-                  "rotateZ": "6.283185307179586rad",
-                },
-              ],
-            }
-          }
-          testID="accordionArrow"
-        >
-          <View
-            fill="#151515"
-            height={20}
-            width={20}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
         </View>
       </View>
     </View>
