@@ -17,6 +17,8 @@ import { ArrowNext } from '../svg/icons/ArrowNext'
 import { getSpacing, Typo } from '../theme'
 
 interface IAccordionItemProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onLayout?: (event: any) => void
   title: JSX.Element | string
   children: JSX.Element | JSX.Element[]
   defaultOpen?: boolean
@@ -27,6 +29,7 @@ interface IAccordionItemProps {
 }
 
 export const AccordionItem = ({
+  onLayout,
   title,
   children,
   defaultOpen = false,
@@ -67,7 +70,7 @@ export const AccordionItem = ({
   }, [open])
 
   return (
-    <React.Fragment>
+    <View onLayout={onLayout}>
       <TouchableWithoutFeedback onPress={toggleListItem}>
         <View style={[styles.titleContainer, titleStyle]}>
           <Title>{title}</Title>
@@ -85,7 +88,7 @@ export const AccordionItem = ({
           {children}
         </View>
       </Animated.View>
-    </React.Fragment>
+    </View>
   )
 }
 
