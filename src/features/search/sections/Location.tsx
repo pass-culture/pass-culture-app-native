@@ -23,7 +23,7 @@ export const Location: React.FC = () => {
 
   const onPressChangeLocation = () => {
     logUseFilter()
-    navigate('LocationFilter')
+    navigate('LocationFilter', { from: 'filters' })
   }
 
   return (
