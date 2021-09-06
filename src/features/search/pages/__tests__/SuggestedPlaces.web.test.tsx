@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
@@ -25,19 +26,35 @@ jest.mock('features/search/api', () => ({
 }))
 
 describe('SuggestedPlaces component', () => {
-  it('should dispatch LOCATION_PLACE on pick place', () => {
-    mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
-    const { getByTestId } = render(<SuggestedPlaces query="paris" />)
+  beforeEach(jest.clearAllMocks)
 
-    fireEvent.click(getByTestId(keyExtractor(mockPlaces[1])))
+  it.each`
+    stateName              | from
+    ${'fromNone'}          | ${undefined}
+    ${'fromFilters'}       | ${'filters'}
+    ${'fromSearchLanding'} | ${'search'}
+  `(
+    '$stateName: should dispatch LOCATION_PLACE on pick place when from is $from',
+    ({ from }: { from: 'filters' | 'search' | undefined }) => {
+      mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
+      const { getByTestId } = render(<SuggestedPlaces query="paris" from={from} />)
 
-    const { venueId: _venueId, ...payload } = mockPlaces[1]
-    expect(mockStagedDispatch).toHaveBeenCalledWith({
-      type: 'LOCATION_PLACE',
-      payload,
-    })
-    expect(mockGoBack).toBeCalledTimes(1)
-  })
+      fireEvent.click(getByTestId(keyExtractor(mockPlaces[1])))
+
+      const { venueId: _venueId, ...payload } = mockPlaces[1]
+      expect(mockStagedDispatch).toHaveBeenCalledWith({
+        type: 'LOCATION_PLACE',
+        payload,
+      })
+      if (from) {
+        expect(mockGoBack).not.toBeCalledTimes(1)
+        const nextScreen = from === 'filters' ? 'SearchFilter' : 'Search'
+        expect(navigate).toBeCalledWith(nextScreen)
+      } else {
+        expect(mockGoBack).toBeCalledTimes(1)
+      }
+    }
+  )
 
   it('should show empty component only when query is not empty and the results are not loading', () => {
     mockPlaces = []
