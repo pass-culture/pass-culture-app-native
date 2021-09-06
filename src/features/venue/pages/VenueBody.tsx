@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent, useRef } from 'react'
-import { ScrollView } from 'react-native'
+import React, { FunctionComponent, useRef, useState } from 'react'
+import { LayoutChangeEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -10,6 +10,7 @@ import { VenueOffers } from 'features/venue/components/VenueOffers'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { parseType } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Hero } from 'ui/components/hero/Hero'
 import { PartialAccordionDescription } from 'ui/components/PartialAccordionDescription'
@@ -27,8 +28,9 @@ interface Props {
 export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const { data: venue } = useVenue(venueId)
   const { data: offers } = useVenueOffers(venueId)
-  const scrollViewRef = useRef<ScrollView | null>(null)
   const { data: settings } = useAppSettings()
+  const scrollViewRef = useRef<ScrollView | null>(null)
+  const [bodyPositionY, setBodyPositionY] = useState<number>(0)
 
   if (!venue) return <React.Fragment></React.Fragment>
 
@@ -37,12 +39,24 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     postalCode,
     city,
     publicName,
-    withdrawalDetails,
+    // withdrawalDetails,
     latitude,
     longitude,
     venueTypeCode,
     description,
   } = venue
+
+  // TODO (Lucasbeneston) : Remove after add accordionItem Animation
+  const withdrawalDetails =
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis commodi fugit accusantium omnis adipisci, quod libero quis natus saepe accusamus, odit mollitia ipsa iure sunt nesciunt pariatur error recusandae optio!'
+
+  // TODO (Lucasbeneston) : Remove after new render API with accessibility object
+  const accessibility = {
+    audioDisability: true,
+    mentalDisability: false,
+    motorDisability: true,
+    visualDisability: false,
+  }
 
   const venueAddress = address
     ? `${address}, ${postalCode} ${city}`
@@ -51,6 +65,16 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const typeLabel = parseType(venueTypeCode)
 
   const shouldShowVenueOffers = !!settings?.useAppSearch && !!offers && offers?.hits.length > 0
+
+  const getPositionOfAccordionItem = (event: LayoutChangeEvent) => {
+    setBodyPositionY(event.nativeEvent.layout.y)
+  }
+
+  const scrollToTopOfAccordionItem = () => {
+    if (scrollViewRef !== null && scrollViewRef.current !== null) {
+      scrollViewRef.current.scrollTo({ x: 0, y: bodyPositionY, animated: true })
+    }
+  }
 
   return (
     <Container
@@ -107,8 +131,24 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
 
       {/* Modalités de retrait */}
       <SectionWithDivider visible={!!withdrawalDetails}>
-        <AccordionItem title={t`Modalités de retrait`}>
+        <AccordionItem
+          title={t`Modalités de retrait`}
+          onLayout={getPositionOfAccordionItem}
+          onOpen={scrollToTopOfAccordionItem}>
           <Typo.Body>{withdrawalDetails && highlightLinks(withdrawalDetails)}</Typo.Body>
+        </AccordionItem>
+      </SectionWithDivider>
+
+      {/* Accessibilité */}
+      <SectionWithDivider
+        visible={Object.values(accessibility).some(
+          (value) => value !== undefined && value !== null
+        )}>
+        <AccordionItem
+          title={t`Accessibilité`}
+          onLayout={getPositionOfAccordionItem}
+          onOpen={scrollToTopOfAccordionItem}>
+          <AccessibilityBlock {...accessibility} />
         </AccordionItem>
       </SectionWithDivider>
 

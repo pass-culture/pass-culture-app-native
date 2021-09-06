@@ -851,6 +851,352 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
+            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+            tabindex="0"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+            >
+              Accessibilité
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionArrow"
+              id="animatedComponent"
+              style="transform: rotateZ(1.5707963267948966rad);"
+            >
+              <div
+                class="css-view-1dbjc4n"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            data-testid="accordionBody"
+            id="animatedComponent"
+            style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionBodyContainer"
+              style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: row; justify-content: space-between;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="accessibilityAtomContainer"
+                  style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="accessibilityFrame"
+                    style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="bottom: -16px; position: absolute;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="invalidTestId"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          invalidTestId-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 16px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="Handicap visuel"
+                    style="margin-right: -4px; margin-left: -4px;"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                    >
+                      Handicap
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                    >
+                      visuel
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="accessibilityAtomContainer"
+                  style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="accessibilityFrame"
+                    style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="bottom: -16px; position: absolute;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="invalidTestId"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          invalidTestId-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 16px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="Handicap psychique ou cognitif"
+                    style="margin-right: -4px; margin-left: -4px;"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                    >
+                      Handicap
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                    >
+                      psychique
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                    >
+                      ou
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                    >
+                      cognitif
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="accessibilityAtomContainer"
+                  style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="accessibilityFrame"
+                    style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="bottom: -16px; position: absolute;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="validTestId"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          validTestId-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 16px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="Handicap moteur"
+                    style="margin-right: -4px; margin-left: -4px;"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                    >
+                      Handicap
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                    >
+                      moteur
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="accessibilityAtomContainer"
+                  style="flex-direction: column; flex-shrink: 1; margin-right: 0px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="accessibilityFrame"
+                    style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="bottom: -16px; position: absolute;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="validTestId"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          validTestId-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 16px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="Handicap auditif"
+                    style="margin-right: -4px; margin-left: -4px;"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                    >
+                      Handicap
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                    >
+                      auditif
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(245, 245, 245); height: 8px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
             style="height: 24px;"
           />
         </div>
@@ -1695,6 +2041,352 @@ Object {
                 </span>
                  https://test.com
               </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="background-color: rgb(245, 245, 245); height: 8px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+          tabindex="0"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+          >
+            Accessibilité
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            data-testid="accordionArrow"
+            id="animatedComponent"
+            style="transform: rotateZ(1.5707963267948966rad);"
+          >
+            <div
+              class="css-view-1dbjc4n"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          data-testid="accordionBody"
+          id="animatedComponent"
+          style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            data-testid="accordionBodyContainer"
+            style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-direction: row; justify-content: space-between;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accessibilityAtomContainer"
+                style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="accessibilityFrame"
+                  style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="bottom: -16px; position: absolute;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      data-testid="invalidTestId"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        invalidTestId-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 16px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="Handicap visuel"
+                  style="margin-right: -4px; margin-left: -4px;"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                  >
+                    Handicap
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                  >
+                    visuel
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accessibilityAtomContainer"
+                style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="accessibilityFrame"
+                  style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="bottom: -16px; position: absolute;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      data-testid="invalidTestId"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        invalidTestId-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 16px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="Handicap psychique ou cognitif"
+                  style="margin-right: -4px; margin-left: -4px;"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                  >
+                    Handicap
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                  >
+                    psychique
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                  >
+                    ou
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                  >
+                    cognitif
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accessibilityAtomContainer"
+                style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="accessibilityFrame"
+                  style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="bottom: -16px; position: absolute;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      data-testid="validTestId"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        validTestId-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 16px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="Handicap moteur"
+                  style="margin-right: -4px; margin-left: -4px;"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                  >
+                    Handicap
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                  >
+                    moteur
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accessibilityAtomContainer"
+                style="flex-direction: column; flex-shrink: 1; margin-right: 0px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="accessibilityFrame"
+                  style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="bottom: -16px; position: absolute;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      data-testid="validTestId"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        validTestId-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 16px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="Handicap auditif"
+                  style="margin-right: -4px; margin-left: -4px;"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                  >
+                    Handicap
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                  >
+                    auditif
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

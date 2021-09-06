@@ -1967,6 +1967,678 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 16,
+              "paddingHorizontal": 24,
+              "paddingTop": 24,
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "flexBasis": 0,
+                "flexGrow": 0.9,
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+              },
+            ]
+          }
+        >
+          Accessibilité
+        </Text>
+        <View
+          style={
+            Object {
+              "transform": Array [
+                Object {
+                  "rotateZ": "1.5707963267948966rad",
+                },
+              ],
+            }
+          }
+          testID="accordionArrow"
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "height": 0,
+            "overflow": "hidden",
+          }
+        }
+        testID="accordionBody"
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "bottom": 0,
+                "paddingBottom": 24,
+                "paddingHorizontal": 24,
+                "paddingTop": 0,
+                "position": "absolute",
+                "width": "100%",
+              },
+              undefined,
+            ]
+          }
+          testID="accordionBodyContainer"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ]
+            }
+          >
+            <View
+              rightSpacingValue={12}
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "column",
+                    "flexShrink": 1,
+                    "marginRight": 12,
+                  },
+                ]
+              }
+              testID="accessibilityAtomContainer"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "borderColor": "#c7c7cc",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                    },
+                  ]
+                }
+                testID="accessibilityFrame"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  height={48}
+                  width={48}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "bottom": -16,
+                        "position": "absolute",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    testID="invalidTestId"
+                    width={32}
+                  >
+                    <Text>
+                      invalidTestId-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "marginHorizontal": -4,
+                    },
+                  ]
+                }
+                testID="Handicap visuel"
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingHorizontal": 1,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Handicap
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingHorizontal": 1,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  visuel
+                </Text>
+              </View>
+            </View>
+            <View
+              rightSpacingValue={12}
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "column",
+                    "flexShrink": 1,
+                    "marginRight": 12,
+                  },
+                ]
+              }
+              testID="accessibilityAtomContainer"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "borderColor": "#c7c7cc",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                    },
+                  ]
+                }
+                testID="accessibilityFrame"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  height={48}
+                  width={48}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "bottom": -16,
+                        "position": "absolute",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    testID="invalidTestId"
+                    width={32}
+                  >
+                    <Text>
+                      invalidTestId-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "marginHorizontal": -4,
+                    },
+                  ]
+                }
+                testID="Handicap psychique ou cognitif"
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingHorizontal": 1,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Handicap
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingHorizontal": 1,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  psychique
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingHorizontal": 1,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  ou
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingHorizontal": 1,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  cognitif
+                </Text>
+              </View>
+            </View>
+            <View
+              rightSpacingValue={12}
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "column",
+                    "flexShrink": 1,
+                    "marginRight": 12,
+                  },
+                ]
+              }
+              testID="accessibilityAtomContainer"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "borderColor": "#c7c7cc",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                    },
+                  ]
+                }
+                testID="accessibilityFrame"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  height={48}
+                  width={48}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "bottom": -16,
+                        "position": "absolute",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    testID="validTestId"
+                    width={32}
+                  >
+                    <Text>
+                      validTestId-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "marginHorizontal": -4,
+                    },
+                  ]
+                }
+                testID="Handicap moteur"
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingHorizontal": 1,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Handicap
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingHorizontal": 1,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  moteur
+                </Text>
+              </View>
+            </View>
+            <View
+              rightSpacingValue={0}
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "column",
+                    "flexShrink": 1,
+                    "marginRight": 0,
+                  },
+                ]
+              }
+              testID="accessibilityAtomContainer"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "borderColor": "#c7c7cc",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                    },
+                  ]
+                }
+                testID="accessibilityFrame"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  height={48}
+                  width={48}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "bottom": -16,
+                        "position": "absolute",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={32}
+                    testID="validTestId"
+                    width={32}
+                  >
+                    <Text>
+                      validTestId-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "marginHorizontal": -4,
+                    },
+                  ]
+                }
+                testID="Handicap auditif"
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingHorizontal": 1,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Handicap
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingHorizontal": 1,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  auditif
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#f5f5f5",
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <View
         numberOfSpaces={6}
         style={
           Array [
