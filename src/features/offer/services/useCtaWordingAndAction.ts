@@ -1,9 +1,13 @@
 import { t } from '@lingui/macro'
 
-import { CategoryType, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
+import { CategoryNameEnum, CategoryType, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl, navigateToBooking } from 'features/navigation/helpers'
+import { getOfferPrice } from 'features/offer/services/getOfferPrice'
+import { isUserUnderageBeneficiary } from 'features/profile/utils'
+import { OptionalCategoryCriteria } from 'features/search/enums'
+import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { analytics } from 'libs/analytics'
 
 import { OfferAdaptedResponse, useOffer } from '../api/useOffer'
@@ -23,6 +27,8 @@ interface Props {
   offer: OfferAdaptedResponse
   hasEnoughCredit: boolean
   bookedOffers: UserProfileResponse['bookedOffers']
+  availableCategories: OptionalCategoryCriteria
+  isUnderageBeneficiary: boolean
 }
 interface ICTAWordingAndAction {
   isExternal?: boolean
@@ -37,9 +43,14 @@ export const getCtaWordingAndAction = ({
   offer,
   hasEnoughCredit,
   bookedOffers,
+  availableCategories,
+  isUnderageBeneficiary,
 }: Props): ICTAWordingAndAction | undefined => {
   const { category, externalTicketOfficeUrl } = offer
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
+  const isOfferCategoryNotAvailable = !!(
+    category.name && !Object.keys(availableCategories).includes(category.name)
+  )
 
   if (isAlreadyBookedOffer) {
     return {
@@ -49,8 +60,21 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  // Non beneficiary or educational offer
-  if (!isLoggedIn || !isBeneficiary || offer.isEducational) {
+  // underage beneficiary cannot book non free digital offers except press category
+  const isOfferCategoryNotBookableByUser =
+    isUnderageBeneficiary &&
+    offer.isDigital &&
+    getOfferPrice(offer.stocks) !== 0 &&
+    category.name !== CategoryNameEnum.PRESSE
+
+  // Non beneficiary or educational offer or unavailable offer for user
+  if (
+    !isLoggedIn ||
+    !isBeneficiary ||
+    offer.isEducational ||
+    isOfferCategoryNotAvailable ||
+    isOfferCategoryNotBookableByUser
+  ) {
     const isEvent = category.categoryType === CategoryType.Event
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
@@ -101,6 +125,8 @@ export const useCtaWordingAndAction = (props: {
   const { data: profileInfo } = useUserProfileInfo()
   const { data: offer } = useOffer({ offerId })
   const hasEnoughCredit = useHasEnoughCredit(offerId)
+  const availableCategories = useAvailableCategories()
+  const isUnderageBeneficiary = !!(profileInfo && isUserUnderageBeneficiary(profileInfo))
 
   if (!offer) return
 
@@ -122,5 +148,7 @@ export const useCtaWordingAndAction = (props: {
     offer,
     hasEnoughCredit,
     bookedOffers,
+    availableCategories,
+    isUnderageBeneficiary,
   })
 }

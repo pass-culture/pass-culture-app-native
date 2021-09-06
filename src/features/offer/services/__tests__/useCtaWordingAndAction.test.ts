@@ -1,13 +1,29 @@
+import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
-import { CategoryType } from 'api/gen'
+import { CategoryNameEnum, CategoryType, UserRole } from 'api/gen'
 import { offerAdaptedResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
+import { CATEGORY_CRITERIA } from 'features/search/enums'
+import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { analytics } from 'libs/analytics'
 
 import { getCtaWordingAndAction } from '../useCtaWordingAndAction'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
+
+const mockedUser = {
+  email: 'jean@example.com',
+  firstName: 'Jean',
+  isBeneficiary: true,
+  roles: [UserRole.BENEFICIARY],
+}
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({
+    data: mockedUser,
+  })),
+}))
+const availableCategories = CATEGORY_CRITERIA
 
 describe('getCtaWordingAndAction', () => {
   describe('Non Beneficiary', () => {
@@ -32,6 +48,8 @@ describe('getCtaWordingAndAction', () => {
           offer,
           hasEnoughCredit: true,
           bookedOffers,
+          availableCategories,
+          isUnderageBeneficiary: false,
         })
         const { wording, onPress } = result || {}
         expect(wording).toEqual(expected)
@@ -65,6 +83,8 @@ describe('getCtaWordingAndAction', () => {
           offer,
           hasEnoughCredit: true,
           bookedOffers,
+          availableCategories,
+          isUnderageBeneficiary: false,
         })
         const { wording, onPress } = result || {}
         expect(wording).toEqual(expected)
@@ -85,6 +105,8 @@ describe('getCtaWordingAndAction', () => {
         offer: buildOffer(partialOffer),
         hasEnoughCredit: true,
         bookedOffers: {},
+        availableCategories,
+        isUnderageBeneficiary: true,
         ...parameters,
       }) || { wording: '' }
 
@@ -122,7 +144,7 @@ describe('getCtaWordingAndAction', () => {
       ({ disabled, expected, hasEnoughCredit, type }) => {
         const { wording, onPress } = getCta(
           { category: { ...baseOffer.category, categoryType: type }, isDigital: true },
-          { hasEnoughCredit }
+          { hasEnoughCredit, isUnderageBeneficiary: false }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
@@ -141,7 +163,7 @@ describe('getCtaWordingAndAction', () => {
       ({ disabled, expected, hasEnoughCredit, type, isDigital }) => {
         const { wording, onPress } = getCta(
           { category: { ...baseOffer.category, categoryType: type }, isDigital },
-          { hasEnoughCredit }
+          { hasEnoughCredit, isUnderageBeneficiary: false }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
@@ -180,16 +202,55 @@ describe('getCtaWordingAndAction', () => {
             isDigital: true,
             category: { ...baseOffer.category, categoryType: CategoryType.Thing },
           },
-          { hasEnoughCredit }
+          { hasEnoughCredit, isUnderageBeneficiary: false }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
       }
     )
+
+    // same as beneficiaries except for video games and non free digital offers except press category
+    describe('underage beneficiary', () => {
+      it.each`
+        type                  | expected                     | disabled | isDigital | name                           | price
+        ${CategoryType.Thing} | ${'Réserver'}                | ${false} | ${true}   | ${CategoryNameEnum.PRESSE}     | ${20}
+        ${CategoryType.Event} | ${undefined}                 | ${true}  | ${true}   | ${CategoryNameEnum.FILM}       | ${20}
+        ${CategoryType.Event} | ${'Voir les disponibilités'} | ${false} | ${true}   | ${CategoryNameEnum.FILM}       | ${0}
+        ${CategoryType.Thing} | ${undefined}                 | ${true}  | ${false}  | ${CategoryNameEnum.JEUXVIDEO}  | ${0}
+        ${CategoryType.Event} | ${'Voir les disponibilités'} | ${false} | ${false}  | ${CategoryNameEnum.INSTRUMENT} | ${20}
+      `(
+        'CTA(disabled=$disabled) = "$expected" for categoryType=$type, isDigital=$isDigital, categoryName=$name and price=$price',
+        ({ type, expected, disabled, isDigital, name, price }) => {
+          mockedUser.roles = [UserRole.UNDERAGEBENEFICIARY]
+          const { result } = renderHook(useAvailableCategories)
+          const { wording, onPress } = getCta(
+            {
+              category: { ...baseOffer.category, categoryType: type, name },
+              isDigital,
+              stocks: [
+                {
+                  id: 118929,
+                  beginningDatetime: new Date('2021-01-04T13:30:00'),
+                  isBookable: true,
+                  isExpired: false,
+                  isSoldOut: false,
+                  price,
+                },
+              ],
+            },
+            { isUnderageBeneficiary: true, availableCategories: result.current }
+          )
+          expect(wording).toEqual(expected)
+          expect(onPress === undefined).toBe(disabled)
+        }
+      )
+    })
   })
+
   describe.skip('Navigation on success', () => {
     // TODO
   })
+
   describe('CTA - Analytics', () => {
     it('logs event ClickBookOffer when we click CTA "Réserver" (beneficiary user)', () => {
       const offer = buildOffer({
@@ -204,6 +265,8 @@ describe('getCtaWordingAndAction', () => {
           offer,
           hasEnoughCredit: true,
           bookedOffers: {},
+          availableCategories,
+          isUnderageBeneficiary: false,
         }) || {}
 
       expect(analytics.logClickBookOffer).toBeCalledTimes(0)
@@ -225,6 +288,8 @@ describe('getCtaWordingAndAction', () => {
           offer,
           hasEnoughCredit: true,
           bookedOffers: {},
+          availableCategories,
+          isUnderageBeneficiary: false,
         }) || {}
 
       expect(analytics.logConsultAvailableDates).toBeCalledTimes(0)
