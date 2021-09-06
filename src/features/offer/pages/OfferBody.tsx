@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { ScrollView } from 'react-native'
+import { LayoutChangeEvent, ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -39,6 +39,7 @@ export const OfferBody: FunctionComponent<{
   const { isLoggedIn } = useAuthContext()
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
+  const [bodyPositionY, setBodyPositionY] = useState<number>(0)
 
   const [isReportOfferModalVisible, setIsReportOfferModalVisible] = useState(false)
   const showReportOfferDescription = () => setIsReportOfferModalVisible(true)
@@ -67,6 +68,16 @@ export const OfferBody: FunctionComponent<{
   )
   const formattedDate = formatDatePeriod(dates)
   const shouldDisplayWhenBlock = category.categoryType === CategoryType.Event && !!formattedDate
+
+  const getPositionOfAccordionItem = (event: LayoutChangeEvent) => {
+    setBodyPositionY(event.nativeEvent.layout.y)
+  }
+
+  const scrollToTopOfAccordionItem = () => {
+    if (scrollViewRef !== null && scrollViewRef.current !== null) {
+      scrollViewRef.current.scrollTo({ x: 0, y: bodyPositionY, animated: true })
+    }
+  }
 
   return (
     <Container
@@ -118,6 +129,8 @@ export const OfferBody: FunctionComponent<{
       <SectionWithDivider visible={!!offerResponse.withdrawalDetails && !!user?.isBeneficiary}>
         <AccordionItem
           title={t`Modalités de retrait`}
+          onLayout={getPositionOfAccordionItem}
+          onOpen={scrollToTopOfAccordionItem}
           onOpenOnce={() => analytics.logConsultWithdrawal(offerResponse.id)}>
           <Typo.Body>
             {offerResponse.withdrawalDetails && highlightLinks(offerResponse.withdrawalDetails)}
@@ -131,11 +144,8 @@ export const OfferBody: FunctionComponent<{
         )}>
         <AccordionItem
           title={t`Accessibilité`}
-          onOpen={() => {
-            if (scrollViewRef !== null && scrollViewRef.current !== null) {
-              scrollViewRef.current.scrollToEnd()
-            }
-          }}
+          onLayout={getPositionOfAccordionItem}
+          onOpen={scrollToTopOfAccordionItem}
           onOpenOnce={() => analytics.logConsultAccessibility(offerResponse.id)}>
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>
