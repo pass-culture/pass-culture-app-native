@@ -1,11 +1,9 @@
 import { t } from '@lingui/macro'
-import { useRoute } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseRouteType } from 'features/navigation/RootNavigator'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -27,7 +25,6 @@ export const LocationPicker: React.FC = () => {
   const [value, setValue] = useState<string>('')
   const [debouncedValue, setDebouncedValue] = useState<string>(value)
   const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
-  const route = useRoute<UseRouteType<'LocationPicker'>>()
 
   const resetSearch = () => {
     setValue('')
@@ -54,7 +51,7 @@ export const LocationPicker: React.FC = () => {
         />
       </StyledInput>
       <Spacer.Column numberOfSpaces={4} />
-      <SuggestedPlaces query={debouncedValue} from={route.params.from} />
+      <SuggestedPlaces query={debouncedValue} />
 
       <PageHeader title={t`Choisir un lieu`} />
     </React.Fragment>

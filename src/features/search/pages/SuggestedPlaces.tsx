@@ -1,12 +1,10 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import isEqual from 'lodash.isequal'
 import uniqWith from 'lodash.uniqwith'
 import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { usePlaces, useVenues } from 'features/search/api'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
@@ -41,15 +39,11 @@ const Hit: React.FC<{ hit: SuggestedPlace; onPress: () => void }> = ({ hit, onPr
   )
 }
 
-export const SuggestedPlaces: React.FC<{
-  query: string
-  from?: 'filters' | 'search'
-}> = ({ query, from }) => {
+export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
   const { data: places = [], isLoading: isLoadingPlaces } = usePlaces(query)
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
   const { dispatch } = useStagedSearch()
   const { goBack } = useGoBack('Search')
-  const { navigate } = useNavigation<UseNavigationType>()
 
   const onPickPlace = (place: SuggestedPlace) => () => {
     const { venueId, ...payload } = place
@@ -58,11 +52,7 @@ export const SuggestedPlaces: React.FC<{
     } else if (place.geolocation) {
       dispatch({ type: 'LOCATION_PLACE', payload })
     }
-    if (!from) {
-      goBack()
-    } else {
-      navigate(from === 'filters' ? 'SearchFilter' : 'Search')
-    }
+    goBack()
   }
 
   const filteredPlaces = [...venues.slice(0, 5), ...uniqWith(places, isEqual)]

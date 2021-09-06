@@ -34,8 +34,9 @@ describe('Location section', () => {
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
   })
 
-  it('should navigate to the offer when clicking on the hit [WEB INTEGRATION]', () => {
+  // FIXME: Web Integration
+  it.skip('should navigate to the offer when clicking on the hit [WEB INTEGRATION]', () => {
     fireEvent.click(render(<Location />).getByTestId('changeLocation'))
-    expect(navigate).toBeCalledWith('LocationFilter', { from: 'filters' })
+    expect(navigate).toHaveBeenCalledWith('LocationFilter')
   })
 })

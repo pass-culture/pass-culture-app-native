@@ -65,8 +65,8 @@ export type RootStackParamList = {
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
-  LocationFilter: { from: 'search' | 'filters' }
-  LocationPicker: { from: 'search' | 'filters' }
+  LocationFilter: undefined
+  LocationPicker: undefined
   NextBeneficiaryStep: undefined
   Profile: undefined
   PersonalData: undefined

@@ -34,6 +34,6 @@ describe('Location section', () => {
 
   it('should navigate to the offer when clicking on the hit', () => {
     fireEvent.press(render(<Location />).getByTestId('changeLocation'))
-    expect(navigate).toBeCalledWith('LocationFilter', { from: 'filters' })
+    expect(navigate).toHaveBeenCalledWith('LocationFilter')
   })
 })
