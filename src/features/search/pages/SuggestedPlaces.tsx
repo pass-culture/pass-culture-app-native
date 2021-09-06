@@ -52,6 +52,10 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
     } else if (place.geolocation) {
       dispatch({ type: 'LOCATION_PLACE', payload })
     }
+
+    // we need to call goBack twice, first to LocationPicker
+    goBack()
+    // then previous page
     goBack()
   }
 
