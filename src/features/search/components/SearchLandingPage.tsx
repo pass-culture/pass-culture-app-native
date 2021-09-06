@@ -37,7 +37,7 @@ export const SearchLandingPage: React.FC = () => {
 
         <Separator windowWidth={windowWidth} />
 
-        <TouchableOpacity onPress={() => navigate('LocationFilter', { from: 'search' })}>
+        <TouchableOpacity onPress={() => navigate('LocationFilter')}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
         </TouchableOpacity>
 

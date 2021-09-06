@@ -1,11 +1,11 @@
 import { t } from '@lingui/macro'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationType } from 'features/search/enums'
@@ -20,7 +20,6 @@ const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const route = useRoute<UseRouteType<'LocationFilter'>>()
   const { goBack } = useGoBack('Search')
   const {
     position,
@@ -34,7 +33,7 @@ export const LocationFilter: React.FC = () => {
 
   const onPressPickPlace = () => {
     if (debouncedGoBack) debouncedGoBack.cancel()
-    navigate('LocationPicker', { from: route.params.from })
+    navigate('LocationPicker')
   }
 
   const onPressAroundMe = async () => {
