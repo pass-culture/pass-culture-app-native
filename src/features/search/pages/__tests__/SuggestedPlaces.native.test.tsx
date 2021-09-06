@@ -38,7 +38,7 @@ describe('SuggestedPlaces component', () => {
       type: 'LOCATION_PLACE',
       payload,
     })
-    expect(mockGoBack).toBeCalledTimes(1)
+    expect(mockGoBack).toBeCalledTimes(2)
   })
 
   it('should show empty component only when query is not empty and the results are not loading', () => {
