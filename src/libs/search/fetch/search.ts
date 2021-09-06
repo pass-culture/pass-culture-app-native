@@ -33,7 +33,7 @@ export const fetchMultipleHits = async (
 
   // We only use the total hits from the first search parameters, as this will
   // be used for the 'See More' button to redirect to search
-  const nbHits = allResults[0].info.meta.page.total_results
+  const nbHits = allResults[0] ? allResults[0].info.meta.page.total_results : 0
   return { hits: flatten(hits), nbHits }
 }
 
