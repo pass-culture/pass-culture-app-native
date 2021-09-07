@@ -44,15 +44,8 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     longitude,
     venueTypeCode,
     description,
+    accessibility,
   } = venue
-
-  // TODO (Lucasbeneston) : Remove after new render API with accessibility object
-  const accessibility = {
-    audioDisability: true,
-    mentalDisability: false,
-    motorDisability: true,
-    visualDisability: false,
-  }
 
   const venueAddress = address
     ? `${address}, ${postalCode} ${city}`
@@ -61,6 +54,9 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const typeLabel = parseType(venueTypeCode)
 
   const shouldShowVenueOffers = !!settings?.useAppSearch && !!offers && offers?.hits.length > 0
+  const shouldShowAccessibility = Object.values(accessibility).some(
+    (value) => value !== undefined && value !== null
+  )
 
   const getPositionOfAccordionItem = (event: LayoutChangeEvent) => {
     setBodyPositionY(event.nativeEvent.layout.y)
@@ -136,10 +132,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       </SectionWithDivider>
 
       {/* Accessibilité */}
-      <SectionWithDivider
-        visible={Object.values(accessibility).some(
-          (value) => value !== undefined && value !== null
-        )}>
+      <SectionWithDivider visible={shouldShowAccessibility}>
         <AccordionItem
           title={t`Accessibilité`}
           onLayout={getPositionOfAccordionItem}

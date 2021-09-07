@@ -14,6 +14,12 @@ export const venueResponseSnap: VenueResponse = {
   postalCode: '75000',
   description:
     ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,',
+  accessibility: {
+    audioDisability: false,
+    mentalDisability: false,
+    motorDisability: false,
+    visualDisability: true,
+  },
 }
 
 export const venueWithNoAddressResponseSnap: VenueResponse = {
@@ -29,4 +35,10 @@ export const venueWithNoAddressResponseSnap: VenueResponse = {
   postalCode: '15000',
   description:
     ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,',
+  accessibility: {
+    audioDisability: false,
+    mentalDisability: false,
+    motorDisability: false,
+    visualDisability: true,
+  },
 }
