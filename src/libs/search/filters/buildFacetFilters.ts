@@ -5,7 +5,8 @@ import { SearchState } from 'features/search/types'
 import { AppSearchFields, FALSE, TRUE } from './constants'
 
 export const buildFacetFilters = (params: SearchState): FilterArray<AppSearchFields> => {
-  const { offerCategories, offerIsDuo, tags, offerTypes, venueId } = params
+  const { offerCategories, offerIsDuo, tags, offerTypes, locationFilter } = params
+  const { venueId } = locationFilter
 
   const facetFilters: FilterArray<AppSearchFields> = buildOfferTypesFilter(offerTypes)
   if (offerCategories?.length) facetFilters.push({ [AppSearchFields.category]: offerCategories })

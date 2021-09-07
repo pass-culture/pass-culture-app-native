@@ -30,11 +30,10 @@ export const attributesToRetrieve = [
 ]
 
 const buildSearchParameters = ({
-  aroundRadius = RADIUS_FILTERS.DEFAULT_RADIUS_IN_KILOMETERS,
   beginningDatetime = null,
   date = null,
   endingDatetime = null,
-  geolocation = null,
+  locationFilter,
   offerCategories = [],
   offerIsDuo = false,
   offerIsFree = false,
@@ -45,7 +44,6 @@ const buildSearchParameters = ({
     isThing: false,
   },
   priceRange = null,
-  locationType = LocationType.EVERYWHERE,
   timeRange = null,
   tags = [],
 }: SearchState) => ({
@@ -59,7 +57,11 @@ const buildSearchParameters = ({
     priceRange,
     timeRange,
   }),
-  ...buildGeolocationParameter({ aroundRadius, geolocation, locationType }),
+  ...buildGeolocationParameter({
+    aroundRadius: locationFilter?.aroundRadius ?? RADIUS_FILTERS.DEFAULT_RADIUS_IN_KILOMETERS,
+    geolocation: locationFilter?.geolocation || null,
+    locationType: locationFilter?.locationType || LocationType.EVERYWHERE,
+  }),
 })
 
 export const fetchMultipleAlgolia = (
@@ -106,11 +108,10 @@ const buildGeolocationParameter = ({
   aroundRadius,
   geolocation,
   locationType,
-}: Pick<SearchState, 'aroundRadius' | 'geolocation' | 'locationType'>):
+}: Pick<SearchState['locationFilter'], 'aroundRadius' | 'geolocation' | 'locationType'>):
   | { aroundLatLng: string; aroundRadius: 'all' | number }
   | undefined => {
   if (!geolocation) return
-
   return {
     aroundLatLng: `${geolocation.latitude}, ${geolocation.longitude}`,
     aroundRadius: computeAroudRadiusInMeters(aroundRadius, locationType),

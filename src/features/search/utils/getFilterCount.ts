@@ -3,12 +3,12 @@ import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
 
 export const getFilterCount = (searchState: SearchState): number => {
-  const { offerTypes } = searchState
+  const { offerTypes, locationFilter } = searchState
   const priceRange = searchState.priceRange ?? [0, MAX_PRICE]
 
   return (
     // Localisation + Lieu
-    +(searchState.locationType !== LocationType.EVERYWHERE || !!searchState.venueId) +
+    +(locationFilter.locationType !== LocationType.EVERYWHERE || !!locationFilter.venueId) +
     // Catégories
     searchState.offerCategories.length +
     // Type d'offre

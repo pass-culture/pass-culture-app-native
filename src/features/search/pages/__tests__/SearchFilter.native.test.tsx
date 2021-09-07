@@ -34,26 +34,26 @@ jest.mock('features/home/api', () => ({
 const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))
 describe('SearchFilter component', () => {
   it('should render correctly', () => {
-    mockSearchState.locationType = LocationType.AROUND_ME
+    mockSearchState.locationFilter.locationType = LocationType.AROUND_ME
     const { toJSON } = renderSearchFilter()
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should not render section Radius if search everywhere or venue selected', () => {
-    mockSearchState.locationType = LocationType.EVERYWHERE
+    mockSearchState.locationFilter.locationType = LocationType.EVERYWHERE
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeFalsy()
 
-    mockSearchState.locationType = LocationType.AROUND_ME
+    mockSearchState.locationFilter.locationType = LocationType.AROUND_ME
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeTruthy()
 
     // Address
-    mockSearchState.venueId = null
-    mockSearchState.locationType = LocationType.PLACE
+    mockSearchState.locationFilter.venueId = null
+    mockSearchState.locationFilter.locationType = LocationType.PLACE
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeTruthy()
 
     // Venue
-    mockSearchState.venueId = 24
-    mockSearchState.locationType = LocationType.PLACE
+    mockSearchState.locationFilter.venueId = 24
+    mockSearchState.locationFilter.locationType = LocationType.PLACE
     expect(renderSearchFilter().queryByText(SectionTitle.Radius)).toBeFalsy()
   })
 

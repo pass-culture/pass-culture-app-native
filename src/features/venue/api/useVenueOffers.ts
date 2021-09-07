@@ -12,23 +12,25 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
   const { position } = useGeolocation()
 
   const params: SearchState = {
-    aroundRadius: position ? 100 : null,
     beginningDatetime: null,
     endingDatetime: null,
-    geolocation: position ? { latitude: position.latitude, longitude: position.longitude } : null,
     hitsPerPage: 10,
+    locationFilter: {
+      aroundRadius: position ? 100 : null,
+      geolocation: position ? { latitude: position.latitude, longitude: position.longitude } : null,
+      place: null,
+      locationType: LocationType.EVERYWHERE,
+      venueId,
+    },
     offerCategories: [],
     offerIsDuo: false,
     offerIsFree: false,
     offerIsNew: false,
     offerTypes: { isDigital: false, isEvent: false, isThing: false },
     priceRange: [0, 300],
-    place: null,
-    locationType: LocationType.EVERYWHERE,
     tags: [],
     date: null,
     timeRange: null,
-    venueId,
     showResults: false,
     query: '',
   }

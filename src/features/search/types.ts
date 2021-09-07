@@ -9,13 +9,21 @@ export interface SelectedDate {
   selectedDate: Date
 }
 
-export interface SearchState {
+interface LocationFilter {
   aroundRadius: number | null
+  // user location
+  geolocation: { latitude: number; longitude: number } | null
+  place: Omit<SuggestedPlace, 'venueId'> | null
+  locationType: LocationType
+  venueId: number | null
+}
+
+export interface SearchState {
   beginningDatetime: Date | null
   date: SelectedDate | null
   endingDatetime: Date | null
   hitsPerPage: number | null
-  geolocation: { latitude: number; longitude: number } | null
+  locationFilter: LocationFilter
   offerCategories: string[]
   offerIsDuo: boolean
   offerIsFree: boolean
@@ -25,12 +33,9 @@ export interface SearchState {
     isEvent: boolean
     isThing: boolean
   }
-  place: Omit<SuggestedPlace, 'venueId'> | null
   priceRange: Range<number> | null
-  locationType: LocationType
   showResults: boolean
   timeRange: Range<number> | null
   tags: string[]
-  venueId: number | null
   query: string
 }

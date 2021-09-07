@@ -1,4 +1,4 @@
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { AppSearchFields } from 'libs/search/filters/constants'
 
@@ -11,6 +11,13 @@ const baseParams: Partial<SearchState> = {
     isDigital: false,
     isEvent: false,
     isThing: false,
+  },
+  locationFilter: {
+    aroundRadius: null,
+    geolocation: null,
+    locationType: LocationType.EVERYWHERE,
+    place: null,
+    venueId: null,
   },
 }
 
@@ -90,10 +97,14 @@ describe('buildQueryOptions', () => {
 
       const filters = buildQueryOptions(
         {
-          aroundRadius: 123,
           offerTypes,
           offerCategories,
-          geolocation,
+          locationFilter: {
+            ...baseParams.locationFilter,
+            locationType: LocationType.AROUND_ME,
+            aroundRadius: 123,
+            geolocation,
+          },
         } as SearchState,
         page
       )
@@ -126,11 +137,15 @@ describe('buildQueryOptions', () => {
       }
 
       const filters = buildQueryOptions({
-        aroundRadius: 123,
         offerTypes,
         offerCategories,
-        geolocation,
         offerIsDuo: false,
+        locationFilter: {
+          ...baseParams.locationFilter,
+          locationType: LocationType.AROUND_ME,
+          aroundRadius: 123,
+          geolocation,
+        },
       } as SearchState)
 
       expect(filters.filters).toStrictEqual({
@@ -157,12 +172,15 @@ describe('buildQueryOptions', () => {
       }
 
       const filters = buildQueryOptions({
-        aroundRadius: 123,
         offerTypes,
         offerCategories,
-        geolocation,
         offerIsDuo: true,
         priceRange,
+        locationFilter: {
+          aroundRadius: 123,
+          geolocation,
+          venueId: null,
+        },
       } as SearchState)
 
       expect(filters.filters).toStrictEqual({

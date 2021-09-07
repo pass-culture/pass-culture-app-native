@@ -147,17 +147,14 @@ describe('src | components | parseSearchParameters', () => {
   })
 
   describe('geolocation', () => {
-    const geolocation = {
-      latitude: 1,
-      longitude: 2,
-    } as GeoCoordinates
+    const geolocation = { latitude: 1, longitude: 2 } as GeoCoordinates
 
     it('should return algolia parameters with geolocation with no distance limit when isGeolocated is provided', () => {
       const parameters = { isGeolocated: true } as SearchParametersFields
 
       const result = parseSearchParameters(parameters, geolocation, availableCategories)
-      expect(result).toStrictEqual({
-        ...defaultSearchParameters,
+      expect(result?.locationFilter).toStrictEqual({
+        ...defaultSearchParameters.locationFilter,
         geolocation,
         locationType: LocationType.AROUND_ME,
       })
@@ -167,8 +164,8 @@ describe('src | components | parseSearchParameters', () => {
       const parameters = { aroundRadius: 10, isGeolocated: true } as SearchParametersFields
 
       const result = parseSearchParameters(parameters, geolocation, availableCategories)
-      expect(result).toStrictEqual({
-        ...defaultSearchParameters,
+      expect(result?.locationFilter).toStrictEqual({
+        ...defaultSearchParameters.locationFilter,
         aroundRadius: 10,
         geolocation,
         locationType: LocationType.AROUND_ME,

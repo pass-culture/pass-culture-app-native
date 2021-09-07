@@ -7,7 +7,7 @@ import { fireEvent, render } from 'tests/utils'
 
 import { Location } from '../Location'
 
-let mockSearchState = initialSearchState
+const mockSearchState = initialSearchState
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({
@@ -23,12 +23,12 @@ describe('Location section', () => {
   })
 
   it('should have count in title when searching Around me', () => {
-    mockSearchState = { ...mockSearchState, locationType: LocationType.AROUND_ME }
+    mockSearchState.locationFilter.locationType = LocationType.AROUND_ME
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
   })
 
   it('should have count in title when searching Place', () => {
-    mockSearchState = { ...mockSearchState, locationType: LocationType.PLACE }
+    mockSearchState.locationFilter.locationType = LocationType.PLACE
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
   })
 

@@ -18,7 +18,7 @@ export const buildQueryOptions = (
       all: [
         ...buildFacetFilters(searchState),
         ...buildNumericFilters(searchState),
-        ...buildGeolocationFilter(searchState),
+        ...buildGeolocationFilter(searchState.locationFilter),
       ],
     },
     page: {
@@ -34,7 +34,7 @@ export const buildQueryOptions = (
     sort: SORT_OPTIONS,
   }
 
-  const boosts = buildBoosts(searchState.geolocation)
+  const boosts = buildBoosts(searchState.locationFilter.geolocation)
   if (boosts) {
     queryOptions['boosts'] = boosts
   }

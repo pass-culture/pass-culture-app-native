@@ -1,3 +1,4 @@
+import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { AppSearchFields } from 'libs/search/filters/constants'
 
@@ -8,6 +9,13 @@ const baseParams: Partial<SearchState> = {
     isDigital: false,
     isEvent: false,
     isThing: false,
+  },
+  locationFilter: {
+    aroundRadius: null,
+    geolocation: null,
+    locationType: LocationType.EVERYWHERE,
+    place: null,
+    venueId: null,
   },
 }
 
@@ -39,7 +47,7 @@ describe('buildFacetFilters', () => {
         isEvent: false,
         isThing: false,
       }
-      const filters = buildFacetFilters({ offerTypes } as SearchState)
+      const filters = buildFacetFilters({ ...baseParams, offerTypes } as SearchState)
       expect(filters).toStrictEqual([])
     })
 
@@ -49,7 +57,7 @@ describe('buildFacetFilters', () => {
         isEvent: false,
         isThing: false,
       }
-      const filters = buildFacetFilters({ offerTypes } as SearchState)
+      const filters = buildFacetFilters({ ...baseParams, offerTypes } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.is_digital]: 1 }])
     })
 
@@ -59,7 +67,7 @@ describe('buildFacetFilters', () => {
         isEvent: false,
         isThing: true,
       }
-      const filters = buildFacetFilters({ offerTypes } as SearchState)
+      const filters = buildFacetFilters({ ...baseParams, offerTypes } as SearchState)
       expect(filters).toStrictEqual([
         { [AppSearchFields.is_digital]: 0 },
         { [AppSearchFields.is_thing]: 1 },
@@ -73,7 +81,7 @@ describe('buildFacetFilters', () => {
         isThing: false,
       }
 
-      const filters = buildFacetFilters({ offerTypes } as SearchState)
+      const filters = buildFacetFilters({ ...baseParams, offerTypes } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.is_event]: 1 }])
     })
 
@@ -84,7 +92,7 @@ describe('buildFacetFilters', () => {
         isThing: true,
       }
 
-      const filters = buildFacetFilters({ offerTypes } as SearchState)
+      const filters = buildFacetFilters({ ...baseParams, offerTypes } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.is_thing]: 1 }])
     })
 
@@ -95,7 +103,7 @@ describe('buildFacetFilters', () => {
         isThing: false,
       }
 
-      const filters = buildFacetFilters({ offerTypes } as SearchState)
+      const filters = buildFacetFilters({ ...baseParams, offerTypes } as SearchState)
       expect(filters).toStrictEqual([
         { any: [{ [AppSearchFields.is_digital]: 1 }, { [AppSearchFields.is_event]: 1 }] },
       ])
@@ -108,7 +116,7 @@ describe('buildFacetFilters', () => {
         isThing: true,
       }
 
-      const filters = buildFacetFilters({ offerTypes } as SearchState)
+      const filters = buildFacetFilters({ ...baseParams, offerTypes } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.is_digital]: 0 }])
     })
 
@@ -119,7 +127,7 @@ describe('buildFacetFilters', () => {
         isThing: true,
       }
 
-      const filters = buildFacetFilters({ offerTypes } as SearchState)
+      const filters = buildFacetFilters({ ...baseParams, offerTypes } as SearchState)
       expect(filters).toStrictEqual([])
     })
   })

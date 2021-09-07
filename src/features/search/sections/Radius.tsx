@@ -12,7 +12,7 @@ const formatKm = (km: number) => `${km} km`
 export const Radius: React.FC = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Radius)
   const { searchState, dispatch } = useStagedSearch()
-  const radius = searchState.aroundRadius ?? MAX_RADIUS
+  const radius = searchState.locationFilter.aroundRadius ?? MAX_RADIUS
 
   const onValuesChangeFinish = (newValues: number[]) => {
     dispatch({ type: 'RADIUS', payload: newValues[0] })

@@ -7,7 +7,7 @@ import { fireEvent, render } from 'tests/utils/web'
 
 import { Location } from '../Location'
 
-let mockSearchState = initialSearchState
+const mockSearchState = initialSearchState
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({
@@ -24,18 +24,17 @@ describe('Location section', () => {
 
   // FIXME: Web Integration
   it.skip('should have count in title when searching Around me [WEB INTEGRATION]', () => {
-    mockSearchState = { ...mockSearchState, locationType: LocationType.AROUND_ME }
+    mockSearchState.locationFilter.locationType = LocationType.AROUND_ME
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
   })
 
   // FIXME: Web Integration
   it.skip('should have count in title when searching Place [WEB INTEGRATION]', () => {
-    mockSearchState = { ...mockSearchState, locationType: LocationType.PLACE }
+    mockSearchState.locationFilter.locationType = LocationType.PLACE
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
   })
 
-  // FIXME: Web Integration
-  it.skip('should navigate to the offer when clicking on the hit [WEB INTEGRATION]', () => {
+  it('should navigate to the offer when clicking on the hit', () => {
     fireEvent.click(render(<Location />).getByTestId('changeLocation'))
     expect(navigate).toHaveBeenCalledWith('LocationFilter')
   })
