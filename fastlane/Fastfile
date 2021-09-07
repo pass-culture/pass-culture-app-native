@@ -48,16 +48,7 @@ platform :ios do
         readonly: true
       )
       build
-      if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
-        deploy_appCenter
-      else
-        pilot(
-          username: ENV['APPLE_ACCOUNT_USERNAME'],
-          distribute_external: false,
-          skip_waiting_for_build_processing: true,
-          apple_id: ENV['APPLE_APP_ID']
-        )
-      end
+      deploy_appCenter
     end
   end
 
@@ -101,11 +92,7 @@ platform :android do
       sh "cd .. && yarn appcenter codepush release-react --token #{ENV['ANDROID_APPCENTER_API_TOKEN']} -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{release_notes}\" --disable-duplicate-release-error"
     else
       build
-      if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
-        deploy_appCenter
-      elsif ENV['DEPLOYMENT_PLATFORM'] === 'store' then
-        deploy_playStore
-      end
+      deploy_appCenter
     end
   end
 

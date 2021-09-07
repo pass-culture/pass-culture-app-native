@@ -431,6 +431,7 @@ jobs:
       - run:
           name: Deploy Android App for production environment
           command: |
+            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_PRODUCTION_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o android -t hard -e production
 
   deploy-ios-production-hard:
@@ -455,6 +456,7 @@ jobs:
           name: Deploy IOS App for production environment
           no_output_timeout: 30m
           command: |
+            export IOS_APPCENTER_API_TOKEN=$IOS_PRODUCTION_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t hard -e production
 
   deploy-soft-production:
@@ -483,8 +485,8 @@ jobs:
     docker:
       - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
         auth:
-            username: _json_key  # default username when using a JSON key file to authenticate
-            password: $GCP_INFRA_KEY
+          username: _json_key # default username when using a JSON key file to authenticate
+          password: $GCP_INFRA_KEY
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -500,8 +502,8 @@ jobs:
     docker:
       - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
         auth:
-            username: _json_key  # default username when using a JSON key file to authenticate
-            password: $GCP_INFRA_KEY
+          username: _json_key # default username when using a JSON key file to authenticate
+          password: $GCP_INFRA_KEY
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -517,8 +519,8 @@ jobs:
     docker:
       - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
         auth:
-            username: _json_key  # default username when using a JSON key file to authenticate
-            password: $GCP_INFRA_KEY
+          username: _json_key # default username when using a JSON key file to authenticate
+          password: $GCP_INFRA_KEY
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -651,20 +653,16 @@ workflows:
             - test-native
       - deploy-android-production-hard:
           filters:
-            tags:
-              only: /^prod-hard-deploy.*/
             branches:
-              ignore: /.*/
+              only: appcenter-appsearch-pro
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - deploy-ios-production-hard:
           filters:
-            tags:
-              only: /^prod-hard-deploy.*/
             branches:
-              ignore: /.*/
+              only: appcenter-appsearch-pro
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
