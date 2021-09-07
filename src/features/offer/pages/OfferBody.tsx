@@ -68,6 +68,9 @@ export const OfferBody: FunctionComponent<{
   )
   const formattedDate = formatDatePeriod(dates)
   const shouldDisplayWhenBlock = category.categoryType === CategoryType.Event && !!formattedDate
+  const shouldShowAccessibility = Object.values(accessibility).some(
+    (value) => value !== undefined && value !== null
+  )
 
   const getPositionOfAccordionItem = (event: LayoutChangeEvent) => {
     setBodyPositionY(event.nativeEvent.layout.y)
@@ -138,10 +141,7 @@ export const OfferBody: FunctionComponent<{
         </AccordionItem>
       </SectionWithDivider>
 
-      <SectionWithDivider
-        visible={Object.values(accessibility).some(
-          (value) => value !== undefined && value !== null
-        )}>
+      <SectionWithDivider visible={shouldShowAccessibility}>
         <AccordionItem
           title={t`Accessibilité`}
           onLayout={getPositionOfAccordionItem}

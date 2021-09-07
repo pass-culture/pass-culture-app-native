@@ -1762,6 +1762,36 @@ export interface ValidatePhoneNumberRequest {
 }/**
  * 
  * @export
+ * @interface VenueAccessibilityModel
+ */
+export interface VenueAccessibilityModel {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VenueAccessibilityModel
+     */
+    audioDisability?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VenueAccessibilityModel
+     */
+    mentalDisability?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VenueAccessibilityModel
+     */
+    motorDisability?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VenueAccessibilityModel
+     */
+    visualDisability?: boolean | null;
+}/**
+ * 
+ * @export
  * @interface VenueContactModel
  */
 export interface VenueContactModel {
@@ -1797,16 +1827,16 @@ export interface VenueContactModel {
 export interface VenueResponse {
     /**
      * 
+     * @type {VenueAccessibilityModel}
+     * @memberof VenueResponse
+     */
+    accessibility: VenueAccessibilityModel;
+    /**
+     * 
      * @type {string}
      * @memberof VenueResponse
      */
     address?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof VenueResponse
-     */
-    audioDisabilityCompliant?: boolean | null;
     /**
      * 
      * @type {string}
@@ -1857,18 +1887,6 @@ export interface VenueResponse {
     longitude?: number | null;
     /**
      * 
-     * @type {boolean}
-     * @memberof VenueResponse
-     */
-    mentalDisabilityCompliant?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof VenueResponse
-     */
-    motorDisabilityCompliant?: boolean | null;
-    /**
-     * 
      * @type {string}
      * @memberof VenueResponse
      */
@@ -1891,12 +1909,6 @@ export interface VenueResponse {
      * @memberof VenueResponse
      */
     venueTypeCode?: VenueTypeCode | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof VenueResponse
-     */
-    visualDisabilityCompliant?: boolean | null;
     /**
      * 
      * @type {string}

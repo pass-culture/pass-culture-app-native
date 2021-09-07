@@ -934,13 +934,13 @@ Object {
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          data-testid="invalidTestId"
+                          data-testid="validTestId"
                         >
                           <div
                             class="css-text-901oao"
                             dir="auto"
                           >
-                            invalidTestId-SVG-Mock
+                            validTestId-SVG-Mock
                           </div>
                         </div>
                       </div>
@@ -1088,13 +1088,13 @@ Object {
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          data-testid="validTestId"
+                          data-testid="invalidTestId"
                         >
                           <div
                             class="css-text-901oao"
                             dir="auto"
                           >
-                            validTestId-SVG-Mock
+                            invalidTestId-SVG-Mock
                           </div>
                         </div>
                       </div>
@@ -1158,13 +1158,13 @@ Object {
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          data-testid="validTestId"
+                          data-testid="invalidTestId"
                         >
                           <div
                             class="css-text-901oao"
                             dir="auto"
                           >
-                            validTestId-SVG-Mock
+                            invalidTestId-SVG-Mock
                           </div>
                         </div>
                       </div>
@@ -2305,13 +2305,13 @@ Object {
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        data-testid="invalidTestId"
+                        data-testid="validTestId"
                       >
                         <div
                           class="css-text-901oao"
                           dir="auto"
                         >
-                          invalidTestId-SVG-Mock
+                          validTestId-SVG-Mock
                         </div>
                       </div>
                     </div>
@@ -2459,13 +2459,13 @@ Object {
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        data-testid="validTestId"
+                        data-testid="invalidTestId"
                       >
                         <div
                           class="css-text-901oao"
                           dir="auto"
                         >
-                          validTestId-SVG-Mock
+                          invalidTestId-SVG-Mock
                         </div>
                       </div>
                     </div>
@@ -2529,13 +2529,13 @@ Object {
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        data-testid="validTestId"
+                        data-testid="invalidTestId"
                       >
                         <div
                           class="css-text-901oao"
                           dir="auto"
                         >
-                          validTestId-SVG-Mock
+                          invalidTestId-SVG-Mock
                         </div>
                       </div>
                     </div>

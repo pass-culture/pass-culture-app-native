@@ -2136,11 +2136,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                 >
                   <View
                     height={32}
-                    testID="invalidTestId"
+                    testID="validTestId"
                     width={32}
                   >
                     <Text>
-                      invalidTestId-SVG-Mock
+                      validTestId-SVG-Mock
                     </Text>
                   </View>
                 </View>
@@ -2432,11 +2432,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                 >
                   <View
                     height={32}
-                    testID="validTestId"
+                    testID="invalidTestId"
                     width={32}
                   >
                     <Text>
-                      validTestId-SVG-Mock
+                      invalidTestId-SVG-Mock
                     </Text>
                   </View>
                 </View>
@@ -2564,11 +2564,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                 >
                   <View
                     height={32}
-                    testID="validTestId"
+                    testID="invalidTestId"
                     width={32}
                   >
                     <Text>
-                      validTestId-SVG-Mock
+                      invalidTestId-SVG-Mock
                     </Text>
                   </View>
                 </View>
