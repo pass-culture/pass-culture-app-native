@@ -1,9 +1,9 @@
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { AppSearchFields } from 'libs/search/filters/constants'
 
 import { buildFacetFilters } from '../buildFacetFilters'
 
-const baseParams: Partial<SearchParameters> = {
+const baseParams: Partial<SearchState> = {
   offerTypes: {
     isDigital: false,
     isEvent: false,
@@ -15,19 +15,19 @@ describe('buildFacetFilters', () => {
   describe('categories', () => {
     it('should fetch with no facetFilters parameter when no category is provided', () => {
       const offerCategories: string[] = []
-      const filters = buildFacetFilters({ ...baseParams, offerCategories } as SearchParameters)
+      const filters = buildFacetFilters({ ...baseParams, offerCategories } as SearchState)
       expect(filters).toStrictEqual([])
     })
 
     it('should fetch with facetFilters parameter when one category is provided', () => {
       const offerCategories: string[] = ['LECON']
-      const filters = buildFacetFilters({ ...baseParams, offerCategories } as SearchParameters)
+      const filters = buildFacetFilters({ ...baseParams, offerCategories } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.category]: ['LECON'] }])
     })
 
     it('should fetch with facetFilters parameter when multiple categories are provided', () => {
       const offerCategories: string[] = ['SPECTACLE', 'LIVRE']
-      const filters = buildFacetFilters({ ...baseParams, offerCategories } as SearchParameters)
+      const filters = buildFacetFilters({ ...baseParams, offerCategories } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.category]: ['SPECTACLE', 'LIVRE'] }])
     })
   })
@@ -39,7 +39,7 @@ describe('buildFacetFilters', () => {
         isEvent: false,
         isThing: false,
       }
-      const filters = buildFacetFilters({ offerTypes } as SearchParameters)
+      const filters = buildFacetFilters({ offerTypes } as SearchState)
       expect(filters).toStrictEqual([])
     })
 
@@ -49,7 +49,7 @@ describe('buildFacetFilters', () => {
         isEvent: false,
         isThing: false,
       }
-      const filters = buildFacetFilters({ offerTypes } as SearchParameters)
+      const filters = buildFacetFilters({ offerTypes } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.is_digital]: 1 }])
     })
 
@@ -59,7 +59,7 @@ describe('buildFacetFilters', () => {
         isEvent: false,
         isThing: true,
       }
-      const filters = buildFacetFilters({ offerTypes } as SearchParameters)
+      const filters = buildFacetFilters({ offerTypes } as SearchState)
       expect(filters).toStrictEqual([
         { [AppSearchFields.is_digital]: 0 },
         { [AppSearchFields.is_thing]: 1 },
@@ -73,7 +73,7 @@ describe('buildFacetFilters', () => {
         isThing: false,
       }
 
-      const filters = buildFacetFilters({ offerTypes } as SearchParameters)
+      const filters = buildFacetFilters({ offerTypes } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.is_event]: 1 }])
     })
 
@@ -84,7 +84,7 @@ describe('buildFacetFilters', () => {
         isThing: true,
       }
 
-      const filters = buildFacetFilters({ offerTypes } as SearchParameters)
+      const filters = buildFacetFilters({ offerTypes } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.is_thing]: 1 }])
     })
 
@@ -95,7 +95,7 @@ describe('buildFacetFilters', () => {
         isThing: false,
       }
 
-      const filters = buildFacetFilters({ offerTypes } as SearchParameters)
+      const filters = buildFacetFilters({ offerTypes } as SearchState)
       expect(filters).toStrictEqual([
         { any: [{ [AppSearchFields.is_digital]: 1 }, { [AppSearchFields.is_event]: 1 }] },
       ])
@@ -108,7 +108,7 @@ describe('buildFacetFilters', () => {
         isThing: true,
       }
 
-      const filters = buildFacetFilters({ offerTypes } as SearchParameters)
+      const filters = buildFacetFilters({ offerTypes } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.is_digital]: 0 }])
     })
 
@@ -119,19 +119,19 @@ describe('buildFacetFilters', () => {
         isThing: true,
       }
 
-      const filters = buildFacetFilters({ offerTypes } as SearchParameters)
+      const filters = buildFacetFilters({ offerTypes } as SearchState)
       expect(filters).toStrictEqual([])
     })
   })
 
   describe('offer duo', () => {
     it('should fetch with no facetFilters when offer duo is false', () => {
-      const filters = buildFacetFilters({ ...baseParams, offerIsDuo: false } as SearchParameters)
+      const filters = buildFacetFilters({ ...baseParams, offerIsDuo: false } as SearchState)
       expect(filters).toStrictEqual([])
     })
 
     it('should fetch with facetFilters when offer duo is true', () => {
-      const filters = buildFacetFilters({ ...baseParams, offerIsDuo: true } as SearchParameters)
+      const filters = buildFacetFilters({ ...baseParams, offerIsDuo: true } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.is_duo]: 1 }])
     })
   })
@@ -139,13 +139,13 @@ describe('buildFacetFilters', () => {
   describe('tags', () => {
     it('should fetch with no facetFilters parameter when no tags are provided', () => {
       const tags: string[] = []
-      const filters = buildFacetFilters({ ...baseParams, tags } as SearchParameters)
+      const filters = buildFacetFilters({ ...baseParams, tags } as SearchState)
       expect(filters).toStrictEqual([])
     })
 
     it('should fetch with facetFilters parameter when tags are provided', () => {
       const tags: string[] = ['Semaine du 14 juillet', 'Offre cinema spéciale pass culture']
-      const filters = buildFacetFilters({ ...baseParams, tags } as SearchParameters)
+      const filters = buildFacetFilters({ ...baseParams, tags } as SearchState)
       expect(filters).toStrictEqual([
         { [AppSearchFields.tags]: ['Semaine du 14 juillet', 'Offre cinema spéciale pass culture'] },
       ])

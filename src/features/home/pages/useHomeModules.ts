@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
@@ -20,7 +20,7 @@ export type HomeModuleResponse = {
   }
 }
 
-const isParsedParameter = (parameter: unknown): parameter is SearchParameters =>
+const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
 
 const isMultipleAlgoliaHit = (
@@ -51,7 +51,7 @@ export const useHomeModules = (
 
   const queries = useQueries(
     offerModules.map(({ search, moduleId }) => {
-      const parsedParameters = search.map(parseSearchParameters).filter(isParsedParameter)
+      const parsedParameters = search.map(parseSearchParameters).filter(isSearchState)
 
       const fetchModule = async () => {
         const response = await fetchMultipleHits(parsedParameters)

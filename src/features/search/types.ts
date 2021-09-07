@@ -9,7 +9,7 @@ export interface SelectedDate {
   selectedDate: Date
 }
 
-export interface SearchParameters {
+export interface SearchState {
   aroundRadius: number | null
   beginningDatetime: Date | null
   date: SelectedDate | null
@@ -25,15 +25,12 @@ export interface SearchParameters {
     isEvent: boolean
     isThing: boolean
   }
+  place: Omit<SuggestedPlace, 'venueId'> | null
   priceRange: Range<number> | null
   locationType: LocationType
+  showResults: boolean
   timeRange: Range<number> | null
   tags: string[]
   venueId: number | null
-}
-
-export type SearchState = SearchParameters & {
-  place: Omit<SuggestedPlace, 'venueId'> | null
-  showResults: boolean
   query: string
 }

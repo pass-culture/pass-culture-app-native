@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { AppSearchFields } from 'libs/search/filters/constants'
 
 import { buildNumericFilters } from '../buildNumericFilters'
@@ -16,29 +16,29 @@ describe('buildNumericFilters', () => {
 
   describe('offer price', () => {
     it('should not filter when no price range is specified and offer is not free', () => {
-      const params = { offerIsFree: false, priceRange: null } as SearchParameters
-      expect(buildNumericFilters(params as SearchParameters)).toEqual([
+      const params = { offerIsFree: false, priceRange: null } as SearchState
+      expect(buildNumericFilters(params as SearchState)).toEqual([
         { [AppSearchFields.prices]: { to: 30000 } },
       ])
     })
 
     it('should filter prices when offer is free even when priceRange is provided', () => {
-      const params = { offerIsFree: true, priceRange: [0, 300] } as SearchParameters
-      expect(buildNumericFilters(params as SearchParameters)).toEqual([
+      const params = { offerIsFree: true, priceRange: [0, 300] } as SearchState
+      expect(buildNumericFilters(params as SearchState)).toEqual([
         { [AppSearchFields.prices]: { to: 1 } },
       ])
     })
 
     it('should filter prices when price range is provided and offer is not free', () => {
-      const params = { offerIsFree: false, priceRange: [20, 50] } as SearchParameters
-      expect(buildNumericFilters(params as SearchParameters)).toEqual([
+      const params = { offerIsFree: false, priceRange: [20, 50] } as SearchState
+      expect(buildNumericFilters(params as SearchState)).toEqual([
         { [AppSearchFields.prices]: { from: 2000, to: 5000 } },
       ])
     })
 
     it('should filter prices with max price when price range is provided and offer is not free', () => {
-      const params = { offerIsFree: false, priceRange: [20, 500] } as SearchParameters
-      expect(buildNumericFilters(params as SearchParameters)).toEqual([
+      const params = { offerIsFree: false, priceRange: [20, 500] } as SearchState
+      expect(buildNumericFilters(params as SearchState)).toEqual([
         { [AppSearchFields.prices]: { from: 2000, to: 30000 } },
       ])
     })
@@ -46,12 +46,12 @@ describe('buildNumericFilters', () => {
 
   describe('offer is new', () => {
     it('should fetch with no numericFilters when offerIsNew is false', () => {
-      const filters = buildNumericFilters({ offerIsNew: false } as SearchParameters)
+      const filters = buildNumericFilters({ offerIsNew: false } as SearchState)
       expect(filters).toStrictEqual([{ [AppSearchFields.prices]: { to: 30000 } }])
     })
 
     it('should fetch with numericFilters when offerIsNew is true', () => {
-      const filters = buildNumericFilters({ offerIsNew: true } as SearchParameters)
+      const filters = buildNumericFilters({ offerIsNew: true } as SearchState)
       expect(filters).toStrictEqual([
         { [AppSearchFields.prices]: { to: 30000 } },
         {
@@ -78,7 +78,7 @@ describe('buildNumericFilters', () => {
             option: DATE_FILTER_OPTIONS.TODAY,
             selectedDate,
           },
-        } as SearchParameters)
+        } as SearchState)
 
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
@@ -92,7 +92,7 @@ describe('buildNumericFilters', () => {
             option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
             selectedDate,
           },
-        } as SearchParameters)
+        } as SearchState)
 
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
@@ -106,7 +106,7 @@ describe('buildNumericFilters', () => {
             option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
             selectedDate,
           },
-        } as SearchParameters)
+        } as SearchState)
 
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
@@ -120,7 +120,7 @@ describe('buildNumericFilters', () => {
             option: DATE_FILTER_OPTIONS.USER_PICK,
             selectedDate,
           },
-        } as SearchParameters)
+        } as SearchState)
 
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
@@ -132,7 +132,7 @@ describe('buildNumericFilters', () => {
     describe('by time only', () => {
       it('should fetch with time filter when timeRange is provided', () => {
         const timeRange = [18, 22]
-        const filters = buildNumericFilters({ timeRange } as SearchParameters)
+        const filters = buildNumericFilters({ timeRange } as SearchState)
 
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
@@ -153,7 +153,7 @@ describe('buildNumericFilters', () => {
             selectedDate,
           },
           timeRange,
-        } as SearchParameters)
+        } as SearchState)
 
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
@@ -168,7 +168,7 @@ describe('buildNumericFilters', () => {
             selectedDate,
           },
           timeRange,
-        } as SearchParameters)
+        } as SearchState)
 
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
@@ -188,7 +188,7 @@ describe('buildNumericFilters', () => {
             selectedDate,
           },
           timeRange,
-        } as SearchParameters)
+        } as SearchState)
 
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
@@ -208,7 +208,7 @@ describe('buildNumericFilters', () => {
             selectedDate,
           },
           timeRange,
-        } as SearchParameters)
+        } as SearchState)
 
         expect(filters).toStrictEqual([
           { [AppSearchFields.prices]: { to: 30000 } },
@@ -226,7 +226,7 @@ describe('buildNumericFilters', () => {
     const to = '2020-09-02T03:05:00.000Z'
 
     it('should fetch from the beginning datetime', () => {
-      const filters = buildNumericFilters({ beginningDatetime } as SearchParameters)
+      const filters = buildNumericFilters({ beginningDatetime } as SearchState)
       expect(filters).toStrictEqual([
         { [AppSearchFields.prices]: { to: 30000 } },
         { [AppSearchFields.dates]: { from } },
@@ -234,7 +234,7 @@ describe('buildNumericFilters', () => {
     })
 
     it('should fetch until the ending datetime', () => {
-      const filters = buildNumericFilters({ endingDatetime } as SearchParameters)
+      const filters = buildNumericFilters({ endingDatetime } as SearchState)
       expect(filters).toStrictEqual([
         { [AppSearchFields.prices]: { to: 30000 } },
         { [AppSearchFields.dates]: { to } },
@@ -242,7 +242,7 @@ describe('buildNumericFilters', () => {
     })
 
     it('should fetch from the beginning datetime to the ending datetime', () => {
-      const filters = buildNumericFilters({ beginningDatetime, endingDatetime } as SearchParameters)
+      const filters = buildNumericFilters({ beginningDatetime, endingDatetime } as SearchState)
       expect(filters).toStrictEqual([
         { [AppSearchFields.prices]: { to: 30000 } },
         { [AppSearchFields.dates]: { from, to } },

@@ -1,12 +1,12 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { AppSearchFields } from 'libs/search/filters/constants'
 
 import { buildQueryOptions } from '../index'
 
 const HOUR = 60 * 60
 
-const baseParams: Partial<SearchParameters> = {
+const baseParams: Partial<SearchState> = {
   offerTypes: {
     isDigital: false,
     isEvent: false,
@@ -28,7 +28,7 @@ describe('buildQueryOptions', () => {
           option: DATE_FILTER_OPTIONS.USER_PICK,
           selectedDate,
         },
-      } as SearchParameters)
+      } as SearchState)
 
       expect(filters.filters).toStrictEqual({
         all: [{ [AppSearchFields.prices]: { to: 1 } }, { [AppSearchFields.dates]: { from, to } }],
@@ -41,7 +41,7 @@ describe('buildQueryOptions', () => {
         ...baseParams,
         offerIsFree: true,
         timeRange,
-      } as SearchParameters)
+      } as SearchState)
 
       expect(filters.filters).toStrictEqual({
         all: [
@@ -65,7 +65,7 @@ describe('buildQueryOptions', () => {
           selectedDate,
         },
         timeRange,
-      } as SearchParameters)
+      } as SearchState)
 
       expect(filters.filters).toStrictEqual({
         all: [
@@ -94,7 +94,7 @@ describe('buildQueryOptions', () => {
           offerTypes,
           offerCategories,
           geolocation,
-        } as SearchParameters,
+        } as SearchState,
         page
       )
 
@@ -131,7 +131,7 @@ describe('buildQueryOptions', () => {
         offerCategories,
         geolocation,
         offerIsDuo: false,
-      } as SearchParameters)
+      } as SearchState)
 
       expect(filters.filters).toStrictEqual({
         all: [
@@ -163,7 +163,7 @@ describe('buildQueryOptions', () => {
         geolocation,
         offerIsDuo: true,
         priceRange,
-      } as SearchParameters)
+      } as SearchState)
 
       expect(filters.filters).toStrictEqual({
         all: [
@@ -179,7 +179,7 @@ describe('buildQueryOptions', () => {
 
   describe('hitsPerPage', () => {
     it('should fetch with no hitsPerPage parameter when not provided', () => {
-      const filters = buildQueryOptions({ ...baseParams, hitsPerPage: null } as SearchParameters)
+      const filters = buildQueryOptions({ ...baseParams, hitsPerPage: null } as SearchState)
       expect(filters.page).toStrictEqual({
         current: 1,
         size: 20,
@@ -187,7 +187,7 @@ describe('buildQueryOptions', () => {
     })
 
     it('should fetch with hitsPerPage when provided', () => {
-      const filters = buildQueryOptions({ ...baseParams, hitsPerPage: 5 } as SearchParameters)
+      const filters = buildQueryOptions({ ...baseParams, hitsPerPage: 5 } as SearchState)
       expect(filters.page).toStrictEqual({
         current: 1,
         size: 5,
@@ -197,7 +197,7 @@ describe('buildQueryOptions', () => {
 
   describe('group', () => {
     it('should always fetch a single offer per group (isbn/visa/...)', () => {
-      const filters = buildQueryOptions(baseParams as SearchParameters)
+      const filters = buildQueryOptions(baseParams as SearchState)
       expect(filters.group).toStrictEqual({ field: AppSearchFields.group })
     })
   })

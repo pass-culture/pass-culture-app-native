@@ -7,7 +7,7 @@ export const parseSearchParameters = (
   parameters: SearchParametersFields,
   geolocation: GeoCoordinates | null,
   availableCategories: OptionalCategoryCriteria
-): Partial<SearchState> | undefined => {
+): SearchState | undefined => {
   const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
 
   const notGeolocatedButRadiusIsProvided = !isGeolocated && aroundRadius
@@ -43,12 +43,15 @@ export const parseSearchParameters = (
       isEvent: parameters.isEvent || false,
       isThing: parameters.isThing || false,
     },
+    place: null,
     priceRange: _buildPriceRange({ priceMin, priceMax }),
+    showResults: false,
     locationType: isGeolocated ? LocationType.AROUND_ME : LocationType.EVERYWHERE,
     tags: parameters.tags || [],
     date: null,
     timeRange: null,
     venueId: null,
+    query: '',
   }
 }
 

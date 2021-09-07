@@ -2,16 +2,16 @@ import uniqBy from 'lodash.uniqby'
 import { useQuery } from 'react-query'
 
 import { LocationType } from 'features/search/enums'
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { filterAlgoliaHit, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { fetchVenueOffers } from 'libs/search/fetch/search'
 
-export const useVenueSearchParameters = (venueId: number): SearchParameters => {
+export const useVenueSearchParameters = (venueId: number): SearchState => {
   const { position } = useGeolocation()
 
-  const params: SearchParameters = {
+  const params: SearchState = {
     aroundRadius: position ? 100 : null,
     beginningDatetime: null,
     endingDatetime: null,
@@ -23,11 +23,14 @@ export const useVenueSearchParameters = (venueId: number): SearchParameters => {
     offerIsNew: false,
     offerTypes: { isDigital: false, isEvent: false, isThing: false },
     priceRange: [0, 300],
+    place: null,
     locationType: LocationType.EVERYWHERE,
     tags: [],
     date: null,
     timeRange: null,
     venueId,
+    showResults: false,
+    query: '',
   }
 
   return params

@@ -1,4 +1,4 @@
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 
 /**
  * See Algolia doc on numericFilters and facetFilters
@@ -7,7 +7,6 @@ import { SearchParameters } from 'features/search/types'
  */
 export type FiltersArray = string[][]
 
-export interface SearchParametersQuery extends SearchParameters {
-  query: string
+export interface SearchParametersQuery extends SearchState {
   page: number
 }
