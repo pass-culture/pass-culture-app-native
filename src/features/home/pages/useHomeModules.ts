@@ -51,9 +51,7 @@ export const useHomeModules = (
 
   const queries = useQueries(
     offerModules.map(({ search, moduleId }) => {
-      const parsedParameters = search
-        .map((parameters) => parseSearchParameters({ geolocation: position, parameters }))
-        .filter(isParsedParameter)
+      const parsedParameters = search.map(parseSearchParameters).filter(isParsedParameter)
 
       const fetchModule = async () => {
         const response = await fetchMultipleHits(parsedParameters)

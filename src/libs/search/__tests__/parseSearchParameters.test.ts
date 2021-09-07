@@ -13,7 +13,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = {} as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -43,7 +43,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -73,7 +73,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -103,7 +103,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -133,7 +133,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -163,7 +163,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -193,7 +193,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -223,7 +223,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -253,7 +253,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -285,7 +285,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -315,7 +315,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -345,7 +345,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -376,7 +376,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -406,7 +406,7 @@ describe('src | components | parseSearchParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
     // then
     expect(result).toStrictEqual({
@@ -442,7 +442,7 @@ describe('src | components | parseSearchParameters', () => {
       } as SearchParametersFields
 
       // when
-      const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+      const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
       // then
       expect(result).toStrictEqual({
@@ -473,7 +473,7 @@ describe('src | components | parseSearchParameters', () => {
       } as SearchParametersFields
 
       // when
-      const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+      const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
       // then
       expect(result).toStrictEqual({
@@ -504,13 +504,7 @@ describe('src | components | parseSearchParameters', () => {
       } as SearchParametersFields
 
       // when
-      const result = parseSearchParameters(
-        {
-          geolocation: null,
-          parameters,
-        },
-        availableCategories
-      )
+      const result = parseSearchParameters(parameters, null, availableCategories)
 
       // then
       expect(result).toBeUndefined()
@@ -524,13 +518,7 @@ describe('src | components | parseSearchParameters', () => {
       } as SearchParametersFields
 
       // when
-      const result = parseSearchParameters(
-        {
-          geolocation: null,
-          parameters,
-        },
-        availableCategories
-      )
+      const result = parseSearchParameters(parameters, null, availableCategories)
 
       // then
       expect(result).toBeUndefined()
@@ -547,7 +535,7 @@ describe('src | components | parseSearchParameters', () => {
       } as SearchParametersFields
       const geolocation = null
       // when
-      const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+      const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
       // then
       expect(result).toStrictEqual({
@@ -579,7 +567,7 @@ describe('src | components | parseSearchParameters', () => {
       } as SearchParametersFields
       const geolocation = null
       // when
-      const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+      const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
       // then
       expect(result).toStrictEqual({
@@ -614,7 +602,7 @@ describe('src | components | parseSearchParameters', () => {
       } as SearchParametersFields
       const geolocation = null
       // when
-      const result = parseSearchParameters({ geolocation, parameters }, availableCategories)
+      const result = parseSearchParameters(parameters, geolocation, availableCategories)
 
       // then
       expect(result).toStrictEqual({

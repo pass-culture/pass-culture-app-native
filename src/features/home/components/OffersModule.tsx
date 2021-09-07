@@ -81,9 +81,8 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const onPressSeeMore = useCallback(() => {
     analytics.logClickSeeMore(moduleName)
-    const params = parseSearchParameters({ geolocation: position, parameters })
-    navigate('Search', params)
-  }, [position])
+    navigate('Search', parseSearchParameters(parameters))
+  }, [])
 
   const ListHeaderComponent = useCallback(() => {
     if (!props.cover) return <HorizontalMargin />
