@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent, useRef, useState } from 'react'
-import { LayoutChangeEvent, ScrollView } from 'react-native'
+import React, { FunctionComponent, useRef } from 'react'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -30,7 +30,6 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const { data: offers } = useVenueOffers(venueId)
   const { data: settings } = useAppSettings()
   const scrollViewRef = useRef<ScrollView | null>(null)
-  const [bodyPositionY, setBodyPositionY] = useState<number>(0)
 
   if (!venue) return <React.Fragment></React.Fragment>
 
@@ -57,16 +56,6 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const shouldShowAccessibility = Object.values(accessibility).some(
     (value) => value !== undefined && value !== null
   )
-
-  const getPositionOfAccordionItem = (event: LayoutChangeEvent) => {
-    setBodyPositionY(event.nativeEvent.layout.y)
-  }
-
-  const scrollToTopOfAccordionItem = () => {
-    if (scrollViewRef !== null && scrollViewRef.current !== null) {
-      scrollViewRef.current.scrollTo({ x: 0, y: bodyPositionY, animated: true })
-    }
-  }
 
   return (
     <Container
@@ -123,20 +112,14 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
 
       {/* Modalités de retrait */}
       <SectionWithDivider visible={!!withdrawalDetails}>
-        <AccordionItem
-          title={t`Modalités de retrait`}
-          onLayout={getPositionOfAccordionItem}
-          onOpen={scrollToTopOfAccordionItem}>
+        <AccordionItem title={t`Modalités de retrait`} scrollViewRef={scrollViewRef}>
           <Typo.Body>{withdrawalDetails && highlightLinks(withdrawalDetails)}</Typo.Body>
         </AccordionItem>
       </SectionWithDivider>
 
       {/* Accessibilité */}
       <SectionWithDivider visible={shouldShowAccessibility}>
-        <AccordionItem
-          title={t`Accessibilité`}
-          onLayout={getPositionOfAccordionItem}
-          onOpen={scrollToTopOfAccordionItem}>
+        <AccordionItem title={t`Accessibilité`} scrollViewRef={scrollViewRef}>
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>
       </SectionWithDivider>
