@@ -65,10 +65,8 @@ describe('useHomeModules', () => {
     expect(fetchMultipleHits).toHaveBeenCalledWith([
       {
         ...parseSearchParameters(
-          {
-            geolocation: null,
-            parameters: { title: 'tile', hitsPerPage: 4 },
-          },
+          { title: 'tile', hitsPerPage: 4 },
+          null,
           availableCategories.current
         ),
       },

@@ -4,13 +4,8 @@ import { SearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 
 export const parseSearchParameters = (
-  {
-    geolocation,
-    parameters,
-  }: {
-    geolocation: GeoCoordinates | null
-    parameters: SearchParametersFields
-  },
+  parameters: SearchParametersFields,
+  geolocation: GeoCoordinates | null,
   availableCategories: OptionalCategoryCriteria
 ): Partial<SearchState> | undefined => {
   const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
