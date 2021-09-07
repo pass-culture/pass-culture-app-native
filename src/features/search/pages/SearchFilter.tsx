@@ -43,7 +43,10 @@ export const SearchFilter: React.FC = () => {
   const { data: profile } = useUserProfileInfo()
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
 
-  const showRadiusSection = getShowRadiusSection(searchState.locationType, searchState.venueId)
+  const showRadiusSection = getShowRadiusSection(
+    searchState.locationFilter.locationType,
+    searchState.locationFilter.venueId
+  )
 
   return (
     <React.Fragment>

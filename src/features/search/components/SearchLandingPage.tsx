@@ -20,11 +20,14 @@ export const SearchLandingPage: React.FC = () => {
   const windowWidth = useWindowDimensions().width
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useStagedSearch()
-  const [searchCategory] = searchState.offerCategories
   const availableCategories = useAvailableCategories()
+  const { locationFilter, offerCategories } = searchState
+  const { locationType } = locationFilter
+  const [searchCategory] = offerCategories
+
   const selectedCategory = searchCategory in availableCategories ? searchCategory : null
   const { icon: Icon, label } = CATEGORY_CRITERIA[(selectedCategory as CategoryNameEnum) || 'ALL']
-  const { Icon: LocationIcon, label: locationLabel } = useLocationChoice(searchState.locationType)
+  const { Icon: LocationIcon, label: locationLabel } = useLocationChoice(locationType)
 
   return (
     <React.Fragment>

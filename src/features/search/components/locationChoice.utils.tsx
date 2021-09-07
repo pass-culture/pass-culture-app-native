@@ -13,14 +13,14 @@ export const useLocationChoice = (
   locationType: LocationType
 ): { Icon: React.FC<BicolorIconInterface>; label: string; isSelected: boolean } => {
   const { searchState } = useStagedSearch()
-  const isSelected = locationType === searchState.locationType
+  const isSelected = locationType === searchState.locationFilter.locationType
 
   if (locationType === LocationType.EVERYWHERE)
     return { Icon: Everywhere, label: t`Partout`, isSelected }
   if (locationType === LocationType.AROUND_ME)
     return { Icon: AroundMe, label: t`Autour de moi`, isSelected }
 
-  const { place } = searchState
-  const Icon = searchState.venueId ? LocationBuilding : LocationPointer
+  const { place, venueId } = searchState.locationFilter
+  const Icon = venueId ? LocationBuilding : LocationPointer
   return { Icon, label: place ? place.label : t`Choisir un lieu`, isSelected }
 }

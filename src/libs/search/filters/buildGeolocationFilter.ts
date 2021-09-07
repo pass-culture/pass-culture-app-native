@@ -5,7 +5,9 @@ import { SearchState } from 'features/search/types'
 
 import { AppSearchFields } from './constants'
 
-export const buildGeolocationFilter = (params: SearchState): FilterArray<AppSearchFields> => {
+export const buildGeolocationFilter = (
+  params: SearchState['locationFilter']
+): FilterArray<AppSearchFields> => {
   const { aroundRadius, geolocation, locationType } = params
 
   if (!geolocation) return []

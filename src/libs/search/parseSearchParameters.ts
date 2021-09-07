@@ -24,16 +24,21 @@ export const parseSearchParameters = (
   const endingDatetime = parameters.endingDatetime ? new Date(parameters.endingDatetime) : null
 
   return {
-    aroundRadius: aroundRadius || null,
     beginningDatetime: beginningDatetime,
     endingDatetime: endingDatetime,
-    geolocation: geolocation
-      ? {
-          latitude: geolocation.latitude,
-          longitude: geolocation.longitude,
-        }
-      : null,
     hitsPerPage: parameters.hitsPerPage || null,
+    locationFilter: {
+      aroundRadius: aroundRadius || null,
+      geolocation: geolocation
+        ? {
+            latitude: geolocation.latitude,
+            longitude: geolocation.longitude,
+          }
+        : null,
+      locationType: isGeolocated ? LocationType.AROUND_ME : LocationType.EVERYWHERE,
+      place: null,
+      venueId: null,
+    },
     offerCategories: _buildCategories(parameters.categories || [], availableCategories),
     offerIsDuo: parameters.isDuo || false,
     offerIsFree: parameters.isFree || false,
@@ -43,14 +48,11 @@ export const parseSearchParameters = (
       isEvent: parameters.isEvent || false,
       isThing: parameters.isThing || false,
     },
-    place: null,
     priceRange: _buildPriceRange({ priceMin, priceMax }),
     showResults: false,
-    locationType: isGeolocated ? LocationType.AROUND_ME : LocationType.EVERYWHERE,
     tags: parameters.tags || [],
     date: null,
     timeRange: null,
-    venueId: null,
     query: '',
   }
 }

@@ -5,7 +5,7 @@ import { SearchState } from 'features/search/types'
 import { AppSearchFields } from './constants'
 
 export const buildBoosts = (
-  position: SearchState['geolocation']
+  position: SearchState['locationFilter']['geolocation']
 ): Boosts<AppSearchFields> | undefined => {
   if (!position) return
   return {

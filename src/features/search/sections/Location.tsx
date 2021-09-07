@@ -17,7 +17,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useStagedSearch()
-  const locationType = searchState.locationType
+  const { locationType } = searchState.locationFilter
   const { Icon, label } = useLocationChoice(locationType)
   const logUseFilter = useLogFilterOnce(SectionTitle.Location)
 

@@ -55,9 +55,7 @@ describe('fetchAlgolia', () => {
     const query = 'searched query'
 
     // when
-    fetchAlgolia({
-      query: query,
-    } as SearchParametersQuery)
+    fetchAlgolia({ query } as SearchParametersQuery)
 
     // then
     expect(search).toHaveBeenCalledWith(query, {
@@ -74,10 +72,7 @@ describe('fetchAlgolia', () => {
       const query = 'searched query'
 
       // when
-      fetchAlgolia({
-        geolocation: null,
-        query: query,
-      } as SearchParametersQuery)
+      fetchAlgolia({ query } as SearchParametersQuery)
 
       // then
       expect(algoliasearch).toHaveBeenCalledWith('algoliaAppId', 'algoliaApiKey')
@@ -92,10 +87,7 @@ describe('fetchAlgolia', () => {
 
     it('should fetch without query parameter when no keyword is provided', () => {
       // when
-      fetchAlgolia({
-        query: '',
-        page: 0,
-      } as SearchParametersQuery)
+      fetchAlgolia({ query: '', page: 0 } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith('', {
@@ -117,10 +109,7 @@ describe('fetchAlgolia', () => {
       }
 
       // when
-      fetchAlgolia({
-        geolocation,
-        query,
-      } as SearchParametersQuery)
+      fetchAlgolia({ locationFilter: { geolocation }, query } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -139,10 +128,7 @@ describe('fetchAlgolia', () => {
       const geolocation = null
 
       // when
-      fetchAlgolia({
-        geolocation: geolocation,
-        query: query,
-      } as SearchParametersQuery)
+      fetchAlgolia({ locationFilter: { geolocation }, query } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -163,9 +149,8 @@ describe('fetchAlgolia', () => {
 
       // when
       fetchAlgolia({
-        geolocation: geolocation,
-        query: query,
-        locationType: LocationType.EVERYWHERE,
+        locationFilter: { geolocation, locationType: LocationType.EVERYWHERE },
+        query,
       } as SearchParametersQuery)
 
       // then
@@ -189,10 +174,12 @@ describe('fetchAlgolia', () => {
 
       // when
       fetchAlgolia({
-        aroundRadius: 15,
-        geolocation: geolocation,
+        locationFilter: {
+          aroundRadius: 15,
+          geolocation,
+          locationType: LocationType.AROUND_ME,
+        },
         query: query,
-        locationType: LocationType.AROUND_ME,
       } as SearchParametersQuery)
 
       // then
@@ -216,10 +203,12 @@ describe('fetchAlgolia', () => {
 
       // when
       fetchAlgolia({
-        aroundRadius: 0,
-        geolocation: geolocation,
-        query: query,
-        locationType: LocationType.AROUND_ME,
+        locationFilter: {
+          aroundRadius: 0,
+          geolocation: geolocation,
+          locationType: LocationType.AROUND_ME,
+        },
+        query,
       } as SearchParametersQuery)
 
       // then
@@ -243,10 +232,12 @@ describe('fetchAlgolia', () => {
 
       // when
       fetchAlgolia({
-        aroundRadius: -1,
-        geolocation: geolocation,
-        query: query,
-        locationType: LocationType.AROUND_ME,
+        locationFilter: {
+          aroundRadius: -1,
+          geolocation,
+          locationType: LocationType.AROUND_ME,
+        },
+        query,
       } as SearchParametersQuery)
 
       // then
@@ -268,10 +259,7 @@ describe('fetchAlgolia', () => {
       const offerCategories: string[] = []
 
       // when
-      fetchAlgolia({
-        query: query,
-        offerCategories: offerCategories,
-      } as SearchParametersQuery)
+      fetchAlgolia({ query, offerCategories } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -288,10 +276,7 @@ describe('fetchAlgolia', () => {
       const offerCategories = ['LECON']
 
       // when
-      fetchAlgolia({
-        query: query,
-        offerCategories: offerCategories,
-      } as SearchParametersQuery)
+      fetchAlgolia({ query, offerCategories } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -309,10 +294,7 @@ describe('fetchAlgolia', () => {
       const offerCategories = ['SPECTACLE', 'LIVRE']
 
       // when
-      fetchAlgolia({
-        query: query,
-        offerCategories: offerCategories,
-      } as SearchParametersQuery)
+      fetchAlgolia({ query, offerCategories } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -1096,11 +1078,11 @@ describe('fetchAlgolia', () => {
 
       // when
       fetchAlgolia({
-        geolocation: geolocation,
-        query: query,
-        offerCategories: offerCategories,
-        offerTypes: offerTypes,
-        page: page,
+        locationFilter: { geolocation },
+        query,
+        offerCategories,
+        offerTypes,
+        page,
       } as SearchParametersQuery)
 
       // then
@@ -1134,7 +1116,9 @@ describe('fetchAlgolia', () => {
 
       // when
       fetchAlgolia({
-        geolocation,
+        locationFilter: {
+          geolocation,
+        },
         query,
         offerCategories,
         offerIsDuo,

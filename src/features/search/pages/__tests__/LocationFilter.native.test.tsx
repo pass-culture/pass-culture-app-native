@@ -95,14 +95,14 @@ describe('LocationFilter component', () => {
   })
 
   it('should show the building icon when a venue is chosen', () => {
-    mockSearchState.venueId = 4
+    mockSearchState.locationFilter.venueId = 4
     const { queryByTestId } = render(<LocationFilter />)
     expect(queryByTestId('BicolorLocationBuilding')).toBeTruthy()
     expect(queryByTestId('BicolorLocationPointer')).toBeFalsy()
   })
 
   it('should show the pointer icon when no venue is chosen', () => {
-    mockSearchState.venueId = null
+    mockSearchState.locationFilter.venueId = null
     const { queryByTestId } = render(<LocationFilter />)
     expect(queryByTestId('BicolorLocationBuilding')).toBeFalsy()
     expect(queryByTestId('BicolorLocationPointer')).toBeTruthy()

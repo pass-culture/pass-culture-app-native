@@ -7,13 +7,17 @@ import { SuggestedPlace } from 'libs/place'
 import { addOrRemove, clampPrice } from './reducer.helpers'
 
 export const initialSearchState: SearchState = {
-  aroundRadius: null,
   beginningDatetime: null,
   date: null,
   endingDatetime: null,
-  geolocation: null,
   hitsPerPage: 20,
-  locationType: LocationType.EVERYWHERE,
+  locationFilter: {
+    aroundRadius: null,
+    geolocation: null,
+    locationType: LocationType.EVERYWHERE,
+    place: null,
+    venueId: null,
+  },
   offerCategories: [],
   offerIsDuo: false,
   offerIsFree: false,
@@ -23,13 +27,11 @@ export const initialSearchState: SearchState = {
     isEvent: false,
     isThing: false,
   },
-  place: null,
   priceRange: null,
   query: '',
   showResults: false,
   tags: [],
   timeRange: null,
-  venueId: null,
 }
 
 export type Action =
@@ -50,7 +52,7 @@ export type Action =
   | { type: 'TOGGLE_HOUR' }
   | { type: 'SELECT_DATE_FILTER_OPTION'; payload: DATE_FILTER_OPTIONS }
   | { type: 'SELECT_DATE'; payload: Date }
-  | { type: 'LOCATION_AROUND_ME'; payload: SearchState['geolocation'] }
+  | { type: 'LOCATION_AROUND_ME'; payload: SearchState['locationFilter']['geolocation'] }
   | { type: 'LOCATION_EVERYWHERE' }
   | { type: 'LOCATION_PLACE'; payload: Omit<SuggestedPlace, 'venueId'> }
   | { type: 'LOCATION_VENUE'; payload: SuggestedPlace }
@@ -74,7 +76,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'PRICE_RANGE':
       return { ...state, priceRange: action.payload }
     case 'RADIUS':
-      return { ...state, aroundRadius: action.payload }
+      return { ...state, locationFilter: { ...state.locationFilter, aroundRadius: action.payload } }
     case 'TIME_RANGE':
       return { ...state, timeRange: action.payload }
     case 'TOGGLE_CATEGORY':
@@ -119,60 +121,73 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'LOCATION_AROUND_ME':
       return {
         ...state,
-        locationType: LocationType.AROUND_ME,
-        geolocation: action.payload,
-        place: null,
-        aroundRadius: 100,
-        venueId: null,
-      }
-    case 'LOCATION_EVERYWHERE':
-      return {
-        ...state,
-        locationType: LocationType.EVERYWHERE,
-        geolocation: null,
-        place: null,
-        aroundRadius: null,
-        venueId: null,
-      }
-    case 'LOCATION_PLACE':
-      return {
-        ...state,
-        locationType: LocationType.PLACE,
-        geolocation: action.payload.geolocation,
-        place: action.payload,
-        aroundRadius: 100,
-        venueId: null,
-      }
-    case 'LOCATION_VENUE':
-      return {
-        ...state,
-        locationType: LocationType.PLACE,
-        geolocation: action.payload.geolocation,
-        place: {
-          label: action.payload.label,
-          info: action.payload.info,
-          geolocation: action.payload.geolocation,
-        },
-        venueId: action.payload.venueId,
-      }
-    case 'RESET_LOCATION':
-      if (action.payload) {
-        return {
-          ...state,
+        locationFilter: {
           locationType: LocationType.AROUND_ME,
           geolocation: action.payload,
           place: null,
           aroundRadius: 100,
           venueId: null,
-        }
-      } else {
-        return {
-          ...state,
+        },
+      }
+    case 'LOCATION_EVERYWHERE':
+      return {
+        ...state,
+        locationFilter: {
           locationType: LocationType.EVERYWHERE,
           geolocation: null,
           place: null,
           aroundRadius: null,
           venueId: null,
+        },
+      }
+    case 'LOCATION_PLACE':
+      return {
+        ...state,
+        locationFilter: {
+          locationType: LocationType.PLACE,
+          geolocation: action.payload.geolocation,
+          place: action.payload,
+          aroundRadius: 100,
+          venueId: null,
+        },
+      }
+    case 'LOCATION_VENUE':
+      return {
+        ...state,
+        locationFilter: {
+          aroundRadius: null,
+          locationType: LocationType.PLACE,
+          geolocation: action.payload.geolocation,
+          place: {
+            label: action.payload.label,
+            info: action.payload.info,
+            geolocation: action.payload.geolocation,
+          },
+          venueId: action.payload.venueId,
+        },
+      }
+    case 'RESET_LOCATION':
+      if (action.payload) {
+        return {
+          ...state,
+          locationFilter: {
+            locationType: LocationType.AROUND_ME,
+            geolocation: action.payload,
+            place: null,
+            aroundRadius: 100,
+            venueId: null,
+          },
+        }
+      } else {
+        return {
+          ...state,
+          locationFilter: {
+            locationType: LocationType.EVERYWHERE,
+            geolocation: null,
+            place: null,
+            aroundRadius: null,
+            venueId: null,
+          },
         }
       }
     case 'SET_QUERY':
