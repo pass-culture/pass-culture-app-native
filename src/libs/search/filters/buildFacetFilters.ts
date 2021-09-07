@@ -1,10 +1,10 @@
 import { FilterArray } from '@elastic/app-search-javascript'
 
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 
 import { AppSearchFields, FALSE, TRUE } from './constants'
 
-export const buildFacetFilters = (params: SearchParameters): FilterArray<AppSearchFields> => {
+export const buildFacetFilters = (params: SearchState): FilterArray<AppSearchFields> => {
   const { offerCategories, offerIsDuo, tags, offerTypes, venueId } = params
 
   const facetFilters: FilterArray<AppSearchFields> = buildOfferTypesFilter(offerTypes)
@@ -25,7 +25,7 @@ const buildOfferTypesFilter = ({
   isDigital,
   isEvent,
   isThing,
-}: SearchParameters['offerTypes']): FilterArray<AppSearchFields> => {
+}: SearchState['offerTypes']): FilterArray<AppSearchFields> => {
   if (isDigital) {
     if (!isEvent && !isThing) return [DIGITAL]
     if (!isEvent && isThing) return [THING]

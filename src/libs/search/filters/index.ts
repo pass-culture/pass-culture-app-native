@@ -1,6 +1,6 @@
 import { SearchOptions } from '@elastic/app-search-javascript'
 
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { buildBoosts } from 'libs/search/filters/buildBoosts'
 
 import { buildFacetFilters } from './buildFacetFilters'
@@ -9,21 +9,21 @@ import { buildNumericFilters } from './buildNumericFilters'
 import { AppSearchFields, RESULT_FIELDS, SORT_OPTIONS } from './constants'
 
 export const buildQueryOptions = (
-  params: SearchParameters,
+  searchState: SearchState,
   page?: number
 ): SearchOptions<AppSearchFields> => {
   const queryOptions: SearchOptions<AppSearchFields> = {
     result_fields: RESULT_FIELDS,
     filters: {
       all: [
-        ...buildFacetFilters(params),
-        ...buildNumericFilters(params),
-        ...buildGeolocationFilter(params),
+        ...buildFacetFilters(searchState),
+        ...buildNumericFilters(searchState),
+        ...buildGeolocationFilter(searchState),
       ],
     },
     page: {
       current: page || 1,
-      size: params.hitsPerPage || 20,
+      size: searchState.hitsPerPage || 20,
     },
     group: {
       // This ensures that only one offer of each group is retrieved.
@@ -34,7 +34,7 @@ export const buildQueryOptions = (
     sort: SORT_OPTIONS,
   }
 
-  const boosts = buildBoosts(params.geolocation)
+  const boosts = buildBoosts(searchState.geolocation)
   if (boosts) {
     queryOptions['boosts'] = boosts
   }

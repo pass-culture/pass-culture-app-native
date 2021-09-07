@@ -1,11 +1,11 @@
 import { FilterArray } from '@elastic/app-search-javascript'
 
 import { LocationType } from 'features/search/enums'
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 
 import { AppSearchFields } from './constants'
 
-export const buildGeolocationFilter = (params: SearchParameters): FilterArray<AppSearchFields> => {
+export const buildGeolocationFilter = (params: SearchState): FilterArray<AppSearchFields> => {
   const { aroundRadius, geolocation, locationType } = params
 
   if (!geolocation) return []

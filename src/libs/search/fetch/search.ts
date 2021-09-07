@@ -2,13 +2,18 @@ import { SearchOptions } from '@elastic/app-search-javascript'
 import { flatten } from 'lodash'
 
 import { Response } from 'features/search/pages/useSearchResults'
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia'
 import { SuggestedPlace } from 'libs/place'
 import { SearchHit } from 'libs/search'
 import { client } from 'libs/search/client'
 import { buildQueryOptions, AppSearchFields, RESULT_FIELDS } from 'libs/search/filters'
 import { buildAlgoliaHit, buildVenues } from 'libs/search/utils/buildAlgoliaHit'
+
+interface SearchResponse {
+  hits: SearchHit[]
+  nbHits: number
+}
 
 export const fetchObjects = async (ids: string[]): Promise<{ results: SearchHit[] }> => {
   const options: SearchOptions<AppSearchFields> = {
@@ -20,11 +25,9 @@ export const fetchObjects = async (ids: string[]): Promise<{ results: SearchHit[
   return { results: response.results.map(buildAlgoliaHit) }
 }
 
-export const fetchMultipleHits = async (
-  parametersList: SearchParameters[]
-): Promise<{ hits: SearchHit[]; nbHits: number }> => {
-  const queries = parametersList.map((params) => ({
-    query: '',
+export const fetchMultipleHits = async (paramsList: SearchState[]): Promise<SearchResponse> => {
+  const queries = paramsList.map((params) => ({
+    query: params.query,
     options: buildQueryOptions(params),
   }))
 
@@ -51,9 +54,7 @@ export const fetchHits = async (params: SearchParametersQuery): Promise<Response
   }
 }
 
-export const fetchVenueOffers = async (
-  params: SearchParameters
-): Promise<{ hits: SearchHit[]; nbHits: number }> => {
+export const fetchVenueOffers = async (params: SearchState): Promise<SearchResponse> => {
   const options = buildQueryOptions(params)
 
   const response = await client.search<AppSearchFields>('', options)

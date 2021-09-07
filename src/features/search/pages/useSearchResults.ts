@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
 import { OptionalCategoryCriteria } from 'features/search/enums'
-import { SearchParameters } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
@@ -14,12 +14,11 @@ import { useSearchQuery } from 'libs/search/fetch/useSearchQuery'
 
 import { useSearch, useStagedSearch } from './SearchWrapper'
 
-type PartialSearchState = SearchParameters & { query: string }
 export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
 
 // TODO(anoukhello) use parseSearchParams function to filter available categories
 function filterAvailableCategories(
-  searchState: PartialSearchState,
+  searchState: SearchState,
   availableCategories: OptionalCategoryCriteria
 ) {
   const { offerCategories } = searchState
@@ -34,7 +33,7 @@ function filterAvailableCategories(
   return { ...searchState, offerCategories: categoryFacets }
 }
 
-const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
+const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const algoliaBackend = useAlgoliaQuery()
   const searchBackend = useSearchQuery()
@@ -45,7 +44,7 @@ const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
 
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, searchState],
-    async (context: QueryFunctionContext<[string, PartialSearchState], number>) => {
+    async (context: QueryFunctionContext<[string, SearchState], number>) => {
       const page = context.pageParam || 0
       const searchState = filterAvailableCategories(context.queryKey[1], availableCategories)
       return await fetchHits({ page, ...searchState })
@@ -77,12 +76,10 @@ const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
 
 export const useStagedSearchResults = () => {
   const { searchState } = useStagedSearch()
-  const { showResults: _showResults, ...searchParameters } = searchState
-  return useSearchInfiniteQuery(searchParameters)
+  return useSearchInfiniteQuery(searchState)
 }
 
 export const useSearchResults = () => {
   const { searchState } = useSearch()
-  const { showResults: _showResults, ...searchParameters } = searchState
-  return useSearchInfiniteQuery(searchParameters)
+  return useSearchInfiniteQuery(searchState)
 }
