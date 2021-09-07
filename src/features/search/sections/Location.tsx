@@ -18,7 +18,10 @@ export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useStagedSearch()
   const { locationType } = searchState.locationFilter
-  const { Icon, label } = useLocationChoice(locationType)
+
+  // PLACE and VENUE belong to the same section
+  const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
+  const { Icon, label } = useLocationChoice(section)
   const logUseFilter = useLogFilterOnce(SectionTitle.Location)
 
   const onPressChangeLocation = () => {

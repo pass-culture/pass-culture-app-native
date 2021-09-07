@@ -7,24 +7,32 @@ import styled from 'styled-components/native'
 
 import { useGoBack } from 'features/navigation/useGoBack'
 import { usePlaces, useVenues } from 'features/search/api'
+import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace, SuggestedVenue } from 'libs/place'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
 
-export const keyExtractor = (hit: SuggestedPlace) => {
-  const { label, info, geolocation, venueId } = hit
+type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
+
+export const isPlace = (hit: SuggestedPlaceOrVenue): hit is SuggestedPlace => !('venueId' in hit)
+export const isVenue = (hit: SuggestedPlaceOrVenue): hit is SuggestedVenue => 'venueId' in hit
+
+export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
+  const { label, info, geolocation } = hit
+  const type = isVenue(hit) ? `venue-${hit.venueId}` : 'place'
+
   return geolocation
-    ? `${venueId}-${label}-${info}-${geolocation.latitude}-${geolocation.longitude}`
-    : `${venueId}-${label}-${info}`
+    ? `${type}-${label}-${info}-${geolocation.latitude}-${geolocation.longitude}`
+    : `${type}-${label}-${info}`
 }
 
-const Hit: React.FC<{ hit: SuggestedPlace; onPress: () => void }> = ({ hit, onPress }) => {
-  const Icon = !hit.venueId
-    ? () => <BicolorLocationPointer size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
-    : () => <LocationBuilding size={getSpacing(10)} color={ColorsEnum.PRIMARY} />
+const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
+  const Icon = isVenue(hit)
+    ? () => <LocationBuilding size={getSpacing(10)} color={ColorsEnum.PRIMARY} />
+    : () => <BicolorLocationPointer size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
 
   return (
     <ItemContainer onPress={onPress} testID={keyExtractor(hit)}>
@@ -45,12 +53,11 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
   const { dispatch } = useStagedSearch()
   const { goBack } = useGoBack('Search')
 
-  const onPickPlace = (place: SuggestedPlace) => () => {
-    const { venueId, ...payload } = place
-    if (venueId) {
-      dispatch({ type: 'LOCATION_VENUE', payload: place })
-    } else if (place.geolocation) {
-      dispatch({ type: 'LOCATION_PLACE', payload })
+  const onPickPlace = (hit: SuggestedPlaceOrVenue) => () => {
+    if (isVenue(hit) && hit.venueId) {
+      dispatch({ type: 'SET_LOCATION_VENUE', payload: hit })
+    } else if (isPlace(hit) && hit.geolocation) {
+      dispatch({ type: 'SET_LOCATION_PLACE', payload: { aroundRadius: MAX_RADIUS, place: hit } })
     }
 
     // we need to call goBack twice, first to LocationPicker
@@ -59,7 +66,10 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
     goBack()
   }
 
-  const filteredPlaces = [...venues.slice(0, 5), ...uniqWith(places, isEqual)]
+  const filteredPlaces: SuggestedPlaceOrVenue[] = [
+    ...venues.slice(0, 5),
+    ...uniqWith(places, isEqual),
+  ]
   const isLoading = isLoadingPlaces || isLoadingVenues
 
   return (

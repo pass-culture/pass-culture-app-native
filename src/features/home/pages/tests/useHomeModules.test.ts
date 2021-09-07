@@ -62,15 +62,18 @@ describe('useHomeModules', () => {
 
     const { result: availableCategories } = renderHook(() => useAvailableCategories())
 
-    expect(fetchMultipleHits).toHaveBeenCalledWith([
-      {
-        ...parseSearchParameters(
-          { title: 'tile', hitsPerPage: 4 },
-          null,
-          availableCategories.current
-        ),
-      },
-    ])
+    expect(fetchMultipleHits).toHaveBeenCalledWith(
+      [
+        {
+          ...parseSearchParameters(
+            { title: 'tile', hitsPerPage: 4 },
+            null,
+            availableCategories.current
+          ),
+        },
+      ],
+      null
+    )
 
     await act(async () => {
       await waitForNextUpdate()

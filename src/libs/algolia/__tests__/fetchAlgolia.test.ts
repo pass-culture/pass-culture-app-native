@@ -40,6 +40,11 @@ jest.mock('libs/search/datetime/time', () => ({
     mockComputeTimeRangeFromHoursToSeconds(arg),
 }))
 
+const userLocation = {
+  latitude: 42,
+  longitude: 43,
+}
+
 const search = jest.fn()
 const mockInitIndex = jest.fn()
 mockInitIndex.mockReturnValue({ search })
@@ -49,15 +54,14 @@ jest.mock('algoliasearch', () =>
   }))
 )
 
+const baseParams = { locationFilter: { locationType: LocationType.EVERYWHERE } }
+
 describe('fetchAlgolia', () => {
   it('should fetch with provided query and default page number', () => {
-    // given
     const query = 'searched query'
 
-    // when
-    fetchAlgolia({ query } as SearchParametersQuery)
+    fetchAlgolia({ ...baseParams, query } as SearchParametersQuery, null)
 
-    // then
     expect(search).toHaveBeenCalledWith(query, {
       page: 0,
       attributesToHighlight: [],
@@ -68,13 +72,10 @@ describe('fetchAlgolia', () => {
 
   describe('query', () => {
     it('should fetch with provided query', () => {
-      // given
       const query = 'searched query'
 
-      // when
-      fetchAlgolia({ query } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query } as SearchParametersQuery, null)
 
-      // then
       expect(algoliasearch).toHaveBeenCalledWith('algoliaAppId', 'algoliaApiKey')
       expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName')
       expect(search).toHaveBeenCalledWith(query, {
@@ -86,10 +87,8 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch without query parameter when no keyword is provided', () => {
-      // when
-      fetchAlgolia({ query: '', page: 0 } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query: '', page: 0 } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         attributesToHighlight: [],
@@ -101,17 +100,16 @@ describe('fetchAlgolia', () => {
 
   describe('geolocation', () => {
     it('should fetch with geolocation coordinates when latitude and longitude are provided', () => {
-      // given
       const query = 'searched query'
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
 
-      // when
-      fetchAlgolia({ locationFilter: { geolocation }, query } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
+          query,
+        } as SearchParametersQuery,
+        userLocation
+      )
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
@@ -123,14 +121,16 @@ describe('fetchAlgolia', () => {
     })
 
     it('should not fetch with geolocation coordinates when latitude and longitude are not valid', () => {
-      // given
       const query = 'searched query'
-      const geolocation = null
 
-      // when
-      fetchAlgolia({ locationFilter: { geolocation }, query } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
+          query,
+        } as SearchParametersQuery,
+        null
+      )
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
@@ -140,20 +140,16 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch offers with geolocation coordinates, when latitude, longitude are provided and search is not around me', () => {
-      // given
       const query = 'searched query'
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
 
-      // when
-      fetchAlgolia({
-        locationFilter: { geolocation, locationType: LocationType.EVERYWHERE },
-        query,
-      } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          locationFilter: { locationType: LocationType.EVERYWHERE },
+          query,
+        } as SearchParametersQuery,
+        null
+      )
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
@@ -165,24 +161,16 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch offers with geolocation coordinates, when latitude, longitude and radius are provided and search is around me', () => {
-      // given
       const query = 'searched query'
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
 
-      // when
-      fetchAlgolia({
-        locationFilter: {
-          aroundRadius: 15,
-          geolocation,
-          locationType: LocationType.AROUND_ME,
-        },
-        query: query,
-      } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 15 },
+          query,
+        } as SearchParametersQuery,
+        userLocation
+      )
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         aroundLatLng: '42, 43',
         aroundRadius: 15000,
@@ -194,24 +182,16 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch offers with geolocation coordinates, when latitude, longitude, search is around me, and radius equals zero', () => {
-      // given
       const query = 'searched query'
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
 
-      // when
-      fetchAlgolia({
-        locationFilter: {
-          aroundRadius: 0,
-          geolocation: geolocation,
-          locationType: LocationType.AROUND_ME,
-        },
-        query,
-      } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          locationFilter: { aroundRadius: 0, locationType: LocationType.AROUND_ME },
+          query,
+        } as SearchParametersQuery,
+        userLocation
+      )
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         aroundLatLng: '42, 43',
         aroundRadius: 1,
@@ -223,24 +203,16 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch offers with geolocation coordinates, when latitude, longitude, search is around me, and radius is null', () => {
-      // given
       const query = 'searched query'
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
 
-      // when
-      fetchAlgolia({
-        locationFilter: {
-          aroundRadius: -1,
-          geolocation,
-          locationType: LocationType.AROUND_ME,
-        },
-        query,
-      } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          locationFilter: { aroundRadius: -1, locationType: LocationType.AROUND_ME },
+          query,
+        } as SearchParametersQuery,
+        userLocation
+      )
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
@@ -254,14 +226,11 @@ describe('fetchAlgolia', () => {
 
   describe('categories', () => {
     it('should fetch with no facetFilters parameter when no category is provided', () => {
-      // given
       const query = 'searched query'
       const offerCategories: string[] = []
 
-      // when
-      fetchAlgolia({ query, offerCategories } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerCategories } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
@@ -271,14 +240,11 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with facetFilters parameter when one category is provided', () => {
-      // given
       const query = 'searched query'
       const offerCategories = ['LECON']
 
-      // when
-      fetchAlgolia({ query, offerCategories } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerCategories } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.category:LECON']],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -289,14 +255,11 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with facetFilters parameter when multiple categories are provided', () => {
-      // given
       const query = 'searched query'
       const offerCategories = ['SPECTACLE', 'LIVRE']
 
-      // when
-      fetchAlgolia({ query, offerCategories } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerCategories } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.category:SPECTACLE', 'offer.category:LIVRE']],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -311,16 +274,12 @@ describe('fetchAlgolia', () => {
     afterEach(() => {
       search.mockClear()
     })
+
     it('should fetch with no facetFilters when no offer type is provided', () => {
-      // given
       const query = 'searched query'
 
-      // when
-      fetchAlgolia({
-        query: query,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
@@ -330,7 +289,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with facetFilters when offer is digital', () => {
-      // given
       const query = 'searched query'
       const offerTypes = {
         isDigital: true,
@@ -338,13 +296,8 @@ describe('fetchAlgolia', () => {
         isThing: false,
       }
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerTypes: offerTypes,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isDigital:true']],
         page: 0,
@@ -355,7 +308,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with no facetFilters when offer is not digital', () => {
-      // given
       const query = 'searched query'
       const offerTypes = {
         isDigital: false,
@@ -363,13 +315,8 @@ describe('fetchAlgolia', () => {
         isThing: false,
       }
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerTypes: offerTypes,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
@@ -379,7 +326,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with facetFilters when offer is physical only', () => {
-      // given
       const query = 'searched query'
       const offerTypes = {
         isDigital: false,
@@ -387,13 +333,8 @@ describe('fetchAlgolia', () => {
         isThing: true,
       }
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerTypes: offerTypes,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isDigital:false'], ['offer.isThing:true']],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -404,7 +345,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with facetFilters when offer is event only', () => {
-      // given
       const query = 'searched query'
       const offerTypes = {
         isDigital: false,
@@ -412,13 +352,8 @@ describe('fetchAlgolia', () => {
         isThing: false,
       }
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerTypes: offerTypes,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isEvent:true']],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -429,7 +364,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with facetFilters when offer is digital and physical', () => {
-      // given
       const query = 'searched query'
       const offerTypes = {
         isDigital: true,
@@ -437,13 +371,8 @@ describe('fetchAlgolia', () => {
         isThing: true,
       }
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerTypes: offerTypes,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isThing:true']],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -454,7 +383,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with facetFilters when offer is digital or an event', () => {
-      // given
       const query = 'searched query'
       const offerTypes = {
         isDigital: true,
@@ -462,13 +390,8 @@ describe('fetchAlgolia', () => {
         isThing: false,
       }
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerTypes: offerTypes,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isDigital:true', 'offer.isEvent:true']],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -479,7 +402,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with facetFilters when offer is physical or an event', () => {
-      // given
       const query = 'searched query'
       const offerTypes = {
         isDigital: false,
@@ -487,13 +409,8 @@ describe('fetchAlgolia', () => {
         isThing: true,
       }
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerTypes: offerTypes,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isDigital:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -504,7 +421,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with no facetFilters when offer is digital, event and thing', () => {
-      // given
       const query = 'searched query'
       const offerTypes = {
         isDigital: true,
@@ -512,13 +428,8 @@ describe('fetchAlgolia', () => {
         isThing: true,
       }
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerTypes: offerTypes,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
@@ -528,7 +439,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with no facetFilters when offer is not digital, not event and not thing', () => {
-      // given
       const query = 'searched query'
       const offerTypes = {
         isDigital: false,
@@ -536,13 +446,8 @@ describe('fetchAlgolia', () => {
         isThing: false,
       }
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerTypes: offerTypes,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
@@ -554,16 +459,11 @@ describe('fetchAlgolia', () => {
 
   describe('offer duo', () => {
     it('should fetch with no facetFilters when offer duo is false', () => {
-      // given
       const query = 'searched query'
+      const offerIsDuo = false
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerIsDuo: false,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerIsDuo } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
@@ -573,17 +473,11 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with facetFilters when offer duo is true', () => {
-      // given
       const query = 'searched query'
       const offerIsDuo = true
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerIsDuo: offerIsDuo,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerIsDuo } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         facetFilters: [['offer.isDuo:true']],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -596,16 +490,11 @@ describe('fetchAlgolia', () => {
 
   describe('offer is new', () => {
     it('should fetch with no numericFilters when offerIsNew is false', () => {
-      // given
       const query = 'searched query'
+      const offerIsNew = false
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerIsNew: false,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerIsNew } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
@@ -615,18 +504,12 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with numericFilters when offerIsNew is true', () => {
-      // given
       mockGetFromDate.mockReturnValueOnce(1588762412).mockReturnValueOnce(1589453612)
       const query = 'searched query'
       const offerIsNew = true
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerIsNew: offerIsNew,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerIsNew } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         numericFilters: [
           ['offer.prices: 0 TO 300'],
@@ -641,17 +524,11 @@ describe('fetchAlgolia', () => {
 
   describe('offer price', () => {
     it('should fetch with no numericFilters when no price range is specified and offer is not free', () => {
-      // given
       const query = 'searched query'
-      const isFree = false
+      const offerIsFree = false
 
-      // when
-      fetchAlgolia({
-        query: query,
-        offerIsFree: isFree,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerIsFree } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
@@ -661,19 +538,12 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with numericFilters when offer is free even when priceRange is provided', () => {
-      // given
       const query = 'searched query'
       const offerIsFree = true
       const priceRange: Range<number> = [0, 300]
 
-      // when
-      fetchAlgolia({
-        query,
-        offerIsFree,
-        priceRange,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerIsFree, priceRange } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         numericFilters: [['offer.prices = 0']],
         page: 0,
@@ -683,19 +553,12 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with numericFilters range when price range is provided and offer is not free', () => {
-      // given
       const query = 'searched query'
       const offerIsFree = false
       const priceRange: Range<number> = [0, 50]
 
-      // when
-      fetchAlgolia({
-        query,
-        offerIsFree,
-        priceRange,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, offerIsFree, priceRange } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         numericFilters: [['offer.prices: 0 TO 50']],
         page: 0,
@@ -708,7 +571,6 @@ describe('fetchAlgolia', () => {
   describe('date', () => {
     describe('by date only', () => {
       it('should fetch with date filter when date and today option are provided', () => {
-        // Given
         const query = 'search query'
         const selectedDate = new Date(2020, 3, 19, 11)
         // eslint-disable-next-line local-rules/independant-mocks
@@ -716,16 +578,15 @@ describe('fetchAlgolia', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mockGetLastOfDate.mockReturnValue(987654321)
 
-        // When
-        fetchAlgolia({
-          query,
-          date: {
-            option: DATE_FILTER_OPTIONS.TODAY,
-            selectedDate,
-          },
-        } as SearchParametersQuery)
+        fetchAlgolia(
+          {
+            ...baseParams,
+            query,
+            date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate },
+          } as SearchParametersQuery,
+          null
+        )
 
-        // Then
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mockGetLastOfDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
@@ -737,7 +598,6 @@ describe('fetchAlgolia', () => {
       })
 
       it('should fetch with date filter when date and currentWeek option are provided', () => {
-        // Given
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         // eslint-disable-next-line local-rules/independant-mocks
@@ -745,16 +605,15 @@ describe('fetchAlgolia', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mock_WEEK_getLastFromDate.mockReturnValue(987654321)
 
-        // When
-        fetchAlgolia({
-          query,
-          date: {
-            option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
-            selectedDate,
-          },
-        } as SearchParametersQuery)
+        fetchAlgolia(
+          {
+            ...baseParams,
+            query,
+            date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK, selectedDate },
+          } as SearchParametersQuery,
+          null
+        )
 
-        // Then
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mock_WEEK_getLastFromDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
@@ -766,7 +625,6 @@ describe('fetchAlgolia', () => {
       })
 
       it('should fetch with date filter when date and currentWeekEnd option are provided', () => {
-        // Given
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         // eslint-disable-next-line local-rules/independant-mocks
@@ -774,16 +632,15 @@ describe('fetchAlgolia', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mock_WEEK_getLastFromDate.mockReturnValue(987654321)
 
-        // When
-        fetchAlgolia({
-          query,
-          date: {
-            option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
-            selectedDate,
-          },
-        } as SearchParametersQuery)
+        fetchAlgolia(
+          {
+            ...baseParams,
+            query,
+            date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END, selectedDate },
+          } as SearchParametersQuery,
+          null
+        )
 
-        // Then
         expect(mock_WEEKEND_getFirstFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mock_WEEK_getLastFromDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
@@ -795,7 +652,6 @@ describe('fetchAlgolia', () => {
       })
 
       it('should fetch with date filter when date and picked option are provided', () => {
-        // Given
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         // eslint-disable-next-line local-rules/independant-mocks
@@ -803,16 +659,15 @@ describe('fetchAlgolia', () => {
         // eslint-disable-next-line local-rules/independant-mocks
         mockGetLastOfDate.mockReturnValue(987654321)
 
-        // When
-        fetchAlgolia({
-          query,
-          date: {
-            option: DATE_FILTER_OPTIONS.USER_PICK,
-            selectedDate,
-          },
-        } as SearchParametersQuery)
+        fetchAlgolia(
+          {
+            ...baseParams,
+            query,
+            date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
+          } as SearchParametersQuery,
+          null
+        )
 
-        // Then
         expect(mockGetFirstOfDate).toHaveBeenCalledWith(selectedDate)
         expect(mockGetLastOfDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
@@ -826,15 +681,12 @@ describe('fetchAlgolia', () => {
 
     describe('by time only', () => {
       it('should fetch with time filter when timeRange is provided', () => {
-        // Given
         const timeRange = [18, 22]
         // eslint-disable-next-line local-rules/independant-mocks
         mockComputeTimeRangeFromHoursToSeconds.mockReturnValue([64800, 79200])
 
-        // When
-        fetchAlgolia({ timeRange } as SearchParametersQuery)
+        fetchAlgolia({ ...baseParams, timeRange } as SearchParametersQuery, null)
 
-        // Then
         expect(mockComputeTimeRangeFromHoursToSeconds).toHaveBeenCalledWith(timeRange)
         expect(search).toHaveBeenCalledWith('', {
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.times: 64800 TO 79200`]],
@@ -847,24 +699,22 @@ describe('fetchAlgolia', () => {
 
     describe('by date and time', () => {
       it('should fetch with date filter when timeRange, date and today option are provided', () => {
-        // Given
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
         // eslint-disable-next-line local-rules/independant-mocks
         mockGetAllFromTimeRangeAndDate.mockReturnValue([123, 124])
 
-        // When
-        fetchAlgolia({
-          query,
-          date: {
-            option: DATE_FILTER_OPTIONS.TODAY,
-            selectedDate,
-          },
-          timeRange: timeRange as Range<number>,
-        } as SearchParametersQuery)
+        fetchAlgolia(
+          {
+            ...baseParams,
+            query,
+            date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate },
+            timeRange: timeRange as Range<number>,
+          } as SearchParametersQuery,
+          null
+        )
 
-        // Then
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
@@ -875,7 +725,6 @@ describe('fetchAlgolia', () => {
       })
 
       it('should fetch with date filter when timeRange, date and currentWeek option are provided', () => {
-        // Given
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
@@ -886,17 +735,16 @@ describe('fetchAlgolia', () => {
           [327, 328],
         ])
 
-        // When
-        fetchAlgolia({
-          query,
-          date: {
-            option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
-            selectedDate,
-          },
-          timeRange: timeRange as Range<number>,
-        } as SearchParametersQuery)
+        fetchAlgolia(
+          {
+            ...baseParams,
+            query,
+            date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK, selectedDate },
+            timeRange: timeRange as Range<number>,
+          } as SearchParametersQuery,
+          null
+        )
 
-        // Then
         expect(mock_WEEK_getAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
           numericFilters: [
@@ -910,7 +758,6 @@ describe('fetchAlgolia', () => {
       })
 
       it('should fetch with date filter when timeRange, date and currentWeekEnd option are provided', () => {
-        // Given
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
@@ -920,17 +767,16 @@ describe('fetchAlgolia', () => {
           [225, 226],
         ])
 
-        // When
-        fetchAlgolia({
-          query,
-          date: {
-            option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
-            selectedDate,
-          },
-          timeRange: timeRange as Range<number>,
-        } as SearchParametersQuery)
+        fetchAlgolia(
+          {
+            ...baseParams,
+            query,
+            date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END, selectedDate },
+            timeRange: timeRange as Range<number>,
+          } as SearchParametersQuery,
+          null
+        )
 
-        // Then
         expect(mock_WEEKEND_getAllFromTimeRangeAndDate).toHaveBeenCalledWith(
           selectedDate,
           timeRange
@@ -947,24 +793,22 @@ describe('fetchAlgolia', () => {
       })
 
       it('should fetch with date filter when timeRange, date and picked option are provided', () => {
-        // Given
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
         // eslint-disable-next-line local-rules/independant-mocks
         mockGetAllFromTimeRangeAndDate.mockReturnValue([123, 124])
 
-        // When
-        fetchAlgolia({
-          query,
-          date: {
-            option: DATE_FILTER_OPTIONS.USER_PICK,
-            selectedDate,
-          },
-          timeRange: timeRange as Range<number>,
-        } as SearchParametersQuery)
+        fetchAlgolia(
+          {
+            ...baseParams,
+            query,
+            date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
+            timeRange: timeRange as Range<number>,
+          } as SearchParametersQuery,
+          null
+        )
 
-        // Then
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
@@ -978,25 +822,23 @@ describe('fetchAlgolia', () => {
 
   describe('multiple parameters', () => {
     it('should fetch with price and date numericFilters', () => {
-      // Given
       // eslint-disable-next-line local-rules/independant-mocks
       mockGetFirstOfDate.mockReturnValue(123456789)
       // eslint-disable-next-line local-rules/independant-mocks
       mockGetLastOfDate.mockReturnValue(987654321)
       const query = ''
-      const isFree = true
+      const offerIsFree = true
       const selectedDate = new Date(2020, 3, 19, 11)
 
-      // When
-      fetchAlgolia({
-        date: {
-          option: DATE_FILTER_OPTIONS.USER_PICK,
-          selectedDate,
-        },
-        offerIsFree: isFree,
-      } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          ...baseParams,
+          date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
+          offerIsFree,
+        } as SearchParametersQuery,
+        null
+      )
 
-      // Then
       expect(search).toHaveBeenCalledWith(query, {
         numericFilters: [['offer.prices = 0'], ['offer.dates: 123456789 TO 987654321']],
         page: 0,
@@ -1006,20 +848,21 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with price and time numericFilters', () => {
-      // Given
       // eslint-disable-next-line local-rules/independant-mocks
       mockComputeTimeRangeFromHoursToSeconds.mockReturnValue([123456789, 987654321])
       const query = ''
-      const isFree = true
+      const offerIsFree = true
       const timeRange = [10, 17]
 
-      // When
-      fetchAlgolia({
-        timeRange: timeRange as Range<number>,
-        offerIsFree: isFree,
-      } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          ...baseParams,
+          timeRange: timeRange as Range<number>,
+          offerIsFree,
+        } as SearchParametersQuery,
+        null
+      )
 
-      // Then
       expect(search).toHaveBeenCalledWith(query, {
         numericFilters: [['offer.prices = 0'], ['offer.times: 123456789 TO 987654321']],
         page: 0,
@@ -1029,27 +872,25 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with price, date and time numericFilters', () => {
-      // Given
       // eslint-disable-next-line local-rules/independant-mocks
       mock_WEEKEND_getAllFromTimeRangeAndDate.mockReturnValue([
         [123456789, 987654321],
         [123, 1234],
       ])
       const query = ''
-      const isFree = true
+      const offerIsFree = true
       const selectedDate = new Date(2020, 3, 19, 11)
 
-      // When
-      fetchAlgolia({
-        date: {
-          option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
-          selectedDate,
-        },
-        timeRange: [18, 22],
-        offerIsFree: isFree,
-      } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          ...baseParams,
+          date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END, selectedDate },
+          timeRange: [18, 22],
+          offerIsFree,
+        } as SearchParametersQuery,
+        null
+      )
 
-      // Then
       expect(search).toHaveBeenCalledWith(query, {
         numericFilters: [
           ['offer.prices = 0'],
@@ -1062,11 +903,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with all given search parameters', () => {
-      // given
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
       const query = 'searched query'
       const offerCategories = ['LECON', 'VISITE']
       const offerTypes = {
@@ -1076,16 +912,17 @@ describe('fetchAlgolia', () => {
       }
       const page = 2
 
-      // when
-      fetchAlgolia({
-        locationFilter: { geolocation },
-        query,
-        offerCategories,
-        offerTypes,
-        page,
-      } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
+          query,
+          offerCategories,
+          offerTypes,
+          page,
+        } as SearchParametersQuery,
+        userLocation
+      )
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: page,
         facetFilters: [['offer.category:LECON', 'offer.category:VISITE'], ['offer.isDigital:true']],
@@ -1099,11 +936,6 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch duo & free event offers for categories pratique & spectacle around me', () => {
-      // given
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
       const query = ''
       const offerCategories = ['PRATIQUE', 'SPECTACLE']
       const offerIsDuo = true
@@ -1114,19 +946,18 @@ describe('fetchAlgolia', () => {
         isThing: false,
       }
 
-      // when
-      fetchAlgolia({
-        locationFilter: {
-          geolocation,
-        },
-        query,
-        offerCategories,
-        offerIsDuo,
-        priceRange: priceRange as Range<number>,
-        offerTypes,
-      } as SearchParametersQuery)
+      fetchAlgolia(
+        {
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
+          query,
+          offerCategories,
+          offerIsDuo,
+          priceRange: priceRange as Range<number>,
+          offerTypes,
+        } as SearchParametersQuery,
+        userLocation
+      )
 
-      // then
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         facetFilters: [
@@ -1146,15 +977,10 @@ describe('fetchAlgolia', () => {
 
   describe('tags', () => {
     it('should fetch with no facetFilters parameter when no tags are provided', () => {
-      // given
       const tags: string[] = []
 
-      // when
-      fetchAlgolia({
-        tags: tags,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, tags } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         attributesToHighlight: [],
@@ -1164,15 +990,10 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with facetFilters parameter when tags are provided', () => {
-      // given
       const tags = ['Semaine du 14 juillet', 'Offre cinema spéciale pass culture']
 
-      // when
-      fetchAlgolia({
-        tags: tags,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, tags } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         facetFilters: [
@@ -1187,15 +1008,10 @@ describe('fetchAlgolia', () => {
 
   describe('hitsPerPage', () => {
     it('should fetch with no hitsPerPage parameter when not provided', () => {
-      // given
       const hitsPerPage = null
 
-      // when
-      fetchAlgolia({
-        hitsPerPage,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, hitsPerPage } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         attributesToHighlight: [],
@@ -1205,15 +1021,10 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch with hitsPerPage when provided', () => {
-      // given
       const hitsPerPage = 5
 
-      // when
-      fetchAlgolia({
-        hitsPerPage,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, hitsPerPage } as SearchParametersQuery, null)
 
-      // then
       expect(search).toHaveBeenCalledWith('', {
         hitsPerPage,
         page: 0,
@@ -1226,18 +1037,12 @@ describe('fetchAlgolia', () => {
 
   describe('beginningDatetime & endingDatetime', () => {
     it('should fetch from the beginning datetime', () => {
-      // Given
       const beginningDatetime = new Date(2020, 8, 1)
       const query = ''
       mockGetFromDate.mockReturnValueOnce(1596240000)
 
-      // When
-      fetchAlgolia({
-        query,
-        beginningDatetime,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, beginningDatetime } as SearchParametersQuery, null)
 
-      // Then
       expect(search).toHaveBeenCalledWith(query, {
         numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates >= 1596240000`]],
         page: 0,
@@ -1247,18 +1052,12 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch until the ending datetime', () => {
-      // Given
       const endingDatetime = new Date(2020, 8, 1)
       const query = ''
       mockGetFromDate.mockReturnValueOnce(1596240000)
 
-      // When
-      fetchAlgolia({
-        query,
-        endingDatetime,
-      } as SearchParametersQuery)
+      fetchAlgolia({ ...baseParams, query, endingDatetime } as SearchParametersQuery, null)
 
-      // Then
       expect(search).toHaveBeenCalledWith(query, {
         numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates <= 1596240000`]],
         page: 0,
@@ -1268,21 +1067,17 @@ describe('fetchAlgolia', () => {
     })
 
     it('should fetch from the beginning datetime to the ending datetime', () => {
-      // Given
       const beginningDatetime = new Date(2020, 8, 1)
       const endingDatetime = new Date(2020, 8, 2)
 
       const query = ''
       mockGetFromDate.mockReturnValueOnce(1596240000).mockReturnValueOnce(1596326400)
 
-      // When
-      fetchAlgolia({
-        query,
-        beginningDatetime,
-        endingDatetime,
-      } as SearchParametersQuery)
+      fetchAlgolia(
+        { ...baseParams, query, beginningDatetime, endingDatetime } as SearchParametersQuery,
+        null
+      )
 
-      // Then
       expect(search).toHaveBeenCalledWith(query, {
         numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 1596240000 TO 1596326400`]],
         page: 0,

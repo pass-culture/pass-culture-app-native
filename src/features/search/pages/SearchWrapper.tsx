@@ -21,7 +21,9 @@ export const SearchWrapper = memo(function SearchWrapper({ children }: { childre
   const [stagedSearchState, stagedDispatch] = useReducer(searchReducer, initialSearchState)
 
   useEffect(() => {
-    stagedDispatch({ type: 'RESET_LOCATION', payload: position })
+    const actionType = position ? 'SET_LOCATION_AROUND_ME' : 'SET_LOCATION_EVERYWHERE'
+    dispatch({ type: actionType })
+    stagedDispatch({ type: actionType })
   }, [!position])
 
   return (

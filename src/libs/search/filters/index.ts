@@ -1,6 +1,7 @@
 import { SearchOptions } from '@elastic/app-search-javascript'
 
 import { SearchState } from 'features/search/types'
+import { GeoCoordinates } from 'libs/geolocation'
 import { buildBoosts } from 'libs/search/filters/buildBoosts'
 
 import { buildFacetFilters } from './buildFacetFilters'
@@ -10,6 +11,7 @@ import { AppSearchFields, RESULT_FIELDS, SORT_OPTIONS } from './constants'
 
 export const buildQueryOptions = (
   searchState: SearchState,
+  userLocation: GeoCoordinates | null,
   page?: number
 ): SearchOptions<AppSearchFields> => {
   const queryOptions: SearchOptions<AppSearchFields> = {
@@ -18,7 +20,7 @@ export const buildQueryOptions = (
       all: [
         ...buildFacetFilters(searchState),
         ...buildNumericFilters(searchState),
-        ...buildGeolocationFilter(searchState.locationFilter),
+        ...buildGeolocationFilter(searchState.locationFilter, userLocation),
       ],
     },
     page: {
@@ -34,7 +36,7 @@ export const buildQueryOptions = (
     sort: SORT_OPTIONS,
   }
 
-  const boosts = buildBoosts(searchState.locationFilter.geolocation)
+  const boosts = buildBoosts(userLocation)
   if (boosts) {
     queryOptions['boosts'] = boosts
   }

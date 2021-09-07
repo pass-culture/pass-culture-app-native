@@ -7,18 +7,13 @@ import { buildQueryOptions } from '../index'
 const HOUR = 60 * 60
 
 const baseParams: Partial<SearchState> = {
-  offerTypes: {
-    isDigital: false,
-    isEvent: false,
-    isThing: false,
-  },
-  locationFilter: {
-    aroundRadius: null,
-    geolocation: null,
-    locationType: LocationType.EVERYWHERE,
-    place: null,
-    venueId: null,
-  },
+  offerTypes: { isDigital: false, isEvent: false, isThing: false },
+  locationFilter: { locationType: LocationType.EVERYWHERE },
+}
+
+const userLocation = {
+  latitude: 42,
+  longitude: 43,
 }
 
 describe('buildQueryOptions', () => {
@@ -28,14 +23,14 @@ describe('buildQueryOptions', () => {
       const from = '2020-04-19T00:00:00.000Z'
       const to = '2020-04-19T23:59:59.000Z'
 
-      const filters = buildQueryOptions({
-        ...baseParams,
-        offerIsFree: true,
-        date: {
-          option: DATE_FILTER_OPTIONS.USER_PICK,
-          selectedDate,
-        },
-      } as SearchState)
+      const filters = buildQueryOptions(
+        {
+          ...baseParams,
+          offerIsFree: true,
+          date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
+        } as SearchState,
+        null
+      )
 
       expect(filters.filters).toStrictEqual({
         all: [{ [AppSearchFields.prices]: { to: 1 } }, { [AppSearchFields.dates]: { from, to } }],
@@ -44,11 +39,10 @@ describe('buildQueryOptions', () => {
 
     it('should fetch with price and time numericFilters', () => {
       const timeRange = [10, 17]
-      const filters = buildQueryOptions({
-        ...baseParams,
-        offerIsFree: true,
-        timeRange,
-      } as SearchState)
+      const filters = buildQueryOptions(
+        { ...baseParams, offerIsFree: true, timeRange } as SearchState,
+        null
+      )
 
       expect(filters.filters).toStrictEqual({
         all: [
@@ -64,15 +58,18 @@ describe('buildQueryOptions', () => {
       const sundayFrom = '2020-04-19T18:00:00.000Z'
       const sundayTo = '2020-04-19T22:00:00.000Z'
 
-      const filters = buildQueryOptions({
-        ...baseParams,
-        offerIsFree: true,
-        date: {
-          option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
-          selectedDate,
-        },
-        timeRange,
-      } as SearchState)
+      const filters = buildQueryOptions(
+        {
+          ...baseParams,
+          offerIsFree: true,
+          date: {
+            option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
+            selectedDate,
+          },
+          timeRange,
+        } as SearchState,
+        null
+      )
 
       expect(filters.filters).toStrictEqual({
         all: [
@@ -83,10 +80,6 @@ describe('buildQueryOptions', () => {
     })
 
     it('should fetch with all given search parameters', () => {
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
       const offerCategories = ['LECON', 'VISITE']
       const offerTypes = {
         isDigital: true,
@@ -99,13 +92,9 @@ describe('buildQueryOptions', () => {
         {
           offerTypes,
           offerCategories,
-          locationFilter: {
-            ...baseParams.locationFilter,
-            locationType: LocationType.AROUND_ME,
-            aroundRadius: 123,
-            geolocation,
-          },
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 123 },
         } as SearchState,
+        userLocation,
         page
       )
 
@@ -125,10 +114,6 @@ describe('buildQueryOptions', () => {
     })
 
     it('should fetch event offers for categories pratique & spectacle around me', () => {
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
       const offerCategories = ['PRATIQUE', 'SPECTACLE']
       const offerTypes = {
         isDigital: false,
@@ -136,17 +121,15 @@ describe('buildQueryOptions', () => {
         isThing: false,
       }
 
-      const filters = buildQueryOptions({
-        offerTypes,
-        offerCategories,
-        offerIsDuo: false,
-        locationFilter: {
-          ...baseParams.locationFilter,
-          locationType: LocationType.AROUND_ME,
-          aroundRadius: 123,
-          geolocation,
-        },
-      } as SearchState)
+      const filters = buildQueryOptions(
+        {
+          offerTypes,
+          offerCategories,
+          offerIsDuo: false,
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 123 },
+        } as SearchState,
+        userLocation
+      )
 
       expect(filters.filters).toStrictEqual({
         all: [
@@ -159,10 +142,6 @@ describe('buildQueryOptions', () => {
     })
 
     it('should fetch duo & free event offers for categories pratique & spectacle around me', () => {
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
       const offerCategories = ['PRATIQUE', 'SPECTACLE']
       const priceRange = [5, 40]
       const offerTypes = {
@@ -171,17 +150,16 @@ describe('buildQueryOptions', () => {
         isThing: false,
       }
 
-      const filters = buildQueryOptions({
-        offerTypes,
-        offerCategories,
-        offerIsDuo: true,
-        priceRange,
-        locationFilter: {
-          aroundRadius: 123,
-          geolocation,
-          venueId: null,
-        },
-      } as SearchState)
+      const filters = buildQueryOptions(
+        {
+          offerTypes,
+          offerCategories,
+          offerIsDuo: true,
+          priceRange,
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 123 },
+        } as SearchState,
+        userLocation
+      )
 
       expect(filters.filters).toStrictEqual({
         all: [
@@ -197,7 +175,7 @@ describe('buildQueryOptions', () => {
 
   describe('hitsPerPage', () => {
     it('should fetch with no hitsPerPage parameter when not provided', () => {
-      const filters = buildQueryOptions({ ...baseParams, hitsPerPage: null } as SearchState)
+      const filters = buildQueryOptions({ ...baseParams, hitsPerPage: null } as SearchState, null)
       expect(filters.page).toStrictEqual({
         current: 1,
         size: 20,
@@ -205,7 +183,7 @@ describe('buildQueryOptions', () => {
     })
 
     it('should fetch with hitsPerPage when provided', () => {
-      const filters = buildQueryOptions({ ...baseParams, hitsPerPage: 5 } as SearchState)
+      const filters = buildQueryOptions({ ...baseParams, hitsPerPage: 5 } as SearchState, null)
       expect(filters.page).toStrictEqual({
         current: 1,
         size: 5,
@@ -215,7 +193,7 @@ describe('buildQueryOptions', () => {
 
   describe('group', () => {
     it('should always fetch a single offer per group (isbn/visa/...)', () => {
-      const filters = buildQueryOptions(baseParams as SearchState)
+      const filters = buildQueryOptions(baseParams as SearchState, null)
       expect(filters.group).toStrictEqual({ field: AppSearchFields.group })
     })
   })

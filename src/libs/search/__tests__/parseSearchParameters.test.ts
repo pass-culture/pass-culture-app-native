@@ -155,8 +155,8 @@ describe('src | components | parseSearchParameters', () => {
       const result = parseSearchParameters(parameters, geolocation, availableCategories)
       expect(result?.locationFilter).toStrictEqual({
         ...defaultSearchParameters.locationFilter,
-        geolocation,
         locationType: LocationType.AROUND_ME,
+        aroundRadius: null,
       })
     })
 
@@ -167,7 +167,6 @@ describe('src | components | parseSearchParameters', () => {
       expect(result?.locationFilter).toStrictEqual({
         ...defaultSearchParameters.locationFilter,
         aroundRadius: 10,
-        geolocation,
         locationType: LocationType.AROUND_ME,
       })
     })

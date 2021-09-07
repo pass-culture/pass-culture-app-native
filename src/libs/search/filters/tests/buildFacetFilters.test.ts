@@ -5,18 +5,8 @@ import { AppSearchFields } from 'libs/search/filters/constants'
 import { buildFacetFilters } from '../buildFacetFilters'
 
 const baseParams: Partial<SearchState> = {
-  offerTypes: {
-    isDigital: false,
-    isEvent: false,
-    isThing: false,
-  },
-  locationFilter: {
-    aroundRadius: null,
-    geolocation: null,
-    locationType: LocationType.EVERYWHERE,
-    place: null,
-    venueId: null,
-  },
+  offerTypes: { isDigital: false, isEvent: false, isThing: false },
+  locationFilter: { locationType: LocationType.EVERYWHERE },
 }
 
 describe('buildFacetFilters', () => {

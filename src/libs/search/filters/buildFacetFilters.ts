@@ -1,18 +1,20 @@
 import { FilterArray } from '@elastic/app-search-javascript'
 
+import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 
 import { AppSearchFields, FALSE, TRUE } from './constants'
 
-export const buildFacetFilters = (params: SearchState): FilterArray<AppSearchFields> => {
-  const { offerCategories, offerIsDuo, tags, offerTypes, locationFilter } = params
-  const { venueId } = locationFilter
+export const buildFacetFilters = (searchState: SearchState): FilterArray<AppSearchFields> => {
+  const { offerCategories, offerIsDuo, tags, offerTypes, locationFilter } = searchState
 
   const facetFilters: FilterArray<AppSearchFields> = buildOfferTypesFilter(offerTypes)
   if (offerCategories?.length) facetFilters.push({ [AppSearchFields.category]: offerCategories })
   if (offerIsDuo) facetFilters.push({ [AppSearchFields.is_duo]: TRUE })
   if (tags?.length) facetFilters.push({ [AppSearchFields.tags]: tags })
-  if (venueId) facetFilters.push({ [AppSearchFields.venue_id]: venueId })
+
+  if (locationFilter.locationType === LocationType.VENUE && locationFilter.venue.venueId)
+    facetFilters.push({ [AppSearchFields.venue_id]: locationFilter.venue.venueId })
 
   return facetFilters
 }

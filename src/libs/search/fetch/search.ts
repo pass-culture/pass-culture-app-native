@@ -4,7 +4,8 @@ import { flatten } from 'lodash'
 import { Response } from 'features/search/pages/useSearchResults'
 import { SearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia'
-import { SuggestedPlace } from 'libs/place'
+import { GeoCoordinates } from 'libs/geolocation'
+import { SuggestedVenue } from 'libs/place'
 import { SearchHit } from 'libs/search'
 import { client } from 'libs/search/client'
 import { buildQueryOptions, AppSearchFields, RESULT_FIELDS } from 'libs/search/filters'
@@ -25,10 +26,13 @@ export const fetchObjects = async (ids: string[]): Promise<{ results: SearchHit[
   return { results: response.results.map(buildAlgoliaHit) }
 }
 
-export const fetchMultipleHits = async (paramsList: SearchState[]): Promise<SearchResponse> => {
+export const fetchMultipleHits = async (
+  paramsList: SearchState[],
+  userLocation: GeoCoordinates | null
+): Promise<SearchResponse> => {
   const queries = paramsList.map((params) => ({
     query: params.query,
-    options: buildQueryOptions(params),
+    options: buildQueryOptions(params, userLocation),
   }))
 
   const allResults = await client.multiSearch<AppSearchFields>(queries)
@@ -40,8 +44,11 @@ export const fetchMultipleHits = async (paramsList: SearchState[]): Promise<Sear
   return { hits: flatten(hits), nbHits }
 }
 
-export const fetchHits = async (params: SearchParametersQuery): Promise<Response> => {
-  const options = buildQueryOptions(params, params.page)
+export const fetchHits = async (
+  params: SearchParametersQuery,
+  userLocation: GeoCoordinates | null
+): Promise<Response> => {
+  const options = buildQueryOptions(params, userLocation, params.page)
 
   const response = await client.search<AppSearchFields>(params.query, options)
   const { meta } = response.info
@@ -55,7 +62,7 @@ export const fetchHits = async (params: SearchParametersQuery): Promise<Response
 }
 
 export const fetchVenueOffers = async (params: SearchState): Promise<SearchResponse> => {
-  const options = buildQueryOptions(params)
+  const options = buildQueryOptions(params, null) // no need of geolocation to get venues, yet?
 
   const response = await client.search<AppSearchFields>('', options)
   const { meta } = response.info
@@ -66,7 +73,7 @@ export const fetchVenueOffers = async (params: SearchState): Promise<SearchRespo
   }
 }
 
-export const fetchVenues = async (query: string): Promise<SuggestedPlace[]> => {
+export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
   const options: SearchOptions<AppSearchFields> = {
     result_fields: {
       [AppSearchFields.offerer_name]: { raw: {} },

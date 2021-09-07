@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
-import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -43,11 +42,6 @@ export const SearchFilter: React.FC = () => {
   const { data: profile } = useUserProfileInfo()
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
 
-  const showRadiusSection = getShowRadiusSection(
-    searchState.locationFilter.locationType,
-    searchState.locationFilter.venueId
-  )
-
   return (
     <React.Fragment>
       <React.Fragment>
@@ -61,7 +55,7 @@ export const SearchFilter: React.FC = () => {
           <Separator windowWidth={windowWidth} />
 
           {/* Rayon */}
-          {!!showRadiusSection && (
+          {!!('aroundRadius' in searchState.locationFilter) && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <Section.Radius />
@@ -155,10 +149,3 @@ const ShowResultsContainer = styled.View({
   paddingHorizontal: getSpacing(6),
   alignItems: 'center',
 })
-
-function getShowRadiusSection(locationType: LocationType, venueId: number | null): boolean {
-  if (locationType === LocationType.AROUND_ME) return true
-  if (locationType === LocationType.EVERYWHERE) return false
-  // We show the radius when we select an address (ex: Avignon), but not for venues (ex: Louvres).
-  return typeof venueId !== 'number'
-}

@@ -54,7 +54,7 @@ export const useHomeModules = (
       const parsedParameters = search.map(parseSearchParameters).filter(isSearchState)
 
       const fetchModule = async () => {
-        const response = await fetchMultipleHits(parsedParameters)
+        const response = await fetchMultipleHits(parsedParameters, position)
         return { moduleId: moduleId, ...response }
       }
 
@@ -67,7 +67,7 @@ export const useHomeModules = (
             // App search's cache for future faster requests. Thus we build up the cache
             // with actual requests.
             // TODO(antoinewg): delete once the migration to AppSearch is completed
-            searchBackend.fetchMultipleHits(parsedParameters)
+            searchBackend.fetchMultipleHits(parsedParameters, position)
           }
         },
         enabled,

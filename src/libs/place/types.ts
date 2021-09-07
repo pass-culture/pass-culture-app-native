@@ -25,5 +25,8 @@ export interface SuggestedPlace {
     longitude: number
     latitude: number
   } | null
+}
+
+export interface SuggestedVenue extends SuggestedPlace {
   venueId: number | null
 }
