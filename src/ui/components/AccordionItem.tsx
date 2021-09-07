@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
 import {
   Platform,
   TouchableWithoutFeedback,
@@ -8,40 +8,51 @@ import {
   ViewStyle,
   View,
   StyleSheet,
+  ScrollView,
+  LayoutChangeEvent,
 } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useFunctionOnce } from 'libs/hooks'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ArrowNext } from '../svg/icons/ArrowNext'
 import { getSpacing, Typo } from '../theme'
 
 interface IAccordionItemProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onLayout?: (event: any) => void
+  scrollViewRef?: MutableRefObject<ScrollView | null>
   title: JSX.Element | string
   children: JSX.Element | JSX.Element[]
   defaultOpen?: boolean
-  onOpen?: () => void
   onOpenOnce?: () => void
   titleStyle?: StyleProp<ViewStyle>
   bodyStyle?: StyleProp<ViewStyle>
 }
 
 export const AccordionItem = ({
-  onLayout,
+  scrollViewRef,
   title,
   children,
   defaultOpen = false,
-  onOpen,
   onOpenOnce,
   titleStyle,
   bodyStyle,
 }: IAccordionItemProps) => {
+  const { tabBarHeight, top } = useCustomSafeInsets()
   const [open, setOpen] = useState(defaultOpen)
-  const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
+  const [bodyPositionY, setBodyPositionY] = useState<number>(0)
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
+  const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
   const openOnce = useFunctionOnce(onOpenOnce)
+  const onOpen = () => {
+    if (!!scrollViewRef && scrollViewRef !== null && scrollViewRef.current !== null) {
+      scrollViewRef.current.scrollTo({
+        x: 0,
+        y: bodyPositionY - (tabBarHeight + top),
+        animated: true,
+      })
+    }
+  }
 
   const bodyHeight = animatedController.interpolate({
     inputRange: [0, 1],
@@ -69,9 +80,13 @@ export const AccordionItem = ({
     }
   }, [open])
 
+  const getPositionOfAccordionItem = (event: LayoutChangeEvent) => {
+    setBodyPositionY(event.nativeEvent.layout.y)
+  }
+
   return (
     <React.Fragment>
-      <TouchableWithoutFeedback onPress={toggleListItem} onLayout={onLayout}>
+      <TouchableWithoutFeedback onPress={toggleListItem} onLayout={getPositionOfAccordionItem}>
         <View style={[styles.titleContainer, titleStyle]}>
           <Title>{title}</Title>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
