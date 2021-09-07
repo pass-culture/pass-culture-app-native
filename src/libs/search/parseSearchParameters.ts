@@ -27,18 +27,10 @@ export const parseSearchParameters = (
     beginningDatetime: beginningDatetime,
     endingDatetime: endingDatetime,
     hitsPerPage: parameters.hitsPerPage || null,
-    locationFilter: {
-      aroundRadius: aroundRadius || null,
-      geolocation: geolocation
-        ? {
-            latitude: geolocation.latitude,
-            longitude: geolocation.longitude,
-          }
-        : null,
-      locationType: isGeolocated ? LocationType.AROUND_ME : LocationType.EVERYWHERE,
-      place: null,
-      venueId: null,
-    },
+    locationFilter:
+      isGeolocated && geolocation
+        ? { locationType: LocationType.AROUND_ME, aroundRadius: aroundRadius || null }
+        : { locationType: LocationType.EVERYWHERE },
     offerCategories: _buildCategories(parameters.categories || [], availableCategories),
     offerIsDuo: parameters.isDuo || false,
     offerIsFree: parameters.isFree || false,

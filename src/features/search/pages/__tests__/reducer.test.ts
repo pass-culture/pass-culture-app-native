@@ -15,7 +15,6 @@ const Kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
-  venueId: null,
 }
 
 describe('Search reducer', () => {
@@ -86,12 +85,40 @@ describe('Search reducer', () => {
     })
   })
 
-  it('should handle RADIUS', () => {
+  it('should handle RADIUS - nothing if locationType EVERYWHERE', () => {
     const action: Action = { type: 'RADIUS', payload: 30 }
-    const newState = searchReducer(state, action)
+    const newState = searchReducer(
+      { ...state, locationFilter: { locationType: LocationType.EVERYWHERE } },
+      action
+    )
+    expect(newState.locationFilter).toStrictEqual(initialSearchState.locationFilter)
+  })
+
+  it('should handle RADIUS - if locationType AROUND_ME', () => {
+    const action: Action = { type: 'RADIUS', payload: 30 }
+    const newState = searchReducer(
+      { ...state, locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null } },
+      action
+    )
     expect(newState.locationFilter).toStrictEqual({
-      ...initialSearchState.locationFilter,
+      locationType: LocationType.AROUND_ME,
       aroundRadius: 30,
+    })
+  })
+
+  it('should handle RADIUS - if locationType PLACE', () => {
+    const action: Action = { type: 'RADIUS', payload: 30 }
+    const newState = searchReducer(
+      {
+        ...state,
+        locationFilter: { locationType: LocationType.PLACE, aroundRadius: 10, place: Kourou },
+      },
+      action
+    )
+    expect(newState.locationFilter).toStrictEqual({
+      locationType: LocationType.PLACE,
+      aroundRadius: 30,
+      place: Kourou,
     })
   })
 
@@ -230,56 +257,45 @@ describe('Search reducer', () => {
     expect(newState.offerCategories).toStrictEqual([])
   })
 
-  it('should handle LOCATION_AROUND_ME', () => {
-    const newState = searchReducer(state, {
-      type: 'LOCATION_AROUND_ME',
-      payload: { latitude: 48.8557, longitude: 2.3469 },
-    })
+  it('should handle SET_LOCATION_AROUND_ME', () => {
+    const newState = searchReducer(state, { type: 'SET_LOCATION_AROUND_ME' })
     expect(newState.locationFilter.locationType).toEqual(LocationType.AROUND_ME)
-    expect(newState.locationFilter.geolocation).toEqual({ latitude: 48.8557, longitude: 2.3469 })
-    expect(newState.locationFilter.place).toBeNull()
   })
 
-  it('should handle LOCATION_EVERYWHERE', () => {
+  it('should handle SET_LOCATION_EVERYWHERE', () => {
     const newState = searchReducer(
       {
         ...state,
-        locationFilter: {
-          aroundRadius: null,
-          geolocation: { latitude: 48.8557, longitude: 2.3469 },
-          locationType: LocationType.PLACE,
-          place: Kourou,
-          venueId: null,
-        },
+        locationFilter: { aroundRadius: 20, locationType: LocationType.PLACE, place: Kourou },
       },
-      { type: 'LOCATION_EVERYWHERE' }
+      { type: 'SET_LOCATION_EVERYWHERE' }
     )
     expect(newState.locationFilter.locationType).toEqual(LocationType.EVERYWHERE)
-    expect(newState.locationFilter.geolocation).toBeNull()
-    expect(newState.locationFilter.place).toBeNull()
-    expect(newState.locationFilter.venueId).toBeNull()
   })
 
-  it('should handle LOCATION_PLACE', () => {
-    const newState = searchReducer(state, { type: 'LOCATION_PLACE', payload: Kourou })
-    expect(newState.locationFilter.locationType).toEqual(LocationType.PLACE)
-    expect(newState.locationFilter.geolocation).toEqual(Kourou.geolocation)
-    expect(newState.locationFilter.place).toStrictEqual(Kourou)
-    expect(newState.locationFilter.venueId).toBeNull()
+  it('should handle SET_LOCATION_PLACE', () => {
+    const newState = searchReducer(state, {
+      type: 'SET_LOCATION_PLACE',
+      payload: { place: Kourou },
+    })
+    expect(newState.locationFilter).toStrictEqual({
+      locationType: LocationType.PLACE,
+      place: Kourou,
+      aroundRadius: 100,
+    })
   })
 
-  it('should handle LOCATION_VENUE', () => {
+  it('should handle SET_LOCATION_VENUE', () => {
     const venue = {
       label: 'La petite librairie',
       info: 'Michel Léon',
       geolocation: Kourou.geolocation,
+      venueId: 5959,
     }
-    const action: Action = { type: 'LOCATION_VENUE', payload: { venueId: 5959, ...venue } }
+    const action: Action = { type: 'SET_LOCATION_VENUE', payload: venue }
 
     const newState = searchReducer(state, action)
-    expect(newState.locationFilter.locationType).toEqual(LocationType.PLACE)
-    expect(newState.locationFilter.geolocation).toEqual(Kourou.geolocation)
-    expect(newState.locationFilter.place).toStrictEqual(venue)
-    expect(newState.locationFilter.venueId).toStrictEqual(5959)
+
+    expect(newState.locationFilter).toStrictEqual({ locationType: LocationType.VENUE, venue })
   })
 })

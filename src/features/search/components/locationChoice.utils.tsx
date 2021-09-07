@@ -10,17 +10,38 @@ import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
 export const useLocationChoice = (
-  locationType: LocationType
+  section: LocationType.PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
 ): { Icon: React.FC<BicolorIconInterface>; label: string; isSelected: boolean } => {
   const { searchState } = useStagedSearch()
-  const isSelected = locationType === searchState.locationFilter.locationType
 
-  if (locationType === LocationType.EVERYWHERE)
-    return { Icon: Everywhere, label: t`Partout`, isSelected }
-  if (locationType === LocationType.AROUND_ME)
-    return { Icon: AroundMe, label: t`Autour de moi`, isSelected }
+  if (section === LocationType.EVERYWHERE)
+    return {
+      Icon: Everywhere,
+      label: t`Partout`,
+      isSelected: searchState.locationFilter.locationType === LocationType.EVERYWHERE,
+    }
 
-  const { place, venueId } = searchState.locationFilter
-  const Icon = venueId ? LocationBuilding : LocationPointer
-  return { Icon, label: place ? place.label : t`Choisir un lieu`, isSelected }
+  if (section === LocationType.AROUND_ME)
+    return {
+      Icon: AroundMe,
+      label: t`Autour de moi`,
+      isSelected: searchState.locationFilter.locationType === LocationType.AROUND_ME,
+    }
+
+  // the rest is for what's displayed on the section Venue+Place
+  if (searchState.locationFilter.locationType === LocationType.VENUE) {
+    const label = searchState.locationFilter.venue.label
+    return { Icon: LocationBuilding, label, isSelected: true }
+  }
+
+  const label =
+    searchState.locationFilter.locationType === LocationType.PLACE
+      ? searchState.locationFilter.place.label
+      : t`Choisir un lieu`
+
+  return {
+    Icon: LocationPointer,
+    label,
+    isSelected: searchState.locationFilter.locationType === LocationType.PLACE,
+  }
 }

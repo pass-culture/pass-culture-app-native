@@ -13,6 +13,7 @@ const oneOfferType = { isDigital: true, isEvent: false, isThing: false }
 const twoOfferTypes = { isDigital: true, isEvent: true, isThing: false }
 const threeOfferTypes = { isDigital: true, isEvent: true, isThing: true }
 const venueId = 5959
+const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } }
 
 const sevenFilters = {
   offerCategories: ['CINEMA', 'PRESSE'], // 2
@@ -55,9 +56,8 @@ describe('getFilterCount', () => {
     const venueSelected: SearchState = {
       ...initialSearchState,
       locationFilter: {
-        ...initialSearchState.locationFilter,
-        locationType: LocationType.PLACE,
-        venueId,
+        locationType: LocationType.VENUE,
+        venue: { ...Kourou, venueId },
       },
     }
     expect(getFilterCount(venueSelected)).toEqual(1)
@@ -65,27 +65,24 @@ describe('getFilterCount', () => {
     const placeSelected: SearchState = {
       ...initialSearchState,
       locationFilter: {
-        ...initialSearchState.locationFilter,
         locationType: LocationType.PLACE,
-        place: { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } },
+        place: Kourou,
+        aroundRadius: 20,
       },
     }
     expect(getFilterCount(placeSelected)).toEqual(1)
 
     const everywhereSelected: SearchState = {
       ...initialSearchState,
-      locationFilter: {
-        ...initialSearchState.locationFilter,
-        locationType: LocationType.EVERYWHERE,
-      },
+      locationFilter: { locationType: LocationType.EVERYWHERE },
     }
     expect(getFilterCount(everywhereSelected)).toEqual(0)
 
     const aroundMeSelected: SearchState = {
       ...initialSearchState,
       locationFilter: {
-        ...initialSearchState.locationFilter,
         locationType: LocationType.AROUND_ME,
+        aroundRadius: 20,
       },
     }
     expect(getFilterCount(aroundMeSelected)).toEqual(1)

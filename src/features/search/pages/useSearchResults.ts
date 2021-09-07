@@ -6,6 +6,7 @@ import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 import { OptionalCategoryCriteria } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
+import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 import { useAlgoliaQuery } from 'libs/search/fetch/useAlgoliaQuery'
@@ -35,6 +36,7 @@ function filterAvailableCategories(
 
 const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
+  const { position } = useGeolocation()
   const algoliaBackend = useAlgoliaQuery()
   const searchBackend = useSearchQuery()
   const availableCategories = useAvailableCategories()
@@ -47,7 +49,7 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
     async (context: QueryFunctionContext<[string, SearchState], number>) => {
       const page = context.pageParam || 0
       const searchState = filterAvailableCategories(context.queryKey[1], availableCategories)
-      return await fetchHits({ page, ...searchState })
+      return await fetchHits({ page, ...searchState }, position)
     },
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
@@ -58,7 +60,7 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
           // App search's cache for future faster requests. Thus we build up the cache
           // with actual requests.
           // TODO(antoinewg): delete once the migration to AppSearch is completed
-          searchBackend.fetchHits({ page: 0, ...searchState })
+          searchBackend.fetchHits({ page: 0, ...searchState }, position)
         }
       },
     }

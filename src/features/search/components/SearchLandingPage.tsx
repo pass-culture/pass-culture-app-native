@@ -9,7 +9,7 @@ import { CategoryNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
+import { CATEGORY_CRITERIA, LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
@@ -27,7 +27,10 @@ export const SearchLandingPage: React.FC = () => {
 
   const selectedCategory = searchCategory in availableCategories ? searchCategory : null
   const { icon: Icon, label } = CATEGORY_CRITERIA[(selectedCategory as CategoryNameEnum) || 'ALL']
-  const { Icon: LocationIcon, label: locationLabel } = useLocationChoice(locationType)
+
+  // PLACE and VENUE belong to the same section
+  const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
+  const { Icon: LocationIcon, label: locationLabel } = useLocationChoice(section)
 
   return (
     <React.Fragment>

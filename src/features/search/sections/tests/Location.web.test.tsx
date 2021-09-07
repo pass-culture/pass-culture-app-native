@@ -15,6 +15,8 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
+const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } }
+
 describe('Location section', () => {
   const countString = '\xa0(1)'
 
@@ -24,13 +26,20 @@ describe('Location section', () => {
 
   // FIXME: Web Integration
   it.skip('should have count in title when searching Around me [WEB INTEGRATION]', () => {
-    mockSearchState.locationFilter.locationType = LocationType.AROUND_ME
+    mockSearchState.locationFilter = {
+      locationType: LocationType.AROUND_ME,
+      aroundRadius: 20,
+    }
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
   })
 
   // FIXME: Web Integration
   it.skip('should have count in title when searching Place [WEB INTEGRATION]', () => {
-    mockSearchState.locationFilter.locationType = LocationType.PLACE
+    mockSearchState.locationFilter = {
+      locationType: LocationType.PLACE,
+      place: Kourou,
+      aroundRadius: 20,
+    }
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
   })
 

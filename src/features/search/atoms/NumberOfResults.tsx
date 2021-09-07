@@ -2,6 +2,7 @@ import { plural } from '@lingui/macro'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useVenueName } from 'features/venue/api/useVenue'
 import { useGeolocation } from 'libs/geolocation'
@@ -10,19 +11,25 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   nbHits: number
-  venueId: number | null
 }
 
-export const NumberOfResults: React.FC<Props> = ({ nbHits, venueId }) => {
-  const venueName = useVenueName(venueId)
-  const { dispatch } = useSearch()
+export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
+  const { searchState, dispatch } = useSearch()
   const { dispatch: stagedDispatch } = useStagedSearch()
   const { position } = useGeolocation()
 
+  const venueId =
+    searchState.locationFilter.locationType === LocationType.VENUE
+      ? searchState.locationFilter.venue.venueId
+      : null
+
+  const venueName = useVenueName(venueId)
+
   const removeVenueId = useCallback(() => {
-    dispatch({ type: 'RESET_LOCATION', payload: position })
-    stagedDispatch({ type: 'RESET_LOCATION', payload: position })
-  }, [])
+    const actionType = position ? 'SET_LOCATION_AROUND_ME' : 'SET_LOCATION_EVERYWHERE'
+    dispatch({ type: actionType })
+    stagedDispatch({ type: actionType })
+  }, [!position])
 
   const numberOfResults = plural(nbHits, {
     one: '# résultat',

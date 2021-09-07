@@ -48,16 +48,13 @@ export const LocationFilter: React.FC = () => {
         debouncedGoBack()
       }
     } else {
-      dispatch({
-        type: 'LOCATION_AROUND_ME',
-        payload: { latitude: position.latitude, longitude: position.longitude },
-      })
+      dispatch({ type: 'SET_LOCATION_AROUND_ME' })
       debouncedGoBack()
     }
   }
 
   const onPressEverywhere = () => {
-    dispatch({ type: 'LOCATION_EVERYWHERE' })
+    dispatch({ type: 'SET_LOCATION_EVERYWHERE' })
     debouncedGoBack()
   }
 
@@ -75,14 +72,14 @@ export const LocationFilter: React.FC = () => {
         <Spacer.Column numberOfSpaces={6} />
         <LocationChoice
           testID="pickPlace"
-          locationType={LocationType.PLACE}
+          section={LocationType.PLACE}
           arrowNext={true}
           onPress={onPressPickPlace}
         />
         <Spacer.Column numberOfSpaces={4} />
         <LocationChoice
           testID="aroundMe"
-          locationType={LocationType.AROUND_ME}
+          section={LocationType.AROUND_ME}
           onPress={onPressAroundMe}
         />
         {!!positionError && (
@@ -91,7 +88,7 @@ export const LocationFilter: React.FC = () => {
         <Spacer.Column numberOfSpaces={4} />
         <LocationChoice
           testID="everywhere"
-          locationType={LocationType.EVERYWHERE}
+          section={LocationType.EVERYWHERE}
           onPress={onPressEverywhere}
         />
       </ScrollView>

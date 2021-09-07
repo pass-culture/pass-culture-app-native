@@ -2,6 +2,7 @@ import React from 'react'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
 import { buildSuggestedPlaces, SuggestedPlace } from 'libs/place'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
@@ -31,10 +32,9 @@ describe('SuggestedPlaces component', () => {
 
     fireEvent.click(getByTestId(keyExtractor(mockPlaces[1])))
 
-    const { venueId: _venueId, ...payload } = mockPlaces[1]
     expect(mockStagedDispatch).toHaveBeenCalledWith({
-      type: 'LOCATION_PLACE',
-      payload,
+      type: 'SET_LOCATION_PLACE',
+      payload: { aroundRadius: MAX_RADIUS, place: mockPlaces[1] },
     })
     expect(mockGoBack).toBeCalledTimes(2)
   })

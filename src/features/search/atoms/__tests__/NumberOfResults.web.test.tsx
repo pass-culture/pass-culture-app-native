@@ -1,12 +1,9 @@
 import { plural } from '@lingui/macro'
 import React from 'react'
 
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { render } from 'tests/utils/web'
 
 import { NumberOfResults } from '../NumberOfResults'
-
-const venueId = venueResponseSnap.id
 
 jest.mock('react-query')
 
@@ -17,9 +14,9 @@ describe('NumberOfResults component', () => {
         one: '# résultat',
         other: '# résultats',
       })
-    expect(render(<NumberOfResults nbHits={0} venueId={venueId} />).container.textContent).toBe('')
-    render(<NumberOfResults nbHits={1} venueId={venueId} />).getByText(getResultText(1))
-    render(<NumberOfResults nbHits={2} venueId={venueId} />).getByText(getResultText(2))
-    render(<NumberOfResults nbHits={1234} venueId={venueId} />).getByText(getResultText(1234))
+    expect(render(<NumberOfResults nbHits={0} />).container.textContent).toBe('')
+    render(<NumberOfResults nbHits={1} />).getByText(getResultText(1))
+    render(<NumberOfResults nbHits={2} />).getByText(getResultText(2))
+    render(<NumberOfResults nbHits={1234} />).getByText(getResultText(1234))
   })
 })

@@ -6,6 +6,7 @@ import { Response } from 'features/search/pages/useSearchResults'
 import { SearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
+import { GeoCoordinates } from 'libs/geolocation'
 
 import { AlgoliaHit } from '../algolia.d'
 import { RADIUS_FILTERS } from '../enums'
@@ -29,24 +30,27 @@ export const attributesToRetrieve = [
   '_geoloc',
 ]
 
-const buildSearchParameters = ({
-  beginningDatetime = null,
-  date = null,
-  endingDatetime = null,
-  locationFilter,
-  offerCategories = [],
-  offerIsDuo = false,
-  offerIsFree = false,
-  offerIsNew = false,
-  offerTypes = {
-    isDigital: false,
-    isEvent: false,
-    isThing: false,
-  },
-  priceRange = null,
-  timeRange = null,
-  tags = [],
-}: SearchState) => ({
+const buildSearchParameters = (
+  {
+    beginningDatetime = null,
+    date = null,
+    endingDatetime = null,
+    locationFilter,
+    offerCategories = [],
+    offerIsDuo = false,
+    offerIsFree = false,
+    offerIsNew = false,
+    offerTypes = {
+      isDigital: false,
+      isEvent: false,
+      isThing: false,
+    },
+    priceRange = null,
+    timeRange = null,
+    tags = [],
+  }: SearchState,
+  userLocation: GeoCoordinates | null
+) => ({
   ...buildFacetFilters({ offerCategories, offerTypes, offerIsDuo, tags }),
   ...buildNumericFilters({
     beginningDatetime,
@@ -57,22 +61,19 @@ const buildSearchParameters = ({
     priceRange,
     timeRange,
   }),
-  ...buildGeolocationParameter({
-    aroundRadius: locationFilter?.aroundRadius ?? RADIUS_FILTERS.DEFAULT_RADIUS_IN_KILOMETERS,
-    geolocation: locationFilter?.geolocation || null,
-    locationType: locationFilter?.locationType || LocationType.EVERYWHERE,
-  }),
+  ...buildGeolocationParameter(locationFilter, userLocation),
 })
 
 export const fetchMultipleAlgolia = (
-  paramsList: SearchState[]
+  paramsList: SearchState[],
+  userLocation: GeoCoordinates | null
 ): Readonly<Promise<MultipleQueriesResponse<AlgoliaHit>>> => {
   const queries = paramsList.map((params) => ({
     indexName: env.ALGOLIA_INDEX_NAME,
     query: params.query,
     params: {
       ...buildHitsPerPage(params.hitsPerPage),
-      ...buildSearchParameters(params),
+      ...buildSearchParameters(params, userLocation),
       attributesToHighlight: [], // We disable highlighting because we don't need it
       attributesToRetrieve,
     },
@@ -81,8 +82,11 @@ export const fetchMultipleAlgolia = (
   return client.multipleQueries(queries)
 }
 
-export const fetchAlgolia = (parameters: SearchParametersQuery): Readonly<Promise<Response>> => {
-  const searchParameters = buildSearchParameters(parameters)
+export const fetchAlgolia = (
+  parameters: SearchParametersQuery,
+  userLocation: GeoCoordinates | null
+): Readonly<Promise<Response>> => {
+  const searchParameters = buildSearchParameters(parameters, userLocation)
   const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
 
   return index.search(parameters.query || '', {
@@ -104,17 +108,37 @@ export const fetchAlgoliaHits = (
 const buildHitsPerPage = (hitsPerPage: SearchState['hitsPerPage']) =>
   hitsPerPage ? { hitsPerPage } : null
 
-const buildGeolocationParameter = ({
-  aroundRadius,
-  geolocation,
-  locationType,
-}: Pick<SearchState['locationFilter'], 'aroundRadius' | 'geolocation' | 'locationType'>):
-  | { aroundLatLng: string; aroundRadius: 'all' | number }
-  | undefined => {
-  if (!geolocation) return
+const buildGeolocationParameter = (
+  locationFilter: SearchState['locationFilter'],
+  userLocation: GeoCoordinates | null
+): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
+  if (locationFilter.locationType === LocationType.VENUE) return
+
+  if (locationFilter.locationType === LocationType.PLACE) {
+    if (!locationFilter.place.geolocation) return
+    return {
+      aroundLatLng: `${locationFilter.place.geolocation.latitude}, ${locationFilter.place.geolocation.longitude}`,
+      aroundRadius: computeAroudRadiusInMeters(
+        locationFilter.aroundRadius,
+        locationFilter.locationType
+      ),
+    }
+  }
+
+  if (!userLocation) return
+  if (locationFilter.locationType === LocationType.EVERYWHERE) {
+    return {
+      aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+      aroundRadius: 'all',
+    }
+  }
+
   return {
-    aroundLatLng: `${geolocation.latitude}, ${geolocation.longitude}`,
-    aroundRadius: computeAroudRadiusInMeters(aroundRadius, locationType),
+    aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+    aroundRadius: computeAroudRadiusInMeters(
+      locationFilter.aroundRadius,
+      locationFilter.locationType
+    ),
   }
 }
 

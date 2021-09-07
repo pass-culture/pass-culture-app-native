@@ -1,5 +1,5 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace, SuggestedVenue } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
 import { LocationType } from './enums'
@@ -9,14 +9,11 @@ export interface SelectedDate {
   selectedDate: Date
 }
 
-interface LocationFilter {
-  aroundRadius: number | null
-  // user location
-  geolocation: { latitude: number; longitude: number } | null
-  place: Omit<SuggestedPlace, 'venueId'> | null
-  locationType: LocationType
-  venueId: number | null
-}
+type LocationFilter =
+  | { locationType: LocationType.EVERYWHERE }
+  | { locationType: LocationType.AROUND_ME; aroundRadius: number | null }
+  | { locationType: LocationType.PLACE; place: SuggestedPlace; aroundRadius: number }
+  | { locationType: LocationType.VENUE; venue: SuggestedVenue }
 
 export interface SearchState {
   beginningDatetime: Date | null

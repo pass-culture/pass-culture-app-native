@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import {
   GeolocPositionError,
@@ -8,6 +9,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
+import { SuggestedPlace } from 'libs/place'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { LocationFilter } from '../LocationFilter'
@@ -27,6 +29,12 @@ let mockPermissionState = GeolocPermissionState.GRANTED
 let mockPositionError: GeolocationError | null = null
 const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
+
+const Kourou: SuggestedPlace = {
+  label: 'Kourou',
+  info: 'Guyane',
+  geolocation: { longitude: -52.669736, latitude: 5.16186 },
+}
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
@@ -69,10 +77,7 @@ describe('LocationFilter component', () => {
     expect(
       queryByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
     ).toBeFalsy()
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'LOCATION_AROUND_ME',
-      payload: DEFAULT_POSITION,
-    })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_AROUND_ME' })
   })
 
   it('should not dispatch actions on click (position=NO, type=AROUND_ME)', () => {
@@ -85,24 +90,31 @@ describe('LocationFilter component', () => {
   it('should dispatch actions on click (position=YES, type=EVERYWHERE)', () => {
     const { getByTestId } = render(<LocationFilter />)
     fireEvent.click(getByTestId('locationChoice-everywhere'))
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'LOCATION_EVERYWHERE' })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
   })
 
   it('should dispatch actions on click (position=NO, type=EVERYWHERE)', () => {
     const { getByTestId } = render(<LocationFilter />)
     fireEvent.click(getByTestId('locationChoice-everywhere'))
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'LOCATION_EVERYWHERE' })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
   })
 
   it('should show the building icon when a venue is chosen', () => {
-    mockSearchState.locationFilter.venueId = 4
+    mockSearchState.locationFilter = {
+      locationType: LocationType.VENUE,
+      venue: { ...Kourou, venueId: 4 },
+    }
     const { queryByTestId } = render(<LocationFilter />)
     expect(queryByTestId('BicolorLocationBuilding')).toBeTruthy()
     expect(queryByTestId('BicolorLocationPointer')).toBeFalsy()
   })
 
   it('should show the pointer icon when no venue is chosen', () => {
-    mockSearchState.locationFilter.venueId = null
+    mockSearchState.locationFilter = {
+      locationType: LocationType.PLACE,
+      aroundRadius: 10,
+      place: Kourou,
+    }
     const { queryByTestId } = render(<LocationFilter />)
     expect(queryByTestId('BicolorLocationBuilding')).toBeFalsy()
     expect(queryByTestId('BicolorLocationPointer')).toBeTruthy()

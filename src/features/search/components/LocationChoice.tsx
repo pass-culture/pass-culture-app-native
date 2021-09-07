@@ -10,15 +10,15 @@ import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type Props = {
-  locationType: LocationType
+  section: LocationType.PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
   testID: string
   onPress?: () => void
   arrowNext?: boolean
 }
 
 export const LocationChoice: React.FC<Props> = (props) => {
-  const { locationType, onPress, arrowNext = false, testID } = props
-  const { Icon, label, isSelected } = useLocationChoice(locationType)
+  const { section, onPress, arrowNext = false, testID } = props
+  const { Icon, label, isSelected } = useLocationChoice(section)
   const iconColor2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
 
   return (

@@ -2,7 +2,7 @@ import { ResultItem } from '@elastic/app-search-javascript'
 
 import { CategoryNameEnum } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedVenue } from 'libs/place'
 import { AppSearchFields, TRUE } from 'libs/search/filters/constants'
 
 // TODO(antoinewg) We need this function temporarily but delete when we migrate completely to App Search
@@ -33,7 +33,7 @@ export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): Algolia
   }
 }
 
-export const buildVenues = (searchHit: ResultItem<AppSearchFields>): SuggestedPlace => {
+export const buildVenues = (searchHit: ResultItem<AppSearchFields>): SuggestedVenue => {
   const geoloc = searchHit.getRaw(AppSearchFields.venue_position) as string
   const [lat, lng] = (geoloc || ',').split(',')
   const latitude = isNaN(parseFloat(lat)) ? null : parseFloat(lat)

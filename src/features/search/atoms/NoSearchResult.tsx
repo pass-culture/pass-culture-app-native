@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useSearch } from 'features/search/pages/SearchWrapper'
@@ -17,17 +17,13 @@ export const NoSearchResult: React.FC = () => {
     analytics.logNoSearchResult(query)
   }, [query])
 
-  const handlePressAroundMe = () => {
+  const handlePressAroundMe = useCallback(() => {
     dispatch({ type: 'INIT' })
     dispatch({ type: 'SET_QUERY', payload: '' })
 
-    if (position !== null) {
-      const payload = { latitude: position.latitude, longitude: position.longitude }
-      dispatch({ type: 'LOCATION_AROUND_ME', payload })
-    } else {
-      dispatch({ type: 'LOCATION_EVERYWHERE' })
-    }
-  }
+    const actionType = position ? 'SET_LOCATION_AROUND_ME' : 'SET_LOCATION_EVERYWHERE'
+    dispatch({ type: actionType })
+  }, [!position])
 
   const errorMessage =
     query.length > 0 ? t`Pas de résultat trouvé pour` + ` "${query}"` : t`Pas de résultat trouvé.`

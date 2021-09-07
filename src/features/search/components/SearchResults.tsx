@@ -54,10 +54,10 @@ export const SearchResults: React.FC = () => {
     [searchState.query]
   )
 
-  const ListHeaderComponent = useMemo(
-    () => <NumberOfResults nbHits={nbHits} venueId={searchState.locationFilter.venueId} />,
-    [nbHits, searchState.locationFilter.venueId]
-  )
+  const ListHeaderComponent = useMemo(() => <NumberOfResults nbHits={nbHits} />, [
+    nbHits,
+    searchState.locationFilter.locationType,
+  ])
   const ListEmptyComponent = useMemo(() => <NoSearchResult />, [])
   const ListFooterComponent = useMemo(
     () =>
