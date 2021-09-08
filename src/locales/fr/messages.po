@@ -71,6 +71,7 @@ msgstr "Accepter et s’inscrire"
 
 #: src/features/offer/pages/OfferBody.tsx
 #: src/features/profile/pages/Profile.tsx
+#: src/features/venue/pages/VenueBody.tsx
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
@@ -663,19 +664,19 @@ msgstr "Gratuit"
 msgid "Géolocalisation"
 msgstr "Géolocalisation"
 
-#: src/features/offer/atoms/AccessibilityAtom.service.ts
+#: src/ui/components/accessibility/AccessibilityAtom.service.ts
 msgid "Handicap auditif"
 msgstr "Handicap auditif"
 
-#: src/features/offer/atoms/AccessibilityAtom.service.ts
+#: src/ui/components/accessibility/AccessibilityAtom.service.ts
 msgid "Handicap moteur"
 msgstr "Handicap moteur"
 
-#: src/features/offer/atoms/AccessibilityAtom.service.ts
+#: src/ui/components/accessibility/AccessibilityAtom.service.ts
 msgid "Handicap psychique ou cognitif"
 msgstr "Handicap psychique ou cognitif"
 
-#: src/features/offer/atoms/AccessibilityAtom.service.ts
+#: src/ui/components/accessibility/AccessibilityAtom.service.ts
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
 
@@ -1179,8 +1180,8 @@ msgstr "Pourquoi les biens numériques sont-ils limités ?"
 msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 
-#: src/features/offer/components/useReportOffer.tsx
-#: src/features/offer/components/useReportOffer.tsx
+#: src/features/offer/components/useReportOfferModalContent.tsx
+#: src/features/offer/components/useReportOfferModalContent.tsx
 msgid "Pourquoi signales-tu"
 msgstr "Pourquoi signales-tu"
 
@@ -1432,7 +1433,7 @@ msgstr "Si tu rencontres à nouveau des difficultés, consulte"
 msgid "Signaler l'offre"
 msgstr "Signaler l'offre"
 
-#: src/features/offer/components/useReportOffer.tsx
+#: src/features/offer/components/useReportOfferModalContent.tsx
 msgid "Signaler une offre"
 msgstr "Signaler une offre"
 
@@ -1721,7 +1722,7 @@ msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tar
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 
 #: src/api/__mocks__/helpers.ts
-#: src/api/helpers.ts
+#: src/api/apiHelpers.ts
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
@@ -1869,8 +1870,8 @@ msgstr "autour de toi"
 msgid "c'est..."
 msgstr "c'est..."
 
-#: src/features/offer/components/useReportOffer.tsx
-#: src/features/offer/components/useReportOffer.tsx
+#: src/features/offer/components/useReportOfferModalContent.tsx
+#: src/features/offer/components/useReportOfferModalContent.tsx
 msgid "cette offre ?"
 msgstr "cette offre ?"
 
@@ -2061,7 +2062,12 @@ msgstr "type"
 msgid "une initiative du Gouvernement financée par le ministère de la Culture."
 msgstr "une initiative du Gouvernement financée par le ministère de la Culture."
 
+#: src/ui/components/PartialAccordionDescription.tsx
+msgid "voir moins"
+msgstr "voir moins"
+
 #: src/features/offer/atoms/OfferSeeMore.tsx
+#: src/ui/components/PartialAccordionDescription.tsx
 msgid "voir plus"
 msgstr "voir plus"
 

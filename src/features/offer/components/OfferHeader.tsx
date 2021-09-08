@@ -5,7 +5,7 @@ import { Animated } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { isApiError } from 'api/helpers'
+import { isApiError } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/AuthContext'
 import {
   useAddFavorite,

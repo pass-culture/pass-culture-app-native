@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { useState } from 'react'
 import { useQueryClient } from 'react-query'
 
-import { extractApiErrorMessage } from 'api/helpers'
+import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useReasonsForReporting } from 'features/offer/services/useReasonsForReporting'
 import { useReportOfferMutation } from 'features/offer/services/useReportOffer'
 import { QueryKeys } from 'libs/queryKeys'

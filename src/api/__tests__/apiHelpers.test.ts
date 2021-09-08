@@ -1,5 +1,5 @@
+import { safeFetch } from '../apiHelpers'
 import { DefaultApi } from '../gen'
-import { safeFetch } from '../helpers'
 
 global.fetch = jest.fn().mockResolvedValue('apiResponse')
 const api = new DefaultApi({})
