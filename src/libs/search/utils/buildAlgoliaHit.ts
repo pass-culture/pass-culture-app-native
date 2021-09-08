@@ -34,17 +34,11 @@ export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): Algolia
 }
 
 export const buildVenues = (searchHit: ResultItem<AppSearchFields>): SuggestedVenue => {
-  const geoloc = searchHit.getRaw(AppSearchFields.venue_position) as string
-  const [lat, lng] = (geoloc || ',').split(',')
-  const latitude = isNaN(parseFloat(lat)) ? null : parseFloat(lat)
-  const longitude = isNaN(parseFloat(lng)) ? null : parseFloat(lng)
-
   const venueId = searchHit.getRaw(AppSearchFields.venue_id) as string
 
   return {
     label: searchHit.getRaw(AppSearchFields.venue_name) as string,
     info: searchHit.getRaw(AppSearchFields.offerer_name) as string,
-    geolocation: latitude && longitude ? { latitude, longitude } : null,
     venueId: isNaN(parseFloat(venueId)) ? null : parseFloat(venueId),
   }
 }

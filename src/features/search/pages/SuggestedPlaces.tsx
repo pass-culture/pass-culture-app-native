@@ -21,12 +21,14 @@ export const isPlace = (hit: SuggestedPlaceOrVenue): hit is SuggestedPlace => !(
 export const isVenue = (hit: SuggestedPlaceOrVenue): hit is SuggestedVenue => 'venueId' in hit
 
 export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
-  const { label, info, geolocation } = hit
-  const type = isVenue(hit) ? `venue-${hit.venueId}` : 'place'
+  const { label, info } = hit
+  const prefix = isVenue(hit) ? `venue-${hit.venueId}` : 'place'
+  const suffix =
+    isPlace(hit) && hit.geolocation
+      ? `${hit.geolocation.latitude}-${hit.geolocation.longitude}`
+      : 'no-geolocation'
 
-  return geolocation
-    ? `${type}-${label}-${info}-${geolocation.latitude}-${geolocation.longitude}`
-    : `${type}-${label}-${info}`
+  return `${prefix}-${label}-${info}-${suffix}`
 }
 
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
