@@ -1,8 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
+import { ApiError } from 'api/apiHelpers'
 import { FavoriteRequest, FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
-import { ApiError } from 'api/helpers'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { EmptyResponse } from 'libs/fetch'
 import { QueryKeys } from 'libs/queryKeys'

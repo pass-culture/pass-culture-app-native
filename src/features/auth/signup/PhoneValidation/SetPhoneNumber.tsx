@@ -9,7 +9,7 @@ import CountryPicker, {
 } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 
-import { ApiError, extractApiErrorMessage } from 'api/helpers'
+import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { useSendPhoneValidationMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { useAppSettings } from 'features/auth/settings'

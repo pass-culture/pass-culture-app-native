@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import * as React from 'react'
 import styled from 'styled-components/native'
 
-import { extractApiErrorMessage } from 'api/helpers'
+import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useArchiveBookingMutation } from 'features/bookings/api/mutations'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

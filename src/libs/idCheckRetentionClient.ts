@@ -8,8 +8,8 @@ import {
 } from '@pass-culture/id-check'
 
 import { api } from 'api/api'
+import { ApiError } from 'api/apiHelpers'
 import { ActivityEnum, BeneficiaryInformationUpdateRequest } from 'api/gen'
-import { ApiError } from 'api/helpers'
 import { eventMonitoring } from 'libs/monitoring'
 
 export const idCheckRetentionClient: IdCheckRetentionClient = {
