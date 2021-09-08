@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { fireEvent, render } from 'tests/utils'
+import { cleanup, fireEvent, render } from 'tests/utils'
 
 import { SignUpSignInChoiceOfferModal } from '../SignUpSignInChoiceOfferModal'
 
@@ -10,6 +10,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
+  afterEach(cleanup)
 
   it('renders the modal', () => {
     const { getByText } = render(
