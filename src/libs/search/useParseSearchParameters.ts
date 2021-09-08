@@ -13,6 +13,6 @@ export const useParseSearchParameters = () => {
   return useCallback(
     (parameters: SearchParametersFields): Partial<SearchState> | undefined =>
       parseSearchParameters(parameters, position, availableCategories),
-    [availableCategories]
+    [availableCategories, !position]
   )
 }
