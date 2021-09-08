@@ -3,7 +3,7 @@ import { Text } from 'react-native'
 
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 
-export const useReportOffer = () => {
+export const useReportOfferModalContent = () => {
   const childrenProps = {
     children: <Text>Composant modale</Text>,
     leftIcon: ArrowPrevious,

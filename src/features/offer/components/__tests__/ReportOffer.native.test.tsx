@@ -5,7 +5,7 @@ import { fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
 jest.mock('features/offer/services/useReportOffer')
-jest.mock('features/offer/components/useReportOffer')
+jest.mock('features/offer/components/useReportOfferModalContent')
 
 describe('ReportOffer', () => {
   beforeEach(() => {

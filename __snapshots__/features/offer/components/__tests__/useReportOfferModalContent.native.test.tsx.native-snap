@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useReportOfferModalContent hook description should display the ReportOfferDescription and show no back button if step is 0 1`] = `
+<ReportOfferDescription
+  onPressReportOffer={[Function]}
+/>
+`;
+
+exports[`useReportOfferModalContent hook description should display the ReportOfferOtherReason and show a back button if step is 2 1`] = `
+<ReportOfferOtherReason
+  dismissModal={[MockFunction]}
+  offerId={0}
+/>
+`;
+
+exports[`useReportOfferModalContent hook description should display the ReportOfferReason and show a back button if step is 1 1`] = `
+<ReportOfferReason
+  dismissModal={[MockFunction]}
+  offerId={0}
+  onPressOtherReason={[Function]}
+/>
+`;
