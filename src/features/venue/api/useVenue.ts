@@ -17,8 +17,3 @@ export const useVenue = (venueId: number | null) =>
     staleTime: STALE_TIME_VENUE,
     enabled: typeof venueId === 'number',
   })
-
-export const useVenueName = (venueId: number | null) => {
-  const { data: venue } = useVenue(venueId)
-  return venue?.name
-}

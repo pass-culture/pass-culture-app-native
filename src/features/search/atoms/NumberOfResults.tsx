@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { LocationType } from 'features/search/enums'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { useVenueName } from 'features/venue/api/useVenue'
 import { useGeolocation } from 'libs/geolocation'
 import { ClippedTag } from 'ui/components/ClippedTag'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -18,12 +17,10 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
   const { dispatch: stagedDispatch } = useStagedSearch()
   const { position } = useGeolocation()
 
-  const venueId =
+  const venueLabel =
     searchState.locationFilter.locationType === LocationType.VENUE
-      ? searchState.locationFilter.venue.venueId
+      ? searchState.locationFilter.venue.label
       : null
-
-  const venueName = useVenueName(venueId)
 
   const removeVenueId = useCallback(() => {
     const actionType = position ? 'SET_LOCATION_AROUND_ME' : 'SET_LOCATION_EVERYWHERE'
@@ -42,11 +39,11 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
 
   return (
     <Container>
-      {venueName ? (
+      {venueLabel ? (
         <React.Fragment>
           <Body>{resultsWithSuffix}</Body>
           <Spacer.Column numberOfSpaces={4} />
-          <ClippedTag label={venueName} onPress={removeVenueId} testId="Enlever le lieu" />
+          <ClippedTag label={venueLabel} onPress={removeVenueId} testId="Enlever le lieu" />
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       ) : (
