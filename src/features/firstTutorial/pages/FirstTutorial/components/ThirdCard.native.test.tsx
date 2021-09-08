@@ -9,6 +9,8 @@ import { GenericAchievement } from 'ui/components/achievements'
 
 import { ThirdCard } from './ThirdCard'
 
+jest.mock('libs/appState', () => ({ useAppStateChange: () => {} }))
+
 describe('ThirdCard', () => {
   it('should render third card', () => {
     const firstTutorial = render(<ThirdCard index={0} activeIndex={0} lastIndex={0} />)
