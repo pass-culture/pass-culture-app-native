@@ -22,6 +22,8 @@ export interface Environment {
   DOC_CGU_URL: string
   DOC_PERSONAL_DATA_URL: string
   DSM_URL: string
+  DMS_FRENCH_CITIZEN_URL: string
+  DMS_FOREIGN_CITIZEN_URL: string
   ENABLE_WHY_DID_YOU_RENDER: boolean
   ENV: string
   FAQ_LINK: string
