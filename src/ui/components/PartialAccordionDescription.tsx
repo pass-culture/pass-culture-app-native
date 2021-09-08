@@ -1,15 +1,10 @@
 import { t } from '@lingui/macro'
-import React, { useRef, useState } from 'react'
-import {
-  Animated,
-  Easing,
-  TouchableWithoutFeedback,
-  Platform,
-  LayoutChangeEvent,
-} from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
+import { Animated, Easing, TouchableWithoutFeedback, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { useElementHeight } from 'ui/hooks/useElementHeight'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -17,17 +12,26 @@ interface Props {
   description?: string | undefined
 }
 
-const NUMBER_OF_LINES = 5
+const NUMBER_OF_LINES = 3
+const PARTIAL_DESCRIPTION_HEIGHT = getSpacing(NUMBER_OF_LINES * 5) // Ratio : height fot one line = getSpacing(5)
 const ANIMATION_DURATION = 500 //ms
-const PARTIAL_DESCRIPTION_HEIGHT = getSpacing(NUMBER_OF_LINES * 5)
 
-export const PartialAccordionDescription: React.FC<Props> = ({ description = '' }) => {
+export const PartialAccordionDescription: React.FC<Props> = ({ description }) => {
+  const { onLayout, height: totalDescriptionHeight } = useElementHeight()
   const [open, setOpen] = useState(false)
-  const [totalDescriptionHeight, setTotalDescriptionHeight] = useState<number>(0)
-  const [maxLines, setMaxLines] = useState<number | undefined>(NUMBER_OF_LINES)
+  const [measure, setMeasure] = useState(false)
+  const [maxLines, setMaxLines] = useState<number | undefined>(undefined)
+  const [isLongDescription, setIsLongDescription] = useState(false)
   const animatedController = useRef(new Animated.Value(0)).current
-  const isLongDescription = PARTIAL_DESCRIPTION_HEIGHT <= totalDescriptionHeight
   const buttonLabel = open ? t`voir moins` : t`voir plus`
+
+  useEffect(() => {
+    if (PARTIAL_DESCRIPTION_HEIGHT <= totalDescriptionHeight && !open) {
+      setIsLongDescription(true)
+      setMaxLines(NUMBER_OF_LINES)
+    }
+    return () => setMeasure(true)
+  }, [totalDescriptionHeight])
 
   const toggleDescription = () => {
     Animated.timing(animatedController, {
@@ -40,7 +44,7 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description = '' 
   }
 
   const switchMaxLines = () => {
-    if (!open) {
+    if (!open && measure) {
       setMaxLines(undefined)
     } else {
       setTimeout(() => {
@@ -48,9 +52,6 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description = '' 
       }, ANIMATION_DURATION)
     }
   }
-
-  const onLayout = (event: LayoutChangeEvent) =>
-    setTotalDescriptionHeight(event.nativeEvent.layout.height)
 
   const bodyDescriptionHeight = animatedController.interpolate({
     inputRange: [0, 1],
