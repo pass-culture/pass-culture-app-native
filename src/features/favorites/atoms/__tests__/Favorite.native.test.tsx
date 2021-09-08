@@ -1,9 +1,9 @@
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
-import { api } from 'api/api'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { api } from 'api/api'
 import {
   ExpenseDomain,
   FavoriteCategoryResponse,
@@ -16,7 +16,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, superFlushWithAct, fireEvent, render, cleanup, flushAllPromises } from 'tests/utils'
+import { act, fireEvent, render, cleanup } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 

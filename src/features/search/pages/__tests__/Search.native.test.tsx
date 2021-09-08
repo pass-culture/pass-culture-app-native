@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { LocationType } from 'features/search/enums'
+import { SearchState } from 'features/search/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { cleanup, render } from 'tests/utils'
 
 import { initialSearchState } from '../reducer'
 import { Search } from '../Search'
-import { SearchState } from 'features/search/types'
-import { LocationType } from 'features/search/enums'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
