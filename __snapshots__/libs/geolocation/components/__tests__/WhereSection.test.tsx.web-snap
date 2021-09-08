@@ -28,7 +28,7 @@ Array [
     className="css-view-1dbjc4n"
     style={
       Object {
-        "height": "8px",
+        "height": "16px",
       }
     }
   />,
@@ -66,14 +66,38 @@ Array [
     tabIndex="0"
   >
     <div
-      className="css-text-901oao"
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "left": "-10px",
+        }
+      }
+    >
+      <div
+        className="css-view-1dbjc4n"
+        data-testid="BicolorLocationBuilding"
+      >
+        <div
+          className="css-text-901oao"
+          dir="auto"
+        >
+          BicolorLocationBuilding-SVG-Mock
+        </div>
+      </div>
+    </div>
+    <div
+      className="css-text-901oao css-textOneLine-vcwn7f"
       dir="auto"
       style={
         Object {
+          "WebkitFlexShrink": 1,
           "color": "rgba(21,21,21,1.00)",
-          "fontFamily": "Montserrat-Regular",
+          "flexShrink": 1,
+          "fontFamily": "Montserrat-Bold",
           "fontSize": "15px",
+          "left": "-10px",
           "lineHeight": "20px",
+          "msFlexNegative": 1,
           "textTransform": "capitalize",
         }
       }
@@ -84,7 +108,16 @@ Array [
       className="css-view-1dbjc4n"
       style={
         Object {
-          "width": "4px",
+          "WebkitBoxFlex": 1,
+          "WebkitFlexBasis": "0px",
+          "WebkitFlexGrow": 1,
+          "WebkitFlexShrink": 1,
+          "flexBasis": "0px",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "msFlexNegative": 1,
+          "msFlexPositive": 1,
+          "msFlexPreferredSize": "0px",
         }
       }
     />

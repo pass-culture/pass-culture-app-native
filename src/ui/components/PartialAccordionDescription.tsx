@@ -13,7 +13,7 @@ interface Props {
 }
 
 const NUMBER_OF_LINES = 3
-export const PARTIAL_DESCRIPTION_HEIGHT = getSpacing(NUMBER_OF_LINES * 5) // Ratio : height fot one line = getSpacing(5)
+export const PARTIAL_DESCRIPTION_HEIGHT = getSpacing(NUMBER_OF_LINES * 5) // Ratio : height for one line = getSpacing(5)
 export const ANIMATION_DURATION = 500 //ms
 
 export const PartialAccordionDescription: React.FC<Props> = ({ description }) => {
