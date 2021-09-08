@@ -22,7 +22,6 @@ import {
   superFlushWithAct,
   useMutationFactory,
 } from 'tests/utils'
-import * as ModalModule from 'ui/components/modals/useModal'
 import { ColorsEnum } from 'ui/theme'
 
 jest.mock('react-query')
@@ -60,25 +59,13 @@ describe('SetPhoneValidationCode', () => {
 
   describe('modal header', () => {
     it('should open the quit modal on press right icon', () => {
-      const visible = false
-      const showModal = jest.fn()
-      const uselessFunction = jest.fn()
-
-      const useModalMock = jest.spyOn(ModalModule, 'useModal').mockReturnValue({
-        visible,
-        showModal,
-        hideModal: uselessFunction,
-        toggleModal: uselessFunction,
-      })
-
       const { getByTestId } = renderSetPhoneValidationCode()
 
-      const rightIconButton = getByTestId('rightIconButton')
+      act(() => {
+        getByTestId('rightIconButton').props.onClick()
+      })
 
-      rightIconButton.props.onClick()
-      expect(showModal).toBeCalled()
-
-      useModalMock.mockRestore()
+      getByTestId('modal-phone-validation-quit-signup')
     })
 
     it('should call onGoBack property on press left arrow', async () => {
