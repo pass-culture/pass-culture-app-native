@@ -704,11 +704,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         Où ?
       </Text>
       <View
-        numberOfSpaces={2}
+        numberOfSpaces={4}
         style={
           Array [
             Object {
-              "height": 8,
+              "height": 16,
             },
           ]
         }
@@ -732,13 +732,35 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         }
         testID="VenueBannerComponent"
       >
+        <View
+          style={
+            Array [
+              Object {
+                "left": -10,
+              },
+            ]
+          }
+        >
+          <View
+            height={48}
+            testID="BicolorLocationBuilding"
+            width={48}
+          >
+            <Text>
+              BicolorLocationBuilding-SVG-Mock
+            </Text>
+          </View>
+        </View>
         <Text
+          numberOfLines={1}
           style={
             Array [
               Object {
                 "color": "#151515",
-                "fontFamily": "Montserrat-Regular",
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
+                "left": -10,
                 "lineHeight": 20,
                 "textTransform": "capitalize",
               },
@@ -748,11 +770,12 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           Cinéma de la fin
         </Text>
         <View
-          numberOfSpaces={1}
           style={
             Array [
               Object {
-                "width": 4,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ]
           }

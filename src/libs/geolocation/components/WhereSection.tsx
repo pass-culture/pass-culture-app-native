@@ -11,7 +11,9 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
@@ -47,12 +49,15 @@ export const WhereSection: React.FC<Props> = ({
       {/* eslint-disable-next-line local-rules/no-string-check-before-component*/}
       {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && !!showVenueBanner && (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={2} />
-          <VenueName onPress={navigateToVenuePage} testID="VenueBannerComponent">
-            <StyledAddress>{venue.name}</StyledAddress>
-            <Spacer.Row numberOfSpaces={1} />
+          <Spacer.Column numberOfSpaces={4} />
+          <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
+            <IconContainer>
+              <LocationBuilding size={iconSize} />
+            </IconContainer>
+            <StyledVenueName numberOfLines={1}>{venue.name}</StyledVenueName>
+            <Spacer.Flex />
             <ArrowNext size={getSpacing(6)} />
-          </VenueName>
+          </VenueNameContainer>
         </React.Fragment>
       )}
       {!!address && (
@@ -84,16 +89,31 @@ export const WhereSection: React.FC<Props> = ({
   )
 }
 
+const VenueNameContainer = styled.TouchableOpacity.attrs({
+  activeOpacity: ACTIVE_OPACITY,
+})({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
+
 const StyledAddress = styled(Typo.Body)({
   textTransform: 'capitalize',
+})
+
+const iconSize = getSpacing(12)
+const iconSpacing = Math.round(iconSize / 5)
+
+const StyledVenueName = styled(Typo.ButtonText)({
+  textTransform: 'capitalize',
+  flexShrink: 1,
+  left: -iconSpacing,
+})
+
+const IconContainer = styled.View({
+  left: -iconSpacing,
 })
 
 const Separator = styled.View({
   height: 1,
   backgroundColor: ColorsEnum.GREY_MEDIUM,
-})
-
-const VenueName = styled.TouchableOpacity({
-  flexDirection: 'row',
-  alignItems: 'center',
 })
