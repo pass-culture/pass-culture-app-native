@@ -319,7 +319,7 @@ Object {
                 style="position: absolute; top: 0px; width: 100%;"
               >
                 <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
+                  class="css-text-901oao"
                   dir="auto"
                   style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                 >
@@ -1518,7 +1518,7 @@ Object {
               style="position: absolute; top: 0px; width: 100%;"
             >
               <div
-                class="css-text-901oao css-textMultiLine-cens5h"
+                class="css-text-901oao"
                 dir="auto"
                 style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
               >

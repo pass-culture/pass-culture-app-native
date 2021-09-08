@@ -13,13 +13,12 @@ interface Props {
 }
 
 const NUMBER_OF_LINES = 3
-const PARTIAL_DESCRIPTION_HEIGHT = getSpacing(NUMBER_OF_LINES * 5) // Ratio : height fot one line = getSpacing(5)
-const ANIMATION_DURATION = 500 //ms
+export const PARTIAL_DESCRIPTION_HEIGHT = getSpacing(NUMBER_OF_LINES * 5) // Ratio : height fot one line = getSpacing(5)
+export const ANIMATION_DURATION = 500 //ms
 
 export const PartialAccordionDescription: React.FC<Props> = ({ description }) => {
   const { onLayout, height: totalDescriptionHeight } = useElementHeight()
   const [open, setOpen] = useState(false)
-  const [measure, setMeasure] = useState(false)
   const [maxLines, setMaxLines] = useState<number | undefined>(undefined)
   const [isLongDescription, setIsLongDescription] = useState(false)
   const animatedController = useRef(new Animated.Value(0)).current
@@ -30,7 +29,6 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description }) =>
       setIsLongDescription(true)
       setMaxLines(NUMBER_OF_LINES)
     }
-    return () => setMeasure(true)
   }, [totalDescriptionHeight])
 
   const toggleDescription = () => {
@@ -44,7 +42,7 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description }) =>
   }
 
   const switchMaxLines = () => {
-    if (!open && measure) {
+    if (!open) {
       setMaxLines(undefined)
     } else {
       setTimeout(() => {

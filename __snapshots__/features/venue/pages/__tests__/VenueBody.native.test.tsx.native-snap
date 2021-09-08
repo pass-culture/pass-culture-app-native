@@ -528,7 +528,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
           testID="descriptionContainer"
         >
           <Text
-            numberOfLines={5}
             style={
               Array [
                 Object {
