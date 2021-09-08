@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { api } from 'api/api'
 import { analytics } from 'libs/analytics'
-import { act, fireEvent } from 'tests/utils'
+import { act, cleanup, fireEvent } from 'tests/utils'
 
 import { offerId, renderOfferBodyPage } from './renderOfferPageTestUtil'
 
@@ -39,6 +39,7 @@ describe('<OfferBody />', () => {
   })
 
   beforeEach(jest.clearAllMocks)
+  afterEach(cleanup)
 
   it('should match snapshot for physical offer', async () => {
     const { toJSON } = await renderOfferBodyPage({ isDigital: false })
