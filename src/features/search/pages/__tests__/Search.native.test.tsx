@@ -2,10 +2,12 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils'
+import { cleanup, render } from 'tests/utils'
 
 import { initialSearchState } from '../reducer'
 import { Search } from '../Search'
+import { SearchState } from 'features/search/types'
+import { LocationType } from 'features/search/enums'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
@@ -24,24 +26,27 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const parameters = {
-  aroundRadius: null,
+const parameters: SearchState = {
   beginningDatetime: null,
   endingDatetime: null,
-  geolocation: { latitude: 48.8557, longitude: 2.3469 },
+  date: null,
   hitsPerPage: 8,
-  locationType: 'EVERYWHERE',
+  locationFilter: { locationType: LocationType.EVERYWHERE },
   offerCategories: ['CINEMA'],
   offerIsDuo: false,
   offerIsFree: false,
   offerIsNew: false,
   offerTypes: { isDigital: false, isEvent: false, isThing: false },
   priceRange: [0, 500],
+  showResults: false,
   tags: [],
+  timeRange: null,
+  query: '',
 }
 
 describe('Search component', () => {
   afterAll(jest.resetAllMocks)
+  afterEach(cleanup)
 
   it('should render correctly', () => {
     useRoute.mockReturnValueOnce({})
