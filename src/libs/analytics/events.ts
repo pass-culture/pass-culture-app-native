@@ -82,6 +82,9 @@ export enum IdCheckAnalyticsEvent {
   GET_JOUVE_TOKEN = 'IdCheck_GetJouveToken',
   GET_LICENCE_TOKEN = 'IdCheck_GetLicenceToken',
   ID_DOCUMENT_ACQUISITION_TYPE = 'IdCheck_IdDocumentAcquisitionType',
+  START_DMS_TRANSMISSION = 'StartDmsTransmission',
+  TAKE_ID_CHECK_PICTURE = 'TakeIdCheckPicture',
+  CONFIRM_ID_CHECK_PICTURE = 'ConfirmIdCheckPicture',
 }
 
 const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']

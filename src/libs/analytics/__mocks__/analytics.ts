@@ -90,4 +90,7 @@ export const idCheckAnalytics: typeof actualIdCheckAnalytics = {
   processCompleted: jest.fn(),
   startCheckTokens: jest.fn(),
   wrongSideDocument: jest.fn(),
+  startDmsTransmission: jest.fn(),
+  takeIdCheckPicture: jest.fn(),
+  confirmIdCheckPicture: jest.fn(),
 }
