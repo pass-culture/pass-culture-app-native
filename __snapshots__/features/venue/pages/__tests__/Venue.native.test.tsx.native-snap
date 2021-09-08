@@ -538,7 +538,6 @@ exports[`<Venue /> should match snapshot 1`] = `
             testID="descriptionContainer"
           >
             <Text
-              numberOfLines={5}
               style={
                 Array [
                   Object {
