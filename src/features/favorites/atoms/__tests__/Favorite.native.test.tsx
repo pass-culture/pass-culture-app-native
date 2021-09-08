@@ -1,6 +1,7 @@
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
+import { api } from 'api/api'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import {
@@ -15,17 +16,15 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { act, superFlushWithAct, fireEvent, render, cleanup, flushAllPromises } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { Favorite } from '../Favorite'
 
-const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
     showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
   }),
 }))
@@ -78,7 +77,10 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
 }))
 
 describe('<Favorite /> component', () => {
-  afterEach(jest.clearAllMocks)
+  afterEach(() => {
+    jest.clearAllMocks()
+    cleanup()
+  })
 
   it('should navigate to the offer when clicking on the favorite', () => {
     const { getByTestId } = renderFavorite()
@@ -104,20 +106,24 @@ describe('<Favorite /> component', () => {
     expect(withoutDistance).toMatchDiffSnapshot(withDistance)
   })
 
-  it('should delete favorite on button click', async () => {
+  it('should delete favorite on button click', () => {
+    const deleteFavoriteSpy = jest.spyOn(api, 'deletenativev1mefavoritesfavoriteId')
     simulateBackend()
     mockDistance = '10 km'
     const { getByText } = renderFavorite()
-    await superFlushWithAct()
-    fireEvent.press(getByText('Supprimer'))
-    await superFlushWithAct()
-    await waitForExpect(() => {
-      // TODO: add some kind of user feedback on favorite deletion
-      expect(mockShowErrorSnackBar).not.toBeCalled()
+
+    act(() => {
+      fireEvent.press(getByText('Supprimer'))
+    })
+
+    waitForExpect(() => {
+      expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, favorite.id)
+      expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
     })
   })
 
-  it.skip('should fail to delete favorite on button click', async () => {
+  it('should fail to delete favorite on button click', () => {
+    const deleteFavoriteSpy = jest.spyOn(api, 'deletenativev1mefavoritesfavoriteId')
     const id = 0
     simulateBackend({ id, hasRemoveFavoriteError: true })
     mockDistance = '10 km'
@@ -125,10 +131,12 @@ describe('<Favorite /> component', () => {
       favorite: { ...favorite, id, offer: { ...favorite.offer, id } },
     })
 
-    await superFlushWithAct()
-    fireEvent.press(getByText('Supprimer'))
-    await superFlushWithAct(222222)
-    await waitForExpect(async () => {
+    act(() => {
+      fireEvent.press(getByText('Supprimer'))
+    })
+
+    waitForExpect(() => {
+      expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, id)
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `L'offre n'a pas été retirée de tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
