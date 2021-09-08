@@ -1,6 +1,9 @@
-import { ReportSteps, useReportOffer } from 'features/offer/components/useReportOffer'
+import {
+  ReportSteps,
+  useReportOfferModalContent,
+} from 'features/offer/components/useReportOfferModalContent'
 
-describe('useReportOffer hook description', () => {
+describe('useReportOfferModalContent hook description', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -10,33 +13,35 @@ describe('useReportOffer hook description', () => {
   const offerId = 0
 
   it('should display the ReportOfferDescription and show no back button if step is 0', () => {
-    const { childrenProps } = useReportOffer({
+    const { childrenProps } = useReportOfferModalContent({
       reportStep: ReportSteps.REPORT_OFFER_DESCRIPTION,
       setReportStep,
       dismissModal,
       offerId,
     })
     expect(childrenProps.children).toMatchSnapshot()
-    expect(childrenProps.leftIcon).toBe(undefined)
+    expect(childrenProps.leftIcon).toBeUndefined()
   })
+
   it('should display the ReportOfferReason and show a back button if step is 1', () => {
-    const { childrenProps } = useReportOffer({
+    const { childrenProps } = useReportOfferModalContent({
       reportStep: ReportSteps.REPORT_OFFER_REASON,
       setReportStep,
       dismissModal,
       offerId,
     })
-    expect(childrenProps.leftIcon).not.toBe(undefined)
+    expect(childrenProps.leftIcon).not.toBeUndefined()
     expect(childrenProps.children).toMatchSnapshot()
   })
+
   it('should display the ReportOfferOtherReason and show a back button if step is 2', () => {
-    const { childrenProps } = useReportOffer({
+    const { childrenProps } = useReportOfferModalContent({
       reportStep: ReportSteps.REPORT_OFFER_OTHER_REASON,
       setReportStep,
       dismissModal,
       offerId,
     })
-    expect(childrenProps.leftIcon).not.toBe(undefined)
+    expect(childrenProps.leftIcon).not.toBeUndefined()
     expect(childrenProps.children).toMatchSnapshot()
   })
 })

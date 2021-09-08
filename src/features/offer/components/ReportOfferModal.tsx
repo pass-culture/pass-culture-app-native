@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { useReportOffer } from 'features/offer/components/useReportOffer'
+import { useReportOfferModalContent } from 'features/offer/components/useReportOfferModalContent'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 
@@ -19,7 +19,7 @@ interface Props {
 
 export const ReportOfferModal: FunctionComponent<Props> = (props) => {
   const [reportStep, setReportStep] = useState(ReportSteps.REPORT_OFFER_DESCRIPTION)
-  const { childrenProps } = useReportOffer({
+  const { childrenProps } = useReportOfferModalContent({
     reportStep,
     setReportStep,
     dismissModal: props.dismissModal,

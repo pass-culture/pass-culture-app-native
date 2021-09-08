@@ -27,7 +27,7 @@ interface ReportOfferModalContent {
   onLeftIconPress: (() => void) | undefined
 }
 
-export const useReportOffer = (props: Props) => {
+export const useReportOfferModalContent = (props: Props) => {
   const pickChildren = (step: ReportSteps) => {
     switch (step) {
       case ReportSteps.REPORT_OFFER_REASON:
