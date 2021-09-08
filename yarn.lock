@@ -3428,15 +3428,16 @@
   resolved "https://registry.yarnpkg.com/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
-"@pass-culture/id-check@^2.4.7":
-  version "2.4.7"
-  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.4.7.tgz#4b7faa130ba8f77326cf650d16b6231ace796881"
-  integrity sha512-F16MPaDpUmnSkzz4mqlygwyTX3Rjw0msIJeZG65SAZbV/LQK2QCOOOhihvxBD+1wNNPGhulxuDHvv/YTve5M7Q==
+"@pass-culture/id-check@^2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.5.1.tgz#1a04befe8bd5fd5855f8dd0b63e5867bf520ee88"
+  integrity sha512-afZ6BBEvWAhFxo2f5vZp2SnQlwIcf3GR+moj5QilU+cMCYB0SHfPVlwciL3lIVSmgzXVBo0Vx2Ljn3kzWPPUlg==
   dependencies:
     deepmerge "^4.2.2"
     lodash "^4.17.21"
     moment "^2.29.1"
     react-native-image-picker "4.0.3"
+    react-webcam "^6.0.0"
     validator "^13.6.0"
 
 "@pass-culture/react-native-profiling@1.0.19":
@@ -15910,6 +15911,11 @@ react-test-renderer@^17.0.2:
     react-is "^17.0.2"
     react-shallow-renderer "^16.13.1"
     scheduler "^0.20.2"
+
+react-webcam@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-webcam/-/react-webcam-6.0.0.tgz#46dd9ba44cebe6bf3cc4ea2ff09d12243900abfa"
+  integrity sha512-pw7067WYnDHRjAXYXrsLeig9/AAxCFDnnaEJzZ5ep6UZoYMqF4UNRtVkeTk0LotpwqT/c8vHisn/+QodNbUsQA==
 
 react@^17.0.2:
   version "17.0.2"

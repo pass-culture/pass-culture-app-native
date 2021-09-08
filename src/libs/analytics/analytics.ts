@@ -271,4 +271,13 @@ export const idCheckAnalytics: IdCheckAnalyticsInterface = {
   idDocumentAcquisitionType(type: 'Camera' | 'ImageLibrary') {
     analyticsProvider.logEvent(IdCheckAnalyticsEvent.ID_DOCUMENT_ACQUISITION_TYPE, { type })
   },
+  startDmsTransmission() {
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.START_DMS_TRANSMISSION)
+  },
+  takeIdCheckPicture() {
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.TAKE_ID_CHECK_PICTURE)
+  },
+  confirmIdCheckPicture() {
+    analyticsProvider.logEvent(IdCheckAnalyticsEvent.CONFIRM_ID_CHECK_PICTURE)
+  },
 }
