@@ -6,8 +6,10 @@ import styled from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useVenue } from 'features/venue/api/useVenue'
-import { useVenueOffers, useVenueSearchParameters } from 'features/venue/api/useVenueOffers'
+import { useVenueOffers } from 'features/venue/api/useVenueOffers'
+import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
 import { VenueOfferTile } from 'features/venue/atoms/VenueOfferTile'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
@@ -27,6 +29,8 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
   const { position } = useGeolocation()
+  const { dispatch } = useSearch()
+  const { dispatch: stagedDispatch } = useStagedSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const params = useVenueSearchParameters(venueId)
   const { hits = [], nbHits = 0 } = venueOffers || {}
@@ -52,11 +56,15 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   )
 
   const seeAllOffers = useCallback(() => {
+    dispatch({ type: 'SET_STATE', payload: params })
+    stagedDispatch({ type: 'SET_STATE', payload: params })
     navigate('Search', params)
   }, [params])
 
   const onPressSeeMore = useCallback(() => {
     // TODO(antoinewg) add search params with category filter
+    dispatch({ type: 'SET_STATE', payload: params })
+    stagedDispatch({ type: 'SET_STATE', payload: params })
     navigate('Search', params)
   }, [params])
 

@@ -4,11 +4,12 @@ import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
 import { mockDefaultSettings } from 'features/auth/__mocks__/settings'
+import { initialSearchState } from 'features/search/pages/reducer'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffersWithOneOfferResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { AlgoliaHit } from 'libs/algolia'
-import { render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils'
 
 import { VenueOffers } from '../VenueOffers'
 
@@ -23,6 +24,14 @@ jest.mock('features/auth/settings', () => ({
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 const mockUseVenueOffers = mocked(useVenueOffers)
+
+const mockSearchState = initialSearchState
+const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
+jest.mock('features/search/pages/SearchWrapper', () => ({
+  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useStagedSearch: () => ({ searchState: mockSearchState, dispatch: mockStagedDispatch }),
+}))
 
 describe('<VenueOffers />', () => {
   it('should render correctly', () => {
@@ -42,5 +51,18 @@ describe('<VenueOffers />', () => {
 
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
     expect(queryByText('En voir plus')).toBeFalsy()
+  })
+
+  it(`should set search state when clicking "En voir plus" button`, () => {
+    const { getByText } = render(<VenueOffers venueId={venueId} />)
+    fireEvent.press(getByText('En voir plus'))
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: expect.anything(),
+    })
+    expect(mockStagedDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: expect.anything(),
+    })
   })
 })
