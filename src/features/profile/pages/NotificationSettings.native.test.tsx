@@ -15,15 +15,13 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises, superFlushWithAct, act, fireEvent, render } from 'tests/utils'
+import { flushAllPromises, superFlushWithAct, act, fireEvent, render, cleanup } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { NotificationSettings } from './NotificationSettings'
 
 // eslint-disable-next-line local-rules/no-allow-console
-allowConsole({
-  error: true,
-})
+allowConsole({ error: true })
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -41,6 +39,7 @@ jest.mock('@react-navigation/native', () => ({
 describe('NotificationSettings', () => {
   afterEach(() => {
     jest.clearAllMocks()
+    cleanup()
   })
 
   it('should display the both switches on ios', async () => {

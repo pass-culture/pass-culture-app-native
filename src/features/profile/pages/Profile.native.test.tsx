@@ -17,7 +17,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
-import { flushAllPromises, render, act, fireEvent } from 'tests/utils'
+import { flushAllPromises, render, act, fireEvent, cleanup } from 'tests/utils'
 
 import { Profile } from './Profile'
 
@@ -93,6 +93,7 @@ describe('Profile component', () => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION
     mockPositionError = null
+    cleanup()
   })
 
   describe('user settings section', () => {
