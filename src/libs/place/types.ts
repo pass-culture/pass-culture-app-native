@@ -27,6 +27,8 @@ export interface SuggestedPlace {
   } | null
 }
 
-export interface SuggestedVenue extends SuggestedPlace {
+export interface SuggestedVenue {
+  label: string
+  info: string
   venueId: number | null
 }

@@ -79,7 +79,6 @@ export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
       [AppSearchFields.offerer_name]: { raw: {} },
       [AppSearchFields.venue_id]: { raw: {} },
       [AppSearchFields.venue_name]: { raw: {} },
-      [AppSearchFields.venue_position]: { raw: {} },
     },
     search_fields: {
       [AppSearchFields.offerer_name]: { weight: 1 },
