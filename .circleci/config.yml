@@ -708,12 +708,14 @@ workflows:
             - GCP_EHP
       - deploy-web-staging:
           filters:
-            tags:
-              only:
-                - /^v.*/
-                - /^hotfix-staging.*/
             branches:
-              ignore: /.*/
+              only: maj-staging-prod-bucket-web
+#            tags:
+#              only:
+#                - /^v.*/
+#                - /^hotfix-staging.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
@@ -723,12 +725,14 @@ workflows:
             - GCP_EHP
       - deploy-web-prod:
           filters:
-            tags:
-              only:
-                - /^v.*/
-                - /^hotfix-prod.*/
             branches:
-              ignore: /.*/
+              only: maj-staging-prod-bucket-web
+#            tags:
+#              only:
+#                - /^v.*/
+#                - /^hotfix-prod.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
