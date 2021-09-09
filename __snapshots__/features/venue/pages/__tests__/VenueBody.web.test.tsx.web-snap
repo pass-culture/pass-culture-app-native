@@ -256,7 +256,7 @@ Object {
                 dir="auto"
                 style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
-                Autre
+                Autre type de lieu
               </div>
             </div>
             <div
@@ -1455,7 +1455,7 @@ Object {
               dir="auto"
               style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
             >
-              Autre
+              Autre type de lieu
             </div>
           </div>
           <div
