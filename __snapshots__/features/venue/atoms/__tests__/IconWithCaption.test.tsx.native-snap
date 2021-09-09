@@ -36,6 +36,16 @@ exports[`IconWithCaption should render correctly 1`] = `
       </Text>
     </View>
   </View>
+  <View
+    numberOfSpaces={1}
+    style={
+      Array [
+        Object {
+          "height": 4,
+        },
+      ]
+    }
+  />
   <Text
     color="#151515"
     style={
@@ -61,11 +71,11 @@ exports[`IconWithCaption should render different when isDisabled is true 1`] = `
 - First value
 + Second value
 
-@@ -31,15 +31,15 @@
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
+@@ -41,15 +41,15 @@
+          },
+        ]
+      }
+    />
     <Text
 -     color=\\"#151515\\"
 +     color=\\"#626262\\"

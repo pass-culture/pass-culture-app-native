@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface IconWithCaptionProps {
   Icon: React.FC<IconInterface>
@@ -24,6 +24,7 @@ export const IconWithCaption = ({ Icon, caption, testID, isDisabled }: IconWithC
       <IconContainer>
         <Icon size={getSpacing(10)} color={ColorsEnum.GREY_DARK} testID={testID} />
       </IconContainer>
+      <Spacer.Column numberOfSpaces={1} />
       <Caption testID={`caption-${testID}`} color={textColor}>
         {caption}
       </Caption>

@@ -35,6 +35,16 @@ exports[`VenueType should render correctly 1`] = `
       </Text>
     </View>
   </View>
+  <View
+    numberOfSpaces={1}
+    style={
+      Array [
+        Object {
+          "height": 4,
+        },
+      ]
+    }
+  />
   <Text
     color="#151515"
     style={

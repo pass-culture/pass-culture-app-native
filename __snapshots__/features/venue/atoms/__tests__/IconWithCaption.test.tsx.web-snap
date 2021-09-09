@@ -46,6 +46,14 @@ exports[`IconWithCaption should render correctly 1`] = `
     </div>
   </div>
   <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "4px",
+      }
+    }
+  />
+  <div
     className="css-text-901oao"
     data-testid="caption-Cinéma - Salle de projections"
     dir="auto"
@@ -69,7 +77,7 @@ exports[`IconWithCaption should render different when isDisabled is true 1`] = `
 - First value
 + Second value
 
-@@ -45,11 +45,11 @@
+@@ -53,11 +53,11 @@
       className=\\"css-text-901oao\\"
       data-testid=\\"caption-undefined\\"
       dir=\\"auto\\"
