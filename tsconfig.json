@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "*": ["src/*", "*"],
-      "@elastic/app-search-javascript": ["src/types/@elastic/app-search-javascript"]
+      "@elastic/app-search-javascript": ["src/types/@elastic/app-search-javascript"],
+      "react-mobile-picker": ["src/types/react-mobile-picker"],
     },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,

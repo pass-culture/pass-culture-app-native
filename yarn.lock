@@ -15562,6 +15562,13 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
+react-mobile-picker@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/react-mobile-picker/-/react-mobile-picker-0.1.13.tgz#850624128ba77df1f887638696f4363963c2cedd"
+  integrity sha512-tZV/4ADQ23hYZ3mzLAKeHEpZB0lFJ/65W7FkeecKrpedQJhu2JOuWWclhyCshdabWDzysjcOHV4nxHdN+r8euQ==
+  dependencies:
+    prop-types "^15.6.0"
+
 react-native-android-keyboard-adjust@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-android-keyboard-adjust/-/react-native-android-keyboard-adjust-1.2.0.tgz#7988b1258482c08548ce972401b2ae03a674fcb4"
