@@ -45,6 +45,14 @@ exports[`VenueType should render correctly 1`] = `
     </div>
   </div>
   <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "4px",
+      }
+    }
+  />
+  <div
     className="css-text-901oao"
     data-testid="caption-undefined"
     dir="auto"

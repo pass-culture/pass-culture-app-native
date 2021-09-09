@@ -380,6 +380,16 @@ exports[`<VenueBody /> should render correctly 1`] = `
             </Text>
           </View>
         </View>
+        <View
+          numberOfSpaces={1}
+          style={
+            Array [
+              Object {
+                "height": 4,
+              },
+            ]
+          }
+        />
         <Text
           color="#151515"
           style={
@@ -465,6 +475,16 @@ exports[`<VenueBody /> should render correctly 1`] = `
               </Text>
             </View>
           </View>
+          <View
+            numberOfSpaces={1}
+            style={
+              Array [
+                Object {
+                  "height": 4,
+                },
+              ]
+            }
+          />
           <Text
             color="#626262"
             style={

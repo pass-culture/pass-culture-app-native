@@ -257,6 +257,10 @@ Object {
                   </div>
                 </div>
                 <div
+                  class="css-view-1dbjc4n"
+                  style="height: 4px;"
+                />
+                <div
                   class="css-text-901oao"
                   data-testid="caption-undefined"
                   dir="auto"
@@ -294,6 +298,10 @@ Object {
                       </div>
                     </div>
                   </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 4px;"
+                  />
                   <div
                     class="css-text-901oao"
                     data-testid="caption-iconLocation"
@@ -1628,6 +1636,10 @@ Object {
                 </div>
               </div>
               <div
+                class="css-view-1dbjc4n"
+                style="height: 4px;"
+              />
+              <div
                 class="css-text-901oao"
                 data-testid="caption-undefined"
                 dir="auto"
@@ -1665,6 +1677,10 @@ Object {
                     </div>
                   </div>
                 </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 4px;"
+                />
                 <div
                   class="css-text-901oao"
                   data-testid="caption-iconLocation"

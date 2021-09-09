@@ -390,6 +390,16 @@ exports[`<Venue /> should match snapshot 1`] = `
               </Text>
             </View>
           </View>
+          <View
+            numberOfSpaces={1}
+            style={
+              Array [
+                Object {
+                  "height": 4,
+                },
+              ]
+            }
+          />
           <Text
             color="#151515"
             style={
@@ -475,6 +485,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                 </Text>
               </View>
             </View>
+            <View
+              numberOfSpaces={1}
+              style={
+                Array [
+                  Object {
+                    "height": 4,
+                  },
+                ]
+              }
+            />
             <Text
               color="#626262"
               style={
