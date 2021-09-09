@@ -21,7 +21,6 @@ export const AppFullPageModal: FunctionComponent<Props> = ({ visible, children, 
 }
 
 const Container = styled(TouchableOpacity)({
-  flex: 1,
   alignItems: 'center',
   alignSelf: 'center',
   width: '100%',

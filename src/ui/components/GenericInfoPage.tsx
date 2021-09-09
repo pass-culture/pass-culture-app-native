@@ -28,7 +28,7 @@ export const GenericInfoPage: FunctionComponent<Props> = (props) => {
   const spacingMatrix: SpacingMatrix = Object.assign(defaultSpacingMatrix, props.spacingMatrix)
 
   return (
-    <React.Fragment>
+    <Container>
       <Background />
       <ScrollView bounces={false} contentContainerStyle={scrollViewContentContainerStyle}>
         <Spacer.Column numberOfSpaces={spacingMatrix.top} />
@@ -50,7 +50,7 @@ export const GenericInfoPage: FunctionComponent<Props> = (props) => {
         {props.children}
         <Spacer.BottomScreen />
       </ScrollView>
-    </React.Fragment>
+    </Container>
   )
 }
 
@@ -62,6 +62,11 @@ const defaultSpacingMatrix = {
 }
 
 type SpacingMatrix = typeof defaultSpacingMatrix
+
+const Container = styled.View({
+  flex: 1,
+  alignItems: 'center',
+})
 
 const scrollViewContentContainerStyle: ViewStyle = {
   flexDirection: 'column',
