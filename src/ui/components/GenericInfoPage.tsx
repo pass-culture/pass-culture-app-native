@@ -1,5 +1,5 @@
 import LottieView from 'lottie-react-native'
-import React, { FunctionComponent } from 'react'
+import React, { useMemo, FunctionComponent } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -9,6 +9,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
+  flex?: boolean
   animation?: AnimationObject
   animationSize?: number
   icon?: FunctionComponent<IconInterface>
@@ -24,11 +25,13 @@ export const GenericInfoPage: FunctionComponent<Props> = (props) => {
     icon: Icon,
     iconSize = getSpacing(25),
     title,
+    flex = true,
   } = props
   const spacingMatrix: SpacingMatrix = Object.assign(defaultSpacingMatrix, props.spacingMatrix)
 
+  const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   return (
-    <Container>
+    <Wrapper>
       <Background />
       <ScrollView bounces={false} contentContainerStyle={scrollViewContentContainerStyle}>
         <Spacer.Column numberOfSpaces={spacingMatrix.top} />
@@ -50,8 +53,14 @@ export const GenericInfoPage: FunctionComponent<Props> = (props) => {
         {props.children}
         <Spacer.BottomScreen />
       </ScrollView>
-    </Container>
+    </Wrapper>
   )
+}
+
+GenericInfoPage.defaultProps = {
+  animationSize: getSpacing(45),
+  iconSize: getSpacing(25),
+  flex: true,
 }
 
 const defaultSpacingMatrix = {

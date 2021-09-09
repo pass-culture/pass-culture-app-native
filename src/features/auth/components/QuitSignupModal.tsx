@@ -44,7 +44,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
 
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
-      <GenericInfoPage title={title} icon={Warning}>
+      <GenericInfoPage title={title} icon={Warning} flex={false}>
         <StyledBody>{description}</StyledBody>
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimaryWhite title={t`Continuer l'inscription`} onPress={resume} />
