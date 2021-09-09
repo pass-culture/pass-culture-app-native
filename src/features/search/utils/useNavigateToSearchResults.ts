@@ -11,6 +11,7 @@ export const useNavigateToSearchResults = ({ from }: { from: Referrals }) => {
 
   return () => {
     analytics.logDiscoverOffers(from)
+    dispatch({ type: 'INIT' })
     dispatch({ type: 'SHOW_RESULTS', payload: true })
     navigate('Search')
   }
