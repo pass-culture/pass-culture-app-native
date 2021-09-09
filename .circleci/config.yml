@@ -721,12 +721,14 @@ workflows:
             - GCP_EHP
       - deploy-web-prod:
           filters:
-            tags:
-              only:
-                - /^v.*/
-                - /^hotfix-prod.*/
             branches:
-              ignore: /.*/
+              only: dka
+#            tags:
+#              only:
+#                - /^v.*/
+#                - /^hotfix-prod.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
