@@ -250,7 +250,9 @@ export const Profile: React.FC = () => {
           <Spacer.Column numberOfSpaces={4} />
           <Version>{t`Version` + `\u00a0${Package.version}`}</Version>
           <Spacer.Column numberOfSpaces={4} />
-          <LogoMinistere />
+          <LogoMinistereContainer>
+            <LogoMinistere />
+          </LogoMinistereContainer>
           <Spacer.Column numberOfSpaces={4} />
         </ProfileSection>
       </ProfileContainer>
@@ -281,6 +283,11 @@ const Row = styled(SectionRow).attrs({
 
 const BottomSpacing = styled.View({
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(2),
+})
+
+const LogoMinistereContainer = styled.View({
+  width: getSpacing(40),
+  height: getSpacing(28),
 })
 
 const NetworkRow = styled.View({
