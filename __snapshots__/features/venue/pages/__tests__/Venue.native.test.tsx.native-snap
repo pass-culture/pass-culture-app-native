@@ -405,7 +405,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
             testID="caption-undefined"
           >
-            Autre
+            Autre type de lieu
           </Text>
         </View>
         <View

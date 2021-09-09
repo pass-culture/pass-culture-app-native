@@ -35,7 +35,7 @@ const MAP_TYPE_TO_LABEL: { [k in VenueTypeCode]: string } = {
   MUSEUM: 'Musée',
   MUSICAL_INSTRUMENT_STORE: 'Musique - Magasin d’instruments',
   MOVIE: 'Cinéma - Salle de projections',
-  OTHER: 'Autre',
+  OTHER: 'Autre type de lieu',
   PATRIMONY_TOURISM: 'Patrimoine et tourisme',
   PERFORMING_ARTS: 'Spectacle vivant',
   RECORD_STORE: 'Musique - Disquaire',

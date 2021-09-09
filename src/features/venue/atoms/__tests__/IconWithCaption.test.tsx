@@ -18,9 +18,9 @@ describe('IconWithCaption', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should display a default label "Autre" for venue type if type is null', async () => {
+  it('should display a default label "Autre type de lieu" for venue type if type is null', async () => {
     const { getByText } = render(<IconWithCaption Icon={icon} caption={typeLabelNull} />)
-    expect(getByText('Autre')).toBeTruthy()
+    expect(getByText('Autre type de lieu')).toBeTruthy()
   })
 
   it('should display correct label for venue type if type is not null', () => {
