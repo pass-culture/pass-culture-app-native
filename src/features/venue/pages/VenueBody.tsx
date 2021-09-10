@@ -123,7 +123,10 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
 
       {/* Accessibilité */}
       <SectionWithDivider visible={shouldShowAccessibility}>
-        <AccordionItem title={t`Accessibilité`} scrollViewRef={scrollViewRef}>
+        <AccordionItem
+          title={t`Accessibilité`}
+          scrollViewRef={scrollViewRef}
+          onOpenOnce={() => analytics.logConsultAccessibility({ venueId })}>
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>
       </SectionWithDivider>

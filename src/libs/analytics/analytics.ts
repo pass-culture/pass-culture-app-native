@@ -48,8 +48,8 @@ export const analytics = {
       moduleName,
       numberOfTiles,
     }),
-  logConsultAccessibility: (offerId: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, { offerId }),
+  logConsultAccessibility: (params: OfferIdOrVenueId) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, params),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, params),
   logShareOffer: (offerId: number) =>

@@ -26,14 +26,14 @@ describe('<OfferBody /> - Analytics', () => {
 
     trigger(getByText('Accessibilité'))
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
-    expect(analytics.logConsultAccessibility).toHaveBeenCalledWith(offerId)
+    expect(analytics.logConsultAccessibility).toHaveBeenCalledWith({ offerId })
 
     trigger(getByText('Accessibilité'))
     trigger(getByText('Accessibilité'))
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
   })
 
-  it('should log ConsultWithdrawalModalities once when opening accessibility modalities', async () => {
+  it('should log ConsultWithdrawalModalities once when opening withdrawal modalities', async () => {
     const { getByText } = await renderOfferBodyPage()
 
     trigger(getByText('Modalités de retrait'))

@@ -41,6 +41,18 @@ describe('<VenueBody /> - Analytics', () => {
   it('should log ConsultWithdrawalModalities once when opening accessibility modalities', () => {
     const { getByText } = renderVenueBody()
 
+    trigger(getByText('Accessibilité'))
+    expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
+    expect(analytics.logConsultAccessibility).toHaveBeenCalledWith({ venueId })
+
+    trigger(getByText('Accessibilité'))
+    trigger(getByText('Accessibilité'))
+    expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log ConsultWithdrawalModalities once when opening withdrawal modalities', () => {
+    const { getByText } = renderVenueBody()
+
     trigger(getByText('Modalités de retrait'))
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledWith({ venueId })
