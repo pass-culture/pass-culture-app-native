@@ -60,8 +60,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId }),
   logConsultWholeOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId }),
-  logConsultItinerary: (offerId: number, from: Referrals) =>
-    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId, from }),
+  logConsultItinerary: (params: OfferIdOrVenueId & { from: Referrals }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ITINERARY, params),
   logConsultAvailableDates: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId }),
   logClickBookOffer: (offerId: number) =>
