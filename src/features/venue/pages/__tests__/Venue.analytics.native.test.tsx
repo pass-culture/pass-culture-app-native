@@ -61,6 +61,14 @@ describe('<VenueBody /> - Analytics', () => {
     trigger(getByText('Modalités de retrait'))
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
   })
+
+  it('should log ConsultLocationItinerary when opening itinerary', () => {
+    const wrapper = renderVenueBody()
+    act(() => {
+      fireEvent.press(wrapper.getByText("Voir l'itinéraire"))
+    })
+    expect(analytics.logConsultItinerary).toHaveBeenCalledWith({ venueId, from: 'venue' })
+  })
 })
 
 function renderVenueBody() {

@@ -63,7 +63,7 @@ export function BookingDetails() {
   const { canOpenItinerary, openItinerary } = useOpenItinerary(
     latitude,
     longitude,
-    async () => void (offerId && analytics.logConsultItinerary(offerId, 'bookingdetails'))
+    async () => void (offerId && analytics.logConsultItinerary({ offerId, from: 'bookingdetails' }))
   )
 
   const logConsultWholeBooking = useFunctionOnce(

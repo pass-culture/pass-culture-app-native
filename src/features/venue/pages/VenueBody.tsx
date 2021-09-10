@@ -105,6 +105,9 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       {/* Où */}
       <SectionWithDivider visible margin>
         <WhereSection
+          beforeNavigateToItinerary={() =>
+            analytics.logConsultItinerary({ venueId, from: 'venue' })
+          }
           venue={venue}
           address={venueAddress}
           locationCoordinates={{ latitude, longitude }}

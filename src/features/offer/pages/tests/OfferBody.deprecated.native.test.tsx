@@ -120,6 +120,6 @@ describe('<OfferBody />', () => {
     act(() => {
       fireEvent.press(wrapper.getByText("Voir l'itinéraire"))
     })
-    expect(analytics.logConsultItinerary).toHaveBeenCalledWith(offerId, 'offer')
+    expect(analytics.logConsultItinerary).toHaveBeenCalledWith({ offerId, from: 'offer' })
   })
 })
