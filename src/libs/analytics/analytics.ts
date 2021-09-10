@@ -157,6 +157,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.ACCESS_EXTERNAL_OFFER, { offerId }),
   logConfirmBookingCancellation: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId }),
+  logVenueSeeMoreClicked: (venueId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_MORE_CLICKED, { venueId }),
 }
 
 export const idCheckAnalytics: IdCheckAnalyticsInterface = {
