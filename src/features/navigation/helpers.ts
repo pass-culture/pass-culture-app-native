@@ -1,5 +1,5 @@
 import { Route, useNavigationState } from '@react-navigation/native'
-import { Linking } from 'react-native'
+import { Linking, Platform } from 'react-native'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
@@ -61,6 +61,19 @@ export async function openExternalUrl(
       Linking.openURL(fallbackUrl).then(() => logEvent && analytics.logOpenExternalUrl(fallbackUrl))
     }
   }
+}
+
+export async function openExternalPhoneNumber(phone: string) {
+  let phoneNumber = phone
+
+  if (Platform.OS !== 'android') {
+    phoneNumber = `telprompt:${phone}`
+  } else {
+    phoneNumber = `tel:${phone}`
+  }
+
+  const canOpen = await Linking.canOpenURL(phoneNumber)
+  if (canOpen) Linking.openURL(phoneNumber)
 }
 
 export function usePreviousRoute(): Route<string> | null {

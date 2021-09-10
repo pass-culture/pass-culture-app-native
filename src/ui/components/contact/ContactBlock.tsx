@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferVenueResponse, VenueContactModel, VenueResponse } from 'api/gen'
+import { openExternalPhoneNumber, openExternalUrl } from 'features/navigation/helpers'
+import { isValidFrenchPhoneNumber } from 'ui/components/contact/useValidFrenchPhoneNumber'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { ExternalLinkSquare } from 'ui/svg/icons/ExternalLinkSquare'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -23,15 +25,35 @@ export const ContactBlock: React.FC<VenueContact> = ({ venue, email, phoneNumber
 
 const renderContactAtom = (
   venue: OfferVenueResponse | VenueResponse,
-  information: string | undefined
+  contactInformations: string | undefined
 ) => {
-  const openContact = () => 'Hello'
+  const openContact = () => {
+    if (contactInformations) {
+      const isEmail = isEmailValid(contactInformations)
+      const isPhoneNumber = isValidFrenchPhoneNumber(contactInformations)
+
+      if (isEmail) {
+        openExternalUrl(`mailto:${contactInformations}`)
+      } else if (isPhoneNumber) {
+        openExternalPhoneNumber(contactInformations)
+      } else {
+        openExternalUrl(contactInformations)
+      }
+    }
+  }
+
+  // TODO : Rendre disabled les boutons sur decliweb :
+  // - Changer la police
+  // - Afficher l'adresse mail plutôt que "Contacter ..."
+  // - Retirer les logos de lien externe
 
   const labelInformation =
-    information && isEmailValid(information) ? `Contacter ${venue.publicName}` : information
+    contactInformations && isEmailValid(contactInformations)
+      ? `Contacter ${venue.publicName}`
+      : contactInformations
 
   return (
-    !!(information !== null && information !== undefined) && (
+    !!(contactInformations !== null && contactInformations !== undefined) && (
       <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={openContact}>
         <ExternalLinkSquare size={getSpacing(6)} />
         <Spacer.Row numberOfSpaces={2} />
