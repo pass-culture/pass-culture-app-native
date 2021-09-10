@@ -4,7 +4,9 @@ import { Platform, Share } from 'react-native'
 import { VenueResponse } from 'api/gen'
 import { generateLongFirebaseDynamicLink, WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
+import { analytics } from 'libs/analytics'
 import { env, useWebAppUrl, WEBAPP_V2_URL } from 'libs/environment'
+import { useFunctionOnce } from 'libs/hooks'
 import { MonitoringError } from 'libs/monitoring'
 
 import { useVenue } from '../api/useVenue'
@@ -58,7 +60,12 @@ export const useShareVenue = (venueId: number): (() => Promise<void>) => {
   const { data: venue } = useVenue(venueId)
   const webAppUrl = useWebAppUrl()
 
+  const logShareVenue = useFunctionOnce(() => {
+    analytics.logShareVenue(venueId)
+  })
+
   return async () => {
+    logShareVenue()
     if (!venue || !webAppUrl) return
     await shareVenue(venue, webAppUrl)
   }
