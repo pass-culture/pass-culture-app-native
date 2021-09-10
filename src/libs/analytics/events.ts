@@ -33,6 +33,7 @@ export enum AnalyticsEvent {
   HAS_ADDED_OFFER_TO_FAVORITES = 'HasAddedOfferToFavorites',
   HAS_APPLIED_FAVORITES_SORTING = 'HasAppliedFavoritesSorting',
   HAS_CHANGED_PASSWORD = 'HasChangedPassword',
+  HAS_REFUSED_COOKIE = 'HasRefusedCookie',
   HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
   ID_CHECK = 'IdCheck',
   LOCATION_TOGGLE = 'LocationToggle',
@@ -60,7 +61,7 @@ export enum AnalyticsEvent {
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
-  HAS_REFUSED_COOKIE = 'HasRefusedCookie',
+  VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
 }
 
 export enum IdCheckAnalyticsEvent {

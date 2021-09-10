@@ -11,6 +11,7 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
 import { VenueOfferTile } from 'features/venue/atoms/VenueOfferTile'
+import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
@@ -64,6 +65,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
 
   const onPressSeeMore = useCallback(() => {
     // TODO(antoinewg) add search params with category filter
+    analytics.logVenueSeeMoreClicked(venueId)
     dispatch({ type: 'SET_STATE', payload: params })
     stagedDispatch({ type: 'SET_STATE', payload: params })
     navigate('Search', params)

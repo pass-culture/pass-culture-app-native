@@ -9,6 +9,7 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffersWithOneOfferResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { AlgoliaHit } from 'libs/algolia'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { VenueOffers } from '../VenueOffers'
@@ -34,6 +35,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 describe('<VenueOffers />', () => {
+  beforeEach(jest.clearAllMocks)
   it('should render correctly', () => {
     const renderAPI = render(<VenueOffers venueId={venueId} />)
     expect(renderAPI).toMatchSnapshot()
@@ -64,5 +66,11 @@ describe('<VenueOffers />', () => {
       type: 'SET_STATE',
       payload: expect.anything(),
     })
+  })
+
+  it(`should log analytics event VenueSeeMoreClicked when clicking "En voir plus" button`, () => {
+    const { getByText } = render(<VenueOffers venueId={venueId} />)
+    fireEvent.press(getByText('En voir plus'))
+    expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 })
