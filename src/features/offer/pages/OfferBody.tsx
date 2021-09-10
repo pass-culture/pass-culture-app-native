@@ -133,7 +133,7 @@ export const OfferBody: FunctionComponent<{
         <AccordionItem
           title={t`Accessibilité`}
           scrollViewRef={scrollViewRef}
-          onOpenOnce={() => analytics.logConsultAccessibility(offerResponse.id)}>
+          onOpenOnce={() => analytics.logConsultAccessibility({ offerId: offerResponse.id })}>
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>
       </SectionWithDivider>
