@@ -5,14 +5,14 @@ import { OfferResponse } from 'api/gen'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { humanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
-import { useWebAppUrl } from 'libs/environment'
+import { env, useWebAppUrl } from 'libs/environment'
 
 import { useOffer } from '../api/useOffer'
 import { getLocationName } from '../atoms/LocationCaption'
 
 import { useFunctionOnce } from './useFunctionOnce'
 
-const shareOffer = async (offer: OfferResponse, webAppUrl: string) => {
+const shareOffer = async (offer: OfferResponse, webUrl: string) => {
   const { id, isDigital, name, venue } = offer
   const locationName = getLocationName(venue, isDigital)
   const message = t({
@@ -23,9 +23,9 @@ const shareOffer = async (offer: OfferResponse, webAppUrl: string) => {
 
   const url = generateLongFirebaseDynamicLink(
     'offre',
-    webAppUrl,
+    `https://${env.WEBAPP_V2_DOMAIN}`,
     `${id}`,
-    `&ofl=${webAppUrl}/accueil/details/${humanizeId(id)}`
+    `&ofl=${webUrl}/accueil/details/${humanizeId(id)}`
   )
 
   // url share content param is only for iOs, so we add url in message for android
@@ -51,7 +51,7 @@ const shareOffer = async (offer: OfferResponse, webAppUrl: string) => {
 
 export const useShareOffer = (offerId: number): (() => Promise<void>) => {
   const { data: offerResponse } = useOffer({ offerId })
-  const webAppUrl = useWebAppUrl()
+  const webUrl = useWebAppUrl()
 
   const logShareOffer = useFunctionOnce(() => {
     analytics.logShareOffer(offerId)
@@ -59,7 +59,7 @@ export const useShareOffer = (offerId: number): (() => Promise<void>) => {
 
   return async () => {
     logShareOffer()
-    if (!offerResponse || !webAppUrl) return
-    await shareOffer(offerResponse, webAppUrl)
+    if (!offerResponse || !webUrl) return
+    await shareOffer(offerResponse, webUrl)
   }
 }

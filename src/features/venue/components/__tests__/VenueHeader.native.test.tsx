@@ -56,7 +56,11 @@ describe('<VenueHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
 
     expect(share).toHaveBeenCalledTimes(1)
-    const url = generateLongFirebaseDynamicLink('venue', env.WEBAPP_URL, 'id=5543')
+    const url = generateLongFirebaseDynamicLink(
+      'venue',
+      `https://${env.WEBAPP_V2_DOMAIN}`,
+      'id=5543'
+    )
     const message = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
     expect(share).toHaveBeenCalledWith(
       { message, title: message, url },
@@ -72,7 +76,11 @@ describe('<VenueHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
 
     expect(share).toHaveBeenCalledTimes(1)
-    const url = generateLongFirebaseDynamicLink('venue', env.WEBAPP_URL, 'id=5543')
+    const url = generateLongFirebaseDynamicLink(
+      'venue',
+      `https://${env.WEBAPP_V2_DOMAIN}`,
+      'id=5543'
+    )
     const message = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
     const messageWithUrl = `${message}\n\n${url}`
     expect(share).toHaveBeenCalledWith(
