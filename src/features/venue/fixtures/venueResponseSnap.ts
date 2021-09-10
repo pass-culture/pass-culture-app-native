@@ -20,6 +20,11 @@ export const venueResponseSnap: VenueResponse = {
     motorDisability: false,
     visualDisability: true,
   },
+  contact: {
+    email: 'contact@venue.com',
+    phoneNumber: '+33102030405',
+    website: 'https://my@website.com',
+  },
 }
 
 export const venueWithNoAddressResponseSnap: VenueResponse = {
@@ -40,5 +45,10 @@ export const venueWithNoAddressResponseSnap: VenueResponse = {
     mentalDisability: false,
     motorDisability: false,
     visualDisability: true,
+  },
+  contact: {
+    email: 'contact@venue.com',
+    phoneNumber: '+33102030405',
+    website: 'https://my@website.com',
   },
 }

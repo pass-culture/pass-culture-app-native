@@ -59,6 +59,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const shouldShowAccessibility = Object.values(accessibility).some(
     (value) => value !== undefined && value !== null
   )
+  const shouldShowContact = !!contact?.email || !!contact?.phoneNumber || !!contact?.website
 
   return (
     <Container
@@ -137,7 +138,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       </SectionWithDivider>
 
       {/* Contact */}
-      <SectionWithDivider visible={true}>
+      <SectionWithDivider visible={shouldShowContact}>
         <AccordionItem title={t`Contact`} scrollViewRef={scrollViewRef}>
           <ContactBlock {...contact} venue={venue} />
         </AccordionItem>

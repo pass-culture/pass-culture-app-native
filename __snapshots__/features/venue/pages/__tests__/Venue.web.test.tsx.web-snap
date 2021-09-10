@@ -1211,6 +1211,139 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
+              style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+              tabindex="0"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              >
+                Contact
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accordionArrow"
+                id="animatedComponent"
+                style="transform: rotateZ(1.5707963267948966rad);"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionBody"
+              id="animatedComponent"
+              style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accordionBodyContainer"
+                style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="margin-top: -4px; margin-bottom: -4px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; cursor: pointer; flex-direction: row; margin-top: 4px; margin-bottom: 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 8px;"
+                    />
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    >
+                      Contacter Le Petit Rintintin 1
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; cursor: pointer; flex-direction: row; margin-top: 4px; margin-bottom: 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 8px;"
+                    />
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    >
+                      +33102030405
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; cursor: pointer; flex-direction: row; margin-top: 4px; margin-bottom: 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 8px;"
+                    />
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    >
+                      https://my@website.com
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(245, 245, 245); height: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
               style="height: 24px;"
             />
           </div>
@@ -2579,6 +2712,139 @@ Object {
                     >
                       auditif
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(245, 245, 245); height: 8px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+            tabindex="0"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+            >
+              Contact
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionArrow"
+              id="animatedComponent"
+              style="transform: rotateZ(1.5707963267948966rad);"
+            >
+              <div
+                class="css-view-1dbjc4n"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            data-testid="accordionBody"
+            id="animatedComponent"
+            style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionBodyContainer"
+              style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="margin-top: -4px; margin-bottom: -4px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; cursor: pointer; flex-direction: row; margin-top: 4px; margin-bottom: 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 8px;"
+                  />
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  >
+                    Contacter Le Petit Rintintin 1
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; cursor: pointer; flex-direction: row; margin-top: 4px; margin-bottom: 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 8px;"
+                  />
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  >
+                    +33102030405
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; cursor: pointer; flex-direction: row; margin-top: 4px; margin-bottom: 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 8px;"
+                  />
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  >
+                    https://my@website.com
                   </div>
                 </div>
               </div>
