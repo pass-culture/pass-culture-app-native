@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { OfferBody } from 'features/offer/pages/OfferBody'
+import { analytics } from 'libs/analytics'
 import { cleanup, fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
@@ -29,5 +30,14 @@ describe('<OfferBody />', () => {
 
     fireEvent.press(reportOfferButton)
     expect(OfferBodyComponent).toMatchSnapshot()
+  })
+
+  it('should log analytics event ConsultVenue when pressing on the venue banner', async () => {
+    const OfferBodyComponent = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+    const venueBannerComponent = await OfferBodyComponent.findByTestId('VenueBannerComponent')
+
+    fireEvent.press(venueBannerComponent)
+    expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, { venueId: 2090, from: 'offer' })
   })
 })

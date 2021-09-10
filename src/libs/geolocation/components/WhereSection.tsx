@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { Coordinates, OfferVenueResponse, VenueResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -38,7 +39,8 @@ export const WhereSection: React.FC<Props> = ({
   if (distanceToLocation === undefined && venue.address === null) return null
 
   const navigateToVenuePage = () => {
-    return navigation.navigate('Venue', { id: venue.id })
+    analytics.logConsultVenue({ venueId: venue.id, from: 'offer' })
+    navigation.navigate('Venue', { id: venue.id })
   }
 
   return (
@@ -46,8 +48,7 @@ export const WhereSection: React.FC<Props> = ({
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Title4>{t`Où ?`}</Typo.Title4>
       {/* TODO : Remove testing condition to display the link to venue button */}
-      {/* eslint-disable-next-line local-rules/no-string-check-before-component*/}
-      {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && !!showVenueBanner && (
+      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && showVenueBanner ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
@@ -59,7 +60,7 @@ export const WhereSection: React.FC<Props> = ({
             <ArrowNext size={getSpacing(6)} />
           </VenueNameContainer>
         </React.Fragment>
-      )}
+      ) : null}
       {!!address && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
