@@ -42,10 +42,10 @@ describe('Formatting deeplink url', () => {
     it('should return a format long firebase dynamic link', () => {
       const screen = 'offer'
       const webAppUrl = 'https://web.example.com'
-      const uri = 'id=345&test_params=est_ce_que_cest_ok'
+      const uri = '345&test_params=est_ce_que_cest_ok'
       const url = generateLongFirebaseDynamicLink(screen, webAppUrl, uri)
       expect(url).toEqual(
-        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${webAppUrl}/${screen}?${uri}&${getLongDynamicLinkURI()}`
+        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${webAppUrl}/${screen}/${uri}&${getLongDynamicLinkURI()}`
       )
     })
   })

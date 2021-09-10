@@ -102,9 +102,9 @@ describe('<OfferHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
     const url = generateLongFirebaseDynamicLink(
-      'offer',
+      'offre',
       env.WEBAPP_URL,
-      'id=116656',
+      '116656',
       `&ofl=${env.WEBAPP_URL}/accueil/details/AHD3A`
     )
     const message =
@@ -124,9 +124,9 @@ describe('<OfferHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
     const url = generateLongFirebaseDynamicLink(
-      'offer',
+      'offre',
       env.WEBAPP_URL,
-      'id=116656',
+      '116656',
       `&ofl=${env.WEBAPP_URL}/accueil/details/AHD3A`
     )
     const messageWithUrl =

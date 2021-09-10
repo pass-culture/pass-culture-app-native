@@ -1,5 +1,6 @@
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
+import { errorMonitoring } from 'libs/errorMonitoring'
 
 import { DeepLinksToScreenConfiguration } from './types'
 
@@ -52,6 +53,24 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
       screen,
       params: {
         id: parser.id(params.id),
+        from: parser.from('deeplink'),
+      },
+    }
+  },
+  offre: (params) => {
+    const screen = 'Offer'
+    let id = '0'
+    const parser = screenParamsParser[screen]
+    try {
+      id = Object.keys(params)[0]
+    } catch (e) {
+      errorMonitoring.captureException(e)
+    }
+
+    return {
+      screen,
+      params: {
+        id: parser.id(id),
         from: parser.from('deeplink'),
       },
     }

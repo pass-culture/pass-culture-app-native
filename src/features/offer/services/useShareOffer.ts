@@ -20,10 +20,11 @@ const shareOffer = async (offer: OfferResponse, webAppUrl: string) => {
     values: { name, locationName },
     message: 'Retrouve "{name}" chez "{locationName}" sur le pass Culture',
   })
+
   const url = generateLongFirebaseDynamicLink(
-    'offer',
+    'offre',
     webAppUrl,
-    `id=${id}`,
+    `${id}`,
     `&ofl=${webAppUrl}/accueil/details/${humanizeId(id)}`
   )
 

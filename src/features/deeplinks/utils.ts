@@ -37,7 +37,7 @@ export function generateLongFirebaseDynamicLink(
   universalLinksParams: string,
   customDynamicLinksParams = ''
 ) {
-  return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${webAppUrl}/${screen}?${universalLinksParams}&${getLongDynamicLinkURI()}${customDynamicLinksParams}`
+  return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${webAppUrl}/${screen}/${universalLinksParams}&${getLongDynamicLinkURI()}${customDynamicLinksParams}`
 }
 
 export const isUniversalLink = (url: string) => url.startsWith(WEBAPP_NATIVE_REDIRECTION_URL)
