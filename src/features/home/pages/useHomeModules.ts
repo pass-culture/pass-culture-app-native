@@ -12,6 +12,7 @@ import { SearchHit, parseSearchParameters } from 'libs/search'
 import { useAlgoliaMultipleHits } from 'libs/search/fetch/useAlgoliaMultipleHits'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 import { useSearchMultipleHits } from 'libs/search/fetch/useSearchMultipleHits'
+import { useSendAdditionalRequestToAppSearch } from 'libs/search/useSendAdditionalRequestToAppSearch'
 
 export type HomeModuleResponse = {
   [moduleId: string]: {
@@ -44,6 +45,7 @@ export const useHomeModules = (
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const algoliaBackend = useAlgoliaMultipleHits()
   const searchBackend = useSearchMultipleHits()
+  const sendAdditionalRequest = useSendAdditionalRequestToAppSearch()
 
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchMultipleHits, filterHits, transformHits } = backend
@@ -62,15 +64,7 @@ export const useHomeModules = (
       return {
         queryKey: [QueryKeys.HOME_MODULE, moduleId],
         queryFn: fetchModule,
-        onSettled: () => {
-          if (!isAppSearchBackend) {
-            // Whilst app search is not activated, we still launch the request to populate
-            // App search's cache for future faster requests. Thus we build up the cache
-            // with actual requests.
-            // TODO(antoinewg): delete once the migration to AppSearch is completed
-            searchBackend.fetchMultipleHits(parsedParameters)
-          }
-        },
+        onSettled: sendAdditionalRequest(() => searchBackend.fetchMultipleHits(parsedParameters)),
         enabled,
         notifyOnChangeProps: ['data'],
       }

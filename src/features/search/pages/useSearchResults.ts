@@ -9,6 +9,7 @@ import { SearchHit } from 'libs/search'
 import { useAlgoliaQuery } from 'libs/search/fetch/useAlgoliaQuery'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 import { useSearchQuery } from 'libs/search/fetch/useSearchQuery'
+import { useSendAdditionalRequestToAppSearch } from 'libs/search/useSendAdditionalRequestToAppSearch'
 
 import { useSearch, useStagedSearch } from './SearchWrapper'
 
@@ -19,6 +20,7 @@ const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const algoliaBackend = useAlgoliaQuery()
   const searchBackend = useSearchQuery()
+  const sendAdditionalRequest = useSendAdditionalRequestToAppSearch()
 
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchHits, transformHits } = backend
@@ -34,15 +36,7 @@ const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
       enabled,
-      onSettled: () => {
-        if (!isAppSearchBackend) {
-          // Whilst app search is not activated, we still launch the request to populate
-          // App search's cache for future faster requests. Thus we build up the cache
-          // with actual requests.
-          // TODO(antoinewg): delete once the migration to AppSearch is completed
-          searchBackend.fetchHits({ page: 0, ...searchState })
-        }
-      },
+      onSettled: sendAdditionalRequest(() => searchBackend.fetchHits({ page: 0, ...searchState })),
     }
   )
 
