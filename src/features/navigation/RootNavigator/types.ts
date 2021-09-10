@@ -92,7 +92,7 @@ export type RootStackParamList = {
   SetPhoneValidationCode: { phoneNumber: string; countryCode: CountryCode }
   PhoneValidationTooManyAttempts: undefined
   VerifyEligibility: { email: string; nextBeneficiaryValidationStep: BeneficiaryValidationStep }
-  FirstTutorial: { shouldCloseAppOnBackAction: boolean }
+  FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   ForceUpdate: undefined
   Venue: { id: number }
@@ -100,7 +100,8 @@ export type RootStackParamList = {
 
 export type AllNavParamList = RootStackParamList & TabParamList
 
-/** Type helper to share screen names */
+/** Type helpers to share screen names */
+export type RootScreenNames = keyof RootStackParamList
 export type ScreenNames = keyof AllNavParamList
 
 /**

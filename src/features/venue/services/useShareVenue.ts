@@ -3,7 +3,7 @@ import { Platform, Share } from 'react-native'
 
 import { VenueResponse } from 'api/gen'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
-import { useWebAppUrl } from 'libs/environment'
+import { env } from 'libs/environment'
 
 import { useVenue } from '../api/useVenue'
 
@@ -37,7 +37,7 @@ const shareVenue = async (venue: VenueResponse, webAppUrl: string) => {
 
 export const useShareVenue = (venueId: number): (() => Promise<void>) => {
   const { data: venue } = useVenue(venueId)
-  const webAppUrl = useWebAppUrl()
+  const webAppUrl = `https://${env.WEBAPP_V2_DOMAIN}` // useWebAppUrl()
 
   return async () => {
     if (!venue || !webAppUrl) return

@@ -1,9 +1,8 @@
-import { renderHook, RenderHookResult } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { analytics } from 'libs/analytics'
@@ -11,14 +10,14 @@ import { env } from 'libs/environment'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
-import { superFlushWithAct, act } from 'tests/utils'
+import { superFlushWithAct } from 'tests/utils'
 
-import { useInitialScreenConfig } from '../RootNavigator/useInitialScreenConfig'
+import { useInitialScreen } from '../RootNavigator/useInitialScreenConfig'
 
 const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('features/auth/AuthContext')
 
-describe('useInitialScreenConfig()', () => {
+describe('useInitialScreen()', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
@@ -30,16 +29,16 @@ describe('useInitialScreenConfig()', () => {
 
   // prettier-ignore : do not format the following "table" to keep it readable
   it.each`
-    hasSeenTutorials | hasSeenEligibleCard | isLogged | userProfile                                                                           | expectedScreen        | expectedScreenParams                    | expectedAnalyticsScreen
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, isBeneficiary: true }} | ${'TabNavigator'}     | ${{ screen: 'Home' }}                   | ${'Home'}
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: false }} | ${'TabNavigator'}     | ${{ screen: 'Home' }}                   | ${'Home'}
-    ${null}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: true }}  | ${'CulturalSurvey'}   | ${undefined}                            | ${'CulturalSurvey'}
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: true }}  | ${'CulturalSurvey'}   | ${undefined}                            | ${'CulturalSurvey'}
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, isBeneficiary: true }}   | ${'CulturalSurvey'}   | ${undefined}                            | ${'CulturalSurvey'}
-    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, isBeneficiary: true }}   | ${'EighteenBirthday'} | ${undefined}                            | ${'EighteenBirthday'}
-    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: true }}  | ${'TabNavigator'}     | ${{ screen: 'Home' }}                   | ${'Home'}
-    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true, isBeneficiary: true }}  | ${'TabNavigator'}     | ${{ screen: 'Home' }}                   | ${'Home'}
-    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, isBeneficiary: true }} | ${'FirstTutorial'}    | ${{ shouldCloseAppOnBackAction: true }} | ${'FirstTutorial'}
+    hasSeenTutorials | hasSeenEligibleCard | isLogged | userProfile                                                                           | expectedScreen        | expectedAnalyticsScreen
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, isBeneficiary: true }} | ${'TabNavigator'}     | ${'Home'}
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: false }} | ${'TabNavigator'}     | ${'Home'}
+    ${null}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: true }}  | ${'CulturalSurvey'}   | ${'CulturalSurvey'}
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: true }}  | ${'CulturalSurvey'}   | ${'CulturalSurvey'}
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, isBeneficiary: true }}   | ${'CulturalSurvey'}   | ${'CulturalSurvey'}
+    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, isBeneficiary: true }}   | ${'EighteenBirthday'} | ${'EighteenBirthday'}
+    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: true }}  | ${'TabNavigator'}     | ${'Home'}
+    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true, isBeneficiary: true }}  | ${'TabNavigator'}     | ${'Home'}
+    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, isBeneficiary: true }} | ${'FirstTutorial'}    | ${'FirstTutorial'}
   `(
     `should return $expectedScreen when 
       - has_seen_tutorials = $hasSeenTutorials 
@@ -52,7 +51,6 @@ describe('useInitialScreenConfig()', () => {
       isLogged,
       userProfile,
       expectedScreen,
-      expectedScreenParams,
       expectedAnalyticsScreen,
     }) => {
       await storage.saveObject('has_seen_tutorials', hasSeenTutorials)
@@ -63,17 +61,10 @@ describe('useInitialScreenConfig()', () => {
       })
       mockMeApiCall(userProfile as UserProfileResponse)
 
-      await renderUseInitialScreenConfig()
+      const { current: screen } = await renderUseInitialScreen()
 
       await waitForExpect(() => {
-        if (expectedScreen === 'TabNavigator') {
-          expect(navigate).toHaveBeenNthCalledWith(1, expectedScreen, expectedScreenParams)
-        } else {
-          expect(reset).toHaveBeenNthCalledWith(1, {
-            index: 0,
-            routes: [{ name: expectedScreen, params: expectedScreenParams }],
-          })
-        }
+        expect(screen).toEqual(expectedScreen)
       })
       expect(analytics.logScreenView).toBeCalledTimes(1)
       expect(analytics.logScreenView).toBeCalledWith(expectedAnalyticsScreen)
@@ -81,16 +72,13 @@ describe('useInitialScreenConfig()', () => {
   )
 })
 
-async function renderUseInitialScreenConfig() {
+async function renderUseInitialScreen() {
   const wrapper = (props: { children: unknown }) => (
     <SplashScreenProvider>{props.children as JSX.Element}</SplashScreenProvider>
   )
-  let testComponent: RenderHookResult<{ children: unknown }, void | undefined> | undefined
-  await act(async () => {
-    testComponent = renderHook(useInitialScreenConfig, { wrapper })
-  })
+  const { result } = renderHook(useInitialScreen, { wrapper })
   await superFlushWithAct()
-  return testComponent
+  return result
 }
 
 function mockMeApiCall(response: UserProfileResponse) {
