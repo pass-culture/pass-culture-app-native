@@ -49,6 +49,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
           isDuo={item.offer.isDuo}
           thumbUrl={item.offer.thumbUrl}
           price={getDisplayPrice(item.offer.prices)}
+          venueId={venue?.id}
         />
       )
     },

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { analytics } from 'libs/analytics'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
@@ -9,6 +10,7 @@ import { VenueOfferTile } from '../VenueOfferTile'
 
 const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
+const venueId = 34
 
 const props = {
   category: offer.category || '',
@@ -21,6 +23,7 @@ const props = {
   offerId,
   price: '28 €',
   thumbUrl: offer.thumbUrl,
+  venueId,
 }
 
 describe('VenueOfferTile component', () => {
@@ -37,6 +40,16 @@ describe('VenueOfferTile component', () => {
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'venue',
+    })
+  })
+
+  it('Analytics - should log ConsultOffer that user opened the offer', async () => {
+    const { getByTestId } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
+    fireEvent.press(getByTestId('offerTileImage'))
+    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
+      offerId,
+      from: 'venue',
+      venueId,
     })
   })
 
