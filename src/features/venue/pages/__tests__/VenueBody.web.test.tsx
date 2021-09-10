@@ -5,7 +5,6 @@ import { mocked } from 'ts-jest/utils'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { VenueResponse } from 'api/gen'
-import { mockDefaultSettings } from 'features/auth/__mocks__/settings'
 import { useVenue } from 'features/venue/api/useVenue'
 import {
   venueWithNoAddressResponseSnap,
@@ -18,9 +17,7 @@ import { VenueBody } from '../VenueBody'
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('react-query')
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({ data: { ...mockDefaultSettings, useAppSearch: true } })),
-}))
+jest.mock('features/auth/settings')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venue/api/useVenue')
 const mockedUseVenue = mocked(useVenue)
