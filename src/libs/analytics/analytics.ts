@@ -52,6 +52,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, { offerId }),
   logShareOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId }),
+  logShareVenue: (venueId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SHARE_VENUE, { venueId }),
   logConsultDescriptionDetails: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId }),
   logConsultWholeOffer: (offerId: number) =>

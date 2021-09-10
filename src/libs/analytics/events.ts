@@ -56,6 +56,7 @@ export enum AnalyticsEvent {
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   SEE_MY_BOOKING = 'SeeMyBooking',
   SHARE_OFFER = 'Share',
+  SHARE_VENUE = 'ShareVenue',
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',

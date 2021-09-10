@@ -6,6 +6,7 @@ import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { getWebappVenueUrl } from 'features/venue/services/useShareVenue'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
@@ -86,6 +87,20 @@ describe('<VenueHeader />', () => {
       { message: messageWithUrl, title: message, url },
       { dialogTitle: message, subject: message }
     )
+  })
+
+  describe('<VenueHeader /> - Analytics', () => {
+    it('should log ShareVenue once when clicking on the Share button', async () => {
+      const { getByTestId } = await renderVenueHeader()
+
+      fireEvent.press(getByTestId('icon-share'))
+      expect(analytics.logShareVenue).toHaveBeenCalledTimes(1)
+      expect(analytics.logShareVenue).toHaveBeenCalledWith(venueResponseSnap.id)
+
+      fireEvent.press(getByTestId('icon-share'))
+      fireEvent.press(getByTestId('icon-share'))
+      expect(analytics.logShareVenue).toHaveBeenCalledTimes(1)
+    })
   })
 })
 
