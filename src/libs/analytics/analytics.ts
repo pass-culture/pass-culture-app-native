@@ -10,6 +10,7 @@ import { LoginRoutineMethod } from './types'
 const STRING_VALUE_MAX_LENGTH = 100
 
 type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
+type OfferIdOrVenueId = { offerId: number } | { venueId: number }
 
 export const analytics = {
   enableCollection: analyticsProvider.enableCollection,
@@ -49,8 +50,8 @@ export const analytics = {
     }),
   logConsultAccessibility: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, { offerId }),
-  logConsultWithdrawal: (offerId: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, { offerId }),
+  logConsultWithdrawal: (params: OfferIdOrVenueId) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, params),
   logShareOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId }),
   logShareVenue: (venueId: number) =>

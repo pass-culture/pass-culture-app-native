@@ -122,7 +122,7 @@ export const OfferBody: FunctionComponent<{
         <AccordionItem
           title={t`Modalités de retrait`}
           scrollViewRef={scrollViewRef}
-          onOpenOnce={() => analytics.logConsultWithdrawal(offerResponse.id)}>
+          onOpenOnce={() => analytics.logConsultWithdrawal({ offerId: offerResponse.id })}>
           <Typo.Body>
             {offerResponse.withdrawalDetails && highlightLinks(offerResponse.withdrawalDetails)}
           </Typo.Body>
