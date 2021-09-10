@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import { navigationRef } from 'features/navigation/navigationRef'
-import { maintenanceStatusListener } from 'libs/remoteStore'
+import { maintenanceStatusListener } from 'libs/firestore/maintenance'
 
 const resetToMaintenancePage = () => {
   navigationRef.current?.reset({

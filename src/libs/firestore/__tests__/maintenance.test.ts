@@ -1,6 +1,6 @@
 import firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firestore'
 
-import { maintenanceStatusListener } from '../remoteStore'
+import { maintenanceStatusListener } from '../maintenance'
 
 jest.mock('@react-native-firebase/firestore')
 
@@ -26,6 +26,7 @@ describe('remoteStore', () => {
         expect.any(Function)
       )
     })
+
     it('should set up listener with given callback', () => {
       const get = jest.fn().mockReturnValue('getReturn')
       // @ts-expect-error is an incomplete mock

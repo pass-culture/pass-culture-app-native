@@ -1,17 +1,7 @@
-import firestore from '@react-native-firebase/firestore'
-
 import { env } from 'libs/environment'
+import firestoreRemoteStore from 'libs/firestore/client'
+import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firestore/types'
 import { MonitoringError } from 'libs/monitoring'
-
-const firestoreRemoteStore = firestore()
-
-enum RemoteStoreCollections {
-  MAINTENANCE = 'maintenance',
-}
-
-enum RemoteStoreDocuments {
-  MAINTENANCE_IS_ON = 'maintenanceIsOn',
-}
 
 export const maintenanceStatusListener = (onValueChange: (maintenanceStatus: boolean) => void) =>
   firestoreRemoteStore
