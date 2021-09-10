@@ -32,6 +32,7 @@ export const analytics = {
     from: Referrals
     moduleName?: string
     query?: string
+    venueId?: number
   }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_OFFER, params),
   logConsultVenue: (params: { venueId: number; from: Referrals }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_VENUE, params),

@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { CategoryNameEnum, ExpenseDomain, OfferResponse, OfferStockResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
+import { analytics } from 'libs/analytics'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
@@ -24,6 +25,7 @@ interface OfferTileProps {
   price: string
   thumbUrl?: string
   isBeneficiary?: boolean
+  venueId?: number
 }
 
 type PartialOffer = Pick<
@@ -64,12 +66,13 @@ export const mergeOfferData = (offer: PartialOffer) => (
 
 export const VenueOfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
-  const { isBeneficiary, ...offer } = props
+  const { isBeneficiary, venueId, ...offer } = props
   const queryClient = useQueryClient()
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData(['offer', offer.offerId], mergeOfferData(offer))
+    analytics.logConsultOffer({ offerId: offer.offerId, from: 'venue', venueId })
     navigation.navigate('Offer', {
       id: offer.offerId,
       from: 'venue',
