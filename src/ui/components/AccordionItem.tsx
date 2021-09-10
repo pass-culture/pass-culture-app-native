@@ -75,7 +75,7 @@ export const AccordionItem = ({
 
   useEffect(() => {
     if (open) {
-      onOpen?.()
+      onOpen()
       onOpenOnce && openOnce()
     }
   }, [open])

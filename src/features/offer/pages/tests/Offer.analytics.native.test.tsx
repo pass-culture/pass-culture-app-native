@@ -38,7 +38,7 @@ describe('<OfferBody /> - Analytics', () => {
 
     trigger(getByText('Modalités de retrait'))
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
-    expect(analytics.logConsultWithdrawal).toHaveBeenCalledWith(offerId)
+    expect(analytics.logConsultWithdrawal).toHaveBeenCalledWith({ offerId })
 
     trigger(getByText('Modalités de retrait'))
     trigger(getByText('Modalités de retrait'))

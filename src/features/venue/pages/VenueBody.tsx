@@ -7,6 +7,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions'
 import { VenueOffers } from 'features/venue/components/VenueOffers'
+import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { parseType } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -112,7 +113,10 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
 
       {/* Modalités de retrait */}
       <SectionWithDivider visible={!!withdrawalDetails}>
-        <AccordionItem title={t`Modalités de retrait`} scrollViewRef={scrollViewRef}>
+        <AccordionItem
+          title={t`Modalités de retrait`}
+          scrollViewRef={scrollViewRef}
+          onOpenOnce={() => analytics.logConsultWithdrawal({ venueId })}>
           <Typo.Body>{withdrawalDetails && highlightLinks(withdrawalDetails)}</Typo.Body>
         </AccordionItem>
       </SectionWithDivider>
