@@ -3,7 +3,6 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { mockDefaultSettings } from 'features/auth/__mocks__/settings'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffersWithOneOfferResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
@@ -19,9 +18,7 @@ const venueId = venueResponseSnap.id
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('react-query')
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({ data: { ...mockDefaultSettings, useAppSearch: true } })),
-}))
+jest.mock('features/auth/settings')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 const mockUseVenueOffers = mocked(useVenueOffers)
