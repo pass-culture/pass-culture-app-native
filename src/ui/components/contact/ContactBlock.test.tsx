@@ -4,7 +4,7 @@ import { mocked } from 'ts-jest/utils'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { fireEvent, render } from 'tests/utils'
-import { isValidFrenchPhoneNumber } from 'ui/components/contact/useValidFrenchPhoneNumber'
+import { isValidFrenchPhoneNumber } from 'ui/components/contact/frenchPhoneNumberCheck'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 
 import { ContactBlock } from './ContactBlock'
@@ -17,7 +17,7 @@ const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
 const openExternalPhoneNumber = jest.spyOn(NavigationHelpers, 'openExternalPhoneNumber')
 
 jest.mock('features/venue/api/useVenue')
-jest.mock('ui/components/contact/useValidFrenchPhoneNumber')
+jest.mock('ui/components/contact/frenchPhoneNumberCheck')
 jest.mock('ui/components/inputs/emailCheck')
 const mockedUseValidFrenchPhoneNumber = mocked(isValidFrenchPhoneNumber)
 const mockedEmailCheck = mocked(isEmailValid)

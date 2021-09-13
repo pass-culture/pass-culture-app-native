@@ -1,7 +1,7 @@
 export const isValidFrenchPhoneNumber = (phonenumber: string) => {
   const metropolitanFranceReg = new RegExp(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/)
   const overseasFranceReg = new RegExp(
-    /^(?:(?:\+|00|0)((262|692)|(263|693)|508|(5|6)90|(5|6)94|(5|6|7)96|681|687|689))(?:[\s.-]*\d{2}){3,4}$/
+    /^(?:(?:\+|00|0)((262|692)|(263|693)|508|(5|6)90|691|(5|6)94|(5|6|7)96|697|681|687|689))(?:[\s.-]*\d{2}){3,4}$/
   )
   // 262, 263 = La Réunion, Mayotte
   // 508 = Saint-Pierre-et-Miquelon
