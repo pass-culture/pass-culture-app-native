@@ -52,7 +52,10 @@ export const useCommit = (): { commit: () => void } => {
   const { stagedSearchState } = useContext(SearchContext)!
   return {
     commit() {
-      navigate('Search', stagedSearchState)
+      navigate('TabNavigator', {
+        screen: 'Search',
+        params: stagedSearchState,
+      } as any)
     },
   }
 }
