@@ -48,7 +48,7 @@ describe('isValidFrenchPhoneNumber function', () => {
     '0033101020304',
     '00687010203',
 
-    // Polynésie française
+    // French Polynesia
     '0689010203',
 
     // France
@@ -63,6 +63,7 @@ describe('isValidFrenchPhoneNumber function', () => {
     const isValid = isValidFrenchPhoneNumber(phoneNumber)
     expect(isValid).toEqual(true)
   })
+
   it.each([
     '', // empty
     '01', // too short (min 6)
