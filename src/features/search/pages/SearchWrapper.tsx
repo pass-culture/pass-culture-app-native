@@ -55,7 +55,7 @@ export const useCommit = (): { commit: () => void } => {
       navigate('TabNavigator', {
         screen: 'Search',
         params: stagedSearchState,
-      } as any)
+      } as never)
     },
   }
 }
