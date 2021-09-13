@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { OfferVenueResponse, VenueContactModel, VenueResponse } from 'api/gen'
 import { openExternalPhoneNumber, openExternalUrl } from 'features/navigation/helpers'
+import { useBrowserDetect } from 'libs/hooks/useBrowserDetect'
 import { isValidFrenchPhoneNumber } from 'ui/components/contact/useValidFrenchPhoneNumber'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { ExternalLinkSquare } from 'ui/svg/icons/ExternalLinkSquare'
@@ -14,18 +15,20 @@ interface VenueContact extends VenueContactModel {
 }
 
 export const ContactBlock: React.FC<VenueContact> = ({ venue, email, phoneNumber, website }) => {
+  const { isBrowser } = useBrowserDetect()
   return (
     <Container>
-      {renderContactAtom(venue, email)}
-      {renderContactAtom(venue, phoneNumber)}
-      {renderContactAtom(venue, website)}
+      {renderContactAtom(venue, email, isBrowser)}
+      {renderContactAtom(venue, phoneNumber, isBrowser)}
+      {renderContactAtom(venue, website, isBrowser)}
     </Container>
   )
 }
 
 const renderContactAtom = (
   venue: OfferVenueResponse | VenueResponse,
-  contactInformations: string | undefined
+  contactInformations: string | undefined,
+  isBrowser: boolean
 ) => {
   const openContact = () => {
     if (contactInformations) {
@@ -42,24 +45,19 @@ const renderContactAtom = (
     }
   }
 
-  // TODO : Rendre disabled les boutons sur decliweb :
-  // - Changer la police
-  // - Afficher l'adresse mail plutôt que "Contacter ..."
-  // - Retirer les logos de lien externe
-
   const labelInformation =
-    contactInformations && isEmailValid(contactInformations)
+    contactInformations && isEmailValid(contactInformations) && !isBrowser
       ? `Contacter ${venue.publicName}`
       : contactInformations
 
-  return (
-    !!(contactInformations !== null && contactInformations !== undefined) && (
-      <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={openContact}>
-        <ExternalLinkSquare size={getSpacing(6)} />
-        <Spacer.Row numberOfSpaces={2} />
-        <Typo.ButtonText>{labelInformation}</Typo.ButtonText>
-      </TouchableOpacity>
-    )
+  return contactInformations !== null && contactInformations !== undefined && !isBrowser ? (
+    <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={openContact} disabled={isBrowser}>
+      <ExternalLinkSquare size={getSpacing(6)} />
+      <Spacer.Row numberOfSpaces={2} />
+      <Typo.ButtonText>{labelInformation}</Typo.ButtonText>
+    </TouchableOpacity>
+  ) : (
+    <WebLabelInformation>{labelInformation}</WebLabelInformation>
   )
 }
 
@@ -72,3 +70,7 @@ const Container = styled.View({
 const TouchableOpacity = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,
 })({ flexDirection: 'row', alignItems: 'center', marginVertical })
+
+const WebLabelInformation = styled(Typo.Body)({
+  marginVertical,
+})
