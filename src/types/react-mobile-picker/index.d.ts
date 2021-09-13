@@ -2,9 +2,9 @@ declare module 'react-mobile-picker' {
   import React, { ReactElement } from 'react'
 
   interface Props {
-    optionGroups: { [name: string]: any }
-    valueGroups: { [name: string]: any }
-    onChange: (name: string, value: any) => void
+    optionGroups: { [name: string]: Array<string | number> }
+    valueGroups: { [name: string]: string | number }
+    onChange: (name: string, value: string | number) => void
     onClick?: () => void
     itemHeight?: number
     height?: number
