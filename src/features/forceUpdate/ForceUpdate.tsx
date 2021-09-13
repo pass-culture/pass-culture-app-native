@@ -10,8 +10,8 @@ import { Background } from 'ui/svg/Background'
 import { Star } from 'ui/svg/icons/Star'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-const ANDROID_STORE_LINK = `https://play.google.com/store/apps/details?id:${env.ANDROID_APP_ID}`
-const IOS_STORE_LINK = `https://apps.apple.com/us/app/pass-culture/id${env.IOS_APP_STORE_ID}`
+const ANDROID_STORE_LINK = `https://play.google.com/store/apps/details?id=${env.ANDROID_APP_ID}`
+const IOS_STORE_LINK = `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}`
 
 const STORE_LINK = Platform.select({
   ios: IOS_STORE_LINK,
