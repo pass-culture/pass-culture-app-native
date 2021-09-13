@@ -55,7 +55,11 @@ export const useCommit = (): { commit: () => void } => {
       navigate('TabNavigator', {
         screen: 'Search',
         params: stagedSearchState,
+<<<<<<< HEAD
       } as never)
+=======
+      })
+>>>>>>> 7372c53d ([PC-10406] [FIX] Add correct navigation on filter search result button by using nesting-navigation method of react-navigation)
     },
   }
 }
