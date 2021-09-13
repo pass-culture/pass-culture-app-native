@@ -51,7 +51,7 @@ export const CalendarPicker: React.FC<Props> = ({
   hideCalendar,
   setSelectedDate,
 }) => {
-  const ref = useRef<any>(null)
+  const ref = useRef<Node>(null)
 
   const currentDay = selectedDate.getDate()
   const currentMonth = selectedDate.getMonth()
@@ -74,7 +74,7 @@ export const CalendarPicker: React.FC<Props> = ({
     }
   }, [selectedDate])
 
-  const handleChange = (name: string, value: any) => {
+  const handleChange = (name: string, value: number | string) => {
     setValueGroups({
       ...valueGroups,
       [name]: value,
