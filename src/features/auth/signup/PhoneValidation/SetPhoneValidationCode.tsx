@@ -125,8 +125,10 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
 
   function onError(error: unknown | ApiError) {
     const { content } = error as ApiError
-    if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS' || content.code === 'TOO_MANY_SMS_SENT') {
+    if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
       navigate('PhoneValidationTooManyAttempts')
+    } else if (content.code === 'TOO_MANY_SMS_SENT') {
+      navigate('PhoneValidationTooManySMSSent')
     } else {
       setErrorMessage(extractApiErrorMessage(error))
     }

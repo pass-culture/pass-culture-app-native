@@ -315,6 +315,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
+            title={`Phone validation too many SMS sent`}
+            onPress={() => navigation.navigate('PhoneValidationTooManySMSSent')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={`Offre inexistante`}
             onPress={() => navigation.navigate('Offer', { id: 0, from: 'search' })}
           />
