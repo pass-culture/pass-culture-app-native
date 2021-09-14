@@ -26,7 +26,6 @@ enum ExpectedCTA {
 const credit: Credit = { amount: 100, isExpired: false }
 const offer: FavoriteOfferResponse = {
   category: {
-    categoryType: 'Event',
     label: 'Pratique artistique',
     name: 'LECON',
   } as FavoriteCategoryResponse,
@@ -47,6 +46,7 @@ const offer: FavoriteOfferResponse = {
   isSoldOut: false,
   isExpired: false,
   isReleased: true,
+  subcategoryId: 'LECON'
 }
 const user: UserProfileResponse = {
   isBeneficiary: true,
@@ -59,7 +59,7 @@ const openExternalUrl = jest
   .spyOn(NavigationHelpers, 'openExternalUrl')
   .mockImplementation(jest.fn())
 
-describe('<BookingButtun />', () => {
+describe('<BookingButton />', () => {
   afterEach(jest.clearAllMocks)
 
   describe('when user is beneficiary', () => {

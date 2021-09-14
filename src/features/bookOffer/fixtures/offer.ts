@@ -1,4 +1,4 @@
-import { CategoryNameEnum, CategoryType, ExpenseDomain } from 'api/gen'
+import { ExpenseDomain } from 'api/gen'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 
 export const mockOffer: OfferAdaptedResponse = {
@@ -32,11 +32,6 @@ export const mockOffer: OfferAdaptedResponse = {
   isDuo: true,
   isEducational: false,
   name: 'Je ne sais pas ce que je dis',
-  category: {
-    categoryType: CategoryType.Event,
-    label: 'Pratique artistique',
-    name: CategoryNameEnum.LECON,
-  },
   stocks: [
     {
       id: 148409,
@@ -91,6 +86,7 @@ export const mockOffer: OfferAdaptedResponse = {
   },
   withdrawalDetails: null,
   fullAddress: 'Cinéma de la fin, RUE DE CALI, 97310 Kourou',
+  subcategoryId: 'SEANCE_CINE'
 }
 
 export const mockDigitalOffer: OfferAdaptedResponse = {
@@ -124,11 +120,6 @@ export const mockDigitalOffer: OfferAdaptedResponse = {
   isDuo: true,
   isEducational: false,
   name: 'Je ne sais pas ce que je dis',
-  category: {
-    categoryType: CategoryType.Thing,
-    label: 'Jeux videos',
-    name: CategoryNameEnum.JEUXVIDEO,
-  },
   stocks: [
     {
       id: 148401,
@@ -163,4 +154,5 @@ export const mockDigitalOffer: OfferAdaptedResponse = {
   },
   withdrawalDetails: null,
   fullAddress: 'Cinéma de la fin, RUE DE CALI, 97310 Kourou',
+  subcategoryId: 'JEU_EN_LIGNE'
 }

@@ -1,7 +1,7 @@
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 
 interface Offer {
-  category: CategoryNameEnum | null
+  category: CategoryIdEnum | null
   dates?: number[]
   description?: string | null
   isDigital?: boolean

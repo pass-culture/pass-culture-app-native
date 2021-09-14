@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers'
 
 import { IconWithCaption } from './IconWithCaption'
 
 interface OfferCategoryProps {
-  category: CategoryNameEnum | null
+  category: CategoryIdEnum | null
   label?: string
 }
 

@@ -22,4 +22,5 @@ export enum QueryKeys {
   VENUE = 'venue',
   VENUES = 'venues',
   VENUE_OFFERS = 'venue_offers',
+  SUBCATEGORIES = 'subcategories',
 }

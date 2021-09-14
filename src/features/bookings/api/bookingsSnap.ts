@@ -1,7 +1,7 @@
 import {
   BookingCancellationReasons,
   BookingsResponse,
-  CategoryNameEnum,
+  CategoryIdEnum,
   CategoryType,
 } from 'api/gen'
 
@@ -26,7 +26,7 @@ export const bookingsSnap: BookingsResponse = {
           category: {
             categoryType: CategoryType.Event,
             label: 'Pratique artistique',
-            name: CategoryNameEnum.LECON,
+            name: CategoryIdEnum.LECON,
           },
           extraData: null,
           isPermanent: false,
@@ -66,7 +66,7 @@ export const bookingsSnap: BookingsResponse = {
           category: {
             categoryType: CategoryType.Event,
             label: 'Pratique artistique',
-            name: CategoryNameEnum.LECON,
+            name: CategoryIdEnum.LECON,
           },
           extraData: {
             isbn: '123456789',

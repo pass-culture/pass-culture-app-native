@@ -3,7 +3,7 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryType, ReportedOffer } from 'api/gen'
+import { ReportedOffer } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
@@ -50,7 +50,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   )
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
-  const { accessibility, category, venue } = offerResponse
+  const { subcategory, accessibility, category, venue } = offerResponse
 
   const dates = offerResponse.stocks.reduce<Date[]>(
     (accumulator, stock) =>
@@ -58,7 +58,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
     []
   )
   const formattedDate = formatDatePeriod(dates)
-  const shouldDisplayWhenBlock = category.categoryType === CategoryType.Event && !!formattedDate
+  const shouldDisplayWhenBlock = subcategory?.isEvent && !!formattedDate
   const shouldShowAccessibility = Object.values(accessibility).some(
     (value) => value !== undefined && value !== null
   )
@@ -90,7 +90,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         isDuo={offerResponse.isDuo}
         stocks={offerResponse.stocks}
         category={category.name || null}
-        label={category.label}
+        label={subcategory?.appLabel}
       />
       <OfferPartialDescription description={offerResponse.description || ''} id={offerId} />
       <Spacer.Column numberOfSpaces={4} />

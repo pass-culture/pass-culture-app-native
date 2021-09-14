@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { CategoryNameEnum, CategoryType, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
+import { CategoryIdEnum, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl, navigateToBooking } from 'features/navigation/helpers'
@@ -46,7 +46,7 @@ export const getCtaWordingAndAction = ({
   availableCategories,
   isUnderageBeneficiary,
 }: Props): ICTAWordingAndAction | undefined => {
-  const { category, externalTicketOfficeUrl } = offer
+  const { externalTicketOfficeUrl, category, subcategory } = offer
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
   const isOfferCategoryNotAvailable = !!(
     category.name && !Object.keys(availableCategories).includes(category.name)
@@ -65,7 +65,7 @@ export const getCtaWordingAndAction = ({
     isUnderageBeneficiary &&
     offer.isDigital &&
     getOfferPrice(offer.stocks) !== 0 &&
-    category.name !== CategoryNameEnum.PRESSE
+    category.name !== CategoryIdEnum.PRESSE
 
   // Non beneficiary or educational offer or unavailable offer for user
   if (
@@ -75,7 +75,7 @@ export const getCtaWordingAndAction = ({
     isOfferCategoryNotAvailable ||
     isOfferCategoryNotBookableByUser
   ) {
-    const isEvent = category.categoryType === CategoryType.Event
+    const isEvent = subcategory?.isEvent
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
     return {
@@ -90,7 +90,7 @@ export const getCtaWordingAndAction = ({
   if (offer.isExpired) return { wording: t`Offre expirée` }
   if (offer.isSoldOut) return { wording: t`Offre épuisée` }
 
-  if (category.categoryType === CategoryType.Thing) {
+  if (!subcategory?.isEvent) {
     if (!hasEnoughCredit) {
       if (offer.isDigital) return { wording: t`Crédit numérique insuffisant` }
       return { wording: t`Crédit insuffisant` }
@@ -104,7 +104,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (category.categoryType === CategoryType.Event) {
+  if (subcategory?.isEvent) {
     if (!hasEnoughCredit) return { wording: t`Crédit insuffisant` }
 
     return {
@@ -136,8 +136,8 @@ export const useCtaWordingAndAction = (props: {
   if (
     isLoggedIn === null ||
     user === null ||
-    offer.category.categoryType === null ||
-    offer.category.categoryType === undefined
+    offer.subcategory === null ||
+    offer.subcategory === undefined
   )
     return
 

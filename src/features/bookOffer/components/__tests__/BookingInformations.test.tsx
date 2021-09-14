@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { mocked } from 'ts-jest/utils'
 
-import { CategoryType } from 'api/gen'
 import { initialBookingState } from 'features/bookOffer/pages/reducer'
 import { render } from 'tests/utils'
 
@@ -43,11 +42,17 @@ describe('<BookingInformations />', () => {
   it('should render event date section when event', async () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
-      category: { categoryType: CategoryType.Event, label: 'categoryLabel' },
       isDigital: false,
       fullAddress: 'mon adresse',
       name: 'mon nom',
       stocks: [],
+      subcategory: {
+        id: 'SEANCE_CINE',
+        appLabel: 'Séance Cinéma',
+        canBeDuo: true,
+        canExpire: true,
+        isEvent: true,
+      }
     })
     const myComponent = render(<BookingInformations />)
     expect(myComponent).toMatchSnapshot()
@@ -56,11 +61,17 @@ describe('<BookingInformations />', () => {
   it('should display free wording is free', async () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
-      category: { categoryType: CategoryType.Event, label: 'categoryLabel' },
       isDigital: false,
       fullAddress: 'mon adresse',
       name: 'mon nom',
       stocks: [],
+      subcategory: {
+        id: 'SEANCE_CINE',
+        appLabel: 'Séance Cinéma',
+        canBeDuo: true,
+        canExpire: true,
+        isEvent: true,
+      }
     })
     // @ts-expect-error mock is not real type
     mockedUseBookingStock.mockReturnValueOnce({
@@ -74,11 +85,17 @@ describe('<BookingInformations />', () => {
   it('should display unique price when quantity is unique', async () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
-      category: { categoryType: CategoryType.Event, label: 'categoryLabel' },
       isDigital: false,
       fullAddress: 'mon adresse',
       name: 'mon nom',
       stocks: [],
+      subcategory: {
+        id: 'SEANCE_CINE',
+        appLabel: 'Séance Cinéma',
+        canBeDuo: true,
+        canExpire: true,
+        isEvent: true,
+      }
     })
     mockedUseBooking.mockReturnValueOnce({
       bookingState: { ...initialBookingState, quantity: 1 },
@@ -96,11 +113,17 @@ describe('<BookingInformations />', () => {
   it('should display expirationDate section when offer is digital and has expirationDate', async () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
-      category: { categoryType: CategoryType.Thing, label: 'categoryLabel' },
       isDigital: true,
       fullAddress: 'mon adresse',
       name: 'mon nom',
       stocks: [],
+      subcategory: {
+        id: 'LIVRE_PAPIER',
+        appLabel: 'Livre papier',
+        canBeDuo: false,
+        canExpire: false,
+        isEvent: false,
+      }
     })
     const myComponent = render(<BookingInformations />)
     expect(myComponent).toMatchSnapshot()
@@ -108,11 +131,17 @@ describe('<BookingInformations />', () => {
   it('should not display expirationDate section when offer is digital and has no expirationDate', async () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
-      category: { categoryType: CategoryType.Thing, label: 'categoryLabel' },
       isDigital: true,
       fullAddress: 'mon adresse',
       name: 'mon nom',
       stocks: [],
+      subcategory: {
+        id: 'LIVRE_PAPIER',
+        appLabel: 'Livre papier',
+        canBeDuo: false,
+        canExpire: false,
+        isEvent: false,
+      }
     })
     // @ts-expect-error mock is not real type
     mockedUseBookingStock.mockReturnValueOnce({

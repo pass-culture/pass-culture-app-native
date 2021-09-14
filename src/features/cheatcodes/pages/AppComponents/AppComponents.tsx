@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum, VenueTypeCode } from 'api/gen/api'
+import { CategoryIdEnum, VenueTypeCode } from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
@@ -284,7 +284,7 @@ export const AppComponents: FunctionComponent = () => {
       <AccordionItem title="Heros">
         <Typo.Title4>Default Hero - Offer</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <Hero imageUrl={undefined} type="offer" categoryName={CategoryNameEnum.CINEMA} />
+        <Hero imageUrl={undefined} type="offer" categoryName={CategoryIdEnum.CINEMA} />
         <Typo.Title4>Default Hero - Venue</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <Hero imageUrl={undefined} type="venue" venueType={VenueTypeCode.ARTISTICCOURSE} />
@@ -852,7 +852,7 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Ended booking Ticket </Text>
         </AlignedText>
         <AlignedText>
-          <EndedBookingTicket offerCategory={CategoryNameEnum.CINEMA} />
+          <EndedBookingTicket offerCategory={CategoryIdEnum.CINEMA} />
           <Text> - Ended booking Ticket without image </Text>
         </AlignedText>
         <AlignedText>
@@ -912,11 +912,11 @@ const CategoryIcons = () => {
   return (
     <React.Fragment>
       <Text>{'Categories'}</Text>
-      {[...Object.values(CategoryNameEnum), null].map((category: string | null) => {
-        const Icon = mapCategoryToIcon(category as CategoryNameEnum | null)
+      {[...Object.values(CategoryIdEnum), null].map((category: string | null) => {
+        const Icon = mapCategoryToIcon(category as CategoryIdEnum | null)
         const BicolorIcon =
           category && category in CATEGORY_CRITERIA
-            ? CATEGORY_CRITERIA[category as CategoryNameEnum].icon
+            ? CATEGORY_CRITERIA[category as CategoryIdEnum].icon
             : CATEGORY_CRITERIA['ALL'].icon
 
         return (

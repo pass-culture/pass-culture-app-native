@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
-import { CategoryNameEnum, CategoryType, UserRole } from 'api/gen'
+import { CategoryIdEnum, CategoryType, UserRole } from 'api/gen'
 import { offerAdaptedResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
@@ -213,11 +213,11 @@ describe('getCtaWordingAndAction', () => {
     describe('underage beneficiary', () => {
       it.each`
         type                  | expected                     | disabled | isDigital | name                           | price
-        ${CategoryType.Thing} | ${'Réserver'}                | ${false} | ${true}   | ${CategoryNameEnum.PRESSE}     | ${20}
-        ${CategoryType.Event} | ${undefined}                 | ${true}  | ${true}   | ${CategoryNameEnum.FILM}       | ${20}
-        ${CategoryType.Event} | ${'Voir les disponibilités'} | ${false} | ${true}   | ${CategoryNameEnum.FILM}       | ${0}
-        ${CategoryType.Thing} | ${undefined}                 | ${true}  | ${false}  | ${CategoryNameEnum.JEUXVIDEO}  | ${0}
-        ${CategoryType.Event} | ${'Voir les disponibilités'} | ${false} | ${false}  | ${CategoryNameEnum.INSTRUMENT} | ${20}
+        ${CategoryType.Thing} | ${'Réserver'}                | ${false} | ${true}   | ${CategoryIdEnum.PRESSE}     | ${20}
+        ${CategoryType.Event} | ${undefined}                 | ${true}  | ${true}   | ${CategoryIdEnum.FILM}       | ${20}
+        ${CategoryType.Event} | ${'Voir les disponibilités'} | ${false} | ${true}   | ${CategoryIdEnum.FILM}       | ${0}
+        ${CategoryType.Thing} | ${undefined}                 | ${true}  | ${false}  | ${CategoryIdEnum.JEUXVIDEO}  | ${0}
+        ${CategoryType.Event} | ${'Voir les disponibilités'} | ${false} | ${false}  | ${CategoryIdEnum.INSTRUMENT} | ${20}
       `(
         'CTA(disabled=$disabled) = "$expected" for categoryType=$type, isDigital=$isDigital, categoryName=$name and price=$price',
         ({ type, expected, disabled, isDigital, name, price }) => {

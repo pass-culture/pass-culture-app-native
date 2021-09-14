@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import { Platform } from 'react-native'
 
-import { CategoryNameEnum, CategoryType } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
 import { getOfferPrice } from 'features/offer/services/getOfferPrice'
@@ -30,16 +30,16 @@ export const useModalContent = (): ModalContent => {
   const onLeftIconPress = undefined
 
   if (!offer) return { children, title, leftIcon, onLeftIconPress }
-  const { category, isDigital, stocks } = offer
+  const { isDigital, stocks, subcategory } = offer
 
   const goToPreviousStep = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
   }
 
-  if (category.categoryType === CategoryType.Thing) {
+  if (!subcategory?.isEvent) {
     if (
       isDigital &&
-      category.name !== CategoryNameEnum.CINEMA &&
+      subcategory?.categoryId !== CategoryIdEnum.CINEMA &&
       Platform.OS === 'ios' &&
       getOfferPrice(stocks) > 0
     ) {

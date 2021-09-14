@@ -1,4 +1,4 @@
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 import { Category } from 'ui/svg/icons/categories'
 import { IconInterface } from 'ui/svg/icons/types'
 
@@ -6,7 +6,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 const DEFAULT_CATEGORY = 'Art'
 
 // Map the facetFilter (in algolia) to the label displayed in the front
-const MAP_CATEGORY_TO_LABEL: { [k in CategoryNameEnum]: string } = {
+const MAP_CATEGORY_TO_LABEL: { [k in CategoryIdEnum]: string } = {
   CINEMA: 'Cinéma',
   VISITE: 'Visite',
   MUSIQUE: 'Musique',
@@ -21,14 +21,14 @@ const MAP_CATEGORY_TO_LABEL: { [k in CategoryNameEnum]: string } = {
   MATERIEL_ART_CREA: 'Art',
 }
 
-export const parseCategory = (category: CategoryNameEnum | null | undefined): string => {
+export const parseCategory = (category: CategoryIdEnum | null | undefined): string => {
   if (category && category in MAP_CATEGORY_TO_LABEL) return MAP_CATEGORY_TO_LABEL[category]
   return DEFAULT_CATEGORY || ''
 }
 
 // Map the facetFilter (in algolia) to the category Icon
 export const MAP_CATEGORY_TO_ICON: {
-  [k in CategoryNameEnum]: React.FC<IconInterface>
+  [k in CategoryIdEnum]: React.FC<IconInterface>
 } = {
   CINEMA: Category.Cinema,
   VISITE: Category.Exposition,
@@ -44,7 +44,7 @@ export const MAP_CATEGORY_TO_ICON: {
   MATERIEL_ART_CREA: Category.ArtsMaterial,
 }
 
-export const mapCategoryToIcon = (category: CategoryNameEnum | null): React.FC<IconInterface> => {
+export const mapCategoryToIcon = (category: CategoryIdEnum | null): React.FC<IconInterface> => {
   if (category && category in MAP_CATEGORY_TO_ICON) return MAP_CATEGORY_TO_ICON[category]
   return Category.Artwork
 }

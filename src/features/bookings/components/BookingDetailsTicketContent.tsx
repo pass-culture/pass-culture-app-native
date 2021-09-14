@@ -4,7 +4,7 @@ import { Platform, View } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
+import { CategoryIdEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
 import {
   TICKET_MIN_HEIGHT,
   QR_CODE_SIZE,
@@ -70,7 +70,7 @@ type EanProps = {
   offer: BookingOfferResponse
 }
 const Ean = ({ offer }: EanProps) => {
-  const shouldDisplayEAN = offer.extraData?.isbn && offer.category.name === CategoryNameEnum.LIVRE
+  const shouldDisplayEAN = offer.extraData?.isbn
   return shouldDisplayEAN ? (
     <EANContainer>
       <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>

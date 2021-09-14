@@ -4,7 +4,7 @@ import { View, PixelRatio } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum, ExpenseDomain, OfferResponse, OfferStockResponse } from 'api/gen'
+import { CategoryIdEnum, ExpenseDomain, OfferResponse, OfferStockResponse } from 'api/gen'
 import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
@@ -17,7 +17,7 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface OfferTileProps {
   category: string
-  categoryName: CategoryNameEnum | null | undefined
+  categoryName: CategoryIdEnum | null | undefined
   description?: string | null
   distance?: string
   date?: string

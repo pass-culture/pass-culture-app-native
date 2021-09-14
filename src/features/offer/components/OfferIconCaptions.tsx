@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum, OfferResponse } from 'api/gen'
+import { CategoryIdEnum, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
@@ -13,7 +13,7 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 import { IconWithCaption, OfferCategory } from '../atoms'
 import { getOfferPrices } from '../services/getOfferPrice'
 
-type Props = { category: CategoryNameEnum | null; label: string } & Pick<
+type Props = { category: CategoryIdEnum | null; label?: string } & Pick<
   OfferResponse,
   'stocks' | 'isDuo'
 >

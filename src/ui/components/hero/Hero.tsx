@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum, VenueTypeCode } from 'api/gen'
+import { CategoryIdEnum, VenueTypeCode } from 'api/gen'
 import { mapCategoryToIcon, mapVenueTypeToIcon } from 'libs/parsers'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
@@ -11,7 +11,7 @@ import { ImagePlaceholder, ImagePlaceholderProps } from 'ui/components/ImagePlac
 import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
 
 type HeroProps =
-  | { type: 'offer'; categoryName: CategoryNameEnum | null }
+  | { type: 'offer'; categoryName: CategoryIdEnum | null }
   | { type: 'venue'; venueType: VenueTypeCode | null }
 
 export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {

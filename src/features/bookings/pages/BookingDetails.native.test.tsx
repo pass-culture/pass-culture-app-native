@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { CategoryNameEnum, CategoryType } from 'api/gen'
+import { CategoryIdEnum, CategoryType } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as Helpers from 'features/bookings/helpers'
 import * as NavigationHelpers from 'features/navigation/helpers'
@@ -89,7 +89,7 @@ describe('BookingDetails', () => {
 
     it('should display EAN code if offer is a book (digital or physical)', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
-      booking.stock.offer.category.name = CategoryNameEnum.LIVRE
+      booking.stock.offer.category.name = CategoryIdEnum.LIVRE
       const { getByText } = renderBookingDetails(booking)
       getByText('123456789')
     })

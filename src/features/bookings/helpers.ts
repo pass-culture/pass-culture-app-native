@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { CategoryType, SettingsResponse } from 'api/gen'
+import { SettingsResponse, SubcategoryResponseModel } from 'api/gen'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
@@ -9,6 +9,7 @@ import {
 } from 'libs/parsers'
 
 import { Booking } from './components/types'
+import { useSubcategories } from 'features/offer/api/useSubcategories'
 
 export type BookingProperties = {
   isDuo?: boolean
@@ -26,12 +27,14 @@ export function getBookingProperties(booking?: Booking): BookingProperties {
 
   const { stock } = booking
   const { offer } = stock
-  const isEvent = offer.category.categoryType === CategoryType.Event
+  const { data: subcategories } = useSubcategories()
+  const subcategory = subcategories?.subcategories.find((subcategory: SubcategoryResponseModel) => subcategory.id === offer?.subcategoryId)
+  const isEvent = subcategory?.isEvent
 
   return {
     isDuo: isEvent && isDuoBooking(booking),
     isEvent,
-    isPhysical: offer.category.categoryType === CategoryType.Thing,
+    isPhysical: !subcategory?.isEvent,
     isDigital: offer.isDigital,
     isPermanent: offer.isPermanent,
     hasActivationCode: booking.activationCode != null,

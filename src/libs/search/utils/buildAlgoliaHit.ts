@@ -1,6 +1,6 @@
 import { ResultItem } from '@elastic/app-search-javascript'
 
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
 import { AppSearchFields, AppSearchVenuesFields, TRUE } from 'libs/search/filters/constants'
 import { SuggestedVenue } from 'libs/venue'
@@ -24,7 +24,7 @@ export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): Algolia
 
   return {
     offer: {
-      category: searchHit.getRaw(AppSearchFields.category) as CategoryNameEnum,
+      category: searchHit.getRaw(AppSearchFields.category) as CategoryIdEnum,
       dates,
       description: searchHit.getRaw(AppSearchFields.description) as string,
       isDigital: +searchHit.getRaw(AppSearchFields.is_digital) === TRUE,

@@ -2,12 +2,14 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
-import { OfferResponse } from 'api/gen'
+import { OfferResponse, SubcategoriesResponseModel, SubcategoryResponseModel } from 'api/gen'
 import { OfferNotFoundError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
+import { useSubcategories } from 'features/offer/api/useSubcategories'
 
 export interface OfferAdaptedResponse extends OfferResponse {
   fullAddress: string | null
+  subcategory?: SubcategoryResponseModel
 }
 
 const isNotEmpty = (text: string | undefined | null) => text !== undefined && text !== ''
@@ -27,8 +29,9 @@ export const formatFullAddress = (
   return fullAddress
 }
 
-const adaptOfferResponse = (offerApiResponse: OfferResponse): OfferAdaptedResponse => ({
+const adaptOfferResponse = (offerApiResponse: OfferResponse, subcategory?: SubcategoryResponseModel): OfferAdaptedResponse => ({
   ...offerApiResponse,
+  subcategory,
   fullAddress: formatFullAddress(
     offerApiResponse.venue.publicName,
     offerApiResponse.venue.name,
@@ -44,6 +47,7 @@ async function getOfferById(offerId: number) {
   }
   try {
     const offerApiResponse = await api.getnativev1offerofferId(offerId)
+
     return adaptOfferResponse(offerApiResponse)
   } catch (error) {
     if (error instanceof ApiError && error.statusCode === 404) {
@@ -53,11 +57,26 @@ async function getOfferById(offerId: number) {
   }
 }
 
-export const useOffer = ({ offerId }: { offerId: number }) =>
-  useQuery<OfferAdaptedResponse | undefined>([QueryKeys.OFFER, offerId], () => {
+export const useOffer = ({ offerId }: { offerId: number }) => {
+  return useQuery<OfferAdaptedResponse | undefined>([QueryKeys.OFFER, offerId], () => {
     if (offerId) {
       return getOfferById(offerId)
     } else {
       return undefined
     }
   })
+}
+
+export const useOfferWithSubcategories = ({ offerId }: { offerId: number }) => {
+  const { data: subcategories } = useSubcategories()
+  const offerResponse = useOffer({ offerId })
+  const subcategory = subcategories?.subcategories.find((subcategory: SubcategoryResponseModel) => subcategory.id === offerResponse.data?.subcategoryId)
+
+  return {
+    ...offerResponse,
+    data: {
+      ...offerResponse.data,
+      subcategory
+    }
+  }
+}

@@ -3,7 +3,6 @@ import React from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryType } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
@@ -43,7 +42,8 @@ export const BookingInformations: React.FC = () => {
 
   if (!offer) return <React.Fragment />
 
-  const { category, isDigital, fullAddress, name } = offer
+  const { isDigital, fullAddress, name, subcategory } = offer
+
   if (!stock || typeof quantity !== 'number') return <React.Fragment />
 
   const address = (
@@ -53,7 +53,7 @@ export const BookingInformations: React.FC = () => {
   )
   const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : t`Gratuit`
 
-  if (category.categoryType === CategoryType.Event) {
+  if (subcategory?.isEvent) {
     const subtext =
       stock.price > 0 && quantity === 2
         ? t({

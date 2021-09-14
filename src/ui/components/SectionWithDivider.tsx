@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
 interface SectionProps {
-  visible: boolean
+  visible?: boolean
   children: JSX.Element | JSX.Element[]
   margin?: boolean
 }
