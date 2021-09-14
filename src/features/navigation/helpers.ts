@@ -66,10 +66,10 @@ export async function openExternalUrl(
 export async function openExternalPhoneNumber(phone: string) {
   let phoneNumber = phone
 
-  if (Platform.OS !== 'android') {
-    phoneNumber = `telprompt:${phone}`
-  } else {
+  if (Platform.OS === 'android') {
     phoneNumber = `tel:${phone}`
+  } else {
+    phoneNumber = `telprompt:${phone}`
   }
 
   const canOpen = await Linking.canOpenURL(phoneNumber)
