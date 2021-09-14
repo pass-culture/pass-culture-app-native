@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query'
 
-import { SuggestedVenue } from 'libs/place'
 import { QueryKeys } from 'libs/queryKeys'
 import { fetchVenues } from 'libs/search/fetch/search'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
+import { SuggestedVenue } from 'libs/venue'
 
 const STALE_TIME_VENUES = 5 * 60 * 1000
 

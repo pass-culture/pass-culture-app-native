@@ -1,6 +1,7 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { SuggestedPlace, SuggestedVenue } from 'libs/place'
+import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
+import { SuggestedVenue } from 'libs/venue'
 
 import { LocationType } from './enums'
 

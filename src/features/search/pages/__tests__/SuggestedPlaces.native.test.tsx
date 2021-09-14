@@ -4,12 +4,17 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
+import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { analytics } from 'libs/analytics'
 import { buildSuggestedPlaces, SuggestedPlace } from 'libs/place'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
+import { SuggestedVenue } from 'libs/venue'
+import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockStagedDispatch = jest.fn()
+const venueId = venueResponseSnap.id
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({
@@ -19,10 +24,12 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 let mockPlaces: SuggestedPlace[] = []
+let mockVenues: SuggestedVenue[] = []
+
 let mockIsLoading = false
 jest.mock('features/search/api', () => ({
   usePlaces: () => ({ data: mockPlaces, isLoading: mockIsLoading }),
-  useVenues: () => ({ data: [], isLoading: false }),
+  useVenues: () => ({ data: mockVenues, isLoading: mockIsLoading }),
 }))
 
 describe('SuggestedPlaces component', () => {
@@ -60,5 +67,23 @@ describe('SuggestedPlaces component', () => {
     mockIsLoading = true
     const { queryByText } = render(<SuggestedPlaces query="paris" />)
     expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeFalsy()
+  })
+
+  it(`should log analytics event ChooseLocation when clicking on pick place`, () => {
+    mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
+    const { getByTestId } = render(<SuggestedPlaces query="paris" />)
+
+    fireEvent.press(getByTestId(keyExtractor(mockPlaces[1])))
+    expect(analytics.logChooseLocation).toHaveBeenNthCalledWith(1, { type: 'place' })
+  })
+
+  it(`should log analytics event ChooseLocation when clicking on pick venue`, () => {
+    mockVenues = mockedSuggestedVenues
+    mockPlaces = []
+    mockIsLoading = false
+    const { getByTestId } = render(<SuggestedPlaces query="venue-5543" />)
+
+    fireEvent.press(getByTestId(keyExtractor(mockPlaces[1])))
+    expect(analytics.logChooseLocation).toHaveBeenNthCalledWith(1, { type: 'venue', venueId })
   })
 })

@@ -26,9 +26,3 @@ export interface SuggestedPlace {
     latitude: number
   } | null
 }
-
-export interface SuggestedVenue {
-  label: string
-  info: string
-  venueId: number | null
-}
