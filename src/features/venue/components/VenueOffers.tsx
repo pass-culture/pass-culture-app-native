@@ -58,6 +58,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   )
 
   const seeAllOffers = useCallback(() => {
+    analytics.logVenueSeeAllOffersClicked(venueId)
     dispatch({ type: 'SET_STATE', payload: params })
     stagedDispatch({ type: 'SET_STATE', payload: params })
     navigate('Search', params)

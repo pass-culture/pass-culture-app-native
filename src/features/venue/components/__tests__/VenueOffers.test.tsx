@@ -70,4 +70,10 @@ describe('<VenueOffers />', () => {
     fireEvent.press(getByText('En voir plus'))
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
+
+  it(`should log analytics event VenueSeeAllOffersClicked when clicking "Voir toutes les offres" button`, () => {
+    const { getByText } = render(<VenueOffers venueId={venueId} />)
+    fireEvent.press(getByText('Voir toutes les offres'))
+    expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenNthCalledWith(1, venueId)
+  })
 })

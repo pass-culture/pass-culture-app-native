@@ -61,6 +61,7 @@ export enum AnalyticsEvent {
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
+  VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
 }
 
