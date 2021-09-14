@@ -1251,31 +1251,20 @@ Object {
                 style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="margin-top: -4px; margin-bottom: -4px;"
-                >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-top: 4px; margin-bottom: 4px;"
-                  >
-                    contact@venue.com
-                  </div>
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-top: 4px; margin-bottom: 4px;"
-                  >
-                    +33102030405
-                  </div>
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-top: 4px; margin-bottom: 4px;"
-                  >
-                    https://my@website.com
-                  </div>
-                </div>
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                />
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                />
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                />
               </div>
             </div>
             <div
@@ -2703,31 +2692,20 @@ Object {
               style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="margin-top: -4px; margin-bottom: -4px;"
-              >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-top: 4px; margin-bottom: 4px;"
-                >
-                  contact@venue.com
-                </div>
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-top: 4px; margin-bottom: 4px;"
-                >
-                  +33102030405
-                </div>
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-top: 4px; margin-bottom: 4px;"
-                >
-                  https://my@website.com
-                </div>
-              </div>
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+              />
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+              />
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+              />
             </div>
           </div>
           <div

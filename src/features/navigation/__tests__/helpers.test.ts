@@ -1,4 +1,4 @@
-import { Linking, Platform } from 'react-native'
+import { Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
@@ -6,12 +6,7 @@ import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enu
 import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 
-import {
-  openExternalUrl,
-  navigateToBooking,
-  homeNavigateConfig,
-  openExternalPhoneNumber,
-} from '../helpers'
+import { openExternalUrl, navigateToBooking, homeNavigateConfig } from '../helpers'
 
 jest.mock('features/navigation/navigationRef')
 
@@ -72,27 +67,6 @@ describe('Navigation helpers', () => {
       const bookingId = 37815152
       navigateToBooking(bookingId)
       expect(navigationRef.current?.navigate).toBeCalledWith('BookingDetails', { id: bookingId })
-    })
-  })
-
-  describe('openExternalPhoneNumber', () => {
-    const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
-    const phoneNumber = '0610203040'
-
-    it('should navigate phone keyboard with "telprompt:" if is iOS device', async () => {
-      Platform.OS = 'ios'
-      openExternalPhoneNumber(phoneNumber)
-      await waitForExpect(() => {
-        expect(openUrl).toBeCalledWith(`telprompt:${phoneNumber}`)
-      })
-    })
-
-    it('should navigate phone keyboard with "tel:" if is Androïd device', async () => {
-      Platform.OS = 'android'
-      openExternalPhoneNumber(phoneNumber)
-      await waitForExpect(() => {
-        expect(openUrl).toBeCalledWith(`tel:${phoneNumber}`)
-      })
     })
   })
 })
