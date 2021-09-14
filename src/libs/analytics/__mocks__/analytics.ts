@@ -69,6 +69,7 @@ export const analytics: typeof actualAnalytics = {
   logSignUpLessThanOrEqualTo13: jest.fn(),
   logUseFilter: jest.fn(),
   logVenueSeeMoreClicked: jest.fn(),
+  logChooseLocation: jest.fn(),
   setUserId: jest.fn(),
 }
 
