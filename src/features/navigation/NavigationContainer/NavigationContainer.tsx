@@ -5,6 +5,7 @@ import {
   Theme,
 } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
+import { Platform } from 'react-native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
@@ -52,7 +53,11 @@ export const AppNavigationContainer = () => {
 
   return (
     <NavigationContainer
-      linking={linking}
+      // We do not pass `linking` to NavigationContainer as it is handled by our custom
+      // listener for iOS. Note that we still need `linking`to be defined for iOS as
+      // its config is used in the custom listener in order to avoid having a duplicate
+      // navigation logic.
+      linking={Platform.OS === 'ios' ? undefined : linking}
       onStateChange={onNavigationStateChange}
       fallback={<LoadingPage />}
       ref={setRef}
