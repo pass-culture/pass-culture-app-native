@@ -92,6 +92,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         type={venueTypeCode || null}
         label={typeLabel}
         locationCoordinates={{ latitude, longitude }}
+        venueId={venueId}
       />
 
       {/* Description */}

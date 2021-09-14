@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { Coordinates, VenueTypeCode } from 'api/gen'
 import { IconWithCaption } from 'features/venue/atoms/IconWithCaption'
 import { VenueType } from 'features/venue/atoms/VenueType'
+import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { testID } from 'tests/utils'
@@ -12,15 +13,26 @@ import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNo
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-type Props = { type: VenueTypeCode | null; label: string; locationCoordinates: Coordinates }
+type Props = {
+  type: VenueTypeCode | null
+  label: string
+  locationCoordinates: Coordinates
+  venueId: number
+}
 
-export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordinates }) => {
+export const VenueIconCaptions: React.FC<Props> = ({
+  type,
+  label,
+  locationCoordinates,
+  venueId,
+}) => {
   const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useGeolocation()
   const { latitude: lat, longitude: lng } = locationCoordinates
   const distanceToLocation = useDistance({ lat, lng })
 
   const onPressActiveGeolocation = async () => {
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+      analytics.logChooseLocation(venueId)
       showGeolocPermissionModal()
     } else {
       await requestGeolocPermission()

@@ -62,6 +62,7 @@ export enum AnalyticsEvent {
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
+  CHOOSE_LOCATION = 'ChooseLocation',
 }
 
 export enum IdCheckAnalyticsEvent {
