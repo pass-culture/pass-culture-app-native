@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { memo, useContext, useEffect, useReducer } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
@@ -52,10 +53,8 @@ export const useCommit = (): { commit: () => void } => {
   const { stagedSearchState } = useContext(SearchContext)!
   return {
     commit() {
-      navigate('TabNavigator', {
-        screen: 'Search',
-        params: stagedSearchState,
-      })
+      const { screen, params } = getTabNavigateConfig('Search', stagedSearchState)
+      navigate(screen, params)
     },
   }
 }

@@ -3,20 +3,13 @@ import { Linking, Platform } from 'react-native'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
+import { TabNavigateConfig } from 'features/navigation/TabBar/types'
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
 
 import { navigationRef } from './navigationRef'
 
-interface HomeNavigateConfig {
-  screen: 'TabNavigator'
-  params: {
-    screen: 'Home'
-    params: undefined
-  }
-}
-
-export const homeNavigateConfig: HomeNavigateConfig = {
+export const homeNavigateConfig: TabNavigateConfig<'Home'> = {
   screen: 'TabNavigator',
   params: {
     screen: 'Home',

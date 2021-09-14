@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
@@ -27,6 +28,10 @@ describe('SearchBox component', () => {
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
     expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
     expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
-    expect(navigate).toBeCalledWith('Search', { query: 'jazzaza', showResults: true })
+    const tabNavigateConfig = getTabNavigateConfig('Search', {
+      query: 'jazzaza',
+      showResults: true,
+    })
+    expect(navigate).toBeCalledWith(tabNavigateConfig.screen, tabNavigateConfig.params)
   })
 })

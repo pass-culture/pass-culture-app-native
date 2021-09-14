@@ -17,3 +17,10 @@ export type TabParamList = {
 export interface TabRoute extends IdCheckRoute<StackNavigationOptions, TabParamList> {
   pathConfig?: PathConfig
 }
+export interface TabNavigateConfig<Screen extends TabRouteName> {
+  screen: 'TabNavigator'
+  params: {
+    screen: Screen
+    params: TabParamList[Screen]
+  }
+}

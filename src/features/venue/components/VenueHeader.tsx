@@ -3,6 +3,7 @@ import React from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { isSharingSupported } from 'features/offer/services/isSharingSupported'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
@@ -17,12 +18,14 @@ interface Props {
   venueId: number
 }
 
+const searchTabNavigateConfig = getTabNavigateConfig('Search')
+
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
 export const VenueHeader: React.FC<Props> = (props) => {
   const { headerTransition, title, venueId } = props
-  const { goBack } = useGoBack('Search')
+  const { goBack } = useGoBack(searchTabNavigateConfig.screen, searchTabNavigateConfig.params)
 
   const shareVenue = useShareVenue(venueId)
 

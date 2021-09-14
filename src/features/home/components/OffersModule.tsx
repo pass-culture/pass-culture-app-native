@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
@@ -81,7 +82,8 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const onPressSeeMore = useCallback(() => {
     analytics.logClickSeeMore(moduleName)
-    navigate('Search', parseSearchParameters(parameters))
+    const tabNavigateConfig = getTabNavigateConfig('Search', parseSearchParameters(parameters))
+    navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
   }, [])
 
   const ListHeaderComponent = useCallback(() => {
