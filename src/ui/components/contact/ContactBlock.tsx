@@ -52,7 +52,7 @@ const renderContactAtom = (
 
   return contactInformations !== null && contactInformations !== undefined && !isBrowser ? (
     <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={openContact} disabled={isBrowser}>
-      <ExternalLinkSquare size={getSpacing(6)} />
+      <ExternalLinkSquare size={getSpacing(6)} testID="ExternalLinkSquare" />
       <Spacer.Row numberOfSpaces={2} />
       <Typo.ButtonText>{labelInformation}</Typo.ButtonText>
     </TouchableOpacity>

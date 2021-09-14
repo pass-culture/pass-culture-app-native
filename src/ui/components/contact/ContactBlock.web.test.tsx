@@ -1,10 +1,7 @@
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { render } from 'tests/utils/web'
-import { isValidFrenchPhoneNumber } from 'ui/components/contact/frenchPhoneNumberCheck'
-import { isEmailValid } from 'ui/components/inputs/emailCheck'
 
 import { ContactBlock } from './ContactBlock'
 
@@ -12,36 +9,57 @@ const email = venueResponseSnap.contact?.email || ''
 const phoneNumber = venueResponseSnap.contact?.phoneNumber || ''
 const website = venueResponseSnap.contact?.website || ''
 
-jest.mock('features/venue/api/useVenue')
-jest.mock('ui/components/contact/frenchPhoneNumberCheck')
-jest.mock('ui/components/inputs/emailCheck')
-const mockedUseValidFrenchPhoneNumber = mocked(isValidFrenchPhoneNumber)
-const mockedEmailCheck = mocked(isEmailValid)
-
 describe('<ContactBlock/>', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should display the email', () => {
-    mockedEmailCheck.mockReturnValueOnce(true)
-    const { getByText } = renderContactBlock()
-    expect(getByText(email))
+  it('should not display the phoneNumber and website if they are undefined', () => {
+    const { queryByText } = renderContactBlock(email, undefined, undefined)
+    expect(queryByText(email))
+    expect(queryByText(phoneNumber)).toBeNull()
+    expect(queryByText(website)).toBeNull()
   })
 
-  it('should display the phone number', () => {
-    mockedUseValidFrenchPhoneNumber.mockReturnValueOnce(true)
-    const { getByText } = renderContactBlock()
-    expect(getByText(phoneNumber))
+  it('should not display the phoneNumber and website if they are undefined', () => {
+    const { queryByText } = renderContactBlock(undefined, phoneNumber, undefined)
+    expect(queryByText(email)).toBeNull()
+    expect(queryByText(phoneNumber))
+    expect(queryByText(website)).toBeNull()
   })
 
-  it('should display the website', () => {
-    const { getByText } = renderContactBlock()
-    expect(getByText(website))
+  it('should not display the email and phoneNumber if they are undefined', () => {
+    const { queryByText } = renderContactBlock(undefined, undefined, website)
+    expect(queryByText(email)).toBeNull()
+    expect(queryByText(phoneNumber)).toBeNull()
+    expect(queryByText(website))
+  })
+
+  it('should not display the email, phoneNumber and website if they are all undefined', () => {
+    const { queryByText } = renderContactBlock(undefined, undefined, undefined)
+    expect(queryByText(email)).toBeNull()
+    expect(queryByText(phoneNumber)).toBeNull()
+    expect(queryByText(website)).toBeNull()
+  })
+
+  it('should display the email, phoneNumber and website', () => {
+    const { queryByText } = renderContactBlock(email, phoneNumber, website)
+    expect(queryByText(email))
+    expect(queryByText(phoneNumber))
+    expect(queryByText(website))
+  })
+
+  it('should not display 3 external icons if email, phoneNumber and website are enable', () => {
+    const { queryByTestId } = renderContactBlock(email, phoneNumber, website)
+    expect(queryByTestId('ExternalLinkSquare')).toBeNull()
   })
 })
 
-const renderContactBlock = () => {
+const renderContactBlock = (
+  email?: string | undefined,
+  phoneNumber?: string | undefined,
+  website?: string | undefined
+) => {
   return render(
     <ContactBlock
       venue={venueResponseSnap}
