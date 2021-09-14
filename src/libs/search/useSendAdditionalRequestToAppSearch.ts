@@ -10,7 +10,7 @@ import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 // TODO(antoinewg): delete once the migration to AppSearch is completed
 export const useSendAdditionalRequestToAppSearch = () => {
   const { isAppSearchBackend } = useAppSearchBackend()
-  const searchLoad = useSearchLoad()
+  const { data: searchLoad = 0 } = useSearchLoad()
 
   return (request: () => Promise<unknown>) => () => {
     try {

@@ -3,6 +3,7 @@ export enum QueryKeys {
   BOOKINGS = 'bookings',
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',
+  FIRESTORE_APP_SEARCH = 'firestoreAppSearch',
   HOMEPAGE_MODULES = 'homepageModules',
   ID_CHECK_TOKEN = 'idCheckToken',
   OFFER = 'offer',

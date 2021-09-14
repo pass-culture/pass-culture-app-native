@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useQuery } from 'react-query'
 
 import { env } from 'libs/environment'
 import firestoreRemoteStore from 'libs/firestore/client'
 import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firestore/types'
+import { QueryKeys } from 'libs/queryKeys'
+
+// To avoid firing requests firestore on every request
+const STALE_TIME_FIRESTORE_SEARCH_LOAD = 5 * 60 * 1000
 
 export const getSearchLoad = () =>
   firestoreRemoteStore
@@ -10,16 +14,13 @@ export const getSearchLoad = () =>
     .doc(env.ENV)
     .get()
     .then((collection) => collection.data())
+    .then((data) =>
+      data && typeof data[RemoteStoreDocuments.LOAD_PERCENT] === 'number'
+        ? data[RemoteStoreDocuments.LOAD_PERCENT]
+        : 0
+    )
 
-export const useSearchLoad = () => {
-  const [searchLoad, setSearchLoad] = useState<number>(0)
-
-  useEffect(() => {
-    getSearchLoad().then((data) => {
-      if (data && typeof data[RemoteStoreDocuments.LOAD_PERCENT] === 'number')
-        setSearchLoad(data[RemoteStoreDocuments.LOAD_PERCENT])
-    })
-  }, [])
-
-  return searchLoad
-}
+export const useSearchLoad = () =>
+  useQuery<number>(QueryKeys.FIRESTORE_APP_SEARCH, getSearchLoad, {
+    staleTime: STALE_TIME_FIRESTORE_SEARCH_LOAD,
+  })
