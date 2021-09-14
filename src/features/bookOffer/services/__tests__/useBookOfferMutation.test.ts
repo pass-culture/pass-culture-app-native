@@ -29,6 +29,7 @@ describe('useBookOfferMutation', () => {
     const { result, waitForNextUpdate } = renderHook(
       () => useBookOfferMutation(props),
       // eslint-disable-next-line react/display-name
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       { wrapper: ({ children }) => reactQueryProviderHOC(children, setup) }
     )
 
@@ -55,6 +56,7 @@ describe('useBookOfferMutation', () => {
     const { result, waitForNextUpdate } = renderHook(
       () => useBookOfferMutation(props),
       // eslint-disable-next-line react/display-name
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       { wrapper: ({ children }) => reactQueryProviderHOC(children, setup) }
     )
 

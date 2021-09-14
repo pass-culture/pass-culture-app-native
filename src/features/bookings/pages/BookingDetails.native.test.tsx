@@ -285,5 +285,6 @@ describe('BookingDetails', () => {
 
 function renderBookingDetails(booking: Booking) {
   jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue(booking)
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<BookingDetails />))
 }

@@ -41,6 +41,7 @@ describe('useHomeRecommendedHits', () => {
 
   it('not make any call if there is no recommendation module', async () => {
     renderHook(() => useHomeRecommendedHits(undefined), {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -56,6 +57,7 @@ describe('useHomeRecommendedHits', () => {
       display: { title: 'Offres recommandées', layout: 'one-item-medium', minOffers: 4 },
     })
     const { result } = renderHook(() => useHomeRecommendedHits(recommendationModule), {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

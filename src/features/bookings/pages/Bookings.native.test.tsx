@@ -56,5 +56,6 @@ const renderBookings = (bookings: BookingsResponse) => {
     .spyOn(Queries, 'useBookings')
     .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
 
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<Bookings />))
 }

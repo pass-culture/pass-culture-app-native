@@ -37,6 +37,7 @@ jest.mock('features/offer/services/useHasEnoughCredit', () => ({
 
 describe('BookDuoChoice', () => {
   it('should display two blocs if offer is duo', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookDuoChoice />))
 
     const soloChoice = page.queryByTestId('DuoChoice1')
@@ -50,6 +51,7 @@ describe('BookDuoChoice', () => {
   })
 
   it('should select an item when pressed', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookDuoChoice />))
 
     const soloChoice = page.getByTestId('DuoChoice1')
@@ -60,6 +62,7 @@ describe('BookDuoChoice', () => {
   })
   it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookDuoChoice />))
 
     expect(page.getByTestId('DuoChoice1-price').textContent).toBe('crédit insuffisant')

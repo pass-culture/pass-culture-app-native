@@ -26,6 +26,7 @@ describe('CheatCodes component', () => {
   } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
   it('should render correctly', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const instance = render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
 
     await act(async () => {
@@ -42,6 +43,7 @@ describe('CheatCodes component', () => {
     ${'production'} | ${false}
   `('should display/not display code push button', async ({ environment, buttonIsdisplayed }) => {
     env.ENV = environment
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const instance = render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
 
     await act(async () => {
@@ -54,6 +56,7 @@ describe('CheatCodes component', () => {
   })
 
   it('should call installationID and display it', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { queryByText } = render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
 
     await act(async () => {

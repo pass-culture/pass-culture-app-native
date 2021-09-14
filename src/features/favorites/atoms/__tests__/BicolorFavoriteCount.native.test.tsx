@@ -88,6 +88,7 @@ async function renderBicolorFavoriteCount(options: Options = defaultOptions) {
     )
   )
   mockUseAuthContext.mockReturnValue({ isLoggedIn, setIsLoggedIn: jest.fn() })
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   const renderAPI = render(reactQueryProviderHOC(<BicolorFavoriteCount />))
   await superFlushWithAct()
   return renderAPI

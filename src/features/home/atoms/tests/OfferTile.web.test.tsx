@@ -30,12 +30,14 @@ describe('OfferTile component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<OfferTile {...props} />))
     expect(renderAPI).toMatchSnapshot()
   })
 
   // FIXME: Web integration
   it.skip('should navigate to the offer when clicking on the image [WEB INTEGRATION REQUIRED]', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.click(getByTestId('offerTileImage'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
@@ -47,6 +49,7 @@ describe('OfferTile component', () => {
 
   // FIXME: Web integration
   it.skip('Analytics - should log ConsultOffer that user opened the offer [WEB INTEGRATION REQUIRED]', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.click(getByTestId('offerTileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -58,6 +61,7 @@ describe('OfferTile component', () => {
 
   // FIXME: Web integration
   it.skip('should prepopulate react-query cache when clicking on offer [WEB INTEGRATION REQUIRED]', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.click(getByTestId('offerTileImage'))
 

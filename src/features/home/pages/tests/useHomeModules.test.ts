@@ -57,6 +57,7 @@ describe('useHomeModules', () => {
     const { result, waitForNextUpdate } = renderHook(
       () => useHomeModules(offerModules),
       // eslint-disable-next-line react/display-name
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       { wrapper: ({ children }) => reactQueryProviderHOC(children) }
     )
 

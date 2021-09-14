@@ -35,6 +35,7 @@ describe('OfferPartialDescription', () => {
   })
   it("shouldn't render the SeeMore button if no content is on description page", async () => {
     const { queryByTestId } = render(
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(
         <OfferPartialDescription id={offerId} description={undefined} />,
         (queryClient: QueryClient) => {
@@ -58,6 +59,7 @@ const renderOfferDescription = async (description?: string) => {
   }
 
   const wrapper = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(<OfferPartialDescription id={offerId} description={description} />, setup)
   )
   return wrapper

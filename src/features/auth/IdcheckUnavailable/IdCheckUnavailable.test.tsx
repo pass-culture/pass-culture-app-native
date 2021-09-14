@@ -32,5 +32,6 @@ describe('<IdCheckUnavailable/>', () => {
 })
 
 function renderIdCheckUnavailable() {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<IdCheckUnavailable />))
 }

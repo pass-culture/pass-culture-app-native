@@ -221,6 +221,7 @@ async function homeRenderer({ isLoggedIn, partialUser }: Params = defaultParams)
   if (isLoggedIn) simulateAuthenticatedUser(partialUser)
   const renderAPI = render(<Home />, {
     wrapper: ({ children }) =>
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(
         <AuthContext.Provider value={{ isLoggedIn: !!isLoggedIn, setIsLoggedIn: jest.fn() }}>
           {children}

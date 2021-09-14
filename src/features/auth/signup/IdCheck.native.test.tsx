@@ -96,6 +96,7 @@ const NotIdCheck = () => <Text>NotIdCheck Page</Text>
 
 function renderIdCheckWithNavigation() {
   return render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator initialRouteName="IdCheck">

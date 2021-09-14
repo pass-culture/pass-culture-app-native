@@ -63,6 +63,7 @@ async function renderPersonalData(response: UserProfileResponse) {
 
   // mock api response based on the given parameters
   mockMeApiCall(response)
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   const wrapper = render(reactQueryProviderHOC(<PersonalData />))
   await superFlushWithAct()
   return wrapper

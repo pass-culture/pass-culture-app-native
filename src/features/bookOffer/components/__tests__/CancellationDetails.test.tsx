@@ -51,6 +51,7 @@ jest.mock('features/auth/settings', () => ({
 describe('<CancellationDetails /> when autoActivateDigitalBookings = false', () => {
   it('should be cancellable if no limitDate specified', () => {
     mockStock = { ...notExpiredStock, cancellationLimitDatetime: null }
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
     expectCancellable(page)
@@ -58,12 +59,14 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = false', () 
 
   it('should not be cancellable if limitDate in the past', () => {
     mockStock = { ...notExpiredStock, cancellationLimitDatetime: pastDate }
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<CancellationDetails />))
     expectNotCancellable(page)
   })
 
   it('should be cancellable if limitDate in the future', () => {
     mockStock = { ...notExpiredStock, cancellationLimitDatetime: futureDate }
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<CancellationDetails />))
     expect(
       page.queryByText('Cette réservation peut être annulée jusqu’au 6 janvier 2021, 00h00')
@@ -85,6 +88,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
         }
         mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
         mockSettings = { autoActivateDigitalBookings: true }
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
         expectNotCancellable(page)
@@ -103,6 +107,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
         }
         mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
         mockSettings = { autoActivateDigitalBookings: true }
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
         expectNotCancellable(page)
@@ -115,6 +120,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
       mockStock = { ...notExpiredStock, cancellationLimitDatetime: null, activationCode: null }
       mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
       mockSettings = { autoActivateDigitalBookings: true }
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
       expectCancellable(page)
@@ -124,6 +130,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
       mockStock = { ...notExpiredStock, cancellationLimitDatetime: pastDate, activationCode: null }
       mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
       mockSettings = { autoActivateDigitalBookings: true }
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
       expectNotCancellable(page)
@@ -137,6 +144,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
       }
       mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
       mockSettings = { autoActivateDigitalBookings: true }
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
       expectCancellableBefore(page)

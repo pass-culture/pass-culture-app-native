@@ -180,6 +180,7 @@ describe('<BookingDetails />', () => {
 })
 
 const renderBookingDetails = async (stocks: OfferStockResponse[]) => {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   const renderAPI = render(reactQueryProviderHOC(<BookingDetails stocks={stocks} />))
 
   await act(flushAllPromises)

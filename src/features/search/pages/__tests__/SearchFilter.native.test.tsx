@@ -38,6 +38,7 @@ jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
 }))
 
+// eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))
 describe('SearchFilter component', () => {
   it('should render correctly', () => {

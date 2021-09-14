@@ -50,12 +50,14 @@ describe('Search component', () => {
 
   it('should render correctly', () => {
     useRoute.mockReturnValueOnce({})
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { toJSON } = render(reactQueryProviderHOC(<Search />))
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should handle coming from "See More" correctly', () => {
     useRoute.mockReturnValueOnce({ params: parameters })
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<Search />))
     expect(mockDispatch).toBeCalledWith({ type: 'SET_STATE_FROM_NAVIGATE', payload: parameters })
     expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })

@@ -25,11 +25,13 @@ describe('<BookingConfirmation />', () => {
   afterEach(jest.clearAllMocks)
 
   it('should render correctly', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookingConfirmation />))
     expect(page).toMatchSnapshot()
   })
 
   it('should go to Bookings and log analytics event', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<BookingConfirmation />))
     fireEvent.press(renderAPI.getByText('Voir ma réservation'))
     await waitForExpect(() => {
