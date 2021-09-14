@@ -10,7 +10,9 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { usePlaces, useVenues } from 'features/search/api'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { SuggestedPlace, SuggestedVenue } from 'libs/place'
+import { analytics } from 'libs/analytics'
+import { SuggestedPlace } from 'libs/place'
+import { SuggestedVenue } from 'libs/venue'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -60,11 +62,12 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
 
   const onPickPlace = (hit: SuggestedPlaceOrVenue) => () => {
     if (isVenue(hit) && hit.venueId) {
+      analytics.logChooseLocation({ type: 'venue', venueId: hit.venueId })
       dispatch({ type: 'SET_LOCATION_VENUE', payload: hit })
     } else if (isPlace(hit) && hit.geolocation) {
+      analytics.logChooseLocation({ type: 'place' })
       dispatch({ type: 'SET_LOCATION_PLACE', payload: { aroundRadius: MAX_RADIUS, place: hit } })
     }
-
     // we need to call goBack twice, first to LocationPicker
     goBack()
     // then previous page

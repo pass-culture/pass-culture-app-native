@@ -2,7 +2,8 @@ import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
-import { SuggestedPlace, SuggestedVenue } from 'libs/place'
+import { SuggestedPlace } from 'libs/place'
+import { SuggestedVenue } from 'libs/venue'
 
 import { addOrRemove, clampPrice } from './reducer.helpers'
 

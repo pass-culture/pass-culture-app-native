@@ -5,11 +5,11 @@ import { Response } from 'features/search/pages/useSearchResults'
 import { SearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia'
 import { GeoCoordinates } from 'libs/geolocation'
-import { SuggestedVenue } from 'libs/place'
 import { SearchHit } from 'libs/search'
 import { client } from 'libs/search/client'
 import { buildQueryOptions, AppSearchFields, RESULT_FIELDS } from 'libs/search/filters'
 import { buildAlgoliaHit, buildVenues } from 'libs/search/utils/buildAlgoliaHit'
+import { SuggestedVenue } from 'libs/venue'
 
 interface SearchResponse {
   hits: SearchHit[]

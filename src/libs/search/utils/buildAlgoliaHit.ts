@@ -2,8 +2,8 @@ import { ResultItem } from '@elastic/app-search-javascript'
 
 import { CategoryNameEnum } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
-import { SuggestedVenue } from 'libs/place'
 import { AppSearchFields, TRUE } from 'libs/search/filters/constants'
+import { SuggestedVenue } from 'libs/venue'
 
 // TODO(antoinewg) We need this function temporarily but delete when we migrate completely to App Search
 export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): AlgoliaHit => {
