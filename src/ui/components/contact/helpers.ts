@@ -1,3 +1,5 @@
+import { Linking, Platform } from 'react-native'
+
 export const isValidFrenchPhoneNumber = (phonenumber: string) => {
   const metropolitanFranceReg = new RegExp(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/)
   const overseasFranceReg = new RegExp(
@@ -15,4 +17,14 @@ export const isValidFrenchPhoneNumber = (phonenumber: string) => {
     !(phonenumber.match(metropolitanFranceReg) === null) ||
     !(phonenumber.match(overseasFranceReg) === null)
   )
+}
+
+export async function openPhoneNumber(phone: string) {
+  const phoneNumber = Platform.OS === 'android' ? `tel:${phone}` : `telprompt:${phone}`
+  if (await Linking.canOpenURL(phoneNumber)) Linking.openURL(phoneNumber)
+}
+
+export async function openMail(mail: string) {
+  const mailTo = `mailto:${mail}`
+  if (await Linking.canOpenURL(mailTo)) Linking.openURL(mailTo)
 }

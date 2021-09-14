@@ -140,7 +140,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       {/* Contact */}
       <SectionWithDivider visible={shouldShowContact}>
         <AccordionItem title={t`Contact`} scrollViewRef={scrollViewRef}>
-          <ContactBlock {...contact} venue={venue} />
+          <ContactBlock {...contact} venueName={venue.publicName || venue.name} />
         </AccordionItem>
       </SectionWithDivider>
 

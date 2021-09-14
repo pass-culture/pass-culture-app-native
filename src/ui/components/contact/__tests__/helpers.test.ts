@@ -1,4 +1,28 @@
-import { isValidFrenchPhoneNumber } from './frenchPhoneNumberCheck'
+import { Linking, Platform } from 'react-native'
+import waitForExpect from 'wait-for-expect'
+
+import { openPhoneNumber, isValidFrenchPhoneNumber } from 'ui/components/contact/helpers'
+
+describe('openPhoneNumber', () => {
+  const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
+  const phoneNumber = '0610203040'
+
+  it('should navigate phone keyboard with "telprompt:" if is iOS device', async () => {
+    Platform.OS = 'ios'
+    openPhoneNumber(phoneNumber)
+    await waitForExpect(() => {
+      expect(openUrl).toBeCalledWith(`telprompt:${phoneNumber}`)
+    })
+  })
+
+  it('should navigate phone keyboard with "tel:" if is Androïd device', async () => {
+    Platform.OS = 'android'
+    openPhoneNumber(phoneNumber)
+    await waitForExpect(() => {
+      expect(openUrl).toBeCalledWith(`tel:${phoneNumber}`)
+    })
+  })
+})
 
 describe('isValidFrenchPhoneNumber function', () => {
   it.each([
@@ -61,7 +85,7 @@ describe('isValidFrenchPhoneNumber function', () => {
     '+33101020304',
   ])('should accept a well formated phone number: %s', (phoneNumber) => {
     const isValid = isValidFrenchPhoneNumber(phoneNumber)
-    expect(isValid).toEqual(true)
+    expect(isValid).toBeTruthy()
   })
 
   it.each([
@@ -71,6 +95,6 @@ describe('isValidFrenchPhoneNumber function', () => {
     '33224354m', // includes char
   ])('should reject a well formated phone number: %s', (phoneNumber) => {
     const isValid = isValidFrenchPhoneNumber(phoneNumber)
-    expect(isValid).toEqual(false)
+    expect(isValid).toBeFalsy()
   })
 })

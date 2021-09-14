@@ -2740,173 +2740,163 @@ exports[`<VenueBody /> should render correctly 1`] = `
         testID="accordionBodyContainer"
       >
         <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
-                "marginVertical": -4,
-              },
-            ]
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginVertical": 4,
+              "opacity": 1,
+            }
           }
         >
           <View
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "marginVertical": 4,
-                "opacity": 1,
-              }
-            }
+            height={24}
+            testID="ExternalLinkSquare"
+            width={24}
           >
-            <View
-              height={24}
-              testID="ExternalLinkSquare"
-              width={24}
-            >
-              <Text>
-                ExternalLinkSquare-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Contacter Le Petit Rintintin 1
+            <Text>
+              ExternalLinkSquare-SVG-Mock
             </Text>
           </View>
           <View
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            numberOfSpaces={2}
             style={
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "marginVertical": 4,
-                "opacity": 1,
-              }
+              Array [
+                Object {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
             }
           >
-            <View
-              height={24}
-              testID="ExternalLinkSquare"
-              width={24}
-            >
-              <Text>
-                ExternalLinkSquare-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              +33102030405
+            Contacter Le Petit Rintintin 1
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginVertical": 4,
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            height={24}
+            testID="ExternalLinkSquare"
+            width={24}
+          >
+            <Text>
+              ExternalLinkSquare-SVG-Mock
             </Text>
           </View>
           <View
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            numberOfSpaces={2}
             style={
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "marginVertical": 4,
-                "opacity": 1,
-              }
+              Array [
+                Object {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
             }
           >
-            <View
-              height={24}
-              testID="ExternalLinkSquare"
-              width={24}
-            >
-              <Text>
-                ExternalLinkSquare-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              https://my@website.com
+            +33102030405
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginVertical": 4,
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            height={24}
+            testID="ExternalLinkSquare"
+            width={24}
+          >
+            <Text>
+              ExternalLinkSquare-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            https://my@website.com
+          </Text>
         </View>
       </View>
     </View>
