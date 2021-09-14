@@ -5,16 +5,11 @@ import { render } from 'tests/utils/web'
 
 import { ContactBlock } from '../ContactBlock'
 
+jest.mock('features/venue/api/useVenue')
+
 describe('<ContactBlock/>', () => {
   it('should match snapshot', () => {
-    const wrapper = render(
-      <ContactBlock
-        venueName={venueResponseSnap.publicName || ''}
-        email="email@example.com"
-        phoneNumber="+33102030405"
-        website="https://my@website.com"
-      />
-    )
+    const wrapper = render(<ContactBlock venueId={venueResponseSnap.id} />)
     expect(wrapper).toMatchSnapshot()
   })
 })

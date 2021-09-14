@@ -10,7 +10,7 @@ Object {
         dir="auto"
         style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
       >
-        email@example.com
+        contact@venue.com
       </div>
       <div
         class="css-text-901oao"
@@ -34,7 +34,7 @@ Object {
       dir="auto"
       style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
     >
-      email@example.com
+      contact@venue.com
     </div>
     <div
       class="css-text-901oao"

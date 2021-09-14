@@ -1248,17 +1248,23 @@ Object {
                 class="css-text-901oao"
                 dir="auto"
                 style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-              />
+              >
+                contact@venue.com
+              </div>
               <div
                 class="css-text-901oao"
                 dir="auto"
                 style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-              />
+              >
+                +33102030405
+              </div>
               <div
                 class="css-text-901oao"
                 dir="auto"
                 style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-              />
+              >
+                https://my@website.com
+              </div>
             </div>
           </div>
           <div
@@ -2517,17 +2523,23 @@ Object {
               class="css-text-901oao"
               dir="auto"
               style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-            />
+            >
+              contact@venue.com
+            </div>
             <div
               class="css-text-901oao"
               dir="auto"
               style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-            />
+            >
+              +33102030405
+            </div>
             <div
               class="css-text-901oao"
               dir="auto"
               style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-            />
+            >
+              https://my@website.com
+            </div>
           </div>
         </div>
         <div
