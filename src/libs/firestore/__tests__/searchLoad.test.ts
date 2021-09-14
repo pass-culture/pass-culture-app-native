@@ -1,6 +1,8 @@
 import firestore from '@react-native-firebase/firestore'
 import { renderHook } from '@testing-library/react-hooks'
 
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+
 import { getSearchLoad, useSearchLoad } from '../searchLoad'
 
 jest.mock('@react-native-firebase/firestore')
@@ -14,9 +16,11 @@ describe('[method] searchLoad', () => {
   })
 
   it('should retrieve the searchLoad', async () => {
-    const { result, waitFor } = renderHook(useSearchLoad)
-    await waitFor(() => result.current !== 0)
+    const { result, waitFor } = renderHook(useSearchLoad, {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await waitFor(() => typeof result.current.data === 'number')
     // See __mocks__/@react-native-firebase/firestore
-    expect(result.current).toEqual(34)
+    expect(result.current.data).toEqual(34)
   })
 })

@@ -56,7 +56,7 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
       enabled,
-      onSettled: sendAdditionalRequest(() =>
+      onSuccess: sendAdditionalRequest(() =>
         searchBackend.fetchHits({ page: 0, ...searchState }, position)
       ),
     }
