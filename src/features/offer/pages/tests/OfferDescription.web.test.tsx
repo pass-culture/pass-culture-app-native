@@ -99,6 +99,7 @@ async function renderOfferDescription(
   )
 
   const wrapper = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Offer">

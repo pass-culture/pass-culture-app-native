@@ -286,6 +286,7 @@ function renderAcceptCGU() {
   } as StackScreenProps<RootStackParamList, 'AcceptCgu'>
 
   return render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <AuthContext.Provider
         value={{

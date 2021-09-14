@@ -72,6 +72,7 @@ export async function renderOfferBodyPage(
   mockUseAuthContext.mockImplementation(() => ({ isLoggedIn, setIsLoggedIn }))
 
   const wrapper = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Offer">
@@ -95,6 +96,7 @@ export async function renderOfferBodyPage(
 export async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) {
   mockedOffer = { ...offerResponseSnap, ...extraOffer }
   const wrapper = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Offer">

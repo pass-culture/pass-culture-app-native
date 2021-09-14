@@ -18,11 +18,13 @@ const props = {
 
 describe('FirstTutorial page', () => {
   it('should render first tutorial', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const firstTutorial = render(reactQueryProviderHOC(<FirstTutorial {...props} />))
     expect(firstTutorial).toMatchSnapshot()
   })
 
   it('should set has_seen_tutorials in storage on skip', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByText } = render(reactQueryProviderHOC(<FirstTutorial {...props} />))
 
     fireEvent.press(getByText('Tout passer'))

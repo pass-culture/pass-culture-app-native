@@ -30,11 +30,13 @@ describe('OfferTile component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { toJSON } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should navigate to the offer when clicking on the image', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.press(getByTestId('offerTileImage'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
@@ -45,6 +47,7 @@ describe('OfferTile component', () => {
   })
 
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.press(getByTestId('offerTileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -55,6 +58,7 @@ describe('OfferTile component', () => {
   })
 
   it('should prepopulate react-query cache when clicking on offer', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.press(getByTestId('offerTileImage'))
 

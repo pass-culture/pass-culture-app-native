@@ -31,6 +31,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 describe('ConfirmDeleteProfile component', () => {
   it('should render confirm delete profile', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     expect(renderAPI.toJSON()).toMatchSnapshot()
   })
@@ -41,6 +42,7 @@ describe('ConfirmDeleteProfile component', () => {
     }
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     fireEvent.press(renderAPI.getByText('Supprimer mon compte'))
     useMutationCallbacks.onSuccess()
@@ -58,6 +60,7 @@ describe('ConfirmDeleteProfile component', () => {
     }
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     fireEvent.press(renderAPI.getByText('Supprimer mon compte'))
     useMutationCallbacks.onError({ error: undefined })
@@ -71,6 +74,7 @@ describe('ConfirmDeleteProfile component', () => {
   })
 
   it('should redirect to LegalNotices when clicking on "Abandonner" button', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     fireEvent.press(renderAPI.getByText('Abandonner'))
     expect(mockGoBack).toBeCalledTimes(1)

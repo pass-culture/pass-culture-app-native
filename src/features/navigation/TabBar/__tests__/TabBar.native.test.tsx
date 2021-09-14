@@ -84,6 +84,7 @@ describe('TabBar', () => {
     expect(navigation.emit).toHaveBeenCalled()
     expect(navigation.navigate).toHaveBeenCalledWith('Search')
     tabBar.rerender(
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(<TabBar state={{ ...state, index: 1 }} navigation={navigation} />)
     )
 
@@ -112,5 +113,6 @@ describe('TabBar', () => {
 })
 
 function renderTabBar() {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<TabBar state={state} navigation={navigation} />))
 }

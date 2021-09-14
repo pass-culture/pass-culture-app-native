@@ -29,6 +29,7 @@ describe('useReasonsForReporting hook', () => {
       setIsLoggedIn: jest.fn(),
     }))
     const { result, waitFor } = renderHook(useReasonsForReporting, {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -46,6 +47,7 @@ describe('useReasonsForReporting hook', () => {
     }))
 
     const { result } = renderHook(useReasonsForReporting, {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

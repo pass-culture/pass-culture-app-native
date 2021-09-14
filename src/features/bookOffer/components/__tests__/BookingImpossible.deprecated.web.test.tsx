@@ -46,6 +46,7 @@ describe('<BookingImpossible />', () => {
   })
 
   it('should render with CTAs when offer is not yet favorite', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<BookingImpossible />))
     expect(renderAPI).toMatchSnapshot()
   })
@@ -56,6 +57,7 @@ describe('<BookingImpossible />', () => {
         favorites: [{ offer: { id: 20 } }],
       })
     }
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { queryByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
     const addToFavoriteButton = queryByText('Mettre en favoris')
     const backToOfferbutton = queryByText("Retourner à l'offre")
@@ -69,6 +71,7 @@ describe('<BookingImpossible />', () => {
         favorites: [{ offer: { id: 20 } }],
       })
     }
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { queryByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
     const redirectionToWebsiteWording = queryByText(
       'Rends-toi vite sur le site pass Culture afin de la réserver'
@@ -77,6 +80,7 @@ describe('<BookingImpossible />', () => {
   })
 
   it("should dismiss modal when clicking on 'Retourner à l'offre'", () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByText } = render(reactQueryProviderHOC(<BookingImpossible />))
     fireEvent.click(getByText("Retourner à l'offre"))
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
@@ -90,6 +94,7 @@ describe('<BookingImpossible />', () => {
       })
     }
 
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
 
     fireEvent.click(getByText('Mettre en favoris'))
@@ -106,6 +111,7 @@ describe('<BookingImpossible />', () => {
   })
 
   it("should log 'BookingImpossibleiOS' on mount", () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<BookingImpossible />))
     expect(analytics.logBookingImpossibleiOS).toHaveBeenCalledTimes(1)
   })

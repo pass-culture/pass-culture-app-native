@@ -26,6 +26,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
+// eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidationBuffer />))
 
 describe('<AfterSignupEmailValidationBuffer />', () => {

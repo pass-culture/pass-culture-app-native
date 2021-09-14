@@ -44,6 +44,7 @@ describe('<VenueHeader />', () => {
 async function renderVenueHeader() {
   const animatedValue = new Animated.Value(0)
   return render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <VenueHeader
         headerTransition={animatedValue}

@@ -67,6 +67,7 @@ const navigationProps = { route: { params: { email: 'test@email.com' } } }
 
 async function renderResetPasswordExpiredLink() {
   const renderAPI = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <ResetPasswordExpiredLink
         {...(navigationProps as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>)}

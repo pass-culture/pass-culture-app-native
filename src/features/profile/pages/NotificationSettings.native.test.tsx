@@ -291,6 +291,7 @@ async function renderNotificationSettings(
   mockApiGetMe(user)
 
   const wrapper = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <RNNavigation.NavigationContainer ref={navigationRef}>
         <Stack.Navigator initialRouteName="NotificationSettings">

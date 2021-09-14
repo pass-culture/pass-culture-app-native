@@ -182,6 +182,7 @@ type RenderFavoriteParams = {
 function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {
   const { credit, favorite, user } = { ...DEFAULT_PROPS, ...props }
   return render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <Favorite credit={credit} favorite={favorite} user={user} onInAppBooking={onInAppBooking} />
     )

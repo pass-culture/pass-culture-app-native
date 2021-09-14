@@ -20,6 +20,7 @@ describe('[API] booking queries', () => {
     it('should return ongoing_bookings when there is one', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       const { result, waitFor } = renderHook(() => useOngoingOrEndedBooking(booking.id), {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -31,6 +32,7 @@ describe('[API] booking queries', () => {
     it('should return ended_bookings when there is one', async () => {
       const booking = bookingsSnap.ended_bookings[0]
       const { result, waitFor } = renderHook(() => useOngoingOrEndedBooking(booking.id), {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -42,6 +44,7 @@ describe('[API] booking queries', () => {
     it('should not return any booking if not ongoing nor ended', async () => {
       const bookingId = 1230912039
       const { result, waitFor } = renderHook(() => useOngoingOrEndedBooking(bookingId), {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 

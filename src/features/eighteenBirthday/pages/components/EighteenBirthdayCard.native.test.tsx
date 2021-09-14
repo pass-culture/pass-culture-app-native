@@ -79,6 +79,7 @@ describe('<EighteenBirthdayCard />', () => {
 async function renderEighteenBirthdayCard({ isLoggedIn } = { isLoggedIn: true }) {
   const ref = { current: { goToNext: jest.fn() } }
   const renderAPI = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn: jest.fn() }}>
         <EighteenBirthdayCard

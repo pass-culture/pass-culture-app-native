@@ -404,6 +404,7 @@ async function renderOfferHeader(options: Options = defaultOptions) {
   })
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <ThemeProvider theme={theme}>
         <OfferHeader title="Some very nice offer" headerTransition={animatedValue} offerId={id} />

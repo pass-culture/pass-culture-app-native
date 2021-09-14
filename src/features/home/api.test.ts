@@ -66,6 +66,7 @@ describe('Home api calls', () => {
   describe('useHomepageModules', () => {
     it('calls the API and returns the data', async () => {
       const { result, waitFor } = renderHook(useHomepageModules, {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -75,6 +76,7 @@ describe('Home api calls', () => {
 
     it('calls the API and returns the data with specified entryId', async () => {
       const { result, waitFor } = renderHook(() => useHomepageModules(entryId), {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -86,6 +88,7 @@ describe('Home api calls', () => {
   describe('useUserProfileInfo', () => {
     it('calls the API and returns the data', async () => {
       const { result, waitFor } = renderHook(useUserProfileInfo, {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
       await waitFor(() => {
@@ -97,6 +100,7 @@ describe('Home api calls', () => {
     it("doesn't call the api if the user isn't logged in", async () => {
       mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
       const { result, waitFor } = renderHook(useUserProfileInfo, {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
       await waitFor(() => !result.current.isLoading)

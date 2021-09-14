@@ -22,6 +22,7 @@ module.exports = {
     'local-rules/no-allow-console': ['error'],
     'local-rules/independant-mocks': ['error'],
     'local-rules/no-string-check-before-component': ['error'],
+    'local-rules/no-react-query-provider-hoc': ['error'],
     '@typescript-eslint/ban-ts-comment': [
       2, // error
       {

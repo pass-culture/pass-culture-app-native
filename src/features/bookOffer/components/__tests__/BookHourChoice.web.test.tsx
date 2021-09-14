@@ -49,6 +49,7 @@ describe('BookHourChoice when hour is already selected', () => {
       } as BookingState,
       dismissModal: mockDismissModal,
     }))
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
 
     expect(page).toMatchSnapshot()
@@ -63,6 +64,7 @@ describe('BookHourChoice when hour is already selected', () => {
 
 describe('BookHourChoice', () => {
   it('should display filtered stocks for selected Date', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
 
     // firstStock corresponds to 2021-03-02 stock 20h
@@ -80,6 +82,7 @@ describe('BookHourChoice', () => {
   })
 
   it('should select an item when pressed', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
 
     // firstStock correspond to 2021-03-02 stock
@@ -95,6 +98,7 @@ describe('BookHourChoice', () => {
   })
 
   it('should pass formatted hour and price props', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
 
     const firstHour = page.getByTestId('HourChoice148409-hour')
@@ -112,6 +116,7 @@ describe('BookHourChoice', () => {
 
   it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
     expect(page.getByTestId('HourChoice148409-price').textContent).toBe('crédit insuffisant')
   })

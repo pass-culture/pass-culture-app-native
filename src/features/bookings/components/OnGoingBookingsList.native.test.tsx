@@ -70,6 +70,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
 async function renderBookings() {
   const renderAPI = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <OnGoingBookingsList
         bookings={bookingsSnap.ongoing_bookings}

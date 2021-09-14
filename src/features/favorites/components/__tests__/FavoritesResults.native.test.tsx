@@ -82,6 +82,7 @@ describe('FavoritesResults component', () => {
     mockUseRemoveFavorites.mockReturnValue(({
       mutate,
     } as unknown) as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByText } = render(reactQueryProviderHOC(<FavoritesResults />))
     const container = getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
     expect(container).toBeTruthy()
@@ -91,5 +92,6 @@ describe('FavoritesResults component', () => {
 })
 
 function renderFavoritesResults() {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<FavoritesResults />))
 }

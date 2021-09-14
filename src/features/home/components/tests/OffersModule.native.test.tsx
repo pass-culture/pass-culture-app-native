@@ -40,11 +40,13 @@ const nativeEventEnd = {
 
 describe('OffersModule component', () => {
   it('should render correctly - with black title', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const component = render(reactQueryProviderHOC(<OffersModule {...props} index={1} />))
     expect(component).toMatchSnapshot()
     expect(component.getByTestId('moduleTitle').props.color).toBe(ColorsEnum.BLACK)
   })
   it('should render with white title if first module displayed', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const component = render(reactQueryProviderHOC(<OffersModule {...props} index={0} />))
     expect(component.getByTestId('moduleTitle').props.color).toBe(ColorsEnum.WHITE)
   })
@@ -55,6 +57,7 @@ describe('OffersModule component - Analytics', () => {
     jest.resetAllMocks()
   })
   it('should not trigger logEvent "AllTilesSeen" when reaching the middle', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const component = render(reactQueryProviderHOC(<OffersModule {...props} index={1} />))
     const scrollView = component.getByTestId('offersModuleList')
 
@@ -67,6 +70,7 @@ describe('OffersModule component - Analytics', () => {
   })
 
   it('should trigger logEvent "AllTilesSeen" when reaching the end of the module', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const component = render(reactQueryProviderHOC(<OffersModule {...props} index={1} />))
     const scrollView = component.getByTestId('offersModuleList')
 
@@ -79,6 +83,7 @@ describe('OffersModule component - Analytics', () => {
   })
 
   it('should trigger logEvent "AllTilesSeen" only once', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const component = render(reactQueryProviderHOC(<OffersModule {...props} index={1} />))
     const scrollView = component.getByTestId('offersModuleList')
 
@@ -96,6 +101,7 @@ describe('OffersModule component - Analytics', () => {
 
   it('should trigger logEvent "AllTilesSeen" with module title if no display.title', async () => {
     const component = render(
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(
         <OffersModule
           {...props}
@@ -117,6 +123,7 @@ describe('OffersModule component - Analytics', () => {
 
   it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', async () => {
     const component = render(
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(<OffersModule {...props} nbHits={10} index={1} />)
     )
 
