@@ -19,6 +19,7 @@ import { IdCheck } from 'features/auth/signup/IdCheck'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
+import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent'
 import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
@@ -336,6 +337,12 @@ const routesBeforeReleaseCheck: Route[] = [
     component: PhoneValidationTooManyAttempts,
     path: 'phone-validation-too-many-attempts',
     options: { title: t`Validation téléphone - Trop d'éssais` },
+  },
+  {
+    name: 'PhoneValidationTooManySMSSent',
+    component: PhoneValidationTooManySMSSent,
+    path: 'phone-validation-too-many-sms-sent',
+    options: { title: t`Validation téléphone - Trop de SMS envoyés` },
   },
   {
     name: 'VerifyEligibility',
