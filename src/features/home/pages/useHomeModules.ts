@@ -64,7 +64,7 @@ export const useHomeModules = (
       return {
         queryKey: [QueryKeys.HOME_MODULE, moduleId],
         queryFn: fetchModule,
-        onSettled: sendAdditionalRequest(() => searchBackend.fetchMultipleHits(parsedParameters)),
+        onSuccess: sendAdditionalRequest(() => searchBackend.fetchMultipleHits(parsedParameters)),
         enabled,
         notifyOnChangeProps: ['data'],
       }

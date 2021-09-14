@@ -36,7 +36,7 @@ const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
       enabled,
-      onSettled: sendAdditionalRequest(() => searchBackend.fetchHits({ page: 0, ...searchState })),
+      onSuccess: sendAdditionalRequest(() => searchBackend.fetchHits({ page: 0, ...searchState })),
     }
   )
 
