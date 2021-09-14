@@ -1,16 +1,17 @@
 import React from 'react'
 
-import { VenueContactModel } from 'api/gen'
+import { useVenue } from 'features/venue/api/useVenue'
 import { Typo } from 'ui/theme'
 
-interface VenueContact extends VenueContactModel {
-  venueName: string
-}
+export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
+  const { data: venue } = useVenue(venueId)
+  const { email, phoneNumber, website } = venue?.contact || {}
 
-export const ContactBlock: React.FC<VenueContact> = ({ email, phoneNumber, website }) => (
-  <React.Fragment>
-    <Typo.Body>{email}</Typo.Body>
-    <Typo.Body>{phoneNumber}</Typo.Body>
-    <Typo.Body>{website}</Typo.Body>
-  </React.Fragment>
-)
+  return (
+    <React.Fragment>
+      {!!email && <Typo.Body>{email}</Typo.Body>}
+      {!!phoneNumber && <Typo.Body>{phoneNumber}</Typo.Body>}
+      {!!website && <Typo.Body>{website}</Typo.Body>}
+    </React.Fragment>
+  )
+}

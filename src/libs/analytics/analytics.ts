@@ -1,6 +1,7 @@
 import { IdCheckAnalyticsInterface } from '@pass-culture/id-check'
 import { Platform } from 'react-native'
 
+import { VenueContactModel } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator'
 
 import { AnalyticsEvent, IdCheckAnalyticsEvent } from './events'
@@ -158,6 +159,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.ACCESS_EXTERNAL_OFFER, { offerId }),
   logConfirmBookingCancellation: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId }),
+  logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED, params),
   logVenueSeeAllOffersClicked: (venueId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED, { venueId }),
   logVenueSeeMoreClicked: (venueId: number) =>
