@@ -17,6 +17,7 @@ describe('[method] searchLoad', () => {
 
   it('should retrieve the searchLoad', async () => {
     const { result, waitFor } = renderHook(useSearchLoad, {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => typeof result.current.data === 'number')
