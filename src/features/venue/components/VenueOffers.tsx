@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -60,7 +61,8 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   const seeAllOffers = useCallback(() => {
     dispatch({ type: 'SET_STATE', payload: params })
     stagedDispatch({ type: 'SET_STATE', payload: params })
-    navigate('Search', params)
+    const tabNavigateConfig = getTabNavigateConfig('Search', params)
+    navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
   }, [params])
 
   const onPressSeeMore = useCallback(() => {
@@ -68,7 +70,8 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
     analytics.logVenueSeeMoreClicked(venueId)
     dispatch({ type: 'SET_STATE', payload: params })
     stagedDispatch({ type: 'SET_STATE', payload: params })
-    navigate('Search', params)
+    const tabNavigateConfig = getTabNavigateConfig('Search', params)
+    navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
   }, [params])
 
   const showSeeMore = nbHits > hits.length

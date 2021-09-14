@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
@@ -22,7 +23,8 @@ describe('<NoBookingsView />', () => {
     const renderAPI = render(reactQueryProviderHOC(<NoBookingsView />))
     const button = renderAPI.getByText('Explorer les offres')
     fireEvent.press(button)
-    expect(navigate).toBeCalledWith('Search')
+    const tabNavigateConfig = getTabNavigateConfig('Search')
+    expect(navigate).toBeCalledWith(tabNavigateConfig.screen, tabNavigateConfig.params)
     expect(mockDispatchSearch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
     expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('bookings')
   })

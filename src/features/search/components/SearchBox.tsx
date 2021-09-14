@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -46,7 +47,8 @@ export const SearchBox: React.FC = () => {
   )
 
   const resetSearch = () => {
-    navigate('Search', { query: '' })
+    const tabNavigateConfig = getTabNavigateConfig('Search', { query: '' })
+    navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
     setQuery('')
   }
 
@@ -58,10 +60,11 @@ export const SearchBox: React.FC = () => {
   }
 
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
-    navigate('Search', {
+    const tabNavigateConfig = getTabNavigateConfig('Search', {
       query: event.nativeEvent.text,
       showResults: true,
     })
+    navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
     dispatch({ type: 'SET_QUERY', payload: event.nativeEvent.text })
     dispatch({ type: 'SHOW_RESULTS', payload: true })
     analytics.logSearchQuery(event.nativeEvent.text)

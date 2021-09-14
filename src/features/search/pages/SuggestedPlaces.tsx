@@ -5,6 +5,7 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { usePlaces, useVenues } from 'features/search/api'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
@@ -49,11 +50,13 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
   )
 }
 
+const searchTabNavigateConfig = getTabNavigateConfig('Search')
+
 export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
   const { data: places = [], isLoading: isLoadingPlaces } = usePlaces(query)
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
   const { dispatch } = useStagedSearch()
-  const { goBack } = useGoBack('Search')
+  const { goBack } = useGoBack(searchTabNavigateConfig.screen, searchTabNavigateConfig.params)
 
   const onPickPlace = (hit: SuggestedPlaceOrVenue) => () => {
     if (isVenue(hit) && hit.venueId) {
