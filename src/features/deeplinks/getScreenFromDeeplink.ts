@@ -9,13 +9,12 @@ export function getScreenFromDeeplink(url: string): DeeplinkParts {
   const pathWithQueryString = url
     .replace(`${WEBAPP_NATIVE_REDIRECTION_URL}/`, '')
     .replace(`${WEBAPP_V2_URL}/`, '')
-
   const navigationState = linking.getStateFromPath(pathWithQueryString, linking.config)
-  const route = getFirstRouteFromState(navigationState)
+  const route = getLastRouteFromState(navigationState)
   const screen = route.name
   let params = route.params
   if (screen === 'TabNavigator') {
-    const nestedRoute = getFirstRouteFromState(route.state)
+    const nestedRoute = getLastRouteFromState(route.state)
     params = {
       screen: nestedRoute.name,
       params: nestedRoute.params,
@@ -26,9 +25,10 @@ export function getScreenFromDeeplink(url: string): DeeplinkParts {
 
 type NavigationState = ReturnType<typeof linking.getStateFromPath>
 
-function getFirstRouteFromState(navigationState: NavigationState) {
-  if (!navigationState?.routes || navigationState.routes.length !== 1) {
+function getLastRouteFromState(navigationState: NavigationState) {
+  const routes = navigationState?.routes
+  if (!routes || routes.length === 0) {
     throw new Error('Unknown route')
   }
-  return navigationState.routes[0]
+  return routes[routes.length - 1]
 }
