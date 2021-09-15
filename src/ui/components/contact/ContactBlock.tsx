@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
@@ -5,7 +6,10 @@ import { openExternalUrl } from 'features/navigation/helpers'
 import { useVenue } from 'features/venue/api/useVenue'
 import { analytics } from 'libs/analytics'
 import { isValidFrenchPhoneNumber, openPhoneNumber, openMail } from 'ui/components/contact/helpers'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalLinkSquare } from 'ui/svg/icons/ExternalLinkSquare'
+import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
+import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -35,11 +39,13 @@ export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
 
   return (
     <React.Fragment>
-      {!!email && <ContactAtom label="Contacter le lieu par e-mail" onPress={onPressMail} />}
+      {!!email && <ContactAtom label={t`E-mail`} onPress={onPressMail} Icon={EmailFilled} />}
       {!!(phoneNumber && isValidFrenchPhoneNumber(phoneNumber)) && (
-        <ContactAtom label={phoneNumber} onPress={onPressPhone} />
+        <ContactAtom label={t`Téléphone`} onPress={onPressPhone} Icon={PhoneFilled} />
       )}
-      {!!website && <ContactAtom label={website} onPress={onPressWebsite} />}
+      {!!website && (
+        <ContactAtom label={t`Site internet`} onPress={onPressWebsite} Icon={ExternalLinkSquare} />
+      )}
     </React.Fragment>
   )
 }
@@ -47,11 +53,12 @@ export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
 type ContactAtomProps = {
   label: string
   onPress: () => void
+  Icon: React.FC<IconInterface>
 }
 
-const ContactAtom = ({ label, onPress }: ContactAtomProps) => (
+const ContactAtom = ({ label, onPress, Icon }: ContactAtomProps) => (
   <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={onPress}>
-    <ExternalLinkSquare size={getSpacing(6)} testID="ExternalLinkSquare" />
+    <Icon size={getSpacing(6)} testID={`Icon ${label}`} />
     <Spacer.Row numberOfSpaces={2} />
     <Typo.ButtonText>{label}</Typo.ButtonText>
   </TouchableOpacity>
