@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent'
+import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent'
 import { navigateToHome } from 'features/navigation/helpers'
 import { fireEvent, render } from 'tests/utils/web'
 
