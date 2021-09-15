@@ -160,7 +160,7 @@ export const analytics = {
   logConfirmBookingCancellation: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED, params),
+    analyticsProvider.logEvent(AnalyticsEvent.VENUE_CONTACT, params),
   logVenueSeeAllOffersClicked: (venueId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED, { venueId }),
   logVenueSeeMoreClicked: (venueId: number) =>
