@@ -2760,11 +2760,11 @@ exports[`<VenueBody /> should render correctly 1`] = `
         >
           <View
             height={24}
-            testID="ExternalLinkSquare"
+            testID="Icon E-mail"
             width={24}
           >
             <Text>
-              ExternalLinkSquare-SVG-Mock
+              Icon E-mail-SVG-Mock
             </Text>
           </View>
           <View
@@ -2789,7 +2789,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               ]
             }
           >
-            Contacter Le Petit Rintintin 1
+            E-mail
           </Text>
         </View>
         <View
@@ -2813,11 +2813,11 @@ exports[`<VenueBody /> should render correctly 1`] = `
         >
           <View
             height={24}
-            testID="ExternalLinkSquare"
+            testID="Icon Téléphone"
             width={24}
           >
             <Text>
-              ExternalLinkSquare-SVG-Mock
+              Icon Téléphone-SVG-Mock
             </Text>
           </View>
           <View
@@ -2842,7 +2842,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               ]
             }
           >
-            +33102030405
+            Téléphone
           </Text>
         </View>
         <View
@@ -2866,11 +2866,11 @@ exports[`<VenueBody /> should render correctly 1`] = `
         >
           <View
             height={24}
-            testID="ExternalLinkSquare"
+            testID="Icon Site internet"
             width={24}
           >
             <Text>
-              ExternalLinkSquare-SVG-Mock
+              Icon Site internet-SVG-Mock
             </Text>
           </View>
           <View
@@ -2895,7 +2895,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               ]
             }
           >
-            https://my@website.com
+            Site internet
           </Text>
         </View>
       </View>
