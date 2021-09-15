@@ -39,8 +39,8 @@ export function useHomepageModules(entryId?: string) {
     staleTime: STALE_TIME_CONTENTFUL,
   })
 
-  const entry = selectEntry(entries, entryId)
-  return { data: entry ? processHomepageEntry(entry) : [] }
+  const entry = selectPlaylist(entries || [])
+  return entry ? processHomepageEntry(entry) : []
 }
 
 export function useUserProfileInfo(options = {}) {

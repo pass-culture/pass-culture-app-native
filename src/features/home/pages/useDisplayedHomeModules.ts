@@ -13,7 +13,7 @@ export function useDisplayedHomeModules(entryId?: string) {
   const { isLoggedIn } = useAuthContext()
 
   // 1. Get the list of modules from contentful
-  const { data: modules = [] } = useHomepageModules(entryId)
+  const modules = useHomepageModules(entryId) || []
 
   // 2. Get the hits and nbHits for each home module
   const homeModules = useHomeModules(getOfferModules(modules))
