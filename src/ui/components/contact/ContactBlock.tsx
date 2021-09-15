@@ -33,11 +33,9 @@ export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
 
   if (!venue || !venue.contact) return <React.Fragment></React.Fragment>
 
-  const labelEmail = `Contacter ${venue.publicName || venue.name}`
-
   return (
     <React.Fragment>
-      {!!email && <ContactAtom label={labelEmail} onPress={onPressMail} />}
+      {!!email && <ContactAtom label="Contacter le lieu par e-mail" onPress={onPressMail} />}
       {!!(phoneNumber && isValidFrenchPhoneNumber(phoneNumber)) && (
         <ContactAtom label={phoneNumber} onPress={onPressPhone} />
       )}
