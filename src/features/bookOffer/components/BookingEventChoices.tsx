@@ -66,7 +66,6 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
         onPress={validateOptions}
         disabled={!enabled}
       />
-      <Spacer.Column numberOfSpaces={4} />
     </Container>
   )
 }
