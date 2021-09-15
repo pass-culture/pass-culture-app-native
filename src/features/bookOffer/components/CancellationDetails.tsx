@@ -44,7 +44,6 @@ export const CancellationDetails: React.FC = () => {
       <Typo.Title4>{t`Conditions d'annulation`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Caption>{message}</Typo.Caption>
-      <Spacer.Column numberOfSpaces={4} />
     </React.Fragment>
   )
 }

@@ -111,7 +111,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       <Spacer.Column numberOfSpaces={6} />
 
       <ButtonPrimary title={t`Confirmer la réservation`} onPress={onPressBookOffer} />
-      {price ? <Caption>{deductedAmount}</Caption> : <Spacer.Column numberOfSpaces={4} />}
+      {!price && <Caption>{deductedAmount}</Caption>}
     </Container>
   )
 }
