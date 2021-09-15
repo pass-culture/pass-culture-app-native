@@ -14,6 +14,7 @@ export enum AnalyticsEvent {
   CAMPAIGN_TRACKER_ENABLED = 'CampaignTrackerEnabled',
   CANCEL_BOOKING = 'CancelBooking',
   CANCEL_SIGNUP = 'CancelSignup',
+  CHOOSE_LOCATION = 'ChooseLocation',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
   CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
   CONFIRM_BOOKING_CANCELLATION = 'ConfirmBookingCancellation',
@@ -64,7 +65,6 @@ export enum AnalyticsEvent {
   VENUE_CONTACT = 'VenueContact',
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
-  CHOOSE_LOCATION = 'ChooseLocation',
 }
 
 export enum IdCheckAnalyticsEvent {
