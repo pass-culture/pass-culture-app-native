@@ -9,12 +9,13 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { Offers } from '../../contentful'
 import { useHomeModules } from '../useHomeModules'
 
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({ data: { useAppSearch: true } })),
-}))
-
+jest.mock('features/auth/settings')
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
+}))
+
+jest.mock('libs/search/useSendAdditionalRequestToAppSearch', () => ({
+  useSendAdditionalRequestToAppSearch: jest.fn(() => () => null),
 }))
 
 const mockMultipleHits = {
@@ -32,6 +33,9 @@ const mockMultipleHits = {
 
 const fetchMultipleHits = jest.fn().mockResolvedValue(mockMultipleHits)
 jest.spyOn(SearchModule, 'fetchMultipleHits').mockImplementation(fetchMultipleHits)
+jest.mock('libs/algolia/fetchAlgolia', () => ({
+  useTransformAlgoliaHits: jest.fn(() => (hit: SearchHit) => hit),
+}))
 
 const offerModules = [
   new Offers({
