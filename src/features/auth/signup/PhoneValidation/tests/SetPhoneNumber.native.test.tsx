@@ -152,7 +152,7 @@ describe('SetPhoneNumber', () => {
       }
     )
 
-    it('should navigate to SetPhoneNumberTooManyAttempts page if request fails with TOO_MANY_VALIDATION_ATTEMPTS code', async () => {
+    it('should navigate to SetPhoneNumberTooManySMSSent page if request fails with TOO_MANY_SMS_SENT code', async () => {
       const response = {
         content: {
           code: 'TOO_MANY_SMS_SENT',
@@ -171,7 +171,7 @@ describe('SetPhoneNumber', () => {
       await act(async () => {
         useMutationCallbacks.onError(response)
       })
-      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManyAttempts')
+      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent')
     })
   })
 })
