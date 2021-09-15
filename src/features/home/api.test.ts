@@ -70,8 +70,8 @@ describe('Home api calls', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current.data.length > 0)
-      expect(result.current.data).toEqual(processHomepageEntry(adaptedHomepageEntry))
+      await waitFor(() => result.current.length > 0)
+      expect(result.current).toEqual(processHomepageEntry(adaptedHomepageEntry))
     })
 
     it('calls the API and returns the data with specified entryId', async () => {
@@ -80,8 +80,8 @@ describe('Home api calls', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current.data.length > 0)
-      expect(result.current.data).toEqual(processHomepageEntry(adaptedSecondHomepageEntry))
+      await waitFor(() => result.current.length > 0)
+      expect(result.current).toEqual(processHomepageEntry(adaptedSecondHomepageEntry))
     })
   })
 
@@ -91,9 +91,7 @@ describe('Home api calls', () => {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
-      await waitFor(() => {
-        return result.current.data !== undefined
-      })
+      await waitFor(() => !result.current.isLoading)
       expect(result.current.data).toEqual(userProfileAPIResponse)
       expect(userProfileApiMock).toHaveBeenCalledTimes(1)
     })

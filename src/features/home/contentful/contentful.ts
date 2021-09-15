@@ -229,7 +229,15 @@ export interface Image {
   }
 }
 
+// List available here https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/settings/tags
+export type TagId = 'master' | 'usergrandpublic' | 'userunderage'
+
+export interface Tag {
+  sys: { type: 'Link'; linkType: 'Tag'; id: TagId }
+}
+
 export interface HomepageEntry {
+  metadata: { tags: Tag[] }
   sys: Sys<typeof CONTENT_TYPES.HOMEPAGE_NATIF>
   fields: HomepageNatifFields
 }

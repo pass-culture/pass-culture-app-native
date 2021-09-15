@@ -7,6 +7,9 @@ export const homepageEntriesAPIResponse = {
   limit: 100,
   items: [
     {
+      metadata: {
+        tags: [],
+      },
       sys: {
         space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
         id: '16PgpnlCOYYIhUTclR0oO4',
@@ -37,6 +40,9 @@ export const homepageEntriesAPIResponse = {
       },
     },
     {
+      metadata: {
+        tags: [],
+      },
       sys: {
         space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
         id: '7IuIeovqUykM1uvWwwPPh7',
@@ -665,6 +671,9 @@ export const homepageEntriesAPIResponse = {
 }
 
 export const adaptedHomepageEntry: HomepageEntry = {
+  metadata: {
+    tags: [],
+  },
   sys: {
     space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
     id: '16PgpnlCOYYIhUTclR0oO4',
@@ -1296,6 +1305,9 @@ export const adaptedHomepageEntry: HomepageEntry = {
 }
 
 export const adaptedSecondHomepageEntry: HomepageEntry = {
+  metadata: {
+    tags: [],
+  },
   sys: {
     space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
     id: '7IuIeovqUykM1uvWwwPPh7',

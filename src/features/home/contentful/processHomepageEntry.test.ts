@@ -30,6 +30,7 @@ describe('processHomepageEntry', () => {
         title: 'Homepage',
         modules: [],
       },
+      metadata: { tags: [] },
     }
     expect(processHomepageEntry(emptyModulesHomepageEntries)).toEqual([])
   })
