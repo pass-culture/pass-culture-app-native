@@ -34,6 +34,7 @@ export const VenuesModule = (props: VenuesModuleProps) => {
         keyExtractor={keyExtractor}
         ItemSeparatorComponent={ItemSeparatorComponent}
         ListHeaderComponent={HorizontalMargin}
+        ListFooterComponent={HorizontalMargin}
       />
     </React.Fragment>
   )
