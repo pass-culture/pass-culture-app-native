@@ -9,6 +9,9 @@ import {
   RecommendationFields,
   AlgoliaParameters,
   SearchParametersFields,
+  VenuesFields,
+  VenuesSearchParameters,
+  VenuesSearchParametersFields,
 } from './contentful'
 import {
   Offers,
@@ -17,6 +20,7 @@ import {
   BusinessPane,
   ProcessedModule,
   RecommendationPane,
+  VenuesPane,
 } from './moduleTypes'
 
 export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[] => {
@@ -66,6 +70,15 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
       return new ExclusivityPane({ alt, image: buildImageUrl(image)!, offerId, moduleId })
     }
 
+    if (contentType === 'venuesPlaylist') {
+      const { venuesSearchParameters, displayParameters } = fields as VenuesFields
+      const search = buildSearchVenuesParams(venuesSearchParameters)
+      if (search.length === 0) return
+
+      const { fields: display } = displayParameters
+      return new VenuesPane({ display, search, moduleId })
+    }
+
     if (contentType === CONTENT_TYPES.BUSINESS) {
       const {
         title,
@@ -107,6 +120,13 @@ export const buildSearchParams = (
 
   return publishedAdditionalSearchParams
 }
+
+export const buildSearchVenuesParams = (
+  params: VenuesSearchParameters[]
+): VenuesSearchParametersFields[] =>
+  params
+    .filter((params) => params.fields && hasAtLeastOneField(params.fields))
+    .map(({ fields }) => fields)
 
 const buildImageUrl = (image: Image): string | null => {
   if (image && hasAtLeastOneField(image.fields)) {

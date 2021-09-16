@@ -1,4 +1,8 @@
-import { SearchParametersFields, DisplayParametersFields } from './contentful'
+import {
+  SearchParametersFields,
+  DisplayParametersFields,
+  VenuesSearchParametersFields,
+} from './contentful'
 
 export class Offers {
   search: SearchParametersFields[]
@@ -34,6 +38,25 @@ export class OffersWithCover extends Offers {
   }) {
     super({ search, display, moduleId })
     this.cover = cover
+  }
+}
+
+export class VenuesPane {
+  search: VenuesSearchParametersFields[]
+  display: DisplayParametersFields
+  moduleId: string
+  constructor({
+    search,
+    display,
+    moduleId,
+  }: {
+    search: VenuesSearchParametersFields[]
+    display: DisplayParametersFields
+    moduleId: string
+  }) {
+    this.search = search
+    this.display = display
+    this.moduleId = moduleId
   }
 }
 
