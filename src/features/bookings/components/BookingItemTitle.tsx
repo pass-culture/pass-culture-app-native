@@ -1,35 +1,26 @@
 import React from 'react'
-import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSpacing, Typo } from 'ui/theme'
 
-type BookingItemTitleProps = {
-  ticketWidth: number
+type Props = {
   title: string
 }
 
-export function BookingItemTitle(props: BookingItemTitleProps) {
-  const containerWidth = getTitleWidth(props.ticketWidth)
-
+export function BookingItemTitle(props: Props) {
   return (
-    <TitleContainer width={containerWidth}>
+    <TitleContainer>
       <Title numberOfLines={2}>{props.title}</Title>
     </TitleContainer>
   )
 }
 
-const TitleContainer = styled.View<{ width: number }>(({ width }) => ({
+const TitleContainer = styled.View({
   flexDirection: 'row',
-  width: width,
+  flex: 1,
   paddingBottom: getSpacing(1),
-}))
+})
 
 export const Title = styled(Typo.ButtonText)({
   flexShrink: 1,
 })
-
-export function getTitleWidth(excludedRowWidth: number) {
-  // eslint-disable-next-line no-restricted-properties
-  return Dimensions.get('screen').width - excludedRowWidth - getSpacing(12)
-}

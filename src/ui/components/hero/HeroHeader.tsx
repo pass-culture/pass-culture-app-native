@@ -1,11 +1,10 @@
 import React from 'react'
-import { Platform } from 'react-native'
+import { Platform, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
-import { ScreenWidth } from 'ui/theme'
 
 interface Props {
   imageUrl?: string
@@ -15,11 +14,13 @@ interface Props {
 }
 
 export const HeroHeader: React.FC<Props> = (props) => {
+  const windowWidth = useWindowDimensions().width
+
   const backgroundImage =
     props.type === 'offer' ? (
       <BackgroundPlaceholder
         testID="BackgroundPlaceholder"
-        width={ScreenWidth}
+        width={windowWidth}
         height={props.imageHeight}
       />
     ) : (
@@ -36,6 +37,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
         {props.imageUrl ? (
           <BlurImage
             height={props.imageHeight}
+            width={windowWidth}
             blurRadius={Platform.OS === 'android' ? 5 : 20}
             resizeMode="cover"
             source={{ uri: props.imageUrl }}
@@ -43,7 +45,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
         ) : (
           backgroundImage
         )}
-        <Rectangle size={ScreenWidth} />
+        <Rectangle size={windowWidth} />
       </HeroContainer>
       {props.children}
     </Container>
@@ -60,7 +62,8 @@ const BackgroundContainer = styled.View({
 })
 
 const HeroContainer = styled.View({ alignItems: 'center', position: 'absolute' })
-const BlurImage = styled.Image<{ height: number }>(({ height }) => ({
-  height,
-  width: ScreenWidth,
+
+const BlurImage = styled.Image<{ height: number; width: number }>((props) => ({
+  height: props.height,
+  width: props.width,
 }))

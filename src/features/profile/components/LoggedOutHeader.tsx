@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -9,15 +9,16 @@ import { analytics } from 'libs/analytics'
 import { testID } from 'tests/utils'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { ColorsEnum, getSpacing, ScreenWidth, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function LoggedOutHeader() {
+  const windowWidth = useWindowDimensions().width
   const { navigate } = useNavigation<UseNavigationType>()
   return (
     <Container>
       <Spacer.TopScreen />
       <HeaderBackgroundWrapper>
-        <HeaderBackground width={ScreenWidth} />
+        <HeaderBackground width={windowWidth} />
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={6} />
       <HeaderContent>

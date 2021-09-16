@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingCancellationReasons } from 'api/gen'
@@ -9,10 +9,10 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Check } from 'ui/svg/icons/Check'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { BookingItemTitle, getTitleWidth } from './BookingItemTitle'
-import { EndedBookingTicket, endedBookingTicketWidth } from './EndedBookingTicket'
+import { BookingItemTitle } from './BookingItemTitle'
+import { EndedBookingTicket } from './EndedBookingTicket'
 import { BookingItemProps } from './types'
 
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
@@ -37,18 +37,24 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
           offerCategory={stock.offer.category.name}
         />
         <Spacer.Row numberOfSpaces={4} />
-        <View>
-          <BookingItemTitle ticketWidth={endedBookingTicketWidth} title={stock.offer.name} />
+        <AttributesView>
+          <BookingItemTitle title={stock.offer.name} />
           <EndedReasonAndDate>
             {endedBookingReason}
             <Spacer.Row numberOfSpaces={1} />
             <DateLabel>{endedBookingDateLabel}</DateLabel>
           </EndedReasonAndDate>
-        </View>
+        </AttributesView>
       </ItemContainer>
     </TouchableOpacity>
   )
 }
+
+const AttributesView = styled.View({
+  flex: 1,
+  paddingLeft: getSpacing(4),
+  paddingRight: getSpacing(1),
+})
 
 const ItemContainer = styled.View({
   flexDirection: 'row',
@@ -57,8 +63,8 @@ const ItemContainer = styled.View({
 const EndedReasonAndDate = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
+  flex: 1,
   alignItems: 'center',
-  width: getTitleWidth(endedBookingTicketWidth),
 })
 
 const DateLabel = styled(Typo.Caption)({

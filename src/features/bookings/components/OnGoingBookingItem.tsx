@@ -12,8 +12,8 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { getBookingProperties, getBookingLabels } from '../helpers'
 
-import { BookingItemTitle, getTitleWidth } from './BookingItemTitle'
-import { OnGoingTicket, onGoingTicketWidth } from './OnGoingTicket'
+import { BookingItemTitle } from './BookingItemTitle'
+import { OnGoingTicket } from './OnGoingTicket'
 import { BookingItemProps } from './types'
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
@@ -33,7 +33,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
       <ItemContainer>
         <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(iconName)} />
         <AttributesView>
-          <BookingItemTitle ticketWidth={onGoingTicketWidth} title={stock.offer.name} />
+          <BookingItemTitle title={stock.offer.name} />
           {!!dateLabel && <DateLabel color={ColorsEnum.GREY_DARK}>{dateLabel}</DateLabel>}
           <Spacer.Column numberOfSpaces={1} />
           {!!bookingProperties.isDuo && <DuoBold />}
@@ -63,18 +63,19 @@ const ItemContainer = styled.View({
 })
 
 const AttributesView = styled.View({
+  flex: 1,
   paddingLeft: getSpacing(4),
   paddingRight: getSpacing(1),
 })
 
 const WithDrawContainer = styled.View({
+  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
-  width: getTitleWidth(onGoingTicketWidth),
 })
 
 const DateLabel = styled(Typo.Body)({
-  width: getTitleWidth(onGoingTicketWidth),
+  flex: 1,
 })
 
 const WithdrawCaption = styled(Typo.Caption)({

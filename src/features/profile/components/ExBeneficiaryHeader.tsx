@@ -1,11 +1,12 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { getSpacing, ColorsEnum, Typo, Spacer, ScreenWidth } from 'ui/theme'
+import { getSpacing, ColorsEnum, Typo, Spacer } from 'ui/theme'
 
 import { accordionStyle, GreyContainer, Description } from './reusables'
 
@@ -17,6 +18,7 @@ type ExBeneficiaryHeaderProps = {
 }
 
 export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
+  const windowWidth = useWindowDimensions().width
   const { firstName, lastName, depositExpirationDate } = props
   const name = `${firstName} ${lastName}`
 
@@ -24,7 +26,7 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
     <Container testID={'ex-beneficiary-header'}>
       <Spacer.TopScreen />
       <HeaderBackgroundWrapper>
-        <HeaderBackground width={ScreenWidth} />
+        <HeaderBackground width={windowWidth} />
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={6} />
       <TitleContainer>
