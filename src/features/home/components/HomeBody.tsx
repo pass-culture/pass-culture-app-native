@@ -2,7 +2,12 @@ import React, { useCallback, useState } from 'react'
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BusinessModule, ExclusivityModule, OffersModule } from 'features/home/components'
+import {
+  BusinessModule,
+  ExclusivityModule,
+  OffersModule,
+  VenuesModule,
+} from 'features/home/components'
 import { HomeHeader } from 'features/home/components/HomeHeader'
 import {
   BusinessPane,
@@ -10,6 +15,7 @@ import {
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
+import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
@@ -19,13 +25,14 @@ import { Spacer } from 'ui/theme'
 import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
 import { HomeModuleResponse } from '../pages/useHomeModules'
-import { isOfferModuleTypeguard } from '../typeguards'
+import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from '../typeguards'
 
 import { RecommendationModule } from './RecommendationModule'
 
 interface HomeBodyProps {
   displayedModules: ProcessedModule[]
   homeModules: HomeModuleResponse
+  homeVenuesModules: HomeVenuesModuleResponse
   recommendedHits: SearchHit[]
 }
 
@@ -42,7 +49,7 @@ const ListHeaderComponent = () => (
 )
 
 export const HomeBody = (props: HomeBodyProps) => {
-  const { displayedModules, homeModules, recommendedHits } = props
+  const { displayedModules, homeModules, homeVenuesModules, recommendedHits } = props
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
 
@@ -87,6 +94,11 @@ export const HomeBody = (props: HomeBodyProps) => {
             index={index}
           />
         )
+      }
+      if (isVenuesModuleTypeguard(item)) {
+        const { hits } = homeVenuesModules[item.moduleId]
+        // TODO(antoinewg) pass more parameters
+        return <VenuesModule key={item.moduleId} hits={hits} />
       }
       if (item instanceof RecommendationPane) {
         return (

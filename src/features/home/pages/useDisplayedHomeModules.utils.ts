@@ -4,8 +4,10 @@ import {
   Offers,
   OffersWithCover,
   ProcessedModule,
+  VenuesModule,
 } from 'features/home/contentful'
-import { isArrayOfOfferTypeguard } from 'features/home/typeguards'
+import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
+import { isArrayOfOfferTypeguard, isArrayOfVenuesTypeguard } from 'features/home/typeguards'
 import { SearchHit } from 'libs/search'
 
 import { RecommendationPane } from '../contentful/moduleTypes'
@@ -34,6 +36,11 @@ export const getOfferModules = (modules: ProcessedModule[]): Array<Offers | Offe
   return isArrayOfOfferTypeguard(filteredModules) ? filteredModules : []
 }
 
+export const getVenueModules = (modules: ProcessedModule[]): Array<VenuesModule> => {
+  const filteredModules = modules.filter((module) => module instanceof VenuesModule)
+  return isArrayOfVenuesTypeguard(filteredModules) ? filteredModules : []
+}
+
 export const getRecommendationModule = (
   modules: ProcessedModule[]
 ): RecommendationPane | undefined =>
@@ -42,6 +49,7 @@ export const getRecommendationModule = (
 export const getModulesToDisplay = (
   modules: ProcessedModule[],
   homeModules: HomeModuleResponse,
+  homeVenuesModules: HomeVenuesModuleResponse,
   recommendedHits: SearchHit[],
   isLoggedIn: boolean
 ) =>
@@ -58,5 +66,11 @@ export const getModulesToDisplay = (
       const { hits, nbHits } = homeModules[module.moduleId]
       return hits.length > 0 && nbHits >= module.display.minOffers
     }
+
+    if (module.moduleId in homeVenuesModules) {
+      const { hits, nbHits } = homeVenuesModules[module.moduleId]
+      return hits.length > 0 && nbHits >= module.display.minOffers
+    }
+
     return false
   })

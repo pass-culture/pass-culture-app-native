@@ -15,9 +15,12 @@ import { useShowSkeleton } from './useShowSkeleton'
 export const Home: FunctionComponent = function () {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const showSkeleton = useShowSkeleton()
-  const { displayedModules, homeModules, recommendedHits } = useDisplayedHomeModules(
-    params?.entryId
-  )
+  const {
+    displayedModules,
+    homeModules,
+    homeVenuesModules,
+    recommendedHits,
+  } = useDisplayedHomeModules(params?.entryId)
 
   // !!! IMPORTANT !!!
   // To avoid the deeplink navigation to happen before the initial screen on first opening
@@ -40,6 +43,7 @@ export const Home: FunctionComponent = function () {
     <HomeBody
       displayedModules={displayedModules}
       homeModules={homeModules}
+      homeVenuesModules={homeVenuesModules}
       recommendedHits={recommendedHits}
     />
   )

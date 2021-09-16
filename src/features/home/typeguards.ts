@@ -1,3 +1,5 @@
+import { VenuesModule } from 'features/home/contentful/moduleTypes'
+
 import { Offers, OffersWithCover, ProcessedModule } from './contentful'
 
 export const isOfferModuleTypeguard = (
@@ -9,3 +11,11 @@ export const isArrayOfOfferTypeguard = (
   modules: ProcessedModule[]
 ): modules is Array<Offers | OffersWithCover> =>
   modules.reduce<boolean>((acc: boolean, module) => acc && isOfferModuleTypeguard(module), true)
+
+export const isVenuesModuleTypeguard = (module: ProcessedModule): module is VenuesModule =>
+  module instanceof VenuesModule
+
+export const isArrayOfVenuesTypeguard = (
+  modules: ProcessedModule[]
+): modules is Array<VenuesModule> =>
+  modules.reduce<boolean>((acc: boolean, module) => acc && isVenuesModuleTypeguard(module), true)

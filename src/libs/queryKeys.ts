@@ -1,5 +1,6 @@
 export enum QueryKeys {
   HOME_MODULE = 'homeModule',
+  HOME_VENUES_MODULE = 'homeVenuesModule',
   BOOKINGS = 'bookings',
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',
