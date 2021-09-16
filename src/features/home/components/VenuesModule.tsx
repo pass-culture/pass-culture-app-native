@@ -3,17 +3,19 @@ import { FlatList, ListRenderItem } from 'react-native'
 
 import { ModuleTitle } from 'features/home/atoms'
 import { VenueTile } from 'features/home/atoms/VenueTile'
+import { DisplayParametersFields } from 'features/home/contentful'
 import { VenueHit } from 'libs/search'
 import { Spacer } from 'ui/theme'
 
 type VenuesModuleProps = {
   hits: VenueHit[]
+  display: DisplayParametersFields
 }
 
 const keyExtractor = (item: VenueHit) => item.id
 
 export const VenuesModule = (props: VenuesModuleProps) => {
-  const { hits } = props
+  const { hits, display } = props
 
   const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
     // TODO(antoinewg) create component VenueTile with image (copy from OfferTile)
@@ -22,7 +24,7 @@ export const VenuesModule = (props: VenuesModuleProps) => {
 
   return (
     <React.Fragment>
-      <ModuleTitle title="display.title" />
+      <ModuleTitle title={display.title} />
       <Spacer.Column numberOfSpaces={4} />
       <FlatList
         testID="VenuesModuleList"
