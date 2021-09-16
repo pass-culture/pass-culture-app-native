@@ -29,29 +29,17 @@ export function useNavigateToIdCheck({
     const shouldNavigateToIdCheck =
       !shouldControlNavWithSetting || settings?.allowIdCheckRegistration
     if (shouldNavigateToIdCheck) {
-      if (settings?.enableNativeIdCheckVersion) {
-        navigate(idCheckInitialRouteName, {
-          email,
-          licence_token: licenceToken,
-          expiration_timestamp:
-            expiration_timestamp instanceof Date
-              ? expiration_timestamp.getTime()
-              : expiration_timestamp,
-        })
-      } else {
-        navigate('IdCheck', {
-          email,
-          licence_token: licenceToken,
-          expiration_timestamp:
-            expiration_timestamp instanceof Date
-              ? expiration_timestamp.getTime()
-              : expiration_timestamp,
-        })
-      }
+      navigate(idCheckInitialRouteName, {
+        email,
+        licence_token: licenceToken,
+        expiration_timestamp:
+          expiration_timestamp instanceof Date
+            ? expiration_timestamp.getTime()
+            : expiration_timestamp,
+      })
     } else {
       onIdCheckNavigationBlocked()
     }
   }
-
   return navigateToIdCheck
 }

@@ -22,26 +22,8 @@ const LICENCE_TOKEN = 'LICENCE_TOKEN'
 const LICENCE_TOKEN_EXPIRATION_TIMESTAMP = new Date('2021-05-26T21:48:17.871Z').getTime()
 
 describe('useNavigateToIdCheck()', () => {
-  it('should navigate to IdCheck v1 when shouldControlNavWithSetting=false, enableNativeIdCheckVersion=false, allowIdCheckRegistration=false', () => {
+  it('should navigate to IdCheck v2 when shouldControlNavWithSetting=false, allowIdCheckRegistration=false', () => {
     const navigateToIdCheck = mockNavigateToIdCheck({
-      enableNativeIdCheckVersion: false,
-      allowIdCheckRegistration: false,
-      shouldControlNavWithSetting: false,
-      onIdCheckNavigationBlocked: undefined,
-    })
-
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
-
-    expect(navigate).toBeCalledWith('IdCheck', {
-      email: EMAIL,
-      licence_token: LICENCE_TOKEN,
-      expiration_timestamp: LICENCE_TOKEN_EXPIRATION_TIMESTAMP,
-    })
-  })
-
-  it('should navigate to IdCheck v2 when shouldControlNavWithSetting=false, enableNativeIdCheckVersion=true, allowIdCheckRegistration=false', () => {
-    const navigateToIdCheck = mockNavigateToIdCheck({
-      enableNativeIdCheckVersion: true,
       allowIdCheckRegistration: false,
       shouldControlNavWithSetting: false,
       onIdCheckNavigationBlocked: undefined,
@@ -58,7 +40,6 @@ describe('useNavigateToIdCheck()', () => {
 
   it('should navigate to home when shouldControlNavWithSetting=true, enableNativeIdCheckVersion=false, allowIdCheckRegistration=false', () => {
     const navigateToIdCheck = mockNavigateToIdCheck({
-      enableNativeIdCheckVersion: false,
       allowIdCheckRegistration: false,
       shouldControlNavWithSetting: true,
       onIdCheckNavigationBlocked: undefined,
@@ -72,7 +53,6 @@ describe('useNavigateToIdCheck()', () => {
   it('should call onIdCheckNavigationBlocked() when onIdCheckNavigationBlocked is defined and shouldControlNavWithSetting=true, enableNativeIdCheckVersion=false, allowIdCheckRegistration=false', () => {
     const onIdCheckNavigationBlocked = jest.fn()
     const navigateToIdCheck = mockNavigateToIdCheck({
-      enableNativeIdCheckVersion: true,
       allowIdCheckRegistration: false,
       shouldControlNavWithSetting: true,
       onIdCheckNavigationBlocked,
@@ -84,26 +64,8 @@ describe('useNavigateToIdCheck()', () => {
     expect(navigateToHome).not.toBeCalled()
   })
 
-  it('should navigate to IdCheck v1 when shouldControlNavWithSetting=true, enableNativeIdCheckVersion=false, allowIdCheckRegistration=true', () => {
-    const navigateToIdCheck = mockNavigateToIdCheck({
-      enableNativeIdCheckVersion: false,
-      allowIdCheckRegistration: true,
-      shouldControlNavWithSetting: true,
-      onIdCheckNavigationBlocked: undefined,
-    })
-
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
-
-    expect(navigate).toBeCalledWith('IdCheck', {
-      email: EMAIL,
-      licence_token: LICENCE_TOKEN,
-      expiration_timestamp: LICENCE_TOKEN_EXPIRATION_TIMESTAMP,
-    })
-  })
-
   it('should navigate to IdCheck v2 when shouldControlNavWithSetting=true, enableNativeIdCheckVersion=true, allowIdCheckRegistration=true', () => {
     const navigateToIdCheck = mockNavigateToIdCheck({
-      enableNativeIdCheckVersion: true,
       allowIdCheckRegistration: true,
       shouldControlNavWithSetting: true,
       onIdCheckNavigationBlocked: undefined,
@@ -120,18 +82,16 @@ describe('useNavigateToIdCheck()', () => {
 })
 
 function mockNavigateToIdCheck({
-  enableNativeIdCheckVersion,
   allowIdCheckRegistration,
   shouldControlNavWithSetting,
   onIdCheckNavigationBlocked,
 }: {
-  enableNativeIdCheckVersion: boolean
   allowIdCheckRegistration: boolean
   shouldControlNavWithSetting: boolean
   onIdCheckNavigationBlocked?: () => void
 }) {
   mockedUseAppSettings.mockReturnValue({
-    data: { enableNativeIdCheckVersion, allowIdCheckRegistration },
+    data: { allowIdCheckRegistration },
   } as UseQueryResult<SettingsResponse>)
   const {
     result: { current: navigateToIdCheck },
