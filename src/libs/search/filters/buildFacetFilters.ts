@@ -16,6 +16,8 @@ export const buildFacetFilters = (searchState: SearchState): FilterArray<AppSear
   if (locationFilter.locationType === LocationType.VENUE && locationFilter.venue.venueId)
     facetFilters.push({ [AppSearchFields.venue_id]: locationFilter.venue.venueId })
 
+  facetFilters.push({ [AppSearchFields.is_educational]: FALSE })
+
   return facetFilters
 }
 

@@ -1,7 +1,7 @@
 import { CategoryNameEnum } from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
-import { AppSearchFields } from 'libs/search/filters/constants'
+import { AppSearchFields, FALSE } from 'libs/search/filters/constants'
 
 import { buildQueryOptions } from '../index'
 
@@ -17,8 +17,12 @@ const userLocation = {
   longitude: 43,
 }
 
+const educationalFilter = {
+  [AppSearchFields.is_educational]: FALSE,
+}
+
 describe('buildQueryOptions', () => {
-  describe('multiple parameters', () => {
+  describe.only('multiple parameters', () => {
     it('should fetch with price and date numericFilters', () => {
       const selectedDate = new Date(2020, 3, 19, 11)
       const from = '2020-04-19T00:00:00.000Z'
@@ -35,7 +39,11 @@ describe('buildQueryOptions', () => {
       )
 
       expect(filters.filters).toStrictEqual({
-        all: [{ [AppSearchFields.prices]: { to: 1 } }, { [AppSearchFields.dates]: { from, to } }],
+        all: [
+          educationalFilter,
+          { [AppSearchFields.prices]: { to: 1 } },
+          { [AppSearchFields.dates]: { from, to } },
+        ],
       })
     })
 
@@ -49,6 +57,7 @@ describe('buildQueryOptions', () => {
 
       expect(filters.filters).toStrictEqual({
         all: [
+          educationalFilter,
           { [AppSearchFields.prices]: { to: 1 } },
           { [AppSearchFields.times]: { from: 10 * HOUR, to: 17 * HOUR } },
         ],
@@ -77,6 +86,7 @@ describe('buildQueryOptions', () => {
 
       expect(filters.filters).toStrictEqual({
         all: [
+          educationalFilter,
           { [AppSearchFields.prices]: { to: 1 } },
           { [AppSearchFields.dates]: { from: sundayFrom, to: sundayTo } },
         ],
@@ -112,6 +122,7 @@ describe('buildQueryOptions', () => {
         all: [
           { [AppSearchFields.is_digital]: 1 },
           { [AppSearchFields.category]: ['LECON', 'VISITE'] },
+          educationalFilter,
           { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.venue_position]: { center: '42, 43', distance: 123, unit: 'km' } },
         ],
@@ -141,6 +152,7 @@ describe('buildQueryOptions', () => {
         all: [
           { [AppSearchFields.is_event]: 1 },
           { [AppSearchFields.category]: ['PRATIQUE', 'SPECTACLE'] },
+          educationalFilter,
           { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.venue_position]: { center: '42, 43', distance: 123, unit: 'km' } },
         ],
@@ -173,6 +185,7 @@ describe('buildQueryOptions', () => {
           { [AppSearchFields.is_event]: 1 },
           { [AppSearchFields.category]: ['PRATIQUE', 'SPECTACLE'] },
           { [AppSearchFields.is_duo]: 1 },
+          educationalFilter,
           { [AppSearchFields.prices]: { from: 500, to: 4000 } },
           { [AppSearchFields.venue_position]: { center: '42, 43', distance: 123, unit: 'km' } },
         ],
@@ -218,7 +231,7 @@ describe('buildQueryOptions', () => {
       const filters = buildQueryOptions(baseParams as SearchState, null, true)
 
       expect(filters.filters).toStrictEqual({
-        all: [{ [AppSearchFields.prices]: { to: 30000 } }],
+        all: [educationalFilter, { [AppSearchFields.prices]: { to: 30000 } }],
         any: [
           { is_digital: 0 },
           { [AppSearchFields.prices]: { to: 1 } },
