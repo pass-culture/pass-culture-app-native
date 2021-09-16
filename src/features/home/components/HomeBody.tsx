@@ -98,7 +98,7 @@ export const HomeBody = (props: HomeBodyProps) => {
       if (isVenuesModuleTypeguard(item)) {
         const { hits } = homeVenuesModules[item.moduleId]
         // TODO(antoinewg) pass more parameters
-        return <VenuesModule key={item.moduleId} hits={hits} />
+        return <VenuesModule key={item.moduleId} hits={hits} display={item.display} />
       }
       if (item instanceof RecommendationPane) {
         return (
