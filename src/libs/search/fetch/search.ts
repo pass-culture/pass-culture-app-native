@@ -7,7 +7,7 @@ import { SearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
-import { client } from 'libs/search/client'
+import { offersClient } from 'libs/search/client'
 import {
   buildQueryOptions,
   AppSearchFields,
@@ -40,7 +40,7 @@ export const fetchObjects = async (
     },
   }
 
-  const response = await client.search<AppSearchFields>('', options)
+  const response = await offersClient.search<AppSearchFields>('', options)
   return { results: response.results.map(buildAlgoliaHit) }
 }
 
@@ -54,7 +54,7 @@ export const fetchMultipleHits = async (
     options: buildQueryOptions(params, userLocation, isUserUnderage),
   }))
 
-  const allResults = await client.multiSearch<AppSearchFields>(queries)
+  const allResults = await offersClient.multiSearch<AppSearchFields>(queries)
   const hits = allResults.flatMap(({ results }) => results.map(buildAlgoliaHit))
 
   // We only use the total hits from the first search parameters, as this will
@@ -70,7 +70,7 @@ export const fetchHits = async (
 ): Promise<Response> => {
   const options = buildQueryOptions(params, userLocation, isUserUnderage, params.page)
 
-  const response = await client.search<AppSearchFields>(params.query, options)
+  const response = await offersClient.search<AppSearchFields>(params.query, options)
   const { meta } = response.info
 
   return {
@@ -87,7 +87,7 @@ export const fetchVenueOffers = async (
 ): Promise<SearchResponse> => {
   const options = buildQueryOptions(params, null, isUserUnderage) // no need of geolocation to get venues, yet?
 
-  const response = await client.search<AppSearchFields>('', options)
+  const response = await offersClient.search<AppSearchFields>('', options)
   const { meta } = response.info
 
   return {
@@ -112,6 +112,6 @@ export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
   }
 
   // TODO(antoinewg): once venues are indexed on AppSearch, use this index.
-  const response = await client.search<AppSearchFields>(query, options)
+  const response = await offersClient.search<AppSearchFields>(query, options)
   return response.results.map(buildVenues)
 }
