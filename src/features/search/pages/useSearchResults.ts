@@ -4,7 +4,6 @@ import { useMemo } from 'react'
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/utils'
-import { OptionalCategoryCriteria } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { useGeolocation } from 'libs/geolocation'
@@ -14,27 +13,11 @@ import { useAlgoliaQuery } from 'libs/search/fetch/useAlgoliaQuery'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 import { useSearchQuery } from 'libs/search/fetch/useSearchQuery'
 import { useSendAdditionalRequestToAppSearch } from 'libs/search/useSendAdditionalRequestToAppSearch'
+import { filterAvailableCategories } from 'libs/search/utils/filterAvailableCategories'
 
 import { useSearch, useStagedSearch } from './SearchWrapper'
 
 export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
-
-// TODO(anoukhello) use parseSearchParams function to filter available categories
-function filterAvailableCategories(
-  searchState: SearchState,
-  availableCategories: OptionalCategoryCriteria
-) {
-  const { offerCategories } = searchState
-  // if no category is selected, fill this field with available categories
-  if (offerCategories.length === 0) {
-    const categoryFacets = Object.values(availableCategories).map(
-      (category) => category.facetFilter
-    )
-    return { ...searchState, ...{ offerCategories: categoryFacets } }
-  }
-  const categoryFacets = offerCategories.filter((category) => category in availableCategories)
-  return { ...searchState, offerCategories: categoryFacets }
-}
 
 const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
@@ -52,8 +35,15 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
     [QueryKeys.SEARCH_RESULTS, searchState],
     async (context: QueryFunctionContext<[string, SearchState], number>) => {
       const page = context.pageParam || 0
-      const searchState = filterAvailableCategories(context.queryKey[1], availableCategories)
-      return await fetchHits({ page, ...searchState }, position, isUserUnderage)
+      const searchState = context.queryKey[1]
+      const newSearchState = {
+        ...searchState,
+        offerCategories: filterAvailableCategories(
+          searchState.offerCategories,
+          availableCategories
+        ),
+      }
+      return await fetchHits({ page, ...newSearchState }, position, isUserUnderage)
     },
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
