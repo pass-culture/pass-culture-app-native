@@ -65,7 +65,7 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await flushAllPromises()
 
-    expect(navigate).toBeCalledWith('IdCheck', {
+    expect(navigate).toBeCalledWith('IdCheckV2', {
       email: 'christophe.dupont@gmail.com',
     })
   })
@@ -92,7 +92,7 @@ describe('useBeneficiaryValidationNavigation', () => {
       nextBeneficiaryValidationStep: BeneficiaryValidationStep.IdCheck,
     })
 
-    expect(navigate).toBeCalledWith('IdCheck', {
+    expect(navigate).toBeCalledWith('IdCheckV2', {
       email: 'christophe.dupont@gmail.com',
     })
   })

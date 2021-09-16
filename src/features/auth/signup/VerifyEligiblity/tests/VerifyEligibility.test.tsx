@@ -54,7 +54,7 @@ describe('<VerifyEligibility />', () => {
     fireEvent.press(button)
 
     expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('IdCheck', {
+    expect(navigate).toBeCalledWith('IdCheckV2', {
       email: 'christophe.dupont@gmail.com',
       expiration_timestamp: undefined,
       licence_token: undefined,

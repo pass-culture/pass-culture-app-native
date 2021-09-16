@@ -43,7 +43,6 @@ export type RootStackParamList = {
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
-  IdCheck: { email: string; licence_token?: string; expiration_timestamp?: number | null }
   IdCheckUnavailable: undefined
   IdCheckTooManyAttempts: undefined
   Login?: {

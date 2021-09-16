@@ -15,7 +15,6 @@ import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
-import { IdCheck } from 'features/auth/signup/IdCheck'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
@@ -161,7 +160,6 @@ const routesBeforeReleaseCheck: Route[] = [
     path: 'forgotten-password',
     options: { title: t`Mot de passe oublié` },
   },
-  { name: 'IdCheck', component: IdCheck, hoc: withIdCheckAsyncErrorBoundary, path: 'idcheck' },
   {
     name: 'LegalNotices',
     component: LegalNotices,

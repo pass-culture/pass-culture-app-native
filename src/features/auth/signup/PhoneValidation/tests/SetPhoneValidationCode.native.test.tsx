@@ -122,7 +122,7 @@ describe('SetPhoneValidationCode', () => {
       useMutationCallbacks.onSuccess()
 
       await flushAllPromises()
-      expect(navigate).toBeCalledWith('IdCheck', {
+      expect(navigate).toBeCalledWith('IdCheckV2', {
         email: 'christophe.dupont@example.com',
       })
     })
