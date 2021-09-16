@@ -1,7 +1,6 @@
 import { MultipleQueriesResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
-import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { SearchHit, parseSearchParameters } from 'libs/search'
 import * as SearchModule from 'libs/search/fetch/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -65,16 +64,10 @@ describe('useHomeModules', () => {
       { wrapper: ({ children }) => reactQueryProviderHOC(children) }
     )
 
-    const { result: availableCategories } = renderHook(() => useAvailableCategories())
-
     expect(fetchMultipleHits).toHaveBeenCalledWith(
       [
         {
-          ...parseSearchParameters(
-            { title: 'tile', hitsPerPage: 4 },
-            null,
-            availableCategories.current
-          ),
+          ...parseSearchParameters({ title: 'tile', hitsPerPage: 4 }, null),
         },
       ],
       null,

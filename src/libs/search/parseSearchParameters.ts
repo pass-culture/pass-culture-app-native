@@ -1,12 +1,11 @@
 import { SearchParametersFields } from 'features/home/contentful'
-import { LocationType, OptionalCategoryCriteria } from 'features/search/enums'
+import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 
 export const parseSearchParameters = (
   parameters: SearchParametersFields,
-  geolocation: GeoCoordinates | null,
-  availableCategories: OptionalCategoryCriteria
+  geolocation: GeoCoordinates | null
 ): SearchState | undefined => {
   const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
 
@@ -31,7 +30,7 @@ export const parseSearchParameters = (
       isGeolocated && geolocation
         ? { locationType: LocationType.AROUND_ME, aroundRadius: aroundRadius || null }
         : { locationType: LocationType.EVERYWHERE },
-    offerCategories: _buildCategories(parameters.categories || [], availableCategories),
+    offerCategories: parameters.categories || [],
     offerIsDuo: parameters.isDuo || false,
     offerIsFree: parameters.isFree || false,
     offerIsNew: parameters.newestOnly || false,
@@ -51,13 +50,4 @@ export const parseSearchParameters = (
 
 const _buildPriceRange = ({ priceMin = 0, priceMax = 300 }): [number, number] => {
   return [priceMin, priceMax]
-}
-
-const _buildCategories = (
-  categoriesLabel: string[],
-  availableCategories: OptionalCategoryCriteria
-): string[] => {
-  return Object.values(availableCategories)
-    .filter((categoryCriterion) => categoriesLabel.includes(categoryCriterion.label))
-    .map((categoryCriterion) => categoryCriterion.facetFilter)
 }

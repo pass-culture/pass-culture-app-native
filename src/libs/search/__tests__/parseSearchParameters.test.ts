@@ -1,12 +1,14 @@
+import { renderHook } from '@testing-library/react-hooks'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { SearchParametersFields } from 'features/home/contentful'
-import { CATEGORY_CRITERIA, LocationType } from 'features/search/enums'
+import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { useParseSearchParameters } from 'libs/search'
 
 import { parseSearchParameters } from '../parseSearchParameters'
 
-const availableCategories = CATEGORY_CRITERIA
+jest.mock('features/home/api')
 
 const defaultSearchParameters = {
   ...initialSearchState,
@@ -19,7 +21,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = {} as SearchParametersFields
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual(defaultSearchParameters)
   })
 
@@ -27,10 +29,10 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = {
       categories: ['Cinéma', 'Cours, ateliers', 'Livres'],
     } as SearchParametersFields
-    const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
-    expect(result).toStrictEqual({
+    const { result } = renderHook(() => useParseSearchParameters())
+    const parsedParameters = result.current(parameters)
+    expect(parsedParameters).toStrictEqual({
       ...defaultSearchParameters,
       offerCategories: ['CINEMA', 'LECON', 'LIVRE'],
     })
@@ -41,7 +43,7 @@ describe('src | components | parseSearchParameters', () => {
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
     } as SearchParametersFields
     const geolocation = null
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
@@ -51,14 +53,14 @@ describe('src | components | parseSearchParameters', () => {
   it('should return parsed algolia parameters with hitsPerPage when provided', () => {
     const parameters = { hitsPerPage: 5 } as SearchParametersFields
     const geolocation = null
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({ ...defaultSearchParameters, hitsPerPage: 5 })
   })
 
   it('should return parsed algolia parameters with isDuo when provided', () => {
     const parameters = { isDuo: true } as SearchParametersFields
     const geolocation = null
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({ ...defaultSearchParameters, offerIsDuo: true })
   })
 
@@ -66,7 +68,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = { newestOnly: true } as SearchParametersFields
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({ ...defaultSearchParameters, offerIsNew: true })
   })
 
@@ -74,7 +76,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = { isDigital: true } as SearchParametersFields
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       offerTypes: { isDigital: true, isEvent: false, isThing: false },
@@ -85,7 +87,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = { isEvent: true } as SearchParametersFields
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       offerTypes: { isDigital: false, isEvent: true, isThing: false },
@@ -96,7 +98,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = { isThing: true } as SearchParametersFields
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       offerTypes: { isDigital: false, isEvent: false, isThing: true },
@@ -107,7 +109,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = { isDigital: true, isEvent: true, isThing: true } as SearchParametersFields
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       offerTypes: { isDigital: true, isEvent: true, isThing: true },
@@ -118,7 +120,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = { priceMin: 50 } as SearchParametersFields
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [50, 300] })
   })
 
@@ -126,7 +128,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = { priceMax: 200 } as SearchParametersFields
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [0, 200] })
   })
 
@@ -134,7 +136,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = { priceMin: 50, priceMax: 200 } as SearchParametersFields
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [50, 200] })
   })
 
@@ -142,7 +144,7 @@ describe('src | components | parseSearchParameters', () => {
     const parameters = { isFree: true } as SearchParametersFields
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, availableCategories)
+    const result = parseSearchParameters(parameters, geolocation)
     expect(result).toStrictEqual({ ...defaultSearchParameters, offerIsFree: true })
   })
 
@@ -152,7 +154,7 @@ describe('src | components | parseSearchParameters', () => {
     it('should return algolia parameters with geolocation with no distance limit when isGeolocated is provided', () => {
       const parameters = { isGeolocated: true } as SearchParametersFields
 
-      const result = parseSearchParameters(parameters, geolocation, availableCategories)
+      const result = parseSearchParameters(parameters, geolocation)
       expect(result?.locationFilter).toStrictEqual({
         ...defaultSearchParameters.locationFilter,
         locationType: LocationType.AROUND_ME,
@@ -163,7 +165,7 @@ describe('src | components | parseSearchParameters', () => {
     it('should return algolia parameters with geolocation with distance limit when isGeolocated is provided and radius as well', () => {
       const parameters = { aroundRadius: 10, isGeolocated: true } as SearchParametersFields
 
-      const result = parseSearchParameters(parameters, geolocation, availableCategories)
+      const result = parseSearchParameters(parameters, geolocation)
       expect(result?.locationFilter).toStrictEqual({
         ...defaultSearchParameters.locationFilter,
         aroundRadius: 10,
@@ -174,14 +176,14 @@ describe('src | components | parseSearchParameters', () => {
     it('should return null when isGeolocated is true & around radius is provided but geolocation is null', () => {
       const parameters = { aroundRadius: 10, isGeolocated: true } as SearchParametersFields
 
-      const result = parseSearchParameters(parameters, null, availableCategories)
+      const result = parseSearchParameters(parameters, null)
       expect(result).toBeUndefined()
     })
 
     it('should return null when isGeolocated is false & around radius is provided', () => {
       const parameters = { aroundRadius: 10, isGeolocated: false } as SearchParametersFields
 
-      const result = parseSearchParameters(parameters, null, availableCategories)
+      const result = parseSearchParameters(parameters, null)
       expect(result).toBeUndefined()
     })
   })
@@ -193,7 +195,7 @@ describe('src | components | parseSearchParameters', () => {
       const parameters = { beginningDatetime: beginningDatetimeAsString } as SearchParametersFields
       const geolocation = null
 
-      const result = parseSearchParameters(parameters, geolocation, availableCategories)
+      const result = parseSearchParameters(parameters, geolocation)
       expect(result).toStrictEqual({ ...defaultSearchParameters, beginningDatetime })
     })
 
@@ -203,7 +205,7 @@ describe('src | components | parseSearchParameters', () => {
       const parameters = { endingDatetime: endingDatetimeAsString } as SearchParametersFields
       const geolocation = null
 
-      const result = parseSearchParameters(parameters, geolocation, availableCategories)
+      const result = parseSearchParameters(parameters, geolocation)
       expect(result).toStrictEqual({ ...defaultSearchParameters, endingDatetime })
     })
 
@@ -218,7 +220,7 @@ describe('src | components | parseSearchParameters', () => {
       } as SearchParametersFields
       const geolocation = null
 
-      const result = parseSearchParameters(parameters, geolocation, availableCategories)
+      const result = parseSearchParameters(parameters, geolocation)
       expect(result).toStrictEqual({
         ...defaultSearchParameters,
         beginningDatetime,
