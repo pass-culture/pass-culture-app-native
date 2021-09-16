@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
+import { TextInput as RNTextInput, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
@@ -32,6 +32,7 @@ if (__DEV__ && env.SIGNUP_RANDOM_EMAIL) {
   INITIAL_EMAIL = `${randomAlphaString()}@${randomAlphaString()}.com`
 }
 
+const IS_NEWSLETTER_CHECKBOX_LABEL = t`Reçois nos recommandations culturelles à proximité de chez toi par e-mail.`
 export const SetEmail: FunctionComponent = () => {
   const [email, setEmail] = useState(INITIAL_EMAIL)
   const [hasError, setHasError] = useState(false)
@@ -106,7 +107,11 @@ export const SetEmail: FunctionComponent = () => {
           <StyledCheckBox>
             <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
             <CheckBoxText>
-              {t`Reçois nos recommandations culturelles à proximité de chez toi par e-mail.`}
+              <TouchableOpacity
+                onPress={() => setIsNewsletterChecked(!isNewsletterChecked)}
+                {...testID(IS_NEWSLETTER_CHECKBOX_LABEL)}>
+                {IS_NEWSLETTER_CHECKBOX_LABEL}
+              </TouchableOpacity>
             </CheckBoxText>
           </StyledCheckBox>
           <Spacer.Column numberOfSpaces={6} />
