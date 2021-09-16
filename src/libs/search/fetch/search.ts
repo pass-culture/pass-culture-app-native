@@ -34,9 +34,8 @@ export const fetchObjects = async (
       any: ids.map((id) => ({ [AppSearchFields.id]: id })),
       ...(isUserUnderage && underageFilter),
       all: [
-        {
-          [AppSearchFields.category]: Object.keys(availableCategories),
-        },
+        { [AppSearchFields.category]: Object.keys(availableCategories) },
+        { [AppSearchFields.is_educational]: FALSE },
       ],
     },
   }
