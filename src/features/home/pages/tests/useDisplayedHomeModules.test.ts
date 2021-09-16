@@ -5,7 +5,9 @@ import {
   ExclusivityPane,
   ProcessedModule,
 } from 'features/home/contentful'
+import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
+import { mockedSearchResponse } from 'libs/search/fixtures/mockedSearchResponse'
 
 import {
   showBusinessModule,
@@ -15,11 +17,20 @@ import {
 import { HomeModuleResponse } from '../useHomeModules'
 
 const nbHits = 2
-const hits = mockedAlgoliaResponse.hits.slice(0, nbHits)
+const hitsAlgolia = mockedAlgoliaResponse.hits.slice(0, nbHits)
+const hitsSearch = mockedSearchResponse.hits.slice(0, nbHits)
+
 const homeModules: HomeModuleResponse = {
   // notInHomeModules should no be here
-  ['homeModuleShown']: { hits, nbHits },
-  ['homeModuleHidden']: { hits, nbHits },
+  ['homeModuleShown']: { hits: hitsAlgolia, nbHits },
+  ['homeModuleHidden']: { hits: hitsAlgolia, nbHits },
+  ['emptyHits']: { hits: [], nbHits },
+}
+
+const homeVenuesModules: HomeVenuesModuleResponse = {
+  // notInVenuesHomeModules should no be here
+  ['homeModuleShown']: { hits: hitsSearch, nbHits },
+  ['homeModuleHidden']: { hits: hitsSearch, nbHits },
   ['emptyHits']: { hits: [], nbHits },
 }
 
@@ -100,7 +111,8 @@ describe('useDisplayedHomeModules.utils', () => {
       const connectedModules = getModulesToDisplay(
         [...offerModules, connectedBusinessModule],
         homeModules,
-        hits,
+        homeVenuesModules,
+        hitsAlgolia,
         true
       )
       expect(connectedModules).toContain(connectedBusinessModule)
@@ -108,7 +120,8 @@ describe('useDisplayedHomeModules.utils', () => {
       const notConnectedModules = getModulesToDisplay(
         [...offerModules, connectedBusinessModule],
         homeModules,
-        hits,
+        homeVenuesModules,
+        hitsAlgolia,
         false
       )
       expect(notConnectedModules).not.toContain(connectedBusinessModule)
@@ -117,7 +130,8 @@ describe('useDisplayedHomeModules.utils', () => {
       const displayedModules = getModulesToDisplay(
         [excluModule, connectedBusinessModule, ...offerModules],
         homeModules,
-        hits,
+        homeVenuesModules,
+        hitsAlgolia,
         false
       )
       expect(displayedModules).toContain(excluModule)
@@ -126,7 +140,8 @@ describe('useDisplayedHomeModules.utils', () => {
       const displayedModules = getModulesToDisplay(
         [excluModule, connectedBusinessModule, notInHomeModules],
         homeModules,
-        hits,
+        homeVenuesModules,
+        hitsAlgolia,
         true
       )
       expect(notInHomeModules).not.toContain(excluModule)
@@ -136,7 +151,8 @@ describe('useDisplayedHomeModules.utils', () => {
       const displayedModules = getModulesToDisplay(
         [emptyHits, excluModule, connectedBusinessModule],
         homeModules,
-        hits,
+        homeVenuesModules,
+        hitsAlgolia,
         true
       )
       expect(displayedModules).not.toContain(emptyHits)
@@ -146,7 +162,8 @@ describe('useDisplayedHomeModules.utils', () => {
       const displayedModules = getModulesToDisplay(
         [connectedBusinessModule, excluModule, hiddenOfferModule],
         homeModules,
-        hits,
+        homeVenuesModules,
+        hitsAlgolia,
         true
       )
       expect(displayedModules).not.toContain(hiddenOfferModule)
@@ -156,7 +173,8 @@ describe('useDisplayedHomeModules.utils', () => {
       const displayedModules = getModulesToDisplay(
         [connectedBusinessModule, excluModule, visibleOfferModule],
         homeModules,
-        hits,
+        homeVenuesModules,
+        hitsAlgolia,
         true
       )
       expect(displayedModules).toContain(visibleOfferModule)
