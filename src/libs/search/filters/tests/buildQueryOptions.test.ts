@@ -1,3 +1,4 @@
+import { CategoryNameEnum } from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { AppSearchFields } from 'libs/search/filters/constants'
@@ -29,7 +30,8 @@ describe('buildQueryOptions', () => {
           offerIsFree: true,
           date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
         } as SearchState,
-        null
+        null,
+        false
       )
 
       expect(filters.filters).toStrictEqual({
@@ -41,7 +43,8 @@ describe('buildQueryOptions', () => {
       const timeRange = [10, 17]
       const filters = buildQueryOptions(
         { ...baseParams, offerIsFree: true, timeRange } as SearchState,
-        null
+        null,
+        false
       )
 
       expect(filters.filters).toStrictEqual({
@@ -68,7 +71,8 @@ describe('buildQueryOptions', () => {
           },
           timeRange,
         } as SearchState,
-        null
+        null,
+        false
       )
 
       expect(filters.filters).toStrictEqual({
@@ -95,6 +99,7 @@ describe('buildQueryOptions', () => {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 123 },
         } as SearchState,
         userLocation,
+        false,
         page
       )
 
@@ -128,7 +133,8 @@ describe('buildQueryOptions', () => {
           offerIsDuo: false,
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 123 },
         } as SearchState,
-        userLocation
+        userLocation,
+        false
       )
 
       expect(filters.filters).toStrictEqual({
@@ -158,7 +164,8 @@ describe('buildQueryOptions', () => {
           priceRange,
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 123 },
         } as SearchState,
-        userLocation
+        userLocation,
+        false
       )
 
       expect(filters.filters).toStrictEqual({
@@ -175,7 +182,11 @@ describe('buildQueryOptions', () => {
 
   describe('hitsPerPage', () => {
     it('should fetch with no hitsPerPage parameter when not provided', () => {
-      const filters = buildQueryOptions({ ...baseParams, hitsPerPage: null } as SearchState, null)
+      const filters = buildQueryOptions(
+        { ...baseParams, hitsPerPage: null } as SearchState,
+        null,
+        false
+      )
       expect(filters.page).toStrictEqual({
         current: 1,
         size: 20,
@@ -183,7 +194,11 @@ describe('buildQueryOptions', () => {
     })
 
     it('should fetch with hitsPerPage when provided', () => {
-      const filters = buildQueryOptions({ ...baseParams, hitsPerPage: 5 } as SearchState, null)
+      const filters = buildQueryOptions(
+        { ...baseParams, hitsPerPage: 5 } as SearchState,
+        null,
+        false
+      )
       expect(filters.page).toStrictEqual({
         current: 1,
         size: 5,
@@ -193,8 +208,23 @@ describe('buildQueryOptions', () => {
 
   describe('group', () => {
     it('should always fetch a single offer per group (isbn/visa/...)', () => {
-      const filters = buildQueryOptions(baseParams as SearchState, null)
+      const filters = buildQueryOptions(baseParams as SearchState, null, false)
       expect(filters.group).toStrictEqual({ field: AppSearchFields.group })
+    })
+  })
+
+  describe('underage parameters', () => {
+    it('should filter out non free digital offers except press category if user is underage', () => {
+      const filters = buildQueryOptions(baseParams as SearchState, null, true)
+
+      expect(filters.filters).toStrictEqual({
+        all: [{ [AppSearchFields.prices]: { to: 30000 } }],
+        any: [
+          { is_digital: 0 },
+          { [AppSearchFields.prices]: { to: 1 } },
+          { [AppSearchFields.category]: CategoryNameEnum.PRESSE },
+        ],
+      })
     })
   })
 })

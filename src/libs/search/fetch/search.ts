@@ -28,11 +28,12 @@ export const fetchObjects = async (ids: string[]): Promise<{ results: SearchHit[
 
 export const fetchMultipleHits = async (
   paramsList: SearchState[],
-  userLocation: GeoCoordinates | null
+  userLocation: GeoCoordinates | null,
+  isUserUnderage: boolean
 ): Promise<SearchResponse> => {
   const queries = paramsList.map((params) => ({
     query: params.query,
-    options: buildQueryOptions(params, userLocation),
+    options: buildQueryOptions(params, userLocation, isUserUnderage),
   }))
 
   const allResults = await client.multiSearch<AppSearchFields>(queries)
@@ -46,9 +47,10 @@ export const fetchMultipleHits = async (
 
 export const fetchHits = async (
   params: SearchParametersQuery,
-  userLocation: GeoCoordinates | null
+  userLocation: GeoCoordinates | null,
+  isUserUnderage: boolean
 ): Promise<Response> => {
-  const options = buildQueryOptions(params, userLocation, params.page)
+  const options = buildQueryOptions(params, userLocation, isUserUnderage, params.page)
 
   const response = await client.search<AppSearchFields>(params.query, options)
   const { meta } = response.info
@@ -61,8 +63,11 @@ export const fetchHits = async (
   }
 }
 
-export const fetchVenueOffers = async (params: SearchState): Promise<SearchResponse> => {
-  const options = buildQueryOptions(params, null) // no need of geolocation to get venues, yet?
+export const fetchVenueOffers = async (
+  params: SearchState,
+  isUserUnderage: boolean
+): Promise<SearchResponse> => {
+  const options = buildQueryOptions(params, null, isUserUnderage) // no need of geolocation to get venues, yet?
 
   const response = await client.search<AppSearchFields>('', options)
   const { meta } = response.info

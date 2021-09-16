@@ -1,5 +1,6 @@
 import { SearchOptions } from '@elastic/app-search-javascript'
 
+import { CategoryNameEnum } from 'api/gen'
 import { SearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { buildBoosts } from 'libs/search/filters/buildBoosts'
@@ -7,11 +8,22 @@ import { buildBoosts } from 'libs/search/filters/buildBoosts'
 import { buildFacetFilters } from './buildFacetFilters'
 import { buildGeolocationFilter } from './buildGeolocationFilter'
 import { buildNumericFilters } from './buildNumericFilters'
-import { AppSearchFields, RESULT_FIELDS, SORT_OPTIONS } from './constants'
+import { AppSearchFields, FALSE, RESULT_FIELDS, SORT_OPTIONS } from './constants'
+
+// we don't want to show offers to underage users if those offers are digital, not free and not in press category.
+// As a result if an offer is either not digital, free, or is in category press, we can show it to the underage users.
+export const underageFilter = {
+  any: [
+    { [AppSearchFields.is_digital]: FALSE },
+    { [AppSearchFields.prices]: { to: 1 } },
+    { [AppSearchFields.category]: CategoryNameEnum.PRESSE },
+  ],
+}
 
 export const buildQueryOptions = (
   searchState: SearchState,
   userLocation: GeoCoordinates | null,
+  isUserUnderage: boolean,
   page?: number
 ): SearchOptions<AppSearchFields> => {
   const queryOptions: SearchOptions<AppSearchFields> = {
@@ -22,6 +34,7 @@ export const buildQueryOptions = (
         ...buildNumericFilters(searchState),
         ...buildGeolocationFilter(searchState.locationFilter, userLocation),
       ],
+      ...(isUserUnderage && underageFilter),
     },
     page: {
       current: page || 1,
