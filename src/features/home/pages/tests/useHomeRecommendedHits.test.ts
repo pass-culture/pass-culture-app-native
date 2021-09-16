@@ -2,6 +2,7 @@ import { renderHook, cleanup } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
 import { RecommendationPane } from 'features/home/contentful/moduleTypes'
+import { CATEGORY_CRITERIA } from 'features/search/enums'
 import * as SearchModule from 'libs/search/fetch/search'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -60,11 +61,12 @@ describe('useHomeRecommendedHits', () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-
+    const availableCategories = CATEGORY_CRITERIA
+    const isUserUnderage = false
     await waitFor(() => {
       expect(result.current).toHaveLength(4)
       expect(fetchObjects).toHaveBeenCalledTimes(1)
-      expect(fetchObjects).toHaveBeenCalledWith(objectIds)
+      expect(fetchObjects).toHaveBeenCalledWith(objectIds, availableCategories, isUserUnderage)
     })
   })
 })

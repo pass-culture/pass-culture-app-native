@@ -1,5 +1,7 @@
 import { useQuery } from 'react-query'
 
+import { useIsUserUnderage } from 'features/profile/utils'
+import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { env } from 'libs/environment'
 import { GeoCoordinates, useGeolocation } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
@@ -63,13 +65,19 @@ const useRecommendedHits = (ids: string[]): SearchHit[] => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const algoliaBackend = useAlgoliaHits()
   const searchBackend = useSearchHits()
+  const availableCategories = useAvailableCategories()
+  const isUserUnderage = useIsUserUnderage()
 
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchHits, filterHits, transformHits } = backend
 
-  const { data } = useQuery(QueryKeys.RECOMMENDATION_HITS, async () => await fetchHits(ids), {
-    enabled: ids.length > 0 && enabled,
-  })
+  const { data } = useQuery(
+    QueryKeys.RECOMMENDATION_HITS,
+    async () => await fetchHits(ids, availableCategories, isUserUnderage),
+    {
+      enabled: ids.length > 0 && enabled,
+    }
+  )
 
   const results = data?.results || []
   return (results as SearchHit[]).filter(filterHits).map(transformHits)

@@ -1,13 +1,20 @@
 import { SearchOptions } from '@elastic/app-search-javascript'
 import { flatten } from 'lodash'
 
+import { OptionalCategoryCriteria } from 'features/search/enums'
 import { Response } from 'features/search/pages/useSearchResults'
 import { SearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
 import { client } from 'libs/search/client'
-import { buildQueryOptions, AppSearchFields, RESULT_FIELDS } from 'libs/search/filters'
+import {
+  buildQueryOptions,
+  AppSearchFields,
+  RESULT_FIELDS,
+  underageFilter,
+} from 'libs/search/filters'
+import { FALSE } from 'libs/search/filters/constants'
 import { buildAlgoliaHit, buildVenues } from 'libs/search/utils/buildAlgoliaHit'
 import { SuggestedVenue } from 'libs/venue'
 
@@ -16,10 +23,22 @@ interface SearchResponse {
   nbHits: number
 }
 
-export const fetchObjects = async (ids: string[]): Promise<{ results: SearchHit[] }> => {
+export const fetchObjects = async (
+  ids: string[],
+  availableCategories: OptionalCategoryCriteria,
+  isUserUnderage: boolean
+): Promise<{ results: SearchHit[] }> => {
   const options: SearchOptions<AppSearchFields> = {
     result_fields: RESULT_FIELDS,
-    filters: { any: ids.map((id) => ({ [AppSearchFields.id]: id })) },
+    filters: {
+      any: ids.map((id) => ({ [AppSearchFields.id]: id })),
+      ...(isUserUnderage && underageFilter),
+      all: [
+        {
+          [AppSearchFields.category]: Object.keys(availableCategories),
+        },
+      ],
+    },
   }
 
   const response = await client.search<AppSearchFields>('', options)
