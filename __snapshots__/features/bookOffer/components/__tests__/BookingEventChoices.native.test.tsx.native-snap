@@ -354,6 +354,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           </Text>
         </View>
         <View
+          parentWidth={231.33333333333334}
           style={
             Array [
               Object {
@@ -477,6 +478,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           </Text>
         </View>
         <View
+          parentWidth={231.33333333333334}
           style={
             Array [
               Object {

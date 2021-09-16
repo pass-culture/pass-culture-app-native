@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Dimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -54,46 +53,42 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
 
   return (
     <Container onPress={handlePressOffer} testID="offerHit">
-      <Row>
-        <OfferImage imageUrl={offer.thumbUrl} categoryName={hit.offer.category} />
-        <Spacer.Row numberOfSpaces={4} />
-        <Column>
-          <Row>
-            {distanceToOffer ? (
-              <React.Fragment>
-                <Spacer.Flex flex={0.7}>
-                  <Name numberOfLines={2}>{offer.name}</Name>
-                </Spacer.Flex>
-                <Spacer.Flex flex={0.3}>
-                  <Distance>{distanceToOffer}</Distance>
-                </Spacer.Flex>
-              </React.Fragment>
-            ) : (
-              <Name numberOfLines={2}>{offer.name}</Name>
-            )}
-          </Row>
-          <Spacer.Column numberOfSpaces={1} />
-          <Body>{categoryLabel}</Body>
-          {!!formattedDate && <Body>{formattedDate}</Body>}
-          <Spacer.Column numberOfSpaces={1} />
-          <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>
-        </Column>
-      </Row>
+      <OfferImage imageUrl={offer.thumbUrl} categoryName={hit.offer.category} />
+      <Spacer.Row numberOfSpaces={4} />
+      <Column>
+        <Row>
+          {distanceToOffer ? (
+            <React.Fragment>
+              <Spacer.Flex flex={0.7}>
+                <Name numberOfLines={2}>{offer.name}</Name>
+              </Spacer.Flex>
+              <Spacer.Flex flex={0.3}>
+                <Distance>{distanceToOffer}</Distance>
+              </Spacer.Flex>
+            </React.Fragment>
+          ) : (
+            <Name numberOfLines={2}>{offer.name}</Name>
+          )}
+        </Row>
+        <Spacer.Column numberOfSpaces={1} />
+        <Body>{categoryLabel}</Body>
+        {!!formattedDate && <Body>{formattedDate}</Body>}
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>
+      </Column>
     </Container>
   )
 }
 
-// eslint-disable-next-line no-restricted-properties
-const { width } = Dimensions.get('window')
-const imageWidth = getSpacing(16)
-
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
-}))({ marginHorizontal: getSpacing(6) })
+}))({
+  marginHorizontal: getSpacing(6),
+  flexDirection: 'row',
+  alignItems: 'center',
+})
 
-const columnPadding = 4
-const columnMargin = 2 * 6
-const Column = styled.View({ width: width - getSpacing(columnMargin + columnPadding) - imageWidth })
+const Column = styled.View({ flexDirection: 'column', flex: 1 })
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
 const Name = styled(Typo.ButtonText)({})

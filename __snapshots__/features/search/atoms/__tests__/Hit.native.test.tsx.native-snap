@@ -5,67 +5,67 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
 - First value
 + Second value
 
-@@ -103,10 +103,22 @@
-                \\"flexDirection\\": \\"row\\",
-              },
-            ]
-          }
-        >
-+         <View
-+           flex={0.7}
+@@ -98,10 +98,22 @@
+              \\"flexDirection\\": \\"row\\",
+            },
+          ]
+        }
+      >
++       <View
++         flex={0.7}
++         style={
++           Array [
++             Object {
++               \\"flexBasis\\": 0,
++               \\"flexGrow\\": 0.7,
++               \\"flexShrink\\": 1,
++             },
++           ]
++         }
++       >
+          <Text
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+@@ -113,10 +125,39 @@
+              ]
+            }
+          >
+            Mensch ! Où sont les Hommes ?
+          </Text>
++       </View>
++       <View
++         flex={0.3}
++         style={
++           Array [
++             Object {
++               \\"flexBasis\\": 0,
++               \\"flexGrow\\": 0.3,
++               \\"flexShrink\\": 1,
++             },
++           ]
++         }
++       >
++         <Text
 +           style={
 +             Array [
 +               Object {
-+                 \\"flexBasis\\": 0,
-+                 \\"flexGrow\\": 0.7,
-+                 \\"flexShrink\\": 1,
++                 \\"color\\": \\"#626262\\",
++                 \\"fontFamily\\": \\"Montserrat-Regular\\",
++                 \\"fontSize\\": 15,
++                 \\"lineHeight\\": 20,
++                 \\"textAlign\\": \\"right\\",
 +               },
 +             ]
 +           }
 +         >
-            <Text
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-@@ -118,10 +130,39 @@
-                ]
-              }
-            >
-              Mensch ! Où sont les Hommes ?
-            </Text>
-+         </View>
-+         <View
-+           flex={0.3}
-+           style={
-+             Array [
-+               Object {
-+                 \\"flexBasis\\": 0,
-+                 \\"flexGrow\\": 0.3,
-+                 \\"flexShrink\\": 1,
-+               },
-+             ]
-+           }
-+         >
-+           <Text
-+             style={
-+               Array [
-+                 Object {
-+                   \\"color\\": \\"#626262\\",
-+                   \\"fontFamily\\": \\"Montserrat-Regular\\",
-+                   \\"fontSize\\": 15,
-+                   \\"lineHeight\\": 20,
-+                   \\"textAlign\\": \\"right\\",
-+                 },
-+               ]
-+             }
-+           >
-+             10 km
-+           </Text>
-+         </View>
-        </View>
-        <View
-          numberOfSpaces={1}
-          style={
-            Array ["
++           10 km
++         </Text>
++       </View>
+      </View>
+      <View
+        numberOfSpaces={1}
+        style={
+          Array ["
 `;

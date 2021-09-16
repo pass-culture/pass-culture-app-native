@@ -339,14 +339,15 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 Array [
                                   Object {
                                     "height": 312,
-                                    "width": 751,
+                                    "width": 750,
                                   },
                                 ]
                               }
+                              width={750}
                             />
                             <View
                               height={8}
-                              width={751}
+                              width={750}
                             >
                               <Text>
                                 undefined-SVG-Mock
@@ -2642,14 +2643,15 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 Array [
                                   Object {
                                     "height": 312,
-                                    "width": 751,
+                                    "width": 750,
                                   },
                                 ]
                               }
+                              width={750}
                             />
                             <View
                               height={8}
-                              width={751}
+                              width={750}
                             >
                               <Text>
                                 undefined-SVG-Mock

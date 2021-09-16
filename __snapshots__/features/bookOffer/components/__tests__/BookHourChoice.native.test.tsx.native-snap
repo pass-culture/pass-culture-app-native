@@ -135,6 +135,7 @@ Array [
           </Text>
         </View>
         <View
+          parentWidth={231.33333333333334}
           style={
             Array [
               Object {

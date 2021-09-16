@@ -28,7 +28,7 @@ exports[`Favorites component should render correctly 1`] = `
   >
     <View
       height={294}
-      width={751}
+      width={750}
     >
       <Text>
         undefined-SVG-Mock
