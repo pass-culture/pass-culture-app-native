@@ -33,6 +33,26 @@ export enum AppSearchFields {
   venue_public_name = 'venue_public_name',
 }
 
+export enum AppSearchVenuesFields {
+  name = 'name',
+  offerer_name = 'offerer_name',
+  venue_type = 'venue_type',
+  position = 'position',
+  description = 'description',
+  id = 'id',
+  audio_disability = 'audio_disability',
+  mental_disability = 'mental_disability',
+  motor_disability = 'motor_disability',
+  visual_disability = 'visual_disability',
+  email = 'email',
+  phone_number = 'phone_number',
+  website = 'website',
+  facebook = 'facebook',
+  twitter = 'twitter',
+  instagram = 'instagram',
+  snapchat = 'snapchat',
+}
+
 // We don't use all the fields indexed. Simply retrieve the one we use.
 export const RESULT_FIELDS: ResultFields<AppSearchFields> = {
   [AppSearchFields.category]: { raw: {} },
