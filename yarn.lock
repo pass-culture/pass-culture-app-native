@@ -4746,9 +4746,9 @@
     webpack "^5"
 
 "@types/xdate@*":
-  version "0.8.31"
-  resolved "https://registry.yarnpkg.com/@types/xdate/-/xdate-0.8.31.tgz#7bec14a47c9bb30715d507f32bc82ab163149574"
-  integrity sha512-iZYRKKK8UZXoepNh2kwK6TPITMj/dwdv0NzNi9DFMt2foGkU7h+ncaCpGsdD2fp/CXMs9dxPAzV9uddFy7c4QA==
+  version "0.8.32"
+  resolved "https://registry.yarnpkg.com/@types/xdate/-/xdate-0.8.32.tgz#52f1bc426cc6929474034e5e3b83f82f43e25dcd"
+  integrity sha512-giM6hmU4ZCCAQj8BVSMNMA8hQwvKuWewLIe7r+G5NtGvehqW9jXdF/V6CzzkQYgHsk+67/udxql3RdfR8zqSNA==
 
 "@types/yargs-parser@*":
   version "13.1.0"
@@ -15586,10 +15586,10 @@ react-native-appsflyer@^6.2.42:
   resolved "https://registry.yarnpkg.com/react-native-appsflyer/-/react-native-appsflyer-6.2.42.tgz#66293a47bbbb0789c381da5c40653912963e6408"
   integrity sha512-eu5nsuJY/V/kw2VpuONavNUCknmFYbZSfpRu7X8UC4tKc8cW68CMxxw5vmzQ7BfT3WBFVNQSy7x22Xv4EwWuRQ==
 
-react-native-calendars@^1.1264.0:
-  version "1.1264.0"
-  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.1264.0.tgz#98d1905b7bfe9f44cba80c9c34a0b8441fe1c1a1"
-  integrity sha512-MX9Dy9xDtdmvGEA9rQWas1NVxvC2T6tEYrx7NvX8w0pWpYqsq5sVS4N+Y/vHBmcbiykStgrHTcWCP1bBLee3yg==
+react-native-calendars@^1.1266.0:
+  version "1.1266.0"
+  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.1266.0.tgz#f6426baf9774fb41ce296ace1c446b51148fc02b"
+  integrity sha512-FABZJsam2RsKpD2gTt8OGwSmHEFFbCntMWB7B8Joh6gz8U/rZZ4TCpo2ofH4tUFkF/bpqtbWMygtJzDl/paADw==
   dependencies:
     hoist-non-react-statics "^3.3.1"
     immutable "^4.0.0-rc.12"
