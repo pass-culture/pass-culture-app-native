@@ -224,6 +224,18 @@ To update the API schema,
 
 If the file `src/api/gen/.swagger-codegen/VERSION` changes, make sure you locally have the desired version of `swagger-codegen-cli`, otherwise run `docker pull swaggerapi/swagger-codegen-cli-v3:3.0.24`
 
+## Dev en local avec le package @pass-culture/id-check
+
+Dans le repo [**id-check-front**](https://github.com/pass-culture/id-check-front) :
+1. `cd packages/id-check`
+2. `yarn link`
+
+Dans le repo [**pass-culture-app-native**](https://github.com/pass-culture/pass-culture-app-native) :
+1. `yarn link @pass-culture/id-check`
+2. `yarn start`
+
+**iOS et android uniquement** : le hot reloading ne fonctionnant pas avec le package linked, il faut kill puis restart metro à chaque fois qu'on veut prendre en compte un changement du code du package `id-check` vis à vis de l'app de développement.
+
 ## Mettre à jour le package @pass-culture/id-check
 
 > Attention : pour executer `npm publish`, vous devez être dans le group `@pass-culture` sur npm (voir avec Alexis Pibrac).
