@@ -7,6 +7,8 @@ export const CONTENT_TYPES = {
   INFORMATION: 'information',
   BUSINESS: 'business',
   RECOMMENDATION: 'recommendation',
+  VENUES_PLAYLIST: 'venuesPlaylist',
+  VENUES_SEARCH_PARAMETERS: 'venuesSearchParameters',
 }
 
 export enum ContentTypes {
@@ -19,6 +21,8 @@ export enum ContentTypes {
   INFORMATION = 'information',
   BUSINESS = 'business',
   RECOMMENDATION = 'recommendation',
+  VENUES_PLAYLIST = 'venuesPlaylist',
+  VENUES_SEARCH_PARAMETERS = 'venuesSearchParameters',
 }
 
 export type Layout = 'two-items' | 'one-item-medium'
@@ -120,6 +124,11 @@ export interface AlgoliaParameters {
   fields: SearchParametersFields
 }
 
+export interface VenuesSearchParameters {
+  sys: Sys<typeof CONTENT_TYPES.VENUES_PLAYLIST>
+  fields: VenuesSearchParametersFields
+}
+
 export interface DisplayParameters {
   sys: Sys<typeof CONTENT_TYPES.DISPLAY_PARAMETERS>
   fields: DisplayParametersFields
@@ -145,6 +154,13 @@ export interface AlgoliaFields {
   additionalAlgoliaParameters?: AlgoliaParameters[]
 }
 
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesPlaylist/fields
+export interface VenuesFields {
+  title: string
+  venuesSearchParameters: VenuesSearchParameters[]
+  displayParameters: DisplayParameters
+}
+
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/recommendation/fields
 export interface RecommendationFields {
   title: string
@@ -168,6 +184,16 @@ export interface SearchParametersFields {
   priceMax?: number
   isDuo?: boolean
   newestOnly?: boolean
+  hitsPerPage: number
+}
+
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields
+export interface VenuesSearchParametersFields {
+  title: string
+  isGeolocated?: boolean
+  aroundRadius?: number
+  venueTypes?: string[]
+  tags?: string[]
   hitsPerPage: number
 }
 
@@ -208,6 +234,7 @@ export type HomepageModule =
   | { sys: Sys<'business'>; fields: BusinessFields }
   | { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
   | { sys: Sys<'recommendation'>; fields: RecommendationFields }
+  | { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
 
 export interface Image {
   sys: Sys<typeof CONTENT_TYPES.INFORMATION>
