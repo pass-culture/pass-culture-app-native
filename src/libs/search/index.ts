@@ -17,10 +17,10 @@ export interface VenueHit {
   venueType: string
   position: GeoCoordinates
   description: string
-  audioDisability: string
-  mentalDisability: string
-  motorDisability: string
-  visualDisability: string
+  audioDisability: boolean
+  mentalDisability: boolean
+  motorDisability: boolean
+  visualDisability: boolean
   email: string
   phoneNumber: string
   website: string
