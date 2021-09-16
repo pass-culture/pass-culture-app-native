@@ -41,7 +41,7 @@ export class OffersWithCover extends Offers {
   }
 }
 
-export class VenuesPane {
+export class VenuesModule {
   search: VenuesSearchParametersFields[]
   display: DisplayParametersFields
   moduleId: string

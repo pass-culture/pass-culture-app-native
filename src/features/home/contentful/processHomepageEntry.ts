@@ -20,7 +20,7 @@ import {
   BusinessPane,
   ProcessedModule,
   RecommendationPane,
-  VenuesPane,
+  VenuesModule,
 } from './moduleTypes'
 
 export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[] => {
@@ -76,7 +76,7 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
       if (search.length === 0) return
 
       const { fields: display } = displayParameters
-      return new VenuesPane({ display, search, moduleId })
+      return new VenuesModule({ display, search, moduleId })
     }
 
     if (contentType === CONTENT_TYPES.BUSINESS) {
