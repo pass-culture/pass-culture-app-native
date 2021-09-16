@@ -77,7 +77,8 @@ describe('useHomeModules', () => {
           ),
         },
       ],
-      null
+      null,
+      false
     )
 
     await act(async () => {

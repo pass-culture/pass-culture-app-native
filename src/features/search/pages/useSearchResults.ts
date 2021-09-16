@@ -3,6 +3,7 @@ import flatten from 'lodash.flatten'
 import { useMemo } from 'react'
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
+import { useIsUserUnderage } from 'features/profile/utils'
 import { OptionalCategoryCriteria } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
@@ -42,6 +43,7 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
   const searchBackend = useSearchQuery()
   const availableCategories = useAvailableCategories()
   const sendAdditionalRequest = useSendAdditionalRequestToAppSearch()
+  const isUserUnderage = useIsUserUnderage()
 
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchHits, transformHits } = backend
@@ -51,13 +53,13 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
     async (context: QueryFunctionContext<[string, SearchState], number>) => {
       const page = context.pageParam || 0
       const searchState = filterAvailableCategories(context.queryKey[1], availableCategories)
-      return await fetchHits({ page, ...searchState }, position)
+      return await fetchHits({ page, ...searchState }, position, isUserUnderage)
     },
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
       enabled,
       onSuccess: sendAdditionalRequest(() =>
-        searchBackend.fetchHits({ page: 0, ...searchState }, position)
+        searchBackend.fetchHits({ page: 0, ...searchState }, position, isUserUnderage)
       ),
     }
   )
