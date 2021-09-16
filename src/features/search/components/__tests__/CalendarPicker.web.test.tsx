@@ -12,8 +12,8 @@ describe('CalendarPicker web component', () => {
     jest.clearAllMocks()
     jest.spyOn(console, 'warn').mockImplementation(() => {})
   })
-  it('should not be visible if visible prop equal false', () => {
-    const { getByTestId } = render(
+  it('should render correctly', () => {
+    const renderAPI = render(
       <CalendarPicker
         hideCalendar={mockHideCalendar}
         selectedDate={new Date()}
@@ -21,23 +21,7 @@ describe('CalendarPicker web component', () => {
         visible={false}
       />
     )
-    const container = getByTestId('calendarPickerContainer')
-    expect(container).not.toBeNull()
-    expect(container.style.display).toBe('none')
-  })
-
-  it('should be visible if visible prop equals true', () => {
-    const { getByTestId } = render(
-      <CalendarPicker
-        hideCalendar={mockHideCalendar}
-        selectedDate={new Date()}
-        setSelectedDate={mockSetSelectedDate}
-        visible={true}
-      />
-    )
-    const container = getByTestId('calendarPickerContainer')
-    expect(container).not.toBeNull()
-    expect(container.style.display).not.toBe('none')
+    expect(renderAPI).toMatchSnapshot()
   })
 
   it('should have validation button', () => {
