@@ -2,8 +2,9 @@ import React, { useCallback } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 
 import { ModuleTitle } from 'features/home/atoms'
+import { VenueTile } from 'features/home/atoms/VenueTile'
 import { VenueHit } from 'libs/search'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type VenuesModuleProps = {
   hits: VenueHit[]
@@ -16,7 +17,7 @@ export const VenuesModule = (props: VenuesModuleProps) => {
 
   const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
     // TODO(antoinewg) create component VenueTile with image (copy from OfferTile)
-    return <Typo.Body>{item.name}</Typo.Body>
+    return <VenueTile name={item.name} />
   }, [])
 
   return (
@@ -32,9 +33,11 @@ export const VenuesModule = (props: VenuesModuleProps) => {
         horizontal={true}
         keyExtractor={keyExtractor}
         ItemSeparatorComponent={ItemSeparatorComponent}
+        ListHeaderComponent={HorizontalMargin}
       />
     </React.Fragment>
   )
 }
 
+const HorizontalMargin = () => <Spacer.Row numberOfSpaces={6} />
 const ItemSeparatorComponent = () => <Spacer.Row numberOfSpaces={4} />

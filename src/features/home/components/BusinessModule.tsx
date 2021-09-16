@@ -10,7 +10,15 @@ import { BusinessPane } from 'features/home/contentful'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Typo, ColorsEnum, getSpacing, MARGIN_DP, LENGTH_S, RATIO_BUSINESS, Spacer } from 'ui/theme'
+import {
+  Typo,
+  ColorsEnum,
+  getSpacing,
+  MARGIN_DP,
+  LENGTH_XS,
+  RATIO_BUSINESS,
+  Spacer,
+} from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 import { fillUrlEmail, shouldUrlBeFilled } from './BusinessModule.utils'
@@ -93,7 +101,7 @@ const TouchableHighlight = styled.TouchableHighlight({
 const ImageContainer = styled.View({
   borderRadius: BorderRadiusEnum.BORDER_RADIUS,
   overflow: 'hidden',
-  maxHeight: LENGTH_S,
+  maxHeight: LENGTH_XS,
 })
 
 const Image = styled.Image({
@@ -106,7 +114,7 @@ const ImageBackground = styled.ImageBackground<{ width: number; height: number }
   height: props.height,
   width: props.width,
   justifyContent: 'center',
-  maxHeight: LENGTH_S,
+  maxHeight: LENGTH_XS,
 }))
 
 const Container = styled.View({
