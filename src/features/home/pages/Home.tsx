@@ -19,8 +19,8 @@ export const Home: FunctionComponent = function () {
     params?.entryId
   )
 
-  useListenDeepLinksEffect()
   useInitialScreenConfig()
+  useListenDeepLinksEffect()
 
   if (showSkeleton) {
     return (
