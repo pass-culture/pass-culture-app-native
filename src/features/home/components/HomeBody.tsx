@@ -18,6 +18,7 @@ import {
 import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { useGeolocation } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
 import { Spacer } from 'ui/theme'
@@ -95,7 +96,9 @@ export const HomeBody = (props: HomeBodyProps) => {
           />
         )
       }
-      if (isVenuesModuleTypeguard(item)) {
+
+      // TODO : Remove feature testing condition to display the playlist
+      if (isVenuesModuleTypeguard(item) && env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING) {
         const { hits } = homeVenuesModules[item.moduleId]
         // TODO(antoinewg) pass more parameters
         return <VenuesModule key={item.moduleId} hits={hits} display={item.display} />
