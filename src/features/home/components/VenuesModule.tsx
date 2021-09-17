@@ -18,7 +18,6 @@ export const VenuesModule = (props: VenuesModuleProps) => {
   const { hits, display } = props
 
   const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
-    // TODO(antoinewg) create component VenueTile with image (copy from OfferTile)
     return <VenueTile name={item.name} />
   }, [])
 

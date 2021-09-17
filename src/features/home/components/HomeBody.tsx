@@ -97,10 +97,9 @@ export const HomeBody = (props: HomeBodyProps) => {
         )
       }
 
-      // TODO : Remove feature testing condition to display the playlist
+      // TODO(LucasBeneston) Remove feature testing condition to display the playlist
       if (isVenuesModuleTypeguard(item) && env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING) {
         const { hits } = homeVenuesModules[item.moduleId]
-        // TODO(antoinewg) pass more parameters
         return <VenuesModule key={item.moduleId} hits={hits} display={item.display} />
       }
       if (item instanceof RecommendationPane) {

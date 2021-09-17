@@ -10,21 +10,20 @@ interface VenueTileProps {
   name?: string
 }
 
+const imageHeight = LENGTH_S
+const imageWidth = imageHeight * 2.25 * RATIO_HOME_IMAGE
+// TODO (Lucasbeneston) : Remove when we get image from venue
+const uri =
+  'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA'
+
 export const VenueTile = (props: VenueTileProps) => {
-  const { ...venue } = props
-  const imageHeight = LENGTH_S
-  const imageWidth = imageHeight * 2.25 * RATIO_HOME_IMAGE
-
-  // TODO (Lucasbeneston) : Remove when we get image from venue
-  const uri =
-    'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA'
-
+  const { name } = props
   return (
     <Container>
       <TouchableHighlight imageHeight={imageHeight} imageWidth={imageWidth}>
         <ImageTile imageWidth={imageWidth} imageHeight={imageHeight} uri={uri} />
       </TouchableHighlight>
-      <VenueCaption imageWidth={imageWidth} name={venue.name} />
+      <VenueCaption imageWidth={imageWidth} name={name} />
     </Container>
   )
 }
