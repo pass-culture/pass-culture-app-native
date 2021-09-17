@@ -1,0 +1,524 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VenuesModule component should render correctly 1`] = `
+Array [
+  <View
+    style={
+      Array [
+        Object {
+          "marginHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <Text
+      color="#151515"
+      numberOfLines={2}
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 20,
+            "lineHeight": 24,
+          },
+        ]
+      }
+      testID="moduleTitle"
+    >
+      Module title
+    </Text>
+  </View>,
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <RCTScrollView
+    ItemSeparatorComponent={[Function]}
+    ListFooterComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    data={
+      Array [
+        Object {
+          "audioDisability": false,
+          "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+          "email": "contact@venue.com",
+          "facebook": "https://facebook.com",
+          "id": "5543",
+          "instagram": "https://instagram.com",
+          "mentalDisability": false,
+          "motorDisability": false,
+          "name": "Le Petit Rintintin 1",
+          "offererName": "Librairie Quantique",
+          "phoneNumber": "+33102030405",
+          "position": Object {
+            "latitude": 48.87004,
+            "longitude": 2.3785,
+          },
+          "snapchat": "https://snapchat.com",
+          "twitter": "https://twitter.com",
+          "venueType": "MOVIE",
+          "visualDisability": true,
+          "website": "https://my@website.com",
+        },
+        Object {
+          "audioDisability": false,
+          "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+          "email": "contact@venue.com",
+          "facebook": "https://facebook.com",
+          "id": "5544",
+          "instagram": "https://instagram.com",
+          "mentalDisability": false,
+          "motorDisability": false,
+          "name": "Le Petit Rintintin 2",
+          "offererName": "Librairie Quantique",
+          "phoneNumber": "+33102030405",
+          "position": Object {
+            "latitude": 48.87004,
+            "longitude": 2.3785,
+          },
+          "snapchat": "https://snapchat.com",
+          "twitter": "https://twitter.com",
+          "venueType": "MOVIE",
+          "visualDisability": true,
+          "website": "https://my@website.com",
+        },
+        Object {
+          "audioDisability": false,
+          "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+          "email": "contact@venue.com",
+          "facebook": "https://facebook.com",
+          "id": "5545",
+          "instagram": "https://instagram.com",
+          "mentalDisability": false,
+          "motorDisability": false,
+          "name": "Le Petit Rintintin 3",
+          "offererName": "Librairie Quantique",
+          "phoneNumber": "+33102030405",
+          "position": Object {
+            "latitude": 48.87004,
+            "longitude": 2.3785,
+          },
+          "snapchat": "https://snapchat.com",
+          "twitter": "https://twitter.com",
+          "venueType": "MOVIE",
+          "visualDisability": true,
+          "website": "https://my@website.com",
+        },
+        Object {
+          "audioDisability": false,
+          "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+          "email": "contact@venue.com",
+          "facebook": "https://facebook.com",
+          "id": "5546",
+          "instagram": "https://instagram.com",
+          "mentalDisability": false,
+          "motorDisability": false,
+          "name": "Le Petit Rintintin 4",
+          "offererName": "Librairie Quantique",
+          "phoneNumber": "+33102030405",
+          "position": Object {
+            "latitude": 48.87004,
+            "longitude": 2.3785,
+          },
+          "snapchat": "https://snapchat.com",
+          "twitter": "https://twitter.com",
+          "venueType": "MOVIE",
+          "visualDisability": true,
+          "website": "https://my@website.com",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={true}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={200}
+    showsHorizontalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
+    testID="VenuesModuleList"
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+      >
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#e6e6e6",
+                  "borderRadius": 8,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 168,
+                  "width": 252,
+                },
+              ]
+            }
+          />
+          <View
+            imageWidth={252}
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 252,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Le Petit Rintintin 1
+            </Text>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#e6e6e6",
+                  "borderRadius": 8,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 168,
+                  "width": 252,
+                },
+              ]
+            }
+          />
+          <View
+            imageWidth={252}
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 252,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Le Petit Rintintin 2
+            </Text>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#e6e6e6",
+                  "borderRadius": 8,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 168,
+                  "width": 252,
+                },
+              ]
+            }
+          />
+          <View
+            imageWidth={252}
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 252,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Le Petit Rintintin 3
+            </Text>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#e6e6e6",
+                  "borderRadius": 8,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 168,
+                  "width": 252,
+                },
+              ]
+            }
+          />
+          <View
+            imageWidth={252}
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 252,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Le Petit Rintintin 4
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+      >
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>,
+]
+`;

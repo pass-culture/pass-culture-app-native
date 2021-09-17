@@ -135,3 +135,4 @@ export type ProcessedModule =
   | BusinessPane
   | OffersWithCover
   | RecommendationPane
+  | VenuesModule

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VenueCaption component should render correctly 1`] = `
+<View
+  imageWidth={100}
+  style={
+    Array [
+      Object {
+        "marginTop": 8,
+        "maxWidth": 100,
+      },
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+  >
+    Musée du Louvre
+  </Text>
+</View>
+`;
