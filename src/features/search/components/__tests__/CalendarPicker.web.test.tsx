@@ -12,17 +12,6 @@ describe('CalendarPicker web component', () => {
     jest.clearAllMocks()
     jest.spyOn(console, 'warn').mockImplementation(() => {})
   })
-  it('should render correctly', () => {
-    const renderAPI = render(
-      <CalendarPicker
-        hideCalendar={mockHideCalendar}
-        selectedDate={new Date()}
-        setSelectedDate={mockSetSelectedDate}
-        visible={false}
-      />
-    )
-    expect(renderAPI).toMatchSnapshot()
-  })
 
   it('should have validation button', () => {
     const { getByTestId } = render(
