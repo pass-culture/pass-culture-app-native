@@ -44,7 +44,7 @@ export const useBooking = (): IBookingContext => {
 
 export const useBookingOffer = () => {
   const { bookingState } = useBooking()
-  const { data: offer } = useOffer({ offerId: bookingState.offerId! })
+  const { data: offer } = useOffer({ offerId: bookingState.offerId as number })
   return offer
 }
 

@@ -35,7 +35,7 @@ export const useHasEnoughCredit = (offerId: number): boolean => {
 }
 
 export const useCreditForOffer = (offerId: number | undefined): number => {
-  const { data: offer } = useOffer({ offerId: offerId! })
+  const { data: offer } = useOffer({ offerId: offerId as number })
   const { data: user } = useUserProfileInfo()
   if (!offer || !user) return 0
 
