@@ -6,7 +6,7 @@ import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enu
 import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 
-import { openExternalUrl, navigateToBooking, homeNavigateConfig } from '../helpers'
+import { openExternalUrl, navigateToBooking } from '../helpers'
 
 jest.mock('features/navigation/navigationRef')
 
@@ -29,15 +29,12 @@ describe('Navigation helpers', () => {
     expect(navigationRef.current?.navigate).toBeCalledWith('Offer', { id: 1 })
   })
 
-  it('should navigate to home when in-app screen cannot be found (ex: Offer)', async () => {
+  it('should navigate to PageNotFound when in-app screen cannot be found (ex: Offer)', async () => {
     const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
     const link = WEBAPP_NATIVE_REDIRECTION_URL + '/unknown'
     await openExternalUrl(link)
     expect(openUrl).not.toBeCalled()
-    expect(navigationRef.current?.navigate).toBeCalledWith(
-      homeNavigateConfig.screen,
-      homeNavigateConfig.params
-    )
+    expect(navigationRef.current?.navigate).toBeCalledWith('PageNotFound', undefined)
   })
 
   it('should log analytics when logEvent is true', async () => {

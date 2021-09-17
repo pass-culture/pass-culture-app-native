@@ -140,9 +140,7 @@ describe('SetPhoneValidationCode', () => {
       useMutationCallbacks.onSuccess()
 
       await flushAllPromises()
-      expect(navigate).toBeCalledWith('IdCheckV2', {
-        email: 'christophe.dupont@example.com',
-      })
+      expect(navigate).toBeCalledWith('IdCheckV2')
     })
 
     it('should display input error message if validate phone number request fails', async () => {

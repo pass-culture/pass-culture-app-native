@@ -27,7 +27,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
 
   function onButtonPress() {
     if (profile) {
-      navigateToIdCheck(profile.email)
+      navigateToIdCheck()
     } else {
       // TODO: remove after POs validation this will happen only when POs access this page without auth
       navigate('Login')

@@ -65,24 +65,7 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await flushAllPromises()
 
-    expect(navigate).toBeCalledWith('IdCheckV2', {
-      email: 'christophe.dupont@gmail.com',
-    })
-  })
-
-  it('should navigate to IdCheck if user.nextBeneficiaryValidationStep is undefined', async () => {
-    mockData = {
-      firstName: 'Christophe',
-      lastName: 'Dupont',
-      nextBeneficiaryValidationStep: 'id-check',
-    }
-
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
-    result.current.navigateToNextBeneficiaryValidationStep()
-
-    await flushAllPromises()
-
-    expect(navigate).toBeCalledWith('IdCheckUnavailable')
+    expect(navigate).toBeCalledWith('IdCheckV2')
   })
 
   it('should navigate to IdCheck if prefetched next step is id-check and email is not null', () => {
@@ -92,9 +75,7 @@ describe('useBeneficiaryValidationNavigation', () => {
       nextBeneficiaryValidationStep: BeneficiaryValidationStep.IdCheck,
     })
 
-    expect(navigate).toBeCalledWith('IdCheckV2', {
-      email: 'christophe.dupont@gmail.com',
-    })
+    expect(navigate).toBeCalledWith('IdCheckV2')
   })
 
   it('should navigate to IdCheck if prefetched next step is id-check and email is not null', () => {

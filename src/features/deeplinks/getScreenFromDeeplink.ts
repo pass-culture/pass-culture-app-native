@@ -1,19 +1,17 @@
 import { linking } from 'features/navigation/RootNavigator/linking'
-import { WEBAPP_V2_URL } from 'libs/environment'
 
 import { DeeplinkParts } from './types'
-import { WEBAPP_NATIVE_REDIRECTION_URL } from './utils'
 
 export function getScreenFromDeeplink(url: string): DeeplinkParts {
-  // We have to try 2 replaces since we support both pre and post-decliweb versions
-  const pathWithQueryString = url
-    .replace(`${WEBAPP_NATIVE_REDIRECTION_URL}/`, '')
-    .replace(`${WEBAPP_V2_URL}/`, '')
+  let pathWithQueryString = url
+  for (const prefix of linking.prefixes) {
+    pathWithQueryString = pathWithQueryString.replace(prefix, '')
+  }
   const navigationState = linking.getStateFromPath(pathWithQueryString, linking.config)
   const route = getLastRouteFromState(navigationState)
   const screen = route.name
   let params = route.params
-  if (screen === 'TabNavigator') {
+  if (route.state) {
     const nestedRoute = getLastRouteFromState(route.state)
     params = {
       screen: nestedRoute.name,

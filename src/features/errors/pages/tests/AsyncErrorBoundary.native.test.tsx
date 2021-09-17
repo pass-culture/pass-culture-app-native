@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { AsyncError } from 'libs/monitoring'
 import { render, fireEvent } from 'tests/utils'
 
 import { AsyncErrorBoundary } from '../AsyncErrorBoundary'
+
+// eslint-disable-next-line local-rules/no-allow-console
+allowConsole({ error: true })
 
 jest.mock('libs/monitoring/services')
 
@@ -40,3 +44,27 @@ describe('AsyncErrorBoundary component', () => {
     expect(retry).toHaveBeenCalled()
   })
 })
+
+describe('Usage of AsyncErrorBoundary as fallback in ErrorBoundary', () => {
+  it('should display custom error page when children raise error', () => {
+    // TODO (PC-6360) : console error displayed in DEV mode even if caught by ErrorBoundary
+    const { getByText } = renderErrorBoundary()
+
+    expect(getByText('Oups !')).toBeTruthy()
+  })
+})
+
+function ComponentWithError() {
+  useEffect(() => {
+    throw new Error()
+  }, [])
+  return <React.Fragment />
+}
+
+const renderErrorBoundary = () => {
+  return render(
+    <ErrorBoundary FallbackComponent={AsyncErrorBoundary}>
+      <ComponentWithError />
+    </ErrorBoundary>
+  )
+}

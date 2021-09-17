@@ -21,22 +21,11 @@ export function useNavigateToIdCheck({
 }: Params = defaultParams) {
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
-  function navigateToIdCheck(
-    email: string,
-    licenceToken?: string,
-    expiration_timestamp?: Date | number | null
-  ) {
+  function navigateToIdCheck() {
     const shouldNavigateToIdCheck =
       !shouldControlNavWithSetting || settings?.allowIdCheckRegistration
     if (shouldNavigateToIdCheck) {
-      navigate(idCheckInitialRouteName, {
-        email,
-        licence_token: licenceToken,
-        expiration_timestamp:
-          expiration_timestamp instanceof Date
-            ? expiration_timestamp.getTime()
-            : expiration_timestamp,
-      })
+      navigate(idCheckInitialRouteName)
     } else {
       onIdCheckNavigationBlocked()
     }
