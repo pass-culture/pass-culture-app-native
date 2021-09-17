@@ -219,7 +219,41 @@ Array [
                 },
               ]
             }
-          />
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "borderRadius": 8,
+                    "height": 168,
+                    "width": 252,
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                resizeMode="cover"
+                source={
+                  Object {
+                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                  }
+                }
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+                testID="offerTileImage"
+              />
+            </View>
+          </View>
           <View
             imageWidth={252}
             style={
@@ -304,7 +338,41 @@ Array [
                 },
               ]
             }
-          />
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "borderRadius": 8,
+                    "height": 168,
+                    "width": 252,
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                resizeMode="cover"
+                source={
+                  Object {
+                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                  }
+                }
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+                testID="offerTileImage"
+              />
+            </View>
+          </View>
           <View
             imageWidth={252}
             style={
@@ -389,7 +457,41 @@ Array [
                 },
               ]
             }
-          />
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "borderRadius": 8,
+                    "height": 168,
+                    "width": 252,
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                resizeMode="cover"
+                source={
+                  Object {
+                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                  }
+                }
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+                testID="offerTileImage"
+              />
+            </View>
+          </View>
           <View
             imageWidth={252}
             style={
@@ -474,7 +576,41 @@ Array [
                 },
               ]
             }
-          />
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "borderRadius": 8,
+                    "height": 168,
+                    "width": 252,
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                resizeMode="cover"
+                source={
+                  Object {
+                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                  }
+                }
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+                testID="offerTileImage"
+              />
+            </View>
+          </View>
           <View
             imageWidth={252}
             style={
