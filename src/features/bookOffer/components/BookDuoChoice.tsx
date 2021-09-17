@@ -18,7 +18,7 @@ export const BookDuoChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
   const { isDuo } = useBookingOffer() || {}
   const stock = useBookingStock()
-  const offerCredit = useCreditForOffer(bookingState.offerId || 0)
+  const offerCredit = useCreditForOffer(bookingState.offerId)
 
   const getChoiceInfosForQuantity = (quantity: 1 | 2) => {
     const enoughCredit = stock ? quantity * stock.price <= offerCredit : false

@@ -21,7 +21,7 @@ export const BookHourChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
   const { isDuo, stocks = [] } = useBookingOffer() || {}
   const stock = useBookingStock()
-  const offerCredit = useCreditForOffer(bookingState.offerId || 0)
+  const offerCredit = useCreditForOffer(bookingState.offerId)
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
 
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
