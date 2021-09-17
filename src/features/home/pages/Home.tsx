@@ -19,6 +19,9 @@ export const Home: FunctionComponent = function () {
     params?.entryId
   )
 
+  // !!! IMPORTANT !!!
+  // To avoid the deeplink navigation to happen before the initial screen on first opening
+  // (cold start) of the app, the hook useListenDeepLinksEffect() must be called after useInitialScreenConfig()
   useInitialScreenConfig()
   useListenDeepLinksEffect()
 
