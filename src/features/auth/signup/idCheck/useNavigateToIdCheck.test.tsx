@@ -1,6 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
+import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
@@ -17,10 +18,6 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 
-const EMAIL = 'EMAIL'
-const LICENCE_TOKEN = 'LICENCE_TOKEN'
-const LICENCE_TOKEN_EXPIRATION_TIMESTAMP = new Date('2021-05-26T21:48:17.871Z').getTime()
-
 describe('useNavigateToIdCheck()', () => {
   it('should navigate to IdCheck v2 when shouldControlNavWithSetting=false, allowIdCheckRegistration=false', () => {
     const navigateToIdCheck = mockNavigateToIdCheck({
@@ -29,13 +26,9 @@ describe('useNavigateToIdCheck()', () => {
       onIdCheckNavigationBlocked: undefined,
     })
 
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
+    navigateToIdCheck()
 
-    expect(navigate).toBeCalledWith('IdCheckV2', {
-      email: EMAIL,
-      licence_token: LICENCE_TOKEN,
-      expiration_timestamp: LICENCE_TOKEN_EXPIRATION_TIMESTAMP,
-    })
+    expect(navigate).toBeCalledWith('IdCheckV2')
   })
 
   it('should navigate to home when shouldControlNavWithSetting=true, enableNativeIdCheckVersion=false, allowIdCheckRegistration=false', () => {
@@ -45,9 +38,11 @@ describe('useNavigateToIdCheck()', () => {
       onIdCheckNavigationBlocked: undefined,
     })
 
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
+    navigateToIdCheck()
 
-    expect(navigateToHome).toBeCalled()
+    waitForExpect(() => {
+      expect(navigateToHome).toBeCalled()
+    })
   })
 
   it('should call onIdCheckNavigationBlocked() when onIdCheckNavigationBlocked is defined and shouldControlNavWithSetting=true, enableNativeIdCheckVersion=false, allowIdCheckRegistration=false', () => {
@@ -58,7 +53,7 @@ describe('useNavigateToIdCheck()', () => {
       onIdCheckNavigationBlocked,
     })
 
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
+    navigateToIdCheck()
 
     expect(onIdCheckNavigationBlocked).toBeCalled()
     expect(navigateToHome).not.toBeCalled()
@@ -71,13 +66,9 @@ describe('useNavigateToIdCheck()', () => {
       onIdCheckNavigationBlocked: undefined,
     })
 
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
+    navigateToIdCheck()
 
-    expect(navigate).toBeCalledWith('IdCheckV2', {
-      email: EMAIL,
-      licence_token: LICENCE_TOKEN,
-      expiration_timestamp: LICENCE_TOKEN_EXPIRATION_TIMESTAMP,
-    })
+    expect(navigate).toBeCalledWith('IdCheckV2')
   })
 })
 

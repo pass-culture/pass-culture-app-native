@@ -34,28 +34,24 @@ export const useBeneficiaryValidationNavigation = () => {
           .then((value) => {
             const user = value.data
             const nextStep = user?.nextBeneficiaryValidationStep ?? null
-            const email = user?.email ?? null
-            navigateToNextStep(nextStep, email)
+            navigateToNextStep(nextStep)
           })
           .catch(setError)
       } else {
-        navigateToNextStep(prefetchedInfo.nextBeneficiaryValidationStep, prefetchedInfo.email)
+        navigateToNextStep(prefetchedInfo.nextBeneficiaryValidationStep)
       }
     },
     [settings?.allowIdCheckRegistration, showErrorSnackBar, navigateToIdCheck, refetch]
   )
 
-  function navigateToNextStep(
-    nextStep: PrefetchedInfo['nextBeneficiaryValidationStep'],
-    email: PrefetchedInfo['email']
-  ) {
+  function navigateToNextStep(nextStep: PrefetchedInfo['nextBeneficiaryValidationStep']) {
     if (nextStep === BeneficiaryValidationStep.PhoneValidation && settings?.enablePhoneValidation) {
       navigate('SetPhoneNumber')
     } else if (nextStep === BeneficiaryValidationStep.IdCheck) {
-      if (settings?.allowIdCheckRegistration && !!email) {
+      if (settings?.allowIdCheckRegistration) {
         try {
           analytics.logIdCheck('Profile')
-          navigateToIdCheck(email)
+          navigateToIdCheck()
         } catch (err) {
           eventMonitoring.captureException(err, { isEligible: true })
           showErrorSnackBar({
