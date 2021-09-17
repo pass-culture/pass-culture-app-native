@@ -1,8 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import React, { useState } from 'react'
+import React from 'react'
 
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
+import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { useSplashScreenContext } from 'libs/splashscreen'
@@ -33,9 +34,7 @@ const screens = routes
 export const RootNavigator: React.FC = () => {
   const { isSplashScreenHidden } = useSplashScreenContext()
 
-  const [mustUpdateApp, setMustUpdateApp] = useState(false)
-
-  global.setMustUpdateApp = setMustUpdateApp
+  const mustUpdateApp = useMustUpdateApp()
 
   return (
     <React.Fragment>
