@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VenueTile component should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#e6e6e6",
+          "borderRadius": 8,
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "height": 168,
+          "width": 252,
+        },
+      ]
+    }
+  />
+  <View
+    imageWidth={252}
+    style={
+      Array [
+        Object {
+          "marginTop": 8,
+          "maxWidth": 252,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      Le Petit Rintintin 1
+    </Text>
+  </View>
+</View>
+`;
