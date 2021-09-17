@@ -106,6 +106,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
   />
   <Text
     color="#ffffff"
+    fontSize={28}
     style={
       Array [
         Object {

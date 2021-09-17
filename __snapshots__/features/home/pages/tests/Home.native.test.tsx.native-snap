@@ -111,6 +111,7 @@ exports[`Home component should render correctly without login modal 1`] = `
             />
             <Text
               color="#ffffff"
+              fontSize={28}
               numberOfLines={2}
               style={
                 Array [
@@ -119,6 +120,8 @@ exports[`Home component should render correctly without login modal 1`] = `
                     "fontFamily": "Montserrat-ExtraBoldItalic",
                     "fontSize": 28,
                     "lineHeight": 34,
+                  },
+                  Object {
                     "marginHorizontal": 32,
                     "textAlign": "center",
                   },

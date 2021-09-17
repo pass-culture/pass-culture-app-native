@@ -13,7 +13,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { getSpacing, Typo } from 'ui/theme'
-import { Axis, getGrid } from 'ui/theme/grid'
+import { useGrid } from 'ui/theme/grid'
 
 export type AchievementCardKeyProps = {
   activeIndex?: number
@@ -40,6 +40,7 @@ export let didFadeIn = false
 export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
   props: AchievementCardProps
 ) => {
+  const grid = useGrid()
   const animationRef = React.useRef<LottieView>(null)
   const animatedButtonRef = React.useRef<Animatable.View & View>(null)
 
@@ -92,7 +93,7 @@ Those props are provided by the GenericAchievementCard and must be passed down t
 
   return (
     <GenericCardContainer>
-      <Spacer.Flex flex={getGrid({ sm: 1, default: 2 }, Axis.HEIGHT)} />
+      <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
       <StyledLottieContainer>
         <StyledLottieView
           key={props.activeIndex}
@@ -116,7 +117,7 @@ Those props are provided by the GenericAchievementCard and must be passed down t
           )}
         </Animatable.View>
         {!props.lastIndex && (
-          <FlexContainer>
+          <FlexContainer marginTop={getSpacing(grid({ default: 4, sm: 2 }, 'height'))}>
             <ButtonPrimaryWhite title={t`Passer`} onPress={props.skip} />
           </FlexContainer>
         )}
@@ -124,18 +125,18 @@ Those props are provided by the GenericAchievementCard and must be passed down t
       <Spacer.Flex
         flex={
           !props.lastIndex
-            ? getGrid({ default: 1, sm: 0.5 }, Axis.HEIGHT)
-            : getGrid({ default: 1.5, sm: 2 }, Axis.HEIGHT)
+            ? grid({ default: 1, sm: 0.5 }, 'height')
+            : grid({ default: 1.5, sm: 2 }, 'height')
         }
       />
     </GenericCardContainer>
   )
 }
 
-const FlexContainer = styled.View({
+const FlexContainer = styled.View<{ marginTop: number }>((props) => ({
   flexGrow: 1,
-  marginTop: getSpacing(getGrid({ default: 4, sm: 2 }, Axis.HEIGHT)),
-})
+  marginTop: props.marginTop,
+}))
 
 const BottomButtonsContainer = styled.View({
   flex: 1,

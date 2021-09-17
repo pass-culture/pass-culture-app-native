@@ -1,13 +1,17 @@
+import React from 'react'
+import { Text as RNText, TextProps as RNTextProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsEnum } from './colors'
-import { getGrid, Axis } from './grid'
+import { useGrid } from './grid'
 import { getSpacing, getSpacingString } from './spacing'
 
-interface TextProp {
+interface CustomTextProps {
   color?: ColorsEnum
 }
-const ColoredText = styled.Text<TextProp>(({ color }) => ({
+type TextProps = CustomTextProps & RNTextProps
+
+const ColoredText = styled(RNText)<TextProps>(({ color }) => ({
   color: color ?? ColorsEnum.BLACK,
 }))
 
@@ -17,17 +21,35 @@ const Hero = styled(ColoredText)({
   lineHeight: getSpacingString(12),
 })
 
-const Title1 = styled(ColoredText)({
+const Title1: React.FC<TextProps> = (props) => {
+  const grid = useGrid()
+  const fontSize = getSpacing(grid({ default: 7, sm: 6 }, 'height'))
+  return (
+    <StyledTitle1 {...props} fontSize={fontSize}>
+      {props.children}
+    </StyledTitle1>
+  )
+}
+const StyledTitle1 = styled(ColoredText)<{ fontSize: number }>((props) => ({
   fontFamily: 'Montserrat-ExtraBoldItalic',
-  fontSize: getSpacing(getGrid({ default: 7, sm: 6 }, Axis.HEIGHT)),
+  fontSize: props.fontSize,
   lineHeight: getSpacingString(8.5),
-})
+}))
 
-const Title2 = styled(ColoredText)({
+const Title2: React.FC<TextProps> = (props) => {
+  const grid = useGrid()
+  const fontSize = getSpacing(grid({ default: 6, sm: 5.5 }, 'height'))
+  return (
+    <StyledTitle2 {...props} fontSize={fontSize}>
+      {props.children}
+    </StyledTitle2>
+  )
+}
+const StyledTitle2 = styled(ColoredText)<{ fontSize: number }>((props) => ({
   fontFamily: 'Montserrat-MediumItalic',
-  fontSize: getSpacing(getGrid({ default: 6, sm: 5.5 }, Axis.HEIGHT)),
+  fontSize: props.fontSize,
   lineHeight: getSpacingString(7),
-})
+}))
 
 const Title3 = styled(ColoredText)({
   fontFamily: 'Montserrat-Bold',

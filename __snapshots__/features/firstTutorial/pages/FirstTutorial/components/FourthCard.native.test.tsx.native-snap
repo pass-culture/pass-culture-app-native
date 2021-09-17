@@ -54,6 +54,7 @@ exports[`FourthCard should render fourth card 1`] = `
     }
   />
   <Text
+    fontSize={28}
     style={
       Array [
         Object {
@@ -61,6 +62,8 @@ exports[`FourthCard should render fourth card 1`] = `
           "fontFamily": "Montserrat-ExtraBoldItalic",
           "fontSize": 28,
           "lineHeight": 34,
+        },
+        Object {
           "textAlign": "center",
         },
       ]
@@ -69,6 +72,7 @@ exports[`FourthCard should render fourth card 1`] = `
     Des nouveautés
   </Text>
   <Text
+    fontSize={24}
     style={
       Array [
         Object {
@@ -76,6 +80,8 @@ exports[`FourthCard should render fourth card 1`] = `
           "fontFamily": "Montserrat-MediumItalic",
           "fontSize": 24,
           "lineHeight": 28,
+        },
+        Object {
           "textAlign": "center",
         },
       ]
@@ -195,6 +201,7 @@ exports[`FourthCard should render fourth card 1`] = `
       </View>
     </View>
     <View
+      marginTop={16}
       style={
         Array [
           Object {

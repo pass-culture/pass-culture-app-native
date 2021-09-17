@@ -98,6 +98,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
     >
       <Text
         color="#ffffff"
+        fontSize={24}
         style={
           Array [
             Object {
