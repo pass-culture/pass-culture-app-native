@@ -4,6 +4,7 @@ import {
   BusinessPane,
   ExclusivityPane,
   ProcessedModule,
+  VenuesModule,
 } from 'features/home/contentful'
 import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
@@ -28,9 +29,8 @@ const homeModules: HomeModuleResponse = {
 }
 
 const homeVenuesModules: HomeVenuesModuleResponse = {
-  // notInVenuesHomeModules should no be here
-  ['homeModuleShown']: { hits: hitsSearch, nbHits },
-  ['homeModuleHidden']: { hits: hitsSearch, nbHits },
+  ['homeVenueModuleShown']: { hits: hitsSearch, nbHits },
+  ['homeVenueModuleHidden']: { hits: hitsSearch, nbHits },
   ['emptyHits']: { hits: [], nbHits },
 }
 
@@ -45,12 +45,14 @@ const hiddenOfferModule = new Offers({
   display: { minOffers: 10, title: 'title', layout: 'one-item-medium' },
   moduleId: 'homeModuleHidden',
 })
+
 const emptyHits = new OffersWithCover({
   search: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
   moduleId: 'emptyHits',
   cover: 'uri_to_cover_image',
 })
+
 const notInHomeModules = new Offers({
   search: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
@@ -77,6 +79,12 @@ const excluModule = new ExclusivityPane({
   offerId: 'ABCD',
 })
 
+const visibleVenueModule = new VenuesModule({
+  search: [{ title: 'tile', hitsPerPage: 4 }],
+  display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
+  moduleId: 'homeVenueModuleShown',
+})
+
 describe('useDisplayedHomeModules.utils', () => {
   describe('showBusinessModule()', () => {
     it.each`
@@ -95,6 +103,7 @@ describe('useDisplayedHomeModules.utils', () => {
       }
     )
   })
+
   describe('getOfferModules', () => {
     it('should filter the offer modules', () => {
       const offerModules = getOfferModules([
@@ -106,6 +115,7 @@ describe('useDisplayedHomeModules.utils', () => {
       expect(offerModules).toEqual([emptyHits, visibleOfferModule])
     })
   })
+
   describe('getModulesToDisplay', () => {
     it('does display BusinessPane accordingly to showBusinessModule', () => {
       const connectedModules = getModulesToDisplay(
@@ -126,6 +136,7 @@ describe('useDisplayedHomeModules.utils', () => {
       )
       expect(notConnectedModules).not.toContain(connectedBusinessModule)
     })
+
     it('does always display ExclusivityPane', () => {
       const displayedModules = getModulesToDisplay(
         [excluModule, connectedBusinessModule, ...offerModules],
@@ -136,6 +147,18 @@ describe('useDisplayedHomeModules.utils', () => {
       )
       expect(displayedModules).toContain(excluModule)
     })
+
+    it('does always display VenueModule', () => {
+      const displayedModules = getModulesToDisplay(
+        [visibleVenueModule, excluModule, connectedBusinessModule, ...offerModules],
+        homeModules,
+        homeVenuesModules,
+        hitsAlgolia,
+        false
+      )
+      expect(displayedModules).toContain(visibleVenueModule)
+    })
+
     it('does not display modules if it has no data', () => {
       const displayedModules = getModulesToDisplay(
         [excluModule, connectedBusinessModule, notInHomeModules],
@@ -147,6 +170,7 @@ describe('useDisplayedHomeModules.utils', () => {
       expect(notInHomeModules).not.toContain(excluModule)
       expect(displayedModules.length).toBe(2)
     })
+
     it('does not display a module that has no hits', () => {
       const displayedModules = getModulesToDisplay(
         [emptyHits, excluModule, connectedBusinessModule],
@@ -158,6 +182,7 @@ describe('useDisplayedHomeModules.utils', () => {
       expect(displayedModules).not.toContain(emptyHits)
       expect(displayedModules.length).toBe(2)
     })
+
     it('does not display a module that has nbhits < minOffers', () => {
       const displayedModules = getModulesToDisplay(
         [connectedBusinessModule, excluModule, hiddenOfferModule],
@@ -166,9 +191,10 @@ describe('useDisplayedHomeModules.utils', () => {
         hitsAlgolia,
         true
       )
-      expect(displayedModules).not.toContain(hiddenOfferModule)
+      expect(displayedModules).not.toContain({ hiddenOfferModule })
       expect(displayedModules.length).toBe(2)
     })
+
     it('does display a module that has enough hits and nbHits >= minOffers', () => {
       const displayedModules = getModulesToDisplay(
         [connectedBusinessModule, excluModule, visibleOfferModule],
