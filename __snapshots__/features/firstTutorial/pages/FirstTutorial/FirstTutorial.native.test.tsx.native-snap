@@ -262,6 +262,7 @@ Array [
                     }
                   />
                   <Text
+                    fontSize={28}
                     style={
                       Array [
                         Object {
@@ -269,6 +270,8 @@ Array [
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
                           "lineHeight": 34,
+                        },
+                        Object {
                           "textAlign": "center",
                         },
                       ]
@@ -277,6 +280,7 @@ Array [
                     Le pass Culture
                   </Text>
                   <Text
+                    fontSize={24}
                     style={
                       Array [
                         Object {
@@ -284,6 +288,8 @@ Array [
                           "fontFamily": "Montserrat-MediumItalic",
                           "fontSize": 24,
                           "lineHeight": 28,
+                        },
+                        Object {
                           "textAlign": "center",
                         },
                       ]
@@ -479,6 +485,7 @@ Array [
                     }
                   />
                   <Text
+                    fontSize={28}
                     style={
                       Array [
                         Object {
@@ -486,6 +493,8 @@ Array [
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
                           "lineHeight": 34,
+                        },
+                        Object {
                           "textAlign": "center",
                         },
                       ]
@@ -494,6 +503,7 @@ Array [
                     Des offres pour tous
                   </Text>
                   <Text
+                    fontSize={24}
                     style={
                       Array [
                         Object {
@@ -501,6 +511,8 @@ Array [
                           "fontFamily": "Montserrat-MediumItalic",
                           "fontSize": 24,
                           "lineHeight": 28,
+                        },
+                        Object {
                           "textAlign": "center",
                         },
                       ]
@@ -651,6 +663,7 @@ Array [
                     }
                   />
                   <Text
+                    fontSize={28}
                     style={
                       Array [
                         Object {
@@ -658,6 +671,8 @@ Array [
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
                           "lineHeight": 34,
+                        },
+                        Object {
                           "textAlign": "center",
                         },
                       ]
@@ -666,6 +681,7 @@ Array [
                     Toute la culture
                   </Text>
                   <Text
+                    fontSize={24}
                     style={
                       Array [
                         Object {
@@ -673,6 +689,8 @@ Array [
                           "fontFamily": "Montserrat-MediumItalic",
                           "fontSize": 24,
                           "lineHeight": 28,
+                        },
+                        Object {
                           "textAlign": "center",
                         },
                       ]
@@ -823,6 +841,7 @@ Array [
                     }
                   />
                   <Text
+                    fontSize={28}
                     style={
                       Array [
                         Object {
@@ -830,6 +849,8 @@ Array [
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
                           "lineHeight": 34,
+                        },
+                        Object {
                           "textAlign": "center",
                         },
                       ]
@@ -838,6 +859,7 @@ Array [
                     Des nouveautés
                   </Text>
                   <Text
+                    fontSize={24}
                     style={
                       Array [
                         Object {
@@ -845,6 +867,8 @@ Array [
                           "fontFamily": "Montserrat-MediumItalic",
                           "fontSize": 24,
                           "lineHeight": 28,
+                        },
+                        Object {
                           "textAlign": "center",
                         },
                       ]

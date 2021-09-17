@@ -75,6 +75,7 @@ exports[`<AccountCreated /> should render correctly 1`] = `
       />
       <Text
         color="#ffffff"
+        fontSize={24}
         style={
           Array [
             Object {
@@ -82,6 +83,8 @@ exports[`<AccountCreated /> should render correctly 1`] = `
               "fontFamily": "Montserrat-MediumItalic",
               "fontSize": 24,
               "lineHeight": 28,
+            },
+            Object {
               "textAlign": "center",
             },
           ]

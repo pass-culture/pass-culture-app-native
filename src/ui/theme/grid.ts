@@ -1,4 +1,5 @@
-import { Dimensions, PixelRatio } from 'react-native'
+import { useCallback } from 'react'
+import { PixelRatio, useWindowDimensions } from 'react-native'
 
 import { getSpacing } from 'ui/theme/spacing'
 
@@ -23,27 +24,28 @@ export const RATIO_BUSINESS = 1 / 3
 export const RATIO_HOME_IMAGE = 2 / 3
 export const RATIO_EXCLU = 5 / 6
 
-// eslint-disable-next-line no-restricted-properties
-export const dimensions = Dimensions.get('window')
-
-export enum Breakpoints {
+enum Breakpoints {
   SM = 600,
 }
 
-export enum Axis {
-  WIDTH = 'width',
-  HEIGHT = 'height',
-}
-
-export interface Grid {
+interface Grid {
   sm?: number
   default: number
 }
 
-export const getGrid = (grid: Grid, axis: Axis = Axis.WIDTH) => {
-  const axisLength = dimensions[axis]
-  if (grid.sm && axisLength < Breakpoints.SM) {
-    return grid.sm
-  }
-  return grid.default
+type Axis = 'width' | 'height'
+
+export function useGrid() {
+  const dimensions = useWindowDimensions()
+  const grid = useCallback(
+    (grid: Grid, axis: Axis = 'width') => {
+      const axisLength = dimensions[axis]
+      if (grid.sm && axisLength < Breakpoints.SM) {
+        return grid.sm
+      }
+      return grid.default
+    },
+    [dimensions]
+  )
+  return grid
 }

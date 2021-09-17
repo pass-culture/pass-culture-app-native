@@ -191,6 +191,7 @@ Array [
                     }
                   />
                   <Text
+                    fontSize={28}
                     style={
                       Array [
                         Object {
@@ -198,6 +199,8 @@ Array [
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
                           "lineHeight": 34,
+                        },
+                        Object {
                           "textAlign": "center",
                         },
                       ]
@@ -206,6 +209,7 @@ Array [
                     Bonne nouvelle !
                   </Text>
                   <Text
+                    fontSize={24}
                     style={
                       Array [
                         Object {
@@ -213,6 +217,8 @@ Array [
                           "fontFamily": "Montserrat-MediumItalic",
                           "fontSize": 24,
                           "lineHeight": 28,
+                        },
+                        Object {
                           "textAlign": "center",
                         },
                       ]
@@ -332,6 +338,7 @@ Array [
                       </View>
                     </View>
                     <View
+                      marginTop={16}
                       style={
                         Array [
                           Object {

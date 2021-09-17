@@ -130,6 +130,7 @@ exports[`wrapRoute() should display force update page when global variable is se
       >
         <Text
           color="#ffffff"
+          fontSize={24}
           style={
             Array [
               Object {

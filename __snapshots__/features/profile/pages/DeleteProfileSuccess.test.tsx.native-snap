@@ -98,6 +98,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
     >
       <Text
         color="#ffffff"
+        fontSize={24}
         style={
           Array [
             Object {
