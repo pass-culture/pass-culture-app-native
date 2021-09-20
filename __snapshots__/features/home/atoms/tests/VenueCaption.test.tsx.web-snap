@@ -24,5 +24,17 @@ exports[`VenueCaption component should render correctly 1`] = `
   >
     Musée du Louvre
   </div>
+  <div
+    className="css-text-901oao css-textOneLine-vcwn7f"
+    dir="auto"
+    style={
+      Object {
+        "color": "rgba(98,98,98,1.00)",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": "12px",
+        "lineHeight": "16px",
+      }
+    }
+  />
 </div>
 `;

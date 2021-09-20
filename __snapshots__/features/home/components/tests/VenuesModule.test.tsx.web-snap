@@ -177,6 +177,20 @@ Array [
             >
               Le Petit Rintintin 1
             </div>
+            <div
+              className="css-text-901oao css-textOneLine-vcwn7f"
+              dir="auto"
+              style={
+                Object {
+                  "color": "rgba(98,98,98,1.00)",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "12px",
+                  "lineHeight": "16px",
+                }
+              }
+            >
+              MOVIE
+            </div>
           </div>
         </div>
         <div
@@ -274,6 +288,20 @@ Array [
               }
             >
               Le Petit Rintintin 2
+            </div>
+            <div
+              className="css-text-901oao css-textOneLine-vcwn7f"
+              dir="auto"
+              style={
+                Object {
+                  "color": "rgba(98,98,98,1.00)",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "12px",
+                  "lineHeight": "16px",
+                }
+              }
+            >
+              MOVIE
             </div>
           </div>
         </div>
@@ -373,6 +401,20 @@ Array [
             >
               Le Petit Rintintin 3
             </div>
+            <div
+              className="css-text-901oao css-textOneLine-vcwn7f"
+              dir="auto"
+              style={
+                Object {
+                  "color": "rgba(98,98,98,1.00)",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "12px",
+                  "lineHeight": "16px",
+                }
+              }
+            >
+              MOVIE
+            </div>
           </div>
         </div>
         <div
@@ -470,6 +512,20 @@ Array [
               }
             >
               Le Petit Rintintin 4
+            </div>
+            <div
+              className="css-text-901oao css-textOneLine-vcwn7f"
+              dir="auto"
+              style={
+                Object {
+                  "color": "rgba(98,98,98,1.00)",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": "12px",
+                  "lineHeight": "16px",
+                }
+              }
+            >
+              MOVIE
             </div>
           </div>
         </div>
