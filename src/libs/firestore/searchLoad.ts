@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 
 import { env } from 'libs/environment'
-import firestoreRemoteStore from 'libs/firestore/client'
+import { firestoreRemoteStore } from 'libs/firestore/client'
 import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firestore/types'
 import { QueryKeys } from 'libs/queryKeys'
 
