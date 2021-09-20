@@ -2,23 +2,29 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Typo, GUTTER_DP, ColorsEnum } from 'ui/theme'
+import { VenueTypeCode } from 'api/gen'
+import { mapVenueTypeToIcon, parseTypeHomeLabel } from 'libs/parsers'
+import { Typo, GUTTER_DP, ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 interface VenueCaptionProps {
   imageWidth: number
-  name?: string
-  venueType?: string
+  name: string
+  venueType: VenueTypeCode
 }
 
 export const VenueCaption = (props: VenueCaptionProps) => {
   const { imageWidth, name, venueType } = props
+  const typeLabel = parseTypeHomeLabel(venueType)
+  const Icon = mapVenueTypeToIcon(venueType)
 
   return (
     <CaptionContainer imageWidth={imageWidth}>
-      <Typo.Caption numberOfLines={1}>{name}</Typo.Caption>
-      <Typo.Caption numberOfLines={1} color={ColorsEnum.GREY_DARK}>
-        {venueType}
-      </Typo.Caption>
+      <VenueName>{name}</VenueName>
+      <IconWithCaption>
+        <Icon size={getSpacing(5)} color={ColorsEnum.GREY_DARK} />
+        <Spacer.Row numberOfSpaces={1} />
+        <TypeLabel>{typeLabel}</TypeLabel>
+      </IconWithCaption>
     </CaptionContainer>
   )
 }
@@ -27,3 +33,17 @@ const CaptionContainer = styled.View<{ imageWidth: number }>(({ imageWidth }) =>
   maxWidth: imageWidth,
   marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
 }))
+
+const VenueName = styled(Typo.Caption).attrs({
+  numberOfLines: 1,
+})({})
+
+const IconWithCaption = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
+
+const TypeLabel = styled(Typo.Caption).attrs({
+  numberOfLines: 1,
+  color: ColorsEnum.GREY_DARK,
+})({ flexShrink: 1 })

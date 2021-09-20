@@ -1,14 +1,15 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { VenueTypeCode } from 'api/gen'
 import { VenueCaption } from 'features/home/atoms/VenueCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { ColorsEnum, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum, LENGTH_S } from 'ui/theme/grid'
 
 interface VenueTileProps {
-  name?: string
-  venueType?: string
+  name: string
+  venueType: VenueTypeCode
 }
 
 const imageHeight = LENGTH_S
