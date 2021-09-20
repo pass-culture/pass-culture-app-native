@@ -4,7 +4,6 @@ import { FlatList, ListRenderItem } from 'react-native'
 import { ModuleTitle } from 'features/home/atoms'
 import { VenueTile } from 'features/home/atoms/VenueTile'
 import { DisplayParametersFields } from 'features/home/contentful'
-import { parseTypeHomeLabel } from 'libs/parsers'
 import { VenueHit } from 'libs/search'
 import { Spacer } from 'ui/theme'
 
@@ -19,7 +18,7 @@ export const VenuesModule = (props: VenuesModuleProps) => {
   const { hits, display } = props
 
   const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
-    return <VenueTile name={item.name} venueType={parseTypeHomeLabel(item.venueType)} />
+    return <VenueTile name={item.name} venueType={item.venueType} />
   }, [])
 
   return (
