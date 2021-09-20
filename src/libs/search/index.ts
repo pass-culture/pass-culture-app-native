@@ -1,3 +1,4 @@
+import { VenueTypeCode } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
 import { transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
@@ -14,7 +15,7 @@ export interface VenueHit {
   id: string
   name: string
   offererName: string
-  venueType: string
+  venueType: VenueTypeCode
   position: GeoCoordinates
   description: string
   audioDisability: boolean
