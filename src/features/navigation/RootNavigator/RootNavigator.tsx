@@ -34,6 +34,7 @@ const screens = routes
 export const RootNavigator: React.FC = () => {
   const { isSplashScreenHidden } = useSplashScreenContext()
 
+  // TODO WEB PC-10931 : define cache invalidation strategy.
   const mustUpdateApp = useMustUpdateApp()
 
   return (
