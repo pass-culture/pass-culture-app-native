@@ -27,5 +27,19 @@ exports[`VenueCaption component should render correctly 1`] = `
   >
     Musée du Louvre
   </Text>
+  <Text
+    color="#626262"
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#626262",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+  />
 </View>
 `;

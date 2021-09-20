@@ -18,7 +18,7 @@ export const VenuesModule = (props: VenuesModuleProps) => {
   const { hits, display } = props
 
   const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
-    return <VenueTile name={item.name} />
+    return <VenueTile name={item.name} venueType={item.venueType} />
   }, [])
 
   return (
