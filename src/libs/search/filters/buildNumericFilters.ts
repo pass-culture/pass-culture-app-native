@@ -1,13 +1,13 @@
 import { FilterArray, RangeFilter } from '@elastic/app-search-javascript'
 
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { SearchState } from 'features/search/types'
+import { PartialSearchState } from 'features/search/types'
 import { TIME } from 'libs/search/filters/timeFilters'
 import { NoNullProperties, Range } from 'libs/typesUtils/typeHelpers'
 
 import { AppSearchFields } from './constants'
 
-export const buildNumericFilters = (params: SearchState): FilterArray<AppSearchFields> => {
+export const buildNumericFilters = (params: PartialSearchState): FilterArray<AppSearchFields> => {
   return [
     ...buildOfferPriceRangePredicate(params),
     ...buildDatePredicate(params),
@@ -18,7 +18,9 @@ export const buildNumericFilters = (params: SearchState): FilterArray<AppSearchF
 
 const MAX_PRICE = 30000
 
-const buildOfferPriceRangePredicate = (params: SearchState): FilterArray<AppSearchFields> => {
+const buildOfferPriceRangePredicate = (
+  params: PartialSearchState
+): FilterArray<AppSearchFields> => {
   const { offerIsFree, priceRange } = params
   if (offerIsFree) return [{ [AppSearchFields.prices]: { to: 1 } }] // to is exclusive
   if (!priceRange) return [{ [AppSearchFields.prices]: { to: MAX_PRICE } }]
@@ -29,7 +31,7 @@ const buildOfferPriceRangePredicate = (params: SearchState): FilterArray<AppSear
   return [{ [AppSearchFields.prices]: { from, to } }]
 }
 
-const buildDatePredicate = (params: SearchState): FilterArray<AppSearchFields> => {
+const buildDatePredicate = (params: PartialSearchState): FilterArray<AppSearchFields> => {
   const { date, timeRange } = params
   if (date && timeRange) return buildDateAndTimePredicate({ date, timeRange })
   if (date) return buildDateOnlyPredicate(date)
@@ -37,7 +39,7 @@ const buildDatePredicate = (params: SearchState): FilterArray<AppSearchFields> =
   return []
 }
 
-const buildHomepageDatePredicate = (params: SearchState): FilterArray<AppSearchFields> => {
+const buildHomepageDatePredicate = (params: PartialSearchState): FilterArray<AppSearchFields> => {
   const { beginningDatetime, endingDatetime } = params
   if (!beginningDatetime && !endingDatetime) return []
 
@@ -58,7 +60,7 @@ const buildTimeOnlyPredicate = (timeRange: Range<number>): FilterArray<AppSearch
 const buildDateAndTimePredicate = ({
   date,
   timeRange,
-}: NoNullProperties<Required<Pick<SearchState, 'date' | 'timeRange'>>>): FilterArray<
+}: NoNullProperties<Required<Pick<PartialSearchState, 'date' | 'timeRange'>>>): FilterArray<
   AppSearchFields
 > => {
   let dateFilter
@@ -82,7 +84,7 @@ const buildDateAndTimePredicate = ({
 }
 
 const buildDateOnlyPredicate = (
-  date: Exclude<SearchState['date'], null | undefined>
+  date: Exclude<PartialSearchState['date'], null | undefined>
 ): FilterArray<AppSearchFields> => {
   let from, to
   switch (date.option) {
@@ -114,7 +116,7 @@ const buildDateOnlyPredicate = (
   ]
 }
 
-const buildNewestOffersPredicate = (params: SearchState): FilterArray<AppSearchFields> => {
+const buildNewestOffersPredicate = (params: PartialSearchState): FilterArray<AppSearchFields> => {
   const { offerIsNew } = params
   if (!offerIsNew) return []
 
