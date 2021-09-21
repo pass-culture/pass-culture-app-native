@@ -19,6 +19,28 @@ const STORE_LINK = Platform.select({
   default: ANDROID_STORE_LINK,
 })
 
+const onPress = Platform.select({
+  default: () => openExternalUrl(STORE_LINK),
+  web: () => globalThis?.window?.location?.reload(),
+})
+
+const title = Platform.select({
+  default: t`Mise à jour de l'application`,
+  web: t`Mise à jour de l'application`,
+})
+
+const description = Platform.select({
+  default: t`Le pass Culture ne semble plus à jour sur ton téléphone !
+                Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.`,
+  web: t`Le pass Culture de ton navigateur ne semble plus à jour !
+                Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible.`,
+})
+
+const buttonText = Platform.select({
+  default: t`Télécharger la dernière version`,
+  web: t`Actualiser la page`,
+})
+
 export const ForceUpdate = () => {
   return (
     <Container>
@@ -33,24 +55,18 @@ export const ForceUpdate = () => {
       <PageContainer>
         <ContentContainer>
           <CenteredText>
-            <Typo.Title2 color={ColorsEnum.WHITE}>{t`Mise à jour de l'application`}</Typo.Title2>
+            <Typo.Title2 color={ColorsEnum.WHITE}>{title}</Typo.Title2>
           </CenteredText>
           <Row>
             <TextContainer>
               <CenteredText>
-                <Typo.Body color={ColorsEnum.WHITE}>
-                  {t`Le pass Culture ne semble plus à jour sur ton téléphone !
-                Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.`}
-                </Typo.Body>
+                <Typo.Body color={ColorsEnum.WHITE}>{description}</Typo.Body>
               </CenteredText>
             </TextContainer>
           </Row>
         </ContentContainer>
         <ButtonContainer>
-          <ButtonPrimaryWhite
-            title={t`Télécharger la dernière version`}
-            onPress={() => openExternalUrl(STORE_LINK)}
-          />
+          <ButtonPrimaryWhite title={buttonText} onPress={onPress} />
         </ButtonContainer>
       </PageContainer>
       <Spacer.BottomScreen />
@@ -72,7 +88,12 @@ const CenteredText = styled.Text({
 })
 
 const IconContainer = styled.View({ justifyContent: 'center', flex: 1 })
-const ButtonContainer = styled.View({ flex: 0.5, width: '100%' })
+
+const ButtonContainer = styled.View({
+  flex: 0.5,
+  width: '100%',
+  alignItems: 'center',
+})
 
 const PageContainer = styled.View({
   alignItems: 'center',
