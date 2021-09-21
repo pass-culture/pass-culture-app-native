@@ -105,7 +105,7 @@ export const HomeBody = (props: HomeBodyProps) => {
             key={item.moduleId}
             hits={hits}
             display={item.display}
-            position={position}
+            userPosition={position}
           />
         )
       }

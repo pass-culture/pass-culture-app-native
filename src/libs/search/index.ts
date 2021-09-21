@@ -2,7 +2,6 @@ import { VenueTypeCode } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
 import { transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
-import { GeoCoordinates } from 'libs/geolocation'
 export { parseSearchParameters } from './parseSearchParameters'
 export { useParseSearchParameters } from './useParseSearchParameters'
 
@@ -11,12 +10,12 @@ export type SearchHit = AlgoliaHit
 
 export type Geoloc = AlgoliaGeoloc
 
-export interface Venue {
+export interface VenueHit {
   id: string
   name: string
   offererName: string
   venueType: VenueTypeCode
-  position: GeoCoordinates
+  position: Geoloc
   description: string
   audioDisability: boolean
   mentalDisability: boolean
@@ -29,8 +28,4 @@ export interface Venue {
   twitter: string
   instagram: string
   snapchat: string
-}
-export interface VenueHit {
-  venue: Venue
-  _geoloc: Geoloc
 }

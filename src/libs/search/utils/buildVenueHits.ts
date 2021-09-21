@@ -4,20 +4,21 @@ import { VenueTypeCode } from 'api/gen'
 import { VenueHit } from 'libs/search'
 import { AppSearchVenuesFields } from 'libs/search/filters/constants'
 
-export const buildVenueHits = (searchHit: ResultItem<AppSearchVenuesFields>): VenueHit => {
+export const buildVenueHits = (
+  searchHit: ResultItem<AppSearchVenuesFields>
+): Pick<VenueHit, 'id' | 'name' | 'position' | 'venueType'> => {
   const geoloc = searchHit.getRaw(AppSearchVenuesFields.position) as string
   const [lat, lng] = (geoloc || ',').split(',')
 
+  const position = {
+    lat: isNaN(parseFloat(lat)) ? null : parseFloat(lat),
+    lng: isNaN(parseFloat(lng)) ? null : parseFloat(lng),
+  }
+
   return {
-    // @ts-ignore : TODO (Lucasbeneston) How to select only id, name, venueType and Geoloc ?
-    venue: {
-      id: searchHit.getRaw(AppSearchVenuesFields.id) as string,
-      name: searchHit.getRaw(AppSearchVenuesFields.name) as string,
-      venueType: searchHit.getRaw(AppSearchVenuesFields.venue_type) as VenueTypeCode,
-    },
-    _geoloc: {
-      lat: isNaN(parseFloat(lat)) ? null : parseFloat(lat),
-      lng: isNaN(parseFloat(lng)) ? null : parseFloat(lng),
-    },
+    id: searchHit.getRaw(AppSearchVenuesFields.id) as string,
+    name: searchHit.getRaw(AppSearchVenuesFields.name) as string,
+    venueType: searchHit.getRaw(AppSearchVenuesFields.venue_type) as VenueTypeCode,
+    position,
   }
 }

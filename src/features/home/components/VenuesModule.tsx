@@ -12,19 +12,19 @@ import { Spacer } from 'ui/theme'
 type VenuesModuleProps = {
   hits: VenueHit[]
   display: DisplayParametersFields
-  position: GeoCoordinates | null
+  userPosition: GeoCoordinates | null
 }
 
-const keyExtractor = (item: VenueHit) => item.venue.id
+const keyExtractor = (item: VenueHit) => item.id
 
 export const VenuesModule = (props: VenuesModuleProps) => {
-  const { hits, display, position } = props
+  const { hits, display, userPosition } = props
   const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
     return (
       <VenueTile
-        name={item.venue.name}
-        venueType={item.venue.venueType}
-        distance={formatDistance(item._geoloc, position)}
+        name={item.name}
+        venueType={item.venueType}
+        distance={formatDistance(item.position, userPosition)}
       />
     )
   }, [])

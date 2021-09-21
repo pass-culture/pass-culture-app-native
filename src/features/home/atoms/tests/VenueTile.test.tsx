@@ -11,7 +11,7 @@ jest.mock('react-query')
 const venueResponse = mockedSearchResponse.hits[0]
 
 const props = {
-  name: venueResponse.venue.name,
+  name: venueResponse.name,
   venueType: VenueTypeCode.MUSEUM,
 }
 
