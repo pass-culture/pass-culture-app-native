@@ -49,10 +49,12 @@ export const useStagedSearch = (): Pick<ISearchContext, 'searchState' | 'dispatc
 
 export const useCommit = (): { commit: () => void } => {
   const { navigate } = useNavigation<UseNavigationType>()
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { stagedSearchState } = useContext(SearchContext)!
+  const { dispatch } = useSearch()
+  const { searchState: stagedSearchState } = useStagedSearch()
+
   return {
     commit() {
+      dispatch({ type: 'SET_STATE', payload: stagedSearchState })
       const { screen, params } = getTabNavigateConfig('Search', stagedSearchState)
       navigate(screen, params)
     },
