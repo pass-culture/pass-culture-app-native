@@ -7,4 +7,5 @@ export const filterAvailableCategories = (
   return Object.values(availableCategories)
     .filter((categoryCriterion) => selectedCategories.includes(categoryCriterion.label))
     .map((categoryCriterion) => categoryCriterion.facetFilter)
+    .sort((a: string, b: string) => a.localeCompare(b))
 }
