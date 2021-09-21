@@ -326,102 +326,15 @@ describe('useFavorite hook', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
     })
-    const { result, waitFor } = renderHook(
-      () =>
-        useFavorite({
-          offerId: favorite.offer.id,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
-    await superFlushWithAct()
-    await waitFor(() => {
-      expect(result.current).toEqual({
-        ...favorite,
-        offer: {
-          ...favorite.offer,
-          date: favorite.offer.date?.toISOString(),
-        },
-      })
+    const { result, waitFor } = renderHook(() => useFavorite({ offerId: favorite.offer.id }), {
+      wrapper: (props) =>
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        reactQueryProviderHOC(
+          <FavoritesWrapper>
+            <View>{props.children}</View>
+          </FavoritesWrapper>
+        ),
     })
-  })
-
-  it('should get favorite from id', async () => {
-    const favorite = paginatedFavoritesResponseSnap.favorites[0]
-    const favoriteId = favorite.id
-    simulateBackend({
-      id: favorite.offer.id,
-      hasAddFavoriteError: false,
-      hasRemoveFavoriteError: false,
-    })
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-    })
-    const { result, waitFor } = renderHook(
-      () =>
-        useFavorite({
-          id: favoriteId,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
-    await superFlushWithAct()
-    await waitFor(() => {
-      expect(result.current).toEqual({
-        ...favorite,
-        offer: {
-          ...favorite.offer,
-          date: favorite.offer.date?.toISOString(),
-        },
-      })
-    })
-  })
-
-  it('should get favorite from id and offer id', async () => {
-    const favorite = paginatedFavoritesResponseSnap.favorites[0]
-    const favoriteId = favorite.id
-    simulateBackend({
-      id: favorite.offer.id,
-      hasAddFavoriteError: false,
-      hasRemoveFavoriteError: false,
-    })
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-    })
-    const { result, waitFor } = renderHook(
-      () =>
-        useFavorite({
-          id: favoriteId,
-          offerId: favorite.offer.id,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
     await superFlushWithAct()
     await waitFor(() => {
       expect(result.current).toEqual({
@@ -446,124 +359,18 @@ describe('useFavorite hook', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
     })
-    const { result, waitFor } = renderHook(
-      () =>
-        useFavorite({
-          offerId: 99999,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
+    const { result, waitFor } = renderHook(() => useFavorite({ offerId: 99999 }), {
+      wrapper: (props) =>
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        reactQueryProviderHOC(
+          <FavoritesWrapper>
+            <View>{props.children}</View>
+          </FavoritesWrapper>
+        ),
+    })
     await superFlushWithAct()
     await waitFor(() => {
       expect(result.current).toEqual(undefined)
-    })
-  })
-
-  it('should not get favorite from id', async () => {
-    const favorite = paginatedFavoritesResponseSnap.favorites[0]
-    simulateBackend({
-      id: favorite.offer.id,
-      hasAddFavoriteError: false,
-      hasRemoveFavoriteError: false,
-    })
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-    })
-    const { result, waitFor } = renderHook(
-      () =>
-        useFavorite({
-          id: 99999,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
-    await superFlushWithAct()
-    await waitFor(() => {
-      expect(result.current).toEqual(undefined)
-    })
-  })
-
-  it('should not get favorite from id and offer id', async () => {
-    const favorite = paginatedFavoritesResponseSnap.favorites[0]
-    simulateBackend({
-      id: favorite.offer.id,
-      hasAddFavoriteError: false,
-      hasRemoveFavoriteError: false,
-    })
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-    })
-    const { result, waitFor } = renderHook(
-      () =>
-        useFavorite({
-          id: 99999,
-          offerId: 99999,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
-    await superFlushWithAct()
-    await waitFor(() => {
-      expect(result.current).toEqual(undefined)
-    })
-  })
-
-  it('should not get favorite when not logged in', async () => {
-    const favorite = paginatedFavoritesResponseSnap.favorites[0]
-    simulateBackend({
-      id: favorite.offer.id,
-      hasAddFavoriteError: false,
-      hasRemoveFavoriteError: false,
-    })
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-    })
-    const { result, waitFor } = renderHook(
-      () =>
-        useFavorite({
-          id: favorite.id,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
-    await superFlushWithAct()
-    await waitFor(() => {
-      expect(result.current).toEqual(null)
     })
   })
 })

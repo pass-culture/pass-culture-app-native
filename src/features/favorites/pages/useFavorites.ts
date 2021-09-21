@@ -148,26 +148,13 @@ export function useFavorites() {
   return useQuery<PaginatedFavoritesResponse>(
     QueryKeys.FAVORITES,
     () => api.getnativev1mefavorites(),
-    {
-      enabled: isLoggedIn,
-    }
+    { enabled: isLoggedIn }
   )
 }
 
-export function useFavorite({ offerId, id }: { offerId?: number; id?: number }) {
+export function useFavorite({ offerId }: { offerId?: number }): FavoriteResponse | undefined {
   const { data } = useFavorites()
-  if (!data) {
-    return null
-  }
 
-  return data.favorites.find((favorite) => {
-    if (
-      (offerId && id && favorite.offer.id === offerId && favorite.id === id) ||
-      (!id && favorite.offer.id === offerId) ||
-      (!offerId && favorite.id === id)
-    ) {
-      return true
-    }
-    return false
-  })
+  if (typeof offerId !== 'number') return
+  return data?.favorites.find((favorite) => favorite.offer.id === offerId)
 }
