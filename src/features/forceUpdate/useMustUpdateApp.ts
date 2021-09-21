@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Platform } from 'react-native'
 
 import { minimalBuildNumberStatusListener } from 'libs/firestore/applicationVersions'
 
@@ -19,5 +20,15 @@ const useMinimalBuildNumber = () => {
 
 export const useMustUpdateApp = () => {
   const minimalBuildNumber = useMinimalBuildNumber()
+
+  if (Platform.OS === 'web') {
+    // TODO: This block is Web only and will be removed very soon after PC-10931
+    // eslint-disable-next-line no-console
+    console.log('useMustUpdateApp', {
+      minimalBuildNumber,
+      build,
+      mustUpdateApp: !!minimalBuildNumber && build < minimalBuildNumber,
+    })
+  }
   return !!minimalBuildNumber && build < minimalBuildNumber
 }
