@@ -1,6 +1,6 @@
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
+import { MAX_PRICE, MAX_RADIUS, MIN_PRICE } from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
@@ -22,7 +22,7 @@ export const initialSearchState: SearchState = {
     isEvent: false,
     isThing: false,
   },
-  priceRange: null,
+  priceRange: [MIN_PRICE, MAX_PRICE],
   query: '',
   showResults: false,
   tags: [],
