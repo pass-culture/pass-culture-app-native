@@ -12,9 +12,9 @@ const GET_POSITION_SETTINGS = {
 }
 
 const ERROR_MAPPING: Record<string, GeolocPositionError> = {
-  [GeolocationPositionError.PERMISSION_DENIED]: GeolocPositionError.PERMISSION_DENIED,
-  [GeolocationPositionError.POSITION_UNAVAILABLE]: GeolocPositionError.POSITION_UNAVAILABLE,
-  [GeolocationPositionError.TIMEOUT]: GeolocPositionError.TIMEOUT,
+  [GeolocPositionError.PERMISSION_DENIED]: GeolocPositionError.PERMISSION_DENIED,
+  [GeolocPositionError.POSITION_UNAVAILABLE]: GeolocPositionError.POSITION_UNAVAILABLE,
+  [GeolocPositionError.TIMEOUT]: GeolocPositionError.TIMEOUT,
 }
 
 export const getPosition = (
