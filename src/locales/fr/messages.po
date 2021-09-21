@@ -144,6 +144,10 @@ msgstr "Annulé"
 msgid "AppStore"
 msgstr "AppStore"
 
+#: src/libs/parsers/venueType.ts
+msgid "Arts visuels, arts plastiques et galeries"
+msgstr "Arts visuels, arts plastiques et galeries"
+
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Attends"
@@ -207,6 +211,11 @@ msgstr "Autour de moi"
 msgid "Autre raison"
 msgstr "Autre raison"
 
+#: src/libs/parsers/venueType.ts
+#: src/libs/parsers/venueType.ts
+msgid "Autre type de lieu"
+msgstr "Autre type de lieu"
+
 #: src/features/profile/pages/Profile.tsx
 msgid "Autres"
 msgstr "Autres"
@@ -214,6 +223,14 @@ msgstr "Autres"
 #: src/features/bookings/helpers.ts
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
+
+#: src/libs/parsers/venueType.ts
+msgid "Bibliothèque / médiathèque"
+msgstr "Bibliothèque / médiathèque"
+
+#: src/libs/parsers/venueType.ts
+msgid "Bibliothèque ou médiathèque"
+msgstr "Bibliothèque ou médiathèque"
 
 #: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU."
@@ -264,6 +281,11 @@ msgstr "Ce week-end"
 msgid "Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies."
 msgstr "Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies."
 
+#: src/libs/parsers/venueType.ts
+#: src/libs/parsers/venueType.ts
+msgid "Centre culturel"
+msgstr "Centre culturel"
+
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 msgid "Cependant, tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées, et on reviendra vers toi d'ici quelques jours au plus tard :"
 msgstr "Cependant, tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées, et on reviendra vers toi d'ici quelques jours au plus tard :"
@@ -308,6 +330,10 @@ msgstr "Choisir un lieu"
 #: src/libs/itinerary/useItinerary.ts
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
+
+#: src/libs/parsers/venueType.ts
+msgid "Cinéma - Salle de projections"
+msgstr "Cinéma - Salle de projections"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
@@ -410,14 +436,17 @@ msgstr "Connexion"
 msgid "Consulter l'article d'aide"
 msgstr "Consulter l'article d'aide"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
-#: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
+#: src/features/auth/components/OpenInboxButton.tsx
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Consulter notre centre d'aide"
 msgstr "Consulter notre centre d'aide"
+
+#: src/features/venue/pages/VenueBody.tsx
+msgid "Contact"
+msgstr "Contact"
 
 #: src/features/auth/signup/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
@@ -445,6 +474,10 @@ msgstr "Continuer l'inscription"
 msgid "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
 msgstr "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
 
+#: src/libs/parsers/venueType.ts
+msgid "Cours et pratique artistiques"
+msgstr "Cours et pratique artistiques"
+
 #: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 #: src/features/offer/services/useCtaWordingAndAction.ts
@@ -458,6 +491,11 @@ msgstr "Crédit numérique insuffisant"
 #: src/features/search/sections/titles.ts
 msgid "Créneau horaire"
 msgstr "Créneau horaire"
+
+#: src/libs/parsers/venueType.ts
+#: src/libs/parsers/venueType.ts
+msgid "Culture scientifique"
+msgstr "Culture scientifique"
 
 #: src/features/bookOffer/components/BookDateChoice.tsx
 #: src/features/search/sections/titles.ts
@@ -499,6 +537,10 @@ msgstr "Des nouveautés"
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
+
+#: src/libs/parsers/venueType.ts
+msgid "Disquaire"
+msgstr "Disquaire"
 
 #: src/libs/geolocation/components/WhereSection.tsx
 msgid "Distance"
@@ -557,6 +599,7 @@ msgid "Détails de réservation"
 msgstr "Détails de réservation"
 
 #: src/features/profile/pages/PersonalData.tsx
+#: src/ui/components/contact/ContactBlock.tsx
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -639,6 +682,11 @@ msgstr "Explorer les offres"
 msgid "Favoris"
 msgstr "Favoris"
 
+#: src/libs/parsers/venueType.ts
+#: src/libs/parsers/venueType.ts
+msgid "Festival"
+msgstr "Festival"
+
 #: src/features/search/atoms/Buttons/Filter.tsx
 #: src/features/search/pages/SearchFilter.tsx
 msgid "Filtrer"
@@ -652,6 +700,10 @@ msgstr "Format de l'e-mail incorrect"
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Format du lien incorrect"
 msgstr "Format du lien incorrect"
+
+#: src/libs/parsers/venueType.ts
+msgid "Galeries d’art"
+msgstr "Galeries d’art"
 
 #: src/features/bookOffer/components/BookingInformations.tsx
 #: src/libs/parsers/getDisplayPrice.ts
@@ -743,6 +795,14 @@ msgstr "Je veux recevoir les actualités et les meilleures offres du pass Cultur
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
 msgstr "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
+
+#: src/libs/parsers/venueType.ts
+msgid "Jeux"
+msgstr "Jeux"
+
+#: src/libs/parsers/venueType.ts
+msgid "Jeux / Jeux vidéos"
+msgstr "Jeux / Jeux vidéos"
 
 #: src/libs/keychain.ts
 #: src/libs/keychain.ts
@@ -851,6 +911,11 @@ msgstr "Les réglages de ton téléphone ne nous permettent pas d’utiliser la 
 msgid "Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
 msgstr "Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
 
+#: src/libs/parsers/venueType.ts
+#: src/libs/parsers/venueType.ts
+msgid "Librairie"
+msgstr "Librairie"
+
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Lieu"
 msgstr "Lieu"
@@ -871,6 +936,18 @@ msgstr "L’application pass Culture est accessible à tous."
 #: src/features/bookings/components/BookingPropertiesSection.tsx
 msgid "Ma réservation"
 msgstr "Ma réservation"
+
+#: src/libs/parsers/venueType.ts
+msgid "Magasin arts créatifs"
+msgstr "Magasin arts créatifs"
+
+#: src/libs/parsers/venueType.ts
+msgid "Magasin d’arts créatifs"
+msgstr "Magasin d’arts créatifs"
+
+#: src/libs/parsers/venueType.ts
+msgid "Magasin d’instruments"
+msgstr "Magasin d’instruments"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Maintenance"
@@ -964,6 +1041,23 @@ msgstr "Mot de passe oublié"
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
+#: src/libs/parsers/venueType.ts
+msgid "Musique - Disquaire"
+msgstr "Musique - Disquaire"
+
+#: src/libs/parsers/venueType.ts
+msgid "Musique - Magasin d’instruments"
+msgstr "Musique - Magasin d’instruments"
+
+#: src/libs/parsers/venueType.ts
+msgid "Musique - Salle de concerts"
+msgstr "Musique - Salle de concerts"
+
+#: src/libs/parsers/venueType.ts
+#: src/libs/parsers/venueType.ts
+msgid "Musée"
+msgstr "Musée"
+
 #: src/features/cheatcodes/pages/CheatMenu/CheatMenu.tsx
 msgid "Navigation"
 msgstr "Navigation"
@@ -1033,6 +1127,8 @@ msgid "Offre introuvable | Pass Culture"
 msgstr "Offre introuvable | Pass Culture"
 
 #: src/features/search/sections/OfferType.tsx
+#: src/libs/parsers/venueType.ts
+#: src/libs/parsers/venueType.ts
 msgid "Offre numérique"
 msgstr "Offre numérique"
 
@@ -1140,6 +1236,14 @@ msgstr "Passer"
 msgid "Patience ! À tes 18 ans, tu bénéficieras de"
 msgstr "Patience ! À tes 18 ans, tu bénéficieras de"
 
+#: src/libs/parsers/venueType.ts
+msgid "Patrimoine / tourisme"
+msgstr "Patrimoine / tourisme"
+
+#: src/libs/parsers/venueType.ts
+msgid "Patrimoine et tourisme"
+msgstr "Patrimoine et tourisme"
+
 #: src/features/bookings/helpers.ts
 msgid "Permanent"
 msgstr "Permanent"
@@ -1184,6 +1288,10 @@ msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 #: src/features/offer/components/useReportOfferModalContent.tsx
 msgid "Pourquoi signales-tu"
 msgstr "Pourquoi signales-tu"
+
+#: src/libs/parsers/venueType.ts
+msgid "Pratique artistiques"
+msgstr "Pratique artistiques"
 
 #: src/features/search/sections/titles.ts
 msgid "Prix"
@@ -1287,6 +1395,7 @@ msgstr "Retour"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
@@ -1386,6 +1495,14 @@ msgstr "Saisis le code envoyé par SMS au numéro"
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
+#: src/libs/parsers/venueType.ts
+msgid "Salle de concerts"
+msgstr "Salle de concerts"
+
+#: src/libs/parsers/venueType.ts
+msgid "Salle de projections"
+msgstr "Salle de projections"
+
 #: src/features/auth/login/Login.tsx
 #: src/features/favorites/components/NotConnectedFavorites.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
@@ -1437,6 +1554,10 @@ msgstr "Signaler l'offre"
 msgid "Signaler une offre"
 msgstr "Signaler une offre"
 
+#: src/ui/components/contact/ContactBlock.tsx
+msgid "Site internet"
+msgstr "Site internet"
+
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Solo"
@@ -1445,6 +1566,11 @@ msgstr "Solo"
 #: src/features/search/sections/OfferType.tsx
 msgid "Sortie"
 msgstr "Sortie"
+
+#: src/libs/parsers/venueType.ts
+#: src/libs/parsers/venueType.ts
+msgid "Spectacle vivant"
+msgstr "Spectacle vivant"
 
 #: src/features/profile/pages/Profile.tsx
 msgid "Suivre pass Culture"
@@ -1570,6 +1696,7 @@ msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nou
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 msgid "Trop de tentatives !"
 msgstr "Trop de tentatives !"
 
@@ -1592,6 +1719,10 @@ msgstr "Tu as déjà un compte ?"
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
 msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
+
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
+msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
+msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Tu dois avoir 16 ans pour t'inscrire"
@@ -1703,6 +1834,10 @@ msgstr "Type d'offre"
 msgid "Télécharger la dernière version"
 msgstr "Télécharger la dernière version"
 
+#: src/ui/components/contact/ContactBlock.tsx
+msgid "Téléphone"
+msgstr "Téléphone"
+
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Téléphone - Formulaire"
 msgstr "Téléphone - Formulaire"
@@ -1721,7 +1856,7 @@ msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 
-#: src/api/__mocks__/helpers.ts
+#: src/api/__mocks__/apiHelpers.ts
 #: src/api/apiHelpers.ts
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Une erreur est survenue"
@@ -1771,6 +1906,10 @@ msgstr "Validation téléphone"
 msgid "Validation téléphone - Trop d'éssais"
 msgstr "Validation téléphone - Trop d'éssais"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Validation téléphone - Trop de SMS envoyés"
+msgstr "Validation téléphone - Trop de SMS envoyés"
+
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/favorites/pages/FavoritesSorts.tsx
 msgid "Valider"
@@ -1781,6 +1920,7 @@ msgid "Valider ces options"
 msgstr "Valider ces options"
 
 #: src/features/search/components/CalendarPicker.ios.tsx
+#: src/features/search/components/CalendarPicker.web.tsx
 msgid "Valider la date"
 msgstr "Valider la date"
 
@@ -1999,7 +2139,7 @@ msgstr "offerId is undefined"
 msgid "offerts à dépenser sur l’application."
 msgstr "offerts à dépenser sur l’application."
 
-#: src/features/navigation/RootNavigator/linking/index.ts
+#: src/features/navigation/RootNavigator/linking/getPathFromState.ts
 msgid "page-introuvable"
 msgstr "page-introuvable"
 

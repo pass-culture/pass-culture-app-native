@@ -1,3 +1,5 @@
+import { t } from '@lingui/macro'
+
 import { VenueTypeCode } from 'api/gen'
 import { IconInterface } from 'ui/svg/icons/types'
 import {
@@ -23,24 +25,24 @@ import {
 
 // Map the facetFilter (in algolia) to the label displayed in the front
 const MAP_TYPE_TO_LABEL: { [k in VenueTypeCode]: string } = {
-  ARTISTIC_COURSE: 'Cours et pratique artistiques',
-  BOOKSTORE: 'Bibliothèque ou médiathèque',
-  CONCERT_HALL: 'Musique - Salle de concerts',
-  CREATIVE_ARTS_STORE: 'Magasin arts créatifs',
-  CULTURAL_CENTRE: 'Centre culturel',
-  DIGITAL: 'Offre numérique',
-  FESTIVAL: 'Festival',
-  GAMES: 'Jeux / Jeux vidéos',
-  LIBRARY: 'Librairie',
-  MUSEUM: 'Musée',
-  MUSICAL_INSTRUMENT_STORE: 'Musique - Magasin d’instruments',
-  MOVIE: 'Cinéma - Salle de projections',
-  OTHER: 'Autre type de lieu',
-  PATRIMONY_TOURISM: 'Patrimoine et tourisme',
-  PERFORMING_ARTS: 'Spectacle vivant',
-  RECORD_STORE: 'Musique - Disquaire',
-  SCIENTIFIC_CULTURE: 'Culture scientifique',
-  VISUAL_ARTS: 'Arts visuels, arts plastiques et galeries',
+  ARTISTIC_COURSE: t`Cours et pratique artistiques`,
+  BOOKSTORE: t`Bibliothèque ou médiathèque`,
+  CONCERT_HALL: t`Musique - Salle de concerts`,
+  CREATIVE_ARTS_STORE: t`Magasin arts créatifs`,
+  CULTURAL_CENTRE: t`Centre culturel`,
+  DIGITAL: t`Offre numérique`,
+  FESTIVAL: t`Festival`,
+  GAMES: t`Jeux / Jeux vidéos`,
+  LIBRARY: t`Librairie`,
+  MUSEUM: t`Musée`,
+  MUSICAL_INSTRUMENT_STORE: t`Musique - Magasin d’instruments`,
+  MOVIE: t`Cinéma - Salle de projections`,
+  OTHER: t`Autre type de lieu`,
+  PATRIMONY_TOURISM: t`Patrimoine et tourisme`,
+  PERFORMING_ARTS: t`Spectacle vivant`,
+  RECORD_STORE: t`Musique - Disquaire`,
+  SCIENTIFIC_CULTURE: t`Culture scientifique`,
+  VISUAL_ARTS: t`Arts visuels, arts plastiques et galeries`,
 }
 
 export const parseType = (types: VenueTypeCode | null | undefined): string => {
@@ -50,24 +52,24 @@ export const parseType = (types: VenueTypeCode | null | undefined): string => {
 
 // Map the facetFilter (in algolia) to the label displayed for home page in the front
 const MAP_TYPE_TO_HOME_LABEL: { [k in VenueTypeCode]: string } = {
-  ARTISTIC_COURSE: 'Pratique artistiques',
-  BOOKSTORE: 'Bibliothèque / médiathèque',
-  CONCERT_HALL: 'Salle de concerts',
-  CREATIVE_ARTS_STORE: 'Magasin d’arts créatifs',
-  CULTURAL_CENTRE: 'Centre culturel',
-  DIGITAL: 'Offre numérique',
-  FESTIVAL: 'Festival',
-  GAMES: 'Jeux',
-  LIBRARY: 'Librairie',
-  MUSEUM: 'Musée',
-  MUSICAL_INSTRUMENT_STORE: 'Magasin d’instruments',
-  MOVIE: 'Salle de projections',
-  OTHER: 'Autre type de lieu',
-  PATRIMONY_TOURISM: 'Patrimoine / tourisme',
-  PERFORMING_ARTS: 'Spectacle vivant',
-  RECORD_STORE: 'Disquaire',
-  SCIENTIFIC_CULTURE: 'Culture scientifique',
-  VISUAL_ARTS: 'Galeries d’art',
+  ARTISTIC_COURSE: t`Pratique artistiques`,
+  BOOKSTORE: t`Bibliothèque / médiathèque`,
+  CONCERT_HALL: t`Salle de concerts`,
+  CREATIVE_ARTS_STORE: t`Magasin d’arts créatifs`,
+  CULTURAL_CENTRE: t`Centre culturel`,
+  DIGITAL: t`Offre numérique`,
+  FESTIVAL: t`Festival`,
+  GAMES: t`Jeux`,
+  LIBRARY: t`Librairie`,
+  MUSEUM: t`Musée`,
+  MUSICAL_INSTRUMENT_STORE: t`Magasin d’instruments`,
+  MOVIE: t`Salle de projections`,
+  OTHER: t`Autre type de lieu`,
+  PATRIMONY_TOURISM: t`Patrimoine / tourisme`,
+  PERFORMING_ARTS: t`Spectacle vivant`,
+  RECORD_STORE: t`Disquaire`,
+  SCIENTIFIC_CULTURE: t`Culture scientifique`,
+  VISUAL_ARTS: t`Galeries d’art`,
 }
 
 export const parseTypeHomeLabel = (types: VenueTypeCode | null | undefined): string => {
