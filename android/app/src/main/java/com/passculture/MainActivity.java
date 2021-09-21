@@ -24,7 +24,7 @@ public class MainActivity extends ReactActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.show(this, R.style.SplashScreenTheme);
-        super.onCreate(savedInstanceState);
+        super.onCreate(null);
     }
 
     // @react-navigation (https://reactnavigation.org/docs/en/next/getting-started.html)
