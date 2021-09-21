@@ -13,6 +13,7 @@ const props = {
     title: 'Module title',
   } as DisplayParametersFields,
   hits: mockedSearchResponse.hits,
+  position: { latitude: 2, longitude: 40 },
 }
 
 describe('VenuesModule component', () => {

@@ -124,6 +124,7 @@ export const fetchMultipleVenues = async (): Promise<VenueHit[]> => {
       [AppSearchVenuesFields.id]: { raw: {} },
       [AppSearchVenuesFields.name]: { raw: {} },
       [AppSearchVenuesFields.venue_type]: { raw: {} },
+      [AppSearchVenuesFields.position]: { raw: {} },
     },
   }
 

@@ -4,21 +4,29 @@ import { FlatList, ListRenderItem } from 'react-native'
 import { ModuleTitle } from 'features/home/atoms'
 import { VenueTile } from 'features/home/atoms/VenueTile'
 import { DisplayParametersFields } from 'features/home/contentful'
+import { GeoCoordinates } from 'libs/geolocation'
+import { formatDistance } from 'libs/parsers'
 import { VenueHit } from 'libs/search'
 import { Spacer } from 'ui/theme'
 
 type VenuesModuleProps = {
   hits: VenueHit[]
   display: DisplayParametersFields
+  position: GeoCoordinates | null
 }
 
 const keyExtractor = (item: VenueHit) => item.venue.id
 
 export const VenuesModule = (props: VenuesModuleProps) => {
-  const { hits, display } = props
-
+  const { hits, display, position } = props
   const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
-    return <VenueTile name={item.venue.name} venueType={item.venue.venueType} />
+    return (
+      <VenueTile
+        name={item.venue.name}
+        venueType={item.venue.venueType}
+        distance={formatDistance(item._geoloc, position)}
+      />
+    )
   }, [])
 
   return (
