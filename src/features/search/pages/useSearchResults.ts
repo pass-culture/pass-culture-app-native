@@ -20,7 +20,7 @@ import { useSearch, useStagedSearch } from './SearchWrapper'
 
 export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
 
-const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
+const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const { position } = useGeolocation()
   const algoliaBackend = useAlgoliaQuery()
@@ -32,19 +32,20 @@ const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchHits, transformHits } = backend
 
+  const searchState: PartialSearchState = {
+    ...partialSearchState,
+    offerCategories: filterAvailableCategories(
+      partialSearchState.offerCategories,
+      availableCategories
+    ),
+  }
+
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, searchState],
     async (context: QueryFunctionContext<[string, PartialSearchState], number>) => {
       const page = context.pageParam || 0
       const searchState = context.queryKey[1]
-      const newSearchState = {
-        ...searchState,
-        offerCategories: filterAvailableCategories(
-          searchState.offerCategories,
-          availableCategories
-        ),
-      }
-      return await fetchHits({ page, ...newSearchState }, position, isUserUnderage)
+      return await fetchHits({ page, ...searchState }, position, isUserUnderage)
     },
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
