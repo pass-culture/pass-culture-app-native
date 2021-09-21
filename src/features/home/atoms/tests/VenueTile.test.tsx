@@ -8,10 +8,10 @@ import { VenueTile } from '../VenueTile'
 
 jest.mock('react-query')
 
-const venue = mockedSearchResponse.hits[0]
+const venueResponse = mockedSearchResponse.hits[0]
 
 const props = {
-  name: venue.name,
+  name: venueResponse.venue.name,
   venueType: VenueTypeCode.MUSEUM,
 }
 

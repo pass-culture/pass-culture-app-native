@@ -12,13 +12,13 @@ type VenuesModuleProps = {
   display: DisplayParametersFields
 }
 
-const keyExtractor = (item: VenueHit) => item.id
+const keyExtractor = (item: VenueHit) => item.venue.id
 
 export const VenuesModule = (props: VenuesModuleProps) => {
   const { hits, display } = props
 
   const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
-    return <VenueTile name={item.name} venueType={item.venueType} />
+    return <VenueTile name={item.venue.name} venueType={item.venue.venueType} />
   }, [])
 
   return (

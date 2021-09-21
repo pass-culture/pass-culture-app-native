@@ -11,7 +11,7 @@ export type SearchHit = AlgoliaHit
 
 export type Geoloc = AlgoliaGeoloc
 
-export interface VenueHit {
+export interface Venue {
   id: string
   name: string
   offererName: string
@@ -29,4 +29,8 @@ export interface VenueHit {
   twitter: string
   instagram: string
   snapchat: string
+}
+export interface VenueHit {
+  venue: Venue
+  _geoloc: Geoloc
 }
