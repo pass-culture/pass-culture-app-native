@@ -122,11 +122,11 @@ export const useCtaWordingAndAction = (props: {
 }): ICTAWordingAndAction | undefined => {
   const { offerId } = props
   const { isLoggedIn } = useAuthContext()
-  const { data: profileInfo } = useUserProfileInfo()
+  const { data: user } = useUserProfileInfo()
   const { data: offer } = useOffer({ offerId })
   const hasEnoughCredit = useHasEnoughCredit(offerId)
   const availableCategories = useAvailableCategories()
-  const isUnderageBeneficiary = !!(profileInfo && isUserUnderageBeneficiary(profileInfo))
+  const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
 
   if (!offer) return
 
@@ -135,13 +135,13 @@ export const useCtaWordingAndAction = (props: {
    */
   if (
     isLoggedIn === null ||
-    profileInfo === null ||
+    user === null ||
     offer.category.categoryType === null ||
     offer.category.categoryType === undefined
   )
     return
 
-  const { isBeneficiary = false, bookedOffers = {} } = profileInfo || {}
+  const { isBeneficiary = false, bookedOffers = {} } = user || {}
   return getCtaWordingAndAction({
     isLoggedIn,
     isBeneficiary,

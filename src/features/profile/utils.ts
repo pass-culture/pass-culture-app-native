@@ -14,12 +14,13 @@ export const computeCredit = (domainsCredit?: DomainsCredit | null) => {
   return domainsCredit ? domainsCredit.all.remaining : 0
 }
 
-export function isUserUnderageBeneficiary(user: UserProfileResponse): boolean {
-  const hasUserUnderageRole = user?.roles?.find((role) => role === UserRole.UNDERAGEBENEFICIARY)
+export function isUserUnderageBeneficiary(user: UserProfileResponse | undefined): boolean {
+  if (!user) return false
+  const hasUserUnderageRole = user.roles?.find((role) => role === UserRole.UNDERAGEBENEFICIARY)
   return !!hasUserUnderageRole
 }
 
 export const useIsUserUnderage = () => {
   const { data: user } = useUserProfileInfo()
-  return !!(user && isUserUnderageBeneficiary(user))
+  return isUserUnderageBeneficiary(user)
 }
