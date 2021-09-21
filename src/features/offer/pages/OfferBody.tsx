@@ -1,22 +1,19 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
-import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
-import { api } from 'api/api'
-import { CategoryType, ReportedOffer, UserReportedOffersResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { CategoryType, ReportedOffer } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal'
+import { useReportedOffers } from 'features/offer/services/useReportedOffers'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { QueryKeys } from 'libs/queryKeys'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -30,13 +27,14 @@ import { OfferIconCaptions, OfferPartialDescription } from '../components'
 
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 
-export const OfferBody: FunctionComponent<{
+interface Props {
   offerId: number
   onScroll: () => void
-}> = ({ offerId, onScroll }) => {
+}
+
+export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { data: offerResponse } = useOffer({ offerId })
   const credit = useAvailableCredit()
-  const { isLoggedIn } = useAuthContext()
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
@@ -46,16 +44,10 @@ export const OfferBody: FunctionComponent<{
 
   useTrackOfferSeenDuration(offerId)
 
-  const { data } = useQuery<UserReportedOffersResponse>(
-    QueryKeys.REPORTED_OFFERS,
-    () => api.getnativev1offersreports(),
-    { enabled: isLoggedIn, retry: true }
+  const { data: reportedOffersResponse } = useReportedOffers()
+  const isOfferAlreadyReported = reportedOffersResponse?.reportedOffers?.find(
+    (reportedOffer: ReportedOffer) => reportedOffer.offerId === offerId
   )
-
-  const reportedOffers = data?.reportedOffers
-  const isOfferAlreadyReported = reportedOffers?.find((reportedOffer: ReportedOffer) => {
-    return reportedOffer.offerId === offerId
-  })
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
