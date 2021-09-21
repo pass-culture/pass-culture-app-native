@@ -12,7 +12,7 @@ import { initialRouteName, routes } from './routes'
 import { RootStackParamList, Route } from './types'
 
 export const RootStack = createStackNavigator<RootStackParamList>()
-export const MustUpdateRootStack = createStackNavigator<Pick<RootStackParamList, 'ForceUpdate'>>()
+export const ForceUpdateRootStack = createStackNavigator<Pick<RootStackParamList, 'ForceUpdate'>>()
 
 export function wrapRoute(route: Route) {
   if (route.hoc) {
@@ -39,12 +39,12 @@ export const RootNavigator: React.FC = () => {
   return (
     <React.Fragment>
       {mustUpdateApp ? (
-        <MustUpdateRootStack.Navigator
+        <ForceUpdateRootStack.Navigator
           initialRouteName="ForceUpdate"
           headerMode="screen"
           screenOptions={NAVIGATOR_SCREEN_OPTIONS}>
-          <MustUpdateRootStack.Screen name="ForceUpdate" component={ForceUpdate} />
-        </MustUpdateRootStack.Navigator>
+          <ForceUpdateRootStack.Screen name="ForceUpdate" component={ForceUpdate} />
+        </ForceUpdateRootStack.Navigator>
       ) : (
         <RootStack.Navigator
           initialRouteName={initialRouteName}
