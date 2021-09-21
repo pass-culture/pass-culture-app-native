@@ -10,7 +10,7 @@ const scorePlaylistByTags = (
   entry: HomepageEntry,
   user?: UserProfileResponse
 ): HomepageEntry & { score: number } => {
-  const isUnderage = user ? isUserUnderageBeneficiary(user) : false
+  const isUnderage = isUserUnderageBeneficiary(user)
   const tags: TagId[] = entry.metadata.tags.map(({ sys }) => sys.id)
 
   let score = 0

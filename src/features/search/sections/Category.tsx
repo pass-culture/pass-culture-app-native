@@ -15,8 +15,8 @@ export const Category: React.FC = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Category)
   const categories = useAvailableSearchCategories()
 
-  const onPress = (label: string) => () => {
-    dispatch({ type: 'TOGGLE_CATEGORY', payload: label })
+  const onPress = (facetFilter: string) => () => {
+    dispatch({ type: 'TOGGLE_CATEGORY', payload: facetFilter })
     logUseFilter()
   }
 
