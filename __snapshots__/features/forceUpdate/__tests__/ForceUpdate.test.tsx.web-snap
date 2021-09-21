@@ -244,8 +244,8 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
                 }
               }
             >
-              Le pass Culture ne semble plus à jour sur ton téléphone !
-Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
+              Le pass Culture de ton navigateur ne semble plus à jour !
+Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible.
             </span>
           </div>
         </div>
@@ -255,13 +255,17 @@ Pour des questions de performance et de sécurité merci de télécharger la der
       className="css-view-1dbjc4n"
       style={
         Object {
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
           "WebkitBoxFlex": 0.5,
           "WebkitFlexBasis": "0px",
           "WebkitFlexGrow": 0.5,
           "WebkitFlexShrink": 1,
+          "alignItems": "center",
           "flexBasis": "0px",
           "flexGrow": 0.5,
           "flexShrink": 1,
+          "msFlexAlign": "center",
           "msFlexNegative": 1,
           "msFlexPositive": 0.5,
           "msFlexPreferredSize": "0px",
@@ -270,9 +274,9 @@ Pour des questions de performance et de sécurité merci de télécharger la der
       }
     >
       <div
-        aria-label="Télécharger la dernière version"
+        aria-label="Actualiser la page"
         className="css-view-1dbjc4n"
-        data-testid="Télécharger la dernière version"
+        data-testid="Actualiser la page"
         onClick={[Function]}
         onContextMenu={[Function]}
         onKeyDown={[Function]}
@@ -337,7 +341,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
             }
           }
         >
-          Télécharger la dernière version
+          Actualiser la page
         </div>
       </div>
     </div>

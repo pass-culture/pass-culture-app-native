@@ -196,6 +196,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
       style={
         Array [
           Object {
+            "alignItems": "center",
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,

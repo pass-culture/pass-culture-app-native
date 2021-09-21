@@ -2,21 +2,22 @@ import { useEffect, useState } from 'react'
 
 import { minimalBuildNumberStatusListener } from 'libs/firestore/applicationVersions'
 
-import Package from '../../../package.json'
+import { build } from '../../../package.json'
 
-const useMinimalBuildNumber = (setMinimalBuildNumber: (minimalBuildNumber: number) => void) => {
+const useMinimalBuildNumber = () => {
+  const [minimalBuildNumber, setMinimalBuildNumber] = useState<number | null>(null)
+
   useEffect(() => {
     const subscriber = minimalBuildNumberStatusListener(setMinimalBuildNumber)
 
     // Stop listening for updates when no longer required
     return () => subscriber()
   }, [])
+
+  return minimalBuildNumber
 }
 
-export const useMustUpdateApp = (): boolean => {
-  const [minimalBuildNumber, setMinimalBuildNumber] = useState<number | null>(null)
-
-  useMinimalBuildNumber(setMinimalBuildNumber)
-
-  return !!minimalBuildNumber && Package.build < minimalBuildNumber
+export const useMustUpdateApp = () => {
+  const minimalBuildNumber = useMinimalBuildNumber()
+  return !!minimalBuildNumber && build < minimalBuildNumber
 }

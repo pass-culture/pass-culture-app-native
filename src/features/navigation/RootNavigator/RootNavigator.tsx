@@ -12,6 +12,7 @@ import { initialRouteName, routes } from './routes'
 import { RootStackParamList, Route } from './types'
 
 export const RootStack = createStackNavigator<RootStackParamList>()
+export const MustUpdateRootStack = createStackNavigator<Pick<RootStackParamList, 'ForceUpdate'>>()
 
 export function wrapRoute(route: Route) {
   if (route.hoc) {
@@ -33,14 +34,17 @@ const screens = routes
 
 export const RootNavigator: React.FC = () => {
   const { isSplashScreenHidden } = useSplashScreenContext()
-
-  // TODO WEB PC-10931 : define cache invalidation strategy.
   const mustUpdateApp = useMustUpdateApp()
 
   return (
     <React.Fragment>
       {mustUpdateApp ? (
-        <ForceUpdate />
+        <MustUpdateRootStack.Navigator
+          initialRouteName="ForceUpdate"
+          headerMode="screen"
+          screenOptions={NAVIGATOR_SCREEN_OPTIONS}>
+          <MustUpdateRootStack.Screen name="ForceUpdate" component={ForceUpdate} />
+        </MustUpdateRootStack.Navigator>
       ) : (
         <RootStack.Navigator
           initialRouteName={initialRouteName}
