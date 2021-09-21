@@ -1,7 +1,7 @@
 import { SearchOptions } from '@elastic/app-search-javascript'
 
 import { CategoryNameEnum } from 'api/gen'
-import { SearchState } from 'features/search/types'
+import { PartialSearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { buildBoosts } from 'libs/search/filters/buildBoosts'
 
@@ -21,7 +21,7 @@ export const underageFilter = {
 }
 
 export const buildQueryOptions = (
-  searchState: SearchState,
+  searchState: PartialSearchState,
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean,
   page?: number

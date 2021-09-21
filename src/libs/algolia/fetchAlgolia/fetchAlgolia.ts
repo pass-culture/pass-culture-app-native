@@ -3,7 +3,7 @@ import algoliasearch from 'algoliasearch'
 
 import { LocationType } from 'features/search/enums'
 import { Response } from 'features/search/pages/useSearchResults'
-import { SearchState } from 'features/search/types'
+import { PartialSearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
@@ -48,7 +48,7 @@ const buildSearchParameters = (
     priceRange = null,
     timeRange = null,
     tags = [],
-  }: SearchState,
+  }: PartialSearchState,
   userLocation: GeoCoordinates | null
 ) => ({
   ...buildFacetFilters({ offerCategories, offerTypes, offerIsDuo, tags }),
@@ -65,7 +65,7 @@ const buildSearchParameters = (
 })
 
 export const fetchMultipleAlgolia = (
-  paramsList: SearchState[],
+  paramsList: PartialSearchState[],
   userLocation: GeoCoordinates | null
 ): Readonly<Promise<MultipleQueriesResponse<AlgoliaHit>>> => {
   const queries = paramsList.map((params) => ({
@@ -105,11 +105,11 @@ export const fetchAlgoliaHits = (
   return index.getObjects(objectIds, { attributesToRetrieve })
 }
 
-const buildHitsPerPage = (hitsPerPage: SearchState['hitsPerPage']) =>
+const buildHitsPerPage = (hitsPerPage: PartialSearchState['hitsPerPage']) =>
   hitsPerPage ? { hitsPerPage } : null
 
 const buildGeolocationParameter = (
-  locationFilter: SearchState['locationFilter'],
+  locationFilter: PartialSearchState['locationFilter'],
   userLocation: GeoCoordinates | null
 ): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
   if (locationFilter.locationType === LocationType.VENUE) return

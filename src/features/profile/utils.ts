@@ -1,5 +1,3 @@
-import _ from 'lodash'
-
 import { UserProfileResponse, DomainsCredit, UserRole } from 'api/gen/api'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit } from 'features/home/services/useAvailableCredit'

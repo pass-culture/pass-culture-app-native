@@ -37,3 +37,5 @@ export interface SearchState {
   tags: string[]
   query: string
 }
+
+export type PartialSearchState = Omit<SearchState, 'showResults'>

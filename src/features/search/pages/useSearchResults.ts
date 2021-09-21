@@ -1,10 +1,11 @@
 import { SearchResponse } from '@algolia/client-search'
 import flatten from 'lodash.flatten'
+import omit from 'lodash.omit'
 import { useMemo } from 'react'
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/utils'
-import { SearchState } from 'features/search/types'
+import { PartialSearchState } from 'features/search/types'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
@@ -19,7 +20,7 @@ import { useSearch, useStagedSearch } from './SearchWrapper'
 
 export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
 
-const useSearchInfiniteQuery = (searchState: SearchState) => {
+const useSearchInfiniteQuery = (searchState: PartialSearchState) => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const { position } = useGeolocation()
   const algoliaBackend = useAlgoliaQuery()
@@ -33,7 +34,7 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
 
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, searchState],
-    async (context: QueryFunctionContext<[string, SearchState], number>) => {
+    async (context: QueryFunctionContext<[string, PartialSearchState], number>) => {
       const page = context.pageParam || 0
       const searchState = context.queryKey[1]
       const newSearchState = {
@@ -66,10 +67,10 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
 
 export const useStagedSearchResults = () => {
   const { searchState } = useStagedSearch()
-  return useSearchInfiniteQuery(searchState)
+  return useSearchInfiniteQuery(omit(searchState, ['showResults']) as PartialSearchState)
 }
 
 export const useSearchResults = () => {
   const { searchState } = useSearch()
-  return useSearchInfiniteQuery(searchState)
+  return useSearchInfiniteQuery(omit(searchState, ['showResults']) as PartialSearchState)
 }

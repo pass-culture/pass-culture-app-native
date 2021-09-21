@@ -1,4 +1,4 @@
-import { SearchState } from 'features/search/types'
+import { PartialSearchState } from 'features/search/types'
 
 /**
  * See Algolia doc on numericFilters and facetFilters
@@ -7,6 +7,6 @@ import { SearchState } from 'features/search/types'
  */
 export type FiltersArray = string[][]
 
-export interface SearchParametersQuery extends SearchState {
+export interface SearchParametersQuery extends PartialSearchState {
   page: number
 }

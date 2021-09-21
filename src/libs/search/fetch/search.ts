@@ -3,7 +3,7 @@ import { flatten } from 'lodash'
 
 import { OptionalCategoryCriteria } from 'features/search/enums'
 import { Response } from 'features/search/pages/useSearchResults'
-import { SearchState } from 'features/search/types'
+import { PartialSearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SearchHit, VenueHit } from 'libs/search'
@@ -47,7 +47,7 @@ export const fetchObjects = async (
 }
 
 export const fetchMultipleHits = async (
-  paramsList: SearchState[],
+  paramsList: PartialSearchState[],
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean
 ): Promise<SearchResponse> => {
@@ -84,11 +84,10 @@ export const fetchHits = async (
 }
 
 export const fetchVenueOffers = async (
-  params: SearchState,
+  params: PartialSearchState,
   isUserUnderage: boolean
 ): Promise<SearchResponse> => {
   const options = buildQueryOptions(params, null, isUserUnderage) // no need of geolocation to get venues, yet?
-
   const response = await offersClient.search<AppSearchFields>('', options)
   const { meta } = response.info
 
