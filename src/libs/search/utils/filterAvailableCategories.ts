@@ -4,8 +4,8 @@ export const filterAvailableCategories = (
   selectedCategories: string[],
   availableCategories: OptionalCategoryCriteria
 ): string[] => {
-  return Object.values(availableCategories)
-    .filter((categoryCriterion) => selectedCategories.includes(categoryCriterion.label))
-    .map((categoryCriterion) => categoryCriterion.facetFilter)
+  const availableFilters = Object.values(availableCategories).map(({ facetFilter }) => facetFilter)
+  return availableFilters
+    .filter((facetFilter) => selectedCategories.includes(facetFilter))
     .sort((a: string, b: string) => a.localeCompare(b))
 }

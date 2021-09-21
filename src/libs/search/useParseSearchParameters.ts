@@ -6,16 +6,17 @@ import { SearchState } from 'features/search/types'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { useGeolocation } from 'libs/geolocation'
 import { parseSearchParameters } from 'libs/search/parseSearchParameters'
-import { filterAvailableCategories } from 'libs/search/utils/filterAvailableCategories'
+import { filterAvailableCategories, getCategoriesFacetFilters } from 'libs/search/utils'
 
 const buildNewSearchParameters = (
   params: SearchParametersFields,
   availableCategories: OptionalCategoryCriteria
 ): SearchParametersFields => {
-  return {
-    ...params,
-    categories: filterAvailableCategories(params.categories || [], availableCategories),
-  }
+  const { categories: categoryLabels = [], ...otherParams } = params
+  // We receive category labels from contentful. We first have to map to facetFilters used for search
+  const facetFilters = categoryLabels.map(getCategoriesFacetFilters)
+  const categories = filterAvailableCategories(facetFilters, availableCategories)
+  return { ...otherParams, categories }
 }
 
 export const useParseSearchParameters = () => {
