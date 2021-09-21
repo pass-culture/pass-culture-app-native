@@ -49,6 +49,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
   const favoritesState = useFavoritesState()
   const { position } = useGeolocation()
   const { data, isLoading } = useFavorites()
+
   const sortedFavorites = useMemo(() => {
     if (!data) {
       return undefined
@@ -68,9 +69,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
 
   const renderItem = useCallback(
     ({ item: favorite }: { item: FavoriteResponse }) => {
-      if (!user || !credit) {
-        return <HitPlaceholder />
-      }
+      if (!user || !credit) return <HitPlaceholder />
       return (
         <Favorite credit={credit} favorite={favorite} user={user} onInAppBooking={setOfferToBook} />
       )
@@ -84,8 +83,8 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
   )
   const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
   const ListFooterComponent = useMemo(
-    () => <Footer hasFavorites={sortedFavorites ? sortedFavorites.length > 0 : false} />,
-    [sortedFavorites]
+    () => (sortedFavorites?.length ? <Spacer.Column numberOfSpaces={52} /> : null),
+    [sortedFavorites?.length]
   )
 
   if (isLoading || !data) return <FavoritesResultsPlaceHolder />
@@ -131,10 +130,6 @@ const contentContainerStyle = {
 }
 const Container = styled.View({ height: '100%' })
 
-const Footer = styled.View<{ hasFavorites?: boolean }>(({ hasFavorites = false }) => ({
-  height: hasFavorites ? getSpacing(52) : 0,
-}))
-
 const Separator = styled.View({
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
@@ -155,7 +150,6 @@ const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => (
 const FavoritesResultsPlaceHolder = () => {
   const renderItem = useCallback(() => <HitPlaceholder />, [])
   const ListHeaderComponent = useMemo(() => <NumberOfResultsPlaceholder />, [])
-  const ListFooterComponent = useMemo(() => <Footer />, [])
 
   return (
     <React.Fragment>
@@ -166,7 +160,6 @@ const FavoritesResultsPlaceHolder = () => {
           contentContainerStyle={contentContainerStyle}
           ListHeaderComponent={ListHeaderComponent}
           ItemSeparatorComponent={Separator}
-          ListFooterComponent={ListFooterComponent}
           scrollEnabled={false}
         />
       </Container>

@@ -81,7 +81,6 @@ exports[`Favorites component should render correctly 1`] = `
           "withComponent": [Function],
         }
       }
-      ListFooterComponent={<Styled(View) />}
       ListHeaderComponent={<NumberOfResultsPlaceholder />}
       contentContainerStyle={
         Object {
@@ -3883,19 +3882,6 @@ exports[`Favorites component should render correctly 1`] = `
             }
           }
         />
-        <View
-          onLayout={[Function]}
-        >
-          <View
-            style={
-              Array [
-                Object {
-                  "height": 0,
-                },
-              ]
-            }
-          />
-        </View>
       </View>
     </RCTScrollView>
   </View>
