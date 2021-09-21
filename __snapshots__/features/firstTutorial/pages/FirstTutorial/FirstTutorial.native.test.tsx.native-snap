@@ -269,6 +269,7 @@ Array [
                           "color": "#151515",
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
+                          "fontWeight": "800",
                           "lineHeight": 34,
                         },
                         Object {
@@ -492,6 +493,7 @@ Array [
                           "color": "#151515",
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
+                          "fontWeight": "800",
                           "lineHeight": 34,
                         },
                         Object {
@@ -670,6 +672,7 @@ Array [
                           "color": "#151515",
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
+                          "fontWeight": "800",
                           "lineHeight": 34,
                         },
                         Object {
@@ -848,6 +851,7 @@ Array [
                           "color": "#151515",
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
+                          "fontWeight": "800",
                           "lineHeight": 34,
                         },
                         Object {
