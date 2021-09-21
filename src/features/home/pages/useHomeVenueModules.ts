@@ -41,6 +41,7 @@ export const useHomeVenueModules = (
 
   queries.forEach((query) => {
     if (!query.isSuccess) return
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const data = query.data as any
 
     homeVenuesModules[data.moduleId] = {
