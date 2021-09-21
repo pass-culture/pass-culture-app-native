@@ -74,5 +74,18 @@ exports[`VenueCaption component should render correctly 1`] = `
       Musée
     </Text>
   </View>
+  <Text
+    color="#626262"
+    style={
+      Array [
+        Object {
+          "color": "#626262",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+  />
 </View>
 `;

@@ -10,6 +10,7 @@ import { BorderRadiusEnum, LENGTH_S } from 'ui/theme/grid'
 interface VenueTileProps {
   name: string
   venueType: VenueTypeCode
+  distance?: string
 }
 
 const imageHeight = LENGTH_S
@@ -19,13 +20,13 @@ const uri =
   'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA'
 
 export const VenueTile = (props: VenueTileProps) => {
-  const { name, venueType } = props
+  const { name, venueType, distance } = props
   return (
     <Container>
       <TouchableHighlight imageHeight={imageHeight} imageWidth={imageWidth}>
         <ImageTile imageWidth={imageWidth} imageHeight={imageHeight} uri={uri} />
       </TouchableHighlight>
-      <VenueCaption imageWidth={imageWidth} name={name} venueType={venueType} />
+      <VenueCaption imageWidth={imageWidth} name={name} venueType={venueType} distance={distance} />
     </Container>
   )
 }

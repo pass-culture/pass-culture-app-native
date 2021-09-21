@@ -351,6 +351,21 @@ Array [
                 Salle de projections
               </Text>
             </View>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              900+ km
+            </Text>
           </View>
         </View>
         <View
@@ -517,6 +532,21 @@ Array [
                 Salle de projections
               </Text>
             </View>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              900+ km
+            </Text>
           </View>
         </View>
         <View
@@ -683,6 +713,21 @@ Array [
                 Salle de projections
               </Text>
             </View>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              900+ km
+            </Text>
           </View>
         </View>
         <View
@@ -849,6 +894,21 @@ Array [
                 Salle de projections
               </Text>
             </View>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              900+ km
+            </Text>
           </View>
         </View>
       </View>
