@@ -82,7 +82,10 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const onPressSeeMore = useCallback(() => {
     analytics.logClickSeeMore(moduleName)
-    const tabNavigateConfig = getTabNavigateConfig('Search', parseSearchParameters(parameters))
+    // When we navigate to the search page, we want to show 20 results per page,
+    // not what is configured in contentful
+    const params = { ...parseSearchParameters(parameters), hitsPerPage: 20 }
+    const tabNavigateConfig = getTabNavigateConfig('Search', params)
     navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
   }, [])
 
