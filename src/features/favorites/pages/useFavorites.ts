@@ -142,13 +142,16 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
   })
 }
 
+// arbitrary. We have to make sure we invalidate the cache when adding/removing favorites. See above
+const STALE_TIME_FAVORITES = 5 * 60 * 1000
+
 export function useFavorites() {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<PaginatedFavoritesResponse>(
     QueryKeys.FAVORITES,
     () => api.getnativev1mefavorites(),
-    { enabled: isLoggedIn }
+    { enabled: isLoggedIn, staleTime: STALE_TIME_FAVORITES }
   )
 }
 
