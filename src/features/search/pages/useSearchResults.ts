@@ -14,7 +14,7 @@ import { useAlgoliaQuery } from 'libs/search/fetch/useAlgoliaQuery'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 import { useSearchQuery } from 'libs/search/fetch/useSearchQuery'
 import { useSendAdditionalRequestToAppSearch } from 'libs/search/useSendAdditionalRequestToAppSearch'
-import { filterAvailableCategories } from 'libs/search/utils/filterAvailableCategories'
+import { filterAvailableCategories } from 'libs/search/utils'
 
 import { useSearch, useStagedSearch } from './SearchWrapper'
 

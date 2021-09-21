@@ -1,6 +1,6 @@
 import { CategoryNameEnum } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { filterAvailableCategories } from 'libs/search/utils/filterAvailableCategories'
+import { filterAvailableCategories } from 'libs/search/utils'
 
 describe('filterAvailableCategories', () => {
   it('should sort the categories to reuse cached query', () => {
