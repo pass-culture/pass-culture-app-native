@@ -7,242 +7,371 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        style="flex: 1;"
       >
         <div
           class="css-view-1dbjc4n"
-          style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;"
+          style="flex: 1;"
         >
           <div
             class="css-view-1dbjc4n"
+            style="flex: 1;"
           >
             <div
-              class="css-text-901oao"
-              dir="auto"
-            >
-              undefined-SVG-Mock
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-            >
-              <div
-                class="css-text-901oao"
-                dir="auto"
-              >
-                undefined-SVG-Mock
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-          />
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; flex-basis: 0px; flex-grow: 1.5; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px; width: 100%;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px;"
-          >
-            <div
-              class="css-text-901oao"
-              dir="auto"
-              style="text-align: center;"
-            >
-              <span
-                class="css-text-901oao css-textHasAncestor-16my406"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-MediumItalic; font-size: 24px; line-height: 28px;"
-              >
-                Mise à jour de l'application
-              </span>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="flex-direction: row;"
+              class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+              style="bottom: 0px; display: flex; left: 0px; position: absolute; right: 0px; top: 0px;"
             >
               <div
                 class="css-view-1dbjc4n"
-                style="max-width: 352px;"
+                style="opacity: 1;"
+              />
+              <div
+                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px;"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="text-align: center;"
+                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                  style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px;"
+                />
+                <div
+                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                  id="animatedComponent"
+                  style="flex: 1;"
                 >
-                  <span
-                    class="css-text-901oao css-textHasAncestor-16my406"
-                    style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  <div
+                    class="css-view-1dbjc4n"
+                    id="animatedComponent"
+                    style="flex: 1;"
                   >
-                    Le pass Culture ne semble plus à jour sur ton téléphone !
-Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
-                  </span>
+                    <div
+                      class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                      style="background-color: rgba(0, 0, 0, 0); flex: 1; min-height: 100%;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="flex: 1; flex-direction: column-reverse;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex: 1;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: -1;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                              >
+                                <div
+                                  class="css-text-901oao"
+                                  dir="auto"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                              />
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                >
+                                  <div
+                                    class="css-text-901oao"
+                                    dir="auto"
+                                  >
+                                    undefined-SVG-Mock
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                              />
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1.5; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px; width: 100%;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px;"
+                              >
+                                <div
+                                  class="css-text-901oao"
+                                  dir="auto"
+                                  style="text-align: center;"
+                                >
+                                  <span
+                                    class="css-text-901oao css-textHasAncestor-16my406"
+                                    style="color: rgb(255, 255, 255); font-family: Montserrat-MediumItalic; font-size: 22px; line-height: 28px;"
+                                  >
+                                    Mise à jour de l'application
+                                  </span>
+                                </div>
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="flex-direction: row;"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="max-width: 352px;"
+                                  >
+                                    <div
+                                      class="css-text-901oao"
+                                      dir="auto"
+                                      style="text-align: center;"
+                                    >
+                                      <span
+                                        class="css-text-901oao css-textHasAncestor-16my406"
+                                        style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                                      >
+                                        Le pass Culture de ton navigateur ne semble plus à jour !
+Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible.
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="align-items: center; flex-basis: 0px; flex-grow: 0.5; flex-shrink: 1; width: 100%;"
+                              >
+                                <div
+                                  aria-label="Actualiser la page"
+                                  class="css-view-1dbjc4n"
+                                  data-testid="Actualiser la page"
+                                  style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                                  tabindex="0"
+                                >
+                                  <div
+                                    class="css-text-901oao css-textOneLine-vcwn7f"
+                                    dir="auto"
+                                    style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+                                  >
+                                    Actualiser la page
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="height: 8px;"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                          id="animatedComponent"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 0.5; flex-shrink: 1; width: 100%;"
-          >
-            <div
-              aria-label="Télécharger la dernière version"
-              class="css-view-1dbjc4n"
-              data-focusable="true"
-              data-testid="Télécharger la dernière version"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-              tabindex="0"
-            >
-              <div
-                class="css-text-901oao css-textOneLine-bfa6kz"
-                dir="auto"
-                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
-              >
-                Télécharger la dernière version
-              </div>
-            </div>
-          </div>
         </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
-        />
       </div>
     </div>
+    <div
+      style="position: fixed; left: 0px; top: 0px; width: 0px; height: 0px; z-index: -1; overflow: hidden; visibility: hidden; transition-duration: 0.05s; transition-property: padding; transition-delay: 0s;"
+    />
   </body>,
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      style="flex: 1;"
     >
       <div
         class="css-view-1dbjc4n"
-        style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;"
+        style="flex: 1;"
       >
         <div
           class="css-view-1dbjc4n"
+          style="flex: 1;"
         >
           <div
-            class="css-text-901oao"
-            dir="auto"
-          >
-            undefined-SVG-Mock
-          </div>
-        </div>
-      </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-        />
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-          >
-            <div
-              class="css-text-901oao"
-              dir="auto"
-            >
-              undefined-SVG-Mock
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-        />
-      </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; flex-basis: 0px; flex-grow: 1.5; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px; width: 100%;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px;"
-        >
-          <div
-            class="css-text-901oao"
-            dir="auto"
-            style="text-align: center;"
-          >
-            <span
-              class="css-text-901oao css-textHasAncestor-16my406"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-MediumItalic; font-size: 24px; line-height: 28px;"
-            >
-              Mise à jour de l'application
-            </span>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-direction: row;"
+            class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+            style="bottom: 0px; display: flex; left: 0px; position: absolute; right: 0px; top: 0px;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="max-width: 352px;"
+              style="opacity: 1;"
+            />
+            <div
+              class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+              style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px;"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
-                style="text-align: center;"
+                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px;"
+              />
+              <div
+                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                id="animatedComponent"
+                style="flex: 1;"
               >
-                <span
-                  class="css-text-901oao css-textHasAncestor-16my406"
-                  style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                <div
+                  class="css-view-1dbjc4n"
+                  id="animatedComponent"
+                  style="flex: 1;"
                 >
-                  Le pass Culture ne semble plus à jour sur ton téléphone !
-Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
-                </span>
+                  <div
+                    class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                    style="background-color: rgba(0, 0, 0, 0); flex: 1; min-height: 100%;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex: 1; flex-direction: column-reverse;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="flex: 1;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: -1;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                              >
+                                undefined-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                              >
+                                <div
+                                  class="css-text-901oao"
+                                  dir="auto"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            />
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1.5; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px; width: 100%;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: space-evenly; padding-right: 16px; padding-left: 16px;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="text-align: center;"
+                              >
+                                <span
+                                  class="css-text-901oao css-textHasAncestor-16my406"
+                                  style="color: rgb(255, 255, 255); font-family: Montserrat-MediumItalic; font-size: 22px; line-height: 28px;"
+                                >
+                                  Mise à jour de l'application
+                                </span>
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="flex-direction: row;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="max-width: 352px;"
+                                >
+                                  <div
+                                    class="css-text-901oao"
+                                    dir="auto"
+                                    style="text-align: center;"
+                                  >
+                                    <span
+                                      class="css-text-901oao css-textHasAncestor-16my406"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                                    >
+                                      Le pass Culture de ton navigateur ne semble plus à jour !
+Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible.
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 0.5; flex-shrink: 1; width: 100%;"
+                            >
+                              <div
+                                aria-label="Actualiser la page"
+                                class="css-view-1dbjc4n"
+                                data-testid="Actualiser la page"
+                                style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                                tabindex="0"
+                              >
+                                <div
+                                  class="css-text-901oao css-textOneLine-vcwn7f"
+                                  dir="auto"
+                                  style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+                                >
+                                  Actualiser la page
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="height: 8px;"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                        id="animatedComponent"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 0.5; flex-shrink: 1; width: 100%;"
-        >
-          <div
-            aria-label="Télécharger la dernière version"
-            class="css-view-1dbjc4n"
-            data-focusable="true"
-            data-testid="Télécharger la dernière version"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
-          >
-            <div
-              class="css-text-901oao css-textOneLine-bfa6kz"
-              dir="auto"
-              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: -100px;"
-            >
-              Télécharger la dernière version
-            </div>
-          </div>
-        </div>
       </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="height: 8px;"
-      />
     </div>
   </div>,
   "debug": [Function],
