@@ -5,12 +5,20 @@ import { AlgoliaHit } from 'libs/algolia'
 import { AppSearchFields, TRUE } from 'libs/search/filters/constants'
 import { SuggestedVenue } from 'libs/venue'
 
+const parseArray = (
+  searchHit: ResultItem<AppSearchFields>,
+  field: AppSearchFields
+): Array<string> => {
+  const raw = searchHit.getRaw(field)
+  return Array.isArray(raw) ? raw : []
+}
+
 // TODO(antoinewg) We need this function temporarily but delete when we migrate completely to App Search
 export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): AlgoliaHit => {
-  const dates = (searchHit.getRaw(AppSearchFields.dates) as string[]).map(
+  const dates = parseArray(searchHit, AppSearchFields.dates).map(
     (ts: string) => new Date(ts).getTime() / 1000
   )
-  const prices = (searchHit.getRaw(AppSearchFields.prices) as string[]).map((p: string) => +p / 100)
+  const prices = parseArray(searchHit, AppSearchFields.prices).map((p: string) => +p / 100)
   const geoloc = searchHit.getRaw(AppSearchFields.venue_position) as string
   const [lat, lng] = (geoloc || ',').split(',')
 
