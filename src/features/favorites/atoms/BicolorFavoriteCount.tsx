@@ -24,23 +24,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
 }) => {
   const { isLoggedIn } = useAuthContext()
   const { data } = useFavorites()
-  const scaleAnimation = useRef(new Animated.Value(1))
-  useEffect(() => {
-    if (data?.nbFavorites) {
-      Animated.sequence([
-        Animated.timing(scaleAnimation.current, {
-          toValue: 1.2,
-          duration: 200,
-          useNativeDriver: false,
-        }),
-        Animated.timing(scaleAnimation.current, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: false,
-        }),
-      ]).start()
-    }
-  }, [data?.nbFavorites])
+  const scale = useScaleFavoritesAnimation(data?.nbFavorites)
 
   if (!isLoggedIn || !data) {
     return <BicolorFavorite size={size} color={color} color2={color2} thin={thin} testID={testID} />
@@ -56,7 +40,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
         testID={testID}
       />
       <CountPositionContainer>
-        <Animated.View style={{ transform: [{ scale: scaleAnimation.current }] }}>
+        <Animated.View style={{ transform: [{ scale }] }}>
           <CountContainer>
             <Pastille color={thin ? ColorsEnum.GREY_DARK : undefined} />
             {hasTooMany ? (
@@ -109,3 +93,26 @@ const Count = styled(Typo.Caption).attrs({
   paddingRight,
   bottom: 1,
 }))
+
+const useScaleFavoritesAnimation = (nbFavorites?: number) => {
+  const scaleAnimation = useRef(new Animated.Value(1))
+
+  useEffect(() => {
+    if (typeof nbFavorites === 'number') {
+      Animated.sequence([
+        Animated.timing(scaleAnimation.current, {
+          toValue: 1.2,
+          duration: 200,
+          useNativeDriver: false,
+        }),
+        Animated.timing(scaleAnimation.current, {
+          toValue: 1,
+          duration: 200,
+          useNativeDriver: false,
+        }),
+      ]).start()
+    }
+  }, [nbFavorites])
+
+  return scaleAnimation.current
+}

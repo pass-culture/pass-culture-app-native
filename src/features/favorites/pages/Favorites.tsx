@@ -1,32 +1,18 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesResults } from 'features/favorites/components/FavoritesResults'
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
-import { useFavorites } from 'features/favorites/pages/useFavorites'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 
-const useFetchResults = () => {
-  const { refetch, dataUpdatedAt, isFetching } = useFavorites()
-
-  function refetchDebounce() {
-    const debounceDelayMs = 100
-    const isOldData = new Date().getTime() - dataUpdatedAt > debounceDelayMs
-    if (isOldData && !isFetching) {
-      refetch()
-    }
-  }
-
-  useFocusEffect(refetchDebounce)
-}
-
-export const FavoritesScreen: React.FC = () => {
+export const Favorites: React.FC = () => {
   useKeyboardAdjust()
-  useFetchResults()
+  const { isLoggedIn } = useAuthContext()
+
+  if (!isLoggedIn) return <NotConnectedFavorites />
 
   return (
     <Container>
@@ -34,14 +20,6 @@ export const FavoritesScreen: React.FC = () => {
       <FavoritesResults />
     </Container>
   )
-}
-
-export const Favorites: React.FC = () => {
-  const { isLoggedIn } = useAuthContext()
-  if (!isLoggedIn) {
-    return <NotConnectedFavorites />
-  }
-  return <FavoritesScreen />
 }
 
 const Container = styled.View({ flex: 1 })
