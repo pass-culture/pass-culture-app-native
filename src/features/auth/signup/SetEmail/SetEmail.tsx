@@ -107,13 +107,11 @@ export const SetEmail: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={4} />
           <StyledCheckBox>
             <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
-            <CheckBoxText>
-              <TouchableOpacity
-                onPress={() => setIsNewsletterChecked(!isNewsletterChecked)}
-                {...testID(IS_NEWSLETTER_CHECKBOX_LABEL)}>
-                {IS_NEWSLETTER_CHECKBOX_LABEL}
-              </TouchableOpacity>
-            </CheckBoxText>
+            <TouchableOpacity
+              onPress={() => setIsNewsletterChecked(!isNewsletterChecked)}
+              {...testID(IS_NEWSLETTER_CHECKBOX_LABEL)}>
+              <CheckBoxText>{IS_NEWSLETTER_CHECKBOX_LABEL}</CheckBoxText>
+            </TouchableOpacity>
           </StyledCheckBox>
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
