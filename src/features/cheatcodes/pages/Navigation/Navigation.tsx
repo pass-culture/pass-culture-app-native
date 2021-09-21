@@ -7,6 +7,8 @@ import styled from 'styled-components/native'
 
 import { BeneficiaryValidationStep } from 'api/gen'
 import { useSignIn } from 'features/auth/api'
+import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
+import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -18,8 +20,6 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
-
-import { CheatCodesButton } from '../../components/CheatCodesButton'
 
 const BadDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + '/unknown'
 const LoginDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + '/login'
@@ -33,6 +33,7 @@ export function Navigation(): JSX.Element {
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
   const { showErrorSnackBar } = useSnackBarContext()
   const signIn = useSignIn()
+  const venueId = useSomeVenueId()
 
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
     QueryKeys.ERROR_ASYNC,
@@ -196,7 +197,7 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title="Venue"
-            onPress={() => navigation.navigate('Venue', { id: 283 })}
+            onPress={() => navigation.navigate('Venue', { id: venueId })}
           />
         </Row>
         <Row>
