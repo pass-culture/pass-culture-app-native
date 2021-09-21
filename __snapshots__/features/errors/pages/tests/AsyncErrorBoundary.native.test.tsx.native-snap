@@ -113,6 +113,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
           "color": "#ffffff",
           "fontFamily": "Montserrat-ExtraBoldItalic",
           "fontSize": 28,
+          "fontWeight": "800",
           "lineHeight": 34,
         },
       ]

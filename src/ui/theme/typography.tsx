@@ -34,6 +34,7 @@ const StyledTitle1 = styled(ColoredText)<{ fontSize: number }>((props) => ({
   fontFamily: 'Montserrat-ExtraBoldItalic',
   fontSize: props.fontSize,
   lineHeight: getSpacingString(8.5),
+  fontWeight: 800,
 }))
 
 const Title2: React.FC<TextProps> = (props) => {
