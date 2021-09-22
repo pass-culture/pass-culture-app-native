@@ -9,6 +9,7 @@ import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
+import { testID } from 'tests/utils'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
@@ -81,7 +82,10 @@ export const OfferTile = (props: OfferTileProps) => {
 
   return (
     <Container>
-      <TouchableHighlight imageHeight={imageHeight} onPress={handlePressOffer} testID="offerTile">
+      <TouchableHighlight
+        imageHeight={imageHeight}
+        onPress={handlePressOffer}
+        {...testID('offerTile')}>
         <View>
           <ImageTile
             imageWidth={imageWidth}

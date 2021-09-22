@@ -27,6 +27,7 @@ export const VenuesModule = (props: VenuesModuleProps) => {
         name={item.name}
         venueType={item.venueType}
         distance={formatDistance(item.position, userPosition)}
+        description={item.description}
       />
     )
   }, [])
