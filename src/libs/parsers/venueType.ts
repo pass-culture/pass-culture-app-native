@@ -23,34 +23,34 @@ import {
   VisualArtIcon,
 } from 'ui/svg/icons/venueTypes'
 
-// Map the facetFilter (in algolia) to the label displayed in the front
-const MAP_TYPE_TO_LABEL: { [k in VenueTypeCode]: string } = {
-  ARTISTIC_COURSE: t`Cours et pratique artistiques`,
-  BOOKSTORE: t`Bibliothèque ou médiathèque`,
-  CONCERT_HALL: t`Musique - Salle de concerts`,
-  CREATIVE_ARTS_STORE: t`Magasin arts créatifs`,
-  CULTURAL_CENTRE: t`Centre culturel`,
-  DIGITAL: t`Offre numérique`,
-  FESTIVAL: t`Festival`,
-  GAMES: t`Jeux / Jeux vidéos`,
-  LIBRARY: t`Librairie`,
-  MUSEUM: t`Musée`,
-  MUSICAL_INSTRUMENT_STORE: t`Musique - Magasin d’instruments`,
-  MOVIE: t`Cinéma - Salle de projections`,
-  OTHER: t`Autre type de lieu`,
-  PATRIMONY_TOURISM: t`Patrimoine et tourisme`,
-  PERFORMING_ARTS: t`Spectacle vivant`,
-  RECORD_STORE: t`Musique - Disquaire`,
-  SCIENTIFIC_CULTURE: t`Culture scientifique`,
-  VISUAL_ARTS: t`Arts visuels, arts plastiques et galeries`,
+// Map the facetFilter (in search backend) to the label displayed in the front
+export const MAP_VENUE_TYPE_TO_LABEL: { [k in VenueTypeCode]: string } = {
+  [VenueTypeCode.ARTISTICCOURSE]: t`Cours et pratique artistiques`,
+  [VenueTypeCode.BOOKSTORE]: t`Bibliothèque ou médiathèque`,
+  [VenueTypeCode.CONCERTHALL]: t`Musique - Salle de concerts`,
+  [VenueTypeCode.CREATIVEARTSSTORE]: t`Magasin arts créatifs`,
+  [VenueTypeCode.CULTURALCENTRE]: t`Centre culturel`,
+  [VenueTypeCode.DIGITAL]: t`Offre numérique`,
+  [VenueTypeCode.FESTIVAL]: t`Festival`,
+  [VenueTypeCode.GAMES]: t`Jeux / Jeux vidéos`,
+  [VenueTypeCode.LIBRARY]: t`Librairie`,
+  [VenueTypeCode.MUSEUM]: t`Musée`,
+  [VenueTypeCode.MUSICALINSTRUMENTSTORE]: t`Musique - Magasin d’instruments`,
+  [VenueTypeCode.MOVIE]: t`Cinéma - Salle de projections`,
+  [VenueTypeCode.OTHER]: t`Autre type de lieu`,
+  [VenueTypeCode.PATRIMONYTOURISM]: t`Patrimoine et tourisme`,
+  [VenueTypeCode.PERFORMINGARTS]: t`Spectacle vivant`,
+  [VenueTypeCode.RECORDSTORE]: t`Musique - Disquaire`,
+  [VenueTypeCode.SCIENTIFICCULTURE]: t`Culture scientifique`,
+  [VenueTypeCode.VISUALARTS]: t`Arts visuels, arts plastiques et galeries`,
 }
 
 export const parseType = (types: VenueTypeCode | null | undefined): string => {
-  if (types && types in MAP_TYPE_TO_LABEL) return MAP_TYPE_TO_LABEL[types]
-  return MAP_TYPE_TO_LABEL.OTHER
+  if (types && types in MAP_VENUE_TYPE_TO_LABEL) return MAP_VENUE_TYPE_TO_LABEL[types]
+  return MAP_VENUE_TYPE_TO_LABEL.OTHER
 }
 
-// Map the facetFilter (in algolia) to the label displayed for home page in the front
+// Map the facetFilter (in search backend) to the label displayed for home page in the front
 const MAP_TYPE_TO_HOME_LABEL: { [k in VenueTypeCode]: string } = {
   ARTISTIC_COURSE: t`Pratique artistiques`,
   BOOKSTORE: t`Bibliothèque / médiathèque`,
@@ -77,7 +77,7 @@ export const parseTypeHomeLabel = (types: VenueTypeCode | null | undefined): str
   return MAP_TYPE_TO_HOME_LABEL.OTHER
 }
 
-// Map the facetFilter (in algolia) to the category Icon
+// Map the facetFilter (in search backend) to the category Icon
 export const MAP_TYPE_TO_ICON: {
   [k in VenueTypeCode]: React.FC<IconInterface>
 } = {
