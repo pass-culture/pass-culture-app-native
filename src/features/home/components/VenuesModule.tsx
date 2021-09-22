@@ -19,6 +19,7 @@ const keyExtractor = (item: VenueHit) => item.id
 
 export const VenuesModule = (props: VenuesModuleProps) => {
   const { hits, display, userPosition } = props
+
   const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
     return (
       <VenueTile
