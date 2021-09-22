@@ -81,10 +81,10 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: CategoryIcon.Streaming,
     facetFilter: CategoryIdEnum.FILM,
   },
-  [CategoryIdEnum.PRESSE]: {
+  [CategoryIdEnum.MEDIA]: {
     label: 'Presse',
     icon: CategoryIcon.Presse,
-    facetFilter: CategoryIdEnum.PRESSE,
+    facetFilter: CategoryIdEnum.MEDIA,
   },
   [CategoryIdEnum.JEUXVIDEO]: {
     label: 'Jeux vidéos',

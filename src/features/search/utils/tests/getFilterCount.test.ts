@@ -16,7 +16,7 @@ const venueId = 5959
 const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } }
 
 const sevenFilters = {
-  offerCategories: ['CINEMA', 'PRESSE'], // 2
+  offerCategories: ['CINEMA', 'MEDIA'], // 2
   offerTypes: twoOfferTypes, // 2
   offerIsNew: true, // 1
   timeRange, // 1
@@ -25,25 +25,25 @@ const sevenFilters = {
 
 describe('getFilterCount', () => {
   it.each`
-    section                          | partialSearchState                           | expected
-    ${'initial state'}               | ${{}}                                        | ${0}
-    ${'offerIsNew'}                  | ${{ offerIsNew: true }}                      | ${1}
-    ${'offerIsDuo'}                  | ${{ offerIsDuo: true }}                      | ${1}
-    ${'offerIsNew'}                  | ${{ offerIsNew: true }}                      | ${1}
-    ${'offerIsNew + offerIsDuo'}     | ${{ offerIsNew: true, offerIsDuo: true }}    | ${2}
-    ${'date'}                        | ${{ date }}                                  | ${1}
-    ${'timeRange'}                   | ${{ timeRange }}                             | ${1}
-    ${'offerCategories - 0'}         | ${{ offerCategories: [] }}                   | ${0}
-    ${'offerCategories - 1'}         | ${{ offerCategories: ['CINEMA'] }}           | ${1}
-    ${'offerCategories - 2'}         | ${{ offerCategories: ['CINEMA', 'PRESSE'] }} | ${2}
-    ${'priceRange - default'}        | ${{ priceRange: [0, MAX_PRICE] }}            | ${0}
-    ${'priceRange - [1, MAX_PRICE]'} | ${{ priceRange: [1, MAX_PRICE] }}            | ${1}
-    ${'priceRange - [0, 30]'}        | ${{ priceRange: [1, 30] }}                   | ${1}
-    ${'offerTypes - 0'}              | ${{ offerTypes: zeroOfferType }}             | ${0}
-    ${'offerTypes - 1'}              | ${{ offerTypes: oneOfferType }}              | ${1}
-    ${'offerTypes - 2'}              | ${{ offerTypes: twoOfferTypes }}             | ${2}
-    ${'offerTypes - 3'}              | ${{ offerTypes: threeOfferTypes }}           | ${3}
-    ${'sevenFilters'}                | ${sevenFilters}                              | ${7}
+    section                          | partialSearchState                          | expected
+    ${'initial state'}               | ${{}}                                       | ${0}
+    ${'offerIsNew'}                  | ${{ offerIsNew: true }}                     | ${1}
+    ${'offerIsDuo'}                  | ${{ offerIsDuo: true }}                     | ${1}
+    ${'offerIsNew'}                  | ${{ offerIsNew: true }}                     | ${1}
+    ${'offerIsNew + offerIsDuo'}     | ${{ offerIsNew: true, offerIsDuo: true }}   | ${2}
+    ${'date'}                        | ${{ date }}                                 | ${1}
+    ${'timeRange'}                   | ${{ timeRange }}                            | ${1}
+    ${'offerCategories - 0'}         | ${{ offerCategories: [] }}                  | ${0}
+    ${'offerCategories - 1'}         | ${{ offerCategories: ['CINEMA'] }}          | ${1}
+    ${'offerCategories - 2'}         | ${{ offerCategories: ['CINEMA', 'MEDIA'] }} | ${2}
+    ${'priceRange - default'}        | ${{ priceRange: [0, MAX_PRICE] }}           | ${0}
+    ${'priceRange - [1, MAX_PRICE]'} | ${{ priceRange: [1, MAX_PRICE] }}           | ${1}
+    ${'priceRange - [0, 30]'}        | ${{ priceRange: [1, 30] }}                  | ${1}
+    ${'offerTypes - 0'}              | ${{ offerTypes: zeroOfferType }}            | ${0}
+    ${'offerTypes - 1'}              | ${{ offerTypes: oneOfferType }}             | ${1}
+    ${'offerTypes - 2'}              | ${{ offerTypes: twoOfferTypes }}            | ${2}
+    ${'offerTypes - 3'}              | ${{ offerTypes: threeOfferTypes }}          | ${3}
+    ${'sevenFilters'}                | ${sevenFilters}                             | ${7}
   `(
     'should return the correct number of activated filters | $section',
     ({ partialSearchState, expected }) => {

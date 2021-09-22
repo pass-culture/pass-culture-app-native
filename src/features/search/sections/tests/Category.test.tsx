@@ -44,7 +44,7 @@ describe('Category component', () => {
     expect(render(<Category />).queryByText('Catégories\xa0(')).toBeFalsy()
     mockSearchState = { ...initialSearchState, offerCategories: ['CINEMA'] }
     expect(render(<Category />).queryByText('Catégories\xa0(1)')).toBeTruthy()
-    mockSearchState = { ...initialSearchState, offerCategories: ['CINEMA', 'PRESSE'] }
+    mockSearchState = { ...initialSearchState, offerCategories: ['CINEMA', 'MEDIA'] }
     expect(render(<Category />).queryByText('Catégories\xa0(2)')).toBeTruthy()
   })
 })

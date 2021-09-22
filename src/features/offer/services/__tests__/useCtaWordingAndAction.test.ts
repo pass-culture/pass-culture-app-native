@@ -212,8 +212,8 @@ describe('getCtaWordingAndAction', () => {
     // same as beneficiaries except for video games and non free digital offers except press category
     describe('underage beneficiary', () => {
       it.each`
-        type                  | expected                     | disabled | isDigital | name                           | price
-        ${CategoryType.Thing} | ${'Réserver'}                | ${false} | ${true}   | ${CategoryIdEnum.PRESSE}     | ${20}
+        type                  | expected                     | disabled | isDigital | name                         | price
+        ${CategoryType.Thing} | ${'Réserver'}                | ${false} | ${true}   | ${CategoryIdEnum.MEDIA}      | ${20}
         ${CategoryType.Event} | ${undefined}                 | ${true}  | ${true}   | ${CategoryIdEnum.FILM}       | ${20}
         ${CategoryType.Event} | ${'Voir les disponibilités'} | ${false} | ${true}   | ${CategoryIdEnum.FILM}       | ${0}
         ${CategoryType.Thing} | ${undefined}                 | ${true}  | ${false}  | ${CategoryIdEnum.JEUXVIDEO}  | ${0}

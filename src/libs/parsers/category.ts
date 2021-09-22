@@ -7,18 +7,18 @@ const DEFAULT_CATEGORY = 'Art'
 
 // Map the facetFilter (in algolia) to the label displayed in the front
 const MAP_CATEGORY_TO_LABEL: { [k in CategoryIdEnum]: string } = {
-  CINEMA: 'Cinéma',
-  VISITE: 'Visite',
-  MUSIQUE: 'Musique',
-  SPECTACLE: 'Spectacle',
-  LECON: 'Cours',
-  LIVRE: 'Livre',
-  FILM: 'Films',
-  PRESSE: 'Presse',
-  JEUX_VIDEO: 'Jeux',
-  CONFERENCE: 'Rencontre',
-  INSTRUMENT: 'Musique',
-  MATERIEL_ART_CREA: 'Art',
+  [CategoryIdEnum.CINEMA]: 'Cinéma',
+  [CategoryIdEnum.VISITE]: 'Visite',
+  [CategoryIdEnum.MUSIQUE]: 'Musique',
+  [CategoryIdEnum.SPECTACLE]: 'Spectacle',
+  [CategoryIdEnum.LECON]: 'Cours',
+  [CategoryIdEnum.LIVRE]: 'Livre',
+  [CategoryIdEnum.FILM]: 'Films',
+  [CategoryIdEnum.MEDIA]: 'Presse',
+  [CategoryIdEnum.JEUX_VIDEO]: 'Jeux',
+  [CategoryIdEnum.CONFERENCE]: 'Rencontre',
+  [CategoryIdEnum.INSTRUMENT]: 'Musique',
+  [CategoryIdEnum.MATERIEL_ART_CREA]: 'Art',
 }
 
 export const parseCategory = (category: CategoryIdEnum | null | undefined): string => {
@@ -30,18 +30,18 @@ export const parseCategory = (category: CategoryIdEnum | null | undefined): stri
 export const MAP_CATEGORY_TO_ICON: {
   [k in CategoryIdEnum]: React.FC<IconInterface>
 } = {
-  CINEMA: Category.Cinema,
-  VISITE: Category.Exposition,
-  MUSIQUE: Category.Musique,
-  SPECTACLE: Category.Spectacles,
-  LECON: Category.Atelier,
-  LIVRE: Category.Book,
-  FILM: Category.Streaming,
-  PRESSE: Category.Presse,
-  JEUX_VIDEO: Category.VideoGames,
-  CONFERENCE: Category.Conference,
-  INSTRUMENT: Category.Instrument,
-  MATERIEL_ART_CREA: Category.ArtsMaterial,
+  [CategoryIdEnum.CINEMA]: Category.Cinema,
+  [CategoryIdEnum.VISITE]: Category.Exposition,
+  [CategoryIdEnum.MUSIQUE]: Category.Musique,
+  [CategoryIdEnum.SPECTACLE]: Category.Spectacles,
+  [CategoryIdEnum.LECON]: Category.Atelier,
+  [CategoryIdEnum.LIVRE]: Category.Book,
+  [CategoryIdEnum.FILM]: Category.Streaming,
+  [CategoryIdEnum.MEDIA]: Category.Presse,
+  [CategoryIdEnum.JEUX_VIDEO]: Category.VideoGames,
+  [CategoryIdEnum.CONFERENCE]: Category.Conference,
+  [CategoryIdEnum.INSTRUMENT]: Category.Instrument,
+  [CategoryIdEnum.MATERIEL_ART_CREA]: Category.ArtsMaterial,
 }
 
 export const mapCategoryToIcon = (category: CategoryIdEnum | null): React.FC<IconInterface> => {

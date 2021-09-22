@@ -65,7 +65,7 @@ export const getCtaWordingAndAction = ({
     isUnderageBeneficiary &&
     offer.isDigital &&
     getOfferPrice(offer.stocks) !== 0 &&
-    category.name !== CategoryIdEnum.PRESSE
+    category.name !== CategoryIdEnum.MEDIA
 
   // Non beneficiary or educational offer or unavailable offer for user
   if (
