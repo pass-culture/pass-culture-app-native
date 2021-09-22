@@ -121,6 +121,7 @@ Array [
         >
           <div
             className="css-view-1dbjc4n"
+            data-testid="venueTile"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
@@ -275,6 +276,7 @@ Array [
         >
           <div
             className="css-view-1dbjc4n"
+            data-testid="venueTile"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
@@ -429,6 +431,7 @@ Array [
         >
           <div
             className="css-view-1dbjc4n"
+            data-testid="venueTile"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
@@ -583,6 +586,7 @@ Array [
         >
           <div
             className="css-view-1dbjc4n"
+            data-testid="venueTile"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}

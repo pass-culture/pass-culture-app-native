@@ -39,7 +39,8 @@ export const VenueTile = (props: VenueTileProps) => {
       <TouchableHighlight
         imageHeight={imageHeight}
         imageWidth={imageWidth}
-        onPress={handlePressVenue}>
+        onPress={handlePressVenue}
+        testID="venueTile">
         <ImageTile imageWidth={imageWidth} imageHeight={imageHeight} uri={uri} />
       </TouchableHighlight>
       <VenueCaption imageWidth={imageWidth} name={name} venueType={venueType} distance={distance} />

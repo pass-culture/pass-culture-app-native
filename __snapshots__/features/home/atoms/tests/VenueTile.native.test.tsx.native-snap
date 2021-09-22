@@ -32,6 +32,7 @@ exports[`VenueTile component should render correctly 1`] = `
         },
       ]
     }
+    testID="venueTile"
   >
     <View
       style={
