@@ -7,12 +7,14 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export type CustomCheckboxProps = {
   isChecked: boolean
-  setIsChecked: (b: boolean) => void
+  setIsChecked?: (b: boolean) => void
 }
 
 export function CheckboxInput({ isChecked, setIsChecked }: CustomCheckboxProps): JSX.Element {
   function setToggleCheckbox() {
-    setIsChecked(!isChecked)
+    if (setIsChecked) {
+      setIsChecked(!isChecked)
+    }
   }
 
   return (
