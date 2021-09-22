@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueTypeCode } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import { mockedSearchResponse } from 'libs/search/fixtures/mockedSearchResponse'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils/web'
 
 import { VenueTile } from '../VenueTile'
 
@@ -24,9 +24,9 @@ describe('VenueTile component', () => {
     expect(component).toMatchSnapshot()
   })
 
-  it('should navigate to the venue when clicking on the venue tile', () => {
+  it('should navigate to the venue when clicking on the image', () => {
     const { getByTestId } = render(<VenueTile {...props} />)
-    fireEvent.press(getByTestId('venueTile'))
+    fireEvent.click(getByTestId('venueTile'))
     expect(navigate).toHaveBeenCalledWith('Venue', {
       id: props.venueId,
     })
@@ -34,7 +34,7 @@ describe('VenueTile component', () => {
 
   it('should log analytics event ConsultVenue when pressing on the venue tile', () => {
     const { getByTestId } = render(<VenueTile {...props} />)
-    fireEvent.press(getByTestId('venueTile'))
+    fireEvent.click(getByTestId('venueTile'))
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: props.venueId,
       from: 'home',

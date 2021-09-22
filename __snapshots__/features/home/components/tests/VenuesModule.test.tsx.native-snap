@@ -216,6 +216,7 @@ Array [
                 },
               ]
             }
+            testID="venueTile"
           >
             <View
               style={
@@ -394,6 +395,7 @@ Array [
                 },
               ]
             }
+            testID="venueTile"
           >
             <View
               style={
@@ -572,6 +574,7 @@ Array [
                 },
               ]
             }
+            testID="venueTile"
           >
             <View
               style={
@@ -750,6 +753,7 @@ Array [
                 },
               ]
             }
+            testID="venueTile"
           >
             <View
               style={
