@@ -35,11 +35,10 @@ describe('OfferTile component', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  // FIXME: Web integration
-  it.skip('should navigate to the offer when clicking on the image [WEB INTEGRATION REQUIRED]', async () => {
+  it('should navigate to the offer when clicking on the image [WEB INTEGRATION REQUIRED]', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
-    fireEvent.click(getByTestId('tileImage'))
+    fireEvent.click(getByTestId('offerTile'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'home',
@@ -47,11 +46,10 @@ describe('OfferTile component', () => {
     })
   })
 
-  // FIXME: Web integration
-  it.skip('Analytics - should log ConsultOffer that user opened the offer [WEB INTEGRATION REQUIRED]', async () => {
+  it('Analytics - should log ConsultOffer that user opened the offer [WEB INTEGRATION REQUIRED]', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
-    fireEvent.click(getByTestId('tileImage'))
+    fireEvent.click(getByTestId('offerTile'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
       from: 'home',
@@ -59,11 +57,10 @@ describe('OfferTile component', () => {
     })
   })
 
-  // FIXME: Web integration
-  it.skip('should prepopulate react-query cache when clicking on offer [WEB INTEGRATION REQUIRED]', async () => {
+  it('should prepopulate react-query cache when clicking on offer [WEB INTEGRATION REQUIRED]', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
-    fireEvent.click(getByTestId('tileImage'))
+    fireEvent.click(getByTestId('offerTile'))
 
     const queryHash = JSON.stringify(['offer', offerId])
     const query = queryCache.get(queryHash)
@@ -79,6 +76,7 @@ describe('OfferTile component', () => {
       image: { url: props.thumbUrl },
       isDigital: false,
       isDuo: false,
+      isEducational: false,
       isReleased: false,
       isExpired: false,
       isSoldOut: false,

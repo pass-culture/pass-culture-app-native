@@ -30,6 +30,7 @@ exports[`OfferTile component should render correctly 1`] = `
         },
       ]
     }
+    testID="offerTile"
   >
     <View>
       <View
