@@ -98,22 +98,21 @@ export const fetchVenueOffers = async (
 }
 
 export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
-  const options: SearchOptions<AppSearchFields> = {
+  const options: SearchOptions<AppSearchVenuesFields> = {
     result_fields: {
-      [AppSearchFields.offerer_name]: { raw: {} },
-      [AppSearchFields.venue_id]: { raw: {} },
-      [AppSearchFields.venue_name]: { raw: {} },
+      [AppSearchVenuesFields.offerer_name]: { raw: {} },
+      [AppSearchVenuesFields.id]: { raw: {} },
+      [AppSearchVenuesFields.name]: { raw: {} },
     },
     search_fields: {
-      [AppSearchFields.offerer_name]: { weight: 1 },
-      [AppSearchFields.venue_name]: { weight: 1 },
-      [AppSearchFields.venue_public_name]: { weight: 1 },
+      [AppSearchVenuesFields.offerer_name]: { weight: 1 },
+      [AppSearchVenuesFields.name]: { weight: 1 },
+      [AppSearchVenuesFields.description]: { weight: 1 },
     },
-    group: { field: AppSearchFields.venue_id },
+    group: { field: AppSearchVenuesFields.id },
   }
 
-  // TODO(antoinewg): once venues are indexed on AppSearch, use this index.
-  const response = await offersClient.search<AppSearchFields>(query, options)
+  const response = await venuesClient.search<AppSearchVenuesFields>(query, options)
   return response.results.map(buildVenues)
 }
 
