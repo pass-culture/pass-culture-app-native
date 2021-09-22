@@ -9,6 +9,7 @@ interface Offer {
   name?: string
   prices?: number[]
   thumbUrl?: string
+  subcategoryId: string
 }
 
 export interface Geoloc {

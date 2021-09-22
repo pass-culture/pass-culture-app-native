@@ -15,6 +15,8 @@ import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { ColorsEnum, LENGTH_L, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 
 import { Cover } from '../atoms/Cover'
+import {useSubcategories} from "features/offer/api/useSubcategories";
+import {HomepageLabelResponseModel, SubcategoryResponseModel} from "api/gen";
 
 type OffersModuleProps = {
   search: SearchParametersFields
@@ -33,6 +35,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { nbHits, display, search: parameters, position, index, isBeneficiary, hits } = props
   const { navigate } = useNavigation<UseNavigationType>()
   const parseSearchParameters = useParseSearchParameters()
+  const { data: subcategoriesResponse } = useSubcategories()
 
   const moduleName = display.title || parameters.title
   const logHasSeenAllTiles = useFunctionOnce(() =>
@@ -42,9 +45,12 @@ export const OffersModule = (props: OffersModuleProps) => {
   const renderItem: ListRenderItem<SearchHit> = useCallback(
     ({ item }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+      // TODO faire un hook useHomepageLabels qui map les sous catégories aux labels
+      const subcategory = subcategoriesResponse?.subcategories.find((subcategory: SubcategoryResponseModel) => subcategory.id === item.offer.subcategoryId)
+      const homepage_label = subcategoriesResponse?.homepageLabels.find((homepageLabel: HomepageLabelResponseModel) => homepageLabel.name === subcategory?.homepageLabelName)
       return (
         <OfferTile
-          category={parseCategory(item.offer.category)}
+          category={homepage_label?.value}
           categoryName={item.offer.category}
           offerId={+item.objectID}
           description={item.offer.description || ''}
@@ -57,6 +63,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           layout={display.layout}
           isBeneficiary={isBeneficiary}
           moduleName={moduleName}
+          subcategoryId={item.offer.subcategoryId}
         />
       )
     },

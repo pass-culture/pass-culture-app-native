@@ -4,7 +4,7 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingCancellationReasons } from 'api/gen'
+import {BookingCancellationReasons, SubcategoryResponseModel} from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
@@ -14,10 +14,13 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { BookingItemTitle } from './BookingItemTitle'
 import { EndedBookingTicket } from './EndedBookingTicket'
 import { BookingItemProps } from './types'
+import {useSubcategories} from "features/offer/api/useSubcategories";
 
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
+  const { data: subcategoriesResponse } = useSubcategories()
+  const subcategory = subcategoriesResponse?.subcategories.find((subcategory: SubcategoryResponseModel) => subcategory.id === stock.offer.subcategoryId)
 
   const endedBookingReason = getEndedBookingReason(cancellationReason, dateUsed)
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
@@ -34,7 +37,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
       <ItemContainer>
         <EndedBookingTicket
           image={stock.offer.image?.url}
-          offerCategory={stock.offer.category.name}
+          offerCategory={subcategory?.categoryId}
         />
         <Spacer.Row numberOfSpaces={4} />
         <AttributesView>

@@ -16,7 +16,7 @@ import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface OfferTileProps {
-  category: string
+  category?: string | null | undefined
   categoryName: CategoryIdEnum | null | undefined
   description?: string | null
   distance?: string
@@ -29,11 +29,12 @@ interface OfferTileProps {
   layout?: Layout
   isBeneficiary?: boolean
   moduleName: string
+  subcategoryId: string
 }
 
 type PartialOffer = Pick<
   OfferTileProps,
-  'category' | 'categoryName' | 'description' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId'
+  'category' | 'categoryName' | 'description' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
 >
 
 export const mergeOfferData = (offer: PartialOffer) => (
@@ -59,6 +60,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
   } as OfferResponse['category'],
   venue: { coordinates: {} } as OfferResponse['venue'],
   ...(prevData || {}),
+  subcategoryId: offer.subcategoryId
 })
 
 export const OfferTile = (props: OfferTileProps) => {

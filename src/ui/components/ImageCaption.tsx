@@ -6,7 +6,7 @@ import { ColorsEnum, Typo, MARGIN_DP, GUTTER_DP, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface ImageCaptionProps {
-  category: string
+  category?: string | null
   distance?: string
   imageWidth: number
 }

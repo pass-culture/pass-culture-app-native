@@ -313,6 +313,12 @@ export interface BookingOfferResponse {
     name: string;
     /**
      * 
+     * @type {SubcategoryIdEnum}
+     * @memberof BookingOfferResponse
+     */
+    subcategoryId: SubcategoryIdEnum;
+    /**
+     * 
      * @type {string}
      * @memberof BookingOfferResponse
      */
@@ -792,6 +798,24 @@ export interface GetIdCheckTokenResponse {
      * @memberof GetIdCheckTokenResponse
      */
     token_timestamp: Date;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum HomepageLabelNameEnum {
+    FILM = 'FILM',
+    CINEMA = 'CINEMA',
+    CONFERENCE = 'CONFERENCE',
+    JEU = 'JEU',
+    LIVRE = 'LIVRE',
+    VISITE = 'VISITE',
+    MUSIQUE = 'MUSIQUE',
+    COURS = 'COURS',
+    PRESSE = 'PRESSE',
+    SPECTACLE = 'SPECTACLE',
+    MATERIEL = 'MATERIEL',
+    NONE = 'NONE'
 }/**
  * 
  * @export
@@ -1712,6 +1736,12 @@ export interface SubcategoryResponseModel {
      * @memberof SubcategoryResponseModel
      */
     categoryId: CategoryIdEnum;
+    /**
+     * 
+     * @type {HomepageLabelNameEnum}
+     * @memberof SubcategoryResponseModel
+     */
+    homepageLabelName: HomepageLabelNameEnum;
     /**
      * 
      * @type {SubcategoryIdEnum}

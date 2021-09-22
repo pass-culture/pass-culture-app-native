@@ -6,13 +6,18 @@ import { useWindowDimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
+import {
+  FavoriteOfferResponse,
+  FavoriteResponse,
+  SearchGroupResponseModel,
+  SubcategoryResponseModel,
+  UserProfileResponse
+} from 'api/gen'
 import { useRemoveFavorite } from 'features/favorites/pages/useFavorites'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { Credit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferImage } from 'features/search/atoms/OfferImage'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatToFrenchDate, getFavoriteDisplayPrice, parseCategory } from 'libs/parsers'
 import { AppButton } from 'ui/components/buttons/AppButton'
@@ -21,6 +26,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { BookingButton } from './BookingButton'
+import {useSubcategories} from "features/offer/api/useSubcategories";
 
 interface Props {
   credit: Credit
@@ -31,6 +37,9 @@ interface Props {
 
 export const Favorite: React.FC<Props> = (props) => {
   const { offer } = props.favorite
+  const { data: subcategoriesResponse } = useSubcategories()
+  const subcategory = subcategoriesResponse?.subcategories.find((subcategory: SubcategoryResponseModel) => subcategory.id === offer.subcategoryId)
+  const searchGroup = subcategoriesResponse?.searchGroups.find((searchGroup: SearchGroupResponseModel) => searchGroup.name === subcategory?.searchGroupName)
   const windowWidth = useWindowDimensions().width
   const [height, setHeight] = useState<number | undefined>(undefined)
   const animatedOpacity = useRef(new Animated.Value(1)).current
@@ -52,7 +61,6 @@ export const Favorite: React.FC<Props> = (props) => {
     },
   })
 
-  const categoryLabel = CATEGORY_CRITERIA[offer.category.name || 'ALL'].label
   const formattedDate = useMemo(() => {
     if (offer.date) {
       return formatToFrenchDate(new Date(offer.date))
@@ -74,8 +82,8 @@ export const Favorite: React.FC<Props> = (props) => {
       ['offer', offer.id],
       mergeOfferData({
         ...offer,
-        category: parseCategory(offer.category.name),
-        categoryName: offer.category.name,
+        category: parseCategory(subcategory?.categoryId),
+        categoryName: subcategory?.categoryId,
         description: '',
         thumbUrl: offer.image?.url,
         name: offer.name,
@@ -128,7 +136,7 @@ export const Favorite: React.FC<Props> = (props) => {
       }}>
       <Container onPress={handlePressOffer} testID="favorite">
         <Row>
-          <OfferImage imageUrl={offer.image?.url} categoryName={offer.category.name} />
+          <OfferImage imageUrl={offer.image?.url} categoryName={subcategory?.categoryId} />
           <Spacer.Row numberOfSpaces={4} />
           <Column windowWidth={windowWidth}>
             <Row>
@@ -146,7 +154,7 @@ export const Favorite: React.FC<Props> = (props) => {
               )}
             </Row>
             <Spacer.Column numberOfSpaces={1} />
-            <Body>{categoryLabel}</Body>
+            <Body>{searchGroup?.value}</Body>
             {!!formattedDate && <Body>{formattedDate}</Body>}
             <Spacer.Column numberOfSpaces={1} />
             <Typo.Caption>

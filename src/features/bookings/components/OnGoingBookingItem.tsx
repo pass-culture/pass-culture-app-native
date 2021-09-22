@@ -15,6 +15,8 @@ import { getBookingProperties, getBookingLabels } from '../helpers'
 import { BookingItemTitle } from './BookingItemTitle'
 import { OnGoingTicket } from './OnGoingTicket'
 import { BookingItemProps } from './types'
+import {useSubcategories} from "features/offer/api/useSubcategories";
+import {SubcategoryResponseModel} from "api/gen";
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -23,7 +25,10 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { stock } = booking
   const bookingProperties = getBookingProperties(booking)
 
-  const iconName = stock.offer.category.name || null
+  const { data: subcategoriesResponse } = useSubcategories()
+  const subcategory = subcategoriesResponse?.subcategories.find((subcategory: SubcategoryResponseModel) => subcategory.id === stock.offer.subcategoryId)
+
+  const iconName = subcategory?.categoryId || null
   const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties, settings)
 
   return (
