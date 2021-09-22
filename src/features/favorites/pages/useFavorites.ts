@@ -4,11 +4,50 @@ import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
 import { FavoriteRequest, FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { EmptyResponse } from 'libs/fetch'
 import { QueryKeys } from 'libs/queryKeys'
 
 export interface FavoriteMutationContext {
   previousFavorites: Array<FavoriteResponse>
+}
+
+export interface RemoveFavorite {
+  onError?: (error?: Error, favoriteId?: number, context?: FavoriteMutationContext) => void
+}
+
+export function useRemoveFavorite({ onError }: RemoveFavorite) {
+  const queryClient = useQueryClient()
+
+  return useMutation((favoriteId: number) => api.deletenativev1mefavoritesfavoriteId(favoriteId), {
+    onMutate: async (favoriteId) => {
+      await queryClient.cancelQueries(QueryKeys.FAVORITES)
+      // Snapshot the previous value
+      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(
+        QueryKeys.FAVORITES
+      )
+
+      // Optimistically update to the new value
+      if (favoriteId && previousFavorites) {
+        const favorites = previousFavorites.favorites.filter(
+          (favorite) => favorite.id !== favoriteId
+        )
+        queryClient.setQueryData<PaginatedFavoritesResponse>(QueryKeys.FAVORITES, {
+          ...previousFavorites,
+          nbFavorites: favorites.length,
+          favorites,
+        })
+      }
+
+      return { previousFavorites: previousFavorites || [] } as FavoriteMutationContext
+    },
+    onError: (error: Error, favoriteId, context: FavoriteMutationContext | undefined) => {
+      if (context?.previousFavorites) {
+        queryClient.setQueryData(QueryKeys.FAVORITES, context.previousFavorites)
+      }
+      if (onError) {
+        onError(error, favoriteId, context)
+      }
+    },
+  })
 }
 
 export interface AddFavorite {
@@ -18,67 +57,11 @@ export interface AddFavorite {
     { offerId }: { offerId?: number },
     context?: FavoriteMutationContext
   ) => void
-  onMutate?: ({ offerId }: { offerId?: number }) => FavoriteMutationContext | void
-  onSettled?: (data: FavoriteResponse | undefined, error?: Error | null) => void
 }
 
-export interface RemoveFavorite {
-  onSuccess?: (data?: EmptyResponse) => void
-  onError?: (error?: Error, favoriteId?: number, context?: FavoriteMutationContext) => void
-  onMutate?: (favoriteId?: number | undefined) => FavoriteMutationContext | void
-  onSettled?: (data: EmptyResponse | undefined, error?: Error | null) => void
-}
-
-export function useRemoveFavorite({ onSuccess, onError, onMutate, onSettled }: RemoveFavorite) {
+export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
   const queryClient = useQueryClient()
-  return useMutation(
-    'removeFavorite',
-    (favoriteId: number) => api.deletenativev1mefavoritesfavoriteId(favoriteId),
-    {
-      onSuccess,
-      onMutate: async (favoriteId) => {
-        await queryClient.cancelQueries(QueryKeys.FAVORITES)
-        // Snapshot the previous value
-        const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(
-          QueryKeys.FAVORITES
-        )
 
-        // Optimistically update to the new value
-        if (favoriteId && previousFavorites) {
-          const favorites = previousFavorites.favorites.filter(
-            (favorite) => favorite.id !== favoriteId
-          )
-          queryClient.setQueryData<PaginatedFavoritesResponse>(QueryKeys.FAVORITES, {
-            ...previousFavorites,
-            nbFavorites: favorites.length,
-            favorites,
-          })
-        }
-
-        if (onMutate) {
-          onMutate(favoriteId)
-        }
-        return { previousFavorites: previousFavorites || [] } as FavoriteMutationContext
-      },
-      onError: (error: Error, favoriteId, context: FavoriteMutationContext | undefined) => {
-        if (context?.previousFavorites) {
-          queryClient.setQueryData(QueryKeys.FAVORITES, context.previousFavorites)
-        }
-        if (onError) {
-          onError(error, favoriteId, context)
-        }
-      },
-      onSettled: (data) => {
-        if (onSettled) {
-          onSettled(data)
-        }
-      },
-    }
-  )
-}
-
-export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddFavorite) {
-  const queryClient = useQueryClient()
   return useMutation((body: FavoriteRequest) => api.postnativev1mefavorites(body), {
     onSuccess: (data: FavoriteResponse) => {
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(
@@ -117,9 +100,6 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
         })
       }
 
-      if (onMutate) {
-        onMutate({ offerId })
-      }
       return { previousFavorites: previousFavorites || [] } as FavoriteMutationContext
     },
     onError: (
@@ -132,11 +112,6 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
       }
       if (onError) {
         onError(error, { offerId }, context)
-      }
-    },
-    onSettled: (data) => {
-      if (onSettled) {
-        onSettled(data)
       }
     },
   })
