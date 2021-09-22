@@ -14,7 +14,7 @@ exports[`VenueTile component should render correctly 1`] = `
 >
   <View
     accessible={true}
-    focusable={false}
+    focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -63,7 +63,7 @@ exports[`VenueTile component should render correctly 1`] = `
             "top": 0,
           }
         }
-        testID="offerTileImage"
+        testID="tileImage"
       />
     </View>
   </View>

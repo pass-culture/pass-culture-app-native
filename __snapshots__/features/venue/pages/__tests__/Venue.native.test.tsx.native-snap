@@ -852,7 +852,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "top": 0,
                         }
                       }
-                      testID="offerTileImage"
+                      testID="tileImage"
                     />
                   </View>
                   <View
@@ -1040,7 +1040,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "top": 0,
                         }
                       }
-                      testID="offerTileImage"
+                      testID="tileImage"
                     />
                   </View>
                   <View
@@ -1228,7 +1228,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "top": 0,
                         }
                       }
-                      testID="offerTileImage"
+                      testID="tileImage"
                     />
                   </View>
                   <View

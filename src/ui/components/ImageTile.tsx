@@ -27,5 +27,5 @@ export const ImageTile: React.FC<Props> = (props) => {
 
   const source = useMemo(() => ({ uri: props.uri }), [props.uri])
 
-  return props.uri ? <FastImage style={style} source={source} testID="offerTileImage" /> : null
+  return props.uri ? <FastImage style={style} source={source} testID="tileImage" /> : null
 }

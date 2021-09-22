@@ -237,7 +237,7 @@ Array [
                       "top": 0,
                     }
                   }
-                  testID="offerTileImage"
+                  testID="tileImage"
                 />
               </View>
               <View
@@ -419,7 +419,7 @@ Array [
                       "top": 0,
                     }
                   }
-                  testID="offerTileImage"
+                  testID="tileImage"
                 />
               </View>
               <View
@@ -601,7 +601,7 @@ Array [
                       "top": 0,
                     }
                   }
-                  testID="offerTileImage"
+                  testID="tileImage"
                 />
               </View>
               <View
@@ -799,7 +799,7 @@ Array [
                       "top": 0,
                     }
                   }
-                  testID="offerTileImage"
+                  testID="tileImage"
                 />
               </View>
               <View
