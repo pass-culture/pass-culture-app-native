@@ -2,6 +2,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 import * as React from 'react'
 import { View } from 'react-native'
+import waitForExpect from 'wait-for-expect'
 
 import { FavoriteResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -123,45 +124,31 @@ describe('useAddFavorite hook', () => {
       setIsLoggedIn: jest.fn(),
     }))
     const onSuccess = jest.fn()
-    const onMutate = jest.fn()
     const onError = jest.fn()
-    const onSettled = jest.fn()
-    const { result, waitFor } = renderHook(
-      () =>
-        useAddFavorite({
-          onSuccess,
-          onMutate,
-          onError,
-          onSettled,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
+    const { result } = renderHook(() => useAddFavorite({ onSuccess, onError }), {
+      wrapper: (props) =>
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        reactQueryProviderHOC(
+          <FavoritesWrapper>
+            <View>{props.children}</View>
+          </FavoritesWrapper>
+        ),
+    })
 
     expect(result.current.isLoading).toBeFalsy()
     result.current.mutate({ offerId })
     await superFlushWithAct()
-    await waitFor(() => {
-      expect(onMutate).toBeCalledWith({ offerId })
-    })
 
-    await superFlushWithAct()
-    expect(onSuccess).toBeCalledWith({
-      ...addFavoriteJsonResponseSnap,
-      offer: {
-        ...addFavoriteJsonResponseSnap.offer,
-        date: addFavoriteJsonResponseSnap.offer.date?.toISOString(),
-      },
+    waitForExpect(() => {
+      expect(onSuccess).toBeCalledWith({
+        ...addFavoriteJsonResponseSnap,
+        offer: {
+          ...addFavoriteJsonResponseSnap.offer,
+          date: addFavoriteJsonResponseSnap.offer.date?.toISOString(),
+        },
+      })
+      expect(onError).not.toBeCalled()
     })
-    expect(onError).not.toBeCalled()
-    expect(onSettled).toBeCalled()
   })
 
   it('should fail to add favorite', async () => {
@@ -175,39 +162,25 @@ describe('useAddFavorite hook', () => {
       setIsLoggedIn: jest.fn(),
     }))
     const onSuccess = jest.fn()
-    const onMutate = jest.fn()
     const onError = jest.fn()
-    const onSettled = jest.fn()
-    const { result, waitFor } = renderHook(
-      () =>
-        useAddFavorite({
-          onSuccess,
-          onMutate,
-          onError,
-          onSettled,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
+    const { result } = renderHook(() => useAddFavorite({ onSuccess, onError }), {
+      wrapper: (props) =>
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        reactQueryProviderHOC(
+          <FavoritesWrapper>
+            <View>{props.children}</View>
+          </FavoritesWrapper>
+        ),
+    })
 
     expect(result.current.isLoading).toBeFalsy()
     result.current.mutate({ offerId })
     await superFlushWithAct()
-    await waitFor(() => {
-      expect(onMutate).toBeCalledWith({ offerId })
-    })
 
-    await superFlushWithAct()
-    expect(onSuccess).not.toBeCalled()
-    expect(onError).toBeCalled()
-    expect(onSettled).toBeCalled()
+    waitForExpect(() => {
+      expect(onSuccess).not.toBeCalled()
+      expect(onError).toBeCalled()
+    })
   })
 })
 
@@ -226,40 +199,24 @@ describe('useRemoveFavorite hook', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
     }))
-    const onSuccess = jest.fn()
-    const onMutate = jest.fn()
     const onError = jest.fn()
-    const onSettled = jest.fn()
-    const { result, waitFor } = renderHook(
-      () =>
-        useRemoveFavorite({
-          onSuccess,
-          onMutate,
-          onError,
-          onSettled,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
+    const { result } = renderHook(() => useRemoveFavorite({ onError }), {
+      wrapper: (props) =>
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        reactQueryProviderHOC(
+          <FavoritesWrapper>
+            <View>{props.children}</View>
+          </FavoritesWrapper>
+        ),
+    })
 
     expect(result.current.isLoading).toBeFalsy()
     result.current.mutate(favoriteId)
     await superFlushWithAct()
-    await waitFor(() => {
-      expect(onMutate).toBeCalledWith(favoriteId)
-    })
 
-    await superFlushWithAct()
-    expect(onSuccess).toBeCalled()
-    expect(onError).not.toBeCalled()
-    expect(onSettled).toBeCalled()
+    waitForExpect(() => {
+      expect(onError).not.toBeCalled()
+    })
   })
 
   it('should fail to remove favorite', async () => {
@@ -274,40 +231,24 @@ describe('useRemoveFavorite hook', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
     }))
-    const onSuccess = jest.fn()
-    const onMutate = jest.fn()
     const onError = jest.fn()
-    const onSettled = jest.fn()
-    const { result, waitFor } = renderHook(
-      () =>
-        useRemoveFavorite({
-          onSuccess,
-          onMutate,
-          onError,
-          onSettled,
-        }),
-      {
-        wrapper: (props) =>
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-          reactQueryProviderHOC(
-            <FavoritesWrapper>
-              <View>{props.children}</View>
-            </FavoritesWrapper>
-          ),
-      }
-    )
+    const { result } = renderHook(() => useRemoveFavorite({ onError }), {
+      wrapper: (props) =>
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        reactQueryProviderHOC(
+          <FavoritesWrapper>
+            <View>{props.children}</View>
+          </FavoritesWrapper>
+        ),
+    })
 
     expect(result.current.isLoading).toBeFalsy()
     result.current.mutate(favoriteId)
     await superFlushWithAct()
-    await waitFor(() => {
-      expect(onMutate).toBeCalledWith(favoriteId)
-    })
 
-    await superFlushWithAct()
-    expect(onSuccess).not.toBeCalled()
-    expect(onError).toBeCalled()
-    expect(onSettled).toBeCalled()
+    waitForExpect(() => {
+      expect(onError).toBeCalled()
+    })
   })
 })
 
@@ -326,7 +267,7 @@ describe('useFavorite hook', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
     })
-    const { result, waitFor } = renderHook(() => useFavorite({ offerId: favorite.offer.id }), {
+    const { result } = renderHook(() => useFavorite({ offerId: favorite.offer.id }), {
       wrapper: (props) =>
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
@@ -336,7 +277,8 @@ describe('useFavorite hook', () => {
         ),
     })
     await superFlushWithAct()
-    await waitFor(() => {
+
+    waitForExpect(() => {
       expect(result.current).toEqual({
         ...favorite,
         offer: {
@@ -359,7 +301,7 @@ describe('useFavorite hook', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
     })
-    const { result, waitFor } = renderHook(() => useFavorite({ offerId: 99999 }), {
+    const { result } = renderHook(() => useFavorite({ offerId: 99999 }), {
       wrapper: (props) =>
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
@@ -369,7 +311,7 @@ describe('useFavorite hook', () => {
         ),
     })
     await superFlushWithAct()
-    await waitFor(() => {
+    waitForExpect(() => {
       expect(result.current).toEqual(undefined)
     })
   })
