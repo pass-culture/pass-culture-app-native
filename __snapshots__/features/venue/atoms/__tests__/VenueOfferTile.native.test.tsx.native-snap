@@ -53,7 +53,7 @@ exports[`VenueOfferTile component should render correctly 1`] = `
               "top": 0,
             }
           }
-          testID="offerTileImage"
+          testID="tileImage"
         />
       </View>
       <View

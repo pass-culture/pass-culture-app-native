@@ -198,7 +198,7 @@ Array [
         >
           <View
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -247,7 +247,7 @@ Array [
                     "top": 0,
                   }
                 }
-                testID="offerTileImage"
+                testID="tileImage"
               />
             </View>
           </View>
@@ -376,7 +376,7 @@ Array [
         >
           <View
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -425,7 +425,7 @@ Array [
                     "top": 0,
                   }
                 }
-                testID="offerTileImage"
+                testID="tileImage"
               />
             </View>
           </View>
@@ -554,7 +554,7 @@ Array [
         >
           <View
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -603,7 +603,7 @@ Array [
                     "top": 0,
                   }
                 }
-                testID="offerTileImage"
+                testID="tileImage"
               />
             </View>
           </View>
@@ -732,7 +732,7 @@ Array [
         >
           <View
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -781,7 +781,7 @@ Array [
                     "top": 0,
                   }
                 }
-                testID="offerTileImage"
+                testID="tileImage"
               />
             </View>
           </View>
