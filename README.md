@@ -227,12 +227,14 @@ If the file `src/api/gen/.swagger-codegen/VERSION` changes, make sure you locall
 ## Dev en local avec le package @pass-culture/id-check
 
 Dans le repo [**id-check-front**](https://github.com/pass-culture/id-check-front) :
+
 1. `cd packages/id-check`
-2. `yarn link`
+1. `yarn link`
 
 Dans le repo [**pass-culture-app-native**](https://github.com/pass-culture/pass-culture-app-native) :
+
 1. `yarn link @pass-culture/id-check`
-2. `yarn start`
+1. `yarn start`
 
 **iOS et android uniquement** : le hot reloading ne fonctionnant pas avec le package linked, il faut kill puis restart metro à chaque fois qu'on veut prendre en compte un changement du code du package `id-check` vis à vis de l'app de développement.
 
@@ -243,17 +245,18 @@ Dans le repo [**pass-culture-app-native**](https://github.com/pass-culture/pass-
 Dans le repo [**id-check-front**](https://github.com/pass-culture/id-check-front) :
 
 1. `git checkout master`
-2. Ouvrir les 4 `package.json`, et bumper la version dans les 4 fichiers en suivant la convention [**semver**](https://semver.org/).
-3. Commiter les 4 `package.json` avec le message suivant : `"bump version to X.X.X"`
-4. `git tag vX.X.X`
-5. `cd packages/id-check`
-6. Publier le module sur NPM: `npm publish --registry https://registry.npmjs.com`
+1. Ouvrir les 4 `package.json`, et bumper la version dans les 4 fichiers en suivant la convention [**semver**](https://semver.org/).
+1. Commiter les 4 `package.json` avec le message suivant : `"bump version to X.X.X"`
+1. `git tag vX.X.X`
+1. `git push origin vX.X.X`
+1. `cd packages/id-check`
+1. Publier le module sur NPM: `npm publish`
 
 Dans le repo [**pass-culture-app-native**](https://github.com/pass-culture/pass-culture-app-native) :
 
 1. `git checkout master`
-2. Ouvrir `package.json` et mettre à jour la version de `@pass-culture/id-check`
-3. Executer le script suivant :
+1. Ouvrir `package.json` et mettre à jour la version de `@pass-culture/id-check`
+1. Executer le script suivant :
 
 ```bash
 IDCHECK_VERSION=$(cat package.json | jq -r '.["dependencies"]["@pass-culture/id-check"]' | cut -c2-)
