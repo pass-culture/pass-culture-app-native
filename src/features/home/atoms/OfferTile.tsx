@@ -81,7 +81,7 @@ export const OfferTile = (props: OfferTileProps) => {
 
   return (
     <Container>
-      <TouchableHighlight imageHeight={imageHeight} onPress={handlePressOffer}>
+      <TouchableHighlight imageHeight={imageHeight} onPress={handlePressOffer} testID="offerTile">
         <View>
           <ImageTile
             imageWidth={imageWidth}

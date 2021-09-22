@@ -204,6 +204,7 @@ Array [
                 },
               ]
             }
+            testID="offerTile"
           >
             <View>
               <View
@@ -386,6 +387,7 @@ Array [
                 },
               ]
             }
+            testID="offerTile"
           >
             <View>
               <View
@@ -568,6 +570,7 @@ Array [
                 },
               ]
             }
+            testID="offerTile"
           >
             <View>
               <View
@@ -766,6 +769,7 @@ Array [
                 },
               ]
             }
+            testID="offerTile"
           >
             <View>
               <View
