@@ -1,6 +1,7 @@
 import { SearchOptions } from '@elastic/app-search-javascript'
 import { flatten } from 'lodash'
 
+import { VenuesSearchParametersFields } from 'features/home/contentful'
 import { OptionalCategoryCriteria } from 'features/search/enums'
 import { Response } from 'features/search/pages/useSearchResults'
 import { PartialSearchState } from 'features/search/types'
@@ -13,8 +14,9 @@ import {
   AppSearchFields,
   RESULT_FIELDS,
   underageFilter,
+  buildVenuesQueryOptions,
 } from 'libs/search/filters'
-import { FALSE } from 'libs/search/filters/constants'
+import { FALSE, VENUES_RESULT_FIELDS } from 'libs/search/filters/constants'
 import { AppSearchVenuesFields } from 'libs/search/filters/constants'
 import { buildAlgoliaHit, buildVenues } from 'libs/search/utils/buildAlgoliaHit'
 import { buildVenueHits } from 'libs/search/utils/buildVenueHits'
@@ -99,16 +101,7 @@ export const fetchVenueOffers = async (
 
 export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
   const options: SearchOptions<AppSearchVenuesFields> = {
-    result_fields: {
-      [AppSearchVenuesFields.offerer_name]: { raw: {} },
-      [AppSearchVenuesFields.id]: { raw: {} },
-      [AppSearchVenuesFields.name]: { raw: {} },
-    },
-    search_fields: {
-      [AppSearchVenuesFields.offerer_name]: { weight: 1 },
-      [AppSearchVenuesFields.name]: { weight: 1 },
-      [AppSearchVenuesFields.description]: { weight: 1 },
-    },
+    result_fields: VENUES_RESULT_FIELDS,
     group: { field: AppSearchVenuesFields.id },
   }
 
@@ -117,16 +110,15 @@ export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
 }
 
 // Used for the venue playlists on the homepage
-export const fetchMultipleVenues = async (): Promise<VenueHit[]> => {
-  const options: SearchOptions<AppSearchVenuesFields> = {
-    result_fields: {
-      [AppSearchVenuesFields.id]: { raw: {} },
-      [AppSearchVenuesFields.name]: { raw: {} },
-      [AppSearchVenuesFields.venue_type]: { raw: {} },
-      [AppSearchVenuesFields.position]: { raw: {} },
-    },
-  }
+export const fetchMultipleVenues = async (
+  paramsList: VenuesSearchParametersFields[],
+  userLocation: GeoCoordinates | null
+): Promise<VenueHit[]> => {
+  const queries = paramsList.map((params) => ({
+    query: '',
+    options: buildVenuesQueryOptions(params, userLocation),
+  }))
 
-  const response = await venuesClient.search<AppSearchVenuesFields>('', options)
-  return response.results.map(buildVenueHits) as VenueHit[]
+  const allResults = await venuesClient.multiSearch<AppSearchVenuesFields>(queries)
+  return flatten(allResults.flatMap(({ results }) => results.map(buildVenueHits) as VenueHit[]))
 }

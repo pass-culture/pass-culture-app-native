@@ -23,10 +23,9 @@ export const useHomeVenueModules = (
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
 
   const queries = useQueries(
-    venuesModules.map(({ search: _search, moduleId }) => {
+    venuesModules.map(({ search, moduleId }) => {
       const fetchModule = async () => {
-        // TODO(antoinewg): use search parameters (venueTypes, etc...)
-        const hits = await fetchMultipleVenues()
+        const hits = await fetchMultipleVenues(search, position)
         return { moduleId: moduleId, hits }
       }
 

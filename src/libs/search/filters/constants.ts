@@ -67,6 +67,14 @@ export const RESULT_FIELDS: ResultFields<AppSearchFields> = {
   [AppSearchFields.venue_position]: { raw: {} },
 }
 
+// We don't use all the fields indexed. Simply retrieve the one we use.
+export const VENUES_RESULT_FIELDS: ResultFields<AppSearchVenuesFields> = {
+  [AppSearchVenuesFields.id]: { raw: {} },
+  [AppSearchVenuesFields.name]: { raw: {} },
+  [AppSearchVenuesFields.venue_type]: { raw: {} },
+  [AppSearchVenuesFields.position]: { raw: {} },
+}
+
 export const SORT_OPTIONS: Sort<AppSearchFields> = [
   { _score: 'desc' },
   { [AppSearchFields.ranking_weight]: 'desc' },

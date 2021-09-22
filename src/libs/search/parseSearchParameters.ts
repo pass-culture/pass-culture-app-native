@@ -3,18 +3,29 @@ import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 
+export const parseGeolocationParameters = (
+  geolocation: GeoCoordinates | null,
+  isGeolocated?: boolean,
+  aroundRadius?: number
+): SearchState['locationFilter'] | undefined => {
+  const notGeolocatedButRadiusIsProvided = !isGeolocated && aroundRadius
+  const geolocatedButGeolocationIsInvalid = isGeolocated && !geolocation
+
+  if (notGeolocatedButRadiusIsProvided || geolocatedButGeolocationIsInvalid) return
+
+  return isGeolocated && geolocation
+    ? { locationType: LocationType.AROUND_ME, aroundRadius: aroundRadius || null }
+    : { locationType: LocationType.EVERYWHERE }
+}
+
 export const parseSearchParameters = (
   parameters: SearchParametersFields,
   geolocation: GeoCoordinates | null
 ): SearchState | undefined => {
   const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
 
-  const notGeolocatedButRadiusIsProvided = !isGeolocated && aroundRadius
-  const geolocatedButGeolocationIsInvalid = isGeolocated && !geolocation
-
-  if (notGeolocatedButRadiusIsProvided || geolocatedButGeolocationIsInvalid) {
-    return undefined
-  }
+  const locationFilter = parseGeolocationParameters(geolocation, isGeolocated, aroundRadius)
+  if (!locationFilter) return
 
   const beginningDatetime = parameters.beginningDatetime
     ? new Date(parameters.beginningDatetime)
@@ -26,10 +37,7 @@ export const parseSearchParameters = (
     beginningDatetime: beginningDatetime,
     endingDatetime: endingDatetime,
     hitsPerPage: parameters.hitsPerPage || null,
-    locationFilter:
-      isGeolocated && geolocation
-        ? { locationType: LocationType.AROUND_ME, aroundRadius: aroundRadius || null }
-        : { locationType: LocationType.EVERYWHERE },
+    locationFilter,
     offerCategories: parameters.categories || [],
     offerIsDuo: parameters.isDuo || false,
     offerIsFree: parameters.isFree || false,

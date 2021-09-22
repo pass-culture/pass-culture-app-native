@@ -2,7 +2,7 @@ import { Boosts } from '@elastic/app-search-javascript'
 
 import { GeoCoordinates } from 'libs/geolocation'
 
-import { AppSearchFields } from './constants'
+import { AppSearchFields, AppSearchVenuesFields } from './constants'
 
 export const buildBoosts = (
   userLocation: GeoCoordinates | null
@@ -10,6 +10,20 @@ export const buildBoosts = (
   if (!userLocation) return
   return {
     [AppSearchFields.venue_position]: {
+      type: 'proximity',
+      function: 'exponential',
+      center: `${userLocation.latitude},${userLocation.longitude}`,
+      factor: 10,
+    },
+  }
+}
+
+export const buildBoostsVenues = (
+  userLocation: GeoCoordinates | null
+): Boosts<AppSearchVenuesFields> | undefined => {
+  if (!userLocation) return
+  return {
+    [AppSearchVenuesFields.position]: {
       type: 'proximity',
       function: 'exponential',
       center: `${userLocation.latitude},${userLocation.longitude}`,
