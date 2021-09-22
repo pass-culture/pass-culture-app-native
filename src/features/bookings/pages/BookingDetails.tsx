@@ -16,6 +16,7 @@ import { CancelBookingModal } from 'features/bookings/components/CancelBookingMo
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { BookingProperties, getBookingProperties } from 'features/bookings/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { useSubcategories } from 'features/offer/api/useSubcategories'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -65,6 +66,7 @@ export function BookingDetails() {
     longitude,
     async () => void (offerId && analytics.logConsultItinerary({ offerId, from: 'bookingdetails' }))
   )
+  const { data } = useSubcategories()
 
   const logConsultWholeBooking = useFunctionOnce(
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
@@ -78,7 +80,7 @@ export function BookingDetails() {
 
   if (!booking) return <React.Fragment></React.Fragment>
 
-  const properties = getBookingProperties(booking)
+  const properties = getBookingProperties(booking, data?.subcategories)
   const { offer } = booking.stock
   const shouldDisplayItineraryButton =
     canOpenItinerary && (properties.isEvent || (properties.isPhysical && !properties.isDigital))

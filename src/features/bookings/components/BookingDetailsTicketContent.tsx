@@ -4,13 +4,14 @@ import { Platform, View } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
+import { BookingOfferResponse, BookingReponse } from 'api/gen'
 import {
   TICKET_MIN_HEIGHT,
   QR_CODE_SIZE,
 } from 'features/bookings/components/ThreeShapesTicket.constants'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openExternalUrl } from 'features/navigation/helpers'
+import { useSubcategories } from 'features/offer/api/useSubcategories'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
@@ -23,7 +24,8 @@ interface BookingDetailsTicketContentProps {
 export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentProps) => {
   const { booking, activationCodeFeatureEnabled } = props
   const offer = booking.stock.offer
-  const properties = getBookingProperties(booking)
+  const { data } = useSubcategories()
+  const properties = getBookingProperties(booking, data?.subcategories)
 
   const accessExternalOffer = () => {
     if (offer.url) {

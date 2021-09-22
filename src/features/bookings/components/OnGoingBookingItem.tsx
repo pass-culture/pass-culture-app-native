@@ -2,8 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { SubcategoryResponseModel } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useSubcategories } from 'features/offer/api/useSubcategories'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { Clock } from 'ui/svg/icons/Clock'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
@@ -15,18 +17,19 @@ import { getBookingProperties, getBookingLabels } from '../helpers'
 import { BookingItemTitle } from './BookingItemTitle'
 import { OnGoingTicket } from './OnGoingTicket'
 import { BookingItemProps } from './types'
-import {useSubcategories} from "features/offer/api/useSubcategories";
-import {SubcategoryResponseModel} from "api/gen";
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: settings = null } = useAppSettings()
 
   const { stock } = booking
-  const bookingProperties = getBookingProperties(booking)
+  const { data } = useSubcategories()
+  const bookingProperties = getBookingProperties(booking, data?.subcategories)
 
   const { data: subcategoriesResponse } = useSubcategories()
-  const subcategory = subcategoriesResponse?.subcategories.find((subcategory: SubcategoryResponseModel) => subcategory.id === stock.offer.subcategoryId)
+  const subcategory = subcategoriesResponse?.subcategories.find(
+    (subcategory: SubcategoryResponseModel) => subcategory.id === stock.offer.subcategoryId
+  )
 
   const iconName = subcategory?.categoryId || null
   const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties, settings)

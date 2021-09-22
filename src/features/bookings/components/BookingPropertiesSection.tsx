@@ -7,6 +7,7 @@ import { SettingsResponse } from 'api/gen'
 import { Booking } from 'features/bookings/components/types'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { useUserProfileInfo } from 'features/home/api'
+import { useSubcategories } from 'features/offer/api/useSubcategories'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
@@ -26,7 +27,8 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
   style,
 }) => {
   const { data: user } = useUserProfileInfo()
-  const properties = getBookingProperties(booking)
+  const { data } = useSubcategories()
+  const properties = getBookingProperties(booking, data?.subcategories)
   const propertiesLabels = getBookingLabels(booking, properties, appSettings)
 
   const renderRowTitle = (title: string) => <Title>{title}</Title>

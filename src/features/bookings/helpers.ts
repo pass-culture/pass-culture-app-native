@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 
-import { SettingsResponse, SubcategoryResponseModel } from 'api/gen'
+import { SettingsResponse, SubcategoriesResponseModel, SubcategoryResponseModel } from 'api/gen'
+import { useSubcategories } from 'features/offer/api/useSubcategories'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
@@ -9,7 +10,6 @@ import {
 } from 'libs/parsers'
 
 import { Booking } from './components/types'
-import { useSubcategories } from 'features/offer/api/useSubcategories'
 
 export type BookingProperties = {
   isDuo?: boolean
@@ -20,15 +20,19 @@ export type BookingProperties = {
   hasActivationCode?: boolean
 }
 
-export function getBookingProperties(booking?: Booking): BookingProperties {
+export function getBookingProperties(
+  booking?: Booking,
+  subcategories?: SubcategoriesResponseModel['subcategories']
+): BookingProperties {
   if (!booking) {
     return {}
   }
 
   const { stock } = booking
   const { offer } = stock
-  const { data: subcategories } = useSubcategories()
-  const subcategory = subcategories?.subcategories.find((subcategory: SubcategoryResponseModel) => subcategory.id === offer?.subcategoryId)
+  const subcategory = (subcategories || []).find(
+    (subcategory: SubcategoryResponseModel) => subcategory.id === offer?.subcategoryId
+  )
   const isEvent = subcategory?.isEvent
 
   return {
