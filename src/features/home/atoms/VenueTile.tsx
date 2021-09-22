@@ -1,13 +1,16 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { VenueTypeCode } from 'api/gen'
 import { VenueCaption } from 'features/home/atoms/VenueCaption'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ImageTile } from 'ui/components/ImageTile'
 import { ColorsEnum, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum, LENGTH_S } from 'ui/theme/grid'
 
 interface VenueTileProps {
+  venueId: number
   name: string
   venueType: VenueTypeCode
   distance?: string
@@ -20,10 +23,21 @@ const uri =
   'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA'
 
 export const VenueTile = (props: VenueTileProps) => {
-  const { name, venueType, distance } = props
+  const { venueId, name, venueType, distance } = props
+  const navigation = useNavigation<UseNavigationType>()
+
+  function handlePressVenue() {
+    navigation.navigate('Venue', {
+      id: venueId,
+    })
+  }
+
   return (
     <Container>
-      <TouchableHighlight imageHeight={imageHeight} imageWidth={imageWidth}>
+      <TouchableHighlight
+        imageHeight={imageHeight}
+        imageWidth={imageWidth}
+        onPress={handlePressVenue}>
         <ImageTile imageWidth={imageWidth} imageHeight={imageHeight} uri={uri} />
       </TouchableHighlight>
       <VenueCaption imageWidth={imageWidth} name={name} venueType={venueType} distance={distance} />

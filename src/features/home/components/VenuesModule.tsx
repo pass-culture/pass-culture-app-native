@@ -22,6 +22,7 @@ export const VenuesModule = (props: VenuesModuleProps) => {
   const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
     return (
       <VenueTile
+        venueId={+item.id}
         name={item.name}
         venueType={item.venueType}
         distance={formatDistance(item.position, userPosition)}
