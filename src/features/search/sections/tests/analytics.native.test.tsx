@@ -55,7 +55,7 @@ describe('Analytics - logUseFilter', () => {
     const { getByText } = render(<Section.Category />)
     fireEvent.press(getByText(CATEGORY_CRITERIA.CINEMA.label))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Category)
-    fireEvent.press(getByText(CATEGORY_CRITERIA.JEUX_VIDEO.label))
+    fireEvent.press(getByText(CATEGORY_CRITERIA.JEU.label))
     fireEvent.press(getByText(CATEGORY_CRITERIA.MEDIA.label))
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })

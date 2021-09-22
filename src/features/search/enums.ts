@@ -86,10 +86,10 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: CategoryIcon.Presse,
     facetFilter: CategoryIdEnum.MEDIA,
   },
-  [CategoryIdEnum.JEUXVIDEO]: {
+  [CategoryIdEnum.JEU]: {
     label: 'Jeux vidéos',
     icon: CategoryIcon.JeuxVideo,
-    facetFilter: CategoryIdEnum.JEUXVIDEO,
+    facetFilter: CategoryIdEnum.JEU,
   },
   [CategoryIdEnum.CONFERENCE]: {
     label: 'Conférences, rencontres',

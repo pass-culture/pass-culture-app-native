@@ -39,15 +39,7 @@ describe('Search reducer', () => {
   it('should handle SET_STATE_FROM_NAVIGATE', () => {
     const parameters = {
       geolocation: { latitude: 48.8557, longitude: 2.3469 },
-      offerCategories: [
-        'CINEMA',
-        'MUSIQUE',
-        'LECON',
-        'FILM',
-        'JEUX_VIDEO',
-        'CONFERENCE',
-        'INSTRUMENT',
-      ],
+      offerCategories: ['CINEMA', 'MUSIQUE', 'LECON', 'FILM', 'JEU', 'CONFERENCE', 'INSTRUMENT'],
       tags: [],
     }
     const action: Action = { type: 'SET_STATE_FROM_NAVIGATE', payload: parameters }
@@ -134,16 +126,16 @@ describe('Search reducer', () => {
   })
 
   it('should handle TOGGLE_CATEGORY', () => {
-    // 1. Add JEUX_VIDEO
-    let newState = searchReducer(state, { type: 'TOGGLE_CATEGORY', payload: 'JEUX_VIDEO' })
-    expect(newState).toStrictEqual({ ...state, offerCategories: ['JEUX_VIDEO'] })
+    // 1. Add JEU
+    let newState = searchReducer(state, { type: 'TOGGLE_CATEGORY', payload: 'JEU' })
+    expect(newState).toStrictEqual({ ...state, offerCategories: ['JEU'] })
 
     // 2. Add CINEMA
     newState = searchReducer(newState, { type: 'TOGGLE_CATEGORY', payload: 'CINEMA' })
-    expect(newState).toStrictEqual({ ...state, offerCategories: ['JEUX_VIDEO', 'CINEMA'] })
+    expect(newState).toStrictEqual({ ...state, offerCategories: ['JEU', 'CINEMA'] })
 
-    // 3. Remove JEUX_VIDEO
-    newState = searchReducer(newState, { type: 'TOGGLE_CATEGORY', payload: 'JEUX_VIDEO' })
+    // 3. Remove JEU
+    newState = searchReducer(newState, { type: 'TOGGLE_CATEGORY', payload: 'JEU' })
     expect(newState).toStrictEqual({ ...state, offerCategories: ['CINEMA'] })
   })
 
@@ -249,9 +241,9 @@ describe('Search reducer', () => {
   })
 
   it('should handle SET_CATEGORY', () => {
-    const action: Action = { type: 'SET_CATEGORY', payload: ['JEUX_VIDEO'] }
+    const action: Action = { type: 'SET_CATEGORY', payload: ['JEU'] }
     let newState = searchReducer(state, action)
-    expect(newState.offerCategories).toStrictEqual(['JEUX_VIDEO'])
+    expect(newState.offerCategories).toStrictEqual(['JEU'])
 
     newState = searchReducer(newState, { type: 'SET_CATEGORY', payload: [] })
     expect(newState.offerCategories).toStrictEqual([])

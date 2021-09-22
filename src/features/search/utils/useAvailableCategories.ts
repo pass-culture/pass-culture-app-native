@@ -6,5 +6,5 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 
 export const useAvailableCategories = () => {
   const isUserUnderage = useIsUserUnderage()
-  return isUserUnderage ? omit(CATEGORY_CRITERIA, CategoryIdEnum.JEUXVIDEO) : CATEGORY_CRITERIA
+  return isUserUnderage ? omit(CATEGORY_CRITERIA, CategoryIdEnum.JEU) : CATEGORY_CRITERIA
 }

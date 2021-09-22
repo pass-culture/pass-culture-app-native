@@ -216,7 +216,7 @@ describe('getCtaWordingAndAction', () => {
         ${CategoryType.Thing} | ${'Réserver'}                | ${false} | ${true}   | ${CategoryIdEnum.MEDIA}      | ${20}
         ${CategoryType.Event} | ${undefined}                 | ${true}  | ${true}   | ${CategoryIdEnum.FILM}       | ${20}
         ${CategoryType.Event} | ${'Voir les disponibilités'} | ${false} | ${true}   | ${CategoryIdEnum.FILM}       | ${0}
-        ${CategoryType.Thing} | ${undefined}                 | ${true}  | ${false}  | ${CategoryIdEnum.JEUXVIDEO}  | ${0}
+        ${CategoryType.Thing} | ${undefined}                 | ${true}  | ${false}  | ${CategoryIdEnum.JEU}        | ${0}
         ${CategoryType.Event} | ${'Voir les disponibilités'} | ${false} | ${false}  | ${CategoryIdEnum.INSTRUMENT} | ${20}
       `(
         'CTA(disabled=$disabled) = "$expected" for categoryType=$type, isDigital=$isDigital, categoryName=$name and price=$price',

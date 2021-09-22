@@ -22,11 +22,11 @@ describe('useAvailableCategories', () => {
     expect(result.current).toEqual(searchCategories)
   })
 
-  it('should return CATEGORY_CRITERIA except JEUX_VIDEO if user is underage beneficiary', () => {
+  it('should return CATEGORY_CRITERIA except JEU if user is underage beneficiary', () => {
     mockUserProfileInfo.roles = [UserRole.UNDERAGEBENEFICIARY]
     const { result } = renderHook(useAvailableSearchCategories)
     const searchCategories = omit(CATEGORY_CRITERIA, 'ALL')
-    const underageSearchCategories = omit(searchCategories, CategoryIdEnum.JEUXVIDEO)
+    const underageSearchCategories = omit(searchCategories, CategoryIdEnum.JEU)
     expect(result.current).toEqual(underageSearchCategories)
   })
 })
