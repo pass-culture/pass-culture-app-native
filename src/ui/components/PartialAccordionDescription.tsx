@@ -64,7 +64,8 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description }) =>
     outputRange: [`${2 * Math.PI}rad`, `${(2 * Math.PI) / 2}rad`],
   })
 
-  if (!description) return null
+  if (!description) return <Spacer.Column numberOfSpaces={6} />
+
   return (
     <Container>
       <StyledAnimatedView style={{ height: bodyDescriptionHeight }} testID="accordionBody">

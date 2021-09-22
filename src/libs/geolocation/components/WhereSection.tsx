@@ -10,6 +10,7 @@ import { env } from 'libs/environment'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
+import { queryClient } from 'libs/queryClient'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
@@ -23,6 +24,21 @@ type Props = {
   locationCoordinates: Coordinates
   showVenueBanner?: boolean | false
 }
+
+type PartialVenue = Pick<VenueResponse, 'id' | 'venueTypeCode' | 'name' | 'description'>
+
+export const mergeVenueData = (venue: PartialVenue) => (
+  prevData: VenueResponse | undefined
+): VenueResponse => ({
+  id: venue.id,
+  name: venue.name,
+  venueTypeCode: venue.venueTypeCode,
+  isVirtual: false,
+  description: venue.description,
+  accessibility: {},
+  contact: {},
+  ...(prevData || {}),
+})
 
 export const WhereSection: React.FC<Props> = ({
   beforeNavigateToItinerary,
@@ -39,6 +55,8 @@ export const WhereSection: React.FC<Props> = ({
   if (distanceToLocation === undefined && venue.address === null) return null
 
   const navigateToVenuePage = () => {
+    // We pre-populate the query-cache with the data from the search result for a smooth transition
+    queryClient.setQueryData(['venue', venue.id], mergeVenueData(venue))
     analytics.logConsultVenue({ venueId: venue.id, from: 'offer' })
     navigation.navigate('Venue', { id: venue.id })
   }

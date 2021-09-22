@@ -120,6 +120,7 @@ Array [
           }
         >
           <div
+            aria-label="venueTile"
             className="css-view-1dbjc4n"
             data-testid="venueTile"
             onClick={[Function]}
@@ -275,6 +276,7 @@ Array [
           }
         >
           <div
+            aria-label="venueTile"
             className="css-view-1dbjc4n"
             data-testid="venueTile"
             onClick={[Function]}
@@ -430,6 +432,7 @@ Array [
           }
         >
           <div
+            aria-label="venueTile"
             className="css-view-1dbjc4n"
             data-testid="venueTile"
             onClick={[Function]}
@@ -585,6 +588,7 @@ Array [
           }
         >
           <div
+            aria-label="venueTile"
             className="css-view-1dbjc4n"
             data-testid="venueTile"
             onClick={[Function]}

@@ -13,6 +13,7 @@ exports[`OfferTile component should render correctly 1`] = `
   }
 >
   <View
+    accessibilityLabel="offerTile"
     accessible={true}
     focusable={true}
     onClick={[Function]}

@@ -197,6 +197,7 @@ Array [
           }
         >
           <View
+            accessibilityLabel="venueTile"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -376,6 +377,7 @@ Array [
           }
         >
           <View
+            accessibilityLabel="venueTile"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -555,6 +557,7 @@ Array [
           }
         >
           <View
+            accessibilityLabel="venueTile"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -734,6 +737,7 @@ Array [
           }
         >
           <View
+            accessibilityLabel="venueTile"
             accessible={true}
             focusable={true}
             onClick={[Function]}
