@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { VenueTypeCode } from 'api/gen'
 import { VenueCaption } from 'features/home/atoms/VenueCaption'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { ImageTile } from 'ui/components/ImageTile'
 import { ColorsEnum, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum, LENGTH_S } from 'ui/theme/grid'
@@ -27,6 +28,7 @@ export const VenueTile = (props: VenueTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
 
   function handlePressVenue() {
+    analytics.logConsultVenue({ venueId, from: 'home' })
     navigation.navigate('Venue', {
       id: venueId,
     })
