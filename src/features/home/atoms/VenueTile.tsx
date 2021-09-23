@@ -38,7 +38,6 @@ const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number; imag
     borderRadius: BorderRadiusEnum.BORDER_RADIUS,
     height: imageHeight,
     width: imageWidth,
-    flex: 1,
     backgroundColor: ColorsEnum.GREY_DISABLED,
   })
 )

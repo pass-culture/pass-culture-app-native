@@ -22,7 +22,7 @@ export const VenueCaption = (props: VenueCaptionProps) => {
     <CaptionContainer imageWidth={imageWidth}>
       <VenueName>{name}</VenueName>
       <IconWithCaption>
-        <Icon size={getSpacing(5)} color={ColorsEnum.GREY_DARK} />
+        <Icon size={getSpacing(4)} color={ColorsEnum.GREY_DARK} />
         <Spacer.Row numberOfSpaces={1} />
         <TypeLabel>{typeLabel}</TypeLabel>
       </IconWithCaption>
