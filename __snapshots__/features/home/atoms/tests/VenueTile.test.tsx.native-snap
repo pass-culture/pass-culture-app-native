@@ -27,9 +27,6 @@ exports[`VenueTile component should render correctly 1`] = `
         Object {
           "backgroundColor": "#e6e6e6",
           "borderRadius": 8,
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
           "height": 168,
           "width": 252,
         },
@@ -108,8 +105,8 @@ exports[`VenueTile component should render correctly 1`] = `
     >
       <View
         fill="#626262"
-        height={20}
-        width={20}
+        height={16}
+        width={16}
       >
         <Text>
           undefined-SVG-Mock
