@@ -3,6 +3,7 @@ import {
   BookingsResponse,
   CategoryNameEnum,
   CategoryType,
+  SubcategoryIdEnum,
 } from 'api/gen'
 
 export const bookingsSnap: BookingsResponse = {
@@ -31,6 +32,7 @@ export const bookingsSnap: BookingsResponse = {
           extraData: null,
           isPermanent: false,
           isDigital: true,
+          subcategoryId: SubcategoryIdEnum.EVENEMENTPATRIMOINE,
           venue: {
             id: 2185,
             city: 'Drancy',
@@ -73,6 +75,7 @@ export const bookingsSnap: BookingsResponse = {
           },
           isPermanent: false,
           isDigital: true,
+          subcategoryId: SubcategoryIdEnum.EVENEMENTPATRIMOINE,
           venue: {
             id: 2185,
             city: 'Drancy',

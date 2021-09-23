@@ -15,6 +15,7 @@ const venueId = 34
 const props = {
   category: offer.category || '',
   categoryName: offer.category,
+  subcategoryId: offer.subcategoryId,
   expenseDomains: [],
   date: 'Dès le 12 mars 2020',
   name: offer.name,
@@ -80,6 +81,7 @@ describe('VenueOfferTile component', () => {
       isSoldOut: false,
       name: offer.name,
       stocks: [],
+      subcategoryId: offer.subcategoryId,
       venue: { coordinates: {} },
     })
   })

@@ -60,6 +60,7 @@ Array [
             "prices": Array [
               2800,
             ],
+            "subcategoryId": "CONCERT",
             "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
           },
         },
@@ -78,6 +79,7 @@ Array [
             "prices": Array [
               2300,
             ],
+            "subcategoryId": "CONCERT",
             "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
           },
         },
@@ -98,6 +100,7 @@ Array [
             "prices": Array [
               3400,
             ],
+            "subcategoryId": "CONCERT",
             "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
           },
         },
@@ -116,6 +119,7 @@ Array [
             "prices": Array [
               2800,
             ],
+            "subcategoryId": "CONCERT",
             "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
           },
         },

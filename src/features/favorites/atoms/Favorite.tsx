@@ -6,7 +6,12 @@ import { useWindowDimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
+import {
+  FavoriteOfferResponse,
+  FavoriteResponse,
+  SubcategoryIdEnum,
+  UserProfileResponse,
+} from 'api/gen'
 import { useRemoveFavorite } from 'features/favorites/pages/useFavorites'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { Credit } from 'features/home/services/useAvailableCredit'
@@ -76,6 +81,7 @@ export const Favorite: React.FC<Props> = (props) => {
         ...offer,
         category: parseCategory(offer.category.name),
         categoryName: offer.category.name,
+        subcategoryId: offer.subcategoryId as SubcategoryIdEnum,
         thumbUrl: offer.image?.url,
         name: offer.name,
         offerId: offer.id,

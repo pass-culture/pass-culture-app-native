@@ -8,6 +8,7 @@ import {
   ExpenseDomain,
   FavoriteCategoryResponse,
   FavoriteResponse,
+  SubcategoryIdEnum,
   UserProfileResponse,
 } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
@@ -43,6 +44,7 @@ const favorite: FavoriteResponse = {
     expenseDomains: [ExpenseDomain.All],
     externalTicketOfficeUrl: 'https://externalbooking.test.com',
     id: 146105,
+    subcategoryId: SubcategoryIdEnum.TELECHARGEMENTMUSIQUE,
     image: {
       credit: null,
       url:

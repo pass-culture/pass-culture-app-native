@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryNameEnum, SubcategoryIdEnum } from 'api/gen'
 
 import { AlgoliaHit } from '..'
 
@@ -9,6 +9,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         category: CategoryNameEnum.MUSIQUE,
+        subcategoryId: SubcategoryIdEnum.CONCERT,
         dates: [],
         isDigital: false,
         isDuo: false,
@@ -23,6 +24,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         category: CategoryNameEnum.MUSIQUE,
+        subcategoryId: SubcategoryIdEnum.CONCERT,
         dates: [],
         isDigital: false,
         isDuo: false,
@@ -37,6 +39,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         category: CategoryNameEnum.MUSIQUE,
+        subcategoryId: SubcategoryIdEnum.CONCERT,
         dates: [1605643200.0],
         isDigital: false,
         isDuo: true,
@@ -51,6 +54,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         category: CategoryNameEnum.MUSIQUE,
+        subcategoryId: SubcategoryIdEnum.CONCERT,
         dates: [],
         isDigital: false,
         isDuo: false,
@@ -77,6 +81,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
 export const physicalAlgoliaOffer: AlgoliaHit = {
   offer: {
     category: CategoryNameEnum.SPECTACLE,
+    subcategoryId: SubcategoryIdEnum.CONCERT,
     dates: [1612465203, 1612551603, 1612638003],
     isDigital: false,
     isDuo: true,
@@ -92,6 +97,7 @@ export const physicalAlgoliaOffer: AlgoliaHit = {
 export const digitalAlgoliaOffer: AlgoliaHit = {
   offer: {
     category: CategoryNameEnum.FILM,
+    subcategoryId: SubcategoryIdEnum.CONCERT,
     dates: [],
     isDigital: true,
     isDuo: false,
