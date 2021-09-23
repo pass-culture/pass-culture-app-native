@@ -27,8 +27,11 @@ const getQueryState = (key: string) => {
   }
 }
 
-export const useQueryClient = jest
-  .fn()
-  .mockReturnValue({ invalidateQueries, getQueryData: () => {}, getQueryState })
+export const useQueryClient = jest.fn().mockReturnValue({
+  invalidateQueries,
+  getQueryData: () => {},
+  setQueryData: () => {},
+  getQueryState,
+})
 
 export const useQuery = jest.fn().mockResolvedValue({})

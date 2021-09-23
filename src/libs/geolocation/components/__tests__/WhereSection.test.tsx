@@ -5,6 +5,7 @@ import { offerVenueResponseSnap } from 'features/offer/api/snaps/offerVenueRepon
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { fireEvent, render } from 'tests/utils'
 
+jest.mock('react-query')
 jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
