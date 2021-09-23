@@ -887,14 +887,14 @@ SPEC CHECKSUMS:
   CodePush: 69186fd1143f7e5e5c6f65383cf14f4927e28213
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: afd36d3e09b3efa01626752a7349d4f7d71ead4c
+  FBReactNativeSpec: 1f1e38b79ec675f63489c885fa9c63a50511b8d9
   Firebase: 21ac9f28b09a8bdfc005f34c984fca84e7e8786d
   FirebaseABTesting: c3e48ebf5e7e5c674c5a131c68e941d7921d83dc
   FirebaseAnalytics: 8f32ae54ad42754f503354782575c4ddfc1425c3
   FirebaseCore: 620b677f70f5470a8e59cb77f3ddc666f6f09785
   FirebaseCoreDiagnostics: 3721920bde3a9a6d5aa093c1d25e9d3e47f694af
   FirebaseDynamicLinks: 406d67290fd123e133641f93a333b4957af22c09
-  FirebaseFirestore: 113b2724b363d79c98c965f43e8af970745c13f3
+  FirebaseFirestore: 6aede2ff41be2e1e2ef65ff2f08d765b1f3c5f3d
   FirebaseInstallations: 0ede6ffcd215b8f93c19d9b06c1c54e2d4107e98
   FirebasePerformance: 868249ceda5e3399f581b5b53454d963feaa8164
   FirebaseRemoteConfig: 9ee4672d4eacf646256e26cfac61021b3a390ea4
