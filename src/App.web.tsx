@@ -14,6 +14,7 @@ import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { AppWebHead } from 'libs/appWebHead'
+import { env } from 'libs/environment'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
@@ -24,6 +25,7 @@ import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { theme } from 'theme'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+import { ServiceWorkerProvider } from 'web/useServiceWorker'
 
 export function App() {
   useStartBatchNotification()
@@ -37,31 +39,33 @@ export function App() {
   }, [])
 
   return (
-    <ThemeProvider theme={theme}>
-      <SafeAreaProvider>
-        <QueryClientProvider client={queryClient}>
-          <AuthWrapper>
-            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              <GeolocationWrapper>
-                <FavoritesWrapper>
-                  <SearchWrapper>
-                    <I18nProvider i18n={i18n}>
-                      <SnackBarProvider>
-                        <IdCheckContextProvider>
-                          <AppWebHead />
-                          <Suspense fallback={<LoadingPage />}>
-                            <AppNavigationContainer />
-                          </Suspense>
-                        </IdCheckContextProvider>
-                      </SnackBarProvider>
-                    </I18nProvider>
-                  </SearchWrapper>
-                </FavoritesWrapper>
-              </GeolocationWrapper>
-            </ErrorBoundary>
-          </AuthWrapper>
-        </QueryClientProvider>
-      </SafeAreaProvider>
-    </ThemeProvider>
+    <ServiceWorkerProvider fileName={`${env.PUBLIC_URL}/service-worker.js`}>
+      <ThemeProvider theme={theme}>
+        <SafeAreaProvider>
+          <QueryClientProvider client={queryClient}>
+            <AuthWrapper>
+              <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                <GeolocationWrapper>
+                  <FavoritesWrapper>
+                    <SearchWrapper>
+                      <I18nProvider i18n={i18n}>
+                        <SnackBarProvider>
+                          <IdCheckContextProvider>
+                            <AppWebHead />
+                            <Suspense fallback={<LoadingPage />}>
+                              <AppNavigationContainer />
+                            </Suspense>
+                          </IdCheckContextProvider>
+                        </SnackBarProvider>
+                      </I18nProvider>
+                    </SearchWrapper>
+                  </FavoritesWrapper>
+                </GeolocationWrapper>
+              </ErrorBoundary>
+            </AuthWrapper>
+          </QueryClientProvider>
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </ServiceWorkerProvider>
   )
 }
