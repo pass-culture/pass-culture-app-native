@@ -136,6 +136,7 @@ module.exports = {
           ['types', './src/types'],
           ['tests', './src/tests'],
           ['ui', './src/ui'],
+          ['web', './src/web'],
           ['__mocks__', './__mocks__'],
         ],
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],

@@ -21,7 +21,7 @@ const STORE_LINK = Platform.select({
 
 const onPress = Platform.select({
   default: () => openExternalUrl(STORE_LINK),
-  web: () => globalThis?.window?.location?.reload(),
+  web: () => globalThis?.window?.location?.replace('/'),
 })
 
 const title = Platform.select({
