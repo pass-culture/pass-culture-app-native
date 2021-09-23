@@ -8,11 +8,12 @@ import React, {
   memo,
 } from 'react'
 import { useWindowDimensions } from 'react-native'
-import { Animated, TouchableOpacity, View, ViewProps, ViewStyle } from 'react-native'
+import { TouchableOpacity, View, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
+import { ProgressBar } from 'ui/components/snackBar/ProgressBar'
 import { Close } from 'ui/svg/icons/Close'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -47,32 +48,17 @@ const _SnackBar = (props: SnackBarProps) => {
 
   const containerRef: RefType = useRef(null)
   const progressBarContainerRef: RefType = useRef(null)
-  const [progressBarWidth] = useState(new Animated.Value(0))
   const [isVisible, setVisible] = useState(props.visible)
 
-  function animateProgressBarWidth() {
-    props.timeout &&
-      Animated.timing(progressBarWidth, {
-        toValue: windowWidth,
-        duration: props.timeout,
-        useNativeDriver: false,
-      }).start()
-  }
-  function resetProgressBarWidth() {
-    progressBarWidth.setValue(0)
-  }
   async function triggerApparitionAnimation() {
     setVisible(true)
     progressBarContainerRef?.current?.fadeInDown(animationDuration)
-    containerRef?.current?.fadeInDown(animationDuration).then(() => {
-      animateProgressBarWidth()
-    })
+    containerRef?.current?.fadeInDown(animationDuration)
   }
   async function triggerVanishAnimation() {
     progressBarContainerRef?.current?.fadeOutUp(animationDuration)
     containerRef?.current?.fadeOutUp(animationDuration).then(() => {
       setVisible(false)
-      resetProgressBarWidth()
     })
   }
 
@@ -83,20 +69,13 @@ const _SnackBar = (props: SnackBarProps) => {
     if (props.refresher <= 0) {
       return
     }
-
     const shouldDisplay = props.visible && !isVisible
     const shouldHide = !props.visible && isVisible
-
     if (shouldDisplay) {
       triggerApparitionAnimation()
     }
     if (shouldHide) {
       triggerVanishAnimation()
-    }
-    if (props.visible && isVisible) {
-      // the snackbar is still visible but props have been changed
-      resetProgressBarWidth()
-      animateProgressBarWidth()
     }
     // Timeout section: We want to reset the timer when props are changed
     if (!props.timeout || !props.onClose || shouldHide) {
@@ -132,12 +111,13 @@ const _SnackBar = (props: SnackBarProps) => {
         </SnackBarContainer>
       </ColoredAnimatableView>
       <AnimatableView easing="ease" duration={animationDuration} ref={progressBarContainerRef}>
-        <ProgressBar
-          testID="snackbar-progressbar"
-          backgroundColor={props.progressBarColor}
-          width={progressBarWidth}
-          isVisible={isVisible && !!props?.timeout}
-        />
+        {isVisible && props.timeout ? (
+          <ProgressBar
+            color={props.progressBarColor}
+            timeout={props.timeout}
+            refresher={props.refresher}
+          />
+        ) : null}
       </AnimatableView>
     </RootContainer>
   )
@@ -154,7 +134,9 @@ const RootContainer = styled(View)({
 })
 
 // Troobleshoot Animated types issue with forwaded 'backgroundColor' prop
-const ColoredAnimatableView = styled(AnimatableView)<{ backgroundColor: ColorsEnum }>``
+const ColoredAnimatableView = styled(AnimatableView)<{ backgroundColor: ColorsEnum }>((props) => ({
+  backgroundColor: props.backgroundColor,
+}))
 
 const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>(
   ({ isVisible, marginTop }) => ({
@@ -174,16 +156,4 @@ const Text = styled(Typo.Body)<{ color: string; windowWidth: number }>((props) =
   flexGrow: 0,
   maxWidth: props.windowWidth - getSpacing(20),
   flexWrap: 'wrap',
-}))
-
-const ProgressBar = styled(Animated.View)<{
-  backgroundColor: ColorsEnum
-  isVisible: boolean
-  width: Animated.Value
-}>(({ backgroundColor, isVisible, width }) => ({
-  display: isVisible ? 'flex' : 'none',
-  height: 4,
-  backgroundColor: backgroundColor,
-  // @ts-expect-error: avoid typescript error due to not supported Animated Css/Styles types
-  width: width._value /* The alternative is to use inline style */,
 }))
