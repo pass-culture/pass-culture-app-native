@@ -46,6 +46,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         <OfferTile
           category={parseCategory(item.offer.category)}
           categoryName={item.offer.category}
+          subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}
           distance={formatDistance(item._geoloc, position)}
           name={item.offer.name}

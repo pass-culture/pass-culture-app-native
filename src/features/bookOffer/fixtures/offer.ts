@@ -1,4 +1,4 @@
-import { CategoryNameEnum, CategoryType, ExpenseDomain } from 'api/gen'
+import { CategoryNameEnum, CategoryType, ExpenseDomain, SubcategoryIdEnum } from 'api/gen'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 
 export const mockOffer: OfferAdaptedResponse = {
@@ -37,6 +37,7 @@ export const mockOffer: OfferAdaptedResponse = {
     label: 'Pratique artistique',
     name: CategoryNameEnum.LECON,
   },
+  subcategoryId: SubcategoryIdEnum.EVENEMENTPATRIMOINE,
   stocks: [
     {
       id: 148409,
@@ -129,6 +130,7 @@ export const mockDigitalOffer: OfferAdaptedResponse = {
     label: 'Jeux videos',
     name: CategoryNameEnum.JEUXVIDEO,
   },
+  subcategoryId: SubcategoryIdEnum.JEUSUPPORTPHYSIQUE,
   stocks: [
     {
       id: 148401,

@@ -1,4 +1,4 @@
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryNameEnum, SubcategoryIdEnum } from 'api/gen'
 import { SearchHit } from 'libs/search'
 
 export const VenueOffersWithOneOfferResponseSnap: SearchHit = {
@@ -6,6 +6,7 @@ export const VenueOffersWithOneOfferResponseSnap: SearchHit = {
   objectID: '223337',
   offer: {
     category: CategoryNameEnum.CINEMA,
+    subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
     dates: [1629312300, 1629485100, 1629657900],
     isDigital: false,
     isDuo: true,
@@ -22,6 +23,7 @@ export const VenueOffersResponseSnap: SearchHit[] = [
     objectID: '223342',
     offer: {
       category: CategoryNameEnum.CINEMA,
+      subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
       dates: [1629312300, 1629485100, 1629657900],
       isDigital: false,
       isDuo: true,
@@ -36,6 +38,7 @@ export const VenueOffersResponseSnap: SearchHit[] = [
     objectID: '223338',
     offer: {
       category: CategoryNameEnum.CINEMA,
+      subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
       dates: [1629312300, 1629485100, 1629657900],
       isDigital: false,
       isDuo: true,
@@ -50,6 +53,7 @@ export const VenueOffersResponseSnap: SearchHit[] = [
     objectID: '223339',
     offer: {
       category: CategoryNameEnum.CINEMA,
+      subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
       dates: [1629312300, 1629485100, 1629657900],
       isDigital: false,
       isDuo: true,

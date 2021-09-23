@@ -43,6 +43,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           <OfferTile
             category={parseCategory(hit.offer.category)}
             categoryName={hit.offer.category}
+            subcategoryId={hit.offer.subcategoryId}
             offerId={+hit.objectID}
             distance={formatDistance(hit._geoloc, position)}
             name={hit.offer.name}

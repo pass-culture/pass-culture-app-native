@@ -3,6 +3,7 @@ import {
   FavoriteCategoryResponse,
   FavoriteResponse,
   PaginatedFavoritesResponse,
+  SubcategoryIdEnum,
 } from 'api/gen'
 
 // humanizedId AHD3A
@@ -27,6 +28,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
           latitude: 48.12108,
           longitude: -1.17896,
         },
+        subcategoryId: SubcategoryIdEnum.SPECTACLEENREGISTRE,
         price: 0,
         startPrice: null,
         date: new Date('2021-03-28T15:45:00'),
@@ -51,6 +53,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
           url:
             'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
         },
+        subcategoryId: SubcategoryIdEnum.CONFERENCE,
         coordinates: {
           latitude: 5.15839,
           longitude: -52.63741,
@@ -79,6 +82,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
           url:
             'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
         },
+        subcategoryId: SubcategoryIdEnum.SPECTACLEENREGISTRE,
         coordinates: {
           latitude: 48.94538,
           longitude: 2.5029,
@@ -107,6 +111,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
           url:
             'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
         },
+        subcategoryId: SubcategoryIdEnum.SPECTACLEENREGISTRE,
         coordinates: {
           latitude: 48.9263,
           longitude: 2.49008,
@@ -138,6 +143,7 @@ export const addFavoriteJsonResponseSnap: FavoriteResponse = {
       latitude: 48.12108,
       longitude: -1.17896,
     },
+    subcategoryId: SubcategoryIdEnum.SPECTACLEENREGISTRE,
     price: 0,
     startPrice: null,
     date: new Date('2021-04-01T12:00:00'),

@@ -1,4 +1,10 @@
-import { CategoryNameEnum, CategoryType, ExpenseDomain, OfferResponse } from 'api/gen'
+import {
+  CategoryNameEnum,
+  CategoryType,
+  ExpenseDomain,
+  OfferResponse,
+  SubcategoryIdEnum,
+} from 'api/gen'
 
 // humanizedId AHD3A
 export const offerResponseSnap: OfferResponse = {
@@ -17,6 +23,7 @@ export const offerResponseSnap: OfferResponse = {
   isEducational: false,
   name: 'Sous les étoiles de Paris - VF',
   category: { label: 'Cinéma', categoryType: CategoryType.Event, name: CategoryNameEnum.CINEMA },
+  subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
   isReleased: true,
   isExpired: false,
   isSoldOut: false,

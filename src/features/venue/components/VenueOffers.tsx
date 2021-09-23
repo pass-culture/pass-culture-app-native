@@ -44,6 +44,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
         <VenueOfferTile
           category={parseCategory(item.offer.category)}
           categoryName={item.offer.category}
+          subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}

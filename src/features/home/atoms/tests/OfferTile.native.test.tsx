@@ -14,6 +14,7 @@ const offerId = 116656
 const props = {
   category: offer.category || '',
   categoryName: offer.category,
+  subcategoryId: offer.subcategoryId,
   expenseDomains: [],
   distance: '1,2km',
   date: 'Dès le 12 mars 2020',
@@ -80,6 +81,7 @@ describe('OfferTile component', () => {
       isSoldOut: false,
       name: offer.name,
       stocks: [],
+      subcategoryId: offer.subcategoryId,
       venue: { coordinates: {} },
       isEducational: false,
     })
