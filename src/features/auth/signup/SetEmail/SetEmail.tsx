@@ -105,7 +105,7 @@ export const SetEmail: FunctionComponent = () => {
           </StyledInput>
           <Spacer.Column numberOfSpaces={4} />
           <StyledCheckBox onPress={() => setIsNewsletterChecked(!isNewsletterChecked)}>
-            <CheckboxInput isChecked={isNewsletterChecked} />
+            <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
             <CheckBoxText>
               {t`Reçois nos recommandations culturelles à proximité de chez toi par e-mail.`}
             </CheckBoxText>
