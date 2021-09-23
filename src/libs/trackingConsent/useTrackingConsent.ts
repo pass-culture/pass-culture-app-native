@@ -5,22 +5,31 @@ import {
   requestTrackingPermission,
 } from 'react-native-tracking-transparency'
 
+import { eventMonitoring } from 'libs/monitoring'
+
 export const useTrackingConsent = () => {
   const [trackingStatus, setTrackingStatus] = useState<TrackingStatus>('not-determined')
 
   useEffect(() => {
-    getTrackingStatus().then((status) => {
-      // android and iOS < 14
-      if (status === 'unavailable') {
-        setTrackingStatus(status)
-        return
+    // Using a setTimeout may fix the ATT popup not showing :
+    // https://github.com/mrousavy/react-native-tracking-transparency/issues/15#issuecomment-925021181
+    setTimeout(async () => {
+      try {
+        const status = await getTrackingStatus()
+        // android and iOS < 14
+        if (status === 'unavailable') {
+          setTrackingStatus(status)
+          return
+        }
+        // iOS >= 14
+        if (status === 'not-determined') {
+          const newStatus = await requestTrackingPermission()
+          setTrackingStatus(newStatus)
+        }
+      } catch (error) {
+        eventMonitoring.captureException(error)
       }
-
-      // iOS >= 14
-      if (status === 'not-determined') {
-        requestTrackingPermission().then(setTrackingStatus)
-      }
-    })
+    }, 1000)
   }, [])
 
   return {
