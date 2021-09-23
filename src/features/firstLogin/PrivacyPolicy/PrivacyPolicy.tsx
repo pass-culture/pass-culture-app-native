@@ -4,6 +4,7 @@ import React, { RefObject, useEffect, useState } from 'react'
 import { PrivacyPolicyModal } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicyModal'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
+import { getTrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 
 interface Props {
   navigationRef?: RefObject<NavigationContainerRef>
@@ -20,9 +21,10 @@ export function PrivacyPolicy(props: Props) {
     })
   }, [])
 
-  function acceptCookie() {
+  async function acceptCookie() {
     setHasUserMadeCookieChoice(true)
     storage.saveObject('has_accepted_cookie', true)
+    await getTrackingConsent()
   }
 
   async function refuseCookie() {
@@ -30,6 +32,7 @@ export function PrivacyPolicy(props: Props) {
     await storage.saveObject('has_accepted_cookie', false)
     await analytics.logHasRefusedCookie()
     await analytics.disableCollection()
+    await getTrackingConsent()
   }
 
   return hasUserMadeCookieChoice ? null : (
