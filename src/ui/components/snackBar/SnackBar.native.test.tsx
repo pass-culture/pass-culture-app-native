@@ -30,9 +30,11 @@ describe('SnackBar Component', () => {
           backgroundColor: ColorsEnum.ACCENT,
           progressBarColor: ColorsEnum.GREEN_LIGHT,
           color: ColorsEnum.WHITE,
+          timeout: 1000,
           refresher: 1,
         })
       )
+
       getByTestId('snackbar-message')
 
       const view = getByTestId('snackbar-view')
@@ -42,6 +44,21 @@ describe('SnackBar Component', () => {
       expect(view.props.backgroundColor).toEqual(ColorsEnum.ACCENT)
       expect(progressBar.props.backgroundColor).toEqual(ColorsEnum.GREEN_LIGHT)
       expect(message.props.color).toEqual(ColorsEnum.WHITE)
+    })
+    it('should not display proress bar if timeout is not provided', () => {
+      const { queryByTestId } = render(
+        renderSnackBar({
+          visible: true,
+          message: 'message',
+          icon: Check,
+          backgroundColor: ColorsEnum.ACCENT,
+          progressBarColor: ColorsEnum.GREEN_LIGHT,
+          color: ColorsEnum.WHITE,
+          refresher: 1,
+        })
+      )
+      const progressBar = queryByTestId('snackbar-progressbar')
+      expect(progressBar).toBeNull()
     })
     it('should render the content container when visible=true', () => {
       const { getByTestId } = render(renderHelperSnackBar(true, { message: 'message' }))
