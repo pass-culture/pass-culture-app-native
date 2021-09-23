@@ -322,6 +322,12 @@ export interface BookingOfferResponse {
      * @type {string}
      * @memberof BookingOfferResponse
      */
+    subcategoryId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingOfferResponse
+     */
     url?: string | null;
     /**
      * 
@@ -497,6 +503,26 @@ export interface BookingsResponse {
      * @memberof BookingsResponse
      */
     ongoing_bookings: Array<BookingReponse>;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum CategoryIdEnum {
+    BEAUXARTS = 'BEAUX_ARTS',
+    CINEMA = 'CINEMA',
+    CONFERENCE = 'CONFERENCE',
+    FILM = 'FILM',
+    INSTRUMENT = 'INSTRUMENT',
+    JEU = 'JEU',
+    LIVRE = 'LIVRE',
+    MEDIA = 'MEDIA',
+    MUSEE = 'MUSEE',
+    MUSIQUEENREGISTREE = 'MUSIQUE_ENREGISTREE',
+    MUSIQUELIVE = 'MUSIQUE_LIVE',
+    PRATIQUEART = 'PRATIQUE_ART',
+    SPECTACLE = 'SPECTACLE',
+    TECHNIQUE = 'TECHNIQUE'
 }/**
  * An enumeration.
  * @export
@@ -760,6 +786,12 @@ export interface FavoriteOfferResponse {
      * @memberof FavoriteOfferResponse
      */
     startPrice?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof FavoriteOfferResponse
+     */
+    subcategoryId: string;
 }/**
  * 
  * @export
@@ -820,6 +852,42 @@ export interface GetIdCheckTokenResponse {
      * @memberof GetIdCheckTokenResponse
      */
     token_timestamp: Date;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum HomepageLabelNameEnum {
+    FILM = 'FILM',
+    CINEMA = 'CINEMA',
+    CONFERENCE = 'CONFERENCE',
+    JEU = 'JEU',
+    LIVRE = 'LIVRE',
+    VISITE = 'VISITE',
+    MUSIQUE = 'MUSIQUE',
+    COURS = 'COURS',
+    PRESSE = 'PRESSE',
+    SPECTACLE = 'SPECTACLE',
+    MATERIEL = 'MATERIEL',
+    NONE = 'NONE'
+}/**
+ * 
+ * @export
+ * @interface HomepageLabelResponseModel
+ */
+export interface HomepageLabelResponseModel {
+    /**
+     * 
+     * @type {string}
+     * @memberof HomepageLabelResponseModel
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HomepageLabelResponseModel
+     */
+    value?: string | null;
 }/**
  * 
  * @export
@@ -1128,6 +1196,12 @@ export interface OfferResponse {
     stocks: Array<OfferStockResponse>;
     /**
      * 
+     * @type {string}
+     * @memberof OfferResponse
+     */
+    subcategoryId: string;
+    /**
+     * 
      * @type {OfferVenueResponse}
      * @memberof OfferResponse
      */
@@ -1265,6 +1339,15 @@ export interface OfferVenueResponse {
      */
     publicName?: string | null;
 }/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum OnlineOfflinePlatformChoicesEnum {
+    OFFLINE = 'OFFLINE',
+    ONLINE = 'ONLINE',
+    ONLINEOROFFLINE = 'ONLINE_OR_OFFLINE'
+}/**
  * 
  * @export
  * @interface PaginatedFavoritesResponse
@@ -1400,6 +1483,43 @@ export interface ResetPasswordRequest {
      * @memberof ResetPasswordRequest
      */
     resetPasswordToken: string;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SearchGroupNameEnum {
+    FILM = 'FILM',
+    CINEMA = 'CINEMA',
+    CONFERENCE = 'CONFERENCE',
+    JEU = 'JEU',
+    LIVRE = 'LIVRE',
+    VISITE = 'VISITE',
+    MUSIQUE = 'MUSIQUE',
+    COURS = 'COURS',
+    PRESSE = 'PRESSE',
+    SPECTACLE = 'SPECTACLE',
+    INSTRUMENT = 'INSTRUMENT',
+    MATERIEL = 'MATERIEL',
+    NONE = 'NONE'
+}/**
+ * 
+ * @export
+ * @interface SearchGroupResponseModel
+ */
+export interface SearchGroupResponseModel {
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchGroupResponseModel
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchGroupResponseModel
+     */
+    value?: string | null;
 }/**
  * 
  * @export
@@ -1544,6 +1664,174 @@ export interface SigninResponse {
      * @memberof SigninResponse
      */
     refreshToken: string;
+}/**
+ * 
+ * @export
+ * @interface SubcategoriesResponseModel
+ */
+export interface SubcategoriesResponseModel {
+    /**
+     * 
+     * @type {Array<HomepageLabelResponseModel>}
+     * @memberof SubcategoriesResponseModel
+     */
+    homepageLabels: Array<HomepageLabelResponseModel>;
+    /**
+     * 
+     * @type {Array<SearchGroupResponseModel>}
+     * @memberof SubcategoriesResponseModel
+     */
+    searchGroups: Array<SearchGroupResponseModel>;
+    /**
+     * 
+     * @type {Array<SubcategoryResponseModel>}
+     * @memberof SubcategoriesResponseModel
+     */
+    subcategories: Array<SubcategoryResponseModel>;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SubcategoryIdEnum {
+    ABOBIBLIOTHEQUE = 'ABO_BIBLIOTHEQUE',
+    ABOCONCERT = 'ABO_CONCERT',
+    ABOJEUVIDEO = 'ABO_JEU_VIDEO',
+    ABOLIVRENUMERIQUE = 'ABO_LIVRE_NUMERIQUE',
+    ABOLUDOTHEQUE = 'ABO_LUDOTHEQUE',
+    ABOMEDIATHEQUE = 'ABO_MEDIATHEQUE',
+    ABOMUSEE = 'ABO_MUSEE',
+    ABOPLATEFORMEMUSIQUE = 'ABO_PLATEFORME_MUSIQUE',
+    ABOPLATEFORMEVIDEO = 'ABO_PLATEFORME_VIDEO',
+    ABOPRATIQUEART = 'ABO_PRATIQUE_ART',
+    ABOPRESSEENLIGNE = 'ABO_PRESSE_EN_LIGNE',
+    ABOSPECTACLE = 'ABO_SPECTACLE',
+    ACHATINSTRUMENT = 'ACHAT_INSTRUMENT',
+    ACTIVATIONEVENT = 'ACTIVATION_EVENT',
+    ACTIVATIONTHING = 'ACTIVATION_THING',
+    APPCULTURELLE = 'APP_CULTURELLE',
+    ATELIERPRATIQUEART = 'ATELIER_PRATIQUE_ART',
+    AUTRESUPPORTNUMERIQUE = 'AUTRE_SUPPORT_NUMERIQUE',
+    BONACHATINSTRUMENT = 'BON_ACHAT_INSTRUMENT',
+    CAPTATIONMUSIQUE = 'CAPTATION_MUSIQUE',
+    CARTECINEILLIMITE = 'CARTE_CINE_ILLIMITE',
+    CARTECINEMULTISEANCES = 'CARTE_CINE_MULTISEANCES',
+    CARTEMUSEE = 'CARTE_MUSEE',
+    CINEPLEINAIR = 'CINE_PLEIN_AIR',
+    CINEVENTEDISTANCE = 'CINE_VENTE_DISTANCE',
+    CONCERT = 'CONCERT',
+    CONCOURS = 'CONCOURS',
+    CONFERENCE = 'CONFERENCE',
+    DECOUVERTEMETIERS = 'DECOUVERTE_METIERS',
+    ESCAPEGAME = 'ESCAPE_GAME',
+    EVENEMENTCINE = 'EVENEMENT_CINE',
+    EVENEMENTJEU = 'EVENEMENT_JEU',
+    EVENEMENTMUSIQUE = 'EVENEMENT_MUSIQUE',
+    EVENEMENTPATRIMOINE = 'EVENEMENT_PATRIMOINE',
+    FESTIVALCINE = 'FESTIVAL_CINE',
+    FESTIVALLIVRE = 'FESTIVAL_LIVRE',
+    FESTIVALMUSIQUE = 'FESTIVAL_MUSIQUE',
+    FESTIVALSPECTACLE = 'FESTIVAL_SPECTACLE',
+    JEUENLIGNE = 'JEU_EN_LIGNE',
+    JEUSUPPORTPHYSIQUE = 'JEU_SUPPORT_PHYSIQUE',
+    LIVESTREAMEVENEMENT = 'LIVESTREAM_EVENEMENT',
+    LIVESTREAMMUSIQUE = 'LIVESTREAM_MUSIQUE',
+    LIVREAUDIOPHYSIQUE = 'LIVRE_AUDIO_PHYSIQUE',
+    LIVRENUMERIQUE = 'LIVRE_NUMERIQUE',
+    LIVREPAPIER = 'LIVRE_PAPIER',
+    LOCATIONINSTRUMENT = 'LOCATION_INSTRUMENT',
+    MATERIELARTCREATIF = 'MATERIEL_ART_CREATIF',
+    MUSEEVENTEDISTANCE = 'MUSEE_VENTE_DISTANCE',
+    OEUVREART = 'OEUVRE_ART',
+    PARTITION = 'PARTITION',
+    PODCAST = 'PODCAST',
+    RENCONTREJEU = 'RENCONTRE_JEU',
+    RENCONTRE = 'RENCONTRE',
+    SALON = 'SALON',
+    SEANCECINE = 'SEANCE_CINE',
+    SEANCEESSAIPRATIQUEART = 'SEANCE_ESSAI_PRATIQUE_ART',
+    SPECTACLEENREGISTRE = 'SPECTACLE_ENREGISTRE',
+    SPECTACLEREPRESENTATION = 'SPECTACLE_REPRESENTATION',
+    SUPPORTPHYSIQUEFILM = 'SUPPORT_PHYSIQUE_FILM',
+    SUPPORTPHYSIQUEMUSIQUE = 'SUPPORT_PHYSIQUE_MUSIQUE',
+    TELECHARGEMENTLIVREAUDIO = 'TELECHARGEMENT_LIVRE_AUDIO',
+    TELECHARGEMENTMUSIQUE = 'TELECHARGEMENT_MUSIQUE',
+    VISITEGUIDEE = 'VISITE_GUIDEE',
+    VISITEVIRTUELLE = 'VISITE_VIRTUELLE',
+    VISITE = 'VISITE',
+    VOD = 'VOD'
+}/**
+ * 
+ * @export
+ * @interface SubcategoryResponseModel
+ */
+export interface SubcategoryResponseModel {
+    /**
+     * 
+     * @type {string}
+     * @memberof SubcategoryResponseModel
+     */
+    appLabel: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SubcategoryResponseModel
+     */
+    canBeDuo: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SubcategoryResponseModel
+     */
+    canExpire: boolean;
+    /**
+     * 
+     * @type {CategoryIdEnum}
+     * @memberof SubcategoryResponseModel
+     */
+    categoryId: CategoryIdEnum;
+    /**
+     * 
+     * @type {HomepageLabelNameEnum}
+     * @memberof SubcategoryResponseModel
+     */
+    homepageLabelName: HomepageLabelNameEnum;
+    /**
+     * 
+     * @type {SubcategoryIdEnum}
+     * @memberof SubcategoryResponseModel
+     */
+    id: SubcategoryIdEnum;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SubcategoryResponseModel
+     */
+    isDigitalDeposit: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SubcategoryResponseModel
+     */
+    isEvent: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SubcategoryResponseModel
+     */
+    isPhysicalDeposit: boolean;
+    /**
+     * 
+     * @type {OnlineOfflinePlatformChoicesEnum}
+     * @memberof SubcategoryResponseModel
+     */
+    onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum;
+    /**
+     * 
+     * @type {SearchGroupNameEnum}
+     * @memberof SubcategoryResponseModel
+     */
+    searchGroupName?: SearchGroupNameEnum | null;
 }/**
  * 
  * @export
@@ -2163,6 +2451,27 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          */
         async getnativev1settings(options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/settings`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary get_subcategories <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1subcategories(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/subcategories`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
@@ -2945,6 +3254,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary get_subcategories <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1subcategories(basePath: string, options?: any): Promise<SubcategoriesResponseModel> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subcategories(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary get_venue <GET>
          * @param {number} venue_id 
          * @param {*} [options] Override http request option.
@@ -3362,6 +3682,17 @@ export class DefaultApi extends BaseAPI {
     public async getnativev1settings(options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.getnativev1settings(this.basePath, options)
+    }
+    /**
+     * 
+     * @summary get_subcategories <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1subcategories(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1subcategories(this.basePath, options)
     }
     /**
      * 
