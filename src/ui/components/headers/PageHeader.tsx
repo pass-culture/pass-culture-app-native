@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -27,7 +27,7 @@ const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
     <TouchableOpacity
       activeOpacity={ACTIVE_OPACITY}
       onPress={onGoBack || goBack}
-      {...testID(t`Revenir en arrière`)}>
+      {...accessibilityAndTestId(t`Revenir en arrière`)}>
       <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
     </TouchableOpacity>
   )

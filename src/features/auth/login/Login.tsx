@@ -13,7 +13,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
@@ -139,7 +139,7 @@ export const Login: FunctionComponent = function () {
           placeholder={t`tonadresse@email.com`}
           textContentType="emailAddress"
           value={email}
-          {...testID("Entrée pour l'email")}
+          {...accessibilityAndTestId("Entrée pour l'email")}
         />
       </StyledInput>
       <Spacer.Column numberOfSpaces={6} />
@@ -152,7 +152,7 @@ export const Login: FunctionComponent = function () {
           placeholder={t`Ton mot de passe`}
           isError={!!errorMessage}
           textContentType="password"
-          {...testID('Entrée pour le mot de passe')}
+          {...accessibilityAndTestId('Entrée pour le mot de passe')}
         />
       </StyledInput>
       <Spacer.Column numberOfSpaces={7} />

@@ -15,7 +15,7 @@ import { RootStackParamList, UseNavigationType } from 'features/navigation/RootN
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { randomPassword } from 'libs/random'
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -82,7 +82,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
               placeholder={t`Ton mot de passe`}
               onSubmitEditing={Platform.OS === 'web' ? submitPassword : undefined}
               ref={passwordInput}
-              {...testID('Entrée pour le mot de passe')}
+              {...accessibilityAndTestId('Entrée pour le mot de passe')}
             />
           </StyledInput>
           <PasswordSecurityRules password={password} />

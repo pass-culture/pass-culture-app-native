@@ -19,7 +19,7 @@ i18n.loadLocaleData({
 
 i18n.activate('fr')
 
-export function testID(id: string) {
+export function accessibilityAndTestId(id: string) {
   return { accessible: true, accessibilityLabel: id, testID: id }
 }
 

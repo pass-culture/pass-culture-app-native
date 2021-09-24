@@ -7,7 +7,7 @@ import { VenueResponse, VenueTypeCode } from 'api/gen'
 import { VenueCaption } from 'features/home/atoms/VenueCaption'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { ImageTile } from 'ui/components/ImageTile'
 import { ColorsEnum, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum, LENGTH_S } from 'ui/theme/grid'
@@ -61,7 +61,7 @@ export const VenueTile = (props: VenueTileProps) => {
         imageHeight={imageHeight}
         imageWidth={imageWidth}
         onPress={handlePressVenue}
-        {...testID('venueTile')}>
+        {...accessibilityAndTestId('venueTile')}>
         <ImageTile imageWidth={imageWidth} imageHeight={imageHeight} uri={uri} />
       </TouchableHighlight>
       <VenueCaption imageWidth={imageWidth} name={name} venueType={venueType} distance={distance} />

@@ -2,7 +2,7 @@ import React, { forwardRef, Ref, useState } from 'react'
 import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
@@ -53,7 +53,7 @@ export const ShortInputComponent = <Identifier extends unknown>(
         selectTextOnFocus
         value={value}
         minWidth={props.minWidth || DEFAULT_MIN_WIDTH}
-        {...testID(props.testID)}
+        {...accessibilityAndTestId(props.testID)}
       />
       <Spacer.Column numberOfSpaces={1} />
       <ValidationBar

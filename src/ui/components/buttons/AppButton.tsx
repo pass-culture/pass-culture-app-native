@@ -2,7 +2,7 @@ import React, { Fragment, FunctionComponent, memo } from 'react'
 import { GestureResponderEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
@@ -45,7 +45,7 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
   const containerTestID = props.testId ? props.testId : props.title
   return (
     <Container
-      {...testID(containerTestID)}
+      {...accessibilityAndTestId(containerTestID)}
       backgroundColor={props.backgroundColor}
       borderColor={props.borderColor}
       onPress={pressHandler}
@@ -55,14 +55,18 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
       inlineHeight={props.inlineHeight ?? 16}>
       {props.isLoading ? (
         <Logo
-          {...testID('button-isloading-icon')}
+          {...accessibilityAndTestId('button-isloading-icon')}
           color={props.loadingIconColor}
           size={props.iconSize}
         />
       ) : (
         <Fragment>
           {!!Icon && (
-            <Icon {...testID('button-icon')} color={props.iconColor} size={props.iconSize} />
+            <Icon
+              {...accessibilityAndTestId('button-icon')}
+              color={props.iconColor}
+              size={props.iconSize}
+            />
           )}
           <Title
             textColor={props.textColor}

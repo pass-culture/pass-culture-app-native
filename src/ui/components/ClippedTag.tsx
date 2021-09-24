@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { Clear as ClearIcon } from 'ui/svg/icons/Clear'
 import { getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
@@ -20,7 +20,7 @@ export const ClippedTag: React.FC<Props> = ({ label, onPress, testId }) => {
         <VenueLabel>{label}</VenueLabel>
       </VenueLabelContainer>
       <TouchableOpacity onPress={onPress}>
-        <ClearIcon size={20} {...testID(testId)} color={ColorsEnum.WHITE} />
+        <ClearIcon size={20} {...accessibilityAndTestId(testId)} color={ColorsEnum.WHITE} />
       </TouchableOpacity>
     </Container>
   )

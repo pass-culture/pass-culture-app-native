@@ -2,7 +2,7 @@ import React from 'react'
 import { Animated, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Favorite } from 'ui/svg/icons/Favorite'
@@ -35,7 +35,10 @@ export const HeaderIcon = (props: HeaderIconProps) => {
   const Icon = getIcon(props.iconName)
 
   return (
-    <TouchableOpacity activeOpacity={0.5} onPress={props.onPress} {...testID(props.testID)}>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={props.onPress}
+      {...accessibilityAndTestId(props.testID)}>
       <StyledAnimatedView
         testID="headerIconRoundContainer"
         style={{
