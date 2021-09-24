@@ -1,0 +1,1 @@
+export { useSubcategory } from './useSubcategory'
