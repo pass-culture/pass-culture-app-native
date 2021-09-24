@@ -20,7 +20,7 @@ export function isUserUnderageBeneficiary(user: UserProfileResponse | undefined)
   return !!hasUserUnderageRole
 }
 
-export const useIsUserUnderage = () => {
+export const useIsUserUnderageBeneficiary = () => {
   const { data: user } = useUserProfileInfo()
   return isUserUnderageBeneficiary(user)
 }

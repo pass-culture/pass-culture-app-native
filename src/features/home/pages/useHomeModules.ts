@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { useIsUserUnderage } from 'features/profile/utils'
+import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { SearchState } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
@@ -48,7 +48,7 @@ export const useHomeModules = (
   const searchBackend = useSearchMultipleHits()
   const parseSearchParameters = useParseSearchParameters()
   const sendAdditionalRequest = useSendAdditionalRequestToAppSearch()
-  const isUserUnderage = useIsUserUnderage()
+  const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchMultipleHits, filterHits, transformHits } = backend
@@ -58,7 +58,11 @@ export const useHomeModules = (
       const parsedParameters = search.map(parseSearchParameters).filter(isSearchState)
 
       const fetchModule = async () => {
-        const response = await fetchMultipleHits(parsedParameters, position, isUserUnderage)
+        const response = await fetchMultipleHits(
+          parsedParameters,
+          position,
+          isUserUnderageBeneficiary
+        )
         return { moduleId: moduleId, ...response }
       }
 
@@ -66,7 +70,7 @@ export const useHomeModules = (
         queryKey: [QueryKeys.HOME_MODULE, moduleId],
         queryFn: fetchModule,
         onSuccess: sendAdditionalRequest(() =>
-          searchBackend.fetchMultipleHits(parsedParameters, position, isUserUnderage)
+          searchBackend.fetchMultipleHits(parsedParameters, position, isUserUnderageBeneficiary)
         ),
         enabled,
         notifyOnChangeProps: ['data'],
