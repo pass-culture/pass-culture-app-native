@@ -12,12 +12,18 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { accordionStyle, GreyContainer, Description } from './reusables'
 
 type BeneficiaryCeilingsProps = {
+  isUserUnderageBeneficiary: boolean
   domainsCredit?: DomainsCredit | null
+}
+
+type CeilingsDescriptionProps = {
+  title: string
+  description: string
 }
 
 const EXPENSE_DOMAIN_ORDER = [ExpenseDomain.Digital, ExpenseDomain.Physical, ExpenseDomain.All]
 
-const ceilingsQuestions = {
+const ceilingsDescriptionTitle = {
   physicalAndDigital: t`Pourquoi les biens physiques et numériques sont-ils limités ?`,
   digital: t`Pourquoi les biens numériques sont-ils limités ?`,
 }
@@ -43,7 +49,7 @@ const getOrderedCeilings = (domainsCredit: DomainsCredit) => {
 export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
   const hasPhysicalCeiling = !!props.domainsCredit && !!props.domainsCredit.physical
   const ceilingKey = hasPhysicalCeiling ? 'physicalAndDigital' : 'digital'
-  const question = ceilingsQuestions[ceilingKey]
+  const title = ceilingsDescriptionTitle[ceilingKey]
   const description =
     t`Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.` +
     '\u0020' +
@@ -63,23 +69,33 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
               initial={convertCentsToEuros(credit.initial)}
               domain={credit.domain}
               hasPhysicalCeiling={hasPhysicalCeiling}
+              isUserUnderageBeneficiary={props.isUserUnderageBeneficiary}
             />
           ))}
         </CeilingsRow>
       )}
       <Spacer.Column numberOfSpaces={6} />
-      <DashedSeparator dashGap={4} dashLength={1} dashThickness={1} />
-      <AccordionItem
-        title={<Typo.ButtonText>{question}</Typo.ButtonText>}
-        titleStyle={accordionStyle.title}
-        bodyStyle={accordionStyle.body}>
-        <Description>{description}</Description>
-      </AccordionItem>
+      {!props.isUserUnderageBeneficiary && (
+        <React.Fragment>
+          <DashedSeparator dashGap={4} dashLength={1} dashThickness={1} />
+          <CeilingsDescription title={title} description={description} />
+        </React.Fragment>
+      )}
       <Spacer.Column numberOfSpaces={2} />
     </GreyContainer>
   )
 }
 
+const CeilingsDescription = (props: CeilingsDescriptionProps) => {
+  return (
+    <AccordionItem
+      title={<Typo.ButtonText>{props.title}</Typo.ButtonText>}
+      titleStyle={accordionStyle.title}
+      bodyStyle={accordionStyle.body}>
+      <Description>{props.description}</Description>
+    </AccordionItem>
+  )
+}
 const Title = styled(Typo.Title4)({
   paddingHorizontal: getSpacing(4),
 })

@@ -15,10 +15,14 @@ const domains_credit_v2 = {
   digital: { initial: 20000, remaining: 5000 },
 }
 
+const domains_credit_underage = {
+  all: { initial: 3000, remaining: 1000 },
+}
+
 describe('BeneficiaryCeilings', () => {
   it('should render properly with deposit version 1', () => {
     const { getAllByTestId, getByText } = render(
-      <BeneficiaryCeilings domainsCredit={domains_credit_v1} />
+      <BeneficiaryCeilings domainsCredit={domains_credit_v1} isUserUnderageBeneficiary={false} />
     )
 
     const progressBars = getAllByTestId('progress-bar')
@@ -32,7 +36,7 @@ describe('BeneficiaryCeilings', () => {
 
   it('should render properly with deposit version 2', () => {
     const { getAllByTestId, getByText } = render(
-      <BeneficiaryCeilings domainsCredit={domains_credit_v2} />
+      <BeneficiaryCeilings domainsCredit={domains_credit_v2} isUserUnderageBeneficiary={false} />
     )
 
     const progressBars = getAllByTestId('progress-bar')
@@ -40,5 +44,20 @@ describe('BeneficiaryCeilings', () => {
 
     const ceilingQuestion = getByText('Pourquoi les biens numériques sont-ils limités ?')
     expect(ceilingQuestion).toBeTruthy()
+  })
+
+  it('should render properly with underage deposit version', () => {
+    const { getAllByTestId, queryByText } = render(
+      <BeneficiaryCeilings
+        domainsCredit={domains_credit_underage}
+        isUserUnderageBeneficiary={true}
+      />
+    )
+
+    const progressBars = getAllByTestId('progress-bar')
+    expect(progressBars.length).toBe(1)
+
+    const ceilingQuestion = queryByText('Pourquoi les biens numériques sont-ils limités ?')
+    expect(ceilingQuestion).toBe(null)
   })
 })

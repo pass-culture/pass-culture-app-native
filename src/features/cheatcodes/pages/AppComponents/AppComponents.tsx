@@ -140,6 +140,10 @@ const domains_credit_v2 = {
   digital: { initial: 20000, remaining: 5000 },
 }
 
+const domains_credit_underage = {
+  all: { initial: 3000, remaining: 1000 },
+}
+
 export const AppComponents: FunctionComponent = () => {
   const {
     visible: basicModalVisible,
@@ -793,9 +797,20 @@ export const AppComponents: FunctionComponent = () => {
 
         <Spacer.Column numberOfSpaces={4} />
         <View>
-          <BeneficiaryCeilings domainsCredit={domains_credit_v1} />
+          <BeneficiaryCeilings
+            domainsCredit={domains_credit_v1}
+            isUserUnderageBeneficiary={false}
+          />
           <Spacer.Column numberOfSpaces={4} />
-          <BeneficiaryCeilings domainsCredit={domains_credit_v2} />
+          <BeneficiaryCeilings
+            domainsCredit={domains_credit_v2}
+            isUserUnderageBeneficiary={false}
+          />
+          <Spacer.Column numberOfSpaces={4} />
+          <BeneficiaryCeilings
+            domainsCredit={domains_credit_underage}
+            isUserUnderageBeneficiary={true}
+          />
         </View>
       </AccordionItem>
 

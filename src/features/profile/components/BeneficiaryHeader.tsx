@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
-import { computeCredit } from 'features/profile/utils'
+import { computeCredit, useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, ColorsEnum, Typo, Spacer } from 'ui/theme'
@@ -22,6 +22,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
   const { firstName, lastName, domainsCredit, depositExpirationDate } = props
   const name = `${firstName} ${lastName}`
   const credit = formatToFrenchDecimal(computeCredit(domainsCredit))
+  const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
   return (
     <Container testID="beneficiary-header">
@@ -33,7 +34,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
       <UserNameAndCredit>
         <Typo.Title4 color={ColorsEnum.WHITE}>{name}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4.5} />
-        <Typo.Hero color={ColorsEnum.WHITE}>{credit}</Typo.Hero>
+        {!isUserUnderageBeneficiary && <Typo.Hero color={ColorsEnum.WHITE}>{credit}</Typo.Hero>}
         <Spacer.Column numberOfSpaces={2} />
         {!!depositExpirationDate && (
           <Typo.Caption color={ColorsEnum.WHITE}>
@@ -42,7 +43,10 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
         )}
         <Spacer.Column numberOfSpaces={6} />
       </UserNameAndCredit>
-      <Ceilings domainsCredit={domainsCredit} />
+      <Ceilings
+        domainsCredit={domainsCredit}
+        isUserUnderageBeneficiary={isUserUnderageBeneficiary}
+      />
     </Container>
   )
 }
