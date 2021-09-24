@@ -28,6 +28,8 @@ const user: UserProfileResponse = {
   },
 }
 
+jest.mock('features/home/api')
+
 const exBeneficiaryUser: UserProfileResponse = {
   ...user,
   depositExpirationDate: new Date('2020-01-01T03:04:05'),

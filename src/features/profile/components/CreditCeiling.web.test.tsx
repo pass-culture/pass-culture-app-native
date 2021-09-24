@@ -13,6 +13,7 @@ describe('CreditCeiling', () => {
         initial={200}
         domain={ExpenseDomain.Physical}
         hasPhysicalCeiling={true}
+        isUserUnderageBeneficiary={false}
       />
     )
     expect(renderAPI).toMatchSnapshot()
@@ -25,6 +26,7 @@ describe('CreditCeiling', () => {
         initial={-1}
         domain={ExpenseDomain.Physical}
         hasPhysicalCeiling={true}
+        isUserUnderageBeneficiary={false}
       />
     )
     expect(renderAPI.container.innerText).toBe(undefined)
@@ -37,6 +39,7 @@ describe('CreditCeiling', () => {
         initial={200}
         domain={ExpenseDomain.Physical}
         hasPhysicalCeiling={true}
+        isUserUnderageBeneficiary={false}
       />
     )
     const progressBar = getByTestId('progress-bar')

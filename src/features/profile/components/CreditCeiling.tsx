@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ExpenseDomain } from 'api/gen/api'
+import { Logo } from 'ui/svg/icons/Logo'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { OfferOutings } from 'ui/svg/icons/OfferOutings'
 import { OfferOutingsPhysical } from 'ui/svg/icons/OfferOutingsPhysical'
@@ -16,6 +17,7 @@ type CreditCeilingProps = {
   initial: number
   domain: ExpenseDomain
   hasPhysicalCeiling: boolean
+  isUserUnderageBeneficiary: boolean
 }
 
 const CreditCeilingMapWithPhysical = {
@@ -50,11 +52,19 @@ const CreditCeilingMapWithoutPhysical = {
   [ExpenseDomain.Physical]: null,
 }
 
+const underageBeneficiaryCeilingConfig = {
+  ...CreditCeilingMapWithoutPhysical[ExpenseDomain.All],
+  icon: Logo,
+}
+
 export function CreditCeiling(props: CreditCeilingProps) {
   let ceilingConfig = null
-  ceilingConfig = props.hasPhysicalCeiling
+  const beneficiaryCeilingConfig = props.hasPhysicalCeiling
     ? CreditCeilingMapWithPhysical[props.domain]
     : CreditCeilingMapWithoutPhysical[props.domain]
+  ceilingConfig = props.isUserUnderageBeneficiary
+    ? underageBeneficiaryCeilingConfig
+    : beneficiaryCeilingConfig
 
   if (!ceilingConfig || props.initial <= 0) {
     return null

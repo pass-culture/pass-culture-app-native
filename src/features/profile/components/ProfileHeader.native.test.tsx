@@ -33,6 +33,8 @@ const exBeneficiaryUser: UserProfileResponse = {
   depositExpirationDate: new Date('2020-01-01T03:04:05'),
 }
 
+jest.mock('features/home/api')
+
 describe('ProfileHeader', () => {
   beforeEach(() => {
     mockdate.set(new Date('2021-07-01T00:00:00Z'))
