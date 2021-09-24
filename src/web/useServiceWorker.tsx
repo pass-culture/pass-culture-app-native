@@ -83,7 +83,7 @@ const useServiceWorkerReducer = (
   switch (action.type) {
     case 'SERVICE_WORKER_READY':
       // eslint-disable-next-line no-console
-      console.log('Service worker is ready.')
+      __DEV__ && console.log('Service worker is ready.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
@@ -91,7 +91,7 @@ const useServiceWorkerReducer = (
       }
     case 'SERVICE_WORKER_REGISTERED':
       // eslint-disable-next-line no-console
-      console.log('Service worker has been registered.')
+      __DEV__ && console.log('Service worker has been registered.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
@@ -99,7 +99,7 @@ const useServiceWorkerReducer = (
       }
     case 'SERVICE_WORKER_CACHED':
       // eslint-disable-next-line no-console
-      console.log('Content has been cached for offline use.')
+      __DEV__ && console.log('Content has been cached for offline use.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
@@ -107,7 +107,7 @@ const useServiceWorkerReducer = (
       }
     case 'SERVICE_WORKER_UPDATE_FOUND':
       // eslint-disable-next-line no-console
-      console.log('New content is downloading.')
+      __DEV__ && console.log('New content is downloading.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
@@ -115,7 +115,7 @@ const useServiceWorkerReducer = (
       }
     case 'SERVICE_WORKER_UPDATE_READY':
       // eslint-disable-next-line no-console
-      console.log('New content is available; please refresh.')
+      __DEV__ && console.log('New content is available; please refresh.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
@@ -123,13 +123,13 @@ const useServiceWorkerReducer = (
       }
     case 'SERVICE_WORKER_OFFLINE':
       // eslint-disable-next-line no-console
-      console.log('No internet connection found. App is running in offline mode.')
+      __DEV__ && console.log('No internet connection found. App is running in offline mode.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
       }
     case 'SERVICE_WORKER_ERROR':
-      console.error('Error during service worker registration:', action.payload.error)
+      __DEV__ && console.error('Error during service worker registration:', action.payload.error)
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
