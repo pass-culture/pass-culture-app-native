@@ -29,24 +29,24 @@ type Config = {
   error?: (error: Error) => void
 }
 
-type Emit = (emitKey: EmitKey, registration: ServiceWorkerRegistration) => void
+type Emit = (emitKey: EmitKey, registration?: Error | ServiceWorkerRegistration) => void
 
-type EmitKey = keyof Omit<Config, 'registrationOptions' | 'error'>
+type EmitKey = 'ready' | 'registered' | 'cached' | 'updatefound' | 'updated' | 'offline' | 'error'
 
 export function register(swUrl: string, config: Config = {}) {
   const { registrationOptions = {} } = config
   delete config.registrationOptions
 
-  const emit = (emitKey: EmitKey, registration: ServiceWorkerRegistration) => {
+  const emit = (emitKey: EmitKey, payload?: Error | ServiceWorkerRegistration): void => {
     const callback = config[emitKey]
     if (callback) {
-      callback(registration)
+      callback(payload as never)
     }
   }
 
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
-    // @ts-expect-error TODO: fix typing
+    // @ts-ignore TODO: fix typing
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href)
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
@@ -71,7 +71,6 @@ export function register(swUrl: string, config: Config = {}) {
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, emit, registrationOptions)
 
-        // TODO: see if next line necessary (from https://github.com/yyx990803/register-service-worker/blob/master/src/index.js#L53)
         navigator.serviceWorker.ready
           .then((registration) => {
             emit('ready', registration)
@@ -84,10 +83,8 @@ export function register(swUrl: string, config: Config = {}) {
 
 function handleError(emit: Emit, error: Error) {
   if (!navigator.onLine) {
-    // @ts-ignore Found how to improve typing
     emit('offline')
   }
-  // @ts-ignore Found how to improve typing
   emit('error', error)
 }
 
@@ -146,22 +143,18 @@ function checkValidServiceWorker(
       // Ensure service worker exists, and that we really are getting a JS file.
       if (response.status === 404) {
         // No service worker found.
-        // @ts-ignore improve typing @typescript-eslint/no-explicit-any
-        emit('error' as any, new Error(`Service worker not found at ${swUrl}`)) // eslint-disable-line @typescript-eslint/no-explicit-any
-        unregister()
+        emit('error', new Error(`Service worker not found at ${swUrl}`))
+        unregister(emit)
       } else if (contentType != null && contentType.indexOf('javascript') === -1) {
-        // @ts-ignore improve typing
         emit(
-          // @ts-ignore improve typing @typescript-eslint/no-explicit-any
-          'error' as any, // eslint-disable-line @typescript-eslint/no-explicit-any
-          // @ts-ignore improve typing
+          'error',
           new Error(
             `Expected ${swUrl} to have javascript content-type, but received ${response.headers.get(
               'content-type'
             )}`
           )
         )
-        unregister()
+        unregister(emit)
       } else {
         // Service worker found. Proceed as normal.
         registerValidSW(swUrl, emit, registrationOptions)
@@ -170,14 +163,14 @@ function checkValidServiceWorker(
     .catch((error) => handleError(emit, error))
 }
 
-export function unregister() {
+export function unregister(emit?: Emit) {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready
       .then((registration) => {
         registration.unregister()
       })
       .catch((error) => {
-        console.error(error.message)
+        emit && handleError(emit, error)
       })
   }
 }
