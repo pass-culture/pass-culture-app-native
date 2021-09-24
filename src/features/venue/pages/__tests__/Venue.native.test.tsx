@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { render } from 'tests/utils'
+import { render, waitFor } from 'tests/utils'
 
 import { Venue } from '../Venue'
 
@@ -27,5 +27,7 @@ describe('<Venue />', () => {
 
 async function renderVenue(id: number) {
   useRoute.mockImplementation(() => ({ params: { id } }))
-  return render(<Venue />)
+  const wrapper = render(<Venue />)
+  await waitFor(() => wrapper)
+  return wrapper
 }

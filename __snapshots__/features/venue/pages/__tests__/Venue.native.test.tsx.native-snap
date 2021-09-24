@@ -1,16 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Venue /> should match snapshot 1`] = `
-<View
-  accessibilityLabel="Page de détail du lieu"
-  accessible={true}
-  style={
-    Array [
-      Object {},
-    ]
-  }
-  testID="Page de détail du lieu"
->
+Array [
   <RCTScrollView
     bounces={false}
     onScroll={[Function]}
@@ -22,7 +13,9 @@ exports[`<Venue /> should match snapshot 1`] = `
     }
     style={
       Array [
-        Object {},
+        Object {
+          "overflow": "visible",
+        },
       ]
     }
     testID="venue-container"
@@ -2931,11 +2924,13 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
     </View>
-  </RCTScrollView>
+  </RCTScrollView>,
   <View
+    safeAreaTop={16}
     style={
       Object {
         "backgroundColor": "rgba(255, 255, 255, 0)",
+        "height": "NaNpx",
         "position": "absolute",
         "top": 0,
         "width": "100%",
@@ -3233,6 +3228,6 @@ exports[`<Venue /> should match snapshot 1`] = `
         ]
       }
     />
-  </View>
-</View>
+  </View>,
+]
 `;

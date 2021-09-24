@@ -2,9 +2,11 @@
 
 exports[`<VenueHeader /> should render correctly 1`] = `
 <View
+  safeAreaTop={16}
   style={
     Object {
       "backgroundColor": "rgba(255, 255, 255, 0)",
+      "height": "NaNpx",
       "position": "absolute",
       "top": 0,
       "width": "100%",

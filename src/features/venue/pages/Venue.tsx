@@ -2,6 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
+import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 
 import { useVenue } from '../api/useVenue'
@@ -18,6 +19,7 @@ export const Venue: FunctionComponent = () => {
 
   return (
     <React.Fragment>
+      <VenueWebHeader venue={venue} />
       <VenueBody venueId={params.id} onScroll={onScroll} />
       <VenueHeader headerTransition={headerTransition} title={venue.name} venueId={venue.id} />
     </React.Fragment>
