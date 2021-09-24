@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
+import { useLayoutHits } from 'features/home/hooks/useLayoutHits'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
@@ -34,6 +35,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const parseSearchParameters = useParseSearchParameters()
 
+  const layoutHits = useLayoutHits(display.layout, hits)
   const moduleName = display.title || parameters.title
   const logHasSeenAllTiles = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
@@ -126,7 +128,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       <Spacer.Column numberOfSpaces={4} />
       <FlatList
         testID="offersModuleList"
-        data={hits}
+        data={layoutHits}
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={200}

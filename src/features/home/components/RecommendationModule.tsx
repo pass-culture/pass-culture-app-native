@@ -9,6 +9,7 @@ import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { DisplayParametersFields } from 'features/home/contentful'
+import { useLayoutHits } from 'features/home/hooks/useLayoutHits'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
@@ -27,6 +28,8 @@ type RecommendationModuleProps = {
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { display, isBeneficiary, position, index, setRecommendationY, hits } = props
+
+  const layoutHits = useLayoutHits(display.layout, hits)
 
   const moduleName = display.title
   const logHasSeenAllTiles = useFunctionOnce(() =>
@@ -85,7 +88,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         scrollEventThrottle={200}
         onScroll={checkIfAllTilesHaveBeenSeen}>
         <Spacer.Row numberOfSpaces={6} />
-        {hits.map(renderItem)}
+        {layoutHits.map(renderItem)}
         <Spacer.Row numberOfSpaces={6} />
       </ScrollView>
       <Spacer.Column testID="recommendationModuleTracker" numberOfSpaces={0} onLayout={onLayout} />
