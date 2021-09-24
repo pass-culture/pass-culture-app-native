@@ -153,7 +153,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
 
 const scrollIndicatorInsets = { right: 1 }
 
-const Container = styled.ScrollView({})
+const Container = styled.ScrollView({ overflow: 'visible' })
 const VenueTitle = styled(Typo.Title3)({ textAlign: 'center' })
 
 const MarginContainer = styled.View({

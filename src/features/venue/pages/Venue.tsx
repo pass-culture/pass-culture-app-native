@@ -1,9 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { testID } from 'tests/utils'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 
 import { useVenue } from '../api/useVenue'
@@ -19,11 +17,9 @@ export const Venue: FunctionComponent = () => {
   if (!venue) return <React.Fragment></React.Fragment>
 
   return (
-    <Container {...testID('Page de détail du lieu')}>
+    <React.Fragment>
       <VenueBody venueId={params.id} onScroll={onScroll} />
       <VenueHeader headerTransition={headerTransition} title={venue.name} venueId={venue.id} />
-    </Container>
+    </React.Fragment>
   )
 }
-
-const Container = styled.View({})
