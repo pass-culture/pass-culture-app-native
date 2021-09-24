@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 import { Animated } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
@@ -30,9 +31,10 @@ export const VenueHeader: React.FC<Props> = (props) => {
   const shareVenue = useShareVenue(venueId)
 
   const { animationState, backgroundColor } = getAnimationState(headerTransition)
+  const { top } = useSafeAreaInsets()
 
   return (
-    <HeaderContainer style={{ backgroundColor }}>
+    <HeaderContainer style={{ backgroundColor }} safeAreaTop={top}>
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={2} />
       <Row>
@@ -66,11 +68,14 @@ export const VenueHeader: React.FC<Props> = (props) => {
   )
 }
 
-const HeaderContainer = styled(Animated.View)({
-  position: 'absolute',
-  top: 0,
-  width: '100%',
-})
+const HeaderContainer = styled(Animated.View)<{ safeAreaTop: number }>(
+  ({ theme, safeAreaTop }) => ({
+    position: 'absolute',
+    top: 0,
+    height: theme.appBarHeight + safeAreaTop,
+    width: '100%',
+  })
+)
 const Row = styled.View({
   flex: 1,
   flexDirection: 'row',

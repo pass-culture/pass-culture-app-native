@@ -12,7 +12,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
   }
   style={
     Array [
-      Object {},
+      Object {
+        "overflow": "visible",
+      },
     ]
   }
   testID="venue-container"
