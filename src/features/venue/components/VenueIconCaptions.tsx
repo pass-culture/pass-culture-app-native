@@ -6,7 +6,7 @@ import { IconWithCaption } from 'features/venue/atoms/IconWithCaption'
 import { VenueType } from 'features/venue/atoms/VenueType'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { PointerLocationNotFilled } from 'ui/svg/icons/PointerLocationNotFilled'
 import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNotFilledDisabled'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -35,14 +35,14 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
       <ActiveGeolocationButton onPress={onPressActiveGeolocation} disabled={!!distanceToLocation}>
         {distanceToLocation ? (
           <IconWithCaption
-            {...testID('iconLocation')}
+            {...accessibilityAndTestId('iconLocation')}
             Icon={PointerLocationNotFilled}
             caption={distanceToLocation}
             isDisabled={false}
           />
         ) : (
           <IconWithCaption
-            {...testID('iconLocation')}
+            {...accessibilityAndTestId('iconLocation')}
             Icon={PointerLocationNotFilledDisabled}
             caption={'Géolocalisation désactivée'}
             isDisabled={true}

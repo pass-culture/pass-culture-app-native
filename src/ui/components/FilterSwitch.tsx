@@ -2,7 +2,7 @@ import React, { memo, useEffect, useRef } from 'react'
 import { Animated, Easing, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -42,7 +42,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
         onPress={toggle}
         disabled={disabled}
         accessibilityValue={{ text: active.toString() }}
-        {...testID(props.testID)}>
+        {...accessibilityAndTestId(props.testID)}>
         <StyledBackgroundColor backgroundColor={getBackgroundColor(active, disabled)}>
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>

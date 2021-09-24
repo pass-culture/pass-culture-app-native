@@ -18,7 +18,7 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Section } from 'ui/components/Section'
@@ -238,7 +238,7 @@ export const Profile: React.FC = () => {
           <ProfileSection>
             <SectionRow
               title={t`Déconnexion`}
-              {...testID(t`Déconnexion`)}
+              {...accessibilityAndTestId(t`Déconnexion`)}
               onPress={() => {
                 signOut().finally(signOutFromIdCheck)
               }}

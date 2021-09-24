@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { BicolorSelector, computeBicolorSelectorHeight } from 'ui/svg/icons/BicolorSelector'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, Spacer, getSpacing, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
@@ -21,12 +21,12 @@ export const TabBarComponent: React.FC<TabComponentInterface> = (props) => {
     <TabComponentContainer
       onPress={props.onPress}
       activeOpacity={1}
-      {...testID(`${props.tabName} tab`)}>
+      {...accessibilityAndTestId(`${props.tabName} tab`)}>
       {!!props.isSelected && (
         <BicolorSelector
           width={SELECTOR_WIDTH}
           height={SELECTOR_HEIGHT}
-          {...testID(`${props.tabName} tab selected`)}
+          {...accessibilityAndTestId(`${props.tabName} tab selected`)}
         />
       )}
       <Spacer.Flex />

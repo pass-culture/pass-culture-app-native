@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
@@ -21,7 +21,7 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   isDisabled,
   isExternal = false,
 }) => (
-  <Container onPress={onPress} disabled={isDisabled} {...testID(wording)}>
+  <Container onPress={onPress} disabled={isDisabled} {...accessibilityAndTestId(wording)}>
     {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
     <LegendContainer>
       {!!isExternal && <ExternalLinkSite color={ColorsEnum.WHITE} />}

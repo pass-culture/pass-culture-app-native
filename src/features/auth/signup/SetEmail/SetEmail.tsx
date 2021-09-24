@@ -11,7 +11,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { randomAlphaString } from 'libs/random'
-import { testID } from 'tests/utils'
+import { accessibilityAndTestId } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
@@ -95,7 +95,7 @@ export const SetEmail: FunctionComponent = () => {
               ref={emailInput}
               textContentType="emailAddress"
               value={email}
-              {...testID("Entrée pour l'email")}
+              {...accessibilityAndTestId("Entrée pour l'email")}
             />
             <InputError
               visible={hasError}
