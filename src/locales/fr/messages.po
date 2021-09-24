@@ -97,6 +97,10 @@ msgstr "Active la géolocalisation pour découvrir toutes les offres existantes 
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
+#: src/features/forceUpdate/ForceUpdate.tsx
+msgid "Actualiser la page"
+msgstr "Actualiser la page"
+
 #: src/libs/geolocation/components/WhereSection.tsx
 msgid "Adresse"
 msgstr "Adresse"
@@ -788,6 +792,10 @@ msgstr "Je cherche"
 msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
 msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
 
+#: src/features/auth/signup/SetEmail/SetEmail.tsx
+msgid "Je veux recevoir des recommandations personnalisées de la part du pass Culture."
+msgstr "Je veux recevoir des recommandations personnalisées de la part du pass Culture."
+
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Je veux recevoir les actualités et les meilleures offres du pass Culture par e‑mail."
 msgstr "Je veux recevoir les actualités et les meilleures offres du pass Culture par e‑mail."
@@ -877,6 +885,14 @@ msgstr "Le lien est incorrect"
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "Le pass Culture"
 msgstr "Le pass Culture"
+
+#: src/features/forceUpdate/ForceUpdate.tsx
+msgid ""
+"Le pass Culture de ton navigateur ne semble plus à jour !\n"
+"Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible."
+msgstr ""
+"Le pass Culture de ton navigateur ne semble plus à jour !\n"
+"Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible."
 
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid ""
@@ -983,6 +999,7 @@ msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien 
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
+#: src/features/forceUpdate/ForceUpdate.tsx
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid "Mise à jour de l'application"
 msgstr "Mise à jour de l'application"
@@ -1428,10 +1445,6 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/ui/components/headers/PageHeader.tsx
 msgid "Revenir en arrière"
 msgstr "Revenir en arrière"
-
-#: src/features/auth/signup/SetEmail/SetEmail.tsx
-msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
-msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
