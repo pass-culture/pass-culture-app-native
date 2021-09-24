@@ -45,7 +45,6 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
           category={parseCategory(item.offer.category)}
           categoryName={item.offer.category}
           offerId={+item.objectID}
-          description={item.offer.description || ''}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}
@@ -67,7 +66,6 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   }, [params])
 
   const onPressSeeMore = useCallback(() => {
-    // TODO(antoinewg) add search params with category filter
     analytics.logVenueSeeMoreClicked(venueId)
     dispatch({ type: 'SET_STATE', payload: params })
     stagedDispatch({ type: 'SET_STATE', payload: params })

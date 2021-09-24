@@ -26,7 +26,6 @@ export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): Algolia
     offer: {
       category: searchHit.getRaw(AppSearchFields.category) as CategoryNameEnum,
       dates,
-      description: searchHit.getRaw(AppSearchFields.description) as string,
       isDigital: +searchHit.getRaw(AppSearchFields.is_digital) === TRUE,
       isDuo: +searchHit.getRaw(AppSearchFields.is_duo) === TRUE,
       name: searchHit.getRaw(AppSearchFields.name) as string,

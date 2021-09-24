@@ -3,7 +3,6 @@ import { CategoryNameEnum } from 'api/gen'
 interface Offer {
   category: CategoryNameEnum | null
   dates?: number[]
-  description?: string | null
   isDigital?: boolean
   isDuo?: boolean
   name?: string

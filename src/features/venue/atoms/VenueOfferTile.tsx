@@ -14,10 +14,9 @@ import { OfferCaption } from 'ui/components/OfferCaption'
 import { LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum, MARGIN_DP } from 'ui/theme/grid'
 
-interface OfferTileProps {
+interface VenueOfferTileProps {
   category: string
   categoryName: CategoryNameEnum | null | undefined
-  description?: string | null
   date?: string
   name?: string
   isDuo?: boolean
@@ -29,15 +28,15 @@ interface OfferTileProps {
 }
 
 type PartialOffer = Pick<
-  OfferTileProps,
-  'category' | 'categoryName' | 'description' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId'
+  VenueOfferTileProps,
+  'category' | 'categoryName' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId'
 >
 
 export const mergeOfferData = (offer: PartialOffer) => (
   prevData: OfferAdaptedResponse | undefined
 ): OfferAdaptedResponse => ({
   fullAddress: null,
-  description: offer.description,
+  description: '',
   image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
   isDuo: offer.isDuo || false,
   name: offer.name || '',
@@ -64,7 +63,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
     - Remove rowHeight
   */
 
-export const VenueOfferTile = (props: OfferTileProps) => {
+export const VenueOfferTile = (props: VenueOfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
   const { isBeneficiary, venueId, ...offer } = props
   const queryClient = useQueryClient()

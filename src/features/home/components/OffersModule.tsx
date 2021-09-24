@@ -47,7 +47,6 @@ export const OffersModule = (props: OffersModuleProps) => {
           category={parseCategory(item.offer.category)}
           categoryName={item.offer.category}
           offerId={+item.objectID}
-          description={item.offer.description || ''}
           distance={formatDistance(item._geoloc, position)}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}

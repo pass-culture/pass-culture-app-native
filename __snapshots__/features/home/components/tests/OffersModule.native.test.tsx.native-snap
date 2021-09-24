@@ -54,7 +54,6 @@ Array [
           "offer": Object {
             "category": "MUSIQUE",
             "dates": Array [],
-            "description": "Bel astre voyageur, hôte qui nous arrives, Des profondeurs du ciel et qu'on n'attendait pas, Où vas-tu ? Quel dessein pousse vers nous tes pas ? Toi qui vogues au large en cette mer sans rives",
             "isDigital": false,
             "isDuo": false,
             "name": "Mensch ! Où sont les Hommes ?",
@@ -73,7 +72,6 @@ Array [
           "offer": Object {
             "category": "MUSIQUE",
             "dates": Array [],
-            "description": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
             "isDigital": false,
             "isDuo": false,
             "name": "I want something more",
@@ -94,7 +92,6 @@ Array [
             "dates": Array [
               1605643200,
             ],
-            "description": null,
             "isDigital": false,
             "isDuo": true,
             "name": "Un lit sous une rivière",
@@ -113,7 +110,6 @@ Array [
           "offer": Object {
             "category": "MUSIQUE",
             "dates": Array [],
-            "description": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
             "isDigital": false,
             "isDuo": false,
             "name": "I want something more",

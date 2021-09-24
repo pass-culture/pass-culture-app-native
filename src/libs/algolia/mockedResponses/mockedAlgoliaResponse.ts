@@ -10,8 +10,6 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       offer: {
         category: CategoryNameEnum.MUSIQUE,
         dates: [],
-        description:
-          "Bel astre voyageur, hôte qui nous arrives, Des profondeurs du ciel et qu'on n'attendait pas, Où vas-tu ? Quel dessein pousse vers nous tes pas ? Toi qui vogues au large en cette mer sans rives",
         isDigital: false,
         isDuo: false,
         name: 'Mensch ! Où sont les Hommes ?',
@@ -26,8 +24,6 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       offer: {
         category: CategoryNameEnum.MUSIQUE,
         dates: [],
-        description:
-          "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
         isDigital: false,
         isDuo: false,
         name: 'I want something more',
@@ -42,7 +38,6 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       offer: {
         category: CategoryNameEnum.MUSIQUE,
         dates: [1605643200.0],
-        description: null,
         isDigital: false,
         isDuo: true,
         name: 'Un lit sous une rivière',
@@ -57,8 +52,6 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       offer: {
         category: CategoryNameEnum.MUSIQUE,
         dates: [],
-        description:
-          "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
         isDigital: false,
         isDuo: false,
         name: 'I want something more',
@@ -85,8 +78,6 @@ export const physicalAlgoliaOffer: AlgoliaHit = {
   offer: {
     category: CategoryNameEnum.SPECTACLE,
     dates: [1612465203, 1612551603, 1612638003],
-    description:
-      'Le regard drôle et décalé de sept circassiennes de haut vol sur leur Finlande natale.\n\nIl y a dix ans, un groupe de copines, soudées par des années communes de formation en cirque, exilées et éloignées, décide de raconter en un spectacle leur Finlande natale. Mad in Finland est né lors du festival costarmoricain Tant qu’il y aura des Mouettes, nourri par le bonheur des sept acrobates de se retrouver. Depuis, la Finlande a élu une femme Premier ministre, les extrêmes ont gagné du terrain, Nokia – fierté nationale – n’est plus la marque de téléphone le plus vendu. Mais les sept sœurs de piste ont toujours la joie communicative, l’autodérision, la tendresse et l’énergie pour partager leur pays : la nuit polaire, les championnats en tout genre, le saut à ski, les forêts grouillantes de bûcherons, la passion finlandaise pour le sauna… Trapèzes, fil, tissu, rola bola, main à main et musique en direct composent ce récit en V.O. joyeux et généreux.',
     isDigital: false,
     isDuo: true,
     name: 'Mad in Finland',
@@ -102,8 +93,6 @@ export const digitalAlgoliaOffer: AlgoliaHit = {
   offer: {
     category: CategoryNameEnum.FILM,
     dates: [],
-    description:
-      'Depuis, cinq ans, dans le cerveau de Bahia, tout bugge. Mobilité, élocution, coordination, en gros, « c’est la merde ». Du coup Bahia est obligée de faire équipe avec Simone. Ensemble, elles découvrent les joies du handicap ! Le parcours du combattant face à l’administration, les rendez-vous systématiquement ratés pour cause de retards intempestifs, les « dates » au 5ème sans ascenseur, et la merveilleuse ville de Paris où rien n’est fait, ou presque pour l’accessibilité des personnes « à mobilité réduite ». Heureusement, Bahia est épaulée par Tom, son coloc, et son très séduisant kiné…',
     isDigital: true,
     isDuo: false,
     name: 'Web série : Simone et moi',

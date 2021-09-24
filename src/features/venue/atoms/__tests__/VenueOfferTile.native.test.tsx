@@ -15,7 +15,6 @@ const venueId = 34
 const props = {
   category: offer.category || '',
   categoryName: offer.category,
-  description: offer.description || '',
   expenseDomains: [],
   date: 'Dès le 12 mars 2020',
   name: offer.name,
@@ -68,7 +67,7 @@ describe('VenueOfferTile component', () => {
     expect(query!.state.data).toStrictEqual({
       accessibility: {},
       category: { label: 'MUSIQUE', name: 'MUSIQUE' },
-      description: offer.description,
+      description: '',
       expenseDomains: [],
       fullAddress: null,
       id: offerId,
