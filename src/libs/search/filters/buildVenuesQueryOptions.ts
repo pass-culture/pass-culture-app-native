@@ -36,7 +36,7 @@ export const buildVenuesQueryOptions = (
     group: { field: AppSearchVenuesFields.id },
   }
 
-  const boosts = buildBoostsVenues(userLocation)
+  const boosts = buildBoostsVenues(userLocation, locationFilter)
   if (boosts) {
     queryOptions['boosts'] = boosts
   }
