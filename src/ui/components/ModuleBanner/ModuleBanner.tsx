@@ -26,7 +26,7 @@ export function ModuleBanner(props: ModuleBannerProps) {
             <IconContainer>{props.leftIcon}</IconContainer>
             <TextContainer>
               <Typo.ButtonText color={ColorsEnum.WHITE} testID="module-title">
-                {props.title}
+                <TitleContainer>{props.title}</TitleContainer>
               </Typo.ButtonText>
               <Typo.Body color={ColorsEnum.WHITE}>{props.subTitle}</Typo.Body>
             </TextContainer>
@@ -68,4 +68,8 @@ const IconContainer = styled.View({
   justifyContent: 'center',
   alignItems: 'center',
   textAlign: 'left',
+})
+
+const TitleContainer = styled.Text({
+  marginRight: 5,
 })
