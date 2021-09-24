@@ -674,9 +674,9 @@ exports[`<Venue /> should match snapshot 1`] = `
         data={
           Array [
             Object {
-              "coordinates": Object {
-                "latitude": 47.8898,
-                "longitude": -2.83593,
+              "_geoloc": Object {
+                "lat": 47.8898,
+                "lng": -2.83593,
               },
               "objectID": "223342",
               "offer": Object {
@@ -686,7 +686,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                   1629485100,
                   1629657900,
                 ],
-                "description": "Après une série de crimes inexpliqués, un père retrouve son fils disparu depuis 10 ans. Titane : Métal hautement résistant à la chaleur et à la corrosion, donnant des alliages très durs.",
                 "isDigital": false,
                 "isDuo": true,
                 "name": "Titane - VF",
@@ -699,9 +698,9 @@ exports[`<Venue /> should match snapshot 1`] = `
               },
             },
             Object {
-              "coordinates": Object {
-                "latitude": 47.8898,
-                "longitude": -2.83593,
+              "_geoloc": Object {
+                "lat": 47.8898,
+                "lng": -2.83593,
               },
               "objectID": "223338",
               "offer": Object {
@@ -711,7 +710,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                   1629485100,
                   1629657900,
                 ],
-                "description": "2012. Les quartiers Nord de Marseille détiennent un triste record : la zone au taux de criminalité le plus élevé de France. Poussée par sa hiérarchie, la BAC Nord, brigade de terrain, cherche sans cesse à améliorer ses résultats.",
                 "isDigital": false,
                 "isDuo": true,
                 "name": "Bac Nord - VF",
@@ -724,9 +722,9 @@ exports[`<Venue /> should match snapshot 1`] = `
               },
             },
             Object {
-              "coordinates": Object {
-                "latitude": 47.8898,
-                "longitude": -2.83593,
+              "_geoloc": Object {
+                "lat": 47.8898,
+                "lng": -2.83593,
               },
               "objectID": "223339",
               "offer": Object {
@@ -736,7 +734,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                   1629485100,
                   1629657900,
                 ],
-                "description": "Natasha Romanoff, alias Black Widow, voit resurgir la part la plus sombre de son passé pour faire face à une redoutable conspiration liée à sa vie d’autrefois.",
                 "isDigital": false,
                 "isDuo": true,
                 "name": "Black Widow - VF",

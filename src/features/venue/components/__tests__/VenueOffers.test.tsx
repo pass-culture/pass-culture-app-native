@@ -5,7 +5,7 @@ import { mocked } from 'ts-jest/utils'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
-import { VenueOffersWithOneOfferResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
+import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { AlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
@@ -38,15 +38,15 @@ describe('<VenueOffers />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should display "En voir plus" button if hits is more than hits.length', () => {
+  it('should display "En voir plus" button if nbHits is more than hits.length', () => {
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
     expect(queryByText('En voir plus')).toBeTruthy()
   })
 
-  it(`should doesn't display "En voir plus" button if hits is less than hits.length`, () => {
-    mockUseVenueOffers.mockReturnValueOnce(({
-      data: { hits: VenueOffersWithOneOfferResponseSnap, nbHits: 3 },
-    } as unknown) as UseQueryResult<{ hits: AlgoliaHit[]; nbHits: number }, unknown>)
+  it(`should not display "En voir plus" button if nbHits is same as hits.length`, () => {
+    mockUseVenueOffers.mockReturnValueOnce({
+      data: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
+    } as UseQueryResult<{ hits: AlgoliaHit[]; nbHits: number }, unknown>)
 
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
     expect(queryByText('En voir plus')).toBeFalsy()

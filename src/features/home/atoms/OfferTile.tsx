@@ -19,7 +19,6 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 interface OfferTileProps {
   category: string
   categoryName: CategoryNameEnum | null | undefined
-  description?: string | null
   distance?: string
   date?: string
   name?: string
@@ -34,14 +33,14 @@ interface OfferTileProps {
 
 type PartialOffer = Pick<
   OfferTileProps,
-  'category' | 'categoryName' | 'description' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId'
+  'category' | 'categoryName' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId'
 >
 
 export const mergeOfferData = (offer: PartialOffer) => (
   prevData: OfferAdaptedResponse | undefined
 ): OfferAdaptedResponse => ({
   fullAddress: null,
-  description: offer.description,
+  description: '',
   image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
   isDuo: offer.isDuo || false,
   name: offer.name || '',

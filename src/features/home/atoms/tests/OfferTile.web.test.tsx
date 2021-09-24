@@ -14,7 +14,6 @@ const offerId = 116656
 const props = {
   category: offer.category || '',
   categoryName: offer.category,
-  description: offer.description || '',
   expenseDomains: [],
   distance: '1,2km',
   date: 'Dès le 12 mars 2020',
@@ -69,7 +68,7 @@ describe('OfferTile component', () => {
     expect(query!.state.data).toStrictEqual({
       accessibility: {},
       category: { label: 'MUSIQUE', name: 'MUSIQUE' },
-      description: offer.description,
+      description: '',
       expenseDomains: [],
       fullAddress: null,
       id: offerId,

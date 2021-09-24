@@ -57,7 +57,6 @@ export enum AppSearchVenuesFields {
 export const RESULT_FIELDS: ResultFields<AppSearchFields> = {
   [AppSearchFields.category]: { raw: {} },
   [AppSearchFields.dates]: { raw: {} },
-  [AppSearchFields.description]: { raw: {} },
   [AppSearchFields.id]: { raw: {} },
   [AppSearchFields.is_digital]: { raw: {} },
   [AppSearchFields.is_duo]: { raw: {} },

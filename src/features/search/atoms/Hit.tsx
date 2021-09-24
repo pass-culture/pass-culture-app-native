@@ -40,7 +40,6 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
         ...offer,
         category: parseCategory(offer.category),
         categoryName: offer.category,
-        description: offer.description || '',
         thumbUrl: offer.thumbUrl,
         isDuo: offer.isDuo,
         name: offer.name,

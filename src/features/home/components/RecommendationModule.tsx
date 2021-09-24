@@ -44,7 +44,6 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
             category={parseCategory(hit.offer.category)}
             categoryName={hit.offer.category}
             offerId={+hit.objectID}
-            description={hit.offer.description || ''}
             distance={formatDistance(hit._geoloc, position)}
             name={hit.offer.name}
             date={formatDates(timestampsInMillis)}

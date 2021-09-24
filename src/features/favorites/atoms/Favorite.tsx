@@ -76,7 +76,6 @@ export const Favorite: React.FC<Props> = (props) => {
         ...offer,
         category: parseCategory(offer.category.name),
         categoryName: offer.category.name,
-        description: '',
         thumbUrl: offer.image?.url,
         name: offer.name,
         offerId: offer.id,
