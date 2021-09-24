@@ -319,10 +319,10 @@ export interface BookingOfferResponse {
     name: string;
     /**
      * 
-     * @type {string}
+     * @type {SubcategoryIdEnum}
      * @memberof BookingOfferResponse
      */
-    subcategoryId: string;
+    subcategoryId: SubcategoryIdEnum;
     /**
      * 
      * @type {string}
@@ -788,10 +788,10 @@ export interface FavoriteOfferResponse {
     startPrice?: number | null;
     /**
      * 
-     * @type {string}
+     * @type {SubcategoryIdEnum}
      * @memberof FavoriteOfferResponse
      */
-    subcategoryId: string;
+    subcategoryId: SubcategoryIdEnum;
 }/**
  * 
  * @export
@@ -878,10 +878,10 @@ export enum HomepageLabelNameEnum {
 export interface HomepageLabelResponseModel {
     /**
      * 
-     * @type {string}
+     * @type {HomepageLabelNameEnum}
      * @memberof HomepageLabelResponseModel
      */
-    name: string;
+    name: HomepageLabelNameEnum;
     /**
      * 
      * @type {string}
@@ -1196,10 +1196,10 @@ export interface OfferResponse {
     stocks: Array<OfferStockResponse>;
     /**
      * 
-     * @type {string}
+     * @type {SubcategoryIdEnum}
      * @memberof OfferResponse
      */
-    subcategoryId: string;
+    subcategoryId: SubcategoryIdEnum;
     /**
      * 
      * @type {OfferVenueResponse}
@@ -1510,10 +1510,10 @@ export enum SearchGroupNameEnum {
 export interface SearchGroupResponseModel {
     /**
      * 
-     * @type {string}
+     * @type {SearchGroupNameEnum}
      * @memberof SearchGroupResponseModel
      */
-    name: string;
+    name: SearchGroupNameEnum;
     /**
      * 
      * @type {string}
@@ -1774,18 +1774,6 @@ export interface SubcategoryResponseModel {
     appLabel: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof SubcategoryResponseModel
-     */
-    canBeDuo: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SubcategoryResponseModel
-     */
-    canExpire: boolean;
-    /**
-     * 
      * @type {CategoryIdEnum}
      * @memberof SubcategoryResponseModel
      */
@@ -1807,19 +1795,7 @@ export interface SubcategoryResponseModel {
      * @type {boolean}
      * @memberof SubcategoryResponseModel
      */
-    isDigitalDeposit: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SubcategoryResponseModel
-     */
     isEvent: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SubcategoryResponseModel
-     */
-    isPhysicalDeposit: boolean;
     /**
      * 
      * @type {OnlineOfflinePlatformChoicesEnum}
