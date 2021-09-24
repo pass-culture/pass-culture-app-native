@@ -132,7 +132,7 @@ export type Sort<FieldsEnum> = SortOption<FieldsEnum> | Array<SortOption<FieldsE
  *
  * https://swiftype.com/documentation/app-search/api/search/boosts#value-boosts
  */
-interface ValueBooost {
+interface ValueBoost {
   type: 'value'
   /** The value to exact match on. Use an array to match on multiple values. */
   value: number | string
@@ -147,7 +147,7 @@ interface ValueBooost {
  *
  * https://swiftype.com/documentation/app-search/api/search/boosts#functional-boosts
  */
-interface FunctionalBooost {
+interface FunctionalBoost {
   type: 'functional'
   /** Type of function to calculate the boost value */
   function: 'linear' | 'exponential' | 'logarithmic'
@@ -162,7 +162,7 @@ interface FunctionalBooost {
  *
  * https://swiftype.com/documentation/app-search/api/search/boosts#proximity-boosts
  */
-interface ProximityBooost {
+export interface ProximityBoost {
   type: 'proximity'
   /** The mode of the distribution */
   center: string
@@ -178,7 +178,7 @@ interface ProximityBooost {
  * https://swiftype.com/documentation/app-search/api/search/boosts
  */
 export type Boosts<FieldsEnum> = FieldsEnum extends string
-  ? Partial<Record<FieldsEnum, ValueBooost | FunctionalBooost | ProximityBooost>>
+  ? Partial<Record<FieldsEnum, ValueBoost | FunctionalBoost | ProximityBoost>>
   : never
 
 export interface SearchOptions<FieldsEnum> {

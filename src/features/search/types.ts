@@ -10,7 +10,7 @@ export interface SelectedDate {
   selectedDate: Date
 }
 
-type LocationFilter =
+export type LocationFilter =
   | { locationType: LocationType.EVERYWHERE }
   | { locationType: LocationType.AROUND_ME; aroundRadius: number | null }
   | { locationType: LocationType.PLACE; place: SuggestedPlace; aroundRadius: number }

@@ -49,7 +49,7 @@ export const buildQueryOptions = (
     sort: SORT_OPTIONS,
   }
 
-  const boosts = buildBoosts(userLocation)
+  const boosts = buildBoosts(userLocation, searchState.locationFilter)
   if (boosts) {
     queryOptions['boosts'] = boosts
   }
