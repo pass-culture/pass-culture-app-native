@@ -4,7 +4,7 @@ import omit from 'lodash.omit'
 import { useMemo } from 'react'
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
-import { useIsUserUnderage } from 'features/profile/utils'
+import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { PartialSearchState } from 'features/search/types'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { useGeolocation } from 'libs/geolocation'
@@ -27,7 +27,7 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
   const searchBackend = useSearchQuery()
   const availableCategories = useAvailableCategories()
   const sendAdditionalRequest = useSendAdditionalRequestToAppSearch()
-  const isUserUnderage = useIsUserUnderage()
+  const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchHits, transformHits } = backend
@@ -45,13 +45,13 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
     async (context: QueryFunctionContext<[string, PartialSearchState], number>) => {
       const page = context.pageParam || 0
       const searchState = context.queryKey[1]
-      return await fetchHits({ page, ...searchState }, position, isUserUnderage)
+      return await fetchHits({ page, ...searchState }, position, isUserUnderageBeneficiary)
     },
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
       enabled,
       onSuccess: sendAdditionalRequest(() =>
-        searchBackend.fetchHits({ page: 0, ...searchState }, position, isUserUnderage)
+        searchBackend.fetchHits({ page: 0, ...searchState }, position, isUserUnderageBeneficiary)
       ),
     }
   )
