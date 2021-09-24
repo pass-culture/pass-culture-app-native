@@ -146,13 +146,14 @@ function checkValidServiceWorker(
       // Ensure service worker exists, and that we really are getting a JS file.
       if (response.status === 404) {
         // No service worker found.
-        // @ts-ignore improve typing
-        emit('error' as any, new Error(`Service worker not found at ${swUrl}`))
+        // @ts-ignore improve typing @typescript-eslint/no-explicit-any
+        emit('error' as any, new Error(`Service worker not found at ${swUrl}`)) // eslint-disable-line @typescript-eslint/no-explicit-any
         unregister()
       } else if (contentType != null && contentType.indexOf('javascript') === -1) {
         // @ts-ignore improve typing
         emit(
-          'error' as any,
+          // @ts-ignore improve typing @typescript-eslint/no-explicit-any
+          'error' as any, // eslint-disable-line @typescript-eslint/no-explicit-any
           // @ts-ignore improve typing
           new Error(
             `Expected ${swUrl} to have javascript content-type, but received ${response.headers.get(
