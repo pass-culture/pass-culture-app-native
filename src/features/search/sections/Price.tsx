@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { CenteredSection, TitleWithCount } from 'features/search/atoms'
-import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
+import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Slider } from 'ui/components/inputs/Slider'
 
@@ -13,8 +13,10 @@ const formatEuro = (price: number) => `${price} €`
 export const Price: React.FC = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Price)
   const { searchState, dispatch } = useStagedSearch()
-  const priceRange = searchState.priceRange ?? [0, MAX_PRICE]
-  const count = +(priceRange[0] > 0 || priceRange[1] < MAX_PRICE)
+
+  const maxPrice = useMaxPrice()
+  const priceRange = searchState.priceRange ?? [0, maxPrice]
+  const count = +(priceRange[0] > 0 || priceRange[1] < maxPrice)
   const values = searchState.offerIsFree ? [0, 0] : priceRange
 
   const onValuesChangeFinish = (newValues: number[]) => {
@@ -30,7 +32,7 @@ export const Price: React.FC = () => {
       <Slider
         showValues={true}
         values={values}
-        max={MAX_PRICE}
+        max={maxPrice}
         formatValues={formatEuro}
         onValuesChangeFinish={onValuesChangeFinish}
       />

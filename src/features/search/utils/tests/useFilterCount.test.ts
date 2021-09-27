@@ -1,10 +1,14 @@
+import { renderHook } from '@testing-library/react-hooks'
+import { mocked } from 'ts-jest/utils'
+
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
+import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 
-import { getFilterCount } from '../getFilterCount'
+import { useFilterCount } from '../useFilterCount'
 
 const date = { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: new Date() }
 const timeRange = DEFAULT_TIME_RANGE
@@ -23,7 +27,15 @@ const sevenFilters = {
   priceRange: [1, MAX_PRICE], // 1
 } as SearchState
 
-describe('getFilterCount', () => {
+jest.mock('features/search/utils/useMaxPrice')
+const mockedUseMaxPrice = mocked(useMaxPrice)
+
+describe('useFilterCount', () => {
+  beforeAll(() => {
+    mockedUseMaxPrice.mockImplementation(() => MAX_PRICE)
+    jest.clearAllMocks()
+  })
+
   it.each`
     section                          | partialSearchState                           | expected
     ${'initial state'}               | ${{}}                                        | ${0}
@@ -48,7 +60,7 @@ describe('getFilterCount', () => {
     'should return the correct number of activated filters | $section',
     ({ partialSearchState, expected }) => {
       const state: SearchState = { ...initialSearchState, ...partialSearchState }
-      expect(getFilterCount(state)).toEqual(expected)
+      expect(renderHook(() => useFilterCount(state)).result.current).toEqual(expected)
     }
   )
 
@@ -60,7 +72,7 @@ describe('getFilterCount', () => {
         venue: { ...Kourou, venueId },
       },
     }
-    expect(getFilterCount(venueSelected)).toEqual(1)
+    expect(renderHook(() => useFilterCount(venueSelected)).result.current).toEqual(1)
 
     const placeSelected: SearchState = {
       ...initialSearchState,
@@ -70,13 +82,13 @@ describe('getFilterCount', () => {
         aroundRadius: 20,
       },
     }
-    expect(getFilterCount(placeSelected)).toEqual(1)
+    expect(renderHook(() => useFilterCount(placeSelected)).result.current).toEqual(1)
 
     const everywhereSelected: SearchState = {
       ...initialSearchState,
       locationFilter: { locationType: LocationType.EVERYWHERE },
     }
-    expect(getFilterCount(everywhereSelected)).toEqual(0)
+    expect(renderHook(() => useFilterCount(everywhereSelected)).result.current).toEqual(0)
 
     const aroundMeSelected: SearchState = {
       ...initialSearchState,
@@ -85,6 +97,28 @@ describe('getFilterCount', () => {
         aroundRadius: 20,
       },
     }
-    expect(getFilterCount(aroundMeSelected)).toEqual(1)
+    expect(renderHook(() => useFilterCount(aroundMeSelected)).result.current).toEqual(1)
+  })
+})
+
+describe('useFilterCount under 18', () => {
+  const maxPriceUnder18 = 30
+  beforeAll(() => {
+    mockedUseMaxPrice.mockImplementation(() => maxPriceUnder18)
+    jest.clearAllMocks()
+  })
+
+  it('returns 0 when no filters even when the max price is not 300 (underage)', () => {
+    const { result } = renderHook(() =>
+      useFilterCount({ ...initialSearchState, priceRange: [0, maxPriceUnder18] })
+    )
+    expect(result.current).toEqual(0)
+  })
+
+  it('returns 1 when filter is below the max price for underage', () => {
+    const { result } = renderHook(() =>
+      useFilterCount({ ...initialSearchState, priceRange: [0, 29] })
+    )
+    expect(result.current).toEqual(1)
   })
 })

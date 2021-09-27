@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { getFilterCount } from 'features/search/utils/getFilterCount'
+import { useFilterCount } from 'features/search/utils/useFilterCount'
 import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -16,7 +16,7 @@ export const Filter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useSearch()
   const { dispatch } = useStagedSearch()
-  const filterCount = getFilterCount(searchState)
+  const filterCount = useFilterCount(searchState)
 
   const onPress = () => {
     dispatch({ type: 'SET_STATE', payload: searchState })
