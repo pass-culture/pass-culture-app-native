@@ -12,7 +12,6 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
@@ -40,9 +39,8 @@ type PartialOffer = Pick<
 >
 
 export const mergeOfferData = (offer: PartialOffer) => (
-  prevData: OfferAdaptedResponse | undefined
-): OfferAdaptedResponse => ({
-  fullAddress: null,
+  prevData: OfferResponse | undefined
+): OfferResponse => ({
   description: '',
   image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
   isDuo: offer.isDuo || false,

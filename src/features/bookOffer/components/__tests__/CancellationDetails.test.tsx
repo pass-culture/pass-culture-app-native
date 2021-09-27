@@ -2,8 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { QueryObserverResult } from 'react-query'
 
-import { OfferStockResponse, SettingsResponse } from 'api/gen'
-import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
+import { OfferResponse, OfferStockResponse, SettingsResponse } from 'api/gen'
 import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, RenderAPI } from 'tests/utils'
@@ -30,7 +29,7 @@ describe('formatDate()', () => {
 })
 
 let mockStock: OfferStockResponse | undefined = undefined
-let mockOffer = ({ id: 1, isDuo: true } as unknown) as OfferAdaptedResponse
+let mockOffer = ({ id: 1, isDuo: true } as unknown) as OfferResponse
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBookingStock: jest.fn(() => mockStock),
   useBookingOffer: jest.fn(() => mockOffer),
@@ -86,7 +85,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
           cancellationLimitDatetime,
           activationCode: { expirationDate: new Date('2030-02-05T00:00:00Z') },
         }
-        mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+        mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferResponse
         mockSettings = { autoActivateDigitalBookings: true }
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         const page = render(reactQueryProviderHOC(<CancellationDetails />))
@@ -105,7 +104,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
           cancellationLimitDatetime,
           activationCode: { expirationDate: null },
         }
-        mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+        mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferResponse
         mockSettings = { autoActivateDigitalBookings: true }
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         const page = render(reactQueryProviderHOC(<CancellationDetails />))
@@ -118,7 +117,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
   describe('no activationCode', () => {
     it('should be cancellable if no cancellation limit date', () => {
       mockStock = { ...notExpiredStock, cancellationLimitDatetime: null, activationCode: null }
-      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferResponse
       mockSettings = { autoActivateDigitalBookings: true }
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const page = render(reactQueryProviderHOC(<CancellationDetails />))
@@ -128,7 +127,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
 
     it('should not be cancellable if limitDate is past', () => {
       mockStock = { ...notExpiredStock, cancellationLimitDatetime: pastDate, activationCode: null }
-      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferResponse
       mockSettings = { autoActivateDigitalBookings: true }
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const page = render(reactQueryProviderHOC(<CancellationDetails />))
@@ -142,7 +141,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
         cancellationLimitDatetime: futureDate,
         activationCode: null,
       }
-      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferResponse
       mockSettings = { autoActivateDigitalBookings: true }
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const page = render(reactQueryProviderHOC(<CancellationDetails />))

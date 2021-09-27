@@ -1,15 +1,14 @@
 import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
-import { ExpenseDomain, UserProfileResponse } from 'api/gen'
+import { ExpenseDomain, OfferResponse, UserProfileResponse } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 
 import { hasEnoughCredit, useHasEnoughCredit } from '../useHasEnoughCredit'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 
-let mockedOffer: Partial<OfferAdaptedResponse> | undefined = undefined
+let mockedOffer: Partial<OfferResponse> | undefined = undefined
 jest.mock('features/offer/api/useOffer', () => ({
   useOffer: () => ({
     data: mockedOffer,

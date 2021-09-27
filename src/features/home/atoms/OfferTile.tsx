@@ -13,7 +13,6 @@ import {
 } from 'api/gen'
 import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ImageCaption } from 'ui/components/ImageCaption'
@@ -44,9 +43,8 @@ type PartialOffer = Pick<
 >
 
 export const mergeOfferData = (offer: PartialOffer) => (
-  prevData: OfferAdaptedResponse | undefined
-): OfferAdaptedResponse => ({
-  fullAddress: null,
+  prevData: OfferResponse | undefined
+): OfferResponse => ({
   description: '',
   image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
   isDuo: offer.isDuo || false,

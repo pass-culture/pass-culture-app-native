@@ -1,9 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
-import { CategoryNameEnum, CategoryType, UserRole } from 'api/gen'
-import { offerAdaptedResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
-import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
+import { CategoryNameEnum, CategoryType, OfferResponse, UserRole } from 'api/gen'
+import { offerResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { analytics } from 'libs/analytics'
@@ -96,7 +95,7 @@ describe('getCtaWordingAndAction', () => {
 
   describe('Beneficiary', () => {
     const getCta = (
-      partialOffer: Partial<OfferAdaptedResponse>,
+      partialOffer: Partial<OfferResponse>,
       parameters?: Partial<Parameters<typeof getCtaWordingAndAction>[0]>
     ) =>
       getCtaWordingAndAction({
@@ -302,7 +301,7 @@ describe('getCtaWordingAndAction', () => {
   })
 })
 
-const buildOffer = (partialOffer: Partial<OfferAdaptedResponse>): OfferAdaptedResponse => ({
+const buildOffer = (partialOffer: Partial<OfferResponse>): OfferResponse => ({
   ...baseOffer,
   ...partialOffer,
 })

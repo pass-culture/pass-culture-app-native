@@ -1,6 +1,12 @@
 import { t } from '@lingui/macro'
 
-import { CategoryNameEnum, CategoryType, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
+import {
+  CategoryNameEnum,
+  CategoryType,
+  FavoriteOfferResponse,
+  OfferResponse,
+  UserProfileResponse,
+} from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl, navigateToBooking } from 'features/navigation/helpers'
@@ -10,7 +16,7 @@ import { OptionalCategoryCriteria } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { analytics } from 'libs/analytics'
 
-import { OfferAdaptedResponse, useOffer } from '../api/useOffer'
+import { useOffer } from '../api/useOffer'
 
 import { useHasEnoughCredit } from './useHasEnoughCredit'
 
@@ -24,7 +30,7 @@ function getIsBookedOffer(
 interface Props {
   isLoggedIn: boolean
   isBeneficiary: boolean
-  offer: OfferAdaptedResponse
+  offer: OfferResponse
   hasEnoughCredit: boolean
   bookedOffers: UserProfileResponse['bookedOffers']
   availableCategories: OptionalCategoryCriteria
