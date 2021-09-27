@@ -837,7 +837,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           ]
         }
       >
-        Cinéma de la fin, RUE DE CALI, 97310 Kourou
+        RUE DE CALI, 97310 Kourou
       </Text>
       <View
         numberOfSpaces={4}

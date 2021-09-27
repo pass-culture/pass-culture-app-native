@@ -1,7 +1,12 @@
-import { CategoryNameEnum, CategoryType, ExpenseDomain, SubcategoryIdEnum } from 'api/gen'
-import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
+import {
+  CategoryNameEnum,
+  CategoryType,
+  ExpenseDomain,
+  OfferResponse,
+  SubcategoryIdEnum,
+} from 'api/gen'
 
-export const mockOffer: OfferAdaptedResponse = {
+export const mockOffer: OfferResponse = {
   id: 146112,
   accessibility: {
     audioDisability: null,
@@ -91,10 +96,9 @@ export const mockOffer: OfferAdaptedResponse = {
     },
   },
   withdrawalDetails: null,
-  fullAddress: 'Cinéma de la fin, RUE DE CALI, 97310 Kourou',
 }
 
-export const mockDigitalOffer: OfferAdaptedResponse = {
+export const mockDigitalOffer: OfferResponse = {
   id: 146113,
   accessibility: {
     audioDisability: null,
@@ -164,5 +168,4 @@ export const mockDigitalOffer: OfferAdaptedResponse = {
     },
   },
   withdrawalDetails: null,
-  fullAddress: 'Cinéma de la fin, RUE DE CALI, 97310 Kourou',
 }

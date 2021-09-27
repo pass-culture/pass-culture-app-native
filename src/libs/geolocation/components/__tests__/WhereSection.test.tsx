@@ -1,6 +1,7 @@
 import React from 'react'
 import { act } from 'react-test-renderer'
 
+import { offerAdaptedResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { offerVenueResponseSnap } from 'features/offer/api/snaps/offerVenueReponseSnap'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { fireEvent, render } from 'tests/utils'
@@ -16,11 +17,10 @@ jest.mock('libs/geolocation/hooks/useDistance', () => ({
 }))
 
 const venue = offerVenueResponseSnap
+const offer = offerAdaptedResponseSnap
+
 const locationCoordinates = { latitude: 2, longitude: 4 }
 const beforeNavigateToItinerary = jest.fn()
-const venueAddress = venue.address
-  ? `${venue.address}, ${venue.postalCode} ${venue.city}`
-  : `${venue.publicName}, ${venue.postalCode} ${venue.city}`
 
 describe('WhereSection', () => {
   it('should render correctly', () => {
@@ -28,7 +28,7 @@ describe('WhereSection', () => {
       <WhereSection
         venue={venue}
         locationCoordinates={locationCoordinates}
-        address={venueAddress}
+        address={offer.fullAddress}
         beforeNavigateToItinerary={beforeNavigateToItinerary}
         showVenueBanner
       />
@@ -41,7 +41,7 @@ describe('WhereSection', () => {
       <WhereSection
         venue={venue}
         locationCoordinates={locationCoordinates}
-        address={venueAddress}
+        address={offer.fullAddress}
         beforeNavigateToItinerary={beforeNavigateToItinerary}
         showVenueBanner
       />
