@@ -22,6 +22,9 @@ export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): Algolia
   const geoloc = searchHit.getRaw(AppSearchFields.venue_position) as string
   const [lat, lng] = (geoloc || ',').split(',')
 
+  const id = searchHit.getRaw(AppSearchFields.id) as string
+  const objectID = id.split('|').slice(-1)[0]
+
   return {
     offer: {
       category: searchHit.getRaw(AppSearchFields.category) as CategoryNameEnum,
@@ -37,7 +40,7 @@ export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): Algolia
       lat: isNaN(parseFloat(lat)) ? null : parseFloat(lat),
       lng: isNaN(parseFloat(lng)) ? null : parseFloat(lng),
     },
-    objectID: searchHit.getRaw(AppSearchFields.id) as string,
+    objectID,
   }
 }
 

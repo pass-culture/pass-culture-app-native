@@ -63,7 +63,8 @@ export const RESULT_FIELDS: ResultFields<AppSearchFields> = {
   [AppSearchFields.is_digital]: { raw: {} },
   [AppSearchFields.is_duo]: { raw: {} },
   [AppSearchFields.name]: { raw: {} },
-  [AppSearchFields.subcategory_id]: { raw: {} },
+  // TODO(antoinewg) uncomment when indexed in all environments
+  // [AppSearchFields.subcategory_id]: { raw: {} },
   [AppSearchFields.prices]: { raw: {} },
   [AppSearchFields.thumb_url]: { raw: {} },
   [AppSearchFields.venue_position]: { raw: {} },
