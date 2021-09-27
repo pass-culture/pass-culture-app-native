@@ -7,7 +7,6 @@ import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { RootStack } from 'features/navigation/RootNavigator'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
-import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render } from 'tests/utils'
 
@@ -51,7 +50,7 @@ jest.mock('features/home/api', () => ({
   ),
 }))
 
-let mockedOffer: Partial<OfferAdaptedResponse> | undefined = undefined
+let mockedOffer: Partial<OfferResponse> | undefined = undefined
 jest.mock('features/offer/api/useOffer', () => ({
   useOffer: () => ({
     data: mockedOffer,

@@ -45,7 +45,6 @@ describe('<BookingInformations />', () => {
     mockedUseBookingOffer.mockReturnValueOnce({
       category: { categoryType: CategoryType.Event, label: 'categoryLabel' },
       isDigital: false,
-      fullAddress: 'mon adresse',
       name: 'mon nom',
       stocks: [],
     })
@@ -58,7 +57,6 @@ describe('<BookingInformations />', () => {
     mockedUseBookingOffer.mockReturnValueOnce({
       category: { categoryType: CategoryType.Event, label: 'categoryLabel' },
       isDigital: false,
-      fullAddress: 'mon adresse',
       name: 'mon nom',
       stocks: [],
     })
@@ -76,7 +74,6 @@ describe('<BookingInformations />', () => {
     mockedUseBookingOffer.mockReturnValueOnce({
       category: { categoryType: CategoryType.Event, label: 'categoryLabel' },
       isDigital: false,
-      fullAddress: 'mon adresse',
       name: 'mon nom',
       stocks: [],
     })
@@ -98,7 +95,6 @@ describe('<BookingInformations />', () => {
     mockedUseBookingOffer.mockReturnValueOnce({
       category: { categoryType: CategoryType.Thing, label: 'categoryLabel' },
       isDigital: true,
-      fullAddress: 'mon adresse',
       name: 'mon nom',
       stocks: [],
     })
@@ -110,7 +106,6 @@ describe('<BookingInformations />', () => {
     mockedUseBookingOffer.mockReturnValueOnce({
       category: { categoryType: CategoryType.Thing, label: 'categoryLabel' },
       isDigital: true,
-      fullAddress: 'mon adresse',
       name: 'mon nom',
       stocks: [],
     })
