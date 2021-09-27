@@ -5,7 +5,7 @@ export async function checkGeolocPermission(): Promise<GeolocPermissionState> {
   if (state === 'granted') {
     return GeolocPermissionState.GRANTED
   }
-  if (state === 'denied' || state === 'prompt') {
+  if (state === 'prompt') {
     return GeolocPermissionState.DENIED
   }
   return GeolocPermissionState.NEVER_ASK_AGAIN
