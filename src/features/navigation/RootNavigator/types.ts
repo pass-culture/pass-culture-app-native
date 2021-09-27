@@ -50,7 +50,6 @@ export type RootStackParamList = {
     followScreen?: 'NextBeneficiaryStep'
     followParams?: RootStackParamList['NextBeneficiaryStep']
   }
-  Maintenance: undefined
   Navigation: undefined
   NavigationIdCheckErrors: undefined
   NotificationSettings: undefined
@@ -88,7 +87,6 @@ export type RootStackParamList = {
   VerifyEligibility: { email: string; nextBeneficiaryValidationStep: BeneficiaryValidationStep }
   FirstTutorial: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
-  ForceUpdate: undefined
   PageNotFound: undefined
   Venue: { id: number }
 } & IdCheckRootStackParamList

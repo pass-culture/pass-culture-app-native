@@ -1,5 +1,6 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
+import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
@@ -16,7 +17,6 @@ import 'intl/locale-data/jsonp/en'
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
-import { useBlockForMaintenance } from 'features/maintenance/useMaintenance'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
@@ -65,8 +65,6 @@ const App: FunctionComponent = function () {
   campaignTracker.useInit()
   useStartBatchNotification()
 
-  useBlockForMaintenance()
-
   useEffect(() => {
     activate('fr')
   }, [])
@@ -89,7 +87,9 @@ const App: FunctionComponent = function () {
                         <SnackBarProvider>
                           <IdCheckContextProvider>
                             <SplashScreenProvider>
-                              <AppNavigationContainer />
+                              <ScreenErrorProvider>
+                                <AppNavigationContainer />
+                              </ScreenErrorProvider>
                             </SplashScreenProvider>
                           </IdCheckContextProvider>
                         </SnackBarProvider>

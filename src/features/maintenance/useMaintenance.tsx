@@ -1,28 +1,14 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-import { navigationRef } from 'features/navigation/navigationRef'
 import { maintenanceStatusListener } from 'libs/firestore/maintenance'
 
-const resetToMaintenancePage = () => {
-  navigationRef.current?.reset({
-    index: 0,
-    routes: [
-      {
-        name: 'Maintenance',
-      },
-    ],
-  })
-}
-
-const onMaintenanceStatusChange = (isUnderMaintenance: boolean) => {
-  if (isUnderMaintenance) resetToMaintenancePage()
-}
-
-export const useBlockForMaintenance = () => {
+export const useIsUnderMaintenance = () => {
+  const [maintenance, setMaintenance] = useState<boolean | undefined>()
   useEffect(() => {
-    const subscriber = maintenanceStatusListener(onMaintenanceStatusChange)
+    const subscriber = maintenanceStatusListener(setMaintenance)
 
     // Stop listening for updates when no longer required
     return () => subscriber()
   }, [])
+  return maintenance
 }

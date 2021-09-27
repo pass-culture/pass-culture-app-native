@@ -10,10 +10,13 @@ import { useSignIn } from 'features/auth/api'
 import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
+import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
+import { Maintenance } from 'features/maintenance/Maintenance'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { AsyncError } from 'libs/monitoring'
+import { ScreenError } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -29,6 +32,7 @@ const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 export function Navigation(): JSX.Element {
   const navigation = useNavigation<UseNavigationType>()
   const [renderedError, setRenderedError] = useState(undefined)
+  const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
   const { showErrorSnackBar } = useSnackBarContext()
@@ -52,7 +56,7 @@ export function Navigation(): JSX.Element {
   }
 
   async function onIdCheckV2() {
-    const email = 'dka@dka.com' || 'pctest.jeune93.has-booked-some.v2@example.com'
+    const email = 'pctest.jeune93.has-booked-some.v2@example.com'
     const password = 'user@AZERTY123'
     try {
       const signInResponse = await signIn({ identifier: email, password })
@@ -71,6 +75,10 @@ export function Navigation(): JSX.Element {
     } catch (error) {
       showErrorSnackBar({ message: error.message, timeout: SNACK_BAR_TIME_OUT })
     }
+  }
+
+  if (screenError) {
+    throw screenError
   }
 
   return (
@@ -276,13 +284,13 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={`Maintenance Page`}
-            onPress={() => navigation.navigate('Maintenance')}
+            onPress={() => setScreenError(new ScreenError('Test maintenance page', Maintenance))}
           />
         </Row>
         <Row half>
           <NavigationButton
             title={`ForceUpdate Page`}
-            onPress={() => navigation.navigate('ForceUpdate')}
+            onPress={() => setScreenError(new ScreenError('Test force update page', ForceUpdate))}
           />
         </Row>
         <Row half>

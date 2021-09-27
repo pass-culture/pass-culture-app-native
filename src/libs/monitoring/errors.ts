@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import { CaptureContext } from '@sentry/types'
+import { ComponentType } from 'react'
 
 import { eventMonitoring } from 'libs/monitoring/services'
 
@@ -38,3 +39,17 @@ export class OfferNotFoundError extends MonitoringError {
     super(message, name, captureContext)
   }
 }
+
+export type ScreenErrorProps = {
+  resetErrorBoundary: () => void
+}
+
+export class ScreenError extends Error {
+  Screen: ComponentType<ScreenErrorProps>
+  constructor(message: string, Screen: ComponentType<ScreenErrorProps>) {
+    super(message)
+    this.Screen = Screen
+  }
+}
+
+ScreenError.prototype.name = 'ScreenError'
