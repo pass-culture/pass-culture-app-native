@@ -1,4 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
+import { CountryCode } from 'libphonenumber-js'
 import React from 'react'
 import { useMutation, UseMutationResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
@@ -59,6 +60,11 @@ const navigationProps = {
     },
   },
 } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
+
+const formattedPhoneNumber = formatPhoneNumber(
+  navigationProps.route.params.phoneNumber,
+  navigationProps.route.params.countryCode as CountryCode
+).replace(/ /g, '\u00a0')
 
 describe('SetPhoneValidationCode', () => {
   beforeEach(() => {
@@ -193,7 +199,7 @@ describe('SetPhoneValidationCode', () => {
       const retryButton = getByTestId('Réessayer')
       fireEvent.press(retryButton)
 
-      expect(sendPhoneValidationCode).toHaveBeenCalledWith(navigationProps.route.params.phoneNumber)
+      expect(sendPhoneValidationCode).toHaveBeenCalledWith(formattedPhoneNumber)
     })
   })
 

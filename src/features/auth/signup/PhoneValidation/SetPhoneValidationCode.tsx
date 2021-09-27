@@ -177,7 +177,7 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
 
   function requestSendPhoneValidationCode() {
     if (isRequestTimestampExpired) {
-      sendPhoneValidationCode(route.params.phoneNumber)
+      sendPhoneValidationCode(formattedPhoneNumber)
     }
   }
 
