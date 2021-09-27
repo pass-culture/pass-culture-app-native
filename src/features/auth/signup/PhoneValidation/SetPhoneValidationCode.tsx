@@ -55,7 +55,10 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodeProps) => {
   const { width: windowWidth } = useWindowDimensions()
   const { data: settings } = useAppSettings()
-  const { phoneNumber, countryCode } = route.params
+  const formattedPhoneNumber = formatPhoneNumber(
+    route.params.phoneNumber,
+    route.params.countryCode as CountryCode
+  )
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('SetPhoneNumber')
   const [sessionId, setSessionId] = useState<string | undefined>()
@@ -174,14 +177,14 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
 
   function requestSendPhoneValidationCode() {
     if (isRequestTimestampExpired) {
-      sendPhoneValidationCode(phoneNumber)
+      sendPhoneValidationCode(route.params.phoneNumber)
     }
   }
 
   const validationCodeInformation = useMemo(
     () =>
       t`Saisis le code envoyé par SMS au numéro` +
-      ` ${formatPhoneNumber(phoneNumber, countryCode as CountryCode)}.` +
+      ` ${formattedPhoneNumber}.` +
       '\n' +
       t`Attention tu n'as que 3 tentatives.`,
     [route.params]
@@ -295,7 +298,7 @@ const CodeInputContainer = styled.View({
  */
 export const formatPhoneNumber = (phoneNumber: string, countryCode: CountryCode) => {
   const parsedPhoneNumber = parsePhoneNumber(phoneNumber, countryCode)
-  return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0')
+  return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0') || ''
 }
 
 const Break = styled.View({
