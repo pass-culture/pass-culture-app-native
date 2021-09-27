@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
+import { ScreenError } from 'libs/monitoring/errors'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
@@ -16,7 +17,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface AsyncFallbackProps extends FallbackProps {
   resetErrorBoundary: (...args: Array<unknown>) => void
-  error: AsyncError
+  error: AsyncError | ScreenError | Error
   header?: ReactNode
 }
 
@@ -28,8 +29,12 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   const { reset } = useQueryErrorResetBoundary()
 
   useEffect(() => {
-    // we already captures MonitoringError exceptions (in constructor)
-    if (!(error instanceof MonitoringError)) {
+    if (
+      // we already captures MonitoringError exceptions (in AsyncError constructor)
+      !(error instanceof MonitoringError) ||
+      // we don't need to capture those errors
+      !(error instanceof ScreenError)
+    ) {
       eventMonitoring.captureException(error)
     }
   }, [error])
@@ -37,9 +42,13 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   const handleRetry = async () => {
     reset()
     resetErrorBoundary()
-    if (error?.retry) {
+    if (error instanceof AsyncError && error.retry) {
       await error.retry()
     }
+  }
+
+  if (error instanceof ScreenError) {
+    return <error.ScreenError resetErrorBoundary={resetErrorBoundary} />
   }
 
   return (

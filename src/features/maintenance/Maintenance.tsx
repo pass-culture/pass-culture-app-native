@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { Helmet } from 'libs/react-helmet/Helmet'
 import { Background } from 'ui/svg/Background'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
@@ -10,6 +11,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export const Maintenance = () => {
   return (
     <Container>
+      <Helmet title={t`Maintenance`} />
       <Background />
       <Spacer.Flex />
       <Spacer.Column numberOfSpaces={10} />

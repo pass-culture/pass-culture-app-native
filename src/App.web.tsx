@@ -3,6 +3,7 @@ import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
+import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import React, { Suspense, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { QueryClientProvider } from 'react-query'
@@ -52,9 +53,11 @@ export function App() {
                         <SnackBarProvider>
                           <IdCheckContextProvider>
                             <AppWebHead />
-                            <Suspense fallback={<LoadingPage />}>
-                              <AppNavigationContainer />
-                            </Suspense>
+                            <ScreenErrorProvider>
+                              <Suspense fallback={<LoadingPage />}>
+                                <AppNavigationContainer />
+                              </Suspense>
+                            </ScreenErrorProvider>
                           </IdCheckContextProvider>
                         </SnackBarProvider>
                       </I18nProvider>

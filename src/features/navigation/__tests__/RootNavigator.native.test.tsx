@@ -26,12 +26,17 @@ jest.mock('features/navigation/TabBar/TabNavigator', () => ({
 }))
 
 describe('<RootNavigator />', () => {
+  beforeEach(() => {
+    mockedUseMustUpdateApp.mockReturnValue(true)
+  })
+
   afterEach(async () => {
     jest.clearAllMocks()
     await storage.clear('has_accepted_cookie')
   })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
+    mockedUseMustUpdateApp.mockReturnValueOnce(false)
     // eslint-disable-next-line local-rules/independant-mocks
     jest
       .spyOn(splashScreenModule, 'useSplashScreenContext')
@@ -44,6 +49,7 @@ describe('<RootNavigator />', () => {
   })
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {
+    mockedUseMustUpdateApp.mockReturnValueOnce(false)
     // eslint-disable-next-line local-rules/independant-mocks
     jest
       .spyOn(splashScreenModule, 'useSplashScreenContext')
@@ -90,12 +96,9 @@ describe('wrapRoute()', () => {
 
   it('should display force update page when global variable is set', async () => {
     await storage.saveObject('has_accepted_cookie', false)
-    mockedUseMustUpdateApp.mockReturnValueOnce(true)
-
     const rootNavigator = await renderRootNavigator()
-
     expect(rootNavigator).toMatchSnapshot()
-    expect(rootNavigator.queryByText("Mise à jour de l'application")).toBeTruthy()
+    expect(rootNavigator.queryAllByText("Mise à jour de l'application")).toBeTruthy()
   })
 })
 

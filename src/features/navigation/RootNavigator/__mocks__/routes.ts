@@ -5,7 +5,6 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { Route } from '../types'
 
 const MockComponent = () => null
-
 export const routes: Array<Route> = [
   { name: 'PageNotFound', component: MockComponent, path: '*' },
   { name: 'TabNavigator', component: MockComponent, pathConfig: tabNavigatorPathConfig },

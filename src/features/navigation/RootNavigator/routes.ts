@@ -43,8 +43,6 @@ import { withAsyncErrorBoundary, withOfferNotFoundErrorBoundary } from 'features
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
-import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
-import { Maintenance } from 'features/maintenance/Maintenance'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
@@ -200,12 +198,6 @@ const routesBeforeReleaseCheck: Route[] = [
     },
     options: { title: t`Connexion` },
   },
-  {
-    name: 'Maintenance',
-    component: Maintenance,
-    path: 'maintenance',
-    options: { title: t`Maintenance` },
-  },
   { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary, path: 'navigation' },
   {
     name: 'NavigationIdCheckErrors',
@@ -353,12 +345,6 @@ const routesBeforeReleaseCheck: Route[] = [
     component: FirstTutorial,
     path: 'first-tutorial',
     options: { title: t`1er tutoriel` },
-  },
-  {
-    name: 'ForceUpdate',
-    component: ForceUpdate,
-    path: 'force-update',
-    options: { title: t`Mise à jours` },
   },
   {
     name: 'IdCheckUnavailable',

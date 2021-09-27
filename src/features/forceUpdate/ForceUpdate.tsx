@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { openExternalUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
+import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { Background } from 'ui/svg/Background'
 import { Star } from 'ui/svg/icons/Star'
@@ -44,6 +45,7 @@ const buttonText = Platform.select({
 export const ForceUpdate = () => {
   return (
     <Container>
+      <Helmet title={title} />
       <Background />
       <IconContainer>
         <Spacer.Flex />
