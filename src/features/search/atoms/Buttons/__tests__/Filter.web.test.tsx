@@ -6,6 +6,10 @@ import { fireEvent, render } from 'tests/utils/web'
 
 import { Filter } from '../Filter'
 
+jest.mock('features/search/utils/useMaxPrice', () => ({
+  useMaxPrice: jest.fn(() => 300),
+}))
+
 describe('Filter component', () => {
   afterAll(() => jest.resetAllMocks())
   const mockSearchState = initialSearchState

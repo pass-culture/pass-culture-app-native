@@ -5,6 +5,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
+import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { useGeolocation } from 'libs/geolocation'
 
 export interface ISearchContext {
@@ -18,14 +19,31 @@ export const SearchContext = React.createContext<ISearchContext | null>(null)
 
 export const SearchWrapper = memo(function SearchWrapper({ children }: { children: JSX.Element }) {
   const { position } = useGeolocation()
-  const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
-  const [stagedSearchState, stagedDispatch] = useReducer(searchReducer, initialSearchState)
+
+  const maxPrice = useMaxPrice()
+  const priceRange: [number, number] = [0, maxPrice]
+
+  const initialSearchStateWithPriceRange = {
+    ...initialSearchState,
+    priceRange,
+  }
+
+  const [searchState, dispatch] = useReducer(searchReducer, initialSearchStateWithPriceRange)
+  const [stagedSearchState, stagedDispatch] = useReducer(
+    searchReducer,
+    initialSearchStateWithPriceRange
+  )
 
   useEffect(() => {
     const actionType = position ? 'SET_LOCATION_AROUND_ME' : 'SET_LOCATION_EVERYWHERE'
     dispatch({ type: actionType })
     stagedDispatch({ type: actionType })
   }, [!position])
+
+  useEffect(() => {
+    dispatch({ type: 'PRICE_RANGE', payload: priceRange })
+    stagedDispatch({ type: 'PRICE_RANGE', payload: priceRange })
+  }, [maxPrice])
 
   return (
     <SearchContext.Provider value={{ searchState, stagedSearchState, dispatch, stagedDispatch }}>
