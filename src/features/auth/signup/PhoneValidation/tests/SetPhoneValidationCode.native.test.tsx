@@ -51,6 +51,15 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
   onError: () => {},
 }
 
+const navigationProps = {
+  route: {
+    params: {
+      phoneNumber: '0612345678',
+      countryCode: 'FR',
+    },
+  },
+} as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
+
 describe('SetPhoneValidationCode', () => {
   beforeEach(() => {
     // @ts-expect-error ts(2345)
@@ -184,7 +193,7 @@ describe('SetPhoneValidationCode', () => {
       const retryButton = getByTestId('Réessayer')
       fireEvent.press(retryButton)
 
-      expect(sendPhoneValidationCode).toHaveBeenCalled()
+      expect(sendPhoneValidationCode).toHaveBeenCalledWith(navigationProps.route.params.phoneNumber)
     })
   })
 
@@ -199,14 +208,6 @@ describe('SetPhoneValidationCode', () => {
 })
 
 function renderSetPhoneValidationCode() {
-  const navigationProps = {
-    route: {
-      params: {
-        phoneNumber: '0612345678',
-        countryCode: 'FR',
-      },
-    },
-  } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
   return render(<SetPhoneValidationCode {...navigationProps} />)
 }
 
