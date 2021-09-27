@@ -837,7 +837,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           ]
         }
       >
-        RUE DE CALI, 97310 Kourou
+        PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
       </Text>
       <View
         numberOfSpaces={4}
