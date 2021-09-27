@@ -3471,6 +3471,55 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               ]
                             }
                           >
+                            Adresse
+                          </Text>
+                          <View
+                            numberOfSpaces={1}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 4,
+                                },
+                              ]
+                            }
+                          />
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                  "textTransform": "capitalize",
+                                },
+                              ]
+                            }
+                          >
+                            2 RUE LAMENNAIS, 75008 PARIS 8
+                          </Text>
+                          <View
+                            numberOfSpaces={4}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 16,
+                                },
+                              ]
+                            }
+                          />
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 12,
+                                  "lineHeight": 16,
+                                },
+                              ]
+                            }
+                          >
                             Distance
                           </Text>
                           <View

@@ -10,6 +10,7 @@ import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal'
 import { useReportedOffers } from 'features/offer/services/useReportedOffers'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
+import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod } from 'libs/parsers'
@@ -51,6 +52,14 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
+
+  const fullAddress = formatFullAddress(
+    venue.publicName,
+    venue.name,
+    venue.address,
+    venue.postalCode,
+    venue.city
+  )
 
   const dates = offerResponse.stocks.reduce<Date[]>(
     (accumulator, stock) =>
@@ -106,7 +115,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
             analytics.logConsultItinerary({ offerId: offerResponse.id, from: 'offer' })
           }
           venue={venue}
-          address={offerResponse.fullAddress}
+          address={fullAddress}
           locationCoordinates={venue.coordinates}
           showVenueBanner
         />

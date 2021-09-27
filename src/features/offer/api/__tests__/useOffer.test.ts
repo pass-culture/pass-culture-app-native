@@ -2,8 +2,8 @@ import { renderHook } from '@testing-library/react-hooks'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
-import { offerResponseSnap, offerAdaptedResponseSnap } from '../snaps/offerResponseSnap'
-import { useOffer, formatFullAddress } from '../useOffer'
+import { offerResponseSnap } from '../snaps/offerResponseSnap'
+import { useOffer } from '../useOffer'
 
 describe('useOffer', () => {
   it('should call API otherwise', async () => {
@@ -12,37 +12,6 @@ describe('useOffer', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => !result.current.isLoading)
-    expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offerAdaptedResponseSnap))
+    expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offerResponseSnap))
   })
-
-  it.each`
-    publicName              | name            | address               | postalCode   | city         | expectedResult
-    ${undefined}            | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${'Ciné Pathé, 2 rue des champs, 75015 Paris'}
-    ${undefined}            | ${'Ciné Pathé'} | ${undefined}          | ${'75015'}   | ${'Paris'}   | ${'Ciné Pathé, 75015 Paris'}
-    ${undefined}            | ${'Ciné Pathé'} | ${undefined}          | ${undefined} | ${'Paris'}   | ${'Ciné Pathé, Paris'}
-    ${undefined}            | ${'Ciné Pathé'} | ${undefined}          | ${undefined} | ${undefined} | ${'Ciné Pathé'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${undefined}          | ${'75015'}   | ${'Paris'}   | ${'Pathé beaugrenelle, 75015 Paris'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${undefined}          | ${'75015'}   | ${undefined} | ${'Pathé beaugrenelle, 75015'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${undefined}          | ${undefined} | ${'Paris'}   | ${'Pathé beaugrenelle, Paris'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${undefined} | ${'Paris'}   | ${'Pathé beaugrenelle, 2 rue des champs, Paris'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${undefined} | ${undefined} | ${'Pathé beaugrenelle, 2 rue des champs'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${undefined} | ${'Pathé beaugrenelle, 2 rue des champs, 75015'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${undefined} | ${'Paris'}   | ${'Pathé beaugrenelle, 2 rue des champs, Paris'}
-    ${''}                   | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${'Ciné Pathé, 2 rue des champs, 75015 Paris'}
-    ${''}                   | ${'Ciné Pathé'} | ${''}                 | ${'75015'}   | ${'Paris'}   | ${'Ciné Pathé, 75015 Paris'}
-    ${''}                   | ${'Ciné Pathé'} | ${''}                 | ${''}        | ${'Paris'}   | ${'Ciné Pathé, Paris'}
-    ${''}                   | ${'Ciné Pathé'} | ${''}                 | ${''}        | ${''}        | ${'Ciné Pathé'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${''}                 | ${'75015'}   | ${'Paris'}   | ${'Pathé beaugrenelle, 75015 Paris'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${''}                 | ${'75015'}   | ${''}        | ${'Pathé beaugrenelle, 75015'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${''}                 | ${''}        | ${'Paris'}   | ${'Pathé beaugrenelle, Paris'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${''}        | ${'Paris'}   | ${'Pathé beaugrenelle, 2 rue des champs, Paris'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${''}        | ${''}        | ${'Pathé beaugrenelle, 2 rue des champs'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${''}        | ${'Pathé beaugrenelle, 2 rue des champs, 75015'}
-    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${''}        | ${'Paris'}   | ${'Pathé beaugrenelle, 2 rue des champs, Paris'}
-  `(
-    'should format correctly full address',
-    ({ publicName, name, address, postalCode, city, expectedResult }) => {
-      expect(formatFullAddress(publicName, name, address, postalCode, city)).toEqual(expectedResult)
-    }
-  )
 })

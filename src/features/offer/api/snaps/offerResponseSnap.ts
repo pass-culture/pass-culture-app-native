@@ -62,8 +62,3 @@ export const offerResponseSnap: OfferResponse = {
   },
   withdrawalDetails: 'How to withdraw, https://test.com',
 }
-
-export const offerAdaptedResponseSnap = {
-  ...offerResponseSnap,
-  fullAddress: 'PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS 8',
-}
