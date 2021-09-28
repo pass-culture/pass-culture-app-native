@@ -66,6 +66,10 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
     <AppModal
       visible={visible}
       title={t`Tu es sur le point d'annuler`}
+      leftIconAccessibilityLabel={undefined}
+      leftIcon={undefined}
+      onLeftIconPress={undefined}
+      rightIconAccessibilityLabel={t`Ne pas annuler`}
       rightIcon={Close}
       onRightIconPress={dismissModal}>
       <ModalContent>

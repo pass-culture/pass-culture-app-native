@@ -1,8 +1,10 @@
+import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useReportOfferModalContent } from 'features/offer/components/useReportOfferModalContent'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { Close } from 'ui/svg/icons/Close'
 
 enum ReportSteps {
@@ -25,19 +27,24 @@ export const ReportOfferModal: FunctionComponent<Props> = (props) => {
     dismissModal: props.dismissModal,
     offerId: props.offerId,
   })
+  const modalLeftIconProps = {
+    leftIconAccessibilityLabel: childrenProps.leftIconAccessibilityLabel,
+    leftIcon: childrenProps.leftIcon,
+    onLeftIconPress: childrenProps.onLeftIconPress,
+  } as ModalLeftIconProps
 
   return (
     <AppModal
       visible={props.isVisible}
       title={childrenProps.title}
+      onBackdropPress={props.dismissModal}
+      {...modalLeftIconProps}
+      rightIconAccessibilityLabel={t`Fermer la modale`}
       rightIcon={Close}
-      leftIcon={childrenProps.leftIcon}
       onRightIconPress={() => {
         props.dismissModal()
         setReportStep(ReportSteps.REPORT_OFFER_DESCRIPTION)
-      }}
-      onBackdropPress={props.dismissModal}
-      onLeftIconPress={childrenProps.onLeftIconPress}>
+      }}>
       <ModalContent>{childrenProps.children}</ModalContent>
     </AppModal>
   )

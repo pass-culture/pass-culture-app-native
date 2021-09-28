@@ -65,10 +65,12 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
       <BottomContentPage>
         <ModalHeader
           title={t`Ton mot de passe`}
-          rightIcon={Close}
-          onRightIconPress={showQuitSignupModal}
+          leftIconAccessibilityLabel={t`Revenir en arrière`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
+          rightIconAccessibilityLabel={t`Abandonner l'inscription`}
+          rightIcon={Close}
+          onRightIconPress={showQuitSignupModal}
         />
         <BottomCardContentContainer>
           <Spacer.Column numberOfSpaces={6} />

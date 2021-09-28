@@ -1,7 +1,9 @@
+import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 
 import { analytics } from 'libs/analytics'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { Close } from 'ui/svg/icons/Close'
 
 import { useModalContent } from '../services/useModalContent'
@@ -15,7 +17,19 @@ interface Props {
 
 export const BookingOfferModalComponent: React.FC<Props> = ({ visible, offerId }) => {
   const { dismissModal, dispatch } = useBooking()
-  const { title, leftIcon, onLeftIconPress, children } = useModalContent()
+  const {
+    title,
+    leftIconAccessibilityLabel,
+    leftIcon,
+    onLeftIconPress,
+    children,
+  } = useModalContent()
+
+  const modalLeftIconProps = {
+    leftIcon,
+    leftIconAccessibilityLabel,
+    onLeftIconPress,
+  } as ModalLeftIconProps
 
   useEffect(() => {
     dispatch({ type: 'SET_OFFER_ID', payload: offerId })
@@ -27,20 +41,18 @@ export const BookingOfferModalComponent: React.FC<Props> = ({ visible, offerId }
     }
   }, [visible])
 
-  const onPressRightIcon = () => {
-    dismissModal()
-    dispatch({ type: 'RESET' })
-  }
-
   return (
     <AppModal
       visible={visible}
       title={title}
-      leftIcon={leftIcon}
-      onLeftIconPress={onLeftIconPress}
+      isScrollable
+      {...modalLeftIconProps}
+      rightIconAccessibilityLabel={t`Fermer la modale`}
       rightIcon={Close}
-      onRightIconPress={onPressRightIcon}
-      isScrollable>
+      onRightIconPress={() => {
+        dismissModal()
+        dispatch({ type: 'RESET' })
+      }}>
       {children}
     </AppModal>
   )

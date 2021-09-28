@@ -99,6 +99,7 @@ Array [
               }
             >
               <View
+                accessibilityLabel="Revenir en arrière"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -118,7 +119,7 @@ Array [
                     "opacity": 1,
                   }
                 }
-                testID="leftIconButton"
+                testID="Revenir en arrière"
               >
                 <View
                   height={32}
@@ -150,6 +151,7 @@ Array [
                 Ton anniversaire
               </Text>
               <View
+                accessibilityLabel="Abandonner l'inscription"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -169,7 +171,7 @@ Array [
                     "opacity": 1,
                   }
                 }
-                testID="rightIconButton"
+                testID="Abandonner l'inscription"
               >
                 <View
                   height={32}
@@ -843,6 +845,7 @@ Array [
           }
         >
           <View
+            accessibilityLabel="leftIconButton"
             accessible={true}
             focusable={false}
             onClick={[Function]}
@@ -884,6 +887,7 @@ Array [
             Pourquoi ?
           </Text>
           <View
+            accessibilityLabel="Fermer la modale"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -903,7 +907,7 @@ Array [
                 "opacity": 1,
               }
             }
-            testID="rightIconButton"
+            testID="Fermer la modale"
           >
             <View
               height={32}
@@ -1091,6 +1095,7 @@ exports[`SetBirthday Page should render properly 1`] = `
             }
           >
             <View
+              accessibilityLabel="Revenir en arrière"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -1110,7 +1115,7 @@ exports[`SetBirthday Page should render properly 1`] = `
                   "opacity": 1,
                 }
               }
-              testID="leftIconButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={32}
@@ -1142,6 +1147,7 @@ exports[`SetBirthday Page should render properly 1`] = `
               Ton anniversaire
             </Text>
             <View
+              accessibilityLabel="Abandonner l'inscription"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -1161,7 +1167,7 @@ exports[`SetBirthday Page should render properly 1`] = `
                   "opacity": 1,
                 }
               }
-              testID="rightIconButton"
+              testID="Abandonner l'inscription"
             >
               <View
                 height={32}

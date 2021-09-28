@@ -16,8 +16,12 @@ export const CheatMenu: React.FC = () => {
       <Spacer.TopScreen />
       <ModalHeader
         title="Cheater Zone"
+        leftIconAccessibilityLabel="Revenir en arrière"
         leftIcon={ArrowPrevious}
         onLeftIconPress={navigation.goBack}
+        rightIconAccessibilityLabel={undefined}
+        rightIcon={undefined}
+        onRightIconPress={undefined}
       />
       <Spacer.Flex />
       <React.Fragment>

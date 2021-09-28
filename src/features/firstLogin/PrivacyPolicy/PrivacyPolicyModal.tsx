@@ -55,9 +55,13 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
     <AppModal
       visible={isVisible}
       title={t`Respect de ta vie privée`}
+      disableBackdropTap={disableBackdropTap}
+      leftIconAccessibilityLabel={undefined}
+      leftIcon={undefined}
+      onLeftIconPress={undefined}
+      rightIconAccessibilityLabel={t`Fermer la modale et refuser la collecte des données`}
       rightIcon={Close}
-      onRightIconPress={onRefusal}
-      disableBackdropTap={disableBackdropTap}>
+      onRightIconPress={onRefusal}>
       <Description>
         <Typo.Body>
           {t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre`}

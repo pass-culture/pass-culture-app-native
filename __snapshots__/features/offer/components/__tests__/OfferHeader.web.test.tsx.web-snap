@@ -270,6 +270,7 @@ Object {
             style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%; z-index: 1;"
           >
             <div
+              aria-label="leftIconButton"
               class="css-view-1dbjc4n"
               data-testid="leftIconButton"
               style="align-items: flex-start; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; margin-left: -4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
@@ -283,8 +284,9 @@ Object {
               Connecte-toi pour profiter de cette fonctionnalité
             </div>
             <div
+              aria-label="Fermer la modale"
               class="css-view-1dbjc4n"
-              data-testid="rightIconButton"
+              data-testid="Fermer la modale"
               style="align-items: flex-end; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; margin-right: -4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
             >

@@ -6,30 +6,31 @@ import { CategoryNameEnum, CategoryType } from 'api/gen'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
 import { getOfferPrice } from 'features/offer/services/getOfferPrice'
+import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { IconInterface } from 'ui/svg/icons/types'
 
 import { BookingImpossible } from '../components/BookingImpossible'
 import { useBooking, useBookingOffer } from '../pages/BookingOfferWrapper'
 import { Step } from '../pages/reducer'
 
-interface ModalContent {
+type ModalContent = {
   children: JSX.Element
   title: string
-  leftIcon: React.FC<IconInterface> | undefined
-  onLeftIconPress: (() => void) | undefined
-}
+} & ModalLeftIconProps
 
 export const useModalContent = (): ModalContent => {
   const { bookingState, dispatch } = useBooking()
   const offer = useBookingOffer()
 
-  const children = <React.Fragment />
-  const title = ''
-  const leftIcon: React.FC<IconInterface> | undefined = undefined
-  const onLeftIconPress = undefined
+  if (!offer)
+    return {
+      children: <React.Fragment />,
+      title: '',
+      leftIconAccessibilityLabel: undefined,
+      leftIcon: undefined,
+      onLeftIconPress: undefined,
+    }
 
-  if (!offer) return { children, title, leftIcon, onLeftIconPress }
   const { category, isDigital, stocks } = offer
 
   const goToPreviousStep = () => {
@@ -45,6 +46,7 @@ export const useModalContent = (): ModalContent => {
     ) {
       return {
         title: t`Tu y es presque`,
+        leftIconAccessibilityLabel: undefined,
         leftIcon: undefined,
         onLeftIconPress: undefined,
         children: <BookingImpossible />,
@@ -53,6 +55,7 @@ export const useModalContent = (): ModalContent => {
 
     return {
       title: t`Détails de la réservation`,
+      leftIconAccessibilityLabel: undefined,
       leftIcon: undefined,
       onLeftIconPress: undefined,
       children: <BookingDetails stocks={stocks} />,
@@ -62,6 +65,7 @@ export const useModalContent = (): ModalContent => {
   if (bookingState.step !== Step.CONFIRMATION) {
     return {
       title: t`Mes options`,
+      leftIconAccessibilityLabel: undefined,
       leftIcon: undefined,
       onLeftIconPress: undefined,
       children: <BookingEventChoices stocks={stocks} />,
@@ -70,6 +74,7 @@ export const useModalContent = (): ModalContent => {
 
   return {
     title: t`Détails de la réservation`,
+    leftIconAccessibilityLabel: t`Revenir à l'étape précédente`,
     leftIcon: ArrowPrevious,
     onLeftIconPress: goToPreviousStep,
     children: <BookingDetails stocks={stocks} />,

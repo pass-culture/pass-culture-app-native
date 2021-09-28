@@ -129,8 +129,10 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
         )}
         <ModalHeader
           title={t`CGU & Données`}
+          leftIconAccessibilityLabel={t`Revenir en arrière`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
+          rightIconAccessibilityLabel={t`Revenir à l'accueil`}
           rightIcon={Close}
           onRightIconPress={showFullPageModal}
         />

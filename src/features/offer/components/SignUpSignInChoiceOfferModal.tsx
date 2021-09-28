@@ -36,6 +36,10 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
       visible={visible}
       title={t`Connecte-toi pour profiter de cette fonctionnalité`}
       titleNumberOfLines={3}
+      leftIconAccessibilityLabel={undefined}
+      leftIcon={undefined}
+      onLeftIconPress={undefined}
+      rightIconAccessibilityLabel={t`Fermer la modale`}
       rightIcon={Close}
       onRightIconPress={dismissModal}>
       <Description>

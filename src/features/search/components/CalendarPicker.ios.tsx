@@ -28,7 +28,15 @@ export const CalendarPicker: React.FC<Props> = ({
   }
 
   return (
-    <AppModal visible={visible} title="" rightIcon={Close} onRightIconPress={hideCalendar}>
+    <AppModal
+      visible={visible}
+      title=""
+      leftIconAccessibilityLabel={undefined}
+      leftIcon={undefined}
+      onLeftIconPress={undefined}
+      rightIconAccessibilityLabel={t`Fermer le calendrier`}
+      rightIcon={Close}
+      onRightIconPress={hideCalendar}>
       <Container>
         <DateTimePicker
           testID="dateTimePicker"

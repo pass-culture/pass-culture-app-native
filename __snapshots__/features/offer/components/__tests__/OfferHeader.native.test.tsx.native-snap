@@ -552,6 +552,7 @@ Array [
         }
       >
         <View
+          accessibilityLabel="leftIconButton"
           accessible={true}
           focusable={false}
           onClick={[Function]}
@@ -593,6 +594,7 @@ Array [
           Connecte-toi pour profiter de cette fonctionnalité
         </Text>
         <View
+          accessibilityLabel="Fermer la modale"
           accessible={true}
           focusable={true}
           onClick={[Function]}
@@ -612,7 +614,7 @@ Array [
               "opacity": 1,
             }
           }
-          testID="rightIconButton"
+          testID="Fermer la modale"
         >
           <View
             height={32}

@@ -77,8 +77,12 @@ export function NavigationIdCheckErrors(): JSX.Element {
       <Spacer.TopScreen />
       <ModalHeader
         title="Id Check v2 Errors"
+        leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={navigation.goBack}
+        rightIconAccessibilityLabel={undefined}
+        rightIcon={undefined}
+        onRightIconPress={undefined}
       />
       <StyledContainer>
         <Row half>

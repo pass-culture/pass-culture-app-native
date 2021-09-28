@@ -77,7 +77,7 @@ describe('SetPhoneValidationCode', () => {
       const { getByTestId } = renderSetPhoneValidationCode()
 
       act(() => {
-        getByTestId('rightIconButton').props.onClick()
+        getByTestId("Revenir sur l'écran d'envoi de SMS").props.onClick()
       })
 
       getByTestId('modal-phone-validation-quit-signup')
@@ -86,7 +86,7 @@ describe('SetPhoneValidationCode', () => {
     it('should call onGoBack property on press left arrow', async () => {
       const { getByTestId } = renderSetPhoneValidationCode()
 
-      const leftArrow = getByTestId('leftIconButton')
+      const leftArrow = getByTestId('Revenir en arrière')
       fireEvent.press(leftArrow)
       await waitForExpect(() => {
         expect(mockGoBack).toBeCalled()

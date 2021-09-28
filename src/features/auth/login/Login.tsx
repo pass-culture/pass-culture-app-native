@@ -117,14 +117,25 @@ export const Login: FunctionComponent = function () {
     return <LoadingPage />
   }
 
+  const rightIconProps = params?.preventCancellation
+    ? {
+        rightIconAccessibilityLabel: undefined,
+        rightIcon: undefined,
+        onRightIconPress: undefined,
+      }
+    : {
+        rightIconAccessibilityLabel: t`Revenir à l'accueil`,
+        rightIcon: Close,
+        onRightIconPress: onClose,
+      }
   return (
     <BottomContentPage>
       <ModalHeader
         title={t`Connecte-toi !`}
+        leftIconAccessibilityLabel={t`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
-        rightIcon={params?.preventCancellation ? undefined : Close}
-        onRightIconPress={onClose}
+        {...rightIconProps}
       />
       {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
       <Spacer.Column numberOfSpaces={7} />

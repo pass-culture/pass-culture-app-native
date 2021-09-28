@@ -159,8 +159,10 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       <BottomContentPage>
         <ModalHeader
           title={t`Ton anniversaire`}
+          leftIconAccessibilityLabel={t`Revenir en arrière`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
+          rightIconAccessibilityLabel={t`Abandonner l'inscription`}
           rightIcon={Close}
           onRightIconPress={showQuitSignupModal}
         />

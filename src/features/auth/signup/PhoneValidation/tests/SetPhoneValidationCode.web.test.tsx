@@ -76,7 +76,7 @@ describe('SetPhoneValidationCode', () => {
 
       const { getByTestId } = renderSetPhoneValidationCode()
 
-      const rightIconButton = getByTestId('rightIconButton')
+      const rightIconButton = getByTestId("Revenir sur l'écran d'envoi de SMS")
 
       fireEvent.click(rightIconButton)
       expect(showModal).toBeCalled()
@@ -88,7 +88,7 @@ describe('SetPhoneValidationCode', () => {
       mockGoBack.mockImplementationOnce(() => true)
       const { getByTestId } = renderSetPhoneValidationCode()
 
-      const leftArrow = getByTestId('leftIconButton')
+      const leftArrow = getByTestId('Revenir en arrière')
       fireEvent.click(leftArrow)
       await waitForExpect(() => {
         expect(mockGoBack).toHaveBeenCalled()

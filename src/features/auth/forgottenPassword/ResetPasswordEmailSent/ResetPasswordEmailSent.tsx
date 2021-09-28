@@ -23,8 +23,10 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
     <BottomContentPage>
       <ModalHeader
         title={t`E-mail envoyé !`}
+        leftIconAccessibilityLabel={t`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
+        rightIconAccessibilityLabel={t`Revenir à l'accueil`}
         rightIcon={Close}
         onRightIconPress={navigateToHome}
       />

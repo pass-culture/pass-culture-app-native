@@ -71,15 +71,26 @@ export const SetEmail: FunctionComponent = () => {
     showFullPageModal()
   }
 
+  const rightIconProps = params?.preventCancellation
+    ? {
+        rightIconAccessibilityLabel: undefined,
+        rightIcon: undefined,
+        onRightIconPress: undefined,
+      }
+    : {
+        rightIconAccessibilityLabel: t`Abandonner l'inscription`,
+        rightIcon: Close,
+        onRightIconPress: showQuitSignupModal,
+      }
   return (
     <React.Fragment>
       <BottomContentPage>
         <ModalHeader
           title={t`Ton e-mail`}
+          leftIconAccessibilityLabel={t`Revenir en arrière`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
-          rightIcon={params?.preventCancellation ? undefined : Close}
-          onRightIconPress={showQuitSignupModal}
+          {...rightIconProps}
         />
         <SetEmailModalContent>
           <StyledInput>
