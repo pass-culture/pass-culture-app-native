@@ -5,20 +5,17 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 
 interface Props {
   active?: boolean
+  accessibilityLabel: string
   title: string
   subtitle?: string
   toggle?: () => void
-  testID?: string
 }
 
 export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
-  const { title, subtitle, active = false, toggle = () => null, testID } = props
+  const { title, accessibilityLabel, subtitle, active = false, toggle = () => null } = props
   return (
-    <InlineSection
-      title={<TitleWithCount title={title} count={+active} />}
-      subtitle={subtitle}
-      testID={testID}>
-      <FilterSwitch active={active} toggle={toggle} testID={`Interrupteur ${title}`} />
+    <InlineSection title={<TitleWithCount title={title} count={+active} />} subtitle={subtitle}>
+      <FilterSwitch active={active} toggle={toggle} accessibilityLabel={accessibilityLabel} />
     </InlineSection>
   )
 }

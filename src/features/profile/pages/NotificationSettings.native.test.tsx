@@ -204,7 +204,7 @@ describe('NotificationSettings', () => {
 
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('Interrupteur autorisation emails')
+        const toggleSwitch = getByTestId("Interrupteur autorisation d'envoi des emails")
         fireEvent.press(toggleSwitch)
       })
 

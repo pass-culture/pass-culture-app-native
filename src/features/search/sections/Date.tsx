@@ -17,6 +17,7 @@ export const Date: React.FC = () => {
 
   return (
     <SectionWithSwitch
+      accessibilityLabel={t`Interrupteur filtre dates`}
       title={SectionTitle.Date}
       subtitle={t`Seules les sorties seront affichées`}
       active={!!searchState.date}

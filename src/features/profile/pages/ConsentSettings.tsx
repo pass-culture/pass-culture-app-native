@@ -93,8 +93,8 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
             cta={
               <FilterSwitch
                 active={isTrackingSwitchActive}
+                accessibilityLabel={t`Interrupteur données de navigation`}
                 toggle={toggleTrackingSwitch}
-                testID="Interrupteur données de navigation"
               />
             }
           />

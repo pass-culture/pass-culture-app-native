@@ -15,7 +15,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const testID = 'Interrupteur Uniquement les nouveautés'
+const testID = 'Interrupteur filtre nouvelles offres'
 
 describe('NewOffer component', () => {
   it('should be controlled by searchState.offerIsNew', () => {

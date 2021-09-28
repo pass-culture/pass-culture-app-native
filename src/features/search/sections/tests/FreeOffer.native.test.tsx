@@ -15,7 +15,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const testID = 'Interrupteur Uniquement les offres gratuites'
+const testID = 'Interrupteur filtre offres gratuites'
 
 describe('FreeOffer component', () => {
   it('should be controlled by searchState.offerIsFree', () => {

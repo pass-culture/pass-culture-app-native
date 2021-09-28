@@ -8,8 +8,8 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
   active: boolean
+  accessibilityLabel: string
   disabled?: boolean
-  testID: string
   toggle: () => void
 }
 
@@ -42,7 +42,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
         onPress={toggle}
         disabled={disabled}
         accessibilityValue={{ text: active.toString() }}
-        {...accessibilityAndTestId(props.testID)}>
+        {...accessibilityAndTestId(props.accessibilityLabel)}>
         <StyledBackgroundColor backgroundColor={getBackgroundColor(active, disabled)}>
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>

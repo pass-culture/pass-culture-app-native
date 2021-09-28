@@ -120,7 +120,7 @@ describe('Profile component', () => {
         mockPermissionState = GeolocPermissionState.GRANTED
 
         const { getByTestId, queryByText } = await renderProfile()
-        const geolocSwitch = getByTestId('geolocation')
+        const geolocSwitch = getByTestId('Interrupteur géolocalisation')
         const positionErrorMessage = queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
@@ -143,7 +143,7 @@ describe('Profile component', () => {
       it('should display switch OFF if geoloc permission is denied', async () => {
         mockPermissionState = GeolocPermissionState.DENIED
         const { getByTestId } = await renderProfile()
-        const geolocSwitch = getByTestId('geolocation')
+        const geolocSwitch = getByTestId('Interrupteur géolocalisation')
         expect(geolocSwitch.parent?.props.accessibilityValue.text).toBe('false')
       })
 
@@ -154,7 +154,7 @@ describe('Profile component', () => {
           wrapper: FavoritesWrapper,
         })
 
-        fireEvent.press(getByTestId('geolocation'))
+        fireEvent.press(getByTestId('Interrupteur géolocalisation'))
 
         expect(mockFavoriteDispatch).toBeCalledWith({
           type: 'SET_SORT_BY',

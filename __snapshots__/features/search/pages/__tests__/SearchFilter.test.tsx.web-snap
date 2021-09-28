@@ -2474,11 +2474,11 @@ Array [
             }
           >
             <div
-              aria-label="Interrupteur Uniquement les offres gratuites"
+              aria-label="Interrupteur filtre offres gratuites"
               aria-valuetext="false"
               className="css-view-1dbjc4n"
               data-focusable={true}
-              data-testid="Interrupteur Uniquement les offres gratuites"
+              data-testid="Interrupteur filtre offres gratuites"
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}
@@ -2646,11 +2646,11 @@ Array [
             }
           >
             <div
-              aria-label="Interrupteur Uniquement les offres duo"
+              aria-label="Interrupteur filtre offres duo"
               aria-valuetext="false"
               className="css-view-1dbjc4n"
               data-focusable={true}
-              data-testid="Interrupteur Uniquement les offres duo"
+              data-testid="Interrupteur filtre offres duo"
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}
@@ -2817,11 +2817,11 @@ Array [
             }
           >
             <div
-              aria-label="Interrupteur Uniquement les nouveautés"
+              aria-label="Interrupteur filtre nouvelles offres"
               aria-valuetext="false"
               className="css-view-1dbjc4n"
               data-focusable={true}
-              data-testid="Interrupteur Uniquement les nouveautés"
+              data-testid="Interrupteur filtre nouvelles offres"
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}
@@ -2988,11 +2988,11 @@ Array [
             }
           >
             <div
-              aria-label="Interrupteur Date"
+              aria-label="Interrupteur filtre dates"
               aria-valuetext="false"
               className="css-view-1dbjc4n"
               data-focusable={true}
-              data-testid="Interrupteur Date"
+              data-testid="Interrupteur filtre dates"
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}
@@ -3182,11 +3182,11 @@ Array [
             }
           >
             <div
-              aria-label="Interrupteur Heure"
+              aria-label="Interrupteur filtre heures"
               aria-valuetext="false"
               className="css-view-1dbjc4n"
               data-focusable={true}
-              data-testid="Interrupteur Heure"
+              data-testid="Interrupteur filtre heures"
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}

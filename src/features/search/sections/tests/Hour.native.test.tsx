@@ -17,7 +17,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const testID = 'Interrupteur Heure'
+const testID = 'Interrupteur filtre heures'
 
 describe('Hour component', () => {
   it('should be controlled by searchState.timeRange', () => {
