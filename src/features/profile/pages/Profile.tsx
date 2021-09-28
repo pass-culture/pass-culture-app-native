@@ -154,11 +154,11 @@ export const Profile: React.FC = () => {
             cta={
               <FilterSwitch
                 active={isGeolocSwitchActive}
+                accessibilityLabel={t`Interrupteur géolocalisation`}
                 toggle={() => {
                   switchGeolocation()
                   debouncedLogLocationToggle(!isGeolocSwitchActive)
                 }}
-                testID="geolocation"
               />
             }
           />

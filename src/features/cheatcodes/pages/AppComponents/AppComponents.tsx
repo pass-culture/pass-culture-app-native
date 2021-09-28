@@ -1000,9 +1000,9 @@ const FilterSwitchesSection = () => {
         cta={
           <FilterSwitch
             active={switch1}
+            accessibilityLabel="Active and enabled"
             disabled={false}
             toggle={() => setSwitch1((p) => !p)}
-            testID="Active and enabled"
           />
         }
       />
@@ -1013,9 +1013,9 @@ const FilterSwitchesSection = () => {
         cta={
           <FilterSwitch
             active={true}
+            accessibilityLabel="Active and disabled"
             disabled={true}
             toggle={() => null}
-            testID="Active and disabled"
           />
         }
       />
@@ -1026,9 +1026,9 @@ const FilterSwitchesSection = () => {
         cta={
           <FilterSwitch
             active={switch2}
+            accessibilityLabel="Inactive and enabled"
             disabled={false}
             toggle={() => setSwitch2((p) => !p)}
-            testID="Inactive and enabled"
           />
         }
       />
@@ -1039,9 +1039,9 @@ const FilterSwitchesSection = () => {
         cta={
           <FilterSwitch
             active={false}
+            accessibilityLabel="Inactive and disabled"
             disabled={true}
             toggle={() => null}
-            testID="Inactive and disabled"
           />
         }
       />
@@ -1058,8 +1058,8 @@ const ExampleSwitch: React.FC = () => {
   return (
     <FilterSwitch
       active={active}
+      accessibilityLabel="Example Switch"
       toggle={() => setActive((prevActive) => !prevActive)}
-      testID="Example Switch"
     />
   )
 }

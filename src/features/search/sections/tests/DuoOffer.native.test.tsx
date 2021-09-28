@@ -15,7 +15,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const testID = 'Interrupteur Uniquement les offres duo'
+const testID = 'Interrupteur filtre offres duo'
 
 describe('DuoOffer component', () => {
   it('should be controlled by searchState.offerIsDuo', () => {

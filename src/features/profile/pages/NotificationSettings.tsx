@@ -166,8 +166,8 @@ export function NotificationSettings() {
             title={t`Autoriser l’envoi d’e\u2011mails`}
             cta={
               <FilterSwitch
-                testID="Interrupteur autorisation emails"
                 active={allowEmails}
+                accessibilityLabel={t`Interrupteur autorisation d'envoi des emails`}
                 toggle={toggleEmails}
                 disabled={!isLoggedIn}
               />
@@ -188,8 +188,8 @@ export function NotificationSettings() {
                 title={t`Autoriser les notifications marketing`}
                 cta={
                   <FilterSwitch
-                    testID="Interrupteur push notifications"
                     active={pushSwitchEnabled}
+                    accessibilityLabel={t`Interrupteur push notifications`}
                     toggle={togglePush}
                     disabled={!isLoggedIn}
                   />

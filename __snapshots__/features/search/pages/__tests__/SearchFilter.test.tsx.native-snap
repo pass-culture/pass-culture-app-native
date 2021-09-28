@@ -2118,7 +2118,7 @@ Array [
             }
           >
             <View
-              accessibilityLabel="Interrupteur Uniquement les offres gratuites"
+              accessibilityLabel="Interrupteur filtre offres gratuites"
               accessibilityValue={
                 Object {
                   "text": "false",
@@ -2138,7 +2138,7 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="Interrupteur Uniquement les offres gratuites"
+              testID="Interrupteur filtre offres gratuites"
             >
               <View
                 backgroundColor="#c7c7cc"
@@ -2265,7 +2265,7 @@ Array [
             }
           >
             <View
-              accessibilityLabel="Interrupteur Uniquement les offres duo"
+              accessibilityLabel="Interrupteur filtre offres duo"
               accessibilityValue={
                 Object {
                   "text": "false",
@@ -2285,7 +2285,7 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="Interrupteur Uniquement les offres duo"
+              testID="Interrupteur filtre offres duo"
             >
               <View
                 backgroundColor="#c7c7cc"
@@ -2411,7 +2411,7 @@ Array [
             }
           >
             <View
-              accessibilityLabel="Interrupteur Uniquement les nouveautés"
+              accessibilityLabel="Interrupteur filtre nouvelles offres"
               accessibilityValue={
                 Object {
                   "text": "false",
@@ -2431,7 +2431,7 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="Interrupteur Uniquement les nouveautés"
+              testID="Interrupteur filtre nouvelles offres"
             >
               <View
                 backgroundColor="#c7c7cc"
@@ -2557,7 +2557,7 @@ Array [
             }
           >
             <View
-              accessibilityLabel="Interrupteur Date"
+              accessibilityLabel="Interrupteur filtre dates"
               accessibilityValue={
                 Object {
                   "text": "false",
@@ -2577,7 +2577,7 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="Interrupteur Date"
+              testID="Interrupteur filtre dates"
             >
               <View
                 backgroundColor="#c7c7cc"
@@ -2728,7 +2728,7 @@ Array [
             }
           >
             <View
-              accessibilityLabel="Interrupteur Heure"
+              accessibilityLabel="Interrupteur filtre heures"
               accessibilityValue={
                 Object {
                   "text": "false",
@@ -2748,7 +2748,7 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="Interrupteur Heure"
+              testID="Interrupteur filtre heures"
             >
               <View
                 backgroundColor="#c7c7cc"
