@@ -9,7 +9,8 @@ import { placeholderData } from './placeholderData'
 const STALE_TIME_SUBCATEGORIES = 5 * 60 * 1000
 
 export const useSubcategories = () =>
-  useQuery<SubcategoriesResponseModel>(QueryKeys.SUBCATEGORIES, api.getnativev1subcategories, {
-    staleTime: STALE_TIME_SUBCATEGORIES,
-    placeholderData,
-  })
+  useQuery<SubcategoriesResponseModel>(
+    QueryKeys.SUBCATEGORIES,
+    () => api.getnativev1subcategories(),
+    { staleTime: STALE_TIME_SUBCATEGORIES, placeholderData }
+  )
