@@ -7,6 +7,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isUserExBeneficiary } from 'features/profile/utils'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
+import { useSubcategory } from 'libs/subcategories'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
@@ -21,7 +22,8 @@ export interface BookingDetailsCancelButtonProps {
 
 export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProps) => {
   const { booking } = props
-  const properties = getBookingProperties(booking)
+  const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
+  const properties = getBookingProperties(booking, isEvent)
   const { data: user } = useUserProfileInfo()
   const credit = useAvailableCredit()
   const isExBeneficiary = user && credit && isUserExBeneficiary(user, credit)

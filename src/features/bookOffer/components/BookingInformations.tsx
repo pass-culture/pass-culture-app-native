@@ -3,11 +3,11 @@ import React from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryType } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { formatFullAddressWithVenueName } from 'libs/address/useFormatFullAddress'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
+import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
@@ -39,11 +39,13 @@ export const BookingInformations: React.FC = () => {
   const offer = useBookingOffer()
   const stock = useBookingStock()
   const { data: settings } = useAppSettings()
+  const mapping = useSubcategoriesMapping()
+
   const { quantity } = bookingState
 
   if (!stock || typeof quantity !== 'number' || !offer) return <React.Fragment />
 
-  const { category, isDigital, name, venue } = offer
+  const { isDigital, name, venue } = offer
   const fullAddress = formatFullAddressWithVenueName(
     venue.address,
     venue.postalCode,
@@ -59,7 +61,7 @@ export const BookingInformations: React.FC = () => {
   )
   const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : t`Gratuit`
 
-  if (category.categoryType === CategoryType.Event) {
+  if (mapping[offer.subcategoryId].isEvent) {
     const subtext =
       stock.price > 0 && quantity === 2
         ? t({

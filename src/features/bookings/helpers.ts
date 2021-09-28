@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { CategoryType, SettingsResponse } from 'api/gen'
+import { SettingsResponse } from 'api/gen'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
@@ -19,19 +19,18 @@ export type BookingProperties = {
   hasActivationCode?: boolean
 }
 
-export function getBookingProperties(booking?: Booking): BookingProperties {
+export function getBookingProperties(booking: Booking, isEvent: boolean): BookingProperties {
   if (!booking) {
     return {}
   }
 
   const { stock } = booking
   const { offer } = stock
-  const isEvent = offer.category.categoryType === CategoryType.Event
 
   return {
     isDuo: isEvent && isDuoBooking(booking),
     isEvent,
-    isPhysical: offer.category.categoryType === CategoryType.Thing,
+    isPhysical: !isEvent,
     isDigital: offer.isDigital,
     isPermanent: offer.isPermanent,
     hasActivationCode: booking.activationCode != null,

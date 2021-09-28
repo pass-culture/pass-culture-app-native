@@ -20,6 +20,7 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
+import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
@@ -57,6 +58,7 @@ export function BookingDetails() {
   } = useModal(false)
 
   const { data: appSettings } = useAppSettings()
+  const mapping = useSubcategoriesMapping()
 
   const { venue, id: offerId } = booking?.stock.offer || {}
   const { latitude, longitude } = venue?.coordinates || {}
@@ -78,8 +80,8 @@ export function BookingDetails() {
 
   if (!booking) return <React.Fragment></React.Fragment>
 
-  const properties = getBookingProperties(booking)
   const { offer } = booking.stock
+  const properties = getBookingProperties(booking, mapping[offer.subcategoryId].isEvent)
   const shouldDisplayItineraryButton =
     canOpenItinerary && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
   const activationCodeFeatureEnabled = appSettings && appSettings.autoActivateDigitalBookings

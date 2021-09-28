@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { CategoryType, SubcategoryIdEnum } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as Helpers from 'features/bookings/helpers'
 import * as NavigationHelpers from 'features/navigation/helpers'
@@ -26,6 +26,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 const mockSettings = {
   autoActivateDigitalBookings: false,
 }
+
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => ({
     data: mockSettings,
@@ -122,18 +123,13 @@ describe('BookingDetails', () => {
     })
 
     it.each([
-      [
-        'event',
-        (booking: Booking) => (booking.stock.offer.category.categoryType = CategoryType.Event),
-      ],
-      [
-        'physical',
-        (booking: Booking) => (booking.stock.offer.category.categoryType = CategoryType.Thing),
-      ],
-    ])('should display rules for a %s & non-digital offer', (type, prepareBooking) => {
+      ['event', true],
+      ['physical', false],
+    ])('should display rules for a %s & non-digital offer', (type, isEvent) => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
-      booking.stock.offer.isDigital = false
-      prepareBooking(booking)
+      jest
+        .spyOn(Helpers, 'getBookingProperties')
+        .mockReturnValue({ isEvent, isDigital: false, isPhysical: !isEvent })
 
       const { getByText } = renderBookingDetails(booking)
 

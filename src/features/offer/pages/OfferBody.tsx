@@ -3,7 +3,7 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryType, ReportedOffer } from 'api/gen'
+import { ReportedOffer } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
@@ -19,7 +19,7 @@ import { env } from 'libs/environment'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { useCategoryIdMapping } from 'libs/subcategories'
+import { useSubcategoriesMapping } from 'libs/subcategories'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -43,7 +43,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const credit = useAvailableCredit()
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
-  const mapping = useCategoryIdMapping()
+  const mapping = useSubcategoriesMapping()
 
   const [isReportOfferModalVisible, setIsReportOfferModalVisible] = useState(false)
   const showReportOfferDescription = () => setIsReportOfferModalVisible(true)
@@ -58,7 +58,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
 
   if (!offer) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offer
-  const categoryId = mapping[offer.subcategoryId]
+  const { categoryId, isEvent } = mapping[offer.subcategoryId]
 
   const showVenueBanner = true
   // TODO (Lucasbeneston): Remove testing condition when display the link to venue button
@@ -81,7 +81,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   )
 
   const formattedDate = formatDatePeriod(dates)
-  const shouldDisplayWhenBlock = category.categoryType === CategoryType.Event && !!formattedDate
+  const shouldDisplayWhenBlock = isEvent && !!formattedDate
   const shouldShowAccessibility = Object.values(accessibility).some(
     (value) => value !== undefined && value !== null
   )
