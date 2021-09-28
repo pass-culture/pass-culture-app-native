@@ -53,12 +53,14 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
 
+  const showVenueBanner = true
   const fullAddress = formatFullAddress(
     venue.publicName,
     venue.name,
     venue.address,
     venue.postalCode,
-    venue.city
+    venue.city,
+    showVenueBanner
   )
 
   const dates = offerResponse.stocks.reduce<Date[]>(
