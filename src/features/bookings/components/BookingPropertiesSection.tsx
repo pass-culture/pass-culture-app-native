@@ -31,13 +31,20 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
 
   const renderRowTitle = (title: string) => <Title>{title}</Title>
 
+  let userFullName: string | undefined = undefined
+  let userFullNameAccessibilityLabel: string | undefined = undefined
+  if (user?.firstName && user?.lastName) {
+    userFullName = `${user.firstName}\u00a0${user.lastName}`
+    userFullNameAccessibilityLabel = t`Nom de la réservation ` + userFullName
+  }
   return (
     <View style={style}>
       <Typo.Title4>{t`Ma réservation`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={4.5} />
-      {!!(user?.firstName && user?.lastName) && (
+      {userFullName && userFullNameAccessibilityLabel ? (
         <SectionRow
-          title={user.firstName + '\u00a0' + user.lastName}
+          title={userFullName}
+          accessibilityLabel={userFullNameAccessibilityLabel}
           renderTitle={(title) => (
             <TitleNameContainer>
               <Title>{title}</Title>
@@ -48,7 +55,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           type={'clickable'}
           icon={() => <Profile size={24} />}
         />
-      )}
+      ) : null}
       {propertiesLabels.dateLabel?.length > 0 && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={5} />

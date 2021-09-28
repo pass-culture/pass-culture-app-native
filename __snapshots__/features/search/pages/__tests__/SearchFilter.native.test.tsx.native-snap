@@ -2984,6 +2984,7 @@ Array [
           onLayout={[Function]}
         >
           <View
+            accessibilityLabel="Réinitialiser les filtres"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -2998,6 +2999,7 @@ Array [
                 "opacity": 1,
               }
             }
+            testID="Réinitialiser les filtres"
           >
             <Text
               color="#ffffff"

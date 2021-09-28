@@ -29,7 +29,6 @@ export function LegalNotices() {
           onPress={() => openExternalUrl(env.CGU_LINK)}
           icon={ExternalSite}
           style={styles.row}
-          testID="row-cgu"
         />
         <Separator />
         <Row
@@ -38,7 +37,6 @@ export function LegalNotices() {
           onPress={() => openExternalUrl(env.DATA_PRIVACY_CHART_LINK)}
           icon={ExternalSite}
           style={styles.row}
-          testID="row-data-privacy-chart"
         />
         {!!user && (
           <React.Fragment>
@@ -49,7 +47,6 @@ export function LegalNotices() {
               onPress={() => navigate('ConfirmDeleteProfile')}
               icon={ProfileDeletion}
               style={styles.row}
-              testID="row-account-deletion"
             />
           </React.Fragment>
         )}
