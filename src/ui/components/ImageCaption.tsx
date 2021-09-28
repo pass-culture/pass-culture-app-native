@@ -6,17 +6,17 @@ import { ColorsEnum, Typo, MARGIN_DP, GUTTER_DP, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface ImageCaptionProps {
-  category: string
+  categoryLabel: string | null
   distance?: string
   imageWidth: number
 }
 
-export const ImageCaption = ({ category, imageWidth, distance }: ImageCaptionProps) => {
+export const ImageCaption = ({ categoryLabel, imageWidth, distance }: ImageCaptionProps) => {
   return (
     <Row width={imageWidth}>
       <TextWrapper>
         <Typo.Caption color={ColorsEnum.WHITE} numberOfLines={1} testID="categoryImageCaption">
-          {category}
+          {categoryLabel}
         </Typo.Caption>
       </TextWrapper>
       {!!distance && (

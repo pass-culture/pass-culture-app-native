@@ -14,9 +14,10 @@ import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParam
 import { VenueOfferTile } from 'features/venue/atoms/VenueOfferTile'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
-import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
+import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { useCategoryIdMapping } from 'libs/subcategories'
+import { useCategoryHomeLabelMapping } from 'libs/subcategories/mappings'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { LENGTH_L, MARGIN_DP, Spacer, Typo } from 'ui/theme'
 
@@ -38,13 +39,14 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   const params = useVenueSearchParameters(venueId)
   const { hits = [], nbHits = 0 } = venueOffers || {}
   const mapping = useCategoryIdMapping()
+  const labelMapping = useCategoryHomeLabelMapping()
 
   const renderItem: ListRenderItem<SearchHit> = useCallback(
     ({ item }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <VenueOfferTile
-          category={parseCategory(item.offer.category)}
+          categoryLabel={labelMapping[item.offer.subcategoryId]}
           categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}

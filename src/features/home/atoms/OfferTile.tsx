@@ -22,7 +22,7 @@ import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface OfferTileProps {
-  category: string
+  categoryLabel: string | null
   categoryId: CategoryIdEnum | null | undefined
   subcategoryId: SubcategoryIdEnum
   distance?: string
@@ -39,7 +39,7 @@ interface OfferTileProps {
 
 type PartialOffer = Pick<
   OfferTileProps,
-  'category' | 'categoryId' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
+  'categoryId' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
 >
 
 export const mergeOfferData = (offer: PartialOffer) => (
@@ -59,7 +59,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
   expenseDomains: [] as Array<ExpenseDomain>,
   accessibility: {},
   category: {
-    label: offer.category,
+    label: '',
     name: undefined,
   } as OfferResponse['category'],
   subcategoryId: offer.subcategoryId,
@@ -69,7 +69,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
 
 export const OfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
-  const { layout = 'one-item-medium', moduleName, isBeneficiary, ...offer } = props
+  const { layout = 'one-item-medium', moduleName, isBeneficiary, categoryLabel, ...offer } = props
   const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
   const imageWidth = imageHeight * RATIO_HOME_IMAGE
   const queryClient = useQueryClient()
@@ -100,7 +100,7 @@ export const OfferTile = (props: OfferTileProps) => {
           />
           <ImageCaption
             imageWidth={imageWidth}
-            category={offer.category}
+            categoryLabel={categoryLabel}
             distance={offer.distance}
           />
         </View>

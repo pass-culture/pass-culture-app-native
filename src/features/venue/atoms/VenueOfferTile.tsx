@@ -20,7 +20,7 @@ import { LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum, MARGIN_DP } from 'ui/theme/grid'
 
 interface VenueOfferTileProps {
-  category: string
+  categoryLabel: string | null
   categoryId: CategoryIdEnum | null | undefined
   subcategoryId: SubcategoryIdEnum
   date?: string
@@ -35,7 +35,7 @@ interface VenueOfferTileProps {
 
 type PartialOffer = Pick<
   VenueOfferTileProps,
-  'category' | 'categoryId' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
+  'categoryId' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
 >
 
 export const mergeOfferData = (offer: PartialOffer) => (
@@ -56,7 +56,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
   accessibility: {},
   subcategoryId: offer.subcategoryId,
   category: {
-    label: offer.category,
+    label: '',
     name: undefined,
   } as OfferResponse['category'],
   venue: { coordinates: {} } as OfferResponse['venue'],
@@ -71,7 +71,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
 
 export const VenueOfferTile = (props: VenueOfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
-  const { isBeneficiary, venueId, ...offer } = props
+  const { isBeneficiary, venueId, categoryLabel, ...offer } = props
   const queryClient = useQueryClient()
 
   function handlePressOffer() {
@@ -94,7 +94,7 @@ export const VenueOfferTile = (props: VenueOfferTileProps) => {
             uri={offer.thumbUrl}
             onlyTopBorderRadius
           />
-          <ImageCaption imageWidth={imageWidth} category={offer.category} />
+          <ImageCaption imageWidth={imageWidth} categoryLabel={categoryLabel} />
         </View>
       </TouchableHighlight>
       <OfferCaption

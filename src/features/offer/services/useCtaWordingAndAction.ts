@@ -1,12 +1,6 @@
 import { t } from '@lingui/macro'
 
-import {
-  CategoryNameEnum,
-  CategoryType,
-  FavoriteOfferResponse,
-  OfferResponse,
-  UserProfileResponse,
-} from 'api/gen'
+import { CategoryIdEnum, OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl, navigateToBooking } from 'features/navigation/helpers'
@@ -15,6 +9,8 @@ import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { OptionalCategoryCriteria } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { analytics } from 'libs/analytics'
+import { useSubcategoriesMapping } from 'libs/subcategories'
+import { Subcategory } from 'libs/subcategories/types'
 
 import { useOffer } from '../api/useOffer'
 
@@ -31,6 +27,7 @@ interface Props {
   isLoggedIn: boolean
   isBeneficiary: boolean
   offer: OfferResponse
+  subcategory: Subcategory
   hasEnoughCredit: boolean
   bookedOffers: UserProfileResponse['bookedOffers']
   availableCategories: OptionalCategoryCriteria
@@ -47,6 +44,7 @@ export const getCtaWordingAndAction = ({
   isLoggedIn,
   isBeneficiary,
   offer,
+  subcategory,
   hasEnoughCredit,
   bookedOffers,
   availableCategories,
@@ -71,7 +69,7 @@ export const getCtaWordingAndAction = ({
     isUnderageBeneficiary &&
     offer.isDigital &&
     getOfferPrice(offer.stocks) !== 0 &&
-    category.name !== CategoryNameEnum.PRESSE
+    subcategory.categoryId !== CategoryIdEnum.MEDIA
 
   // Non beneficiary or educational offer or unavailable offer for user
   if (
@@ -81,12 +79,11 @@ export const getCtaWordingAndAction = ({
     isOfferCategoryNotAvailable ||
     isOfferCategoryNotBookableByUser
   ) {
-    const isEvent = category.categoryType === CategoryType.Event
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
     return {
       isExternal: true,
-      wording: isEvent ? t`Accéder à la billetterie` : t`Accéder à l'offre`,
+      wording: subcategory.isEvent ? t`Accéder à la billetterie` : t`Accéder à l'offre`,
       onPress: () => openExternalUrl(externalTicketOfficeUrl),
     }
   }
@@ -96,7 +93,7 @@ export const getCtaWordingAndAction = ({
   if (offer.isExpired) return { wording: t`Offre expirée` }
   if (offer.isSoldOut) return { wording: t`Offre épuisée` }
 
-  if (category.categoryType === CategoryType.Thing) {
+  if (!subcategory.isEvent) {
     if (!hasEnoughCredit) {
       if (offer.isDigital) return { wording: t`Crédit numérique insuffisant` }
       return { wording: t`Crédit insuffisant` }
@@ -110,7 +107,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (category.categoryType === CategoryType.Event) {
+  if (subcategory.isEvent) {
     if (!hasEnoughCredit) return { wording: t`Crédit insuffisant` }
 
     return {
@@ -133,6 +130,7 @@ export const useCtaWordingAndAction = (props: {
   const hasEnoughCredit = useHasEnoughCredit(offerId)
   const availableCategories = useAvailableCategories()
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
+  const mapping = useSubcategoriesMapping()
 
   if (!offer) return
 
@@ -152,6 +150,7 @@ export const useCtaWordingAndAction = (props: {
     isLoggedIn,
     isBeneficiary,
     offer,
+    subcategory: mapping[offer.subcategoryId],
     hasEnoughCredit,
     bookedOffers,
     availableCategories,
