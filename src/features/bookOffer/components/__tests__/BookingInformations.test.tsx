@@ -2,6 +2,7 @@ import * as React from 'react'
 import { mocked } from 'ts-jest/utils'
 
 import { CategoryType } from 'api/gen'
+import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { initialBookingState } from 'features/bookOffer/pages/reducer'
 import { render } from 'tests/utils'
 
@@ -48,6 +49,7 @@ describe('<BookingInformations />', () => {
       isDigital: false,
       name: 'mon nom',
       stocks: [],
+      venue: mockOffer.venue,
     })
     const myComponent = render(<BookingInformations />)
     expect(myComponent).toMatchSnapshot()
@@ -60,6 +62,7 @@ describe('<BookingInformations />', () => {
       isDigital: false,
       name: 'mon nom',
       stocks: [],
+      venue: mockOffer.venue,
     })
     // @ts-expect-error mock is not real type
     mockedUseBookingStock.mockReturnValueOnce({
@@ -77,6 +80,7 @@ describe('<BookingInformations />', () => {
       isDigital: false,
       name: 'mon nom',
       stocks: [],
+      venue: mockOffer.venue,
     })
     mockedUseBooking.mockReturnValueOnce({
       bookingState: { ...initialBookingState, quantity: 1 },
@@ -98,6 +102,7 @@ describe('<BookingInformations />', () => {
       isDigital: true,
       name: 'mon nom',
       stocks: [],
+      venue: mockOffer.venue,
     })
     const myComponent = render(<BookingInformations />)
     expect(myComponent).toMatchSnapshot()
@@ -109,6 +114,7 @@ describe('<BookingInformations />', () => {
       isDigital: true,
       name: 'mon nom',
       stocks: [],
+      venue: mockOffer.venue,
     })
     // @ts-expect-error mock is not real type
     mockedUseBookingStock.mockReturnValueOnce({
