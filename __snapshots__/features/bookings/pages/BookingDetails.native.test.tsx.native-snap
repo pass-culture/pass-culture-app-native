@@ -737,6 +737,7 @@ Array [
         }
       >
         <View
+          accessibilityLabel="leftIconButton"
           accessible={true}
           focusable={false}
           onClick={[Function]}
@@ -778,6 +779,7 @@ Array [
           Tu es sur le point d'annuler
         </Text>
         <View
+          accessibilityLabel="Ne pas annuler"
           accessible={true}
           focusable={true}
           onClick={[Function]}
@@ -797,7 +799,7 @@ Array [
               "opacity": 1,
             }
           }
-          testID="rightIconButton"
+          testID="Ne pas annuler"
         >
           <View
             height={32}
@@ -1107,6 +1109,7 @@ Array [
         }
       >
         <View
+          accessibilityLabel="leftIconButton"
           accessible={true}
           focusable={false}
           onClick={[Function]}
@@ -1148,6 +1151,7 @@ Array [
           Tu es sur le point d'archiver
         </Text>
         <View
+          accessibilityLabel="Ne pas archiver"
           accessible={true}
           focusable={true}
           onClick={[Function]}
@@ -1167,7 +1171,7 @@ Array [
               "opacity": 1,
             }
           }
-          testID="rightIconButton"
+          testID="Ne pas archiver"
         >
           <View
             height={32}

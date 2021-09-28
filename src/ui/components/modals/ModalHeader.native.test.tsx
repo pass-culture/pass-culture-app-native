@@ -6,59 +6,55 @@ import { Close } from 'ui/svg/icons/Close'
 
 import { ModalHeader } from './ModalHeader'
 
+const props = {
+  title: 'Testing modal header rendering',
+  leftIconAccessibilityLabel: 'leftIconButton',
+  leftIcon: ArrowPrevious,
+  onLeftIconPress: jest.fn(),
+  rightIconAccessibilityLabel: 'rightIconButton',
+  rightIcon: Close,
+  onRightIconPress: jest.fn(),
+}
+
 describe('ModalHeader component', () => {
   describe('left icon', () => {
     it('should be hidden when the icon is not provided', () => {
-      const { getByTestId } = render(<ModalHeader title="Testing modal header rendering" />)
-      try {
-        const leftIcon = getByTestId('leftIcon')
-        expect(leftIcon).toBeNull()
-      } catch (error) {
-        expect(error).toBeDefined()
+      const propsWithoutLeftIcon = {
+        ...props,
+        leftIconAccessibilityLabel: undefined,
+        leftIcon: undefined,
+        onLeftIconPress: undefined,
       }
+      const { queryByTestId } = render(<ModalHeader {...propsWithoutLeftIcon} />)
+      const leftIcon = queryByTestId('leftIcon')
+      expect(leftIcon).toBeNull()
     })
     it('should be visible when the icon is provided', async () => {
-      const onLeftPress = jest.fn()
-      const { getByTestId, findByTestId } = render(
-        <ModalHeader
-          title="Testing modal header rendering"
-          leftIcon={ArrowPrevious}
-          onLeftIconPress={onLeftPress}
-        />
-      )
-
-      getByTestId('leftIcon')
-
-      const leftIconButton = await findByTestId('leftIconButton')
+      const { getByTestId, findByTestId } = render(<ModalHeader {...props} />)
+      getByTestId('leftIcon') // test existence
+      const leftIconButton = await findByTestId(props.leftIconAccessibilityLabel)
       await fireEvent.press(leftIconButton)
-      expect(onLeftPress).toBeCalledTimes(1)
+      expect(props.onLeftIconPress).toBeCalledTimes(1)
     })
   })
   describe('right icon', () => {
     it('should be hidden when the icon is not provided', () => {
-      const { getByTestId } = render(<ModalHeader title="Testing modal header rendering" />)
-      try {
-        const rightIcon = getByTestId('rightIcon')
-        expect(rightIcon).toBeNull()
-      } catch (error) {
-        expect(error).toBeDefined()
+      const propsWithoutRightIcon = {
+        ...props,
+        rightIconAccessibilityLabel: undefined,
+        rightIcon: undefined,
+        onRightIconPress: undefined,
       }
+      const { queryByTestId } = render(<ModalHeader {...propsWithoutRightIcon} />)
+      const rightIcon = queryByTestId('rightIcon')
+      expect(rightIcon).toBeNull()
     })
     it('should be visible when the icon is provided', async () => {
-      const onRightPress = jest.fn()
-      const { getByTestId, findByTestId } = render(
-        <ModalHeader
-          title="Testing modal header rendering"
-          rightIcon={Close}
-          onRightIconPress={onRightPress}
-        />
-      )
-
-      getByTestId('rightIcon')
-
-      const rightIconButton = await findByTestId('rightIconButton')
+      const { getByTestId, findByTestId } = render(<ModalHeader {...props} />)
+      getByTestId('rightIcon') // test existence
+      const rightIconButton = await findByTestId(props.rightIconAccessibilityLabel)
       await fireEvent.press(rightIconButton)
-      expect(onRightPress).toBeCalledTimes(1)
+      expect(props.onRightIconPress).toBeCalledTimes(1)
     })
   })
 })

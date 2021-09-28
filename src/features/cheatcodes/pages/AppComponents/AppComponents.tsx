@@ -174,7 +174,15 @@ export const AppComponents: FunctionComponent = () => {
   return (
     <StyledScrollView>
       <Spacer.TopScreen />
-      <ModalHeader title="App components" leftIcon={ArrowPrevious} onLeftIconPress={goBack} />
+      <ModalHeader
+        title="App components"
+        leftIconAccessibilityLabel={'Revenir en arrière'}
+        leftIcon={ArrowPrevious}
+        onLeftIconPress={goBack}
+        rightIconAccessibilityLabel={undefined}
+        rightIcon={undefined}
+        onRightIconPress={undefined}
+      />
 
       {/* Typos */}
       <AccordionItem title="Typos">
@@ -330,8 +338,10 @@ export const AppComponents: FunctionComponent = () => {
         <AppModal
           title="a basic modal"
           visible={basicModalVisible}
+          leftIconAccessibilityLabel="leftIconButton"
           leftIcon={ArrowPrevious}
           onLeftIconPress={hideBasicModal}
+          rightIconAccessibilityLabel="rightIconButton"
           rightIcon={Close}
           onRightIconPress={hideBasicModal}>
           <Text>A simple content</Text>
@@ -340,7 +350,15 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Title4>Modal - Progressive</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4>Modal Header</Typo.Title4>
-        <ModalHeader title="My modal header" leftIcon={ArrowPrevious} rightIcon={Close} />
+        <ModalHeader
+          title="My modal header"
+          leftIconAccessibilityLabel="Revenir en arrière"
+          leftIcon={ArrowPrevious}
+          onLeftIconPress={() => null}
+          rightIconAccessibilityLabel="Revenir à l'accueil"
+          rightIcon={Close}
+          onRightIconPress={() => null}
+        />
       </AccordionItem>
 
       <Divider />

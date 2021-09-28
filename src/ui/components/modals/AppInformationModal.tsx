@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { Modal, TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -11,7 +12,7 @@ import { ModalHeader } from './ModalHeader'
 interface Props {
   title: string
   visible: boolean
-  onCloseIconPress?: () => void
+  onCloseIconPress: () => void
   testIdSuffix?: string
 }
 
@@ -38,9 +39,13 @@ export const AppInformationModal: FunctionComponent<Props> = ({
             <Container activeOpacity={1}>
               <ModalHeader
                 title={title}
+                boldTitle
+                leftIconAccessibilityLabel={undefined}
+                leftIcon={undefined}
+                onLeftIconPress={undefined}
+                rightIconAccessibilityLabel={t`Fermer la modale`}
                 rightIcon={Close}
                 onRightIconPress={onCloseIconPress}
-                boldTitle
               />
               <Content style={{ paddingBottom: paddingBottom }}>{children}</Content>
             </Container>

@@ -122,6 +122,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
       }
     >
       <View
+        accessibilityLabel="leftIconButton"
         accessible={true}
         focusable={false}
         onClick={[Function]}
@@ -173,6 +174,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         Titre modale
       </Text>
       <View
+        accessibilityLabel="Fermer la modale"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -192,7 +194,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             "opacity": 1,
           }
         }
-        testID="rightIconButton"
+        testID="Fermer la modale"
       >
         <View
           height={32}
@@ -360,6 +362,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
       }
     >
       <View
+        accessibilityLabel="leftIconButton"
         accessible={true}
         focusable={false}
         onClick={[Function]}
@@ -411,6 +414,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
         Titre modale
       </Text>
       <View
+        accessibilityLabel="Fermer la modale"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -430,7 +434,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
             "opacity": 1,
           }
         }
-        testID="rightIconButton"
+        testID="Fermer la modale"
       >
         <View
           height={32}

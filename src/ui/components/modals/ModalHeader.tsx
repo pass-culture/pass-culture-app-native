@@ -4,28 +4,28 @@ import { ViewStyle, TextStyle, StyleProp } from 'react-native'
 import { CSSObject } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { accessibilityAndTestId } from 'tests/utils'
 import { ColorsEnum, Typo } from 'ui/theme'
 
 import { isStyleObjectTypeGuard } from '../typeguards'
 
-export interface ModalHeaderProps {
+import { ModalIconProps } from './types'
+
+export type ModalHeaderProps = {
   title: string
-  leftIcon?: FunctionComponent<IconInterface>
-  onLeftIconPress?: () => void
-  rightIcon?: FunctionComponent<IconInterface>
-  onRightIconPress?: () => void
   boldTitle?: boolean
   customStyles?: ModalHeaderStyleClasses
   numberOfLines?: number
-}
+} & ModalIconProps
 
 export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   customStyles,
   title,
   leftIcon: LeftIcon,
+  leftIconAccessibilityLabel = 'leftIconButton',
   onLeftIconPress,
   rightIcon: RightIcon,
+  rightIconAccessibilityLabel = 'rightIconButton',
   onRightIconPress,
   boldTitle = false,
   numberOfLines = 2,
@@ -33,7 +33,9 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   const TitleComponent = boldTitle ? BoldTitle : Title
   return (
     <Container customStyle={customStyles?.container}>
-      <LeftHeaderAction onPress={onLeftIconPress} testID="leftIconButton">
+      <LeftHeaderAction
+        onPress={onLeftIconPress}
+        {...accessibilityAndTestId(leftIconAccessibilityLabel)}>
         {!!LeftIcon && (
           <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />
         )}
@@ -41,7 +43,9 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
       <TitleComponent customStyle={customStyles?.title} numberOfLines={numberOfLines}>
         {title}
       </TitleComponent>
-      <RightHeaderAction onPress={onRightIconPress} testID="rightIconButton">
+      <RightHeaderAction
+        onPress={onRightIconPress}
+        {...accessibilityAndTestId(rightIconAccessibilityLabel)}>
         {!!RightIcon && (
           <RightIcon size={32} testID="rightIcon" color={customStyles?.rightIcon?.color} />
         )}

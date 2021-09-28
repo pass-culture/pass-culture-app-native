@@ -167,7 +167,15 @@ export const CalendarPicker: React.FC<Props> = ({
   const RNCalendarTheme = { marginHorizontal: getSpacing(-2) }
 
   return (
-    <AppModal visible={visible} title="" rightIcon={Close} onRightIconPress={hideCalendar}>
+    <AppModal
+      visible={visible}
+      title=""
+      leftIconAccessibilityLabel={undefined}
+      leftIcon={undefined}
+      onLeftIconPress={undefined}
+      rightIconAccessibilityLabel={t`Fermer le calendrier`}
+      rightIcon={Close}
+      onRightIconPress={hideCalendar}>
       {isDesktop ? (
         <CalendarPickerWrapperDesktop>
           <RNCalendar

@@ -42,7 +42,7 @@ describe('<CancelBookingModal />', () => {
       <CancelBookingModal visible={true} dismissModal={mockDismissModal} booking={booking} />
     )
 
-    const dismissModalButton = page.getByTestId('rightIconButton')
+    const dismissModalButton = page.getByTestId('Ne pas annuler')
 
     fireEvent.press(dismissModalButton)
     expect(mockDismissModal).toHaveBeenCalled()

@@ -34,7 +34,7 @@ describe('<BookingOfferModalComponent />', () => {
       reactQueryProviderHOC(<BookingOfferModalComponent visible={true} offerId={20} />)
     )
 
-    const dismissModalButton = page.getByTestId('rightIconButton')
+    const dismissModalButton = page.getByTestId('Fermer la modale')
 
     fireEvent.press(dismissModalButton)
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })

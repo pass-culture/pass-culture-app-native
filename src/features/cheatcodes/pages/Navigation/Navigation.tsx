@@ -78,8 +78,12 @@ export function Navigation(): JSX.Element {
       <Spacer.TopScreen />
       <ModalHeader
         title="Navigation"
+        leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={navigation.goBack}
+        rightIconAccessibilityLabel={undefined}
+        rightIcon={undefined}
+        onRightIconPress={undefined}
       />
       <StyledContainer>
         <Row half>

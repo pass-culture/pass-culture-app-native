@@ -144,6 +144,10 @@ export const SetPhoneNumber = memo(() => {
       <BottomContentPage>
         <ModalHeader
           title={t`Confirme ton numéro`}
+          leftIconAccessibilityLabel={undefined}
+          leftIcon={undefined}
+          onLeftIconPress={undefined}
+          rightIconAccessibilityLabel={t`Abandonner l'inscription`}
           rightIcon={Close}
           onRightIconPress={showQuitSignupModal}
         />

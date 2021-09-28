@@ -122,6 +122,7 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="leftIconButton"
         accessible={true}
         focusable={false}
         onClick={[Function]}
@@ -163,6 +164,7 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
         Oups !
       </Text>
       <View
+        accessibilityLabel="Fermer la modale"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -182,7 +184,7 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
             "opacity": 1,
           }
         }
-        testID="rightIconButton"
+        testID="Fermer la modale"
       >
         <View
           height={32}

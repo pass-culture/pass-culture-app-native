@@ -199,8 +199,10 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
       <BottomContentPage>
         <ModalHeader
           title={t`Confirme ton numéro`}
+          leftIconAccessibilityLabel={t`Revenir en arrière`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={onGoBack}
+          rightIconAccessibilityLabel={t`Revenir sur l'écran d'envoi de SMS`}
           rightIcon={Close}
           onRightIconPress={showFullPageModal}
         />

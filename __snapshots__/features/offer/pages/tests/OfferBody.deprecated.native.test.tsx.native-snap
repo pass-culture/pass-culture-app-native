@@ -2001,6 +2001,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               }
                             >
                               <View
+                                accessibilityLabel="leftIconButton"
                                 accessible={true}
                                 focusable={false}
                                 onClick={[Function]}
@@ -2042,6 +2043,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 Signaler une offre
                               </Text>
                               <View
+                                accessibilityLabel="Fermer la modale"
                                 accessible={true}
                                 focusable={true}
                                 onClick={[Function]}
@@ -2061,7 +2063,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     "opacity": 1,
                                   }
                                 }
-                                testID="rightIconButton"
+                                testID="Fermer la modale"
                               >
                                 <View
                                   height={32}
@@ -4658,6 +4660,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               }
                             >
                               <View
+                                accessibilityLabel="leftIconButton"
                                 accessible={true}
                                 focusable={false}
                                 onClick={[Function]}
@@ -4699,6 +4702,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 Signaler une offre
                               </Text>
                               <View
+                                accessibilityLabel="Fermer la modale"
                                 accessible={true}
                                 focusable={true}
                                 onClick={[Function]}
@@ -4718,7 +4722,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     "opacity": 1,
                                   }
                                 }
-                                testID="rightIconButton"
+                                testID="Fermer la modale"
                               >
                                 <View
                                   height={32}

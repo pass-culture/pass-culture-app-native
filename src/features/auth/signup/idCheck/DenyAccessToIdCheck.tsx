@@ -29,6 +29,10 @@ export const DenyAccessToIdCheckModal = (props: DenyAccessToIdCheckModalProps) =
     <AppModal
       visible={props.visible}
       title={t`Oups !`}
+      leftIconAccessibilityLabel={undefined}
+      leftIcon={undefined}
+      onLeftIconPress={undefined}
+      rightIconAccessibilityLabel={t`Fermer la modale`}
       rightIcon={Close}
       onRightIconPress={props.dismissModal}
       isScrollable>

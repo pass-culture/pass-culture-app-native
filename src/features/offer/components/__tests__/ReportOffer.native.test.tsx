@@ -24,7 +24,7 @@ describe('ReportOffer', () => {
         <ReportOfferModal isVisible offerId={offerId} dismissModal={hideReportModal} />
       )
 
-      const closeButton = await ReportOfferModalComponent.findByTestId('rightIconButton')
+      const closeButton = await ReportOfferModalComponent.findByTestId('Fermer la modale')
       fireEvent.press(closeButton)
       expect(hideReportModal).toHaveBeenCalledWith()
     })

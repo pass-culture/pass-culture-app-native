@@ -130,7 +130,7 @@ describe('SetBirthday Page', () => {
 
   it('should call clear focuses', () => {
     const { getByTestId, getByText } = renderSetBirthday()
-    const quitSignupModalButton = getByTestId('rightIconButton')
+    const quitSignupModalButton = getByTestId("Abandonner l'inscription")
 
     fireEvent.press(quitSignupModalButton)
 

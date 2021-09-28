@@ -33,7 +33,7 @@ describe('<PrivacyPolicyModal />', () => {
       visible,
     })
 
-    fireEvent.press(getByTestId('rightIconButton'))
+    fireEvent.press(getByTestId('Fermer la modale et refuser la collecte des données'))
     expect(onRefusal).toBeCalledTimes(1)
     expect(onApproval).not.toBeCalled()
   })

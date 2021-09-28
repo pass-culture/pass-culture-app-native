@@ -3,8 +3,8 @@ import React from 'react'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
-import { goBack } from '__mocks__/@react-navigation/native'
 import { contactSupport } from 'features/auth/support.services'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -23,11 +23,11 @@ describe('<SignupConfirmationEmailSent />', () => {
   it('should go back when clicking on left icon of modal header', async () => {
     const { findByTestId } = renderPage()
 
-    const leftIconButton = await findByTestId('leftIcon')
+    const leftIconButton = await findByTestId('Revenir en arrière')
     fireEvent.press(leftIconButton)
 
     await waitForExpect(() => {
-      expect(goBack).toHaveBeenCalledTimes(1)
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -36,7 +36,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     mockUsePreviousRoute.mockReturnValue({ name: 'AcceptCgu', key: 'key' })
     const { queryByTestId } = renderPage()
 
-    const leftIconButton = queryByTestId('leftIcon')
+    const leftIconButton = queryByTestId('Revenir en arrière')
 
     await waitForExpect(() => {
       expect(leftIconButton).toBeFalsy()
@@ -46,7 +46,7 @@ describe('<SignupConfirmationEmailSent />', () => {
   it('should go to home page when clicking on right icon', async () => {
     const { findByTestId } = renderPage()
 
-    const rightIconButton = await findByTestId('rightIconButton')
+    const rightIconButton = await findByTestId("Abandonner l'inscription")
     fireEvent.press(rightIconButton)
 
     await waitForExpect(() => {

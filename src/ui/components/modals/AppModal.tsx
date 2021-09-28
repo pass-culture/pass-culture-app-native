@@ -5,25 +5,11 @@ import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Style } from 'ui/components/Style'
-import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, UniqueColors, ColorsEnum } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
-
-interface Props extends ModalStyles {
-  title: string
-  visible: boolean
-  leftIcon?: FunctionComponent<IconInterface>
-  onLeftIconPress?: () => void
-  rightIcon?: FunctionComponent<IconInterface>
-  onRightIconPress: () => void
-  titleNumberOfLines?: number
-  isScrollable?: boolean
-  disableBackdropTap?: boolean
-  shouldDisplayOverlay?: boolean
-  onBackdropPress?: () => void
-}
+import { ModalIconProps } from './types'
 
 const webcss = `div[aria-modal="true"] { align-items: center }`
 
@@ -32,13 +18,26 @@ export interface ModalStyles {
   maxWidth?: number
 }
 
+type Props = {
+  title: string
+  visible: boolean
+  titleNumberOfLines?: number
+  isScrollable?: boolean
+  disableBackdropTap?: boolean
+  shouldDisplayOverlay?: boolean
+  onBackdropPress?: () => void
+} & ModalIconProps &
+  ModalStyles
+
 export const AppModal: FunctionComponent<Props> = ({
   height,
   maxWidth,
   title,
   visible,
+  leftIconAccessibilityLabel,
   leftIcon,
   onLeftIconPress,
+  rightIconAccessibilityLabel,
   rightIcon,
   onRightIconPress,
   children,
@@ -48,9 +47,18 @@ export const AppModal: FunctionComponent<Props> = ({
   shouldDisplayOverlay = true,
   onBackdropPress,
 }) => {
-  const { height: windowHeight, width: windowWidth } = useWindowDimensions()
+  const iconProps = {
+    rightIconAccessibilityLabel,
+    rightIcon,
+    onRightIconPress,
+    leftIconAccessibilityLabel,
+    leftIcon,
+    onLeftIconPress,
+  } as ModalIconProps
 
+  const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const { bottom } = useCustomSafeInsets()
+
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const scrollViewRef = useRef<ScrollView | null>(null)
 
@@ -85,15 +93,7 @@ export const AppModal: FunctionComponent<Props> = ({
         deviceWidth={windowWidth}
         maxWidth={maxWidth}
         height={height}>
-        <ModalHeader
-          title={title}
-          leftIcon={leftIcon}
-          onLeftIconPress={onLeftIconPress}
-          rightIcon={rightIcon}
-          onRightIconPress={onRightIconPress}
-          numberOfLines={titleNumberOfLines}
-        />
-
+        <ModalHeader title={title} numberOfLines={titleNumberOfLines} {...iconProps} />
         <Content style={{ paddingBottom: keyboardHeight || bottom }}>
           {isScrollable ? (
             <StyledScrollView

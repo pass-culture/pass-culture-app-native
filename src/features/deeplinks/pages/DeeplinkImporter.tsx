@@ -38,7 +38,15 @@ export const DeeplinkImporter: FunctionComponent = () => {
   return (
     <React.Fragment>
       <BottomContentPage>
-        <ModalHeader title={t`Accès aux liens`} leftIcon={ArrowPrevious} onLeftIconPress={goBack} />
+        <ModalHeader
+          title={t`Accès aux liens`}
+          leftIconAccessibilityLabel={t`Revenir en arrière`}
+          leftIcon={ArrowPrevious}
+          onLeftIconPress={goBack}
+          rightIconAccessibilityLabel={undefined}
+          rightIcon={undefined}
+          onRightIconPress={undefined}
+        />
         <ModalContent>
           <StyledInput>
             <Typo.Body>{t`Un lien ne fonctionne pas ?`}</Typo.Body>

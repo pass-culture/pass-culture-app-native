@@ -117,8 +117,10 @@ export const ForgottenPassword: FunctionComponent = () => {
       )}
       <ModalHeader
         title={t`Mot de passe oublié`}
+        leftIconAccessibilityLabel={t`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={onBackNavigation}
+        rightIconAccessibilityLabel={t`Revenir à l'accueil`}
         rightIcon={Close}
         onRightIconPress={onClose}
       />
