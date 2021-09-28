@@ -2,10 +2,11 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import { Platform } from 'react-native'
 
-import { CategoryNameEnum, CategoryType } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
 import { getOfferPrice } from 'features/offer/services/getOfferPrice'
+import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 
@@ -21,6 +22,7 @@ type ModalContent = {
 export const useModalContent = (): ModalContent => {
   const { bookingState, dispatch } = useBooking()
   const offer = useBookingOffer()
+  const mapping = useSubcategoriesMapping()
 
   if (!offer)
     return {
@@ -31,16 +33,17 @@ export const useModalContent = (): ModalContent => {
       onLeftIconPress: undefined,
     }
 
-  const { category, isDigital, stocks } = offer
+  const { isDigital, stocks } = offer
+  const subcategory = mapping[offer.subcategoryId]
 
   const goToPreviousStep = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
   }
 
-  if (category.categoryType === CategoryType.Thing) {
+  if (!subcategory.isEvent) {
     if (
       isDigital &&
-      category.name !== CategoryNameEnum.CINEMA &&
+      subcategory.categoryId !== CategoryIdEnum.CINEMA &&
       Platform.OS === 'ios' &&
       getOfferPrice(stocks) > 0
     ) {

@@ -19,6 +19,7 @@ import { env } from 'libs/environment'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { useCategoryIdMapping } from 'libs/subcategories'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -38,10 +39,11 @@ interface Props {
 }
 
 export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
-  const { data: offerResponse } = useOffer({ offerId })
+  const { data: offer } = useOffer({ offerId })
   const credit = useAvailableCredit()
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
+  const mapping = useCategoryIdMapping()
 
   const [isReportOfferModalVisible, setIsReportOfferModalVisible] = useState(false)
   const showReportOfferDescription = () => setIsReportOfferModalVisible(true)
@@ -54,8 +56,9 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
     (reportedOffer: ReportedOffer) => reportedOffer.offerId === offerId
   )
 
-  if (!offerResponse) return <React.Fragment></React.Fragment>
-  const { accessibility, category, venue } = offerResponse
+  if (!offer) return <React.Fragment></React.Fragment>
+  const { accessibility, category, venue } = offer
+  const categoryId = mapping[offer.subcategoryId]
 
   const showVenueBanner = true
   // TODO (Lucasbeneston): Remove testing condition when display the link to venue button
@@ -71,11 +74,12 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
           venue.name
         )
 
-  const dates = offerResponse.stocks.reduce<Date[]>(
+  const dates = offer.stocks.reduce<Date[]>(
     (accumulator, stock) =>
       stock.beginningDatetime ? [...accumulator, stock.beginningDatetime] : accumulator,
     []
   )
+
   const formattedDate = formatDatePeriod(dates)
   const shouldDisplayWhenBlock = category.categoryType === CategoryType.Event && !!formattedDate
   const shouldShowAccessibility = Object.values(accessibility).some(
@@ -91,9 +95,9 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      <Hero imageUrl={offerResponse.image?.url} type="offer" categoryName={category.name || null} />
+      <Hero imageUrl={offer.image?.url} type="offer" categoryId={categoryId || null} />
       <Spacer.Column numberOfSpaces={4} />
-      <LocationCaption venue={venue} isDigital={offerResponse.isDigital} />
+      <LocationCaption venue={venue} isDigital={offer.isDigital} />
       <Spacer.Column numberOfSpaces={2} />
       <MarginContainer>
         <OfferTitle
@@ -101,17 +105,17 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
           numberOfLines={3}
           adjustsFontSizeToFit
           allowFontScaling={false}>
-          {offerResponse.name}
+          {offer.name}
         </OfferTitle>
       </MarginContainer>
       <Spacer.Column numberOfSpaces={4} />
       <OfferIconCaptions
-        isDuo={offerResponse.isDuo}
-        stocks={offerResponse.stocks}
-        category={category.name || null}
+        isDuo={offer.isDuo}
+        stocks={offer.stocks}
+        categoryId={categoryId || null}
         label={category.label}
       />
-      <OfferPartialDescription description={offerResponse.description || ''} id={offerId} />
+      <OfferPartialDescription description={offer.description || ''} id={offerId} />
       <Spacer.Column numberOfSpaces={4} />
 
       <SectionWithDivider visible={shouldDisplayWhenBlock} margin={true}>
@@ -119,10 +123,10 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         <SectionBody>{formattedDate}</SectionBody>
       </SectionWithDivider>
 
-      <SectionWithDivider visible={!offerResponse.isDigital} margin={true}>
+      <SectionWithDivider visible={!offer.isDigital} margin={true}>
         <WhereSection
           beforeNavigateToItinerary={() =>
-            analytics.logConsultItinerary({ offerId: offerResponse.id, from: 'offer' })
+            analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
           }
           venue={venue}
           address={fullAddress}
@@ -131,13 +135,13 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         />
       </SectionWithDivider>
 
-      <SectionWithDivider visible={!!offerResponse.withdrawalDetails && !!user?.isBeneficiary}>
+      <SectionWithDivider visible={!!offer.withdrawalDetails && !!user?.isBeneficiary}>
         <AccordionItem
           title={t`Modalités de retrait`}
           scrollViewRef={scrollViewRef}
-          onOpenOnce={() => analytics.logConsultWithdrawal({ offerId: offerResponse.id })}>
+          onOpenOnce={() => analytics.logConsultWithdrawal({ offerId: offer.id })}>
           <Typo.Body>
-            {offerResponse.withdrawalDetails && highlightLinks(offerResponse.withdrawalDetails)}
+            {offer.withdrawalDetails && highlightLinks(offer.withdrawalDetails)}
           </Typo.Body>
         </AccordionItem>
       </SectionWithDivider>
@@ -146,7 +150,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         <AccordionItem
           title={t`Accessibilité`}
           scrollViewRef={scrollViewRef}
-          onOpenOnce={() => analytics.logConsultAccessibility({ offerId: offerResponse.id })}>
+          onOpenOnce={() => analytics.logConsultAccessibility({ offerId: offer.id })}>
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>
       </SectionWithDivider>

@@ -54,6 +54,11 @@ jest.mock('features/navigation/RootNavigator/routes')
 jest.mock('libs/analytics/analytics')
 jest.mock('libs/analytics/provider')
 
+/* See the corresponding mocks in libs/subcategories/__mocks__ */
+jest.mock('libs/subcategories/mappings')
+jest.mock('libs/subcategories/useCategoryId')
+jest.mock('libs/subcategories/useSubcategory')
+
 /* See the corresponding mock in libs/firebase/__mocks__ */
 jest.mock('libs/firebase/firebase')
 

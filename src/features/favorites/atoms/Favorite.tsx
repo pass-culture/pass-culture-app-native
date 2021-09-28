@@ -17,9 +17,9 @@ import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { Credit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferImage } from 'features/search/atoms/OfferImage'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatToFrenchDate, getFavoriteDisplayPrice, parseCategory } from 'libs/parsers'
+import { useSubcategory } from 'libs/subcategories'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -47,6 +47,7 @@ export const Favorite: React.FC<Props> = (props) => {
     lng: offer.coordinates?.longitude,
   })
   const { showErrorSnackBar } = useSnackBarContext()
+  const { categoryId, appLabel } = useSubcategory(offer.subcategoryId)
 
   const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
     onError: () => {
@@ -57,7 +58,6 @@ export const Favorite: React.FC<Props> = (props) => {
     },
   })
 
-  const categoryLabel = CATEGORY_CRITERIA[offer.category.name || 'ALL'].label
   const formattedDate = useMemo(() => {
     if (offer.date) {
       return formatToFrenchDate(new Date(offer.date))
@@ -80,7 +80,7 @@ export const Favorite: React.FC<Props> = (props) => {
       mergeOfferData({
         ...offer,
         category: parseCategory(offer.category.name),
-        categoryName: offer.category.name,
+        categoryId,
         subcategoryId: offer.subcategoryId as SubcategoryIdEnum,
         thumbUrl: offer.image?.url,
         name: offer.name,
@@ -133,7 +133,7 @@ export const Favorite: React.FC<Props> = (props) => {
       }}>
       <Container onPress={handlePressOffer} testID="favorite">
         <Row>
-          <OfferImage imageUrl={offer.image?.url} categoryName={offer.category.name} />
+          <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
           <Spacer.Row numberOfSpaces={4} />
           <Column windowWidth={windowWidth}>
             <Row>
@@ -151,7 +151,7 @@ export const Favorite: React.FC<Props> = (props) => {
               )}
             </Row>
             <Spacer.Column numberOfSpaces={1} />
-            <Body>{categoryLabel}</Body>
+            <Body>{appLabel}</Body>
             {!!formattedDate && <Body>{formattedDate}</Body>}
             <Spacer.Column numberOfSpaces={1} />
             <Typo.Caption>

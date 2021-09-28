@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { omit } from 'lodash'
 
-import { CategoryNameEnum, UserRole } from 'api/gen'
+import { CategoryIdEnum, UserRole } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 
@@ -21,10 +21,10 @@ describe('useAvailableCategories', () => {
     expect(result.current).toEqual(CATEGORY_CRITERIA)
   })
 
-  it('should return CATEGORY_CRITERIA except JEUX_VIDEO if user is underage beneficiary', () => {
+  it('should return CATEGORY_CRITERIA except JEU if user is underage beneficiary', () => {
     mockUserProfileInfo.roles = [UserRole.UNDERAGEBENEFICIARY]
     const { result } = renderHook(useAvailableCategories)
-    const availableCategories = omit(CATEGORY_CRITERIA, CategoryNameEnum.JEUXVIDEO)
+    const availableCategories = omit(CATEGORY_CRITERIA, CategoryIdEnum.JEU)
     expect(result.current).toEqual(availableCategories)
   })
 })

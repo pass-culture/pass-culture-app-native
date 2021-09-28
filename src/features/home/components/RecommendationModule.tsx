@@ -15,6 +15,7 @@ import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
+import { useCategoryIdMapping } from 'libs/subcategories'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 type RecommendationModuleProps = {
@@ -28,6 +29,7 @@ type RecommendationModuleProps = {
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { display, isBeneficiary, position, index, setRecommendationY, hits } = props
+  const mapping = useCategoryIdMapping()
 
   const layoutHits = useLayoutHits(hits, display.layout)
 
@@ -45,7 +47,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         <Row key={hit.objectID}>
           <OfferTile
             category={parseCategory(hit.offer.category)}
-            categoryName={hit.offer.category}
+            categoryId={mapping[hit.offer.subcategoryId]}
             subcategoryId={hit.offer.subcategoryId}
             offerId={+hit.objectID}
             distance={formatDistance(hit._geoloc, position)}

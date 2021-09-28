@@ -1,16 +1,16 @@
 import React, { memo, useMemo } from 'react'
 
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { ClippedImage, ClippedImageProps } from 'ui/components/ClippedImage'
 
 interface EndedBookingTicketProps {
   image?: string
-  offerCategory?: CategoryNameEnum | null
+  categoryId?: CategoryIdEnum | null
 }
 
 export const EndedBookingTicket = memo(function EndedBookingTicket(props: EndedBookingTicketProps) {
-  const clippedImageProps = useClippedImageProps(props.image, props.offerCategory)
+  const clippedImageProps = useClippedImageProps(props.image, props.categoryId)
   return <ClippedImage {...clippedImageProps} />
 })
 
@@ -19,7 +19,7 @@ const usedTicketPath =
 
 const useClippedImageProps = (
   image?: string,
-  offerCategory?: CategoryNameEnum | null
+  categoryId?: CategoryIdEnum | null
 ): ClippedImageProps => {
   return useMemo(() => {
     return Object.assign(
@@ -29,7 +29,7 @@ const useClippedImageProps = (
         width: 58,
         height: 67,
       },
-      image ? { image } : { altIcon: mapCategoryToIcon(offerCategory ?? null) }
+      image ? { image } : { altIcon: mapCategoryToIcon(categoryId ?? null) }
     )
-  }, [image, offerCategory])
+  }, [image, categoryId])
 }

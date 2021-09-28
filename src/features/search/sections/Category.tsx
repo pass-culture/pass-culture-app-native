@@ -25,9 +25,9 @@ export const Category: React.FC = () => {
       defaultOpen={true}
       title={<TitleWithCount title={SectionTitle.Category} count={offerCategories.length} />}>
       <BodyContainer>
-        {Object.values(categories).map(({ label, facetFilter }) => (
+        {Object.entries(categories).map(([categoryId, { label, facetFilter }]) => (
           <SelectionLabel
-            key={label}
+            key={categoryId}
             label={label}
             selected={offerCategories.includes(facetFilter)}
             onPress={onPress(facetFilter)}

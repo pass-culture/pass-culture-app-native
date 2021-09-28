@@ -218,7 +218,7 @@ describe('getCtaWordingAndAction', () => {
         ${CategoryType.Thing} | ${undefined}                 | ${true}  | ${false}  | ${CategoryNameEnum.JEUXVIDEO}  | ${0}
         ${CategoryType.Event} | ${'Voir les disponibilités'} | ${false} | ${false}  | ${CategoryNameEnum.INSTRUMENT} | ${20}
       `(
-        'CTA(disabled=$disabled) = "$expected" for categoryType=$type, isDigital=$isDigital, categoryName=$name and price=$price',
+        'CTA(disabled=$disabled) = "$expected" for categoryType=$type, isDigital=$isDigital, categoryId=$name and price=$price',
         ({ type, expected, disabled, isDigital, name, price }) => {
           mockedUser.roles = [UserRole.UNDERAGEBENEFICIARY]
           const { result } = renderHook(useAvailableCategories)

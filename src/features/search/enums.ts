@@ -1,4 +1,4 @@
-import { CategoryNameEnum, VenueTypeCode } from 'api/gen'
+import { CategoryIdEnum, VenueTypeCode } from 'api/gen'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
@@ -24,19 +24,19 @@ export type CategoryCriteria = {
     facetFilter: ''
   }
 } & {
-  [category in CategoryNameEnum]: {
+  [category in CategoryIdEnum]: {
     label: string
     icon: React.FC<BicolorIconInterface>
-    facetFilter: CategoryNameEnum
+    facetFilter: CategoryIdEnum
   }
 }
 
 export type OptionalCategoryCriteria = Pick<CategoryCriteria, 'ALL'> &
   {
-    [category in CategoryNameEnum]?: {
+    [category in CategoryIdEnum]?: {
       label: string
       icon: React.FC<BicolorIconInterface>
-      facetFilter: CategoryNameEnum
+      facetFilter: CategoryIdEnum
     }
   }
 
@@ -46,65 +46,75 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: CategoryIcon.All,
     facetFilter: '',
   },
-  [CategoryNameEnum.CINEMA]: {
+  [CategoryIdEnum.CINEMA]: {
     label: 'Cinéma',
     icon: CategoryIcon.Cinema,
-    facetFilter: CategoryNameEnum.CINEMA,
+    facetFilter: CategoryIdEnum.CINEMA,
   },
-  [CategoryNameEnum.VISITE]: {
+  [CategoryIdEnum.MUSEE]: {
     label: 'Visites, expositions',
     icon: CategoryIcon.Exposition,
-    facetFilter: CategoryNameEnum.VISITE,
+    facetFilter: CategoryIdEnum.MUSEE,
   },
-  [CategoryNameEnum.MUSIQUE]: {
+  [CategoryIdEnum.MUSIQUEENREGISTREE]: {
     label: 'Musique',
     icon: CategoryIcon.Musique,
-    facetFilter: CategoryNameEnum.MUSIQUE,
+    facetFilter: CategoryIdEnum.MUSIQUEENREGISTREE,
   },
-  [CategoryNameEnum.SPECTACLE]: {
+  [CategoryIdEnum.MUSIQUELIVE]: {
+    label: 'Musique',
+    icon: CategoryIcon.Musique,
+    facetFilter: CategoryIdEnum.MUSIQUELIVE,
+  },
+  [CategoryIdEnum.SPECTACLE]: {
     label: 'Spectacles',
     icon: CategoryIcon.Spectacles,
-    facetFilter: CategoryNameEnum.SPECTACLE,
+    facetFilter: CategoryIdEnum.SPECTACLE,
   },
-  [CategoryNameEnum.LECON]: {
+  [CategoryIdEnum.PRATIQUEART]: {
     label: 'Cours, ateliers',
     icon: CategoryIcon.Atelier,
-    facetFilter: CategoryNameEnum.LECON,
+    facetFilter: CategoryIdEnum.PRATIQUEART,
   },
-  [CategoryNameEnum.LIVRE]: {
+  [CategoryIdEnum.LIVRE]: {
     label: 'Livres',
     icon: CategoryIcon.Livres,
-    facetFilter: CategoryNameEnum.LIVRE,
+    facetFilter: CategoryIdEnum.LIVRE,
   },
-  [CategoryNameEnum.FILM]: {
+  [CategoryIdEnum.FILM]: {
     label: 'Films, séries, podcasts',
     icon: CategoryIcon.Streaming,
-    facetFilter: CategoryNameEnum.FILM,
+    facetFilter: CategoryIdEnum.FILM,
   },
-  [CategoryNameEnum.PRESSE]: {
+  [CategoryIdEnum.MEDIA]: {
     label: 'Presse',
     icon: CategoryIcon.Presse,
-    facetFilter: CategoryNameEnum.PRESSE,
+    facetFilter: CategoryIdEnum.MEDIA,
   },
-  [CategoryNameEnum.JEUXVIDEO]: {
+  [CategoryIdEnum.JEU]: {
     label: 'Jeux vidéos',
     icon: CategoryIcon.JeuxVideo,
-    facetFilter: CategoryNameEnum.JEUXVIDEO,
+    facetFilter: CategoryIdEnum.JEU,
   },
-  [CategoryNameEnum.CONFERENCE]: {
+  [CategoryIdEnum.CONFERENCE]: {
     label: 'Conférences, rencontres',
     icon: CategoryIcon.Conference,
-    facetFilter: CategoryNameEnum.CONFERENCE,
+    facetFilter: CategoryIdEnum.CONFERENCE,
   },
-  [CategoryNameEnum.INSTRUMENT]: {
+  [CategoryIdEnum.INSTRUMENT]: {
     label: 'Instruments de musique',
     icon: CategoryIcon.Instrument,
-    facetFilter: CategoryNameEnum.INSTRUMENT,
+    facetFilter: CategoryIdEnum.INSTRUMENT,
   },
-  [CategoryNameEnum.MATERIELARTCREA]: {
+  [CategoryIdEnum.BEAUXARTS]: {
     label: 'Matériel arts créatifs',
     icon: CategoryIcon.ArtsMaterial,
-    facetFilter: CategoryNameEnum.MATERIELARTCREA,
+    facetFilter: CategoryIdEnum.BEAUXARTS,
+  },
+  [CategoryIdEnum.TECHNIQUE]: {
+    label: "Œuvre d'art",
+    icon: CategoryIcon.ArtsMaterial,
+    facetFilter: CategoryIdEnum.BEAUXARTS,
   },
 }
 
