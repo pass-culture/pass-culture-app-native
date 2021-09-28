@@ -71,7 +71,6 @@ describe('OfferTile component', () => {
       category: { label: 'MUSIQUE', name: 'MUSIQUE' },
       description: '',
       expenseDomains: [],
-      fullAddress: null,
       id: offerId,
       image: { url: props.thumbUrl },
       isDigital: false,

@@ -39,14 +39,11 @@ export const BookingInformations: React.FC = () => {
   const offer = useBookingOffer()
   const stock = useBookingStock()
   const { data: settings } = useAppSettings()
-
   const { quantity } = bookingState
 
-  if (!offer) return <React.Fragment />
+  if (!stock || typeof quantity !== 'number' || !offer) return <React.Fragment />
 
   const { category, isDigital, name, venue } = offer
-  if (!stock || typeof quantity !== 'number') return <React.Fragment />
-
   const fullAddress = formatFullAddress(
     venue.publicName,
     venue.name,
