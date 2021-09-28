@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import { CategoryNameEnum, SubcategoryIdEnum } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
 
 import { AlgoliaHit } from '..'
 
@@ -8,13 +8,12 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
   hits: [
     {
       offer: {
-        category: CategoryNameEnum.MUSIQUE,
-        subcategoryId: SubcategoryIdEnum.CONCERT,
         dates: [],
         isDigital: false,
         isDuo: false,
         name: 'Mensch ! Où sont les Hommes ?',
         prices: [28.0],
+        subcategoryId: SubcategoryIdEnum.CONCERT,
         thumbUrl:
           'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ',
       },
@@ -23,13 +22,12 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     },
     {
       offer: {
-        category: CategoryNameEnum.MUSIQUE,
-        subcategoryId: SubcategoryIdEnum.CONCERT,
         dates: [],
         isDigital: false,
         isDuo: false,
         name: 'I want something more',
         prices: [23.0],
+        subcategoryId: SubcategoryIdEnum.CONCERT,
         thumbUrl:
           'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDKQ',
       },
@@ -38,13 +36,12 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     },
     {
       offer: {
-        category: CategoryNameEnum.MUSIQUE,
-        subcategoryId: SubcategoryIdEnum.CONCERT,
         dates: [1605643200.0],
         isDigital: false,
         isDuo: true,
         name: 'Un lit sous une rivière',
         prices: [34.0],
+        subcategoryId: SubcategoryIdEnum.CONCERT,
         thumbUrl:
           'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDBA',
       },
@@ -53,13 +50,12 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     },
     {
       offer: {
-        category: CategoryNameEnum.MUSIQUE,
-        subcategoryId: SubcategoryIdEnum.CONCERT,
         dates: [],
         isDigital: false,
         isDuo: false,
         name: 'I want something more',
         prices: [28.0],
+        subcategoryId: SubcategoryIdEnum.CONCERT,
         thumbUrl:
           'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDZQ',
       },
@@ -80,13 +76,12 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
 
 export const physicalAlgoliaOffer: AlgoliaHit = {
   offer: {
-    category: CategoryNameEnum.SPECTACLE,
-    subcategoryId: SubcategoryIdEnum.CONCERT,
     dates: [1612465203, 1612551603, 1612638003],
     isDigital: false,
     isDuo: true,
     name: 'Mad in Finland',
     prices: [9, 9, 9],
+    subcategoryId: SubcategoryIdEnum.CONCERT,
     thumbUrl:
       'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/ZEWA',
   },
@@ -96,13 +91,12 @@ export const physicalAlgoliaOffer: AlgoliaHit = {
 
 export const digitalAlgoliaOffer: AlgoliaHit = {
   offer: {
-    category: CategoryNameEnum.FILM,
-    subcategoryId: SubcategoryIdEnum.CONCERT,
     dates: [],
     isDigital: true,
     isDuo: false,
     name: 'Web série : Simone et moi',
     prices: [0],
+    subcategoryId: SubcategoryIdEnum.CONCERT,
     thumbUrl:
       'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/5AZQ',
   },

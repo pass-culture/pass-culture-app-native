@@ -1,6 +1,6 @@
 import { SearchOptions } from '@elastic/app-search-javascript'
 
-import { CategoryNameEnum } from 'api/gen'
+import { SearchGroupNameEnum } from 'api/gen'
 import { PartialSearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { buildBoosts } from 'libs/search/filters/buildBoosts'
@@ -16,7 +16,7 @@ export const underageFilter = {
   any: [
     { [AppSearchFields.is_digital]: FALSE },
     { [AppSearchFields.prices]: { to: 1 } },
-    { [AppSearchFields.category]: CategoryNameEnum.PRESSE },
+    { [AppSearchFields.search_group_name]: SearchGroupNameEnum.PRESSE },
   ],
 }
 

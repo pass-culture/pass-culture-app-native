@@ -59,7 +59,6 @@ Array [
           },
           "objectID": "223342",
           "offer": Object {
-            "category": "CINEMA",
             "dates": Array [
               1629312300,
               1629485100,
@@ -84,7 +83,6 @@ Array [
           },
           "objectID": "223338",
           "offer": Object {
-            "category": "CINEMA",
             "dates": Array [
               1629312300,
               1629485100,
@@ -109,7 +107,6 @@ Array [
           },
           "objectID": "223339",
           "offer": Object {
-            "category": "CINEMA",
             "dates": Array [
               1629312300,
               1629485100,

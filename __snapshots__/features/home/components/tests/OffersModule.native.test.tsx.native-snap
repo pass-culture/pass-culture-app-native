@@ -52,7 +52,6 @@ Array [
           },
           "objectID": "102280",
           "offer": Object {
-            "category": "MUSIQUE",
             "dates": Array [],
             "isDigital": false,
             "isDuo": false,
@@ -71,7 +70,6 @@ Array [
           },
           "objectID": "102272",
           "offer": Object {
-            "category": "MUSIQUE",
             "dates": Array [],
             "isDigital": false,
             "isDuo": false,

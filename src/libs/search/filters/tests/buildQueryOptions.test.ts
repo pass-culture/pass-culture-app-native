@@ -1,4 +1,4 @@
-import { CategoryNameEnum } from 'api/gen'
+import { SearchGroupNameEnum } from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { AppSearchFields, FALSE } from 'libs/search/filters/constants'
@@ -235,7 +235,7 @@ describe('buildQueryOptions', () => {
         any: [
           { is_digital: 0 },
           { [AppSearchFields.prices]: { to: 1 } },
-          { [AppSearchFields.category]: CategoryNameEnum.PRESSE },
+          { [AppSearchFields.search_group_name]: SearchGroupNameEnum.PRESSE },
         ],
       })
     })

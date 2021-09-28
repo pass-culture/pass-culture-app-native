@@ -672,7 +672,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
             },
             "objectID": "223342",
             "offer": Object {
-              "category": "CINEMA",
               "dates": Array [
                 1629312300,
                 1629485100,
@@ -697,7 +696,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
             },
             "objectID": "223338",
             "offer": Object {
-              "category": "CINEMA",
               "dates": Array [
                 1629312300,
                 1629485100,
@@ -722,7 +720,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
             },
             "objectID": "223339",
             "offer": Object {
-              "category": "CINEMA",
               "dates": Array [
                 1629312300,
                 1629485100,
