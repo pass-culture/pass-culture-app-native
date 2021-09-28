@@ -3,19 +3,19 @@ import { useMemo } from 'react'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
 
 interface Props {
   imageUrl: string | undefined
-  categoryName?: CategoryNameEnum | null
+  categoryId?: CategoryIdEnum | null
 }
 
-export const OfferImage: React.FC<Props> = ({ categoryName, imageUrl }) => {
+export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl }) => {
   const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
-  const Icon = mapCategoryToIcon(categoryName || null)
+  const Icon = mapCategoryToIcon(categoryId || null)
 
   return (
     <Container>

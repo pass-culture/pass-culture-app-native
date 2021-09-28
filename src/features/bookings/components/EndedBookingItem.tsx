@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { BookingCancellationReasons } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { useCategoryId } from 'libs/subcategories'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Check } from 'ui/svg/icons/Check'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -18,6 +19,7 @@ import { BookingItemProps } from './types'
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
+  const categoryId = useCategoryId(stock.offer.subcategoryId)
 
   const endedBookingReason = getEndedBookingReason(cancellationReason, dateUsed)
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
@@ -32,10 +34,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
       }
       testID="EndedBookingItem">
       <ItemContainer>
-        <EndedBookingTicket
-          image={stock.offer.image?.url}
-          offerCategory={stock.offer.category.name}
-        />
+        <EndedBookingTicket image={stock.offer.image?.url} categoryId={categoryId} />
         <Spacer.Row numberOfSpaces={4} />
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />

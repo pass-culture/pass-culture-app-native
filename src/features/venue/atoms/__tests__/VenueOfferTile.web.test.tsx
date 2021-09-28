@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { CategoryIdEnum } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -14,7 +15,7 @@ const venueId = 34
 
 const props = {
   category: offer.category || '',
-  categoryName: offer.category,
+  categoryId: CategoryIdEnum.MUSIQUELIVE,
   subcategoryId: offer.subcategoryId,
   expenseDomains: [],
   date: 'Dès le 12 mars 2020',
@@ -67,7 +68,7 @@ describe('VenueOfferTile component', () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(query!.state.data).toStrictEqual({
       accessibility: {},
-      category: { label: 'MUSIQUE', name: 'MUSIQUE' },
+      category: { label: 'MUSIQUE', name: undefined },
       description: '',
       expenseDomains: [],
       id: offerId,

@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum, OfferResponse } from 'api/gen'
+import { CategoryIdEnum, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
@@ -13,11 +13,12 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 import { IconWithCaption, OfferCategory } from '../atoms'
 import { getOfferPrices } from '../services/getOfferPrice'
 
-type Props = { category: CategoryNameEnum | null; label: string } & Pick<
+type Props = { categoryId: CategoryIdEnum | null; label: string } & Pick<
   OfferResponse,
   'stocks' | 'isDuo'
 >
-export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, label }) => {
+
+export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, categoryId, label }) => {
   const { isLoggedIn } = useAuthContext()
   const { data: profileInfo } = useUserProfileInfo()
   if (isLoggedIn && !profileInfo) return <React.Fragment></React.Fragment>
@@ -32,7 +33,7 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, la
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
-      <OfferCategory category={category} label={label} />
+      <OfferCategory categoryId={categoryId} label={label} />
       {!!showDuo && (
         <React.Fragment>
           <Separator />

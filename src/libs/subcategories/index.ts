@@ -1,2 +1,3 @@
+export { useCategoryId } from './useCategoryId'
 export { useSubcategory } from './useSubcategory'
-export { useSubcategoriesMapping } from './mappings'
+export { useCategoryIdMapping, useSubcategoriesMapping } from './mappings'

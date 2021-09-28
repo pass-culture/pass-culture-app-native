@@ -5,11 +5,11 @@ import styled from 'styled-components/native'
 
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
+import { useSubcategory } from 'libs/subcategories'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -25,10 +25,10 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance(_geoloc)
+  const { categoryId, appLabel } = useSubcategory(offer.subcategoryId)
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = +objectID
-  const categoryLabel = CATEGORY_CRITERIA[offer.category || 'ALL'].label
   const formattedDate = formatDates(timestampsInMillis)
 
   function handlePressOffer() {
@@ -39,7 +39,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
       mergeOfferData({
         ...offer,
         category: parseCategory(offer.category),
-        categoryName: offer.category,
+        categoryId,
         thumbUrl: offer.thumbUrl,
         isDuo: offer.isDuo,
         name: offer.name,
@@ -52,7 +52,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
 
   return (
     <Container onPress={handlePressOffer} testID="offerHit">
-      <OfferImage imageUrl={offer.thumbUrl} categoryName={hit.offer.category} />
+      <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
       <Spacer.Row numberOfSpaces={4} />
       <Column>
         <Row>
@@ -70,7 +70,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
           )}
         </Row>
         <Spacer.Column numberOfSpaces={1} />
-        <Body>{categoryLabel}</Body>
+        <Body>{appLabel}</Body>
         {!!formattedDate && <Body>{formattedDate}</Body>}
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>

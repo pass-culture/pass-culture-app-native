@@ -3,7 +3,7 @@ import React from 'react'
 import { QueryClient } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { CategoryNameEnum, OfferResponse, UserProfileResponse } from 'api/gen'
+import { CategoryIdEnum, OfferResponse, UserProfileResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -175,7 +175,7 @@ async function renderOfferIconCaptions({
         stocks={stocks ?? defaultBookableStocks}
         isDuo={isDuo}
         label="Abonnements concerts"
-        category={CategoryNameEnum.MUSIQUE}
+        categoryId={CategoryIdEnum.MUSIQUELIVE}
       />,
       setup
     )

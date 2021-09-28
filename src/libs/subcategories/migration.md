@@ -1,0 +1,39 @@
+1. Replace CategoryNameEnum by CategoryIdEnum
+
+```typescript
+// 12 categories
+export enum CategoryNameEnum {
+  CINEMA = 'CINEMA', // ok
+  CONFERENCE = 'CONFERENCE', // ok
+  INSTRUMENT = 'INSTRUMENT', // ok
+  JEUXVIDEO = 'JEUX_VIDEO', // JEU
+  FILM = 'FILM', // ok
+  LECON = 'LECON', // PRATIQUEART
+  LIVRE = 'LIVRE', // ok
+  MUSIQUE = 'MUSIQUE', // MUSIQUELIVE
+  PRESSE = 'PRESSE', // MEDIA
+  SPECTACLE = 'SPECTACLE', // ok
+  VISITE = 'VISITE', // MUSEE
+  MATERIELARTCREA = 'MATERIEL_ART_CREA', // BEAUXARTS
+}
+```
+
+```typescript
+// 14 subcategoryId
+export enum CategoryIdEnum {
+  BEAUXARTS = 'BEAUX_ARTS',
+  CINEMA = 'CINEMA',
+  CONFERENCE = 'CONFERENCE',
+  FILM = 'FILM',
+  INSTRUMENT = 'INSTRUMENT',
+  JEU = 'JEU',
+  LIVRE = 'LIVRE',
+  MEDIA = 'MEDIA',
+  MUSEE = 'MUSEE',
+  MUSIQUEENREGISTREE = 'MUSIQUE_ENREGISTREE',
+  MUSIQUELIVE = 'MUSIQUE_LIVE',
+  PRATIQUEART = 'PRATIQUE_ART',
+  SPECTACLE = 'SPECTACLE',
+  TECHNIQUE = 'TECHNIQUE',
+}
+```

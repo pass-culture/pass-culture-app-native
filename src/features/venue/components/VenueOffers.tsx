@@ -16,6 +16,7 @@ import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
+import { useCategoryIdMapping } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { LENGTH_L, MARGIN_DP, Spacer, Typo } from 'ui/theme'
 
@@ -36,6 +37,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const params = useVenueSearchParameters(venueId)
   const { hits = [], nbHits = 0 } = venueOffers || {}
+  const mapping = useCategoryIdMapping()
 
   const renderItem: ListRenderItem<SearchHit> = useCallback(
     ({ item }) => {
@@ -43,7 +45,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
       return (
         <VenueOfferTile
           category={parseCategory(item.offer.category)}
-          categoryName={item.offer.category}
+          categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}
           name={item.offer.name}

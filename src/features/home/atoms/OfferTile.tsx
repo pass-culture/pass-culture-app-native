@@ -5,7 +5,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import {
-  CategoryNameEnum,
+  CategoryIdEnum,
   ExpenseDomain,
   OfferResponse,
   OfferStockResponse,
@@ -23,7 +23,7 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface OfferTileProps {
   category: string
-  categoryName: CategoryNameEnum | null | undefined
+  categoryId: CategoryIdEnum | null | undefined
   subcategoryId: SubcategoryIdEnum
   distance?: string
   date?: string
@@ -39,7 +39,7 @@ interface OfferTileProps {
 
 type PartialOffer = Pick<
   OfferTileProps,
-  'category' | 'categoryName' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
+  'category' | 'categoryId' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
 >
 
 export const mergeOfferData = (offer: PartialOffer) => (
@@ -60,7 +60,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
   accessibility: {},
   category: {
     label: offer.category,
-    name: offer.categoryName || undefined,
+    name: undefined,
   } as OfferResponse['category'],
   subcategoryId: offer.subcategoryId,
   venue: { coordinates: {} } as OfferResponse['venue'],

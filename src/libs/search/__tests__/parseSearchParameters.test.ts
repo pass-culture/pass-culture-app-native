@@ -34,7 +34,7 @@ describe('src | components | parseSearchParameters', () => {
     const parsedParameters = result.current(parameters)
     expect(parsedParameters).toStrictEqual({
       ...defaultSearchParameters,
-      offerCategories: ['CINEMA', 'LECON', 'LIVRE'],
+      offerCategories: ['CINEMA', 'LIVRE', 'PRATIQUE_ART'],
     })
   })
 

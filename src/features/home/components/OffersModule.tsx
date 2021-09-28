@@ -13,6 +13,7 @@ import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
+import { useCategoryIdMapping } from 'libs/subcategories'
 import { ColorsEnum, LENGTH_L, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 
 import { Cover } from '../atoms/Cover'
@@ -34,6 +35,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { nbHits, display, search: parameters, position, index, isBeneficiary, hits } = props
   const { navigate } = useNavigation<UseNavigationType>()
   const parseSearchParameters = useParseSearchParameters()
+  const mapping = useCategoryIdMapping()
 
   const layoutHits = useLayoutHits(hits, display.layout)
   const moduleName = display.title || parameters.title
@@ -47,7 +49,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       return (
         <OfferTile
           category={parseCategory(item.offer.category)}
-          categoryName={item.offer.category}
+          categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}
           distance={formatDistance(item._geoloc, position)}

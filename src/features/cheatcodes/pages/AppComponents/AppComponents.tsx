@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum, VenueTypeCode } from 'api/gen/api'
+import { CategoryIdEnum, VenueTypeCode } from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
@@ -18,7 +18,7 @@ import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeil
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { mapCategoryToIcon, MAP_CATEGORY_TO_ICON } from 'libs/parsers'
+import { mapCategoryToIcon, MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner, BannerType } from 'ui/components/Banner'
@@ -296,7 +296,7 @@ export const AppComponents: FunctionComponent = () => {
       <AccordionItem title="Heros">
         <Typo.Title4>Default Hero - Offer</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <Hero imageUrl={undefined} type="offer" categoryName={CategoryNameEnum.CINEMA} />
+        <Hero imageUrl={undefined} type="offer" categoryId={CategoryIdEnum.CINEMA} />
         <Typo.Title4>Default Hero - Venue</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <Hero imageUrl={undefined} type="venue" venueType={VenueTypeCode.ARTISTICCOURSE} />
@@ -322,7 +322,7 @@ export const AppComponents: FunctionComponent = () => {
       {/* ImagePlaceholder */}
       <AccordionItem title="ImagePlaceholder">
         <ImagePlaceholder
-          Icon={MAP_CATEGORY_TO_ICON.MUSIQUE}
+          Icon={MAP_CATEGORY_ID_TO_ICON.FILM}
           size={getSpacing(24)}
           borderRadius={4}
         />
@@ -885,7 +885,7 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Ended booking Ticket </Text>
         </AlignedText>
         <AlignedText>
-          <EndedBookingTicket offerCategory={CategoryNameEnum.CINEMA} />
+          <EndedBookingTicket categoryId={CategoryIdEnum.CINEMA} />
           <Text> - Ended booking Ticket without image </Text>
         </AlignedText>
         <AlignedText>
@@ -945,15 +945,15 @@ const CategoryIcons = () => {
   return (
     <React.Fragment>
       <Text>{'Categories'}</Text>
-      {[...Object.values(CategoryNameEnum), null].map((category: string | null) => {
-        const Icon = mapCategoryToIcon(category as CategoryNameEnum | null)
+      {[...Object.values(CategoryIdEnum), null].map((categoryId: string | null) => {
+        const Icon = mapCategoryToIcon(categoryId as CategoryIdEnum | null)
         const BicolorIcon =
-          category && category in CATEGORY_CRITERIA
-            ? CATEGORY_CRITERIA[category as CategoryNameEnum].icon
+          categoryId && categoryId in CATEGORY_CRITERIA
+            ? CATEGORY_CRITERIA[categoryId as CategoryIdEnum].icon
             : CATEGORY_CRITERIA['ALL'].icon
 
         return (
-          <AlignedText key={category || "ŒUVRE D'ART"}>
+          <AlignedText key={categoryId || "ŒUVRE D'ART"}>
             <Icon size={ICON_SIZE} color={ColorsEnum.GREY_DARK} />
             <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.PRIMARY} />
             <BicolorIcon
@@ -961,7 +961,7 @@ const CategoryIcons = () => {
               color={ColorsEnum.PRIMARY}
               color2={ColorsEnum.SECONDARY}
             />
-            <Text> - {category || "ŒUVRE D'ART / TOUTES"} </Text>
+            <Text> - {categoryId || "ŒUVRE D'ART / TOUTES"} </Text>
           </AlignedText>
         )
       })}

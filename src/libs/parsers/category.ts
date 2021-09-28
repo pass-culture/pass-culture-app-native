@@ -1,4 +1,4 @@
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryIdEnum, CategoryNameEnum } from 'api/gen'
 import { Category } from 'ui/svg/icons/categories'
 import { IconInterface } from 'ui/svg/icons/types'
 
@@ -26,25 +26,26 @@ export const parseCategory = (category: CategoryNameEnum | null | undefined): st
   return DEFAULT_CATEGORY || ''
 }
 
-// Map the facetFilter (in algolia) to the category Icon
-export const MAP_CATEGORY_TO_ICON: {
-  [k in CategoryNameEnum]: React.FC<IconInterface>
+export const MAP_CATEGORY_ID_TO_ICON: {
+  [k in CategoryIdEnum]: React.FC<IconInterface>
 } = {
-  CINEMA: Category.Cinema,
-  VISITE: Category.Exposition,
-  MUSIQUE: Category.Musique,
-  SPECTACLE: Category.Spectacles,
-  LECON: Category.Atelier,
-  LIVRE: Category.Book,
-  FILM: Category.Streaming,
-  PRESSE: Category.Presse,
-  JEUX_VIDEO: Category.VideoGames,
-  CONFERENCE: Category.Conference,
-  INSTRUMENT: Category.Instrument,
-  MATERIEL_ART_CREA: Category.ArtsMaterial,
+  [CategoryIdEnum.CINEMA]: Category.Cinema,
+  [CategoryIdEnum.MUSEE]: Category.Exposition,
+  [CategoryIdEnum.MUSIQUELIVE]: Category.Musique,
+  [CategoryIdEnum.MUSIQUEENREGISTREE]: Category.Musique,
+  [CategoryIdEnum.SPECTACLE]: Category.Spectacles,
+  [CategoryIdEnum.PRATIQUEART]: Category.Atelier,
+  [CategoryIdEnum.LIVRE]: Category.Book,
+  [CategoryIdEnum.FILM]: Category.Streaming,
+  [CategoryIdEnum.MEDIA]: Category.Presse,
+  [CategoryIdEnum.JEU]: Category.VideoGames,
+  [CategoryIdEnum.CONFERENCE]: Category.Conference,
+  [CategoryIdEnum.INSTRUMENT]: Category.Instrument,
+  [CategoryIdEnum.BEAUXARTS]: Category.ArtsMaterial,
+  [CategoryIdEnum.TECHNIQUE]: Category.Artwork,
 }
 
-export const mapCategoryToIcon = (category: CategoryNameEnum | null): React.FC<IconInterface> => {
-  if (category && category in MAP_CATEGORY_TO_ICON) return MAP_CATEGORY_TO_ICON[category]
+export const mapCategoryToIcon = (id: CategoryIdEnum | null): React.FC<IconInterface> => {
+  if (id && id in MAP_CATEGORY_ID_TO_ICON) return MAP_CATEGORY_ID_TO_ICON[id]
   return Category.Artwork
 }
