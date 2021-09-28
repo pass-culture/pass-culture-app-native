@@ -27,8 +27,15 @@ describe('useOffer', () => {
     ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${''}        | ${'Paris'}   | ${false}        | ${'Pathé beaugrenelle, 2 rue des champs, Paris'}
     ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${true}         | ${'2 rue des champs, 75015 Paris'}
     ${'Pathé beaugrenelle'} | ${undefined}    | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${true}         | ${'2 rue des champs, 75015 Paris'}
+    ${'Pathé beaugrenelle'} | ${''}           | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${true}         | ${'2 rue des champs, 75015 Paris'}
     ${undefined}            | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${true}         | ${'2 rue des champs, 75015 Paris'}
+    ${''}                   | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${true}         | ${'2 rue des champs, 75015 Paris'}
     ${undefined}            | ${undefined}    | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${true}         | ${'2 rue des champs, 75015 Paris'}
+    ${''}                   | ${''}           | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${true}         | ${'2 rue des champs, 75015 Paris'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${undefined} | ${'Paris'}   | ${true}         | ${'2 rue des champs, Paris'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${''}        | ${'Paris'}   | ${true}         | ${'2 rue des champs, Paris'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${undefined} | ${true}         | ${'2 rue des champs, 75015'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${''}        | ${true}         | ${'2 rue des champs, 75015'}
   `(
     'should format correctly full address',
     ({ publicName, name, address, postalCode, city, showVenueBanner, expectedResult }) => {
