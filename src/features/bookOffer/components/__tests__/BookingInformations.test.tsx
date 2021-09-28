@@ -10,7 +10,8 @@ import { BookingInformations } from '../BookingInformations'
 
 jest.mock('react-query')
 jest.mock('features/auth/settings')
-jest.mock('../../pages/BookingOfferWrapper')
+jest.mock('features/bookOffer/pages/BookingOfferWrapper')
+jest.mock('libs/address/useFormatFullAddress')
 const mockedUseBooking = mocked(useBooking)
 const mockedUseBookingOffer = mocked(useBookingOffer)
 const mockedUseBookingStock = mocked(useBookingStock)

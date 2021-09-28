@@ -13,9 +13,9 @@ export const useBooking = jest.fn().mockReturnValue({
 export const useBookingOffer = jest.fn().mockReturnValue({
   category: {},
   isDigital: false,
-  fullAddress: 'mon adresse',
   name: 'mon nom',
   stocks: [],
+  venue: {},
 })
 
 export const useBookingStock = jest.fn().mockReturnValue({
