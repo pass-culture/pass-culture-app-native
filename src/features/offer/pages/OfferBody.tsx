@@ -12,6 +12,7 @@ import { useReportedOffers } from 'features/offer/services/useReportedOffers'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -53,14 +54,15 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
 
-  const showVenueBanner = true
+  // TODO (Lucasbeneston): Remove testing condition when display the link to venue button
+  const addressWithoutVenueName = true && env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING
   const fullAddress = formatFullAddress(
     venue.publicName,
     venue.name,
     venue.address,
     venue.postalCode,
     venue.city,
-    showVenueBanner
+    addressWithoutVenueName
   )
 
   const dates = offerResponse.stocks.reduce<Date[]>(
