@@ -32,7 +32,7 @@ describe('LegalNotices', () => {
     const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
     const { getByTestId } = await renderProfile()
 
-    const row = getByTestId('row-cgu')
+    const row = getByTestId('Conditions Générales d’Utilisation')
     fireEvent.click(row)
 
     expect(openExternalUrl).toBeCalledWith(env.CGU_LINK)
@@ -41,7 +41,7 @@ describe('LegalNotices', () => {
     const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
     const { getByTestId } = await renderProfile()
 
-    const row = getByTestId('row-data-privacy-chart')
+    const row = getByTestId('Charte de protection des données personnelles')
     fireEvent.click(row)
 
     expect(openExternalUrl).toBeCalledWith(env.DATA_PRIVACY_CHART_LINK)
@@ -49,7 +49,7 @@ describe('LegalNotices', () => {
   it('should redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     const { getByTestId } = await renderProfile()
 
-    const row = getByTestId('row-account-deletion')
+    const row = getByTestId('Suppression du compte')
     fireEvent.click(row)
 
     expect(navigate).toBeCalledWith('ConfirmDeleteProfile')

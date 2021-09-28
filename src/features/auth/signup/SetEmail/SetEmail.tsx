@@ -106,7 +106,7 @@ export const SetEmail: FunctionComponent = () => {
               ref={emailInput}
               textContentType="emailAddress"
               value={email}
-              {...accessibilityAndTestId("Entrée pour l'email")}
+              {...accessibilityAndTestId(t`Entrée pour l'email`)}
             />
             <InputError
               visible={hasError}

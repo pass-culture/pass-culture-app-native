@@ -12,7 +12,7 @@ describe('SectionRow', () => {
       const { getByTestId } = render(
         <SectionRow type="clickable" title="just clickable" icon={Close} onPress={method} />
       )
-      const touchable = getByTestId('section-row-touchable')
+      const touchable = getByTestId('just clickable')
 
       fireEvent.press(touchable)
       expect(method).toBeCalled()

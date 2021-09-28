@@ -129,7 +129,6 @@ export const Profile: React.FC = () => {
                 onPress={() => navigate('PersonalData')}
                 icon={ProfileIcon}
                 style={styles.row}
-                testID="row-personal-data"
               />
               <Row
                 title={t`Mot de passe`}
@@ -137,7 +136,6 @@ export const Profile: React.FC = () => {
                 onPress={() => navigate('ChangePassword')}
                 icon={Lock}
                 style={styles.row}
-                testID="row-password"
               />
             </React.Fragment>
           )}
@@ -147,7 +145,6 @@ export const Profile: React.FC = () => {
             icon={Bell}
             onPress={() => navigate('NotificationSettings')}
             style={styles.row}
-            testID="row-notifications"
           />
           <SectionRow
             type="clickable"
@@ -164,7 +161,6 @@ export const Profile: React.FC = () => {
                 testID="geolocation"
               />
             }
-            testID="row-geolocation"
           />
           {!!positionError && (
             <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
@@ -177,7 +173,6 @@ export const Profile: React.FC = () => {
             onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
             icon={LifeBuoy}
             style={styles.row}
-            testID="row-how-it-works"
           />
           <Row
             title={t`Questions fréquentes`}
@@ -185,7 +180,6 @@ export const Profile: React.FC = () => {
             onPress={() => openExternalUrl(env.FAQ_LINK)}
             icon={ExternalSite}
             style={styles.row}
-            testID="row-faq"
           />
           {Platform.OS !== 'web' && (
             <Row
@@ -194,7 +188,6 @@ export const Profile: React.FC = () => {
               onPress={() => navigate('DeeplinkImporter')}
               icon={LifeBuoy}
               style={styles.row}
-              testID="row-import-deeplink"
             />
           )}
         </ProfileSection>
@@ -205,7 +198,6 @@ export const Profile: React.FC = () => {
             onPress={() => openExternalUrl(env.ACCESSIBILITY_LINK)}
             icon={ExternalSite}
             style={styles.row}
-            testID="row-accessibility"
           />
           <Row
             title={t`Mentions légales`}
@@ -213,7 +205,6 @@ export const Profile: React.FC = () => {
             onPress={() => navigate('LegalNotices')}
             icon={LegalNotices}
             style={styles.row}
-            testID="row-legal-notices"
           />
           <Row
             title={t`Confidentialité`}
@@ -221,7 +212,6 @@ export const Profile: React.FC = () => {
             onPress={() => navigate('ConsentSettings')}
             icon={Confidentiality}
             style={styles.row}
-            testID="row-confidentiality"
           />
         </ProfileSection>
         <ProfileSection title={t`Suivre pass Culture`}>

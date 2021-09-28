@@ -100,7 +100,7 @@ describe('Profile component', () => {
     it('should navigate when the personal data row is clicked', async () => {
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('row-personal-data')
+      const row = getByTestId('Informations personnelles')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('PersonalData')
@@ -109,7 +109,7 @@ describe('Profile component', () => {
     it('should navigate when the password row is clicked', async () => {
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('row-password')
+      const row = getByTestId('Mot de passe')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('ChangePassword')
@@ -166,7 +166,7 @@ describe('Profile component', () => {
     it('should navigate when the notifications row is clicked', async () => {
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('row-notifications')
+      const row = getByTestId('Notifications')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('NotificationSettings')
@@ -177,7 +177,7 @@ describe('Profile component', () => {
     it('should navigate when the how-it-works row is clicked', async () => {
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('row-how-it-works')
+      const row = getByTestId('Comment ça marche ?')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('FirstTutorial', { shouldCloseAppOnBackAction: false })
@@ -187,7 +187,7 @@ describe('Profile component', () => {
       const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('row-faq')
+      const row = getByTestId('Questions fréquentes')
       fireEvent.press(row)
 
       expect(openExternalUrl).toBeCalledWith(env.FAQ_LINK)
@@ -195,7 +195,7 @@ describe('Profile component', () => {
     it('should navigate when the how-import-deeplink row is clicked', async () => {
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('row-import-deeplink')
+      const row = getByTestId('Problèmes pour ouvrir un lien ?')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('DeeplinkImporter')
@@ -207,7 +207,7 @@ describe('Profile component', () => {
       const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('row-accessibility')
+      const row = getByTestId('Accessibilité')
       fireEvent.press(row)
 
       expect(openExternalUrl).toBeCalledWith(env.ACCESSIBILITY_LINK)
@@ -216,7 +216,7 @@ describe('Profile component', () => {
     it('should navigate when the legal notices row is clicked', async () => {
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('row-legal-notices')
+      const row = getByTestId('Mentions légales')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('LegalNotices')
@@ -225,7 +225,7 @@ describe('Profile component', () => {
     it('should navigate when the confidentiality row is clicked', async () => {
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('row-confidentiality')
+      const row = getByTestId('Confidentialité')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('ConsentSettings')

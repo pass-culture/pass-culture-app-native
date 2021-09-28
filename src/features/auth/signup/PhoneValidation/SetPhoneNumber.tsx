@@ -19,6 +19,7 @@ import { useSafeState } from 'libs/hooks'
 import { MonitoringError } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
+import { accessibilityAndTestId } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -190,6 +191,7 @@ export const SetPhoneNumber = memo(() => {
               onChangeText={onChangeText}
               placeholder={t`6 12 34 56 78`}
               textContentType="telephoneNumber"
+              {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
             />
           </PhoneNumberInput>
           {invalidPhoneNumberMessage ? (

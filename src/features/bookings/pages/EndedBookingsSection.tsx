@@ -33,7 +33,6 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
           title={endedBookingsLabel}
           icon={() => <Badge label={endedBookings.length} />}
           onPress={() => navigate('EndedBookings')}
-          testID="row-ended-bookings"
         />
       </EndedBookingsSectionWrapper>
     </React.Fragment>

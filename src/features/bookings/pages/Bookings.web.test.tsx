@@ -45,7 +45,8 @@ describe.skip('Bookings', () => {
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {
     const { getByTestId } = renderBookings(bookingsSnap)
 
-    fireEvent.click(getByTestId('row-ended-bookings'))
+    const cta = getByTestId('Réservation terminée')
+    fireEvent.click(cta)
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('EndedBookings')
     })

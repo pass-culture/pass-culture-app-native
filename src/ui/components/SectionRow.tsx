@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { accessibilityAndTestId } from 'tests/utils'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Typo, Spacer } from 'ui/theme'
@@ -9,11 +10,11 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type SectionRowProps = {
   title: string
+  accessibilityLabel?: string
   renderTitle?: (title: string) => JSX.Element
   ctaIconSize?: number
   icon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>
-  testID?: string
   numberOfLines?: number
 } & (
   | {
@@ -37,11 +38,12 @@ export function SectionRow(props: SectionRowProps) {
     <Typo.ButtonText numberOfLines={numberOfLines}>{props.title}</Typo.ButtonText>
   )
 
+  const accessibilityLabel = props.accessibilityLabel || props.title
   return (
     <TouchableOpacity
       activeOpacity={props.onPress ? ACTIVE_OPACITY : 1}
       onPress={props.onPress}
-      testID={props.testID ? props.testID : 'section-row-touchable'}>
+      {...accessibilityAndTestId(accessibilityLabel)}>
       <View style={[styles.container, props.style]}>
         {!!Icon && (
           <React.Fragment>
