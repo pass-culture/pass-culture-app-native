@@ -5,7 +5,7 @@ import { ScrollView, ViewStyle } from 'react-native'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum } from 'api/gen'
+import { SearchGroupNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
@@ -25,8 +25,11 @@ export const SearchLandingPage: React.FC = () => {
   const { locationType } = locationFilter
   const [searchCategory] = offerCategories
 
-  const selectedCategory = searchCategory in availableCategories ? searchCategory : null
-  const { icon: Icon, label } = CATEGORY_CRITERIA[(selectedCategory as CategoryIdEnum) || 'ALL']
+  const selectedCategory =
+    searchCategory in availableCategories
+      ? (searchCategory as SearchGroupNameEnum)
+      : SearchGroupNameEnum.NONE
+  const { icon: Icon, label } = CATEGORY_CRITERIA[selectedCategory]
 
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType

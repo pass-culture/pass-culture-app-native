@@ -5,45 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -75,16 +75,16 @@
-                },
-              ]
-            }
-          />
-          <Text
--           color=\\"#151515\\"
-+           color=\\"#eb0055\\"
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
--                 \\"color\\": \\"#151515\\",
-+                 \\"color\\": \\"#eb0055\\",
-                  \\"fontFamily\\": \\"Montserrat-Bold\\",
-                  \\"fontSize\\": 15,
-                  \\"lineHeight\\": 20,
-                },
-              ]
-@@ -101,10 +101,18 @@
-                  \\"flexShrink\\": 1,
-                },
-              ]
-            }
-          />
-+         <View
-+           height={32}
-+           width={32}
-+         >
-+           <Text>
-+             undefined-SVG-Mock
-+           </Text>
-+         </View>
-        </View>
-        <View
-          accessible={true}
-          focusable={true}
-          onClick={[Function onClick]}
-@@ -151,16 +159,16 @@
+@@ -151,16 +151,16 @@
                 },
               ]
             }
@@ -62,7 +24,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -177,18 +185,10 @@
+@@ -177,18 +177,10 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -132,7 +94,7 @@ Array [
             "opacity": 1,
           }
         }
-        testID="ALL"
+        testID="NONE"
       >
         <View
           numberOfSpaces={4}
@@ -163,12 +125,12 @@ Array [
           }
         />
         <Text
-          color="#eb0055"
+          color="#151515"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#eb0055",
+                "color": "#151515",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -189,14 +151,6 @@ Array [
             ]
           }
         />
-        <View
-          height={32}
-          width={32}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
       </View>
       <View
         accessible={true}
@@ -520,7 +474,7 @@ Array [
             "opacity": 1,
           }
         }
-        testID="LECON"
+        testID="COURS"
       >
         <View
           numberOfSpaces={4}
@@ -824,7 +778,7 @@ Array [
             "opacity": 1,
           }
         }
-        testID="JEUX_VIDEO"
+        testID="JEU"
       >
         <View
           numberOfSpaces={4}
@@ -1052,7 +1006,7 @@ Array [
             "opacity": 1,
           }
         }
-        testID="MATERIEL_ART_CREA"
+        testID="MATERIEL"
       >
         <View
           numberOfSpaces={4}

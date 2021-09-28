@@ -1,8 +1,8 @@
-import { OptionalCategoryCriteria } from 'features/search/enums'
+import { CategoryCriteria } from 'features/search/enums'
 
 export const filterAvailableCategories = (
   selectedCategories: string[],
-  availableCategories: OptionalCategoryCriteria
+  availableCategories: Partial<CategoryCriteria>
 ): string[] => {
   const availableFilters = Object.values(availableCategories).map(({ facetFilter }) => facetFilter)
   return availableFilters

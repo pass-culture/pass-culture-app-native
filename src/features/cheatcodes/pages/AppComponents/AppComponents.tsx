@@ -18,7 +18,7 @@ import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeil
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { mapCategoryToIcon, MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
+import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner, BannerType } from 'ui/components/Banner'
@@ -945,26 +945,13 @@ const CategoryIcons = () => {
   return (
     <React.Fragment>
       <Text>{'Categories'}</Text>
-      {[...Object.values(CategoryIdEnum), null].map((categoryId: string | null) => {
-        const Icon = mapCategoryToIcon(categoryId as CategoryIdEnum | null)
-        const BicolorIcon =
-          categoryId && categoryId in CATEGORY_CRITERIA
-            ? CATEGORY_CRITERIA[categoryId as CategoryIdEnum].icon
-            : CATEGORY_CRITERIA['ALL'].icon
-
-        return (
-          <AlignedText key={categoryId || "ŒUVRE D'ART"}>
-            <Icon size={ICON_SIZE} color={ColorsEnum.GREY_DARK} />
-            <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.PRIMARY} />
-            <BicolorIcon
-              size={ICON_SIZE}
-              color={ColorsEnum.PRIMARY}
-              color2={ColorsEnum.SECONDARY}
-            />
-            <Text> - {categoryId || "ŒUVRE D'ART / TOUTES"} </Text>
-          </AlignedText>
-        )
-      })}
+      {Object.entries(CATEGORY_CRITERIA).map(([searchGroup, { label, icon: BicolorIcon }]) => (
+        <AlignedText key={searchGroup}>
+          <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.PRIMARY} />
+          <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
+          <Text> - {label || 'TOUTES'} </Text>
+        </AlignedText>
+      ))}
       <Text>{'\n'}</Text>
     </React.Fragment>
   )

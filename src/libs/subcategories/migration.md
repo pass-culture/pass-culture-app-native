@@ -37,3 +37,57 @@ export enum CategoryIdEnum {
   TECHNIQUE = 'TECHNIQUE',
 }
 ```
+
+2. Do not fetch category from algolia/app search
+3. Use Search group names for search and filters
+
+```typescript
+// 12 categories
+export enum CategoryNameEnum {
+  CINEMA = 'CINEMA', // CINEMA
+  CONFERENCE = 'CONFERENCE', // CONFERENCE
+  INSTRUMENT = 'INSTRUMENT', // INSTRUMENT
+  JEUXVIDEO = 'JEUX_VIDEO', // JEU
+  FILM = 'FILM', // FILM
+  LECON = 'LECON', // COURS
+  LIVRE = 'LIVRE', // LIVRE
+  MUSIQUE = 'MUSIQUE', // MUSIQUE
+  PRESSE = 'PRESSE', // PRESSE
+  SPECTACLE = 'SPECTACLE', // SPECTACLE
+  VISITE = 'VISITE', // VISITE
+  MATERIELARTCREA = 'MATERIEL_ART_CREA', // MATERIEL
+}
+
+// 12 + 1 search groups
+export enum SearchGroupNameEnum {
+  FILM = 'FILM',
+  CINEMA = 'CINEMA',
+  CONFERENCE = 'CONFERENCE',
+  JEU = 'JEU',
+  LIVRE = 'LIVRE',
+  VISITE = 'VISITE',
+  MUSIQUE = 'MUSIQUE',
+  COURS = 'COURS',
+  PRESSE = 'PRESSE',
+  SPECTACLE = 'SPECTACLE',
+  INSTRUMENT = 'INSTRUMENT',
+  MATERIEL = 'MATERIEL',
+  NONE = 'NONE',
+}
+
+const LABEL_MAPPING = {
+  [SearchGroupNameEnum.CINEMA]: 'Cinéma',
+  [SearchGroupNameEnum.FILM]: 'Films, séries',
+  [SearchGroupNameEnum.CONFERENCE]: 'Conférences, rencontres',
+  [SearchGroupNameEnum.JEU]: 'Jeux',
+  [SearchGroupNameEnum.LIVRE]: 'Livre',
+  [SearchGroupNameEnum.VISITE]: 'Visite, exposition',
+  [SearchGroupNameEnum.MUSIQUE]: 'Musique',
+  [SearchGroupNameEnum.COURS]: 'Cours, ateliers',
+  [SearchGroupNameEnum.PRESSE]: 'Presse, médias',
+  [SearchGroupNameEnum.SPECTACLE]: 'Spectacles',
+  [SearchGroupNameEnum.INSTRUMENT]: 'Instruments de musique',
+  [SearchGroupNameEnum.MATERIEL]: 'Beaux-Arts',
+  [SearchGroupNameEnum.NONE]: null,
+}
+```
