@@ -1,6 +1,11 @@
 import { useMemo } from 'react'
 
-import { CategoryIdMapping, SubcategoriesMapping } from 'libs/subcategories/types'
+import {
+  CategoryHomeLabelMapping,
+  CategoryIdMapping,
+  HomeLabelMapping,
+  SubcategoriesMapping,
+} from 'libs/subcategories/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
 export const useSubcategoriesMapping = (): SubcategoriesMapping => {
@@ -28,4 +33,31 @@ export const useCategoryIdMapping = (): CategoryIdMapping => {
     })
     return mapping
   }, [subcategories.length])
+}
+
+export const useHomeLabelMapping = (): HomeLabelMapping => {
+  const { data } = useSubcategories()
+  const { homepageLabels = [] } = data || {}
+
+  return useMemo(() => {
+    const mapping = {} as HomeLabelMapping
+    homepageLabels.forEach((curr) => {
+      mapping[curr.name] = curr.value || null
+    })
+    return mapping
+  }, [homepageLabels.length])
+}
+
+export const useCategoryHomeLabelMapping = (): CategoryHomeLabelMapping => {
+  const homeLabelMapping = useHomeLabelMapping()
+  const { data } = useSubcategories()
+  const { subcategories = [] } = data || {}
+
+  return useMemo(() => {
+    const mapping = {} as CategoryHomeLabelMapping
+    subcategories.forEach((curr) => {
+      mapping[curr.id] = homeLabelMapping[curr.homepageLabelName]
+    })
+    return mapping
+  }, [subcategories.length, homeLabelMapping])
 }

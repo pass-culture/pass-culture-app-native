@@ -13,7 +13,7 @@ const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
 
 const props = {
-  category: offer.category || '',
+  categoryLabel: offer.category || '',
   categoryId: CategoryIdEnum.MUSIQUELIVE,
   subcategoryId: offer.subcategoryId,
   expenseDomains: [],
@@ -69,7 +69,7 @@ describe('OfferTile component', () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(query!.state.data).toStrictEqual({
       accessibility: {},
-      category: { label: 'MUSIQUE', name: undefined },
+      category: { label: '', name: undefined },
       description: '',
       expenseDomains: [],
       id: offerId,

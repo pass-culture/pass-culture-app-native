@@ -7,7 +7,7 @@ import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
-import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
+import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -38,7 +38,6 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
       ['offer', offerId],
       mergeOfferData({
         ...offer,
-        category: parseCategory(offer.category),
         categoryId,
         thumbUrl: offer.thumbUrl,
         isDuo: offer.isDuo,

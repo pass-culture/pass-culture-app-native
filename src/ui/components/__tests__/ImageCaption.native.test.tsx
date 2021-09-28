@@ -5,7 +5,7 @@ import { render } from 'tests/utils'
 import { ImageCaption } from '../ImageCaption'
 
 const props = {
-  category: 'Musique',
+  categoryLabel: 'Musique',
   distance: '1,2km',
   imageWidth: 50,
 }

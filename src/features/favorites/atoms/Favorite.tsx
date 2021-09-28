@@ -6,19 +6,14 @@ import { useWindowDimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import {
-  FavoriteOfferResponse,
-  FavoriteResponse,
-  SubcategoryIdEnum,
-  UserProfileResponse,
-} from 'api/gen'
+import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
 import { useRemoveFavorite } from 'features/favorites/pages/useFavorites'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { Credit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferImage } from 'features/search/atoms/OfferImage'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
-import { formatToFrenchDate, getFavoriteDisplayPrice, parseCategory } from 'libs/parsers'
+import { formatToFrenchDate, getFavoriteDisplayPrice } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -79,9 +74,7 @@ export const Favorite: React.FC<Props> = (props) => {
       ['offer', offer.id],
       mergeOfferData({
         ...offer,
-        category: parseCategory(offer.category.name),
         categoryId,
-        subcategoryId: offer.subcategoryId as SubcategoryIdEnum,
         thumbUrl: offer.image?.url,
         name: offer.name,
         offerId: offer.id,

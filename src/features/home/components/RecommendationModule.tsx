@@ -13,9 +13,10 @@ import { useLayoutHits } from 'features/home/hooks/useLayoutHits'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
-import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
+import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { useCategoryIdMapping } from 'libs/subcategories'
+import { useCategoryHomeLabelMapping } from 'libs/subcategories/mappings'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 type RecommendationModuleProps = {
@@ -30,6 +31,7 @@ type RecommendationModuleProps = {
 export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { display, isBeneficiary, position, index, setRecommendationY, hits } = props
   const mapping = useCategoryIdMapping()
+  const labelMapping = useCategoryHomeLabelMapping()
 
   const layoutHits = useLayoutHits(hits, display.layout)
 
@@ -46,7 +48,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
       return (
         <Row key={hit.objectID}>
           <OfferTile
-            category={parseCategory(hit.offer.category)}
+            categoryLabel={labelMapping[hit.offer.subcategoryId]}
             categoryId={mapping[hit.offer.subcategoryId]}
             subcategoryId={hit.offer.subcategoryId}
             offerId={+hit.objectID}

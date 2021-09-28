@@ -11,9 +11,10 @@ import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
-import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
+import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { useCategoryIdMapping } from 'libs/subcategories'
+import { useCategoryHomeLabelMapping } from 'libs/subcategories/mappings'
 import { ColorsEnum, LENGTH_L, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 
 import { Cover } from '../atoms/Cover'
@@ -36,6 +37,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const parseSearchParameters = useParseSearchParameters()
   const mapping = useCategoryIdMapping()
+  const labelMapping = useCategoryHomeLabelMapping()
 
   const layoutHits = useLayoutHits(hits, display.layout)
   const moduleName = display.title || parameters.title
@@ -48,7 +50,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <OfferTile
-          category={parseCategory(item.offer.category)}
+          categoryLabel={labelMapping[item.offer.subcategoryId]}
           categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}
