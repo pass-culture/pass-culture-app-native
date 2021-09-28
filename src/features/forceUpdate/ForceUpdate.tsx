@@ -1,12 +1,9 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
-import { homeNavigateConfig, openExternalUrl } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { openExternalUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { Background } from 'ui/svg/Background'
@@ -45,17 +42,6 @@ const buttonText = Platform.select({
 })
 
 export const ForceUpdate = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const mustUpdateApp = useMustUpdateApp()
-
-  useFocusEffect(
-    useCallback(() => {
-      if (!mustUpdateApp) {
-        navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
-      }
-    }, [mustUpdateApp])
-  )
-
   return (
     <Container>
       <Background />
