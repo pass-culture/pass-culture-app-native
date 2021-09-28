@@ -7,7 +7,7 @@ import { CategoryIdEnum, OfferResponse, UserProfileResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, waitFor } from 'tests/utils/web'
+import { render, waitFor } from 'tests/utils'
 
 import { OfferIconCaptions } from '../OfferIconCaptions'
 

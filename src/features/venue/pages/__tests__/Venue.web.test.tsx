@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { render, waitFor } from 'tests/utils/web'
+import { render, waitFor } from 'tests/utils'
 
 import { Venue } from '../Venue'
 

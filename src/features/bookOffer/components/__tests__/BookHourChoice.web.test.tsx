@@ -4,7 +4,7 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { BookHourChoice } from '../BookHourChoice'
 

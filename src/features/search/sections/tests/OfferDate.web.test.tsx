@@ -3,7 +3,7 @@ import React from 'react'
 
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { OfferDate } from '../OfferDate'
 

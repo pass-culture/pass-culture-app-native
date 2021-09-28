@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { reset } from '__mocks__/@react-navigation/native'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 
 import { GenericAchievement, Props, onRemoveScreenAction } from './GenericAchievement'

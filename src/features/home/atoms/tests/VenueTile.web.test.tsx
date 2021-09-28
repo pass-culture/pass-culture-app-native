@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { mockedSearchResponse } from 'libs/search/fixtures/mockedSearchResponse'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { VenueTile, VenueTileProps } from '../VenueTile'
 

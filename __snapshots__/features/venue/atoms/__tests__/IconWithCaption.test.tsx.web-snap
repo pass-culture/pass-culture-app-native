@@ -1,75 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IconWithCaption should render correctly 1`] = `
-<div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "WebkitAlignItems": "center",
-      "WebkitBoxAlign": "center",
-      "WebkitBoxFlex": 1,
-      "WebkitFlexBasis": "0px",
-      "WebkitFlexGrow": 1,
-      "WebkitFlexShrink": 1,
-      "alignItems": "center",
-      "flexBasis": "0px",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "msFlexAlign": "center",
-      "msFlexNegative": 1,
-      "msFlexPositive": 1,
-      "msFlexPreferredSize": "0px",
-    }
-  }
->
+<DocumentFragment>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "paddingBottom": "4px",
-        "paddingLeft": "4px",
-        "paddingRight": "4px",
-        "paddingTop": "4px",
-      }
-    }
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
     <div
-      className="css-view-1dbjc4n"
-      data-testid="Cinéma - Salle de projections"
+      class="css-view-1dbjc4n"
+      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
     >
       <div
-        className="css-text-901oao"
-        dir="auto"
+        class="css-view-1dbjc4n"
+        style="padding: 4px 4px 4px 4px;"
       >
-        Cinéma - Salle de projections-SVG-Mock
+        <div
+          class="css-view-1dbjc4n"
+          data-testid="Cinéma - Salle de projections"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+          >
+            Cinéma - Salle de projections-SVG-Mock
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 4px;"
+      />
+      <div
+        class="css-text-901oao"
+        data-testid="caption-Cinéma - Salle de projections"
+        dir="auto"
+        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+      >
+        Cinéma - Salle de projections
       </div>
     </div>
   </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "4px",
-      }
-    }
-  />
-  <div
-    className="css-text-901oao"
-    data-testid="caption-Cinéma - Salle de projections"
-    dir="auto"
-    style={
-      Object {
-        "color": "rgba(21,21,21,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
-        "textAlign": "center",
-      }
-    }
-  >
-    Cinéma - Salle de projections
-  </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`IconWithCaption should render different when isDisabled is true 1`] = `
@@ -77,17 +48,17 @@ exports[`IconWithCaption should render different when isDisabled is true 1`] = `
 - First value
 + Second value
 
-@@ -53,11 +53,11 @@
-      className=\\"css-text-901oao\\"
-      data-testid=\\"caption-undefined\\"
-      dir=\\"auto\\"
-      style={
-        Object {
--         \\"color\\": \\"rgba(21,21,21,1.00)\\",
-+         \\"color\\": \\"rgba(98,98,98,1.00)\\",
-          \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-          \\"fontSize\\": \\"12px\\",
-          \\"lineHeight\\": \\"16px\\",
-          \\"textAlign\\": \\"center\\",
-        }"
+@@ -28,11 +28,11 @@
+        />
+        <div
+          class=\\"css-text-901oao\\"
+          data-testid=\\"caption-undefined\\"
+          dir=\\"auto\\"
+-         style=\\"color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;\\"
++         style=\\"color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;\\"
+        >
+          Cinéma - Salle de projections
+        </div>
+      </div>
+    </div>"
 `;

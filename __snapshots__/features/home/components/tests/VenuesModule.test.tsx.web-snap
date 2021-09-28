@@ -1,724 +1,315 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VenuesModule component should render correctly 1`] = `
-Array [
+<DocumentFragment>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "marginLeft": "24px",
-        "marginRight": "24px",
-      }
-    }
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
     <div
-      className="css-text-901oao css-textMultiLine-cens5h"
-      data-testid="moduleTitle"
-      dir="auto"
-      style={
-        Object {
-          "WebkitLineClamp": 2,
-          "color": "rgba(21,21,21,1.00)",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": "20px",
-          "lineHeight": "24px",
-        }
-      }
+      class="css-view-1dbjc4n"
+      style="margin-right: 24px; margin-left: 24px;"
     >
-      Module title
+      <div
+        class="css-text-901oao css-textMultiLine-cens5h"
+        data-testid="moduleTitle"
+        dir="auto"
+        style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
+      >
+        Module title
+      </div>
     </div>
-  </div>,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "16px",
-      }
-    }
-  />,
-  <div
-    className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-    data-testid="VenuesModuleList"
-    onScroll={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    onWheel={[Function]}
-    style={
-      Object {
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxFlex": 1,
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "WebkitOverflowScrolling": "touch",
-        "WebkitTransform": "translateZ(0px)",
-        "flexDirection": "row",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexDirection": "row",
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "overflowX": "auto",
-        "overflowY": "hidden",
-        "transform": "translateZ(0px)",
-      }
-    }
-  >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "horizontal",
-          "WebkitFlexDirection": "row",
-          "flexDirection": "row",
-          "msFlexDirection": "row",
-        }
-      }
+      class="css-view-1dbjc4n"
+      style="height: 16px;"
+    />
+    <div
+      class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+      data-testid="VenuesModuleList"
+      style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
     >
       <div
-        className="css-view-1dbjc4n"
+        class="css-view-1dbjc4n"
+        style="flex-direction: row;"
       >
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "24px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
+          class="css-view-1dbjc4n"
         >
           <div
-            aria-label="venueTile"
-            className="css-view-1dbjc4n"
-            data-testid="venueTile"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozUserSelect": "none",
-                "WebkitUserSelect": "none",
-                "backgroundColor": "rgba(230,230,230,1.00)",
-                "borderBottomLeftRadius": "8px",
-                "borderBottomRightRadius": "8px",
-                "borderTopLeftRadius": "8px",
-                "borderTopRightRadius": "8px",
-                "cursor": "pointer",
-                "height": "168px",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "userSelect": "none",
-                "width": "252px",
-              }
-            }
-            tabIndex="0"
+            class="css-view-1dbjc4n"
+            style="width: 24px;"
           />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-direction: row;"
+        >
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "marginTop": "8px",
-                "maxWidth": "252px",
-              }
-            }
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <div
-              className="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(21,21,21,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              Le Petit Rintintin 1
-            </div>
+              aria-label="venueTile"
+              class="css-view-1dbjc4n"
+              data-testid="venueTile"
+              style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 168px; user-select: none; width: 252px;"
+              tabindex="0"
+            />
             <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                }
-              }
+              class="css-view-1dbjc4n"
+              style="margin-top: 8px; max-width: 252px;"
             >
               <div
-                className="css-view-1dbjc4n"
+                class="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                Le Petit Rintintin 1
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row;"
               >
                 <div
-                  className="css-text-901oao"
-                  dir="auto"
+                  class="css-view-1dbjc4n"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 4px;"
+                />
+                <div
+                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  dir="auto"
+                  style="color: rgb(98, 98, 98); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  Salle de projections
                 </div>
               </div>
               <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "4px",
-                  }
-                }
-              />
-              <div
-                className="css-text-901oao css-textOneLine-vcwn7f"
+                class="css-text-901oao"
                 dir="auto"
-                style={
-                  Object {
-                    "WebkitFlexShrink": 1,
-                    "color": "rgba(98,98,98,1.00)",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                    "msFlexNegative": 1,
-                  }
-                }
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
-                Salle de projections
+                900+ km
               </div>
             </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 16px;"
+          />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-direction: row;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          >
             <div
-              className="css-text-901oao"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(98,98,98,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
+              aria-label="venueTile"
+              class="css-view-1dbjc4n"
+              data-testid="venueTile"
+              style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 168px; user-select: none; width: 252px;"
+              tabindex="0"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="margin-top: 8px; max-width: 252px;"
             >
-              900+ km
+              <div
+                class="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                Le Petit Rintintin 2
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 4px;"
+                />
+                <div
+                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  dir="auto"
+                  style="color: rgb(98, 98, 98); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  Salle de projections
+                </div>
+              </div>
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                900+ km
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 16px;"
+          />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-direction: row;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          >
+            <div
+              aria-label="venueTile"
+              class="css-view-1dbjc4n"
+              data-testid="venueTile"
+              style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 168px; user-select: none; width: 252px;"
+              tabindex="0"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="margin-top: 8px; max-width: 252px;"
+            >
+              <div
+                class="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                Le Petit Rintintin 3
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 4px;"
+                />
+                <div
+                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  dir="auto"
+                  style="color: rgb(98, 98, 98); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  Salle de projections
+                </div>
+              </div>
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                900+ km
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 16px;"
+          />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-direction: row;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          >
+            <div
+              aria-label="venueTile"
+              class="css-view-1dbjc4n"
+              data-testid="venueTile"
+              style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 168px; user-select: none; width: 252px;"
+              tabindex="0"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="margin-top: 8px; max-width: 252px;"
+            >
+              <div
+                class="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                Le Petit Rintintin 4
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 4px;"
+                />
+                <div
+                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  dir="auto"
+                  style="color: rgb(98, 98, 98); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  Salle de projections
+                </div>
+              </div>
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                900+ km
+              </div>
             </div>
           </div>
         </div>
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
+          class="css-view-1dbjc4n"
         >
           <div
-            aria-label="venueTile"
-            className="css-view-1dbjc4n"
-            data-testid="venueTile"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozUserSelect": "none",
-                "WebkitUserSelect": "none",
-                "backgroundColor": "rgba(230,230,230,1.00)",
-                "borderBottomLeftRadius": "8px",
-                "borderBottomRightRadius": "8px",
-                "borderTopLeftRadius": "8px",
-                "borderTopRightRadius": "8px",
-                "cursor": "pointer",
-                "height": "168px",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "userSelect": "none",
-                "width": "252px",
-              }
-            }
-            tabIndex="0"
+            class="css-view-1dbjc4n"
+            style="width: 24px;"
           />
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "marginTop": "8px",
-                "maxWidth": "252px",
-              }
-            }
-          >
-            <div
-              className="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(21,21,21,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              Le Petit Rintintin 2
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-text-901oao"
-                  dir="auto"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "4px",
-                  }
-                }
-              />
-              <div
-                className="css-text-901oao css-textOneLine-vcwn7f"
-                dir="auto"
-                style={
-                  Object {
-                    "WebkitFlexShrink": 1,
-                    "color": "rgba(98,98,98,1.00)",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                    "msFlexNegative": 1,
-                  }
-                }
-              >
-                Salle de projections
-              </div>
-            </div>
-            <div
-              className="css-text-901oao"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(98,98,98,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              900+ km
-            </div>
-          </div>
         </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        >
-          <div
-            aria-label="venueTile"
-            className="css-view-1dbjc4n"
-            data-testid="venueTile"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozUserSelect": "none",
-                "WebkitUserSelect": "none",
-                "backgroundColor": "rgba(230,230,230,1.00)",
-                "borderBottomLeftRadius": "8px",
-                "borderBottomRightRadius": "8px",
-                "borderTopLeftRadius": "8px",
-                "borderTopRightRadius": "8px",
-                "cursor": "pointer",
-                "height": "168px",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "userSelect": "none",
-                "width": "252px",
-              }
-            }
-            tabIndex="0"
-          />
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "marginTop": "8px",
-                "maxWidth": "252px",
-              }
-            }
-          >
-            <div
-              className="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(21,21,21,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              Le Petit Rintintin 3
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-text-901oao"
-                  dir="auto"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "4px",
-                  }
-                }
-              />
-              <div
-                className="css-text-901oao css-textOneLine-vcwn7f"
-                dir="auto"
-                style={
-                  Object {
-                    "WebkitFlexShrink": 1,
-                    "color": "rgba(98,98,98,1.00)",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                    "msFlexNegative": 1,
-                  }
-                }
-              >
-                Salle de projections
-              </div>
-            </div>
-            <div
-              className="css-text-901oao"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(98,98,98,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              900+ km
-            </div>
-          </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        >
-          <div
-            aria-label="venueTile"
-            className="css-view-1dbjc4n"
-            data-testid="venueTile"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozUserSelect": "none",
-                "WebkitUserSelect": "none",
-                "backgroundColor": "rgba(230,230,230,1.00)",
-                "borderBottomLeftRadius": "8px",
-                "borderBottomRightRadius": "8px",
-                "borderTopLeftRadius": "8px",
-                "borderTopRightRadius": "8px",
-                "cursor": "pointer",
-                "height": "168px",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "userSelect": "none",
-                "width": "252px",
-              }
-            }
-            tabIndex="0"
-          />
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "marginTop": "8px",
-                "maxWidth": "252px",
-              }
-            }
-          >
-            <div
-              className="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(21,21,21,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              Le Petit Rintintin 4
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-text-901oao"
-                  dir="auto"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "4px",
-                  }
-                }
-              />
-              <div
-                className="css-text-901oao css-textOneLine-vcwn7f"
-                dir="auto"
-                style={
-                  Object {
-                    "WebkitFlexShrink": 1,
-                    "color": "rgba(98,98,98,1.00)",
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                    "msFlexNegative": 1,
-                  }
-                }
-              >
-                Salle de projections
-              </div>
-            </div>
-            <div
-              className="css-text-901oao"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(98,98,98,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              900+ km
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "24px",
-            }
-          }
-        />
       </div>
     </div>
-  </div>,
-]
+  </div>
+</DocumentFragment>
 `;

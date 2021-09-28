@@ -13,7 +13,7 @@ import {
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 import { FavoritesResults } from '../FavoritesResults'
 

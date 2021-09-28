@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { useBooking, useBookingOffer } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
-import { render, fireEvent } from 'tests/utils/web'
+import { render, fireEvent } from 'tests/utils'
 
 import { BookingEventChoices } from '../BookingEventChoices'
 

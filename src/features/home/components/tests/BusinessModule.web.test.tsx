@@ -8,7 +8,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import * as HomeAPI from 'features/home/api'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct, render, fireEvent } from 'tests/utils/web'
+import { superFlushWithAct, render, fireEvent } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BusinessPane } from '../../contentful'

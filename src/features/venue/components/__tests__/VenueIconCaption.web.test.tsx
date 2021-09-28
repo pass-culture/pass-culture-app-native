@@ -3,7 +3,7 @@ import React from 'react'
 import { VenueTypeCodeKey } from 'api/gen'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { parseType } from 'libs/parsers'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { VenueIconCaptions } from '../VenueIconCaptions'
 

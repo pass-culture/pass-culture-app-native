@@ -5,7 +5,7 @@ import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { OfferTile } from '../OfferTile'
 

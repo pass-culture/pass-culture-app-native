@@ -1,12 +1,12 @@
-import { renderHook, cleanup } from '@testing-library/react-hooks'
 import { rest } from 'msw'
+import waitForExpect from 'wait-for-expect'
 
 import { RecommendationPane } from 'features/home/contentful/moduleTypes'
 import * as AlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { waitFor } from 'tests/utils'
+import { renderHook } from 'tests/utils'
 
 import { useHomeRecommendedHits, getRecommendationEndpoint } from '../useHomeRecommendedHits'
 
@@ -32,18 +32,16 @@ describe('useHomeRecommendedHits', () => {
     )
   })
 
-  afterEach(async () => {
+  afterEach(() => {
     jest.clearAllMocks()
-    await cleanup()
   })
 
   it('not make any call if there is no recommendation module', async () => {
-    renderHook(() => useHomeRecommendedHits(undefined), {
+    await renderHook(() => useHomeRecommendedHits(undefined), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-
-    await waitFor(() => {
+    await waitForExpect(() => {
       expect(fetchHits).not.toHaveBeenCalled()
       expect(queryCache.get('recommendationOfferIds')).toBeUndefined()
       expect(queryCache.get('recommendationHits')).toBeUndefined()
@@ -54,12 +52,12 @@ describe('useHomeRecommendedHits', () => {
     const recommendationModule = new RecommendationPane({
       display: { title: 'Offres recommandées', layout: 'one-item-medium', minOffers: 4 },
     })
-    const { result } = renderHook(() => useHomeRecommendedHits(recommendationModule), {
+    const { result } = await renderHook(() => useHomeRecommendedHits(recommendationModule), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     const isUserUnderage = false
-    await waitFor(() => {
+    await waitForExpect(() => {
       expect(result.current).toHaveLength(4)
       expect(fetchHits).toHaveBeenCalledTimes(1)
       expect(fetchHits).toHaveBeenCalledWith(objectIds, isUserUnderage)

@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Search component should render correctly 1`] = `
-<div
-  className="css-view-1dbjc4n"
->
+<DocumentFragment>
   <div
-    className="css-view-1dbjc4n"
-  />
-</div>
+    class="css-view-1dbjc4n"
+  >
+    <div
+      class="css-view-1dbjc4n"
+    />
+  </div>
+</DocumentFragment>
 `;

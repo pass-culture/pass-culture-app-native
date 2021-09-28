@@ -1,760 +1,1183 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomeBodyPlaceholder matches snapshot 1`] = `
-<div
-  className="css-view-1dbjc4n"
->
+<DocumentFragment>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "flexDirection": "row",
-        "msFlexDirection": "row",
-      }
-    }
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "24px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
+      class="css-view-1dbjc4n"
     >
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "backgroundColor": "rgba(221,221,221,1.00)",
-            "borderBottomLeftRadius": "2px",
-            "borderBottomRightRadius": "2px",
-            "borderTopLeftRadius": "2px",
-            "borderTopRightRadius": "2px",
-            "height": "16px",
-            "overflowX": "hidden",
-            "overflowY": "hidden",
-            "width": "160px",
-          }
-        }
+        class="css-view-1dbjc4n"
+        style="flex-direction: row;"
       >
         <div
-          className="css-view-1dbjc4n"
-          id="animatedComponent"
-          style={
-            Object {
-              "WebkitTransform": "translateX(-200px)",
-              "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-              "borderBottomLeftRadius": "2px",
-              "borderBottomRightRadius": "2px",
-              "borderTopLeftRadius": "2px",
-              "borderTopRightRadius": "2px",
-              "bottom": "0px",
-              "left": "0px",
-              "position": "absolute",
-              "right": "0px",
-              "top": "0px",
-              "transform": "translateX(-200px)",
-            }
-          }
+          class="css-view-1dbjc4n"
+          style="width: 24px;"
         />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "16px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-          }
-        }
-      >
         <div
-          className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-          onScroll={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          onWheel={[Function]}
-          style={
-            Object {
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxFlex": 1,
-              "WebkitBoxOrient": "horizontal",
-              "WebkitFlexDirection": "row",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "WebkitOverflowScrolling": "touch",
-              "WebkitTransform": "translateZ(0px)",
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexDirection": "row",
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "overflowX": "auto",
-              "overflowY": "hidden",
-              "transform": "translateZ(0px)",
-            }
-          }
+          class="css-view-1dbjc4n"
         >
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 16px; overflow-x: hidden; overflow-y: hidden; width: 160px;"
           >
             <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "312px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "192px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-240px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-240px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "153.60000000000002px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-192.00000000000003px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-192.00000000000003px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "57.599999999999994px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-72px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-72px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
+              class="css-view-1dbjc4n"
+              id="animatedComponent"
+              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-200px);"
+            />
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-direction: row;"
+          >
             <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
+              class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+              style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
             >
               <div
-                className="css-view-1dbjc4n"
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
               >
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "312px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "192px",
-                    }
-                  }
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-240px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-240px)",
-                      }
-                    }
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 312px; overflow-x: hidden; overflow-y: hidden; width: 192px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-240px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 153.60000000000002px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-192.00000000000003px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 57.599999999999994px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-72px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
                   />
                 </div>
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "153.60000000000002px",
-                    }
-                  }
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-192.00000000000003px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-192.00000000000003px)",
-                      }
-                    }
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 312px; overflow-x: hidden; overflow-y: hidden; width: 192px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-240px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 153.60000000000002px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-192.00000000000003px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 57.599999999999994px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-72px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
                   />
                 </div>
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "57.599999999999994px",
-                    }
-                  }
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-72px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-72px)",
-                      }
-                    }
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 312px; overflow-x: hidden; overflow-y: hidden; width: 192px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-240px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 153.60000000000002px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-192.00000000000003px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 57.599999999999994px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-72px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
                   />
                 </div>
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 312px; overflow-x: hidden; overflow-y: hidden; width: 192px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-240px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 153.60000000000002px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-192.00000000000003px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 57.599999999999994px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-72px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                </div>
               </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
             </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-direction: row;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="width: 24px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 16px; overflow-x: hidden; overflow-y: hidden; width: 160px;"
+          >
             <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
+              class="css-view-1dbjc4n"
+              id="animatedComponent"
+              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-200px);"
+            />
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-direction: row;"
+          >
+            <div
+              class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+              style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
             >
               <div
-                className="css-view-1dbjc4n"
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
               >
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "312px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "192px",
-                    }
-                  }
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-240px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-240px)",
-                      }
-                    }
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 240px; overflow-x: hidden; overflow-y: hidden; width: 144px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-180px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 115.2px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-144px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 43.199999999999996px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-53.99999999999999px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
                   />
                 </div>
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "153.60000000000002px",
-                    }
-                  }
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-192.00000000000003px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-192.00000000000003px)",
-                      }
-                    }
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 240px; overflow-x: hidden; overflow-y: hidden; width: 144px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-180px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 115.2px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-144px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 43.199999999999996px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-53.99999999999999px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
                   />
                 </div>
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "57.599999999999994px",
-                    }
-                  }
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-72px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-72px)",
-                      }
-                    }
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 240px; overflow-x: hidden; overflow-y: hidden; width: 144px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-180px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 115.2px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-144px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 43.199999999999996px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-53.99999999999999px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
                   />
                 </div>
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 240px; overflow-x: hidden; overflow-y: hidden; width: 144px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-180px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 115.2px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-144px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 43.199999999999996px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-53.99999999999999px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 240px; overflow-x: hidden; overflow-y: hidden; width: 144px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-180px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 115.2px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-144px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 43.199999999999996px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-53.99999999999999px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                </div>
               </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
             </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        data-testid="HomeBodyPlaceholder-testID"
+        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: -16px; overflow-x: hidden; overflow-y: hidden; width: -48px;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            id="animatedComponent"
+            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(60px);"
+          />
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-direction: row;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="width: 24px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 16px; overflow-x: hidden; overflow-y: hidden; width: 160px;"
+          >
             <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
+              class="css-view-1dbjc4n"
+              id="animatedComponent"
+              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-200px);"
+            />
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-direction: row;"
+          >
+            <div
+              class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+              style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
             >
               <div
-                className="css-view-1dbjc4n"
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
               >
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "312px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "192px",
-                    }
-                  }
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-240px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-240px)",
-                      }
-                    }
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 240px; overflow-x: hidden; overflow-y: hidden; width: 144px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-180px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 115.2px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-144px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 43.199999999999996px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-53.99999999999999px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
                   />
                 </div>
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "153.60000000000002px",
-                    }
-                  }
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-192.00000000000003px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-192.00000000000003px)",
-                      }
-                    }
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 240px; overflow-x: hidden; overflow-y: hidden; width: 144px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-180px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 115.2px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-144px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 43.199999999999996px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-53.99999999999999px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
                   />
                 </div>
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "57.599999999999994px",
-                    }
-                  }
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-72px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-72px)",
-                      }
-                    }
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 240px; overflow-x: hidden; overflow-y: hidden; width: 144px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-180px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 115.2px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-144px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 43.199999999999996px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-53.99999999999999px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
                   />
                 </div>
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 240px; overflow-x: hidden; overflow-y: hidden; width: 144px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-180px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 115.2px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-144px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 43.199999999999996px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-53.99999999999999px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 240px; overflow-x: hidden; overflow-y: hidden; width: 144px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-180px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 115.2px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-144px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 43.199999999999996px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-53.99999999999999px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 24px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-direction: row;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="width: 24px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 16px; overflow-x: hidden; overflow-y: hidden; width: 160px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              id="animatedComponent"
+              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-200px);"
+            />
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-direction: row;"
+          >
+            <div
+              class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+              style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 312px; overflow-x: hidden; overflow-y: hidden; width: 192px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-240px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 153.60000000000002px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-192.00000000000003px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 57.599999999999994px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-72px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 312px; overflow-x: hidden; overflow-y: hidden; width: 192px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-240px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 153.60000000000002px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-192.00000000000003px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 57.599999999999994px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-72px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 312px; overflow-x: hidden; overflow-y: hidden; width: 192px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-240px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 153.60000000000002px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-192.00000000000003px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 57.599999999999994px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-72px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 16px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; height: 312px; overflow-x: hidden; overflow-y: hidden; width: 192px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-240px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 153.60000000000002px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-192.00000000000003px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(221, 221, 221); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; height: 12px; overflow-x: hidden; overflow-y: hidden; width: 57.599999999999994px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        id="animatedComponent"
+                        style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; transform: translateX(-72px);"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -762,2691 +1185,5 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "flexDirection": "row",
-        "msFlexDirection": "row",
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "24px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-    >
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "backgroundColor": "rgba(221,221,221,1.00)",
-            "borderBottomLeftRadius": "2px",
-            "borderBottomRightRadius": "2px",
-            "borderTopLeftRadius": "2px",
-            "borderTopRightRadius": "2px",
-            "height": "16px",
-            "overflowX": "hidden",
-            "overflowY": "hidden",
-            "width": "160px",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
-          id="animatedComponent"
-          style={
-            Object {
-              "WebkitTransform": "translateX(-200px)",
-              "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-              "borderBottomLeftRadius": "2px",
-              "borderBottomRightRadius": "2px",
-              "borderTopLeftRadius": "2px",
-              "borderTopRightRadius": "2px",
-              "bottom": "0px",
-              "left": "0px",
-              "position": "absolute",
-              "right": "0px",
-              "top": "0px",
-              "transform": "translateX(-200px)",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "16px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-          onScroll={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          onWheel={[Function]}
-          style={
-            Object {
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxFlex": 1,
-              "WebkitBoxOrient": "horizontal",
-              "WebkitFlexDirection": "row",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "WebkitOverflowScrolling": "touch",
-              "WebkitTransform": "translateZ(0px)",
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexDirection": "row",
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "overflowX": "auto",
-              "overflowY": "hidden",
-              "transform": "translateZ(0px)",
-            }
-          }
-        >
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "240px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "144px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-180px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-180px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "115.2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-144px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-144px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "43.199999999999996px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-53.99999999999999px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-53.99999999999999px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "240px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "144px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-180px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-180px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "115.2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-144px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-144px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "43.199999999999996px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-53.99999999999999px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-53.99999999999999px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "240px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "144px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-180px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-180px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "115.2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-144px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-144px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "43.199999999999996px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-53.99999999999999px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-53.99999999999999px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "240px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "144px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-180px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-180px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "115.2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-144px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-144px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "43.199999999999996px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-53.99999999999999px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-53.99999999999999px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "240px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "144px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-180px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-180px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "115.2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-144px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-144px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "43.199999999999996px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-53.99999999999999px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-53.99999999999999px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
-    data-testid="HomeBodyPlaceholder-testID"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxFlex": 1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "alignItems": "center",
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexAlign": "center",
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "backgroundColor": "rgba(221,221,221,1.00)",
-          "borderBottomLeftRadius": "8px",
-          "borderBottomRightRadius": "8px",
-          "borderTopLeftRadius": "8px",
-          "borderTopRightRadius": "8px",
-          "height": "-16px",
-          "overflowX": "hidden",
-          "overflowY": "hidden",
-          "width": "-48px",
-        }
-      }
-    >
-      <div
-        className="css-view-1dbjc4n"
-        id="animatedComponent"
-        style={
-          Object {
-            "WebkitTransform": "translateX(60px)",
-            "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-            "borderBottomLeftRadius": "8px",
-            "borderBottomRightRadius": "8px",
-            "borderTopLeftRadius": "8px",
-            "borderTopRightRadius": "8px",
-            "bottom": "0px",
-            "left": "0px",
-            "position": "absolute",
-            "right": "0px",
-            "top": "0px",
-            "transform": "translateX(60px)",
-          }
-        }
-      />
-    </div>
-  </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "flexDirection": "row",
-        "msFlexDirection": "row",
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "24px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-    >
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "backgroundColor": "rgba(221,221,221,1.00)",
-            "borderBottomLeftRadius": "2px",
-            "borderBottomRightRadius": "2px",
-            "borderTopLeftRadius": "2px",
-            "borderTopRightRadius": "2px",
-            "height": "16px",
-            "overflowX": "hidden",
-            "overflowY": "hidden",
-            "width": "160px",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
-          id="animatedComponent"
-          style={
-            Object {
-              "WebkitTransform": "translateX(-200px)",
-              "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-              "borderBottomLeftRadius": "2px",
-              "borderBottomRightRadius": "2px",
-              "borderTopLeftRadius": "2px",
-              "borderTopRightRadius": "2px",
-              "bottom": "0px",
-              "left": "0px",
-              "position": "absolute",
-              "right": "0px",
-              "top": "0px",
-              "transform": "translateX(-200px)",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "16px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-          onScroll={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          onWheel={[Function]}
-          style={
-            Object {
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxFlex": 1,
-              "WebkitBoxOrient": "horizontal",
-              "WebkitFlexDirection": "row",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "WebkitOverflowScrolling": "touch",
-              "WebkitTransform": "translateZ(0px)",
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexDirection": "row",
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "overflowX": "auto",
-              "overflowY": "hidden",
-              "transform": "translateZ(0px)",
-            }
-          }
-        >
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "240px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "144px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-180px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-180px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "115.2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-144px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-144px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "43.199999999999996px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-53.99999999999999px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-53.99999999999999px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "240px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "144px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-180px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-180px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "115.2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-144px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-144px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "43.199999999999996px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-53.99999999999999px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-53.99999999999999px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "240px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "144px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-180px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-180px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "115.2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-144px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-144px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "43.199999999999996px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-53.99999999999999px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-53.99999999999999px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "240px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "144px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-180px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-180px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "115.2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-144px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-144px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "43.199999999999996px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-53.99999999999999px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-53.99999999999999px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "240px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "144px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-180px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-180px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "115.2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-144px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-144px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "43.199999999999996px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-53.99999999999999px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-53.99999999999999px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "flexDirection": "row",
-        "msFlexDirection": "row",
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "24px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-    >
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "backgroundColor": "rgba(221,221,221,1.00)",
-            "borderBottomLeftRadius": "2px",
-            "borderBottomRightRadius": "2px",
-            "borderTopLeftRadius": "2px",
-            "borderTopRightRadius": "2px",
-            "height": "16px",
-            "overflowX": "hidden",
-            "overflowY": "hidden",
-            "width": "160px",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
-          id="animatedComponent"
-          style={
-            Object {
-              "WebkitTransform": "translateX(-200px)",
-              "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-              "borderBottomLeftRadius": "2px",
-              "borderBottomRightRadius": "2px",
-              "borderTopLeftRadius": "2px",
-              "borderTopRightRadius": "2px",
-              "bottom": "0px",
-              "left": "0px",
-              "position": "absolute",
-              "right": "0px",
-              "top": "0px",
-              "transform": "translateX(-200px)",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "16px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-          onScroll={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          onWheel={[Function]}
-          style={
-            Object {
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxFlex": 1,
-              "WebkitBoxOrient": "horizontal",
-              "WebkitFlexDirection": "row",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "WebkitOverflowScrolling": "touch",
-              "WebkitTransform": "translateZ(0px)",
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexDirection": "row",
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "overflowX": "auto",
-              "overflowY": "hidden",
-              "transform": "translateZ(0px)",
-            }
-          }
-        >
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "312px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "192px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-240px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-240px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "153.60000000000002px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-192.00000000000003px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-192.00000000000003px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "57.599999999999994px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-72px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-72px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "312px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "192px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-240px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-240px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "153.60000000000002px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-192.00000000000003px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-192.00000000000003px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "57.599999999999994px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-72px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-72px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "312px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "192px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-240px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-240px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "153.60000000000002px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-192.00000000000003px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-192.00000000000003px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "57.599999999999994px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-72px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-72px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "16px",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "flexDirection": "row",
-                  "msFlexDirection": "row",
-                }
-              }
-            >
-              <div
-                className="css-view-1dbjc4n"
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "borderTopLeftRadius": "8px",
-                      "borderTopRightRadius": "8px",
-                      "height": "312px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "192px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-240px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "8px",
-                        "borderBottomRightRadius": "8px",
-                        "borderTopLeftRadius": "8px",
-                        "borderTopRightRadius": "8px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-240px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "153.60000000000002px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-192.00000000000003px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-192.00000000000003px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(221,221,221,1.00)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "height": "12px",
-                      "overflowX": "hidden",
-                      "overflowY": "hidden",
-                      "width": "57.599999999999994px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style={
-                      Object {
-                        "WebkitTransform": "translateX(-72px)",
-                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                        "borderBottomLeftRadius": "2px",
-                        "borderBottomRightRadius": "2px",
-                        "borderTopLeftRadius": "2px",
-                        "borderTopRightRadius": "2px",
-                        "bottom": "0px",
-                        "left": "0px",
-                        "position": "absolute",
-                        "right": "0px",
-                        "top": "0px",
-                        "transform": "translateX(-72px)",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "height": "8px",
-                    }
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</DocumentFragment>
 `;

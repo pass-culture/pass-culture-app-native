@@ -1,64 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OfferCategory renders correctly 1`] = `
-<div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "WebkitAlignItems": "center",
-      "WebkitBoxAlign": "center",
-      "WebkitBoxFlex": 1,
-      "WebkitFlexBasis": "0px",
-      "WebkitFlexGrow": 1,
-      "WebkitFlexShrink": 1,
-      "alignItems": "center",
-      "flexBasis": "0px",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "msFlexAlign": "center",
-      "msFlexNegative": 1,
-      "msFlexPositive": 1,
-      "msFlexPreferredSize": "0px",
-    }
-  }
->
+<DocumentFragment>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "paddingBottom": "4px",
-        "paddingLeft": "4px",
-        "paddingRight": "4px",
-        "paddingTop": "4px",
-      }
-    }
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
     <div
-      className="css-view-1dbjc4n"
+      class="css-view-1dbjc4n"
+      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
     >
       <div
-        className="css-text-901oao"
-        dir="auto"
+        class="css-view-1dbjc4n"
+        style="padding: 4px 4px 4px 4px;"
       >
-        undefined-SVG-Mock
+        <div
+          class="css-view-1dbjc4n"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+          >
+            undefined-SVG-Mock
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-text-901oao"
+        data-testid="caption-undefined"
+        dir="auto"
+        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+      >
+        Livre ou carte lecture
       </div>
     </div>
   </div>
-  <div
-    className="css-text-901oao"
-    data-testid="caption-undefined"
-    dir="auto"
-    style={
-      Object {
-        "color": "rgba(21,21,21,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
-        "textAlign": "center",
-      }
-    }
-  >
-    Livre ou carte lecture
-  </div>
-</div>
+</DocumentFragment>
 `;

@@ -1,24 +1,27 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-// eslint-disable-next-line no-restricted-imports
-import { render, RenderOptions } from '@testing-library/react-native'
+import {
+  act as renderHookAct,
+  renderHook,
+  RenderHookOptions,
+  RenderHookResult,
+} from '@testing-library/react-hooks'
 import flushPromises from 'flush-promises'
 import { fr } from 'make-plural/plurals'
 import React from 'react'
-import { act, ReactTestInstance } from 'react-test-renderer'
+import { Platform } from 'react-native'
+import { ReactTestInstance } from 'react-test-renderer'
 
+import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ThemeProvider } from 'libs/styled/ThemeProvider'
 import { messages } from 'locales/fr/messages'
 import { theme } from 'theme'
 
-i18n.load({
-  fr: messages,
-})
+import { act, render, RenderOptions } from './base'
+export { act, cleanup, fireEvent, waitFor } from './base'
 
-i18n.loadLocaleData({
-  fr: { plurals: fr },
-})
-
+i18n.load({ fr: messages })
+i18n.loadLocaleData({ fr: { plurals: fr } })
 i18n.activate('fr')
 
 export function accessibilityAndTestId(id: string) {
@@ -62,8 +65,11 @@ export const useMutationFactory = (storageFunction: {
   }
 }
 
-export async function superFlushWithAct(times = 50) {
-  await act(async () => {
+export async function superFlushWithAct(
+  times = 50,
+  otherAct: (callback: () => void) => void = act
+) {
+  await otherAct(async () => {
     await flushAllPromisesTimes(times)
   })
 }
@@ -85,18 +91,19 @@ const computedTheme = {
 
 const DefaultWrapper: React.FC = ({ children }) => {
   return (
-    <ThemeProvider theme={{ ...theme, ...computedTheme }}>
-      <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
-        {children}
-      </I18nProvider>
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider theme={{ ...theme, ...computedTheme }}>
+        <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
+          {children}
+        </I18nProvider>
+      </ThemeProvider>
+    </SafeAreaProvider>
   )
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function customRender(ui: React.ReactElement<any>, options?: RenderOptions) {
-  const { wrapper: Wrapper, ...restOfOptions } = options || {}
-  return render(ui, {
+function customRender(ui: React.ReactElement<any>, options: RenderOptions = {}) {
+  const { wrapper: Wrapper } = options
+  const renderAPI = render(ui, {
     wrapper: Wrapper
       ? ({ children }) => (
           <DefaultWrapper>
@@ -104,11 +111,26 @@ function customRender(ui: React.ReactElement<any>, options?: RenderOptions) {
           </DefaultWrapper>
         )
       : DefaultWrapper,
-    ...restOfOptions,
+    ...options,
   })
+  renderAPI.toJSON = Platform.select({
+    // @ts-expect-error : renderAPI.asFragment does exist on the web version of testing-library
+    web: renderAPI.asFragment,
+    native: renderAPI.toJSON,
+  })
+  return renderAPI
 }
+export { customRender as render }
+
+async function customRenderHook<P, R>(
+  callback: (props: P) => R,
+  options?: RenderHookOptions<P>
+): Promise<RenderHookResult<P, R>> {
+  const renderHookReturn = renderHook(callback, options)
+  await superFlushWithAct(50, renderHookAct)
+  return renderHookReturn
+}
+export { customRenderHook as renderHook }
 
 // eslint-disable-next-line no-restricted-imports
 export * from '@testing-library/react-native'
-
-export { customRender as render }

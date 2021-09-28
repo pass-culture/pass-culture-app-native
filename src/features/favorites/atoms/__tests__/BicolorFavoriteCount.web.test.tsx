@@ -8,7 +8,7 @@ import { paginatedFavoritesResponseSnap } from 'features/favorites/api/snaps/fav
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 import { BicolorFavoriteCount } from '../BicolorFavoriteCount'
 

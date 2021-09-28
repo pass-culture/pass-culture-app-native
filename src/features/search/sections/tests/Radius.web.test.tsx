@@ -2,7 +2,7 @@ import React from 'react'
 // import { ReactTestInstance } from 'react-test-renderer'
 
 import { initialSearchState } from 'features/search/pages/reducer'
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 import { Radius } from '../Radius'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { NewOffer } from '../NewOffer'
 

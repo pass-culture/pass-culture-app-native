@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import React from 'react'
 
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 import { CheckboxInput } from './CheckboxInput'
 

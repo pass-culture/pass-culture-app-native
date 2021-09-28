@@ -1,83 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CoordinatesView component should render correctly 1`] = `
-<div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "WebkitBoxDirection": "normal",
-      "WebkitBoxOrient": "horizontal",
-      "WebkitFlex": 1,
-      "WebkitFlexDirection": "row",
-      "flex": 1,
-      "flexDirection": "row",
-      "msFlex": "1 1 0%",
-      "msFlexDirection": "row",
-    }
-  }
->
+<DocumentFragment>
   <div
-    className="css-text-901oao"
-    dir="auto"
-    style={
-      Object {
-        "fontSize": "9px",
-      }
-    }
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
-    <span
-      className="css-text-901oao css-textHasAncestor-16my406"
-      style={
-        Object {
-          "color": "rgba(0,102,255,1.00)",
-        }
-      }
+    <div
+      class="css-view-1dbjc4n"
+      style="flex: 1; flex-direction: row;"
     >
-       Lat 
-    </span>
-    45
+      <div
+        class="css-text-901oao"
+        dir="auto"
+        style="font-size: 9px;"
+      >
+        <span
+          class="css-text-901oao css-textHasAncestor-16my406"
+          style="color: rgb(0, 102, 255);"
+        >
+           Lat 
+        </span>
+        45
+      </div>
+      <div
+        class="css-text-901oao"
+        dir="auto"
+        style="font-size: 9px;"
+      >
+        <span
+          class="css-text-901oao css-textHasAncestor-16my406"
+          style="color: rgb(0, 102, 255);"
+        >
+           Lon 
+        </span>
+        25
+      </div>
+      <div
+        class="css-text-901oao"
+        dir="auto"
+        style="font-size: 9px;"
+      >
+        <span
+          class="css-text-901oao css-textHasAncestor-16my406"
+          style="color: rgb(0, 102, 255);"
+        >
+           Alt 
+        </span>
+        200
+      </div>
+    </div>
   </div>
-  <div
-    className="css-text-901oao"
-    dir="auto"
-    style={
-      Object {
-        "fontSize": "9px",
-      }
-    }
-  >
-    <span
-      className="css-text-901oao css-textHasAncestor-16my406"
-      style={
-        Object {
-          "color": "rgba(0,102,255,1.00)",
-        }
-      }
-    >
-       Lon 
-    </span>
-    25
-  </div>
-  <div
-    className="css-text-901oao"
-    dir="auto"
-    style={
-      Object {
-        "fontSize": "9px",
-      }
-    }
-  >
-    <span
-      className="css-text-901oao css-textHasAncestor-16my406"
-      style={
-        Object {
-          "color": "rgba(0,102,255,1.00)",
-        }
-      }
-    >
-       Alt 
-    </span>
-    200
-  </div>
-</div>
+</DocumentFragment>
 `;

@@ -2,7 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 
 import { GenericAchievement } from './GenericAchievement'

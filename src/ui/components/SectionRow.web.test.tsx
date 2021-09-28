@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, fireEvent } from 'tests/utils/web'
+import { render, fireEvent } from 'tests/utils'
 import { Close } from 'ui/svg/icons/Close'
 
 import { SectionRow } from './SectionRow'

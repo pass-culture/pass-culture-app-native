@@ -5,7 +5,7 @@ import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { Booking } from 'features/bookings/components/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),

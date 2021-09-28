@@ -3,7 +3,7 @@ import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/ProfileHeader'
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 const user: UserProfileResponse = {
   bookedOffers: {},

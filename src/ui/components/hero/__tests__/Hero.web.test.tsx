@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 import { Hero } from '../Hero'
 

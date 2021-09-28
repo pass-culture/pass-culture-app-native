@@ -10,7 +10,7 @@ import {
   venueWithNoAddressResponseSnap,
   venueResponseSnap,
 } from 'features/venue/fixtures/venueResponseSnap'
-import { render, waitFor } from 'tests/utils/web'
+import { render, waitFor } from 'tests/utils'
 
 import { VenueBody } from '../VenueBody'
 

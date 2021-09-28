@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 describe('<PasswordSecurityRules />', () => {
   it('should display 5 rules', async () => {

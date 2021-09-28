@@ -3,7 +3,7 @@ import React from 'react'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { NoSearchResult } from '../NoSearchResult'
 

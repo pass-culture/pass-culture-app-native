@@ -6,7 +6,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { emptyBookingsSnap, bookingsSnap } from '../api/bookingsSnap'
 

@@ -7,7 +7,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 

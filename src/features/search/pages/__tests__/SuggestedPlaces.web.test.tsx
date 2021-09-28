@@ -9,7 +9,7 @@ import { buildSuggestedPlaces, SuggestedPlace } from 'libs/place'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockStagedDispatch = jest.fn()

@@ -1,260 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ForceUpdate/> should match snapshot 1`] = `
-<div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "WebkitAlignItems": "center",
-      "WebkitBoxAlign": "center",
-      "WebkitBoxFlex": 1,
-      "WebkitFlexBasis": "0px",
-      "WebkitFlexGrow": 1,
-      "WebkitFlexShrink": 1,
-      "alignItems": "center",
-      "flexBasis": "0px",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "msFlexAlign": "center",
-      "msFlexNegative": 1,
-      "msFlexPositive": 1,
-      "msFlexPreferredSize": "0px",
-    }
-  }
->
+<DocumentFragment>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "bottom": "0px",
-        "left": "0px",
-        "position": "absolute",
-        "right": "0px",
-        "top": "0px",
-        "zIndex": -1,
-      }
-    }
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
     <div
-      className="css-view-1dbjc4n"
+      class="css-view-1dbjc4n"
+      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
     >
       <div
-        className="css-text-901oao"
-        dir="auto"
-      >
-        undefined-SVG-Mock
-      </div>
-    </div>
-  </div>
-  <div
-    className="css-view-1dbjc4n"
-    onScroll={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    onWheel={[Function]}
-    style={
-      Object {
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxFlex": 1,
-        "WebkitBoxOrient": "vertical",
-        "WebkitFlexDirection": "column",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "WebkitOverflowScrolling": "touch",
-        "WebkitTransform": "translateZ(0px)",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexDirection": "column",
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "overflowX": "hidden",
-        "overflowY": "auto",
-        "transform": "translateZ(0px)",
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxFlex": 1,
-          "WebkitBoxOrient": "vertical",
-          "WebkitBoxPack": "center",
-          "WebkitFlexDirection": "column",
-          "WebkitFlexGrow": 1,
-          "WebkitJustifyContent": "center",
-          "alignItems": "center",
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "justifyContent": "center",
-          "maxWidth": "360px",
-          "msFlexAlign": "center",
-          "msFlexDirection": "column",
-          "msFlexPack": "center",
-          "msFlexPositive": 1,
-          "paddingLeft": "16px",
-          "paddingRight": "16px",
-        }
-      }
-    >
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "72px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
+        class="css-view-1dbjc4n"
+        style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: -1;"
       >
         <div
-          className="css-text-901oao"
-          dir="auto"
+          class="css-view-1dbjc4n"
         >
-          undefined-SVG-Mock
+          <div
+            class="css-text-901oao"
+            dir="auto"
+          >
+            undefined-SVG-Mock
+          </div>
         </div>
       </div>
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "36px",
-          }
-        }
-      />
-      <div
-        className="css-text-901oao"
-        dir="auto"
-        style={
-          Object {
-            "color": "rgba(255,255,255,1.00)",
-            "fontFamily": "Montserrat-MediumItalic",
-            "fontSize": "22px",
-            "lineHeight": "28px",
-            "textAlign": "center",
-          }
-        }
+        class="css-view-1dbjc4n"
+        style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
       >
-        Mise à jour de l'application
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "20px",
-          }
-        }
-      />
-      <div
-        className="css-text-901oao"
-        dir="auto"
-        style={
-          Object {
-            "color": "rgba(255,255,255,1.00)",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": "15px",
-            "lineHeight": "20px",
-            "textAlign": "center",
-          }
-        }
-      >
-        Le pass Culture de ton navigateur ne semble plus à jour !
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-direction: column; flex-grow: 1; justify-content: center; max-width: 360px; padding-right: 16px; padding-left: 16px;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 72px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 36px;"
+          />
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-MediumItalic; font-size: 22px; line-height: 28px; text-align: center;"
+          >
+            Mise à jour de l'application
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 20px;"
+          />
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+          >
+            Le pass Culture de ton navigateur ne semble plus à jour !
 Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible.
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "48px",
-          }
-        }
-      />
-      <div
-        aria-label="Actualiser la page"
-        className="css-view-1dbjc4n"
-        data-testid="Actualiser la page"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitBoxPack": "center",
-            "WebkitFlexDirection": "row",
-            "WebkitJustifyContent": "center",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "backgroundColor": "rgba(255,255,255,1.00)",
-            "borderBottomLeftRadius": "24px",
-            "borderBottomRightRadius": "24px",
-            "borderBottomWidth": "0px",
-            "borderLeftWidth": "0px",
-            "borderRightWidth": "0px",
-            "borderTopLeftRadius": "24px",
-            "borderTopRightRadius": "24px",
-            "borderTopWidth": "0px",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "height": "40px",
-            "justifyContent": "center",
-            "maxWidth": "500px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msFlexPack": "center",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "paddingBottom": "2px",
-            "paddingLeft": "2px",
-            "paddingRight": "2px",
-            "paddingTop": "2px",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-            "width": "100%",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-text-901oao css-textOneLine-vcwn7f"
-          dir="auto"
-          style={
-            Object {
-              "color": "rgba(235,0,85,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-              "marginLeft": "5px",
-              "maxWidth": "100%",
-            }
-          }
-        >
-          Actualiser la page
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 48px;"
+          />
+          <div
+            aria-label="Actualiser la page"
+            class="css-view-1dbjc4n"
+            data-testid="Actualiser la page"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+            tabindex="0"
+          >
+            <div
+              class="css-text-901oao css-textOneLine-vcwn7f"
+              dir="auto"
+              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+            >
+              Actualiser la page
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 8px;"
+          />
         </div>
       </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "8px",
-          }
-        }
-      />
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;

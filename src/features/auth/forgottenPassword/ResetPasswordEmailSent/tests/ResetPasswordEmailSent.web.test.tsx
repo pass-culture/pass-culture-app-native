@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { flushAllPromises, act, fireEvent, render } from 'tests/utils/web'
+import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from '../ResetPasswordEmailSent'
 

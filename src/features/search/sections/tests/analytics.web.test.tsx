@@ -5,7 +5,7 @@ import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import Section from 'features/search/sections'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { SectionTitle } from '../titles'
 

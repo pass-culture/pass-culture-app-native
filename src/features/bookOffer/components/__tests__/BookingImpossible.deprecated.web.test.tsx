@@ -9,7 +9,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, fireEvent, render } from 'tests/utils/web'
+import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { BookingImpossible } from '../BookingImpossible'
 

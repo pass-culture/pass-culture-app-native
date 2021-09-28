@@ -7,7 +7,7 @@ import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
 import * as splashScreenModule from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 import { RootNavigator } from '../RootNavigator'
 

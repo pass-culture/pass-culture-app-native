@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 import { ModuleTitle } from '../ModuleTitle'
 

@@ -5,7 +5,7 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { VenueHeader } from '../VenueHeader'
 

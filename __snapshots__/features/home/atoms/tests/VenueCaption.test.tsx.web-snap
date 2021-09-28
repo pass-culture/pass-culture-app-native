@@ -1,92 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VenueCaption component should render correctly 1`] = `
-<div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "marginTop": "8px",
-      "maxWidth": "100px",
-    }
-  }
->
+<DocumentFragment>
   <div
-    className="css-text-901oao css-textOneLine-vcwn7f"
-    dir="auto"
-    style={
-      Object {
-        "color": "rgba(21,21,21,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
-      }
-    }
-  >
-    Musée du Louvre
-  </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-      }
-    }
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
     <div
-      className="css-view-1dbjc4n"
+      class="css-view-1dbjc4n"
+      style="margin-top: 8px; max-width: 100px;"
     >
       <div
-        className="css-text-901oao"
+        class="css-text-901oao css-textOneLine-vcwn7f"
         dir="auto"
+        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
       >
-        undefined-SVG-Mock
+        Musée du Louvre
       </div>
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "4px",
-        }
-      }
-    />
-    <div
-      className="css-text-901oao css-textOneLine-vcwn7f"
-      dir="auto"
-      style={
-        Object {
-          "WebkitFlexShrink": 1,
-          "color": "rgba(98,98,98,1.00)",
-          "flexShrink": 1,
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-          "msFlexNegative": 1,
-        }
-      }
-    >
-      Musée
+      <div
+        class="css-view-1dbjc4n"
+        style="align-items: center; flex-direction: row;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+          >
+            undefined-SVG-Mock
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="width: 4px;"
+        />
+        <div
+          class="css-text-901oao css-textOneLine-vcwn7f"
+          dir="auto"
+          style="color: rgb(98, 98, 98); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+        >
+          Musée
+        </div>
+      </div>
+      <div
+        class="css-text-901oao"
+        dir="auto"
+        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+      />
     </div>
   </div>
-  <div
-    className="css-text-901oao"
-    dir="auto"
-    style={
-      Object {
-        "color": "rgba(98,98,98,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
-      }
-    }
-  />
-</div>
+</DocumentFragment>
 `;

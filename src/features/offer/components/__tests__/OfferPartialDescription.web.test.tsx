@@ -3,7 +3,7 @@ import { QueryClient } from 'react-query'
 
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 import { OfferPartialDescription } from '../OfferPartialDescription'
 

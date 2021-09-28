@@ -1,590 +1,235 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<VenueOffers /> should render correctly 1`] = `
-Array [
+<DocumentFragment>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "marginLeft": "24px",
-        "marginRight": "24px",
-      }
-    }
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
     <div
-      className="css-text-901oao"
-      dir="auto"
-      style={
-        Object {
-          "color": "rgba(21,21,21,1.00)",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": "18px",
-          "lineHeight": "22px",
-        }
-      }
+      class="css-view-1dbjc4n"
+      style="height: 24px;"
+    />
+    <div
+      class="css-view-1dbjc4n"
+      style="margin-right: 24px; margin-left: 24px;"
     >
-      Offres
+      <div
+        class="css-text-901oao"
+        dir="auto"
+        style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+      >
+        Offres
+      </div>
     </div>
-  </div>,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />,
-  <div
-    className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-    data-testid="offersModuleList"
-    onScroll={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    onWheel={[Function]}
-    style={
-      Object {
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxFlex": 1,
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "WebkitOverflowScrolling": "touch",
-        "WebkitTransform": "translateZ(0px)",
-        "flexDirection": "row",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexDirection": "row",
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "overflowX": "auto",
-        "overflowY": "hidden",
-        "transform": "translateZ(0px)",
-      }
-    }
-  >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "horizontal",
-          "WebkitFlexDirection": "row",
-          "flexDirection": "row",
-          "msFlexDirection": "row",
-        }
-      }
+      class="css-view-1dbjc4n"
+      style="height: 24px;"
+    />
+    <div
+      class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+      data-testid="offersModuleList"
+      style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: auto; overflow-y: hidden; transform: translateZ(0px);"
     >
       <div
-        className="css-view-1dbjc4n"
+        class="css-view-1dbjc4n"
+        style="flex-direction: row;"
       >
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "24px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
+          class="css-view-1dbjc4n"
         >
           <div
-            className="css-view-1dbjc4n"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozUserSelect": "none",
-                "WebkitUserSelect": "none",
-                "borderBottomLeftRadius": "8px",
-                "borderBottomRightRadius": "8px",
-                "borderTopLeftRadius": "8px",
-                "borderTopRightRadius": "8px",
-                "cursor": "pointer",
-                "height": "312px",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "userSelect": "none",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-            >
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
-                    "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexDirection": "row",
-                    "alignItems": "center",
-                    "backgroundColor": "rgba(21,21,21,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "flexDirection": "row",
-                    "height": "24px",
-                    "msFlexAlign": "center",
-                    "msFlexDirection": "row",
-                    "width": "192px",
-                  }
-                }
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "WebkitAlignItems": "center",
-                      "WebkitBoxAlign": "center",
-                      "WebkitBoxFlex": 1,
-                      "WebkitBoxPack": "center",
-                      "WebkitFlexBasis": "0px",
-                      "WebkitFlexGrow": 1,
-                      "WebkitFlexShrink": 1,
-                      "WebkitJustifyContent": "center",
-                      "alignItems": "center",
-                      "flexBasis": "0px",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                      "msFlexAlign": "center",
-                      "msFlexNegative": 1,
-                      "msFlexPack": "center",
-                      "msFlexPositive": 1,
-                      "msFlexPreferredSize": "0px",
-                      "paddingLeft": "2px",
-                      "paddingRight": "2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-text-901oao css-textOneLine-vcwn7f"
-                    data-testid="categoryImageCaption"
-                    dir="auto"
-                    style={
-                      Object {
-                        "color": "rgba(255,255,255,1.00)",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": "12px",
-                        "lineHeight": "16px",
-                      }
-                    }
-                  >
-                    Cinéma
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "marginTop": "8px",
-                "maxWidth": "192px",
-              }
-            }
-          >
-            <div
-              className="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(21,21,21,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              Titane - VF
-            </div>
-            <div
-              className="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(98,98,98,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              Dès le 18 août 2021
-            </div>
-            <div
-              className="css-text-901oao"
-              data-testid="priceIsDuo"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(98,98,98,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              Gratuit
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxOrient": "horizontal",
-              "WebkitFlexDirection": "row",
-              "flexDirection": "row",
-              "msFlexDirection": "row",
-            }
-          }
-        >
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "width": "16px",
-              }
-            }
+            class="css-view-1dbjc4n"
+            style="width: 24px;"
           />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-direction: row;"
+        >
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxPack": "center",
-                "WebkitJustifyContent": "center",
-                "alignItems": "center",
-                "height": "288px",
-                "justifyContent": "center",
-                "msFlexAlign": "center",
-                "msFlexPack": "center",
-              }
-            }
+            class="css-view-1dbjc4n"
           >
             <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "height": "8px",
-                }
-              }
-            />
-            <div
-              className="css-view-1dbjc4n"
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onKeyDown={[Function]}
-              style={
-                Object {
-                  "MozTransitionProperty": "opacity",
-                  "MozUserSelect": "none",
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitTransitionDuration": "0s",
-                  "WebkitTransitionProperty": "opacity",
-                  "WebkitUserSelect": "none",
-                  "alignItems": "center",
-                  "cursor": "pointer",
-                  "msFlexAlign": "center",
-                  "msTouchAction": "manipulation",
-                  "msUserSelect": "none",
-                  "touchAction": "manipulation",
-                  "transitionDuration": "0s",
-                  "transitionProperty": "opacity",
-                  "userSelect": "none",
-                }
-              }
-              tabIndex="0"
+              class="css-view-1dbjc4n"
+              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 312px; user-select: none;"
+              tabindex="0"
             >
               <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexDirection": "row",
-                    "flexDirection": "row",
-                    "msFlexDirection": "row",
-                  }
-                }
+                class="css-view-1dbjc4n"
               >
                 <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "width": "64px",
-                    }
-                  }
-                />
-                <div
-                  className="css-view-1dbjc4n"
-                  onClick={[Function]}
-                  onContextMenu={[Function]}
-                  onKeyDown={[Function]}
-                  style={
-                    Object {
-                      "MozTransitionProperty": "opacity",
-                      "MozUserSelect": "none",
-                      "WebkitAlignItems": "center",
-                      "WebkitBoxAlign": "center",
-                      "WebkitBoxPack": "center",
-                      "WebkitJustifyContent": "center",
-                      "WebkitTransitionDuration": "0s",
-                      "WebkitTransitionProperty": "opacity",
-                      "WebkitUserSelect": "none",
-                      "alignItems": "center",
-                      "aspectRatio": "1",
-                      "backgroundColor": "rgba(255,255,255,1.00)",
-                      "borderBottomColor": "rgba(245,245,245,1.00)",
-                      "borderBottomLeftRadius": "32px",
-                      "borderBottomRightRadius": "32px",
-                      "borderBottomStyle": "solid",
-                      "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(245,245,245,1.00)",
-                      "borderLeftStyle": "solid",
-                      "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(245,245,245,1.00)",
-                      "borderRightStyle": "solid",
-                      "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(245,245,245,1.00)",
-                      "borderTopLeftRadius": "32px",
-                      "borderTopRightRadius": "32px",
-                      "borderTopStyle": "solid",
-                      "borderTopWidth": "1px",
-                      "boxShadow": "0px 8px 12px rgba(21,21,21,1.00)",
-                      "cursor": "pointer",
-                      "justifyContent": "center",
-                      "msFlexAlign": "center",
-                      "msFlexPack": "center",
-                      "msTouchAction": "manipulation",
-                      "msUserSelect": "none",
-                      "touchAction": "manipulation",
-                      "transitionDuration": "0s",
-                      "transitionProperty": "opacity",
-                      "userSelect": "none",
-                      "width": "64px",
-                    }
-                  }
-                  tabIndex="0"
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                 >
                   <div
-                    className="css-view-1dbjc4n"
-                    data-testid="arrow-next"
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                   >
                     <div
-                      className="css-text-901oao"
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      data-testid="categoryImageCaption"
                       dir="auto"
+                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                     >
-                      arrow-next-SVG-Mock
+                      Cinéma
                     </div>
                   </div>
                 </div>
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "width": "64px",
-                    }
-                  }
-                />
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="margin-top: 8px; max-width: 192px;"
+            >
+              <div
+                class="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                Titane - VF
               </div>
               <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexDirection": "row",
-                    "flexDirection": "row",
-                    "msFlexDirection": "row",
-                  }
-                }
+                class="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
-                <div
-                  className="css-text-901oao"
-                  dir="auto"
-                  style={
-                    Object {
-                      "color": "rgba(235,0,85,1.00)",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": "15px",
-                      "lineHeight": "20px",
-                    }
-                  }
-                >
-                  En voir plus
-                </div>
+                Dès le 18 août 2021
+              </div>
+              <div
+                class="css-text-901oao"
+                data-testid="priceIsDuo"
+                dir="auto"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                Gratuit
               </div>
             </div>
           </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+        >
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "width": "24px",
-              }
-            }
-          />
+            class="css-view-1dbjc4n"
+            style="flex-direction: row;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="width: 16px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; height: 288px; justify-content: center;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                tabindex="0"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 64px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); cursor: pointer; justify-content: center; transition-duration: 0s; transition-property: opacity; user-select: none; width: 64px;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      data-testid="arrow-next"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        arrow-next-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 64px;"
+                  />
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 8px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  >
+                    En voir plus
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="width: 24px;"
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "marginLeft": "24px",
-        "marginRight": "24px",
-      }
-    }
-  >
     <div
-      aria-label="Voir toutes les offres"
-      className="css-view-1dbjc4n"
-      data-testid="Voir toutes les offres"
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onKeyDown={[Function]}
-      style={
-        Object {
-          "MozTransitionProperty": "opacity",
-          "MozUserSelect": "none",
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxPack": "center",
-          "WebkitJustifyContent": "center",
-          "WebkitTransitionDuration": "0s",
-          "WebkitTransitionProperty": "opacity",
-          "WebkitUserSelect": "none",
-          "alignItems": "center",
-          "borderBottomLeftRadius": "24px",
-          "borderBottomRightRadius": "24px",
-          "borderTopLeftRadius": "24px",
-          "borderTopRightRadius": "24px",
-          "cursor": "pointer",
-          "justifyContent": "center",
-          "msFlexAlign": "center",
-          "msFlexPack": "center",
-          "msTouchAction": "manipulation",
-          "msUserSelect": "none",
-          "overflowX": "hidden",
-          "overflowY": "hidden",
-          "touchAction": "manipulation",
-          "transitionDuration": "0s",
-          "transitionProperty": "opacity",
-          "userSelect": "none",
-        }
-      }
-      tabIndex="0"
+      class="css-view-1dbjc4n"
+      style="height: 24px;"
+    />
+    <div
+      class="css-view-1dbjc4n"
+      style="margin-right: 24px; margin-left: 24px;"
     >
       <div
-        className="css-view-1dbjc4n"
+        aria-label="Voir toutes les offres"
+        class="css-view-1dbjc4n"
+        data-testid="Voir toutes les offres"
+        style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; justify-content: center; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        tabindex="0"
       >
         <div
-          className="css-text-901oao"
-          dir="auto"
+          class="css-view-1dbjc4n"
         >
-          undefined-SVG-Mock
+          <div
+            class="css-text-901oao"
+            dir="auto"
+          >
+            undefined-SVG-Mock
+          </div>
         </div>
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "alignItems": "center",
-            "flexDirection": "row",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "position": "absolute",
-          }
-        }
-      >
         <div
-          className="css-text-901oao css-textOneLine-vcwn7f"
-          dir="auto"
-          style={
-            Object {
-              "color": "rgba(255,255,255,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-              "paddingBottom": "20px",
-              "paddingLeft": "20px",
-              "paddingRight": "20px",
-              "paddingTop": "20px",
-            }
-          }
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-direction: row; position: absolute;"
         >
-          Voir toutes les offres
+          <div
+            class="css-text-901oao css-textOneLine-vcwn7f"
+            dir="auto"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
+          >
+            Voir toutes les offres
+          </div>
         </div>
       </div>
     </div>
-  </div>,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />,
-]
+    <div
+      class="css-view-1dbjc4n"
+      style="height: 24px;"
+    />
+  </div>
+</DocumentFragment>
 `;

@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 
 import { TextInput } from './TextInput'
 

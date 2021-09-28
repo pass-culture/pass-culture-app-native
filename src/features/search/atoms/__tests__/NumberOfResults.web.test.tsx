@@ -6,7 +6,7 @@ import { LocationType } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { NumberOfResults } from '../NumberOfResults'
 

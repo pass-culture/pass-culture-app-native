@@ -10,7 +10,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
-import { superFlushWithAct, fireEvent, render } from 'tests/utils/web'
+import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { FavoriteSortBy, FavoritesSorts } from '../FavoritesSorts'
 import { FavoritesWrapper } from '../FavoritesWrapper'

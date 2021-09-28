@@ -10,7 +10,7 @@ import {
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { LocationFilter } from '../LocationFilter'
 

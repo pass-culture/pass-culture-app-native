@@ -1,310 +1,140 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WhereSection should render correctly 1`] = `
-Array [
+<DocumentFragment>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />,
-  <div
-    className="css-text-901oao"
-    dir="auto"
-    style={
-      Object {
-        "color": "rgba(21,21,21,1.00)",
-        "fontFamily": "Montserrat-Medium",
-        "fontSize": "18px",
-        "lineHeight": "22px",
-      }
-    }
-  >
-    Où ?
-  </div>,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "16px",
-      }
-    }
-  />,
-  <div
-    className="css-view-1dbjc4n"
-    data-testid="VenueBannerComponent"
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onKeyDown={[Function]}
-    style={
-      Object {
-        "MozTransitionProperty": "opacity",
-        "MozUserSelect": "none",
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "WebkitTransitionDuration": "0s",
-        "WebkitTransitionProperty": "opacity",
-        "WebkitUserSelect": "none",
-        "alignItems": "center",
-        "cursor": "pointer",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "msTouchAction": "manipulation",
-        "msUserSelect": "none",
-        "touchAction": "manipulation",
-        "transitionDuration": "0s",
-        "transitionProperty": "opacity",
-        "userSelect": "none",
-      }
-    }
-    tabIndex="0"
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "left": "-10px",
-        }
-      }
-    >
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="BicolorLocationBuilding"
-      >
-        <div
-          className="css-text-901oao"
-          dir="auto"
-        >
-          BicolorLocationBuilding-SVG-Mock
-        </div>
-      </div>
-    </div>
-    <div
-      className="css-text-901oao css-textOneLine-vcwn7f"
-      dir="auto"
-      style={
-        Object {
-          "WebkitFlexShrink": 1,
-          "color": "rgba(21,21,21,1.00)",
-          "flexShrink": 1,
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": "15px",
-          "left": "-10px",
-          "lineHeight": "20px",
-          "msFlexNegative": 1,
-          "textTransform": "capitalize",
-        }
-      }
-    >
-      Le Petit Rintintin 1
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-        }
-      }
+      class="css-view-1dbjc4n"
+      style="height: 24px;"
     />
     <div
-      className="css-view-1dbjc4n"
+      class="css-text-901oao"
+      dir="auto"
+      style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
     >
-      <div
-        className="css-text-901oao"
-        dir="auto"
-      >
-        undefined-SVG-Mock
-      </div>
+      Où ?
     </div>
-  </div>,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "16px",
-      }
-    }
-  />,
-  <div
-    className="css-text-901oao"
-    dir="auto"
-    style={
-      Object {
-        "color": "rgba(21,21,21,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
-      }
-    }
-  >
-    Adresse
-  </div>,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "4px",
-      }
-    }
-  />,
-  <div
-    className="css-text-901oao"
-    dir="auto"
-    style={
-      Object {
-        "color": "rgba(21,21,21,1.00)",
-        "fontFamily": "Montserrat-Regular",
-        "fontSize": "15px",
-        "lineHeight": "20px",
-        "textTransform": "capitalize",
-      }
-    }
-  >
-    PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
-  </div>,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "16px",
-      }
-    }
-  />,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "backgroundColor": "rgba(199,199,204,1.00)",
-        "height": "1px",
-      }
-    }
-  />,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "flex-start",
-        "WebkitBoxAlign": "start",
-        "alignItems": "flex-start",
-        "msFlexAlign": "start",
-      }
-    }
-  >
     <div
-      aria-label="Voir l'itinéraire"
-      className="css-view-1dbjc4n"
-      data-testid="Voir l'itinéraire"
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onKeyDown={[Function]}
-      style={
-        Object {
-          "MozTransitionProperty": "opacity",
-          "MozUserSelect": "none",
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "horizontal",
-          "WebkitBoxPack": "center",
-          "WebkitFlexDirection": "row",
-          "WebkitJustifyContent": "center",
-          "WebkitTransitionDuration": "0s",
-          "WebkitTransitionProperty": "opacity",
-          "WebkitUserSelect": "none",
-          "alignItems": "center",
-          "backgroundColor": "rgba(0,0,0,0.00)",
-          "borderBottomLeftRadius": "0px",
-          "borderBottomRightRadius": "0px",
-          "borderBottomWidth": "0px",
-          "borderLeftWidth": "0px",
-          "borderRightWidth": "0px",
-          "borderTopLeftRadius": "0px",
-          "borderTopRightRadius": "0px",
-          "borderTopWidth": "0px",
-          "cursor": "pointer",
-          "flexDirection": "row",
-          "height": "20px",
-          "justifyContent": "center",
-          "marginTop": "0px",
-          "maxWidth": "500px",
-          "msFlexAlign": "center",
-          "msFlexDirection": "row",
-          "msFlexPack": "center",
-          "msTouchAction": "manipulation",
-          "msUserSelect": "none",
-          "paddingBottom": "0px",
-          "paddingLeft": "0px",
-          "paddingRight": "0px",
-          "paddingTop": "0px",
-          "touchAction": "manipulation",
-          "transitionDuration": "0s",
-          "transitionProperty": "opacity",
-          "userSelect": "none",
-          "width": "auto",
-        }
-      }
-      tabIndex="0"
+      class="css-view-1dbjc4n"
+      style="height: 16px;"
+    />
+    <div
+      class="css-view-1dbjc4n"
+      data-testid="VenueBannerComponent"
+      style="align-items: center; cursor: pointer; flex-direction: row; transition-duration: 0s; transition-property: opacity; user-select: none;"
+      tabindex="0"
     >
       <div
-        className="css-view-1dbjc4n"
+        class="css-view-1dbjc4n"
+        style="left: -10px;"
       >
         <div
-          className="css-text-901oao"
+          class="css-view-1dbjc4n"
+          data-testid="BicolorLocationBuilding"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+          >
+            BicolorLocationBuilding-SVG-Mock
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-text-901oao css-textOneLine-vcwn7f"
+        dir="auto"
+        style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-Bold; font-size: 15px; left: -10px; line-height: 20px; text-transform: capitalize;"
+      >
+        Le Petit Rintintin 1
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+      >
+        <div
+          class="css-text-901oao"
           dir="auto"
         >
           undefined-SVG-Mock
         </div>
       </div>
+    </div>
+    <div
+      class="css-view-1dbjc4n"
+      style="height: 16px;"
+    />
+    <div
+      class="css-text-901oao"
+      dir="auto"
+      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+    >
+      Adresse
+    </div>
+    <div
+      class="css-view-1dbjc4n"
+      style="height: 4px;"
+    />
+    <div
+      class="css-text-901oao"
+      dir="auto"
+      style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
+    >
+      PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
+    </div>
+    <div
+      class="css-view-1dbjc4n"
+      style="height: 16px;"
+    />
+    <div
+      class="css-view-1dbjc4n"
+      style="background-color: rgb(199, 199, 204); height: 1px;"
+    />
+    <div
+      class="css-view-1dbjc4n"
+      style="height: 24px;"
+    />
+    <div
+      class="css-view-1dbjc4n"
+      style="align-items: flex-start;"
+    >
       <div
-        className="css-text-901oao css-textOneLine-vcwn7f"
-        dir="auto"
-        style={
-          Object {
-            "color": "rgba(21,21,21,1.00)",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": "15px",
-            "lineHeight": "20px",
-            "marginLeft": "5px",
-            "maxWidth": "100%",
-          }
-        }
+        aria-label="Voir l'itinéraire"
+        class="css-view-1dbjc4n"
+        data-testid="Voir l'itinéraire"
+        style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 20px; justify-content: center; margin-top: 0px; max-width: 500px; padding: 0px 0px 0px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: auto;"
+        tabindex="0"
       >
-        Voir l'itinéraire
+        <div
+          class="css-view-1dbjc4n"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+          >
+            undefined-SVG-Mock
+          </div>
+        </div>
+        <div
+          class="css-text-901oao css-textOneLine-vcwn7f"
+          dir="auto"
+          style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+        >
+          Voir l'itinéraire
+        </div>
       </div>
     </div>
-  </div>,
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "24px",
-      }
-    }
-  />,
-]
+    <div
+      class="css-view-1dbjc4n"
+      style="height: 24px;"
+    />
+  </div>
+</DocumentFragment>
 `;
 
 exports[`WhereSection should render correctly 2`] = `
@@ -312,123 +142,63 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -28,10 +28,118 @@
-          \\"height\\": \\"16px\\",
-        }
-      }
-    />,
-    <div
-+     className=\\"css-view-1dbjc4n\\"
-+     data-testid=\\"VenueBannerComponent\\"
-+     onClick={[Function onClick]}
-+     onContextMenu={[Function onContextMenu]}
-+     onKeyDown={[Function onKeyDown]}
-+     style={
-+       Object {
-+         \\"MozTransitionProperty\\": \\"opacity\\",
-+         \\"MozUserSelect\\": \\"none\\",
-+         \\"WebkitAlignItems\\": \\"center\\",
-+         \\"WebkitBoxAlign\\": \\"center\\",
-+         \\"WebkitBoxDirection\\": \\"normal\\",
-+         \\"WebkitBoxOrient\\": \\"horizontal\\",
-+         \\"WebkitFlexDirection\\": \\"row\\",
-+         \\"WebkitTransitionDuration\\": \\"0s\\",
-+         \\"WebkitTransitionProperty\\": \\"opacity\\",
-+         \\"WebkitUserSelect\\": \\"none\\",
-+         \\"alignItems\\": \\"center\\",
-+         \\"cursor\\": \\"pointer\\",
-+         \\"flexDirection\\": \\"row\\",
-+         \\"msFlexAlign\\": \\"center\\",
-+         \\"msFlexDirection\\": \\"row\\",
-+         \\"msTouchAction\\": \\"manipulation\\",
-+         \\"msUserSelect\\": \\"none\\",
-+         \\"touchAction\\": \\"manipulation\\",
-+         \\"transitionDuration\\": \\"0s\\",
-+         \\"transitionProperty\\": \\"opacity\\",
-+         \\"userSelect\\": \\"none\\",
-+       }
-+     }
-+     tabIndex=\\"0\\"
-+   >
-+     <div
-+       className=\\"css-view-1dbjc4n\\"
-+       style={
-+         Object {
-+           \\"left\\": \\"-10px\\",
-+         }
-+       }
+@@ -17,10 +17,58 @@
+      <div
+        class=\\"css-view-1dbjc4n\\"
+        style=\\"height: 16px;\\"
+      />
+      <div
++       class=\\"css-view-1dbjc4n\\"
++       data-testid=\\"VenueBannerComponent\\"
++       style=\\"align-items: center; cursor: pointer; flex-direction: row; transition-duration: 0s; transition-property: opacity; user-select: none;\\"
++       tabindex=\\"0\\"
 +     >
 +       <div
-+         className=\\"css-view-1dbjc4n\\"
-+         data-testid=\\"BicolorLocationBuilding\\"
++         class=\\"css-view-1dbjc4n\\"
++         style=\\"left: -10px;\\"
 +       >
 +         <div
-+           className=\\"css-text-901oao\\"
++           class=\\"css-view-1dbjc4n\\"
++           data-testid=\\"BicolorLocationBuilding\\"
++         >
++           <div
++             class=\\"css-text-901oao\\"
++             dir=\\"auto\\"
++           >
++             BicolorLocationBuilding-SVG-Mock
++           </div>
++         </div>
++       </div>
++       <div
++         class=\\"css-text-901oao css-textOneLine-vcwn7f\\"
++         dir=\\"auto\\"
++         style=\\"color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-Bold; font-size: 15px; left: -10px; line-height: 20px; text-transform: capitalize;\\"
++       >
++         Le Petit Rintintin 1
++       </div>
++       <div
++         class=\\"css-view-1dbjc4n\\"
++         style=\\"flex-basis: 0px; flex-grow: 1; flex-shrink: 1;\\"
++       />
++       <div
++         class=\\"css-view-1dbjc4n\\"
++       >
++         <div
++           class=\\"css-text-901oao\\"
 +           dir=\\"auto\\"
 +         >
-+           BicolorLocationBuilding-SVG-Mock
++           undefined-SVG-Mock
 +         </div>
 +       </div>
 +     </div>
 +     <div
-+       className=\\"css-text-901oao css-textOneLine-vcwn7f\\"
-+       dir=\\"auto\\"
-+       style={
-+         Object {
-+           \\"WebkitFlexShrink\\": 1,
-+           \\"color\\": \\"rgba(21,21,21,1.00)\\",
-+           \\"flexShrink\\": 1,
-+           \\"fontFamily\\": \\"Montserrat-Bold\\",
-+           \\"fontSize\\": \\"15px\\",
-+           \\"left\\": \\"-10px\\",
-+           \\"lineHeight\\": \\"20px\\",
-+           \\"msFlexNegative\\": 1,
-+           \\"textTransform\\": \\"capitalize\\",
-+         }
-+       }
-+     >
-+       Le Petit Rintintin 1
-+     </div>
-+     <div
-+       className=\\"css-view-1dbjc4n\\"
-+       style={
-+         Object {
-+           \\"WebkitBoxFlex\\": 1,
-+           \\"WebkitFlexBasis\\": \\"0px\\",
-+           \\"WebkitFlexGrow\\": 1,
-+           \\"WebkitFlexShrink\\": 1,
-+           \\"flexBasis\\": \\"0px\\",
-+           \\"flexGrow\\": 1,
-+           \\"flexShrink\\": 1,
-+           \\"msFlexNegative\\": 1,
-+           \\"msFlexPositive\\": 1,
-+           \\"msFlexPreferredSize\\": \\"0px\\",
-+         }
-+       }
++       class=\\"css-view-1dbjc4n\\"
++       style=\\"height: 16px;\\"
 +     />
 +     <div
-+       className=\\"css-view-1dbjc4n\\"
-+     >
-+       <div
-+         className=\\"css-text-901oao\\"
-+         dir=\\"auto\\"
-+       >
-+         undefined-SVG-Mock
-+       </div>
-+     </div>
-+   </div>,
-+   <div
-+     className=\\"css-view-1dbjc4n\\"
-+     style={
-+       Object {
-+         \\"height\\": \\"16px\\",
-+       }
-+     }
-+   />,
-+   <div
-      className=\\"css-text-901oao\\"
-      dir=\\"auto\\"
-      style={
-        Object {
-          \\"color\\": \\"rgba(21,21,21,1.00)\\","
+        class=\\"css-text-901oao\\"
+        dir=\\"auto\\"
+        style=\\"color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;\\"
+      >
+        Adresse"
 `;

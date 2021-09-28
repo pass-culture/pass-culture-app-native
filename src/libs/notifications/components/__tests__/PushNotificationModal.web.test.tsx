@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
 import { PushNotificationsModal } from '../PushNotificationsModal'
 

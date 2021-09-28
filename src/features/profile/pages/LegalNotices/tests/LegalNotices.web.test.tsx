@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
-import { flushAllPromises, render, act, fireEvent } from 'tests/utils/web'
+import { flushAllPromises, render, act, fireEvent } from 'tests/utils'
 
 import { LegalNotices } from '../LegalNotices'
 

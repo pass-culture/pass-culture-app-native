@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils/web'
+import { render } from 'tests/utils'
 import { ImageTile } from 'ui/components/ImageTile'
 import { LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 

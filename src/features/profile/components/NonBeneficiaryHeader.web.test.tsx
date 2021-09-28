@@ -4,7 +4,7 @@ import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BeneficiaryValidationStep, GetIdCheckTokenResponse } from 'api/gen'
-import { flushAllPromises, fireEvent, render } from 'tests/utils/web'
+import { flushAllPromises, fireEvent, render } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 

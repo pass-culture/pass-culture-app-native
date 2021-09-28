@@ -1,177 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`< ButtonWithLinearGradient /> should render disabled 1`] = `
-<div
-  aria-disabled={true}
-  aria-label="Wording to display"
-  className="css-view-1dbjc4n"
-  data-testid="Wording to display"
-  onClick={[Function]}
-  onContextMenu={[Function]}
-  onKeyDown={[Function]}
-  style={
-    Object {
-      "MozTransitionProperty": "opacity",
-      "MozUserSelect": "none",
-      "WebkitAlignItems": "center",
-      "WebkitBoxAlign": "center",
-      "WebkitBoxPack": "center",
-      "WebkitJustifyContent": "center",
-      "WebkitTransitionDuration": "0s",
-      "WebkitTransitionProperty": "opacity",
-      "WebkitUserSelect": "none",
-      "alignItems": "center",
-      "borderBottomLeftRadius": "24px",
-      "borderBottomRightRadius": "24px",
-      "borderTopLeftRadius": "24px",
-      "borderTopRightRadius": "24px",
-      "justifyContent": "center",
-      "msFlexAlign": "center",
-      "msFlexPack": "center",
-      "msUserSelect": "none",
-      "overflowX": "hidden",
-      "overflowY": "hidden",
-      "transitionDuration": "0s",
-      "transitionProperty": "opacity",
-      "userSelect": "none",
-    }
-  }
-  tabIndex="-1"
->
+<DocumentFragment>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "backgroundColor": "rgba(255,153,190,1.00)",
-        "height": "48px",
-        "width": "100%",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "position": "absolute",
-      }
-    }
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
     <div
-      className="css-text-901oao css-textOneLine-vcwn7f"
-      dir="auto"
-      style={
-        Object {
-          "color": "rgba(255,255,255,1.00)",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": "15px",
-          "lineHeight": "20px",
-          "paddingBottom": "20px",
-          "paddingLeft": "20px",
-          "paddingRight": "20px",
-          "paddingTop": "20px",
-        }
-      }
+      aria-disabled="true"
+      aria-label="Wording to display"
+      class="css-view-1dbjc4n"
+      data-testid="Wording to display"
+      style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; justify-content: center; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
+      tabindex="-1"
     >
-      Wording to display
+      <div
+        class="css-view-1dbjc4n"
+        style="background-color: rgb(255, 153, 190); height: 48px; width: 100%;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="align-items: center; flex-direction: row; position: absolute;"
+      >
+        <div
+          class="css-text-901oao css-textOneLine-vcwn7f"
+          dir="auto"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
+        >
+          Wording to display
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`< ButtonWithLinearGradient /> should render not disabled 1`] = `
-<div
-  aria-label="Wording to display"
-  className="css-view-1dbjc4n"
-  data-testid="Wording to display"
-  onClick={[Function]}
-  onContextMenu={[Function]}
-  onKeyDown={[Function]}
-  style={
-    Object {
-      "MozTransitionProperty": "opacity",
-      "MozUserSelect": "none",
-      "WebkitAlignItems": "center",
-      "WebkitBoxAlign": "center",
-      "WebkitBoxPack": "center",
-      "WebkitJustifyContent": "center",
-      "WebkitTransitionDuration": "0s",
-      "WebkitTransitionProperty": "opacity",
-      "WebkitUserSelect": "none",
-      "alignItems": "center",
-      "borderBottomLeftRadius": "24px",
-      "borderBottomRightRadius": "24px",
-      "borderTopLeftRadius": "24px",
-      "borderTopRightRadius": "24px",
-      "cursor": "pointer",
-      "justifyContent": "center",
-      "msFlexAlign": "center",
-      "msFlexPack": "center",
-      "msTouchAction": "manipulation",
-      "msUserSelect": "none",
-      "overflowX": "hidden",
-      "overflowY": "hidden",
-      "touchAction": "manipulation",
-      "transitionDuration": "0s",
-      "transitionProperty": "opacity",
-      "userSelect": "none",
-    }
-  }
-  tabIndex="0"
->
+<DocumentFragment>
   <div
-    className="css-view-1dbjc4n"
+    class="css-view-1dbjc4n"
+    style="flex: 1; height: 100%;"
   >
     <div
-      className="css-text-901oao"
-      dir="auto"
+      aria-label="Wording to display"
+      class="css-view-1dbjc4n"
+      data-testid="Wording to display"
+      style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; justify-content: center; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
+      tabindex="0"
     >
-      undefined-SVG-Mock
+      <div
+        class="css-view-1dbjc4n"
+      >
+        <div
+          class="css-text-901oao"
+          dir="auto"
+        >
+          undefined-SVG-Mock
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="align-items: center; flex-direction: row; position: absolute;"
+      >
+        <div
+          class="css-text-901oao css-textOneLine-vcwn7f"
+          dir="auto"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
+        >
+          Wording to display
+        </div>
+      </div>
     </div>
   </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "position": "absolute",
-      }
-    }
-  >
-    <div
-      className="css-text-901oao css-textOneLine-vcwn7f"
-      dir="auto"
-      style={
-        Object {
-          "color": "rgba(255,255,255,1.00)",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": "15px",
-          "lineHeight": "20px",
-          "paddingBottom": "20px",
-          "paddingLeft": "20px",
-          "paddingRight": "20px",
-          "paddingTop": "20px",
-        }
-      }
-    >
-      Wording to display
-    </div>
-  </div>
-</div>
+</DocumentFragment>
 `;
