@@ -1,13 +1,12 @@
-import { CategoryNameEnum, SubcategoryIdEnum } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
 
 interface Offer {
-  category: CategoryNameEnum | null
-  subcategoryId: SubcategoryIdEnum
   dates?: number[]
   isDigital?: boolean
   isDuo?: boolean
   name?: string
   prices?: number[]
+  subcategoryId: SubcategoryIdEnum
   thumbUrl?: string
 }
 

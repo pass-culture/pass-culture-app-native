@@ -18,13 +18,13 @@ const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_
 // We don't use all the fields indexed. Simply retrieve the one we use.
 // see SearchHit
 export const attributesToRetrieve = [
-  'offer.category',
   'offer.dates',
   'offer.description',
   'offer.isDigital',
   'offer.isDuo',
   'offer.name',
   'offer.prices',
+  'offer.subcategoryId',
   'offer.thumbUrl',
   'objectID',
   '_geoloc',

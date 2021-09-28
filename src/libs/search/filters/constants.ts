@@ -57,7 +57,6 @@ export enum AppSearchVenuesFields {
 
 // We don't use all the fields indexed. Simply retrieve the one we use.
 export const RESULT_FIELDS: ResultFields<AppSearchFields> = {
-  [AppSearchFields.category]: { raw: {} },
   [AppSearchFields.dates]: { raw: {} },
   [AppSearchFields.id]: { raw: {} },
   [AppSearchFields.is_digital]: { raw: {} },
