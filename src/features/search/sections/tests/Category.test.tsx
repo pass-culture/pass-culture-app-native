@@ -22,7 +22,7 @@ describe('Category component', () => {
   it('should not render "Toutes les catégories" categories but the rest', () => {
     const { queryByText } = render(<Category />)
     Object.values(CATEGORY_CRITERIA).map(({ label }) => {
-      if (label === CATEGORY_CRITERIA.ALL.label) {
+      if (label === CATEGORY_CRITERIA.NONE.label) {
         expect(queryByText(label)).toBeFalsy()
       } else {
         expect(queryByText(label)).toBeTruthy()

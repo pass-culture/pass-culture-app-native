@@ -2,7 +2,7 @@ import { SearchOptions } from '@elastic/app-search-javascript'
 import { flatten } from 'lodash'
 
 import { VenuesSearchParametersFields } from 'features/home/contentful'
-import { OptionalCategoryCriteria } from 'features/search/enums'
+import { CategoryCriteria } from 'features/search/enums'
 import { Response } from 'features/search/pages/useSearchResults'
 import { PartialSearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia'
@@ -29,7 +29,7 @@ interface SearchResponse {
 
 export const fetchObjects = async (
   ids: string[],
-  availableCategories: OptionalCategoryCriteria,
+  availableCategories: Partial<CategoryCriteria>,
   isUserUnderage: boolean
 ): Promise<{ results: SearchHit[] }> => {
   const options: SearchOptions<AppSearchFields> = {

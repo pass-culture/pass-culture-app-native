@@ -56,7 +56,7 @@ describe('Analytics - logUseFilter', () => {
     fireEvent.press(getByText(CATEGORY_CRITERIA.CINEMA.label))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Category)
     fireEvent.press(getByText(CATEGORY_CRITERIA.JEU.label))
-    fireEvent.press(getByText(CATEGORY_CRITERIA.MEDIA.label))
+    fireEvent.press(getByText(CATEGORY_CRITERIA.PRESSE.label))
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
   it('should log UseFilter once when selecting multiple offer types', () => {

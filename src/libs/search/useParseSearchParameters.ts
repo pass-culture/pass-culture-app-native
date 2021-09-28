@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { SearchParametersFields } from 'features/home/contentful'
-import { OptionalCategoryCriteria } from 'features/search/enums'
+import { CategoryCriteria } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { useGeolocation } from 'libs/geolocation'
@@ -10,7 +10,7 @@ import { filterAvailableCategories, getCategoriesFacetFilters } from 'libs/searc
 
 const buildNewSearchParameters = (
   params: SearchParametersFields,
-  availableCategories: OptionalCategoryCriteria
+  availableCategories: Partial<CategoryCriteria>
 ): SearchParametersFields => {
   const { categories: categoryLabels = [], ...otherParams } = params
   // We receive category labels from contentful. We first have to map to facetFilters used for search

@@ -1,4 +1,4 @@
-import { CategoryIdEnum, VenueTypeCode } from 'api/gen'
+import { SearchGroupNameEnum, VenueTypeCode } from 'api/gen'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
@@ -18,103 +18,78 @@ export enum LocationType {
 }
 
 export type CategoryCriteria = {
-  ALL: {
+  [category in SearchGroupNameEnum]: {
     label: string
     icon: React.FC<BicolorIconInterface>
-    facetFilter: ''
-  }
-} & {
-  [category in CategoryIdEnum]: {
-    label: string
-    icon: React.FC<BicolorIconInterface>
-    facetFilter: CategoryIdEnum
+    facetFilter: SearchGroupNameEnum | ''
   }
 }
 
-export type OptionalCategoryCriteria = Pick<CategoryCriteria, 'ALL'> &
-  {
-    [category in CategoryIdEnum]?: {
-      label: string
-      icon: React.FC<BicolorIconInterface>
-      facetFilter: CategoryIdEnum
-    }
-  }
-
 export const CATEGORY_CRITERIA: CategoryCriteria = {
-  ALL: {
+  [SearchGroupNameEnum.NONE]: {
     label: 'Toutes les catégories',
     icon: CategoryIcon.All,
     facetFilter: '',
   },
-  [CategoryIdEnum.CINEMA]: {
+  [SearchGroupNameEnum.CINEMA]: {
     label: 'Cinéma',
     icon: CategoryIcon.Cinema,
-    facetFilter: CategoryIdEnum.CINEMA,
+    facetFilter: SearchGroupNameEnum.CINEMA,
   },
-  [CategoryIdEnum.MUSEE]: {
+  [SearchGroupNameEnum.VISITE]: {
     label: 'Visites, expositions',
     icon: CategoryIcon.Exposition,
-    facetFilter: CategoryIdEnum.MUSEE,
+    facetFilter: SearchGroupNameEnum.VISITE,
   },
-  [CategoryIdEnum.MUSIQUEENREGISTREE]: {
+  [SearchGroupNameEnum.MUSIQUE]: {
     label: 'Musique',
     icon: CategoryIcon.Musique,
-    facetFilter: CategoryIdEnum.MUSIQUEENREGISTREE,
+    facetFilter: SearchGroupNameEnum.MUSIQUE,
   },
-  [CategoryIdEnum.MUSIQUELIVE]: {
-    label: 'Musique',
-    icon: CategoryIcon.Musique,
-    facetFilter: CategoryIdEnum.MUSIQUELIVE,
-  },
-  [CategoryIdEnum.SPECTACLE]: {
+  [SearchGroupNameEnum.SPECTACLE]: {
     label: 'Spectacles',
     icon: CategoryIcon.Spectacles,
-    facetFilter: CategoryIdEnum.SPECTACLE,
+    facetFilter: SearchGroupNameEnum.SPECTACLE,
   },
-  [CategoryIdEnum.PRATIQUEART]: {
+  [SearchGroupNameEnum.COURS]: {
     label: 'Cours, ateliers',
     icon: CategoryIcon.Atelier,
-    facetFilter: CategoryIdEnum.PRATIQUEART,
+    facetFilter: SearchGroupNameEnum.COURS,
   },
-  [CategoryIdEnum.LIVRE]: {
+  [SearchGroupNameEnum.LIVRE]: {
     label: 'Livres',
     icon: CategoryIcon.Livres,
-    facetFilter: CategoryIdEnum.LIVRE,
+    facetFilter: SearchGroupNameEnum.LIVRE,
   },
-  [CategoryIdEnum.FILM]: {
+  [SearchGroupNameEnum.FILM]: {
     label: 'Films, séries, podcasts',
     icon: CategoryIcon.Streaming,
-    facetFilter: CategoryIdEnum.FILM,
+    facetFilter: SearchGroupNameEnum.FILM,
   },
-  [CategoryIdEnum.MEDIA]: {
+  [SearchGroupNameEnum.PRESSE]: {
     label: 'Presse',
     icon: CategoryIcon.Presse,
-    facetFilter: CategoryIdEnum.MEDIA,
+    facetFilter: SearchGroupNameEnum.PRESSE,
   },
-  [CategoryIdEnum.JEU]: {
+  [SearchGroupNameEnum.JEU]: {
     label: 'Jeux vidéos',
     icon: CategoryIcon.JeuxVideo,
-    facetFilter: CategoryIdEnum.JEU,
+    facetFilter: SearchGroupNameEnum.JEU,
   },
-  [CategoryIdEnum.CONFERENCE]: {
+  [SearchGroupNameEnum.CONFERENCE]: {
     label: 'Conférences, rencontres',
     icon: CategoryIcon.Conference,
-    facetFilter: CategoryIdEnum.CONFERENCE,
+    facetFilter: SearchGroupNameEnum.CONFERENCE,
   },
-  [CategoryIdEnum.INSTRUMENT]: {
+  [SearchGroupNameEnum.INSTRUMENT]: {
     label: 'Instruments de musique',
     icon: CategoryIcon.Instrument,
-    facetFilter: CategoryIdEnum.INSTRUMENT,
+    facetFilter: SearchGroupNameEnum.INSTRUMENT,
   },
-  [CategoryIdEnum.BEAUXARTS]: {
+  [SearchGroupNameEnum.MATERIEL]: {
     label: 'Matériel arts créatifs',
     icon: CategoryIcon.ArtsMaterial,
-    facetFilter: CategoryIdEnum.BEAUXARTS,
-  },
-  [CategoryIdEnum.TECHNIQUE]: {
-    label: "Œuvre d'art",
-    icon: CategoryIcon.ArtsMaterial,
-    facetFilter: CategoryIdEnum.BEAUXARTS,
+    facetFilter: SearchGroupNameEnum.MATERIEL,
   },
 }
 

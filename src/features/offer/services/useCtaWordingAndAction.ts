@@ -6,7 +6,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl, navigateToBooking } from 'features/navigation/helpers'
 import { getOfferPrice } from 'features/offer/services/getOfferPrice'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
-import { OptionalCategoryCriteria } from 'features/search/enums'
+import { CategoryCriteria } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -16,12 +16,10 @@ import { useOffer } from '../api/useOffer'
 
 import { useHasEnoughCredit } from './useHasEnoughCredit'
 
-function getIsBookedOffer(
+const getIsBookedOffer = (
   offerId: FavoriteOfferResponse['id'],
   bookedOffersIds: UserProfileResponse['bookedOffers'] = {}
-): boolean {
-  return bookedOffersIds[offerId] !== undefined
-}
+): boolean => bookedOffersIds[offerId] !== undefined
 
 interface Props {
   isLoggedIn: boolean
@@ -30,7 +28,7 @@ interface Props {
   subcategory: Subcategory
   hasEnoughCredit: boolean
   bookedOffers: UserProfileResponse['bookedOffers']
-  availableCategories: OptionalCategoryCriteria
+  availableCategories: Partial<CategoryCriteria>
   isUnderageBeneficiary: boolean
 }
 interface ICTAWordingAndAction {
