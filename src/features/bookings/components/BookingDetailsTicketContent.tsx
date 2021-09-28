@@ -12,7 +12,7 @@ import {
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { useCategoryId } from 'libs/subcategories'
+import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
@@ -24,7 +24,8 @@ interface BookingDetailsTicketContentProps {
 export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentProps) => {
   const { booking, activationCodeFeatureEnabled } = props
   const offer = booking.stock.offer
-  const properties = getBookingProperties(booking)
+  const { isEvent } = useSubcategory(offer.subcategoryId)
+  const properties = getBookingProperties(booking, isEvent)
 
   const accessExternalOffer = () => {
     if (offer.url) {

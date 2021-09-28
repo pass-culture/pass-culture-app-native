@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mapCategoryToIcon } from 'libs/parsers'
-import { useCategoryId } from 'libs/subcategories'
+import { useSubcategory } from 'libs/subcategories'
 import { Clock } from 'ui/svg/icons/Clock'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -20,10 +20,10 @@ import { BookingItemProps } from './types'
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: settings = null } = useAppSettings()
-  const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
+  const { categoryId, isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
 
   const { stock } = booking
-  const bookingProperties = getBookingProperties(booking)
+  const bookingProperties = getBookingProperties(booking, isEvent)
   const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties, settings)
 
   return (
