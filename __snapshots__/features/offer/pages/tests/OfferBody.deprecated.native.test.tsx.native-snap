@@ -1304,6 +1304,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
+                                        "marginBottom": 16,
                                         "marginHorizontal": -4,
                                       },
                                     ]
@@ -1436,6 +1437,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
+                                        "marginBottom": 16,
                                         "marginHorizontal": -4,
                                       },
                                     ]
@@ -1600,6 +1602,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
+                                        "marginBottom": 16,
                                         "marginHorizontal": -4,
                                       },
                                     ]
@@ -1732,6 +1735,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
+                                        "marginBottom": 16,
                                         "marginHorizontal": -4,
                                       },
                                     ]
@@ -4012,6 +4016,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
+                                        "marginBottom": 16,
                                         "marginHorizontal": -4,
                                       },
                                     ]
@@ -4144,6 +4149,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
+                                        "marginBottom": 16,
                                         "marginHorizontal": -4,
                                       },
                                     ]
@@ -4308,6 +4314,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
+                                        "marginBottom": 16,
                                         "marginHorizontal": -4,
                                       },
                                     ]
@@ -4440,6 +4447,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
+                                        "marginBottom": 16,
                                         "marginHorizontal": -4,
                                       },
                                     ]
