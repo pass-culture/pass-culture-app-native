@@ -5,13 +5,12 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
+import { IconWithCaption, OfferCategory } from 'features/offer/atoms'
+import { getOfferPrices } from 'features/offer/services/getOfferPrice'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
-
-import { IconWithCaption, OfferCategory } from '../atoms'
-import { getOfferPrices } from '../services/getOfferPrice'
 
 type Props = { categoryId: CategoryIdEnum | null; label: string } & Pick<
   OfferResponse,

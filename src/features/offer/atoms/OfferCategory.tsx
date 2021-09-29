@@ -7,10 +7,10 @@ import { IconWithCaption } from './IconWithCaption'
 
 interface OfferCategoryProps {
   categoryId: CategoryIdEnum | null
-  label?: string
+  label: string
 }
 
 export const OfferCategory = ({ categoryId, label }: OfferCategoryProps) => {
   const Icon = mapCategoryToIcon(categoryId)
-  return <IconWithCaption Icon={Icon} caption={label || ''} />
+  return <IconWithCaption Icon={Icon} caption={label} />
 }

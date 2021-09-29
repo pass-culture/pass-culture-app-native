@@ -57,8 +57,8 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   )
 
   if (!offer) return <React.Fragment></React.Fragment>
-  const { accessibility, category, venue } = offer
-  const { categoryId, isEvent } = mapping[offer.subcategoryId]
+  const { accessibility, venue } = offer
+  const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId]
 
   const showVenueBanner = true
   // TODO (Lucasbeneston): Remove testing condition when display the link to venue button
@@ -113,7 +113,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         isDuo={offer.isDuo}
         stocks={offer.stocks}
         categoryId={categoryId || null}
-        label={category.label}
+        label={appLabel}
       />
       <OfferPartialDescription description={offer.description || ''} id={offerId} />
       <Spacer.Column numberOfSpaces={4} />
