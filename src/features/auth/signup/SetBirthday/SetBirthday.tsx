@@ -183,6 +183,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
                   initialDay={INITIAL_DAY}
                   initialMonth={INITIAL_MONTH}
                   initialYear={INITIAL_YEAR}
+                  onSubmit={goToNextStep}
                 />
                 {renderErrorMessages()}
               </DateInputContainer>
@@ -229,7 +230,8 @@ const StyledBody = styled(Typo.Body)({
 })
 
 const DateInputContainer = styled.View({
-  alignItems: 'center',
+  alignItems: 'stretch',
+  flexDirection: 'column',
   width: '100%',
 })
 
