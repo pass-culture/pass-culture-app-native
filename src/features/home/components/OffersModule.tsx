@@ -35,7 +35,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const parseSearchParameters = useParseSearchParameters()
 
-  const layoutHits = useLayoutHits(display.layout, hits)
+  const layoutHits = useLayoutHits(hits, display.layout)
   const moduleName = display.title || parameters.title
   const logHasSeenAllTiles = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
