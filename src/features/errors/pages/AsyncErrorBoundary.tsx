@@ -48,7 +48,9 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   }
 
   if (error instanceof ScreenError) {
-    return <error.ScreenError resetErrorBoundary={resetErrorBoundary} />
+    return (
+      <error.Screen resetErrorBoundary={resetErrorBoundary} retry={error.retry} error={error} />
+    )
   }
 
   return (

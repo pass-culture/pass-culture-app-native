@@ -11,7 +11,10 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export const Maintenance = () => {
   return (
     <Container>
-      <Helmet title={t`Maintenance`} />
+      <Helmet>
+        <title>{t`Maintenance`}</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <Background />
       <Spacer.Flex />
       <Spacer.Column numberOfSpaces={10} />

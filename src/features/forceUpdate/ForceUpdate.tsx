@@ -45,7 +45,10 @@ const buttonText = Platform.select({
 export const ForceUpdate = () => {
   return (
     <Container>
-      <Helmet title={title} />
+      <Helmet>
+        <title>{title}</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <Background />
       <IconContainer>
         <Spacer.Flex />
