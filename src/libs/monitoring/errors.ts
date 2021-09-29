@@ -48,7 +48,7 @@ export class AsyncError extends MonitoringError {
 }
 
 export type ScreenErrorProps = {
-  retry?: () => Promise<unknown> | (() => void)
+  callback?: () => Promise<unknown> | (() => void)
 } & FallbackProps
 
 export class ScreenError extends AsyncError {
@@ -56,10 +56,10 @@ export class ScreenError extends AsyncError {
   constructor(
     message: string,
     Screen: ComponentType<ScreenErrorProps>,
-    retry?: () => Promise<unknown> | (() => void)
+    callback?: () => Promise<unknown> | (() => void)
   ) {
     const skipLogging = false
-    super(message, retry, 'ScreenError', skipLogging)
+    super(message, callback, 'ScreenError', skipLogging)
     this.Screen = Screen
   }
 }
@@ -70,9 +70,9 @@ export class OfferNotFoundError extends ScreenError {
   constructor(
     offerId: number | undefined,
     Screen: ComponentType<ScreenErrorProps>,
-    retry?: () => void
+    callback?: () => void
   ) {
     const message = offerId ? t`Offer ${offerId} could not be retrieved` : t`offerId is undefined`
-    super(message, Screen, retry ? async () => retry() : undefined)
+    super(message, Screen, callback ? async () => callback() : undefined)
   }
 }
