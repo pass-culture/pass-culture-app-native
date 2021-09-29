@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -213,11 +213,11 @@
+@@ -120,11 +120,11 @@
             className=\\"css-text-901oao css-textMultiLine-cens5h\\"
             dir=\\"auto\\"
             style={
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
                 \\"lineHeight\\": \\"20px\\",
               }
             }
-@@ -239,20 +239,10 @@
+@@ -146,20 +146,10 @@
                 \\"msFlexPositive\\": 1,
                 \\"msFlexPreferredSize\\": \\"0px\\",
               }
@@ -100,99 +100,6 @@ Array [
           }
         }
       />
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="NONE"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
-          <div
-            className="css-text-901oao"
-            dir="auto"
-          >
-            undefined-SVG-Mock
-          </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "8px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Toutes les catégories
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
       <div
         className="css-view-1dbjc4n"
         data-testid="CINEMA"
