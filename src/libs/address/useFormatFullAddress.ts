@@ -1,28 +1,38 @@
 const isNotEmpty = (text: string | undefined | null) => text !== undefined && text !== ''
 
-export const formatFullAddress = (
-  publicName: string | undefined | null,
-  name: string,
+export function formatFullAddress(
+  address: string | undefined | null,
+  postalCode: string | undefined | null,
+  city: string | undefined | null
+) {
+  let fullAddress = ''
+  if (isNotEmpty(address)) fullAddress = fullAddress.concat(`${address}`)
+  if (isNotEmpty(fullAddress) && (isNotEmpty(postalCode) || isNotEmpty(city))) {
+    fullAddress = fullAddress.concat(', ')
+  }
+  if (isNotEmpty(postalCode)) {
+    if (isNotEmpty(city)) {
+      fullAddress = fullAddress.concat(`${postalCode} ${city}`)
+    } else {
+      fullAddress = fullAddress.concat(`${postalCode}`)
+    }
+  } else {
+    if (isNotEmpty(city)) {
+      fullAddress = fullAddress.concat(`${city}`)
+    }
+  }
+  return fullAddress
+}
+
+export function formatFullAddressWithVenueName(
   address: string | undefined | null,
   postalCode: string | undefined | null,
   city: string | undefined | null,
-  addressWithoutVenueName?: boolean | false
-) => {
-  function formatFullAddressWithoutVenueName() {
-    let fullAddress = `${address}`
-    if (isNotEmpty(postalCode) || isNotEmpty(city)) fullAddress = fullAddress.concat(',')
-    if (isNotEmpty(postalCode)) fullAddress = fullAddress.concat(` ${postalCode}`)
-    if (isNotEmpty(city)) fullAddress = fullAddress.concat(` ${city}`)
-    return fullAddress
-  }
-  function formatFullAddress() {
-    let fullAddress = `${publicName || name}`
-    if (isNotEmpty(address)) fullAddress = fullAddress.concat(`, ${address}`)
-    if (isNotEmpty(postalCode) || isNotEmpty(city)) fullAddress = fullAddress.concat(',')
-    if (isNotEmpty(postalCode)) fullAddress = fullAddress.concat(` ${postalCode}`)
-    if (isNotEmpty(city)) fullAddress = fullAddress.concat(` ${city}`)
-    return fullAddress
-  }
-  if (addressWithoutVenueName) return formatFullAddressWithoutVenueName()
-  return formatFullAddress()
+  publicName: string | undefined | null,
+  name: string
+) {
+  let fullAddress = `${publicName || name}`
+  const placeAddress = formatFullAddress(address, postalCode, city)
+  if (isNotEmpty(placeAddress)) fullAddress = fullAddress.concat(`, ${placeAddress}`)
+  return fullAddress
 }

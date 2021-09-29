@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
-import { formatFullAddress } from 'libs/address/useFormatFullAddress'
+import { formatFullAddressWithVenueName } from 'libs/address/useFormatFullAddress'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { Booking } from 'ui/svg/icons/Booking'
@@ -44,12 +44,12 @@ export const BookingInformations: React.FC = () => {
   if (!stock || typeof quantity !== 'number' || !offer) return <React.Fragment />
 
   const { category, isDigital, name, venue } = offer
-  const fullAddress = formatFullAddress(
-    venue.publicName,
-    venue.name,
+  const fullAddress = formatFullAddressWithVenueName(
     venue.address,
     venue.postalCode,
-    venue.city
+    venue.city,
+    venue.publicName,
+    venue.name
   )
 
   const address = (
