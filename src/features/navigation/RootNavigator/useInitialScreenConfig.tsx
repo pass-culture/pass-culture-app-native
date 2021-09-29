@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import { useEffect } from 'react'
 
 import { api } from 'api/api'
@@ -10,7 +9,7 @@ import { storage } from 'libs/storage'
 
 import { homeNavigateConfig } from '../helpers'
 
-import { ScreenNames, UseNavigationType } from './types'
+import { RootScreenNames } from './types'
 
 export type InitialScreenConfiguration =
   | ScreenConfiguration<'EighteenBirthday'>
@@ -18,66 +17,47 @@ export type InitialScreenConfiguration =
   | ScreenConfiguration<'TabNavigator'>
   | ScreenConfiguration<'FirstTutorial'>
 
-export function useInitialScreenConfig(): void {
-  const { navigate, reset } = useNavigation<UseNavigationType>()
+export function useInitialScreen(): RootScreenNames | undefined {
   const { isLoggedIn } = useAuthContext()
 
-  const [initialScreenConfig, setInitialScreenConfig] = useSafeState<
-    InitialScreenConfiguration | undefined
-  >(undefined)
+  const [initialScreen, setInitialScreen] = useSafeState<RootScreenNames | undefined>(undefined)
 
   useEffect(() => {
-    getInitialScreenConfig({ isLoggedIn }).then((screenConfiguration) => {
-      setInitialScreenConfig(screenConfiguration)
-      triggerInitialScreenNameAnalytics(screenConfiguration.screen)
+    getInitialScreen({ isLoggedIn }).then((screen) => {
+      setInitialScreen(screen)
+      triggerInitialScreenNameAnalytics(screen)
     })
   }, [isLoggedIn])
 
-  useEffect(() => {
-    if (!initialScreenConfig) {
-      return
-    }
-    if (initialScreenConfig.screen !== 'TabNavigator') {
-      const { screen: name, params } = initialScreenConfig
-      reset({ index: 0, routes: [{ name, params }] })
-    } else {
-      navigate(initialScreenConfig.screen, initialScreenConfig.params)
-    }
-  }, [initialScreenConfig])
+  return initialScreen
 }
 
-async function getInitialScreenConfig({
-  isLoggedIn,
-}: {
-  isLoggedIn: boolean
-}): Promise<InitialScreenConfiguration> {
+async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promise<RootScreenNames> {
   if (isLoggedIn) {
     try {
       const user = await api.getnativev1me()
-
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
       if (!hasSeenEligibleCard && user.showEligibleCard) {
-        return { screen: 'EighteenBirthday', params: undefined }
+        return 'EighteenBirthday'
       }
-
       if (user.isBeneficiary && user.needsToFillCulturalSurvey) {
-        return { screen: 'CulturalSurvey', params: undefined }
+        return 'CulturalSurvey'
       }
     } catch {
       // If we cannot get user's information, we just go to the homepage
-      return homeNavigateConfig
+      return homeNavigateConfig.screen
     }
   }
 
   const hasSeenTutorials = !!(await storage.readObject('has_seen_tutorials'))
   if (hasSeenTutorials) {
-    return homeNavigateConfig
+    return homeNavigateConfig.screen
   }
 
-  return { screen: 'FirstTutorial', params: { shouldCloseAppOnBackAction: true } }
+  return 'FirstTutorial'
 }
 
-function triggerInitialScreenNameAnalytics(screenName: ScreenNames) {
+function triggerInitialScreenNameAnalytics(screenName: RootScreenNames) {
   if (screenName === 'TabNavigator') {
     analytics.logScreenView('Home')
   } else {
