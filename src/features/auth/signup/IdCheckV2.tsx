@@ -113,7 +113,7 @@ function getStepsConfigs({
       path: '/uploadDocument',
       screenName: 'UploadDocument',
       screens: isRetentionEnabled ? ['Conditions'] : ['Conditions', 'Validation'],
-      text: "Ta pièce d'identité",
+      text: 'Ton éligibilité',
     },
     {
       icon: ProfileIcon,
