@@ -14,7 +14,6 @@ import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-const ALL = 'ALL'
 export const DEBOUNCED_CALLBACK = 200
 
 export const useSelectCategory = (callback: () => void) => {
@@ -22,13 +21,12 @@ export const useSelectCategory = (callback: () => void) => {
   const debouncedCallback = useRef(debounce(callback, DEBOUNCED_CALLBACK)).current
 
   return {
-    isCategorySelected: (category: string) => {
-      // TODO(antoinewg) use correct types. Not ALL but NONE
-      const [selectedCategory] = [...searchState.offerCategories, ALL]
+    isCategorySelected: (category: SearchGroupNameEnum) => {
+      const [selectedCategory] = [...searchState.offerCategories, SearchGroupNameEnum.NONE]
       return selectedCategory === category
     },
-    selectCategory: (category: string) => () => {
-      const payload = category === ALL ? [] : [category]
+    selectCategory: (category: SearchGroupNameEnum) => () => {
+      const payload = category === SearchGroupNameEnum.NONE ? [] : [category]
       dispatch({ type: 'SET_CATEGORY', payload })
       debouncedCallback()
     },

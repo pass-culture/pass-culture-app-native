@@ -11,7 +11,6 @@ import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { CATEGORY_CRITERIA, LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
@@ -21,18 +20,12 @@ export const SearchLandingPage: React.FC = () => {
   const windowWidth = useWindowDimensions().width
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useStagedSearch()
-  const availableCategories = useAvailableCategories()
   const { locationFilter, offerCategories } = searchState
   const { locationType } = locationFilter
-  const [searchCategory] = offerCategories
+  const [searchCategory] = [...offerCategories, SearchGroupNameEnum.NONE]
 
-  const selectedCategory =
-    searchCategory in availableCategories
-      ? (searchCategory as SearchGroupNameEnum)
-      : SearchGroupNameEnum.NONE
-  const searchGroupLabel = useSearchGroupLabel(selectedCategory)
-
-  const { icon: Icon } = CATEGORY_CRITERIA[selectedCategory]
+  const searchGroupLabel = useSearchGroupLabel(searchCategory)
+  const { icon: Icon } = CATEGORY_CRITERIA[searchCategory]
 
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType

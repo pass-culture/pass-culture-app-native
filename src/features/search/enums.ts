@@ -20,14 +20,14 @@ export enum LocationType {
 export type CategoryCriteria = {
   [category in SearchGroupNameEnum]: {
     icon: React.FC<BicolorIconInterface>
-    facetFilter: SearchGroupNameEnum | ''
+    facetFilter: SearchGroupNameEnum
   }
 }
 
 export const CATEGORY_CRITERIA: CategoryCriteria = {
   [SearchGroupNameEnum.NONE]: {
     icon: CategoryIcon.All,
-    facetFilter: '',
+    facetFilter: SearchGroupNameEnum.NONE,
   },
   [SearchGroupNameEnum.CINEMA]: {
     icon: CategoryIcon.Cinema,
