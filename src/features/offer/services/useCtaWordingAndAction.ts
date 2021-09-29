@@ -1,6 +1,11 @@
 import { t } from '@lingui/macro'
 
-import { CategoryIdEnum, OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
+import {
+  OfferResponse,
+  FavoriteOfferResponse,
+  SearchGroupNameEnum,
+  UserProfileResponse,
+} from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl, navigateToBooking } from 'features/navigation/helpers'
@@ -48,10 +53,11 @@ export const getCtaWordingAndAction = ({
   availableCategories,
   isUnderageBeneficiary,
 }: Props): ICTAWordingAndAction | undefined => {
-  const { category, externalTicketOfficeUrl } = offer
+  const { externalTicketOfficeUrl } = offer
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
   const isOfferCategoryNotAvailable = !!(
-    category.name && !Object.keys(availableCategories).includes(category.name)
+    subcategory.searchGroupName &&
+    !Object.keys(availableCategories).includes(subcategory.searchGroupName)
   )
 
   if (isAlreadyBookedOffer) {
@@ -67,7 +73,7 @@ export const getCtaWordingAndAction = ({
     isUnderageBeneficiary &&
     offer.isDigital &&
     getOfferPrice(offer.stocks) !== 0 &&
-    subcategory.categoryId !== CategoryIdEnum.MEDIA
+    subcategory.searchGroupName !== SearchGroupNameEnum.PRESSE
 
   // Non beneficiary or educational offer or unavailable offer for user
   if (
@@ -135,13 +141,7 @@ export const useCtaWordingAndAction = (props: {
   /* check I have all information to calculate wording
    * why: avoid flash on CTA wording
    */
-  if (
-    isLoggedIn === null ||
-    user === null ||
-    offer.category.categoryType === null ||
-    offer.category.categoryType === undefined
-  )
-    return
+  if (isLoggedIn === null || user === null) return
 
   const { isBeneficiary = false, bookedOffers = {} } = user || {}
   return getCtaWordingAndAction({

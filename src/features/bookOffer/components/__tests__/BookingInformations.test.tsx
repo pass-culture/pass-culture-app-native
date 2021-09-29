@@ -105,6 +105,7 @@ describe('<BookingInformations />', () => {
       name: 'mon nom',
       stocks: [],
       subcategoryId: SubcategoryIdEnum.CARTECINEILLIMITE,
+      venue: mockOffer.venue,
     })
     const myComponent = render(<BookingInformations />)
     expect(myComponent).toMatchSnapshot()
