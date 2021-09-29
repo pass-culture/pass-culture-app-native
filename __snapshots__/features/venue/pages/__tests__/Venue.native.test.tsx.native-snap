@@ -2168,6 +2168,7 @@ Array [
                 style={
                   Array [
                     Object {
+                      "marginBottom": 16,
                       "marginHorizontal": -4,
                     },
                   ]
@@ -2300,6 +2301,7 @@ Array [
                 style={
                   Array [
                     Object {
+                      "marginBottom": 16,
                       "marginHorizontal": -4,
                     },
                   ]
@@ -2464,6 +2466,7 @@ Array [
                 style={
                   Array [
                     Object {
+                      "marginBottom": 16,
                       "marginHorizontal": -4,
                     },
                   ]
@@ -2596,6 +2599,7 @@ Array [
                 style={
                   Array [
                     Object {
+                      "marginBottom": 16,
                       "marginHorizontal": -4,
                     },
                   ]
@@ -2740,163 +2744,173 @@ Array [
           testID="accordionBodyContainer"
         >
           <View
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "marginVertical": 4,
-                "opacity": 1,
-              }
+              Array [
+                Object {
+                  "marginVertical": -4,
+                },
+              ]
             }
           >
             <View
-              height={24}
-              testID="Icon E-mail"
-              width={24}
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "marginVertical": 4,
+                  "opacity": 1,
+                }
+              }
             >
-              <Text>
-                Icon E-mail-SVG-Mock
+              <View
+                height={24}
+                testID="Icon E-mail"
+                width={24}
+              >
+                <Text>
+                  Icon E-mail-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                E-mail
               </Text>
             </View>
             <View
-              numberOfSpaces={2}
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "marginVertical": 4,
+                  "opacity": 1,
+                }
               }
             >
-              E-mail
-            </Text>
-          </View>
-          <View
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "marginVertical": 4,
-                "opacity": 1,
-              }
-            }
-          >
-            <View
-              height={24}
-              testID="Icon Téléphone"
-              width={24}
-            >
-              <Text>
-                Icon Téléphone-SVG-Mock
+              <View
+                height={24}
+                testID="Icon Téléphone"
+                width={24}
+              >
+                <Text>
+                  Icon Téléphone-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Téléphone
               </Text>
             </View>
             <View
-              numberOfSpaces={2}
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "marginVertical": 4,
+                  "opacity": 1,
+                }
               }
             >
-              Téléphone
-            </Text>
-          </View>
-          <View
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "marginVertical": 4,
-                "opacity": 1,
-              }
-            }
-          >
-            <View
-              height={24}
-              testID="Icon Site internet"
-              width={24}
-            >
-              <Text>
-                Icon Site internet-SVG-Mock
+              <View
+                height={24}
+                testID="Icon Site internet"
+                width={24}
+              >
+                <Text>
+                  Icon Site internet-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Site internet
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Site internet
-            </Text>
           </View>
         </View>
       </View>

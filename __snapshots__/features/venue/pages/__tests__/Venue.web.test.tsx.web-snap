@@ -954,7 +954,7 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="Handicap visuel"
-                    style="margin-right: -4px; margin-left: -4px;"
+                    style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                   >
                     <div
                       class="css-text-901oao"
@@ -1024,7 +1024,7 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="Handicap psychique ou cognitif"
-                    style="margin-right: -4px; margin-left: -4px;"
+                    style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                   >
                     <div
                       class="css-text-901oao"
@@ -1108,7 +1108,7 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="Handicap moteur"
-                    style="margin-right: -4px; margin-left: -4px;"
+                    style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                   >
                     <div
                       class="css-text-901oao"
@@ -1178,7 +1178,7 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="Handicap auditif"
-                    style="margin-right: -4px; margin-left: -4px;"
+                    style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                   >
                     <div
                       class="css-text-901oao"
@@ -2394,7 +2394,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="Handicap visuel"
-                  style="margin-right: -4px; margin-left: -4px;"
+                  style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                 >
                   <div
                     class="css-text-901oao"
@@ -2464,7 +2464,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="Handicap psychique ou cognitif"
-                  style="margin-right: -4px; margin-left: -4px;"
+                  style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                 >
                   <div
                     class="css-text-901oao"
@@ -2548,7 +2548,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="Handicap moteur"
-                  style="margin-right: -4px; margin-left: -4px;"
+                  style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                 >
                   <div
                     class="css-text-901oao"
@@ -2618,7 +2618,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="Handicap auditif"
-                  style="margin-right: -4px; margin-left: -4px;"
+                  style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                 >
                   <div
                     class="css-text-901oao"
