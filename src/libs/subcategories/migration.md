@@ -39,7 +39,7 @@ export enum CategoryIdEnum {
 ```
 
 2. Do not fetch category from algolia/app search
-3. Use Search group names for search and filters
+3. Use Search group names for search, filters and favorites.
 
 ```typescript
 // 12 categories

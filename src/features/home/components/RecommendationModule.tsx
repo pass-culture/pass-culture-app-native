@@ -15,8 +15,7 @@ import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
-import { useCategoryIdMapping } from 'libs/subcategories'
-import { useCategoryHomeLabelMapping } from 'libs/subcategories/mappings'
+import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 type RecommendationModuleProps = {

@@ -1,6 +1,8 @@
 import { renderHook, cleanup } from '@testing-library/react-hooks'
+import omit from 'lodash/omit'
 import { rest } from 'msw'
 
+import { SearchGroupNameEnum } from 'api/gen'
 import { RecommendationPane } from 'features/home/contentful/moduleTypes'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import * as SearchModule from 'libs/search/fetch/search'
@@ -61,7 +63,7 @@ describe('useHomeRecommendedHits', () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    const availableCategories = CATEGORY_CRITERIA
+    const availableCategories = omit(CATEGORY_CRITERIA, SearchGroupNameEnum.NONE)
     const isUserUnderage = false
     await waitFor(() => {
       expect(result.current).toHaveLength(4)
