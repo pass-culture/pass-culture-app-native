@@ -38,7 +38,7 @@ export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
   if (!venue || !venue.contact) return <React.Fragment></React.Fragment>
 
   return (
-    <React.Fragment>
+    <Container>
       {!!email && <ContactAtom label={t`E-mail`} onPress={onPressMail} Icon={EmailFilled} />}
       {!!(phoneNumber && isValidFrenchPhoneNumber(phoneNumber)) && (
         <ContactAtom label={t`Téléphone`} onPress={onPressPhone} Icon={PhoneFilled} />
@@ -46,7 +46,7 @@ export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
       {!!website && (
         <ContactAtom label={t`Site internet`} onPress={onPressWebsite} Icon={ExternalLinkSquare} />
       )}
-    </React.Fragment>
+    </Container>
   )
 }
 
@@ -63,6 +63,10 @@ const ContactAtom = ({ label, onPress, Icon }: ContactAtomProps) => (
     <Typo.ButtonText>{label}</Typo.ButtonText>
   </TouchableOpacity>
 )
+
+const Container = styled.View({
+  marginVertical: -getSpacing(1),
+})
 
 const TouchableOpacity = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,
