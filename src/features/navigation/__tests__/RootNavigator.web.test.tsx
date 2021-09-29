@@ -101,7 +101,7 @@ describe('wrapRoute()', () => {
     const rootNavigator = await renderRootNavigator()
 
     expect(rootNavigator).toMatchSnapshot()
-    expect(rootNavigator.queryByText("Mise à jour de l'application")).toBeTruthy()
+    expect(rootNavigator.queryAllByText("Mise à jour de l'application")).toBeTruthy()
   })
 })
 
