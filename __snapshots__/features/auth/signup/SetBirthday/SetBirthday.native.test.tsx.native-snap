@@ -281,7 +281,8 @@ Array [
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
+                        "alignItems": "stretch",
+                        "flexDirection": "column",
                         "width": "100%",
                       },
                     ]
@@ -292,267 +293,310 @@ Array [
                       Array [
                         Object {
                           "alignItems": "center",
-                          "flexDirection": "row",
+                          "alignSelf": "stretch",
+                          "flexDirection": "column",
+                          "position": "relative",
+                          "width": "100%",
                         },
                       ]
                     }
                   >
+                    <TextInput
+                      allowFontScaling={true}
+                      autoFocus={false}
+                      keyboardType="number-pad"
+                      multiline={true}
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onSelectionChange={[Function]}
+                      onSubmitEditing={[Function]}
+                      placeholder="JJ/MM/AAAA"
+                      pointerEvents="none"
+                      rejectResponderTermination={true}
+                      returnKeyType="done"
+                      style={
+                        Array [
+                          Object {
+                            "fontSize": 18,
+                            "height": "100%",
+                            "lineHeight": 22,
+                            "opacity": 0,
+                            "position": "absolute",
+                            "textAlign": "left",
+                            "width": "100%",
+                            "zIndex": 0,
+                          },
+                        ]
+                      }
+                      underlineColorAndroid="transparent"
+                      value=""
+                    />
                     <View
                       style={
                         Array [
                           Object {
-                            "alignItems": "center",
-                            "marginBottom": 4,
-                            "marginLeft": 4,
-                            "marginRight": 4,
-                            "marginTop": 4,
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "maxWidth": 400,
+                            "width": "100%",
+                            "zIndex": 1,
                           },
                         ]
                       }
                     >
-                      <TextInput
-                        accessibilityLabel="Entrée pour le jour"
-                        accessible={true}
-                        allowFontScaling={true}
-                        blurOnSubmit={true}
-                        keyboardType="number-pad"
-                        maxLength={2}
-                        minWidth={20}
-                        numberOfChar={2}
-                        onBlur={[Function]}
-                        onChangeText={[Function]}
-                        onFocus={[Function]}
-                        placeholder="JJ"
-                        placeholderTextColor="#626262"
-                        rejectResponderTermination={true}
-                        selectTextOnFocus={true}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#151515",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-Regular",
-                              "fontSize": 15,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                            Object {
-                              "fontSize": 18,
-                              "lineHeight": 22,
-                              "minWidth": 40,
-                              "paddingHorizontal": 10,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                        testID="Entrée pour le jour"
-                        underlineColorAndroid="transparent"
-                        value=""
-                      />
                       <View
-                        numberOfSpaces={1}
                         style={
                           Array [
                             Object {
-                              "height": 4,
+                              "alignItems": "stretch",
+                              "width": 35,
                             },
                           ]
                         }
-                      />
+                        width={35}
+                      >
+                        <RNGestureHandlerButton
+                          collapsable={false}
+                          onGestureEvent={[Function]}
+                          onGestureHandlerEvent={[Function]}
+                          onGestureHandlerStateChange={[Function]}
+                          onHandlerStateChange={[Function]}
+                          rippleColor={0}
+                        >
+                          <View
+                            accessible={true}
+                            style={
+                              Object {
+                                "opacity": 1,
+                              }
+                            }
+                          >
+                            <View
+                              accessible={true}
+                              focusable={false}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "opacity": 1,
+                                }
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Regular",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                      "marginBottom": 5,
+                                      "textAlign": "center",
+                                    },
+                                  ]
+                                }
+                              >
+                                JJ
+                              </Text>
+                              <View
+                                backgroundColor="#c7c7cc"
+                                isEmpty={true}
+                                isFocused={false}
+                                isValid={false}
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#c7c7cc",
+                                      "borderRadius": 22,
+                                      "height": 5,
+                                    },
+                                  ]
+                                }
+                              />
+                            </View>
+                          </View>
+                        </RNGestureHandlerButton>
+                      </View>
                       <View
-                        backgroundColor="#c7c7cc"
-                        isEmpty={true}
-                        isFocused={false}
-                        isValid={false}
                         style={
                           Array [
                             Object {
-                              "backgroundColor": "#c7c7cc",
-                              "borderRadius": 22,
-                              "height": 5,
-                              "width": "100%",
-                            },
-                          ]
-                        }
-                        testID="datepart-bar-day"
-                      />
-                    </View>
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "marginBottom": 4,
-                            "marginLeft": 4,
-                            "marginRight": 4,
-                            "marginTop": 4,
-                          },
-                        ]
-                      }
-                    >
-                      <TextInput
-                        accessibilityLabel="Entrée pour le mois"
-                        accessible={true}
-                        allowFontScaling={true}
-                        blurOnSubmit={true}
-                        keyboardType="number-pad"
-                        maxLength={2}
-                        minWidth={20}
-                        numberOfChar={2}
-                        onBlur={[Function]}
-                        onChangeText={[Function]}
-                        onFocus={[Function]}
-                        onKeyPress={[Function]}
-                        placeholder="MM"
-                        placeholderTextColor="#626262"
-                        rejectResponderTermination={true}
-                        selectTextOnFocus={true}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#151515",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-Regular",
-                              "fontSize": 15,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                            Object {
-                              "fontSize": 18,
-                              "lineHeight": 22,
-                              "minWidth": 40,
-                              "paddingHorizontal": 10,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                        testID="Entrée pour le mois"
-                        underlineColorAndroid="transparent"
-                        value=""
-                      />
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          Array [
-                            Object {
-                              "height": 4,
+                              "width": 8,
                             },
                           ]
                         }
                       />
                       <View
-                        backgroundColor="#c7c7cc"
-                        isEmpty={true}
-                        isFocused={false}
-                        isValid={false}
                         style={
                           Array [
                             Object {
-                              "backgroundColor": "#c7c7cc",
-                              "borderRadius": 22,
-                              "height": 5,
-                              "width": "100%",
+                              "alignItems": "stretch",
+                              "width": 40,
                             },
                           ]
                         }
-                        testID="datepart-bar-month"
-                      />
-                    </View>
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "marginBottom": 4,
-                            "marginLeft": 4,
-                            "marginRight": 4,
-                            "marginTop": 4,
-                          },
-                        ]
-                      }
-                    >
-                      <TextInput
-                        accessibilityLabel="Entrée pour l'année"
-                        accessible={true}
-                        allowFontScaling={true}
-                        blurOnSubmit={true}
-                        keyboardType="number-pad"
-                        maxLength={4}
-                        minWidth={20}
-                        numberOfChar={4}
-                        onBlur={[Function]}
-                        onChangeText={[Function]}
-                        onFocus={[Function]}
-                        onKeyPress={[Function]}
-                        placeholder="AAAA"
-                        placeholderTextColor="#626262"
-                        rejectResponderTermination={true}
-                        selectTextOnFocus={true}
+                        width={40}
+                      >
+                        <RNGestureHandlerButton
+                          collapsable={false}
+                          onGestureEvent={[Function]}
+                          onGestureHandlerEvent={[Function]}
+                          onGestureHandlerStateChange={[Function]}
+                          onHandlerStateChange={[Function]}
+                          rippleColor={0}
+                        >
+                          <View
+                            accessible={true}
+                            style={
+                              Object {
+                                "opacity": 1,
+                              }
+                            }
+                          >
+                            <View
+                              accessible={true}
+                              focusable={false}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "opacity": 1,
+                                }
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Regular",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                      "marginBottom": 5,
+                                      "textAlign": "center",
+                                    },
+                                  ]
+                                }
+                              >
+                                MM
+                              </Text>
+                              <View
+                                backgroundColor="#c7c7cc"
+                                isEmpty={true}
+                                isFocused={false}
+                                isValid={false}
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#c7c7cc",
+                                      "borderRadius": 22,
+                                      "height": 5,
+                                    },
+                                  ]
+                                }
+                              />
+                            </View>
+                          </View>
+                        </RNGestureHandlerButton>
+                      </View>
+                      <View
                         style={
                           Array [
                             Object {
-                              "color": "#151515",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-Regular",
-                              "fontSize": 15,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                            Object {
-                              "fontSize": 18,
-                              "lineHeight": 22,
-                              "minWidth": 80,
-                              "paddingHorizontal": 10,
-                              "textAlign": "center",
+                              "width": 8,
                             },
                           ]
                         }
-                        testID="Entrée pour l'année"
-                        underlineColorAndroid="transparent"
-                        value=""
                       />
                       <View
-                        numberOfSpaces={1}
                         style={
                           Array [
                             Object {
-                              "height": 4,
+                              "alignItems": "stretch",
+                              "width": 70,
                             },
                           ]
                         }
-                      />
-                      <View
-                        backgroundColor="#c7c7cc"
-                        isEmpty={true}
-                        isFocused={false}
-                        isValid={false}
-                        style={
-                          Array [
-                            Object {
-                              "backgroundColor": "#c7c7cc",
-                              "borderRadius": 22,
-                              "height": 5,
-                              "width": "100%",
-                            },
-                          ]
-                        }
-                        testID="datepart-bar-year"
-                      />
+                        width={70}
+                      >
+                        <RNGestureHandlerButton
+                          collapsable={false}
+                          onGestureEvent={[Function]}
+                          onGestureHandlerEvent={[Function]}
+                          onGestureHandlerStateChange={[Function]}
+                          onHandlerStateChange={[Function]}
+                          rippleColor={0}
+                        >
+                          <View
+                            accessible={true}
+                            style={
+                              Object {
+                                "opacity": 1,
+                              }
+                            }
+                          >
+                            <View
+                              accessible={true}
+                              focusable={false}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "opacity": 1,
+                                }
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Regular",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                      "marginBottom": 5,
+                                      "textAlign": "center",
+                                    },
+                                  ]
+                                }
+                              >
+                                AAAA
+                              </Text>
+                              <View
+                                backgroundColor="#c7c7cc"
+                                isEmpty={true}
+                                isFocused={false}
+                                isValid={false}
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#c7c7cc",
+                                      "borderRadius": 22,
+                                      "height": 5,
+                                    },
+                                  ]
+                                }
+                              />
+                            </View>
+                          </View>
+                        </RNGestureHandlerButton>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -1277,7 +1321,8 @@ exports[`SetBirthday Page should render properly 1`] = `
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
+                      "alignItems": "stretch",
+                      "flexDirection": "column",
                       "width": "100%",
                     },
                   ]
@@ -1288,267 +1333,310 @@ exports[`SetBirthday Page should render properly 1`] = `
                     Array [
                       Object {
                         "alignItems": "center",
-                        "flexDirection": "row",
+                        "alignSelf": "stretch",
+                        "flexDirection": "column",
+                        "position": "relative",
+                        "width": "100%",
                       },
                     ]
                   }
                 >
+                  <TextInput
+                    allowFontScaling={true}
+                    autoFocus={false}
+                    keyboardType="number-pad"
+                    multiline={true}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onSelectionChange={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder="JJ/MM/AAAA"
+                    pointerEvents="none"
+                    rejectResponderTermination={true}
+                    returnKeyType="done"
+                    style={
+                      Array [
+                        Object {
+                          "fontSize": 18,
+                          "height": "100%",
+                          "lineHeight": 22,
+                          "opacity": 0,
+                          "position": "absolute",
+                          "textAlign": "left",
+                          "width": "100%",
+                          "zIndex": 0,
+                        },
+                      ]
+                    }
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />
                   <View
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "marginBottom": 4,
-                          "marginLeft": 4,
-                          "marginRight": 4,
-                          "marginTop": 4,
+                          "alignItems": "flex-end",
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "maxWidth": 400,
+                          "width": "100%",
+                          "zIndex": 1,
                         },
                       ]
                     }
                   >
-                    <TextInput
-                      accessibilityLabel="Entrée pour le jour"
-                      accessible={true}
-                      allowFontScaling={true}
-                      blurOnSubmit={true}
-                      keyboardType="number-pad"
-                      maxLength={2}
-                      minWidth={20}
-                      numberOfChar={2}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder="JJ"
-                      placeholderTextColor="#626262"
-                      rejectResponderTermination={true}
-                      selectTextOnFocus={true}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "height": "100%",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                          },
-                          Object {
-                            "fontSize": 18,
-                            "lineHeight": 22,
-                            "minWidth": 40,
-                            "paddingHorizontal": 10,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                      testID="Entrée pour le jour"
-                      underlineColorAndroid="transparent"
-                      value=""
-                    />
                     <View
-                      numberOfSpaces={1}
                       style={
                         Array [
                           Object {
-                            "height": 4,
+                            "alignItems": "stretch",
+                            "width": 35,
                           },
                         ]
                       }
-                    />
+                      width={35}
+                    >
+                      <RNGestureHandlerButton
+                        collapsable={false}
+                        onGestureEvent={[Function]}
+                        onGestureHandlerEvent={[Function]}
+                        onGestureHandlerStateChange={[Function]}
+                        onHandlerStateChange={[Function]}
+                        rippleColor={0}
+                      >
+                        <View
+                          accessible={true}
+                          style={
+                            Object {
+                              "opacity": 1,
+                            }
+                          }
+                        >
+                          <View
+                            accessible={true}
+                            focusable={false}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              Object {
+                                "opacity": 1,
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-Regular",
+                                    "fontSize": 18,
+                                    "lineHeight": 22,
+                                    "marginBottom": 5,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              JJ
+                            </Text>
+                            <View
+                              backgroundColor="#c7c7cc"
+                              isEmpty={true}
+                              isFocused={false}
+                              isValid={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "backgroundColor": "#c7c7cc",
+                                    "borderRadius": 22,
+                                    "height": 5,
+                                  },
+                                ]
+                              }
+                            />
+                          </View>
+                        </View>
+                      </RNGestureHandlerButton>
+                    </View>
                     <View
-                      backgroundColor="#c7c7cc"
-                      isEmpty={true}
-                      isFocused={false}
-                      isValid={false}
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#c7c7cc",
-                            "borderRadius": 22,
-                            "height": 5,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                      testID="datepart-bar-day"
-                    />
-                  </View>
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignItems": "center",
-                          "marginBottom": 4,
-                          "marginLeft": 4,
-                          "marginRight": 4,
-                          "marginTop": 4,
-                        },
-                      ]
-                    }
-                  >
-                    <TextInput
-                      accessibilityLabel="Entrée pour le mois"
-                      accessible={true}
-                      allowFontScaling={true}
-                      blurOnSubmit={true}
-                      keyboardType="number-pad"
-                      maxLength={2}
-                      minWidth={20}
-                      numberOfChar={2}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      onKeyPress={[Function]}
-                      placeholder="MM"
-                      placeholderTextColor="#626262"
-                      rejectResponderTermination={true}
-                      selectTextOnFocus={true}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "height": "100%",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                          },
-                          Object {
-                            "fontSize": 18,
-                            "lineHeight": 22,
-                            "minWidth": 40,
-                            "paddingHorizontal": 10,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                      testID="Entrée pour le mois"
-                      underlineColorAndroid="transparent"
-                      value=""
-                    />
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        Array [
-                          Object {
-                            "height": 4,
+                            "width": 8,
                           },
                         ]
                       }
                     />
                     <View
-                      backgroundColor="#c7c7cc"
-                      isEmpty={true}
-                      isFocused={false}
-                      isValid={false}
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "#c7c7cc",
-                            "borderRadius": 22,
-                            "height": 5,
-                            "width": "100%",
+                            "alignItems": "stretch",
+                            "width": 40,
                           },
                         ]
                       }
-                      testID="datepart-bar-month"
-                    />
-                  </View>
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignItems": "center",
-                          "marginBottom": 4,
-                          "marginLeft": 4,
-                          "marginRight": 4,
-                          "marginTop": 4,
-                        },
-                      ]
-                    }
-                  >
-                    <TextInput
-                      accessibilityLabel="Entrée pour l'année"
-                      accessible={true}
-                      allowFontScaling={true}
-                      blurOnSubmit={true}
-                      keyboardType="number-pad"
-                      maxLength={4}
-                      minWidth={20}
-                      numberOfChar={4}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      onKeyPress={[Function]}
-                      placeholder="AAAA"
-                      placeholderTextColor="#626262"
-                      rejectResponderTermination={true}
-                      selectTextOnFocus={true}
+                      width={40}
+                    >
+                      <RNGestureHandlerButton
+                        collapsable={false}
+                        onGestureEvent={[Function]}
+                        onGestureHandlerEvent={[Function]}
+                        onGestureHandlerStateChange={[Function]}
+                        onHandlerStateChange={[Function]}
+                        rippleColor={0}
+                      >
+                        <View
+                          accessible={true}
+                          style={
+                            Object {
+                              "opacity": 1,
+                            }
+                          }
+                        >
+                          <View
+                            accessible={true}
+                            focusable={false}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              Object {
+                                "opacity": 1,
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-Regular",
+                                    "fontSize": 18,
+                                    "lineHeight": 22,
+                                    "marginBottom": 5,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              MM
+                            </Text>
+                            <View
+                              backgroundColor="#c7c7cc"
+                              isEmpty={true}
+                              isFocused={false}
+                              isValid={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "backgroundColor": "#c7c7cc",
+                                    "borderRadius": 22,
+                                    "height": 5,
+                                  },
+                                ]
+                              }
+                            />
+                          </View>
+                        </View>
+                      </RNGestureHandlerButton>
+                    </View>
+                    <View
                       style={
                         Array [
                           Object {
-                            "color": "#151515",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "height": "100%",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                          },
-                          Object {
-                            "fontSize": 18,
-                            "lineHeight": 22,
-                            "minWidth": 80,
-                            "paddingHorizontal": 10,
-                            "textAlign": "center",
+                            "width": 8,
                           },
                         ]
                       }
-                      testID="Entrée pour l'année"
-                      underlineColorAndroid="transparent"
-                      value=""
                     />
                     <View
-                      numberOfSpaces={1}
                       style={
                         Array [
                           Object {
-                            "height": 4,
+                            "alignItems": "stretch",
+                            "width": 70,
                           },
                         ]
                       }
-                    />
-                    <View
-                      backgroundColor="#c7c7cc"
-                      isEmpty={true}
-                      isFocused={false}
-                      isValid={false}
-                      style={
-                        Array [
-                          Object {
-                            "backgroundColor": "#c7c7cc",
-                            "borderRadius": 22,
-                            "height": 5,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                      testID="datepart-bar-year"
-                    />
+                      width={70}
+                    >
+                      <RNGestureHandlerButton
+                        collapsable={false}
+                        onGestureEvent={[Function]}
+                        onGestureHandlerEvent={[Function]}
+                        onGestureHandlerStateChange={[Function]}
+                        onHandlerStateChange={[Function]}
+                        rippleColor={0}
+                      >
+                        <View
+                          accessible={true}
+                          style={
+                            Object {
+                              "opacity": 1,
+                            }
+                          }
+                        >
+                          <View
+                            accessible={true}
+                            focusable={false}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              Object {
+                                "opacity": 1,
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-Regular",
+                                    "fontSize": 18,
+                                    "lineHeight": 22,
+                                    "marginBottom": 5,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              AAAA
+                            </Text>
+                            <View
+                              backgroundColor="#c7c7cc"
+                              isEmpty={true}
+                              isFocused={false}
+                              isValid={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "backgroundColor": "#c7c7cc",
+                                    "borderRadius": 22,
+                                    "height": 5,
+                                  },
+                                ]
+                              }
+                            />
+                          </View>
+                        </View>
+                      </RNGestureHandlerButton>
+                    </View>
                   </View>
                 </View>
               </View>
