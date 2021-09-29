@@ -4,7 +4,6 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { SplashScreenProvider } from 'libs/splashscreen'
@@ -13,9 +12,6 @@ import { server } from 'tests/server'
 import { superFlushWithAct } from 'tests/utils'
 
 import { useInitialScreen } from '../RootNavigator/useInitialScreenConfig'
-
-const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-jest.mock('features/auth/AuthContext')
 
 describe('useInitialScreen()', () => {
   afterEach(() => {
@@ -55,11 +51,11 @@ describe('useInitialScreen()', () => {
     }) => {
       await storage.saveObject('has_seen_tutorials', hasSeenTutorials)
       await storage.saveObject('has_seen_eligible_card', hasSeenEligibleCard)
-      mockedUseAuthContext.mockReturnValue({
-        isLoggedIn: isLogged,
-        setIsLoggedIn: jest.fn(),
-      })
-      mockMeApiCall(userProfile as UserProfileResponse)
+      if (isLogged) {
+        mockMeApiCall200(userProfile as UserProfileResponse)
+      } else {
+        mockMeApiCall403()
+      }
 
       const { current: screen } = await renderUseInitialScreen()
 
@@ -81,10 +77,18 @@ async function renderUseInitialScreen() {
   return result
 }
 
-function mockMeApiCall(response: UserProfileResponse) {
+function mockMeApiCall200(response: UserProfileResponse) {
   server.use(
     rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
       return res(ctx.status(200), ctx.json(response))
+    })
+  )
+}
+
+function mockMeApiCall403() {
+  server.use(
+    rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
+      return res(ctx.status(403))
     })
   )
 }
