@@ -24,6 +24,9 @@ jest.mock('react-error-boundary', () => ({
 jest.mock('features/navigation/TabBar/TabNavigator', () => ({
   TabNavigator: () => null,
 }))
+jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
+  useInitialScreen: () => 'TabNavigator',
+}))
 
 describe('<RootNavigator />', () => {
   afterEach(async () => {

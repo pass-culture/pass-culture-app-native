@@ -6,9 +6,11 @@ import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
+import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { useSplashScreenContext } from 'libs/splashscreen'
+import { LoadingPage } from 'ui/components/LoadingPage'
 
-import { initialRouteName, routes } from './routes'
+import { routes } from './routes'
 import { RootStackParamList, Route } from './types'
 
 export const RootStack = createStackNavigator<RootStackParamList>()
@@ -35,6 +37,11 @@ const screens = routes
 export const RootNavigator: React.FC = () => {
   const { isSplashScreenHidden } = useSplashScreenContext()
   const mustUpdateApp = useMustUpdateApp()
+  const initialScreen = useInitialScreen()
+
+  if (!initialScreen) {
+    return <LoadingPage />
+  }
 
   return (
     <React.Fragment>
@@ -47,7 +54,7 @@ export const RootNavigator: React.FC = () => {
         </ForceUpdateRootStack.Navigator>
       ) : (
         <RootStack.Navigator
-          initialRouteName={initialRouteName}
+          initialRouteName={initialScreen}
           headerMode="screen"
           screenOptions={NAVIGATOR_SCREEN_OPTIONS}>
           {screens}
