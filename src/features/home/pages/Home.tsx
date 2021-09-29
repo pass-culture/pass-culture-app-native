@@ -2,12 +2,10 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { ScrollView } from 'react-native'
 
-import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { HomeBodyPlaceholder, HomeHeader } from 'features/home/components'
 import { HomeBody } from 'features/home/components/HomeBody'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { useInitialScreenConfig } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { Spacer } from 'ui/theme'
 
 import { useShowSkeleton } from './useShowSkeleton'
@@ -21,12 +19,6 @@ export const Home: FunctionComponent = function () {
     homeVenuesModules,
     recommendedHits,
   } = useDisplayedHomeModules(params?.entryId)
-
-  // !!! IMPORTANT !!!
-  // To avoid the deeplink navigation to happen before the initial screen on first opening
-  // (cold start) of the app, the hook useListenDeepLinksEffect() must be called after useInitialScreenConfig()
-  useInitialScreenConfig()
-  useListenDeepLinksEffect()
 
   if (showSkeleton) {
     return (

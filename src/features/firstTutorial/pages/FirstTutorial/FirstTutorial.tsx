@@ -14,7 +14,7 @@ import { ThirdCard } from './components/ThirdCard'
 type Props = StackScreenProps<RootStackParamList, 'FirstTutorial'>
 
 export function FirstTutorial({ route }: Props) {
-  const onFirstCardBackAction = route.params.shouldCloseAppOnBackAction
+  const onFirstCardBackAction = route.params?.shouldCloseAppOnBackAction
     ? BackHandler.exitApp
     : undefined
   return (
