@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -32,7 +33,7 @@ const parameters: SearchState = {
   date: null,
   hitsPerPage: 8,
   locationFilter: { locationType: LocationType.EVERYWHERE },
-  offerCategories: ['CINEMA'],
+  offerCategories: [SearchGroupNameEnum.CINEMA],
   offerIsDuo: false,
   offerIsFree: false,
   offerIsNew: false,

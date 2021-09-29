@@ -18,13 +18,16 @@ describe('useAvailableCategories', () => {
   beforeEach(jest.clearAllMocks)
   it('should return CATEGORY_CRITERIA is user is beneficiary', () => {
     const { result } = renderHook(useAvailableCategories)
-    expect(result.current).toEqual(CATEGORY_CRITERIA)
+    expect(result.current).toEqual(omit(CATEGORY_CRITERIA, SearchGroupNameEnum.NONE))
   })
 
   it('should return CATEGORY_CRITERIA except JEU if user is underage beneficiary', () => {
     mockUserProfileInfo.roles = [UserRole.UNDERAGEBENEFICIARY]
     const { result } = renderHook(useAvailableCategories)
-    const availableCategories = omit(CATEGORY_CRITERIA, SearchGroupNameEnum.JEU)
+    const availableCategories = omit(CATEGORY_CRITERIA, [
+      SearchGroupNameEnum.JEU,
+      SearchGroupNameEnum.NONE,
+    ])
     expect(result.current).toEqual(availableCategories)
   })
 })

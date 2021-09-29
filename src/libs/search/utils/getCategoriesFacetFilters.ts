@@ -17,7 +17,7 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnum> = {
   ['Visites, expositions']: SearchGroupNameEnum.VISITE,
 }
 
-export const getCategoriesFacetFilters = (categoryLabel: string): string => {
+export const getCategoriesFacetFilters = (categoryLabel: string): SearchGroupNameEnum => {
   const searchGroup = categoryLabel in CONTENTFUL_LABELS ? CONTENTFUL_LABELS[categoryLabel] : null
-  return searchGroup ? CATEGORY_CRITERIA[searchGroup].facetFilter : ''
+  return searchGroup ? CATEGORY_CRITERIA[searchGroup].facetFilter : SearchGroupNameEnum.NONE
 }

@@ -2,6 +2,7 @@ import { SearchParametersFields } from 'features/home/contentful'
 import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
+import { getCategoriesFacetFilters } from 'libs/search/utils'
 
 export const parseGeolocationParameters = (
   geolocation: GeoCoordinates | null,
@@ -38,7 +39,8 @@ export const parseSearchParameters = (
     endingDatetime: endingDatetime,
     hitsPerPage: parameters.hitsPerPage || null,
     locationFilter,
-    offerCategories: parameters.categories || [],
+    // We receive category labels from contentful. We first have to map to facetFilters used for search
+    offerCategories: (parameters.categories || []).map(getCategoriesFacetFilters),
     offerIsDuo: parameters.isDuo || false,
     offerIsFree: parameters.isFree || false,
     offerIsNew: parameters.newestOnly || false,

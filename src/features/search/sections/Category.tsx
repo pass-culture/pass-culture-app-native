@@ -18,7 +18,7 @@ export const Category: React.FC = () => {
   const categories = useAvailableSearchCategories()
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
-  const onPress = (facetFilter: string) => () => {
+  const onPress = (facetFilter: SearchGroupNameEnum) => () => {
     dispatch({ type: 'TOGGLE_CATEGORY', payload: facetFilter })
     logUseFilter()
   }

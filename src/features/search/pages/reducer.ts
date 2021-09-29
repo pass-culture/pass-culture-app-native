@@ -1,3 +1,4 @@
+import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { MAX_PRICE, MAX_RADIUS, MIN_PRICE } from 'features/search/pages/reducer.helpers'
@@ -38,8 +39,8 @@ export type Action =
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
   | { type: 'SHOW_RESULTS'; payload: boolean }
-  | { type: 'SET_CATEGORY'; payload: SearchState['offerCategories'] }
-  | { type: 'TOGGLE_CATEGORY'; payload: string }
+  | { type: 'SET_CATEGORY'; payload: SearchGroupNameEnum[] }
+  | { type: 'TOGGLE_CATEGORY'; payload: SearchGroupNameEnum }
   | { type: 'TOGGLE_OFFER_FREE' }
   | { type: 'TOGGLE_OFFER_DUO' }
   | { type: 'TOGGLE_OFFER_NEW' }

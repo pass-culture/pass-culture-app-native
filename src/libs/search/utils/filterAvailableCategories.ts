@@ -1,11 +1,12 @@
+import { SearchGroupNameEnum } from 'api/gen'
 import { CategoryCriteria } from 'features/search/enums'
 
 export const filterAvailableCategories = (
-  selectedCategories: string[],
+  selectedCategories: SearchGroupNameEnum[],
   availableCategories: Partial<CategoryCriteria>
-): string[] => {
+): SearchGroupNameEnum[] => {
   const availableFilters = Object.values(availableCategories).map(({ facetFilter }) => facetFilter)
   return availableFilters
     .filter((facetFilter) => selectedCategories.includes(facetFilter))
-    .sort((a: string, b: string) => a.localeCompare(b))
+    .sort((a: SearchGroupNameEnum, b: SearchGroupNameEnum) => a.localeCompare(b))
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { SearchGroupNameEnum } from 'api/gen'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { render } from 'tests/utils'
 
@@ -26,7 +27,7 @@ describe('Categories component', () => {
   it('should match diff snapshot when new category is selected', () => {
     const allSelected = render(<Categories />).toJSON()
 
-    mockSearchState.offerCategories = ['CINEMA']
+    mockSearchState.offerCategories = [SearchGroupNameEnum.CINEMA]
     const cinemaSelected = render(<Categories />).toJSON()
     expect(cinemaSelected).toMatchDiffSnapshot(allSelected)
   })

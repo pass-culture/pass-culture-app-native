@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -151,16 +151,16 @@
+@@ -75,16 +75,16 @@
                 },
               ]
             }
@@ -24,7 +24,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -177,18 +177,10 @@
+@@ -101,18 +101,10 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -76,82 +76,6 @@ Array [
           ]
         }
       />
-      <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "marginBottom": 16,
-            "opacity": 1,
-          }
-        }
-        testID="NONE"
-      >
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <View
-          height={48}
-          width={48}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "width": 8,
-              },
-            ]
-          }
-        />
-        <Text
-          color="#151515"
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Toutes les catégories
-        </Text>
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
-      </View>
       <View
         accessible={true}
         focusable={true}
