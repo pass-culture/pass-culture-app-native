@@ -1,7 +1,10 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { homeNavigateConfig } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -9,13 +12,11 @@ import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
 
-export const OfferNotFound = ({ resetErrorBoundary, retry }: ScreenErrorProps) => {
+export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
+  const { navigate } = useNavigation<UseNavigationType>()
+
   async function onPress() {
-    // this will navigate back to home, we could have use the useNavigation hook here as the navigation is already loaded,
-    // despite the fact that it is rendered outside the NavigationContainer. Instead, we did pass a navigate as retry
-    if (retry) {
-      retry()
-    }
+    navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
 
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
