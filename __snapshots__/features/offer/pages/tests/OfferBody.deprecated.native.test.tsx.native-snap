@@ -628,7 +628,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               }
                               testID="caption-undefined"
                             >
-                              Cinéma
+                              Cinéma plein air
                             </Text>
                           </View>
                           <View
@@ -2934,7 +2934,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               }
                               testID="caption-undefined"
                             >
-                              Cinéma
+                              Cinéma plein air
                             </Text>
                           </View>
                           <View
