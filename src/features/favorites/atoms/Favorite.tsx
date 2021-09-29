@@ -14,7 +14,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferImage } from 'features/search/atoms/OfferImage'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatToFrenchDate, getFavoriteDisplayPrice } from 'libs/parsers'
-import { useSubcategory } from 'libs/subcategories'
+import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -42,7 +42,8 @@ export const Favorite: React.FC<Props> = (props) => {
     lng: offer.coordinates?.longitude,
   })
   const { showErrorSnackBar } = useSnackBarContext()
-  const { categoryId, appLabel } = useSubcategory(offer.subcategoryId)
+  const { categoryId, searchGroupName } = useSubcategory(offer.subcategoryId)
+  const searchGroupLabel = useSearchGroupLabel(searchGroupName)
 
   const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
     onError: () => {
@@ -144,7 +145,7 @@ export const Favorite: React.FC<Props> = (props) => {
               )}
             </Row>
             <Spacer.Column numberOfSpaces={1} />
-            <Body>{appLabel}</Body>
+            <Body>{searchGroupLabel}</Body>
             {!!formattedDate && <Body>{formattedDate}</Body>}
             <Spacer.Column numberOfSpaces={1} />
             <Typo.Caption>
