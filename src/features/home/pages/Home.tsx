@@ -6,7 +6,6 @@ import { HomeBodyPlaceholder, HomeHeader } from 'features/home/components'
 import { HomeBody } from 'features/home/components/HomeBody'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { useInitialScreenConfig } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { Spacer } from 'ui/theme'
 
 import { useShowSkeleton } from './useShowSkeleton'
@@ -17,8 +16,6 @@ export const Home: FunctionComponent = function () {
   const { displayedModules, homeModules, recommendedHits } = useDisplayedHomeModules(
     params?.entryId
   )
-
-  useInitialScreenConfig()
 
   if (showSkeleton) {
     return (

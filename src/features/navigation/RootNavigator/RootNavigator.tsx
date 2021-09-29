@@ -5,9 +5,11 @@ import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
+import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { useSplashScreenContext } from 'libs/splashscreen'
+import { LoadingPage } from 'ui/components/LoadingPage'
 
-import { initialRouteName, routes } from './routes'
+import { routes } from './routes'
 import { RootStackParamList, Route } from './types'
 
 export const RootStack = createStackNavigator<RootStackParamList>()
@@ -36,6 +38,11 @@ export const RootNavigator: React.FC = () => {
   const [mustUpdateApp, setMustUpdateApp] = useState(false)
 
   global.setMustUpdateApp = setMustUpdateApp
+  const initialScreen = useInitialScreen()
+
+  if (!initialScreen) {
+    return <LoadingPage />
+  }
 
   return (
     <React.Fragment>
@@ -43,7 +50,7 @@ export const RootNavigator: React.FC = () => {
         <ForceUpdate />
       ) : (
         <RootStack.Navigator
-          initialRouteName={initialRouteName}
+          initialRouteName={initialScreen}
           headerMode="screen"
           screenOptions={NAVIGATOR_SCREEN_OPTIONS}>
           {screens}
