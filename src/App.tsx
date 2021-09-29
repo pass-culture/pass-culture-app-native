@@ -1,6 +1,5 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
@@ -16,6 +15,7 @@ import 'intl/locale-data/jsonp/en'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
+import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
