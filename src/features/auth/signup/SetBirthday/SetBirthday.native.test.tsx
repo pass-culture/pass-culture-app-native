@@ -58,15 +58,6 @@ describe('SetBirthday Page', () => {
     expect(message).toBeTruthy()
   })
 
-  it('should display the error message "date incorrecte" when the date is incorrect', () => {
-    const renderAPI = renderSetBirthday()
-
-    changeDate(renderAPI, '?!', '01', '2002')
-
-    const message = renderAPI.queryByText('La date choisie est incorrecte')
-    expect(message).toBeTruthy()
-  })
-
   it('should display the error message "tu dois avoir 15 ans" when the date is too young', () => {
     const renderAPI = renderSetBirthday()
 
@@ -170,11 +161,6 @@ function renderSetBirthday() {
 }
 
 function changeDate(renderAPI: RenderAPI, dayStr: string, monthStr: string, yearStr: string) {
-  const day = renderAPI.getByPlaceholderText('JJ')
-  const month = renderAPI.getByPlaceholderText('MM')
-  const year = renderAPI.getByPlaceholderText('AAAA')
-
-  fireEvent.changeText(day, dayStr)
-  fireEvent.changeText(month, monthStr)
-  fireEvent.changeText(year, yearStr)
+  const dateInput = renderAPI.getByPlaceholderText('JJ/MM/AAAA')
+  fireEvent.changeText(dateInput, [dayStr, monthStr, yearStr].join('/'))
 }

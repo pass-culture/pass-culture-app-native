@@ -156,7 +156,8 @@
     "search-params": "^4.0.0",
     "styled-components": "^5.2.0",
     "url": "^0.11.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "validate-date": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
