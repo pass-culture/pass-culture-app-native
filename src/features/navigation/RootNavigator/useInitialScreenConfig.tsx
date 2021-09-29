@@ -49,8 +49,12 @@ async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promis
     }
   }
 
-  const hasSeenTutorials = !!(await storage.readObject('has_seen_tutorials'))
-  if (hasSeenTutorials) {
+  try {
+    const hasSeenTutorials = !!(await storage.readObject('has_seen_tutorials'))
+    if (hasSeenTutorials) {
+      return homeNavigateConfig.screen
+    }
+  } catch {
     return homeNavigateConfig.screen
   }
 
