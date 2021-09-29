@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
-import { CategoryIdEnum, OfferResponse, UserRole } from 'api/gen'
+import { SearchGroupNameEnum, OfferResponse, UserRole } from 'api/gen'
 import { offerResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
@@ -209,15 +209,15 @@ describe('getCtaWordingAndAction', () => {
     // same as beneficiaries except for video games and non free digital offers except press category
     describe('underage beneficiary', () => {
       it.each`
-        isEvent  | expected                     | disabled | isDigital | categoryId                   | price
-        ${false} | ${'Réserver'}                | ${false} | ${true}   | ${CategoryIdEnum.MEDIA}      | ${20}
-        ${true}  | ${undefined}                 | ${true}  | ${true}   | ${CategoryIdEnum.FILM}       | ${20}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${CategoryIdEnum.FILM}       | ${0}
-        ${false} | ${undefined}                 | ${true}  | ${false}  | ${CategoryIdEnum.JEU}        | ${0}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${CategoryIdEnum.INSTRUMENT} | ${20}
+        isEvent  | expected                     | disabled | isDigital | category                          | price
+        ${false} | ${'Réserver'}                | ${false} | ${true}   | ${SearchGroupNameEnum.PRESSE}     | ${20}
+        ${true}  | ${undefined}                 | ${true}  | ${true}   | ${SearchGroupNameEnum.FILM}       | ${20}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILM}       | ${0}
+        ${false} | ${undefined}                 | ${true}  | ${false}  | ${SearchGroupNameEnum.JEU}        | ${0}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20}
       `(
-        'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, categoryId=$categoryId and price=$price',
-        ({ isEvent, expected, disabled, isDigital, categoryId, price }) => {
+        'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, category=$category and price=$price',
+        ({ isEvent, expected, disabled, isDigital, category, price }) => {
           mockedUser.roles = [UserRole.UNDERAGEBENEFICIARY]
           const { result } = renderHook(useAvailableCategories)
           const { wording, onPress } = getCta(
@@ -235,7 +235,7 @@ describe('getCtaWordingAndAction', () => {
               ],
             },
             { isUnderageBeneficiary: true, availableCategories: result.current },
-            { isEvent, categoryId }
+            { isEvent, searchGroupName: category }
           )
           expect(wording).toEqual(expected)
           expect(onPress === undefined).toBe(disabled)
