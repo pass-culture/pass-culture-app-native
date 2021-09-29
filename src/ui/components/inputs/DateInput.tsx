@@ -1,17 +1,12 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
-import {
-  NativeSyntheticEvent,
-  Platform,
-  TextInput,
-  TextInputSelectionChangeEventData,
-} from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Platform, TextInput } from 'react-native'
 import { MaskedTextInput } from 'react-native-mask-text'
 import styled from 'styled-components/native'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import validateDate from 'validate-date'
 
-import { ColorsEnum, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
-const DEFAULT_MASK = '99/99/9999'
+import { ColorsEnum } from 'ui/theme'
 
 export enum DatePartType {
   DAY = 'day',
@@ -76,85 +71,30 @@ export const FULL_DATE_VALIDATOR = {
   },
 }
 
-const MaskedDateInputValidationBar: React.FC<
-  ValidationBarProps & { value: string; width: number }
-> = ({ value = '', onFocus, width, ...props }) => {
-  return (
-    <MaskedDateInputValidationBarContainer width={width}>
-      <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={onFocus}>
-        <MaskedDateInputValidationBarWrapper>
-          <MaskedValidationText>{value}</MaskedValidationText>
-          <ValidationBar {...props} />
-        </MaskedDateInputValidationBarWrapper>
-      </TouchableOpacity>
-    </MaskedDateInputValidationBarContainer>
-  )
-}
-
 const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputProps> = (
   { onSubmit, minDate, maxDate, ...props },
   forwardedRef
 ) => {
   const inputRef = useRef<TextInput>(null)
-  const [value, setValue] = useState(
-    [props.initialDay ?? '', props.initialMonth ?? '', props.initialYear ?? ''].join('/').trim()
-  )
-  const [selection, setSelection] = useState<{ start: number; end: number } | undefined>({
-    start: 0,
-    end: 0,
-  })
-  const [focus, setFocus] = useState<'day' | 'month' | 'year'>()
-  const dateObject = useMemo(() => {
-    const result = (value.trim().length ? value.split('/') : []) as string[]
-    return {
-      day: result[0] ?? 'JJ',
-      month: result[1] ?? 'MM',
-      year: result[2] ?? 'AAAA',
-    }
-  }, [value])
+  const initialValue = [props.initialDay ?? '', props.initialMonth ?? '', props.initialYear ?? '']
+    .join('')
+    .trim()
+  const [value, setValue] = useState(initialValue)
+  const [hasFocus, setHasFocus] = useState(false)
+
   const date = useMemo(() => {
-    if (dateObject.year === 'AAAA' || dateObject.month === 'MM' || dateObject.day === 'JJ') {
-      return undefined
-    }
-    return new Date([dateObject.year, dateObject.month, dateObject.day].join('-'))
-  }, [dateObject])
-
-  const validation = useMemo(() => {
-    const day = parseInt(dateObject.day)
-    const month = parseInt(dateObject.month)
-    const year = parseInt(dateObject.year)
-    return {
-      isDayValid: DAY_VALIDATOR.isValid(day) && DAY_VALIDATOR.hasRightLength(dateObject.day),
-      isMonthValid:
-        MONTH_VALIDATOR.isValid(month) && MONTH_VALIDATOR.hasRightLength(dateObject.month),
-      isYearValid: YEAR_VALIDATOR.isValid(year) && YEAR_VALIDATOR.hasRightLength(dateObject.year),
-    }
-  }, [dateObject])
-
-  const onSingleInputChange = (text: string) => {
-    setValue(text)
-    setSelection(undefined)
-  }
-
-  const onSelectionChange = ({
-    nativeEvent: {
-      selection: { start },
-    },
-  }: NativeSyntheticEvent<TextInputSelectionChangeEventData>) => {
-    let nextFocus: typeof focus
-    if (start <= 2) {
-      nextFocus = 'day'
-    } else if (start <= 5) {
-      nextFocus = 'month'
-    } else {
-      nextFocus = 'year'
-    }
-    setFocus(nextFocus)
-  }
+    if (!value?.length) return null
+    const parts = value.split('/')
+    const dateStr = [parts[2], parts[1], parts[0]].join('-')
+    if (validateDate(dateStr, 'boolean')) return new Date(dateStr)
+    return null
+  }, [value])
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (inputRef.current) inputRef.current.focus()
+      if (Platform.OS !== 'web') {
+        if (inputRef.current) inputRef.current.focus()
+      }
     }, 500)
     return () => clearTimeout(timeout)
   }, [])
@@ -168,19 +108,18 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
       isDateBelowMax: maxDate ? false : true,
     }
 
-    if (isValidDate && minDate) {
-      nextDateValidation.isDateAboveMin = date! >= minDate
+    if (isValidDate && date && minDate) {
+      nextDateValidation.isDateAboveMin = date >= minDate
     }
-    if (isValidDate && maxDate) {
-      nextDateValidation.isDateBelowMax = date! <= maxDate
+    if (isValidDate && date && maxDate) {
+      nextDateValidation.isDateBelowMax = date <= maxDate
     }
 
-    if (isValidDate) {
-      nextDateValidation.isComplete =
-        DAY_VALIDATOR.hasRightLength(dateObject.day) &&
-        MONTH_VALIDATOR.hasRightLength(dateObject.month) &&
-        YEAR_VALIDATOR.hasRightLength(dateObject.year)
-    }
+    const [day, month, year] = value.split('/')
+    nextDateValidation.isComplete =
+      DAY_VALIDATOR.hasRightLength(day ?? '') &&
+      MONTH_VALIDATOR.hasRightLength(month ?? '') &&
+      YEAR_VALIDATOR.hasRightLength(year ?? '')
 
     nextDateValidation.isValid =
       isValidDate &&
@@ -189,81 +128,39 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
       nextDateValidation.isDateBelowMax
 
     return nextDateValidation
-  }, [isValidDate, date, dateObject])
-
+  }, [isValidDate, date, value])
   useEffect(() => {
-    props.onChangeValue?.(isValidDate ? date! : null, dateValidation)
+    props.onChangeValue?.(isValidDate && date ? date : null, dateValidation)
   }, [dateValidation, isValidDate, date])
 
   useImperativeHandle(forwardedRef, () => ({
     clearFocuses() {
-      inputRef.current!.blur()
+      inputRef.current?.blur?.()
     },
   }))
 
   return (
     <Container>
-      <MaskedTextInputElement
-        ref={inputRef}
-        value={value}
-        onChangeText={onSingleInputChange}
-        mask={DEFAULT_MASK}
-        onSelectionChange={onSelectionChange}
-        onBlur={() => setFocus(undefined)}
-        selection={Platform.OS !== 'android' ? selection : undefined}
-        autoFocus={false}
-        keyboardType={'number-pad'}
-        pointerEvents={'none'}
-        returnKeyType={'done'}
-        multiline={true}
-        placeholder={'JJ/MM/AAAA'}
-        onSubmitEditing={onSubmit}
-        type={'custom'}
-      />
       <ValidationBarContainer>
-        <MaskedDateInputValidationBar
-          value={dateObject.day}
-          isFocused={focus === 'day'}
-          isEmpty={dateObject.day === 'JJ'}
-          isValid={validation.isDayValid}
-          width={35}
-          onFocus={() => {
-            setSelection({
-              start: 0,
-              end: 1,
-            })
-            inputRef.current!.focus()
+        <MaskedTextInputElement
+          mask={'99/99/9999'}
+          keyboardType={'number-pad'}
+          onSubmitEditing={onSubmit}
+          returnKeyType={'done'}
+          onChangeText={(nextValue) => {
+            setValue(nextValue)
           }}
+          placeholder={'JJ/MM/AAAA'}
+          autoFocus={true}
+          onFocus={() => setHasFocus(true)}
+          onBlur={() => setHasFocus(false)}
+          type={'custom'}
         />
-        <Spacer />
-        <MaskedDateInputValidationBar
-          value={dateObject.month}
-          isFocused={focus === 'month'}
-          isEmpty={dateObject.month === 'MM'}
-          isValid={validation.isMonthValid}
-          width={40}
-          onFocus={() => {
-            setSelection({
-              start: 3,
-              end: 4,
-            })
-            inputRef.current!.focus()
-          }}
-        />
-        <Spacer />
-        <MaskedDateInputValidationBar
-          value={dateObject.year}
-          isFocused={focus === 'year'}
-          isEmpty={dateObject.year === 'AAAA'}
-          isValid={validation.isYearValid}
-          width={70}
-          onFocus={() => {
-            setSelection({
-              start: 6,
-              end: 7,
-            })
-            inputRef.current!.focus()
-          }}
+        <ValidationBar
+          testID={'date-bar'}
+          isFocused={hasFocus}
+          isEmpty={!value?.length}
+          isValid={dateValidation.isComplete}
         />
       </ValidationBarContainer>
     </Container>
@@ -282,14 +179,15 @@ const Container = styled.View({
 type ValidationBarPropsWithoutFocus = Omit<ValidationBarProps, 'onFocus' | 'width'>
 const ValidationBar = styled.View.attrs<ValidationBarPropsWithoutFocus>(
   ({ isEmpty, isFocused, isValid }) => {
+    if (isValid) {
+      return { backgroundColor: ColorsEnum.GREEN_VALID }
+    }
+
     if (isFocused) {
       return { backgroundColor: ColorsEnum.PRIMARY }
     }
     if (isEmpty) {
       return { backgroundColor: ColorsEnum.GREY_MEDIUM }
-    }
-    if (isValid) {
-      return { backgroundColor: ColorsEnum.GREEN_VALID }
     }
 
     return { backgroundColor: ColorsEnum.ERROR }
@@ -298,44 +196,17 @@ const ValidationBar = styled.View.attrs<ValidationBarPropsWithoutFocus>(
   backgroundColor,
   height: 5,
   borderRadius: 22,
+  alignSelf: 'stretch',
+  minWidth: 130,
 }))
 
 const ValidationBarContainer = styled.View({
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'flex-end',
-  maxWidth: 400,
-  width: '100%',
-  zIndex: 1,
+  flexDirection: 'column',
+  alignItems: 'stretch',
 })
 
 const MaskedTextInputElement = styled(MaskedTextInput)({
   fontSize: 18,
   lineHeight: '22px',
-  textAlign: 'left',
-  width: '100%',
-  height: '100%',
-  opacity: 0,
-  zIndex: 0,
-  position: 'absolute',
-})
-
-const MaskedValidationText = styled(Typo.Body)({
-  fontSize: 18,
-  lineHeight: '22px',
   textAlign: 'center',
-  marginBottom: 5,
 })
-
-const Spacer = styled.View({
-  width: 8,
-})
-
-const MaskedDateInputValidationBarContainer = styled.View.attrs<{ width: number }>(({ width }) => ({
-  width,
-}))<{ width: number }>(({ width }) => ({
-  alignItems: 'stretch',
-  width,
-}))
-
-const MaskedDateInputValidationBarWrapper = styled.TouchableOpacity({})

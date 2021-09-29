@@ -76,11 +76,12 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
     // For offers of type Thing, we don't manually select a date (thus a stock).
     // So we select it programatically given the bookable stocks.
     const firstBookableStock = stocks.find(({ isBookable }) => isBookable)
+
     if (!selectedStock && firstBookableStock) {
       dispatch({ type: 'SELECT_STOCK', payload: firstBookableStock.id })
       dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
     }
-  }, [])
+  }, [stocks, selectedStock])
 
   if (!selectedStock || typeof quantity !== 'number') return <React.Fragment />
 
