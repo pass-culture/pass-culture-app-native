@@ -62,6 +62,11 @@ msgid "Abandonner"
 msgstr "Abandonner"
 
 #: src/features/auth/components/QuitSignupModal.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+#: src/features/auth/signup/SetEmail/SetEmail.tsx
+#: src/features/auth/signup/SetPassword/SetPassword.tsx
+#: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
@@ -686,6 +691,23 @@ msgstr "Explorer les offres"
 msgid "Favoris"
 msgstr "Favoris"
 
+#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
+#: src/features/bookOffer/pages/BookingOfferModal.tsx
+#: src/features/offer/components/ReportOfferModal.tsx
+#: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
+#: src/ui/components/modals/AppInformationModal.tsx
+msgid "Fermer la modale"
+msgstr "Fermer la modale"
+
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
+msgid "Fermer la modale et refuser la collecte des données"
+msgstr "Fermer la modale et refuser la collecte des données"
+
+#: src/features/search/components/CalendarPicker.ios.tsx
+#: src/features/search/components/CalendarPicker.web.tsx
+msgid "Fermer le calendrier"
+msgstr "Fermer le calendrier"
+
 #: src/libs/parsers/venueType.ts
 #: src/libs/parsers/venueType.ts
 msgid "Festival"
@@ -759,7 +781,7 @@ msgstr "Id Check indisponible"
 msgid "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 
-#: src/features/errors/pages/OfferNotFoundErrorBoundary.tsx
+#: src/features/offer/pages/OfferNotFound.tsx
 msgid "Il est possible que cette offre soit désactivée ou n'existe pas."
 msgstr "Il est possible que cette offre soit désactivée ou n'existe pas."
 
@@ -965,7 +987,7 @@ msgstr "Magasin d’arts créatifs"
 msgid "Magasin d’instruments"
 msgstr "Magasin d’instruments"
 
-#: src/features/navigation/RootNavigator/routes.ts
+#: src/features/maintenance/Maintenance.tsx
 msgid "Maintenance"
 msgstr "Maintenance"
 
@@ -1003,10 +1025,6 @@ msgstr "Mettre en favoris"
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid "Mise à jour de l'application"
 msgstr "Mise à jour de l'application"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Mise à jours"
-msgstr "Mise à jours"
 
 #: src/features/bookings/pages/BookingDetails.tsx
 #: src/features/offer/pages/OfferBody.tsx
@@ -1079,6 +1097,14 @@ msgstr "Musée"
 msgid "Navigation"
 msgstr "Navigation"
 
+#: src/features/bookings/components/CancelBookingModal.tsx
+msgid "Ne pas annuler"
+msgstr "Ne pas annuler"
+
+#: src/features/bookings/components/ArchiveBookingModal.tsx
+msgid "Ne pas archiver"
+msgstr "Ne pas archiver"
+
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Nombre de place"
 msgstr "Nombre de place"
@@ -1135,11 +1161,11 @@ msgstr "Offre"
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
-#: src/features/errors/pages/OfferNotFoundErrorBoundary.tsx
+#: src/features/offer/pages/OfferNotFound.tsx
 msgid "Offre introuvable !"
 msgstr "Offre introuvable !"
 
-#: src/features/errors/pages/OfferNotFoundErrorBoundary.tsx
+#: src/features/offer/pages/OfferNotFound.tsx
 msgid "Offre introuvable | Pass Culture"
 msgstr "Offre introuvable | Pass Culture"
 
@@ -1416,8 +1442,8 @@ msgstr "Retour"
 #: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
-#: src/features/errors/pages/OfferNotFoundErrorBoundary.tsx
 #: src/features/navigation/PageNotFound.tsx
+#: src/features/offer/pages/OfferNotFound.tsx
 #: src/features/profile/pages/DeleteProfileSuccess.tsx
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
@@ -1439,12 +1465,40 @@ msgstr "Retrouve toutes les offres autour de chez toi en activant les données d
 msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 
+#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
+#: src/features/auth/login/Login.tsx
+#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+#: src/features/auth/signup/SetEmail/SetEmail.tsx
+#: src/features/auth/signup/SetPassword/SetPassword.tsx
+#: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
+#: src/features/deeplinks/pages/DeeplinkImporter.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/venue/components/VenueHeader.tsx
 #: src/ui/components/headers/PageHeader.tsx
 msgid "Revenir en arrière"
 msgstr "Revenir en arrière"
+
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+msgid "Revenir sur l'écran d'envoi de SMS"
+msgstr "Revenir sur l'écran d'envoi de SMS"
+
+#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
+#: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
+#: src/features/auth/login/Login.tsx
+#: src/features/auth/signup/AcceptCgu.tsx
+msgid "Revenir à l'accueil"
+msgstr "Revenir à l'accueil"
+
+#: src/features/bookOffer/services/useModalContent.tsx
+#: src/features/offer/components/useReportOfferModalContent.tsx
+#: src/features/offer/components/useReportOfferModalContent.tsx
+msgid "Revenir à l'étape précédente"
+msgstr "Revenir à l'étape précédente"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
