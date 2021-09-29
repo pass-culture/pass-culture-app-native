@@ -7,6 +7,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions'
 import { VenueOffers } from 'features/venue/components/VenueOffers'
+import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { parseType } from 'libs/parsers'
@@ -49,10 +50,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     contact,
   } = venue
 
-  const venueAddress = address
-    ? `${address}, ${postalCode} ${city}`
-    : `${publicName}, ${postalCode} ${city}`
-
+  const venueAddress = formatFullAddress(address || publicName, postalCode, city)
   const typeLabel = parseType(venueTypeCode)
 
   const shouldShowVenueOffers = !!settings?.useAppSearch && !!offers && offers?.hits.length > 0

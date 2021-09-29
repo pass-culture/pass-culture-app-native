@@ -10,7 +10,10 @@ import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal'
 import { useReportedOffers } from 'features/offer/services/useReportedOffers'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
-import { formatFullAddress } from 'libs/address/useFormatFullAddress'
+import {
+  formatFullAddress,
+  formatFullAddressWithVenueName,
+} from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
@@ -54,16 +57,19 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
 
+  const showVenueBanner = true
   // TODO (Lucasbeneston): Remove testing condition when display the link to venue button
-  const addressWithoutVenueName = true && env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING
-  const fullAddress = formatFullAddress(
-    venue.publicName,
-    venue.name,
-    venue.address,
-    venue.postalCode,
-    venue.city,
-    addressWithoutVenueName
-  )
+  // If we show the venue banner, we don't want to repeat the name of the venue in the address
+  const fullAddress =
+    showVenueBanner && env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING
+      ? formatFullAddress(venue.address, venue.postalCode, venue.city)
+      : formatFullAddressWithVenueName(
+          venue.address,
+          venue.postalCode,
+          venue.city,
+          venue.publicName,
+          venue.name
+        )
 
   const dates = offerResponse.stocks.reduce<Date[]>(
     (accumulator, stock) =>
@@ -121,7 +127,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
           venue={venue}
           address={fullAddress}
           locationCoordinates={venue.coordinates}
-          showVenueBanner
+          showVenueBanner={showVenueBanner}
         />
       </SectionWithDivider>
 
