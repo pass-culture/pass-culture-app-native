@@ -29,7 +29,7 @@ type RecommendationModuleProps = {
 export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { display, isBeneficiary, position, index, setRecommendationY, hits } = props
 
-  const layoutHits = useLayoutHits(display.layout, hits)
+  const layoutHits = useLayoutHits(hits, display.layout)
 
   const moduleName = display.title
   const logHasSeenAllTiles = useFunctionOnce(() =>
