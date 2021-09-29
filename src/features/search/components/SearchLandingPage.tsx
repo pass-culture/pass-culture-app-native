@@ -12,6 +12,7 @@ import { useLocationChoice } from 'features/search/components/locationChoice.uti
 import { CATEGORY_CRITERIA, LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
+import { useSearchGroupLabel } from 'libs/subcategories'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -29,7 +30,9 @@ export const SearchLandingPage: React.FC = () => {
     searchCategory in availableCategories
       ? (searchCategory as SearchGroupNameEnum)
       : SearchGroupNameEnum.NONE
-  const { icon: Icon, label } = CATEGORY_CRITERIA[selectedCategory]
+  const searchGroupLabel = useSearchGroupLabel(selectedCategory)
+
+  const { icon: Icon } = CATEGORY_CRITERIA[selectedCategory]
 
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
@@ -41,7 +44,7 @@ export const SearchLandingPage: React.FC = () => {
         <Spacer.Flex />
 
         <TouchableOpacity onPress={() => navigate('SearchCategories')}>
-          <BicolorListItem title={label} Icon={Icon} secondaryText={t`Je cherche`} />
+          <BicolorListItem title={searchGroupLabel} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
 
         <Separator windowWidth={windowWidth} />

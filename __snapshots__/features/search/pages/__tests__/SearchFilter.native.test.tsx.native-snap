@@ -692,7 +692,7 @@ Array [
                   ]
                 }
               >
-                Visites, expositions
+                Visite, exposition
               </Text>
               <View
                 numberOfSpaces={5}
@@ -936,7 +936,7 @@ Array [
                   ]
                 }
               >
-                Livres
+                Livre
               </Text>
               <View
                 numberOfSpaces={5}
@@ -997,7 +997,7 @@ Array [
                   ]
                 }
               >
-                Films, séries, podcasts
+                Films, séries
               </Text>
               <View
                 numberOfSpaces={5}
@@ -1058,7 +1058,7 @@ Array [
                   ]
                 }
               >
-                Presse
+                Presse, médias
               </Text>
               <View
                 numberOfSpaces={5}
@@ -1119,7 +1119,7 @@ Array [
                   ]
                 }
               >
-                Jeux vidéos
+                Jeux
               </Text>
               <View
                 numberOfSpaces={5}
@@ -1302,7 +1302,7 @@ Array [
                   ]
                 }
               >
-                Matériel arts créatifs
+                Beaux-Arts
               </Text>
               <View
                 numberOfSpaces={5}

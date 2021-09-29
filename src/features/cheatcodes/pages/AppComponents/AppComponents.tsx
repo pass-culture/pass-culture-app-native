@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, VenueTypeCode } from 'api/gen/api'
+import { CategoryIdEnum, SearchGroupNameEnum, VenueTypeCode } from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
@@ -19,6 +19,7 @@ import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiary
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
+import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner, BannerType } from 'ui/components/Banner'
@@ -942,14 +943,15 @@ const Divider = styled.View({
 })
 
 const CategoryIcons = () => {
+  const searchGroupLabelMapping = useSearchGroupLabelMapping()
   return (
     <React.Fragment>
       <Text>{'Categories'}</Text>
-      {Object.entries(CATEGORY_CRITERIA).map(([searchGroup, { label, icon: BicolorIcon }]) => (
+      {Object.entries(CATEGORY_CRITERIA).map(([searchGroup, { icon: BicolorIcon }]) => (
         <AlignedText key={searchGroup}>
           <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.PRIMARY} />
           <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
-          <Text> - {label || 'TOUTES'} </Text>
+          <Text> - {searchGroupLabelMapping[searchGroup as SearchGroupNameEnum]} </Text>
         </AlignedText>
       ))}
       <Text>{'\n'}</Text>

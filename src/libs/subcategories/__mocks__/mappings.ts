@@ -2,11 +2,12 @@ import { placeholderData } from 'libs/subcategories/placeholderData'
 import {
   CategoryHomeLabelMapping,
   CategoryIdMapping,
+  SearchGroupLabelMapping,
   SubcategoriesMapping,
   HomeLabelMapping,
 } from 'libs/subcategories/types'
 
-const { subcategories, homepageLabels } = placeholderData
+const { subcategories, searchGroups, homepageLabels } = placeholderData
 
 export const useSubcategoriesMapping = () => {
   const mapping = {} as SubcategoriesMapping
@@ -38,6 +39,14 @@ export const useCategoryHomeLabelMapping = () => {
   const mapping = {} as CategoryHomeLabelMapping
   subcategories.forEach((curr) => {
     mapping[curr.id] = homeLabelMapping[curr.homepageLabelName]
+  })
+  return mapping
+}
+
+export const useSearchGroupLabelMapping = () => {
+  const mapping = {} as SearchGroupLabelMapping
+  searchGroups.forEach((curr) => {
+    mapping[curr.name] = curr.value || `Toutes les catégories`
   })
   return mapping
 }
