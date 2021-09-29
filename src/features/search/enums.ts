@@ -19,7 +19,6 @@ export enum LocationType {
 
 export type CategoryCriteria = {
   [category in SearchGroupNameEnum]: {
-    label: string
     icon: React.FC<BicolorIconInterface>
     facetFilter: SearchGroupNameEnum | ''
   }
@@ -27,67 +26,54 @@ export type CategoryCriteria = {
 
 export const CATEGORY_CRITERIA: CategoryCriteria = {
   [SearchGroupNameEnum.NONE]: {
-    label: 'Toutes les catégories',
     icon: CategoryIcon.All,
     facetFilter: '',
   },
   [SearchGroupNameEnum.CINEMA]: {
-    label: 'Cinéma',
     icon: CategoryIcon.Cinema,
     facetFilter: SearchGroupNameEnum.CINEMA,
   },
   [SearchGroupNameEnum.VISITE]: {
-    label: 'Visites, expositions',
     icon: CategoryIcon.Exposition,
     facetFilter: SearchGroupNameEnum.VISITE,
   },
   [SearchGroupNameEnum.MUSIQUE]: {
-    label: 'Musique',
     icon: CategoryIcon.Musique,
     facetFilter: SearchGroupNameEnum.MUSIQUE,
   },
   [SearchGroupNameEnum.SPECTACLE]: {
-    label: 'Spectacles',
     icon: CategoryIcon.Spectacles,
     facetFilter: SearchGroupNameEnum.SPECTACLE,
   },
   [SearchGroupNameEnum.COURS]: {
-    label: 'Cours, ateliers',
     icon: CategoryIcon.Atelier,
     facetFilter: SearchGroupNameEnum.COURS,
   },
   [SearchGroupNameEnum.LIVRE]: {
-    label: 'Livres',
     icon: CategoryIcon.Livres,
     facetFilter: SearchGroupNameEnum.LIVRE,
   },
   [SearchGroupNameEnum.FILM]: {
-    label: 'Films, séries, podcasts',
     icon: CategoryIcon.Streaming,
     facetFilter: SearchGroupNameEnum.FILM,
   },
   [SearchGroupNameEnum.PRESSE]: {
-    label: 'Presse',
     icon: CategoryIcon.Presse,
     facetFilter: SearchGroupNameEnum.PRESSE,
   },
   [SearchGroupNameEnum.JEU]: {
-    label: 'Jeux vidéos',
     icon: CategoryIcon.JeuxVideo,
     facetFilter: SearchGroupNameEnum.JEU,
   },
   [SearchGroupNameEnum.CONFERENCE]: {
-    label: 'Conférences, rencontres',
     icon: CategoryIcon.Conference,
     facetFilter: SearchGroupNameEnum.CONFERENCE,
   },
   [SearchGroupNameEnum.INSTRUMENT]: {
-    label: 'Instruments de musique',
     icon: CategoryIcon.Instrument,
     facetFilter: SearchGroupNameEnum.INSTRUMENT,
   },
   [SearchGroupNameEnum.MATERIEL]: {
-    label: 'Matériel arts créatifs',
     icon: CategoryIcon.ArtsMaterial,
     facetFilter: SearchGroupNameEnum.MATERIEL,
   },

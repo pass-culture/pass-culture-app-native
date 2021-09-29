@@ -1807,7 +1807,7 @@ export interface SubcategoryResponseModel {
      * @type {SearchGroupNameEnum}
      * @memberof SubcategoryResponseModel
      */
-    searchGroupName?: SearchGroupNameEnum | null;
+    searchGroupName: SearchGroupNameEnum;
 }/**
  * 
  * @export

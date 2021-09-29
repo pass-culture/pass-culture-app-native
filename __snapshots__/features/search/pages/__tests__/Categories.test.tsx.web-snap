@@ -359,7 +359,7 @@ Array [
             }
           }
         >
-          Visites, expositions
+          Visite, exposition
         </div>
         <div
           className="css-view-1dbjc4n"
@@ -731,7 +731,7 @@ Array [
             }
           }
         >
-          Livres
+          Livre
         </div>
         <div
           className="css-view-1dbjc4n"
@@ -824,7 +824,7 @@ Array [
             }
           }
         >
-          Films, séries, podcasts
+          Films, séries
         </div>
         <div
           className="css-view-1dbjc4n"
@@ -917,7 +917,7 @@ Array [
             }
           }
         >
-          Presse
+          Presse, médias
         </div>
         <div
           className="css-view-1dbjc4n"
@@ -1010,7 +1010,7 @@ Array [
             }
           }
         >
-          Jeux vidéos
+          Jeux
         </div>
         <div
           className="css-view-1dbjc4n"
@@ -1289,7 +1289,7 @@ Array [
             }
           }
         >
-          Matériel arts créatifs
+          Beaux-Arts
         </div>
         <div
           className="css-view-1dbjc4n"

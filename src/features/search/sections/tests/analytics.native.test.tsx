@@ -3,7 +3,6 @@ import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import Section from 'features/search/sections'
 import { analytics } from 'libs/analytics'
@@ -53,10 +52,10 @@ describe('Analytics - logUseFilter', () => {
 
   it('should log UseFilter once when selecting multiple categories', () => {
     const { getByText } = render(<Section.Category />)
-    fireEvent.press(getByText(CATEGORY_CRITERIA.CINEMA.label))
+    fireEvent.press(getByText('Cinéma'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Category)
-    fireEvent.press(getByText(CATEGORY_CRITERIA.JEU.label))
-    fireEvent.press(getByText(CATEGORY_CRITERIA.PRESSE.label))
+    fireEvent.press(getByText('Jeux'))
+    fireEvent.press(getByText('Presse, médias'))
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
   it('should log UseFilter once when selecting multiple offer types', () => {

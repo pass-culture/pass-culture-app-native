@@ -290,7 +290,7 @@ Array [
             ]
           }
         >
-          Visites, expositions
+          Visite, exposition
         </Text>
         <View
           style={
@@ -594,7 +594,7 @@ Array [
             ]
           }
         >
-          Livres
+          Livre
         </Text>
         <View
           style={
@@ -670,7 +670,7 @@ Array [
             ]
           }
         >
-          Films, séries, podcasts
+          Films, séries
         </Text>
         <View
           style={
@@ -746,7 +746,7 @@ Array [
             ]
           }
         >
-          Presse
+          Presse, médias
         </Text>
         <View
           style={
@@ -822,7 +822,7 @@ Array [
             ]
           }
         >
-          Jeux vidéos
+          Jeux
         </Text>
         <View
           style={
@@ -1050,7 +1050,7 @@ Array [
             ]
           }
         >
-          Matériel arts créatifs
+          Beaux-Arts
         </Text>
         <View
           style={

@@ -10,6 +10,7 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
+import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -25,7 +26,8 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance(_geoloc)
-  const { categoryId, appLabel } = useSubcategory(offer.subcategoryId)
+  const { categoryId, searchGroupName } = useSubcategory(offer.subcategoryId)
+  const searchGroupLabel = useSearchGroupLabel(searchGroupName)
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = +objectID
@@ -69,7 +71,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
           )}
         </Row>
         <Spacer.Column numberOfSpaces={1} />
-        <Body>{appLabel}</Body>
+        <Body>{searchGroupLabel}</Body>
         {!!formattedDate && <Body>{formattedDate}</Body>}
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>

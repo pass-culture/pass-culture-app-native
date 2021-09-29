@@ -1,7 +1,10 @@
+import { renderHook } from '@testing-library/react-hooks'
 import React from 'react'
 
+import { SearchGroupNameEnum } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { fireEvent, render } from 'tests/utils'
 
 import { Category } from '../Category'
@@ -20,9 +23,13 @@ jest.mock('features/home/api')
 
 describe('Category component', () => {
   it('should not render "Toutes les catégories" categories but the rest', () => {
+    const { result } = renderHook(useSearchGroupLabelMapping)
     const { queryByText } = render(<Category />)
-    Object.values(CATEGORY_CRITERIA).map(({ label }) => {
-      if (label === CATEGORY_CRITERIA.NONE.label) {
+
+    Object.keys(CATEGORY_CRITERIA).forEach((key) => {
+      const searchGroup = key as SearchGroupNameEnum
+      const label = result.current[searchGroup]
+      if (searchGroup === SearchGroupNameEnum.NONE) {
         expect(queryByText(label)).toBeFalsy()
       } else {
         expect(queryByText(label)).toBeTruthy()
@@ -32,7 +39,7 @@ describe('Category component', () => {
 
   it('should dispatch TOGGLE_CATEGORY with correct facetFilter', () => {
     const { getByText } = render(<Category />)
-    fireEvent.press(getByText(CATEGORY_CRITERIA.CINEMA.label))
+    fireEvent.press(getByText('Cinéma'))
     expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'TOGGLE_CATEGORY',
       payload: CATEGORY_CRITERIA.CINEMA.facetFilter,

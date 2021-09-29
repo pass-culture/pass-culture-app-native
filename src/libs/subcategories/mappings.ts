@@ -1,9 +1,11 @@
+import { t } from '@lingui/macro'
 import { useMemo } from 'react'
 
 import {
   CategoryHomeLabelMapping,
   CategoryIdMapping,
   HomeLabelMapping,
+  SearchGroupLabelMapping,
   SubcategoriesMapping,
 } from 'libs/subcategories/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -60,4 +62,17 @@ export const useCategoryHomeLabelMapping = (): CategoryHomeLabelMapping => {
     })
     return mapping
   }, [subcategories.length, homeLabelMapping])
+}
+
+export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
+  const { data } = useSubcategories()
+  const { searchGroups = [] } = data || {}
+
+  return useMemo(() => {
+    const mapping = {} as SearchGroupLabelMapping
+    searchGroups.forEach((curr) => {
+      mapping[curr.name] = curr.value || t`Toutes les catégories`
+    })
+    return mapping
+  }, [searchGroups.length])
 }

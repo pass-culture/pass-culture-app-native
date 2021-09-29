@@ -5,8 +5,10 @@ import React, { useRef } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SearchGroupNameEnum } from 'api/gen'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
+import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -21,6 +23,7 @@ export const useSelectCategory = (callback: () => void) => {
 
   return {
     isCategorySelected: (category: string) => {
+      // TODO(antoinewg) use correct types. Not ALL but NONE
       const [selectedCategory] = [...searchState.offerCategories, ALL]
       return selectedCategory === category
     },
@@ -36,6 +39,7 @@ export const Categories: React.FC = () => {
   const { goBack } = useNavigation()
   const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
   const categories = useAvailableCategories()
+  const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
   return (
     <React.Fragment>
@@ -43,18 +47,22 @@ export const Categories: React.FC = () => {
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
 
-        {Object.entries(categories).map(([category, { label, icon: Icon }]) => {
-          const isSelected = isCategorySelected(category)
+        {Object.entries(categories).map(([category, { icon: Icon }]) => {
+          const searchGroup = category as SearchGroupNameEnum
+          const isSelected = isCategorySelected(searchGroup)
           const color2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
           const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
 
           return (
-            <LabelContainer key={category} onPress={selectCategory(category)} testID={category}>
+            <LabelContainer
+              key={searchGroup}
+              onPress={selectCategory(searchGroup)}
+              testID={searchGroup}>
               <Spacer.Row numberOfSpaces={4} />
               <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={color2} />
               <Spacer.Row numberOfSpaces={2} />
               <Typo.ButtonText numberOfLines={2} color={textColor}>
-                {label}
+                {searchGroupLabelMapping[searchGroup]}
               </Typo.ButtonText>
               <Spacer.Flex />
               {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
