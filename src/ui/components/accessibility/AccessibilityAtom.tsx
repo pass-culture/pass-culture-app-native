@@ -65,6 +65,7 @@ const Container = styled.View<{ rightSpacingValue: number }>(({ rightSpacingValu
 
 const TextContainer = styled.View({
   marginHorizontal: -getSpacing(1),
+  marginBottom: getSpacing(4),
 })
 
 const Text = styled(Typo.Caption)({ textAlign: 'center', paddingHorizontal: 1 })

@@ -28,13 +28,11 @@ const renderAccessibilityAtom = (
   addSpacer: boolean
 ) =>
   !!(disability !== null && disability !== undefined) && (
-    <React.Fragment>
-      <AccessibilityAtom
-        handicap={handicap}
-        isAccessible={disability}
-        rightSpacingValue={addSpacer ? getSpacing(3) : 0}
-      />
-    </React.Fragment>
+    <AccessibilityAtom
+      handicap={handicap}
+      isAccessible={disability}
+      rightSpacingValue={addSpacer ? getSpacing(3) : 0}
+    />
   )
 
 const Row = styled.View({
