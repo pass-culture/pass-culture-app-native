@@ -185,7 +185,8 @@ export interface BeneficiaryInformationUpdateRequest {
  */
 export enum BeneficiaryValidationStep {
     PhoneValidation = 'phone-validation',
-    IdCheck = 'id-check'
+    IdCheck = 'id-check',
+    BeneficiaryInformation = 'beneficiary-information'
 }/**
  * 
  * @export
@@ -621,6 +622,16 @@ export interface CulturalSurveyRequest {
      * @memberof CulturalSurveyRequest
      */
     needsToFillCulturalSurvey: boolean;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum DepositType {
+    _15 = 'GRANT_15',
+    _16 = 'GRANT_16',
+    _17 = 'GRANT_17',
+    _18 = 'GRANT_18'
 }/**
  * 
  * @export
@@ -1834,6 +1845,12 @@ export interface UserProfileResponse {
     depositExpirationDate?: Date | null;
     /**
      * 
+     * @type {DepositType}
+     * @memberof UserProfileResponse
+     */
+    depositType?: DepositType | null;
+    /**
+     * 
      * @type {number}
      * @memberof UserProfileResponse
      */
@@ -2185,24 +2202,24 @@ export interface VenueResponse {
  * @enum {string}
  */
 export enum VenueTypeCode {
-    VISUALARTS = 'VISUAL_ARTS',
-    CULTURALCENTRE = 'CULTURAL_CENTRE',
-    ARTISTICCOURSE = 'ARTISTIC_COURSE',
-    SCIENTIFICCULTURE = 'SCIENTIFIC_CULTURE',
-    FESTIVAL = 'FESTIVAL',
-    GAMES = 'GAMES',
-    BOOKSTORE = 'BOOKSTORE',
-    LIBRARY = 'LIBRARY',
-    MUSEUM = 'MUSEUM',
-    RECORDSTORE = 'RECORD_STORE',
-    MUSICALINSTRUMENTSTORE = 'MUSICAL_INSTRUMENT_STORE',
-    CONCERTHALL = 'CONCERT_HALL',
-    DIGITAL = 'DIGITAL',
-    PATRIMONYTOURISM = 'PATRIMONY_TOURISM',
-    MOVIE = 'MOVIE',
-    PERFORMINGARTS = 'PERFORMING_ARTS',
-    CREATIVEARTSSTORE = 'CREATIVE_ARTS_STORE',
-    OTHER = 'OTHER'
+    ArtsVisuelsArtsPlastiquesEtGaleries = 'Arts visuels, arts plastiques et galeries',
+    CentreCulturel = 'Centre culturel',
+    CoursEtPratiqueArtistiques = 'Cours et pratique artistiques',
+    CultureScientifique = 'Culture scientifique',
+    Festival = 'Festival',
+    JeuxJeuxVidos = 'Jeux / Jeux vidéos',
+    Librairie = 'Librairie',
+    BibliothqueOuMdiathque = 'Bibliothèque ou médiathèque',
+    Muse = 'Musée',
+    MusiqueDisquaire = 'Musique - Disquaire',
+    MusiqueMagasinDinstruments = 'Musique - Magasin d’instruments',
+    MusiqueSalleDeConcerts = 'Musique - Salle de concerts',
+    OffreNumrique = 'Offre numérique',
+    PatrimoineEtTourisme = 'Patrimoine et tourisme',
+    CinmaSalleDeProjections = 'Cinéma - Salle de projections',
+    SpectacleVivant = 'Spectacle vivant',
+    MagasinArtsCratifs = 'Magasin arts créatifs',
+    Autre = 'Autre'
 }
 /**
  * DefaultApi - fetch parameter creator
