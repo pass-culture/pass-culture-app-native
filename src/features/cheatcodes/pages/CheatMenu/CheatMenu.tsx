@@ -3,14 +3,16 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const CheatMenu: React.FC = () => {
-  const navigation = useNavigation<UseNavigationType>()
-
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
   return (
     <Container>
       <Spacer.TopScreen />
@@ -18,7 +20,7 @@ export const CheatMenu: React.FC = () => {
         title="Cheater Zone"
         leftIconAccessibilityLabel="Revenir en arrière"
         leftIcon={ArrowPrevious}
-        onLeftIconPress={navigation.goBack}
+        onLeftIconPress={goBack}
         rightIconAccessibilityLabel={undefined}
         rightIcon={undefined}
         onRightIconPress={undefined}
@@ -26,11 +28,11 @@ export const CheatMenu: React.FC = () => {
       <Spacer.Flex />
       <React.Fragment>
         <Spacer.Column numberOfSpaces={8} />
-        <CheatTouchableOpacity onPress={() => navigation.navigate('AppComponents')}>
+        <CheatTouchableOpacity onPress={() => navigate('AppComponents')}>
           <Typo.Body>{t`Composants`}</Typo.Body>
         </CheatTouchableOpacity>
         <Spacer.Column numberOfSpaces={8} />
-        <CheatTouchableOpacity onPress={() => navigation.navigate('Navigation')}>
+        <CheatTouchableOpacity onPress={() => navigate('Navigation')}>
           <Typo.Body>{t`Navigation`}</Typo.Body>
         </CheatTouchableOpacity>
       </React.Fragment>

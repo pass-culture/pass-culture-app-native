@@ -14,6 +14,7 @@ import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { Maintenance } from 'features/maintenance/Maintenance'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { AsyncError } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
@@ -30,7 +31,8 @@ const MAX_ASYNC_TEST_REQ_COUNT = 3
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 
 export function Navigation(): JSX.Element {
-  const navigation = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('CheatMenu')
   const [renderedError, setRenderedError] = useState(undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
@@ -61,11 +63,7 @@ export function Navigation(): JSX.Element {
     try {
       const signInResponse = await signIn({ identifier: email, password })
       if (signInResponse.isSuccess) {
-        navigation.navigate(idCheckInitialRouteName, {
-          email,
-          licence_token: undefined,
-          expiration_timestamp: null,
-        })
+        navigate(idCheckInitialRouteName)
       } else {
         showErrorSnackBar({
           message: `Échec du quick sign in pour l'utilisateur "${email}"`,
@@ -88,7 +86,7 @@ export function Navigation(): JSX.Element {
         title="Navigation"
         leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={navigation.goBack}
+        onLeftIconPress={goBack}
         rightIconAccessibilityLabel={undefined}
         rightIcon={undefined}
         onRightIconPress={undefined}
@@ -98,13 +96,13 @@ export function Navigation(): JSX.Element {
           <CheatCodesButton />
         </Row>
         <Row half>
-          <NavigationButton title={'Login'} onPress={() => navigation.navigate('Login')} />
+          <NavigationButton title={'Login'} onPress={() => navigate('Login')} />
         </Row>
         <Row half>
           <NavigationButton
             title={'Set Birthday'}
             onPress={() =>
-              navigation.navigate('SetBirthday', {
+              navigate('SetBirthday', {
                 email: 'jonh.doe@exmaple.com',
                 isNewsletterChecked: false,
                 password: 'user@AZERTY123',
@@ -116,7 +114,7 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={'Signup choix mdp'}
             onPress={() =>
-              navigation.navigate('SetPassword', {
+              navigate('SetPassword', {
                 email: 'jonh.doe@exmaple.com',
                 isNewsletterChecked: false,
               })
@@ -127,7 +125,7 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={'Signup : email envoyé'}
             onPress={() =>
-              navigation.navigate('SignupConfirmationEmailSent', {
+              navigate('SignupConfirmationEmailSent', {
                 email: 'jean.dupont@gmail.com',
               })
             }
@@ -137,7 +135,7 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={'Reset mdp lien expiré'}
             onPress={() =>
-              navigation.navigate('ResetPasswordExpiredLink', {
+              navigate('ResetPasswordExpiredLink', {
                 email: 'john@wick.com',
               })
             }
@@ -147,7 +145,7 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={'Account confirmation lien expiré'}
             onPress={() =>
-              navigation.navigate('SignupConfirmationExpiredLink', {
+              navigate('SignupConfirmationExpiredLink', {
                 email: 'john@wick.com',
               })
             }
@@ -157,7 +155,7 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={'Signup : Validate Email'}
             onPress={() =>
-              navigation.navigate('AfterSignupEmailValidationBuffer', {
+              navigate('AfterSignupEmailValidationBuffer', {
                 token: 'whichTokenDoYouWantReally',
                 expiration_timestamp: 456789123,
                 email: 'john@wick.com',
@@ -166,16 +164,13 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
-          <NavigationButton
-            title={'Account Created'}
-            onPress={() => navigation.navigate('AccountCreated')}
-          />
+          <NavigationButton title={'Account Created'} onPress={() => navigate('AccountCreated')} />
         </Row>
         <Row half>
           <NavigationButton
             title={'Reset mdp email envoyé'}
             onPress={() =>
-              navigation.navigate('ResetPasswordEmailSent', {
+              navigate('ResetPasswordEmailSent', {
                 email: 'jean.dupont@gmail.com',
               })
             }
@@ -185,7 +180,7 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={'Vérifier éligibilité'}
             onPress={() =>
-              navigation.navigate('VerifyEligibility', {
+              navigate('VerifyEligibility', {
                 email: 'jean.dupont@gmail.com',
                 nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
               })
@@ -195,22 +190,14 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={'First Tutorial'}
-            onPress={() =>
-              navigation.navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })
-            }
+            onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
           />
         </Row>
         <Row half>
-          <NavigationButton
-            title={'Cultural Survey'}
-            onPress={() => navigation.navigate('CulturalSurvey')}
-          />
+          <NavigationButton title={'Cultural Survey'} onPress={() => navigate('CulturalSurvey')} />
         </Row>
         <Row half>
-          <NavigationButton
-            title="Venue"
-            onPress={() => navigation.navigate('Venue', { id: venueId })}
-          />
+          <NavigationButton title="Venue" onPress={() => navigate('Venue', { id: venueId })} />
         </Row>
         <Row>
           <NavigationButton
@@ -252,26 +239,23 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={'Eighteen Birthday'}
-            onPress={() => navigation.navigate('EighteenBirthday')}
+            onPress={() => navigate('EighteenBirthday')}
           />
         </Row>
         <Row half>
           <NavigationButton
             title={'Réglages notifications'}
-            onPress={() => navigation.navigate('NotificationSettings')}
+            onPress={() => navigate('NotificationSettings')}
           />
         </Row>
         <Row half>
           <NavigationButton
             title={'Réglages cookies'}
-            onPress={() => navigation.navigate('ConsentSettings', { onGoBack: () => null })}
+            onPress={() => navigate('ConsentSettings', { onGoBack: () => null })}
           />
         </Row>
         <Row half>
-          <NavigationButton
-            title={'A/B Testing POC'}
-            onPress={() => navigation.navigate('ABTestingPOC')}
-          />
+          <NavigationButton title={'A/B Testing POC'} onPress={() => navigate('ABTestingPOC')} />
         </Row>
         <Row half>
           <NavigationButton
@@ -296,46 +280,43 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={`Beneficiary request sent`}
-            onPress={() => navigation.navigate('BeneficiaryRequestSent')}
+            onPress={() => navigate('BeneficiaryRequestSent')}
           />
         </Row>
         <Row half>
           <NavigationButton title={`Id Check V2`} onPress={onIdCheckV2} />
         </Row>
         <Row half>
-          <NavigationButton
-            title={`PhoneValidation`}
-            onPress={() => navigation.navigate('SetPhoneNumber')}
-          />
+          <NavigationButton title={`PhoneValidation`} onPress={() => navigate('SetPhoneNumber')} />
         </Row>
         <Row half>
           <NavigationButton
             title={`Id Check V2 errors`}
-            onPress={() => navigation.navigate('NavigationIdCheckErrors')}
+            onPress={() => navigate('NavigationIdCheckErrors')}
           />
         </Row>
         <Row half>
           <NavigationButton
             title={`Id Check Unavailable`}
-            onPress={() => navigation.navigate('IdCheckUnavailable')}
+            onPress={() => navigate('IdCheckUnavailable')}
           />
         </Row>
         <Row half>
           <NavigationButton
             title={`Phone validation too many attempts`}
-            onPress={() => navigation.navigate('PhoneValidationTooManyAttempts')}
+            onPress={() => navigate('PhoneValidationTooManyAttempts')}
           />
         </Row>
         <Row half>
           <NavigationButton
             title={`Phone validation too many SMS sent`}
-            onPress={() => navigation.navigate('PhoneValidationTooManySMSSent')}
+            onPress={() => navigate('PhoneValidationTooManySMSSent')}
           />
         </Row>
         <Row half>
           <NavigationButton
             title={`Offre inexistante`}
-            onPress={() => navigation.navigate('Offer', { id: 0, from: 'search' })}
+            onPress={() => navigate('Offer', { id: 0, from: 'search' })}
           />
         </Row>
       </StyledContainer>

@@ -11,7 +11,6 @@ import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
@@ -152,6 +151,7 @@ export const AppComponents: FunctionComponent = () => {
     hideModal: hideBasicModal,
   } = useModal(false)
   const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('CheatMenu')
 
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [_partialDate, setPartialDate] = useState('')
@@ -169,8 +169,6 @@ export const AppComponents: FunctionComponent = () => {
     setButtonIsLoading(true)
     setTimeout(() => setButtonIsLoading(false), 3000)
   }, [])
-
-  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
 
   return (
     <StyledScrollView>
