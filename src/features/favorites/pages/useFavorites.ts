@@ -2,7 +2,12 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
-import { FavoriteRequest, FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
+import {
+  FavoriteRequest,
+  FavoriteResponse,
+  PaginatedFavoritesResponse,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -90,7 +95,11 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
       if (previousFavorites) {
         const favorites = [
           ...previousFavorites.favorites,
-          { id: Math.random(), offer: { id: offerId, category: {} } },
+          {
+            id: Math.random(),
+            // Using a random subcategory so that it doesn't crash
+            offer: { id: offerId, subcategoryId: SubcategoryIdEnum.ABOBIBLIOTHEQUE },
+          },
         ]
 
         queryClient.setQueryData(QueryKeys.FAVORITES, {
