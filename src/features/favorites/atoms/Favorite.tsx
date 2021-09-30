@@ -12,6 +12,7 @@ import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { Credit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferImage } from 'features/search/atoms/OfferImage'
+import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatToFrenchDate, getFavoriteDisplayPrice } from 'libs/parsers'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
@@ -35,7 +36,7 @@ export const Favorite: React.FC<Props> = (props) => {
   const [height, setHeight] = useState<number | undefined>(undefined)
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
-  const navigation = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance({
     lat: offer.coordinates?.latitude,
@@ -81,10 +82,8 @@ export const Favorite: React.FC<Props> = (props) => {
         offerId: offer.id,
       })
     )
-    navigation.navigate('Offer', {
-      id: offer.id,
-      from: 'favorites',
-    })
+    analytics.logConsultOffer({ offerId: offer.id, from: 'favorites' })
+    navigate('Offer', { id: offer.id, from: 'favorites' })
   }
 
   function onRemove() {
