@@ -4,8 +4,6 @@ import AgonTukGeolocation, {
   PositionError as AgonTukPositionError,
 } from 'react-native-geolocation-service'
 
-import { MonitoringError, MonitoringMessage } from 'libs/monitoring'
-
 import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from './enums'
 import { GeolocationError, GeoCoordinates } from './types'
 
@@ -38,7 +36,7 @@ export const getPosition = (
         latitude: position.coords.latitude,
       })
     },
-    ({ code, message }) => {
+    ({ code }) => {
       const type = ERROR_MAPPING[code]
       switch (type) {
         case GeolocPositionError.PERMISSION_DENIED:
@@ -49,31 +47,26 @@ export const getPosition = (
           // Location provider not available
           // or old iPhones (5s, 6s confirmed) only : global localisation setting is off with message "Location service is turned off"
           setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
-          new MonitoringMessage('PositionError_PositionUnavailable' + message)
           break
         case GeolocPositionError.TIMEOUT:
           // Location request timed out
           // TODO: we could implement a retry pattern
           setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
           setPosition(null)
-          new MonitoringError(message, 'PositionError_Timeout')
           break
         case GeolocPositionError.PLAY_SERVICE_NOT_AVAILABLE:
           setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
           setPosition(null)
-          new MonitoringMessage('PositionError_PlayServiceNotAvailable' + message)
           break
         case GeolocPositionError.SETTINGS_NOT_SATISFIED:
           // Android only : location service is disabled or location mode is not appropriate for the current request
           setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
           setPosition(null)
-          new MonitoringMessage('PositionError_SettingsNotSatisfied' + message)
           break
         case GeolocPositionError.INTERNAL_ERROR:
           /// Android only : library crashed for some reason or getCurrentActivity() returned null
           setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
           setPosition(null)
-          new MonitoringError(message, 'PositionError_InternalError')
           break
       }
     },

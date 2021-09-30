@@ -1,7 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { MonitoringError, MonitoringMessage } from 'libs/monitoring'
-
 import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from './enums'
 import { GeolocationError, GeoCoordinates } from './types'
 
@@ -29,7 +27,7 @@ export const getPosition = (
         latitude: position.coords.latitude,
       })
     },
-    ({ code, message }) => {
+    ({ code }) => {
       const type = ERROR_MAPPING[code]
       switch (type) {
         case GeolocPositionError.PERMISSION_DENIED:
@@ -39,14 +37,12 @@ export const getPosition = (
         case GeolocPositionError.POSITION_UNAVAILABLE:
           // Location provider not available
           setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
-          new MonitoringMessage('PositionError_PositionUnavailable' + message)
           break
         case GeolocPositionError.TIMEOUT:
           // Location request timed out
           // TODO: we could implement a retry pattern
           setPositionError({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
           setPosition(null)
-          new MonitoringError(message, 'PositionError_Timeout')
           break
       }
     },
