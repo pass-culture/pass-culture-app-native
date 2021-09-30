@@ -1,11 +1,13 @@
+import { t } from '@lingui/macro'
 import { Route, useNavigationState } from '@react-navigation/native'
-import { Linking } from 'react-native'
+import { Alert, Linking } from 'react-native'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
 import { TabNavigateConfig } from 'features/navigation/TabBar/types'
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
+import { MonitoringError } from 'libs/monitoring'
 
 import { navigationRef } from './navigationRef'
 
@@ -41,19 +43,29 @@ export async function openExternalUrl(
     }
   }
 
-  const canOpen = await Linking.canOpenURL(url)
-  if (canOpen) {
-    Linking.openURL(url).then(() => {
-      if (logEvent) {
-        analytics.logOpenExternalUrl(url)
-      }
-    })
-  } else if (fallbackUrl) {
-    const canOpenFallBackUrl = await Linking.canOpenURL(fallbackUrl)
-    if (canOpenFallBackUrl) {
-      Linking.openURL(fallbackUrl).then(() => logEvent && analytics.logOpenExternalUrl(fallbackUrl))
+  try {
+    await Linking.openURL(url)
+    if (logEvent) analytics.logOpenExternalUrl(url)
+    return
+  } catch (error) {
+    new MonitoringError(error.message, 'OpenExternalUrlError')
+  }
+
+  if (fallbackUrl) {
+    try {
+      await Linking.openURL(fallbackUrl)
+      if (logEvent) analytics.logOpenExternalUrl(fallbackUrl)
+      return
+    } catch (error) {
+      new MonitoringError(error.message, 'OpenExternalUrlError_FallbackUrl')
     }
   }
+
+  const alertTitle = t`Problème technique ;(`
+  const alertMessage = t`Nous n'arrivons pas à ouvrir ce lien : ${url}`
+  const alertButtons = undefined
+  const alertAndroidOptions = { cancelable: true }
+  Alert.alert(alertTitle, alertMessage, alertButtons, alertAndroidOptions)
 }
 
 export function usePreviousRoute(): Route<string> | null {

@@ -1,4 +1,6 @@
-import { Linking, Platform } from 'react-native'
+import { Platform } from 'react-native'
+
+import { openExternalUrl } from 'features/navigation/helpers'
 
 export const isValidFrenchPhoneNumber = (phonenumber: string) => {
   const metropolitanFranceReg = new RegExp(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/)
@@ -20,11 +22,11 @@ export const isValidFrenchPhoneNumber = (phonenumber: string) => {
 }
 
 export async function openPhoneNumber(phone: string) {
-  const phoneNumber = Platform.OS === 'android' ? `tel:${phone}` : `telprompt:${phone}`
-  if (await Linking.canOpenURL(phoneNumber)) Linking.openURL(phoneNumber)
+  const url = Platform.OS === 'android' ? `tel:${phone}` : `telprompt:${phone}`
+  await openExternalUrl(url)
 }
 
 export async function openMail(mail: string) {
-  const mailTo = `mailto:${mail}`
-  if (await Linking.canOpenURL(mailTo)) Linking.openURL(mailTo)
+  const url = `mailto:${mail}`
+  await openExternalUrl(url)
 }
