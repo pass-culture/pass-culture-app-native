@@ -1,7 +1,7 @@
 import { env } from 'libs/environment'
-import firestoreRemoteStore from 'libs/firestore/client'
+import { MonitoringError } from 'libs/errorMonitoring'
+import { firestoreRemoteStore } from 'libs/firestore/client'
 import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firestore/types'
-import { MonitoringError } from 'libs/monitoring'
 
 export const minimalBuildNumberStatusListener = (
   onValueChange: (minimalBuildNumber: number) => void
