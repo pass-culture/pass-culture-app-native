@@ -1072,6 +1072,7 @@ const SnackBars = () => {
       title: '❌ Error SnackBar',
       showSnackBar: showErrorSnackBar,
       message: 'There was an error !',
+      timeout: 5000,
       onClose: hideSnackBar,
     },
     {

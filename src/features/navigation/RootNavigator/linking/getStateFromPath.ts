@@ -4,6 +4,7 @@ import { getStateFromPath } from '@react-navigation/native'
 
 import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
+import { IS_WEB_PROD } from 'libs/web'
 
 type Params = Parameters<typeof getStateFromPath>
 type Path = Params[0]
@@ -31,16 +32,19 @@ function addRedirectSupport(path: Path): Path {
   if (!pathname) {
     return path
   }
-  if (search && matchPathname(pathname, ['offre', 'offer'])) {
+  if (search && match(pathname, ['offre', 'offer'])) {
     const { id } = getUrlQueryParams(search)
     if (id) {
       return new DeeplinkPathWithPathParams(DeeplinkPath.OFFER, { id }).getFullPath()
     }
   }
+  if (IS_WEB_PROD && match(pathname, ['app-components'])) {
+    return 'home'
+  }
   return path
 }
 
-function matchPathname(pathname: string, pathnamesToCheck: string[]): boolean {
+function match(pathname: string, pathnamesToCheck: string[]): boolean {
   return pathnamesToCheck.some((p) => pathname.includes(p))
 }
 
