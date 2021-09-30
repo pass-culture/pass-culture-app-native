@@ -11,6 +11,7 @@ import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
+import { useStorageInformation } from 'features/cheatcodes/pages/AppComponents/useStorageInformation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
@@ -160,6 +161,7 @@ export const AppComponents: FunctionComponent = () => {
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
   const [radioButtonChoice, setRadioButtonChoice] = useState('')
+  const { campaign, source, medium } = useStorageInformation()
 
   function navigateToIdCheckUnavailable() {
     navigate('IdCheckUnavailable')
@@ -829,6 +831,21 @@ export const AppComponents: FunctionComponent = () => {
             isUserUnderageBeneficiary={true}
           />
         </View>
+      </AccordionItem>
+
+      <Divider />
+
+      {/* Storage information */}
+      <AccordionItem title="Storage information">
+        <AlignedText>
+          <Text>traffic_campaign: {campaign}</Text>
+        </AlignedText>
+        <AlignedText>
+          <Text>traffic_medium: {medium}</Text>
+        </AlignedText>
+        <AlignedText>
+          <Text>traffic_source: {source}</Text>
+        </AlignedText>
       </AccordionItem>
 
       <Divider />
