@@ -10,6 +10,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -17,7 +18,8 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
 export function NavigationIdCheckErrors(): JSX.Element {
-  const navigation = useNavigation<UseNavigationType>()
+  const { replace } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack('Navigation')
   const [error, setError] = useState<IdCheckError | Error | null>(null)
   const { setContextValue } = useIdCheckContext()
   const { data: settings } = useAppSettings()
@@ -32,11 +34,11 @@ export function NavigationIdCheckErrors(): JSX.Element {
   })
 
   function goToBeneficiaryRequestSent() {
-    navigation.replace('BeneficiaryRequestSent')
+    replace('BeneficiaryRequestSent')
   }
 
   function onAbandon() {
-    navigation.replace(homeNavigateConfig.screen, homeNavigateConfig.params)
+    replace(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
 
   function syncUserAndProceedToNextScreen() {
@@ -79,7 +81,7 @@ export function NavigationIdCheckErrors(): JSX.Element {
         title="Id Check v2 Errors"
         leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={navigation.goBack}
+        onLeftIconPress={goBack}
         rightIconAccessibilityLabel={undefined}
         rightIcon={undefined}
         onRightIconPress={undefined}
