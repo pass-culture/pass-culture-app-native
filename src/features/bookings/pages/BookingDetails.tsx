@@ -3,6 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { useWindowDimensions } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
+import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -15,6 +16,7 @@ import { BookingPropertiesSection } from 'features/bookings/components/BookingPr
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { BookingProperties, getBookingProperties } from 'features/bookings/helpers'
+import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
@@ -50,6 +52,7 @@ export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const booking = useOngoingOrEndedBooking(params.id)
+  const queryClient = useQueryClient()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
     visible: archiveModalVisible,
@@ -94,11 +97,18 @@ export function BookingDetails() {
   }
 
   const navigateToOffer = () => {
+    queryClient.setQueryData(
+      ['offer', offer.id],
+      mergeOfferData({
+        ...offer,
+        categoryId: mapping[offer.subcategoryId].categoryId,
+        thumbUrl: offer.image?.url,
+        name: offer.name,
+        offerId: offer.id,
+      })
+    )
     analytics.logConsultOffer({ offerId: offer.id, from: 'bookings' })
-    navigate('Offer', {
-      id: offer.id,
-      from: 'bookingdetails',
-    })
+    navigate('Offer', { id: offer.id, from: 'bookingdetails' })
   }
 
   return (
