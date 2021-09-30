@@ -9,6 +9,8 @@ import { bookingsSnap } from '../api/bookingsSnap'
 
 import { EndedBookings } from './EndedBookings'
 
+jest.mock('react-query')
+
 describe('EndedBookings', () => {
   afterEach(jest.restoreAllMocks)
 
