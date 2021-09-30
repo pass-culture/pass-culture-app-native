@@ -1,26 +1,19 @@
-Link to JIRA ticket: https://passculture.atlassian.net/browse/PC-XXX
+Link to JIRA ticket: https://passculture.atlassian.net/browse/PC-XXXXX
 
 ## Checklist
 
 I have:
 
-- [ ] Made sure the title of my PR follows the convention `[PC-XXX] <summary>`.
-- [ ] Made sure my feature is working on the relevant real / virtual devices.
-- [ ] Written **unit tests** for my feature.
-- [ ] Written **documentation on Notion** for my feature.
-- [ ] Added new reusable components to the AppComponents page and communicate to the team on slack
+- [ ] Made sure the title of my PR follows the convention `[PC-XXXXX] <summary>`.
+- [ ] Made sure my feature is working on the relevant real / virtual devices (mobile and web).
+- [ ] Written **unit tests** native and web for my feature.
 - [ ] Added a **screenshot** for UI tickets.
-- [ ] Attached a **ticket number** for any added TODO/FIXME \
-       (for tech tasks, give the best context about the TODO resolution: what/who/when).
+- [ ] Attached a **ticket number** or **github dev name** for any added TODO / FIXME.
+- [ ] Added new reusable components to **AppComponents** page and communicate to the team on slack.
+- [ ] Written **documentation on Notion** for my feature.
 
 ## Screenshots
 
-| \*iOS - [Phone name] | \*Android - [Phone name] | Tablet - [Phone name] | Little - [Phone name] |
-| -------------------- | :----------------------: | --------------------: | --------------------: |
-|                      |                          |                       |                       |
-
-## Deploy hard
-
-If native code (ios/android) was modified, **after** the PR is merged, on the master branch, upgrade the **app version** (+1 patch):
-
-- if you want an hard deployment of the testing environment, use `yarn trigger:testing:deploy`
+| iOS | Android | Tablet | Little | Web |
+| --: | ------: | -----: | -----: | --: |
+|     |         |        |        |     |
