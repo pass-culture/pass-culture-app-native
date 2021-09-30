@@ -250,6 +250,12 @@ Dans le repo [**id-check-front**](https://github.com/pass-culture/id-check-front
 1. `git tag vX.X.X`
 1. `git push origin vX.X.X`
 1. `cd packages/id-check`
+1. Vérifier que `cat ~/.npmrc` a le registry suivant de configurer avec votre access token : 
+   ```bash
+   ...
+   //registry.npmjs.com/:_authToken=XXXXXXXXXXXXX
+   ...
+   ```
 1. Publier le module sur NPM: `npm publish`
 
 Dans le repo [**pass-culture-app-native**](https://github.com/pass-culture/pass-culture-app-native) :
