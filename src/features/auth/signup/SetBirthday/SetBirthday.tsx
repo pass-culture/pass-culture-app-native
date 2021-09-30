@@ -2,18 +2,17 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SIGNUP_NUMBER_OF_STEPS, useDepositAmount } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { StyledStepDots } from 'features/auth/components/signupComponents'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
 import { env } from 'libs/environment'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
-import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -166,35 +165,27 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           rightIcon={Close}
           onRightIconPress={showQuitSignupModal}
         />
-        <BottomCardContentContainer>
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <InnerContainer>
-              <ButtonTertiary title={t`Pourquoi ?`} onPress={onPressWhy} />
-              <Spacer.Column numberOfSpaces={10} />
-              <DateInputContainer>
-                <DateInput
-                  autoFocus={true}
-                  onChangeValue={onChangeValue}
-                  ref={dateInputRef}
-                  minDate={MIN_DATE}
-                  maxDate={maxDate}
-                  initialDay={INITIAL_DAY}
-                  initialMonth={INITIAL_MONTH}
-                  initialYear={INITIAL_YEAR}
-                />
-                {renderErrorMessages()}
-              </DateInputContainer>
-              <Spacer.Column numberOfSpaces={14} />
-              <ButtonPrimary
-                title={t`Continuer`}
-                disabled={!state.isDateValid}
-                onPress={goToNextStep}
-              />
-              <Spacer.Column numberOfSpaces={5} />
-              <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={3} />
-            </InnerContainer>
-          </TouchableWithoutFeedback>
-        </BottomCardContentContainer>
+        <ButtonTertiary title={t`Pourquoi ?`} onPress={onPressWhy} />
+        <Spacer.Column numberOfSpaces={10} />
+        <DateInputContainer>
+          <DateInput
+            autoFocus={true}
+            onChangeValue={onChangeValue}
+            ref={dateInputRef}
+            minDate={MIN_DATE}
+            maxDate={maxDate}
+            initialDay={INITIAL_DAY}
+            initialMonth={INITIAL_MONTH}
+            initialYear={INITIAL_YEAR}
+          />
+          {renderErrorMessages()}
+        </DateInputContainer>
+        <Spacer.Column numberOfSpaces={14} />
+        <ButtonPrimary title={t`Continuer`} disabled={!state.isDateValid} onPress={goToNextStep} />
+        <Spacer.Column numberOfSpaces={5} />
+        <StyledStepDots>
+          <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={3} />
+        </StyledStepDots>
       </BottomContentPage>
       <AppInformationModal
         title="Pourquoi ?"
@@ -224,11 +215,6 @@ async function logBirthdayAnalytics(age: number) {
     analytics.logSignUpBetween14And15Included()
   }
 }
-
-const InnerContainer = styled.View({
-  width: '100%',
-  alignItems: 'center',
-})
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',

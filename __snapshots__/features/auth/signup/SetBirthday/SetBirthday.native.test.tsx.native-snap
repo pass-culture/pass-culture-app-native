@@ -198,6 +198,7 @@ Array [
               }
             >
               <View
+                accessibilityLabel="Pourquoi ?"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -208,6 +209,57 @@ Array [
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 24,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  }
+                }
+                testID="Pourquoi ?"
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 5,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                  textColor="#eb0055"
+                >
+                  Pourquoi ?
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={10}
+                style={
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
                   Array [
                     Object {
                       "alignItems": "center",
@@ -217,72 +269,11 @@ Array [
                 }
               >
                 <View
-                  accessibilityLabel="Pourquoi ?"
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 24,
-                      "borderWidth": 0,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    }
-                  }
-                  testID="Pourquoi ?"
-                >
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#eb0055",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginLeft": 5,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                    textColor="#eb0055"
-                  >
-                    Pourquoi ?
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={10}
-                  style={
-                    Array [
-                      Object {
-                        "height": 40,
-                      },
-                    ]
-                  }
-                />
-                <View
                   style={
                     Array [
                       Object {
                         "alignItems": "center",
-                        "width": "100%",
+                        "flexDirection": "row",
                       },
                     ]
                   }
@@ -292,341 +283,341 @@ Array [
                       Array [
                         Object {
                           "alignItems": "center",
-                          "flexDirection": "row",
+                          "marginBottom": 4,
+                          "marginLeft": 4,
+                          "marginRight": 4,
+                          "marginTop": 4,
                         },
                       ]
                     }
                   >
-                    <View
+                    <TextInput
+                      accessibilityLabel="Entrée pour le jour"
+                      accessible={true}
+                      allowFontScaling={true}
+                      blurOnSubmit={true}
+                      keyboardType="number-pad"
+                      maxLength={2}
+                      minWidth={20}
+                      numberOfChar={2}
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      placeholder="JJ"
+                      placeholderTextColor="#626262"
+                      rejectResponderTermination={true}
+                      selectTextOnFocus={true}
                       style={
                         Array [
                           Object {
-                            "alignItems": "center",
-                            "marginBottom": 4,
-                            "marginLeft": 4,
-                            "marginRight": 4,
-                            "marginTop": 4,
+                            "color": "#151515",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          },
+                          Object {
+                            "fontSize": 18,
+                            "lineHeight": 22,
+                            "minWidth": 40,
+                            "paddingHorizontal": 10,
+                            "textAlign": "center",
                           },
                         ]
                       }
-                    >
-                      <TextInput
-                        accessibilityLabel="Entrée pour le jour"
-                        accessible={true}
-                        allowFontScaling={true}
-                        blurOnSubmit={true}
-                        keyboardType="number-pad"
-                        maxLength={2}
-                        minWidth={20}
-                        numberOfChar={2}
-                        onBlur={[Function]}
-                        onChangeText={[Function]}
-                        onFocus={[Function]}
-                        placeholder="JJ"
-                        placeholderTextColor="#626262"
-                        rejectResponderTermination={true}
-                        selectTextOnFocus={true}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#151515",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-Regular",
-                              "fontSize": 15,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                            Object {
-                              "fontSize": 18,
-                              "lineHeight": 22,
-                              "minWidth": 40,
-                              "paddingHorizontal": 10,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                        testID="Entrée pour le jour"
-                        underlineColorAndroid="transparent"
-                        value=""
-                      />
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          Array [
-                            Object {
-                              "height": 4,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        backgroundColor="#c7c7cc"
-                        isEmpty={true}
-                        isFocused={false}
-                        isValid={false}
-                        style={
-                          Array [
-                            Object {
-                              "backgroundColor": "#c7c7cc",
-                              "borderRadius": 22,
-                              "height": 5,
-                              "width": "100%",
-                            },
-                          ]
-                        }
-                        testID="datepart-bar-day"
-                      />
-                    </View>
+                      testID="Entrée pour le jour"
+                      underlineColorAndroid="transparent"
+                      value=""
+                    />
                     <View
+                      numberOfSpaces={1}
                       style={
                         Array [
                           Object {
-                            "alignItems": "center",
-                            "marginBottom": 4,
-                            "marginLeft": 4,
-                            "marginRight": 4,
-                            "marginTop": 4,
+                            "height": 4,
                           },
                         ]
                       }
-                    >
-                      <TextInput
-                        accessibilityLabel="Entrée pour le mois"
-                        accessible={true}
-                        allowFontScaling={true}
-                        blurOnSubmit={true}
-                        keyboardType="number-pad"
-                        maxLength={2}
-                        minWidth={20}
-                        numberOfChar={2}
-                        onBlur={[Function]}
-                        onChangeText={[Function]}
-                        onFocus={[Function]}
-                        onKeyPress={[Function]}
-                        placeholder="MM"
-                        placeholderTextColor="#626262"
-                        rejectResponderTermination={true}
-                        selectTextOnFocus={true}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#151515",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-Regular",
-                              "fontSize": 15,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                            Object {
-                              "fontSize": 18,
-                              "lineHeight": 22,
-                              "minWidth": 40,
-                              "paddingHorizontal": 10,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                        testID="Entrée pour le mois"
-                        underlineColorAndroid="transparent"
-                        value=""
-                      />
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          Array [
-                            Object {
-                              "height": 4,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        backgroundColor="#c7c7cc"
-                        isEmpty={true}
-                        isFocused={false}
-                        isValid={false}
-                        style={
-                          Array [
-                            Object {
-                              "backgroundColor": "#c7c7cc",
-                              "borderRadius": 22,
-                              "height": 5,
-                              "width": "100%",
-                            },
-                          ]
-                        }
-                        testID="datepart-bar-month"
-                      />
-                    </View>
+                    />
                     <View
+                      backgroundColor="#c7c7cc"
+                      isEmpty={true}
+                      isFocused={false}
+                      isValid={false}
                       style={
                         Array [
                           Object {
-                            "alignItems": "center",
-                            "marginBottom": 4,
-                            "marginLeft": 4,
-                            "marginRight": 4,
-                            "marginTop": 4,
+                            "backgroundColor": "#c7c7cc",
+                            "borderRadius": 22,
+                            "height": 5,
+                            "width": "100%",
                           },
                         ]
                       }
-                    >
-                      <TextInput
-                        accessibilityLabel="Entrée pour l'année"
-                        accessible={true}
-                        allowFontScaling={true}
-                        blurOnSubmit={true}
-                        keyboardType="number-pad"
-                        maxLength={4}
-                        minWidth={20}
-                        numberOfChar={4}
-                        onBlur={[Function]}
-                        onChangeText={[Function]}
-                        onFocus={[Function]}
-                        onKeyPress={[Function]}
-                        placeholder="AAAA"
-                        placeholderTextColor="#626262"
-                        rejectResponderTermination={true}
-                        selectTextOnFocus={true}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#151515",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-Regular",
-                              "fontSize": 15,
-                              "height": "100%",
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                            },
-                            Object {
-                              "fontSize": 18,
-                              "lineHeight": 22,
-                              "minWidth": 80,
-                              "paddingHorizontal": 10,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                        testID="Entrée pour l'année"
-                        underlineColorAndroid="transparent"
-                        value=""
-                      />
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          Array [
-                            Object {
-                              "height": 4,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        backgroundColor="#c7c7cc"
-                        isEmpty={true}
-                        isFocused={false}
-                        isValid={false}
-                        style={
-                          Array [
-                            Object {
-                              "backgroundColor": "#c7c7cc",
-                              "borderRadius": 22,
-                              "height": 5,
-                              "width": "100%",
-                            },
-                          ]
-                        }
-                        testID="datepart-bar-year"
-                      />
-                    </View>
+                      testID="datepart-bar-day"
+                    />
                   </View>
-                </View>
-                <View
-                  numberOfSpaces={14}
-                  style={
-                    Array [
-                      Object {
-                        "height": 56,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  accessibilityLabel="Continuer"
-                  accessible={true}
-                  focusable={false}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#f5f5f5",
-                      "borderRadius": 24,
-                      "borderWidth": 0,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    }
-                  }
-                  testID="Continuer"
-                >
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
+                  <View
                     style={
                       Array [
                         Object {
-                          "color": "#626262",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginLeft": 5,
-                          "maxWidth": "100%",
+                          "alignItems": "center",
+                          "marginBottom": 4,
+                          "marginLeft": 4,
+                          "marginRight": 4,
+                          "marginTop": 4,
                         },
                       ]
                     }
-                    textColor="#626262"
                   >
-                    Continuer
-                  </Text>
+                    <TextInput
+                      accessibilityLabel="Entrée pour le mois"
+                      accessible={true}
+                      allowFontScaling={true}
+                      blurOnSubmit={true}
+                      keyboardType="number-pad"
+                      maxLength={2}
+                      minWidth={20}
+                      numberOfChar={2}
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      onKeyPress={[Function]}
+                      placeholder="MM"
+                      placeholderTextColor="#626262"
+                      rejectResponderTermination={true}
+                      selectTextOnFocus={true}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#151515",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          },
+                          Object {
+                            "fontSize": 18,
+                            "lineHeight": 22,
+                            "minWidth": 40,
+                            "paddingHorizontal": 10,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                      testID="Entrée pour le mois"
+                      underlineColorAndroid="transparent"
+                      value=""
+                    />
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "height": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      backgroundColor="#c7c7cc"
+                      isEmpty={true}
+                      isFocused={false}
+                      isValid={false}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#c7c7cc",
+                            "borderRadius": 22,
+                            "height": 5,
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                      testID="datepart-bar-month"
+                    />
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "marginBottom": 4,
+                          "marginLeft": 4,
+                          "marginRight": 4,
+                          "marginTop": 4,
+                        },
+                      ]
+                    }
+                  >
+                    <TextInput
+                      accessibilityLabel="Entrée pour l'année"
+                      accessible={true}
+                      allowFontScaling={true}
+                      blurOnSubmit={true}
+                      keyboardType="number-pad"
+                      maxLength={4}
+                      minWidth={20}
+                      numberOfChar={4}
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      onKeyPress={[Function]}
+                      placeholder="AAAA"
+                      placeholderTextColor="#626262"
+                      rejectResponderTermination={true}
+                      selectTextOnFocus={true}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#151515",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          },
+                          Object {
+                            "fontSize": 18,
+                            "lineHeight": 22,
+                            "minWidth": 80,
+                            "paddingHorizontal": 10,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                      testID="Entrée pour l'année"
+                      underlineColorAndroid="transparent"
+                      value=""
+                    />
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "height": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      backgroundColor="#c7c7cc"
+                      isEmpty={true}
+                      isFocused={false}
+                      isValid={false}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#c7c7cc",
+                            "borderRadius": 22,
+                            "height": 5,
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                      testID="datepart-bar-year"
+                    />
+                  </View>
                 </View>
-                <View
-                  numberOfSpaces={5}
+              </View>
+              <View
+                numberOfSpaces={14}
+                style={
+                  Array [
+                    Object {
+                      "height": 56,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Continuer"
+                accessible={true}
+                focusable={false}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#f5f5f5",
+                    "borderRadius": 24,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  }
+                }
+                testID="Continuer"
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
                   style={
                     Array [
                       Object {
-                        "height": 20,
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 5,
+                        "maxWidth": "100%",
                       },
                     ]
                   }
-                />
+                  textColor="#626262"
+                >
+                  Continuer
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
                 <View
                   style={
                     Array [
@@ -1194,6 +1185,7 @@ exports[`SetBirthday Page should render properly 1`] = `
             }
           >
             <View
+              accessibilityLabel="Pourquoi ?"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -1204,6 +1196,57 @@ exports[`SetBirthday Page should render properly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="Pourquoi ?"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+                textColor="#eb0055"
+              >
+                Pourquoi ?
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={10}
+              style={
+                Array [
+                  Object {
+                    "height": 40,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
                 Array [
                   Object {
                     "alignItems": "center",
@@ -1213,72 +1256,11 @@ exports[`SetBirthday Page should render properly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Pourquoi ?"
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "borderRadius": 24,
-                    "borderWidth": 0,
-                    "flexDirection": "row",
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 2,
-                    "paddingRight": 2,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  }
-                }
-                testID="Pourquoi ?"
-              >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 5,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                  textColor="#eb0055"
-                >
-                  Pourquoi ?
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={10}
-                style={
-                  Array [
-                    Object {
-                      "height": 40,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
-                      "width": "100%",
+                      "flexDirection": "row",
                     },
                   ]
                 }
@@ -1288,341 +1270,341 @@ exports[`SetBirthday Page should render properly 1`] = `
                     Array [
                       Object {
                         "alignItems": "center",
-                        "flexDirection": "row",
+                        "marginBottom": 4,
+                        "marginLeft": 4,
+                        "marginRight": 4,
+                        "marginTop": 4,
                       },
                     ]
                   }
                 >
-                  <View
+                  <TextInput
+                    accessibilityLabel="Entrée pour le jour"
+                    accessible={true}
+                    allowFontScaling={true}
+                    blurOnSubmit={true}
+                    keyboardType="number-pad"
+                    maxLength={2}
+                    minWidth={20}
+                    numberOfChar={2}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="JJ"
+                    placeholderTextColor="#626262"
+                    rejectResponderTermination={true}
+                    selectTextOnFocus={true}
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "marginBottom": 4,
-                          "marginLeft": 4,
-                          "marginRight": 4,
-                          "marginTop": 4,
+                          "color": "#151515",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                        Object {
+                          "fontSize": 18,
+                          "lineHeight": 22,
+                          "minWidth": 40,
+                          "paddingHorizontal": 10,
+                          "textAlign": "center",
                         },
                       ]
                     }
-                  >
-                    <TextInput
-                      accessibilityLabel="Entrée pour le jour"
-                      accessible={true}
-                      allowFontScaling={true}
-                      blurOnSubmit={true}
-                      keyboardType="number-pad"
-                      maxLength={2}
-                      minWidth={20}
-                      numberOfChar={2}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder="JJ"
-                      placeholderTextColor="#626262"
-                      rejectResponderTermination={true}
-                      selectTextOnFocus={true}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "height": "100%",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                          },
-                          Object {
-                            "fontSize": 18,
-                            "lineHeight": 22,
-                            "minWidth": 40,
-                            "paddingHorizontal": 10,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                      testID="Entrée pour le jour"
-                      underlineColorAndroid="transparent"
-                      value=""
-                    />
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        Array [
-                          Object {
-                            "height": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      backgroundColor="#c7c7cc"
-                      isEmpty={true}
-                      isFocused={false}
-                      isValid={false}
-                      style={
-                        Array [
-                          Object {
-                            "backgroundColor": "#c7c7cc",
-                            "borderRadius": 22,
-                            "height": 5,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                      testID="datepart-bar-day"
-                    />
-                  </View>
+                    testID="Entrée pour le jour"
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />
                   <View
+                    numberOfSpaces={1}
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "marginBottom": 4,
-                          "marginLeft": 4,
-                          "marginRight": 4,
-                          "marginTop": 4,
+                          "height": 4,
                         },
                       ]
                     }
-                  >
-                    <TextInput
-                      accessibilityLabel="Entrée pour le mois"
-                      accessible={true}
-                      allowFontScaling={true}
-                      blurOnSubmit={true}
-                      keyboardType="number-pad"
-                      maxLength={2}
-                      minWidth={20}
-                      numberOfChar={2}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      onKeyPress={[Function]}
-                      placeholder="MM"
-                      placeholderTextColor="#626262"
-                      rejectResponderTermination={true}
-                      selectTextOnFocus={true}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "height": "100%",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                          },
-                          Object {
-                            "fontSize": 18,
-                            "lineHeight": 22,
-                            "minWidth": 40,
-                            "paddingHorizontal": 10,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                      testID="Entrée pour le mois"
-                      underlineColorAndroid="transparent"
-                      value=""
-                    />
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        Array [
-                          Object {
-                            "height": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      backgroundColor="#c7c7cc"
-                      isEmpty={true}
-                      isFocused={false}
-                      isValid={false}
-                      style={
-                        Array [
-                          Object {
-                            "backgroundColor": "#c7c7cc",
-                            "borderRadius": 22,
-                            "height": 5,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                      testID="datepart-bar-month"
-                    />
-                  </View>
+                  />
                   <View
+                    backgroundColor="#c7c7cc"
+                    isEmpty={true}
+                    isFocused={false}
+                    isValid={false}
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "marginBottom": 4,
-                          "marginLeft": 4,
-                          "marginRight": 4,
-                          "marginTop": 4,
+                          "backgroundColor": "#c7c7cc",
+                          "borderRadius": 22,
+                          "height": 5,
+                          "width": "100%",
                         },
                       ]
                     }
-                  >
-                    <TextInput
-                      accessibilityLabel="Entrée pour l'année"
-                      accessible={true}
-                      allowFontScaling={true}
-                      blurOnSubmit={true}
-                      keyboardType="number-pad"
-                      maxLength={4}
-                      minWidth={20}
-                      numberOfChar={4}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      onKeyPress={[Function]}
-                      placeholder="AAAA"
-                      placeholderTextColor="#626262"
-                      rejectResponderTermination={true}
-                      selectTextOnFocus={true}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "height": "100%",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                          },
-                          Object {
-                            "fontSize": 18,
-                            "lineHeight": 22,
-                            "minWidth": 80,
-                            "paddingHorizontal": 10,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                      testID="Entrée pour l'année"
-                      underlineColorAndroid="transparent"
-                      value=""
-                    />
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        Array [
-                          Object {
-                            "height": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      backgroundColor="#c7c7cc"
-                      isEmpty={true}
-                      isFocused={false}
-                      isValid={false}
-                      style={
-                        Array [
-                          Object {
-                            "backgroundColor": "#c7c7cc",
-                            "borderRadius": 22,
-                            "height": 5,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                      testID="datepart-bar-year"
-                    />
-                  </View>
+                    testID="datepart-bar-day"
+                  />
                 </View>
-              </View>
-              <View
-                numberOfSpaces={14}
-                style={
-                  Array [
-                    Object {
-                      "height": 56,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Continuer"
-                accessible={true}
-                focusable={false}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#f5f5f5",
-                    "borderRadius": 24,
-                    "borderWidth": 0,
-                    "flexDirection": "row",
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 2,
-                    "paddingRight": 2,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  }
-                }
-                testID="Continuer"
-              >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 5,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "marginBottom": 4,
+                        "marginLeft": 4,
+                        "marginRight": 4,
+                        "marginTop": 4,
                       },
                     ]
                   }
-                  textColor="#626262"
                 >
-                  Continuer
-                </Text>
+                  <TextInput
+                    accessibilityLabel="Entrée pour le mois"
+                    accessible={true}
+                    allowFontScaling={true}
+                    blurOnSubmit={true}
+                    keyboardType="number-pad"
+                    maxLength={2}
+                    minWidth={20}
+                    numberOfChar={2}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    placeholder="MM"
+                    placeholderTextColor="#626262"
+                    rejectResponderTermination={true}
+                    selectTextOnFocus={true}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                        Object {
+                          "fontSize": 18,
+                          "lineHeight": 22,
+                          "minWidth": 40,
+                          "paddingHorizontal": 10,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                    testID="Entrée pour le mois"
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      Array [
+                        Object {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    backgroundColor="#c7c7cc"
+                    isEmpty={true}
+                    isFocused={false}
+                    isValid={false}
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#c7c7cc",
+                          "borderRadius": 22,
+                          "height": 5,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    testID="datepart-bar-month"
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "marginBottom": 4,
+                        "marginLeft": 4,
+                        "marginRight": 4,
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityLabel="Entrée pour l'année"
+                    accessible={true}
+                    allowFontScaling={true}
+                    blurOnSubmit={true}
+                    keyboardType="number-pad"
+                    maxLength={4}
+                    minWidth={20}
+                    numberOfChar={4}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    placeholder="AAAA"
+                    placeholderTextColor="#626262"
+                    rejectResponderTermination={true}
+                    selectTextOnFocus={true}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                        Object {
+                          "fontSize": 18,
+                          "lineHeight": 22,
+                          "minWidth": 80,
+                          "paddingHorizontal": 10,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                    testID="Entrée pour l'année"
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      Array [
+                        Object {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    backgroundColor="#c7c7cc"
+                    isEmpty={true}
+                    isFocused={false}
+                    isValid={false}
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#c7c7cc",
+                          "borderRadius": 22,
+                          "height": 5,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    testID="datepart-bar-year"
+                  />
+                </View>
               </View>
-              <View
-                numberOfSpaces={5}
+            </View>
+            <View
+              numberOfSpaces={14}
+              style={
+                Array [
+                  Object {
+                    "height": 56,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Continuer"
+              accessible={true}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#f5f5f5",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="Continuer"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
                 style={
                   Array [
                     Object {
-                      "height": 20,
+                      "color": "#626262",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": "100%",
                     },
                   ]
                 }
-              />
+                textColor="#626262"
+              >
+                Continuer
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
               <View
                 style={
                   Array [
