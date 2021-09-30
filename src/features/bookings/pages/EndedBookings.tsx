@@ -1,13 +1,17 @@
 import { plural, t } from '@lingui/macro'
-import React from 'react'
-import { ScrollView } from 'react-native-gesture-handler'
+import React, { useCallback } from 'react'
+import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useBookings } from 'features/bookings/api/queries'
+import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
+import { Booking } from 'features/bookings/components/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { Separator } from 'ui/components/Separator'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useBookings } from '../api/queries'
-import { EndedBookingsList } from '../components/EndedBookingList'
+const renderItem: ListRenderItem<Booking> = ({ item }) => <EndedBookingItem booking={item} />
+const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 
 export const EndedBookings: React.FC = () => {
   const { data: bookings } = useBookings()
@@ -18,15 +22,28 @@ export const EndedBookings: React.FC = () => {
     other: '# réservations terminées',
   })
 
-  return (
-    <React.Fragment>
-      <ScrollView>
-        <Spacer.TopScreen />
+  const ListHeaderComponent = useCallback(
+    () => (
+      <React.Fragment>
         <Spacer.Column numberOfSpaces={18} />
         <EndedBookingsCount>{endedBookingsLabel}</EndedBookingsCount>
-        <EndedBookingsList bookings={bookings?.ended_bookings} />
-        <Spacer.Column numberOfSpaces={4} />
-      </ScrollView>
+      </React.Fragment>
+    ),
+    [endedBookingsCount]
+  )
+
+  return (
+    <React.Fragment>
+      <Spacer.TopScreen />
+      <FlatList
+        contentContainerStyle={contentContainerStyle}
+        data={bookings?.ended_bookings || []}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        ItemSeparatorComponent={StyledSeparator}
+        ListHeaderComponent={ListHeaderComponent}
+        ListFooterComponent={ListFooterComponent}
+      />
       <PageHeader title={t`Réservations terminées`} />
     </React.Fragment>
   )
@@ -34,6 +51,9 @@ export const EndedBookings: React.FC = () => {
 
 const EndedBookingsCount = styled(Typo.Body)({
   color: ColorsEnum.GREY_DARK,
-  paddingHorizontal: getSpacing(5),
   paddingBottom: getSpacing(5.5),
 })
+
+const contentContainerStyle = { paddingHorizontal: getSpacing(5) }
+const ListFooterComponent = () => <Spacer.Column numberOfSpaces={12} />
+const StyledSeparator = styled(Separator)({ marginVertical: getSpacing(4) })
