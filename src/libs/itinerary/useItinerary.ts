@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
 import { useEffect, useState } from 'react'
-import { Alert, AlertButton, Linking, Platform } from 'react-native'
+import { Alert, AlertButton, Platform } from 'react-native'
 import LN from 'react-native-launch-navigator'
 import { AppEnum } from 'react-native-launch-navigator/enum'
 
 import { Coordinates } from 'api/gen'
+import { openExternalUrl } from 'features/navigation/helpers'
 import { getOpenStreetMapUrl } from 'libs/parsers/getOpenStreetMapUrl'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -33,8 +34,8 @@ export const useItinerary = () => {
     }
   }
   const navigateWithOpenStreetMap = (coordinates: Required<Coordinates>) => {
-    const openStreetMapUrl = getOpenStreetMapUrl(coordinates)
-    if (Linking.canOpenURL(openStreetMapUrl)) Linking.openURL(openStreetMapUrl)
+    const url = getOpenStreetMapUrl(coordinates)
+    openExternalUrl(url)
   }
   const navigateToWithApp = async (
     coordinates: Required<Coordinates>,
