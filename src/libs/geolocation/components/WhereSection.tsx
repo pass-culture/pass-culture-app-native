@@ -66,8 +66,8 @@ export const WhereSection: React.FC<Props> = ({
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Title4>{t`Où ?`}</Typo.Title4>
-      {/* TODO : Remove testing condition to display the link to venue button */}
-      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && showVenueBanner ? (
+      {/* TODO : Remove testing/staging condition to display the link to venue button */}
+      {env.ENV !== 'production' && showVenueBanner ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
