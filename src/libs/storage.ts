@@ -8,6 +8,9 @@ type StorageKey =
   | 'has_accepted_cookie'
   | 'has_seen_eligible_card'
   | 'phone_validation_code_asked_at'
+  | 'traffic_campaign'
+  | 'traffic_medium'
+  | 'traffic_source'
 
 export const storage = {
   clear,
