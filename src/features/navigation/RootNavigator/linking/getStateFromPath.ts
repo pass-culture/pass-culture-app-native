@@ -4,7 +4,7 @@ import { getStateFromPath } from '@react-navigation/native'
 
 import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
-import { storage } from 'libs/storage'
+import { storeUtmParams } from 'libs/utm'
 import { IS_WEB_PROD } from 'libs/web'
 
 type Params = Parameters<typeof getStateFromPath>
@@ -50,13 +50,10 @@ function addRedirectSupport(path: Path): Path {
 }
 
 function parseUtmParameters(search: string) {
-  const { utm_campaign, utm_medium, utm_source } = getUrlQueryParams(search)
+  const queryParams = getUrlQueryParams(search)
+  const { utm_campaign: campaign, utm_medium: medium, utm_source: source } = queryParams
 
-  setImmediate(() => {
-    !!utm_campaign && storage.saveString('traffic_campaign', utm_campaign)
-    !!utm_medium && storage.saveString('traffic_medium', utm_medium)
-    !!utm_source && storage.saveString('traffic_source', utm_source)
-  })
+  setImmediate(() => storeUtmParams({ campaign, medium, source }))
 }
 
 function match(pathname: string, pathnamesToCheck: string[]): boolean {

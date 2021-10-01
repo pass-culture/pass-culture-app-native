@@ -6,6 +6,7 @@ import {
 export const analytics: typeof actualAnalytics = {
   disableCollection: jest.fn(),
   enableCollection: jest.fn(),
+  setDefaultEventParameters: jest.fn(),
   logAccessExternalOffer: jest.fn(),
   logAllModulesSeen: jest.fn(),
   logAllTilesSeen: jest.fn(),
@@ -73,6 +74,7 @@ export const analytics: typeof actualAnalytics = {
   logVenueSeeMoreClicked: jest.fn(),
   logChooseLocation: jest.fn(),
   setUserId: jest.fn(),
+  useInit: jest.fn(),
 }
 
 export const idCheckAnalytics: typeof actualIdCheckAnalytics = {
