@@ -161,7 +161,7 @@ export const AppComponents: FunctionComponent = () => {
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
   const [radioButtonChoice, setRadioButtonChoice] = useState('')
-  const { campaign, source, medium } = useUtmParams()
+  const { campaign, source, medium, campaignDate } = useUtmParams()
 
   function navigateToIdCheckUnavailable() {
     navigate('IdCheckUnavailable')
@@ -835,8 +835,8 @@ export const AppComponents: FunctionComponent = () => {
 
       <Divider />
 
-      {/* Storage information */}
-      <AccordionItem title="Storage information">
+      {/* UTM parameters */}
+      <AccordionItem title="UTM parameters">
         <AlignedText>
           <Text>traffic_campaign: {campaign}</Text>
         </AlignedText>
@@ -845,6 +845,9 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <Text>traffic_source: {source}</Text>
+        </AlignedText>
+        <AlignedText>
+          <Text>campaign_date: {campaignDate?.toLocaleString()}</Text>
         </AlignedText>
       </AccordionItem>
 

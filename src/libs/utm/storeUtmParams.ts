@@ -6,5 +6,7 @@ export const storeUtmParams = ({ campaign, medium, source }: UtmParams) => {
   if (campaign) multiString.push(['traffic_campaign', campaign])
   if (medium) multiString.push(['traffic_medium', medium])
   if (source) multiString.push(['traffic_source', source])
-  multiString.length && storage.saveMultiString(multiString)
+  if (multiString.length) {
+    storage.saveMultiString([...multiString, ['campaign_date', new Date().valueOf().toString()]])
+  }
 }
