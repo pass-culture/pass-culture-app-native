@@ -123,7 +123,7 @@ describe('formatDateToISOStringWithoutTime() - Europe/London', () => {
     [31, 12, 2020, '2020-12-31'],
     [1, 12, 2020, '2020-12-01'],
     [1, 12, 2020, '2020-12-01'],
-    [13, 6, 2001, '2001-06-12'], // TODO(antoinewg) this is incorrect. We want 2001-06-13
+    [13, 6, 2001, '2001-06-13'],
   ])(
     'should format Date $year / $month / $day to string "$expectedISOString"',
     (day, month, year, expectedISOString) => {
