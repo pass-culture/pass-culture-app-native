@@ -11,6 +11,7 @@ export type StorageKey =
   | 'traffic_campaign'
   | 'traffic_medium'
   | 'traffic_source'
+  | 'campaign_date'
 
 export const storage = {
   clear,
