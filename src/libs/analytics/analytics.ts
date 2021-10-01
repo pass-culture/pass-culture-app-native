@@ -1,8 +1,10 @@
 import { IdCheckAnalyticsInterface } from '@pass-culture/id-check'
+import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
 import { VenueContactModel } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator'
+import { useUtmParams } from 'libs/utm'
 
 import { AnalyticsEvent, IdCheckAnalyticsEvent } from './events'
 import { analyticsProvider } from './provider'
@@ -12,6 +14,15 @@ const STRING_VALUE_MAX_LENGTH = 100
 
 type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
 type OfferIdOrVenueId = { offerId: number } | { venueId: number }
+
+const useInit = () => {
+  const utmParams = useUtmParams()
+
+  useEffect(() => {
+    // When we start the application, we set utm params as default
+    analytics.setDefaultEventParameters(utmParams as Record<string, string>)
+  }, [utmParams])
+}
 
 export const analytics = {
   enableCollection: analyticsProvider.enableCollection,
@@ -168,6 +179,7 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_MORE_CLICKED, { venueId }),
   logChooseLocation: (params: { type: 'place' } | { type: 'venue'; venueId: number }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_LOCATION, params),
+  useInit,
 }
 
 export const idCheckAnalytics: IdCheckAnalyticsInterface = {
