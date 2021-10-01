@@ -16,6 +16,7 @@ type OfferIdOrVenueId = { offerId: number } | { venueId: number }
 export const analytics = {
   enableCollection: analyticsProvider.enableCollection,
   disableCollection: analyticsProvider.disableCollection,
+  setDefaultEventParameters: analyticsProvider.setDefaultEventParameters,
   setUserId: analyticsProvider.setUserId,
   logLogin({ method }: { method: LoginRoutineMethod }) {
     analyticsProvider.logLogin({ method })

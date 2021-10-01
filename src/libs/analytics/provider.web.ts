@@ -12,6 +12,9 @@ export const analyticsProvider: AnalyticsProvider = {
   disableCollection() {
     firebaseAnalytics.setAnalyticsCollectionEnabled(false)
   },
+  setDefaultEventParameters(_params: Record<string, string> | undefined) {
+    // setDefaultEventParameters is not available on web :'(
+  },
   setUserId(userId) {
     firebaseAnalytics.setUserId(userId.toString())
   },
