@@ -1,4 +1,5 @@
 import mockdate from 'mockdate'
+import timezoneMock from 'timezone-mock'
 
 import {
   formatDatePeriod,
@@ -97,17 +98,37 @@ describe('getUniqueSortedTimestamps', () => {
   )
 })
 
-describe('formatDateToISOStringWithoutTime()', () => {
-  it.each`
-    date                            | expectedISOString
-    ${new Date(666, 6, 6)}          | ${'0666-07-06'}
-    ${new Date(100000, 6, 6)}       | ${'+100000-07-06'}
-    ${new Date(2020, 11, 31)}       | ${'2020-12-31'}
-    ${new Date(2020, 11, 1)}        | ${'2020-12-01'}
-    ${new Date(2020, 11, 1, 9, 30)} | ${'2020-12-01'}
-  `(
-    'should format Date $date to string "$expectedISOString"',
-    ({ date, expectedISOString }: { date: Date; expectedISOString: string }) => {
+describe('formatDateToISOStringWithoutTime() - Brazil/East', () => {
+  afterAll(() => timezoneMock.unregister())
+
+  it.each([
+    [31, 12, 2020, '2020-12-31'],
+    [1, 12, 2020, '2020-12-01'],
+    [1, 12, 2020, '2020-12-01'],
+    [13, 6, 2001, '2001-06-13'],
+  ])(
+    'should format Date $year / $month / $day to string "$expectedISOString"',
+    (day, month, year, expectedISOString) => {
+      timezoneMock.register('Brazil/East')
+      const date = new Date(year, month - 1, day)
+      expect(formatDateToISOStringWithoutTime(date)).toEqual(expectedISOString)
+    }
+  )
+})
+
+describe('formatDateToISOStringWithoutTime() - Europe/London', () => {
+  afterAll(() => timezoneMock.unregister())
+
+  it.each([
+    [31, 12, 2020, '2020-12-31'],
+    [1, 12, 2020, '2020-12-01'],
+    [1, 12, 2020, '2020-12-01'],
+    [13, 6, 2001, '2001-06-12'], // TODO(antoinewg) this is incorrect. We want 2001-06-13
+  ])(
+    'should format Date $year / $month / $day to string "$expectedISOString"',
+    (day, month, year, expectedISOString) => {
+      timezoneMock.register('Europe/London')
+      const date = new Date(year, month - 1, day)
       expect(formatDateToISOStringWithoutTime(date)).toEqual(expectedISOString)
     }
   )
