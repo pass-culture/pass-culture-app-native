@@ -97,8 +97,8 @@ export const HomeBody = (props: HomeBodyProps) => {
         )
       }
 
-      // TODO(LucasBeneston) Remove feature testing condition to display the playlist
-      if (isVenuesModuleTypeguard(item) && env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING) {
+      // TODO(LucasBeneston) Remove feature testing and staging condition to display the playlist
+      if (isVenuesModuleTypeguard(item) && env.ENV !== 'production') {
         const { hits } = homeVenuesModules[item.moduleId]
         return (
           <VenuesModule
