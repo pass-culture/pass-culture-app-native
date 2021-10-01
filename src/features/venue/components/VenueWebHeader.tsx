@@ -11,8 +11,8 @@ interface Props {
 
 export const VenueWebHeader = ({ venue }: Props) => (
   <Helmet>
-    <title>{venue.name}</title>
-    <meta name="title" content={venue.name} />
+    <title>{venue.publicName || venue.name}</title>
+    <meta name="title" content={venue.publicName || venue.name} />
     <meta name="description" content={venue.description || description} />
   </Helmet>
 )
