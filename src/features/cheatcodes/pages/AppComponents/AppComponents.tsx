@@ -11,7 +11,6 @@ import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { useStorageInformation } from 'features/cheatcodes/pages/AppComponents/useStorageInformation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
@@ -20,6 +19,7 @@ import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { useUtmParams } from 'libs/utm'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner, BannerType } from 'ui/components/Banner'
@@ -161,7 +161,7 @@ export const AppComponents: FunctionComponent = () => {
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
   const [radioButtonChoice, setRadioButtonChoice] = useState('')
-  const { campaign, source, medium } = useStorageInformation()
+  const { campaign, source, medium } = useUtmParams()
 
   function navigateToIdCheckUnavailable() {
     navigate('IdCheckUnavailable')
