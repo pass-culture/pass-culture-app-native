@@ -61,10 +61,10 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId]
 
   const showVenueBanner = true
-  // TODO (Lucasbeneston): Remove testing condition when display the link to venue button
+  // TODO (Lucasbeneston): Remove testing and staging condition when display the link to venue button
   // If we show the venue banner, we don't want to repeat the name of the venue in the address
   const fullAddress =
-    showVenueBanner && env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING
+    showVenueBanner && env.ENV !== 'production'
       ? formatFullAddress(venue.address, venue.postalCode, venue.city)
       : formatFullAddressWithVenueName(
           venue.address,
