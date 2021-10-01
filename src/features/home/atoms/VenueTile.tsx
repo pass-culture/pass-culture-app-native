@@ -3,37 +3,26 @@ import React from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { VenueResponse, VenueTypeCode } from 'api/gen'
+import { VenueResponse } from 'api/gen'
 import { VenueCaption } from 'features/home/atoms/VenueCaption'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { GeoCoordinates } from 'libs/geolocation'
+import { formatDistance } from 'libs/parsers'
+import { VenueHit } from 'libs/search'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ImageTile } from 'ui/components/ImageTile'
 import { ColorsEnum, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum, LENGTH_S } from 'ui/theme/grid'
 
-interface VenueTileProps {
-  venueId: number
-  name: string
-  venueType: VenueTypeCode
-  distance?: string
-  description?: string
+export interface VenueTileProps {
+  venue: VenueHit
+  userPosition: GeoCoordinates | null
 }
 
-type PartialVenue = Pick<VenueTileProps, 'venueType' | 'name' | 'venueId' | 'description'>
-
-export const mergeVenueData = (venue: PartialVenue) => (
+export const mergeVenueData = (venueHit: VenueHit) => (
   prevData: VenueResponse | undefined
-): VenueResponse => ({
-  id: venue.venueId,
-  name: venue.name,
-  venueTypeCode: venue.venueType,
-  isVirtual: false,
-  description: venue.description,
-  accessibility: {},
-  contact: {},
-  ...(prevData || {}),
-})
+): VenueResponse => ({ ...venueHit, isVirtual: false, ...(prevData || {}) })
 
 const imageHeight = LENGTH_S
 const imageWidth = imageHeight * 2.25 * RATIO_HOME_IMAGE
@@ -41,18 +30,15 @@ const imageWidth = imageHeight * 2.25 * RATIO_HOME_IMAGE
 const uri =
   'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA'
 
-export const VenueTile = (props: VenueTileProps) => {
-  const { venueId, name, distance, venueType } = props
+export const VenueTile = ({ venue, userPosition }: VenueTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
 
   function handlePressVenue() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
-    queryClient.setQueryData(['venue', venueId], mergeVenueData(props))
-    analytics.logConsultVenue({ venueId, from: 'home' })
-    navigation.navigate('Venue', {
-      id: venueId,
-    })
+    queryClient.setQueryData(['venue', venue.id], mergeVenueData(venue))
+    analytics.logConsultVenue({ venueId: venue.id, from: 'home' })
+    navigation.navigate('Venue', { id: venue.id })
   }
 
   return (
@@ -64,7 +50,12 @@ export const VenueTile = (props: VenueTileProps) => {
         {...accessibilityAndTestId('venueTile')}>
         <ImageTile imageWidth={imageWidth} imageHeight={imageHeight} uri={uri} />
       </TouchableHighlight>
-      <VenueCaption imageWidth={imageWidth} name={name} venueType={venueType} distance={distance} />
+      <VenueCaption
+        imageWidth={imageWidth}
+        name={venue.name}
+        venueType={venue.venueTypeCode || null}
+        distance={formatDistance({ lat: venue.latitude, lng: venue.longitude }, userPosition)}
+      />
     </Container>
   )
 }
