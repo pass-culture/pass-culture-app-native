@@ -139,7 +139,7 @@ exports[`VenueTile component should render correctly 1`] = `
           ]
         }
       >
-        Musée
+        Salle de projections
       </Text>
     </View>
     <Text
