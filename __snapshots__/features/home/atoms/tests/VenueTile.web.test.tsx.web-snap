@@ -50,7 +50,7 @@ Object {
               dir="auto"
               style="color: rgb(98, 98, 98); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
-              Musée
+              Salle de projections
             </div>
           </div>
           <div
@@ -108,7 +108,7 @@ Object {
             dir="auto"
             style="color: rgb(98, 98, 98); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
-            Musée
+            Salle de projections
           </div>
         </div>
         <div
