@@ -16,7 +16,6 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { randomPassword } from 'libs/random'
 import { accessibilityAndTestId } from 'tests/utils'
-import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
@@ -72,33 +71,31 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
           rightIcon={Close}
           onRightIconPress={showQuitSignupModal}
         />
-        <BottomCardContentContainer>
-          <Spacer.Column numberOfSpaces={6} />
-          <StyledInput>
-            <Typo.Body>{t`Mot de passe`}</Typo.Body>
-            <Spacer.Column numberOfSpaces={2} />
-            <PasswordInput
-              value={password}
-              autoFocus={true}
-              onChangeText={setPassword}
-              placeholder={t`Ton mot de passe`}
-              onSubmitEditing={Platform.OS === 'web' ? submitPassword : undefined}
-              ref={passwordInput}
-              {...accessibilityAndTestId('Entrée pour le mot de passe')}
-            />
-          </StyledInput>
-          <PasswordSecurityRules password={password} />
-          <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary
-            title={t`Continuer`}
-            onPress={submitPassword}
-            disabled={!isPasswordCorrect(password)}
+        <Spacer.Column numberOfSpaces={6} />
+        <StyledInput>
+          <Typo.Body>{t`Mot de passe`}</Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+          <PasswordInput
+            value={password}
+            autoFocus={true}
+            onChangeText={setPassword}
+            placeholder={t`Ton mot de passe`}
+            onSubmitEditing={Platform.OS === 'web' ? submitPassword : undefined}
+            ref={passwordInput}
+            {...accessibilityAndTestId('Entrée pour le mot de passe')}
           />
-          <Spacer.Column numberOfSpaces={5} />
-          <StyledStepDots>
-            <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={2} />
-          </StyledStepDots>
-        </BottomCardContentContainer>
+          <PasswordSecurityRules password={password} />
+        </StyledInput>
+        <Spacer.Column numberOfSpaces={6} />
+        <ButtonPrimary
+          title={t`Continuer`}
+          onPress={submitPassword}
+          disabled={!isPasswordCorrect(password)}
+        />
+        <Spacer.Column numberOfSpaces={5} />
+        <StyledStepDots>
+          <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={2} />
+        </StyledStepDots>
       </BottomContentPage>
       <QuitSignupModal
         visible={fullPageModalVisible}
