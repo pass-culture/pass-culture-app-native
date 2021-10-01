@@ -48,6 +48,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     description,
     accessibility,
     contact,
+    name,
   } = venue
 
   const venueAddress = formatFullAddress(address || publicName, postalCode, city)
@@ -84,7 +85,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
           numberOfLines={2}
           adjustsFontSizeToFit
           allowFontScaling={false}>
-          {venue.name}
+          {publicName || name}
         </VenueTitle>
         <Spacer.Column numberOfSpaces={4} />
       </MarginContainer>
