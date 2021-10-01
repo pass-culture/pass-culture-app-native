@@ -60,26 +60,19 @@ function match(pathname: string, pathnamesToCheck: string[]): boolean {
   return pathnamesToCheck.some((p) => pathname.includes(p))
 }
 
-function getUrlQueryParams(encodedUri: string) {
+export function getUrlQueryParams(encodedUri: string) {
   const uri = decodeURI(encodedUri)
   const sanitizedUri = uri
     .trim()
     .replace(/^\/+|\/+$/g, '') // removes external '/'
     .replace(/^\?+/g, '') // removes initial '?'
     .replace(/^&+|&+$/g, '') // removes external '&'
-  const parameterFields =
-    sanitizedUri.split('&').reduce((accumulator, field) => {
-      accumulator = accumulator || {}
-      const index = field.indexOf('=')
-      if (index === -1) {
-        accumulator[field] = '' // empty parameter
-      } else {
-        const key = field.slice(0, index)
-        const value = field.slice(index + 1)
-        accumulator[key] = value
-      }
-      return accumulator
-    }, <Record<string, string> | null>{}) || {}
+
+  const parameterFields: Record<string, string> = {}
+  sanitizedUri.split('&').forEach((field) => {
+    const [key, value] = field.split('=')
+    parameterFields[key] = value
+  })
 
   return parameterFields
 }

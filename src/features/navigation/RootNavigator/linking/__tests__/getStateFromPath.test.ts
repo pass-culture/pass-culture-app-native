@@ -2,7 +2,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import waitForExpect from 'wait-for-expect'
 
 import { linking } from 'features/navigation/RootNavigator/linking'
-import { customGetStateFromPath } from 'features/navigation/RootNavigator/linking/getStateFromPath'
+import {
+  customGetStateFromPath,
+  getUrlQueryParams,
+} from 'features/navigation/RootNavigator/linking/getStateFromPath'
 
 const setItemSpy = jest.spyOn(AsyncStorage, 'setItem')
 
@@ -34,4 +37,17 @@ describe('getStateFromPath', () => {
       expect(setItemSpy).not.toHaveBeenCalled()
     })
   })
+})
+
+describe('getUrlQueryParams()', () => {
+  it.each`
+    url                                       | params
+    ${'?id=12&'}                              | ${{ id: '12' }}
+    ${'/?utm_campaign=home_ete&utm_medium=/'} | ${{ utm_campaign: 'home_ete', utm_medium: '' }}
+  `(
+    'should parse the query params from the url=$url',
+    ({ url, params }: { url: string; params: Record<string, string> | null }) => {
+      expect(getUrlQueryParams(url)).toStrictEqual(params)
+    }
+  )
 })
