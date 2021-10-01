@@ -1,4 +1,4 @@
-import { VenueTypeCode } from 'api/gen'
+import { VenueResponse } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
 import { transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
@@ -10,22 +10,15 @@ export type SearchHit = AlgoliaHit
 
 export type Geoloc = AlgoliaGeoloc
 
-export interface VenueHit {
-  id: string
-  name: string
-  offererName: string
-  venueType: VenueTypeCode
-  position: Geoloc
-  description: string
-  audioDisability: boolean
-  mentalDisability: boolean
-  motorDisability: boolean
-  visualDisability: boolean
-  email: string
-  phoneNumber: string
-  website: string
-  facebook: string
-  twitter: string
-  instagram: string
-  snapchat: string
-}
+export type VenueHit = Pick<
+  VenueResponse,
+  | 'accessibility'
+  | 'contact'
+  | 'description'
+  | 'id'
+  | 'latitude'
+  | 'longitude'
+  | 'name'
+  | 'publicName'
+  | 'venueTypeCode'
+>
