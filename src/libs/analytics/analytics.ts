@@ -16,12 +16,23 @@ type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
 type OfferIdOrVenueId = { offerId: number } | { venueId: number }
 
 const useInit = () => {
-  const utmParams = useUtmParams()
+  const { campaign, source, medium, campaignDate } = useUtmParams()
 
   useEffect(() => {
     // When we start the application, we set utm params as default
-    analytics.setDefaultEventParameters(utmParams as Record<string, string>)
-  }, [utmParams])
+    const ago48Hours = new Date()
+    ago48Hours.setDate(ago48Hours.getDate() - 2)
+
+    if (campaignDate && campaignDate > ago48Hours) {
+      analytics.setDefaultEventParameters({
+        traffic_campaign: campaign || '',
+        traffic_source: source || '',
+        traffic_medium: medium || '',
+      })
+    } else {
+      analytics.setDefaultEventParameters(undefined)
+    }
+  }, [campaign, source, medium, campaignDate])
 }
 
 export const analytics = {
