@@ -5,7 +5,6 @@ import { ModuleTitle } from 'features/home/atoms'
 import { VenueTile } from 'features/home/atoms/VenueTile'
 import { DisplayParametersFields } from 'features/home/contentful'
 import { GeoCoordinates } from 'libs/geolocation'
-import { formatDistance } from 'libs/parsers'
 import { VenueHit } from 'libs/search'
 import { Spacer } from 'ui/theme'
 
@@ -15,22 +14,15 @@ type VenuesModuleProps = {
   userPosition: GeoCoordinates | null
 }
 
-const keyExtractor = (item: VenueHit) => item.id
+const keyExtractor = (item: VenueHit) => item.id.toString()
 
 export const VenuesModule = (props: VenuesModuleProps) => {
   const { hits, display, userPosition } = props
 
-  const renderItem: ListRenderItem<VenueHit> = useCallback(({ item }) => {
-    return (
-      <VenueTile
-        venueId={Number(item.id)}
-        name={item.name}
-        venueType={item.venueType}
-        distance={formatDistance(item.position, userPosition)}
-        description={item.description}
-      />
-    )
-  }, [])
+  const renderItem: ListRenderItem<VenueHit> = useCallback(
+    ({ item: venue }) => <VenueTile venue={venue} userPosition={userPosition} />,
+    []
+  )
 
   return (
     <React.Fragment>

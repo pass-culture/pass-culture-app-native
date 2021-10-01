@@ -9,7 +9,7 @@ import { Typo, GUTTER_DP, ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 interface VenueCaptionProps {
   imageWidth: number
   name: string
-  venueType: VenueTypeCode
+  venueType: VenueTypeCode | null
   distance?: string
 }
 
