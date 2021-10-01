@@ -20,6 +20,7 @@ import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
+import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
 import { GeolocationWrapper } from 'libs/geolocation'
@@ -63,6 +64,7 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
 
 const App: FunctionComponent = function () {
   campaignTracker.useInit()
+  analytics.useInit()
   useStartBatchNotification()
 
   useEffect(() => {
