@@ -152,63 +152,62 @@ export const SetPhoneNumber = memo(() => {
           rightIcon={Close}
           onRightIconPress={showQuitSignupModal}
         />
-        <ModalContent>
-          <Paragraphe>
-            <Typo.Body color={ColorsEnum.GREY_DARK}>
-              {t`Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro.`}
-            </Typo.Body>
-          </Paragraphe>
-          <Spacer.Column numberOfSpaces={8} />
-          <PhoneNumberInput>
-            <CountryPickerPressable onPress={openCountryPickerModal}>
-              <CountryPicker
-                countryCode={countryCode}
-                countryCodes={ALLOWED_COUNTRY_CODES}
-                onSelect={onSelectCountryCode}
-                translation={'fra'}
-                theme={{
-                  ...DEFAULT_THEME,
-                  fontFamily: 'Montserrat-Bold',
-                  fontSize: getSpacing(3.75),
-                }}
-                withCallingCode
-                withCallingCodeButton
-                modalProps={{ visible: isCountryPickerVisible }}
-                onClose={closeCountryPickerModal}
-                onOpen={openCountryPickerModal}
-              />
-              <Animated.View
-                style={{ transform: [{ rotateZ: `${Math.PI / 2}rad` }] }}
-                testID="accordionArrow">
-                <ArrowNext size={getSpacing(6)} />
-              </Animated.View>
-            </CountryPickerPressable>
-            <Spacer.Row numberOfSpaces={4} />
-            <TextInput
-              autoCapitalize="none"
-              isError={false}
-              keyboardType="number-pad"
-              onChangeText={onChangeText}
-              placeholder={t`6 12 34 56 78`}
-              textContentType="telephoneNumber"
-              {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
+        <Spacer.Column numberOfSpaces={6} />
+        <Paragraphe>
+          <Typo.Body color={ColorsEnum.GREY_DARK}>
+            {t`Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro.`}
+          </Typo.Body>
+        </Paragraphe>
+        <Spacer.Column numberOfSpaces={8} />
+        <PhoneNumberInput>
+          <CountryPickerPressable onPress={openCountryPickerModal}>
+            <CountryPicker
+              countryCode={countryCode}
+              countryCodes={ALLOWED_COUNTRY_CODES}
+              onSelect={onSelectCountryCode}
+              translation={'fra'}
+              theme={{
+                ...DEFAULT_THEME,
+                fontFamily: 'Montserrat-Bold',
+                fontSize: getSpacing(3.75),
+              }}
+              withCallingCode
+              withCallingCodeButton
+              modalProps={{ visible: isCountryPickerVisible }}
+              onClose={closeCountryPickerModal}
+              onOpen={openCountryPickerModal}
             />
-          </PhoneNumberInput>
-          {invalidPhoneNumberMessage ? (
-            <React.Fragment>
-              <InputError visible messageId={invalidPhoneNumberMessage} numberOfSpacesTop={3} />
-              <Spacer.Column numberOfSpaces={5} />
-            </React.Fragment>
-          ) : (
-            <Spacer.Column numberOfSpaces={8} />
-          )}
-          <ButtonPrimary
-            title={getButtonTitle()}
-            disabled={!isContinueButtonEnabled}
-            onPress={requestSendPhoneValidationCode}
-            isLoading={isLoading}
+            <Animated.View
+              style={{ transform: [{ rotateZ: `${Math.PI / 2}rad` }] }}
+              testID="accordionArrow">
+              <ArrowNext size={getSpacing(6)} />
+            </Animated.View>
+          </CountryPickerPressable>
+          <Spacer.Row numberOfSpaces={4} />
+          <TextInput
+            autoCapitalize="none"
+            isError={false}
+            keyboardType="number-pad"
+            onChangeText={onChangeText}
+            placeholder={t`6 12 34 56 78`}
+            textContentType="telephoneNumber"
+            {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
           />
-        </ModalContent>
+        </PhoneNumberInput>
+        {invalidPhoneNumberMessage ? (
+          <React.Fragment>
+            <InputError visible messageId={invalidPhoneNumberMessage} numberOfSpacesTop={3} />
+            <Spacer.Column numberOfSpaces={5} />
+          </React.Fragment>
+        ) : (
+          <Spacer.Column numberOfSpaces={8} />
+        )}
+        <ButtonPrimary
+          title={getButtonTitle()}
+          disabled={!isContinueButtonEnabled}
+          onPress={requestSendPhoneValidationCode}
+          isLoading={isLoading}
+        />
       </BottomContentPage>
       <QuitSignupModal
         visible={quitSignupModalVisible}
@@ -218,13 +217,6 @@ export const SetPhoneNumber = memo(() => {
       />
     </React.Fragment>
   )
-})
-
-const ModalContent = styled.View({
-  paddingTop: getSpacing(7),
-  alignItems: 'center',
-  width: '100%',
-  maxWidth: getSpacing(125),
 })
 
 const Paragraphe = styled.Text({
