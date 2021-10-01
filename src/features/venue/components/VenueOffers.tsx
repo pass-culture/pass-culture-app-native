@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { SeeMore } from 'features/home/atoms'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
-import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
@@ -32,8 +31,6 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
   const { position } = useGeolocation()
-  const { dispatch } = useSearch()
-  const { dispatch: stagedDispatch } = useStagedSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const params = useVenueSearchParameters(venueId)
   const { hits = [], nbHits = 0 } = venueOffers || {}
@@ -63,16 +60,12 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
 
   const seeAllOffers = useCallback(() => {
     analytics.logVenueSeeAllOffersClicked(venueId)
-    dispatch({ type: 'SET_STATE', payload: params })
-    stagedDispatch({ type: 'SET_STATE', payload: params })
     const tabNavigateConfig = getTabNavigateConfig('Search', params)
     navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
   }, [params])
 
   const onPressSeeMore = useCallback(() => {
     analytics.logVenueSeeMoreClicked(venueId)
-    dispatch({ type: 'SET_STATE', payload: params })
-    stagedDispatch({ type: 'SET_STATE', payload: params })
     const tabNavigateConfig = getTabNavigateConfig('Search', params)
     navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
   }, [params])

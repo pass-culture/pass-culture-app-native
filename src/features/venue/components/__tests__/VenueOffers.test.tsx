@@ -3,6 +3,7 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
@@ -31,6 +32,23 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useStagedSearch: () => ({ searchState: mockSearchState, dispatch: mockStagedDispatch }),
 }))
 
+const defaultParams = {
+  beginningDatetime: null,
+  date: null,
+  endingDatetime: null,
+  hitsPerPage: 10,
+  offerCategories: [],
+  offerIsDuo: false,
+  offerIsFree: false,
+  offerIsNew: false,
+  offerTypes: { isDigital: false, isEvent: false, isThing: false },
+  priceRange: [0, 300],
+  query: '',
+  showResults: false,
+  tags: [],
+  timeRange: null,
+}
+
 describe('<VenueOffers />', () => {
   beforeEach(jest.clearAllMocks)
   it('should render correctly', () => {
@@ -55,13 +73,20 @@ describe('<VenueOffers />', () => {
   it(`should set search state when clicking "En voir plus" button`, () => {
     const { getByText } = render(<VenueOffers venueId={venueId} />)
     fireEvent.press(getByText('En voir plus'))
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      type: 'SET_STATE',
-      payload: expect.anything(),
-    })
-    expect(mockStagedDispatch).toHaveBeenNthCalledWith(1, {
-      type: 'SET_STATE',
-      payload: expect.anything(),
+    expect(navigate).toBeCalledWith('TabNavigator', {
+      params: {
+        ...defaultParams,
+        locationFilter: {
+          locationType: 'VENUE',
+          venue: {
+            geolocation: { latitude: 48.87004, longitude: 2.3785 },
+            info: 'Paris',
+            label: 'Le Petit Rintintin 1',
+            venueId: 5543,
+          },
+        },
+      },
+      screen: 'Search',
     })
   })
 

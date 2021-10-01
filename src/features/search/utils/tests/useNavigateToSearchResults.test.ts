@@ -17,9 +17,8 @@ describe('useNavigateToSearchResults', () => {
   it('should clear the previous search state', () => {
     const { result } = renderHook(() => useNavigateToSearchResults({ from: 'bookings' }))
     result.current()
-    expect(mockDispatch).toHaveBeenCalledTimes(2)
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'INIT' })
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SHOW_RESULTS', payload: true })
   })
 
   it("should log the analytics event 'DiscoverOffers'", () => {
@@ -31,7 +30,7 @@ describe('useNavigateToSearchResults', () => {
   it('should navigate to Search', () => {
     const { result } = renderHook(() => useNavigateToSearchResults({ from: 'bookings' }))
     result.current()
-    const tabNavigateConfig = getTabNavigateConfig('Search')
+    const tabNavigateConfig = getTabNavigateConfig('Search', { showResults: true })
     expect(navigate).toHaveBeenNthCalledWith(1, tabNavigateConfig.screen, tabNavigateConfig.params)
   })
 })
