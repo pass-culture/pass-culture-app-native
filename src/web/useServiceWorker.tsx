@@ -76,60 +76,62 @@ export interface ServiceWorkerState {
   error?: Error
 }
 
+// TODO: remove me when PC-10931 is validated
+const log = (text: string, err?: Error) => {
+  if (__DEV__ || globalThis.window.location.origin === 'https://app.testing.passculture.team/') {
+    // eslint-disable-next-line no-console
+    err ? console.error(text, err) : console.log(text)
+  }
+}
+
 const useServiceWorkerReducer = (
   state: ServiceWorkerState,
   action: ServiceWorkerActionTypes
 ): ServiceWorkerState => {
   switch (action.type) {
     case 'SERVICE_WORKER_READY':
-      // eslint-disable-next-line no-console
-      __DEV__ && console.log('Service worker is ready.')
+      log('Service worker is ready.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
         registration: action.payload.registration,
       }
     case 'SERVICE_WORKER_REGISTERED':
-      // eslint-disable-next-line no-console
-      __DEV__ && console.log('Service worker has been registered.')
+      log('Service worker has been registered.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
         registration: action.payload.registration,
       }
     case 'SERVICE_WORKER_CACHED':
-      // eslint-disable-next-line no-console
-      __DEV__ && console.log('Content has been cached for offline use.')
+      log('Content has been cached for offline use.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
         registration: action.payload.registration,
       }
     case 'SERVICE_WORKER_UPDATE_FOUND':
-      // eslint-disable-next-line no-console
-      __DEV__ && console.log('New content is downloading.')
+      log('New content is downloading.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
         registration: action.payload.registration,
       }
     case 'SERVICE_WORKER_UPDATE_READY':
-      // eslint-disable-next-line no-console
-      __DEV__ && console.log('New content is available; please refresh.')
+      log('New content is available; please refresh.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
         registration: action.payload.registration,
       }
     case 'SERVICE_WORKER_OFFLINE':
-      // eslint-disable-next-line no-console
-      __DEV__ && console.log('No internet connection found. App is running in offline mode.')
+      log('No internet connection found. App is running in offline mode.')
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
       }
     case 'SERVICE_WORKER_ERROR':
-      __DEV__ && console.error('Error during service worker registration:', action.payload.error)
+      log('Error during service worker registration:', action.payload.error)
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
