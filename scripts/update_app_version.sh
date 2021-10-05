@@ -59,6 +59,6 @@ check_hard_hotfix_integrity(){
 
 # $1 is the tag used to trigger the ci deployment (see .circleci/config.yml)
 # $2 is upgrade level (major, minor or patch)
-# update_app_version "$1" "$2"
+update_app_version "$1" "$2"
 
 check_hard_hotfix_integrity
