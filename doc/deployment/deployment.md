@@ -72,15 +72,15 @@ Only if there is a bug really urgent in production, that we need to fix very qui
 
 ### How
 
-- List all tags of the version `X.X.X`, tags of type: `vX.X.X-Y`
+- List all tags of the version `X.X.X`, tags of type: `vX.X.X-Y` (`git fetch --tag`and then `git tag`)
 - Checkout on the tag with the biggest Y (if no tag with Y, checkout on `vX.X.X`)
-- `git checkout -b hotfix/vX.X.X-Y`
 - Cherry-pick all the commits of the feature `git cherry-pick <commit-hash>`
-- ⚠️ do not update package.json version number (the code push targets only one version)
+- ⚠️ do not update package.json version number for a code push (the code push targets only one version)
 - check if tests are OK `yarn test`
 - `git tag vX.X.X-(Y+1)`
 - `git tag hotfix-staging-vX.X.X-(Y+1)`
 - `git push origin hotfix-staging-vX.X.X-(Y+1)`: this will deploy it to `staging`
+- `git push origin vX.X.X-(Y+1)`
 - Validate the fix with the PO on staging app (version X.X.X)
 - If it is OK for the PO, deploy it to production:
 - `git tag hotfix-production-vX.X.X-(Y+1)`
