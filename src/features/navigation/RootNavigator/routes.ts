@@ -36,7 +36,6 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
-import { DeeplinkPath } from 'features/deeplinks/enums'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -66,7 +65,53 @@ import { Route } from './types'
 
 export const initialRouteName = 'TabNavigator'
 
+const idCheckRoutesWithoutInitial: Route[] = idCheckRoutes.filter(
+  (screen) => screen.name !== idCheckInitialRouteName
+)
+
 const routesBeforeReleaseCheck: Route[] = [
+  ...idCheckRoutesWithoutInitial,
+  { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheckv2' },
+  {
+    name: 'Offer',
+    component: Offer,
+    hoc: withAsyncErrorBoundary,
+    pathConfig: {
+      path: 'offre/:id',
+      deeplinkPaths: ['offer/:id', 'offre', 'offer'],
+      parse: screenParamsParser['Offer'],
+    },
+    options: { title: t`Offre` },
+  },
+  {
+    name: 'OfferDescription',
+    component: OfferDescription,
+    hoc: withAsyncErrorBoundary,
+    path: 'offre/:id/description',
+    deeplinkPaths: ['offre/description', 'offer/description'],
+    options: { title: t`Détails de l'offre` },
+  },
+  {
+    name: 'BookingDetails',
+    component: BookingDetails,
+    path: 'booking/:id/details',
+    deeplinkPaths: ['reservation/:id/details'],
+    options: { title: t`Détails de réservation` },
+  },
+  {
+    name: 'BookingConfirmation',
+    component: BookingConfirmation,
+    path: 'booking/:offerId/confirmation',
+    deeplinkPaths: ['reservation/:offerId/confirmation'],
+    options: { title: t`Confirmation de réservation` },
+  },
+  {
+    name: 'EighteenBirthday',
+    component: EighteenBirthday,
+    path: 'anniversaire-18-ans',
+    deeplinkPaths: ['eighteen'],
+    options: { title: t`Anniversaire 18 ans` },
+  },
   {
     name: 'PageNotFound',
     component: PageNotFound,
@@ -78,113 +123,93 @@ const routesBeforeReleaseCheck: Route[] = [
     name: 'AcceptCgu',
     component: AcceptCgu,
     hoc: withAsyncErrorBoundary,
-    path: 'cgu',
+    path: 'creation-compte/cgu',
     options: { title: t`Conditions d'utilisations` },
   },
   {
     name: 'AccountCreated',
     component: AccountCreated,
-    path: 'account-created',
+    path: 'creation-compte/confirmation',
     options: { title: t`Compte créé !` },
   },
   {
     name: 'AfterSignupEmailValidationBuffer',
     component: AfterSignupEmailValidationBuffer,
     pathConfig: {
-      path: DeeplinkPath.SIGNUP_CONFIRMATION,
+      path: 'signup-confirmation',
+      deeplinkPaths: ['creation-compte/validation-email'],
       parse: screenParamsParser['AfterSignupEmailValidationBuffer'],
     },
   },
-  { name: 'AppComponents', component: AppComponents, path: 'app-components' },
+  { name: 'AppComponents', component: AppComponents, path: 'composants-app' },
   { name: 'CheatCodes', component: CheatCodes, path: 'cheat-codes' },
   { name: 'CheatMenu', component: CheatMenu, path: 'cheat-menu' },
   {
     name: 'ConsentSettings',
     component: ConsentSettings,
-    path: 'consent-settings',
+    path: 'reglages/consentements',
     options: { title: t`Réglages de consentements` },
   },
   {
     name: 'BeneficiaryRequestSent',
     component: BeneficiaryRequestSent,
-    path: 'beneficiary-request-sent',
+    path: 'demande-beneficiaire-envoyee',
     options: { title: t`Demande bénéficiaire envoyée` },
-  },
-  {
-    name: 'BookingConfirmation',
-    component: BookingConfirmation,
-    path: 'booking/:offerId/confirmation',
-    options: { title: t`Confirmation de réservation` },
-  },
-  {
-    name: 'BookingDetails',
-    component: BookingDetails,
-    pathConfig: {
-      path: 'booking/:id/details',
-      parse: screenParamsParser['BookingDetails'],
-    },
-    options: { title: t`Détails de réservation` },
   },
   {
     name: 'CulturalSurvey',
     component: CulturalSurvey,
-    path: 'cultural-survey',
+    path: 'questionnaire-culturel',
     options: { title: t`Questionnaire culturel` },
   },
-  { name: 'DeeplinkImporter', component: DeeplinkImporter, path: 'deeplink-importer' },
-  {
-    name: 'EighteenBirthday',
-    component: EighteenBirthday,
-    path: 'eighteen',
-    options: { title: t`Anniversaire 18 ans` },
-  },
+  { name: 'DeeplinkImporter', component: DeeplinkImporter, path: 'importer-un-lien' },
   {
     name: 'EndedBookings',
     component: EndedBookings,
-    path: 'ended-bookings',
+    path: 'reservations-terminees',
     options: { title: t`Réservations terminées` },
   },
   {
     name: 'FavoritesSorts',
     component: FavoritesSorts,
-    path: 'favorites/sorts',
+    path: 'favoris/tri',
     options: { title: t`Tri des favoris` },
   },
   {
     name: 'ForgottenPassword',
     component: ForgottenPassword,
     hoc: withAsyncErrorBoundary,
-    path: 'forgotten-password',
+    path: 'mot-de-passe-oublie',
     options: { title: t`Mot de passe oublié` },
   },
   {
     name: 'LegalNotices',
     component: LegalNotices,
-    path: 'legal-notices',
+    path: 'notices-legales',
     options: { title: t`Notices légales` },
   },
   {
     name: 'ConfirmDeleteProfile',
     component: ConfirmDeleteProfile,
-    path: 'profile/delete',
+    path: 'profil/suppression',
     options: { title: t`Suppression profil` },
   },
   {
     name: 'DeleteProfileSuccess',
     component: DeleteProfileSuccess,
-    path: 'profile/delete/success',
+    path: 'profile/suppression/confirmation',
     options: { title: t`Suppression profil confirmée` },
   },
   {
     name: 'LocationFilter',
     component: LocationFilter,
-    path: 'recherche/location/filter',
+    path: 'recherche/localisation/filtres',
     options: { title: t`Recherche` },
   },
   {
     name: 'LocationPicker',
     component: LocationPicker,
-    path: 'recherche/location/picker',
+    path: 'recherche/localisation/choisir-adresse',
     options: { title: t`Recherche` },
   },
   {
@@ -192,58 +217,46 @@ const routesBeforeReleaseCheck: Route[] = [
     component: Login,
     hoc: withAsyncErrorBoundary,
     pathConfig: {
-      path: DeeplinkPath.LOGIN,
+      path: 'connexion',
       parse: screenParamsParser['Login'],
     },
     options: { title: t`Connexion` },
   },
-  { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary, path: 'navigation' },
+  {
+    name: 'Navigation',
+    component: Navigation,
+    hoc: withAsyncErrorBoundary,
+    path: 'cheat-navigation',
+  },
   {
     name: 'NavigationIdCheckErrors',
     component: NavigationIdCheckErrors,
     hoc: withIdCheckAsyncErrorBoundary,
-    path: 'navigation-id-check-errors',
+    path: 'cheat-navigation-id-check-errors',
   },
   {
     name: 'NotificationSettings',
     component: NotificationSettings,
-    path: 'notification-settings',
+    path: 'reglages/notifications',
     options: { title: t`Réglages de notifications` },
-  },
-  {
-    name: 'Offer',
-    component: Offer,
-    hoc: withAsyncErrorBoundary,
-    pathConfig: {
-      path: DeeplinkPath.OFFER,
-      parse: screenParamsParser['Offer'],
-    },
-    options: { title: t`Offre` },
-  },
-  {
-    name: 'OfferDescription',
-    component: OfferDescription,
-    hoc: withAsyncErrorBoundary,
-    path: 'offre/:id/description',
-    options: { title: t`Détails de l'offre` },
   },
   {
     name: 'PersonalData',
     component: PersonalData,
-    path: 'personal-data',
+    path: 'donnees-personelles',
     options: { title: t`Données personnelles` },
   },
   {
     name: 'ChangePassword',
     component: ChangePassword,
-    path: 'change-password',
+    path: 'modification-mot-de-passe',
     options: { title: t`Modification du mot de passe` },
   },
   {
     name: 'ReinitializePassword',
     component: ReinitializePassword,
     pathConfig: {
-      path: DeeplinkPath.FORGOTTEN_PASSWORD,
+      path: 'mot-de-passe-perdu',
       parse: screenParamsParser['ReinitializePassword'],
     },
     options: { title: t`Réinitialiser le mot de passe` },
@@ -251,14 +264,14 @@ const routesBeforeReleaseCheck: Route[] = [
   {
     name: 'ResetPasswordEmailSent',
     component: ResetPasswordEmailSent,
-    path: 'reset-password-email-sent',
+    path: 'email-modification-mot-de-passe-envoye',
     options: { title: t`Email modification mot de passe envoyé` },
   },
   {
     name: 'ResetPasswordExpiredLink',
     component: ResetPasswordExpiredLink,
     hoc: withAsyncErrorBoundary,
-    path: 'reset-password-expired-link',
+    path: 'email-modification-mot-de-passe-expire',
     options: { title: t`Email modification mot de passe expiré` },
   },
   {
@@ -276,79 +289,79 @@ const routesBeforeReleaseCheck: Route[] = [
   {
     name: 'SetBirthday',
     component: SetBirthday,
-    path: 'setbirthday',
-    options: { title: t`Date d'anniversaire - Formulaire` },
+    path: 'creation-compte/date-de-naissance',
+    options: { title: t`Date de naissance - Formulaire` },
   },
   {
     name: 'SetEmail',
     component: SetEmail,
-    path: DeeplinkPath.SET_EMAIL,
+    path: 'creation-compte/email',
     options: { title: t`Email - Formulaire` },
   },
   {
     name: 'SetPassword',
     component: SetPassword,
-    path: 'setpassword',
+    path: 'creation-compte/mot-de-passe',
     options: { title: t`Mot de passe - Formulaire` },
   },
   {
     name: 'SignupConfirmationEmailSent',
     component: SignupConfirmationEmailSent,
-    path: 'signup-confirmation-email-sent',
+    path: 'email-confirmation-creation-compte/envoye',
     options: { title: t`Email création de compte envoyé` },
   },
   {
     name: 'SignupConfirmationExpiredLink',
     component: SignupConfirmationExpiredLink,
-    path: 'signup-confirmation-expired-link',
+    path: 'email-confirmation-creation-compte/expire',
     options: { title: t`Email création de compte expiré` },
   },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
   {
     name: 'NextBeneficiaryStep',
     component: NextBeneficiaryStep,
-    path: DeeplinkPath.NEXT_BENEFECIARY_STEP,
+    path: 'id-check',
   },
   {
     name: 'SetPhoneNumber',
     component: SetPhoneNumber,
-    path: 'set-phone-number',
+    path: 'creation-compte/telephone',
     options: { title: t`Téléphone - Formulaire` },
   },
   {
     name: 'SetPhoneValidationCode',
     component: SetPhoneValidationCode,
-    path: 'set-phone-validation',
+    path: 'creation-compte/code-de-validation-telephone',
     options: { title: t`Validation téléphone` },
   },
   {
     name: 'PhoneValidationTooManyAttempts',
     component: PhoneValidationTooManyAttempts,
-    path: 'phone-validation-too-many-attempts',
+    path: 'creation-compte/code-de-validation-trop-d-essais',
     options: { title: t`Validation téléphone - Trop d'éssais` },
   },
   {
     name: 'PhoneValidationTooManySMSSent',
     component: PhoneValidationTooManySMSSent,
-    path: 'phone-validation-too-many-sms-sent',
+    path: 'creation-compte/code-de-validation-trop-de-sms',
     options: { title: t`Validation téléphone - Trop de SMS envoyés` },
   },
   {
     name: 'VerifyEligibility',
     component: VerifyEligibility,
-    path: 'verify-eligibility',
+    path: 'verification-eligibilite',
     options: { title: t`Vérification éligibilité` },
   },
   {
     name: 'FirstTutorial',
     component: FirstTutorial,
-    path: 'first-tutorial',
+    path: 'introduction-tutoriel',
     options: { title: t`1er tutoriel` },
   },
   {
     name: 'IdCheckUnavailable',
     component: IdCheckUnavailable,
-    path: 'idcheck-unavailable',
+    path: 'idcheck-indisponible',
     options: { title: t`Id Check indisponible` },
   },
   {
@@ -356,13 +369,12 @@ const routesBeforeReleaseCheck: Route[] = [
     component: Venue,
     hoc: withAsyncErrorBoundary,
     pathConfig: {
-      path: DeeplinkPath.VENUE,
+      path: 'venue',
+      deeplinkPaths: ['lieu'],
       parse: screenParamsParser['Venue'],
     },
     options: { title: t`Lieu` },
   },
-  ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
-  { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheckv2' },
 ]
 
 export const routes = redirectUnreleasedScreens(routesBeforeReleaseCheck)

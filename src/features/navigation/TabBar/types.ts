@@ -1,7 +1,4 @@
-import { IdCheckRoute } from '@pass-culture/id-check'
-import { PathConfig } from '@react-navigation/native'
-import { StackNavigationOptions } from '@react-navigation/stack'
-
+import { GenericRoute } from 'features/navigation/RootNavigator'
 import { SearchState } from 'features/search/types'
 
 export type TabRouteName = keyof TabParamList
@@ -14,6 +11,4 @@ export type TabParamList = {
   Profile: undefined
 }
 
-export interface TabRoute extends IdCheckRoute<StackNavigationOptions, TabParamList> {
-  pathConfig?: PathConfig
-}
+export type TabRoute = GenericRoute<TabParamList>

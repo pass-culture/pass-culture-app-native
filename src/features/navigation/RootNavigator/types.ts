@@ -1,7 +1,6 @@
-import { IdCheckRoute, IdCheckRootStackParamList } from '@pass-culture/id-check'
+import { IdCheckRootStackParamList } from '@pass-culture/id-check'
 import { PathConfig, RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { StackNavigationOptions } from '@react-navigation/stack/lib/typescript/src/types'
 import { ComponentType } from 'react'
 import { CountryCode } from 'react-native-country-picker-modal'
 
@@ -140,7 +139,16 @@ export type RouteParams<
 /**
  * Type helper to declare a route
  */
-export interface Route extends IdCheckRoute<StackNavigationOptions, RootStackParamList> {
-  hoc?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
-  pathConfig?: PathConfig
+interface ExtendedPathConfig extends PathConfig {
+  deeplinkPaths?: string[]
 }
+export type GenericRoute<ParamList> = {
+  name: keyof ParamList
+  component: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
+  hoc?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
+  path?: string
+  deeplinkPaths?: string[]
+  pathConfig?: ExtendedPathConfig
+  options?: { title?: string }
+}
+export type Route = GenericRoute<RootStackParamList & IdCheckRootStackParamList>

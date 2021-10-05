@@ -7,7 +7,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers'
-import { Navigator, Screen } from 'features/navigation/TabBar/TabNavigator'
+import { TabStack } from 'features/navigation/TabBar/Stack'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import {
@@ -27,6 +27,9 @@ jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: mockNavigate }),
 }))
+jest.mock('@react-navigation/bottom-tabs', () =>
+  jest.requireActual('@react-navigation/bottom-tabs')
+)
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(
@@ -301,9 +304,9 @@ async function renderProfile(options: Options = defaultOptions) {
   const { wrapper } = { ...defaultOptions, ...options }
   const renderAPI = render(
     <NavigationContainer>
-      <Navigator initialRouteName="Profile">
-        <Screen name="Profile" component={Profile} />
-      </Navigator>
+      <TabStack.Navigator initialRouteName="Profile">
+        <TabStack.Screen name="Profile" component={Profile} />
+      </TabStack.Navigator>
     </NavigationContainer>,
     { wrapper }
   )

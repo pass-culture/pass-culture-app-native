@@ -11,6 +11,10 @@ import { state1, state2, state3 } from '../mocks/navigationStateSnapshots'
 import { getScreenName, onNavigationStateChange } from '../services'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
+jest.mock('@react-navigation/bottom-tabs', () =>
+  jest.requireActual('@react-navigation/bottom-tabs')
+)
 
 describe('getScreenName', () => {
   it.each`

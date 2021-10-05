@@ -20,6 +20,7 @@ import {
 } from '../OfferDescription'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
 
 describe('<OfferDescription />', () => {
   it('should render', async () => {

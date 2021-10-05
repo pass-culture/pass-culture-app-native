@@ -1,9 +1,9 @@
 import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom-tabs'
-import { Route } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { BicolorFavoriteCount } from 'features/favorites/atoms/BicolorFavoriteCount'
+import { isPrivateScreen } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -14,7 +14,7 @@ import { ColorsEnum, getShadow, getSpacing, Spacer, UniqueColors } from 'ui/them
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 
 import { TabBarComponent } from './TabBarComponent'
-import { TabRouteName, TabParamList } from './types'
+import { TabRouteName } from './types'
 
 function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
   switch (route) {
@@ -36,12 +36,12 @@ export const TabBar: React.FC<Pick<
   'state' | 'navigation'
 >> = ({ navigation, state }) => {
   const { bottom } = useCustomSafeInsets()
-  const routes = state.routes as Route<TabRouteName, TabParamList>[]
   return (
     <MainContainer>
       <RowContainer>
         <Spacer.Row numberOfSpaces={4} />
-        {routes.map((route, index) => {
+        {state.routes.map((route, index) => {
+          if (isPrivateScreen(route.name)) return null
           const isSelected = state.index === index
           const onPress = () => {
             if (isSelected) return
@@ -59,7 +59,7 @@ export const TabBar: React.FC<Pick<
               key={`key-tab-nav-${index}-${route.key}`}
               tabName={route.name}
               isSelected={isSelected}
-              bicolorIcon={mapRouteToIcon(route.name)}
+              bicolorIcon={mapRouteToIcon(route.name as TabRouteName)}
               onPress={onPress}
             />
           )

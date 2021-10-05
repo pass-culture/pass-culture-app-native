@@ -1,4 +1,4 @@
-export { getStateFromPath } from '@react-navigation/native'
+export { getStateFromPath, getPathFromState } from '@react-navigation/native'
 import { useEffect } from 'react'
 
 export const addListener = jest.fn()

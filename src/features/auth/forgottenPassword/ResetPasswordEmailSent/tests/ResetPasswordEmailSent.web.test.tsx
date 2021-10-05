@@ -11,6 +11,7 @@ import { flushAllPromises, act, fireEvent, render } from 'tests/utils/web'
 import { ResetPasswordEmailSent } from '../ResetPasswordEmailSent'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
 jest.mock('features/navigation/helpers')
 
 describe('<ResetPasswordEmailSent />', () => {

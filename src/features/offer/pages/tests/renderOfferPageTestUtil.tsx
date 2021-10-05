@@ -19,6 +19,7 @@ jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual<Record<string, unknown>>('@react-navigation/native'),
   useFocusEffect: jest.fn(),
 }))
+jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>

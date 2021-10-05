@@ -3,7 +3,7 @@ import { Platform, Share } from 'react-native'
 
 import { VenueResponse } from 'api/gen'
 import { generateLongFirebaseDynamicLink, WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
-import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
+import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics'
 import { env, useWebAppUrl, WEBAPP_V2_URL } from 'libs/environment'
 import { useFunctionOnce } from 'libs/hooks'
@@ -11,12 +11,14 @@ import { MonitoringError } from 'libs/monitoring'
 
 import { useVenue } from '../api/useVenue'
 
+function getVenuePath(id: number) {
+  return getScreenPath('Venue', { id })
+}
+
 export function getWebappVenueUrl(venueId: number, webAppUrl: string) {
-  const path = new DeeplinkPathWithPathParams(DeeplinkPath.VENUE, {
-    id: venueId.toString(),
-  }).getFullPath()
+  const path = getVenuePath(venueId)
   if (webAppUrl === WEBAPP_V2_URL) {
-    return `${webAppUrl}/${path}`
+    return `${webAppUrl}${path}`
   }
   if (webAppUrl === env.WEBAPP_URL) {
     return `${WEBAPP_NATIVE_REDIRECTION_URL}/${path}`
@@ -33,8 +35,7 @@ const shareVenue = async (venue: VenueResponse, webAppUrl: string) => {
     message: 'Retrouve "{name}" sur le pass Culture',
   })
 
-  const path = new DeeplinkPathWithPathParams(DeeplinkPath.VENUE, { id: venue.id.toString() })
-  const deepLink = `${WEBAPP_V2_URL}/${path.getFullPath()}`
+  const deepLink = `${WEBAPP_V2_URL}${getVenuePath(venue.id)}`
   const webAppLink = getWebappVenueUrl(venue.id, webAppUrl)
 
   const url = generateLongFirebaseDynamicLink(deepLink, webAppLink)

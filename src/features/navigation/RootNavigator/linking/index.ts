@@ -1,10 +1,9 @@
 import { LinkingOptions } from '@react-navigation/native'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
+import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { RequireField } from 'libs/typesUtils/typeHelpers'
-
-import { routes } from '../routes'
 
 import { getInitialURL } from './getInitialUrl'
 import { customGetPathFromState } from './getPathFromState'
@@ -17,15 +16,5 @@ export const linking: RequireField<LinkingOptions, 'getStateFromPath' | 'getPath
   subscribe: subscribe,
   getStateFromPath: customGetStateFromPath,
   getPathFromState: customGetPathFromState,
-  config: {
-    screens: {
-      ...routes.reduce(
-        (route, currentRoute) => ({
-          ...route,
-          [currentRoute.name]: currentRoute.pathConfig || currentRoute.path,
-        }),
-        {}
-      ),
-    },
-  },
+  config: { screens: rootScreensConfig },
 }
