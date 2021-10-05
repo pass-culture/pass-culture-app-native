@@ -106,7 +106,7 @@ describe('<OfferHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
     const fullWebAppUrlWithParams = getWebappOfferUrl(116656, env.WEBAPP_URL)
-    const deepLink = `https://webapp-v2.example.com/offre/116656`
+    const deepLink = `https://webapp-v2.example.com/offre/116656?from=offer`
 
     const url = generateLongFirebaseDynamicLink(deepLink, fullWebAppUrlWithParams)
     const message =
@@ -126,7 +126,7 @@ describe('<OfferHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
     const fullWebAppUrlWithParams = getWebappOfferUrl(116656, env.WEBAPP_URL)
-    const deepLink = `https://webapp-v2.example.com/offre/116656`
+    const deepLink = `https://webapp-v2.example.com/offre/116656?from=offer`
 
     const url = generateLongFirebaseDynamicLink(deepLink, fullWebAppUrlWithParams)
     const messageWithUrl =

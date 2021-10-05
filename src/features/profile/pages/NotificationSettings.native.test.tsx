@@ -35,6 +35,7 @@ jest.mock('@react-navigation/native', () => ({
     goBack: jest.fn(),
   }),
 }))
+jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
 
 describe('NotificationSettings', () => {
   afterEach(() => {

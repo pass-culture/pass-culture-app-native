@@ -1,142 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`wrapRoute() should display force update page when global variable is set 1`] = `
+exports[`ForceUpdate display logic should display force update page when global variable is set 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="flex: 1;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="flex: 1;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="flex: 1;"
-          >
-            <div
-              class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-              style="bottom: 0px; display: flex; left: 0px; position: absolute; right: 0px; top: 0px;"
-            >
-              <div
-                class="css-view-1dbjc4n"
-                style="opacity: 1;"
-              />
-              <div
-                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px;"
-              >
-                <div
-                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                  style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px;"
-                />
-                <div
-                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                  id="animatedComponent"
-                  style="flex: 1;"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    id="animatedComponent"
-                    style="flex: 1;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                      style="background-color: rgba(0, 0, 0, 0); flex: 1; min-height: 100%;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex: 1; flex-direction: column-reverse;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex: 1;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                          id="animatedComponent"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      />
     </div>
-    <div
-      style="position: fixed; left: 0px; top: 0px; width: 0px; height: 0px; z-index: -1; overflow: hidden; visibility: hidden; transition-duration: 0.05s; transition-property: padding; transition-delay: 0s;"
-    />
   </body>,
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      style="flex: 1;"
-    >
-      <div
-        class="css-view-1dbjc4n"
-        style="flex: 1;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="flex: 1;"
-        >
-          <div
-            class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-            style="bottom: 0px; display: flex; left: 0px; position: absolute; right: 0px; top: 0px;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-              style="opacity: 1;"
-            />
-            <div
-              class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-              style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px;"
-            >
-              <div
-                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px;"
-              />
-              <div
-                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                id="animatedComponent"
-                style="flex: 1;"
-              >
-                <div
-                  class="css-view-1dbjc4n"
-                  id="animatedComponent"
-                  style="flex: 1;"
-                >
-                  <div
-                    class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                    style="background-color: rgba(0, 0, 0, 0); flex: 1; min-height: 100%;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex: 1; flex-direction: column-reverse;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex: 1;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                        id="animatedComponent"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

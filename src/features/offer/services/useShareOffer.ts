@@ -3,7 +3,7 @@ import { Platform, Share } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
-import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
+import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { humanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
 import { env, useWebAppUrl, WEBAPP_V2_URL } from 'libs/environment'
@@ -14,10 +14,13 @@ import { getLocationName } from '../atoms/LocationCaption'
 
 import { useFunctionOnce } from './useFunctionOnce'
 
+function getOfferPath(id: number) {
+  return getScreenPath('Offer', { id, from: 'offer', moduleName: undefined })
+}
+
 export function getWebappOfferUrl(offerId: number, webAppUrl: string) {
   if (webAppUrl === WEBAPP_V2_URL) {
-    const path = new DeeplinkPathWithPathParams(DeeplinkPath.OFFER, { id: offerId.toString() })
-    return `${webAppUrl}/${path.getFullPath()}`
+    return `${webAppUrl}${getOfferPath(offerId)}`
   }
   if (webAppUrl === env.WEBAPP_URL) {
     return `${webAppUrl}/accueil/details/${humanizeId(offerId)}`
@@ -35,8 +38,7 @@ async function shareOffer(offer: OfferResponse, webAppUrl: string) {
     message: 'Retrouve "{name}" chez "{locationName}" sur le pass Culture',
   })
 
-  const path = new DeeplinkPathWithPathParams(DeeplinkPath.OFFER, { id: offer.id.toString() })
-  const deepLink = `${WEBAPP_V2_URL}/${path.getFullPath()}`
+  const deepLink = `${WEBAPP_V2_URL}${getOfferPath(offer.id)}`
   const webAppLink = getWebappOfferUrl(offer.id, webAppUrl)
 
   const url = generateLongFirebaseDynamicLink(deepLink, webAppLink)

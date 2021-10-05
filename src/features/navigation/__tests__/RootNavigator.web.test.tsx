@@ -3,14 +3,12 @@ import React from 'react'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
-import { AccountCreated } from 'features/auth/signup/AccountCreated/AccountCreated'
 import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
 import * as splashScreenModule from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { render } from 'tests/utils/web'
 
-import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
+import { RootNavigator } from '../RootNavigator'
 
 jest.mock('features/forceUpdate/useMustUpdateApp')
 const mockedUseMustUpdateApp = mocked(useMustUpdateApp)
@@ -68,33 +66,9 @@ describe('<RootNavigator />', () => {
   })
 })
 
-describe('wrapRoute()', () => {
-  const hoc = jest.fn()
-
-  beforeEach(() => {
-    hoc.mockClear()
-  })
+describe('ForceUpdate display logic', () => {
   afterEach(async () => {
     await storage.clear('has_accepted_cookie')
-  })
-
-  it('should wrap a route when declared with hocs wrapper', () => {
-    const routeWithHoc: Route = {
-      name: 'AcceptCgu',
-      component: AcceptCgu,
-      hoc,
-    }
-    wrapRoute(routeWithHoc)
-    expect(hoc).toBeCalledWith(AcceptCgu)
-  })
-
-  it('should not wrap a route when not declared with hocs wrapper', () => {
-    const routeWithoutHoc: Route = {
-      name: 'AccountCreated',
-      component: AccountCreated,
-    }
-    wrapRoute(routeWithoutHoc)
-    expect(hoc).not.toBeCalledWith(AccountCreated)
   })
 
   it('should display force update page when global variable is set', async () => {

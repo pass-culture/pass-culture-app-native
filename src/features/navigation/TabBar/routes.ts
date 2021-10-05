@@ -2,15 +2,17 @@ import { t } from '@lingui/macro'
 import { LinkingOptions } from '@react-navigation/native'
 
 import { Bookings } from 'features/bookings/pages/Bookings'
-import { DeeplinkPath } from 'features/deeplinks/enums'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
+import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
-import { TabRoute } from 'features/navigation/TabBar/types'
 import { Profile } from 'features/profile/pages/Profile'
 import { Search } from 'features/search/pages/Search'
 import { redirectUnreleasedScreens } from 'libs/web'
+
+import { TabStack } from './Stack'
+import { TabRoute } from './types'
 
 export const initialRouteName = 'Home'
 
@@ -20,16 +22,13 @@ const routesBeforeReleaseCheck: TabRoute[] = [
   {
     name: 'Home',
     component: Home,
-    pathConfig: {
-      path: DeeplinkPath.HOME,
-      parse: screenParamsParser['Home'],
-    },
+    pathConfig: { path: 'home', deeplinkPaths: ['accueil'], parse: screenParamsParser['Home'] },
   },
   {
     name: 'Search',
     component: Search,
     pathConfig: {
-      path: DeeplinkPath.SEARCH,
+      path: 'recherche',
       parse: screenParamsParser['Search'],
       stringify: screenParamsStringifier['Search'],
     },
@@ -44,28 +43,25 @@ const routesBeforeReleaseCheck: TabRoute[] = [
   {
     name: 'Favorites',
     component: Favorites,
-    path: DeeplinkPath.FAVORIS,
+    path: 'favoris',
     options: { title: t`Favoris` },
   },
   {
     name: 'Profile',
     component: Profile,
-    path: DeeplinkPath.PROFILE,
+    path: 'profil',
     options: { title: t`Profil` },
   },
 ]
 
 export const routes = redirectUnreleasedScreens(routesBeforeReleaseCheck)
 
+export const { screensConfig: tabScreensConfig, Screens: TabScreens } = getScreensAndConfig(
+  routes,
+  TabStack.Screen
+)
+
 export const tabNavigatorPathConfig: LinkingOptions['config'] = {
   initialRouteName,
-  screens: {
-    ...routes.reduce(
-      (route, currentRoute) => ({
-        ...route,
-        [currentRoute.name]: currentRoute.pathConfig || currentRoute.path,
-      }),
-      {}
-    ),
-  },
+  screens: tabScreensConfig,
 }

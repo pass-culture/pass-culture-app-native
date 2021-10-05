@@ -1,27 +1,21 @@
-import {
-  BottomTabBarOptions,
-  BottomTabBarProps,
-  createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs'
+import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import React from 'react'
 import { StatusBar, Platform } from 'react-native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
-import { initialRouteName, routes } from 'features/navigation/TabBar/routes'
+import { initialRouteName, TabScreens } from 'features/navigation/TabBar/routes'
+import { TabStack } from 'features/navigation/TabBar/Stack'
 import { IS_WEB_RELEASE } from 'libs/web'
 
 import { shouldDisplayTabIconPredicate } from './helpers'
 import { TabBar } from './TabBar'
-import { TabParamList } from './types'
 
 StatusBar.setBarStyle('light-content')
 if (Platform.OS === 'android') {
   StatusBar.setTranslucent(true)
   StatusBar.setBackgroundColor('transparent', false)
 }
-
-export const { Navigator, Screen } = createBottomTabNavigator<TabParamList>()
 
 function renderTabBar(props: BottomTabBarProps<BottomTabBarOptions>) {
   if (IS_WEB_RELEASE) {
@@ -31,18 +25,16 @@ function renderTabBar(props: BottomTabBarProps<BottomTabBarOptions>) {
 }
 
 export const TabNavigator: React.FC = () => {
-  const authContext = useAuthContext()
+  const { isLoggedIn } = useAuthContext()
   const { data: user } = useUserProfileInfo()
+
+  const shouldDisplayTabIcon = shouldDisplayTabIconPredicate(isLoggedIn, user?.isBeneficiary)
+  const FilteredTabScreens = TabScreens.filter((jsxElement) =>
+    shouldDisplayTabIcon(jsxElement.props.name)
+  )
   return (
-    <Navigator initialRouteName={initialRouteName} tabBar={renderTabBar}>
-      {routes.filter(shouldDisplayTabIconPredicate(authContext, user)).map((route) => (
-        <Screen
-          name={route.name}
-          component={route.component}
-          options={route.options}
-          key={route.name}
-        />
-      ))}
-    </Navigator>
+    <TabStack.Navigator initialRouteName={initialRouteName} tabBar={renderTabBar}>
+      {FilteredTabScreens}
+    </TabStack.Navigator>
   )
 }

@@ -2,8 +2,8 @@ import { Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
-import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
 import { navigationRef } from 'features/navigation/navigationRef'
+import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics'
 
 import { openExternalUrl, navigateToBooking } from '../helpers'
@@ -22,11 +22,11 @@ describe('Navigation helpers', () => {
 
   it('should navigate to in-app screen and navigate to it (ex: Offer)', async () => {
     const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
-    const path = new DeeplinkPathWithPathParams(DeeplinkPath.OFFER, { id: '1' }).getFullPath()
+    const path = getScreenPath('Offer', { id: 1, from: 'offer', moduleName: undefined })
     const link = WEBAPP_NATIVE_REDIRECTION_URL + `/${path}`
     await openExternalUrl(link)
     expect(openUrl).not.toBeCalled()
-    expect(navigationRef.current?.navigate).toBeCalledWith('Offer', { id: 1 })
+    expect(navigationRef.current?.navigate).toBeCalledWith('Offer', { id: 1, from: 'offer' })
   })
 
   it('should navigate to PageNotFound when in-app screen cannot be found (ex: Offer)', async () => {

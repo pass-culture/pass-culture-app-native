@@ -5,26 +5,28 @@ import React from 'react'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'
 
-import { routes as tabBarRoutes } from '../routes'
 import { TabBar } from '../TabBar'
+import { TabRouteName } from '../types'
 
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
 }))
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+
+const TAB_ROUTES: { name: TabRouteName; key: string }[] = [
+  { name: 'Home', key: '' },
+  { name: 'Search', key: '' },
+  { name: 'Bookings', key: '' },
+  { name: 'Favorites', key: '' },
+  { name: 'Profile', key: '' },
+]
+const TAB_ROUTE_NAMES: TabRouteName[] = TAB_ROUTES.map((route) => route.name)
 
 const state: TabNavigationState<Record<string, Record<string, unknown> | undefined>> = {
-  history: [
-    { key: 'Favorites-key', type: 'route' },
-    { key: 'route2-key', type: 'route' },
-    { key: 'Bookings-key', type: 'route' },
-    { key: 'Profile-key', type: 'route' },
-    { key: 'Home-key', type: 'route' },
-  ],
+  history: [],
   index: 0,
   key: 'tab',
-  routeNames: tabBarRoutes.map((route) => route.name),
-  routes: tabBarRoutes.map((route) => ({ ...route, key: route.name })),
+  routeNames: TAB_ROUTE_NAMES,
+  routes: TAB_ROUTES,
   stale: false,
   type: 'tab',
 }

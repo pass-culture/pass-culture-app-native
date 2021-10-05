@@ -1,4 +1,3 @@
-import { DeeplinkPath } from 'features/deeplinks/enums'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 
@@ -11,6 +10,11 @@ export const routes: Array<Route> = [
   {
     name: 'Offer',
     component: MockComponent,
-    pathConfig: { path: DeeplinkPath.OFFER, parse: screenParamsParser['Offer'] },
+    pathConfig: { path: 'offre/:id', parse: screenParamsParser['Offer'] },
+  },
+  {
+    name: 'Venue',
+    component: MockComponent,
+    pathConfig: { path: 'lieu/:id', parse: screenParamsParser['Venue'] },
   },
 ]
