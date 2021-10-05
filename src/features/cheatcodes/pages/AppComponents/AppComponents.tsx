@@ -14,6 +14,7 @@ import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicke
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
+import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
@@ -812,6 +813,12 @@ export const AppComponents: FunctionComponent = () => {
             <Spacer.Column numberOfSpaces={2} />
             <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
           </AlignedText>
+        </View>
+        <Text>Sans icône et long texte</Text>
+        <View>
+          <IdCheckProcessingBadge
+            message={`Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu'on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`}
+          />
         </View>
 
         <Spacer.Column numberOfSpaces={4} />
