@@ -16,6 +16,8 @@ check_branch(){
      echo "Deployment aborted, checkout master to deploy"
      exit 1
     fi
+  else
+    git pull
   fi
 }
 
