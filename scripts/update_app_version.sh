@@ -37,6 +37,7 @@ update_app_version(){
   git add package.json
   git commit -m "v${VERSION}"
   git tag -a "$1${VERSION}" -m "v${VERSION}"
+  git push origin "$1${VERSION}"
 }
 
 # $1 is the tag used to trigger the ci deployment (see .circleci/config.yml)
