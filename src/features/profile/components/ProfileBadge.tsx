@@ -6,16 +6,19 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 interface ProfileBadgeProps {
   message: string
-  icon: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<IconInterface>
+  testID?: string
 }
 
 export function ProfileBadge(props: ProfileBadgeProps) {
   const Icon = props.icon
   return (
-    <Container testID="younger-badge">
-      <IconContainer>
-        <Icon size={48} />
-      </IconContainer>
+    <Container testID={props.testID || 'profile-badge'}>
+      {Icon ? (
+        <IconContainer>
+          <Icon size={48} />
+        </IconContainer>
+      ) : null}
       <TextContainer>
         <Typo.Caption>{props.message}</Typo.Caption>
       </TextContainer>
@@ -33,10 +36,9 @@ const Container = styled.View({
 })
 
 const IconContainer = styled.View({
-  flex: 0.1,
-  minWidth: 48,
-  maxWidth: 48,
+  paddingRight: getSpacing(4),
 })
+
 const TextContainer = styled.View({
-  flex: 0.85,
+  flex: 1,
 })
