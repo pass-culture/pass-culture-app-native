@@ -213,7 +213,7 @@ describe('getCtaWordingAndAction', () => {
         ${false} | ${'Réserver'}                | ${false} | ${true}   | ${SearchGroupNameEnum.PRESSE}     | ${20}
         ${true}  | ${undefined}                 | ${true}  | ${true}   | ${SearchGroupNameEnum.FILM}       | ${20}
         ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILM}       | ${0}
-        ${false} | ${undefined}                 | ${true}  | ${false}  | ${SearchGroupNameEnum.JEU}        | ${0}
+        ${false} | ${'Réserver'}                | ${false} | ${false}  | ${SearchGroupNameEnum.JEU}        | ${0}
         ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20}
       `(
         'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, category=$category and price=$price',
