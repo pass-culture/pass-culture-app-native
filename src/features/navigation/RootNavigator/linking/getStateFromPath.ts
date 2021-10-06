@@ -4,6 +4,7 @@ import { getStateFromPath } from '@react-navigation/native'
 
 import { DeeplinkPath, DeeplinkPathWithPathParams } from 'features/deeplinks/enums'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
+import { analytics } from 'libs/analytics'
 import { storeUtmParams } from 'libs/utm'
 import { IS_WEB_PROD } from 'libs/web'
 
@@ -14,7 +15,7 @@ type Config = Params[1]
 export function customGetStateFromPath(originalPathWithQueryParams: Path, config: Config) {
   const { search: stringQueryParams } = url.parse(originalPathWithQueryParams, true)
 
-  if (stringQueryParams) parseUtmParameters(stringQueryParams)
+  if (stringQueryParams) parseAndSetUtmParameters(stringQueryParams)
 
   const path = addRedirectSupport(originalPathWithQueryParams)
   const state = getStateFromPath(path, config)
@@ -49,11 +50,17 @@ function addRedirectSupport(path: Path): Path {
   return path
 }
 
-function parseUtmParameters(search: string) {
+function parseAndSetUtmParameters(search: string) {
   const queryParams = getUrlQueryParams(search)
   const { utm_campaign: campaign, utm_medium: medium, utm_source: source } = queryParams
 
+  // we want to set the marketing parameters right after the user clicked on marketing link
   setImmediate(() => storeUtmParams({ campaign, medium, source }))
+  analytics.setDefaultEventParameters({
+    traffic_campaign: campaign || '',
+    traffic_source: source || '',
+    traffic_medium: medium || '',
+  })
 }
 
 function match(pathname: string, pathnamesToCheck: string[]): boolean {
