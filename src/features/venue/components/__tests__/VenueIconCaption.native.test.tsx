@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { VenueTypeCode } from 'api/gen'
+import { VenueTypeCodeKey } from 'api/gen'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { parseType } from 'libs/parsers'
 import { fireEvent, render } from 'tests/utils'
 
 import { VenueIconCaptions } from '../VenueIconCaptions'
 
-const typeLabel = parseType(VenueTypeCode.MOVIE)
+const typeLabel = parseType(VenueTypeCodeKey.MOVIE)
 const typeLabelNull = parseType(null)
 const locationCoordinates = { latitude: 2, longitude: 4 }
 
@@ -34,7 +34,7 @@ describe('<VenueIconCaptions />', () => {
     const { toJSON } = render(
       <VenueIconCaptions
         label={typeLabel}
-        type={VenueTypeCode.MOVIE}
+        type={VenueTypeCodeKey.MOVIE}
         locationCoordinates={locationCoordinates}
       />
     )
@@ -55,7 +55,7 @@ describe('<VenueIconCaptions />', () => {
   it('should display correct label for venue type if type is not null', () => {
     const { getByText } = render(
       <VenueIconCaptions
-        type={VenueTypeCode.MOVIE}
+        type={VenueTypeCodeKey.MOVIE}
         label={typeLabel}
         locationCoordinates={locationCoordinates}
       />
@@ -68,7 +68,7 @@ describe('<VenueIconCaptions />', () => {
     const { queryByText } = render(
       <VenueIconCaptions
         type={null}
-        label={VenueTypeCode.MOVIE}
+        label={VenueTypeCodeKey.MOVIE}
         locationCoordinates={locationCoordinates}
       />
     )
@@ -80,7 +80,7 @@ describe('<VenueIconCaptions />', () => {
     const { queryByText } = render(
       <VenueIconCaptions
         type={null}
-        label={VenueTypeCode.MOVIE}
+        label={VenueTypeCodeKey.MOVIE}
         locationCoordinates={locationCoordinates}
       />
     )
@@ -94,7 +94,7 @@ describe('<VenueIconCaptions />', () => {
     const { getByTestId } = render(
       <VenueIconCaptions
         type={null}
-        label={VenueTypeCode.MOVIE}
+        label={VenueTypeCodeKey.MOVIE}
         locationCoordinates={locationCoordinates}
       />
     )

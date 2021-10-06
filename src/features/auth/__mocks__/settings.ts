@@ -19,6 +19,7 @@ export const mockDefaultSettings: SettingsResponse = {
   useAppSearch: true,
   isWebappV2Enabled: false,
   enableNativeEacIndividual: false,
+  accountCreationMinimumAge: 15,
 }
 
 export const useAppSettings: typeof actualUseAppSettings = jest.fn(

@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { VenueTypeCode } from 'api/gen'
+import { VenueTypeCodeKey } from 'api/gen'
 import { IconInterface } from 'ui/svg/icons/types'
 import {
   ArtisticCourseIcon,
@@ -24,34 +24,34 @@ import {
 } from 'ui/svg/icons/venueTypes'
 
 // Map the facetFilter (in search backend) to the label displayed in the front
-export const MAP_VENUE_TYPE_TO_LABEL: { [k in VenueTypeCode]: string } = {
-  [VenueTypeCode.ARTISTICCOURSE]: t`Cours et pratique artistiques`,
-  [VenueTypeCode.BOOKSTORE]: t`Bibliothèque ou médiathèque`,
-  [VenueTypeCode.CONCERTHALL]: t`Musique - Salle de concerts`,
-  [VenueTypeCode.CREATIVEARTSSTORE]: t`Magasin arts créatifs`,
-  [VenueTypeCode.CULTURALCENTRE]: t`Centre culturel`,
-  [VenueTypeCode.DIGITAL]: t`Offre numérique`,
-  [VenueTypeCode.FESTIVAL]: t`Festival`,
-  [VenueTypeCode.GAMES]: t`Jeux / Jeux vidéos`,
-  [VenueTypeCode.LIBRARY]: t`Librairie`,
-  [VenueTypeCode.MUSEUM]: t`Musée`,
-  [VenueTypeCode.MUSICALINSTRUMENTSTORE]: t`Musique - Magasin d’instruments`,
-  [VenueTypeCode.MOVIE]: t`Cinéma - Salle de projections`,
-  [VenueTypeCode.OTHER]: t`Autre type de lieu`,
-  [VenueTypeCode.PATRIMONYTOURISM]: t`Patrimoine et tourisme`,
-  [VenueTypeCode.PERFORMINGARTS]: t`Spectacle vivant`,
-  [VenueTypeCode.RECORDSTORE]: t`Musique - Disquaire`,
-  [VenueTypeCode.SCIENTIFICCULTURE]: t`Culture scientifique`,
-  [VenueTypeCode.VISUALARTS]: t`Arts visuels, arts plastiques et galeries`,
+export const MAP_VENUE_TYPE_TO_LABEL: { [k in VenueTypeCodeKey]: string } = {
+  [VenueTypeCodeKey.ARTISTICCOURSE]: t`Cours et pratique artistiques`,
+  [VenueTypeCodeKey.BOOKSTORE]: t`Bibliothèque ou médiathèque`,
+  [VenueTypeCodeKey.CONCERTHALL]: t`Musique - Salle de concerts`,
+  [VenueTypeCodeKey.CREATIVEARTSSTORE]: t`Magasin arts créatifs`,
+  [VenueTypeCodeKey.CULTURALCENTRE]: t`Centre culturel`,
+  [VenueTypeCodeKey.DIGITAL]: t`Offre numérique`,
+  [VenueTypeCodeKey.FESTIVAL]: t`Festival`,
+  [VenueTypeCodeKey.GAMES]: t`Jeux / Jeux vidéos`,
+  [VenueTypeCodeKey.LIBRARY]: t`Librairie`,
+  [VenueTypeCodeKey.MUSEUM]: t`Musée`,
+  [VenueTypeCodeKey.MUSICALINSTRUMENTSTORE]: t`Musique - Magasin d’instruments`,
+  [VenueTypeCodeKey.MOVIE]: t`Cinéma - Salle de projections`,
+  [VenueTypeCodeKey.OTHER]: t`Autre type de lieu`,
+  [VenueTypeCodeKey.PATRIMONYTOURISM]: t`Patrimoine et tourisme`,
+  [VenueTypeCodeKey.PERFORMINGARTS]: t`Spectacle vivant`,
+  [VenueTypeCodeKey.RECORDSTORE]: t`Musique - Disquaire`,
+  [VenueTypeCodeKey.SCIENTIFICCULTURE]: t`Culture scientifique`,
+  [VenueTypeCodeKey.VISUALARTS]: t`Arts visuels, arts plastiques et galeries`,
 }
 
-export const parseType = (types: VenueTypeCode | null | undefined): string => {
+export const parseType = (types: VenueTypeCodeKey | null | undefined): string => {
   if (types && types in MAP_VENUE_TYPE_TO_LABEL) return MAP_VENUE_TYPE_TO_LABEL[types]
   return MAP_VENUE_TYPE_TO_LABEL.OTHER
 }
 
 // Map the facetFilter (in search backend) to the label displayed for home page in the front
-const MAP_TYPE_TO_HOME_LABEL: { [k in VenueTypeCode]: string } = {
+const MAP_TYPE_TO_HOME_LABEL: { [k in VenueTypeCodeKey]: string } = {
   ARTISTIC_COURSE: t`Pratique artistiques`,
   BOOKSTORE: t`Bibliothèque / médiathèque`,
   CONCERT_HALL: t`Salle de concerts`,
@@ -72,14 +72,14 @@ const MAP_TYPE_TO_HOME_LABEL: { [k in VenueTypeCode]: string } = {
   VISUAL_ARTS: t`Galeries d’art`,
 }
 
-export const parseTypeHomeLabel = (types: VenueTypeCode | null | undefined): string => {
+export const parseTypeHomeLabel = (types: VenueTypeCodeKey | null | undefined): string => {
   if (types && types in MAP_TYPE_TO_HOME_LABEL) return MAP_TYPE_TO_HOME_LABEL[types]
   return MAP_TYPE_TO_HOME_LABEL.OTHER
 }
 
 // Map the facetFilter (in search backend) to the category Icon
 export const MAP_TYPE_TO_ICON: {
-  [k in VenueTypeCode]: React.FC<IconInterface>
+  [k in VenueTypeCodeKey]: React.FC<IconInterface>
 } = {
   ARTISTIC_COURSE: ArtisticCourseIcon,
   BOOKSTORE: BookstoreIcon,
@@ -101,7 +101,7 @@ export const MAP_TYPE_TO_ICON: {
   VISUAL_ARTS: VisualArtIcon,
 }
 
-export const mapVenueTypeToIcon = (types: VenueTypeCode | null): React.FC<IconInterface> => {
+export const mapVenueTypeToIcon = (types: VenueTypeCodeKey | null): React.FC<IconInterface> => {
   if (types && types in MAP_TYPE_TO_ICON) return MAP_TYPE_TO_ICON[types]
   return OtherIcon
 }

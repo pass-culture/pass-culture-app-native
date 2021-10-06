@@ -185,7 +185,8 @@ export interface BeneficiaryInformationUpdateRequest {
  */
 export enum BeneficiaryValidationStep {
     PhoneValidation = 'phone-validation',
-    IdCheck = 'id-check'
+    IdCheck = 'id-check',
+    BeneficiaryInformation = 'beneficiary-information'
 }/**
  * 
  * @export
@@ -508,6 +509,38 @@ export interface BookingsResponse {
  * @export
  * @enum {string}
  */
+export enum CallToActionIcon {
+    Info = 'info',
+    Warning = 'warning'
+}/**
+ * 
+ * @export
+ * @interface CallToActionMessage
+ */
+export interface CallToActionMessage {
+    /**
+     * 
+     * @type {CallToActionIcon}
+     * @memberof CallToActionMessage
+     */
+    callToActionIcon: CallToActionIcon;
+    /**
+     * 
+     * @type {string}
+     * @memberof CallToActionMessage
+     */
+    callToActionLink: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CallToActionMessage
+     */
+    callToActionTitle: string;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
 export enum CategoryIdEnum {
     BEAUXARTS = 'BEAUX_ARTS',
     CINEMA = 'CINEMA',
@@ -622,6 +655,16 @@ export interface CulturalSurveyRequest {
      */
     needsToFillCulturalSurvey: boolean;
 }/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum DepositType {
+    _15 = 'GRANT_15',
+    _16 = 'GRANT_16',
+    _17 = 'GRANT_17',
+    _18 = 'GRANT_18'
+}/**
  * 
  * @export
  * @interface DomainsCredit
@@ -645,6 +688,14 @@ export interface DomainsCredit {
      * @memberof DomainsCredit
      */
     physical?: Credit | null;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum EligibilityCheckMethods {
+    Jouve = 'jouve',
+    Educonnect = 'educonnect'
 }/**
  * An enumeration.
  * @export
@@ -1372,6 +1423,13 @@ export interface PaginatedFavoritesResponse {
      */
     page: number;
 }/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum PopOverIcon {
+    Email = 'Email'
+}/**
  * Describe possible reason codes to used when reporting an offer.  The whole meta part is only consumed by the api client, it has no meaning inside the whole API code.  Note: when adding a new enum symbol, do not forget to update the meta method.
  * @export
  * @enum {string}
@@ -1538,6 +1596,12 @@ export interface SendPhoneValidationRequest {
  * @interface SettingsResponse
  */
 export interface SettingsResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof SettingsResponse
+     */
+    accountCreationMinimumAge: number;
     /**
      * 
      * @type {boolean}
@@ -1811,9 +1875,45 @@ export interface SubcategoryResponseModel {
 }/**
  * 
  * @export
+ * @interface SubscriptionMessage
+ */
+export interface SubscriptionMessage {
+    /**
+     * 
+     * @type {CallToActionMessage}
+     * @memberof SubscriptionMessage
+     */
+    callToAction: CallToActionMessage;
+    /**
+     * 
+     * @type {PopOverIcon}
+     * @memberof SubscriptionMessage
+     */
+    popOverIcon: PopOverIcon;
+    /**
+     * 
+     * @type {Date}
+     * @memberof SubscriptionMessage
+     */
+    updatedAt: Date;
+    /**
+     * 
+     * @type {string}
+     * @memberof SubscriptionMessage
+     */
+    userMessage: string;
+}/**
+ * 
+ * @export
  * @interface UserProfileResponse
  */
 export interface UserProfileResponse {
+    /**
+     * 
+     * @type {Array<EligibilityCheckMethods>}
+     * @memberof UserProfileResponse
+     */
+    allowedEligibilityCheckMethods?: Array<EligibilityCheckMethods> | null;
     /**
      * 
      * @type {{ [key: string]: number; }}
@@ -1832,6 +1932,12 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     depositExpirationDate?: Date | null;
+    /**
+     * 
+     * @type {DepositType}
+     * @memberof UserProfileResponse
+     */
+    depositType?: DepositType | null;
     /**
      * 
      * @type {number}
@@ -1928,6 +2034,12 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     showEligibleCard: boolean;
+    /**
+     * 
+     * @type {SubscriptionMessage}
+     * @memberof UserProfileResponse
+     */
+    subscriptionMessage?: SubscriptionMessage | null;
     /**
      * 
      * @type {NotificationSubscriptions}
@@ -2169,10 +2281,10 @@ export interface VenueResponse {
     publicName?: string | null;
     /**
      * 
-     * @type {VenueTypeCode}
+     * @type {VenueTypeCodeKey}
      * @memberof VenueResponse
      */
-    venueTypeCode?: VenueTypeCode | null;
+    venueTypeCode?: VenueTypeCodeKey | null;
     /**
      * 
      * @type {string}
@@ -2184,7 +2296,7 @@ export interface VenueResponse {
  * @export
  * @enum {string}
  */
-export enum VenueTypeCode {
+export enum VenueTypeCodeKey {
     VISUALARTS = 'VISUAL_ARTS',
     CULTURALCENTRE = 'CULTURAL_CENTRE',
     ARTISTICCOURSE = 'ARTISTIC_COURSE',
