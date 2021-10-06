@@ -1,4 +1,4 @@
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnum, SubcategoryIdEnum } from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { AppSearchFields, FALSE } from 'libs/search/filters/constants'
@@ -236,6 +236,16 @@ describe('buildQueryOptions', () => {
           { is_digital: 0 },
           { [AppSearchFields.prices]: { to: 1 } },
           { [AppSearchFields.search_group_name]: SearchGroupNameEnum.PRESSE },
+        ],
+        none: [
+          {
+            [AppSearchFields.subcategory_id]: [
+              SubcategoryIdEnum.JEUENLIGNE,
+              SubcategoryIdEnum.JEUSUPPORTPHYSIQUE,
+              SubcategoryIdEnum.ABOJEUVIDEO,
+              SubcategoryIdEnum.ABOLUDOTHEQUE,
+            ],
+          },
         ],
       })
     })
