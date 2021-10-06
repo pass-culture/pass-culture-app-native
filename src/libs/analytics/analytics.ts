@@ -16,23 +16,17 @@ type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
 type OfferIdOrVenueId = { offerId: number } | { venueId: number }
 
 const useInit = () => {
-  const { campaign, source, medium, campaignDate } = useUtmParams()
+  const { campaignDate } = useUtmParams()
 
   useEffect(() => {
-    // When we start the application, we set utm params as default
+    // If the user has clicked on marketing link 48h ago, we want to remove the marketing params
     const ago48Hours = new Date()
     ago48Hours.setDate(ago48Hours.getDate() - 2)
 
-    if (campaignDate && campaignDate > ago48Hours) {
-      analytics.setDefaultEventParameters({
-        traffic_campaign: campaign || '',
-        traffic_source: source || '',
-        traffic_medium: medium || '',
-      })
-    } else {
+    if (campaignDate && campaignDate < ago48Hours) {
       analytics.setDefaultEventParameters(undefined)
     }
-  }, [campaign, source, medium, campaignDate])
+  }, [campaignDate])
 }
 
 export const analytics = {
