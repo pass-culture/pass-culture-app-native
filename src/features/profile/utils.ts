@@ -1,6 +1,8 @@
 import { UserProfileResponse, DomainsCredit, UserRole } from 'api/gen/api'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit } from 'features/home/services/useAvailableCredit'
+import { Clock } from 'ui/svg/icons/Clock'
+import { Info } from 'ui/svg/icons/Info'
 
 export function isUserBeneficiary(user: UserProfileResponse): boolean {
   return user.isBeneficiary
@@ -23,4 +25,15 @@ export function isUserUnderageBeneficiary(user: UserProfileResponse | undefined)
 export const useIsUserUnderageBeneficiary = () => {
   const { data: user } = useUserProfileInfo()
   return isUserUnderageBeneficiary(user)
+}
+
+export const matchSubscriptionMessagePopOverIconToSvg = (iconName: string | undefined) => {
+  switch (iconName) {
+    case undefined:
+      return undefined
+    case 'Clock':
+      return Clock
+    default:
+      return Info
+  }
 }
