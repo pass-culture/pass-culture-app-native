@@ -22,7 +22,7 @@ const educationalFilter = {
 }
 
 describe('buildQueryOptions', () => {
-  describe.only('multiple parameters', () => {
+  describe('multiple parameters', () => {
     it('should fetch with price and date numericFilters', () => {
       const selectedDate = new Date(2020, 3, 19, 11)
       const from = '2020-04-19T00:00:00.000Z'
