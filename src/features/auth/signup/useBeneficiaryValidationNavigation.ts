@@ -47,13 +47,16 @@ export const useBeneficiaryValidationNavigation = () => {
   function navigateToNextStep(nextStep: PrefetchedInfo['nextBeneficiaryValidationStep']) {
     if (nextStep === BeneficiaryValidationStep.PhoneValidation && settings?.enablePhoneValidation) {
       navigate('SetPhoneNumber')
-    } else if (nextStep === BeneficiaryValidationStep.IdCheck) {
+    } else if (
+      nextStep === BeneficiaryValidationStep.IdCheck ||
+      nextStep === BeneficiaryValidationStep.BeneficiaryInformation
+    ) {
       if (settings?.allowIdCheckRegistration) {
         try {
           analytics.logIdCheck('Profile')
           navigateToIdCheck()
         } catch (err) {
-          eventMonitoring.captureException(err, { isEligible: true })
+          eventMonitoring.captureException(err, { isEligible: true, nextStep })
           showErrorSnackBar({
             message: t`Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures.`,
             timeout: SNACK_BAR_TIME_OUT,
