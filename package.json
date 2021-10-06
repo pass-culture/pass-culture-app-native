@@ -77,7 +77,7 @@
     "@elastic/app-search-javascript": "^7.13.1",
     "@lingui/core": "^3.10.4",
     "@lingui/react": "^3.10.2",
-    "@pass-culture/id-check": "^2.5.4",
+    "@pass-culture/id-check": "^2.6.0",
     "@pass-culture/react-native-profiling": "1.0.19",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-async-storage/async-storage": "^1.15.5",

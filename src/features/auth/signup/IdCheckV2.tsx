@@ -3,6 +3,7 @@ import {
   IdCardIcon,
   IdCheckHomePage,
   ProfileIcon,
+  Step,
   StepConfig,
   useIdCheckContext,
 } from '@pass-culture/id-check'
@@ -30,7 +31,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
   })
   const [isEnteringIdCheck, setIsEnteringIdCheck] = useState(true)
 
-  const { refetch } = useUserProfileInfo({
+  const { refetch: refetchUserProfileInfo, data: userProfileInfo } = useUserProfileInfo({
     cacheTime: 0,
   })
 
@@ -44,7 +45,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
 
   function syncUserAndProceedToNextScreen() {
     queryClient.invalidateQueries(QueryKeys.USER_PROFILE).finally(() => {
-      refetch().finally(goToBeneficiaryRequestSent)
+      refetchUserProfileInfo().finally(goToBeneficiaryRequestSent)
     })
   }
 
@@ -56,19 +57,26 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
     setIsEnteringIdCheck(false)
     if (setContextValue) {
       refetchSettings()
-        .then(({ data }) => {
+        .then(({ data: updatedSettings }) =>
+          refetchUserProfileInfo().then(({ data: updatedUserProfileInfo }) => ({
+            updatedSettings,
+            updatedUserProfileInfo,
+          }))
+        )
+        .then(({ updatedSettings, updatedUserProfileInfo }) => {
           setContextValue({
             onAbandon,
             onSuccess,
-            displayDmsRedirection: !!data?.displayDmsRedirection,
+            displayDmsRedirection: !!updatedSettings?.displayDmsRedirection,
             isLicenceTokenChecked: false,
-            retention: !!data?.enableIdCheckRetention,
-            debug: !!data?.enableNativeIdCheckVerboseDebugging,
-            addressAutoCompletion: !!data?.idCheckAddressAutocompletion,
+            retention: !!updatedSettings?.enableIdCheckRetention,
+            debug: !!updatedSettings?.enableNativeIdCheckVerboseDebugging,
+            addressAutoCompletion: !!updatedSettings?.idCheckAddressAutocompletion,
             stepsConfigs: getStepsConfigs({
-              isRetentionEnabled: !!data?.enableIdCheckRetention,
-              isPhoneValidationEnabled: !!data?.enablePhoneValidation,
+              isRetentionEnabled: !!updatedSettings?.enableIdCheckRetention,
+              isPhoneValidationEnabled: !!updatedSettings?.enablePhoneValidation,
             }),
+            initialStep: updatedUserProfileInfo?.nextBeneficiaryValidationStep as Step,
           })
         })
         .catch((error) => {
@@ -85,6 +93,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
               isRetentionEnabled: !!settings?.enableIdCheckRetention,
               isPhoneValidationEnabled: !!settings?.enablePhoneValidation,
             }),
+            initialStep: userProfileInfo?.nextBeneficiaryValidationStep as Step,
           })
         })
         .finally(() => setIsEnteringIdCheck(true))
@@ -109,7 +118,7 @@ function getStepsConfigs({
   return [
     {
       icon: IdCardIcon,
-      name: 'identity',
+      name: 'id-check',
       path: '/uploadDocument',
       screenName: 'UploadDocument',
       screens: isRetentionEnabled ? ['Conditions'] : ['Conditions', 'Validation'],
@@ -117,7 +126,7 @@ function getStepsConfigs({
     },
     {
       icon: ProfileIcon,
-      name: 'profile',
+      name: 'beneficiary-information',
       path: isPhoneValidationEnabled ? '/status' : '/phone',
       screenName: isPhoneValidationEnabled ? 'Status' : 'Phone',
       screens: isPhoneValidationEnabled
