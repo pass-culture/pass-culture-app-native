@@ -78,6 +78,16 @@ describe('useBeneficiaryValidationNavigation', () => {
     expect(navigate).toBeCalledWith('IdCheckV2')
   })
 
+  it('should navigate to IdCheck if prefetched next step is beneficiary-information and email is not null', () => {
+    const { result } = renderHook(useBeneficiaryValidationNavigation)
+    result.current.navigateToNextBeneficiaryValidationStep({
+      email: 'christophe.dupont@gmail.com',
+      nextBeneficiaryValidationStep: BeneficiaryValidationStep.BeneficiaryInformation,
+    })
+
+    expect(navigate).toBeCalledWith('IdCheckV2')
+  })
+
   it('should navigate to IdCheck if prefetched next step is id-check and email is not null', () => {
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep({
