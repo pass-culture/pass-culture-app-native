@@ -9,7 +9,7 @@ import { env } from 'libs/environment'
 export const IS_WEB_TESTING = Platform.OS === 'web' && env.ENV === 'testing'
 export const IS_WEB_STAGING = Platform.OS === 'web' && env.ENV === 'staging'
 export const IS_WEB_PROD = Platform.OS === 'web' && env.ENV === 'production'
-export const IS_WEB_RELEASE = IS_WEB_STAGING || IS_WEB_PROD
+export const IS_WEB_RELEASE = IS_WEB_PROD
 
 const WEB_SCREENS_FOR_RELEASE: ScreenNames[] = [
   'LocationFilter', // Search feature
