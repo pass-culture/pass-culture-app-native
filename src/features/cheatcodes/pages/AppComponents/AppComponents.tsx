@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, SearchGroupNameEnum, VenueTypeCode } from 'api/gen/api'
+import { CategoryIdEnum, SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
@@ -301,14 +301,14 @@ export const AppComponents: FunctionComponent = () => {
         <Hero imageUrl={undefined} type="offer" categoryId={CategoryIdEnum.CINEMA} />
         <Typo.Title4>Default Hero - Venue</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <Hero imageUrl={undefined} type="venue" venueType={VenueTypeCode.ARTISTICCOURSE} />
+        <Hero imageUrl={undefined} type="venue" venueType={VenueTypeCodeKey.ARTISTICCOURSE} />
         <Spacer.Column numberOfSpaces={4} />
         <Typo.Title4>Landscape Hero - Venue with image</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <Hero
           imageUrl="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
           type="venue"
-          venueType={VenueTypeCode.ARTISTICCOURSE}
+          venueType={VenueTypeCodeKey.ARTISTICCOURSE}
         />
       </AccordionItem>
 

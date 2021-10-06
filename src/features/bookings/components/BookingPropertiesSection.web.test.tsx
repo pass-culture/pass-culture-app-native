@@ -57,6 +57,7 @@ async function renderBookingProperties(booking: Booking) {
       <BookingPropertiesSection
         booking={booking}
         appSettings={{
+          accountCreationMinimumAge: 15,
           allowIdCheckRegistration: false,
           autoActivateDigitalBookings: false,
           depositAmount: 30000,

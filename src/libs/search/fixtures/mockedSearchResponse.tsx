@@ -1,4 +1,4 @@
-import { VenueTypeCode } from 'api/gen'
+import { VenueTypeCodeKey } from 'api/gen'
 import { VenueHit } from 'libs/search'
 
 interface SearchResponse {
@@ -11,7 +11,7 @@ export const mockedSearchResponse: SearchResponse = {
     {
       id: 5543,
       name: 'Le Petit Rintintin 1',
-      venueTypeCode: VenueTypeCode.MOVIE,
+      venueTypeCode: VenueTypeCodeKey.MOVIE,
       publicName: 'Librairie Quantique',
       latitude: 48.87004,
       longitude: 2.3785,
@@ -37,7 +37,7 @@ export const mockedSearchResponse: SearchResponse = {
     {
       id: 5544,
       name: 'Le Petit Rintintin 2',
-      venueTypeCode: VenueTypeCode.MOVIE,
+      venueTypeCode: VenueTypeCodeKey.MOVIE,
       publicName: 'Librairie Quantique',
       latitude: 48.87004,
       longitude: 2.3785,
@@ -63,7 +63,7 @@ export const mockedSearchResponse: SearchResponse = {
     {
       id: 5545,
       name: 'Le Petit Rintintin 3',
-      venueTypeCode: VenueTypeCode.MOVIE,
+      venueTypeCode: VenueTypeCodeKey.MOVIE,
       publicName: 'Librairie Quantique',
       latitude: 48.87004,
       longitude: 2.3785,
@@ -89,7 +89,7 @@ export const mockedSearchResponse: SearchResponse = {
     {
       id: 5546,
       name: 'Le Petit Rintintin 4',
-      venueTypeCode: VenueTypeCode.MOVIE,
+      venueTypeCode: VenueTypeCodeKey.MOVIE,
       publicName: 'Librairie Quantique',
       latitude: 48.87004,
       longitude: 2.3785,

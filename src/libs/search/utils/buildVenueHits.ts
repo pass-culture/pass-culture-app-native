@@ -1,6 +1,6 @@
 import { ResultItem } from '@elastic/app-search-javascript'
 
-import { VenueTypeCode } from 'api/gen'
+import { VenueTypeCodeKey } from 'api/gen'
 import { VenueHit } from 'libs/search'
 import { AppSearchVenuesFields, TRUE } from 'libs/search/filters/constants'
 
@@ -38,6 +38,6 @@ export const buildVenueHits = (searchHit: ResultItem<AppSearchVenuesFields>): Ve
     longitude: isNaN(parseFloat(lng)) ? null : parseFloat(lng),
     name: searchHit.getRaw(AppSearchVenuesFields.name) as string,
     publicName: searchHit.getRaw(AppSearchVenuesFields.name) as string,
-    venueTypeCode: searchHit.getRaw(AppSearchVenuesFields.venue_type) as VenueTypeCode,
+    venueTypeCode: searchHit.getRaw(AppSearchVenuesFields.venue_type) as VenueTypeCodeKey,
   }
 }

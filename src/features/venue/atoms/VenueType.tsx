@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { VenueTypeCode } from 'api/gen'
+import { VenueTypeCodeKey } from 'api/gen'
 import { mapVenueTypeToIcon } from 'libs/parsers'
 
 import { IconWithCaption } from './IconWithCaption'
 
 interface Props {
-  type: VenueTypeCode | null
+  type: VenueTypeCodeKey | null
   label?: string
 }
 

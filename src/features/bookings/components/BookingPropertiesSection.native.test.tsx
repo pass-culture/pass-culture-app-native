@@ -71,6 +71,7 @@ async function renderBookingProperties(booking: Booking) {
           useAppSearch: true,
           isWebappV2Enabled: false,
           enableNativeEacIndividual: false,
+          accountCreationMinimumAge: 15,
         }}
       />
     )

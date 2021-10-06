@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Coordinates, VenueTypeCode } from 'api/gen'
+import { Coordinates, VenueTypeCodeKey } from 'api/gen'
 import { IconWithCaption } from 'features/venue/atoms/IconWithCaption'
 import { VenueType } from 'features/venue/atoms/VenueType'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
@@ -12,7 +12,7 @@ import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNo
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-type Props = { type: VenueTypeCode | null; label: string; locationCoordinates: Coordinates }
+type Props = { type: VenueTypeCodeKey | null; label: string; locationCoordinates: Coordinates }
 
 export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordinates }) => {
   const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useGeolocation()
