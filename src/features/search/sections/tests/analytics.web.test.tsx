@@ -35,39 +35,12 @@ describe('Analytics - logUseFilter', () => {
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Location)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
-  // FIXME: Web Integration
-  it.skip('should log UseFilter for sliding the radius [Web Integration]', () => {
-    // const { getByTestId } = render(<Section.Radius />)
-    // const slider = getByTestId('slider').children[0] as ReactTestInstance
-    // slider.props.onValuesChangeFinish([50])
-    // slider.props.onValuesChangeFinish([23])
-    // expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius)
-    // expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
-  })
-  // FIXME: Web Integration
-  it.skip('should log UseFilter once when selecting multiple categories [Web Integration]', () => {
-    // const { getByText } = render(<Section.Category />)
-    // fireEvent.click(getByText(CATEGORY_CRITERIA.CINEMA.label))
-    // expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Category)
-    // fireEvent.click(getByText(CATEGORY_CRITERIA.JEUX_VIDEO.label))
-    // fireEvent.click(getByText(CATEGORY_CRITERIA.clickE.label))
-    // expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
-  })
   it('should log UseFilter once when selecting multiple offer types', () => {
     const { getByText } = render(<Section.OfferType />)
     fireEvent.click(getByText('Offre numérique'))
     fireEvent.click(getByText('Offre physique'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferType)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
-  })
-  // FIXME: Web Integration
-  it.skip('should log UseFilter once when sliding the price [Web Integration]', () => {
-    // const { getByTestId } = render(<Section.Price />)
-    // const slider = getByTestId('slider').children[0] as ReactTestInstance
-    // slider.props.onValuesChangeFinish([20, 300])
-    // slider.props.onValuesChangeFinish([20, 30])
-    // expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Price)
-    // expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
 
   it('should log UseFilter once when changing free offer', () => {
@@ -116,32 +89,5 @@ describe('Analytics - logUseFilter', () => {
     fireEvent.click(getByTestId('Interrupteur filtre heures'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Hour)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
-  })
-
-  // FIXME: Web Integration
-  it.skip('should log UseFilter once when sliding the time range [Web Integration]', () => {
-    // const { getByTestId } = render(<Section.TimeSlot />)
-    // const slider = getByTestId('slider').children[0] as ReactTestInstance
-    // slider.props.onValuesChangeFinish([8, 21])
-    // slider.props.onValuesChangeFinish([18, 21])
-    // expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.TimeSlot)
-    // expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
-  })
-
-  // FIXME: Web Integration
-  it.skip('should log UseFilter once for each changed filter [Web Integration]', () => {
-    // const { getByTestId } = render(<Section.TimeSlot />)
-    // const slider = getByTestId('slider').children[0] as ReactTestInstance
-    // const hourSwitch = render(<Section.Hour />).getByTestId('Interrupteur filtre heures')
-    //
-    // fireEvent.click(hourSwitch)
-    // fireEvent.click(hourSwitch)
-    //
-    // slider.props.onValuesChangeFinish([8, 21])
-    // slider.props.onValuesChangeFinish([18, 21])
-    //
-    // expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Hour)
-    // expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.TimeSlot)
-    // expect(analytics.logUseFilter).toHaveBeenCalledTimes(2)
   })
 })

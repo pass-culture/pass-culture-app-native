@@ -52,23 +52,6 @@ describe('AppButton Component', () => {
     })
   })
 
-  // TODO: web integration for button and restore test
-  describe.skip('* Disabled property', () => {
-    // it('should disable handlers when disabled equals true [TODO: web]', () => {
-    //   const { getByTestId } = render(
-    //     <AppButton
-    //       title="Testing Disabled"
-    //       loadingIconColor={ColorsEnum.BLACK}
-    //       icon={Close}
-    //       disabled
-    //     />
-    //   )
-    //
-    //   const container = getByTestId('Testing Disabled')
-    //   expect(container.props.onPress).toBeFalsy()
-    //   expect(container.props.onLongPress).toBeFalsy()
-    // })
-  })
   describe('* inline property', () => {
     it('should use inline css style when true', () => {
       const renderAPI = render(

@@ -1,13 +1,12 @@
 import { rest } from 'msw'
 import React from 'react'
-import { Animated, Share, Platform } from 'react-native'
+import { Animated } from 'react-native'
 import { ThemeProvider } from 'styled-components/native'
 import waitForExpect from 'wait-for-expect'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse, OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import {
   paginatedFavoritesResponseSnap,
   addFavoriteJsonResponseSnap,
@@ -97,43 +96,6 @@ describe('<OfferHeader />', () => {
     await waitForExpect(() => expect(getByTestId('offerHeaderName').style.opacity).toBe('1'))
   })
 
-  it.skip('should call Share with the right arguments on IOS', async () => {
-    Platform.OS = 'ios'
-    const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = await renderOfferHeader({ isLoggedIn: true })
-
-    fireEvent.click(getByTestId('icon-share'))
-    expect(share).toHaveBeenCalledTimes(1)
-    const fullWebappUrlWithParams = 'https://web.example.com/offre/116656'
-    const url = generateLongFirebaseDynamicLink(fullWebappUrlWithParams)
-    const message =
-      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
-    const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
-    expect(share).toHaveBeenCalledWith(
-      { message, title, url },
-      { dialogTitle: title, subject: title }
-    )
-  })
-
-  it.skip('should call Share with the right arguments on Android', async () => {
-    Platform.OS = 'android'
-    const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = await renderOfferHeader({ isLoggedIn: true })
-
-    fireEvent.click(getByTestId('icon-share'))
-    expect(share).toHaveBeenCalledTimes(1)
-    const fullWebappUrlWithParams = 'https://web.example.com/offre/116656'
-    const url = generateLongFirebaseDynamicLink(fullWebappUrlWithParams)
-    const messageWithUrl =
-      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
-      url
-    const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
-    expect(share).toHaveBeenCalledWith(
-      { message: messageWithUrl, title, url },
-      { dialogTitle: title, subject: title }
-    )
-  })
-
   it('should display SignIn modal when pressing Favorite - not logged in users', async () => {
     const { getByTestId, queryByText } = await renderOfferHeader({ isLoggedIn: false })
     fireEvent.click(getByTestId('icon-favorite'))
@@ -148,7 +110,7 @@ describe('<OfferHeader />', () => {
     expect(getByTestId('icon-favorite-filled')).toBeTruthy()
   })
 
-  it.skip('should add favorite when adding an offer in favorite - logged in users', async () => {
+  it('should add favorite when adding an offer in favorite - logged in users', async () => {
     const { getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
       id: addFavoriteJsonResponseSnap.offer.id,

@@ -21,14 +21,4 @@ describe('InputError Component', () => {
     const text = queryByText('message')
     expect(text).toBeFalsy()
   })
-  // FIXME: web integration
-  it.skip('should display the right top space [WEB INTEGRATION]', () => {
-    // const { getByTestId } = render(
-    //   <InputError visible={true} messageId="message" numberOfSpacesTop={1} />
-    // )
-    //
-    // const spacer = getByTestId('input-error-top-spacer')
-    //
-    // expect(spacer.props.numberOfSpaces).toEqual(1)
-  })
 })

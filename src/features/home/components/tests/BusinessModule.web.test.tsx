@@ -69,7 +69,7 @@ describe('BusinessModule component', () => {
   })
 
   // FIXME: Web Integration
-  it.skip('should open url with replaced Email when connected and adequate url and display snackbar waiting for email [Web Integration]', async () => {
+  it('should open url with replaced Email when connected and adequate url and display snackbar waiting for email [Web Integration]', async () => {
     mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
     const { getByTestId } = renderModule({ ...props, url: 'some_url_with_email={email}' })
 
