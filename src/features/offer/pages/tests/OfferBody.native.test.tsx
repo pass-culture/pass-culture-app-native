@@ -11,7 +11,6 @@ jest.mock('features/home/services/useAvailableCredit')
 jest.mock('features/offer/api/useOffer')
 jest.mock('features/offer/pages/useTrackOfferSeenDuration')
 jest.mock('libs/address/useFormatFullAddress')
-jest.mock('features/venue/api/useVenue')
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
