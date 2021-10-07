@@ -10,6 +10,7 @@ import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal'
 import { useReportedOffers } from 'features/offer/services/useReportedOffers'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
+import { useVenue } from 'features/venue/api/useVenue'
 import {
   formatFullAddress,
   formatFullAddressWithVenueName,
@@ -40,6 +41,12 @@ interface Props {
 
 export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { data: offer } = useOffer({ offerId })
+
+  // TODO (LucasBeneston) Add isPermanent to offer.venue API response
+  const venueId = offer?.venue.id || null
+  const { data: venueResponse } = useVenue(venueId)
+  const isPermanentVenue = venueResponse && venueResponse.isPermanent ? true : false
+
   const credit = useAvailableCredit()
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
@@ -60,7 +67,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { accessibility, venue } = offer
   const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId]
 
-  const showVenueBanner = true
+  const showVenueBanner = isPermanentVenue
   // TODO (Lucasbeneston): Remove testing and staging condition when display the link to venue button
   // If we show the venue banner, we don't want to repeat the name of the venue in the address
   const fullAddress =
