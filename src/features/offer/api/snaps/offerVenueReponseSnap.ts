@@ -9,4 +9,5 @@ export const offerVenueResponseSnap: OfferVenueResponse = {
   publicName: 'Le Petit Rintintin 1',
   postalCode: '75000',
   address: '1 boulevard Poissonnière',
+  isPermanent: true,
 }
