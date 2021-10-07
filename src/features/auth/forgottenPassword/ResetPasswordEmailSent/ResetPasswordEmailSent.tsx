@@ -18,7 +18,7 @@ import { padding, Spacer, Typo } from 'ui/theme'
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
-  const { goBack } = useGoBack('Login')
+  const { goBack } = useGoBack('Login', undefined)
   return (
     <BottomContentPage>
       <ModalHeader

@@ -38,7 +38,7 @@ if (__DEV__ && env.SIGNUP_RANDOM_PASSWORD) {
 export const SetPassword: FunctionComponent<Props> = ({ route }) => {
   const [password, setPassword] = useState(INITIAL_PASSWORD)
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack('SetEmail')
+  const { goBack } = useGoBack('SetEmail', undefined)
 
   const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked

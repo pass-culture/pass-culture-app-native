@@ -60,7 +60,7 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
     route.params.countryCode as CountryCode
   )
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack('SetPhoneNumber')
+  const { goBack } = useGoBack('SetPhoneNumber', undefined)
   const [sessionId, setSessionId] = useState<string | undefined>()
   const [codeInputState, setCodeInputState] = useState({
     code: '',

@@ -19,7 +19,7 @@ import { padding, Spacer } from 'ui/theme'
 
 export function NavigationIdCheckErrors(): JSX.Element {
   const { replace } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack('Navigation')
+  const { goBack } = useGoBack('Navigation', undefined)
   const [error, setError] = useState<IdCheckError | Error | null>(null)
   const { setContextValue } = useIdCheckContext()
   const { data: settings } = useAppSettings()

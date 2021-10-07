@@ -66,7 +66,6 @@ export type RootStackParamList = {
   LocationFilter: undefined
   LocationPicker: undefined
   NextBeneficiaryStep: undefined
-  Profile: undefined
   PersonalData: undefined
   RedirectWebToNative: undefined
   SearchCategories: undefined
@@ -122,7 +121,7 @@ export type ScreenNavigationProp<ScreenName extends ScreenNames> = StackNavigati
  *
  * const navigation = useNavigation<UseNavigationType>()
  */
-export type UseNavigationType = StackNavigationProp<AllNavParamList>
+export type UseNavigationType = StackNavigationProp<RootStackParamList>
 /**
  * Type helper to access route params
  *

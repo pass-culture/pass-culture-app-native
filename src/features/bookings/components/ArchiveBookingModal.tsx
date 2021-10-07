@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useArchiveBookingMutation } from 'features/bookings/api/mutations'
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -20,7 +21,8 @@ export interface ArchiveBookingModalProps {
 }
 
 export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
-  const { goBack } = useGoBack('Bookings')
+  const tabNavigateConfig = getTabNavigateConfig('Bookings')
+  const { goBack } = useGoBack(tabNavigateConfig.screen, tabNavigateConfig.params)
   const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
 
   const { mutate, isLoading } = useArchiveBookingMutation({
