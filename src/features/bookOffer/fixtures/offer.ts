@@ -94,6 +94,7 @@ export const mockOffer: OfferResponse = {
       latitude: 5.15839,
       longitude: -52.63741,
     },
+    isPermanent: true,
   },
   withdrawalDetails: null,
 }
@@ -166,6 +167,7 @@ export const mockDigitalOffer: OfferResponse = {
       latitude: 5.15839,
       longitude: -52.63741,
     },
+    isPermanent: true,
   },
   withdrawalDetails: null,
 }

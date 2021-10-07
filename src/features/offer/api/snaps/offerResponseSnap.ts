@@ -59,6 +59,7 @@ export const offerResponseSnap: OfferResponse = {
     postalCode: '75008',
     publicName: undefined,
     coordinates: { latitude: 20, longitude: 2 },
+    isPermanent: true,
   },
   withdrawalDetails: 'How to withdraw, https://test.com',
 }
