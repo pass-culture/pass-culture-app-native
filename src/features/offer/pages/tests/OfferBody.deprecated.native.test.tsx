@@ -7,7 +7,7 @@ import { act, cleanup, fireEvent } from 'tests/utils'
 import { offerId, renderOfferBodyPage } from './renderOfferPageTestUtil'
 
 jest.mock('api/api')
-
+jest.mock('features/venue/api/useVenue')
 jest.mock('features/offer/services/useReasonsForReporting', () => ({
   useReasonsForReporting: jest.fn(() => ({
     data: {
