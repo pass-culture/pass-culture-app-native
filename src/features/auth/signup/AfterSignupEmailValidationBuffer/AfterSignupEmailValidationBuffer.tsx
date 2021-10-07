@@ -68,7 +68,7 @@ export function AfterSignupEmailValidationBuffer() {
     showInfoSnackBar({
       message: t`Ce lien de validation n'est plus valide`,
     })
-    delayedNavigate(homeNavigateConfig.screen, homeNavigateConfig.params)
+    delayedNavigate(...homeNavigateConfig)
   }
 
   return <LoadingPage />

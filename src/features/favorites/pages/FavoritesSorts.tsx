@@ -4,7 +4,7 @@ import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
-import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
@@ -24,8 +24,7 @@ const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
 const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy, string]>
 
 export const FavoritesSorts: React.FC = () => {
-  const tabNavigateConfig = getTabNavigateConfig('Favorites')
-  const { goBack } = useGoBack(tabNavigateConfig.screen, tabNavigateConfig.params)
+  const { goBack } = useGoBack(...getTabNavConfig('Favorites'))
   const {
     position,
     positionError,

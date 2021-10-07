@@ -45,17 +45,17 @@ async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promis
       }
     } catch {
       // If we cannot get user's information, we just go to the homepage
-      return homeNavigateConfig.screen
+      return homeNavigateConfig[0]
     }
   }
 
   try {
     const hasSeenTutorials = !!(await storage.readObject('has_seen_tutorials'))
     if (hasSeenTutorials) {
-      return homeNavigateConfig.screen
+      return homeNavigateConfig[0]
     }
   } catch {
-    return homeNavigateConfig.screen
+    return homeNavigateConfig[0]
   }
 
   return 'FirstTutorial'

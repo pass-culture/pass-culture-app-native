@@ -16,7 +16,7 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   async function onPress() {
-    navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
+    navigate(...homeNavigateConfig)
 
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300

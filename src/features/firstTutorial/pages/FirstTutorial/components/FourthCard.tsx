@@ -23,7 +23,7 @@ export function FourthCard(props: AchievementCardKeyProps) {
   }, [isActiveCard])
 
   function onButtonPress() {
-    reset({ index: 0, routes: [{ name: homeNavigateConfig.screen }] })
+    reset({ index: 0, routes: [{ name: homeNavigateConfig[0] }] })
   }
 
   return (

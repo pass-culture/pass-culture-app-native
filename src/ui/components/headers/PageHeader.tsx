@@ -22,7 +22,7 @@ interface HeaderIconProps {
 }
 
 const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
-  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
+  const { goBack } = useGoBack(...homeNavigateConfig)
   return (
     <TouchableOpacity
       activeOpacity={ACTIVE_OPACITY}

@@ -45,7 +45,7 @@ export const Login: FunctionComponent = function () {
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
+  const { goBack } = useGoBack(...homeNavigateConfig)
 
   useFocusEffect(
     useCallback(() => {

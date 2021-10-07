@@ -58,7 +58,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
       const index = swiperRef.current.getActiveIndex()
       analytics.logHasSkippedTutorial(`${props.screenName}${index + 1}`)
     }
-    navigation.reset({ index: 0, routes: [{ name: homeNavigateConfig.screen }] })
+    navigation.reset({ index: 0, routes: [{ name: homeNavigateConfig[0] }] })
   }
 
   return (

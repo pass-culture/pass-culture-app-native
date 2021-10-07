@@ -38,7 +38,7 @@ export function NavigationIdCheckErrors(): JSX.Element {
   }
 
   function onAbandon() {
-    replace(homeNavigateConfig.screen, homeNavigateConfig.params)
+    replace(...homeNavigateConfig)
   }
 
   function syncUserAndProceedToNextScreen() {

@@ -24,7 +24,7 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
 export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route }) => {
-  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
+  const { goBack } = useGoBack(...homeNavigateConfig)
   const previousRoute = usePreviousRoute()
   /* Note : we have issues with previously successfully valided ReCAPTCHA not being able
   to redo the challenge, so we block the user from going back to ReCAPTCHA screen */

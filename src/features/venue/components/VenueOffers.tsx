@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
@@ -60,14 +60,12 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
 
   const seeAllOffers = useCallback(() => {
     analytics.logVenueSeeAllOffersClicked(venueId)
-    const tabNavigateConfig = getTabNavigateConfig('Search', params)
-    navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
+    navigate(...getTabNavConfig('Search', params))
   }, [params])
 
   const onPressSeeMore = useCallback(() => {
     analytics.logVenueSeeMoreClicked(venueId)
-    const tabNavigateConfig = getTabNavigateConfig('Search', params)
-    navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
+    navigate(...getTabNavConfig('Search', params))
   }, [params])
 
   const showSeeMore = nbHits > hits.length

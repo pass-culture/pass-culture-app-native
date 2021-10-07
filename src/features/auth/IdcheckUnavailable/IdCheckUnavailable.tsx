@@ -14,7 +14,7 @@ import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function IdCheckUnavailable() {
-  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
+  const { goBack } = useGoBack(...homeNavigateConfig)
   const { data: settings } = useAppSettings()
   return (
     <GenericInfoPage

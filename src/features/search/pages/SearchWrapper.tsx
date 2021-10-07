@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { memo, useContext, useEffect, useReducer } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
@@ -73,8 +73,7 @@ export const useCommit = (): { commit: () => void } => {
   return {
     commit() {
       dispatch({ type: 'SET_STATE', payload: stagedSearchState })
-      const { screen, params } = getTabNavigateConfig('Search', stagedSearchState)
-      navigate(screen, params)
+      navigate(...getTabNavConfig('Search', stagedSearchState))
     },
   }
 }

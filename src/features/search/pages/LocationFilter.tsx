@@ -6,7 +6,7 @@ import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationType } from 'features/search/enums'
@@ -19,12 +19,10 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 const DEBOUNCED_CALLBACK = 500
 
-const searchTabNavigateConfig = getTabNavigateConfig('Search')
-
 export const LocationFilter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const { goBack } = useGoBack(searchTabNavigateConfig.screen, searchTabNavigateConfig.params)
+  const { goBack } = useGoBack(...getTabNavConfig('Search'))
   const {
     position,
     positionError,

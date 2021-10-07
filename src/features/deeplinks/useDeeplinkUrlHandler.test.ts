@@ -38,6 +38,6 @@ describe('useDeeplinkUrlHandler', () => {
 
     handleDeeplinkUrl({ url })
 
-    expect(navigate).toHaveBeenCalledWith(homeNavigateConfig.screen, homeNavigateConfig.params)
+    expect(navigate).toHaveBeenCalledWith(...homeNavigateConfig)
   })
 })

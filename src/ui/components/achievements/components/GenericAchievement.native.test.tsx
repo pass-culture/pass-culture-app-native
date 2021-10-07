@@ -41,7 +41,7 @@ describe('<GenericAchievement />', () => {
     const skipAll = await getByText('Tout passer')
     fireEvent.press(skipAll)
     expect(reset).toHaveBeenCalledTimes(1)
-    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavigateConfig.screen }] })
+    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavigateConfig[0] }] })
     expect(analytics.logHasSkippedTutorial).toHaveBeenCalledWith(`${name}1`)
   })
 
