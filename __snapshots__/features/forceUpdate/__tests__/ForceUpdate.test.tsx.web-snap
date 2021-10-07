@@ -48,22 +48,30 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
   </div>
   <div
     className="css-view-1dbjc4n"
+    onScroll={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    onWheel={[Function]}
     style={
       Object {
+        "WebkitBoxDirection": "normal",
         "WebkitBoxFlex": 1,
-        "WebkitBoxPack": "center",
-        "WebkitFlexBasis": "0px",
+        "WebkitBoxOrient": "vertical",
+        "WebkitFlexDirection": "column",
         "WebkitFlexGrow": 1,
         "WebkitFlexShrink": 1,
-        "WebkitJustifyContent": "center",
-        "flexBasis": "0px",
+        "WebkitOverflowScrolling": "touch",
+        "WebkitTransform": "translateZ(0px)",
+        "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "center",
+        "msFlexDirection": "column",
         "msFlexNegative": 1,
-        "msFlexPack": "center",
         "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
+        "overflowX": "hidden",
+        "overflowY": "auto",
+        "transform": "translateZ(0px)",
       }
     }
   >
@@ -71,36 +79,37 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
+          "WebkitBoxDirection": "normal",
           "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
+          "WebkitBoxOrient": "vertical",
+          "WebkitBoxPack": "center",
+          "WebkitFlexDirection": "column",
           "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "flexBasis": "0px",
+          "WebkitJustifyContent": "center",
+          "alignItems": "center",
+          "flexDirection": "column",
           "flexGrow": 1,
-          "flexShrink": 1,
-          "msFlexNegative": 1,
+          "justifyContent": "center",
+          "maxWidth": "360px",
+          "msFlexAlign": "center",
+          "msFlexDirection": "column",
+          "msFlexPack": "center",
           "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
+          "paddingLeft": "16px",
+          "paddingRight": "16px",
         }
       }
     >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "72px",
+          }
+        }
+      />
       <div
         className="css-view-1dbjc4n"
       >
@@ -111,168 +120,61 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
           undefined-SVG-Mock
         </div>
       </div>
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "36px",
+          }
         }
-      }
-    />
-  </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxFlex": 1.5,
-        "WebkitBoxPack": "space-evenly",
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1.5,
-        "WebkitFlexShrink": 1,
-        "WebkitJustifyContent": "space-evenly",
-        "alignItems": "center",
-        "flexBasis": "0px",
-        "flexGrow": 1.5,
-        "flexShrink": 1,
-        "justifyContent": "space-evenly",
-        "msFlexAlign": "center",
-        "msFlexNegative": 1,
-        "msFlexPack": "space-evenly",
-        "msFlexPositive": 1.5,
-        "msFlexPreferredSize": "0px",
-        "paddingLeft": "16px",
-        "paddingRight": "16px",
-        "width": "100%",
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitBoxPack": "space-evenly",
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "WebkitJustifyContent": "space-evenly",
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "space-evenly",
-          "msFlexNegative": 1,
-          "msFlexPack": "space-evenly",
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-          "paddingLeft": "16px",
-          "paddingRight": "16px",
-        }
-      }
-    >
+      />
       <div
         className="css-text-901oao"
         dir="auto"
         style={
           Object {
+            "color": "rgba(255,255,255,1.00)",
+            "fontFamily": "Montserrat-MediumItalic",
+            "fontSize": "22px",
+            "lineHeight": "28px",
             "textAlign": "center",
           }
         }
       >
-        <span
-          className="css-text-901oao css-textHasAncestor-16my406"
-          style={
-            Object {
-              "color": "rgba(255,255,255,1.00)",
-              "fontFamily": "Montserrat-MediumItalic",
-              "fontSize": "22px",
-              "lineHeight": "28px",
-            }
-          }
-        >
-          Mise à jour de l'application
-        </span>
+        Mise à jour de l'application
       </div>
       <div
         className="css-view-1dbjc4n"
         style={
           Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
+            "height": "20px",
+          }
+        }
+      />
+      <div
+        className="css-text-901oao"
+        dir="auto"
+        style={
+          Object {
+            "color": "rgba(255,255,255,1.00)",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": "15px",
+            "lineHeight": "20px",
+            "textAlign": "center",
           }
         }
       >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "maxWidth": "352px",
-            }
-          }
-        >
-          <div
-            className="css-text-901oao"
-            dir="auto"
-            style={
-              Object {
-                "textAlign": "center",
-              }
-            }
-          >
-            <span
-              className="css-text-901oao css-textHasAncestor-16my406"
-              style={
-                Object {
-                  "color": "rgba(255,255,255,1.00)",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Le pass Culture de ton navigateur ne semble plus à jour !
+        Le pass Culture de ton navigateur ne semble plus à jour !
 Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible.
-            </span>
-          </div>
-        </div>
       </div>
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxFlex": 0.5,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 0.5,
-          "WebkitFlexShrink": 1,
-          "alignItems": "center",
-          "flexBasis": "0px",
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-          "msFlexAlign": "center",
-          "msFlexNegative": 1,
-          "msFlexPositive": 0.5,
-          "msFlexPreferredSize": "0px",
-          "width": "100%",
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "48px",
+          }
         }
-      }
-    >
+      />
       <div
         aria-label="Actualiser la page"
         className="css-view-1dbjc4n"
@@ -344,15 +246,15 @@ Pour des questions de performance et de sécurité merci d'actualiser la page po
           Actualiser la page
         </div>
       </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "8px",
+          }
+        }
+      />
     </div>
   </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "8px",
-      }
-    }
-  />
 </div>
 `;
