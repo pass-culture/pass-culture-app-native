@@ -5,6 +5,7 @@ import { mocked } from 'ts-jest/utils'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -118,7 +119,8 @@ describe('<CancelBookingModal />', () => {
     fireEvent.press(cancelButton)
 
     useMutationCallbacks.onError(response)
-    expect(navigate).toBeCalledWith('Bookings')
+    const tabNavigateConfig = getTabNavigateConfig('Bookings')
+    expect(navigate).toBeCalledWith(tabNavigateConfig.screen, tabNavigateConfig.params)
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: response.content.message,
       timeout: 5000,

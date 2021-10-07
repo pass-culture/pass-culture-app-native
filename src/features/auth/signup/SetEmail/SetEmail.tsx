@@ -8,6 +8,7 @@ import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { SetEmailModalContent, StyledInput } from 'features/auth/components/signupComponents'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { randomAlphaString } from 'libs/random'
@@ -39,7 +40,8 @@ export const SetEmail: FunctionComponent = () => {
 
   const { params } = useRoute<UseRouteType<'SetEmail'>>()
   const navigation = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack('Profile')
+  const tabNavigateConfig = getTabNavigateConfig('Profile')
+  const { goBack } = useGoBack(tabNavigateConfig.screen, tabNavigateConfig.params)
 
   const shouldDisableValidateButton = isValueEmpty(email)
 

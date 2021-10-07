@@ -9,6 +9,7 @@ import { Booking } from 'features/bookings/components/types'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -28,6 +29,8 @@ interface Props {
   booking: Booking
 }
 
+const bookingsTabNavigateConfig = getTabNavigateConfig('Bookings')
+
 export const CancelBookingModal: FunctionComponent<Props> = ({
   visible,
   dismissModal,
@@ -40,7 +43,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   function onSuccess() {
-    navigate('Bookings')
+    navigate(bookingsTabNavigateConfig.screen, bookingsTabNavigateConfig.params)
     showSuccessSnackBar({
       message: t`La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées`,
       timeout: SNACK_BAR_TIME_OUT,
@@ -48,7 +51,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   }
 
   function onError(error: unknown) {
-    navigate('Bookings')
+    navigate(bookingsTabNavigateConfig.screen, bookingsTabNavigateConfig.params)
     showErrorSnackBar({ message: extractApiErrorMessage(error), timeout: SNACK_BAR_TIME_OUT })
   }
 

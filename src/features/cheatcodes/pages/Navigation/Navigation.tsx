@@ -32,7 +32,7 @@ const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 
 export function Navigation(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack('CheatMenu')
+  const { goBack } = useGoBack('CheatMenu', undefined)
   const [renderedError, setRenderedError] = useState(undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)

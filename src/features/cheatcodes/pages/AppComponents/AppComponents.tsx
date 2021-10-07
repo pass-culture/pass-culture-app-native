@@ -153,7 +153,7 @@ export const AppComponents: FunctionComponent = () => {
     hideModal: hideBasicModal,
   } = useModal(false)
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack('CheatMenu')
+  const { goBack } = useGoBack('CheatMenu', undefined)
 
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [_partialDate, setPartialDate] = useState('')
