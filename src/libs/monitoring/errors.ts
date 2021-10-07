@@ -76,3 +76,13 @@ export class OfferNotFoundError extends ScreenError {
     super(message, Screen, callback ? async () => callback() : undefined)
   }
 }
+export class VenueNotFoundError extends ScreenError {
+  constructor(
+    venueId: number | undefined,
+    Screen: ComponentType<ScreenErrorProps>,
+    callback?: () => void
+  ) {
+    const message = venueId ? t`Venue ${venueId} could not be retrieved` : t`venueId is undefined`
+    super(message, Screen, callback ? async () => callback() : undefined)
+  }
+}

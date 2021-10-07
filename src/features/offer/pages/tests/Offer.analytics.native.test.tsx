@@ -6,6 +6,8 @@ import { superFlushWithAct, act, fireEvent, cleanup } from 'tests/utils'
 
 import { offerId, renderOfferPage, renderOfferBodyPage } from './renderOfferPageTestUtil'
 
+jest.mock('features/venue/api/useVenue')
+
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
     jest.useFakeTimers()

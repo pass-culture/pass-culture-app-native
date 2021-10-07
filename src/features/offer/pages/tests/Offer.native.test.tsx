@@ -2,6 +2,8 @@ import { act, fireEvent } from 'tests/utils'
 
 import { renderOfferPage } from './renderOfferPageTestUtil'
 
+jest.mock('features/venue/api/useVenue')
+
 describe('<Offer />', () => {
   // fake timers are needed to avoid warning (because we use useTrackOfferSeenDuration)
   // See https://github.com/facebook/jest/issues/6434
