@@ -1367,6 +1367,12 @@ export interface OfferVenueResponse {
     id: number;
     /**
      * 
+     * @type {boolean}
+     * @memberof OfferVenueResponse
+     */
+    isPermanent: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof OfferVenueResponse
      */
