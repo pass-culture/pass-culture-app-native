@@ -273,3 +273,107 @@ Array [
   />,
 ]
 `;
+
+exports[`WhereSection should render correctly 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -31,10 +31,96 @@
+            \\"height\\": 16,
+          },
+        ]
+      }
+    />,
++   <View
++     accessible={true}
++     focusable={true}
++     onClick={[Function onClick]}
++     onResponderGrant={[Function onResponderGrant]}
++     onResponderMove={[Function onResponderMove]}
++     onResponderRelease={[Function onResponderRelease]}
++     onResponderTerminate={[Function onResponderTerminate]}
++     onResponderTerminationRequest={[Function onResponderTerminationRequest]}
++     onStartShouldSetResponder={[Function onStartShouldSetResponder]}
++     style={
++       Object {
++         \\"alignItems\\": \\"center\\",
++         \\"flexDirection\\": \\"row\\",
++         \\"opacity\\": 1,
++       }
++     }
++     testID=\\"VenueBannerComponent\\"
++   >
++     <View
++       style={
++         Array [
++           Object {
++             \\"left\\": -10,
++           },
++         ]
++       }
++     >
++       <View
++         height={48}
++         testID=\\"BicolorLocationBuilding\\"
++         width={48}
++       >
++         <Text>
++           BicolorLocationBuilding-SVG-Mock
++         </Text>
++       </View>
++     </View>
++     <Text
++       numberOfLines={1}
++       style={
++         Array [
++           Object {
++             \\"color\\": \\"#151515\\",
++             \\"flexShrink\\": 1,
++             \\"fontFamily\\": \\"Montserrat-Bold\\",
++             \\"fontSize\\": 15,
++             \\"left\\": -10,
++             \\"lineHeight\\": 20,
++             \\"textTransform\\": \\"capitalize\\",
++           },
++         ]
++       }
++     >
++       Le Petit Rintintin 1
++     </Text>
++     <View
++       style={
++         Array [
++           Object {
++             \\"flexBasis\\": 0,
++             \\"flexGrow\\": 1,
++             \\"flexShrink\\": 1,
++           },
++         ]
++       }
++     />
++     <View
++       height={24}
++       width={24}
++     >
++       <Text>
++         undefined-SVG-Mock
++       </Text>
++     </View>
++   </View>,
++   <View
++     numberOfSpaces={4}
++     style={
++       Array [
++         Object {
++           \\"height\\": 16,
++         },
++       ]
++     }
++   />,
+    <Text
+      style={
+        Array [
+          Object {
+            \\"color\\": \\"#151515\\","
+`;
