@@ -42,7 +42,7 @@ interface Props {
 export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { data: offer } = useOffer({ offerId })
 
-  // TODO (LucasBeneston) Add isPermanent to offer.venue API response
+  // TODO (LucasBeneston) Add isPermanent to offer.venue API response and remove useVenue()
   const venueId = offer?.venue.id || null
   const { data: venueResponse } = useVenue(venueId)
   const isPermanentVenue = venueResponse && venueResponse.isPermanent ? true : false
