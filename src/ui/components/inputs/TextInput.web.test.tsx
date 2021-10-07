@@ -14,17 +14,6 @@ describe('<TextInput />', () => {
     expect(instance).toMatchSnapshot()
   })
 
-  // FIXME: Web integration
-  it.skip('should render correctly when focused [Web integration]', () => {
-    // const notFocusedInstance = render(NormalStateTextInput)
-    // const focusedInstance = render(NormalStateTextInput)
-    //
-    // const input = focusedInstance.getByPlaceholderText('placeholder')
-    // fireEvent(input, 'focus')
-    //
-    // expect(notFocusedInstance).toMatchDiffSnapshot(focusedInstance)
-  })
-
   it('should render ref correctly', () => {
     const myRef = React.createRef<RNTextInput>()
     render(<TextInput placeholder="placeholder" onChangeText={doNothingFn} ref={myRef} />)

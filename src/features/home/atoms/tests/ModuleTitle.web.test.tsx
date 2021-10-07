@@ -11,10 +11,4 @@ describe('ModuleTitle component', () => {
     const renderAPI = render(<ModuleTitle title="Pour bien commencer" />)
     expect(renderAPI).toMatchSnapshot()
   })
-
-  // FIXME: web integration
-  it.skip('should have an ellipsis [WEB FIXME]', () => {
-    // const { getByTestId } = render(<ModuleTitle title="Pour bien commencer" />)
-    // expect(getByTestId('moduleTitle').parent?.props.numberOfLines).toEqual(2)
-  })
 })
