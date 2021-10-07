@@ -23,7 +23,7 @@ const beforeNavigateToItinerary = jest.fn()
 
 describe('WhereSection', () => {
   it('should render correctly', () => {
-    const renderAPI = render(
+    const whereSection = render(
       <WhereSection
         venue={venue}
         locationCoordinates={locationCoordinates}
@@ -32,7 +32,17 @@ describe('WhereSection', () => {
         showVenueBanner
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+    expect(whereSection).toMatchSnapshot()
+
+    const whereSectionWithoutVenueBanner = render(
+      <WhereSection
+        venue={venue}
+        locationCoordinates={locationCoordinates}
+        address={address}
+        beforeNavigateToItinerary={beforeNavigateToItinerary}
+      />
+    )
+    expect(whereSectionWithoutVenueBanner).toMatchDiffSnapshot(whereSection)
   })
 
   it('should log ConsultLocationItinerary analytics when clicking on "voir l\'itinéraire"', () => {

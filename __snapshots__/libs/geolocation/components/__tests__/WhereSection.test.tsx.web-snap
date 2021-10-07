@@ -306,3 +306,129 @@ Array [
   />,
 ]
 `;
+
+exports[`WhereSection should render correctly 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -28,10 +28,118 @@
+          \\"height\\": \\"16px\\",
+        }
+      }
+    />,
+    <div
++     className=\\"css-view-1dbjc4n\\"
++     data-testid=\\"VenueBannerComponent\\"
++     onClick={[Function onClick]}
++     onContextMenu={[Function onContextMenu]}
++     onKeyDown={[Function onKeyDown]}
++     style={
++       Object {
++         \\"MozTransitionProperty\\": \\"opacity\\",
++         \\"MozUserSelect\\": \\"none\\",
++         \\"WebkitAlignItems\\": \\"center\\",
++         \\"WebkitBoxAlign\\": \\"center\\",
++         \\"WebkitBoxDirection\\": \\"normal\\",
++         \\"WebkitBoxOrient\\": \\"horizontal\\",
++         \\"WebkitFlexDirection\\": \\"row\\",
++         \\"WebkitTransitionDuration\\": \\"0s\\",
++         \\"WebkitTransitionProperty\\": \\"opacity\\",
++         \\"WebkitUserSelect\\": \\"none\\",
++         \\"alignItems\\": \\"center\\",
++         \\"cursor\\": \\"pointer\\",
++         \\"flexDirection\\": \\"row\\",
++         \\"msFlexAlign\\": \\"center\\",
++         \\"msFlexDirection\\": \\"row\\",
++         \\"msTouchAction\\": \\"manipulation\\",
++         \\"msUserSelect\\": \\"none\\",
++         \\"touchAction\\": \\"manipulation\\",
++         \\"transitionDuration\\": \\"0s\\",
++         \\"transitionProperty\\": \\"opacity\\",
++         \\"userSelect\\": \\"none\\",
++       }
++     }
++     tabIndex=\\"0\\"
++   >
++     <div
++       className=\\"css-view-1dbjc4n\\"
++       style={
++         Object {
++           \\"left\\": \\"-10px\\",
++         }
++       }
++     >
++       <div
++         className=\\"css-view-1dbjc4n\\"
++         data-testid=\\"BicolorLocationBuilding\\"
++       >
++         <div
++           className=\\"css-text-901oao\\"
++           dir=\\"auto\\"
++         >
++           BicolorLocationBuilding-SVG-Mock
++         </div>
++       </div>
++     </div>
++     <div
++       className=\\"css-text-901oao css-textOneLine-vcwn7f\\"
++       dir=\\"auto\\"
++       style={
++         Object {
++           \\"WebkitFlexShrink\\": 1,
++           \\"color\\": \\"rgba(21,21,21,1.00)\\",
++           \\"flexShrink\\": 1,
++           \\"fontFamily\\": \\"Montserrat-Bold\\",
++           \\"fontSize\\": \\"15px\\",
++           \\"left\\": \\"-10px\\",
++           \\"lineHeight\\": \\"20px\\",
++           \\"msFlexNegative\\": 1,
++           \\"textTransform\\": \\"capitalize\\",
++         }
++       }
++     >
++       Le Petit Rintintin 1
++     </div>
++     <div
++       className=\\"css-view-1dbjc4n\\"
++       style={
++         Object {
++           \\"WebkitBoxFlex\\": 1,
++           \\"WebkitFlexBasis\\": \\"0px\\",
++           \\"WebkitFlexGrow\\": 1,
++           \\"WebkitFlexShrink\\": 1,
++           \\"flexBasis\\": \\"0px\\",
++           \\"flexGrow\\": 1,
++           \\"flexShrink\\": 1,
++           \\"msFlexNegative\\": 1,
++           \\"msFlexPositive\\": 1,
++           \\"msFlexPreferredSize\\": \\"0px\\",
++         }
++       }
++     />
++     <div
++       className=\\"css-view-1dbjc4n\\"
++     >
++       <div
++         className=\\"css-text-901oao\\"
++         dir=\\"auto\\"
++       >
++         undefined-SVG-Mock
++       </div>
++     </div>
++   </div>,
++   <div
++     className=\\"css-view-1dbjc4n\\"
++     style={
++       Object {
++         \\"height\\": \\"16px\\",
++       }
++     }
++   />,
++   <div
+      className=\\"css-text-901oao\\"
+      dir=\\"auto\\"
+      style={
+        Object {
+          \\"color\\": \\"rgba(21,21,21,1.00)\\","
+`;
