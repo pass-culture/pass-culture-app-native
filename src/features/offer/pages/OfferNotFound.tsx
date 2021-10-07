@@ -27,7 +27,6 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
     <React.Fragment>
       <Helmet>
         <title>{t`Offre introuvable | Pass Culture`}</title>
-        <meta name="robots" content="noindex" />
       </Helmet>
       <GenericInfoPage title={t`Offre introuvable !`} icon={NoOffer} iconSize={getSpacing(40)}>
         <StyledBody>{t`Il est possible que cette offre soit désactivée ou n'existe pas.`}</StyledBody>

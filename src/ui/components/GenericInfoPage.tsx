@@ -3,12 +3,14 @@ import React, { useMemo, FunctionComponent } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
 import { Background } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
+  noIndex?: boolean
   flex?: boolean
   animation?: AnimationObject
   animationSize?: number
@@ -20,6 +22,7 @@ type Props = {
 
 export const GenericInfoPage: FunctionComponent<Props> = (props) => {
   const {
+    noIndex = true,
     animation,
     animationSize = getSpacing(45),
     icon: Icon,
@@ -32,6 +35,11 @@ export const GenericInfoPage: FunctionComponent<Props> = (props) => {
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   return (
     <Wrapper>
+      {!!noIndex && (
+        <Helmet>
+          <meta name="robots" content="noindex" />
+        </Helmet>
+      )}
       <Background />
       <ScrollView bounces={false} contentContainerStyle={scrollViewContentContainerStyle}>
         <Spacer.Column numberOfSpaces={spacingMatrix.top} />

@@ -36,66 +36,48 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       </Text>
     </View>
   </View>
-  <View
-    customHeight={16}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    height={85}
-    width={132}
-  >
-    <Text>
-      undefined-SVG-Mock
-    </Text>
-  </View>
-  <View
-    numberOfSpaces={6}
-    style={
-      Array [
-        Object {
-          "height": 24,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginHorizontal": 24,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    <Text
-      style={
-        Array [
-          Object {
-            "textAlign": "center",
-          },
-        ]
+  <RCTScrollView
+    bounces={false}
+    contentContainerStyle={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "justifyContent": "center",
+        "maxWidth": 360,
+        "paddingHorizontal": 16,
       }
-    >
+    }
+  >
+    <View>
+      <View
+        numberOfSpaces={18}
+        style={
+          Array [
+            Object {
+              "height": 72,
+            },
+          ]
+        }
+      />
+      <View
+        height={96}
+        width={149}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={9}
+        style={
+          Array [
+            Object {
+              "height": 36,
+            },
+          ]
+        }
+      />
       <Text
         color="#ffffff"
         fontSize={24}
@@ -107,31 +89,24 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               "fontSize": 24,
               "lineHeight": 28,
             },
+            Object {
+              "textAlign": "center",
+            },
           ]
         }
       >
         Es-tu sûr de vouloir supprimer ton compte ?
       </Text>
-    </Text>
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
       <Text
         color="#ffffff"
         style={
@@ -141,47 +116,23 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
               "lineHeight": 20,
+              "textAlign": "center",
             },
           ]
         }
       >
         Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies.
       </Text>
-    </Text>
-  </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "marginHorizontal": 24,
-            "paddingBottom": 24,
-          },
-        ]
-      }
-    >
+      <View
+        numberOfSpaces={15}
+        style={
+          Array [
+            Object {
+              "height": 60,
+            },
+          ]
+        }
+      />
       <View
         accessibilityLabel="Supprimer mon compte"
         accessible={true}
@@ -234,11 +185,11 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         </Text>
       </View>
       <View
-        numberOfSpaces={2}
+        numberOfSpaces={4}
         style={
           Array [
             Object {
-              "height": 8,
+              "height": 16,
             },
           ]
         }
@@ -261,7 +212,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
             "borderRadius": 24,
             "borderWidth": 0,
             "flexDirection": "row",
-            "height": 48,
+            "height": 40,
             "justifyContent": "center",
             "maxWidth": 500,
             "opacity": 1,
@@ -294,17 +245,17 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
           Abandonner
         </Text>
       </View>
+      <View
+        customHeight={8}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
     </View>
-  </View>
-  <View
-    customHeight={8}
-    style={
-      Array [
-        Object {
-          "height": 8,
-        },
-      ]
-    }
-  />
+  </RCTScrollView>
 </View>
 `;

@@ -36,40 +36,30 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       </Text>
     </View>
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
-        },
-      ]
+  <RCTScrollView
+    bounces={false}
+    contentContainerStyle={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "justifyContent": "center",
+        "maxWidth": 360,
+        "paddingHorizontal": 16,
+      }
     }
   >
-    <View
-      style={
-        Array [
-          Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    >
+    <View>
+      <View
+        numberOfSpaces={18}
+        style={
+          Array [
+            Object {
+              "height": 72,
+            },
+          ]
+        }
+      />
       <View
         height={167}
         width={167}
@@ -78,133 +68,72 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
           undefined-SVG-Mock
         </Text>
       </View>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-  </View>
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1.5,
-          "flexShrink": 1,
-          "justifyContent": "space-evenly",
-          "paddingHorizontal": 16,
-          "width": "100%",
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "space-evenly",
-            "paddingHorizontal": 16,
-          },
-        ]
-      }
-    >
-      <Text
+      <View
+        numberOfSpaces={9}
         style={
           Array [
+            Object {
+              "height": 36,
+            },
+          ]
+        }
+      />
+      <Text
+        color="#ffffff"
+        fontSize={24}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-MediumItalic",
+              "fontSize": 24,
+              "lineHeight": 28,
+            },
             Object {
               "textAlign": "center",
             },
           ]
         }
       >
-        <Text
-          color="#ffffff"
-          fontSize={24}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-MediumItalic",
-                "fontSize": 24,
-                "lineHeight": 28,
-              },
-            ]
-          }
-        >
-          Mise à jour de l'application
-        </Text>
+        Mise à jour de l'application
       </Text>
       <View
+        numberOfSpaces={5}
         style={
           Array [
             Object {
-              "flexDirection": "row",
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <Text
+        color="#ffffff"
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
             },
           ]
         }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "maxWidth": 352,
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              Array [
-                Object {
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            <Text
-              color="#ffffff"
-              style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Le pass Culture ne semble plus à jour sur ton téléphone !
+        Le pass Culture ne semble plus à jour sur ton téléphone !
 Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
-            </Text>
-          </Text>
-        </View>
-      </View>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-            "width": "100%",
-          },
-        ]
-      }
-    >
+      </Text>
+      <View
+        numberOfSpaces={12}
+        style={
+          Array [
+            Object {
+              "height": 48,
+            },
+          ]
+        }
+      />
       <View
         accessibilityLabel="Télécharger la dernière version"
         accessible={true}
@@ -256,17 +185,17 @@ Pour des questions de performance et de sécurité merci de télécharger la der
           Télécharger la dernière version
         </Text>
       </View>
+      <View
+        customHeight={8}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
     </View>
-  </View>
-  <View
-    customHeight={8}
-    style={
-      Array [
-        Object {
-          "height": 8,
-        },
-      ]
-    }
-  />
+  </RCTScrollView>
 </View>
 `;
