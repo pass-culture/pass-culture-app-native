@@ -12,7 +12,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const CheatMenu: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
+  const { goBack } = useGoBack(...homeNavigateConfig)
   return (
     <Container>
       <Spacer.TopScreen />

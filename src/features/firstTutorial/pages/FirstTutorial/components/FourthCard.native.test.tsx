@@ -49,6 +49,6 @@ describe('FourthCard', () => {
     fireEvent.press(getByText('Découvrir'))
 
     expect(reset).toBeCalledTimes(1)
-    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavigateConfig.screen }] })
+    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavigateConfig[0] }] })
   })
 })

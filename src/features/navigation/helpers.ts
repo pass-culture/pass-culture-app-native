@@ -4,23 +4,17 @@ import { Alert, Linking } from 'react-native'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
-import { TabNavigateConfig } from 'features/navigation/TabBar/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { MonitoringError } from 'libs/monitoring'
 
 import { navigationRef } from './navigationRef'
 
-export const homeNavigateConfig: TabNavigateConfig<'Home'> = {
-  screen: 'TabNavigator',
-  params: {
-    screen: 'Home',
-    params: undefined,
-  },
-}
+export const homeNavigateConfig = getTabNavConfig('Home')
 
 export function navigateToHome() {
-  navigationRef.current?.navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
+  navigationRef.current?.navigate(...homeNavigateConfig)
 }
 
 export function navigateToBooking(bookingId: number) {

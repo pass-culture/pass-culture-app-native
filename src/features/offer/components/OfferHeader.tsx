@@ -13,7 +13,7 @@ import {
   useRemoveFavorite,
 } from 'features/favorites/pages/useFavorites'
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { isSharingSupported } from 'features/offer/services/isSharingSupported'
@@ -33,8 +33,6 @@ interface Props {
   offerId: number
 }
 
-const searchTabNavigateConfig = getTabNavigateConfig('Search')
-
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
@@ -46,7 +44,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
     showModal: showSignInModal,
     hideModal: hideSignInModal,
   } = useModal(false)
-  const { goBack } = useGoBack(searchTabNavigateConfig.screen, searchTabNavigateConfig.params)
+  const { goBack } = useGoBack(...getTabNavConfig('Search'))
   const shareOffer = useShareOffer(offerId)
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const favorite = useFavorite({ offerId })

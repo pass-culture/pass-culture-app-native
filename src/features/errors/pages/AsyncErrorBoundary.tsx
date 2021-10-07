@@ -96,7 +96,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
 }
 
 export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
-  const { goBack, canGoBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
+  const { goBack, canGoBack } = useGoBack(...homeNavigateConfig)
   const { top } = useCustomSafeInsets()
 
   return (

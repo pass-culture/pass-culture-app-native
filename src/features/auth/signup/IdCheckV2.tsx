@@ -40,7 +40,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
   }
 
   function onAbandon() {
-    navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
+    navigate(...homeNavigateConfig)
   }
 
   function syncUserAndProceedToNextScreen() {

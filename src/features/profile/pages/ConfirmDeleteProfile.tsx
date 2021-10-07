@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { useAccountSuspend } from 'features/auth/api'
 import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -16,8 +16,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function ConfirmDeleteProfile() {
   const { navigate } = useNavigation<UseNavigationType>()
-  const tabNavigateConfig = getTabNavigateConfig('Profile')
-  const { goBack } = useGoBack(tabNavigateConfig.screen, tabNavigateConfig.params)
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
   const signOut = useLogoutRoutine()
   const { showErrorSnackBar } = useSnackBarContext()

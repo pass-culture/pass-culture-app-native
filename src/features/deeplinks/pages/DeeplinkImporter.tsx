@@ -20,7 +20,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export const DeeplinkImporter: FunctionComponent = () => {
   const [url, setUrl] = useState('')
   const handleDeeplinkUrl = useDeeplinkUrlHandler()
-  const { goBack } = useGoBack(homeNavigateConfig.screen, homeNavigateConfig.params)
+  const { goBack } = useGoBack(...homeNavigateConfig)
 
   function resolveLink() {
     if (url.length > 0) {

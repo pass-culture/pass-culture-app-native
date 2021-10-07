@@ -3,7 +3,7 @@ import React from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
@@ -17,8 +17,7 @@ interface Props {
  */
 export const BookingDetailsHeader: React.FC<Props> = (props) => {
   const { headerTransition, title } = props
-  const tabNavigateConfig = getTabNavigateConfig('Bookings')
-  const { goBack } = useGoBack(tabNavigateConfig.screen, tabNavigateConfig.params)
+  const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
   const { animationState, backgroundColor } = getAnimationState(headerTransition)
 

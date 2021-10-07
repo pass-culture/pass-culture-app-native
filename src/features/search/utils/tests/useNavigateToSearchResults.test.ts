@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { analytics } from 'libs/analytics'
@@ -30,7 +30,6 @@ describe('useNavigateToSearchResults', () => {
   it('should navigate to Search', () => {
     const { result } = renderHook(() => useNavigateToSearchResults({ from: 'bookings' }))
     result.current()
-    const tabNavigateConfig = getTabNavigateConfig('Search', { showResults: true })
-    expect(navigate).toHaveBeenNthCalledWith(1, tabNavigateConfig.screen, tabNavigateConfig.params)
+    expect(navigate).toHaveBeenNthCalledWith(1, ...getTabNavConfig('Search', { showResults: true }))
   })
 })

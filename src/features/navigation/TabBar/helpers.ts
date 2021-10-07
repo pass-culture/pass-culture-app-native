@@ -1,7 +1,7 @@
 import { UserProfileResponse } from 'api/gen'
 import { IAuthContext } from 'features/auth/AuthContext'
 
-import { TabRoute, TabRouteName, TabParamList, TabNavigateConfig } from './types'
+import { TabRoute, TabRouteName, TabParamList } from './types'
 
 export const shouldDisplayTabIconPredicate = (
   authContext: IAuthContext,
@@ -13,9 +13,9 @@ export const shouldDisplayTabIconPredicate = (
   return true
 }
 
-export function getTabNavigateConfig<Screen extends TabRouteName>(
+export function getTabNavConfig<Screen extends TabRouteName>(
   screen: Screen,
   params?: TabParamList[Screen]
-): TabNavigateConfig<Screen> {
-  return { screen: 'TabNavigator', params: { screen, params } }
+): ['TabNavigator', { screen: Screen; params: TabParamList[Screen] }] {
+  return ['TabNavigator', { screen, params }]
 }

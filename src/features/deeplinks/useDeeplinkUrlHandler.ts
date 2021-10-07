@@ -19,7 +19,7 @@ export function useOnDeeplinkError() {
       message: errorMessage ? errorMessage : DEFAULT_ERROR_MESSAGE,
       timeout: SNACK_BAR_TIME_OUT,
     })
-    navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
+    navigate(...homeNavigateConfig)
   }
 }
 

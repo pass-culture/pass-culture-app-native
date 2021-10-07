@@ -9,7 +9,7 @@ export const CheatCodes: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   useFocusEffect(
     useCallback(() => {
-      navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
+      navigate(...homeNavigateConfig)
     }, [])
   )
   return <LoadingPage />

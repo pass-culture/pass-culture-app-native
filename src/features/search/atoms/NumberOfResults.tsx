@@ -4,7 +4,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { LocationFilter } from 'features/search/types'
@@ -30,8 +30,7 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
     const locationFilter: LocationFilter = position
       ? { locationType: LocationType.EVERYWHERE }
       : { locationType: LocationType.AROUND_ME, aroundRadius: null }
-    const tabNavigateConfig = getTabNavigateConfig('Search', { locationFilter })
-    navigate(tabNavigateConfig.screen, tabNavigateConfig.params)
+    navigate(...getTabNavConfig('Search', { locationFilter }))
   }, [!position])
 
   const numberOfResults = plural(nbHits, {
