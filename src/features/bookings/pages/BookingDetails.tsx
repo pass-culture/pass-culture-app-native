@@ -138,9 +138,7 @@ export function BookingDetails() {
           <Spacer.Column numberOfSpaces={4} />
           <OfferRules>{offerRules}</OfferRules>
           <Spacer.Column numberOfSpaces={8} />
-          {!!appSettings && (
-            <BookingPropertiesSection booking={booking} appSettings={appSettings} />
-          )}
+          <BookingPropertiesSection booking={booking} />
           {!!shouldDisplayItineraryButton && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
