@@ -131,7 +131,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     if (state.isTooYoung && !state.isTooOld) {
       if (!wereBirthdayAnalyticsTriggered && state.date) {
         const age = dateDiffInFullYears(state.date, now)
-        logBirthdayAnalytics(age)
+        analytics.logSignUpTooYoung(age)
         setWereBirthdayAnalyticsTriggered(true)
       }
       return (
@@ -217,14 +217,6 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       />
     </React.Fragment>
   )
-}
-
-async function logBirthdayAnalytics(age: number) {
-  if (age <= 13) {
-    analytics.logSignUpLessThanOrEqualTo13()
-  } else if (age === 14 || age === 15) {
-    analytics.logSignUpBetween14And15Included()
-  }
 }
 
 const InnerContainer = styled.View({
