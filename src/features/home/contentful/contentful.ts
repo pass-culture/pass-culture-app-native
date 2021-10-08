@@ -221,6 +221,8 @@ export interface ExclusivityFields {
   alt: string
   image: Image
   offerId: string
+  isGeolocated?: boolean
+  aroundRadius?: number
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields
