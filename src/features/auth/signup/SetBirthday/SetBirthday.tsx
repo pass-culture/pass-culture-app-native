@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { SIGNUP_NUMBER_OF_STEPS, useDepositAmount } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { useAppSettings } from 'features/auth/settings'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
@@ -42,7 +43,7 @@ if (__DEV__ && env.SIGNUP_DATE) {
   INITIAL_YEAR = `${INITIAL_DATE.getFullYear()}`
 }
 
-const YOUNGEST_AGE = 16
+const DEFAULT_YOUNGEST_AGE = 15
 const MIN_DATE = new Date('1900-01-01T00:00:00Z')
 
 interface State {
@@ -62,11 +63,12 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     isTooYoung: false,
     isTooOld: false,
   })
-
+  const { data: settings } = useAppSettings()
   const deposit = useDepositAmount()
 
   const now = new Date()
-  const maxYear = now.getFullYear() - YOUNGEST_AGE
+  const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
+  const maxYear = now.getFullYear() - youngestAge
   const maxDate = new Date(maxYear, now.getMonth(), now.getDate())
 
   const { email, isNewsletterChecked, password } = route.params
@@ -135,7 +137,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       return (
         <InputError
           visible
-          messageId={t`Tu dois avoir 16 ans pour t'inscrire`}
+          messageId={t`Tu dois avoir` + '\u00a0' + youngestAge + '\u00a0' + t`ans pour t'inscrire`}
           numberOfSpacesTop={5}
         />
       )
