@@ -41,6 +41,10 @@ describe('<Login/>', () => {
 
   it('should redirect to home WHEN signin is successful', async () => {
     const renderAPI = renderLogin()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
     await act(flushAllPromises)
@@ -59,6 +63,10 @@ describe('<Login/>', () => {
       isBeneficiary: false,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
     await act(flushAllPromises)
@@ -77,6 +85,10 @@ describe('<Login/>', () => {
       isBeneficiary: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
     await act(flushAllPromises)
@@ -95,6 +107,10 @@ describe('<Login/>', () => {
       isBeneficiary: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
     await act(flushAllPromises)
@@ -111,6 +127,10 @@ describe('<Login/>', () => {
       isBeneficiary: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
     await act(flushAllPromises)
@@ -123,13 +143,17 @@ describe('<Login/>', () => {
   it('should redirect to SignupConfirmationEmailSent page WHEN signin has failed with EMAIL_NOT_VALIDATED code', async () => {
     simulateSigninEmailNotValidated()
     const renderAPI = renderLogin()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
     await act(flushAllPromises)
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
-        email: '',
+        email: 'email@gmail.com',
       })
     })
   })
@@ -138,6 +162,10 @@ describe('<Login/>', () => {
     simulateSigninWrongCredentials()
     const renderAPI = renderLogin()
     const notErrorSnapshot = renderAPI.toJSON()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
     await superFlushWithAct()
@@ -154,6 +182,10 @@ describe('<Login/>', () => {
     simulateSigninNetworkFailure()
     const renderAPI = renderLogin()
     const notErrorSnapshot = renderAPI.toJSON()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
     await act(flushAllPromises)
@@ -172,6 +204,10 @@ describe('<Login/>', () => {
     simulateSigninRateLimitExceeded()
     const renderAPI = renderLogin()
     const rateExceededSnapshot = renderAPI.toJSON()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
     await act(flushAllPromises)

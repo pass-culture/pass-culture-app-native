@@ -101,8 +101,10 @@ export const Login: FunctionComponent = function () {
   }
 
   async function onSubmit() {
-    Keyboard.dismiss()
-    handleSignin()
+    if (!shouldDisableLoginButton) {
+      Keyboard.dismiss()
+      handleSignin()
+    }
   }
 
   function onClose() {
@@ -163,6 +165,7 @@ export const Login: FunctionComponent = function () {
           placeholder={t`Ton mot de passe`}
           isError={!!errorMessage}
           textContentType="password"
+          onSubmitEditing={onSubmit}
           {...accessibilityAndTestId('Entrée pour le mot de passe')}
         />
       </StyledInput>
