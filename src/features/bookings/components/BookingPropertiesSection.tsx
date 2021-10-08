@@ -3,7 +3,7 @@ import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SettingsResponse } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import { Booking } from 'features/bookings/components/types'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { useUserProfileInfo } from 'features/home/api'
@@ -17,19 +17,18 @@ import { Spacer, Typo } from 'ui/theme'
 
 type BookingPropertiesSectionProps = {
   booking: Booking
-  appSettings: SettingsResponse
   style?: StyleProp<ViewStyle>
 }
 
 export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> = ({
   booking,
-  appSettings,
   style,
 }) => {
   const { data: user } = useUserProfileInfo()
+  const { data: settings } = useAppSettings()
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
-  const propertiesLabels = getBookingLabels(booking, properties, appSettings)
+  const propertiesLabels = getBookingLabels(booking, properties, settings ?? null)
 
   const renderRowTitle = (title: string) => <Title>{title}</Title>
 

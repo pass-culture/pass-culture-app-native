@@ -17,9 +17,7 @@ const mockUserId = 30
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { id: mockUserId } })),
 }))
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({ data: { useAppSearch: true } })),
-}))
+jest.mock('features/auth/settings')
 
 const objectIds = mockedAlgoliaResponse.hits.map(({ objectID }) => objectID)
 

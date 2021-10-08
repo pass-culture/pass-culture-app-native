@@ -8,13 +8,7 @@ import { bookingsSnap } from '../api/bookingsSnap'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 import { Booking } from './types'
 
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: {
-      autoActivateDigitalBookings: false,
-    },
-  })),
-}))
+jest.mock('features/auth/settings')
 
 describe('OnGoingBookingItem', () => {
   const booking: Booking = bookingsSnap.ongoing_bookings[0]

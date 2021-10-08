@@ -11,6 +11,8 @@ jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
 }))
 
+jest.mock('features/auth/settings')
+
 describe('<BookingPropertiesSection />', () => {
   const booking = bookingsSnap.ongoing_bookings[0]
 
@@ -52,29 +54,7 @@ describe('<BookingPropertiesSection />', () => {
 async function renderBookingProperties(booking: Booking) {
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(
-      <BookingPropertiesSection
-        booking={booking}
-        appSettings={{
-          allowIdCheckRegistration: false,
-          autoActivateDigitalBookings: false,
-          depositAmount: 30000,
-          enableNativeIdCheckVersion: false,
-          enableNativeIdCheckVerboseDebugging: false,
-          enableIdCheckRetention: false,
-          enablePhoneValidation: false,
-          isRecaptchaEnabled: false,
-          wholeFranceOpening: true,
-          objectStorageUrl: 'http://localhost',
-          displayDmsRedirection: true,
-          idCheckAddressAutocompletion: false,
-          useAppSearch: true,
-          isWebappV2Enabled: false,
-          enableNativeEacIndividual: false,
-          accountCreationMinimumAge: 15,
-        }}
-      />
-    )
+    reactQueryProviderHOC(<BookingPropertiesSection booking={booking} />)
   )
   await superFlushWithAct()
   return wrapper
