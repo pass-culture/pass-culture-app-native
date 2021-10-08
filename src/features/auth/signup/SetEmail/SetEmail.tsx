@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { Platform, TextInput as RNTextInput } from 'react-native'
+import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
@@ -102,7 +102,7 @@ export const SetEmail: FunctionComponent = () => {
               autoFocus={true}
               keyboardType="email-address"
               onChangeText={onChangeEmail}
-              onSubmitEditing={Platform.OS === 'web' ? validateEmail : undefined}
+              onSubmitEditing={validateEmail}
               placeholder={t`tonadresse@email.com`}
               ref={emailInput}
               textContentType="emailAddress"
