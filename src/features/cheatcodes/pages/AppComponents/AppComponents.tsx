@@ -824,6 +824,7 @@ export const AppComponents: FunctionComponent = () => {
           <IdCheckProcessingBadge
             icon={PopOverIcon}
             message={`Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu'on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`}
+            lastUpdated={`2021-10-25T13:24Z`}
           />
         </View>
         <Text>Affichage icône PopOverIcon</Text>
