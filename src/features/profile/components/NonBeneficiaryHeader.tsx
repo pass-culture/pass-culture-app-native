@@ -19,6 +19,7 @@ interface NonBeneficiaryHeaderProps {
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
   nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null
+  lastUpdated?: string
 }
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
@@ -73,7 +74,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     } else {
       body = (
         <BodyContainer testID="body-container-18-idcheck-completed">
-          <IdCheckProcessingBadge icon={Clock} />
+          <IdCheckProcessingBadge icon={Clock} lastUpdated={props.lastUpdated} />
         </BodyContainer>
       )
     }
