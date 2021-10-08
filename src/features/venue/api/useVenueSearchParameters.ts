@@ -1,12 +1,14 @@
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
+import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useGeolocation } from 'libs/geolocation'
 
 export const useVenueSearchParameters = (venueId: number): SearchState => {
   const { position } = useGeolocation()
   const { data: venue } = useVenue(venueId)
+  const maxPrice = useMaxPrice()
 
   const defaultLocationFilter = position
     ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
@@ -34,7 +36,7 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
     offerIsFree: false,
     offerIsNew: false,
     offerTypes: { isDigital: false, isEvent: false, isThing: false },
-    priceRange: [0, 300],
+    priceRange: [0, maxPrice],
     tags: [],
     date: null,
     timeRange: null,
