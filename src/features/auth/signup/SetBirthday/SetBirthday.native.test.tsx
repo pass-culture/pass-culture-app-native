@@ -144,60 +144,18 @@ describe('SetBirthday Page', () => {
       expect(analytics.logCancelSignup).toHaveBeenCalledWith('Birthday')
     })
 
-    it('should not log any birthday analytics if the user is 15 years old or more', () => {
+    it('should not log SignUpTooYoung if the user is 15 years old or more', () => {
       const renderAPI = renderSetBirthday()
 
       changeDate(renderAPI, '01', '12', '2005')
-      expect(analytics.logSignUpBetween14And15Included).not.toBeCalled()
-      expect(analytics.logSignUpLessThanOrEqualTo13).not.toBeCalled()
-
-      changeDate(renderAPI, '01', '12', '2000')
-      expect(analytics.logSignUpBetween14And15Included).not.toBeCalled()
-      expect(analytics.logSignUpLessThanOrEqualTo13).not.toBeCalled()
+      expect(analytics.logSignUpTooYoung).not.toBeCalled()
     })
 
-    it('should log between 14 and 15 birthday analytics if the user is 14 years old', () => {
+    it('should log SignUpTooYoung if the user is 14 years old or less', () => {
       const renderAPI = renderSetBirthday()
 
       changeDate(renderAPI, '01', '12', '2006')
-
-      expect(analytics.logSignUpBetween14And15Included).toBeCalledTimes(1)
-      expect(analytics.logSignUpLessThanOrEqualTo13).not.toBeCalled()
-    })
-
-    it('should log <= 13 birthday analytics if the user is 13 years old', () => {
-      const renderAPI = renderSetBirthday()
-
-      changeDate(renderAPI, '01', '12', '2007')
-
-      expect(analytics.logSignUpBetween14And15Included).not.toBeCalled()
-      expect(analytics.logSignUpLessThanOrEqualTo13).toBeCalledTimes(1)
-    })
-
-    it('should log <= 13 birthday analytics if the user is less than 13 years old', () => {
-      const renderAPI = renderSetBirthday()
-
-      changeDate(renderAPI, '01', '12', '2010')
-
-      expect(analytics.logSignUpBetween14And15Included).not.toBeCalled()
-      expect(analytics.logSignUpLessThanOrEqualTo13).toBeCalledTimes(1)
-    })
-
-    it('it should not log between 14 and 15 birthday analytics more than once', () => {
-      const renderAPI = renderSetBirthday()
-
-      changeDate(renderAPI, '01', '12', '2006')
-      expect(analytics.logSignUpBetween14And15Included).toBeCalledTimes(1)
-    })
-
-    it('it should not log <= 13 birthday analytics more than once', () => {
-      const renderAPI = renderSetBirthday()
-
-      changeDate(renderAPI, '01', '12', '2007')
-      expect(analytics.logSignUpLessThanOrEqualTo13).toBeCalledTimes(1)
-
-      changeDate(renderAPI, '01', '12', '2010')
-      expect(analytics.logSignUpLessThanOrEqualTo13).toBeCalledTimes(1)
+      expect(analytics.logSignUpTooYoung).toBeCalledTimes(1)
     })
   })
 })

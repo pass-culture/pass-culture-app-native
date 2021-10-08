@@ -101,10 +101,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK),
   logResendEmailSignupConfirmationExpiredLink: () =>
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK),
-  logSignUpBetween14And15Included: () =>
-    analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_BETWEEN_14_AND_15_INCLUDED),
-  logSignUpLessThanOrEqualTo13: () =>
-    analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_LESS_THAN_OR_EQUAL_TO_13),
+  logSignUpTooYoung: (age: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_TOO_YOUNG, { age }),
   logReinitializeFilters: () => analyticsProvider.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS),
   logUseFilter: (filter: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.USE_FILTER, { filter }),
