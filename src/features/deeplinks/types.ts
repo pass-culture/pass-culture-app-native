@@ -8,8 +8,3 @@ export interface DeeplinkParts {
 export interface DeeplinkEvent {
   url: string
 }
-
-export type ScreenConfiguration<ScreenName extends keyof RootStackParamList> = {
-  screen: ScreenName
-  params: RouteParams<RootStackParamList, ScreenName>
-}

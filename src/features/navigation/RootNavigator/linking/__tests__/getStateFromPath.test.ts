@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 import { linking } from 'features/navigation/RootNavigator/linking'
 import {
   customGetStateFromPath,
-  getUrlQueryParams,
+  getQueryParamsFromPath,
 } from 'features/navigation/RootNavigator/linking/getStateFromPath'
 
 const setItemSpy = jest.spyOn(AsyncStorage, 'setItem')
@@ -39,15 +39,22 @@ describe('getStateFromPath', () => {
   })
 })
 
-describe('getUrlQueryParams()', () => {
+describe('getQueryParamsFromPath()', () => {
   it.each`
-    url                                       | params
+    path                                      | expectedQueryParams
     ${'?id=12&'}                              | ${{ id: '12' }}
     ${'/?utm_campaign=home_ete&utm_medium=/'} | ${{ utm_campaign: 'home_ete', utm_medium: '' }}
   `(
-    'should parse the query params from the url=$url',
-    ({ url, params }: { url: string; params: Record<string, string> | null }) => {
-      expect(getUrlQueryParams(url)).toStrictEqual(params)
+    'should parse the query params from the path=$path',
+    ({
+      path,
+      expectedQueryParams,
+    }: {
+      path: string
+      expectedQueryParams: Record<string, string> | null
+    }) => {
+      const queryParams = getQueryParamsFromPath(path)
+      expect(queryParams).toStrictEqual(expectedQueryParams)
     }
   )
 })

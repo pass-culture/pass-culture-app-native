@@ -78,9 +78,6 @@ jest.mock('libs/environment/useWebAppUrl')
 /* See the corresponding mock in libs/search/__mocks__ */
 jest.mock('libs/search/useSendAdditionalRequestToAppSearch')
 
-/* See the corresponding mock in libs/deeplinks/__mocks__ */
-jest.mock('features/deeplinks/listener')
-
 jest.mock('features/search/pages/SearchWrapper')
 
 jest.mock('features/favorites/pages/FavoritesWrapper')

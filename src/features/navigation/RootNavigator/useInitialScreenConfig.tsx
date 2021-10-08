@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { ScreenConfiguration } from 'features/deeplinks/types'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
@@ -10,12 +9,6 @@ import { storage } from 'libs/storage'
 import { homeNavigateConfig } from '../helpers'
 
 import { RootScreenNames } from './types'
-
-export type InitialScreenConfiguration =
-  | ScreenConfiguration<'EighteenBirthday'>
-  | ScreenConfiguration<'CulturalSurvey'>
-  | ScreenConfiguration<'TabNavigator'>
-  | ScreenConfiguration<'FirstTutorial'>
 
 export function useInitialScreen(): RootScreenNames | undefined {
   const { isLoggedIn } = useAuthContext()
