@@ -5,7 +5,6 @@ import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-import { handleDeeplinkAnalytics } from './analytics'
 import { getScreenFromDeeplink } from './getScreenFromDeeplink'
 import { DeeplinkEvent } from './types'
 
@@ -30,7 +29,6 @@ export function useDeeplinkUrlHandler() {
     const url = unescape(event.url)
     try {
       const { screen, params } = getScreenFromDeeplink(url)
-      handleDeeplinkAnalytics(screen, params)
       navigate(screen, params)
     } catch {
       onError(DEFAULT_ERROR_MESSAGE + ' : ' + url)
