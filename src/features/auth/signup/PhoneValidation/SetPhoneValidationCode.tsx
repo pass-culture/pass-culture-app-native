@@ -151,16 +151,18 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
   }
 
   function validateCode() {
-    setErrorMessage('')
-    const { code } = codeInputState
-    if (code) {
-      if (settings?.enableNativeIdCheckVerboseDebugging) {
-        const errorMessage = `Request info : ${JSON.stringify({
-          code,
-        })}`
-        new MonitoringError(errorMessage, 'validatePhoneNumber')
+    if (codeInputState.isValid) {
+      setErrorMessage('')
+      const { code } = codeInputState
+      if (code) {
+        if (settings?.enableNativeIdCheckVerboseDebugging) {
+          const errorMessage = `Request info : ${JSON.stringify({
+            code,
+          })}`
+          new MonitoringError(errorMessage, 'validatePhoneNumber')
+        }
+        validatePhoneNumber(code)
       }
-      validatePhoneNumber(code)
     }
   }
 
@@ -224,6 +226,7 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
               maxLength={codeInputPlaceholder.length}
               keyboardType="number-pad"
               testID="code-input"
+              onSubmitEditing={validateCode}
             />
           </CodeInputContainer>
           {errorMessage ? (
