@@ -10,6 +10,7 @@ I have:
 - [ ] Added a **screenshot** for UI tickets.
 - [ ] Attached a **ticket number** or **github dev name** for any added TODO / FIXME.
 - [ ] Added new reusable components to **AppComponents** page and communicate to the team on slack.
+- [ ] If my PR is a bugfix, I add the link of the "résolution de problème sur le bug" : `https://www.notion.so/passcultureapp/R-solution-de-probl-mes-sur-les-bugs-5dd6df8f6a754e6887066cf613467d0a`
 
 ## Screenshots
 
