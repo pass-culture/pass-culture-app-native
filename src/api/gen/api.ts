@@ -510,8 +510,8 @@ export interface BookingsResponse {
  * @enum {string}
  */
 export enum CallToActionIcon {
-    Info = 'info',
-    Warning = 'warning'
+    EMAIL = 'EMAIL',
+    RETRY = 'RETRY'
 }/**
  * 
  * @export
@@ -523,19 +523,19 @@ export interface CallToActionMessage {
      * @type {CallToActionIcon}
      * @memberof CallToActionMessage
      */
-    callToActionIcon: CallToActionIcon;
+    callToActionIcon?: CallToActionIcon | null;
     /**
      * 
      * @type {string}
      * @memberof CallToActionMessage
      */
-    callToActionLink: string;
+    callToActionLink?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CallToActionMessage
      */
-    callToActionTitle: string;
+    callToActionTitle?: string | null;
 }/**
  * An enumeration.
  * @export
@@ -1434,7 +1434,11 @@ export interface PaginatedFavoritesResponse {
  * @enum {string}
  */
 export enum PopOverIcon {
-    Email = 'Email'
+    INFO = 'INFO',
+    WARNING = 'WARNING',
+    CLOCK = 'CLOCK',
+    FILE = 'FILE',
+    MAGNIFYINGGLASS = 'MAGNIFYING_GLASS'
 }/**
  * Describe possible reason codes to used when reporting an offer.  The whole meta part is only consumed by the api client, it has no meaning inside the whole API code.  Note: when adding a new enum symbol, do not forget to update the meta method.
  * @export
@@ -1889,7 +1893,7 @@ export interface SubscriptionMessage {
      * @type {CallToActionMessage}
      * @memberof SubscriptionMessage
      */
-    callToAction: CallToActionMessage;
+    callToAction?: CallToActionMessage | null;
     /**
      * 
      * @type {PopOverIcon}
