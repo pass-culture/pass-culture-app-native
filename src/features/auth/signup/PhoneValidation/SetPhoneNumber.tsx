@@ -103,7 +103,7 @@ export const SetPhoneNumber = memo(() => {
   })
 
   function requestSendPhoneValidationCode() {
-    if (isRequestTimestampExpired) {
+    if (isContinueButtonEnabled && isRequestTimestampExpired) {
       setInvalidPhoneNumberMessage('')
       const phoneNumberWithPrefix = '+' + phoneNumberPrefix + formatPhoneNumber(phoneNumber)
       if (settings?.enableNativeIdCheckVerboseDebugging) {
@@ -191,6 +191,7 @@ export const SetPhoneNumber = memo(() => {
               onChangeText={onChangeText}
               placeholder={t`6 12 34 56 78`}
               textContentType="telephoneNumber"
+              onSubmitEditing={requestSendPhoneValidationCode}
               {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
             />
           </PhoneNumberInput>
