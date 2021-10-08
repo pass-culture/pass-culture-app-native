@@ -18,6 +18,7 @@ export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink'
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
+  Maintenance: undefined
   ABTestingPOC: undefined
   AcceptCgu: {
     email: string

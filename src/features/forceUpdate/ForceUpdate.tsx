@@ -7,7 +7,7 @@ import { openExternalUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { Background } from 'ui/svg/Background'
+import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Star } from 'ui/svg/icons/Star'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -44,72 +44,20 @@ const buttonText = Platform.select({
 
 export const ForceUpdate = () => {
   return (
-    <Container>
+    <React.Fragment>
       <Helmet>
         <title>{title}</title>
-        <meta name="robots" content="noindex" />
       </Helmet>
-      <Background />
-      <IconContainer>
-        <Spacer.Flex />
-        <Spacer.Flex>
-          <Star />
-        </Spacer.Flex>
-        <Spacer.Flex />
-      </IconContainer>
-      <PageContainer>
-        <ContentContainer>
-          <CenteredText>
-            <Typo.Title2 color={ColorsEnum.WHITE}>{title}</Typo.Title2>
-          </CenteredText>
-          <Row>
-            <TextContainer>
-              <CenteredText>
-                <Typo.Body color={ColorsEnum.WHITE}>{description}</Typo.Body>
-              </CenteredText>
-            </TextContainer>
-          </Row>
-        </ContentContainer>
-        <ButtonContainer>
-          <ButtonPrimaryWhite title={buttonText} onPress={onPress} />
-        </ButtonContainer>
-      </PageContainer>
-      <Spacer.BottomScreen />
-    </Container>
+      <GenericInfoPage title={title} icon={Star} iconSize={getSpacing(40)}>
+        <StyledBody>{description}</StyledBody>
+        <Spacer.Column numberOfSpaces={12} />
+        <ButtonPrimaryWhite title={buttonText} onPress={onPress} />
+      </GenericInfoPage>
+    </React.Fragment>
   )
 }
-
-const Container = styled.View({
-  flex: 1,
-  alignItems: 'center',
-})
-
-const Row = styled.View({ flexDirection: 'row' })
-
-const TextContainer = styled.View({ maxWidth: getSpacing(88) })
-
-const CenteredText = styled.Text({
+const StyledBody = styled(Typo.Body).attrs({
+  color: ColorsEnum.WHITE,
+})({
   textAlign: 'center',
-})
-
-const IconContainer = styled.View({ justifyContent: 'center', flex: 1 })
-
-const ButtonContainer = styled.View({
-  flex: 0.5,
-  width: '100%',
-  alignItems: 'center',
-})
-
-const PageContainer = styled.View({
-  alignItems: 'center',
-  flex: 1.5,
-  justifyContent: 'space-evenly',
-  width: '100%',
-  paddingHorizontal: getSpacing(4),
-})
-
-const ContentContainer = styled.View({
-  justifyContent: 'space-evenly',
-  flex: 1,
-  paddingHorizontal: getSpacing(4),
 })

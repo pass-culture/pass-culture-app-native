@@ -17,17 +17,4 @@ describe('<BaseTextInput />', () => {
 
     expect(ref.current).toBeTruthy()
   })
-
-  // FIXME: web integration
-  it.skip('should replicate autoFocus behaviour by calling focus() on mount when prop autoFocus is true [TODO web integration]', () => {
-    // const ref = React.createRef<RNTextInput>()
-    // const renderAPI = render(
-    //   <BaseTextInput autoFocus={true} placeholder={'placeholder'} value={'value'} ref={ref} />
-    // )
-    //
-    // const nativeTextInput = renderAPI.getByPlaceholderText('placeholder')
-    //
-    // expect(nativeTextInput.props.autoFocus).toBe(undefined)
-    // expect(ref.current?.focus).toBeCalledTimes(1)
-  })
 })

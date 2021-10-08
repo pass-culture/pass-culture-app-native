@@ -109,10 +109,4 @@ describe('<BookingImpossible />', () => {
       expect(mockDismissModal).toHaveBeenCalledTimes(1)
     })
   })
-
-  it("should log 'BookingImpossibleiOS' on mount", () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<BookingImpossible />))
-    expect(analytics.logBookingImpossibleiOS).toHaveBeenCalledTimes(1)
-  })
 })

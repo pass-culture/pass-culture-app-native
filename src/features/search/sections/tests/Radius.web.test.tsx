@@ -20,12 +20,4 @@ describe('Radius component', () => {
     const { queryByText } = render(<Radius />)
     expect(queryByText('100 km')).toBeTruthy()
   })
-
-  // TODO: web integration
-  it.skip('should dispatch RADIUS onPress [web integration]', () => {
-    // const { getByTestId } = render(<Radius />)
-    // const slider = getByTestId('slider').children[0] as ReactTestInstance
-    // slider.props.onValuesChangeFinish([80])
-    // expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'RADIUS', payload: 80 })
-  })
 })

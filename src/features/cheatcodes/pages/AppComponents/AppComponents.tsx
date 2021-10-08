@@ -16,6 +16,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
+import { matchSubscriptionMessagePopOverIconToSvg } from 'features/profile/utils'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
@@ -163,6 +164,9 @@ export const AppComponents: FunctionComponent = () => {
   const [year, setYear] = useState(THIS_YEAR - 18)
   const [radioButtonChoice, setRadioButtonChoice] = useState('')
   const { campaign, source, medium, campaignDate } = useUtmParams()
+  const [popOverIconString, setPopOverIconString] = useState<string>()
+
+  const PopOverIcon = matchSubscriptionMessagePopOverIconToSvg(popOverIconString)
 
   function navigateToIdCheckUnavailable() {
     navigate('IdCheckUnavailable')
@@ -814,12 +818,20 @@ export const AppComponents: FunctionComponent = () => {
             <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
           </AlignedText>
         </View>
-        <Text>Sans icône et long texte</Text>
+        <Typo.Title4 color={ColorsEnum.TERTIARY}>Communication InApp</Typo.Title4>
+        <Text>Long texte</Text>
         <View>
           <IdCheckProcessingBadge
+            icon={PopOverIcon}
             message={`Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu'on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`}
           />
         </View>
+        <Text>Affichage icône PopOverIcon</Text>
+        <AlignedText>
+          <Button title="Clock" onPress={() => setPopOverIconString('Clock')} />
+          <Button title="No key" onPress={() => setPopOverIconString(undefined)} />
+          <Button title="Unknown key" onPress={() => setPopOverIconString('Blablou')} />
+        </AlignedText>
 
         <Spacer.Column numberOfSpaces={4} />
         <View>

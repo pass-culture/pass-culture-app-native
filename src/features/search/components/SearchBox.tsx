@@ -11,6 +11,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavigateConfig } from 'features/navigation/TabBar/helpers'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
+import { accessibilityAndTestId } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -21,7 +22,9 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
   const { searchState } = useSearch()
   if (searchState.showResults)
     return (
-      <TouchableOpacity onPress={onPressArrowBack}>
+      <TouchableOpacity
+        onPress={onPressArrowBack}
+        {...accessibilityAndTestId(t`Revenir en arrière`)}>
         <ArrowPrevious />
       </TouchableOpacity>
     )
@@ -30,7 +33,10 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
 
 const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (props) =>
   props.currentValue.length > 0 ? (
-    <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={props.onPress}>
+    <TouchableOpacity
+      activeOpacity={ACTIVE_OPACITY}
+      onPress={props.onPress}
+      {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
       <Invalidate size={24} />
     </TouchableOpacity>
   ) : null
