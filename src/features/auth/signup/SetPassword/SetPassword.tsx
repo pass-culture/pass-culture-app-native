@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { Platform, TextInput as RNTextInput } from 'react-native'
+import { TextInput as RNTextInput } from 'react-native'
 
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import {
@@ -39,7 +39,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
   const [password, setPassword] = useState(INITIAL_PASSWORD)
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('SetEmail', undefined)
-
+  const disabled = !isPasswordCorrect(password)
   const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked
 
@@ -52,7 +52,9 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
   } = useModal(false)
 
   function submitPassword() {
-    navigate('SetBirthday', { email, isNewsletterChecked, password })
+    if (!disabled) {
+      navigate('SetBirthday', { email, isNewsletterChecked, password })
+    }
   }
 
   function showQuitSignupModal() {
@@ -82,18 +84,14 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
               autoFocus={true}
               onChangeText={setPassword}
               placeholder={t`Ton mot de passe`}
-              onSubmitEditing={Platform.OS === 'web' ? submitPassword : undefined}
+              onSubmitEditing={submitPassword}
               ref={passwordInput}
               {...accessibilityAndTestId('Entrée pour le mot de passe')}
             />
           </StyledInput>
           <PasswordSecurityRules password={password} />
           <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary
-            title={t`Continuer`}
-            onPress={submitPassword}
-            disabled={!isPasswordCorrect(password)}
-          />
+          <ButtonPrimary title={t`Continuer`} onPress={submitPassword} disabled={disabled} />
           <Spacer.Column numberOfSpaces={5} />
           <StyledStepDots>
             <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={2} />
