@@ -234,8 +234,6 @@ export interface ExclusivityFields {
   alt: string
   image: Image
   offerId: string
-  isGeolocated?: boolean
-  aroundRadius?: number
   displayExclusivityParameters: DisplayExclusivityParameters
 }
 

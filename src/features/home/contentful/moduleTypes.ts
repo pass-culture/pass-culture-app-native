@@ -66,32 +66,24 @@ export class ExclusivityPane {
   image: string
   offerId: string
   moduleId: string
-  isGeolocated?: boolean
-  aroundRadius?: number
   display: DisplayExclusivityParametersFields
   constructor({
     alt,
     image,
     offerId,
     moduleId,
-    isGeolocated,
-    aroundRadius,
     display,
   }: {
     alt: string
     image: string
     offerId: string
     moduleId: string
-    isGeolocated?: boolean
-    aroundRadius?: number
     display: DisplayExclusivityParametersFields
   }) {
     this.alt = alt
     this.image = image
     this.offerId = offerId
     this.moduleId = moduleId
-    this.isGeolocated = isGeolocated
-    this.aroundRadius = aroundRadius
     this.display = display
   }
 }

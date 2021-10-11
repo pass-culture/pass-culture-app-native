@@ -15,6 +15,7 @@ const props = {
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
   offerId,
   moduleId: 'module-id',
+  display: {},
 }
 
 describe('ExclusivityModule component', () => {

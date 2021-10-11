@@ -77,6 +77,7 @@ const excluModule = new ExclusivityPane({
   image: 'uri_to_image',
   moduleId: 'exclusivityPane-id',
   offerId: 'ABCD',
+  display: {},
 })
 
 const visibleVenueModule = new VenuesModule({

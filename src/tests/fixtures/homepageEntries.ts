@@ -690,46 +690,6 @@ export const adaptedHomepageEntry: HomepageEntry = {
       {
         sys: {
           space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
-          id: 'KiG6rWuQYhHuGIBXZNeB2',
-          type: 'Entry',
-          createdAt: '2020-10-30T10:07:22.489Z',
-          updatedAt: '2020-10-30T10:07:22.489Z',
-          environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
-          revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'exclusivity' } },
-          locale: 'en-US',
-        },
-        fields: {
-          title: 'Exclusitivité du moment',
-          alt: 'Exclusitivité du moment',
-          image: {
-            sys: {
-              space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
-              id: '2qTXOFUocq1HhgB7Wzl23K',
-              type: 'Asset',
-              createdAt: '2020-10-28T14:41:35.898Z',
-              updatedAt: '2020-10-28T14:41:35.898Z',
-              environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
-              revision: 1,
-              locale: 'en-US',
-            },
-            fields: {
-              title: 'Image spécial carnaval',
-              file: {
-                url:
-                  '//images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png',
-                details: { size: 128147, image: { width: 596, height: 559 } },
-                fileName: 'image (3).png',
-                contentType: 'image/png',
-              },
-            },
-          },
-          offerId: 'AE67',
-        },
-      },
-      {
-        sys: {
-          space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
           id: 'GlQb8Zg3n1PoYVmOyVCgW',
           type: 'Entry',
           createdAt: '2020-10-12T09:50:55.642Z',

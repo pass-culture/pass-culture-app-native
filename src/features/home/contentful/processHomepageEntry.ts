@@ -65,14 +65,7 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
     }
 
     if (contentType === 'exclusivity') {
-      const {
-        alt,
-        offerId,
-        image,
-        isGeolocated,
-        aroundRadius,
-        displayExclusivityParameters,
-      } = fields as ExclusivityFields
+      const { alt, offerId, image, displayExclusivityParameters } = fields as ExclusivityFields
 
       const { fields: display } = displayExclusivityParameters
 
@@ -82,8 +75,6 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
         image: buildImageUrl(image)!,
         offerId,
         moduleId,
-        isGeolocated,
-        aroundRadius,
         display,
       })
     }
