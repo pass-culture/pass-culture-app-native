@@ -4,7 +4,9 @@ exports[`processHomepageEntry should format homepage entries so we can use it to
 Array [
   ExclusivityPane {
     "alt": "Exclusitivité du moment",
+    "aroundRadius": undefined,
     "image": "https://images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png",
+    "isGeolocated": undefined,
     "moduleId": "KiG6rWuQYhHuGIBXZNeB2",
     "offerId": "AE67",
   },

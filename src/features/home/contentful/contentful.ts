@@ -1,6 +1,7 @@
 export const CONTENT_TYPES = {
   ALGOLIA: 'algolia',
   ALGOLIA_PARAMETERS: 'algoliaParameters',
+  DISPLAY_EXCLUSIVITY_PARAMETERS: 'displayExclusivityParameters',
   DISPLAY_PARAMETERS: 'displayParameters',
   EXCLUSIVITY: 'exclusivity',
   HOMEPAGE_NATIF: 'homepageNatif',
@@ -16,6 +17,7 @@ export enum ContentTypes {
   ALGOLIA_PARAMETERS = 'algoliaParameters',
   EXCLUSIVITY = 'exclusivity',
   DISPLAY = 'display',
+  DISPLAY_EXCLUSIVITY_PARAMETERS = 'displayExclusivityParameters',
   DISPLAY_PARAMETERS = 'displayParameters',
   HOMEPAGE_NATIF = 'homepageNatif',
   INFORMATION = 'information',
@@ -134,6 +136,11 @@ export interface DisplayParameters {
   fields: DisplayParametersFields
 }
 
+export interface DisplayExclusivityParameters {
+  sys: Sys<typeof CONTENT_TYPES.DISPLAY_EXCLUSIVITY_PARAMETERS>
+  fields: DisplayExclusivityParametersFields
+}
+
 export interface Cover {
   sys: Sys<typeof CONTENT_TYPES.INFORMATION>
   fields: CoverFields
@@ -202,6 +209,12 @@ export interface DisplayParametersFields {
   title: string
   layout: Layout
   minOffers: number
+}
+
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/displayExclusivityParameters/fields
+export interface DisplayExclusivityParametersFields {
+  isGeolocated?: boolean
+  aroundRadius?: number
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/business/fields
