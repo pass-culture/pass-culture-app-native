@@ -70,7 +70,11 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should redirect to login page WHEN password is reset', async () => {
-    const { getByText } = renderReinitializePassword()
+    const { getByText, getByPlaceholderText } = renderReinitializePassword()
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
+    fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     fireEvent.press(getByText('Continuer'))
     await superFlushWithAct()
     expect(navigate).toHaveBeenNthCalledWith(1, 'Login')
