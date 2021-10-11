@@ -23,6 +23,7 @@ export interface BaseButtonProps {
   textSize?: number
   title: string
   submitOnEnterWeb?: boolean
+  fullWidth?: boolean
 }
 
 export interface AppButtonProps extends BaseButtonProps {
@@ -50,6 +51,7 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
     <Container
       {...accessibilityAndTestId(containerTestID)}
       backgroundColor={props.backgroundColor}
+      fullWidth={props.fullWidth}
       borderColor={props.borderColor}
       onPress={pressHandler}
       onLongPress={longPressHandler}
@@ -93,39 +95,42 @@ interface ContainerProps {
   buttonHeight: 'small' | 'tall'
   inline?: boolean
   inlineHeight?: number
+  fullWidth?: boolean
 }
 
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
-}))<ContainerProps>(({ inline, backgroundColor, borderColor, buttonHeight, inlineHeight }) => ({
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: BorderRadiusEnum.BUTTON,
-  paddingBottom: 2,
-  paddingRight: 2,
-  paddingTop: 2,
-  paddingLeft: 2,
-  backgroundColor,
-  borderColor,
-  borderWidth: borderColor ? 2 : 0,
-  height: buttonHeight === 'tall' ? getSpacing(12) : getSpacing(10),
-  width: '100%',
-  maxWidth: getSpacing(125),
-  ...(inline
-    ? {
-        borderWidth: 0,
-        borderRadius: 0,
-        marginTop: 0,
-        paddingBottom: 0,
-        paddingTop: 0,
-        paddingRight: 0,
-        paddingLeft: 0,
-        width: 'auto',
-        height: inlineHeight,
-      }
-    : {}),
-}))
+}))<ContainerProps>(
+  ({ inline, backgroundColor, borderColor, buttonHeight, inlineHeight, fullWidth }) => ({
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: BorderRadiusEnum.BUTTON,
+    paddingBottom: 2,
+    paddingRight: 2,
+    paddingTop: 2,
+    paddingLeft: 2,
+    backgroundColor,
+    borderColor,
+    borderWidth: borderColor ? 2 : 0,
+    height: buttonHeight === 'tall' ? getSpacing(12) : getSpacing(10),
+    width: '100%',
+    ...(fullWidth ? {} : { maxWidth: getSpacing(125) }),
+    ...(inline
+      ? {
+          borderWidth: 0,
+          borderRadius: 0,
+          marginTop: 0,
+          paddingBottom: 0,
+          paddingTop: 0,
+          paddingRight: 0,
+          paddingLeft: 0,
+          width: 'auto',
+          height: inlineHeight,
+        }
+      : {}),
+  })
+)
 
 interface TitleProps {
   textColor?: ColorsEnum
