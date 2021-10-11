@@ -65,7 +65,17 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
     }
 
     if (contentType === 'exclusivity') {
-      const { alt, offerId, image, isGeolocated, aroundRadius } = fields as ExclusivityFields
+      const {
+        alt,
+        offerId,
+        image,
+        isGeolocated,
+        aroundRadius,
+        displayExclusivityParameters,
+      } = fields as ExclusivityFields
+
+      const { fields: display } = displayExclusivityParameters
+
       return new ExclusivityPane({
         alt,
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -74,6 +84,7 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
         moduleId,
         isGeolocated,
         aroundRadius,
+        display,
       })
     }
 

@@ -236,6 +236,7 @@ export interface ExclusivityFields {
   offerId: string
   isGeolocated?: boolean
   aroundRadius?: number
+  displayExclusivityParameters: DisplayExclusivityParameters
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields

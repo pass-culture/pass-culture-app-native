@@ -2,6 +2,7 @@ import {
   SearchParametersFields,
   DisplayParametersFields,
   VenuesSearchParametersFields,
+  DisplayExclusivityParametersFields,
 } from './contentful'
 
 export class Offers {
@@ -67,6 +68,7 @@ export class ExclusivityPane {
   moduleId: string
   isGeolocated?: boolean
   aroundRadius?: number
+  display: DisplayExclusivityParametersFields
   constructor({
     alt,
     image,
@@ -74,6 +76,7 @@ export class ExclusivityPane {
     moduleId,
     isGeolocated,
     aroundRadius,
+    display,
   }: {
     alt: string
     image: string
@@ -81,6 +84,7 @@ export class ExclusivityPane {
     moduleId: string
     isGeolocated?: boolean
     aroundRadius?: number
+    display: DisplayExclusivityParametersFields
   }) {
     this.alt = alt
     this.image = image
@@ -88,6 +92,7 @@ export class ExclusivityPane {
     this.moduleId = moduleId
     this.isGeolocated = isGeolocated
     this.aroundRadius = aroundRadius
+    this.display = display
   }
 }
 
