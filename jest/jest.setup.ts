@@ -90,3 +90,5 @@ jest.mock('api/apiHelpers')
 
 // Mock files sourced from /public folder (see corresponding /__mock__ folders)
 jest.mock('ui/components/ModuleBanner/backgroundImageSource')
+
+jest.mock('ui/hooks/useEnterKeyAction')

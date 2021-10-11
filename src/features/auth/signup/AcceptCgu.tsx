@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNetInfo } from '@react-native-community/netinfo'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState, useCallback, useMemo } from 'react'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
@@ -34,7 +34,6 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('SetBirthday', route.params)
-
   const signUp = useSignUp()
   const networkInfo = useNetInfo()
   const {
@@ -56,44 +55,48 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     }
   }, [networkInfo.isConnected])
 
-  async function subscribe(token: string) {
-    const { birthday, email, isNewsletterChecked, password, postalCode } = route.params
-    setErrorMessage(null)
-    const signUpData = {
-      birthdate: birthday,
-      email,
-      marketingEmailSubscription: isNewsletterChecked,
-      password,
-      postalCode,
-      token,
-    }
-    try {
-      setIsFetching(true)
-      const signupResponse = await signUp(signUpData)
-      if (!signupResponse?.isSuccess) {
-        throw new AsyncError('NETWORK_REQUEST_FAILED')
-      }
-      navigate('SignupConfirmationEmailSent', { email })
-    } catch {
-      setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
-      const errorMessage = `Request info : ${JSON.stringify({
-        ...signUpData,
-        password: 'excludedFromSentryLog',
-        captchaSiteKey: env.SITE_KEY,
-      })}`
-      new MonitoringError(errorMessage, 'AcceptCguSignUpError')
-    } finally {
-      setIsFetching(false)
-    }
-  }
+  const subscribe = useCallback(
+    (token: string) =>
+      (async () => {
+        const { birthday, email, isNewsletterChecked, password, postalCode } = route.params
+        setErrorMessage(null)
+        const signUpData = {
+          birthdate: birthday,
+          email,
+          marketingEmailSubscription: isNewsletterChecked,
+          password,
+          postalCode,
+          token,
+        }
+        try {
+          setIsFetching(true)
+          const signupResponse = await signUp(signUpData)
+          if (!signupResponse?.isSuccess) {
+            throw new AsyncError('NETWORK_REQUEST_FAILED')
+          }
+          navigate('SignupConfirmationEmailSent', { email })
+        } catch {
+          setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
+          const errorMessage = `Request info : ${JSON.stringify({
+            ...signUpData,
+            password: 'excludedFromSentryLog',
+            captchaSiteKey: env.SITE_KEY,
+          })}`
+          new MonitoringError(errorMessage, 'AcceptCguSignUpError')
+        } finally {
+          setIsFetching(false)
+        }
+      })(),
+    [route.params]
+  )
 
-  function openReCaptchaChallenge() {
+  const openReCaptchaChallenge = useCallback(() => {
     if (!networkInfo.isConnected) {
       return
     }
     setIsDoingReCaptchaChallenge(true)
     setErrorMessage(null)
-  }
+  }, [networkInfo.isConnected])
 
   function onReCaptchaClose() {
     setIsDoingReCaptchaChallenge(false)
@@ -114,6 +117,15 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     setIsDoingReCaptchaChallenge(false)
     subscribe(token)
   }
+
+  const onSubmit = useCallback(() => {
+    settings?.isRecaptchaEnabled ? openReCaptchaChallenge() : subscribe('dummyToken')
+  }, [settings?.isRecaptchaEnabled, subscribe, openReCaptchaChallenge])
+
+  const disabled = useMemo(
+    () => isDoingReCaptchaChallenge || isFetching || !networkInfo.isConnected || areSettingsLoading,
+    [isDoingReCaptchaChallenge, isFetching, networkInfo.isConnected, areSettingsLoading]
+  )
 
   return (
     <React.Fragment>
@@ -172,18 +184,10 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
               title={t`Accepter et s’inscrire`}
               // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
               // Cf. backend logic for token validation
-              onPress={
-                settings?.isRecaptchaEnabled
-                  ? openReCaptchaChallenge
-                  : () => subscribe('dummyToken')
-              }
+              onPress={onSubmit}
               isLoading={isDoingReCaptchaChallenge || isFetching}
-              disabled={
-                isDoingReCaptchaChallenge ||
-                isFetching ||
-                !networkInfo.isConnected ||
-                areSettingsLoading
-              }
+              disabled={disabled}
+              submitOnEnterWeb
             />
             {!!errorMessage && (
               <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />
