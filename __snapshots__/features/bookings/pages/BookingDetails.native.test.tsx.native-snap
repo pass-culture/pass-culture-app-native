@@ -548,7 +548,6 @@ Array [
               "flexDirection": "row",
               "height": 40,
               "justifyContent": "center",
-              "maxWidth": 500,
               "opacity": 1,
               "paddingBottom": 2,
               "paddingLeft": 2,

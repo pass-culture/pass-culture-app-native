@@ -160,6 +160,7 @@ export function BookingDetails() {
             testId="Voir le détail de l’offre"
             title={t`Voir le détail de l’offre`}
             onPress={navigateToOffer}
+            fullWidth
           />
           <Spacer.Column numberOfSpaces={4} />
           <BookingDetailsCancelButton
@@ -167,6 +168,7 @@ export function BookingDetails() {
             activationCodeFeatureEnabled={activationCodeFeatureEnabled}
             onCancel={cancelBooking}
             onTerminate={showArchiveModal}
+            fullWidth
           />
         </ViewWithPadding>
         <Spacer.Column numberOfSpaces={5} />

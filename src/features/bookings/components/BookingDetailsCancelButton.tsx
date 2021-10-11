@@ -18,6 +18,7 @@ export interface BookingDetailsCancelButtonProps {
   activationCodeFeatureEnabled?: boolean
   onCancel?: () => void
   onTerminate?: () => void
+  fullWidth?: boolean
 }
 
 export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProps) => {
@@ -29,11 +30,21 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const isExBeneficiary = user && credit && isUserExBeneficiary(user, credit)
 
   if (properties.hasActivationCode == true && props.activationCodeFeatureEnabled) {
-    return <ButtonSecondary title={t`Terminer`} onPress={props.onTerminate} />
+    return (
+      <ButtonSecondary
+        title={t`Terminer`}
+        onPress={props.onTerminate}
+        fullWidth={props.fullWidth}
+      />
+    )
   }
 
   const renderButton = (
-    <ButtonSecondary title={t`Annuler ma réservation`} onPress={props.onCancel} />
+    <ButtonSecondary
+      title={t`Annuler ma réservation`}
+      onPress={props.onCancel}
+      fullWidth={props.fullWidth}
+    />
   )
 
   if (booking.confirmationDate) {
