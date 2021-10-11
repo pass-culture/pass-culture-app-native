@@ -27,9 +27,13 @@ describe('profile utils', () => {
       const returnedIcon = matchSubscriptionMessagePopOverIconToSvg('Clock')
       expect(returnedIcon).toEqual(Clock)
     })
-    it('should return Info if unknown string is passed', () => {
-      const returnedIcon = matchSubscriptionMessagePopOverIconToSvg('I am an unknown string')
+    it('should return Info if unknown string is passed and fallbackIcon is true', () => {
+      const returnedIcon = matchSubscriptionMessagePopOverIconToSvg('I am an unknown string', true)
       expect(returnedIcon).toEqual(Info)
+    })
+    it('should return no icon if unknown string is passed and fallback is false', () => {
+      const returnedIcon = matchSubscriptionMessagePopOverIconToSvg('I am an unknown string')
+      expect(returnedIcon).toEqual(undefined)
     })
   })
 })

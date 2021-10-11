@@ -2,6 +2,7 @@ import { UserProfileResponse, DomainsCredit, UserRole } from 'api/gen/api'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit } from 'features/home/services/useAvailableCredit'
 import { Clock } from 'ui/svg/icons/Clock'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Info } from 'ui/svg/icons/Info'
 
 export function isUserBeneficiary(user: UserProfileResponse): boolean {
@@ -27,13 +28,16 @@ export const useIsUserUnderageBeneficiary = () => {
   return isUserUnderageBeneficiary(user)
 }
 
-export const matchSubscriptionMessagePopOverIconToSvg = (iconName: string | undefined) => {
+export const matchSubscriptionMessagePopOverIconToSvg = (
+  iconName: string | undefined,
+  useFallbackIcon?: boolean | undefined
+) => {
   switch (iconName) {
-    case undefined:
-      return undefined
     case 'Clock':
       return Clock
+    case 'EMAIL':
+      return EmailFilled
     default:
-      return Info
+      return useFallbackIcon ? Info : undefined
   }
 }
