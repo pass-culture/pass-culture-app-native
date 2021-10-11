@@ -88,7 +88,7 @@ const routesBeforeReleaseCheck: Route[] = [
     component: OfferDescription,
     hoc: withAsyncErrorBoundary,
     path: 'offre/:id/description',
-    deeplinkPaths: ['offre/description', 'offer/description'],
+    deeplinkPaths: ['offer/:id/description', 'offre/description', 'offer/description'],
     options: { title: t`Détails de l'offre` },
   },
   {
@@ -369,8 +369,8 @@ const routesBeforeReleaseCheck: Route[] = [
     component: Venue,
     hoc: withAsyncErrorBoundary,
     pathConfig: {
-      path: 'venue',
-      deeplinkPaths: ['lieu'],
+      path: 'lieu/:id',
+      deeplinkPaths: ['venue/:id'],
       parse: screenParamsParser['Venue'],
     },
     options: { title: t`Lieu` },
