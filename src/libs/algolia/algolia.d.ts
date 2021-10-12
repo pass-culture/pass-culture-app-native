@@ -6,7 +6,7 @@ interface Offer {
   isDuo?: boolean
   name?: string
   prices?: number[]
-  subcategoryId: SubcategoryIdEnum
+  subcategoryId?: SubcategoryIdEnum
   thumbUrl?: string
 }
 

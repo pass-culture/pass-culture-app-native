@@ -1,10 +1,9 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
+import { SearchHit } from 'libs/search'
 
-import { AlgoliaHit } from '..'
-
-export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
+export const mockedAlgoliaResponse: SearchResponse<SearchHit> = {
   hits: [
     {
       offer: {
@@ -74,7 +73,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
   processingTimeMS: 1,
 }
 
-export const physicalAlgoliaOffer: AlgoliaHit = {
+export const physicalAlgoliaOffer: SearchHit = {
   offer: {
     dates: [1612465203, 1612551603, 1612638003],
     isDigital: false,
@@ -89,7 +88,7 @@ export const physicalAlgoliaOffer: AlgoliaHit = {
   objectID: '3503086',
 }
 
-export const digitalAlgoliaOffer: AlgoliaHit = {
+export const digitalAlgoliaOffer: SearchHit = {
   offer: {
     dates: [],
     isDigital: true,
@@ -104,9 +103,9 @@ export const digitalAlgoliaOffer: AlgoliaHit = {
   objectID: '5914536',
 }
 
-export const freeNotDuoAlgoliaOffer: AlgoliaHit = digitalAlgoliaOffer
+export const freeNotDuoAlgoliaOffer: SearchHit = digitalAlgoliaOffer
 
-export const noPriceNotDuoAlgoliaOffer: AlgoliaHit = {
+export const noPriceNotDuoAlgoliaOffer: SearchHit = {
   ...freeNotDuoAlgoliaOffer,
   offer: {
     ...freeNotDuoAlgoliaOffer.offer,
@@ -114,7 +113,7 @@ export const noPriceNotDuoAlgoliaOffer: AlgoliaHit = {
   },
 }
 
-export const sevenEuroNotDuoAlgoliaOffer: AlgoliaHit = {
+export const sevenEuroNotDuoAlgoliaOffer: SearchHit = {
   ...freeNotDuoAlgoliaOffer,
   offer: {
     ...freeNotDuoAlgoliaOffer.offer,

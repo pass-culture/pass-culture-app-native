@@ -8,8 +8,8 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { AlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
+import { SearchHit } from 'libs/search'
 import { fireEvent, render } from 'tests/utils'
 
 import { VenueOffers } from '../VenueOffers'
@@ -64,7 +64,7 @@ describe('<VenueOffers />', () => {
   it(`should not display "En voir plus" button if nbHits is same as hits.length`, () => {
     mockUseVenueOffers.mockReturnValueOnce({
       data: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
-    } as UseQueryResult<{ hits: AlgoliaHit[]; nbHits: number }, unknown>)
+    } as UseQueryResult<{ hits: SearchHit[]; nbHits: number }, unknown>)
 
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
     expect(queryByText('En voir plus')).toBeFalsy()

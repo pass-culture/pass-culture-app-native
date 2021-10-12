@@ -1,6 +1,7 @@
 import { MultipleQueriesResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
+import { SubcategoryIdEnum } from 'api/gen'
 import { SearchHit, parseSearchParameters } from 'libs/search'
 import * as SearchModule from 'libs/search/fetch/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -17,13 +18,14 @@ jest.mock('libs/search/useSendAdditionalRequestToAppSearch', () => ({
   useSendAdditionalRequestToAppSearch: jest.fn(() => () => null),
 }))
 
+const subcategoryId = SubcategoryIdEnum.ABOCONCERT
 const mockMultipleHits = {
   results: [
     {
       hits: [
-        { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },
-        { objectID: '2', offer: { thumbUrl: 'http://to-image-two' } },
-        { objectID: '3', offer: { thumbUrl: undefined } },
+        { objectID: '1', offer: { thumbUrl: 'http://to-image-one', subcategoryId } },
+        { objectID: '2', offer: { thumbUrl: 'http://to-image-two', subcategoryId } },
+        { objectID: '3', offer: { thumbUrl: undefined, subcategoryId } },
       ],
       nbHits: 10,
     },
@@ -81,8 +83,8 @@ describe('useHomeModules', () => {
     const { hits, nbHits } = result.current['homeModuleShown']
     expect(nbHits).toEqual(10)
     expect(hits).toEqual([
-      { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },
-      { objectID: '2', offer: { thumbUrl: 'http://to-image-two' } },
+      { objectID: '1', offer: { thumbUrl: 'http://to-image-one', subcategoryId } },
+      { objectID: '2', offer: { thumbUrl: 'http://to-image-two', subcategoryId } },
     ])
     // All offer have an image to be displayed on the homepage
     expect(hits.find((hit) => !hit.offer.thumbUrl)).toBeUndefined()

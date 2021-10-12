@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 
 import { useAppSettings } from 'features/auth/settings'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
+import { IncompleteSearchHit } from 'libs/search'
 
 import { AlgoliaHit } from '..'
 
@@ -36,9 +37,9 @@ export const parseThumbUrl = (
 export const parseGeoloc = (hit: AlgoliaHit): AlgoliaHit['_geoloc'] =>
   hit.offer.isDigital ? { lat: null, lng: null } : hit._geoloc
 
-// We don't want to display offers without image
-export const filterAlgoliaHit = (hit: AlgoliaHit): boolean =>
-  hit && hit.offer && !!hit.offer.thumbUrl
+// We don't want to display offers without image nor subcategoryId
+export const filterAlgoliaHit = (hit: IncompleteSearchHit): boolean =>
+  hit && hit.offer && !!hit.offer.thumbUrl && typeof hit.offer.subcategoryId !== 'undefined'
 
 export const transformAlgoliaHit = (urlPrefix?: string) => (hit: AlgoliaHit): AlgoliaHit => ({
   ...hit,
