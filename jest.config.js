@@ -4,6 +4,7 @@ module.exports = {
   moduleNameMapper: {
     '^api(.*)$': '<rootDir>/src/api$1',
     '^features(.*)$': '<rootDir>/src/features$1',
+    '^fixtures(.*)$': '<rootDir>/src/fixtures$1',
     '^libs(.*)$': '<rootDir>/src/libs$1',
     '^theme(.*)$': '<rootDir>/src/theme$1',
     '^locales(.*)$': '<rootDir>/src/locales$1',
@@ -33,24 +34,20 @@ module.exports = {
       '|@pass-culture/react-native-profiling' +
       '/(?!(lib)))',
   ],
-  testRegex: '(?<!\.web)\.(?:test|spec)\.(?:tsx?|js)$',
+  testRegex: '(?<!.web).(?:test|spec).(?:tsx?|js)$',
   testPathIgnorePatterns: [
     '\\.snap$',
     '\\.native-snap$',
     '\\.web-snap$',
-    '<rootDir>/node_modules/'
+    '<rootDir>/node_modules/',
   ],
   cacheDirectory: '.jest/cache',
-  collectCoverageFrom: [
-    'src/**/*.{js,jsx,ts,tsx}',
-    '!**/node_modules/**',
-    '!**/coverage/**',
-  ],
+  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!**/node_modules/**', '!**/coverage/**'],
   coveragePathIgnorePatterns: [
     '\\.web\\.(test|spec)',
     '/node_modules/',
     '/src/environment',
-    '/src/locales'
+    '/src/locales',
   ],
   collectCoverage: false,
 }

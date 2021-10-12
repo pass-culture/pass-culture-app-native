@@ -11,6 +11,7 @@ module.exports = {
         alias: {
           api: './src/api',
           features: './src/features',
+          fixtures: './src/fixtures',
           libs: './src/libs',
           theme: './src/theme',
           locales: './src/locales',
