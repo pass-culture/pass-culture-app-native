@@ -11,7 +11,8 @@ export const buildFacetFilters = (
   const { offerCategories, offerIsDuo, tags, offerTypes, locationFilter } = searchState
 
   const facetFilters: FilterArray<AppSearchFields> = buildOfferTypesFilter(offerTypes)
-  if (offerCategories?.length) facetFilters.push({ [AppSearchFields.category]: offerCategories })
+  if (offerCategories?.length)
+    facetFilters.push({ [AppSearchFields.search_group_name]: offerCategories })
   if (offerIsDuo) facetFilters.push({ [AppSearchFields.is_duo]: TRUE })
   if (tags?.length) facetFilters.push({ [AppSearchFields.tags]: tags })
 

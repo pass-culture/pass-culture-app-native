@@ -1,3 +1,4 @@
+import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { AppSearchFields, FALSE } from 'libs/search/filters/constants'
@@ -16,22 +17,30 @@ const educationalFilter = {
 describe('buildFacetFilters', () => {
   describe('categories', () => {
     it('should fetch with no facetFilters parameter when no category is provided except educational', () => {
-      const offerCategories: string[] = []
+      const offerCategories: SearchGroupNameEnum[] = []
       const filters = buildFacetFilters({ ...baseParams, offerCategories } as SearchState)
       expect(filters).toStrictEqual([educationalFilter])
     })
 
     it('should fetch with facetFilters parameter when one category is provided', () => {
-      const offerCategories: string[] = ['LECON']
+      const offerCategories = [SearchGroupNameEnum.COURS]
       const filters = buildFacetFilters({ ...baseParams, offerCategories } as SearchState)
-      expect(filters).toStrictEqual([{ [AppSearchFields.category]: ['LECON'] }, educationalFilter])
+      expect(filters).toStrictEqual([
+        { [AppSearchFields.search_group_name]: [SearchGroupNameEnum.COURS] },
+        educationalFilter,
+      ])
     })
 
     it('should fetch with facetFilters parameter when multiple categories are provided', () => {
-      const offerCategories: string[] = ['SPECTACLE', 'LIVRE']
+      const offerCategories = [SearchGroupNameEnum.SPECTACLE, SearchGroupNameEnum.LIVRE]
       const filters = buildFacetFilters({ ...baseParams, offerCategories } as SearchState)
       expect(filters).toStrictEqual([
-        { [AppSearchFields.category]: ['SPECTACLE', 'LIVRE'] },
+        {
+          [AppSearchFields.search_group_name]: [
+            SearchGroupNameEnum.SPECTACLE,
+            SearchGroupNameEnum.LIVRE,
+          ],
+        },
         educationalFilter,
       ])
     })
