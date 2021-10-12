@@ -4190,6 +4190,18 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
+"@typeform/embed-react@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@typeform/embed-react/-/embed-react-1.1.2.tgz#143734618f3cb10bf306958fe69d76a49f35b553"
+  integrity sha512-bwSNNAEU7q9PsdM3u86/CFetJyCT9JbwZg/0kX9D/764GJXhThoU7M0e4XIvyb6r2if25BUN8jCxXA8TAXeawg==
+  dependencies:
+    "@typeform/embed" "^1.10.0"
+
+"@typeform/embed@^1.10.0":
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/@typeform/embed/-/embed-1.20.0.tgz#378c65143c21438a81f8ad34df34fdd7570c42b9"
+  integrity sha512-46nj1aL9ZNl//SNshmP2VM3Ct/SfeRy+4O8Ff+2oGz+8DttIoLpzvRI0HOsXj+X8pBMj3AkGM9VUNMx0cGwSvQ==
+
 "@types/aria-query@^4.2.0":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-4.2.1.tgz#78b5433344e2f92e8b306c06a5622c50c245bf6b"
@@ -15880,10 +15892,10 @@ react-native-web@^0.17.1:
     normalize-css-color "^1.0.2"
     prop-types "^15.6.0"
 
-react-native-webview@^10.10.0:
-  version "10.10.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-10.10.0.tgz#285703c35eac1eac5b4446df2cba8a146d3c8548"
-  integrity sha512-T0AnZ0LVhaFBqZpl5attDDYo83zqdFRsFVINbrgHaIm6w5r0d/QK/dJRgXRNyFhn1fSONhe0ejdcnCYCT73B6g==
+react-native-webview@11.14.0:
+  version "11.14.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.14.0.tgz#01d7669409d7510c859300c058902c8a8490cbbb"
+  integrity sha512-G5pIYL3dU4rWt4K8W8ZoEDHL3nCR+rnNWsrCP/rJcl1gElxZn2xlpHjNml4myopIzn835NgE0/dJJ9VHvdMg3Q==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"

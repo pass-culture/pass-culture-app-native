@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
+import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -17,7 +18,7 @@ export function BeneficiaryRequestSent() {
   const { data: user } = useUserProfileInfo()
   const { data: settings } = useAppSettings()
 
-  const shouldNavigateToCulturalSurvey = user?.isBeneficiary && user?.needsToFillCulturalSurvey
+  const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 
   function onPress() {
     if (shouldNavigateToCulturalSurvey) {

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
@@ -33,7 +34,7 @@ async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promis
       if (!hasSeenEligibleCard && user.showEligibleCard) {
         return 'EighteenBirthday'
       }
-      if (user.isBeneficiary && user.needsToFillCulturalSurvey) {
+      if (shouldShowCulturalSurvey(user)) {
         return 'CulturalSurvey'
       }
     } catch {

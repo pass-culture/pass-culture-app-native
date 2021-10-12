@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
 import { homeNavigateConfig, navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -75,7 +76,7 @@ export const Login: FunctionComponent = function () {
         navigate(params.followScreen, params.followParams)
       } else if (!hasSeenEligibleCard && user.showEligibleCard) {
         navigate('EighteenBirthday')
-      } else if (user.isBeneficiary && user.needsToFillCulturalSurvey) {
+      } else if (shouldShowCulturalSurvey(user)) {
         navigate('CulturalSurvey')
       } else {
         navigateToHome()

@@ -3,29 +3,6 @@
 exports[`<CulturalSurvey /> should render correctly 1`] = `
 Array [
   <View
-    style={
-      Array [
-        Object {
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
-          "zIndex": -1,
-        },
-      ]
-    }
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>,
-  <View
     customHeight={16}
     style={
       Array [
@@ -51,10 +28,9 @@ Array [
       injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
       injectedJavaScriptForMainFrameOnly={true}
       javaScriptEnabled={true}
-      messagingEnabled={true}
+      messagingEnabled={false}
       onContentProcessDidTerminate={[Function]}
       onHttpError={[Function]}
-      onLoadEnd={[Function]}
       onLoadingError={[Function]}
       onLoadingFinish={[Function]}
       onLoadingProgress={[Function]}
@@ -64,13 +40,7 @@ Array [
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {
-          "html": "<html>
-                        <head>
-                          <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0\\">
-                          <script src=\\"https://embed.typeform.com/embed.js\\"></script>
-                        </head>
-                        <div id=\\"typeform-embed\\" />
-                      </html>",
+          "uri": "https://passculture.typeform.com/to/TYPEFORM_FORM_ID?userId=testUuid&userPk=1234&source=ios",
         }
       }
       style={
