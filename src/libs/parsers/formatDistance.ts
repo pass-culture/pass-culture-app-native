@@ -29,6 +29,25 @@ export const computeDistanceInMeters = (latA: number, lngA: number, latB: number
   return EARTH_RADIUS_KM * c * 1000
 }
 
+export const computeDistanceInKilometers = (
+  userPosition: GeoCoordinates | null,
+  offerGeoloc: Geoloc | null | undefined
+): number | undefined => {
+  if (!userPosition?.latitude || !userPosition.longitude || !offerGeoloc?.lat || !offerGeoloc.lng)
+    return
+  const newLat = (userPosition.latitude * Math.PI) / 180 - (offerGeoloc.lat * Math.PI) / 180
+  const newLng = (userPosition.longitude * Math.PI) / 180 - (offerGeoloc.lng * Math.PI) / 180
+  const a =
+    Math.sin(newLat / 2) * Math.sin(newLat / 2) +
+    Math.cos((userPosition.latitude * Math.PI) / 180) *
+      Math.cos((offerGeoloc.lat * Math.PI) / 180) *
+      Math.sin(newLng / 2) *
+      Math.sin(newLng / 2)
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+  return EARTH_RADIUS_KM * c
+}
+
 export const humanizeDistance = (distance: number) => {
   if (distance < 30) return `${Math.round(distance)} m`
   if (distance < 100) return `${Math.round(distance / 5) * 5} m`
@@ -46,4 +65,17 @@ export const formatDistance = (
   if (!position) return
 
   return getHumanizeRelativeDistance(coords.lat, coords.lng, position.latitude, position.longitude)
+}
+
+export const useUserIsInsideOfferArroundRadius = (
+  offerAroundRadius: number | undefined,
+  distanceBetweenOfferAndUser: number | undefined
+) => {
+  const isUserInsideOfferArroundRadius =
+    !!offerAroundRadius &&
+    typeof distanceBetweenOfferAndUser === 'number' &&
+    distanceBetweenOfferAndUser <= offerAroundRadius
+      ? true
+      : false
+  return isUserInsideOfferArroundRadius
 }
