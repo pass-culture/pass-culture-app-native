@@ -94,7 +94,7 @@ describe('buildQueryOptions', () => {
     })
 
     it('should fetch with all given search parameters', () => {
-      const offerCategories = ['LECON', 'VISITE']
+      const offerCategories = [SearchGroupNameEnum.COURS, SearchGroupNameEnum.VISITE]
       const offerTypes = {
         isDigital: true,
         isEvent: false,
@@ -121,7 +121,12 @@ describe('buildQueryOptions', () => {
       expect(filters.filters).toStrictEqual({
         all: [
           { [AppSearchFields.is_digital]: 1 },
-          { [AppSearchFields.category]: ['LECON', 'VISITE'] },
+          {
+            [AppSearchFields.search_group_name]: [
+              SearchGroupNameEnum.COURS,
+              SearchGroupNameEnum.VISITE,
+            ],
+          },
           educationalFilter,
           { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.venue_position]: { center: '42, 43', distance: 123, unit: 'km' } },
@@ -129,8 +134,8 @@ describe('buildQueryOptions', () => {
       })
     })
 
-    it('should fetch event offers for categories pratique & spectacle around me', () => {
-      const offerCategories = ['PRATIQUE', 'SPECTACLE']
+    it('should fetch event offers for categories cours & spectacle around me', () => {
+      const offerCategories = [SearchGroupNameEnum.COURS, SearchGroupNameEnum.SPECTACLE]
       const offerTypes = {
         isDigital: false,
         isEvent: true,
@@ -151,7 +156,12 @@ describe('buildQueryOptions', () => {
       expect(filters.filters).toStrictEqual({
         all: [
           { [AppSearchFields.is_event]: 1 },
-          { [AppSearchFields.category]: ['PRATIQUE', 'SPECTACLE'] },
+          {
+            [AppSearchFields.search_group_name]: [
+              SearchGroupNameEnum.COURS,
+              SearchGroupNameEnum.SPECTACLE,
+            ],
+          },
           educationalFilter,
           { [AppSearchFields.prices]: { to: 30000 } },
           { [AppSearchFields.venue_position]: { center: '42, 43', distance: 123, unit: 'km' } },
@@ -159,8 +169,8 @@ describe('buildQueryOptions', () => {
       })
     })
 
-    it('should fetch duo & free event offers for categories pratique & spectacle around me', () => {
-      const offerCategories = ['PRATIQUE', 'SPECTACLE']
+    it('should fetch duo & free event offers for categories cours & spectacle around me', () => {
+      const offerCategories = [SearchGroupNameEnum.COURS, SearchGroupNameEnum.SPECTACLE]
       const priceRange = [5, 40]
       const offerTypes = {
         isDigital: false,
@@ -183,7 +193,12 @@ describe('buildQueryOptions', () => {
       expect(filters.filters).toStrictEqual({
         all: [
           { [AppSearchFields.is_event]: 1 },
-          { [AppSearchFields.category]: ['PRATIQUE', 'SPECTACLE'] },
+          {
+            [AppSearchFields.search_group_name]: [
+              SearchGroupNameEnum.COURS,
+              SearchGroupNameEnum.SPECTACLE,
+            ],
+          },
           { [AppSearchFields.is_duo]: 1 },
           educationalFilter,
           { [AppSearchFields.prices]: { from: 500, to: 4000 } },
