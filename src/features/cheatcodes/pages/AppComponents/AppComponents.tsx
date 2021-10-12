@@ -29,6 +29,7 @@ import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -83,6 +84,7 @@ import { Duo } from 'ui/svg/icons/Duo'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { DuoPerson } from 'ui/svg/icons/DuoPerson'
 import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Eye } from 'ui/svg/icons/Eye'
@@ -113,6 +115,7 @@ import { OfferOutings } from 'ui/svg/icons/OfferOutings'
 import { OfferOutingsPhysical } from 'ui/svg/icons/OfferOutingsPhysical'
 import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
+import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
@@ -165,8 +168,11 @@ export const AppComponents: FunctionComponent = () => {
   const [radioButtonChoice, setRadioButtonChoice] = useState('')
   const { campaign, source, medium, campaignDate } = useUtmParams()
   const [popOverIconString, setPopOverIconString] = useState<string>()
+  const [callToActionIconString, setCallToActionIconString] = useState<string>()
+  const [callToActionMessage, setCallToActionMessage] = useState<string>()
 
-  const PopOverIcon = matchSubscriptionMessagePopOverIconToSvg(popOverIconString)
+  const PopOverIcon = matchSubscriptionMessagePopOverIconToSvg(popOverIconString, true)
+  const CallToActionIcon = matchSubscriptionMessagePopOverIconToSvg(callToActionIconString)
 
   function navigateToIdCheckUnavailable() {
     navigate('IdCheckUnavailable')
@@ -273,6 +279,7 @@ export const AppComponents: FunctionComponent = () => {
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Close} disabled />
+        <ButtonQuaternaryBlack title="Se connecter" onPress={onButtonPress} icon={Close} />
         {/* Buttons: With linear gradient */}
         <Typo.Title4>Button - With linear gradient</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
@@ -468,6 +475,14 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Email size={ICON_SIZE} />
           <Text> - Email </Text>
+        </AlignedText>
+        <AlignedText>
+          <EmailFilled size={ICON_SIZE} />
+          <Text> - Email filled </Text>
+        </AlignedText>
+        <AlignedText>
+          <PhoneFilled size={ICON_SIZE} />
+          <Text> - Phone filled </Text>
         </AlignedText>
         <AlignedText>
           <ExternalSite size={ICON_SIZE} />
@@ -822,6 +837,8 @@ export const AppComponents: FunctionComponent = () => {
         <Text>Long texte</Text>
         <View>
           <IdCheckProcessingBadge
+            callToActionIcon={CallToActionIcon}
+            callToActionMessage={callToActionMessage}
             icon={PopOverIcon}
             message={`Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu'on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`}
             lastUpdated={`2021-10-25T13:24Z`}
@@ -832,6 +849,23 @@ export const AppComponents: FunctionComponent = () => {
           <Button title="Clock" onPress={() => setPopOverIconString('Clock')} />
           <Button title="No key" onPress={() => setPopOverIconString(undefined)} />
           <Button title="Unknown key" onPress={() => setPopOverIconString('Blablou')} />
+        </AlignedText>
+        <Text>Affichage Call To Action message</Text>
+        <AlignedText>
+          <Button
+            title="Toggle Call To Action"
+            onPress={() => {
+              return callToActionMessage
+                ? setCallToActionMessage(undefined)
+                : setCallToActionMessage('Tu peux cliquer ici')
+            }}
+          />
+        </AlignedText>
+        <Text>Affichage icône CTA</Text>
+        <AlignedText>
+          <Button title="Email" onPress={() => setCallToActionIconString('EMAIL')} />
+          <Button title="No key" onPress={() => setCallToActionIconString(undefined)} />
+          <Button title="Unknown key" onPress={() => setCallToActionIconString('Blablou')} />
         </AlignedText>
 
         <Spacer.Column numberOfSpaces={4} />
