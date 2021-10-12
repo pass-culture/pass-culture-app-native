@@ -57,6 +57,7 @@ Array [
       }
     >
       <Text
+        color="#151515"
         style={
           Array [
             Object {
@@ -106,6 +107,7 @@ exports[`IdCheckProcessingBadge should not display last update sentence if lastU
     }
   >
     <Text
+      color="#151515"
       style={
         Array [
           Object {
