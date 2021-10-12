@@ -188,6 +188,7 @@ msgid "Aucun résultat"
 msgstr "Aucun résultat"
 
 #: src/libs/storage.ts
+#: src/libs/storage.ts
 msgid "Aucune valeur à sauvegarder"
 msgstr "Aucune valeur à sauvegarder"
 
@@ -511,13 +512,13 @@ msgstr "Culture scientifique"
 msgid "Date"
 msgstr "Date"
 
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Date d'anniversaire - Formulaire"
-msgstr "Date d'anniversaire - Formulaire"
-
 #: src/features/search/sections/titles.ts
 msgid "Date de l'offre"
 msgstr "Date de l'offre"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Date de naissance - Formulaire"
+msgstr "Date de naissance - Formulaire"
 
 #: src/features/search/sections/OfferDate.tsx
 msgid "Date précise"
@@ -666,6 +667,14 @@ msgstr "En voir plus"
 msgid "Enregistrer"
 msgstr "Enregistrer"
 
+#: src/features/auth/signup/SetEmail/SetEmail.tsx
+msgid "Entrée pour l'email"
+msgstr "Entrée pour l'email"
+
+#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
+msgid "Entrée pour le numéro de téléphone"
+msgstr "Entrée pour le numéro de téléphone"
+
 #: src/libs/fetch.ts
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
@@ -781,6 +790,10 @@ msgstr "Id Check indisponible"
 msgid "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 msgstr "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
 
+#: src/features/venue/pages/VenueNotFound.tsx
+msgid "Il est possible que ce lieu soit désactivé ou n'existe pas."
+msgstr "Il est possible que ce lieu soit désactivé ou n'existe pas."
+
 #: src/features/offer/pages/OfferNotFound.tsx
 msgid "Il est possible que cette offre soit désactivée ou n'existe pas."
 msgstr "Il est possible que cette offre soit désactivée ou n'existe pas."
@@ -805,6 +818,42 @@ msgstr "Informations personnelles"
 #: src/features/profile/components/LoggedOutHeader.tsx
 msgid "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
 msgstr "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
+
+#: src/features/profile/pages/NotificationSettings.tsx
+msgid "Interrupteur autorisation d'envoi des emails"
+msgstr "Interrupteur autorisation d'envoi des emails"
+
+#: src/features/profile/pages/ConsentSettings.tsx
+msgid "Interrupteur données de navigation"
+msgstr "Interrupteur données de navigation"
+
+#: src/features/search/sections/Date.tsx
+msgid "Interrupteur filtre dates"
+msgstr "Interrupteur filtre dates"
+
+#: src/features/search/sections/Hour.tsx
+msgid "Interrupteur filtre heures"
+msgstr "Interrupteur filtre heures"
+
+#: src/features/search/sections/NewOffer.tsx
+msgid "Interrupteur filtre nouvelles offres"
+msgstr "Interrupteur filtre nouvelles offres"
+
+#: src/features/search/sections/DuoOffer.tsx
+msgid "Interrupteur filtre offres duo"
+msgstr "Interrupteur filtre offres duo"
+
+#: src/features/search/sections/FreeOffer.tsx
+msgid "Interrupteur filtre offres gratuites"
+msgstr "Interrupteur filtre offres gratuites"
+
+#: src/features/profile/pages/Profile.tsx
+msgid "Interrupteur géolocalisation"
+msgstr "Interrupteur géolocalisation"
+
+#: src/features/profile/pages/NotificationSettings.tsx
+msgid "Interrupteur push notifications"
+msgstr "Interrupteur push notifications"
 
 #: src/features/search/components/SearchLandingPage.tsx
 msgid "Je cherche"
@@ -958,6 +1007,14 @@ msgstr "Librairie"
 msgid "Lieu"
 msgstr "Lieu"
 
+#: src/features/venue/pages/VenueNotFound.tsx
+msgid "Lieu introuvable !"
+msgstr "Lieu introuvable !"
+
+#: src/features/venue/pages/VenueNotFound.tsx
+msgid "Lieu introuvable | Pass Culture"
+msgstr "Lieu introuvable | Pass Culture"
+
 #: src/features/search/pages/LocationFilter.tsx
 #: src/features/search/sections/titles.ts
 msgid "Localisation"
@@ -1105,6 +1162,10 @@ msgstr "Ne pas annuler"
 msgid "Ne pas archiver"
 msgstr "Ne pas archiver"
 
+#: src/features/bookings/components/BookingPropertiesSection.tsx
+msgid "Nom de la réservation"
+msgstr "Nom de la réservation"
+
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Nombre de place"
 msgstr "Nombre de place"
@@ -1129,6 +1190,10 @@ msgstr "Notifications"
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
 msgstr "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
+
+#: src/features/navigation/helpers.ts
+msgid "Nous n'arrivons pas à ouvrir ce lien : {url}"
+msgstr "Nous n'arrivons pas à ouvrir ce lien : {url}"
 
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
@@ -1344,6 +1409,10 @@ msgstr "Prix"
 msgid "Prix croissant"
 msgstr "Prix croissant"
 
+#: src/features/navigation/helpers.ts
+msgid "Problème technique ;("
+msgstr "Problème technique ;("
+
 #: src/features/profile/pages/Profile.tsx
 msgid "Problèmes pour ouvrir un lien ?"
 msgstr "Problèmes pour ouvrir un lien ?"
@@ -1445,6 +1514,7 @@ msgstr "Retour"
 #: src/features/navigation/PageNotFound.tsx
 #: src/features/offer/pages/OfferNotFound.tsx
 #: src/features/profile/pages/DeleteProfileSuccess.tsx
+#: src/features/venue/pages/VenueNotFound.tsx
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
@@ -1477,6 +1547,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 #: src/features/offer/components/OfferHeader.tsx
+#: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
 #: src/ui/components/headers/PageHeader.tsx
 msgid "Revenir en arrière"
@@ -1517,9 +1588,17 @@ msgstr "Réglages de notifications"
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
+#: src/features/search/components/SearchBox.tsx
+msgid "Réinitialiser la recherche"
+msgstr "Réinitialiser la recherche"
+
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Réinitialiser le mot de passe"
 msgstr "Réinitialiser le mot de passe"
+
+#: src/features/search/atoms/Buttons/ReinitializeFilters.tsx
+msgid "Réinitialiser les filtres"
+msgstr "Réinitialiser les filtres"
 
 #: src/features/bookings/components/EndedBookingItem.tsx
 msgid "Réservation annulée"
@@ -1741,6 +1820,11 @@ msgstr "Toute la culture"
 msgid "Toute la culture à portée de main"
 msgstr "Toute la culture à portée de main"
 
+#: src/libs/subcategories/mappings.ts
+#: src/libs/subcategories/useSearchGroupLabel.ts
+msgid "Toutes les catégories"
+msgstr "Toutes les catégories"
+
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 msgid "Transmettre un dossier"
 msgstr "Transmettre un dossier"
@@ -1792,8 +1876,8 @@ msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer da
 msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Tu dois avoir 16 ans pour t'inscrire"
-msgstr "Tu dois avoir 16 ans pour t'inscrire"
+msgid "Tu dois avoir"
+msgstr "Tu dois avoir"
 
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
@@ -1991,6 +2075,10 @@ msgstr "Valider ces options"
 msgid "Valider la date"
 msgstr "Valider la date"
 
+#: src/libs/monitoring/errors.ts
+msgid "Venue {venueId} could not be retrieved"
+msgstr "Venue {venueId} could not be retrieved"
+
 #: src/features/profile/pages/Profile.tsx
 msgid "Version"
 msgstr "Version"
@@ -2064,6 +2152,10 @@ msgstr "À activer avant le {date}"
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "ans pour t'inscrire"
+msgstr "ans pour t'inscrire"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "auteur"
@@ -2162,6 +2254,10 @@ msgstr "intervenant"
 #: src/features/bookings/components/EndedBookingItem.tsx
 msgid "jour de fin de résa"
 msgstr "le {date}"
+
+#: src/features/profile/components/IdCheckProcessingBadge.tsx
+msgid "last update"
+msgstr "Dossier mis à jour le : {day} à {hour}"
 
 #: src/features/bookings/helpers.ts
 msgid "le jour"
@@ -2268,6 +2364,10 @@ msgstr "type"
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "une initiative du Gouvernement financée par le ministère de la Culture."
 msgstr "une initiative du Gouvernement financée par le ministère de la Culture."
+
+#: src/libs/monitoring/errors.ts
+msgid "venueId is undefined"
+msgstr "venueId is undefined"
 
 #: src/ui/components/PartialAccordionDescription.tsx
 msgid "voir moins"
