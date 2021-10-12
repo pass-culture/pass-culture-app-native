@@ -65,7 +65,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         />
       )
     },
-    [position, isBeneficiary]
+    [position, isBeneficiary, labelMapping, mapping]
   )
 
   const showSeeMore =
