@@ -10,7 +10,9 @@ export function isUserBeneficiary(user: UserProfileResponse): boolean {
 }
 
 export function isUserExBeneficiary(user: UserProfileResponse, credit: Credit): boolean {
-  return user.isBeneficiary && credit.isExpired
+  const isExBeneficiary = user.isBeneficiary && credit.isExpired
+  const isExUnderageBeneficiary = isUserUnderageBeneficiary(user) && credit.isExpired
+  return isExBeneficiary || isExUnderageBeneficiary
 }
 
 export const computeCredit = (domainsCredit?: DomainsCredit | null) => {

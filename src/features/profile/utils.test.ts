@@ -52,9 +52,9 @@ describe('profile utils', () => {
       ${beneficiaryUser}         | ${nonExpiredCredit} | ${false}
       ${beneficiaryUser}         | ${expiredCredit}    | ${true}
       ${underageBeneficiaryUser} | ${nonExpiredCredit} | ${false}
-      ${underageBeneficiaryUser} | ${expiredCredit}    | ${false}
+      ${underageBeneficiaryUser} | ${expiredCredit}    | ${true}
     `(
-      'should return true only for beneficiary with expired credit',
+      'should return true only for beneficiary or underage beneficiary with expired credit',
       ({
         user,
         credit,
