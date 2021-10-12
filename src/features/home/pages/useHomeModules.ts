@@ -96,7 +96,7 @@ export const useHomeModules = (
     }
 
     homeModules[data.moduleId] = {
-      hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID'),
+      hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID') as SearchHit[],
       nbHits,
     }
   })

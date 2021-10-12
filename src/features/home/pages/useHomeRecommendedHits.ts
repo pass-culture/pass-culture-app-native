@@ -6,7 +6,7 @@ import { env } from 'libs/environment'
 import { GeoCoordinates, useGeolocation } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
-import { SearchHit } from 'libs/search'
+import { IncompleteSearchHit, SearchHit } from 'libs/search'
 import { useAlgoliaHits } from 'libs/search/fetch/useAlgoliaHits'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 import { useSearchHits } from 'libs/search/fetch/useSearchHits'
@@ -80,5 +80,5 @@ const useRecommendedHits = (ids: string[]): SearchHit[] => {
   )
 
   const results = data?.results || []
-  return (results as SearchHit[]).filter(filterHits).map(transformHits)
+  return (results as IncompleteSearchHit[]).filter(filterHits).map(transformHits) as SearchHit[]
 }
