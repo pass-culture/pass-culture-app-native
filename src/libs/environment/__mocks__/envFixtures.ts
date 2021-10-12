@@ -19,7 +19,7 @@ export const env: Environment = {
   CONTENTFUL_ENVIRONMENT: 'environment',
   CONTENTFUL_SPACE_ID: 'contentfulSpaceId',
   COOKIES_POLICY_LINK: 'https://passculture.cookies',
-  CULTURAL_SURVEY_TYPEFORM_URL: 'BATCH_VAPID_PUBLIC_KEY',
+  CULTURAL_SURVEY_TYPEFORM_ID: 'TYPEFORM_FORM_ID',
   DATA_PRIVACY_CHART_LINK: 'https://passculture.data-privacy-chart',
   DOC_CGU_URL:
     'https//docs.passculture.app/textes-normatifs/mentions-legales-et-conditions-generales-dutilisation-de-lapplication-pass-culture',

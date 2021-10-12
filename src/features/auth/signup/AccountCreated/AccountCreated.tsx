@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -16,7 +17,7 @@ export function AccountCreated() {
   const { data: user } = useUserProfileInfo()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const shouldNavigateToCulturalSurvey = user?.isBeneficiary && user?.needsToFillCulturalSurvey
+  const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 
   function onPress() {
     if (shouldNavigateToCulturalSurvey) {
