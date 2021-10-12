@@ -3,6 +3,7 @@ import {
   routes as idCheckRoutes,
   initialRouteName as idCheckInitialRouteName,
   withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
+  EduConnect,
 } from '@pass-culture/id-check'
 
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
@@ -363,6 +364,12 @@ const routesBeforeReleaseCheck: Route[] = [
     component: IdCheckUnavailable,
     path: 'idcheck-indisponible',
     options: { title: t`Id Check indisponible` },
+  },
+  {
+    name: 'EduConnect',
+    component: EduConnect,
+    path: 'educonnect',
+    options: { title: t`EduConnect` },
   },
   {
     name: 'Venue',
