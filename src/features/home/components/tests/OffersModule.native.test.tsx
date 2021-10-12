@@ -2,14 +2,17 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
+import {
+  SearchParametersFields,
+  DisplayParametersFields,
+} from 'features/home/contentful/contentful'
 import { analytics } from 'libs/analytics'
-import { transformHit } from 'libs/search'
+import { SearchHit, transformHit } from 'libs/search'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
-import { SearchParametersFields, DisplayParametersFields } from '../../contentful/contentful'
 import { OffersModule } from '../OffersModule'
 
 mockdate.set(new Date(2020, 10, 16))
@@ -21,7 +24,7 @@ const props = {
     title: 'Module title',
     layout: 'one-item-medium',
   } as DisplayParametersFields,
-  hits: mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')),
+  hits: mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')) as SearchHit[],
   nbHits: mockedAlgoliaResponse.nbHits,
   cover: null,
   position: null,

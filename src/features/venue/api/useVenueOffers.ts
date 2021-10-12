@@ -5,6 +5,7 @@ import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
 import { filterAlgoliaHit, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { QueryKeys } from 'libs/queryKeys'
+import { SearchHit } from 'libs/search'
 import { fetchVenueOffers } from 'libs/search/fetch/search'
 
 export const useVenueOffers = (venueId: number) => {
@@ -17,7 +18,7 @@ export const useVenueOffers = (venueId: number) => {
     () => fetchVenueOffers(params, isUserUnderageBeneficiary),
     {
       select: ({ hits, nbHits }) => ({
-        hits: uniqBy(hits.filter(filterAlgoliaHit).map(transformHits), 'objectID'),
+        hits: uniqBy(hits.filter(filterAlgoliaHit).map(transformHits), 'objectID') as SearchHit[],
         nbHits,
       }),
     }
