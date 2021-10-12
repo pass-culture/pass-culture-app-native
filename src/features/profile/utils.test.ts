@@ -1,7 +1,15 @@
+import { UserProfileResponse } from 'api/gen'
+import { Credit } from 'features/home/services/useAvailableCredit'
+import { expiredCredit, nonExpiredCredit } from 'fixtures/credit'
+import { beneficiaryUser, nonBeneficaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Info } from 'ui/svg/icons/Info'
 
-import { computeCredit, matchSubscriptionMessagePopOverIconToSvg } from './utils'
+import {
+  computeCredit,
+  matchSubscriptionMessagePopOverIconToSvg,
+  isUserExBeneficiary,
+} from './utils'
 
 const domainsCredit = {
   all: { initial: 50000, remaining: 40000 },
@@ -35,5 +43,29 @@ describe('profile utils', () => {
       const returnedIcon = matchSubscriptionMessagePopOverIconToSvg('I am an unknown string')
       expect(returnedIcon).toEqual(undefined)
     })
+  })
+  describe('Compute is user Ex-beneficiary', () => {
+    it.each`
+      user                       | credit              | expected
+      ${nonBeneficaryUser}       | ${nonExpiredCredit} | ${false}
+      ${nonBeneficaryUser}       | ${expiredCredit}    | ${false}
+      ${beneficiaryUser}         | ${nonExpiredCredit} | ${false}
+      ${beneficiaryUser}         | ${expiredCredit}    | ${true}
+      ${underageBeneficiaryUser} | ${nonExpiredCredit} | ${false}
+      ${underageBeneficiaryUser} | ${expiredCredit}    | ${false}
+    `(
+      'should return true only for beneficiary with expired credit',
+      ({
+        user,
+        credit,
+        expected,
+      }: {
+        user: UserProfileResponse
+        credit: Credit
+        expected: boolean
+      }) => {
+        expect(isUserExBeneficiary(user, credit)).toEqual(expected)
+      }
+    )
   })
 })
