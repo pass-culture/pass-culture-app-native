@@ -35,6 +35,8 @@ export const matchSubscriptionMessagePopOverIconToSvg = (
   useFallbackIcon?: boolean | undefined
 ) => {
   switch (iconName) {
+    case undefined:
+      return undefined
     case 'Clock':
       return Clock
     case 'EMAIL':

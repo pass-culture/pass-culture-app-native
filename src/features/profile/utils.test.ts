@@ -31,6 +31,10 @@ describe('profile utils', () => {
       const returnedIcon = matchSubscriptionMessagePopOverIconToSvg(undefined)
       expect(returnedIcon).toEqual(undefined)
     })
+    it('should return no icon if undefined is passed and fallback is true', () => {
+      const returnedIcon = matchSubscriptionMessagePopOverIconToSvg(undefined, true)
+      expect(returnedIcon).toEqual(undefined)
+    })
     it("should return Clock if 'Clock' is passed", () => {
       const returnedIcon = matchSubscriptionMessagePopOverIconToSvg('Clock')
       expect(returnedIcon).toEqual(Clock)
