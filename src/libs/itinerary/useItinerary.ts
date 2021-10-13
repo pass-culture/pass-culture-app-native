@@ -6,6 +6,7 @@ import { AppEnum } from 'react-native-launch-navigator/enum'
 
 import { Coordinates } from 'api/gen'
 import { openExternalUrl } from 'features/navigation/helpers'
+import { MonitoringError } from 'libs/monitoring'
 import { getOpenStreetMapUrl } from 'libs/parsers/getOpenStreetMapUrl'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -63,7 +64,10 @@ export const useItinerary = () => {
   }
   const navigateTo = (coordinates: Required<Coordinates>) => {
     if (availableApps === undefined) return
-    if (availableApps.length === 0) navigateWithOpenStreetMap(coordinates)
+    if (availableApps.length === 0) {
+      new MonitoringError('availableApps == []', 'NoAppsForItineraryError')
+      navigateWithOpenStreetMap(coordinates)
+    }
     if (availableApps.length === 1) {
       navigateToWithApp(coordinates, availableApps[0], BackupSolution.OPEN_STREET_MAP)
       return
