@@ -25,8 +25,22 @@ export const RATIO_BUSINESS = 1 / 3
 export const RATIO_HOME_IMAGE = 2 / 3
 export const RATIO_EXCLU = 5 / 6
 
-enum Breakpoints {
-  SM = 600,
+/**
+ * Breakpoint	Class infix	Dimensions
+ X-Small	None	<576px
+ Small	sm	≥576px
+ Medium	md	≥960px
+ Large	lg	≥1024px
+ Extra large	xl	≥1200px
+ Extra extra large	xxl	≥1400px
+ */
+export enum Breakpoints {
+  XS = 0,
+  SM = 576,
+  MD = 960,
+  LG = 1024,
+  XL = 1200,
+  XXL = 1400,
 }
 
 interface Grid {

@@ -2,12 +2,14 @@ import {
   DocumentTitleOptions,
   NavigationContainer,
   NavigationContainerRef,
+  NavigationState,
   Theme,
 } from '@react-navigation/native'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
+import { NavigationStateChangeProvider } from 'features/navigation/RootNavigator/NavigationStateChangeContext'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { ColorsEnum } from 'ui/theme'
@@ -29,6 +31,7 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
 
 export const AppNavigationContainer = () => {
   const { hideSplashScreen } = useSplashScreenContext()
+  const [state, setState] = useState<NavigationState | undefined>()
 
   useEffect(() => {
     return () => {
@@ -50,17 +53,24 @@ export const AppNavigationContainer = () => {
     }
   }
 
+  function onStateChange(state: NavigationState | undefined) {
+    onNavigationStateChange(state)
+    setState(state)
+  }
+
   return (
-    <NavigationContainer
-      linking={linking}
-      onStateChange={onNavigationStateChange}
-      fallback={<LoadingPage />}
-      ref={setRef}
-      onReady={onReady}
-      documentTitle={DOCUMENT_TITLE_OPTIONS}
-      theme={NAV_THEME_CONFIG}>
-      <RootNavigator />
-    </NavigationContainer>
+    <NavigationStateChangeProvider state={state}>
+      <NavigationContainer
+        linking={linking}
+        onStateChange={onStateChange}
+        fallback={<LoadingPage />}
+        ref={setRef}
+        onReady={onReady}
+        documentTitle={DOCUMENT_TITLE_OPTIONS}
+        theme={NAV_THEME_CONFIG}>
+        <RootNavigator />
+      </NavigationContainer>
+    </NavigationStateChangeProvider>
   )
 }
 

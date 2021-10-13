@@ -1,5 +1,4 @@
-import { createContext, useCallback, useContext, memo, useState } from 'react'
-import React from 'react'
+import React, { createContext, useCallback, useContext, memo, useState } from 'react'
 import SplashScreen from 'react-native-splash-screen'
 
 interface SplashScreenContext {

@@ -57,6 +57,14 @@ const routesBeforeReleaseCheck: TabRoute[] = [
 
 export const routes = redirectUnreleasedScreens(routesBeforeReleaseCheck)
 
+export const menu: Record<string, string> = {
+  Home: t`Accueil`,
+  Search: t`Recherche`,
+  Bookings: t`Réservations`,
+  Favorites: t`Favoris`,
+  Profile: t`Profil`,
+}
+
 export const { screensConfig: tabScreensConfig, Screens: TabScreens } = getScreensAndConfig(
   routes,
   TabStack.Screen

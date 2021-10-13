@@ -112,7 +112,7 @@ export function BookingDetails() {
   }
 
   return (
-    <React.Fragment>
+    <Container>
       <ScrollView
         onScroll={onScroll}
         scrollEventThrottle={20}
@@ -182,9 +182,14 @@ export function BookingDetails() {
         onDismiss={hideArchiveModal}
       />
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const OfferRules = styled(Typo.Caption)({
   color: ColorsEnum.GREY_DARK,
