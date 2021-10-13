@@ -30,7 +30,7 @@ export const useIsUserUnderageBeneficiary = () => {
   return isUserUnderageBeneficiary(user)
 }
 
-export const matchSubscriptionMessagePopOverIconToSvg = (
+export const matchSubscriptionMessageIconToSvg = (
   iconName: string | undefined,
   useFallbackIcon?: boolean | undefined
 ) => {

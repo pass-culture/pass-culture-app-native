@@ -5,11 +5,7 @@ import { beneficiaryUser, nonBeneficaryUser, underageBeneficiaryUser } from 'fix
 import { Clock } from 'ui/svg/icons/Clock'
 import { Info } from 'ui/svg/icons/Info'
 
-import {
-  computeCredit,
-  matchSubscriptionMessagePopOverIconToSvg,
-  isUserExBeneficiary,
-} from './utils'
+import { computeCredit, matchSubscriptionMessageIconToSvg, isUserExBeneficiary } from './utils'
 
 const domainsCredit = {
   all: { initial: 50000, remaining: 40000 },
@@ -26,25 +22,25 @@ describe('profile utils', () => {
       expect(computeCredit(null)).toEqual(0)
     })
   })
-  describe('Match PopOverIcon string to SVG', () => {
+  describe('Match Icon string to SVG', () => {
     it('should return no icon if undefined is passed', () => {
-      const returnedIcon = matchSubscriptionMessagePopOverIconToSvg(undefined)
+      const returnedIcon = matchSubscriptionMessageIconToSvg(undefined)
       expect(returnedIcon).toEqual(undefined)
     })
     it('should return no icon if undefined is passed and fallback is true', () => {
-      const returnedIcon = matchSubscriptionMessagePopOverIconToSvg(undefined, true)
+      const returnedIcon = matchSubscriptionMessageIconToSvg(undefined, true)
       expect(returnedIcon).toEqual(undefined)
     })
     it("should return Clock if 'Clock' is passed", () => {
-      const returnedIcon = matchSubscriptionMessagePopOverIconToSvg('Clock')
+      const returnedIcon = matchSubscriptionMessageIconToSvg('Clock')
       expect(returnedIcon).toEqual(Clock)
     })
     it('should return Info if unknown string is passed and fallbackIcon is true', () => {
-      const returnedIcon = matchSubscriptionMessagePopOverIconToSvg('I am an unknown string', true)
+      const returnedIcon = matchSubscriptionMessageIconToSvg('I am an unknown string', true)
       expect(returnedIcon).toEqual(Info)
     })
     it('should return no icon if unknown string is passed and fallback is false', () => {
-      const returnedIcon = matchSubscriptionMessagePopOverIconToSvg('I am an unknown string')
+      const returnedIcon = matchSubscriptionMessageIconToSvg('I am an unknown string')
       expect(returnedIcon).toEqual(undefined)
     })
   })
