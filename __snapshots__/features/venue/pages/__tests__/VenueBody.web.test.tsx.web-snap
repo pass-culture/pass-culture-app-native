@@ -770,6 +770,48 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(199, 199, 204); height: 1px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 24px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: flex-start;"
+            >
+              <div
+                aria-label="Voir l'itinéraire"
+                class="css-view-1dbjc4n"
+                data-testid="Voir l'itinéraire"
+                style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 20px; justify-content: center; margin-top: 0px; max-width: 500px; padding: 0px 0px 0px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: auto;"
+                tabindex="0"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+                >
+                  Voir l'itinéraire
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
               style="height: 24px;"
             />
           </div>
@@ -2042,6 +2084,48 @@ Object {
             style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
           >
             1 boulevard Poissonnière, 75000 Paris
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(199, 199, 204); height: 1px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 24px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: flex-start;"
+          >
+            <div
+              aria-label="Voir l'itinéraire"
+              class="css-view-1dbjc4n"
+              data-testid="Voir l'itinéraire"
+              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 20px; justify-content: center; margin-top: 0px; max-width: 500px; padding: 0px 0px 0px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: auto;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-1dbjc4n"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+              >
+                Voir l'itinéraire
+              </div>
+            </div>
           </div>
           <div
             class="css-view-1dbjc4n"
