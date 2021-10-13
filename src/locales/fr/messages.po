@@ -626,6 +626,10 @@ msgid "EAN"
 msgstr "EAN"
 
 #: src/features/navigation/RootNavigator/routes.ts
+msgid "EduConnect"
+msgstr "EduConnect"
+
+#: src/features/navigation/RootNavigator/routes.ts
 msgid "Email - Formulaire"
 msgstr "Email - Formulaire"
 
@@ -868,8 +872,8 @@ msgid "Je veux recevoir des recommandations personnalisées de la part du pass C
 msgstr "Je veux recevoir des recommandations personnalisées de la part du pass Culture."
 
 #: src/features/profile/pages/NotificationSettings.tsx
-msgid "Je veux recevoir les actualités et les meilleures offres du pass Culture par e‑mail."
-msgstr "Je veux recevoir les actualités et les meilleures offres du pass Culture par e‑mail."
+msgid "Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture."
+msgstr "Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture."
 
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
