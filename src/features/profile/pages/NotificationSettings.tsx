@@ -158,7 +158,7 @@ export function NotificationSettings() {
         <Separator />
         <Line>
           <SettingExplanation>
-            {t`Je veux recevoir les actualités et les meilleures offres du pass Culture par e\u2011mail.`}
+            {t`Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.`}
           </SettingExplanation>
           <Spacer.Column numberOfSpaces={4} />
           <SectionRow
