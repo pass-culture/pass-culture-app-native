@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'tests/utils'
 import { BicolorSelector, computeBicolorSelectorHeight } from 'ui/svg/icons/BicolorSelector'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, Spacer, getSpacing, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
+import { ColorsEnum, Spacer, getSpacing } from 'ui/theme'
 
 const SELECTOR_WIDTH = getSpacing(11)
 const SELECTOR_HEIGHT = computeBicolorSelectorHeight(SELECTOR_WIDTH)
@@ -42,12 +42,14 @@ export const TabBarComponent: React.FC<TabComponentInterface> = (props) => {
     </TabComponentContainer>
   )
 }
+
 const BicolorSelectorPlaceholder = styled.View({
   height: SELECTOR_HEIGHT,
 })
-const TabComponentContainer = styled.TouchableOpacity({
+
+const TabComponentContainer = styled.TouchableOpacity(({ theme }) => ({
   marginTop: -getSpacing(1 / 4),
-  height: TAB_BAR_COMP_HEIGHT,
+  height: theme.tabBarHeight,
   flex: 1,
   alignItems: 'center',
-})
+}))

@@ -17,6 +17,8 @@ export enum ColorsEnum {
   TERTIARY = '#cc1673',
   TRANSPARENT = 'transparent',
   WHITE = '#ffffff',
+  BRAND = '#870087',
+  BRAND_DARK = '#070C36',
 }
 export enum UniqueColors {
   TAB_BAR = '#fffffff8',

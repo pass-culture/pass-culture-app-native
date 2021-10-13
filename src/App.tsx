@@ -7,7 +7,6 @@ import 'react-native-get-random-values' // required for `uuid` module to work
 import { AppState, AppStateStatus, LogBox } from 'react-native'
 import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
-import { ThemeProvider } from 'styled-components/native'
 
 import './why-did-you-render'
 import 'intl'
@@ -31,6 +30,7 @@ import { useStartBatchNotification } from 'libs/notifications'
 import { queryClient } from 'libs/queryClient'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { SplashScreenProvider } from 'libs/splashscreen'
+import { ThemeProvider } from 'libs/styled/ThemeProvider'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 

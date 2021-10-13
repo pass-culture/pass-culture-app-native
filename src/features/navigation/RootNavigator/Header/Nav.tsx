@@ -1,20 +1,20 @@
-import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { BicolorFavoriteCount } from 'features/favorites/atoms/BicolorFavoriteCount'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { isPrivateScreen } from 'features/navigation/RootNavigator/linking/getScreensConfig'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { TabParamList, TabRouteName } from 'features/navigation/TabBar/types'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
-
-import { TabBarComponent } from './TabBarComponent'
-import { TabRouteName } from './types'
+import { NavItem } from './NavItem'
 
 function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
   switch (route) {
@@ -31,17 +31,28 @@ function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
   }
 }
 
-type TabBarProps = {
-  hidden?: boolean
-} & Pick<BottomTabBarProps<BottomTabBarOptions>, 'state' | 'navigation'>
+export type NavRoute = { name: keyof TabParamList }
 
-export const TabBar: React.FC<TabBarProps> = ({ navigation, state, hidden }) => {
+export type NavState = {
+  index: number
+  routes: Array<NavRoute>
+}
+
+type NavProps = {
+  maxWidth?: number
+  height?: number
+  noShadow?: boolean
+  hidden?: boolean
+  state: NavState
+}
+
+export const Nav: React.FC<NavProps> = ({ state, maxWidth, height, noShadow, hidden }) => {
   const { bottom } = useCustomSafeInsets()
   if (hidden) {
     return null
   }
   return (
-    <MainContainer>
+    <MainContainer maxWidth={maxWidth} height={height} noShadow={noShadow}>
       <RowContainer>
         <Spacer.Row numberOfSpaces={4} />
         {state.routes.map((route, index) => {
@@ -49,18 +60,12 @@ export const TabBar: React.FC<TabBarProps> = ({ navigation, state, hidden }) => 
           const isSelected = state.index === index
           const onPress = () => {
             if (isSelected) return
-            const event = navigation.emit({
-              type: 'tabPress',
-              target: route.key,
-              canPreventDefault: true,
-            })
-            if (!event.defaultPrevented) {
-              navigation.navigate(route.name)
-            }
+            navigationRef?.current?.navigate(...getTabNavConfig(route.name, undefined))
           }
           return (
-            <TabBarComponent
-              key={`key-tab-nav-${index}-${route.key}`}
+            <NavItem
+              height={height}
+              key={`key-tab-nav-${index}-${route.name}`}
               tabName={route.name}
               isSelected={isSelected}
               bicolorIcon={mapRouteToIcon(route.name as TabRouteName)}
@@ -74,7 +79,6 @@ export const TabBar: React.FC<TabBarProps> = ({ navigation, state, hidden }) => 
     </MainContainer>
   )
 }
-
 const RowContainer = styled.View({
   flexDirection: 'row',
 })
@@ -83,21 +87,28 @@ const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight })
   height: safeHeight,
 }))
 
-const MainContainer = styled.View(({ theme }) => ({
+const MainContainer = styled.View<{
+  maxWidth?: number
+  height?: number
+  noShadow?: boolean
+}>(({ maxWidth, theme, height, noShadow }) => ({
+  height: height ?? theme.appBarHeight,
   alignItems: 'center',
-  border: getSpacing(1 / 4),
-  borderColor: theme.colors.greyLight,
-  backgroundColor: theme.uniqueColors.tabBar,
+  backgroundColor: 'transparent',
   width: '100%',
+  maxWidth,
   position: 'absolute',
   bottom: 0,
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(1 / 4),
-    },
-    shadowRadius: getSpacing(1),
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.2,
-  }),
+  zIndex: theme.zIndexHeaderNav,
+  ...(!noShadow
+    ? getShadow({
+        shadowOffset: {
+          width: 0,
+          height: getSpacing(1 / 4),
+        },
+        shadowRadius: getSpacing(1),
+        shadowColor: theme.colors.black,
+        shadowOpacity: 0.2,
+      })
+    : {}),
 }))
