@@ -43,7 +43,7 @@ export const SearchFilter: React.FC = () => {
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
 
   return (
-    <React.Fragment>
+    <Container>
       <React.Fragment>
         <StyledScrollView ref={scrollViewRef}>
           <Spacer.TopScreen />
@@ -130,9 +130,14 @@ export const SearchFilter: React.FC = () => {
         <ShowResults />
         <Spacer.BottomScreen />
       </ShowResultsContainer>
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const StyledScrollView = styled(ScrollView)({ flex: 1 })
 const Separator = styled.View<{ marginVertical?: number; windowWidth: number }>((props) => ({

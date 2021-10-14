@@ -23,12 +23,16 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { padding, Spacer } from 'ui/theme'
+import { ColorsEnum, padding, Spacer } from 'ui/theme'
 
 const BadDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + '/unknown'
 const LoginDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + '/login'
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
+
+const contentContainerStyle = {
+  backgroundColor: ColorsEnum.WHITE,
+}
 
 export function Navigation(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -80,7 +84,7 @@ export function Navigation(): JSX.Element {
   }
 
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={contentContainerStyle}>
       <Spacer.TopScreen />
       <ModalHeader
         title="Navigation"

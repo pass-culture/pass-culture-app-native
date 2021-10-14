@@ -1,19 +1,20 @@
 import { StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
-export const ProfileContainer = styled.View({
+export const ProfileContainer = styled.View(({ theme }) => ({
   flex: 1,
+  backgroundColor: theme.colors.white,
   flexDirection: 'column',
   paddingHorizontal: getSpacing(5),
-})
+}))
 
-export const GreyContainer = styled.View({
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+export const GreyContainer = styled.View(({ theme }) => ({
+  backgroundColor: theme.colors.greyLight,
   borderRadius: 6,
   width: '100%',
-})
+}))
 
 export const accordionStyle = StyleSheet.create({
   title: {

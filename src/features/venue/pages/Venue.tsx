@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
@@ -18,10 +19,15 @@ export const Venue: FunctionComponent = () => {
   if (!venue) return <React.Fragment></React.Fragment>
 
   return (
-    <React.Fragment>
+    <Container>
       <VenueWebHeader venue={venue} />
       <VenueBody venueId={params.id} onScroll={onScroll} />
       <VenueHeader headerTransition={headerTransition} title={venue.name} venueId={venue.id} />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))

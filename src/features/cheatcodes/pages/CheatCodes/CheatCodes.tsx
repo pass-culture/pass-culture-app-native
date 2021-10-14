@@ -110,8 +110,9 @@ async function getBatchInstallationID() {
   }
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   alignItems: 'center',
   marginHorizontal: getSpacing(6),
-})
+  backgroundColor: theme.colors.white,
+}))

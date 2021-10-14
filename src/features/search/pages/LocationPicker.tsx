@@ -37,7 +37,7 @@ export const LocationPicker: React.FC = () => {
   }
 
   return (
-    <React.Fragment>
+    <Container>
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <StyledInput>
@@ -54,8 +54,13 @@ export const LocationPicker: React.FC = () => {
       <SuggestedPlaces query={debouncedValue} />
 
       <PageHeader title={t`Choisir un lieu`} />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const StyledInput = styled.View({ alignItems: 'center', marginHorizontal: getSpacing(6) })

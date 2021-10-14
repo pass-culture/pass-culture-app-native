@@ -41,7 +41,11 @@ export const CheatMenu: React.FC = () => {
   )
 }
 
-const Container = styled.View({ flex: 1, alignItems: 'center' })
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  alignItems: 'center',
+  backgroundColor: theme.colors.white,
+}))
 
 const CheatTouchableOpacity = styled.TouchableOpacity({
   borderColor: ColorsEnum.BLACK,
