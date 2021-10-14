@@ -35,7 +35,7 @@ const props: BusinessPane = {
 }
 
 describe('BusinessModule component', () => {
-  const openUrlSpy = jest.spyOn(Linking, 'openURL')
+  const openURLSpy = jest.spyOn(Linking, 'openURL')
   const homeAPISpy = jest.spyOn(HomeAPI, 'useUserProfileInfo')
   beforeEach(() => jest.clearAllMocks())
 
@@ -64,7 +64,7 @@ describe('BusinessModule component', () => {
     fireEvent.click(getByTestId('imageBusiness'))
 
     await waitForExpect(() => {
-      expect(openUrlSpy).toHaveBeenCalledWith('url')
+      expect(openURLSpy).toHaveBeenCalledWith('url')
     })
   })
 
@@ -80,7 +80,7 @@ describe('BusinessModule component', () => {
       expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
         message: 'Redirection en cours',
       })
-      expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email@domain.ext')
+      expect(openURLSpy).toHaveBeenCalledWith('some_url_with_email=email@domain.ext')
     })
   })
 
@@ -97,7 +97,7 @@ describe('BusinessModule component', () => {
 
     fireEvent.click(getByTestId('imageBusiness'))
     await waitForExpect(() =>
-      expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
+      expect(openURLSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
     )
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
     homeAPISpy.mockReset()
@@ -115,7 +115,7 @@ describe('BusinessModule component', () => {
     const { getByTestId } = renderModule({ ...props, url: 'some_url_with_no_email' })
 
     fireEvent.click(getByTestId('imageBusiness'))
-    await waitForExpect(() => expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_no_email'))
+    await waitForExpect(() => expect(openURLSpy).toHaveBeenCalledWith('some_url_with_no_email'))
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
     homeAPISpy.mockReset()
   })
