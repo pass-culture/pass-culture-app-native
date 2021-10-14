@@ -1,4 +1,5 @@
 import { OfferStockResponse } from 'api/gen'
+import { storage } from 'libs/storage'
 
 export enum OfferStatus {
   BOOKABLE = 'BOOKABLE',
@@ -28,4 +29,32 @@ export const getStatusFromStocks = (stocks: OfferStockResponse[], credit: number
   return bookableStocks.some(({ price }) => price <= credit)
     ? OfferStatus.BOOKABLE
     : OfferStatus.NOT_BOOKABLE
+}
+
+export const getTimesReviewHasBeenRequested = async () => {
+  // read the value in storage
+  const timesReviewHasBeenRequested = await storage.readObject('times_review_has_been_requested')
+  // if it exists return the value
+  if (timesReviewHasBeenRequested) {
+    return timesReviewHasBeenRequested
+  } else {
+    // sinon on initialise à 0
+    storage.saveObject('times_review_has_been_requested', 0)
+    return 0
+  }
+}
+
+export const getFirstTimeReviewHasBeenRequestedDate = async () => {
+  // read the value in storage
+  const firstTimeReviewHasBeenRequestedDate = await storage.readObject(
+    'first_time_review_has_been_requested_date'
+  )
+  // if it exists return the value
+  if (firstTimeReviewHasBeenRequestedDate) {
+    return firstTimeReviewHasBeenRequestedDate
+  } else {
+    // sinon on initialise à undefined
+    storage.saveObject('first_time_review_has_been_requested_date', undefined)
+    return undefined
+  }
 }

@@ -12,6 +12,8 @@ export type StorageKey =
   | 'traffic_medium'
   | 'traffic_source'
   | 'campaign_date'
+  | 'times_review_has_been_requested'
+  | 'first_time_review_has_been_requested_date'
 
 export const storage = {
   clear,
