@@ -6,7 +6,7 @@ import { fireEvent, render } from 'tests/utils'
 
 import { ExternalLink } from './ExternalLink'
 
-const openUrlSpy = jest.spyOn(Linking, 'openURL')
+const openURLSpy = jest.spyOn(Linking, 'openURL')
 const someUrl = 'https://domain-that-does-not-exist.fr'
 
 describe('ExternalLink', () => {
@@ -14,25 +14,25 @@ describe('ExternalLink', () => {
     const { getByText } = render(<ExternalLink url={someUrl} />)
     fireEvent.press(getByText('\u00a0' + someUrl))
     waitForExpect(() => {
-      expect(openUrlSpy).toHaveBeenCalledWith(someUrl)
-      expect(openUrlSpy).toHaveBeenCalledTimes(1)
+      expect(openURLSpy).toHaveBeenCalledWith(someUrl)
+      expect(openURLSpy).toHaveBeenCalledTimes(1)
     })
-    openUrlSpy.mockClear()
+    openURLSpy.mockClear()
   })
   it('should open given url when text clicked and text not matching url', () => {
     const text = 'anchor text'
     const { getByText } = render(<ExternalLink text={text} url={someUrl} />)
     fireEvent.press(getByText('\u00a0anchor'))
-    expect(openUrlSpy).toHaveBeenCalledWith(someUrl)
-    expect(openUrlSpy).toHaveBeenCalledTimes(1)
-    openUrlSpy.mockClear()
+    expect(openURLSpy).toHaveBeenCalledWith(someUrl)
+    expect(openURLSpy).toHaveBeenCalledTimes(1)
+    openURLSpy.mockClear()
   })
   it('should open given url when icon clicked', () => {
     const { getByTestId } = render(<ExternalLink url={someUrl} />)
     fireEvent.press(getByTestId('externalSiteIcon'))
-    expect(openUrlSpy).toHaveBeenCalledWith(someUrl)
-    expect(openUrlSpy).toHaveBeenCalledTimes(1)
-    openUrlSpy.mockClear()
+    expect(openURLSpy).toHaveBeenCalledWith(someUrl)
+    expect(openURLSpy).toHaveBeenCalledTimes(1)
+    openURLSpy.mockClear()
   })
 
   it('should display url with non breaking space when no text provided', () => {

@@ -4,14 +4,14 @@ import waitForExpect from 'wait-for-expect'
 import { openPhoneNumber, isValidFrenchPhoneNumber } from 'ui/components/contact/helpers'
 
 describe('openPhoneNumber', () => {
-  const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
+  const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
   const phoneNumber = '0610203040'
 
   it('should navigate phone keyboard with "telprompt:" if is iOS device', async () => {
     Platform.OS = 'ios'
     openPhoneNumber(phoneNumber)
     await waitForExpect(() => {
-      expect(openUrl).toBeCalledWith(`telprompt:${phoneNumber}`)
+      expect(openURL).toBeCalledWith(`telprompt:${phoneNumber}`)
     })
   })
 
@@ -19,7 +19,7 @@ describe('openPhoneNumber', () => {
     Platform.OS = 'android'
     openPhoneNumber(phoneNumber)
     await waitForExpect(() => {
-      expect(openUrl).toBeCalledWith(`tel:${phoneNumber}`)
+      expect(openURL).toBeCalledWith(`tel:${phoneNumber}`)
     })
   })
 })

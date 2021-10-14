@@ -14,26 +14,26 @@ describe('Navigation helpers', () => {
   afterEach(jest.clearAllMocks)
 
   it('should not capture links that doesnt start with the universal links domain', async () => {
-    const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
+    const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
     await openExternalUrl(link)
-    expect(openUrl).toBeCalledWith(link)
+    expect(openURL).toBeCalledWith(link)
   })
 
   it('should navigate to in-app screen and navigate to it (ex: Offer)', async () => {
-    const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
+    const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
     const path = getScreenPath('Offer', { id: 1, from: 'offer', moduleName: undefined })
     const link = WEBAPP_NATIVE_REDIRECTION_URL + `/${path}`
     await openExternalUrl(link)
-    expect(openUrl).not.toBeCalled()
+    expect(openURL).not.toBeCalled()
     expect(navigationRef.current?.navigate).toBeCalledWith('Offer', { id: 1, from: 'offer' })
   })
 
   it('should navigate to PageNotFound when in-app screen cannot be found (ex: Offer)', async () => {
-    const openUrl = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
+    const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
     const link = WEBAPP_NATIVE_REDIRECTION_URL + '/unknown'
     await openExternalUrl(link)
-    expect(openUrl).not.toBeCalled()
+    expect(openURL).not.toBeCalled()
     expect(navigationRef.current?.navigate).toBeCalledWith('PageNotFound', undefined)
   })
 
