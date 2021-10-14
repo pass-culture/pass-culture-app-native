@@ -94,6 +94,7 @@ const routesBeforeReleaseCheck: Route[] = [
     path: 'booking/:id/details',
     deeplinkPaths: ['reservation/:id/details'],
     options: { title: t`Détails de réservation` },
+    secure: true,
   },
   {
     name: 'BookingConfirmation',
@@ -101,6 +102,7 @@ const routesBeforeReleaseCheck: Route[] = [
     path: 'booking/:offerId/confirmation',
     deeplinkPaths: ['reservation/:offerId/confirmation'],
     options: { title: t`Confirmation de réservation` },
+    secure: true,
   },
   {
     name: 'EighteenBirthday',
@@ -158,6 +160,7 @@ const routesBeforeReleaseCheck: Route[] = [
     component: CulturalSurvey,
     path: 'questionnaire-culturel',
     options: { title: t`Questionnaire culturel` },
+    secure: true,
   },
   { name: 'DeeplinkImporter', component: DeeplinkImporter, path: 'importer-un-lien' },
   {
@@ -165,12 +168,14 @@ const routesBeforeReleaseCheck: Route[] = [
     component: EndedBookings,
     path: 'reservations-terminees',
     options: { title: t`Réservations terminées` },
+    secure: true,
   },
   {
     name: 'FavoritesSorts',
     component: FavoritesSorts,
     path: 'favoris/tri',
     options: { title: t`Tri des favoris` },
+    secure: true,
   },
   {
     name: 'ForgottenPassword',
@@ -190,6 +195,7 @@ const routesBeforeReleaseCheck: Route[] = [
     component: ConfirmDeleteProfile,
     path: 'profil/suppression',
     options: { title: t`Suppression profil` },
+    secure: true,
   },
   {
     name: 'DeleteProfileSuccess',
@@ -318,6 +324,7 @@ const routesBeforeReleaseCheck: Route[] = [
     name: 'NextBeneficiaryStep',
     component: NextBeneficiaryStep,
     path: 'id-check',
+    secure: true,
   },
   {
     name: 'SetPhoneNumber',
@@ -360,6 +367,7 @@ const routesBeforeReleaseCheck: Route[] = [
     component: IdCheckUnavailable,
     path: 'idcheck-indisponible',
     options: { title: t`Id Check indisponible` },
+    secure: true,
   },
   {
     name: 'EduConnect',

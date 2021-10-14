@@ -1,10 +1,11 @@
 import { PathConfigMap } from '@react-navigation/native'
-import React from 'react'
 import { ComponentType } from 'react'
 
 import { TabRoute } from 'features/navigation/TabBar/types'
 
 import { Route } from '../types'
+
+import { getScreenComponent } from './getScreenComponent'
 
 export function getScreensAndConfig(
   routes: Route[] | TabRoute[],
@@ -40,15 +41,6 @@ export function getScreensAndConfig(
     }
   })
   return { screensConfig, Screens }
-}
-
-function getScreenComponent(
-  name: string,
-  route: Route | TabRoute,
-  ScreenComponent: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
-): JSX.Element {
-  const component = route.hoc ? route.hoc(route.component) : route.component
-  return <ScreenComponent key={name} name={name} component={component} options={route.options} />
 }
 
 const PRIVATE_SCREEN_PREFIX = '_DeeplinkOnly'

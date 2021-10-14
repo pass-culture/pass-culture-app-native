@@ -39,6 +39,7 @@ const routesBeforeReleaseCheck: TabRoute[] = [
     component: Bookings,
     path: 'bookings',
     options: { title: t`Réservations` },
+    secure: true,
   },
   {
     name: 'Favorites',
