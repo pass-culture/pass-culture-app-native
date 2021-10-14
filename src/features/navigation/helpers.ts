@@ -20,12 +20,7 @@ export function navigateToBooking(bookingId: number) {
   navigationRef.current?.navigate('BookingDetails', { id: bookingId })
 }
 
-export async function openUrl(
-  url: string,
-  logEvent: boolean | undefined = true,
-  fallbackUrl?: string | undefined
-) {
-  if (isAppUrl(url)) {
+const openAppUrl = (url: string) => {
     try {
       const { screen, params } = getScreenFromDeeplink(url)
       return navigationRef.current?.navigate(screen, params)
@@ -33,6 +28,16 @@ export async function openUrl(
       // If an error is thrown, that means that no routes were matched
       return navigateToHome()
     }
+}
+
+
+export async function openUrl(
+  url: string,
+  logEvent: boolean | undefined = true,
+  fallbackUrl?: string | undefined
+) {
+  if (isAppUrl(url)) {
+    return openAppUrl(url)
   }
 
   try {
