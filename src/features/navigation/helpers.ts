@@ -2,11 +2,10 @@ import { t } from '@lingui/macro'
 import { Route, useNavigationState } from '@react-navigation/native'
 import { Alert, Linking } from 'react-native'
 
-import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
+import { isAppUrl } from 'features/navigation/RootNavigator/linking'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
-import { WEBAPP_V2_URL } from 'libs/environment'
 import { MonitoringError } from 'libs/monitoring'
 
 import { navigationRef } from './navigationRef'
@@ -26,8 +25,7 @@ export async function openUrl(
   logEvent: boolean | undefined = true,
   fallbackUrl?: string | undefined
 ) {
-  const isAppUrl = url.match('^' + WEBAPP_NATIVE_REDIRECTION_URL) || url.match('^' + WEBAPP_V2_URL)
-  if (isAppUrl) {
+  if (isAppUrl(url)) {
     try {
       const { screen, params } = getScreenFromDeeplink(url)
       return navigationRef.current?.navigate(screen, params)
