@@ -16,11 +16,11 @@ beforeEach(() => {
 
 describe('<IdCheckUnavailable/>', () => {
   it('should open DSM on click', () => {
-    const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
     const { getByText } = renderIdCheckUnavailable()
 
     fireEvent.press(getByText(`Transmettre un dossier`))
-    expect(openExternalUrl).toBeCalledWith(env.DSM_URL)
+    expect(openUrl).toBeCalledWith(env.DSM_URL)
   })
 
   it('should go back WHEN go back is clicked', () => {

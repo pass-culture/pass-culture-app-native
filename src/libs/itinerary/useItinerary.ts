@@ -5,7 +5,7 @@ import LN from 'react-native-launch-navigator'
 import { AppEnum } from 'react-native-launch-navigator/enum'
 
 import { Coordinates } from 'api/gen'
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { MonitoringError } from 'libs/monitoring'
 import { getOpenStreetMapUrl } from 'libs/parsers/getOpenStreetMapUrl'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
@@ -36,7 +36,7 @@ export const useItinerary = () => {
   }
   const navigateWithOpenStreetMap = (coordinates: Required<Coordinates>) => {
     const url = getOpenStreetMapUrl(coordinates)
-    openExternalUrl(url)
+    openUrl(url)
   }
   const navigateToWithApp = async (
     coordinates: Required<Coordinates>,

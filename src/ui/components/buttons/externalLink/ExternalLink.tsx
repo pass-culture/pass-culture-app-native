@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
@@ -19,7 +19,7 @@ export const ExternalLink: React.FC<Props> = ({ url, text, color, testID }) => {
   const [firstWord, remainingWords] = extractExternalLinkParts(text)
 
   return (
-    <Typo.ButtonText color={color} onPress={() => openExternalUrl(url)} testID={testID}>
+    <Typo.ButtonText color={color} onPress={() => openUrl(url)} testID={testID}>
       <Spacer.Row numberOfSpaces={1} />
       <Text>
         <ExternalLinkSite color={color} testID="externalSiteIcon" />

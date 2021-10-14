@@ -21,7 +21,7 @@ export function navigateToBooking(bookingId: number) {
   navigationRef.current?.navigate('BookingDetails', { id: bookingId })
 }
 
-export async function openExternalUrl(
+export async function openUrl(
   url: string,
   logEvent: boolean | undefined = true,
   fallbackUrl?: string | undefined

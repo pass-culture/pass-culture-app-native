@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { useVenue } from 'features/venue/api/useVenue'
 import { analytics } from 'libs/analytics'
 import { isValidFrenchPhoneNumber, openPhoneNumber, openMail } from 'ui/components/contact/helpers'
@@ -32,7 +32,7 @@ export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
   const onPressWebsite = useCallback(() => {
     if (!website) return
     analytics.logVenueContact({ type: 'website', venueId })
-    openExternalUrl(website)
+    openUrl(website)
   }, [website])
 
   if (!venue || !venue.contact) return <React.Fragment></React.Fragment>

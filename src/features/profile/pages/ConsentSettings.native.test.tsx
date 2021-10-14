@@ -90,13 +90,13 @@ describe('ConsentSettings', () => {
   })
 
   it('should open cookies policies on click on "Politique des cookies"', async () => {
-    const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
     const { getByText } = renderConsentSettings()
 
     fireEvent.press(getByText('Politique des cookies'))
 
     await superFlushWithAct(1)
-    expect(openExternalUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
+    expect(openUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
   })
 })
 

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { Credit } from 'features/home/services/useAvailableCredit'
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { hasEnoughCredit } from 'features/offer/services/useHasEnoughCredit'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -76,7 +76,7 @@ const BookExternallyButton = ({ url }: { url: FavoriteOfferResponse['externalTic
   url ? (
     <ButtonPrimary
       title={t`Réserver`}
-      onPress={() => url && openExternalUrl(url)}
+      onPress={() => url && openUrl(url)}
       icon={ExternalLinkSite}
       buttonHeight="tall"
     />

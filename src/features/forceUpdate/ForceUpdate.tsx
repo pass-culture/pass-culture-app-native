@@ -3,7 +3,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -21,7 +21,7 @@ const STORE_LINK = Platform.select({
 })
 
 const onPress = Platform.select({
-  default: () => openExternalUrl(STORE_LINK),
+  default: () => openUrl(STORE_LINK),
   web: () => globalThis?.window?.location?.replace('/'),
 })
 

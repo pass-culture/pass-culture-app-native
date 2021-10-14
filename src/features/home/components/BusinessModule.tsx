@@ -7,7 +7,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { IdeaIcon } from 'features/home/assets/IdeaIcon'
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import {
@@ -34,20 +34,20 @@ export const BusinessModule = (businessPane: BusinessPane) => {
   const { data: profileData, isLoading: isProfileDataLoading } = useUserProfileInfo()
   const { showInfoSnackBar } = useSnackBarContext()
 
-  const openUrl = (finalUrl: string) => {
+  const logAndOpenUrl = (finalUrl: string) => {
     setShouldRedirect(false)
     analytics.logClickBusinessBlock(title)
-    openExternalUrl(finalUrl)
+    openUrl(finalUrl)
   }
 
   useEffect(() => {
     if (!url || !shouldRedirect) return
     if (!shouldUrlBeFilled(url)) {
-      openUrl(url)
+      logAndOpenUrl(url)
       return
     }
     if (profileData) {
-      openUrl(fillUrlEmail(url, profileData.email))
+      logAndOpenUrl(fillUrlEmail(url, profileData.email))
       return
     }
     if (isProfileDataLoading) {

@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -19,7 +19,7 @@ export const RedirectWebToNative: React.FC = () => {
     if (!url) {
       showErrorSnackBar({ message: t`Désolé, cette URL n'est pas valide.` })
     }
-    openExternalUrl(url)
+    openUrl(url)
   }
   return (
     <GenericInfoPage

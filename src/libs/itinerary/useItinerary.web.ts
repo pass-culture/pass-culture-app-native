@@ -1,7 +1,7 @@
 import { isIOS } from 'react-device-detect'
 
 import { Coordinates } from 'api/gen'
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 
 export const useItinerary = () => {
   // To accomodate the API of useOpenItinerary, we have to pass
@@ -16,8 +16,8 @@ function navigateTo(coordinates: Required<Coordinates>) {
   const googleMapsPath = `maps.google.com/maps?daddr=${lat},${lon}`
   if (isIOS) {
     /* on iOS, the device will try to open the link first in Apple Maps, then in Google Maps */
-    openExternalUrl('maps://' + googleMapsPath)
+    openUrl('maps://' + googleMapsPath)
   } else {
-    openExternalUrl('https://' + googleMapsPath)
+    openUrl('https://' + googleMapsPath)
   }
 }

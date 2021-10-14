@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { homeNavigateConfig, openExternalUrl } from 'features/navigation/helpers'
+import { homeNavigateConfig, openUrl } from 'features/navigation/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -28,7 +28,7 @@ export function IdCheckUnavailable() {
           <Spacer.Column numberOfSpaces={8} />
           <ButtonPrimaryWhite
             title={t`Transmettre un dossier`}
-            onPress={() => openExternalUrl(env.DSM_URL)}
+            onPress={() => openUrl(env.DSM_URL)}
             icon={ExternalLinkSite}
           />
         </React.Fragment>

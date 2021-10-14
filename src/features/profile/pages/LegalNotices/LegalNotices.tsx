@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -26,7 +26,7 @@ export function LegalNotices() {
         <Row
           title={t`Conditions Générales d’Utilisation`}
           type="clickable"
-          onPress={() => openExternalUrl(env.CGU_LINK)}
+          onPress={() => openUrl(env.CGU_LINK)}
           icon={ExternalSite}
           style={styles.row}
         />
@@ -34,7 +34,7 @@ export function LegalNotices() {
         <Row
           title={t`Charte de protection des données personnelles`}
           type="clickable"
-          onPress={() => openExternalUrl(env.DATA_PRIVACY_CHART_LINK)}
+          onPress={() => openUrl(env.DATA_PRIVACY_CHART_LINK)}
           icon={ExternalSite}
           style={styles.row}
         />

@@ -4,7 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -58,7 +58,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   }
 
   async function openCookiesPolicyExternalUrl() {
-    await openExternalUrl(env.COOKIES_POLICY_LINK)
+    await openUrl(env.COOKIES_POLICY_LINK)
   }
 
   return (
