@@ -16,7 +16,7 @@ const website = 'https://my@website.com'
 jest.mock('features/venue/api/useVenue')
 const openMail = jest.spyOn(ContactHelpers, 'openMail')
 const openPhoneNumber = jest.spyOn(ContactHelpers, 'openPhoneNumber')
-const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('<ContactBlock/>', () => {
   afterEach(jest.clearAllMocks)
@@ -36,7 +36,7 @@ describe('<ContactBlock/>', () => {
   it('should open external website when the website button is press', () => {
     const { getByText } = render(<ContactBlock venueId={venueId} />)
     fireEvent.press(getByText('Site internet'))
-    expect(openExternalUrl).toHaveBeenNthCalledWith(1, website)
+    expect(openUrl).toHaveBeenNthCalledWith(1, website)
   })
 
   it('should display the email, phoneNumber and website', () => {

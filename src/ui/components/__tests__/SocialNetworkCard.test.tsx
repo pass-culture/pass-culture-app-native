@@ -7,14 +7,12 @@ import { fireEvent, render } from 'tests/utils'
 import { SocialNetworkCard } from '../SocialNetworkCard'
 
 describe('SocialNetworkCard', () => {
-  it('should openExternalUrl onClick and track analytics', () => {
-    const openExternalUrl = jest
-      .spyOn(NavigationHelpers, 'openExternalUrl')
-      .mockImplementation(jest.fn())
+  it('should openUrl onClick and track analytics', () => {
+    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl').mockImplementation(jest.fn())
     const { getByText } = render(<SocialNetworkCard network="twitter" />)
     const button = getByText('Twitter')
     fireEvent.press(button)
     expect(analytics.logClickSocialNetwork).toBeCalledWith('Twitter')
-    expect(openExternalUrl).toBeCalled()
+    expect(openUrl).toBeCalled()
   })
 })

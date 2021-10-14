@@ -12,7 +12,7 @@ import {
 } from 'features/auth/AuthContext'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useUserProfileInfo } from 'features/home/api'
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
@@ -177,7 +177,7 @@ export const Profile: React.FC = () => {
           <Row
             title={t`Questions fréquentes`}
             type="clickable"
-            onPress={() => openExternalUrl(env.FAQ_LINK)}
+            onPress={() => openUrl(env.FAQ_LINK)}
             icon={ExternalSite}
             style={styles.row}
           />
@@ -195,7 +195,7 @@ export const Profile: React.FC = () => {
           <Row
             title={t`Accessibilité`}
             type="clickable"
-            onPress={() => openExternalUrl(env.ACCESSIBILITY_LINK)}
+            onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
             icon={ExternalSite}
             style={styles.row}
           />

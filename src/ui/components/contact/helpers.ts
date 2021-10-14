@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 
 export const isValidFrenchPhoneNumber = (phonenumber: string) => {
   const metropolitanFranceReg = new RegExp(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/)
@@ -23,10 +23,10 @@ export const isValidFrenchPhoneNumber = (phonenumber: string) => {
 
 export async function openPhoneNumber(phone: string) {
   const url = Platform.OS === 'android' ? `tel:${phone}` : `telprompt:${phone}`
-  await openExternalUrl(url)
+  await openUrl(url)
 }
 
 export async function openMail(mail: string) {
   const url = `mailto:${mail}`
-  await openExternalUrl(url)
+  await openUrl(url)
 }

@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
-import { navigateToHome, openExternalUrl } from 'features/navigation/helpers'
+import { navigateToHome, openUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -44,7 +44,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
           <ButtonTertiary
             title={t`Consulter l'article d'aide`}
             onPress={() =>
-              openExternalUrl(
+              openUrl(
                 'https://aide.passculture.app/fr/articles/5261997-je-n-ai-pas-recu-le-mail-de-confirmation-de-changement-de-mot-de-passe'
               )
             }

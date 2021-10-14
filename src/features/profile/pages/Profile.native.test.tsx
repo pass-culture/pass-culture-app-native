@@ -187,13 +187,13 @@ describe('Profile component', () => {
     })
 
     it('should navigate when the faq row is clicked', async () => {
-      const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+      const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
       const { getByTestId } = await renderProfile()
 
       const row = getByTestId('Questions fréquentes')
       fireEvent.press(row)
 
-      expect(openExternalUrl).toBeCalledWith(env.FAQ_LINK)
+      expect(openUrl).toBeCalledWith(env.FAQ_LINK)
     })
     it('should navigate when the how-import-deeplink row is clicked', async () => {
       const { getByTestId } = await renderProfile()
@@ -207,13 +207,13 @@ describe('Profile component', () => {
 
   describe('other section', () => {
     it('should navigate when the accessibility row is clicked', async () => {
-      const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+      const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
       const { getByTestId } = await renderProfile()
 
       const row = getByTestId('Accessibilité')
       fireEvent.press(row)
 
-      expect(openExternalUrl).toBeCalledWith(env.ACCESSIBILITY_LINK)
+      expect(openUrl).toBeCalledWith(env.ACCESSIBILITY_LINK)
     })
 
     it('should navigate when the legal notices row is clicked', async () => {

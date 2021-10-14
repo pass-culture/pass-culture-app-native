@@ -3,7 +3,7 @@ import { NavigationContainerRef } from '@react-navigation/native'
 import React, { useCallback, useState, FunctionComponent, RefObject } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome, openExternalUrl } from 'features/navigation/helpers'
+import { navigateToHome, openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -48,7 +48,7 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
   }, [navigationRef])
 
   async function openCookiesPolicyExternalUrl() {
-    await openExternalUrl(env.COOKIES_POLICY_LINK)
+    await openUrl(env.COOKIES_POLICY_LINK)
   }
 
   return (

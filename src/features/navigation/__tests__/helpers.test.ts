@@ -6,7 +6,7 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics'
 
-import { openExternalUrl, navigateToBooking } from '../helpers'
+import { openUrl, navigateToBooking } from '../helpers'
 
 jest.mock('features/navigation/navigationRef')
 
@@ -16,7 +16,7 @@ describe('Navigation helpers', () => {
   it('should not capture links that doesnt start with the universal links domain', async () => {
     const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
-    await openExternalUrl(link)
+    await openUrl(link)
     expect(openURL).toBeCalledWith(link)
   })
 
@@ -24,7 +24,7 @@ describe('Navigation helpers', () => {
     const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
     const path = getScreenPath('Offer', { id: 1, from: 'offer', moduleName: undefined })
     const link = WEBAPP_NATIVE_REDIRECTION_URL + `/${path}`
-    await openExternalUrl(link)
+    await openUrl(link)
     expect(openURL).not.toBeCalled()
     expect(navigationRef.current?.navigate).toBeCalledWith('Offer', { id: 1, from: 'offer' })
   })
@@ -32,7 +32,7 @@ describe('Navigation helpers', () => {
   it('should navigate to PageNotFound when in-app screen cannot be found (ex: Offer)', async () => {
     const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
     const link = WEBAPP_NATIVE_REDIRECTION_URL + '/unknown'
-    await openExternalUrl(link)
+    await openUrl(link)
     expect(openURL).not.toBeCalled()
     expect(navigationRef.current?.navigate).toBeCalledWith('PageNotFound', undefined)
   })
@@ -41,7 +41,7 @@ describe('Navigation helpers', () => {
     jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
 
-    await openExternalUrl(link)
+    await openUrl(link)
 
     await waitForExpect(() => {
       expect(analytics.logOpenExternalUrl).toBeCalledWith(link)
@@ -52,7 +52,7 @@ describe('Navigation helpers', () => {
     jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
 
-    await openExternalUrl(link, false)
+    await openUrl(link, false)
 
     await waitForExpect(() => {
       expect(analytics.logOpenExternalUrl).not.toBeCalled()

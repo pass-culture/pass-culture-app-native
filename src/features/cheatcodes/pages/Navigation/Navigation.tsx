@@ -12,7 +12,7 @@ import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenu
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { Maintenance } from 'features/maintenance/Maintenance'
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -202,7 +202,7 @@ export function Navigation(): JSX.Element {
         <Row>
           <NavigationButton
             title={'Mauvais deeplink unknown'}
-            onPress={() => openExternalUrl(BadDeeplink)}
+            onPress={() => openUrl(BadDeeplink)}
           />
         </Row>
         <Row>
@@ -231,10 +231,7 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
-          <NavigationButton
-            title={'Universal Link'}
-            onPress={() => openExternalUrl(LoginDeeplink)}
-          />
+          <NavigationButton title={'Universal Link'} onPress={() => openUrl(LoginDeeplink)} />
         </Row>
         <Row half>
           <NavigationButton

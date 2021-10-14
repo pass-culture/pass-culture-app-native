@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { Typo, getSpacing, Spacer } from 'ui/theme'
 
@@ -21,7 +21,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
     <TouchableOpacity
       onPress={() => {
         analytics.logClickSocialNetwork(name)
-        openExternalUrl(link, false, fallbackLink)
+        openUrl(link, false, fallbackLink)
       }}>
       <Container>
         <NetworkIconBox>

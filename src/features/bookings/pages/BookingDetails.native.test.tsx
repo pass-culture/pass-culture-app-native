@@ -67,9 +67,7 @@ describe('BookingDetails', () => {
 
     it('should display offer link button if offer is digital and open url on press', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
-      const openExternalUrl = jest
-        .spyOn(NavigationHelpers, 'openExternalUrl')
-        .mockImplementation(jest.fn())
+      const openUrl = jest.spyOn(NavigationHelpers, 'openUrl').mockImplementation(jest.fn())
       booking.stock.offer.isDigital = true
       booking.stock.offer.url = 'http://example.com'
 
@@ -77,7 +75,7 @@ describe('BookingDetails', () => {
       const offerButton = getByText("Accéder à l'offre")
       fireEvent.press(offerButton)
 
-      expect(openExternalUrl).toHaveBeenCalledWith(booking.stock.offer.url)
+      expect(openUrl).toHaveBeenCalledWith(booking.stock.offer.url)
       expect(analytics.logAccessExternalOffer).toHaveBeenCalledWith(booking.stock.offer.id)
     })
 

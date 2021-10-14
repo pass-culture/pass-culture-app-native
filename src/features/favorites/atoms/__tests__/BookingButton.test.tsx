@@ -57,9 +57,7 @@ const user: UserProfileResponse = {
 } as UserProfileResponse
 const onInAppBooking = jest.fn()
 
-const openExternalUrl = jest
-  .spyOn(NavigationHelpers, 'openExternalUrl')
-  .mockImplementation(jest.fn())
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl').mockImplementation(jest.fn())
 
 describe('<BookingButtun />', () => {
   afterEach(jest.clearAllMocks)
@@ -240,7 +238,7 @@ function favoriteBookingButtonTestRunner({
     fireEvent.press(renderAPI.getByText('Réserver'))
     expect(onInAppBooking).toBeCalledWith(offer)
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
+    expect(openUrl).not.toBeCalled()
     expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
@@ -251,7 +249,7 @@ function favoriteBookingButtonTestRunner({
     fireEvent.press(renderAPI.getByText('Réserver'))
     expect(onInAppBooking).not.toBeCalled()
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeTruthy()
-    expect(openExternalUrl).toBeCalledWith(offer.externalTicketOfficeUrl)
+    expect(openUrl).toBeCalledWith(offer.externalTicketOfficeUrl)
     expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
@@ -261,7 +259,7 @@ function favoriteBookingButtonTestRunner({
   if (expectedCTA === ExpectedCTA.BookedOffer) {
     expect(onInAppBooking).not.toBeCalled()
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
+    expect(openUrl).not.toBeCalled()
     expect(renderAPI.queryByText('Offre réservée')).toBeTruthy()
     expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
@@ -271,7 +269,7 @@ function favoriteBookingButtonTestRunner({
   if (expectedCTA === ExpectedCTA.ExpiredOffer) {
     expect(onInAppBooking).not.toBeCalled()
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
+    expect(openUrl).not.toBeCalled()
     expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre expirée')).toBeTruthy()
     expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
@@ -281,7 +279,7 @@ function favoriteBookingButtonTestRunner({
   if (expectedCTA === ExpectedCTA.ExhaustedOffer) {
     expect(onInAppBooking).not.toBeCalled()
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
+    expect(openUrl).not.toBeCalled()
     expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre épuisée')).toBeTruthy()
@@ -291,7 +289,7 @@ function favoriteBookingButtonTestRunner({
   if (expectedCTA === ExpectedCTA.NotEnoughCredit) {
     expect(onInAppBooking).not.toBeCalled()
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
+    expect(openUrl).not.toBeCalled()
     expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
@@ -301,7 +299,7 @@ function favoriteBookingButtonTestRunner({
   if (expectedCTA === ExpectedCTA.NoButton) {
     expect(onInAppBooking).not.toBeCalled()
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
+    expect(openUrl).not.toBeCalled()
     expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()

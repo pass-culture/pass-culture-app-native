@@ -6,7 +6,7 @@ import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
-import { navigateToHome, openExternalUrl } from 'features/navigation/helpers'
+import { navigateToHome, openUrl } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { AsyncError } from 'libs/monitoring'
@@ -59,7 +59,7 @@ export function SignupConfirmationExpiredLink(props: Props) {
       <ButtonTertiaryWhite
         title={t`Consulter l'article d'aide`}
         onPress={() =>
-          openExternalUrl(
+          openUrl(
             'https://aide.passculture.app/fr/articles/5261997-je-n-ai-pas-recu-le-mail-de-confirmation-de-changement-de-mot-de-passe'
           )
         }

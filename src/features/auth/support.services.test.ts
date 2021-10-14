@@ -14,13 +14,11 @@ describe('Support services', () => {
     it(`${key} should open external url for contacting support with analytics`, async () => {
       const method = key as keyof typeof contactSupport
       const email = 'test@test.com'
-      const openExternalUrl = jest
-        .spyOn(NavigationHelpers, 'openExternalUrl')
-        .mockResolvedValueOnce(undefined)
+      const openUrl = jest.spyOn(NavigationHelpers, 'openUrl').mockResolvedValueOnce(undefined)
 
       contactSupport[method](email)
       await waitForExpect(() => {
-        expect(openExternalUrl).toBeCalled()
+        expect(openUrl).toBeCalled()
         expect(analytics.logMailTo).toBeCalledWith(key)
       })
     })

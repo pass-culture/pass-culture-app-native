@@ -8,7 +8,7 @@ import {
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
-import { openExternalUrl, navigateToBooking } from 'features/navigation/helpers'
+import { openUrl, navigateToBooking } from 'features/navigation/helpers'
 import { getOfferPrice } from 'features/offer/services/getOfferPrice'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { CategoryCriteria } from 'features/search/enums'
@@ -88,7 +88,7 @@ export const getCtaWordingAndAction = ({
     return {
       isExternal: true,
       wording: subcategory.isEvent ? t`Accéder à la billetterie` : t`Accéder à l'offre`,
-      onPress: () => openExternalUrl(externalTicketOfficeUrl),
+      onPress: () => openUrl(externalTicketOfficeUrl),
     }
   }
 

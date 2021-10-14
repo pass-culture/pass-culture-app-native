@@ -29,22 +29,22 @@ async function renderProfile() {
 
 describe('LegalNotices', () => {
   it('should navigate when the cgu row is clicked', async () => {
-    const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
     const { getByTestId } = await renderProfile()
 
     const row = getByTestId('Conditions Générales d’Utilisation')
     fireEvent.press(row)
 
-    expect(openExternalUrl).toBeCalledWith(env.CGU_LINK)
+    expect(openUrl).toBeCalledWith(env.CGU_LINK)
   })
   it('should navigate when the data-privacy-chart row is clicked', async () => {
-    const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
     const { getByTestId } = await renderProfile()
 
     const row = getByTestId('Charte de protection des données personnelles')
     fireEvent.press(row)
 
-    expect(openExternalUrl).toBeCalledWith(env.DATA_PRIVACY_CHART_LINK)
+    expect(openUrl).toBeCalledWith(env.DATA_PRIVACY_CHART_LINK)
   })
   it('should redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     const { getByTestId } = await renderProfile()

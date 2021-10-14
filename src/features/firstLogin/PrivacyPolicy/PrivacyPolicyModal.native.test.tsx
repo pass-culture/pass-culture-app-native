@@ -61,7 +61,7 @@ describe('<PrivacyPolicyModal />', () => {
   })
 
   it('should open cookies policies on click on "Politique des cookies"', async () => {
-    const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
     const { getByText } = renderPrivacyModal({
       onRefusal,
       onApproval,
@@ -69,7 +69,7 @@ describe('<PrivacyPolicyModal />', () => {
       navigationRef,
     })
     fireEvent.press(getByText('Politique des cookies'))
-    expect(openExternalUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
+    expect(openUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
     await superFlushWithAct(1)
   })
 

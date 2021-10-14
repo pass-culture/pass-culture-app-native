@@ -10,7 +10,7 @@ import {
   QR_CODE_SIZE,
 } from 'features/bookings/components/ThreeShapesTicket.constants'
 import { getBookingProperties } from 'features/bookings/helpers'
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -30,7 +30,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
   const accessExternalOffer = () => {
     if (offer.url) {
       analytics.logAccessExternalOffer(offer.id)
-      openExternalUrl(offer.url)
+      openUrl(offer.url)
     }
   }
 
