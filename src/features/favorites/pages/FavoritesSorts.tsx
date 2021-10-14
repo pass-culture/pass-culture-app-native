@@ -63,7 +63,7 @@ export const FavoritesSorts: React.FC = () => {
   }
 
   return (
-    <React.Fragment>
+    <Container>
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
@@ -103,9 +103,14 @@ export const FavoritesSorts: React.FC = () => {
       <ButtonContainer>
         <ButtonPrimary title={t`Valider`} onPress={onValidation} />
       </ButtonContainer>
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const contentContainerStyle: ViewStyle = {
   flexGrow: 1,

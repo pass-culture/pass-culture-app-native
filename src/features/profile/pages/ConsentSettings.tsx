@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
@@ -16,7 +16,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { ProfileContainer } from '../components/reusables'
 
@@ -27,6 +27,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation()
   const [isTrackingSwitchActive, setIsTrackingSwitchActive] = useState(false)
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true)
+  const theme = useTheme()
 
   useEffect(() => {
     storage.readObject('has_accepted_cookie').then((hasAcceptedCookie) => {
@@ -62,16 +63,16 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   }
 
   return (
-    <React.Fragment>
+    <Container>
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
-        <Typo.Body color={ColorsEnum.BLACK}>
+        <Typo.Body color={theme.colors.black}>
           {t`L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle.`}
         </Typo.Body>
         <Spacer.Column numberOfSpaces={4} />
         <MoreInformationContainer>
-          <Typo.Caption color={ColorsEnum.GREY_DARK}>
+          <Typo.Caption color={theme.colors.greyDark}>
             {t`Pour plus d'informations, nous t'invitons à consulter notre`}
             <Spacer.Row numberOfSpaces={1} />
             <ButtonTertiary
@@ -106,9 +107,14 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
       </ProfileContainer>
 
       <PageHeader title={t`Paramètres de confidentialité`} onGoBack={route.params?.onGoBack} />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const Line = styled.View({
   paddingVertical: getSpacing(4),

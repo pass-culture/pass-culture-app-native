@@ -147,8 +147,8 @@ export function NotificationSettings() {
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
+        <Spacer.Column numberOfSpaces={18} />
         <Typo.Body color={ColorsEnum.BLACK}>
           {isLoggedIn
             ? t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`

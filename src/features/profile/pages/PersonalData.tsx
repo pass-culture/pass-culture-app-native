@@ -17,8 +17,8 @@ export function PersonalData() {
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={14} />
       <Container>
+        <Spacer.Column numberOfSpaces={14} />
         {!!user?.isBeneficiary && (
           <React.Fragment>
             <Row>

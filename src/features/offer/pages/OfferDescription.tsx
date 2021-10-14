@@ -109,7 +109,7 @@ export const OfferDescription = () => {
   const photoCredit = image?.credit
 
   return (
-    <React.Fragment>
+    <Container>
       <React.Fragment>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={14} />
@@ -124,9 +124,14 @@ export const OfferDescription = () => {
         />
       </React.Fragment>
       <PageHeader title="Description" />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const MarginContainer = styled.View({ marginHorizontal: getSpacing(6) })
 const Header = () => <Spacer.Column numberOfSpaces={6} />

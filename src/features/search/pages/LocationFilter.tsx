@@ -61,7 +61,7 @@ export const LocationFilter: React.FC = () => {
   }
 
   return (
-    <React.Fragment>
+    <Container>
       <Spacer.TopScreen />
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.Column numberOfSpaces={14} />
@@ -95,9 +95,14 @@ export const LocationFilter: React.FC = () => {
         />
       </ScrollView>
       <PageHeader title={t`Localisation`} />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const contentContainerStyle: ViewStyle = {
   flexGrow: 1,

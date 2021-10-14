@@ -16,7 +16,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function ChangePassword() {
   const { showSuccessSnackBar } = useSnackBarContext()
@@ -78,7 +78,7 @@ export function ChangePassword() {
   const { bottom } = useSafeAreaInsets()
 
   return (
-    <React.Fragment>
+    <Container>
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={20} />
       <StyledScrollView
@@ -145,15 +145,21 @@ export function ChangePassword() {
       </StyledScrollView>
 
       <PageHeader title={t`Mot de passe`} />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const getScrollViewContentContainerStyle = (keyboardHeight: number): StyleProp<ViewStyle> => ({
   flexGrow: 1,
   flexDirection: 'column',
   justifyContent: 'space-between',
   paddingBottom: Platform.OS === 'ios' ? keyboardHeight : 0,
+  backgroundColor: ColorsEnum.WHITE,
 })
 
 const StyledInput = styled.View({

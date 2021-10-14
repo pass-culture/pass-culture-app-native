@@ -20,9 +20,9 @@ export function LegalNotices() {
   const { navigate } = useNavigation<UseNavigationType>()
   return (
     <React.Fragment>
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={14} />
       <Container>
+        <Spacer.TopScreen />
+        <Spacer.Column numberOfSpaces={14} />
         <Row
           title={t`Conditions Générales d’Utilisation`}
           type="clickable"
@@ -63,10 +63,12 @@ const styles = StyleSheet.create({
   },
 })
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
   flexDirection: 'column',
   paddingHorizontal: getSpacing(4),
-})
+}))
 
 const Row = styled(SectionRow).attrs({
   style: styles.row,

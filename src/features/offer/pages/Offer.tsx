@@ -43,7 +43,7 @@ export const Offer: FunctionComponent = () => {
   if (!offerResponse) return <React.Fragment></React.Fragment>
 
   return (
-    <React.Fragment>
+    <Container>
       <OfferWebHead offer={offerResponse} />
       <OfferBody offerId={offerId} onScroll={onScroll} />
       {!!wording && (
@@ -73,9 +73,14 @@ export const Offer: FunctionComponent = () => {
         headerTransition={headerTransition}
         offerId={offerResponse.id}
       />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const CallToActionContainer = styled.View({
   marginHorizontal: getSpacing(6),

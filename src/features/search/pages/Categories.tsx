@@ -40,7 +40,7 @@ export const Categories: React.FC = () => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
   return (
-    <React.Fragment>
+    <Container>
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
@@ -70,9 +70,14 @@ export const Categories: React.FC = () => {
       </ScrollView>
 
       <PageHeader title={t`Catégories`} />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const contentContainerStyle: ViewStyle = { flexGrow: 1, marginRight: getSpacing(6) }
 
