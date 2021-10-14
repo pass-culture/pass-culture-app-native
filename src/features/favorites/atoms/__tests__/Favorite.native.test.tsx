@@ -37,7 +37,7 @@ const favorite: FavoriteResponse = {
     category: {
       categoryType: 'Event',
       label: 'Pratique artistique',
-      name: 'LECON',
+      name: 'PRATIQUE_ART',
     } as FavoriteCategoryResponse,
     coordinates: { latitude: 48.9263, longitude: 2.49008 },
     date: null,

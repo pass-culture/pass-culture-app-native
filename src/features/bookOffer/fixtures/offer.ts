@@ -40,7 +40,7 @@ export const mockOffer: OfferResponse = {
   category: {
     categoryType: CategoryType.Event,
     label: 'Pratique artistique',
-    name: CategoryNameEnum.LECON,
+    name: CategoryNameEnum.PRATIQUEART,
   },
   subcategoryId: SubcategoryIdEnum.EVENEMENTPATRIMOINE,
   stocks: [
@@ -133,7 +133,7 @@ export const mockDigitalOffer: OfferResponse = {
   category: {
     categoryType: CategoryType.Thing,
     label: 'Jeux videos',
-    name: CategoryNameEnum.JEUXVIDEO,
+    name: CategoryNameEnum.JEU,
   },
   subcategoryId: SubcategoryIdEnum.JEUSUPPORTPHYSIQUE,
   stocks: [

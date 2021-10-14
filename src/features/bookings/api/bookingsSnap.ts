@@ -27,7 +27,7 @@ export const bookingsSnap: BookingsResponse = {
           category: {
             categoryType: CategoryType.Event,
             label: 'Pratique artistique',
-            name: CategoryNameEnum.LECON,
+            name: CategoryNameEnum.PRATIQUEART,
           },
           extraData: null,
           isPermanent: false,
@@ -68,7 +68,7 @@ export const bookingsSnap: BookingsResponse = {
           category: {
             categoryType: CategoryType.Event,
             label: 'Pratique artistique',
-            name: CategoryNameEnum.LECON,
+            name: CategoryNameEnum.PRATIQUEART,
           },
           extraData: {
             isbn: '123456789',

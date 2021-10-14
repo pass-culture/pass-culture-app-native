@@ -44,7 +44,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         category: {
           categoryType: 'Event',
           label: 'Pratique artistique',
-          name: 'LECON',
+          name: 'PRATIQUE_ART',
         } as FavoriteCategoryResponse,
         expenseDomains: [ExpenseDomain.All],
         externalTicketOfficeUrl: null,
@@ -102,7 +102,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         category: {
           categoryType: 'Event',
           label: 'Pratique artistique',
-          name: 'LECON',
+          name: 'PRATIQUE_ART',
         } as FavoriteCategoryResponse,
         expenseDomains: [ExpenseDomain.All],
         externalTicketOfficeUrl: null,

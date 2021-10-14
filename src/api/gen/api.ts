@@ -562,18 +562,20 @@ export enum CategoryIdEnum {
  * @enum {string}
  */
 export enum CategoryNameEnum {
+    BEAUXARTS = 'BEAUX_ARTS',
     CINEMA = 'CINEMA',
     CONFERENCE = 'CONFERENCE',
-    INSTRUMENT = 'INSTRUMENT',
-    JEUXVIDEO = 'JEUX_VIDEO',
     FILM = 'FILM',
-    LECON = 'LECON',
+    INSTRUMENT = 'INSTRUMENT',
+    JEU = 'JEU',
     LIVRE = 'LIVRE',
-    MUSIQUE = 'MUSIQUE',
-    PRESSE = 'PRESSE',
+    MEDIA = 'MEDIA',
+    MUSEE = 'MUSEE',
+    MUSIQUEENREGISTREE = 'MUSIQUE_ENREGISTREE',
+    MUSIQUELIVE = 'MUSIQUE_LIVE',
+    PRATIQUEART = 'PRATIQUE_ART',
     SPECTACLE = 'SPECTACLE',
-    VISITE = 'VISITE',
-    MATERIELARTCREA = 'MATERIEL_ART_CREA'
+    TECHNIQUE = 'TECHNIQUE'
 }/**
  * An enumeration.
  * @export
