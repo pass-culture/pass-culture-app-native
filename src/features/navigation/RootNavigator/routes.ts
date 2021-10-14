@@ -66,13 +66,9 @@ import { Route } from './types'
 
 export const initialRouteName = 'TabNavigator'
 
-const idCheckRoutesWithoutInitial: Route[] = idCheckRoutes.filter(
-  (screen) => screen.name !== idCheckInitialRouteName
-)
-
 const routesBeforeReleaseCheck: Route[] = [
-  ...idCheckRoutesWithoutInitial,
-  { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheckv2' },
+  ...idCheckRoutes,
+  { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheck' },
   {
     name: 'Offer',
     component: Offer,
