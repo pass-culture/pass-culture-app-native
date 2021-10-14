@@ -151,5 +151,6 @@ export type GenericRoute<ParamList> = {
   deeplinkPaths?: string[]
   pathConfig?: ExtendedPathConfig
   options?: { title?: string }
+  secure?: boolean
 }
 export type Route = GenericRoute<RootStackParamList & IdCheckRootStackParamList>

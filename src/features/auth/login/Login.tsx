@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute, useFocusEffect } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, useCallback, memo } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -35,7 +35,11 @@ if (__DEV__) {
   INITIAL_PASSWORD = env.SIGNIN_PASSWORD
 }
 
-export const Login: FunctionComponent = function () {
+type Props = {
+  doNotNavigateOnSigninSuccess?: boolean
+}
+
+export const Login: FunctionComponent<Props> = memo(function (props) {
   const [email, setEmail] = useSafeState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useSafeState(INITIAL_PASSWORD)
   const [isLoading, setIsLoading] = useSafeState(false)
@@ -69,6 +73,9 @@ export const Login: FunctionComponent = function () {
 
   async function handleSigninSuccess() {
     try {
+      if (props.doNotNavigateOnSigninSuccess) {
+        return
+      }
       const user = await api.getnativev1me()
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
 
@@ -184,7 +191,7 @@ export const Login: FunctionComponent = function () {
       />
     </BottomContentPage>
   )
-}
+})
 
 const StyledInput = styled.View({
   display: 'flex',

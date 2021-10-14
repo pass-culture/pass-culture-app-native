@@ -47,8 +47,10 @@ jest.mock('jwt-decode', () => () => ({
 
 jest.mock('features/auth/support.services')
 
-/* See the corresponding mock in features/navigation/RootNavigator/__mocks__ */
+/* See the corresponding mocks in features/navigation/RootNavigator/__mocks__ */
 jest.mock('features/navigation/RootNavigator/routes')
+/* See the corresponding mocks in features/navigation/RootNavigator/linking/__mocks__ */
+jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
 
 /* See the corresponding mocks in libs/analytics/__mocks__ */
 jest.mock('libs/analytics/analytics')
