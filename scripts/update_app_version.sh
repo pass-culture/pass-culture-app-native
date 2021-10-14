@@ -31,6 +31,7 @@ update_app_version(){
   MINOR=${SEMVER[1]}
   PATCH=${SEMVER[2]}
   BUILD_NUMBER="$((10000000 * MAJOR + 1000 * MINOR + PATCH))"
+  CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
   json -I -f package.json -e "this.build=$BUILD_NUMBER"
 
@@ -38,6 +39,11 @@ update_app_version(){
   git commit -m "v${VERSION}"
   git tag -a "$1${VERSION}" -m "v${VERSION}"
   git push origin "$1${VERSION}"
+
+  if [ "$CURRENT_BRANCH" = "master" ]
+  then
+    git push
+  fi
 }
 
 check_hard_hotfix_integrity(){
