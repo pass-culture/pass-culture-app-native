@@ -1,4 +1,4 @@
 export default {
-  RequestInAppReview: jest.fn(),
+  RequestInAppReview: jest.fn().mockResolvedValue(undefined),
   isAvailable: jest.fn(),
 }
