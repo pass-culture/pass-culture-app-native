@@ -8,8 +8,8 @@ import styled from 'styled-components/native'
 import { useNotifyIdCheckCompleted } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
-import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -38,7 +38,7 @@ export function NavigationIdCheckErrors(): JSX.Element {
   }
 
   function onAbandon() {
-    replace(...homeNavigateConfig)
+    replace(...homeNavConfig)
   }
 
   function syncUserAndProceedToNextScreen() {

@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 
-import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { getScreenFromDeeplink } from './getScreenFromDeeplink'
@@ -18,7 +18,7 @@ export function useOnDeeplinkError() {
       message: errorMessage ? errorMessage : DEFAULT_ERROR_MESSAGE,
       timeout: SNACK_BAR_TIME_OUT,
     })
-    navigate(...homeNavigateConfig)
+    navigate(...homeNavConfig)
   }
 }
 

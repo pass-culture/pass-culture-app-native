@@ -3,7 +3,7 @@ import React, { createRef } from 'react'
 import Swiper from 'react-native-web-swiper'
 
 import { reset } from '__mocks__/@react-navigation/native'
-import { homeNavigateConfig } from 'features/navigation/helpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { fireEvent, render } from 'tests/utils'
 
 import { FourthCard } from './FourthCard'
@@ -49,6 +49,6 @@ describe('FourthCard', () => {
     fireEvent.press(getByText('Découvrir'))
 
     expect(reset).toBeCalledTimes(1)
-    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavigateConfig[0] }] })
+    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   })
 })

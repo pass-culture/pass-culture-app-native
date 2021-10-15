@@ -3,7 +3,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { homeNavigateConfig, openUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -14,7 +15,7 @@ import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function IdCheckUnavailable() {
-  const { goBack } = useGoBack(...homeNavigateConfig)
+  const { goBack } = useGoBack(...homeNavConfig)
   const { data: settings } = useAppSettings()
   return (
     <GenericInfoPage

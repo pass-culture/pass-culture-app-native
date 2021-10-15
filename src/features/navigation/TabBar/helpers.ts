@@ -15,3 +15,5 @@ export function getTabNavConfig<Screen extends TabRouteName>(
 ): ['TabNavigator', { screen: Screen; params: TabParamList[Screen] }] {
   return ['TabNavigator', { screen, params }]
 }
+
+export const homeNavConfig = getTabNavConfig('Home')

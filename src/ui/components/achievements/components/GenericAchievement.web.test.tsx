@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { reset } from '__mocks__/@react-navigation/native'
-import { homeNavigateConfig } from 'features/navigation/helpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils/web'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
@@ -41,7 +41,7 @@ describe('<GenericAchievement />', () => {
     const skipAll = await getByText('Tout passer')
     fireEvent.click(skipAll)
     expect(reset).toHaveBeenCalledTimes(1)
-    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavigateConfig[0] }] })
+    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavConfig[0] }] })
     expect(analytics.logHasSkippedTutorial).toHaveBeenCalledWith(`${name}1`)
   })
 

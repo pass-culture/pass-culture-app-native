@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -16,7 +16,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   async function onPress() {
-    navigate(...homeNavigateConfig)
+    navigate(...homeNavConfig)
 
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300

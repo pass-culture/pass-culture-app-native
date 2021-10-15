@@ -8,8 +8,9 @@ import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
-import { homeNavigateConfig, navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { useSafeState } from 'libs/hooks'
@@ -50,7 +51,7 @@ export const Login: FunctionComponent<Props> = memo(function (props) {
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(...homeNavigateConfig)
+  const { goBack } = useGoBack(...homeNavConfig)
 
   useFocusEffect(
     useCallback(() => {

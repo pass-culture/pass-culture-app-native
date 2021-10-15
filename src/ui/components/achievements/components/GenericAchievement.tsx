@@ -4,8 +4,8 @@ import React, { Children, cloneElement, FunctionComponent, ReactElement, useMemo
 import Swiper from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
-import { homeNavigateConfig } from 'features/navigation/helpers'
 import { ScreenNames, UseNavigationType } from 'features/navigation/RootNavigator'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
 import { Background } from 'ui/svg/Background'
@@ -58,7 +58,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
       const index = swiperRef.current.getActiveIndex()
       analytics.logHasSkippedTutorial(`${props.screenName}${index + 1}`)
     }
-    navigation.reset({ index: 0, routes: [{ name: homeNavigateConfig[0] }] })
+    navigation.reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   }
 
   return (
