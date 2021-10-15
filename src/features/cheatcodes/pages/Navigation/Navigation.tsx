@@ -322,6 +322,12 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton title={`EduConnect`} onPress={() => navigate('EduConnect')} />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={`Booking Confirmation`}
+            onPress={() => navigate('BookingConfirmation', { offerId: 11224, bookingId: 1240 })}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
