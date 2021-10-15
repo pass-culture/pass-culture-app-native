@@ -14,8 +14,8 @@ import { useQueryClient } from 'react-query'
 import { useNotifyIdCheckCompleted } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
-import { homeNavigateConfig } from 'features/navigation/helpers'
 import { ScreenNavigationProp, UseNavigationType } from 'features/navigation/RootNavigator'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -40,7 +40,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
   }
 
   function onAbandon() {
-    navigate(...homeNavigateConfig)
+    navigate(...homeNavConfig)
   }
 
   function syncUserAndProceedToNextScreen() {

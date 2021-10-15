@@ -3,7 +3,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
-import { homeNavigateConfig } from 'features/navigation/helpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -106,7 +106,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
           message: "Ce lien de validation n'est plus valide",
         })
         expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith(...homeNavigateConfig)
+        expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
       })
     })
   })

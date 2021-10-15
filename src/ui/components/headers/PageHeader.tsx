@@ -3,7 +3,7 @@ import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { homeNavigateConfig } from 'features/navigation/helpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'tests/utils'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
@@ -22,7 +22,7 @@ interface HeaderIconProps {
 }
 
 const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
-  const { goBack } = useGoBack(...homeNavigateConfig)
+  const { goBack } = useGoBack(...homeNavConfig)
   return (
     <TouchableOpacity
       activeOpacity={ACTIVE_OPACITY}

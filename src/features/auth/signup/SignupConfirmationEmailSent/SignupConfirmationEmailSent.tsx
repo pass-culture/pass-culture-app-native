@@ -9,8 +9,9 @@ import {
   EmailSentModalContent,
 } from 'features/auth/components/signupComponents'
 import { contactSupport } from 'features/auth/support.services'
-import { homeNavigateConfig, navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
+import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -24,7 +25,7 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
 export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route }) => {
-  const { goBack } = useGoBack(...homeNavigateConfig)
+  const { goBack } = useGoBack(...homeNavConfig)
   const previousRoute = usePreviousRoute()
   /* Note : we have issues with previously successfully valided ReCAPTCHA not being able
   to redo the challenge, so we block the user from going back to ReCAPTCHA screen */

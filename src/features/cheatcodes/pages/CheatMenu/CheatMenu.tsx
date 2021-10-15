@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -12,7 +12,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const CheatMenu: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(...homeNavigateConfig)
+  const { goBack } = useGoBack(...homeNavConfig)
   return (
     <Container>
       <Spacer.TopScreen />

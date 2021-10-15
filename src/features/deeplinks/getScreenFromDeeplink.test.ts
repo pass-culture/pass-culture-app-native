@@ -1,6 +1,6 @@
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks/utils'
-import { homeNavigateConfig } from 'features/navigation/helpers'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment'
 
@@ -19,14 +19,14 @@ describe('getScreenFromDeeplink()', () => {
 
   it('should return PageNotFound when prefix is not in known config', () => {
     const prefix = 'https://unknown.com'
-    const url = getFullUrl(getScreenPath(...homeNavigateConfig), prefix)
+    const url = getFullUrl(getScreenPath(...homeNavConfig), prefix)
     const { screen, params } = getScreenFromDeeplink(url)
     expect(screen).toEqual('PageNotFound')
     expect(params).toEqual(undefined)
   })
 
   it('should return Home', () => {
-    const url = getFullUrl(getScreenPath(...homeNavigateConfig))
+    const url = getFullUrl(getScreenPath(...homeNavConfig))
     const { screen, params } = getScreenFromDeeplink(url)
     expect(screen).toEqual('TabNavigator')
     expect(params).toEqual({ screen: 'Home', params: undefined })
@@ -34,20 +34,20 @@ describe('getScreenFromDeeplink()', () => {
 
   it('should also work with a different accepted prefix', () => {
     let prefix = WEBAPP_NATIVE_REDIRECTION_URL
-    let url = getFullUrl(getScreenPath(...homeNavigateConfig), prefix)
+    let url = getFullUrl(getScreenPath(...homeNavConfig), prefix)
     let screenFromDeeplink = getScreenFromDeeplink(url)
     expect(screenFromDeeplink.screen).toEqual('TabNavigator')
     expect(screenFromDeeplink.params).toEqual({ screen: 'Home', params: undefined })
 
     prefix = ''
-    url = getFullUrl(getScreenPath(...homeNavigateConfig), '')
+    url = getFullUrl(getScreenPath(...homeNavConfig), '')
     screenFromDeeplink = getScreenFromDeeplink(url)
     expect(screenFromDeeplink.screen).toEqual('TabNavigator')
     expect(screenFromDeeplink.params).toEqual({ screen: 'Home', params: undefined })
   })
 
   it('should return Home with entryId=666', () => {
-    const url = getFullUrl(getScreenPath(...homeNavigateConfig) + '?entryId=666')
+    const url = getFullUrl(getScreenPath(...homeNavConfig) + '?entryId=666')
     const { screen, params } = getScreenFromDeeplink(url)
     expect(screen).toEqual('TabNavigator')
     expect(params).toEqual({ screen: 'Home', params: { entryId: '666' } })

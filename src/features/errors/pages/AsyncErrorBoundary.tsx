@@ -4,7 +4,7 @@ import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
-import { homeNavigateConfig } from 'features/navigation/helpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
@@ -96,7 +96,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
 }
 
 export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
-  const { goBack, canGoBack } = useGoBack(...homeNavigateConfig)
+  const { goBack, canGoBack } = useGoBack(...homeNavConfig)
   const { top } = useCustomSafeInsets()
 
   return (

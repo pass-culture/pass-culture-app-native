@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { resolveHandler } from 'features/deeplinks'
 import { useDeeplinkUrlHandler } from 'features/deeplinks/useDeeplinkUrlHandler'
-import { homeNavigateConfig } from 'features/navigation/helpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -20,7 +20,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export const DeeplinkImporter: FunctionComponent = () => {
   const [url, setUrl] = useState('')
   const handleDeeplinkUrl = useDeeplinkUrlHandler()
-  const { goBack } = useGoBack(...homeNavigateConfig)
+  const { goBack } = useGoBack(...homeNavConfig)
 
   function resolveLink() {
     if (url.length > 0) {

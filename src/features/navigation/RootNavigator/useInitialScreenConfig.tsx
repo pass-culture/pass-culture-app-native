@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 
-import { homeNavigateConfig } from '../helpers'
+import { homeNavConfig } from '../TabBar/helpers'
 
 import { RootScreenNames } from './types'
 
@@ -39,17 +39,17 @@ async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promis
       }
     } catch {
       // If we cannot get user's information, we just go to the homepage
-      return homeNavigateConfig[0]
+      return homeNavConfig[0]
     }
   }
 
   try {
     const hasSeenTutorials = !!(await storage.readObject('has_seen_tutorials'))
     if (hasSeenTutorials) {
-      return homeNavigateConfig[0]
+      return homeNavConfig[0]
     }
   } catch {
-    return homeNavigateConfig[0]
+    return homeNavConfig[0]
   }
 
   return 'FirstTutorial'
