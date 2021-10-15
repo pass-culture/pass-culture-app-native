@@ -41,6 +41,7 @@ export type RootStackParamList = {
   DeeplinkImporter: undefined
   DeleteProfileSuccess: undefined
   EduConnect: undefined
+  UnavailableEduConnect: undefined
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
