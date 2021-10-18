@@ -12,3 +12,8 @@ export enum FACETS_ENUM {
   OFFER_TAGS = 'offer.tags',
   OFFER_TIMES = 'offer.times',
 }
+
+// Taken from https://www.algolia.com/apps/E2IKXJ325N/explorer/configuration/venues/facets
+export enum VenuesFacets {
+  venue_type = 'venue_type',
+}
