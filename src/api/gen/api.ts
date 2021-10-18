@@ -564,16 +564,16 @@ export enum CategoryIdEnum {
 export enum CategoryNameEnum {
     CINEMA = 'CINEMA',
     CONFERENCE = 'CONFERENCE',
+    FILM = 'FILM',
     INSTRUMENT = 'INSTRUMENT',
     JEUXVIDEO = 'JEUX_VIDEO',
-    FILM = 'FILM',
     LECON = 'LECON',
     LIVRE = 'LIVRE',
+    MATERIELARTCREA = 'MATERIEL_ART_CREA',
     MUSIQUE = 'MUSIQUE',
     PRESSE = 'PRESSE',
     SPECTACLE = 'SPECTACLE',
-    VISITE = 'VISITE',
-    MATERIELARTCREA = 'MATERIEL_ART_CREA'
+    VISITE = 'VISITE'
 }/**
  * An enumeration.
  * @export
