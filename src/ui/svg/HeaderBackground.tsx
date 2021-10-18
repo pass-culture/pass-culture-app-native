@@ -1,18 +1,16 @@
 import * as React from 'react'
-import { useWindowDimensions } from 'react-native'
 import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
+import { useTheme } from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
 
 import { getSpacing } from '../theme'
 
 interface Props {
   height?: number
-  width?: number | string
 }
 
 const NotMemoizedHeaderBackground: React.FC<Props> = (props) => {
-  const defaultWidth = useWindowDimensions().width + getSpacing(1)
-  const width = props.width || defaultWidth
+  const width = useTheme().appContentWidth + getSpacing(1)
   const height = props.height || getSpacing(73.5)
   const LINEAR_GRADIENT_1_ID = uuidv1()
   const LINEAR_GRADIENT_2_ID = uuidv1()

@@ -273,7 +273,6 @@ exports[`Search component should render correctly 1`] = `
             },
           ]
         }
-        windowWidth={750}
       />
       <View
         accessible={true}
@@ -399,7 +398,6 @@ exports[`Search component should render correctly 1`] = `
         },
       ]
     }
-    windowWidth={750}
   >
     <View
       accessibilityLabel="Rechercher"

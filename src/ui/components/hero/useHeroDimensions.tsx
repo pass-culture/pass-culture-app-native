@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useWindowDimensions } from 'react-native'
+import { useTheme } from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
 import { BorderRadiusEnum, LENGTH_M, LENGTH_L, MARGIN_DP } from 'ui/theme/grid'
@@ -13,7 +13,7 @@ export const heroMarginTop = MARGIN_DP + getSpacing(0.5)
 
 export const useHeroDimensions = (type: 'offer' | 'venue', hasImage: boolean) => {
   const { top } = useCustomSafeInsets()
-  const fullWidth = useWindowDimensions().width - 2 * MARGIN_DP
+  const fullWidth = useTheme().appContentWidth - 2 * MARGIN_DP
 
   return useMemo(() => {
     if (type === 'venue') {

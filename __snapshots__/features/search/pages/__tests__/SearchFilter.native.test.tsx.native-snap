@@ -200,7 +200,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        windowWidth={750}
       />
       <View
         numberOfSpaces={6}
@@ -477,7 +476,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        windowWidth={750}
       />
       <View
         accessible={true}
@@ -1351,7 +1349,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        windowWidth={750}
       />
       <View
         accessible={true}
@@ -1676,7 +1673,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        windowWidth={750}
       />
       <View
         numberOfSpaces={6}
@@ -2083,7 +2079,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        windowWidth={750}
       />
       <View
         style={
@@ -2230,7 +2225,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        windowWidth={750}
       />
       <View
         style={
@@ -2377,7 +2371,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        windowWidth={750}
       />
       <View
         style={
@@ -2524,7 +2517,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        windowWidth={750}
       />
       <View
         style={
@@ -2696,7 +2688,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        windowWidth={750}
       />
       <View
         style={

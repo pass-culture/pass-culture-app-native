@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useMemo, useRef, useState } from 'react'
 import { Animated, LayoutChangeEvent } from 'react-native'
-import { useWindowDimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -32,7 +31,6 @@ interface Props {
 
 export const Favorite: React.FC<Props> = (props) => {
   const { offer } = props.favorite
-  const windowWidth = useWindowDimensions().width
   const [height, setHeight] = useState<number | undefined>(undefined)
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
@@ -128,7 +126,7 @@ export const Favorite: React.FC<Props> = (props) => {
         <Row>
           <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
           <Spacer.Row numberOfSpaces={4} />
-          <Column windowWidth={windowWidth}>
+          <Column>
             <Row>
               {distanceToOffer ? (
                 <React.Fragment>
@@ -189,8 +187,8 @@ const Container = styled.TouchableOpacity.attrs(() => ({
 const columnPadding = 4
 const columnMargin = 2 * 6
 
-const Column = styled.View<{ windowWidth: number }>((props) => ({
-  width: props.windowWidth - getSpacing(columnMargin + columnPadding) - imageWidth,
+const Column = styled.View(({ theme }) => ({
+  width: theme.appContentWidth - getSpacing(columnMargin + columnPadding) - imageWidth,
 }))
 
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })

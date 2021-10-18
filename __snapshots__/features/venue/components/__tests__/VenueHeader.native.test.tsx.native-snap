@@ -6,7 +6,7 @@ exports[`<VenueHeader /> should render correctly 1`] = `
   style={
     Object {
       "backgroundColor": "rgba(255, 255, 255, 0)",
-      "height": "NaNpx",
+      "height": 80,
       "position": "absolute",
       "top": 0,
       "width": "100%",

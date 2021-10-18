@@ -8,7 +8,6 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { flushAllPromises, superFlushWithAct, render, act, fireEvent } from 'tests/utils'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -24,7 +23,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 async function renderChangePassword() {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  const wrapper = render(reactQueryProviderHOC(themeProviderHOC(<ChangePassword />)))
+  const wrapper = render(reactQueryProviderHOC(<ChangePassword />))
   await act(async () => {
     await flushAllPromises()
   })

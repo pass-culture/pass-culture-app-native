@@ -2,7 +2,6 @@ import React from 'react'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { render } from 'tests/utils'
 
 import { Categories } from '../Categories'
@@ -35,5 +34,5 @@ describe('Categories component', () => {
 })
 
 function renderCategories() {
-  return render(themeProviderHOC(<Categories />))
+  return render(<Categories />)
 }

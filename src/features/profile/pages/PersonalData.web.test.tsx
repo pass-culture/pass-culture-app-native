@@ -7,7 +7,6 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { render } from 'tests/utils/web'
 
 import { PersonalData } from './PersonalData'
@@ -65,7 +64,7 @@ async function renderPersonalData(response: UserProfileResponse) {
   // mock api response based on the given parameters
   mockMeApiCall(response)
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  const wrapper = render(themeProviderHOC(reactQueryProviderHOC(<PersonalData />)))
+  const wrapper = render(reactQueryProviderHOC(<PersonalData />))
 
   return wrapper
 }

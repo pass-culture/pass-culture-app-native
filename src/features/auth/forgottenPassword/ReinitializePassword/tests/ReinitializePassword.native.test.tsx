@@ -1,5 +1,4 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components/native'
 import waitForExpect from 'wait-for-expect'
 
 import { useRoute, navigate, replace } from '__mocks__/@react-navigation/native'
@@ -7,7 +6,6 @@ import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
-import { theme } from 'theme'
 import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from '../ReinitializePassword'
@@ -97,10 +95,6 @@ describe('ReinitializePassword Page', () => {
 function renderReinitializePassword() {
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(
-      <ThemeProvider theme={theme}>
-        <ReinitializePassword />
-      </ThemeProvider>
-    )
+    reactQueryProviderHOC(<ReinitializePassword />)
   )
 }

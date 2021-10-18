@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React, { PropsWithChildren } from 'react'
-import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
@@ -18,7 +17,6 @@ type BeneficiaryHeaderProps = {
 }
 
 export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProps>) {
-  const windowWidth = useWindowDimensions().width
   const { firstName, lastName, domainsCredit, depositExpirationDate } = props
   const name = `${firstName} ${lastName}`
   const credit = formatToFrenchDecimal(computeCredit(domainsCredit))
@@ -28,7 +26,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
     <Container testID="beneficiary-header">
       <Spacer.TopScreen />
       <HeaderBackgroundWrapper>
-        <HeaderBackground width={windowWidth} />
+        <HeaderBackground />
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={6} />
       <UserNameAndCredit>

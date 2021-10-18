@@ -8,7 +8,6 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import * as HomeAPI from 'features/home/api'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils/web'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -124,4 +123,4 @@ describe('BusinessModule component', () => {
 
 const renderModule = (props: BusinessPane) =>
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  render(reactQueryProviderHOC(themeProviderHOC(<BusinessModule {...props} />)))
+  render(reactQueryProviderHOC(<BusinessModule {...props} />))

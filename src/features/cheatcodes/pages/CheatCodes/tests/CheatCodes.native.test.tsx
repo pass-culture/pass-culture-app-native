@@ -3,7 +3,6 @@ import React from 'react'
 import { BatchUser } from '__mocks__/@bam.tech/react-native-batch'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { flushAllPromises, act, render } from 'tests/utils'
 
 import { CheatCodes } from '../CheatCodes'
@@ -73,5 +72,5 @@ describe('CheatCodes component', () => {
 
 function renderCheatCodes() {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  return render(reactQueryProviderHOC(themeProviderHOC(<CheatCodes navigation={navigation} />)))
+  return render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
 }

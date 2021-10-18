@@ -8,7 +8,6 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { RootStack } from 'features/navigation/RootNavigator'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { superFlushWithAct, render } from 'tests/utils'
 
 import { Offer } from '../Offer'
@@ -75,15 +74,13 @@ export async function renderOfferBodyPage(
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      themeProviderHOC(
-        <NavigationContainer>
-          <RootStack.Navigator initialRouteName="Offer">
-            <RootStack.Screen name="Offer">
-              {() => <OfferBody offerId={offerId} onScroll={jest.fn()} />}
-            </RootStack.Screen>
-          </RootStack.Navigator>
-        </NavigationContainer>
-      )
+      <NavigationContainer>
+        <RootStack.Navigator initialRouteName="Offer">
+          <RootStack.Screen name="Offer">
+            {() => <OfferBody offerId={offerId} onScroll={jest.fn()} />}
+          </RootStack.Screen>
+        </RootStack.Navigator>
+      </NavigationContainer>
     )
   )
 
@@ -101,13 +98,11 @@ export async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, '
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      themeProviderHOC(
-        <NavigationContainer>
-          <RootStack.Navigator initialRouteName="Offer">
-            <RootStack.Screen name="Offer" component={Offer} initialParams={{ id: offerId }} />
-          </RootStack.Navigator>
-        </NavigationContainer>
-      )
+      <NavigationContainer>
+        <RootStack.Navigator initialRouteName="Offer">
+          <RootStack.Screen name="Offer" component={Offer} initialParams={{ id: offerId }} />
+        </RootStack.Navigator>
+      </NavigationContainer>
     )
   )
 

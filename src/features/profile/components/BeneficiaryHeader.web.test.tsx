@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { render } from 'tests/utils/web'
 
 import { BeneficiaryHeader } from './BeneficiaryHeader'
@@ -21,13 +20,11 @@ jest.mock('features/home/api')
 describe('BeneficiaryHeader', () => {
   it('should render properly with deposit version 1', () => {
     const { getAllByTestId } = render(
-      themeProviderHOC(
-        <BeneficiaryHeader
-          domainsCredit={domains_credit_v1}
-          firstName={'Rosa'}
-          lastName={'Bonheur'}
-        />
-      )
+      <BeneficiaryHeader
+        domainsCredit={domains_credit_v1}
+        firstName={'Rosa'}
+        lastName={'Bonheur'}
+      />
     )
 
     const progressBars = getAllByTestId('progress-bar')
@@ -36,13 +33,11 @@ describe('BeneficiaryHeader', () => {
 
   it('should render properly with deposit version 2', () => {
     const { getAllByTestId } = render(
-      themeProviderHOC(
-        <BeneficiaryHeader
-          domainsCredit={domains_credit_v2}
-          firstName={'Rosa'}
-          lastName={'Bonheur'}
-        />
-      )
+      <BeneficiaryHeader
+        domainsCredit={domains_credit_v2}
+        firstName={'Rosa'}
+        lastName={'Bonheur'}
+      />
     )
 
     const progressBars = getAllByTestId('progress-bar')

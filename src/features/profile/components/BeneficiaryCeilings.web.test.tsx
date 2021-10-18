@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { render } from 'tests/utils/web'
 
 import { BeneficiaryCeilings } from './BeneficiaryCeilings'
@@ -23,9 +22,7 @@ const domains_credit_underage = {
 describe('BeneficiaryCeilings', () => {
   it('should render properly with deposit version 1', () => {
     const { getAllByTestId, getByText } = render(
-      themeProviderHOC(
-        <BeneficiaryCeilings domainsCredit={domains_credit_v1} isUserUnderageBeneficiary={false} />
-      )
+      <BeneficiaryCeilings domainsCredit={domains_credit_v1} isUserUnderageBeneficiary={false} />
     )
 
     const progressBars = getAllByTestId('progress-bar')
@@ -39,9 +36,7 @@ describe('BeneficiaryCeilings', () => {
 
   it('should render properly with deposit version 2', () => {
     const { getAllByTestId, getByText } = render(
-      themeProviderHOC(
-        <BeneficiaryCeilings domainsCredit={domains_credit_v2} isUserUnderageBeneficiary={false} />
-      )
+      <BeneficiaryCeilings domainsCredit={domains_credit_v2} isUserUnderageBeneficiary={false} />
     )
 
     const progressBars = getAllByTestId('progress-bar')
@@ -53,12 +48,10 @@ describe('BeneficiaryCeilings', () => {
 
   it('should render properly with underage deposit version', () => {
     const { getAllByTestId, queryByText } = render(
-      themeProviderHOC(
-        <BeneficiaryCeilings
-          domainsCredit={domains_credit_underage}
-          isUserUnderageBeneficiary={true}
-        />
-      )
+      <BeneficiaryCeilings
+        domainsCredit={domains_credit_underage}
+        isUserUnderageBeneficiary={true}
+      />
     )
 
     const progressBars = getAllByTestId('progress-bar')

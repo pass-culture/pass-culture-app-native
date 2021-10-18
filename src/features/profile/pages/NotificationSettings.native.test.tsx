@@ -15,7 +15,6 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { flushAllPromises, superFlushWithAct, act, fireEvent, render, cleanup } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
@@ -295,13 +294,11 @@ async function renderNotificationSettings(
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      themeProviderHOC(
-        <RNNavigation.NavigationContainer ref={navigationRef}>
-          <Stack.Navigator initialRouteName="NotificationSettings">
-            <Stack.Screen name="NotificationSettings" component={NotificationSettings} />
-          </Stack.Navigator>
-        </RNNavigation.NavigationContainer>
-      )
+      <RNNavigation.NavigationContainer ref={navigationRef}>
+        <Stack.Navigator initialRouteName="NotificationSettings">
+          <Stack.Screen name="NotificationSettings" component={NotificationSettings} />
+        </Stack.Navigator>
+      </RNNavigation.NavigationContainer>
     )
   )
 

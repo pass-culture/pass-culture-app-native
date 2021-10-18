@@ -17,7 +17,6 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { flushAllPromises, render, act, fireEvent, cleanup } from 'tests/utils'
 
 import { Profile } from './Profile'
@@ -304,13 +303,11 @@ const defaultOptions = {
 async function renderProfile(options: Options = defaultOptions) {
   const { wrapper } = { ...defaultOptions, ...options }
   const renderAPI = render(
-    themeProviderHOC(
-      <NavigationContainer>
-        <TabStack.Navigator initialRouteName="Profile">
-          <TabStack.Screen name="Profile" component={Profile} />
-        </TabStack.Navigator>
-      </NavigationContainer>
-    ),
+    <NavigationContainer>
+      <TabStack.Navigator initialRouteName="Profile">
+        <TabStack.Screen name="Profile" component={Profile} />
+      </TabStack.Navigator>
+    </NavigationContainer>,
     { wrapper }
   )
   await act(flushAllPromises)

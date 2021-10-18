@@ -1,5 +1,6 @@
 import { useCallback } from 'react'
 import { PixelRatio, useWindowDimensions } from 'react-native'
+import { useTheme } from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme/spacing'
 
@@ -51,16 +52,17 @@ interface Grid {
 type Axis = 'width' | 'height'
 
 export function useGrid() {
-  const dimensions = useWindowDimensions()
+  const { height: windowHeight } = useWindowDimensions()
+  const { appContentWidth } = useTheme()
   const grid = useCallback(
     (grid: Grid, axis: Axis = 'width') => {
-      const axisLength = dimensions[axis]
+      const axisLength = axis === 'width' ? appContentWidth : windowHeight
       if (grid.sm && axisLength < Breakpoints.SM) {
         return grid.sm
       }
       return grid.default
     },
-    [dimensions]
+    [appContentWidth, windowHeight]
   )
   return grid
 }

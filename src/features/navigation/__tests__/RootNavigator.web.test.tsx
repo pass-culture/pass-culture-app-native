@@ -7,7 +7,6 @@ import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
 import * as splashScreenModule from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { render } from 'tests/utils/web'
 
 import { RootNavigator } from '../RootNavigator'
@@ -86,13 +85,11 @@ describe('ForceUpdate display logic', () => {
 
 async function renderRootNavigator() {
   const renderAPI = render(
-    themeProviderHOC(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(
-        <NavigationContainer>
-          <RootNavigator />
-        </NavigationContainer>
-      )
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
     )
   )
 

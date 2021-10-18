@@ -26,6 +26,6 @@ const SiteWrapper = styled.View({
 const SiteContainer = styled.View(({ theme }) => ({
   flex: 1,
   width: '100%',
-  maxWidth: theme.breakpoints.lg,
   margin: 'auto',
+  maxWidth: theme.appContentWidth,
 }))

@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { render } from 'tests/utils'
 
 import { ExBeneficiaryHeader } from './ExBeneficiaryHeader'
@@ -8,15 +7,7 @@ import { ExBeneficiaryHeader } from './ExBeneficiaryHeader'
 describe('ExBeneficiaryHeader', () => {
   it('should render properly', () => {
     const { getByText } = render(
-      themeProviderHOC(
-        themeProviderHOC(
-          <ExBeneficiaryHeader
-            firstName="Rosa"
-            lastName="Bonheur"
-            depositExpirationDate="25/12/2020"
-          />
-        )
-      )
+      <ExBeneficiaryHeader firstName="Rosa" lastName="Bonheur" depositExpirationDate="25/12/2020" />
     )
 
     getByText('Rosa Bonheur')

@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -112,9 +111,8 @@ const Item: React.FC<{
   message: JSX.Element | string
   subtext?: string
 }> = ({ Icon, message, subtext = '' }) => {
-  const { width } = useWindowDimensions()
   return (
-    <Row width={width}>
+    <Row>
       <Icon color={ColorsEnum.GREY_DARK} />
       <Spacer.Row numberOfSpaces={2} />
       {typeof message === 'string' ? <Typo.Caption>{message}</Typo.Caption> : message}
@@ -124,10 +122,10 @@ const Item: React.FC<{
   )
 }
 
-const Row = styled.View<{ width: number }>((props) => ({
+const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  width: props.width - getSpacing(24),
+  width: theme.appContentWidth - getSpacing(24),
   paddingVertical: getSpacing(0.5),
 }))
 const StyledAddress = styled(Typo.Body)({

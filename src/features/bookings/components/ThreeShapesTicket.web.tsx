@@ -1,6 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
@@ -13,8 +12,8 @@ type Props = PropsWithChildren<{
 const TICKET_MAX_WIDTH = 300
 
 export function ThreeShapesTicket(props: Props) {
-  const windowWidth = useWindowDimensions().width
-  const defaultWidth = Math.min(TICKET_MAX_WIDTH, windowWidth - getSpacing(15))
+  const { appContentWidth } = useTheme()
+  const defaultWidth = Math.min(TICKET_MAX_WIDTH, appContentWidth - getSpacing(15))
   const width = props.width || defaultWidth
   return (
     <Container testID="three-shapes-ticket">

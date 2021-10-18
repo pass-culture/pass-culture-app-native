@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
-import { View, PixelRatio, useWindowDimensions } from 'react-native'
+import { View, PixelRatio } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { SkeletonTile } from 'features/home/atoms/SkeletonTile'
 import {
@@ -96,8 +96,8 @@ const TextPlaceholder = ({ width, height }: { width: number; height?: number }) 
 )
 
 const BusinessModulePlaceholder = () => {
-  const windowWidth = useWindowDimensions().width
-  const width = windowWidth - 2 * MARGIN_DP
+  const { appContentWidth } = useTheme()
+  const width = appContentWidth - 2 * MARGIN_DP
   const height = PixelRatio.roundToNearestPixel(width * RATIO_BUSINESS)
   return (
     <SkeletonTile height={height} width={width} borderRadius={BorderRadiusEnum.BORDER_RADIUS} />
