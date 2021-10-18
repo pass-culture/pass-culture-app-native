@@ -1,11 +1,22 @@
+import { openInbox } from 'react-native-email-link'
+
 import { UserProfileResponse } from 'api/gen'
 import { Credit } from 'features/home/services/useAvailableCredit'
+import { openUrl, isAppUrl } from 'features/navigation/helpers'
 import { expiredCredit, nonExpiredCredit } from 'fixtures/credit'
 import { beneficiaryUser, nonBeneficaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Info } from 'ui/svg/icons/Info'
 
-import { computeCredit, matchSubscriptionMessageIconToSvg, isUserExBeneficiary } from './utils'
+import {
+  computeCredit,
+  matchSubscriptionMessageIconToSvg,
+  isUserExBeneficiary,
+  handleCallToActionLink,
+} from './utils'
+
+jest.mock('react-native-email-link')
+jest.mock('features/navigation/helpers')
 
 const domainsCredit = {
   all: { initial: 50000, remaining: 40000 },
@@ -67,5 +78,29 @@ describe('profile utils', () => {
         expect(isUserExBeneficiary(user, credit)).toEqual(expected)
       }
     )
+  })
+  describe('handleCallToActionLink', () => {
+    afterEach(jest.clearAllMocks)
+
+    it("should call openInbox and not call openUrl if url is appUrl and contains 'openInbox' string ", () => {
+      const link = 'prefix' + 'openInbox'
+      handleCallToActionLink(link)
+      expect(openInbox).toHaveBeenCalledWith()
+      expect(openUrl).not.toHaveBeenCalled()
+    })
+    it('should not call openInbox and call openUrl if url is appUrl and does not contain openInbox', () => {
+      const link = 'prefix' + 'whatever'
+      handleCallToActionLink(link)
+      expect(openInbox).not.toHaveBeenCalled()
+      expect(openUrl).toHaveBeenCalledWith('prefixwhatever')
+    })
+    it('should call openUrl if url is not appUrl and contains openInbox', () => {
+      const isAppUrlMock = isAppUrl as jest.Mock
+      isAppUrlMock.mockReturnValueOnce(false)
+      const link = 'https://whateveropenInbox.com'
+      handleCallToActionLink(link)
+      expect(openInbox).not.toHaveBeenCalled()
+      expect(openUrl).toHaveBeenCalledWith('https://whateveropenInbox.com')
+    })
   })
 })
