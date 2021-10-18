@@ -25,6 +25,7 @@ export const useHomeVenueModules = (
   const queries = useQueries(
     venuesModules.map(({ search, moduleId }) => {
       const fetchModule = async () => {
+        // TODO(antoinewg, #PC-11353): make fetchMultipleVenues depend on search backend
         const hits = await fetchMultipleVenues(search, position)
         return { moduleId: moduleId, hits }
       }
@@ -32,6 +33,7 @@ export const useHomeVenueModules = (
       return {
         queryKey: [QueryKeys.HOME_VENUES_MODULE, moduleId],
         queryFn: fetchModule,
+        // TODO(antoinewg, #PC-11353): remove isAppSearchBackend
         enabled: enabled && isAppSearchBackend,
         notifyOnChangeProps: ['data'],
       }
