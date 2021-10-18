@@ -69,7 +69,7 @@ export const fetchMultipleAlgolia = (
   userLocation: GeoCoordinates | null
 ): Readonly<Promise<MultipleQueriesResponse<AlgoliaHit>>> => {
   const queries = paramsList.map((params) => ({
-    indexName: env.ALGOLIA_INDEX_NAME,
+    indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
     query: params.query,
     params: {
       ...buildHitsPerPage(params.hitsPerPage),
@@ -87,7 +87,7 @@ export const fetchAlgolia = (
   userLocation: GeoCoordinates | null
 ): Readonly<Promise<Response>> => {
   const searchParameters = buildSearchParameters(parameters, userLocation)
-  const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
+  const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
   return index.search(parameters.query || '', {
     page: parameters.page || 0,
@@ -101,7 +101,7 @@ export const fetchAlgolia = (
 export const fetchAlgoliaHits = (
   objectIds: string[]
 ): Readonly<Promise<GetObjectsResponse<AlgoliaHit>>> => {
-  const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
+  const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
   return index.getObjects(objectIds, { attributesToRetrieve })
 }
 
