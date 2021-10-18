@@ -39,7 +39,6 @@ const openExternalUrl = async (
     return
   } catch (error) {
     new MonitoringError(error.message, 'OpenExternalUrlError')
-    showAlert(url)
   }
 
   if (fallbackUrl) {
@@ -49,9 +48,9 @@ const openExternalUrl = async (
       return
     } catch (error) {
       new MonitoringError(error.message, 'OpenExternalUrlError_FallbackUrl')
-      showAlert(url)
     }
   }
+  showAlert(url)
 }
 
 const showAlert = (url: string) => {
