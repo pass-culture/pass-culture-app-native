@@ -2,10 +2,11 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { useCurrentRoute, navigateToHome } from 'features/navigation/helpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { superFlushWithAct, act, render } from 'tests/utils'
 
 import { CulturalSurvey } from './CulturalSurvey'
@@ -15,19 +16,28 @@ jest.mock('react-query')
 const mockedUseUserProfileInfo = useUserProfileInfo as jest.MockedFunction<
   typeof useUserProfileInfo
 >
-jest.mock('features/home/api', () => ({
-  useUserProfileInfo: jest.fn(),
-}))
-
-const mockedUseCurrentRoute = useCurrentRoute as jest.MockedFunction<typeof useCurrentRoute>
-jest.mock('features/navigation/helpers')
-
-beforeEach(() => {
-  mockedUseUserProfileInfo.mockReturnValue({ data: { id: 1234 } } as UseQueryResult<
+jest.mock('features/home/api')
+function mockUserProfileInfo({ user, isError }: { user?: UserProfileResponse; isError?: boolean }) {
+  mockedUseUserProfileInfo.mockReturnValue({ data: user, isError } as UseQueryResult<
     UserProfileResponse,
     unknown
   >)
-  mockedUseCurrentRoute.mockReturnValue({ name: 'CulturalSurvey', key: 'key' })
+}
+
+const mockedUseCurrentRoute = useCurrentRoute as jest.MockedFunction<typeof useCurrentRoute>
+jest.mock('features/navigation/helpers')
+function mockUseCurrentRoute(name: string) {
+  mockedUseCurrentRoute.mockReturnValue({ name, key: 'key' })
+}
+
+const DEFAULT_USER = {
+  id: 1234,
+  needsToFillCulturalSurvey: true,
+  isBeneficiary: true,
+} as UserProfileResponse
+beforeEach(() => {
+  mockUserProfileInfo({ user: DEFAULT_USER })
+  mockUseCurrentRoute('CulturalSurvey')
 })
 
 afterEach(jest.clearAllMocks)
@@ -39,21 +49,34 @@ describe('<CulturalSurvey />', () => {
   })
 
   it('should not display webview when another screen is displayed', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedUseCurrentRoute.mockReturnValue({ name: 'Home', key: 'key' })
+    mockUseCurrentRoute('Home')
     const renderAPI = await renderCulturalSurveyWithNavigation()
     expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeFalsy()
   })
 
   it('should display loading screen while user info is undefined', async () => {
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedUseUserProfileInfo.mockReturnValue({ data: undefined } as UseQueryResult<
-      UserProfileResponse,
-      unknown
-    >)
+    mockUserProfileInfo({ user: undefined, isError: false })
     const renderAPI = await renderCulturalSurveyWithNavigation()
     expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeFalsy()
     expect(renderAPI.queryByTestId('Loading-Animation')).toBeTruthy()
+  })
+
+  it('should replace screen by Home when useUserProfileInfo has an error', async () => {
+    mockUserProfileInfo({ isError: true })
+    await renderCulturalSurveyWithNavigation()
+    expect(replace).toHaveBeenNthCalledWith(1, ...homeNavConfig)
+  })
+
+  it('should replace screen by Home if user has already completed survey', async () => {
+    mockUserProfileInfo({ user: { ...DEFAULT_USER, needsToFillCulturalSurvey: false } })
+    await renderCulturalSurveyWithNavigation()
+    expect(replace).toHaveBeenNthCalledWith(1, ...homeNavConfig)
+  })
+
+  it('should replace screen by Home if user is not beneficiary', async () => {
+    mockUserProfileInfo({ user: { ...DEFAULT_USER, isBeneficiary: false } })
+    await renderCulturalSurveyWithNavigation()
+    expect(replace).toHaveBeenNthCalledWith(1, ...homeNavConfig)
   })
 
   it('should NOT close webview when navigation state has url containing "typeform.com"', async () => {
