@@ -57,41 +57,7 @@ Object {
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="height: 16px;"
-                          />
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="height: 56px;"
-                          />
-                          <div
-                            class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                            data-testid="offer-description-list"
-                            style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
-                          >
-                            <div
-                              class="css-view-1dbjc4n"
-                            >
-                              <div
-                                class="css-view-1dbjc4n"
-                              >
-                                <div
-                                  class="css-view-1dbjc4n"
-                                  style="height: 24px;"
-                                />
-                              </div>
-                              <div
-                                class="css-view-1dbjc4n"
-                              >
-                                <div
-                                  class="css-view-1dbjc4n"
-                                  style="height: 128px;"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%;"
+                            style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <div
                               class="css-view-1dbjc4n"
@@ -99,52 +65,91 @@ Object {
                             />
                             <div
                               class="css-view-1dbjc4n"
-                              style="height: 8px;"
+                              style="height: 56px;"
                             />
                             <div
-                              class="css-view-1dbjc4n"
-                              style="align-items: center; flex-direction: row; justify-content: space-between;"
+                              class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                              data-testid="offer-description-list"
+                              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
                             >
                               <div
                                 class="css-view-1dbjc4n"
-                                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
                               >
                                 <div
-                                  aria-label="Revenir en arrière"
                                   class="css-view-1dbjc4n"
-                                  data-testid="Revenir en arrière"
-                                  style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                                  tabindex="0"
                                 >
                                   <div
                                     class="css-view-1dbjc4n"
-                                    data-testid="icon-back"
-                                  >
-                                    <div
-                                      class="css-text-901oao"
-                                      dir="auto"
-                                    >
-                                      icon-back-SVG-Mock
-                                    </div>
-                                  </div>
+                                    style="height: 24px;"
+                                  />
+                                </div>
+                                <div
+                                  class="css-view-1dbjc4n"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="height: 128px;"
+                                  />
                                 </div>
                               </div>
-                              <div
-                                class="css-text-901oao css-textOneLine-vcwn7f"
-                                dir="auto"
-                                style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
-                              >
-                                Description
-                              </div>
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
-                              />
                             </div>
                             <div
                               class="css-view-1dbjc4n"
-                              style="height: 8px;"
-                            />
+                              style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="height: 16px;"
+                              />
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="height: 8px;"
+                              />
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="align-items: center; flex-direction: row; justify-content: space-between;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+                                >
+                                  <div
+                                    aria-label="Revenir en arrière"
+                                    class="css-view-1dbjc4n"
+                                    data-testid="Revenir en arrière"
+                                    style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                                    tabindex="0"
+                                  >
+                                    <div
+                                      class="css-view-1dbjc4n"
+                                      data-testid="icon-back"
+                                    >
+                                      <div
+                                        class="css-text-901oao"
+                                        dir="auto"
+                                      >
+                                        icon-back-SVG-Mock
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="css-text-901oao css-textOneLine-vcwn7f"
+                                  dir="auto"
+                                  style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+                                >
+                                  Description
+                                </div>
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                                />
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="height: 8px;"
+                              />
+                            </div>
                           </div>
                         </div>
                         <div
@@ -265,41 +270,7 @@ Object {
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          style="height: 16px;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="height: 56px;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                          data-testid="offer-description-list"
-                          style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                          >
-                            <div
-                              class="css-view-1dbjc4n"
-                            >
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="height: 24px;"
-                              />
-                            </div>
-                            <div
-                              class="css-view-1dbjc4n"
-                            >
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="height: 128px;"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%;"
+                          style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
                             class="css-view-1dbjc4n"
@@ -307,52 +278,91 @@ Object {
                           />
                           <div
                             class="css-view-1dbjc4n"
-                            style="height: 8px;"
+                            style="height: 56px;"
                           />
                           <div
-                            class="css-view-1dbjc4n"
-                            style="align-items: center; flex-direction: row; justify-content: space-between;"
+                            class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                            data-testid="offer-description-list"
+                            style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
                             >
                               <div
-                                aria-label="Revenir en arrière"
                                 class="css-view-1dbjc4n"
-                                data-testid="Revenir en arrière"
-                                style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                                tabindex="0"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
-                                  data-testid="icon-back"
-                                >
-                                  <div
-                                    class="css-text-901oao"
-                                    dir="auto"
-                                  >
-                                    icon-back-SVG-Mock
-                                  </div>
-                                </div>
+                                  style="height: 24px;"
+                                />
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="height: 128px;"
+                                />
                               </div>
                             </div>
-                            <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
-                              dir="auto"
-                              style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
-                            >
-                              Description
-                            </div>
-                            <div
-                              class="css-view-1dbjc4n"
-                              style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
-                            />
                           </div>
                           <div
                             class="css-view-1dbjc4n"
-                            style="height: 8px;"
-                          />
+                            style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="height: 16px;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="height: 8px;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-direction: row; justify-content: space-between;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+                              >
+                                <div
+                                  aria-label="Revenir en arrière"
+                                  class="css-view-1dbjc4n"
+                                  data-testid="Revenir en arrière"
+                                  style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                                  tabindex="0"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    data-testid="icon-back"
+                                  >
+                                    <div
+                                      class="css-text-901oao"
+                                      dir="auto"
+                                    >
+                                      icon-back-SVG-Mock
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                class="css-text-901oao css-textOneLine-vcwn7f"
+                                dir="auto"
+                                style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+                              >
+                                Description
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                              />
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="height: 8px;"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div

@@ -9,11 +9,13 @@ describe('ExBeneficiaryHeader', () => {
   it('should render properly', () => {
     const { getByText } = render(
       themeProviderHOC(
-        <ExBeneficiaryHeader
-          firstName="Rosa"
-          lastName="Bonheur"
-          depositExpirationDate="25/12/2020"
-        />
+        themeProviderHOC(
+          <ExBeneficiaryHeader
+            firstName="Rosa"
+            lastName="Bonheur"
+            depositExpirationDate="25/12/2020"
+          />
+        )
       )
     )
 

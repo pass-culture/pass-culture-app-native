@@ -7,6 +7,221 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
+        style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-grow: 1; padding-left: 8px; padding-right: 12px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 64px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-direction: row; margin-bottom: 16px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 48px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 24px;"
+              />
+              <div
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              >
+                Trier par
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="RECENTLY_ADDED"
+              style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 32px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 24px;"
+              />
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Ajouté récemment
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="ASCENDING_PRICE"
+              style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 32px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 24px;"
+              />
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Prix croissant
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              />
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="AROUND_ME"
+              style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 32px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 24px;"
+              />
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Proximité géographique
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 8px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; flex-direction: row; justify-content: space-between;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+            >
+              <div
+                aria-label="Revenir en arrière"
+                class="css-view-1dbjc4n"
+                data-testid="Revenir en arrière"
+                style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                tabindex="0"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="icon-back"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    icon-back-SVG-Mock
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-text-901oao css-textOneLine-vcwn7f"
+              dir="auto"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+            >
+              Trier
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+            />
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 8px;"
+          />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="padding: 20px 20px 20px 20px;"
+        >
+          <div
+            aria-label="Valider"
+            class="css-view-1dbjc4n"
+            data-testid="Valider"
+            style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+            tabindex="0"
+          >
+            <div
+              class="css-text-901oao css-textOneLine-vcwn7f"
+              dir="auto"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+            >
+              Valider
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="css-view-1dbjc4n"
+      style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+    >
+      <div
+        class="css-view-1dbjc4n"
         style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
       >
         <div
@@ -206,211 +421,6 @@ Object {
           >
             Valider
           </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="css-view-1dbjc4n"
-      style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
-    >
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-grow: 1; padding-left: 8px; padding-right: 12px;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 16px;"
-        />
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 64px;"
-        />
-        <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; flex-direction: row; margin-bottom: 16px;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 48px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="width: 24px;"
-          />
-          <div
-            class="css-text-901oao"
-            dir="auto"
-            style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-          >
-            Trier par
-          </div>
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          data-testid="RECENTLY_ADDED"
-          style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-          tabindex="0"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 32px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="width: 24px;"
-          />
-          <div
-            class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
-            style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-          >
-            Ajouté récemment
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-          >
-            <div
-              class="css-text-901oao"
-              dir="auto"
-            >
-              undefined-SVG-Mock
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          data-testid="ASCENDING_PRICE"
-          style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-          tabindex="0"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 32px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="width: 24px;"
-          />
-          <div
-            class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
-            style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-          >
-            Prix croissant
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-          />
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          data-testid="AROUND_ME"
-          style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-          tabindex="0"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 32px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="width: 24px;"
-          />
-          <div
-            class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
-            style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-          >
-            Proximité géographique
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-          />
-        </div>
-      </div>
-    </div>
-    <div
-      class="css-view-1dbjc4n"
-      style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%;"
-    >
-      <div
-        class="css-view-1dbjc4n"
-        style="height: 16px;"
-      />
-      <div
-        class="css-view-1dbjc4n"
-        style="height: 8px;"
-      />
-      <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; flex-direction: row; justify-content: space-between;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
-        >
-          <div
-            aria-label="Revenir en arrière"
-            class="css-view-1dbjc4n"
-            data-testid="Revenir en arrière"
-            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
-            tabindex="0"
-          >
-            <div
-              class="css-view-1dbjc4n"
-              data-testid="icon-back"
-            >
-              <div
-                class="css-text-901oao"
-                dir="auto"
-              >
-                icon-back-SVG-Mock
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-text-901oao css-textOneLine-vcwn7f"
-          dir="auto"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
-        >
-          Trier
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
-        />
-      </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="height: 8px;"
-      />
-    </div>
-    <div
-      class="css-view-1dbjc4n"
-      style="padding: 20px 20px 20px 20px;"
-    >
-      <div
-        aria-label="Valider"
-        class="css-view-1dbjc4n"
-        data-testid="Valider"
-        style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-        tabindex="0"
-      >
-        <div
-          class="css-text-901oao css-textOneLine-vcwn7f"
-          dir="auto"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
-        >
-          Valider
         </div>
       </div>
     </div>
