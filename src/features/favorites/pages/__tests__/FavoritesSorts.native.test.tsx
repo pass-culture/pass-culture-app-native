@@ -10,6 +10,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
+import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { FavoriteSortBy, FavoritesSorts } from '../FavoritesSorts'
@@ -137,9 +138,11 @@ describe('FavoritesSorts component', () => {
 
 async function renderFavoritesSort() {
   const renderAPI = render(
-    <FavoritesWrapper>
-      <FavoritesSorts />
-    </FavoritesWrapper>
+    themeProviderHOC(
+      <FavoritesWrapper>
+        <FavoritesSorts />
+      </FavoritesWrapper>
+    )
   )
   await superFlushWithAct()
   return renderAPI

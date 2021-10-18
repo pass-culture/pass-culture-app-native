@@ -4,6 +4,7 @@ import React from 'react'
 
 import { TabRouteName } from 'features/navigation/TabBar/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
 import { TabBar } from '../TabBar'
@@ -87,7 +88,9 @@ describe('TabBar', () => {
     expect(navigation.navigate).toHaveBeenCalledWith('Search')
     tabBar.rerender(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<TabBar state={{ ...state, index: 1 }} navigation={navigation} />)
+      reactQueryProviderHOC(
+        themeProviderHOC(<TabBar state={{ ...state, index: 1 }} navigation={navigation} />)
+      )
     )
 
     expect(tabBar.queryByTestId('Home tab selected')).toBeFalsy()
@@ -115,6 +118,8 @@ describe('TabBar', () => {
 })
 
 function renderTabBar() {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  return render(reactQueryProviderHOC(<TabBar state={state} navigation={navigation} />))
+  return render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(themeProviderHOC(<TabBar state={state} navigation={navigation} />))
+  )
 }

@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BookingDetails should render correctly 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <RCTScrollView
     bounces={false}
     collapsable={false}
@@ -615,7 +626,7 @@ Array [
         }
       />
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <Modal
     animationType="none"
     deviceHeight={1334}
@@ -987,7 +998,7 @@ Array [
         </View>
       </View>
     </View>
-  </Modal>,
+  </Modal>
   <Modal
     animationType="none"
     deviceHeight={1334}
@@ -1366,7 +1377,7 @@ Array [
         </View>
       </View>
     </View>
-  </Modal>,
+  </Modal>
   <View
     style={
       Object {
@@ -1569,6 +1580,6 @@ Array [
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

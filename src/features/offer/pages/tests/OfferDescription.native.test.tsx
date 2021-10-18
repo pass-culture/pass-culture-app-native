@@ -10,6 +10,7 @@ import { env } from 'libs/environment'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { superFlushWithAct, render } from 'tests/utils'
 
 import {
@@ -102,15 +103,17 @@ async function renderOfferDescription(
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Offer">
-          <RootStack.Screen
-            name="OfferDescription"
-            component={OfferDescription}
-            initialParams={{ id: offerId }}
-          />
-        </RootStack.Navigator>
-      </NavigationContainer>
+      themeProviderHOC(
+        <NavigationContainer>
+          <RootStack.Navigator initialRouteName="Offer">
+            <RootStack.Screen
+              name="OfferDescription"
+              component={OfferDescription}
+              initialParams={{ id: offerId }}
+            />
+          </RootStack.Navigator>
+        </NavigationContainer>
+      )
     )
   )
   await superFlushWithAct()

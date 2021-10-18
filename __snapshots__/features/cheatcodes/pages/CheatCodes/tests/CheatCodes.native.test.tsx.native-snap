@@ -6,6 +6,7 @@ exports[`CheatCodes component should render correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,

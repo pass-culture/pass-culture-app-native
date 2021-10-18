@@ -3,6 +3,7 @@ import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/ProfileHeader'
+import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { render } from 'tests/utils'
 
 const user: UserProfileResponse = {
@@ -41,13 +42,15 @@ describe('ProfileHeader', () => {
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
-    const { getByTestId, getByText } = render(<ProfileHeader user={user} />)
+    const { getByTestId, getByText } = render(themeProviderHOC(<ProfileHeader user={user} />))
     expect(getByTestId('beneficiary-header')).toBeTruthy()
     expect(getByText("crédit valable jusqu'au\u00a009/02/2023 à 11h17")).toBeTruthy()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
-    const { getByTestId, getByText } = render(<ProfileHeader user={exBeneficiaryUser} />)
+    const { getByTestId, getByText } = render(
+      themeProviderHOC(<ProfileHeader user={exBeneficiaryUser} />)
+    )
     expect(getByTestId('ex-beneficiary-header')).toBeTruthy()
     expect(getByText('crédit expiré le 01/01/2020 à 03h04')).toBeTruthy()
   })
