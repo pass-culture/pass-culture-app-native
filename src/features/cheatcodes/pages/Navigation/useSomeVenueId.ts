@@ -8,8 +8,13 @@ export const useSomeVenueId = () => {
 
   useEffect(() => {
     // TODO(antoinewg, #PC-11353): make fetchVenues depend on search backend
-    // TODO(antoinewg, #PC-11353): make sure we catch this API call
-    fetchVenues('').then(([venue]) => venue.venueId && setVenueId(venue.venueId))
+    fetchVenues('')
+      .then(([venue]) => venue.venueId && setVenueId(venue.venueId))
+      .catch(() => {
+        // The cheatcodes are only in testing
+        // eslint-disable-next-line no-console
+        console.log('Cannot fetch venue ids')
+      })
   }, [])
 
   return venueId
