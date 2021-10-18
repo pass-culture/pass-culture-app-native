@@ -3,7 +3,6 @@ import { GestureResponderEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
@@ -22,7 +21,6 @@ export interface BaseButtonProps {
   testId?: string
   textSize?: number
   title: string
-  submitOnEnterWeb?: boolean
   fullWidth?: boolean
 }
 
@@ -46,7 +44,6 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
   const pressHandler = props.disabled || props.isLoading ? undefined : props.onPress
   const longPressHandler = props.disabled || props.isLoading ? undefined : props.onLongPress
   const containerTestID = props.testId ? props.testId : props.title
-  useEnterKeyAction(props.submitOnEnterWeb && !props.disabled ? props.onPress : undefined)
   return (
     <Container
       {...accessibilityAndTestId(containerTestID)}
