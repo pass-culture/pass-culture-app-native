@@ -1,6 +1,9 @@
+import { openInbox } from 'react-native-email-link'
+
 import { UserProfileResponse, DomainsCredit, UserRole } from 'api/gen/api'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit } from 'features/home/services/useAvailableCredit'
+import { isAppUrl, openUrl } from 'features/navigation/helpers'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Info } from 'ui/svg/icons/Info'
@@ -44,4 +47,10 @@ export const matchSubscriptionMessageIconToSvg = (
     default:
       return useFallbackIcon ? Info : undefined
   }
+}
+
+const OPEN_INBOX_URL_PART = 'openInbox'
+
+export const handleCallToActionLink = (url: string) => {
+  isAppUrl(url) && url.match(OPEN_INBOX_URL_PART) ? openInbox() : openUrl(url)
 }
