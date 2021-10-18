@@ -77,7 +77,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query } as SearchParametersQuery, null)
 
       expect(algoliasearch).toHaveBeenCalledWith('algoliaAppId', 'algoliaApiKey')
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName')
+      expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
@@ -935,7 +935,7 @@ describe('fetchAlgolia', () => {
         attributesToHighlight: [],
         attributesToRetrieve,
       })
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName')
+      expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
     })
 
     it('should fetch duo & free event offers for categories pratique & spectacle around me', () => {
@@ -974,7 +974,7 @@ describe('fetchAlgolia', () => {
         attributesToHighlight: [],
         attributesToRetrieve,
       })
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName')
+      expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
     })
   })
 

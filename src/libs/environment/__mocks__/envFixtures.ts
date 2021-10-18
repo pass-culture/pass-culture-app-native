@@ -3,7 +3,7 @@ import { Environment } from 'libs/environment/types'
 export const env: Environment = {
   ACCESSIBILITY_LINK: 'https://passculture.accessibility',
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
-  ALGOLIA_INDEX_NAME: 'algoliaIndexName',
+  ALGOLIA_OFFERS_INDEX_NAME: 'algoliaOffersIndexName',
   ALGOLIA_SEARCH_API_KEY: 'algoliaApiKey',
   ANDROID_APP_ID: 'app.android',
   API_BASE_URL: 'http://localhost',
