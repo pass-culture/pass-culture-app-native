@@ -20,6 +20,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
@@ -127,6 +128,8 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     [isDoingReCaptchaChallenge, isFetching, networkInfo.isConnected, areSettingsLoading]
   )
 
+  useEnterKeyAction(!disabled ? onSubmit : undefined)
+
   return (
     <React.Fragment>
       <BottomContentPage>
@@ -187,7 +190,6 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
               onPress={onSubmit}
               isLoading={isDoingReCaptchaChallenge || isFetching}
               disabled={disabled}
-              submitOnEnterWeb
             />
             {!!errorMessage && (
               <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />
