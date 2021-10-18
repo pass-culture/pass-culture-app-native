@@ -4,10 +4,10 @@ import { ComponentType } from 'react'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { Login } from 'features/auth/login/Login'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function withAuthProtection(WrappedComponent: ComponentType<any>, requireLogin: boolean) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return function ComponentWithAuthProtection(props: any) {
+type Props = any // eslint-disable-line @typescript-eslint/no-explicit-any
+
+export function withAuthProtection(WrappedComponent: ComponentType<Props>, requireLogin: boolean) {
+  return function ComponentWithAuthProtection(props: Props) {
     const { isLoggedIn } = useAuthContext()
     if (requireLogin && !isLoggedIn) {
       return <Login doNotNavigateOnSigninSuccess />
