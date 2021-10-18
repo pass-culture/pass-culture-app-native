@@ -3,7 +3,6 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions'
 import { VenueOffers } from 'features/venue/components/VenueOffers'
@@ -31,7 +30,6 @@ interface Props {
 export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const { data: venue } = useVenue(venueId)
   const { data: offers } = useVenueOffers(venueId)
-  const { data: settings } = useAppSettings()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
   if (!venue) return <React.Fragment></React.Fragment>
@@ -54,7 +52,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const venueAddress = formatFullAddress(address || publicName, postalCode, city)
   const typeLabel = parseType(venueTypeCode)
 
-  const shouldShowVenueOffers = !!settings?.useAppSearch && !!offers && offers?.hits.length > 0
+  const shouldShowVenueOffers = !!offers && offers?.hits.length > 0
   const shouldShowAccessibility = Object.values(accessibility).some(
     (value) => value !== undefined && value !== null
   )
