@@ -3,7 +3,7 @@ import { Route, useNavigationState } from '@react-navigation/native'
 import { Alert, Linking } from 'react-native'
 
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
-import { isAppUrl } from 'features/navigation/RootNavigator/linking'
+import { linking } from 'features/navigation/RootNavigator/linking'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { MonitoringError } from 'libs/monitoring'
@@ -92,4 +92,14 @@ export function useCurrentRoute(): Route<string> | null {
     }
     return null
   })
+}
+
+export const isAppUrl = (url: string) => {
+  let isUrl = false
+  for (const prefix of linking.prefixes) {
+    if (url.match('^' + prefix)) {
+      isUrl = true
+    }
+  }
+  return isUrl
 }
