@@ -10,15 +10,6 @@ import { customGetPathFromState } from './getPathFromState'
 import { customGetStateFromPath } from './getStateFromPath'
 import { subscribe } from './subscribe'
 
-export const isAppUrl = (url: string) => {
-  let isUrl = false
-  for (const prefix of linking.prefixes) {
-    if (url.match('^' + prefix)) {
-      isUrl = true
-    }
-  }
-  return isUrl
-}
 
 export const linking: RequireField<LinkingOptions, 'getStateFromPath' | 'getPathFromState'> = {
   prefixes: [WEBAPP_V2_URL, WEBAPP_NATIVE_REDIRECTION_URL, 'passculture://'], // must NOT be empty

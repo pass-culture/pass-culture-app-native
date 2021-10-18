@@ -1,14 +1,21 @@
 import { Alert, Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
+import * as getScreenFromDeeplinkModule from 'features/deeplinks/getScreenFromDeeplink'
+import { DeeplinkParts } from 'features/deeplinks/types'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics'
 
-import { openUrl, navigateToBooking } from '../helpers'
+import { openUrl, navigateToBooking, isAppUrl } from '../helpers'
 
 jest.mock('features/navigation/navigationRef')
+jest.mock('features/navigation/RootNavigator/linking')
+
+const getScreenFromDeeplinkModuleSpy = jest.spyOn(
+  getScreenFromDeeplinkModule,
+  'getScreenFromDeeplink'
+)
 
 const openURLSpy = jest.spyOn(Linking, 'openURL')
 
@@ -27,8 +34,11 @@ describe('Navigation helpers', () => {
 
   it('should navigate to in-app screen and navigate to it (ex: Offer)', async () => {
     const openURL = openURLSpy.mockResolvedValueOnce(undefined)
+    getScreenFromDeeplinkModuleSpy.mockImplementationOnce(
+      () => ({ screen: 'Offer', params: { id: 1, from: 'offer' } } as DeeplinkParts)
+    )
     const path = getScreenPath('Offer', { id: 1, from: 'offer', moduleName: undefined })
-    const link = WEBAPP_NATIVE_REDIRECTION_URL + `/${path}`
+    const link = 'https://mockValidPrefix1' + `/${path}`
     await openUrl(link)
     expect(openURL).not.toBeCalled()
     expect(navigationRef.current?.navigate).toBeCalledWith('Offer', { id: 1, from: 'offer' })
@@ -36,7 +46,10 @@ describe('Navigation helpers', () => {
 
   it('should navigate to PageNotFound when in-app screen cannot be found (ex: Offer)', async () => {
     const openURL = openURLSpy.mockResolvedValueOnce(undefined)
-    const link = WEBAPP_NATIVE_REDIRECTION_URL + '/unknown'
+    getScreenFromDeeplinkModuleSpy.mockImplementationOnce(
+      () => ({ screen: 'PageNotFound', params: undefined } as DeeplinkParts)
+    )
+    const link = 'https://mockValidPrefix2' + '/unknown'
     await openUrl(link)
     expect(openURL).not.toBeCalled()
     expect(navigationRef.current?.navigate).toBeCalledWith('PageNotFound', undefined)
@@ -86,6 +99,17 @@ describe('Navigation helpers', () => {
 
     await openUrl(link, undefined, fallbackLink)
     expect(alertMock).not.toHaveBeenCalled()
+  })
+
+  describe('isAppUrl', () => {
+    it('should return false if url does not start with linking prefixes', () => {
+      const url = isAppUrl('https://notavalidprefix')
+      expect(url).toEqual(false)
+    })
+    it('should return true if url starts with linking prefixes', () => {
+      const url = isAppUrl('https://mockValidPrefix1')
+      expect(url).toEqual(true)
+    })
   })
 
   describe('[Method] navigateToBooking', () => {
