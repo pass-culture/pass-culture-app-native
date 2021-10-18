@@ -45,9 +45,9 @@ const buildOfferPriceRangePredicate = ({
   offerIsFree,
   priceRange,
 }: Pick<SearchParametersQuery, 'offerIsFree' | 'priceRange'>): FiltersArray[0] | undefined => {
-  if (offerIsFree) return [`${FACETS_ENUM.OFFER_PRICE} = 0`]
-  if (priceRange) return [`${FACETS_ENUM.OFFER_PRICE}: ${clampPrice(priceRange).join(' TO ')}`]
-  return [`${FACETS_ENUM.OFFER_PRICE}: 0 TO 300`]
+  if (offerIsFree) return [`${FACETS_ENUM.OFFER_PRICES} = 0`]
+  if (priceRange) return [`${FACETS_ENUM.OFFER_PRICES}: ${clampPrice(priceRange).join(' TO ')}`]
+  return [`${FACETS_ENUM.OFFER_PRICES}: 0 TO 300`]
 }
 
 const buildDatePredicate = ({
@@ -70,12 +70,12 @@ const buildHomepageDatePredicate = ({
 
   if (beginningDatetime && !endingDatetime) {
     const beginningTimestamp = TIMESTAMP.getFromDate(beginningDatetime)
-    return [`${FACETS_ENUM.OFFER_DATE} >= ${beginningTimestamp}`]
+    return [`${FACETS_ENUM.OFFER_DATES} >= ${beginningTimestamp}`]
   }
 
   if (!beginningDatetime && endingDatetime) {
     const endingTimestamp = TIMESTAMP.getFromDate(endingDatetime)
-    return [`${FACETS_ENUM.OFFER_DATE} <= ${endingTimestamp}`]
+    return [`${FACETS_ENUM.OFFER_DATES} <= ${endingTimestamp}`]
   }
 
   if (beginningDatetime && endingDatetime) {
@@ -89,7 +89,7 @@ const buildHomepageDatePredicate = ({
 
 const buildTimeOnlyPredicate = (timeRange: Range<number>): FiltersArray[0] => {
   const timeRangeInSeconds = computeTimeRangeFromHoursToSeconds(timeRange)
-  return [`${FACETS_ENUM.OFFER_TIME}: ${timeRangeInSeconds.join(' TO ')}`]
+  return [`${FACETS_ENUM.OFFER_TIMES}: ${timeRangeInSeconds.join(' TO ')}`]
 }
 
 const buildDateAndTimePredicate = ({
@@ -152,4 +152,4 @@ const buildNewestOffersPredicate = (
 }
 
 const getDatePredicate = (lowerDate: number, higherDate: number): string =>
-  `${FACETS_ENUM.OFFER_DATE}: ${lowerDate} TO ${higherDate}`
+  `${FACETS_ENUM.OFFER_DATES}: ${lowerDate} TO ${higherDate}`
