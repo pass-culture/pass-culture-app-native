@@ -97,20 +97,6 @@ export const fetchHits = async (
   }
 }
 
-export const fetchVenueOffers = async (
-  params: PartialSearchState,
-  isUserUnderage: boolean
-): Promise<SearchResponse> => {
-  const options = buildQueryOptions(params, null, isUserUnderage) // no need of geolocation to get venues, yet?
-  const response = await offersClient.search<AppSearchFields>('', options)
-  const { meta } = response.info
-
-  return {
-    hits: response.results.map(buildAlgoliaHit).filter(filterHasSubcategoryId) as SearchHit[],
-    nbHits: meta.page.total_results,
-  }
-}
-
 export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
   const options: SearchOptions<AppSearchVenuesFields> = {
     result_fields: VENUES_RESULT_FIELDS,

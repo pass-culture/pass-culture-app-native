@@ -3,26 +3,29 @@ import { useQuery } from 'react-query'
 
 import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
-import { filterAlgoliaHit, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
+import { fetchAlgolia, filterAlgoliaHit, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
-import { fetchVenueOffers } from 'libs/search/fetch/search'
+import { fetchHits as fetchAppSearchHits } from 'libs/search/fetch/search'
+import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 
 export const useVenueOffers = (venueId: number) => {
   const transformHits = useTransformAlgoliaHits()
   const params = useVenueSearchParameters(venueId)
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
+  const { enabled, isAppSearchBackend } = useAppSearchBackend()
+
+  const fetchHits = isAppSearchBackend ? fetchAppSearchHits : fetchAlgolia
 
   return useQuery(
     [QueryKeys.VENUE_OFFERS, venueId],
-    // TODO(antoinewg, #PC-11353): make fetchVenueOffers depend on search backend
-    // For that, we have to wait for venue_id to be indexed along with the offers on Algolia
-    () => fetchVenueOffers(params, isUserUnderageBeneficiary),
+    () => fetchHits({ ...params, page: 0 }, null, isUserUnderageBeneficiary),
     {
       select: ({ hits, nbHits }) => ({
         hits: uniqBy(hits.filter(filterAlgoliaHit).map(transformHits), 'objectID') as SearchHit[],
         nbHits,
       }),
+      enabled,
     }
   )
 }
