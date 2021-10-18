@@ -10,9 +10,10 @@ import { customGetPathFromState } from './getPathFromState'
 import { customGetStateFromPath } from './getStateFromPath'
 import { subscribe } from './subscribe'
 
+const PASS_CULTURE_PREFIX_URL = 'passculture://'
 
 export const linking: RequireField<LinkingOptions, 'getStateFromPath' | 'getPathFromState'> = {
-  prefixes: [WEBAPP_V2_URL, WEBAPP_NATIVE_REDIRECTION_URL, 'passculture://'], // must NOT be empty
+  prefixes: [WEBAPP_V2_URL, WEBAPP_NATIVE_REDIRECTION_URL, PASS_CULTURE_PREFIX_URL], // must NOT be empty
   getInitialURL: getInitialURL,
   subscribe: subscribe,
   getStateFromPath: customGetStateFromPath,
