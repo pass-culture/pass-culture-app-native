@@ -2,10 +2,11 @@ import { useEffect } from 'react'
 import { useQueries } from 'react-query'
 
 import { VenuesModule } from 'features/home/contentful'
+import { fetchMultipleVenues as fetchAlgoliaMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
-import { fetchMultipleVenues } from 'libs/search/fetch/search'
+import { fetchMultipleVenues as fetchAppSearchMultipleVenues } from 'libs/search/fetch/search'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 
 export type HomeVenuesModuleResponse = {
@@ -22,10 +23,13 @@ export const useHomeVenueModules = (
   const homeVenuesModules: HomeVenuesModuleResponse = {}
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
 
+  const fetchMultipleVenues = isAppSearchBackend
+    ? fetchAppSearchMultipleVenues
+    : fetchAlgoliaMultipleVenues
+
   const queries = useQueries(
     venuesModules.map(({ search, moduleId }) => {
       const fetchModule = async () => {
-        // TODO(antoinewg, #PC-11353): make fetchMultipleVenues depend on search backend
         const hits = await fetchMultipleVenues(search, position)
         return { moduleId: moduleId, hits }
       }
@@ -33,8 +37,7 @@ export const useHomeVenueModules = (
       return {
         queryKey: [QueryKeys.HOME_VENUES_MODULE, moduleId],
         queryFn: fetchModule,
-        // TODO(antoinewg, #PC-11353): remove isAppSearchBackend
-        enabled: enabled && isAppSearchBackend,
+        enabled,
         notifyOnChangeProps: ['data'],
       }
     })

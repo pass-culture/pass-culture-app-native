@@ -1,9 +1,10 @@
 import { GetObjectsResponse, MultipleQueriesResponse } from '@algolia/client-search'
-import algoliasearch from 'algoliasearch'
 
 import { LocationType } from 'features/search/enums'
 import { Response } from 'features/search/pages/useSearchResults'
 import { PartialSearchState } from 'features/search/types'
+import { client } from 'libs/algolia/fetchAlgolia/clients'
+import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
@@ -12,8 +13,6 @@ import { AlgoliaHit } from '../algolia.d'
 import { RADIUS_FILTERS } from '../enums'
 import { buildFacetFilters } from '../fetchAlgolia/fetchAlgolia.facetFilters'
 import { buildNumericFilters } from '../fetchAlgolia/fetchAlgolia.numericFilters'
-
-const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
 // We don't use all the fields indexed. Simply retrieve the one we use.
 // see SearchHit
@@ -105,10 +104,7 @@ export const fetchAlgoliaHits = (
   return index.getObjects(objectIds, { attributesToRetrieve })
 }
 
-const buildHitsPerPage = (hitsPerPage: PartialSearchState['hitsPerPage']) =>
-  hitsPerPage ? { hitsPerPage } : null
-
-const buildGeolocationParameter = (
+export const buildGeolocationParameter = (
   locationFilter: PartialSearchState['locationFilter'],
   userLocation: GeoCoordinates | null
 ): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
