@@ -330,6 +330,18 @@ export function Navigation(): JSX.Element {
           <NavigationButton title={`EduConnect`} onPress={() => navigate('EduConnect')} />
         </Row>
         <Row half>
+          <NavigationButton
+            title={`UnavailableEduConnect`}
+            onPress={() => navigate('UnavailableEduConnect')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={`Booking Confirmation`}
+            onPress={() => navigate('BookingConfirmation', { offerId: 11224, bookingId: 1240 })}
+          />
+        </Row>
+        <Row half>
           <NavigationButton title={`Modifier mon e-mail`} onPress={() => navigate('ChangeEmail')} />
         </Row>
       </StyledContainer>
