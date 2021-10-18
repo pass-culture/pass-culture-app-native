@@ -11,6 +11,7 @@ export enum FACETS_ENUM {
   OFFER_STOCKS_DATE_CREATED = 'offer.stocksDateCreated',
   OFFER_TAGS = 'offer.tags',
   OFFER_TIMES = 'offer.times',
+  VENUE_ID = 'venue.id',
 }
 
 // Taken from https://www.algolia.com/apps/E2IKXJ325N/explorer/configuration/venues/facets

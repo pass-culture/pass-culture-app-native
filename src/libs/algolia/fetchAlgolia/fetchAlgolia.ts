@@ -50,7 +50,7 @@ const buildSearchParameters = (
   }: PartialSearchState,
   userLocation: GeoCoordinates | null
 ) => ({
-  ...buildFacetFilters({ offerCategories, offerTypes, offerIsDuo, tags }),
+  ...buildFacetFilters({ locationFilter, offerCategories, offerTypes, offerIsDuo, tags }),
   ...buildNumericFilters({
     beginningDatetime,
     date,

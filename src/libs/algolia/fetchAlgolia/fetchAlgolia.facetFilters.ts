@@ -1,13 +1,18 @@
 import { SearchGroupNameEnum } from 'api/gen'
+import { LocationType } from 'features/search/enums'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
 
 export const buildFacetFilters = ({
+  locationFilter,
   offerCategories,
   offerTypes,
   offerIsDuo,
   tags,
-}: Pick<SearchParametersQuery, 'offerCategories' | 'offerTypes' | 'offerIsDuo' | 'tags'>): null | {
+}: Pick<
+  SearchParametersQuery,
+  'locationFilter' | 'offerCategories' | 'offerTypes' | 'offerIsDuo' | 'tags'
+>): null | {
   facetFilters: FiltersArray
 } => {
   if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
@@ -27,6 +32,12 @@ export const buildFacetFilters = ({
 
   const tagsPredicate = buildTagsPredicate(tags)
   if (tagsPredicate) facetFilters.push(tagsPredicate)
+
+  if (
+    locationFilter.locationType === LocationType.VENUE &&
+    typeof locationFilter.venue.venueId === 'number'
+  )
+    facetFilters.push([`${FACETS_ENUM.VENUE_ID}:${locationFilter.venue.venueId}`])
 
   const atLeastOneFacetFilter = facetFilters.length > 0
   return atLeastOneFacetFilter ? { facetFilters } : null
