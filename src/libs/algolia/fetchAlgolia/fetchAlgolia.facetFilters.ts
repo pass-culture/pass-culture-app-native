@@ -1,3 +1,4 @@
+import { SearchGroupNameEnum } from 'api/gen'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
 
@@ -31,18 +32,11 @@ export const buildFacetFilters = ({
   return atLeastOneFacetFilter ? { facetFilters } : null
 }
 
-const buildOfferCategoriesPredicate = (
-  offerCategories: SearchParametersQuery['offerCategories']
-): string[] => {
-  return offerCategories.map((category: string) => `${FACETS_ENUM.OFFER_CATEGORY}:${category}`)
-}
+const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnum[]): string[] =>
+  searchGroups.map((searchGroup) => `${FACETS_ENUM.OFFER_SEARCH_GROUP_NAME}:${searchGroup}`)
 
-const buildOfferIsDuoPredicate = (
-  offerIsDuo: SearchParametersQuery['offerIsDuo']
-): string[] | undefined => {
-  if (offerIsDuo) return [`${FACETS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`]
-  return undefined
-}
+const buildOfferIsDuoPredicate = (offerIsDuo: boolean): string[] | undefined =>
+  offerIsDuo ? [`${FACETS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`] : undefined
 
 const buildOfferTypesPredicate = (
   offerTypes: SearchParametersQuery['offerTypes']
