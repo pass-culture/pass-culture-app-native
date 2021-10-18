@@ -246,7 +246,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerCategories } as SearchParametersQuery, null)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.category:LECON']],
+        facetFilters: [['offer.searchGroupName:LECON']],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -261,7 +261,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerCategories } as SearchParametersQuery, null)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.category:SPECTACLE', 'offer.category:LIVRE']],
+        facetFilters: [['offer.searchGroupName:SPECTACLE', 'offer.searchGroupName:LIVRE']],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -925,7 +925,10 @@ describe('fetchAlgolia', () => {
 
       expect(search).toHaveBeenCalledWith(query, {
         page: page,
-        facetFilters: [['offer.category:LECON', 'offer.category:VISITE'], ['offer.isDigital:true']],
+        facetFilters: [
+          ['offer.searchGroupName:LECON', 'offer.searchGroupName:VISITE'],
+          ['offer.isDigital:true'],
+        ],
         numericFilters: [['offer.prices: 0 TO 300']],
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
@@ -961,7 +964,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         facetFilters: [
-          ['offer.category:PRATIQUE', 'offer.category:SPECTACLE'],
+          ['offer.searchGroupName:PRATIQUE', 'offer.searchGroupName:SPECTACLE'],
           ['offer.isEvent:true'],
           ['offer.isDuo:true'],
         ],
