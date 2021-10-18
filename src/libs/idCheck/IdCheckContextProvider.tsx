@@ -14,7 +14,8 @@ export const IdCheckContextProvider = memo(function IdCheckContextProvider({
 }) {
   return (
     <IdCheckContextProviderDefault
-      apiBaseUrl={env.ID_CHECK_API_URL}
+      jouveApiBaseUrl={env.ID_CHECK_API_URL}
+      pcApiBaseUrl={env.API_BASE_URL}
       supportEmail={env.SUPPORT_EMAIL_ADDRESS}
       dsmUrl={env.DSM_URL}
       personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
