@@ -8,7 +8,6 @@ import * as NavigationHelpers from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { act, flushAllPromises, fireEvent, render } from 'tests/utils'
 
 import { bookingsSnap } from '../api/bookingsSnap'
@@ -281,5 +280,5 @@ describe('BookingDetails', () => {
 function renderBookingDetails(booking: Booking) {
   jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue(booking)
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  return render(reactQueryProviderHOC(themeProviderHOC(<BookingDetails />)))
+  return render(reactQueryProviderHOC(<BookingDetails />))
 }

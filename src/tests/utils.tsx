@@ -7,7 +7,9 @@ import { fr } from 'make-plural/plurals'
 import React from 'react'
 import { act, ReactTestInstance } from 'react-test-renderer'
 
+import { ThemeProvider } from 'libs/styled/ThemeProvider'
 import { messages } from 'locales/fr/messages'
+import { theme } from 'theme'
 
 i18n.load({
   fr: messages,
@@ -74,21 +76,30 @@ export function simulateWebviewMessage(webview: ReactTestInstance, message: stri
   })
 }
 
-const LinguiProvider: React.FC = ({ children }) => {
+const DefaultWrapper: React.FC = ({ children }) => {
   return (
-    <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
-      {children}
-    </I18nProvider>
+    <ThemeProvider theme={theme}>
+      <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
+        {children}
+      </I18nProvider>
+    </ThemeProvider>
   )
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const customRender = (ui: React.ReactElement<any>, options?: RenderOptions) =>
-  render(ui, {
-    wrapper: LinguiProvider,
-    ...options,
+function customRender(ui: React.ReactElement<any>, options?: RenderOptions) {
+  const { wrapper: Wrapper, ...restOfOptions } = options || {}
+  return render(ui, {
+    wrapper: Wrapper
+      ? ({ children }) => (
+          <DefaultWrapper>
+            <Wrapper>{children}</Wrapper>
+          </DefaultWrapper>
+        )
+      : DefaultWrapper,
+    ...restOfOptions,
   })
+}
 
 // eslint-disable-next-line no-restricted-imports
 export * from '@testing-library/react-native'

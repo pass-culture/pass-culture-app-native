@@ -1,5 +1,4 @@
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -11,11 +10,10 @@ interface SvgPageHeaderProps {
 }
 
 export default function SvgPageHeader({ title }: SvgPageHeaderProps) {
-  const windowWidth = useWindowDimensions().width
   const { top } = useCustomSafeInsets()
   return (
     <HeaderBackgroundWrapper style={{ maxHeight: getSpacing(14) + top }}>
-      <HeaderBackground width={windowWidth} />
+      <HeaderBackground />
       <Title>{title}</Title>
     </HeaderBackgroundWrapper>
   )

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { ScrollView, useWindowDimensions, View } from 'react-native'
 import RNModal from 'react-native-modal'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Style } from 'ui/components/Style'
@@ -56,7 +56,8 @@ export const AppModal: FunctionComponent<Props> = ({
     onLeftIconPress,
   } as ModalIconProps
 
-  const { height: windowHeight, width: windowWidth } = useWindowDimensions()
+  const { height: windowHeight } = useWindowDimensions()
+  const { appContentWidth } = useTheme()
   const { bottom } = useCustomSafeInsets()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -90,7 +91,7 @@ export const AppModal: FunctionComponent<Props> = ({
         onBackdropPress={handleOnBackdropPress()}
         testID="modal"
         deviceHeight={windowHeight}
-        deviceWidth={windowWidth}
+        deviceWidth={appContentWidth}
         maxWidth={maxWidth}
         height={height}>
         <ModalHeader title={title} numberOfLines={titleNumberOfLines} {...iconProps} />

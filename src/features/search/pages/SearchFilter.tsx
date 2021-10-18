@@ -37,7 +37,6 @@ const useScrollToEndOnTimeOrDateActivation = () => {
 }
 
 export const SearchFilter: React.FC = () => {
-  const windowWidth = useWindowDimensions().width
   const { searchState } = useStagedSearch()
   const { data: profile } = useUserProfileInfo()
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
@@ -52,7 +51,7 @@ export const SearchFilter: React.FC = () => {
           {/* Localisation */}
           <Section.Location />
           <Spacer.Column numberOfSpaces={6} />
-          <Separator windowWidth={windowWidth} />
+          <Separator />
 
           {/* Rayon */}
           {!!('aroundRadius' in searchState.locationFilter) && (
@@ -60,50 +59,50 @@ export const SearchFilter: React.FC = () => {
               <Spacer.Column numberOfSpaces={6} />
               <Section.Radius />
               <Spacer.Column numberOfSpaces={6} />
-              <Separator windowWidth={windowWidth} />
+              <Separator />
             </React.Fragment>
           )}
 
           {/* Catégories */}
           <Section.Category />
           <Spacer.Column numberOfSpaces={2} />
-          <Separator windowWidth={windowWidth} />
+          <Separator />
 
           {/* Type d'offre */}
           <Section.OfferType />
           <Spacer.Column numberOfSpaces={2} />
-          <Separator windowWidth={windowWidth} />
+          <Separator />
           <Spacer.Column numberOfSpaces={6} />
 
           {/* Prix */}
           <Section.Price />
-          <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
+          <Separator marginVertical={getSpacing(6)} />
 
           {/* Uniquement les offres gratuites */}
           <Section.FreeOffer />
-          <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
+          <Separator marginVertical={getSpacing(6)} />
 
           {/* Uniquement les offres duo */}
           {!!profile?.isBeneficiary && (
             <React.Fragment>
               <Section.DuoOffer />
-              <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
+              <Separator marginVertical={getSpacing(6)} />
             </React.Fragment>
           )}
 
           {/* Uniquement les nouveautés */}
           <Section.NewOffer />
-          <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
+          <Separator marginVertical={getSpacing(6)} />
 
           {/* Date */}
           <Section.Date />
-          <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
+          <Separator marginVertical={getSpacing(6)} />
 
           {/* Date de l'offre */}
           {!!searchState.date && (
             <React.Fragment>
               <Section.OfferDate />
-              <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
+              <Separator marginVertical={getSpacing(6)} />
               <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
             </React.Fragment>
           )}
@@ -114,7 +113,7 @@ export const SearchFilter: React.FC = () => {
           {/*Créneau horaire */}
           {!!searchState.timeRange && (
             <React.Fragment>
-              <Separator windowWidth={windowWidth} marginVertical={getSpacing(6)} />
+              <Separator marginVertical={getSpacing(6)} />
               <Section.TimeSlot />
               <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
             </React.Fragment>
@@ -140,12 +139,12 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 const StyledScrollView = styled(ScrollView)({ flex: 1 })
-const Separator = styled.View<{ marginVertical?: number; windowWidth: number }>((props) => ({
-  width: props.windowWidth - getSpacing(2 * 6),
+const Separator = styled.View<{ marginVertical?: number }>(({ theme, marginVertical = 0 }) => ({
+  width: theme.appContentWidth - getSpacing(2 * 6),
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
   alignSelf: 'center',
-  marginVertical: props.marginVertical || 0,
+  marginVertical: marginVertical,
 }))
 const ShowResultsContainer = styled.View({
   width: '100%',

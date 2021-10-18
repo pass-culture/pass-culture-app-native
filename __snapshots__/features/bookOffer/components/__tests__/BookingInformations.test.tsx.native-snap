@@ -13,7 +13,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -84,7 +83,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       fill="#626262"
@@ -156,7 +154,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -232,7 +229,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -303,7 +299,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -374,7 +369,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -460,7 +454,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       fill="#626262"
@@ -537,7 +530,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -608,7 +600,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -694,7 +685,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       fill="#626262"
@@ -771,7 +761,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -842,7 +831,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -913,7 +901,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -999,7 +986,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       fill="#626262"
@@ -1076,7 +1062,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -1147,7 +1132,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       fill="#626262"
@@ -1224,7 +1208,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -1295,7 +1278,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -1366,7 +1348,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       height={32}
@@ -1452,7 +1433,6 @@ Array [
         },
       ]
     }
-    width={750}
   >
     <View
       fill="#626262"

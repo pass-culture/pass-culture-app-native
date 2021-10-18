@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
@@ -18,7 +17,6 @@ type ExBeneficiaryHeaderProps = {
 }
 
 export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
-  const windowWidth = useWindowDimensions().width
   const { firstName, lastName, depositExpirationDate } = props
   const name = `${firstName} ${lastName}`
 
@@ -26,7 +24,7 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
     <Container testID={'ex-beneficiary-header'}>
       <Spacer.TopScreen />
       <HeaderBackgroundWrapper>
-        <HeaderBackground width={windowWidth} />
+        <HeaderBackground />
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={6} />
       <TitleContainer>

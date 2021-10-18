@@ -3,7 +3,6 @@ import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-nav
 import React from 'react'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { TabBar } from '../TabBar'
@@ -88,9 +87,7 @@ describe('TabBar', () => {
     expect(navigation.navigate).toHaveBeenCalledWith('Search')
     tabBar.rerender(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(
-        themeProviderHOC(<TabBar state={{ ...state, index: 1 }} navigation={navigation} />)
-      )
+      reactQueryProviderHOC(<TabBar state={{ ...state, index: 1 }} navigation={navigation} />)
     )
 
     expect(tabBar.queryByTestId('Home tab selected')).toBeFalsy()
@@ -120,6 +117,6 @@ describe('TabBar', () => {
 function renderTabBar() {
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(themeProviderHOC(<TabBar state={state} navigation={navigation} />))
+    reactQueryProviderHOC(<TabBar state={state} navigation={navigation} />)
   )
 }

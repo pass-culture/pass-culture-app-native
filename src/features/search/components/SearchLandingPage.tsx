@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
-import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
@@ -17,7 +16,6 @@ import { ColorsEnum, getSpacing, Spacer, Typo, TAB_BAR_COMP_HEIGHT } from 'ui/th
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SearchLandingPage: React.FC = () => {
-  const windowWidth = useWindowDimensions().width
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useStagedSearch()
   const { locationFilter, offerCategories } = searchState
@@ -40,7 +38,7 @@ export const SearchLandingPage: React.FC = () => {
           <BicolorListItem title={searchGroupLabel} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
 
-        <Separator windowWidth={windowWidth} />
+        <Separator />
 
         <TouchableOpacity onPress={() => navigate('LocationFilter')}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
@@ -48,7 +46,7 @@ export const SearchLandingPage: React.FC = () => {
 
         <Spacer.Flex flex={2} />
       </ScrollView>
-      <SearchButtonContainer windowWidth={windowWidth}>
+      <SearchButtonContainer>
         <SearchButton />
         <Spacer.BottomScreen />
       </SearchButtonContainer>
@@ -61,17 +59,17 @@ const contentContainerStyle: ViewStyle = {
   flexGrow: 1,
   marginHorizontal: getSpacing(6),
 }
-const Separator = styled.View<{ windowWidth: number }>((props) => ({
+const Separator = styled.View(({ theme }) => ({
   height: 2,
-  width: props.windowWidth - getSpacing(2 * 6),
+  width: theme.appContentWidth - getSpacing(2 * 6),
   backgroundColor: ColorsEnum.GREY_LIGHT,
   marginVertical: getSpacing(8),
 }))
-const SearchButtonContainer = styled.View<{ windowWidth: number }>((props) => ({
+const SearchButtonContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
   bottom: TAB_BAR_COMP_HEIGHT + getSpacing(6),
-  width: props.windowWidth - getSpacing(2 * 6),
+  width: theme.appContentWidth - getSpacing(2 * 6),
 }))
 
 const TouchableOpacity = styled.TouchableOpacity.attrs({

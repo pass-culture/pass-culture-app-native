@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useState } from 'react'
-import { PixelRatio, useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import { PixelRatio } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { IdeaIcon } from 'features/home/assets/IdeaIcon'
@@ -25,8 +25,8 @@ import { fillUrlEmail, shouldUrlBeFilled } from './BusinessModule.utils'
 
 export const BusinessModule = (businessPane: BusinessPane) => {
   const { title, firstLine, secondLine, leftIcon, image, url } = businessPane
-  const windowWidth = useWindowDimensions().width
-  const imageWidth = windowWidth - 2 * MARGIN_DP
+  const { appContentWidth } = useTheme()
+  const imageWidth = appContentWidth - 2 * MARGIN_DP
   const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_BUSINESS)
 
   const [shouldRedirect, setShouldRedirect] = useState(false)

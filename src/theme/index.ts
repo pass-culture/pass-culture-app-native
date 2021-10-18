@@ -9,6 +9,7 @@ import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
 
 export interface AppThemeType extends Omit<IdCheckThemeType, 'colors'> {
+  appContentWidth: number
   appBarHeight: number
   navTopHeight: number
   tabBarHeight: number
@@ -63,6 +64,7 @@ export interface AppThemeType extends Omit<IdCheckThemeType, 'colors'> {
 }
 
 export const theme: AppThemeType = deepmerge(idCheckTheme, {
+  appContentWidth: getSpacing(100),
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
   tabBarHeight: TAB_BAR_COMP_HEIGHT,

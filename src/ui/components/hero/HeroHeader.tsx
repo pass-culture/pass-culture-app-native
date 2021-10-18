@@ -1,6 +1,6 @@
 import React from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import { Platform } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
@@ -14,13 +14,13 @@ interface Props {
 }
 
 export const HeroHeader: React.FC<Props> = (props) => {
-  const windowWidth = useWindowDimensions().width
+  const { appContentWidth } = useTheme()
 
   const backgroundImage =
     props.type === 'offer' ? (
       <BackgroundPlaceholder
         testID="BackgroundPlaceholder"
-        width={windowWidth}
+        width={appContentWidth}
         height={props.imageHeight}
       />
     ) : (
@@ -37,7 +37,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
         {props.imageUrl ? (
           <BlurImage
             height={props.imageHeight}
-            width={windowWidth}
+            width={appContentWidth}
             blurRadius={Platform.OS === 'android' ? 5 : 20}
             resizeMode="cover"
             source={{ uri: props.imageUrl }}
@@ -47,7 +47,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
         ) : (
           backgroundImage
         )}
-        <Rectangle size={windowWidth} />
+        <Rectangle size={appContentWidth} />
       </HeroContainer>
       {props.children}
     </Container>

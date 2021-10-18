@@ -2,7 +2,6 @@ import React from 'react'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { render } from 'tests/utils/web'
 
 import { Header } from '../Header'
@@ -50,7 +49,7 @@ function renderHeader(isLoggedIn: boolean) {
   mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
 
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  const wrapper = render(themeProviderHOC(reactQueryProviderHOC(<Header />)))
+  const wrapper = render(reactQueryProviderHOC(<Header />))
 
   return wrapper
 }

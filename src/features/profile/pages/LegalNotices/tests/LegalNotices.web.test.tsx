@@ -5,7 +5,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { env } from 'libs/environment'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { flushAllPromises, render, act, fireEvent } from 'tests/utils/web'
 
 import { LegalNotices } from '../LegalNotices'
@@ -21,7 +20,7 @@ jest.mock('features/home/api', () => ({
 }))
 
 async function renderProfile() {
-  const wrapper = render(themeProviderHOC(<LegalNotices />))
+  const wrapper = render(<LegalNotices />)
   await act(async () => {
     await flushAllPromises()
   })

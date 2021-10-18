@@ -74,7 +74,7 @@ module.exports = {
         object: 'Dimensions',
         property: 'get',
         message:
-          'Please use the hook `useWindowDimensions()` from `react-native` instead for dynamic resizing.',
+          'Please use `useTheme().appContentWidth` or `useWindowDimensions().width` instead for dynamic resizing.',
       },
     ],
     strict: ['error', 'global'],

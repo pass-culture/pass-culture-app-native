@@ -1,10 +1,9 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useQueryClient } from 'react-query'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { useOngoingOrEndedBooking } from 'features/bookings/api/queries'
@@ -48,7 +47,7 @@ const getOfferRules = (
 const scrollIndicatorInsets = { right: 1 }
 
 export function BookingDetails() {
-  const windowHeight = useWindowDimensions().height - blurImageHeight
+  const windowHeight = useTheme().appContentWidth - blurImageHeight
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const booking = useOngoingOrEndedBooking(params.id)

@@ -1,6 +1,5 @@
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -31,9 +30,10 @@ const CHOICE_BLOCS_BY_LINE = 3
 const BUTTON_HEIGHT = getSpacing(20)
 
 export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, children, disabled }) => {
-  const windowWidth = useWindowDimensions().width
+  const { appContentWidth } = useTheme()
   const buttonWidth =
-    (windowWidth - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * getSpacing(2)) / CHOICE_BLOCS_BY_LINE
+    (appContentWidth - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * getSpacing(2)) /
+    CHOICE_BLOCS_BY_LINE
   return (
     <ChoiceContainer
       onPress={onPress}

@@ -4,9 +4,8 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, useState, useMemo, memo } from 'react'
-import { useWindowDimensions } from 'react-native'
 import { MaskedTextInput } from 'react-native-mask-text'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { api } from 'api/api'
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
@@ -53,7 +52,7 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 >
 
 export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodeProps) => {
-  const { width: windowWidth } = useWindowDimensions()
+  const { appContentWidth } = useTheme()
   const { data: settings } = useAppSettings()
   const formattedPhoneNumber = formatPhoneNumber(
     route.params.phoneNumber,
@@ -247,7 +246,7 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
           <HelpRow>
             <Typo.Body>{t`Tu n'as pas reçu le sms ?`}</Typo.Body>
             {/* force button to wrap on small screen, otherwise timer will "unwrap" when timer is under 10 seconds */}
-            {windowWidth <= 320 ? <Break /> : null}
+            {appContentWidth <= 320 ? <Break /> : null}
             <ButtonTertiary
               title={getRetryButtonTitle()}
               testId={'Réessayer'}

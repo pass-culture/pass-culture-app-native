@@ -10,7 +10,6 @@ import {
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
-import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
 import { LocationFilter } from '../LocationFilter'
@@ -123,5 +122,5 @@ describe('LocationFilter component', () => {
 })
 
 function renderLocationFilter() {
-  return render(themeProviderHOC(<LocationFilter />))
+  return render(<LocationFilter />)
 }

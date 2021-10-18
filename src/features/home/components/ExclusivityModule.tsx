@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
-import { PixelRatio, useWindowDimensions } from 'react-native'
+import { PixelRatio } from 'react-native'
 import FastImage from 'react-native-fast-image'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { ExclusivityPane } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -13,8 +13,8 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const windowWidth = useWindowDimensions().width
-  const imageWidth = windowWidth - 2 * MARGIN_DP
+  const { appContentWidth } = useTheme()
+  const imageWidth = appContentWidth - 2 * MARGIN_DP
   const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_EXCLU)
   const imageStyle = {
     height: imageHeight,
