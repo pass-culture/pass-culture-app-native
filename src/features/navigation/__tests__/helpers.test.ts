@@ -74,6 +74,19 @@ describe('Navigation helpers', () => {
     await openUrl(link)
     expect(alertMock).toHaveBeenCalled()
   })
+  it('should not display alert when Linking.openURL throws but fallbackUrl is valid', async () => {
+    // Last in first out, it will fail then succeed.
+    jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
+    jest
+      .spyOn(Linking, 'openURL')
+      .mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
+    const alertMock = jest.spyOn(Alert, 'alert')
+    const link = 'https://www.google.com'
+    const fallbackLink = 'https://www.googlefallback.com'
+
+    await openUrl(link, undefined, fallbackLink)
+    expect(alertMock).not.toHaveBeenCalled()
+  })
 
   describe('[Method] navigateToBooking', () => {
     it('should navigate to BookingDetails', async () => {
