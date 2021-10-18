@@ -37,7 +37,8 @@ const routesBeforeReleaseCheck: TabRoute[] = [
   {
     name: 'Bookings',
     component: Bookings,
-    path: 'bookings',
+    path: 'reservations',
+    deeplinkPaths: ['bookings'],
     options: { title: t`Réservations` },
     secure: true,
   },
