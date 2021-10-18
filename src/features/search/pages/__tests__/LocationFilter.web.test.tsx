@@ -10,6 +10,7 @@ import {
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
+import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { LocationFilter } from '../LocationFilter'
@@ -55,7 +56,7 @@ describe('LocationFilter component', () => {
   })
 
   it('should render correctly', () => {
-    const renderAPI = render(<LocationFilter />)
+    const renderAPI = renderLocationFilter()
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -65,14 +66,14 @@ describe('LocationFilter component', () => {
       type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
       message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     }
-    const { getByText, getByTestId } = render(<LocationFilter />)
+    const { getByText, getByTestId } = renderLocationFilter()
     fireEvent.click(getByTestId('locationChoice-aroundMe'))
     getByText(mockPositionError.message)
     expect(mockDispatch).not.toBeCalled()
   })
 
   it('should dispatch actions on click (position=YES, type=AROUND_ME)', () => {
-    const { getByTestId, queryByText } = render(<LocationFilter />)
+    const { getByTestId, queryByText } = renderLocationFilter()
     fireEvent.click(getByTestId('locationChoice-aroundMe'))
     expect(
       queryByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
@@ -82,19 +83,19 @@ describe('LocationFilter component', () => {
 
   it('should not dispatch actions on click (position=NO, type=AROUND_ME)', () => {
     mockPosition = null
-    const { getByTestId } = render(<LocationFilter />)
+    const { getByTestId } = renderLocationFilter()
     fireEvent.click(getByTestId('locationChoice-aroundMe'))
     expect(mockDispatch).not.toHaveBeenCalled()
   })
 
   it('should dispatch actions on click (position=YES, type=EVERYWHERE)', () => {
-    const { getByTestId } = render(<LocationFilter />)
+    const { getByTestId } = renderLocationFilter()
     fireEvent.click(getByTestId('locationChoice-everywhere'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
   })
 
   it('should dispatch actions on click (position=NO, type=EVERYWHERE)', () => {
-    const { getByTestId } = render(<LocationFilter />)
+    const { getByTestId } = renderLocationFilter()
     fireEvent.click(getByTestId('locationChoice-everywhere'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_LOCATION_EVERYWHERE' })
   })
@@ -104,7 +105,7 @@ describe('LocationFilter component', () => {
       locationType: LocationType.VENUE,
       venue: { ...Kourou, venueId: 4 },
     }
-    const { queryByTestId } = render(<LocationFilter />)
+    const { queryByTestId } = renderLocationFilter()
     expect(queryByTestId('BicolorLocationBuilding')).toBeTruthy()
     expect(queryByTestId('BicolorLocationPointer')).toBeFalsy()
   })
@@ -115,8 +116,12 @@ describe('LocationFilter component', () => {
       aroundRadius: 10,
       place: Kourou,
     }
-    const { queryByTestId } = render(<LocationFilter />)
+    const { queryByTestId } = renderLocationFilter()
     expect(queryByTestId('BicolorLocationBuilding')).toBeFalsy()
     expect(queryByTestId('BicolorLocationPointer')).toBeTruthy()
   })
 })
+
+function renderLocationFilter() {
+  return render(themeProviderHOC(<LocationFilter />))
+}
