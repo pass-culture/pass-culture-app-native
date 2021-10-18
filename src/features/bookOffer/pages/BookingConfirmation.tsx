@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import InAppReview from 'react-native-in-app-review'
 import styled from 'styled-components/native'
 
+import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -18,9 +19,12 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
-
   const { reset } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
+  const {
+    shouldReviewBeRequested,
+    updateInformationWhenReviewHasBeenRequested,
+  } = useReviewInAppInformation()
 
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
@@ -47,8 +51,24 @@ export function BookingConfirmation() {
   }
 
   useEffect(() => {
-    if (InAppReview.isAvailable() && env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING) {
-      setTimeout(() => InAppReview.RequestInAppReview(), 3000)
+    if (
+      InAppReview.isAvailable() &&
+      env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING &&
+      shouldReviewBeRequested
+    ) {
+      setTimeout(
+        () =>
+          InAppReview.RequestInAppReview()
+            .then((hasFlowFinishedSuccessfully) => {
+              if (hasFlowFinishedSuccessfully) updateInformationWhenReviewHasBeenRequested()
+            })
+            .catch((error) => {
+              // TODO (LucasBeneston) : How to deal with review in app error https://github.com/MinaSamir11/react-native-in-app-review#error-could-happen-and-code-number ?
+              // eslint-disable-next-line no-console
+              console.log(error)
+            }),
+        3000
+      )
     }
   }, [])
 
