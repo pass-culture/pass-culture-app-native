@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchFilter component should render correctly 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <RCTScrollView
     style={
       Array [
@@ -2855,7 +2866,7 @@ Array [
         }
       />
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     style={
       Array [
@@ -3029,7 +3040,7 @@ Array [
         ]
       }
     />
-  </View>,
+  </View>
   <View
     style={
       Array [
@@ -3104,6 +3115,6 @@ Array [
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

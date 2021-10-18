@@ -17,6 +17,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { act, fireEvent, render, cleanup } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -186,7 +187,9 @@ function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      <Favorite credit={credit} favorite={favorite} user={user} onInAppBooking={onInAppBooking} />
+      themeProviderHOC(
+        <Favorite credit={credit} favorite={favorite} user={user} onInAppBooking={onInAppBooking} />
+      )
     )
   )
 }

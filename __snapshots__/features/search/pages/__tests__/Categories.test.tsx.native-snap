@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -75,16 +75,16 @@
+@@ -86,16 +86,16 @@
                 },
               ]
             }
@@ -24,7 +24,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -101,18 +101,10 @@
+@@ -112,18 +112,10 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -46,7 +46,18 @@ exports[`Categories component should match diff snapshot when new category is se
 `;
 
 exports[`Categories component should render correctly 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <RCTScrollView
     contentContainerStyle={
       Object {
@@ -989,7 +1000,7 @@ Array [
         />
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     style={
       Array [
@@ -1124,6 +1135,6 @@ Array [
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

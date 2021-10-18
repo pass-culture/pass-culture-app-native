@@ -3,6 +3,7 @@ import React from 'react'
 import { BatchUser } from '__mocks__/@bam.tech/react-native-batch'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { flushAllPromises, act, render } from 'tests/utils'
 
 import { CheatCodes } from '../CheatCodes'
@@ -20,14 +21,16 @@ beforeAll(() => {
 
 jest.mock('features/auth/AuthContext')
 
+const navigation = {
+  dispatch: jest.fn(),
+} as any // eslint-disable-line @typescript-eslint/no-explicit-any
+
 describe('CheatCodes component', () => {
-  const navigation = {
-    dispatch: jest.fn(),
-  } as any // eslint-disable-line @typescript-eslint/no-explicit-any
+  afterEach(jest.clearAllMocks)
 
   it('should render correctly', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const instance = render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
+    const instance = renderCheatCodes()
 
     await act(async () => {
       await flushAllPromises()
@@ -44,7 +47,7 @@ describe('CheatCodes component', () => {
   `('should display/not display code push button', async ({ environment, buttonIsdisplayed }) => {
     env.ENV = environment
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const instance = render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
+    const instance = renderCheatCodes()
 
     await act(async () => {
       await flushAllPromises()
@@ -57,7 +60,7 @@ describe('CheatCodes component', () => {
 
   it('should call installationID and display it', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { queryByText } = render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
+    const { queryByText } = renderCheatCodes()
 
     await act(async () => {
       await flushAllPromises()
@@ -67,3 +70,8 @@ describe('CheatCodes component', () => {
     expect(queryByText(`Batch installation ID: ${installationID}`)).toBeTruthy()
   })
 })
+
+function renderCheatCodes() {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  return render(reactQueryProviderHOC(themeProviderHOC(<CheatCodes navigation={navigation} />)))
+}

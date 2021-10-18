@@ -8,6 +8,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
+import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { superFlushWithAct, render, fireEvent, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
@@ -111,5 +112,5 @@ function renderConsentSettings() {
       params: { onGoBack },
     },
   } as StackScreenProps<RootStackParamList, 'ConsentSettings'>
-  return render(<ConsentSettings {...navigationProps} />)
+  return render(themeProviderHOC(<ConsentSettings {...navigationProps} />))
 }

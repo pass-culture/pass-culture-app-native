@@ -2,6 +2,7 @@ import React from 'react'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { render } from 'tests/utils'
 
 import { Categories } from '../Categories'
@@ -21,14 +22,18 @@ jest.mock('features/home/api', () => ({
 
 describe('Categories component', () => {
   it('should render correctly', () => {
-    const { toJSON } = render(<Categories />)
+    const { toJSON } = renderCategories()
     expect(toJSON()).toMatchSnapshot()
   })
   it('should match diff snapshot when new category is selected', () => {
-    const allSelected = render(<Categories />).toJSON()
+    const allSelected = renderCategories().toJSON()
 
     mockSearchState.offerCategories = [SearchGroupNameEnum.CINEMA]
-    const cinemaSelected = render(<Categories />).toJSON()
+    const cinemaSelected = renderCategories().toJSON()
     expect(cinemaSelected).toMatchDiffSnapshot(allSelected)
   })
 })
+
+function renderCategories() {
+  return render(themeProviderHOC(<Categories />))
+}

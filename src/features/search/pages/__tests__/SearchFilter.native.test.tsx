@@ -7,6 +7,7 @@ import { LocationType } from 'features/search/enums'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SuggestedPlace } from 'libs/place'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { themeProviderHOC } from 'tests/themeProviderHOC'
 import { render } from 'tests/utils'
 
 import { initialSearchState } from '../reducer'
@@ -39,7 +40,7 @@ jest.mock('features/home/api', () => ({
 }))
 
 // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))
+const renderSearchFilter = () => render(reactQueryProviderHOC(themeProviderHOC(<SearchFilter />)))
 describe('SearchFilter component', () => {
   it('should render correctly', () => {
     mockSearchState.locationFilter = { locationType: LocationType.AROUND_ME, aroundRadius: 100 }

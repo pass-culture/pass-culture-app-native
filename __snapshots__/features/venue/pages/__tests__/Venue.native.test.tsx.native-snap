@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Venue /> should match snapshot 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <RCTScrollView
     bounces={false}
     onScroll={[Function]}
@@ -2935,13 +2946,13 @@ Array [
         }
       />
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     safeAreaTop={16}
     style={
       Object {
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "height": "NaNpx",
+        "height": 80,
         "position": "absolute",
         "top": 0,
         "width": "100%",
@@ -3239,6 +3250,6 @@ Array [
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;
