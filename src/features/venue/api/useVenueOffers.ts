@@ -15,6 +15,8 @@ export const useVenueOffers = (venueId: number) => {
 
   return useQuery(
     [QueryKeys.VENUE_OFFERS, venueId],
+    // TODO(antoinewg, #PC-11353): make fetchVenueOffers depend on search backend
+    // For that, we have to wait for venue_id to be indexed along with the offers on Algolia
     () => fetchVenueOffers(params, isUserUnderageBeneficiary),
     {
       select: ({ hits, nbHits }) => ({

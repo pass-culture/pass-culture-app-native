@@ -1,7 +1,9 @@
 export interface Environment {
   ACCESSIBILITY_LINK: string
   ALGOLIA_APPLICATION_ID: string
+  // TODO(antoinewg, #PC-11353): rename ALGOLIA_INDEX_NAME to ALGOLIA_OFFERS_INDEX_NAME
   ALGOLIA_INDEX_NAME: string
+  // TODO(antoinewg, #PC-11353): add ALGOLIA_VENUES_INDEX_NAME
   ALGOLIA_SEARCH_API_KEY: string
   ANDROID_APP_ID: string
   API_BASE_URL: string
