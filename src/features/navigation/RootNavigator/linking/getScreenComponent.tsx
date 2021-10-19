@@ -12,9 +12,8 @@ export function getScreenComponent(
   route: Route | TabRoute,
   ScreenComponent: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 ): JSX.Element {
-  const component = route.hoc ? route.hoc(route.component) : route.component
-  const secureComponent = withAuthProtection(component, !!route.secure)
-  return (
-    <ScreenComponent key={name} name={name} component={secureComponent} options={route.options} />
-  )
+  let component = route.component
+  if (route.hoc) component = route.hoc(component)
+  if (route.secure) component = withAuthProtection(component)
+  return <ScreenComponent key={name} name={name} component={component} options={route.options} />
 }
