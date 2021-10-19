@@ -13,8 +13,33 @@ interface ProfileBadgeProps {
   testID?: string
 }
 
+const renderCallToAction = (
+  callToActionMessage: string | undefined,
+  callToActionIcon: FunctionComponent<IconInterface> | undefined
+) => {
+  if (!callToActionMessage) {
+    return null
+  } else {
+    return (
+      <React.Fragment>
+        <Spacer.Column numberOfSpaces={4} />
+        <CallToActionContainer>
+          <ButtonQuaternaryBlack
+            inline
+            icon={callToActionIcon}
+            testId="call-to-action-button"
+            onPress={() => null}
+            title={callToActionMessage}
+          />
+        </CallToActionContainer>
+      </React.Fragment>
+    )
+  }
+}
+
 export function ProfileBadge(props: ProfileBadgeProps) {
   const Icon = props.icon
+
   return (
     <Container testID={props.testID || 'profile-badge'}>
       {Icon ? (
@@ -26,20 +51,7 @@ export function ProfileBadge(props: ProfileBadgeProps) {
         <Typo.Caption color={props.callToActionMessage ? ColorsEnum.GREY_DARK : ColorsEnum.BLACK}>
           {props.message}
         </Typo.Caption>
-        {!!props.callToActionMessage && (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
-            <CallToActionContainer>
-              <ButtonQuaternaryBlack
-                inline
-                icon={props.callToActionIcon}
-                testId="call-to-action-button"
-                onPress={() => null}
-                title={props.callToActionMessage}
-              />
-            </CallToActionContainer>
-          </React.Fragment>
-        )}
+        {renderCallToAction(props.callToActionMessage, props.callToActionIcon)}
       </TextContainer>
     </Container>
   )
