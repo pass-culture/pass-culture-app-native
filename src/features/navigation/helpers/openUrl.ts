@@ -1,22 +1,13 @@
 import { t } from '@lingui/macro'
-import { Route, useNavigationState } from '@react-navigation/native'
 import { Alert, Linking } from 'react-native'
 
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
-import { linking } from 'features/navigation/RootNavigator/linking'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import { MonitoringError } from 'libs/monitoring'
 
-import { navigationRef } from './navigationRef'
-
-export function navigateToHome() {
-  navigationRef.current?.navigate(...homeNavConfig)
-}
-
-export function navigateToBooking(bookingId: number) {
-  navigationRef.current?.navigate('BookingDetails', { id: bookingId })
-}
+import { isAppUrl } from './isAppUrl'
+import { navigateToHome } from './navigateToHome'
 
 const openAppUrl = (url: string) => {
   try {
@@ -71,35 +62,4 @@ export async function openUrl(
   }
 
   openExternalUrl(url, logEvent, fallbackUrl)
-}
-
-export function usePreviousRoute(): Route<string> | null {
-  return useNavigationState((state) => {
-    const numberOfRoutes = state.routes.length
-    if (numberOfRoutes > 1) {
-      const previousRoute = state.routes[numberOfRoutes - 2]
-      return previousRoute
-    }
-    return null
-  })
-}
-
-export function useCurrentRoute(): Route<string> | null {
-  return useNavigationState((state) => {
-    const numberOfRoutes = state.routes.length
-    if (numberOfRoutes > 0) {
-      return state.routes[numberOfRoutes - 1]
-    }
-    return null
-  })
-}
-
-export const isAppUrl = (url: string) => {
-  let isUrl = false
-  for (const prefix of linking.prefixes) {
-    if (url.match('^' + prefix)) {
-      isUrl = true
-    }
-  }
-  return isUrl
 }

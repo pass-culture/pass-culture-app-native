@@ -40,7 +40,7 @@ type Props = {
   doNotNavigateOnSigninSuccess?: boolean
 }
 
-export const Login: FunctionComponent<Props> = memo(function (props) {
+export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [email, setEmail] = useSafeState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useSafeState(INITIAL_PASSWORD)
   const [isLoading, setIsLoading] = useSafeState(false)
