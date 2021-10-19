@@ -3,6 +3,7 @@ import React, { memo } from 'react'
 
 import { api } from 'api/api'
 import { idCheckAnalytics } from 'libs/analytics'
+import { eduConnectClient } from 'libs/eduConnectClient'
 import { env } from 'libs/environment'
 import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
 import { eventMonitoring } from 'libs/monitoring'
@@ -15,7 +16,6 @@ export const IdCheckContextProvider = memo(function IdCheckContextProvider({
   return (
     <IdCheckContextProviderDefault
       jouveApiBaseUrl={env.ID_CHECK_API_URL}
-      pcApiBaseUrl={env.API_BASE_URL}
       supportEmail={env.SUPPORT_EMAIL_ADDRESS}
       dsmUrl={env.DSM_URL}
       personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
@@ -25,7 +25,11 @@ export const IdCheckContextProvider = memo(function IdCheckContextProvider({
       errorMonitoring={eventMonitoring}
       analytics={idCheckAnalytics}
       retentionClient={idCheckRetentionClient}
-      requestLicenceToken={() => api.getnativev1idCheckToken()}>
+      requestLicenceToken={() => api.getnativev1idCheckToken()}
+      eduConnectClient={eduConnectClient}
+      // TODO(anouhello) [PC-11201] set shouldUseEduConnect properly according to FF
+      // enable_native_eac_individual and when underage signup process is implemented
+      shouldUseEduConnect={true}>
       {children}
     </IdCheckContextProviderDefault>
   )
