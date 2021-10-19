@@ -9,10 +9,14 @@ const GET_POSITION_SETTINGS = {
   maximumAge: 10000,
 }
 
+// @ts-expect-error: older versions of Safari and Firefox use the non-standard name of `PositionError`:
+// eslint-disable-next-line no-restricted-properties
+export const BrowserGeolocPositionError = window.GeolocationPositionError || window.PositionError
+
 const ERROR_MAPPING: Record<string, GeolocPositionError> = {
-  [GeolocationPositionError.PERMISSION_DENIED]: GeolocPositionError.PERMISSION_DENIED,
-  [GeolocationPositionError.POSITION_UNAVAILABLE]: GeolocPositionError.POSITION_UNAVAILABLE,
-  [GeolocationPositionError.TIMEOUT]: GeolocPositionError.TIMEOUT,
+  [BrowserGeolocPositionError.PERMISSION_DENIED]: GeolocPositionError.PERMISSION_DENIED,
+  [BrowserGeolocPositionError.POSITION_UNAVAILABLE]: GeolocPositionError.POSITION_UNAVAILABLE,
+  [BrowserGeolocPositionError.TIMEOUT]: GeolocPositionError.TIMEOUT,
 }
 
 export const getPosition = (
