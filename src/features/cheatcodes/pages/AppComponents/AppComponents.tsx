@@ -170,6 +170,7 @@ export const AppComponents: FunctionComponent = () => {
   const [popOverIconString, setPopOverIconString] = useState<string>()
   const [callToActionIconString, setCallToActionIconString] = useState<string>()
   const [callToActionMessage, setCallToActionMessage] = useState<string>()
+  const [callToActionLink, setCallToActionLink] = useState<string>()
 
   const PopOverIcon = matchSubscriptionMessageIconToSvg(popOverIconString, true)
   const CallToActionIcon = matchSubscriptionMessageIconToSvg(callToActionIconString)
@@ -839,6 +840,7 @@ export const AppComponents: FunctionComponent = () => {
           <IdCheckProcessingBadge
             callToActionIcon={CallToActionIcon}
             callToActionMessage={callToActionMessage}
+            callToActionLink={callToActionLink}
             icon={PopOverIcon}
             message={`Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu'on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`}
             lastUpdated={`2021-10-25T13:24Z`}
@@ -850,15 +852,25 @@ export const AppComponents: FunctionComponent = () => {
           <Button title="No key" onPress={() => setPopOverIconString(undefined)} />
           <Button title="Unknown key" onPress={() => setPopOverIconString('Blablou')} />
         </AlignedText>
-        <Text>Affichage Call To Action message</Text>
+        <Text>Toggle CTA message and link</Text>
         <AlignedText>
           <Button
-            title="Toggle Call To Action"
+            title="CTA Message"
             onPress={() => {
               return callToActionMessage
                 ? setCallToActionMessage(undefined)
                 : setCallToActionMessage('Tu peux cliquer ici')
             }}
+          />
+        </AlignedText>
+        <Text>CTA link</Text>
+        <AlignedText>
+          <Button title="None" onPress={() => setCallToActionLink(undefined)} />
+          <Button title="External" onPress={() => setCallToActionLink('https://google.com')} />
+          <Button title="Home" onPress={() => setCallToActionLink('passculture://home')} />
+          <Button
+            title="open mail"
+            onPress={() => setCallToActionLink('passculture://openInbox')}
           />
         </AlignedText>
         <Text>Affichage icône CTA</Text>
