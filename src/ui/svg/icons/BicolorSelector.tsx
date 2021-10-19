@@ -6,17 +6,16 @@ import { ColorsEnum } from 'ui/theme'
 
 import { BicolorIconInterface } from './types'
 
-export const computeBicolorSelectorHeight = (width: number) => Math.ceil((3 / 44) * width)
-
 export const BicolorSelector: React.FC<
-  Omit<BicolorIconInterface, 'size'> & { width: number; height?: number }
+  Omit<BicolorIconInterface, 'size'> & { width: number | string; height: number | string }
 > = ({ accessible, accessibilityLabel, width, height, color, color2, testID }) => {
   const LINEAR_GRADIENT_ID = uuidv1()
   return (
     <Svg
       width={width}
-      height={height ?? computeBicolorSelectorHeight(width)}
+      height={height}
       viewBox="0 0 44 3"
+      preserveAspectRatio="none"
       testID={testID}
       accessible={accessible}
       accessibilityLabel={accessibilityLabel}>

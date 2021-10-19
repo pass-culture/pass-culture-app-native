@@ -29,6 +29,7 @@ exports[`TabBar renders correctly 1`] = `
       Array [
         Object {
           "flexDirection": "row",
+          "width": "100%",
         },
       ]
     }
@@ -68,9 +69,9 @@ exports[`TabBar renders correctly 1`] = `
       testID="Home tab"
     >
       <View
-        height={3}
+        height={4}
         testID="Home tab selected"
-        width={44}
+        width="80%"
       >
         <Text>
           Home tab selected-SVG-Mock
@@ -110,7 +111,7 @@ exports[`TabBar renders correctly 1`] = `
         style={
           Array [
             Object {
-              "height": 3,
+              "height": 4,
             },
           ]
         }

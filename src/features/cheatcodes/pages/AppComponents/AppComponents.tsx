@@ -465,7 +465,7 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - BicolorProfile </Text>
         </AlignedText>
         <AlignedText>
-          <BicolorSelector width={ICON_SIZE} />
+          <BicolorSelector width={ICON_SIZE} height={getSpacing(1)} />
           <Text> - BicolorSelector </Text>
         </AlignedText>
         <AlignedText>

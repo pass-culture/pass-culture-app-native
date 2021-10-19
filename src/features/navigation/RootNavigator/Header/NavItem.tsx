@@ -3,12 +3,8 @@ import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
 import { accessibilityAndTestId } from 'tests/utils'
-import { computeBicolorSelectorHeight } from 'ui/svg/icons/BicolorSelector'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-
-const SELECTOR_WIDTH = getSpacing(11)
-const SELECTOR_HEIGHT = computeBicolorSelectorHeight(SELECTOR_WIDTH)
 
 interface NavItemInterface {
   isSelected?: boolean
@@ -42,7 +38,6 @@ export const NavItem: React.FC<NavItemInterface> = ({
           />
         )}
         <Title color={isSelected ? ColorsEnum.BRAND : ColorsEnum.BLACK}>{menu[tabName]}</Title>
-        {!!isSelected && <BicolorSelectorPlaceholder />}
       </Wrapper>
     </NavItemContainer>
   )
@@ -67,10 +62,6 @@ const Wrapper = styled.View<{ isMobile?: boolean; isSelected?: boolean }>(
     borderRadius: theme.borderRadius.button * 2,
   })
 )
-
-const BicolorSelectorPlaceholder = styled.View({
-  height: SELECTOR_HEIGHT,
-})
 
 const NavItemContainer = styled.TouchableOpacity<{ height?: number }>(({ theme, height }) => ({
   marginTop: -getSpacing(1 / 4),

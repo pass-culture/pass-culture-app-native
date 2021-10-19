@@ -11,7 +11,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="flex-direction: row;"
+          style="flex-direction: row; width: 100%;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -55,7 +55,7 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
-              style="height: 3px;"
+              style="height: 4px;"
             />
           </div>
           <div
@@ -181,7 +181,7 @@ Object {
     >
       <div
         class="css-view-1dbjc4n"
-        style="flex-direction: row;"
+        style="flex-direction: row; width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -225,7 +225,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="height: 3px;"
+            style="height: 4px;"
           />
         </div>
         <div

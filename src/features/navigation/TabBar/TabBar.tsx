@@ -77,6 +77,7 @@ export const TabBar: React.FC<TabBarProps> = ({ navigation, state, hidden }) => 
 
 const RowContainer = styled.View({
   flexDirection: 'row',
+  width: '100%',
 })
 
 const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight }) => ({
