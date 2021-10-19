@@ -46,27 +46,12 @@ module.exports = {
     'react/jsx-fragments': ['error', 'element'], // Otherwise `lingui extract` fails when using the shorthand syntax i.e. <></>
     'no-restricted-imports': [
       'error',
-      {
-        name: 'styled-components',
-        message: 'Use styled-components/native instead',
-      },
-      {
-        name: 'react-content-loader',
-        message: 'use react-content-loader/native instead',
-      },
-      {
-        name: 'ui/theme/shadow.ios',
-        message: 'use ui/theme instead',
-      },
-      {
-        name: 'ui/theme/shadow.android',
-        message: 'use ui/theme instead',
-      },
+      { name: 'styled-components', message: 'Use styled-components/native instead' },
+      { name: 'react-content-loader', message: 'use react-content-loader/native instead' },
+      { name: 'ui/theme/shadow.ios', message: 'use ui/theme instead' },
+      { name: 'ui/theme/shadow.android', message: 'use ui/theme instead' },
       { name: 'msw/lib/types', message: 'use msw instead' },
-      {
-        name: '@testing-library/react-native',
-        message: 'Use test/utils instead',
-      },
+      { name: '@testing-library/react-native', message: 'Use test/utils instead' },
     ],
     'no-restricted-properties': [
       2,
@@ -75,6 +60,18 @@ module.exports = {
         property: 'get',
         message:
           'Please use `useTheme().appContentWidth` or `useWindowDimensions().width` instead for dynamic resizing.',
+      },
+      {
+        object: 'window',
+        property: 'GeolocationPositionError',
+        message: 'Use BrowserGeolocPositionError instead to support legacy browsers.',
+      },
+    ],
+    'no-restricted-globals': [
+      'error',
+      {
+        name: 'GeolocationPositionError',
+        message: 'Use BrowserGeolocPositionError instead to support legacy browsers.',
       },
     ],
     strict: ['error', 'global'],
@@ -190,12 +187,8 @@ module.exports = {
   overrides: [
     {
       files: ['**/*.test.ts', '**/*.test.tsx', '__mocks__'],
-      env: {
-        jest: true,
-      },
-      rules: {
-        '@typescript-eslint/no-empty-function': 'off',
-      },
+      env: { jest: true },
+      rules: { '@typescript-eslint/no-empty-function': 'off' },
     },
   ],
 }
