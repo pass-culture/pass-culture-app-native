@@ -13,6 +13,7 @@ type IdCheckProcessingBadgeProps = {
   lastUpdated?: string
   callToActionIcon?: FunctionComponent<IconInterface>
   callToActionMessage?: string
+  callToActionLink?: string
 }
 
 const formatStringToLastUpdatedAtMessage = (lastUpdatedDate: string | undefined) =>
@@ -42,6 +43,7 @@ export function IdCheckProcessingBadge(props: IdCheckProcessingBadgeProps) {
         icon={props.icon}
         callToActionIcon={props.callToActionIcon}
         callToActionMessage={props.callToActionMessage}
+        callToActionLink={props.callToActionLink}
         message={
           props.message ||
           t`Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !`
