@@ -1,5 +1,5 @@
 import React, { Fragment, FunctionComponent, memo } from 'react'
-import { GestureResponderEvent } from 'react-native'
+import { GestureResponderEvent, StyleProp, TouchableOpacity, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
@@ -22,6 +22,7 @@ export interface BaseButtonProps {
   textSize?: number
   title: string
   fullWidth?: boolean
+  style?: StyleProp<ViewStyle>
 }
 
 export interface AppButtonProps extends BaseButtonProps {
@@ -38,44 +39,60 @@ export interface AppButtonProps extends BaseButtonProps {
 type Only<TestedType, StandardType> = TestedType &
   Record<Exclude<keyof TestedType, keyof StandardType>, never>
 
-const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) => {
-  const Icon = props.icon
-  const inline = props.inline
-  const pressHandler = props.disabled || props.isLoading ? undefined : props.onPress
-  const longPressHandler = props.disabled || props.isLoading ? undefined : props.onLongPress
-  const containerTestID = props.testId ? props.testId : props.title
+const _AppButton = <T extends AppButtonProps>({
+  icon: Icon,
+  inline,
+  disabled,
+  isLoading,
+  onPress,
+  onLongPress,
+  loadingIconColor,
+  iconSize,
+  iconColor,
+  backgroundColor,
+  fullWidth,
+  borderColor,
+  buttonHeight,
+  inlineHeight,
+  testId,
+  title,
+  textColor,
+  textSize,
+  adjustsFontSizeToFit,
+  style,
+}: Only<T, AppButtonProps>) => {
+  const pressHandler = disabled || isLoading ? undefined : onPress
+  const longPressHandler = disabled || isLoading ? undefined : onLongPress
+  const containerTestID = testId ? testId : title
   return (
     <Container
       {...accessibilityAndTestId(containerTestID)}
-      backgroundColor={props.backgroundColor}
-      fullWidth={props.fullWidth}
-      borderColor={props.borderColor}
+      backgroundColor={backgroundColor}
+      fullWidth={fullWidth}
+      borderColor={borderColor}
       onPress={pressHandler}
       onLongPress={longPressHandler}
-      buttonHeight={props.buttonHeight ?? 'small'}
+      buttonHeight={buttonHeight ?? 'small'}
       inline={inline}
-      inlineHeight={props.inlineHeight ?? 16}>
-      {props.isLoading ? (
+      inlineHeight={inlineHeight ?? 16}
+      style={style}>
+      {isLoading ? (
         <Logo
           {...accessibilityAndTestId('button-isloading-icon')}
-          color={props.loadingIconColor}
-          size={props.iconSize}
+          color={loadingIconColor}
+          size={iconSize}
         />
       ) : (
         <Fragment>
           {!!Icon && (
-            <Icon
-              {...accessibilityAndTestId('button-icon')}
-              color={props.iconColor}
-              size={props.iconSize}
-            />
+            <Icon {...accessibilityAndTestId('button-icon')} color={iconColor} size={iconSize} />
           )}
           <Title
-            textColor={props.textColor}
-            textSize={props.textSize}
-            adjustsFontSizeToFit={props.adjustsFontSizeToFit ?? false}
+            textColor={textColor}
+            textSize={textSize}
+            adjustsFontSizeToFit={adjustsFontSizeToFit ?? false}
             numberOfLines={1}>
-            {props.title}
+            {title}
           </Title>
         </Fragment>
       )}
@@ -95,7 +112,7 @@ interface ContainerProps {
   fullWidth?: boolean
 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
+const Container = styled(TouchableOpacity).attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
 }))<ContainerProps>(
   ({ inline, backgroundColor, borderColor, buttonHeight, inlineHeight, fullWidth }) => ({

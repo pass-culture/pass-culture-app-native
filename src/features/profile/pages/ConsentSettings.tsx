@@ -102,7 +102,11 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
           <Spacer.Column numberOfSpaces={3} />
         </Line>
         <Spacer.Flex flex={1} />
-        <ButtonPrimary title={t`Enregistrer`} onPress={save} disabled={isSaveButtonDisabled} />
+        <StyledButtonPrimary
+          title={t`Enregistrer`}
+          onPress={save}
+          disabled={isSaveButtonDisabled}
+        />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
 
@@ -110,6 +114,10 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
     </Container>
   )
 }
+
+const StyledButtonPrimary = styled(ButtonPrimary)({
+  alignSelf: 'center',
+})
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
