@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { handleCallToActionLink } from 'features/profile/utils'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
@@ -10,31 +11,31 @@ interface ProfileBadgeProps {
   icon?: FunctionComponent<IconInterface>
   callToActionIcon?: FunctionComponent<IconInterface>
   callToActionMessage?: string
+  callToActionLink?: string
   testID?: string
 }
 
 const renderCallToAction = (
   callToActionMessage: string | undefined,
+  callToActionLink: string | undefined,
   callToActionIcon: FunctionComponent<IconInterface> | undefined
 ) => {
-  if (!callToActionMessage) {
-    return null
-  } else {
-    return (
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={4} />
-        <CallToActionContainer>
-          <ButtonQuaternaryBlack
-            inline
-            icon={callToActionIcon}
-            testId="call-to-action-button"
-            onPress={() => null}
-            title={callToActionMessage}
-          />
-        </CallToActionContainer>
-      </React.Fragment>
-    )
-  }
+  if (!callToActionMessage || !callToActionLink) return null
+
+  return (
+    <React.Fragment>
+      <Spacer.Column numberOfSpaces={4} />
+      <CallToActionContainer>
+        <ButtonQuaternaryBlack
+          inline
+          icon={callToActionIcon}
+          testId="call-to-action-button"
+          onPress={() => handleCallToActionLink(callToActionLink)}
+          title={callToActionMessage}
+        />
+      </CallToActionContainer>
+    </React.Fragment>
+  )
 }
 
 export function ProfileBadge(props: ProfileBadgeProps) {
@@ -48,10 +49,19 @@ export function ProfileBadge(props: ProfileBadgeProps) {
         </IconContainer>
       ) : null}
       <TextContainer>
-        <Typo.Caption color={props.callToActionMessage ? ColorsEnum.GREY_DARK : ColorsEnum.BLACK}>
+        <Typo.Caption
+          color={
+            props.callToActionMessage && props.callToActionLink
+              ? ColorsEnum.GREY_DARK
+              : ColorsEnum.BLACK
+          }>
           {props.message}
         </Typo.Caption>
-        {renderCallToAction(props.callToActionMessage, props.callToActionIcon)}
+        {renderCallToAction(
+          props.callToActionMessage,
+          props.callToActionLink,
+          props.callToActionIcon
+        )}
       </TextContainer>
     </Container>
   )
