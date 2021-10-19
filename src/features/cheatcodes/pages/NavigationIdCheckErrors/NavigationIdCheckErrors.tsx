@@ -18,7 +18,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
 export function NavigationIdCheckErrors(): JSX.Element {
-  const { replace } = useNavigation<UseNavigationType>()
+  const { replace, navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('Navigation', undefined)
   const [error, setError] = useState<IdCheckError | Error | null>(null)
   const { setContextValue } = useIdCheckContext()
@@ -101,6 +101,12 @@ export function NavigationIdCheckErrors(): JSX.Element {
             />
           </Row>
         ))}
+        <Row half>
+          <NavigationButton
+            title={`UnavailableEduConnect`}
+            onPress={() => navigate('UnavailableEduConnect')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
