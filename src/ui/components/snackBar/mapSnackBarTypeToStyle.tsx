@@ -1,6 +1,6 @@
 import { Check } from 'ui/svg/icons/Check'
 import { Info } from 'ui/svg/icons/Info'
-import { Warning } from 'ui/svg/icons/Warning'
+import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
 import { ColorsEnum } from 'ui/theme'
 
 import { SnackBarSettings, SnackBarType } from './types'
@@ -18,7 +18,7 @@ export const mapSnackBarTypeToStyle = (
       }
     case SnackBarType.ERROR:
       return {
-        icon: Warning,
+        icon: WarningDeprecated,
         backgroundColor: ColorsEnum.ERROR,
         progressBarColor: ColorsEnum.PRIMARY_DISABLED,
         color: ColorsEnum.WHITE,
