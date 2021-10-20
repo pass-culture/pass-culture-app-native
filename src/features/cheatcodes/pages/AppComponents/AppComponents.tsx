@@ -76,6 +76,7 @@ import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { Category } from 'ui/svg/icons/categories'
 import { Check } from 'ui/svg/icons/Check'
+import { Clock } from 'ui/svg/icons/Clock'
 import { ClockDeprecated } from 'ui/svg/icons/Clock_deprecated'
 import { Close } from 'ui/svg/icons/Close'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
@@ -424,6 +425,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <ClockDeprecated size={ICON_SIZE} />
           <Text> - ClockDeprecated</Text>
+        </AlignedText>
+        <AlignedText>
+          <Clock size={ICON_SIZE} />
+          <Text> - Clock</Text>
         </AlignedText>
         <AlignedText>
           <Close size={ICON_SIZE} />
