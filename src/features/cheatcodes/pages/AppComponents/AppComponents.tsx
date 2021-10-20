@@ -883,7 +883,13 @@ export const AppComponents: FunctionComponent = () => {
         </View>
         <Text>Affichage icône PopOverIcon</Text>
         <AlignedText>
-          <Button title="Clock" onPress={() => setPopOverIconString('Clock')} />
+          <Button title="Clock" onPress={() => setPopOverIconString('CLOCK')} />
+          <Button title="Search" onPress={() => setPopOverIconString('MAGNIFYING_GLASS')} />
+          <Button title="Warning" onPress={() => setPopOverIconString('WARNING')} />
+          <Button title="Error" onPress={() => setPopOverIconString('ERROR')} />
+        </AlignedText>
+        <AlignedText>
+          <Button title="File" onPress={() => setPopOverIconString('FILE')} />
           <Button title="No key" onPress={() => setPopOverIconString(undefined)} />
           <Button title="Unknown key" onPress={() => setPopOverIconString('Blablou')} />
         </AlignedText>
