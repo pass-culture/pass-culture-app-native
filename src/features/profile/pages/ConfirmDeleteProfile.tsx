@@ -12,7 +12,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Error } from 'ui/svg/icons/Error'
+import { ErrorDeprecated } from 'ui/svg/icons/Error_deprecated'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function ConfirmDeleteProfile() {
@@ -42,7 +42,7 @@ export function ConfirmDeleteProfile() {
   return (
     <GenericInfoPage
       title={t`Es-tu sûr de vouloir supprimer ton compte ?`}
-      icon={Error}
+      icon={ErrorDeprecated}
       iconSize={getSpacing(24)}>
       <StyledBody>{t`Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies.`}</StyledBody>
       <Spacer.Column numberOfSpaces={15} />
