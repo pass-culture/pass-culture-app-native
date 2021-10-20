@@ -5,6 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
+// This icon should be replaced by the updated version of Error
 export function WarningDeprecated({ size, testID, color = ColorsEnum.ERROR }: IconInterface) {
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 24 24">
