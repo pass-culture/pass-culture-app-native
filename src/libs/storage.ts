@@ -13,6 +13,7 @@ export type StorageKey =
   | 'traffic_source'
   | 'campaign_date'
   | 'times_review_has_been_requested'
+  | 'first_time_review_has_been_requested'
 
 export const storage = {
   clear,
