@@ -42,8 +42,8 @@ describe('profile utils', () => {
       const returnedIcon = matchSubscriptionMessageIconToSvg(undefined, true)
       expect(returnedIcon).toEqual(undefined)
     })
-    it("should return Clock if 'Clock' is passed", () => {
-      const returnedIcon = matchSubscriptionMessageIconToSvg('Clock')
+    it("should return Clock if 'CLOCK' is passed", () => {
+      const returnedIcon = matchSubscriptionMessageIconToSvg('CLOCK')
       expect(returnedIcon).toEqual(Clock)
     })
     it('should return Info if unknown string is passed and fallbackIcon is true', () => {
