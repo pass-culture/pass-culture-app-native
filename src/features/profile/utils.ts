@@ -6,7 +6,11 @@ import { Credit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl, openUrl } from 'features/navigation/helpers'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
+import { Error } from 'ui/svg/icons/Error'
 import { Info } from 'ui/svg/icons/Info'
+import { LegalNotices } from 'ui/svg/icons/LegalNotices'
+import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
+import { Warning } from 'ui/svg/icons/Warning'
 
 export function isUserBeneficiary(user: UserProfileResponse): boolean {
   return user.isBeneficiary
@@ -42,8 +46,16 @@ export const matchSubscriptionMessageIconToSvg = (
       return undefined
     case 'CLOCK':
       return Clock
+    case 'MAGNIFYING_GLASS':
+      return MagnifyingGlass
+    case 'ERROR':
+      return Error
+    case 'WARNING':
+      return Warning
     case 'EMAIL':
       return EmailFilled
+    case 'FILE':
+      return LegalNotices
     default:
       return useFallbackIcon ? Info : undefined
   }
