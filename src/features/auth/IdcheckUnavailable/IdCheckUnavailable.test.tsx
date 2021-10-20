@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import * as NavigationHelpers from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent } from 'tests/utils'
@@ -9,6 +9,8 @@ import { render, fireEvent } from 'tests/utils'
 import { IdCheckUnavailable } from './IdCheckUnavailable'
 
 jest.mock('features/auth/settings')
+jest.mock('features/navigation/helpers/openUrl')
+const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 beforeEach(() => {
   jest.clearAllMocks()
@@ -16,11 +18,10 @@ beforeEach(() => {
 
 describe('<IdCheckUnavailable/>', () => {
   it('should open DSM on click', () => {
-    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
     const { getByText } = renderIdCheckUnavailable()
 
     fireEvent.press(getByText(`Transmettre un dossier`))
-    expect(openUrl).toBeCalledWith(env.DSM_URL)
+    expect(mockedOpenUrl).toBeCalledWith(env.DSM_URL)
   })
 
   it('should go back WHEN go back is clicked', () => {

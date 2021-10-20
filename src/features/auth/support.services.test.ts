@@ -1,9 +1,12 @@
 import waitForExpect from 'wait-for-expect'
 
-import * as NavigationHelpers from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 
 import { contactSupport } from './support.services'
+
+jest.mock('features/navigation/helpers/openUrl')
+const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 jest.mock('./support.services', () => jest.requireActual('./support.services'))
 
@@ -14,7 +17,7 @@ describe('Support services', () => {
     it(`${key} should open external url for contacting support with analytics`, async () => {
       const method = key as keyof typeof contactSupport
       const email = 'test@test.com'
-      const openUrl = jest.spyOn(NavigationHelpers, 'openUrl').mockResolvedValueOnce(undefined)
+      mockedOpenUrl.mockResolvedValueOnce(undefined)
 
       contactSupport[method](email)
       await waitForExpect(() => {

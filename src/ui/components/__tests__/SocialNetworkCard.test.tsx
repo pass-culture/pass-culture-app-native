@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as NavigationHelpers from 'features/navigation/helpers'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
