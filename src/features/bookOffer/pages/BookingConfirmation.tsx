@@ -60,7 +60,7 @@ export function BookingConfirmation() {
         () =>
           InAppReview.RequestInAppReview()
             .then((hasFlowFinishedSuccessfully) => {
-              if (hasFlowFinishedSuccessfully) updateInformationWhenReviewHasBeenRequested()
+              updateInformationWhenReviewHasBeenRequested(hasFlowFinishedSuccessfully)
             })
             .catch((error) => {
               // TODO (LucasBeneston) : How to deal with review in app error https://github.com/MinaSamir11/react-native-in-app-review#error-could-happen-and-code-number ?
@@ -70,7 +70,7 @@ export function BookingConfirmation() {
         3000
       )
     }
-  }, [])
+  }, [shouldReviewBeRequested])
 
   return (
     <GenericInfoPage
