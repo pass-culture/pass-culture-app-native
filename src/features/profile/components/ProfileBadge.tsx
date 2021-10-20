@@ -45,7 +45,7 @@ export function ProfileBadge(props: ProfileBadgeProps) {
     <Container testID={props.testID || 'profile-badge'}>
       {Icon ? (
         <IconContainer>
-          <Icon size={getSpacing(8)} />
+          <Icon size={getSpacing(8)} color={ColorsEnum.GREY_DARK} />
         </IconContainer>
       ) : null}
       <TextContainer>
