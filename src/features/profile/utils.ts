@@ -6,7 +6,7 @@ import { Credit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl, openUrl } from 'features/navigation/helpers'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
+import { Info } from 'ui/svg/icons/Info'
 
 export function isUserBeneficiary(user: UserProfileResponse): boolean {
   return user.isBeneficiary
@@ -45,7 +45,7 @@ export const matchSubscriptionMessageIconToSvg = (
     case 'EMAIL':
       return EmailFilled
     default:
-      return useFallbackIcon ? InfoDeprecated : undefined
+      return useFallbackIcon ? Info : undefined
   }
 }
 
