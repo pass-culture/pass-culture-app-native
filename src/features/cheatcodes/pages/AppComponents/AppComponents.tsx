@@ -125,6 +125,7 @@ import { SignOut } from 'ui/svg/icons/SignOut'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Validate } from 'ui/svg/icons/Validate'
+import { Warning } from 'ui/svg/icons/Warning'
 import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -493,6 +494,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <WarningDeprecated size={ICON_SIZE} />
           <Text> - WarningDeprecated </Text>
+        </AlignedText>
+        <AlignedText>
+          <Warning size={ICON_SIZE} />
+          <Text> - Warning (new) </Text>
         </AlignedText>
         <AlignedText>
           <HappyFace size={ICON_SIZE} />
