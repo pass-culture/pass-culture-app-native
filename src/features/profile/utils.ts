@@ -4,6 +4,7 @@ import { UserProfileResponse, DomainsCredit, UserRole } from 'api/gen/api'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl, openUrl } from 'features/navigation/helpers'
+import { Again } from 'ui/svg/icons/Again'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
@@ -56,6 +57,8 @@ export const matchSubscriptionMessageIconToSvg = (
       return EmailFilled
     case 'FILE':
       return LegalNotices
+    case 'RETRY':
+      return Again
     default:
       return useFallbackIcon ? Info : undefined
   }

@@ -20,7 +20,8 @@ export const ButtonQuaternaryBlack: FunctionComponent<BaseButtonProps> = (props)
       backgroundColor={backgroundColor}
       iconColor={iconColor}
       textColor={textColor}
-      iconSize={getSpacing(6)}
+      iconSize={getSpacing(4)}
+      inlineHeight={getSpacing(5)}
       textSize={getSpacing(3)}
     />
   )
