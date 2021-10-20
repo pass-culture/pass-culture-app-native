@@ -107,6 +107,7 @@ import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
+import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassDeprecated } from 'ui/svg/icons/MagnifyingGlass_deprecated'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
@@ -548,6 +549,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <MagnifyingGlassDeprecated size={ICON_SIZE} />
           <Text> - MagnifyingGlassDeprecated </Text>
+        </AlignedText>
+        <AlignedText>
+          <MagnifyingGlass size={ICON_SIZE} />
+          <Text> - MagnifyingGlass (new) </Text>
         </AlignedText>
         <AlignedText>
           <Info size={ICON_SIZE} />
