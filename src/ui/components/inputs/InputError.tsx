@@ -1,6 +1,6 @@
 import React, { FC, Fragment } from 'react'
 
-import { Warning } from 'ui/svg/icons/Warning'
+import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 import { InputRule } from './rules/InputRule'
@@ -18,7 +18,7 @@ export const InputError: FC<Props> = (props) => {
       <InputRule
         title={props.messageId}
         color={ColorsEnum.ERROR}
-        icon={Warning}
+        icon={WarningDeprecated}
         testIdSuffix="warn"
         iconSize={24}
       />

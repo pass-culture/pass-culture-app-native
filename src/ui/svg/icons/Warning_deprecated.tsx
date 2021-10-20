@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export function Warning({ size, testID, color = ColorsEnum.ERROR }: IconInterface) {
+export function WarningDeprecated({ size, testID, color = ColorsEnum.ERROR }: IconInterface) {
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 24 24">
       <Path
