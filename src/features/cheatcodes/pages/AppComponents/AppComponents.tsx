@@ -85,6 +85,7 @@ import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { DuoPerson } from 'ui/svg/icons/DuoPerson'
 import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
+import { Error } from 'ui/svg/icons/Error'
 import { ErrorDeprecated } from 'ui/svg/icons/Error_deprecated'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -503,6 +504,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <ErrorDeprecated size={ICON_SIZE} color={ColorsEnum.BLACK} />
           <Text> - ErrorDeprecated</Text>
+        </AlignedText>
+        <AlignedText>
+          <Error size={ICON_SIZE} />
+          <Text> - Error</Text>
         </AlignedText>
         <AlignedText>
           <HappyFace size={ICON_SIZE} />
