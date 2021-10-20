@@ -3,7 +3,7 @@ import React from 'react'
 import { ProfileBadge } from 'features/profile/components/ProfileBadge'
 import { handleCallToActionLink } from 'features/profile/utils'
 import { render, fireEvent } from 'tests/utils'
-import { ClockDeprecated } from 'ui/svg/icons/Clock_deprecated'
+import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
 jest.mock('features/profile/utils')
@@ -15,7 +15,7 @@ describe('ProfileBadge', () => {
   })
   it('should render component correctly if icon is provided', () => {
     const myComponent = render(
-      <ProfileBadge message={'Tu as déposé ton dossier. Bravo'} icon={ClockDeprecated} />
+      <ProfileBadge message={'Tu as déposé ton dossier. Bravo'} icon={Clock} />
     )
     expect(myComponent).toMatchSnapshot()
   })
@@ -23,7 +23,7 @@ describe('ProfileBadge', () => {
     const myComponent = render(
       <ProfileBadge
         message={'Tu as déposé ton dossier. Bravo'}
-        icon={ClockDeprecated}
+        icon={Clock}
         callToActionIcon={EmailFilled}
       />
     )
@@ -33,7 +33,7 @@ describe('ProfileBadge', () => {
     const myComponent = render(
       <ProfileBadge
         message={'Tu as déposé ton dossier. Bravo'}
-        icon={ClockDeprecated}
+        icon={Clock}
         callToActionIcon={EmailFilled}
         callToActionMessage={'Tu peux cliquer ici'}
         callToActionLink={'https://calltoaction.com'}
@@ -45,7 +45,7 @@ describe('ProfileBadge', () => {
     const myComponent = render(
       <ProfileBadge
         message={'Tu as déposé ton dossier. Bravo'}
-        icon={ClockDeprecated}
+        icon={Clock}
         callToActionIcon={EmailFilled}
         callToActionMessage={'Tu peux cliquer ici'}
       />
@@ -56,7 +56,7 @@ describe('ProfileBadge', () => {
     const { getByTestId } = render(
       <ProfileBadge
         message={'Tu as déposé ton dossier. Bravo'}
-        icon={ClockDeprecated}
+        icon={Clock}
         callToActionIcon={EmailFilled}
         callToActionLink={'https://google.com'}
         callToActionMessage={'Tu peux cliquer ici'}

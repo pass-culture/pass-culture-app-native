@@ -45,7 +45,7 @@ export function ProfileBadge(props: ProfileBadgeProps) {
     <Container testID={props.testID || 'profile-badge'}>
       {Icon ? (
         <IconContainer>
-          <Icon size={48} />
+          <Icon size={getSpacing(8)} />
         </IconContainer>
       ) : null}
       <TextContainer>
