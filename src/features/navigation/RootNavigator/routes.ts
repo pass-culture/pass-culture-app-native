@@ -92,16 +92,22 @@ const routesBeforeReleaseCheck: Route[] = [
   {
     name: 'BookingDetails',
     component: BookingDetails,
-    path: 'reservation/:id/details',
-    deeplinkPaths: ['booking/:id/details'],
+    pathConfig: {
+      path: 'reservation/:id/details',
+      deeplinkPaths: ['booking/:id/details'],
+      parse: screenParamsParser['BookingDetails'],
+    },
     options: { title: t`Détails de réservation` },
     secure: true,
   },
   {
     name: 'BookingConfirmation',
     component: BookingConfirmation,
-    path: 'reservation/:offerId/confirmation',
-    deeplinkPaths: ['booking/:offerId/confirmation'],
+    pathConfig: {
+      path: 'reservation/:offerId/confirmation',
+      deeplinkPaths: ['booking/:offerId/confirmation'],
+      parse: screenParamsParser['BookingConfirmation'],
+    },
     options: { title: t`Confirmation de réservation` },
     secure: true,
   },
