@@ -2,7 +2,7 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate, replace } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { useCurrentRoute, navigateToHome } from 'features/navigation/helpers'
@@ -61,22 +61,22 @@ describe('<CulturalSurvey />', () => {
     expect(renderAPI.queryByTestId('Loading-Animation')).toBeTruthy()
   })
 
-  it('should replace screen by Home when useUserProfileInfo has an error', async () => {
+  it('should navigate to Home when useUserProfileInfo has an error', async () => {
     mockUserProfileInfo({ isError: true })
     await renderCulturalSurveyWithNavigation()
-    expect(replace).toHaveBeenNthCalledWith(1, ...homeNavConfig)
+    expect(navigate).toHaveBeenNthCalledWith(1, ...homeNavConfig)
   })
 
-  it('should replace screen by Home if user has already completed survey', async () => {
+  it('should navigate to Home if user has already completed survey', async () => {
     mockUserProfileInfo({ user: { ...DEFAULT_USER, needsToFillCulturalSurvey: false } })
     await renderCulturalSurveyWithNavigation()
-    expect(replace).toHaveBeenNthCalledWith(1, ...homeNavConfig)
+    expect(navigate).toHaveBeenNthCalledWith(1, ...homeNavConfig)
   })
 
-  it('should replace screen by Home if user is not beneficiary', async () => {
+  it('should navigate to Home if user is not beneficiary', async () => {
     mockUserProfileInfo({ user: { ...DEFAULT_USER, isBeneficiary: false } })
     await renderCulturalSurveyWithNavigation()
-    expect(replace).toHaveBeenNthCalledWith(1, ...homeNavConfig)
+    expect(navigate).toHaveBeenNthCalledWith(1, ...homeNavConfig)
   })
 
   it('should NOT close webview when navigation state has url containing "typeform.com"', async () => {
