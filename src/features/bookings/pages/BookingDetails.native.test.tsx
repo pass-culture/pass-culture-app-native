@@ -4,7 +4,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as Helpers from 'features/bookings/helpers'
-import * as NavigationHelpers from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -32,6 +32,9 @@ jest.mock('features/auth/settings', () => ({
     data: mockSettings,
   })),
 }))
+
+jest.mock('features/navigation/helpers/openUrl')
+const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 describe('BookingDetails', () => {
   afterEach(jest.restoreAllMocks)
@@ -67,7 +70,6 @@ describe('BookingDetails', () => {
 
     it('should display offer link button if offer is digital and open url on press', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
-      const openUrl = jest.spyOn(NavigationHelpers, 'openUrl').mockImplementation(jest.fn())
       booking.stock.offer.isDigital = true
       booking.stock.offer.url = 'http://example.com'
 
@@ -75,7 +77,7 @@ describe('BookingDetails', () => {
       const offerButton = getByText("Accéder à l'offre")
       fireEvent.press(offerButton)
 
-      expect(openUrl).toHaveBeenCalledWith(booking.stock.offer.url)
+      expect(mockedOpenUrl).toHaveBeenCalledWith(booking.stock.offer.url)
       expect(analytics.logAccessExternalOffer).toHaveBeenCalledWith(booking.stock.offer.id)
     })
 

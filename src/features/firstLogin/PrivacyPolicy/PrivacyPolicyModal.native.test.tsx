@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as NavigationHelpers from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { superFlushWithAct, fireEvent, render, cleanup } from 'tests/utils'
@@ -12,6 +12,9 @@ jest.mock('features/navigation/navigationRef')
 const onApproval = jest.fn()
 const onRefusal = jest.fn()
 const visible = true
+
+jest.mock('features/navigation/helpers/openUrl')
+const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 describe('<PrivacyPolicyModal />', () => {
   beforeEach(jest.clearAllMocks)
@@ -61,7 +64,6 @@ describe('<PrivacyPolicyModal />', () => {
   })
 
   it('should open cookies policies on click on "Politique des cookies"', async () => {
-    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
     const { getByText } = renderPrivacyModal({
       onRefusal,
       onApproval,
@@ -69,7 +71,7 @@ describe('<PrivacyPolicyModal />', () => {
       navigationRef,
     })
     fireEvent.press(getByText('Politique des cookies'))
-    expect(openUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
+    expect(mockedOpenUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
     await superFlushWithAct(1)
   })
 
