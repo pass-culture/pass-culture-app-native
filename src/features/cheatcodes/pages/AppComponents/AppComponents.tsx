@@ -103,7 +103,7 @@ import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { LegalNotices } from 'ui/svg/icons/LegalNotices'
+import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
@@ -620,8 +620,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - OfferOutingsPhysical </Text>
         </AlignedText>
         <AlignedText>
-          <LegalNotices size={ICON_SIZE} />
-          <Text> - LegalNotices </Text>
+          <LegalNoticesDeprecated size={ICON_SIZE} />
+          <Text> - LegalNoticesDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <Confidentiality size={ICON_SIZE} />

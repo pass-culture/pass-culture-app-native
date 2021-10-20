@@ -27,7 +27,7 @@ import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { Bell } from 'ui/svg/icons/Bell'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { LegalNotices } from 'ui/svg/icons/LegalNotices'
+import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Lock } from 'ui/svg/icons/Lock'
@@ -203,7 +203,7 @@ export const Profile: React.FC = () => {
             title={t`Mentions légales`}
             type="navigable"
             onPress={() => navigate('LegalNotices')}
-            icon={LegalNotices}
+            icon={LegalNoticesDeprecated}
             style={styles.row}
           />
           <Row
