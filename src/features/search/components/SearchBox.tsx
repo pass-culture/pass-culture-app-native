@@ -15,7 +15,7 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
+import { MagnifyingGlassDeprecated } from 'ui/svg/icons/MagnifyingGlass_deprecated'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack }) => {
@@ -28,7 +28,7 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
         <ArrowPrevious />
       </TouchableOpacity>
     )
-  return <MagnifyingGlass />
+  return <MagnifyingGlassDeprecated />
 }
 
 const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (props) =>

@@ -107,7 +107,7 @@ import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
+import { MagnifyingGlassDeprecated } from 'ui/svg/icons/MagnifyingGlass_deprecated'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
@@ -546,8 +546,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Favourite </Text>
         </AlignedText>
         <AlignedText>
-          <MagnifyingGlass size={ICON_SIZE} />
-          <Text> - MagnifyingGlass </Text>
+          <MagnifyingGlassDeprecated size={ICON_SIZE} />
+          <Text> - MagnifyingGlassDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <Info size={ICON_SIZE} />
@@ -740,7 +740,7 @@ export const AppComponents: FunctionComponent = () => {
 
       {/* Search components */}
       <AccordionItem title="Search components">
-        <SearchInput LeftIcon={() => <MagnifyingGlass />} placeholder="with left icon" />
+        <SearchInput LeftIcon={() => <MagnifyingGlassDeprecated />} placeholder="with left icon" />
         <Spacer.Column numberOfSpaces={4} />
         <Center>
           <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n} €`} />
