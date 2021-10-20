@@ -100,6 +100,7 @@ import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
+import { Info } from 'ui/svg/icons/Info'
 import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
@@ -577,6 +578,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <InfoDeprecated size={ICON_SIZE} />
           <Text> - InfoDeprecated </Text>
+        </AlignedText>
+        <AlignedText>
+          <Info size={ICON_SIZE} />
+          <Text> - Info (new) </Text>
         </AlignedText>
         <AlignedText>
           <AroundMe size={ICON_SIZE} />
