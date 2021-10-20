@@ -58,6 +58,7 @@ import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
 import { StepDots } from 'ui/components/StepDots'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
+import { Again } from 'ui/svg/icons/Again'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -412,6 +413,10 @@ export const AppComponents: FunctionComponent = () => {
         <SocialNetworkIcons />
         <Spacer.Column numberOfSpaces={4} />
         <CategoryIcons />
+        <AlignedText>
+          <Again size={ICON_SIZE} />
+          <Text> - Again (new) </Text>
+        </AlignedText>
         <AlignedText>
           <ArrowPrevious size={ICON_SIZE} />
           <Text> - ArrowPrevious </Text>
