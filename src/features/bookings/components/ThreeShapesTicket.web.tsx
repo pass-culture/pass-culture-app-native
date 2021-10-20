@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
-import { ColorsEnum, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   width?: number
@@ -12,14 +12,14 @@ type Props = PropsWithChildren<{
 const TICKET_MAX_WIDTH = 300
 
 export function ThreeShapesTicket(props: Props) {
-  const { appContentWidth } = useTheme()
+  const { appContentWidth, colors } = useTheme()
   const defaultWidth = Math.min(TICKET_MAX_WIDTH, appContentWidth - getSpacing(15))
   const width = props.width || defaultWidth
   return (
     <Container testID="three-shapes-ticket">
-      <TicketHeader width={width} color={ColorsEnum.WHITE} />
+      <TicketHeader width={width} color={colors.white} />
       <TicketContent width={width}>{props.children}</TicketContent>
-      <TicketFooter width={width} color={ColorsEnum.WHITE} />
+      <TicketFooter width={width} color={colors.white} />
     </Container>
   )
 }
@@ -30,8 +30,9 @@ const Container = styled.View({
   justifyContent: 'center',
 })
 
-const TicketContent = styled.View<{ width: number }>(({ width }) => ({
-  backgroundColor: ColorsEnum.WHITE,
+const TicketContent = styled.View<{ width: number }>(({ width, theme }) => ({
+  top: -1,
+  backgroundColor: theme.colors.white,
   width,
   flex: 0,
   flexBasis: 'unset',
