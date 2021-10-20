@@ -5,7 +5,7 @@ import { Credit } from 'features/home/services/useAvailableCredit'
 import { openUrl, isAppUrl } from 'features/navigation/helpers'
 import { expiredCredit, nonExpiredCredit } from 'fixtures/credit'
 import { beneficiaryUser, nonBeneficaryUser, underageBeneficiaryUser } from 'fixtures/user'
-import { ClockDeprecated } from 'ui/svg/icons/Clock_deprecated'
+import { Clock } from 'ui/svg/icons/Clock'
 import { Info } from 'ui/svg/icons/Info'
 
 import {
@@ -44,7 +44,7 @@ describe('profile utils', () => {
     })
     it("should return Clock if 'CLOCK' is passed", () => {
       const returnedIcon = matchSubscriptionMessageIconToSvg('CLOCK')
-      expect(returnedIcon).toEqual(ClockDeprecated)
+      expect(returnedIcon).toEqual(Clock)
     })
     it('should return Info if unknown string is passed and fallbackIcon is true', () => {
       const returnedIcon = matchSubscriptionMessageIconToSvg('I am an unknown string', true)

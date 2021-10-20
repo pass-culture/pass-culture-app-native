@@ -4,7 +4,7 @@ import { UserProfileResponse, DomainsCredit, UserRole } from 'api/gen/api'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl, openUrl } from 'features/navigation/helpers'
-import { ClockDeprecated } from 'ui/svg/icons/Clock_deprecated'
+import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Info } from 'ui/svg/icons/Info'
 
@@ -41,7 +41,7 @@ export const matchSubscriptionMessageIconToSvg = (
     case undefined:
       return undefined
     case 'CLOCK':
-      return ClockDeprecated
+      return Clock
     case 'EMAIL':
       return EmailFilled
     default:

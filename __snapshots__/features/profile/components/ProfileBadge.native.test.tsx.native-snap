@@ -29,8 +29,8 @@ exports[`ProfileBadge should not show CTA if no link is provided 1`] = `
     }
   >
     <View
-      height={48}
-      width={48}
+      height={32}
+      width={32}
     >
       <Text>
         undefined-SVG-Mock
@@ -96,8 +96,8 @@ exports[`ProfileBadge should render component correctly if icon is provided 1`] 
     }
   >
     <View
-      height={48}
-      width={48}
+      height={32}
+      width={32}
     >
       <Text>
         undefined-SVG-Mock
@@ -212,8 +212,8 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
     }
   >
     <View
-      height={48}
-      width={48}
+      height={32}
+      width={32}
     >
       <Text>
         undefined-SVG-Mock
@@ -361,8 +361,8 @@ exports[`ProfileBadge should show neither CTA Icon nor CTA message if no CTA mes
     }
   >
     <View
-      height={48}
-      width={48}
+      height={32}
+      width={32}
     >
       <Text>
         undefined-SVG-Mock

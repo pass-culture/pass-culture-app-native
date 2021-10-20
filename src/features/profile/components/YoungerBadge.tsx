@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useDepositAmount } from 'features/auth/api'
 import { ProfileBadge } from 'features/profile/components/ProfileBadge'
-import { ClockDeprecated } from 'ui/svg/icons/Clock_deprecated'
+import { Clock } from 'ui/svg/icons/Clock'
 
 export function YoungerBadge() {
   const depositAmount = useDepositAmount()
@@ -16,5 +16,5 @@ export function YoungerBadge() {
     '\u00a0' +
     t`offerts à dépenser sur l’application.`
 
-  return <ProfileBadge icon={ClockDeprecated} message={information} testID={'younger-badge'} />
+  return <ProfileBadge icon={Clock} message={information} testID={'younger-badge'} />
 }
