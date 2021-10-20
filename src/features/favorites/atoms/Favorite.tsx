@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useMemo, useRef, useState } from 'react'
 import { Animated, LayoutChangeEvent } from 'react-native'
 import { useQueryClient } from 'react-query'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
 import { useRemoveFavorite } from 'features/favorites/pages/useFavorites'
@@ -31,6 +31,7 @@ interface Props {
 
 export const Favorite: React.FC<Props> = (props) => {
   const { offer } = props.favorite
+  const theme = useTheme()
   const [height, setHeight] = useState<number | undefined>(undefined)
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
@@ -150,29 +151,30 @@ export const Favorite: React.FC<Props> = (props) => {
             </Typo.Caption>
           </Column>
         </Row>
-        <ButtonsRow>
-          <ButtonContainer>
-            <AppButton
-              title={t`Supprimer`}
-              onPress={onRemove}
-              textColor={ColorsEnum.BLACK}
-              borderColor={ColorsEnum.GREY_MEDIUM}
-              backgroundColor={ColorsEnum.WHITE}
-              loadingIconColor={ColorsEnum.PRIMARY}
-              buttonHeight="tall"
-              disabled={isLoading}
-            />
-          </ButtonContainer>
-          <ButtonContainer>
-            <BookingButton
-              credit={props.credit}
-              offer={offer}
-              user={props.user}
-              onInAppBooking={props.onInAppBooking}
-            />
-          </ButtonContainer>
-        </ButtonsRow>
       </Container>
+      <ButtonsRow>
+        <ButtonContainer>
+          <AppButton
+            title={t`Supprimer`}
+            onPress={onRemove}
+            textColor={ColorsEnum.BLACK}
+            borderColor={ColorsEnum.GREY_MEDIUM}
+            backgroundColor={ColorsEnum.WHITE}
+            loadingIconColor={ColorsEnum.PRIMARY}
+            buttonHeight="tall"
+            disabled={isLoading}
+          />
+        </ButtonContainer>
+        {!theme.isMobile && <Spacer.Flex flex={1 / 30} />}
+        <ButtonContainer>
+          <BookingButton
+            credit={props.credit}
+            offer={offer}
+            user={props.user}
+            onInAppBooking={props.onInAppBooking}
+          />
+        </ButtonContainer>
+      </ButtonsRow>
       <Separator />
     </Animated.View>
   )
@@ -199,11 +201,12 @@ const ButtonContainer = styled.View({
   width: '47%',
 })
 
-const ButtonsRow = styled.View({
+const ButtonsRow = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  justifyContent: theme.isMobile ? 'space-between' : 'center',
   marginTop: getSpacing(6),
-})
+  marginHorizontal: getSpacing(6),
+}))
 
 const Name = styled(Typo.ButtonText)({})
 
