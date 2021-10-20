@@ -4,6 +4,7 @@ type ScreensRequiringParsing = Extract<
   ScreenNames,
   | 'AfterSignupEmailValidationBuffer'
   | 'BookingDetails'
+  | 'BookingConfirmation'
   | 'Home'
   | 'Login'
   | 'Offer'
@@ -31,6 +32,10 @@ export const screenParamsParser: ParamsParsers = {
   },
   BookingDetails: {
     id: Number,
+  },
+  BookingConfirmation: {
+    offerId: Number,
+    bookingId: Number,
   },
   Login: {
     preventCancellation: parseObject,
