@@ -105,6 +105,7 @@ const TicketContent = styled.View({
 const Title = styled(Typo.Title3)({
   paddingHorizontal: getSpacing(1),
   textAlign: 'center',
+  maxWidth: '100%',
 })
 
 const Token = styled(Typo.Title4)({
@@ -116,7 +117,7 @@ const Token = styled(Typo.Title4)({
 const TicketInnerContent = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
-  flex: 1,
+  flexGrow: 1,
 })
 
 const InnerButtonContainer = styled.View({
