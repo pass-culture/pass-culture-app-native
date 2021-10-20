@@ -100,7 +100,7 @@ import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
-import { Info } from 'ui/svg/icons/Info'
+import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
@@ -575,8 +575,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - MagnifyingGlass (new) </Text>
         </AlignedText>
         <AlignedText>
-          <Info size={ICON_SIZE} />
-          <Text> - Info </Text>
+          <InfoDeprecated size={ICON_SIZE} />
+          <Text> - InfoDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <AroundMe size={ICON_SIZE} />

@@ -6,7 +6,7 @@ import { openUrl, isAppUrl } from 'features/navigation/helpers'
 import { expiredCredit, nonExpiredCredit } from 'fixtures/credit'
 import { beneficiaryUser, nonBeneficaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { Clock } from 'ui/svg/icons/Clock'
-import { Info } from 'ui/svg/icons/Info'
+import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 
 import {
   computeCredit,
@@ -48,7 +48,7 @@ describe('profile utils', () => {
     })
     it('should return Info if unknown string is passed and fallbackIcon is true', () => {
       const returnedIcon = matchSubscriptionMessageIconToSvg('I am an unknown string', true)
-      expect(returnedIcon).toEqual(Info)
+      expect(returnedIcon).toEqual(InfoDeprecated)
     })
     it('should return no icon if unknown string is passed and fallback is false', () => {
       const returnedIcon = matchSubscriptionMessageIconToSvg('I am an unknown string')
