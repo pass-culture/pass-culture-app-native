@@ -18,7 +18,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
 export function NavigationIdCheckErrors(): JSX.Element {
-  const { replace, navigate } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('Navigation', undefined)
   const [error, setError] = useState<IdCheckError | Error | null>(null)
   const { setContextValue } = useIdCheckContext()
@@ -34,11 +34,11 @@ export function NavigationIdCheckErrors(): JSX.Element {
   })
 
   function goToBeneficiaryRequestSent() {
-    replace('BeneficiaryRequestSent')
+    navigate('BeneficiaryRequestSent')
   }
 
   function onAbandon() {
-    replace(...homeNavConfig)
+    navigate(...homeNavConfig)
   }
 
   function syncUserAndProceedToNextScreen() {

@@ -46,11 +46,11 @@ export function withCulturalSurveyProvider(
     const { data: user, isError: isUserError } = useUserProfileInfo()
 
     const currentRoute = useCurrentRoute()
-    const { replace } = useNavigation<UseNavigationType>()
+    const { navigate } = useNavigation<UseNavigationType>()
 
     useEffect(() => {
       if (isUserError) {
-        replace(...homeNavConfig)
+        navigate(...homeNavConfig)
         return
       }
       if (user) {
@@ -60,7 +60,7 @@ export function withCulturalSurveyProvider(
           const url = `https://passculture.typeform.com/to/${FORM_ID}?userId=${userId}&userPk=${userPk}&source=${source}`
           setCulturalSurveyConfig({ url, formId: FORM_ID, userId, userPk, source })
         } else {
-          replace(...homeNavConfig)
+          navigate(...homeNavConfig)
         }
       }
     }, [user, isUserError])
