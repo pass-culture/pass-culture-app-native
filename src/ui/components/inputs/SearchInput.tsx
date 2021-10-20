@@ -1,6 +1,8 @@
+import { t } from '@lingui/macro'
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
+import { accessibilityAndTestId } from 'tests/utils'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
@@ -37,6 +39,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         autoCorrect={false}
         returnKeyType="search"
         selectionColor={ColorsEnum.GREY_DARK}
+        {...accessibilityAndTestId(t`Barre de recherche des offres`)}
       />
       <RightIcon />
     </InputContainer>

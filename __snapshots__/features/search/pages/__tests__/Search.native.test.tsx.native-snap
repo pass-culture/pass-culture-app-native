@@ -109,6 +109,8 @@ exports[`Search component should render correctly 1`] = `
         }
       />
       <TextInput
+        accessibilityLabel="Barre de recherche des offres"
+        accessible={true}
         allowFontScaling={true}
         autoCorrect={false}
         onBlur={[Function]}
@@ -137,6 +139,7 @@ exports[`Search component should render correctly 1`] = `
             },
           ]
         }
+        testID="Barre de recherche des offres"
         underlineColorAndroid="transparent"
         value=""
       />
