@@ -283,7 +283,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
             "borderRadius": 0,
             "borderWidth": 0,
             "flexDirection": "row",
-            "height": 16,
+            "height": 20,
             "justifyContent": "center",
             "marginTop": 0,
             "maxWidth": 500,
@@ -298,9 +298,9 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
         testID="call-to-action-button"
       >
         <View
-          height={24}
+          height={16}
           testID="button-icon"
-          width={24}
+          width={16}
         >
           <Text>
             button-icon-SVG-Mock

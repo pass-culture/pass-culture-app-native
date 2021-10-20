@@ -922,6 +922,7 @@ export const AppComponents: FunctionComponent = () => {
         <Text>Affichage icône CTA</Text>
         <AlignedText>
           <Button title="Email" onPress={() => setCallToActionIconString('EMAIL')} />
+          <Button title="Retry" onPress={() => setCallToActionIconString('RETRY')} />
           <Button title="No key" onPress={() => setCallToActionIconString(undefined)} />
           <Button title="Unknown key" onPress={() => setCallToActionIconString('Blablou')} />
         </AlignedText>
