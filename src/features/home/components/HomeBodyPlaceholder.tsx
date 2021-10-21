@@ -44,9 +44,7 @@ const OfferModulePlaceholder: React.FC<{ size: TileSize; numberOfTiles: number }
     .fill(null)
     .map((_, index: number) => ({ key: index.toString() }))
 
-  const renderPlaceholder = useCallback(() => {
-    return <OfferTilePlaceholder size={size} />
-  }, [size])
+  const renderPlaceholder = useCallback(() => <OfferTilePlaceholder size={size} />, [size])
 
   return (
     <Row>
