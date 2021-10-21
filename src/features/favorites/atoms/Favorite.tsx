@@ -14,6 +14,7 @@ import { OfferImage } from 'features/search/atoms/OfferImage'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatToFrenchDate, getFavoriteDisplayPrice } from 'libs/parsers'
+import { QueryKeys } from 'libs/queryKeys'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -72,7 +73,7 @@ export const Favorite: React.FC<Props> = (props) => {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     if (!offer.id) return
     queryClient.setQueryData(
-      ['offer', offer.id],
+      [QueryKeys.OFFER, offer.id],
       mergeOfferData({
         ...offer,
         categoryId,

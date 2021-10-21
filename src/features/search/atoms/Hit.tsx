@@ -8,6 +8,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
+import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
@@ -37,7 +38,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
     // We pre-populate the query-cache with the data from the search client for a smooth transition
     if (!offerId) return
     queryClient.setQueryData(
-      ['offer', offerId],
+      [QueryKeys.OFFER, offerId],
       mergeOfferData({
         ...offer,
         categoryId,
