@@ -55,7 +55,9 @@ exports[`Favorites component should render correctly 1`] = `
     style={
       Array [
         Object {
-          "height": "100%",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
         },
       ]
     }
