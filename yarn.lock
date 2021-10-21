@@ -3429,10 +3429,10 @@
   resolved "https://registry.yarnpkg.com/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
-"@pass-culture/id-check@^2.9.3":
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.9.3.tgz#09677f9b50ec00619410da3de45a972c81aa6c5f"
-  integrity sha512-d1iePoeSswt9JT5aE5az/1Uv7TmPbxi0RUaE8jx+u4tNSY6qPV8JdT8H8AQ/ARq3BCmPKZuyXm1veAgmI5Eq9A==
+"@pass-culture/id-check@^2.9.4":
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.9.4.tgz#3817d790025207dd20d8a79bc30c324434c1e8d9"
+  integrity sha512-dIUR7x0gut6Qs1qrnmuPcRFSdpaeEY0EzUw+rFz2whiTc8omLWKdaGIcen3sV+uiG+JjQtcNlJzWhg7c74ZAfg==
   dependencies:
     deepmerge "^4.2.2"
     lodash "^4.17.21"
