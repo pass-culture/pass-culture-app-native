@@ -147,9 +147,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
           keyboardType={'number-pad'}
           onSubmitEditing={onSubmit}
           returnKeyType={'done'}
-          onChangeText={(nextValue) => {
-            setValue(nextValue)
-          }}
+          onChangeText={setValue}
           placeholder={'JJ/MM/AAAA'}
           autoFocus={true}
           onFocus={() => setHasFocus(true)}
