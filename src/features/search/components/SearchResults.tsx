@@ -106,7 +106,7 @@ export const SearchResults: React.FC = () => {
 }
 
 const contentContainerStyle = { flexGrow: 1 }
-const Container = styled.View({ height: '100%' })
+const Container = styled.View({ flex: 1 })
 const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(52) })
 const Separator = styled.View({
   height: 2,
