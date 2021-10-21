@@ -27,6 +27,14 @@ const mockedIdentity: Partial<UserProfileResponse> = {
 describe('PersonalData', () => {
   afterEach(() => jest.clearAllMocks())
 
+  it('should render personal data success', async () => {
+    const renderedPersonalData = await renderPersonalData({
+      isBeneficiary: true,
+      ...mockedIdentity,
+    } as UserProfileResponse)
+    expect(renderedPersonalData.toJSON()).toMatchSnapshot()
+  })
+
   it('should render for beneficiary profile', async () => {
     const { getByText } = await renderPersonalData({
       isBeneficiary: true,
