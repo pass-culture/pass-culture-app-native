@@ -3,8 +3,8 @@ import waitForExpect from 'wait-for-expect'
 
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
+import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { fireEvent, render } from 'tests/utils'
 
 import { BookingConfirmation } from '../BookingConfirmation'
@@ -12,6 +12,15 @@ import { BookingConfirmation } from '../BookingConfirmation'
 jest.mock('features/home/services/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
 }))
+
+jest.mock('features/bookOffer/services/useReviewInAppInformation', () => ({
+  useReviewInAppInformation: jest.fn(() => ({
+    shouldReviewBeRequested: true,
+    updateInformationWhenReviewHasBeenRequested: jest.fn(),
+  })),
+}))
+
+const useReviewInAppInformationMock = useReviewInAppInformation as jest.Mock
 
 jest.mock('react-query')
 
@@ -60,8 +69,7 @@ describe('<BookingConfirmation />', () => {
     })
   })
 
-  it('should call InAppReview Modal after 3 seconds', async () => {
-    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
+  it('should call InAppReview Modal after 3 seconds if isAvailable and rules are respected', async () => {
     const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
     jest.useFakeTimers()
 
@@ -69,10 +77,20 @@ describe('<BookingConfirmation />', () => {
     jest.advanceTimersByTime(3000)
     expect(requestInAppReview).toHaveBeenCalled()
   })
+
   it('should not call InAppReview Modal if isAvailable is false', async () => {
-    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     isAvailable.mockImplementationOnce(() => false)
     const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
+    jest.useFakeTimers()
+
+    render(<BookingConfirmation />)
+    jest.advanceTimersByTime(3000)
+    expect(requestInAppReview).toHaveBeenCalledTimes(0)
+  })
+
+  it('should not call InAppReview Modal if isAvailable is true and rules are not respected', async () => {
+    const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
+    useReviewInAppInformationMock.mockImplementationOnce(() => ({ shouldReviewBeRequested: false }))
     jest.useFakeTimers()
 
     render(<BookingConfirmation />)
