@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { Coordinates, OfferVenueResponse, VenueResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
@@ -69,8 +68,7 @@ export const WhereSection: React.FC<Props> = ({
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Title4>{t`Où ?`}</Typo.Title4>
-      {/* TODO : Remove testing/staging condition to display the link to venue button */}
-      {env.ENV !== 'production' && showVenueBanner ? (
+      {showVenueBanner ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
