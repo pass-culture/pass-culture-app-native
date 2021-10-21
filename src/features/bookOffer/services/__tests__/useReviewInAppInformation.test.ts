@@ -5,22 +5,14 @@ import { useReviewInAppInformation } from 'features/bookOffer/services/useReview
 import { storage } from 'libs/storage'
 import { waitFor } from 'tests/utils'
 
-mockdate.set(new Date(1634806274417))
-
+const dateNow = 1634806274417
 const ONE_YEAR = 365 * 24 * 60 * 60 * 1000
-const firstTimeReviewLessThanOneYearAgo = storage.saveObject(
-  'first_time_review_has_been_requested',
-  1634806275417
-)
-const firstTimeReviewOneYearAgo = storage.saveObject(
-  'first_time_review_has_been_requested',
-  1634806275417 + ONE_YEAR
-)
 
 describe('useReviewInAppInformation', () => {
   beforeEach(() => {
+    mockdate.set(new Date(dateNow))
     jest.clearAllMocks()
-    firstTimeReviewLessThanOneYearAgo
+    storage.saveObject('first_time_review_has_been_requested', dateNow)
   })
 
   it('should return shouldReviewBeRequested = true if review Modal has not been seen', async () => {
@@ -64,8 +56,7 @@ describe('useReviewInAppInformation', () => {
 
   it('should return shouldReviewBeRequested = true if review Modal has been seen more than three times but one year ago', async () => {
     storage.saveObject('times_review_has_been_requested', 4)
-    firstTimeReviewOneYearAgo
-
+    storage.saveObject('first_time_review_has_been_requested', dateNow - ONE_YEAR - 1)
     const { result } = renderHook(() => useReviewInAppInformation())
     await waitFor(() => {
       expect(result.current.shouldReviewBeRequested).toBeTruthy()

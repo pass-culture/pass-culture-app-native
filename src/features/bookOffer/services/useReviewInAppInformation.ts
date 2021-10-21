@@ -22,7 +22,7 @@ export const useReviewInAppInformation = () => {
         // After one year we reset dateFirstReview and show review pop-up again
         const dateFirstReview = parseInt(firstReview || currentDate.toString())
         if (dateFirstReview + ONE_YEAR < currentDate) {
-          setTimesReviewHasBeenRequested(null)
+          setTimesReviewHasBeenRequested(0)
           storage.saveMultiString([
             ['times_review_has_been_requested', '0'],
             ['first_time_review_has_been_requested', currentDate.toString()],
