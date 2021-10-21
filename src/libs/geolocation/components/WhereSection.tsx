@@ -10,6 +10,7 @@ import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
+import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
@@ -59,7 +60,7 @@ export const WhereSection: React.FC<Props> = ({
 
   const navigateToVenuePage = () => {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
-    queryClient.setQueryData(['venue', venue.id], mergeVenueData(venue))
+    queryClient.setQueryData([QueryKeys.VENUE, venue.id], mergeVenueData(venue))
     analytics.logConsultVenue({ venueId: venue.id, from: 'offer' })
     navigation.navigate('Venue', { id: venue.id })
   }

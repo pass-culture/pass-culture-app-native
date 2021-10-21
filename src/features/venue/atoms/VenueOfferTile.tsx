@@ -8,6 +8,7 @@ import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { QueryKeys } from 'libs/queryKeys'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
@@ -41,7 +42,7 @@ export const VenueOfferTile = (props: VenueOfferTileProps) => {
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
-    queryClient.setQueryData(['offer', offer.offerId], mergeOfferData(offer))
+    queryClient.setQueryData([QueryKeys.OFFER, offer.offerId], mergeOfferData(offer))
     analytics.logConsultOffer({ offerId: offer.offerId, from: 'venue', venueId })
     navigation.navigate('Offer', {
       id: offer.offerId,

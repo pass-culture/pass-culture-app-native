@@ -15,6 +15,7 @@ import {
 import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { QueryKeys } from 'libs/queryKeys'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
@@ -80,7 +81,7 @@ export const OfferTile = (props: OfferTileProps) => {
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
-    queryClient.setQueryData(['offer', offer.offerId], mergeOfferData(offer))
+    queryClient.setQueryData([QueryKeys.OFFER, offer.offerId], mergeOfferData(offer))
     analytics.logConsultOffer({ offerId: offer.offerId, from: 'home', moduleName })
     navigation.navigate('Offer', {
       id: offer.offerId,

@@ -10,6 +10,7 @@ import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryId } from 'libs/subcategories'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Check } from 'ui/svg/icons/Check'
@@ -33,7 +34,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     if (!offer.id) return
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData(
-      ['offer', offer.id],
+      [QueryKeys.OFFER, offer.id],
       mergeOfferData({
         ...offer,
         categoryId,

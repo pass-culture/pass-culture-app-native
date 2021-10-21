@@ -21,6 +21,7 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
+import { QueryKeys } from 'libs/queryKeys'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
@@ -97,7 +98,7 @@ export function BookingDetails() {
 
   const navigateToOffer = () => {
     queryClient.setQueryData(
-      ['offer', offer.id],
+      [QueryKeys.OFFER, offer.id],
       mergeOfferData({
         ...offer,
         categoryId: mapping[offer.subcategoryId].categoryId,
