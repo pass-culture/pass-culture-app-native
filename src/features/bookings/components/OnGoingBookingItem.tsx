@@ -6,7 +6,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
-import { ClockDeprecated } from 'ui/svg/icons/Clock_deprecated'
+import { Clock } from 'ui/svg/icons/Clock'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -40,7 +40,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
           <Spacer.Flex />
           {!!withdrawLabel && (
             <WithDrawContainer>
-              <ClockDeprecated size={20} color={ColorsEnum.PRIMARY} />
+              <Clock size={16} color={ColorsEnum.PRIMARY} />
               <Spacer.Row numberOfSpaces={1} />
               <WithdrawCaption color={ColorsEnum.PRIMARY} numberOfLines={2}>
                 {withdrawLabel}
