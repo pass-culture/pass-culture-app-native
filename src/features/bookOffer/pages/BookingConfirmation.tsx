@@ -9,7 +9,6 @@ import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -52,19 +51,14 @@ export function BookingConfirmation() {
   }
 
   useEffect(() => {
-    if (
-      InAppReview.isAvailable() &&
-      env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING &&
-      shouldReviewBeRequested
-    ) {
+    if (InAppReview.isAvailable() && shouldReviewBeRequested) {
       setTimeout(
         () =>
           InAppReview.RequestInAppReview()
             .then((hasFlowFinishedSuccessfully) => {
-              updateInformationWhenReviewHasBeenRequested(hasFlowFinishedSuccessfully)
+              if (hasFlowFinishedSuccessfully) updateInformationWhenReviewHasBeenRequested()
             })
             .catch((error) => {
-              // TODO (LucasBeneston) : How to deal with errors https://github.com/MinaSamir11/react-native-in-app-review#error-could-happen-and-code-number ?
               eventMonitoring.captureException(error)
             }),
         3000
