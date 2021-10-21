@@ -464,6 +464,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
+          "alignSelf": "center",
           "backgroundColor": "#eb0055",
           "borderRadius": 24,
           "borderWidth": 0,
