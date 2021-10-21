@@ -76,9 +76,16 @@ export function simulateWebviewMessage(webview: ReactTestInstance, message: stri
   })
 }
 
+const computedTheme = {
+  isMobile: true,
+  isTablet: false,
+  isDesktop: false,
+  appContentWidth: 960,
+}
+
 const DefaultWrapper: React.FC = ({ children }) => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={{ ...theme, ...computedTheme }}>
       <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
         {children}
       </I18nProvider>
