@@ -27,6 +27,6 @@ export const SocialNetworkIconsMap: Record<
   },
 
   instagram: { icon: Instagram, link: 'https://www.instagram.com/passcultureofficiel/?hl=fr' },
-  snapchat: { icon: Snapchat, link: 'https://www.snapchat.com/add/pass.culture' },
+  snapchat: { icon: Snapchat, link: 'https://story.snapchat.com/@pass.culture' },
   twitter: { icon: Twitter, link: 'https://twitter.com/pass_Culture' },
 }
