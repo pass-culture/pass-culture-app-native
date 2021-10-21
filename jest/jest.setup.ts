@@ -96,3 +96,5 @@ jest.mock('api/apiHelpers')
 jest.mock('ui/components/ModuleBanner/backgroundImageSource')
 
 jest.mock('ui/hooks/useEnterKeyAction')
+
+jest.mock('react-native/Libraries/LogBox/LogBox')

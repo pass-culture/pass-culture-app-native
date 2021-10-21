@@ -1,9 +1,10 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
+import { useWindowDimensions } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useQueryClient } from 'react-query'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { useOngoingOrEndedBooking } from 'features/bookings/api/queries'
@@ -15,12 +16,14 @@ import { BookingPropertiesSection } from 'features/bookings/components/BookingPr
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { BookingProperties, getBookingProperties } from 'features/bookings/helpers'
+import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
+import { ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -48,7 +51,7 @@ const getOfferRules = (
 const scrollIndicatorInsets = { right: 1 }
 
 export function BookingDetails() {
-  const windowHeight = useTheme().appContentWidth - blurImageHeight
+  const windowHeight = useWindowDimensions().height - blurImageHeight
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const booking = useOngoingOrEndedBooking(params.id)
@@ -81,7 +84,9 @@ export function BookingDetails() {
     },
   })
 
-  if (!booking) return <React.Fragment></React.Fragment>
+  if (!booking) {
+    throw new ScreenError(`Booking #${params.id} not found`, BookingNotFound)
+  }
 
   const { offer } = booking.stock
   const properties = getBookingProperties(booking, mapping[offer.subcategoryId].isEvent)

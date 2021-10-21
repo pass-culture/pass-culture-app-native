@@ -4,6 +4,8 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as Helpers from 'features/bookings/helpers'
+import { withAsyncErrorBoundary } from 'features/errors'
+import { navigateToHome } from 'features/navigation/helpers'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
@@ -13,8 +15,9 @@ import { act, flushAllPromises, fireEvent, render } from 'tests/utils'
 import { bookingsSnap } from '../api/bookingsSnap'
 import { Booking } from '../components/types'
 
-import { BookingDetails } from './BookingDetails'
+import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
+const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: undefined })),
 }))
@@ -35,6 +38,12 @@ jest.mock('features/auth/settings', () => ({
 
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
+
+jest.mock('features/navigation/helpers/navigateToHome')
+const mockedNavigateToHome = navigateToHome as jest.MockedFunction<typeof navigateToHome>
+
+// eslint-disable-next-line local-rules/no-allow-console
+allowConsole({ error: true }) // we allow it just for 1 test which is error throwing when no booking is found 404
 
 describe('BookingDetails', () => {
   afterEach(jest.restoreAllMocks)
@@ -191,6 +200,26 @@ describe('BookingDetails', () => {
     })
   })
 
+  describe('booking not found', () => {
+    it('should render ScreenError BookingNotFound when booking is not found', () => {
+      const renderAPI = renderBookingDetails(undefined)
+      expect(renderAPI.queryByText('Réservation introuvable !')).toBeTruthy()
+      expect(
+        renderAPI.queryByText(
+          `Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer.`
+        )
+      ).toBeTruthy()
+      expect(renderAPI.queryByText('Mes réservations terminées')).toBeTruthy()
+      expect(renderAPI.queryByText(`Retourner l'accueil`)).toBeTruthy()
+
+      fireEvent.press(renderAPI.getByText('Mes réservations terminées'))
+      expect(navigate).toBeCalledWith('EndedBookings')
+
+      fireEvent.press(renderAPI.getByText(`Retourner l'accueil`))
+      expect(mockedNavigateToHome).toBeCalled()
+    })
+  })
+
   describe('Itinerary', () => {
     it.each([
       ['isEvent == true', { isEvent: true }],
@@ -279,7 +308,7 @@ describe('BookingDetails', () => {
   })
 })
 
-function renderBookingDetails(booking: Booking) {
+function renderBookingDetails(booking?: Booking) {
   jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue(booking)
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<BookingDetails />))

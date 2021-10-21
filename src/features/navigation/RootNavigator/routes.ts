@@ -91,6 +91,7 @@ const routesBeforeReleaseCheck: Route[] = [
   {
     name: 'BookingDetails',
     component: BookingDetails,
+    hoc: withAsyncErrorBoundary,
     pathConfig: {
       path: 'reservation/:id/details',
       deeplinkPaths: ['booking/:id/details'],
