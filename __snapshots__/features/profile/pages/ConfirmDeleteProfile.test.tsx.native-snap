@@ -61,8 +61,8 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         }
       />
       <View
-        height={96}
-        width={149}
+        height={100}
+        width={100}
       >
         <Text>
           undefined-SVG-Mock

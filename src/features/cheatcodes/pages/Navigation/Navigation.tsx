@@ -203,10 +203,16 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton title="Venue" onPress={() => navigate('Venue', { id: venueId })} />
         </Row>
-        <Row>
+        <Row half>
           <NavigationButton
             title={'Mauvais deeplink unknown'}
             onPress={() => openUrl(BadDeeplink)}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={'Confirm delete profile'}
+            onPress={() => navigate('ConfirmDeleteProfile')}
           />
         </Row>
         <Row>
