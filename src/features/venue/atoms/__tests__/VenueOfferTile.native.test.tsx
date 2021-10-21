@@ -75,7 +75,7 @@ describe('VenueOfferTile component', () => {
       image: { url: props.thumbUrl },
       isDigital: false,
       isDuo: false,
-      isReleased: false,
+      isReleased: true,
       isExpired: false,
       isSoldOut: false,
       name: offer.name,

@@ -4,13 +4,8 @@ import { PixelRatio, View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import {
-  CategoryIdEnum,
-  ExpenseDomain,
-  OfferResponse,
-  OfferStockResponse,
-  SubcategoryIdEnum,
-} from 'api/gen'
+import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
+import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { ImageCaption } from 'ui/components/ImageCaption'
@@ -20,8 +15,8 @@ import { LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum, MARGIN_DP } from 'ui/theme/grid'
 
 interface VenueOfferTileProps {
-  categoryLabel: string | null
   categoryId: CategoryIdEnum | null | undefined
+  categoryLabel: string | null
   subcategoryId: SubcategoryIdEnum
   date?: string
   name?: string
@@ -32,36 +27,6 @@ interface VenueOfferTileProps {
   isBeneficiary?: boolean
   venueId?: number
 }
-
-type PartialOffer = Pick<
-  VenueOfferTileProps,
-  'categoryId' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
->
-
-export const mergeOfferData = (offer: PartialOffer) => (
-  prevData: OfferResponse | undefined
-): OfferResponse => ({
-  description: '',
-  image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
-  isDuo: offer.isDuo || false,
-  name: offer.name || '',
-  isDigital: false,
-  isExpired: false,
-  isEducational: false,
-  isReleased: false,
-  isSoldOut: false,
-  id: offer.offerId,
-  stocks: [] as Array<OfferStockResponse>,
-  expenseDomains: [] as Array<ExpenseDomain>,
-  accessibility: {},
-  subcategoryId: offer.subcategoryId,
-  category: {
-    label: '',
-    name: undefined,
-  } as OfferResponse['category'],
-  venue: { coordinates: {} } as OfferResponse['venue'],
-  ...(prevData || {}),
-})
 
 /* TODO : When we add categories of offers at the top of the carousel
     - Remove <ImageCaption/>

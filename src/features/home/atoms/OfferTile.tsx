@@ -22,8 +22,8 @@ import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface OfferTileProps {
-  categoryLabel: string | null
   categoryId: CategoryIdEnum | null | undefined
+  categoryLabel: string | null
   subcategoryId: SubcategoryIdEnum
   distance?: string
   date?: string
@@ -42,6 +42,9 @@ type PartialOffer = Pick<
   'categoryId' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
 >
 
+// Here we do optimistic rendering: we suppose that if the offer is available
+// as a search result, by the time the user clicks on it, the offer is still
+// available, released, not sold out...
 export const mergeOfferData = (offer: PartialOffer) => (
   prevData: OfferResponse | undefined
 ): OfferResponse => ({
@@ -51,17 +54,17 @@ export const mergeOfferData = (offer: PartialOffer) => (
   name: offer.name || '',
   isDigital: false,
   isExpired: false,
+  // assumption. If wrong, we receive correct data once API call finishes.
+  // In the meantime, we have to make sure no visual glitch appears.
+  // For example, before displaying the CTA, we wait for the API call to finish.
   isEducational: false,
-  isReleased: false,
+  isReleased: true,
   isSoldOut: false,
   id: offer.offerId,
   stocks: [] as Array<OfferStockResponse>,
   expenseDomains: [] as Array<ExpenseDomain>,
   accessibility: {},
-  category: {
-    label: '',
-    name: undefined,
-  } as OfferResponse['category'],
+  category: { label: '', name: undefined } as OfferResponse['category'],
   subcategoryId: offer.subcategoryId,
   venue: { coordinates: {} } as OfferResponse['venue'],
   ...(prevData || {}),

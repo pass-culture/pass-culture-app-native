@@ -140,8 +140,11 @@ export const useCtaWordingAndAction = (props: {
 
   /* check I have all information to calculate wording
    * why: avoid flash on CTA wording
+   * The venue.id is not available on Homepage, or wherever we click on an offer
+   * and preload the Offer details page. As a result, checking that venue.id
+   * exists is equivalent to making sure the API call is successful.
    */
-  if (isLoggedIn === null || user === null) return
+  if (isLoggedIn === null || user === null || !offer.venue.id) return
 
   const { isBeneficiary = false, bookedOffers = {} } = user || {}
   return getCtaWordingAndAction({
