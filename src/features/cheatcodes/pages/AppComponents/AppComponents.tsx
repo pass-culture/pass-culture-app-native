@@ -84,6 +84,7 @@ import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { DuoPerson } from 'ui/svg/icons/DuoPerson'
+import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
@@ -698,6 +699,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Flag size={ICON_SIZE} />
           <Text> - Flag </Text>
+        </AlignedText>
+        <AlignedText>
+          <EditPen size={getSpacing(3)} />
+          <Text> - EditPen </Text>
         </AlignedText>
       </AccordionItem>
 
