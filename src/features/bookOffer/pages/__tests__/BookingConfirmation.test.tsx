@@ -29,6 +29,7 @@ const isAvailable = jest.spyOn(reactNativeInAppReview, 'isAvailable').mockImplem
 describe('<BookingConfirmation />', () => {
   const mockOfferId = 1337
   beforeEach(() => {
+    jest.useFakeTimers()
     useRoute.mockImplementation(() => ({
       params: {
         offerId: mockOfferId,
@@ -36,7 +37,10 @@ describe('<BookingConfirmation />', () => {
       },
     }))
   })
-  afterEach(jest.clearAllMocks)
+  afterEach(() => {
+    jest.clearAllMocks()
+    jest.useRealTimers()
+  })
 
   it('should render correctly', () => {
     const page = render(<BookingConfirmation />)
@@ -70,8 +74,9 @@ describe('<BookingConfirmation />', () => {
   })
 
   it('should call InAppReview Modal after 3 seconds if isAvailable and rules are respected', async () => {
-    const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
-    jest.useFakeTimers()
+    const requestInAppReview = jest
+      .spyOn(reactNativeInAppReview, 'RequestInAppReview')
+      .mockResolvedValue(() => true)
 
     render(<BookingConfirmation />)
     jest.advanceTimersByTime(3000)
@@ -81,7 +86,6 @@ describe('<BookingConfirmation />', () => {
   it('should not call InAppReview Modal if isAvailable is false', async () => {
     isAvailable.mockImplementationOnce(() => false)
     const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
-    jest.useFakeTimers()
 
     render(<BookingConfirmation />)
     jest.advanceTimersByTime(3000)
@@ -91,7 +95,6 @@ describe('<BookingConfirmation />', () => {
   it('should not call InAppReview Modal if isAvailable is true and rules are not respected', async () => {
     const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
     useReviewInAppInformationMock.mockImplementationOnce(() => ({ shouldReviewBeRequested: false }))
-    jest.useFakeTimers()
 
     render(<BookingConfirmation />)
     jest.advanceTimersByTime(3000)
