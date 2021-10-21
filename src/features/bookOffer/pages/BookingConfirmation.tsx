@@ -1,15 +1,13 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useEffect } from 'react'
-import InAppReview from 'react-native-in-app-review'
+import React from 'react'
 import styled from 'styled-components/native'
 
-import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { eventMonitoring } from 'libs/monitoring'
+import { useShowReview } from 'libs/hooks/useShowReview'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -21,11 +19,6 @@ export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
   const { reset } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
-  const {
-    shouldReviewBeRequested,
-    updateInformationWhenReviewHasBeenRequested,
-  } = useReviewInAppInformation()
-
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
   const displayBookingDetails = () => {
@@ -50,21 +43,7 @@ export function BookingConfirmation() {
     })
   }
 
-  useEffect(() => {
-    if (InAppReview.isAvailable() && shouldReviewBeRequested) {
-      setTimeout(
-        () =>
-          InAppReview.RequestInAppReview()
-            .then((hasFlowFinishedSuccessfully) => {
-              if (hasFlowFinishedSuccessfully) updateInformationWhenReviewHasBeenRequested()
-            })
-            .catch((error) => {
-              eventMonitoring.captureException(error)
-            }),
-        3000
-      )
-    }
-  }, [shouldReviewBeRequested])
+  useShowReview()
 
   return (
     <GenericInfoPage
