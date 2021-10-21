@@ -83,7 +83,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
   )
   const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
   const ListFooterComponent = useMemo(
-    () => (sortedFavorites?.length ? <Spacer.Column numberOfSpaces={52} /> : null),
+    () => (sortedFavorites?.length ? <Spacer.Column numberOfSpaces={getSpacing(5)} /> : null),
     [sortedFavorites?.length]
   )
 
@@ -128,7 +128,10 @@ const contentContainerStyle = {
   flexGrow: 1,
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(4),
 }
-const Container = styled.View({ height: '100%' })
+
+const Container = styled.View({
+  flex: 1,
+})
 
 const Separator = styled.View({
   height: 2,
