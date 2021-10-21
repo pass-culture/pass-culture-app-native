@@ -3,8 +3,10 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
+import { EditPen } from 'ui/svg/icons/EditPen'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { ProfileContainer } from '../components/reusables'
@@ -32,7 +34,10 @@ export function PersonalData() {
         <Row>
           <Typo.Caption>{t`E-mail`}</Typo.Caption>
           <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body>{user?.email}</Typo.Body>
+          <EmailContainer>
+            <EmailText>{user?.email}</EmailText>
+            <EmailChangeButton title={t`Modifier`} icon={EditPen} inline />
+          </EmailContainer>
         </Row>
         <Separator />
         {!!user?.isBeneficiary && (
@@ -60,3 +65,17 @@ const Container = styled(ProfileContainer)({
 const Row = styled.View({
   paddingVertical: getSpacing(4),
 })
+
+const EmailContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
+const EmailText = styled(Typo.Body)({
+  flexShrink: 1,
+  marginRight: getSpacing(2),
+})
+
+const EmailChangeButton = styled(ButtonPrimaryWhite).attrs({
+  textSize: getSpacing(3),
+})({})
