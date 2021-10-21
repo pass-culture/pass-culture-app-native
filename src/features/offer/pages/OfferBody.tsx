@@ -15,7 +15,6 @@ import {
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -60,19 +59,16 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { accessibility, venue } = offer
   const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId]
 
-  const showVenueBanner = venue.isPermanent
-  // TODO (Lucasbeneston): Remove testing and staging condition when display the link to venue button
-  // If we show the venue banner, we don't want to repeat the name of the venue in the address
-  const fullAddress =
-    showVenueBanner && env.ENV !== 'production'
-      ? formatFullAddress(venue.address, venue.postalCode, venue.city)
-      : formatFullAddressWithVenueName(
-          venue.address,
-          venue.postalCode,
-          venue.city,
-          venue.publicName,
-          venue.name
-        )
+  const showVenueBanner = venue.isPermanent === true
+  const fullAddress = showVenueBanner
+    ? formatFullAddress(venue.address, venue.postalCode, venue.city)
+    : formatFullAddressWithVenueName(
+        venue.address,
+        venue.postalCode,
+        venue.city,
+        venue.publicName,
+        venue.name
+      )
 
   const dates = offer.stocks.reduce<Date[]>(
     (accumulator, stock) =>
