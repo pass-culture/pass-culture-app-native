@@ -20,7 +20,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
   venue: OfferVenueResponse | VenueResponse
-  address: string | null
+  address: string
   locationCoordinates: Coordinates
   showVenueBanner?: boolean | false
 }

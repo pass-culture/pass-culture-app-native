@@ -1,4 +1,4 @@
-const isNotEmpty = (text: string | undefined | null) => text !== undefined && text !== ''
+const isNotEmpty = (text: string | undefined | null) => !!text
 
 export function formatFullAddress(
   address: string | undefined | null,
@@ -29,9 +29,9 @@ export function formatFullAddressWithVenueName(
   postalCode: string | undefined | null,
   city: string | undefined | null,
   publicName: string | undefined | null,
-  name: string
+  name: string | undefined | null
 ) {
-  let fullAddress = `${publicName || name}`
+  let fullAddress = `${publicName || name || ''}`
   const placeAddress = formatFullAddress(address, postalCode, city)
   if (isNotEmpty(placeAddress)) fullAddress = fullAddress.concat(`, ${placeAddress}`)
   return fullAddress

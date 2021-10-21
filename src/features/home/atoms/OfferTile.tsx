@@ -9,6 +9,7 @@ import {
   ExpenseDomain,
   OfferResponse,
   OfferStockResponse,
+  OfferVenueResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
 import { Layout } from 'features/home/contentful'
@@ -66,7 +67,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
   accessibility: {},
   category: { label: '', name: undefined } as OfferResponse['category'],
   subcategoryId: offer.subcategoryId,
-  venue: { coordinates: {} } as OfferResponse['venue'],
+  venue: { coordinates: {} } as OfferVenueResponse,
   ...(prevData || {}),
 })
 

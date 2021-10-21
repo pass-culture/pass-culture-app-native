@@ -6,6 +6,7 @@ import {
 describe('formatFullAddress', () => {
   it.each`
     address               | postalCode   | city         | expected
+    ${undefined}          | ${undefined} | ${undefined} | ${''}
     ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${'2 rue des champs, 75015 Paris'}
     ${'2 rue des champs'} | ${undefined} | ${'Paris'}   | ${'2 rue des champs, Paris'}
     ${'2 rue des champs'} | ${''}        | ${'Paris'}   | ${'2 rue des champs, Paris'}
@@ -22,6 +23,7 @@ describe('formatFullAddress', () => {
 describe('formatFullAddressWithVenueName', () => {
   it.each`
     publicName              | name            | address               | postalCode   | city         | expected
+    ${undefined}            | ${undefined}    | ${undefined}          | ${undefined} | ${undefined} | ${''}
     ${undefined}            | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${'Ciné Pathé, 2 rue des champs, 75015 Paris'}
     ${undefined}            | ${'Ciné Pathé'} | ${undefined}          | ${'75015'}   | ${'Paris'}   | ${'Ciné Pathé, 75015 Paris'}
     ${undefined}            | ${'Ciné Pathé'} | ${undefined}          | ${undefined} | ${'Paris'}   | ${'Ciné Pathé, Paris'}
