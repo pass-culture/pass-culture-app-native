@@ -346,9 +346,11 @@ Array [
                               "backgroundColor": "#c7c7cc",
                               "borderRadius": 22,
                               "height": 5,
+                              "minWidth": 130,
                             },
                           ]
                         }
+                        testID="date-bar"
                       />
                     </View>
                   </View>
@@ -1139,9 +1141,11 @@ exports[`SetBirthday Page should render properly 1`] = `
                             "backgroundColor": "#c7c7cc",
                             "borderRadius": 22,
                             "height": 5,
+                            "minWidth": 130,
                           },
                         ]
                       }
+                      testID="date-bar"
                     />
                   </View>
                 </View>
