@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 import { DefaultTheme, ThemeProvider as DefaultThemeProvider } from 'styled-components/native'
 
-import { useMediaQuery } from 'libs/react-responsive'
+import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 
 export const ThemeProvider: React.FC<{ theme: DefaultTheme }> = ({ children, theme }) => {
   const { width: windowWidth } = useWindowDimensions()

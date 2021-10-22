@@ -1,8 +1,10 @@
+import { render } from '@testing-library/react'
 import React from 'react'
+import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils/web'
+import { theme } from 'theme'
 
 import { Header } from '../Header'
 
@@ -48,8 +50,14 @@ function renderHeader(isLoggedIn: boolean) {
   // mock connection state
   mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
 
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  const wrapper = render(reactQueryProviderHOC(<Header />))
+  const wrapper = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <ThemeProvider theme={{ ...theme, isDesktop: true }}>
+        <Header />
+      </ThemeProvider>
+    )
+  )
 
   return wrapper
 }

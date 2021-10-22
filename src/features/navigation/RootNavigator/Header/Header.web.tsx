@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useMemo, memo } from 'react'
 import { Animated } from 'react-native'
-import { useMediaQuery } from 'react-responsive'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useNavigationStateChange } from 'features/navigation/RootNavigator/NavigationStateChangeContext'
 import { routes } from 'features/navigation/TabBar/routes'
+import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing } from 'ui/theme'

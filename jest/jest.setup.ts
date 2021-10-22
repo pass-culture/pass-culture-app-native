@@ -39,8 +39,6 @@ jest.mock('react-native-safe-area-context', () => ({
 
 jest.mock('@react-native-community/datetimepicker', () => jest.fn())
 
-jest.mock('react-responsive')
-
 jest.mock('jwt-decode', () => () => ({
   // a date in far future to still get a valid token for api calls
   exp: 3454545353,
