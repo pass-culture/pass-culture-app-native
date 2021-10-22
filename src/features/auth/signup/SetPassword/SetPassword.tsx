@@ -25,7 +25,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SetPassword'>
 
@@ -77,9 +77,8 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
         <BottomCardContentContainer>
           <Spacer.Column numberOfSpaces={6} />
           <StyledInput>
-            <Typo.Body>{t`Mot de passe`}</Typo.Body>
-            <Spacer.Column numberOfSpaces={2} />
             <PasswordInput
+              label={t`Mot de passe`}
               value={password}
               autoFocus={true}
               onChangeText={setPassword}
