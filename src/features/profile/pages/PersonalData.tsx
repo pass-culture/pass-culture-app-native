@@ -78,4 +78,5 @@ const EmailText = styled(Typo.Body)({
 
 const EmailChangeButton = styled(ButtonPrimaryWhite).attrs({
   textSize: getSpacing(3),
+  iconSize: getSpacing(4),
 })({})
