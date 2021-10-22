@@ -2,12 +2,13 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, render } from 'tests/utils'
+import { superFlushWithAct, render, fireEvent } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 
@@ -61,6 +62,20 @@ describe('PersonalData', () => {
       expect(queryByText('E-mail')).toBeTruthy()
       expect(queryByText('Prénom et nom')).toBeNull()
       expect(queryByText('Numéro de téléphone')).toBeNull()
+    })
+  })
+
+  it('should redirect to ChangeEmail when clicking on modify button', async () => {
+    const { getByText } = await renderPersonalData({
+      isBeneficiary: false,
+      ...mockedIdentity,
+    } as UserProfileResponse)
+
+    const modifyButton = getByText('Modifier')
+    fireEvent.press(modifyButton)
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('ChangeEmail')
     })
   })
 })
