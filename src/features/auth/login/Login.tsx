@@ -21,6 +21,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
+import { StyledInput } from 'ui/components/inputs/StyledInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -165,18 +166,16 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
       </StyledInput>
       <Spacer.Column numberOfSpaces={6} />
-      <StyledInput>
-        <PasswordInput
-          label={t`Mot de passe`}
-          value={password}
-          onChangeText={setPassword}
-          placeholder={t`Ton mot de passe`}
-          isError={!!errorMessage}
-          textContentType="password"
-          onSubmitEditing={onSubmit}
-          {...accessibilityAndTestId('Entrée pour le mot de passe')}
-        />
-      </StyledInput>
+      <PasswordInput
+        label={t`Mot de passe`}
+        value={password}
+        onChangeText={setPassword}
+        placeholder={t`Ton mot de passe`}
+        isError={!!errorMessage}
+        textContentType="password"
+        onSubmitEditing={onSubmit}
+        {...accessibilityAndTestId('Entrée pour le mot de passe')}
+      />
       <Spacer.Column numberOfSpaces={7} />
       <ForgottenPasswordContainer>
         <TouchableOpacity onPress={onForgottenPasswordClick}>
@@ -191,14 +190,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       />
     </BottomContentPage>
   )
-})
-
-const StyledInput = styled.View({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  width: '100%',
-  maxWidth: getSpacing(125),
 })
 
 const ForgottenPasswordContainer = styled.View({

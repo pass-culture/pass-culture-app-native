@@ -10,7 +10,7 @@ import {
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
-import { StyledInput, StyledStepDots } from 'features/auth/components/signupComponents'
+import { StyledStepDots } from 'features/auth/components/signupComponents'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
@@ -76,18 +76,16 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
         />
         <BottomCardContentContainer>
           <Spacer.Column numberOfSpaces={6} />
-          <StyledInput>
-            <PasswordInput
-              label={t`Mot de passe`}
-              value={password}
-              autoFocus={true}
-              onChangeText={setPassword}
-              placeholder={t`Ton mot de passe`}
-              onSubmitEditing={submitPassword}
-              ref={passwordInput}
-              {...accessibilityAndTestId('Entrée pour le mot de passe')}
-            />
-          </StyledInput>
+          <PasswordInput
+            label={t`Mot de passe`}
+            value={password}
+            autoFocus={true}
+            onChangeText={setPassword}
+            placeholder={t`Ton mot de passe`}
+            onSubmitEditing={submitPassword}
+            ref={passwordInput}
+            {...accessibilityAndTestId('Entrée pour le mot de passe')}
+          />
           <PasswordSecurityRules password={password} />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary title={t`Continuer`} onPress={submitPassword} disabled={disabled} />
