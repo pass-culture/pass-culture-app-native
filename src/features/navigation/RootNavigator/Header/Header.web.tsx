@@ -1,43 +1,20 @@
-import React, { useRef, useEffect, useMemo, memo } from 'react'
+import React, { useRef, useEffect, memo } from 'react'
 import { Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'
-import { useNavigationStateChange } from 'features/navigation/RootNavigator/NavigationStateChangeContext'
-import { routes } from 'features/navigation/TabBar/routes'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing } from 'ui/theme'
 
-import { Nav, NavRoute, NavState } from './Nav'
-
-const getInitialState = (isLoggedIn?: boolean) => {
-  const nextRoutes: Array<NavRoute> = routes.filter(
-    (route) => !route.secure || (route.secure && isLoggedIn)
-  )
-  const navState: NavState = {
-    index: 0,
-    routes: nextRoutes,
-  }
-  return navState
-}
+import { Nav } from './Nav'
 
 const MINIMUM_BRAND_SIZE = 140
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export const Header = memo(function Header() {
   const theme = useTheme()
-  const navigationStateChange = useNavigationStateChange()
-  const { isLoggedIn } = useAuthContext()
-
-  const state = useMemo(() => {
-    return (
-      (navigationStateChange?.routes.find((route) => route.name === 'TabNavigator')
-        ?.state as NavState) || getInitialState(isLoggedIn)
-    )
-  }, [navigationStateChange, isLoggedIn])
 
   const fadeAnim = useRef({
     opacity: new Animated.Value(0),
@@ -114,7 +91,6 @@ export const Header = memo(function Header() {
           <LogoPassCulture color={theme.colors.brand} height={getSpacing(6.5)} width={80} />
         </LeftContainer>
         <Nav
-          state={state}
           maxWidth={theme.breakpoints.lg}
           height={theme.navTopHeight}
           noShadow={theme.isDesktop}

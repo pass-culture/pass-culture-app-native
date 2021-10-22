@@ -6,6 +6,7 @@ import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navi
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
+import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
@@ -35,12 +36,12 @@ export const RootNavigator: React.ComponentType = () => {
     return <LoadingPage />
   }
   return (
-    <React.Fragment>
+    <TabNavigationStateProvider>
       <Header />
       <RootStackNavigator initialRouteName={initialScreen} />
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
       {!!isSplashScreenHidden && <PrivacyPolicy navigationRef={navigationRef} />}
-    </React.Fragment>
+    </TabNavigationStateProvider>
   )
 }

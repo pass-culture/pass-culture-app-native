@@ -3,9 +3,9 @@ import styled from 'styled-components/native'
 
 import { BicolorFavoriteCount } from 'features/favorites/atoms/BicolorFavoriteCount'
 import { navigationRef } from 'features/navigation/navigationRef'
-import { isPrivateScreen } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { TabParamList, TabRouteName } from 'features/navigation/TabBar/types'
+import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { TabRouteName } from 'features/navigation/TabBar/types'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -31,22 +31,15 @@ function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
   }
 }
 
-export type NavRoute = { name: keyof TabParamList }
-
-export type NavState = {
-  index: number
-  routes: Array<NavRoute>
-}
-
 type NavProps = {
   maxWidth?: number
   height?: number
   noShadow?: boolean
   hidden?: boolean
-  state: NavState
 }
 
-export const Nav: React.FC<NavProps> = ({ state, maxWidth, height, noShadow, hidden }) => {
+export const Nav: React.FC<NavProps> = ({ maxWidth, height, noShadow, hidden }) => {
+  const { tabRoutes } = useTabNavigationContext()
   const { bottom } = useCustomSafeInsets()
   if (hidden) {
     return null
@@ -55,19 +48,16 @@ export const Nav: React.FC<NavProps> = ({ state, maxWidth, height, noShadow, hid
     <MainContainer maxWidth={maxWidth} height={height} noShadow={noShadow}>
       <RowContainer>
         <Spacer.Row numberOfSpaces={4} />
-        {state.routes.map((route, index) => {
-          if (isPrivateScreen(route.name)) return null
-          const isSelected = state.index === index
+        {tabRoutes.map((route) => {
           const onPress = () => {
-            if (isSelected) return
             navigationRef?.current?.navigate(...getTabNavConfig(route.name, undefined))
           }
           return (
             <NavItem
               height={height}
-              key={`key-tab-nav-${index}-${route.name}`}
+              key={`key-tab-nav-${route.name}`}
               tabName={route.name}
-              isSelected={isSelected}
+              isSelected={route.isSelected}
               bicolorIcon={mapRouteToIcon(route.name as TabRouteName)}
               onPress={onPress}
             />

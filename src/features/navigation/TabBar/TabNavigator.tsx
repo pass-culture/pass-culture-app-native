@@ -3,13 +3,12 @@ import React from 'react'
 import { StatusBar, Platform } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
-import { useUserProfileInfo } from 'features/home/api'
 import { initialRouteName, TabScreens } from 'features/navigation/TabBar/routes'
 import { TabStack } from 'features/navigation/TabBar/Stack'
+import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { TabNavigationStateType } from 'features/navigation/TabBar/types'
 import { IS_WEB_RELEASE } from 'libs/web'
 
-import { shouldDisplayTabIconPredicate } from './helpers'
 import { TabBar } from './TabBar'
 
 StatusBar.setBarStyle('light-content')
@@ -19,29 +18,18 @@ if (Platform.OS === 'android') {
 }
 
 export const TabNavigator: React.FC = () => {
-  const { isLoggedIn } = useAuthContext()
-  const { data: user } = useUserProfileInfo()
+  const { setTabNavigationState } = useTabNavigationContext()
   const { isMobile } = useTheme()
 
-  const shouldDisplayTabIcon = shouldDisplayTabIconPredicate(isLoggedIn, user?.isBeneficiary)
-  const FilteredTabScreens = TabScreens.filter((jsxElement) =>
-    shouldDisplayTabIcon(jsxElement.props.name)
-  )
-  function renderTabBar(props: BottomTabBarProps<BottomTabBarOptions>) {
-    if (IS_WEB_RELEASE) {
-      return undefined
-    }
-    return (
-      <TabBar
-        state={props.state}
-        navigation={props.navigation}
-        hidden={Platform.OS === 'web' && !isMobile}
-      />
-    )
+  function renderTabBar({ state, navigation }: BottomTabBarProps<BottomTabBarOptions>) {
+    setTabNavigationState(state as TabNavigationStateType)
+    if (IS_WEB_RELEASE) return undefined
+    return <TabBar navigation={navigation} hidden={Platform.OS === 'web' && !isMobile} />
   }
+
   return (
     <TabStack.Navigator initialRouteName={initialRouteName} tabBar={renderTabBar}>
-      {FilteredTabScreens}
+      {TabScreens}
     </TabStack.Navigator>
   )
 }

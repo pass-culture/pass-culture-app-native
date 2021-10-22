@@ -1,12 +1,10 @@
-import { shouldDisplayTabIconPredicate } from '../helpers'
+import { getShouldDisplayTab } from '../helpers'
 
-describe('TabNavigator', () => {
-  describe('shouldDisplayTabIconPredicate', () => {
+describe('<TabNavigator />', () => {
+  describe('getShouldDisplayTab()', () => {
     it('should display "Bookings" icon for authenticated and beneficiary users', () => {
-      const isLoggedIn = true
-      const isBeneficiary = true
-      const shouldDisplayFunction = shouldDisplayTabIconPredicate(isLoggedIn, isBeneficiary)
-      expect(shouldDisplayFunction('Bookings')).toBe(true)
+      const shouldDisplayTab = getShouldDisplayTab({ isLoggedIn: true, isBeneficiary: true })
+      expect(shouldDisplayTab('Bookings')).toBe(true)
     })
 
     it.each<[boolean, boolean]>([
@@ -14,9 +12,8 @@ describe('TabNavigator', () => {
       [false, true],
       [false, false],
     ])('should NOT display "Bookings" icon ', (isLoggedIn, isBeneficiary) => {
-      const shouldDisplayFunction = shouldDisplayTabIconPredicate(isLoggedIn, isBeneficiary)
-      const shouldDisplay = shouldDisplayFunction('Bookings')
-      expect(shouldDisplay).toBe(false)
+      const shouldDisplayTab = getShouldDisplayTab({ isLoggedIn, isBeneficiary })
+      expect(shouldDisplayTab('Bookings')).toBe(false)
     })
   })
 })
