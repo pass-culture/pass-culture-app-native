@@ -702,7 +702,7 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <EditPen size={getSpacing(3)} />
-          <Text> - EditPen </Text>
+          <Text> - EditPen (new) </Text>
         </AlignedText>
       </AccordionItem>
 
