@@ -5,6 +5,7 @@ import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { FIREBASE_DYNAMIC_LINK_URL } from 'features/deeplinks/utils'
 import * as DeeplinkUtils from 'features/deeplinks/utils'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import { analytics } from 'libs/analytics'
 import { render, fireEvent } from 'tests/utils'
 
 jest.mock('react-query')
@@ -36,6 +37,7 @@ describe('DeeplinkImporter', () => {
 
     await waitForExpect(() => {
       expect(resolveHandlerSpy).toBeCalled()
+      expect(analytics.logProblemWithLink).toHaveBeenNthCalledWith(1, url)
     })
     resolveHandlerSpy.mockRestore()
   })
