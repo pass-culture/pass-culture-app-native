@@ -1,46 +1,56 @@
-# DEPLOY APP
+## ⚙️ Deployment process
 
-Linked documentation: https://www.notion.so/passcultureapp/Processus-d-ploiement-MES-MEP-App-Native-bc75cbf31d6146ee88c8c031eb14b655
+See [notion documentation][1] for more information.
 
-## Testing
+We use 3 environments for the mobile application: `testing` > `staging` > `production`.
 
-Download the app:
+There are two types of deployments: **soft** and **hard**:
 
-- hyperurl.co/pc-testing
-  or
-- https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-<PLATFORM:ios|android>
+- a **soft** deployment is for most of the time, when only the javascript code has changed
+- a **hard** deployment is required if the native code has changed:
+  - environment variable changed or new
+  - new native library
+  - new build step
+  - ...
 
-### Soft deploy (automatic)
+### Testing
 
-Most of the time, on testing, you didn't change anything in the native code. If you changed only javascript code, deploy will be **automatic** on CircleCI (deploy-soft-testing job).
-Then the build is faster as only the javascript code is published.
+You can review & download the **testing** apps on Appcenter for [iOS][2] & [Android][3] of using this [url][4].
 
-The download and installation of the modification will be automatic when you open the app.
+#### ⚡️ Soft deploy (automatic)
 
-- Troubleshoot:
-  If you don't see your changes, try to check if the codepush was correctly downloaded. To do so go to "CheatCodes", and click on the "check update" button.
-  3 possibilities:
-  - it displays "no update found" you are up to date
-  - it shows "New version available on AppCenter" you need to go to hyperurl.co/pc-<testing|staging>
-  - it download the update and restart the app
+Most of the time, when developing a feature, you probably didn't change the native code: if you changed only javascript code, the deployment to the testing application will be **automatic** on CircleCI (see `deploy-soft-testing` job).
 
-### Hard deploy (manual)
+Then the build is faster as only the javascript code is published. The download and installation of the modification will be automatic when you open the app.
+
+##### Troubleshooting
+
+<details>
+  <summary>I don't see my changes on testing</summary>
+
+If you don't see your changes, try to check if the codepush was correctly downloaded. To do so go to "CheatCodes", and click on the "check update" button.
+
+3 possibilities:
+
+- it displays "no update found": you are up to date
+- it shows "New version available on AppCenter" you need to go to hyperurl.co/pc-testing
+- it download the update and restart the app
+</details>
+
+#### Hard deploy (manual)
 
 If I modified native code, I need to hard deploy:
 
 - `yarn trigger:testing:deploy:patch`
-  This will bump the patch number, create a tag `testing_vX.X.X+1` and push it.
-  CircleCI will detect the tag and launch the lanes `deploy-android-testing-hard` & `deploy-ios-testing-hard` (see `.circleci/config.yml` file)
 
-## Staging (MES)
+This will bump the patch number, create a tag `testing_vX.X.X+1` and push it.
+CircleCI will detect the tag and launch the lanes `deploy-android-testing-hard` & `deploy-ios-testing-hard` (see `.circleci/config.yml` file).
 
-Download the app:
+### Staging (MES)
 
-- hyperurl.co/pc-staging
-  or
-- https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-<PLATFORM:ios|android>
+You can review & download the **staging** apps on Appcenter for [iOS][5] & [Android][6] of using this [url][7].
 
-### Hard deploy (once a week, manual)
+#### Hard deploy (once a week, manual)
 
 When you want to deploy the current version of master in staging, you can run the following commands:
 
@@ -49,28 +59,28 @@ When you want to deploy the current version of master in staging, you can run th
 This will bump the `minor` version, create a tag `vX.X+1.X` and push it.
 
 - or `trigger:staging:deploy:patch`
-  This will bump the `patch` version, create a tag `vX.X.X+1` and push it.
 
+This will bump the `patch` version, create a tag `vX.X.X+1` and push it.
 CircleCI will detect the tag `vX.X.X` and launch the lanes `deploy-ios-staging-hard` & `deploy-android-staging-hard` (see `.circleci/config.yml` file)
 
-## Production (MEP)
+### Production (MEP)
 
-### Hard deploy (when MEP wanted, manual)
+#### Hard deploy (when MEP wanted, manual)
 
 - Know which version (and then tag) you want to deploy
 
 - `yarn trigger:production:deploy <tag>`
 
-This will create a tag `prod-hard-deploy`
-CircleCI will detect the tag and launch the lane `deploy-android-production-hard` & `deploy-ios-production-hard` (see `.circleci/config.yml` file)
+This will create a tag `prod-hard-deploy`. CircleCI will detect the tag and launch the lane `deploy-android-production-hard` & `deploy-ios-production-hard` (see `.circleci/config.yml` file)
 
-## Hotfix
+### Hotfix
 
-### When
+#### When
 
-Only if there is a bug really urgent in production, that we need to fix very quickly.
+⚠️ Only if there is a bug really urgent in production, that we need to fix very quickly.
+If not urgent, it is better to release a new version.
 
-### How
+#### How
 
 - List all tags of the version `X.X.X`, tags of type: `vX.X.X-Y` (`git fetch --tag`and then `git tag`)
 - Checkout on the tag with the biggest Y (if no tag with Y, checkout on `vX.X.X`)
@@ -88,10 +98,22 @@ Only if there is a bug really urgent in production, that we need to fix very qui
 - ⚠️ check your code push targets the actual production version (one code push targets only one version)
 - ⚠️ Do not forget to create a pull request from your branch to `master` to retrieve fixes on master branch
 
-### Troubleshooting
+#### Troubleshooting
 
-If I don't see my codepush on staging/prod app:
-
-- Check that you find it on AppCenter: https://appcenter.ms/orgs/pass-Culture/apps/PassCulture-<env></env:staging|prod>-<os:ios|android>/distribute/code-push
+<details>
+  <summary>I don't see my codepush on staging/prod app</summary>
+  
+Check if you can find it on AppCenter. Example for [staging iOS][8].
 
 ![img](./CodePushOnAppCenter.png)
+
+</details>
+
+[1]: https://www.notion.so/passcultureapp/Processus-d-ploiement-MES-MEP-App-Native-bc75cbf31d6146ee88c8c031eb14b655
+[2]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios
+[3]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-android
+[4]: hyperurl.co/pc-testing
+[5]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-ios
+[6]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-android
+[7]: hyperurl.co/pc-staging
+[8]: https://appcenter.ms/orgs/pass-Culture/apps/PassCulture-staging-ios/distribute/code-push

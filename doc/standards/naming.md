@@ -1,10 +1,10 @@
-# Naming
+## Naming
 
-## Why
+### Why
 
 - Code consistency
 
-## Key points
+### Key points
 
 - **No reference to variable type with TypeScript's enums, interfaces and types:**
   - ✅ Good: no reference to type in name
@@ -24,6 +24,6 @@
     }
     ```
 
-## Mistakes to avoid when following the standard
+### Mistakes to avoid when following the standard
 
-## Resources
+### Resources

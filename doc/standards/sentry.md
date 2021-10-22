@@ -1,14 +1,14 @@
-# Error Monitoring with sentry
+## Error Monitoring with sentry
 
 Sentry helps us monitor crash and errors in the application. See our project [here](https://sentry.internal-passculture.app/organizations/sentry/issues/?project=6)
 
-## Source maps
+### Source maps
 
 To have a better understanding of the potential crashes and errors, we have to provide sentry with the source maps. This helps us see the source of the error in the un-minified bundle.
 
 The build is configured to upload the source maps automatically, on every new release (or new version), but you may want to do it manually. If so, follow along.
 
-#### 🗝 Configure sentry cli
+### 🗝 Configure sentry cli
 
 - add a file `~/.sentryclirc`:
 
@@ -22,9 +22,9 @@ project = application-native
 token=<token>
 ```
 
-#### 📦 Create the source maps locally
+### 📦 Create the source maps locally
 
-##### Android
+#### Android
 
 ```bash
   npx react-native bundle \
@@ -35,7 +35,7 @@ token=<token>
   --sourcemap-output sourcemaps/index.android.bundle.map
 ```
 
-##### iOS
+#### iOS
 
 ```bash
   npx react-native bundle \
@@ -46,7 +46,7 @@ token=<token>
     --sourcemap-output sourcemaps/main.jsbundle.map
 ```
 
-#### 🚢 Upload the local source maps
+### 🚢 Upload the local source maps
 
 - ⚠️ Make sure to change the version and release:
 
