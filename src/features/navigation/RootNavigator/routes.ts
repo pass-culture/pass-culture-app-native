@@ -48,6 +48,7 @@ import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
+import { ChangeEmail } from 'features/profile/pages/ChangeEmail'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ConfirmDeleteProfile } from 'features/profile/pages/ConfirmDeleteProfile'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings'
@@ -261,6 +262,12 @@ const routesBeforeReleaseCheck: Route[] = [
     component: ChangePassword,
     path: 'modification-mot-de-passe',
     options: { title: t`Modification du mot de passe` },
+  },
+  {
+    name: 'ChangeEmail',
+    component: ChangeEmail,
+    path: 'modification-email',
+    options: { title: t`Modification de l'e-mail` },
   },
   {
     name: 'ReinitializePassword',
