@@ -329,6 +329,9 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton title={`EduConnect`} onPress={() => navigate('EduConnect')} />
         </Row>
+        <Row half>
+          <NavigationButton title={`Modifier mon e-mail`} onPress={() => navigate('ChangeEmail')} />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
