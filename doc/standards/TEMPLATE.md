@@ -1,9 +1,9 @@
-# <Title HERE>
+## <Title HERE>
 
-## Why
+### Why
 
-## Key points
+### Key points
 
-## Mistakes to avoid when following the standard
+### Mistakes to avoid when following the standard
 
-## Resources
+### Resources

@@ -1,11 +1,11 @@
 # Error Management
 
-## Why
+### Why
 
 - Handle different errors in the application
 - Use custom error handlers
 
-## Key points
+### Key points
 
 In order to handle errors globally in the application, we have defined an `ErrorBoundary` component on top of `GeolocationWrapper`.
 Which means he also wrap the `RootNavigator` one.
@@ -25,7 +25,7 @@ export const MyComponent = withErrorBoundary(React.memo(MyWrappedComponent), {
 })
 ```
 
-#### Limitations
+### Limitations
 
 `ErrorBoundaries` can't handle some type of errors coming from the child component
 and especially errors during asynchronous calls such as API calls triggered by user action
@@ -63,7 +63,7 @@ export function MyComponent(props: Props) {
 }
 ```
 
-## Mistakes to avoid when following the standard
+### Mistakes to avoid when following the standard
 
 We didn't find any magic method to handle all types of error globally.
 We recommend handling every asynchronous API calls with custom error handler.
@@ -89,6 +89,6 @@ export function MyComponent(props: Props) {
 }
 ```
 
-## Resources
+### Resources
 
 https://fr.reactjs.org/docs/error-boundaries.html

@@ -1,13 +1,13 @@
-# Code structure
+## Code structure
 
-## Why
+### Why
 
 - developers can quickly find what they are looking for in the code
 - avoid code duplication
 - it makes it easier to work on a part of the project without knowing the other parts
 - the project onboarding of a new developer can be done by presenting the `/features` directory
 
-## Key points
+### Key points
 
 ```
 Dans le dossier /src :
@@ -50,10 +50,10 @@ ui
  |- assets
 ```
 
-## Mistakes to avoid
+### Mistakes to avoid
 
 - Do not put component into `ui/components` if it is used only once in the app
 
-## Ressources
+### Ressources
 
 - ADR: https://www.notion.so/ADR-sur-la-structure-du-projet-315ca5b83d134d938074855b509f611a

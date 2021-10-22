@@ -1,11 +1,11 @@
-# Testing Strategy
+## Testing Strategy
 
 Why ?
 
 - Code consistency
 - Tests readability
 
-## Key points
+### Key points
 
 - **Full page test**
 
@@ -85,7 +85,7 @@ it('should display the error message when the date is not correct', () => {
 })
 ```
 
-## renderAPI
+### renderAPI
 
 When calling `render`, you will get a `renderAPI` object
 
@@ -107,9 +107,9 @@ If none of those methods works, and your test still fail:
 - if agreed, use at the top of your test `allowConsole({ error: true })`,
   this will pollute the test log output, but it will pass (aka volkswagen)
 
-## Test cook book
+### Test cook book
 
-### Date
+#### Date
 
 > We use `TZ=UTC` environment variable so every serialized date are in UTC to prevent environment conflict.
 
@@ -125,7 +125,7 @@ describe('Favorites reducer', () => {
 })
 ```
 
-### Authentication with `authContext`
+#### Authentication with `authContext`
 
 To test as an authenticated person, you can mock `useAuthContext` as follows:
 
@@ -139,7 +139,7 @@ mockUseAuthContext.mockReturnValue({ isLoggedIn, setIsLoggedIn: jest.fn() })
 
 Don't forget to use `afterEach(jest.clearAllMocks)` to clear mocks after each test.
 
-### Navigation
+#### Navigation
 
 To test our `navigate` call, we can do:
 
@@ -184,7 +184,7 @@ useRoute.mockReturnValue({
 })
 ```
 
-### React Query and API calls
+#### React Query and API calls
 
 We use the test utility `reactQueryProviderHOC` to bring react-query context within a test, use it around your rendered element:
 
@@ -214,6 +214,6 @@ it('calls the API and returns the data', async () => {
 })
 ```
 
-## Mistakes to avoid when following the standard
+### Mistakes to avoid when following the standard
 
-## Ressources
+### Ressources
