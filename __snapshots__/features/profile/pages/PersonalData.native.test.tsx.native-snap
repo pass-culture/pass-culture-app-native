@@ -192,9 +192,9 @@ Array [
         >
           <View
             fill="#eb0055"
-            height={12}
+            height={16}
             testID="button-icon"
-            width={12}
+            width={16}
           >
             <Text>
               button-icon-SVG-Mock
