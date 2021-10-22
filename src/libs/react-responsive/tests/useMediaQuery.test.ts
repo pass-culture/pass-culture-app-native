@@ -3,7 +3,7 @@ import * as RN from 'react-native'
 
 import { theme } from 'theme'
 
-import { useMediaQuery } from '../react-responsive'
+import { useMediaQuery } from '../useMediaQuery'
 
 describe('useMediaQuery native', () => {
   let isMobile = false
