@@ -8,6 +8,7 @@ import { resolveHandler } from 'features/deeplinks'
 import { useDeeplinkUrlHandler } from 'features/deeplinks/useDeeplinkUrlHandler'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -25,6 +26,7 @@ export const DeeplinkImporter: FunctionComponent = () => {
   function resolveLink() {
     if (url.length > 0) {
       resolveHandler(handleDeeplinkUrl, true)({ url })
+      analytics.logProblemWithLink(url)
     } else {
       setHasError(true)
     }

@@ -116,6 +116,10 @@ export const analytics = {
   logOpenNotificationSettings: () =>
     analyticsProvider.logEvent(AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS),
   logIdCheck: (from: 'Profile') => analyticsProvider.logEvent(AnalyticsEvent.ID_CHECK, { from }),
+  logProblemWithLink: (url: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.DEEP_LINK_IMPORTER, {
+      url: url.slice(0, STRING_VALUE_MAX_LENGTH),
+    }),
   logProfilScrolledToBottom: () =>
     analyticsProvider.logEvent(AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM),
   logLocationToggle: (enabled: boolean) =>
