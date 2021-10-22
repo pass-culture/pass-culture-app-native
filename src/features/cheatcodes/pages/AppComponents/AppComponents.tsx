@@ -701,7 +701,7 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Flag </Text>
         </AlignedText>
         <AlignedText>
-          <EditPen size={getSpacing(3)} />
+          <EditPen size={ICON_SIZE} />
           <Text> - EditPen (new) </Text>
         </AlignedText>
       </AccordionItem>
