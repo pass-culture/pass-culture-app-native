@@ -28,6 +28,7 @@ export enum AnalyticsEvent {
   CONSULT_WHY_ANNIVERSARY = 'ConsultModalWhyAnniversary',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
   HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'HelpCenterContactSignUpConfirmation',
+  DEEP_LINK_IMPORTER = 'DeeplinkImporter',
   DISCOVER_OFFERS = 'DiscoverOffers',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
