@@ -42,8 +42,12 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
 
   return (
     <StyledInput>
-      {!!label && <Typo.Body>{label}</Typo.Body>}
-      <Spacer.Column numberOfSpaces={2} />
+      {!!label && (
+        <React.Fragment>
+          <Typo.Body>{label}</Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+        </React.Fragment>
+      )}
       <InputContainer isFocus={isFocus} isError={customProps.isError}>
         <StyledBaseTextInput
           {...nativeProps}
