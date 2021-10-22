@@ -5,6 +5,10 @@ export type CustomTextInputProps = {
   isError?: boolean
 }
 
+export type InputLabel = {
+  label?: string
+}
+
 export type CustomSearchInputProps = {
   inputHeight?: 'small' | 'tall'
   LeftIcon?: React.FC
@@ -37,7 +41,7 @@ export type RNTextInputProps = Pick<
     testID?: string
   }
 
-export type TextInputProps = CustomTextInputProps & RNTextInputProps
+export type TextInputProps = CustomTextInputProps & RNTextInputProps & InputLabel
 
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 

@@ -9,6 +9,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
+import { Spacer, Typo } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
@@ -20,6 +21,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
 ) => {
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomTextInputProps(props)
+  const { label } = props
 
   const [shouldHidePassword, setShouldHidePassword] = useState(true)
   const [isFocus, setIsFocus] = useState(false)
@@ -38,24 +40,28 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
   }
 
   return (
-    <InputContainer isFocus={isFocus} isError={customProps.isError}>
-      <StyledBaseTextInput
-        {...nativeProps}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        secureTextEntry={shouldHidePassword}
-        ref={forwardedRef}
-      />
-      <IconTouchableOpacity
-        {...accessibilityAndTestId("Basculer l'affichage du mot de passe")}
-        onPress={togglePasswordDisplay}>
-        {shouldHidePassword ? (
-          <EyeSlash {...accessibilityAndTestId('eye-slash')} size="100%" />
-        ) : (
-          <Eye {...accessibilityAndTestId('eye')} size="100%" />
-        )}
-      </IconTouchableOpacity>
-    </InputContainer>
+    <React.Fragment>
+      {!!label && <Typo.Body>{label}</Typo.Body>}
+      <Spacer.Column numberOfSpaces={2} />
+      <InputContainer isFocus={isFocus} isError={customProps.isError}>
+        <StyledBaseTextInput
+          {...nativeProps}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          secureTextEntry={shouldHidePassword}
+          ref={forwardedRef}
+        />
+        <IconTouchableOpacity
+          {...accessibilityAndTestId("Basculer l'affichage du mot de passe")}
+          onPress={togglePasswordDisplay}>
+          {shouldHidePassword ? (
+            <EyeSlash {...accessibilityAndTestId('eye-slash')} size="100%" />
+          ) : (
+            <Eye {...accessibilityAndTestId('eye')} size="100%" />
+          )}
+        </IconTouchableOpacity>
+      </InputContainer>
+    </React.Fragment>
   )
 }
 
