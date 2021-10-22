@@ -1,6 +1,12 @@
 import { TabRouteName, TabParamList } from './types'
 
-export function shouldDisplayTabIconPredicate(isLoggedIn: boolean, isBeneficiary?: boolean) {
+export function getShouldDisplayTab({
+  isLoggedIn,
+  isBeneficiary,
+}: {
+  isLoggedIn: boolean
+  isBeneficiary: boolean
+}) {
   return function (name: TabRouteName): boolean {
     if (name.startsWith('Bookings') && (!isLoggedIn || !isBeneficiary)) {
       return false

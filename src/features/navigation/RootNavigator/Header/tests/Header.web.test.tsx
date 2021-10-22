@@ -3,30 +3,25 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
+import { useUserProfileInfo } from 'features/home/api'
+import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { theme } from 'theme'
 
 import { Header } from '../Header'
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
+jest.mock('features/auth/AuthContext', () => ({ useAuthContext: jest.fn() }))
 
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
+jest.mock('features/home/api', () => ({ useUserProfileInfo: jest.fn() }))
 
 describe('Header', () => {
-  beforeEach(() => {
-    jest.useFakeTimers()
-  })
-  afterEach(() => {
-    jest.clearAllMocks()
-    jest.useRealTimers()
-  })
+  beforeEach(jest.clearAllMocks)
+  afterAll(jest.clearAllMocks)
 
-  it('should render Header for non authed account', () => {
-    const { queryByText } = renderHeader(false)
-
-    jest.advanceTimersByTime(1000)
+  it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
+    const { queryByText } = renderHeader({ isLoggedIn: false, isBeneficiary: false })
     expect(queryByText('Accueil')).toBeTruthy()
     expect(queryByText('Recherche')).toBeTruthy()
     expect(queryByText('Réservations')).toBeFalsy()
@@ -34,10 +29,17 @@ describe('Header', () => {
     expect(queryByText('Profil')).toBeTruthy()
   })
 
-  it('should render Header for authed account', () => {
-    const { queryByText } = renderHeader(true)
+  it('should render Header without Bookings item for non-beneficiary and logged in users', () => {
+    const { queryByText } = renderHeader({ isLoggedIn: true, isBeneficiary: false })
+    expect(queryByText('Accueil')).toBeTruthy()
+    expect(queryByText('Recherche')).toBeTruthy()
+    expect(queryByText('Réservations')).toBeFalsy()
+    expect(queryByText('Favoris')).toBeTruthy()
+    expect(queryByText('Profil')).toBeTruthy()
+  })
 
-    jest.advanceTimersByTime(1000)
+  it('should render Header for beneficiary and logged in users', () => {
+    const { queryByText } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
     expect(queryByText('Accueil')).toBeTruthy()
     expect(queryByText('Recherche')).toBeTruthy()
     expect(queryByText('Réservations')).toBeTruthy()
@@ -46,18 +48,24 @@ describe('Header', () => {
   })
 })
 
-function renderHeader(isLoggedIn: boolean) {
-  // mock connection state
-  mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
+function renderHeader({
+  isLoggedIn,
+  isBeneficiary,
+}: {
+  isLoggedIn: boolean
+  isBeneficiary: boolean
+}) {
+  mockedUseAuthContext.mockReturnValue({ isLoggedIn })
+  mockedUseUserProfileInfo.mockReturnValue({ data: { isBeneficiary } })
 
-  const wrapper = render(
+  return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <ThemeProvider theme={{ ...theme, isDesktop: true }}>
-        <Header />
+        <TabNavigationStateProvider>
+          <Header />
+        </TabNavigationStateProvider>
       </ThemeProvider>
     )
   )
-
-  return wrapper
 }

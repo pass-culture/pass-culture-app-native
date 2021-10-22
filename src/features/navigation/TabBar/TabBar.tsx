@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { BicolorFavoriteCount } from 'features/favorites/atoms/BicolorFavoriteCount'
-import { isPrivateScreen } from 'features/navigation/RootNavigator/linking/getScreensConfig'
+import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -33,9 +33,10 @@ function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
 
 type TabBarProps = {
   hidden?: boolean
-} & Pick<BottomTabBarProps<BottomTabBarOptions>, 'state' | 'navigation'>
+} & Pick<BottomTabBarProps<BottomTabBarOptions>, 'navigation'>
 
-export const TabBar: React.FC<TabBarProps> = ({ navigation, state, hidden }) => {
+export const TabBar: React.FC<TabBarProps> = ({ navigation, hidden }) => {
+  const { tabRoutes } = useTabNavigationContext()
   const { bottom } = useCustomSafeInsets()
   if (hidden) {
     return null
@@ -44,11 +45,9 @@ export const TabBar: React.FC<TabBarProps> = ({ navigation, state, hidden }) => 
     <MainContainer>
       <RowContainer>
         <Spacer.Row numberOfSpaces={4} />
-        {state.routes.map((route, index) => {
-          if (isPrivateScreen(route.name)) return null
-          const isSelected = state.index === index
+        {tabRoutes.map((route) => {
           const onPress = () => {
-            if (isSelected) return
+            if (route.isSelected) return
             const event = navigation.emit({
               type: 'tabPress',
               target: route.key,
@@ -60,9 +59,9 @@ export const TabBar: React.FC<TabBarProps> = ({ navigation, state, hidden }) => 
           }
           return (
             <TabBarComponent
-              key={`key-tab-nav-${index}-${route.key}`}
+              key={`key-tab-nav-${route.key}`}
               tabName={route.name}
-              isSelected={isSelected}
+              isSelected={route.isSelected}
               bicolorIcon={mapRouteToIcon(route.name as TabRouteName)}
               onPress={onPress}
             />
