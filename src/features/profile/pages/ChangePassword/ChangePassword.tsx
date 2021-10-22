@@ -16,7 +16,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export function ChangePassword() {
   const { showSuccessSnackBar } = useSnackBarContext()
@@ -85,9 +85,8 @@ export function ChangePassword() {
         ref={scrollRef}
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}>
         <StyledInput>
-          <Typo.Body>{t`Mot de passe actuel`}</Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
+            label={t`Mot de passe actuel`}
             value={currentPassword}
             autoFocus={true}
             onChangeText={setCurrentPassword}
@@ -102,9 +101,8 @@ export function ChangePassword() {
         </StyledInput>
         <Spacer.Column numberOfSpaces={5} />
         <StyledInput>
-          <Typo.Body>{t`Nouveau mot de passe`}</Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
+            label={t`Nouveau mot de passe`}
             value={newPassword}
             onChangeText={updateNewPassword}
             placeholder={t`Ton nouveau mot de passe`}
@@ -115,9 +113,8 @@ export function ChangePassword() {
         </StyledInput>
         <Spacer.Column numberOfSpaces={5} />
         <StyledInput>
-          <Typo.Body>{t`Confirmer le mot de passe`}</Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
+            label={t`Confirmer le mot de passe`}
             value={confirmedPassword}
             onChangeText={setConfirmedPassword}
             placeholder={t`Confirmer le mot de passe`}

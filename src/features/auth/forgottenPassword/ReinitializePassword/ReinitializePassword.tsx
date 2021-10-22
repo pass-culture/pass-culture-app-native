@@ -20,7 +20,7 @@ import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 import { useResetPasswordMutation } from '../../mutations'
 
@@ -83,9 +83,8 @@ export const ReinitializePassword = () => {
       <BottomCardContentContainer>
         <Spacer.Column numberOfSpaces={6} />
         <StyledInput>
-          <Typo.Body>{t`Nouveau mot de passe`}</Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
+            label={t`Nouveau mot de passe`}
             value={password}
             autoFocus
             onChangeText={setPassword}
@@ -96,9 +95,8 @@ export const ReinitializePassword = () => {
         <PasswordSecurityRules password={password} />
         <Spacer.Column numberOfSpaces={6} />
         <StyledInput>
-          <Typo.Body>{t`Confirmer le mot de passe`}</Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
+            label={t`Confirmer le mot de passe`}
             value={confirmedPassword}
             onChangeText={setConfirmedPassword}
             placeholder={t`Confirmer le mot de passe`}

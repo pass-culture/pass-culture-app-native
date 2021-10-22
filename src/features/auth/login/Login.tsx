@@ -166,9 +166,8 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       </StyledInput>
       <Spacer.Column numberOfSpaces={6} />
       <StyledInput>
-        <Typo.Body>{t`Mot de passe`}</Typo.Body>
-        <Spacer.Column numberOfSpaces={2} />
         <PasswordInput
+          label={t`Mot de passe`}
           value={password}
           onChangeText={setPassword}
           placeholder={t`Ton mot de passe`}
