@@ -1,12 +1,18 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import styled from 'styled-components/native'
 
-import { Typo } from 'ui/theme'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 
 export function ChangeEmail() {
   return (
-    <React.Fragment>
-      <Typo.Body>{t`Page de changement d'e-mail`}</Typo.Body>
-    </React.Fragment>
+    <Container>
+      <PageHeader title={t`Modifier mon e-mail`} />
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
