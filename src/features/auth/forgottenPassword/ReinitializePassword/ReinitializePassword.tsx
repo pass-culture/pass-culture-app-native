@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import { LoadingPage } from '@pass-culture/id-check/src/ui/components/loaders/LoadingPage'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
-import styled from 'styled-components/native'
 
 import {
   isPasswordCorrect,
@@ -20,7 +19,7 @@ import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 import { useResetPasswordMutation } from '../../mutations'
 
@@ -82,27 +81,23 @@ export const ReinitializePassword = () => {
       />
       <BottomCardContentContainer>
         <Spacer.Column numberOfSpaces={6} />
-        <StyledInput>
-          <PasswordInput
-            label={t`Nouveau mot de passe`}
-            value={password}
-            autoFocus
-            onChangeText={setPassword}
-            placeholder={t`Ton mot de passe`}
-            onSubmitEditing={submitPassword}
-          />
-        </StyledInput>
+        <PasswordInput
+          label={t`Nouveau mot de passe`}
+          value={password}
+          autoFocus
+          onChangeText={setPassword}
+          placeholder={t`Ton mot de passe`}
+          onSubmitEditing={submitPassword}
+        />
         <PasswordSecurityRules password={password} />
         <Spacer.Column numberOfSpaces={6} />
-        <StyledInput>
-          <PasswordInput
-            label={t`Confirmer le mot de passe`}
-            value={confirmedPassword}
-            onChangeText={setConfirmedPassword}
-            placeholder={t`Confirmer le mot de passe`}
-            onSubmitEditing={submitPassword}
-          />
-        </StyledInput>
+        <PasswordInput
+          label={t`Confirmer le mot de passe`}
+          value={confirmedPassword}
+          onChangeText={setConfirmedPassword}
+          placeholder={t`Confirmer le mot de passe`}
+          onSubmitEditing={submitPassword}
+        />
         <Spacer.Column numberOfSpaces={2} />
         <InputError
           visible={displayNotMatchingError}
@@ -120,11 +115,3 @@ export const ReinitializePassword = () => {
     </BottomContentPage>
   )
 }
-
-const StyledInput = styled.View({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  width: '100%',
-  maxWidth: getSpacing(125),
-})

@@ -84,45 +84,39 @@ export function ChangePassword() {
       <StyledScrollView
         ref={scrollRef}
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}>
-        <StyledInput>
-          <PasswordInput
-            label={t`Mot de passe actuel`}
-            value={currentPassword}
-            autoFocus={true}
-            onChangeText={setCurrentPassword}
-            placeholder={t`Ton mot de passe actuel`}
-          />
-          <Spacer.Column numberOfSpaces={2} />
-          <InputError
-            visible={hasError}
-            messageId={t`Mot de passe incorrect`}
-            numberOfSpacesTop={0}
-          />
-        </StyledInput>
+        <PasswordInput
+          label={t`Mot de passe actuel`}
+          value={currentPassword}
+          autoFocus={true}
+          onChangeText={setCurrentPassword}
+          placeholder={t`Ton mot de passe actuel`}
+        />
+        <Spacer.Column numberOfSpaces={2} />
+        <InputError
+          visible={hasError}
+          messageId={t`Mot de passe incorrect`}
+          numberOfSpacesTop={0}
+        />
         <Spacer.Column numberOfSpaces={5} />
-        <StyledInput>
-          <PasswordInput
-            label={t`Nouveau mot de passe`}
-            value={newPassword}
-            onChangeText={updateNewPassword}
-            placeholder={t`Ton nouveau mot de passe`}
-          />
-          {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
-            <PasswordSecurityRules password={newPassword} />
-          )}
-        </StyledInput>
+        <PasswordInput
+          label={t`Nouveau mot de passe`}
+          value={newPassword}
+          onChangeText={updateNewPassword}
+          placeholder={t`Ton nouveau mot de passe`}
+        />
+        {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
+          <PasswordSecurityRules password={newPassword} />
+        )}
         <Spacer.Column numberOfSpaces={5} />
-        <StyledInput>
-          <PasswordInput
-            label={t`Confirmer le mot de passe`}
-            value={confirmedPassword}
-            onChangeText={setConfirmedPassword}
-            placeholder={t`Confirmer le mot de passe`}
-            onFocus={() => {
-              setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
-            }}
-          />
-        </StyledInput>
+        <PasswordInput
+          label={t`Confirmer le mot de passe`}
+          value={confirmedPassword}
+          onChangeText={setConfirmedPassword}
+          placeholder={t`Confirmer le mot de passe`}
+          onFocus={() => {
+            setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
+          }}
+        />
         <Spacer.Column numberOfSpaces={2} />
         <InputError
           visible={displayNotMatchingError}
@@ -159,12 +153,6 @@ const getScrollViewContentContainerStyle = (keyboardHeight: number): StyleProp<V
   backgroundColor: ColorsEnum.WHITE,
 })
 
-const StyledInput = styled.View({
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  width: '100%',
-  maxWidth: getSpacing(125),
-})
 const ButtonContainer = styled.View<{ paddingBottom: number }>({
   flexDirection: 'row',
   alignSelf: 'flex-end',
