@@ -11,6 +11,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
+import { EligibilityCheckMethods } from 'api/gen'
 import { useNotifyIdCheckCompleted } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
@@ -53,6 +54,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
     notifyIdCheckCompleted()
   }
 
+  const eligibilityCheckMethods = userProfileInfo?.allowedEligibilityCheckMethods
   const resetContextValues = useCallback(() => {
     setIsEnteringIdCheck(false)
     if (setContextValue) {
@@ -64,6 +66,9 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
           }))
         )
         .then(({ updatedSettings, updatedUserProfileInfo }) => {
+          const shouldUseEduConnect =
+            !!updatedSettings?.enableNativeEacIndividual &&
+            eligibilityCheckMethods?.includes(EligibilityCheckMethods.Educonnect)
           setContextValue({
             onAbandon,
             onSuccess,
@@ -75,8 +80,10 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
             stepsConfigs: getStepsConfigs({
               isRetentionEnabled: !!updatedSettings?.enableIdCheckRetention,
               isPhoneValidationEnabled: !!updatedSettings?.enablePhoneValidation,
+              isEduconnectEnabled: shouldUseEduConnect,
             }),
             initialStep: updatedUserProfileInfo?.nextBeneficiaryValidationStep as Step,
+            shouldUseEduConnect,
           })
         })
         .catch((error) => {
@@ -114,15 +121,24 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
 function getStepsConfigs({
   isRetentionEnabled = false,
   isPhoneValidationEnabled = false,
+  isEduconnectEnabled = false,
 }): StepConfig[] {
   return [
     {
       icon: IdCardIcon,
       name: 'id-check',
-      path: '/uploadDocument',
-      screenName: 'UploadDocument',
-      screens: isRetentionEnabled ? ['Conditions'] : ['Conditions', 'Validation'],
       text: 'Ton éligibilité',
+      ...(isEduconnectEnabled
+        ? {
+            path: '/educonnect',
+            screenName: 'EduConnect',
+            screens: ['EduConnect', 'Validation'],
+          }
+        : {
+            path: '/uploadDocument',
+            screenName: 'UploadDocument',
+            screens: isRetentionEnabled ? ['Conditions'] : ['Conditions', 'Validation'],
+          }),
     },
     {
       icon: ProfileIcon,
