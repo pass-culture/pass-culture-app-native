@@ -12,26 +12,32 @@ Array [
   />,
   <div
     className="css-view-1dbjc4n"
+    onScroll={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    onWheel={[Function]}
     style={
       Object {
         "WebkitBoxDirection": "normal",
         "WebkitBoxFlex": 1,
         "WebkitBoxOrient": "vertical",
-        "WebkitFlexBasis": "0px",
         "WebkitFlexDirection": "column",
         "WebkitFlexGrow": 1,
         "WebkitFlexShrink": 1,
-        "backgroundColor": "rgba(255,255,255,1.00)",
-        "flexBasis": "0px",
+        "WebkitOverflowScrolling": "touch",
+        "WebkitTransform": "translateZ(0px)",
         "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
         "msFlexDirection": "column",
         "msFlexNegative": 1,
         "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
+        "overflowX": "hidden",
+        "overflowY": "auto",
         "paddingLeft": "20px",
         "paddingRight": "20px",
+        "transform": "translateZ(0px)",
       }
     }
   >
@@ -39,78 +45,41 @@ Array [
       className="css-view-1dbjc4n"
       style={
         Object {
-          "height": "72px",
-        }
-      }
-    />
-    <div
-      className="css-text-901oao"
-      dir="auto"
-      style={
-        Object {
-          "color": "rgba(98,98,98,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
-    >
-      Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification.
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "backgroundColor": "rgba(245,245,245,1.00)",
-          "height": "1px",
-          "width": "100%",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitAlignItems": "flex-start",
-          "WebkitBoxAlign": "start",
           "WebkitBoxDirection": "normal",
+          "WebkitBoxFlex": 1,
           "WebkitBoxOrient": "vertical",
+          "WebkitBoxPack": "justify",
           "WebkitFlexDirection": "column",
-          "alignItems": "flex-start",
-          "display": "flex",
+          "WebkitFlexGrow": 1,
+          "WebkitJustifyContent": "space-between",
+          "backgroundColor": "rgba(255,255,255,1.00)",
           "flexDirection": "column",
-          "maxWidth": "500px",
-          "msFlexAlign": "start",
+          "flexGrow": 1,
+          "justifyContent": "space-between",
           "msFlexDirection": "column",
-          "width": "100%",
+          "msFlexPack": "justify",
+          "msFlexPositive": 1,
+          "paddingBottom": "0px",
         }
       }
     >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "72px",
+          }
+        }
+      />
       <div
         className="css-text-901oao"
         dir="auto"
         style={
           Object {
-            "color": "rgba(21,21,21,1.00)",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": "15px",
-            "lineHeight": "20px",
+            "color": "rgba(98,98,98,1.00)",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": "12px",
+            "lineHeight": "16px",
           }
         }
       >
@@ -245,12 +214,13 @@ Array [
         }
       >
         Mot de passe
+        Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification.
       </div>
       <div
         className="css-view-1dbjc4n"
         style={
           Object {
-            "height": "8px",
+            "height": "16px",
           }
         }
       />
@@ -258,85 +228,226 @@ Array [
         className="css-view-1dbjc4n"
         style={
           Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
+            "backgroundColor": "rgba(245,245,245,1.00)",
+            "height": "1px",
+            "width": "100%",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "16px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitAlignItems": "flex-start",
+            "WebkitBoxAlign": "start",
             "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "alignItems": "center",
-            "backgroundColor": "rgba(255,255,255,1.00)",
-            "borderBottomColor": "rgba(199,199,204,1.00)",
-            "borderBottomLeftRadius": "22px",
-            "borderBottomRightRadius": "22px",
-            "borderBottomStyle": "solid",
-            "borderBottomWidth": "1px",
-            "borderLeftColor": "rgba(199,199,204,1.00)",
-            "borderLeftStyle": "solid",
-            "borderLeftWidth": "1px",
-            "borderRightColor": "rgba(199,199,204,1.00)",
-            "borderRightStyle": "solid",
-            "borderRightWidth": "1px",
-            "borderTopColor": "rgba(199,199,204,1.00)",
-            "borderTopLeftRadius": "22px",
-            "borderTopRightRadius": "22px",
-            "borderTopStyle": "solid",
-            "borderTopWidth": "1px",
-            "boxShadow": "0px 2px 6px rgba(21,21,21,1.00)",
-            "flexDirection": "row",
-            "height": "40px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "paddingBottom": "4px",
-            "paddingLeft": "16px",
-            "paddingRight": "16px",
-            "paddingTop": "4px",
+            "WebkitBoxOrient": "vertical",
+            "WebkitFlexDirection": "column",
+            "alignItems": "flex-start",
+            "display": "flex",
+            "flexDirection": "column",
+            "maxWidth": "500px",
+            "msFlexAlign": "start",
+            "msFlexDirection": "column",
             "width": "100%",
           }
         }
       >
-        <input
-          autoCapitalize="sentences"
-          autoComplete="on"
-          autoCorrect="on"
-          className="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+        <div
+          className="css-text-901oao"
           dir="auto"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onSelect={[Function]}
-          placeholder="Ton mot de passe"
-          readOnly={false}
-          spellCheck={true}
           style={
             Object {
-              "WebkitBoxFlex": 0.9,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 0.9,
-              "WebkitFlexShrink": 1,
               "color": "rgba(21,21,21,1.00)",
-              "flexBasis": "0px",
-              "flexGrow": 0.9,
-              "flexShrink": 1,
               "fontFamily": "Montserrat-Regular",
               "fontSize": "15px",
-              "height": "100%",
-              "msFlexNegative": 1,
-              "msFlexPositive": 0.9,
-              "msFlexPreferredSize": "0px",
-              "paddingBottom": "0px",
-              "paddingLeft": "0px",
-              "paddingRight": "0px",
-              "paddingTop": "0px",
+              "lineHeight": "20px",
             }
           }
-          type="password"
-          value=""
+        >
+          Mot de passe
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "height": "8px",
+            }
+          }
         />
         <div
-          aria-label="Basculer l'affichage du mot de passe"
           className="css-view-1dbjc4n"
-          data-testid="Basculer l'affichage du mot de passe"
+          style={
+            Object {
+              "WebkitAlignItems": "center",
+              "WebkitBoxAlign": "center",
+              "WebkitBoxDirection": "normal",
+              "WebkitBoxOrient": "horizontal",
+              "WebkitFlexDirection": "row",
+              "alignItems": "center",
+              "backgroundColor": "rgba(255,255,255,1.00)",
+              "borderBottomColor": "rgba(199,199,204,1.00)",
+              "borderBottomLeftRadius": "22px",
+              "borderBottomRightRadius": "22px",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "1px",
+              "borderLeftColor": "rgba(199,199,204,1.00)",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "1px",
+              "borderRightColor": "rgba(199,199,204,1.00)",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "1px",
+              "borderTopColor": "rgba(199,199,204,1.00)",
+              "borderTopLeftRadius": "22px",
+              "borderTopRightRadius": "22px",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "1px",
+              "boxShadow": "0px 2px 6px rgba(21,21,21,1.00)",
+              "flexDirection": "row",
+              "height": "40px",
+              "msFlexAlign": "center",
+              "msFlexDirection": "row",
+              "paddingBottom": "4px",
+              "paddingLeft": "16px",
+              "paddingRight": "16px",
+              "paddingTop": "4px",
+              "width": "100%",
+            }
+          }
+        >
+          <input
+            autoCapitalize="sentences"
+            autoComplete="on"
+            autoCorrect="on"
+            className="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+            dir="auto"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onSelect={[Function]}
+            placeholder="Ton mot de passe"
+            readOnly={false}
+            spellCheck={true}
+            style={
+              Object {
+                "WebkitBoxFlex": 0.9,
+                "WebkitFlexBasis": "0px",
+                "WebkitFlexGrow": 0.9,
+                "WebkitFlexShrink": 1,
+                "color": "rgba(21,21,21,1.00)",
+                "flexBasis": "0px",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": "15px",
+                "height": "100%",
+                "msFlexNegative": 1,
+                "msFlexPositive": 0.9,
+                "msFlexPreferredSize": "0px",
+                "paddingBottom": "0px",
+                "paddingLeft": "0px",
+                "paddingRight": "0px",
+                "paddingTop": "0px",
+              }
+            }
+            type="password"
+            value=""
+          />
+          <div
+            aria-label="Basculer l'affichage du mot de passe"
+            className="css-view-1dbjc4n"
+            data-testid="Basculer l'affichage du mot de passe"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitBoxFlex": 0.1,
+                "WebkitFlexBasis": "0px",
+                "WebkitFlexGrow": 0.1,
+                "WebkitFlexShrink": 1,
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "cursor": "pointer",
+                "flexBasis": "0px",
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "maxWidth": "60px",
+                "msFlexNegative": 1,
+                "msFlexPositive": 0.1,
+                "msFlexPreferredSize": "0px",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              data-testid="eye-slash"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                eye-slash-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxFlex": 1,
+            "WebkitFlexBasis": "0px",
+            "WebkitFlexGrow": 1,
+            "WebkitFlexShrink": 1,
+            "flexBasis": "0px",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "msFlexNegative": 1,
+            "msFlexPositive": 1,
+            "msFlexPreferredSize": "0px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitAlignSelf": "flex-end",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "alignSelf": "flex-end",
+            "flexDirection": "row",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "end",
+          }
+        }
+      >
+        <div
+          aria-label="Enregistrer"
+          className="css-view-1dbjc4n"
+          data-testid="Enregistrer"
           onClick={[Function]}
           onContextMenu={[Function]}
           onKeyDown={[Function]}
@@ -344,44 +455,75 @@ Array [
             Object {
               "MozTransitionProperty": "opacity",
               "MozUserSelect": "none",
-              "WebkitBoxFlex": 0.1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 0.1,
-              "WebkitFlexShrink": 1,
+              "WebkitAlignItems": "center",
+              "WebkitBoxAlign": "center",
+              "WebkitBoxDirection": "normal",
+              "WebkitBoxOrient": "horizontal",
+              "WebkitBoxPack": "center",
+              "WebkitFlexDirection": "row",
+              "WebkitJustifyContent": "center",
               "WebkitTransitionDuration": "0s",
               "WebkitTransitionProperty": "opacity",
               "WebkitUserSelect": "none",
+              "alignItems": "center",
+              "backgroundColor": "rgba(245,245,245,1.00)",
+              "borderBottomLeftRadius": "24px",
+              "borderBottomRightRadius": "24px",
+              "borderBottomWidth": "0px",
+              "borderLeftWidth": "0px",
+              "borderRightWidth": "0px",
+              "borderTopLeftRadius": "24px",
+              "borderTopRightRadius": "24px",
+              "borderTopWidth": "0px",
               "cursor": "pointer",
-              "flexBasis": "0px",
-              "flexGrow": 0.1,
-              "flexShrink": 1,
-              "maxWidth": "60px",
-              "msFlexNegative": 1,
-              "msFlexPositive": 0.1,
-              "msFlexPreferredSize": "0px",
+              "flexDirection": "row",
+              "height": "40px",
+              "justifyContent": "center",
+              "maxWidth": "500px",
+              "msFlexAlign": "center",
+              "msFlexDirection": "row",
+              "msFlexPack": "center",
               "msTouchAction": "manipulation",
               "msUserSelect": "none",
+              "paddingBottom": "2px",
+              "paddingLeft": "2px",
+              "paddingRight": "2px",
+              "paddingTop": "2px",
               "touchAction": "manipulation",
               "transitionDuration": "0s",
               "transitionProperty": "opacity",
               "userSelect": "none",
+              "width": "100%",
             }
           }
           tabIndex="0"
         >
           <div
-            className="css-view-1dbjc4n"
-            data-testid="eye-slash"
+            className="css-text-901oao css-textOneLine-vcwn7f"
+            dir="auto"
+            style={
+              Object {
+                "color": "rgba(98,98,98,1.00)",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": "15px",
+                "lineHeight": "20px",
+                "marginLeft": "5px",
+                "maxWidth": "100%",
+              }
+            }
           >
-            <div
-              className="css-text-901oao"
-              dir="auto"
-            >
-              eye-slash-SVG-Mock
-            </div>
+            Enregistrer
           </div>
         </div>
       </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "24px",
+          }
+        }
+      />
     </div>
   </div>,
   <div
