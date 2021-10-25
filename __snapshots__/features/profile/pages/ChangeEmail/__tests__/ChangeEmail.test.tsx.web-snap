@@ -431,18 +431,6 @@ Array [
       />
       <div
         className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitAlignSelf": "flex-end",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "alignSelf": "flex-end",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-            "msFlexItemAlign": "end",
-          }
-        }
       >
         <div
           aria-label="Enregistrer"
