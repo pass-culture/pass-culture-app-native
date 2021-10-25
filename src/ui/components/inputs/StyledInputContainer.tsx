@@ -15,7 +15,7 @@ const defaultProps: Props = {
   inputHeight: 'small',
 }
 
-export const InputContainer: React.FC<Props> = (props) => {
+export const StyledInputContainer: React.FC<Props> = (props) => {
   let borderColor = ColorsEnum.GREY_MEDIUM
   if (props.isFocus) {
     borderColor = ColorsEnum.PRIMARY
@@ -30,7 +30,7 @@ export const InputContainer: React.FC<Props> = (props) => {
   )
 }
 
-InputContainer.defaultProps = defaultProps
+StyledInputContainer.defaultProps = defaultProps
 
 const StyledView = styled.View<{
   height: Props['inputHeight']

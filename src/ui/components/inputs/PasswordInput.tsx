@@ -13,7 +13,7 @@ import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Spacer, Typo } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
-import { InputContainer } from './InputContainer'
+import { StyledInputContainer } from './StyledInputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
 const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
@@ -47,7 +47,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <InputContainer isFocus={isFocus} isError={customProps.isError}>
+      <StyledInputContainer isFocus={isFocus} isError={customProps.isError}>
         <StyledBaseTextInput
           {...nativeProps}
           onFocus={onFocus}
@@ -64,7 +64,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
             <Eye {...accessibilityAndTestId('eye')} size="100%" />
           )}
         </IconTouchableOpacity>
-      </InputContainer>
+      </StyledInputContainer>
     </StyledInput>
   )
 }
