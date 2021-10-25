@@ -19,7 +19,7 @@ import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiary
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { mapVenueTypeToIcon, MAP_CATEGORY_ID_TO_ICON, MAP_TYPE_TO_ICON } from 'libs/parsers'
+import { mapVenueTypeToIcon, MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useUtmParams } from 'libs/utm'
 import { AccordionItem } from 'ui/components/AccordionItem'
