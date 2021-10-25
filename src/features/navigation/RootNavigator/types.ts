@@ -41,7 +41,6 @@ export type RootStackParamList = {
   CulturalSurvey: undefined
   DeeplinkImporter: undefined
   DeleteProfileSuccess: undefined
-  UnavailableEduConnect: undefined
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
