@@ -65,7 +65,7 @@ export const ForgottenPassword: FunctionComponent = () => {
     navigateToHome()
   }
 
-  function onChangeEmail(email: string) {
+  function onEmailChange(email: string) {
     if (errorMessage) {
       setErrorMessage(null)
     }
@@ -136,7 +136,7 @@ export const ForgottenPassword: FunctionComponent = () => {
           <EmailInput
             label={t`Adresse e-mail`}
             email={email}
-            onEmailChange={onChangeEmail}
+            onEmailChange={onEmailChange}
             autoFocus={true}
           />
           {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={1} />}

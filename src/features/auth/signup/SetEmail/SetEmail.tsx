@@ -52,7 +52,7 @@ export const SetEmail: FunctionComponent = () => {
     hideModal: hideFullPageModal,
   } = useModal(false)
 
-  function onChangeEmail(email: string) {
+  function onEmailChange(email: string) {
     if (hasError) {
       setHasError(false)
     }
@@ -98,7 +98,7 @@ export const SetEmail: FunctionComponent = () => {
             <EmailInput
               label={t`Adresse e-mail`}
               email={email}
-              onEmailChange={onChangeEmail}
+              onEmailChange={onEmailChange}
               autoFocus={true}
               onSubmitEditing={validateEmail}
               ref={emailInput}
