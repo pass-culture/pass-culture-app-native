@@ -19,9 +19,9 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
+import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
-import { StyledInput } from 'ui/components/inputs/StyledInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -151,7 +151,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       />
       {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
       <Spacer.Column numberOfSpaces={7} />
-      <StyledInput>
+      <InputContainer>
         <Typo.Body>{t`Adresse e-mail`}</Typo.Body>
         <Spacer.Column numberOfSpaces={2} />
         <TextInput
@@ -164,7 +164,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           value={email}
           {...accessibilityAndTestId("Entrée pour l'email")}
         />
-      </StyledInput>
+      </InputContainer>
       <Spacer.Column numberOfSpaces={6} />
       <PasswordInput
         label={t`Mot de passe`}

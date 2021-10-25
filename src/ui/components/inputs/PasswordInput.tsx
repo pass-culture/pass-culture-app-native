@@ -7,7 +7,7 @@ import {
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { StyledInput } from 'ui/components/inputs/StyledInput'
+import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Spacer, Typo } from 'ui/theme'
@@ -40,7 +40,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
   }
 
   return (
-    <StyledInput>
+    <InputContainer>
       {!!customProps.label && (
         <React.Fragment>
           <Typo.Body>{customProps.label}</Typo.Body>
@@ -65,7 +65,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           )}
         </IconTouchableOpacity>
       </StyledInputContainer>
-    </StyledInput>
+    </InputContainer>
   )
 }
 

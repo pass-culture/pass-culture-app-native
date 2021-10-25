@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
-import { SetEmailModalContent, StyledInput } from 'features/auth/components/signupComponents'
+import { SetEmailModalContent } from 'features/auth/components/signupComponents'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -18,6 +18,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
+import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -94,7 +95,7 @@ export const SetEmail: FunctionComponent = () => {
           {...rightIconProps}
         />
         <SetEmailModalContent>
-          <StyledInput>
+          <InputContainer>
             <Typo.Body>{t`Adresse e-mail`}</Typo.Body>
             <Spacer.Column numberOfSpaces={2} />
             <TextInput
@@ -114,7 +115,7 @@ export const SetEmail: FunctionComponent = () => {
               messageId={t`Format de l'e-mail incorrect`}
               numberOfSpacesTop={1}
             />
-          </StyledInput>
+          </InputContainer>
           <Spacer.Column numberOfSpaces={4} />
           <StyledCheckBox onPress={() => setIsNewsletterChecked(!isNewsletterChecked)}>
             <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />

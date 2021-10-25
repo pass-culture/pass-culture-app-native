@@ -9,14 +9,6 @@ export const SetEmailModalContent = styled.View({
   maxWidth: getSpacing(125),
 })
 
-export const StyledInput = styled.View({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  width: '100%',
-  maxWidth: getSpacing(125),
-})
-
 export const StyledStepDots = styled.View({ width: '100%', alignItems: 'center' })
 
 export const CardContent = styled.View({
