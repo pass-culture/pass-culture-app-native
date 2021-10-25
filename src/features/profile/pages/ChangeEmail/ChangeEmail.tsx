@@ -24,6 +24,7 @@ export function ChangeEmail() {
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
 
+  // TODO (PC-11345) : Add email check _@_._ + different from the current one for disabled condition
   const disabled = !isLongEnough(password)
 
   // TODO (PC-11395) : Add correct function
