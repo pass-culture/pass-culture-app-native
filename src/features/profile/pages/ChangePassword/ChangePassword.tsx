@@ -153,8 +153,9 @@ const getScrollViewContentContainerStyle = (keyboardHeight: number): StyleProp<V
   backgroundColor: ColorsEnum.WHITE,
 })
 
-const ButtonContainer = styled.View<{ paddingBottom: number }>({})
-
+const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
+  paddingBottom,
+}))
 const StyledScrollView = styled(ScrollView)({
   paddingHorizontal: getSpacing(5.5),
 })
