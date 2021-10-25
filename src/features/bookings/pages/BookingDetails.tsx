@@ -30,6 +30,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimensions'
+import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -54,7 +55,7 @@ export function BookingDetails() {
   const windowHeight = useWindowDimensions().height - blurImageHeight
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const booking = useOngoingOrEndedBooking(params.id)
+  const { data: booking, isLoading, isError, error } = useOngoingOrEndedBooking(params.id)
   const queryClient = useQueryClient()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
@@ -84,8 +85,15 @@ export function BookingDetails() {
     },
   })
 
-  if (!booking) {
+  if (isLoading && !booking) {
+    return <LoadingPage />
+  } else if (!isLoading && !booking) {
     throw new ScreenError(`Booking #${params.id} not found`, BookingNotFound)
+  } else if (isError) {
+    throw error
+  } else if (!booking) {
+    // dead code to satisfy typescript Web compilation
+    return null
   }
 
   const { offer } = booking.stock
