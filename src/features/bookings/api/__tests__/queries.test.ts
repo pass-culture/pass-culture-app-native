@@ -24,9 +24,9 @@ describe('[API] booking queries', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current !== undefined)
-      expect(result.current?.id).toEqual(booking.id)
-      expect(result.current?.stock.id).toEqual(booking.stock.id)
+      await waitFor(() => result.current.data !== undefined)
+      expect(result.current?.data?.id).toEqual(booking.id)
+      expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
     })
 
     it('should return ended_bookings when there is one', async () => {
@@ -36,20 +36,20 @@ describe('[API] booking queries', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current !== undefined)
-      expect(result.current?.id).toEqual(booking.id)
-      expect(result.current?.stock.id).toEqual(booking.stock.id)
+      await waitFor(() => result.current.data !== undefined)
+      expect(result.current?.data?.id).toEqual(booking.id)
+      expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
     })
 
-    it('should not return any booking if not ongoing nor ended', async () => {
+    it('should return null if no ongoing nor ended booking can be found', async () => {
       const bookingId = 1230912039
       const { result, waitFor } = renderHook(() => useOngoingOrEndedBooking(bookingId), {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current === undefined)
-      expect(result.current).toBeUndefined()
+      await waitFor(() => result.current.data === null)
+      expect(result.current.data).toBeNull()
     })
   })
 })

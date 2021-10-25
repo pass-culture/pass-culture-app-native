@@ -1,7 +1,8 @@
 import React from 'react'
+import { UseQueryResult } from 'react-query'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { SubcategoryIdEnum } from 'api/gen'
+import { BookingReponse, SubcategoryIdEnum } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as Helpers from 'features/bookings/helpers'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -309,7 +310,12 @@ describe('BookingDetails', () => {
 })
 
 function renderBookingDetails(booking?: Booking) {
-  jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue(booking)
+  jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue(({
+    data: booking,
+    isSuccess: true,
+    isError: false,
+    error: undefined,
+  } as unknown) as UseQueryResult<BookingReponse | null>)
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<BookingDetails />))
 }
