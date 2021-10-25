@@ -19,7 +19,7 @@ import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiary
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
+import { mapVenueTypeToIcon, MAP_CATEGORY_ID_TO_ICON, MAP_TYPE_TO_ICON } from 'libs/parsers'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useUtmParams } from 'libs/utm'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -412,6 +412,8 @@ export const AppComponents: FunctionComponent = () => {
         <SocialNetworkIcons />
         <Spacer.Column numberOfSpaces={4} />
         <CategoryIcons />
+        <Spacer.Column numberOfSpaces={4} />
+        <VenueTypesIcons />
         <AlignedText>
           <Again size={ICON_SIZE} />
           <Text> - Again (new) </Text>
@@ -1080,6 +1082,24 @@ const CategoryIcons = () => {
           <Text> - {searchGroupLabelMapping[searchGroup as SearchGroupNameEnum]} </Text>
         </AlignedText>
       ))}
+      <Text>{'\n'}</Text>
+    </React.Fragment>
+  )
+}
+
+const VenueTypesIcons = () => {
+  return (
+    <React.Fragment>
+      <Text>{'Venue Types'}</Text>
+      {Object.values(VenueTypeCodeKey).map((venueType) => {
+        const Icon = mapVenueTypeToIcon(venueType as VenueTypeCodeKey)
+        return (
+          <AlignedText key={venueType}>
+            <Icon size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
+            <Text> - {venueType} </Text>
+          </AlignedText>
+        )
+      })}
       <Text>{'\n'}</Text>
     </React.Fragment>
   )
