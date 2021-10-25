@@ -22,7 +22,6 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
 ) => {
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomTextInputProps(props)
-  const { label } = props
 
   const [shouldHidePassword, setShouldHidePassword] = useState(true)
   const [isFocus, setIsFocus] = useState(false)
@@ -42,9 +41,9 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
 
   return (
     <StyledInput>
-      {!!label && (
+      {!!customProps.label && (
         <React.Fragment>
-          <Typo.Body>{label}</Typo.Body>
+          <Typo.Body>{customProps.label}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}

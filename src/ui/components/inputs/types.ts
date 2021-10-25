@@ -3,9 +3,6 @@ import { TextInput as RNTextInput } from 'react-native'
 
 export type CustomTextInputProps = {
   isError?: boolean
-}
-
-export type InputLabel = {
   label?: string
 }
 
@@ -41,12 +38,12 @@ export type RNTextInputProps = Pick<
     testID?: string
   }
 
-export type TextInputProps = CustomTextInputProps & RNTextInputProps & InputLabel
+export type TextInputProps = CustomTextInputProps & RNTextInputProps
 
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
 export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
-  return { isError: props.isError }
+  return { isError: props.isError, label: props.label }
 }
 
 export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
