@@ -13,10 +13,10 @@ import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
+import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
@@ -133,16 +133,11 @@ export const ForgottenPassword: FunctionComponent = () => {
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
         <InputContainer>
-          <Typo.Body>{t`Adresse e-mail`}</Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
-          <TextInput
-            autoCapitalize="none"
+          <EmailInput
+            label={t`Adresse e-mail`}
+            email={email}
+            onEmailChange={onChangeEmail}
             autoFocus={true}
-            keyboardType="email-address"
-            onChangeText={onChangeEmail}
-            placeholder={t`tonadresse@email.com`}
-            textContentType="emailAddress"
-            value={email}
           />
           {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={1} />}
         </InputContainer>
