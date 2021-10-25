@@ -3,16 +3,18 @@ import React, { Fragment } from 'react'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { TextInput } from 'ui/components/inputs/TextInput'
+import { TextInputProps } from 'ui/components/inputs/types'
 import { Spacer, Typo } from 'ui/theme'
 
-interface Props {
+interface Props extends TextInputProps {
+  label: string
   email: string
   onEmailChange: (email: string) => void
 }
 
-export const ChangeEmailEmailInput = ({ email, onEmailChange }: Props) => (
+export const EmailInput = ({ label, email, onEmailChange, ...inputProps }: Props) => (
   <Fragment>
-    <Typo.Body>{t`Nouvel e-mail`}</Typo.Body>
+    <Typo.Body>{label}</Typo.Body>
     <Spacer.Column numberOfSpaces={2} />
     <TextInput
       autoCapitalize="none"
@@ -22,6 +24,7 @@ export const ChangeEmailEmailInput = ({ email, onEmailChange }: Props) => (
       textContentType="emailAddress"
       value={email}
       {...accessibilityAndTestId("Entrée pour l'email")}
+      {...inputProps}
     />
   </Fragment>
 )
