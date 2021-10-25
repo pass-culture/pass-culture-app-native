@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { memo, useEffect, useState } from 'react'
-import { Animated } from 'react-native'
+import { Animated, Platform } from 'react-native'
 import CountryPicker, {
   Country,
   CountryCode,
@@ -162,6 +162,7 @@ export const SetPhoneNumber = memo(() => {
           <PhoneNumberInput>
             <CountryPickerPressable onPress={openCountryPickerModal}>
               <CountryPicker
+                withEmoji={Platform.OS !== 'web'}
                 countryCode={countryCode}
                 countryCodes={ALLOWED_COUNTRY_CODES}
                 onSelect={onSelectCountryCode}
