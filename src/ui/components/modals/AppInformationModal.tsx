@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { Close } from 'ui/svg/icons/Close'
-import { ColorsEnum, getSpacing, Spacer, UniqueColors } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 import { ModalHeader } from './ModalHeader'
 
@@ -57,23 +57,23 @@ export const AppInformationModal: FunctionComponent<Props> = ({
   )
 }
 
-const ClicAwayArea = styled(TouchableOpacity)({
+const ClicAwayArea = styled(TouchableOpacity)(({ theme }) => ({
   flexGrow: 1,
   flexDirection: 'column',
   justifyContent: 'flex-end',
   height: '100%',
   width: '100%',
-  backgroundColor: UniqueColors.GREY_OVERLAY,
-})
+  backgroundColor: theme.uniqueColors.greyOverlay,
+}))
 
-const Container = styled(TouchableOpacity)({
-  backgroundColor: ColorsEnum.WHITE,
+const Container = styled(TouchableOpacity)(({ theme }) => ({
+  backgroundColor: theme.colors.white,
   alignItems: 'center',
   alignSelf: 'center',
-  width: '90%',
+  width: theme.appContentWidth - getSpacing(16),
   borderRadius: getSpacing(4),
   padding: getSpacing(5),
-})
+}))
 
 const Content = styled.View({
   width: '100%',

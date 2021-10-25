@@ -91,7 +91,7 @@ export const Header = memo(function Header() {
           <LogoPassCulture color={theme.colors.brand} height={getSpacing(6.5)} width={80} />
         </LeftContainer>
         <Nav
-          maxWidth={theme.breakpoints.lg}
+          maxWidth={theme.appContentWidth}
           height={theme.navTopHeight}
           noShadow={theme.isDesktop}
         />
