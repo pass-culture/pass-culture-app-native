@@ -120,7 +120,7 @@ const Container = styled.View({
 
 const Row = styled.View({ flexDirection: 'row' })
 
-const ButtonContainer = styled.View({ flex: 1, maxWidth: getSpacing(44) })
+const ButtonContainer = styled.View({ flex: 1, minWidth: getSpacing(30) })
 const TextContainer = styled.View({ maxWidth: getSpacing(88) })
 
 const CenteredText = styled.Text({
