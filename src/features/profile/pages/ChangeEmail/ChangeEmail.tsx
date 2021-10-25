@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { getSpacing } from '@pass-culture/id-check'
 import React, { useState } from 'react'
 import { useRef } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
@@ -15,7 +14,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { ColorsEnum, Spacer } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export function ChangeEmail() {
   const [email, setEmail] = useSafeState('')

@@ -12,97 +12,44 @@ Array [
       ]
     }
   />,
-  <View
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "backgroundColor": "#ffffff",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "justifyContent": "space-between",
+        "paddingBottom": 0,
+      }
+    }
     style={
       Array [
         Object {
-          "backgroundColor": "#ffffff",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "paddingHorizontal": 20,
         },
       ]
     }
   >
-    <View
-      numberOfSpaces={18}
-      style={
-        Array [
-          Object {
-            "height": 72,
-          },
-        ]
-      }
-    />
-    <Text
-      color="#626262"
-      style={
-        Array [
-          Object {
-            "color": "#626262",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    >
-      Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification.
-    </Text>
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#f5f5f5",
-            "height": 1,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "flex-start",
-            "display": "flex",
-            "flexDirection": "column",
-            "maxWidth": 500,
-            "width": "100%",
-          },
-        ]
-      }
-    >
-      <Text
+    <View>
+      <View
+        numberOfSpaces={18}
         style={
           Array [
             Object {
-              "color": "#151515",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "height": 72,
+            },
+          ]
+        }
+      />
+      <Text
+        color="#626262"
+        style={
+          Array [
+            Object {
+              "color": "#626262",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
             },
           ]
         }
@@ -218,86 +165,202 @@ Array [
         }
       >
         Mot de passe
+        Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification.
       </Text>
       <View
-        numberOfSpaces={2}
+        numberOfSpaces={4}
         style={
           Array [
             Object {
-              "height": 8,
+              "height": 16,
             },
           ]
         }
       />
       <View
-        borderColor="#c7c7cc"
-        height="small"
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#c7c7cc",
-              "borderRadius": 22,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "flexDirection": "row",
-              "height": 40,
-              "paddingBottom": 4,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 4,
-              "shadowColor": "#151515",
-              "shadowOffset": Object {
-                "height": 2,
-                "width": 0,
-              },
-              "shadowOpacity": 0.15,
-              "shadowRadius": 6,
+              "backgroundColor": "#f5f5f5",
+              "height": 1,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "display": "flex",
+              "flexDirection": "column",
+              "maxWidth": 500,
               "width": "100%",
             },
           ]
         }
       >
-        <TextInput
-          allowFontScaling={true}
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          onFocus={[Function]}
-          placeholder="Ton mot de passe"
-          placeholderTextColor="#626262"
-          rejectResponderTermination={true}
-          secureTextEntry={true}
+        <Text
           style={
             Array [
               Object {
                 "color": "#151515",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
-                "height": "100%",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-              },
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.9,
-                "flexShrink": 1,
+                "lineHeight": 20,
               },
             ]
           }
-          textContentType="password"
-          underlineColorAndroid="transparent"
-          value=""
+        >
+          Mot de passe
+        </Text>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "height": 8,
+              },
+            ]
+          }
         />
         <View
-          accessibilityLabel="Basculer l'affichage du mot de passe"
+          borderColor="#c7c7cc"
+          height="small"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#c7c7cc",
+                "borderRadius": 22,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "height": 40,
+                "paddingBottom": 4,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 4,
+                "shadowColor": "#151515",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.15,
+                "shadowRadius": 6,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <TextInput
+            allowFontScaling={true}
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            placeholder="Ton mot de passe"
+            placeholderTextColor="#626262"
+            rejectResponderTermination={true}
+            secureTextEntry={true}
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "height": "100%",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                },
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+            textContentType="password"
+            underlineColorAndroid="transparent"
+            value=""
+          />
+          <View
+            accessibilityLabel="Basculer l'affichage du mot de passe"
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "maxWidth": 60,
+                "opacity": 1,
+              }
+            }
+            testID="Basculer l'affichage du mot de passe"
+          >
+            <View
+              height="100%"
+              testID="eye-slash"
+              width="100%"
+            >
+              <Text>
+                eye-slash-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        flex={1}
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <View
+        paddingBottom={16}
+        style={
+          Array [
+            Object {
+              "alignSelf": "flex-end",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Enregistrer"
           accessible={true}
-          focusable={true}
+          focusable={false}
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -307,28 +370,57 @@ Array [
           onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "flexBasis": 0,
-              "flexGrow": 0.1,
-              "flexShrink": 1,
-              "maxWidth": 60,
+              "alignItems": "center",
+              "backgroundColor": "#f5f5f5",
+              "borderRadius": 24,
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "center",
+              "maxWidth": 500,
               "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
             }
           }
-          testID="Basculer l'affichage du mot de passe"
+          testID="Enregistrer"
         >
-          <View
-            height="100%"
-            testID="eye-slash"
-            width="100%"
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#626262",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 5,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+            textColor="#626262"
           >
-            <Text>
-              eye-slash-SVG-Mock
-            </Text>
-          </View>
+            Enregistrer
+          </Text>
         </View>
       </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
     </View>
-  </View>,
+  </RCTScrollView>,
   <View
     style={
       Array [
