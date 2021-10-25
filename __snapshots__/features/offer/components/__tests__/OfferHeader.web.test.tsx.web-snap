@@ -240,11 +240,6 @@ Object {
           style="height: 8px;"
         />
       </div>
-      <style
-        type="text/css"
-      >
-        div[aria-modal="true"] { align-items: center }
-      </style>
     </div>
     <div>
       <div
@@ -263,7 +258,7 @@ Object {
           class="css-view-1dbjc4n r-pointerEvents-12vffkv"
           data-testid="modal"
           id="animatedComponent"
-          style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 16px; border-top-right-radius: 16px; bottom: 0px; flex: 1; flex-direction: column; justify-content: center; margin: auto 0px 0px 0px; padding: 24px 24px 24px 24px; position: absolute; transform: translateY(0px); width: 100%;"
+          style="align-items: center; align-self: center; background-color: rgb(255, 255, 255); border-top-left-radius: 16px; border-top-right-radius: 16px; bottom: 0px; flex: 1; flex-direction: column; justify-content: center; margin: auto 0px 0px 0px; max-width: 0px; padding: 24px 24px 24px 24px; position: absolute; transform: translateY(0px); width: 100%;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -593,11 +588,6 @@ Object {
         style="height: 8px;"
       />
     </div>
-    <style
-      type="text/css"
-    >
-      div[aria-modal="true"] { align-items: center }
-    </style>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

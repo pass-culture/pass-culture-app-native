@@ -1956,6 +1956,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             style={
                               Object {
                                 "alignItems": "center",
+                                "alignSelf": "center",
                                 "backgroundColor": "#ffffff",
                                 "borderTopEndRadius": 16,
                                 "borderTopLeftRadius": 20,
@@ -1965,11 +1966,10 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 "flex": 1,
                                 "flexDirection": "column",
                                 "justifyContent": "center",
-                                "margin": 37.5,
+                                "margin": 0,
                                 "marginBottom": 0,
-                                "marginLeft": 0,
-                                "marginRight": 0,
                                 "marginTop": "auto",
+                                "maxWidth": 750,
                                 "paddingBottom": 24,
                                 "paddingLeft": 24,
                                 "paddingRight": 24,
@@ -4668,6 +4668,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             style={
                               Object {
                                 "alignItems": "center",
+                                "alignSelf": "center",
                                 "backgroundColor": "#ffffff",
                                 "borderTopEndRadius": 16,
                                 "borderTopLeftRadius": 20,
@@ -4677,11 +4678,10 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 "flex": 1,
                                 "flexDirection": "column",
                                 "justifyContent": "center",
-                                "margin": 37.5,
+                                "margin": 0,
                                 "marginBottom": 0,
-                                "marginLeft": 0,
-                                "marginRight": 0,
                                 "marginTop": "auto",
+                                "maxWidth": 750,
                                 "paddingBottom": 24,
                                 "paddingLeft": 24,
                                 "paddingRight": 24,

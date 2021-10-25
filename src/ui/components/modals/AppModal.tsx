@@ -1,17 +1,14 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { ScrollView, useWindowDimensions, View } from 'react-native'
 import RNModal from 'react-native-modal'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { Style } from 'ui/components/Style'
-import { getSpacing, UniqueColors, ColorsEnum } from 'ui/theme'
+import { getSpacing, UniqueColors } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
 import { ModalIconProps } from './types'
-
-const webcss = `div[aria-modal="true"] { align-items: center }`
 
 export interface ModalStyles {
   height?: number
@@ -28,6 +25,10 @@ type Props = {
   onBackdropPress?: () => void
 } & ModalIconProps &
   ModalStyles
+
+// Without this, modal-enhanced-react-native-web use display: flex which can't be centered with align-self: center
+// and it also recompute the margin, preventing it from keeping it's bottom: 0 position
+const modalStyles = { flex: 1, margin: 0 }
 
 export const AppModal: FunctionComponent<Props> = ({
   height,
@@ -56,8 +57,7 @@ export const AppModal: FunctionComponent<Props> = ({
     onLeftIconPress,
   } as ModalIconProps
 
-  const { height: windowHeight } = useWindowDimensions()
-  const { appContentWidth } = useTheme()
+  const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const { bottom } = useCustomSafeInsets()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -81,8 +81,8 @@ export const AppModal: FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <Style>{webcss}</Style>
       <StyledModal
+        style={modalStyles}
         supportedOrientations={['portrait', 'landscape']}
         statusBarTranslucent
         hasBackdrop={shouldDisplayOverlay}
@@ -91,7 +91,7 @@ export const AppModal: FunctionComponent<Props> = ({
         onBackdropPress={handleOnBackdropPress()}
         testID="modal"
         deviceHeight={windowHeight}
-        deviceWidth={appContentWidth}
+        deviceWidth={windowWidth}
         maxWidth={maxWidth}
         height={height}>
         <ModalHeader title={title} numberOfLines={titleNumberOfLines} {...iconProps} />
@@ -126,21 +126,20 @@ const StyledScrollView = styled(ScrollView)({ width: '100%' })
 
 // @ts-ignore RNModal extends React.Component
 const StyledModal = styled(RNModal)<{ maxWidth: number; height: number }>(
-  ({ maxWidth, height }) => ({
+  ({ maxWidth, height, theme }) => ({
     position: 'absolute',
     height,
-    margin: 'auto',
     bottom: 0,
-    maxWidth,
+    marginTop: 'auto',
     marginBottom: 0,
-    marginRight: 0,
-    marginLeft: 0,
+    maxWidth: maxWidth ?? theme.appContentWidth,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     flexDirection: 'column',
-    backgroundColor: ColorsEnum.WHITE,
+    backgroundColor: theme.colors.white,
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
     width: '100%',
     borderTopStartRadius: getSpacing(4),
     borderTopEndRadius: getSpacing(4),
