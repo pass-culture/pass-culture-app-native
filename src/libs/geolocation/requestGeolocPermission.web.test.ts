@@ -1,7 +1,5 @@
 import { MockedFunction } from 'ts-jest/dist/utils/testing'
 
-import { BrowserGeolocPositionError } from 'libs/geolocation/getPosition.web'
-
 import { GeolocPermissionState } from './enums'
 import { requestGeolocPermission } from './requestGeolocPermission.web'
 
@@ -90,10 +88,7 @@ function mockGetCurrentPositionError() {
     if (!errorCallback) return Promise.resolve(undefined)
     return Promise.resolve(
       // @ts-expect-error: object passed as param matches the type GeolocationPositioError
-      errorCallback({
-        code: BrowserGeolocPositionError.POSITION_UNAVAILABLE,
-        message: '',
-      })
+      errorCallback({ code: 1, message: '' })
     )
   })
 }

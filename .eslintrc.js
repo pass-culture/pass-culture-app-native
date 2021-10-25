@@ -64,14 +64,14 @@ module.exports = {
       {
         object: 'window',
         property: 'GeolocationPositionError',
-        message: 'Use BrowserGeolocPositionError instead to support legacy browsers.',
+        message: 'Use getWebGeolocErrorFromCode() to support legacy browsers.',
       },
     ],
     'no-restricted-globals': [
       'error',
       {
         name: 'GeolocationPositionError',
-        message: 'Use BrowserGeolocPositionError instead to support legacy browsers.',
+        message: 'Use getWebGeolocErrorFromCode() to support legacy browsers.',
       },
     ],
     strict: ['error', 'global'],
