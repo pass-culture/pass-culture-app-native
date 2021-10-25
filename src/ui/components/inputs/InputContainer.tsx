@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
 
-export const StyledInput = styled.View({
+export const InputContainer = styled.View({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',

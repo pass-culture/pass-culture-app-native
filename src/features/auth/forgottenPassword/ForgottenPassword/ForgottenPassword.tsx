@@ -14,6 +14,7 @@ import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
+import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -131,7 +132,7 @@ export const ForgottenPassword: FunctionComponent = () => {
           </Typo.Body>
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
-        <StyledInput>
+        <InputContainer>
           <Typo.Body>{t`Adresse e-mail`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <TextInput
@@ -144,7 +145,7 @@ export const ForgottenPassword: FunctionComponent = () => {
             value={email}
           />
           {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={1} />}
-        </StyledInput>
+        </InputContainer>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           title={t`Valider`}
@@ -171,12 +172,4 @@ const ModalContent = styled.View({
 
 const CenteredText = styled.Text({
   textAlign: 'center',
-})
-
-const StyledInput = styled.View({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  width: '100%',
-  maxWidth: getSpacing(125),
 })
