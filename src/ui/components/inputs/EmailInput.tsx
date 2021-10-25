@@ -1,8 +1,9 @@
 import { t } from '@lingui/macro'
-import React, { Fragment, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
 import { accessibilityAndTestId } from 'tests/utils'
+import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
 import { Spacer, Typo } from 'ui/theme'
@@ -17,7 +18,7 @@ const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
   { label, email, onEmailChange, ...inputProps },
   forwardedRef
 ) => (
-  <Fragment>
+  <InputContainer>
     <Typo.Body>{label}</Typo.Body>
     <Spacer.Column numberOfSpaces={2} />
     <TextInput
@@ -31,7 +32,7 @@ const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
       {...inputProps}
       ref={forwardedRef}
     />
-  </Fragment>
+  </InputContainer>
 )
 
 export const EmailInput = forwardRef<RNTextInput, Props>(withRefEmailInput)
