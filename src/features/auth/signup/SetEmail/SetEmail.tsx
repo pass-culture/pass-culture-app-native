@@ -12,15 +12,14 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { randomAlphaString } from 'libs/random'
-import { accessibilityAndTestId } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
+import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
@@ -96,19 +95,13 @@ export const SetEmail: FunctionComponent = () => {
         />
         <SetEmailModalContent>
           <InputContainer>
-            <Typo.Body>{t`Adresse e-mail`}</Typo.Body>
-            <Spacer.Column numberOfSpaces={2} />
-            <TextInput
-              autoCapitalize="none"
+            <EmailInput
+              label={t`Adresse e-mail`}
+              email={email}
+              onEmailChange={onChangeEmail}
               autoFocus={true}
-              keyboardType="email-address"
-              onChangeText={onChangeEmail}
               onSubmitEditing={validateEmail}
-              placeholder={t`tonadresse@email.com`}
               ref={emailInput}
-              textContentType="emailAddress"
-              value={email}
-              {...accessibilityAndTestId(t`Entrée pour l'email`)}
             />
             <InputError
               visible={hasError}

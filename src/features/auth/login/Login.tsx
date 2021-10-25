@@ -18,11 +18,11 @@ import { storage } from 'libs/storage'
 import { accessibilityAndTestId } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -152,17 +152,11 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
       <Spacer.Column numberOfSpaces={7} />
       <InputContainer>
-        <Typo.Body>{t`Adresse e-mail`}</Typo.Body>
-        <Spacer.Column numberOfSpaces={2} />
-        <TextInput
-          autoCapitalize="none"
+        <EmailInput
+          label={t`Adresse e-mail`}
+          email={email}
+          onEmailChange={setEmail}
           isError={!!errorMessage}
-          keyboardType="email-address"
-          onChangeText={setEmail}
-          placeholder={t`tonadresse@email.com`}
-          textContentType="emailAddress"
-          value={email}
-          {...accessibilityAndTestId("Entrée pour l'email")}
         />
       </InputContainer>
       <Spacer.Column numberOfSpaces={6} />
