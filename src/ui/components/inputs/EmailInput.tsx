@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
-import React, { Fragment } from 'react'
+import React, { Fragment, forwardRef } from 'react'
+import { TextInput as RNTextInput } from 'react-native'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -12,7 +13,10 @@ interface Props extends TextInputProps {
   onEmailChange: (email: string) => void
 }
 
-export const EmailInput = ({ label, email, onEmailChange, ...inputProps }: Props) => (
+const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
+  { label, email, onEmailChange, ...inputProps },
+  forwardedRef
+) => (
   <Fragment>
     <Typo.Body>{label}</Typo.Body>
     <Spacer.Column numberOfSpaces={2} />
@@ -25,6 +29,9 @@ export const EmailInput = ({ label, email, onEmailChange, ...inputProps }: Props
       value={email}
       {...accessibilityAndTestId("Entrée pour l'email")}
       {...inputProps}
+      ref={forwardedRef}
     />
   </Fragment>
 )
+
+export const EmailInput = forwardRef<RNTextInput, Props>(withRefEmailInput)
