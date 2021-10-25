@@ -350,10 +350,7 @@ Array [
         paddingBottom={16}
         style={
           Array [
-            Object {
-              "alignSelf": "flex-end",
-              "flexDirection": "row",
-            },
+            Object {},
           ]
         }
       >

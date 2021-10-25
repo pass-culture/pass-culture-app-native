@@ -72,7 +72,4 @@ const getScrollViewContentContainerStyle = (keyboardHeight: number): StyleProp<V
   backgroundColor: ColorsEnum.WHITE,
 })
 
-const ButtonContainer = styled.View<{ paddingBottom: number }>({
-  flexDirection: 'row',
-  alignSelf: 'flex-end',
-})
+const ButtonContainer = styled.View<{ paddingBottom: number }>({})
