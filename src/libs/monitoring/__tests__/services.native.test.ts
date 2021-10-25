@@ -15,6 +15,7 @@ describe('eventMonitoring', () => {
         dsn: env.SENTRY_DSN,
         environment: env.ENV,
         release: version,
+        tracesSampleRate: 0.01,
       })
     })
 
