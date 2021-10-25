@@ -7,7 +7,7 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
-import { InputContainer } from './InputContainer'
+import { StyledInputContainer } from './StyledInputContainer'
 import { getCustomSearchInputProps, getRNTextInputProps, SearchInputProps } from './types'
 
 const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInputProps> = (
@@ -28,7 +28,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   }
 
   return (
-    <InputContainer inputHeight={props.inputHeight} isFocus={isFocus}>
+    <StyledInputContainer inputHeight={props.inputHeight} isFocus={isFocus}>
       {!!LeftIcon && <LeftIcon />}
       <Spacer.Row numberOfSpaces={2} />
       <BaseTextInput
@@ -42,7 +42,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         {...accessibilityAndTestId(t`Barre de recherche des offres`)}
       />
       <RightIcon />
-    </InputContainer>
+    </StyledInputContainer>
   )
 }
 

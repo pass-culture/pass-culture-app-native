@@ -2,7 +2,7 @@ import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
 import { BaseTextInput } from './BaseTextInput'
-import { InputContainer } from './InputContainer'
+import { StyledInputContainer } from './StyledInputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
 const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
@@ -23,9 +23,9 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   }
 
   return (
-    <InputContainer isFocus={isFocus} isError={customProps.isError}>
+    <StyledInputContainer isFocus={isFocus} isError={customProps.isError}>
       <BaseTextInput {...nativeProps} ref={forwardedRef} onFocus={onFocus} onBlur={onBlur} />
-    </InputContainer>
+    </StyledInputContainer>
   )
 }
 
