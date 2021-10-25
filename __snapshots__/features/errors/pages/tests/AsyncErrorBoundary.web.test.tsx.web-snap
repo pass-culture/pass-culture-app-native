@@ -106,7 +106,7 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 176px;"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; min-width: 120px;"
           >
             <div
               aria-label="Réessayer"
@@ -238,7 +238,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 176px;"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; min-width: 120px;"
         >
           <div
             aria-label="Réessayer"
