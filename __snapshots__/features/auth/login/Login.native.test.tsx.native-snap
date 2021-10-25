@@ -5,20 +5,20 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -284,11 +284,11 @@
-                      },
-                    ]
-                  }
-                  textContentType=\\"emailAddress\\"
-                  underlineColorAndroid=\\"transparent\\"
--                 value=\\"\\"
-+                 value=\\"email@gmail.com\\"
-                />
+@@ -297,11 +297,11 @@
+                        },
+                      ]
+                    }
+                    textContentType=\\"emailAddress\\"
+                    underlineColorAndroid=\\"transparent\\"
+-                   value=\\"\\"
++                   value=\\"email@gmail.com\\"
+                  />
+                </View>
               </View>
             </View>
             <View
-              numberOfSpaces={6}
-@@ -399,11 +399,11 @@
+@@ -413,11 +413,11 @@
                       },
                     ]
                   }
@@ -31,7 +31,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -502,22 +502,22 @@
+@@ -516,22 +516,22 @@
               }
             />
             <View
@@ -56,7 +56,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -536,20 +536,20 @@
+@@ -550,20 +550,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -146,41 +146,41 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -226,18 +275,18 @@
-                    },
-                  ]
-                }
-              />
-              <View
--               borderColor=\\"#c7c7cc\\"
-+               borderColor=\\"#b60025\\"
-                height=\\"small\\"
-                style={
-                  Array [
-                    Object {
-                      \\"alignItems\\": \\"center\\",
-                      \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#c7c7cc\\",
-+                     \\"borderColor\\": \\"#b60025\\",
-                      \\"borderRadius\\": 22,
-                      \\"borderStyle\\": \\"solid\\",
-                      \\"borderWidth\\": 1,
-                      \\"flexDirection\\": \\"row\\",
-                      \\"height\\": 40,
-@@ -284,11 +333,11 @@
+@@ -239,18 +288,18 @@
                       },
                     ]
                   }
-                  textContentType=\\"emailAddress\\"
-                  underlineColorAndroid=\\"transparent\\"
--                 value=\\"\\"
-+                 value=\\"email@gmail.com\\"
                 />
+                <View
+-                 borderColor=\\"#c7c7cc\\"
++                 borderColor=\\"#b60025\\"
+                  height=\\"small\\"
+                  style={
+                    Array [
+                      Object {
+                        \\"alignItems\\": \\"center\\",
+                        \\"backgroundColor\\": \\"#ffffff\\",
+-                       \\"borderColor\\": \\"#c7c7cc\\",
++                       \\"borderColor\\": \\"#b60025\\",
+                        \\"borderRadius\\": 22,
+                        \\"borderStyle\\": \\"solid\\",
+                        \\"borderWidth\\": 1,
+                        \\"flexDirection\\": \\"row\\",
+                        \\"height\\": 40,
+@@ -297,11 +346,11 @@
+                        },
+                      ]
+                    }
+                    textContentType=\\"emailAddress\\"
+                    underlineColorAndroid=\\"transparent\\"
+-                   value=\\"\\"
++                   value=\\"email@gmail.com\\"
+                  />
+                </View>
               </View>
             </View>
             <View
-              numberOfSpaces={6}
-@@ -336,18 +385,18 @@
+@@ -350,18 +399,18 @@
                     },
                   ]
                 }
@@ -201,7 +201,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -399,11 +448,11 @@
+@@ -413,11 +462,11 @@
                       },
                     ]
                   }
@@ -214,7 +214,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -502,22 +551,22 @@
+@@ -516,22 +565,22 @@
               }
             />
             <View
@@ -239,7 +239,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -536,20 +585,20 @@
+@@ -550,20 +599,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -329,41 +329,41 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -226,18 +275,18 @@
-                    },
-                  ]
-                }
-              />
-              <View
--               borderColor=\\"#c7c7cc\\"
-+               borderColor=\\"#b60025\\"
-                height=\\"small\\"
-                style={
-                  Array [
-                    Object {
-                      \\"alignItems\\": \\"center\\",
-                      \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#c7c7cc\\",
-+                     \\"borderColor\\": \\"#b60025\\",
-                      \\"borderRadius\\": 22,
-                      \\"borderStyle\\": \\"solid\\",
-                      \\"borderWidth\\": 1,
-                      \\"flexDirection\\": \\"row\\",
-                      \\"height\\": 40,
-@@ -284,11 +333,11 @@
+@@ -239,18 +288,18 @@
                       },
                     ]
                   }
-                  textContentType=\\"emailAddress\\"
-                  underlineColorAndroid=\\"transparent\\"
--                 value=\\"\\"
-+                 value=\\"email@gmail.com\\"
                 />
+                <View
+-                 borderColor=\\"#c7c7cc\\"
++                 borderColor=\\"#b60025\\"
+                  height=\\"small\\"
+                  style={
+                    Array [
+                      Object {
+                        \\"alignItems\\": \\"center\\",
+                        \\"backgroundColor\\": \\"#ffffff\\",
+-                       \\"borderColor\\": \\"#c7c7cc\\",
++                       \\"borderColor\\": \\"#b60025\\",
+                        \\"borderRadius\\": 22,
+                        \\"borderStyle\\": \\"solid\\",
+                        \\"borderWidth\\": 1,
+                        \\"flexDirection\\": \\"row\\",
+                        \\"height\\": 40,
+@@ -297,11 +346,11 @@
+                        },
+                      ]
+                    }
+                    textContentType=\\"emailAddress\\"
+                    underlineColorAndroid=\\"transparent\\"
+-                   value=\\"\\"
++                   value=\\"email@gmail.com\\"
+                  />
+                </View>
               </View>
             </View>
             <View
-              numberOfSpaces={6}
-@@ -336,18 +385,18 @@
+@@ -350,18 +399,18 @@
                     },
                   ]
                 }
@@ -384,7 +384,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -399,11 +448,11 @@
+@@ -413,11 +462,11 @@
                       },
                     ]
                   }
@@ -397,7 +397,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -502,22 +551,22 @@
+@@ -516,22 +565,22 @@
               }
             />
             <View
@@ -422,7 +422,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -536,20 +585,20 @@
+@@ -550,20 +599,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -512,41 +512,41 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -226,18 +275,18 @@
-                    },
-                  ]
-                }
-              />
-              <View
--               borderColor=\\"#c7c7cc\\"
-+               borderColor=\\"#b60025\\"
-                height=\\"small\\"
-                style={
-                  Array [
-                    Object {
-                      \\"alignItems\\": \\"center\\",
-                      \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#c7c7cc\\",
-+                     \\"borderColor\\": \\"#b60025\\",
-                      \\"borderRadius\\": 22,
-                      \\"borderStyle\\": \\"solid\\",
-                      \\"borderWidth\\": 1,
-                      \\"flexDirection\\": \\"row\\",
-                      \\"height\\": 40,
-@@ -284,11 +333,11 @@
+@@ -239,18 +288,18 @@
                       },
                     ]
                   }
-                  textContentType=\\"emailAddress\\"
-                  underlineColorAndroid=\\"transparent\\"
--                 value=\\"\\"
-+                 value=\\"email@gmail.com\\"
                 />
+                <View
+-                 borderColor=\\"#c7c7cc\\"
++                 borderColor=\\"#b60025\\"
+                  height=\\"small\\"
+                  style={
+                    Array [
+                      Object {
+                        \\"alignItems\\": \\"center\\",
+                        \\"backgroundColor\\": \\"#ffffff\\",
+-                       \\"borderColor\\": \\"#c7c7cc\\",
++                       \\"borderColor\\": \\"#b60025\\",
+                        \\"borderRadius\\": 22,
+                        \\"borderStyle\\": \\"solid\\",
+                        \\"borderWidth\\": 1,
+                        \\"flexDirection\\": \\"row\\",
+                        \\"height\\": 40,
+@@ -297,11 +346,11 @@
+                        },
+                      ]
+                    }
+                    textContentType=\\"emailAddress\\"
+                    underlineColorAndroid=\\"transparent\\"
+-                   value=\\"\\"
++                   value=\\"email@gmail.com\\"
+                  />
+                </View>
               </View>
             </View>
             <View
-              numberOfSpaces={6}
-@@ -336,18 +385,18 @@
+@@ -350,18 +399,18 @@
                     },
                   ]
                 }
@@ -567,7 +567,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -399,11 +448,11 @@
+@@ -413,11 +462,11 @@
                       },
                     ]
                   }
@@ -580,7 +580,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -502,22 +551,22 @@
+@@ -516,22 +565,22 @@
               }
             />
             <View
@@ -605,7 +605,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -536,20 +585,20 @@
+@@ -550,20 +599,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
