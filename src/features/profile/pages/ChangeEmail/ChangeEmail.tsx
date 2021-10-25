@@ -3,10 +3,10 @@ import React from 'react'
 
 import { ProfileContainer } from 'features/profile/components/reusables'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
-import { ChangeEmailEmailInput } from 'features/profile/pages/ChangeEmail/ChangeEmailEmailInput'
 import { useSafeState } from 'libs/hooks'
 import { accessibilityAndTestId } from 'tests/utils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { Spacer } from 'ui/theme'
 
@@ -21,7 +21,7 @@ export function ChangeEmail() {
         <Spacer.Column numberOfSpaces={18} />
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
-        <ChangeEmailEmailInput email={email} onEmailChange={setEmail} />
+        <EmailInput label={t`Nouvel e-mail`} email={email} onEmailChange={setEmail} />
         <Spacer.Column numberOfSpaces={4} />
         <PasswordInput
           label={t`Mot de passe`}
