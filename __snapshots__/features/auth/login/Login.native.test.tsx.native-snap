@@ -18,10 +18,10 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
               </View>
             </View>
             <View
-@@ -413,11 +413,11 @@
-                      },
+@@ -416,11 +416,11 @@
                     ]
                   }
+                  testID=\\"Entrée pour le mot de passe\\"
                   textContentType=\\"password\\"
                   underlineColorAndroid=\\"transparent\\"
 -                 value=\\"\\"
@@ -31,7 +31,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -516,22 +516,22 @@
+@@ -519,22 +519,22 @@
               }
             />
             <View
@@ -56,7 +56,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -550,20 +550,20 @@
+@@ -553,20 +553,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -201,10 +201,10 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -413,11 +462,11 @@
-                      },
+@@ -416,11 +465,11 @@
                     ]
                   }
+                  testID=\\"Entrée pour le mot de passe\\"
                   textContentType=\\"password\\"
                   underlineColorAndroid=\\"transparent\\"
 -                 value=\\"\\"
@@ -214,7 +214,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -516,22 +565,22 @@
+@@ -519,22 +568,22 @@
               }
             />
             <View
@@ -239,7 +239,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -550,20 +599,20 @@
+@@ -553,20 +602,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -384,10 +384,10 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -413,11 +462,11 @@
-                      },
+@@ -416,11 +465,11 @@
                     ]
                   }
+                  testID=\\"Entrée pour le mot de passe\\"
                   textContentType=\\"password\\"
                   underlineColorAndroid=\\"transparent\\"
 -                 value=\\"\\"
@@ -397,7 +397,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -516,22 +565,22 @@
+@@ -519,22 +568,22 @@
               }
             />
             <View
@@ -422,7 +422,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -550,20 +599,20 @@
+@@ -553,20 +602,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -567,10 +567,10 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -413,11 +462,11 @@
-                      },
+@@ -416,11 +465,11 @@
                     ]
                   }
+                  testID=\\"Entrée pour le mot de passe\\"
                   textContentType=\\"password\\"
                   underlineColorAndroid=\\"transparent\\"
 -                 value=\\"\\"
@@ -580,7 +580,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -516,22 +565,22 @@
+@@ -519,22 +568,22 @@
               }
             />
             <View
@@ -605,7 +605,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -550,20 +599,20 @@
+@@ -553,20 +602,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
