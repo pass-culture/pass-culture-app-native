@@ -1,4 +1,4 @@
-import { isEmailValid } from './emailCheck'
+import { isEmailValid, useIsCurrentUserEmail } from './emailCheck'
 
 describe('isEmailValid function', () => {
   it.each([
@@ -20,5 +20,22 @@ describe('isEmailValid function', () => {
   ])('should reject a well formated email: %s', (email) => {
     const isValid = isEmailValid(email)
     expect(isValid).toEqual(false)
+  })
+})
+
+const currentUserEmail = 'current@gmail.com'
+const newUserEmail = 'new@gmail.com'
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({ data: { email: currentUserEmail } })),
+}))
+
+describe('useIsCurrentUserEmail function', () => {
+  it('should return true if the current user email is the same than the new one', () => {
+    const isCurrentUserEmail = useIsCurrentUserEmail(currentUserEmail)
+    expect(isCurrentUserEmail).toEqual(true)
+  })
+  it('should return false if the current user email is different than the new one', () => {
+    const isCurrentUserEmail = useIsCurrentUserEmail(newUserEmail)
+    expect(isCurrentUserEmail).toEqual(false)
   })
 })
