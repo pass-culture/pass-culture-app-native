@@ -17,8 +17,14 @@ const mockedUseUserProfileInfo = useUserProfileInfo as jest.MockedFunction<
   typeof useUserProfileInfo
 >
 jest.mock('features/home/api')
-function mockUserProfileInfo({ user, isError }: { user?: UserProfileResponse; isError?: boolean }) {
-  mockedUseUserProfileInfo.mockReturnValue({ data: user, isError } as UseQueryResult<
+function mockUserProfileInfo({
+  user,
+  isLoading,
+}: {
+  user: UserProfileResponse | undefined
+  isLoading: boolean
+}) {
+  mockedUseUserProfileInfo.mockReturnValue({ data: user, isLoading } as UseQueryResult<
     UserProfileResponse,
     unknown
   >)
@@ -36,7 +42,7 @@ const DEFAULT_USER = {
   isBeneficiary: true,
 } as UserProfileResponse
 beforeEach(() => {
-  mockUserProfileInfo({ user: DEFAULT_USER })
+  mockUserProfileInfo({ user: DEFAULT_USER, isLoading: false })
   mockUseCurrentRoute('CulturalSurvey')
 })
 
@@ -54,27 +60,30 @@ describe('<CulturalSurvey />', () => {
     expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeFalsy()
   })
 
-  it('should display loading screen while user info is undefined', async () => {
-    mockUserProfileInfo({ user: undefined, isError: false })
+  it('should display loading screen while user info is undefined and isLoading is true', async () => {
+    mockUserProfileInfo({ user: undefined, isLoading: true })
     const renderAPI = await renderCulturalSurveyWithNavigation()
     expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeFalsy()
     expect(renderAPI.queryByTestId('Loading-Animation')).toBeTruthy()
   })
 
-  it('should navigate to Home when useUserProfileInfo has an error', async () => {
-    mockUserProfileInfo({ isError: true })
+  it('should navigate to Home when user is undefined and isLoading is false', async () => {
+    mockUserProfileInfo({ user: undefined, isLoading: false })
     await renderCulturalSurveyWithNavigation()
     expect(navigate).toHaveBeenNthCalledWith(1, ...homeNavConfig)
   })
 
   it('should navigate to Home if user has already completed survey', async () => {
-    mockUserProfileInfo({ user: { ...DEFAULT_USER, needsToFillCulturalSurvey: false } })
+    mockUserProfileInfo({
+      user: { ...DEFAULT_USER, needsToFillCulturalSurvey: false },
+      isLoading: false,
+    })
     await renderCulturalSurveyWithNavigation()
     expect(navigate).toHaveBeenNthCalledWith(1, ...homeNavConfig)
   })
 
   it('should navigate to Home if user is not beneficiary', async () => {
-    mockUserProfileInfo({ user: { ...DEFAULT_USER, isBeneficiary: false } })
+    mockUserProfileInfo({ user: { ...DEFAULT_USER, isBeneficiary: false }, isLoading: false })
     await renderCulturalSurveyWithNavigation()
     expect(navigate).toHaveBeenNthCalledWith(1, ...homeNavConfig)
   })

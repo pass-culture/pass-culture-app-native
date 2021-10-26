@@ -43,27 +43,22 @@ export function withCulturalSurveyProvider(
       CulturalSurveyConfig | undefined
     >()
     const onCulturalSurveyExit = useOnCulturalSurveyExit()
-    const { data: user, isError: isUserError } = useUserProfileInfo()
+    const { data: user, isLoading: isLoadingUser } = useUserProfileInfo()
 
     const currentRoute = useCurrentRoute()
     const { navigate } = useNavigation<UseNavigationType>()
 
     useEffect(() => {
-      if (isUserError) {
-        navigate(...homeNavConfig)
+      if (isLoadingUser) return
+      if (user && shouldShowCulturalSurvey(user)) {
+        const userId = encodeURIComponent(uuidv1()) // legacy issue : the query param userId is not the actual `user.id`
+        const userPk = user.id.toString()
+        const url = `https://passculture.typeform.com/to/${FORM_ID}?userId=${userId}&userPk=${userPk}&source=${source}`
+        setCulturalSurveyConfig({ url, formId: FORM_ID, userId, userPk, source })
         return
       }
-      if (user) {
-        if (shouldShowCulturalSurvey(user)) {
-          const userId = encodeURIComponent(uuidv1()) // legacy issue : the query param userId is not the actual `user.id`
-          const userPk = user.id.toString()
-          const url = `https://passculture.typeform.com/to/${FORM_ID}?userId=${userId}&userPk=${userPk}&source=${source}`
-          setCulturalSurveyConfig({ url, formId: FORM_ID, userId, userPk, source })
-        } else {
-          navigate(...homeNavConfig)
-        }
-      }
-    }, [user, isUserError])
+      navigate(...homeNavConfig)
+    }, [user, isLoadingUser])
 
     if (currentRoute?.name !== 'CulturalSurvey') return null
     if (!culturalSurveyConfig) return <LoadingPage />
