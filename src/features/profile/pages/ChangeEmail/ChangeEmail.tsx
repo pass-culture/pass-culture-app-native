@@ -11,22 +11,22 @@ import { useSafeState } from 'libs/hooks'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { isEmailValid } from 'ui/components/inputs/emailCheck'
+import { isEmailValid, useIsCurrentUserEmail } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export function ChangeEmail() {
-  const [email, setEmail] = useSafeState('')
   const scrollRef = useRef<ScrollView | null>(null)
+  const [email, setEmail] = useSafeState('')
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [password, setPassword] = useSafeState('')
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
+  const isCurrentUserEmail = useIsCurrentUserEmail(email)
 
-  // TODO (PC-11345) : Add email check different from the current one for disabled condition
-  const disabled = !isLongEnough(password) && !isEmailValid(email)
+  const disabled = !isLongEnough(password) || !isEmailValid(email) || isCurrentUserEmail
 
   // TODO (PC-11395) : Add correct function
   const submitEmailChange = () => 'submitEmailChange'
