@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
-import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils'
+import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils/useValidateEmail'
 import { useSafeState } from 'libs/hooks'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
