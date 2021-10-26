@@ -11,6 +11,7 @@ import { useSafeState } from 'libs/hooks'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -24,8 +25,8 @@ export function ChangeEmail() {
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  // TODO (PC-11345) : Add email check _@_._ + different from the current one for disabled condition
-  const disabled = !isLongEnough(password)
+  // TODO (PC-11345) : Add email check different from the current one for disabled condition
+  const disabled = !isLongEnough(password) && !isEmailValid(email)
 
   // TODO (PC-11395) : Add correct function
   const submitEmailChange = () => 'submitEmailChange'
