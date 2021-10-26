@@ -10,7 +10,6 @@ import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
-import { Clock } from 'ui/svg/icons/Clock'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -74,7 +73,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     } else {
       body = (
         <BodyContainer testID="body-container-18-idcheck-completed">
-          <IdCheckProcessingBadge icon={Clock} lastUpdated={props.lastUpdated} />
+          <IdCheckProcessingBadge lastUpdated={props.lastUpdated} />
         </BodyContainer>
       )
     }
