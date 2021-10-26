@@ -16,7 +16,7 @@ export const mockDefaultSettings: SettingsResponse = {
   enableNativeIdCheckVerboseDebugging: false,
   idCheckAddressAutocompletion: false,
   objectStorageUrl: 'http://localhost-storage',
-  useAppSearch: true,
+  useAppSearch: false,
   isWebappV2Enabled: false,
   enableNativeEacIndividual: false,
   accountCreationMinimumAge: 15,
