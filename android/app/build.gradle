@@ -174,6 +174,7 @@ android {
         resValue "string", "BATCH_API_KEY", project.env.get("BATCH_API_KEY_ANDROID")
         resValue "string", "WEBAPP_NATIVE_REDIRECTION_DOMAIN", project.env.get("WEBAPP_NATIVE_REDIRECTION_DOMAIN")
         resValue "string", "WEBAPP_V2_DOMAIN", project.env.get("WEBAPP_V2_DOMAIN")
+        resValue "string", "EMAIL_PROVIDER_CUSTOM_DOMAIN", project.env.get("EMAIL_PROVIDER_CUSTOM_DOMAIN")
         versionCode (packageJson.build as Integer)
         versionName packageJson.version
         buildConfigField "String", "CODEPUSH_KEY", "\"${project.env.get("CODEPUSH_KEY_ANDROID")}\"" // @codepush
