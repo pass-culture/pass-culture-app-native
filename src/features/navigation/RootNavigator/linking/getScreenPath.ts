@@ -1,4 +1,4 @@
-import { AllNavParamList } from 'features/navigation/RootNavigator'
+import { AllNavParamList, isScreen } from 'features/navigation/RootNavigator'
 
 import { linking } from './index'
 
@@ -9,9 +9,8 @@ export function getScreenPath<RouteName extends keyof AllNavParamList>(
   params: AllNavParamList[RouteName]
 ) {
   let state: NavigationState = { routes: [{ name: screen, params }] }
-  if (screen === 'TabNavigator') {
-    const nestedRoute = params as AllNavParamList['TabNavigator']
-    const nestedRoutes = [{ name: nestedRoute.screen, params: nestedRoute.params }]
+  if (isScreen('TabNavigator', screen, params)) {
+    const nestedRoutes = [{ name: params.screen, params: params.params }]
     state = { routes: [{ name: screen, state: { routes: nestedRoutes } }] }
   }
   return linking.getPathFromState(state, linking.config)
