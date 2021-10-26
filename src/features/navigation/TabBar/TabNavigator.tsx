@@ -7,7 +7,6 @@ import { initialRouteName, TabScreens } from 'features/navigation/TabBar/routes'
 import { TabStack } from 'features/navigation/TabBar/Stack'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabNavigationStateType } from 'features/navigation/TabBar/types'
-import { IS_WEB_RELEASE } from 'libs/web'
 
 import { TabBar } from './TabBar'
 
@@ -23,7 +22,6 @@ export const TabNavigator: React.FC = () => {
 
   function renderTabBar({ state, navigation }: BottomTabBarProps<BottomTabBarOptions>) {
     setTabNavigationState(state as TabNavigationStateType)
-    if (IS_WEB_RELEASE) return undefined
     return <TabBar navigation={navigation} hidden={Platform.OS === 'web' && !isMobile} />
   }
 

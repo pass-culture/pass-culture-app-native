@@ -9,7 +9,6 @@ import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/g
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { Profile } from 'features/profile/pages/Profile'
 import { Search } from 'features/search/pages/Search'
-import { redirectUnreleasedScreens } from 'libs/web'
 
 import { TabStack } from './Stack'
 import { TabRoute } from './types'
@@ -18,7 +17,7 @@ export const initialRouteName = 'Home'
 
 const Home = withAsyncErrorBoundary(HomeComponent)
 
-const routesBeforeReleaseCheck: TabRoute[] = [
+export const routes: TabRoute[] = [
   {
     name: 'Home',
     component: Home,
@@ -55,8 +54,6 @@ const routesBeforeReleaseCheck: TabRoute[] = [
     options: { title: t`Profil` },
   },
 ]
-
-export const routes = redirectUnreleasedScreens(routesBeforeReleaseCheck)
 
 export const menu: Record<string, string> = {
   Home: t`Accueil`,
