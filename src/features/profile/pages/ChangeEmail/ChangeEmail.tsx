@@ -9,7 +9,6 @@ import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
 import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils'
 import { useSafeState } from 'libs/hooks'
-import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
@@ -51,7 +50,6 @@ export function ChangeEmail() {
           onChangeText={setPassword}
           placeholder={t`Ton mot de passe`}
           textContentType="password"
-          {...accessibilityAndTestId(t`Entrée pour le mot de passe`)}
         />
         <Spacer.Flex flex={1} />
         {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}

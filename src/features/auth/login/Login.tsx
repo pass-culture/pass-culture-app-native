@@ -15,7 +15,6 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
-import { accessibilityAndTestId } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
@@ -168,7 +167,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         isError={!!errorMessage}
         textContentType="password"
         onSubmitEditing={onSubmit}
-        {...accessibilityAndTestId(t`Entrée pour le mot de passe`)}
       />
       <Spacer.Column numberOfSpaces={7} />
       <ForgottenPasswordContainer>

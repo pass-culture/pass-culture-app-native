@@ -55,6 +55,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           onBlur={onBlur}
           secureTextEntry={shouldHidePassword}
           ref={forwardedRef}
+          {...accessibilityAndTestId('Entrée pour le mot de passe')}
         />
         <IconTouchableOpacity
           {...accessibilityAndTestId(t`Basculer l'affichage du mot de passe`)}
