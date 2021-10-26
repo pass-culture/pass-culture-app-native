@@ -2,7 +2,7 @@ import { LinkingOptions } from '@react-navigation/native'
 
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { WEBAPP_V2_URL, EMAIL_PROVIDER_CUSTOM_URL } from 'libs/environment'
 import { RequireField } from 'libs/typesUtils/typeHelpers'
 
 import { getInitialURL } from './getInitialUrl'
@@ -13,7 +13,13 @@ import { subscribe } from './subscribe'
 const PASS_CULTURE_PREFIX_URL = 'passculture://'
 
 export const linking: RequireField<LinkingOptions, 'getStateFromPath' | 'getPathFromState'> = {
-  prefixes: [WEBAPP_V2_URL, WEBAPP_NATIVE_REDIRECTION_URL, PASS_CULTURE_PREFIX_URL], // must NOT be empty
+  prefixes: [
+    // must NOT be empty
+    WEBAPP_V2_URL,
+    WEBAPP_NATIVE_REDIRECTION_URL,
+    PASS_CULTURE_PREFIX_URL,
+    EMAIL_PROVIDER_CUSTOM_URL,
+  ],
   getInitialURL: getInitialURL,
   subscribe: subscribe,
   getStateFromPath: customGetStateFromPath,
