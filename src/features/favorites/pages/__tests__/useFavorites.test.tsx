@@ -139,7 +139,7 @@ describe('useAddFavorite hook', () => {
     result.current.mutate({ offerId })
     await superFlushWithAct()
 
-    waitForExpect(() => {
+    await waitForExpect(() => {
       expect(onSuccess).toBeCalledWith({
         ...addFavoriteJsonResponseSnap,
         offer: {
@@ -177,7 +177,7 @@ describe('useAddFavorite hook', () => {
     result.current.mutate({ offerId })
     await superFlushWithAct()
 
-    waitForExpect(() => {
+    await waitForExpect(() => {
       expect(onSuccess).not.toBeCalled()
       expect(onError).toBeCalled()
     })
@@ -214,7 +214,7 @@ describe('useRemoveFavorite hook', () => {
     result.current.mutate(favoriteId)
     await superFlushWithAct()
 
-    waitForExpect(() => {
+    await waitForExpect(() => {
       expect(onError).not.toBeCalled()
     })
   })
@@ -246,7 +246,7 @@ describe('useRemoveFavorite hook', () => {
     result.current.mutate(favoriteId)
     await superFlushWithAct()
 
-    waitForExpect(() => {
+    await waitForExpect(() => {
       expect(onError).toBeCalled()
     })
   })
@@ -278,7 +278,7 @@ describe('useFavorite hook', () => {
     })
     await superFlushWithAct()
 
-    waitForExpect(() => {
+    await waitForExpect(() => {
       expect(result.current).toEqual({
         ...favorite,
         offer: {
@@ -311,7 +311,7 @@ describe('useFavorite hook', () => {
         ),
     })
     await superFlushWithAct()
-    waitForExpect(() => {
+    await waitForExpect(() => {
       expect(result.current).toEqual(undefined)
     })
   })
