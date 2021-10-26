@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-
 export type RequestCredentials = 'omit' | 'same-origin' | 'include' | undefined
 
 export type Headers = {
@@ -42,13 +40,7 @@ async function makeExternalRequest<ResponseBody>(
   }
 
   if (!response.ok) {
-    throw new Error(
-      t({
-        id: 'request error',
-        values: { url, status: response.status },
-        message: 'Échec de la requête {url}, code: {status}',
-      })
-    )
+    throw new Error(`Échec de la requête ${url}, code: ${response.status}`)
   }
 
   const json = await response.json()
@@ -57,12 +49,12 @@ async function makeExternalRequest<ResponseBody>(
 
 export class NotAuthenticatedError extends Error {
   constructor() {
-    super(t`Erreur d'authentification`)
+    super(`Erreur d'authentification`)
   }
 }
 
 export class FailedToRefreshAccessTokenError extends Error {
   constructor() {
-    super(t`Erreur lors de la récupération du token d'accès`)
+    super(`Erreur lors de la récupération du token d'accès`)
   }
 }
