@@ -265,6 +265,8 @@ Array [
           }
         >
           <TextInput
+            accessibilityLabel="Entrée pour le mot de passe"
+            accessible={true}
             allowFontScaling={true}
             onBlur={[Function]}
             onChangeText={[Function]}
@@ -295,6 +297,7 @@ Array [
                 },
               ]
             }
+            testID="Entrée pour le mot de passe"
             textContentType="password"
             underlineColorAndroid="transparent"
             value=""
