@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { forwardRef, useState } from 'react'
 import {
   NativeSyntheticEvent,
@@ -56,7 +57,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           ref={forwardedRef}
         />
         <IconTouchableOpacity
-          {...accessibilityAndTestId("Basculer l'affichage du mot de passe")}
+          {...accessibilityAndTestId(t`Basculer l'affichage du mot de passe`)}
           onPress={togglePasswordDisplay}>
           {shouldHidePassword ? (
             <EyeSlash {...accessibilityAndTestId('eye-slash')} size="100%" />

@@ -47,7 +47,7 @@ export function ChangeEmail() {
           onChangeText={setPassword}
           placeholder={t`Ton mot de passe`}
           textContentType="password"
-          {...accessibilityAndTestId('Entrée pour le mot de passe')}
+          {...accessibilityAndTestId(t`Entrée pour le mot de passe`)}
         />
         <Spacer.Flex flex={1} />
         {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}

@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { Platform, TextInput } from 'react-native'
 import { MaskedTextInput } from 'react-native-mask-text'
@@ -6,6 +7,7 @@ import styled from 'styled-components/native'
 // @ts-ignore
 import validateDate from 'validate-date'
 
+import { accessibilityAndTestId } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 export enum DatePartType {
@@ -153,6 +155,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
           onFocus={() => setHasFocus(true)}
           onBlur={() => setHasFocus(false)}
           type={'custom'}
+          {...accessibilityAndTestId(t`Entrée pour la date de naissance`)}
         />
         <ValidationBar
           testID={'date-bar'}
