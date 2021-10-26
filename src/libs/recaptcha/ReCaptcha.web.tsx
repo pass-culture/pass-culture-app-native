@@ -10,6 +10,16 @@ type Props = {
   isVisible: boolean
 }
 
+// This will move up and reduce recaptcha challenge when viewport height is lower than 440px
+const css = `
+   @media only screen and (max-height : 440px) {
+      div[style*="transition: visibility"] > div[style*="position: fixed"] + div[style*="position: absolute"] {
+          transform: scale(0.75);
+          transform-origin: 50% 0%;
+      }
+   }
+`
+
 export function ReCaptcha(props: Props) {
   const reCaptchaContainerRef = useRef<HTMLDivElement>(null)
 
@@ -78,5 +88,10 @@ export function ReCaptcha(props: Props) {
     }
   }, [props.isVisible])
 
-  return <div id="recaptcha-container" ref={reCaptchaContainerRef} />
+  return (
+    <React.Fragment>
+      <style type="text/css">{css}</style>
+      <div id="recaptcha-container" ref={reCaptchaContainerRef} />
+    </React.Fragment>
+  )
 }
