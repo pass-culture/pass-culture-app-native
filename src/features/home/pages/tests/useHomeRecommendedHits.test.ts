@@ -5,7 +5,7 @@ import { rest } from 'msw'
 import { SearchGroupNameEnum } from 'api/gen'
 import { RecommendationPane } from 'features/home/contentful/moduleTypes'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import * as SearchModule from 'libs/search/fetch/search'
+import * as AlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -21,8 +21,8 @@ jest.mock('features/auth/settings')
 
 const objectIds = mockedAlgoliaResponse.hits.map(({ objectID }) => objectID)
 
-const fetchObjects = jest.fn().mockResolvedValue({ results: mockedAlgoliaResponse.hits })
-jest.spyOn(SearchModule, 'fetchObjects').mockImplementation(fetchObjects)
+const fetchHits = jest.fn().mockResolvedValue({ results: mockedAlgoliaResponse.hits })
+jest.spyOn(AlgoliaModule, 'fetchAlgoliaHits').mockImplementation(fetchHits)
 
 const endpoint = getRecommendationEndpoint(mockUserId, null) as string
 
@@ -47,13 +47,13 @@ describe('useHomeRecommendedHits', () => {
     })
 
     await waitFor(() => {
-      expect(fetchObjects).not.toHaveBeenCalled()
+      expect(fetchHits).not.toHaveBeenCalled()
       expect(queryCache.get('recommendationOfferIds')).toBeUndefined()
       expect(queryCache.get('recommendationHits')).toBeUndefined()
     })
   })
 
-  it('calls fetchObjects with params and returns data', async () => {
+  it('calls fetchAlgolia with params and returns data', async () => {
     const recommendationModule = new RecommendationPane({
       display: { title: 'Offres recommandées', layout: 'one-item-medium', minOffers: 4 },
     })
@@ -65,8 +65,8 @@ describe('useHomeRecommendedHits', () => {
     const isUserUnderage = false
     await waitFor(() => {
       expect(result.current).toHaveLength(4)
-      expect(fetchObjects).toHaveBeenCalledTimes(1)
-      expect(fetchObjects).toHaveBeenCalledWith(objectIds, availableCategories, isUserUnderage)
+      expect(fetchHits).toHaveBeenCalledTimes(1)
+      expect(fetchHits).toHaveBeenCalledWith(objectIds, availableCategories, isUserUnderage)
     })
   })
 })

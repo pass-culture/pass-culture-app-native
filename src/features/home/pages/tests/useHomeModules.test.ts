@@ -2,8 +2,8 @@ import { MultipleQueriesResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
 import { SubcategoryIdEnum } from 'api/gen'
+import * as AlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { SearchHit, parseSearchParameters } from 'libs/search'
-import * as SearchModule from 'libs/search/fetch/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { Offers } from '../../contentful'
@@ -18,14 +18,15 @@ jest.mock('libs/search/useSendAdditionalRequestToAppSearch', () => ({
   useSendAdditionalRequestToAppSearch: jest.fn(() => () => null),
 }))
 
+const _geoloc = { lat: 20, lng: 23 }
 const subcategoryId = SubcategoryIdEnum.ABOCONCERT
 const mockMultipleHits = {
   results: [
     {
       hits: [
-        { objectID: '1', offer: { thumbUrl: 'http://to-image-one', subcategoryId } },
-        { objectID: '2', offer: { thumbUrl: 'http://to-image-two', subcategoryId } },
-        { objectID: '3', offer: { thumbUrl: undefined, subcategoryId } },
+        { objectID: '1', _geoloc, offer: { thumbUrl: '/thumbs/to-image-one', subcategoryId } },
+        { objectID: '2', _geoloc, offer: { thumbUrl: '/thumbs/to-image-two', subcategoryId } },
+        { objectID: '3', _geoloc, offer: { thumbUrl: undefined, subcategoryId } },
       ],
       nbHits: 10,
     },
@@ -33,10 +34,7 @@ const mockMultipleHits = {
 } as MultipleQueriesResponse<SearchHit>
 
 const fetchMultipleHits = jest.fn().mockResolvedValue(mockMultipleHits)
-jest.spyOn(SearchModule, 'fetchMultipleHits').mockImplementation(fetchMultipleHits)
-jest.mock('libs/algolia/fetchAlgolia', () => ({
-  useTransformAlgoliaHits: jest.fn(() => (hit: SearchHit) => hit),
-}))
+jest.spyOn(AlgoliaModule, 'fetchMultipleAlgolia').mockImplementation(fetchMultipleHits)
 
 const offerModules = [
   new Offers({
@@ -67,11 +65,7 @@ describe('useHomeModules', () => {
     )
 
     expect(fetchMultipleHits).toHaveBeenCalledWith(
-      [
-        {
-          ...parseSearchParameters({ title: 'tile', hitsPerPage: 4 }, null),
-        },
-      ],
+      [{ ...parseSearchParameters({ title: 'tile', hitsPerPage: 4 }, null) }],
       null,
       false
     )
@@ -83,8 +77,24 @@ describe('useHomeModules', () => {
     const { hits, nbHits } = result.current['homeModuleShown']
     expect(nbHits).toEqual(10)
     expect(hits).toEqual([
-      { objectID: '1', offer: { thumbUrl: 'http://to-image-one', subcategoryId } },
-      { objectID: '2', offer: { thumbUrl: 'http://to-image-two', subcategoryId } },
+      {
+        objectID: '1',
+        _geoloc,
+        offer: {
+          thumbUrl: 'http://localhost-storage/thumbs/to-image-one',
+          subcategoryId,
+          prices: undefined,
+        },
+      },
+      {
+        objectID: '2',
+        _geoloc,
+        offer: {
+          thumbUrl: 'http://localhost-storage/thumbs/to-image-two',
+          subcategoryId,
+          prices: undefined,
+        },
+      },
     ])
     // All offer have an image to be displayed on the homepage
     expect(hits.find((hit) => !hit.offer.thumbUrl)).toBeUndefined()

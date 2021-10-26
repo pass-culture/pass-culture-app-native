@@ -52,10 +52,8 @@ describe('<BookingPropertiesSection />', () => {
 })
 
 async function renderBookingProperties(booking: Booking) {
-  const wrapper = render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<BookingPropertiesSection booking={booking} />)
-  )
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  const wrapper = render(reactQueryProviderHOC(<BookingPropertiesSection booking={booking} />))
   await superFlushWithAct()
   return wrapper
 }
