@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
@@ -20,6 +21,8 @@ export function PersonalData() {
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
 
   const openChangeEmailPage = () => navigate('ChangeEmail')
+
+  const isEmailChangeEnabled = env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING
 
   return (
     <React.Fragment>
@@ -41,12 +44,14 @@ export function PersonalData() {
           <Spacer.Column numberOfSpaces={2} />
           <EmailContainer>
             <EmailText>{user?.email}</EmailText>
-            <EmailChangeButton
-              title={t`Modifier`}
-              icon={EditPen}
-              inline
-              onPress={openChangeEmailPage}
-            />
+            {isEmailChangeEnabled ? (
+              <EmailChangeButton
+                title={t`Modifier`}
+                icon={EditPen}
+                inline
+                onPress={openChangeEmailPage}
+              />
+            ) : null}
           </EmailContainer>
         </Row>
         <Separator />
