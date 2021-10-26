@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SIGNUP_NUMBER_OF_STEPS, useDepositAmount } from 'features/auth/api'
@@ -169,34 +168,32 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           onRightIconPress={showQuitSignupModal}
         />
         <BottomCardContentContainer>
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <InnerContainer>
-              <ButtonTertiary title={t`Pourquoi ?`} onPress={onPressWhy} />
-              <Spacer.Column numberOfSpaces={10} />
-              <DateInputContainer>
-                <DateInput
-                  autoFocus={true}
-                  onChangeValue={onChangeValue}
-                  ref={dateInputRef}
-                  minDate={MIN_DATE}
-                  maxDate={maxDate}
-                  initialDay={INITIAL_DAY}
-                  initialMonth={INITIAL_MONTH}
-                  initialYear={INITIAL_YEAR}
-                  onSubmit={goToNextStep}
-                />
-                {renderErrorMessages()}
-              </DateInputContainer>
-              <Spacer.Column numberOfSpaces={14} />
-              <ButtonPrimary
-                title={t`Continuer`}
-                disabled={!state.isDateValid}
-                onPress={goToNextStep}
+          <InnerContainer>
+            <ButtonTertiary title={t`Pourquoi ?`} onPress={onPressWhy} />
+            <Spacer.Column numberOfSpaces={10} />
+            <DateInputContainer>
+              <DateInput
+                autoFocus={true}
+                onChangeValue={onChangeValue}
+                ref={dateInputRef}
+                minDate={MIN_DATE}
+                maxDate={maxDate}
+                initialDay={INITIAL_DAY}
+                initialMonth={INITIAL_MONTH}
+                initialYear={INITIAL_YEAR}
+                onSubmit={goToNextStep}
               />
-              <Spacer.Column numberOfSpaces={5} />
-              <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={3} />
-            </InnerContainer>
-          </TouchableWithoutFeedback>
+              {renderErrorMessages()}
+            </DateInputContainer>
+            <Spacer.Column numberOfSpaces={14} />
+            <ButtonPrimary
+              title={t`Continuer`}
+              disabled={!state.isDateValid}
+              onPress={goToNextStep}
+            />
+            <Spacer.Column numberOfSpaces={5} />
+            <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={3} />
+          </InnerContainer>
         </BottomCardContentContainer>
       </BottomContentPage>
       <AppInformationModal

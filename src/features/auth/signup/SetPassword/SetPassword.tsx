@@ -84,7 +84,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
             placeholder={t`Ton mot de passe`}
             onSubmitEditing={submitPassword}
             ref={passwordInput}
-            {...accessibilityAndTestId('Entrée pour le mot de passe')}
+            {...accessibilityAndTestId(t`Entrée pour le mot de passe`)}
           />
           <PasswordSecurityRules password={password} />
           <Spacer.Column numberOfSpaces={6} />

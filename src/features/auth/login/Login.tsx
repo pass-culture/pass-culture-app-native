@@ -168,7 +168,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         isError={!!errorMessage}
         textContentType="password"
         onSubmitEditing={onSubmit}
-        {...accessibilityAndTestId('Entrée pour le mot de passe')}
+        {...accessibilityAndTestId(t`Entrée pour le mot de passe`)}
       />
       <Spacer.Column numberOfSpaces={7} />
       <ForgottenPasswordContainer>
