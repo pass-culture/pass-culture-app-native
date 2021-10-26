@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react'
 import { ProfileBadge } from 'features/profile/components/ProfileBadge'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers/formatDates'
+import { Clock } from 'ui/svg/icons/Clock'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
@@ -40,7 +41,7 @@ export function IdCheckProcessingBadge(props: IdCheckProcessingBadgeProps) {
         </React.Fragment>
       )}
       <ProfileBadge
-        icon={props.icon}
+        icon={props.icon || Clock}
         callToActionIcon={props.callToActionIcon}
         callToActionMessage={props.callToActionMessage}
         callToActionLink={props.callToActionLink}
