@@ -7,26 +7,28 @@ import styled from 'styled-components/native'
 
 import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
+import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils'
 import { useSafeState } from 'libs/hooks'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { isEmailValid, useIsCurrentUserEmail } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
+import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export function ChangeEmail() {
-  const scrollRef = useRef<ScrollView | null>(null)
   const [email, setEmail] = useSafeState('')
-  const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [password, setPassword] = useSafeState('')
+  const { hasError: isInvalidEmail, message } = useValidateEmail(email)
+
+  const scrollRef = useRef<ScrollView | null>(null)
+  const [keyboardHeight, setKeyboardHeight] = useState(0)
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
-  const isCurrentUserEmail = useIsCurrentUserEmail(email)
 
-  const disabled = !isLongEnough(password) || !isEmailValid(email) || isCurrentUserEmail
+  const disabled = !isLongEnough(password) || (isInvalidEmail && email.length > 0)
 
   // TODO (PC-11395) : Add correct function
   const submitEmailChange = () => 'submitEmailChange'
@@ -41,6 +43,7 @@ export function ChangeEmail() {
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
         <EmailInput label={t`Nouvel e-mail`} email={email} onEmailChange={setEmail} />
+        <InputError visible={isInvalidEmail} messageId={message} numberOfSpacesTop={1} />
         <Spacer.Column numberOfSpaces={4} />
         <PasswordInput
           label={t`Mot de passe`}
