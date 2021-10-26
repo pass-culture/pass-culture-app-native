@@ -68,7 +68,6 @@ export type RootStackParamList = {
   LocationPicker: undefined
   NextBeneficiaryStep: undefined
   PersonalData: undefined
-  RedirectWebToNative: undefined
   SearchCategories: undefined
   SearchFilter: undefined
   SelectSchool: undefined

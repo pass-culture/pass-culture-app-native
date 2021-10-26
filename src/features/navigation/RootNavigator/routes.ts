@@ -61,13 +61,12 @@ import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { Venue } from 'features/venue'
-import { redirectUnreleasedScreens } from 'libs/web'
 
 import { Route } from './types'
 
 export const initialRouteName = 'TabNavigator'
 
-const routesBeforeReleaseCheck: Route[] = [
+export const routes: Route[] = [
   ...idCheckRoutes,
   { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheck' },
   {
@@ -402,5 +401,3 @@ const routesBeforeReleaseCheck: Route[] = [
     options: { title: t`Lieu` },
   },
 ]
-
-export const routes = redirectUnreleasedScreens(routesBeforeReleaseCheck)

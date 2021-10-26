@@ -18,7 +18,6 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { isSharingSupported } from 'features/offer/services/isSharingSupported'
 import { analytics } from 'libs/analytics'
-import { IS_WEB_RELEASE } from 'libs/web'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
@@ -123,19 +122,15 @@ export const OfferHeader: React.FC<Props> = (props) => {
               testID={t`Partager`}
             />
           )}
-          {IS_WEB_RELEASE ? null : (
-            <React.Fragment>
-              <Spacer.Row numberOfSpaces={3} />
-              <HeaderIcon
-                animationState={animationState}
-                scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
-                initialColor={favorite ? ColorsEnum.PRIMARY : undefined}
-                iconName={favorite ? 'favorite-filled' : 'favorite'}
-                onPress={pressFavorite}
-                testID={t`Mettre en favoris`}
-              />
-            </React.Fragment>
-          )}
+          <Spacer.Row numberOfSpaces={3} />
+          <HeaderIcon
+            animationState={animationState}
+            scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
+            initialColor={favorite ? ColorsEnum.PRIMARY : undefined}
+            iconName={favorite ? 'favorite-filled' : 'favorite'}
+            onPress={pressFavorite}
+            testID={t`Mettre en favoris`}
+          />
           <Spacer.Row numberOfSpaces={6} />
         </Row>
         <Spacer.Column numberOfSpaces={2} />
