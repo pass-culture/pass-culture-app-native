@@ -2,7 +2,6 @@ import { renderHook } from '@testing-library/react-hooks'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
 
 import { useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
@@ -13,13 +12,12 @@ jest.mock('features/navigation/navigationRef')
 describe('useDeeplinkUrlHandler', () => {
   afterEach(jest.clearAllMocks)
 
-  it('should redirect to a screen returned by getScreenFromDeeplink() and also call analytics function', () => {
+  it('should redirect to a screen returned by getScreenFromDeeplink()', () => {
     const url = `${WEBAPP_V2_URL}${getScreenPath('Offer', { id: 1, from: 'deeplink' })}`
     const handleDeeplinkUrl = renderHook(useDeeplinkUrlHandler).result.current
 
     handleDeeplinkUrl({ url })
 
-    expect(analytics.logConsultOffer).toBeCalledWith({ offerId: 1, from: 'deeplink' })
     expect(navigate).toBeCalledWith('Offer', { id: 1, from: 'deeplink' })
   })
 

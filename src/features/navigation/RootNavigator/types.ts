@@ -1,5 +1,5 @@
 import { IdCheckRootStackParamList } from '@pass-culture/id-check'
-import { PathConfig, RouteProp } from '@react-navigation/native'
+import { PathConfig, RouteProp, ParamListBase } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 import { CountryCode } from 'react-native-country-picker-modal'
@@ -137,6 +137,14 @@ export type RouteParams<
   Screename extends keyof StackParamList
 > = Pick<StackParamList, Screename>[Screename]
 
+export type NavigateParams<
+  RouteName extends keyof ParamListBase
+> = undefined extends ParamListBase[RouteName]
+  ? [RouteName] | [RouteName, ParamListBase[RouteName]]
+  : [RouteName, ParamListBase[RouteName]]
+export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
+export type AllNavigateParams = NavigateParams<keyof AllNavParamList>
+
 /**
  * Type helper to declare a route
  */
@@ -154,3 +162,12 @@ export type GenericRoute<ParamList> = {
   secure?: boolean
 }
 export type Route = GenericRoute<RootStackParamList & IdCheckRootStackParamList>
+
+// Typeguard for screen params
+export function isScreen<Screen extends AllNavigateParams[0]>(
+  expectedScreen: Screen,
+  screen: AllNavigateParams[0],
+  params: AllNavigateParams[1]
+): params is AllNavParamList[Screen] {
+  return screen === expectedScreen
+}

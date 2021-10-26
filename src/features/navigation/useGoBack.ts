@@ -2,19 +2,15 @@ import { useNavigation } from '@react-navigation/native'
 import { Platform } from 'react-native'
 
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { RootNavigateParams, UseNavigationType } from 'features/navigation/RootNavigator'
 
 /**
  * Go back to the previous route in history,
  * or go back to some specified route if no previous route exists.
  *
- * @param screen - Name of the route to go back to if no previous route exists.
- * @param params - Params object for the route.
+ * @param ...navigateParams - Same parameters as navigate(...) function.
  */
-export function useGoBack<ScreenName extends keyof RootStackParamList>(
-  screen: ScreenName,
-  params: RootStackParamList[ScreenName]
-) {
+export function useGoBack(...navigateParams: RootNavigateParams) {
   const { canGoBack, goBack, navigate } = useNavigation<UseNavigationType>()
   const previousRoute = usePreviousRoute()
 
@@ -25,7 +21,7 @@ export function useGoBack<ScreenName extends keyof RootStackParamList>(
     } else if (can && Platform.OS === 'web') {
       window.history.back()
     } else {
-      navigate(screen, params)
+      navigate(...navigateParams)
     }
   }
 

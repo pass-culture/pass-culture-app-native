@@ -1,60 +1,77 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import waitForExpect from 'wait-for-expect'
 
 import { linking } from 'features/navigation/RootNavigator/linking'
-import {
-  customGetStateFromPath,
-  getQueryParamsFromPath,
-} from 'features/navigation/RootNavigator/linking/getStateFromPath'
+import { customGetStateFromPath } from 'features/navigation/RootNavigator/linking/getStateFromPath'
+import { analytics } from 'libs/analytics'
+import { storeUtmParams } from 'libs/utm'
 
-const setItemSpy = jest.spyOn(AsyncStorage, 'setItem')
+jest.mock('libs/utm', () => ({ storeUtmParams: jest.fn() }))
 
-describe('getStateFromPath', () => {
-  it('should save utm parameters in storage if available - offers', () => {
+describe('getStateFromPath()', () => {
+  beforeEach(jest.clearAllMocks)
+  afterAll(jest.clearAllMocks)
+
+  it('should return state for path home?entryId=666', async () => {
+    const state = customGetStateFromPath('home?entryId=666', linking.config)
+    const expectedState = {
+      routes: [
+        { name: 'TabNavigator', state: { routes: [{ name: 'Home', params: { entryId: '666' } }] } },
+      ],
+    }
+    await waitForExpect(() => {
+      expect(state).toEqual(expectedState)
+    })
+  })
+
+  it('should return state for path offre/777', async () => {
+    const state = customGetStateFromPath('offre/777', linking.config)
+    const expectedState = { routes: [{ name: 'Offer', params: { id: 777 } }] }
+    await waitForExpect(() => {
+      expect(state).toEqual(expectedState)
+      expect(analytics.logConsultOffer).toBeCalledWith({ offerId: 777, from: 'deeplink' })
+    })
+  })
+
+  it('should save utm parameters in storage if available - offers', async () => {
     customGetStateFromPath(
       'offre/1188?utm_campaign=push_offre_local&utm_medium=batch&utm_source=push',
       linking.config
     )
-
-    waitForExpect(() => {
-      expect(setItemSpy).toHaveBeenCalledWith('traffic_campaign', 'push_offre_local')
-      expect(setItemSpy).toHaveBeenCalledWith('traffic_medium', 'batch')
-      expect(setItemSpy).toHaveBeenCalledWith('traffic_source', 'push')
+    await waitForExpect(() => {
+      expect(storeUtmParams).toBeCalledWith({
+        campaign: 'push_offre_local',
+        source: 'push',
+        medium: 'batch',
+      })
+      expect(analytics.setDefaultEventParameters).toBeCalledWith({
+        traffic_campaign: 'push_offre_local',
+        traffic_source: 'push',
+        traffic_medium: 'batch',
+      })
     })
   })
 
-  it('should save utm parameters in storage if available - search', () => {
+  it('should save utm parameters in storage if available - search', async () => {
     customGetStateFromPath('recherche/?isDuo=true&utm_campaign=push_offre', linking.config)
-
-    waitForExpect(() => {
-      expect(setItemSpy).toHaveBeenCalledWith('traffic_campaign', 'push_offre')
+    await waitForExpect(() => {
+      expect(storeUtmParams).toBeCalledWith({ campaign: 'push_offre' })
+      expect(analytics.setDefaultEventParameters).toBeCalledWith({
+        traffic_campaign: 'push_offre',
+        traffic_source: '',
+        traffic_medium: '',
+      })
     })
   })
 
-  it('should not save utm parameters in storage if not available', () => {
-    customGetStateFromPath('offre/1188?utm_campaign=&source=source', linking.config)
-    waitForExpect(() => {
-      expect(setItemSpy).not.toHaveBeenCalled()
+  it('should not save utm parameters in storage if not available', async () => {
+    customGetStateFromPath('offre/1188', linking.config)
+    await waitForExpect(() => {
+      expect(storeUtmParams).not.toBeCalled()
+      expect(analytics.setDefaultEventParameters).toBeCalledWith({
+        traffic_campaign: '',
+        traffic_source: '',
+        traffic_medium: '',
+      })
     })
   })
-})
-
-describe('getQueryParamsFromPath()', () => {
-  it.each`
-    path                                      | expectedQueryParams
-    ${'?id=12&'}                              | ${{ id: '12' }}
-    ${'/?utm_campaign=home_ete&utm_medium=/'} | ${{ utm_campaign: 'home_ete', utm_medium: '' }}
-  `(
-    'should parse the query params from the path=$path',
-    ({
-      path,
-      expectedQueryParams,
-    }: {
-      path: string
-      expectedQueryParams: Record<string, string> | null
-    }) => {
-      const queryParams = getQueryParamsFromPath(path)
-      expect(queryParams).toStrictEqual(expectedQueryParams)
-    }
-  )
 })
