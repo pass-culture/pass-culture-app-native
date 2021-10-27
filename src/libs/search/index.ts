@@ -6,12 +6,16 @@ export { parseSearchParameters } from './parseSearchParameters'
 export { useParseSearchParameters } from './useParseSearchParameters'
 
 export const transformHit = transformAlgoliaHit
+
+// An incomplete search hit may not have a subcategoryId (for retrocompatibility)
 export type IncompleteSearchHit = AlgoliaHit
+
 export interface SearchHit {
   offer: {
     dates?: AlgoliaHit['offer']['dates']
     isDigital?: AlgoliaHit['offer']['isDigital']
     isDuo?: AlgoliaHit['offer']['isDuo']
+    isEducational?: AlgoliaHit['offer']['isEducational']
     name?: AlgoliaHit['offer']['name']
     prices?: AlgoliaHit['offer']['prices']
     subcategoryId: SubcategoryIdEnum
