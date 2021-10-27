@@ -1,6 +1,14 @@
-import { IdCheckError, IdCheckErrors, useIdCheckContext } from '@pass-culture/id-check'
+import {
+  EduConnectErrorBoundary,
+  EduConnectErrors,
+  EduConnectError,
+  IdCheckError,
+  IdCheckErrors,
+  useIdCheckContext,
+} from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { ScrollView } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -17,10 +25,16 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
+const ThrowError = ({ error }: { error: Error | null | undefined }) => {
+  if (error) throw error
+  return null
+}
+
 export function NavigationIdCheckErrors(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('Navigation', undefined)
   const [error, setError] = useState<IdCheckError | Error | null>(null)
+  const [eduConnectError, setEduConnectError] = useState<EduConnectError | null>(null)
   const { setContextValue } = useIdCheckContext()
   const { data: settings } = useAppSettings()
   const queryClient = useQueryClient()
@@ -75,41 +89,53 @@ export function NavigationIdCheckErrors(): JSX.Element {
   }
 
   return (
-    <ScrollView>
-      <Spacer.TopScreen />
-      <ModalHeader
-        title="Id Check v2 Errors"
-        leftIconAccessibilityLabel={`Revenir en arrière`}
-        leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
-        rightIconAccessibilityLabel={undefined}
-        rightIcon={undefined}
-        onRightIconPress={undefined}
-      />
-      <StyledContainer>
-        <Row half>
-          <NavigationButton
-            title="generic"
-            onPress={() => setError(new Error('We use a generic message so none will see this'))}
-          />
-        </Row>
-        {links.map((link) => (
-          <Row half key={link}>
+    <ErrorBoundary FallbackComponent={EduConnectErrorBoundary}>
+      <ScrollView>
+        <Spacer.TopScreen />
+        <ModalHeader
+          title="Id Check v2 Errors"
+          leftIconAccessibilityLabel={`Revenir en arrière`}
+          leftIcon={ArrowPrevious}
+          onLeftIconPress={goBack}
+          rightIconAccessibilityLabel={undefined}
+          rightIcon={undefined}
+          onRightIconPress={undefined}
+        />
+        <StyledContainer>
+          <Row half>
             <NavigationButton
-              title={link}
-              onPress={() => setError(new IdCheckError(IdCheckErrors[link]))}
+              title="generic"
+              onPress={() => setError(new Error('We use a generic message so none will see this'))}
             />
           </Row>
-        ))}
-        <Row half>
-          <NavigationButton
-            title={`UnavailableEduConnect`}
-            onPress={() => navigate('UnavailableEduConnect')}
-          />
-        </Row>
-      </StyledContainer>
-      <Spacer.BottomScreen />
-    </ScrollView>
+          {links.map((link) => (
+            <Row half key={link}>
+              <NavigationButton
+                title={link}
+                onPress={() => setError(new IdCheckError(IdCheckErrors[link]))}
+              />
+            </Row>
+          ))}
+          <Row half>
+            <NavigationButton
+              title={`NotEligibleEduConnect`}
+              onPress={() =>
+                setEduConnectError(new EduConnectError(EduConnectErrors['not-eligible']))
+              }
+            />
+            <ThrowError error={eduConnectError} />
+          </Row>
+          <Row half>
+            <NavigationButton
+              title={`UnavailableEduConnect`}
+              onPress={() => setEduConnectError(new EduConnectError(EduConnectErrors.unavailable))}
+            />
+            <ThrowError error={eduConnectError} />
+          </Row>
+        </StyledContainer>
+        <Spacer.BottomScreen />
+      </ScrollView>
+    </ErrorBoundary>
   )
 }
 

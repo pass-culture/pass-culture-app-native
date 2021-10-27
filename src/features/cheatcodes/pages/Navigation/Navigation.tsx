@@ -44,7 +44,6 @@ export function Navigation(): JSX.Element {
   const { showErrorSnackBar } = useSnackBarContext()
   const signIn = useSignIn()
   const venueId = useSomeVenueId()
-
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
     QueryKeys.ERROR_ASYNC,
     () => errorAsync(),
@@ -328,12 +327,6 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton title={`EduConnect`} onPress={() => navigate('EduConnect')} />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={`NotEligibleEduConnect`}
-            onPress={() => navigate('NotEligibleEduConnect')}
-          />
         </Row>
         <Row half>
           <NavigationButton
