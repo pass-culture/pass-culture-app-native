@@ -15,7 +15,7 @@ describe('ProfileBadge', () => {
   })
   it('should render component correctly if icon is provided', () => {
     const myComponent = render(
-      <ProfileBadge message={'Tu as déposé ton dossier. Bravo'} icon={Clock} />
+      <ProfileBadge message={'Tu as déposé ton dossier. Bravo'} popOverIcon={Clock} />
     )
     expect(myComponent).toMatchSnapshot()
   })
@@ -23,7 +23,7 @@ describe('ProfileBadge', () => {
     const myComponent = render(
       <ProfileBadge
         message={'Tu as déposé ton dossier. Bravo'}
-        icon={Clock}
+        popOverIcon={Clock}
         callToActionIcon={EmailFilled}
       />
     )
@@ -33,7 +33,7 @@ describe('ProfileBadge', () => {
     const myComponent = render(
       <ProfileBadge
         message={'Tu as déposé ton dossier. Bravo'}
-        icon={Clock}
+        popOverIcon={Clock}
         callToActionIcon={EmailFilled}
         callToActionMessage={'Tu peux cliquer ici'}
         callToActionLink={'https://calltoaction.com'}
@@ -45,7 +45,7 @@ describe('ProfileBadge', () => {
     const myComponent = render(
       <ProfileBadge
         message={'Tu as déposé ton dossier. Bravo'}
-        icon={Clock}
+        popOverIcon={Clock}
         callToActionIcon={EmailFilled}
         callToActionMessage={'Tu peux cliquer ici'}
       />
@@ -56,7 +56,7 @@ describe('ProfileBadge', () => {
     const { getByTestId } = render(
       <ProfileBadge
         message={'Tu as déposé ton dossier. Bravo'}
-        icon={Clock}
+        popOverIcon={Clock}
         callToActionIcon={EmailFilled}
         callToActionLink={'https://google.com'}
         callToActionMessage={'Tu peux cliquer ici'}

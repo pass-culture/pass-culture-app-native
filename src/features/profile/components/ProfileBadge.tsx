@@ -8,10 +8,7 @@ import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
 
 interface ProfileBadgeProps {
   message: string
-  icon?: FunctionComponent<IconInterface>
-  callToActionIcon?: FunctionComponent<IconInterface>
-  callToActionMessage?: string
-  callToActionLink?: string
+  popOverIcon?: FunctionComponent<IconInterface>
   testID?: string
 }
 
@@ -39,7 +36,7 @@ const renderCallToAction = (
 }
 
 export function ProfileBadge(props: ProfileBadgeProps) {
-  const Icon = props.icon
+  const Icon = props.popOverIcon
 
   return (
     <Container testID={props.testID || 'profile-badge'}>

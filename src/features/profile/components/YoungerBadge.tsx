@@ -16,5 +16,5 @@ export function YoungerBadge() {
     '\u00a0' +
     t`offerts à dépenser sur l’application.`
 
-  return <ProfileBadge icon={Clock} message={information} testID={'younger-badge'} />
+  return <ProfileBadge popOverIcon={Clock} message={information} testID={'younger-badge'} />
 }
