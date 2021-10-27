@@ -26,6 +26,7 @@ import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
+import { SelectSchool } from 'features/auth/signup/underageSignup/SelectSchool'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
@@ -301,6 +302,12 @@ const routesBeforeReleaseCheck: Route[] = [
     component: SearchFilter,
     path: 'recherche/filtres',
     options: { title: t`Recherche - filtres` },
+  },
+  {
+    name: 'SelectSchool',
+    component: SelectSchool,
+    path: 'creation-compte/etablissement-scolaire',
+    options: { title: t`Etablissement scolaire - Sélection` },
   },
   {
     name: 'SetBirthday',
