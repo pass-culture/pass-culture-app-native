@@ -48,9 +48,17 @@ const buildSearchParameters = (
     timeRange = null,
     tags = [],
   }: PartialSearchState,
-  userLocation: GeoCoordinates | null
+  userLocation: GeoCoordinates | null,
+  isUserUnderageBeneficiary: boolean
 ) => ({
-  ...buildFacetFilters({ locationFilter, offerCategories, offerTypes, offerIsDuo, tags }),
+  ...buildFacetFilters({
+    locationFilter,
+    offerCategories,
+    offerTypes,
+    offerIsDuo,
+    tags,
+    isUserUnderageBeneficiary,
+  }),
   ...buildNumericFilters({
     beginningDatetime,
     date,
@@ -73,7 +81,7 @@ export const fetchMultipleAlgolia = (
     query: params.query,
     params: {
       ...buildHitsPerPage(params.hitsPerPage),
-      ...buildSearchParameters(params, userLocation),
+      ...buildSearchParameters(params, userLocation, isUserUnderageBeneficiary),
       attributesToHighlight: [], // We disable highlighting because we don't need it
       attributesToRetrieve,
     },
@@ -87,7 +95,11 @@ export const fetchAlgolia = (
   userLocation: GeoCoordinates | null,
   isUserUnderageBeneficiary: boolean
 ): Readonly<Promise<Response>> => {
-  const searchParameters = buildSearchParameters(parameters, userLocation)
+  const searchParameters = buildSearchParameters(
+    parameters,
+    userLocation,
+    isUserUnderageBeneficiary
+  )
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
   return index.search(parameters.query || '', {
