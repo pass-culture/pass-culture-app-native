@@ -6,7 +6,6 @@ import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { PartialSearchState } from 'features/search/types'
-import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
@@ -14,7 +13,6 @@ import { useAlgoliaQuery } from 'libs/search/fetch/useAlgoliaQuery'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 import { useSearchQuery } from 'libs/search/fetch/useSearchQuery'
 import { useSendAdditionalRequestToAppSearch } from 'libs/search/useSendAdditionalRequestToAppSearch'
-import { filterAvailableCategories } from 'libs/search/utils'
 
 import { useSearch, useStagedSearch } from './SearchWrapper'
 
@@ -25,23 +23,14 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
   const { position } = useGeolocation()
   const algoliaBackend = useAlgoliaQuery()
   const searchBackend = useSearchQuery()
-  const availableCategories = useAvailableCategories()
   const sendAdditionalRequest = useSendAdditionalRequestToAppSearch()
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchHits, transformHits } = backend
 
-  const searchState: PartialSearchState = {
-    ...partialSearchState,
-    offerCategories: filterAvailableCategories(
-      partialSearchState.offerCategories,
-      availableCategories
-    ),
-  }
-
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
-    [QueryKeys.SEARCH_RESULTS, searchState],
+    [QueryKeys.SEARCH_RESULTS, partialSearchState],
     async (context: QueryFunctionContext<[string, PartialSearchState], number>) => {
       const page = context.pageParam || 0
       const searchState = context.queryKey[1]
@@ -51,7 +40,11 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
       enabled,
       onSuccess: sendAdditionalRequest(() =>
-        searchBackend.fetchHits({ page: 0, ...searchState }, position, isUserUnderageBeneficiary)
+        searchBackend.fetchHits(
+          { page: 0, ...partialSearchState },
+          position,
+          isUserUnderageBeneficiary
+        )
       ),
     }
   )

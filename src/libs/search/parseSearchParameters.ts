@@ -40,6 +40,7 @@ export const parseSearchParameters = (
     hitsPerPage: parameters.hitsPerPage || null,
     locationFilter,
     // We receive category labels from contentful. We first have to map to facetFilters used for search
+    // TODO(antoinewg) Make sure the categories are sorted to reuse react-query cache
     offerCategories: (parameters.categories || []).map(getCategoriesFacetFilters),
     offerIsDuo: parameters.isDuo || false,
     offerIsFree: parameters.isFree || false,
