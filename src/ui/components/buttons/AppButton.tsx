@@ -19,6 +19,7 @@ export interface BaseButtonProps {
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
   testId?: string
+  textLineHeight?: number
   textSize?: number
   title: string
   fullWidth?: boolean
@@ -58,6 +59,7 @@ const _AppButton = <T extends AppButtonProps>({
   title,
   textColor,
   textSize,
+  textLineHeight,
   adjustsFontSizeToFit,
   style,
 }: Only<T, AppButtonProps>) => {
@@ -90,6 +92,7 @@ const _AppButton = <T extends AppButtonProps>({
           <Title
             textColor={textColor}
             textSize={textSize}
+            textLineHeight={textLineHeight}
             adjustsFontSizeToFit={adjustsFontSizeToFit ?? false}
             numberOfLines={1}>
             {title}
@@ -149,11 +152,13 @@ const Container = styled(TouchableOpacity).attrs(() => ({
 interface TitleProps {
   textColor?: ColorsEnum
   textSize?: number
+  textLineHeight?: number
 }
 
 const Title = styled(Typo.ButtonText)<TitleProps>((props) => ({
   maxWidth: '100%',
   color: props.textColor,
   fontSize: props.textSize,
+  lineHeight: props.textLineHeight,
   marginLeft: 5,
 }))
