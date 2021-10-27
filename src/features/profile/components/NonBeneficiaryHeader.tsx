@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
-import { BeneficiaryValidationStep } from 'api/gen'
+import { BeneficiaryValidationStep, SubscriptionMessage } from 'api/gen'
 import { useDepositAmount } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
@@ -19,6 +19,7 @@ interface NonBeneficiaryHeaderProps {
   eligibilityEndDatetime?: string
   nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null
   lastUpdated?: string
+  subscriptionMessage?: SubscriptionMessage | null
 }
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
@@ -73,7 +74,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     } else {
       body = (
         <BodyContainer testID="body-container-18-idcheck-completed">
-          <IdCheckProcessingBadge lastUpdated={props.lastUpdated} />
+          <IdCheckProcessingBadge subscriptionMessage={props.subscriptionMessage} />
         </BodyContainer>
       )
     }

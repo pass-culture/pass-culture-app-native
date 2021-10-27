@@ -65,6 +65,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
       eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
       nextBeneficiaryValidationStep={user.nextBeneficiaryValidationStep}
+      subscriptionMessage={user.subscriptionMessage}
     />
   )
 }
