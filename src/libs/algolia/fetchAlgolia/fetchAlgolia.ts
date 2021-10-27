@@ -65,7 +65,8 @@ const buildSearchParameters = (
 
 export const fetchMultipleAlgolia = (
   paramsList: PartialSearchState[],
-  userLocation: GeoCoordinates | null
+  userLocation: GeoCoordinates | null,
+  isUserUnderageBeneficiary: boolean
 ): Readonly<Promise<MultipleQueriesResponse<AlgoliaHit>>> => {
   const queries = paramsList.map((params) => ({
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
@@ -83,7 +84,8 @@ export const fetchMultipleAlgolia = (
 
 export const fetchAlgolia = (
   parameters: SearchParametersQuery,
-  userLocation: GeoCoordinates | null
+  userLocation: GeoCoordinates | null,
+  isUserUnderageBeneficiary: boolean
 ): Readonly<Promise<Response>> => {
   const searchParameters = buildSearchParameters(parameters, userLocation)
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
