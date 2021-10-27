@@ -71,6 +71,7 @@ export type RootStackParamList = {
   RedirectWebToNative: undefined
   SearchCategories: undefined
   SearchFilter: undefined
+  SelectSchool: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
   SetEmail: { preventCancellation?: boolean } | undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
