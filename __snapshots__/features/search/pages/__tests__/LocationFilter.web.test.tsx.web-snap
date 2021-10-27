@@ -80,7 +80,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="locationChoice-pickPlace"
-              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
             >
               <div
@@ -100,28 +100,30 @@ Object {
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  style="width: 8px;"
-                />
-                <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
                 >
-                  Choisir un lieu
+                  <div
+                    class="css-text-901oao css-textMultiLine-cens5h"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  >
+                    Choisir un lieu
+                  </div>
                 </div>
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="width: 8px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row; height: 100%;"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
+                  class="css-view-1dbjc4n"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
             </div>
@@ -132,7 +134,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="locationChoice-aroundMe"
-              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
             >
               <div
@@ -151,20 +153,26 @@ Object {
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  style="width: 8px;"
-                />
-                <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
                 >
-                  Autour de moi
+                  <div
+                    class="css-text-901oao css-textMultiLine-cens5h"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  >
+                    Autour de moi
+                  </div>
                 </div>
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="width: 40px;"
-              />
+                style="align-items: center; flex-direction: row; height: 100%;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 32px;"
+                />
+              </div>
             </div>
             <div
               class="css-view-1dbjc4n"
@@ -173,7 +181,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="locationChoice-everywhere"
-              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
             >
               <div
@@ -192,19 +200,20 @@ Object {
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  style="width: 8px;"
-                />
-                <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
-                  style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
                 >
-                  Partout
+                  <div
+                    class="css-text-901oao css-textMultiLine-cens5h"
+                    dir="auto"
+                    style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  >
+                    Partout
+                  </div>
                 </div>
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: flex-end; width: 64px;"
+                style="align-items: center; flex-direction: row; height: 100%;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -218,10 +227,6 @@ Object {
                   </div>
                 </div>
               </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 40px;"
-              />
             </div>
           </div>
         </div>
@@ -361,7 +366,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="locationChoice-pickPlace"
-            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
           >
             <div
@@ -381,28 +386,30 @@ Object {
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="width: 8px;"
-              />
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
               >
-                Choisir un lieu
+                <div
+                  class="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                >
+                  Choisir un lieu
+                </div>
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="width: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
+              style="align-items: center; flex-direction: row; height: 100%;"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
+                class="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
               </div>
             </div>
           </div>
@@ -413,7 +420,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="locationChoice-aroundMe"
-            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
           >
             <div
@@ -432,20 +439,26 @@ Object {
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="width: 8px;"
-              />
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
               >
-                Autour de moi
+                <div
+                  class="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                >
+                  Autour de moi
+                </div>
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="width: 40px;"
-            />
+              style="align-items: center; flex-direction: row; height: 100%;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 32px;"
+              />
+            </div>
           </div>
           <div
             class="css-view-1dbjc4n"
@@ -454,7 +467,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="locationChoice-everywhere"
-            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; justify-content: space-between; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
           >
             <div
@@ -473,19 +486,20 @@ Object {
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="width: 8px;"
-              />
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
               >
-                Partout
+                <div
+                  class="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                >
+                  Partout
+                </div>
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="align-items: flex-end; width: 64px;"
+              style="align-items: center; flex-direction: row; height: 100%;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -499,10 +513,6 @@ Object {
                 </div>
               </div>
             </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="width: 40px;"
-            />
           </div>
         </div>
       </div>
