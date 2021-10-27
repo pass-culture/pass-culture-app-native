@@ -45,18 +45,18 @@ const userLocation = {
   longitude: 43,
 }
 
-const search = jest.fn()
-const mockInitIndex = jest.fn()
-mockInitIndex.mockReturnValue({ search })
-jest.mock('algoliasearch', () =>
-  jest.fn(() => ({
-    initIndex: (arg1: string) => mockInitIndex(arg1),
-  }))
-)
+jest.mock('algoliasearch')
+
+const mockInitIndex = algoliasearch('', '').initIndex
+const search = mockInitIndex('').search as jest.Mock
 
 const baseParams = { locationFilter: { locationType: LocationType.EVERYWHERE } }
 
 describe('fetchAlgolia', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should fetch with provided query and default page number', () => {
     const query = 'searched query'
 
@@ -75,8 +75,6 @@ describe('fetchAlgolia', () => {
       const query = 'searched query'
 
       fetchAlgolia({ ...baseParams, query } as SearchParametersQuery, null)
-
-      expect(algoliasearch).toHaveBeenCalledWith('algoliaAppId', 'algoliaApiKey')
       expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
@@ -139,27 +137,6 @@ describe('fetchAlgolia', () => {
       })
     })
 
-    it('should fetch offers with geolocation coordinates, when latitude, longitude are provided and search is not around me', () => {
-      const query = 'searched query'
-
-      fetchAlgolia(
-        {
-          locationFilter: { locationType: LocationType.EVERYWHERE },
-          query,
-        } as SearchParametersQuery,
-        null
-      )
-
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 'all',
-        page: 0,
-        attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve,
-      })
-    })
-
     it('should fetch offers with geolocation coordinates, when latitude, longitude and radius are provided and search is around me', () => {
       const query = 'searched query'
 
@@ -207,7 +184,7 @@ describe('fetchAlgolia', () => {
 
       fetchAlgolia(
         {
-          locationFilter: { aroundRadius: -1, locationType: LocationType.AROUND_ME },
+          locationFilter: { aroundRadius: null, locationType: LocationType.AROUND_ME },
           query,
         } as SearchParametersQuery,
         userLocation
