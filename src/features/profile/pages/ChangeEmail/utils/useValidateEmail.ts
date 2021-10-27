@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { useEffect, useState } from 'react'
 
 import { isEmailValid, useIsCurrentUserEmail } from 'ui/components/inputs/emailCheck'
@@ -9,11 +10,11 @@ export function useValidateEmail(email: string) {
   function checkValidateEmail() {
     if (email.length > 0) {
       if (!isEmailValid(email)) {
-        setHasEmailError({ hasError: true, message: "Format de l'e-mail incorrect" })
+        setHasEmailError({ hasError: true, message: t`Format de l'e-mail incorrect` })
       } else if (isCurrentUserEmail) {
         setHasEmailError({
           hasError: true,
-          message: "L'e-mail saisi est identique a votre e-mail actuel",
+          message: t`L'e-mail saisi est identique à votre e-mail actuel`,
         })
       } else setHasEmailError({ hasError: false, message: '' })
     } else setHasEmailError({ hasError: false, message: '' })
