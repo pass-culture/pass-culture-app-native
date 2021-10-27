@@ -15,15 +15,20 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('features/home/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
-}))
-
 describe('Categories component', () => {
   it('should render correctly', () => {
     const { toJSON } = renderCategories()
     expect(toJSON()).toMatchSnapshot()
   })
+
+  it('should show all categories', () => {
+    const { getByText } = renderCategories()
+    expect(getByText('Toutes les catégories')).toBeTruthy()
+    expect(getByText('Cinéma')).toBeTruthy()
+    expect(getByText('Visites, expositions')).toBeTruthy()
+    expect(getByText('Jeux')).toBeTruthy()
+  })
+
   it('should match diff snapshot when new category is selected', () => {
     const allSelected = renderCategories().toJSON()
 

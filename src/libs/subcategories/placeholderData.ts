@@ -610,7 +610,7 @@ export const placeholderData: SubcategoriesResponseModel = {
     { name: SearchGroupNameEnum.CONFERENCE, value: 'Conférences, rencontres' },
     { name: SearchGroupNameEnum.JEU, value: 'Jeux' },
     { name: SearchGroupNameEnum.LIVRE, value: 'Livre' },
-    { name: SearchGroupNameEnum.VISITE, value: 'Visite, exposition' },
+    { name: SearchGroupNameEnum.VISITE, value: 'Visites, expositions' },
     { name: SearchGroupNameEnum.MUSIQUE, value: 'Musique' },
     { name: SearchGroupNameEnum.COURS, value: 'Cours, ateliers' },
     { name: SearchGroupNameEnum.PRESSE, value: 'Presse, médias' },

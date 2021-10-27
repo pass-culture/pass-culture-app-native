@@ -6,8 +6,8 @@ import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
+import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Validate } from 'ui/svg/icons/Validate'
@@ -36,7 +36,6 @@ export const useSelectCategory = (callback: () => void) => {
 export const Categories: React.FC = () => {
   const { goBack } = useNavigation()
   const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
-  const categories = useAvailableCategories()
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
   return (
@@ -45,7 +44,7 @@ export const Categories: React.FC = () => {
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
 
-        {Object.entries(categories).map(([category, { icon: Icon }]) => {
+        {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {
           const searchGroup = category as SearchGroupNameEnum
           const isSelected = isCategorySelected(searchGroup)
           const color2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
