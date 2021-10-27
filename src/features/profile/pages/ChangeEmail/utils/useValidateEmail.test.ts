@@ -15,22 +15,16 @@ describe('useValidateEmail function', () => {
 
   it('should not return an error message if the new email is valid', () => {
     const { result } = renderHook(() => useValidateEmail(newUserEmail))
-    expect(result.current).toEqual({ hasError: false, message: '' })
+    expect(result.current).toEqual(null)
   })
 
   it('should return an error message if the new email is invalid', () => {
     const { result } = renderHook(() => useValidateEmail(invalidNewUserEmail))
-    expect(result.current).toEqual({
-      hasError: true,
-      message: "Format de l'e-mail incorrect",
-    })
+    expect(result.current).toEqual("Format de l'e-mail incorrect")
   })
 
   it('should return an error message if the new email is the same than the new one ', () => {
     const { result } = renderHook(() => useValidateEmail(currentUserEmail))
-    expect(result.current).toEqual({
-      hasError: true,
-      message: "L'e-mail saisi est identique à votre e-mail actuel",
-    })
+    expect(result.current).toEqual("L'e-mail saisi est identique à votre e-mail actuel")
   })
 })
