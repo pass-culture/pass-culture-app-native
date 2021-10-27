@@ -11,6 +11,44 @@ exports[`Categories component should match diff snapshot when new category is se
             }
           />
           <Text
+-           color=\\"#151515\\"
++           color=\\"#eb0055\\"
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+-                 \\"color\\": \\"#151515\\",
++                 \\"color\\": \\"#eb0055\\",
+                  \\"fontFamily\\": \\"Montserrat-Bold\\",
+                  \\"fontSize\\": 15,
+                  \\"lineHeight\\": 20,
+                },
+              ]
+@@ -112,10 +112,18 @@
+                  \\"flexShrink\\": 1,
+                },
+              ]
+            }
+          />
++         <View
++           height={32}
++           width={32}
++         >
++           <Text>
++             undefined-SVG-Mock
++           </Text>
++         </View>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function onClick]}
+@@ -162,16 +170,16 @@
+                },
+              ]
+            }
+          />
+          <Text
 -           color=\\"#eb0055\\"
 +           color=\\"#151515\\"
             numberOfLines={2}
@@ -24,7 +62,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -112,18 +112,10 @@
+@@ -188,18 +196,10 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -87,6 +125,90 @@ exports[`Categories component should render correctly 1`] = `
           ]
         }
       />
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="NONE"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#eb0055"
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#eb0055",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Toutes les catégories
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          height={32}
+          width={32}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
       <View
         accessible={true}
         focusable={true}
@@ -225,7 +347,7 @@ exports[`Categories component should render correctly 1`] = `
             ]
           }
         >
-          Visite, exposition
+          Visites, expositions
         </Text>
         <View
           style={

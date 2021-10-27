@@ -81,7 +81,7 @@ const LABEL_MAPPING = {
   [SearchGroupNameEnum.CONFERENCE]: 'Conférences, rencontres',
   [SearchGroupNameEnum.JEU]: 'Jeux',
   [SearchGroupNameEnum.LIVRE]: 'Livre',
-  [SearchGroupNameEnum.VISITE]: 'Visite, exposition',
+  [SearchGroupNameEnum.VISITE]: 'Visites, expositions',
   [SearchGroupNameEnum.MUSIQUE]: 'Musique',
   [SearchGroupNameEnum.COURS]: 'Cours, ateliers',
   [SearchGroupNameEnum.PRESSE]: 'Presse, médias',

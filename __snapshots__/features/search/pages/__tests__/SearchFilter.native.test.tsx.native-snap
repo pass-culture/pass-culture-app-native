@@ -701,7 +701,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
-                Visite, exposition
+                Visites, expositions
               </Text>
               <View
                 numberOfSpaces={5}
