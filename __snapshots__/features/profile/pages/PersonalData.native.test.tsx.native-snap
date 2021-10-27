@@ -209,13 +209,14 @@ Array [
                   "color": "#eb0055",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 12,
-                  "lineHeight": 20,
+                  "lineHeight": 16,
                   "marginLeft": 5,
                   "maxWidth": "100%",
                 },
               ]
             }
             textColor="#eb0055"
+            textLineHeight="16px"
             textSize={12}
           >
             Modifier
