@@ -1,7 +1,12 @@
 import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { MAX_PRICE, MAX_RADIUS, MIN_PRICE } from 'features/search/pages/reducer.helpers'
+import {
+  MAX_PRICE,
+  MAX_RADIUS,
+  MIN_PRICE,
+  sortCategories,
+} from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
@@ -84,12 +89,10 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'TOGGLE_CATEGORY':
       return {
         ...state,
-        // TODO(antoinewg) Make sure the categories are sorted to reuse react-query cache
-        offerCategories: addOrRemove(state.offerCategories, action.payload),
+        offerCategories: addOrRemove(state.offerCategories, action.payload).sort(sortCategories),
       }
     case 'SET_CATEGORY':
-      // TODO(antoinewg) Make sure the categories are sorted to reuse react-query cache
-      return { ...state, offerCategories: action.payload }
+      return { ...state, offerCategories: action.payload.sort(sortCategories) }
     case 'OFFER_TYPE':
       return {
         ...state,

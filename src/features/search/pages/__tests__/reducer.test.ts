@@ -149,7 +149,8 @@ describe('Search reducer', () => {
     })
     expect(newState).toStrictEqual({
       ...state,
-      offerCategories: [SearchGroupNameEnum.JEU, SearchGroupNameEnum.CINEMA],
+      // Note: the categories are sorted to later reuse react-query cache
+      offerCategories: [SearchGroupNameEnum.CINEMA, SearchGroupNameEnum.JEU],
     })
 
     // 3. Remove JEUX_VIDEO

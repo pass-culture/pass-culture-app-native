@@ -1,5 +1,6 @@
 import { SearchParametersFields } from 'features/home/contentful'
 import { LocationType } from 'features/search/enums'
+import { sortCategories } from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { getCategoriesFacetFilters } from 'libs/search/utils'
@@ -34,14 +35,17 @@ export const parseSearchParameters = (
 
   const endingDatetime = parameters.endingDatetime ? new Date(parameters.endingDatetime) : null
 
+  // We receive category labels from contentful. We first have to map to facetFilters used for search
+  const offerCategories = (parameters.categories || [])
+    .map(getCategoriesFacetFilters)
+    .sort(sortCategories)
+
   return {
     beginningDatetime: beginningDatetime,
     endingDatetime: endingDatetime,
     hitsPerPage: parameters.hitsPerPage || null,
     locationFilter,
-    // We receive category labels from contentful. We first have to map to facetFilters used for search
-    // TODO(antoinewg) Make sure the categories are sorted to reuse react-query cache
-    offerCategories: (parameters.categories || []).map(getCategoriesFacetFilters),
+    offerCategories,
     offerIsDuo: parameters.isDuo || false,
     offerIsFree: parameters.isFree || false,
     offerIsNew: parameters.newestOnly || false,
