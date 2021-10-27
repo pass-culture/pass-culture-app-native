@@ -6,12 +6,12 @@ import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { PartialSearchState } from 'features/search/types'
+import { fetchAlgolia, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
-import { useAlgoliaQuery } from 'libs/search/fetch/useAlgoliaQuery'
+import { fetchHits as fetchAppSearchHits } from 'libs/search/fetch/search'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
-import { useSearchQuery } from 'libs/search/fetch/useSearchQuery'
 import { useSendAdditionalRequestToAppSearch } from 'libs/search/useSendAdditionalRequestToAppSearch'
 
 import { useSearch, useStagedSearch } from './SearchWrapper'
@@ -21,13 +21,11 @@ export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page
 const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const { position } = useGeolocation()
-  const algoliaBackend = useAlgoliaQuery()
-  const searchBackend = useSearchQuery()
   const sendAdditionalRequest = useSendAdditionalRequestToAppSearch()
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
+  const transformHits = useTransformAlgoliaHits()
 
-  const backend = isAppSearchBackend ? searchBackend : algoliaBackend
-  const { fetchHits, transformHits } = backend
+  const fetchHits = isAppSearchBackend ? fetchAppSearchHits : fetchAlgolia
 
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, partialSearchState],
@@ -40,11 +38,7 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
       enabled,
       onSuccess: sendAdditionalRequest(() =>
-        searchBackend.fetchHits(
-          { page: 0, ...partialSearchState },
-          position,
-          isUserUnderageBeneficiary
-        )
+        fetchAppSearchHits({ page: 0, ...partialSearchState }, position, isUserUnderageBeneficiary)
       ),
     }
   )
