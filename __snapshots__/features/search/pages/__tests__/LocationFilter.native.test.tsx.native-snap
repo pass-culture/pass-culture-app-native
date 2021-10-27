@@ -165,7 +165,6 @@ exports[`LocationFilter component should render correctly 1`] = `
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
-            "justifyContent": "space-between",
             "marginHorizontal": 24,
             "opacity": 1,
           }
@@ -195,49 +194,54 @@ exports[`LocationFilter component should render correctly 1`] = `
             </Text>
           </View>
           <View
-            numberOfSpaces={2}
             style={
               Array [
                 Object {
-                  "width": 8,
-                },
-              ]
-            }
-          />
-          <Text
-            color="#151515"
-            numberOfLines={3}
-            style={
-              Array [
-                Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "paddingHorizontal": 8,
                 },
               ]
             }
           >
-            Choisir un lieu
-          </Text>
+            <Text
+              color="#151515"
+              numberOfLines={3}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Choisir un lieu
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={2}
           style={
             Array [
               Object {
-                "width": 8,
+                "alignItems": "center",
+                "flexDirection": "row",
+                "height": "100%",
               },
             ]
           }
-        />
-        <View
-          height={32}
-          width={32}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={32}
+            width={32}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
       <View
@@ -265,7 +269,6 @@ exports[`LocationFilter component should render correctly 1`] = `
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
-            "justifyContent": "space-between",
             "marginHorizontal": 24,
             "opacity": 1,
           }
@@ -294,42 +297,57 @@ exports[`LocationFilter component should render correctly 1`] = `
             </Text>
           </View>
           <View
-            numberOfSpaces={2}
             style={
               Array [
                 Object {
-                  "width": 8,
-                },
-              ]
-            }
-          />
-          <Text
-            color="#151515"
-            numberOfLines={3}
-            style={
-              Array [
-                Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "paddingHorizontal": 8,
                 },
               ]
             }
           >
-            Autour de moi
-          </Text>
+            <Text
+              color="#151515"
+              numberOfLines={3}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Autour de moi
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={10}
           style={
             Array [
               Object {
-                "width": 40,
+                "alignItems": "center",
+                "flexDirection": "row",
+                "height": "100%",
               },
             ]
           }
-        />
+        >
+          <View
+            numberOfSpaces={8}
+            style={
+              Array [
+                Object {
+                  "width": 32,
+                },
+              ]
+            }
+          />
+        </View>
       </View>
       <View
         numberOfSpaces={4}
@@ -356,7 +374,6 @@ exports[`LocationFilter component should render correctly 1`] = `
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
-            "justifyContent": "space-between",
             "marginHorizontal": 24,
             "opacity": 1,
           }
@@ -385,38 +402,42 @@ exports[`LocationFilter component should render correctly 1`] = `
             </Text>
           </View>
           <View
-            numberOfSpaces={2}
             style={
               Array [
                 Object {
-                  "width": 8,
-                },
-              ]
-            }
-          />
-          <Text
-            color="#eb0055"
-            numberOfLines={3}
-            style={
-              Array [
-                Object {
-                  "color": "#eb0055",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "paddingHorizontal": 8,
                 },
               ]
             }
           >
-            Partout
-          </Text>
+            <Text
+              color="#eb0055"
+              numberOfLines={3}
+              style={
+                Array [
+                  Object {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Partout
+            </Text>
+          </View>
         </View>
         <View
           style={
             Array [
               Object {
-                "alignItems": "flex-end",
-                "width": 64,
+                "alignItems": "center",
+                "flexDirection": "row",
+                "height": "100%",
               },
             ]
           }
@@ -431,16 +452,6 @@ exports[`LocationFilter component should render correctly 1`] = `
             </Text>
           </View>
         </View>
-        <View
-          numberOfSpaces={10}
-          style={
-            Array [
-              Object {
-                "width": 40,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </RCTScrollView>
