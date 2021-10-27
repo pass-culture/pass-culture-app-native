@@ -9,7 +9,7 @@ import {
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { accessibilityAndTestId } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -44,6 +44,7 @@ const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (prop
 export const SearchBox: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
+  const { searchState: stagedSearchState } = useStagedSearch()
   const [query, setQuery] = useState<string>('')
 
   useFocusEffect(
@@ -65,15 +66,14 @@ export const SearchBox: React.FC = () => {
   }
 
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+    // When we hit enter, we may have selected a category or a venue on the search landing page
+    // these are the two potentially 'staged' filters that we want to commit to the global search state
+    const { locationFilter, offerCategories } = stagedSearchState
+    const query = event.nativeEvent.text
     navigate(
-      ...getTabNavConfig('Search', {
-        query: event.nativeEvent.text,
-        showResults: true,
-      })
+      ...getTabNavConfig('Search', { query, showResults: true, locationFilter, offerCategories })
     )
-    dispatch({ type: 'SET_QUERY', payload: event.nativeEvent.text })
-    dispatch({ type: 'SHOW_RESULTS', payload: true })
-    analytics.logSearchQuery(event.nativeEvent.text)
+    analytics.logSearchQuery(query)
   }
 
   return (
