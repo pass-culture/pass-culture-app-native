@@ -24,6 +24,7 @@ const getClientEnvironment = require('./env')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
+const SentryWebpackPlugin = require('@sentry/webpack-plugin')
 
 const postcssNormalize = require('postcss-normalize')
 
@@ -319,6 +320,13 @@ module.exports = function (webpackEnv) {
         }),
       },
       plugins: [
+        new SentryWebpackPlugin({
+          // 1. sentry-cli configuration is in the file ~/.sentryclirc
+          //    See https://docs.sentry.io/product/cli/configuration/ for details
+          // 2. Other SentryWebpackPlugin configuration
+          include: '.',
+          ignore: ['node_modules', 'webpack.config.js'],
+        }),
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
         // guards against forgotten dependencies and such.
         PnpWebpackPlugin,
