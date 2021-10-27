@@ -1,14 +1,18 @@
 import { useQuery } from 'react-query'
 
 import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
+import {
+  fetchAlgoliaHits,
+  filterAlgoliaHit,
+  useTransformAlgoliaHits,
+} from 'libs/algolia/fetchAlgolia'
 import { env } from 'libs/environment'
 import { GeoCoordinates, useGeolocation } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { IncompleteSearchHit, SearchHit } from 'libs/search'
-import { useAlgoliaHits } from 'libs/search/fetch/useAlgoliaHits'
+import { fetchObjects, filterSearchHits } from 'libs/search/fetch/search'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
-import { useSearchHits } from 'libs/search/fetch/useSearchHits'
 
 import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
@@ -62,14 +66,13 @@ const useRecommendedOfferIds = (recommendationModule: RecommendationPane | undef
 
 const useRecommendedHits = (ids: string[]): SearchHit[] => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
-  const algoliaBackend = useAlgoliaHits()
-  const searchBackend = useSearchHits()
   const isUserUnderage = useIsUserUnderageBeneficiary()
+  const transformHits = useTransformAlgoliaHits()
 
-  const backend = isAppSearchBackend ? searchBackend : algoliaBackend
-  const { fetchHits, filterHits, transformHits } = backend
+  const fetchHits = isAppSearchBackend ? fetchObjects : fetchAlgoliaHits
+  const filterHits = isAppSearchBackend ? filterSearchHits : filterAlgoliaHit
 
-  const { data: hits } = useQuery(
+  const { data: hits = [] } = useQuery(
     QueryKeys.RECOMMENDATION_HITS,
     async () => await fetchHits(ids, isUserUnderage),
     { enabled: ids.length > 0 && enabled }
