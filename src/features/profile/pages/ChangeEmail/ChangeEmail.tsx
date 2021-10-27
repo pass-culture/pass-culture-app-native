@@ -20,14 +20,14 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 export function ChangeEmail() {
   const [email, setEmail] = useSafeState('')
   const [password, setPassword] = useSafeState('')
-  const { hasError: isInvalidEmail, message } = useValidateEmail(email)
+  const emailErrorMessage = useValidateEmail(email)
 
   const scrollRef = useRef<ScrollView | null>(null)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const disabled = !isLongEnough(password) || (isInvalidEmail && email.length > 0)
+  const disabled = !isLongEnough(password) || (!!emailErrorMessage && email.length > 0)
 
   // TODO (PC-11395) : Add correct function
   const submitEmailChange = () => 'submitEmailChange'
@@ -42,7 +42,9 @@ export function ChangeEmail() {
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
         <EmailInput label={t`Nouvel e-mail`} email={email} onEmailChange={setEmail} />
-        <InputError visible={isInvalidEmail} messageId={message} numberOfSpacesTop={1} />
+        {!!emailErrorMessage && (
+          <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={1} />
+        )}
         <Spacer.Column numberOfSpaces={4} />
         <PasswordInput
           label={t`Mot de passe`}
