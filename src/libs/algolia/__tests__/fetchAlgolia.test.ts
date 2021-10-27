@@ -97,7 +97,6 @@ describe('fetchAlgolia', () => {
           ['offer.isEducational:false'],
           [
             'offer.isDigital:false',
-            'offer.prices=0',
             'offer.searchGroupName:PRESSE',
             'offer.subcategoryId:LIVRE_NUMERIQUE',
             'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
@@ -124,7 +123,6 @@ describe('fetchAlgolia', () => {
           ['offer.isEducational:false'],
           [
             'offer.isDigital:false',
-            'offer.prices=0',
             'offer.searchGroupName:PRESSE',
             'offer.subcategoryId:LIVRE_NUMERIQUE',
             'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
