@@ -7,12 +7,16 @@ import { useQueries } from 'react-query'
 import { Offers, OffersWithCover } from 'features/home/contentful'
 import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { SearchState } from 'features/search/types'
+import {
+  fetchMultipleAlgolia,
+  filterAlgoliaHit,
+  useTransformAlgoliaHits,
+} from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
-import { useAlgoliaMultipleHits } from 'libs/search/fetch/useAlgoliaMultipleHits'
+import { fetchMultipleHits as searchMultipleHits, filterSearchHits } from 'libs/search/fetch/search'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
-import { useSearchMultipleHits } from 'libs/search/fetch/useSearchMultipleHits'
 import { useSendAdditionalRequestToAppSearch } from 'libs/search/useSendAdditionalRequestToAppSearch'
 
 export type HomeModuleResponse = {
@@ -44,14 +48,13 @@ export const useHomeModules = (
   const { position } = useGeolocation()
   const homeModules: HomeModuleResponse = {}
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
-  const algoliaBackend = useAlgoliaMultipleHits()
-  const searchBackend = useSearchMultipleHits()
+  const transformHits = useTransformAlgoliaHits()
   const parseSearchParameters = useParseSearchParameters()
   const sendAdditionalRequest = useSendAdditionalRequestToAppSearch()
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
-  const backend = isAppSearchBackend ? searchBackend : algoliaBackend
-  const { fetchMultipleHits, filterHits, transformHits } = backend
+  const fetchMultipleHits = isAppSearchBackend ? searchMultipleHits : fetchMultipleAlgolia
+  const filterHits = isAppSearchBackend ? filterSearchHits : filterAlgoliaHit
 
   const queries = useQueries(
     offerModules.map(({ search, moduleId }) => {
@@ -70,7 +73,7 @@ export const useHomeModules = (
         queryKey: [QueryKeys.HOME_MODULE, moduleId],
         queryFn: fetchModule,
         onSuccess: sendAdditionalRequest(() =>
-          searchBackend.fetchMultipleHits(parsedParameters, position, isUserUnderageBeneficiary)
+          searchMultipleHits(parsedParameters, position, isUserUnderageBeneficiary)
         ),
         enabled,
         notifyOnChangeProps: ['data'],
