@@ -4,6 +4,7 @@ interface Offer {
   dates?: number[]
   isDigital?: boolean
   isDuo?: boolean
+  isEducational?: boolean
   name?: string
   prices?: number[]
   subcategoryId?: SubcategoryIdEnum

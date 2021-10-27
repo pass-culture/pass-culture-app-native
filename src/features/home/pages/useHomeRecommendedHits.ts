@@ -69,12 +69,11 @@ const useRecommendedHits = (ids: string[]): SearchHit[] => {
   const backend = isAppSearchBackend ? searchBackend : algoliaBackend
   const { fetchHits, filterHits, transformHits } = backend
 
-  const { data } = useQuery(
+  const { data: hits } = useQuery(
     QueryKeys.RECOMMENDATION_HITS,
     async () => await fetchHits(ids, isUserUnderage),
     { enabled: ids.length > 0 && enabled }
   )
 
-  const results = data?.results || []
-  return (results as IncompleteSearchHit[]).filter(filterHits).map(transformHits) as SearchHit[]
+  return (hits as IncompleteSearchHit[]).filter(filterHits).map(transformHits) as SearchHit[]
 }

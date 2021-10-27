@@ -1,4 +1,4 @@
-import { GetObjectsResponse, MultipleQueriesResponse } from '@algolia/client-search'
+import { MultipleQueriesResponse } from '@algolia/client-search'
 
 import { LocationType } from 'features/search/enums'
 import { Response } from 'features/search/pages/useSearchResults'
@@ -21,6 +21,7 @@ export const attributesToRetrieve = [
   'offer.description',
   'offer.isDigital',
   'offer.isDuo',
+  'offer.isEducational',
   'offer.name',
   'offer.prices',
   'offer.subcategoryId',
@@ -111,12 +112,11 @@ export const fetchAlgolia = (
   })
 }
 
-export const fetchAlgoliaHits = (
-  objectIds: string[]
-): Readonly<Promise<GetObjectsResponse<AlgoliaHit>>> => {
+export const fetchAlgoliaHits = async (objectIds: string[]): Promise<AlgoliaHit[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
-  // TODO(antoinewg) make sure we filter educational offers
-  return index.getObjects(objectIds, { attributesToRetrieve })
+  const response = await index.getObjects<AlgoliaHit>(objectIds, { attributesToRetrieve })
+  const hits = response.results.filter(Boolean) as AlgoliaHit[]
+  return hits.filter(({ offer }) => !offer.isEducational)
 }
 
 export const buildGeolocationParameter = (

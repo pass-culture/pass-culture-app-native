@@ -37,7 +37,7 @@ export const filterSearchHits = (hit: IncompleteSearchHit): boolean =>
 export const fetchObjects = async (
   ids: string[],
   isUserUnderage: boolean
-): Promise<{ results: SearchHit[] }> => {
+): Promise<SearchHit[]> => {
   const options: SearchOptions<AppSearchFields> = {
     result_fields: RESULT_FIELDS,
     filters: {
@@ -48,9 +48,7 @@ export const fetchObjects = async (
   }
 
   const response = await offersClient.search<AppSearchFields>('', options)
-  return {
-    results: response.results.map(buildAlgoliaHit).filter(filterHasSubcategoryId) as SearchHit[],
-  }
+  return response.results.map(buildAlgoliaHit).filter(filterHasSubcategoryId) as SearchHit[]
 }
 
 export const fetchMultipleHits = async (

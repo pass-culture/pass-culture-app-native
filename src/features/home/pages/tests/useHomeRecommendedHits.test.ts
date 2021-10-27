@@ -18,7 +18,7 @@ jest.mock('features/auth/settings')
 
 const objectIds = mockedAlgoliaResponse.hits.map(({ objectID }) => objectID)
 
-const fetchHits = jest.fn().mockResolvedValue({ results: mockedAlgoliaResponse.hits })
+const fetchHits = jest.fn().mockResolvedValue(mockedAlgoliaResponse.hits)
 jest.spyOn(AlgoliaModule, 'fetchAlgoliaHits').mockImplementation(fetchHits)
 
 const endpoint = getRecommendationEndpoint(mockUserId, null) as string
