@@ -30,7 +30,6 @@ export function RadioButton(props: RadioButtonProps) {
           {props.selectedValue === props.id && <Validate color={ColorsEnum.PRIMARY} />}
         </Spacer.Flex>
       </PressableContainer>
-      <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
 }

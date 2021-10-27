@@ -56,14 +56,16 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
       <Spacer.Column numberOfSpaces={3} />
       {reasonsForReporting.map((reason) =>
         reason.id !== 'OTHER' ? (
-          <RadioButton
-            key={reason.id}
-            id={reason.id}
-            title={reason.title}
-            description={reason.description}
-            onSelect={setSelectedReason}
-            selectedValue={selectedReason}
-          />
+          <React.Fragment key={reason.id}>
+            <RadioButton
+              id={reason.id}
+              title={reason.title}
+              description={reason.description}
+              onSelect={setSelectedReason}
+              selectedValue={selectedReason}
+            />
+            <Spacer.Column numberOfSpaces={6} />
+          </React.Fragment>
         ) : (
           <SectionRow
             title={reason.title}
