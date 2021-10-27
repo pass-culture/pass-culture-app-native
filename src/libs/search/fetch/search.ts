@@ -2,7 +2,6 @@ import { SearchOptions } from '@elastic/app-search-javascript'
 import { flatten } from 'lodash'
 
 import { VenuesSearchParametersFields } from 'features/home/contentful'
-import { CategoryCriteria } from 'features/search/enums'
 import { Response } from 'features/search/pages/useSearchResults'
 import { PartialSearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia'
@@ -37,7 +36,6 @@ export const filterSearchHits = (hit: IncompleteSearchHit): boolean =>
 
 export const fetchObjects = async (
   ids: string[],
-  availableCategories: Partial<CategoryCriteria>,
   isUserUnderage: boolean
 ): Promise<{ results: SearchHit[] }> => {
   const options: SearchOptions<AppSearchFields> = {
@@ -45,10 +43,7 @@ export const fetchObjects = async (
     filters: {
       any: ids.map((id) => ({ [AppSearchFields.id]: id })),
       ...(isUserUnderage && underageFilter),
-      all: [
-        { [AppSearchFields.category]: Object.keys(availableCategories) },
-        { [AppSearchFields.is_educational]: FALSE },
-      ],
+      all: [{ [AppSearchFields.is_educational]: FALSE }],
     },
   }
 
