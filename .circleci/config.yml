@@ -497,6 +497,7 @@ jobs:
     steps:
       - checkout
       - install_node_modules
+      - setup_sentry
       - authenticate_gcp:
           gcp_key_name: GCP_METIER_KEY
       - build_web:
@@ -515,6 +516,7 @@ jobs:
       - checkout
       - install_node_modules
       - setup_staging_secrets
+      - setup_sentry
       - authenticate_gcp:
           gcp_key_name: GCP_METIER_KEY
       - build_web:
@@ -533,6 +535,7 @@ jobs:
       - checkout
       - install_node_modules
       - setup_integration_secrets
+      - setup_sentry
       - authenticate_gcp:
           gcp_key_name: GCP_METIER_KEY
       - build_web:
@@ -551,6 +554,7 @@ jobs:
       - checkout
       - install_node_modules
       - setup_production_secrets
+      - setup_sentry
       - authenticate_gcp:
           gcp_key_name: GCP_METIER_KEY
       - build_web:
