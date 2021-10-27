@@ -101,6 +101,7 @@ export const fetchAlgoliaHits = (
   objectIds: string[]
 ): Readonly<Promise<GetObjectsResponse<AlgoliaHit>>> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
+  // TODO(antoinewg) make sure we filter educational offers
   return index.getObjects(objectIds, { attributesToRetrieve })
 }
 

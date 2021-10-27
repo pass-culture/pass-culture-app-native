@@ -1,10 +1,7 @@
 import { renderHook, cleanup } from '@testing-library/react-hooks'
-import omit from 'lodash/omit'
 import { rest } from 'msw'
 
-import { SearchGroupNameEnum } from 'api/gen'
 import { RecommendationPane } from 'features/home/contentful/moduleTypes'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
 import * as AlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -61,12 +58,11 @@ describe('useHomeRecommendedHits', () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    const availableCategories = omit(CATEGORY_CRITERIA, SearchGroupNameEnum.NONE)
     const isUserUnderage = false
     await waitFor(() => {
       expect(result.current).toHaveLength(4)
       expect(fetchHits).toHaveBeenCalledTimes(1)
-      expect(fetchHits).toHaveBeenCalledWith(objectIds, availableCategories, isUserUnderage)
+      expect(fetchHits).toHaveBeenCalledWith(objectIds, isUserUnderage)
     })
   })
 })
