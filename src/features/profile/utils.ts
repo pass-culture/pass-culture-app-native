@@ -39,11 +39,13 @@ export const useIsUserUnderageBeneficiary = () => {
 }
 
 export const matchSubscriptionMessageIconToSvg = (
-  iconName: string | undefined,
+  iconName: string | undefined | null,
   useFallbackIcon?: boolean | undefined
 ) => {
   switch (iconName) {
     case undefined:
+      return undefined
+    case null:
       return undefined
     case 'CLOCK':
       return Clock

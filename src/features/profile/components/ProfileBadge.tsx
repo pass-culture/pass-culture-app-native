@@ -9,13 +9,16 @@ import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
 interface ProfileBadgeProps {
   message: string
   popOverIcon?: FunctionComponent<IconInterface>
+  callToActionIcon?: FunctionComponent<IconInterface> | null
+  callToActionMessage?: string | null
+  callToActionLink?: string | null
   testID?: string
 }
 
 const renderCallToAction = (
-  callToActionMessage: string | undefined,
-  callToActionLink: string | undefined,
-  callToActionIcon: FunctionComponent<IconInterface> | undefined
+  callToActionMessage?: string | null,
+  callToActionLink?: string | null,
+  callToActionIcon?: FunctionComponent<IconInterface> | null
 ) => {
   if (!callToActionMessage || !callToActionLink) return null
 
@@ -25,7 +28,7 @@ const renderCallToAction = (
       <CallToActionContainer>
         <ButtonQuaternaryBlack
           inline
-          icon={callToActionIcon}
+          icon={callToActionIcon || undefined}
           testId="call-to-action-button"
           onPress={() => handleCallToActionLink(callToActionLink)}
           title={callToActionMessage}

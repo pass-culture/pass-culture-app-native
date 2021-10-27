@@ -1,23 +1,19 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
+import { SubscriptionMessage } from 'api/gen'
 import { ProfileBadge } from 'features/profile/components/ProfileBadge'
+import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers/formatDates'
 import { Clock } from 'ui/svg/icons/Clock'
-import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 type IdCheckProcessingBadgeProps = {
-  icon?: FunctionComponent<IconInterface>
-  message?: string
-  lastUpdated?: string
-  callToActionIcon?: FunctionComponent<IconInterface>
-  callToActionMessage?: string
-  callToActionLink?: string
+  subscriptionMessage?: SubscriptionMessage | null
 }
 
-const formatStringToLastUpdatedAtMessage = (lastUpdatedDate: string | undefined) =>
+const formatStringToLastUpdatedAtMessage = (lastUpdatedDate: Date | undefined) =>
   lastUpdatedDate
     ? t({
         id: 'last update',
@@ -32,21 +28,25 @@ const formatStringToLastUpdatedAtMessage = (lastUpdatedDate: string | undefined)
 export function IdCheckProcessingBadge(props: IdCheckProcessingBadgeProps) {
   return (
     <React.Fragment>
-      {!!props.lastUpdated && (
+      {!!props.subscriptionMessage?.updatedAt && (
         <React.Fragment>
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
-            {formatStringToLastUpdatedAtMessage(props.lastUpdated)}
+            {formatStringToLastUpdatedAtMessage(props.subscriptionMessage?.updatedAt)}
           </Typo.Caption>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
       <ProfileBadge
-        icon={props.icon || Clock}
-        callToActionIcon={props.callToActionIcon}
-        callToActionMessage={props.callToActionMessage}
-        callToActionLink={props.callToActionLink}
+        popOverIcon={
+          matchSubscriptionMessageIconToSvg(props.subscriptionMessage?.popOverIcon, true) || Clock
+        }
+        callToActionIcon={matchSubscriptionMessageIconToSvg(
+          props.subscriptionMessage?.callToAction?.callToActionIcon
+        )}
+        callToActionMessage={props.subscriptionMessage?.callToAction?.callToActionTitle}
+        callToActionLink={props.subscriptionMessage?.callToAction?.callToActionLink}
         message={
-          props.message ||
+          props.subscriptionMessage?.userMessage ||
           t`Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !`
         }
       />

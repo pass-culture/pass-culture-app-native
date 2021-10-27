@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`IdCheckProcessingBadge should display last update sentence if lastUpdated props is passed 1`] = `
+exports[`IdCheckProcessingBadge should display component correctly 1`] = `
 Array [
   <Text
     color="#626262"
@@ -49,6 +49,24 @@ Array [
       style={
         Array [
           Object {
+            "paddingRight": 16,
+          },
+        ]
+      }
+    >
+      <View
+        height={32}
+        width={32}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -69,14 +87,14 @@ Array [
           ]
         }
       >
-        Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !
+        Dossier déposé, nous sommes en train de le traiter
       </Text>
     </View>
   </View>,
 ]
 `;
 
-exports[`IdCheckProcessingBadge should not display last update sentence if lastUpdated props is passed 1`] = `
+exports[`IdCheckProcessingBadge should not display last update sentence if updatedAt props is null 1`] = `
 <View
   style={
     Array [
@@ -95,6 +113,24 @@ exports[`IdCheckProcessingBadge should not display last update sentence if lastU
   }
   testID="profile-badge"
 >
+  <View
+    style={
+      Array [
+        Object {
+          "paddingRight": 16,
+        },
+      ]
+    }
+  >
+    <View
+      height={32}
+      width={32}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
   <View
     style={
       Array [
@@ -119,7 +155,7 @@ exports[`IdCheckProcessingBadge should not display last update sentence if lastU
         ]
       }
     >
-      Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !
+      Dossier déposé, nous sommes en train de le traiter
     </Text>
   </View>
 </View>
