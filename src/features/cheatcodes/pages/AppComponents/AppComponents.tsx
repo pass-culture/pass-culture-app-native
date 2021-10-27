@@ -6,7 +6,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen/api'
+import {
+  CallToActionIcon,
+  CategoryIdEnum,
+  PopOverIcon,
+  SearchGroupNameEnum,
+  VenueTypeCodeKey,
+} from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
@@ -16,7 +22,6 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
-import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { mapVenueTypeToIcon, MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
@@ -176,11 +181,8 @@ export const AppComponents: FunctionComponent = () => {
   const { campaign, source, medium, campaignDate } = useUtmParams()
   const [popOverIconString, setPopOverIconString] = useState<string>()
   const [callToActionIconString, setCallToActionIconString] = useState<string>()
-  const [callToActionMessage, setCallToActionMessage] = useState<string>()
+  const [callToActionTitle, setCallToActionTitle] = useState<string>()
   const [callToActionLink, setCallToActionLink] = useState<string>()
-
-  const PopOverIcon = matchSubscriptionMessageIconToSvg(popOverIconString, true)
-  const CallToActionIcon = matchSubscriptionMessageIconToSvg(callToActionIconString)
 
   function navigateToIdCheckUnavailable() {
     navigate('IdCheckUnavailable')
@@ -875,12 +877,16 @@ export const AppComponents: FunctionComponent = () => {
         <Text>Long texte</Text>
         <View>
           <IdCheckProcessingBadge
-            callToActionIcon={CallToActionIcon}
-            callToActionMessage={callToActionMessage}
-            callToActionLink={callToActionLink}
-            icon={PopOverIcon}
-            message={`Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu'on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`}
-            lastUpdated={`2021-10-25T13:24Z`}
+            subscriptionMessage={{
+              callToAction: {
+                callToActionIcon: callToActionIconString as CallToActionIcon,
+                callToActionTitle,
+                callToActionLink,
+              },
+              popOverIcon: popOverIconString as PopOverIcon,
+              userMessage: `Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu'on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`,
+              updatedAt: new Date(`2021-10-25T13:24Z`),
+            }}
           />
         </View>
         <Text>Affichage icône PopOverIcon</Text>
@@ -900,9 +906,9 @@ export const AppComponents: FunctionComponent = () => {
           <Button
             title="CTA Message"
             onPress={() => {
-              return callToActionMessage
-                ? setCallToActionMessage(undefined)
-                : setCallToActionMessage('Tu peux cliquer ici')
+              return callToActionTitle
+                ? setCallToActionTitle(undefined)
+                : setCallToActionTitle('Tu peux cliquer ici')
             }}
           />
         </AlignedText>
