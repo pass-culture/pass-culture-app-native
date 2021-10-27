@@ -697,12 +697,6 @@ msgstr "Entrée pour l'email"
 msgid "Entrée pour la date de naissance"
 msgstr "Entrée pour la date de naissance"
 
-#: src/features/auth/login/Login.tsx
-#: src/features/auth/signup/SetPassword/SetPassword.tsx
-#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-msgid "Entrée pour le mot de passe"
-msgstr "Entrée pour le mot de passe"
-
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Entrée pour le numéro de téléphone"
 msgstr "Entrée pour le numéro de téléphone"
@@ -758,6 +752,7 @@ msgstr "Filtrer"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
+#: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
 msgid "Format de l'e-mail incorrect"
 msgstr "Format de l'e-mail incorrect"
 
@@ -936,6 +931,10 @@ msgstr "L'application pass Culture utilise des traceurs susceptibles de réalise
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
+
+#: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
+msgid "L'e-mail saisi est identique à votre e-mail actuel"
+msgstr "L'e-mail saisi est identique à votre e-mail actuel"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx
 #: src/features/offer/components/OfferHeader.tsx

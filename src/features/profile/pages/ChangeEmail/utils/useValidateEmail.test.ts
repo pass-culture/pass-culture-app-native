@@ -30,7 +30,7 @@ describe('useValidateEmail function', () => {
     const { result } = renderHook(() => useValidateEmail(currentUserEmail))
     expect(result.current).toEqual({
       hasError: true,
-      message: "L'e-mail saisi est identique a votre e-mail actuel",
+      message: "L'e-mail saisi est identique à votre e-mail actuel",
     })
   })
 })
