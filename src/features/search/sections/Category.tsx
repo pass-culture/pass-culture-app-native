@@ -5,7 +5,7 @@ import { SearchGroupNameEnum } from 'api/gen'
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
-import { useAvailableSearchCategories } from 'features/search/utils/useAvailableSearchCategories'
+import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -15,7 +15,7 @@ export const Category: React.FC = () => {
   const { searchState, dispatch } = useStagedSearch()
   const { offerCategories } = searchState
   const logUseFilter = useLogFilterOnce(SectionTitle.Category)
-  const categories = useAvailableSearchCategories()
+  const categories = useAvailableCategories()
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
   const onPress = (facetFilter: SearchGroupNameEnum) => () => {
