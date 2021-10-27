@@ -70,6 +70,75 @@ describe('fetchAlgolia', () => {
     })
   })
 
+  it('should fetch with provided query and default page number', () => {
+    const query = 'searched query'
+
+    fetchAlgolia({ ...baseParams, query } as SearchParametersQuery, null, false)
+
+    expect(search).toHaveBeenCalledWith(query, {
+      page: 0,
+      attributesToHighlight: [],
+      attributesToRetrieve,
+      numericFilters: [['offer.prices: 0 TO 300']],
+    })
+  })
+  describe('underage', () => {
+    it('should fetch with provided query and default underage filter', () => {
+      const query = 'searched query'
+
+      fetchAlgolia({ ...baseParams, query } as SearchParametersQuery, null, true)
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [
+          ['offer.subcategoryId:-JEU_EN_LIGNE'],
+          ['offer.subcategoryId:-JEU_SUPPORT_PHYSIQUE'],
+          ['offer.subcategoryId:-ABO_JEU_VIDEO'],
+          ['offer.subcategoryId:-ABO_LUDOTHEQUE'],
+          ['offer.isEducational:false'],
+          [
+            'offer.isDigital:false',
+            'offer.prices=0',
+            'offer.searchGroupName:PRESSE',
+            'offer.subcategoryId:LIVRE_NUMERIQUE',
+            'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
+          ],
+        ],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve,
+        numericFilters: [['offer.prices: 0 TO 300']],
+      })
+    })
+    it('should fetch with facetFilters parameter when one category is provided and when underage', () => {
+      const query = 'searched query'
+      const offerCategories = ['LECON']
+
+      fetchAlgolia({ ...baseParams, query, offerCategories } as SearchParametersQuery, null, true)
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [
+          ['offer.subcategoryId:-JEU_EN_LIGNE'],
+          ['offer.subcategoryId:-JEU_SUPPORT_PHYSIQUE'],
+          ['offer.subcategoryId:-ABO_JEU_VIDEO'],
+          ['offer.subcategoryId:-ABO_LUDOTHEQUE'],
+          ['offer.isEducational:false'],
+          [
+            'offer.isDigital:false',
+            'offer.prices=0',
+            'offer.searchGroupName:PRESSE',
+            'offer.subcategoryId:LIVRE_NUMERIQUE',
+            'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
+          ],
+          ['offer.searchGroupName:LECON'],
+        ],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve,
+      })
+    })
+  })
+
   describe('query', () => {
     it('should fetch with provided query', () => {
       const query = 'searched query'
