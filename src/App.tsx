@@ -8,7 +8,8 @@ import { AppState, AppStateStatus, LogBox } from 'react-native'
 import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 
-import './why-did-you-render'
+// if __DEV__ import if you want to debug
+// import './why-did-you-render'
 import 'intl'
 import 'intl/locale-data/jsonp/en'
 
