@@ -1,7 +1,9 @@
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnum, SubcategoryIdEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
+
+const underageFilter = []
 
 export const buildFacetFilters = ({
   locationFilter,
@@ -9,15 +11,16 @@ export const buildFacetFilters = ({
   offerTypes,
   offerIsDuo,
   tags,
+  isUserUnderageBeneficiary,
 }: Pick<
   SearchParametersQuery,
   'locationFilter' | 'offerCategories' | 'offerTypes' | 'offerIsDuo' | 'tags'
->): null | {
+> & { isUserUnderageBeneficiary: boolean }): null | {
   facetFilters: FiltersArray
 } => {
   if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
 
-  const facetFilters: FiltersArray = []
+  const facetFilters: FiltersArray = isUserUnderageBeneficiary ? underageFilter : []
 
   if (offerCategories.length > 0) {
     const categoriesPredicate = buildOfferCategoriesPredicate(offerCategories)
