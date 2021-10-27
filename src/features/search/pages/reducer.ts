@@ -84,9 +84,11 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'TOGGLE_CATEGORY':
       return {
         ...state,
+        // TODO(antoinewg) Make sure the categories are sorted to reuse react-query cache
         offerCategories: addOrRemove(state.offerCategories, action.payload),
       }
     case 'SET_CATEGORY':
+      // TODO(antoinewg) Make sure the categories are sorted to reuse react-query cache
       return { ...state, offerCategories: action.payload }
     case 'OFFER_TYPE':
       return {
