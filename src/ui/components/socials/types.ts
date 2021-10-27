@@ -9,8 +9,12 @@ import { IconInterface } from 'ui/svg/icons/types'
 
 export type SocialNetwork = 'facebook' | 'instagram' | 'snapchat' | 'twitter'
 
-const facebookAndroidLink = 'fb://page/2202916773290436'
-const facebookIOSLink = 'fb://page/?id=2202916773290436'
+const FACEBOOK_WEB_URL = 'https://www.facebook.com/passCultureofficiel/'
+const FACEBOOK_URL = Platform.select({
+  default: FACEBOOK_WEB_URL,
+  ios: 'fb://page/?id=2202916773290436',
+  android: 'fb://page/2202916773290436',
+})
 
 export const SocialNetworkIconsMap: Record<
   SocialNetwork,
@@ -20,12 +24,7 @@ export const SocialNetworkIconsMap: Record<
     fallbackLink?: string
   }
 > = {
-  facebook: {
-    icon: Facebook,
-    link: Platform.OS === 'ios' ? facebookIOSLink : facebookAndroidLink,
-    fallbackLink: 'https://www.facebook.com/passCultureofficiel/',
-  },
-
+  facebook: { icon: Facebook, link: FACEBOOK_URL, fallbackLink: FACEBOOK_WEB_URL },
   instagram: { icon: Instagram, link: 'https://www.instagram.com/passcultureofficiel/?hl=fr' },
   snapchat: { icon: Snapchat, link: 'https://story.snapchat.com/@pass.culture' },
   twitter: { icon: Twitter, link: 'https://twitter.com/pass_Culture' },
