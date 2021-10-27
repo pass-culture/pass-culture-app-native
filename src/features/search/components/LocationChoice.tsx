@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
@@ -25,40 +24,22 @@ export const LocationChoice: React.FC<Props> = (props) => {
     <Container onPress={onPress} testID={`locationChoice-${testID}`}>
       <FirstPart>
         <Icon size={48} color2={iconColor2} />
-        <Spacer.Row numberOfSpaces={2} />
-        <Typo.ButtonText
-          numberOfLines={3}
-          color={isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
-          {label}
-        </Typo.ButtonText>
+        <TextContainer>
+          <Typo.ButtonText
+            numberOfLines={3}
+            color={isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
+            {label}
+          </Typo.ButtonText>
+        </TextContainer>
       </FirstPart>
-      {!!isSelected && (
-        <ValidateIconContainer>
-          <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" />
-        </ValidateIconContainer>
-      )}
-      {arrowNext ? (
-        <React.Fragment>
-          <Spacer.Row numberOfSpaces={2} />
-          <ArrowNext />
-        </React.Fragment>
-      ) : (
-        <Spacer.Row numberOfSpaces={10} />
-      )}
+      <SecondPart>
+        {!!isSelected && <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" />}
+        {!!arrowNext && <ArrowNext />}
+        {!isSelected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
+      </SecondPart>
     </Container>
   )
 }
-
-const FirstPart = styled(View)({
-  flexDirection: 'row',
-  alignItems: 'center',
-  flex: 1,
-})
-
-const ValidateIconContainer = styled.View({
-  width: getSpacing(16),
-  alignItems: 'flex-end',
-})
 
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
@@ -66,6 +47,22 @@ const Container = styled.TouchableOpacity.attrs(() => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'space-between',
   marginHorizontal: getSpacing(6),
+})
+
+const FirstPart = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+  flex: 1,
+})
+
+const TextContainer = styled.View({
+  flex: 1,
+  paddingHorizontal: getSpacing(2),
+})
+
+const SecondPart = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+  height: '100%',
 })
