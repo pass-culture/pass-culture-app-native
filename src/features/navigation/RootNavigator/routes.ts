@@ -312,6 +312,7 @@ const routesBeforeReleaseCheck: Route[] = [
     name: 'SetEmail',
     component: SetEmail,
     path: 'creation-compte/email',
+    deeplinkPaths: ['set-email'],
     options: { title: t`Email - Formulaire` },
   },
   {
