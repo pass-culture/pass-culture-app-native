@@ -11,8 +11,6 @@ import { useUserProfileInfo } from 'features/home/api'
 import { openUrl, navigateToBooking } from 'features/navigation/helpers'
 import { getOfferPrice } from 'features/offer/services/getOfferPrice'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
-import { CategoryCriteria } from 'features/search/enums'
-import { availableCategories } from 'features/search/utils/useAvailableCategories'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
@@ -33,7 +31,6 @@ interface Props {
   subcategory: Subcategory
   hasEnoughCredit: boolean
   bookedOffers: UserProfileResponse['bookedOffers']
-  availableCategories: Partial<CategoryCriteria>
   isUnderageBeneficiary: boolean
 }
 interface ICTAWordingAndAction {
@@ -50,15 +47,10 @@ export const getCtaWordingAndAction = ({
   subcategory,
   hasEnoughCredit,
   bookedOffers,
-  availableCategories,
   isUnderageBeneficiary,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl } = offer
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
-  const isOfferCategoryNotAvailable = !!(
-    subcategory.searchGroupName &&
-    !Object.keys(availableCategories).includes(subcategory.searchGroupName)
-  )
 
   if (isAlreadyBookedOffer) {
     return {
@@ -76,13 +68,7 @@ export const getCtaWordingAndAction = ({
     subcategory.searchGroupName !== SearchGroupNameEnum.PRESSE
 
   // Non beneficiary or educational offer or unavailable offer for user
-  if (
-    !isLoggedIn ||
-    !isBeneficiary ||
-    offer.isEducational ||
-    isOfferCategoryNotAvailable ||
-    isOfferCategoryNotBookableByUser
-  ) {
+  if (!isLoggedIn || !isBeneficiary || offer.isEducational || isOfferCategoryNotBookableByUser) {
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
     return {
@@ -153,7 +139,6 @@ export const useCtaWordingAndAction = (props: {
     subcategory: mapping[offer.subcategoryId],
     hasEnoughCredit,
     bookedOffers,
-    availableCategories,
     isUnderageBeneficiary,
   })
 }

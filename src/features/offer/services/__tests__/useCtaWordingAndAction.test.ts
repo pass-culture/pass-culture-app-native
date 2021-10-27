@@ -2,7 +2,6 @@ import mockdate from 'mockdate'
 
 import { SearchGroupNameEnum, OfferResponse, UserRole } from 'api/gen'
 import { offerResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
-import { availableCategories } from 'features/search/utils/useAvailableCategories'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
@@ -45,7 +44,6 @@ describe('getCtaWordingAndAction', () => {
           subcategory,
           hasEnoughCredit: true,
           bookedOffers,
-          availableCategories,
           isUnderageBeneficiary: false,
         })
         const { wording, onPress } = result || {}
@@ -78,7 +76,6 @@ describe('getCtaWordingAndAction', () => {
           subcategory,
           hasEnoughCredit: true,
           bookedOffers,
-          availableCategories,
           isUnderageBeneficiary: false,
         })
         const { wording, onPress } = result || {}
@@ -102,7 +99,6 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory(partialSubcategory || {}),
         hasEnoughCredit: true,
         bookedOffers: {},
-        availableCategories,
         isUnderageBeneficiary: true,
         ...parameters,
       }) || { wording: '' }
@@ -230,7 +226,7 @@ describe('getCtaWordingAndAction', () => {
                 },
               ],
             },
-            { isUnderageBeneficiary: true, availableCategories },
+            { isUnderageBeneficiary: true },
             { isEvent, searchGroupName: category }
           )
           expect(wording).toEqual(expected)
@@ -253,7 +249,6 @@ describe('getCtaWordingAndAction', () => {
           subcategory,
           hasEnoughCredit: true,
           bookedOffers: {},
-          availableCategories,
           isUnderageBeneficiary: false,
         }) || {}
 
@@ -277,7 +272,6 @@ describe('getCtaWordingAndAction', () => {
           subcategory,
           hasEnoughCredit: true,
           bookedOffers: {},
-          availableCategories,
           isUnderageBeneficiary: false,
         }) || {}
 
