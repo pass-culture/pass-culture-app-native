@@ -202,6 +202,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
+            "maxWidth": 176,
             "minWidth": 120,
           },
         ]
