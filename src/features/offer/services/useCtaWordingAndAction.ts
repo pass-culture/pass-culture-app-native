@@ -12,7 +12,7 @@ import { openUrl, navigateToBooking } from 'features/navigation/helpers'
 import { getOfferPrice } from 'features/offer/services/getOfferPrice'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { CategoryCriteria } from 'features/search/enums'
-import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
+import { availableCategories } from 'features/search/utils/useAvailableCategories'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
@@ -132,7 +132,6 @@ export const useCtaWordingAndAction = (props: {
   const { data: user } = useUserProfileInfo()
   const { data: offer } = useOffer({ offerId })
   const hasEnoughCredit = useHasEnoughCredit(offerId)
-  const availableCategories = useAvailableCategories()
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const mapping = useSubcategoriesMapping()
 

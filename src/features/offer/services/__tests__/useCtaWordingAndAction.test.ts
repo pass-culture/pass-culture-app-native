@@ -1,10 +1,8 @@
-import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
 import { SearchGroupNameEnum, OfferResponse, UserRole } from 'api/gen'
 import { offerResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { useAvailableCategories } from 'features/search/utils/useAvailableCategories'
+import { availableCategories } from 'features/search/utils/useAvailableCategories'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
@@ -24,7 +22,6 @@ jest.mock('features/home/api', () => ({
     data: mockedUser,
   })),
 }))
-const availableCategories = CATEGORY_CRITERIA
 
 describe('getCtaWordingAndAction', () => {
   describe('Non Beneficiary', () => {
@@ -219,7 +216,6 @@ describe('getCtaWordingAndAction', () => {
         'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, category=$category and price=$price',
         ({ isEvent, expected, disabled, isDigital, category, price }) => {
           mockedUser.roles = [UserRole.UNDERAGEBENEFICIARY]
-          const { result } = renderHook(useAvailableCategories)
           const { wording, onPress } = getCta(
             {
               isDigital,
@@ -234,7 +230,7 @@ describe('getCtaWordingAndAction', () => {
                 },
               ],
             },
-            { isUnderageBeneficiary: true, availableCategories: result.current },
+            { isUnderageBeneficiary: true, availableCategories },
             { isEvent, searchGroupName: category }
           )
           expect(wording).toEqual(expected)
