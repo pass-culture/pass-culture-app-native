@@ -17,3 +17,5 @@ export const addOrRemove = (array: SearchGroupNameEnum[], element: SearchGroupNa
   if (array.includes(element)) return array.filter((el) => el !== element)
   return [...array, element]
 }
+
+export const sortCategories = (a: SearchGroupNameEnum, b: SearchGroupNameEnum) => a.localeCompare(b)
