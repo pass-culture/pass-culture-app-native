@@ -3,7 +3,23 @@ import { LocationType } from 'features/search/enums'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
 
-const underageFilter = []
+// We do not want to display these subcategories for underage beneficiaries : JEUENLIGNE, JEUSUPPORTPHYSIQUE, ABOJEUVIDEO or ABOLUDOTHEQUE
+// We also do not want to display digital offers unless they are free, press, audio book or numeric book
+
+const underageFilter = [
+  [`${FACETS_ENUM.OFFER_SUB_CATEGORY}:-${SubcategoryIdEnum.JEUENLIGNE}`],
+  [`${FACETS_ENUM.OFFER_SUB_CATEGORY}:-${SubcategoryIdEnum.JEUSUPPORTPHYSIQUE}`],
+  [`${FACETS_ENUM.OFFER_SUB_CATEGORY}:-${SubcategoryIdEnum.ABOJEUVIDEO}`],
+  [`${FACETS_ENUM.OFFER_SUB_CATEGORY}:-${SubcategoryIdEnum.ABOLUDOTHEQUE}`],
+  [`${FACETS_ENUM.OFFER_IS_EDUCATIONAL}:false`],
+  [
+    `${FACETS_ENUM.OFFER_IS_DIGITAL}:false`,
+    `${FACETS_ENUM.OFFER_PRICES}=0`,
+    `${FACETS_ENUM.OFFER_SEARCH_GROUP_NAME}:${SearchGroupNameEnum.PRESSE}`,
+    `${FACETS_ENUM.OFFER_SUB_CATEGORY}:${SubcategoryIdEnum.LIVRENUMERIQUE}`,
+    `${FACETS_ENUM.OFFER_SUB_CATEGORY}:${SubcategoryIdEnum.LIVREAUDIOPHYSIQUE}`,
+  ],
+]
 
 export const buildFacetFilters = ({
   locationFilter,
