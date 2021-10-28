@@ -17,6 +17,13 @@ import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const changeEmailApiCallMock = (email: string, password: string) => {
+  // TODO: replace by API call, once it's available
+
+  return new Promise((resolve) => setTimeout(resolve, 2000))
+}
+
 export function ChangeEmail() {
   const [email, setEmail] = useSafeState('')
   const [password, setPassword] = useSafeState('')
@@ -29,8 +36,14 @@ export function ChangeEmail() {
 
   const disabled = !isLongEnough(password) || (!!emailErrorMessage && email.length > 0)
 
-  // TODO (PC-11395) : Add correct function
-  const submitEmailChange = () => 'submitEmailChange'
+  const submitEmailChange = async () => {
+    try {
+      await changeEmailApiCallMock(email, password)
+      // TODO (PC-11417): show success snackbar
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   return (
     <React.Fragment>
