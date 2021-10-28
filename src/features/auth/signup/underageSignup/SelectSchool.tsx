@@ -1,9 +1,11 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/core'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { eligibleSchools, School } from 'features/auth/signup/underageSignup/eligibleSchools'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -16,6 +18,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export const SelectSchool = () => {
   const [selectedSchool, setSelectedSchool] = useState('')
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   if (error) {
     throw error
@@ -59,7 +62,11 @@ export const SelectSchool = () => {
           onPress={() => navigateToNextBeneficiaryValidationStep()}
         />
         <Spacer.Column numberOfSpaces={4} />
-        <ButtonTertiaryBlack title={t`Je ne vois pas mon établissement`} icon={Invalidate} />
+        <ButtonTertiaryBlack
+          title={t`Je ne vois pas mon établissement`}
+          icon={Invalidate}
+          onPress={() => navigate('NotEligibleEduConnect')}
+        />
       </BottomContainer>
       <Spacer.Column numberOfSpaces={4} />
       <PageHeader title={t`Établissements partenaires`} />
