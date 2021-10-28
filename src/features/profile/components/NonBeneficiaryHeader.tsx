@@ -7,6 +7,7 @@ import { useDepositAmount } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
+import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
@@ -26,6 +27,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const today = new Date()
   const depositAmount = useDepositAmount()
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  const isUserUnderage = useIsUserUnderageBeneficiary()
   const prefetchedInfo = {
     email: props.email,
     nextBeneficiaryValidationStep: props.nextBeneficiaryValidationStep ?? null,
@@ -48,11 +50,16 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     body = <BodyContainer testID="body-container-above-18" padding={1} />
   } else if (today >= eligibilityStartDatetime) {
     if (props.nextBeneficiaryValidationStep) {
-      const moduleBannerWording = t({
-        id: 'enjoy deposit',
-        values: { deposit },
-        message: 'Profite de {deposit}',
-      })
+      const moduleBannerWording = isUserUnderage
+        ? t({
+            id: 'enjoy underage deposit',
+            message: 'Profite de ton crédit',
+          })
+        : t({
+            id: 'enjoy deposit',
+            values: { deposit },
+            message: 'Profite de {deposit}',
+          })
       body = (
         <BodyContainer testID="body-container-18">
           <Typo.Caption>

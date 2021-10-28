@@ -1,12 +1,17 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
+import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BeneficiaryValidationStep, GetIdCheckTokenResponse } from 'api/gen'
+import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { flushAllPromises, render } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
+
+jest.mock('features/profile/utils')
+const mockedUseIsUserUnderageBeneficiary = mocked(useIsUserUnderageBeneficiary, true)
 
 jest.mock('features/auth/api', () => ({
   useGetIdCheckToken: jest.fn(
@@ -147,5 +152,18 @@ describe('NonBeneficiaryHeader  ', () => {
       />
     )
     expect(queryByText(/Profite de 300€/)).toBeTruthy()
+  })
+  it('should display correct credit message for underage', () => {
+    mockedUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
+    const { queryByText } = render(
+      <NonBeneficiaryHeader
+        email="john@doe.com"
+        eligibilityStartDatetime="2021-02-30T00:00Z"
+        eligibilityEndDatetime="2022-02-30T00:00Z"
+        nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
+      />
+    )
+    expect(queryByText(/Profite de 300€/)).toBeFalsy()
+    expect(queryByText(/Profite de ton crédit/)).toBeTruthy()
   })
 })

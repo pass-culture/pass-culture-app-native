@@ -37,10 +37,6 @@ msgstr "1 Majuscule"
 msgid "1 Minuscule"
 msgstr "1 Minuscule"
 
-#: src/features/navigation/RedirectWebToNative.tsx
-msgid "1. Tu peux installer l'application :"
-msgstr "1. Tu peux installer l'application :"
-
 #: src/features/auth/components/PasswordSecurityRules.tsx
 msgid "12 Caractères"
 msgstr "12 Caractères"
@@ -48,10 +44,6 @@ msgstr "12 Caractères"
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "1er tutoriel"
 msgstr "1er tutoriel"
-
-#: src/features/navigation/RedirectWebToNative.tsx
-msgid "2. Puis réessayer d'ouvrir ce lien sur le navigateur de ton téléphone :"
-msgstr "2. Puis réessayer d'ouvrir ce lien sur le navigateur de ton téléphone :"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "6 12 34 56 78"
@@ -156,10 +148,6 @@ msgstr "Annuler ma réservation"
 #: src/features/bookings/components/EndedBookingItem.tsx
 msgid "Annulé"
 msgstr "Annulé"
-
-#: src/features/navigation/RedirectWebToNative.tsx
-msgid "AppStore"
-msgstr "AppStore"
 
 #: src/libs/parsers/venueType.ts
 msgid "Arts visuels, arts plastiques et galeries"
@@ -290,10 +278,6 @@ msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu
 #: src/features/auth/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer.tsx
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
-
-#: src/features/navigation/RedirectWebToNative.tsx
-msgid "Ce lien fonctionne uniquement sur notre application mobile !"
-msgstr "Ce lien fonctionne uniquement sur notre application mobile !"
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ce plafond n'est possible."
@@ -603,10 +587,6 @@ msgstr "Décris en quelques mots la raison pour laquelle tu souhaites signaler c
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Désactiver la géolocalisation"
 msgstr "Désactiver la géolocalisation"
-
-#: src/features/navigation/RedirectWebToNative.tsx
-msgid "Désolé, cette URL n'est pas valide."
-msgstr "Désolé, cette URL n'est pas valide."
 
 #: src/features/bookings/pages/BookingNotFound.tsx
 msgid "Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer."
@@ -1331,10 +1311,6 @@ msgstr "Oups !"
 msgid "Oups, cette offre n’est plus disponible !"
 msgstr "Oups, cette offre n’est plus disponible !"
 
-#: src/features/navigation/RedirectWebToNative.tsx
-msgid "Ouvrir le lien"
-msgstr "Ouvrir le lien"
-
 #: src/features/search/components/SearchLandingPage.tsx
 msgid "Où"
 msgstr "Où"
@@ -1352,6 +1328,7 @@ msgid "Page introuvable !"
 msgstr "Page introuvable !"
 
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
+#: src/features/navigation/RootNavigator/routes.ts
 #: src/features/profile/pages/ConsentSettings.tsx
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
@@ -1408,10 +1385,6 @@ msgstr "Patrimoine et tourisme"
 #: src/features/bookings/helpers.ts
 msgid "Permanent"
 msgstr "Permanent"
-
-#: src/features/navigation/RedirectWebToNative.tsx
-msgid "PlayStore"
-msgstr "PlayStore"
 
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 msgid "Plus que quelques étapes !"
@@ -1535,10 +1508,6 @@ msgstr "Rechercher"
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
-#: src/libs/web.ts
-msgid "Redirection vers l'application mobile"
-msgstr "Redirection vers l'application mobile"
-
 #: src/features/bookOffer/components/BookingImpossible.tsx
 msgid "Rends-toi vite sur le site pass Culture afin de la réserver"
 msgstr "Rends-toi vite sur le site pass Culture afin de la réserver"
@@ -1638,10 +1607,6 @@ msgstr "Revenir à l'étape précédente"
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 msgid "Réessayer"
 msgstr "Réessayer"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Réglages de consentements"
-msgstr "Réglages de consentements"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Réglages de notifications"
@@ -1756,10 +1721,6 @@ msgstr "Si tu n’arrives pas à récupérer ton code tu peux"
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 msgstr "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
-
-#: src/features/navigation/RedirectWebToNative.tsx
-msgid "Si tu rencontres à nouveau des difficultés, consulte"
-msgstr "Si tu rencontres à nouveau des difficultés, consulte"
 
 #: src/features/offer/components/ReportOfferDescription.tsx
 #: src/features/offer/components/ReportOfferOtherReason.tsx
@@ -2304,6 +2265,10 @@ msgstr "en ligne"
 msgid "enjoy deposit"
 msgstr "Profite de {deposit}"
 
+#: src/features/profile/components/NonBeneficiaryHeader.tsx
+msgid "enjoy underage deposit"
+msgstr "Profite de ton crédit"
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu es..."
 msgstr "et si tu es..."
@@ -2366,10 +2331,6 @@ msgstr ""
 #: src/features/bookings/components/CancelBookingModal.tsx
 msgid "not refunded because expired"
 msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré."
-
-#: src/features/navigation/RedirectWebToNative.tsx
-msgid "notre centre d'aide"
-msgstr "notre centre d'aide"
 
 #: src/libs/monitoring/errors.ts
 msgid "offerId is undefined"
