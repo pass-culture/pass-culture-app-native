@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { useRef } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
@@ -6,6 +7,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
 import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils/useValidateEmail'
 import { useSafeState } from 'libs/hooks'
@@ -28,6 +31,7 @@ export function ChangeEmail() {
   const [email, setEmail] = useSafeState('')
   const [password, setPassword] = useSafeState('')
   const emailErrorMessage = useValidateEmail(email)
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const scrollRef = useRef<ScrollView | null>(null)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -36,9 +40,12 @@ export function ChangeEmail() {
 
   const disabled = !isLongEnough(password) || (!!emailErrorMessage && email.length > 0)
 
+  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
+
   const submitEmailChange = async () => {
     try {
       await changeEmailApiCallMock(email, password)
+      navigateToProfile()
       // TODO (PC-11417): show success snackbar
     } catch (e) {
       console.error(e)
