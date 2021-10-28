@@ -33,9 +33,9 @@ export const Location: React.FC = () => {
     <Section title={SectionTitle.Location} count={+(locationType !== LocationType.EVERYWHERE)}>
       <LocationContentContainer testID="changeLocation" onPress={onPressChangeLocation}>
         <Icon size={getSpacing(10)} color={ColorsEnum.BLACK} color2={ColorsEnum.BLACK} />
-        <Typo.ButtonText>{label}</Typo.ButtonText>
+        <Label numberOfLines={2}>{label}</Label>
         <Spacer.Flex />
-        <ArrowNext size={24} />
+        <ArrowNext size={getSpacing(6)} />
       </LocationContentContainer>
       {locationType === LocationType.AROUND_ME ? (
         <React.Fragment>
@@ -56,4 +56,8 @@ const LocationContentContainer = styled.TouchableOpacity.attrs(() => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
+})
+
+const Label = styled(Typo.ButtonText)({
+  flexShrink: 1,
 })
