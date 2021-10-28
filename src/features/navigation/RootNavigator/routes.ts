@@ -154,8 +154,8 @@ const routesBeforeReleaseCheck: Route[] = [
   {
     name: 'ConsentSettings',
     component: ConsentSettings,
-    path: 'reglages/consentements',
-    options: { title: t`Réglages de consentements` },
+    path: 'profil/confidentialite',
+    options: { title: t`Paramètres de confidentialité` },
   },
   {
     name: 'BeneficiaryRequestSent',
@@ -248,25 +248,25 @@ const routesBeforeReleaseCheck: Route[] = [
   {
     name: 'NotificationSettings',
     component: NotificationSettings,
-    path: 'reglages/notifications',
+    path: 'profil/notifications',
     options: { title: t`Réglages de notifications` },
   },
   {
     name: 'PersonalData',
     component: PersonalData,
-    path: 'donnees-personelles',
+    path: 'profil/donnees-personnelles',
     options: { title: t`Données personnelles` },
   },
   {
     name: 'ChangePassword',
     component: ChangePassword,
-    path: 'modification-mot-de-passe',
+    path: 'profil/modification-mot-de-passe',
     options: { title: t`Modification du mot de passe` },
   },
   {
     name: 'ChangeEmail',
     component: ChangeEmail,
-    path: 'modification-email',
+    path: 'profil/modification-email',
     options: { title: t`Modification de l'e-mail` },
   },
   {
