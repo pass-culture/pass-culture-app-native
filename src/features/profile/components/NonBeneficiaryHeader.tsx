@@ -48,6 +48,11 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     body = <BodyContainer testID="body-container-above-18" padding={1} />
   } else if (today >= eligibilityStartDatetime) {
     if (props.nextBeneficiaryValidationStep) {
+      const moduleBannerWording = t({
+        id: 'enjoy deposit',
+        values: { deposit },
+        message: 'Profite de {deposit}',
+      })
       body = (
         <BodyContainer testID="body-container-18">
           <Typo.Caption>
@@ -61,11 +66,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
           <ModuleBanner
             onPress={() => navigateToNextBeneficiaryValidationStep(prefetchedInfo)}
             leftIcon={<ThumbUp size={68} />}
-            title={t({
-              id: 'enjoy deposit',
-              values: { deposit },
-              message: 'Profite de {deposit}',
-            })}
+            title={moduleBannerWording}
             subTitle={t`à dépenser dans l'application`}
             testID="18-banner"
           />
