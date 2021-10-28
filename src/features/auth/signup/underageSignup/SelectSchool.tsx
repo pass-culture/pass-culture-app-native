@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { eligibleSchools, School } from 'features/auth/signup/underageSignup/eligibleSchools'
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -14,6 +15,11 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const SelectSchool = () => {
   const [selectedSchool, setSelectedSchool] = useState('')
+  const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+
+  if (error) {
+    throw error
+  }
 
   const renderItem = (item: School) => (
     <React.Fragment key={item.name}>
@@ -47,7 +53,11 @@ export const SelectSchool = () => {
         ))}
       </Container>
       <BottomContainer>
-        <ButtonPrimary title={t`Continuer`} disabled={!selectedSchool} />
+        <ButtonPrimary
+          title={t`Continuer`}
+          disabled={!selectedSchool}
+          onPress={() => navigateToNextBeneficiaryValidationStep()}
+        />
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryBlack title={t`Je ne vois pas mon établissement`} icon={Invalidate} />
       </BottomContainer>
