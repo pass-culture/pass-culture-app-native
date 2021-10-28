@@ -1,9 +1,11 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import LottieView from 'lottie-react-native'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import StarAnimation from 'ui/animations/tutorial_star.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -13,13 +15,14 @@ import { getSpacing, Typo } from 'ui/theme'
 
 export const SelectSchoolHome = () => {
   const animation = useRef<LottieView>(null)
+  const { navigate } = useNavigation<UseNavigationType>()
 
   useEffect(() => {
     animation.current?.play?.(0, 62)
   }, [animation])
+
   return (
     <React.Fragment>
-      <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <Container>
         <StyledLottieContainer>
@@ -35,7 +38,10 @@ export const SelectSchoolHome = () => {
           {t`Tu pourras ainsi nous aider à améliorer l’application.`}
         </BodyContainer>
 
-        <ButtonPrimary title={t`Voir les établissements partenaires`} />
+        <ButtonPrimary
+          onPress={() => navigate('SelectSchool')}
+          title={t`Voir les établissements partenaires`}
+        />
 
         <CustomButtonTertiaryBlack
           onPress={navigateToHome}
