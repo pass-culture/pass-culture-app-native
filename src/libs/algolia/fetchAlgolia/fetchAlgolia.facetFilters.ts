@@ -35,7 +35,7 @@ export const buildFacetFilters = ({
 } => {
   if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
 
-  const facetFilters: FiltersArray = isUserUnderageBeneficiary ? underageFilter : []
+  const facetFilters: FiltersArray = isUserUnderageBeneficiary ? [...underageFilter] : []
 
   if (offerCategories.length > 0) {
     const categoriesPredicate = buildOfferCategoriesPredicate(offerCategories)
