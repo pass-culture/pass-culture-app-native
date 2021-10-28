@@ -13,6 +13,8 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Warning } from 'ui/svg/icons/Warning'
 
+const UNDERAGE_MAX_AGE = 18
+
 export function isUserBeneficiary(user: UserProfileResponse): boolean {
   return user.isBeneficiary
 }
@@ -31,6 +33,22 @@ export function isUserUnderageBeneficiary(user: UserProfileResponse | undefined)
   if (!user) return false
   const hasUserUnderageRole = user.roles?.find((role) => role === UserRole.UNDERAGEBENEFICIARY)
   return !!hasUserUnderageRole
+}
+
+const isUserUnderage = (userDateOfBirth: string | undefined | null) => {
+  if (!userDateOfBirth) return false
+  const now = new Date()
+  const userBirthday = new Date(userDateOfBirth)
+
+  const eighteenthUserBirthdayYear = (userBirthday.getFullYear() + UNDERAGE_MAX_AGE).toString()
+  const eighteenthUserBirthday = new Date(eighteenthUserBirthdayYear)
+
+  return eighteenthUserBirthday > now
+}
+
+export const useIsUserUnderage = () => {
+  const { data: user } = useUserProfileInfo()
+  return isUserUnderage(user?.dateOfBirth)
 }
 
 export const useIsUserUnderageBeneficiary = () => {

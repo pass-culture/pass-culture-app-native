@@ -7,7 +7,7 @@ import { useDepositAmount } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
-import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
@@ -27,7 +27,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const today = new Date()
   const depositAmount = useDepositAmount()
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
-  const isUserUnderage = useIsUserUnderageBeneficiary()
+  const isUserUnderage = useIsUserUnderage()
   const prefetchedInfo = {
     email: props.email,
     nextBeneficiaryValidationStep: props.nextBeneficiaryValidationStep ?? null,
