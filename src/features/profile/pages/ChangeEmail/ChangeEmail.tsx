@@ -30,6 +30,7 @@ const changeEmailApiCallMock = (email: string, password: string) => {
 export function ChangeEmail() {
   const [email, setEmail] = useSafeState('')
   const [password, setPassword] = useSafeState('')
+  const [isLoading, setIsLoading] = useSafeState(false)
   const emailErrorMessage = useValidateEmail(email)
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -38,16 +39,18 @@ export function ChangeEmail() {
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const disabled = !isLongEnough(password) || (!!emailErrorMessage && email.length > 0)
+  const disabled = !isLongEnough(password) || (!!emailErrorMessage && email.length > 0) || isLoading
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
   const submitEmailChange = async () => {
+    setIsLoading(true)
     try {
       await changeEmailApiCallMock(email, password)
       navigateToProfile()
       // TODO (PC-11417): show success snackbar
     } catch (e) {
+      setIsLoading(false)
       console.error(e)
     }
   }
