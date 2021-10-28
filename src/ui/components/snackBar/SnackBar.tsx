@@ -11,7 +11,7 @@ import { useWindowDimensions } from 'react-native'
 import { TouchableOpacity, View, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { ProgressBar } from 'ui/components/snackBar/ProgressBar'
 import { Close } from 'ui/svg/icons/Close'
@@ -44,6 +44,8 @@ export type SnackBarProps = {
 const _SnackBar = (props: SnackBarProps) => {
   const Icon = props.icon
   const animationDuration = props.animationDuration || 500
+
+  const theme = useTheme()
   const windowWidth = useWindowDimensions().width
 
   const containerRef: RefType = useRef(null)
@@ -87,8 +89,23 @@ const _SnackBar = (props: SnackBarProps) => {
 
   const { top } = useSafeAreaInsets()
 
+  function renderProgressBar() {
+    return (
+      <AnimatableView easing="ease" duration={animationDuration} ref={progressBarContainerRef}>
+        {isVisible && props.timeout ? (
+          <ProgressBar
+            color={props.progressBarColor}
+            timeout={props.timeout}
+            refresher={props.refresher}
+          />
+        ) : null}
+      </AnimatableView>
+    )
+  }
+
   return (
     <RootContainer>
+      {theme.isDesktop && renderProgressBar()}
       <ColoredAnimatableView
         testID="snackbar-view"
         backgroundColor={props.backgroundColor}
@@ -110,28 +127,21 @@ const _SnackBar = (props: SnackBarProps) => {
           </TouchableOpacity>
         </SnackBarContainer>
       </ColoredAnimatableView>
-      <AnimatableView easing="ease" duration={animationDuration} ref={progressBarContainerRef}>
-        {isVisible && props.timeout ? (
-          <ProgressBar
-            color={props.progressBarColor}
-            timeout={props.timeout}
-            refresher={props.refresher}
-          />
-        ) : null}
-      </AnimatableView>
+      {!theme.isDesktop && renderProgressBar()}
     </RootContainer>
   )
 }
 
 export const SnackBar = memo(_SnackBar)
 
-const RootContainer = styled(View)({
+const RootContainer = styled(View)(({ theme }) => ({
   position: 'absolute',
-  top: 0,
+  top: theme.isDesktop ? 'auto' : 0,
+  bottom: theme.isDesktop ? 0 : 'auto',
   left: 0,
   right: 0,
   zIndex: ZIndexes.SNACK_BAR,
-})
+}))
 
 // Troobleshoot Animated types issue with forwaded 'backgroundColor' prop
 const ColoredAnimatableView = styled(AnimatableView)<{ backgroundColor: ColorsEnum }>((props) => ({
