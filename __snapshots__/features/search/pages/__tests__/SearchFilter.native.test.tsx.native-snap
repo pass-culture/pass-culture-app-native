@@ -119,10 +119,12 @@ exports[`SearchFilter component should render correctly 1`] = `
             </Text>
           </View>
           <Text
+            numberOfLines={2}
             style={
               Array [
                 Object {
                   "color": "#151515",
+                  "flexShrink": 1,
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
