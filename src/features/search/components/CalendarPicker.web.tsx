@@ -12,7 +12,7 @@ import styled from 'styled-components/native'
 
 import {
   monthNamesShort,
-  generateDays,
+  getListOfDatesInMonth,
   YEAR_LIST,
   monthNames,
   dayNames,
@@ -39,19 +39,13 @@ LocaleConfig.locales['fr'] = {
 }
 LocaleConfig.defaultLocale = 'fr'
 
-const renderArrow = (direction: 'left' | 'right') => {
-  switch (direction) {
-    case 'left':
-      return <ArrowPrevious />
-
-    case 'right':
-      return <ArrowNext />
-
-    default:
-      return <React.Fragment />
-  }
+function renderArrow(direction: 'left' | 'right') {
+  if (direction === 'left') return <ArrowPrevious />
+  if (direction === 'right') return <ArrowNext />
+  return <React.Fragment />
 }
 
+const RNCalendarTheme = { marginHorizontal: getSpacing(-2) }
 const calendarHeaderStyle = {
   'stylesheet.calendar.header': {
     header: {
@@ -63,26 +57,6 @@ const calendarHeaderStyle = {
   },
 } as CalendarTheme
 
-const CalendarPickerWrapper = styled.View({
-  alignSelf: 'stretch',
-  flexDirection: 'row',
-  alignItems: 'stretch',
-  fontFamily: 'Montserrat-Regular',
-})
-
-const CalendarPickerWrapperDesktop = styled.View({
-  alignSelf: 'stretch',
-  flexDirection: 'column',
-  alignItems: 'center',
-  fontFamily: 'Montserrat-Regular',
-})
-
-const CalendarButtonWrapper = styled.View({
-  margin: 20,
-  alignItems: 'center',
-  alignSelf: 'stretch',
-})
-
 export const CalendarPicker: React.FC<Props> = ({
   selectedDate,
   visible,
@@ -90,65 +64,14 @@ export const CalendarPicker: React.FC<Props> = ({
   setSelectedDate,
 }) => {
   const ref = useRef<Node>(null)
-  const [currentDate, setCurrentDate] = useState(selectedDate)
-
-  const currentDay = selectedDate.getDate()
-  const currentMonth = selectedDate.getMonth()
-  const currentYear = selectedDate.getFullYear()
-
   const [markedDates, setMarkedDates] = useState<{ [name: string]: { selected: boolean } }>({})
-  const [valueGroups, setValueGroups] = useState({
-    day: currentDay,
-    month: monthNamesShort[currentMonth],
-    year: currentYear,
+  const [desktopCalendarDate, setDesktopCalendarDate] = useState(selectedDate)
+  const [mobileDateValues, setMobileDateValues] = useState({
+    day: selectedDate.getDate(),
+    month: monthNamesShort[selectedDate.getMonth()],
+    year: selectedDate.getFullYear(),
   })
 
-  const optionGroups = useMemo(() => {
-    return {
-      day: generateDays(currentMonth + 1, currentYear),
-      month: monthNamesShort,
-      year: YEAR_LIST,
-    }
-  }, [selectedDate])
-
-  const handleChange = (name: string, value: number | string) => {
-    const nextValueGroups = {
-      ...valueGroups,
-      [name]: value,
-    }
-    setValueGroups(nextValueGroups)
-
-    const nextCurrentDate = new Date()
-    nextCurrentDate.setDate(valueGroups.day)
-    nextCurrentDate.setMonth(monthNamesShort.indexOf(valueGroups.month))
-    nextCurrentDate.setFullYear(valueGroups.year)
-    setCurrentDate(nextCurrentDate)
-  }
-
-  const handleCalendarChange = (result: DateObject) => {
-    const nextValueGroups = {
-      day: result.day,
-      month: monthNamesShort[result.month],
-      year: result.year,
-    }
-    setValueGroups(nextValueGroups)
-    setCurrentDate(new Date(result.dateString))
-  }
-
-  const onValidate = () => {
-    if (hideCalendar) {
-      setSelectedDate(currentDate)
-      hideCalendar()
-    }
-  }
-
-  useEffect(() => {
-    setValueGroups({
-      day: currentDay,
-      month: monthNamesShort[currentMonth],
-      year: currentYear,
-    })
-  }, [selectedDate])
   useEffect(() => {
     if (ref.current) {
       const root = document.querySelector('#root')
@@ -157,14 +80,41 @@ export const CalendarPicker: React.FC<Props> = ({
   }, [ref.current])
 
   useEffect(() => {
-    const currentDateStr = currentDate.toISOString().replace(/T.*/gi, '')
-    setMarkedDates({
-      [currentDateStr]: {
-        selected: true,
-      },
-    })
-  }, [currentDate])
-  const RNCalendarTheme = { marginHorizontal: getSpacing(-2) }
+    const DateStr = desktopCalendarDate.toISOString().replace(/T.*/gi, '')
+    setMarkedDates({ [DateStr]: { selected: true } })
+  }, [desktopCalendarDate])
+
+  const optionGroups = useMemo(
+    () => ({
+      day: getListOfDatesInMonth(
+        monthNamesShort.indexOf(mobileDateValues.month),
+        mobileDateValues.year
+      ),
+      month: monthNamesShort,
+      year: YEAR_LIST,
+    }),
+    [mobileDateValues.month, mobileDateValues.year, monthNamesShort, YEAR_LIST]
+  )
+
+  function handleMobileDateChange(name: string, value: number | string) {
+    setMobileDateValues((prevMobileDateValues) => ({ ...prevMobileDateValues, [name]: value }))
+  }
+
+  function handleDesktopDateChange(result: DateObject) {
+    setDesktopCalendarDate(new Date(result.dateString))
+  }
+
+  function onValidate() {
+    if (!hideCalendar) return
+    if (isDesktop) {
+      setSelectedDate(desktopCalendarDate)
+    } else {
+      const { year, month, day } = mobileDateValues
+      const monthIndex = monthNamesShort.indexOf(month)
+      setSelectedDate(new Date(year, monthIndex, day))
+    }
+    hideCalendar()
+  }
 
   return (
     <AppModal
@@ -188,12 +138,16 @@ export const CalendarPicker: React.FC<Props> = ({
             renderArrow={renderArrow}
             theme={calendarHeaderStyle}
             markedDates={markedDates}
-            onDayPress={handleCalendarChange}
+            onDayPress={handleDesktopDateChange}
           />
         </CalendarPickerWrapperDesktop>
       ) : (
         <CalendarPickerWrapper>
-          <Picker optionGroups={optionGroups} valueGroups={valueGroups} onChange={handleChange} />
+          <Picker
+            optionGroups={optionGroups}
+            valueGroups={mobileDateValues}
+            onChange={handleMobileDateChange}
+          />
         </CalendarPickerWrapper>
       )}
 
@@ -209,3 +163,23 @@ export const CalendarPicker: React.FC<Props> = ({
     </AppModal>
   )
 }
+
+const CalendarPickerWrapper = styled.View({
+  alignSelf: 'stretch',
+  flexDirection: 'row',
+  alignItems: 'stretch',
+  fontFamily: 'Montserrat-Regular',
+})
+
+const CalendarPickerWrapperDesktop = styled.View({
+  alignSelf: 'stretch',
+  flexDirection: 'column',
+  alignItems: 'center',
+  fontFamily: 'Montserrat-Regular',
+})
+
+const CalendarButtonWrapper = styled.View({
+  margin: 20,
+  alignItems: 'center',
+  alignSelf: 'stretch',
+})
