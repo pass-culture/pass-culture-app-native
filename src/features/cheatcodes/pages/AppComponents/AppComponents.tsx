@@ -122,6 +122,7 @@ import { OfferOutingsPhysical } from 'ui/svg/icons/OfferOutingsPhysical'
 import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
+import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
@@ -414,6 +415,10 @@ export const AppComponents: FunctionComponent = () => {
         <CategoryIcons />
         <Spacer.Column numberOfSpaces={4} />
         <VenueTypesIcons />
+        <AlignedText>
+          <PlainArrowPrevious size={ICON_SIZE} />
+          <Text> - PlainArrowPrevious </Text>
+        </AlignedText>
         <AlignedText>
           <Again size={ICON_SIZE} />
           <Text> - Again (new) </Text>
