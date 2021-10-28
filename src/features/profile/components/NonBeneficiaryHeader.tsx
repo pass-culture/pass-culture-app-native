@@ -15,7 +15,6 @@ import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface NonBeneficiaryHeaderProps {
-  email: string
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
   nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null
@@ -29,7 +28,6 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   const isUserUnderage = useIsUserUnderage()
   const prefetchedInfo = {
-    email: props.email,
     nextBeneficiaryValidationStep: props.nextBeneficiaryValidationStep ?? null,
   }
 

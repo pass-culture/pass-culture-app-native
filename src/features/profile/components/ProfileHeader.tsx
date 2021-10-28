@@ -61,7 +61,6 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 
   return (
     <NonBeneficiaryHeader
-      email={user.email}
       eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
       eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
       nextBeneficiaryValidationStep={user.nextBeneficiaryValidationStep}

@@ -85,7 +85,7 @@ export type RootStackParamList = {
   SetPhoneValidationCode: { phoneNumber: string; countryCode: CountryCode }
   PhoneValidationTooManyAttempts: undefined
   PhoneValidationTooManySMSSent: undefined
-  VerifyEligibility: { email: string; nextBeneficiaryValidationStep: BeneficiaryValidationStep }
+  VerifyEligibility: { nextBeneficiaryValidationStep: BeneficiaryValidationStep }
   FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   PageNotFound: undefined

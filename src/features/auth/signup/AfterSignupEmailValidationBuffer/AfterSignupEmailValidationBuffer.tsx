@@ -53,7 +53,6 @@ export function AfterSignupEmailValidationBuffer() {
       const user = await api.getnativev1me()
       if (user?.nextBeneficiaryValidationStep) {
         delayedNavigate('VerifyEligibility', {
-          email: user.email,
           nextBeneficiaryValidationStep: user.nextBeneficiaryValidationStep,
         })
       } else {
