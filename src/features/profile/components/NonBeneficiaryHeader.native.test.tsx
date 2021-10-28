@@ -5,13 +5,13 @@ import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BeneficiaryValidationStep, GetIdCheckTokenResponse } from 'api/gen'
-import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/utils'
 import { flushAllPromises, render } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
 jest.mock('features/profile/utils')
-const mockedUseIsUserUnderageBeneficiary = mocked(useIsUserUnderageBeneficiary, true)
+const mockedUseIsUserUnderage = mocked(useIsUserUnderage, true)
 
 jest.mock('features/auth/api', () => ({
   useGetIdCheckToken: jest.fn(
@@ -154,7 +154,7 @@ describe('NonBeneficiaryHeader  ', () => {
     expect(queryByText(/Profite de 300€/)).toBeTruthy()
   })
   it('should display correct credit message for underage', () => {
-    mockedUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
+    mockedUseIsUserUnderage.mockReturnValueOnce(true)
     const { queryByText } = render(
       <NonBeneficiaryHeader
         email="john@doe.com"
