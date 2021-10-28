@@ -13,7 +13,7 @@ type IdCheckProcessingBadgeProps = {
   subscriptionMessage?: SubscriptionMessage | null
 }
 
-const formatStringToLastUpdatedAtMessage = (lastUpdatedDate: Date | undefined) =>
+const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: Date | undefined) =>
   lastUpdatedDate
     ? t({
         id: 'last update',
@@ -31,7 +31,7 @@ export function IdCheckProcessingBadge(props: IdCheckProcessingBadgeProps) {
       {!!props.subscriptionMessage?.updatedAt && (
         <React.Fragment>
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
-            {formatStringToLastUpdatedAtMessage(props.subscriptionMessage?.updatedAt)}
+            {formatDateToLastUpdatedAtMessage(props.subscriptionMessage?.updatedAt)}
           </Typo.Caption>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
