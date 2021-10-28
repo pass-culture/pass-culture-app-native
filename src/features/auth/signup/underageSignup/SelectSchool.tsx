@@ -40,7 +40,7 @@ export const SelectSchool = () => {
         {Object.keys(eligibleSchools).map((academy) => (
           <React.Fragment key={academy}>
             <Divider />
-            <AccordionItem title={t`Académie de ${academy}`}>
+            <AccordionItem title={t`Académie de` + '\u00a0' + academy}>
               {eligibleSchools[academy].map(renderItem)}
             </AccordionItem>
           </React.Fragment>
