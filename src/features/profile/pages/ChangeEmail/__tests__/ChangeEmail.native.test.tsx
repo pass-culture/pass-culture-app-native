@@ -1,6 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
@@ -38,4 +39,18 @@ describe('<ChangeEmail/>', () => {
       })
     }
   )
+
+  it('should navigate to Profile if the API call is ok', async () => {
+    const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
+    const submitButton = getByTestId('Enregistrer')
+    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'tonadresse@email.com')
+    fireEvent.changeText(passwordInput, '1234567890123')
+    fireEvent.press(submitButton)
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
+    })
+  })
 })
