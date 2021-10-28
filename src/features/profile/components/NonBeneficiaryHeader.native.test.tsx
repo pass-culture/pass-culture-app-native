@@ -51,7 +51,6 @@ describe('NonBeneficiaryHeader  ', () => {
     mockdate.set(new Date(today))
     const { getByTestId } = render(
       <NonBeneficiaryHeader
-        email="john@doe.com"
         eligibilityStartDatetime="2021-01-31T00:00Z"
         eligibilityEndDatetime="2022-01-31T00:00Z"
         nextBeneficiaryValidationStep={null}
@@ -66,7 +65,6 @@ describe('NonBeneficiaryHeader  ', () => {
     mockdate.set(new Date(today))
     const { getByTestId } = render(
       <NonBeneficiaryHeader
-        email="john@doe.com"
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
         nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
@@ -85,7 +83,6 @@ describe('NonBeneficiaryHeader  ', () => {
     mockdate.set(new Date(today))
     const { getByTestId } = render(
       <NonBeneficiaryHeader
-        email="john@doe.com"
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
         nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
@@ -100,7 +97,6 @@ describe('NonBeneficiaryHeader  ', () => {
     mockdate.set(new Date(today))
     const { getByTestId, queryByTestId } = render(
       <NonBeneficiaryHeader
-        email="john@doe.com"
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
         nextBeneficiaryValidationStep={null}
@@ -117,7 +113,6 @@ describe('NonBeneficiaryHeader  ', () => {
     mockdate.set(new Date(today))
     const { queryByTestId } = render(
       <NonBeneficiaryHeader
-        email="john@doe.com"
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
         nextBeneficiaryValidationStep={null}
@@ -132,7 +127,6 @@ describe('NonBeneficiaryHeader  ', () => {
     mockdate.set(new Date(today))
     const { queryByTestId } = render(
       <NonBeneficiaryHeader
-        email="john@doe.com"
         eligibilityStartDatetime="2020-02-30T00:00Z"
         eligibilityEndDatetime="2021-02-30T00:00Z"
         nextBeneficiaryValidationStep={null}
@@ -145,7 +139,6 @@ describe('NonBeneficiaryHeader  ', () => {
   it('should display correct depositAmount', () => {
     const { queryByText } = render(
       <NonBeneficiaryHeader
-        email="john@doe.com"
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
         nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
@@ -157,7 +150,6 @@ describe('NonBeneficiaryHeader  ', () => {
     mockedUseIsUserUnderage.mockReturnValueOnce(true)
     const { queryByText } = render(
       <NonBeneficiaryHeader
-        email="john@doe.com"
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
         nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}

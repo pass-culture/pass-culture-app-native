@@ -21,7 +21,6 @@ jest.mock('react-query')
 const navigationProps = {
   route: {
     params: {
-      email: 'christophe.dupont@gmail.com',
       nextBeneficiaryValidationStep: 'id-check',
     },
   },

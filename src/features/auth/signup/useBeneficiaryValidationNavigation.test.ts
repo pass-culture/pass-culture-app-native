@@ -71,7 +71,6 @@ describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to IdCheck if prefetched next step is id-check and email is not null', () => {
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep({
-      email: 'christophe.dupont@gmail.com',
       nextBeneficiaryValidationStep: BeneficiaryValidationStep.IdCheck,
     })
 
@@ -81,7 +80,6 @@ describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to IdCheck if prefetched next step is beneficiary-information and email is not null', () => {
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep({
-      email: 'christophe.dupont@gmail.com',
       nextBeneficiaryValidationStep: BeneficiaryValidationStep.BeneficiaryInformation,
     })
 
@@ -91,7 +89,6 @@ describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to IdCheck if prefetched next step is id-check and email is not null', () => {
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep({
-      email: 'christophe.dupont@gmail.com',
       nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
     })
 

@@ -184,7 +184,6 @@ export function Navigation(): JSX.Element {
             title={'Vérifier éligibilité'}
             onPress={() =>
               navigate('VerifyEligibility', {
-                email: 'jean.dupont@gmail.com',
                 nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
               })
             }

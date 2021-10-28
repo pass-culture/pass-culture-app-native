@@ -79,7 +79,6 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         expect(loginRoutine).toBeCalledTimes(1)
         expect(navigate).toBeCalledTimes(1)
         expect(navigate).toHaveBeenCalledWith('VerifyEligibility', {
-          email: 'email@domain.ext',
           nextBeneficiaryValidationStep: 'phone-validation',
         })
       })

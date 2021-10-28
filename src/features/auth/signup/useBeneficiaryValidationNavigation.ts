@@ -13,7 +13,6 @@ import { eventMonitoring } from 'libs/monitoring'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 type PrefetchedInfo = {
-  email: string | null
   nextBeneficiaryValidationStep: BeneficiaryValidationStep | null
 }
 
