@@ -5,6 +5,8 @@ import { FlatList, ListRenderItem, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
+import { Layout } from 'features/home/contentful'
+import { useLayoutHits } from 'features/home/hooks/useLayoutHits'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useVenue } from 'features/venue/api/useVenue'
@@ -21,19 +23,22 @@ import { LENGTH_L, MARGIN_DP, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   venueId: number
+  layout?: Layout
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
 const VENUE_OFFERS_CTA_WORDING = t`Voir toutes les offres`
 
-export const VenueOffers: React.FC<Props> = ({ venueId }) => {
+export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-medium' }) => {
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
   const { position } = useGeolocation()
   const { navigate } = useNavigation<UseNavigationType>()
   const params = useVenueSearchParameters(venueId)
   const { hits = [], nbHits = 0 } = venueOffers || {}
+  const layoutHits = useLayoutHits(hits, layout)
+
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
@@ -95,7 +100,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId }) => {
         testID="offersModuleList"
         ListHeaderComponent={HorizontalMargin}
         ListFooterComponent={ListFooterComponent}
-        data={venueOffers.hits}
+        data={layoutHits}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         horizontal={true}
