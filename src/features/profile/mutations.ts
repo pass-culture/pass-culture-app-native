@@ -4,12 +4,12 @@ interface ChangeEmailRequest {
   email: string
   password: string
 }
-interface useChangeEmailMutationProps {
+export interface UseChangeEmailMutationProps {
   onSuccess: () => void
   onError: (error: unknown) => void
 }
 
-export function useChangeEmailMutation({ onSuccess, onError }: useChangeEmailMutationProps) {
+export function useChangeEmailMutation({ onSuccess, onError }: UseChangeEmailMutationProps) {
   return useMutation(
     // TODO (PC-11573): call the API once available
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

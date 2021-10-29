@@ -19,6 +19,7 @@ import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export function ChangeEmail() {
@@ -27,10 +28,14 @@ export function ChangeEmail() {
   const [password, setPassword] = useSafeState('')
   const emailErrorMessage = useValidateEmail(email)
   const { navigate } = useNavigation<UseNavigationType>()
+  const { showSuccessSnackBar } = useSnackBarContext()
 
   const { mutate: changeEmail, isLoading } = useChangeEmailMutation({
     onSuccess: () => {
-      // TODO (PC-11417): show success snackbar
+      showSuccessSnackBar({
+        message: t`E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
       navigateToProfile()
     },
     onError: () => {
@@ -48,7 +53,7 @@ export function ChangeEmail() {
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
-  const submitEmailChange = async () => {
+  const submitEmailChange = () => {
     changeEmail({ email, password })
   }
 
