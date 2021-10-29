@@ -19,7 +19,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { ZIndexes } from 'ui/theme/layers'
+import { ZIndex } from 'ui/theme/layers'
 
 type RefType = RefObject<
   React.Component<AnimatableProperties<ViewStyle> & ViewProps, never, never> & {
@@ -140,7 +140,7 @@ const RootContainer = styled(View)(({ theme }) => ({
   bottom: theme.isDesktop ? 0 : 'auto',
   left: 0,
   right: 0,
-  zIndex: ZIndexes.SNACK_BAR,
+  zIndex: ZIndex.SNACKBAR,
 }))
 
 // Troobleshoot Animated types issue with forwaded 'backgroundColor' prop

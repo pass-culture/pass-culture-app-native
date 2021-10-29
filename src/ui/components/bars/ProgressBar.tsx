@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing } from 'ui/theme'
+import { ZIndex } from 'ui/theme/layers'
 
 export interface ProgressBarProps {
   progress: number
@@ -38,7 +39,7 @@ const IconContainer = styled.View<{ backgroundColor: string }>(({ backgroundColo
   height: 32,
   borderRadius: 32,
   backgroundColor,
-  zIndex: 2,
+  zIndex: ZIndex.PROGRESSBAR_ICON,
   position: 'absolute',
 }))
 
@@ -51,7 +52,7 @@ const ProgressBarContainer = styled.View({
   borderColor: ColorsEnum.GREY_MEDIUM,
   borderRadius: 20,
   height: 20,
-  zIndex: 1,
+  zIndex: ZIndex.PROGRESSBAR,
   position: 'relative',
 })
 

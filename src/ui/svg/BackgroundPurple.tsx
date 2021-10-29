@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
 import { ColorsEnum } from 'ui/theme'
+import { ZIndex } from 'ui/theme/layers'
 
 export const BackgroundPurple = memo(NotMemoizedBackground)
 
@@ -21,7 +22,7 @@ const BackgroundContainer = styled.View({
   left: 0,
   width: '100%',
   height: '100%',
-  zIndex: -1,
+  zIndex: ZIndex.BACKGROUND,
 })
 
 function BackgroundSvg() {

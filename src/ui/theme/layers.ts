@@ -1,4 +1,13 @@
-export enum ZIndexes {
-  SNACK_BAR = 50,
-  HomeCheatButton = 1,
+export enum ZIndex {
+  BACKGROUND = -1,
+  CHEATCODE_BUTTON = 1,
+  HOME_OFFER_COVER_ICONS = 1,
+  HEADER = 1,
+  MODAL_HEADER = 1,
+  PROGRESSBAR = 1,
+  PROGRESSBAR_ICON = 2,
+  TABBAR = 2,
+  HEADER_NAV = 2,
+  APP_MODAL = 25,
+  SNACKBAR = 50,
 }

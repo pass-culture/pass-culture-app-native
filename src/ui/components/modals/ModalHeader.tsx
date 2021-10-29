@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { ColorsEnum, Typo } from 'ui/theme'
+import { ZIndex } from 'ui/theme/layers'
 
 import { isStyleObjectTypeGuard } from '../typeguards'
 
@@ -59,7 +60,7 @@ const Container = styled.View<{ customStyle: StyleProp<ViewStyle> }>(({ customSt
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
-  zIndex: 1,
+  zIndex: ZIndex.MODAL_HEADER,
   ...(isStyleObjectTypeGuard(customStyle) ? (customStyle as Record<string, unknown>) : {}),
 }))
 

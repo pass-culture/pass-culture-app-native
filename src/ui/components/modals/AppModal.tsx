@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { getSpacing, UniqueColors } from 'ui/theme'
+import { ZIndex } from 'ui/theme/layers'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
@@ -80,38 +81,36 @@ export const AppModal: FunctionComponent<Props> = ({
   }
 
   return (
-    <React.Fragment>
-      <StyledModal
-        style={modalStyles}
-        supportedOrientations={['portrait', 'landscape']}
-        statusBarTranslucent
-        hasBackdrop={shouldDisplayOverlay}
-        backdropColor={UniqueColors.GREY_OVERLAY}
-        isVisible={visible}
-        onBackdropPress={handleOnBackdropPress()}
-        testID="modal"
-        deviceHeight={windowHeight}
-        deviceWidth={windowWidth}
-        maxWidth={maxWidth}
-        height={height}>
-        <ModalHeader title={title} numberOfLines={titleNumberOfLines} {...iconProps} />
-        <Content style={{ paddingBottom: keyboardHeight || bottom }}>
-          {isScrollable ? (
-            <StyledScrollView
-              ref={scrollViewRef}
-              showsVerticalScrollIndicator={false}
-              onContentSizeChange={() =>
-                scrollViewRef.current !== null && scrollViewRef.current.scrollTo({ y: 0 })
-              }
-              contentContainerStyle={{ paddingVertical: getSpacing(2) }}>
-              <View onStartShouldSetResponder={() => true}>{children}</View>
-            </StyledScrollView>
-          ) : (
-            children
-          )}
-        </Content>
-      </StyledModal>
-    </React.Fragment>
+    <StyledModal
+      style={modalStyles}
+      supportedOrientations={['portrait', 'landscape']}
+      statusBarTranslucent
+      hasBackdrop={shouldDisplayOverlay}
+      backdropColor={UniqueColors.GREY_OVERLAY}
+      isVisible={visible}
+      onBackdropPress={handleOnBackdropPress()}
+      testID="modal"
+      deviceHeight={windowHeight}
+      deviceWidth={windowWidth}
+      maxWidth={maxWidth}
+      height={height}>
+      <ModalHeader title={title} numberOfLines={titleNumberOfLines} {...iconProps} />
+      <Content style={{ paddingBottom: keyboardHeight || bottom }}>
+        {isScrollable ? (
+          <StyledScrollView
+            ref={scrollViewRef}
+            showsVerticalScrollIndicator={false}
+            onContentSizeChange={() =>
+              scrollViewRef.current !== null && scrollViewRef.current.scrollTo({ y: 0 })
+            }
+            contentContainerStyle={{ paddingVertical: getSpacing(2) }}>
+            <View onStartShouldSetResponder={() => true}>{children}</View>
+          </StyledScrollView>
+        ) : (
+          children
+        )}
+      </Content>
+    </StyledModal>
   )
 }
 
@@ -144,5 +143,6 @@ const StyledModal = styled(RNModal)<{ maxWidth: number; height: number }>(
     borderTopStartRadius: getSpacing(4),
     borderTopEndRadius: getSpacing(4),
     padding: getSpacing(6),
+    zIndex: ZIndex.APP_MODAL,
   })
 )

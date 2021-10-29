@@ -7,6 +7,7 @@ import deepmerge from 'deepmerge'
 import { getSpacing, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
+import { ZIndex } from 'ui/theme/layers'
 
 export interface AppThemeType extends Omit<IdCheckThemeType, 'colors'> {
   appContentWidth: number
@@ -112,6 +113,6 @@ export const theme: AppThemeType = deepmerge(idCheckTheme, {
     radius: BorderRadiusEnum.BORDER_RADIUS,
     checkbox: BorderRadiusEnum.CHECKBOX_RADIUS,
   },
-  zIndexTabBar: 2,
-  zIndexHeaderNav: 2,
+  zIndexTabBar: ZIndex.TABBAR,
+  zIndexHeaderNav: ZIndex.HEADER_NAV,
 })

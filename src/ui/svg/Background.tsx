@@ -2,6 +2,8 @@ import React, { memo } from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
 import styled from 'styled-components/native'
 
+import { ZIndex } from 'ui/theme/layers'
+
 export const Background = memo(NotMemoizedBackground)
 
 function NotMemoizedBackground() {
@@ -18,7 +20,7 @@ const BackgroundContainer = styled.View({
   left: 0,
   width: '100%',
   height: '100%',
-  zIndex: -1,
+  zIndex: ZIndex.BACKGROUND,
 })
 
 function BackgroundSvg() {
