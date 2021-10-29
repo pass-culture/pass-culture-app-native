@@ -27,16 +27,16 @@ export function ChangeEmail() {
   const emailErrorMessage = useValidateEmail(email)
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const { mutate: changeEmail, isLoading } = useChangeEmailMutation(
-    () => {
+  const { mutate: changeEmail, isLoading } = useChangeEmailMutation({
+    onSuccess: () => {
       // TODO (PC-11417): show success snackbar
       navigateToProfile()
     },
-    () => {
+    onError: () => {
       // TODO (PC-11395): handle errors
       console.error('Something went wrong while changing your email')
-    }
-  )
+    },
+  })
 
   const scrollRef = useRef<ScrollView | null>(null)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
