@@ -356,6 +356,16 @@ export function Navigation(): JSX.Element {
             }
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'Change e-mail lien expiré'}
+            onPress={() =>
+              navigate('ChangeEmailExpiredLink', {
+                email: 'john@wick.com',
+              })
+            }
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
