@@ -15,7 +15,7 @@ import { eventMonitoring } from 'libs/monitoring'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 type PrefetchedInfo = {
-  nextBeneficiaryValidationStep: BeneficiaryValidationStep | null
+  nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null
 }
 
 export const useBeneficiaryValidationNavigation = () => {

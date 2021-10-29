@@ -33,9 +33,12 @@ export function isUserUnderageBeneficiary(user: UserProfileResponse | undefined)
   return !!hasUserUnderageRole
 }
 
+export const isUserUnderage = (user?: UserProfileResponse) =>
+  user?.eligibility === EligibilityType.Underage
+
 export const useIsUserUnderage = () => {
   const { data: user } = useUserProfileInfo()
-  return user?.eligibility === EligibilityType.Underage
+  return isUserUnderage(user)
 }
 
 export const useIsUserUnderageBeneficiary = () => {

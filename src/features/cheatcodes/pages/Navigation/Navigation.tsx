@@ -339,13 +339,21 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={`Accueil sélection établissement`}
-            onPress={() => navigate('SelectSchoolHome')}
+            onPress={() =>
+              navigate('SelectSchoolHome', {
+                nextBeneficiaryValidationStep: BeneficiaryValidationStep.IdCheck,
+              })
+            }
           />
         </Row>
         <Row half>
           <NavigationButton
             title={`Sélection établissement`}
-            onPress={() => navigate('SelectSchool')}
+            onPress={() =>
+              navigate('SelectSchool', {
+                nextBeneficiaryValidationStep: BeneficiaryValidationStep.IdCheck,
+              })
+            }
           />
         </Row>
       </StyledContainer>

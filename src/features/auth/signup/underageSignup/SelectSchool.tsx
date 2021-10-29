@@ -1,11 +1,12 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/core'
+import { StackScreenProps } from '@react-navigation/stack'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { eligibleSchools, School } from 'features/auth/signup/underageSignup/eligibleSchools'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -16,7 +17,11 @@ import { Separator } from 'ui/components/Separator'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const SelectSchool = () => {
+type SelectSchoolProps = StackScreenProps<RootStackParamList, 'SelectSchool'>
+
+export const SelectSchool: React.FC<SelectSchoolProps> = ({
+  route: { params: { nextBeneficiaryValidationStep } = {} },
+}) => {
   const [selectedSchool, setSelectedSchool] = useState('')
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   useSetIdCheckNavigationContext()
@@ -62,7 +67,11 @@ export const SelectSchool = () => {
         <ButtonPrimary
           title={t`Continuer`}
           disabled={!selectedSchool}
-          onPress={() => navigateToNextBeneficiaryValidationStep()}
+          onPress={() =>
+            navigateToNextBeneficiaryValidationStep({
+              nextBeneficiaryValidationStep,
+            })
+          }
         />
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryBlack
