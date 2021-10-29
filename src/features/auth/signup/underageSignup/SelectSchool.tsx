@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { eligibleSchools, School } from 'features/auth/signup/underageSignup/eligibleSchools'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -18,6 +19,8 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export const SelectSchool = () => {
   const [selectedSchool, setSelectedSchool] = useState('')
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  useSetIdCheckNavigationContext()
+
   const { navigate } = useNavigation<UseNavigationType>()
 
   if (error) {
