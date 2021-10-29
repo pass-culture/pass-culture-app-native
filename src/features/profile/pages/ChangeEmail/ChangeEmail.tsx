@@ -9,6 +9,7 @@ import styled from 'styled-components/native'
 import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useChangeEmailMutation } from 'features/profile/mutations'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
 import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils/useValidateEmail'
 import { useSafeState } from 'libs/hooks'
@@ -20,19 +21,22 @@ import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const changeEmailApiCallMock = (email: string, password: string) => {
-  // TODO: replace by API call, once it's available
-
-  return new Promise((resolve) => setTimeout(resolve, 2000))
-}
-
 export function ChangeEmail() {
   const [email, setEmail] = useSafeState('')
   const [password, setPassword] = useSafeState('')
-  const [isLoading, setIsLoading] = useSafeState(false)
   const emailErrorMessage = useValidateEmail(email)
   const { navigate } = useNavigation<UseNavigationType>()
+
+  const { mutate: changeEmail, isLoading } = useChangeEmailMutation(
+    () => {
+      // TODO (PC-11417): show success snackbar
+      navigateToProfile()
+    },
+    () => {
+      // TODO (PC-11395): handle errors
+      console.error('Something went wrong while changing your email')
+    }
+  )
 
   const scrollRef = useRef<ScrollView | null>(null)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -44,15 +48,7 @@ export function ChangeEmail() {
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
   const submitEmailChange = async () => {
-    setIsLoading(true)
-    try {
-      await changeEmailApiCallMock(email, password)
-      navigateToProfile()
-      // TODO (PC-11417): show success snackbar
-    } catch (e) {
-      setIsLoading(false)
-      console.error(e)
-    }
+    changeEmail({ email, password })
   }
 
   return (
