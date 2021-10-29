@@ -47,7 +47,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   if (!eligibilityStartDatetime || !eligibilityEndDatetime || today >= eligibilityEndDatetime) {
     body = <BodyContainer testID="body-container-above-18" padding={1} />
   } else if (today >= eligibilityStartDatetime) {
-    if (props.nextBeneficiaryValidationStep) {
+    if (props.nextBeneficiaryValidationStep || isUserUnderage) {
       const moduleBannerWording = isUserUnderage
         ? t({
             id: 'enjoy underage deposit',

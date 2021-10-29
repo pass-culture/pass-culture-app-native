@@ -158,4 +158,16 @@ describe('NonBeneficiaryHeader  ', () => {
     expect(queryByText(/Profite de 300€/)).toBeFalsy()
     expect(queryByText(/Profite de ton crédit/)).toBeTruthy()
   })
+  it('should display correct credit message for underage with no next step available', () => {
+    mockedUseIsUserUnderage.mockReturnValueOnce(true)
+    const { queryByText } = render(
+      <NonBeneficiaryHeader
+        eligibilityStartDatetime="2021-02-30T00:00Z"
+        eligibilityEndDatetime="2022-02-30T00:00Z"
+        nextBeneficiaryValidationStep={null}
+      />
+    )
+    expect(queryByText(/Profite de 300€/)).toBeFalsy()
+    expect(queryByText(/Profite de ton crédit/)).toBeTruthy()
+  })
 })
