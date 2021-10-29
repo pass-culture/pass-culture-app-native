@@ -134,6 +134,7 @@ export interface AccountRequest {
  * @enum {string}
  */
 export enum ActivityEnum {
+    Collgien = 'Collégien',
     Lycen = 'Lycéen',
     Tudiant = 'Étudiant',
     Employ = 'Employé',
@@ -660,9 +661,7 @@ export interface CulturalSurveyRequest {
  * @enum {string}
  */
 export enum DepositType {
-    _15 = 'GRANT_15',
-    _16 = 'GRANT_16',
-    _17 = 'GRANT_17',
+    _1517 = 'GRANT_15_17',
     _18 = 'GRANT_18'
 }/**
  * 
@@ -696,6 +695,14 @@ export interface DomainsCredit {
 export enum EligibilityCheckMethods {
     Jouve = 'jouve',
     Educonnect = 'educonnect'
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum EligibilityType {
+    Underage = 'underage',
+    Age18 = 'age-18'
 }/**
  * An enumeration.
  * @export
@@ -896,13 +903,13 @@ export interface GetIdCheckTokenResponse {
      * @type {string}
      * @memberof GetIdCheckTokenResponse
      */
-    token: string;
+    token?: string | null;
     /**
      * 
      * @type {Date}
      * @memberof GetIdCheckTokenResponse
      */
-    token_timestamp: Date;
+    token_timestamp?: Date | null;
 }/**
  * An enumeration.
  * @export
@@ -1435,6 +1442,7 @@ export interface PaginatedFavoritesResponse {
  */
 export enum PopOverIcon {
     INFO = 'INFO',
+    ERROR = 'ERROR',
     WARNING = 'WARNING',
     CLOCK = 'CLOCK',
     FILE = 'FILE',
@@ -1900,7 +1908,7 @@ export interface SubscriptionMessage {
      * @type {PopOverIcon}
      * @memberof SubscriptionMessage
      */
-    popOverIcon: PopOverIcon;
+    popOverIcon?: PopOverIcon | null;
     /**
      * 
      * @type {Date}
@@ -1961,6 +1969,12 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     domainsCredit?: DomainsCredit | null;
+    /**
+     * 
+     * @type {EligibilityType}
+     * @memberof UserProfileResponse
+     */
+    eligibility?: EligibilityType | null;
     /**
      * 
      * @type {Date}
