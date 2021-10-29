@@ -28,7 +28,7 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
 
   const removeVenueId = useCallback(() => {
     const locationFilter: LocationFilter = position
-      ? { locationType: LocationType.AROUND_ME, aroundRadius: null }
+      ? { locationType: LocationType.AROUND_ME, aroundRadius: 100 }
       : { locationType: LocationType.EVERYWHERE }
 
     navigate(...getTabNavConfig('Search', { locationFilter }))

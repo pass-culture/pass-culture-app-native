@@ -73,7 +73,7 @@ describe('NumberOfResults component', () => {
 
       expect(navigate).toBeCalledWith('TabNavigator', {
         screen: 'Search',
-        params: { locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null } },
+        params: { locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 100 } },
       })
     })
   })
