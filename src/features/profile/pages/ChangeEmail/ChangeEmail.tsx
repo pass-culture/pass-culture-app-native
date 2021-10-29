@@ -32,7 +32,7 @@ export function ChangeEmail() {
   const { mutate: changeEmail, isLoading } = useChangeEmailMutation({
     onSuccess: () => {
       showSuccessSnackBar({
-        message: t`E-mail envoyé ! Tu as 24h pour activer ta nouvelle adressse. Si tu ne le trouves pas, pense à vérifier tes spams.`,
+        message: t`E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.`,
         timeout: SNACK_BAR_TIME_OUT,
       })
       navigateToProfile()
