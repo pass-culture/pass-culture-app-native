@@ -98,6 +98,12 @@ describe('<PasswordSecurityRules />', () => {
       '(v4l1dP455sw0rd',
       ')v4l1dP455sw0rd',
       '\\v4l1dP455sw0rd',
+      '/v4l1dP455sw0rd',
+      '"v4l1dP455sw0rd',
+      "'v4l1dP455sw0rd",
+      '[v4l1dP455sw0rd',
+      ']v4l1dP455sw0rd',
+      '`v4l1dP455sw0rd',
     ]
     validPasswords.forEach((password) => {
       expect(isPasswordCorrect(password)).toBe(true)
