@@ -56,7 +56,6 @@ export const Profile: React.FC = () => {
     positionError,
     permissionState,
     requestGeolocPermission,
-    triggerPositionUpdate,
     showGeolocPermissionModal,
   } = useGeolocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
@@ -66,7 +65,6 @@ export const Profile: React.FC = () => {
   useFocusEffect(
     useCallback(() => {
       if (permissionState === GeolocPermissionState.GRANTED) {
-        triggerPositionUpdate()
         setIsGeolocSwitchActive(true)
       } else {
         setIsGeolocSwitchActive(false)
