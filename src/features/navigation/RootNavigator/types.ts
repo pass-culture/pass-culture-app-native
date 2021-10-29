@@ -70,8 +70,8 @@ export type RootStackParamList = {
   PersonalData: undefined
   SearchCategories: undefined
   SearchFilter: undefined
-  SelectSchool: undefined
-  SelectSchoolHome: undefined
+  SelectSchool: { nextBeneficiaryValidationStep: BeneficiaryValidationStep | null | undefined }
+  SelectSchoolHome: { nextBeneficiaryValidationStep: BeneficiaryValidationStep | null | undefined }
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
   SetEmail: { preventCancellation?: boolean } | undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }

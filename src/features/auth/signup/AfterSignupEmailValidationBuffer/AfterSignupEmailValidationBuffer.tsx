@@ -6,6 +6,7 @@ import { api } from 'api/api'
 import { ValidateEmailResponse } from 'api/gen'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { isUserUnderage } from 'features/profile/utils'
 import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -48,13 +49,20 @@ export function AfterSignupEmailValidationBuffer() {
       { accessToken: response.accessToken, refreshToken: response.refreshToken },
       'fromSignup'
     )
-
     try {
       const user = await api.getnativev1me()
+
       if (user?.nextBeneficiaryValidationStep) {
-        delayedNavigate('VerifyEligibility', {
-          nextBeneficiaryValidationStep: user.nextBeneficiaryValidationStep,
-        })
+        const isUnderage = isUserUnderage(user)
+        if (isUnderage) {
+          delayedNavigate('SelectSchoolHome', {
+            nextBeneficiaryValidationStep: user.nextBeneficiaryValidationStep,
+          })
+        } else {
+          delayedNavigate('VerifyEligibility', {
+            nextBeneficiaryValidationStep: user.nextBeneficiaryValidationStep,
+          })
+        }
       } else {
         delayedNavigate('AccountCreated')
       }
