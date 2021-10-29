@@ -2,17 +2,17 @@ import { useRef, useEffect, DependencyList } from 'react'
 import { AppState, AppStateStatus } from 'react-native'
 
 export const useAppStateChange = (
-  onAppBecomeActive: () => void,
-  onAppBecomeInactive: () => void,
+  onAppBecomeActive: (() => void | Promise<void>) | undefined,
+  onAppBecomeInactive: (() => void | Promise<void>) | undefined,
   deps: DependencyList | undefined = []
 ) => {
   const appState = useRef(AppState.currentState)
 
   function handleAppStateChange(nextAppState: AppStateStatus) {
-    if (isActive(appState.current) && isInactiveOrBackground(nextAppState)) {
+    if (onAppBecomeInactive && isActive(appState.current) && isInactiveOrBackground(nextAppState)) {
       onAppBecomeInactive()
     }
-    if (isInactiveOrBackground(appState.current) && isActive(nextAppState)) {
+    if (onAppBecomeActive && isInactiveOrBackground(appState.current) && isActive(nextAppState)) {
       onAppBecomeActive()
     }
     appState.current = nextAppState
