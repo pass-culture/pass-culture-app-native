@@ -80,61 +80,60 @@ export function ChangePassword() {
   return (
     <Container>
       <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={20} />
       <StyledScrollView
         ref={scrollRef}
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}>
-        <CenteredContainer>
-          <PasswordInput
-            label={t`Mot de passe actuel`}
-            value={currentPassword}
-            autoFocus={true}
-            onChangeText={setCurrentPassword}
-            placeholder={t`Ton mot de passe actuel`}
-          />
-          <Spacer.Column numberOfSpaces={2} />
-          <InputError
-            visible={hasError}
-            messageId={t`Mot de passe incorrect`}
-            numberOfSpacesTop={0}
-          />
-          <Spacer.Column numberOfSpaces={5} />
-          <PasswordInput
-            label={t`Nouveau mot de passe`}
-            value={newPassword}
-            onChangeText={updateNewPassword}
-            placeholder={t`Ton nouveau mot de passe`}
-          />
-          {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
+        <Spacer.Column numberOfSpaces={20} />
+        <PasswordInput
+          label={t`Mot de passe actuel`}
+          value={currentPassword}
+          autoFocus={true}
+          onChangeText={setCurrentPassword}
+          placeholder={t`Ton mot de passe actuel`}
+        />
+        <InputError
+          visible={hasError}
+          messageId={t`Mot de passe incorrect`}
+          numberOfSpacesTop={0}
+        />
+        <Spacer.Column numberOfSpaces={7} />
+        <PasswordInput
+          label={t`Nouveau mot de passe`}
+          value={newPassword}
+          onChangeText={updateNewPassword}
+          placeholder={t`Ton nouveau mot de passe`}
+        />
+        {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={2} />
             <PasswordSecurityRules password={newPassword} />
-          )}
-          <Spacer.Column numberOfSpaces={5} />
-          <PasswordInput
-            label={t`Confirmer le mot de passe`}
-            value={confirmedPassword}
-            onChangeText={setConfirmedPassword}
-            placeholder={t`Confirmer le mot de passe`}
-            onFocus={() => {
-              setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
-            }}
+          </React.Fragment>
+        )}
+        <Spacer.Column numberOfSpaces={5} />
+        <PasswordInput
+          label={t`Confirmer le mot de passe`}
+          value={confirmedPassword}
+          onChangeText={setConfirmedPassword}
+          placeholder={t`Confirmer le mot de passe`}
+          onFocus={() => {
+            setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
+          }}
+        />
+        <InputError
+          visible={displayNotMatchingError}
+          messageId={t`les mots de passe ne concordent pas`}
+          numberOfSpacesTop={2}
+        />
+        {Platform.OS === 'web' ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
+        {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
+        <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
+          <ButtonPrimary
+            title={t`Enregistrer`}
+            onPress={submitPassword}
+            disabled={!shouldSave || isLoading}
           />
-          <Spacer.Column numberOfSpaces={2} />
-          <InputError
-            visible={displayNotMatchingError}
-            messageId={t`les mots de passe ne concordent pas`}
-            numberOfSpacesTop={0}
-          />
-          <Spacer.Flex flex={1} />
-          {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
-          <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
-            <ButtonPrimary
-              title={t`Enregistrer`}
-              onPress={submitPassword}
-              disabled={!shouldSave || isLoading}
-            />
-          </ButtonContainer>
-          <Spacer.Column numberOfSpaces={6} />
-        </CenteredContainer>
+        </ButtonContainer>
+        <Spacer.Column numberOfSpaces={6} />
       </StyledScrollView>
 
       <PageHeader title={t`Mot de passe`} />
@@ -147,17 +146,12 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const CenteredContainer = styled.View({
-  flex: 1,
-  alignItems: 'center',
-})
-
 const getScrollViewContentContainerStyle = (keyboardHeight: number): StyleProp<ViewStyle> => ({
   flexGrow: 1,
   flexDirection: 'column',
-  justifyContent: 'space-between',
   paddingBottom: Platform.OS === 'ios' ? keyboardHeight : 0,
   backgroundColor: ColorsEnum.WHITE,
+  alignItems: 'center',
 })
 
 const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
