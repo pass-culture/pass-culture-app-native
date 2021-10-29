@@ -1,23 +1,28 @@
+/* eslint-disable local-rules/independant-mocks */
 import React, { RefObject } from 'react'
-import Geolocation from 'react-native-geolocation-service'
 import Swiper from 'react-native-web-swiper'
+import { mocked } from 'ts-jest/utils'
 
 import { analytics } from 'libs/analytics'
-import { GeolocationWrapper } from 'libs/geolocation'
+import { GeolocationWrapper, GeolocPermissionState } from 'libs/geolocation'
+import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { GenericAchievement } from 'ui/components/achievements'
 
 import { ThirdCard } from './ThirdCard'
 
-jest.mock('libs/appState', () => ({ useAppStateChange: () => {} }))
+const mockRequestGeolocPermission = mocked(requestGeolocPermission)
 
 describe('ThirdCard', () => {
+  beforeEach(jest.clearAllMocks)
+  afterAll(jest.clearAllMocks)
+
   it('should render third card', () => {
     const firstTutorial = render(<ThirdCard index={0} activeIndex={0} lastIndex={0} />)
     expect(firstTutorial).toMatchSnapshot()
   })
   it('should not trigger analytics on refusal', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('denied')
+    mockRequestGeolocPermission.mockResolvedValue(GeolocPermissionState.DENIED)
     const ref = { current: { goToNext: jest.fn() } }
     const { getByText } = render(
       <GeolocationWrapper>
@@ -33,12 +38,12 @@ describe('ThirdCard', () => {
     )
     fireEvent.press(getByText('Activer la géolocalisation'))
     await waitFor(() => {
-      expect(analytics.logHasActivateGeolocFromTutorial).toHaveBeenCalledTimes(0)
+      expect(analytics.logHasActivateGeolocFromTutorial).toBeCalledTimes(0)
     })
   })
 
   it('should trigger analytics on acceptance', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('granted')
+    mockRequestGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
     const ref = { current: { goToNext: jest.fn() } }
     const { getByText } = render(
       <GeolocationWrapper>
@@ -54,12 +59,12 @@ describe('ThirdCard', () => {
     )
     fireEvent.press(getByText('Activer la géolocalisation'))
     await waitFor(() => {
-      expect(analytics.logHasActivateGeolocFromTutorial).toHaveBeenCalledTimes(1)
+      expect(analytics.logHasActivateGeolocFromTutorial).toBeCalledTimes(1)
     })
   })
 
   it('should swipe to next card on button press', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('granted')
+    mockRequestGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
     const ref = { current: { goToNext: jest.fn() } }
     const { getByText } = render(
       <GeolocationWrapper>

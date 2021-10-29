@@ -11,10 +11,6 @@ export const checkGeolocPermission: ReadGeolocPermission = async () => {
       return GeolocPermissionState.GRANTED
     case RESULTS.DENIED:
       return GeolocPermissionState.DENIED
-    case RESULTS.BLOCKED:
-      return GeolocPermissionState.NEVER_ASK_AGAIN
-    // if we do not know geoloc permission,
-    // we want to display our custom geoloc modale to bring user to app settings
     default:
       return GeolocPermissionState.NEVER_ASK_AGAIN
   }

@@ -1,40 +1,39 @@
+/* eslint-disable local-rules/independant-mocks */
 import { mocked } from 'ts-jest/utils'
 
-import { useGeolocation } from 'libs/geolocation'
-import {
-  emptyGeolocationContext,
-  geolocalisationContext,
-} from 'libs/geolocation/fixtures/geolocationContext'
+import { IGeolocationContext, useGeolocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDistance } from 'libs/parsers'
 
 jest.mock('libs/parsers')
+
 jest.mock('libs/geolocation')
-const mockedUseGeolocation = mocked(useGeolocation, true)
+const mockUseGeolocation = mocked(useGeolocation)
 
-describe('useDistance', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
+const position = { latitude: 90, longitude: 90 }
+const offerPosition = { lat: 31, long: 56 }
 
-  const offerPosition = { lat: 31, long: 56 }
+describe('useDistance()', () => {
+  beforeEach(jest.clearAllMocks)
+  afterAll(jest.clearAllMocks)
 
   it('should call useGeolocation and formatDistance when geolocation is on', () => {
+    mockUseGeolocation.mockReturnValue({ position } as IGeolocationContext)
     useDistance(offerPosition)
-    expect(useGeolocation).toHaveBeenCalledWith()
-    expect(formatDistance).toHaveBeenCalledWith(offerPosition, geolocalisationContext.position)
+    expect(useGeolocation).toBeCalledWith()
+    expect(formatDistance).toBeCalledWith(offerPosition, position)
   })
 
-  it('should return undefined when no offerpositon given', () => {
+  it('should return undefined when no offerPosition given', () => {
     // @ts-expect-error offer position should not be undefined or null
-    useDistance()
-    expect(useGeolocation).toHaveBeenCalledWith()
-    expect(formatDistance).not.toHaveBeenCalled()
+    useDistance(undefined)
+    expect(useGeolocation).toBeCalledWith()
+    expect(formatDistance).not.toBeCalled()
   })
-  it('should return undefined when geolocation is off', () => {
-    mockedUseGeolocation.mockReturnValueOnce(emptyGeolocationContext)
+  it('should return undefined when position is null', () => {
+    mockUseGeolocation.mockReturnValue({ position: null } as IGeolocationContext)
     useDistance(offerPosition)
-    expect(useGeolocation).toHaveBeenCalledWith()
-    expect(formatDistance).not.toHaveBeenCalled()
+    expect(useGeolocation).toBeCalledWith()
+    expect(formatDistance).not.toBeCalled()
   })
 })

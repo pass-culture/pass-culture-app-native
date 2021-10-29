@@ -2,11 +2,11 @@ import React, { memo, useCallback, useContext, useEffect } from 'react'
 import { Linking } from 'react-native'
 
 import { useAppStateChange } from 'libs/appState'
-import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { useSafeState } from 'libs/hooks'
 import { useModal } from 'ui/components/modals/useModal'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
+import { GeolocationActivationModal } from './components/GeolocationActivationModal'
 import { GeolocPermissionState } from './enums'
 import { getPosition } from './getPosition'
 import { requestGeolocPermission } from './requestGeolocPermission'
