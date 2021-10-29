@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useRef } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -22,6 +22,7 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export function ChangeEmail() {
+  const theme = useTheme()
   const [email, setEmail] = useSafeState('')
   const [password, setPassword] = useSafeState('')
   const emailErrorMessage = useValidateEmail(email)
@@ -73,7 +74,7 @@ export function ChangeEmail() {
             placeholder={t`Ton mot de passe`}
             textContentType="password"
           />
-          {Platform.OS === 'web' ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
+          {theme.isDesktop ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
             <ButtonPrimary title={t`Enregistrer`} onPress={submitEmailChange} disabled={disabled} />

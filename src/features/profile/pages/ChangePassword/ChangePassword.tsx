@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import {
   isPasswordCorrect,
@@ -19,6 +20,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export function ChangePassword() {
+  const theme = useTheme()
   const { showSuccessSnackBar } = useSnackBarContext()
 
   const [currentPassword, setCurrentPassword] = useState('')
@@ -124,7 +126,7 @@ export function ChangePassword() {
           messageId={t`les mots de passe ne concordent pas`}
           numberOfSpacesTop={2}
         />
-        {Platform.OS === 'web' ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
+        {theme.isDesktop ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
         {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
         <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
           <ButtonPrimary
