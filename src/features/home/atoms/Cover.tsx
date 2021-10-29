@@ -6,6 +6,7 @@ import { Layout } from 'features/home/contentful'
 import { ArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
 import { LENGTH_M, LENGTH_L, RATIO_HOME_IMAGE, MARGIN_DP, ColorsEnum, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
+import { ZIndex } from 'ui/theme/layers'
 
 interface CoverProps {
   layout: Layout
@@ -45,7 +46,7 @@ const Image = styled.Image({
 
 const ArrowsContainer = styled.View({
   position: 'absolute',
-  zIndex: 1,
+  zIndex: ZIndex.HOME_OFFER_COVER_ICONS,
   flexDirection: 'row',
   alignItems: 'center',
 })

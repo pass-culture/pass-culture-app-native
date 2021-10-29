@@ -98,6 +98,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           },
         ],
         "width": "100%",
+        "zIndex": 25,
       }
     }
     supportedOrientations={
@@ -338,6 +339,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
           },
         ],
         "width": "100%",
+        "zIndex": 25,
       }
     }
     supportedOrientations={

@@ -98,6 +98,7 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
           },
         ],
         "width": "100%",
+        "zIndex": 25,
       }
     }
     supportedOrientations={

@@ -8,6 +8,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ZIndex } from 'ui/theme/layers'
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
   title: string
@@ -53,7 +54,7 @@ const HeaderContainer = styled(Animated.View)({
   position: 'absolute',
   top: 0,
   width: '100%',
-  zIndex: 1,
+  zIndex: ZIndex.HEADER,
 })
 
 const Row = styled.View({

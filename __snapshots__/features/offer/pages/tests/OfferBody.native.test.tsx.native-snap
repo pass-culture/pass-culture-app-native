@@ -1152,6 +1152,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               },
             ],
             "width": "100%",
+            "zIndex": 25,
           }
         }
         supportedOrientations={

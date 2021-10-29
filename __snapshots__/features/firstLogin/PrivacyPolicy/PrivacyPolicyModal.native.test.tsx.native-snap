@@ -98,6 +98,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
           },
         ],
         "width": "100%",
+        "zIndex": 25,
       }
     }
     supportedOrientations={

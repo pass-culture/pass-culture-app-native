@@ -22,7 +22,7 @@ exports[`Search component should render correctly 1`] = `
           "overflow": "hidden",
           "position": "absolute",
           "top": 0,
-          "zIndex": 0,
+          "zIndex": -1,
         },
       ]
     }

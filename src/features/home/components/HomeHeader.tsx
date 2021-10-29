@@ -12,6 +12,7 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { ZIndex } from 'ui/theme/layers'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const HomeHeader: FunctionComponent = function () {
@@ -79,7 +80,7 @@ const HeaderBackgroundWrapper = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
-  zIndex: 0,
+  zIndex: ZIndex.BACKGROUND,
 })
 
 const CheatCodeButtonContainer = styled.TouchableOpacity.attrs({
@@ -87,7 +88,7 @@ const CheatCodeButtonContainer = styled.TouchableOpacity.attrs({
 })({
   position: 'absolute',
   right: getSpacing(2),
-  zIndex: 1,
+  zIndex: ZIndex.CHEATCODE_BUTTON,
   border: 1,
   padding: getSpacing(1),
 })

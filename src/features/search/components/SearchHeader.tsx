@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer } from 'ui/theme'
+import { ZIndex } from 'ui/theme/layers'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { SearchBox } from './SearchBox'
@@ -39,7 +40,7 @@ const HeaderBackgroundWrapper = styled.View<{ height: number }>(({ height }) => 
   position: 'absolute',
   top: 0,
   left: 0,
-  zIndex: 0,
   height,
   overflow: 'hidden',
+  zIndex: ZIndex.BACKGROUND,
 }))

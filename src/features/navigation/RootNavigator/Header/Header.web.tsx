@@ -147,7 +147,6 @@ const RightContainer = styled(Animated.View)<{ margin: number; isVisible: boolea
     flexDirection: 'row',
     marginRight: margin,
     alignItems: 'center',
-    zIndex: 1,
     ...(isVisible ? {} : { display: 'none' }),
   })
 )
