@@ -22,8 +22,8 @@ export function PersonalData() {
 
   const openChangeEmailPage = () => navigate('ChangeEmail')
 
-  // TODO: remove this feature flip to deploy ChangeEmail to staging
-  const isEmailChangeEnabled = env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING
+  // TODO (LucasBeneston): Remove this to display ChangeEmail in production
+  const isEmailChangeEnabled = env.ENV !== 'production'
 
   return (
     <React.Fragment>
