@@ -50,6 +50,7 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
+import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ConfirmDeleteProfile } from 'features/profile/pages/ConfirmDeleteProfile'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings'
@@ -149,6 +150,13 @@ export const routes: Route[] = [
     },
   },
   { name: 'AppComponents', component: AppComponents, path: 'composants-app' },
+  {
+    name: 'ChangeEmailExpiredLink',
+    component: ChangeEmailExpiredLink,
+    hoc: withAsyncErrorBoundary,
+    path: 'email-modification-email-expire',
+    options: { title: t`Email modification de l'email expiré` },
+  },
   { name: 'CheatCodes', component: CheatCodes, path: 'cheat-codes' },
   { name: 'CheatMenu', component: CheatMenu, path: 'cheat-menu' },
   {

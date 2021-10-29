@@ -19,6 +19,7 @@ export const state1 = {
     'ResetPasswordExpiredLink',
     'SetPassword',
     'SetBirthday',
+    'ChangeEmailExpiredLink',
   ],
   routes: [
     {
@@ -84,6 +85,7 @@ export const state2 = {
     'ResetPasswordExpiredLink',
     'SetPassword',
     'SetBirthday',
+    'ChangeEmailExpiredLink',
   ],
   routes: [
     {
@@ -161,6 +163,7 @@ export const state3 = {
     'ResetPasswordExpiredLink',
     'SetPassword',
     'SetBirthday',
+    'ChangeEmailExpiredLink',
   ],
   routes: [
     {
