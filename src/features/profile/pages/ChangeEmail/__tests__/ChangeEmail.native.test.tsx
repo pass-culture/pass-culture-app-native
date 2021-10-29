@@ -2,12 +2,20 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { UseChangeEmailMutationProps } from 'features/profile/mutations'
 import { fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { ChangeEmail } from '../ChangeEmail'
 
 jest.mock('react-query')
+
+const mockUseChangeEmailMutation = jest.fn().mockImplementation(({ onSuccess }) => ({
+  mutate: () => onSuccess(),
+}))
+jest.mock('features/profile/mutations', () => ({
+  useChangeEmailMutation: (props: UseChangeEmailMutationProps) => mockUseChangeEmailMutation(props),
+}))
 
 describe('<ChangeEmail/>', () => {
   it('should render correctly', () => {
@@ -40,8 +48,7 @@ describe('<ChangeEmail/>', () => {
     }
   )
 
-  // TODO (PC-11573): remove the "skip" once the fake API call is removed
-  it.skip('should navigate to Profile if the API call is ok', async () => {
+  it('should navigate to Profile if the API call is ok', async () => {
     const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
     const submitButton = getByTestId('Enregistrer')
     const emailInput = getByPlaceholderText('tonadresse@email.com')
