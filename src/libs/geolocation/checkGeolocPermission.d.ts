@@ -1,1 +1,3 @@
-export const checkGeolocPermission: () => Promise<GeolocPermissionState>
+import { ReadGeolocPermission } from 'libs/geolocation/types'
+
+export const checkGeolocPermission: ReadGeolocPermission

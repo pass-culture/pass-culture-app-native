@@ -1,8 +1,10 @@
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 
+import { ReadGeolocPermission } from 'libs/geolocation/types'
+
 import { GeolocPermissionState } from './enums'
 
-export const checkGeolocPermission = async (): Promise<GeolocPermissionState> => {
+export const checkGeolocPermission: ReadGeolocPermission = async () => {
   const locationPermissionResult = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE)
   switch (locationPermissionResult) {
     case RESULTS.GRANTED:

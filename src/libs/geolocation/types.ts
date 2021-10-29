@@ -15,6 +15,8 @@ export type RequestGeolocPermissionParams = {
   onRefusal?: () => void
   onSubmit?: () => void
 }
+export type AskGeolocPermission = () => Promise<GeolocPermissionState>
+export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
 export type IGeolocationContext = {
   position: GeoCoordinates | null
