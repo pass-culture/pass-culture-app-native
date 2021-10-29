@@ -5,6 +5,8 @@ import { UserProfileResponse } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/ProfileHeader'
 import { render } from 'tests/utils'
 
+jest.mock('./NonBeneficiaryHeader')
+
 const user: UserProfileResponse = {
   bookedOffers: {},
   email: 'email2@domain.ext',
@@ -33,11 +35,21 @@ const exBeneficiaryUser: UserProfileResponse = {
   depositExpirationDate: new Date('2020-01-01T03:04:05'),
 }
 
+const notBeneficiaryUser = {
+  ...user,
+  isBeneficiary: false,
+}
+
 jest.mock('features/home/api')
 
 describe('ProfileHeader', () => {
   beforeEach(() => {
     mockdate.set(new Date('2021-07-01T00:00:00Z'))
+  })
+
+  it('should display the LoggedOutHeader if no user', () => {
+    const ProfileHeaderComponent = render(<ProfileHeader user={undefined} />)
+    expect(ProfileHeaderComponent).toMatchSnapshot()
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
@@ -50,5 +62,10 @@ describe('ProfileHeader', () => {
     const { getByTestId, getByText } = render(<ProfileHeader user={exBeneficiaryUser} />)
     expect(getByTestId('ex-beneficiary-header')).toBeTruthy()
     expect(getByText('crédit expiré le 01/01/2020 à 03h04')).toBeTruthy()
+  })
+
+  it('should display the NonBeneficiaryHeader Header if user is not beneficiary', () => {
+    const ProfileHeaderComponent = render(<ProfileHeader user={notBeneficiaryUser} />)
+    expect(ProfileHeaderComponent).toMatchSnapshot()
   })
 })

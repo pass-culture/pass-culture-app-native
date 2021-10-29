@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "overflow": "hidden",
+      },
+    ]
+  }
+>
+  <View
+    customHeight={16}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "maxHeight": 294,
+          "position": "absolute",
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <View
+      height={294}
+      width={754}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "paddingHorizontal": 20,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 18,
+            "lineHeight": 22,
+          },
+        ]
+      }
+    >
+      Profil
+    </Text>
+    <View
+      numberOfSpaces={7}
+      style={
+        Array [
+          Object {
+            "height": 28,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Inscris-toi pour accéder à toutes les fonctionnalités de l’application
+    </Text>
+    <View
+      numberOfSpaces={8}
+      style={
+        Array [
+          Object {
+            "height": 32,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="S'inscrire"
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="S'inscrire"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 5,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+        textColor="#eb0055"
+      >
+        S'inscrire
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        color="#ffffff"
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Tu as déjà un compte ? 
+      </Text>
+      <View
+        accessibilityLabel="Connecte-toi"
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+        testID="Connecte-toi"
+      >
+        <Text
+          color="#ffffff"
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Connecte-toi
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={7}
+      style={
+        Array [
+          Object {
+            "height": 28,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is not beneficiary 1`] = `"NonBeneficiaryHeader"`;
