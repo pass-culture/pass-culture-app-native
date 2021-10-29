@@ -52,7 +52,7 @@ export function ChangeEmail() {
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
-  const submitEmailChange = async () => {
+  const submitEmailChange = () => {
     changeEmail({ email, password })
   }
 
