@@ -4,6 +4,7 @@ export enum GeolocPermissionState {
   GRANTED = 'granted',
   DENIED = 'denied',
   NEVER_ASK_AGAIN = 'never_ask_again',
+  NEED_ASK_POSITION_DIRECTLY = 'need_ask_position_directly', // web only
 }
 
 export enum GeolocPositionError {

@@ -6,17 +6,8 @@ import { AskGeolocPermission } from './types'
 export const requestGeolocPermission: AskGeolocPermission = async function () {
   if (navigator.permissions) {
     const { state } = await navigator.permissions.query({ name: 'geolocation' })
-    if (state === 'granted') {
-      return GeolocPermissionState.GRANTED
-    }
-    if (state === 'denied') {
-      return GeolocPermissionState.NEVER_ASK_AGAIN
-    }
+    if (state === 'granted') return GeolocPermissionState.GRANTED
+    if (state === 'denied') return GeolocPermissionState.NEVER_ASK_AGAIN
   }
-  return new Promise((resolve) => {
-    navigator.geolocation.getCurrentPosition(
-      () => resolve(GeolocPermissionState.GRANTED),
-      () => resolve(GeolocPermissionState.NEVER_ASK_AGAIN)
-    )
-  })
+  return GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY
 }
