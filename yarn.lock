@@ -3429,10 +3429,10 @@
   resolved "https://registry.yarnpkg.com/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
-"@pass-culture/id-check@2.10.12":
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.10.12.tgz#19d206a7d546f8455d49b8de182ad500f88159cf"
-  integrity sha512-UDQJ4cb6XP0HdwKjyR0u/JRs/aTbJApiS6ODocWCzmPgHOVKP36DAno/yYYotVGyRxsS7aGlCQq54GZOtEfCyQ==
+"@pass-culture/id-check@^2.10.14":
+  version "2.10.14"
+  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.10.14.tgz#c0fa8d7c1f482334ac92f116bd86681c2be4b333"
+  integrity sha512-iMI1JEijrw17csvRuOjJfLivDeTHSbYclRWaFUsCbs6HQ4NEhPDBq7gErN2dvtVV/sYhpqm4ZQMSytPvPzlZxA==
   dependencies:
     deepmerge "^4.2.2"
     lodash "^4.17.21"
@@ -18414,9 +18414,9 @@ validate-npm-package-license@^3.0.1:
     spdx-expression-parse "^3.0.0"
 
 validator@^13.6.0:
-  version "13.6.0"
-  resolved "https://registry.yarnpkg.com/validator/-/validator-13.6.0.tgz#1e71899c14cdc7b2068463cb24c1cc16f6ec7059"
-  integrity sha512-gVgKbdbHgtxpRyR8K0O6oFZPhhB5tT1jeEHZR0Znr9Svg03U0+r9DXWMrnRAB+HtCStDQKlaIZm42tVsVjqtjg==
+  version "13.7.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-13.7.0.tgz#4f9658ba13ba8f3d82ee881d3516489ea85c0857"
+  integrity sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==
 
 validator@~9.4.1:
   version "9.4.1"

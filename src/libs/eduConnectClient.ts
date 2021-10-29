@@ -14,7 +14,6 @@ export const eduConnectClient = {
   async getAccessToken() {
     const accessToken = await storage.readString('access_token')
     const tokenContent = decodeAccessToken(accessToken ?? '')
-
     if (!tokenContent) {
       eventMonitoring.captureMessage('eduConnectClient failed to decodeAccessToken')
       return Promise.reject(new EduConnectError(EduConnectErrors.unavailable))

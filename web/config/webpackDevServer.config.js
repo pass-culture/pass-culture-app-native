@@ -111,7 +111,11 @@ module.exports = function (proxy, allowedHost) {
             '/native': {
                 target: raw.API_BASE_URL,
                 changeOrigin: true,
-            }
+            },
+            '/saml': {
+                target: raw.API_BASE_URL,
+                changeOrigin: true,
+            },
         },
         before(app, server) {
             // Keep `evalSourceMapMiddleware` and `errorOverlayMiddleware`
