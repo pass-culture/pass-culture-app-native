@@ -63,7 +63,7 @@ export function ChangeEmail() {
         <CenteredContainer>
           <EmailInput label={t`Nouvel e-mail`} email={email} onEmailChange={setEmail} />
           {!!emailErrorMessage && (
-            <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={1} />
+            <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={2} />
           )}
           <Spacer.Column numberOfSpaces={4} />
           <PasswordInput
@@ -73,7 +73,7 @@ export function ChangeEmail() {
             placeholder={t`Ton mot de passe`}
             textContentType="password"
           />
-          <Spacer.Flex flex={1} />
+          {Platform.OS === 'web' ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
             <ButtonPrimary title={t`Enregistrer`} onPress={submitEmailChange} disabled={disabled} />
