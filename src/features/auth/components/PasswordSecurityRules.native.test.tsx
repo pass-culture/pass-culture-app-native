@@ -1,6 +1,9 @@
 import React from 'react'
 
-import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
+import {
+  isPasswordCorrect,
+  PasswordSecurityRules,
+} from 'features/auth/components/PasswordSecurityRules'
 import { render } from 'tests/utils'
 
 describe('<PasswordSecurityRules />', () => {
@@ -55,5 +58,49 @@ describe('<PasswordSecurityRules />', () => {
     const validateEveryRule = render(<PasswordSecurityRules password={'ABCDefgh1234!!!!'} />)
     const checkIcons = validateEveryRule.getAllByTestId('rule-icon-check')
     expect(checkIcons.length).toBe(5)
+  })
+  it('should unvalidate the following invalid passwords', () => {
+    const invalidPasswords = [
+      't00::5H0rt@',
+      'n0upper_c4s3^letter',
+      'NO-LOWER_CASE.L3TT3R',
+      'MIXED.case-WITHOUT_digits',
+      'MIXEDcaseWITHOUTSP3C14lchars',
+    ]
+    invalidPasswords.forEach((password) => {
+      expect(isPasswordCorrect(password)).not.toBe(true)
+    })
+  })
+  it('should validate the following valid passwords', () => {
+    const validPasswords = [
+      '-v4l1dP455sw0rd',
+      '&v4l1dP455sw0rd',
+      '?v4l1dP455sw0rd',
+      '~v4l1dP455sw0rd',
+      '#v4l1dP455sw0rd',
+      '|v4l1dP455sw0rd',
+      '^v4l1dP455sw0rd',
+      '@v4l1dP455sw0rd',
+      '=v4l1dP455sw0rd',
+      '+v4l1dP455sw0rd',
+      '$v4l1dP455sw0rd',
+      '<v4l1dP455sw0rd',
+      '>v4l1dP455sw0rd',
+      '%v4l1dP455sw0rd',
+      '*v4l1dP455sw0rd',
+      '!v4l1dP455sw0rd',
+      ':v4l1dP455sw0rd',
+      ';v4l1dP455sw0rd',
+      ',v4l1dP455sw0rd',
+      '.v4l1dP455sw0rd',
+      '{v4l1dP455sw0rd',
+      '}v4l1dP455sw0rd',
+      '(v4l1dP455sw0rd',
+      ')v4l1dP455sw0rd',
+      '\\v4l1dP455sw0rd',
+    ]
+    validPasswords.forEach((password) => {
+      expect(isPasswordCorrect(password)).toBe(true)
+    })
   })
 })
