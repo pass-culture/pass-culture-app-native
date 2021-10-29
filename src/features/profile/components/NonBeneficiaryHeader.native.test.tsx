@@ -3,12 +3,16 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { BeneficiaryValidationStep, GetIdCheckTokenResponse } from 'api/gen'
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { flushAllPromises, render } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
+
+jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
 
 jest.mock('features/profile/utils')
 const mockedUseIsUserUnderage = mocked(useIsUserUnderage, true)
@@ -75,7 +79,9 @@ describe('NonBeneficiaryHeader  ', () => {
     banner.props.onClick()
 
     await flushAllPromises()
-    expect(navigate).toBeCalledWith('SetPhoneNumber')
+    expect(navigateToNextBeneficiaryValidationStep).toBeCalledWith({
+      nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
+    })
   })
 
   it('should render the right body for 18 years old users if user has not completed idcheck', async () => {

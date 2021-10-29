@@ -8,6 +8,8 @@ import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateTo
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
+import { useIsUserUnderage } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -20,9 +22,11 @@ export const useBeneficiaryValidationNavigation = () => {
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
   const { refetch } = useUserProfileInfo()
+  const isUserUnderage = useIsUserUnderage()
   const navigateToIdCheck = useNavigateToIdCheck({
     onIdCheckNavigationBlocked: () => navigate('IdCheckUnavailable'),
   })
+  useSetIdCheckNavigationContext()
   const { showErrorSnackBar } = useSnackBarContext()
   const [error, setError] = useState<Error | null>(null)
 
@@ -65,7 +69,7 @@ export const useBeneficiaryValidationNavigation = () => {
         navigate('IdCheckUnavailable')
       }
     } else {
-      navigateToHome()
+      isUserUnderage ? navigate('UnavailableEduConnect') : navigateToHome()
     }
   }
 
