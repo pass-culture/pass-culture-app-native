@@ -56,6 +56,13 @@ jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
 jest.mock('libs/analytics/analytics')
 jest.mock('libs/analytics/provider')
 
+jest.mock('libs/appState')
+
+/* See the corresponding mocks in libs/geolocation/__mocks__ */
+jest.mock('libs/geolocation/getPosition')
+jest.mock('libs/geolocation/requestGeolocPermission')
+jest.mock('libs/geolocation/checkGeolocPermission')
+
 /* See the corresponding mocks in libs/subcategories/__mocks__ */
 jest.mock('libs/subcategories/mappings')
 jest.mock('libs/subcategories/useCategoryId')

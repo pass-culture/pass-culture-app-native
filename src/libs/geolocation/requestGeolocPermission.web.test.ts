@@ -1,30 +1,29 @@
-import { MockedFunction } from 'ts-jest/dist/utils/testing'
+import { mocked } from 'ts-jest/utils'
 
 import { GeolocPermissionState } from './enums'
-import { requestGeolocPermission } from './requestGeolocPermission.web'
+import { requestGeolocPermission } from './requestGeolocPermission'
 
-let mockQuery = navigator.permissions.query as MockedFunction<typeof navigator.permissions.query>
-const mockGetCurrentPosition = navigator.geolocation.getCurrentPosition as MockedFunction<
-  typeof navigator.geolocation.getCurrentPosition
->
+jest.mock('libs/geolocation/requestGeolocPermission', () =>
+  jest.requireActual('./requestGeolocPermission')
+)
+
+let mockQuery = mocked(navigator.permissions.query)
+const mockGetCurrentPosition = mocked(navigator.geolocation.getCurrentPosition)
 
 const initialNavigatorPermissions = { ...navigator.permissions }
 function resetNavigatorPermissions() {
   // @ts-expect-error : `permissions` is a read-only property
   global.navigator.permissions = initialNavigatorPermissions
-  mockQuery = initialNavigatorPermissions.query as MockedFunction<
-    typeof navigator.permissions.query
-  >
+  mockQuery = mocked(initialNavigatorPermissions.query)
 }
 function mockNavigatorPermissionsUndefined() {
   // @ts-expect-error : `permissions` is a read-only property
   global.navigator.permissions = undefined
 }
 
-describe('requestGeolocPermission web', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
+describe('requestGeolocPermission()', () => {
+  beforeEach(jest.clearAllMocks)
+  afterAll(jest.clearAllMocks)
 
   it('should return GRANTED if web permission is "granted"', async () => {
     mockQuery.mockResolvedValueOnce({ state: 'granted' } as PermissionStatus)
@@ -40,37 +39,37 @@ describe('requestGeolocPermission web', () => {
     expect(state).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
   })
 
-  it('should return GRANTED if web permission is "prompt" and getCurrentPosition() executes its successCallback', async () => {
+  it('should return NEED_ASK_POSITION_DIRECTLY if web permission is "prompt" and getCurrentPosition() executes its successCallback', async () => {
     mockQuery.mockResolvedValueOnce({ state: 'prompt' } as PermissionStatus)
     mockGetCurrentPositionSuccess()
     const state = await requestGeolocPermission()
     expect(mockQuery).toBeCalledTimes(1)
-    expect(state).toEqual(GeolocPermissionState.GRANTED)
+    expect(state).toEqual(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
   })
 
-  it('should return GRANTED if navigator.permissions is undefined and getCurrentPosition() executes its successCallback', async () => {
+  it('should return NEED_ASK_POSITION_DIRECTLY if navigator.permissions is undefined and getCurrentPosition() executes its successCallback', async () => {
     mockNavigatorPermissionsUndefined()
     mockGetCurrentPositionSuccess()
     const state = await requestGeolocPermission()
     expect(mockQuery).not.toBeCalled()
-    expect(state).toEqual(GeolocPermissionState.GRANTED)
+    expect(state).toEqual(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
     resetNavigatorPermissions()
   })
 
-  it('should return NEVER_ASK_AGAIN if web permission is "prompt" and getCurrentPosition() executes its errorCallback', async () => {
+  it('should return NEED_ASK_POSITION_DIRECTLY if web permission is "prompt" and getCurrentPosition() executes its errorCallback', async () => {
     mockQuery.mockResolvedValueOnce({ state: 'prompt' } as PermissionStatus)
     mockGetCurrentPositionError()
     const state = await requestGeolocPermission()
     expect(mockQuery).toBeCalledTimes(1)
-    expect(state).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
+    expect(state).toEqual(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
   })
 
-  it('should return NEVER_ASK_AGAIN if navigator.permissions is undefined and getCurrentPosition() executes its errorCallback', async () => {
+  it('should return NEED_ASK_POSITION_DIRECTLY if navigator.permissions is undefined and getCurrentPosition() executes its errorCallback', async () => {
     mockNavigatorPermissionsUndefined()
     mockGetCurrentPositionError()
     const state = await requestGeolocPermission()
     expect(mockQuery).not.toBeCalled()
-    expect(state).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
+    expect(state).toEqual(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
     resetNavigatorPermissions()
   })
 })
