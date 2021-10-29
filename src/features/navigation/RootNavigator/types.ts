@@ -31,6 +31,7 @@ export type RootStackParamList = {
   AppComponents: undefined
   ChangePassword: undefined
   ChangeEmail: undefined
+  ChangeEmailExpiredLink: { email: string }
   CheatCodes: undefined
   CheatMenu: undefined
   ConfirmDeleteProfile: undefined
