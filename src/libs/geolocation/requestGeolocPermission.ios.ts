@@ -1,12 +1,14 @@
 import Geolocation from 'react-native-geolocation-service'
 
+import { AskGeolocPermission } from 'libs/geolocation/types'
+
 import { GeolocPermissionState } from './enums'
 
-export const requestGeolocPermissionSystem = async (): Promise<GeolocPermissionState> => {
+export const requestGeolocPermissionSystem = async () => {
   const permissionValue = await Geolocation.requestAuthorization('whenInUse')
   // Corresponding user response: Allow while using app
   if (permissionValue === 'granted') return GeolocPermissionState.GRANTED
   return GeolocPermissionState.NEVER_ASK_AGAIN
 }
 
-export const requestGeolocPermission = requestGeolocPermissionSystem
+export const requestGeolocPermission: AskGeolocPermission = requestGeolocPermissionSystem

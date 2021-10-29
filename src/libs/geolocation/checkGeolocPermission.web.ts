@@ -1,8 +1,9 @@
-import { GeolocPermissionState } from './enums'
+import { GeolocPermissionState } from 'libs/geolocation'
+import { ReadGeolocPermission } from 'libs/geolocation/types'
 
 // Note : `navigator.permissions` is not yet supported for Safari desktop and mobile :
 // https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
-export async function checkGeolocPermission(): Promise<GeolocPermissionState> {
+export const checkGeolocPermission: ReadGeolocPermission = async function () {
   if (navigator.permissions) {
     const { state } = await navigator.permissions.query({ name: 'geolocation' })
     if (state === 'granted') {

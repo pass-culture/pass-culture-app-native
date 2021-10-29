@@ -1,8 +1,10 @@
 import { checkMultiple, PERMISSIONS } from 'react-native-permissions'
 
+import { ReadGeolocPermission } from 'libs/geolocation/types'
+
 import { GeolocPermissionState } from './enums'
 
-export const checkGeolocPermission = async (): Promise<GeolocPermissionState> => {
+export const checkGeolocPermission: ReadGeolocPermission = async () => {
   const permissions = await checkMultiple([
     PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
     PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION,
