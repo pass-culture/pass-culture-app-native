@@ -108,7 +108,7 @@ export const ReinitializePassword = () => {
         <ButtonPrimary
           title={t`Continuer`}
           onPress={submitPassword}
-          disabled={!allowSubmission}
+          disabled={!allowSubmission || isLoading}
           isLoading={isLoading}
         />
       </BottomCardContentContainer>
