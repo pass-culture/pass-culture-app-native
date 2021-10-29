@@ -1,7 +1,5 @@
-import { Dispatch, SetStateAction } from 'react'
-
 import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from './enums'
-import { GeolocationError, GeoCoordinates } from './types'
+import { GeoCoordinates } from './types'
 
 const GET_POSITION_SETTINGS = {
   enableHighAccuracy: false,
@@ -29,36 +27,35 @@ export function getWebGeolocErrorFromCode(errorCode: number): GeolocPositionErro
   return GeolocPositionError.POSITION_UNAVAILABLE
 }
 
-export const getPosition = (
-  setPosition: Dispatch<SetStateAction<GeoCoordinates | null>>,
-  setPositionError: Dispatch<SetStateAction<GeolocationError | null>>
-): void =>
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      setPositionError(null)
-      setPosition({
-        longitude: position.coords.longitude,
-        latitude: position.coords.latitude,
-      })
-    },
-    ({ code }) => {
-      const errorType = getWebGeolocErrorFromCode(code)
-      switch (errorType) {
-        case GeolocPositionError.PERMISSION_DENIED:
-          setPositionError(null)
-          setPosition(null)
-          break
-        case GeolocPositionError.POSITION_UNAVAILABLE:
-          // Location provider not available
-          setPositionError({ type: errorType, message: GEOLOCATION_USER_ERROR_MESSAGE[errorType] })
-          break
-        case GeolocPositionError.TIMEOUT:
-          // Location request timed out
-          // TODO: we could implement a retry pattern
-          setPositionError({ type: errorType, message: GEOLOCATION_USER_ERROR_MESSAGE[errorType] })
-          setPosition(null)
-          break
-      }
-    },
-    GET_POSITION_SETTINGS
-  )
+export const getPosition = () =>
+  new Promise<GeoCoordinates>((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve({
+          longitude: position.coords.longitude,
+          latitude: position.coords.latitude,
+        })
+      },
+      ({ code }) => {
+        const errorType = getWebGeolocErrorFromCode(code)
+        switch (errorType) {
+          case GeolocPositionError.PERMISSION_DENIED:
+            reject(null)
+            break
+          case GeolocPositionError.POSITION_UNAVAILABLE:
+            // Location provider not available
+            reject({ type: errorType, message: GEOLOCATION_USER_ERROR_MESSAGE[errorType] })
+            break
+          case GeolocPositionError.TIMEOUT:
+            // Location request timed out
+            // TODO: we could implement a retry pattern
+            reject({ type: errorType, message: GEOLOCATION_USER_ERROR_MESSAGE[errorType] })
+            break
+          default:
+            reject(null)
+            break
+        }
+      },
+      GET_POSITION_SETTINGS
+    )
+  })

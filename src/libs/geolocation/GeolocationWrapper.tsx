@@ -1,4 +1,4 @@
-import React, { memo, useContext, useEffect } from 'react'
+import React, { memo, useCallback, useContext, useEffect } from 'react'
 import { Linking } from 'react-native'
 
 import { useAppStateChange } from 'libs/appState'
@@ -24,7 +24,7 @@ export const GeolocationContext = React.createContext<IGeolocationContext>({
   requestGeolocPermission: async () => {
     // nothing
   },
-  triggerPositionUpdate: () => undefined,
+  triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
 })
 
@@ -49,48 +49,62 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
     contextualCheckPermission()
   }, [])
 
-  function triggerPositionUpdate() {
-    getPosition(setPosition, setPositionError)
+  async function triggerPositionUpdate() {
+    try {
+      const newPosition = await getPosition()
+      setPosition(newPosition)
+      setPositionError(null)
+      return newPosition
+    } catch (newPositionError) {
+      setPosition(null)
+      setPositionError(newPositionError as GeolocationError)
+      return null
+    }
   }
 
   // this function is used to set OS permissions according to user choice on native geolocation popup
-  async function contextualRequestGeolocPermission(params?: RequestGeolocPermissionParams) {
-    const newPermissionState = await requestGeolocPermission()
-    setPermissionState(newPermissionState)
-
+  const contextualRequestGeolocPermission = useCallback(async function (
+    params?: RequestGeolocPermissionParams
+  ) {
     !!params?.onSubmit && params.onSubmit()
 
-    if (isGranted(newPermissionState)) {
-      triggerPositionUpdate()
+    let permission = await requestGeolocPermission()
+    if (shouldTriggerPositionUpdate(permission)) {
+      const newPosition = await triggerPositionUpdate()
+      if (isNeedAskPosition(permission)) {
+        permission =
+          newPosition === null
+            ? GeolocPermissionState.NEVER_ASK_AGAIN
+            : GeolocPermissionState.GRANTED
+      }
+    }
+
+    if (isGranted(permission)) {
       !!params?.onAcceptance && params.onAcceptance()
     } else {
       !!params?.onRefusal && params.onRefusal()
     }
-  }
+    setPermissionState(permission)
+  },
+  [])
 
   // in case user updates his preferences in his phone settings we check if his local
   // storage choice is consistent with phone permissions, and update position if not
-  async function contextualCheckPermission() {
-    const newPermissionState: GeolocPermissionState = await checkGeolocPermission()
-    if (isGranted(newPermissionState)) {
-      triggerPositionUpdate()
-    } else {
-      setPosition(null)
+  const contextualCheckPermission = useCallback(async function () {
+    let permission = await checkGeolocPermission()
+    if (shouldTriggerPositionUpdate(permission)) {
+      const newPosition = await triggerPositionUpdate()
+      if (isNeedAskPosition(permission)) {
+        permission =
+          newPosition === null
+            ? GeolocPermissionState.NEVER_ASK_AGAIN
+            : GeolocPermissionState.GRANTED
+      }
     }
-    setPermissionState(newPermissionState)
-  }
+    setPermissionState(permission)
+  }, [])
 
-  // WARNING: the reference of contextualCheckPermission() changes between
-  // - the registration of the "onAppBecomeActive" handler in the "useAppStateChange" effect
-  // - and its execution (when app becomes active).
-  // that's why it's very important to add the 'permissionState' to the dependencies of the "useAppStateChange" effect
-  useAppStateChange(onAppBecomeActive, onAppBecomeInactive, [permissionState])
-  async function onAppBecomeActive() {
-    await contextualCheckPermission()
-  }
-  async function onAppBecomeInactive() {
-    // nothing
-  }
+  useAppStateChange(contextualCheckPermission, undefined, [])
 
   function onPressGeolocPermissionModalButton() {
     Linking.openSettings()
@@ -121,6 +135,12 @@ export function useGeolocation(): IGeolocationContext {
   return useContext(GeolocationContext)
 }
 
-function isGranted(permissionState: GeolocPermissionState) {
-  return permissionState === GeolocPermissionState.GRANTED
+function isGranted(permission: GeolocPermissionState) {
+  return permission === GeolocPermissionState.GRANTED
+}
+function isNeedAskPosition(permission: GeolocPermissionState) {
+  return permission === GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY
+}
+function shouldTriggerPositionUpdate(permission: GeolocPermissionState) {
+  return isGranted(permission) || isNeedAskPosition(permission)
 }
