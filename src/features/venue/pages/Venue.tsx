@@ -22,7 +22,11 @@ export const Venue: FunctionComponent = () => {
     <Container>
       <VenueWebHeader venue={venue} />
       <VenueBody venueId={params.id} onScroll={onScroll} />
-      <VenueHeader headerTransition={headerTransition} title={venue.name} venueId={venue.id} />
+      <VenueHeader
+        headerTransition={headerTransition}
+        title={venue.publicName || venue.name}
+        venueId={venue.id}
+      />
     </Container>
   )
 }

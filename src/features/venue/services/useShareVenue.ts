@@ -31,7 +31,7 @@ export function getWebappVenueUrl(venueId: number, webAppUrl: string) {
 const shareVenue = async (venue: VenueResponse, webAppUrl: string) => {
   const message = t({
     id: 'share venue message',
-    values: { name: venue.name },
+    values: { name: venue.publicName || venue.name },
     message: 'Retrouve "{name}" sur le pass Culture',
   })
 
