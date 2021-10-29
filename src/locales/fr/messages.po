@@ -618,6 +618,10 @@ msgstr "E-mail"
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
+#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
+msgid "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
+msgstr "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
+
 #: src/features/auth/login/Login.tsx
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
@@ -690,6 +694,10 @@ msgid "Es-tu sûr de vouloir supprimer ton compte ?"
 msgstr "Es-tu sûr de vouloir supprimer ton compte ?"
 
 #: src/features/navigation/RootNavigator/routes.ts
+msgid "Etablissement scolaire - Accueil"
+msgstr "Etablissement scolaire - Accueil"
+
+#: src/features/navigation/RootNavigator/routes.ts
 msgid "Etablissement scolaire - Sélection"
 msgstr "Etablissement scolaire - Sélection"
 
@@ -697,6 +705,10 @@ msgstr "Etablissement scolaire - Sélection"
 #: src/features/favorites/components/NoFavoritesResult.tsx
 msgid "Explorer les offres"
 msgstr "Explorer les offres"
+
+#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
+msgid "Fais-tu partie de la phase de test ?"
+msgstr "Fais-tu partie de la phase de test ?"
 
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
@@ -1542,6 +1554,7 @@ msgstr "Retourner l'accueil"
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
+#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/navigation/PageNotFound.tsx
 #: src/features/offer/pages/OfferNotFound.tsx
@@ -1713,6 +1726,10 @@ msgstr "Si tu as 18 ans, tu pourras obtenir une aide financière de"
 #: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
+
+#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
+msgid "Si tu es élève dans"
+msgstr "Si tu es élève dans"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Si tu n’arrives pas à récupérer ton code tu peux"
@@ -1987,6 +2004,10 @@ msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 
+#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
+msgid "Tu pourras ainsi nous aider à améliorer l’application."
+msgstr "Tu pourras ainsi nous aider à améliorer l’application."
+
 #: src/features/bookings/components/ArchiveBookingModal.tsx
 msgid "Tu pourras retrouver l’offre dans tes réservations teminées"
 msgstr "Tu pourras retrouver l’offre dans tes réservations teminées"
@@ -2138,6 +2159,10 @@ msgstr "Voir le détail de l’offre"
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
+#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
+msgid "Voir les établissements partenaires"
+msgstr "Voir les établissements partenaires"
+
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Voir ma réservation"
@@ -2245,6 +2270,10 @@ msgstr "dans l’année de tes 15 à 18 ans, obtiens l’aide financière pass C
 msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
 msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
 
+#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
+msgid "des académies de Rennes ou de Versailles, tu fais partie de la phase de test du pass Culture 15-17 ans."
+msgstr "des académies de Rennes ou de Versailles, tu fais partie de la phase de test du pass Culture 15-17 ans."
+
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "durée"
 msgstr "durée"
@@ -2296,6 +2325,10 @@ msgstr "intervenant"
 #: src/features/bookings/components/EndedBookingItem.tsx
 msgid "jour de fin de résa"
 msgstr "le {date}"
+
+#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
+msgid "l'un des 22 établissements de test"
+msgstr "l'un des 22 établissements de test"
 
 #: src/features/profile/components/IdCheckProcessingBadge.tsx
 msgid "last update"
@@ -2423,6 +2456,8 @@ msgid "{count, plural, one {# favori} other {# favoris}}"
 msgstr "{count, plural, one {# favori} other {# favoris}}"
 
 #: src/features/search/atoms/__tests__/NumberOfResults.native.test.tsx
+#: src/features/search/atoms/__tests__/NumberOfResults.native.test.tsx
+#: src/features/search/atoms/__tests__/NumberOfResults.web.test.tsx
 #: src/features/search/atoms/__tests__/NumberOfResults.web.test.tsx
 msgid "{count, plural, one {# résultat} other {# résultats}}"
 msgstr "{count, plural, one {# résultat} other {# résultats}}"
