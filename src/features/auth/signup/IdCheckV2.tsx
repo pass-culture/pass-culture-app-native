@@ -55,59 +55,59 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
   }
 
   const eligibilityCheckMethods = userProfileInfo?.allowedEligibilityCheckMethods
-  const resetContextValues = useCallback(() => {
+
+  const resetContextValues = useCallback(async () => {
     setIsEnteringIdCheck(false)
-    if (setContextValue) {
-      refetchSettings()
-        .then(({ data: updatedSettings }) =>
-          refetchUserProfileInfo().then(({ data: updatedUserProfileInfo }) => ({
-            updatedSettings,
-            updatedUserProfileInfo,
-          }))
-        )
-        .then(({ updatedSettings, updatedUserProfileInfo }) => {
-          const shouldUseEduConnect =
-            !!updatedSettings?.enableNativeEacIndividual &&
-            eligibilityCheckMethods?.includes(EligibilityCheckMethods.Educonnect)
-          setContextValue({
-            onAbandon,
-            onSuccess,
-            displayDmsRedirection: !!updatedSettings?.displayDmsRedirection,
-            isLicenceTokenChecked: false,
-            retention: !!updatedSettings?.enableIdCheckRetention,
-            debug: !!updatedSettings?.enableNativeIdCheckVerboseDebugging,
-            addressAutoCompletion: !!updatedSettings?.idCheckAddressAutocompletion,
-            stepsConfigs: getStepsConfigs({
-              isRetentionEnabled: !!updatedSettings?.enableIdCheckRetention,
-              isPhoneValidationEnabled: !!updatedSettings?.enablePhoneValidation,
-              isEduconnectEnabled: shouldUseEduConnect,
-            }),
-            initialStep: updatedUserProfileInfo?.nextBeneficiaryValidationStep as Step,
-            shouldUseEduConnect,
-          })
-        })
-        .catch((error) => {
-          eventMonitoring.captureException(error)
-          setContextValue({
-            onAbandon,
-            onSuccess,
-            displayDmsRedirection: !!settings?.displayDmsRedirection,
-            isLicenceTokenChecked: false,
-            retention: !!settings?.enableIdCheckRetention,
-            debug: !!settings?.enableNativeIdCheckVerboseDebugging,
-            addressAutoCompletion: !!settings?.idCheckAddressAutocompletion,
-            stepsConfigs: getStepsConfigs({
-              isRetentionEnabled: !!settings?.enableIdCheckRetention,
-              isPhoneValidationEnabled: !!settings?.enablePhoneValidation,
-            }),
-            initialStep: userProfileInfo?.nextBeneficiaryValidationStep as Step,
-          })
-        })
-        .finally(() => setIsEnteringIdCheck(true))
+    if (!setContextValue) return
+
+    try {
+      const { data: updatedSettings } = await refetchSettings()
+      const { data: updatedUserProfileInfo } = await refetchUserProfileInfo()
+
+      const shouldUseEduConnect =
+        !!updatedSettings?.enableNativeEacIndividual &&
+        eligibilityCheckMethods?.includes(EligibilityCheckMethods.Educonnect)
+
+      setContextValue({
+        onAbandon,
+        onSuccess,
+        displayDmsRedirection: !!updatedSettings?.displayDmsRedirection,
+        isLicenceTokenChecked: false,
+        retention: !!updatedSettings?.enableIdCheckRetention,
+        debug: !!updatedSettings?.enableNativeIdCheckVerboseDebugging,
+        addressAutoCompletion: !!updatedSettings?.idCheckAddressAutocompletion,
+        stepsConfigs: getStepsConfigs({
+          isRetentionEnabled: !!updatedSettings?.enableIdCheckRetention,
+          isPhoneValidationEnabled: !!updatedSettings?.enablePhoneValidation,
+          isEduconnectEnabled: shouldUseEduConnect,
+        }),
+        initialStep: updatedUserProfileInfo?.nextBeneficiaryValidationStep as Step,
+        shouldUseEduConnect,
+      })
+    } catch (error) {
+      eventMonitoring.captureException(error)
+      setContextValue({
+        onAbandon,
+        onSuccess,
+        displayDmsRedirection: !!settings?.displayDmsRedirection,
+        isLicenceTokenChecked: false,
+        retention: !!settings?.enableIdCheckRetention,
+        debug: !!settings?.enableNativeIdCheckVerboseDebugging,
+        addressAutoCompletion: !!settings?.idCheckAddressAutocompletion,
+        stepsConfigs: getStepsConfigs({
+          isRetentionEnabled: !!settings?.enableIdCheckRetention,
+          isPhoneValidationEnabled: !!settings?.enablePhoneValidation,
+        }),
+        initialStep: userProfileInfo?.nextBeneficiaryValidationStep as Step,
+      })
+    } finally {
+      setIsEnteringIdCheck(true)
     }
   }, [setContextValue])
 
-  useFocusEffect(resetContextValues)
+  useFocusEffect(() => {
+    resetContextValues()
+  })
 
   if (!isEnteringIdCheck) {
     return <LoadingPage />

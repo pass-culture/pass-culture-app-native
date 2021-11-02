@@ -52,7 +52,6 @@ export const matchSubscriptionMessageIconToSvg = (
 ) => {
   switch (iconName) {
     case undefined:
-      return undefined
     case null:
       return undefined
     case 'CLOCK':
