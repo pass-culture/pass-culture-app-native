@@ -3,6 +3,8 @@ import { LocalStorageService } from '@pass-culture/id-check'
 import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
+import { api } from 'api/api'
+import { refreshAccessToken } from 'api/apiHelpers'
 import { SigninResponse } from 'api/gen'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics, LoginRoutineMethod } from 'libs/analytics'
@@ -17,7 +19,8 @@ export interface IAuthContext {
   setIsLoggedIn: (isLoggedIn: boolean) => void
 }
 
-const connectUserToBatchAndFirebase = (accessToken: string) => {
+const connectUserToBatchAndFirebase = (accessToken: string | null) => {
+  if (!accessToken) return
   const userId = getUserIdFromAccesstoken(accessToken)
   if (userId) {
     BatchUser.editor().setIdentifier(userId.toString()).save()
@@ -41,18 +44,21 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
 
   const readTokenAndConnectUser = useCallback(async () => {
     try {
-      const accessToken = await storage.readString('access_token')
+      let accessToken = await storage.readString('access_token')
 
-      if (accessToken) {
-        const accessTokenStatus = getAccessTokenStatus(accessToken)
-        setIsLoggedIn(accessTokenStatus === 'valid')
+      if (getAccessTokenStatus(accessToken) === 'expired') {
+        // refreshAccessToken calls the backend to get a new acces token
+        // and also saves it to the storage
+        accessToken = await refreshAccessToken(api)
+      }
 
-        // TODO(antoinewg): refresh token if expired
-
+      if (getAccessTokenStatus(accessToken) === 'valid') {
+        setIsLoggedIn(true)
         connectUserToBatchAndFirebase(accessToken)
       }
     } catch (err) {
       eventMonitoring.captureException(err)
+      setIsLoggedIn(false)
     } finally {
       setLoading(false)
     }
