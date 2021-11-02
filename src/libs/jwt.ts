@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode'
 
 interface AccessToken {
   exp: number
-  fresh: false
+  fresh: number
   iat: number
   sub: string
   jti: string
@@ -25,4 +25,12 @@ export const getUserIdFromAccesstoken = (accessToken: string) => {
   const tokenContent = decodeAccessToken(accessToken)
 
   return tokenContent?.user_claims?.user_id ?? null
+}
+
+type AccessTokenStatus = 'valid' | 'expired' | 'unknown'
+
+export const getAccessTokenStatus = (accessToken: string): AccessTokenStatus => {
+  const tokenContent = decodeAccessToken(accessToken)
+  if (!tokenContent?.exp) return 'unknown'
+  return tokenContent.exp * 1000 > Date.now() ? 'valid' : 'expired'
 }

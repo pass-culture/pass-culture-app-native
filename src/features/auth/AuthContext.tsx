@@ -6,7 +6,7 @@ import { useQueryClient } from 'react-query'
 import { SigninResponse } from 'api/gen'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics, LoginRoutineMethod } from 'libs/analytics'
-import { getUserIdFromAccesstoken } from 'libs/jwt'
+import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
@@ -36,31 +36,42 @@ export function useAuthContext(): IAuthContext {
 }
 
 export const AuthWrapper = memo(function AuthWrapper({ children }: { children: JSX.Element }) {
-  const [isWaitingForLoggedInState, setIsWaitingForLoggedInState] = useState(true)
+  const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  useEffect(() => {
-    storage.readString('access_token').then((accessToken) => {
-      setIsLoggedIn(!!accessToken)
+  const readTokenAndConnectUser = useCallback(async () => {
+    try {
+      const accessToken = await storage.readString('access_token')
 
       if (accessToken) {
+        const accessTokenStatus = getAccessTokenStatus(accessToken)
+        setIsLoggedIn(accessTokenStatus === 'valid')
+
+        // TODO(antoinewg): refresh token if expired
+
         connectUserToBatchAndFirebase(accessToken)
       }
-
-      setIsWaitingForLoggedInState(false)
-    })
+    } catch (err) {
+      eventMonitoring.captureException(err)
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
+  useEffect(() => {
+    readTokenAndConnectUser()
+  }, [readTokenAndConnectUser])
+
+  const value = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn, setIsLoggedIn])
+
+  if (loading) return null
   /**
    * warning: for a better data integrity, use setIsLoggedIn only from specific places
    * where it is needed:
    * - useLogoutRoutine: when logging out
    * - useLoginRoutine: when applying the logging in (signin or emailValidation)
    */
-  if (isWaitingForLoggedInState) return null
-  return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>{children}</AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 })
 
 export function useLoginRoutine() {
