@@ -8,6 +8,7 @@ import { refreshAccessToken } from 'api/apiHelpers'
 import { SigninResponse } from 'api/gen'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics, LoginRoutineMethod } from 'libs/analytics'
+import { useAppStateChange } from 'libs/appState'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -67,6 +68,8 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   useEffect(() => {
     readTokenAndConnectUser()
   }, [readTokenAndConnectUser])
+
+  useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
 
   const value = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn, setIsLoggedIn])
 
