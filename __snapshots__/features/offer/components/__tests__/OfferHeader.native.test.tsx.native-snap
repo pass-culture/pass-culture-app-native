@@ -528,7 +528,6 @@ Array [
             },
           ],
           "width": "100%",
-          "zIndex": 25,
         }
       }
       supportedOrientations={
