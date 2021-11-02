@@ -7,11 +7,10 @@ import React, {
   useState,
   memo,
 } from 'react'
-import { useWindowDimensions } from 'react-native'
 import { TouchableOpacity, View, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { ProgressBar } from 'ui/components/snackBar/ProgressBar'
 import { Close } from 'ui/svg/icons/Close'
@@ -44,9 +43,6 @@ export type SnackBarProps = {
 const _SnackBar = (props: SnackBarProps) => {
   const Icon = props.icon
   const animationDuration = props.animationDuration || 500
-
-  const theme = useTheme()
-  const windowWidth = useWindowDimensions().width
 
   const containerRef: RefType = useRef(null)
   const progressBarContainerRef: RefType = useRef(null)
@@ -105,7 +101,6 @@ const _SnackBar = (props: SnackBarProps) => {
 
   return (
     <RootContainer>
-      {theme.isDesktop && renderProgressBar()}
       <ColoredAnimatableView
         testID="snackbar-view"
         backgroundColor={props.backgroundColor}
@@ -115,7 +110,7 @@ const _SnackBar = (props: SnackBarProps) => {
         <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
           {!!Icon && <Icon testID="snackbar-icon" size={32} color={props.color} />}
           <Spacer.Flex flex={1}>
-            <Text windowWidth={windowWidth} testID="snackbar-message" color={props.color}>
+            <Text testID="snackbar-message" color={props.color}>
               {props.message}
             </Text>
           </Spacer.Flex>
@@ -126,19 +121,24 @@ const _SnackBar = (props: SnackBarProps) => {
             <Close size={28} color={props.color} />
           </TouchableOpacity>
         </SnackBarContainer>
+        {renderProgressBar()}
       </ColoredAnimatableView>
-      {!theme.isDesktop && renderProgressBar()}
     </RootContainer>
   )
 }
 
 export const SnackBar = memo(_SnackBar)
 
+/* 
+  Display rules : 
+  - On mobile : at the very top of the screen, with a full width 
+  - On tablet or desktop : below top menu on the right side of the screen, with a max width
+*/
 const RootContainer = styled(View)(({ theme }) => ({
+  maxWidth: theme.isMobile ? '100%' : getSpacing(100),
   position: 'absolute',
-  top: theme.isDesktop ? 'auto' : 0,
-  bottom: theme.isDesktop ? 0 : 'auto',
-  left: 0,
+  top: theme.isMobile ? 0 : theme.navTopHeight,
+  left: theme.isMobile ? 0 : 'auto',
   right: 0,
   zIndex: ZIndex.SNACKBAR,
 }))
@@ -160,10 +160,9 @@ const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>
   })
 )
 
-const Text = styled(Typo.Body)<{ color: string; windowWidth: number }>((props) => ({
+const Text = styled(Typo.Body)<{ color: string }>((props) => ({
   color: props.color,
   marginLeft: getSpacing(3),
   flexGrow: 0,
-  maxWidth: props.windowWidth - getSpacing(20),
   flexWrap: 'wrap',
 }))
