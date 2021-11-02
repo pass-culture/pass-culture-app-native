@@ -114,36 +114,35 @@ export function useIdCheckLogoutRoutine() {
 }
 
 export function useLogoutRoutine(): () => Promise<void> {
+  const queryClient = useQueryClient()
   const { setIsLoggedIn } = useAuthContext()
-  const { clean: cleanProfile } = useCustomQueryClientHelpers(QueryKeys.USER_PROFILE)
-  const { clean: cleanFavorites } = useCustomQueryClientHelpers(QueryKeys.FAVORITES)
 
   return useCallback(async () => {
     try {
       BatchUser.editor().setIdentifier(null).save()
       analytics.logLogout()
+      LoggedInQueryKeys.forEach((queryKey) => {
+        queryClient.removeQueries(queryKey)
+      })
       await storage.clear('access_token')
       await clearRefreshToken()
-      await cleanProfile()
-      await cleanFavorites()
     } catch (err) {
       eventMonitoring.captureException(err)
     } finally {
       setIsLoggedIn(false)
     }
-  }, [setIsLoggedIn, cleanProfile, cleanFavorites])
+  }, [setIsLoggedIn])
 }
 
-/**
- * Returns helpers to play with inner react-query methods
- */
-export function useCustomQueryClientHelpers(queryKey: QueryKeys) {
-  const queryClient = useQueryClient()
-  return useMemo(
-    () => ({
-      clean: async () => await queryClient.removeQueries(queryKey),
-      // add your helper function that uses queryKey
-    }),
-    [queryClient]
-  )
-}
+// List of keys that are accessible only when logged in
+// To clean when logging out
+const LoggedInQueryKeys: QueryKeys[] = [
+  QueryKeys.BOOKINGS,
+  QueryKeys.FAVORITES,
+  QueryKeys.ID_CHECK_TOKEN,
+  QueryKeys.RECOMMENDATION_HITS,
+  QueryKeys.RECOMMENDATION_OFFER_IDS,
+  QueryKeys.REPORTED_OFFERS,
+  QueryKeys.REPORT_OFFER_REASONS,
+  QueryKeys.USER_PROFILE,
+]
