@@ -7,6 +7,7 @@ import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigat
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
+import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 
 import Package from '../../package.json'
@@ -77,10 +78,11 @@ export const safeFetch = async (
   const tokenContent = decodeAccessToken(token)
 
   if (!tokenContent) {
-    return Promise.reject(navigateToLogin())
+    navigateToLogin()
   }
 
-  if (tokenContent.exp * 1000 <= new Date().getTime()) {
+  // If the token is expired, we refresh it before calling the backend
+  if (tokenContent && tokenContent.exp * 1000 <= new Date().getTime()) {
     try {
       const newAccessToken = await refreshAccessToken(api)
 
@@ -92,7 +94,11 @@ export const safeFetch = async (
         },
       }
     } catch (error) {
-      return Promise.reject(navigateToLogin())
+      eventMonitoring.captureException(error)
+      // Here we are supposed to be logged-in (calling an authenticated endpoint)
+      // But the access token is expired and cannot be refreshed.
+      // In this case, we cleared the access token and we need to login again
+      navigateToLogin()
     }
   }
 
