@@ -67,7 +67,9 @@ const Container = styled.ScrollView(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.white,
   flexDirection: 'column',
+  alignSelf: 'center',
   padding: getSpacing(5),
+  maxWidth: getSpacing(125),
 }))
 
 const TitleContainer = styled(Typo.Title1)({
