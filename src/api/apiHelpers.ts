@@ -20,12 +20,10 @@ export function navigateToLogin() {
 }
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
+  if (options && options.credentials === 'omit') return {}
+
   const accessToken = await storage.readString('access_token')
-  const shouldAuthenticate = accessToken && (!options || options.credentials !== 'omit')
-  if (shouldAuthenticate) {
-    return { Authorization: `Bearer ${accessToken}` }
-  }
-  return {}
+  return accessToken ? { Authorization: `Bearer ${accessToken}` } : {}
 }
 
 // HOT FIX waiting for a better strategy
