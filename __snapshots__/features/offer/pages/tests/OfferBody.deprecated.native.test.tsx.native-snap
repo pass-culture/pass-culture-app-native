@@ -1981,7 +1981,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   },
                                 ],
                                 "width": "100%",
-                                "zIndex": 25,
                               }
                             }
                             supportedOrientations={
@@ -4694,7 +4693,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   },
                                 ],
                                 "width": "100%",
-                                "zIndex": 25,
                               }
                             }
                             supportedOrientations={

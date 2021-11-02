@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { getSpacing, UniqueColors } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
@@ -143,6 +142,5 @@ const StyledModal = styled(RNModal)<{ maxWidth: number; height: number }>(
     borderTopStartRadius: getSpacing(4),
     borderTopEndRadius: getSpacing(4),
     padding: getSpacing(6),
-    zIndex: ZIndex.APP_MODAL,
   })
 )

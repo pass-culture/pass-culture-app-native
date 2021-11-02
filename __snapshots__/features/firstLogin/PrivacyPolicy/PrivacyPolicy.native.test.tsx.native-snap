@@ -98,7 +98,6 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
           },
         ],
         "width": "100%",
-        "zIndex": 25,
       }
     }
     supportedOrientations={

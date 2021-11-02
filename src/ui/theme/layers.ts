@@ -8,6 +8,6 @@ export enum ZIndex {
   PROGRESSBAR_ICON = 2,
   TABBAR = 2,
   HEADER_NAV = 2,
-  APP_MODAL = 25,
   SNACKBAR = 50,
+  // !!! Important !!! Whatever you do, you will never get something above a react-native modal
 }
