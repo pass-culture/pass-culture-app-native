@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 
-import { useValidateEmail } from './useValidateEmail'
+import { useIsCurrentUserEmail, useValidateEmail } from './useValidateEmail'
 
 const currentUserEmail = 'current@gmail.com'
 const newUserEmail = 'new@gmail.com'
@@ -26,5 +26,17 @@ describe('useValidateEmail function', () => {
   it('should return an error message if the new email is the same than the new one ', () => {
     const { result } = renderHook(() => useValidateEmail(currentUserEmail))
     expect(result.current).toEqual("L'e-mail saisi est identique à votre e-mail actuel")
+  })
+})
+
+describe('useIsCurrentUserEmail function', () => {
+  it('should return true if the current user email is the same than the new one', () => {
+    const { result: isCurrentUserEmail } = renderHook(() => useIsCurrentUserEmail(currentUserEmail))
+    expect(isCurrentUserEmail.current).toEqual(true)
+  })
+
+  it('should return false if the current user email is different than the new one', () => {
+    const { result: isCurrentUserEmail } = renderHook(() => useIsCurrentUserEmail(newUserEmail))
+    expect(isCurrentUserEmail.current).toEqual(false)
   })
 })

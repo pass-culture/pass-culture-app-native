@@ -1,7 +1,13 @@
 import { t } from '@lingui/macro'
 import { useEffect, useState } from 'react'
 
-import { isEmailValid, useIsCurrentUserEmail } from 'ui/components/inputs/emailCheck'
+import { useUserProfileInfo } from 'features/home/api'
+import { isEmailValid } from 'ui/components/inputs/emailCheck'
+
+export const useIsCurrentUserEmail = (email: string): boolean => {
+  const { data: user } = useUserProfileInfo()
+  return email === user?.email
+}
 
 export function useValidateEmail(email: string) {
   const [emailErrorMessage, setEmailErrorMessage] = useState<string | null>(null)
