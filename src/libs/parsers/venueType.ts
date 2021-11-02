@@ -53,14 +53,14 @@ export const parseType = (types: VenueTypeCodeKey | null | undefined): string =>
 // Map the facetFilter (in search backend) to the label displayed for home page in the front
 const MAP_TYPE_TO_HOME_LABEL: { [k in VenueTypeCodeKey]: string } = {
   ARTISTIC_COURSE: t`Pratique artistiques`,
-  BOOKSTORE: t`Bibliothèque / médiathèque`,
+  BOOKSTORE: t`Librairie`,
   CONCERT_HALL: t`Salle de concerts`,
   CREATIVE_ARTS_STORE: t`Magasin d’arts créatifs`,
   CULTURAL_CENTRE: t`Centre culturel`,
   DIGITAL: t`Offre numérique`,
   FESTIVAL: t`Festival`,
   GAMES: t`Jeux`,
-  LIBRARY: t`Librairie`,
+  LIBRARY: t`Bibliothèque / médiathèque`,
   MUSEUM: t`Musée`,
   MUSICAL_INSTRUMENT_STORE: t`Magasin d’instruments`,
   MOVIE: t`Salle de projections`,
