@@ -105,12 +105,10 @@ export function useLoginRoutine() {
   return loginRoutine
 }
 
-export function useIdCheckLogoutRoutine() {
-  return useCallback(() => {
-    LocalStorageService.resetCurrentUser()
-    LocalStorageService.resetProfile()
-    LocalStorageService.resetLicenceToken()
-  }, [])
+export function signOutFromIdCheck() {
+  LocalStorageService.resetCurrentUser()
+  LocalStorageService.resetProfile()
+  LocalStorageService.resetLicenceToken()
 }
 
 export function useLogoutRoutine(): () => Promise<void> {
