@@ -42,6 +42,16 @@ const NotAuthenticatedCalls = [
   'native/v1/venue',
 ]
 
+// At the moment, we can't Promise.reject inside of safeFetch and expect
+// the wrapping AsyncBoundary to catch it. As a result, we resolve a fake
+// response that we then catch to redirect to the login page.
+// this happens when there is a problem retrieving or refreshing
+// the access token.
+const NeedsAuthenticationResponse = {
+  status: 401,
+  statusText: 'NeedsAuthenticationResponse',
+} as Response
+
 /**
  * For each http calls to the api, retrieves the access token and fetchs.
  * Ignores native/v1/refresh_access_token.
@@ -78,7 +88,7 @@ export const safeFetch = async (
   const tokenContent = decodeAccessToken(token)
 
   if (!tokenContent) {
-    navigateToLogin()
+    return Promise.resolve(NeedsAuthenticationResponse)
   }
 
   // If the token is expired, we refresh it before calling the backend
@@ -94,11 +104,10 @@ export const safeFetch = async (
         },
       }
     } catch (error) {
-      eventMonitoring.captureException(error)
       // Here we are supposed to be logged-in (calling an authenticated endpoint)
       // But the access token is expired and cannot be refreshed.
       // In this case, we cleared the access token and we need to login again
-      navigateToLogin()
+      return Promise.resolve(NeedsAuthenticationResponse)
     }
   }
 
@@ -142,6 +151,15 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   if (response.status === 204) {
     return {}
   }
+
+  // We are not suppose to have side-effects in this function but this is a special case
+  // where the access token is corrupted and we need to recreate it by logging-in again
+  if (response.status === 401 && response.statusText === 'NeedsAuthenticationResponse') {
+    eventMonitoring.captureException('NeedsAuthenticationResponse')
+    navigateToLogin()
+    return {}
+  }
+
   const responseBody = await response.json()
 
   if (!response.ok) {
