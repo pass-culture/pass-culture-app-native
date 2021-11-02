@@ -186,6 +186,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_MORE_CLICKED, { venueId }),
   logChooseLocation: (params: { type: 'place' } | { type: 'venue'; venueId: number }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_LOCATION, params),
+  logSelectSchool: (params: { name: string; city: string; academy: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SELECT_SCHOOL, params),
   useInit,
 }
 

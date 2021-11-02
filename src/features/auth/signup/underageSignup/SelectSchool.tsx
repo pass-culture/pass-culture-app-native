@@ -8,6 +8,7 @@ import { eligibleSchools, School } from 'features/auth/signup/underageSignup/eli
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
+import { analytics } from 'libs/analytics'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -22,7 +23,11 @@ type SelectSchoolProps = StackScreenProps<RootStackParamList, 'SelectSchool'>
 export const SelectSchool: React.FC<SelectSchoolProps> = ({
   route: { params: { nextBeneficiaryValidationStep } = {} },
 }) => {
-  const [selectedSchool, setSelectedSchool] = useState('')
+  const [selectedSchool, setSelectedSchool] = useState({
+    name: '',
+    city: '',
+    academy: '',
+  })
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   useSetIdCheckNavigationContext()
 
@@ -32,20 +37,29 @@ export const SelectSchool: React.FC<SelectSchoolProps> = ({
     throw error
   }
 
-  const renderItem = (item: School) => (
-    <React.Fragment key={item.name}>
-      <Spacer.Column numberOfSpaces={4} />
-      <RadioButton
-        id={item.name}
-        title={item.name}
-        description={item.city}
-        onSelect={setSelectedSchool}
-        selectedValue={selectedSchool}
-      />
-      <Spacer.Column numberOfSpaces={4} />
-      <Separator />
-    </React.Fragment>
-  )
+  const renderItem = (item: School, academy: string) => {
+    return (
+      <React.Fragment key={item.name}>
+        <Spacer.Column numberOfSpaces={4} />
+        <RadioButton
+          id={item.name}
+          title={item.name}
+          description={item.city}
+          onSelect={() => setSelectedSchool({ ...item, academy })}
+          selectedValue={selectedSchool.name}
+        />
+        <Spacer.Column numberOfSpaces={4} />
+        <Separator />
+      </React.Fragment>
+    )
+  }
+
+  const onPressContinue = () => {
+    analytics.logSelectSchool(selectedSchool)
+    navigateToNextBeneficiaryValidationStep({
+      nextBeneficiaryValidationStep,
+    })
+  }
 
   return (
     <React.Fragment>
@@ -58,7 +72,7 @@ export const SelectSchool: React.FC<SelectSchoolProps> = ({
           <React.Fragment key={academy}>
             <Divider />
             <AccordionItem title={t`Académie de` + '\u00a0' + academy}>
-              {eligibleSchools[academy].map(renderItem)}
+              {eligibleSchools[academy].map((item) => renderItem(item, academy))}
             </AccordionItem>
           </React.Fragment>
         ))}
@@ -66,12 +80,8 @@ export const SelectSchool: React.FC<SelectSchoolProps> = ({
       <BottomContainer>
         <ButtonPrimary
           title={t`Continuer`}
-          disabled={!selectedSchool}
-          onPress={() =>
-            navigateToNextBeneficiaryValidationStep({
-              nextBeneficiaryValidationStep,
-            })
-          }
+          disabled={!selectedSchool.name}
+          onPress={onPressContinue}
         />
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryBlack
