@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/core'
 import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { BeneficiaryValidationStep, SubscriptionMessage } from 'api/gen'
 import { useDepositAmount } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
@@ -25,10 +27,20 @@ interface NonBeneficiaryHeaderProps {
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const today = new Date()
   const depositAmount = useDepositAmount()
+  const { navigate } = useNavigation<UseNavigationType>()
+
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   const isUserUnderage = useIsUserUnderage()
   const prefetchedInfo = {
     nextBeneficiaryValidationStep: props.nextBeneficiaryValidationStep ?? null,
+  }
+
+  function onBannerPress() {
+    if (!isUserUnderage) {
+      navigateToNextBeneficiaryValidationStep(prefetchedInfo)
+      return
+    }
+    navigate('SelectSchoolHome', prefetchedInfo)
   }
 
   if (error) {
@@ -69,11 +81,11 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
           </Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
           <ModuleBanner
-            onPress={() => navigateToNextBeneficiaryValidationStep(prefetchedInfo)}
+            onPress={onBannerPress}
             leftIcon={<ThumbUp size={68} />}
             title={moduleBannerWording}
             subTitle={t`à dépenser dans l'application`}
-            testID="18-banner"
+            testID="eligibility-banner"
           />
         </BodyContainer>
       )

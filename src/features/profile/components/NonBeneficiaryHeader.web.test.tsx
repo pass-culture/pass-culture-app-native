@@ -1,12 +1,32 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
+import { mocked } from 'ts-jest/utils'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { BeneficiaryValidationStep, GetIdCheckTokenResponse } from 'api/gen'
-import { flushAllPromises, fireEvent, render } from 'tests/utils/web'
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { useIsUserUnderage } from 'features/profile/utils'
+import { flushAllPromises, render, fireEvent } from 'tests/utils/web'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
+
+const mockedNavigate = jest.fn()
+jest.mock('@react-navigation/core', () => {
+  const actualNav = jest.requireActual('@react-navigation/core')
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: mockedNavigate,
+    }),
+  }
+})
+
+jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+
+jest.mock('features/profile/utils')
+const mockedUseIsUserUnderage = mocked(useIsUserUnderage, true)
 
 jest.mock('features/auth/api', () => ({
   useGetIdCheckToken: jest.fn(
@@ -39,7 +59,8 @@ jest.mock('features/home/api', () => ({
 }))
 
 describe('NonBeneficiaryHeader  ', () => {
-  afterAll(() => mockdate.reset())
+  afterEach(jest.clearAllMocks)
+  afterAll(mockdate.reset)
 
   it('should render the right body for user under 18 years old', () => {
     const today = '2021-01-30T00:00:00Z'
@@ -66,11 +87,13 @@ describe('NonBeneficiaryHeader  ', () => {
       />
     )
 
-    const banner = getByTestId('18-banner')
+    const banner = getByTestId('eligibility-banner')
     fireEvent.click(banner)
 
     await flushAllPromises()
-    expect(navigate).toBeCalledWith('SetPhoneNumber')
+    expect(navigateToNextBeneficiaryValidationStep).toBeCalledWith({
+      nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
+    })
   })
 
   it('should render the right body for 18 years old users if user has not completed idcheck', async () => {
@@ -86,23 +109,32 @@ describe('NonBeneficiaryHeader  ', () => {
 
     getByTestId('body-container-18')
   })
-  it('should render the right body for 18 years old users if user has completed idcheck', async () => {
+
+  it('should navigate to SelectSchoolHome for 15-17 years old users if user has not completed idcheck', async () => {
+    mockedUseIsUserUnderage.mockReturnValueOnce(true)
     const today = '2021-02-30T00:00:00Z'
     mockdate.set(new Date(today))
-    const { getByTestId, queryByTestId } = render(
+    const { getByTestId } = render(
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
-        nextBeneficiaryValidationStep={null}
+        nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
       />
     )
 
-    getByTestId('body-container-18-idcheck-completed')
-    const container = queryByTestId('body-container')
-    expect(container).toBeNull()
+    const banner = getByTestId('eligibility-banner')
+    fireEvent.click(banner)
+
+    await flushAllPromises()
+    expect(mockedNavigate).toBeCalledWith('SelectSchoolHome', {
+      nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
+    })
   })
 
-  it('should render the right body for 18 years old users if user has completed idcheck', async () => {
+  // FIXME: find how to suppress warnings:
+  //  1. Use PascalCase for React components, or lowercase for HTML elements.%s", "matchSubscriptionMessageIconToSvg"
+  //  2. If you meant to render a React component, start its name with an uppercase letter.%s", "matchSubscriptionMessageIconToSvg"
+  it.skip('should render the right body for 18 years old users if user has completed idcheck', async () => {
     const today = '2021-02-30T00:00:00Z'
     mockdate.set(new Date(today))
     const { queryByTestId } = render(
@@ -139,5 +171,29 @@ describe('NonBeneficiaryHeader  ', () => {
       />
     )
     expect(queryByText(/Profite de 300€/)).toBeTruthy()
+  })
+  it('should display correct credit message for underage', () => {
+    mockedUseIsUserUnderage.mockReturnValueOnce(true)
+    const { queryByText } = render(
+      <NonBeneficiaryHeader
+        eligibilityStartDatetime="2021-02-30T00:00Z"
+        eligibilityEndDatetime="2022-02-30T00:00Z"
+        nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
+      />
+    )
+    expect(queryByText(/Profite de 300€/)).toBeFalsy()
+    expect(queryByText(/Profite de ton crédit/)).toBeTruthy()
+  })
+  it('should display correct credit message for underage with no next step available', () => {
+    mockedUseIsUserUnderage.mockReturnValueOnce(true)
+    const { queryByText } = render(
+      <NonBeneficiaryHeader
+        eligibilityStartDatetime="2021-02-30T00:00Z"
+        eligibilityEndDatetime="2022-02-30T00:00Z"
+        nextBeneficiaryValidationStep={null}
+      />
+    )
+    expect(queryByText(/Profite de 300€/)).toBeFalsy()
+    expect(queryByText(/Profite de ton crédit/)).toBeTruthy()
   })
 })

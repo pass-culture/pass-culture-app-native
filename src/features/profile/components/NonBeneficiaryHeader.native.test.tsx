@@ -6,9 +6,20 @@ import { mocked } from 'ts-jest/utils'
 import { BeneficiaryValidationStep, GetIdCheckTokenResponse } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useIsUserUnderage } from 'features/profile/utils'
-import { flushAllPromises, render } from 'tests/utils'
+import { flushAllPromises, render, fireEvent } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
+
+const mockedNavigate = jest.fn()
+jest.mock('@react-navigation/core', () => {
+  const actualNav = jest.requireActual('@react-navigation/core')
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: mockedNavigate,
+    }),
+  }
+})
 
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -48,7 +59,8 @@ jest.mock('features/home/api', () => ({
 }))
 
 describe('NonBeneficiaryHeader  ', () => {
-  afterAll(() => mockdate.reset())
+  afterEach(jest.clearAllMocks)
+  afterAll(mockdate.reset)
 
   it('should render the right body for user under 18 years old', () => {
     const today = '2021-01-30T00:00:00Z'
@@ -75,8 +87,8 @@ describe('NonBeneficiaryHeader  ', () => {
       />
     )
 
-    const banner = getByTestId('18-banner')
-    banner.props.onClick()
+    const banner = getByTestId('eligibility-banner')
+    fireEvent.press(banner)
 
     await flushAllPromises()
     expect(navigateToNextBeneficiaryValidationStep).toBeCalledWith({
@@ -98,20 +110,25 @@ describe('NonBeneficiaryHeader  ', () => {
     getByTestId('body-container-18')
   })
 
-  it('should render the right body for 18 years old users if user has completed idcheck', async () => {
+  it('should navigate to SelectSchoolHome for 15-17 years old users if user has not completed idcheck', async () => {
+    mockedUseIsUserUnderage.mockReturnValueOnce(true)
     const today = '2021-02-30T00:00:00Z'
     mockdate.set(new Date(today))
-    const { getByTestId, queryByTestId } = render(
+    const { getByTestId } = render(
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
-        nextBeneficiaryValidationStep={null}
+        nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
       />
     )
 
-    getByTestId('body-container-18-idcheck-completed')
-    const container = queryByTestId('body-container')
-    expect(container).toBeNull()
+    const banner = getByTestId('eligibility-banner')
+    fireEvent.press(banner)
+
+    await flushAllPromises()
+    expect(mockedNavigate).toBeCalledWith('SelectSchoolHome', {
+      nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
+    })
   })
 
   it('should render the right body for 18 years old users if user has completed idcheck', async () => {
