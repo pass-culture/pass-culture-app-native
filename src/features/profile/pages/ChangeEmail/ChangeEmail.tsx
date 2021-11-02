@@ -49,7 +49,7 @@ export function ChangeEmail() {
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const disabled = !isLongEnough(password) || (!!emailErrorMessage && email.length > 0) || isLoading
+  const disabled = !isLongEnough(password) || !!emailErrorMessage || isLoading
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
