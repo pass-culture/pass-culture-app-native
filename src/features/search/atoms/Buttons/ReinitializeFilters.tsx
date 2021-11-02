@@ -4,6 +4,7 @@ import { TouchableOpacity } from 'react-native'
 
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/analytics'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ColorsEnum, Typo } from 'ui/theme'
@@ -14,9 +15,15 @@ export const ReinitializeFilters = () => {
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters()
   })
-
+  const maxPrice = useMaxPrice()
   const reinitializeFilters = () => {
     dispatch({ type: 'INIT' })
+    dispatch({
+      type: 'SET_STATE',
+      payload: {
+        priceRange: [0, maxPrice],
+      },
+    })
     logReinitializeFilters()
   }
 
