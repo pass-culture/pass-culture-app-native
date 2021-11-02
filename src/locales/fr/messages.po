@@ -2327,8 +2327,8 @@ msgid "jour de fin de résa"
 msgstr "le {date}"
 
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
-msgid "l'un des 22 établissements de test"
-msgstr "l'un des 22 établissements de test"
+msgid "l'un des 21 établissements de test"
+msgstr "l'un des 21 établissements de test"
 
 #: src/features/profile/components/IdCheckProcessingBadge.tsx
 msgid "last update"
