@@ -13,8 +13,6 @@ export const signOutFromIdCheck = jest.fn()
 
 export const useLogoutRoutine = jest.fn(() => signOut)
 
-export const useIdCheckLogoutRoutine = jest.fn(() => signOutFromIdCheck)
-
 export const loginRoutine = jest.fn()
 
 export const useLoginRoutine = jest.fn(() => loginRoutine)

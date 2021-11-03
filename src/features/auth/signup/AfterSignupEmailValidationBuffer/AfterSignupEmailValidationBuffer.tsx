@@ -4,15 +4,14 @@ import React, { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { ValidateEmailResponse } from 'api/gen'
+import { useLoginRoutine } from 'features/auth/AuthContext'
+import { useValidateEmailMutation } from 'features/auth/mutations'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { isUserUnderage } from 'features/profile/utils'
 import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-
-import { useLoginRoutine } from '../../AuthContext'
-import { useValidateEmailMutation } from '../../mutations'
 
 export function AfterSignupEmailValidationBuffer() {
   const { showInfoSnackBar } = useSnackBarContext()
@@ -44,25 +43,16 @@ export function AfterSignupEmailValidationBuffer() {
     })
   }
 
-  async function onEmailValidationSuccess(response: ValidateEmailResponse) {
-    await loginRoutine(
-      { accessToken: response.accessToken, refreshToken: response.refreshToken },
-      'fromSignup'
-    )
+  async function onEmailValidationSuccess({ accessToken, refreshToken }: ValidateEmailResponse) {
+    await loginRoutine({ accessToken, refreshToken }, 'fromSignup')
+
     try {
       const user = await api.getnativev1me()
 
-      if (user?.nextBeneficiaryValidationStep) {
-        const isUnderage = isUserUnderage(user)
-        if (isUnderage) {
-          delayedNavigate('SelectSchoolHome', {
-            nextBeneficiaryValidationStep: user.nextBeneficiaryValidationStep,
-          })
-        } else {
-          delayedNavigate('VerifyEligibility', {
-            nextBeneficiaryValidationStep: user.nextBeneficiaryValidationStep,
-          })
-        }
+      const { nextBeneficiaryValidationStep } = user
+      if (nextBeneficiaryValidationStep) {
+        const nextScreen = isUserUnderage(user) ? 'SelectSchoolHome' : 'VerifyEligibility'
+        delayedNavigate(nextScreen, { nextBeneficiaryValidationStep })
       } else {
         delayedNavigate('AccountCreated')
       }
@@ -72,9 +62,7 @@ export function AfterSignupEmailValidationBuffer() {
   }
 
   function onEmailValidationFailure() {
-    showInfoSnackBar({
-      message: t`Ce lien de validation n'est plus valide`,
-    })
+    showInfoSnackBar({ message: t`Ce lien de validation n'est plus valide` })
     delayedNavigate(...homeNavConfig)
   }
 

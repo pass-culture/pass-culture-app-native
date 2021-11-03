@@ -35,11 +35,14 @@ export function useHomepageModules(entryId?: string) {
   return entry ? processHomepageEntry(entry) : []
 }
 
+const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
+
 export function useUserProfileInfo(options = {}) {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<UserProfileResponse>(QueryKeys.USER_PROFILE, () => api.getnativev1me(), {
     enabled: isLoggedIn,
+    staleTime: STALE_TIME_USER_PROFILE,
     ...options,
   })
 }

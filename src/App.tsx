@@ -54,7 +54,10 @@ if (__DEV__ && process.env.JEST !== 'true') {
 reactQueryFocusManager.setEventListener((handleFocus) => {
   function triggerReactQueryFocusOnBecomeActive(appState: AppStateStatus) {
     if (appState === 'active') {
-      handleFocus()
+      // When we open the app that was in the background, for logged in user, we refresh the access_token
+      // if it is expired. /refresh_access_token takes 300ms in average, so we delay the
+      // refetching of all cached queries by a slightly larger time
+      setTimeout(handleFocus, 500)
     }
   }
   AppState.addEventListener('change', triggerReactQueryFocusOnBecomeActive)

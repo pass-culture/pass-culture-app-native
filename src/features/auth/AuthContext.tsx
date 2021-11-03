@@ -8,6 +8,7 @@ import { refreshAccessToken } from 'api/apiHelpers'
 import { SigninResponse } from 'api/gen'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics, LoginRoutineMethod } from 'libs/analytics'
+import { useAppStateChange } from 'libs/appState'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -68,6 +69,8 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
     readTokenAndConnectUser()
   }, [readTokenAndConnectUser])
 
+  useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
+
   const value = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn, setIsLoggedIn])
 
   if (loading) return null
@@ -102,45 +105,42 @@ export function useLoginRoutine() {
   return loginRoutine
 }
 
-export function useIdCheckLogoutRoutine() {
-  return useCallback(() => {
-    LocalStorageService.resetCurrentUser()
-    LocalStorageService.resetProfile()
-    LocalStorageService.resetLicenceToken()
-  }, [])
+export function signOutFromIdCheck() {
+  LocalStorageService.resetCurrentUser()
+  LocalStorageService.resetProfile()
+  LocalStorageService.resetLicenceToken()
 }
 
 export function useLogoutRoutine(): () => Promise<void> {
+  const queryClient = useQueryClient()
   const { setIsLoggedIn } = useAuthContext()
-  const { clean: cleanProfile } = useCustomQueryClientHelpers(QueryKeys.USER_PROFILE)
-  const { clean: cleanFavorites } = useCustomQueryClientHelpers(QueryKeys.FAVORITES)
 
   return useCallback(async () => {
     try {
       BatchUser.editor().setIdentifier(null).save()
       analytics.logLogout()
+      LoggedInQueryKeys.forEach((queryKey) => {
+        queryClient.removeQueries(queryKey)
+      })
       await storage.clear('access_token')
       await clearRefreshToken()
-      await cleanProfile()
-      await cleanFavorites()
     } catch (err) {
       eventMonitoring.captureException(err)
     } finally {
       setIsLoggedIn(false)
     }
-  }, [setIsLoggedIn, cleanProfile, cleanFavorites])
+  }, [setIsLoggedIn])
 }
 
-/**
- * Returns helpers to play with inner react-query methods
- */
-export function useCustomQueryClientHelpers(queryKey: QueryKeys) {
-  const queryClient = useQueryClient()
-  return useMemo(
-    () => ({
-      clean: async () => await queryClient.removeQueries(queryKey),
-      // add your helper function that uses queryKey
-    }),
-    [queryClient]
-  )
-}
+// List of keys that are accessible only when logged in
+// To clean when logging out
+const LoggedInQueryKeys: QueryKeys[] = [
+  QueryKeys.BOOKINGS,
+  QueryKeys.FAVORITES,
+  QueryKeys.ID_CHECK_TOKEN,
+  QueryKeys.RECOMMENDATION_HITS,
+  QueryKeys.RECOMMENDATION_OFFER_IDS,
+  QueryKeys.REPORTED_OFFERS,
+  QueryKeys.REPORT_OFFER_REASONS,
+  QueryKeys.USER_PROFILE,
+]
