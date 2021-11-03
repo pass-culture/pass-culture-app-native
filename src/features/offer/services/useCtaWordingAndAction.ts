@@ -85,7 +85,8 @@ export const getCtaWordingAndAction = ({
 
   if (!subcategory.isEvent) {
     if (!hasEnoughCredit) {
-      if (offer.isDigital) return { wording: t`Crédit numérique insuffisant` }
+      if (offer.isDigital && !isUnderageBeneficiary)
+        return { wording: t`Crédit numérique insuffisant` }
       return { wording: t`Crédit insuffisant` }
     }
 

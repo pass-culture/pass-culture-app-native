@@ -147,17 +147,18 @@ describe('getCtaWordingAndAction', () => {
 
     // offer price is 5
     it.each`
-      hasEnoughCredit | isDigital | expected                          | disabled
-      ${false}        | ${true}   | ${'Crédit numérique insuffisant'} | ${true}
-      ${true}         | ${true}   | ${'Réserver'}                     | ${false}
-      ${false}        | ${false}  | ${'Crédit insuffisant'}           | ${true}
-      ${true}         | ${false}  | ${'Réserver'}                     | ${false}
+      hasEnoughCredit | isDigital | expected                          | disabled | isUnderageBeneficiary
+      ${false}        | ${true}   | ${'Crédit numérique insuffisant'} | ${true}  | ${false}
+      ${true}         | ${true}   | ${'Réserver'}                     | ${false} | ${false}
+      ${false}        | ${false}  | ${'Crédit insuffisant'}           | ${true}  | ${false}
+      ${false}        | ${false}  | ${'Crédit insuffisant'}           | ${true}  | ${true}
+      ${true}         | ${false}  | ${'Réserver'}                     | ${false} | ${false}
     `(
       'check is credit is enough | non event x $isDigital => $expected',
-      ({ disabled, expected, hasEnoughCredit, isDigital }) => {
+      ({ disabled, expected, hasEnoughCredit, isDigital, isUnderageBeneficiary }) => {
         const { wording, onPress } = getCta(
           { isDigital },
-          { hasEnoughCredit, isUnderageBeneficiary: false },
+          { hasEnoughCredit, isUnderageBeneficiary },
           { isEvent: false }
         )
         expect(wording).toEqual(expected)
