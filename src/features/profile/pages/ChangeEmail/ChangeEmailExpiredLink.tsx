@@ -10,5 +10,15 @@ export function ChangeEmailExpiredLink() {
   // TODO (LucasBeneston): use isFetching from useQuery()
   const isFetching = false
 
-  return <LayoutExpiredLink resetQuery={changeEmailExpiredLink} isFetching={isFetching} />
+  const contactSupport = () => {
+    // TODO (PC-11602): Add contactSupport + analytics
+  }
+
+  return (
+    <LayoutExpiredLink
+      resetQuery={changeEmailExpiredLink}
+      isFetching={isFetching}
+      contactSupport={contactSupport}
+    />
+  )
 }
