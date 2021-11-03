@@ -16,8 +16,8 @@ export function ChangeEmailExpiredLink() {
 
   return (
     <LayoutExpiredLink
-      resetQuery={changeEmailExpiredLink}
-      isFetching={isFetching}
+      onResendEmail={changeEmailExpiredLink}
+      disabledResendEmailButton={isFetching}
       contactSupport={contactSupport}
     />
   )
