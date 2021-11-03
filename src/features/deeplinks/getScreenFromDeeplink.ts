@@ -1,3 +1,4 @@
+import { NavigationResultState } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
 
 import { DeeplinkParts } from './types'
@@ -21,9 +22,7 @@ export function getScreenFromDeeplink(url: string): DeeplinkParts {
   return { screen, params } as DeeplinkParts
 }
 
-type NavigationState = ReturnType<typeof linking.getStateFromPath>
-
-function getLastRouteFromState(navigationState: NavigationState) {
+function getLastRouteFromState(navigationState: NavigationResultState) {
   const routes = navigationState?.routes
   if (!routes || routes.length === 0) {
     throw new Error('Unknown route')

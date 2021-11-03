@@ -1,14 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
-import { NavigationState } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
 import { flushAllPromises, act, render } from 'tests/utils'
 
-import { state1, state2, state3 } from '../mocks/navigationStateSnapshots'
-import { getScreenName, onNavigationStateChange } from '../services'
+import { onNavigationStateChange } from '../services'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
@@ -16,78 +14,54 @@ jest.mock('@react-navigation/bottom-tabs', () =>
   jest.requireActual('@react-navigation/bottom-tabs')
 )
 
-describe('getScreenName', () => {
-  it.each`
-    stateName   | state     | screenName
-    ${'state1'} | ${state1} | ${'Search'}
-    ${'state2'} | ${state2} | ${'Login'}
-    ${'state3'} | ${state3} | ${'Home'}
-  `(
-    'getScreenName($stateName) should be $screenName',
-    ({ state, screenName }: { state: NavigationState; screenName: string }) => {
-      expect(getScreenName(state)).toEqual(screenName)
-    }
-  )
-})
 describe('onNavigationStateChange()', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
+  afterEach(jest.clearAllMocks)
 
   it('should log screen view on navigation change', async () => {
     const { unmount } = navigationRender()
 
-    await act(async () => {
-      navigate('Screen2')
-      await flushAllPromises()
-    })
-
+    await simulateNavigate('Screen2')
     expect(analytics.logScreenView).toBeCalledTimes(1)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen2')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Screen2')
 
-    await act(async () => {
-      navigate('Screen1')
-      await flushAllPromises()
-    })
-
+    await simulateNavigate('Screen1')
     expect(analytics.logScreenView).toBeCalledTimes(2)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen1')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(2, 'Screen1')
+
     unmount()
   })
+
   it('should log screen name when navigating to a nested stack navigator', async () => {
     const { unmount } = navigationRender()
 
-    await act(async () => {
-      navigate('NestedStackNavigator')
-      await flushAllPromises()
-    })
-
+    await simulateNavigate('NestedStackNavigator', { screen: 'Screen3' })
     expect(analytics.logScreenView).toBeCalledTimes(1)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen3')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Screen3')
 
-    await act(async () => {
-      navigate('Screen4')
-      await flushAllPromises()
-    })
-
-    expect(analytics.logScreenView).toBeCalledTimes(2)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen4')
-
-    await act(async () => {
-      navigate('NestedTabNavigator')
-      await flushAllPromises()
-    })
-
+    await simulateNavigate('NestedStackNavigator', { screen: 'Screen4' })
     expect(analytics.logScreenView).toBeCalledTimes(3)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen5')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(2, 'Screen4')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(3, 'Screen4')
 
-    await act(async () => {
-      navigate('Screen6')
-      await flushAllPromises()
+    await simulateNavigate('NestedStackNavigator', {
+      screen: 'NestedTabNavigator',
+      params: {
+        screen: 'Screen5',
+      },
     })
+    expect(analytics.logScreenView).toBeCalledTimes(5)
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(4, 'Screen5')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(5, 'Screen5')
 
-    expect(analytics.logScreenView).toBeCalledTimes(4)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen6')
+    await simulateNavigate('NestedStackNavigator', {
+      screen: 'NestedTabNavigator',
+      params: {
+        screen: 'Screen6',
+      },
+    })
+    expect(analytics.logScreenView).toBeCalledTimes(7)
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(6, 'Screen6')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(7, 'Screen6')
 
     unmount()
   })
@@ -96,12 +70,18 @@ describe('onNavigationStateChange()', () => {
 type StackParamList = {
   Screen1: undefined
   Screen2: undefined
-  NestedStackNavigator: undefined
+  NestedStackNavigator: {
+    screen: keyof StackParamList2
+    params?: StackParamList2[keyof StackParamList2]
+  }
 }
 type StackParamList2 = {
   Screen3: undefined
   Screen4: undefined
-  NestedTabNavigator: undefined
+  NestedTabNavigator: {
+    screen: keyof TabParamList
+    params?: TabParamList[keyof TabParamList]
+  }
 }
 type TabParamList = {
   Screen5: undefined
@@ -113,17 +93,14 @@ const TabNavigator = createBottomTabNavigator<TabParamList>()
 
 const navigationRef = React.createRef<NavigationContainerRef>()
 
-function navigate(name: string) {
-  navigationRef.current?.navigate(name)
-}
 const NestedTabNavigator = () => (
-  <TabNavigator.Navigator>
+  <TabNavigator.Navigator initialRouteName="Screen5">
     <TabNavigator.Screen name="Screen5" component={Screen} />
     <TabNavigator.Screen name="Screen6" component={Screen} />
   </TabNavigator.Navigator>
 )
 const NestedStackNavigator = () => (
-  <Stack2.Navigator>
+  <Stack2.Navigator initialRouteName="Screen3">
     <Stack2.Screen name="Screen3" component={Screen} />
     <Stack2.Screen name="Screen4" component={Screen} />
     <Stack2.Screen name="NestedTabNavigator" component={NestedTabNavigator} />
@@ -131,6 +108,7 @@ const NestedStackNavigator = () => (
 )
 function navigationRender() {
   return render(
+    // @ts-expect-error the typing of onNavigationStateChange() is good enough
     <NavigationContainer ref={navigationRef} onStateChange={onNavigationStateChange}>
       <Stack.Navigator initialRouteName="Screen1">
         <Stack.Screen name="Screen1" component={Screen} />
@@ -143,4 +121,15 @@ function navigationRender() {
 
 function Screen() {
   return null
+}
+
+async function simulateNavigate<RouteName extends keyof StackParamList>(
+  ...args: undefined extends StackParamList[RouteName]
+    ? [RouteName] | [RouteName, StackParamList[RouteName]]
+    : [RouteName, StackParamList[RouteName]]
+) {
+  await act(async () => {
+    navigationRef.current?.navigate(...args)
+    await flushAllPromises()
+  })
 }

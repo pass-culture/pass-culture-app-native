@@ -4,9 +4,10 @@ import { isScreen, RootNavigateParams } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { storeUtmParams } from 'libs/utm'
 
+import { getNestedNavigationFromState } from './getNestedNavigationFromState'
+
 type Path = Parameters<typeof getStateFromPath>[0]
 type Config = Parameters<typeof getStateFromPath>[1]
-type NavigationState = ReturnType<typeof getStateFromPath>
 
 type QueryParams = Record<string, string>
 
@@ -15,18 +16,6 @@ export function customGetStateFromPath(path: Path, config: Config) {
   const [nestedScreen, params] = getNestedNavigationFromState(state)
   addLinkAnalytics(nestedScreen, params)
   return state
-}
-
-function getNestedNavigationFromState(state: NavigationState): RootNavigateParams {
-  if (!state || !state.routes) {
-    return ['PageNotFound', undefined]
-  }
-  const { routes } = state
-  const route = routes[routes.length - 1]
-  if (route.state) {
-    return getNestedNavigationFromState(route.state)
-  }
-  return [route.name, route.params] as RootNavigateParams
 }
 
 async function addLinkAnalytics(...navigateParams: RootNavigateParams) {
