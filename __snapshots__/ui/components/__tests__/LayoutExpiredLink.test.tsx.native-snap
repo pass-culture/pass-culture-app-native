@@ -140,11 +140,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.
       </Text>
       <View
-        numberOfSpaces={4}
+        numberOfSpaces={6}
         style={
           Array [
             Object {
-              "height": 16,
+              "height": 24,
             },
           ]
         }
@@ -166,11 +166,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         Si tu as besoin d’aide n’hésite pas à :
       </Text>
       <View
-        numberOfSpaces={4}
+        numberOfSpaces={2}
         style={
           Array [
             Object {
-              "height": 16,
+              "height": 8,
             },
           ]
         }
@@ -233,6 +233,66 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           textColor="#ffffff"
         >
           Consulter l'article d'aide
+        </Text>
+      </View>
+      <View
+        accessibilityLabel="Contacter le support"
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
+          }
+        }
+        testID="Contacter le support"
+      >
+        <View
+          height={28}
+          testID="button-icon"
+          width={28}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 5,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+          textColor="#ffffff"
+        >
+          Contacter le support
         </Text>
       </View>
       <View
