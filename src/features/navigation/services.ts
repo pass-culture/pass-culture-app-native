@@ -1,18 +1,12 @@
 import { NavigationState } from '@react-navigation/native'
 
+import { getNestedNavigationFromState } from 'features/navigation/RootNavigator/linking/getNestedNavigationFromState'
 import { analytics } from 'libs/analytics'
 
-type NavigationRouteType = Exclude<NavigationState['routes'][0]['state'], undefined>
-export function onNavigationStateChange(state: NavigationState | undefined): void {
+export function onNavigationStateChange(state: NavigationState): void {
   if (!state || !state.routes) {
     return
   }
-  const screenName = getScreenName(state)
-  analytics.logScreenView(screenName)
-}
-
-export const getScreenName = (state: NavigationRouteType): string => {
-  const route = state.routes[state.index ?? 0]
-  if (route?.state === undefined) return route.name
-  return getScreenName(route.state)
+  const [screen] = getNestedNavigationFromState(state)
+  analytics.logScreenView(screen)
 }

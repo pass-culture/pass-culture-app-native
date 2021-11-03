@@ -1,5 +1,5 @@
 import { IdCheckRootStackParamList } from '@pass-culture/id-check'
-import { PathConfig, RouteProp, ParamListBase } from '@react-navigation/native'
+import { getStateFromPath, PathConfig, RouteProp, ParamListBase } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 import { CountryCode } from 'react-native-country-picker-modal'
@@ -145,6 +145,8 @@ export type NavigateParams<
   : [RouteName, ParamListBase[RouteName]]
 export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
 export type AllNavigateParams = NavigateParams<keyof AllNavParamList>
+
+export type NavigationResultState = ReturnType<typeof getStateFromPath>
 
 /**
  * Type helper to declare a route
