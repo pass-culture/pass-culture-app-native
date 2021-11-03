@@ -36,8 +36,8 @@ export function ResetPasswordExpiredLink(props: Props) {
 
   return (
     <LayoutExpiredLink
-      resetQuery={() => resetPasswordEmailQuery()}
-      isFetching={isFetching}
+      onResendEmail={() => resetPasswordEmailQuery()}
+      disabledResendEmailButton={isFetching}
       urlFAQ="https://aide.passculture.app/fr/articles/5261997-je-n-ai-pas-recu-le-mail-de-confirmation-de-changement-de-mot-de-passe"
     />
   )
