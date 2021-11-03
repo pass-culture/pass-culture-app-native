@@ -1,8 +1,15 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
+import { contactSupport } from 'features/auth/support.services'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
-export function ChangeEmailExpiredLink() {
+type Props = StackScreenProps<RootStackParamList, 'ChangeEmailExpiredLink'>
+
+export function ChangeEmailExpiredLink(props: Props) {
+  const { email } = props.route.params
+
   const changeEmailExpiredLink = () => {
     // TODO (LucasBeneston): try / catch api call like api.postnativev1requestPasswordReset({ email })
   }
@@ -10,15 +17,11 @@ export function ChangeEmailExpiredLink() {
   // TODO (LucasBeneston): use isFetching from useQuery()
   const isFetching = false
 
-  const contactSupport = () => {
-    // TODO (PC-11602): Add contactSupport + analytics
-  }
-
   return (
     <LayoutExpiredLink
       onResendEmail={changeEmailExpiredLink}
       disabledResendEmailButton={isFetching}
-      contactSupport={contactSupport}
+      contactSupport={() => contactSupport.forChangeEmailExpiredLink(email)}
     />
   )
 }
