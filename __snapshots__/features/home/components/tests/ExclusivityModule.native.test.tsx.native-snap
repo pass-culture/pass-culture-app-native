@@ -50,6 +50,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
           },
         ]
       }
+      testID="imageExclu"
     >
       <View
         style={
@@ -83,7 +84,6 @@ exports[`ExclusivityModule component should render correctly 1`] = `
               "top": 0,
             }
           }
-          testID="imageExclu"
         />
       </View>
     </View>

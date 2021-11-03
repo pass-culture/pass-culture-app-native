@@ -93,6 +93,24 @@ export const homepageEntriesAPIResponse = {
           alt: 'Exclusitivité du moment',
           image: { sys: { type: 'Link', linkType: 'Asset', id: '2qTXOFUocq1HhgB7Wzl23K' } },
           offerId: 'AE67',
+          displayParameters: {
+            sys: {
+              contentType: { sys: { id: 'recommendation', linkType: 'ContentType', type: 'Link' } },
+              createdAt: '2021-02-24T14:22:44.717Z',
+              environment: { sys: { id: 'testing', linkType: 'Environment', type: 'Link' } },
+              id: 'SeAbW1XVKWDJodP3Vu7Y0',
+              locale: 'en-US',
+              revision: 2,
+              space: { sys: { id: '2bg01iqy0isv', linkType: 'Space', type: 'Link' } },
+              type: 'Entry',
+              updatedAt: '2021-07-02T09:43:22.459Z',
+            },
+            fields: {
+              title: 'Rayon 20km',
+              isGeolocated: true,
+              aroundRadius: 20,
+            },
+          },
         },
       },
       {
@@ -725,6 +743,24 @@ export const adaptedHomepageEntry: HomepageEntry = {
             },
           },
           offerId: 'AE67',
+          displayParameters: {
+            sys: {
+              contentType: { sys: { id: 'recommendation', linkType: 'ContentType', type: 'Link' } },
+              createdAt: '2021-02-24T14:22:44.717Z',
+              environment: { sys: { id: 'testing', linkType: 'Environment', type: 'Link' } },
+              id: 'SeAbW1XVKWDJodP3Vu7Y0',
+              locale: 'en-US',
+              revision: 2,
+              space: { sys: { id: '2bg01iqy0isv', linkType: 'Space', type: 'Link' } },
+              type: 'Entry',
+              updatedAt: '2021-07-02T09:43:22.459Z',
+            },
+            fields: {
+              title: 'Rayon 20km',
+              isGeolocated: true,
+              aroundRadius: 20,
+            },
+          },
         },
       },
       {

@@ -22,10 +22,20 @@ async function getOfferById(offerId: number) {
 }
 
 export const useOffer = ({ offerId }: { offerId: number }) =>
-  useQuery<OfferResponse | undefined>([QueryKeys.OFFER, offerId], () => {
-    if (offerId) {
-      return getOfferById(offerId)
-    } else {
-      return undefined
-    }
-  })
+  useQuery<OfferResponse | undefined>([QueryKeys.OFFER, offerId], () =>
+    offerId ? getOfferById(offerId) : undefined
+  )
+
+export const useSilentOffer = (offerId: number | null) =>
+  useQuery<OfferResponse | undefined>(
+    [QueryKeys.OFFER, offerId],
+    async () => {
+      try {
+        return await api.getnativev1offerofferId(offerId as number)
+      } catch (error) {
+        // do nothing as the name of the hook suggests
+        return undefined
+      }
+    },
+    { enabled: typeof offerId === 'number' }
+  )
