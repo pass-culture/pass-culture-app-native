@@ -22,7 +22,7 @@ const STORE_LINK = Platform.select({
 
 const onPress = Platform.select({
   default: () => openUrl(STORE_LINK),
-  web: () => globalThis?.window?.location?.replace('/'),
+  web: () => globalThis?.window?.location?.reload(),
 })
 
 const title = Platform.select({
