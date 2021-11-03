@@ -36,8 +36,8 @@ export function SignupConfirmationExpiredLink(props: Props) {
 
   return (
     <LayoutExpiredLink
-      resetQuery={() => signupConfirmationExpiredLinkQuery()}
-      isFetching={isFetching}
+      onResendEmail={() => signupConfirmationExpiredLinkQuery()}
+      disabledResendEmailButton={isFetching}
       urlFAQ="https://aide.passculture.app/fr/articles/5261997-je-n-ai-pas-recu-le-mail-de-confirmation-de-changement-de-mot-de-passe"
       // contactSupport={() => contactSupport.forSignupConfirmationExpiredLink(props.route.params.email)}
     />

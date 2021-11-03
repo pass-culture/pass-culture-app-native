@@ -13,13 +13,18 @@ import { SadFace } from 'ui/svg/icons/SadFace'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  resetQuery: () => void
-  isFetching: boolean
+  onResendEmail: () => void
+  disabledResendEmailButton: boolean
   urlFAQ?: string
   contactSupport?: () => void
 }
 
-export function LayoutExpiredLink({ isFetching, urlFAQ, resetQuery, contactSupport }: Props) {
+export function LayoutExpiredLink({
+  disabledResendEmailButton,
+  urlFAQ,
+  onResendEmail,
+  contactSupport,
+}: Props) {
   return (
     <GenericInfoPage title={t`Oups !`} icon={SadFace}>
       <StyledBody>{t`Le lien est expiré !`}</StyledBody>
@@ -50,7 +55,11 @@ export function LayoutExpiredLink({ isFetching, urlFAQ, resetQuery, contactSuppo
       )}
 
       <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimaryWhite title={t`Renvoyer l'email`} onPress={resetQuery} disabled={isFetching} />
+      <ButtonPrimaryWhite
+        title={t`Renvoyer l'email`}
+        onPress={onResendEmail}
+        disabled={disabledResendEmailButton}
+      />
       <Spacer.Column numberOfSpaces={2} />
       <ButtonTertiaryWhite
         title={t`Retourner à l'accueil`}
