@@ -27,6 +27,7 @@ export function ChangeEmail() {
   const [email, setEmail] = useSafeState('')
   const [password, setPassword] = useSafeState('')
   const emailErrorMessage = useValidateEmail(email)
+  const [passwordErrorMessage, setPasswordErrorMessage] = useSafeState<string | null>(null)
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar } = useSnackBarContext()
 
@@ -39,8 +40,7 @@ export function ChangeEmail() {
       navigateToProfile()
     },
     onError: () => {
-      // TODO (PC-11395): handle errors
-      console.error('Something went wrong while changing your email')
+      setPasswordErrorMessage(t`Mot de passe incorrect`)
     },
   })
 
@@ -79,6 +79,10 @@ export function ChangeEmail() {
             placeholder={t`Ton mot de passe`}
             textContentType="password"
           />
+          {!!passwordErrorMessage && (
+            <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />
+          )}
+
           {theme.isDesktop ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
