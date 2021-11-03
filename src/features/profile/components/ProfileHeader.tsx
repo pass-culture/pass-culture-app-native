@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
+import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers'
 
@@ -14,8 +15,27 @@ type ProfileHeaderProps = {
   user?: UserProfileResponse
 }
 
+const displayedExpirationDate = (expirationDate: Date, isUnderageBeneficiary: boolean) =>
+  isUnderageBeneficiary
+    ? t({
+        id: 'profile expiration date for underage',
+        values: {
+          day: formatToSlashedFrenchDate(expirationDate.toISOString()),
+        },
+        message: '{day}',
+      })
+    : t({
+        id: 'profile expiration date',
+        values: {
+          day: formatToSlashedFrenchDate(expirationDate.toISOString()),
+          hour: formatToHour(expirationDate),
+        },
+        message: '{day} à {hour}',
+      })
+
 export function ProfileHeader(props: ProfileHeaderProps) {
   const { user } = props
+  const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
 
   if (!user) {
     return <LoggedOutHeader />
@@ -27,14 +47,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       : undefined
 
     const depositExpirationDate = expirationDate
-      ? t({
-          id: 'profile expiration date',
-          values: {
-            day: formatToSlashedFrenchDate(expirationDate.toISOString()),
-            hour: formatToHour(expirationDate),
-          },
-          message: '{day} à {hour}',
-        })
+      ? displayedExpirationDate(expirationDate, isUnderageBeneficiary)
       : undefined
 
     const isExpired = expirationDate ? expirationDate < new Date() : false

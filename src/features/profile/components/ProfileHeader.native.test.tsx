@@ -66,7 +66,7 @@ describe('ProfileHeader', () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     const { getByTestId, getByText } = render(<ProfileHeader user={user} />)
     expect(getByTestId('beneficiary-header')).toBeTruthy()
-    expect(getByText("crédit valable jusqu'au\u00a009/02/2023 à 11h17")).toBeTruthy()
+    expect(getByText("crédit valable jusqu'au\u00a009/02/2023")).toBeTruthy()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
