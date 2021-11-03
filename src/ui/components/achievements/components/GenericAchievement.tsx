@@ -1,8 +1,9 @@
+// @ts-nocheck
 import { t } from '@lingui/macro'
 import { EventArg, useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { Children, cloneElement, FunctionComponent, ReactElement, useMemo } from 'react'
 import Swiper from 'react-native-web-swiper'
-import styled from 'styled-components/native'
+import styled, {useTheme} from 'styled-components/native'
 
 import { ScreenNames, UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -14,6 +15,9 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 import { ControlComponent } from './ControlComponent'
 import { DotComponent } from './DotComponent'
 import { AchievementCardKeyProps } from './GenericAchievementCard'
+import { isSafariMobile } from 'web/utils/navigatorAgent'
+import {useWindowDimensions} from "react-native";
+
 
 const controlProps = {
   DotComponent,
@@ -29,8 +33,10 @@ export type Props = {
 }
 
 export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
+  const theme = useTheme()
   const navigation = useNavigation<UseNavigationType>()
   const swiperRef = React.useRef<Swiper>(null)
+  const { width, height } = useWindowDimensions()
 
   const cards = useMemo(() => Children.toArray(props.children), [props.children])
   const lastIndex = cards.length - 1
@@ -61,6 +67,52 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
     navigation.reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   }
 
+  const styles = useMemo(() => {
+    let y = 40 // otherwise I cant click on skip
+    let x = 0
+    const positionFixed = false
+    const containerStyle = {}
+
+    if (swiperRef?.current) {
+      const activeIndex = swiperRef.current.getActiveIndex()
+      x = (1 + activeIndex) * width
+      alert(`new x: ${x}`)
+    }
+    const innerContainerStyle = {
+      backgroundColor: 'transparent',
+      // Fix safari vertical bounces
+      position: positionFixed ? 'fixed' : 'relative',
+      overflow: 'hidden',
+      top: positionFixed ? y : 0,
+      left: positionFixed ? x : 0,
+      width,
+      height,
+      justifyContent: 'space-between',
+    }
+
+    const swipeAreaStyle = {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: width * cards.length,
+      height: height,
+      flexDirection: 'row',
+    }
+
+    const slideWrapperStyle = {
+      flex: 1,
+      width: '100%',
+      height: '100%',
+    }
+
+    return {
+      slideWrapperStyle,
+      containerStyle,
+      innerContainerStyle,
+      swipeAreaStyle,
+    }
+  }, [theme, cards.length, width, height, swiperRef])
+
   return (
     <React.Fragment>
       <Background />
@@ -76,11 +128,16 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
           )}
           <SwiperContainer>
             <Swiper
+              {...isSafariMobile() ? {
+                containerStyle: styles.containerStyle,
+                innerContainerStyle: styles.innerContainerStyle,
+                swipeAreaStyle: styles.swipeAreaStyle,
+              } : {}}
               ref={swiperRef}
               controlsProps={lastIndex ? controlProps : undefined}
               controlsEnabled={!!lastIndex}
               gesturesEnabled={() => !!lastIndex}
-              slideWrapperStyle={slideWrapperStyle}>
+              slideWrapperStyle={styles.slideWrapperStyle}>
               {cards.map((card, index: number) =>
                 cloneElement(card as ReactElement<AchievementCardKeyProps>, {
                   key: index,
@@ -141,11 +198,6 @@ export function onRemoveScreenAction({
 const HorizontalPaddingContainer = styled.View({
   paddingHorizontal: getSpacing(5),
 })
-
-const slideWrapperStyle = {
-  flex: 1,
-  width: '100%',
-}
 
 const EntireScreen = styled.View({
   display: 'flex',

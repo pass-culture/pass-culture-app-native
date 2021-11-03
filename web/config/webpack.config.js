@@ -399,6 +399,8 @@ module.exports = function (webpackEnv) {
                 /node_modules\/react-native-calendars/,
                 /node_modules\/react-native-swipe-gestures/,
                 /node_modules\/react-native-qrcode-svg/,
+                // these below are only useful in development, edit their package.json main to target src instead of build
+                /node_modules\/react-native-web-swiper\/src/,
               ],
               loader: require.resolve('babel-loader'),
               options: {
