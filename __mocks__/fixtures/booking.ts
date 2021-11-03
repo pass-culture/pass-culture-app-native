@@ -1,10 +1,12 @@
-export const mockedBookingOfferResponse = {
-  category: { label: 'categoryLabel', categoryType: 'Event' },
+import { BookingOfferResponse, SubcategoryIdEnum } from 'api/gen'
+
+export const mockedBookingOfferResponse: BookingOfferResponse = {
   id: 32871,
   isDigital: true,
   isPermanent: true,
   name: 'mockedBookingName',
   venue: { name: 'venueName', id: 3131, coordinates: {} },
+  subcategoryId: SubcategoryIdEnum.ABOCONCERT,
 }
 
 export const mockedBookingApi = {

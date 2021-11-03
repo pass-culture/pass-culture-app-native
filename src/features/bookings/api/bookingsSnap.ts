@@ -1,10 +1,4 @@
-import {
-  BookingCancellationReasons,
-  BookingsResponse,
-  CategoryNameEnum,
-  CategoryType,
-  SubcategoryIdEnum,
-} from 'api/gen'
+import { BookingCancellationReasons, BookingsResponse, SubcategoryIdEnum } from 'api/gen'
 
 export const bookingsSnap: BookingsResponse = {
   ended_bookings: [
@@ -24,11 +18,6 @@ export const bookingsSnap: BookingsResponse = {
         offer: {
           id: 147874,
           name: 'Avez-vous déjà vu ?',
-          category: {
-            categoryType: CategoryType.Event,
-            label: 'Pratique artistique',
-            name: CategoryNameEnum.LECON,
-          },
           extraData: null,
           isPermanent: false,
           isDigital: true,
@@ -65,11 +54,6 @@ export const bookingsSnap: BookingsResponse = {
         offer: {
           id: 147874,
           name: 'Avez-vous déjà vu ?',
-          category: {
-            categoryType: CategoryType.Event,
-            label: 'Pratique artistique',
-            name: CategoryNameEnum.LECON,
-          },
           extraData: {
             isbn: '123456789',
           },

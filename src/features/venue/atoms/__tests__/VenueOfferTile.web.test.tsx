@@ -70,7 +70,6 @@ describe('VenueOfferTile component', () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(query!.state.data).toStrictEqual({
       accessibility: {},
-      category: { label: '', name: undefined },
       description: '',
       expenseDomains: [],
       id: offerId,

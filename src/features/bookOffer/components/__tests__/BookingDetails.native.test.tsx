@@ -128,7 +128,7 @@ describe('<BookingDetails />', () => {
         af_offer_id: mockOffer.id,
         af_booking_id: mockBookingStock?.id,
         af_price: mockBookingStock?.price,
-        af_category: mockOffer.category.label,
+        af_category: mockOffer.subcategoryId,
       })
       expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
     })

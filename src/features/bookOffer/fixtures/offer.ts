@@ -1,10 +1,4 @@
-import {
-  CategoryNameEnum,
-  CategoryType,
-  ExpenseDomain,
-  OfferResponse,
-  SubcategoryIdEnum,
-} from 'api/gen'
+import { ExpenseDomain, OfferResponse, SubcategoryIdEnum } from 'api/gen'
 
 export const mockOffer: OfferResponse = {
   id: 146112,
@@ -37,11 +31,6 @@ export const mockOffer: OfferResponse = {
   isDuo: true,
   isEducational: false,
   name: 'Je ne sais pas ce que je dis',
-  category: {
-    categoryType: CategoryType.Event,
-    label: 'Pratique artistique',
-    name: CategoryNameEnum.LECON,
-  },
   subcategoryId: SubcategoryIdEnum.EVENEMENTPATRIMOINE,
   stocks: [
     {
@@ -129,11 +118,6 @@ export const mockDigitalOffer: OfferResponse = {
   isDuo: true,
   isEducational: false,
   name: 'Je ne sais pas ce que je dis',
-  category: {
-    categoryType: CategoryType.Thing,
-    label: 'Jeux videos',
-    name: CategoryNameEnum.JEUXVIDEO,
-  },
   subcategoryId: SubcategoryIdEnum.JEUSUPPORTPHYSIQUE,
   stocks: [
     {

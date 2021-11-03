@@ -50,7 +50,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
             af_offer_id: offer.id,
             af_booking_id: selectedStock.id,
             af_price: selectedStock.price,
-            ...(offer.category?.label ? { af_category: offer.category.label } : {}),
+            af_category: offer.subcategoryId,
           })
         navigate('BookingConfirmation', { offerId, bookingId })
       }

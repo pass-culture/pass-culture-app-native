@@ -4,13 +4,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import {
-  ExpenseDomain,
-  FavoriteCategoryResponse,
-  FavoriteResponse,
-  SubcategoryIdEnum,
-  UserProfileResponse,
-} from 'api/gen'
+import { ExpenseDomain, FavoriteResponse, SubcategoryIdEnum, UserProfileResponse } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import { Credit } from 'features/home/services/useAvailableCredit'
 import { env } from 'libs/environment'
@@ -34,11 +28,6 @@ const credit: Credit = { amount: 100, isExpired: false }
 const favorite: FavoriteResponse = {
   id: 393,
   offer: {
-    category: {
-      categoryType: 'Event',
-      label: 'Pratique artistique',
-      name: 'LECON',
-    } as FavoriteCategoryResponse,
     coordinates: { latitude: 48.9263, longitude: 2.49008 },
     date: null,
     expenseDomains: [ExpenseDomain.All],
