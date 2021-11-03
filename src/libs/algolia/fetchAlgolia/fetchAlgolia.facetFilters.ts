@@ -26,16 +26,16 @@ export const buildFacetFilters = ({
   offerTypes,
   offerIsDuo,
   tags,
-  isUserUnderageBeneficiary,
+  isUserUnderage,
 }: Pick<
   SearchParametersQuery,
   'locationFilter' | 'offerCategories' | 'offerTypes' | 'offerIsDuo' | 'tags'
-> & { isUserUnderageBeneficiary: boolean }): null | {
+> & { isUserUnderage: boolean }): null | {
   facetFilters: FiltersArray
 } => {
   if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
 
-  const facetFilters: FiltersArray = isUserUnderageBeneficiary ? [...underageFilter] : []
+  const facetFilters: FiltersArray = isUserUnderage ? [...underageFilter] : []
 
   if (offerCategories.length > 0) {
     const categoriesPredicate = buildOfferCategoriesPredicate(offerCategories)
