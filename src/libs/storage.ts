@@ -4,16 +4,17 @@ import { Alert } from 'react-native'
 
 export type StorageKey =
   | 'access_token'
-  | 'has_seen_tutorials'
+  | 'campaign_date'
+  | 'first_time_review_has_been_requested'
   | 'has_accepted_cookie'
   | 'has_seen_eligible_card'
+  | 'has_seen_tutorials'
   | 'phone_validation_code_asked_at'
+  | 'react_navigation_persistence'
+  | 'times_review_has_been_requested'
   | 'traffic_campaign'
   | 'traffic_medium'
   | 'traffic_source'
-  | 'campaign_date'
-  | 'times_review_has_been_requested'
-  | 'first_time_review_has_been_requested'
 
 export const storage = {
   clear,
