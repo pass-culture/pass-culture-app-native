@@ -50,7 +50,7 @@ const buildSearchParameters = (
     tags = [],
   }: PartialSearchState,
   userLocation: GeoCoordinates | null,
-  isUserUnderageBeneficiary: boolean
+  isUserUnderage: boolean
 ) => ({
   ...buildFacetFilters({
     locationFilter,
@@ -58,7 +58,7 @@ const buildSearchParameters = (
     offerTypes,
     offerIsDuo,
     tags,
-    isUserUnderageBeneficiary,
+    isUserUnderage,
   }),
   ...buildNumericFilters({
     beginningDatetime,
@@ -72,38 +72,34 @@ const buildSearchParameters = (
   ...buildGeolocationParameter(locationFilter, userLocation),
 })
 
-export const fetchMultipleAlgolia = (
+export const fetchMultipleAlgolia = async (
   paramsList: PartialSearchState[],
   userLocation: GeoCoordinates | null,
-  isUserUnderageBeneficiary: boolean
-): Readonly<Promise<MultipleQueriesResponse<AlgoliaHit>>> => {
+  isUserUnderage: boolean
+): Promise<MultipleQueriesResponse<AlgoliaHit>> => {
   const queries = paramsList.map((params) => ({
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
     query: params.query,
     params: {
       ...buildHitsPerPage(params.hitsPerPage),
-      ...buildSearchParameters(params, userLocation, isUserUnderageBeneficiary),
+      ...buildSearchParameters(params, userLocation, isUserUnderage),
       attributesToHighlight: [], // We disable highlighting because we don't need it
       attributesToRetrieve,
     },
   }))
 
-  return client.multipleQueries(queries)
+  return await client.multipleQueries(queries)
 }
 
-export const fetchAlgolia = (
+export const fetchAlgolia = async (
   parameters: SearchParametersQuery,
   userLocation: GeoCoordinates | null,
-  isUserUnderageBeneficiary: boolean
-): Readonly<Promise<Response>> => {
-  const searchParameters = buildSearchParameters(
-    parameters,
-    userLocation,
-    isUserUnderageBeneficiary
-  )
+  isUserUnderage: boolean
+): Promise<Response> => {
+  const searchParameters = buildSearchParameters(parameters, userLocation, isUserUnderage)
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
-  return index.search(parameters.query || '', {
+  return await index.search(parameters.query || '', {
     page: parameters.page || 0,
     ...buildHitsPerPage(parameters.hitsPerPage),
     ...searchParameters,
