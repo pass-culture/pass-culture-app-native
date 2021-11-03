@@ -1,5 +1,3 @@
-import { MultipleQueriesResponse } from '@algolia/client-search'
-import flatten from 'lodash.flatten'
 import uniqBy from 'lodash.uniqby'
 import { useEffect } from 'react'
 import { useQueries } from 'react-query'
@@ -28,19 +26,6 @@ export type HomeModuleResponse = {
 
 const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
-
-const isMultipleAlgoliaHit = (
-  response: unknown
-): response is MultipleQueriesResponse<SearchHit> & { moduleId: string } =>
-  typeof response === 'object' &&
-  response !== null &&
-  'results' in response &&
-  'moduleId' in response
-
-const isMultipleSearchHit = (
-  response: unknown
-): response is { hits: SearchHit[]; moduleId: string; nbHits: number } =>
-  typeof response === 'object' && response !== null && 'hits' in response && 'moduleId' in response
 
 export const useHomeModules = (
   offerModules: Array<Offers | OffersWithCover>
@@ -82,25 +67,12 @@ export const useHomeModules = (
   )
 
   queries.forEach((query) => {
-    let hits: SearchHit[] = []
-    let nbHits = 0
-
     if (!query.isSuccess) return
-
-    const data = query.data
-    if (isMultipleAlgoliaHit(data)) {
-      hits = flatten(data.results.map(({ hits }) => hits))
-      nbHits = data.results.reduce((prev, curr) => prev + curr.nbHits, 0)
-    } else if (isMultipleSearchHit(data)) {
-      hits = data.hits
-      nbHits = data.nbHits
-    } else {
-      return
-    }
+    const data = query.data as { moduleId: string; hits: SearchHit[]; nbHits: number }
 
     homeModules[data.moduleId] = {
-      hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID') as SearchHit[],
-      nbHits,
+      hits: uniqBy(data.hits.filter(filterHits).map(transformHits), 'objectID') as SearchHit[],
+      nbHits: data.nbHits,
     }
   })
 

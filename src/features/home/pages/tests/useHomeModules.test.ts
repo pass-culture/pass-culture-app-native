@@ -1,9 +1,8 @@
-import { MultipleQueriesResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import * as AlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
-import { SearchHit, parseSearchParameters } from 'libs/search'
+import { parseSearchParameters } from 'libs/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { Offers } from '../../contentful'
@@ -21,17 +20,13 @@ jest.mock('libs/search/useSendAdditionalRequestToAppSearch', () => ({
 const _geoloc = { lat: 20, lng: 23 }
 const subcategoryId = SubcategoryIdEnum.ABOCONCERT
 const mockMultipleHits = {
-  results: [
-    {
-      hits: [
-        { objectID: '1', _geoloc, offer: { thumbUrl: '/thumbs/to-image-one', subcategoryId } },
-        { objectID: '2', _geoloc, offer: { thumbUrl: '/thumbs/to-image-two', subcategoryId } },
-        { objectID: '3', _geoloc, offer: { thumbUrl: undefined, subcategoryId } },
-      ],
-      nbHits: 10,
-    },
+  hits: [
+    { objectID: '1', _geoloc, offer: { thumbUrl: '/thumbs/to-image-one', subcategoryId } },
+    { objectID: '2', _geoloc, offer: { thumbUrl: '/thumbs/to-image-two', subcategoryId } },
+    { objectID: '3', _geoloc, offer: { thumbUrl: undefined, subcategoryId } },
   ],
-} as MultipleQueriesResponse<SearchHit>
+  nbHits: 10,
+}
 
 const fetchMultipleHits = jest.fn().mockResolvedValue(mockMultipleHits)
 jest.spyOn(AlgoliaModule, 'fetchMultipleAlgolia').mockImplementation(fetchMultipleHits)
