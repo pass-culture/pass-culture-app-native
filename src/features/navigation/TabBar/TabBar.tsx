@@ -1,9 +1,10 @@
 import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom-tabs'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { BicolorFavoriteCount } from 'features/favorites/atoms/BicolorFavoriteCount'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { TabNavigationStateType } from 'features/navigation/TabBar/types'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -32,12 +33,18 @@ function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
 }
 
 type TabBarProps = {
+  state: TabNavigationStateType
   hidden?: boolean
 } & Pick<BottomTabBarProps<BottomTabBarOptions>, 'navigation'>
 
-export const TabBar: React.FC<TabBarProps> = ({ navigation, hidden }) => {
-  const { tabRoutes } = useTabNavigationContext()
+export const TabBar: React.FC<TabBarProps> = ({ navigation, hidden, state }) => {
+  const { tabRoutes, setTabNavigationState } = useTabNavigationContext()
   const { bottom } = useCustomSafeInsets()
+
+  useEffect(() => {
+    setTabNavigationState(state)
+  }, [])
+
   if (hidden) {
     return null
   }
