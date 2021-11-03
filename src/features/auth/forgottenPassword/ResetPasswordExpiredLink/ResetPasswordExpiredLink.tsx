@@ -5,10 +5,10 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
-import { LayoutExpiredLink } from 'features/profile/pages/ChangeEmail/LayoutExpiredLink'
 import { analytics } from 'libs/analytics'
 import { AsyncError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
+import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
