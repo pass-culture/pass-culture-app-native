@@ -1,8 +1,10 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import { mocked } from 'ts-jest/utils'
 
 import { UserProfileResponse } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/ProfileHeader'
+import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { render } from 'tests/utils'
 
 jest.mock('./NonBeneficiaryHeader')
@@ -41,6 +43,8 @@ const notBeneficiaryUser = {
 }
 
 jest.mock('features/home/api')
+jest.mock('features/profile/utils')
+const mockedisUserUnderageBeneficiary = mocked(isUserUnderageBeneficiary, true)
 
 describe('ProfileHeader', () => {
   beforeEach(() => {
@@ -53,6 +57,13 @@ describe('ProfileHeader', () => {
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
+    const { getByTestId, getByText } = render(<ProfileHeader user={user} />)
+    expect(getByTestId('beneficiary-header')).toBeTruthy()
+    expect(getByText("crédit valable jusqu'au\u00a009/02/2023 à 11h17")).toBeTruthy()
+  })
+
+  it('should display the BeneficiaryHeader if user is underage beneficiary', () => {
+    mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     const { getByTestId, getByText } = render(<ProfileHeader user={user} />)
     expect(getByTestId('beneficiary-header')).toBeTruthy()
     expect(getByText("crédit valable jusqu'au\u00a009/02/2023 à 11h17")).toBeTruthy()
