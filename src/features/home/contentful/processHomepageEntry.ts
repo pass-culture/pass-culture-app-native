@@ -65,9 +65,11 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
     }
 
     if (contentType === 'exclusivity') {
-      const { alt, offerId, image } = fields as ExclusivityFields
+      const { alt, offerId, image, displayParameters } = fields as ExclusivityFields
+      const { fields: display = undefined } = displayParameters || {}
+
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      return new ExclusivityPane({ alt, image: buildImageUrl(image)!, offerId, moduleId })
+      return new ExclusivityPane({ alt, image: buildImageUrl(image)!, offerId, moduleId, display })
     }
 
     if (contentType === 'venuesPlaylist') {

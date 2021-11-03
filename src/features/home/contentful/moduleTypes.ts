@@ -1,6 +1,7 @@
 import {
-  SearchParametersFields,
+  ExclusivityDisplayParametersFields,
   DisplayParametersFields,
+  SearchParametersFields,
   VenuesSearchParametersFields,
 } from './contentful'
 
@@ -65,21 +66,25 @@ export class ExclusivityPane {
   image: string
   offerId: string
   moduleId: string
+  display?: ExclusivityDisplayParametersFields
   constructor({
     alt,
     image,
     offerId,
     moduleId,
+    display,
   }: {
     alt: string
     image: string
     offerId: string
     moduleId: string
+    display?: ExclusivityDisplayParametersFields
   }) {
     this.alt = alt
     this.image = image
     this.offerId = offerId
     this.moduleId = moduleId
+    this.display = display
   }
 }
 
