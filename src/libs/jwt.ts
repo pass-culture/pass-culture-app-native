@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode'
 
 interface AccessToken {
   exp: number
-  fresh: number
+  fresh: boolean
   iat: number
   sub: string
   jti: string

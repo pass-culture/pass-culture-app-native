@@ -84,8 +84,8 @@ const App: FunctionComponent = function () {
       <ThemeProvider theme={theme}>
         <SafeAreaProvider>
           <QueryClientProvider client={queryClient}>
-            <AuthWrapper>
-              <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+              <AuthWrapper>
                 <GeolocationWrapper>
                   <FavoritesWrapper>
                     <SearchWrapper>
@@ -103,8 +103,8 @@ const App: FunctionComponent = function () {
                     </SearchWrapper>
                   </FavoritesWrapper>
                 </GeolocationWrapper>
-              </ErrorBoundary>
-            </AuthWrapper>
+              </AuthWrapper>
+            </ErrorBoundary>
           </QueryClientProvider>
         </SafeAreaProvider>
       </ThemeProvider>

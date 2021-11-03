@@ -7,6 +7,7 @@ import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigat
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
+import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 
 import Package from '../../package.json'
@@ -20,12 +21,10 @@ export function navigateToLogin() {
 }
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
+  if (options && options.credentials === 'omit') return {}
+
   const accessToken = await storage.readString('access_token')
-  const shouldAuthenticate = accessToken && (!options || options.credentials !== 'omit')
-  if (shouldAuthenticate) {
-    return { Authorization: `Bearer ${accessToken}` }
-  }
-  return {}
+  return accessToken ? { Authorization: `Bearer ${accessToken}` } : {}
 }
 
 // HOT FIX waiting for a better strategy
@@ -42,6 +41,16 @@ const NotAuthenticatedCalls = [
   'native/v1/offer',
   'native/v1/venue',
 ]
+
+// At the moment, we can't Promise.reject inside of safeFetch and expect
+// the wrapping AsyncBoundary to catch it. As a result, we resolve a fake
+// response that we then catch to redirect to the login page.
+// this happens when there is a problem retrieving or refreshing
+// the access token.
+const NeedsAuthenticationResponse = {
+  status: 401,
+  statusText: 'NeedsAuthenticationResponse',
+} as Response
 
 /**
  * For each http calls to the api, retrieves the access token and fetchs.
@@ -79,10 +88,11 @@ export const safeFetch = async (
   const tokenContent = decodeAccessToken(token)
 
   if (!tokenContent) {
-    return Promise.reject(navigateToLogin())
+    return Promise.resolve(NeedsAuthenticationResponse)
   }
 
-  if (tokenContent.exp * 1000 <= new Date().getTime()) {
+  // If the token is expired, we refresh it before calling the backend
+  if (tokenContent && tokenContent.exp * 1000 <= new Date().getTime()) {
     try {
       const newAccessToken = await refreshAccessToken(api)
 
@@ -94,7 +104,10 @@ export const safeFetch = async (
         },
       }
     } catch (error) {
-      return Promise.reject(navigateToLogin())
+      // Here we are supposed to be logged-in (calling an authenticated endpoint)
+      // But the access token is expired and cannot be refreshed.
+      // In this case, we cleared the access token and we need to login again
+      return Promise.resolve(NeedsAuthenticationResponse)
     }
   }
 
@@ -138,6 +151,15 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   if (response.status === 204) {
     return {}
   }
+
+  // We are not suppose to have side-effects in this function but this is a special case
+  // where the access token is corrupted and we need to recreate it by logging-in again
+  if (response.status === 401 && response.statusText === 'NeedsAuthenticationResponse') {
+    eventMonitoring.captureException('NeedsAuthenticationResponse')
+    navigateToLogin()
+    return {}
+  }
+
   const responseBody = await response.json()
 
   if (!response.ok) {
