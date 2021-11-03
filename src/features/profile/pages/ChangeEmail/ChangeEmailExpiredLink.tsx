@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LayoutExpiredLink } from 'features/profile/pages/ChangeEmail/LayoutExpiredLink'
+import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
 export function ChangeEmailExpiredLink() {
   const changeEmailExpiredLink = () => {
