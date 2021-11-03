@@ -3,6 +3,12 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 
 export const contactSupport = {
+  forChangeEmailExpiredLink(email: string) {
+    openUrl(
+      `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=Lien%20de%20changement%20d'e-mail&body=Bonjour%2C%0D%0A%0D%0AJe%20vous%20%C3%A9cris%20afin%20de%20vous%20informer%20de%20l'expiration%20du%20lien%20de%20changement%20d'e-mail%20associ%C3%A9%20%C3%A0%20l%E2%80%99adresse%20e-mail%20${email}.%0D%0A%0D%0ABien%20cordialement%2C`,
+      false
+    ).then(() => analytics.logMailTo('forChangeEmailExpiredLink'))
+  },
   forGenericQuestion() {
     openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}`, false).then(() =>
       analytics.logMailTo('forGenericQuestion')
