@@ -142,6 +142,7 @@ export const analytics = {
     }),
   logMailTo: (
     reason:
+      | 'forChangeEmailExpiredLink'
       | 'forGenericQuestion'
       | 'forSignupConfirmationEmailNotReceived'
       | 'forSignupConfirmationExpiredLink'
