@@ -2385,6 +2385,10 @@ msgstr "({price} x 2 places)"
 msgid "profile expiration date"
 msgstr "{day} à {hour}"
 
+#: src/features/profile/components/ProfileHeader.tsx
+msgid "profile expiration date for underage"
+msgstr "{day}"
+
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
