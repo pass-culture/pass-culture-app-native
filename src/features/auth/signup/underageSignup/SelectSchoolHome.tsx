@@ -21,7 +21,7 @@ export const SelectSchoolHome: React.FC<SelectSchoolHomeProps> = ({
 }) => {
   const animation = useRef<LottieView>(null)
   const { navigate } = useNavigation<UseNavigationType>()
-  const { width: appWidth } = useWindowDimensions()
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions()
 
   useEffect(() => {
     animation.current?.play?.(0, 62)
@@ -29,10 +29,18 @@ export const SelectSchoolHome: React.FC<SelectSchoolHomeProps> = ({
 
   return (
     <React.Fragment>
-      <Spacer.Column numberOfSpaces={appWidth <= 375 ? 5 : 18} />
+      <Spacer.Column numberOfSpaces={windowWidth <= 375 || windowHeight < 800 ? 5 : 18} />
       <Container>
         <StyledLottieContainer>
-          <LottieView ref={animation} source={StarAnimation} loop={false} autoSize={true} />
+          <LottieView
+            ref={animation}
+            source={StarAnimation}
+            loop={false}
+            autoSize={true}
+            style={{
+              height: Math.max(256, windowHeight * 0.3),
+            }}
+          />
         </StyledLottieContainer>
         <TitleContainer>{t`Fais-tu partie de la phase de test ?`}</TitleContainer>
         <BodyContainer>
