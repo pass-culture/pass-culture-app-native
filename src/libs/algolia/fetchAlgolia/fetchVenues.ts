@@ -1,6 +1,7 @@
 import algoliasearch from 'algoliasearch'
 
 import { AlgoliaVenue } from 'libs/algolia'
+import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { env } from 'libs/environment'
 import { SuggestedVenue } from 'libs/venue'
 
@@ -11,9 +12,13 @@ const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_
 export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
   const venuesIndex = client.initIndex(env.ALGOLIA_VENUES_INDEX_NAME)
 
-  const response = await venuesIndex.search<AlgoliaVenue>(query || '', { attributesToHighlight })
-
-  return response.hits.map(buildSuggestedVenue)
+  try {
+    const response = await venuesIndex.search<AlgoliaVenue>(query || '', { attributesToHighlight })
+    return response.hits.map(buildSuggestedVenue)
+  } catch (error) {
+    captureAlgoliaError(error)
+    return [] as SuggestedVenue[]
+  }
 }
 
 const buildSuggestedVenue = (venue: AlgoliaVenue): SuggestedVenue => ({

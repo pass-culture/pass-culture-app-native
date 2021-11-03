@@ -1,15 +1,17 @@
-import { MultipleQueriesResponse } from '@algolia/client-search'
+import { Hit } from '@algolia/client-search'
+import flatten from 'lodash.flatten'
 
 import { LocationType } from 'features/search/enums'
 import { Response } from 'features/search/pages/useSearchResults'
 import { PartialSearchState } from 'features/search/types'
+import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
+import { SearchHit } from 'libs/search'
 
-import { AlgoliaHit } from '../algolia.d'
 import { RADIUS_FILTERS } from '../enums'
 import { buildFacetFilters } from '../fetchAlgolia/fetchAlgolia.facetFilters'
 import { buildNumericFilters } from '../fetchAlgolia/fetchAlgolia.numericFilters'
@@ -76,7 +78,7 @@ export const fetchMultipleAlgolia = async (
   paramsList: PartialSearchState[],
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean
-): Promise<MultipleQueriesResponse<AlgoliaHit>> => {
+): Promise<{ hits: SearchHit[]; nbHits: number }> => {
   const queries = paramsList.map((params) => ({
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
     query: params.query,
@@ -88,7 +90,18 @@ export const fetchMultipleAlgolia = async (
     },
   }))
 
-  return await client.multipleQueries(queries)
+  try {
+    const response = await client.multipleQueries<SearchHit>(queries)
+    const { results } = response
+
+    return {
+      hits: flatten(results.map(({ hits }) => hits)),
+      nbHits: results.reduce((prev, curr) => prev + curr.nbHits, 0),
+    }
+  } catch (error) {
+    captureAlgoliaError(error)
+    return { hits: [] as SearchHit[], nbHits: 0 }
+  }
 }
 
 export const fetchAlgolia = async (
@@ -99,20 +112,32 @@ export const fetchAlgolia = async (
   const searchParameters = buildSearchParameters(parameters, userLocation, isUserUnderage)
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
-  return await index.search(parameters.query || '', {
-    page: parameters.page || 0,
-    ...buildHitsPerPage(parameters.hitsPerPage),
-    ...searchParameters,
-    attributesToRetrieve,
-    attributesToHighlight: [], // We disable highlighting because we don't need it
-  })
+  try {
+    const response = await index.search<SearchHit>(parameters.query || '', {
+      page: parameters.page || 0,
+      ...buildHitsPerPage(parameters.hitsPerPage),
+      ...searchParameters,
+      attributesToRetrieve,
+      attributesToHighlight: [], // We disable highlighting because we don't need it
+    })
+    return response
+  } catch (error) {
+    captureAlgoliaError(error)
+    return { hits: [] as Hit<SearchHit>[], nbHits: 0, page: 0, nbPages: 0 }
+  }
 }
 
-export const fetchAlgoliaHits = async (objectIds: string[]): Promise<AlgoliaHit[]> => {
+export const fetchAlgoliaHits = async (objectIds: string[]): Promise<SearchHit[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
-  const response = await index.getObjects<AlgoliaHit>(objectIds, { attributesToRetrieve })
-  const hits = response.results.filter(Boolean) as AlgoliaHit[]
-  return hits.filter(({ offer }) => !offer.isEducational)
+
+  try {
+    const response = await index.getObjects<SearchHit>(objectIds, { attributesToRetrieve })
+    const hits = response.results.filter(Boolean) as SearchHit[]
+    return hits.filter(({ offer }) => !offer.isEducational)
+  } catch (error) {
+    captureAlgoliaError(error)
+    return [] as SearchHit[]
+  }
 }
 
 export const buildGeolocationParameter = (
