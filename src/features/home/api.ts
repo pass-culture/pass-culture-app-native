@@ -1,4 +1,5 @@
 import resolveResponse from 'contentful-resolve-response'
+import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
@@ -32,7 +33,7 @@ export function useHomepageModules(entryId?: string) {
   })
 
   const entry = selectPlaylist(entries || [])
-  return entry ? processHomepageEntry(entry) : []
+  return useMemo(() => (entry ? processHomepageEntry(entry) : []), [entry?.sys.id])
 }
 
 const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
