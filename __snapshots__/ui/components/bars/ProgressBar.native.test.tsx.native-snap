@@ -60,16 +60,21 @@ exports[`ProgressBar should render properly 1`] = `
   >
     <View
       backgroundColor="#eb0055"
+      barWidth={0}
+      forwardedRef={[Function]}
+      isAnimated={false}
+      onLayout={[Function]}
       progress={0.5}
       style={
-        Array [
-          Object {
-            "backgroundColor": "#eb0055",
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
+        Object {
+          "backgroundColor": "#eb0055",
+          "flexBasis": 0,
+          "flexGrow": 0.5,
+          "flexShrink": 1,
+          "left": 0,
+          "opacity": 1,
+          "position": "relative",
+        }
       }
       testID="progress-bar"
     />

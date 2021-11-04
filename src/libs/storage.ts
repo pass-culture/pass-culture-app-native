@@ -14,6 +14,7 @@ export type StorageKey =
   | 'traffic_campaign'
   | 'traffic_medium'
   | 'traffic_source'
+  | 'has_seen_birthday_notification_card'
 
 export const storage = {
   clear,

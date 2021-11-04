@@ -1,4 +1,6 @@
-import React, { FunctionComponent, memo } from 'react'
+import React, { FunctionComponent, memo, useEffect, useRef, useState } from 'react'
+import { View } from 'react-native'
+import * as Animatable from 'react-native-animatable'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
@@ -9,17 +11,60 @@ export interface ProgressBarProps {
   progress: number
   color: ColorsEnum
   icon: FunctionComponent<IconInterface>
+  isAnimated?: boolean
 }
 
-function ProgressBarComponent(props: ProgressBarProps) {
-  const Icon = props.icon
+const ProgressBarComponent: React.FC<ProgressBarProps> = ({
+  color,
+  progress,
+  icon: Icon,
+  isAnimated = false,
+}) => {
+  const barRef = useRef<Animatable.View & View>(null)
+  const [barWidth, setBarWidth] = useState(0)
+
+  useEffect(() => {
+    if (barRef.current && barWidth && isAnimated) {
+      barRef.current.transition(
+        {
+          transform: [
+            {
+              translateX: 0,
+            },
+          ],
+        },
+        {
+          transform: [
+            {
+              translateX: barWidth * progress,
+            },
+          ],
+        }
+      )
+    }
+  }, [progress, barRef, barWidth])
   return (
     <Container>
-      <IconContainer backgroundColor={props.color}>
+      <IconContainer backgroundColor={color}>
         <Icon color={ColorsEnum.WHITE} testID="progress-bar-icon" />
       </IconContainer>
       <ProgressBarContainer>
-        <Bar backgroundColor={props.color} progress={props.progress} testID="progress-bar" />
+        <Bar
+          ref={barRef}
+          onLayout={({
+            nativeEvent: {
+              layout: { width },
+            },
+          }) => setBarWidth(width)}
+          isAnimated={isAnimated}
+          progress={progress}
+          backgroundColor={color}
+          barWidth={barWidth}
+          testID="progress-bar"
+          useNativeDriver={true}
+          duration={1000}
+          easing={'ease-in-out'}
+        />
       </ProgressBarContainer>
     </Container>
   )
@@ -56,9 +101,15 @@ const ProgressBarContainer = styled.View({
   position: 'relative',
 })
 
-const Bar = styled.View<{ backgroundColor: string; progress: number }>(
-  ({ backgroundColor, progress }) => ({
-    flex: progress,
-    backgroundColor,
-  })
-)
+const Bar = styled(Animatable.View)<{
+  backgroundColor: string
+  progress: number
+  isAnimated: boolean
+  barWidth: number
+}>(({ backgroundColor, progress, isAnimated, barWidth }) => ({
+  backgroundColor,
+  flex: isAnimated ? 1 : progress,
+  position: 'relative',
+  left: isAnimated ? -barWidth : 0,
+  opacity: !isAnimated || barWidth ? 1 : 0,
+}))
