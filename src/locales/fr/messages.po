@@ -259,6 +259,7 @@ msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
+#: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
@@ -481,6 +482,7 @@ msgstr "Contacter le support"
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+#: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -1266,6 +1268,10 @@ msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. D
 msgid "Notices légales"
 msgstr "Notices légales"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Notification rechargement anniversaire"
+msgstr "Notification rechargement anniversaire"
+
 #: src/features/profile/pages/NotificationSettings.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Notifications"
@@ -1982,6 +1988,18 @@ msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton créd
 msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 
+#: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
+msgid ""
+"Tu as jusqu’à la veille de tes 18 ans pour\n"
+"profiter de ton budget."
+msgstr ""
+"Tu as jusqu’à la veille de tes 18 ans pour\n"
+"profiter de ton budget."
+
+#: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
+msgid "Tu as {age} ans..."
+msgstr "Tu as {age} ans..."
+
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Tu dois avoir"
 msgstr "Tu dois avoir"
@@ -2299,6 +2317,12 @@ msgstr "auteur"
 #: src/features/search/atoms/NoSearchResult.tsx
 msgid "autour de toi"
 msgstr "autour de toi"
+
+#: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
+msgid "birthday notification text"
+msgstr ""
+"Pour tes {age} ans, le Gouvernement vient d'ajouter {amount} euros à ton crédit. \n"
+"Tu disposes maintenant de :"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "c'est..."

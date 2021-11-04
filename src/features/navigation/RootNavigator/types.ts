@@ -92,6 +92,7 @@ export type RootStackParamList = {
   VerifyEligibility: { nextBeneficiaryValidationStep: BeneficiaryValidationStep }
   FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
+  RecreditBirthdayNotification: undefined
   PageNotFound: undefined
   Venue: { id: number }
   DeeplinksGenerator: undefined

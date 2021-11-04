@@ -73,16 +73,21 @@ exports[`CreditCeiling should render properly 1`] = `
     >
       <View
         backgroundColor="#320096"
+        barWidth={0}
+        forwardedRef={[Function]}
+        isAnimated={false}
+        onLayout={[Function]}
         progress={0.78}
         style={
-          Array [
-            Object {
-              "backgroundColor": "#320096",
-              "flexBasis": 0,
-              "flexGrow": 0.78,
-              "flexShrink": 1,
-            },
-          ]
+          Object {
+            "backgroundColor": "#320096",
+            "flexBasis": 0,
+            "flexGrow": 0.78,
+            "flexShrink": 1,
+            "left": 0,
+            "opacity": 1,
+            "position": "relative",
+          }
         }
         testID="progress-bar"
       />

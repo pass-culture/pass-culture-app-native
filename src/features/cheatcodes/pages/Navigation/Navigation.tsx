@@ -378,6 +378,12 @@ export function Navigation(): JSX.Element {
             onPress={() => navigate('DeeplinksGenerator')}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={`Notification Re-créditation Anniversaire`}
+            onPress={() => navigate('RecreditBirthdayNotification')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
