@@ -1,8 +1,9 @@
 import React from 'react'
+import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { UseChangeEmailMutationProps } from 'features/profile/mutations'
+import { useChangeEmailMutation, UseChangeEmailMutationProps } from 'features/profile/mutations'
 import { fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { ColorsEnum } from 'ui/theme'
@@ -11,6 +12,7 @@ import { ChangeEmail } from '../ChangeEmail'
 
 jest.mock('react-query')
 jest.mock('features/profile/mutations')
+const mockedUseChangeEmailMutation = mocked(useChangeEmailMutation)
 
 const mockShowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -22,6 +24,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<ChangeEmail/>', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should render correctly', () => {
     const renderAPI = render(<ChangeEmail />)
     expect(renderAPI.toJSON()).toMatchSnapshot()
@@ -70,5 +76,36 @@ describe('<ChangeEmail/>', () => {
         timeout: 5000,
       })
     })
+  })
+
+  it('should show error message if the API call is ko', async () => {
+    // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseChangeEmailMutation.mockImplementation(({ onError }: UseChangeEmailMutationProps) => ({
+      mutate: () => onError(undefined),
+    }))
+
+    const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
+    const submitButton = getByTestId('Enregistrer')
+    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'tonadresse@email.com')
+    fireEvent.changeText(passwordInput, 'password>=12')
+
+    fireEvent.press(submitButton)
+
+    await waitForExpect(() => {
+      expect(navigate).not.toBeCalled()
+      const errorMessage = queryByText('Mot de passe incorrect')
+      expect(errorMessage).toBeTruthy()
+    })
+
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseChangeEmailMutation.mockImplementation(
+      // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+      ({ onSuccess }: UseChangeEmailMutationProps) => ({
+        mutate: () => onSuccess(),
+      })
+    )
   })
 })
