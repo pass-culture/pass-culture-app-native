@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { OfferResponse } from 'api/gen'
 import { ExclusivityPane } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useSilentOffer } from 'features/offer/api/useOffer'
+import { useOffer } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, useGeolocation } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
@@ -41,7 +41,7 @@ export const shouldDisplayExcluOffer = (
 export const ExclusivityModule = ({ alt, image, id, display }: ExclusivityPane) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { position } = useGeolocation()
-  const { data: offer } = useSilentOffer(id)
+  const { data: offer } = useOffer({ offerId: id })
 
   const handlePressExclu = useCallback(() => {
     if (typeof id !== 'number') return

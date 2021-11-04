@@ -1,3 +1,4 @@
+import { OfferResponse } from 'api/gen'
 import {
   BusinessPane,
   ExclusivityPane,
@@ -46,18 +47,26 @@ export const getRecommendationModule = (
 ): RecommendationPane | undefined =>
   modules.find((module) => module instanceof RecommendationPane) as RecommendationPane | undefined
 
+export const getExcluModules = (modules: ProcessedModule[]): ExclusivityPane[] =>
+  modules.filter((module) => module instanceof ExclusivityPane) as ExclusivityPane[]
+
 export const getModulesToDisplay = (
   modules: ProcessedModule[],
   homeModules: HomeModuleResponse,
   homeVenuesModules: HomeVenuesModuleResponse,
   recommendedHits: SearchHit[],
+  excluOffers: OfferResponse[],
   isLoggedIn: boolean
 ) =>
   modules.filter((module: ProcessedModule) => {
     if (module instanceof BusinessPane) {
       return showBusinessModule(module.targetNotConnectedUsersOnly, isLoggedIn)
     }
-    if (module instanceof ExclusivityPane) return true
+
+    if (module instanceof ExclusivityPane) {
+      return excluOffers.find((offer) => offer.id === module.id)
+    }
+
     if (module instanceof RecommendationPane) {
       return recommendedHits.length > module.display.minOffers
     }

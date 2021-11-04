@@ -1,8 +1,10 @@
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useHomepageModules } from 'features/home/api'
+import { useExcluOffers } from 'features/home/pages/useExcluOffers'
 import { useHomeVenueModules } from 'features/home/pages/useHomeVenueModules'
 
 import {
+  getExcluModules,
   getModulesToDisplay,
   getOfferModules,
   getVenueModules,
@@ -26,12 +28,16 @@ export function useDisplayedHomeModules(entryId?: string) {
   // 4. Get the offers for the recommended hits
   const recommendedHits = useHomeRecommendedHits(getRecommendationModule(modules))
 
-  // 5. Reconcile the three and filter the modules that will eventually be displayed
+  // 5. Get the exclusivity offers
+  const excluOffers = useExcluOffers(getExcluModules(modules))
+
+  // 6. Reconcile all the above and filter the modules that will eventually be displayed
   const displayedModules = getModulesToDisplay(
     modules,
     homeModules,
     homeVenuesModules,
     recommendedHits,
+    excluOffers,
     isLoggedIn
   )
   return { homeModules, homeVenuesModules, displayedModules, recommendedHits }

@@ -76,7 +76,7 @@ const excluModule = new ExclusivityPane({
   alt: 'alt',
   image: 'uri_to_image',
   moduleId: 'exclusivityPane-id',
-  offerId: 'ABCD',
+  id: 1234,
 })
 
 const visibleVenueModule = new VenuesModule({
@@ -123,6 +123,7 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
+        [],
         true
       )
       expect(connectedModules).toContain(connectedBusinessModule)
@@ -132,6 +133,7 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
+        [],
         false
       )
       expect(notConnectedModules).not.toContain(connectedBusinessModule)
@@ -143,6 +145,7 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
+        [],
         false
       )
       expect(displayedModules).toContain(excluModule)
@@ -154,6 +157,7 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
+        [],
         false
       )
       expect(displayedModules).toContain(visibleVenueModule)
@@ -165,6 +169,7 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
+        [],
         true
       )
       expect(notInHomeModules).not.toContain(excluModule)
@@ -177,6 +182,7 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
+        [],
         true
       )
       expect(displayedModules).not.toContain(emptyHits)
@@ -189,6 +195,7 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
+        [],
         true
       )
       expect(displayedModules).not.toContain({ hiddenOfferModule })
@@ -201,6 +208,7 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
+        [],
         true
       )
       expect(displayedModules).toContain(visibleOfferModule)
