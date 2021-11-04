@@ -112,91 +112,105 @@ Array [
             ]
           }
         >
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Nouvel e-mail
-          </Text>
           <View
-            numberOfSpaces={2}
             style={
               Array [
                 Object {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            borderColor="#c7c7cc"
-            height="small"
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
-                  "borderRadius": 22,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "paddingBottom": 4,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 4,
-                  "shadowColor": "#151515",
-                  "shadowOffset": Object {
-                    "height": 2,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.15,
-                  "shadowRadius": 6,
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "maxWidth": 500,
                   "width": "100%",
                 },
               ]
             }
           >
-            <TextInput
-              allowFontScaling={true}
-              autoCapitalize="none"
-              keyboardType="email-address"
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholder="tonadresse@email.com"
-              placeholderTextColor="#626262"
-              rejectResponderTermination={true}
+            <Text
               style={
                 Array [
                   Object {
                     "color": "#151515",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
-                    "height": "100%",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
+                    "lineHeight": 20,
                   },
                 ]
               }
-              textContentType="emailAddress"
-              underlineColorAndroid="transparent"
-              value=""
+            >
+              Nouvel e-mail
+            </Text>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
             />
+            <View
+              borderColor="#c7c7cc"
+              height="small"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 22,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 4,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 4,
+                    "shadowColor": "#151515",
+                    "shadowOffset": Object {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.15,
+                    "shadowRadius": 6,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <TextInput
+                allowFontScaling={true}
+                autoCapitalize="none"
+                keyboardType="email-address"
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="tonadresse@email.com"
+                placeholderTextColor="#626262"
+                rejectResponderTermination={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                  ]
+                }
+                textContentType="emailAddress"
+                underlineColorAndroid="transparent"
+                value=""
+              />
+            </View>
           </View>
         </View>
         <View
@@ -222,128 +236,142 @@ Array [
             ]
           }
         >
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Mot de passe
-          </Text>
           <View
-            numberOfSpaces={2}
             style={
               Array [
                 Object {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            borderColor="#c7c7cc"
-            height="small"
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
-                  "borderRadius": 22,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "paddingBottom": 4,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 4,
-                  "shadowColor": "#151515",
-                  "shadowOffset": Object {
-                    "height": 2,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.15,
-                  "shadowRadius": 6,
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "maxWidth": 500,
                   "width": "100%",
                 },
               ]
             }
           >
-            <TextInput
-              accessibilityLabel="Entrée pour le mot de passe"
-              accessible={true}
-              allowFontScaling={true}
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholder="Ton mot de passe"
-              placeholderTextColor="#626262"
-              rejectResponderTermination={true}
-              secureTextEntry={true}
+            <Text
               style={
                 Array [
                   Object {
                     "color": "#151515",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
-                    "height": "100%",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                  },
-                  Object {
-                    "flexBasis": 0,
-                    "flexGrow": 0.9,
-                    "flexShrink": 1,
+                    "lineHeight": 20,
                   },
                 ]
               }
-              testID="Entrée pour le mot de passe"
-              textContentType="password"
-              underlineColorAndroid="transparent"
-              value=""
+            >
+              Mot de passe
+            </Text>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
             />
             <View
-              accessibilityLabel="Basculer l'affichage du mot de passe"
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              borderColor="#c7c7cc"
+              height="small"
               style={
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 0.1,
-                  "flexShrink": 1,
-                  "maxWidth": 60,
-                  "opacity": 1,
-                }
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 22,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 4,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 4,
+                    "shadowColor": "#151515",
+                    "shadowOffset": Object {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.15,
+                    "shadowRadius": 6,
+                    "width": "100%",
+                  },
+                ]
               }
-              testID="Basculer l'affichage du mot de passe"
             >
+              <TextInput
+                accessibilityLabel="Entrée pour le mot de passe"
+                accessible={true}
+                allowFontScaling={true}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="Ton mot de passe"
+                placeholderTextColor="#626262"
+                rejectResponderTermination={true}
+                secureTextEntry={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0.9,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+                testID="Entrée pour le mot de passe"
+                textContentType="password"
+                underlineColorAndroid="transparent"
+                value=""
+              />
               <View
-                height="100%"
-                testID="eye-slash"
-                width="100%"
+                accessibilityLabel="Basculer l'affichage du mot de passe"
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 0.1,
+                    "flexShrink": 1,
+                    "maxWidth": 60,
+                    "opacity": 1,
+                  }
+                }
+                testID="Basculer l'affichage du mot de passe"
               >
-                <Text>
-                  eye-slash-SVG-Mock
-                </Text>
+                <View
+                  height="100%"
+                  testID="eye-slash"
+                  width="100%"
+                >
+                  <Text>
+                    eye-slash-SVG-Mock
+                  </Text>
+                </View>
               </View>
             </View>
           </View>

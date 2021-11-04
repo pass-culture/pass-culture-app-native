@@ -13,7 +13,7 @@ export function useChangeEmailMutation({ onSuccess, onError }: UseChangeEmailMut
   return useMutation(
     // TODO (PC-11573): call the API once available
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    (body: ChangeEmailRequest) => new Promise((resolve) => setTimeout(resolve, 2000)),
+    (body: ChangeEmailRequest) => new Promise((resolve, reject) => setTimeout(reject, 2000)),
     {
       onSuccess,
       onError,
