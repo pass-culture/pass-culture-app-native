@@ -15,16 +15,12 @@ export const eligibleSchools = {
       city: 'Carrières-sous-Poissy',
     },
     {
-      name: 'Lycée Jean Monnet',
-      city: 'La Queue-lez-Yvelines',
+      name: 'Lycée Emmanuel Mounier',
+      city: 'Châtenay-Malabry',
     },
     {
       name: 'Lycée Robert Doisneau',
       city: 'Corbeil-Essonnes',
-    },
-    {
-      name: 'Lycée Emmanuel Mounier',
-      city: 'Châtenay-Malabry',
     },
     {
       name: 'Collège Jacques Daguerre',
@@ -34,10 +30,18 @@ export const eligibleSchools = {
       name: 'Lycée Gustave Monod',
       city: 'Enghien-les-Bains',
     },
+    {
+      name: 'Lycée Jean Monnet',
+      city: 'La Queue-lez-Yvelines',
+    },
   ],
   [SchoolAcademyEnum.RENNES]: [
     {
-      name: 'Collège Prévert Gimguamp',
+      name: 'Collège Emile Mazé',
+      city: 'Guémené-sur-Scorff',
+    },
+    {
+      name: 'Collège Jacques Prévert',
       city: 'Guingamp',
     },
     {
@@ -45,56 +49,52 @@ export const eligibleSchools = {
       city: 'Guingamp',
     },
     {
-      name: 'Lycée Rosa Parks',
-      city: 'Rostrenen',
-    },
-    {
-      name: 'Lycée Pont de Buis',
-      city: 'Pont-de-Buis-lès-Quimerch',
-    },
-    {
-      name: 'Collège Aux quatre vents',
-      city: 'Lanmeur',
+      name: 'Collège Max Jacob',
+      city: 'Josselin',
     },
     {
       name: 'Lycée Saint Esprit',
       city: 'Landivisiau',
     },
     {
-      name: 'Collège Notre Dame de Penhors',
-      city: 'Pouldreuzic',
-    },
-    {
-      name: 'Lycée Maupertuis',
-      city: 'Saint-Malo',
-    },
-    {
-      name: 'Collège Beaumont Redon',
-      city: 'Redon',
-    },
-    {
-      name: 'Lycée Beaumont Redon',
-      city: 'Redon',
-    },
-    {
-      name: 'Lycée Jean Marie de la Mennais',
-      city: 'Ploërmel',
+      name: 'Collège Aux quatre vents',
+      city: 'Lanmeur',
     },
     {
       name: 'Lycée Louis Armand',
       city: 'Locminé',
     },
     {
-      name: 'Collège Max Jacob',
-      city: 'Josselin',
-    },
-    {
-      name: 'Collège Emile Maze',
-      city: 'Guémené-sur-Scorff',
-    },
-    {
       name: 'Collège Jean le Coutaller',
       city: 'Lorient',
+    },
+    {
+      name: 'Lycée La Mennais (Jean-Marie)',
+      city: 'Ploërmel',
+    },
+    {
+      name: 'Lycée Pont de Buis',
+      city: 'Pont-de-Buis-lès-Quimerch',
+    },
+    {
+      name: 'Collège Notre Dame de Penhors',
+      city: 'Pouldreuzic',
+    },
+    {
+      name: 'Lycée Beaumont',
+      city: 'Redon',
+    },
+    {
+      name: 'Collège Beaumont',
+      city: 'Redon',
+    },
+    {
+      name: 'Lycée Rosa Parks',
+      city: 'Rostrenen',
+    },
+    {
+      name: 'Lycée Maupertuis',
+      city: 'Saint-Malo',
     },
   ],
 }
