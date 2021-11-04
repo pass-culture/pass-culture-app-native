@@ -27,8 +27,6 @@ const mockCheck = mocked(check)
 
 describe('checkGeolocPermission()', () => {
   Platform.OS = 'ios'
-  beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
 
   it.each`
     permissionResult       | expectedState

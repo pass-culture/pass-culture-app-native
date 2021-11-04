@@ -25,10 +25,6 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
 }))
 
 describe('useModalContent', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('show default modal if no information yet', () => {
     mockOffer = undefined
 

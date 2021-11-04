@@ -22,9 +22,6 @@ function mockNavigatorPermissionsUndefined() {
 }
 
 describe('requestGeolocPermission()', () => {
-  beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
-
   it('should return GRANTED if web permission is "granted"', async () => {
     mockQuery.mockResolvedValueOnce({ state: 'granted' } as PermissionStatus)
     const state = await requestGeolocPermission()

@@ -15,7 +15,6 @@ describe('useMaxPrice when no user', () => {
       UserProfileResponse,
       unknown
     >)
-    jest.clearAllMocks()
   })
 
   it('returns 300 when no user logged in', () => {
@@ -30,7 +29,6 @@ describe('useMaxPrice when user is not beneficiary', () => {
         isBeneficiary: false,
       },
     } as UseQueryResult<UserProfileResponse, unknown>)
-    jest.clearAllMocks()
   })
 
   it('returns 300 when the user is not a beneficiary', () => {
@@ -45,7 +43,6 @@ describe('useMaxPrice when user under 18', () => {
         domainsCredit: { all: { remaining: 10_00, initial: 30_00 } },
       },
     } as UseQueryResult<UserProfileResponse, unknown>)
-    jest.clearAllMocks()
   })
 
   it('returns 30 when the user initial credit is 30', () => {

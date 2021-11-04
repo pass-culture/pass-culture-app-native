@@ -23,8 +23,6 @@ describe('<VenueHeader />', () => {
     jest.useRealTimers()
   })
 
-  beforeEach(jest.clearAllMocks)
-
   it('should render correctly', async () => {
     const { toJSON } = await renderVenueHeader()
     expect(toJSON()).toMatchSnapshot()

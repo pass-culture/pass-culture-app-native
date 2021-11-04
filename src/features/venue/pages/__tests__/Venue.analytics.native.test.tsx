@@ -24,9 +24,7 @@ describe('<VenueBody /> - Analytics', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
+
   afterAll(() => {
     jest.useRealTimers()
   })

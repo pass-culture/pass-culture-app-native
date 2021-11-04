@@ -17,7 +17,6 @@ jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 describe('<PrivacyPolicyModal />', () => {
-  beforeEach(jest.clearAllMocks)
   afterEach(cleanup)
 
   it('should render correctly', () => {

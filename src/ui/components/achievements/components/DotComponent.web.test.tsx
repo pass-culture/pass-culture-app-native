@@ -7,7 +7,6 @@ import { DotComponent, getColor } from './DotComponent'
 
 describe('<DotComponent />', () => {
   const onPress = jest.fn()
-  beforeEach(jest.clearAllMocks)
 
   it('should render correctly', () => {
     const renderAPI = renderDotComponent()

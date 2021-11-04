@@ -33,7 +33,6 @@ const mockedUseMaxPrice = mocked(useMaxPrice)
 describe('useFilterCount', () => {
   beforeAll(() => {
     mockedUseMaxPrice.mockImplementation(() => MAX_PRICE)
-    jest.clearAllMocks()
   })
 
   it.each`
@@ -105,7 +104,6 @@ describe('useFilterCount under 18', () => {
   const maxPriceUnder18 = 30
   beforeAll(() => {
     mockedUseMaxPrice.mockImplementation(() => maxPriceUnder18)
-    jest.clearAllMocks()
   })
 
   it('returns 0 when no filters even when the max price is not 300 (underage)', () => {

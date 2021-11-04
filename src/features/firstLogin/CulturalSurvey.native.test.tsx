@@ -46,8 +46,6 @@ beforeEach(() => {
   mockUseCurrentRoute('CulturalSurvey')
 })
 
-afterEach(jest.clearAllMocks)
-
 describe('<CulturalSurvey />', () => {
   it('should render correctly', async () => {
     const renderAPI = await renderCulturalSurveyWithNavigation()

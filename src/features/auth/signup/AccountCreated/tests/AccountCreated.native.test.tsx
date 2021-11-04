@@ -18,7 +18,6 @@ beforeEach(() => {
   mockedUseUserProfileInfo.mockReturnValue({
     data: { isBeneficiary: true, needsToFillCulturalSurvey: true },
   } as UseQueryResult<UserProfileResponse>)
-  jest.clearAllMocks()
 })
 
 describe('<AccountCreated />', () => {

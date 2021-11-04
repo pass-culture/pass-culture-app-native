@@ -80,8 +80,6 @@ describe('profile utils', () => {
     )
   })
   describe('handleCallToActionLink', () => {
-    afterEach(jest.clearAllMocks)
-
     it("should call openInbox and not call openUrl if url is appUrl and contains 'openInbox' string ", () => {
       const link = 'prefix' + 'openInbox'
       handleCallToActionLink(link)

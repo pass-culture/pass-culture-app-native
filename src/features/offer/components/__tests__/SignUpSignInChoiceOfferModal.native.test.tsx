@@ -7,9 +7,7 @@ import { SignUpSignInChoiceOfferModal } from '../SignUpSignInChoiceOfferModal'
 
 describe('SignUpSignInChoiceOfferModal', () => {
   const dismissModal = jest.fn()
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
+
   afterEach(cleanup)
 
   it('renders the modal', () => {

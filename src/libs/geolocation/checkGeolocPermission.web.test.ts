@@ -20,9 +20,7 @@ function mockNavigatorPermissionsUndefined() {
 }
 
 describe('checkGeolocPermission()', () => {
-  beforeEach(jest.clearAllMocks)
   afterEach(resetNavigatorPermissions)
-  afterAll(jest.clearAllMocks)
 
   it.each`
     permissionStatus                            | expectedState                                       | isPermissionAPIUndefined

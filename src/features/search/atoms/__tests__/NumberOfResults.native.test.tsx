@@ -26,8 +26,6 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 describe('NumberOfResults component', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('should correctly format the number of hit - without venue', () => {
     mockLocationFilter = { locationType: LocationType.EVERYWHERE }
     const getResultText = (count: number) =>

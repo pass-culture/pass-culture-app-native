@@ -11,7 +11,6 @@ const ONE_YEAR = 365 * 24 * 60 * 60 * 1000
 describe('useReviewInAppInformation', () => {
   beforeEach(() => {
     mockdate.set(new Date(dateNow))
-    jest.clearAllMocks()
     storage.saveObject('first_time_review_has_been_requested', dateNow)
   })
 

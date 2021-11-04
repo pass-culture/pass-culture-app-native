@@ -53,10 +53,6 @@ const search = mockInitIndex('').search as jest.Mock
 const baseParams = { locationFilter: { locationType: LocationType.EVERYWHERE } }
 
 describe('fetchAlgolia', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('should fetch with provided query and default page number', () => {
     const query = 'searched query'
 

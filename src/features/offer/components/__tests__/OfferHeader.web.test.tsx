@@ -52,7 +52,6 @@ jest.mock('features/favorites/pages/useFavorites', () =>
 
 describe('<OfferHeader />', () => {
   afterEach(async () => {
-    jest.clearAllMocks()
     await cleanup()
   })
 

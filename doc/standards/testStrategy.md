@@ -99,7 +99,7 @@ These are tips to avoid `console` within your tests.
   - try to add `await superFlushWithAct()`, and pass a `number` greater than `10` _(default)_ to flush more promises
   - try to use `waitForExpect` each time you anticipate expectations that should be made after the execution of asynchrone actions.
 - To test an expected error, clean it from your test (we already have the test description):
-  - Use `jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)` before each test and `jest.clearAllMocks()` after each test
+  - Use `jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)` before each test
 
 If none of those methods works, and your test still fail:
 

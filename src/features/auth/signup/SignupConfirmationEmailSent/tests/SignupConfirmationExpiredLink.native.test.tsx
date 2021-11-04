@@ -17,10 +17,6 @@ import { SignupConfirmationExpiredLink } from '../../SignupConfirmationExpiredLi
 
 jest.mock('features/navigation/helpers')
 
-beforeEach(() => {
-  jest.clearAllMocks()
-})
-
 const navigationProps = { route: { params: { email: 'test@email.com' } } }
 
 function renderSignupConfirmationExpiredLink() {

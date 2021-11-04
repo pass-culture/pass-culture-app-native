@@ -24,10 +24,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<ChangeEmail/>', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('should render correctly', () => {
     const renderAPI = render(<ChangeEmail />)
     expect(renderAPI.toJSON()).toMatchSnapshot()

@@ -19,8 +19,6 @@ const openPhoneNumber = jest.spyOn(ContactHelpers, 'openPhoneNumber')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('<ContactBlock/>', () => {
-  afterEach(jest.clearAllMocks)
-
   it('should open external email when the email button is press', () => {
     const { getByText } = render(<ContactBlock venueId={venueId} />)
     fireEvent.press(getByText('E-mail'))

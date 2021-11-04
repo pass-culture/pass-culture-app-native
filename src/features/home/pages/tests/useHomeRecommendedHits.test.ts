@@ -33,7 +33,6 @@ describe('useHomeRecommendedHits', () => {
   })
 
   afterEach(async () => {
-    jest.clearAllMocks()
     await cleanup()
   })
 

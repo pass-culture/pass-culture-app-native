@@ -24,7 +24,6 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
 
 describe('<BookingOfferModalComponent />', () => {
   afterEach(() => {
-    jest.clearAllMocks()
     cleanup()
   })
 

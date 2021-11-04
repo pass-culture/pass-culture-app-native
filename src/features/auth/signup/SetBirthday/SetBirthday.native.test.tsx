@@ -17,7 +17,6 @@ describe('SetBirthday Page', () => {
   beforeEach(() => {
     mockdate.set(new Date('2020-12-01T00:00:00Z'))
     jest.useFakeTimers()
-    jest.clearAllMocks()
   })
 
   it('should render properly', () => {

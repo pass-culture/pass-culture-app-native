@@ -14,9 +14,6 @@ import { ThirdCard } from './ThirdCard'
 const mockRequestGeolocPermission = mocked(requestGeolocPermission)
 
 describe('ThirdCard', () => {
-  beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
-
   it('should render third card', () => {
     const firstTutorial = render(<ThirdCard index={0} activeIndex={0} lastIndex={0} />)
     expect(firstTutorial).toMatchSnapshot()

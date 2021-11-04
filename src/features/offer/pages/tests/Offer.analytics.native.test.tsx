@@ -10,9 +10,6 @@ describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
 
   const trigger = (component: ReactTestInstance) => {
     act(() => {

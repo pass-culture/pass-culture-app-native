@@ -53,10 +53,6 @@ jest.mock('features/auth/AuthContext', () => ({
 const entryId = homepageEntriesAPIResponse.items[1].sys.id
 
 describe('Home api calls', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('getEntries', async () => {
     const result = await getEntries()
     expect(result[0]).toEqual(adaptedHomepageEntry)

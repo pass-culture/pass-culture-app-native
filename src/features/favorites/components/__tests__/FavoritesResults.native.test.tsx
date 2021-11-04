@@ -43,10 +43,6 @@ const mockData = {
 } as PaginatedFavoritesResponse
 
 describe('FavoritesResults component', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('should show no result message when list is empty', () => {
     // eslint-disable-next-line local-rules/independant-mocks
     mockUseFavorites.mockReturnValue({

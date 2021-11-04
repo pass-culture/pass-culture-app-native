@@ -21,8 +21,6 @@ jest.mock('features/home/api', () => ({
 }))
 
 describe('useBeneficiaryValidationNavigation', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('should navigate to home if user is undefined', async () => {
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()

@@ -26,9 +26,6 @@ const onSubmit = jest.fn()
 const onAcceptance = jest.fn()
 const onRefusal = jest.fn()
 
-beforeEach(jest.clearAllMocks)
-afterAll(jest.clearAllMocks)
-
 describe('useGeolocation()', () => {
   it('should call onSubmit() and onAcceptance() when requestGeolocPermission() returns GRANTED', async () => {
     mockPermissionResult(GeolocPermissionState.GRANTED)

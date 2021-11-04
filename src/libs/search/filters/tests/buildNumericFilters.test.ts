@@ -11,7 +11,6 @@ const selectedDate = new Date(2021, 4, 5, 9, 30)
 describe('buildNumericFilters', () => {
   beforeEach(() => {
     mockdate.set(new Date('2021-07-01T02:03:04'))
-    jest.clearAllMocks()
   })
 
   describe('offer price', () => {

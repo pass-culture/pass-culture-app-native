@@ -15,8 +15,6 @@ jest.mock('@react-navigation/bottom-tabs', () =>
 )
 
 describe('onNavigationStateChange()', () => {
-  afterEach(jest.clearAllMocks)
-
   it('should log screen view on navigation change', async () => {
     const { unmount } = navigationRender()
 

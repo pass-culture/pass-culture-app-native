@@ -16,8 +16,6 @@ jest.mock('../../GeolocationWrapper', () => ({
 }))
 
 describe('GeolocationActivationModal', () => {
-  afterEach(jest.clearAllMocks)
-
   it('should open settings to activate geoloc and log event deeplinkEnableLocation', () => {
     mockPermissionState = GeolocPermissionState.DENIED
     const renderAPI = render(

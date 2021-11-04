@@ -10,10 +10,6 @@ import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 
-beforeEach(() => {
-  jest.clearAllMocks()
-})
-
 const userEmail = 'john@wick.com'
 
 describe('<ChangeEmailExpiredLink />', () => {

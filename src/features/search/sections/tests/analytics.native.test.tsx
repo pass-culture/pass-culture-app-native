@@ -31,7 +31,6 @@ jest.mock('features/home/api', () => ({
 
 describe('Analytics - logUseFilter', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
     mockdate.set(Today)
     expect(analytics.logUseFilter).not.toBeCalled()
   })

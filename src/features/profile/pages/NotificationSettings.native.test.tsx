@@ -39,7 +39,6 @@ jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation
 
 describe('NotificationSettings', () => {
   afterEach(() => {
-    jest.clearAllMocks()
     cleanup()
   })
 

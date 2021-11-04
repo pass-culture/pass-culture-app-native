@@ -9,7 +9,6 @@ const mockSetSelectedDate = jest.fn()
 
 describe('CalendarPicker web component', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
     jest.spyOn(console, 'warn').mockImplementation(() => {})
   })
 

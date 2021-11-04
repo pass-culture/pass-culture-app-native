@@ -8,8 +8,6 @@ import { ABTestingProvider } from './ABTestingProvider'
 
 const mockedAbTestingRefresh = abTesting.refresh as jest.MockedFunction<typeof abTesting.refresh>
 
-afterEach(jest.clearAllMocks)
-
 describe('<ABTestingProvider />', () => {
   it('should configure() then refresh() A/B testing values then NOT call getValues() if no new config is available', async () => {
     // eslint-disable-next-line local-rules/independant-mocks

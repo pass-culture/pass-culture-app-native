@@ -17,8 +17,6 @@ jest.mock('features/venue/api/useVenueOffers')
 const venueId = venueResponseSnap.id
 
 describe('<Venue />', () => {
-  afterEach(jest.clearAllMocks)
-
   it('should match snapshot', async () => {
     const venue = await renderVenue(venueId)
     expect(venue).toMatchSnapshot()

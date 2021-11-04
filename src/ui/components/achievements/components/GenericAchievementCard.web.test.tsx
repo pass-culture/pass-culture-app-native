@@ -115,7 +115,6 @@ describe('<GenericAchievementCard />', () => {
         />
       )
     ).toThrowError()
-    jest.clearAllMocks()
   })
 
   it('should not have a button when not active index', () => {

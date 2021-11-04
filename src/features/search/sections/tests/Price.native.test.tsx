@@ -23,7 +23,6 @@ const mockedUseMaxPrice = mocked(useMaxPrice)
 describe('Price component', () => {
   beforeEach(() => {
     mockedUseMaxPrice.mockImplementation(() => 300)
-    jest.clearAllMocks()
   })
   it('should render initial price range correctly', () => {
     expect(render(<Price />).queryByText('0 € - 300 €')).toBeTruthy()
@@ -89,7 +88,6 @@ describe('Price component', () => {
 describe('Price component for underage', () => {
   const maxPrice = 50
   beforeEach(() => {
-    jest.clearAllMocks()
     mockSearchState = initialSearchState
     mockedUseMaxPrice.mockImplementation(() => maxPrice)
     // priceRange is initialized in the searchWrapper

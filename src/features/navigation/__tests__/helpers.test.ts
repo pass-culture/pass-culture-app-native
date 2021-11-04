@@ -21,7 +21,6 @@ const openURLSpy = jest.spyOn(Linking, 'openURL')
 
 describe('Navigation helpers', () => {
   afterEach(() => {
-    jest.clearAllMocks()
     openURLSpy.mockReset()
   })
 

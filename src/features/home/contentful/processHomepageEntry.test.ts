@@ -4,9 +4,6 @@ import { adaptedHomepageEntry } from 'tests/fixtures/homepageEntries'
 import { buildSearchParams, processHomepageEntry } from './processHomepageEntry'
 
 describe('processHomepageEntry', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
   it('should format homepage entries so we can use it to display infos on home page', () => {
     expect(processHomepageEntry(adaptedHomepageEntry)).toMatchSnapshot()
   })

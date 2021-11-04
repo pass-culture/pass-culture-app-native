@@ -22,10 +22,6 @@ mockdate.set(new Date('2020-12-01T00:00:00Z'))
 const credit = 1000
 
 describe('useMarkedDates()', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('should not mark any dates if there are no stocks', () => {
     const { result } = renderHook(() => useMarkedDates([], 10))
     expect(result.current).toStrictEqual({})

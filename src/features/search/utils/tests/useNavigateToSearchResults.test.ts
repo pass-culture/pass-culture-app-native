@@ -13,7 +13,6 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 describe('useNavigateToSearchResults', () => {
-  beforeEach(jest.clearAllMocks)
   it('should clear the previous search state', () => {
     const { result } = renderHook(() => useNavigateToSearchResults({ from: 'bookings' }))
     result.current()

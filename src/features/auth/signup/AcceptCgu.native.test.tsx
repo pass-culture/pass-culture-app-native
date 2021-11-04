@@ -26,8 +26,6 @@ import { AcceptCgu } from './AcceptCgu'
 jest.mock('features/auth/settings')
 jest.mock('libs/monitoring')
 
-afterEach(jest.clearAllMocks)
-
 function simulateNoNetwork() {
   jest.spyOn(netInfoModule, 'useNetInfo').mockReturnValue({
     isConnected: false,

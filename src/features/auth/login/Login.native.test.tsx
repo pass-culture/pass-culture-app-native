@@ -28,7 +28,6 @@ describe('<Login/>', () => {
       showEligibleCard: false,
       isBeneficiary: true,
     } as UserProfileResponse)
-    jest.clearAllMocks()
     mockUsePreviousRoute.mockReturnValue(null)
     useRoute.mockImplementation(() => ({
       params: {},

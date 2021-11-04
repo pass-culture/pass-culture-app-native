@@ -11,8 +11,6 @@ jest.mock('features/home/api', () => ({
 }))
 
 describe('useValidateEmail function', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('should not return an error message if the new email is valid', () => {
     const { result } = renderHook(() => useValidateEmail(newUserEmail))
     expect(result.current).toEqual(null)

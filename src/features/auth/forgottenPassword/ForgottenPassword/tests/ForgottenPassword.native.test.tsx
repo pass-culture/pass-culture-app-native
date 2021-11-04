@@ -22,10 +22,6 @@ beforeEach(() => {
   server.use(requestPasswordResetSuccess())
 })
 
-afterEach(() => {
-  jest.clearAllMocks()
-})
-
 describe('<ForgottenPassword />', () => {
   it('should enable validate button when email input is filled', async () => {
     const { getByPlaceholderText, toJSON } = renderForgottenPassword()

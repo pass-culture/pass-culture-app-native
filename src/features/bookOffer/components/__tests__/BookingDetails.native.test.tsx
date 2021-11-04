@@ -56,10 +56,6 @@ const mockStocks = mockOffer.stocks
 const mockDigitalStocks = mockDigitalOffer.stocks
 
 describe('<BookingDetails />', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('should initialize correctly state when offer isDigital', async () => {
     mockBookingState = {
       bookingState: mockInitialBookingState as BookingState,

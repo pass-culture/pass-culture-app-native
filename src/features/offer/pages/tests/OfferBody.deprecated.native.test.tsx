@@ -38,7 +38,6 @@ describe('<OfferBody />', () => {
     mockdate.set(new Date(2021, 0, 1))
   })
 
-  beforeEach(jest.clearAllMocks)
   afterEach(cleanup)
 
   it('should match snapshot for physical offer', async () => {

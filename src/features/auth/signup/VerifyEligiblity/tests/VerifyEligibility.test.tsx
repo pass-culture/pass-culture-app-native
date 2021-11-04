@@ -8,10 +8,6 @@ import { render, fireEvent } from 'tests/utils'
 
 import { VerifyEligibility } from '../VerifyEligibility'
 
-beforeEach(() => {
-  jest.clearAllMocks()
-})
-
 let mockDepositAmount = '300 €'
 jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
 jest.mock('features/auth/settings')
