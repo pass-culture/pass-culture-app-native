@@ -4,10 +4,17 @@ import { env } from 'libs/environment'
 
 export const contactSupport = {
   forChangeEmailExpiredLink(email: string) {
-    openUrl(
-      `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=Lien%20de%20changement%20d'e-mail&body=Bonjour%2C%0D%0A%0D%0AJe%20vous%20%C3%A9cris%20afin%20de%20vous%20informer%20de%20l'expiration%20du%20lien%20de%20changement%20d'e-mail%20associ%C3%A9%20%C3%A0%20l%E2%80%99adresse%20e-mail%20${email}.%0D%0A%0D%0ABien%20cordialement%2C`,
-      false
-    ).then(() => analytics.logMailTo('forChangeEmailExpiredLink'))
+    const subject = encodeURI("Lien de changement d'e-mail")
+    const body = encodeURI(
+      'Bonjour, \n' +
+        '\n' +
+        `Je vous écris afin de vous informer de l'expiration du lien de changement d'e-mail associé à l'adresse e-mail ${email}. \n` +
+        '\n' +
+        'Bien cordialement,'
+    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false).then(() =>
+      analytics.logMailTo('forChangeEmailExpiredLink')
+    )
   },
   forGenericQuestion() {
     openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}`, false).then(() =>
@@ -21,33 +28,65 @@ export const contactSupport = {
     ).then(() => analytics.logMailTo('forSignupConfirmationEmailNotReceived'))
   },
   forSignupConfirmationExpiredLink(email: string) {
-    openUrl(
-      `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=Lien%20de%20confirmation%20de%20compte%20expir%C3%A9&body=Bonjour%2C%0D%0A%0D%0AJe%20vous%20%C3%A9cris%20afin%20de%20vous%20informer%20de%20l'expiration%20du%20lien%20de%20confirmation%20de%20compte%20associ%C3%A9%20%C3%A0%20l%E2%80%99adresse%20e-mail%20${email}.%0D%0A%0D%0ABien%20cordialement%2C`,
-      false
-    ).then(() => analytics.logMailTo('forSignupConfirmationExpiredLink'))
+    const subject = encodeURI('Lien de confirmation de compte expiré')
+    const body = encodeURI(
+      'Bonjour, \n' +
+        '\n' +
+        `Je vous écris afin de vous informer de l'expiration du lien de confirmation de compte associé à l'adresse e-mail ${email}. \n` +
+        '\n' +
+        'Bien cordialement,'
+    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false).then(() =>
+      analytics.logMailTo('forSignupConfirmationExpiredLink')
+    )
   },
   forResetPasswordEmailNotReceived(email: string) {
-    openUrl(
-      `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=Non-r%C3%A9ception%20d'email%20de%20r%C3%A9initialisation%20de%20mot%20de%20passe&body=Bonjour%2C%0D%0A%0D%0AJe%20vous%20%C3%A9cris%20afin%20de%20vous%20informer%20de%20la%20non-r%C3%A9ception%20de%20l'email%20de%20r%C3%A9initialisation%20de%20mot%20de%20passe%20associ%C3%A9%20%C3%A0%20l%E2%80%99adresse%20e-mail%20${email}%2C%20y%20compris%20dans%20mes%20spams.%0D%0A%0D%0ABien%20cordialement%2C`,
-      false
-    ).then(() => analytics.logMailTo('forResetPasswordEmailNotReceived'))
+    const subject = encodeURI("Non réception d'email de réinitialisation de mot de passe")
+    const body = encodeURI(
+      'Bonjour, \n' +
+        '\n' +
+        `Je vous écris afin de vous informer de la non réception de l'email de réinitialisation de mot de passe associé à l'adresse e-mail ${email}, y compris dans mes spams. \n` +
+        '\n' +
+        'Bien cordialement,'
+    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false).then(() =>
+      analytics.logMailTo('forResetPasswordEmailNotReceived')
+    )
   },
   forResetPasswordExpiredLink(email: string) {
-    openUrl(
-      `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=Lien%20de%20r%C3%A9initialisation%20de%20mot%20de%20passe%20expir%C3%A9&body=Bonjour%2C%0D%0A%0D%0AJe%20vous%20%C3%A9cris%20afin%20de%20vous%20informer%20de%20l'expiration%20du%20lien%20de%20r%C3%A9initialisation%20de%20mot%20de%20passe%20associ%C3%A9%20%C3%A0%20l%E2%80%99adresse%20e-mail%20${email}.%0D%0A%0D%0ABien%20cordialement%2C`,
-      false
-    ).then(() => analytics.logMailTo('forResetPasswordExpiredLink'))
+    const subject = encodeURI('Lien de réinitialisation de mot de passe expiré')
+    const body = encodeURI(
+      'Bonjour, \n' +
+        '\n' +
+        `Je vous écris afin de vous informer de l'expiration du lien de réinitialisation de mot de passe associé à l'adresse e-mail ${email}. \n` +
+        '\n' +
+        'Bien cordialement,'
+    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false).then(() =>
+      analytics.logMailTo('forResetPasswordExpiredLink')
+    )
   },
   forAccountDeletion(email: string) {
-    openUrl(
-      `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=Suppression%20de%20mon%20compte%20pass%20Culture&body=Bonjour%2C%0D%0A%0D%0AJe%20vous%20%C3%A9cris%20afin%20de%20vous%20demander%20la%20suppression%20de%20mon%20compte%20pass%20Culture%20associ%C3%A9%20%C3%A0%20l%E2%80%99adresse%20e-mail%20${email}.%20%0D%0A%0D%0AJ%27ai%20conscience%20que%20la%20suppression%20de%20mon%20compte%20entra%C3%AEnera%20l%27annulation%20d%C3%A9finitive%20de%20l%27ensemble%20de%20mes%20r%C3%A9servations%20en%20cours.%0D%0A%0D%0AJ%27ai%2030%20jours%20pour%20me%20r%C3%A9tracter.%20Au-del%C3%A0%20de%20ce%20d%C3%A9lai%2C%20je%20ne%20pourrai%20plus%20acc%C3%A9der%20%C3%A0%20mon%20compte%20pass%20Culture%2C%20ni%20au%20cr%C3%A9dit%20%C3%A9ventuellement%20restant.%0D%0A%0D%0ABien%20cordialement%2C`,
-      false
-    ).then(() => analytics.logMailTo('forAccountDeletion'))
+    const subject = encodeURI('Suppression de mon compte pass Culture')
+    const body = encodeURI(
+      'Bonjour, \n' +
+        '\n' +
+        `Je vous écris afin de vous demander la suppression de mon compte pass Culture associé à l'adresse e-mail ${email}. \n` +
+        '\n' +
+        `J'ai conscience que la suppression de mon compte entraînera l'annulation définitive de l'ensemble de mes réservations en cours. \n` +
+        '\n' +
+        `J'ai 20jours pour me rétracter. Au-delà de ce délai, je ne pourrai plus accéder à mon compte pass Culture, ni au crédit éventuellement restant. \n` +
+        '\n' +
+        'Bien cordialement,'
+    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false).then(() =>
+      analytics.logMailTo('forAccountDeletion')
+    )
   },
   forPhoneNumberConfirmation() {
-    openUrl(
-      `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=Confirmation%20de%20num%C3%A9ro%20de%20t%C3%A9l%C3%A9phone`,
-      false
-    ).then(() => analytics.logMailTo('forPhoneNumberConfirmation'))
+    const subject = encodeURI('Confirmation de numéro de téléphone')
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}`, false).then(() =>
+      analytics.logMailTo('forPhoneNumberConfirmation')
+    )
   },
 }
