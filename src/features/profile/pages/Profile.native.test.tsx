@@ -89,9 +89,6 @@ jest.mock('features/auth/api', () => ({
 jest.mock('features/auth/settings')
 
 describe('Profile component', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
   afterEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION

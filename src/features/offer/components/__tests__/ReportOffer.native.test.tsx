@@ -8,10 +8,6 @@ jest.mock('features/offer/services/useReportOffer')
 jest.mock('features/offer/components/useReportOfferModalContent')
 
 describe('ReportOffer', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe('General modal behavior', () => {
     const isReportOfferModalVisible = false
 

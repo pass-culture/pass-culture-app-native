@@ -36,9 +36,6 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 }))
 
 describe('SearchResults component', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
   it('should log SearchScrollToPage when hitting the bottom of the page', () => {
     const { getByTestId } = render(<SearchResults />)
     const flatlist = getByTestId('searchResultsFlatlist')

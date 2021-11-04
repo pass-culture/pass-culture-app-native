@@ -20,10 +20,6 @@ const inactiveAchievementCardProps = {
   lastIndex: 1,
 }
 
-afterEach(() => {
-  jest.clearAllMocks()
-})
-
 describe('FourthCard', () => {
   it('should render fourth card', () => {
     const firstTutorial = render(<FourthCard {...activeAchievementCardProps} />)

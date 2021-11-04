@@ -9,7 +9,7 @@ jest.mock('libs/geolocation/requestGeolocPermission', () =>
 
 describe('requestGeolocPermission android', () => {
   beforeAll(() => (Platform.OS = 'android'))
-  afterEach(() => jest.clearAllMocks())
+
   it('should ask for android permission and return right state if granted', async () => {
     // eslint-disable-next-line local-rules/independant-mocks
     jest.spyOn(PermissionsAndroid, 'requestMultiple').mockResolvedValue({

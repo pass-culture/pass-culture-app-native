@@ -17,7 +17,6 @@ jest.mock('features/auth/settings', () => ({
 }))
 
 describe('SecondCard', () => {
-  beforeEach(jest.clearAllMocks)
   it('should render second card', () => {
     const firstTutorial = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />)
     expect(firstTutorial).toMatchSnapshot()

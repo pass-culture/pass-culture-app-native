@@ -5,8 +5,6 @@ import { env } from 'libs/environment'
 import { version } from '../../../../package.json'
 import { eventMonitoring } from '../services'
 
-afterEach(jest.clearAllMocks)
-
 describe('eventMonitoring', () => {
   describe('init()', () => {
     it("should call sentry's init() when enabled", () => {

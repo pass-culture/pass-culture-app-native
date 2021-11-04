@@ -25,8 +25,6 @@ const navigation = {
 } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
 describe('CheatCodes component', () => {
-  afterEach(jest.clearAllMocks)
-
   it('should render correctly', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const instance = renderCheatCodes()

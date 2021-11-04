@@ -5,8 +5,6 @@ import { simulateWebviewMessage, render } from 'tests/utils'
 
 import { ReCaptcha } from './ReCaptcha'
 
-afterEach(jest.clearAllMocks)
-
 const reCaptchaProps = {
   onClose: jest.fn(),
   onError: jest.fn(),

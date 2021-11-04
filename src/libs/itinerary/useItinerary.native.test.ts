@@ -17,9 +17,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('useItinerary', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
   it('returns availableApps', async () => {
     const { result, waitFor } = renderHook(useItinerary)
     await waitFor(() => !!result.current.availableApps)

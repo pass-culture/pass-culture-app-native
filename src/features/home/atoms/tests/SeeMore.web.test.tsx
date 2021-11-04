@@ -6,9 +6,6 @@ import { SeeMore } from '../SeeMore'
 
 const onPress = jest.fn()
 describe('SeeMore', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
   it('renders correctly', () => {
     const seeMore = render(<SeeMore onPress={onPress} />)
     expect(seeMore).toMatchSnapshot()

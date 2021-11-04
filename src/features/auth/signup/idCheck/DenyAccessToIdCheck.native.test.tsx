@@ -4,10 +4,6 @@ import { render } from 'tests/utils'
 
 import { DenyAccessToIdCheckModal } from './DenyAccessToIdCheck'
 
-beforeEach(() => {
-  jest.clearAllMocks()
-})
-
 describe('<DenyAccessToIdCheckModal />', () => {
   const dismissModal = jest.fn()
   it('should match snapshot', async () => {

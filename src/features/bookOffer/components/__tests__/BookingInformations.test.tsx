@@ -22,10 +22,6 @@ const mockedUseBookingOffer = mocked(useBookingOffer)
 const mockedUseBookingStock = mocked(useBookingStock)
 
 describe('<BookingInformations />', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('should return empty component when no offer', async () => {
     mockedUseBookingOffer.mockReturnValueOnce(undefined)
     const myComponent = render(<BookingInformations />)

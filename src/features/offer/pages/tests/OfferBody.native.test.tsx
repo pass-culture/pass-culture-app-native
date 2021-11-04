@@ -22,8 +22,6 @@ describe('<OfferBody />', () => {
 
   const offerId = 1
 
-  beforeEach(jest.clearAllMocks)
-
   it("should open the report modal upon clicking on 'signaler l'offre'", async () => {
     const OfferBodyComponent = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 

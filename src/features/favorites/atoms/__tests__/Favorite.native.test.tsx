@@ -80,7 +80,6 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
 
 describe('<Favorite /> component', () => {
   afterEach(() => {
-    jest.clearAllMocks()
     cleanup()
   })
 

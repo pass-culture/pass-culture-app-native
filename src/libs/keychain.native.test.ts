@@ -2,10 +2,6 @@ import * as Keychain from '__mocks__/react-native-keychain'
 
 import { getRefreshToken, saveRefreshToken } from './keychain'
 
-beforeEach(() => {
-  jest.clearAllMocks()
-})
-
 describe('saveRefreshToken()', () => {
   it('should call setGenericPassword from Keychain', async () => {
     expect.assertions(2)

@@ -28,10 +28,6 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
 }))
 
 describe('<BookingImpossible />', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('should call notifyWebappLinkSent when adding to favorites', async () => {
     const useMutationAddFavoriteCallbacks: {
       onError: (error: unknown) => void

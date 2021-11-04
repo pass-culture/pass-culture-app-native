@@ -17,9 +17,6 @@ const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
 jest.mock('features/home/api', () => ({ useUserProfileInfo: jest.fn() }))
 
 describe('Header', () => {
-  beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
-
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
     const { queryByText } = renderHeader({ isLoggedIn: false, isBeneficiary: false })
     expect(queryByText('Accueil')).toBeTruthy()

@@ -33,7 +33,6 @@ describe('<RootNavigator />', () => {
   })
 
   afterEach(async () => {
-    jest.clearAllMocks()
     await storage.clear('has_accepted_cookie')
   })
 

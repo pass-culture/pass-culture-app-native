@@ -32,7 +32,6 @@ const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> 
 
 describe('TabBar', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
     mockedUseTabNavigationContext.mockReturnValue({
       setTabNavigationState: jest.fn(),
       tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
@@ -41,7 +40,6 @@ describe('TabBar', () => {
       })),
     })
   })
-  afterAll(jest.clearAllMocks)
 
   it('renders correctly', () => {
     const renderAPI = renderTabBar()

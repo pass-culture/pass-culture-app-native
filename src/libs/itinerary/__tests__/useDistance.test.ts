@@ -14,9 +14,6 @@ const position = { latitude: 90, longitude: 90 }
 const offerPosition = { lat: 31, long: 56 }
 
 describe('useDistance()', () => {
-  beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
-
   it('should call useGeolocation and formatDistance when geolocation is on', () => {
     mockUseGeolocation.mockReturnValue({ position } as IGeolocationContext)
     useDistance(offerPosition)

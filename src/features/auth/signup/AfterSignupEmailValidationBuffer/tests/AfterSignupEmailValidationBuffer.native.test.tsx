@@ -42,7 +42,6 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   afterEach(() => {
     navigate.mockRestore()
-    jest.clearAllMocks()
   })
 
   describe('when timestamp is NOT expired', () => {

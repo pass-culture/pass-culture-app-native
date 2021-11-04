@@ -47,7 +47,6 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 }))
 
 describe('LocationFilter component', () => {
-  beforeEach(jest.clearAllMocks)
   afterEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION

@@ -59,7 +59,6 @@ jest.mock('features/home/api', () => ({
 }))
 
 describe('NonBeneficiaryHeader  ', () => {
-  afterEach(jest.clearAllMocks)
   afterAll(mockdate.reset)
 
   it('should render the right body for user under 18 years old', () => {

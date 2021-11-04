@@ -11,8 +11,6 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 jest.mock('./support.services', () => jest.requireActual('./support.services'))
 
 describe('Support services', () => {
-  afterEach(jest.clearAllMocks)
-
   Object.keys(contactSupport).forEach((key) => {
     it(`${key} should open external url for contacting support with analytics`, async () => {
       const method = key as keyof typeof contactSupport

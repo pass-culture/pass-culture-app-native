@@ -9,9 +9,6 @@ import { bookingsSnap } from '../api/bookingsSnap'
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 
 describe('<OnGoingBookingsList /> - Analytics', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
   const nativeEventMiddle = {
     layoutMeasurement: { height: 1000 },
     contentOffset: { y: 400 }, // how far did we scroll

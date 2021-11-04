@@ -13,7 +13,6 @@ describe('useMediaQuery native', () => {
   const scale = 1
   const fontScale = 1
   const mySpy = jest.spyOn(RN, 'useWindowDimensions')
-  afterEach(jest.clearAllMocks)
 
   it('should return isMobile to true when windowWidth < theme.breakpoints.md', () => {
     const windowDimensions = {

@@ -30,9 +30,6 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 jest.mock('libs/analytics')
 
 describe('SearchBox component', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
   it('should call logSearchQuery on submit', () => {
     const { getByPlaceholderText } = render(<SearchBox />)
     const searchInput = getByPlaceholderText('Titre, artiste, lieu...')

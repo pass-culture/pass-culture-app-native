@@ -16,10 +16,6 @@ import { ResetPasswordExpiredLink } from '../ResetPasswordExpiredLink'
 
 jest.mock('features/navigation/helpers')
 
-beforeEach(() => {
-  jest.clearAllMocks()
-})
-
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     const { getByText } = await renderResetPasswordExpiredLink()

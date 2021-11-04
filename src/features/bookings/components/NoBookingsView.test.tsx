@@ -17,8 +17,6 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 describe('<NoBookingsView />', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('should navigate to Search when pressing button and log event', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<NoBookingsView />))

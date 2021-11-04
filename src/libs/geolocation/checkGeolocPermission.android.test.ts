@@ -26,8 +26,6 @@ const mockCheckMultiple = mocked(checkMultiple)
 
 describe('checkGeolocPermission()', () => {
   Platform.OS = 'android'
-  beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
 
   it.each`
     ACCESS_FINE_LOCATION | ACCESS_COARSE_LOCATION | expectedState

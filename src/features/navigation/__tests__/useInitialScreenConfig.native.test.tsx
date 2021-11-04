@@ -18,10 +18,6 @@ const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAut
 jest.mock('features/auth/AuthContext')
 
 describe('useInitialScreen()', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   afterAll(async () => {
     await storage.clear('has_seen_tutorials')
     await storage.clear('has_seen_eligible_card')

@@ -23,7 +23,6 @@ jest.mock('features/auth/settings')
 
 describe('<BeneficiaryRequestSent />', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
     mockedUseUserProfileInfo.mockReturnValue({
       data: { isBeneficiary: true, needsToFillCulturalSurvey: true },
     } as UseQueryResult<UserProfileResponse>)

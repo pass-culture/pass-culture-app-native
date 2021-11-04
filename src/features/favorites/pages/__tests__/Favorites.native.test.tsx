@@ -20,7 +20,6 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 
 describe('Favorites component', () => {
   afterEach(async () => {
-    jest.clearAllMocks()
     await cleanup()
   })
 

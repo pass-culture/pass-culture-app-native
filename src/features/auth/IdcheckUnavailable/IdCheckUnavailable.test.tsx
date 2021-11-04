@@ -12,10 +12,6 @@ jest.mock('features/auth/settings')
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
-beforeEach(() => {
-  jest.clearAllMocks()
-})
-
 describe('<IdCheckUnavailable/>', () => {
   it('should open DSM on click', () => {
     const { getByText } = renderIdCheckUnavailable()

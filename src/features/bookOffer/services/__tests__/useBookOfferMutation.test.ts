@@ -17,10 +17,6 @@ const setup = (queryClient: QueryClient) => {
 }
 
 describe('useBookOfferMutation', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('invalidates userProfile after successfully booking an offer', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))

@@ -46,7 +46,6 @@ jest.mock('libs/geolocation', () => ({
 
 describe('useHomeModules', () => {
   afterEach(async () => {
-    jest.clearAllMocks()
     await cleanup()
   })
 

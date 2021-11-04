@@ -4,10 +4,6 @@ import {
 } from 'features/offer/components/useReportOfferModalContent'
 
 describe('useReportOfferModalContent hook description', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   const setReportStep = jest.fn()
   const dismissModal = jest.fn()
   const offerId = 0

@@ -9,10 +9,6 @@ jest.mock('api/api')
 jest.mock('react-query')
 
 describe('[hook] useCancelBookingMutation', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   const onSuccess = jest.fn()
   const onError = jest.fn()
   const queryClient = useQueryClient()

@@ -26,7 +26,6 @@ jest.mock('features/search/components', () => ({
 
 describe('Analytics - logUseFilter', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
     mockdate.set(Today)
     expect(analytics.logUseFilter).not.toBeCalled()
   })

@@ -35,8 +35,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<CancelBookingModal />', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('should dismiss modal on press rightIconButton', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const page = render(

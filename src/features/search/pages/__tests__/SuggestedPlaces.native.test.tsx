@@ -32,8 +32,6 @@ jest.mock('features/search/api', () => ({
 }))
 
 describe('SuggestedPlaces component', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('should dispatch SET_LOCATION_PLACE on pick place', () => {
     mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
     const { getByTestId } = render(<SuggestedPlaces query="paris" />)

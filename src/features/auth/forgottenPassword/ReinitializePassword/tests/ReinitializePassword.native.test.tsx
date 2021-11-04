@@ -21,10 +21,6 @@ describe('ReinitializePassword Page', () => {
     useRoute.mockReturnValue({ params: ROUTE_PARAMS })
   })
 
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('should enable the submit button when passwords are equals and filled and password is correct', async () => {
     const { getByPlaceholderText, getByTestId } = renderReinitializePassword()
     const passwordInput = getByPlaceholderText('Ton mot de passe')

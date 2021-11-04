@@ -28,8 +28,6 @@ beforeEach(() => {
   simulateUserMeSuccess()
 })
 
-afterEach(jest.clearAllMocks)
-
 describe('<EighteenBirthdayCard />', () => {
   it('should render eighteen birthday card', async () => {
     jest.useFakeTimers()

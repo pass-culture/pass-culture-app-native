@@ -49,8 +49,6 @@ jest.mock('features/offer/services/useReasonsForReporting', () => ({
 }))
 
 describe('<ReportOfferReason />', () => {
-  beforeEach(jest.clearAllMocks)
-
   describe('Report offer button', () => {
     const queryClient = useQueryClient()
 

@@ -50,7 +50,6 @@ const defaultParams = {
 }
 
 describe('<VenueOffers />', () => {
-  beforeEach(jest.clearAllMocks)
   it('should render correctly', () => {
     const renderAPI = render(<VenueOffers venueId={venueId} />)
     expect(renderAPI).toMatchSnapshot()

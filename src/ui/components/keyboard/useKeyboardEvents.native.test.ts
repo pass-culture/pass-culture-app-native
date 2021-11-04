@@ -16,8 +16,6 @@ const keyboardEvent: KeyboardEvent = {
 }
 
 describe('useKeyboardEvents', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('creates event listeners', () => {
     renderHook(useKeyboardEvents, {
       initialProps: { onBeforeHide: jest.fn(), onBeforeShow: jest.fn() },

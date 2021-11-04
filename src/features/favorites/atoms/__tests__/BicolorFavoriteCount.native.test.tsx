@@ -16,8 +16,6 @@ jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 describe('BicolorFavoriteCount component', () => {
-  afterEach(jest.clearAllMocks)
-
   it('should render non connected icon', async () => {
     const { queryByTestId } = await renderBicolorFavoriteCount({ isLoggedIn: false })
     expect(queryByTestId('bicolor-favorite-count')).toBeFalsy()

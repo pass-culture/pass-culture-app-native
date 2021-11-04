@@ -42,10 +42,6 @@ const allPlaylists = [
 ]
 
 describe('useSelectPlaylist', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe('underage users', () => {
     beforeEach(() => {
       mockedUser = underageUser

@@ -12,8 +12,6 @@ import { GenericAchievement, Props, onRemoveScreenAction } from './GenericAchiev
 import { GenericAchievementCard, AchievementCardKeyProps } from './GenericAchievementCard'
 
 describe('<GenericAchievement />', () => {
-  beforeEach(jest.clearAllMocks)
-
   const TestCard = (props: AchievementCardKeyProps) => (
     <View>
       <Text>{props.swiperRef ? 'swipeRef exist' : 'swipeRef does not exist'}</Text>
@@ -140,8 +138,6 @@ function renderGenericAchievementComponent(props: Props) {
 }
 
 describe('onRemoveScreenAction()', () => {
-  afterEach(jest.clearAllMocks)
-
   const onFirstCardBackAction = jest.fn()
   const goBackEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'GO_BACK' } } } // eslint-disable-line @typescript-eslint/no-explicit-any
   const popEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'POP' } } } // eslint-disable-line @typescript-eslint/no-explicit-any

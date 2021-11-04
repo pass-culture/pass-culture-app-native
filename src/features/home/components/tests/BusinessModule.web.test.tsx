@@ -37,7 +37,6 @@ const props: BusinessPane = {
 describe('BusinessModule component', () => {
   const openURLSpy = jest.spyOn(Linking, 'openURL')
   const homeAPISpy = jest.spyOn(HomeAPI, 'useUserProfileInfo')
-  beforeEach(() => jest.clearAllMocks())
 
   it('should render correctly - with leftIcon = Idea by default', () => {
     const renderAPI = renderModule(props)

@@ -8,9 +8,6 @@ import { storeUtmParams } from 'libs/utm'
 jest.mock('libs/utm', () => ({ storeUtmParams: jest.fn() }))
 
 describe('getStateFromPath()', () => {
-  beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
-
   it('should return state for path home?entryId=666', async () => {
     const state = customGetStateFromPath('home?entryId=666', linking.config)
     const expectedState = {

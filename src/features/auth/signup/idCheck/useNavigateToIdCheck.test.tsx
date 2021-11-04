@@ -14,10 +14,6 @@ jest.mock('features/navigation/helpers')
 const mockedUseAppSettings = mocked(useAppSettings, true)
 jest.mock('features/auth/settings')
 
-beforeEach(() => {
-  jest.clearAllMocks()
-})
-
 describe('useNavigateToIdCheck()', () => {
   it('should navigate to IdCheck v2 when shouldControlNavWithSetting=false, allowIdCheckRegistration=false', () => {
     const navigateToIdCheck = mockNavigateToIdCheck({

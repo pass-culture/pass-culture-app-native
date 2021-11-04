@@ -38,7 +38,6 @@ describe('<BookingConfirmation />', () => {
     }))
   })
   afterEach(() => {
-    jest.clearAllMocks()
     jest.useRealTimers()
   })
 

@@ -23,10 +23,6 @@ jest.mock('libs/geolocation', () => ({
 }))
 
 describe('NoSearchResult component', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('should show the message depending on the query', () => {
     let text = render(<NoSearchResult />).getByText('Pas de résultat trouvé.')
     expect(text).toBeTruthy()

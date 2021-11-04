@@ -10,8 +10,6 @@ jest.mock('features/auth/settings')
 jest.mock('features/navigation/navigationRef')
 
 describe('useDeeplinkUrlHandler', () => {
-  afterEach(jest.clearAllMocks)
-
   it('should redirect to a screen returned by getScreenFromDeeplink()', () => {
     const url = `${WEBAPP_V2_URL}${getScreenPath('Offer', { id: 1, from: 'deeplink' })}`
     const handleDeeplinkUrl = renderHook(useDeeplinkUrlHandler).result.current

@@ -41,10 +41,6 @@ server.use(
 )
 
 describe('<BookingImpossible />', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('should render with CTAs when offer is not yet favorite', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<BookingImpossible />))
