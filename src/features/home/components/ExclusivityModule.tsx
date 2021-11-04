@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
 import { PixelRatio } from 'react-native'
 import FastImage from 'react-native-fast-image'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
 import { ExclusivityPane } from 'features/home/contentful'
@@ -11,7 +11,7 @@ import { useSilentOffer } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, useGeolocation } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
-import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer } from 'ui/theme'
+import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const shouldDisplayExcluOffer = (
@@ -41,16 +41,7 @@ export const shouldDisplayExcluOffer = (
 export const ExclusivityModule = ({ alt, image, id, display }: ExclusivityPane) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { position } = useGeolocation()
-  // TODO(antoinewg) use theme from styled components instead of theme from theme provider
-  const { appContentWidth } = useTheme()
   const { data: offer } = useSilentOffer(id)
-  const imageWidth = appContentWidth - 2 * MARGIN_DP
-  const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_EXCLU)
-  const imageStyle = {
-    height: imageHeight,
-    borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-    maxHeight: LENGTH_XL,
-  }
 
   const handlePressExclu = useCallback(() => {
     if (typeof id !== 'number') return
@@ -63,34 +54,23 @@ export const ExclusivityModule = ({ alt, image, id, display }: ExclusivityPane) 
   if (!offer) return null
   // TODO(antoinewg) move this logic higher to know the number of modules displayed
   if (!shouldDisplayExcluOffer(display, offer, position)) return null
+
   return (
-    <Row>
-      <Spacer.Row numberOfSpaces={6} />
-      <ImageContainer>
-        <TouchableHighlight onPress={handlePressExclu} testID="imageExclu">
-          <FastImage
-            source={source}
-            accessible={!!alt}
-            accessibilityLabel={alt}
-            style={imageStyle}
-          />
-        </TouchableHighlight>
-      </ImageContainer>
-      <Spacer.Row numberOfSpaces={6} />
-    </Row>
+    <TouchableHighlight onPress={handlePressExclu} testID="imageExclu">
+      <Image source={source} accessible={!!alt} accessibilityLabel={alt} />
+    </TouchableHighlight>
   )
 }
 
-const Row = styled.View({
-  flexDirection: 'row',
-})
-
-const ImageContainer = styled.View({
-  flex: 1,
-  maxHeight: LENGTH_XL,
-})
-
-const TouchableHighlight = styled.TouchableHighlight({
+const Image = styled(FastImage)(({ theme }) => ({
   borderRadius: BorderRadiusEnum.BORDER_RADIUS,
   maxHeight: LENGTH_XL,
+  height: PixelRatio.roundToNearestPixel((theme.appContentWidth - 2 * MARGIN_DP) * RATIO_EXCLU),
+}))
+
+const TouchableHighlight = styled.TouchableHighlight({
+  flex: 1,
+  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+  maxHeight: LENGTH_XL,
+  marginHorizontal: getSpacing(6),
 })

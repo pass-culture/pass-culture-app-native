@@ -1,4 +1,5 @@
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
+
 import {
   AlgoliaFields,
   BusinessFields,
