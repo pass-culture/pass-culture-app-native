@@ -50,7 +50,8 @@ export function ChangeEmail() {
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const disabled = !isLongEnough(password) || !!emailErrorMessage || isLoading
+  const disabled =
+    !isLongEnough(password) || !!emailErrorMessage || !!passwordErrorMessage || isLoading
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
