@@ -16,6 +16,7 @@ import { useSafeState } from 'libs/hooks'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
+import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -67,21 +68,25 @@ export function ChangeEmail() {
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
-          <EmailInput label={t`Nouvel e-mail`} email={email} onEmailChange={setEmail} />
-          {!!emailErrorMessage && (
-            <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={2} />
-          )}
+          <InputContainer>
+            <EmailInput label={t`Nouvel e-mail`} email={email} onEmailChange={setEmail} />
+            {!!emailErrorMessage && (
+              <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={2} />
+            )}
+          </InputContainer>
           <Spacer.Column numberOfSpaces={4} />
-          <PasswordInput
-            label={t`Mot de passe`}
-            value={password}
-            onChangeText={setPassword}
-            placeholder={t`Ton mot de passe`}
-            textContentType="password"
-          />
-          {!!passwordErrorMessage && (
-            <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />
-          )}
+          <InputContainer>
+            <PasswordInput
+              label={t`Mot de passe`}
+              value={password}
+              onChangeText={setPassword}
+              placeholder={t`Ton mot de passe`}
+              textContentType="password"
+            />
+            {!!passwordErrorMessage && (
+              <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />
+            )}
+          </InputContainer>
 
           {theme.isDesktop ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
