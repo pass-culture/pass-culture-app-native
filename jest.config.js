@@ -42,6 +42,7 @@ module.exports = {
     '<rootDir>/node_modules/',
   ],
   cacheDirectory: '.jest/cache',
+  clearMocks: true,
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!**/node_modules/**', '!**/coverage/**'],
   coveragePathIgnorePatterns: [
     '\\.web\\.(test|spec)',
