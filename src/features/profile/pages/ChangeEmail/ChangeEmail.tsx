@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -45,6 +45,10 @@ export function ChangeEmail() {
     },
   })
 
+  useEffect(() => {
+    removePasswordError()
+  }, [password])
+
   const scrollRef = useRef<ScrollView | null>(null)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const { bottom } = useSafeAreaInsets()
@@ -52,6 +56,10 @@ export function ChangeEmail() {
 
   const disabled =
     !isLongEnough(password) || !!emailErrorMessage || !!passwordErrorMessage || isLoading
+
+  const removePasswordError = () => {
+    setPasswordErrorMessage(null)
+  }
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
