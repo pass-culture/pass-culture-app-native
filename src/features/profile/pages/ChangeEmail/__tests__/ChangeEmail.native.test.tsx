@@ -10,13 +10,7 @@ import { ColorsEnum } from 'ui/theme'
 import { ChangeEmail } from '../ChangeEmail'
 
 jest.mock('react-query')
-
-const mockUseChangeEmailMutation = jest.fn().mockImplementation(({ onSuccess }) => ({
-  mutate: () => onSuccess(),
-}))
-jest.mock('features/profile/mutations', () => ({
-  useChangeEmailMutation: (props: UseChangeEmailMutationProps) => mockUseChangeEmailMutation(props),
-}))
+jest.mock('features/profile/mutations')
 
 const mockShowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
