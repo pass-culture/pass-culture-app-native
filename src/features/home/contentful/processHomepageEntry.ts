@@ -1,3 +1,4 @@
+import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import {
   AlgoliaFields,
   BusinessFields,
@@ -22,6 +23,14 @@ import {
   RecommendationPane,
   VenuesModule,
 } from './moduleTypes'
+
+// Offer can be humanized (before) or a number (now) in contenful
+export const parseOfferId = (offerId: string): number | null => {
+  // If the offer is only digits: we assume it the offer id (non humanized)
+  if (offerId.match(/^[0-9]+$/)) return parseInt(offerId, 10)
+
+  return dehumanizeId(offerId)
+}
 
 export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[] => {
   const {
@@ -67,9 +76,11 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
     if (contentType === 'exclusivity') {
       const { alt, offerId, image, displayParameters } = fields as ExclusivityFields
       const { fields: display = undefined } = displayParameters || {}
+      const id = parseOfferId(offerId)
+      if (typeof id !== 'number') return
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      return new ExclusivityPane({ alt, image: buildImageUrl(image)!, offerId, moduleId, display })
+      return new ExclusivityPane({ alt, image: buildImageUrl(image)!, id, moduleId, display })
     }
 
     if (contentType === 'venuesPlaylist') {

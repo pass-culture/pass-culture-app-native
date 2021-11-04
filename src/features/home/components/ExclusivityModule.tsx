@@ -8,7 +8,6 @@ import { OfferResponse } from 'api/gen'
 import { ExclusivityPane } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSilentOffer } from 'features/offer/api/useOffer'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, useGeolocation } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
@@ -39,9 +38,7 @@ export const shouldDisplayExcluOffer = (
   return distance <= 1000 * display.aroundRadius
 }
 
-export const ExclusivityModule = ({ alt, image, offerId, display }: ExclusivityPane) => {
-  // TODO(antoinewg) allow offerId to be a number (id of the offer)
-  const id = dehumanizeId(offerId)
+export const ExclusivityModule = ({ alt, image, id, display }: ExclusivityPane) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { position } = useGeolocation()
   // TODO(antoinewg) use theme from styled components instead of theme from theme provider

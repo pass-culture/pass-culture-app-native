@@ -8,12 +8,10 @@ import { render, fireEvent } from 'tests/utils'
 
 import { ExclusivityModule } from '../ExclusivityModule'
 
-const humanizedOfferId = 'AHD3A' // corresponds to offer.id
-
 const props: ExclusivityPane = {
   alt: "Image d'Adèle",
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
-  offerId: humanizedOfferId,
+  id: mockOffer.id,
   moduleId: 'module-id',
   display: { isGeolocated: false, aroundRadius: undefined, title: '' },
 }
