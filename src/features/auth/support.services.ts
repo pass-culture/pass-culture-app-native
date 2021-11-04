@@ -1,6 +1,14 @@
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { eventMonitoring } from 'libs/monitoring'
+
+class ContactSupportError extends Error {
+  name = 'ContactSupportError'
+  constructor(public message: string) {
+    super(message)
+  }
+}
 
 export const contactSupport = {
   forChangeEmailExpiredLink(email: string) {
@@ -12,20 +20,28 @@ export const contactSupport = {
         '\n' +
         'Bien cordialement,'
     )
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false).then(() =>
-      analytics.logMailTo('forChangeEmailExpiredLink')
-    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false)
+      .then(() => analytics.logMailTo('forChangeEmailExpiredLink'))
+      .catch(() =>
+        eventMonitoring.captureException(new ContactSupportError('ChangeEmailExpiredLink'))
+      )
   },
   forGenericQuestion() {
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}`, false).then(() =>
-      analytics.logMailTo('forGenericQuestion')
-    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}`, false)
+      .then(() => analytics.logMailTo('forGenericQuestion'))
+      .catch(() => eventMonitoring.captureException(new ContactSupportError('GenericQuestion')))
   },
   forSignupConfirmationEmailNotReceived() {
     openUrl(
       'https://aide.passculture.app/fr/articles/5257121-je-n-ai-pas-recu-le-mail-de-confirmation-de-creation-de-compte',
       false
-    ).then(() => analytics.logMailTo('forSignupConfirmationEmailNotReceived'))
+    )
+      .then(() => analytics.logMailTo('forSignupConfirmationEmailNotReceived'))
+      .catch(() =>
+        eventMonitoring.captureException(
+          new ContactSupportError('SignupConfirmationEmailNotReceived')
+        )
+      )
   },
   forSignupConfirmationExpiredLink(email: string) {
     const subject = encodeURI('Lien de confirmation de compte expiré')
@@ -36,9 +52,11 @@ export const contactSupport = {
         '\n' +
         'Bien cordialement,'
     )
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false).then(() =>
-      analytics.logMailTo('forSignupConfirmationExpiredLink')
-    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false)
+      .then(() => analytics.logMailTo('forSignupConfirmationExpiredLink'))
+      .catch(() =>
+        eventMonitoring.captureException(new ContactSupportError('SignupConfirmationExpiredLink'))
+      )
   },
   forResetPasswordEmailNotReceived(email: string) {
     const subject = encodeURI("Non réception d'email de réinitialisation de mot de passe")
@@ -49,9 +67,11 @@ export const contactSupport = {
         '\n' +
         'Bien cordialement,'
     )
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false).then(() =>
-      analytics.logMailTo('forResetPasswordEmailNotReceived')
-    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false)
+      .then(() => analytics.logMailTo('forResetPasswordEmailNotReceived'))
+      .catch(() =>
+        eventMonitoring.captureException(new ContactSupportError('ResetPasswordEmailNotReceived'))
+      )
   },
   forResetPasswordExpiredLink(email: string) {
     const subject = encodeURI('Lien de réinitialisation de mot de passe expiré')
@@ -62,9 +82,11 @@ export const contactSupport = {
         '\n' +
         'Bien cordialement,'
     )
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false).then(() =>
-      analytics.logMailTo('forResetPasswordExpiredLink')
-    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false)
+      .then(() => analytics.logMailTo('forResetPasswordExpiredLink'))
+      .catch(() =>
+        eventMonitoring.captureException(new ContactSupportError('ResetPasswordExpiredLink'))
+      )
   },
   forAccountDeletion(email: string) {
     const subject = encodeURI('Suppression de mon compte pass Culture')
@@ -79,14 +101,16 @@ export const contactSupport = {
         '\n' +
         'Bien cordialement,'
     )
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false).then(() =>
-      analytics.logMailTo('forAccountDeletion')
-    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, false)
+      .then(() => analytics.logMailTo('forAccountDeletion'))
+      .catch(() => eventMonitoring.captureException(new ContactSupportError('AccountDeletion')))
   },
   forPhoneNumberConfirmation() {
     const subject = encodeURI('Confirmation de numéro de téléphone')
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}`, false).then(() =>
-      analytics.logMailTo('forPhoneNumberConfirmation')
-    )
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}`, false)
+      .then(() => analytics.logMailTo('forPhoneNumberConfirmation'))
+      .catch(() =>
+        eventMonitoring.captureException(new ContactSupportError('PhoneNumberConfirmation'))
+      )
   },
 }
