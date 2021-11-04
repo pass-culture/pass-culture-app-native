@@ -207,9 +207,9 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
         testID="Contacter le support"
       >
         <View
-          height={28}
+          height={20}
           testID="button-icon"
-          width={28}
+          width={20}
         >
           <Text>
             button-icon-SVG-Mock
@@ -338,9 +338,9 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
         testID="Retourner à l'accueil"
       >
         <View
-          height={17}
+          height={20}
           testID="button-icon"
-          width={17}
+          width={20}
         >
           <Text>
             button-icon-SVG-Mock
