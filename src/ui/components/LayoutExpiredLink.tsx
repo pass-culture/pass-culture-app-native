@@ -3,14 +3,16 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHome, openUrl } from 'features/navigation/helpers'
+import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { IconInterface } from 'ui/svg/icons/types'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   onResendEmail: () => void
@@ -50,7 +52,7 @@ export function LayoutExpiredLink({
         <ButtonTertiaryWhite
           title={t`Contacter le support`}
           onPress={contactSupport}
-          icon={Email}
+          icon={EmailFilledIcon}
         />
       )}
 
@@ -64,7 +66,7 @@ export function LayoutExpiredLink({
       <ButtonTertiaryWhite
         title={t`Retourner à l'accueil`}
         onPress={navigateToHome}
-        icon={PlainArrowPrevious}
+        icon={PlainArrowPreviousIcon}
       />
     </GenericInfoPage>
   )
@@ -75,3 +77,15 @@ const StyledBody = styled(Typo.Body).attrs({
 })({
   textAlign: 'center',
 })
+
+const EmailFilledIcon: React.FC<IconInterface> = ({ color }) => (
+  <EmailFilled {...accessibilityAndTestId('button-icon')} color={color} size={getSpacing(5)} />
+)
+
+const PlainArrowPreviousIcon: React.FC<IconInterface> = ({ color }) => (
+  <PlainArrowPrevious
+    {...accessibilityAndTestId('button-icon')}
+    color={color}
+    size={getSpacing(5)}
+  />
+)
