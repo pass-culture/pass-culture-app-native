@@ -12,7 +12,7 @@ class ContactSupportError extends Error {
 
 export const contactSupport = {
   forChangeEmailExpiredLink(email: string) {
-    const subject = encodeURI("Lien de changement d'e-mail")
+    const subject = encodeURI("Demande de renvoi du mail d'activation de changement d'e-mail")
     const body = encodeURI(
       'Bonjour, \n' +
         '\n' +
