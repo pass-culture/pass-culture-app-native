@@ -2,6 +2,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { useHomepageModules } from 'features/home/api'
 import { useExcluOffers } from 'features/home/pages/useExcluOffers'
 import { useHomeVenueModules } from 'features/home/pages/useHomeVenueModules'
+import { useGeolocation } from 'libs/geolocation'
 
 import {
   getExcluModules,
@@ -15,6 +16,7 @@ import { useHomeRecommendedHits } from './useHomeRecommendedHits'
 
 export function useDisplayedHomeModules(entryId?: string) {
   const { isLoggedIn } = useAuthContext()
+  const { position } = useGeolocation()
 
   // 1. Get the list of modules from contentful
   const modules = useHomepageModules(entryId) || []
@@ -38,7 +40,8 @@ export function useDisplayedHomeModules(entryId?: string) {
     homeVenuesModules,
     recommendedHits,
     excluOffers,
-    isLoggedIn
+    isLoggedIn,
+    position
   )
   return { homeModules, homeVenuesModules, displayedModules, recommendedHits }
 }

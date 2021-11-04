@@ -1,3 +1,4 @@
+import { OfferResponse } from 'api/gen'
 import {
   Offers,
   OffersWithCover,
@@ -7,6 +8,7 @@ import {
   VenuesModule,
 } from 'features/home/contentful'
 import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
+import { offerResponseSnap as offer } from 'features/offer/api/snaps/offerResponseSnap'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { mockedSearchResponse } from 'libs/search/fixtures/mockedSearchResponse'
 
@@ -76,7 +78,7 @@ const excluModule = new ExclusivityPane({
   alt: 'alt',
   image: 'uri_to_image',
   moduleId: 'exclusivityPane-id',
-  id: 1234,
+  id: offer.id,
 })
 
 const visibleVenueModule = new VenuesModule({
@@ -84,6 +86,8 @@ const visibleVenueModule = new VenuesModule({
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
   moduleId: 'homeVenueModuleShown',
 })
+
+const excluOffers: OfferResponse[] = [offer]
 
 describe('useDisplayedHomeModules.utils', () => {
   describe('showBusinessModule()', () => {
@@ -124,7 +128,8 @@ describe('useDisplayedHomeModules.utils', () => {
         homeVenuesModules,
         hitsAlgolia,
         [],
-        true
+        true,
+        null
       )
       expect(connectedModules).toContain(connectedBusinessModule)
 
@@ -134,19 +139,21 @@ describe('useDisplayedHomeModules.utils', () => {
         homeVenuesModules,
         hitsAlgolia,
         [],
-        false
+        false,
+        null
       )
       expect(notConnectedModules).not.toContain(connectedBusinessModule)
     })
 
-    it('does always display ExclusivityPane', () => {
+    it('does display ExclusivityPane', () => {
       const displayedModules = getModulesToDisplay(
         [excluModule, connectedBusinessModule, ...offerModules],
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
-        [],
-        false
+        excluOffers,
+        false,
+        null
       )
       expect(displayedModules).toContain(excluModule)
     })
@@ -157,8 +164,9 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
-        [],
-        false
+        excluOffers,
+        false,
+        null
       )
       expect(displayedModules).toContain(visibleVenueModule)
     })
@@ -169,8 +177,9 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
-        [],
-        true
+        excluOffers,
+        true,
+        null
       )
       expect(notInHomeModules).not.toContain(excluModule)
       expect(displayedModules.length).toBe(2)
@@ -182,8 +191,9 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
-        [],
-        true
+        excluOffers,
+        true,
+        null
       )
       expect(displayedModules).not.toContain(emptyHits)
       expect(displayedModules.length).toBe(2)
@@ -195,8 +205,9 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
-        [],
-        true
+        excluOffers,
+        true,
+        null
       )
       expect(displayedModules).not.toContain({ hiddenOfferModule })
       expect(displayedModules.length).toBe(2)
@@ -208,8 +219,9 @@ describe('useDisplayedHomeModules.utils', () => {
         homeModules,
         homeVenuesModules,
         hitsAlgolia,
-        [],
-        true
+        excluOffers,
+        true,
+        null
       )
       expect(displayedModules).toContain(visibleOfferModule)
       expect(displayedModules.length).toBe(3)
