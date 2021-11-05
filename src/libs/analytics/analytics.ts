@@ -180,8 +180,6 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from }),
   logCancelBooking: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId }),
-  logAccessExternalOffer: (offerId: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.ACCESS_EXTERNAL_OFFER, { offerId }),
   logConfirmBookingCancellation: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>

@@ -90,7 +90,6 @@ describe('BookingDetails', () => {
       expect(mockedOpenUrl).toHaveBeenCalledWith(booking.stock.offer.url, true, undefined, {
         offerId: booking.stock.offer.id,
       })
-      expect(analytics.logAccessExternalOffer).toHaveBeenCalledWith(booking.stock.offer.id)
     })
 
     it('should display booking qr code if offer is physical', async () => {

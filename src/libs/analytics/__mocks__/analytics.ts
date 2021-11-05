@@ -7,7 +7,6 @@ export const analytics: typeof actualAnalytics = {
   disableCollection: jest.fn(),
   enableCollection: jest.fn(),
   setDefaultEventParameters: jest.fn(),
-  logAccessExternalOffer: jest.fn(),
   logAllModulesSeen: jest.fn(),
   logAllTilesSeen: jest.fn(),
   logBookingConfirmation: jest.fn(),

@@ -61,8 +61,6 @@ const user: UserProfileResponse = {
 const onInAppBooking = jest.fn()
 
 describe('<BookingButton />', () => {
-  afterEach(jest.clearAllMocks)
-
   describe('when user is beneficiary', () => {
     // prettier-ignore : do not format the following "table" to keep it readable
     it.each`
