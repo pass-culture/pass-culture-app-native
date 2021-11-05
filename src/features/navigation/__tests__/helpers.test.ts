@@ -61,7 +61,7 @@ describe('Navigation helpers', () => {
     await openUrl(link)
 
     await waitForExpect(() => {
-      expect(analytics.logOpenExternalUrl).toBeCalledWith(link)
+      expect(analytics.logOpenExternalUrl).toBeCalledWith(link, {})
     })
   })
 

@@ -30,7 +30,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
   const accessExternalOffer = () => {
     if (offer.url) {
       analytics.logAccessExternalOffer(offer.id)
-      openUrl(offer.url)
+      openUrl(offer.url, true, undefined, { offerId: offer.id })
     }
   }
 

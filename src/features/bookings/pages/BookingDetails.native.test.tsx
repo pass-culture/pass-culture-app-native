@@ -87,7 +87,9 @@ describe('BookingDetails', () => {
       const offerButton = getByText("Accéder à l'offre")
       fireEvent.press(offerButton)
 
-      expect(mockedOpenUrl).toHaveBeenCalledWith(booking.stock.offer.url)
+      expect(mockedOpenUrl).toHaveBeenCalledWith(booking.stock.offer.url, true, undefined, {
+        offerId: booking.stock.offer.id,
+      })
       expect(analytics.logAccessExternalOffer).toHaveBeenCalledWith(booking.stock.offer.id)
     })
 
