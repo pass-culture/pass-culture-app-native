@@ -9,7 +9,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useChangeEmailMutation } from 'features/profile/mutations'
+import { CHANGE_EMAIL_ERROR_CODE, useChangeEmailMutation } from 'features/profile/mutations'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
 import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils/useValidateEmail'
 import { useSafeState } from 'libs/hooks'
@@ -30,7 +30,7 @@ export function ChangeEmail() {
   const emailErrorMessage = useValidateEmail(email)
   const [passwordErrorMessage, setPasswordErrorMessage] = useSafeState<string | null>(null)
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar } = useSnackBarContext()
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: changeEmail, isLoading } = useChangeEmailMutation({
     onSuccess: () => {
@@ -40,8 +40,8 @@ export function ChangeEmail() {
       })
       navigateToProfile()
     },
-    onError: () => {
-      setPasswordErrorMessage(t`Mot de passe incorrect`)
+    onError: (error: { code: CHANGE_EMAIL_ERROR_CODE }) => {
+      onEmailChangeError(error.code)
     },
   })
 
@@ -56,6 +56,20 @@ export function ChangeEmail() {
 
   const disabled =
     !isLongEnough(password) || !!emailErrorMessage || !!passwordErrorMessage || isLoading
+
+  const onEmailChangeError = (errorCode: CHANGE_EMAIL_ERROR_CODE) => {
+    switch (errorCode) {
+      case CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD:
+        setPasswordErrorMessage(t`Mot de passe incorrect`)
+        break
+      default:
+        showErrorSnackBar({
+          message: t`Une erreur s’est produite pendant la modification de ton e-mail.
+          Réessaie plus tard.`,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+    }
+  }
 
   const removePasswordError = () => {
     setPasswordErrorMessage(null)
