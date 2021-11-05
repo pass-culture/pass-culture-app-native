@@ -269,6 +269,7 @@
     "react-native-web-linear-gradient": "^1.1.2",
     "react-native-web-lottie": "^1.4.4",
     "react-query-native-devtools": "^3.0.1",
+    "resize-observer-polyfill": "^1.5.1",
     "resolve": "^1.20.0",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^11.0.1",
