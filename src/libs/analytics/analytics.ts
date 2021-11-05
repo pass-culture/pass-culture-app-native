@@ -15,6 +15,10 @@ const STRING_VALUE_MAX_LENGTH = 100
 type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
 type OfferIdOrVenueId = { offerId: number } | { venueId: number }
 
+export type OfferAnalyticsData = {
+  offerId?: number
+}
+
 const useInit = () => {
   const { campaignDate } = useUtmParams()
 
@@ -136,9 +140,10 @@ export const analytics = {
   logHasRefusedCookie: () => analyticsProvider.logEvent(AnalyticsEvent.HAS_REFUSED_COOKIE),
   logClickSocialNetwork: (network: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network }),
-  logOpenExternalUrl: (url: string) =>
+  logOpenExternalUrl: (url: string, params: OfferAnalyticsData) =>
     analyticsProvider.logEvent(AnalyticsEvent.OPEN_EXTERNAL_URL, {
       url: url.slice(0, STRING_VALUE_MAX_LENGTH),
+      offerId: params.offerId,
     }),
   logMailTo: (
     reason:
