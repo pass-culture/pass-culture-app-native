@@ -52,19 +52,19 @@ export const VenueOfferTile = (props: VenueOfferTileProps) => {
 
   return (
     <View>
-      <TouchableHighlight imageHeight={imageHeight} onPress={handlePressOffer}>
+      <TouchableHighlight imageHeight={VENUE_OFFER_HEIGHT} onPress={handlePressOffer}>
         <View>
           <ImageTile
-            imageWidth={imageWidth}
-            imageHeight={imageHeight}
+            imageWidth={VENUE_OFFER_WIDTH}
+            imageHeight={VENUE_OFFER_HEIGHT}
             uri={offer.thumbUrl}
             onlyTopBorderRadius
           />
-          <ImageCaption imageWidth={imageWidth} categoryLabel={categoryLabel} />
+          <ImageCaption imageWidth={VENUE_OFFER_WIDTH} categoryLabel={categoryLabel} />
         </View>
       </TouchableHighlight>
       <OfferCaption
-        imageWidth={imageWidth}
+        imageWidth={VENUE_OFFER_WIDTH}
         name={offer.name}
         date={offer.date}
         isDuo={offer.isDuo}
@@ -75,8 +75,8 @@ export const VenueOfferTile = (props: VenueOfferTileProps) => {
   )
 }
 
-const imageHeight = LENGTH_L
-const imageWidth = imageHeight * RATIO_HOME_IMAGE
+export const VENUE_OFFER_HEIGHT = LENGTH_L
+export const VENUE_OFFER_WIDTH = VENUE_OFFER_HEIGHT * RATIO_HOME_IMAGE
 const rowHeight = PixelRatio.roundToNearestPixel(MARGIN_DP)
 
 const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(

@@ -12,14 +12,18 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
-import { VenueOfferTile } from 'features/venue/atoms/VenueOfferTile'
+import {
+  VenueOfferTile,
+  VENUE_OFFER_HEIGHT,
+  VENUE_OFFER_WIDTH,
+} from 'features/venue/atoms/VenueOfferTile'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
-import { LENGTH_L, MARGIN_DP, Spacer, Typo } from 'ui/theme'
+import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   venueId: number
@@ -79,7 +83,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
     return (
       <Row>
         <ItemSeparatorComponent />
-        <SeeMore containerHeight={LENGTH_L} onPress={onPressSeeMore} />
+        <SeeMore height={VENUE_OFFER_HEIGHT} width={VENUE_OFFER_WIDTH} onPress={onPressSeeMore} />
         <HorizontalMargin />
       </Row>
     )

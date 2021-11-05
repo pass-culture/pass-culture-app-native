@@ -37,6 +37,8 @@ interface OfferTileProps {
   layout?: Layout
   isBeneficiary?: boolean
   moduleName: string
+  width?: number
+  height?: number
 }
 
 type PartialOffer = Pick<
@@ -75,8 +77,8 @@ export const mergeOfferData = (offer: PartialOffer) => (
 export const OfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
   const { layout = 'one-item-medium', moduleName, isBeneficiary, categoryLabel, ...offer } = props
-  const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
-  const imageWidth = imageHeight * RATIO_HOME_IMAGE
+  const imageHeight = props.height || layout === 'two-items' ? LENGTH_M : LENGTH_L
+  const imageWidth = props.width || imageHeight * RATIO_HOME_IMAGE
   const queryClient = useQueryClient()
 
   function handlePressOffer() {

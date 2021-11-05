@@ -3,11 +3,20 @@ import {
   ThemeType as IdCheckThemeType,
 } from '@pass-culture/id-check/src/theme'
 import deepmerge from 'deepmerge'
+import {
+  isMobile as isMobileDeviceDetect,
+  isTablet as isTabletDeviceDetect,
+} from 'react-device-detect'
+import { Platform } from 'react-native'
 
 import { getSpacing, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
 import { ZIndex } from 'ui/theme/layers'
+
+const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
+const isTouchWeb = Platform.OS === 'web' && (isMobileDeviceDetect || isTabletDeviceDetect)
+const isTouch = isNative || isTouchWeb
 
 export interface AppThemeType extends Omit<IdCheckThemeType, 'colors'> {
   appContentWidth: number
@@ -17,6 +26,7 @@ export interface AppThemeType extends Omit<IdCheckThemeType, 'colors'> {
   isMobile?: boolean
   isTablet?: boolean
   isDesktop?: boolean
+  isTouch: boolean
   activeOpacity: number
   colors: {
     accent: ColorsEnum
@@ -69,6 +79,7 @@ export const theme: AppThemeType = deepmerge(idCheckTheme, {
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
   tabBarHeight: TAB_BAR_COMP_HEIGHT,
+  isTouch,
   activeOpacity: ACTIVE_OPACITY,
   colors: {
     ...idCheckTheme.colors,

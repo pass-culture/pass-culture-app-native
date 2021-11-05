@@ -742,16 +742,18 @@ Array [
             }
           />
           <View
-            containerHeight={288}
+            height={288}
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "height": 288,
                   "justifyContent": "center",
+                  "width": 192,
                 },
               ]
             }
+            width={192}
           >
             <View
               numberOfSpaces={2}

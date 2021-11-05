@@ -5,6 +5,7 @@ export enum ZIndex {
   HEADER = 1,
   MODAL_HEADER = 1,
   PROGRESSBAR = 1,
+  PLAYLIST_BUTTON = 1,
   PROGRESSBAR_ICON = 2,
   TABBAR = 2,
   HEADER_NAV = 2,

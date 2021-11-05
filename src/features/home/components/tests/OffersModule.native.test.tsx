@@ -30,11 +30,6 @@ const props = {
   position: null,
 }
 
-const nativeEventMiddle = {
-  layoutMeasurement: { width: 1000 },
-  contentOffset: { x: 400 }, // how far did we scroll
-  contentSize: { width: 1600 },
-} as NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']
 const nativeEventEnd = {
   layoutMeasurement: { width: 1000 },
   contentOffset: { x: 900 },
@@ -56,34 +51,7 @@ describe('OffersModule component', () => {
 })
 
 describe('OffersModule component - Analytics', () => {
-  afterEach(() => {
-    jest.resetAllMocks()
-  })
-  it('should not trigger logEvent "AllTilesSeen" when reaching the middle', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const component = render(reactQueryProviderHOC(<OffersModule {...props} index={1} />))
-    const scrollView = component.getByTestId('offersModuleList')
-
-    await act(async () => {
-      await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
-      await flushAllPromises()
-    })
-
-    expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()
-  })
-
-  it('should trigger logEvent "AllTilesSeen" when reaching the end of the module', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const component = render(reactQueryProviderHOC(<OffersModule {...props} index={1} />))
-    const scrollView = component.getByTestId('offersModuleList')
-
-    await act(async () => {
-      await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
-      await flushAllPromises()
-    })
-
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, props.nbHits)
-  })
+  afterEach(jest.resetAllMocks)
 
   it('should trigger logEvent "AllTilesSeen" only once', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc

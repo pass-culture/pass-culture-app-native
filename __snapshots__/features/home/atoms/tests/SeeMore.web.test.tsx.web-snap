@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SeeMore renders correctly 1`] = `
+exports[`<SeeMore /> renders correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="align-items: center; height: 288px; justify-content: center;"
+        style="align-items: center; height: 100px; justify-content: center; width: 100px;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -71,7 +71,7 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      style="align-items: center; height: 288px; justify-content: center;"
+      style="align-items: center; height: 100px; justify-content: center; width: 100px;"
     >
       <div
         class="css-view-1dbjc4n"
