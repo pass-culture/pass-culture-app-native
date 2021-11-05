@@ -27,6 +27,7 @@ import { theme } from 'theme'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 import { ServiceWorkerProvider } from 'web/useServiceWorker'
+import 'resize-observer-polyfill/dist/ResizeObserver.global'
 
 export function App() {
   useStartBatchNotification()
