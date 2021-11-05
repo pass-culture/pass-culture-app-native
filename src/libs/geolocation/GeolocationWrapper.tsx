@@ -104,6 +104,13 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
     setPermissionState(permission)
   }, [])
 
+  useEffect(() => {
+    if (isRejected(permissionState)) {
+      setPosition(null)
+      setPositionError(null)
+    }
+  }, [permissionState])
+
   useAppStateChange(contextualCheckPermission, undefined, [])
 
   function onPressGeolocPermissionModalButton() {
@@ -137,6 +144,12 @@ export function useGeolocation(): IGeolocationContext {
 
 function isGranted(permission: GeolocPermissionState) {
   return permission === GeolocPermissionState.GRANTED
+}
+function isRejected(permission: GeolocPermissionState) {
+  return (
+    permission === GeolocPermissionState.DENIED ||
+    permission === GeolocPermissionState.NEVER_ASK_AGAIN
+  )
 }
 function isNeedAskPosition(permission: GeolocPermissionState) {
   return permission === GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY
