@@ -26,14 +26,14 @@ import {
 // Map the facetFilter (in search backend) to the label displayed in the front
 export const MAP_VENUE_TYPE_TO_LABEL: { [k in VenueTypeCodeKey]: string } = {
   [VenueTypeCodeKey.ARTISTICCOURSE]: t`Cours et pratique artistiques`,
-  [VenueTypeCodeKey.BOOKSTORE]: t`Bibliothèque ou médiathèque`,
+  [VenueTypeCodeKey.BOOKSTORE]: t`Librairie`,
   [VenueTypeCodeKey.CONCERTHALL]: t`Musique - Salle de concerts`,
   [VenueTypeCodeKey.CREATIVEARTSSTORE]: t`Magasin arts créatifs`,
   [VenueTypeCodeKey.CULTURALCENTRE]: t`Centre culturel`,
   [VenueTypeCodeKey.DIGITAL]: t`Offre numérique`,
   [VenueTypeCodeKey.FESTIVAL]: t`Festival`,
   [VenueTypeCodeKey.GAMES]: t`Jeux / Jeux vidéos`,
-  [VenueTypeCodeKey.LIBRARY]: t`Librairie`,
+  [VenueTypeCodeKey.LIBRARY]: t`Bibliothèque ou médiathèque`,
   [VenueTypeCodeKey.MUSEUM]: t`Musée`,
   [VenueTypeCodeKey.MUSICALINSTRUMENTSTORE]: t`Musique - Magasin d’instruments`,
   [VenueTypeCodeKey.MOVIE]: t`Cinéma - Salle de projections`,
