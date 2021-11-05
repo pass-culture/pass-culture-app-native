@@ -4,23 +4,23 @@ import { fireEvent, render } from 'tests/utils'
 
 import { SeeMore } from '../SeeMore'
 
-const onPress = jest.fn()
+const props = { height: 100, width: 100, onPress: jest.fn() }
 
-describe('SeeMore', () => {
+describe('<SeeMore />', () => {
   it('renders correctly', () => {
-    const seeMore = render(<SeeMore onPress={onPress} />)
+    const seeMore = render(<SeeMore {...props} />)
     expect(seeMore).toMatchSnapshot()
   })
 
   it('calls onPress when clicking the arrow', () => {
-    const seeMore = render(<SeeMore onPress={onPress} />)
+    const seeMore = render(<SeeMore {...props} />)
     fireEvent.press(seeMore.getByTestId('arrow-next'))
-    expect(onPress).toHaveBeenCalledTimes(1)
+    expect(props.onPress).toHaveBeenCalledTimes(1)
   })
 
   it('calls onPress when clicking the text', () => {
-    const seeMore = render(<SeeMore onPress={onPress} />)
+    const seeMore = render(<SeeMore {...props} />)
     fireEvent.press(seeMore.getByText('En voir plus'))
-    expect(onPress).toHaveBeenCalledTimes(1)
+    expect(props.onPress).toHaveBeenCalledTimes(1)
   })
 })

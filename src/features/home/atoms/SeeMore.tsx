@@ -3,15 +3,16 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ColorsEnum, getSpacing, Spacer, Typo, getShadow, LENGTH_L } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
 
 interface SeeMoreProps {
-  containerHeight?: number
+  height: number
+  width: number
   onPress: () => void
 }
 
-export const SeeMore: React.FC<SeeMoreProps> = ({ containerHeight, onPress }) => (
-  <Container containerHeight={containerHeight || LENGTH_L}>
+export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, onPress }) => (
+  <Container height={height} width={width}>
     <Spacer.Column numberOfSpaces={2} />
     <ClickableArea activeOpacity={1} onPress={onPress}>
       <Row>
@@ -30,8 +31,9 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ containerHeight, onPress }) =>
 )
 
 const Row = styled.View({ flexDirection: 'row' })
-const Container = styled.View<{ containerHeight: number }>(({ containerHeight }) => ({
-  height: containerHeight,
+const Container = styled.View<{ height: number; width: number }>(({ height, width }) => ({
+  height,
+  width,
   alignItems: 'center',
   justifyContent: 'center',
 }))

@@ -1,25 +1,21 @@
 import React from 'react'
-import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Layout } from 'features/home/contentful'
 import { ArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
-import { LENGTH_M, LENGTH_L, RATIO_HOME_IMAGE, MARGIN_DP, ColorsEnum, getSpacing } from 'ui/theme'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 import { ZIndex } from 'ui/theme/layers'
 
-interface CoverProps {
-  layout: Layout
+interface Props {
+  height: number
+  width: number
   uri: string
 }
 
-export const Cover = ({ layout, uri }: CoverProps) => {
-  const imageHeight = MARGIN_DP + (layout === 'two-items' ? LENGTH_M : LENGTH_L)
-  const imageWidth = PixelRatio.roundToNearestPixel(imageHeight * RATIO_HOME_IMAGE)
-
+export const Cover = (props: Props) => {
   return (
-    <Container imageHeight={imageHeight} imageWidth={imageWidth}>
-      <Image source={{ uri }} testID="coverImage" />
+    <Container height={props.height} width={props.width}>
+      <Image source={{ uri: props.uri }} testID="coverImage" />
       <ArrowsContainer>
         <ArrowMarginContainer>
           <ArrowNextDouble color={ColorsEnum.WHITE} size={56} />
@@ -29,14 +25,12 @@ export const Cover = ({ layout, uri }: CoverProps) => {
   )
 }
 
-const Container = styled.View<{ imageWidth: number; imageHeight: number }>(
-  ({ imageWidth, imageHeight }) => ({
-    height: imageHeight,
-    width: imageWidth,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-  })
-)
+const Container = styled.View<{ width: number; height: number }>(({ width, height }) => ({
+  height,
+  width,
+  alignItems: 'flex-end',
+  justifyContent: 'center',
+}))
 
 const Image = styled.Image({
   height: '100%',

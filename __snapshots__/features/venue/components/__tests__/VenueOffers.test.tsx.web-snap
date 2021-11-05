@@ -295,6 +295,7 @@ Array [
                 "justifyContent": "center",
                 "msFlexAlign": "center",
                 "msFlexPack": "center",
+                "width": "192px",
               }
             }
           >
