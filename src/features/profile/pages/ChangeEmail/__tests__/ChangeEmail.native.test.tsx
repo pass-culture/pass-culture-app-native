@@ -3,7 +3,11 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useChangeEmailMutation, UseChangeEmailMutationProps } from 'features/profile/mutations'
+import {
+  CHANGE_EMAIL_ERROR_CODE,
+  useChangeEmailMutation,
+  UseChangeEmailMutationProps,
+} from 'features/profile/mutations'
 import { fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { ColorsEnum } from 'ui/theme'
@@ -78,11 +82,11 @@ describe('<ChangeEmail/>', () => {
     })
   })
 
-  it('should show error message if the API call is ko', async () => {
+  it('should show error message if the user gave a wrong password', async () => {
     // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
     // eslint-disable-next-line local-rules/independant-mocks
     mockedUseChangeEmailMutation.mockImplementation(({ onError }: UseChangeEmailMutationProps) => ({
-      mutate: () => onError(undefined),
+      mutate: () => onError({ code: CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD }),
     }))
 
     const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
