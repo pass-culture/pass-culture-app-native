@@ -1,7 +1,7 @@
 import { AlgoliaParameters } from 'features/home/contentful/contentful'
 import { adaptedHomepageEntry } from 'tests/fixtures/homepageEntries'
 
-import { buildSearchParams, processHomepageEntry } from './processHomepageEntry'
+import { buildSearchParams, parseOfferId, processHomepageEntry } from './processHomepageEntry'
 
 describe('processHomepageEntry', () => {
   it('should format homepage entries so we can use it to display infos on home page', () => {
@@ -76,4 +76,18 @@ describe('processHomepageEntry', () => {
       ])
     })
   })
+})
+
+describe('parseOfferId', () => {
+  it.each`
+    offerId          | expected
+    ${'12345'}       | ${12345}
+    ${'AGHYA'}       | ${102272}
+    ${'ABEFPOLXX19'} | ${null}
+  `(
+    'parseOfferId($offerId) = $expected',
+    ({ offerId, expected }: { offerId: string; expected: number | null }) => {
+      expect(parseOfferId(offerId)).toEqual(expected)
+    }
+  )
 })

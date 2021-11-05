@@ -22,10 +22,6 @@ async function getOfferById(offerId: number) {
 }
 
 export const useOffer = ({ offerId }: { offerId: number }) =>
-  useQuery<OfferResponse | undefined>([QueryKeys.OFFER, offerId], () => {
-    if (offerId) {
-      return getOfferById(offerId)
-    } else {
-      return undefined
-    }
-  })
+  useQuery<OfferResponse | undefined>([QueryKeys.OFFER, offerId], () =>
+    offerId ? getOfferById(offerId) : undefined
+  )

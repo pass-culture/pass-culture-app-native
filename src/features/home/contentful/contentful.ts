@@ -3,6 +3,7 @@ export const CONTENT_TYPES = {
   ALGOLIA_PARAMETERS: 'algoliaParameters',
   DISPLAY_PARAMETERS: 'displayParameters',
   EXCLUSIVITY: 'exclusivity',
+  EXCLUSIVITY_DISPLAY_PARAMETERS: 'exclusivityDisplayParameters',
   HOMEPAGE_NATIF: 'homepageNatif',
   INFORMATION: 'information',
   BUSINESS: 'business',
@@ -134,6 +135,11 @@ export interface DisplayParameters {
   fields: DisplayParametersFields
 }
 
+export interface ExcluDisplayParameters {
+  sys: Sys<typeof CONTENT_TYPES.EXCLUSIVITY_DISPLAY_PARAMETERS>
+  fields: ExclusivityDisplayParametersFields
+}
+
 export interface Cover {
   sys: Sys<typeof CONTENT_TYPES.INFORMATION>
   fields: CoverFields
@@ -204,6 +210,13 @@ export interface DisplayParametersFields {
   minOffers: number
 }
 
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivityDisplayParameters/fields
+export interface ExclusivityDisplayParametersFields {
+  title: string
+  isGeolocated?: boolean
+  aroundRadius?: number
+}
+
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/business/fields
 export interface BusinessFields {
   title: string
@@ -221,6 +234,7 @@ export interface ExclusivityFields {
   alt: string
   image: Image
   offerId: string
+  displayParameters?: ExcluDisplayParameters
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields

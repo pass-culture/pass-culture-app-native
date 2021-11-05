@@ -50,6 +50,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
           },
         ]
       }
+      testID="imageExclu"
     >
       <View
         style={
@@ -57,11 +58,13 @@ exports[`ExclusivityModule component should render correctly 1`] = `
             Object {
               "overflow": "hidden",
             },
-            Object {
-              "borderRadius": 8,
-              "height": 585,
-              "maxHeight": 360,
-            },
+            Array [
+              Object {
+                "borderRadius": 8,
+                "height": 585,
+                "maxHeight": 360,
+              },
+            ],
           ]
         }
       >
@@ -83,7 +86,6 @@ exports[`ExclusivityModule component should render correctly 1`] = `
               "top": 0,
             }
           }
-          testID="imageExclu"
         />
       </View>
     </View>
