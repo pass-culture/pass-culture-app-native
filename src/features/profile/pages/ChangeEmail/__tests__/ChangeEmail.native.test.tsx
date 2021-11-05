@@ -3,7 +3,11 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useChangeEmailMutation, UseChangeEmailMutationProps } from 'features/profile/mutations'
+import {
+  CHANGE_EMAIL_ERROR_CODE,
+  useChangeEmailMutation,
+  UseChangeEmailMutationProps,
+} from 'features/profile/mutations'
 import { fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { ColorsEnum } from 'ui/theme'
@@ -15,10 +19,11 @@ jest.mock('features/profile/mutations')
 const mockedUseChangeEmailMutation = mocked(useChangeEmailMutation)
 
 const mockShowSuccessSnackBar = jest.fn()
+const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
     showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
-    showErrorSnackBar: jest.fn(),
+    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
   }),
   SNACK_BAR_TIME_OUT: 5000,
 }))
@@ -74,11 +79,11 @@ describe('<ChangeEmail/>', () => {
     })
   })
 
-  it('should show error message if the API call is ko', async () => {
+  it('should show error message if the user gave a wrong password', async () => {
     // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
     // eslint-disable-next-line local-rules/independant-mocks
     mockedUseChangeEmailMutation.mockImplementation(({ onError }: UseChangeEmailMutationProps) => ({
-      mutate: () => onError(undefined),
+      mutate: () => onError({ code: CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD }),
     }))
 
     const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
@@ -94,6 +99,40 @@ describe('<ChangeEmail/>', () => {
       expect(navigate).not.toBeCalled()
       const errorMessage = queryByText('Mot de passe incorrect')
       expect(errorMessage).toBeTruthy()
+    })
+
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseChangeEmailMutation.mockImplementation(
+      // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+      ({ onSuccess }: UseChangeEmailMutationProps) => ({
+        mutate: () => onSuccess(),
+      })
+    )
+  })
+
+  it('should show error message if the API call returns a generic error', async () => {
+    // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseChangeEmailMutation.mockImplementation(({ onError }: UseChangeEmailMutationProps) => ({
+      mutate: () => onError({ code: CHANGE_EMAIL_ERROR_CODE.INVALID_EMAIL }),
+    }))
+
+    const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
+    const submitButton = getByTestId('Enregistrer')
+    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'tonadresse@email.com')
+    fireEvent.changeText(passwordInput, 'password>=12')
+
+    fireEvent.press(submitButton)
+
+    await waitForExpect(() => {
+      expect(navigate).not.toBeCalled()
+      expect(mockShowErrorSnackBar).toBeCalledWith({
+        message: `Une erreur s’est produite pendant la modification de ton e-mail.
+Réessaie plus tard.`,
+        timeout: 5000,
+      })
     })
 
     // eslint-disable-next-line local-rules/independant-mocks
