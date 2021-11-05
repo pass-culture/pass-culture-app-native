@@ -8,7 +8,7 @@ import { ExclusivityPane } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useOffer } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
-import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, getSpacing } from 'ui/theme'
+import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const ExclusivityModule = ({ alt, image, id }: ExclusivityPane) => {
@@ -25,21 +25,34 @@ export const ExclusivityModule = ({ alt, image, id }: ExclusivityPane) => {
 
   if (!offer) return null
   return (
-    <TouchableHighlight onPress={handlePressExclu} testID="imageExclu">
-      <Image source={source} accessible={!!alt} accessibilityLabel={alt} />
-    </TouchableHighlight>
+    <Row>
+      <Spacer.Row numberOfSpaces={6} />
+      <ImageContainer>
+        <TouchableHighlight onPress={handlePressExclu} testID="imageExclu">
+          <Image source={source} accessible={!!alt} accessibilityLabel={alt} />
+        </TouchableHighlight>
+      </ImageContainer>
+      <Spacer.Row numberOfSpaces={6} />
+    </Row>
   )
 }
+
+const Row = styled.View({
+  flexDirection: 'row',
+})
+
+const ImageContainer = styled.View({
+  flex: 1,
+  maxHeight: LENGTH_XL,
+})
+
+const TouchableHighlight = styled.TouchableHighlight({
+  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+  maxHeight: LENGTH_XL,
+})
 
 const Image = styled(FastImage)(({ theme }) => ({
   borderRadius: BorderRadiusEnum.BORDER_RADIUS,
   maxHeight: LENGTH_XL,
   height: PixelRatio.roundToNearestPixel((theme.appContentWidth - 2 * MARGIN_DP) * RATIO_EXCLU),
 }))
-
-const TouchableHighlight = styled.TouchableHighlight({
-  flex: 1,
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-  maxHeight: LENGTH_XL,
-  marginHorizontal: getSpacing(6),
-})

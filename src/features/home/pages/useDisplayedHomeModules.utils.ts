@@ -85,14 +85,14 @@ export const getModulesToDisplay = (
   isLoggedIn: boolean,
   userLocation: GeoCoordinates | null
 ) =>
-  modules.filter((module: ProcessedModule) => {
+  modules.filter((module: ProcessedModule): boolean => {
     if (module instanceof BusinessPane) {
       return showBusinessModule(module.targetNotConnectedUsersOnly, isLoggedIn)
     }
 
     if (module instanceof ExclusivityPane) {
       const offer = excluOffers.find((offer) => offer.id === module.id)
-      return offer && shouldDisplayExcluOffer(module.display, offer, userLocation)
+      return !!offer && shouldDisplayExcluOffer(module.display, offer, userLocation)
     }
 
     if (module instanceof RecommendationPane) {

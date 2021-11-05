@@ -43,5 +43,6 @@ export function useDisplayedHomeModules(entryId?: string) {
     isLoggedIn,
     position
   )
+
   return { homeModules, homeVenuesModules, displayedModules, recommendedHits }
 }

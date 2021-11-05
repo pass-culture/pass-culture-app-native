@@ -2,64 +2,103 @@
 
 exports[`ExclusivityModule component should render correctly 1`] = `
 <View
-  accessible={true}
-  focusable={true}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
   style={
     Array [
       Object {
-        "borderRadius": 8,
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "marginHorizontal": 24,
-        "maxHeight": 360,
+        "flexDirection": "row",
       },
     ]
   }
-  testID="imageExclu"
 >
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "width": 24,
+        },
+      ]
+    }
+  />
   <View
     style={
       Array [
         Object {
-          "overflow": "hidden",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "maxHeight": 360,
         },
-        Array [
-          Object {
-            "borderRadius": 8,
-            "height": 585,
-            "maxHeight": 360,
-          },
-        ],
       ]
     }
   >
-    <FastImageView
-      accessibilityLabel="Image d'Adèle"
+    <View
       accessible={true}
-      resizeMode="cover"
-      source={
-        Object {
-          "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
-        }
-      }
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
+        Array [
+          Object {
+            "borderRadius": 8,
+            "maxHeight": 360,
+          },
+        ]
       }
-    />
+      testID="imageExclu"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "overflow": "hidden",
+            },
+            Array [
+              Object {
+                "borderRadius": 8,
+                "height": 585,
+                "maxHeight": 360,
+              },
+            ],
+          ]
+        }
+      >
+        <FastImageView
+          accessibilityLabel="Image d'Adèle"
+          accessible={true}
+          resizeMode="cover"
+          source={
+            Object {
+              "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
+            }
+          }
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
+    </View>
   </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "width": 24,
+        },
+      ]
+    }
+  />
 </View>
 `;

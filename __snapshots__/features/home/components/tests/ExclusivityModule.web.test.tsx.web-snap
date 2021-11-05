@@ -7,19 +7,55 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        data-testid="imageExclu"
-        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 24px; margin-left: 24px; max-height: 360px; user-select: none;"
-        tabindex="0"
-      />
+        style="flex-direction: row;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="width: 24px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-height: 360px;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            data-testid="imageExclu"
+            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; max-height: 360px; user-select: none;"
+            tabindex="0"
+          />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="width: 24px;"
+        />
+      </div>
     </div>
   </body>,
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      data-testid="imageExclu"
-      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 24px; margin-left: 24px; max-height: 360px; user-select: none;"
-      tabindex="0"
-    />
+      style="flex-direction: row;"
+    >
+      <div
+        class="css-view-1dbjc4n"
+        style="width: 24px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-height: 360px;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          data-testid="imageExclu"
+          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; max-height: 360px; user-select: none;"
+          tabindex="0"
+        />
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="width: 24px;"
+      />
+    </div>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
