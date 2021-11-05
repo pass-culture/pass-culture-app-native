@@ -350,8 +350,7 @@ msgstr "Cinéma - Salle de projections"
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.tsx
-#: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
+#: src/ui/components/LayoutExpiredLink.tsx
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
@@ -441,8 +440,7 @@ msgid "Connexion"
 msgstr "Connexion"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.tsx
-#: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
+#: src/ui/components/LayoutExpiredLink.tsx
 msgid "Consulter l'article d'aide"
 msgstr "Consulter l'article d'aide"
 
@@ -461,6 +459,7 @@ msgstr "Contact"
 #: src/features/auth/signup/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+#: src/ui/components/LayoutExpiredLink.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
@@ -968,8 +967,7 @@ msgstr "La réservation est annulable jusqu'au"
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.tsx
-#: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
+#: src/ui/components/LayoutExpiredLink.tsx
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
@@ -1026,6 +1024,10 @@ msgstr "Les réservations effectuées sur le pass Culture sont destinées à un 
 #: src/libs/parsers/venueType.ts
 msgid "Librairie"
 msgstr "Librairie"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Lien de modification de l'email expiré"
+msgstr "Lien de modification de l'email expiré"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Lieu"
@@ -1157,6 +1159,7 @@ msgstr "Mot de passe - Formulaire"
 msgid "Mot de passe actuel"
 msgstr "Mot de passe actuel"
 
+#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Mot de passe incorrect"
 msgstr "Mot de passe incorrect"
@@ -1308,14 +1311,10 @@ msgstr "Offres"
 msgid "On y va !"
 msgstr "On y va !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.tsx
-#: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
-msgid "Oups"
-msgstr "Oups"
-
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 #: src/features/search/atoms/NoSearchResult.tsx
+#: src/ui/components/LayoutExpiredLink.tsx
 msgid "Oups !"
 msgstr "Oups !"
 
@@ -1524,8 +1523,7 @@ msgstr "Redirection en cours"
 msgid "Rends-toi vite sur le site pass Culture afin de la réserver"
 msgstr "Rends-toi vite sur le site pass Culture afin de la réserver"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.tsx
-#: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
+#: src/ui/components/LayoutExpiredLink.tsx
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
@@ -1549,10 +1547,8 @@ msgstr "Retour"
 msgid "Retourner l'accueil"
 msgstr "Retourner l'accueil"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
-#: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
@@ -1560,6 +1556,7 @@ msgstr "Retourner l'accueil"
 #: src/features/offer/pages/OfferNotFound.tsx
 #: src/features/profile/pages/DeleteProfileSuccess.tsx
 #: src/features/venue/pages/VenueNotFound.tsx
+#: src/ui/components/LayoutExpiredLink.tsx
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
@@ -1722,8 +1719,7 @@ msgstr "Seules les sorties seront affichées"
 msgid "Si tu as 18 ans, tu pourras obtenir une aide financière de"
 msgstr "Si tu as 18 ans, tu pourras obtenir une aide financière de"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.tsx
-#: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
+#: src/ui/components/LayoutExpiredLink.tsx
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
