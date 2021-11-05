@@ -130,7 +130,7 @@ export const HomeBody = (props: HomeBodyProps) => {
       }
       return null
     },
-    [Object.keys(homeModules), position, recommendedHits]
+    [displayedModules]
   )
 
   return (

@@ -1,3 +1,4 @@
+import { OfferResponse } from 'api/gen'
 import {
   BusinessPane,
   ExclusivityPane,
@@ -8,6 +9,8 @@ import {
 } from 'features/home/contentful'
 import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
 import { isArrayOfOfferTypeguard, isArrayOfVenuesTypeguard } from 'features/home/typeguards'
+import { GeoCoordinates } from 'libs/geolocation'
+import { computeDistanceInMeters } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 
 import { RecommendationPane } from '../contentful/moduleTypes'
@@ -46,18 +49,52 @@ export const getRecommendationModule = (
 ): RecommendationPane | undefined =>
   modules.find((module) => module instanceof RecommendationPane) as RecommendationPane | undefined
 
+export const getExcluModules = (modules: ProcessedModule[]): ExclusivityPane[] =>
+  modules.filter((module) => module instanceof ExclusivityPane) as ExclusivityPane[]
+
+export const shouldDisplayExcluOffer = (
+  display: ExclusivityPane['display'],
+  offer: OfferResponse,
+  userLocation: GeoCoordinates | null
+): boolean => {
+  // Exclu module is not geolocated
+  if (!display || !display.isGeolocated || !display.aroundRadius) return true
+
+  // Exclu module is geolocated but we don't know the user's location
+  if (!userLocation) return false
+
+  // Exclu module is geolocated and we know the user's location: compute distance to offer
+  const { latitude, longitude } = offer.venue.coordinates
+  if (!latitude || !longitude) return false
+  const distance = computeDistanceInMeters(
+    latitude,
+    longitude,
+    userLocation.latitude,
+    userLocation.longitude
+  )
+
+  return distance <= 1000 * display.aroundRadius
+}
+
 export const getModulesToDisplay = (
   modules: ProcessedModule[],
   homeModules: HomeModuleResponse,
   homeVenuesModules: HomeVenuesModuleResponse,
   recommendedHits: SearchHit[],
-  isLoggedIn: boolean
+  excluOffers: OfferResponse[],
+  isLoggedIn: boolean,
+  userLocation: GeoCoordinates | null
 ) =>
-  modules.filter((module: ProcessedModule) => {
+  modules.filter((module: ProcessedModule): boolean => {
     if (module instanceof BusinessPane) {
       return showBusinessModule(module.targetNotConnectedUsersOnly, isLoggedIn)
     }
-    if (module instanceof ExclusivityPane) return true
+
+    if (module instanceof ExclusivityPane) {
+      const offer = excluOffers.find((offer) => offer.id === module.id)
+      return !!offer && shouldDisplayExcluOffer(module.display, offer, userLocation)
+    }
+
     if (module instanceof RecommendationPane) {
       return recommendedHits.length > module.display.minOffers
     }
