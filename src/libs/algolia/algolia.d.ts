@@ -24,6 +24,7 @@ export interface AlgoliaHit {
 
 export interface AlgoliaVenue {
   objectID: string
+  city: string
   name: string
   offerer_name: string
   venue_type: string

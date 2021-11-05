@@ -23,6 +23,6 @@ export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
 
 const buildSuggestedVenue = (venue: AlgoliaVenue): SuggestedVenue => ({
   label: venue.name,
-  info: venue.offerer_name,
+  info: venue.city || venue.offerer_name,
   venueId: parseInt(venue.objectID),
 })
