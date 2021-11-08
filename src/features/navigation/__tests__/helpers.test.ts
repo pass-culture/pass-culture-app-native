@@ -65,11 +65,11 @@ describe('Navigation helpers', () => {
     })
   })
 
-  it('should not log analytics event when logEvent is false', async () => {
+  it('should not log analytics event when shouldLogEvent is false', async () => {
     openURLSpy.mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
 
-    await openUrl(link, false)
+    await openUrl(link, { logEvent: false })
 
     await waitForExpect(() => {
       expect(analytics.logOpenExternalUrl).not.toBeCalled()
@@ -96,7 +96,7 @@ describe('Navigation helpers', () => {
     const link = 'https://www.google.com'
     const fallbackLink = 'https://www.googlefallback.com'
 
-    await openUrl(link, undefined, fallbackLink)
+    await openUrl(link, { fallbackUrl: fallbackLink })
     expect(alertMock).not.toHaveBeenCalled()
   })
 

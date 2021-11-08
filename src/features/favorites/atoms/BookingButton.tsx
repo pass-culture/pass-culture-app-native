@@ -6,7 +6,6 @@ import { Credit } from 'features/home/services/useAvailableCredit'
 import { openUrl } from 'features/navigation/helpers'
 import { hasEnoughCredit } from 'features/offer/services/useHasEnoughCredit'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
-import { OfferAnalyticsData } from 'libs/analytics/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 
@@ -87,7 +86,7 @@ const BookExternallyButton = ({
   url ? (
     <ButtonPrimary
       title={t`Réserver`}
-      onPress={() => url && openUrl(url, true, undefined, { offerId })}
+      onPress={() => url && openUrl(url, { analyticsData: { offerId } })}
       icon={ExternalLinkSite}
       buttonHeight="tall"
     />

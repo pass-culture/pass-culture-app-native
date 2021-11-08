@@ -28,7 +28,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
 
   const accessExternalOffer = () => {
     if (offer.url) {
-      openUrl(offer.url, true, undefined, { offerId: offer.id })
+      openUrl(offer.url, { analyticsData: { offerId: offer.id } })
     }
   }
 

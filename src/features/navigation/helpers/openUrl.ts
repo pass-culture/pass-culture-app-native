@@ -20,11 +20,15 @@ const openAppUrl = (url: string) => {
   }
 }
 
+type paramsProps = {
+  logEvent?: boolean
+  fallbackUrl?: string
+  analyticsData?: OfferAnalyticsData
+}
+
 const openExternalUrl = async (
   url: string,
-  logEvent: boolean | undefined = true,
-  fallbackUrl?: string | undefined,
-  analyticsData?: OfferAnalyticsData
+  { logEvent = true, fallbackUrl, analyticsData }: paramsProps
 ) => {
   try {
     await Linking.openURL(url)
@@ -56,13 +60,11 @@ const showAlert = (url: string) => {
 
 export async function openUrl(
   url: string,
-  logEvent: boolean | undefined = true,
-  fallbackUrl?: string | undefined,
-  analyticsData?: OfferAnalyticsData
+  { logEvent = true, fallbackUrl, analyticsData }: paramsProps = {}
 ) {
   if (isAppUrl(url)) {
     return openAppUrl(url)
   }
 
-  openExternalUrl(url, logEvent, fallbackUrl, analyticsData)
+  openExternalUrl(url, { logEvent, fallbackUrl, analyticsData })
 }
