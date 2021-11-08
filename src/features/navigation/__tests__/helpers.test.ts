@@ -54,7 +54,7 @@ describe('Navigation helpers', () => {
     expect(navigationRef.current?.navigate).toBeCalledWith('PageNotFound', undefined)
   })
 
-  it('should log analytics when logEvent is true', async () => {
+  it('should log analytics when shouldLogEvent is true', async () => {
     openURLSpy.mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
 
@@ -69,7 +69,7 @@ describe('Navigation helpers', () => {
     openURLSpy.mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
 
-    await openUrl(link, { logEvent: false })
+    await openUrl(link, { shouldLogEvent: false })
 
     await waitForExpect(() => {
       expect(analytics.logOpenExternalUrl).not.toBeCalled()

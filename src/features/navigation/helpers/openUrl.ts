@@ -21,18 +21,18 @@ const openAppUrl = (url: string) => {
 }
 
 type paramsProps = {
-  logEvent?: boolean
+  shouldLogEvent?: boolean
   fallbackUrl?: string
   analyticsData?: OfferAnalyticsData
 }
 
 const openExternalUrl = async (
   url: string,
-  { logEvent = true, fallbackUrl, analyticsData }: paramsProps
+  { shouldLogEvent = true, fallbackUrl, analyticsData }: paramsProps
 ) => {
   try {
     await Linking.openURL(url)
-    if (logEvent) analytics.logOpenExternalUrl(url, { ...analyticsData })
+    if (shouldLogEvent) analytics.logOpenExternalUrl(url, { ...analyticsData })
     return
   } catch (error) {
     new MonitoringError(error.message, 'OpenExternalUrlError')
@@ -41,7 +41,7 @@ const openExternalUrl = async (
   if (fallbackUrl) {
     try {
       await Linking.openURL(fallbackUrl)
-      if (logEvent) analytics.logOpenExternalUrl(fallbackUrl, { ...analyticsData })
+      if (shouldLogEvent) analytics.logOpenExternalUrl(fallbackUrl, { ...analyticsData })
       return
     } catch (error) {
       new MonitoringError(error.message, 'OpenExternalUrlError_FallbackUrl')
@@ -60,11 +60,11 @@ const showAlert = (url: string) => {
 
 export async function openUrl(
   url: string,
-  { logEvent = true, fallbackUrl, analyticsData }: paramsProps = {}
+  { shouldLogEvent = true, fallbackUrl, analyticsData }: paramsProps = {}
 ) {
   if (isAppUrl(url)) {
     return openAppUrl(url)
   }
 
-  openExternalUrl(url, { logEvent, fallbackUrl, analyticsData })
+  openExternalUrl(url, { shouldLogEvent, fallbackUrl, analyticsData })
 }

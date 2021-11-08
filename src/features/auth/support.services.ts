@@ -21,7 +21,7 @@ export const contactSupport = {
         'Bien cordialement,'
     )
     openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, {
-      logEvent: false,
+      shouldLogEvent: false,
     })
       .then(() => analytics.logMailTo('forChangeEmailExpiredLink'))
       .catch(() =>
@@ -29,14 +29,14 @@ export const contactSupport = {
       )
   },
   forGenericQuestion() {
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}`, { logEvent: false })
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}`, { shouldLogEvent: false })
       .then(() => analytics.logMailTo('forGenericQuestion'))
       .catch(() => eventMonitoring.captureException(new ContactSupportError('GenericQuestion')))
   },
   forSignupConfirmationEmailNotReceived() {
     openUrl(
       'https://aide.passculture.app/fr/articles/5257121-je-n-ai-pas-recu-le-mail-de-confirmation-de-creation-de-compte',
-      { logEvent: false }
+      { shouldLogEvent: false }
     )
       .then(() => analytics.logMailTo('forSignupConfirmationEmailNotReceived'))
       .catch(() =>
@@ -55,7 +55,7 @@ export const contactSupport = {
         'Bien cordialement,'
     )
     openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, {
-      logEvent: false,
+      shouldLogEvent: false,
     })
       .then(() => analytics.logMailTo('forSignupConfirmationExpiredLink'))
       .catch(() =>
@@ -72,7 +72,7 @@ export const contactSupport = {
         'Bien cordialement,'
     )
     openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, {
-      logEvent: false,
+      shouldLogEvent: false,
     })
       .then(() => analytics.logMailTo('forResetPasswordEmailNotReceived'))
       .catch(() =>
@@ -89,7 +89,7 @@ export const contactSupport = {
         'Bien cordialement,'
     )
     openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, {
-      logEvent: false,
+      shouldLogEvent: false,
     })
       .then(() => analytics.logMailTo('forResetPasswordExpiredLink'))
       .catch(() =>
@@ -110,14 +110,14 @@ export const contactSupport = {
         'Bien cordialement,'
     )
     openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`, {
-      logEvent: false,
+      shouldLogEvent: false,
     })
       .then(() => analytics.logMailTo('forAccountDeletion'))
       .catch(() => eventMonitoring.captureException(new ContactSupportError('AccountDeletion')))
   },
   forPhoneNumberConfirmation() {
     const subject = encodeURI('Confirmation de numéro de téléphone')
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}`, { logEvent: false })
+    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}`, { shouldLogEvent: false })
       .then(() => analytics.logMailTo('forPhoneNumberConfirmation'))
       .catch(() =>
         eventMonitoring.captureException(new ContactSupportError('PhoneNumberConfirmation'))
