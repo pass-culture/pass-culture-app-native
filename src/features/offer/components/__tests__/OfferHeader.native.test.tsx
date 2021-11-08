@@ -6,14 +6,12 @@ import waitForExpect from 'wait-for-expect'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse, OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import {
   paginatedFavoritesResponseSnap,
   addFavoriteJsonResponseSnap,
 } from 'features/favorites/api/snaps/favorisResponseSnap'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
-import { getWebappOfferUrl } from 'features/offer/services/useShareOffer'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -102,10 +100,8 @@ describe('<OfferHeader />', () => {
 
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
-    const fullWebAppUrlWithParams = getWebappOfferUrl(116656, env.WEBAPP_URL)
-    const deepLink = `https://webapp-v2.example.com/offre/116656?from=offer`
+    const url = `https://webapp-v2.example.com/offre/116656?from=offer`
 
-    const url = generateLongFirebaseDynamicLink(deepLink, fullWebAppUrlWithParams)
     const message =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
     const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
@@ -122,10 +118,8 @@ describe('<OfferHeader />', () => {
 
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
-    const fullWebAppUrlWithParams = getWebappOfferUrl(116656, env.WEBAPP_URL)
-    const deepLink = `https://webapp-v2.example.com/offre/116656?from=offer`
+    const url = `https://webapp-v2.example.com/offre/116656?from=offer`
 
-    const url = generateLongFirebaseDynamicLink(deepLink, fullWebAppUrlWithParams)
     const messageWithUrl =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
       url

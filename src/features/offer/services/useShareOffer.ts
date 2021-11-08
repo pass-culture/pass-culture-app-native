@@ -2,12 +2,9 @@ import { t } from '@lingui/macro'
 import { Platform, Share } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
-import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { humanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
-import { env, useWebAppUrl, WEBAPP_V2_URL } from 'libs/environment'
-import { MonitoringError } from 'libs/monitoring'
+import { WEBAPP_V2_URL } from 'libs/environment'
 
 import { useOffer } from '../api/useOffer'
 import { getLocationName } from '../atoms/LocationCaption'
@@ -18,19 +15,7 @@ function getOfferPath(id: number) {
   return getScreenPath('Offer', { id, from: 'offer', moduleName: undefined })
 }
 
-export function getWebappOfferUrl(offerId: number, webAppUrl: string) {
-  if (webAppUrl === WEBAPP_V2_URL) {
-    return `${webAppUrl}${getOfferPath(offerId)}`
-  }
-  if (webAppUrl === env.WEBAPP_URL) {
-    return `${webAppUrl}/accueil/details/${humanizeId(offerId)}`
-  }
-  throw new MonitoringError(
-    `webAppUrl=${webAppUrl} should be equal to WEBAPP_V2_URL=${WEBAPP_V2_URL} or env.WEBAPP_URL=${env.WEBAPP_URL}`
-  )
-}
-
-async function shareOffer(offer: OfferResponse, webAppUrl: string) {
+async function shareOffer(offer: OfferResponse) {
   const locationName = getLocationName(offer.venue, offer.isDigital)
   const message = t({
     id: 'share offer message',
@@ -38,10 +23,7 @@ async function shareOffer(offer: OfferResponse, webAppUrl: string) {
     message: 'Retrouve "{name}" chez "{locationName}" sur le pass Culture',
   })
 
-  const deepLink = `${WEBAPP_V2_URL}${getOfferPath(offer.id)}`
-  const webAppLink = getWebappOfferUrl(offer.id, webAppUrl)
-
-  const url = generateLongFirebaseDynamicLink(deepLink, webAppLink)
+  const url = `${WEBAPP_V2_URL}${getOfferPath(offer.id)}`
 
   // url share content param is only for iOs, so we add url in message for android
   const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)
@@ -66,7 +48,6 @@ async function shareOffer(offer: OfferResponse, webAppUrl: string) {
 
 export const useShareOffer = (offerId: number): (() => Promise<void>) => {
   const { data: offerResponse } = useOffer({ offerId })
-  const webAppUrl = useWebAppUrl()
 
   const logShareOffer = useFunctionOnce(() => {
     analytics.logShareOffer(offerId)
@@ -74,7 +55,7 @@ export const useShareOffer = (offerId: number): (() => Promise<void>) => {
 
   return async () => {
     logShareOffer()
-    if (!offerResponse || !webAppUrl) return
-    await shareOffer(offerResponse, webAppUrl)
+    if (!offerResponse) return
+    await shareOffer(offerResponse)
   }
 }

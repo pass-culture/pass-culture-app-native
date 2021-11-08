@@ -3,8 +3,6 @@ import { env } from 'libs/environment'
 import {
   WEBAPP_NATIVE_REDIRECTION_URL,
   FIREBASE_DYNAMIC_LINK_URL,
-  getLongDynamicLinkURI,
-  generateLongFirebaseDynamicLink,
   isFirebaseDynamicLink,
   isFirebaseLongDynamicLink,
   extractUniversalLinkFromLongFirebaseDynamicLink,
@@ -16,25 +14,6 @@ describe('Formatting deeplink url', () => {
 
   it('should format properly the universal link', () => {
     expect(WEBAPP_NATIVE_REDIRECTION_URL).toEqual(`https://${env.WEBAPP_NATIVE_REDIRECTION_DOMAIN}`)
-  })
-
-  describe('getLongDynamicLinkURI', () => {
-    it('should create the right URI for Firebase Dynamic Links', () => {
-      const params = new URLSearchParams(getLongDynamicLinkURI())
-      expect(params.get('apn')).toEqual(env.ANDROID_APP_ID)
-      expect(params.get('isi')).toEqual(String(env.IOS_APP_STORE_ID))
-      expect(params.get('ibi')).toEqual(env.IOS_APP_ID)
-    })
-  })
-
-  describe('generateLongFirebaseDynamicLink', () => {
-    it('should return a format long firebase dynamic link', () => {
-      const fullWebAppUrlWithParams = 'https://web.example.com/offre/1'
-      const dynamicLink = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
-      expect(dynamicLink).toEqual(
-        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${fullWebAppUrlWithParams}&${getLongDynamicLinkURI()}`
-      )
-    })
   })
 
   describe('isFirebaseDynamicLink', () => {
