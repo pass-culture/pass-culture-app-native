@@ -26,8 +26,8 @@ type Props = {
   data: any[]
   itemWidth: number
   itemHeight: number
-  cover: string | null
   testID: string
+  cover?: string | null
   renderItem: CustomListRenderItem<any>
   keyExtractor: ((item: any, index: number) => string) | undefined
   onPressSeeMore?: () => void

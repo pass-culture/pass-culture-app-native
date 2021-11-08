@@ -12,7 +12,6 @@ import {
   OfferVenueResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
@@ -20,7 +19,7 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
-import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
+import { MARGIN_DP } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface OfferTileProps {
@@ -34,11 +33,10 @@ interface OfferTileProps {
   offerId: number
   price: string
   thumbUrl?: string
-  layout?: Layout
   isBeneficiary?: boolean
   moduleName: string
-  width?: number
-  height?: number
+  width: number
+  height: number
 }
 
 type PartialOffer = Pick<
@@ -76,9 +74,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
 
 export const OfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
-  const { layout = 'one-item-medium', moduleName, isBeneficiary, categoryLabel, ...offer } = props
-  const imageHeight = props.height || layout === 'two-items' ? LENGTH_M : LENGTH_L
-  const imageWidth = props.width || imageHeight * RATIO_HOME_IMAGE
+  const { width, height, moduleName, isBeneficiary, categoryLabel, ...offer } = props
   const queryClient = useQueryClient()
 
   function handlePressOffer() {
@@ -95,18 +91,18 @@ export const OfferTile = (props: OfferTileProps) => {
   return (
     <Container>
       <TouchableHighlight
-        imageHeight={imageHeight}
+        imageHeight={height}
         onPress={handlePressOffer}
         {...accessibilityAndTestId('offerTile')}>
         <View>
           <ImageTile
-            imageWidth={imageWidth}
-            imageHeight={imageHeight}
+            imageWidth={width}
+            imageHeight={height}
             uri={offer.thumbUrl}
             onlyTopBorderRadius
           />
           <ImageCaption
-            imageWidth={imageWidth}
+            imageWidth={width}
             categoryLabel={categoryLabel}
             distance={offer.distance}
           />
@@ -114,7 +110,7 @@ export const OfferTile = (props: OfferTileProps) => {
       </TouchableHighlight>
 
       <OfferCaption
-        imageWidth={imageWidth}
+        imageWidth={width}
         name={offer.name}
         date={offer.date}
         isDuo={offer.isDuo}

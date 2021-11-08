@@ -25,6 +25,8 @@ const props = {
   price: '28 €',
   thumbUrl: offer.thumbUrl,
   venueId,
+  width: 100,
+  height: 100,
 }
 
 describe('VenueOfferTile component', () => {

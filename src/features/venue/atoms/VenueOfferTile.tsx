@@ -12,7 +12,6 @@ import { QueryKeys } from 'libs/queryKeys'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
-import { LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum, MARGIN_DP } from 'ui/theme/grid'
 
 interface VenueOfferTileProps {
@@ -27,6 +26,8 @@ interface VenueOfferTileProps {
   thumbUrl?: string
   isBeneficiary?: boolean
   venueId?: number
+  width: number
+  height: number
 }
 
 /* TODO : When we add categories of offers at the top of the carousel
@@ -52,19 +53,19 @@ export const VenueOfferTile = (props: VenueOfferTileProps) => {
 
   return (
     <View>
-      <TouchableHighlight imageHeight={VENUE_OFFER_HEIGHT} onPress={handlePressOffer}>
+      <TouchableHighlight imageHeight={props.height} onPress={handlePressOffer}>
         <View>
           <ImageTile
-            imageWidth={VENUE_OFFER_WIDTH}
-            imageHeight={VENUE_OFFER_HEIGHT}
+            imageWidth={props.width}
+            imageHeight={props.height}
             uri={offer.thumbUrl}
             onlyTopBorderRadius
           />
-          <ImageCaption imageWidth={VENUE_OFFER_WIDTH} categoryLabel={categoryLabel} />
+          <ImageCaption imageWidth={props.width} categoryLabel={categoryLabel} />
         </View>
       </TouchableHighlight>
       <OfferCaption
-        imageWidth={VENUE_OFFER_WIDTH}
+        imageWidth={props.width}
         name={offer.name}
         date={offer.date}
         isDuo={offer.isDuo}
@@ -75,8 +76,6 @@ export const VenueOfferTile = (props: VenueOfferTileProps) => {
   )
 }
 
-export const VENUE_OFFER_HEIGHT = LENGTH_L
-export const VENUE_OFFER_WIDTH = VENUE_OFFER_HEIGHT * RATIO_HOME_IMAGE
 const rowHeight = PixelRatio.roundToNearestPixel(MARGIN_DP)
 
 const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(

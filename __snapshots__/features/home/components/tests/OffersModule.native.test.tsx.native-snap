@@ -252,7 +252,7 @@ Array [
                 Array [
                   Object {
                     "borderRadius": 8,
-                    "height": 240,
+                    "height": 312,
                   },
                 ]
               }
@@ -268,7 +268,7 @@ Array [
                       Object {
                         "borderTopLeftRadius": 8,
                         "borderTopRightRadius": 8,
-                        "height": 216,
+                        "height": 288,
                         "width": 192,
                       },
                     ]
@@ -455,7 +455,7 @@ Array [
                 Array [
                   Object {
                     "borderRadius": 8,
-                    "height": 240,
+                    "height": 312,
                   },
                 ]
               }
@@ -471,7 +471,7 @@ Array [
                       Object {
                         "borderTopLeftRadius": 8,
                         "borderTopRightRadius": 8,
-                        "height": 216,
+                        "height": 288,
                         "width": 192,
                       },
                     ]
@@ -658,7 +658,7 @@ Array [
                 Array [
                   Object {
                     "borderRadius": 8,
-                    "height": 240,
+                    "height": 312,
                   },
                 ]
               }
@@ -674,7 +674,7 @@ Array [
                       Object {
                         "borderTopLeftRadius": 8,
                         "borderTopRightRadius": 8,
-                        "height": 216,
+                        "height": 288,
                         "width": 192,
                       },
                     ]
@@ -879,7 +879,7 @@ Array [
                 Array [
                   Object {
                     "borderRadius": 8,
-                    "height": 240,
+                    "height": 312,
                   },
                 ]
               }
@@ -895,7 +895,7 @@ Array [
                       Object {
                         "borderTopLeftRadius": 8,
                         "borderTopRightRadius": 8,
-                        "height": 216,
+                        "height": 288,
                         "width": 192,
                       },
                     ]

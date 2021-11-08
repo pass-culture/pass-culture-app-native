@@ -1,17 +1,12 @@
 import React, { useCallback } from 'react'
-import {
-  LayoutChangeEvent,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  ScrollView,
-} from 'react-native'
-import styled from 'styled-components/native'
+import { LayoutChangeEvent } from 'react-native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
+import { CustomListRenderItem, Playlist } from 'features/home/components/Playlist'
 import { DisplayParametersFields } from 'features/home/contentful'
-import { useLayoutHits } from 'features/home/hooks/useLayoutHits'
+import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
-import { analytics, isCloseToEndHorizontal } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
@@ -27,55 +22,46 @@ type RecommendationModuleProps = {
   setRecommendationY: (y: number) => void
 }
 
+const keyExtractor = (item: SearchHit) => item.objectID
+
 export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { display, isBeneficiary, position, index, setRecommendationY, hits } = props
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const layoutHits = useLayoutHits(hits, display.layout)
-
   const moduleName = display.title
-  const logHasSeenAllTiles = useFunctionOnce(() =>
+  const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
   )
 
   const onLayout = (event: LayoutChangeEvent) => setRecommendationY(event.nativeEvent.layout.y)
 
-  const renderItem = useCallback(
-    (hit: SearchHit) => {
-      const timestampsInMillis = hit.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+  const renderItem: CustomListRenderItem<SearchHit> = useCallback(
+    ({ item, width, height }) => {
+      const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
-        <Row key={hit.objectID}>
-          <OfferTile
-            categoryLabel={labelMapping[hit.offer.subcategoryId]}
-            categoryId={mapping[hit.offer.subcategoryId]}
-            subcategoryId={hit.offer.subcategoryId}
-            offerId={+hit.objectID}
-            distance={formatDistance(hit._geoloc, position)}
-            name={hit.offer.name}
-            date={formatDates(timestampsInMillis)}
-            isDuo={hit.offer.isDuo}
-            thumbUrl={hit.offer.thumbUrl}
-            price={getDisplayPrice(hit.offer.prices)}
-            layout={display.layout}
-            isBeneficiary={isBeneficiary}
-            moduleName={moduleName}
-          />
-          <Spacer.Row numberOfSpaces={4} />
-        </Row>
+        <OfferTile
+          categoryLabel={labelMapping[item.offer.subcategoryId]}
+          categoryId={mapping[item.offer.subcategoryId]}
+          subcategoryId={item.offer.subcategoryId}
+          offerId={+item.objectID}
+          distance={formatDistance(item._geoloc, position)}
+          name={item.offer.name}
+          date={formatDates(timestampsInMillis)}
+          isDuo={item.offer.isDuo}
+          thumbUrl={item.offer.thumbUrl}
+          price={getDisplayPrice(item.offer.prices)}
+          isBeneficiary={isBeneficiary}
+          moduleName={moduleName}
+          width={width}
+          height={height}
+        />
       )
     },
     [position, isBeneficiary]
   )
 
-  const checkIfAllTilesHaveBeenSeen = useCallback(
-    ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
-      if (isCloseToEndHorizontal({ ...nativeEvent, padding: 0 })) {
-        logHasSeenAllTiles()
-      }
-    },
-    []
-  )
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(display.layout)
 
   return (
     <React.Fragment>
@@ -84,19 +70,16 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         color={index === 0 ? ColorsEnum.WHITE : ColorsEnum.BLACK}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <ScrollView
-        horizontal={true}
+      <Playlist
         testID="recommendationModuleList"
-        showsHorizontalScrollIndicator={false}
-        scrollEventThrottle={200}
-        onScroll={checkIfAllTilesHaveBeenSeen}>
-        <Spacer.Row numberOfSpaces={6} />
-        {layoutHits.map(renderItem)}
-        <Spacer.Row numberOfSpaces={6} />
-      </ScrollView>
+        data={hits}
+        itemHeight={itemHeight}
+        itemWidth={itemWidth}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        onEndReached={logHasSeenAllTilesOnce}
+      />
       <Spacer.Column testID="recommendationModuleTracker" numberOfSpaces={0} onLayout={onLayout} />
     </React.Fragment>
   )
 }
-
-const Row = styled.View({ flexDirection: 'row' })

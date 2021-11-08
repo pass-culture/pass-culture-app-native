@@ -1,22 +1,18 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { FlatList, ListRenderItem, PixelRatio } from 'react-native'
+import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SeeMore } from 'features/home/atoms'
+import { CustomListRenderItem, Playlist } from 'features/home/components/Playlist'
 import { Layout } from 'features/home/contentful'
-import { useLayoutHits } from 'features/home/hooks/useLayoutHits'
+import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
-import {
-  VenueOfferTile,
-  VENUE_OFFER_HEIGHT,
-  VENUE_OFFER_WIDTH,
-} from 'features/venue/atoms/VenueOfferTile'
+import { VenueOfferTile } from 'features/venue/atoms/VenueOfferTile'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
@@ -41,13 +37,12 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
   const { navigate } = useNavigation<UseNavigationType>()
   const params = useVenueSearchParameters(venueId)
   const { hits = [], nbHits = 0 } = venueOffers || {}
-  const layoutHits = useLayoutHits(hits, layout)
 
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const renderItem: ListRenderItem<SearchHit> = useCallback(
-    ({ item }) => {
+  const renderItem: CustomListRenderItem<SearchHit> = useCallback(
+    ({ item, width, height }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <VenueOfferTile
@@ -61,6 +56,8 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
           thumbUrl={item.offer.thumbUrl}
           price={getDisplayPrice(item.offer.prices)}
           venueId={venue?.id}
+          width={width}
+          height={height}
         />
       )
     },
@@ -72,27 +69,19 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
     navigate(...getTabNavConfig('Search', params))
   }, [params])
 
-  const onPressSeeMore = useCallback(() => {
-    analytics.logVenueSeeMoreClicked(venueId)
-    navigate(...getTabNavConfig('Search', params))
-  }, [params])
-
   const showSeeMore = nbHits > hits.length
-  const ListFooterComponent = useCallback(() => {
-    if (!showSeeMore) return <HorizontalMargin />
-    return (
-      <Row>
-        <ItemSeparatorComponent />
-        <SeeMore height={VENUE_OFFER_HEIGHT} width={VENUE_OFFER_WIDTH} onPress={onPressSeeMore} />
-        <HorizontalMargin />
-      </Row>
-    )
-  }, [nbHits, hits.length])
+  const onPressSeeMore = showSeeMore
+    ? () => {
+        analytics.logVenueSeeMoreClicked(venueId)
+        navigate(...getTabNavConfig('Search', params))
+      }
+    : undefined
+
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(layout)
 
   if (!venue || !venueOffers || venueOffers.hits.length === 0) {
     return <React.Fragment></React.Fragment>
   }
-
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
@@ -100,16 +89,14 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         <Typo.Title4>{t`Offres`}</Typo.Title4>
       </MarginContainer>
       <Spacer.Column numberOfSpaces={6} />
-      <FlatList
+      <Playlist
         testID="offersModuleList"
-        ListHeaderComponent={HorizontalMargin}
-        ListFooterComponent={ListFooterComponent}
-        data={layoutHits}
+        data={hits}
+        itemHeight={itemHeight}
+        itemWidth={itemWidth}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        ItemSeparatorComponent={ItemSeparatorComponent}
+        onPressSeeMore={onPressSeeMore}
       />
       <Spacer.Column numberOfSpaces={6} />
       <MarginContainer>
@@ -124,9 +111,6 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
   )
 }
 
-const Row = styled.View({ flexDirection: 'row' })
 const MarginContainer = styled.View({
   marginHorizontal: PixelRatio.roundToNearestPixel(MARGIN_DP),
 })
-const ItemSeparatorComponent = () => <Spacer.Row numberOfSpaces={4} />
-const HorizontalMargin = () => <Spacer.Row numberOfSpaces={6} />
