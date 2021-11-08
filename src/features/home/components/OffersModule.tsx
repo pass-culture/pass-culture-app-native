@@ -56,7 +56,6 @@ export const OffersModule = (props: OffersModuleProps) => {
           isDuo={item.offer.isDuo}
           thumbUrl={item.offer.thumbUrl}
           price={getDisplayPrice(item.offer.prices)}
-          layout={display.layout}
           isBeneficiary={isBeneficiary}
           moduleName={moduleName}
           width={width}

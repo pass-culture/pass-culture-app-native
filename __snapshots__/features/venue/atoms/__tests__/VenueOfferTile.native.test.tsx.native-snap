@@ -16,7 +16,7 @@ exports[`VenueOfferTile component should render correctly 1`] = `
       Array [
         Object {
           "borderRadius": 8,
-          "height": 312,
+          "height": 124,
         },
       ]
     }
@@ -31,8 +31,8 @@ exports[`VenueOfferTile component should render correctly 1`] = `
             Object {
               "borderTopLeftRadius": 8,
               "borderTopRightRadius": 8,
-              "height": 288,
-              "width": 192,
+              "height": 100,
+              "width": 100,
             },
           ]
         }
@@ -66,11 +66,11 @@ exports[`VenueOfferTile component should render correctly 1`] = `
               "borderBottomRightRadius": 8,
               "flexDirection": "row",
               "height": 24,
-              "width": 192,
+              "width": 100,
             },
           ]
         }
-        width={192}
+        width={100}
       >
         <View
           style={
@@ -108,12 +108,12 @@ exports[`VenueOfferTile component should render correctly 1`] = `
     </View>
   </View>
   <View
-    imageWidth={192}
+    imageWidth={100}
     style={
       Array [
         Object {
           "marginTop": 8,
-          "maxWidth": 192,
+          "maxWidth": 100,
         },
       ]
     }

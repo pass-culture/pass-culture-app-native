@@ -25,6 +25,8 @@ const props = {
   price: '28 €',
   thumbUrl: offer.thumbUrl,
   moduleName: 'Module Name',
+  width: 100,
+  height: 100,
 }
 
 describe('OfferTile component', () => {

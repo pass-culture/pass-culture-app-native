@@ -659,693 +659,387 @@ exports[`<VenueBody /> should render correctly 1`] = `
         ]
       }
     />
-    <RCTScrollView
-      ItemSeparatorComponent={[Function]}
-      ListFooterComponent={[Function]}
-      ListHeaderComponent={[Function]}
-      data={
+    <View
+      style={
         Array [
           Object {
-            "_geoloc": Object {
-              "lat": 47.8898,
-              "lng": -2.83593,
-            },
-            "objectID": "223342",
-            "offer": Object {
-              "dates": Array [
-                1629312300,
-                1629485100,
-                1629657900,
-              ],
-              "isDigital": false,
-              "isDuo": true,
-              "name": "Titane - VF",
-              "prices": Array [
-                0,
-                0,
-                0,
-              ],
-              "subcategoryId": "CINE_PLEIN_AIR",
-              "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-            },
-          },
-          Object {
-            "_geoloc": Object {
-              "lat": 47.8898,
-              "lng": -2.83593,
-            },
-            "objectID": "223338",
-            "offer": Object {
-              "dates": Array [
-                1629312300,
-                1629485100,
-                1629657900,
-              ],
-              "isDigital": false,
-              "isDuo": true,
-              "name": "Bac Nord - VF",
-              "prices": Array [
-                0,
-                0,
-                0,
-              ],
-              "subcategoryId": "CINE_PLEIN_AIR",
-              "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-            },
-          },
-          Object {
-            "_geoloc": Object {
-              "lat": 47.8898,
-              "lng": -2.83593,
-            },
-            "objectID": "223339",
-            "offer": Object {
-              "dates": Array [
-                1629312300,
-                1629485100,
-                1629657900,
-              ],
-              "isDigital": false,
-              "isDuo": true,
-              "name": "Black Widow - VF",
-              "prices": Array [
-                0,
-                0,
-                0,
-              ],
-              "subcategoryId": "CINE_PLEIN_AIR",
-              "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-            },
+            "position": "relative",
           },
         ]
       }
-      disableVirtualization={false}
-      getItem={[Function]}
-      getItemCount={[Function]}
-      horizontal={true}
-      initialNumToRender={10}
-      keyExtractor={[Function]}
-      maxToRenderPerBatch={10}
-      onContentSizeChange={[Function]}
-      onEndReachedThreshold={2}
-      onLayout={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      removeClippedSubviews={false}
-      renderItem={[Function]}
-      scrollEventThrottle={50}
-      showsHorizontalScrollIndicator={false}
-      stickyHeaderIndices={Array []}
-      testID="offersModuleList"
-      updateCellsBatchingPeriod={50}
-      viewabilityConfigCallbackPairs={Array []}
-      windowSize={21}
     >
-      <View>
-        <View
-          onLayout={[Function]}
-        >
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "width": 24,
-                },
-              ]
-            }
-          />
-        </View>
-        <View
-          onLayout={[Function]}
-          style={
-            Array [
-              Object {
-                "flexDirection": "row",
-              },
-              null,
-            ]
+      <RCTScrollView
+        ItemSeparatorComponent={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "width: 16px;",
+              ],
+            },
+            "render": [Function],
+            "shouldForwardProp": undefined,
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
           }
-        >
-          <View>
-            <View
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Array [
-                  Object {
-                    "borderRadius": 8,
-                    "height": 312,
-                  },
-                ]
-              }
-            >
-              <View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "overflow": "hidden",
-                      },
-                      Object {
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "height": 288,
-                        "width": 192,
-                      },
-                    ]
-                  }
-                >
-                  <FastImageView
-                    resizeMode="cover"
-                    source={
-                      Object {
-                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                      }
-                    }
-                    style={
-                      Object {
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                      }
-                    }
-                    testID="tileImage"
-                  />
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#151515",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "flexDirection": "row",
-                        "height": 24,
-                        "width": 192,
-                      },
-                    ]
-                  }
-                  width={192}
-                >
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "paddingHorizontal": 2,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      color="#ffffff"
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                      testID="categoryImageCaption"
-                    >
-                      Cinéma
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-              imageWidth={192}
-              style={
-                Array [
-                  Object {
-                    "marginTop": 8,
-                    "maxWidth": 192,
-                  },
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Titane - VF
-              </Text>
-              <Text
-                color="#626262"
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#626262",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Dès le 18 août 2021
-              </Text>
-              <Text
-                color="#626262"
-                style={
-                  Array [
-                    Object {
-                      "color": "#626262",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-                testID="priceIsDuo"
-              >
-                Gratuit
-              </Text>
-            </View>
-          </View>
-          <View
-            numberOfSpaces={4}
-            style={
-              Array [
-                Object {
-                  "width": 16,
-                },
-              ]
-            }
-          />
-        </View>
-        <View
-          onLayout={[Function]}
-          style={
-            Array [
-              Object {
-                "flexDirection": "row",
-              },
-              null,
-            ]
+        }
+        ListFooterComponent={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "width: 24px;",
+              ],
+            },
+            "render": [Function],
+            "shouldForwardProp": undefined,
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
           }
-        >
-          <View>
-            <View
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Array [
-                  Object {
-                    "borderRadius": 8,
-                    "height": 312,
-                  },
-                ]
-              }
-            >
-              <View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "overflow": "hidden",
-                      },
-                      Object {
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "height": 288,
-                        "width": 192,
-                      },
-                    ]
-                  }
-                >
-                  <FastImageView
-                    resizeMode="cover"
-                    source={
-                      Object {
-                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                      }
-                    }
-                    style={
-                      Object {
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                      }
-                    }
-                    testID="tileImage"
-                  />
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#151515",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "flexDirection": "row",
-                        "height": 24,
-                        "width": 192,
-                      },
-                    ]
-                  }
-                  width={192}
-                >
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "paddingHorizontal": 2,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      color="#ffffff"
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                      testID="categoryImageCaption"
-                    >
-                      Cinéma
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-              imageWidth={192}
-              style={
-                Array [
-                  Object {
-                    "marginTop": 8,
-                    "maxWidth": 192,
-                  },
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Bac Nord - VF
-              </Text>
-              <Text
-                color="#626262"
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#626262",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Dès le 18 août 2021
-              </Text>
-              <Text
-                color="#626262"
-                style={
-                  Array [
-                    Object {
-                      "color": "#626262",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-                testID="priceIsDuo"
-              >
-                Gratuit
-              </Text>
-            </View>
-          </View>
-          <View
-            numberOfSpaces={4}
-            style={
-              Array [
-                Object {
-                  "width": 16,
-                },
-              ]
-            }
-          />
-        </View>
-        <View
-          onLayout={[Function]}
-          style={
-            Array [
-              Object {
-                "flexDirection": "row",
-              },
-              null,
-            ]
+        }
+        ListHeaderComponent={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "width: 24px;",
+              ],
+            },
+            "render": [Function],
+            "shouldForwardProp": undefined,
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
           }
-        >
-          <View>
+        }
+        data={
+          Array [
+            Object {
+              "_geoloc": Object {
+                "lat": 47.8898,
+                "lng": -2.83593,
+              },
+              "objectID": "223342",
+              "offer": Object {
+                "dates": Array [
+                  1629312300,
+                  1629485100,
+                  1629657900,
+                ],
+                "isDigital": false,
+                "isDuo": true,
+                "name": "Titane - VF",
+                "prices": Array [
+                  0,
+                  0,
+                  0,
+                ],
+                "subcategoryId": "CINE_PLEIN_AIR",
+                "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+              },
+            },
+            Object {
+              "_geoloc": Object {
+                "lat": 47.8898,
+                "lng": -2.83593,
+              },
+              "objectID": "223338",
+              "offer": Object {
+                "dates": Array [
+                  1629312300,
+                  1629485100,
+                  1629657900,
+                ],
+                "isDigital": false,
+                "isDuo": true,
+                "name": "Bac Nord - VF",
+                "prices": Array [
+                  0,
+                  0,
+                  0,
+                ],
+                "subcategoryId": "CINE_PLEIN_AIR",
+                "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+              },
+            },
+            Object {
+              "_geoloc": Object {
+                "lat": 47.8898,
+                "lng": -2.83593,
+              },
+              "objectID": "223339",
+              "offer": Object {
+                "dates": Array [
+                  1629312300,
+                  1629485100,
+                  1629657900,
+                ],
+                "isDigital": false,
+                "isDuo": true,
+                "name": "Black Widow - VF",
+                "prices": Array [
+                  0,
+                  0,
+                  0,
+                ],
+                "subcategoryId": "CINE_PLEIN_AIR",
+                "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+              },
+            },
+            Object {
+              "dataFooter": true,
+            },
+          ]
+        }
+        disableVirtualization={false}
+        getItem={[Function]}
+        getItemCount={[Function]}
+        getItemLayout={[Function]}
+        horizontal={true}
+        initialNumToRender={10}
+        keyExtractor={[Function]}
+        maxToRenderPerBatch={10}
+        onContentSizeChange={[Function]}
+        onEndReachedThreshold={0.2}
+        onLayout={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEnabled={true}
+        scrollEventThrottle={200}
+        showsHorizontalScrollIndicator={false}
+        stickyHeaderIndices={Array []}
+        testID="offersModuleList"
+        updateCellsBatchingPeriod={50}
+        viewabilityConfigCallbackPairs={Array []}
+        windowSize={21}
+      >
+        <View>
+          <View
+            onLayout={[Function]}
+          >
             <View
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
                 Array [
                   Object {
-                    "borderRadius": 8,
-                    "height": 312,
+                    "width": 24,
                   },
                 ]
               }
-            >
-              <View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "overflow": "hidden",
-                      },
-                      Object {
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "height": 288,
-                        "width": 192,
-                      },
-                    ]
-                  }
-                >
-                  <FastImageView
-                    resizeMode="cover"
-                    source={
-                      Object {
-                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                      }
-                    }
-                    style={
-                      Object {
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                      }
-                    }
-                    testID="tileImage"
-                  />
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#151515",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "flexDirection": "row",
-                        "height": 24,
-                        "width": 192,
-                      },
-                    ]
-                  }
-                  width={192}
-                >
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "paddingHorizontal": 2,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      color="#ffffff"
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                      testID="categoryImageCaption"
-                    >
-                      Cinéma
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-              imageWidth={192}
-              style={
-                Array [
-                  Object {
-                    "marginTop": 8,
-                    "maxWidth": 192,
-                  },
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Black Widow - VF
-              </Text>
-              <Text
-                color="#626262"
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#626262",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Dès le 18 août 2021
-              </Text>
-              <Text
-                color="#626262"
-                style={
-                  Array [
-                    Object {
-                      "color": "#626262",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-                testID="priceIsDuo"
-              >
-                Gratuit
-              </Text>
-            </View>
+            />
           </View>
-        </View>
-        <View
-          onLayout={[Function]}
-        >
           <View
             style={
               Array [
                 Object {
                   "flexDirection": "row",
                 },
+                null,
               ]
             }
           >
+            <View>
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "borderRadius": 8,
+                      "height": 312,
+                    },
+                  ]
+                }
+              >
+                <View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "overflow": "hidden",
+                        },
+                        Object {
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "height": 288,
+                          "width": 192,
+                        },
+                      ]
+                    }
+                  >
+                    <FastImageView
+                      resizeMode="cover"
+                      source={
+                        Object {
+                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                        }
+                      }
+                      style={
+                        Object {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                      testID="tileImage"
+                    />
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#151515",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "flexDirection": "row",
+                          "height": 24,
+                          "width": 192,
+                        },
+                      ]
+                    }
+                    width={192}
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 2,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        color="#ffffff"
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                        testID="categoryImageCaption"
+                      >
+                        Cinéma
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                imageWidth={192}
+                style={
+                  Array [
+                    Object {
+                      "marginTop": 8,
+                      "maxWidth": 192,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Titane - VF
+                </Text>
+                <Text
+                  color="#626262"
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Dès le 18 août 2021
+                </Text>
+                <Text
+                  color="#626262"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                  testID="priceIsDuo"
+                >
+                  Gratuit
+                </Text>
+              </View>
+            </View>
             <View
-              numberOfSpaces={4}
+              highlighted={false}
+              leadingItem={
+                Object {
+                  "_geoloc": Object {
+                    "lat": 47.8898,
+                    "lng": -2.83593,
+                  },
+                  "objectID": "223342",
+                  "offer": Object {
+                    "dates": Array [
+                      1629312300,
+                      1629485100,
+                      1629657900,
+                    ],
+                    "isDigital": false,
+                    "isDuo": true,
+                    "name": "Titane - VF",
+                    "prices": Array [
+                      0,
+                      0,
+                      0,
+                    ],
+                    "subcategoryId": "CINE_PLEIN_AIR",
+                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                  },
+                }
+              }
               style={
                 Array [
                   Object {
@@ -1354,6 +1048,443 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 ]
               }
             />
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View>
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "borderRadius": 8,
+                      "height": 312,
+                    },
+                  ]
+                }
+              >
+                <View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "overflow": "hidden",
+                        },
+                        Object {
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "height": 288,
+                          "width": 192,
+                        },
+                      ]
+                    }
+                  >
+                    <FastImageView
+                      resizeMode="cover"
+                      source={
+                        Object {
+                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                        }
+                      }
+                      style={
+                        Object {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                      testID="tileImage"
+                    />
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#151515",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "flexDirection": "row",
+                          "height": 24,
+                          "width": 192,
+                        },
+                      ]
+                    }
+                    width={192}
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 2,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        color="#ffffff"
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                        testID="categoryImageCaption"
+                      >
+                        Cinéma
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                imageWidth={192}
+                style={
+                  Array [
+                    Object {
+                      "marginTop": 8,
+                      "maxWidth": 192,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Bac Nord - VF
+                </Text>
+                <Text
+                  color="#626262"
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Dès le 18 août 2021
+                </Text>
+                <Text
+                  color="#626262"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                  testID="priceIsDuo"
+                >
+                  Gratuit
+                </Text>
+              </View>
+            </View>
+            <View
+              highlighted={false}
+              leadingItem={
+                Object {
+                  "_geoloc": Object {
+                    "lat": 47.8898,
+                    "lng": -2.83593,
+                  },
+                  "objectID": "223338",
+                  "offer": Object {
+                    "dates": Array [
+                      1629312300,
+                      1629485100,
+                      1629657900,
+                    ],
+                    "isDigital": false,
+                    "isDuo": true,
+                    "name": "Bac Nord - VF",
+                    "prices": Array [
+                      0,
+                      0,
+                      0,
+                    ],
+                    "subcategoryId": "CINE_PLEIN_AIR",
+                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                  },
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View>
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "borderRadius": 8,
+                      "height": 312,
+                    },
+                  ]
+                }
+              >
+                <View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "overflow": "hidden",
+                        },
+                        Object {
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
+                          "height": 288,
+                          "width": 192,
+                        },
+                      ]
+                    }
+                  >
+                    <FastImageView
+                      resizeMode="cover"
+                      source={
+                        Object {
+                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                        }
+                      }
+                      style={
+                        Object {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                      testID="tileImage"
+                    />
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#151515",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "flexDirection": "row",
+                          "height": 24,
+                          "width": 192,
+                        },
+                      ]
+                    }
+                    width={192}
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 2,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        color="#ffffff"
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                        testID="categoryImageCaption"
+                      >
+                        Cinéma
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                imageWidth={192}
+                style={
+                  Array [
+                    Object {
+                      "marginTop": 8,
+                      "maxWidth": 192,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Black Widow - VF
+                </Text>
+                <Text
+                  color="#626262"
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Dès le 18 août 2021
+                </Text>
+                <Text
+                  color="#626262"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                  testID="priceIsDuo"
+                >
+                  Gratuit
+                </Text>
+              </View>
+            </View>
+            <View
+              highlighted={false}
+              leadingItem={
+                Object {
+                  "_geoloc": Object {
+                    "lat": 47.8898,
+                    "lng": -2.83593,
+                  },
+                  "objectID": "223339",
+                  "offer": Object {
+                    "dates": Array [
+                      1629312300,
+                      1629485100,
+                      1629657900,
+                    ],
+                    "isDigital": false,
+                    "isDuo": true,
+                    "name": "Black Widow - VF",
+                    "prices": Array [
+                      0,
+                      0,
+                      0,
+                    ],
+                    "subcategoryId": "CINE_PLEIN_AIR",
+                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                  },
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
             <View
               height={288}
               style={
@@ -1504,8 +1635,11 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            onLayout={[Function]}
+          >
             <View
-              numberOfSpaces={6}
               style={
                 Array [
                   Object {
@@ -1516,8 +1650,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
             />
           </View>
         </View>
-      </View>
-    </RCTScrollView>
+      </RCTScrollView>
+    </View>
     <View
       numberOfSpaces={6}
       style={

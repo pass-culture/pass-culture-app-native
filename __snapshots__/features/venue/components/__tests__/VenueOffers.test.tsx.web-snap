@@ -43,59 +43,112 @@ Array [
     }
   />,
   <div
-    className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-    data-testid="offersModuleList"
-    onScroll={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    onWheel={[Function]}
+    className="css-view-1dbjc4n"
     style={
       Object {
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxFlex": 1,
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "WebkitOverflowScrolling": "touch",
-        "WebkitTransform": "translateZ(0px)",
-        "flexDirection": "row",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexDirection": "row",
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "overflowX": "auto",
-        "overflowY": "hidden",
-        "transform": "translateZ(0px)",
+        "position": "relative",
       }
     }
   >
     <div
       className="css-view-1dbjc4n"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
       style={
         Object {
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "horizontal",
-          "WebkitFlexDirection": "row",
-          "flexDirection": "row",
-          "msFlexDirection": "row",
+          "MozTransitionProperty": "opacity",
+          "MozUserSelect": "none",
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
+          "WebkitBoxPack": "center",
+          "WebkitJustifyContent": "center",
+          "WebkitTransitionDuration": "0s",
+          "WebkitTransitionProperty": "opacity",
+          "WebkitUserSelect": "none",
+          "alignItems": "center",
+          "backgroundColor": "rgba(255,255,255,1.00)",
+          "borderBottomColor": "rgba(199,199,204,1.00)",
+          "borderBottomLeftRadius": "20px",
+          "borderBottomRightRadius": "20px",
+          "borderBottomWidth": "1px",
+          "borderLeftColor": "rgba(199,199,204,1.00)",
+          "borderLeftWidth": "1px",
+          "borderRightColor": "rgba(199,199,204,1.00)",
+          "borderRightWidth": "1px",
+          "borderTopColor": "rgba(199,199,204,1.00)",
+          "borderTopLeftRadius": "20px",
+          "borderTopRightRadius": "20px",
+          "borderTopWidth": "1px",
+          "bottom": "0px",
+          "cursor": "pointer",
+          "height": "40px",
+          "justifyContent": "center",
+          "left": "auto",
+          "marginBottom": "auto",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "marginTop": "auto",
+          "msFlexAlign": "center",
+          "msFlexPack": "center",
+          "msTouchAction": "manipulation",
+          "msUserSelect": "none",
+          "position": "absolute",
+          "right": "8px",
+          "top": "0px",
+          "touchAction": "manipulation",
+          "transitionDuration": "0s",
+          "transitionProperty": "opacity",
+          "userSelect": "none",
+          "width": "40px",
+          "zIndex": 1,
         }
       }
+      tabIndex="0"
     >
       <div
         className="css-view-1dbjc4n"
       >
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "24px",
-            }
-          }
-        />
+          className="css-text-901oao"
+          dir="auto"
+        >
+          undefined-SVG-Mock
+        </div>
       </div>
+    </div>
+    <div
+      className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+      data-testid="offersModuleList"
+      onScroll={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      onWheel={[Function]}
+      style={
+        Object {
+          "WebkitBoxDirection": "normal",
+          "WebkitBoxFlex": 1,
+          "WebkitBoxOrient": "horizontal",
+          "WebkitFlexDirection": "row",
+          "WebkitFlexGrow": 1,
+          "WebkitFlexShrink": 1,
+          "WebkitOverflowScrolling": "touch",
+          "WebkitTransform": "translateZ(0px)",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "msFlexDirection": "row",
+          "msFlexNegative": 1,
+          "msFlexPositive": 1,
+          "msTouchAction": "none",
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+          "touchAction": "none",
+          "transform": "translateZ(0px)",
+        }
+      }
+    >
       <div
         className="css-view-1dbjc4n"
         style={
@@ -113,155 +166,13 @@ Array [
         >
           <div
             className="css-view-1dbjc4n"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
             style={
               Object {
-                "MozUserSelect": "none",
-                "WebkitUserSelect": "none",
-                "borderBottomLeftRadius": "8px",
-                "borderBottomRightRadius": "8px",
-                "borderTopLeftRadius": "8px",
-                "borderTopRightRadius": "8px",
-                "cursor": "pointer",
-                "height": "312px",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "userSelect": "none",
+                "width": "24px",
               }
             }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-            >
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
-                    "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexDirection": "row",
-                    "alignItems": "center",
-                    "backgroundColor": "rgba(21,21,21,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "flexDirection": "row",
-                    "height": "24px",
-                    "msFlexAlign": "center",
-                    "msFlexDirection": "row",
-                    "width": "192px",
-                  }
-                }
-              >
-                <div
-                  className="css-view-1dbjc4n"
-                  style={
-                    Object {
-                      "WebkitAlignItems": "center",
-                      "WebkitBoxAlign": "center",
-                      "WebkitBoxFlex": 1,
-                      "WebkitBoxPack": "center",
-                      "WebkitFlexBasis": "0px",
-                      "WebkitFlexGrow": 1,
-                      "WebkitFlexShrink": 1,
-                      "WebkitJustifyContent": "center",
-                      "alignItems": "center",
-                      "flexBasis": "0px",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                      "msFlexAlign": "center",
-                      "msFlexNegative": 1,
-                      "msFlexPack": "center",
-                      "msFlexPositive": 1,
-                      "msFlexPreferredSize": "0px",
-                      "paddingLeft": "2px",
-                      "paddingRight": "2px",
-                    }
-                  }
-                >
-                  <div
-                    className="css-text-901oao css-textOneLine-vcwn7f"
-                    data-testid="categoryImageCaption"
-                    dir="auto"
-                    style={
-                      Object {
-                        "color": "rgba(255,255,255,1.00)",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": "12px",
-                        "lineHeight": "16px",
-                      }
-                    }
-                  >
-                    Cinéma
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "marginTop": "8px",
-                "maxWidth": "192px",
-              }
-            }
-          >
-            <div
-              className="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(21,21,21,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              Titane - VF
-            </div>
-            <div
-              className="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(98,98,98,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              Dès le 18 août 2021
-            </div>
-            <div
-              className="css-text-901oao"
-              data-testid="priceIsDuo"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(98,98,98,1.00)",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": "12px",
-                  "lineHeight": "16px",
-                }
-              }
-            >
-              Gratuit
-            </div>
-          </div>
+          />
         </div>
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-      >
         <div
           className="css-view-1dbjc4n"
           style={
@@ -276,12 +187,517 @@ Array [
         >
           <div
             className="css-view-1dbjc4n"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onKeyDown={[Function]}
+              style={
+                Object {
+                  "MozUserSelect": "none",
+                  "WebkitUserSelect": "none",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "cursor": "pointer",
+                  "height": "312px",
+                  "msTouchAction": "manipulation",
+                  "msUserSelect": "none",
+                  "touchAction": "manipulation",
+                  "userSelect": "none",
+                }
+              }
+              tabIndex="0"
+            >
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexDirection": "row",
+                      "alignItems": "center",
+                      "backgroundColor": "rgba(21,21,21,1.00)",
+                      "borderBottomLeftRadius": "8px",
+                      "borderBottomRightRadius": "8px",
+                      "flexDirection": "row",
+                      "height": "24px",
+                      "msFlexAlign": "center",
+                      "msFlexDirection": "row",
+                      "width": "192px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitAlignItems": "center",
+                        "WebkitBoxAlign": "center",
+                        "WebkitBoxFlex": 1,
+                        "WebkitBoxPack": "center",
+                        "WebkitFlexBasis": "0px",
+                        "WebkitFlexGrow": 1,
+                        "WebkitFlexShrink": 1,
+                        "WebkitJustifyContent": "center",
+                        "alignItems": "center",
+                        "flexBasis": "0px",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "msFlexAlign": "center",
+                        "msFlexNegative": 1,
+                        "msFlexPack": "center",
+                        "msFlexPositive": 1,
+                        "msFlexPreferredSize": "0px",
+                        "paddingLeft": "2px",
+                        "paddingRight": "2px",
+                      }
+                    }
+                  >
+                    <div
+                      className="css-text-901oao css-textOneLine-vcwn7f"
+                      data-testid="categoryImageCaption"
+                      dir="auto"
+                      style={
+                        Object {
+                          "color": "rgba(255,255,255,1.00)",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": "12px",
+                          "lineHeight": "16px",
+                        }
+                      }
+                    >
+                      Cinéma
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "marginTop": "8px",
+                  "maxWidth": "192px",
+                }
+              }
+            >
+              <div
+                className="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(21,21,21,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                  }
+                }
+              >
+                Titane - VF
+              </div>
+              <div
+                className="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(98,98,98,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                  }
+                }
+              >
+                Dès le 18 août 2021
+              </div>
+              <div
+                className="css-text-901oao"
+                data-testid="priceIsDuo"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(98,98,98,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                  }
+                }
+              >
+                Gratuit
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-view-1dbjc4n"
             style={
               Object {
                 "width": "16px",
               }
             }
           />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitBoxDirection": "normal",
+              "WebkitBoxOrient": "horizontal",
+              "WebkitFlexDirection": "row",
+              "flexDirection": "row",
+              "msFlexDirection": "row",
+            }
+          }
+        >
+          <div
+            className="css-view-1dbjc4n"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onKeyDown={[Function]}
+              style={
+                Object {
+                  "MozUserSelect": "none",
+                  "WebkitUserSelect": "none",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "cursor": "pointer",
+                  "height": "312px",
+                  "msTouchAction": "manipulation",
+                  "msUserSelect": "none",
+                  "touchAction": "manipulation",
+                  "userSelect": "none",
+                }
+              }
+              tabIndex="0"
+            >
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexDirection": "row",
+                      "alignItems": "center",
+                      "backgroundColor": "rgba(21,21,21,1.00)",
+                      "borderBottomLeftRadius": "8px",
+                      "borderBottomRightRadius": "8px",
+                      "flexDirection": "row",
+                      "height": "24px",
+                      "msFlexAlign": "center",
+                      "msFlexDirection": "row",
+                      "width": "192px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitAlignItems": "center",
+                        "WebkitBoxAlign": "center",
+                        "WebkitBoxFlex": 1,
+                        "WebkitBoxPack": "center",
+                        "WebkitFlexBasis": "0px",
+                        "WebkitFlexGrow": 1,
+                        "WebkitFlexShrink": 1,
+                        "WebkitJustifyContent": "center",
+                        "alignItems": "center",
+                        "flexBasis": "0px",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "msFlexAlign": "center",
+                        "msFlexNegative": 1,
+                        "msFlexPack": "center",
+                        "msFlexPositive": 1,
+                        "msFlexPreferredSize": "0px",
+                        "paddingLeft": "2px",
+                        "paddingRight": "2px",
+                      }
+                    }
+                  >
+                    <div
+                      className="css-text-901oao css-textOneLine-vcwn7f"
+                      data-testid="categoryImageCaption"
+                      dir="auto"
+                      style={
+                        Object {
+                          "color": "rgba(255,255,255,1.00)",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": "12px",
+                          "lineHeight": "16px",
+                        }
+                      }
+                    >
+                      Cinéma
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "marginTop": "8px",
+                  "maxWidth": "192px",
+                }
+              }
+            >
+              <div
+                className="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(21,21,21,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                  }
+                }
+              >
+                Bac Nord - VF
+              </div>
+              <div
+                className="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(98,98,98,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                  }
+                }
+              >
+                Dès le 18 août 2021
+              </div>
+              <div
+                className="css-text-901oao"
+                data-testid="priceIsDuo"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(98,98,98,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                  }
+                }
+              >
+                Gratuit
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "width": "16px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitBoxDirection": "normal",
+              "WebkitBoxOrient": "horizontal",
+              "WebkitFlexDirection": "row",
+              "flexDirection": "row",
+              "msFlexDirection": "row",
+            }
+          }
+        >
+          <div
+            className="css-view-1dbjc4n"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onKeyDown={[Function]}
+              style={
+                Object {
+                  "MozUserSelect": "none",
+                  "WebkitUserSelect": "none",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                  "cursor": "pointer",
+                  "height": "312px",
+                  "msTouchAction": "manipulation",
+                  "msUserSelect": "none",
+                  "touchAction": "manipulation",
+                  "userSelect": "none",
+                }
+              }
+              tabIndex="0"
+            >
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexDirection": "row",
+                      "alignItems": "center",
+                      "backgroundColor": "rgba(21,21,21,1.00)",
+                      "borderBottomLeftRadius": "8px",
+                      "borderBottomRightRadius": "8px",
+                      "flexDirection": "row",
+                      "height": "24px",
+                      "msFlexAlign": "center",
+                      "msFlexDirection": "row",
+                      "width": "192px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitAlignItems": "center",
+                        "WebkitBoxAlign": "center",
+                        "WebkitBoxFlex": 1,
+                        "WebkitBoxPack": "center",
+                        "WebkitFlexBasis": "0px",
+                        "WebkitFlexGrow": 1,
+                        "WebkitFlexShrink": 1,
+                        "WebkitJustifyContent": "center",
+                        "alignItems": "center",
+                        "flexBasis": "0px",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "msFlexAlign": "center",
+                        "msFlexNegative": 1,
+                        "msFlexPack": "center",
+                        "msFlexPositive": 1,
+                        "msFlexPreferredSize": "0px",
+                        "paddingLeft": "2px",
+                        "paddingRight": "2px",
+                      }
+                    }
+                  >
+                    <div
+                      className="css-text-901oao css-textOneLine-vcwn7f"
+                      data-testid="categoryImageCaption"
+                      dir="auto"
+                      style={
+                        Object {
+                          "color": "rgba(255,255,255,1.00)",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": "12px",
+                          "lineHeight": "16px",
+                        }
+                      }
+                    >
+                      Cinéma
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "marginTop": "8px",
+                  "maxWidth": "192px",
+                }
+              }
+            >
+              <div
+                className="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(21,21,21,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                  }
+                }
+              >
+                Black Widow - VF
+              </div>
+              <div
+                className="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(98,98,98,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                  }
+                }
+              >
+                Dès le 18 août 2021
+              </div>
+              <div
+                className="css-text-901oao"
+                data-testid="priceIsDuo"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(98,98,98,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                  }
+                }
+              >
+                Gratuit
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "width": "16px",
+              }
+            }
+          />
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitBoxDirection": "normal",
+              "WebkitBoxOrient": "horizontal",
+              "WebkitFlexDirection": "row",
+              "flexDirection": "row",
+              "msFlexDirection": "row",
+            }
+          }
+        >
           <div
             className="css-view-1dbjc4n"
             style={
@@ -463,6 +879,10 @@ Array [
               </div>
             </div>
           </div>
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+        >
           <div
             className="css-view-1dbjc4n"
             style={
