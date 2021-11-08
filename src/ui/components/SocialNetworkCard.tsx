@@ -21,7 +21,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
     <TouchableOpacity
       onPress={() => {
         analytics.logClickSocialNetwork(name)
-        openUrl(link, false, fallbackLink)
+        openUrl(link, { shouldLogEvent: false, fallbackUrl: fallbackLink })
       }}>
       <Container>
         <NetworkIconBox>

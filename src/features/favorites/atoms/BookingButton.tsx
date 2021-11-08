@@ -35,7 +35,9 @@ export const BookingButton: React.FC<Props> = (props) => {
     ) {
       return null
     }
-    return <BookExternallyButton url={props.offer.externalTicketOfficeUrl} />
+    return (
+      <BookExternallyButton url={props.offer.externalTicketOfficeUrl} offerId={props.offer.id} />
+    )
   }
 
   // User is an ex-beneficiary
@@ -49,7 +51,9 @@ export const BookingButton: React.FC<Props> = (props) => {
     if (isFreeOffer) {
       return <BookInAppButton onPress={() => props.onInAppBooking(props.offer)} />
     }
-    return <BookExternallyButton url={props.offer.externalTicketOfficeUrl} />
+    return (
+      <BookExternallyButton url={props.offer.externalTicketOfficeUrl} offerId={props.offer.id} />
+    )
   }
 
   // User is beneficiary
@@ -72,11 +76,17 @@ const BookInAppButton = ({ onPress }: { onPress: () => void }) => (
   <ButtonPrimary title={t`Réserver`} onPress={onPress} buttonHeight="tall" />
 )
 
-const BookExternallyButton = ({ url }: { url: FavoriteOfferResponse['externalTicketOfficeUrl'] }) =>
+const BookExternallyButton = ({
+  url,
+  offerId,
+}: {
+  url: FavoriteOfferResponse['externalTicketOfficeUrl']
+  offerId: FavoriteOfferResponse['id']
+}) =>
   url ? (
     <ButtonPrimary
       title={t`Réserver`}
-      onPress={() => url && openUrl(url)}
+      onPress={() => url && openUrl(url, { analyticsData: { offerId } })}
       icon={ExternalLinkSite}
       buttonHeight="tall"
     />

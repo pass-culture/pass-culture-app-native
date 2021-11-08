@@ -87,8 +87,11 @@ describe('BookingDetails', () => {
       const offerButton = getByText("Accéder à l'offre")
       fireEvent.press(offerButton)
 
-      expect(mockedOpenUrl).toHaveBeenCalledWith(booking.stock.offer.url)
-      expect(analytics.logAccessExternalOffer).toHaveBeenCalledWith(booking.stock.offer.id)
+      expect(mockedOpenUrl).toHaveBeenCalledWith(booking.stock.offer.url, {
+        analyticsData: {
+          offerId: booking.stock.offer.id,
+        },
+      })
     })
 
     it('should display booking qr code if offer is physical', async () => {

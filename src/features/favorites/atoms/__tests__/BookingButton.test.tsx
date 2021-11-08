@@ -60,7 +60,7 @@ const user: UserProfileResponse = {
 } as UserProfileResponse
 const onInAppBooking = jest.fn()
 
-describe('<BookingButtun />', () => {
+describe('<BookingButton />', () => {
   describe('when user is beneficiary', () => {
     // prettier-ignore : do not format the following "table" to keep it readable
     it.each`
@@ -248,7 +248,11 @@ function favoriteBookingButtonTestRunner({
     fireEvent.press(renderAPI.getByText('Réserver'))
     expect(onInAppBooking).not.toBeCalled()
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeTruthy()
-    expect(mockedOpenUrl).toBeCalledWith(offer.externalTicketOfficeUrl)
+    expect(mockedOpenUrl).toBeCalledWith(offer.externalTicketOfficeUrl, {
+      analyticsData: {
+        offerId: offer.id,
+      },
+    })
     expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
     expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()

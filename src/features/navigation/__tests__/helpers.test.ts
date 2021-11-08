@@ -54,22 +54,22 @@ describe('Navigation helpers', () => {
     expect(navigationRef.current?.navigate).toBeCalledWith('PageNotFound', undefined)
   })
 
-  it('should log analytics when logEvent is true', async () => {
+  it('should log analytics when shouldLogEvent is true', async () => {
     openURLSpy.mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
 
     await openUrl(link)
 
     await waitForExpect(() => {
-      expect(analytics.logOpenExternalUrl).toBeCalledWith(link)
+      expect(analytics.logOpenExternalUrl).toBeCalledWith(link, {})
     })
   })
 
-  it('should not log analytics event when logEvent is false', async () => {
+  it('should not log analytics event when shouldLogEvent is false', async () => {
     openURLSpy.mockResolvedValueOnce(undefined)
     const link = 'https://www.google.com'
 
-    await openUrl(link, false)
+    await openUrl(link, { shouldLogEvent: false })
 
     await waitForExpect(() => {
       expect(analytics.logOpenExternalUrl).not.toBeCalled()
@@ -96,7 +96,7 @@ describe('Navigation helpers', () => {
     const link = 'https://www.google.com'
     const fallbackLink = 'https://www.googlefallback.com'
 
-    await openUrl(link, undefined, fallbackLink)
+    await openUrl(link, { fallbackUrl: fallbackLink })
     expect(alertMock).not.toHaveBeenCalled()
   })
 

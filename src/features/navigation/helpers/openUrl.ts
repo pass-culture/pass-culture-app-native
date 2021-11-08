@@ -4,6 +4,7 @@ import { Alert, Linking } from 'react-native'
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
+import { OfferAnalyticsData } from 'libs/analytics/analytics'
 import { MonitoringError } from 'libs/monitoring'
 
 import { isAppUrl } from './isAppUrl'
@@ -19,14 +20,19 @@ const openAppUrl = (url: string) => {
   }
 }
 
+type paramsProps = {
+  shouldLogEvent?: boolean
+  fallbackUrl?: string
+  analyticsData?: OfferAnalyticsData
+}
+
 const openExternalUrl = async (
   url: string,
-  logEvent: boolean | undefined = true,
-  fallbackUrl?: string | undefined
+  { shouldLogEvent = true, fallbackUrl, analyticsData }: paramsProps
 ) => {
   try {
     await Linking.openURL(url)
-    if (logEvent) analytics.logOpenExternalUrl(url)
+    if (shouldLogEvent) analytics.logOpenExternalUrl(url, { ...analyticsData })
     return
   } catch (error) {
     new MonitoringError(error.message, 'OpenExternalUrlError')
@@ -35,7 +41,7 @@ const openExternalUrl = async (
   if (fallbackUrl) {
     try {
       await Linking.openURL(fallbackUrl)
-      if (logEvent) analytics.logOpenExternalUrl(fallbackUrl)
+      if (shouldLogEvent) analytics.logOpenExternalUrl(fallbackUrl, { ...analyticsData })
       return
     } catch (error) {
       new MonitoringError(error.message, 'OpenExternalUrlError_FallbackUrl')
@@ -54,12 +60,11 @@ const showAlert = (url: string) => {
 
 export async function openUrl(
   url: string,
-  logEvent: boolean | undefined = true,
-  fallbackUrl?: string | undefined
+  { shouldLogEvent = true, fallbackUrl, analyticsData }: paramsProps = {}
 ) {
   if (isAppUrl(url)) {
     return openAppUrl(url)
   }
 
-  openExternalUrl(url, logEvent, fallbackUrl)
+  openExternalUrl(url, { shouldLogEvent, fallbackUrl, analyticsData })
 }

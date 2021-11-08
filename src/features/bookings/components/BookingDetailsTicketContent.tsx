@@ -11,7 +11,6 @@ import {
 } from 'features/bookings/components/ThreeShapesTicket.constants'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openUrl } from 'features/navigation/helpers'
-import { analytics } from 'libs/analytics'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
@@ -29,8 +28,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
 
   const accessExternalOffer = () => {
     if (offer.url) {
-      analytics.logAccessExternalOffer(offer.id)
-      openUrl(offer.url)
+      openUrl(offer.url, { analyticsData: { offerId: offer.id } })
     }
   }
 
