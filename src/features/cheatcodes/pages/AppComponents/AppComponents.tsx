@@ -110,6 +110,7 @@ import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
+import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
@@ -660,6 +661,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <DuoPerson size={ICON_SIZE} />
           <Text> - DuoPerson </Text>
+        </AlignedText>
+        <AlignedText>
+          <LifeBuoy size={ICON_SIZE} />
+          <Text> - LifeBuoy (new) </Text>
         </AlignedText>
         <AlignedText>
           <LifeBuoyDeprecated size={ICON_SIZE} />
