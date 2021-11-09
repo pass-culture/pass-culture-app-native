@@ -5,7 +5,6 @@ import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
-import { CustomListRenderItem, RenderFooterItem, Playlist } from 'features/home/components/Playlist'
 import { Layout } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -20,6 +19,7 @@ import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
+import { CustomListRenderItem, RenderFooterItem, Playlist } from 'ui/components/Playlist'
 import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
 
 interface Props {

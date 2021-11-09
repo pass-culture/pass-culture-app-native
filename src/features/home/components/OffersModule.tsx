@@ -2,12 +2,6 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
-import {
-  Playlist,
-  CustomListRenderItem,
-  RenderFooterItem,
-  RenderHeaderItem,
-} from 'features/home/components/Playlist'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -18,6 +12,12 @@ import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
+import {
+  Playlist,
+  CustomListRenderItem,
+  RenderFooterItem,
+  RenderHeaderItem,
+} from 'ui/components/Playlist'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 import { Cover } from '../atoms/Cover'

@@ -2,7 +2,6 @@ import React, { useCallback } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
-import { CustomListRenderItem, Playlist } from 'features/home/components/Playlist'
 import { DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
@@ -11,6 +10,7 @@ import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
+import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 type RecommendationModuleProps = {
