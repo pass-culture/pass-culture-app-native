@@ -7,7 +7,6 @@ import {
   useValidateEmailChangeMutation,
   UseValidateEmailChangeMutationProps,
 } from 'features/profile/mutations'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 
 import { AfterChangeEmailValidationBuffer } from '../AfterChangeEmailValidationBuffer'
@@ -65,6 +64,4 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
   })
 })
 
-// eslint-disable-next-line local-rules/no-react-query-provider-hoc
-const renderPage = () => render(reactQueryProviderHOC(<AfterChangeEmailValidationBuffer />))
-// const renderPage = () => render(<AfterChangeEmailValidationBuffer />)
+const renderPage = () => render(<AfterChangeEmailValidationBuffer />)
