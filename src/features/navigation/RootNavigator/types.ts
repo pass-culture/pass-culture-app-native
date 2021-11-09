@@ -91,6 +91,7 @@ export type RootStackParamList = {
   EighteenBirthday: undefined
   PageNotFound: undefined
   Venue: { id: number }
+  DeeplinksGenerator: undefined
 } & IdCheckRootStackParamList
 
 export type AllNavParamList = RootStackParamList & TabParamList

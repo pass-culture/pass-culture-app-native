@@ -10,7 +10,7 @@ import {
 } from 'react-device-detect'
 import { Platform } from 'react-native'
 
-import { getSpacing, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
+import { getSpacing, getSpacingString, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
 import { ZIndex } from 'ui/theme/layers'
@@ -19,8 +19,15 @@ const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
 const isTouchWeb = Platform.OS === 'web' && (isMobileDeviceDetect || isTabletDeviceDetect)
 const isTouch = isNative || isTouchWeb
 
-export interface AppThemeType extends Omit<IdCheckThemeType, 'colors'> {
-  appContentWidth: number // computed dynamically in ThemeProvider.tsx
+interface Typography {
+  fontFamily: string
+  fontSize: number
+  lineHeight: string
+  fontWeight?: number
+}
+
+export interface AppThemeType extends Omit<IdCheckThemeType, 'colors' | 'typography'> {
+  appContentWidth: number
   appBarHeight: number
   navTopHeight: number
   tabBarHeight: number
@@ -30,6 +37,24 @@ export interface AppThemeType extends Omit<IdCheckThemeType, 'colors'> {
   isTouch: boolean
   showTabbar: boolean // computed dynamically in ThemeProvider.tsx
   activeOpacity: number
+  fontFamily: {
+    medium: string
+    extraBoldItalic: string
+    mediumItalic: string
+    bold: string
+    regular: string
+    semiBold: string
+  }
+  typography: {
+    hero: Typography
+    title1: Typography
+    title2: Typography
+    title3: Typography
+    title4: Typography
+    buttonText: Typography
+    body: Typography
+    caption: Typography
+  }
   colors: {
     accent: ColorsEnum
     attention: ColorsEnum
@@ -84,6 +109,58 @@ export const theme: AppThemeType = deepmerge(idCheckTheme, {
   isTouch,
   showTabbar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,
+  fontFamily: {
+    medium: 'Montserrat-Medium',
+    extraBoldItalic: 'Montserrat-ExtraBoldItalic',
+    mediumItalic: 'Montserrat-MediumItalic',
+    bold: 'Montserrat-Bold',
+    regular: 'Montserrat-Regular',
+    semiBold: 'Montserrat-SemiBold',
+  },
+  typography: {
+    hero: {
+      fontFamily: 'Montserrat-ExtraBoldItalic',
+      fontSize: getSpacing(7),
+      lineHeight: getSpacingString(8.5),
+      fontWeight: 800,
+    },
+    title1: {
+      fontFamily: 'Montserrat-ExtraBoldItalic',
+      fontSize: getSpacing(6),
+      lineHeight: getSpacingString(8.5),
+      fontWeight: 800,
+    },
+    title2: {
+      fontFamily: 'Montserrat-MediumItalic',
+      fontSize: getSpacing(6),
+      lineHeight: getSpacingString(7),
+    },
+    title3: {
+      fontFamily: 'Montserrat-Bold',
+      fontSize: getSpacing(5),
+      lineHeight: getSpacingString(6),
+    },
+    title4: {
+      fontFamily: 'Montserrat-Medium',
+      fontSize: getSpacing(4.5),
+      lineHeight: getSpacingString(5.5),
+    },
+    buttonText: {
+      fontFamily: 'Montserrat-Bold',
+      fontSize: getSpacing(3.75),
+      lineHeight: getSpacingString(5),
+    },
+    body: {
+      fontFamily: 'Montserrat-Regular',
+      fontSize: getSpacing(3.75),
+      lineHeight: getSpacingString(5),
+    },
+    caption: {
+      fontFamily: 'Montserrat-SemiBold',
+      fontSize: getSpacing(3),
+      lineHeight: getSpacingString(4),
+    },
+  },
   colors: {
     ...idCheckTheme.colors,
     accent: ColorsEnum.ACCENT,

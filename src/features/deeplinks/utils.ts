@@ -16,14 +16,26 @@ export function getLongDynamicLinkURI() {
 
 /**
  * @see https://firebase.google.com/docs/dynamic-links/create-manually
- * @param deepLink The deeplink targetted screen
- * @param webAppLink The link to the current webapp. TODO: remove once webapp migration is complete
+ * @param deepLink The deeplink targeted screen
+ * @param deepLinkParams Firebase additional params https://firebase.google.com/docs/dynamic-links/create-manually#parameters or ofl URL if a string. TODO: remove string support once webapp migration is complete
  */
-export function generateLongFirebaseDynamicLink(deepLink: string, webAppLink?: string) {
-  // TODO(antoinewg): ofl won't be necessary once the webapp supports the deeplinks (ie: after the webapp's migration)
-  // For now, we make sure we have an ofl so that when opened from a browser, the link redirects to the current webapp.
-  const ofl = webAppLink ? `&ofl=${webAppLink}` : ''
-  return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${deepLink}&${getLongDynamicLinkURI()}${ofl}`
+export function generateLongFirebaseDynamicLink(
+  deepLink: string,
+  deepLinkParams?: string | Record<string, unknown>
+) {
+  let params = ''
+  if (typeof deepLinkParams !== undefined) {
+    if (typeof deepLinkParams === 'string') {
+      // TODO(antoinewg): ofl won't be necessary once the webapp supports the deeplinks (ie: after the webapp's migration)
+      // For now, we make sure we have an ofl so that when opened from a browser, the link redirects to the current webapp.
+      params = `&ofl=${deepLinkParams}`
+    } else {
+      Object.entries(deepLinkParams as Record<string, unknown>).forEach(([key, value]) => {
+        params += `&${key}=${value}`
+      })
+    }
+  }
+  return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${deepLink}&${getLongDynamicLinkURI()}${params}`
 }
 
 export const isUniversalLink = (url: string) => url.startsWith(WEBAPP_NATIVE_REDIRECTION_URL)
