@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React, { useState, useMemo, useRef, useEffect } from 'react'
-import { isDesktop } from 'react-device-detect'
 import Picker from 'react-mobile-picker'
 import {
   Calendar as RNCalendar,
@@ -8,7 +7,7 @@ import {
   DateObject,
   LocaleConfig,
 } from 'react-native-calendars'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import {
   monthNamesShort,
@@ -63,6 +62,8 @@ export const CalendarPicker: React.FC<Props> = ({
   hideCalendar,
   setSelectedDate,
 }) => {
+  const { isTouch } = useTheme()
+
   const ref = useRef<Node>(null)
   const [markedDates, setMarkedDates] = useState<{ [name: string]: { selected: boolean } }>({})
   const [desktopCalendarDate, setDesktopCalendarDate] = useState(selectedDate)
@@ -106,12 +107,12 @@ export const CalendarPicker: React.FC<Props> = ({
 
   function onValidate() {
     if (!hideCalendar) return
-    if (isDesktop) {
-      setSelectedDate(desktopCalendarDate)
-    } else {
+    if (isTouch) {
       const { year, month, day } = mobileDateValues
       const monthIndex = monthNamesShort.indexOf(month)
       setSelectedDate(new Date(year, monthIndex, day))
+    } else {
+      setSelectedDate(desktopCalendarDate)
     }
     hideCalendar()
   }
@@ -126,7 +127,15 @@ export const CalendarPicker: React.FC<Props> = ({
       rightIconAccessibilityLabel={t`Fermer le calendrier`}
       rightIcon={Close}
       onRightIconPress={hideCalendar}>
-      {isDesktop ? (
+      {isTouch ? (
+        <CalendarPickerWrapper>
+          <Picker
+            optionGroups={optionGroups}
+            valueGroups={mobileDateValues}
+            onChange={handleMobileDateChange}
+          />
+        </CalendarPickerWrapper>
+      ) : (
         <CalendarPickerWrapperDesktop>
           <RNCalendar
             style={RNCalendarTheme}
@@ -141,14 +150,6 @@ export const CalendarPicker: React.FC<Props> = ({
             onDayPress={handleDesktopDateChange}
           />
         </CalendarPickerWrapperDesktop>
-      ) : (
-        <CalendarPickerWrapper>
-          <Picker
-            optionGroups={optionGroups}
-            valueGroups={mobileDateValues}
-            onChange={handleMobileDateChange}
-          />
-        </CalendarPickerWrapper>
       )}
 
       <CalendarButtonWrapper>

@@ -1,4 +1,5 @@
-import { isIOS } from 'react-device-detect'
+// eslint-disable-next-line no-restricted-imports
+import { isIOS as isWebOnIOS } from 'react-device-detect'
 
 import { Coordinates } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers'
@@ -14,7 +15,7 @@ export const useItinerary = () => {
 function navigateTo(coordinates: Required<Coordinates>) {
   const { latitude: lat, longitude: lon } = coordinates
   const googleMapsPath = `maps.google.com/maps?daddr=${lat},${lon}`
-  if (isIOS) {
+  if (isWebOnIOS) {
     /* on iOS, the device will try to open the link first in Apple Maps, then in Google Maps */
     openUrl('maps://' + googleMapsPath)
   } else {

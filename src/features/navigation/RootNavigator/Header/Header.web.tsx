@@ -74,10 +74,9 @@ export const Header = memo(function Header() {
     fadeInTablette()
   }, [isBrandVisible])
 
-  if (theme.isMobile) {
+  if (theme.showTabbar) {
     return null
   }
-
   return (
     <HeaderContainer>
       <LeftContainer margin={margin} isVisible={isDesktopOffset} style={fadeAnim}>
@@ -86,14 +85,14 @@ export const Header = memo(function Header() {
         </LogoContainer>
         <FlexContainer />
       </LeftContainer>
-      <CenterContainer isDesktop={theme.isDesktop}>
+      <CenterContainer isDesktop={theme.isDesktopViewport}>
         <LeftContainer margin={margin} isVisible={true} style={fadeAnimSmall}>
           <LogoPassCulture color={theme.colors.brand} height={getSpacing(6.5)} width={80} />
         </LeftContainer>
         <Nav
           maxWidth={theme.appContentWidth}
           height={theme.navTopHeight}
-          noShadow={theme.isDesktop}
+          noShadow={theme.isDesktopViewport}
         />
         <RightContainer margin={margin} isVisible={true} style={fadeAnimSmall}>
           <FlexContainer alignItems="flex-end">

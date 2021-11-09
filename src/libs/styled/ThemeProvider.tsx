@@ -6,18 +6,26 @@ import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 
 export const ThemeProvider: React.FC<{ theme: DefaultTheme }> = ({ children, theme }) => {
   const { width: windowWidth } = useWindowDimensions()
-
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
-  const isMobile = useMediaQuery({ maxWidth: tabletMinWidth })
-  const isTablet = useMediaQuery({ minWidth: tabletMinWidth, maxWidth: desktopMinWidth })
-  const isDesktop = useMediaQuery({ minWidth: desktopMinWidth })
 
+  const isMobileViewport = useMediaQuery({ maxWidth: tabletMinWidth })
+  const isTabletViewport = useMediaQuery({ minWidth: tabletMinWidth, maxWidth: desktopMinWidth })
+  const isDesktopViewport = useMediaQuery({ minWidth: desktopMinWidth })
+  const showTabbar = theme.isTouch || isMobileViewport
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
 
   const computedTheme = useMemo(
-    () => ({ ...theme, isMobile, isTablet, isDesktop, appContentWidth }),
-    [isMobile, isTablet, isDesktop, appContentWidth]
+    () => ({
+      ...theme,
+      isMobileViewport,
+      isTabletViewport,
+      isDesktopViewport,
+      showTabbar,
+      appContentWidth,
+    }),
+    [isMobileViewport, isTabletViewport, isDesktopViewport, showTabbar, appContentWidth]
   )
+
   return <DefaultThemeProvider theme={computedTheme}>{children}</DefaultThemeProvider>
 }
