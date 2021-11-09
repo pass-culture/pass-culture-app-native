@@ -24,7 +24,7 @@ import { Bell } from 'ui/svg/icons/Bell'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
-import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
+import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
@@ -166,7 +166,7 @@ export const Profile: React.FC = () => {
             title={t`Comment ça marche ?`}
             type="navigable"
             onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
-            icon={LifeBuoy}
+            icon={LifeBuoyDeprecated}
             style={styles.row}
           />
           <Row
@@ -181,7 +181,7 @@ export const Profile: React.FC = () => {
               title={t`Problèmes pour ouvrir un lien ?`}
               type="navigable"
               onPress={() => navigate('DeeplinkImporter')}
-              icon={LifeBuoy}
+              icon={LifeBuoyDeprecated}
               style={styles.row}
             />
           )}
