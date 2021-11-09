@@ -8,7 +8,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -44,7 +44,7 @@ export function LayoutExpiredLink({
         <ButtonTertiaryWhite
           title={t`Consulter l'article d'aide`}
           onPress={() => openUrl(urlFAQ)}
-          icon={ExternalSite}
+          icon={ExternalSiteDeprecated}
         />
       )}
 

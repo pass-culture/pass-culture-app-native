@@ -94,7 +94,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Favorite } from 'ui/svg/icons/Favorite'
@@ -507,8 +507,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Phone filled </Text>
         </AlignedText>
         <AlignedText>
-          <ExternalSite size={ICON_SIZE} />
-          <Text> - External site </Text>
+          <ExternalSiteDeprecated size={ICON_SIZE} />
+          <Text> - ExternalSiteDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <WarningDeprecated size={ICON_SIZE} />

@@ -11,7 +11,7 @@ import { env } from 'libs/environment'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -27,7 +27,7 @@ export function LegalNotices() {
           title={t`Conditions Générales d’Utilisation`}
           type="clickable"
           onPress={() => openUrl(env.CGU_LINK)}
-          icon={ExternalSite}
+          icon={ExternalSiteDeprecated}
           style={styles.row}
         />
         <Separator />
@@ -35,7 +35,7 @@ export function LegalNotices() {
           title={t`Charte de protection des données personnelles`}
           type="clickable"
           onPress={() => openUrl(env.DATA_PRIVACY_CHART_LINK)}
-          icon={ExternalSite}
+          icon={ExternalSiteDeprecated}
           style={styles.row}
         />
         {!!user && (

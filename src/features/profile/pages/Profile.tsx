@@ -22,7 +22,7 @@ import { SectionRow } from 'ui/components/SectionRow'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { Bell } from 'ui/svg/icons/Bell'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
@@ -173,7 +173,7 @@ export const Profile: React.FC = () => {
             title={t`Questions fréquentes`}
             type="clickable"
             onPress={() => openUrl(env.FAQ_LINK)}
-            icon={ExternalSite}
+            icon={ExternalSiteDeprecated}
             style={styles.row}
           />
           {Platform.OS !== 'web' && (
@@ -191,7 +191,7 @@ export const Profile: React.FC = () => {
             title={t`Accessibilité`}
             type="clickable"
             onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
-            icon={ExternalSite}
+            icon={ExternalSiteDeprecated}
             style={styles.row}
           />
           <Row
