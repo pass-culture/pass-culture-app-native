@@ -3,6 +3,7 @@ import {
   ThemeType as IdCheckThemeType,
 } from '@pass-culture/id-check/src/theme'
 import deepmerge from 'deepmerge'
+// eslint-disable-next-line no-restricted-imports
 import {
   isMobile as isMobileDeviceDetect,
   isTablet as isTabletDeviceDetect,
@@ -19,14 +20,15 @@ const isTouchWeb = Platform.OS === 'web' && (isMobileDeviceDetect || isTabletDev
 const isTouch = isNative || isTouchWeb
 
 export interface AppThemeType extends Omit<IdCheckThemeType, 'colors'> {
-  appContentWidth: number
+  appContentWidth: number // computed dynamically in ThemeProvider.tsx
   appBarHeight: number
   navTopHeight: number
   tabBarHeight: number
-  isMobile?: boolean
-  isTablet?: boolean
-  isDesktop?: boolean
+  isMobileViewport?: boolean // computed dynamically in ThemeProvider.tsx
+  isTabletViewport?: boolean // computed dynamically in ThemeProvider.tsx
+  isDesktopViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isTouch: boolean
+  showTabbar: boolean // computed dynamically in ThemeProvider.tsx
   activeOpacity: number
   colors: {
     accent: ColorsEnum
@@ -80,6 +82,7 @@ export const theme: AppThemeType = deepmerge(idCheckTheme, {
   navTopHeight: getSpacing(20),
   tabBarHeight: TAB_BAR_COMP_HEIGHT,
   isTouch,
+  showTabbar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,
   colors: {
     ...idCheckTheme.colors,

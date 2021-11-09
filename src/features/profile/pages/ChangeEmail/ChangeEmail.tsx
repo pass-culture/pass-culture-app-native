@@ -111,7 +111,11 @@ export function ChangeEmail() {
             )}
           </InputContainer>
 
-          {theme.isDesktop ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
+          {theme.isDesktopViewport ? (
+            <Spacer.Column numberOfSpaces={10} />
+          ) : (
+            <Spacer.Flex flex={1} />
+          )}
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
             <ButtonPrimary title={t`Enregistrer`} onPress={submitEmailChange} disabled={disabled} />

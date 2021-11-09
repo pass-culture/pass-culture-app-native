@@ -135,10 +135,10 @@ export const SnackBar = memo(_SnackBar)
   - On tablet or desktop : below top menu on the right side of the screen, with a max width
 */
 const RootContainer = styled(View)(({ theme }) => ({
-  maxWidth: theme.isMobile ? '100%' : getSpacing(100),
+  maxWidth: theme.isMobileViewport ? '100%' : getSpacing(100),
   position: 'absolute',
-  top: theme.isMobile ? 0 : theme.navTopHeight,
-  left: theme.isMobile ? 0 : 'auto',
+  top: theme.isMobileViewport ? 0 : theme.navTopHeight,
+  left: theme.isMobileViewport ? 0 : 'auto',
   right: 0,
   zIndex: ZIndex.SNACKBAR,
 }))

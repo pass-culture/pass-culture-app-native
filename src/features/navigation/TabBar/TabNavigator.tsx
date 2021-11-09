@@ -18,11 +18,11 @@ if (Platform.OS === 'android') {
 
 export const TabNavigator: React.FC = () => {
   const { setTabNavigationState } = useTabNavigationContext()
-  const { isMobile } = useTheme()
+  const { showTabbar } = useTheme()
 
   function renderTabBar({ state, navigation }: BottomTabBarProps<BottomTabBarOptions>) {
     setTabNavigationState(state as TabNavigationStateType)
-    return <TabBar navigation={navigation} hidden={Platform.OS === 'web' && !isMobile} />
+    return <TabBar navigation={navigation} hidden={!showTabbar} />
   }
 
   return (

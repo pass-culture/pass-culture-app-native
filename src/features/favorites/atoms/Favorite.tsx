@@ -166,7 +166,7 @@ export const Favorite: React.FC<Props> = (props) => {
             disabled={isLoading}
           />
         </ButtonContainer>
-        {!theme.isMobile && <Spacer.Flex flex={1 / 30} />}
+        {!theme.isMobileViewport && <Spacer.Flex flex={1 / 30} />}
         <ButtonContainer>
           <BookingButton
             credit={props.credit}
@@ -204,7 +204,7 @@ const ButtonContainer = styled.View({
 
 const ButtonsRow = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  justifyContent: theme.isMobile ? 'space-between' : 'center',
+  justifyContent: theme.isMobileViewport ? 'space-between' : 'center',
   marginTop: getSpacing(6),
   marginHorizontal: getSpacing(6),
 }))
