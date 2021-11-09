@@ -2,6 +2,8 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { useValidateEmailChangeMutation } from 'features/profile/mutations'
+import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
 export function AfterChangeEmailValidationBuffer() {
@@ -15,7 +17,20 @@ export function AfterChangeEmailValidationBuffer() {
 
   useEffect(beforeEmailValidation, [])
 
-  function beforeEmailValidation() {}
+  const { mutate: validateEmail } = useValidateEmailChangeMutation({
+    onSuccess: onEmailValidationSuccess,
+    onError: onEmailValidationFailure,
+  })
+
+  function beforeEmailValidation() {
+    if (isTimestampExpired(params.expiration_timestamp)) {
+      delayedNavigate('ChangeEmailExpiredLink', { email: params.email })
+      return
+    }
+    validateEmail({
+      emailChangeValidationToken: params.token,
+    })
+  }
 
   async function onEmailValidationSuccess() {}
 
