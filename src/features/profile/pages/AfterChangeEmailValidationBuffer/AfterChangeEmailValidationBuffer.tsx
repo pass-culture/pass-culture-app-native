@@ -34,7 +34,9 @@ export function AfterChangeEmailValidationBuffer() {
 
   async function onEmailValidationSuccess() {}
 
-  function onEmailValidationFailure() {}
+  function onEmailValidationFailure() {
+    delayedNavigate('ChangeEmailExpiredLink', { email: params.email })
+  }
 
   return <LoadingPage />
 }
