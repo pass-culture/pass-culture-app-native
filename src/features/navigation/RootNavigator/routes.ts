@@ -5,6 +5,7 @@ import {
   withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
 } from '@pass-culture/id-check'
 
+import { DeeplinksGenerator } from 'features/_marketingAndCommunication/pages/DeeplinksGenerator'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
@@ -414,5 +415,15 @@ export const routes: Route[] = [
       parse: screenParamsParser['Venue'],
     },
     options: { title: t`Lieu` },
+  },
+  // Internals
+  {
+    name: 'DeeplinksGenerator',
+    component: DeeplinksGenerator,
+    hoc: withAsyncErrorBoundary,
+    pathConfig: {
+      path: 'liens/generateur',
+    },
+    options: { title: t`Générateur de lien` },
   },
 ]

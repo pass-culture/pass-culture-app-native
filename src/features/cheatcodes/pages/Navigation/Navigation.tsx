@@ -366,6 +366,12 @@ export function Navigation(): JSX.Element {
             }
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'Générateur de deeplinks'}
+            onPress={() => navigate('DeeplinksGenerator')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

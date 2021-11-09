@@ -20,6 +20,10 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
 
   function onBlur() {
     setIsFocus(false)
+    if (nativeProps.onBlur) {
+      // @ts-ignore pass event later when needed
+      nativeProps.onBlur()
+    }
   }
 
   return (
