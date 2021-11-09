@@ -4,7 +4,8 @@ import React, { useCallback } from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CustomListRenderItem, Playlist } from 'features/home/components/Playlist'
+import { SeeMore } from 'features/home/atoms'
+import { CustomListRenderItem, RenderFooterItem, Playlist } from 'features/home/components/Playlist'
 import { Layout } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -70,11 +71,12 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
   }, [params])
 
   const showSeeMore = nbHits > hits.length
-  const onPressSeeMore = showSeeMore
-    ? () => {
-        analytics.logVenueSeeMoreClicked(venueId)
-        navigate(...getTabNavConfig('Search', params))
-      }
+  const onPressSeeMore = () => {
+    analytics.logVenueSeeMoreClicked(venueId)
+    navigate(...getTabNavConfig('Search', params))
+  }
+  const renderFooter: RenderFooterItem = showSeeMore
+    ? ({ width, height }) => <SeeMore width={width} height={height} onPress={onPressSeeMore} />
     : undefined
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(layout)
@@ -95,8 +97,8 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         itemHeight={itemHeight}
         itemWidth={itemWidth}
         renderItem={renderItem}
+        renderFooter={renderFooter}
         keyExtractor={keyExtractor}
-        onPressSeeMore={onPressSeeMore}
       />
       <Spacer.Column numberOfSpaces={6} />
       <MarginContainer>
