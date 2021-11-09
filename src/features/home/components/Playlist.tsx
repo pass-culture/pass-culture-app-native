@@ -5,32 +5,34 @@ import React, { useMemo, useRef, useState } from 'react'
 import { FlatList, ListRenderItem, ListRenderItemInfo } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { SeeMore } from 'features/home/atoms'
 import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 import { ZIndex } from 'ui/theme/layers'
 
-import { Cover } from '../atoms/Cover'
-
-export type CustomListRenderItem<ItemT> = (
-  info: ListRenderItemInfo<ItemT> & {
-    width: number
-    height: number
-  }
-) => React.ReactElement | null
+type ItemDimensions = { width: number; height: number }
 
 type Direction = 'previous' | 'next'
+
+export type RenderHeaderItem =
+  | ((itemDimensions: ItemDimensions) => React.ReactElement<any>)
+  | undefined
+export type RenderFooterItem =
+  | ((itemDimensions: ItemDimensions) => React.ReactElement<any>)
+  | undefined
+export type CustomListRenderItem<ItemT> = (
+  info: ListRenderItemInfo<ItemT> & ItemDimensions
+) => React.ReactElement | null
 
 type Props = {
   data: any[]
   itemWidth: number
   itemHeight: number
   testID: string
-  cover?: string | null
   renderItem: CustomListRenderItem<any>
+  renderHeader?: RenderHeaderItem
+  renderFooter?: RenderFooterItem
   keyExtractor: ((item: any, index: number) => string) | undefined
-  onPressSeeMore?: () => void
   onEndReached?: () => void
 }
 
@@ -40,14 +42,14 @@ function defaultKeyExtractor(item: any, index: number): string {
 
 export const Playlist = (props: Props) => {
   const {
-    cover,
     data,
     itemWidth,
     itemHeight,
     testID,
     renderItem,
+    renderHeader,
+    renderFooter,
     keyExtractor = defaultKeyExtractor,
-    onPressSeeMore,
     onEndReached,
   } = props
 
@@ -57,15 +59,15 @@ export const Playlist = (props: Props) => {
   const [playlistStepIndex, setPlaylistStepIndex] = useState(0)
   const flatListRef = useRef<FlatList>(null)
 
-  const showListHeader = !!cover
-  const showListFooter = !!onPressSeeMore
+  // We have to include these dummy objects for header and footer in the data array
+  // in order to have the correct array length available for the scroll functions and renderItem
+  // See also renderItemWithHeaderAndFooter(...)
   const dataWithHeaderAndFooter = useMemo(() => {
-    if (showListHeader && showListFooter)
-      return [{ dataHeader: true }, ...data, { dataFooter: true }]
-    if (showListHeader) return [{ dataHeader: true }, ...data]
-    if (showListFooter) return [...data, { dataFooter: true }]
+    if (renderHeader && renderFooter) return [{ dataHeader: true }, ...data, { dataFooter: true }]
+    if (renderHeader) return [{ dataHeader: true }, ...data]
+    if (renderFooter) return [...data, { dataFooter: true }]
     return data
-  }, [data, showListHeader, showListFooter])
+  }, [data, renderHeader, renderFooter])
 
   const totalItemWidth = itemWidth + ITEM_SEPARATOR_WIDTH
   const nbOfItems = dataWithHeaderAndFooter.length
@@ -82,8 +84,8 @@ export const Playlist = (props: Props) => {
   }
 
   function keyExtractorWithHeaderAndFooter(item: any, index: number) {
-    if (item.dataHeader) return 'dataHeader'
-    if (item.dataFooter) return 'dataFooter'
+    if (renderHeader && index === 0) return 'playlist-data-header'
+    if (renderFooter && index === nbOfItems - 1) return 'playlist-data-footer'
     return keyExtractor(item, index)
   }
 
@@ -99,11 +101,12 @@ export const Playlist = (props: Props) => {
   }
 
   const renderItemWithHeaderAndFooter: ListRenderItem<any> = ({ item, index, separators }) => {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    if (item.dataHeader) return <Cover height={itemHeight} width={itemWidth} uri={cover!} />
-    if (item.dataFooter)
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      return <SeeMore height={itemHeight} width={itemWidth} onPress={onPressSeeMore!} />
+    if (renderHeader && index === 0) {
+      return renderHeader({ height: itemHeight, width: itemWidth })
+    }
+    if (renderFooter && index === nbOfItems - 1) {
+      return renderFooter({ height: itemHeight, width: itemWidth })
+    }
     return renderItem({ item, index, separators, width: itemWidth, height: itemHeight })
   }
 
