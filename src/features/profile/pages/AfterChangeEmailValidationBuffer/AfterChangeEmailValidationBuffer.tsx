@@ -1,6 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
+import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useValidateEmailChangeMutation } from 'features/profile/mutations'
 import { isTimestampExpired } from 'libs/dates'
@@ -17,6 +18,9 @@ export function AfterChangeEmailValidationBuffer() {
 
   useEffect(beforeEmailValidation, [])
 
+  const { isLoggedIn } = useAuthContext()
+  const signOut = useLogoutRoutine()
+
   const { mutate: validateEmail } = useValidateEmailChangeMutation({
     onSuccess: onEmailValidationSuccess,
     onError: onEmailValidationFailure,
@@ -32,7 +36,12 @@ export function AfterChangeEmailValidationBuffer() {
     })
   }
 
-  async function onEmailValidationSuccess() {}
+  async function onEmailValidationSuccess() {
+    if (isLoggedIn) {
+      await signOut()
+    }
+    delayedNavigate('Login')
+  }
 
   function onEmailValidationFailure() {
     delayedNavigate('ChangeEmailExpiredLink', { email: params.email })
