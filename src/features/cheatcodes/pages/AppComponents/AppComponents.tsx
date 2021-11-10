@@ -84,6 +84,7 @@ import { Category } from 'ui/svg/icons/categories'
 import { Check } from 'ui/svg/icons/Check'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Close } from 'ui/svg/icons/Close'
+import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ConfidentialityDeprecated } from 'ui/svg/icons/Confidentiality_deprecated'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
@@ -643,6 +644,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <ConfidentialityDeprecated size={ICON_SIZE} />
           <Text> - ConfidentialityDeprecated </Text>
+        </AlignedText>
+        <AlignedText>
+          <Confidentiality size={ICON_SIZE} />
+          <Text> - Confidentiality (new) </Text>
         </AlignedText>
         <AlignedText>
           <BicolorConfidentiality size={ICON_SIZE} />
