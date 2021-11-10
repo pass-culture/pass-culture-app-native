@@ -38,15 +38,15 @@ import { AppComponents } from 'features/cheatcodes/pages/AppComponents/AppCompon
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
-import { NavigationIdCheck } from 'features/cheatcodes/pages/NavigationIdCheck'
 import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
+import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
-import { IdCheckStepper } from 'features/idcheck/pages/Stepper'
+import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
@@ -436,13 +436,13 @@ export const routes: Route[] = [
     options: { title: t`Lieu` },
   },
   {
-    name: 'NavigationIdCheck',
-    component: NavigationIdCheck,
-    path: 'cheat-navigation-id-check',
+    name: 'NavigationIdentityCheck',
+    component: NavigationIdentityCheck,
+    path: 'cheat-navigation-identity-check',
   },
   {
-    name: 'IdCheck',
-    component: IdCheckStepper,
+    name: 'IdentityCheck',
+    component: IdentityCheckStepper,
     path: 'verification-identite',
     options: { title: t`Vérification d'identité` },
     secure: true,

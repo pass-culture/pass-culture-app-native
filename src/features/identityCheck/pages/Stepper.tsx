@@ -8,7 +8,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Spacer, Typo, ColorsEnum } from 'ui/theme'
 
-export const IdCheckStepper = () => {
+export const IdentityCheckStepper = () => {
   const { goBack } = useGoBack(...homeNavConfig)
 
   return (

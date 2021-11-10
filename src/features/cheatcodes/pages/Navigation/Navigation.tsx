@@ -100,8 +100,8 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'New IdCheck 🎨'}
-            onPress={() => navigate('NavigationIdCheck')}
+            title={'IdentityCheck 🎨'}
+            onPress={() => navigate('NavigationIdentityCheck')}
           />
         </Row>
         <Row half>
