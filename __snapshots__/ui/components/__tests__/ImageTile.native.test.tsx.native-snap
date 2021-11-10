@@ -10,8 +10,8 @@ exports[`<ImageTile/> should render correctly 1`] = `
       Object {
         "borderTopLeftRadius": 8,
         "borderTopRightRadius": 8,
-        "height": 288,
-        "width": 192,
+        "height": 100,
+        "width": 100,
       },
     ]
   }

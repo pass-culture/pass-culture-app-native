@@ -56,12 +56,12 @@ export const VenueOfferTile = (props: VenueOfferTileProps) => {
       <TouchableHighlight imageHeight={props.height} onPress={handlePressOffer}>
         <View>
           <ImageTile
-            imageWidth={props.width}
-            imageHeight={props.height}
+            width={props.width}
+            height={props.height}
             uri={offer.thumbUrl}
             onlyTopBorderRadius
           />
-          <ImageCaption imageWidth={props.width} categoryLabel={categoryLabel} />
+          <ImageCaption width={props.width} categoryLabel={categoryLabel} />
         </View>
       </TouchableHighlight>
       <OfferCaption

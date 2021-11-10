@@ -95,17 +95,8 @@ export const OfferTile = (props: OfferTileProps) => {
         onPress={handlePressOffer}
         {...accessibilityAndTestId('offerTile')}>
         <View>
-          <ImageTile
-            imageWidth={width}
-            imageHeight={height}
-            uri={offer.thumbUrl}
-            onlyTopBorderRadius
-          />
-          <ImageCaption
-            imageWidth={width}
-            categoryLabel={categoryLabel}
-            distance={offer.distance}
-          />
+          <ImageTile width={width} height={height} uri={offer.thumbUrl} onlyTopBorderRadius />
+          <ImageCaption width={width} categoryLabel={categoryLabel} distance={offer.distance} />
         </View>
       </TouchableHighlight>
 

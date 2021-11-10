@@ -8,12 +8,12 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 interface ImageCaptionProps {
   categoryLabel: string | null
   distance?: string
-  imageWidth: number
+  width: number
 }
 
-export const ImageCaption = ({ categoryLabel, imageWidth, distance }: ImageCaptionProps) => {
+export const ImageCaption = ({ categoryLabel, width, distance }: ImageCaptionProps) => {
   return (
-    <Row width={imageWidth}>
+    <Row width={width}>
       <TextWrapper>
         <Typo.Caption color={ColorsEnum.WHITE} numberOfLines={1} testID="categoryImageCaption">
           {categoryLabel}

@@ -7,7 +7,7 @@ import { VenueCaption } from '../VenueCaption'
 
 const props = {
   name: 'Musée du Louvre',
-  imageWidth: 100,
+  width: 100,
   venueType: VenueTypeCodeKey.MUSEUM,
 }
 

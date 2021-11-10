@@ -13,12 +13,12 @@ Object {
           aria-label="venueTile"
           class="css-view-1dbjc4n"
           data-testid="venueTile"
-          style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 168px; user-select: none; width: 252px;"
+          style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; user-select: none; width: 100px;"
           tabindex="0"
         />
         <div
           class="css-view-1dbjc4n"
-          style="margin-top: 8px; max-width: 252px;"
+          style="margin-top: 8px; max-width: 100px;"
         >
           <div
             class="css-text-901oao css-textOneLine-vcwn7f"
@@ -71,12 +71,12 @@ Object {
         aria-label="venueTile"
         class="css-view-1dbjc4n"
         data-testid="venueTile"
-        style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 168px; user-select: none; width: 252px;"
+        style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; user-select: none; width: 100px;"
         tabindex="0"
       />
       <div
         class="css-view-1dbjc4n"
-        style="margin-top: 8px; max-width: 252px;"
+        style="margin-top: 8px; max-width: 100px;"
       >
         <div
           class="css-text-901oao css-textOneLine-vcwn7f"
