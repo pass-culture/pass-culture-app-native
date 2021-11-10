@@ -39,15 +39,14 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
-import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
-import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import { PageNotFound } from 'features/navigation/PageNotFound'
+import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
@@ -75,6 +74,7 @@ export const initialRouteName = 'TabNavigator'
 
 export const routes: Route[] = [
   ...idCheckRoutes,
+  ...identityCheckRoutes,
   { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheck' },
   {
     name: 'Offer',
@@ -434,18 +434,6 @@ export const routes: Route[] = [
       parse: screenParamsParser['Venue'],
     },
     options: { title: t`Lieu` },
-  },
-  {
-    name: 'NavigationIdentityCheck',
-    component: NavigationIdentityCheck,
-    path: 'cheat-navigation-identity-check',
-  },
-  {
-    name: 'IdentityCheck',
-    component: IdentityCheckStepper,
-    path: 'verification-identite',
-    options: { title: t`Vérification d'identité` },
-    secure: true,
   },
   // Internals
   {

@@ -12,6 +12,8 @@ export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink'
 
 export type IdentityCheckRootStackParamList = {
   IdentityCheck: undefined
+  IdentityCheckStatus: undefined
+  NavigationIdentityCheck: undefined
 }
 
 /**
@@ -58,7 +60,6 @@ export type RootStackParamList = {
     followParams?: RootStackParamList['NextBeneficiaryStep']
   }
   Navigation: undefined
-  NavigationIdentityCheck: undefined
   NavigationIdCheckErrors: undefined
   NotificationSettings: undefined
   Offer: {
@@ -174,7 +175,9 @@ export type GenericRoute<ParamList> = {
   options?: { title?: string }
   secure?: boolean
 }
-export type Route = GenericRoute<RootStackParamList & IdCheckRootStackParamList>
+export type Route = GenericRoute<
+  RootStackParamList & IdCheckRootStackParamList & IdentityCheckRootStackParamList
+>
 
 // Typeguard for screen params
 export function isScreen<Screen extends AllNavigateParams[0]>(
