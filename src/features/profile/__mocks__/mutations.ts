@@ -1,4 +1,7 @@
-import { UseChangeEmailMutationProps } from 'features/profile/mutations'
+import {
+  UseChangeEmailMutationProps,
+  UseValidateEmailChangeMutationProps,
+} from 'features/profile/mutations'
 
 export enum CHANGE_EMAIL_ERROR_CODE {
   TOKEN_EXISTS = 'TOKEN_EXISTS',
@@ -9,3 +12,9 @@ export enum CHANGE_EMAIL_ERROR_CODE {
 export const useChangeEmailMutation = jest.fn(({ onSuccess }: UseChangeEmailMutationProps) => ({
   mutate: () => onSuccess(),
 }))
+
+export const useValidateEmailChangeMutation = jest.fn(
+  ({ onSuccess }: UseValidateEmailChangeMutationProps) => ({
+    mutate: () => onSuccess(),
+  })
+)

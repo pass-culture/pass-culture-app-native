@@ -52,6 +52,7 @@ import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
+import { AfterChangeEmailValidationBuffer } from 'features/profile/pages/AfterChangeEmailValidationBuffer'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
@@ -142,6 +143,14 @@ export const routes: Route[] = [
     component: AccountCreated,
     path: 'creation-compte/confirmation',
     options: { title: t`Compte créé !` },
+  },
+  {
+    name: 'AfterChangeEmailValidationBuffer',
+    component: AfterChangeEmailValidationBuffer,
+    pathConfig: {
+      path: 'changement-email',
+      parse: screenParamsParser['AfterChangeEmailValidationBuffer'],
+    },
   },
   {
     name: 'AfterSignupEmailValidationBuffer',
