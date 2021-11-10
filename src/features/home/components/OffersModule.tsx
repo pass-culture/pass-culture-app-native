@@ -105,6 +105,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         data={hits}
         itemHeight={itemHeight}
         itemWidth={itemWidth}
+        scrollButtonOffsetY={itemHeight / 2}
         renderItem={renderItem}
         renderHeader={renderHeader}
         renderFooter={renderFooter}
