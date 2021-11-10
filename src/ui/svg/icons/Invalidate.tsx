@@ -4,6 +4,7 @@ import Svg, { Circle, G, Path } from 'react-native-svg'
 import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
+
 export const Invalidate = ({ color = ColorsEnum.GREY_DARK, size = 32, testID }: IconInterface) => {
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 38 38">
