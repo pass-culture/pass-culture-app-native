@@ -29,7 +29,7 @@ export function generateLongFirebaseDynamicLink(
       // TODO(antoinewg): ofl won't be necessary once the webapp supports the deeplinks (ie: after the webapp's migration)
       // For now, we make sure we have an ofl so that when opened from a browser, the link redirects to the current webapp.
       params = `&ofl=${deepLinkParams}`
-    } else {
+    } else if (deepLinkParams) {
       Object.entries(deepLinkParams as Record<string, unknown>).forEach(([key, value]) => {
         params += `&${key}=${value}`
       })

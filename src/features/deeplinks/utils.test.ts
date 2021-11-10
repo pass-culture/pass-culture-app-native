@@ -37,6 +37,22 @@ describe('Formatting deeplink url', () => {
     })
   })
 
+  describe('generateLongFirebaseDynamicLink with extra FDL params', () => {
+    it('should return a format long firebase dynamic link', () => {
+      const fullWebAppUrlWithParams = 'https://web.example.com/set-email'
+      const ofl = `https://${env.WEBAPP_V2_DOMAIN}/set-email`
+      const amv = '10160005'
+      const extraParams = {
+        ofl,
+        amv,
+      }
+      const dynamicLink = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams, extraParams)
+      expect(dynamicLink).toEqual(
+        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${fullWebAppUrlWithParams}&${getLongDynamicLinkURI()}&ofl=https://webapp-v2.example.com/set-email&amv=10160005`
+      )
+    })
+  })
+
   describe('isFirebaseDynamicLink', () => {
     it('should return true when the link starts like a firebase dynamic link', () => {
       const isDynamicLink = isFirebaseDynamicLink(FIREBASE_DYNAMIC_LINK_URL + '/home')
