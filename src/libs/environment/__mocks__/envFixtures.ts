@@ -42,7 +42,6 @@ export const env: Environment = {
   FIREBASE_PROJECTID: 'FIREBASE_PROJECTID',
   FIREBASE_STORAGEBUCKET: 'FIREBASE_STORAGEBUCKET',
   ID_CHECK_API_URL: 'https://passculture.idcheck',
-  ID_CHECK_URL: 'https://id-check-unit-tests',
   IOS_APP_ID: 'app.ios',
   IOS_APP_STORE_ID: '1557887412',
   PRIVACY_POLICY_LINK: 'https://passculture.privacy',
