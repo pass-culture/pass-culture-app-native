@@ -74,6 +74,7 @@ export const analytics: typeof actualAnalytics = {
   logVenueSeeMoreClicked: jest.fn(),
   logChooseLocation: jest.fn(),
   setUserId: jest.fn(),
+  logSaveNewMail: jest.fn(),
   useInit: jest.fn(),
 }
 
