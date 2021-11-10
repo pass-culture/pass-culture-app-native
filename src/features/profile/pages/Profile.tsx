@@ -21,7 +21,7 @@ import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { Bell } from 'ui/svg/icons/Bell'
-import { Confidentiality } from 'ui/svg/icons/Confidentiality'
+import { ConfidentialityDeprecated } from 'ui/svg/icons/Confidentiality_deprecated'
 import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
@@ -205,7 +205,7 @@ export const Profile: React.FC = () => {
             title={t`Confidentialité`}
             type="navigable"
             onPress={() => navigate('ConsentSettings')}
-            icon={Confidentiality}
+            icon={ConfidentialityDeprecated}
             style={styles.row}
           />
         </ProfileSection>

@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export const Confidentiality: React.FunctionComponent<IconInterface> = ({
+export const ConfidentialityDeprecated: React.FunctionComponent<IconInterface> = ({
   size = 32,
   color = ColorsEnum.BLACK,
   testID,
