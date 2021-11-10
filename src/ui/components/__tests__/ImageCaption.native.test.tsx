@@ -7,7 +7,7 @@ import { ImageCaption } from '../ImageCaption'
 const props = {
   categoryLabel: 'Musique',
   distance: '1,2km',
-  imageWidth: 50,
+  width: 50,
 }
 
 describe('ImageCaption component', () => {

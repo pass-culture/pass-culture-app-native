@@ -28,8 +28,8 @@ exports[`VenueTile component should render correctly 1`] = `
         Object {
           "backgroundColor": "#e6e6e6",
           "borderRadius": 8,
-          "height": 168,
-          "width": 252,
+          "height": 100,
+          "width": 100,
         },
       ]
     }
@@ -43,8 +43,8 @@ exports[`VenueTile component should render correctly 1`] = `
           },
           Object {
             "borderRadius": 8,
-            "height": 168,
-            "width": 252,
+            "height": 100,
+            "width": 100,
           },
         ]
       }
@@ -70,12 +70,12 @@ exports[`VenueTile component should render correctly 1`] = `
     </View>
   </View>
   <View
-    imageWidth={252}
+    maxWidth={100}
     style={
       Array [
         Object {
           "marginTop": 8,
-          "maxWidth": 252,
+          "maxWidth": 100,
         },
       ]
     }

@@ -7,19 +7,19 @@ import { mapVenueTypeToIcon, parseTypeHomeLabel } from 'libs/parsers'
 import { Typo, GUTTER_DP, ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 interface VenueCaptionProps {
-  imageWidth: number
+  width: number
   name: string
   venueType: VenueTypeCodeKey | null
   distance?: string
 }
 
 export const VenueCaption = (props: VenueCaptionProps) => {
-  const { imageWidth, name, venueType, distance } = props
+  const { width, name, venueType, distance } = props
   const typeLabel = parseTypeHomeLabel(venueType)
   const Icon = mapVenueTypeToIcon(venueType)
 
   return (
-    <CaptionContainer imageWidth={imageWidth}>
+    <CaptionContainer maxWidth={width}>
       <VenueName>{name}</VenueName>
       <IconWithCaption>
         <Icon size={getSpacing(4)} color={ColorsEnum.GREY_DARK} />
@@ -31,8 +31,8 @@ export const VenueCaption = (props: VenueCaptionProps) => {
   )
 }
 
-const CaptionContainer = styled.View<{ imageWidth: number }>(({ imageWidth }) => ({
-  maxWidth: imageWidth,
+const CaptionContainer = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
+  maxWidth,
   marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
 }))
 

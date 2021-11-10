@@ -13,11 +13,13 @@ import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ImageTile } from 'ui/components/ImageTile'
-import { ColorsEnum, RATIO_HOME_IMAGE } from 'ui/theme'
-import { BorderRadiusEnum, LENGTH_S } from 'ui/theme/grid'
+import { ColorsEnum } from 'ui/theme'
+import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface VenueTileProps {
   venue: VenueHit
+  width: number
+  height: number
   userPosition: GeoCoordinates | null
 }
 
@@ -25,13 +27,12 @@ export const mergeVenueData = (venueHit: VenueHit) => (
   prevData: VenueResponse | undefined
 ): VenueResponse => ({ ...venueHit, isVirtual: false, ...(prevData || {}) })
 
-const imageHeight = LENGTH_S
-const imageWidth = imageHeight * 2.25 * RATIO_HOME_IMAGE
 // TODO (Lucasbeneston) : Remove when we get image from venue
 const uri =
   'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA'
 
-export const VenueTile = ({ venue, userPosition }: VenueTileProps) => {
+export const VenueTile = (props: VenueTileProps) => {
+  const { venue, width, height, userPosition } = props
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
 
@@ -45,14 +46,14 @@ export const VenueTile = ({ venue, userPosition }: VenueTileProps) => {
   return (
     <Container>
       <TouchableHighlight
-        imageHeight={imageHeight}
-        imageWidth={imageWidth}
+        height={height}
+        width={width}
         onPress={handlePressVenue}
         {...accessibilityAndTestId('venueTile')}>
-        <ImageTile imageWidth={imageWidth} imageHeight={imageHeight} uri={uri} />
+        <ImageTile width={width} height={height} uri={uri} />
       </TouchableHighlight>
       <VenueCaption
-        imageWidth={imageWidth}
+        width={width}
         name={venue.name}
         venueType={venue.venueTypeCode || null}
         distance={formatDistance({ lat: venue.latitude, lng: venue.longitude }, userPosition)}
@@ -63,11 +64,11 @@ export const VenueTile = ({ venue, userPosition }: VenueTileProps) => {
 
 const Container = styled.View({ flex: 1 })
 
-const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number; imageWidth: number }>(
-  ({ imageHeight, imageWidth }) => ({
+const TouchableHighlight = styled.TouchableHighlight<{ height: number; width: number }>(
+  ({ height, width }) => ({
+    height,
+    width,
     borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-    height: imageHeight,
-    width: imageWidth,
     backgroundColor: ColorsEnum.GREY_DISABLED,
   })
 )

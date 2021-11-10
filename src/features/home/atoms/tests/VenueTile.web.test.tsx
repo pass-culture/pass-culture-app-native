@@ -14,6 +14,8 @@ const venue = mockedSearchResponse.hits[0]
 const props: VenueTileProps = {
   venue,
   userPosition: null,
+  width: 100,
+  height: 100,
 }
 
 describe('VenueTile component', () => {

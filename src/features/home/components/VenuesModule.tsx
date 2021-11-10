@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react'
-import { FlatList, ListRenderItem } from 'react-native'
 
 import { ModuleTitle } from 'features/home/atoms'
 import { VenueTile } from 'features/home/atoms/VenueTile'
 import { DisplayParametersFields } from 'features/home/contentful'
 import { GeoCoordinates } from 'libs/geolocation'
 import { VenueHit } from 'libs/search'
-import { Spacer } from 'ui/theme'
+import { Playlist, CustomListRenderItem } from 'ui/components/Playlist'
+import { LENGTH_S, Spacer } from 'ui/theme'
 
 type VenuesModuleProps = {
   hits: VenueHit[]
@@ -14,13 +14,18 @@ type VenuesModuleProps = {
   userPosition: GeoCoordinates | null
 }
 
+const ITEM_HEIGHT = LENGTH_S
+const ITEM_WIDTH = ITEM_HEIGHT * (3 / 2)
+
 const keyExtractor = (item: VenueHit) => item.id.toString()
 
 export const VenuesModule = (props: VenuesModuleProps) => {
   const { hits, display, userPosition } = props
 
-  const renderItem: ListRenderItem<VenueHit> = useCallback(
-    ({ item: venue }) => <VenueTile venue={venue} userPosition={userPosition} />,
+  const renderItem: CustomListRenderItem<VenueHit> = useCallback(
+    ({ item, width, height }) => (
+      <VenueTile venue={item} width={width} height={height} userPosition={userPosition} />
+    ),
     []
   )
 
@@ -28,21 +33,14 @@ export const VenuesModule = (props: VenuesModuleProps) => {
     <React.Fragment>
       <ModuleTitle title={display.title} />
       <Spacer.Column numberOfSpaces={4} />
-      <FlatList
+      <Playlist
         testID="VenuesModuleList"
         data={hits}
         renderItem={renderItem}
-        showsHorizontalScrollIndicator={false}
-        scrollEventThrottle={200}
-        horizontal={true}
+        itemHeight={ITEM_HEIGHT}
+        itemWidth={ITEM_WIDTH}
         keyExtractor={keyExtractor}
-        ItemSeparatorComponent={ItemSeparatorComponent}
-        ListHeaderComponent={HorizontalMargin}
-        ListFooterComponent={HorizontalMargin}
       />
     </React.Fragment>
   )
 }
-
-const HorizontalMargin = () => <Spacer.Row numberOfSpaces={6} />
-const ItemSeparatorComponent = () => <Spacer.Row numberOfSpaces={4} />

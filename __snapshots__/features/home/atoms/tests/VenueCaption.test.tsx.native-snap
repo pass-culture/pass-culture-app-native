@@ -2,7 +2,7 @@
 
 exports[`VenueCaption component should render correctly 1`] = `
 <View
-  imageWidth={100}
+  maxWidth={100}
   style={
     Array [
       Object {

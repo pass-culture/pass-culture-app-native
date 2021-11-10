@@ -4,8 +4,8 @@ import FastImage from 'react-native-fast-image'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
-  imageWidth: number
-  imageHeight: number
+  width: number
+  height: number
   uri?: string
   onlyTopBorderRadius?: boolean | false
 }
@@ -13,8 +13,8 @@ interface Props {
 export const ImageTile: React.FC<Props> = (props) => {
   const style = useMemo(
     () => ({
-      height: props.imageHeight,
-      width: props.imageWidth,
+      height: props.height,
+      width: props.width,
       ...(props.onlyTopBorderRadius
         ? {
             borderTopLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
@@ -22,7 +22,7 @@ export const ImageTile: React.FC<Props> = (props) => {
           }
         : { borderRadius: BorderRadiusEnum.BORDER_RADIUS }),
     }),
-    [props.imageHeight, props.imageWidth, props.onlyTopBorderRadius]
+    [props.height, props.width, props.onlyTopBorderRadius]
   )
 
   const source = useMemo(() => ({ uri: props.uri }), [props.uri])

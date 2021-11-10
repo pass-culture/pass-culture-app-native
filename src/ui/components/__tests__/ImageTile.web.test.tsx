@@ -2,17 +2,16 @@ import React from 'react'
 
 import { render } from 'tests/utils/web'
 import { ImageTile } from 'ui/components/ImageTile'
-import { LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 
-const imageHeight = LENGTH_L
-const imageWidth = imageHeight * RATIO_HOME_IMAGE
-const uri = 'uri_thumb_url'
+const props = {
+  height: 100,
+  width: 100,
+  uri: 'uri_thumb_url',
+}
 
 describe('<ImageTile/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(
-      <ImageTile imageWidth={imageWidth} imageHeight={imageHeight} uri={uri} onlyTopBorderRadius />
-    )
+    const renderAPI = render(<ImageTile {...props} onlyTopBorderRadius />)
     expect(renderAPI).toMatchSnapshot()
   })
 })
