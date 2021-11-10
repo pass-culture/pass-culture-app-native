@@ -10,7 +10,7 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
-export function NavigationIdCheck(): JSX.Element {
+export function NavigationIdentityCheck(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('Navigation', undefined)
 
@@ -18,7 +18,7 @@ export function NavigationIdCheck(): JSX.Element {
     <ScrollView>
       <Spacer.TopScreen />
       <ModalHeader
-        title="New Id Check 🎨"
+        title="New IdentityCheck 🎨"
         leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
@@ -28,7 +28,7 @@ export function NavigationIdCheck(): JSX.Element {
       />
       <StyledContainer>
         <Row half>
-          <NavigationButton title={'Stepper'} onPress={() => navigate('IdCheck')} />
+          <NavigationButton title={'Stepper'} onPress={() => navigate('IdentityCheck')} />
         </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
