@@ -49,6 +49,7 @@ msgstr "1er tutoriel"
 msgid "6 12 34 56 78"
 msgstr "6 12 34 56 78"
 
+#: src/features/identityCheck/pages/Stepper.tsx
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Abandonner"
 msgstr "Abandonner"
@@ -399,6 +400,10 @@ msgstr "Conditions d'utilisations"
 msgid "Confidentialité"
 msgstr "Confidentialité"
 
+#: src/features/identityCheck/useIdentityCheckSteps.ts
+msgid "Confirmation"
+msgstr "Confirmation"
+
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Confirmation de réservation"
 msgstr "Confirmation de réservation"
@@ -524,6 +529,10 @@ msgstr "Créneau horaire"
 #: src/libs/parsers/venueType.ts
 msgid "Culture scientifique"
 msgstr "Culture scientifique"
+
+#: src/features/identityCheck/pages/Stepper.tsx
+msgid "C’est très rapide !"
+msgstr "C’est très rapide !"
 
 #: src/features/bookOffer/components/BookDateChoice.tsx
 #: src/features/search/sections/titles.ts
@@ -1916,10 +1925,18 @@ msgstr "Ton mot de passe actuel"
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
+#: src/features/identityCheck/useIdentityCheckSteps.ts
+msgid "Ton profil"
+msgstr "Ton profil"
+
 #: src/features/offer/components/ReportOfferOtherReason.tsx
 #: src/features/offer/components/ReportOfferReason.tsx
 msgid "Ton signalement a bien été pris en compte"
 msgstr "Ton signalement a bien été pris en compte"
+
+#: src/features/identityCheck/useIdentityCheckSteps.ts
+msgid "Ton éligibilité"
+msgstr "Ton éligibilité"
 
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Tout passer"
@@ -2228,6 +2245,10 @@ msgstr "Veux-tu abandonner l'inscription ?"
 msgid "Victime de notre succès"
 msgstr "Victime de notre succès"
 
+#: src/features/identityCheck/pages/Stepper.tsx
+msgid "Voici les 3 étapes que tu vas devoir suivre."
+msgstr "Voici les 3 étapes que tu vas devoir suivre."
+
 #: src/libs/itinerary/components/SeeItineraryButton.tsx
 #: src/libs/itinerary/useItinerary.ts
 msgid "Voir l'itinéraire"
@@ -2277,6 +2298,10 @@ msgstr "Vous êtes actuellement très nombreux à demander les 300€ et notre s
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
 msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Vérification d'identité"
+msgstr "Vérification d'identité"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Vérification éligibilité"
