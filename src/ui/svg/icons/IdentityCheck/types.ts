@@ -1,4 +1,5 @@
 import { SvgProps } from 'react-native-svg'
+
 import { IconInterface } from 'ui/svg/icons/types'
 
 export function mapIconPropsToSvgProps(props: IconInterface): SvgProps {

@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+
 import { StepConfig } from 'features/identityCheck/types'
 import { ConfirmationIcon } from 'ui/svg/icons/IdentityCheck/ConfirmationIcon'
 import { IdCardIcon } from 'ui/svg/icons/IdentityCheck/IdCardIcon'

@@ -2,13 +2,13 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { StepButton } from 'features/identityCheck/atoms/StepButton'
+import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Spacer, Typo, ColorsEnum } from 'ui/theme'
-import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
-import { StepButton } from 'features/identityCheck/atoms/StepButton'
 
 export const IdentityCheckStepper = () => {
   const { goBack } = useGoBack(...homeNavConfig)

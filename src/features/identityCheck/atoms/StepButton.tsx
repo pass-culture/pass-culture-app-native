@@ -1,7 +1,7 @@
-import { StepConfig } from 'features/identityCheck/types'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { StepConfig } from 'features/identityCheck/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
