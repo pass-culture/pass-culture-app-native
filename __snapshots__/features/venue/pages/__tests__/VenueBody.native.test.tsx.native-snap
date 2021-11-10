@@ -846,8 +846,19 @@ exports[`<VenueBody /> should render correctly 1`] = `
               ]
             }
           >
-            <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
               <View
+                accessibilityLabel="offerTile"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -861,94 +872,94 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   Array [
                     Object {
                       "borderRadius": 8,
-                      "height": 312,
+                      "height": 288,
                     },
                   ]
                 }
+                testID="offerTile"
               >
-                <View>
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "overflow": "hidden",
-                        },
-                        Object {
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "height": 288,
-                          "width": 192,
-                        },
-                      ]
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Object {
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "height": 264,
+                        "width": 192,
+                      },
+                    ]
+                  }
+                >
+                  <FastImageView
+                    resizeMode="cover"
+                    source={
+                      Object {
+                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                      }
                     }
-                  >
-                    <FastImageView
-                      resizeMode="cover"
-                      source={
-                        Object {
-                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                        }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
                       }
-                      style={
-                        Object {
-                          "bottom": 0,
-                          "left": 0,
-                          "position": "absolute",
-                          "right": 0,
-                          "top": 0,
-                        }
-                      }
-                      testID="tileImage"
-                    />
-                  </View>
+                    }
+                    testID="tileImage"
+                  />
+                </View>
+                <View
+                  height={24}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#151515",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "flexDirection": "row",
+                        "height": 24,
+                        "width": 192,
+                      },
+                    ]
+                  }
+                  width={192}
+                >
                   <View
                     style={
                       Array [
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "#151515",
-                          "borderBottomLeftRadius": 8,
-                          "borderBottomRightRadius": 8,
-                          "flexDirection": "row",
-                          "height": 24,
-                          "width": 192,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 2,
                         },
                       ]
                     }
-                    width={192}
                   >
-                    <View
+                    <Text
+                      color="#ffffff"
+                      numberOfLines={1}
                       style={
                         Array [
                           Object {
-                            "alignItems": "center",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 2,
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
                           },
                         ]
                       }
+                      testID="categoryImageCaption"
                     >
-                      <Text
-                        color="#ffffff"
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
-                        }
-                        testID="categoryImageCaption"
-                      >
-                        Cinéma
-                      </Text>
-                    </View>
+                      Cinéma
+                    </Text>
                   </View>
                 </View>
               </View>
@@ -1059,8 +1070,19 @@ exports[`<VenueBody /> should render correctly 1`] = `
               ]
             }
           >
-            <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
               <View
+                accessibilityLabel="offerTile"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -1074,94 +1096,94 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   Array [
                     Object {
                       "borderRadius": 8,
-                      "height": 312,
+                      "height": 288,
                     },
                   ]
                 }
+                testID="offerTile"
               >
-                <View>
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "overflow": "hidden",
-                        },
-                        Object {
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "height": 288,
-                          "width": 192,
-                        },
-                      ]
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Object {
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "height": 264,
+                        "width": 192,
+                      },
+                    ]
+                  }
+                >
+                  <FastImageView
+                    resizeMode="cover"
+                    source={
+                      Object {
+                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                      }
                     }
-                  >
-                    <FastImageView
-                      resizeMode="cover"
-                      source={
-                        Object {
-                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                        }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
                       }
-                      style={
-                        Object {
-                          "bottom": 0,
-                          "left": 0,
-                          "position": "absolute",
-                          "right": 0,
-                          "top": 0,
-                        }
-                      }
-                      testID="tileImage"
-                    />
-                  </View>
+                    }
+                    testID="tileImage"
+                  />
+                </View>
+                <View
+                  height={24}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#151515",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "flexDirection": "row",
+                        "height": 24,
+                        "width": 192,
+                      },
+                    ]
+                  }
+                  width={192}
+                >
                   <View
                     style={
                       Array [
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "#151515",
-                          "borderBottomLeftRadius": 8,
-                          "borderBottomRightRadius": 8,
-                          "flexDirection": "row",
-                          "height": 24,
-                          "width": 192,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 2,
                         },
                       ]
                     }
-                    width={192}
                   >
-                    <View
+                    <Text
+                      color="#ffffff"
+                      numberOfLines={1}
                       style={
                         Array [
                           Object {
-                            "alignItems": "center",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 2,
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
                           },
                         ]
                       }
+                      testID="categoryImageCaption"
                     >
-                      <Text
-                        color="#ffffff"
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
-                        }
-                        testID="categoryImageCaption"
-                      >
-                        Cinéma
-                      </Text>
-                    </View>
+                      Cinéma
+                    </Text>
                   </View>
                 </View>
               </View>
@@ -1272,8 +1294,19 @@ exports[`<VenueBody /> should render correctly 1`] = `
               ]
             }
           >
-            <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
               <View
+                accessibilityLabel="offerTile"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -1287,94 +1320,94 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   Array [
                     Object {
                       "borderRadius": 8,
-                      "height": 312,
+                      "height": 288,
                     },
                   ]
                 }
+                testID="offerTile"
               >
-                <View>
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "overflow": "hidden",
-                        },
-                        Object {
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "height": 288,
-                          "width": 192,
-                        },
-                      ]
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Object {
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "height": 264,
+                        "width": 192,
+                      },
+                    ]
+                  }
+                >
+                  <FastImageView
+                    resizeMode="cover"
+                    source={
+                      Object {
+                        "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                      }
                     }
-                  >
-                    <FastImageView
-                      resizeMode="cover"
-                      source={
-                        Object {
-                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                        }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
                       }
-                      style={
-                        Object {
-                          "bottom": 0,
-                          "left": 0,
-                          "position": "absolute",
-                          "right": 0,
-                          "top": 0,
-                        }
-                      }
-                      testID="tileImage"
-                    />
-                  </View>
+                    }
+                    testID="tileImage"
+                  />
+                </View>
+                <View
+                  height={24}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#151515",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "flexDirection": "row",
+                        "height": 24,
+                        "width": 192,
+                      },
+                    ]
+                  }
+                  width={192}
+                >
                   <View
                     style={
                       Array [
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "#151515",
-                          "borderBottomLeftRadius": 8,
-                          "borderBottomRightRadius": 8,
-                          "flexDirection": "row",
-                          "height": 24,
-                          "width": 192,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 2,
                         },
                       ]
                     }
-                    width={192}
                   >
-                    <View
+                    <Text
+                      color="#ffffff"
+                      numberOfLines={1}
                       style={
                         Array [
                           Object {
-                            "alignItems": "center",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "paddingHorizontal": 2,
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
                           },
                         ]
                       }
+                      testID="categoryImageCaption"
                     >
-                      <Text
-                        color="#ffffff"
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
-                        }
-                        testID="categoryImageCaption"
-                      >
-                        Cinéma
-                      </Text>
-                    </View>
+                      Cinéma
+                    </Text>
                   </View>
                 </View>
               </View>

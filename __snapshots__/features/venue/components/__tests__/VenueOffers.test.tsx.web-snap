@@ -80,7 +80,7 @@ Array [
           "borderTopLeftRadius": "20px",
           "borderTopRightRadius": "20px",
           "borderTopWidth": "1px",
-          "bottom": "0px",
+          "bottom": "auto",
           "cursor": "pointer",
           "height": "40px",
           "justifyContent": "center",
@@ -95,7 +95,7 @@ Array [
           "msUserSelect": "none",
           "position": "absolute",
           "right": "8px",
-          "top": "0px",
+          "top": "124px",
           "touchAction": "manipulation",
           "transitionDuration": "0s",
           "transitionProperty": "opacity",
@@ -187,9 +187,25 @@ Array [
         >
           <div
             className="css-view-1dbjc4n"
+            style={
+              Object {
+                "WebkitBoxFlex": 1,
+                "WebkitFlexBasis": "0px",
+                "WebkitFlexGrow": 1,
+                "WebkitFlexShrink": 1,
+                "flexBasis": "0px",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "msFlexNegative": 1,
+                "msFlexPositive": 1,
+                "msFlexPreferredSize": "0px",
+              }
+            }
           >
             <div
+              aria-label="offerTile"
               className="css-view-1dbjc4n"
+              data-testid="offerTile"
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}
@@ -202,7 +218,7 @@ Array [
                   "borderTopLeftRadius": "8px",
                   "borderTopRightRadius": "8px",
                   "cursor": "pointer",
-                  "height": "312px",
+                  "height": "288px",
                   "msTouchAction": "manipulation",
                   "msUserSelect": "none",
                   "touchAction": "manipulation",
@@ -213,6 +229,24 @@ Array [
             >
               <div
                 className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(21,21,21,1.00)",
+                    "borderBottomLeftRadius": "8px",
+                    "borderBottomRightRadius": "8px",
+                    "flexDirection": "row",
+                    "height": "24px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "width": "192px",
+                  }
+                }
               >
                 <div
                   className="css-view-1dbjc4n"
@@ -220,63 +254,41 @@ Array [
                     Object {
                       "WebkitAlignItems": "center",
                       "WebkitBoxAlign": "center",
-                      "WebkitBoxDirection": "normal",
-                      "WebkitBoxOrient": "horizontal",
-                      "WebkitFlexDirection": "row",
+                      "WebkitBoxFlex": 1,
+                      "WebkitBoxPack": "center",
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "WebkitJustifyContent": "center",
                       "alignItems": "center",
-                      "backgroundColor": "rgba(21,21,21,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "flexDirection": "row",
-                      "height": "24px",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "center",
                       "msFlexAlign": "center",
-                      "msFlexDirection": "row",
-                      "width": "192px",
+                      "msFlexNegative": 1,
+                      "msFlexPack": "center",
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                      "paddingLeft": "2px",
+                      "paddingRight": "2px",
                     }
                   }
                 >
                   <div
-                    className="css-view-1dbjc4n"
+                    className="css-text-901oao css-textOneLine-vcwn7f"
+                    data-testid="categoryImageCaption"
+                    dir="auto"
                     style={
                       Object {
-                        "WebkitAlignItems": "center",
-                        "WebkitBoxAlign": "center",
-                        "WebkitBoxFlex": 1,
-                        "WebkitBoxPack": "center",
-                        "WebkitFlexBasis": "0px",
-                        "WebkitFlexGrow": 1,
-                        "WebkitFlexShrink": 1,
-                        "WebkitJustifyContent": "center",
-                        "alignItems": "center",
-                        "flexBasis": "0px",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "justifyContent": "center",
-                        "msFlexAlign": "center",
-                        "msFlexNegative": 1,
-                        "msFlexPack": "center",
-                        "msFlexPositive": 1,
-                        "msFlexPreferredSize": "0px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
+                        "color": "rgba(255,255,255,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
                       }
                     }
                   >
-                    <div
-                      className="css-text-901oao css-textOneLine-vcwn7f"
-                      data-testid="categoryImageCaption"
-                      dir="auto"
-                      style={
-                        Object {
-                          "color": "rgba(255,255,255,1.00)",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": "12px",
-                          "lineHeight": "16px",
-                        }
-                      }
-                    >
-                      Cinéma
-                    </div>
+                    Cinéma
                   </div>
                 </div>
               </div>
@@ -358,9 +370,25 @@ Array [
         >
           <div
             className="css-view-1dbjc4n"
+            style={
+              Object {
+                "WebkitBoxFlex": 1,
+                "WebkitFlexBasis": "0px",
+                "WebkitFlexGrow": 1,
+                "WebkitFlexShrink": 1,
+                "flexBasis": "0px",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "msFlexNegative": 1,
+                "msFlexPositive": 1,
+                "msFlexPreferredSize": "0px",
+              }
+            }
           >
             <div
+              aria-label="offerTile"
               className="css-view-1dbjc4n"
+              data-testid="offerTile"
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}
@@ -373,7 +401,7 @@ Array [
                   "borderTopLeftRadius": "8px",
                   "borderTopRightRadius": "8px",
                   "cursor": "pointer",
-                  "height": "312px",
+                  "height": "288px",
                   "msTouchAction": "manipulation",
                   "msUserSelect": "none",
                   "touchAction": "manipulation",
@@ -384,6 +412,24 @@ Array [
             >
               <div
                 className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(21,21,21,1.00)",
+                    "borderBottomLeftRadius": "8px",
+                    "borderBottomRightRadius": "8px",
+                    "flexDirection": "row",
+                    "height": "24px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "width": "192px",
+                  }
+                }
               >
                 <div
                   className="css-view-1dbjc4n"
@@ -391,63 +437,41 @@ Array [
                     Object {
                       "WebkitAlignItems": "center",
                       "WebkitBoxAlign": "center",
-                      "WebkitBoxDirection": "normal",
-                      "WebkitBoxOrient": "horizontal",
-                      "WebkitFlexDirection": "row",
+                      "WebkitBoxFlex": 1,
+                      "WebkitBoxPack": "center",
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "WebkitJustifyContent": "center",
                       "alignItems": "center",
-                      "backgroundColor": "rgba(21,21,21,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "flexDirection": "row",
-                      "height": "24px",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "center",
                       "msFlexAlign": "center",
-                      "msFlexDirection": "row",
-                      "width": "192px",
+                      "msFlexNegative": 1,
+                      "msFlexPack": "center",
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                      "paddingLeft": "2px",
+                      "paddingRight": "2px",
                     }
                   }
                 >
                   <div
-                    className="css-view-1dbjc4n"
+                    className="css-text-901oao css-textOneLine-vcwn7f"
+                    data-testid="categoryImageCaption"
+                    dir="auto"
                     style={
                       Object {
-                        "WebkitAlignItems": "center",
-                        "WebkitBoxAlign": "center",
-                        "WebkitBoxFlex": 1,
-                        "WebkitBoxPack": "center",
-                        "WebkitFlexBasis": "0px",
-                        "WebkitFlexGrow": 1,
-                        "WebkitFlexShrink": 1,
-                        "WebkitJustifyContent": "center",
-                        "alignItems": "center",
-                        "flexBasis": "0px",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "justifyContent": "center",
-                        "msFlexAlign": "center",
-                        "msFlexNegative": 1,
-                        "msFlexPack": "center",
-                        "msFlexPositive": 1,
-                        "msFlexPreferredSize": "0px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
+                        "color": "rgba(255,255,255,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
                       }
                     }
                   >
-                    <div
-                      className="css-text-901oao css-textOneLine-vcwn7f"
-                      data-testid="categoryImageCaption"
-                      dir="auto"
-                      style={
-                        Object {
-                          "color": "rgba(255,255,255,1.00)",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": "12px",
-                          "lineHeight": "16px",
-                        }
-                      }
-                    >
-                      Cinéma
-                    </div>
+                    Cinéma
                   </div>
                 </div>
               </div>
@@ -529,9 +553,25 @@ Array [
         >
           <div
             className="css-view-1dbjc4n"
+            style={
+              Object {
+                "WebkitBoxFlex": 1,
+                "WebkitFlexBasis": "0px",
+                "WebkitFlexGrow": 1,
+                "WebkitFlexShrink": 1,
+                "flexBasis": "0px",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "msFlexNegative": 1,
+                "msFlexPositive": 1,
+                "msFlexPreferredSize": "0px",
+              }
+            }
           >
             <div
+              aria-label="offerTile"
               className="css-view-1dbjc4n"
+              data-testid="offerTile"
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}
@@ -544,7 +584,7 @@ Array [
                   "borderTopLeftRadius": "8px",
                   "borderTopRightRadius": "8px",
                   "cursor": "pointer",
-                  "height": "312px",
+                  "height": "288px",
                   "msTouchAction": "manipulation",
                   "msUserSelect": "none",
                   "touchAction": "manipulation",
@@ -555,6 +595,24 @@ Array [
             >
               <div
                 className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(21,21,21,1.00)",
+                    "borderBottomLeftRadius": "8px",
+                    "borderBottomRightRadius": "8px",
+                    "flexDirection": "row",
+                    "height": "24px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "width": "192px",
+                  }
+                }
               >
                 <div
                   className="css-view-1dbjc4n"
@@ -562,63 +620,41 @@ Array [
                     Object {
                       "WebkitAlignItems": "center",
                       "WebkitBoxAlign": "center",
-                      "WebkitBoxDirection": "normal",
-                      "WebkitBoxOrient": "horizontal",
-                      "WebkitFlexDirection": "row",
+                      "WebkitBoxFlex": 1,
+                      "WebkitBoxPack": "center",
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "WebkitJustifyContent": "center",
                       "alignItems": "center",
-                      "backgroundColor": "rgba(21,21,21,1.00)",
-                      "borderBottomLeftRadius": "8px",
-                      "borderBottomRightRadius": "8px",
-                      "flexDirection": "row",
-                      "height": "24px",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "center",
                       "msFlexAlign": "center",
-                      "msFlexDirection": "row",
-                      "width": "192px",
+                      "msFlexNegative": 1,
+                      "msFlexPack": "center",
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                      "paddingLeft": "2px",
+                      "paddingRight": "2px",
                     }
                   }
                 >
                   <div
-                    className="css-view-1dbjc4n"
+                    className="css-text-901oao css-textOneLine-vcwn7f"
+                    data-testid="categoryImageCaption"
+                    dir="auto"
                     style={
                       Object {
-                        "WebkitAlignItems": "center",
-                        "WebkitBoxAlign": "center",
-                        "WebkitBoxFlex": 1,
-                        "WebkitBoxPack": "center",
-                        "WebkitFlexBasis": "0px",
-                        "WebkitFlexGrow": 1,
-                        "WebkitFlexShrink": 1,
-                        "WebkitJustifyContent": "center",
-                        "alignItems": "center",
-                        "flexBasis": "0px",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "justifyContent": "center",
-                        "msFlexAlign": "center",
-                        "msFlexNegative": 1,
-                        "msFlexPack": "center",
-                        "msFlexPositive": 1,
-                        "msFlexPreferredSize": "0px",
-                        "paddingLeft": "2px",
-                        "paddingRight": "2px",
+                        "color": "rgba(255,255,255,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
                       }
                     }
                   >
-                    <div
-                      className="css-text-901oao css-textOneLine-vcwn7f"
-                      data-testid="categoryImageCaption"
-                      dir="auto"
-                      style={
-                        Object {
-                          "color": "rgba(255,255,255,1.00)",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": "12px",
-                          "lineHeight": "16px",
-                        }
-                      }
-                    >
-                      Cinéma
-                    </div>
+                    Cinéma
                   </div>
                 </div>
               </div>

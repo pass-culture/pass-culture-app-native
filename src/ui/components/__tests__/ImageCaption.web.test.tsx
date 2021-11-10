@@ -7,6 +7,7 @@ import { ImageCaption } from '../ImageCaption'
 const props = {
   categoryLabel: 'Musique',
   distance: '1,2km',
+  height: 20,
   width: 50,
 }
 

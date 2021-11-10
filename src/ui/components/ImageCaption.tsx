@@ -2,18 +2,19 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, Typo, MARGIN_DP, GUTTER_DP, getSpacing } from 'ui/theme'
+import { ColorsEnum, Typo, GUTTER_DP, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface ImageCaptionProps {
   categoryLabel: string | null
   distance?: string
+  height: number
   width: number
 }
 
-export const ImageCaption = ({ categoryLabel, width, distance }: ImageCaptionProps) => {
+export const ImageCaption = ({ categoryLabel, height, width, distance }: ImageCaptionProps) => {
   return (
-    <Row width={width}>
+    <Row height={height} width={width}>
       <TextWrapper>
         <Typo.Caption color={ColorsEnum.WHITE} numberOfLines={1} testID="categoryImageCaption">
           {categoryLabel}
@@ -33,13 +34,12 @@ export const ImageCaption = ({ categoryLabel, width, distance }: ImageCaptionPro
   )
 }
 
-const rowHeight = PixelRatio.roundToNearestPixel(MARGIN_DP)
 const textLineHeight = PixelRatio.roundToNearestPixel(GUTTER_DP)
 
-const Row = styled.View<{ width: number }>(({ width }) => ({
+const Row = styled.View<{ height: number; width: number }>(({ height, width }) => ({
   flexDirection: 'row',
   backgroundColor: ColorsEnum.BLACK,
-  height: rowHeight,
+  height,
   width,
   borderBottomLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
   borderBottomRightRadius: BorderRadiusEnum.BORDER_RADIUS,
