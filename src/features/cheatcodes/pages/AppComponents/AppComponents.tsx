@@ -95,6 +95,7 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Favorite } from 'ui/svg/icons/Favorite'
@@ -111,6 +112,7 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
+import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
@@ -507,7 +509,11 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <ExternalSite size={ICON_SIZE} />
-          <Text> - External site </Text>
+          <Text> - ExternalSite (new)</Text>
+        </AlignedText>
+        <AlignedText>
+          <ExternalSiteDeprecated size={ICON_SIZE} />
+          <Text> - ExternalSiteDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <WarningDeprecated size={ICON_SIZE} />
@@ -663,7 +669,11 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <LifeBuoy size={ICON_SIZE} />
-          <Text> - LifeBuoy </Text>
+          <Text> - LifeBuoy (new) </Text>
+        </AlignedText>
+        <AlignedText>
+          <LifeBuoyDeprecated size={ICON_SIZE} />
+          <Text> - LifeBuoyDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <Bell size={ICON_SIZE} />

@@ -12,7 +12,7 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { padding, Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
@@ -48,7 +48,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
                 'https://aide.passculture.app/fr/articles/5261997-je-n-ai-pas-recu-le-mail-de-confirmation-de-changement-de-mot-de-passe'
               )
             }
-            icon={ExternalSite}
+            icon={ExternalSiteDeprecated}
           />
         </Description>
         <Spacer.Column numberOfSpaces={3} />
