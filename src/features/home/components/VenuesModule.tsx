@@ -39,6 +39,7 @@ export const VenuesModule = (props: VenuesModuleProps) => {
         renderItem={renderItem}
         itemHeight={ITEM_HEIGHT}
         itemWidth={ITEM_WIDTH}
+        scrollButtonOffsetY={ITEM_HEIGHT / 2}
         keyExtractor={keyExtractor}
       />
     </React.Fragment>

@@ -75,6 +75,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         data={hits}
         itemHeight={itemHeight}
         itemWidth={itemWidth}
+        scrollButtonOffsetY={itemHeight / 2}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         onEndReached={logHasSeenAllTilesOnce}

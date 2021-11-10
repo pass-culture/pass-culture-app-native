@@ -96,6 +96,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         data={hits}
         itemHeight={itemHeight}
         itemWidth={itemWidth}
+        scrollButtonOffsetY={itemHeight / 2}
         renderItem={renderItem}
         renderFooter={renderFooter}
         keyExtractor={keyExtractor}
