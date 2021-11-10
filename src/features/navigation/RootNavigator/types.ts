@@ -45,6 +45,7 @@ export type RootStackParamList = {
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
+  IdCheck: undefined
   IdCheckUnavailable: undefined
   IdCheckTooManyAttempts: undefined
   Login?: {
@@ -53,6 +54,7 @@ export type RootStackParamList = {
     followParams?: RootStackParamList['NextBeneficiaryStep']
   }
   Navigation: undefined
+  NavigationIdCheck: undefined
   NavigationIdCheckErrors: undefined
   NotificationSettings: undefined
   Offer: {

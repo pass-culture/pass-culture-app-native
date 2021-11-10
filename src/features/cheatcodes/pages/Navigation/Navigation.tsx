@@ -99,6 +99,12 @@ export function Navigation(): JSX.Element {
           <CheatCodesButton />
         </Row>
         <Row half>
+          <NavigationButton
+            title={'New IdCheck 🎨'}
+            onPress={() => navigate('NavigationIdCheck')}
+          />
+        </Row>
+        <Row half>
           <NavigationButton title={'Login'} onPress={() => navigate('Login')} />
         </Row>
         <Row half>
