@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VenueOfferTile component should render correctly 1`] = `
+exports[`OfferTile component should render correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -31,6 +31,23 @@ Object {
                 style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
                 MUSIQUE
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(255, 255, 255); height: 16px; width: 1px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+            >
+              <div
+                class="css-text-901oao"
+                data-testid="distanceImageCaption"
+                dir="auto"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                1,2km
               </div>
             </div>
           </div>
@@ -92,6 +109,23 @@ Object {
               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               MUSIQUE
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(255, 255, 255); height: 16px; width: 1px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+          >
+            <div
+              class="css-text-901oao"
+              data-testid="distanceImageCaption"
+              dir="auto"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+            >
+              1,2km
             </div>
           </div>
         </div>

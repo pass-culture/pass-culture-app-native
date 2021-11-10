@@ -1,4 +1,4 @@
+import { HomeOfferTile } from './HomeOfferTile'
 import { ModuleTitle } from './ModuleTitle'
-import { OfferTile } from './OfferTile'
 import { SeeMore } from './SeeMore'
-export { OfferTile, ModuleTitle, SeeMore }
+export { HomeOfferTile, ModuleTitle, SeeMore }

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 
-import { OfferTile, ModuleTitle } from 'features/home/atoms'
+import { HomeOfferTile, ModuleTitle } from 'features/home/atoms'
 import { DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
@@ -40,7 +40,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     ({ item, width, height }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
-        <OfferTile
+        <HomeOfferTile
           categoryLabel={labelMapping[item.offer.subcategoryId]}
           categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}

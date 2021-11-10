@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { View, PixelRatio } from 'react-native'
+import { PixelRatio } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -12,7 +12,7 @@ import {
   OfferVenueResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
 import { accessibilityAndTestId } from 'tests/utils'
@@ -22,7 +22,7 @@ import { OfferCaption } from 'ui/components/OfferCaption'
 import { MARGIN_DP } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-interface OfferTileProps {
+export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
   categoryLabel: string | null
   subcategoryId: SubcategoryIdEnum
@@ -31,10 +31,12 @@ interface OfferTileProps {
   name?: string
   isDuo?: boolean
   offerId: number
+  venueId?: number
   price: string
   thumbUrl?: string
   isBeneficiary?: boolean
-  moduleName: string
+  analyticsFrom: Referrals
+  moduleName?: string
   width: number
   height: number
 }
@@ -73,33 +75,49 @@ export const mergeOfferData = (offer: PartialOffer) => (
 })
 
 export const OfferTile = (props: OfferTileProps) => {
+  const {
+    analyticsFrom,
+    width,
+    height,
+    moduleName,
+    isBeneficiary,
+    categoryLabel,
+    venueId,
+    ...offer
+  } = props
+
   const navigation = useNavigation<UseNavigationType>()
-  const { width, height, moduleName, isBeneficiary, categoryLabel, ...offer } = props
   const queryClient = useQueryClient()
 
   function handlePressOffer() {
+    const { offerId } = offer
     // We pre-populate the query-cache with the data from the search result for a smooth transition
-    queryClient.setQueryData([QueryKeys.OFFER, offer.offerId], mergeOfferData(offer))
-    analytics.logConsultOffer({ offerId: offer.offerId, from: 'home', moduleName })
-    navigation.navigate('Offer', {
-      id: offer.offerId,
-      from: 'home',
-      moduleName,
-    })
+    queryClient.setQueryData([QueryKeys.OFFER, offerId], mergeOfferData(offer))
+    analytics.logConsultOffer({ offerId, from: analyticsFrom, moduleName, venueId })
+    navigation.navigate('Offer', { id: offerId, from: analyticsFrom, moduleName })
   }
 
   return (
     <Container>
       <TouchableHighlight
-        imageHeight={height}
+        height={height}
         onPress={handlePressOffer}
         {...accessibilityAndTestId('offerTile')}>
-        <View>
-          <ImageTile width={width} height={height} uri={offer.thumbUrl} onlyTopBorderRadius />
-          <ImageCaption width={width} categoryLabel={categoryLabel} distance={offer.distance} />
-        </View>
+        <React.Fragment>
+          <ImageTile
+            width={width}
+            height={height - IMAGE_CAPTION_HEIGHT}
+            uri={offer.thumbUrl}
+            onlyTopBorderRadius
+          />
+          <ImageCaption
+            height={IMAGE_CAPTION_HEIGHT}
+            width={width}
+            categoryLabel={categoryLabel}
+            distance={offer.distance}
+          />
+        </React.Fragment>
       </TouchableHighlight>
-
       <OfferCaption
         imageWidth={width}
         name={offer.name}
@@ -112,13 +130,11 @@ export const OfferTile = (props: OfferTileProps) => {
   )
 }
 
-const rowHeight = PixelRatio.roundToNearestPixel(MARGIN_DP)
+const IMAGE_CAPTION_HEIGHT = PixelRatio.roundToNearestPixel(MARGIN_DP)
 
 const Container = styled.View({ flex: 1 })
 
-const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(
-  ({ imageHeight }) => ({
-    borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-    height: imageHeight + rowHeight,
-  })
-)
+const TouchableHighlight = styled.TouchableHighlight<{ height: number }>(({ height }) => ({
+  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+  height,
+}))

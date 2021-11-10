@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
-import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
+import { HomeOfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -68,7 +68,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     ({ item, width, height }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
-        <OfferTile
+        <HomeOfferTile
           categoryLabel={labelMapping[item.offer.subcategoryId]}
           categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}

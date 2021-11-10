@@ -2,6 +2,7 @@
 
 exports[`ImageCaption component should render correctly 1`] = `
 <View
+  height={20}
   style={
     Array [
       Object {
@@ -10,7 +11,7 @@ exports[`ImageCaption component should render correctly 1`] = `
         "borderBottomLeftRadius": 8,
         "borderBottomRightRadius": 8,
         "flexDirection": "row",
-        "height": 24,
+        "height": 20,
         "width": 50,
       },
     ]
