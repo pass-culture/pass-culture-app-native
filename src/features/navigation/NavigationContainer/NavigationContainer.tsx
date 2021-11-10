@@ -2,16 +2,13 @@ import {
   DocumentTitleOptions,
   NavigationContainer,
   NavigationContainerRef,
-  NavigationState,
   Theme,
 } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
-import { Platform } from 'react-native'
+import React, { useEffect } from 'react'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { useSplashScreenContext } from 'libs/splashscreen'
-import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { ColorsEnum } from 'ui/theme'
 
@@ -33,20 +30,9 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
 export const AppNavigationContainer = () => {
   const { hideSplashScreen } = useSplashScreenContext()
 
-  const [isNavigationReady, setIsNavigationReady] = useState(false)
-  const [initialNavigationState, setInitialNavigationState] = useState<NavigationState>()
-
   useEffect(() => {
-    async function restoreState() {
-      try {
-        if (Platform.OS !== 'web') return // Only restore state if we're on web
-        const state = await storage.readObject<NavigationState>('react_navigation_persistence')
-        if (state) setInitialNavigationState(state)
-      } finally {
-        setIsNavigationReady(true)
-      }
-    }
-    restoreState()
+    /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
+    isNavigationReadyRef.current = true
     return () => {
       /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
       isNavigationReadyRef.current = false
@@ -54,12 +40,8 @@ export const AppNavigationContainer = () => {
   }, [])
 
   useEffect(() => {
-    if (isNavigationReady) {
-      /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
-      isNavigationReadyRef.current = true
-      hideSplashScreen && hideSplashScreen()
-    }
-  }, [isNavigationReady, hideSplashScreen])
+    hideSplashScreen && hideSplashScreen()
+  }, [hideSplashScreen])
 
   function setRef(ref: NavigationContainerRef | null) {
     if (ref) {
@@ -68,13 +50,9 @@ export const AppNavigationContainer = () => {
     }
   }
 
-  if (!isNavigationReady) {
-    return <LoadingPage />
-  }
   return (
     <NavigationContainer
       linking={linking}
-      initialState={initialNavigationState}
       // @ts-expect-error the typing of onNavigationStateChange() is good enough
       onStateChange={onNavigationStateChange}
       fallback={<LoadingPage />}
