@@ -10,6 +10,7 @@ export type StorageKey =
   | 'has_seen_eligible_card'
   | 'has_seen_tutorials'
   | 'phone_validation_code_asked_at'
+  | 'react_navigation_persistence'
   | 'times_review_has_been_requested'
   | 'traffic_campaign'
   | 'traffic_medium'
