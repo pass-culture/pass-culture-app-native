@@ -8,8 +8,8 @@ import { storeUtmParams } from 'libs/utm'
 jest.mock('libs/utm', () => ({ storeUtmParams: jest.fn() }))
 
 describe('getStateFromPath()', () => {
-  it('should return state for path home?entryId=666', async () => {
-    const state = customGetStateFromPath('home?entryId=666', linking.config)
+  it('should return state for path accueil?entryId=666', async () => {
+    const state = customGetStateFromPath('accueil?entryId=666', linking.config)
     const expectedState = {
       routes: [
         { name: 'TabNavigator', state: { routes: [{ name: 'Home', params: { entryId: '666' } }] } },

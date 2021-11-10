@@ -3,7 +3,7 @@ import { getScreenPath } from '../getScreenPath'
 describe('getScreenPath()', () => {
   it.each`
     screen             | params                                             | expectedPath
-    ${'TabNavigator'}  | ${{ screen: 'Home', params: { entryId: '1234' } }} | ${'/home?entryId=1234'}
+    ${'TabNavigator'}  | ${{ screen: 'Home', params: { entryId: '1234' } }} | ${'/accueil?entryId=1234'}
     ${'TabNavigator'}  | ${{ screen: 'Profile' }}                           | ${'/profil'}
     ${'Offer'}         | ${{ id: 666, from: 'offer' }}                      | ${'/offre/666?from=offer'}
     ${'UnknownScreen'} | ${undefined}                                       | ${'/UnknownScreen'}

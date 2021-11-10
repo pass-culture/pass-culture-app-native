@@ -21,7 +21,7 @@ export const routes: TabRoute[] = [
   {
     name: 'Home',
     component: Home,
-    pathConfig: { path: 'home', deeplinkPaths: ['accueil'], parse: screenParamsParser['Home'] },
+    pathConfig: { path: 'accueil', deeplinkPaths: ['home'], parse: screenParamsParser['Home'] },
   },
   {
     name: 'Search',
