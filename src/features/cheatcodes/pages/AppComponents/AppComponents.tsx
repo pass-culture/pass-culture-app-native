@@ -115,7 +115,7 @@ import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
+import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
@@ -700,8 +700,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - TicketBooked </Text>
         </AlignedText>
         <AlignedText>
-          <LocationPointerNotFilled size={ICON_SIZE} />
-          <Text> - LocationPointerNotFilled </Text>
+          <LocationPointerNotFilledDeprecated size={ICON_SIZE} />
+          <Text> - LocationPointerNotFilledDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <MaintenanceCone width={ICON_SIZE * 2} height={ICON_SIZE} color={ColorsEnum.BLACK} />

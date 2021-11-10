@@ -25,7 +25,7 @@ import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
-import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
+import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
@@ -144,7 +144,7 @@ export const Profile: React.FC = () => {
           <SectionRow
             type="clickable"
             title={t`Géolocalisation`}
-            icon={LocationPointerNotFilled}
+            icon={LocationPointerNotFilledDeprecated}
             style={styles.row}
             cta={
               <FilterSwitch
