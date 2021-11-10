@@ -238,6 +238,10 @@ msgstr "Barre de recherche des offres"
 msgid "Basculer l'affichage du mot de passe"
 msgstr "Basculer l'affichage du mot de passe"
 
+#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
+msgid "Besoin d'un lien ?"
+msgstr "Besoin d'un lien ?"
+
 #: src/libs/parsers/venueType.ts
 msgid "Bibliothèque / médiathèque"
 msgstr "Bibliothèque / médiathèque"
@@ -439,6 +443,10 @@ msgstr "Connecte-toi pour profiter de cette fonctionnalité !"
 msgid "Connexion"
 msgstr "Connexion"
 
+#: src/features/_marketingAndCommunication/components/DeeplinksHistory.tsx
+msgid "Conserver l'historique"
+msgstr "Conserver l'historique"
+
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Consulter l'article d'aide"
@@ -483,6 +491,14 @@ msgstr "Continuer l'inscription"
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
 msgstr "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
+
+#: src/features/_marketingAndCommunication/atoms/DeeplinkItem.tsx
+msgid "Copier"
+msgstr "Copier"
+
+#: src/features/_marketingAndCommunication/atoms/DeeplinkItem.tsx
+msgid "Copier dans le press-papier"
+msgstr "Copier dans le press-papier"
 
 #: src/libs/parsers/venueType.ts
 msgid "Cours et pratique artistiques"
@@ -684,6 +700,10 @@ msgstr "Entrée pour la date de naissance"
 msgid "Entrée pour le numéro de téléphone"
 msgstr "Entrée pour le numéro de téléphone"
 
+#: src/features/_marketingAndCommunication/pages/DeeplinksGenerator.tsx
+msgid "Envie de tout envie de lien ?"
+msgstr "Envie de tout envie de lien ?"
+
 #: src/features/auth/login/Login.tsx
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
@@ -762,6 +782,14 @@ msgstr "Galeries d’art"
 msgid "Gratuit"
 msgstr "Gratuit"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Générateur de lien"
+msgstr "Générateur de lien"
+
+#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
+msgid "Générer le lien"
+msgstr "Générer le lien"
+
 #: src/features/profile/pages/Profile.tsx
 msgid "Géolocalisation"
 msgstr "Géolocalisation"
@@ -786,6 +814,10 @@ msgstr "Handicap visuel"
 #: src/features/search/sections/titles.ts
 msgid "Heure"
 msgstr "Heure"
+
+#: src/features/_marketingAndCommunication/components/DeeplinksHistory.tsx
+msgid "Historique"
+msgstr "Historique"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
@@ -927,6 +959,10 @@ msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier te
 msgid "L'e-mail saisi est identique à votre e-mail actuel"
 msgstr "L'e-mail saisi est identique à votre e-mail actuel"
 
+#: src/features/_marketingAndCommunication/components/DeeplinksHistory.tsx
+msgid "L'historique n'a pas pu supprimer les données locales: {0}"
+msgstr "L'historique n'a pas pu supprimer les données locales: {0}"
+
 #: src/features/bookOffer/components/BookingImpossible.tsx
 #: src/features/offer/components/OfferHeader.tsx
 msgid "L'offre n'a pas été ajoutée à tes favoris"
@@ -974,6 +1010,10 @@ msgstr "Le lien est expiré !"
 #: src/features/deeplinks/useDeeplinkUrlHandler.ts
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
+
+#: src/features/_marketingAndCommunication/pages/DeeplinksGenerator.tsx
+msgid "Le lien {0} n'a pas été ajouté à l'historique: {1}"
+msgstr "Le lien {0} n'a pas été ajouté à l'historique: {1}"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "Le pass Culture"
@@ -1338,6 +1378,14 @@ msgstr "Page introuvable"
 msgid "Page introuvable !"
 msgstr "Page introuvable !"
 
+#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
+msgid "Pages"
+msgstr "Pages"
+
+#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
+msgid "Paramètres applicatifs"
+msgstr "Paramètres applicatifs"
+
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/profile/pages/ConsentSettings.tsx
@@ -1359,6 +1407,14 @@ msgstr "Paramètres de notifications"
 #: src/features/profile/pages/Profile.tsx
 msgid "Paramètres du compte"
 msgstr "Paramètres du compte"
+
+#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
+msgid "Paramètres firebase dynamic link"
+msgstr "Paramètres firebase dynamic link"
+
+#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
+msgid "Paramètres marketing"
+msgstr "Paramètres marketing"
 
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/venue/components/VenueHeader.tsx
@@ -1701,6 +1757,10 @@ msgstr "Salle de projections"
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
 msgid "Se connecter"
 msgstr "Se connecter"
+
+#: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
+msgid "Seulement les \"ids\" disposent de validation !"
+msgstr "Seulement les \"ids\" disposent de validation !"
 
 #: src/features/search/sections/Location.tsx
 msgid "Seules les sorties et offres physiques seront affichées"
@@ -2068,6 +2128,14 @@ msgstr "Une erreur est survenue"
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
+#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
+msgid ""
+"Une erreur s’est produite pendant la modification de ton e-mail.\n"
+"Réessaie plus tard."
+msgstr ""
+"Une erreur s’est produite pendant la modification de ton e-mail.\n"
+"Réessaie plus tard."
+
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Une erreur s’est produite pendant le chargement."
 msgstr "Une erreur s’est produite pendant le chargement."
@@ -2175,6 +2243,14 @@ msgstr "Voir toutes les offres"
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
 msgid "Vois-tu ton établissement ?"
 msgstr "Vois-tu ton établissement ?"
+
+#: src/features/_marketingAndCommunication/components/DeeplinksResult.tsx
+msgid "Votre lien"
+msgstr "Votre lien"
+
+#: src/features/_marketingAndCommunication/components/DeeplinksResult.tsx
+msgid "Vous devez d'abord générer un lien"
+msgstr "Vous devez d'abord générer un lien"
 
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 msgid "Vous êtes actuellement très nombreux à demander les 300€ et notre service rencontre quelques difficultés."
