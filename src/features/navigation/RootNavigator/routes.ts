@@ -146,7 +146,6 @@ export const routes: Route[] = [
     component: AfterChangeEmailValidationBuffer,
     pathConfig: {
       path: 'changement-email',
-      deeplinkPaths: ['profil/modification-email/confirmation'],
       parse: screenParamsParser['AfterChangeEmailValidationBuffer'],
     },
   },
