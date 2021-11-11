@@ -8,63 +8,46 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 interface NavItemInterface {
   isSelected?: boolean
-  bicolorIcon: React.FC<BicolorIconInterface>
+  BicolorIcon: React.FC<BicolorIconInterface>
   onPress: () => void
   tabName: string
-  height?: number
-  isMobile?: boolean
 }
 
 export const NavItem: React.FC<NavItemInterface> = ({
-  bicolorIcon,
-  height,
+  BicolorIcon,
   onPress,
   tabName,
   isSelected,
 }) => {
-  const Icon = bicolorIcon
   return (
-    <NavItemContainer
-      height={height}
+    <StyledTouchableOpacity
+      isSelected={isSelected}
       onPress={onPress}
       activeOpacity={1}
       {...accessibilityAndTestId(`${tabName} nav`)}>
-      <Wrapper isSelected={isSelected}>
-        {!!Icon && (
-          <Icon
-            color={isSelected ? undefined : ColorsEnum.GREY_DARK}
-            size={getSpacing(11)}
-            thin={!isSelected}
-          />
-        )}
-        <Title color={isSelected ? ColorsEnum.BRAND : ColorsEnum.BLACK}>{menu[tabName]}</Title>
-      </Wrapper>
-    </NavItemContainer>
+      <BicolorIcon
+        color={isSelected ? undefined : ColorsEnum.GREY_DARK}
+        size={getSpacing(11)}
+        thin={!isSelected}
+      />
+      <Title color={isSelected ? ColorsEnum.BRAND : ColorsEnum.BLACK}>{menu[tabName]}</Title>
+    </StyledTouchableOpacity>
   )
 }
 
-const Title = styled(Typo.ButtonText)({
-  marginLeft: getSpacing(1),
-})
-
-const Wrapper = styled.View<{ isMobile?: boolean; isSelected?: boolean }>(
+const StyledTouchableOpacity = styled.TouchableOpacity<{ isSelected?: boolean }>(
   ({ theme, isSelected }) => ({
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    paddingHorizontal: getSpacing(2),
     paddingVertical: getSpacing(1),
-    marginHorizontal: getSpacing(4),
-    marginVertical: getSpacing(4),
+    paddingLeft: getSpacing(2),
+    paddingRight: getSpacing(3.5),
+    marginLeft: getSpacing(6),
     borderWidth: isSelected ? 1 : 0,
     borderColor: theme.colors.brand,
     borderRadius: theme.borderRadius.button * 2,
   })
 )
 
-const NavItemContainer = styled.TouchableOpacity<{ height?: number }>(({ theme, height }) => ({
-  marginTop: -getSpacing(1 / 4),
-  height: height ?? theme.tabBarHeight,
-  flex: 1,
-}))
+const Title = styled(Typo.ButtonText)({ marginLeft: getSpacing(1) })

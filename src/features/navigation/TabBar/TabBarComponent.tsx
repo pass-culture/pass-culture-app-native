@@ -11,34 +11,36 @@ const SELECTOR_HEIGHT = getSpacing(1)
 
 interface TabComponentInterface {
   isSelected?: boolean
-  bicolorIcon: React.FC<BicolorIconInterface>
+  BicolorIcon: React.FC<BicolorIconInterface>
   onPress: () => void
   tabName: string
 }
-export const TabBarComponent: React.FC<TabComponentInterface> = (props) => {
-  const Icon = props.bicolorIcon
+export const TabBarComponent: React.FC<TabComponentInterface> = ({
+  isSelected,
+  BicolorIcon,
+  onPress,
+  tabName,
+}) => {
   return (
     <TabComponentContainer
-      onPress={props.onPress}
+      onPress={onPress}
       activeOpacity={1}
-      {...accessibilityAndTestId(`${props.tabName} tab`)}>
-      {!!props.isSelected && (
+      {...accessibilityAndTestId(`${tabName} tab`)}>
+      {!!isSelected && (
         <BicolorSelector
           width={SELECTOR_WIDTH}
           height={SELECTOR_HEIGHT}
-          {...accessibilityAndTestId(`${props.tabName} tab selected`)}
+          {...accessibilityAndTestId(`${tabName} tab selected`)}
         />
       )}
       <Spacer.Flex />
-      {!!Icon && (
-        <Icon
-          color={props.isSelected ? undefined : ColorsEnum.GREY_DARK}
-          size={getSpacing(11)}
-          thin={!props.isSelected}
-        />
-      )}
+      <BicolorIcon
+        color={isSelected ? undefined : ColorsEnum.GREY_DARK}
+        size={getSpacing(11)}
+        thin={!isSelected}
+      />
       <Spacer.Flex />
-      {!!props.isSelected && <BicolorSelectorPlaceholder />}
+      {!!isSelected && <BicolorSelectorPlaceholder />}
     </TabComponentContainer>
   )
 }

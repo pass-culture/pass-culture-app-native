@@ -2,34 +2,14 @@ import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { BicolorFavoriteCount } from 'features/favorites/atoms/BicolorFavoriteCount'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
-import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
-import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
 
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 
+import { mapTabRouteToBicolorIcon } from './mapTabRouteToBicolorIcon'
 import { TabBarComponent } from './TabBarComponent'
 import { TabRouteName } from './types'
-
-function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
-  switch (route) {
-    case 'Home':
-      return BicolorLogo
-    case 'Search':
-      return BicolorSearch
-    case 'Bookings':
-      return BicolorBookings
-    case 'Favorites':
-      return BicolorFavoriteCount
-    case 'Profile':
-      return BicolorProfile
-  }
-}
 
 type Props = Pick<BottomTabBarProps<BottomTabBarOptions>, 'navigation'>
 
@@ -57,7 +37,7 @@ export const TabBar: React.FC<Props> = ({ navigation }) => {
               key={`key-tab-nav-${route.key}`}
               tabName={route.name}
               isSelected={route.isSelected}
-              bicolorIcon={mapRouteToIcon(route.name as TabRouteName)}
+              BicolorIcon={mapTabRouteToBicolorIcon(route.name as TabRouteName)}
               onPress={onPress}
             />
           )
