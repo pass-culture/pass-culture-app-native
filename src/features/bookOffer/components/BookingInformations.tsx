@@ -9,7 +9,7 @@ import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Booking } from 'ui/svg/icons/Booking'
 import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
-import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -76,7 +76,7 @@ export const BookingInformations: React.FC = () => {
         {!!stock.beginningDatetime && (
           <Item Icon={CalendarDeprecated} message={formatDate(stock.beginningDatetime)} />
         )}
-        <Item Icon={LocationBuilding} message={address} />
+        <Item Icon={LocationBuildingDeprecated} message={address} />
         <Item Icon={OrderPrice} message={price} subtext={subtext} />
       </React.Fragment>
     )
@@ -86,7 +86,7 @@ export const BookingInformations: React.FC = () => {
     return (
       <React.Fragment>
         <Item Icon={Booking} message={name} />
-        <Item Icon={LocationBuilding} message={address} />
+        <Item Icon={LocationBuildingDeprecated} message={address} />
         <Item Icon={OrderPrice} message={price} />
       </React.Fragment>
     )

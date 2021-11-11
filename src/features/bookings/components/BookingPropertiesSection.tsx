@@ -11,7 +11,7 @@ import { useSubcategory } from 'libs/subcategories'
 import { SectionRow } from 'ui/components/SectionRow'
 import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
-import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
 import { Profile } from 'ui/svg/icons/Profile'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -74,7 +74,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           title={propertiesLabels.locationLabel}
           renderTitle={renderRowTitle}
           type={'clickable'}
-          icon={() => <LocationBuilding size={24} />}
+          icon={() => <LocationBuildingDeprecated size={24} />}
         />
       )}
     </View>

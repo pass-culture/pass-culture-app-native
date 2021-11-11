@@ -116,7 +116,7 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
-import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
@@ -708,8 +708,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - CalendarDeprecated </Text>
         </AlignedText>
         <AlignedText>
-          <LocationBuilding size={ICON_SIZE} />
-          <Text> - LocationBuilding </Text>
+          <LocationBuildingDeprecated size={ICON_SIZE} />
+          <Text> - LocationBuildingDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
