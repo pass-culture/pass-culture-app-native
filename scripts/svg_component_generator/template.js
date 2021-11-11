@@ -30,11 +30,11 @@ function template({ template }, opts, { imports, componentName, jsx: initJsx }) 
 
   let jsx = initJsx
   let stringJsx = JSON.stringify(jsx)
-  const linearGradientRegexMatch = [...stringJsx.matchAll(LINEAR_GRADIENT_ID_REGEX)]
-  const radialGradientRegexMatch = [...stringJsx.matchAll(RADIAL_GRADIENT_ID_REGEX)]
+  const linearGradientRegexMatches = [...stringJsx.matchAll(LINEAR_GRADIENT_ID_REGEX)]
+  const radialGradientRegexMatches = [...stringJsx.matchAll(RADIAL_GRADIENT_ID_REGEX)]
   const ids = {
-    linearGradients: linearGradientRegexMatch.map((match) => match[1]),
-    radialGradients: radialGradientRegexMatch.map((match) => match[1]),
+    linearGradients: linearGradientRegexMatches.map((match) => match[1]),
+    radialGradients: radialGradientRegexMatches.map((match) => match[1]),
   }
   const numberOfIds = [...ids.linearGradients, ...ids.radialGradients].length
   const isBicolor = numberOfIds > 0
