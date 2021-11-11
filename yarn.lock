@@ -2774,6 +2774,13 @@
     base64-js "^1.2.3"
     xmlbuilder "^14.0.0"
 
+"@fingerprintjs/fingerprintjs@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs/-/fingerprintjs-3.3.0.tgz#d15c2fab8e0d9138bcb8efa1429dd780f93bb945"
+  integrity sha512-2kw2yVrfMKd0YvmYAdNxhGytNhhLvChqNAbBZWMglYVw2J95Jm50ketK5yS1C8SJmqG2nFJgeuWvYXeZEh+b8g==
+  dependencies:
+    tslib "^2.0.1"
+
 "@firebase/analytics-types@0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@firebase/analytics-types/-/analytics-types-0.6.0.tgz#164116ebe8d3b338272acc7f9904cac38556d6cd"

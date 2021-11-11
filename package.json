@@ -168,6 +168,7 @@
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.8.4",
+    "@fingerprintjs/fingerprintjs": "^3.3.0",
     "@lingui/cli": "^3.10.2",
     "@lingui/macro": "^3.10.2",
     "@react-native-community/eslint-config": "^2.0.0",

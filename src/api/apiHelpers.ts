@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { t } from '@lingui/macro'
 import { IdCheckError } from '@pass-culture/id-check'
-import { getUniqueId } from 'react-native-device-info'
 
 import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
+import { getUniqueId } from 'libs/react-native-device-info/getUniqueId'
 import { storage } from 'libs/storage'
 
 import Package from '../../package.json'
@@ -70,7 +70,7 @@ export const safeFetch = async (
     ...options,
     headers: {
       ...options.headers,
-      'device-id': getUniqueId(),
+      'device-id': await getUniqueId(),
       'app-version': Package.version,
     },
   }
