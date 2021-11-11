@@ -80,6 +80,7 @@ import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { Booking } from 'ui/svg/icons/Booking'
+import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
 import { Category } from 'ui/svg/icons/categories'
 import { Check } from 'ui/svg/icons/Check'
@@ -697,6 +698,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Booking size={ICON_SIZE} />
           <Text> - Booking </Text>
+        </AlignedText>
+        <AlignedText>
+          <Calendar size={ICON_SIZE} />
+          <Text> - Calendar (new) </Text>
         </AlignedText>
         <AlignedText>
           <CalendarDeprecated size={ICON_SIZE} />
