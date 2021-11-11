@@ -1,4 +1,5 @@
 const LINEAR_GRADIENT_ID_REGEX = /"openingElement":{[^[\]{}]*"name":{[^[\]{}]*"linearGradient[^[\]{}]*}[^[\]{}]*"attributes":\[{[^[\]{}]*"name":{[^[\]{}]*id"}[^[\]{}]*"value":{[^[\]{}]*"value":"([^[\]{}]*)"[^[\]{}]*/g
+const RADIAL_GRADIENT_ID_REGEX = /"openingElement":{[^[\]{}]*"name":{[^[\]{}]*"radialGradient[^[\]{}]*}[^[\]{}]*"attributes":\[{[^[\]{}]*"name":{[^[\]{}]*id"}[^[\]{}]*"value":{[^[\]{}]*"value":"([^[\]{}]*)"[^[\]{}]*/g
 
 const BICOLOR_SVG_IMPORT = "import { svgIdentifier } from 'ui/svg/utils'"
 
@@ -33,22 +34,32 @@ function template({ template }, opts, { imports, componentName, jsx: initJsx }) 
 
   let jsx = initJsx
   let stringJsx = JSON.stringify(jsx)
-  const regexMatch = [...stringJsx.matchAll(LINEAR_GRADIENT_ID_REGEX)]
-  const isBicolor = regexMatch && regexMatch.length > 0
-  const numberOfIds = regexMatch.length
-  if (isBicolor) {
-    for (let i = 0; i < regexMatch.length; i++) {
-      const gradientId = `gradientId${i == 0 ? '' : `${i + 1}`}`
-      const gradientFill = `gradientFill${i == 0 ? '' : `${i + 1}`}`
-      stringJsx = updateStringJSXForBicolorSvg(
-        stringJsx,
-        regexMatch[i][1],
-        gradientId,
-        gradientFill
-      )
-    }
-    jsx = JSON.parse(stringJsx)
+  const linearGradientRegexMatch = [...stringJsx.matchAll(LINEAR_GRADIENT_ID_REGEX)]
+  const radialGradientRegexMatch = [...stringJsx.matchAll(RADIAL_GRADIENT_ID_REGEX)]
+  const ids = {
+    linearGradients: linearGradientRegexMatch.map((match) => match[1]),
+    radialGradients: radialGradientRegexMatch.map((match) => match[1]),
   }
+  const numberOfIds = [ids.linearGradients, ids.radialGradients].reduce(
+    (sum, matches) => sum + (matches ? matches.length : 0),
+    0
+  )
+  const isBicolor = numberOfIds > 0
+
+  ids.linearGradients.forEach((id, i) => {
+    console.warn('linearGradients.forEach', id, i)
+    const gradientId = `gradientId${i == 0 ? '' : `${i + 1}`}`
+    const gradientFill = `gradientFill${i == 0 ? '' : `${i + 1}`}`
+    stringJsx = updateStringJSXForBicolorSvg(stringJsx, id, gradientId, gradientFill)
+  })
+  ids.radialGradients.forEach((id, index) => {
+    console.warn('radialGradients.forEach', id, index)
+    const i = ids.linearGradients.length + index
+    const gradientId = `gradientId${i == 0 ? '' : `${i + 1}`}`
+    const gradientFill = `gradientFill${i == 0 ? '' : `${i + 1}`}`
+    stringJsx = updateStringJSXForBicolorSvg(stringJsx, id, gradientId, gradientFill)
+  })
+  if (isBicolor) jsx = JSON.parse(stringJsx)
 
   return typeScriptTpl.ast`${imports}
   ${'\n'}
