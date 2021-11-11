@@ -9,18 +9,14 @@ import { ColorsEnum, Spacer, getSpacing } from 'ui/theme'
 const SELECTOR_WIDTH = '80%'
 const SELECTOR_HEIGHT = getSpacing(1)
 
-interface TabComponentInterface {
+interface Props {
   isSelected?: boolean
   BicolorIcon: React.FC<BicolorIconInterface>
   onPress: () => void
   tabName: string
 }
-export const TabBarComponent: React.FC<TabComponentInterface> = ({
-  isSelected,
-  BicolorIcon,
-  onPress,
-  tabName,
-}) => {
+
+export const TabBarComponent: React.FC<Props> = ({ isSelected, BicolorIcon, onPress, tabName }) => {
   return (
     <TabComponentContainer
       onPress={onPress}
@@ -36,7 +32,7 @@ export const TabBarComponent: React.FC<TabComponentInterface> = ({
       <Spacer.Flex />
       <BicolorIcon
         color={isSelected ? undefined : ColorsEnum.GREY_DARK}
-        size={getSpacing(11)}
+        size={getSpacing(8)}
         thin={!isSelected}
       />
       <Spacer.Flex />
@@ -48,8 +44,7 @@ export const TabBarComponent: React.FC<TabComponentInterface> = ({
 const BicolorSelectorPlaceholder = styled.View({ height: SELECTOR_HEIGHT })
 
 const TabComponentContainer = styled.TouchableOpacity(({ theme }) => ({
-  marginTop: -getSpacing(1 / 4),
+  alignItems: 'center',
   height: theme.tabBarHeight,
   flex: 1,
-  alignItems: 'center',
 }))

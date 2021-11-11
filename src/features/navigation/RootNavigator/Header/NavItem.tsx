@@ -27,7 +27,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
       {...accessibilityAndTestId(`${tabName} nav`)}>
       <BicolorIcon
         color={isSelected ? undefined : ColorsEnum.GREY_DARK}
-        size={getSpacing(11)}
+        size={getSpacing(6)}
         thin={!isSelected}
       />
       <Title color={isSelected ? ColorsEnum.BRAND : ColorsEnum.BLACK}>{menu[tabName]}</Title>
@@ -40,14 +40,12 @@ const StyledTouchableOpacity = styled.TouchableOpacity<{ isSelected?: boolean }>
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    paddingVertical: getSpacing(1),
-    paddingLeft: getSpacing(2),
-    paddingRight: getSpacing(3.5),
-    marginLeft: getSpacing(6),
+    height: getSpacing(11),
+    paddingHorizontal: getSpacing(4),
     borderWidth: isSelected ? 1 : 0,
     borderColor: theme.colors.brand,
     borderRadius: theme.borderRadius.button * 2,
   })
 )
 
-const Title = styled(Typo.ButtonText)({ marginLeft: getSpacing(1) })
+const Title = styled(Typo.ButtonText)({ marginLeft: 12 })

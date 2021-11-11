@@ -6,7 +6,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabRouteName } from 'features/navigation/TabBar/types'
-import { getShadow, getSpacing } from 'ui/theme'
+import { Spacer, getShadow, getSpacing } from 'ui/theme'
 
 import { NavItem } from './NavItem'
 
@@ -20,18 +20,28 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   const { tabRoutes } = useTabNavigationContext()
   return (
     <NavItemsContainer maxWidth={maxWidth} height={height} noShadow={noShadow}>
-      {tabRoutes.map((route) => {
+      {tabRoutes.map((route, index) => {
         const onPress = () => {
           navigationRef?.current?.navigate(...getTabNavConfig(route.name, undefined))
         }
+        const key = `key-tab-nav-${route.name}`
+        function renderNavItem() {
+          return (
+            <NavItem
+              key={key}
+              tabName={route.name}
+              isSelected={route.isSelected}
+              BicolorIcon={mapTabRouteToBicolorIcon(route.name as TabRouteName)}
+              onPress={onPress}
+            />
+          )
+        }
+        if (index === 0) return renderNavItem()
         return (
-          <NavItem
-            key={`key-tab-nav-${route.name}`}
-            tabName={route.name}
-            isSelected={route.isSelected}
-            BicolorIcon={mapTabRouteToBicolorIcon(route.name as TabRouteName)}
-            onPress={onPress}
-          />
+          <React.Fragment key={key}>
+            <Spacer.Row numberOfSpaces={1.5} />
+            {renderNavItem()}
+          </React.Fragment>
         )
       })}
     </NavItemsContainer>
