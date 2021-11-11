@@ -31,16 +31,11 @@ function mapRouteToIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
   }
 }
 
-type TabBarProps = {
-  hidden?: boolean
-} & Pick<BottomTabBarProps<BottomTabBarOptions>, 'navigation'>
+type Props = Pick<BottomTabBarProps<BottomTabBarOptions>, 'navigation'>
 
-export const TabBar: React.FC<TabBarProps> = ({ navigation, hidden }) => {
+export const TabBar: React.FC<Props> = ({ navigation }) => {
   const { tabRoutes } = useTabNavigationContext()
   const { bottom } = useCustomSafeInsets()
-  if (hidden) {
-    return null
-  }
   return (
     <MainContainer>
       <RowContainer>

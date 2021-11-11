@@ -35,15 +35,11 @@ type NavProps = {
   maxWidth?: number
   height?: number
   noShadow?: boolean
-  hidden?: boolean
 }
 
-export const Nav: React.FC<NavProps> = ({ maxWidth, height, noShadow, hidden }) => {
+export const Nav: React.FC<NavProps> = ({ maxWidth, height, noShadow }) => {
   const { tabRoutes } = useTabNavigationContext()
   const { bottom } = useCustomSafeInsets()
-  if (hidden) {
-    return null
-  }
   return (
     <MainContainer maxWidth={maxWidth} height={height} noShadow={noShadow}>
       <RowContainer>
