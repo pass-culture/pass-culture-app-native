@@ -67,6 +67,7 @@ import { Again } from 'ui/svg/icons/Again'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { Bell } from 'ui/svg/icons/Bell'
 import { BellDeprecated } from 'ui/svg/icons/Bell_deprecated'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
@@ -680,6 +681,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <LifeBuoyDeprecated size={ICON_SIZE} />
           <Text> - LifeBuoyDeprecated </Text>
+        </AlignedText>
+        <AlignedText>
+          <Bell size={ICON_SIZE} />
+          <Text> - Bell (new) </Text>
         </AlignedText>
         <AlignedText>
           <BellDeprecated size={ICON_SIZE} />
