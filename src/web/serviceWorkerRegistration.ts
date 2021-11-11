@@ -84,6 +84,16 @@ function registerValidSW(
   emit: Emit,
   registrationOptions: RegistrationOptions
 ) {
+  // Test from https://medium.com/@alexis.j.boix/simple-react-pwa-tutorial-with-auto-update-72710db637d6
+  if (typeof swUrl === 'string') {
+    navigator.serviceWorker.getRegistration(new URL(swUrl).origin).then((swReg) => {
+      if (swReg) {
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          emit('updated')
+        })
+      }
+    })
+  }
   navigator.serviceWorker
     .register(swUrl, registrationOptions)
     .then((registration) => {

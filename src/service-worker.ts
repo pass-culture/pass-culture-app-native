@@ -79,3 +79,8 @@ self.addEventListener('message', (event) => {
 
 // This is for web push notifications with batch
 self.importScripts(process.env.PUBLIC_URL + '/batchsdk-shared-worker.js')
+
+// Test from https://medium.com/@alexis.j.boix/simple-react-pwa-tutorial-with-auto-update-72710db637d6
+self.addEventListener('install', () => {
+  self.skipWaiting()
+})
