@@ -21,11 +21,11 @@ import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { Bell } from 'ui/svg/icons/Bell'
-import { Confidentiality } from 'ui/svg/icons/Confidentiality'
+import { ConfidentialityDeprecated } from 'ui/svg/icons/Confidentiality_deprecated'
 import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
-import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
+import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
@@ -144,7 +144,7 @@ export const Profile: React.FC = () => {
           <SectionRow
             type="clickable"
             title={t`Géolocalisation`}
-            icon={LocationPointerNotFilled}
+            icon={LocationPointerNotFilledDeprecated}
             style={styles.row}
             cta={
               <FilterSwitch
@@ -205,7 +205,7 @@ export const Profile: React.FC = () => {
             title={t`Confidentialité`}
             type="navigable"
             onPress={() => navigate('ConsentSettings')}
-            icon={Confidentiality}
+            icon={ConfidentialityDeprecated}
             style={styles.row}
           />
         </ProfileSection>

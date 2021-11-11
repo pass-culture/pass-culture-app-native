@@ -85,6 +85,7 @@ import { Check } from 'ui/svg/icons/Check'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Close } from 'ui/svg/icons/Close'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
+import { ConfidentialityDeprecated } from 'ui/svg/icons/Confidentiality_deprecated'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
@@ -116,6 +117,7 @@ import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
+import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
@@ -640,8 +642,12 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - LegalNotices (new) </Text>
         </AlignedText>
         <AlignedText>
+          <ConfidentialityDeprecated size={ICON_SIZE} />
+          <Text> - ConfidentialityDeprecated </Text>
+        </AlignedText>
+        <AlignedText>
           <Confidentiality size={ICON_SIZE} />
-          <Text> - Confidentiality </Text>
+          <Text> - Confidentiality (new) </Text>
         </AlignedText>
         <AlignedText>
           <BicolorConfidentiality size={ICON_SIZE} />
@@ -700,8 +706,12 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - TicketBooked </Text>
         </AlignedText>
         <AlignedText>
+          <LocationPointerNotFilledDeprecated size={ICON_SIZE} />
+          <Text> - LocationPointerNotFilledDeprecated </Text>
+        </AlignedText>
+        <AlignedText>
           <LocationPointerNotFilled size={ICON_SIZE} />
-          <Text> - LocationPointerNotFilled </Text>
+          <Text> - LocationPointerNotFilled (new) </Text>
         </AlignedText>
         <AlignedText>
           <MaintenanceCone width={ICON_SIZE * 2} height={ICON_SIZE} color={ColorsEnum.BLACK} />
