@@ -104,3 +104,6 @@ sourcemaps/*
 
 # Snyk extension
 .dccache
+
+# forgot in work dir after npm pack
+*.tgz
