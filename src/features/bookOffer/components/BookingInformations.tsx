@@ -8,7 +8,7 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Booking } from 'ui/svg/icons/Booking'
-import { Calendar } from 'ui/svg/icons/Calendar'
+import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -30,7 +30,7 @@ const ExpirationDate: React.FC<{
     message: 'À activer avant le {date}',
   })
 
-  return <Item Icon={Calendar} message={activationText} />
+  return <Item Icon={CalendarDeprecated} message={activationText} />
 }
 
 export const BookingInformations: React.FC = () => {
@@ -74,7 +74,7 @@ export const BookingInformations: React.FC = () => {
       <React.Fragment>
         <Item Icon={Booking} message={name} />
         {!!stock.beginningDatetime && (
-          <Item Icon={Calendar} message={formatDate(stock.beginningDatetime)} />
+          <Item Icon={CalendarDeprecated} message={formatDate(stock.beginningDatetime)} />
         )}
         <Item Icon={LocationBuilding} message={address} />
         <Item Icon={OrderPrice} message={price} subtext={subtext} />
