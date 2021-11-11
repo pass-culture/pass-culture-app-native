@@ -68,7 +68,8 @@
     "trigger:staging:deploy": "./scripts/deploy_new_version.sh v minor",
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh v patch",
     "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing_v patch",
-    "generate:api:client": "./scripts/generate_api_client.sh"
+    "generate:api:client": "./scripts/generate_api_client.sh",
+    "generate:svg": "./scripts/svg_component_generator/svg_component_generator.sh"
   },
   "dependencies": {
     "@algolia/client-search": "^4.6.0",

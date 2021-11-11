@@ -1,0 +1,8 @@
+{
+  "native": true,
+  "dimensions": false,
+  "expandProps": false,
+  "svgProps": { "height": "{size}", "width": "{size}", "testID": "{testID}" },
+  "replaceAttrValues": { "#EB0055": "{color}" },
+  "svgoConfig": { "plugins": [{ "removeXMLNS": true }] }
+}
