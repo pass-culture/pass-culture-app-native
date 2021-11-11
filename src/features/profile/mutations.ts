@@ -6,7 +6,6 @@ export enum CHANGE_EMAIL_ERROR_CODE {
   INVALID_EMAIL = 'INVALID_EMAIL',
   EMAIL_UPDATE_ATTEMPTS_LIMIT = 'EMAIL_UPDATE_ATTEMPTS_LIMIT',
 }
-let mockedErrorCodeIndex = 0
 
 interface ChangeEmailRequest {
   email: string
@@ -22,10 +21,10 @@ export function useChangeEmailMutation({ onSuccess, onError }: UseChangeEmailMut
     // TODO (PC-11573): call the API once available, and remove `mockedErrorCodeIndex`
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (body: ChangeEmailRequest) =>
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       new Promise((resolve, reject) =>
         setTimeout(() => {
-          mockedErrorCodeIndex = (mockedErrorCodeIndex + 1) % 4
-          reject({ code: Object.values(CHANGE_EMAIL_ERROR_CODE)[mockedErrorCodeIndex] })
+          resolve(undefined)
         }, 2000)
       ),
     {

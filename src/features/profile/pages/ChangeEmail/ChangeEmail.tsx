@@ -12,6 +12,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CHANGE_EMAIL_ERROR_CODE, useChangeEmailMutation } from 'features/profile/mutations'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
 import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils/useValidateEmail'
+import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -39,6 +40,7 @@ export function ChangeEmail() {
         timeout: SNACK_BAR_TIME_OUT,
       })
       navigateToProfile()
+      analytics.logSaveNewMail()
     },
     onError: (error: { code: CHANGE_EMAIL_ERROR_CODE }) => {
       onEmailChangeError(error.code)

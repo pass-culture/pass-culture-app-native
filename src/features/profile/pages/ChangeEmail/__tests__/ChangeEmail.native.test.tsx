@@ -8,6 +8,7 @@ import {
   useChangeEmailMutation,
   UseChangeEmailMutationProps,
 } from 'features/profile/mutations'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { ColorsEnum } from 'ui/theme'
@@ -59,7 +60,7 @@ describe('<ChangeEmail/>', () => {
     }
   )
 
-  it('should navigate to Profile if the API call is ok', async () => {
+  it('should navigate to Profile and log event if the API call is ok', async () => {
     const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
     const submitButton = getByTestId('Enregistrer')
     const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -76,6 +77,7 @@ describe('<ChangeEmail/>', () => {
           'E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
         timeout: 5000,
       })
+      expect(analytics.logSaveNewMail).toBeCalled()
     })
   })
 

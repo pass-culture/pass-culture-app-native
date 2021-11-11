@@ -53,6 +53,7 @@ export enum AnalyticsEvent {
   REINITIALIZE_FILTERS = 'ReinitializeFilters',
   RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
   RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK = 'ResendEmailSignupConfirmationExpiredLink',
+  SAVE_NEW_MAIL = 'SaveNewMail',
   SCREEN_VIEW = 'screen_view',
   SEARCH_QUERY = 'SearchQuery',
   SEARCH_SCROLL_TO_PAGE = 'SearchScrollToPage',
