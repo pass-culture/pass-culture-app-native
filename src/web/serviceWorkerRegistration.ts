@@ -59,24 +59,15 @@ export function register(swUrl: string, config: Config = {}) {
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, emit, registrationOptions)
-
-        // Add some additional logging to localhost, pointing developers to the
-        // service worker/PWA documentation.
-        navigator.serviceWorker.ready
-          .then((registration) => {
-            emit('ready', registration)
-          })
-          .catch((error) => handleError(emit, error))
       } else {
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, emit, registrationOptions)
-
-        navigator.serviceWorker.ready
-          .then((registration) => {
-            emit('ready', registration)
-          })
-          .catch((error) => handleError(emit, error))
       }
+      navigator.serviceWorker.ready
+        .then((registration) => {
+          emit('ready', registration)
+        })
+        .catch((error) => handleError(emit, error))
     })
   }
 }

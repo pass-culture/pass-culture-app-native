@@ -54,7 +54,7 @@ export type ServiceWorkerActionTypes =
   | ServiceWorkerUpdateReady
   | ServiceWorkerError
 
-type ServiceWorkerStatus =
+export type ServiceWorkerStatus =
   | 'offline'
   | 'registered'
   | 'register'
