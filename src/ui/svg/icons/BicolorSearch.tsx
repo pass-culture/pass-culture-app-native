@@ -1,7 +1,7 @@
 import * as React from 'react'
-import Svg, { Defs, LinearGradient, Stop, G, Path } from 'react-native-svg'
-import { v1 as uuidv1 } from 'uuid'
+import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 
+import { svgIdentifier } from 'ui/svg/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { BicolorIconInterface } from './types'
@@ -13,32 +13,25 @@ const NotMemoizedBicolorSearch: React.FC<BicolorIconInterface> = ({
   thin = false,
   testID,
 }) => {
-  const LINEAR_GRADIENT_ID = uuidv1()
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
   const primaryColor = color || ColorsEnum.PRIMARY
   const secondaryColor = color2 || color || ColorsEnum.SECONDARY
   return (
-    <Svg width={size} height={size} viewBox="0 0 44 44" testID={testID}>
+    <Svg width={size} height={size} viewBox="0 0 24 24" testID={testID}>
       <Defs>
-        <LinearGradient
-          id={LINEAR_GRADIENT_ID}
-          x1="-42.969%"
-          x2="153.672%"
-          y1="52.422%"
-          y2="52.422%">
+        <LinearGradient id={gradientId} x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
           <Stop offset="0%" stopColor={primaryColor} />
           <Stop offset="100%" stopColor={secondaryColor} />
         </LinearGradient>
       </Defs>
-      <G fill="none" fillRule="evenodd">
-        <Path d="M0 0h44v44H0z" />
-        <Path
-          d="M26.89 25.929l.077.066 8.123 8.123c.269.268.269.704 0 .972-.244.244-.626.266-.895.067l-.077-.067-8.123-8.123c-.268-.268-.268-.703 0-.972.244-.244.626-.266.895-.066zm-8.403-15.846c4.642 0 8.405 3.763 8.405 8.404 0 4.642-3.763 8.405-8.405 8.405-4.64 0-8.404-3.763-8.404-8.405 0-4.64 3.763-8.404 8.404-8.404zm0 1.375c-3.882 0-7.029 3.147-7.029 7.03 0 3.881 3.148 7.03 7.03 7.03 3.881 0 7.03-3.149 7.03-7.03 0-3.882-3.149-7.03-7.03-7.03zm-1.72 2.675c.19.328.078.749-.25.939-1.21.7-1.972 1.992-1.972 3.415 0 .38-.308.688-.688.688-.38 0-.687-.308-.687-.688 0-1.92 1.027-3.662 2.658-4.605.328-.19.749-.078.94.25z"
-          fill={`url(#${LINEAR_GRADIENT_ID})`}
-          stroke={`url(#${LINEAR_GRADIENT_ID})`}
-          transform="translate(-676 -629) translate(583 619) translate(93.75 10)"
-          strokeWidth={thin ? 0 : 0.5}
-        />
-      </G>
+      <Path
+        d="M9.05767 1.5153C4.75505 1.5153 1.26493 5.00541 1.26493 9.30804C1.26493 13.6107 4.75505 17.1008 9.05767 17.1008C13.3603 17.1008 16.8504 13.6107 16.8504 9.30804C16.8504 8.22133 16.6275 7.18019 16.227 6.24009C16.1007 5.9437 16.2386 5.60107 16.535 5.47479C16.8314 5.34852 17.174 5.48643 17.3003 5.78282C17.7613 6.86494 18.0171 8.06141 18.0171 9.30804C18.0171 14.255 14.0046 18.2674 9.05767 18.2674C4.11072 18.2674 0.0982666 14.255 0.0982666 9.30804C0.0982666 4.36108 4.11072 0.348633 9.05767 0.348633C11.3417 0.348633 13.4226 1.20034 15.0089 2.60756C15.2499 2.82135 15.2719 3.19004 15.0581 3.43104C14.8444 3.67205 14.4757 3.6941 14.2347 3.48031C12.8535 2.25504 11.0454 1.5153 9.05767 1.5153ZM16.423 16.6733C16.6508 16.4455 17.0202 16.4455 17.248 16.6733L23.2309 22.6562C23.4587 22.8841 23.4587 23.2534 23.2309 23.4812C23.0031 23.709 22.6337 23.709 22.4059 23.4812L16.423 17.4983C16.1952 17.2705 16.1952 16.9011 16.423 16.6733ZM4.58532 6.6594C4.74766 6.38113 4.65368 6.02394 4.37541 5.8616C4.09714 5.69926 3.73995 5.79324 3.5776 6.07151C2.8269 7.35829 1.71517 10.519 4.33069 13.5602C4.54076 13.8045 4.90906 13.8322 5.15332 13.6222C5.39758 13.4121 5.4253 13.0438 5.21523 12.7995C3.06398 10.2981 3.95685 7.73667 4.58532 6.6594Z"
+        fill={gradientFill}
+        stroke={gradientFill}
+        fillRule="evenodd"
+        clipRule="evenodd"
+        strokeWidth={thin ? 0 : 0.3}
+      />
     </Svg>
   )
 }

@@ -1,29 +1,34 @@
 import * as React from 'react'
-import Svg, { G, Defs, LinearGradient, Rect, Stop } from 'react-native-svg'
+import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg'
 
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { IconInterface } from './types'
+import { RectangleIconInterface } from './types'
 
-export const Pastille: React.FunctionComponent<IconInterface> = ({ size = 21, color, testID }) => {
-  const { fill, id } = svgIdentifier()
+export const Pastille: React.FunctionComponent<RectangleIconInterface> = ({
+  height = 15,
+  width = 21,
+  color,
+  testID,
+  style,
+}) => {
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
+  const fill = color || gradientFill
+  const rx = typeof width === 'number' ? width / 3 : 7
   return (
-    <Svg width={size} height={21 / 1.4} viewBox="0 0 21 15" testID={testID}>
+    <Svg
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
+      style={style}
+      testID={testID}>
       <Defs>
-        <LinearGradient id={id} x1="-41.961%" x2="126.229%" y1="-1.762%" y2="116.717%">
+        <LinearGradient id={gradientId} x1="-41.961%" x2="126.229%" y1="-1.762%" y2="116.717%">
           <Stop offset="0%" stopColor="#EB0055" />
           <Stop offset="100%" stopColor="#320096" />
         </LinearGradient>
       </Defs>
-      <G fill="none" fillRule="evenodd">
-        <G fill={color || fill} transform="translate(-391 -426)">
-          <G>
-            <G transform="translate(131 405) translate(238 10)">
-              <Rect width="20.167" height="14.667" x="22" y="11" rx="7.333" />
-            </G>
-          </G>
-        </G>
-      </G>
+      <Rect fill={fill} fillRule="evenodd" width={width} height={height} x={0} y={0} rx={rx} />
     </Svg>
   )
 }

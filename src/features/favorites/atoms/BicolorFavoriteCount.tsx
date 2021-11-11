@@ -9,11 +9,10 @@ import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFavoriteAuthed } from 'ui/svg/icons/BicolorFavoriteAuthed'
 import { Pastille } from 'ui/svg/icons/Pastille'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ZIndex } from 'ui/theme/layers'
 
 const COUNT_MAX = 100
-
-const defaultPaddingRight = Platform.OS === 'android' ? 1 : 0
 
 export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   size = 32,
@@ -29,7 +28,13 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   if (!isLoggedIn || !data) {
     return <BicolorFavorite size={size} color={color} color2={color2} thin={thin} testID={testID} />
   }
+  const pastilleDimensions = {
+    width: typeof size === 'number' ? size * 0.8 : 21,
+    height: typeof size === 'number' ? size * 0.5 : 15,
+  }
   const hasTooMany = data.nbFavorites >= COUNT_MAX
+  const count = hasTooMany ? COUNT_MAX - 1 : data.nbFavorites || '0'
+  const plusSign = hasTooMany ? t`+` : ''
   return (
     <Container testID="bicolor-favorite-count">
       <BicolorFavoriteAuthed
@@ -39,60 +44,45 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
         thin={thin}
         testID={testID}
       />
-      <CountPositionContainer>
-        <Animated.View style={{ transform: [{ scale }] }}>
-          <CountContainer>
-            <Pastille color={thin ? ColorsEnum.GREY_DARK : undefined} />
-            {hasTooMany ? (
-              <React.Fragment>
-                <Count paddingRight={5}>{COUNT_MAX - 1}</Count>
-                <Plus>{t`+`}</Plus>
-              </React.Fragment>
-            ) : (
-              <Count paddingRight={defaultPaddingRight}>{data.nbFavorites || '0'}</Count>
-            )}
-          </CountContainer>
-        </Animated.View>
-      </CountPositionContainer>
+      <StyledAnimatedView style={{ transform: [{ scale }] }} {...pastilleDimensions}>
+        <Pastille color={thin ? ColorsEnum.GREY_DARK : undefined} {...pastilleDimensions} />
+        <PastilleContent {...pastilleDimensions}>
+          <Count>{count}</Count>
+          <Plus>{plusSign}</Plus>
+        </PastilleContent>
+      </StyledAnimatedView>
     </Container>
   )
 }
 
-const Container = styled.View({
-  position: 'relative',
-})
+const Container = styled.View({ position: 'relative' })
 
-const CountPositionContainer = styled.View({
+const StyledAnimatedView = styled(Animated.View)<{ height: number; width: number }>((props) => ({
   position: 'absolute',
-  right: -5,
-  top: 10,
-})
+  right: Platform.select<string | number>({ web: '-45%', default: -getSpacing(4) }),
+  top: '10%',
+  height: props.height,
+  width: props.width,
+}))
 
-const CountContainer = styled.View({
-  position: 'relative',
+const PastilleContent = styled.View<{ height: number; width: number }>((props) => ({
+  position: 'absolute',
+  bottom: '10%',
+  flexDirection: 'row',
   alignItems: 'center',
-})
+  justifyContent: 'center',
+  zIndex: ZIndex.FAVORITE_PASTILLE_CONTENT,
+  height: props.height,
+  width: props.width,
+}))
 
 const Plus = styled(Typo.Caption).attrs({
   color: ColorsEnum.WHITE,
-})({
-  position: 'absolute',
-  fontSize: 8,
-  height: 15,
-  right: 2,
-  bottom: 1,
-})
+})({ fontSize: 8 })
 
 const Count = styled(Typo.Caption).attrs({
   color: ColorsEnum.WHITE,
-})<{ paddingRight?: number | undefined }>(({ paddingRight }) => ({
-  position: 'absolute',
-  fontSize: 9,
-  textAlign: 'center',
-  height: 15,
-  paddingRight,
-  bottom: 1,
-}))
+})({ fontSize: 9 })
 
 const useScaleFavoritesAnimation = (nbFavorites?: number) => {
   const scaleAnimation = useRef(new Animated.Value(1))

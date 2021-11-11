@@ -1,39 +1,46 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
-import { v1 as uuidv1 } from 'uuid'
 
-import { ColorsEnum } from 'ui/theme'
+import { svgIdentifier } from 'ui/svg/utils'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 
-import { BicolorIconInterface } from './types'
+import { RectangleIconInterface } from './types'
 
-export const BicolorSelector: React.FC<
-  Omit<BicolorIconInterface, 'size'> & { width: number | string; height: number | string }
-> = ({ accessible, accessibilityLabel, width, height, color, color2, testID }) => {
-  const LINEAR_GRADIENT_ID = uuidv1()
+// To compensate for some weird blank margin above the "bar"
+const OWN_STYLE = { marginTop: -getSpacing(1 / 4) }
+
+export const BicolorSelector: React.FC<RectangleIconInterface> = ({
+  accessible,
+  accessibilityLabel,
+  color,
+  width,
+  height,
+  testID,
+  style,
+}) => {
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
+  const primaryColor = color || ColorsEnum.PRIMARY
+  const secondaryColor = color || ColorsEnum.SECONDARY
   return (
     <Svg
       width={width}
       height={height}
       viewBox="0 0 44 3"
       preserveAspectRatio="none"
+      style={{ ...style, ...OWN_STYLE }}
       testID={testID}
       accessible={accessible}
       accessibilityLabel={accessibilityLabel}>
       <Defs>
-        <LinearGradient
-          id={LINEAR_GRADIENT_ID}
-          x1="-42.969%"
-          x2="153.672%"
-          y1="52.422%"
-          y2="52.422%">
-          <Stop offset="0%" stopColor={color ?? ColorsEnum.PRIMARY} />
-          <Stop offset="100%" stopColor={color2 ?? color ?? ColorsEnum.SECONDARY} />
+        <LinearGradient id={gradientId} x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
+          <Stop offset="0%" stopColor={primaryColor} />
+          <Stop offset="100%" stopColor={secondaryColor} />
         </LinearGradient>
       </Defs>
       <Path
         d="M310 0h44v1a2 2 0 01-2 2h-40a2 2 0 01-2-2V0z"
         transform="translate(-310)"
-        fill={`url(#${LINEAR_GRADIENT_ID})`}
+        fill={gradientFill}
         fillRule="nonzero"
       />
     </Svg>
