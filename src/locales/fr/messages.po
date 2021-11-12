@@ -343,9 +343,17 @@ msgstr "Choisir les options"
 msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
+#: src/features/identityCheck/pages/profile/Status.tsx
+msgid "Choisis ton statut"
+msgstr "Choisis ton statut"
+
 #: src/libs/itinerary/useItinerary.ts
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
+
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Choix du status"
+msgstr "Choix du status"
 
 #: src/libs/parsers/venueType.ts
 msgid "Cinéma - Salle de projections"
@@ -487,6 +495,7 @@ msgstr "Contacter le support"
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+#: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Continuer"
 msgstr "Continuer"
@@ -1659,6 +1668,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
+#: src/features/identityCheck/components/layout/PageWithHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
@@ -1862,6 +1872,10 @@ msgstr "Supprimer"
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
+
+#: src/features/identityCheck/pages/profile/Status.tsx
+msgid "Sélectionne ton statut"
+msgstr "Sélectionne ton statut"
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "Terminer"
@@ -2299,7 +2313,7 @@ msgstr "Vous êtes actuellement très nombreux à demander les 300€ et notre s
 msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
 msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
 
-#: src/features/navigation/RootNavigator/routes.ts
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Vérification d'identité"
 msgstr "Vérification d'identité"
 

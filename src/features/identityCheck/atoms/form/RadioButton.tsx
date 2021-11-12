@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
   selected: boolean
@@ -31,11 +30,11 @@ export const RadioButton = ({ name, description, selected, onPress }: Props) => 
 
 const Label = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
-}))<{ selected: boolean }>(({ selected }) => ({
+}))<{ selected: boolean }>(({ theme, selected }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  borderColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.GREY_MEDIUM,
-  borderRadius: BorderRadiusEnum.BUTTON,
+  borderColor: selected ? theme.colors.primary : theme.colors.greyMedium,
+  borderRadius: theme.borderRadius.button,
   borderWidth: 1,
   marginBottom: getSpacing(4),
   width: '100%',

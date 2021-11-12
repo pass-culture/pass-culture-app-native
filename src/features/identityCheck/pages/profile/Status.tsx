@@ -21,6 +21,7 @@ type UserStatus =
 
 type UserStatusResponse = { name: UserStatus; description?: string }
 
+// TODO(antoinewg) dehardcode statuses
 const statuses: UserStatusResponse[] = [
   { name: 'Lycéen' },
   { name: 'Étudiant' },
@@ -56,7 +57,7 @@ export const Status = () => {
       <FixedButtonContainer>
         <ButtonPrimary
           onPress={goBack}
-          title={!selectedStatus ? 'Choisis ton statut' : 'Valider mon statut'}
+          title={!selectedStatus ? t`Choisis ton statut` : t`Continuer`}
           disabled={!selectedStatus}
         />
       </FixedButtonContainer>
