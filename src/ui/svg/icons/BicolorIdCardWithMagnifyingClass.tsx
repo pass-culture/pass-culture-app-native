@@ -4,7 +4,7 @@ import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 import { svgIdentifier } from 'ui/svg/utils'
 import { ColorsEnum } from 'ui/theme'
 
-import { BicolorIconInterface } from '../types'
+import { BicolorIconInterface } from './types'
 
 const ratio = 155 / 124
 

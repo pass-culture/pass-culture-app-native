@@ -8,7 +8,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { BicolorIdCardWithMagnifyingClass } from 'ui/svg/icons/IdentityCheck/BicolorIdCardWithMagnifyingClass'
+import { BicolorIdCardWithMagnifyingClass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingClass'
 import { Spacer } from 'ui/theme'
 
 export const IdentityCheckStart = () => {

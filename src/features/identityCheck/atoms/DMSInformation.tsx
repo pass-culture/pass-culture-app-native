@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Plus } from 'ui/svg/icons/IdentityCheck/Plus'
+import { Plus } from 'ui/svg/icons/Plus'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const DMScaption = t`Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées`

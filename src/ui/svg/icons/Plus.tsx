@@ -1,0 +1,13 @@
+import * as React from 'react'
+import Svg, { Path } from 'react-native-svg'
+
+import { IconInterface } from 'ui/svg/icons/types'
+import { ColorsEnum } from 'ui/theme'
+
+export function Plus({ size = 32, color = ColorsEnum.BLACK, testID }: IconInterface): JSX.Element {
+  return (
+    <Svg width={size} height={size} testID={testID} viewBox="0 0 42 42" fill={color}>
+      <Path d="M21 42.5C32.598 42.5 42 33.098 42 21.5C42 9.90202 32.598 0.5 21 0.5C9.40202 0.5 0 9.90202 0 21.5C0 33.098 9.40202 42.5 21 42.5ZM21.0019 10.6005C22.1065 10.6016 23.0011 11.4979 23 12.6025L22.9925 19.4912L29.8522 19.5C30.9568 19.5013 31.8512 20.3978 31.8499 21.5023C31.8487 22.6069 30.9522 23.5013 29.8477 23.5L22.999 23.491L23.0246 30.3682C23.0282 31.4728 22.1357 32.3711 21.0312 32.3747C19.9266 32.3783 19.0283 31.4858 19.0247 30.3812L18.9995 23.5013L12.1347 23.5275C11.0302 23.5312 10.1317 22.6388 10.1279 21.5343C10.1242 20.4297 11.0166 19.5312 12.1212 19.5275L18.9923 19.5008L19 12.5986C19.0011 11.494 19.8974 10.5995 21.0019 10.6005Z" />
+    </Svg>
+  )
+}
