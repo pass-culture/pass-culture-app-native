@@ -201,7 +201,7 @@ export function NotificationSettings() {
         )}
         <Spacer.Flex flex={1} />
         {!!isLoggedIn && (
-          <ButtonPrimary
+          <StyledButtonPrimary
             title={t`Enregistrer`}
             isLoading={isUpdating}
             disabled={!state.emailTouched && !state.pushTouched}
@@ -219,6 +219,10 @@ export function NotificationSettings() {
     </React.Fragment>
   )
 }
+
+const StyledButtonPrimary = styled(ButtonPrimary)({
+  alignSelf: 'center',
+})
 
 const Line = styled.View({
   paddingVertical: getSpacing(4),
