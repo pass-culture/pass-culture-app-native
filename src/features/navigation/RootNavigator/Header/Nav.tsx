@@ -5,7 +5,6 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { TabRouteName } from 'features/navigation/TabBar/types'
 import { Spacer, getShadow, getSpacing } from 'ui/theme'
 
 import { NavItem } from './NavItem'
@@ -31,7 +30,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
               key={key}
               tabName={route.name}
               isSelected={route.isSelected}
-              BicolorIcon={mapTabRouteToBicolorIcon(route.name as TabRouteName)}
+              BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
               onPress={onPress}
             />
           )

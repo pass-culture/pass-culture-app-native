@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
+import { TabRouteName } from 'features/navigation/TabBar/types'
 import { accessibilityAndTestId } from 'tests/utils'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
@@ -10,7 +11,7 @@ interface NavItemInterface {
   isSelected?: boolean
   BicolorIcon: React.FC<BicolorIconInterface>
   onPress: () => void
-  tabName: string
+  tabName: TabRouteName
 }
 
 export const NavItem: React.FC<NavItemInterface> = ({

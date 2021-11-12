@@ -63,7 +63,7 @@ export type RootStackParamList = {
   NotificationSettings: undefined
   Offer: {
     id: number
-    from: Referrals
+    from?: Referrals
     moduleName?: string
   }
   OfferDescription: { id: number }
