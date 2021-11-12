@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
-import { Credit } from 'features/home/services/useAvailableCredit'
 import { openUrl } from 'features/navigation/helpers'
 import { hasEnoughCredit } from 'features/offer/services/useHasEnoughCredit'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
@@ -10,7 +9,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 
 interface Props {
-  credit: Credit
   offer: FavoriteOfferResponse
   onInAppBooking: (bookedOffer: FavoriteOfferResponse) => void
   user: UserProfileResponse
@@ -41,7 +39,7 @@ export const BookingButton: React.FC<Props> = (props) => {
   }
 
   // User is an ex-beneficiary
-  if (isUserExBeneficiary(props.user, props.credit)) {
+  if (isUserExBeneficiary(props.user)) {
     if (isBookedOffer) {
       return <ButtonPrimary title={t`Offre réservée`} buttonHeight="tall" disabled />
     }

@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { getBookingProperties } from 'features/bookings/helpers'
 import { useUserProfileInfo } from 'features/home/api'
-import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isUserExBeneficiary } from 'features/profile/utils'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
@@ -26,8 +25,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
   const { data: user } = useUserProfileInfo()
-  const credit = useAvailableCredit()
-  const isExBeneficiary = user && credit && isUserExBeneficiary(user, credit)
+  const isExBeneficiary = user && isUserExBeneficiary(user)
 
   if (properties.hasActivationCode == true && props.activationCodeFeatureEnabled) {
     return (

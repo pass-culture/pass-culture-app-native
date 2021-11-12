@@ -7,7 +7,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
 import { useRemoveFavorite } from 'features/favorites/pages/useFavorites'
-import { Credit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { OfferImage } from 'features/search/atoms/OfferImage'
@@ -24,7 +23,6 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BookingButton } from './BookingButton'
 
 interface Props {
-  credit: Credit
   favorite: FavoriteResponse
   onInAppBooking: (bookedOffer: FavoriteOfferResponse) => void
   user: UserProfileResponse
@@ -168,12 +166,7 @@ export const Favorite: React.FC<Props> = (props) => {
         </ButtonContainer>
         {!theme.isMobileViewport && <Spacer.Flex flex={1 / 30} />}
         <ButtonContainer>
-          <BookingButton
-            credit={props.credit}
-            offer={offer}
-            user={props.user}
-            onInAppBooking={props.onInAppBooking}
-          />
+          <BookingButton offer={offer} user={props.user} onInAppBooking={props.onInAppBooking} />
         </ButtonContainer>
       </ButtonsRow>
       <Separator />

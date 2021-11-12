@@ -2,7 +2,7 @@ import { openInbox } from 'react-native-email-link'
 
 import { UserProfileResponse, DomainsCredit, UserRole, EligibilityType } from 'api/gen/api'
 import { useUserProfileInfo } from 'features/home/api'
-import { Credit } from 'features/home/services/useAvailableCredit'
+import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl, openUrl } from 'features/navigation/helpers'
 import { Again } from 'ui/svg/icons/Again'
 import { Clock } from 'ui/svg/icons/Clock'
@@ -17,7 +17,8 @@ export function isUserBeneficiary(user: UserProfileResponse): boolean {
   return user.isBeneficiary
 }
 
-export function isUserExBeneficiary(user: UserProfileResponse, credit: Credit): boolean {
+export function isUserExBeneficiary(user: UserProfileResponse): boolean {
+  const credit = getAvailableCredit(user)
   const isExBeneficiary = user.isBeneficiary && credit.isExpired
   const isExUnderageBeneficiary = isUserUnderageBeneficiary(user) && credit.isExpired
   return isExBeneficiary || isExUnderageBeneficiary

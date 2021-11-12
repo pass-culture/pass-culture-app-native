@@ -1,9 +1,8 @@
 import { openInbox } from 'react-native-email-link'
 
 import { UserProfileResponse } from 'api/gen'
-import { Credit } from 'features/home/services/useAvailableCredit'
+import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { openUrl, isAppUrl } from 'features/navigation/helpers'
-import { expiredCredit, nonExpiredCredit } from 'fixtures/credit'
 import { beneficiaryUser, nonBeneficaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Info } from 'ui/svg/icons/Info'
@@ -17,6 +16,7 @@ import {
 
 jest.mock('react-native-email-link')
 jest.mock('features/navigation/helpers')
+jest.mock('features/home/services/useAvailableCredit')
 
 const domainsCredit = {
   all: { initial: 50000, remaining: 40000 },
@@ -57,25 +57,30 @@ describe('profile utils', () => {
   })
   describe('Compute is user Ex-beneficiary', () => {
     it.each`
-      user                       | credit              | expected
-      ${nonBeneficaryUser}       | ${nonExpiredCredit} | ${false}
-      ${nonBeneficaryUser}       | ${expiredCredit}    | ${false}
-      ${beneficiaryUser}         | ${nonExpiredCredit} | ${false}
-      ${beneficiaryUser}         | ${expiredCredit}    | ${true}
-      ${underageBeneficiaryUser} | ${nonExpiredCredit} | ${false}
-      ${underageBeneficiaryUser} | ${expiredCredit}    | ${true}
+      user                       | isCreditExpired | expected
+      ${nonBeneficaryUser}       | ${false}        | ${false}
+      ${nonBeneficaryUser}       | ${true}         | ${false}
+      ${beneficiaryUser}         | ${false}        | ${false}
+      ${beneficiaryUser}         | ${true}         | ${true}
+      ${underageBeneficiaryUser} | ${false}        | ${false}
+      ${underageBeneficiaryUser} | ${true}         | ${true}
     `(
       'should return true only for beneficiary or underage beneficiary with expired credit',
       ({
         user,
-        credit,
+        isCreditExpired,
         expected,
       }: {
         user: UserProfileResponse
-        credit: Credit
+        isCreditExpired: boolean
         expected: boolean
       }) => {
-        expect(isUserExBeneficiary(user, credit)).toEqual(expected)
+        const getAvailableCreditMock = getAvailableCredit as jest.Mock
+        getAvailableCreditMock.mockImplementationOnce(() => ({
+          amount: 10,
+          isExpired: isCreditExpired,
+        }))
+        expect(isUserExBeneficiary(user)).toEqual(expected)
       }
     )
   })
