@@ -1,15 +1,30 @@
 import { api } from 'api/api'
-import {
-  paramConfig,
-  ScreenConfig,
-} from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
-import { ScreenNames } from 'features/navigation/RootNavigator'
+import { AllNavParamList, ScreenNames } from 'features/navigation/RootNavigator'
 
 import { build } from '../../../../package.json'
 
-export const SCREENS_CONFIG: Partial<Record<ScreenNames, ScreenConfig>> = {
+export type ScreensUsedByMarketing = Extract<
+  ScreenNames,
+  'Offer' | 'Venue' | 'Home' | 'Search' | 'Profile' | 'SetEmail'
+>
+
+type ScreensUsedByMarketingParamsList = Pick<AllNavParamList, ScreensUsedByMarketing>
+
+export type ParamConfig = {
+  type: 'string'
+  required?: boolean
+  description?: string
+  serverValidator?: (value: string) => Promise<unknown>
+}
+
+export type ScreenConfig<Screen extends ScreensUsedByMarketing> = {
+  [Param in keyof ScreensUsedByMarketingParamsList[Screen]]: ParamConfig
+}
+
+export const SCREENS_CONFIG: {
+  [Screen in ScreensUsedByMarketing]: ScreenConfig<Screen>
+} = {
   Offer: {
-    _utms: true,
     id: {
       type: 'string',
       required: true,
@@ -18,7 +33,6 @@ export const SCREENS_CONFIG: Partial<Record<ScreenNames, ScreenConfig>> = {
     },
   },
   Venue: {
-    _utms: true,
     id: {
       type: 'string',
       required: true,
@@ -27,28 +41,24 @@ export const SCREENS_CONFIG: Partial<Record<ScreenNames, ScreenConfig>> = {
     },
   },
   Home: {
-    _tabNav: true,
-    _utms: true,
     entryId: {
       type: 'string',
       required: false,
       description: `Le module d'accueil à afficher`,
     },
   },
-  Search: {
-    _tabNav: true,
-    _utms: true,
-  },
-  Profile: {
-    _tabNav: true,
-    _utms: true,
-  },
-  SetEmail: {
-    _utms: true,
-  },
+  Search: {},
+  Profile: {},
+  SetEmail: {},
 }
 
-export const MARKETING_CONFIG: Record<string, paramConfig> = {
+type MarketingParams = 'utm_campaign' | 'utm_source' | 'utm_medium'
+
+type MarketingConfig = {
+  [Param in MarketingParams]: ParamConfig
+}
+
+export const MARKETING_CONFIG: MarketingConfig = {
   utm_campaign: {
     type: 'string',
     description: `Nom de la campagne relative au produit, son slogan ou encore son code promotionnel.`,
@@ -63,7 +73,13 @@ export const MARKETING_CONFIG: Record<string, paramConfig> = {
   },
 }
 
-export const FDL_CONFIG: Record<string, paramConfig> = {
+type FirebaseDynamicLinkParams = 'amv'
+
+type FirebaseDynamicLinkConfig = {
+  [Param in FirebaseDynamicLinkParams]: ParamConfig
+}
+
+export const FDL_CONFIG: FirebaseDynamicLinkConfig = {
   amv: {
     type: 'string',
     description: `Version minimale de l'application Android qui peut ouvrir le lien (ex: ${build}). Si l'application installée est une version plus ancienne, l'utilisateur est redirigé vers le Play Store pour mettre à niveau l'application.`,

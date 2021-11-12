@@ -7,11 +7,13 @@ import {
   FDL_CONFIG,
   MARKETING_CONFIG,
   SCREENS_CONFIG,
+  ScreensUsedByMarketing,
+  ParamConfig,
 } from 'features/_marketingAndCommunication/config/deeplinksExportConfig'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
-import { ScreenNames } from 'features/navigation/RootNavigator'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { isTabScreen } from 'features/navigation/TabBar/routes'
 import { getWebappOfferUrl } from 'features/offer/services/useShareOffer'
 import { getWebappVenueUrl } from 'features/venue/services/useShareVenue'
 import { env, useWebAppUrl } from 'libs/environment'
@@ -25,29 +27,6 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-export type paramConfig = {
-  type: 'string'
-  required?: boolean
-  description?: string
-  serverValidator?: (value: string) => Promise<unknown>
-}
-
-export type ScreenConfig = Record<string, paramConfig | boolean>
-
-function getScreenConfig(screenName: ScreenNames) {
-  let screenConfig = undefined
-  Object.entries(SCREENS_CONFIG).forEach(([page, config]) => {
-    if (page === screenName) {
-      screenConfig = config
-    }
-  })
-  return (screenConfig as unknown) as ScreenConfig
-}
-
-function isPrivateConfig(name: string) {
-  return name.startsWith('_')
-}
-
 export interface GeneratedDeeplink {
   universalLink: string
   firebaseLink: string
@@ -58,12 +37,13 @@ interface Props {
 }
 
 export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
-  const [selectedScreen, setSelectedScreen] = useState<ScreenNames>('Offer')
-  const [screenParams, setScreenParams] = useState({})
+  const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Offer')
+  const [screenParams, setScreenParams] = useState<Record<string, string>>({})
+
   const { showErrorSnackBar } = useSnackBarContext()
   const oflBaseUrl = useWebAppUrl()
 
-  const renderScreenItem = (screenName: ScreenNames) => {
+  const renderScreenItem = (screenName: ScreensUsedByMarketing) => {
     return (
       <React.Fragment key={screenName}>
         <Spacer.Column numberOfSpaces={2} />
@@ -82,7 +62,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     )
   }
 
-  const renderScreenParam = (name: string, config: paramConfig) => {
+  const renderScreenParam = (name: string, config: ParamConfig) => {
     function validate(value: string) {
       if (config.serverValidator) {
         config.serverValidator(value).catch((error) => {
@@ -101,7 +81,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           <TextInput
             placeholder={config.required ? `${name} (*)` : name}
             onBlur={() => {
-              // @ts-ignore find why typescript can't get this
               const value: string = screenParams[name]
               !!value && validate(value)
             }}
@@ -127,79 +106,51 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     )
   }
 
-  function validate(selectedScreen: ScreenNames, screenParams: Record<string, string>) {
-    let valid = true
-    const screenConfig = getScreenConfig(selectedScreen)
-    Object.entries(screenConfig).forEach(([name, paramCfg]) => {
-      if (!isPrivateConfig(name) && (paramCfg as paramConfig).required && !screenParams[name]) {
-        valid = false
+  function areAllParamsValid() {
+    const screenConfig = SCREENS_CONFIG[selectedScreen]
+    for (const [paramName, paramConfig] of Object.entries(screenConfig)) {
+      if (paramConfig.required && !screenParams[paramName]) {
+        return false
       }
-    })
-    return valid
+    }
+    return true
   }
 
   function onPress() {
-    const isValid = validate(selectedScreen, screenParams)
-    if (!isValid) return
-    const screenConfig = getScreenConfig(selectedScreen)
-    let screenPathArguments = {
-      screen: selectedScreen,
-      params: screenParams,
-    }
+    if (!areAllParamsValid()) return
 
-    if (screenConfig._tabNav) {
-      // @ts-ignore cast was too long to write
-      const tabNavConfig = getTabNavConfig(selectedScreen as any, screenParams as any) // eslint-disable-line @typescript-eslint/no-explicit-any
-      screenPathArguments = {
-        screen: tabNavConfig[0],
-        params: tabNavConfig[1],
-      }
-    }
-
-    const fdlParams: any = {} // eslint-disable-line @typescript-eslint/no-explicit-any
-    const otherParams: any = {} // eslint-disable-line @typescript-eslint/no-explicit-any
-    Object.entries(screenPathArguments.params).forEach(([paramKey, paramValue]) => {
-      Object.keys(FDL_CONFIG).forEach((fdlParamKey) => {
-        if (paramKey !== fdlParamKey) {
-          otherParams[paramKey] = paramValue
-        } else {
-          fdlParams[paramKey] = paramValue
-        }
-      })
-    })
+    const { appParams, marketingParams, fdlParams } = extractParams(screenParams)
+    const appAndMarketingParams = { ...appParams, ...marketingParams }
 
     // TODO: remove this block when settings.isWebappV2Enabled in production
     if (oflBaseUrl?.includes(env.WEBAPP_V2_DOMAIN)) {
       if (selectedScreen === 'Offer') {
-        fdlParams.ofl = getWebappOfferUrl(otherParams.id, oflBaseUrl)
+        const offerId = Number(appParams.id)
+        fdlParams.ofl = getWebappOfferUrl(offerId, oflBaseUrl)
       } else if (selectedScreen === 'Venue') {
-        fdlParams.ofl = getWebappVenueUrl(otherParams.id, oflBaseUrl)
+        const venueId = Number(appParams.id)
+        fdlParams.ofl = getWebappVenueUrl(venueId, oflBaseUrl)
       }
     }
 
-    const screenPath = getScreenPath(screenPathArguments.screen, otherParams)
+    let screenPath = getScreenPath(selectedScreen, appAndMarketingParams)
+    if (isTabScreen(selectedScreen)) {
+      const tabNavConfig = getTabNavConfig(selectedScreen, appAndMarketingParams)
+      screenPath = getScreenPath(...tabNavConfig)
+    }
 
     const universalLink = `https://${env.WEBAPP_V2_DOMAIN}${screenPath}`
     const firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
 
-    onCreate({
-      universalLink,
-      firebaseLink,
-    })
+    onCreate({ universalLink, firebaseLink })
   }
 
   const paramsCount = useMemo(() => {
-    const screenConfig = getScreenConfig(selectedScreen)
-    let count = 0
-    Object.keys(screenConfig).forEach((name) => {
-      if (!isPrivateConfig(name)) {
-        count += 1
-      }
-    })
-    return count
+    const screenConfig = SCREENS_CONFIG[selectedScreen]
+    return Object.keys(screenConfig).length
   }, [selectedScreen])
 
-  const disabled = !validate(selectedScreen, screenParams)
+  const disabled = !areAllParamsValid()
 
   useEnterKeyAction(!disabled ? onPress : undefined)
 
@@ -209,38 +160,38 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         <TitleContainer>{t`Besoin d'un lien ?`}</TitleContainer>
         <Spacer.Column numberOfSpaces={6} />
         <AccordionItem title={t`Pages`} defaultOpen>
-          {Object.keys(SCREENS_CONFIG).map((key) => renderScreenItem(key as ScreenNames))}
+          {Object.keys(SCREENS_CONFIG).map((key) =>
+            renderScreenItem(key as ScreensUsedByMarketing)
+          )}
         </AccordionItem>
         {paramsCount > 0 && (
           <AccordionItem title={t`Paramètres applicatifs` + ` (${paramsCount})`} defaultOpen>
             {Object.entries(SCREENS_CONFIG).map(([page, config]) => (
               <React.Fragment key={page}>
                 {page === selectedScreen
-                  ? Object.entries(config).map(([name, config]) =>
-                      !isPrivateConfig(name) ? renderScreenParam(name, config as paramConfig) : null
-                    )
+                  ? Object.entries(config).map(([name, config]) => renderScreenParam(name, config))
                   : null}
               </React.Fragment>
             ))}
           </AccordionItem>
         )}
         <AccordionItem title={t`Paramètres marketing`} defaultOpen>
-          {Object.entries(SCREENS_CONFIG).map(([page, config]) => (
+          {Object.entries(SCREENS_CONFIG).map(([page]) => (
             <React.Fragment key={page}>
-              {page === selectedScreen && config._utms
+              {page === selectedScreen
                 ? Object.entries(MARKETING_CONFIG).map(([name, config]) =>
-                    !isPrivateConfig(name) ? renderScreenParam(name, config as paramConfig) : null
+                    renderScreenParam(name, config)
                   )
                 : null}
             </React.Fragment>
           ))}
         </AccordionItem>
         <AccordionItem title={t`Paramètres firebase dynamic link`}>
-          {Object.entries(SCREENS_CONFIG).map(([page, config]) => (
+          {Object.keys(SCREENS_CONFIG).map((page) => (
             <React.Fragment key={page}>
-              {page === selectedScreen && config._utms
+              {page === selectedScreen
                 ? Object.entries(FDL_CONFIG).map(([name, config]) =>
-                    !isPrivateConfig(name) ? renderScreenParam(name, config as paramConfig) : null
+                    renderScreenParam(name, config)
                   )
                 : null}
             </React.Fragment>
@@ -256,6 +207,18 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       </BottomContainer>
     </React.Fragment>
   )
+}
+
+function extractParams(params: Record<string, string>) {
+  const appParams: Record<string, string> = {}
+  const marketingParams: Record<string, string> = {}
+  const fdlParams: Record<string, string> = {}
+  for (const [paramName, paramValue] of Object.entries(params)) {
+    if (paramName in FDL_CONFIG) fdlParams[paramName] = paramValue
+    else if (paramName in MARKETING_CONFIG) fdlParams[paramName] = paramValue
+    else appParams[paramName] = paramValue
+  }
+  return { appParams, marketingParams, fdlParams }
 }
 
 const Container = styled.ScrollView(({ theme }) => ({
