@@ -32,7 +32,7 @@ export const TabBarComponent: React.FC<Props> = ({ isSelected, BicolorIcon, onPr
       <Spacer.Flex />
       <BicolorIcon
         color={isSelected ? undefined : ColorsEnum.GREY_DARK}
-        size={getSpacing(8)}
+        size={getSpacing(7)}
         thin={!isSelected}
       />
       <Spacer.Flex />
