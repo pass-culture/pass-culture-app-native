@@ -372,6 +372,10 @@ msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgid "Colle ton lien ici ..."
 msgstr "Colle ton lien ici ..."
 
+#: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
+msgid "Commencer la vérification"
+msgstr "Commencer la vérification"
+
 #: src/features/profile/pages/Profile.tsx
 msgid "Comment ça marche ?"
 msgstr "Comment ça marche ?"
@@ -853,7 +857,9 @@ msgstr "ISBN"
 msgid "Id Check indisponible"
 msgstr "Id Check indisponible"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.ts
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Identification"
 msgstr "Identification"
 
@@ -1501,6 +1507,10 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 msgid "Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification."
 msgstr "Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification."
 
+#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+msgid "Pour pouvoir profiter de l'aide financière de 300 euros proposée par le Gouvernement, nous avons besoin de ta"
+msgstr "Pour pouvoir profiter de l'aide financière de 300 euros proposée par le Gouvernement, nous avons besoin de ta"
+
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
@@ -1821,6 +1831,10 @@ msgstr "Si tu es élève dans"
 msgid "Si tu n’arrives pas à récupérer ton code tu peux"
 msgstr "Si tu n’arrives pas à récupérer ton code tu peux"
 
+#: src/features/identityCheck/atoms/DMSInformation.tsx
+msgid "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées"
+msgstr "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées"
+
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 msgstr "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
@@ -1965,6 +1979,10 @@ msgstr "Toute la culture à portée de main"
 #: src/libs/subcategories/useSearchGroupLabel.ts
 msgid "Toutes les catégories"
 msgstr "Toutes les catégories"
+
+#: src/features/identityCheck/atoms/DMSInformation.tsx
+msgid "Transmettre un document"
+msgstr "Transmettre un document"
 
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 msgid "Transmettre un dossier"
@@ -2314,6 +2332,10 @@ msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demand
 msgid "Vérification d'identité"
 msgstr "Vérification d'identité"
 
+#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+msgid "Vérification de l'identité"
+msgstr "Vérification de l'identité"
+
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Vérification éligibilité"
 msgstr "Vérification éligibilité"
@@ -2363,6 +2385,10 @@ msgstr ""
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "c'est..."
 msgstr "c'est..."
+
+#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+msgid "carte d'identité"
+msgstr "carte d'identité"
 
 #: src/features/offer/components/useReportOfferModalContent.tsx
 #: src/features/offer/components/useReportOfferModalContent.tsx
@@ -2505,9 +2531,21 @@ msgstr "offerId is undefined"
 msgid "offerts à dépenser sur l’application."
 msgstr "offerts à dépenser sur l’application."
 
+#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+msgid "ou de ton"
+msgstr "ou de ton"
+
 #: src/features/navigation/RootNavigator/linking/getPathFromState.ts
 msgid "page-introuvable"
 msgstr "page-introuvable"
+
+#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+msgid "passport"
+msgstr "passport"
+
+#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+msgid "pour valider ton profil !"
+msgstr "pour valider ton profil !"
 
 #: src/features/bookOffer/components/BookingInformations.tsx
 msgid "prix duo"

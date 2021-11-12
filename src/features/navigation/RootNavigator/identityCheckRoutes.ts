@@ -31,7 +31,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     name: 'IdentityCheckStart',
     component: IdentityCheckStart,
     path: 'verification-identite/identification',
-    options: { title: t`Choix du status` },
+    options: { title: t`Identification` },
     secure: true,
   },
 ]
