@@ -10,6 +10,10 @@ import { TabParamList, TabRouteName } from '../TabBar/types'
 
 export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink'
 
+export type IdentityCheckRootStackParamList = {
+  IdentityCheck: undefined
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -46,7 +50,6 @@ export type RootStackParamList = {
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
-  IdentityCheck: undefined
   IdCheckUnavailable: undefined
   IdCheckTooManyAttempts: undefined
   Login?: {
@@ -96,7 +99,8 @@ export type RootStackParamList = {
   PageNotFound: undefined
   Venue: { id: number }
   DeeplinksGenerator: undefined
-} & IdCheckRootStackParamList
+} & IdCheckRootStackParamList &
+  IdentityCheckRootStackParamList
 
 export type AllNavParamList = RootStackParamList & TabParamList
 

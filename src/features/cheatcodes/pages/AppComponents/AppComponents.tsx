@@ -109,6 +109,9 @@ import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
+import { Confirmation } from 'ui/svg/icons/IdentityCheck/Confirmation'
+import { IdCard } from 'ui/svg/icons/IdentityCheck/IdCard'
+import { Profil } from 'ui/svg/icons/IdentityCheck/Profil'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -424,6 +427,8 @@ export const AppComponents: FunctionComponent = () => {
         <CategoryIcons />
         <Spacer.Column numberOfSpaces={4} />
         <VenueTypesIcons />
+        <Spacer.Column numberOfSpaces={4} />
+        <IdentityCheckIcons />
         <AlignedText>
           <PlainArrowPrevious size={ICON_SIZE} />
           <Text> - PlainArrowPrevious </Text>
@@ -1145,6 +1150,27 @@ const VenueTypesIcons = () => {
           </AlignedText>
         )
       })}
+      <Text>{'\n'}</Text>
+    </React.Fragment>
+  )
+}
+
+const IdentityCheckIcons = () => {
+  return (
+    <React.Fragment>
+      <Text>{'IdentityCheck Icons'}</Text>
+      <AlignedText>
+        <Profil size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
+        <Text> - Profil </Text>
+      </AlignedText>
+      <AlignedText>
+        <IdCard size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
+        <Text> - IdCard </Text>
+      </AlignedText>
+      <AlignedText>
+        <Confirmation size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
+        <Text> - Confirmation </Text>
+      </AlignedText>
       <Text>{'\n'}</Text>
     </React.Fragment>
   )
