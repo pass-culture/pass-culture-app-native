@@ -8,9 +8,7 @@ import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 
-type Props = PropsWithChildren<{
-  title: string
-}>
+type Props = PropsWithChildren<{ title: string }>
 
 export const PageWithHeader = (props: Props) => {
   const { goBack } = useGoBack(...homeNavConfig)

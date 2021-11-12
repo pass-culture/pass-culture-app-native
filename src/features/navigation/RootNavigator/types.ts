@@ -12,6 +12,7 @@ export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink'
 
 export type IdentityCheckRootStackParamList = {
   IdentityCheck: undefined
+  IdentityCheckStart: undefined
   IdentityCheckStatus: undefined
   NavigationIdentityCheck: undefined
 }
