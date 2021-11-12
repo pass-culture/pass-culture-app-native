@@ -20,7 +20,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
-import { Bell } from 'ui/svg/icons/Bell'
+import { BellDeprecated } from 'ui/svg/icons/Bell_deprecated'
 import { ConfidentialityDeprecated } from 'ui/svg/icons/Confidentiality_deprecated'
 import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
@@ -137,7 +137,7 @@ export const Profile: React.FC = () => {
           <SectionRow
             type="navigable"
             title={t`Notifications`}
-            icon={Bell}
+            icon={BellDeprecated}
             onPress={() => navigate('NotificationSettings')}
             style={styles.row}
           />

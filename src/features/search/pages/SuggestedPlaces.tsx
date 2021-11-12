@@ -14,7 +14,7 @@ import { analytics } from 'libs/analytics'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
 
@@ -36,7 +36,7 @@ export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
 
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
   const Icon = isVenue(hit)
-    ? () => <LocationBuilding size={getSpacing(10)} color={ColorsEnum.PRIMARY} />
+    ? () => <LocationBuildingDeprecated size={getSpacing(10)} color={ColorsEnum.PRIMARY} />
     : () => <BicolorLocationPointer size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
 
   return (

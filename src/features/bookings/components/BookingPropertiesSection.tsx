@@ -9,9 +9,9 @@ import { getBookingLabels, getBookingProperties } from 'features/bookings/helper
 import { useUserProfileInfo } from 'features/home/api'
 import { useSubcategory } from 'libs/subcategories'
 import { SectionRow } from 'ui/components/SectionRow'
-import { Calendar } from 'ui/svg/icons/Calendar'
+import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
-import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
 import { Profile } from 'ui/svg/icons/Profile'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -64,7 +64,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             title={propertiesLabels.dateLabel}
             renderTitle={renderRowTitle}
             type={'clickable'}
-            icon={() => <Calendar size={24} />}
+            icon={() => <CalendarDeprecated size={24} />}
           />
         </React.Fragment>
       )}
@@ -74,7 +74,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           title={propertiesLabels.locationLabel}
           renderTitle={renderRowTitle}
           type={'clickable'}
-          icon={() => <LocationBuilding size={24} />}
+          icon={() => <LocationBuildingDeprecated size={24} />}
         />
       )}
     </View>

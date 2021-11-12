@@ -68,6 +68,7 @@ import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
+import { BellDeprecated } from 'ui/svg/icons/Bell_deprecated'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
@@ -80,6 +81,7 @@ import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
+import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
 import { Category } from 'ui/svg/icons/categories'
 import { Check } from 'ui/svg/icons/Check'
 import { Clock } from 'ui/svg/icons/Clock'
@@ -115,6 +117,7 @@ import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
@@ -683,7 +686,11 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <Bell size={ICON_SIZE} />
-          <Text> - Bell </Text>
+          <Text> - Bell (new) </Text>
+        </AlignedText>
+        <AlignedText>
+          <BellDeprecated size={ICON_SIZE} />
+          <Text> - BellDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <ProfileDeletion size={ICON_SIZE} />
@@ -695,11 +702,19 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <Calendar size={ICON_SIZE} />
-          <Text> - Calendar </Text>
+          <Text> - Calendar (new) </Text>
+        </AlignedText>
+        <AlignedText>
+          <CalendarDeprecated size={ICON_SIZE} />
+          <Text> - CalendarDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <LocationBuilding size={ICON_SIZE} />
-          <Text> - LocationBuilding </Text>
+          <Text> - LocationBuilding (new) </Text>
+        </AlignedText>
+        <AlignedText>
+          <LocationBuildingDeprecated size={ICON_SIZE} />
+          <Text> - LocationBuildingDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
