@@ -1,26 +1,26 @@
 import { t } from '@lingui/macro'
 
 import { StepConfig } from 'features/identityCheck/types'
-import { ConfirmationIcon } from 'ui/svg/icons/IdentityCheck/ConfirmationIcon'
-import { IdCardIcon } from 'ui/svg/icons/IdentityCheck/IdCardIcon'
-import { ProfileIcon } from 'ui/svg/icons/IdentityCheck/ProfileIcon'
+import { Confirmation } from 'ui/svg/icons/IdentityCheck/Confirmation'
+import { IdCard } from 'ui/svg/icons/IdentityCheck/IdCard'
+import { Profil } from 'ui/svg/icons/IdentityCheck/Profil'
 
 // hook as it can be dynamic depending on settings
 export const useIdentityCheckSteps = (): StepConfig[] => {
   return [
     {
       name: 'profil',
-      icon: ProfileIcon,
+      icon: Profil,
       label: t`Ton profil`,
     },
     {
       name: 'identification',
-      icon: IdCardIcon,
+      icon: IdCard,
       label: t`Ton éligibilité`,
     },
     {
       name: 'confirmation',
-      icon: ConfirmationIcon,
+      icon: Confirmation,
       label: t`Confirmation`,
     },
   ]
