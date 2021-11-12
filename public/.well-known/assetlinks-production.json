@@ -1,6 +1,16 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": ["delegate_permission/common.get_login_creds"],
+    "target": {
+      "namespace": "web",
+      "site": "https://passculture.app"
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.get_login_creds",
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "PassCulture",
       "package_name": "com.passculture",
@@ -10,7 +20,10 @@
     }
   },
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.get_login_creds",
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "pass Culture",
       "package_name": "app.passculture.webapp",
