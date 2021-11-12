@@ -10,13 +10,14 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 interface Props {
   step: StepConfig
   state: 'completed' | 'current' | 'disabled'
+  onPress?: () => void
 }
 
-export const StepButton = ({ step, state }: Props) => {
+export const StepButton = ({ step, state, onPress }: Props) => {
   const { icon: Icon, label } = step
 
   return (
-    <Button activeOpacity={ACTIVE_OPACITY} disabled={state === 'disabled'}>
+    <Button activeOpacity={ACTIVE_OPACITY} onPress={onPress} disabled={state === 'disabled'}>
       <IconContainer>
         <Icon size={getSpacing(12)} />
       </IconContainer>

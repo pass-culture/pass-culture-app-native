@@ -11,12 +11,12 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
     {
       name: 'profil',
       icon: Profil,
-      label: t`Ton profil`,
+      label: t`Profil`,
     },
     {
       name: 'identification',
       icon: IdCard,
-      label: t`Ton éligibilité`,
+      label: t`Identification`,
     },
     {
       name: 'confirmation',

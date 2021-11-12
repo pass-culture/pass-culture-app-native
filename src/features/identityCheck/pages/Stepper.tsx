@@ -1,9 +1,11 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -13,6 +15,7 @@ import { Spacer, Typo, ColorsEnum, getSpacing } from 'ui/theme'
 export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { goBack } = useGoBack(...homeNavConfig)
+  const { navigate } = useNavigation<UseNavigationType>()
   const steps = useIdentityCheckSteps()
 
   return (
@@ -30,7 +33,12 @@ export const IdentityCheckStepper = () => {
 
         {/* TODO(antoinewg) dehardcode state. This is temporary for design purposes */}
         <StepButton key={steps[0].name} step={steps[0]} state="completed" />
-        <StepButton key={steps[1].name} step={steps[1]} state="current" />
+        <StepButton
+          key={steps[1].name}
+          step={steps[1]}
+          state="current"
+          onPress={() => navigate('IdentityCheckStart')}
+        />
         <StepButton key={steps[2].name} step={steps[2]} state="disabled" />
         {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={2} />}
 
