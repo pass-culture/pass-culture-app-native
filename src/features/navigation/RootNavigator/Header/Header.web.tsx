@@ -79,7 +79,7 @@ export const Header = memo(function Header() {
   }
   return (
     <HeaderContainer>
-      <LeftContainer margin={margin} isVisible={isDesktopOffset} style={fadeAnim}>
+      <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         <LogoContainer onPress={navigateToHome}>
           <LogoPassCulture color={theme.colors.brand} height={getSpacing(10)} width="100%" />
         </LogoContainer>
@@ -102,7 +102,7 @@ export const Header = memo(function Header() {
           </FlexContainer>
         </RightContainer>
       </CenterContainer>
-      <RightContainer margin={margin} isVisible={isDesktopOffset} style={fadeAnim}>
+      <RightContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         <FlexContainer />
         <FlexContainer>
           <LogoMinistereContainer>
