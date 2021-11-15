@@ -169,7 +169,8 @@ const Row = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
 })
-const Title = styled(Animated.Text).attrs({ numberOfLines: 1 })({
+const Title = styled(Animated.Text).attrs({ numberOfLines: 1 })(({ theme }) => ({
   flexShrink: 1,
   textAlign: 'center',
-})
+  color: theme.colors.white,
+}))
