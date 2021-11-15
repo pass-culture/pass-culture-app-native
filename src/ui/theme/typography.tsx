@@ -30,11 +30,12 @@ const Title1: React.FC<TextProps> = (props) => {
     </StyledTitle1>
   )
 }
+
 const StyledTitle1 = styled(ColoredText)<{ fontSize: number }>((props) => ({
-  fontFamily: 'Montserrat-ExtraBoldItalic',
+  fontFamily: 'Montserrat-Black',
   fontSize: props.fontSize,
-  lineHeight: getSpacingString(8.5),
-  fontWeight: 800,
+  lineHeight: getSpacingString(9),
+  fontWeight: 900,
 }))
 
 const Title2: React.FC<TextProps> = (props) => {
@@ -47,7 +48,7 @@ const Title2: React.FC<TextProps> = (props) => {
   )
 }
 const StyledTitle2 = styled(ColoredText)<{ fontSize: number }>((props) => ({
-  fontFamily: 'Montserrat-MediumItalic',
+  fontFamily: 'Montserrat-Medium',
   fontSize: props.fontSize,
   lineHeight: getSpacingString(7),
 }))

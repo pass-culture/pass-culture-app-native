@@ -114,10 +114,10 @@ exports[`Home component should render correctly without login modal 1`] = `
                 Array [
                   Object {
                     "color": "#ffffff",
-                    "fontFamily": "Montserrat-ExtraBoldItalic",
+                    "fontFamily": "Montserrat-Black",
                     "fontSize": 28,
-                    "fontWeight": "800",
-                    "lineHeight": 34,
+                    "fontWeight": "900",
+                    "lineHeight": 36,
                   },
                   Object {
                     "marginHorizontal": 32,

@@ -89,7 +89,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
           Array [
             Object {
               "color": "#ffffff",
-              "fontFamily": "Montserrat-MediumItalic",
+              "fontFamily": "Montserrat-Medium",
               "fontSize": 24,
               "lineHeight": 28,
             },

@@ -59,10 +59,10 @@ exports[`SecondCard should render second card 1`] = `
       Array [
         Object {
           "color": "#151515",
-          "fontFamily": "Montserrat-ExtraBoldItalic",
+          "fontFamily": "Montserrat-Black",
           "fontSize": 28,
-          "fontWeight": "800",
-          "lineHeight": 34,
+          "fontWeight": "900",
+          "lineHeight": 36,
         },
         Object {
           "textAlign": "center",
@@ -78,7 +78,7 @@ exports[`SecondCard should render second card 1`] = `
       Array [
         Object {
           "color": "#151515",
-          "fontFamily": "Montserrat-MediumItalic",
+          "fontFamily": "Montserrat-Medium",
           "fontSize": 24,
           "lineHeight": 28,
         },

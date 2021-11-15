@@ -44,8 +44,7 @@ export interface AppThemeType extends Omit<IdCheckThemeType, 'colors' | 'typogra
   activeOpacity: number
   fontFamily: {
     medium: string
-    extraBoldItalic: string
-    mediumItalic: string
+    black: string
     bold: string
     regular: string
     semiBold: string
@@ -131,27 +130,24 @@ export const theme: AppThemeType = deepmerge(idCheckTheme, {
   activeOpacity: ACTIVE_OPACITY,
   fontFamily: {
     medium: 'Montserrat-Medium',
-    extraBoldItalic: 'Montserrat-ExtraBoldItalic',
-    mediumItalic: 'Montserrat-MediumItalic',
+    black: 'Montserrat-Black',
     bold: 'Montserrat-Bold',
     regular: 'Montserrat-Regular',
     semiBold: 'Montserrat-SemiBold',
   },
   typography: {
     hero: {
-      fontFamily: 'Montserrat-ExtraBoldItalic',
-      fontSize: getSpacing(7),
-      lineHeight: getSpacingString(8.5),
-      fontWeight: 800,
+      fontFamily: 'Montserrat-Medium',
+      fontSize: getSpacing(9.5),
+      lineHeight: getSpacingString(12),
     },
     title1: {
-      fontFamily: 'Montserrat-ExtraBoldItalic',
+      fontFamily: 'Montserrat-Black',
       fontSize: getSpacing(6),
-      lineHeight: getSpacingString(8.5),
-      fontWeight: 800,
+      lineHeight: getSpacingString(9),
     },
     title2: {
-      fontFamily: 'Montserrat-MediumItalic',
+      fontFamily: 'Montserrat-Medium',
       fontSize: getSpacing(6),
       lineHeight: getSpacingString(7),
     },
