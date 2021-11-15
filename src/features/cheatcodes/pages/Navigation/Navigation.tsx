@@ -380,8 +380,14 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={`Notification Re-créditation Anniversaire`}
+            title={`Notification rechargement crédit`}
             onPress={() => navigate('RecreditBirthdayNotification')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={'Underage account created'}
+            onPress={() => navigate('UnderageAccountCreated')}
           />
         </Row>
       </StyledContainer>
