@@ -20,7 +20,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
 
-type Props = StackScreenProps<RootStackParamList, 'SetPassword'>
+type Props = StackScreenProps<RootStackParamList, 'SetName'>
 
 export const SetName: FunctionComponent<Props> = ({ route }) => {
   const [firstName, setFirstName] = useState('')
@@ -77,6 +77,7 @@ export const SetName: FunctionComponent<Props> = ({ route }) => {
             ref={nameInput}
             {...accessibilityAndTestId(t`Entrée pour le prénom`)}
           />
+          <Spacer.Column numberOfSpaces={6} />
           <TextInput
             label={t`Nom`}
             value={lastName}
