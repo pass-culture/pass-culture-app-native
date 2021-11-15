@@ -39,6 +39,17 @@ export function NavigationIdentityCheck(): JSX.Element {
             onPress={() => navigate('IdentityCheckStart')}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'SetName'}
+            onPress={() =>
+              navigate('SetName', {
+                email: 'jonh.doe@exmaple.com',
+                isNewsletterChecked: false,
+              })
+            }
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

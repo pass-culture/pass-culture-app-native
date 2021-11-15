@@ -14,6 +14,7 @@ import { ColorsEnum, Typo } from 'ui/theme'
 
 export enum SignupSteps {
   Email = 'Email',
+  Name = 'Name',
   Password = 'Password',
   Birthday = 'Birthday',
   PostalCode = 'PostalCode',
