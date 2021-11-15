@@ -1,6 +1,8 @@
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
+import { Spacer, Typo } from 'ui/theme'
+
 import { BaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
@@ -27,9 +29,17 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   }
 
   return (
-    <StyledInputContainer isFocus={isFocus} isError={customProps.isError}>
-      <BaseTextInput {...nativeProps} ref={forwardedRef} onFocus={onFocus} onBlur={onBlur} />
-    </StyledInputContainer>
+    <React.Fragment>
+      {!!customProps.label && (
+        <React.Fragment>
+          <Typo.Body>{customProps.label}</Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+        </React.Fragment>
+      )}
+      <StyledInputContainer isFocus={isFocus} isError={customProps.isError}>
+        <BaseTextInput {...nativeProps} ref={forwardedRef} onFocus={onFocus} onBlur={onBlur} />
+      </StyledInputContainer>
+    </React.Fragment>
   )
 }
 

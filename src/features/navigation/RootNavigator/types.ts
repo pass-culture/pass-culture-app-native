@@ -85,7 +85,12 @@ export type RootStackParamList = {
   SetEmail: { preventCancellation?: boolean } | undefined
   // TODO (LucasBeneston) : When SetName is active add { lastName: string, firstName: string } to SetPassword, SetBirthday and AcceptCgu
   SetName: { email: string; isNewsletterChecked: boolean }
-  SetPassword: { email: string; isNewsletterChecked: boolean }
+  SetPassword: {
+    email: string
+    isNewsletterChecked: boolean
+    lastName?: string // TODO (LucasBeneston) : Remove optional when SetName is active and add for SetBirthday and AcceptCgu
+    firstName?: string // TODO (LucasBeneston) : Remove optional when SetName is active and add for SetBirthday and AcceptCgu
+  }
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: {
