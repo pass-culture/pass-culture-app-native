@@ -1170,11 +1170,11 @@ const IdentityCheckIcons = () => {
       </AlignedText>
       <AlignedText>
         <IdCard size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
-        <Text> - IdCard </Text>
+        <Text> - IdCard (new) </Text>
       </AlignedText>
       <AlignedText>
         <Confirmation size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
-        <Text> - Confirmation </Text>
+        <Text> - Confirmation (new) </Text>
       </AlignedText>
       <Text>{'\n'}</Text>
     </React.Fragment>
