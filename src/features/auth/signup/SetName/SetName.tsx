@@ -82,7 +82,7 @@ export const SetName: FunctionComponent<Props> = ({ route }) => {
           />
           <InputError
             visible={!isValidFirstName && firstName.length > 0}
-            messageId={t`Ton prénom ne doit pas contenir de chiffres ou caratères spéciaux.`}
+            messageId={t`Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
             numberOfSpacesTop={2}
           />
           <Spacer.Column numberOfSpaces={6} />
@@ -96,7 +96,7 @@ export const SetName: FunctionComponent<Props> = ({ route }) => {
           />
           <InputError
             visible={!isValidLastName && lastName.length > 0}
-            messageId={t`Ton nom ne doit pas contenir de chiffres ou caratères spéciaux.`}
+            messageId={t`Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
             numberOfSpacesTop={2}
           />
           <Spacer.Column numberOfSpaces={6} />
