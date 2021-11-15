@@ -101,7 +101,7 @@ Object {
             data-testid="offerHeaderName"
             dir="auto"
             id="animatedComponent"
-            style="flex-shrink: 1; opacity: 0; text-align: center;"
+            style="color: rgb(255, 255, 255); flex-shrink: 1; opacity: 0; text-align: center;"
           >
             <span
               class="css-text-901oao css-textHasAncestor-16my406"
@@ -449,7 +449,7 @@ Object {
           data-testid="offerHeaderName"
           dir="auto"
           id="animatedComponent"
-          style="flex-shrink: 1; opacity: 0; text-align: center;"
+          style="color: rgb(255, 255, 255); flex-shrink: 1; opacity: 0; text-align: center;"
         >
           <span
             class="css-text-901oao css-textHasAncestor-16my406"
