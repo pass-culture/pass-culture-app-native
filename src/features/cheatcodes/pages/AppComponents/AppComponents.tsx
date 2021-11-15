@@ -123,7 +123,7 @@ import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprec
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
-import { Lock } from 'ui/svg/icons/Lock'
+import { LockDeprecated } from 'ui/svg/icons/Lock_deprecated'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -666,8 +666,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - SignOut </Text>
         </AlignedText>
         <AlignedText>
-          <Lock size={ICON_SIZE} />
-          <Text> - Lock </Text>
+          <LockDeprecated size={ICON_SIZE} />
+          <Text> - LockDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <BicolorLock size={ICON_SIZE} />

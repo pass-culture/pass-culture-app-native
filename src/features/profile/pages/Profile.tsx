@@ -26,8 +26,7 @@ import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
 import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
-import { Lock } from 'ui/svg/icons/Lock'
-import { ProfileDeprecated } from 'ui/svg/icons/Profile_deprecated'
+import { LockDeprecated } from 'ui/svg/icons/Lock_deprecated'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -129,7 +128,7 @@ export const Profile: React.FC = () => {
                 title={t`Mot de passe`}
                 type="navigable"
                 onPress={() => navigate('ChangePassword')}
-                icon={Lock}
+                icon={LockDeprecated}
                 style={styles.row}
               />
             </React.Fragment>
