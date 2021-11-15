@@ -29,7 +29,7 @@ features
             |- Component1.test.tsx
             |- ...
         |- pages ==> feature specific pages
-        |- services ==> utils or data tranform functions
+        |- services ==> utils or data transform functions
         fixturesTests.ts ==> data for testing (API call responses mocks)
     |- register
     |- homepage
@@ -54,6 +54,6 @@ ui
 
 - Do not put component into `ui/components` if it is used only once in the app
 
-### Ressources
+### Resources
 
 - ADR: https://www.notion.so/ADR-sur-la-structure-du-projet-315ca5b83d134d938074855b509f611a
