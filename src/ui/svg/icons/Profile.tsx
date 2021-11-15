@@ -4,7 +4,7 @@ import Svg, { Path } from 'react-native-svg'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum } from 'ui/theme'
 
-export function Profil({
+export function Profile({
   size = 32,
   color = ColorsEnum.BLACK,
   testID,

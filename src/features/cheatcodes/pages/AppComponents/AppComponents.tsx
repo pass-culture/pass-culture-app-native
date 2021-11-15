@@ -137,7 +137,7 @@ import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { Profil } from 'ui/svg/icons/Profil'
+import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeprecated } from 'ui/svg/icons/Profile_deprecated'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
@@ -1160,8 +1160,8 @@ const IdentityCheckIcons = () => {
     <React.Fragment>
       <Text>{'IdentityCheck Icons'}</Text>
       <AlignedText>
-        <Profil size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
-        <Text> - Profil </Text>
+        <Profile size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
+        <Text> - Profile (new) </Text>
       </AlignedText>
       <AlignedText>
         <IdCard size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
