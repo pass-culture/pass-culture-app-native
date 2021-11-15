@@ -4,7 +4,6 @@ Link to JIRA ticket: https://passculture.atlassian.net/browse/PC-XXXXX
 
 I have:
 
-- [ ] Made sure the title of my PR follows the convention `[PC-XXXXX] <summary>`.
 - [ ] Made sure my feature is working on the relevant real / virtual devices (native and web).
 - [ ] Written **unit tests** native (and web when implementation is different) for my feature.
 - [ ] Added a **screenshot** for UI tickets.
