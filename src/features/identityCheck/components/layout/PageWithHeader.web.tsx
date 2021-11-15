@@ -1,10 +1,12 @@
 import React from 'react'
-import { KeyboardAvoidingView, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { PageHeader } from 'features/identityCheck/atoms/layout/PageHeader'
+import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+
+const SMALL_VIEWPORT_MAX_HEIGHT = 500
 
 interface Props {
   title: string
@@ -13,20 +15,20 @@ interface Props {
 }
 
 export const PageWithHeader = (props: Props) => {
+  const mqSmallWebViewportHeight = useMediaQuery({ maxHeight: SMALL_VIEWPORT_MAX_HEIGHT }, 'web')
+
   return (
     <React.Fragment>
       <Background />
       <Spacer.TopScreen />
       <PageHeader title={props.title} />
       <BodyContainer>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-          <StyledBottomCardContainer keyboardShouldPersistTaps="handled">
-            <Spacer.Flex />
-            {props.scrollChildren}
-            <Spacer.Flex />
-          </StyledBottomCardContainer>
-        </KeyboardAvoidingView>
-        <FixedButtonContainer>
+        <StyledBottomCardContainer keyboardShouldPersistTaps="handled">
+          <Spacer.Flex />
+          {props.scrollChildren}
+          <Spacer.Flex />
+        </StyledBottomCardContainer>
+        <FixedButtonContainer isSmallWebViewportHeight={mqSmallWebViewportHeight}>
           {props.fixedBottomChildren}
           <Spacer.BottomScreen />
         </FixedButtonContainer>
@@ -60,10 +62,20 @@ const StyledBottomCardContainer = styled.ScrollView.attrs({
   height: '100%',
 })
 
-const FixedButtonContainer = styled.View(({ theme }) => ({
-  alignSelf: 'center',
-  alignItems: 'center',
-  width: theme.appContentWidth - getSpacing(2 * 6),
-  position: 'absolute',
-  bottom: getSpacing(6),
-}))
+const FixedButtonContainer = styled.View<{ isSmallWebViewportHeight?: boolean }>(
+  ({ theme, isSmallWebViewportHeight }) => ({
+    alignSelf: 'center',
+    alignItems: 'center',
+    width: theme.appContentWidth - getSpacing(2 * 6),
+    ...(isSmallWebViewportHeight
+      ? {
+          flex: 1,
+          justifyContent: 'flex-end',
+          marginBottom: getSpacing(6),
+        }
+      : {
+          position: 'absolute',
+          bottom: getSpacing(6),
+        }),
+  })
+)

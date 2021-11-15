@@ -38,44 +38,34 @@ export const Status = () => {
   const [selectedStatus, setSelectedStatus] = useState<UserStatus | undefined>()
 
   return (
-    <PageWithHeader title={t`Sélectionne ton statut`}>
-      <ContentContainer>
-        {statuses.map((status) => (
-          <RadioButton
-            key={status.name}
-            selected={status.name === selectedStatus}
-            description={status.description}
-            name={status.name}
-            onPress={() => setSelectedStatus(status.name)}
-          />
-        ))}
-        <Spacer.Column numberOfSpaces={8} />
-      </ContentContainer>
-
-      <Spacer.BottomScreen />
-
-      <FixedButtonContainer>
+    <PageWithHeader
+      title={t`Sélectionne ton statut`}
+      scrollChildren={
+        <ContentContainer>
+          {statuses.map((status) => (
+            <RadioButton
+              key={status.name}
+              selected={status.name === selectedStatus}
+              description={status.description}
+              name={status.name}
+              onPress={() => setSelectedStatus(status.name)}
+            />
+          ))}
+          <Spacer.Column numberOfSpaces={8} />
+        </ContentContainer>
+      }
+      fixedBottomChildren={
         <ButtonPrimary
           onPress={goBack}
           title={!selectedStatus ? t`Choisis ton statut` : t`Continuer`}
           disabled={!selectedStatus}
         />
-      </FixedButtonContainer>
-    </PageWithHeader>
+      }
+    />
   )
 }
 
 const ContentContainer = styled.ScrollView({
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  maxWidth: getSpacing(125),
-})
-
-const FixedButtonContainer = styled.View({
-  alignSelf: 'center',
-  position: 'absolute',
-  bottom: getSpacing(2),
   width: '100%',
   maxWidth: getSpacing(125),
 })

@@ -15,15 +15,18 @@ export const IdentityCheckStart = () => {
   const { goBack } = useGoBack(...homeNavConfig)
 
   return (
-    <PageWithHeader title={t`Identification`}>
-      <Spacer.Column numberOfSpaces={6} />
-      <BicolorIdCardWithMagnifyingClass size={getSpacing(36)} />
-      <Spacer.Column numberOfSpaces={6} />
-      <IdentityVerificationText />
-      <Spacer.Column numberOfSpaces={6} />
-      <DMSInformation />
-      <Spacer.Column numberOfSpaces={6} />
-      <ButtonPrimary onPress={goBack} title={t`Commencer la vérification`} />
-    </PageWithHeader>
+    <PageWithHeader
+      title={t`Identification`}
+      scrollChildren={
+        <React.Fragment>
+          <BicolorIdCardWithMagnifyingClass size={getSpacing(36)} />
+          <Spacer.Column numberOfSpaces={6} />
+          <IdentityVerificationText />
+          <Spacer.Column numberOfSpaces={6} />
+          <DMSInformation />
+        </React.Fragment>
+      }
+      fixedBottomChildren={<ButtonPrimary onPress={goBack} title={t`Commencer la vérification`} />}
+    />
   )
 }
