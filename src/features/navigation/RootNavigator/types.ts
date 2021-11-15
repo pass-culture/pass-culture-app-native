@@ -83,6 +83,8 @@ export type RootStackParamList = {
   SelectSchoolHome: { nextBeneficiaryValidationStep: BeneficiaryValidationStep | null | undefined }
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
   SetEmail: { preventCancellation?: boolean } | undefined
+  // TODO (LucasBeneston) : When SetName is active add { lastName: string, firstName: string } to SetPassword, SetBirthday and AcceptCgu
+  SetName: { email: string; isNewsletterChecked: boolean }
   SetPassword: { email: string; isNewsletterChecked: boolean }
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
