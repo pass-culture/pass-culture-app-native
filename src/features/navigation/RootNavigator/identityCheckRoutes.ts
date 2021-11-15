@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
+import { IdentityCheckEnd } from 'features/identityCheck/pages/IdentityCheckEnd'
 import { Status } from 'features/identityCheck/pages/profile/Status'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import { GenericRoute, IdentityCheckRootStackParamList } from 'features/navigation/RootNavigator'
@@ -32,6 +33,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: IdentityCheckStart,
     path: 'verification-identite/identification',
     options: { title: t`Identification` },
+    secure: true,
+  },
+  {
+    name: 'IdentityCheckEnd',
+    component: IdentityCheckEnd,
+    path: 'verification-identite/fin',
+    options: { title: t`Fin du parcours` },
     secure: true,
   },
 ]

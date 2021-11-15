@@ -50,6 +50,12 @@ export function NavigationIdentityCheck(): JSX.Element {
             }
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'IdentityCheckEnd'}
+            onPress={() => navigate('IdentityCheckEnd')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
