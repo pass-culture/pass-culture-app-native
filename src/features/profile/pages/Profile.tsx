@@ -27,7 +27,7 @@ import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
 import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
 import { Lock } from 'ui/svg/icons/Lock'
-import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
+import { ProfileDeprecated } from 'ui/svg/icons/Profile_deprecated'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -122,7 +122,7 @@ export const Profile: React.FC = () => {
                 title={t`Informations personnelles`}
                 type="navigable"
                 onPress={() => navigate('PersonalData')}
-                icon={ProfileIcon}
+                icon={ProfileDeprecated}
                 style={styles.row}
               />
               <Row

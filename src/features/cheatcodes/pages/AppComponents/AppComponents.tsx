@@ -138,7 +138,7 @@ import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Profil } from 'ui/svg/icons/Profil'
-import { Profile } from 'ui/svg/icons/Profile'
+import { ProfileDeprecated } from 'ui/svg/icons/Profile_deprecated'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
@@ -674,8 +674,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - BicolorLock </Text>
         </AlignedText>
         <AlignedText>
-          <Profile size={ICON_SIZE} />
-          <Text> - Profile </Text>
+          <ProfileDeprecated size={ICON_SIZE} />
+          <Text> - ProfileDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <DuoPerson size={ICON_SIZE} />
