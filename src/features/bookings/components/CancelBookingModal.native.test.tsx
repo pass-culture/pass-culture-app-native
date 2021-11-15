@@ -22,7 +22,7 @@ jest.mock('features/home/api', () => ({
 
 let mockIsCreditExpired = false
 jest.mock('features/home/services/useAvailableCredit', () => ({
-  useAvailableCredit: jest.fn(() => ({ isExpired: mockIsCreditExpired, amount: 2000 })),
+  getAvailableCredit: jest.fn(() => ({ isExpired: mockIsCreditExpired, amount: 2000 })),
 }))
 
 const mockShowErrorSnackBar = jest.fn()

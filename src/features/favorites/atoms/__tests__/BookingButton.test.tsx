@@ -7,14 +7,18 @@ import {
   SubcategoryIdEnum,
   UserProfileResponse,
 } from 'api/gen'
-import { Credit } from 'features/home/services/useAvailableCredit'
+import { Credit, getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { openUrl } from 'features/navigation/helpers/openUrl'
+import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
 import { BookingButton } from '../BookingButton'
 
 jest.mock('features/navigation/helpers/openUrl')
+jest.mock('features/home/services/useAvailableCredit')
+jest.mock('features/profile/utils')
+
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 enum ExpectedCTA {
@@ -60,22 +64,28 @@ const user: UserProfileResponse = {
 } as UserProfileResponse
 const onInAppBooking = jest.fn()
 
+const getAvailableCreditMock = getAvailableCredit as jest.Mock
+const isUserBeneficiaryMock = isUserBeneficiary as jest.Mock
+const isUserExBeneficiaryMock = isUserExBeneficiary as jest.Mock
+
 describe('<BookingButton />', () => {
   describe('when user is beneficiary', () => {
+    getAvailableCreditMock.mockImplementation(() => credit)
+
     // prettier-ignore : do not format the following "table" to keep it readable
     it.each`
-      user                                                     | credit    | offer                                                                            | expectedCTA
-      ${getUser()}                                             | ${credit} | ${getOffer()}                                                                    | ${ExpectedCTA.InAppBooking}
-      ${getUser()}                                             | ${credit} | ${getOffer()}                                                                    | ${ExpectedCTA.InAppBooking}
-      ${getUser({ remainingCredit: 0 })}                       | ${credit} | ${getOffer({ price: 0, startPrice: null })}                                      | ${ExpectedCTA.InAppBooking}
-      ${getUser({ remainingCredit: 10, isBookedOffer: true })} | ${credit} | ${getOffer({ isExpired: true, isSoldOut: true, price: 50 })}                     | ${ExpectedCTA.BookedOffer}
-      ${getUser({ remainingCredit: 10, isBookedOffer: true })} | ${credit} | ${getOffer({ isReleased: false })}                                               | ${ExpectedCTA.BookedOffer}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isExpired: true, isSoldOut: true, price: 50 })}                     | ${ExpectedCTA.ExpiredOffer}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isExpired: true, isSoldOut: false, price: 50 })}                    | ${ExpectedCTA.ExpiredOffer}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isReleased: false })}                                               | ${ExpectedCTA.ExpiredOffer}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isExpired: false, isSoldOut: true, price: 50 })}                    | ${ExpectedCTA.ExhaustedOffer}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isExpired: false, isSoldOut: false, price: 50, startPrice: null })} | ${ExpectedCTA.NotEnoughCredit}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isExpired: false, isSoldOut: false, price: null, startPrice: 50 })} | ${ExpectedCTA.NotEnoughCredit}
+      user                                                     | offer                                                                            | expectedCTA
+      ${getUser()}                                             | ${getOffer()}                                                                    | ${ExpectedCTA.InAppBooking}
+      ${getUser()}                                             | ${getOffer()}                                                                    | ${ExpectedCTA.InAppBooking}
+      ${getUser({ remainingCredit: 0 })}                       | ${getOffer({ price: 0, startPrice: null })}                                      | ${ExpectedCTA.InAppBooking}
+      ${getUser({ remainingCredit: 10, isBookedOffer: true })} | ${getOffer({ isExpired: true, isSoldOut: true, price: 50 })}                     | ${ExpectedCTA.BookedOffer}
+      ${getUser({ remainingCredit: 10, isBookedOffer: true })} | ${getOffer({ isReleased: false })}                                               | ${ExpectedCTA.BookedOffer}
+      ${getUser({ remainingCredit: 10 })}                      | ${getOffer({ isExpired: true, isSoldOut: true, price: 50 })}                     | ${ExpectedCTA.ExpiredOffer}
+      ${getUser({ remainingCredit: 10 })}                      | ${getOffer({ isExpired: true, isSoldOut: false, price: 50 })}                    | ${ExpectedCTA.ExpiredOffer}
+      ${getUser({ remainingCredit: 10 })}                      | ${getOffer({ isReleased: false })}                                               | ${ExpectedCTA.ExpiredOffer}
+      ${getUser({ remainingCredit: 10 })}                      | ${getOffer({ isExpired: false, isSoldOut: true, price: 50 })}                    | ${ExpectedCTA.ExhaustedOffer}
+      ${getUser({ remainingCredit: 10 })}                      | ${getOffer({ isExpired: false, isSoldOut: false, price: 50, startPrice: null })} | ${ExpectedCTA.NotEnoughCredit}
+      ${getUser({ remainingCredit: 10 })}                      | ${getOffer({ isExpired: false, isSoldOut: false, price: null, startPrice: 50 })} | ${ExpectedCTA.NotEnoughCredit}
     `(
       `should has CTA = $expectedCTA when 
         - credit = $credit 
@@ -86,26 +96,32 @@ describe('<BookingButton />', () => {
         - offer isSoldOut = $offer.isSoldOut
         - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
-      favoriteBookingButtonTestRunner
+      (...args) => {
+        isUserBeneficiaryMock.mockImplementation(() => true)
+        isUserExBeneficiaryMock.mockImplementation(() => false)
+
+        favoriteBookingButtonTestRunner(...args)
+      }
     )
   })
 
   describe('when user is ex-beneficiary (i.e. beneficiary with expired credit)', () => {
     const expiredCredit = { ...credit, isExpired: true }
+
     // prettier-ignore : do not format the following "table" to keep it readable
     it.each`
-      user                                | credit           | offer                                                                             | expectedCTA
-      ${getUser()}                        | ${expiredCredit} | ${getOffer({ price: 0 })}                                                         | ${ExpectedCTA.InAppBooking}
-      ${getUser()}                        | ${expiredCredit} | ${getOffer({ price: 100 })}                                                       | ${ExpectedCTA.ExternalBooking}
-      ${getUser()}                        | ${expiredCredit} | ${getOffer({ externalTicketOfficeUrl: null })}                                    | ${ExpectedCTA.NoButton}
-      ${getUser({ isBookedOffer: true })} | ${expiredCredit} | ${getOffer({ isExpired: true, isSoldOut: true })}                                 | ${ExpectedCTA.BookedOffer}
-      ${getUser({ isBookedOffer: true })} | ${expiredCredit} | ${getOffer({ isReleased: false })}                                                | ${ExpectedCTA.BookedOffer}
-      ${getUser()}                        | ${expiredCredit} | ${getOffer({ isExpired: true, isSoldOut: true })}                                 | ${ExpectedCTA.NoButton}
-      ${getUser()}                        | ${expiredCredit} | ${getOffer({ isExpired: true, isSoldOut: false })}                                | ${ExpectedCTA.NoButton}
-      ${getUser()}                        | ${expiredCredit} | ${getOffer({ isExpired: false, isSoldOut: true })}                                | ${ExpectedCTA.NoButton}
-      ${getUser()}                        | ${expiredCredit} | ${getOffer({ isReleased: false })}                                                | ${ExpectedCTA.NoButton}
-      ${getUser({ remainingCredit: 10 })} | ${expiredCredit} | ${getOffer({ isExpired: false, isSoldOut: false, price: 500, startPrice: null })} | ${ExpectedCTA.ExternalBooking}
-      ${getUser({ remainingCredit: 10 })} | ${expiredCredit} | ${getOffer({ isExpired: false, isSoldOut: false, price: null, startPrice: 500 })} | ${ExpectedCTA.ExternalBooking}
+      user                                | offer                                                                             | expectedCTA
+      ${getUser()}                        | ${getOffer({ price: 0 })}                                                         | ${ExpectedCTA.InAppBooking}
+      ${getUser()}                        | ${getOffer({ price: 100 })}                                                       | ${ExpectedCTA.ExternalBooking}
+      ${getUser()}                        | ${getOffer({ externalTicketOfficeUrl: null })}                                    | ${ExpectedCTA.NoButton}
+      ${getUser({ isBookedOffer: true })} | ${getOffer({ isExpired: true, isSoldOut: true })}                                 | ${ExpectedCTA.BookedOffer}
+      ${getUser({ isBookedOffer: true })} | ${getOffer({ isReleased: false })}                                                | ${ExpectedCTA.BookedOffer}
+      ${getUser()}                        | ${getOffer({ isExpired: true, isSoldOut: true })}                                 | ${ExpectedCTA.NoButton}
+      ${getUser()}                        | ${getOffer({ isExpired: true, isSoldOut: false })}                                | ${ExpectedCTA.NoButton}
+      ${getUser()}                        | ${getOffer({ isExpired: false, isSoldOut: true })}                                | ${ExpectedCTA.NoButton}
+      ${getUser()}                        | ${getOffer({ isReleased: false })}                                                | ${ExpectedCTA.NoButton}
+      ${getUser({ remainingCredit: 10 })} | ${getOffer({ isExpired: false, isSoldOut: false, price: 500, startPrice: null })} | ${ExpectedCTA.ExternalBooking}
+      ${getUser({ remainingCredit: 10 })} | ${getOffer({ isExpired: false, isSoldOut: false, price: null, startPrice: 500 })} | ${ExpectedCTA.ExternalBooking}
     `(
       `should has CTA = $expectedCTA when 
         - credit = $credit 
@@ -117,21 +133,29 @@ describe('<BookingButton />', () => {
         - offer isSoldOut = $offer.isSoldOut
         - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
-      favoriteBookingButtonTestRunner
+      (...args) => {
+        isUserExBeneficiaryMock.mockImplementation(() => true)
+        isUserBeneficiaryMock.mockImplementation(() => true)
+        getAvailableCreditMock.mockImplementation(() => expiredCredit)
+
+        favoriteBookingButtonTestRunner(...args)
+      }
     )
   })
 
   describe('when user is NOT a beneficiary', () => {
+    getAvailableCreditMock.mockImplementation(() => credit)
+    isUserBeneficiaryMock.mockImplementation(() => false)
     // prettier-ignore : do not format the following "table" to keep it readable
     it.each`
-      user                                                      | credit    | offer                                              | expectedCTA
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({})}                                    | ${ExpectedCTA.ExternalBooking}
-      ${getUser({ isBeneficiary: false, isBookedOffer: true })} | ${credit} | ${getOffer({})}                                    | ${ExpectedCTA.NoButton}
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({ externalTicketOfficeUrl: null })}     | ${ExpectedCTA.NoButton}
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({ isExpired: true, isSoldOut: true })}  | ${ExpectedCTA.NoButton}
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({ isExpired: true, isSoldOut: false })} | ${ExpectedCTA.NoButton}
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({ isReleased: false })}                 | ${ExpectedCTA.NoButton}
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({ isExpired: false, isSoldOut: true })} | ${ExpectedCTA.NoButton}
+      user                                                      | offer                                              | expectedCTA
+      ${getUser({ isBeneficiary: false })}                      | ${getOffer({})}                                    | ${ExpectedCTA.ExternalBooking}
+      ${getUser({ isBeneficiary: false, isBookedOffer: true })} | ${getOffer({})}                                    | ${ExpectedCTA.NoButton}
+      ${getUser({ isBeneficiary: false })}                      | ${getOffer({ externalTicketOfficeUrl: null })}     | ${ExpectedCTA.NoButton}
+      ${getUser({ isBeneficiary: false })}                      | ${getOffer({ isExpired: true, isSoldOut: true })}  | ${ExpectedCTA.NoButton}
+      ${getUser({ isBeneficiary: false })}                      | ${getOffer({ isExpired: true, isSoldOut: false })} | ${ExpectedCTA.NoButton}
+      ${getUser({ isBeneficiary: false })}                      | ${getOffer({ isReleased: false })}                 | ${ExpectedCTA.NoButton}
+      ${getUser({ isBeneficiary: false })}                      | ${getOffer({ isExpired: false, isSoldOut: true })} | ${ExpectedCTA.NoButton}
     `(
       `should has CTA = $expectedCTA when 
         - credit = $credit 
@@ -142,7 +166,12 @@ describe('<BookingButton />', () => {
         - offer isSoldOut = $offer.isSoldOut
         - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
-      favoriteBookingButtonTestRunner
+      (...args) => {
+        getAvailableCreditMock.mockImplementation(() => credit)
+        isUserBeneficiaryMock.mockImplementation(() => false)
+
+        favoriteBookingButtonTestRunner(...args)
+      }
     )
   })
 })
@@ -155,17 +184,16 @@ const DEFAULT_PROPS = {
 }
 
 type RenderFavoriteParams = {
-  credit?: Credit
   offer?: FavoriteOfferResponse
   user?: UserProfileResponse
 }
 
 function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {
-  const { credit, offer, user } = { ...DEFAULT_PROPS, ...props }
+  const { offer, user } = { ...DEFAULT_PROPS, ...props }
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      <BookingButton credit={credit} offer={offer} user={user} onInAppBooking={onInAppBooking} />
+      <BookingButton offer={offer} user={user} onInAppBooking={onInAppBooking} />
     )
   )
 }
@@ -223,16 +251,14 @@ function getOffer(params?: {
 
 function favoriteBookingButtonTestRunner({
   user,
-  credit,
   offer,
   expectedCTA,
 }: {
   user: UserProfileResponse
-  credit: Credit
   offer: FavoriteOfferResponse
   expectedCTA: ExpectedCTA
 }) {
-  const renderAPI = renderFavorite({ credit, offer, user })
+  const renderAPI = renderFavorite({ offer, user })
   if (expectedCTA === ExpectedCTA.InAppBooking) {
     fireEvent.press(renderAPI.getByText('Réserver'))
     expect(onInAppBooking).toBeCalledWith(offer)

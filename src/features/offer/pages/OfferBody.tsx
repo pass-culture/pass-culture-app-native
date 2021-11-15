@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { ReportedOffer } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
-import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal'
 import { useReportedOffers } from 'features/offer/services/useReportedOffers'
@@ -39,7 +38,6 @@ interface Props {
 
 export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { data: offer } = useOffer({ offerId })
-  const credit = useAvailableCredit()
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const mapping = useSubcategoriesMapping()
@@ -152,9 +150,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
       </SectionWithDivider>
 
       <SectionWithDivider
-        visible={
-          !!user && !!credit && (isUserBeneficiary(user) || isUserExBeneficiary(user, credit))
-        }
+        visible={!!user && (isUserBeneficiary(user) || isUserExBeneficiary(user))}
         margin={true}>
         <Spacer.Column numberOfSpaces={7} />
         <SectionBody>

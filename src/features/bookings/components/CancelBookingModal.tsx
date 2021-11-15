@@ -7,7 +7,6 @@ import { extractApiErrorMessage } from 'api/apiHelpers'
 import { UserProfileResponse } from 'api/gen'
 import { Booking } from 'features/bookings/components/types'
 import { useUserProfileInfo } from 'features/home/api'
-import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
@@ -35,8 +34,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   booking,
 }) => {
   const { data: user } = useUserProfileInfo()
-  const credit = useAvailableCredit()
-  const refundRule = getRefundRule(booking, user, credit)
+  const refundRule = getRefundRule(booking, user)
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
@@ -104,10 +102,10 @@ const Refund = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-function getRefundRule(booking: Booking, user?: UserProfileResponse, credit?: Credit) {
+function getRefundRule(booking: Booking, user?: UserProfileResponse) {
   const price = convertCentsToEuros(booking.totalAmount)
-  if (price > 0 && user && credit) {
-    if (isUserExBeneficiary(user, credit)) {
+  if (price > 0 && user) {
+    if (isUserExBeneficiary(user)) {
       return t({
         id: 'not refunded because expired',
         values: { price: formatToFrenchDecimal(booking.totalAmount) },

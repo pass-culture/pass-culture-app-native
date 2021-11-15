@@ -70,9 +70,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
   const renderItem = useCallback(
     ({ item: favorite }: { item: FavoriteResponse }) => {
       if (!user || !credit) return <HitPlaceholder />
-      return (
-        <Favorite credit={credit} favorite={favorite} user={user} onInAppBooking={setOfferToBook} />
-      )
+      return <Favorite favorite={favorite} user={user} onInAppBooking={setOfferToBook} />
     },
     [credit, favoritesState, user, setOfferToBook]
   )
