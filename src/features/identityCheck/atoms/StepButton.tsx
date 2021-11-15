@@ -10,15 +10,16 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 interface Props {
   step: StepConfig
   state: 'completed' | 'current' | 'disabled'
+  onPress?: () => void
 }
 
-export const StepButton = ({ step, state }: Props) => {
+export const StepButton = ({ step, state, onPress }: Props) => {
   const { icon: Icon, label } = step
 
   return (
-    <Button activeOpacity={ACTIVE_OPACITY} disabled={state === 'disabled'}>
+    <Button activeOpacity={ACTIVE_OPACITY} onPress={onPress} disabled={state === 'disabled'}>
       <IconContainer>
-        <Icon size={getSpacing(12)} />
+        <Icon size={getSpacing(10)} />
       </IconContainer>
       <Typo.ButtonText>{label}</Typo.ButtonText>
       <CompletionContainer>
@@ -42,7 +43,7 @@ const Button = styled.TouchableOpacity<{ disabled: boolean }>((props) => ({
   alignItems: 'center',
 }))
 
-const IconContainer = styled.View({ padding: getSpacing(2) })
+const IconContainer = styled.View({ padding: getSpacing(4) })
 
 const CompletionContainer = styled.View({
   flex: 1,
