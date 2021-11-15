@@ -68,7 +68,6 @@ import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
-import { BellDeprecated } from 'ui/svg/icons/Bell_deprecated'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
@@ -87,7 +86,6 @@ import { Check } from 'ui/svg/icons/Check'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Close } from 'ui/svg/icons/Close'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
-import { ConfidentialityDeprecated } from 'ui/svg/icons/Confidentiality_deprecated'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
@@ -115,16 +113,12 @@ import { Info } from 'ui/svg/icons/Info'
 import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
-import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
-import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
-import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
 import { Lock } from 'ui/svg/icons/Lock'
-import { LockDeprecated } from 'ui/svg/icons/Lock_deprecated'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -643,16 +637,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - OfferOutingsPhysical </Text>
         </AlignedText>
         <AlignedText>
-          <LegalNoticesDeprecated size={ICON_SIZE} />
-          <Text> - LegalNoticesDeprecated </Text>
-        </AlignedText>
-        <AlignedText>
           <LegalNotices size={ICON_SIZE} />
           <Text> - LegalNotices (new) </Text>
-        </AlignedText>
-        <AlignedText>
-          <ConfidentialityDeprecated size={ICON_SIZE} />
-          <Text> - ConfidentialityDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <Confidentiality size={ICON_SIZE} />
@@ -671,10 +657,6 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Lock (new) </Text>
         </AlignedText>
         <AlignedText>
-          <LockDeprecated size={ICON_SIZE} />
-          <Text> - LockDeprecated </Text>
-        </AlignedText>
-        <AlignedText>
           <BicolorLock size={ICON_SIZE} />
           <Text> - BicolorLock </Text>
         </AlignedText>
@@ -691,16 +673,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - LifeBuoy (new) </Text>
         </AlignedText>
         <AlignedText>
-          <LifeBuoyDeprecated size={ICON_SIZE} />
-          <Text> - LifeBuoyDeprecated </Text>
-        </AlignedText>
-        <AlignedText>
           <Bell size={ICON_SIZE} />
           <Text> - Bell (new) </Text>
-        </AlignedText>
-        <AlignedText>
-          <BellDeprecated size={ICON_SIZE} />
-          <Text> - BellDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <ProfileDeletion size={ICON_SIZE} />
@@ -729,10 +703,6 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
           <Text> - TicketBooked </Text>
-        </AlignedText>
-        <AlignedText>
-          <LocationPointerNotFilledDeprecated size={ICON_SIZE} />
-          <Text> - LocationPointerNotFilledDeprecated </Text>
         </AlignedText>
         <AlignedText>
           <LocationPointerNotFilled size={ICON_SIZE} />
