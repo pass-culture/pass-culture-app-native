@@ -12,6 +12,8 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'tests/utils'
 import { BottomCardContentContainer, BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InputError } from 'ui/components/inputs/InputError'
+import { isNameValid } from 'ui/components/inputs/nameCheck'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -45,9 +47,10 @@ export const SetName: FunctionComponent<Props> = ({ route }) => {
     showFullPageModal()
   }
 
-  // TODO (LucasBeneston) Add check only names and international names ?
-  // const isCorrectName = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
-  const disabled = firstName.length === 0 || lastName.length === 0
+  const isValidFirstName = isNameValid(firstName)
+  const isValidLastName = isNameValid(lastName)
+  const disabled = !isValidFirstName || !isValidLastName
+
   function submitName() {
     if (!disabled) {
       navigate('SetPassword', { email, isNewsletterChecked, firstName, lastName })
@@ -77,6 +80,11 @@ export const SetName: FunctionComponent<Props> = ({ route }) => {
             ref={nameInput}
             {...accessibilityAndTestId(t`Entrée pour le prénom`)}
           />
+          <InputError
+            visible={!isValidFirstName && firstName.length > 0}
+            messageId={t`Ton prénom ne doit pas contenir de chiffres ou caratères spéciaux.`}
+            numberOfSpacesTop={2}
+          />
           <Spacer.Column numberOfSpaces={6} />
           <TextInput
             label={t`Nom`}
@@ -85,6 +93,11 @@ export const SetName: FunctionComponent<Props> = ({ route }) => {
             placeholder={t`Ton nom`}
             ref={nameInput}
             {...accessibilityAndTestId(t`Entrée pour le nom`)}
+          />
+          <InputError
+            visible={!isValidLastName && lastName.length > 0}
+            messageId={t`Ton nom ne doit pas contenir de chiffres ou caratères spéciaux.`}
+            numberOfSpacesTop={2}
           />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary title={t`Continuer`} onPress={submitName} disabled={disabled} />
