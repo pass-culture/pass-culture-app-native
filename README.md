@@ -45,6 +45,7 @@ In the `doc/` folder you will find the `dev standards` the team members follow:
 - [error and crash management](./doc/standards/errorManagement.md).
 - [variable naming](./doc/standards/naming.md).
 - [testing strategy](./doc/standards/testStrategy.md).
+- [PR title format](./doc/standards/pr-title.md).
 
 <details>
   <summary>To add a dev standard</summary>
