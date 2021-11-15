@@ -10,7 +10,9 @@ type Props = {
 export function BookingItemTitle(props: Props) {
   return (
     <TitleContainer>
-      <Title numberOfLines={2}>{props.title}</Title>
+      <Typo.ButtonText numberOfLines={2} shrink>
+        {props.title}
+      </Typo.ButtonText>
     </TitleContainer>
   )
 }
@@ -19,8 +21,4 @@ const TitleContainer = styled.View({
   flexDirection: 'row',
   flex: 1,
   paddingBottom: getSpacing(1),
-})
-
-export const Title = styled(Typo.ButtonText)({
-  flexShrink: 1,
 })
