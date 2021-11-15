@@ -12,6 +12,7 @@ type SectionRowProps = {
   title: string
   accessibilityLabel?: string
   renderTitle?: (title: string) => JSX.Element
+  iconSize?: number
   ctaIconSize?: number
   icon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>
@@ -47,7 +48,7 @@ export function SectionRow(props: SectionRowProps) {
       <View style={[styles.container, props.style]}>
         {!!Icon && (
           <React.Fragment>
-            <Icon />
+            <Icon size={props.iconSize} />
             <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
         )}
