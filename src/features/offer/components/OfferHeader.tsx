@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { useRef } from 'react'
-import { Animated } from 'react-native'
+import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
@@ -169,8 +169,9 @@ const Row = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
 })
-const Title = styled(Animated.Text).attrs({ numberOfLines: 1 })(({ theme }) => ({
+const Title = styled(Animated.Text).attrs({ numberOfLines: 2 })(({ theme }) => ({
   flexShrink: 1,
   textAlign: 'center',
   color: theme.colors.white,
+  ...(Platform.OS === 'web' ? { whiteSpace: 'pre-wrap' } : {}),
 }))
