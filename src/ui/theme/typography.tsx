@@ -64,11 +64,11 @@ const Title4 = styled(ColoredText)({
   lineHeight: getSpacingString(5.5),
 })
 
-const ButtonText = styled(ColoredText)({
+const ButtonText = styled(ColoredText)<{ shrink?: boolean }>(({ shrink }) => ({
   fontFamily: 'Montserrat-Bold',
   fontSize: getSpacing(3.75),
-  lineHeight: getSpacingString(5),
-})
+  ...(!shrink ? { lineHeight: getSpacingString(5) } : { flexShrink: 1 }),
+}))
 
 const Body = styled(ColoredText)({
   fontFamily: 'Montserrat-Regular',
