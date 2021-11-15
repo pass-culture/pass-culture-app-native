@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import {
   NativeSyntheticEvent,
@@ -7,9 +7,12 @@ import {
   TouchableOpacity,
 } from 'react-native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { SearchView } from 'features/search/enums'
+import {
+  useCommitStagedSearch,
+  useSearch,
+  useSearchView,
+} from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { accessibilityAndTestId } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -19,8 +22,8 @@ import { MagnifyingGlassDeprecated } from 'ui/svg/icons/MagnifyingGlass_deprecat
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack }) => {
-  const { searchState } = useSearch()
-  if (searchState.showResults)
+  const { searchView } = useSearchView()
+  if (searchView === SearchView.RESULTS)
     return (
       <TouchableOpacity
         onPress={onPressArrowBack}
@@ -42,9 +45,9 @@ const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (prop
   ) : null
 
 export const SearchBox: React.FC = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { commitStagedSearch } = useCommitStagedSearch()
+  const { setSearchView } = useSearchView()
   const { searchState, dispatch } = useSearch()
-  const { searchState: stagedSearchState } = useStagedSearch()
   const [query, setQuery] = useState<string>('')
 
   useFocusEffect(
@@ -54,25 +57,19 @@ export const SearchBox: React.FC = () => {
   )
 
   const resetSearch = () => {
-    navigate(...getTabNavConfig('Search', { query: '' }))
     setQuery('')
+    dispatch({ type: 'SET_QUERY', payload: '' })
   }
 
   const onPressArrowBack = () => {
     setQuery('')
-    dispatch({ type: 'SET_QUERY', payload: '' })
-    dispatch({ type: 'SHOW_RESULTS', payload: false })
     dispatch({ type: 'INIT' })
+    setSearchView(SearchView.LANDING)
   }
 
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
-    // When we hit enter, we may have selected a category or a venue on the search landing page
-    // these are the two potentially 'staged' filters that we want to commit to the global search state
-    const { locationFilter, offerCategories } = stagedSearchState
     const query = event.nativeEvent.text
-    navigate(
-      ...getTabNavConfig('Search', { query, showResults: true, locationFilter, offerCategories })
-    )
+    commitStagedSearch({ complementSearchState: { query } })
     analytics.logSearchQuery(query)
   }
 

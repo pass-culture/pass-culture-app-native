@@ -1,13 +1,9 @@
 import { plural } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { LocationType } from 'features/search/enums'
-import { useSearch } from 'features/search/pages/SearchWrapper'
-import { LocationFilter } from 'features/search/types'
+import { LocationType, SearchView } from 'features/search/enums'
+import { useSearch, useSearchView } from 'features/search/pages/SearchWrapper'
 import { useGeolocation } from 'libs/geolocation'
 import { ClippedTag } from 'ui/components/ClippedTag'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -17,8 +13,8 @@ interface Props {
 }
 
 export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useSearch()
+  const { setSearchView } = useSearchView()
+  const { searchState, dispatch } = useSearch()
   const { position } = useGeolocation()
 
   const venueLabel =
@@ -27,11 +23,13 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
       : null
 
   const removeVenueId = useCallback(() => {
-    const locationFilter: LocationFilter = position
-      ? { locationType: LocationType.AROUND_ME, aroundRadius: 100 }
-      : { locationType: LocationType.EVERYWHERE }
-
-    navigate(...getTabNavConfig('Search', { locationFilter }))
+    if (position) {
+      const aroundRadius = 100
+      dispatch({ type: 'SET_LOCATION_AROUND_ME', payload: aroundRadius })
+    } else {
+      dispatch({ type: 'SET_LOCATION_EVERYWHERE' })
+    }
+    setSearchView(SearchView.RESULTS)
   }, [!position])
 
   const numberOfResults = plural(nbHits, {

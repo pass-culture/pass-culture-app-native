@@ -44,6 +44,7 @@ export const AppNavigationContainer = () => {
     },
     [sw.serviceWorkerStatus]
   )
+
   useEffect(() => {
     async function restoreNavStateOnReload() {
       try {
@@ -67,8 +68,6 @@ export const AppNavigationContainer = () => {
 
   useEffect(() => {
     if (isNavReady) {
-      /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
-      isNavigationReadyRef.current = true
       hideSplashScreen && hideSplashScreen()
     }
   }, [isNavReady, hideSplashScreen])
@@ -80,6 +79,11 @@ export const AppNavigationContainer = () => {
     }
   }
 
+  function onReady() {
+    /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
+    isNavigationReadyRef.current = true
+  }
+
   if (!isNavReady) {
     return <LoadingPage />
   }
@@ -89,6 +93,7 @@ export const AppNavigationContainer = () => {
       initialState={initialNavigationState}
       // @ts-expect-error the typing of onNavigationStateChange() is good enough
       onStateChange={onNavigationStateChange}
+      onReady={onReady}
       fallback={<LoadingPage />}
       ref={setRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}

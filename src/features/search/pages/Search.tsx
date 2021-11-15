@@ -1,57 +1,48 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useEffect, useRef, useState } from 'react'
+import isEmpty from 'lodash/isEmpty'
+import React from 'react'
 import styled from 'styled-components/native'
+import useDeepCompareEffect from 'use-deep-compare-effect'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchHeader, SearchLandingPage, SearchResults } from 'features/search/components'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { SearchView } from 'features/search/enums'
+import { Categories } from 'features/search/pages/Categories'
+import { LocationFilter } from 'features/search/pages/LocationFilter'
+import { LocationPicker } from 'features/search/pages/LocationPicker'
+import { SearchFilter } from 'features/search/pages/SearchFilter'
+import { useSearch, useStagedSearch, useSearchView } from 'features/search/pages/SearchWrapper'
 import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
-
-import { useSearchResults } from './useSearchResults'
-
-const useShowResults = () => {
-  const timer = useRef<NodeJS.Timeout>()
-  const { searchState } = useSearch()
-  const [showResults, setShowResults] = useState<boolean>(searchState.showResults)
-  const { isLoading } = useSearchResults()
-
-  useEffect(() => {
-    if (searchState.showResults) {
-      if (!isLoading) {
-        setShowResults(true)
-      } else {
-        // For most networks, 20ms is enough time to fetch the results fom Algolia
-        // In this case we can avoid displaying the placeholders
-        timer.current = global.setTimeout(() => {
-          setShowResults(true)
-        }, 20)
-      }
-    } else {
-      setShowResults(false)
-    }
-    return () => timer.current && clearTimeout(timer.current)
-  }, [searchState.showResults, isLoading])
-
-  return showResults
-}
 
 export const Search: React.FC = () => {
   useKeyboardAdjust()
-  const { params } = useRoute<UseRouteType<'Search'>>()
+  const { params = {} } = useRoute<UseRouteType<'Search'>>()
+  const { searchView, setSearchView } = useSearchView()
   const { dispatch } = useSearch()
-  const showResults = useShowResults()
+  const { dispatch: stagedDispatch } = useStagedSearch()
 
-  useEffect(() => {
-    if (params) {
-      dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params })
-      dispatch({ type: 'SHOW_RESULTS', payload: true })
-    }
+  useDeepCompareEffect(() => {
+    if (!params || isEmpty(params)) return
+    const view = params.view ? params.view : SearchView.LANDING
+    dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params })
+    stagedDispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params })
+    setSearchView(view)
   }, [params])
+
+  function renderSearchView() {
+    if (searchView === SearchView.LANDING) return <SearchLandingPage />
+    else if (searchView === SearchView.RESULTS) return <SearchResults />
+    else if (searchView === SearchView.CATEGORIES) return <Categories />
+    else if (searchView === SearchView.FILTERS) return <SearchFilter />
+    else if (searchView === SearchView.LOCATION_FILTERS) return <LocationFilter />
+    else if (searchView === SearchView.LOCATION_ADDRESS) return <LocationPicker />
+    return <SearchLandingPage />
+  }
 
   return (
     <Container>
       <SearchHeader />
-      {showResults ? <SearchResults /> : <SearchLandingPage />}
+      {renderSearchView()}
     </Container>
   )
 }

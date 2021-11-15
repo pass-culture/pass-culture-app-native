@@ -33,7 +33,6 @@ export interface SearchState {
     isThing: boolean
   }
   priceRange: Range<number> | null
-  showResults: boolean
   timeRange: Range<number> | null
   tags: string[]
   query: string

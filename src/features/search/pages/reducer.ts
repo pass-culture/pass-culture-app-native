@@ -30,7 +30,6 @@ export const initialSearchState: SearchState = {
   },
   priceRange: [MIN_PRICE, MAX_PRICE],
   query: '',
-  showResults: false,
   tags: [],
   timeRange: null,
 }
@@ -43,7 +42,6 @@ export type Action =
   | { type: 'RADIUS'; payload: number }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
-  | { type: 'SHOW_RESULTS'; payload: boolean }
   | { type: 'SET_CATEGORY'; payload: SearchGroupNameEnum[] }
   | { type: 'TOGGLE_CATEGORY'; payload: SearchGroupNameEnum }
   | { type: 'TOGGLE_OFFER_FREE' }
@@ -60,98 +58,92 @@ export type Action =
   | { type: 'SET_QUERY'; payload: string }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
-  switch (action.type) {
-    case 'INIT':
-      return { ...initialSearchState, showResults: state.showResults }
-    case 'SET_STATE':
-      return { ...initialSearchState, ...action.payload }
-    case 'SHOW_RESULTS':
-      return { ...state, showResults: action.payload }
-    case 'SET_STATE_FROM_NAVIGATE':
-      return {
+  let newState = state
+
+  if (action.type === 'INIT') newState = initialSearchState
+  if (action.type === 'SET_STATE') newState = { ...initialSearchState, ...action.payload }
+  if (action.type === 'SET_STATE_FROM_NAVIGATE') {
+    const priceRange = action.payload.priceRange
+      ? clampPrice(action.payload.priceRange)
+      : initialSearchState.priceRange
+    newState = { ...initialSearchState, ...action.payload, priceRange }
+  }
+  if (action.type === 'PRICE_RANGE') newState = { ...state, priceRange: action.payload }
+  if (action.type === 'RADIUS') {
+    if ('aroundRadius' in state.locationFilter) {
+      newState = {
         ...state,
-        ...action.payload,
-        priceRange: clampPrice(action.payload.priceRange),
+        locationFilter: { ...state.locationFilter, aroundRadius: action.payload },
       }
-    case 'PRICE_RANGE':
-      return { ...state, priceRange: action.payload }
-    case 'RADIUS':
-      if ('aroundRadius' in state.locationFilter) {
-        return {
-          ...state,
-          locationFilter: { ...state.locationFilter, aroundRadius: action.payload },
-        }
-      } else {
-        return state
-      }
-    case 'TIME_RANGE':
-      return { ...state, timeRange: action.payload }
-    case 'TOGGLE_CATEGORY':
-      return {
-        ...state,
-        offerCategories: addOrRemove(state.offerCategories, action.payload).sort(sortCategories),
-      }
-    case 'SET_CATEGORY':
-      return { ...state, offerCategories: action.payload.sort(sortCategories) }
-    case 'OFFER_TYPE':
-      return {
-        ...state,
-        offerTypes: { ...state.offerTypes, [action.payload]: !state.offerTypes[action.payload] },
-      }
-    case 'TOGGLE_OFFER_FREE':
-      return { ...state, offerIsFree: !state.offerIsFree }
-    case 'TOGGLE_OFFER_DUO':
-      return { ...state, offerIsDuo: !state.offerIsDuo }
-    case 'TOGGLE_OFFER_NEW':
-      return { ...state, offerIsNew: !state.offerIsNew }
-    case 'TOGGLE_DATE':
-      if (state.date) return { ...state, date: null }
-      return {
+    }
+  }
+  if (action.type === 'TIME_RANGE') newState = { ...state, timeRange: action.payload }
+  if (action.type === 'TOGGLE_CATEGORY')
+    newState = {
+      ...state,
+      offerCategories: addOrRemove(state.offerCategories, action.payload).sort(sortCategories),
+    }
+  if (action.type === 'SET_CATEGORY')
+    newState = { ...state, offerCategories: action.payload.sort(sortCategories) }
+  if (action.type === 'OFFER_TYPE')
+    newState = {
+      ...state,
+      offerTypes: { ...state.offerTypes, [action.payload]: !state.offerTypes[action.payload] },
+    }
+  if (action.type === 'TOGGLE_OFFER_FREE') newState = { ...state, offerIsFree: !state.offerIsFree }
+  if (action.type === 'TOGGLE_OFFER_DUO') newState = { ...state, offerIsDuo: !state.offerIsDuo }
+  if (action.type === 'TOGGLE_OFFER_NEW') newState = { ...state, offerIsNew: !state.offerIsNew }
+  if (action.type === 'TOGGLE_DATE') {
+    if (state.date) newState = { ...state, date: null }
+    else
+      newState = {
         ...state,
         date: {
           option: DATE_FILTER_OPTIONS.TODAY,
           selectedDate: new Date(),
         },
       }
-    case 'TOGGLE_HOUR':
-      if (state.timeRange) return { ...state, timeRange: null }
-      return {
+  }
+  if (action.type === 'TOGGLE_HOUR') {
+    if (state.timeRange) newState = { ...state, timeRange: null }
+    else
+      newState = {
         ...state,
         timeRange: [8, 24],
       }
-    case 'SELECT_DATE_FILTER_OPTION':
-      if (!state.date) return state
-      return { ...state, date: { ...state.date, option: action.payload } }
-    case 'SELECT_DATE':
-      if (!state.date) return state
-      return { ...state, date: { ...state.date, selectedDate: action.payload } }
-    case 'SET_LOCATION_AROUND_ME':
-      return {
-        ...state,
-        locationFilter: {
-          locationType: LocationType.AROUND_ME,
-          aroundRadius: action.payload ?? MAX_RADIUS,
-        },
-      }
-    case 'SET_LOCATION_EVERYWHERE':
-      return { ...state, locationFilter: { locationType: LocationType.EVERYWHERE } }
-    case 'SET_LOCATION_PLACE':
-      return {
-        ...state,
-        locationFilter: {
-          locationType: LocationType.PLACE,
-          place: action.payload.place,
-          aroundRadius: action.payload.aroundRadius ?? MAX_RADIUS,
-        },
-      }
-    case 'SET_LOCATION_VENUE':
-      return {
-        ...state,
-        locationFilter: { locationType: LocationType.VENUE, venue: action.payload },
-      }
-    case 'SET_QUERY':
-      return { ...state, query: action.payload }
-    default:
-      return state
   }
+  if (action.type === 'SELECT_DATE_FILTER_OPTION') {
+    if (state.date) newState = { ...state, date: { ...state.date, option: action.payload } }
+  }
+  if (action.type === 'SELECT_DATE') {
+    if (state.date) newState = { ...state, date: { ...state.date, selectedDate: action.payload } }
+  }
+  if (action.type === 'SET_LOCATION_AROUND_ME') {
+    newState = {
+      ...state,
+      locationFilter: {
+        locationType: LocationType.AROUND_ME,
+        aroundRadius: action.payload ?? MAX_RADIUS,
+      },
+    }
+  }
+  if (action.type === 'SET_LOCATION_EVERYWHERE')
+    newState = { ...state, locationFilter: { locationType: LocationType.EVERYWHERE } }
+  if (action.type === 'SET_LOCATION_PLACE')
+    newState = {
+      ...state,
+      locationFilter: {
+        locationType: LocationType.PLACE,
+        place: action.payload.place,
+        aroundRadius: action.payload.aroundRadius ?? MAX_RADIUS,
+      },
+    }
+  if (action.type === 'SET_LOCATION_VENUE')
+    newState = {
+      ...state,
+      locationFilter: { locationType: LocationType.VENUE, venue: action.payload },
+    }
+  if (action.type === 'SET_QUERY') newState = { ...state, query: action.payload }
+
+  return newState
 }

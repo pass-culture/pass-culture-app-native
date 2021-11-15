@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { LocationType } from 'features/search/enums'
+import { LocationType, SearchView } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
@@ -39,8 +39,8 @@ describe('SearchBox component', () => {
     expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
     expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
+        view: SearchView.RESULTS,
         query: 'jazzaza',
-        showResults: true,
         offerCategories: mockStagedSearchState.offerCategories,
         locationFilter: mockStagedSearchState.locationFilter,
       })

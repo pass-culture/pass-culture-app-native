@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { SearchView } from 'features/search/enums'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
@@ -37,7 +38,7 @@ describe('NoFavoritesResult component', () => {
     const renderAPI = render(<NoFavoritesResult />)
     const button = renderAPI.getByText('Explorer les offres')
     fireEvent.press(button)
-    expect(navigate).toBeCalledWith(...getTabNavConfig('Search', { showResults: true }))
+    expect(navigate).toBeCalledWith(...getTabNavConfig('Search', { view: SearchView.RESULTS }))
     expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('favorites')
   })
 })

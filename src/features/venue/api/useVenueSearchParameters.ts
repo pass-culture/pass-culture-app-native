@@ -40,7 +40,6 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
     tags: [],
     date: null,
     timeRange: null,
-    showResults: false,
     query: '',
   }
 

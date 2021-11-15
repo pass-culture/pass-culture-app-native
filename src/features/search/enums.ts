@@ -3,6 +3,16 @@ import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
+export enum SearchView {
+  LANDING = 'principale',
+  RESULTS = 'resultats',
+  CATEGORIES = 'categories',
+  FILTERS = 'filtres',
+  LOCATION_FILTERS = 'localisation-filtres',
+  LOCATION_ADDRESS = 'localisation-adresse',
+}
+export const SearchViewValues = Object.values(SearchView)
+
 export enum DATE_FILTER_OPTIONS {
   TODAY = 'today',
   CURRENT_WEEK = 'currentWeek',

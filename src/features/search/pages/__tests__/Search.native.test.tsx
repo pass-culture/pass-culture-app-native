@@ -2,7 +2,8 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
-import { LocationType } from 'features/search/enums'
+import { SearchRouteParams } from 'features/navigation/TabBar/types'
+import { LocationType, SearchView } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { cleanup, render } from 'tests/utils'
@@ -22,12 +23,12 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
   }),
-  useCommit: () => ({
-    commit: jest.fn(),
+  useCommitStagedSearch: () => ({
+    commitStagedSearch: jest.fn(),
   }),
 }))
 
-const parameters: SearchState = {
+const searchState: SearchState = {
   beginningDatetime: null,
   endingDatetime: null,
   date: null,
@@ -39,10 +40,13 @@ const parameters: SearchState = {
   offerIsNew: false,
   offerTypes: { isDigital: false, isEvent: false, isThing: false },
   priceRange: [0, 500],
-  showResults: false,
   tags: [],
   timeRange: null,
   query: '',
+}
+const routeParams: SearchRouteParams = {
+  ...searchState,
+  view: SearchView.RESULTS,
 }
 
 describe('Search component', () => {
@@ -57,10 +61,10 @@ describe('Search component', () => {
   })
 
   it('should handle coming from "See More" correctly', () => {
-    useRoute.mockReturnValueOnce({ params: parameters })
+    useRoute.mockReturnValueOnce({ params: routeParams })
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<Search />))
-    expect(mockDispatch).toBeCalledWith({ type: 'SET_STATE_FROM_NAVIGATE', payload: parameters })
+    expect(mockDispatch).toBeCalledWith({ type: 'SET_STATE_FROM_NAVIGATE', payload: searchState })
     expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
   })
 })

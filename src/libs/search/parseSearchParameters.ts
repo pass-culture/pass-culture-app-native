@@ -55,7 +55,6 @@ export const parseSearchParameters = (
       isThing: parameters.isThing || false,
     },
     priceRange: _buildPriceRange({ priceMin, priceMax }),
-    showResults: false,
     tags: parameters.tags || [],
     date: null,
     timeRange: null,

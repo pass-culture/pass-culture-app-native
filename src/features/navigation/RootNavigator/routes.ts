@@ -63,10 +63,6 @@ import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData'
 import { RecreditBirthdayNotification } from 'features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification'
-import { Categories as SearchCategories } from 'features/search/pages/Categories'
-import { LocationFilter } from 'features/search/pages/LocationFilter'
-import { LocationPicker } from 'features/search/pages/LocationPicker'
-import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { Venue } from 'features/venue'
 
 import { Route } from './types'
@@ -241,18 +237,6 @@ export const routes: Route[] = [
     options: { title: t`Suppression profil confirmée` },
   },
   {
-    name: 'LocationFilter',
-    component: LocationFilter,
-    path: 'recherche/localisation/filtres',
-    options: { title: t`Recherche` },
-  },
-  {
-    name: 'LocationPicker',
-    component: LocationPicker,
-    path: 'recherche/localisation/choisir-adresse',
-    options: { title: t`Recherche` },
-  },
-  {
     name: 'Login',
     component: Login,
     hoc: withAsyncErrorBoundary,
@@ -319,18 +303,6 @@ export const routes: Route[] = [
     hoc: withAsyncErrorBoundary,
     path: 'email-modification-mot-de-passe-expire',
     options: { title: t`Email modification mot de passe expiré` },
-  },
-  {
-    name: 'SearchCategories',
-    component: SearchCategories,
-    path: 'recherche/categories',
-    options: { title: t`Recherche - catégories` },
-  },
-  {
-    name: 'SearchFilter',
-    component: SearchFilter,
-    path: 'recherche/filtres',
-    options: { title: t`Recherche - filtres` },
   },
   {
     name: 'SelectSchool',

@@ -6,7 +6,8 @@ import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { SearchView } from 'features/search/enums'
+import { useSearchView, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -37,6 +38,7 @@ const useScrollToEndOnTimeOrDateActivation = () => {
 }
 
 export const SearchFilter: React.FC = () => {
+  const { setSearchView } = useSearchView()
   const { searchState } = useStagedSearch()
   const { data: profile } = useUserProfileInfo()
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
@@ -123,7 +125,11 @@ export const SearchFilter: React.FC = () => {
         </StyledScrollView>
       </React.Fragment>
 
-      <PageHeader title={t`Filtrer`} RightComponent={ReinitializeFilters} />
+      <PageHeader
+        title={t`Filtrer`}
+        RightComponent={ReinitializeFilters}
+        onGoBack={() => setSearchView(SearchView.LANDING)}
+      />
 
       <ShowResultsContainer>
         <ShowResults />

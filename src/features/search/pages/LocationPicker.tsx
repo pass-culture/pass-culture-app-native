@@ -4,6 +4,8 @@ import React, { useRef, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SearchView } from 'features/search/enums'
+import { useSearchView } from 'features/search/pages/SearchWrapper'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -22,6 +24,8 @@ const RightIcon: React.FC<{ value: string; onPress: () => void }> = (props) =>
   ) : null
 
 export const LocationPicker: React.FC = () => {
+  const { setSearchView } = useSearchView()
+
   const [value, setValue] = useState<string>('')
   const [debouncedValue, setDebouncedValue] = useState<string>(value)
   const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
@@ -53,7 +57,10 @@ export const LocationPicker: React.FC = () => {
       <Spacer.Column numberOfSpaces={4} />
       <SuggestedPlaces query={debouncedValue} />
 
-      <PageHeader title={t`Choisir un lieu`} />
+      <PageHeader
+        title={t`Choisir un lieu`}
+        onGoBack={() => setSearchView(SearchView.LOCATION_FILTERS)}
+      />
     </Container>
   )
 }

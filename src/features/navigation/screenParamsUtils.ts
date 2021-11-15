@@ -1,4 +1,5 @@
 import { AllNavParamList, RouteParams, ScreenNames } from 'features/navigation/RootNavigator'
+import { SearchView, SearchViewValues } from 'features/search/enums'
 
 type ScreensRequiringParsing = Extract<
   ScreenNames,
@@ -72,6 +73,8 @@ export const screenParamsParser: ParamsParsers = {
     id: (value) => (value ? Number(value) : 0),
   },
   Search: {
+    view: (value) =>
+      (SearchViewValues.includes(value as SearchView) ? value : SearchView.LANDING) as SearchView,
     beginningDatetime: parseDataWithISODates,
     date: parseDataWithISODates,
     endingDatetime: parseDataWithISODates,
@@ -84,7 +87,6 @@ export const screenParamsParser: ParamsParsers = {
     offerTypes: JSON.parse,
     priceRange: JSON.parse,
     query: JSON.parse,
-    showResults: JSON.parse,
     tags: JSON.parse,
     timeRange: JSON.parse,
   },
@@ -129,6 +131,7 @@ type ParamsStringifiers = {
 
 export const screenParamsStringifier: ParamsStringifiers = {
   Search: {
+    view: JSON.stringify,
     beginningDatetime: JSON.stringify,
     date: JSON.stringify,
     endingDatetime: JSON.stringify,
@@ -141,7 +144,6 @@ export const screenParamsStringifier: ParamsStringifiers = {
     offerTypes: JSON.stringify,
     priceRange: JSON.stringify,
     query: JSON.stringify,
-    showResults: JSON.stringify,
     tags: JSON.stringify,
     timeRange: JSON.stringify,
   },

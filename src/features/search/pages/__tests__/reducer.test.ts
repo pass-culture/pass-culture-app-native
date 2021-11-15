@@ -25,16 +25,8 @@ describe('Search reducer', () => {
 
   const state = initialSearchState
   it('should handle INIT', () => {
-    let searchState = { showResults: false } as SearchState
-    expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual({
-      ...initialSearchState,
-      showResults: false,
-    })
-    searchState = { showResults: true } as SearchState
-    expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual({
-      ...initialSearchState,
-      showResults: true,
-    })
+    const searchState = ({ dummyKey: false } as unknown) as SearchState
+    expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual(initialSearchState)
   })
 
   it('should handle SET_STATE_FROM_NAVIGATE', () => {
@@ -173,13 +165,6 @@ describe('Search reducer', () => {
     // 3. Remove isDigital
     newState = searchReducer(newState, { type: 'OFFER_TYPE', payload: 'isDigital' })
     expect(newState.offerTypes).toStrictEqual({ isDigital: false, isThing: true, isEvent: false })
-  })
-
-  it('should handle SHOW_RESULTS', () => {
-    let newState = searchReducer(state, { type: 'SHOW_RESULTS', payload: true })
-    expect(newState).toStrictEqual({ ...state, showResults: true })
-    newState = searchReducer(newState, { type: 'SHOW_RESULTS', payload: false })
-    expect(newState).toStrictEqual({ ...state, showResults: false })
   })
 
   it('should handle TOGGLE_OFFER_FREE', () => {

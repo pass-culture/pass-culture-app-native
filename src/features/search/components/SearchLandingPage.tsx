@@ -1,15 +1,13 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
-import { CATEGORY_CRITERIA, LocationType } from 'features/search/enums'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { CATEGORY_CRITERIA, LocationType, SearchView } from 'features/search/enums'
+import { useSearchView, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
@@ -18,7 +16,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 const SMALL_VIEWPORT_MAX_HEIGHT = 500
 
 export const SearchLandingPage: React.FC = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { setSearchView } = useSearchView()
   const { searchState } = useStagedSearch()
   const { locationFilter, offerCategories } = searchState
   const { locationType } = locationFilter
@@ -38,13 +36,13 @@ export const SearchLandingPage: React.FC = () => {
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.Flex flex={mqSmallWebViewportHeight ? 0.5 : 1} />
 
-        <TouchableOpacity onPress={() => navigate('SearchCategories')}>
+        <TouchableOpacity onPress={() => setSearchView(SearchView.CATEGORIES)}>
           <BicolorListItem title={searchGroupLabel} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
 
         <Separator />
 
-        <TouchableOpacity onPress={() => navigate('LocationFilter')}>
+        <TouchableOpacity onPress={() => setSearchView(SearchView.LOCATION_FILTERS)}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
         </TouchableOpacity>
 

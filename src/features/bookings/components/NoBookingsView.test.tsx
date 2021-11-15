@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { SearchView } from 'features/search/enums'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
@@ -22,7 +23,7 @@ describe('<NoBookingsView />', () => {
     const renderAPI = render(reactQueryProviderHOC(<NoBookingsView />))
     const button = renderAPI.getByText('Explorer les offres')
     fireEvent.press(button)
-    expect(navigate).toBeCalledWith(...getTabNavConfig('Search', { showResults: true }))
+    expect(navigate).toBeCalledWith(...getTabNavConfig('Search', { view: SearchView.RESULTS }))
     expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('bookings')
   })
 })

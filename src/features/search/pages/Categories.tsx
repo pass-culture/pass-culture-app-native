@@ -1,13 +1,12 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { CATEGORY_CRITERIA, SearchView } from 'features/search/enums'
+import { useSearchView, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Validate } from 'ui/svg/icons/Validate'
@@ -34,8 +33,10 @@ export const useSelectCategory = (callback: () => void) => {
 }
 
 export const Categories: React.FC = () => {
-  const { goBack } = useNavigation()
-  const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
+  const { setSearchView } = useSearchView()
+  const { isCategorySelected, selectCategory } = useSelectCategory(() =>
+    setSearchView(SearchView.LANDING)
+  )
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
   return (
@@ -68,7 +69,7 @@ export const Categories: React.FC = () => {
         })}
       </ScrollView>
 
-      <PageHeader title={t`Catégories`} />
+      <PageHeader title={t`Catégories`} onGoBack={() => setSearchView(SearchView.LANDING)} />
     </Container>
   )
 }

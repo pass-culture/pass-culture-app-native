@@ -5,11 +5,10 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { usePlaces, useVenues } from 'features/search/api'
+import { SearchView } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useSearchView, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
@@ -55,8 +54,8 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
 export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
   const { data: places = [], isLoading: isLoadingPlaces } = usePlaces(query)
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
+  const { setSearchView } = useSearchView()
   const { dispatch } = useStagedSearch()
-  const { goBack } = useGoBack(...getTabNavConfig('Search'))
 
   const onPickPlace = (hit: SuggestedPlaceOrVenue) => () => {
     if (isVenue(hit) && hit.venueId) {
@@ -66,10 +65,7 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
       analytics.logChooseLocation({ type: 'place' })
       dispatch({ type: 'SET_LOCATION_PLACE', payload: { aroundRadius: MAX_RADIUS, place: hit } })
     }
-    // we need to call goBack twice, first to LocationPicker
-    goBack()
-    // then previous page
-    goBack()
+    setSearchView(SearchView.LANDING)
   }
 
   const filteredPlaces: SuggestedPlaceOrVenue[] = [

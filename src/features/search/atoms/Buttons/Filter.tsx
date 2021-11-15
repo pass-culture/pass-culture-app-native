@@ -1,11 +1,10 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { SearchView } from 'features/search/enums'
+import { useSearch, useSearchView, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useFilterCount } from 'features/search/utils/useFilterCount'
 import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -13,14 +12,14 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const Filter: React.FC = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { setSearchView } = useSearchView()
   const { searchState } = useSearch()
-  const { dispatch } = useStagedSearch()
+  const { dispatch: stagedDispatch } = useStagedSearch()
   const filterCount = useFilterCount(searchState)
 
   const onPress = () => {
-    dispatch({ type: 'SET_STATE', payload: searchState })
-    navigate('SearchFilter')
+    stagedDispatch({ type: 'SET_STATE', payload: searchState })
+    setSearchView(SearchView.FILTERS)
   }
 
   return (

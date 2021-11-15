@@ -1,13 +1,11 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Section } from 'features/search/atoms/Sections'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
-import { LocationType } from 'features/search/enums'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { LocationType, SearchView } from 'features/search/enums'
+import { useSearchView, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -15,7 +13,7 @@ import { Typo, Spacer, ColorsEnum, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const Location: React.FC = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { setSearchView } = useSearchView()
   const { searchState } = useStagedSearch()
   const { locationType } = searchState.locationFilter
 
@@ -26,7 +24,7 @@ export const Location: React.FC = () => {
 
   const onPressChangeLocation = () => {
     logUseFilter()
-    navigate('LocationFilter')
+    setSearchView(SearchView.LOCATION_FILTERS)
   }
 
   return (

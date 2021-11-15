@@ -1,7 +1,7 @@
 import { t, plural } from '@lingui/macro'
 import React, { useEffect, useState } from 'react'
 
-import { useCommit } from 'features/search/pages/SearchWrapper'
+import { useCommitStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useStagedSearchResults } from 'features/search/pages/useSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
@@ -15,9 +15,13 @@ const formatNbHits = (nbHits: number) => {
 }
 
 export const ShowResults: React.FC = () => {
-  const { commit } = useCommit()
+  const { commitStagedSearch } = useCommitStagedSearch()
   const { data, isFetching } = useStagedSearchResults()
   const [nbHits, setNbHits] = useState<number>(data && data.pages ? data.pages[0].nbHits : 0)
+
+  function onPress() {
+    commitStagedSearch()
+  }
 
   useEffect(() => {
     if (!isFetching) {
@@ -29,7 +33,7 @@ export const ShowResults: React.FC = () => {
     <ButtonPrimary
       title={formatNbHits(nbHits)}
       disabled={nbHits === 0}
-      onPress={commit}
+      onPress={onPress}
       adjustsFontSizeToFit={true}
     />
   )

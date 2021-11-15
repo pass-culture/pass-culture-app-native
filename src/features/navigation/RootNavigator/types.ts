@@ -74,12 +74,8 @@ export type RootStackParamList = {
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
-  LocationFilter: undefined
-  LocationPicker: undefined
   NextBeneficiaryStep: undefined
   PersonalData: undefined
-  SearchCategories: undefined
-  SearchFilter: undefined
   SelectSchool: { nextBeneficiaryValidationStep: BeneficiaryValidationStep | null | undefined }
   SelectSchoolHome: { nextBeneficiaryValidationStep: BeneficiaryValidationStep | null | undefined }
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
