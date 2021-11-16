@@ -58,7 +58,7 @@ function renderHeader({
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      <ThemeProvider theme={{ ...theme, showTabbar: false }}>
+      <ThemeProvider theme={{ ...theme, showTabBar: false }}>
         <TabNavigationStateProvider>
           <Header />
         </TabNavigationStateProvider>

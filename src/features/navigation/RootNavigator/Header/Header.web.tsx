@@ -74,7 +74,7 @@ export const Header = memo(function Header() {
     fadeInTablette()
   }, [isBrandVisible])
 
-  if (theme.showTabbar) {
+  if (theme.showTabBar) {
     return null
   }
   return (

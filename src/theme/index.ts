@@ -35,7 +35,7 @@ export interface AppThemeType extends Omit<IdCheckThemeType, 'colors' | 'typogra
   isTabletViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isDesktopViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isTouch: boolean
-  showTabbar: boolean // computed dynamically in ThemeProvider.tsx
+  showTabBar: boolean // computed dynamically in ThemeProvider.tsx
   activeOpacity: number
   fontFamily: {
     medium: string
@@ -107,7 +107,7 @@ export const theme: AppThemeType = deepmerge(idCheckTheme, {
   navTopHeight: getSpacing(20),
   tabBarHeight: TAB_BAR_COMP_HEIGHT,
   isTouch,
-  showTabbar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
+  showTabBar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,
   fontFamily: {
     medium: 'Montserrat-Medium',

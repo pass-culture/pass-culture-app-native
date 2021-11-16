@@ -12,7 +12,7 @@ export const ThemeProvider: React.FC<{ theme: DefaultTheme }> = ({ children, the
   const isMobileViewport = useMediaQuery({ maxWidth: tabletMinWidth })
   const isTabletViewport = useMediaQuery({ minWidth: tabletMinWidth, maxWidth: desktopMinWidth })
   const isDesktopViewport = useMediaQuery({ minWidth: desktopMinWidth })
-  const showTabbar = theme.isTouch || !!isMobileViewport
+  const showTabBar = theme.isTouch || !!isMobileViewport
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
 
   const computedTheme = useMemo(
@@ -21,10 +21,10 @@ export const ThemeProvider: React.FC<{ theme: DefaultTheme }> = ({ children, the
       isMobileViewport,
       isTabletViewport,
       isDesktopViewport,
-      showTabbar,
+      showTabBar,
       appContentWidth,
     }),
-    [isMobileViewport, isTabletViewport, isDesktopViewport, showTabbar, appContentWidth]
+    [isMobileViewport, isTabletViewport, isDesktopViewport, showTabBar, appContentWidth]
   )
 
   return <DefaultThemeProvider theme={computedTheme}>{children}</DefaultThemeProvider>
