@@ -1,7 +1,7 @@
 import React, { ComponentType, memo } from 'react'
 import styled from 'styled-components/native'
 
-import { BackgroundPurple } from 'ui/svg/BackgroundPurple'
+import { BackgroundSecondary } from 'ui/svg/BackgroundSecondary'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const withWebWrapper = (Component: ComponentType<any>) => {
@@ -11,7 +11,7 @@ export const withWebWrapper = (Component: ComponentType<any>) => {
         <SiteContainer>
           <Component {...props} />
         </SiteContainer>
-        <BackgroundPurple />
+        <BackgroundSecondary />
       </SiteWrapper>
     )
   })

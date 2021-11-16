@@ -1,7 +1,7 @@
-import React, { FC, MutableRefObject, useEffect, useState } from 'react'
+import React, { FC, MutableRefObject, useEffect, useState, useMemo } from 'react'
 import { Keyboard, View, KeyboardAvoidingView, Platform } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Background } from 'ui/svg/Background'
@@ -25,6 +25,7 @@ interface Props {
 }
 
 export const BottomContentPage: FC<Props> = (props) => {
+  const theme = useTheme()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useKeyboardEvents({
     onBeforeShow(data) {
@@ -46,19 +47,71 @@ export const BottomContentPage: FC<Props> = (props) => {
     props.keyboardHeightRef.current = keyboardHeight
   }, [keyboardHeight])
 
+  const Layout = useMemo(() => {
+    const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView)(
+      theme.isMobileViewport ? {} : { flex: 1 }
+    )
+    const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom: number }>(
+      ({ theme }) => ({
+        contentContainerStyle: {
+          width: '100%',
+          padding: getSpacing(6),
+          borderTopLeftRadius: getSpacing(4),
+          borderTopRightRadius: getSpacing(4),
+          backgroundColor: `${ColorsEnum.WHITE}`,
+          alignItems: 'center',
+          flexDirection: 'column',
+          paddingBottom: getCorrectPadding(keyboardHeight),
+          ...(theme.isMobileViewport
+            ? {}
+            : {
+                marginTop: theme.bottomContentPage.offsetTopHeightDesktopTablet,
+                flexGrow: 1,
+              }),
+        },
+      })
+    )({
+      ...getShadow({
+        shadowOffset: {
+          width: 0,
+          height: getSpacing(2),
+        },
+        shadowRadius: getSpacing(1),
+        shadowColor: ColorsEnum.BLACK,
+        shadowOpacity: 0.15,
+      }),
+    })
+
+    const SCALE_HEIGHT_RATIO = 1.75
+    const StyledBackground = () => (
+      <Background
+        height={
+          theme.isMobileViewport
+            ? undefined
+            : theme.bottomContentPage.offsetTopHeightDesktopTablet * SCALE_HEIGHT_RATIO
+        }
+      />
+    )
+
+    return {
+      Background: StyledBackground,
+      BottomCardContainer: StyledBottomCardContainer,
+      KeyboardAvoidingView: StyledKeyboardAvoidingView,
+    }
+  }, [theme.bottomContentPage.offsetTopHeightDesktopTablet, theme.isMobileViewport, keyboardHeight])
+
   return (
     <BottomContentPageContainer>
-      <Background />
+      <Layout.Background />
       <Container>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-          <StyledBottomCardContainer
-            customPaddingBottom={getCorrectPadding(keyboardHeight)}
+        <Layout.KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+          <Layout.BottomCardContainer
             scrollEnabled={keyboardHeight !== 0}
             keyboardShouldPersistTaps="handled">
             {props.children}
             <Spacer.BottomScreen />
-          </StyledBottomCardContainer>
-        </KeyboardAvoidingView>
+          </Layout.BottomCardContainer>
+        </Layout.KeyboardAvoidingView>
       </Container>
     </BottomContentPageContainer>
   )
@@ -74,31 +127,6 @@ const Container = styled(View).attrs({
   width: '100%',
   height: '100%',
   justifyContent: 'flex-end',
-})
-
-const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom: number }>(
-  ({ customPaddingBottom }) => ({
-    contentContainerStyle: {
-      width: '100%',
-      padding: getSpacing(6),
-      borderTopLeftRadius: getSpacing(4),
-      borderTopRightRadius: getSpacing(4),
-      backgroundColor: `${ColorsEnum.WHITE}`,
-      alignItems: 'center',
-      flexDirection: 'column',
-      paddingBottom: customPaddingBottom,
-    },
-  })
-)<{ customPaddingBottom: number }>({
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(2),
-    },
-    shadowRadius: getSpacing(1),
-    shadowColor: ColorsEnum.BLACK,
-    shadowOpacity: 0.15,
-  }),
 })
 
 export const BottomCardContentContainer = styled.View({
