@@ -1,12 +1,14 @@
+// TODO: remove this condition when BatchSDK will support Safari, see also service-worker.ts#L11
+// eslint-disable-next-line no-restricted-imports
+import { isSafari } from 'react-device-detect'
+
 import { getBatchSDK } from 'libs/batch/batch-sdk'
 import { env } from 'libs/environment'
-import { isSafari } from 'web/utils'
 
 /* eslint-disable no-console */
 export const Batch = {
   start() {
-    // TODO: remove this condition when BatchSDK will support Safari, see also service-worker.ts#L83
-    if (isSafari()) {
+    if (isSafari) {
       return
     }
     getBatchSDK()
