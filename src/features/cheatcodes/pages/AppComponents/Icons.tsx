@@ -108,290 +108,82 @@ export const Icons: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={4} />
 
       <Icon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
-      <AlignedText>
-        <PlainArrowPrevious size={ICON_SIZE} />
-        <Text> - PlainArrowPrevious </Text>
-      </AlignedText>
-      <AlignedText>
-        <Again size={ICON_SIZE} />
-        <Text> - Again (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <ArrowPrevious size={ICON_SIZE} />
-        <Text> - ArrowPrevious </Text>
-      </AlignedText>
-      <AlignedText>
-        <ArrowNext size={ICON_SIZE} />
-        <Text> - ArrowNext </Text>
-      </AlignedText>
-      <AlignedText>
-        <Check size={ICON_SIZE} />
-        <Text> - Check </Text>
-      </AlignedText>
-      <AlignedText>
-        <Clock size={ICON_SIZE} />
-        <Text> - Clock (new)</Text>
-      </AlignedText>
-      <AlignedText>
-        <Close size={ICON_SIZE} />
-        <Text> - Close </Text>
-      </AlignedText>
-      <AlignedText>
-        <Duo size={ICON_SIZE} />
-        <Text> - Duo </Text>
-      </AlignedText>
-      <AlignedText>
-        <DuoBold />
-        <Text> - DuoBold </Text>
-      </AlignedText>
-      <AlignedText>
-        <Eye size={ICON_SIZE} />
-        <Text> - Eye </Text>
-      </AlignedText>
-      <AlignedText>
-        <EyeSlash size={ICON_SIZE} />
-        <Text> - EyeSlash </Text>
-      </AlignedText>
-      <AlignedText>
-        <Logo size={ICON_SIZE} />
-        <Text> - Logo </Text>
-      </AlignedText>
-      <AlignedText>
-        <BicolorLogo size={ICON_SIZE} />
-        <Text> - BicolorLogo </Text>
-      </AlignedText>
-      <AlignedText>
-        <BicolorSearch size={ICON_SIZE} />
-        <Text> - BicolorSearch </Text>
-      </AlignedText>
-      <AlignedText>
-        <BicolorBookings size={ICON_SIZE} />
-        <Text> - BicolorBookings </Text>
-      </AlignedText>
-      <AlignedText>
-        <BicolorFavorite size={ICON_SIZE} />
-        <Text> - BicolorFavorite </Text>
-      </AlignedText>
-      <AlignedText>
-        <BicolorProfile size={ICON_SIZE} />
-        <Text> - BicolorProfile </Text>
-      </AlignedText>
+      <Icon name="Again" component={Again} isNew />
+      <Icon name="ArrowPrevious" component={ArrowPrevious} />
+      <Icon name="ArrowNext" component={ArrowNext} />
+      <Icon name="Check" component={Check} />
+      <Icon name="Clock" component={Clock} isNew />
+      <Icon name="Close" component={Close} />
+      <Icon name="Duo" component={Duo} />
+      <Icon name="DuoBold" component={DuoBold} />
+      <Icon name="Eye" component={Eye} />
+      <Icon name="EyeSlash" component={EyeSlash} />
+      <Icon name="Logo" component={Logo} />
+      <Icon name="BicolorLogo" component={BicolorLogo} />
+      <Icon name="BicolorSearch" component={BicolorSearch} />
+      <Icon name="BicolorBookings" component={BicolorBookings} />
+      <Icon name="BicolorFavorite" component={BicolorFavorite} />
+      <Icon name="BicolorProfile" component={BicolorProfile} />
       <AlignedText>
         <BicolorSelector width={ICON_SIZE} height={getSpacing(1)} />
         <Text> - BicolorSelector </Text>
       </AlignedText>
-      <AlignedText>
-        <UserCircle size={ICON_SIZE} />
-        <Text> - UserCircle </Text>
-      </AlignedText>
-      <AlignedText>
-        <Email size={ICON_SIZE} />
-        <Text> - Email </Text>
-      </AlignedText>
-      <AlignedText>
-        <EmailFilled size={ICON_SIZE} />
-        <Text> - Email filled </Text>
-      </AlignedText>
-      <AlignedText>
-        <PhoneFilled size={ICON_SIZE} />
-        <Text> - Phone filled </Text>
-      </AlignedText>
-      <AlignedText>
-        <ExternalSite size={ICON_SIZE} />
-        <Text> - ExternalSite (new)</Text>
-      </AlignedText>
-      <AlignedText>
-        <ExternalSiteDeprecated size={ICON_SIZE} />
-        <Text> - ExternalSiteDeprecated </Text>
-      </AlignedText>
-      <AlignedText>
-        <WarningDeprecated size={ICON_SIZE} />
-        <Text> - WarningDeprecated </Text>
-      </AlignedText>
-      <AlignedText>
-        <Warning size={ICON_SIZE} />
-        <Text> - Warning (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <Error size={ICON_SIZE} />
-        <Text> - Error (new)</Text>
-      </AlignedText>
-      <AlignedText>
-        <HappyFace size={ICON_SIZE} />
-        <Text> - HappyFace </Text>
-      </AlignedText>
-      <AlignedText>
-        <SadFace size={ICON_SIZE} />
-        <Text> - SadFace </Text>
-      </AlignedText>
-      <AlignedText>
-        <HappyFaceStars size={getSpacing(10)} />
-        <Text> - HappyFaceStars </Text>
-      </AlignedText>
-      <AlignedText>
-        <LocationPointer size={ICON_SIZE} />
-        <Text> - LocationPointer </Text>
-      </AlignedText>
-      <AlignedText>
-        <Digital size={ICON_SIZE} />
-        <Text> - Digital </Text>
-      </AlignedText>
-      <AlignedText>
-        <OrderPrice size={ICON_SIZE} />
-        <Text> - OrderPrice </Text>
-      </AlignedText>
-      <AlignedText>
-        <HandicapVisual size={ICON_SIZE} />
-        <Text> - HandicapVisual </Text>
-      </AlignedText>
-      <AlignedText>
-        <HandicapMental size={ICON_SIZE} />
-        <Text> - HandicapMental </Text>
-      </AlignedText>
-      <AlignedText>
-        <HandicapMotor size={ICON_SIZE} />
-        <Text> - HandicapMotor </Text>
-      </AlignedText>
-      <AlignedText>
-        <HandicapAudio size={ICON_SIZE} />
-        <Text> - HandicapAudio </Text>
-      </AlignedText>
-      <AlignedText>
-        <Validate size={ICON_SIZE} />
-        <Text> - Validate </Text>
-      </AlignedText>
-      <AlignedText>
-        <Invalidate size={ICON_SIZE} />
-        <Text> - Invalidate </Text>
-      </AlignedText>
-      <AlignedText>
-        <Favorite size={ICON_SIZE} />
-        <Text> - Favourite </Text>
-      </AlignedText>
-      <AlignedText>
-        <MagnifyingGlassDeprecated size={ICON_SIZE} />
-        <Text> - MagnifyingGlassDeprecated </Text>
-      </AlignedText>
-      <AlignedText>
-        <MagnifyingGlass size={ICON_SIZE} />
-        <Text> - MagnifyingGlass (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <InfoDeprecated size={ICON_SIZE} />
-        <Text> - InfoDeprecated </Text>
-      </AlignedText>
-      <AlignedText>
-        <Info size={ICON_SIZE} />
-        <Text> - Info (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <AroundMe size={ICON_SIZE} />
-        <Text> - AroundMe </Text>
-      </AlignedText>
-      <AlignedText>
-        <Everywhere size={ICON_SIZE} />
-        <Text> - Everywhere </Text>
-      </AlignedText>
-      <AlignedText>
-        <BicolorLocationPointer size={ICON_SIZE} />
-        <Text> - BicolorLocationPointer </Text>
-      </AlignedText>
-      <AlignedText>
-        <BicolorLocationBuilding size={ICON_SIZE} />
-        <Text> - BicolorLocationBuilding </Text>
-      </AlignedText>
-      <AlignedText>
-        <NoOffer size={ICON_SIZE} />
-        <Text> - NoOffer </Text>
-      </AlignedText>
-      <AlignedText>
-        <OfferDigital size={ICON_SIZE} />
-        <Text> - OfferDigital </Text>
-      </AlignedText>
-      <AlignedText>
-        <OfferPhysical size={ICON_SIZE} />
-        <Text> - OfferPhysical </Text>
-      </AlignedText>
-      <AlignedText>
-        <OfferOutings size={ICON_SIZE} />
-        <Text> - OfferOutings </Text>
-      </AlignedText>
-      <AlignedText>
-        <OfferOutingsPhysical size={ICON_SIZE} />
-        <Text> - OfferOutingsPhysical </Text>
-      </AlignedText>
-      <AlignedText>
-        <LegalNotices size={ICON_SIZE} />
-        <Text> - LegalNotices (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <Confidentiality size={ICON_SIZE} />
-        <Text> - Confidentiality (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <BicolorConfidentiality size={ICON_SIZE} />
-        <Text> - BicolorConfidentiality </Text>
-      </AlignedText>
-      <AlignedText>
-        <SignOut size={ICON_SIZE} />
-        <Text> - SignOut </Text>
-      </AlignedText>
-      <AlignedText>
-        <Lock size={ICON_SIZE} />
-        <Text> - Lock </Text>
-      </AlignedText>
-      <AlignedText>
-        <BicolorLock size={ICON_SIZE} />
-        <Text> - BicolorLock </Text>
-      </AlignedText>
-      <AlignedText>
-        <ProfileDeprecated size={ICON_SIZE} />
-        <Text> - ProfileDeprecated </Text>
-      </AlignedText>
-      <AlignedText>
-        <DuoPerson size={ICON_SIZE} />
-        <Text> - DuoPerson </Text>
-      </AlignedText>
-      <AlignedText>
-        <LifeBuoy size={ICON_SIZE} />
-        <Text> - LifeBuoy (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <Bell size={ICON_SIZE} />
-        <Text> - Bell (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <ProfileDeletion size={ICON_SIZE} />
-        <Text> - ProfileDeletion </Text>
-      </AlignedText>
-      <AlignedText>
-        <Booking size={ICON_SIZE} />
-        <Text> - Booking </Text>
-      </AlignedText>
-      <AlignedText>
-        <Calendar size={ICON_SIZE} />
-        <Text> - Calendar (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <CalendarDeprecated size={ICON_SIZE} />
-        <Text> - CalendarDeprecated </Text>
-      </AlignedText>
-      <AlignedText>
-        <LocationBuilding size={ICON_SIZE} />
-        <Text> - LocationBuilding (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <LocationBuildingDeprecated size={ICON_SIZE} />
-        <Text> - LocationBuildingDeprecated </Text>
-      </AlignedText>
+      <Icon name="UserCircle" component={UserCircle} />
+      <Icon name="Email" component={Email} />
+      <Icon name="EmailFilled" component={EmailFilled} />
+      <Icon name="PhoneFilled" component={PhoneFilled} />
+      <Icon name="ExternalSite" component={ExternalSite} isNew />
+      <Icon name="ExternalSiteDeprecated" component={ExternalSiteDeprecated} />
+      <Icon name="WarningDeprecated" component={WarningDeprecated} />
+      <Icon name="Warning" component={Warning} isNew />
+      <Icon name="Error" component={Error} isNew />
+      <Icon name="HappyFace" component={HappyFace} />
+      <Icon name="SadFace" component={SadFace} />
+      <Icon name="HappyFaceStars" component={HappyFaceStars} />
+      <Icon name="LocationPointer" component={LocationPointer} />
+      <Icon name="Digital" component={Digital} />
+      <Icon name="OrderPrice" component={OrderPrice} />
+      <Icon name="HandicapVisual" component={HandicapVisual} />
+      <Icon name="HandicapMental" component={HandicapMental} />
+      <Icon name="HandicapMotor" component={HandicapMotor} />
+      <Icon name="HandicapAudio" component={HandicapAudio} />
+      <Icon name="Validate" component={Validate} />
+      <Icon name="Invalidate" component={Invalidate} />
+      <Icon name="Favorite" component={Favorite} />
+      <Icon name="MagnifyingGlassDeprecated" component={MagnifyingGlassDeprecated} />
+      <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
+      <Icon name="InfoDeprecated" component={InfoDeprecated} />
+      <Icon name="Info" component={Info} isNew />
+      <Icon name="AroundMe" component={AroundMe} />
+      <Icon name="Everywhere" component={Everywhere} />
+      <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} />
+      <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} />
+      <Icon name="NoOffer" component={NoOffer} />
+      <Icon name="OfferDigital" component={OfferDigital} />
+      <Icon name="OfferPhysical" component={OfferPhysical} />
+      <Icon name="OfferOutings" component={OfferOutings} />
+      <Icon name="OfferOutingsPhysical" component={OfferOutingsPhysical} />
+      <Icon name="LegalNotices" component={LegalNotices} isNew />
+      <Icon name="Confidentiality" component={Confidentiality} isNew />
+      <Icon name="BicolorConfidentiality" component={BicolorConfidentiality} />
+      <Icon name="SignOut" component={SignOut} />
+      <Icon name="Lock" component={Lock} />
+      <Icon name="BicolorLock" component={BicolorLock} />
+      <Icon name="ProfileDeprecated" component={ProfileDeprecated} />
+      <Icon name="DuoPerson" component={DuoPerson} />
+      <Icon name="LifeBuoy" component={LifeBuoy} isNew />
+      <Icon name="Bell" component={Bell} isNew />
+      <Icon name="ProfileDeletion" component={ProfileDeletion} />
+      <Icon name="Booking" component={Booking} />
+      <Icon name="Calendar" component={Calendar} isNew />
+      <Icon name="CalendarDeprecated" component={CalendarDeprecated} />
+      <Icon name="LocationBuilding" component={LocationBuilding} isNew />
+      <Icon name="LocationBuildingDeprecated" component={LocationBuildingDeprecated} />
       <AlignedText>
         <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
         <Text> - TicketBooked </Text>
       </AlignedText>
-      <AlignedText>
-        <LocationPointerNotFilled size={ICON_SIZE} />
-        <Text> - LocationPointerNotFilled (new) </Text>
-      </AlignedText>
+      <Icon name="LocationPointerNotFilled" component={LocationPointerNotFilled} isNew />
       <AlignedText>
         <MaintenanceCone width={ICON_SIZE * 2} height={ICON_SIZE} color={ColorsEnum.BLACK} />
         <Text> - MaintenanceCone </Text>
@@ -400,18 +192,9 @@ export const Icons: FunctionComponent = () => {
         <LogoPassCulture width={ICON_SIZE * 2} height={ICON_SIZE} color={ColorsEnum.BLACK} />
         <Text> - LogoPassCulture </Text>
       </AlignedText>
-      <AlignedText>
-        <RequestSent size={ICON_SIZE} />
-        <Text> - RequestSent </Text>
-      </AlignedText>
-      <AlignedText>
-        <Flag size={ICON_SIZE} />
-        <Text> - Flag </Text>
-      </AlignedText>
-      <AlignedText>
-        <EditPen size={ICON_SIZE} />
-        <Text> - EditPen (new) </Text>
-      </AlignedText>
+      <Icon name="RequestSent" component={RequestSent} />
+      <Icon name="Flag" component={Flag} />
+      <Icon name="EditPen" component={EditPen} isNew />
     </React.Fragment>
   )
 }
@@ -423,21 +206,18 @@ interface IconProps {
 }
 
 const Icon = ({ name, component: IconComponent, isNew = false }: IconProps) => (
-  <AlignedText color={isNew ? ColorsEnum.BLACK : ColorsEnum.GREY_DISABLED}>
+  <AlignedText>
     <IconComponent size={ICON_SIZE} />
-    <Text>
-      {' '}
-      - {name}
-      {isNew ? '(new)' : ''}
+    <Text style={{ color: isNew ? ColorsEnum.BLACK : ColorsEnum.GREY_DARK }}>
+      {` - ${name} ${isNew ? '(new)' : ''}`}
     </Text>
   </AlignedText>
 )
 
-const AlignedText = styled(View)<{ color?: ColorsEnum }>(({ color = ColorsEnum.BLACK }) => ({
-  color,
+const AlignedText = styled(View)({
   flexDirection: 'row',
   alignItems: 'center',
-}))
+})
 
 const CategoryIcons = () => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
@@ -478,18 +258,9 @@ const IdentityCheckIcons = () => {
   return (
     <React.Fragment>
       <Text>{'IdentityCheck Icons'}</Text>
-      <AlignedText>
-        <Profile size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
-        <Text> - Profile (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <IdCard size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
-        <Text> - IdCard (new) </Text>
-      </AlignedText>
-      <AlignedText>
-        <Confirmation size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
-        <Text> - Confirmation (new) </Text>
-      </AlignedText>
+      <Icon name="Profile" component={Profile} isNew />
+      <Icon name="IdCard" component={IdCard} isNew />
+      <Icon name="Confirmation" component={Confirmation} isNew />
       <Text>{'\n'}</Text>
     </React.Fragment>
   )
