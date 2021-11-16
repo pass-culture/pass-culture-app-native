@@ -70,9 +70,11 @@ const Container = styled(TouchableOpacity)(({ theme }) => ({
   backgroundColor: theme.colors.white,
   alignItems: 'center',
   alignSelf: 'center',
-  width: theme.appContentWidth - getSpacing(16),
   borderRadius: getSpacing(4),
   padding: getSpacing(5),
+  width: theme.isMobileViewport
+    ? theme.appContentWidth - getSpacing(8)
+    : theme.breakpoints.sm - getSpacing(3),
 }))
 
 const Content = styled.View({
