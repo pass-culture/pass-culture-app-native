@@ -12,7 +12,7 @@ import { SectionRow } from 'ui/components/SectionRow'
 import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
-import { Profile } from 'ui/svg/icons/Profile'
+import { ProfileDeprecated } from 'ui/svg/icons/Profile_deprecated'
 import { Spacer, Typo } from 'ui/theme'
 
 type BookingPropertiesSectionProps = {
@@ -54,7 +54,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             </TitleNameContainer>
           )}
           type={'clickable'}
-          icon={() => <Profile size={24} />}
+          icon={() => <ProfileDeprecated size={24} />}
         />
       ) : null}
       {propertiesLabels.dateLabel?.length > 0 && (

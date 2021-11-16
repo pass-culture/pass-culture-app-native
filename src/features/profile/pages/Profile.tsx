@@ -20,18 +20,18 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
-import { BellDeprecated } from 'ui/svg/icons/Bell_deprecated'
-import { ConfidentialityDeprecated } from 'ui/svg/icons/Confidentiality_deprecated'
-import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
-import { LegalNoticesDeprecated } from 'ui/svg/icons/LegalNotices_deprecated'
-import { LifeBuoyDeprecated } from 'ui/svg/icons/LifeBuoy_deprecated'
-import { LocationPointerNotFilledDeprecated } from 'ui/svg/icons/LocationPointerNotFilled_deprecated'
+import { Bell } from 'ui/svg/icons/Bell'
+import { Confidentiality } from 'ui/svg/icons/Confidentiality'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { LegalNotices } from 'ui/svg/icons/LegalNotices'
+import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
+import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
-import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
+import { SECTION_ROW_ICON_SIZE, TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 import Package from '../../../../package.json'
 import { ProfileHeader } from '../components/ProfileHeader'
@@ -137,14 +137,16 @@ export const Profile: React.FC = () => {
           <SectionRow
             type="navigable"
             title={t`Notifications`}
-            icon={BellDeprecated}
+            icon={Bell}
+            iconSize={SECTION_ROW_ICON_SIZE}
             onPress={() => navigate('NotificationSettings')}
             style={styles.row}
           />
           <SectionRow
             type="clickable"
             title={t`Géolocalisation`}
-            icon={LocationPointerNotFilledDeprecated}
+            icon={LocationPointerNotFilled}
+            iconSize={SECTION_ROW_ICON_SIZE}
             style={styles.row}
             cta={
               <FilterSwitch
@@ -166,14 +168,14 @@ export const Profile: React.FC = () => {
             title={t`Comment ça marche ?`}
             type="navigable"
             onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
-            icon={LifeBuoyDeprecated}
+            icon={LifeBuoy}
             style={styles.row}
           />
           <Row
             title={t`Questions fréquentes`}
             type="clickable"
             onPress={() => openUrl(env.FAQ_LINK)}
-            icon={ExternalSiteDeprecated}
+            icon={ExternalSite}
             style={styles.row}
           />
           {Platform.OS !== 'web' && (
@@ -181,7 +183,7 @@ export const Profile: React.FC = () => {
               title={t`Problèmes pour ouvrir un lien ?`}
               type="navigable"
               onPress={() => navigate('DeeplinkImporter')}
-              icon={LifeBuoyDeprecated}
+              icon={LifeBuoy}
               style={styles.row}
             />
           )}
@@ -191,21 +193,21 @@ export const Profile: React.FC = () => {
             title={t`Accessibilité`}
             type="clickable"
             onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
-            icon={ExternalSiteDeprecated}
+            icon={ExternalSite}
             style={styles.row}
           />
           <Row
             title={t`Mentions légales`}
             type="navigable"
             onPress={() => navigate('LegalNotices')}
-            icon={LegalNoticesDeprecated}
+            icon={LegalNotices}
             style={styles.row}
           />
           <Row
             title={t`Confidentialité`}
             type="navigable"
             onPress={() => navigate('ConsentSettings')}
-            icon={ConfidentialityDeprecated}
+            icon={Confidentiality}
             style={styles.row}
           />
         </ProfileSection>
@@ -266,6 +268,7 @@ const ProfileSection = styled(Section).attrs({
 
 const Row = styled(SectionRow).attrs({
   style: styles.row,
+  iconSize: SECTION_ROW_ICON_SIZE,
 })``
 
 const BottomSpacing = styled.View({
