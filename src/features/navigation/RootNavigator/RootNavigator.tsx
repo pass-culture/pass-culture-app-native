@@ -37,7 +37,7 @@ export const RootNavigator: React.ComponentType = () => {
   if (!initialScreen) {
     return <LoadingPage />
   }
-  const showHeader = !theme.showTabbar
+  const showHeader = !theme.showTabBar
   return (
     <TabNavigationStateProvider>
       {showHeader ? <Header /> : null}

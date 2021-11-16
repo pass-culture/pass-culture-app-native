@@ -22,7 +22,7 @@ export const TabNavigator: React.FC = () => {
 
   function renderTabBar({ state, navigation }: BottomTabBarProps<BottomTabBarOptions>) {
     setTabNavigationState(state as TabNavigationStateType)
-    if (!theme.showTabbar) return null
+    if (!theme.showTabBar) return null
     return <TabBar navigation={navigation} />
   }
 
