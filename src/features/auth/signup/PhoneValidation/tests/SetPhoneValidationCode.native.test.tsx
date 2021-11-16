@@ -227,7 +227,7 @@ function renderModalWithFilledCodeInput(code: string) {
       },
     },
   } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
-  fireEvent.changeText(renderAPI.getByTestId('code-input'), code)
+  fireEvent.changeText(renderAPI.getByTestId('Entrée du code de confirmation'), code)
   renderAPI.rerender(<SetPhoneValidationCode {...navigationProps} />)
   return renderAPI
 }
