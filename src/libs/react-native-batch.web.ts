@@ -1,9 +1,14 @@
 import { getBatchSDK } from 'libs/batch/batch-sdk'
 import { env } from 'libs/environment'
+import { isSafari } from 'web/utils'
 
 /* eslint-disable no-console */
 export const Batch = {
   start() {
+    // TODO: remove this condition when BatchSDK will support Safari, see also service-worker.ts#L83
+    if (isSafari()) {
+      return
+    }
     getBatchSDK()
     /* Initiate Batch SDK opt-in UI configuration (native prompt) */
     let batchSDKUIConfig
