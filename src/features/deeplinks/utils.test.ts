@@ -30,9 +30,10 @@ describe('Formatting deeplink url', () => {
   describe('generateLongFirebaseDynamicLink', () => {
     it('should return a format long firebase dynamic link', () => {
       const fullWebAppUrlWithParams = 'https://web.example.com/offre/1'
+      const encodedFullWebAppUrlWithParams = 'https%3A%2F%2Fweb.example.com%2Foffre%2F1'
       const dynamicLink = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
       expect(dynamicLink).toEqual(
-        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${fullWebAppUrlWithParams}&${getLongDynamicLinkURI()}`
+        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodedFullWebAppUrlWithParams}&${getLongDynamicLinkURI()}`
       )
     })
   })
@@ -40,6 +41,7 @@ describe('Formatting deeplink url', () => {
   describe('generateLongFirebaseDynamicLink with extra FDL params', () => {
     it('should return a format long firebase dynamic link', () => {
       const fullWebAppUrlWithParams = 'https://web.example.com/set-email'
+      const encodedFullWebAppUrlWithParams = 'https%3A%2F%2Fweb.example.com%2Fset-email'
       const ofl = `https://${env.WEBAPP_V2_DOMAIN}/set-email`
       const amv = '10160005'
       const extraParams = {
@@ -48,7 +50,7 @@ describe('Formatting deeplink url', () => {
       }
       const dynamicLink = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams, extraParams)
       expect(dynamicLink).toEqual(
-        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${fullWebAppUrlWithParams}&${getLongDynamicLinkURI()}&ofl=https://webapp-v2.example.com/set-email&amv=10160005`
+        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodedFullWebAppUrlWithParams}&${getLongDynamicLinkURI()}&ofl=https://webapp-v2.example.com/set-email&amv=10160005`
       )
     })
   })
