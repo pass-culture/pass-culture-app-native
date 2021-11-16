@@ -28,7 +28,7 @@ The commits of the PR won't be on master, but are still useful for PR readliness
   │       └─⫸ PR Type: build, ci, docs, feat, fix, perf, refactor or test.
   |            See https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type
   │
-  └─⫸ Jira ticket number: [PC-1234], (PC-1234) or PC-1234.
+  └─⫸ Jira ticket number: with parentheses -> (PC-1234).
 ```
 
 - Github action to ensure that the PR title is in the right format: [pr-title-checker.yml](../../.github/workflows/pr-title-checker.yml)
