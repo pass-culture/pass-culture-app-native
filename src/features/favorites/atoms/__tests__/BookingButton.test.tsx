@@ -70,8 +70,6 @@ const isUserExBeneficiaryMock = isUserExBeneficiary as jest.Mock
 
 describe('<BookingButton />', () => {
   describe('when user is beneficiary', () => {
-    getAvailableCreditMock.mockImplementation(() => credit)
-
     // prettier-ignore : do not format the following "table" to keep it readable
     it.each`
       user                                                     | offer                                                                            | expectedCTA
@@ -97,8 +95,9 @@ describe('<BookingButton />', () => {
         - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
       (...args) => {
-        isUserBeneficiaryMock.mockImplementation(() => true)
-        isUserExBeneficiaryMock.mockImplementation(() => false)
+        getAvailableCreditMock.mockReturnValueOnce(credit)
+        isUserBeneficiaryMock.mockReturnValueOnce(true)
+        isUserExBeneficiaryMock.mockReturnValueOnce(false)
 
         favoriteBookingButtonTestRunner(...args)
       }
@@ -134,9 +133,9 @@ describe('<BookingButton />', () => {
         - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
       (...args) => {
-        isUserExBeneficiaryMock.mockImplementation(() => true)
-        isUserBeneficiaryMock.mockImplementation(() => true)
-        getAvailableCreditMock.mockImplementation(() => expiredCredit)
+        isUserExBeneficiaryMock.mockReturnValueOnce(true)
+        isUserBeneficiaryMock.mockReturnValueOnce(true)
+        getAvailableCreditMock.mockReturnValueOnce(expiredCredit)
 
         favoriteBookingButtonTestRunner(...args)
       }
@@ -144,8 +143,6 @@ describe('<BookingButton />', () => {
   })
 
   describe('when user is NOT a beneficiary', () => {
-    getAvailableCreditMock.mockImplementation(() => credit)
-    isUserBeneficiaryMock.mockImplementation(() => false)
     // prettier-ignore : do not format the following "table" to keep it readable
     it.each`
       user                                                      | offer                                              | expectedCTA
@@ -167,8 +164,8 @@ describe('<BookingButton />', () => {
         - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
       (...args) => {
-        getAvailableCreditMock.mockImplementation(() => credit)
-        isUserBeneficiaryMock.mockImplementation(() => false)
+        getAvailableCreditMock.mockReturnValueOnce(credit)
+        isUserBeneficiaryMock.mockReturnValueOnce(false)
 
         favoriteBookingButtonTestRunner(...args)
       }
