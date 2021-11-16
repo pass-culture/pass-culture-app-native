@@ -35,7 +35,9 @@ export function generateLongFirebaseDynamicLink(
       })
     }
   }
-  return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${deepLink}&${getLongDynamicLinkURI()}${params}`
+  return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodeURIComponent(
+    deepLink
+  )}&${getLongDynamicLinkURI()}${params}`
 }
 
 export const isUniversalLink = (url: string) => url.startsWith(WEBAPP_NATIVE_REDIRECTION_URL)
