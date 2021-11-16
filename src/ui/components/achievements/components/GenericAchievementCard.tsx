@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import LottieView from 'lottie-react-native'
-import React, { FunctionComponent, RefObject, useEffect } from 'react'
+import React, { FunctionComponent, RefObject, useEffect, useMemo } from 'react'
 import { View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import Swiper from 'react-native-web-swiper'
@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics'
 import { MonitoringError } from 'libs/monitoring'
+import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -35,6 +36,7 @@ export type AchievementCardProps = AchievementCardKeyProps & {
   title: string
 }
 
+const SMALL_HEIGHT = 576
 export let didFadeIn = false
 
 export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
@@ -43,6 +45,11 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
   const grid = useGrid()
   const animationRef = React.useRef<LottieView>(null)
   const animatedButtonRef = React.useRef<Animatable.View & View>(null)
+
+  const isSmallHeight = useMediaQuery({ maxHeight: SMALL_HEIGHT })
+  const lottieStyle = useMemo(() => (isSmallHeight ? { height: '100%' } : undefined), [
+    isSmallHeight,
+  ])
 
   if (props.index === undefined || props.lastIndex === undefined) {
     throw new MonitoringError(
@@ -96,6 +103,7 @@ Those props are provided by the GenericAchievementCard and must be passed down t
       <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
       <StyledLottieContainer>
         <StyledLottieView
+          style={lottieStyle}
           key={props.activeIndex}
           ref={animationRef}
           source={props.animation}
