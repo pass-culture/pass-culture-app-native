@@ -1,14 +1,21 @@
+import { t } from '@lingui/macro'
 import React from 'react'
-import { ColorValue } from 'react-native'
-import timezoneMock from 'timezone-mock'
+import { ReactTestInstance } from 'react-test-renderer'
+import waitForExpect from 'wait-for-expect'
 
 import { fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
-import { DateInput, DateInputRef, FULL_DATE_VALIDATOR } from './DateInput'
+import { DateInput, DateInputLabelText, DateInputRef } from './DateInput'
 
+const findStyledByTestId = (instance: ReactTestInstance, testID: string) => {
+  return instance.find(
+    (instance) => instance?.props?.testID === testID && !!instance?.props?.style?.length
+  )
+}
 describe('DateInput Component', () => {
   it('should render ref and give access to clearFocuses function', () => {
+    // given
     const myRef = React.createRef<DateInputRef>()
     render(<DateInput ref={myRef} />)
 
@@ -16,170 +23,320 @@ describe('DateInput Component', () => {
     expect(myRef.current && myRef.current.clearFocuses).toBeTruthy()
   })
 
-  describe('blur/focus behavior', () => {
-    describe('input validation', () => {
-      describe('Date validation', () => {
-        it('should render as error when the day length is incorrect', () => {
-          const { getByPlaceholderText, getByTestId } = render(<DateInput />)
-          const validationBar = getByTestId('date-bar')
-          const date = getByPlaceholderText('JJ/MM/AAAA')
+  it('should render hiddenInput', () => {
+    const { getByTestId } = render(
+      <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
+    )
 
-          let backgroundColor: ColorValue | undefined
+    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    expect(hiddenInput).toBeTruthy()
+  })
 
-          fireEvent.changeText(date, '1')
-          backgroundColor = validationBar.props.style[0].backgroundColor
-          expect(backgroundColor).toEqual(ColorsEnum.ERROR)
+  it('should render hiddenInput with correct initialDate input value', () => {
+    const { getByTestId } = render(
+      <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
+    )
 
-          fireEvent.changeText(date, '01/02')
-          backgroundColor = validationBar.props.style[0].backgroundColor
-          expect(backgroundColor).toEqual(ColorsEnum.ERROR)
+    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    expect(hiddenInput).toBeTruthy()
+    expect(hiddenInput.props.value).toBe('25101991')
+  })
 
-          fireEvent.changeText(date, '51/51/515')
-          backgroundColor = validationBar.props.style[0].backgroundColor
-          expect(backgroundColor).toEqual(ColorsEnum.ERROR)
-        })
+  it('should render hiddenInput with empty initialDate input value', () => {
+    const { getByTestId } = render(<DateInput />)
 
-        it('should render as valid when the day is in the range [1, 31]', () => {
-          const { getByPlaceholderText, getByTestId } = render(<DateInput />)
-          const validationBar = getByTestId('date-bar')
-          const date = getByPlaceholderText('JJ/MM/AAAA')
+    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    expect(hiddenInput).toBeTruthy()
+    expect(hiddenInput.props.value).toBe('')
+  })
 
-          fireEvent.changeText(date, '01/01/1991')
-          const backgroundColor = validationBar.props.style[0].backgroundColor
-          expect(backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
-        })
-      })
-    })
+  it('should render date part labels', () => {
+    const { getByTestId } = render(<DateInput />)
 
-    it.each([
-      ['29', '02', '2005'], // non leap year
-      ['29', '02', '2006'], // non leap year
-      ['29', '02', '2007'], // non leap year
-      ['31', '04', '2005'],
-      ['31', '06', '2005'],
-      ['31', '09', '2005'],
-      ['31', '11', '2005'],
-    ])('should return null for these invalid dates (DD-MM-AAAA) %s-%s-%s', (day, month, year) => {
-      const onChangeValue = jest.fn()
-      const { getByPlaceholderText } = render(<DateInput onChangeValue={onChangeValue} />)
+    const dayEntry = getByTestId(t`Entrée pour le jour de la date de naissance`)
+    const monthEntry = getByTestId(t`Entrée pour le mois de la date de naissance`)
+    const yearEntry = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
 
-      fireEvent.changeText(getByPlaceholderText('JJ/MM/AAAA'), [day, month, year].join('/'))
+    expect(dayEntry).toBeTruthy()
+    expect(monthEntry).toBeTruthy()
+    expect(yearEntry).toBeTruthy()
 
-      expect(onChangeValue).toBeCalledWith(null, {
-        isComplete: true,
-        isDateAboveMin: true,
-        isDateBelowMax: true,
-        isValid: false,
-      })
-      expect(onChangeValue).not.toBeCalledWith(`${year}-${month}-${day}`)
-    })
+    const dayEntryLabel = dayEntry.findByType(DateInputLabelText)
+    const monthEntryLabel = monthEntry.findByType(DateInputLabelText)
+    const yearEntryLabel = yearEntry.findByType(DateInputLabelText)
 
-    it('should return a AAAA-MM-DD date when the 3 fields are filled properly', () => {
-      const onChangeValue = jest.fn()
-      const { getByPlaceholderText } = render(<DateInput onChangeValue={onChangeValue} />)
+    expect(dayEntryLabel).toBeTruthy()
+    expect(monthEntryLabel).toBeTruthy()
+    expect(yearEntryLabel).toBeTruthy()
 
-      fireEvent.changeText(getByPlaceholderText('JJ/MM/AAAA'), '16/07/1991')
+    expect(dayEntryLabel.props.children).toBe('JJ')
+    expect(monthEntryLabel.props.children).toBe('MM')
+    expect(yearEntryLabel.props.children).toBe('AAAA')
+  })
 
-      expect(onChangeValue).toBeCalledWith(new Date('1991-07-16'), {
-        isComplete: true,
-        isDateAboveMin: true,
-        isDateBelowMax: true,
-        isValid: true,
-      })
+  it('should render date part labels with existing date', () => {
+    const { getByTestId } = render(
+      <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
+    )
+
+    const dayEntry = getByTestId(t`Entrée pour le jour de la date de naissance`)
+    const monthEntry = getByTestId(t`Entrée pour le mois de la date de naissance`)
+    const yearEntry = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+
+    expect(dayEntry).toBeTruthy()
+    expect(monthEntry).toBeTruthy()
+    expect(yearEntry).toBeTruthy()
+
+    const dayEntryLabel = dayEntry.findByType(DateInputLabelText)
+    const monthEntryLabel = monthEntry.findByType(DateInputLabelText)
+    const yearEntryLabel = yearEntry.findByType(DateInputLabelText)
+
+    expect(dayEntryLabel).toBeTruthy()
+    expect(monthEntryLabel).toBeTruthy()
+    expect(yearEntryLabel).toBeTruthy()
+
+    expect(dayEntryLabel.props.children).toBe('25')
+    expect(monthEntryLabel.props.children).toBe('10')
+    expect(yearEntryLabel.props.children).toBe('1991')
+  })
+
+  it('should be valid with correct date', async () => {
+    const { getByTestId } = render(
+      <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
+    )
+
+    const dayEntry = getByTestId(t`Entrée pour le jour de la date de naissance`)
+    const monthEntry = getByTestId(t`Entrée pour le mois de la date de naissance`)
+    const yearEntry = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+
+    expect(dayEntry).toBeTruthy()
+    expect(monthEntry).toBeTruthy()
+    expect(yearEntry).toBeTruthy()
+
+    const styledDayEntryBar = findStyledByTestId(dayEntry, 'date-input-validation-bar')
+    const styledMonthEntryBar = findStyledByTestId(dayEntry, 'date-input-validation-bar')
+    const styledYearEntryBar = findStyledByTestId(dayEntry, 'date-input-validation-bar')
+
+    expect(styledDayEntryBar).toBeTruthy()
+    expect(styledMonthEntryBar).toBeTruthy()
+    expect(styledYearEntryBar).toBeTruthy()
+
+    expect(styledDayEntryBar.props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
+    expect(styledMonthEntryBar.props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
+    expect(styledYearEntryBar.props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
+  })
+
+  it('should be invalid with incorrect date', () => {
+    const { getByTestId } = render(
+      <DateInput initialDay={'45'} initialMonth={'13'} initialYear={'9000'} />
+    )
+
+    const dayEntry = getByTestId(t`Entrée pour le jour de la date de naissance`)
+    const monthEntry = getByTestId(t`Entrée pour le mois de la date de naissance`)
+
+    expect(dayEntry).toBeTruthy()
+    expect(monthEntry).toBeTruthy()
+
+    const styledDayEntryBar = findStyledByTestId(dayEntry, 'date-input-validation-bar')
+    const styledMonthEntryBar = findStyledByTestId(dayEntry, 'date-input-validation-bar')
+
+    expect(styledDayEntryBar).toBeTruthy()
+    expect(styledMonthEntryBar).toBeTruthy()
+
+    expect(styledDayEntryBar.props.style[0].backgroundColor).toEqual(ColorsEnum.ERROR)
+    expect(styledMonthEntryBar.props.style[0].backgroundColor).toEqual(ColorsEnum.ERROR)
+  })
+
+  it('should be gray with empty date', async () => {
+    const { getByTestId } = render(<DateInput />)
+
+    const dayEntry = getByTestId(t`Entrée pour le jour de la date de naissance`)
+    const monthEntry = getByTestId(t`Entrée pour le mois de la date de naissance`)
+    const yearEntry = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+
+    expect(dayEntry).toBeTruthy()
+    expect(monthEntry).toBeTruthy()
+    expect(yearEntry).toBeTruthy()
+
+    const styledDayEntryBar = findStyledByTestId(dayEntry, 'date-input-validation-bar')
+    const styledMonthEntryBar = findStyledByTestId(dayEntry, 'date-input-validation-bar')
+    const styledYearEntryBar = findStyledByTestId(dayEntry, 'date-input-validation-bar')
+
+    expect(styledDayEntryBar).toBeTruthy()
+    expect(styledMonthEntryBar).toBeTruthy()
+    expect(styledYearEntryBar).toBeTruthy()
+
+    expect(styledDayEntryBar.props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+    expect(styledMonthEntryBar.props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+    expect(styledYearEntryBar.props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+  })
+
+  it('should use day focus correctly', async () => {
+    const { getByTestId } = render(
+      <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
+    )
+
+    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    expect(hiddenInput).toBeTruthy()
+
+    const dayLabel = getByTestId(t`Entrée pour le jour de la date de naissance`)
+    const monthLabel = getByTestId(t`Entrée pour le mois de la date de naissance`)
+    const yearLabel = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+
+    expect(dayLabel).toBeTruthy()
+    expect(monthLabel).toBeTruthy()
+    expect(yearLabel).toBeTruthy()
+    await fireEvent.press(dayLabel)
+
+    const dayLabelText = findStyledByTestId(dayLabel, 'date-input-label-text')
+    const monthLabelText = findStyledByTestId(monthLabel, 'date-input-label-text')
+    const yearLabelText = findStyledByTestId(yearLabel, 'date-input-label-text')
+
+    expect(dayLabelText).toBeTruthy()
+    expect(monthLabelText).toBeTruthy()
+    expect(yearLabelText).toBeTruthy()
+
+    await waitForExpect(() => {
+      expect(hiddenInput.props.value).toBe('')
+      expect((dayLabelText.children[0] as ReactTestInstance).children[0]).toBe('JJ')
+      expect((monthLabelText.children[0] as ReactTestInstance).children[0]).toBe('MM')
+      expect((yearLabelText.children[0] as ReactTestInstance).children[0]).toBe('AAAA')
     })
   })
 
-  describe('FULL_DATE_VALIDATOR.isValid()', () => {
-    it.each([
-      [29, 2, 2005], // non leap year
-      [29, 2, 2006], // non leap year
-      [29, 2, 2007], // non leap year
-      [31, 4, 2005],
-      [31, 6, 2005],
-      [31, 9, 2005],
-      [31, 11, 2005],
-    ])('should return false when the date is invalid (DD-MM-AAAA) %s-%s-%s', (day, month, year) => {
-      const date = new Date(year, month - 1, day)
-      expect(FULL_DATE_VALIDATOR.isValid(date, year, month, day)).toBeFalsy()
-    })
+  it('should use month focus correctly', async () => {
+    const { getByTestId } = render(
+      <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
+    )
 
-    const VALID_DATES = [
-      [1, 2, 2003],
-      [29, 2, 2004], // leap year
-      [29, 2, 2008], // leap year
-      [29, 2, 2012], // leap year
-      [31, 3, 2005],
-      [31, 5, 2005],
-      [31, 7, 2005],
-      [31, 8, 2005],
-    ]
-    it.each(VALID_DATES)(
-      'should return true when the date is valid (DD-MM-AAAA) %s-%s-%s with timezone Brazil/East',
-      (day, month, year) => {
-        timezoneMock.register('Brazil/East')
-        const date = new Date(year, month - 1, day)
-        expect(FULL_DATE_VALIDATOR.isValid(date, year, month, day)).toBeTruthy()
-      }
-    )
-    it.each(VALID_DATES)(
-      'should return true when the date is valid (DD-MM-AAAA) %s-%s-%s with timezone Europe/London',
-      (day, month, year) => {
-        timezoneMock.register('Europe/London')
-        const date = new Date(year, month - 1, day)
-        expect(FULL_DATE_VALIDATOR.isValid(date, year, month, day)).toBeTruthy()
-      }
-    )
+    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    expect(hiddenInput).toBeTruthy()
+
+    const dayLabel = getByTestId(t`Entrée pour le jour de la date de naissance`)
+    const monthLabel = getByTestId(t`Entrée pour le mois de la date de naissance`)
+    const yearLabel = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+
+    expect(dayLabel).toBeTruthy()
+    expect(monthLabel).toBeTruthy()
+    expect(yearLabel).toBeTruthy()
+
+    fireEvent.press(monthLabel)
+
+    const dayLabelText = findStyledByTestId(dayLabel, 'date-input-label-text')
+    const monthLabelText = findStyledByTestId(monthLabel, 'date-input-label-text')
+    const yearLabelText = findStyledByTestId(yearLabel, 'date-input-label-text')
+
+    expect(dayLabelText).toBeTruthy()
+    expect(monthLabelText).toBeTruthy()
+    expect(yearLabelText).toBeTruthy()
+
+    await waitForExpect(() => {
+      expect(hiddenInput.props.value).toBe('25')
+      expect((dayLabelText.children[0] as ReactTestInstance).children[0]).toBe(t`25`)
+      expect((monthLabelText.children[0] as ReactTestInstance).children[0]).toBe('MM')
+      expect((yearLabelText.children[0] as ReactTestInstance).children[0]).toBe('AAAA')
+    })
   })
 
-  describe('with date limits', () => {
-    it('it should not validate a date below min', () => {
-      const onChangeValue = jest.fn()
-      const minDate = new Date('2010-01-02T00:00:00')
-      const { getByPlaceholderText } = render(
-        <DateInput onChangeValue={onChangeValue} minDate={minDate} />
-      )
+  it('should use year focus correctly', async () => {
+    const { getByTestId } = render(
+      <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
+    )
 
-      fireEvent.changeText(getByPlaceholderText('JJ/MM/AAAA'), '01/01/2010')
+    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    expect(hiddenInput).toBeTruthy()
 
-      expect(onChangeValue).toBeCalledWith(new Date('2010-01-01'), {
-        isComplete: true,
-        isDateAboveMin: false,
-        isDateBelowMax: true,
-        isValid: false,
-      })
+    const dayLabel = getByTestId(t`Entrée pour le jour de la date de naissance`)
+    const monthLabel = getByTestId(t`Entrée pour le mois de la date de naissance`)
+    const yearLabel = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+
+    expect(dayLabel).toBeTruthy()
+    expect(monthLabel).toBeTruthy()
+    expect(yearLabel).toBeTruthy()
+    await fireEvent.press(yearLabel)
+
+    const dayLabelText = findStyledByTestId(dayLabel, 'date-input-label-text')
+    const monthLabelText = findStyledByTestId(monthLabel, 'date-input-label-text')
+    const yearLabelText = findStyledByTestId(yearLabel, 'date-input-label-text')
+
+    expect(dayLabelText).toBeTruthy()
+    expect(monthLabelText).toBeTruthy()
+    expect(yearLabelText).toBeTruthy()
+
+    await waitForExpect(() => {
+      expect(hiddenInput.props.value).toBe('2510')
+      expect((dayLabelText.children[0] as ReactTestInstance).children[0]).toBe(t`25`)
+      expect((monthLabelText.children[0] as ReactTestInstance).children[0]).toBe(t`10`)
+      expect((yearLabelText.children[0] as ReactTestInstance).children[0]).toBe('AAAA')
     })
+  })
 
-    it('it should not validate a date above max', () => {
-      const onChangeValue = jest.fn()
-      const maxDate = new Date('2010-01-01T00:00:00')
-      const { getByPlaceholderText } = render(
-        <DateInput onChangeValue={onChangeValue} maxDate={maxDate} />
-      )
+  it('should call onChangeValue with correct date', () => {
+    const onChangeValue = jest.fn()
+    const { getByTestId } = render(
+      <DateInput
+        initialDay={'25'}
+        initialMonth={'10'}
+        initialYear={'1991'}
+        onChangeValue={onChangeValue}
+      />
+    )
 
-      fireEvent.changeText(getByPlaceholderText('JJ/MM/AAAA'), '02/01/2010')
-      expect(onChangeValue).toBeCalledWith(new Date('2010-01-02'), {
-        isComplete: true,
-        isDateAboveMin: true,
-        isDateBelowMax: false,
-        isValid: false,
-      })
+    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    expect(hiddenInput).toBeTruthy()
+
+    expect(onChangeValue).toHaveBeenCalledWith(new Date('1991-10-25'), {
+      isComplete: true,
+      isValid: true,
+      isDateAboveMin: true,
+      isDateBelowMax: true,
     })
+  })
 
-    it('it should validate a date below max and above min', () => {
-      const onChangeValue = jest.fn()
-      const minDate = new Date('2010-01-01T00:00:00')
-      const maxDate = new Date('2010-02-01T00:00:00')
-      const { getByPlaceholderText } = render(
-        <DateInput onChangeValue={onChangeValue} minDate={minDate} maxDate={maxDate} />
-      )
+  it('should call onChangeValue with incorrect date', () => {
+    const onChangeValue = jest.fn()
+    const { getByTestId } = render(
+      <DateInput
+        initialDay={'25'}
+        initialMonth={'13'}
+        initialYear={'1991'}
+        onChangeValue={onChangeValue}
+      />
+    )
 
-      fireEvent.changeText(getByPlaceholderText('JJ/MM/AAAA'), '15/01/2010')
+    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    expect(hiddenInput).toBeTruthy()
 
-      expect(onChangeValue).toBeCalledWith(new Date('2010-01-15'), {
-        isComplete: true,
+    expect(onChangeValue).toHaveBeenCalledWith(null, {
+      isComplete: false,
+      isValid: false,
+      isDateAboveMin: true,
+      isDateBelowMax: true,
+    })
+  })
+
+  it('should call onChangeValue with incomplete date', async () => {
+    const onChangeValue = jest.fn()
+    const { getByTestId } = render(
+      <DateInput
+        initialDay={'25'}
+        initialMonth={'13'}
+        initialYear={'1991'}
+        onChangeValue={onChangeValue}
+      />
+    )
+
+    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    expect(hiddenInput).toBeTruthy()
+
+    const monthLabel = getByTestId(t`Entrée pour le mois de la date de naissance`)
+    fireEvent.press(monthLabel)
+    await waitForExpect(() => {
+      expect(onChangeValue).toHaveBeenCalledWith(null, {
+        isComplete: false,
+        isValid: false,
         isDateAboveMin: true,
         isDateBelowMax: true,
-        isValid: true,
       })
     })
   })

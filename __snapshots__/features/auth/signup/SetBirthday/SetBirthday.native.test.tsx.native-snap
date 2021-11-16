@@ -292,9 +292,10 @@ Array [
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "alignSelf": "stretch",
+                          "alignItems": "stretch",
+                          "alignSelf": "center",
                           "flexDirection": "column",
+                          "maxWidth": 300,
                           "position": "relative",
                           "width": "100%",
                         },
@@ -305,8 +306,8 @@ Array [
                       style={
                         Array [
                           Object {
-                            "alignItems": "stretch",
-                            "flexDirection": "column",
+                            "flexDirection": "row",
+                            "position": "relative",
                           },
                         ]
                       }
@@ -317,19 +318,27 @@ Array [
                         allowFontScaling={true}
                         autoFocus={true}
                         keyboardType="number-pad"
+                        maxLength={8}
                         onBlur={[Function]}
                         onChangeText={[Function]}
-                        onFocus={[Function]}
+                        onSelectionChange={[Function]}
                         onSubmitEditing={[Function]}
-                        placeholder="JJ/MM/AAAA"
+                        pointerEvents="none"
                         rejectResponderTermination={true}
                         returnKeyType="done"
                         style={
                           Array [
                             Object {
+                              "bottom": 0,
                               "fontSize": 18,
+                              "left": 0,
                               "lineHeight": 22,
+                              "opacity": 0,
+                              "position": "absolute",
+                              "right": 0,
                               "textAlign": "center",
+                              "top": 0,
+                              "zIndex": 0,
                             },
                           ]
                         }
@@ -338,23 +347,206 @@ Array [
                         value=""
                       />
                       <View
-                        backgroundColor="#c7c7cc"
-                        isEmpty={true}
-                        isFocused={false}
-                        isValid={false}
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "maxWidth": 130,
+                            "opacity": 1,
+                            "width": "30%",
+                          }
+                        }
+                        testID="Entrée pour le jour de la date de naissance"
+                      >
+                        <Text
+                          color="#626262"
+                          numberOfLines={1}
+                          style={
+                            Array [
+                              Object {
+                                "color": "#626262",
+                                "fontFamily": "Montserrat-Regular",
+                                "fontSize": 18,
+                                "lineHeight": 22,
+                                "textAlign": "center",
+                              },
+                            ]
+                          }
+                          testID="date-input-label-text"
+                        >
+                          JJ
+                        </Text>
+                        <View
+                          backgroundColor="#c7c7cc"
+                          isEmpty={true}
+                          isFocused={false}
+                          isValid={false}
+                          style={
+                            Array [
+                              Object {
+                                "alignSelf": "stretch",
+                                "backgroundColor": "#c7c7cc",
+                                "borderRadius": 22,
+                                "height": 5,
+                              },
+                            ]
+                          }
+                          testID="date-input-validation-bar"
+                        />
+                      </View>
+                      <View
+                        flex={0.25}
                         style={
                           Array [
                             Object {
-                              "alignSelf": "stretch",
-                              "backgroundColor": "#c7c7cc",
-                              "borderRadius": 22,
-                              "height": 5,
-                              "minWidth": 130,
+                              "flexBasis": 0,
+                              "flexGrow": 0.25,
+                              "flexShrink": 1,
                             },
                           ]
                         }
-                        testID="date-bar"
                       />
+                      <View
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "maxWidth": 130,
+                            "opacity": 1,
+                            "width": "30%",
+                          }
+                        }
+                        testID="Entrée pour le mois de la date de naissance"
+                      >
+                        <Text
+                          color="#626262"
+                          numberOfLines={1}
+                          style={
+                            Array [
+                              Object {
+                                "color": "#626262",
+                                "fontFamily": "Montserrat-Regular",
+                                "fontSize": 18,
+                                "lineHeight": 22,
+                                "textAlign": "center",
+                              },
+                            ]
+                          }
+                          testID="date-input-label-text"
+                        >
+                          MM
+                        </Text>
+                        <View
+                          backgroundColor="#c7c7cc"
+                          isEmpty={true}
+                          isFocused={false}
+                          isValid={false}
+                          style={
+                            Array [
+                              Object {
+                                "alignSelf": "stretch",
+                                "backgroundColor": "#c7c7cc",
+                                "borderRadius": 22,
+                                "height": 5,
+                              },
+                            ]
+                          }
+                          testID="date-input-validation-bar"
+                        />
+                      </View>
+                      <View
+                        flex={0.25}
+                        style={
+                          Array [
+                            Object {
+                              "flexBasis": 0,
+                              "flexGrow": 0.25,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "maxWidth": 130,
+                            "opacity": 1,
+                            "width": "30%",
+                          }
+                        }
+                        testID="Entrée pour l'année jour de la date de naissance"
+                      >
+                        <Text
+                          color="#626262"
+                          numberOfLines={1}
+                          style={
+                            Array [
+                              Object {
+                                "color": "#626262",
+                                "fontFamily": "Montserrat-Regular",
+                                "fontSize": 18,
+                                "lineHeight": 22,
+                                "textAlign": "center",
+                              },
+                            ]
+                          }
+                          testID="date-input-label-text"
+                        >
+                          AAAA
+                        </Text>
+                        <View
+                          backgroundColor="#c7c7cc"
+                          isEmpty={true}
+                          isFocused={false}
+                          isValid={false}
+                          style={
+                            Array [
+                              Object {
+                                "alignSelf": "stretch",
+                                "backgroundColor": "#c7c7cc",
+                                "borderRadius": 22,
+                                "height": 5,
+                              },
+                            ]
+                          }
+                          testID="date-input-validation-bar"
+                        />
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -1091,9 +1283,10 @@ exports[`SetBirthday Page should render properly 1`] = `
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
-                        "alignSelf": "stretch",
+                        "alignItems": "stretch",
+                        "alignSelf": "center",
                         "flexDirection": "column",
+                        "maxWidth": 300,
                         "position": "relative",
                         "width": "100%",
                       },
@@ -1104,8 +1297,8 @@ exports[`SetBirthday Page should render properly 1`] = `
                     style={
                       Array [
                         Object {
-                          "alignItems": "stretch",
-                          "flexDirection": "column",
+                          "flexDirection": "row",
+                          "position": "relative",
                         },
                       ]
                     }
@@ -1116,19 +1309,27 @@ exports[`SetBirthday Page should render properly 1`] = `
                       allowFontScaling={true}
                       autoFocus={true}
                       keyboardType="number-pad"
+                      maxLength={8}
                       onBlur={[Function]}
                       onChangeText={[Function]}
-                      onFocus={[Function]}
+                      onSelectionChange={[Function]}
                       onSubmitEditing={[Function]}
-                      placeholder="JJ/MM/AAAA"
+                      pointerEvents="none"
                       rejectResponderTermination={true}
                       returnKeyType="done"
                       style={
                         Array [
                           Object {
+                            "bottom": 0,
                             "fontSize": 18,
+                            "left": 0,
                             "lineHeight": 22,
+                            "opacity": 0,
+                            "position": "absolute",
+                            "right": 0,
                             "textAlign": "center",
+                            "top": 0,
+                            "zIndex": 0,
                           },
                         ]
                       }
@@ -1137,23 +1338,206 @@ exports[`SetBirthday Page should render properly 1`] = `
                       value=""
                     />
                     <View
-                      backgroundColor="#c7c7cc"
-                      isEmpty={true}
-                      isFocused={false}
-                      isValid={false}
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "maxWidth": 130,
+                          "opacity": 1,
+                          "width": "30%",
+                        }
+                      }
+                      testID="Entrée pour le jour de la date de naissance"
+                    >
+                      <Text
+                        color="#626262"
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#626262",
+                              "fontFamily": "Montserrat-Regular",
+                              "fontSize": 18,
+                              "lineHeight": 22,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                        testID="date-input-label-text"
+                      >
+                        JJ
+                      </Text>
+                      <View
+                        backgroundColor="#c7c7cc"
+                        isEmpty={true}
+                        isFocused={false}
+                        isValid={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignSelf": "stretch",
+                              "backgroundColor": "#c7c7cc",
+                              "borderRadius": 22,
+                              "height": 5,
+                            },
+                          ]
+                        }
+                        testID="date-input-validation-bar"
+                      />
+                    </View>
+                    <View
+                      flex={0.25}
                       style={
                         Array [
                           Object {
-                            "alignSelf": "stretch",
-                            "backgroundColor": "#c7c7cc",
-                            "borderRadius": 22,
-                            "height": 5,
-                            "minWidth": 130,
+                            "flexBasis": 0,
+                            "flexGrow": 0.25,
+                            "flexShrink": 1,
                           },
                         ]
                       }
-                      testID="date-bar"
                     />
+                    <View
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "maxWidth": 130,
+                          "opacity": 1,
+                          "width": "30%",
+                        }
+                      }
+                      testID="Entrée pour le mois de la date de naissance"
+                    >
+                      <Text
+                        color="#626262"
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#626262",
+                              "fontFamily": "Montserrat-Regular",
+                              "fontSize": 18,
+                              "lineHeight": 22,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                        testID="date-input-label-text"
+                      >
+                        MM
+                      </Text>
+                      <View
+                        backgroundColor="#c7c7cc"
+                        isEmpty={true}
+                        isFocused={false}
+                        isValid={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignSelf": "stretch",
+                              "backgroundColor": "#c7c7cc",
+                              "borderRadius": 22,
+                              "height": 5,
+                            },
+                          ]
+                        }
+                        testID="date-input-validation-bar"
+                      />
+                    </View>
+                    <View
+                      flex={0.25}
+                      style={
+                        Array [
+                          Object {
+                            "flexBasis": 0,
+                            "flexGrow": 0.25,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "maxWidth": 130,
+                          "opacity": 1,
+                          "width": "30%",
+                        }
+                      }
+                      testID="Entrée pour l'année jour de la date de naissance"
+                    >
+                      <Text
+                        color="#626262"
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#626262",
+                              "fontFamily": "Montserrat-Regular",
+                              "fontSize": 18,
+                              "lineHeight": 22,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                        testID="date-input-label-text"
+                      >
+                        AAAA
+                      </Text>
+                      <View
+                        backgroundColor="#c7c7cc"
+                        isEmpty={true}
+                        isFocused={false}
+                        isValid={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignSelf": "stretch",
+                              "backgroundColor": "#c7c7cc",
+                              "borderRadius": 22,
+                              "height": 5,
+                            },
+                          ]
+                        }
+                        testID="date-input-validation-bar"
+                      />
+                    </View>
                   </View>
                 </View>
               </View>
