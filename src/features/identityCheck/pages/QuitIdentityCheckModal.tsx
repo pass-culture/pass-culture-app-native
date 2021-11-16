@@ -9,7 +9,7 @@ import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
-import { ColorsEnum, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -17,13 +17,14 @@ interface Props {
   testIdSuffix?: string
 }
 
+const title = t`Veux-tu abandonner la vérification d'identité ?`
+const description = t`Les informations que tu as renseignées ne seront pas enregistrées.`
+
 export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   visible,
   resume,
   testIdSuffix,
 }) => {
-  const title = t`Veux-tu abandonner la vérification d'identité ?`
-  const description = t`Les informations que tu as renseignées ne seront pas enregistrées.`
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
       <GenericInfoPage title={title} icon={WarningDeprecated} flex={false}>
@@ -37,8 +38,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ theme, color }) => ({
+  color: color ?? theme.colors.white,
   textAlign: 'center',
-})
+}))
