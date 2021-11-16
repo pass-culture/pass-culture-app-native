@@ -1,12 +1,10 @@
 import React, { memo } from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
-import { ColorsEnum } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
 
-export const BackgroundPurple = memo(NotMemoizedBackground)
+export const BackgroundSecondary = memo(NotMemoizedBackground)
 
 function NotMemoizedBackground() {
   return (
@@ -16,18 +14,19 @@ function NotMemoizedBackground() {
   )
 }
 
-const BackgroundContainer = styled.View({
+const BackgroundContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
   width: '100%',
   height: '100%',
-  zIndex: ZIndex.BACKGROUND,
-})
+  zIndex: theme.zIndex.background,
+}))
 
 function BackgroundSvg() {
-  const dark = ColorsEnum.BRAND
-  const light = ColorsEnum.BRAND_DARK
+  const {
+    colors: { brand: dark, brandDark: light },
+  } = useTheme()
   const { id, fill } = svgIdentifier()
   const { id: id2, xlinkHref: xlinkHref2 } = svgIdentifier()
   const { id: id3 } = svgIdentifier()
