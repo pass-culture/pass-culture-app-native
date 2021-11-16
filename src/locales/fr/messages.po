@@ -799,6 +799,10 @@ msgstr "Festival"
 msgid "Filtrer"
 msgstr "Filtrer"
 
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Fin du parcours"
+msgstr "Fin du parcours"
+
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
@@ -1922,6 +1926,10 @@ msgstr "Supprimer mon compte"
 #: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Sélectionne ton statut"
 msgstr "Sélectionne ton statut"
+
+#: src/features/identityCheck/pages/IdentityCheckEnd.tsx
+msgid "Ta pièce d’identité a bien été transmise !"
+msgstr "Ta pièce d’identité a bien été transmise !"
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "Terminer"
