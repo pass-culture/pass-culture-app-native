@@ -64,6 +64,10 @@ msgstr "Abandonner"
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
+#: src/features/identityCheck/pages/QuitIdentityCheckModal.tsx
+msgid "Abandonner la vérification"
+msgstr "Abandonner la vérification"
+
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
 msgid "Académie de"
 msgstr "Académie de"
@@ -417,7 +421,7 @@ msgstr "Conditions d'utilisations"
 msgid "Confidentialité"
 msgstr "Confidentialité"
 
-#: src/features/identityCheck/useIdentityCheckSteps.ts
+#: src/features/identityCheck/useIdentityCheckSteps.tsx
 msgid "Confirmation"
 msgstr "Confirmation"
 
@@ -513,6 +517,10 @@ msgstr "Continuer"
 #: src/features/auth/components/QuitSignupModal.tsx
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
+
+#: src/features/identityCheck/pages/QuitIdentityCheckModal.tsx
+msgid "Continuer la vérification"
+msgstr "Continuer la vérification"
 
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
@@ -876,7 +884,7 @@ msgid "Id Check indisponible"
 msgstr "Id Check indisponible"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
-#: src/features/identityCheck/useIdentityCheckSteps.ts
+#: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Identification"
 msgstr "Identification"
@@ -1097,6 +1105,7 @@ msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
 #: src/features/auth/components/QuitSignupModal.tsx
+#: src/features/identityCheck/pages/QuitIdentityCheckModal.tsx
 msgid "Les informations que tu as renseignées ne seront pas enregistrées."
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées."
 
@@ -1578,7 +1587,7 @@ msgstr "Problème technique ;("
 msgid "Problèmes pour ouvrir un lien ?"
 msgstr "Problèmes pour ouvrir un lien ?"
 
-#: src/features/identityCheck/useIdentityCheckSteps.ts
+#: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/profile/components/LoggedOutHeader.tsx
@@ -2320,6 +2329,10 @@ msgstr "Version"
 #: src/features/auth/components/QuitSignupModal.tsx
 msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
+
+#: src/features/identityCheck/pages/QuitIdentityCheckModal.tsx
+msgid "Veux-tu abandonner la vérification d'identité ?"
+msgstr "Veux-tu abandonner la vérification d'identité ?"
 
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 msgid "Victime de notre succès"
