@@ -14,6 +14,8 @@ import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching'
 import { registerRoute } from 'workbox-routing'
 import { StaleWhileRevalidate } from 'workbox-strategies'
 
+import { isSafari } from 'web/utils'
+
 declare const self: ServiceWorkerGlobalScope
 
 clientsClaim()
@@ -77,5 +79,8 @@ self.addEventListener('message', (event) => {
   }
 })
 
-// This is for web push notifications with batch
-self.importScripts(process.env.PUBLIC_URL + '/batchsdk-shared-worker.js')
+// TODO: remove this condition when BatchSDK will support Safari, see also react-native-batch.web.ts#L9
+if (!isSafari()) {
+  // This is for web push notifications with batch
+  self.importScripts(process.env.PUBLIC_URL + '/batchsdk-shared-worker.js')
+}
