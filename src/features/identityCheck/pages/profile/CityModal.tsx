@@ -1,13 +1,14 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
-import { LayoutChangeEvent, Platform } from 'react-native'
 import RNModal from 'react-native-modal'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { RadioButton } from 'ui/components/RadioButton'
+import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Style } from 'ui/components/Style'
 import { BicolorBuilding } from 'ui/svg/icons/BicolorBuilding'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface City {
@@ -22,26 +23,27 @@ interface Props {
   isVisible: boolean
 }
 
-const defaultProps = {
-  cities: [],
-  isVisible: false,
-}
-
-export const CityModal = ({ cities, onSubmit, isVisible }: Props) => {
-  const [bottomContainerHeight, setBottomContainerHeight] = useState(0)
-  function onLayout(event: LayoutChangeEvent) {
-    const { height } = event.nativeEvent.layout
-    setBottomContainerHeight(height)
-  }
+export const CityModal = ({ cities = [], onSubmit, isVisible = false }: Props) => {
+  const { top, bottom } = useSafeAreaInsets()
+  const [selectedCity, setSelectedCity] = useState<string | undefined>()
 
   const onClose = () => 'close'
-
+  const onSubmitSelectedCity = (city: City) => {
+    setSelectedCity(city.name)
+    setTimeout(() => {
+      onSubmit(city)
+    }, 2000)
+  }
   const webcss = `div[aria-modal="true"] { align-items: center }`
 
   return (
     <React.Fragment>
       <Style>{webcss}</Style>
-      <StyledModal isVisible={isVisible} onBackdropPress={onClose}>
+      <StyledModal
+        isVisible={isVisible}
+        onBackdropPress={onClose}
+        safeAreaTop={top}
+        safeAreaBottom={bottom}>
         <HeaderContainer>
           <BicolorBuilding size={getSpacing(24)} />
           <Spacer.Column numberOfSpaces={6} />
@@ -52,19 +54,18 @@ export const CityModal = ({ cities, onSubmit, isVisible }: Props) => {
           </StyledBody>
         </HeaderContainer>
         <Container>
-          <StyledScrollView bottomContainerHeight={bottomContainerHeight}>
+          <StyledScrollView>
             {cities?.map((city) => (
               <RadioButton
                 key={city.name}
-                id={city.code}
-                title={city.name}
-                onSelect={() => onSubmit(city)}
-                selectedValue={city.name}
+                name={city.name}
+                onPress={() => onSubmitSelectedCity(city)}
+                selected={city.name === selectedCity}
               />
             ))}
           </StyledScrollView>
-          <BottomContainer onLayout={onLayout} testID="bottom-container">
-            <ButtonPrimary title="Annuler" onPress={onClose} />
+          <BottomContainer>
+            <ButtonTertiaryBlack title={t`Annuler`} onPress={onClose} icon={Invalidate} />
           </BottomContainer>
         </Container>
       </StyledModal>
@@ -72,15 +73,19 @@ export const CityModal = ({ cities, onSubmit, isVisible }: Props) => {
   )
 }
 
-CityModal.defaultProps = defaultProps
-
 // @ts-ignore RNModal extends React.Component
-const StyledModal = styled(RNModal)(({ theme }) => ({
-  backgroundColor: theme.colors.white,
-  maxWidth: getSpacing(125),
-  borderRadius: getSpacing(4),
-  flex: 1,
-}))
+const StyledModal = styled(RNModal)<{ safeAreaTop: number }>(
+  ({ theme, safeAreaTop, safeAreaBottom }) => ({
+    backgroundColor: theme.colors.white,
+    maxWidth: getSpacing(125),
+    borderRadius: getSpacing(4),
+    flex: 1,
+    ...(!!theme.isMobileViewport && {
+      marginTop: getSpacing(5) + safeAreaTop,
+      marginBottom: getSpacing(10) + safeAreaBottom,
+    }),
+  })
+)
 
 const HeaderContainer = styled.View({
   alignItems: 'center',
@@ -98,34 +103,13 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
 }))
 
-type StyledScrollViewProps = { bottomContainerHeight: number }
-
-const StyledScrollView = styled.ScrollView.attrs<StyledScrollViewProps>((props) => ({
-  contentContainerStyle: {
-    flexGrow: 1,
-    paddingBottom: props.bottomContainerHeight,
-  },
-}))<StyledScrollViewProps>({
+const StyledScrollView = styled.ScrollView({
   flex: 1,
-  marginBottom: 0,
 })
 
-const paddingBottomContainer = getSpacing(12)
 const BottomContainer = styled.View({
   alignItems: 'center',
   width: '100%',
-  position: 'absolute',
-  bottom: 0,
+  paddingTop: getSpacing(3),
   paddingBottom: getSpacing(7),
-  // On the web, the bottom-container width is having a left padding but full width right
-  // On native, it's the opposite.
-  // This is due to the different scrolls between the two platform
-  ...Platform.select({
-    web: {
-      paddingRight: paddingBottomContainer,
-    },
-    default: {
-      paddingLeft: paddingBottomContainer,
-    },
-  }),
 })

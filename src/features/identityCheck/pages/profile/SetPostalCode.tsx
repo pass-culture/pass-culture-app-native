@@ -21,10 +21,15 @@ export const SetPostalCode = () => {
   const [isPostalCodeInvalid, setIsPostalCodeInvalid] = useState(true)
   const [isLoadingCities, setIsLoadingCities] = useState(false)
 
+  // TODO (LucasBeneston) : Remove when citiesResult is dynamic
   const cities: City[] = [
     { name: 'Paris', code: '75000', postalCode: '75000' },
     { name: 'Lyon', code: '69000', postalCode: '69000' },
     { name: 'Saint-Étienne', code: '42000', postalCode: '42000' },
+    { name: 'Marseille', code: '13000', postalCode: '13000' },
+    { name: 'Brest', code: '29000', postalCode: '29000' },
+    { name: 'Bordeaux', code: '33000', postalCode: '33000' },
+    { name: 'Grenoble', code: '38000', postalCode: '38000' },
   ]
 
   const isDisabled = isPostalCodeInvalid
@@ -38,7 +43,6 @@ export const SetPostalCode = () => {
     if (!isDisabled) {
       try {
         setIsLoadingCities(true)
-        // await searchCities(postalCode.replace(/\s/g, ''))
       } finally {
         setIsLoadingCities(false)
       }
@@ -76,7 +80,7 @@ export const SetPostalCode = () => {
           />
         }
       />
-      <CityModal cities={cities} isVisible={false} onSubmit={(city: City) => city} />
+      <CityModal cities={cities} isVisible={true} onSubmit={(city: City) => city} />
     </React.Fragment>
   )
 }
