@@ -198,6 +198,7 @@
     "@types/react-native": "^0.64.12",
     "@types/react-native-calendars": "^1.1264.2",
     "@types/react-test-renderer": "^16.9.2",
+    "@types/share-api-polyfill": "^1.0.2",
     "@types/styled-components": "^5.1.4",
     "@types/styled-components-react-native": "^5.1.1",
     "@types/uuid": "^8.3.0",

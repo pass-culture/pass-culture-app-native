@@ -16,8 +16,8 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
-import { isSharingSupported } from 'features/offer/services/isSharingSupported'
 import { analytics } from 'libs/analytics'
+import { isShareApiSupported } from 'libs/share'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
@@ -113,8 +113,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
           </Title>
 
           <Spacer.Flex />
-          {/* TODO WEB : display button only if sharing is supported : https://passculture.atlassian.net/browse/PC-10510 */}
-          {!!isSharingSupported() && (
+          {!!isShareApiSupported() && (
             <HeaderIcon
               animationState={animationState}
               iconName="share"

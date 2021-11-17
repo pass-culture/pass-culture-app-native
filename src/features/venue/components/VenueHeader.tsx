@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { isSharingSupported } from 'features/offer/services/isSharingSupported'
+import { isShareApiSupported } from 'libs/share'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
@@ -50,15 +50,14 @@ export const VenueHeader: React.FC<Props> = (props) => {
         </Title>
 
         <Spacer.Flex />
-        {/* TODO WEB : display button only if sharing is supported : https://passculture.atlassian.net/browse/PC-10510 */}
-        {isSharingSupported() ? (
+        {!!isShareApiSupported() && (
           <HeaderIcon
             animationState={animationState}
             iconName="share"
             onPress={shareVenue}
             testID={t`Partager`}
           />
-        ) : null}
+        )}
         <Spacer.Row numberOfSpaces={6} />
       </Row>
       <Spacer.Column numberOfSpaces={2} />
