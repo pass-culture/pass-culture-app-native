@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { RadioButton } from 'ui/components/RadioButton'
 import { Style } from 'ui/components/Style'
-import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
+import { BicolorBuilding } from 'ui/svg/icons/BicolorBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface City {
@@ -43,7 +43,8 @@ export const CityModal = ({ cities, onSubmit, isVisible }: Props) => {
       <Style>{webcss}</Style>
       <StyledModal isVisible={isVisible} onBackdropPress={onClose}>
         <HeaderContainer>
-          <BicolorLocationBuilding size={getSpacing(40)} />
+          <BicolorBuilding size={getSpacing(24)} />
+          <Spacer.Column numberOfSpaces={6} />
           <Typo.Title4>{t`Dans quelle ville résides-tu ?`}</Typo.Title4>
           <Spacer.Column numberOfSpaces={4} />
           <StyledBody>

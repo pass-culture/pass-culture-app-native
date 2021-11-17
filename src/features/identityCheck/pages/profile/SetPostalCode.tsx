@@ -76,7 +76,7 @@ export const SetPostalCode = () => {
           />
         }
       />
-      <CityModal cities={cities} isVisible={true} onSubmit={(city: City) => city} />
+      <CityModal cities={cities} isVisible={false} onSubmit={(city: City) => city} />
     </React.Fragment>
   )
 }
