@@ -113,11 +113,11 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
     }, [route.params])
   )
 
-  function onValidateSuccess() {
+  async function onValidateSuccess() {
     if (!sessionId) {
       eventMonitoring.captureException(new Error('TMX sessionId is null'))
     } else {
-      api
+      await api
         .postnativev1userProfiling({
           session_id: sessionId,
         } as UserProfilingFraudRequest)
