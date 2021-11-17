@@ -106,6 +106,18 @@ export interface AccountRequest {
     email: string;
     /**
      * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
+    firstName?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
+    lastName?: string | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof AccountRequest
      */
@@ -2079,6 +2091,12 @@ export interface UserProfileResponse {
     pseudo?: string | null;
     /**
      * 
+     * @type {number}
+     * @memberof UserProfileResponse
+     */
+    recreditAmountToShow?: number | null;
+    /**
+     * 
      * @type {Array<UserRole>}
      * @memberof UserProfileResponse
      */
@@ -3092,6 +3110,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary reset_recredit_amount_to_show <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1resetRecreditAmountToShow(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/reset_recredit_amount_to_show`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary send_offer_link_by_push <POST>
          * @param {number} offer_id 
          * @param {*} [options] Override http request option.
@@ -3648,6 +3688,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary reset_recredit_amount_to_show <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1resetRecreditAmountToShow(basePath: string, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resetRecreditAmountToShow(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary send_offer_link_by_push <POST>
          * @param {number} offer_id 
          * @param {*} [options] Override http request option.
@@ -4088,6 +4139,17 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1resetPassword(body?: ResetPasswordRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1resetPassword(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary reset_recredit_amount_to_show <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1resetRecreditAmountToShow(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1resetRecreditAmountToShow(this.basePath, options)
     }
     /**
      * 
