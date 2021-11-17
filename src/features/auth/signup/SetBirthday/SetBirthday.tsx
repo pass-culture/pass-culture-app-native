@@ -149,11 +149,13 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const birthdayInformation =
     t`L’application pass Culture est accessible à tous.` +
     '\n' +
-    t`Si tu as 18 ans, tu pourras obtenir une aide financière de` +
+    t`Si tu as 18 ans, tu as droit à une aide financière de` +
     '\u00a0' +
     deposit +
     '\u00a0' +
-    t`proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`
+    t`proposée par le Gouvernement.` +
+    '\n' +
+    t`Cette aide sera créditée directement sur ton compte pass Culture.`
 
   return (
     <React.Fragment>
