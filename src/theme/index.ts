@@ -10,12 +10,7 @@ import {
 } from 'react-device-detect'
 import { Platform } from 'react-native'
 
-import {
-  BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
-  getSpacing,
-  getSpacingString,
-  TAB_BAR_COMP_HEIGHT,
-} from 'ui/theme'
+import { getSpacing, getSpacingString, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
 import { ZIndex } from 'ui/theme/layers'
@@ -102,23 +97,8 @@ export interface AppThemeType extends Omit<IdCheckThemeType, 'colors' | 'typogra
     radius: BorderRadiusEnum
     checkbox: BorderRadiusEnum
   }
-  zIndex: {
-    background: ZIndex
-    cheatCodeButton: ZIndex
-    favoritePastilleContent: ZIndex
-    homeOfferCoverIcons: ZIndex
-    header: ZIndex
-    modalHeader: ZIndex
-    progressbar: ZIndex
-    playlistsButton: ZIndex
-    progressbarIcon: ZIndex
-    tabBar: ZIndex
-    headerNav: ZIndex
-    snackbar: ZIndex
-  }
-  bottomContentPage: {
-    offsetTopHeightDesktopTablet: number
-  }
+  zIndexTabBar: number
+  zIndexHeaderNav: number
 }
 
 export const theme: AppThemeType = deepmerge(idCheckTheme, {
@@ -224,21 +204,6 @@ export const theme: AppThemeType = deepmerge(idCheckTheme, {
     radius: BorderRadiusEnum.BORDER_RADIUS,
     checkbox: BorderRadiusEnum.CHECKBOX_RADIUS,
   },
-  zIndex: {
-    background: ZIndex.BACKGROUND,
-    cheatCodeButton: ZIndex.CHEAT_CODE_BUTTON,
-    favoritePastilleContent: ZIndex.FAVORITE_PASTILLE_CONTENT,
-    homeOfferCoverIcons: ZIndex.HOME_OFFER_COVER_ICONS,
-    header: ZIndex.HEADER,
-    modalHeader: ZIndex.MODAL_HEADER,
-    progressbar: ZIndex.PROGRESSBAR,
-    playlistsButton: ZIndex.PLAYLIST_BUTTON,
-    progressbarIcon: ZIndex.PROGRESSBAR_ICON,
-    tabBar: ZIndex.TAB_BAR,
-    headerNav: ZIndex.HEADER_NAV,
-    snackbar: ZIndex.SNACKBAR,
-  },
-  bottomContentPage: {
-    offsetTopHeightDesktopTablet: BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
-  },
+  zIndexTabBar: ZIndex.TABBAR,
+  zIndexHeaderNav: ZIndex.HEADER_NAV,
 })

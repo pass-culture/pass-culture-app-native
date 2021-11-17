@@ -5,7 +5,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -305,11 +305,11 @@
+@@ -297,11 +297,11 @@
                         },
                       ]
                     }
@@ -18,7 +18,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
               </View>
             </View>
             <View
-@@ -424,11 +424,11 @@
+@@ -416,11 +416,11 @@
                     ]
                   }
                   testID=\\"Entrée pour le mot de passe\\"
@@ -31,7 +31,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -527,22 +527,22 @@
+@@ -519,22 +519,22 @@
               }
             />
             <View
@@ -56,7 +56,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -561,20 +561,20 @@
+@@ -553,20 +553,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -86,7 +86,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -187,10 +187,59 @@
+@@ -179,10 +179,59 @@
                   </Text>
                 </View>
               </View>
@@ -146,7 +146,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -247,18 +296,18 @@
+@@ -239,18 +288,18 @@
                       },
                     ]
                   }
@@ -167,7 +167,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -305,11 +354,11 @@
+@@ -297,11 +346,11 @@
                         },
                       ]
                     }
@@ -180,7 +180,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               </View>
             </View>
             <View
-@@ -358,18 +407,18 @@
+@@ -350,18 +399,18 @@
                     },
                   ]
                 }
@@ -201,7 +201,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -424,11 +473,11 @@
+@@ -416,11 +465,11 @@
                     ]
                   }
                   testID=\\"Entrée pour le mot de passe\\"
@@ -214,7 +214,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -527,22 +576,22 @@
+@@ -519,22 +568,22 @@
               }
             />
             <View
@@ -239,7 +239,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -561,20 +610,20 @@
+@@ -553,20 +602,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -269,7 +269,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -187,10 +187,59 @@
+@@ -179,10 +179,59 @@
                   </Text>
                 </View>
               </View>
@@ -329,7 +329,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -247,18 +296,18 @@
+@@ -239,18 +288,18 @@
                       },
                     ]
                   }
@@ -350,7 +350,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -305,11 +354,11 @@
+@@ -297,11 +346,11 @@
                         },
                       ]
                     }
@@ -363,7 +363,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               </View>
             </View>
             <View
-@@ -358,18 +407,18 @@
+@@ -350,18 +399,18 @@
                     },
                   ]
                 }
@@ -384,7 +384,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -424,11 +473,11 @@
+@@ -416,11 +465,11 @@
                     ]
                   }
                   testID=\\"Entrée pour le mot de passe\\"
@@ -397,7 +397,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -527,22 +576,22 @@
+@@ -519,22 +568,22 @@
               }
             />
             <View
@@ -422,7 +422,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -561,20 +610,20 @@
+@@ -553,20 +602,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -452,7 +452,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 - First value
 + Second value
 
-@@ -187,10 +187,59 @@
+@@ -179,10 +179,59 @@
                   </Text>
                 </View>
               </View>
@@ -512,7 +512,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -247,18 +296,18 @@
+@@ -239,18 +288,18 @@
                       },
                     ]
                   }
@@ -533,7 +533,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -305,11 +354,11 @@
+@@ -297,11 +346,11 @@
                         },
                       ]
                     }
@@ -546,7 +546,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
               </View>
             </View>
             <View
-@@ -358,18 +407,18 @@
+@@ -350,18 +399,18 @@
                     },
                   ]
                 }
@@ -567,7 +567,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -424,11 +473,11 @@
+@@ -416,11 +465,11 @@
                     ]
                   }
                   testID=\\"Entrée pour le mot de passe\\"
@@ -580,7 +580,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-@@ -527,22 +576,22 @@
+@@ -519,22 +568,22 @@
               }
             />
             <View
@@ -605,7 +605,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -561,20 +610,20 @@
+@@ -553,20 +602,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={

@@ -12,22 +12,18 @@ Array [
     }
   >
     <View
-      height="100%"
       style={
         Array [
           Object {
-            "bottom": 0,
             "height": "100%",
             "left": 0,
             "position": "absolute",
-            "right": 0,
             "top": 0,
             "width": "100%",
             "zIndex": -1,
           },
         ]
       }
-      width="100%"
     >
       <View
         height="100%"
@@ -53,14 +49,9 @@ Array [
       <View
         onLayout={[Function]}
         style={
-          Array [
-            Array [
-              Object {},
-            ],
-            Object {
-              "paddingBottom": 0,
-            },
-          ]
+          Object {
+            "paddingBottom": 0,
+          }
         }
       >
         <RCTScrollView
@@ -76,6 +67,7 @@ Array [
               "width": "100%",
             }
           }
+          customPaddingBottom={16}
           keyboardShouldPersistTaps="handled"
           scrollEnabled={false}
           style={
@@ -809,22 +801,18 @@ exports[`SetBirthday Page should render properly 1`] = `
   }
 >
   <View
-    height="100%"
     style={
       Array [
         Object {
-          "bottom": 0,
           "height": "100%",
           "left": 0,
           "position": "absolute",
-          "right": 0,
           "top": 0,
           "width": "100%",
           "zIndex": -1,
         },
       ]
     }
-    width="100%"
   >
     <View
       height="100%"
@@ -850,14 +838,9 @@ exports[`SetBirthday Page should render properly 1`] = `
     <View
       onLayout={[Function]}
       style={
-        Array [
-          Array [
-            Object {},
-          ],
-          Object {
-            "paddingBottom": 0,
-          },
-        ]
+        Object {
+          "paddingBottom": 0,
+        }
       }
     >
       <RCTScrollView
@@ -873,6 +856,7 @@ exports[`SetBirthday Page should render properly 1`] = `
             "width": "100%",
           }
         }
+        customPaddingBottom={16}
         keyboardShouldPersistTaps="handled"
         scrollEnabled={false}
         style={
