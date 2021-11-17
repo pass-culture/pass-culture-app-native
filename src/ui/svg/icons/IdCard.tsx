@@ -1,8 +1,7 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
-import { v1 as uuidv1 } from 'uuid'
 
-import { BicolorGradient } from 'ui/svg/utils'
+import { BicolorGradient, svgIdentifier } from 'ui/svg/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
@@ -14,8 +13,8 @@ export const IdCard: React.FunctionComponent<IconInterface> = ({
   opacity = 1,
   testID,
 }) => {
-  const id = uuidv1()
-  const fill = color2 ? `url(#${id})` : color
+  const { id, fill: fillBicolor } = svgIdentifier()
+  const fill = color2 ? fillBicolor : color
 
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID}>

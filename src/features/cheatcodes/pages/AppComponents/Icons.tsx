@@ -170,7 +170,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Confidentiality" component={Confidentiality} isNew />
       <Icon name="BicolorConfidentiality" component={BicolorConfidentiality} />
       <Icon name="SignOut" component={SignOut} />
-      <Icon name="Lock" component={Lock} />
+      <Icon name="Lock" component={Lock} isNew />
       <Icon name="BicolorLock" component={BicolorLock} />
       <Icon name="ProfileDeprecated" component={ProfileDeprecated} />
       <Icon name="DuoPerson" component={DuoPerson} />
