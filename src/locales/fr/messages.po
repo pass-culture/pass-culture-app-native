@@ -269,6 +269,10 @@ msgstr "Bonne nouvelle !"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
+#: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
+msgid "Cadre l’intégralité de ton document"
+msgstr "Cadre l’intégralité de ton document"
+
 #: src/features/search/pages/Categories.tsx
 #: src/features/search/sections/titles.ts
 msgid "Catégories"
@@ -417,7 +421,7 @@ msgstr "Conditions d'utilisations"
 msgid "Confidentialité"
 msgstr "Confidentialité"
 
-#: src/features/identityCheck/useIdentityCheckSteps.ts
+#: src/features/identityCheck/useIdentityCheckSteps.tsx
 msgid "Confirmation"
 msgstr "Confirmation"
 
@@ -628,6 +632,10 @@ msgstr "Découvrir"
 #: src/features/offer/components/ReportOfferOtherReason.tsx
 msgid "Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre."
 msgstr "Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre."
+
+#: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
+msgid "Désactive ton flash"
+msgstr "Désactive ton flash"
 
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Désactiver la géolocalisation"
@@ -876,10 +884,14 @@ msgid "Id Check indisponible"
 msgstr "Id Check indisponible"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
-#: src/features/identityCheck/useIdentityCheckSteps.ts
+#: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Identification"
 msgstr "Identification"
+
+#: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
+msgid "Il est important que les informations de ton document soient parfaitement lisibles."
+msgstr "Il est important que les informations de ton document soient parfaitement lisibles."
 
 #: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs."
@@ -949,6 +961,10 @@ msgstr "Interrupteur géolocalisation"
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Interrupteur push notifications"
 msgstr "Interrupteur push notifications"
+
+#: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
+msgid "J'ai compris"
+msgstr "J'ai compris"
 
 #: src/features/search/components/SearchLandingPage.tsx
 msgid "Je cherche"
@@ -1314,6 +1330,10 @@ msgstr "Nombre de place"
 msgid "Nombre de tentatives dépassé. Réessaye dans 1 minute."
 msgstr "Nombre de tentatives dépassé. Réessaye dans 1 minute."
 
+#: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
+msgid "Nos conseils :"
+msgstr "Nos conseils :"
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
 msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
@@ -1513,6 +1533,10 @@ msgstr "Patrimoine et tourisme"
 msgid "Permanent"
 msgstr "Permanent"
 
+#: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
+msgid "Place-toi dans un lieu bien éclairé"
+msgstr "Place-toi dans un lieu bien éclairé"
+
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
@@ -1578,7 +1602,7 @@ msgstr "Problème technique ;("
 msgid "Problèmes pour ouvrir un lien ?"
 msgstr "Problèmes pour ouvrir un lien ?"
 
-#: src/features/identityCheck/useIdentityCheckSteps.ts
+#: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/profile/components/LoggedOutHeader.tsx
@@ -1601,6 +1625,10 @@ msgstr "Prénom et nom"
 #: src/features/offer/pages/OfferBody.tsx
 msgid "Quand ?"
 msgstr "Quand ?"
+
+#: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
+msgid "Quelques conseils"
+msgstr "Quelques conseils"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Questionnaire culturel"
@@ -1715,6 +1743,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
+#: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
