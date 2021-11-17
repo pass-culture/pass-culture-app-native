@@ -156,7 +156,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       '\u00a0' +
       deposit +
       '\u00a0' +
-      `proposée par le Gouvernement.` +
+      t`proposée par le Gouvernement.` +
       '\n' +
       '\n'
     : t`Si tu as 18 ans, tu as droit à une aide financière de` +
