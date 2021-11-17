@@ -9,11 +9,12 @@ import { IconInterface } from 'ui/svg/icons/types'
 
 export type SocialNetwork = 'facebook' | 'instagram' | 'snapchat' | 'twitter'
 
+const FACEBOOK_ID = '2202916773290436'
 const FACEBOOK_WEB_URL = 'https://www.facebook.com/passCultureofficiel/'
 const FACEBOOK_URL = Platform.select({
   default: FACEBOOK_WEB_URL,
-  ios: 'fb://page/?id=2202916773290436',
-  android: 'fb://page/2202916773290436',
+  ios: `fb://page/?id=${FACEBOOK_ID}`,
+  android: `fb://page/${FACEBOOK_ID}`,
 })
 
 export const SocialNetworkIconsMap: Record<

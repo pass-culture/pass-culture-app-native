@@ -67,6 +67,12 @@ module.exports = {
           'Please use `useTheme().appContentWidth` or `useWindowDimensions().width` instead for dynamic resizing.',
       },
       {
+        object: 'Share',
+        property: 'share',
+        message:
+          "Please use the function `share()` from `libs/share` instead for cross-platform support. Don't forget to check `isShareApiSupported()` before using the `share()` function !",
+      },
+      {
         object: 'window',
         property: 'GeolocationPositionError',
         message: 'Use getWebGeolocErrorFromCode() to support legacy browsers.',

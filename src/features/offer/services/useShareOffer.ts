@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { Platform, Share } from 'react-native'
+import { Platform } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
@@ -8,6 +8,7 @@ import { humanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
 import { env, useWebAppUrl, WEBAPP_V2_URL } from 'libs/environment'
 import { MonitoringError } from 'libs/monitoring'
+import { share } from 'libs/share'
 
 import { useOffer } from '../api/useOffer'
 import { getLocationName } from '../atoms/LocationCaption'
@@ -48,20 +49,14 @@ async function shareOffer(offer: OfferResponse, webAppUrl: string) {
   const title = t`Je t'invite à découvrir une super offre sur le pass Culture !`
   const shareContent = {
     message: completeMessage,
-    // iOs only
-    url,
-    // android only
-    title,
+    url, // iOS only
+    title, // android only
   }
-
   const shareOptions = {
-    // iOs only
-    subject: title,
-    // android only
-    dialogTitle: title,
+    subject: title, // iOS only
+    dialogTitle: title, // android only
   }
-
-  await Share.share(shareContent, shareOptions)
+  await share(shareContent, shareOptions)
 }
 
 export const useShareOffer = (offerId: number): (() => Promise<void>) => {
