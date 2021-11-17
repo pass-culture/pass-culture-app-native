@@ -1,14 +1,14 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
-import styled from 'styled-components/native'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
+import { StyledScrollView } from 'features/identityCheck/atoms/StyledScrollView'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type UserStatus =
   | 'Lycéen'
@@ -42,7 +42,7 @@ export const Status = () => {
     <PageWithHeader
       title={t`Profil`}
       scrollChildren={
-        <ContentContainer>
+        <StyledScrollView>
           <CenteredTitle title={t`Sélectionne ton statut`} />
           {statuses.map((status) => (
             <RadioButton
@@ -54,7 +54,7 @@ export const Status = () => {
             />
           ))}
           <Spacer.Column numberOfSpaces={16} />
-        </ContentContainer>
+        </StyledScrollView>
       }
       fixedBottomChildren={
         <ButtonPrimary
@@ -66,8 +66,3 @@ export const Status = () => {
     />
   )
 }
-
-const ContentContainer = styled.ScrollView({
-  width: '100%',
-  maxWidth: getSpacing(125),
-})

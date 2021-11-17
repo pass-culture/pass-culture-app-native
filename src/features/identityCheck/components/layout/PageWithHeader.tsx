@@ -21,7 +21,6 @@ export const PageWithHeader = (props: Props) => {
       <BodyContainer>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
           <StyledBottomCardContainer keyboardShouldPersistTaps="handled">
-            <Spacer.Flex />
             {props.scrollChildren}
             <Spacer.Flex />
           </StyledBottomCardContainer>
