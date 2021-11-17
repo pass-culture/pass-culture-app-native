@@ -1,68 +1,61 @@
 import React, { memo } from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
-import { svgIdentifier } from 'ui/svg/utils'
+import { ZIndex } from 'ui/theme/layers'
 
 export const Background = memo(NotMemoizedBackground)
 
-interface BackgroundProps {
-  width?: string | number
-  height?: string | number
-}
-
-export function NotMemoizedBackground({ width = '100%', height = '100%' }: BackgroundProps) {
+function NotMemoizedBackground() {
   return (
-    <BackgroundContainer height={height} width={width}>
-      <BackgroundSvg height={height} width={width} />
+    <BackgroundContainer>
+      <BackgroundSvg />
     </BackgroundContainer>
   )
 }
 
-const BackgroundContainer = styled.View<BackgroundProps>(({ width, height, theme }) => ({
+const BackgroundContainer = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
-  right: 0,
-  bottom: 0,
-  width: width ?? '100%',
-  height: height ?? '100%',
-  zIndex: theme.zIndex.background,
-}))
+  width: '100%',
+  height: '100%',
+  zIndex: ZIndex.BACKGROUND,
+})
 
-function BackgroundSvg({ width = '100%', height = '100%' }: BackgroundProps) {
-  const {
-    colors: { primary, secondary },
-  } = useTheme()
-  const { id: ida, xlinkHref: xlinkHrefa } = svgIdentifier()
-  const { id: idb, fill: fillb } = svgIdentifier()
-  const { id: idc, fill: fillc } = svgIdentifier()
-  const { id: idd, fill: filld } = svgIdentifier()
-  const { id: ide, xlinkHref: xlinkHrefe } = svgIdentifier()
+function BackgroundSvg() {
   return (
-    <Svg width={width} height={height} viewBox="0 0 375 667" preserveAspectRatio="none">
+    <Svg width="100%" height="100%" viewBox="0 0 375 667" preserveAspectRatio="none">
       <Defs>
-        <LinearGradient id={idb} x1="65.805%" x2="47.731%" y1="26.588%" y2="116.28%">
-          <Stop offset="0%" stopColor={primary} />
-          <Stop offset="100%" stopColor={secondary} />
+        <LinearGradient id="bakground__b" x1="65.805%" x2="47.731%" y1="26.588%" y2="116.28%">
+          <Stop offset="0%" stopColor="#EB0055" />
+          <Stop offset="100%" stopColor="#320096" />
         </LinearGradient>
-        <LinearGradient id={idd} x1="29.678%" x2="32.571%" y1="71.761%" y2="14.036%">
-          <Stop offset="0%" stopColor={primary} />
-          <Stop offset="100%" stopColor={secondary} />
+        <LinearGradient id="bakground__d" x1="29.678%" x2="32.571%" y1="71.761%" y2="14.036%">
+          <Stop offset="0%" stopColor="#EB0055" />
+          <Stop offset="100%" stopColor="#320096" />
         </LinearGradient>
-        <Path id={ida} d="M0 0h375v667H0z" />
+        <Path id="bakground__a" d="M0 0h375v667H0z" />
         <Path
-          id={ide}
+          id="bakground__e"
           d="M574.848 685.018c44.64 237.462 197.943-58.73 172.765-186.83-25.178-128.1-120.317-395.218-387.196-385.031-266.88 10.187-281.873 242.282-174.83 360.46 107.043 118.179 344.621-26.06 389.26 211.401z"
         />
       </Defs>
       <G fill="none" fillRule="evenodd">
-        <Mask id={idc} fill="#fff">
-          <Use xlinkHref={xlinkHrefa} />
+        <Mask id="bakground__c" fill="#fff">
+          <Use xlinkHref="#bakground__a" />
         </Mask>
-        <Use fill={fillb} transform="matrix(-1 0 0 1 375 0)" xlinkHref={xlinkHrefa} />
-        <G mask={fillc}>
-          <Use fill={filld} transform="rotate(-150 256.422 462.025)" xlinkHref={xlinkHrefe} />
+        <Use
+          fill="url(#bakground__b)"
+          transform="matrix(-1 0 0 1 375 0)"
+          xlinkHref="#bakground__a"
+        />
+        <G mask="url(#bakground__c)">
+          <Use
+            fill="url(#bakground__d)"
+            transform="rotate(-150 256.422 462.025)"
+            xlinkHref="#bakground__e"
+          />
         </G>
       </G>
     </Svg>

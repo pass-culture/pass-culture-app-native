@@ -85,10 +85,10 @@ const HeaderBackgroundWrapper = styled.View({
 
 const CheatCodeButtonContainer = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,
-})(({ theme }) => ({
+})({
   position: 'absolute',
   right: getSpacing(2),
-  zIndex: theme.zIndex.cheatCodeButton,
+  zIndex: ZIndex.CHEATCODE_BUTTON,
   border: 1,
   padding: getSpacing(1),
-}))
+})
