@@ -146,15 +146,18 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     )
   }
 
-  const birthdayInformation =
-    t`L’application pass Culture est accessible à tous.` +
-    '\n' +
+  const financialHelpMessage =
     t`Si tu as 18 ans, tu as droit à une aide financière de` +
     '\u00a0' +
     deposit +
     '\u00a0' +
     t`proposée par le Gouvernement.` +
+    '\n'
+
+  const birthdayInformation =
+    t`L’application pass Culture est accessible à tous.` +
     '\n' +
+    financialHelpMessage +
     t`Cette aide sera créditée directement sur ton compte pass Culture.`
 
   return (
