@@ -15,7 +15,7 @@ type ProfileHeaderProps = {
   user?: UserProfileResponse
 }
 
-const displayedExpirationDate = (expirationDate: Date, isUnderageBeneficiary: boolean) =>
+const getDisplayedExpirationDate = (expirationDate: Date, isUnderageBeneficiary: boolean) =>
   isUnderageBeneficiary
     ? t({
         id: 'profile expiration date for underage',
@@ -40,16 +40,16 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   if (!user) {
     return <LoggedOutHeader />
   }
-  const expirationDate = user.depositExpirationDate
+  const depositExpirationDate = user.depositExpirationDate
     ? new Date(user.depositExpirationDate)
     : undefined
 
-  const depositExpirationDate = expirationDate
-    ? displayedExpirationDate(expirationDate, isUnderageBeneficiary)
+  const displayedDepositExpirationDate = depositExpirationDate
+    ? getDisplayedExpirationDate(depositExpirationDate, isUnderageBeneficiary)
     : undefined
 
-  const isExpired = expirationDate ? expirationDate < new Date() : false
-  const canUpgradeBeneficiaryRole = isExpired && !!user.nextBeneficiaryValidationStep
+  const isDepositExpired = depositExpirationDate ? depositExpirationDate < new Date() : false
+  const canUpgradeBeneficiaryRole = isDepositExpired && !!user.nextBeneficiaryValidationStep
 
   if (!user.isBeneficiary || canUpgradeBeneficiaryRole) {
     return (
@@ -62,12 +62,12 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     )
   }
 
-  if (isExpired) {
+  if (isDepositExpired) {
     return (
       <ExBeneficiaryHeader
         firstName={user.firstName}
         lastName={user.lastName}
-        depositExpirationDate={depositExpirationDate}
+        depositExpirationDate={displayedDepositExpirationDate}
       />
     )
   }
@@ -77,7 +77,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       firstName={user.firstName}
       lastName={user.lastName}
       domainsCredit={user.domainsCredit}
-      depositExpirationDate={depositExpirationDate}
+      depositExpirationDate={displayedDepositExpirationDate}
     />
   )
 }
