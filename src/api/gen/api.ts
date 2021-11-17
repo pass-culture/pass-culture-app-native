@@ -949,6 +949,30 @@ export interface HomepageLabelResponseModel {
 }/**
  * 
  * @export
+ * @interface IdentificationSessionRequest
+ */
+export interface IdentificationSessionRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentificationSessionRequest
+     */
+    redirectUrl: string;
+}/**
+ * 
+ * @export
+ * @interface IdentificationSessionResponse
+ */
+export interface IdentificationSessionResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof IdentificationSessionResponse
+     */
+    identificationUrl: string;
+}/**
+ * 
+ * @export
  * @interface NotificationSubscriptions
  */
 export interface NotificationSubscriptions {
@@ -1674,6 +1698,12 @@ export interface SettingsResponse {
      * @memberof SettingsResponse
      */
     enablePhoneValidation: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
+    enableUnderageGeneralisation: boolean;
     /**
      * 
      * @type {boolean}
@@ -3169,6 +3199,32 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary start_identification_session <POST>
+         * @param {IdentificationSessionRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/ubble_identification`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"IdentificationSessionRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary profiling_fraud_score <POST>
          * @param {UserProfilingFraudRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -3640,6 +3696,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary start_identification_session <POST>
+         * @param {IdentificationSessionRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1ubbleIdentification(basePath: string, body?: IdentificationSessionRequest, options?: any): Promise<IdentificationSessionResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1ubbleIdentification(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary profiling_fraud_score <POST>
          * @param {UserProfilingFraudRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -4068,6 +4136,18 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1signin(body?: SigninRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1signin(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary start_identification_session <POST>
+     * @param {IdentificationSessionRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1ubbleIdentification(this.basePath, body, options)
     }
     /**
      * 
