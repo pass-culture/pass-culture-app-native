@@ -152,10 +152,12 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     deposit +
     '\u00a0' +
     t`proposée par le Gouvernement.` +
+    '\n' +
     '\n'
 
   const birthdayInformation =
     t`L’application pass Culture est accessible à tous.` +
+    '\n' +
     '\n' +
     financialHelpMessage +
     t`Cette aide sera créditée directement sur ton compte pass Culture.`
