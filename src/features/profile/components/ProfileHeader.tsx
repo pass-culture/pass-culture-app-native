@@ -50,33 +50,33 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 
   const isExpired = expirationDate ? expirationDate < new Date() : false
 
-  if (user.isBeneficiary) {
-    if (isExpired) {
-      return (
-        <ExBeneficiaryHeader
-          firstName={user.firstName}
-          lastName={user.lastName}
-          depositExpirationDate={depositExpirationDate}
-        />
-      )
-    }
-
+  if (!user.isBeneficiary) {
     return (
-      <BeneficiaryHeader
+      <NonBeneficiaryHeader
+        eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
+        eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
+        nextBeneficiaryValidationStep={user.nextBeneficiaryValidationStep}
+        subscriptionMessage={user.subscriptionMessage}
+      />
+    )
+  }
+
+  if (isExpired) {
+    return (
+      <ExBeneficiaryHeader
         firstName={user.firstName}
         lastName={user.lastName}
-        domainsCredit={user.domainsCredit}
         depositExpirationDate={depositExpirationDate}
       />
     )
   }
 
   return (
-    <NonBeneficiaryHeader
-      eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
-      eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
-      nextBeneficiaryValidationStep={user.nextBeneficiaryValidationStep}
-      subscriptionMessage={user.subscriptionMessage}
+    <BeneficiaryHeader
+      firstName={user.firstName}
+      lastName={user.lastName}
+      domainsCredit={user.domainsCredit}
+      depositExpirationDate={depositExpirationDate}
     />
   )
 }
