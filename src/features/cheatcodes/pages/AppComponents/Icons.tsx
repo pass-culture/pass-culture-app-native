@@ -47,6 +47,7 @@ import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { Flag } from 'ui/svg/icons/Flag'
+import { Flash } from 'ui/svg/icons/Flash'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
@@ -83,12 +84,14 @@ import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SignOut } from 'ui/svg/icons/SignOut'
+import { Sun } from 'ui/svg/icons/Sun'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
 import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { IconInterface } from 'ui/svg/icons/types'
 
 const ICON_SIZE = getSpacing(8)
 
@@ -195,13 +198,15 @@ export const Icons: FunctionComponent = () => {
       <Icon name="RequestSent" component={RequestSent} />
       <Icon name="Flag" component={Flag} />
       <Icon name="EditPen" component={EditPen} isNew />
+      <Icon name="Flash" component={Flash} isNew />
+      <Icon name="Sun" component={Sun} isNew />
     </React.Fragment>
   )
 }
 
 interface IconProps {
   name: string
-  component: React.ComponentType<any>
+  component: React.ComponentType<IconInterface>
   isNew?: boolean
 }
 

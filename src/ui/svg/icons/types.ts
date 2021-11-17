@@ -13,6 +13,7 @@ interface IconSharedProperties {
 export interface IconInterface extends IconSharedProperties {
   size?: number | string
   opacity?: number
+  color2?: ColorsEnum
 }
 
 export interface BicolorIconInterface extends IconInterface {
