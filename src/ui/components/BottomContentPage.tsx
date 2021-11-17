@@ -48,9 +48,9 @@ export const BottomContentPage: FC<Props> = (props) => {
 
   return (
     <BottomContentPageContainer>
-      <Background />
+      <BottomContentPageBackground />
       <Container>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <StyledKeyboardAvoidingView>
           <StyledBottomCardContainer
             customPaddingBottom={getCorrectPadding(keyboardHeight)}
             scrollEnabled={keyboardHeight !== 0}
@@ -58,11 +58,15 @@ export const BottomContentPage: FC<Props> = (props) => {
             {props.children}
             <Spacer.BottomScreen />
           </StyledBottomCardContainer>
-        </KeyboardAvoidingView>
+        </StyledKeyboardAvoidingView>
       </Container>
     </BottomContentPageContainer>
   )
 }
+
+const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
+  behavior: Platform.OS === 'ios' ? 'padding' : undefined,
+})(({ theme }) => (theme.showTabBar ? {} : { flex: 1 }))
 
 const BottomContentPageContainer = styled(SafeAreaView)({
   height: '100%',
@@ -77,7 +81,7 @@ const Container = styled(View).attrs({
 })
 
 const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom: number }>(
-  ({ customPaddingBottom }) => ({
+  ({ customPaddingBottom, theme }) => ({
     contentContainerStyle: {
       width: '100%',
       padding: getSpacing(6),
@@ -87,6 +91,12 @@ const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom:
       alignItems: 'center',
       flexDirection: 'column',
       paddingBottom: customPaddingBottom,
+      ...(theme.showTabBar
+        ? {}
+        : {
+            marginTop: theme.bottomContentPage.offsetTopHeightDesktopTablet,
+            flexGrow: 1,
+          }),
     },
   })
 )<{ customPaddingBottom: number }>({
@@ -108,3 +118,12 @@ export const BottomCardContentContainer = styled.View({
   width: '100%',
   maxWidth: getSpacing(125),
 })
+
+const SCALE_HEIGHT_RATIO = 1.75
+export const BottomContentPageBackground = styled(Background).attrs(
+  ({ theme: { showTabBar, bottomContentPage } }) => ({
+    height: showTabBar
+      ? undefined
+      : bottomContentPage.offsetTopHeightDesktopTablet * SCALE_HEIGHT_RATIO,
+  })
+)({})

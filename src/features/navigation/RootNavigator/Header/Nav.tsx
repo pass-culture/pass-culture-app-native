@@ -59,7 +59,7 @@ const NavItemsContainer = styled.View<{
   width: '100%',
   maxWidth,
   position: 'absolute',
-  zIndex: theme.zIndexHeaderNav,
+  zIndex: theme.zIndex.headerNav,
   ...(!noShadow
     ? getShadow({
         shadowOffset: { width: 0, height: getSpacing(1 / 4) },

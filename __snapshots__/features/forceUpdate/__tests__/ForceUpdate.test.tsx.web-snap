@@ -27,10 +27,12 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
     style={
       Object {
         "bottom": "0px",
+        "height": "100%",
         "left": "0px",
         "position": "absolute",
         "right": "0px",
         "top": "0px",
+        "width": "100%",
         "zIndex": -1,
       }
     }
