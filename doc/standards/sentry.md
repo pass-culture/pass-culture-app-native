@@ -22,6 +22,8 @@ project = application-native
 token=<token>
 ```
 
+> Click [here](https://sentry.internal-passculture.app/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions: `event:read`, `event:admin`, `member:read`, `org:read`, `project:read`, `project:releases`, `team:read`, `project:write`, `org:integrations`
+
 ### 📦 Create the source maps locally
 
 #### Android
