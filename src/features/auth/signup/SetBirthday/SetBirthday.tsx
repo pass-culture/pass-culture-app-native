@@ -146,14 +146,24 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     )
   }
 
-  const financialHelpMessage =
-    t`Si tu as 18 ans, tu as droit à une aide financière de` +
-    '\u00a0' +
-    deposit +
-    '\u00a0' +
-    t`proposée par le Gouvernement.` +
-    '\n' +
-    '\n'
+  const displayPostGeneralisationMessage =
+    settings?.enableNativeEacIndividual && settings.enableUnderageGeneralisation
+
+  const financialHelpMessage = displayPostGeneralisationMessage
+    ? t`Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20 € à` +
+      '\u00a0' +
+      deposit +
+      '\u00a0' +
+      `proposée par le Gouvernement.` +
+      '\n' +
+      '\n'
+    : t`Si tu as 18 ans, tu as droit à une aide financière de` +
+      '\u00a0' +
+      deposit +
+      '\u00a0' +
+      t`proposée par le Gouvernement.` +
+      '\n' +
+      '\n'
 
   const birthdayInformation =
     t`L’application pass Culture est accessible à tous.` +

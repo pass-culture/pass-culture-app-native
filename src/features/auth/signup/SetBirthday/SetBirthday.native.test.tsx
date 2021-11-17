@@ -1,8 +1,13 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import mockdate from 'mockdate'
 import React from 'react'
+import { UseQueryResult } from 'react-query'
+import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { SettingsResponse } from 'api/gen'
+import { mockDefaultSettings } from 'features/auth/__mocks__/settings'
+import { useAppSettings } from 'features/auth/settings'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -12,6 +17,15 @@ import { ColorsEnum } from 'ui/theme'
 import { SetBirthday } from './SetBirthday'
 
 jest.mock('features/auth/settings')
+jest.mock('features/auth/api', () => {
+  const originalModule = jest.requireActual('features/auth/api')
+
+  return {
+    ...originalModule,
+    useDepositAmount: jest.fn().mockReturnValue('300 €'),
+  }
+})
+const mockedUseAppSettings = mocked(useAppSettings)
 
 describe('SetBirthday Page', () => {
   beforeEach(() => {
@@ -46,6 +60,34 @@ describe('SetBirthday Page', () => {
     fireEvent.press(component.getByTestId('Pourquoi ?'))
     expect(component.queryByText(/une aide financière de/)).toBeTruthy()
     expect(component.queryByText(/300 €/)).toBeTruthy()
+  })
+
+  it('should show the correct deposit amount if generalisation is enabled', async () => {
+    const mockSettings = {
+      ...mockDefaultSettings,
+      enableUnderageGeneralisation: true,
+      enableNativeEacIndividual: true,
+    }
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseAppSettings.mockImplementation(
+      () =>
+        ({
+          data: mockSettings,
+        } as UseQueryResult<SettingsResponse, unknown>)
+    )
+    const component = renderSetBirthday()
+    fireEvent.press(component.getByTestId('Pourquoi ?'))
+    expect(component.queryByText(/une aide financière progressive allant de/)).toBeTruthy()
+
+    expect(component.queryByText(/20 €/)).toBeTruthy()
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseAppSettings.mockImplementation(
+      () =>
+        ({ data: mockDefaultSettings, isLoading: false } as UseQueryResult<
+          SettingsResponse,
+          unknown
+        >)
+    )
   })
 
   it('should display the error message "date incorrecte" when the date is too old', () => {
