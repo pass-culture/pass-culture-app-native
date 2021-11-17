@@ -40,18 +40,17 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   if (!user) {
     return <LoggedOutHeader />
   }
+  const expirationDate = user.depositExpirationDate
+    ? new Date(user.depositExpirationDate)
+    : undefined
+
+  const depositExpirationDate = expirationDate
+    ? displayedExpirationDate(expirationDate, isUnderageBeneficiary)
+    : undefined
+
+  const isExpired = expirationDate ? expirationDate < new Date() : false
 
   if (user.isBeneficiary) {
-    const expirationDate = user.depositExpirationDate
-      ? new Date(user.depositExpirationDate)
-      : undefined
-
-    const depositExpirationDate = expirationDate
-      ? displayedExpirationDate(expirationDate, isUnderageBeneficiary)
-      : undefined
-
-    const isExpired = expirationDate ? expirationDate < new Date() : false
-
     if (isExpired) {
       return (
         <ExBeneficiaryHeader
