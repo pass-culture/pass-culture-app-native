@@ -11,38 +11,39 @@ import { Sun } from 'ui/svg/icons/Sun'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
-export interface Props {
+interface Props {
   visible: boolean
   hideModal: () => void
 }
 
-export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = (props) => {
-  return (
-    <AppModal
-      visible={props.visible}
-      title={t`Quelques conseils`}
-      leftIconAccessibilityLabel={t`Revenir en arrière`}
-      leftIcon={ArrowPrevious}
-      onLeftIconPress={props.hideModal}
-      rightIconAccessibilityLabel={undefined}
-      rightIcon={undefined}
-      onRightIconPress={undefined}>
-      <Description>
-        <Typo.Body>
-          {t`Il est important que les informations de ton document soient parfaitement lisibles.`}
-          {'\n'}
-          {t`Nos conseils :`}
-        </Typo.Body>
-      </Description>
-      <Instructions>
-        <Instruction title={t`Désactive ton flash`} Icon={Flash} />
-        <Instruction title={t`Place-toi dans un lieu bien éclairé`} Icon={Sun} />
-        <Instruction title={t`Cadre l’intégralité de ton document`} Icon={IdCard} />
-      </Instructions>
-      <ButtonPrimary title={t`J'ai compris`} onPress={props.hideModal} />
-    </AppModal>
-  )
-}
+export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
+  visible,
+  hideModal,
+}) => (
+  <AppModal
+    visible={visible}
+    title={t`Quelques conseils`}
+    leftIconAccessibilityLabel={t`Revenir en arrière`}
+    leftIcon={ArrowPrevious}
+    onLeftIconPress={hideModal}
+    rightIconAccessibilityLabel={undefined}
+    rightIcon={undefined}
+    onRightIconPress={undefined}>
+    <Description>
+      <Typo.Body>
+        {t`Il est important que les informations de ton document soient parfaitement lisibles.`}
+        {'\n'}
+        {t`Nos conseils :`}
+      </Typo.Body>
+    </Description>
+    <Instructions>
+      <Instruction title={t`Désactive ton flash`} Icon={Flash} />
+      <Instruction title={t`Place-toi dans un lieu bien éclairé`} Icon={Sun} />
+      <Instruction title={t`Cadre l’intégralité de ton document`} Icon={IdCard} />
+    </Instructions>
+    <ButtonPrimary title={t`J'ai compris`} onPress={hideModal} />
+  </AppModal>
+)
 
 const Description = styled.Text({ textAlign: 'center' })
 
@@ -53,7 +54,7 @@ interface InstructionProps {
 
 const Instruction = ({ title, Icon }: InstructionProps) => (
   <InstructionContainer>
-    <Icon color={ColorsEnum.SECONDARY} color2={ColorsEnum.PRIMARY} />
+    <Icon size={getSpacing(6)} color={ColorsEnum.SECONDARY} color2={ColorsEnum.PRIMARY} />
     <Text>{title}</Text>
   </InstructionContainer>
 )

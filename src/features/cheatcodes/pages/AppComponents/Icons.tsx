@@ -86,12 +86,12 @@ import { SadFace } from 'ui/svg/icons/SadFace'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Sun } from 'ui/svg/icons/Sun'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
+import { IconInterface } from 'ui/svg/icons/types'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
 import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
-import { IconInterface } from 'ui/svg/icons/types'
 
 const ICON_SIZE = getSpacing(8)
 

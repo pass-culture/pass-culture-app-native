@@ -12,7 +12,7 @@ import { BicolorIdCardWithMagnifyingClass } from 'ui/svg/icons/BicolorIdCardWith
 import { Spacer } from 'ui/theme'
 
 export const IdentityCheckStart = () => {
-  const { visible, showModal, hideModal } = useModal(true)
+  const { visible, showModal, hideModal } = useModal(false)
 
   return (
     <React.Fragment>
