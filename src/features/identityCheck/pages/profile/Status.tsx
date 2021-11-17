@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
+import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -39,9 +40,10 @@ export const Status = () => {
 
   return (
     <PageWithHeader
-      title={t`Sélectionne ton statut`}
+      title={t`Profil`}
       scrollChildren={
         <ContentContainer>
+          <CenteredTitle title={t`Sélectionne ton statut`} />
           {statuses.map((status) => (
             <RadioButton
               key={status.name}
@@ -51,7 +53,7 @@ export const Status = () => {
               onPress={() => setSelectedStatus(status.name)}
             />
           ))}
-          <Spacer.Column numberOfSpaces={8} />
+          <Spacer.Column numberOfSpaces={16} />
         </ContentContainer>
       }
       fixedBottomChildren={

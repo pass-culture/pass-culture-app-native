@@ -4,6 +4,7 @@ import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIde
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/IdentityCheckEnd'
+import { SetPostalCode } from 'features/identityCheck/pages/profile/SetPostalCode'
 import { Status } from 'features/identityCheck/pages/profile/Status'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import {
@@ -17,6 +18,12 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     name: 'NavigationIdentityCheck',
     component: NavigationIdentityCheck,
     path: 'cheat-navigation-identity-check',
+  },
+  {
+    name: 'IdentityCheckPostalCode',
+    component: SetPostalCode,
+    path: 'creation-profil/code-postal',
+    options: { title: t`Code postal - Formulaire` },
   },
   {
     name: 'IdentityCheck',
