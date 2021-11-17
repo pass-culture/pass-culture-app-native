@@ -7,21 +7,6 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="bottom: 0px; height: 100%; left: 0px; position: absolute; right: 0px; top: 0px; width: 100%; z-index: -1;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-        >
-          <div
-            class="css-text-901oao"
-            dir="auto"
-          >
-            undefined-SVG-Mock
-          </div>
-        </div>
-      </div>
-      <div
-        class="css-view-1dbjc4n"
         style="align-items: center; background-color: rgb(255, 255, 255); display: flex; flex-grow: 1; justify-content: center;"
       >
         <div
@@ -87,21 +72,6 @@ Object {
     </div>
   </body>,
   "container": <div>
-    <div
-      class="css-view-1dbjc4n"
-      style="bottom: 0px; height: 100%; left: 0px; position: absolute; right: 0px; top: 0px; width: 100%; z-index: -1;"
-    >
-      <div
-        class="css-view-1dbjc4n"
-      >
-        <div
-          class="css-text-901oao"
-          dir="auto"
-        >
-          undefined-SVG-Mock
-        </div>
-      </div>
-    </div>
     <div
       class="css-view-1dbjc4n"
       style="align-items: center; background-color: rgb(255, 255, 255); display: flex; flex-grow: 1; justify-content: center;"

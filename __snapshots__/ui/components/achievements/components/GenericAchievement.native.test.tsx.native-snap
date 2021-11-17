@@ -1,173 +1,134 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<GenericAchievement /> should render correctly 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#ffffff",
+        "display": "flex",
+        "flexGrow": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
   <View
-    height="100%"
+    customHeight={16}
     style={
       Array [
         Object {
-          "bottom": 0,
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "height": 16,
         },
       ]
     }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>,
+  />
   <View
     style={
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#ffffff",
           "display": "flex",
           "flexGrow": 1,
-          "justifyContent": "center",
+          "maxHeight": 900,
+          "maxWidth": 500,
+          "width": "100%",
         },
       ]
     }
   >
     <View
-      customHeight={16}
       style={
         Array [
           Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "display": "flex",
+            "flexBasis": 0,
             "flexGrow": 1,
-            "maxHeight": 900,
-            "maxWidth": 500,
+            "flexShrink": 1,
             "width": "100%",
           },
         ]
       }
     >
       <View
+        onLayout={[Function]}
         style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "width": "100%",
-            },
-          ]
+          Object {
+            "backgroundColor": "transparent",
+            "flex": 1,
+          }
         }
       >
         <View
-          onLayout={[Function]}
           style={
             Object {
               "backgroundColor": "transparent",
-              "flex": 1,
+              "height": 0,
+              "justifyContent": "space-between",
+              "left": 0,
+              "overflow": "hidden",
+              "position": "relative",
+              "top": 0,
+              "width": 0,
             }
           }
         >
           <View
+            onMoveShouldSetResponder={[Function]}
+            onMoveShouldSetResponderCapture={[Function]}
+            onResponderEnd={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderReject={[Function]}
+            onResponderRelease={[Function]}
+            onResponderStart={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            onStartShouldSetResponderCapture={[Function]}
             style={
               Object {
-                "backgroundColor": "transparent",
+                "flexDirection": "row",
                 "height": 0,
-                "justifyContent": "space-between",
                 "left": 0,
-                "overflow": "hidden",
-                "position": "relative",
+                "position": "absolute",
                 "top": 0,
+                "transform": Array [
+                  Object {
+                    "translateX": 0,
+                  },
+                  Object {
+                    "translateY": 0,
+                  },
+                ],
                 "width": 0,
               }
             }
           >
             <View
-              onMoveShouldSetResponder={[Function]}
-              onMoveShouldSetResponderCapture={[Function]}
-              onResponderEnd={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderReject={[Function]}
-              onResponderRelease={[Function]}
-              onResponderStart={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              onStartShouldSetResponderCapture={[Function]}
               style={
                 Object {
-                  "flexDirection": "row",
+                  "flex": 1,
                   "height": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "top": 0,
-                  "transform": Array [
-                    Object {
-                      "translateX": 0,
-                    },
-                    Object {
-                      "translateY": 0,
-                    },
-                  ],
-                  "width": 0,
+                  "width": "100%",
                 }
               }
             >
-              <View
-                style={
-                  Object {
-                    "flex": 1,
-                    "height": 0,
-                    "width": "100%",
-                  }
-                }
-              >
-                <View>
-                  <Text>
-                    swipeRef exist
-                  </Text>
-                  <Text>
-                    name exist
-                  </Text>
-                </View>
+              <View>
+                <Text>
+                  swipeRef exist
+                </Text>
+                <Text>
+                  name exist
+                </Text>
               </View>
             </View>
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
     <View
-      customHeight={8}
+      numberOfSpaces={2}
       style={
         Array [
           Object {
@@ -176,6 +137,16 @@ Array [
         ]
       }
     />
-  </View>,
-]
+  </View>
+  <View
+    customHeight={8}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />
+</View>
 `;

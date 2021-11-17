@@ -1,147 +1,247 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#ffffff",
+        "display": "flex",
+        "flexGrow": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
   <View
-    height="100%"
+    customHeight={16}
     style={
       Array [
         Object {
-          "bottom": 0,
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "height": 16,
         },
       ]
     }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>,
+  />
   <View
     style={
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#ffffff",
           "display": "flex",
           "flexGrow": 1,
-          "justifyContent": "center",
+          "maxHeight": 900,
+          "maxWidth": 500,
+          "width": "100%",
         },
       ]
     }
   >
     <View
-      customHeight={16}
       style={
         Array [
           Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "display": "flex",
+            "flexBasis": 0,
             "flexGrow": 1,
-            "maxHeight": 900,
-            "maxWidth": 500,
+            "flexShrink": 1,
             "width": "100%",
           },
         ]
       }
     >
       <View
+        onLayout={[Function]}
         style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "width": "100%",
-            },
-          ]
+          Object {
+            "backgroundColor": "transparent",
+            "flex": 1,
+          }
         }
       >
         <View
-          onLayout={[Function]}
           style={
             Object {
               "backgroundColor": "transparent",
-              "flex": 1,
+              "height": 0,
+              "justifyContent": "space-between",
+              "left": 0,
+              "overflow": "hidden",
+              "position": "relative",
+              "top": 0,
+              "width": 0,
             }
           }
         >
           <View
+            onMoveShouldSetResponder={[Function]}
+            onMoveShouldSetResponderCapture={[Function]}
+            onResponderEnd={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderReject={[Function]}
+            onResponderRelease={[Function]}
+            onResponderStart={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            onStartShouldSetResponderCapture={[Function]}
             style={
               Object {
-                "backgroundColor": "transparent",
+                "flexDirection": "row",
                 "height": 0,
-                "justifyContent": "space-between",
                 "left": 0,
-                "overflow": "hidden",
-                "position": "relative",
+                "position": "absolute",
                 "top": 0,
+                "transform": Array [
+                  Object {
+                    "translateX": 0,
+                  },
+                  Object {
+                    "translateY": 0,
+                  },
+                ],
                 "width": 0,
               }
             }
           >
             <View
-              onMoveShouldSetResponder={[Function]}
-              onMoveShouldSetResponderCapture={[Function]}
-              onResponderEnd={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderReject={[Function]}
-              onResponderRelease={[Function]}
-              onResponderStart={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              onStartShouldSetResponderCapture={[Function]}
               style={
                 Object {
-                  "flexDirection": "row",
+                  "flex": 1,
                   "height": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "top": 0,
-                  "transform": Array [
-                    Object {
-                      "translateX": 0,
-                    },
-                    Object {
-                      "translateY": 0,
-                    },
-                  ],
-                  "width": 0,
+                  "width": "100%",
                 }
               }
             >
               <View
                 style={
-                  Object {
-                    "flex": 1,
-                    "height": 0,
-                    "width": "100%",
-                  }
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "paddingHorizontal": 20,
+                    },
+                  ]
                 }
               >
+                <View
+                  flex={2}
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 2,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexGrow": 1,
+                        "height": "30%",
+                        "justifyContent": "center",
+                      },
+                    ]
+                  }
+                >
+                  <View>
+                    undefined-Lottie-Mock
+                  </View>
+                </View>
+                <View
+                  flex={1}
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  fontSize={28}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-Black",
+                        "fontSize": 28,
+                        "fontWeight": "900",
+                        "lineHeight": 36,
+                      },
+                      Object {
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Bonne nouvelle !
+                </Text>
+                <Text
+                  fontSize={24}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 24,
+                        "lineHeight": 28,
+                      },
+                      Object {
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Tu as 18 ans...
+                </Text>
+                <View
+                  flex={0.5}
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité
+                </Text>
+                <View
+                  flex={2}
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 2,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
                 <View
                   style={
                     Array [
@@ -149,294 +249,155 @@ Array [
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "paddingHorizontal": 20,
+                        "justifyContent": "flex-end",
                       },
                     ]
                   }
                 >
                   <View
-                    flex={2}
+                    forwardedRef={[Function]}
                     style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 2,
-                          "flexShrink": 1,
-                        },
-                      ]
+                      Object {
+                        "opacity": 0,
+                      }
                     }
-                  />
-                  <View
-                    style={
-                      Array [
+                  >
+                    <View
+                      accessibilityLabel="Vérifier mon identité"
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
                         Object {
                           "alignItems": "center",
-                          "flexGrow": 1,
-                          "height": "30%",
+                          "backgroundColor": "#eb0055",
+                          "borderRadius": 24,
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "height": 40,
                           "justifyContent": "center",
-                        },
-                      ]
-                    }
-                  >
-                    <View>
-                      undefined-Lottie-Mock
+                          "maxWidth": 500,
+                          "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "100%",
+                        }
+                      }
+                      testID="Vérifier mon identité"
+                    >
+                      <Text
+                        adjustsFontSizeToFit={false}
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                              "marginLeft": 5,
+                              "maxWidth": "100%",
+                            },
+                          ]
+                        }
+                        textColor="#ffffff"
+                      >
+                        Vérifier mon identité
+                      </Text>
                     </View>
                   </View>
                   <View
-                    flex={1}
+                    marginTop={16}
                     style={
                       Array [
                         Object {
-                          "flexBasis": 0,
                           "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    fontSize={28}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#151515",
-                          "fontFamily": "Montserrat-ExtraBoldItalic",
-                          "fontSize": 28,
-                          "fontWeight": "800",
-                          "lineHeight": 34,
-                        },
-                        Object {
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    Bonne nouvelle !
-                  </Text>
-                  <Text
-                    fontSize={24}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#151515",
-                          "fontFamily": "Montserrat-MediumItalic",
-                          "fontSize": 24,
-                          "lineHeight": 28,
-                        },
-                        Object {
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    Tu as 18 ans...
-                  </Text>
-                  <View
-                    flex={0.5}
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 0.5,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#151515",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité
-                  </Text>
-                  <View
-                    flex={2}
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 2,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "flex-end",
+                          "marginTop": 16,
                         },
                       ]
                     }
                   >
                     <View
-                      forwardedRef={[Function]}
+                      accessibilityLabel="Passer"
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         Object {
-                          "opacity": 0,
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderRadius": 24,
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "justifyContent": "center",
+                          "maxWidth": 500,
+                          "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "100%",
                         }
                       }
+                      testID="Passer"
                     >
-                      <View
-                        accessibilityLabel="Vérifier mon identité"
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
+                      <Text
+                        adjustsFontSizeToFit={false}
+                        numberOfLines={1}
                         style={
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#eb0055",
-                            "borderRadius": 24,
-                            "borderWidth": 0,
-                            "flexDirection": "row",
-                            "height": 40,
-                            "justifyContent": "center",
-                            "maxWidth": 500,
-                            "opacity": 1,
-                            "paddingBottom": 2,
-                            "paddingLeft": 2,
-                            "paddingRight": 2,
-                            "paddingTop": 2,
-                            "width": "100%",
-                          }
+                          Array [
+                            Object {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                              "marginLeft": 5,
+                              "maxWidth": "100%",
+                            },
+                          ]
                         }
-                        testID="Vérifier mon identité"
+                        textColor="#eb0055"
                       >
-                        <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                                "marginLeft": 5,
-                                "maxWidth": "100%",
-                              },
-                            ]
-                          }
-                          textColor="#ffffff"
-                        >
-                          Vérifier mon identité
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      marginTop={16}
-                      style={
-                        Array [
-                          Object {
-                            "flexGrow": 1,
-                            "marginTop": 16,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Passer"
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderRadius": 24,
-                            "borderWidth": 0,
-                            "flexDirection": "row",
-                            "height": 40,
-                            "justifyContent": "center",
-                            "maxWidth": 500,
-                            "opacity": 1,
-                            "paddingBottom": 2,
-                            "paddingLeft": 2,
-                            "paddingRight": 2,
-                            "paddingTop": 2,
-                            "width": "100%",
-                          }
-                        }
-                        testID="Passer"
-                      >
-                        <Text
-                          adjustsFontSizeToFit={false}
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#eb0055",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                                "marginLeft": 5,
-                                "maxWidth": "100%",
-                              },
-                            ]
-                          }
-                          textColor="#eb0055"
-                        >
-                          Passer
-                        </Text>
-                      </View>
+                        Passer
+                      </Text>
                     </View>
                   </View>
-                  <View
-                    flex={1}
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  />
                 </View>
+                <View
+                  flex={1}
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
               </View>
             </View>
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
     <View
-      customHeight={8}
+      numberOfSpaces={2}
       style={
         Array [
           Object {
@@ -445,6 +406,16 @@ Array [
         ]
       }
     />
-  </View>,
-]
+  </View>
+  <View
+    customHeight={8}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />
+</View>
 `;
