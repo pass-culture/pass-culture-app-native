@@ -22,6 +22,7 @@ import { env } from 'libs/environment'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
+import { accessibilityAndTestId } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
@@ -224,8 +225,8 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
               mask={codeInputMask}
               maxLength={codeInputPlaceholder.length}
               keyboardType="number-pad"
-              testID="code-input"
               onSubmitEditing={validateCode}
+              {...accessibilityAndTestId(t`Entrée du code de confirmation`)}
             />
           </CodeInputContainer>
           {errorMessage ? (
