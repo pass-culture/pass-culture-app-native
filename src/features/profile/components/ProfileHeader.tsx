@@ -49,8 +49,9 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     : undefined
 
   const isExpired = expirationDate ? expirationDate < new Date() : false
+  const canUpgradeBeneficiaryRole = isExpired && !!user.nextBeneficiaryValidationStep
 
-  if (!user.isBeneficiary) {
+  if (!user.isBeneficiary || canUpgradeBeneficiaryRole) {
     return (
       <NonBeneficiaryHeader
         eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
