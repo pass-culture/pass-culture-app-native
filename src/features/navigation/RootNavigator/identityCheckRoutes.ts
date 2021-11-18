@@ -1,9 +1,9 @@
 import { t } from '@lingui/macro'
 
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
+import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'
-import { IdentityCheckEnd } from 'features/identityCheck/pages/IdentityCheckEnd'
 import { SetPostalCode } from 'features/identityCheck/pages/profile/SetPostalCode'
 import { Status } from 'features/identityCheck/pages/profile/Status'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
