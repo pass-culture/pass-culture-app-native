@@ -20,7 +20,7 @@ export function PersonalData() {
 
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
 
-  const openChangeEmailPage = () => navigate('ChangeEmail')
+  const onChangeEmailClick = () => navigate('ChangeEmail')
 
   // TODO (LucasBeneston): Remove this to display ChangeEmail in production
   const isEmailChangeEnabled = env.ENV !== 'production'
@@ -50,7 +50,7 @@ export function PersonalData() {
                 title={t`Modifier`}
                 icon={EditPen}
                 inline
-                onPress={openChangeEmailPage}
+                onPress={onChangeEmailClick}
               />
             ) : null}
           </EmailContainer>
