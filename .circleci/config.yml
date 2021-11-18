@@ -1,6 +1,24 @@
 version: 2.1
 
 commands:
+  copy_assetlinks_testing:
+    description: Copy assetlinks-testing.json to assetlinks.json
+    steps:
+      - run:
+          name: Copy assetlinks-testing.json to assetlinks.json
+          command: cp ./public/.well-known/assetlinks-testing.json ./public/.well-known/assetlinks.json
+  copy_assetlinks_staging:
+    description: Copy assetlinks-staging.json to assetlinks.json
+    steps:
+      - run:
+          name: Copy assetlinks-staging.json to assetlinks.json
+          command: cp ./public/.well-known/assetlinks-staging.json ./public/.well-known/assetlinks.json
+  copy_assetlinks_production:
+    description: Copy assetlinks-production.json to assetlinks.json
+    steps:
+      - run:
+          name: Copy assetlinks-production.json to assetlinks.json
+          command: cp ./public/.well-known/assetlinks-production.json ./public/.well-known/assetlinks.json
   install_node_version:
     description: Install Node version with NVM
     steps:
@@ -496,6 +514,7 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
+      - copy_assetlinks_testing
       - install_node_modules
       - setup_sentry
       - authenticate_gcp:
@@ -514,6 +533,7 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
+      - copy_assetlinks_staging
       - install_node_modules
       - setup_staging_secrets
       - setup_sentry
@@ -552,6 +572,7 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
+      - copy_assetlinks_production
       - install_node_modules
       - setup_production_secrets
       - setup_sentry
