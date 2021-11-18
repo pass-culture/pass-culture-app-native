@@ -4,8 +4,9 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/AuthContext'
-import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useUserProfileInfo } from 'features/home/api'
+import { nonBeneficaryUser } from 'fixtures/user'
 import { act, fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -20,7 +21,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 jest.mock('react-query')
-jest.mock('features/auth/signup/idCheck/useNavigateToIdCheck')
+jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 jest.mock('features/home/api')
 const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
 
@@ -38,14 +39,19 @@ describe('<EighteenBirthdayCard />', () => {
   })
 
   it('should go to id check when user is authed', async () => {
-    const mockedNavigateToIdCheck = useNavigateToIdCheck()
+    mockedUseUserProfileInfo.mockReturnValueOnce({ data: nonBeneficaryUser })
+    const {
+      navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
+    } = useBeneficiaryValidationNavigation()
 
     const { getByText } = await renderEighteenBirthdayCard()
 
     fireEvent.press(getByText('Vérifier mon identité'))
 
     await waitForExpect(() => {
-      expect(mockedNavigateToIdCheck).toBeCalledWith()
+      expect(mockedNavigateToNextBeneficiaryValidationStep).toBeCalledWith({
+        nextBeneficiaryValidationStep: nonBeneficaryUser.nextBeneficiaryValidationStep,
+      })
     })
   })
 
