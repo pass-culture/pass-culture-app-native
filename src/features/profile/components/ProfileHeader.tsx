@@ -15,7 +15,7 @@ type ProfileHeaderProps = {
   user?: UserProfileResponse
 }
 
-const displayedExpirationDate = (expirationDate: Date, isUnderageBeneficiary: boolean) =>
+const getDisplayedExpirationDate = (expirationDate: Date, isUnderageBeneficiary: boolean) =>
   isUnderageBeneficiary
     ? t({
         id: 'profile expiration date for underage',
@@ -40,44 +40,44 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   if (!user) {
     return <LoggedOutHeader />
   }
+  const depositExpirationDate = user.depositExpirationDate
+    ? new Date(user.depositExpirationDate)
+    : undefined
 
-  if (user.isBeneficiary) {
-    const expirationDate = user.depositExpirationDate
-      ? new Date(user.depositExpirationDate)
-      : undefined
+  const displayedDepositExpirationDate = depositExpirationDate
+    ? getDisplayedExpirationDate(depositExpirationDate, isUnderageBeneficiary)
+    : undefined
 
-    const depositExpirationDate = expirationDate
-      ? displayedExpirationDate(expirationDate, isUnderageBeneficiary)
-      : undefined
+  const isDepositExpired = depositExpirationDate ? depositExpirationDate < new Date() : false
+  const canUpgradeBeneficiaryRole = isDepositExpired && !!user.nextBeneficiaryValidationStep
 
-    const isExpired = expirationDate ? expirationDate < new Date() : false
-
-    if (isExpired) {
-      return (
-        <ExBeneficiaryHeader
-          firstName={user.firstName}
-          lastName={user.lastName}
-          depositExpirationDate={depositExpirationDate}
-        />
-      )
-    }
-
+  if (!user.isBeneficiary || canUpgradeBeneficiaryRole) {
     return (
-      <BeneficiaryHeader
+      <NonBeneficiaryHeader
+        eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
+        eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
+        nextBeneficiaryValidationStep={user.nextBeneficiaryValidationStep}
+        subscriptionMessage={user.subscriptionMessage}
+      />
+    )
+  }
+
+  if (isDepositExpired) {
+    return (
+      <ExBeneficiaryHeader
         firstName={user.firstName}
         lastName={user.lastName}
-        domainsCredit={user.domainsCredit}
-        depositExpirationDate={depositExpirationDate}
+        depositExpirationDate={displayedDepositExpirationDate}
       />
     )
   }
 
   return (
-    <NonBeneficiaryHeader
-      eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
-      eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
-      nextBeneficiaryValidationStep={user.nextBeneficiaryValidationStep}
-      subscriptionMessage={user.subscriptionMessage}
+    <BeneficiaryHeader
+      firstName={user.firstName}
+      lastName={user.lastName}
+      domainsCredit={user.domainsCredit}
+      depositExpirationDate={displayedDepositExpirationDate}
     />
   )
 }

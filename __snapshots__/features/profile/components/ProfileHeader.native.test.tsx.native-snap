@@ -246,4 +246,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
 </View>
 `;
 
+exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary 1`] = `"NonBeneficiaryHeader"`;
+
 exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is not beneficiary 1`] = `"NonBeneficiaryHeader"`;

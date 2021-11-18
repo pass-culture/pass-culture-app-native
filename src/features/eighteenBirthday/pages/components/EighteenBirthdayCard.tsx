@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useDepositAmount } from 'features/auth/api'
-import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
@@ -17,17 +17,15 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   const depositAmount = useDepositAmount()
   const deposit = depositAmount.replace(' ', '')
 
-  function navigateToIdCheckUnavailable() {
-    navigate('IdCheckUnavailable')
-  }
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
 
-  const navigateToIdCheck = useNavigateToIdCheck({
-    onIdCheckNavigationBlocked: navigateToIdCheckUnavailable,
-  })
+  const prefetchedInfo = {
+    nextBeneficiaryValidationStep: profile?.nextBeneficiaryValidationStep ?? null,
+  }
 
   function onButtonPress() {
     if (profile) {
-      navigateToIdCheck()
+      navigateToNextBeneficiaryValidationStep(prefetchedInfo)
     } else {
       // TODO: remove after POs validation this will happen only when POs access this page without auth
       navigate('Login')
