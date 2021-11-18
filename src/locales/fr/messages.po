@@ -264,6 +264,7 @@ msgstr "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est 
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
+#: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Bonne nouvelle !"
@@ -400,6 +401,10 @@ msgstr "Comment ça marche ?"
 #: src/features/cheatcodes/pages/CheatMenu/CheatMenu.tsx
 msgid "Composants"
 msgstr "Composants"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Compte 15-17 créé !"
+msgstr "Compte 15-17 créé !"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Compte créé !"
@@ -992,6 +997,10 @@ msgstr "J'ai compris"
 #: src/features/search/components/SearchLandingPage.tsx
 msgid "Je cherche"
 msgstr "Je cherche"
+
+#: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
+msgid "Je découvre les offres"
+msgstr "Je découvre les offres"
 
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
 msgid "Je ne vois pas mon établissement"
@@ -2139,16 +2148,12 @@ msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer da
 msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
-msgid ""
-"Tu as jusqu’à la veille de tes 18 ans pour\n"
-"profiter de ton budget."
-msgstr ""
-"Tu as jusqu’à la veille de tes 18 ans pour\n"
-"profiter de ton budget."
+msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
+msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 
-#: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
-msgid "Tu as {age} ans..."
-msgstr "Tu as {age} ans..."
+#: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
+msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
+msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Tu dois avoir"
@@ -2788,6 +2793,10 @@ msgstr "à portée de main !"
 #: src/features/bookOffer/atoms/HourChoice.tsx
 msgid "épuisé"
 msgstr "épuisé"
+
+#: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
+msgid "€ viennent d'être crédités sur ton compte pass Culture"
+msgstr "€ viennent d'être crédités sur ton compte pass Culture"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "€ à"
