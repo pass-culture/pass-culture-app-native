@@ -4,7 +4,6 @@ import React, { useCallback } from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SeeMore } from 'features/home/atoms'
 import { Layout } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -19,7 +18,8 @@ import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
-import { CustomListRenderItem, RenderFooterItem, Playlist } from 'ui/components/Playlist'
+import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { CustomListRenderItem } from 'ui/components/Playlist'
 import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -71,12 +71,11 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
   }, [params])
 
   const showSeeMore = nbHits > hits.length
-  const onPressSeeMore = () => {
-    analytics.logVenueSeeMoreClicked(venueId)
-    navigate(...getTabNavConfig('Search', params))
-  }
-  const renderFooter: RenderFooterItem = showSeeMore
-    ? ({ width, height }) => <SeeMore width={width} height={height} onPress={onPressSeeMore} />
+  const onPressSeeMore = showSeeMore
+    ? () => {
+        analytics.logVenueSeeMoreClicked(venueId)
+        navigate(...getTabNavConfig('Search', params))
+      }
     : undefined
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(layout)
@@ -87,18 +86,15 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <MarginContainer>
-        <Typo.Title4>{t`Offres`}</Typo.Title4>
-      </MarginContainer>
-      <Spacer.Column numberOfSpaces={6} />
-      <Playlist
+      <PassPlaylist
         testID="offersModuleList"
+        title={t`Offres`}
+        TitleComponent={Typo.Title4}
         data={hits}
         itemHeight={itemHeight}
         itemWidth={itemWidth}
-        scrollButtonOffsetY={itemHeight / 2}
+        onPressSeeMore={onPressSeeMore}
         renderItem={renderItem}
-        renderFooter={renderFooter}
         keyExtractor={keyExtractor}
       />
       <Spacer.Column numberOfSpaces={6} />

@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
-import { HomeOfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
+import { HomeOfferTile } from 'features/home/atoms'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -12,15 +12,8 @@ import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
-import {
-  Playlist,
-  CustomListRenderItem,
-  RenderFooterItem,
-  RenderHeaderItem,
-} from 'ui/components/Playlist'
-import { ColorsEnum, Spacer } from 'ui/theme'
-
-import { Cover } from '../atoms/Cover'
+import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { CustomListRenderItem } from 'ui/components/Playlist'
 
 type OffersModuleProps = {
   search: SearchParametersFields
@@ -48,22 +41,19 @@ export const OffersModule = (props: OffersModuleProps) => {
     analytics.logAllTilesSeen(moduleName, hits.length)
   )
 
-  const renderHeader: RenderHeaderItem = cover
-    ? ({ width, height }) => <Cover width={width} height={height} uri={cover} />
-    : undefined
   const showSeeMore =
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
-  const onPressSeeMore = () => {
-    analytics.logClickSeeMore(moduleName)
-    // When we navigate to the search page, we want to show 20 results per page,
-    // not what is configured in contentful
-    const params = { ...parseSearchParameters(parameters), hitsPerPage: 20 }
-    navigate(...getTabNavConfig('Search', params))
-  }
-  const renderFooter: RenderFooterItem = showSeeMore
-    ? ({ width, height }) => <SeeMore width={width} height={height} onPress={onPressSeeMore} />
+  const onPressSeeMore = showSeeMore
+    ? () => {
+        analytics.logClickSeeMore(moduleName)
+        // When we navigate to the search page, we want to show 20 results per page,
+        // not what is configured in contentful
+        const params = { ...parseSearchParameters(parameters), hitsPerPage: 20 }
+        navigate(...getTabNavConfig('Search', params))
+      }
     : undefined
+
   const renderItem: CustomListRenderItem<SearchHit> = useCallback(
     ({ item, width, height }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
@@ -94,24 +84,18 @@ export const OffersModule = (props: OffersModuleProps) => {
   const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers
   if (!shouldModuleBeDisplayed) return <React.Fragment />
   return (
-    <React.Fragment>
-      <ModuleTitle
-        title={display.title}
-        color={index === 0 ? ColorsEnum.WHITE : ColorsEnum.BLACK}
-      />
-      <Spacer.Column numberOfSpaces={4} />
-      <Playlist
-        testID="offersModuleList"
-        data={hits}
-        itemHeight={itemHeight}
-        itemWidth={itemWidth}
-        scrollButtonOffsetY={itemHeight / 2}
-        renderItem={renderItem}
-        renderHeader={renderHeader}
-        renderFooter={renderFooter}
-        keyExtractor={keyExtractor}
-        onEndReached={logHasSeenAllTilesOnce}
-      />
-    </React.Fragment>
+    <PassPlaylist
+      testID="offersModuleList"
+      title={display.title}
+      onDarkBackground={index === 0}
+      data={hits}
+      itemHeight={itemHeight}
+      itemWidth={itemWidth}
+      coverUrl={cover}
+      onPressSeeMore={onPressSeeMore}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+      onEndReached={logHasSeenAllTilesOnce}
+    />
   )
 }

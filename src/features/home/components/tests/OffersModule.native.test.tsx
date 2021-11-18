@@ -41,12 +41,12 @@ describe('OffersModule component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const component = render(reactQueryProviderHOC(<OffersModule {...props} index={1} />))
     expect(component).toMatchSnapshot()
-    expect(component.getByTestId('moduleTitle').props.color).toBe(ColorsEnum.BLACK)
+    expect(component.getByTestId('playlistTitle').props.color).toBe(ColorsEnum.BLACK)
   })
   it('should render with white title if first module displayed', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const component = render(reactQueryProviderHOC(<OffersModule {...props} index={0} />))
-    expect(component.getByTestId('moduleTitle').props.color).toBe(ColorsEnum.WHITE)
+    expect(component.getByTestId('playlistTitle').props.color).toBe(ColorsEnum.WHITE)
   })
 })
 

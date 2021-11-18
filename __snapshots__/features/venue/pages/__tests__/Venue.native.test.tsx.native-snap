@@ -641,12 +641,16 @@ exports[`<Venue /> should match snapshot 1`] = `
         style={
           Array [
             Object {
+              "alignItems": "center",
+              "flexDirection": "row",
               "marginHorizontal": 24,
             },
           ]
         }
       >
         <Text
+          color="#151515"
+          numberOfLines={2}
           style={
             Array [
               Object {
@@ -657,16 +661,17 @@ exports[`<Venue /> should match snapshot 1`] = `
               },
             ]
           }
+          testID="playlistTitle"
         >
           Offres
         </Text>
       </View>
       <View
-        numberOfSpaces={6}
+        numberOfSpaces={4}
         style={
           Array [
             Object {
-              "height": 24,
+              "height": 16,
             },
           ]
         }

@@ -6,6 +6,8 @@ Array [
     style={
       Array [
         Object {
+          "alignItems": "center",
+          "flexDirection": "row",
           "marginHorizontal": 24,
         },
       ]
@@ -24,7 +26,7 @@ Array [
           },
         ]
       }
-      testID="moduleTitle"
+      testID="playlistTitle"
     >
       Module title
     </Text>
@@ -226,7 +228,7 @@ Array [
       scrollEventThrottle={200}
       showsHorizontalScrollIndicator={false}
       stickyHeaderIndices={Array []}
-      testID="VenuesModuleList"
+      testID="offersModuleList"
       updateCellsBatchingPeriod={50}
       viewabilityConfigCallbackPairs={Array []}
       windowSize={21}

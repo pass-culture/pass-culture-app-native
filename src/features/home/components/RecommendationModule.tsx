@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 
-import { HomeOfferTile, ModuleTitle } from 'features/home/atoms'
+import { HomeOfferTile } from 'features/home/atoms'
 import { DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
@@ -10,8 +10,9 @@ import { GeoCoordinates } from 'libs/geolocation'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
-import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
-import { ColorsEnum, Spacer } from 'ui/theme'
+import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { CustomListRenderItem } from 'ui/components/Playlist'
+import { Spacer } from 'ui/theme'
 
 type RecommendationModuleProps = {
   display: DisplayParametersFields
@@ -65,17 +66,13 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
 
   return (
     <React.Fragment>
-      <ModuleTitle
+      <PassPlaylist
+        testID="offersModuleList"
         title={display.title}
-        color={index === 0 ? ColorsEnum.WHITE : ColorsEnum.BLACK}
-      />
-      <Spacer.Column numberOfSpaces={4} />
-      <Playlist
-        testID="recommendationModuleList"
+        onDarkBackground={index === 0}
         data={hits}
         itemHeight={itemHeight}
         itemWidth={itemWidth}
-        scrollButtonOffsetY={itemHeight / 2}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         onEndReached={logHasSeenAllTilesOnce}
