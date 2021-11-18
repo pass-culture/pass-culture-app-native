@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { IdentificationSessionResponse } from 'api/gen'
 import { useRequestIdentificationUrl } from 'features/identityCheck/api'
-import { env } from 'libs/environment'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { WEBAPP_V2_URL } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -13,15 +15,14 @@ import { IdCard } from 'ui/svg/icons/IdCard'
 import { Sun } from 'ui/svg/icons/Sun'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { useNavigation } from '@react-navigation/native'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 
 interface Props {
   visible: boolean
   hideModal: () => void
 }
 
-const redirectUrl = `https://${env.WEBAPP_V2_DOMAIN}/verification-identite/fin`
+const redirectUrl = `${WEBAPP_V2_URL}/verification-identite/fin`
+// TODO(antoinewg): dehardcode this url and get it from the backend
 const identificationUrl = 'https://id.ubble.ai/70f01f19-6ec5-4b14-9b30-2c493e49df15'
 
 export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
@@ -31,15 +32,15 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { mutate: requestIdentificationUrl } = useRequestIdentificationUrl({
-    onSuccess: (data: IdentificationSessionResponse) => {
-      navigate('IdentityCheckWebview', { identificationUrl })
+    onSuccess(data: IdentificationSessionResponse) {
+      navigate('IdentityCheckWebview', { identificationUrl: data.identificationUrl })
     },
-    onError: () => {
+    onError() {
       // Backend call may result in 500 whilst testing
       // TODO(antoinewg) remove this line when ready
       navigate('IdentityCheckWebview', { identificationUrl })
     },
-    onSettled: () => {
+    onSettled() {
       hideModal()
     },
   })
