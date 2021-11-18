@@ -21,13 +21,19 @@ interface Props {
   cities?: City[]
   onSubmit: (city: City) => City
   isVisible: boolean
+  close?: () => void
 }
 
-export const CityModal = ({ cities = [], onSubmit, isVisible = false }: Props) => {
+const defaultProps = {
+  cities: [],
+  isVisible: undefined,
+  close: () => null,
+}
+
+export const CityModal = ({ cities, onSubmit, isVisible, close }: Props) => {
   const { top, bottom } = useSafeAreaInsets()
   const [selectedCity, setSelectedCity] = useState<string | undefined>()
 
-  const onClose = () => 'close'
   const onSubmitSelectedCity = (city: City) => {
     setSelectedCity(city.name)
     setTimeout(() => {
@@ -39,11 +45,7 @@ export const CityModal = ({ cities = [], onSubmit, isVisible = false }: Props) =
   return (
     <React.Fragment>
       <Style>{webcss}</Style>
-      <StyledModal
-        isVisible={isVisible}
-        onBackdropPress={onClose}
-        safeAreaTop={top}
-        safeAreaBottom={bottom}>
+      <StyledModal isVisible={isVisible} onClose={close} safeAreaTop={top} safeAreaBottom={bottom}>
         <HeaderContainer>
           <BicolorBuilding size={getSpacing(24)} />
           <Spacer.Column numberOfSpaces={6} />
@@ -65,13 +67,15 @@ export const CityModal = ({ cities = [], onSubmit, isVisible = false }: Props) =
             ))}
           </StyledScrollView>
           <BottomContainer>
-            <ButtonTertiaryBlack title={t`Annuler`} onPress={onClose} icon={Invalidate} />
+            <ButtonTertiaryBlack title={t`Annuler`} onPress={close} icon={Invalidate} />
           </BottomContainer>
         </Container>
       </StyledModal>
     </React.Fragment>
   )
 }
+
+CityModal.defaultProps = defaultProps
 
 // @ts-ignore RNModal extends React.Component
 const StyledModal = styled(RNModal)<{ safeAreaTop: number }>(

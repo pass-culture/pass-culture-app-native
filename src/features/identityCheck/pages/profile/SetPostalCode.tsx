@@ -13,10 +13,12 @@ import {
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
+import { useModal } from 'ui/components/modals/useModal'
 
 const validator = composeValidators(required, zipCodeFormat)
 
 export const SetPostalCode = () => {
+  const { visible: isModalVisible, showModal, hideModal } = useModal(false)
   const [postalCode, setPostalCode] = useState('')
   const [isPostalCodeInvalid, setIsPostalCodeInvalid] = useState(true)
   const [isLoadingCities, setIsLoadingCities] = useState(false)
@@ -42,6 +44,7 @@ export const SetPostalCode = () => {
   async function onPress() {
     if (!isDisabled) {
       try {
+        showModal()
         setIsLoadingCities(true)
       } finally {
         setIsLoadingCities(false)
@@ -80,7 +83,12 @@ export const SetPostalCode = () => {
           />
         }
       />
-      <CityModal cities={cities} isVisible={true} onSubmit={(city: City) => city} />
+      <CityModal
+        cities={cities}
+        isVisible={isModalVisible}
+        onSubmit={(city: City) => city}
+        close={hideModal}
+      />
     </React.Fragment>
   )
 }
