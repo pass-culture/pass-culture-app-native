@@ -127,6 +127,7 @@ export function requestSettingsSuccess(
     useAppSearch: false,
     isWebappV2Enabled: false,
     enableNativeEacIndividual: false,
+    enableUnderageGeneralisation: false,
     accountCreationMinimumAge: 15,
   }
 ) {

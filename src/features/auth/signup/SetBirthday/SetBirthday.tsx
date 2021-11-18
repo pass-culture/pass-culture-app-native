@@ -63,7 +63,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     isTooOld: false,
   })
   const { data: settings } = useAppSettings()
-  const deposit = useDepositAmount()
+  const deposit = useDepositAmount().replace(' ', '\u00a0')
 
   const now = new Date()
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
@@ -146,14 +146,33 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     )
   }
 
+  const displayPostGeneralisationMessage =
+    settings?.enableNativeEacIndividual && settings.enableUnderageGeneralisation
+
+  const financialHelpMessage = displayPostGeneralisationMessage
+    ? t`Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20` +
+      '\u00a0' +
+      t`€ à` +
+      '\u00a0' +
+      deposit +
+      '\u00a0' +
+      t`proposée par le Gouvernement.` +
+      '\n' +
+      '\n'
+    : t`Si tu as 18 ans, tu as droit à une aide financière de` +
+      '\u00a0' +
+      deposit +
+      '\u00a0' +
+      t`proposée par le Gouvernement.` +
+      '\n' +
+      '\n'
+
   const birthdayInformation =
     t`L’application pass Culture est accessible à tous.` +
     '\n' +
-    t`Si tu as 18 ans, tu pourras obtenir une aide financière de` +
-    '\u00a0' +
-    deposit +
-    '\u00a0' +
-    t`proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`
+    '\n' +
+    financialHelpMessage +
+    t`Cette aide sera créditée directement sur ton compte pass Culture.`
 
   return (
     <React.Fragment>

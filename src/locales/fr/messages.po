@@ -319,6 +319,10 @@ msgstr "Cependant, tu peux nous transmettre ton dossier via la plateforme Démar
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "Cette aide sera créditée directement sur ton compte pass Culture."
+msgstr "Cette aide sera créditée directement sur ton compte pass Culture."
+
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "Cette réservation est annulable"
 msgstr "Cette réservation est annulable"
@@ -733,6 +737,10 @@ msgstr "En voir plus"
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Enregistrer"
 msgstr "Enregistrer"
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20"
+msgstr "Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20"
 
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "Entrée pour l'email"
@@ -1885,8 +1893,8 @@ msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Si tu as 18 ans, tu pourras obtenir une aide financière de"
-msgstr "Si tu as 18 ans, tu pourras obtenir une aide financière de"
+msgid "Si tu as 18 ans, tu as droit à une aide financière de"
+msgstr "Si tu as 18 ans, tu as droit à une aide financière de"
 
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Si tu as besoin d’aide n’hésite pas à :"
@@ -2653,8 +2661,9 @@ msgid "profile expiration date for underage"
 msgstr "{day}"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
-msgstr "proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "proposée par le Gouvernement."
+msgstr "proposée par le Gouvernement."
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
 msgid "quotidiennes"
@@ -2772,3 +2781,7 @@ msgstr "à portée de main !"
 #: src/features/bookOffer/atoms/HourChoice.tsx
 msgid "épuisé"
 msgstr "épuisé"
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "€ à"
+msgstr "€ à"
