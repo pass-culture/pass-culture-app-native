@@ -3,10 +3,11 @@ import LottieView from 'lottie-react-native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { useDepositAmount } from 'features/auth/api'
 import { useUserProfileInfo } from 'features/home/api'
+import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { storage } from 'libs/storage'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
@@ -18,12 +19,14 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 export const RecreditBirthdayNotification = () => {
   const { data: user } = useUserProfileInfo()
-  const depositAmount = useDepositAmount()
   const age = user?.dateOfBirth
     ? new Date().getFullYear() - new Date(user.dateOfBirth).getFullYear()
     : undefined
   const animationRef = React.useRef<LottieView>(null)
-  const amount = 30 // TODO: get the real amount from user.recreditAmountToShow
+  const credit = useAvailableCredit()
+  // TODO(PC-11883): get the real amount from user.recreditAmountToShow
+  const creditedAmount = 30
+  const remainingCredit = formatToFrenchDecimal(credit?.amount ?? 3000)
 
   useEffect(() => {
     storage.saveObject('has_seen_birthday_notification_card', true)
@@ -41,9 +44,8 @@ export const RecreditBirthdayNotification = () => {
       <StyledSubtitle>
         {t({
           id: 'birthday notification text',
-          values: { amount, age },
-          message: `Pour tes {age} ans, le Gouvernement vient d'ajouter {amount} euros à ton crédit. 
-          Tu disposes maintenant de :`,
+          values: { creditedAmount, age },
+          message: `Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} euros à ton crédit. Tu disposes maintenant de :`,
         })}
       </StyledSubtitle>
 
@@ -55,7 +57,7 @@ export const RecreditBirthdayNotification = () => {
           icon={CategoryIcon.Spectacles}
           isAnimated
         />
-        <Amount color={ColorsEnum.BRAND}>{depositAmount}</Amount>
+        <Amount color={ColorsEnum.BRAND}>{remainingCredit}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Text>{t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.`}</Text>
