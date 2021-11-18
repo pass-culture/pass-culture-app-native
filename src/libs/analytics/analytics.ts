@@ -194,6 +194,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SELECT_SCHOOL, params),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
   logModifyMail: () => analyticsProvider.logEvent(AnalyticsEvent.MODIFY_MAIL),
+  logSendActivationMailAgain: (numberOfTimes: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN, { times: numberOfTimes }),
   useInit,
 }
 
