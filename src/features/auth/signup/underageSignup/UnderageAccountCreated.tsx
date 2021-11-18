@@ -1,7 +1,13 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled from 'styled-components/native'
 
+import {
+  Amount,
+  ProgressBarContainer,
+  StyledSubtitle,
+  Text,
+  ButtonContainer,
+} from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import Governement from 'ui/animations/government.json'
@@ -9,7 +15,7 @@ import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer } from 'ui/theme'
 
 export function UnderageAccountCreated() {
   const maxPrice = useMaxPrice()
@@ -40,24 +46,3 @@ export function UnderageAccountCreated() {
     </GenericInfoPageWhite>
   )
 }
-
-const ProgressBarContainer = styled.View({
-  paddingHorizontal: getSpacing(10),
-})
-
-const Amount = styled(Typo.Title2)({
-  textAlign: 'center',
-})
-
-const Text = styled(Typo.Body)({
-  textAlign: 'center',
-})
-
-const StyledSubtitle = styled(Typo.Title4)({
-  textAlign: 'center',
-})
-
-const ButtonContainer = styled.View({
-  flex: 1,
-  justifyContent: 'flex-end',
-})

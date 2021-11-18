@@ -1,8 +1,14 @@
 import { t } from '@lingui/macro'
 import LottieView from 'lottie-react-native'
 import React, { useEffect } from 'react'
-import styled from 'styled-components/native'
 
+import {
+  Amount,
+  ProgressBarContainer,
+  StyledSubtitle,
+  Text,
+  ButtonContainer,
+} from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
@@ -15,7 +21,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme'
 
 export const RecreditBirthdayNotification = () => {
   const { data: user } = useUserProfileInfo()
@@ -68,23 +74,3 @@ export const RecreditBirthdayNotification = () => {
     </GenericInfoPageWhite>
   )
 }
-
-const StyledSubtitle = styled(Typo.Title4)({
-  textAlign: 'center',
-})
-
-const Text = styled(Typo.Body)({
-  textAlign: 'center',
-})
-
-const ProgressBarContainer = styled.View({
-  paddingHorizontal: getSpacing(10),
-})
-
-const Amount = styled(Typo.Title2)({
-  textAlign: 'center',
-})
-
-const ButtonContainer = styled.View({
-  alignItems: 'center',
-})
