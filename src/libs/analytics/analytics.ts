@@ -193,6 +193,7 @@ export const analytics = {
   logSelectSchool: (params: { name: string; city: string; academy: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.SELECT_SCHOOL, params),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
+  logModifyMail: () => analyticsProvider.logEvent(AnalyticsEvent.MODIFY_MAIL),
   useInit,
 }
 

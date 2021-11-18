@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -20,7 +21,10 @@ export function PersonalData() {
 
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
 
-  const openChangeEmailPage = () => navigate('ChangeEmail')
+  const onEmailChange = () => {
+    navigate('ChangeEmail')
+    analytics.logModifyMail()
+  }
 
   // TODO (LucasBeneston): Remove this to display ChangeEmail in production
   const isEmailChangeEnabled = env.ENV !== 'production'
@@ -50,7 +54,7 @@ export function PersonalData() {
                 title={t`Modifier`}
                 icon={EditPen}
                 inline
-                onPress={openChangeEmailPage}
+                onPress={onEmailChange}
               />
             ) : null}
           </EmailContainer>

@@ -5,6 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -74,6 +75,7 @@ describe('PersonalData', () => {
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('ChangeEmail')
+      expect(analytics.logModifyMail).toBeCalled()
     })
   })
 })

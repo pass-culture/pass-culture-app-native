@@ -41,6 +41,7 @@ export enum AnalyticsEvent {
   LOCATION_TOGGLE = 'LocationToggle',
   LOGOUT = 'Logout',
   MAIL_TO = 'MailTo',
+  MODIFY_MAIL = 'ModifyMail',
   NOTIFICATION_TOGGLE = 'NotificationToggle',
   NO_SEARCH_RESULT = 'NoSearchResult',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
