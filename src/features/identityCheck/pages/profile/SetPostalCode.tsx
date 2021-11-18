@@ -10,6 +10,7 @@ import {
   required,
   zipCodeFormat,
 } from 'features/identityCheck/utils/ValidateFields'
+import { fetchCities } from 'libs/place/fetchPostalCode'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -21,18 +22,8 @@ export const SetPostalCode = () => {
   const { visible: isModalVisible, showModal, hideModal } = useModal(false)
   const [postalCode, setPostalCode] = useState('')
   const [isPostalCodeInvalid, setIsPostalCodeInvalid] = useState(true)
+  const [cities, setCities] = useState<City[]>([])
   const [isLoadingCities, setIsLoadingCities] = useState(false)
-
-  // TODO (LucasBeneston) : Remove when citiesResult is dynamic
-  const cities: City[] = [
-    { name: 'Paris', code: '75000', postalCode: '75000' },
-    { name: 'Lyon', code: '69000', postalCode: '69000' },
-    { name: 'Saint-Étienne', code: '42000', postalCode: '42000' },
-    { name: 'Marseille', code: '13000', postalCode: '13000' },
-    { name: 'Brest', code: '29000', postalCode: '29000' },
-    { name: 'Bordeaux', code: '33000', postalCode: '33000' },
-    { name: 'Grenoble', code: '38000', postalCode: '38000' },
-  ]
 
   const isDisabled = isPostalCodeInvalid
 
@@ -41,11 +32,41 @@ export const SetPostalCode = () => {
     setPostalCode(value)
   }
 
+  async function searchCities(postalCodeQuery: string) {
+    let citiesResult: City[] = []
+    try {
+      const response = await fetchCities(postalCodeQuery)
+      citiesResult = response.map(({ nom, code }) => ({
+        name: nom,
+        code,
+        postalCode: postalCodeQuery,
+      }))
+      setCities(citiesResult)
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error)
+    }
+
+    if (citiesResult.length === 0) {
+      // eslint-disable-next-line no-console
+      console.log('new Error')
+    }
+    if (citiesResult.length === 1) {
+      const city = citiesResult[0]
+      // eslint-disable-next-line no-console
+      console.log({ city })
+    }
+    if (citiesResult.length > 1) {
+      showModal()
+    }
+  }
+
   async function onPress() {
     if (!isDisabled) {
       try {
-        showModal()
         setIsLoadingCities(true)
+        // showModal()
+        await searchCities(postalCode.replace(/\s/g, ''))
       } finally {
         setIsLoadingCities(false)
       }
