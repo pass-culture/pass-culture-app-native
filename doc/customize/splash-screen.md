@@ -1,12 +1,23 @@
 # Customize the splash screen
 
-1. Replace `assets/splash-screen/source.png` with the new splash screen (dimensions 3000x5336)
-2. Run `react-native set-splash --path "assets/splash-screen/source.png" --background "#ffffff" --resize cover`
+Replace `assets/splash-screen/source.png` with the new splash screen (dimensions `3000x5336`)
+
+```bash
+yarn add -D @bam.tech/react-native-make
+react-native set-splash --path "assets/splash-screen/source.png" --background "#ffffff" --resize contain
+yarn remove @bam.tech/react-native-make
+git status
+```
+
+> We don't want to keep the deprecated `@bam.tech/react-native-make` dependency,
+> thus we just install and remove it when we need to regenerate our splash screen.
 
 Example:
 
 ```bash
+$ yarn add -D @bam.tech/react-native-make
 $ react-native set-splash --path "assets/splash-screen/source.png" --background "#ffffff" --resize contain
+$ yarn remove @bam.tech/react-native-make
 $ git status
 On branch PC-7938-fix
 Changes not staged for commit:
@@ -23,3 +34,6 @@ Changes not staged for commit:
         modified:   ios/PassCulture/Images.xcassets/SplashImage.imageset/splash@3x.png
         modified:   ios/SplashScreen.storyboard
 ```
+
+
+Read more: [Setup your React Native splash screen in 15 minutes](https://blog.bam.tech/developer-news/set-up-your-react-native-splash-screen-in-15-minutes).
