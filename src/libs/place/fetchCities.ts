@@ -1,4 +1,4 @@
-type CitiesResponse = Array<{
+export type CitiesResponse = Array<{
   nom: string
   code: string
   codeDepartement: string
@@ -7,7 +7,7 @@ type CitiesResponse = Array<{
   population: number
 }>
 
-const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
+export const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 
 export const fetchCities = async (postalCode: string): Promise<CitiesResponse> => {
   const queryParams = new URLSearchParams()

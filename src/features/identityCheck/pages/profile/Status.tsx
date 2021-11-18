@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
-import { StyledScrollView } from 'features/identityCheck/atoms/StyledScrollView'
+import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -42,7 +42,7 @@ export const Status = () => {
     <PageWithHeader
       title={t`Profil`}
       scrollChildren={
-        <StyledScrollView>
+        <ModalContent>
           <CenteredTitle title={t`Sélectionne ton statut`} />
           {statuses.map((status) => (
             <RadioButton
@@ -54,7 +54,7 @@ export const Status = () => {
             />
           ))}
           <Spacer.Column numberOfSpaces={16} />
-        </StyledScrollView>
+        </ModalContent>
       }
       fixedBottomChildren={
         <ButtonPrimary

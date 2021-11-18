@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
-import { StyledScrollView } from 'features/identityCheck/atoms/StyledScrollView'
+import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { City, CityModal } from 'features/identityCheck/pages/profile/CityModal'
@@ -12,7 +12,7 @@ import {
   zipCodeFormat,
 } from 'features/identityCheck/utils/ValidateFields'
 import { eventMonitoring } from 'libs/monitoring'
-import { fetchCities } from 'libs/place/fetchPostalCode'
+import { fetchCities } from 'libs/place/fetchCities'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -98,7 +98,7 @@ export const SetPostalCode = () => {
       <PageWithHeader
         title={t`Profil`}
         scrollChildren={
-          <StyledScrollView>
+          <ModalContent>
             <CenteredTitle title={t`Dans quelle ville résides-tu ?`} />
             <TextInput
               autoCapitalize="none"
@@ -114,7 +114,7 @@ export const SetPostalCode = () => {
               {...accessibilityAndTestId(t`Entrée pour le code postal`)}
             />
             {!!error && <InputError messageId={error} numberOfSpacesTop={2} visible />}
-          </StyledScrollView>
+          </ModalContent>
         }
         fixedBottomChildren={
           <ButtonPrimary

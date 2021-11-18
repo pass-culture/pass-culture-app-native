@@ -167,6 +167,7 @@ msgstr "Ajouté récemment"
 msgid "Anniversaire 18 ans"
 msgstr "Anniversaire 18 ans"
 
+#: src/features/identityCheck/pages/profile/CityModal.tsx
 #: src/libs/itinerary/useItinerary.ts
 msgid "Annuler"
 msgstr "Annuler"
@@ -312,6 +313,10 @@ msgstr "Catégories"
 msgid "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
+#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+msgid "Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001)."
+msgstr "Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001)."
+
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
@@ -410,6 +415,14 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
+
+#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+msgid "Code postal"
+msgstr "Code postal"
+
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Code postal - Formulaire"
+msgstr "Code postal - Formulaire"
 
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Colle ton lien ici ..."
@@ -551,6 +564,7 @@ msgstr "Contacter le support"
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Continuer"
@@ -602,6 +616,11 @@ msgstr "Culture scientifique"
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "C’est très rapide !"
 msgstr "C’est très rapide !"
+
+#: src/features/identityCheck/pages/profile/CityModal.tsx
+#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+msgid "Dans quelle ville résides-tu ?"
+msgstr "Dans quelle ville résides-tu ?"
 
 #: src/features/bookOffer/components/BookDateChoice.tsx
 #: src/features/search/sections/titles.ts
@@ -871,6 +890,9 @@ msgstr "Entrée pour le jour de la date de naissance"
 #: src/ui/components/inputs/DateInput.web.test.tsx
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
+#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+msgid "Entrée pour le code postal"
+msgstr "Entrée pour le code postal"
 
 #: src/features/auth/signup/SetName/SetName.tsx
 msgid "Entrée pour le nom"
@@ -903,6 +925,10 @@ msgstr "Etablissement scolaire - Accueil"
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Etablissement scolaire - Sélection"
 msgstr "Etablissement scolaire - Sélection"
+
+#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+msgid "Ex : 75017"
+msgstr "Ex : 75017"
 
 #: src/features/bookings/components/NoBookingsView.tsx
 #: src/features/favorites/components/NoFavoritesResult.tsx
@@ -1511,6 +1537,10 @@ msgstr "Notifications"
 msgid "Nous avons besoin de connaître ton âge."
 msgstr "Nous avons besoin de connaître ton âge."
 
+#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+msgid "Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard."
+msgstr "Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard."
+
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
 msgstr "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
@@ -1701,6 +1731,10 @@ msgstr "Place-toi dans un lieu bien éclairé"
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
+#: src/features/identityCheck/pages/profile/CityModal.tsx
+msgid "Plusieurs villes sont associées à ce code postal, sélectionne la tienne."
+msgstr "Plusieurs villes sont associées à ce code postal, sélectionne la tienne."
+
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
@@ -1716,10 +1750,6 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 #: src/features/profile/pages/ChangeEmail/ChangeEmailDisclaimer.tsx
 msgid "Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification."
 msgstr "Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification."
-
-#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
-msgid "Pour pouvoir profiter de l'aide financière de 300 euros proposée par le Gouvernement, nous avons besoin de ta"
-msgstr "Pour pouvoir profiter de l'aide financière de 300 euros proposée par le Gouvernement, nous avons besoin de ta"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
@@ -1746,6 +1776,10 @@ msgstr "Pourquoi signales-tu"
 msgid "Pratique artistiques"
 msgstr "Pratique artistiques"
 
+#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+msgid "Prends une photo de ta"
+msgstr "Prends une photo de ta"
+
 #: src/features/search/sections/titles.ts
 msgid "Prix"
 msgstr "Prix"
@@ -1762,6 +1796,8 @@ msgstr "Problème technique ;("
 msgid "Problèmes pour ouvrir un lien ?"
 msgstr "Problèmes pour ouvrir un lien ?"
 
+#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+#: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
@@ -2116,7 +2152,7 @@ msgstr "Supprimer mon compte"
 msgid "Sélectionne ton statut"
 msgstr "Sélectionne ton statut"
 
-#: src/features/identityCheck/pages/IdentityCheckEnd.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckEnd.tsx
 msgid "Ta pièce d’identité a bien été transmise !"
 msgstr "Ta pièce d’identité a bien été transmise !"
 
@@ -2680,6 +2716,10 @@ msgstr "durée"
 msgid "elibility deadline"
 msgstr "Tu es éligible jusqu'au {deadline}"
 
+#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+msgid "en cours de validité pour accéder à ton pass Culture."
+msgstr "en cours de validité pour accéder à ton pass Culture."
+
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "en détails"
 msgstr "en détails"
@@ -2785,12 +2825,8 @@ msgid "page-introuvable"
 msgstr "page-introuvable"
 
 #: src/features/identityCheck/atoms/IdentityVerificationText.tsx
-msgid "passport"
-msgstr "passport"
-
-#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
-msgid "pour valider ton profil !"
-msgstr "pour valider ton profil !"
+msgid "passeport"
+msgstr "passeport"
 
 #: src/features/bookOffer/components/BookingInformations.tsx
 msgid "prix duo"
