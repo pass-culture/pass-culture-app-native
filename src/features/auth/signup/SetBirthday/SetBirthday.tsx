@@ -63,7 +63,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     isTooOld: false,
   })
   const { data: settings } = useAppSettings()
-  const deposit = useDepositAmount()
+  const deposit = useDepositAmount().replace(' ', '\u00a0')
 
   const now = new Date()
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
@@ -150,7 +150,9 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     settings?.enableNativeEacIndividual && settings.enableUnderageGeneralisation
 
   const financialHelpMessage = displayPostGeneralisationMessage
-    ? t`Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20 € à` +
+    ? t`Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20` +
+      '\u00a0' +
+      t`€ à` +
       '\u00a0' +
       deposit +
       '\u00a0' +

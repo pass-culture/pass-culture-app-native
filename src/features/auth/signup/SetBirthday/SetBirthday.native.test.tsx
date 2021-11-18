@@ -59,7 +59,7 @@ describe('SetBirthday Page', () => {
     const component = renderSetBirthday()
     fireEvent.press(component.getByTestId('Pourquoi ?'))
     expect(component.queryByText(/une aide financière de/)).toBeTruthy()
-    expect(component.queryByText(/300 €/)).toBeTruthy()
+    expect(component.queryByText(new RegExp('300' + '\u00a0' + '€'))).toBeTruthy()
   })
 
   it('should show the correct deposit amount if generalisation is enabled', async () => {
@@ -79,7 +79,7 @@ describe('SetBirthday Page', () => {
     fireEvent.press(component.getByTestId('Pourquoi ?'))
     expect(component.queryByText(/une aide financière progressive allant de/)).toBeTruthy()
 
-    expect(component.queryByText(/20 €/)).toBeTruthy()
+    expect(component.queryByText(new RegExp('20' + '\u00a0' + '€'))).toBeTruthy()
     // eslint-disable-next-line local-rules/independant-mocks
     mockedUseAppSettings.mockImplementation(
       () =>
