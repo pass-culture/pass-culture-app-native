@@ -44,17 +44,17 @@ export const SetPostalCode = () => {
       setCities(citiesResult)
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.log(error)
+      console.log({ error })
     }
 
     if (citiesResult.length === 0) {
       // eslint-disable-next-line no-console
-      console.log('new Error')
+      console.log('error : Ce code postal est introuvable.')
     }
     if (citiesResult.length === 1) {
       const city = citiesResult[0]
       // eslint-disable-next-line no-console
-      console.log({ city })
+      console.log('savePostalCodeAndCity: ', city)
     }
     if (citiesResult.length > 1) {
       showModal()
@@ -65,12 +65,17 @@ export const SetPostalCode = () => {
     if (!isDisabled) {
       try {
         setIsLoadingCities(true)
-        // showModal()
         await searchCities(postalCode.replace(/\s/g, ''))
       } finally {
         setIsLoadingCities(false)
       }
     }
+  }
+
+  async function onSubmitCity(city: City) {
+    hideModal()
+    // eslint-disable-next-line no-console
+    console.log('savePostalCodeAndCity: ', city)
   }
 
   return (
@@ -107,7 +112,7 @@ export const SetPostalCode = () => {
       <CityModal
         cities={cities}
         isVisible={isModalVisible}
-        onSubmit={(city: City) => city}
+        onSubmit={onSubmitCity}
         close={hideModal}
       />
     </React.Fragment>

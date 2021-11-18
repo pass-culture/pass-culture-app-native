@@ -19,7 +19,7 @@ export interface City {
 
 interface Props {
   cities?: City[]
-  onSubmit: (city: City) => City
+  onSubmit: (city: City) => Promise<void>
   isVisible: boolean
   close?: () => void
 }
@@ -38,7 +38,7 @@ export const CityModal = ({ cities, onSubmit, isVisible, close }: Props) => {
     setSelectedCity(city.name)
     setTimeout(() => {
       onSubmit(city)
-    }, 2000)
+    }, 1000)
   }
   const webcss = `div[aria-modal="true"] { align-items: center }`
 
