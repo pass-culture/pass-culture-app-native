@@ -215,7 +215,7 @@ function extractParams(params: Record<string, string>) {
   const fdlParams: Record<string, string> = {}
   for (const [paramName, paramValue] of Object.entries(params)) {
     if (paramName in FDL_CONFIG) fdlParams[paramName] = paramValue
-    else if (paramName in MARKETING_CONFIG) fdlParams[paramName] = paramValue
+    else if (paramName in MARKETING_CONFIG) marketingParams[paramName] = paramValue
     else appParams[paramName] = paramValue
   }
   return { appParams, marketingParams, fdlParams }
