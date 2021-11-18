@@ -21,7 +21,7 @@ export function PersonalData() {
 
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
 
-  const onChangeEmailClick = () => {
+  const onEmailChange = () => {
     navigate('ChangeEmail')
     analytics.logModifyMail()
   }
@@ -54,7 +54,7 @@ export function PersonalData() {
                 title={t`Modifier`}
                 icon={EditPen}
                 inline
-                onPress={onChangeEmailClick}
+                onPress={onEmailChange}
               />
             ) : null}
           </EmailContainer>
