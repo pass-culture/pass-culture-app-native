@@ -6,14 +6,23 @@ Array [
     className="css-view-1dbjc4n"
     style={
       Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitFlexDirection": "row",
+        "alignItems": "center",
+        "flexDirection": "row",
         "marginLeft": "24px",
         "marginRight": "24px",
+        "msFlexAlign": "center",
+        "msFlexDirection": "row",
       }
     }
   >
     <div
       className="css-text-901oao css-textMultiLine-cens5h"
-      data-testid="moduleTitle"
+      data-testid="playlistTitle"
       dir="auto"
       style={
         Object {
@@ -113,7 +122,7 @@ Array [
     </div>
     <div
       className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-      data-testid="VenuesModuleList"
+      data-testid="offersModuleList"
       onScroll={[Function]}
       onTouchEnd={[Function]}
       onTouchMove={[Function]}

@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react'
 
-import { ModuleTitle } from 'features/home/atoms'
 import { VenueTile } from 'features/home/atoms/VenueTile'
 import { DisplayParametersFields } from 'features/home/contentful'
 import { GeoCoordinates } from 'libs/geolocation'
 import { VenueHit } from 'libs/search'
-import { Playlist, CustomListRenderItem } from 'ui/components/Playlist'
-import { LENGTH_S, Spacer } from 'ui/theme'
+import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { CustomListRenderItem } from 'ui/components/Playlist'
+import { LENGTH_S } from 'ui/theme'
 
 type VenuesModuleProps = {
   hits: VenueHit[]
@@ -30,18 +30,14 @@ export const VenuesModule = (props: VenuesModuleProps) => {
   )
 
   return (
-    <React.Fragment>
-      <ModuleTitle title={display.title} />
-      <Spacer.Column numberOfSpaces={4} />
-      <Playlist
-        testID="VenuesModuleList"
-        data={hits}
-        renderItem={renderItem}
-        itemHeight={ITEM_HEIGHT}
-        itemWidth={ITEM_WIDTH}
-        scrollButtonOffsetY={ITEM_HEIGHT / 2}
-        keyExtractor={keyExtractor}
-      />
-    </React.Fragment>
+    <PassPlaylist
+      testID="offersModuleList"
+      title={display.title}
+      data={hits}
+      itemHeight={ITEM_HEIGHT}
+      itemWidth={ITEM_WIDTH}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+    />
   )
 }
