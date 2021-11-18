@@ -1,13 +1,13 @@
 <resources>
   <string name="asset_statements" translatable="false">
   [{
-    \"include\": \"https://app.testing.passculture.team/.well-known/assetlinks-testing.json\"
+    \"include\": \"https://app.testing.passculture.team/.well-known/assetlinks.json\"
   }, 
   {
-    \"include\": \"https://app.staging.passculture.team/.well-known/assetlinks-staging.json\"
+    \"include\": \"https://app.staging.passculture.team/.well-known/assetlinks.json\"
   },
   {
-    \"include\": \"https://passculture.app/.well-known/assetlinks-production.json\"
+    \"include\": \"https://passculture.app/.well-known/assetlinks.json\"
   }]
   </string>
 </resources>
