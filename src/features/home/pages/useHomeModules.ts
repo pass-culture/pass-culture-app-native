@@ -1,6 +1,6 @@
 import uniqBy from 'lodash.uniqby'
 import { useEffect } from 'react'
-import { useQueries } from 'react-query'
+import { UseInfiniteQueryOptions, useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
 import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
@@ -61,7 +61,7 @@ export const useHomeModules = (
           searchMultipleHits(parsedParameters, position, isUserUnderageBeneficiary)
         ),
         enabled,
-        notifyOnChangeProps: ['data'],
+        notifyOnChangeProps: ['data'] as UseInfiniteQueryOptions['notifyOnChangeProps'],
       }
     })
   )
