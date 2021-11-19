@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useQueries } from 'react-query'
+import { useQueries, UseInfiniteQueryOptions } from 'react-query'
 
 import { VenuesModule } from 'features/home/contentful'
 import { fetchMultipleVenues as fetchAlgoliaMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
@@ -38,7 +38,7 @@ export const useHomeVenueModules = (
         queryKey: [QueryKeys.HOME_VENUES_MODULE, moduleId],
         queryFn: fetchModule,
         enabled,
-        notifyOnChangeProps: ['data'],
+        notifyOnChangeProps: ['data'] as UseInfiniteQueryOptions['notifyOnChangeProps'],
       }
     })
   )

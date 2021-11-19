@@ -2,7 +2,7 @@ import { SearchResponse } from '@algolia/client-search'
 import flatten from 'lodash.flatten'
 import omit from 'lodash.omit'
 import { useMemo } from 'react'
-import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
+import { useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { PartialSearchState } from 'features/search/types'
@@ -29,11 +29,8 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
 
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, partialSearchState],
-    async (context: QueryFunctionContext<[string, PartialSearchState], number>) => {
-      const page = context.pageParam || 0
-      const searchState = context.queryKey[1]
-      return await fetchHits({ page, ...searchState }, position, isUserUnderageBeneficiary)
-    },
+    async ({ pageParam: page = 0 }) =>
+      await fetchHits({ page, ...partialSearchState }, position, isUserUnderageBeneficiary),
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
       enabled,
