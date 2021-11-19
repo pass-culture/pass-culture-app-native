@@ -150,27 +150,26 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     settings?.enableNativeEacIndividual && settings.enableUnderageGeneralisation
 
   const financialHelpMessage = displayPostGeneralisationMessage
-    ? t`Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20` +
+    ? t`Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20` +
       '\u00a0' +
       t`€ à` +
       '\u00a0' +
       deposit +
       '\u00a0' +
-      t`proposée par le Gouvernement.` +
+      t`offerte par le Gouvernement.` +
       '\n' +
       '\n'
-    : t`Si tu as 18 ans, tu as droit à une aide financière de` +
+    : t`Si tu as 18 ans, tu es éligible à une aide financière de` +
       '\u00a0' +
       deposit +
       '\u00a0' +
-      t`proposée par le Gouvernement.` +
+      t`offerte par le Gouvernement.` +
       '\n' +
       '\n'
 
   const birthdayInformation =
-    t`L’application pass Culture est accessible à tous.` +
-    '\n' +
-    '\n' +
+    t`Nous avons besoin de connaître ton âge.` +
+    ' ' +
     financialHelpMessage +
     t`Cette aide sera créditée directement sur ton compte pass Culture.`
 
@@ -216,7 +215,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
         </BottomCardContentContainer>
       </BottomContentPage>
       <AppInformationModal
-        title="Pourquoi ?"
+        title="Pourquoi saisir ma date de naissance ?"
         visible={informationModalVisible}
         onCloseIconPress={hideInformationModal}
         testIdSuffix="birthday-information">
