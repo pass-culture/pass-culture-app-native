@@ -6,7 +6,5 @@ export const ModalContent = styled.View<{ centered?: boolean }>(({ centered = fa
   width: '100%',
   height: '100%',
   maxWidth: getSpacing(125),
-  ...(centered && {
-    alignItems: 'center',
-  }),
+  alignItems: centered ? 'center' : undefined,
 }))

@@ -116,11 +116,10 @@ exports[`<CityModal/> should render correctly 1`] = `
     >
       <View
         height={96}
-        testID="BicolorBuilding"
         width={96}
       >
         <Text>
-          BicolorBuilding-SVG-Mock
+          undefined-SVG-Mock
         </Text>
       </View>
       <View

@@ -1,46 +1,42 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import debounce from 'lodash.debounce'
+import React, { useRef, useState } from 'react'
 import RNModal from 'react-native-modal'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
+import { SuggestedCity } from 'libs/place'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Style } from 'ui/components/Style'
 import { BicolorBuilding } from 'ui/svg/icons/BicolorBuilding'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export interface City {
-  name: string
-  code: string
-  postalCode: string
-}
-
 interface Props {
-  cities?: City[]
-  onSubmit: (city: City) => Promise<void>
+  cities?: SuggestedCity[]
+  onSubmit: (city: SuggestedCity) => Promise<void>
   isVisible: boolean
   close?: () => void
 }
 
 const defaultProps = {
   cities: [],
-  isVisible: undefined,
+  isVisible: false,
   close: () => null,
 }
+
+const webcss = `div[aria-modal="true"] { align-items: center }`
 
 export const CityModal = ({ cities, onSubmit, isVisible, close }: Props) => {
   const { top, bottom } = useSafeAreaInsets()
   const [selectedCity, setSelectedCity] = useState<string | undefined>()
+  const debouncedOnSubmit = useRef(debounce(onSubmit, 1000)).current
 
-  const onSubmitSelectedCity = (city: City) => {
+  const onSubmitSelectedCity = (city: SuggestedCity) => {
     setSelectedCity(city.name)
-    setTimeout(() => {
-      onSubmit(city)
-    }, 1000)
+    debouncedOnSubmit(city)
   }
-  const webcss = `div[aria-modal="true"] { align-items: center }`
 
   return (
     <React.Fragment>

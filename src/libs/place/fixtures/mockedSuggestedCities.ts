@@ -1,5 +1,5 @@
-import { City } from 'features/identityCheck/pages/profile/CityModal'
-import { CitiesResponse } from 'libs/place/fetchCities'
+import { SuggestedCity } from 'libs/place'
+import { CitiesResponse } from 'libs/place/useCities'
 
 export const mockedSuggestedCities: CitiesResponse = [
   {
@@ -20,7 +20,7 @@ export const mockedSuggestedCities: CitiesResponse = [
   },
 ]
 
-export const mockedCitiesResult: City[] = [
+export const mockedCitiesResult: SuggestedCity[] = [
   {
     name: 'Paris',
     code: '75000',

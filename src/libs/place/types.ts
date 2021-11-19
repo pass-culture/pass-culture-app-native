@@ -26,3 +26,8 @@ export interface SuggestedPlace {
     latitude: number
   } | null
 }
+export interface SuggestedCity {
+  name: string
+  code: string
+  postalCode: string
+}
