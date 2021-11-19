@@ -185,6 +185,7 @@ exports[`<AccountCreated /> should render correctly 1`] = `
       </View>
       <View
         customHeight={8}
+        enable={true}
         style={
           Array [
             Object {

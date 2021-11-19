@@ -25,6 +25,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
     <View>
       <View
         customHeight={16}
+        enable={true}
         style={
           Array [
             Object {
@@ -317,6 +318,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
   >
     <View
       customHeight={16}
+      enable={true}
       style={
         Array [
           Object {

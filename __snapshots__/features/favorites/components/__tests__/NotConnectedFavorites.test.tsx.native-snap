@@ -42,6 +42,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   </View>
   <View
     customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
@@ -302,6 +303,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   />
   <View
     customHeight={8}
+    enable={true}
     style={
       Array [
         Object {

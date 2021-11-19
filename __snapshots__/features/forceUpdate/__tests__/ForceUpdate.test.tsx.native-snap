@@ -191,6 +191,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
       </View>
       <View
         customHeight={8}
+        enable={true}
         style={
           Array [
             Object {

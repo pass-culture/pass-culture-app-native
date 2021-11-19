@@ -44,6 +44,7 @@ Array [
   >
     <View
       customHeight={16}
+      enable={true}
       style={
         Array [
           Object {
@@ -168,6 +169,7 @@ Array [
     </View>
     <View
       customHeight={8}
+      enable={true}
       style={
         Array [
           Object {
