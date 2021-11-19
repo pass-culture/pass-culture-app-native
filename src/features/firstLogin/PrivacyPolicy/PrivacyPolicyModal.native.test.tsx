@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { navigationRef } from 'features/navigation/navigationRef'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { superFlushWithAct, fireEvent, render, cleanup } from 'tests/utils'
 
@@ -52,35 +52,20 @@ describe('<PrivacyPolicyModal />', () => {
   })
 
   it('should navigate to ConsentSettings when pressing button with text "Paramètres de confidentialité"', () => {
-    const { getByText } = renderPrivacyModal({
-      onRefusal,
-      onApproval,
-      visible,
-      navigationRef,
-    })
+    const { getByText } = renderPrivacyModal({ onRefusal, onApproval, visible })
     fireEvent.press(getByText('Paramètres de confidentialité'))
-    expect(navigationRef?.current?.navigate).toBeCalled()
+    expect(navigateFromRef).toBeCalled()
   })
 
   it('should open cookies policies on click on "Politique des cookies"', async () => {
-    const { getByText } = renderPrivacyModal({
-      onRefusal,
-      onApproval,
-      visible,
-      navigationRef,
-    })
+    const { getByText } = renderPrivacyModal({ onRefusal, onApproval, visible })
     fireEvent.press(getByText('Politique des cookies'))
     expect(mockedOpenUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
     await superFlushWithAct(1)
   })
 
   it('should not close modal on backdrop tap', () => {
-    const { getByTestId } = renderPrivacyModal({
-      onRefusal,
-      onApproval,
-      visible,
-      navigationRef,
-    })
+    const { getByTestId } = renderPrivacyModal({ onRefusal, onApproval, visible })
     const modal = getByTestId('modal')
     modal.props.onBackdropPress()
     expect(onApproval).not.toBeCalled()

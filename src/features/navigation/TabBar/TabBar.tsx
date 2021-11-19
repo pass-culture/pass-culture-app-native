@@ -1,4 +1,4 @@
-import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom-tabs'
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -11,7 +11,7 @@ import { mapTabRouteToBicolorIcon } from './mapTabRouteToBicolorIcon'
 import { TabBarComponent } from './TabBarComponent'
 import { TabRouteName } from './types'
 
-type Props = Pick<BottomTabBarProps<BottomTabBarOptions>, 'navigation'>
+type Props = Pick<BottomTabBarProps, 'navigation'>
 
 export const TabBar: React.FC<Props> = ({ navigation }) => {
   const { tabRoutes } = useTabNavigationContext()

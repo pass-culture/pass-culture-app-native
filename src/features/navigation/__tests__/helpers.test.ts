@@ -3,7 +3,7 @@ import waitForExpect from 'wait-for-expect'
 
 import * as getScreenFromDeeplinkModule from 'features/deeplinks/getScreenFromDeeplink'
 import { DeeplinkParts } from 'features/deeplinks/types'
-import { navigationRef } from 'features/navigation/navigationRef'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics'
 
@@ -40,7 +40,7 @@ describe('Navigation helpers', () => {
     const link = 'https://mockValidPrefix1' + `/${path}`
     await openUrl(link)
     expect(openURL).not.toBeCalled()
-    expect(navigationRef.current?.navigate).toBeCalledWith('Offer', { id: 1, from: 'offer' })
+    expect(navigateFromRef).toBeCalledWith('Offer', { id: 1, from: 'offer' })
   })
 
   it('should navigate to PageNotFound when in-app screen cannot be found (ex: Offer)', async () => {
@@ -51,7 +51,7 @@ describe('Navigation helpers', () => {
     const link = 'https://mockValidPrefix2' + '/unknown'
     await openUrl(link)
     expect(openURL).not.toBeCalled()
-    expect(navigationRef.current?.navigate).toBeCalledWith('PageNotFound', undefined)
+    expect(navigateFromRef).toBeCalledWith('PageNotFound', undefined)
   })
 
   it('should log analytics when shouldLogEvent is true', async () => {
@@ -115,7 +115,7 @@ describe('Navigation helpers', () => {
     it('should navigate to BookingDetails', async () => {
       const bookingId = 37815152
       navigateToBooking(bookingId)
-      expect(navigationRef.current?.navigate).toBeCalledWith('BookingDetails', { id: bookingId })
+      expect(navigateFromRef).toBeCalledWith('BookingDetails', { id: bookingId })
     })
   })
 })

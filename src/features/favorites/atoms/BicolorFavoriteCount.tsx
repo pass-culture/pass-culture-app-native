@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useRef } from 'react'
 import { Animated, Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useFavorites } from 'features/favorites/pages/useFavorites'
@@ -9,7 +9,7 @@ import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFavoriteAuthed } from 'ui/svg/icons/BicolorFavoriteAuthed'
 import { Pastille } from 'ui/svg/icons/Pastille'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { ZIndex } from 'ui/theme/layers'
 
 const COUNT_MAX = 100
@@ -21,6 +21,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   thin = false,
   testID,
 }) => {
+  const { colors } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const { data } = useFavorites()
   const scale = useScaleFavoritesAnimation(data?.nbFavorites)
@@ -45,10 +46,14 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
         testID={testID}
       />
       <StyledAnimatedView style={{ transform: [{ scale }] }} {...pastilleDimensions}>
-        <Pastille color={thin ? ColorsEnum.GREY_DARK : undefined} {...pastilleDimensions} />
+        <Pastille color={thin ? colors.greyDark : undefined} {...pastilleDimensions} />
         <PastilleContent {...pastilleDimensions}>
-          <Count>{count}</Count>
-          <Plus>{plusSign}</Plus>
+          <Count {...pastilleDimensions} color={colors.white}>
+            {count}
+          </Count>
+          <Plus {...pastilleDimensions} color={colors.white}>
+            {plusSign}
+          </Plus>
         </PastilleContent>
       </StyledAnimatedView>
     </Container>
@@ -76,13 +81,15 @@ const PastilleContent = styled.View<{ height: number; width: number }>((props) =
   width: props.width,
 }))
 
-const Plus = styled(Typo.Caption).attrs({
-  color: ColorsEnum.WHITE,
-})({ fontSize: 8 })
+const Plus = styled(Typo.Caption)<{ height: number }>(({ height }) => ({
+  fontSize: 8,
+  height: Platform.select<number>({ web: height, default: height + getSpacing(1) }),
+}))
 
-const Count = styled(Typo.Caption).attrs({
-  color: ColorsEnum.WHITE,
-})({ fontSize: 9 })
+const Count = styled(Typo.Caption)<{ height: number }>(({ height }) => ({
+  fontSize: 9,
+  height: Platform.select<number>({ web: height, default: height + getSpacing(1) }),
+}))
 
 const useScaleFavoritesAnimation = (nbFavorites?: number) => {
   const scaleAnimation = useRef(new Animated.Value(1))
