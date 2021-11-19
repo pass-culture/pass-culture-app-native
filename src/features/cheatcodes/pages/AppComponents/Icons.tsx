@@ -57,6 +57,7 @@ import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
+import { InfoFraud } from 'ui/svg/icons/InfoFraud'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
@@ -182,6 +183,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="CalendarDeprecated" component={CalendarDeprecated} />
       <Icon name="LocationBuilding" component={LocationBuilding} isNew />
       <Icon name="LocationBuildingDeprecated" component={LocationBuildingDeprecated} />
+      <Icon name="InfoFraud" component={InfoFraud} isNew />
       <AlignedText>
         <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
         <Text> - TicketBooked </Text>
