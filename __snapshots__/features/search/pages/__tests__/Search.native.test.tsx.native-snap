@@ -38,6 +38,7 @@ exports[`Search component should render correctly 1`] = `
   </View>
   <View
     customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
@@ -468,6 +469,7 @@ exports[`Search component should render correctly 1`] = `
     </View>
     <View
       customHeight={8}
+      enable={true}
       style={
         Array [
           Object {

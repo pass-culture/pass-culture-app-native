@@ -3135,6 +3135,7 @@ exports[`<Venue /> should match snapshot 1`] = `
   >
     <View
       customHeight={16}
+      enable={true}
       style={
         Array [
           Object {
