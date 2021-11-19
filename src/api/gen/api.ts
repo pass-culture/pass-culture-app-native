@@ -106,6 +106,18 @@ export interface AccountRequest {
     email: string;
     /**
      * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
+    firstName?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
+    lastName?: string | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof AccountRequest
      */
@@ -143,6 +155,15 @@ export enum ActivityEnum {
     Volontaire = 'Volontaire',
     Inactif = 'Inactif',
     Chmeur = 'Chômeur'
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum AgentType {
+    BrowserComputer = 'browser_computer',
+    BrowserMobile = 'browser_mobile',
+    AgentMobile = 'agent_mobile'
 }/**
  * 
  * @export
@@ -583,6 +604,18 @@ export enum CategoryNameEnum {
 export enum CategoryType {
     Event = 'Event',
     Thing = 'Thing'
+}/**
+ * 
+ * @export
+ * @interface ChangeBeneficiaryEmailBody
+ */
+export interface ChangeBeneficiaryEmailBody {
+    /**
+     * 
+     * @type {string}
+     * @memberof ChangeBeneficiaryEmailBody
+     */
+    token: string;
 }/**
  * 
  * @export
@@ -1990,6 +2023,24 @@ export interface SubscriptionMessage {
 }/**
  * 
  * @export
+ * @interface UserProfileEmailUpdate
+ */
+export interface UserProfileEmailUpdate {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfileEmailUpdate
+     */
+    email: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfileEmailUpdate
+     */
+    password: string;
+}/**
+ * 
+ * @export
  * @interface UserProfileResponse
  */
 export interface UserProfileResponse {
@@ -2115,6 +2166,12 @@ export interface UserProfileResponse {
     pseudo?: string | null;
     /**
      * 
+     * @type {number}
+     * @memberof UserProfileResponse
+     */
+    recreditAmountToShow?: number | null;
+    /**
+     * 
      * @type {Array<UserRole>}
      * @memberof UserProfileResponse
      */
@@ -2157,10 +2214,34 @@ export interface UserProfileUpdateRequest {
 export interface UserProfilingFraudRequest {
     /**
      * 
+     * @type {AgentType}
+     * @memberof UserProfilingFraudRequest
+     */
+    agentType?: AgentType | null;
+    /**
+     * 
      * @type {string}
      * @memberof UserProfilingFraudRequest
      */
-    session_id: string;
+    sessionId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfilingFraudRequest
+     */
+    session_id?: string | null;
+}/**
+ * 
+ * @export
+ * @interface UserProfilingSessionIdResponse
+ */
+export interface UserProfilingSessionIdResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfilingSessionIdResponse
+     */
+    sessionId: string;
 }/**
  * 
  * @export
@@ -2666,6 +2747,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Generate a unique hash which will be used as an identifier for user profiling
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1userProfilingsessionId(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/user_profiling/session_id`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary get_venue <GET>
          * @param {number} venue_id 
          * @param {*} [options] Override http request option.
@@ -3032,6 +3135,32 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary update_user_email <POST>
+         * @param {UserProfileEmailUpdate} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1profileupdateEmail(body?: UserProfileEmailUpdate, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/profile/update_email`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"UserProfileEmailUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary refresh <POST>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3121,6 +3250,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"ResetPasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary reset_recredit_amount_to_show <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1resetRecreditAmountToShow(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/reset_recredit_amount_to_show`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -3336,6 +3487,31 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary validate_user_email <PUT>
+         * @param {ChangeBeneficiaryEmailBody} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/profile/validate_email`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -3465,6 +3641,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          */
         async getnativev1subcategories(basePath: string, options?: any): Promise<SubcategoriesResponseModel> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subcategories(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary Generate a unique hash which will be used as an identifier for user profiling
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1userProfilingsessionId(basePath: string, options?: any): Promise<UserProfilingSessionIdResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1userProfilingsessionId(options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -3637,6 +3824,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary update_user_email <POST>
+         * @param {UserProfileEmailUpdate} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1profileupdateEmail(basePath: string, body?: UserProfileEmailUpdate, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1profileupdateEmail(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary refresh <POST>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3679,6 +3878,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          */
         async postnativev1resetPassword(basePath: string, body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resetPassword(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary reset_recredit_amount_to_show <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1resetRecreditAmountToShow(basePath: string, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resetRecreditAmountToShow(options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -3775,6 +3985,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          */
         async postnativev1validatePhoneNumber(basePath: string, body?: ValidatePhoneNumberRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1validatePhoneNumber(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary validate_user_email <PUT>
+         * @param {ChangeBeneficiaryEmailBody} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async putnativev1profilevalidateEmail(basePath: string, body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).putnativev1profilevalidateEmail(body, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -3910,6 +4132,17 @@ export class DefaultApi extends BaseAPI {
     public async getnativev1subcategories(options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.getnativev1subcategories(this.basePath, options)
+    }
+    /**
+     * 
+     * @summary Generate a unique hash which will be used as an identifier for user profiling
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1userProfilingsessionId(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1userProfilingsessionId(this.basePath, options)
     }
     /**
      * 
@@ -4080,6 +4313,18 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
+     * @summary update_user_email <POST>
+     * @param {UserProfileEmailUpdate} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1profileupdateEmail(body?: UserProfileEmailUpdate, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1profileupdateEmail(this.basePath, body, options)
+    }
+    /**
+     * 
      * @summary refresh <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4124,6 +4369,17 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1resetPassword(body?: ResetPasswordRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1resetPassword(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary reset_recredit_amount_to_show <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1resetRecreditAmountToShow(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1resetRecreditAmountToShow(this.basePath, options)
     }
     /**
      * 
@@ -4220,5 +4476,17 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1validatePhoneNumber(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary validate_user_email <PUT>
+     * @param {ChangeBeneficiaryEmailBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.putnativev1profilevalidateEmail(this.basePath, body, options)
     }
 }
