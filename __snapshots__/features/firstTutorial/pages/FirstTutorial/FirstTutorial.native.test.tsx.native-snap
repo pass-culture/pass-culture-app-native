@@ -16,6 +16,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
 >
   <View
     customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
@@ -1338,6 +1339,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
   </View>
   <View
     customHeight={8}
+    enable={true}
     style={
       Array [
         Object {

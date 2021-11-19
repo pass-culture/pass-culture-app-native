@@ -15,6 +15,7 @@ exports[`LocationFilter component should render correctly 1`] = `
 >
   <View
     customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
@@ -469,6 +470,7 @@ exports[`LocationFilter component should render correctly 1`] = `
   >
     <View
       customHeight={16}
+      enable={true}
       style={
         Array [
           Object {

@@ -4,6 +4,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
 Array [
   <View
     customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
@@ -479,6 +480,7 @@ Array [
   >
     <View
       customHeight={16}
+      enable={true}
       style={
         Array [
           Object {

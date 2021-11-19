@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -86,16 +86,16 @@
+@@ -87,16 +87,16 @@
                 },
               ]
             }
@@ -24,7 +24,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -112,10 +112,18 @@
+@@ -113,10 +113,18 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -43,7 +43,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           focusable={true}
           onClick={[Function onClick]}
-@@ -162,16 +170,16 @@
+@@ -163,16 +171,16 @@
                 },
               ]
             }
@@ -62,7 +62,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -188,18 +196,10 @@
+@@ -189,18 +197,10 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -107,6 +107,7 @@ exports[`Categories component should render correctly 1`] = `
     <View>
       <View
         customHeight={16}
+        enable={true}
         style={
           Array [
             Object {
@@ -1137,6 +1138,7 @@ exports[`Categories component should render correctly 1`] = `
   >
     <View
       customHeight={16}
+      enable={true}
       style={
         Array [
           Object {

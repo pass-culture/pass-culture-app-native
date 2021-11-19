@@ -4,6 +4,7 @@ exports[`PersonalData should render personal data success 1`] = `
 Array [
   <View
     customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
@@ -309,6 +310,7 @@ Array [
   >
     <View
       customHeight={16}
+      enable={true}
       style={
         Array [
           Object {

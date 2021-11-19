@@ -16,6 +16,7 @@ Array [
   >
     <View
       customHeight={16}
+      enable={true}
       style={
         Array [
           Object {
