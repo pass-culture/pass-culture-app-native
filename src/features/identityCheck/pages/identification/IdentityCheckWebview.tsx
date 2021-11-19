@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
-import WebView from 'react-native-webview'
+import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
