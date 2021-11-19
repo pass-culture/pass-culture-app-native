@@ -24,3 +24,7 @@ export enum QueryKeys {
   VENUES = 'venues',
   VENUE_OFFERS = 'venueOffers',
 }
+
+export enum MutationKeys {
+  IDENTIFICATION_URL = 'identificationUrl',
+}

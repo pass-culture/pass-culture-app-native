@@ -728,6 +728,8 @@ msgid "En raison d’une erreur technique, l’offre n’a pas pu être réserv�
 msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
 
 #: src/features/home/atoms/SeeMore.tsx
+#: src/ui/components/PassPlaylist.tsx
+#: src/ui/components/PassPlaylist.tsx
 msgid "En voir plus"
 msgstr "En voir plus"
 
@@ -741,6 +743,10 @@ msgstr "Enregistrer"
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20"
 msgstr "Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20"
+
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+msgid "Entrée du code de confirmation"
+msgstr "Entrée du code de confirmation"
 
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "Entrée pour l'email"
@@ -901,6 +907,7 @@ msgstr "Id Check indisponible"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Identification"
 msgstr "Identification"
