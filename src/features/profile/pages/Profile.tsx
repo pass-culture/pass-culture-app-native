@@ -31,7 +31,7 @@ import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
-import { SECTION_ROW_ICON_SIZE, TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
+import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 import Package from '../../../../package.json'
 import { ProfileHeader } from '../components/ProfileHeader'
@@ -244,8 +244,8 @@ export const Profile: React.FC = () => {
           </LogoMinistereContainer>
           <Spacer.Column numberOfSpaces={4} />
         </ProfileSection>
+        <Spacer.TabBar />
       </ProfileContainer>
-      <BottomSpacing />
     </ScrollView>
   )
 }
@@ -270,10 +270,6 @@ const Row = styled(SectionRow).attrs({
   style: styles.row,
   iconSize: SECTION_ROW_ICON_SIZE,
 })``
-
-const BottomSpacing = styled.View({
-  paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(2),
-})
 
 const LogoMinistereContainer = styled.View({
   width: getSpacing(40),
