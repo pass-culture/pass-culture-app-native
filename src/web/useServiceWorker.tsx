@@ -119,6 +119,7 @@ const useServiceWorkerReducer = (
       }
     case 'SERVICE_WORKER_UPDATE_READY':
       log('New content is available; please refresh.')
+      globalThis.window.pcupdate = true
       return {
         ...state,
         serviceWorkerStatus: action.payload.serviceWorkerStatus,
