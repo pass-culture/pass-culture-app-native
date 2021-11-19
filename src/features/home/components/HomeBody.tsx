@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useUserProfileInfo } from 'features/home/api'
 import {
   BusinessModule,
   ExclusivityModule,
@@ -15,18 +16,16 @@ import {
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
+import { RecommendationPane } from 'features/home/contentful/moduleTypes'
+import { HomeModuleResponse } from 'features/home/pages/useHomeModules'
 import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
+import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { useGeolocation } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'
 import { Spacer } from 'ui/theme'
-
-import { useUserProfileInfo } from '../api'
-import { RecommendationPane } from '../contentful/moduleTypes'
-import { HomeModuleResponse } from '../pages/useHomeModules'
-import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from '../typeguards'
 
 import { RecommendationModule } from './RecommendationModule'
 
