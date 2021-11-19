@@ -209,7 +209,6 @@
     "@typescript-eslint/parser": "^4.29.2",
     "@vue/preload-webpack-plugin": "^2.0.0",
     "@welldone-software/why-did-you-render": "^6.2.0",
-    "appcenter-cli": "^2.10.4",
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-macros": "^2.8.0",
