@@ -44,5 +44,6 @@ declare global {
         dev?: boolean
       }
     ) => void
+    pcupdate?: boolean
   }
 }
