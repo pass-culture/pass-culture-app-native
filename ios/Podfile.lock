@@ -11,10 +11,10 @@ PODS:
   - BVLinearGradient (2.5.6):
     - React
   - CocoaAsyncSocket (7.6.5)
-  - CodePush (6.3.0):
+  - CodePush (7.0.4):
     - Base64 (~> 1.1)
     - JWT (~> 3.0.0-beta.12)
-    - React
+    - React-Core
     - SSZipArchive (~> 2.2.2)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.64.2)
@@ -456,7 +456,7 @@ PODS:
     - React
   - react-native-netinfo (5.9.10):
     - React-Core
-  - react-native-profiling (1.0.19):
+  - react-native-profiling (1.1.2):
     - React
   - react-native-safe-area-context (3.1.8):
     - React-Core
@@ -889,7 +889,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
-  CodePush: 69186fd1143f7e5e5c6f65383cf14f4927e28213
+  CodePush: b51b7ac64c07d4eacfc8cc5750a1dd28adbf2528
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
   FBReactNativeSpec: 1f1e38b79ec675f63489c885fa9c63a50511b8d9
@@ -947,7 +947,7 @@ SPEC CHECKSUMS:
   react-native-image-picker: 474cf2c33c2b6671da53d293a16c97995f0aec15
   react-native-in-app-review: 00a66a085c61dbd4474041dc14e7bfee81a86130
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
-  react-native-profiling: b2347e07636abdbb623514d2f96e7e1c804485e0
+  react-native-profiling: 11637537015f8502597cf22f9449a94ebfb4907d
   react-native-safe-area-context: 79fea126c6830c85f65947c223a5e3058a666937
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-tracking-transparency: c1c4b412fcdcb0a02e23bb42b123def5a6d86a56
