@@ -301,10 +301,6 @@ module.exports = function (webpackEnv) {
         'react-native-permissions': path.join(paths.appSrc, 'libs/react-native-permissions'),
         'react-native-fast-image': path.join(paths.appSrc, 'libs/react-native-web-fast-image'),
         'react-native-appsflyer': path.join(paths.appSrc, 'libs/react-native-appsflyer'),
-        '@pass-culture/react-native-profiling': path.join(
-          paths.appSrc,
-          'libs/react-native-profiling'
-        ),
 
         // /**
         //  * These will replace react navigation entirely.
@@ -395,7 +391,7 @@ module.exports = function (webpackEnv) {
                 /node_modules\/react-native-animatable/,
                 /node_modules\/@pass-culture\/id-check\/src/,
                 /id-check-front\/packages\/id-check\/src/,
-                /node_modules\/@pass-culture\/react-native-profiling\/src/,
+                /node_modules\/@pass-culture\/react-native-profiling/,
                 /node_modules\/react-native-calendars/,
                 /node_modules\/react-native-swipe-gestures/,
                 /node_modules\/react-native-qrcode-svg/,

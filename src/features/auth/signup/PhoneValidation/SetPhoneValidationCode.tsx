@@ -4,6 +4,9 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, useState, useMemo, memo } from 'react'
+// eslint-disable-next-line no-restricted-imports
+import { isDesktop } from 'react-device-detect'
+import { Platform } from 'react-native'
 import { MaskedTextInput } from 'react-native-mask-text'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -37,6 +40,10 @@ import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const CODE_INPUT_LENGTH = 6
+const AGENT_TYPE = Platform.select({
+  default: 'agent_mobile',
+  web: isDesktop ? 'browser_computer' : 'browser_mobile',
+})
 
 export interface SetPhoneValidationCodeModalProps {
   visible: boolean
@@ -101,7 +108,13 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
 
   useFocusEffect(
     useCallback(() => {
-      Profiling.profileDevice(env.TMX_ORGID, env.TMX_FPSERVER, setSessionId)
+      Profiling.profileDevice(
+        env.TMX_ORGID,
+        env.TMX_FPSERVER,
+        setSessionId,
+        () => api.getnativev1userProfilingsessionId(),
+        eventMonitoring.captureException
+      )
     }, [])
   )
   useFocusEffect(
@@ -119,7 +132,8 @@ export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodePro
     } else {
       await api
         .postnativev1userProfiling({
-          session_id: sessionId,
+          agentType: AGENT_TYPE,
+          sessionId,
         } as UserProfilingFraudRequest)
         .catch(eventMonitoring.captureException)
     }
