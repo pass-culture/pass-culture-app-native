@@ -68,7 +68,7 @@
     "trigger:staging:deploy": "./scripts/deploy_new_version.sh v minor",
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh v patch",
     "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing_v patch",
-    "generate:api:client": "./scripts/generate_api_client.sh"
+    "generate:api:client": "SWAGGER_CODEGEN_CLI_VERSION=3.0.30 ./scripts/generate_api_client.sh"
   },
   "dependencies": {
     "@algolia/client-search": "^4.6.0",
