@@ -8,7 +8,8 @@ export const replace = jest.fn()
 export const reset = jest.fn()
 export const goBack = jest.fn()
 export const canGoBack = jest.fn()
-export const useNavigation = () => ({
+
+const navigation = {
   addListener,
   removeListener,
   navigate,
@@ -16,7 +17,14 @@ export const useNavigation = () => ({
   reset,
   goBack,
   canGoBack,
+}
+export const useNavigation = () => navigation
+export const createNavigationContainerRef = () => ({
+  ...navigation,
+  isReady: () => true,
+  current: navigation,
 })
+
 export const useRoute = jest.fn()
 export const useFocusEffect = useEffect
 export const NavigationContainer = jest.fn()

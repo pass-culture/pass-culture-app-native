@@ -2,7 +2,7 @@
 import { t } from '@lingui/macro'
 import { IdCheckError } from '@pass-culture/id-check'
 
-import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigationRef'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
@@ -15,9 +15,7 @@ import Package from '../../package.json'
 import { DefaultApi } from './gen'
 
 export function navigateToLogin() {
-  if (isNavigationReadyRef.current && navigationRef.current) {
-    navigationRef.current.navigate('Login')
-  }
+  navigateFromRef('Login')
 }
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {

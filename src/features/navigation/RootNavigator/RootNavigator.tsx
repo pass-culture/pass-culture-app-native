@@ -2,7 +2,6 @@ import React from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
-import { navigationRef } from 'features/navigation/navigationRef'
 import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
@@ -20,7 +19,6 @@ export const RootStackNavigator = withWebWrapper(
     return (
       <RootStack.Navigator
         initialRouteName={initialRouteName}
-        headerMode="screen"
         screenOptions={NAVIGATOR_SCREEN_OPTIONS}>
         {RootScreens}
       </RootStack.Navigator>
@@ -44,7 +42,7 @@ export const RootNavigator: React.ComponentType = () => {
       <RootStackNavigator initialRouteName={initialScreen} />
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
-      {!!isSplashScreenHidden && <PrivacyPolicy navigationRef={navigationRef} />}
+      {!!isSplashScreenHidden && <PrivacyPolicy />}
     </TabNavigationStateProvider>
   )
 }

@@ -1,16 +1,11 @@
-import { NavigationContainerRef } from '@react-navigation/native'
-import React, { RefObject, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { PrivacyPolicyModal } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicyModal'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { getTrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 
-interface Props {
-  navigationRef?: RefObject<NavigationContainerRef>
-}
-
-export function PrivacyPolicy(props: Props) {
+export function PrivacyPolicy() {
   const [hasUserMadeCookieChoice, setHasUserMadeCookieChoice] = useState(true)
 
   useEffect(() => {
@@ -40,7 +35,6 @@ export function PrivacyPolicy(props: Props) {
       visible={true}
       onApproval={acceptCookie}
       onRefusal={refuseCookie}
-      navigationRef={props.navigationRef}
       disableBackdropTap
     />
   )

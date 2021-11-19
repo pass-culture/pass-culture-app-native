@@ -1,7 +1,6 @@
 import {
   DocumentTitleOptions,
   NavigationContainer,
-  NavigationContainerRef,
   NavigationState,
   Theme,
 } from '@react-navigation/native'
@@ -17,7 +16,7 @@ import { ColorsEnum } from 'ui/theme'
 import { useServiceWorker } from 'web/useServiceWorker'
 
 import { author } from '../../../../package.json'
-import { isNavigationReadyRef, navigationRef } from '../navigationRef'
+import { navigationRef } from '../navigationRef'
 import { onNavigationStateChange as onNavigationStateChangeService } from '../services'
 
 const NAV_THEME_CONFIG = { colors: { background: ColorsEnum.WHITE } } as Theme
@@ -44,6 +43,7 @@ export const AppNavigationContainer = () => {
     },
     [sw.serviceWorkerStatus]
   )
+
   useEffect(() => {
     async function restoreNavStateOnReload() {
       try {
@@ -59,26 +59,13 @@ export const AppNavigationContainer = () => {
       }
     }
     restoreNavStateOnReload()
-    return () => {
-      /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
-      isNavigationReadyRef.current = false
-    }
   }, [])
 
   useEffect(() => {
     if (isNavReady) {
-      /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
-      isNavigationReadyRef.current = true
       hideSplashScreen && hideSplashScreen()
     }
   }, [isNavReady, hideSplashScreen])
-
-  function setRef(ref: NavigationContainerRef | null) {
-    if (ref) {
-      /* @ts-expect-error : Cannot assign to 'current' because it is a read-only property. */
-      navigationRef.current = ref
-    }
-  }
 
   if (!isNavReady) {
     return <LoadingPage />
@@ -90,7 +77,7 @@ export const AppNavigationContainer = () => {
       // @ts-expect-error the typing of onNavigationStateChange() is good enough
       onStateChange={onNavigationStateChange}
       fallback={<LoadingPage />}
-      ref={setRef}
+      ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}
       theme={NAV_THEME_CONFIG}>
       <RootNavigator />
