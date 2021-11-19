@@ -8,7 +8,6 @@ import { ScreenNames, UseNavigationType } from 'features/navigation/RootNavigato
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
-import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { ControlComponent } from './ControlComponent'
@@ -62,43 +61,40 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
   }
 
   return (
-    <React.Fragment>
-      <Background />
-      <EntireScreen>
-        <Spacer.TopScreen />
-        <ScreenUsableArea>
-          {!!lastIndex && (
-            <SkipButton>
-              <HorizontalPaddingContainer>
-                <ButtonTertiaryGreyDark title={t`Tout passer`} onPress={skip} />
-              </HorizontalPaddingContainer>
-            </SkipButton>
-          )}
-          <SwiperContainer>
-            <Swiper
-              ref={swiperRef}
-              controlsProps={lastIndex ? controlProps : undefined}
-              controlsEnabled={!!lastIndex}
-              gesturesEnabled={() => !!lastIndex}
-              slideWrapperStyle={slideWrapperStyle}>
-              {cards.map((card, index: number) =>
-                cloneElement(card as ReactElement<AchievementCardKeyProps>, {
-                  key: index,
-                  swiperRef,
-                  name:
-                    (card as ReactElement<AchievementCardKeyProps>).props.name ||
-                    `${props.screenName}${index + 1}`,
-                  lastIndex,
-                  skip,
-                })
-              )}
-            </Swiper>
-          </SwiperContainer>
-          <Spacer.Column numberOfSpaces={getSpacing(0.5)} />
-        </ScreenUsableArea>
-        <Spacer.BottomScreen />
-      </EntireScreen>
-    </React.Fragment>
+    <EntireScreen>
+      <Spacer.TopScreen />
+      <ScreenUsableArea>
+        {!!lastIndex && (
+          <SkipButton>
+            <HorizontalPaddingContainer>
+              <ButtonTertiaryGreyDark title={t`Tout passer`} onPress={skip} />
+            </HorizontalPaddingContainer>
+          </SkipButton>
+        )}
+        <SwiperContainer>
+          <Swiper
+            ref={swiperRef}
+            controlsProps={lastIndex ? controlProps : undefined}
+            controlsEnabled={!!lastIndex}
+            gesturesEnabled={() => !!lastIndex}
+            slideWrapperStyle={slideWrapperStyle}>
+            {cards.map((card, index: number) =>
+              cloneElement(card as ReactElement<AchievementCardKeyProps>, {
+                key: index,
+                swiperRef,
+                name:
+                  (card as ReactElement<AchievementCardKeyProps>).props.name ||
+                  `${props.screenName}${index + 1}`,
+                lastIndex,
+                skip,
+              })
+            )}
+          </Swiper>
+        </SwiperContainer>
+        <Spacer.Column numberOfSpaces={getSpacing(0.5)} />
+      </ScreenUsableArea>
+      <Spacer.BottomScreen />
+    </EntireScreen>
   )
 }
 

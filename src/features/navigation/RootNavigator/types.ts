@@ -108,6 +108,7 @@ export type RootStackParamList = {
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined
   PageNotFound: undefined
+  UnderageAccountCreated: undefined
   Venue: { id: number }
   DeeplinksGenerator: undefined
 } & IdCheckRootStackParamList &

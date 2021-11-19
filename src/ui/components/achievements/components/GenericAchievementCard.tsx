@@ -39,6 +39,7 @@ export type AchievementCardProps = AchievementCardKeyProps & {
 const SMALL_HEIGHT = 576
 export let didFadeIn = false
 
+// TODO(anoukhello): refactor this page with GenericInfoPageWhite component
 export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
   props: AchievementCardProps
 ) => {

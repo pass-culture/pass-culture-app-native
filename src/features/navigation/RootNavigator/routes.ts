@@ -30,6 +30,7 @@ import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirma
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { SelectSchool } from 'features/auth/signup/underageSignup/SelectSchool'
 import { SelectSchoolHome } from 'features/auth/signup/underageSignup/SelectSchoolHome'
+import { UnderageAccountCreated } from 'features/auth/signup/underageSignup/UnderageAccountCreated'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
@@ -430,6 +431,12 @@ export const routes: Route[] = [
     path: 'idcheck-indisponible',
     options: { title: t`Id Check indisponible` },
     secure: true,
+  },
+  {
+    name: 'UnderageAccountCreated',
+    component: UnderageAccountCreated,
+    path: 'creation-compte/confirmation-15-17',
+    options: { title: t`Compte 15-17 créé !` },
   },
   {
     name: 'Venue',

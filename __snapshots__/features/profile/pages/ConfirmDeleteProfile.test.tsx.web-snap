@@ -136,7 +136,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",
-            "fontFamily": "Montserrat-MediumItalic",
+            "fontFamily": "Montserrat-Medium",
             "fontSize": "22px",
             "lineHeight": "28px",
             "textAlign": "center",
