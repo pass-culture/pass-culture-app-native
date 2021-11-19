@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
+import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
@@ -89,7 +89,7 @@ const Stack = createStackNavigator<StackParamList>()
 const Stack2 = createStackNavigator<StackParamList2>()
 const TabNavigator = createBottomTabNavigator<TabParamList>()
 
-const navigationRef = React.createRef<NavigationContainerRef>()
+const navigationRef = createNavigationContainerRef<StackParamList>()
 
 const NestedTabNavigator = () => (
   <TabNavigator.Navigator initialRouteName="Screen5">
@@ -127,7 +127,7 @@ async function simulateNavigate<RouteName extends keyof StackParamList>(
     : [RouteName, StackParamList[RouteName]]
 ) {
   await act(async () => {
-    navigationRef.current?.navigate(...args)
+    navigationRef.navigate(...args)
     await flushAllPromises()
   })
 }

@@ -12,7 +12,7 @@ import { Profile } from 'features/profile/pages/Profile'
 import { Search } from 'features/search/pages/Search'
 
 import { TabStack } from './Stack'
-import { TabRoute, TabRouteName } from './types'
+import { TabParamList, TabRoute, TabRouteName } from './types'
 
 export const initialRouteName = 'Home'
 
@@ -76,7 +76,7 @@ export const { screensConfig: tabScreensConfig, Screens: TabScreens } = getScree
   TabStack.Screen
 )
 
-export const tabNavigatorPathConfig: LinkingOptions['config'] = {
+export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
   initialRouteName,
   screens: tabScreensConfig,
 }

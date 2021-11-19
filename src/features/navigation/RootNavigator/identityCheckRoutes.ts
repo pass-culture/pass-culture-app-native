@@ -6,7 +6,10 @@ import { IdentityCheckWebview } from 'features/identityCheck/pages/identificatio
 import { IdentityCheckEnd } from 'features/identityCheck/pages/IdentityCheckEnd'
 import { Status } from 'features/identityCheck/pages/profile/Status'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
-import { GenericRoute, IdentityCheckRootStackParamList } from 'features/navigation/RootNavigator'
+import {
+  GenericRoute,
+  IdentityCheckRootStackParamList,
+} from 'features/navigation/RootNavigator/types'
 
 export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[] = [
   {

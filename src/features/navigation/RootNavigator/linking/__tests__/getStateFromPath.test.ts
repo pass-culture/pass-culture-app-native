@@ -9,10 +9,14 @@ jest.mock('libs/utm', () => ({ storeUtmParams: jest.fn() }))
 
 describe('getStateFromPath()', () => {
   it('should return state for path accueil?entryId=666', async () => {
-    const state = customGetStateFromPath('accueil?entryId=666', linking.config)
+    const path = 'accueil?entryId=666'
+    const state = customGetStateFromPath(path, linking.config)
     const expectedState = {
       routes: [
-        { name: 'TabNavigator', state: { routes: [{ name: 'Home', params: { entryId: '666' } }] } },
+        {
+          name: 'TabNavigator',
+          state: { routes: [{ name: 'Home', params: { entryId: '666' }, path }] },
+        },
       ],
     }
     await waitForExpect(() => {
@@ -21,8 +25,9 @@ describe('getStateFromPath()', () => {
   })
 
   it('should return state for path offre/777', async () => {
-    const state = customGetStateFromPath('offre/777', linking.config)
-    const expectedState = { routes: [{ name: 'Offer', params: { id: 777 } }] }
+    const path = 'offre/777'
+    const state = customGetStateFromPath(path, linking.config)
+    const expectedState = { routes: [{ name: 'Offer', params: { id: 777 }, path }] }
     await waitForExpect(() => {
       expect(state).toEqual(expectedState)
       expect(analytics.logConsultOffer).toBeCalledWith({ offerId: 777, from: 'deeplink' })

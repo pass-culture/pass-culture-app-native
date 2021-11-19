@@ -1,4 +1,4 @@
-import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
+import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import { Text } from 'react-native'
@@ -30,7 +30,7 @@ describe('<ResetPasswordEmailSent />', () => {
     const renderAPI = await renderInitialPage('PreviousScreen')
 
     await act(async () => {
-      navigationRef.current?.navigate('ResetPasswordEmailSent')
+      navigationRef.navigate('ResetPasswordEmailSent', { email: '' })
     })
 
     fireEvent.press(renderAPI.getByTestId('leftIcon'))
@@ -72,7 +72,7 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 })
 
-const navigationRef = React.createRef<NavigationContainerRef>()
+const navigationRef = createNavigationContainerRef<StackParams>()
 
 type StackParams = {
   ForgottenPassword: RootStackParamList['ForgottenPassword']

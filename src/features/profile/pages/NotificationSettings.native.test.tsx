@@ -1,4 +1,4 @@
-import * as RNNavigation from '@react-navigation/native'
+import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { rest } from 'msw'
 import React from 'react'
@@ -273,7 +273,7 @@ describe('NotificationSettings', () => {
 
 const Stack = createStackNavigator<RootStackParamList>()
 
-const navigationRef = React.createRef<RNNavigation.NavigationContainerRef>()
+const navigationRef = createNavigationContainerRef<RootStackParamList>()
 
 async function renderNotificationSettings(
   expectedPermission: NotificationsResponse['status'],
@@ -293,11 +293,11 @@ async function renderNotificationSettings(
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      <RNNavigation.NavigationContainer ref={navigationRef}>
+      <NavigationContainer ref={navigationRef}>
         <Stack.Navigator initialRouteName="NotificationSettings">
           <Stack.Screen name="NotificationSettings" component={NotificationSettings} />
         </Stack.Navigator>
-      </RNNavigation.NavigationContainer>
+      </NavigationContainer>
     )
   )
 
