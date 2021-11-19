@@ -119,6 +119,7 @@ export function requestSettingsSuccess(
     enableNativeIdCheckVersion: false,
     enableNativeIdCheckVerboseDebugging: false,
     enablePhoneValidation: false,
+    enableUnderageGeneralisation: false,
     enableIdCheckRetention: false,
     wholeFranceOpening: true,
     objectStorageUrl: 'http://localhost',
@@ -127,7 +128,6 @@ export function requestSettingsSuccess(
     useAppSearch: false,
     isWebappV2Enabled: false,
     enableNativeEacIndividual: false,
-    enableUnderageGeneralisation: false,
     accountCreationMinimumAge: 15,
   }
 ) {
