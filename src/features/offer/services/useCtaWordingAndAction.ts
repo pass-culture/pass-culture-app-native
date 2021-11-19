@@ -5,11 +5,11 @@ import {
   FavoriteOfferResponse,
   SearchGroupNameEnum,
   UserProfileResponse,
+  SubcategoryIdEnum,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openUrl, navigateToBooking } from 'features/navigation/helpers'
-import { getOfferPrice } from 'features/offer/services/getOfferPrice'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -60,12 +60,22 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  // underage beneficiary cannot book non free digital offers except press category
+  // TODO(anoukhello): get these categories from api
+  const isOfferVideoGame = [
+    SubcategoryIdEnum.JEUENLIGNE,
+    SubcategoryIdEnum.JEUSUPPORTPHYSIQUE,
+    SubcategoryIdEnum.ABOJEUVIDEO,
+    SubcategoryIdEnum.ABOLUDOTHEQUE,
+  ].includes(offer.subcategoryId)
+
+  // underage beneficiary cannot book video games and digital offers except press category and audio book
   const isOfferCategoryNotBookableByUser =
     isUnderageBeneficiary &&
-    offer.isDigital &&
-    getOfferPrice(offer.stocks) !== 0 &&
-    subcategory.searchGroupName !== SearchGroupNameEnum.PRESSE
+    (isOfferVideoGame ||
+      (offer.isDigital &&
+        subcategory.searchGroupName !== SearchGroupNameEnum.PRESSE &&
+        offer.subcategoryId !== SubcategoryIdEnum.LIVRENUMERIQUE &&
+        offer.subcategoryId !== SubcategoryIdEnum.LIVREAUDIOPHYSIQUE))
 
   // Non beneficiary or educational offer or unavailable offer for user
   if (!isLoggedIn || !isBeneficiary || offer.isEducational || isOfferCategoryNotBookableByUser) {

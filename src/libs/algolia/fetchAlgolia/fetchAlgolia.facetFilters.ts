@@ -6,6 +6,7 @@ import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
 // We do not want to display these subcategories for underage beneficiaries : JEUENLIGNE, JEUSUPPORTPHYSIQUE, ABOJEUVIDEO or ABOLUDOTHEQUE
 // We also do not want to display digital offers unless they are free, press, audio book or numeric book
 
+// TODO(anoukhello): get these categories from api
 const underageFilter = [
   [`${FACETS_ENUM.OFFER_SUB_CATEGORY}:-${SubcategoryIdEnum.JEUENLIGNE}`],
   [`${FACETS_ENUM.OFFER_SUB_CATEGORY}:-${SubcategoryIdEnum.JEUSUPPORTPHYSIQUE}`],
