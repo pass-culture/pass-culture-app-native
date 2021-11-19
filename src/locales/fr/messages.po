@@ -13,6 +13,20 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+msgid "10"
+msgstr "10"
+
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+msgid "25"
+msgstr "25"
+
 #: src/features/favorites/atoms/BicolorFavoriteCount.tsx
 msgid "+"
 msgstr "+"
@@ -48,6 +62,17 @@ msgstr "1er tutoriel"
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "6 12 34 56 78"
 msgstr "6 12 34 56 78"
+
+#: src/ui/components/inputs/DateInput.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+msgid "AAAA"
+msgstr "AAAA"
 
 #: src/features/identityCheck/pages/Stepper.tsx
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
@@ -319,6 +344,10 @@ msgstr "Cependant, tu peux nous transmettre ton dossier via la plateforme Démar
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
+
+#: src/features/identityCheck/pages/identification/IdentityCheckWebview.web.tsx
+msgid "Cet écran n'est pas accessible depuis le web"
+msgstr "Cet écran n'est pas accessible depuis le web"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Cette aide sera créditée directement sur ton compte pass Culture."
@@ -753,17 +782,95 @@ msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive 
 msgid "Entrée du code de confirmation"
 msgstr "Entrée du code de confirmation"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-msgid "Entrée du code de confirmation"
-msgstr "Entrée du code de confirmation"
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+msgid "Entrée pour l'année jour de la date de naissance"
+msgstr "Entrée pour l'année jour de la date de naissance"
 
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "Entrée pour l'email"
 msgstr "Entrée pour l'email"
 
+#: src/features/auth/signup/SetBirthday/SetBirthday.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
 #: src/ui/components/inputs/DateInput.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
 msgid "Entrée pour la date de naissance"
 msgstr "Entrée pour la date de naissance"
+
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+msgid "Entrée pour le jour de la date de naissance"
+msgstr "Entrée pour le jour de la date de naissance"
+
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.native.test.tsx
+#: src/ui/components/inputs/DateInput.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+msgid "Entrée pour le mois de la date de naissance"
+msgstr "Entrée pour le mois de la date de naissance"
 
 #: src/features/auth/signup/SetName/SetName.tsx
 msgid "Entrée pour le nom"
@@ -998,6 +1105,13 @@ msgstr "Interrupteur push notifications"
 msgid "J'ai compris"
 msgstr "J'ai compris"
 
+#: src/ui/components/inputs/DateInput.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+msgid "JJ"
+msgstr "JJ"
+
 #: src/features/search/components/SearchLandingPage.tsx
 msgid "Je cherche"
 msgstr "Je cherche"
@@ -1190,6 +1304,15 @@ msgstr "Localisation"
 #: src/features/maintenance/Maintenance.tsx
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
+
+#: src/ui/components/inputs/DateInput.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+#: src/ui/components/inputs/DateInput.web.test.tsx
+msgid "MM"
+msgstr "MM"
 
 #: src/features/bookings/components/BookingPropertiesSection.tsx
 msgid "Ma réservation"
