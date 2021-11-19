@@ -728,6 +728,8 @@ msgid "En raison d’une erreur technique, l’offre n’a pas pu être réserv�
 msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
 
 #: src/features/home/atoms/SeeMore.tsx
+#: src/ui/components/PassPlaylist.tsx
+#: src/ui/components/PassPlaylist.tsx
 msgid "En voir plus"
 msgstr "En voir plus"
 
@@ -739,8 +741,12 @@ msgid "Enregistrer"
 msgstr "Enregistrer"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20"
-msgstr "Entre 15 et 18 ans, tu as droit à une aide financière progressive allant de 20"
+msgid "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20"
+msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20"
+
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+msgid "Entrée du code de confirmation"
+msgstr "Entrée du code de confirmation"
 
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "Entrée pour l'email"
@@ -1171,10 +1177,6 @@ msgstr "Localisation"
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "L’application pass Culture est accessible à tous."
-msgstr "L’application pass Culture est accessible à tous."
-
 #: src/features/bookings/components/BookingPropertiesSection.tsx
 msgid "Ma réservation"
 msgstr "Ma réservation"
@@ -1367,6 +1369,10 @@ msgstr "Notification rechargement anniversaire"
 #: src/features/profile/pages/Profile.tsx
 msgid "Notifications"
 msgstr "Notifications"
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "Nous avons besoin de connaître ton âge."
+msgstr "Nous avons besoin de connaître ton âge."
 
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
@@ -1893,8 +1899,8 @@ msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Si tu as 18 ans, tu as droit à une aide financière de"
-msgstr "Si tu as 18 ans, tu as droit à une aide financière de"
+msgid "Si tu as 18 ans, tu es éligible à une aide financière de"
+msgstr "Si tu as 18 ans, tu es éligible à une aide financière de"
 
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Si tu as besoin d’aide n’hésite pas à :"
@@ -2628,6 +2634,11 @@ msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est e
 msgid "offerId is undefined"
 msgstr "offerId is undefined"
 
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "offerte par le Gouvernement."
+msgstr "offerte par le Gouvernement."
+
 #: src/features/profile/components/YoungerBadge.tsx
 msgid "offerts à dépenser sur l’application."
 msgstr "offerts à dépenser sur l’application."
@@ -2659,11 +2670,6 @@ msgstr "{day} à {hour}"
 #: src/features/profile/components/ProfileHeader.tsx
 msgid "profile expiration date for underage"
 msgstr "{day}"
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "proposée par le Gouvernement."
-msgstr "proposée par le Gouvernement."
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
 msgid "quotidiennes"
