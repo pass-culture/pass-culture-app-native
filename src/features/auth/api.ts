@@ -1,13 +1,12 @@
 import { Platform } from 'react-native'
-import { useMutation, useQuery } from 'react-query'
+import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError, isApiError } from 'api/apiHelpers'
-import { AccountRequest, GetIdCheckTokenResponse, SigninRequest } from 'api/gen'
-import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
+import { isApiError } from 'api/apiHelpers'
+import { AccountRequest, SigninRequest } from 'api/gen'
+import { useLoginRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
 import { campaignTracker } from 'libs/campaign'
-import { QueryKeys } from 'libs/queryKeys'
 
 import { formatToFrenchDecimal } from '../../libs/parsers'
 
@@ -85,24 +84,6 @@ export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse
       }
     }
   }
-}
-
-export function useGetIdCheckToken(
-  queryCondition?: boolean,
-  onError?: (error: ApiError | unknown) => void
-) {
-  queryCondition = queryCondition ?? true
-
-  const { isLoggedIn } = useAuthContext()
-
-  return useQuery<GetIdCheckTokenResponse>(
-    QueryKeys.ID_CHECK_TOKEN,
-    () => api.getnativev1idCheckToken(),
-    {
-      enabled: queryCondition && isLoggedIn,
-      onError,
-    }
-  )
 }
 
 export function useNotifyIdCheckCompleted(options = {}) {
