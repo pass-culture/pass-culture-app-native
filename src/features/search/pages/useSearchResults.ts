@@ -12,7 +12,6 @@ import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 import { fetchHits as fetchAppSearchHits } from 'libs/search/fetch/search'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
-import { useSendAdditionalRequestToAppSearch } from 'libs/search/useSendAdditionalRequestToAppSearch'
 
 import { useSearch, useStagedSearch } from './SearchWrapper'
 
@@ -21,7 +20,6 @@ export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page
 const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const { position } = useGeolocation()
-  const sendAdditionalRequest = useSendAdditionalRequestToAppSearch()
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
   const transformHits = useTransformAlgoliaHits()
 
@@ -34,9 +32,6 @@ const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
     {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
       enabled,
-      onSuccess: sendAdditionalRequest(() =>
-        fetchAppSearchHits({ page: 0, ...partialSearchState }, position, isUserUnderageBeneficiary)
-      ),
     }
   )
 
