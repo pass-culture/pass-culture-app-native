@@ -2,12 +2,10 @@ import { useEffect } from 'react'
 import { useQueries, UseInfiniteQueryOptions } from 'react-query'
 
 import { VenuesModule } from 'features/home/contentful'
-import { fetchMultipleVenues as fetchAlgoliaMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
+import { fetchMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
-import { fetchMultipleVenues as fetchAppSearchMultipleVenues } from 'libs/search/fetch/search'
-import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 
 export type HomeVenuesModuleResponse = {
   [moduleId: string]: {
@@ -21,11 +19,6 @@ export const useHomeVenueModules = (
 ): HomeVenuesModuleResponse => {
   const { position } = useGeolocation()
   const homeVenuesModules: HomeVenuesModuleResponse = {}
-  const { enabled, isAppSearchBackend } = useAppSearchBackend()
-
-  const fetchMultipleVenues = isAppSearchBackend
-    ? fetchAppSearchMultipleVenues
-    : fetchAlgoliaMultipleVenues
 
   const queries = useQueries(
     venuesModules.map(({ search, moduleId }) => {
@@ -37,7 +30,6 @@ export const useHomeVenueModules = (
       return {
         queryKey: [QueryKeys.HOME_VENUES_MODULE, moduleId],
         queryFn: fetchModule,
-        enabled,
         notifyOnChangeProps: ['data'] as UseInfiniteQueryOptions['notifyOnChangeProps'],
       }
     })

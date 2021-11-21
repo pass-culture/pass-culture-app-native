@@ -1,25 +1,20 @@
 import { SearchOptions } from '@elastic/app-search-javascript'
 import { flatten } from 'lodash'
 
-import { VenuesSearchParametersFields } from 'features/home/contentful'
 import { Response } from 'features/search/pages/useSearchResults'
 import { PartialSearchState } from 'features/search/types'
 import { SearchParametersQuery } from 'libs/algolia'
 import { GeoCoordinates } from 'libs/geolocation'
-import { IncompleteSearchHit, SearchHit, VenueHit } from 'libs/search'
-import { offersClient, venuesClient } from 'libs/search/client'
+import { IncompleteSearchHit, SearchHit } from 'libs/search'
+import { offersClient } from 'libs/search/client'
 import {
   buildQueryOptions,
   AppSearchFields,
   RESULT_FIELDS,
   underageFilter,
-  buildVenuesQueryOptions,
 } from 'libs/search/filters'
-import { FALSE, VENUES_RESULT_FIELDS } from 'libs/search/filters/constants'
-import { AppSearchVenuesFields } from 'libs/search/filters/constants'
-import { buildAlgoliaHit, buildVenues } from 'libs/search/utils/buildAlgoliaHit'
-import { buildVenueHits } from 'libs/search/utils/buildVenueHits'
-import { SuggestedVenue } from 'libs/venue'
+import { FALSE } from 'libs/search/filters/constants'
+import { buildAlgoliaHit } from 'libs/search/utils/buildAlgoliaHit'
 
 interface SearchResponse {
   hits: SearchHit[]
@@ -88,28 +83,4 @@ export const fetchHits = async (
     page: meta.page.current,
     nbPages: meta.page.total_pages,
   }
-}
-
-export const fetchVenues = async (query: string): Promise<SuggestedVenue[]> => {
-  const options: SearchOptions<AppSearchVenuesFields> = {
-    result_fields: VENUES_RESULT_FIELDS,
-    group: { field: AppSearchVenuesFields.id },
-  }
-
-  const response = await venuesClient.search<AppSearchVenuesFields>(query, options)
-  return response.results.map(buildVenues)
-}
-
-// Used for the venue playlists on the homepage
-export const fetchMultipleVenues = async (
-  paramsList: VenuesSearchParametersFields[],
-  userLocation: GeoCoordinates | null
-): Promise<VenueHit[]> => {
-  const queries = paramsList.map((params) => ({
-    query: '',
-    options: buildVenuesQueryOptions(params, userLocation),
-  }))
-
-  const allResults = await venuesClient.multiSearch<AppSearchVenuesFields>(queries)
-  return flatten(allResults.flatMap(({ results }) => results.map(buildVenueHits) as VenueHit[]))
 }

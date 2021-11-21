@@ -3,7 +3,7 @@ import { FilterArray } from '@elastic/app-search-javascript'
 import { LocationType } from 'features/search/enums'
 import { PartialSearchState } from 'features/search/types'
 
-import { AppSearchFields, AppSearchVenuesFields, FALSE, TRUE } from './constants'
+import { AppSearchFields, FALSE, TRUE } from './constants'
 
 export const buildFacetFilters = (
   searchState: PartialSearchState
@@ -20,16 +20,6 @@ export const buildFacetFilters = (
     facetFilters.push({ [AppSearchFields.venue_id]: locationFilter.venue.venueId })
 
   facetFilters.push({ [AppSearchFields.is_educational]: FALSE })
-
-  return facetFilters
-}
-
-export const buildVenuesFacetFilters = (
-  venueTypes: string[]
-): FilterArray<AppSearchVenuesFields> => {
-  const facetFilters: FilterArray<AppSearchVenuesFields> = []
-
-  if (venueTypes?.length) facetFilters.push({ [AppSearchVenuesFields.venue_type]: venueTypes })
 
   return facetFilters
 }
