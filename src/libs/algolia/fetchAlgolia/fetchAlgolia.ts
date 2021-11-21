@@ -127,7 +127,11 @@ export const fetchAlgolia = async (
   }
 }
 
-export const fetchAlgoliaHits = async (objectIds: string[]): Promise<SearchHit[]> => {
+export const fetchAlgoliaHits = async (
+  objectIds: string[],
+  // TODO(antoinewg/anouk): what to do for underage users/algolia ?
+  _isUserUnderage?: boolean
+): Promise<SearchHit[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
   try {
