@@ -2,6 +2,7 @@ export enum QueryKeys {
   HOME_MODULE = 'homeModule',
   HOME_VENUES_MODULE = 'homeVenuesModule',
   BOOKINGS = 'bookings',
+  CITIES = 'cities',
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',
   FIRESTORE_APP_SEARCH = 'firestoreAppSearch',
