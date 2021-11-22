@@ -6,6 +6,7 @@ import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ApiError } from 'api/apiHelpers'
 import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -42,8 +43,8 @@ export function ChangeEmail() {
       navigateToProfile()
       analytics.logSaveNewMail()
     },
-    onError: (error: { code: CHANGE_EMAIL_ERROR_CODE }) => {
-      onEmailChangeError(error.code)
+    onError: (error: ApiError | unknown) => {
+      onEmailChangeError((error as ApiError)?.content?.code)
     },
   })
 
@@ -59,7 +60,7 @@ export function ChangeEmail() {
   const disabled =
     !isLongEnough(password) || !!emailErrorMessage || !!passwordErrorMessage || isLoading
 
-  const onEmailChangeError = (errorCode: CHANGE_EMAIL_ERROR_CODE) => {
+  const onEmailChangeError = (errorCode?: string) => {
     switch (errorCode) {
       case CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD:
         setPasswordErrorMessage(t`Mot de passe incorrect`)
