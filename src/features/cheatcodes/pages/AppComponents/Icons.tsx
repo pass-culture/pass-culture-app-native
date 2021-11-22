@@ -14,6 +14,7 @@ import { AroundMeDeprecated } from 'ui/svg/icons/AroundMe_deprecated'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
+import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorBuilding } from 'ui/svg/icons/BicolorBuilding'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
@@ -161,6 +162,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="InfoDeprecated" component={InfoDeprecated} />
       <Icon name="Info" component={Info} isNew />
       <Icon name="AroundMe" component={AroundMeDeprecated} />
+      <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
       <Icon name="EverywhereDeprecated" component={EverywhereDeprecated} />
       <Icon name="BicolorEverywhere" component={BicolorEverywhere} isNew />
       <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} />
