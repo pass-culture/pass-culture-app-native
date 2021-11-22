@@ -31,6 +31,7 @@ import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfir
 import { SelectSchool } from 'features/auth/signup/underageSignup/SelectSchool'
 import { SelectSchoolHome } from 'features/auth/signup/underageSignup/SelectSchoolHome'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
+import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
@@ -418,6 +419,13 @@ export const routes: Route[] = [
     path: 'verification-eligibilite',
     options: { title: t`Vérification éligibilité` },
   },
+  {
+    name: 'NotYetUnderageEligibility',
+    component: NotYetUnderageEligibility,
+    path: 'not-yet-underage-eligibilite',
+    options: { title: t`C'est pour bientôt` },
+  },
+
   {
     name: 'FirstTutorial',
     component: FirstTutorial,

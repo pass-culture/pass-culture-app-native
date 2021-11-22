@@ -269,6 +269,14 @@ msgstr "Bienvenue !"
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "C'est pour bientôt"
+msgstr "C'est pour bientôt"
+
+#: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
+msgid "C'est pour bientôt !"
+msgstr "C'est pour bientôt !"
+
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "CGU & Données"
 msgstr "CGU & Données"
@@ -1719,6 +1727,7 @@ msgstr "Retourner l'accueil"
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
+#: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
@@ -1785,6 +1794,10 @@ msgstr "Revenir à l'accueil"
 #: src/features/offer/components/useReportOfferModalContent.tsx
 msgid "Revenir à l'étape précédente"
 msgstr "Revenir à l'étape précédente"
+
+#: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
+msgid "Reviens à partir du 31 janvier pour poursuivre ton inscription et bénéficier des offres du pass Culture."
+msgstr "Reviens à partir du 31 janvier pour poursuivre ton inscription et bénéficier des offres du pass Culture."
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
