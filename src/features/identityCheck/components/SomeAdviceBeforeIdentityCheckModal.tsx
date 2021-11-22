@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { IdentificationSessionResponse } from 'api/gen'
 import { useRequestIdentificationUrl } from 'features/identityCheck/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { WEBAPP_V2_URL } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -21,10 +20,6 @@ interface Props {
   hideModal: () => void
 }
 
-const redirectUrl = `${WEBAPP_V2_URL}/verification-identite/fin`
-// TODO(antoinewg): dehardcode this url and get it from the backend
-const identificationUrl = 'https://id.ubble.ai/70f01f19-6ec5-4b14-9b30-2c493e49df15'
-
 export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
   visible,
   hideModal,
@@ -35,19 +30,10 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
     onSuccess(data: IdentificationSessionResponse) {
       navigate('IdentityCheckWebview', { identificationUrl: data.identificationUrl })
     },
-    onError() {
-      // Backend call may result in 500 whilst testing
-      // TODO(antoinewg) remove this line when ready
-      navigate('IdentityCheckWebview', { identificationUrl })
-    },
     onSettled() {
       hideModal()
     },
   })
-
-  const onPressContinue = () => {
-    requestIdentificationUrl(redirectUrl)
-  }
 
   return (
     <AppModal
@@ -71,7 +57,7 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
         <Instruction title={t`Place-toi dans un lieu bien éclairé`} Icon={Sun} />
         <Instruction title={t`Cadre l’intégralité de ton document`} Icon={IdCard} />
       </Instructions>
-      <ButtonPrimary title={t`J'ai compris`} onPress={onPressContinue} />
+      <ButtonPrimary title={t`J'ai compris`} onPress={requestIdentificationUrl} />
     </AppModal>
   )
 }
