@@ -689,6 +689,36 @@ export interface CulturalSurveyRequest {
      */
     needsToFillCulturalSurvey: boolean;
 }/**
+ * 
+ * @export
+ * @interface DepositAmountsByAge
+ */
+export interface DepositAmountsByAge {
+    /**
+     * 
+     * @type {number}
+     * @memberof DepositAmountsByAge
+     */
+    age_15?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof DepositAmountsByAge
+     */
+    age_16?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof DepositAmountsByAge
+     */
+    age_17?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof DepositAmountsByAge
+     */
+    age_18?: number;
+}/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1695,6 +1725,12 @@ export interface SettingsResponse {
      * @memberof SettingsResponse
      */
     depositAmount: number;
+    /**
+     * 
+     * @type {DepositAmountsByAge}
+     * @memberof SettingsResponse
+     */
+    depositAmountsByAge?: DepositAmountsByAge;
     /**
      * 
      * @type {boolean}

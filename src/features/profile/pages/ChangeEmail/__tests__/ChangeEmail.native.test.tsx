@@ -1,13 +1,10 @@
 import React from 'react'
+import { useMutation } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import {
-  CHANGE_EMAIL_ERROR_CODE,
-  useChangeEmailMutation,
-  UseChangeEmailMutationProps,
-} from 'features/profile/mutations'
+import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/api'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -16,8 +13,27 @@ import { ColorsEnum } from 'ui/theme'
 import { ChangeEmail } from '../ChangeEmail'
 
 jest.mock('react-query')
-jest.mock('features/profile/mutations')
-const mockedUseChangeEmailMutation = mocked(useChangeEmailMutation)
+const mockedUseMutation = mocked(useMutation)
+const mockUseMutationSuccess = () => {
+  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+  mockedUseMutation.mockImplementation((mutationFunction, { onSuccess }) => ({
+    mutationFunction,
+    mutationOptions: { onSuccess },
+    mutate: () => onSuccess(),
+  }))
+}
+mockUseMutationSuccess()
+
+const mockUseMutationError = (code: CHANGE_EMAIL_ERROR_CODE) => {
+  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+  mockedUseMutation.mockImplementation((mutationFunction, { onError }) => ({
+    mutationFunction,
+    mutationOptions: { onError },
+    mutate: () => {
+      onError({ content: { code } })
+    },
+  }))
+}
 
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
@@ -82,11 +98,7 @@ describe('<ChangeEmail/>', () => {
   })
 
   it('should show error message if the user gave a wrong password', async () => {
-    // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedUseChangeEmailMutation.mockImplementation(({ onError }: UseChangeEmailMutationProps) => ({
-      mutate: () => onError({ code: CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD }),
-    }))
+    mockUseMutationError(CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD)
 
     const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
     const submitButton = getByTestId('Enregistrer')
@@ -103,21 +115,11 @@ describe('<ChangeEmail/>', () => {
       expect(errorMessage).toBeTruthy()
     })
 
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedUseChangeEmailMutation.mockImplementation(
-      // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
-      ({ onSuccess }: UseChangeEmailMutationProps) => ({
-        mutate: () => onSuccess(),
-      })
-    )
+    mockUseMutationSuccess()
   })
 
-  it('should show error message if the API call returns a generic error', async () => {
-    // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedUseChangeEmailMutation.mockImplementation(({ onError }: UseChangeEmailMutationProps) => ({
-      mutate: () => onError({ code: CHANGE_EMAIL_ERROR_CODE.INVALID_EMAIL }),
-    }))
+  it('should show the generic error message if the API call returns an invalid email error', async () => {
+    mockUseMutationError(CHANGE_EMAIL_ERROR_CODE.INVALID_EMAIL)
 
     const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
     const submitButton = getByTestId('Enregistrer')
@@ -137,12 +139,30 @@ Réessaie plus tard.`,
       })
     })
 
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedUseChangeEmailMutation.mockImplementation(
-      // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
-      ({ onSuccess }: UseChangeEmailMutationProps) => ({
-        mutate: () => onSuccess(),
+    mockUseMutationSuccess()
+  })
+
+  it('should show the generic error message if the API call returns an attempts limit error', async () => {
+    mockUseMutationError(CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT)
+
+    const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
+    const submitButton = getByTestId('Enregistrer')
+    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'tonadresse@email.com')
+    fireEvent.changeText(passwordInput, 'password>=12')
+
+    fireEvent.press(submitButton)
+
+    await waitForExpect(() => {
+      expect(navigate).not.toBeCalled()
+      expect(mockShowErrorSnackBar).toBeCalledWith({
+        message: `Une erreur s’est produite pendant la modification de ton e-mail.
+Réessaie plus tard.`,
+        timeout: 5000,
       })
-    )
+    })
+
+    mockUseMutationSuccess()
   })
 })
