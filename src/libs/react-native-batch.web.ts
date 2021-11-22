@@ -1,6 +1,6 @@
 // TODO: remove this condition when BatchSDK will support Safari, see also service-worker.ts#L11
 // eslint-disable-next-line no-restricted-imports
-import { isSafari } from 'react-device-detect'
+import { isMobileSafari, isSafari, isMacOs } from 'react-device-detect'
 
 import { getBatchSDK } from 'libs/batch/batch-sdk'
 import { env } from 'libs/environment'
@@ -8,7 +8,7 @@ import { env } from 'libs/environment'
 /* eslint-disable no-console */
 export const Batch = {
   start() {
-    if (isSafari) {
+    if (isMobileSafari || (isSafari && !isMacOs)) {
       return
     }
     getBatchSDK()
@@ -30,6 +30,12 @@ export const Batch = {
             'Découvre les nouvelles offres en exclusivité sur ton pass en activant les notifications !',
         },
       }
+    } else if (navigator.userAgent.indexOf('Safari') !== -1) {
+      batchSDKUIConfig = {
+        alert: {
+          icon: env.PUBLIC_URL + '/images/ic_launcher_xxxhdpi.png',
+        },
+      }
     } else {
       batchSDKUIConfig = {
         native: {},
@@ -37,7 +43,7 @@ export const Batch = {
     }
     /* Finalize the Batch SDK setup */
     /* eslint-disable-next-line */
-    window.batchSDK('setup', {
+    const options = {
       apiKey: env.BATCH_API_KEY_WEB,
       subdomain: env.BATCH_SUBDOMAIN,
       authKey: env.BATCH_AUTH_KEY,
@@ -47,7 +53,13 @@ export const Batch = {
       smallIcon: env.PUBLIC_URL + '/images/app-icon-android-notif.png', // for Chrome Android
       useExistingServiceWorker: true,
       sameOrigin: !__DEV__,
-    })
+      dev: __DEV__,
+      safari: {
+        [env.PUBLIC_URL]: `web.passculture${env.ENV === 'production' ? '' : `.${env.ENV}`}`,
+      },
+    }
+
+    window.batchSDK('setup', options)
     window.batchSDK((api) => {
       api.ui.show('alert')
     })
