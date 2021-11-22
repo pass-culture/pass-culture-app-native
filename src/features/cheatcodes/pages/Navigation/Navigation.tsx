@@ -197,6 +197,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
+            title={"C'est pour bientôt"}
+            onPress={() => navigate('NotYetUnderageEligibility')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={'First Tutorial'}
             onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
           />
