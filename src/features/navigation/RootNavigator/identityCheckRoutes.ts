@@ -21,17 +21,18 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     path: 'cheat-navigation-identity-check',
   },
   {
-    name: 'IdentityCheckPostalCode',
-    component: SetPostalCode,
-    path: 'creation-profil/code-postal',
-    options: { title: t`Code postal - Formulaire` },
-  },
-  {
     name: 'IdentityCheck',
     component: IdentityCheckStepper,
     path: 'verification-identite',
     options: { title: t`Vérification d'identité` },
     secure: true,
+  },
+  {
+    name: 'IdentityCheckPostalCode',
+    component: SetPostalCode,
+    path: 'creation-profil/code-postal',
+    options: { title: t`Code postal - Formulaire` },
+    // secure: true,
   },
   {
     name: 'IdentityCheckAddress',
