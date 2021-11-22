@@ -135,6 +135,9 @@ describe('<ChangeEmail/>', () => {
 Réessaie plus tard.`,
         timeout: 5000,
       })
+      expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
+        CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT
+      )
     })
 
     // eslint-disable-next-line local-rules/independant-mocks
