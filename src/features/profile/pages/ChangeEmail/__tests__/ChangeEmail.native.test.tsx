@@ -85,7 +85,7 @@ describe('<ChangeEmail/>', () => {
     // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
     // eslint-disable-next-line local-rules/independant-mocks
     mockedUseChangeEmailMutation.mockImplementation(({ onError }: UseChangeEmailMutationProps) => ({
-      mutate: () => onError({ code: CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD }),
+      mutate: () => onError({ content: { code: CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD } }),
     }))
 
     const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
@@ -116,7 +116,7 @@ describe('<ChangeEmail/>', () => {
     // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
     // eslint-disable-next-line local-rules/independant-mocks
     mockedUseChangeEmailMutation.mockImplementation(({ onError }: UseChangeEmailMutationProps) => ({
-      mutate: () => onError({ code: CHANGE_EMAIL_ERROR_CODE.INVALID_EMAIL }),
+      mutate: () => onError({ content: { code: CHANGE_EMAIL_ERROR_CODE.INVALID_EMAIL } }),
     }))
 
     const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
