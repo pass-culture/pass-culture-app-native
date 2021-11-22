@@ -113,6 +113,9 @@ describe('<ChangeEmail/>', () => {
       expect(navigate).not.toBeCalled()
       const errorMessage = queryByText('Mot de passe incorrect')
       expect(errorMessage).toBeTruthy()
+      expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
+        CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD
+      )
     })
 
     mockUseMutationSuccess()
@@ -137,6 +140,9 @@ describe('<ChangeEmail/>', () => {
 Réessaie plus tard.`,
         timeout: 5000,
       })
+      expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
+        CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT
+      )
     })
 
     mockUseMutationSuccess()
