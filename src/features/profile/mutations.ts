@@ -2,17 +2,6 @@ import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 
-export enum CHANGE_EMAIL_ERROR_CODE {
-  TOKEN_EXISTS = 'TOKEN_EXISTS',
-  INVALID_PASSWORD = 'INVALID_PASSWORD',
-  INVALID_EMAIL = 'INVALID_EMAIL',
-  EMAIL_UPDATE_ATTEMPTS_LIMIT = 'EMAIL_UPDATE_ATTEMPTS_LIMIT',
-}
-
-interface ChangeEmailRequest {
-  email: string
-  password: string
-}
 export interface UseChangeEmailMutationProps {
   onSuccess: () => void
   onError: (error: unknown) => void
