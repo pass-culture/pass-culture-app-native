@@ -3,7 +3,7 @@ import React from 'react'
 
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { AroundMe } from 'ui/svg/icons/AroundMe'
+import { AroundMeDeprecated } from 'ui/svg/icons/AroundMe_deprecated'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { EverywhereDeprecated } from 'ui/svg/icons/Everywhere_deprecated'
@@ -23,7 +23,7 @@ export const useLocationChoice = (
 
   if (section === LocationType.AROUND_ME)
     return {
-      Icon: AroundMe,
+      Icon: AroundMeDeprecated,
       label: t`Autour de moi`,
       isSelected: searchState.locationFilter.locationType === LocationType.AROUND_ME,
     }

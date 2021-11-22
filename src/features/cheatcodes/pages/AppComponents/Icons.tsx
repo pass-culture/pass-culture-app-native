@@ -10,7 +10,7 @@ import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
 import { Again } from 'ui/svg/icons/Again'
-import { AroundMe } from 'ui/svg/icons/AroundMe'
+import { AroundMeDeprecated } from 'ui/svg/icons/AroundMe_deprecated'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
@@ -160,7 +160,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
       <Icon name="InfoDeprecated" component={InfoDeprecated} />
       <Icon name="Info" component={Info} isNew />
-      <Icon name="AroundMe" component={AroundMe} />
+      <Icon name="AroundMe" component={AroundMeDeprecated} />
       <Icon name="EverywhereDeprecated" component={EverywhereDeprecated} />
       <Icon name="BicolorEverywhere" component={BicolorEverywhere} isNew />
       <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} />
