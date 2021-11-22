@@ -39,7 +39,7 @@ export function useValidateEmailChangeMutation({
   onError,
 }: UseValidateEmailChangeMutationProps) {
   return useMutation(
-    // TODO (PC-11573): call the API once available
+    // TODO (PC-11697): call the API once available
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (body: ValidateEmailChangeRequest) =>
       new Promise((resolve, reject) =>
