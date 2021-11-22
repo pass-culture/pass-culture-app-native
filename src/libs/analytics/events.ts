@@ -30,6 +30,7 @@ export enum AnalyticsEvent {
   HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'HelpCenterContactSignUpConfirmation',
   DEEP_LINK_IMPORTER = 'DeeplinkImporter',
   DISCOVER_OFFERS = 'DiscoverOffers',
+  ERROR_SAVING_NEW_EMAIL = 'ErrorSavingNewMail',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
   HAS_ADDED_OFFER_TO_FAVORITES = 'HasAddedOfferToFavorites',

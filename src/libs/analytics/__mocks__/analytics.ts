@@ -78,6 +78,7 @@ export const analytics: typeof actualAnalytics = {
   setUserId: jest.fn(),
   logSaveNewMail: jest.fn(),
   useInit: jest.fn(),
+  logErrorSavingNewEmail: jest.fn(),
 }
 
 export const idCheckAnalytics: typeof actualIdCheckAnalytics = {
