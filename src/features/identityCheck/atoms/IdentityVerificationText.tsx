@@ -9,11 +9,11 @@ export const IdentityVerificationText = () => (
     <Title>{t`Vérification de l'identité`}</Title>
     <Spacer.Column numberOfSpaces={6} />
     <Body>
-      {t`Pour pouvoir profiter de l'aide financière de 300 euros proposée par le Gouvernement, nous avons besoin de ta`}
+      {t`Prends une photo de ta`}
       <Bold>{'\u00a0' + t`carte d'identité` + '\u00a0'}</Bold>
       {t`ou de ton`}
-      <Bold>{'\u00a0' + t`passport` + '\u00a0'}</Bold>
-      {t`pour valider ton profil !`}
+      <Bold>{'\u00a0' + t`passeport` + '\u00a0'}</Bold>
+      {t`en cours de validité pour accéder à ton pass Culture.`}
     </Body>
   </Container>
 )

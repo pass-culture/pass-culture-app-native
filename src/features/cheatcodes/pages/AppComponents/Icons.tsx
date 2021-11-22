@@ -15,6 +15,7 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
+import { BicolorBuilding } from 'ui/svg/icons/BicolorBuilding'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
@@ -125,6 +126,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="BicolorLogo" component={BicolorLogo} />
       <Icon name="BicolorSearch" component={BicolorSearch} />
       <Icon name="BicolorBookings" component={BicolorBookings} />
+      <Icon name="BicolorBuilding" component={BicolorBuilding} />
       <Icon name="BicolorFavorite" component={BicolorFavorite} />
       <Icon name="BicolorProfile" component={BicolorProfile} />
       <AlignedText>
