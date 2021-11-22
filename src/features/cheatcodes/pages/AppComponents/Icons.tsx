@@ -41,7 +41,7 @@ import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
-import { Everywhere } from 'ui/svg/icons/Everywhere'
+import { EverywhereDeprecated } from 'ui/svg/icons/Everywhere_deprecated'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { Eye } from 'ui/svg/icons/Eye'
@@ -160,7 +160,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="InfoDeprecated" component={InfoDeprecated} />
       <Icon name="Info" component={Info} isNew />
       <Icon name="AroundMe" component={AroundMe} />
-      <Icon name="Everywhere" component={Everywhere} />
+      <Icon name="EverywhereDeprecated" component={EverywhereDeprecated} />
       <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} />
       <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} />
       <Icon name="NoOffer" component={NoOffer} />

@@ -6,7 +6,7 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { Everywhere } from 'ui/svg/icons/Everywhere'
+import { EverywhereDeprecated } from 'ui/svg/icons/Everywhere_deprecated'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
 export const useLocationChoice = (
@@ -16,7 +16,7 @@ export const useLocationChoice = (
 
   if (section === LocationType.EVERYWHERE)
     return {
-      Icon: Everywhere,
+      Icon: EverywhereDeprecated,
       label: t`Partout`,
       isSelected: searchState.locationFilter.locationType === LocationType.EVERYWHERE,
     }
