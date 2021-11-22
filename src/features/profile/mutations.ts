@@ -1,19 +1,5 @@
 import { useMutation } from 'react-query'
 
-import { api } from 'api/api'
-
-export interface UseChangeEmailMutationProps {
-  onSuccess: () => void
-  onError: (error: unknown) => void
-}
-
-export function useChangeEmailMutation({ onSuccess, onError }: UseChangeEmailMutationProps) {
-  return useMutation((body: ChangeEmailRequest) => api.postnativev1profileupdateEmail(body), {
-    onSuccess,
-    onError,
-  })
-}
-
 interface ValidateEmailChangeRequest {
   emailChangeValidationToken: string
 }
