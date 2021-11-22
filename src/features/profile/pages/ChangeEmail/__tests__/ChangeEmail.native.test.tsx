@@ -112,11 +112,46 @@ describe('<ChangeEmail/>', () => {
     )
   })
 
-  it('should show error message if the API call returns a generic error', async () => {
+  it('should show the generic error message if the API call returns an invalid email error', async () => {
     // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
     // eslint-disable-next-line local-rules/independant-mocks
     mockedUseChangeEmailMutation.mockImplementation(({ onError }: UseChangeEmailMutationProps) => ({
       mutate: () => onError({ content: { code: CHANGE_EMAIL_ERROR_CODE.INVALID_EMAIL } }),
+    }))
+
+    const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
+    const submitButton = getByTestId('Enregistrer')
+    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'tonadresse@email.com')
+    fireEvent.changeText(passwordInput, 'password>=12')
+
+    fireEvent.press(submitButton)
+
+    await waitForExpect(() => {
+      expect(navigate).not.toBeCalled()
+      expect(mockShowErrorSnackBar).toBeCalledWith({
+        message: `Une erreur s’est produite pendant la modification de ton e-mail.
+Réessaie plus tard.`,
+        timeout: 5000,
+      })
+    })
+
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseChangeEmailMutation.mockImplementation(
+      // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+      ({ onSuccess }: UseChangeEmailMutationProps) => ({
+        mutate: () => onSuccess(),
+      })
+    )
+  })
+
+  it('should show the generic error message if the API call returns an attempts limit error', async () => {
+    // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseChangeEmailMutation.mockImplementation(({ onError }: UseChangeEmailMutationProps) => ({
+      mutate: () =>
+        onError({ content: { code: CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT } }),
     }))
 
     const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
