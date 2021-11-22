@@ -3,7 +3,7 @@ import React from 'react'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { render } from 'tests/utils'
 
-jest.mock('features/auth/api', () => ({ useDepositAmount: () => '300 €' }))
+jest.mock('features/auth/api')
 
 describe('YoungerBadge', () => {
   it('should display correct depositAmount', () => {

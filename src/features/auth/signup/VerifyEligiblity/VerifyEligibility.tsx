@@ -3,7 +3,7 @@ import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/typ
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useDepositAmount } from 'features/auth/api'
+import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
@@ -16,7 +16,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 type Props = StackScreenProps<RootStackParamList, 'VerifyEligibility'>
 
 export const VerifyEligibility: FunctionComponent<Props> = ({ route }) => {
-  const deposit = useDepositAmount()
+  const deposit = useDepositAmountsByAge().eighteenYearsOldDeposit
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
 
   if (error) {

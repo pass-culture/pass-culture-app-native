@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { useDepositAmount } from 'features/auth/api'
+import { useDepositAmountsByAge } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import TutorialOffers from 'ui/animations/tutorial_offers.json'
 import {
@@ -11,7 +11,7 @@ import {
 
 export function SecondCard(props: AchievementCardKeyProps) {
   const { data: settings } = useAppSettings()
-  const depositAmount = useDepositAmount()
+  const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const deposit = depositAmount.replace(' ', '')
 
   function onButtonPress() {

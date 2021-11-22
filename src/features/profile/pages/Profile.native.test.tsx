@@ -75,8 +75,14 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
     dispatch: mockFavoriteDispatch,
   }),
 }))
-const mockDepositAmount = '300 €'
-jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
+jest.mock('features/auth/api', () => ({
+  useDepositAmountsByAge: jest.fn(() => ({
+    fifteenYearsOldDeposit: '20 €',
+    sixteenYearsOldDeposit: '30 €',
+    seventeenYearsOldDeposit: '30 €',
+    eighteenYearsOldDeposit: '300 €',
+  })),
+}))
 jest.mock('features/auth/settings')
 
 describe('Profile component', () => {

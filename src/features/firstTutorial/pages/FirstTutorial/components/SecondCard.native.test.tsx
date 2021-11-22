@@ -5,7 +5,7 @@ import { fireEvent, render } from 'tests/utils'
 
 import { SecondCard } from './SecondCard'
 
-jest.mock('features/auth/api', () => ({ useDepositAmount: () => '300 €' }))
+jest.mock('features/auth/api')
 
 const mockSettings = {
   enableNativeEacIndividual: false,

@@ -1,18 +1,21 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
+import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { useDepositAmountsByAge } from 'features/auth/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { render, fireEvent } from 'tests/utils'
 
 import { VerifyEligibility } from '../VerifyEligibility'
 
-let mockDepositAmount = '300 €'
-jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
+jest.mock('features/auth/api')
 jest.mock('features/auth/settings')
 jest.mock('features/navigation/helpers')
 jest.mock('react-query')
+
+const mockedUseDepositAmountsByAge = mocked(useDepositAmountsByAge)
 
 const navigationProps = {
   route: {
@@ -24,11 +27,13 @@ const navigationProps = {
 
 describe('<VerifyEligibility />', () => {
   it('should show the correct deposit amount', async () => {
-    mockDepositAmount = '300 €'
     let queryByText = render(<VerifyEligibility {...navigationProps} />).queryByText
     expect(queryByText(/aide financière de 300 € offerte par le Ministère/)).toBeTruthy()
 
-    mockDepositAmount = '500 €'
+    mockedUseDepositAmountsByAge.mockReturnValueOnce({
+      ...mockedUseDepositAmountsByAge(),
+      eighteenYearsOldDeposit: '500 €',
+    })
     queryByText = render(<VerifyEligibility {...navigationProps} />).queryByText
     expect(queryByText(/aide financière de 500 € offerte par le Ministère/)).toBeTruthy()
   })

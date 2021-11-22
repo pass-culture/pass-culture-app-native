@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { useDepositAmount } from 'features/auth/api'
+import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -14,7 +14,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: profile } = useUserProfileInfo()
   const { showInfoSnackBar } = useSnackBarContext()
-  const depositAmount = useDepositAmount()
+  const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const deposit = depositAmount.replace(' ', '')
 
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
