@@ -66,6 +66,8 @@ export function ChangeEmail() {
     !isLongEnough(password) || !!emailErrorMessage || !!passwordErrorMessage || isLoading
 
   const onEmailChangeError = (errorCode?: string) => {
+    errorCode && analytics.logErrorSavingNewEmail(errorCode)
+
     switch (errorCode) {
       case CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD:
         setPasswordErrorMessage(t`Mot de passe incorrect`)
