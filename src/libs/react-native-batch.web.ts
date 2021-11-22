@@ -1,14 +1,16 @@
 // TODO: remove this condition when BatchSDK will support Safari, see also service-worker.ts#L11
 // eslint-disable-next-line no-restricted-imports
-import { isMobileSafari, isSafari, isMacOs } from 'react-device-detect'
+import { isSafari } from 'react-device-detect'
 
 import { getBatchSDK } from 'libs/batch/batch-sdk'
 import { env } from 'libs/environment'
 
+const disabled = isSafari
+
 /* eslint-disable no-console */
 export const Batch = {
   start() {
-    if (isMobileSafari || (isSafari && !isMacOs)) {
+    if (disabled) {
       return
     }
     getBatchSDK()
@@ -52,7 +54,6 @@ export const Batch = {
       defaultIcon: env.PUBLIC_URL + '/images/ic_launcher_xxxhdpi.png',
       smallIcon: env.PUBLIC_URL + '/images/app-icon-android-notif.png', // for Chrome Android
       useExistingServiceWorker: true,
-      sameOrigin: !__DEV__,
       dev: __DEV__,
       safari: {
         [env.PUBLIC_URL]: `web.passculture${env.ENV === 'production' ? '' : `.${env.ENV}`}`,
@@ -69,6 +70,10 @@ export const Batch = {
 export const BatchUser = {
   getInstallationID() {
     return new Promise((resolve, reject) => {
+      if (disabled) {
+        resolve('BATCH_NOT_AVAILABLE')
+        return
+      }
       window.batchSDK(function (api) {
         api.getInstallationID().then(resolve).catch(reject)
       })
@@ -78,6 +83,9 @@ export const BatchUser = {
     return this
   },
   setIdentifier(id: string) {
+    if (disabled) {
+      return this
+    }
     window.batchSDK(function (api) {
       api.setCustomUserID(id)
     })
