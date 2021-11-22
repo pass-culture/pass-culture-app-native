@@ -83,7 +83,6 @@ self.addEventListener('message', (event) => {
 const disabled = isSafari
 
 if (!disabled) {
-  alert('here')
   // This is for web push notifications with batch
   self.importScripts(process.env.PUBLIC_URL + '/batchsdk-shared-worker.js')
 }
