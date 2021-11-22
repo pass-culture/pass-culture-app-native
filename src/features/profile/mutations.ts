@@ -1,5 +1,7 @@
 import { useMutation } from 'react-query'
 
+import { api } from 'api/api'
+
 export enum CHANGE_EMAIL_ERROR_CODE {
   TOKEN_EXISTS = 'TOKEN_EXISTS',
   INVALID_PASSWORD = 'INVALID_PASSWORD',
@@ -13,25 +15,14 @@ interface ChangeEmailRequest {
 }
 export interface UseChangeEmailMutationProps {
   onSuccess: () => void
-  onError: (error: { code: CHANGE_EMAIL_ERROR_CODE }) => void
+  onError: (error: unknown) => void
 }
 
 export function useChangeEmailMutation({ onSuccess, onError }: UseChangeEmailMutationProps) {
-  return useMutation(
-    // TODO (PC-11573): call the API once available, and remove `mockedErrorCodeIndex`
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    (body: ChangeEmailRequest) =>
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      new Promise((resolve, reject) =>
-        setTimeout(() => {
-          resolve(undefined)
-        }, 2000)
-      ),
-    {
-      onSuccess,
-      onError,
-    }
-  )
+  return useMutation((body: ChangeEmailRequest) => api.postnativev1profileupdateEmail(body), {
+    onSuccess,
+    onError,
+  })
 }
 
 interface ValidateEmailChangeRequest {
