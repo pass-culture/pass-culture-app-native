@@ -1,11 +1,11 @@
 // TODO: remove this condition when BatchSDK will support Safari, see also service-worker.ts#L11
 // eslint-disable-next-line no-restricted-imports
-import { isSafari } from 'react-device-detect'
+import { isSafari, isMobileSafari, isMacOs } from 'react-device-detect'
 
 import { getBatchSDK } from 'libs/batch/batch-sdk'
 import { env } from 'libs/environment'
 
-const disabled = isSafari
+const disabled = isMobileSafari || (isSafari && !isMacOs)
 
 /* eslint-disable no-console */
 export const Batch = {
@@ -17,8 +17,11 @@ export const Batch = {
     /* Initiate Batch SDK opt-in UI configuration (native prompt) */
     let batchSDKUIConfig
 
-    /* Use a specific configuration for the Firefox web browser (custom prompt) */
-    if (navigator.userAgent.indexOf('Firefox') !== -1) {
+    /* Use a specific configuration for the Firefox and Safari web browser (custom prompt) */
+    if (
+      navigator.userAgent.indexOf('Firefox') !== -1 ||
+      navigator.userAgent.indexOf('Safari') !== -1
+    ) {
       batchSDKUIConfig = {
         alert: {
           attach: 'top center',
@@ -30,12 +33,6 @@ export const Batch = {
           icon: env.PUBLIC_URL + '/images/ic_launcher_xxxhdpi.png',
           text:
             'Découvre les nouvelles offres en exclusivité sur ton pass en activant les notifications !',
-        },
-      }
-    } else if (navigator.userAgent.indexOf('Safari') !== -1) {
-      batchSDKUIConfig = {
-        alert: {
-          icon: env.PUBLIC_URL + '/images/ic_launcher_xxxhdpi.png',
         },
       }
     } else {
