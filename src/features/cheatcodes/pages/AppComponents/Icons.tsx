@@ -17,6 +17,7 @@ import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorBuilding } from 'ui/svg/icons/BicolorBuilding'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
+import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
@@ -161,6 +162,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Info" component={Info} isNew />
       <Icon name="AroundMe" component={AroundMe} />
       <Icon name="EverywhereDeprecated" component={EverywhereDeprecated} />
+      <Icon name="BicolorEverywhere" component={BicolorEverywhere} isNew />
       <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} />
       <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} />
       <Icon name="NoOffer" component={NoOffer} />
