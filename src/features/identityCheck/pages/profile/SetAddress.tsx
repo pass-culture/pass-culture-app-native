@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import debounce from 'lodash.debounce'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { fetchAddresses } from 'libs/place'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -12,31 +14,40 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { Spacer } from 'ui/theme'
 
 export const SetAddress = () => {
+  // TODO (PC-11746) How to save address ?
+  const { goBack } = useGoBack('CheatMenu', undefined)
   const [address, setAddress] = useState('')
   const [addressOptions, setAddressOptions] = useState<string[]>([])
+  const [cityInfo, setCityInfo] = useState({ cityCode: '', postalCode: '' })
 
-  function onAddressChange(value: string) {
-    setAddress(value)
-  }
+  useEffect(() => {
+    // TODO (PC-11746) get cityCode and postalCode from SetPostalCode
+    setCityInfo({
+      cityCode: '',
+      postalCode: '75002',
+    })
+  }, [])
 
-  const onPress = () => {
-    addressSearch()
-  }
-
-  const cityCode = null
-  const postalCode = '75002'
-  async function addressSearch() {
+  async function addressSearch(query: string) {
+    const { cityCode, postalCode } = cityInfo
     try {
       const addressesLabels = await fetchAddresses({
-        query: address,
+        query,
         cityCode,
         postalCode,
       })
       setAddressOptions(addressesLabels)
     } catch (err) {
+      // TODO (LucasBeneston) : if error, add address without auto completion from api like "query, postalCode" ?
       // eslint-disable-next-line no-console
       console.log(err)
     }
+  }
+
+  const debouncedAddressSearch = useCallback(debounce(addressSearch, 500), [cityInfo])
+  function onAddressChange(value: string) {
+    setAddress(value)
+    debouncedAddressSearch(value)
   }
 
   return (
@@ -52,9 +63,9 @@ export const SetAddress = () => {
             onChangeText={onAddressChange}
             value={address}
             label={t`Recherche et sélectionne ton adresse`}
-            placeholder={t`Ex : 75017`}
+            placeholder={t`Ex : 34 avenue de l'Opéra`}
             textContentType="addressState"
-            onSubmitEditing={onPress}
+            onSubmitEditing={goBack}
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
@@ -68,9 +79,7 @@ export const SetAddress = () => {
           ))}
         </ModalContent>
       }
-      fixedBottomChildren={
-        <ButtonPrimary onPress={onPress} title={t`Continuer`} disabled={false} />
-      }
+      fixedBottomChildren={<ButtonPrimary onPress={goBack} title={t`Continuer`} disabled={false} />}
     />
   )
 }
