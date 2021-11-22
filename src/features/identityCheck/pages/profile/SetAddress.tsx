@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 
+import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
@@ -8,7 +9,7 @@ import { fetchAddresses } from 'libs/place'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
-import { Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export const SetAddress = () => {
   const [address, setAddress] = useState('')
@@ -56,12 +57,14 @@ export const SetAddress = () => {
             onSubmitEditing={onPress}
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
+          <Spacer.Column numberOfSpaces={2} />
           {addressOptions.map((option, index) => (
-            <Typo.Body
+            <AddressOption
+              label={option}
               key={option}
-              {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${option}`)}>
-              {option}
-            </Typo.Body>
+              {...accessibilityAndTestId(
+                t`Proposition d'adresse ${index + 1} : ${option}`
+              )}></AddressOption>
           ))}
         </ModalContent>
       }
