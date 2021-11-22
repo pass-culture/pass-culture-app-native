@@ -36,3 +36,27 @@ export const fetchPlaces = ({ query, limit = 20 }: Props) =>
     .then((response) => response.json())
     .then(buildSuggestedPlaces)
     .catch(() => [])
+
+interface AddressProps {
+  query: string
+  cityCode?: string | null
+  postalCode?: string | null
+}
+
+export const buildSuggestedAddresses = (
+  suggestedAddresses: FeatureCollection<Point, Properties>
+): string[] =>
+  suggestedAddresses.features.map(({ properties }) => {
+    const { label } = properties
+    return `${label}`
+  })
+
+export const fetchAddresses = ({ query, cityCode, postalCode }: AddressProps) => {
+  let stringQueryParams = `&q=${query}`
+  if (cityCode) stringQueryParams += `&citycode=${cityCode}`
+  if (postalCode) stringQueryParams += `&postcode=${postalCode}`
+  return fetch(`${API_ADRESSE_URL}/?limit=10${stringQueryParams}`)
+    .then((response) => response.json())
+    .then(buildSuggestedAddresses)
+    .catch(() => [])
+}
