@@ -6,7 +6,6 @@ import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { fetchAddresses } from 'libs/place'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -15,10 +14,10 @@ import { Spacer } from 'ui/theme'
 
 export const SetAddress = () => {
   // TODO (PC-11746) How to save address ?
-  const { goBack } = useGoBack('CheatMenu', undefined)
-  const [address, setAddress] = useState('')
-  const [addressOptions, setAddressOptions] = useState<string[]>([])
+  const [addressQuery, setAddressQuery] = useState('')
   const [cityInfo, setCityInfo] = useState({ cityCode: '', postalCode: '' })
+  const [addressOptions, setAddressOptions] = useState<string[]>([])
+  const [selectedAddress, setSelectedAddress] = useState('')
 
   useEffect(() => {
     // TODO (PC-11746) get cityCode and postalCode from SetPostalCode
@@ -37,18 +36,27 @@ export const SetAddress = () => {
         postalCode,
       })
       setAddressOptions(addressesLabels)
-    } catch (err) {
+    } catch (error) {
       // TODO (LucasBeneston) : if error, add address without auto completion from api like "query, postalCode" ?
       // eslint-disable-next-line no-console
-      console.log(err)
+      console.log(error)
     }
   }
 
   const debouncedAddressSearch = useCallback(debounce(addressSearch, 500), [cityInfo])
   function onAddressChange(value: string) {
-    setAddress(value)
+    setAddressQuery(value)
+    setSelectedAddress('')
     debouncedAddressSearch(value)
   }
+
+  function onAddressSelection(address: string) {
+    setAddressQuery(address)
+    setSelectedAddress(address)
+    setAddressOptions([])
+  }
+
+  const onSubmit = (address: string) => address
 
   return (
     <PageWithHeader
@@ -61,17 +69,18 @@ export const SetAddress = () => {
             isError={false}
             autoFocus
             onChangeText={onAddressChange}
-            value={address}
+            value={addressQuery}
             label={t`Recherche et sélectionne ton adresse`}
             placeholder={t`Ex : 34 avenue de l'Opéra`}
             textContentType="addressState"
-            onSubmitEditing={goBack}
+            onSubmitEditing={() => onSubmit(selectedAddress)}
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
           {addressOptions.map((option, index) => (
             <AddressOption
-              label={option}
+              option={option}
+              onPressOption={onAddressSelection}
               key={option}
               {...accessibilityAndTestId(
                 t`Proposition d'adresse ${index + 1} : ${option}`
@@ -79,7 +88,13 @@ export const SetAddress = () => {
           ))}
         </ModalContent>
       }
-      fixedBottomChildren={<ButtonPrimary onPress={goBack} title={t`Continuer`} disabled={false} />}
+      fixedBottomChildren={
+        <ButtonPrimary
+          onPress={() => onSubmit(selectedAddress)}
+          title={t`Continuer`}
+          disabled={false}
+        />
+      }
     />
   )
 }
