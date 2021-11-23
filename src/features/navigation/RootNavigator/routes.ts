@@ -42,6 +42,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
+import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -275,6 +276,12 @@ export const routes: Route[] = [
     component: NavigationIdCheckErrors,
     hoc: withIdCheckAsyncErrorBoundary,
     path: 'cheat-navigation-id-check-errors',
+  },
+  {
+    name: 'NavigationNotScreensPages',
+    component: NavigationNotScreensPages,
+    hoc: withIdCheckAsyncErrorBoundary,
+    path: 'cheat-navigation-not-screens-pages',
   },
   {
     name: 'NotificationSettings',
