@@ -4,11 +4,12 @@ import React, { useEffect, useState } from 'react'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { CityModal } from 'features/identityCheck/pages/profile/CityModal'
 import { isPostalCodeValid } from 'features/identityCheck/utils/ValidatePostalCode'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { eventMonitoring } from 'libs/monitoring'
+import { SuggestedCity } from 'libs/place'
 import { useCities } from 'libs/place/useCities'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -18,18 +19,20 @@ import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export const SetPostalCode = () => {
-  // TODO (11746) This goBack is temporary, remove when add save data and navigation
-  const { goBack } = useGoBack('CheatMenu', undefined)
   const { visible: isModalVisible, showModal, hideModal } = useModal(false)
   const { showErrorSnackBar } = useSnackBarContext()
   const [postalCode, setPostalCode] = useState('')
   const { data: cities, isError, isLoading, refetch } = useCities(postalCode)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const isDisabled = !isPostalCodeValid(postalCode)
+  const { dispatch } = useIdentityCheckContext()
 
   function onPostalCodeChange(value: string) {
     setPostalCode(value)
     setErrorMessage(null)
+  }
+
+  function saveCity(city: SuggestedCity) {
+    dispatch({ type: 'SET_CITY', payload: city })
   }
 
   useEffect(() => {
@@ -45,34 +48,23 @@ export const SetPostalCode = () => {
   }, [isError])
 
   useEffect(() => {
-    if (typeof cities === 'undefined') {
-      return
-    }
-    if (cities.length === 0) {
+    if (typeof cities === 'undefined') return
+    if (cities.length === 0)
       setErrorMessage(
         t`Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).`
       )
-    }
-    if (cities.length === 1) {
-      // TODO (11746) How to save postal code and city ?
-      goBack()
-    }
-    if (cities.length > 1) {
-      showModal()
-    }
+    if (cities.length === 1) saveCity(cities[0])
+    if (cities.length > 1) showModal()
   }, [cities?.length])
 
   async function onPress() {
-    if (!isDisabled) {
-      setErrorMessage(null)
-      await refetch()
-    }
+    setErrorMessage(null)
+    await refetch()
   }
 
-  async function onSubmitCity() {
-    // TODO (11746) How to save postal code and city ?
+  function onSubmitCity(city: SuggestedCity) {
+    saveCity(city)
     hideModal()
-    goBack()
   }
 
   return (
@@ -104,7 +96,7 @@ export const SetPostalCode = () => {
           <ButtonPrimary
             onPress={onPress}
             title={t`Continuer`}
-            disabled={isDisabled}
+            disabled={!isPostalCodeValid(postalCode)}
             isLoading={isLoading}
           />
         }
