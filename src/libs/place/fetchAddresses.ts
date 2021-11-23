@@ -4,7 +4,7 @@ import { Properties } from './types'
 
 const API_ADRESSE_URL = `https://api-adresse.data.gouv.fr/search`
 
-interface AddressProps {
+export interface AddressProps {
   query: string
   cityCode?: string | null
   postalCode?: string | null

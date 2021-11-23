@@ -1,8 +1,10 @@
 export enum QueryKeys {
+  ADDRESSES = 'addresses',
   HOME_MODULE = 'homeModule',
   HOME_VENUES_MODULE = 'homeVenuesModule',
   BOOKINGS = 'bookings',
   CITIES = 'cities',
+  CITY_CODE = 'cityCode',
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',
   FIRESTORE_APP_SEARCH = 'firestoreAppSearch',
@@ -11,6 +13,7 @@ export enum QueryKeys {
   OFFER = 'offer',
   PHONE_VALIDATION_CODE = 'phoneValidationCode',
   PLACES = 'places',
+  POSTAL_CODE = 'postalCode',
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',
   REPORTED_OFFERS = 'reportedOffers',
