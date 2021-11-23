@@ -8,6 +8,7 @@ import { SecondCard } from './SecondCard'
 jest.mock('features/auth/api')
 
 const mockSettings = {
+  enableUnderageGeneralisation: false,
   enableNativeEacIndividual: false,
 }
 jest.mock('features/auth/settings', () => ({
@@ -22,24 +23,17 @@ describe('SecondCard', () => {
     expect(firstTutorial).toMatchSnapshot()
   })
 
-  it('should show the correct deposit amount', async () => {
-    const queryByText = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />).queryByText
-    expect(queryByText(/un montant de 300€ à dépenser/)).toBeTruthy()
-  })
-
   it.each([
-    [
-      true,
-      'dans l’année de tes 15 à 18 ans, obtiens l’aide financière pass Culture d’un montant de 20€ à 300€ à dépenser dans l’application.',
-    ],
+    [true, 'de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application.'],
     [
       false,
-      'dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application.',
+      "dans l'année de tes 18 ans, le Gouvernement offre un crédit de 300€ à dépenser dans l’application.",
     ],
   ])(
-    'should display correct description if enableNativeEacIndividual is %s',
+    'should display correct description if enableNativeEacIndividual and enableUnderageGeneralisation are %s',
     (isSettingEnabled, description) => {
       mockSettings.enableNativeEacIndividual = isSettingEnabled
+      mockSettings.enableUnderageGeneralisation = isSettingEnabled
       const { getByText } = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />)
 
       expect(getByText(description)).toBeTruthy()

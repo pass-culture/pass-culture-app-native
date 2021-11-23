@@ -32,6 +32,7 @@ export type AchievementCardProps = AchievementCardKeyProps & {
   buttonText: string
   pauseAnimationOnRenderAtFrame: number
   subTitle: string
+  centerChild?: (() => JSX.Element) | null
   text: string
   title: string
 }
@@ -115,6 +116,13 @@ Those props are provided by the GenericAchievementCard and must be passed down t
       <StyledTitle>{props.title}</StyledTitle>
       <StyledSubTitle>{props.subTitle}</StyledSubTitle>
       <Spacer.Flex flex={0.5} />
+      {!!props.centerChild && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <props.centerChild />
+          <Spacer.Column numberOfSpaces={5} />
+        </React.Fragment>
+      )}
       <StyledBody>{props.text}</StyledBody>
       <Spacer.Flex flex={2} />
       <BottomButtonsContainer>
