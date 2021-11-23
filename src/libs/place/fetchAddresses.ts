@@ -2,7 +2,7 @@ import { FeatureCollection, Point } from 'geojson'
 
 import { Properties } from './types'
 
-const API_ADRESSE_URL = `https://api-adresse.data.gouv.fr/search`
+export const API_ADRESSE_URL = `https://api-adresse.data.gouv.fr/search`
 
 export interface AddressProps {
   query: string
@@ -14,8 +14,7 @@ export const buildSuggestedAddresses = (
   suggestedAddresses: FeatureCollection<Point, Properties>
 ): string[] =>
   suggestedAddresses.features.map(({ properties }) => {
-    const { label } = properties
-    return `${label}`
+    return properties.label
   })
 
 export const fetchAddresses = ({ query, cityCode, postalCode }: AddressProps) => {

@@ -39,7 +39,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: SetAddress,
     path: 'creation-profil/adresse',
     options: { title: t`Adresse - Formulaire` },
-    // secure: true,
+    secure: true,
   },
   {
     name: 'IdentityCheckStatus',

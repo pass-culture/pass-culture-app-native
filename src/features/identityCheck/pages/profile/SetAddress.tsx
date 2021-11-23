@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 
@@ -6,7 +7,9 @@ import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { eventMonitoring } from 'libs/monitoring'
 import { useAddresses } from 'libs/place/useAddresses'
 import { accessibilityAndTestId } from 'tests/utils'
@@ -20,9 +23,11 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SetAddress = () => {
   const { showErrorSnackBar } = useSnackBarContext()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { dispatch } = useIdentityCheckContext()
   const [cityInfo, setCityInfo] = useState({ cityCode: '', postalCode: '' })
   const [addressQuery, setAddressQuery] = useState('')
-  const [selectedAddress, setSelectedAddress] = useState('')
+  const [selectedAddress, setSelectedAddress] = useState<string | null>(null)
   const { data: addresses = [], isError, isLoading, refetch, remove } = useAddresses({
     query: addressQuery,
     cityCode: cityInfo.cityCode,
@@ -79,7 +84,12 @@ export const SetAddress = () => {
       </TouchableOpacity>
     ) : null
 
-  const onSubmit = (selectedAddress: string) => selectedAddress
+  const onSubmit = (selectedAddress: string | null) => {
+    if (selectedAddress) {
+      dispatch({ type: 'SET_ADDRESS', payload: selectedAddress })
+      navigate('IdentityCheckStatus')
+    }
+  }
 
   const inputLabel = selectedAddress
     ? t`Adresse sélectionnée`
@@ -92,8 +102,6 @@ export const SetAddress = () => {
         <ModalContent>
           <CenteredTitle title={t`Quelle est ton adresse ?`} />
           <TextInput
-            autoCapitalize="none"
-            isError={false}
             autoFocus
             onChangeText={onAddressChange}
             value={addressQuery}
@@ -105,7 +113,9 @@ export const SetAddress = () => {
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
-          {!!isLoading && <SpinnerWithCenteredContainer color={ColorsEnum.GREY_DARK} />}
+          {!!isLoading && (
+            <SpinnerWithCenteredContainer color={ColorsEnum.GREY_DARK} testID="spinner" />
+          )}
           {addresses.map((option, index) => (
             <AddressOption
               option={option}
@@ -121,7 +131,7 @@ export const SetAddress = () => {
         <ButtonPrimary
           onPress={() => onSubmit(selectedAddress)}
           title={t`Continuer`}
-          disabled={false}
+          disabled={!selectedAddress}
         />
       }
     />
