@@ -422,7 +422,7 @@ export const routes: Route[] = [
   {
     name: 'NotYetUnderageEligibility',
     component: NotYetUnderageEligibility,
-    path: 'not-yet-underage-eligibilite',
+    path: 'cest-pour-bientot',
     options: { title: t`C'est pour bientôt` },
   },
 
