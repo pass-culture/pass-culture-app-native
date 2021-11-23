@@ -44,6 +44,10 @@ describe('ExclusivityModule component', () => {
     const { getByTestId } = renderExclusivityModule()
     fireEvent.press(getByTestId('imageExclu'))
     expect(analytics.logClickExclusivityBlock).toHaveBeenCalledWith(mockOffer.id)
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      offerId: mockOffer.id,
+      from: 'exclusivity',
+    })
   })
 })
 
