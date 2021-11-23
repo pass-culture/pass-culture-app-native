@@ -58,7 +58,9 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
   'SetPhoneValidationCode'
 >
 
-export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodeProps) => {
+export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeComponent({
+  route,
+}: SetPhoneValidationCodeProps) {
   const { appContentWidth } = useTheme()
   const { data: settings } = useAppSettings()
   const formattedPhoneNumber = formatPhoneNumber(

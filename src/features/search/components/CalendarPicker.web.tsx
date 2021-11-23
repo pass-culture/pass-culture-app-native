@@ -1,12 +1,8 @@
 import { t } from '@lingui/macro'
 import React, { useState, useMemo, useRef, useEffect } from 'react'
 import Picker from 'react-mobile-picker'
-import {
-  Calendar as RNCalendar,
-  CalendarTheme,
-  DateObject,
-  LocaleConfig,
-} from 'react-native-calendars'
+import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
+import { DateData, Theme } from 'react-native-calendars/src/types'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -16,7 +12,6 @@ import {
   monthNames,
   dayNames,
   dayNamesShort,
-  today,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -34,7 +29,6 @@ LocaleConfig.locales['fr'] = {
   monthNamesShort,
   dayNames,
   dayNamesShort,
-  today,
 }
 LocaleConfig.defaultLocale = 'fr'
 
@@ -54,7 +48,7 @@ const calendarHeaderStyle = {
       alignItems: 'center',
     },
   },
-} as CalendarTheme
+} as Theme
 
 export const CalendarPicker: React.FC<Props> = ({
   selectedDate,
@@ -101,7 +95,7 @@ export const CalendarPicker: React.FC<Props> = ({
     setMobileDateValues((prevMobileDateValues) => ({ ...prevMobileDateValues, [name]: value }))
   }
 
-  function handleDesktopDateChange(result: DateObject) {
+  function handleDesktopDateChange(result: DateData) {
     setDesktopCalendarDate(new Date(result.dateString))
   }
 
@@ -139,10 +133,10 @@ export const CalendarPicker: React.FC<Props> = ({
         <CalendarPickerWrapperDesktop>
           <RNCalendar
             style={RNCalendarTheme}
-            current={selectedDate}
+            current={(selectedDate as unknown) as LocaleConfig}
             firstDay={1}
             enableSwipeMonths={true}
-            renderHeader={(date) => <MonthHeader date={date} />}
+            renderHeader={(date) => <MonthHeader date={(date as unknown) as Date} />}
             hideExtraDays={true}
             renderArrow={renderArrow}
             theme={calendarHeaderStyle}

@@ -5,6 +5,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
+import { ApiError } from 'api/apiHelpers'
 import { useAppSettings } from 'features/auth/settings'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -51,7 +52,9 @@ export const ForgottenPassword: FunctionComponent = () => {
       replace('ResetPasswordEmailSent', { email })
     } catch (error) {
       setErrorMessage(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
-      new MonitoringError(error, 'ForgottenPasswordRequestResetError')
+      if (error instanceof ApiError) {
+        new MonitoringError(error.message, 'ForgottenPasswordRequestResetError')
+      }
     } finally {
       setIsFetching(false)
     }

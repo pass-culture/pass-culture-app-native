@@ -52,9 +52,10 @@ export const DeeplinksHistory = ({
       await AsyncStorage.removeItem('mac_persist')
       await AsyncStorage.removeItem('mac_history')
     } catch (error) {
-      showErrorSnackBar({
-        message: t`L'historique n'a pas pu supprimer les données locales: ${error.message}`,
-      })
+      if (error instanceof Error)
+        showErrorSnackBar({
+          message: t`L'historique n'a pas pu supprimer les données locales: ${error.message}`,
+        })
     }
   }
 

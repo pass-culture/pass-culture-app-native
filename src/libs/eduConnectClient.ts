@@ -26,7 +26,7 @@ export const eduConnectClient = {
         eventMonitoring.captureException(error, {
           message: 'eduConnectClient failed to refreshAccessToken',
         })
-        return Promise.reject(new EduConnectError(EduConnectErrors.unavailable, error))
+        return Promise.reject(new EduConnectError(EduConnectErrors.unavailable, error as Error))
       }
     }
     return accessToken

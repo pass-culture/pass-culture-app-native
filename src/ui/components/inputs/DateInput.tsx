@@ -10,12 +10,6 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ColorsEnum, Typo } from 'ui/theme'
 
-export enum DatePartType {
-  DAY = 'day',
-  MONTH = 'month',
-  YEAR = 'year',
-}
-
 interface ValidationBarProps {
   testID?: string
   backgroundColor?: ColorsEnum

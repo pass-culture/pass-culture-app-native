@@ -1,5 +1,6 @@
 import React from 'react'
-import { Calendar as RNCalendar, CalendarTheme, LocaleConfig } from 'react-native-calendars'
+import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
+import { DateData, Theme } from 'react-native-calendars/src/types'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
@@ -11,7 +12,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-import { monthNames, monthNamesShort, dayNames, dayNamesShort, today } from './Calendar.utils'
+import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
 import { DayComponent, useSelectDay } from './DayComponent'
 import { MonthHeader } from './MonthHeader'
 import { defaultMarking, Marking, useMarkedDates, MarkedDates } from './useMarkedDates'
@@ -21,7 +22,6 @@ LocaleConfig.locales['fr'] = {
   monthNamesShort,
   dayNames,
   dayNamesShort,
-  today,
 }
 LocaleConfig.defaultLocale = 'fr'
 
@@ -40,7 +40,7 @@ const calendarHeaderStyle = {
       alignItems: 'center',
     },
   },
-} as CalendarTheme
+} as Theme
 
 interface Props {
   stocks: OfferStockResponse[]
@@ -72,15 +72,15 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
   return (
     <RNCalendar
       style={RNCalendarTheme}
-      current={minDate}
+      current={(minDate as unknown) as LocaleConfig}
       firstDay={1}
       enableSwipeMonths={true}
-      renderHeader={(date) => <MonthHeader date={date} />}
+      renderHeader={(date) => <MonthHeader date={(date as unknown) as Date} />}
       hideExtraDays={true}
       renderArrow={renderArrow}
       theme={calendarHeaderStyle}
       markedDates={markedDates}
-      dayComponent={({ date, marking = defaultMarking }) => {
+      dayComponent={({ date, marking = defaultMarking }: { date: DateData; marking: unknown }) => {
         // problem in the definition of marking in the library:
         // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
         const { price, status, selected } = (marking as unknown) as Marking

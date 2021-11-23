@@ -34,10 +34,11 @@ export const DeeplinksGenerator = () => {
               JSON.stringify([...localHistory, generatedDeeplink])
             )
           } catch (error) {
-            showErrorSnackBar({
-              message: t`Le lien ${generatedDeeplink.universalLink} n'a pas été ajouté à l'historique: ${error.message}`,
-              timeout: SNACK_BAR_TIME_OUT,
-            })
+            if (error instanceof Error)
+              showErrorSnackBar({
+                message: t`Le lien ${generatedDeeplink.universalLink} n'a pas été ajouté à l'historique: ${error.message}`,
+                timeout: SNACK_BAR_TIME_OUT,
+              })
           }
         }
       }
