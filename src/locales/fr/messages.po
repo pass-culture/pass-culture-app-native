@@ -2102,6 +2102,7 @@ msgstr "Réglages de notifications"
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/search/components/SearchBox.tsx
 msgid "Réinitialiser la recherche"
 msgstr "Réinitialiser la recherche"

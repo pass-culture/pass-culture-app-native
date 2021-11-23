@@ -4,6 +4,7 @@ import { TextInput as RNTextInput } from 'react-native'
 export type CustomTextInputProps = {
   isError?: boolean
   label?: string
+  RightIcon?: React.FC
 }
 
 export type CustomSearchInputProps = {
@@ -43,7 +44,7 @@ export type TextInputProps = CustomTextInputProps & RNTextInputProps
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
 export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
-  return { isError: props.isError, label: props.label }
+  return { isError: props.isError, label: props.label, RightIcon: props.RightIcon }
 }
 
 export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {

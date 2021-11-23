@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useState } from 'react'
+import { TouchableOpacity } from 'react-native'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
@@ -14,11 +15,13 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SpinnerWithCenteredContainer } from 'ui/components/spinner/SpinnerWithCenteredContainer'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum, Spacer } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SetAddress = () => {
-  const [addressQuery, setAddressQuery] = useState('')
   const [cityInfo, setCityInfo] = useState({ cityCode: '', postalCode: '' })
+  const [addressQuery, setAddressQuery] = useState('')
   const [selectedAddress, setSelectedAddress] = useState('')
   const { data: addresses = [], isError, isLoading, refetch, remove } = useAddresses({
     query: addressQuery,
@@ -60,6 +63,22 @@ export const SetAddress = () => {
     remove()
   }
 
+  function resetSearch() {
+    setAddressQuery('')
+    setSelectedAddress('')
+    remove()
+  }
+
+  const RightIcon = () =>
+    addressQuery.length > 0 ? (
+      <TouchableOpacity
+        activeOpacity={ACTIVE_OPACITY}
+        onPress={resetSearch}
+        {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
+        <Invalidate size={24} />
+      </TouchableOpacity>
+    ) : null
+
   const onSubmit = (selectedAddress: string) => selectedAddress
 
   const inputLabel = selectedAddress
@@ -82,6 +101,7 @@ export const SetAddress = () => {
             placeholder={t`Ex : 34 avenue de l'Opéra`}
             textContentType="addressState"
             onSubmitEditing={() => onSubmit(selectedAddress)}
+            RightIcon={() => <RightIcon />}
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
