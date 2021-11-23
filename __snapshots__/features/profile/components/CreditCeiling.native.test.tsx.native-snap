@@ -74,8 +74,10 @@ exports[`CreditCeiling should render properly 1`] = `
       <View
         backgroundColor="#320096"
         barWidth={0}
+        collapsable={false}
         forwardedRef={[Function]}
         isAnimated={false}
+        nativeID="animatedComponent"
         onLayout={[Function]}
         progress={0.78}
         style={

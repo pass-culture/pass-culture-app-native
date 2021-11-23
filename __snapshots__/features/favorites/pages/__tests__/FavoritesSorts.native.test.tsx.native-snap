@@ -92,7 +92,9 @@ exports[`FavoritesSorts component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -168,7 +170,9 @@ exports[`FavoritesSorts component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -236,7 +240,9 @@ exports[`FavoritesSorts component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -368,7 +374,9 @@ exports[`FavoritesSorts component should render correctly 1`] = `
         <View
           accessibilityLabel="Revenir en arrière"
           accessible={true}
+          collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -455,7 +463,9 @@ exports[`FavoritesSorts component should render correctly 1`] = `
     <View
       accessibilityLabel="Valider"
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

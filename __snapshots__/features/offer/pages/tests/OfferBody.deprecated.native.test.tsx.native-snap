@@ -60,6 +60,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
             }
           >
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "backgroundColor": "rgb(255, 255, 255)",
@@ -77,6 +79,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
             />
           </View>
           <View
+            collapsable={false}
+            nativeID="animatedComponent"
             pointerEvents="box-none"
             style={
               Object {
@@ -133,6 +137,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                 <Text
                   accessibilityRole="header"
                   aria-level="1"
+                  collapsable={false}
+                  nativeID="animatedComponent"
                   numberOfLines={1}
                   onLayout={[Function]}
                   style={
@@ -248,6 +254,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
             }
           >
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               pointerEvents="box-none"
               style={
                 Object {
@@ -837,7 +845,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 <View
                                   accessibilityLabel="description-details-button"
                                   accessible={true}
+                                  collapsable={false}
                                   focusable={true}
+                                  nativeID="animatedComponent"
                                   onClick={[Function]}
                                   onResponderGrant={[Function]}
                                   onResponderMove={[Function]}
@@ -2390,6 +2400,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             }
           >
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               style={
                 Object {
                   "backgroundColor": "rgb(255, 255, 255)",
@@ -2407,6 +2419,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             />
           </View>
           <View
+            collapsable={false}
+            nativeID="animatedComponent"
             pointerEvents="box-none"
             style={
               Object {
@@ -2463,6 +2477,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                 <Text
                   accessibilityRole="header"
                   aria-level="1"
+                  collapsable={false}
+                  nativeID="animatedComponent"
                   numberOfLines={1}
                   onLayout={[Function]}
                   style={
@@ -2578,6 +2594,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             }
           >
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               pointerEvents="box-none"
               style={
                 Object {
@@ -3232,7 +3250,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 <View
                                   accessibilityLabel="description-details-button"
                                   accessible={true}
+                                  collapsable={false}
                                   focusable={true}
+                                  nativeID="animatedComponent"
                                   onClick={[Function]}
                                   onResponderGrant={[Function]}
                                   onResponderMove={[Function]}

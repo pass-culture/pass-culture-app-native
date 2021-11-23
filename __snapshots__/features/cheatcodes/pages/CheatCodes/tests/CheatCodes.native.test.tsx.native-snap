@@ -39,7 +39,6 @@ exports[`CheatCodes component should render correctly 1`] = `
   />
   <View
     accessibilityRole="button"
-    accessibilityState={Object {}}
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -81,7 +80,6 @@ exports[`CheatCodes component should render correctly 1`] = `
   </View>
   <View
     accessibilityRole="button"
-    accessibilityState={Object {}}
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -133,7 +131,6 @@ exports[`CheatCodes component should render correctly 1`] = `
   />
   <View
     accessibilityRole="button"
-    accessibilityState={Object {}}
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -174,7 +171,6 @@ exports[`CheatCodes component should render correctly 1`] = `
   </View>
   <View
     accessibilityRole="button"
-    accessibilityState={Object {}}
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -215,7 +211,6 @@ exports[`CheatCodes component should render correctly 1`] = `
   </View>
   <View
     accessibilityRole="button"
-    accessibilityState={Object {}}
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -256,7 +251,6 @@ exports[`CheatCodes component should render correctly 1`] = `
   </View>
   <View
     accessibilityRole="button"
-    accessibilityState={Object {}}
     accessible={true}
     focusable={true}
     onClick={[Function]}

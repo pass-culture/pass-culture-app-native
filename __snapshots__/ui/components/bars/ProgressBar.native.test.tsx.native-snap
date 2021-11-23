@@ -61,8 +61,10 @@ exports[`ProgressBar should render properly 1`] = `
     <View
       backgroundColor="#eb0055"
       barWidth={0}
+      collapsable={false}
       forwardedRef={[Function]}
       isAnimated={false}
+      nativeID="animatedComponent"
       onLayout={[Function]}
       progress={0.5}
       style={
