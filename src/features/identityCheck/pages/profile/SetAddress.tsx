@@ -6,10 +6,14 @@ import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { fetchAddresses } from 'libs/place'
+import { IdentityCheckError } from 'features/identityCheck/errors'
+import { eventMonitoring } from 'libs/monitoring'
+import { fetchAddresses } from 'libs/place/fetchAddresses'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
+import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/theme'
 
 export const SetAddress = () => {
@@ -37,9 +41,19 @@ export const SetAddress = () => {
       })
       setAddressOptions(addressesLabels)
     } catch (error) {
-      // TODO (LucasBeneston) : if error, add address without auto completion from api like "query, postalCode" ?
-      // eslint-disable-next-line no-console
-      console.log(error)
+      showErrorSnackBar({
+        message: t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      eventMonitoring.captureException(
+        new IdentityCheckError(
+          'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
+        )
+      )
+      //   TODO (LucasBeneston) : Add address without auto completion from api ?
+      //   let addressWithoutAutoCompletion = query
+      //   if (postalCode) addressWithoutAutoCompletion += `, ${postalCode}`
+      //   setSelectedAddress(addressWithoutAutoCompletion)
     }
   }
 

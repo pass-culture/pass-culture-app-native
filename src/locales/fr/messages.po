@@ -157,6 +157,10 @@ msgstr "Actualiser la page"
 msgid "Adresse"
 msgstr "Adresse"
 
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Adresse - Formulaire"
+msgstr "Adresse - Formulaire"
+
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
@@ -600,6 +604,7 @@ msgstr "Contacter le support"
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
@@ -845,6 +850,9 @@ msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive 
 msgid "Entrée du code de confirmation"
 msgstr "Entrée du code de confirmation"
 
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+msgid "Entrée pour l'adresse"
+msgstr "Entrée pour l'adresse"
 
 #: src/ui/components/inputs/DateInput.native.test.tsx
 #: src/ui/components/inputs/DateInput.native.test.tsx
@@ -971,6 +979,10 @@ msgstr "Etablissement scolaire - Accueil"
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Etablissement scolaire - Sélection"
 msgstr "Etablissement scolaire - Sélection"
+
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+msgid "Ex : 34 avenue de l'Opéra"
+msgstr "Ex : 34 avenue de l'Opéra"
 
 #: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 msgid "Ex : 75017"
@@ -1603,6 +1615,10 @@ msgstr "Notifications"
 msgid "Nous avons besoin de connaître ton âge."
 msgstr "Nous avons besoin de connaître ton âge."
 
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+msgid "Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard."
+msgstr "Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard."
+
 #: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 msgid "Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard."
 msgstr "Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard."
@@ -1871,6 +1887,7 @@ msgstr "Problème technique ;("
 msgid "Problèmes pour ouvrir un lien ?"
 msgstr "Problèmes pour ouvrir un lien ?"
 
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
@@ -1880,6 +1897,10 @@ msgstr "Problèmes pour ouvrir un lien ?"
 #: src/features/profile/components/NonBeneficiaryHeader.tsx
 msgid "Profil"
 msgstr "Profil"
+
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+msgid "Proposition d'adresse {0} : {option}"
+msgstr "Proposition d'adresse {0} : {option}"
 
 #: src/features/favorites/pages/FavoritesSorts.tsx
 msgid "Proximité géographique"
@@ -1896,6 +1917,10 @@ msgstr "Prénom et nom"
 #: src/features/offer/pages/OfferBody.tsx
 msgid "Quand ?"
 msgstr "Quand ?"
+
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+msgid "Quelle est ton adresse ?"
+msgstr "Quelle est ton adresse ?"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Quelques conseils"
@@ -1938,6 +1963,10 @@ msgstr "Recherche - filtres"
 #: src/features/navigation/TabBar/routes.ts
 msgid "Recherche des offres"
 msgstr "Recherche des offres"
+
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+msgid "Recherche et sélectionne ton adresse"
+msgstr "Recherche et sélectionne ton adresse"
 
 #: src/features/search/atoms/Buttons/Search.tsx
 msgid "Rechercher"
