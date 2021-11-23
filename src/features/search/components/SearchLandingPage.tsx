@@ -42,7 +42,7 @@ export const SearchLandingPage: React.FC = () => {
           <BicolorListItem title={searchGroupLabel} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
 
-        <Separator />
+        <Separator isSmallWebViewportHeight={mqSmallWebViewportHeight} />
 
         <TouchableOpacity onPress={() => navigate('LocationFilter')}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
@@ -63,7 +63,7 @@ const Separator = styled.View<{ isSmallWebViewportHeight?: boolean }>(
     height: 2,
     width: theme.appContentWidth - getSpacing(2 * 6),
     backgroundColor: theme.colors.greyLight,
-    marginVertical: getSpacing(isSmallWebViewportHeight ? 8 : 2),
+    marginVertical: getSpacing(isSmallWebViewportHeight ? 2 : 8),
   })
 )
 const SearchButtonContainer = styled.View<{ isSmallWebViewportHeight?: boolean }>(
