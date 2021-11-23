@@ -1,4 +1,3 @@
-import { BorderRadiusEnum } from '@pass-culture/id-check/src/theme/grid'
 import React, { useMemo } from 'react'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
@@ -9,6 +8,7 @@ import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
 import { ImagePlaceholder, ImagePlaceholderProps } from 'ui/components/ImagePlaceholder'
 import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
+import { BorderRadiusEnum } from 'ui/theme/grid'
 
 type HeroProps =
   | { type: 'offer'; categoryId: CategoryIdEnum | null }

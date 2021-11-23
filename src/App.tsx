@@ -17,6 +17,7 @@ import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
+import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
@@ -94,13 +95,15 @@ const App: FunctionComponent = function () {
                     <SearchWrapper>
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
-                          <IdCheckContextProvider>
-                            <SplashScreenProvider>
-                              <ScreenErrorProvider>
-                                <AppNavigationContainer />
-                              </ScreenErrorProvider>
-                            </SplashScreenProvider>
-                          </IdCheckContextProvider>
+                          <IdentityCheckContextProvider>
+                            <IdCheckContextProvider>
+                              <SplashScreenProvider>
+                                <ScreenErrorProvider>
+                                  <AppNavigationContainer />
+                                </ScreenErrorProvider>
+                              </SplashScreenProvider>
+                            </IdCheckContextProvider>
+                          </IdentityCheckContextProvider>
                         </SnackBarProvider>
                       </I18nProvider>
                     </SearchWrapper>

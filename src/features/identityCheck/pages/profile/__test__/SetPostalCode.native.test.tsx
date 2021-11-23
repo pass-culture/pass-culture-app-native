@@ -13,6 +13,11 @@ import { cleanup, fireEvent, render, waitFor } from 'tests/utils'
 
 const POSTAL_CODE = '83570'
 
+const mockDispatch = jest.fn()
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({ dispatch: mockDispatch }),
+}))
+
 describe('<SetPostalCode/>', () => {
   afterEach(cleanup)
 
@@ -56,6 +61,32 @@ describe('<SetPostalCode/>', () => {
       expect(navigate).not.toBeCalled()
     })
   })
+
+  it('should save city when clicking on "Continuer" and only one city found', async () => {
+    const city = mockedSuggestedCities[0]
+    mockCitiesApiCall([city])
+    const mockedGetCitiesSpy = jest.spyOn(fetchCities, 'fetchCities')
+
+    const { getByText, getByPlaceholderText } = renderSetPostaCode()
+
+    const input = getByPlaceholderText('Ex : 75017')
+    fireEvent.changeText(input, POSTAL_CODE)
+    fireEvent.press(getByText('Continuer'))
+
+    await waitFor(() => {
+      expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, POSTAL_CODE)
+      getByText(city.nom)
+      expect(navigate).not.toBeCalled()
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_CITY',
+        payload: {
+          code: city.code,
+          name: city.nom,
+          postalCode: POSTAL_CODE,
+        },
+      })
+    })
+  })
 })
 
 function renderSetPostaCode() {
@@ -64,12 +95,8 @@ function renderSetPostaCode() {
 }
 
 function mockCitiesApiCall(response: CitiesResponse) {
+  const url = `${CITIES_API_URL}?codePostal=${POSTAL_CODE}`
   server.use(
-    rest.get<CitiesResponse>(
-      `${CITIES_API_URL}?codePostal=${POSTAL_CODE}`,
-      async (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json(response))
-      }
-    )
+    rest.get<CitiesResponse>(url, (req, res, ctx) => res(ctx.status(200), ctx.json(response)))
   )
 }

@@ -9,7 +9,7 @@ import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/compo
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { BicolorIdCardWithMagnifyingClass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingClass'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 export const IdentityCheckStart = () => {
   const { visible, showModal, hideModal } = useModal(false)

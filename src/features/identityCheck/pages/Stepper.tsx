@@ -4,8 +4,10 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { QuitIdentityCheckModal } from 'features/identityCheck/pages/QuitIdentityCheckModal'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
+import { getStepState } from 'features/identityCheck/utils/stepper'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
@@ -16,6 +18,7 @@ export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
   const steps = useIdentityCheckSteps()
+  const context = useIdentityCheckContext()
 
   const {
     visible: fullPageModalVisible,
@@ -37,15 +40,15 @@ export const IdentityCheckStepper = () => {
           <StyledBody>{t`Voici les 3 étapes que tu vas devoir suivre.`}</StyledBody>
           {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
 
-          {/* TODO(antoinewg) dehardcode state. This is temporary for design purposes */}
-          <StepButton key={steps[0].name} step={steps[0]} state="completed" />
-          <StepButton
-            key={steps[1].name}
-            step={steps[1]}
-            state="current"
-            onPress={() => navigate('IdentityCheckStart')}
-          />
-          <StepButton key={steps[2].name} step={steps[2]} state="disabled" />
+          {steps.map((step) => (
+            <StepButton
+              key={step.name}
+              step={step}
+              state={getStepState(step.name, context.step)}
+              onPress={() => navigate(step.screens[0])}
+            />
+          ))}
+
           {theme.isDesktopViewport ? (
             <Spacer.Column numberOfSpaces={10} />
           ) : (
