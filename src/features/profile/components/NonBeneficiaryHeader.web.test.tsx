@@ -1,9 +1,8 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { BeneficiaryValidationStep, GetIdCheckTokenResponse } from 'api/gen'
+import { BeneficiaryValidationStep } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { flushAllPromises, render, fireEvent } from 'tests/utils/web'
@@ -28,16 +27,7 @@ const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavi
 jest.mock('features/profile/utils')
 const mockedUseIsUserUnderage = mocked(useIsUserUnderage, true)
 
-jest.mock('features/auth/api', () => ({
-  useGetIdCheckToken: jest.fn(
-    () =>
-      ({
-        isLoading: false,
-        data: { token: 'thisIsATokenForIdCheck' },
-      } as UseQueryResult<GetIdCheckTokenResponse>)
-  ),
-  useDepositAmount: () => '300 €',
-}))
+jest.mock('features/auth/api', () => ({ useDepositAmount: () => '300 €' }))
 jest.mock('features/auth/settings')
 
 const mockData = {

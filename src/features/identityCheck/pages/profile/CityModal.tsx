@@ -15,7 +15,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   cities?: SuggestedCity[]
-  onSubmit: (city: SuggestedCity) => Promise<void>
+  onSubmit: (city: SuggestedCity) => void
   isVisible: boolean
   close?: () => void
 }

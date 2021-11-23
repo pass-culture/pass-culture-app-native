@@ -7,9 +7,11 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
+export type StepButtonState = 'completed' | 'current' | 'disabled'
+
 interface Props {
   step: StepConfig
-  state: 'completed' | 'current' | 'disabled'
+  state: StepButtonState
   onPress?: () => void
 }
 

@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React, { NamedExoticComponent } from 'react'
 import { UseQueryResult } from 'react-query'
 
-import { GetIdCheckTokenResponse, UserProfileResponse } from 'api/gen'
+import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
@@ -76,16 +76,7 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
   }),
 }))
 const mockDepositAmount = '300 €'
-jest.mock('features/auth/api', () => ({
-  useGetIdCheckToken: jest.fn(
-    () =>
-      ({
-        isLoading: false,
-        data: { token: 'thisIsATokenForIdCheck' },
-      } as UseQueryResult<GetIdCheckTokenResponse>)
-  ),
-  useDepositAmount: () => mockDepositAmount,
-}))
+jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
 jest.mock('features/auth/settings')
 
 describe('Profile component', () => {

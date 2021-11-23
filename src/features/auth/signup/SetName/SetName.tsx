@@ -103,6 +103,7 @@ export const SetName: FunctionComponent<Props> = ({ route }) => {
           <ButtonPrimary title={t`Continuer`} onPress={submitName} disabled={disabled} />
           <Spacer.Column numberOfSpaces={5} />
           <StyledStepDots>
+            {/* TODO(antoinewg): wrong step number. Wrong screen also: we will move SetName to the profile steps */}
             <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={2} />
           </StyledStepDots>
         </BottomCardContentContainer>
