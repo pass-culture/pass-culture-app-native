@@ -4,6 +4,7 @@ import { setupServer } from 'msw/node'
 import {
   BookingsResponse,
   CulturalSurveyRequest,
+  NextSubscriptionStepResponse,
   OfferResponse,
   RequestPasswordResetRequest,
   ResetPasswordRequest,
@@ -87,6 +88,16 @@ export const server = setupServer(
         ctx.json({
           accessToken: 'access_token',
           refreshToken: 'refresh_token',
+        })
+      )
+  ),
+  rest.get<NextSubscriptionStepResponse>(
+    env.API_BASE_URL + '/native/v1/subscription/next_step',
+    (_req, res, ctx) =>
+      res(
+        ctx.status(200),
+        ctx.json({
+          nextSubscriptionStep: null,
         })
       )
   )

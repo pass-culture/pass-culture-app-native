@@ -1,58 +1,44 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 
-import { BeneficiaryValidationStep } from 'api/gen'
+import { api } from 'api/api'
+import { SubscriptionStep } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
-import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
-import { eventMonitoring } from 'libs/monitoring'
+import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-
-type PrefetchedInfo = {
-  nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null
-}
 
 export const useBeneficiaryValidationNavigation = () => {
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { refetch } = useUserProfileInfo()
   const isUserUnderage = useIsUserUnderage()
   const navigateToIdCheck = useNavigateToIdCheck({
     onIdCheckNavigationBlocked: () => navigate('IdCheckUnavailable'),
   })
   useSetIdCheckNavigationContext()
   const { showErrorSnackBar } = useSnackBarContext()
-  const [error, setError] = useState<Error | null>(null)
 
-  const navigateToNextBeneficiaryValidationStep = useCallback(
-    (prefetchedInfo?: PrefetchedInfo) => {
-      if (!prefetchedInfo) {
-        refetch()
-          .then((value) => {
-            const user = value.data
-            const nextStep = user?.nextBeneficiaryValidationStep ?? null
-            navigateToNextStep(nextStep)
-          })
-          .catch(setError)
-      } else {
-        navigateToNextStep(prefetchedInfo.nextBeneficiaryValidationStep)
-      }
-    },
-    [settings?.allowIdCheckRegistration, showErrorSnackBar, navigateToIdCheck, refetch]
-  )
+  const navigateToNextBeneficiaryValidationStep = useCallback(async () => {
+    try {
+      const subscription = await api.getnativev1subscriptionnextStep()
+      navigateToNextStep(subscription?.nextSubscriptionStep)
+    } catch (_error) {
+      throw new AsyncError('NETWORK_REQUEST_FAILED')
+    }
+  }, [settings?.allowIdCheckRegistration, showErrorSnackBar, navigateToIdCheck])
 
-  function navigateToNextStep(nextStep: PrefetchedInfo['nextBeneficiaryValidationStep']) {
-    if (nextStep === BeneficiaryValidationStep.PhoneValidation && settings?.enablePhoneValidation) {
+  function navigateToNextStep(nextStep?: SubscriptionStep | null) {
+    if (nextStep === SubscriptionStep.PhoneValidation) {
       navigate('SetPhoneNumber')
     } else if (
-      nextStep === BeneficiaryValidationStep.IdCheck ||
-      nextStep === BeneficiaryValidationStep.BeneficiaryInformation
+      nextStep === SubscriptionStep.IdentityCheck ||
+      nextStep === SubscriptionStep.ProfileCompletion
     ) {
       if (settings?.allowIdCheckRegistration) {
         try {
@@ -74,7 +60,7 @@ export const useBeneficiaryValidationNavigation = () => {
   }
 
   return useMemo(
-    () => ({ error, navigateToNextBeneficiaryValidationStep }),
-    [error, navigateToNextBeneficiaryValidationStep]
+    () => ({ navigateToNextBeneficiaryValidationStep }),
+    [navigateToNextBeneficiaryValidationStep]
   )
 }

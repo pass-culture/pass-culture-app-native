@@ -1,110 +1,101 @@
 import { renderHook } from '@testing-library/react-hooks'
+import { rest } from 'msw'
+import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
+import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { BeneficiaryValidationStep } from 'api/gen'
+import { NextSubscriptionStepResponse, SettingsResponse, SubscriptionStep } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useIsUserUnderage } from 'features/profile/utils'
-import { flushAllPromises } from 'tests/utils'
+import { env } from 'libs/environment'
+import { server } from 'tests/server'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/auth/settings')
+jest.mock('features/home/api')
 jest.mock('features/profile/utils')
-const mockedUseIsUserUnderage = mocked(useIsUserUnderage, true)
-
-let mockData: unknown = null
-jest.mock('features/home/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({
-    refetch: jest.fn(() => Promise.resolve({ data: mockData })),
-  })),
-}))
+const mockedUseAppSettings = mocked(useAppSettings)
+const mockedUseIsUserUnderage = mocked(useIsUserUnderage)
 
 describe('useBeneficiaryValidationNavigation', () => {
-  it('should navigate to home if user is undefined', async () => {
+  it('should navigate to home if nextStep is null', async () => {
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()
 
-    await flushAllPromises()
-
-    expect(navigateToHome).toBeCalled()
+    await waitForExpect(() => {
+      expect(navigateToHome).toBeCalled()
+    })
   })
 
-  it('should navigate to home if user.nextBeneficiaryValidationStep is null', async () => {
-    mockData = { firstName: 'Christophe', lastName: 'Dupont' }
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
-    result.current.navigateToNextBeneficiaryValidationStep()
-
-    await flushAllPromises()
-
-    expect(navigateToHome).toBeCalled()
-  })
-  it('should navigate to home if user.nextBeneficiaryValidationStep is null and user is underage', async () => {
+  it('should navigate to home if nextStep is null and user is underage', async () => {
     mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    mockData = { firstName: 'Christophe', lastName: 'Dupont' }
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()
 
-    await flushAllPromises()
-
-    expect(navigateToHome).not.toHaveBeenCalled()
-    expect(navigate).toBeCalledWith('UnavailableEduConnect')
+    await waitForExpect(() => {
+      expect(navigateToHome).not.toHaveBeenCalled()
+      expect(navigate).toBeCalledWith('UnavailableEduConnect')
+    })
   })
 
-  it('should navigate to PhoneValidation if user.nextBeneficiaryValidationStep is phone-validation', async () => {
-    mockData = {
-      firstName: 'Christophe',
-      lastName: 'Dupont',
-      nextBeneficiaryValidationStep: 'phone-validation',
-    }
+  it('should navigate to PhoneValidation if nextStep is phone-validation', async () => {
+    mockNextStepRequest(SubscriptionStep.PhoneValidation)
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()
 
-    await flushAllPromises()
-
-    expect(navigate).toBeCalledWith('SetPhoneNumber')
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('SetPhoneNumber')
+    })
   })
 
-  it('should navigate to IdCheck if user.nextBeneficiaryValidationStep is undefined', async () => {
-    mockData = {
-      firstName: 'Christophe',
-      lastName: 'Dupont',
-      nextBeneficiaryValidationStep: 'id-check',
-      email: 'christophe.dupont@gmail.com',
-    }
+  it('should navigate to IdCheck if nextStep is identity-check', async () => {
+    mockNextStepRequest(SubscriptionStep.IdentityCheck)
+    const { result } = renderHook(useBeneficiaryValidationNavigation)
+    result.current.navigateToNextBeneficiaryValidationStep()
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('IdCheckV2')
+    })
+  })
+
+  it('should navigate to IdCheck if nextStep is profile-completion', async () => {
+    mockNextStepRequest(SubscriptionStep.ProfileCompletion)
+    const { result } = renderHook(useBeneficiaryValidationNavigation)
+    result.current.navigateToNextBeneficiaryValidationStep()
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('IdCheckV2')
+    })
+  })
+
+  it('should navigate to IdCheckUnavailable if nextStep is identity-check and allowIdCheckRegistration is false', async () => {
+    const mockedSettings = {
+      data: {
+        allowIdCheckRegistration: true,
+      },
+      isLoading: false,
+    } as UseQueryResult<SettingsResponse, unknown>
+    mockedUseAppSettings.mockReturnValueOnce(mockedSettings)
+
+    mockNextStepRequest(SubscriptionStep.IdentityCheck)
 
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()
 
-    await flushAllPromises()
-
-    expect(navigate).toBeCalledWith('IdCheckV2')
-  })
-
-  it('should navigate to IdCheck if prefetched next step is id-check and email is not null', () => {
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
-    result.current.navigateToNextBeneficiaryValidationStep({
-      nextBeneficiaryValidationStep: BeneficiaryValidationStep.IdCheck,
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('IdCheckV2')
     })
-
-    expect(navigate).toBeCalledWith('IdCheckV2')
-  })
-
-  it('should navigate to IdCheck if prefetched next step is beneficiary-information and email is not null', () => {
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
-    result.current.navigateToNextBeneficiaryValidationStep({
-      nextBeneficiaryValidationStep: BeneficiaryValidationStep.BeneficiaryInformation,
-    })
-
-    expect(navigate).toBeCalledWith('IdCheckV2')
-  })
-
-  it('should navigate to IdCheck if prefetched next step is id-check and email is not null', () => {
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
-    result.current.navigateToNextBeneficiaryValidationStep({
-      nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
-    })
-
-    expect(navigate).toBeCalledWith('SetPhoneNumber')
   })
 })
+
+function mockNextStepRequest(nextSubscriptionStep: SubscriptionStep) {
+  return server.use(
+    rest.get<NextSubscriptionStepResponse>(
+      env.API_BASE_URL + `/native/v1/subscription/next_step`,
+      (_req, res, ctx) => res.once(ctx.status(200), ctx.json({ nextSubscriptionStep }))
+    )
+  )
+}
