@@ -51,7 +51,7 @@ module.exports = {
       {
         name: 'react-device-detect',
         message:
-          'Use theme variables instead, unless you are in a .web module or the theme module, AND the use case applies',
+          'Use libs/react-device-detect instead, unless you are in a .web module or the theme module, AND the use case applies',
       },
       { name: 'ui/theme/shadow.ios', message: 'use ui/theme instead' },
       { name: 'ui/theme/shadow.android', message: 'use ui/theme instead' },

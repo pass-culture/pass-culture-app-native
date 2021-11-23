@@ -3,13 +3,9 @@ import {
   ThemeType as IdCheckThemeType,
 } from '@pass-culture/id-check/src/theme'
 import deepmerge from 'deepmerge'
-// eslint-disable-next-line no-restricted-imports
-import {
-  isMobile as isMobileDeviceDetect,
-  isTablet as isTabletDeviceDetect,
-} from 'react-device-detect'
 import { Platform } from 'react-native'
 
+import { isMobile, isTablet } from 'libs/react-device-detect'
 import {
   BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
   getSpacing,
@@ -21,7 +17,7 @@ import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
 import { ZIndex } from 'ui/theme/layers'
 
 const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
-const isTouchWeb = Platform.OS === 'web' && (isMobileDeviceDetect || isTabletDeviceDetect)
+const isTouchWeb = Platform.OS === 'web' && (isMobile || isTablet)
 const isTouch = isNative || isTouchWeb
 
 interface Typography {
