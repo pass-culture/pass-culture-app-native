@@ -170,6 +170,15 @@ commands:
           set +eo pipefail
           gsutil rsync -r ./build gs://<< parameters.bucket_name >>
           true
+  invalidate-cache:
+    description: Invalidate Cache
+    parameters:
+      url_map_name:
+        type: string
+    steps:
+      - run:
+          name: Invalidate cache
+          command: gcloud compute url-maps invalidate-cdn-cache << parameters.url_map_name >> --path "/*"
 
 jobs:
   checkout-and-install-deps:
@@ -523,6 +532,8 @@ jobs:
           env: testing
       - push-to-bucket:
           bucket_name: passculture-metier-ehp-testing-decliweb
+      - invalidate-cache:
+          url_map_name: testing-decliweb-url-map
 
   deploy-web-staging:
     docker:
@@ -543,6 +554,8 @@ jobs:
           env: staging
       - push-to-bucket:
           bucket_name: passculture-metier-ehp-staging-decliweb
+      - invalidate-cache:
+          url_map_name: staging-decliweb-url-map
 
   deploy-web-integration:
     docker:
@@ -562,6 +575,8 @@ jobs:
           env: integration
       - push-to-bucket:
           bucket_name: passculture-metier-ehp-integration-decliweb
+      - invalidate-cache:
+          url_map_name: integration-decliweb-url-map
 
   deploy-web-prod:
     docker:
@@ -582,6 +597,8 @@ jobs:
           env: production
       - push-to-bucket:
           bucket_name: passculture-metier-prod-production-decliweb
+      - invalidate-cache:
+          url_map_name: production-decliweb-url-map
 
 workflows:
   version: 2.1
