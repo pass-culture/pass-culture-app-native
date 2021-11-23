@@ -20,6 +20,7 @@ exports[`<CityModal/> should render correctly 1`] = `
   scrollOffset={0}
   scrollOffsetMax={0}
   scrollTo={null}
+  statusBarTranslucent={false}
   supportedOrientations={
     Array [
       "portrait",
@@ -73,6 +74,7 @@ exports[`<CityModal/> should render correctly 1`] = `
     scrollOffset={0}
     scrollOffsetMax={0}
     scrollTo={null}
+    statusBarTranslucent={false}
     style={
       Object {
         "backgroundColor": "#ffffff",
