@@ -12,14 +12,14 @@ import { useAddresses } from 'libs/place/useAddresses'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
-import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SpinnerWithCenteredContainer } from 'ui/components/spinner/SpinnerWithCenteredContainer'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SetAddress = () => {
+  const { showErrorSnackBar } = useSnackBarContext()
   const [cityInfo, setCityInfo] = useState({ cityCode: '', postalCode: '' })
   const [addressQuery, setAddressQuery] = useState('')
   const [selectedAddress, setSelectedAddress] = useState('')

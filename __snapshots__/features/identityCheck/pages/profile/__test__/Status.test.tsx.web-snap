@@ -278,6 +278,7 @@ Array [
             Object {
               "height": "100%",
               "maxWidth": "500px",
+              "paddingBottom": "80px",
               "width": "100%",
             }
           }
@@ -1027,14 +1028,6 @@ Array [
               </div>
             </div>
           </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "height": "64px",
-              }
-            }
-          />
         </div>
         <div
           className="css-view-1dbjc4n"

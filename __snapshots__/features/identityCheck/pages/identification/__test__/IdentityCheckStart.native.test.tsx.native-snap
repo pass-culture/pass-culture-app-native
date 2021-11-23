@@ -198,12 +198,14 @@ Array [
         <View>
           <View
             centered={true}
+            paddingBottom={80}
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "height": "100%",
                   "maxWidth": 500,
+                  "paddingBottom": 80,
                   "width": "100%",
                 },
               ]

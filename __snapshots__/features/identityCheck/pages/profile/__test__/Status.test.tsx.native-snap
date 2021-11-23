@@ -197,11 +197,14 @@ Array [
       >
         <View>
           <View
+            centered={false}
+            paddingBottom={80}
             style={
               Array [
                 Object {
                   "height": "100%",
                   "maxWidth": 500,
+                  "paddingBottom": 80,
                   "width": "100%",
                 },
               ]
@@ -721,16 +724,6 @@ Array [
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={16}
-              style={
-                Array [
-                  Object {
-                    "height": 64,
-                  },
-                ]
-              }
-            />
           </View>
           <View
             style={

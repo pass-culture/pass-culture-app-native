@@ -32,7 +32,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: SetPostalCode,
     path: 'creation-profil/code-postal',
     options: { title: t`Code postal - Formulaire` },
-    // secure: true,
+    secure: true,
   },
   {
     name: 'IdentityCheckAddress',
