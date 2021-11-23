@@ -8,7 +8,7 @@ import { BeneficiaryValidationStep } from 'api/gen'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
-export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink'
+export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink' | 'exclusivity'
 
 export type IdentityCheckRootStackParamList = {
   IdentityCheckPostalCode: undefined
