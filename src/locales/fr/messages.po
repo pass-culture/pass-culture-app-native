@@ -167,6 +167,10 @@ msgstr "Adresse - Formulaire"
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+msgid "Adresse sélectionnée"
+msgstr "Adresse sélectionnée"
+
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"

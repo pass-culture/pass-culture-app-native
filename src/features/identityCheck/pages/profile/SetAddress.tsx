@@ -13,13 +13,14 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { Spacer } from 'ui/theme'
+import { SpinnerWithCenteredContainer } from 'ui/components/spinner/SpinnerWithCenteredContainer'
+import { ColorsEnum, Spacer } from 'ui/theme'
 
 export const SetAddress = () => {
   const [addressQuery, setAddressQuery] = useState('')
   const [cityInfo, setCityInfo] = useState({ cityCode: '', postalCode: '' })
   const [selectedAddress, setSelectedAddress] = useState('')
-  const { data: addresses = [], isError, refetch, remove } = useAddresses({
+  const { data: addresses = [], isError, isLoading, refetch, remove } = useAddresses({
     query: addressQuery,
     cityCode: cityInfo.cityCode,
     postalCode: cityInfo.postalCode,
@@ -61,6 +62,10 @@ export const SetAddress = () => {
 
   const onSubmit = (selectedAddress: string) => selectedAddress
 
+  const inputLabel = selectedAddress
+    ? t`Adresse sélectionnée`
+    : t`Recherche et sélectionne ton adresse`
+
   return (
     <PageWithHeader
       title={t`Profil`}
@@ -73,13 +78,14 @@ export const SetAddress = () => {
             autoFocus
             onChangeText={onAddressChange}
             value={addressQuery}
-            label={t`Recherche et sélectionne ton adresse`}
+            label={inputLabel}
             placeholder={t`Ex : 34 avenue de l'Opéra`}
             textContentType="addressState"
             onSubmitEditing={() => onSubmit(selectedAddress)}
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
+          {!!isLoading && <SpinnerWithCenteredContainer color={ColorsEnum.GREY_DARK} />}
           {addresses.map((option, index) => (
             <AddressOption
               option={option}

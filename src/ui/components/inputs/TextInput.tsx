@@ -14,6 +14,8 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomTextInputProps(props)
 
+  // Ajouter un bouton pour supprimer nativeProps.value dans la partie droite de l'input
+
   const [isFocus, setIsFocus] = useState(false)
 
   function onFocus() {
