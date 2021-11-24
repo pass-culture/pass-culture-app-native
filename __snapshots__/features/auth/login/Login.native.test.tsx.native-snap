@@ -5,40 +5,12 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -104,13 +104,11 @@
-              }
-            >
-              <View
-                accessibilityLabel=\\"Revenir en arrière\\"
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -158,13 +156,11 @@
-                Connecte-toi !
-              </Text>
-              <View
-                accessibilityLabel=\\"Revenir à l'accueil\\"
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -307,11 +303,11 @@
-                          \\"paddingTop\\": 0,
+@@ -306,11 +306,11 @@
                         },
                       ]
                     }
                     textContentType=\\"emailAddress\\"
+                    underlineColorAndroid=\\"transparent\\"
 -                   value=\\"\\"
 +                   value=\\"email@gmail.com\\"
                   />
@@ -46,49 +18,26 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
               </View>
             </View>
             <View
-@@ -423,18 +419,16 @@
-                      },
+@@ -425,11 +425,11 @@
                     ]
                   }
                   testID=\\"Entrée pour le mot de passe\\"
                   textContentType=\\"password\\"
+                  underlineColorAndroid=\\"transparent\\"
 -                 value=\\"\\"
 +                 value=\\"mypassword\\"
                 />
                 <View
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
--                 collapsable={false}
                   focusable={true}
--                 nativeID=\\"animatedComponent\\"
-                  onClick={[Function onClick]}
-                  onResponderGrant={[Function onResponderGrant]}
-                  onResponderMove={[Function onResponderMove]}
-                  onResponderRelease={[Function onResponderRelease]}
-                  onResponderTerminate={[Function onResponderTerminate]}
-@@ -485,13 +479,11 @@
-                ]
-              }
-            >
-              <View
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -530,24 +522,22 @@
+@@ -528,22 +528,22 @@
               }
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
               accessible={true}
--             collapsable={false}
 -             focusable={false}
--             nativeID=\\"animatedComponent\\"
 +             focusable={true}
               onClick={[Function onClick]}
               onResponderGrant={[Function onResponderGrant]}
@@ -107,7 +56,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -566,20 +556,20 @@
+@@ -562,20 +562,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -137,35 +86,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -104,13 +104,11 @@
-              }
-            >
-              <View
-                accessibilityLabel=\\"Revenir en arrière\\"
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -158,13 +156,11 @@
-                Connecte-toi !
-              </Text>
-              <View
-                accessibilityLabel=\\"Revenir à l'accueil\\"
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -192,10 +188,59 @@
+@@ -188,10 +188,59 @@
                   </Text>
                 </View>
               </View>
@@ -225,7 +146,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -252,18 +297,18 @@
+@@ -248,18 +297,18 @@
                       },
                     ]
                   }
@@ -246,12 +167,12 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -307,11 +352,11 @@
-                          \\"paddingTop\\": 0,
+@@ -306,11 +355,11 @@
                         },
                       ]
                     }
                     textContentType=\\"emailAddress\\"
+                    underlineColorAndroid=\\"transparent\\"
 -                   value=\\"\\"
 +                   value=\\"email@gmail.com\\"
                   />
@@ -259,7 +180,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               </View>
             </View>
             <View
-@@ -360,18 +405,18 @@
+@@ -359,18 +408,18 @@
                     },
                   ]
                 }
@@ -280,49 +201,26 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -423,18 +468,16 @@
-                      },
+@@ -425,11 +474,11 @@
                     ]
                   }
                   testID=\\"Entrée pour le mot de passe\\"
                   textContentType=\\"password\\"
+                  underlineColorAndroid=\\"transparent\\"
 -                 value=\\"\\"
 +                 value=\\"mypassword\\"
                 />
                 <View
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
--                 collapsable={false}
                   focusable={true}
--                 nativeID=\\"animatedComponent\\"
-                  onClick={[Function onClick]}
-                  onResponderGrant={[Function onResponderGrant]}
-                  onResponderMove={[Function onResponderMove]}
-                  onResponderRelease={[Function onResponderRelease]}
-                  onResponderTerminate={[Function onResponderTerminate]}
-@@ -485,13 +528,11 @@
-                ]
-              }
-            >
-              <View
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -530,24 +571,22 @@
+@@ -528,22 +577,22 @@
               }
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
               accessible={true}
--             collapsable={false}
 -             focusable={false}
--             nativeID=\\"animatedComponent\\"
 +             focusable={true}
               onClick={[Function onClick]}
               onResponderGrant={[Function onResponderGrant]}
@@ -341,7 +239,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -566,20 +605,20 @@
+@@ -562,20 +611,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -371,35 +269,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -104,13 +104,11 @@
-              }
-            >
-              <View
-                accessibilityLabel=\\"Revenir en arrière\\"
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -158,13 +156,11 @@
-                Connecte-toi !
-              </Text>
-              <View
-                accessibilityLabel=\\"Revenir à l'accueil\\"
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -192,10 +188,59 @@
+@@ -188,10 +188,59 @@
                   </Text>
                 </View>
               </View>
@@ -459,7 +329,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -252,18 +297,18 @@
+@@ -248,18 +297,18 @@
                       },
                     ]
                   }
@@ -480,12 +350,12 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -307,11 +352,11 @@
-                          \\"paddingTop\\": 0,
+@@ -306,11 +355,11 @@
                         },
                       ]
                     }
                     textContentType=\\"emailAddress\\"
+                    underlineColorAndroid=\\"transparent\\"
 -                   value=\\"\\"
 +                   value=\\"email@gmail.com\\"
                   />
@@ -493,7 +363,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               </View>
             </View>
             <View
-@@ -360,18 +405,18 @@
+@@ -359,18 +408,18 @@
                     },
                   ]
                 }
@@ -514,49 +384,26 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -423,18 +468,16 @@
-                      },
+@@ -425,11 +474,11 @@
                     ]
                   }
                   testID=\\"Entrée pour le mot de passe\\"
                   textContentType=\\"password\\"
+                  underlineColorAndroid=\\"transparent\\"
 -                 value=\\"\\"
 +                 value=\\"mypassword\\"
                 />
                 <View
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
--                 collapsable={false}
                   focusable={true}
--                 nativeID=\\"animatedComponent\\"
-                  onClick={[Function onClick]}
-                  onResponderGrant={[Function onResponderGrant]}
-                  onResponderMove={[Function onResponderMove]}
-                  onResponderRelease={[Function onResponderRelease]}
-                  onResponderTerminate={[Function onResponderTerminate]}
-@@ -485,13 +528,11 @@
-                ]
-              }
-            >
-              <View
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -530,24 +571,22 @@
+@@ -528,22 +577,22 @@
               }
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
               accessible={true}
--             collapsable={false}
 -             focusable={false}
--             nativeID=\\"animatedComponent\\"
 +             focusable={true}
               onClick={[Function onClick]}
               onResponderGrant={[Function onResponderGrant]}
@@ -575,7 +422,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -566,20 +605,20 @@
+@@ -562,20 +611,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -605,35 +452,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 - First value
 + Second value
 
-@@ -104,13 +104,11 @@
-              }
-            >
-              <View
-                accessibilityLabel=\\"Revenir en arrière\\"
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -158,13 +156,11 @@
-                Connecte-toi !
-              </Text>
-              <View
-                accessibilityLabel=\\"Revenir à l'accueil\\"
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -192,10 +188,59 @@
+@@ -188,10 +188,59 @@
                   </Text>
                 </View>
               </View>
@@ -693,7 +512,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -252,18 +297,18 @@
+@@ -248,18 +297,18 @@
                       },
                     ]
                   }
@@ -714,12 +533,12 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -307,11 +352,11 @@
-                          \\"paddingTop\\": 0,
+@@ -306,11 +355,11 @@
                         },
                       ]
                     }
                     textContentType=\\"emailAddress\\"
+                    underlineColorAndroid=\\"transparent\\"
 -                   value=\\"\\"
 +                   value=\\"email@gmail.com\\"
                   />
@@ -727,7 +546,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
               </View>
             </View>
             <View
-@@ -360,18 +405,18 @@
+@@ -359,18 +408,18 @@
                     },
                   ]
                 }
@@ -748,49 +567,26 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -423,18 +468,16 @@
-                      },
+@@ -425,11 +474,11 @@
                     ]
                   }
                   testID=\\"Entrée pour le mot de passe\\"
                   textContentType=\\"password\\"
+                  underlineColorAndroid=\\"transparent\\"
 -                 value=\\"\\"
 +                 value=\\"mypassword\\"
                 />
                 <View
                   accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
--                 collapsable={false}
                   focusable={true}
--                 nativeID=\\"animatedComponent\\"
-                  onClick={[Function onClick]}
-                  onResponderGrant={[Function onResponderGrant]}
-                  onResponderMove={[Function onResponderMove]}
-                  onResponderRelease={[Function onResponderRelease]}
-                  onResponderTerminate={[Function onResponderTerminate]}
-@@ -485,13 +528,11 @@
-                ]
-              }
-            >
-              <View
-                accessible={true}
--               collapsable={false}
-                focusable={true}
--               nativeID=\\"animatedComponent\\"
-                onClick={[Function onClick]}
-                onResponderGrant={[Function onResponderGrant]}
-                onResponderMove={[Function onResponderMove]}
-                onResponderRelease={[Function onResponderRelease]}
-                onResponderTerminate={[Function onResponderTerminate]}
-@@ -530,24 +571,22 @@
+@@ -528,22 +577,22 @@
               }
             />
             <View
               accessibilityLabel=\\"Se connecter\\"
               accessible={true}
--             collapsable={false}
 -             focusable={false}
--             nativeID=\\"animatedComponent\\"
 +             focusable={true}
               onClick={[Function onClick]}
               onResponderGrant={[Function onResponderGrant]}
@@ -809,7 +605,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -566,20 +605,20 @@
+@@ -562,20 +611,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={

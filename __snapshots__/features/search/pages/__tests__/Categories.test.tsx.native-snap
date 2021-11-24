@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -89,16 +89,16 @@
+@@ -87,16 +87,16 @@
                 },
               ]
             }
@@ -24,7 +24,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -115,10 +115,18 @@
+@@ -113,10 +113,18 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -41,9 +41,9 @@ exports[`Categories component should match diff snapshot when new category is se
         </View>
         <View
           accessible={true}
-          collapsable={false}
           focusable={true}
-@@ -167,16 +175,16 @@
+          onClick={[Function onClick]}
+@@ -163,16 +171,16 @@
                 },
               ]
             }
@@ -62,7 +62,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -193,18 +201,10 @@
+@@ -189,18 +197,10 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -79,8 +79,8 @@ exports[`Categories component should match diff snapshot when new category is se
         </View>
         <View
           accessible={true}
-          collapsable={false}
-          focusable={true}"
+          focusable={true}
+          onClick={[Function onClick]}"
 `;
 
 exports[`Categories component should render correctly 1`] = `
@@ -128,9 +128,7 @@ exports[`Categories component should render correctly 1`] = `
       />
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -214,9 +212,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -292,9 +288,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -370,9 +364,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -448,9 +440,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -526,9 +516,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -604,9 +592,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -682,9 +668,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -760,9 +744,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -838,9 +820,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -916,9 +896,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -994,9 +972,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -1072,9 +1048,7 @@ exports[`Categories component should render correctly 1`] = `
       </View>
       <View
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -1214,9 +1188,7 @@ exports[`Categories component should render correctly 1`] = `
         <View
           accessibilityLabel="Revenir en arrière"
           accessible={true}
-          collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}

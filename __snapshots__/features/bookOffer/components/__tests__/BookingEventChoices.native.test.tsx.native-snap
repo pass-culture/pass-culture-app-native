@@ -48,9 +48,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   </Text>
   <View
     accessible={true}
-    collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -146,9 +144,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   />
   <View
     accessible={true}
-    collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -244,15 +240,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     }
   >
     <View
-      accessibilityState={
-        Object {
-          "disabled": true,
-        }
-      }
       accessible={true}
-      collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -386,15 +375,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       </View>
     </View>
     <View
-      accessibilityState={
-        Object {
-          "disabled": true,
-        }
-      }
       accessible={true}
-      collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -530,9 +512,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   <View
     accessibilityLabel="Valider ces options"
     accessible={true}
-    collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}

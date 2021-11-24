@@ -116,9 +116,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
     <View
       accessibilityLabel="S'inscrire"
       accessible={true}
-      collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -203,9 +201,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
       <View
         accessibilityLabel="Connecte-toi"
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

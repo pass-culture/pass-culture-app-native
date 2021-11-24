@@ -9,6 +9,7 @@ import validateDate from 'validate-date'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ColorsEnum, Typo } from 'ui/theme'
+import { ZIndex } from "ui/theme/layers";
 
 interface ValidationBarProps {
   testID?: string
@@ -226,6 +227,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
           maxLength={8}
           onBlur={() => setCurrentFocus(undefined)}
           onSelectionChange={onSelectionChange}
+          selectionColor={'transparent'}
           {...accessibilityAndTestId(t`Entrée pour la date de naissance`)}
         />
 
@@ -317,8 +319,13 @@ const HiddenTextInput = styled(TextInput)({
   position: 'absolute',
   left: 0,
   right: 0,
-  top: 0,
-  bottom: 0,
-  zIndex: 0,
-  opacity: 0,
+  height: 1,
+  overflow: 'hidden',
+  zIndex: ZIndex.BACKGROUND,
+  opacity: 1,
+  ...Platform.select({
+    web: {
+      caretColor: 'transparent',
+    }
+  })
 })

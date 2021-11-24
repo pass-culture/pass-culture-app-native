@@ -189,9 +189,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   <View
                     accessibilityLabel="Accéder à l'offre"
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
-                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -335,9 +333,7 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             accessibilityLabel="Le 15 mars 2021 à 20h00"
             accessible={true}
-            collapsable={false}
             focusable={false}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -474,9 +470,7 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             accessibilityLabel="Voir l'itinéraire"
             accessible={true}
-            collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -547,9 +541,7 @@ exports[`BookingDetails should render correctly 1`] = `
         <View
           accessibilityLabel="Voir le détail de l’offre"
           accessible={true}
-          collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -664,10 +656,8 @@ exports[`BookingDetails should render correctly 1`] = `
   >
     <View
       accessible={true}
-      collapsable={false}
       focusable={true}
       forwardedRef={[Function]}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -690,12 +680,10 @@ exports[`BookingDetails should render correctly 1`] = `
       }
     />
     <View
-      collapsable={false}
       deviceHeight={1334}
       deviceWidth={750}
       forwardedRef={[Function]}
       hideModalContentWhileAnimating={false}
-      nativeID="animatedComponent"
       onBackdropPress={[Function]}
       onModalHide={[Function]}
       onModalWillHide={[Function]}
@@ -761,9 +749,7 @@ exports[`BookingDetails should render correctly 1`] = `
         <View
           accessibilityLabel="leftIconButton"
           accessible={true}
-          collapsable={false}
           focusable={false}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -805,9 +791,7 @@ exports[`BookingDetails should render correctly 1`] = `
         <View
           accessibilityLabel="Ne pas annuler"
           accessible={true}
-          collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -891,9 +875,7 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             accessibilityLabel="Annuler ma réservation"
             accessible={true}
-            collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -954,9 +936,7 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             accessibilityLabel="Retourner à ma réservation"
             accessible={true}
-            collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -1048,10 +1028,8 @@ exports[`BookingDetails should render correctly 1`] = `
   >
     <View
       accessible={true}
-      collapsable={false}
       focusable={true}
       forwardedRef={[Function]}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -1074,12 +1052,10 @@ exports[`BookingDetails should render correctly 1`] = `
       }
     />
     <View
-      collapsable={false}
       deviceHeight={1334}
       deviceWidth={750}
       forwardedRef={[Function]}
       hideModalContentWhileAnimating={false}
-      nativeID="animatedComponent"
       onBackdropPress={[Function]}
       onModalHide={[Function]}
       onModalWillHide={[Function]}
@@ -1145,9 +1121,7 @@ exports[`BookingDetails should render correctly 1`] = `
         <View
           accessibilityLabel="leftIconButton"
           accessible={true}
-          collapsable={false}
           focusable={false}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -1189,9 +1163,7 @@ exports[`BookingDetails should render correctly 1`] = `
         <View
           accessibilityLabel="Ne pas archiver"
           accessible={true}
-          collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -1292,9 +1264,7 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             accessibilityLabel="Terminer ma réservation"
             accessible={true}
-            collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -1355,9 +1325,7 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             accessibilityLabel="Retourner à ma réservation"
             accessible={true}
-            collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -1410,8 +1378,6 @@ exports[`BookingDetails should render correctly 1`] = `
     </View>
   </Modal>
   <View
-    collapsable={false}
-    nativeID="animatedComponent"
     style={
       Object {
         "backgroundColor": "rgba(255, 255, 255, 0)",
@@ -1468,9 +1434,7 @@ exports[`BookingDetails should render correctly 1`] = `
         <View
           accessibilityLabel="Revenir en arrière"
           accessible={true}
-          collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -1486,8 +1450,6 @@ exports[`BookingDetails should render correctly 1`] = `
           testID="Revenir en arrière"
         >
           <View
-            collapsable={false}
-            nativeID="animatedComponent"
             style={
               Object {
                 "alignItems": "center",
@@ -1517,8 +1479,6 @@ exports[`BookingDetails should render correctly 1`] = `
               }
             >
               <View
-                collapsable={false}
-                nativeID="animatedComponent"
                 style={
                   Object {
                     "opacity": 1,
@@ -1538,8 +1498,6 @@ exports[`BookingDetails should render correctly 1`] = `
                 </View>
               </View>
               <View
-                collapsable={false}
-                nativeID="animatedComponent"
                 style={
                   Object {
                     "opacity": 0,
@@ -1563,8 +1521,6 @@ exports[`BookingDetails should render correctly 1`] = `
         </View>
       </View>
       <Text
-        collapsable={false}
-        nativeID="animatedComponent"
         numberOfLines={1}
         style={
           Object {

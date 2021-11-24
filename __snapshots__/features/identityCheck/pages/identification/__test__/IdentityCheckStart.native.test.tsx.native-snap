@@ -68,9 +68,7 @@ Array [
       <View
         accessibilityLabel="Revenir en arrière"
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -127,9 +125,7 @@ Array [
       <View
         accessibilityLabel="rightIconButton"
         accessible={true}
-        collapsable={false}
         focusable={false}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -436,9 +432,7 @@ Array [
       <View
         accessibilityLabel="Commencer la vérification"
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -529,10 +523,8 @@ Array [
   >
     <View
       accessible={true}
-      collapsable={false}
       focusable={true}
       forwardedRef={[Function]}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -555,12 +547,10 @@ Array [
       }
     />
     <View
-      collapsable={false}
       deviceHeight={1334}
       deviceWidth={750}
       forwardedRef={[Function]}
       hideModalContentWhileAnimating={false}
-      nativeID="animatedComponent"
       onBackdropPress={[Function]}
       onModalHide={[Function]}
       onModalWillHide={[Function]}
@@ -626,9 +616,7 @@ Array [
         <View
           accessibilityLabel="Revenir en arrière"
           accessible={true}
-          collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -680,9 +668,7 @@ Array [
         <View
           accessibilityLabel="rightIconButton"
           accessible={true}
-          collapsable={false}
           focusable={false}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -864,9 +850,7 @@ Array [
         <View
           accessibilityLabel="J'ai compris"
           accessible={true}
-          collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}

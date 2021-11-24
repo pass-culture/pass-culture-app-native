@@ -181,6 +181,7 @@ Array [
               }
             >
               <TextInput
+                allowFontScaling={true}
                 autoCapitalize="none"
                 keyboardType="email-address"
                 onBlur={[Function]}
@@ -188,6 +189,7 @@ Array [
                 onFocus={[Function]}
                 placeholder="tonadresse@email.com"
                 placeholderTextColor="#626262"
+                rejectResponderTermination={true}
                 style={
                   Array [
                     Object {
@@ -206,6 +208,7 @@ Array [
                   ]
                 }
                 textContentType="emailAddress"
+                underlineColorAndroid="transparent"
                 value=""
               />
             </View>
@@ -304,11 +307,13 @@ Array [
               <TextInput
                 accessibilityLabel="Entrée pour le mot de passe"
                 accessible={true}
+                allowFontScaling={true}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
                 placeholder="Ton mot de passe"
                 placeholderTextColor="#626262"
+                rejectResponderTermination={true}
                 secureTextEntry={true}
                 style={
                   Array [
@@ -334,14 +339,13 @@ Array [
                 }
                 testID="Entrée pour le mot de passe"
                 textContentType="password"
+                underlineColorAndroid="transparent"
                 value=""
               />
               <View
                 accessibilityLabel="Basculer l'affichage du mot de passe"
                 accessible={true}
-                collapsable={false}
                 focusable={true}
-                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -400,9 +404,7 @@ Array [
           <View
             accessibilityLabel="Enregistrer"
             accessible={true}
-            collapsable={false}
             focusable={false}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -528,9 +530,7 @@ Array [
         <View
           accessibilityLabel="Revenir en arrière"
           accessible={true}
-          collapsable={false}
           focusable={true}
-          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}

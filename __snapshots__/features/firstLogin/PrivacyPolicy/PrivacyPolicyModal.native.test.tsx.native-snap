@@ -124,9 +124,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
       <View
         accessibilityLabel="leftIconButton"
         accessible={true}
-        collapsable={false}
         focusable={false}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -168,9 +166,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
       <View
         accessibilityLabel="Fermer la modale et refuser la collecte des données"
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -243,9 +239,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
       <View
         accessibilityLabel="Politique des cookies"
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -333,9 +327,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
       <View
         accessibilityLabel="Continuer"
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -396,9 +388,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
       <View
         accessibilityLabel="Paramètres de confidentialité"
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

@@ -315,6 +315,7 @@ Array [
                       <TextInput
                         accessibilityLabel="Entrée pour la date de naissance"
                         accessible={true}
+                        allowFontScaling={true}
                         autoFocus={true}
                         keyboardType="number-pad"
                         maxLength={8}
@@ -323,24 +324,27 @@ Array [
                         onSelectionChange={[Function]}
                         onSubmitEditing={[Function]}
                         pointerEvents="none"
+                        rejectResponderTermination={true}
                         returnKeyType="done"
+                        selectionColor="transparent"
                         style={
                           Array [
                             Object {
-                              "bottom": 0,
                               "fontSize": 18,
+                              "height": 1,
                               "left": 0,
                               "lineHeight": 22,
-                              "opacity": 0,
+                              "opacity": 1,
+                              "overflow": "hidden",
                               "position": "absolute",
                               "right": 0,
                               "textAlign": "center",
-                              "top": 0,
-                              "zIndex": 0,
+                              "zIndex": -1,
                             },
                           ]
                         }
                         testID="Entrée pour la date de naissance"
+                        underlineColorAndroid="transparent"
                         value=""
                       />
                       <View
@@ -767,9 +771,7 @@ Array [
   >
     <View
       accessible={true}
-      collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -802,9 +804,7 @@ Array [
       />
       <View
         accessible={true}
-        collapsable={false}
         focusable={false}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -843,9 +843,7 @@ Array [
           <View
             accessibilityLabel="leftIconButton"
             accessible={true}
-            collapsable={false}
             focusable={false}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -887,9 +885,7 @@ Array [
           <View
             accessibilityLabel="Fermer la modale"
             accessible={true}
-            collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -1312,6 +1308,7 @@ exports[`SetBirthday Page should render properly 1`] = `
                     <TextInput
                       accessibilityLabel="Entrée pour la date de naissance"
                       accessible={true}
+                      allowFontScaling={true}
                       autoFocus={true}
                       keyboardType="number-pad"
                       maxLength={8}
@@ -1320,24 +1317,27 @@ exports[`SetBirthday Page should render properly 1`] = `
                       onSelectionChange={[Function]}
                       onSubmitEditing={[Function]}
                       pointerEvents="none"
+                      rejectResponderTermination={true}
                       returnKeyType="done"
+                      selectionColor="transparent"
                       style={
                         Array [
                           Object {
-                            "bottom": 0,
                             "fontSize": 18,
+                            "height": 1,
                             "left": 0,
                             "lineHeight": 22,
-                            "opacity": 0,
+                            "opacity": 1,
+                            "overflow": "hidden",
                             "position": "absolute",
                             "right": 0,
                             "textAlign": "center",
-                            "top": 0,
-                            "zIndex": 0,
+                            "zIndex": -1,
                           },
                         ]
                       }
                       testID="Entrée pour la date de naissance"
+                      underlineColorAndroid="transparent"
                       value=""
                     />
                     <View

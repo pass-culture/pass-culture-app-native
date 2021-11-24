@@ -68,9 +68,7 @@ Array [
       <View
         accessibilityLabel="Revenir en arrière"
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -127,9 +125,7 @@ Array [
       <View
         accessibilityLabel="rightIconButton"
         accessible={true}
-        collapsable={false}
         focusable={false}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -291,6 +287,7 @@ Array [
               }
             >
               <TextInput
+                allowFontScaling={true}
                 autoCapitalize="none"
                 keyboardType="number-pad"
                 onBlur={[Function]}
@@ -299,6 +296,7 @@ Array [
                 onSubmitEditing={[Function]}
                 placeholder="Ex : 75017"
                 placeholderTextColor="#626262"
+                rejectResponderTermination={true}
                 style={
                   Array [
                     Object {
@@ -317,6 +315,7 @@ Array [
                   ]
                 }
                 textContentType="postalCode"
+                underlineColorAndroid="transparent"
                 value=""
               />
             </View>
@@ -351,9 +350,7 @@ Array [
       <View
         accessibilityLabel="Continuer"
         accessible={true}
-        collapsable={false}
         focusable={false}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -433,7 +430,6 @@ Array [
     scrollOffset={0}
     scrollOffsetMax={0}
     scrollTo={null}
-    statusBarTranslucent={false}
     supportedOrientations={
       Array [
         "portrait",
@@ -446,10 +442,8 @@ Array [
   >
     <View
       accessible={true}
-      collapsable={false}
       focusable={true}
       forwardedRef={[Function]}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -472,12 +466,10 @@ Array [
       }
     />
     <View
-      collapsable={false}
       deviceHeight={null}
       deviceWidth={null}
       forwardedRef={[Function]}
       hideModalContentWhileAnimating={false}
-      nativeID="animatedComponent"
       onBackdropPress={[Function]}
       onClose={[Function]}
       onModalHide={[Function]}
@@ -491,7 +483,6 @@ Array [
       scrollOffset={0}
       scrollOffsetMax={0}
       scrollTo={null}
-      statusBarTranslucent={false}
       style={
         Object {
           "backgroundColor": "#ffffff",
@@ -632,9 +623,7 @@ Array [
           <View
             accessibilityLabel="Annuler"
             accessible={true}
-            collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}

@@ -75,8 +75,6 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
           }
         >
           <View
-            collapsable={false}
-            nativeID="animatedComponent"
             onMoveShouldSetResponder={[Function]}
             onMoveShouldSetResponderCapture={[Function]}
             onResponderEnd={[Function]}
@@ -268,9 +266,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     <View
                       accessibilityLabel="Vérifier mon identité"
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
-                      nativeID="animatedComponent"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -333,9 +329,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     <View
                       accessibilityLabel="Passer"
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
-                      nativeID="animatedComponent"
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
