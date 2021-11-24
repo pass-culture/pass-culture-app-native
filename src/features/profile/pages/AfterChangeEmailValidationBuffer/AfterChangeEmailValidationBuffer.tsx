@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
+import { useMutation } from 'react-query'
 
+import { api } from 'api/api'
+import { ChangeBeneficiaryEmailBody } from 'api/gen'
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
-import { useValidateEmailChangeMutation } from 'features/profile/mutations'
 import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -25,10 +27,13 @@ export function AfterChangeEmailValidationBuffer() {
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
 
-  const { mutate: validateEmail } = useValidateEmailChangeMutation({
-    onSuccess: onEmailValidationSuccess,
-    onError: onEmailValidationFailure,
-  })
+  const { mutate: validateEmail } = useMutation(
+    (body: ChangeBeneficiaryEmailBody) => api.putnativev1profilevalidateEmail(body),
+    {
+      onSuccess: onEmailValidationSuccess,
+      onError: onEmailValidationFailure,
+    }
+  )
 
   function beforeEmailValidation() {
     if (isTimestampExpired(params.expiration_timestamp)) {
