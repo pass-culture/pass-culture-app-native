@@ -182,9 +182,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
       <View
         accessibilityLabel="Contacter le support"
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -252,59 +250,6 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="Renvoyer l'email"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Renvoyer l'email"
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 5,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#eb0055"
-        >
-          Renvoyer l'email
-        </Text>
-      </View>
-      <View
         numberOfSpaces={2}
         style={
           Array [
@@ -317,9 +262,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
       <View
         accessibilityLabel="Retourner à l'accueil"
         accessible={true}
-        collapsable={false}
         focusable={true}
-        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

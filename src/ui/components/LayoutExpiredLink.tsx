@@ -15,7 +15,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  onResendEmail: () => void
+  onResendEmail?: () => void
   disabledResendEmailButton: boolean
   urlFAQ?: string
   contactSupport?: () => void
@@ -57,11 +57,13 @@ export function LayoutExpiredLink({
       )}
 
       <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimaryWhite
-        title={t`Renvoyer l'email`}
-        onPress={onResendEmail}
-        disabled={disabledResendEmailButton}
-      />
+      {onResendEmail ? (
+        <ButtonPrimaryWhite
+          title={t`Renvoyer l'email`}
+          onPress={onResendEmail}
+          disabled={disabledResendEmailButton}
+        />
+      ) : null}
       <Spacer.Column numberOfSpaces={2} />
       <ButtonTertiaryWhite
         title={t`Retourner à l'accueil`}
