@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/core'
 import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
-import { BeneficiaryValidationStep, SubscriptionMessage } from 'api/gen'
+import { SubscriptionMessage } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -19,9 +19,9 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 interface NonBeneficiaryHeaderProps {
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
-  nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null
   lastUpdated?: string
   subscriptionMessage?: SubscriptionMessage | null
+  isEligibleForBeneficiaryUpgrade?: boolean
 }
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
@@ -59,7 +59,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   if (!eligibilityStartDatetime || !eligibilityEndDatetime || today >= eligibilityEndDatetime) {
     body = <BodyContainer testID="body-container-above-18" padding={1} />
   } else if (today >= eligibilityStartDatetime) {
-    if (props.nextBeneficiaryValidationStep || isUserUnderage) {
+    if (props.isEligibleForBeneficiaryUpgrade && !props.subscriptionMessage) {
       const moduleBannerWording = isUserUnderage
         ? t({
             id: 'enjoy underage deposit',

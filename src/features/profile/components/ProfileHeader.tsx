@@ -49,14 +49,13 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     : undefined
 
   const isDepositExpired = depositExpirationDate ? depositExpirationDate < new Date() : false
-  const canUpgradeBeneficiaryRole = isDepositExpired && user.isEligibleForBeneficiaryUpgrade
 
-  if (!user.isBeneficiary || canUpgradeBeneficiaryRole) {
+  if (!user.isBeneficiary || user.isEligibleForBeneficiaryUpgrade) {
     return (
       <NonBeneficiaryHeader
         eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
         eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
-        nextBeneficiaryValidationStep={user.nextBeneficiaryValidationStep}
+        isEligibleForBeneficiaryUpgrade={user.isEligibleForBeneficiaryUpgrade}
         subscriptionMessage={user.subscriptionMessage}
       />
     )

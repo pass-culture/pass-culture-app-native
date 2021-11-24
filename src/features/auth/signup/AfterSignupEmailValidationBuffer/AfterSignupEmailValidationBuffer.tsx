@@ -49,8 +49,7 @@ export function AfterSignupEmailValidationBuffer() {
     try {
       const user = await api.getnativev1me()
 
-      const { nextBeneficiaryValidationStep } = user
-      if (nextBeneficiaryValidationStep) {
+      if (user.isEligibleForBeneficiaryUpgrade) {
         const nextScreen = isUserUnderage(user) ? 'SelectSchoolHome' : 'VerifyEligibility'
         delayedNavigate(nextScreen, { nextBeneficiaryValidationStep })
       } else {
