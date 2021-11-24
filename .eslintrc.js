@@ -48,10 +48,11 @@ module.exports = {
       'error',
       { name: 'styled-components', message: 'Use styled-components/native instead' },
       { name: 'react-content-loader', message: 'use react-content-loader/native instead' },
+      { name: 'react-device-detect', message: 'use libs/react-device-detect instead' },
       {
-        name: 'react-device-detect',
+        name: 'libs/react-device-detect',
         message:
-          'Use libs/react-device-detect instead, unless you are in a .web module or the theme module, AND the use case applies',
+          'Use theme variables instead, unless you are in a .web module or the theme module, AND the use case applies',
       },
       { name: 'ui/theme/shadow.ios', message: 'use ui/theme instead' },
       { name: 'ui/theme/shadow.android', message: 'use ui/theme instead' },

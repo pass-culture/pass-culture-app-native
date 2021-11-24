@@ -5,7 +5,8 @@ import {
 import deepmerge from 'deepmerge'
 import { Platform } from 'react-native'
 
-import { isMobile, isTablet } from 'libs/react-device-detect'
+// eslint-disable-next-line no-restricted-imports
+import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
 import {
   BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
   getSpacing,
@@ -17,7 +18,7 @@ import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
 import { ZIndex } from 'ui/theme/layers'
 
 const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
-const isTouchWeb = Platform.OS === 'web' && (isMobile || isTablet)
+const isTouchWeb = Platform.OS === 'web' && (isMobileDeviceDetectOnWeb || isTabletDeviceDetectOnWeb)
 const isTouch = isNative || isTouchWeb
 
 interface Typography {

@@ -21,7 +21,8 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { currentTimestamp } from 'libs/dates'
 import { env } from 'libs/environment'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
-import { isDesktop } from 'libs/react-device-detect'
+// eslint-disable-next-line no-restricted-imports
+import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
 import { accessibilityAndTestId } from 'tests/utils'
@@ -41,7 +42,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 const CODE_INPUT_LENGTH = 6
 const AGENT_TYPE = Platform.select({
   default: 'agent_mobile',
-  web: isDesktop ? 'browser_computer' : 'browser_mobile',
+  web: isDesktopDeviceDetectOnWeb ? 'browser_computer' : 'browser_mobile',
 })
 
 export interface SetPhoneValidationCodeModalProps {
