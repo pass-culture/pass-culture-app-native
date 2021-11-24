@@ -6,7 +6,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { BicolorIconInterface } from './types'
 
-export const AroundMe: React.FunctionComponent<BicolorIconInterface> = ({
+export const AroundMeDeprecated: React.FunctionComponent<BicolorIconInterface> = ({
   size = 32,
   color = ColorsEnum.PRIMARY,
   color2 = ColorsEnum.SECONDARY,
