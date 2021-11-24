@@ -35,7 +35,7 @@ export function ChangeEmailExpiredLink(props: Props) {
       // onResendEmail={changeEmailExpiredLink}
       disabledResendEmailButton={isFetching}
       customBodyText={bodyText}
-      contactSupport={() => contactSupport.forChangeEmailExpiredLink(email)}
+      contactSupport={email ? () => contactSupport.forChangeEmailExpiredLink(email) : undefined}
     />
   )
 }
