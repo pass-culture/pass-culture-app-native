@@ -8,12 +8,21 @@ import {
   UseValidateEmailChangeMutationProps,
 } from 'features/profile/mutations'
 import { render } from 'tests/utils'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { AfterChangeEmailValidationBuffer } from '../AfterChangeEmailValidationBuffer'
 
 jest.mock('react-query')
 jest.mock('features/profile/mutations')
 const mockedUseValidateEmailChangeMutation = mocked(useValidateEmailChangeMutation)
+
+const mockShowSuccessSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
+  }),
+  SNACK_BAR_TIME_OUT: 5000,
+}))
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/AuthContext', () => ({
@@ -44,6 +53,10 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
 
     await waitForExpect(() => {
       expect(mockSignOut).toBeCalled()
+      expect(mockShowSuccessSnackBar).toBeCalledWith({
+        message: 'Ton e-mail a été modifié.',
+        timeout: 5000,
+      })
       expect(navigate).toBeCalledWith('Login')
     })
   })
