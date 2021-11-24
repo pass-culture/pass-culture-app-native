@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
@@ -25,9 +24,6 @@ export function PersonalData() {
     navigate('ChangeEmail')
     analytics.logModifyMail()
   }
-
-  // TODO (LucasBeneston): Remove this to display ChangeEmail in production
-  const isEmailChangeEnabled = env.ENV !== 'production'
 
   return (
     <React.Fragment>
@@ -49,14 +45,7 @@ export function PersonalData() {
           <Spacer.Column numberOfSpaces={2} />
           <EmailContainer>
             <EmailText>{user?.email}</EmailText>
-            {isEmailChangeEnabled ? (
-              <EmailChangeButton
-                title={t`Modifier`}
-                icon={EditPen}
-                inline
-                onPress={onEmailChange}
-              />
-            ) : null}
+            <EmailChangeButton title={t`Modifier`} icon={EditPen} inline onPress={onEmailChange} />
           </EmailContainer>
         </Row>
         <Separator />
