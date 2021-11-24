@@ -85,14 +85,14 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   if (!selectedStock || typeof quantity !== 'number') return <React.Fragment />
 
-  const price =
-    selectedStock.price > 0 ? formatToFrenchDecimal(quantity * selectedStock.price) : undefined
+  const priceInCents = quantity * selectedStock.price
+  const formattedPriceWithEuro = formatToFrenchDecimal(priceInCents)
 
   const onPressBookOffer = () => mutate({ quantity, stockId: selectedStock.id })
 
   const deductedAmount = t({
     id: 'montant déduit',
-    values: { price },
+    values: { price: formattedPriceWithEuro },
     message: '{price} seront déduits de ton crédit pass Culture',
   })
 
@@ -112,7 +112,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       <Spacer.Column numberOfSpaces={6} />
 
       <ButtonPrimary title={t`Confirmer la réservation`} onPress={onPressBookOffer} />
-      {!price && <Caption>{deductedAmount}</Caption>}
+      {!!formattedPriceWithEuro && <Caption>{deductedAmount}</Caption>}
     </Container>
   )
 }
