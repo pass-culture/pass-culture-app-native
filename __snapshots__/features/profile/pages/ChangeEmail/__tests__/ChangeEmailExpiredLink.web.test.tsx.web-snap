@@ -121,21 +121,6 @@ Object {
               style="height: 32px;"
             />
             <div
-              aria-label="Renvoyer l'email"
-              class="css-view-1dbjc4n"
-              data-testid="Renvoyer l'email"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-              tabindex="0"
-            >
-              <div
-                class="css-text-901oao css-textOneLine-vcwn7f"
-                dir="auto"
-                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
-              >
-                Renvoyer l'email
-              </div>
-            </div>
-            <div
               class="css-view-1dbjc4n"
               style="height: 8px;"
             />
@@ -290,21 +275,6 @@ Object {
             class="css-view-1dbjc4n"
             style="height: 32px;"
           />
-          <div
-            aria-label="Renvoyer l'email"
-            class="css-view-1dbjc4n"
-            data-testid="Renvoyer l'email"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
-          >
-            <div
-              class="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
-            >
-              Renvoyer l'email
-            </div>
-          </div>
           <div
             class="css-view-1dbjc4n"
             style="height: 8px;"

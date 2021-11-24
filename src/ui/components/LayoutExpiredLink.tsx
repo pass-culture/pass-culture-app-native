@@ -15,10 +15,11 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  onResendEmail: () => void
+  onResendEmail?: () => void
   disabledResendEmailButton: boolean
   urlFAQ?: string
   contactSupport?: () => void
+  customBodyText?: string
 }
 
 export function LayoutExpiredLink({
@@ -26,11 +27,14 @@ export function LayoutExpiredLink({
   urlFAQ,
   onResendEmail,
   contactSupport,
+  customBodyText,
 }: Props) {
   return (
     <GenericInfoPage title={t`Oups !`} icon={SadFace}>
       <StyledBody>{t`Le lien est expiré !`}</StyledBody>
-      <StyledBody>{t`Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.`}</StyledBody>
+      <StyledBody>
+        {customBodyText || t`Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.`}
+      </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
 
       {!!urlFAQ || !!contactSupport ? (
@@ -57,11 +61,13 @@ export function LayoutExpiredLink({
       )}
 
       <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimaryWhite
-        title={t`Renvoyer l'email`}
-        onPress={onResendEmail}
-        disabled={disabledResendEmailButton}
-      />
+      {onResendEmail ? (
+        <ButtonPrimaryWhite
+          title={t`Renvoyer l'email`}
+          onPress={onResendEmail}
+          disabled={disabledResendEmailButton}
+        />
+      ) : null}
       <Spacer.Column numberOfSpaces={2} />
       <ButtonTertiaryWhite
         title={t`Retourner à l'accueil`}
