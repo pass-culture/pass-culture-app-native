@@ -40,7 +40,7 @@ describe('<ChangeEmailExpiredLink />', () => {
     })
   })
 
-  it('should log event when clicking on resend email button', async () => {
+  it.skip('should log event when clicking on resend email button', async () => {
     const { getByText } = renderChangeEmailExpiredLink()
 
     const resendEmailButton = getByText("Renvoyer l'email")
