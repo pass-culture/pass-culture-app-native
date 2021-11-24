@@ -46,17 +46,11 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
         data.append('token', queryParams.licenceToken)
       }
       data.append('identityDocumentFile', file as Blob)
-      return await api.postnativev1identityDocument({
-        body: data,
-      })
+      return await api.postnativev1identityDocument({ body: data })
     } catch (err) {
       error = err
       if (err instanceof ApiError) {
-        if (err.content.code === 'EXPIRED_TOKEN') {
-          error = new IdCheckApiError(err.content.message, err.statusCode, {
-            code: IdCheckErrors['auth-required'],
-          })
-        } else if (err.content.code === 'INVALID_TOKEN') {
+        if (err.content.code === 'EXPIRED_TOKEN' || err.content.code === 'INVALID_TOKEN') {
           error = new IdCheckApiError(err.content.message, err.statusCode, {
             code: IdCheckErrors['auth-required'],
           })
@@ -68,8 +62,7 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
       }
       if (
         (err instanceof ApiError && err.content.code === 'FILE_SIZE_EXCEEDED') ||
-        err.status === 413 ||
-        err.statusCode === 413
+        (err as ApiError).statusCode === 413
       ) {
         error = new IdCheckApiError('File exceeded the maximum size of 10Mo', 413, {
           code: IdCheckErrors['file-size-exceeded'],

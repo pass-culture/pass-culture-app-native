@@ -77,7 +77,7 @@ export function ReCaptcha(props: Props) {
             grecaptcha.execute()
             clearInterval(intervalId)
           } catch (error) {
-            props.onError('reCAPTCHA error : ' + error.message)
+            if (error instanceof Error) props.onError('reCAPTCHA error : ' + error.message)
           }
         }
       }

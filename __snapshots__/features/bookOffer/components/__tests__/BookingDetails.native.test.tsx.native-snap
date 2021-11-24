@@ -475,7 +475,9 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
   <View
     accessibilityLabel="Confirmer la réservation"
     accessible={true}
+    collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}

@@ -169,7 +169,9 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       <View
         accessibilityLabel="S'inscrire"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -230,7 +232,9 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       <View
         accessibilityLabel="Se connecter"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

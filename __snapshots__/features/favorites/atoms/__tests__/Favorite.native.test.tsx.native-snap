@@ -5,7 +5,7 @@ exports[`<Favorite /> component offer name should take full space if no geolocat
 - First value
 + Second value
 
-@@ -112,10 +112,22 @@
+@@ -116,10 +116,22 @@
                   \\"flexDirection\\": \\"row\\",
                 },
               ]
@@ -28,7 +28,7 @@ exports[`<Favorite /> component offer name should take full space if no geolocat
                 style={
                   Array [
                     Object {
-@@ -127,10 +139,39 @@
+@@ -131,10 +143,39 @@
                   ]
                 }
               >

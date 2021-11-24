@@ -4,8 +4,6 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import parsePhoneNumber, { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, useState, useMemo, memo } from 'react'
-// eslint-disable-next-line no-restricted-imports
-import { isDesktop } from 'react-device-detect'
 import { Platform } from 'react-native'
 import { MaskedTextInput } from 'react-native-mask-text'
 import styled, { useTheme } from 'styled-components/native'
@@ -23,6 +21,8 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { currentTimestamp } from 'libs/dates'
 import { env } from 'libs/environment'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
+// eslint-disable-next-line no-restricted-imports
+import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
 import { accessibilityAndTestId } from 'tests/utils'
@@ -42,7 +42,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 const CODE_INPUT_LENGTH = 6
 const AGENT_TYPE = Platform.select({
   default: 'agent_mobile',
-  web: isDesktop ? 'browser_computer' : 'browser_mobile',
+  web: isDesktopDeviceDetectOnWeb ? 'browser_computer' : 'browser_mobile',
 })
 
 export interface SetPhoneValidationCodeModalProps {
@@ -59,7 +59,9 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
   'SetPhoneValidationCode'
 >
 
-export const SetPhoneValidationCode = memo(({ route }: SetPhoneValidationCodeProps) => {
+export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeComponent({
+  route,
+}: SetPhoneValidationCodeProps) {
   const { appContentWidth } = useTheme()
   const { data: settings } = useAppSettings()
   const formattedPhoneNumber = formatPhoneNumber(

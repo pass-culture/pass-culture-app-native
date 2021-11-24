@@ -26,10 +26,11 @@ export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
           timeout: SNACK_BAR_TIME_OUT,
         })
       } catch (error) {
-        showErrorSnackBar({
-          message: `${url} n'a pas été copié dans ton press-papier: ${error.message}`,
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        if (error instanceof Error)
+          showErrorSnackBar({
+            message: `${url} n'a pas été copié dans ton press-papier: ${error.message}`,
+            timeout: SNACK_BAR_TIME_OUT,
+          })
       }
     },
     [deeplink]

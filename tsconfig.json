@@ -4,7 +4,7 @@
     "paths": {
       "*": ["src/*", "*"],
       "@elastic/app-search-javascript": ["src/types/@elastic/app-search-javascript"],
-      "react-mobile-picker": ["src/types/react-mobile-picker"],
+      "react-mobile-picker": ["src/types/react-mobile-picker"]
     },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -28,7 +28,7 @@
   },
   "exclude": [
     "build/**",
-    "node_modules",
+    "node_modules/**",
     "src/types",
     "babel.config.js",
     "metro.config.js",

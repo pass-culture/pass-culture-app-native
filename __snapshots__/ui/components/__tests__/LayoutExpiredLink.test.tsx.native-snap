@@ -182,7 +182,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       <View
         accessibilityLabel="Consulter l'article d'aide"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -242,7 +244,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       <View
         accessibilityLabel="Contacter le support"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -312,7 +316,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       <View
         accessibilityLabel="Renvoyer l'email"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -373,7 +379,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       <View
         accessibilityLabel="Retourner à l'accueil"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

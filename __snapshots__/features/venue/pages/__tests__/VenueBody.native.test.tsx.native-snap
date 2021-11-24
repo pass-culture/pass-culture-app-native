@@ -424,8 +424,15 @@ exports[`<VenueBody /> should render correctly 1`] = `
         }
       />
       <View
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
+        }
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -528,6 +535,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
       }
     >
       <View
+        collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "height": 0,
@@ -801,17 +810,15 @@ exports[`<VenueBody /> should render correctly 1`] = `
             },
           ]
         }
-        disableVirtualization={false}
         getItem={[Function]}
         getItemCount={[Function]}
         getItemLayout={[Function]}
         horizontal={true}
-        initialNumToRender={10}
         keyExtractor={[Function]}
-        maxToRenderPerBatch={10}
         onContentSizeChange={[Function]}
         onEndReachedThreshold={0.2}
         onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
         onMomentumScrollEnd={[Function]}
         onScroll={[Function]}
         onScrollBeginDrag={[Function]}
@@ -823,9 +830,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
         showsHorizontalScrollIndicator={false}
         stickyHeaderIndices={Array []}
         testID="offersModuleList"
-        updateCellsBatchingPeriod={50}
         viewabilityConfigCallbackPairs={Array []}
-        windowSize={21}
       >
         <View>
           <View
@@ -1549,7 +1554,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
               />
               <View
                 accessible={true}
+                collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -1585,7 +1592,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   />
                   <View
                     accessible={true}
+                    collapsable={false}
                     focusable={true}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1711,8 +1720,15 @@ exports[`<VenueBody /> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Voir toutes les offres"
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
+        }
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -1917,7 +1933,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
         <View
           accessibilityLabel="Voir l'itinéraire"
           accessible={true}
+          collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
@@ -2039,6 +2057,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
         Modalités de retrait
       </Text>
       <View
+        collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "transform": Array [
@@ -2061,6 +2081,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
       </View>
     </View>
     <View
+      collapsable={false}
+      nativeID="animatedComponent"
       style={
         Object {
           "height": 0,
@@ -2192,6 +2214,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
         Accessibilité
       </Text>
       <View
+        collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "transform": Array [
@@ -2214,6 +2238,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
       </View>
     </View>
     <View
+      collapsable={false}
+      nativeID="animatedComponent"
       style={
         Object {
           "height": 0,
@@ -2869,6 +2895,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
         Contact
       </Text>
       <View
+        collapsable={false}
+        nativeID="animatedComponent"
         style={
           Object {
             "transform": Array [
@@ -2891,6 +2919,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
       </View>
     </View>
     <View
+      collapsable={false}
+      nativeID="animatedComponent"
       style={
         Object {
           "height": 0,
@@ -2927,7 +2957,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
         >
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -2980,7 +3012,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
           </View>
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -3033,7 +3067,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
           </View>
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}

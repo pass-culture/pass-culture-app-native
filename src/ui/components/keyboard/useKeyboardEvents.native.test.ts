@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { Keyboard, KeyboardEvent, Platform } from 'react-native'
+import { Keyboard, KeyboardEvent, Platform, DeviceEventEmitter } from 'react-native'
 
 import { useKeyboardEvents } from './useKeyboardEvents'
 
@@ -58,7 +58,7 @@ describe('useKeyboardEvents', () => {
             onBeforeShow: action === 'Show' ? functionMock : jest.fn(),
           },
         })
-        Keyboard.emit(`keyboardWill${action}`, keyboardEvent)
+        DeviceEventEmitter.emit(`keyboardWill${action}`, keyboardEvent)
         expect(functionMock).toHaveBeenCalledWith({
           keyboardShown: expectedKeyboardShown,
           keyboardHeight: 300,
@@ -78,7 +78,7 @@ describe('useKeyboardEvents', () => {
           onBeforeShow: action === 'Show' ? functionMock : jest.fn(),
         },
       })
-      Keyboard.emit(`keyboardDid${action}`, keyboardEvent)
+      DeviceEventEmitter.emit(`keyboardDid${action}`, keyboardEvent)
       expect(functionMock).not.toHaveBeenCalled()
     })
   })
@@ -93,7 +93,7 @@ describe('useKeyboardEvents', () => {
       ${'Show'} | ${onBeforeShowMock} | ${true}
       ${'Hide'} | ${onBeforeHideMock} | ${false}
     `(
-      'calls onBefore$action props when calling keyboardDid$action ',
+      'calls onBefore$action props when calling keyboardWill$action ',
       ({ action, functionMock, expectedKeyboardShown }) => {
         renderHook(useKeyboardEvents, {
           initialProps: {
@@ -101,7 +101,7 @@ describe('useKeyboardEvents', () => {
             onBeforeShow: action === 'Show' ? functionMock : jest.fn(),
           },
         })
-        Keyboard.emit(`keyboardWill${action}`, keyboardEvent)
+        DeviceEventEmitter.emit(`keyboardWill${action}`, keyboardEvent)
         expect(functionMock).toHaveBeenCalledWith({
           keyboardShown: expectedKeyboardShown,
           keyboardHeight: 300,

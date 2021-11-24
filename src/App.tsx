@@ -45,6 +45,7 @@ LogBox.ignoreLogs([
   // The following warning is caused by TabNavigationContext which is updated by the `tabbar` prop
   // of TabNavigator. As of today, no bug has been observed which seems related to the warning.
   'Cannot update a component (`_TabNavigationStateProvider`) while rendering a different component (`BottomTabView`).',
+  "EventEmitter.removeListener('appStateDidChange'",
 ])
 
 if (__DEV__ && process.env.JEST !== 'true') {

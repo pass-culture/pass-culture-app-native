@@ -1,7 +1,7 @@
 import debounce from 'lodash.debounce'
 import React, { useCallback, useRef } from 'react'
 import { View } from 'react-native'
-import { DateObject } from 'react-native-calendars'
+import { DateData } from 'react-native-calendars/src/types'
 import styled from 'styled-components/native'
 
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
@@ -15,7 +15,7 @@ import { DiagonalStripe } from './DiagonalStripe'
 interface Props {
   status: OfferStatus
   selected: boolean
-  date: DateObject
+  date: DateData
 }
 
 type VoidFn = () => void
@@ -24,7 +24,7 @@ export const useSelectDay = (): ((props: Props) => VoidFn | undefined) => {
   const { dispatch } = useBooking()
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
 
-  const selectDate = (date: DateObject) => () => {
+  const selectDate = (date: DateData) => () => {
     dispatch({ type: 'SELECT_DATE', payload: new Date(date.year, date.month - 1, date.day) })
     debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
   }

@@ -1,65 +1,40 @@
-import { renderHook } from '@testing-library/react-hooks'
-import * as RN from 'react-native'
-
 import { theme } from 'theme'
 
-import { useMediaQuery } from '../useMediaQuery'
+import { getMediaQueryFromDimensions } from '../useMediaQuery'
 
 describe('useMediaQuery native', () => {
   let isMobile = false
   let isTablet = false
   let isDesktop = false
-  const height = 1024
-  const scale = 1
-  const fontScale = 1
-  const mySpy = jest.spyOn(RN, 'useWindowDimensions')
+  const windowHeight = 1024
 
   describe('isMobile/isTablet/isDesktop media queries', () => {
     it('should return isMobile to true when windowWidth < theme.breakpoints.md', () => {
-      const windowDimensions = {
-        width: theme.breakpoints.md - 1,
-        height,
-        scale,
-        fontScale,
-      }
+      const dimensions = { windowWidth: theme.breakpoints.md - 1, windowHeight }
 
-      mySpy.mockReturnValueOnce(windowDimensions)
-      isMobile = !!renderHook(() => useMediaQuery({ maxWidth: theme.breakpoints.md })).result
-        .current
+      isMobile = !!getMediaQueryFromDimensions({ ...dimensions, maxWidth: theme.breakpoints.md })
+      isTablet = !!getMediaQueryFromDimensions({
+        ...dimensions,
+        minWidth: theme.breakpoints.md,
+        maxWidth: theme.breakpoints.lg,
+      })
+      isDesktop = !!getMediaQueryFromDimensions({ ...dimensions, minWidth: theme.breakpoints.lg })
 
-      mySpy.mockReturnValueOnce(windowDimensions)
-      isTablet = !!renderHook(() =>
-        useMediaQuery({ minWidth: theme.breakpoints.md, maxWidth: theme.breakpoints.lg })
-      ).result.current
-
-      mySpy.mockReturnValueOnce(windowDimensions)
-      isDesktop = !!renderHook(() => useMediaQuery({ minWidth: theme.breakpoints.lg })).result
-        .current
       expect(isMobile).toBeTruthy()
       expect(isTablet).toBeFalsy()
       expect(isDesktop).toBeFalsy()
     })
 
     it('should return isTablet to true when windowWidth > theme.breakpoints.md and windowWidth < theme.breakpoints.lg', () => {
-      const windowDimensions = {
-        width: theme.breakpoints.md + 1,
-        height,
-        scale,
-        fontScale,
-      }
+      const dimensions = { windowWidth: theme.breakpoints.md + 1, windowHeight }
 
-      mySpy.mockReturnValueOnce(windowDimensions)
-      isMobile = !!renderHook(() => useMediaQuery({ maxWidth: theme.breakpoints.md })).result
-        .current
-
-      mySpy.mockReturnValueOnce(windowDimensions)
-      isTablet = !!renderHook(() =>
-        useMediaQuery({ minWidth: theme.breakpoints.md, maxWidth: theme.breakpoints.lg })
-      ).result.current
-
-      mySpy.mockReturnValueOnce(windowDimensions)
-      isDesktop = !!renderHook(() => useMediaQuery({ minWidth: theme.breakpoints.lg })).result
-        .current
+      isMobile = !!getMediaQueryFromDimensions({ ...dimensions, maxWidth: theme.breakpoints.md })
+      isTablet = !!getMediaQueryFromDimensions({
+        ...dimensions,
+        minWidth: theme.breakpoints.md,
+        maxWidth: theme.breakpoints.lg,
+      })
+      isDesktop = !!getMediaQueryFromDimensions({ ...dimensions, minWidth: theme.breakpoints.lg })
 
       expect(isMobile).toBeFalsy()
       expect(isTablet).toBeTruthy()
@@ -67,25 +42,16 @@ describe('useMediaQuery native', () => {
     })
 
     it('should return isDesktop to true when windowWidth > theme.breakpoints.lg', () => {
-      const windowDimensions = {
-        width: theme.breakpoints.lg + 1,
-        height,
-        scale,
-        fontScale,
-      }
+      const dimensions = { windowWidth: theme.breakpoints.lg + 1, windowHeight }
 
-      mySpy.mockReturnValueOnce(windowDimensions)
-      isMobile = !!renderHook(() => useMediaQuery({ maxWidth: theme.breakpoints.md })).result
-        .current
+      isMobile = !!getMediaQueryFromDimensions({ ...dimensions, maxWidth: theme.breakpoints.md })
+      isTablet = !!getMediaQueryFromDimensions({
+        ...dimensions,
+        minWidth: theme.breakpoints.md,
+        maxWidth: theme.breakpoints.lg,
+      })
+      isDesktop = !!getMediaQueryFromDimensions({ ...dimensions, minWidth: theme.breakpoints.lg })
 
-      mySpy.mockReturnValueOnce(windowDimensions)
-      isTablet = !!renderHook(() =>
-        useMediaQuery({ minWidth: theme.breakpoints.md, maxWidth: theme.breakpoints.lg })
-      ).result.current
-
-      mySpy.mockReturnValueOnce(windowDimensions)
-      isDesktop = !!renderHook(() => useMediaQuery({ minWidth: theme.breakpoints.lg })).result
-        .current
       expect(isMobile).toBeFalsy()
       expect(isTablet).toBeFalsy()
       expect(isDesktop).toBeTruthy()
@@ -131,22 +97,14 @@ describe('useMediaQuery native', () => {
         maxHeight: number
         mq: boolean
       }) => {
-        let isMq = false
-        const windowDimensions = {
-          width: 1000,
-          height: 500,
-          scale: 1,
-          fontScale: 1,
-        }
-        mySpy.mockReturnValueOnce(windowDimensions)
-        isMq = !!renderHook(() =>
-          useMediaQuery({
-            minWidth,
-            maxWidth,
-            minHeight,
-            maxHeight,
-          })
-        ).result.current
+        const dimensions = { windowWidth: 1000, windowHeight: 500 }
+        const isMq = !!getMediaQueryFromDimensions({
+          ...dimensions,
+          minWidth,
+          maxWidth,
+          minHeight,
+          maxHeight,
+        })
         expect(isMq).toBe(mq)
       }
     )

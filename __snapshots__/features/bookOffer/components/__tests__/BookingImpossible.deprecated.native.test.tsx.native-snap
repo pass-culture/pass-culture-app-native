@@ -86,7 +86,9 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
   <View
     accessibilityLabel="Mettre en favoris"
     accessible={true}
+    collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -147,7 +149,9 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
   <View
     accessibilityLabel="Retourner à l'offre"
     accessible={true}
+    collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
