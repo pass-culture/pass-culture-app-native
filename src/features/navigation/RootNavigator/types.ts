@@ -105,6 +105,7 @@ export type RootStackParamList = {
   PhoneValidationTooManyAttempts: undefined
   PhoneValidationTooManySMSSent: undefined
   VerifyEligibility: { nextBeneficiaryValidationStep: BeneficiaryValidationStep }
+  NotYetUnderageEligibility: undefined
   FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined
