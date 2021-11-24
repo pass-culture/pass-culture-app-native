@@ -4,9 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
-import { StyledStepDots } from 'features/auth/components/signupComponents'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'tests/utils'
@@ -17,7 +15,6 @@ import { isNameValid } from 'ui/components/inputs/nameCheck'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
@@ -101,11 +98,6 @@ export const SetName: FunctionComponent<Props> = ({ route }) => {
           />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary title={t`Continuer`} onPress={submitName} disabled={disabled} />
-          <Spacer.Column numberOfSpaces={5} />
-          <StyledStepDots>
-            {/* TODO(antoinewg): wrong step number. Wrong screen also: we will move SetName to the profile steps */}
-            <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={2} />
-          </StyledStepDots>
         </BottomCardContentContainer>
       </BottomContentPage>
       <QuitSignupModal

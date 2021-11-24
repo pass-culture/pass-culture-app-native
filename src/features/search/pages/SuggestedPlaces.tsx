@@ -53,7 +53,7 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
 }
 
 export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
-  const { data: places = [], isLoading: isLoadingPlaces } = usePlaces(query)
+  const { data: places = [], isLoading: isLoadingPlaces } = usePlaces({ query })
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
   const { dispatch } = useStagedSearch()
   const { goBack } = useGoBack(...getTabNavConfig('Search'))

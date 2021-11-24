@@ -1,26 +1,49 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { SuggestedPlace } from 'libs/place'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Validate } from 'ui/svg/icons/Validate'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
   onPressOption: (option: string) => void
-  option: string
+  option: SuggestedPlace
+  selected: boolean
 }
 
-export const AddressOption = ({ option, onPressOption }: Props) => {
+export const AddressOption = ({ option, onPressOption, selected }: Props) => {
   return (
-    <StyledTouchableOpacity onPress={() => onPressOption(option)}>
-      <Typo.Body>{option}</Typo.Body>
-      <Spacer.Column numberOfSpaces={2} />
+    <React.Fragment>
+      <StyledTouchableOpacity
+        onPress={() => onPressOption(option.label)}
+        activeOpacity={ACTIVE_OPACITY}>
+        <TextContainer>
+          <Typo.Body>{option.label}</Typo.Body>
+          {selected ? (
+            <IconContainer>
+              <Validate color={ColorsEnum.PRIMARY} />
+            </IconContainer>
+          ) : null}
+        </TextContainer>
+      </StyledTouchableOpacity>
       <Separator />
-    </StyledTouchableOpacity>
+    </React.Fragment>
   )
 }
 
 const StyledTouchableOpacity = styled.TouchableOpacity({
   flexDirection: 'column',
   justifyContent: 'flex-start',
-  paddingVertical: getSpacing(2),
+  paddingVertical: getSpacing(3),
+})
+const TextContainer = styled.View({
+  flex: 1,
+  justifyContent: 'center',
+})
+
+const IconContainer = styled.View({
+  position: 'absolute',
+  right: 0,
 })

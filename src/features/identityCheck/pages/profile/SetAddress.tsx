@@ -10,15 +10,14 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { usePlaces } from 'features/search/api'
 import { eventMonitoring } from 'libs/monitoring'
-import { useAddresses } from 'libs/place/useAddresses'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { SpinnerWithCenteredContainer } from 'ui/components/spinner/SpinnerWithCenteredContainer'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { ColorsEnum, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SetAddress = () => {
@@ -28,10 +27,11 @@ export const SetAddress = () => {
   const [cityInfo, setCityInfo] = useState({ cityCode: '', postalCode: '' })
   const [addressQuery, setAddressQuery] = useState('')
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null)
-  const { data: addresses = [], isError, isLoading, refetch, remove } = useAddresses({
+  const { data: addresses = [], isError, refetch, remove } = usePlaces({
     query: addressQuery,
     cityCode: cityInfo.cityCode,
     postalCode: cityInfo.postalCode,
+    limit: 10,
   })
 
   useEffect(() => {
@@ -63,9 +63,7 @@ export const SetAddress = () => {
   }
 
   function onAddressSelection(address: string) {
-    setAddressQuery(address)
     setSelectedAddress(address)
-    remove()
   }
 
   function resetSearch() {
@@ -91,10 +89,6 @@ export const SetAddress = () => {
     }
   }
 
-  const inputLabel = selectedAddress
-    ? t`Adresse sélectionnée`
-    : t`Recherche et sélectionne ton adresse`
-
   return (
     <PageWithHeader
       title={t`Profil`}
@@ -105,7 +99,7 @@ export const SetAddress = () => {
             autoFocus
             onChangeText={onAddressChange}
             value={addressQuery}
-            label={inputLabel}
+            label={t`Recherche et sélectionne ton adresse`}
             placeholder={t`Ex : 34 avenue de l'Opéra`}
             textContentType="addressState"
             onSubmitEditing={() => onSubmit(selectedAddress)}
@@ -113,17 +107,14 @@ export const SetAddress = () => {
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
-          {!!isLoading && (
-            <SpinnerWithCenteredContainer color={ColorsEnum.GREY_DARK} testID="spinner" />
-          )}
           {addresses.map((option, index) => (
             <AddressOption
               option={option}
+              selected={option.label === selectedAddress}
               onPressOption={onAddressSelection}
-              key={option}
-              {...accessibilityAndTestId(
-                t`Proposition d'adresse ${index + 1} : ${option}`
-              )}></AddressOption>
+              key={option.label}
+              {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${option.label}`)}
+            />
           ))}
         </ModalContent>
       }

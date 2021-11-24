@@ -10,6 +10,7 @@ export enum QueryKeys {
   FIRESTORE_APP_SEARCH = 'firestoreAppSearch',
   HOMEPAGE_MODULES = 'homepageModules',
   ID_CHECK_TOKEN = 'idCheckToken',
+  LIMIT = 'limit',
   OFFER = 'offer',
   PHONE_VALIDATION_CODE = 'phoneValidationCode',
   PLACES = 'places',

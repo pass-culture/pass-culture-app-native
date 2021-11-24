@@ -5,9 +5,11 @@ import { Properties, SuggestedPlace } from './types'
 const API_ADRESSE_URL = `https://api-adresse.data.gouv.fr/search`
 const REGEX_STARTING_WITH_NUMBERS = /^\d/
 
-interface Props {
+export interface PlaceProps {
   query: string
   limit?: number
+  cityCode?: string | null
+  postalCode?: string | null
 }
 
 export const buildSuggestedPlaces = (
@@ -31,8 +33,16 @@ export const buildSuggestedPlaces = (
     }
   })
 
-export const fetchPlaces = ({ query, limit = 20 }: Props) =>
-  fetch(`${API_ADRESSE_URL}/?limit=${limit}&q=${query}`)
+export const buildSuggestedAddresses = (
+  suggestedAddresses: FeatureCollection<Point, Properties>
+): string[] => suggestedAddresses.features.map(({ properties }) => properties.label)
+
+export const fetchPlaces = ({ query, cityCode, postalCode, limit = 20 }: PlaceProps) => {
+  let stringQueryParams = `${query}`
+  if (cityCode) stringQueryParams += `&citycode=${cityCode}`
+  if (postalCode) stringQueryParams += `&postcode=${postalCode}`
+  return fetch(`${API_ADRESSE_URL}/?limit=${limit}&q=${stringQueryParams}`)
     .then((response) => response.json())
     .then(buildSuggestedPlaces)
     .catch(() => [])
+}

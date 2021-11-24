@@ -4,8 +4,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { eventMonitoring } from 'libs/monitoring'
-import { buildSuggestedAddresses } from 'libs/place/fetchAddresses'
-import { mockedSuggestedAddresses } from 'libs/place/fixtures/mockedSuggestedAddresses'
+import { buildSuggestedAddresses } from 'libs/place'
+import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -50,7 +50,7 @@ describe('<SetAddress/>', () => {
   })
 
   it('should display a list of addresses when user add an address', async () => {
-    mockAddresses = buildSuggestedAddresses(mockedSuggestedAddresses)
+    mockAddresses = buildSuggestedAddresses(mockedSuggestedPlaces)
     const { getByText, getByPlaceholderText } = render(<SetAddress />)
 
     const input = getByPlaceholderText("Ex : 34 avenue de l'Opéra")
@@ -59,6 +59,7 @@ describe('<SetAddress/>', () => {
     await waitFor(() => {
       getByText(mockAddresses[0])
       getByText(mockAddresses[1])
+      getByText(mockAddresses[2])
     })
   })
 
@@ -69,7 +70,7 @@ describe('<SetAddress/>', () => {
   })
 
   it('should switch input label and remove list of addresses when user pick an address', async () => {
-    mockAddresses = buildSuggestedAddresses(mockedSuggestedAddresses)
+    mockAddresses = buildSuggestedAddresses(mockedSuggestedPlaces)
     const { getByText, queryByText, getByPlaceholderText } = render(<SetAddress />)
 
     const input = getByPlaceholderText("Ex : 34 avenue de l'Opéra")
@@ -87,7 +88,7 @@ describe('<SetAddress/>', () => {
   })
 
   it('should save address when clicking on "Continuer"', async () => {
-    mockAddresses = buildSuggestedAddresses(mockedSuggestedAddresses)
+    mockAddresses = buildSuggestedAddresses(mockedSuggestedPlaces)
     const { getByText, getByPlaceholderText } = render(<SetAddress />)
 
     const input = getByPlaceholderText("Ex : 34 avenue de l'Opéra")
