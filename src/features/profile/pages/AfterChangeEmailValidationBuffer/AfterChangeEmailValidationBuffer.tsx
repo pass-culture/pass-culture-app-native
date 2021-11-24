@@ -32,7 +32,7 @@ export function AfterChangeEmailValidationBuffer() {
       return
     }
     validateEmail({
-      emailChangeValidationToken: params.token,
+      token: params.token,
     })
   }
 

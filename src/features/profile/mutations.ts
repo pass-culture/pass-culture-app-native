@@ -1,8 +1,7 @@
 import { useMutation } from 'react-query'
 
-interface ValidateEmailChangeRequest {
-  emailChangeValidationToken: string
-}
+import { api } from 'api/api'
+import { ChangeBeneficiaryEmailBody } from 'api/gen'
 
 export interface UseValidateEmailChangeMutationProps {
   onSuccess: () => void
@@ -14,14 +13,7 @@ export function useValidateEmailChangeMutation({
   onError,
 }: UseValidateEmailChangeMutationProps) {
   return useMutation(
-    // TODO (PC-11697): call the API once available
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    (body: ValidateEmailChangeRequest) =>
-      new Promise((resolve, reject) =>
-        setTimeout(() => {
-          reject()
-        }, 1000)
-      ),
+    (body: ChangeBeneficiaryEmailBody) => api.putnativev1profilevalidateEmail(body),
     {
       onSuccess,
       onError,
