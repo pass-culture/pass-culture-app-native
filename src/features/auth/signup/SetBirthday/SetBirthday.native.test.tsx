@@ -24,7 +24,12 @@ jest.mock('features/auth/api', () => {
 
   return {
     ...originalModule,
-    useDepositAmount: jest.fn().mockReturnValue('300 €'),
+    useDepositAmountsByAge: jest.fn().mockReturnValue({
+      fifteenYearsOldDeposit: '20 €',
+      sixteenYearsOldDeposit: '30 €',
+      seventeenYearsOldDeposit: '30 €',
+      eighteenYearsOldDeposit: '300 €',
+    }),
   }
 })
 const mockedUseAppSettings = mocked(useAppSettings)

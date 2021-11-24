@@ -4,7 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { SIGNUP_NUMBER_OF_STEPS, useDepositAmount } from 'features/auth/api'
+import { SIGNUP_NUMBER_OF_STEPS, useDepositAmountsByAge } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { useAppSettings } from 'features/auth/settings'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
@@ -63,7 +63,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     isTooOld: false,
   })
   const { data: settings } = useAppSettings()
-  const deposit = useDepositAmount().replace(' ', '\u00a0')
+  const deposit = useDepositAmountsByAge().eighteenYearsOldDeposit.replace(' ', '\u00a0')
 
   const now = new Date()
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE

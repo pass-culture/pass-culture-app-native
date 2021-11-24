@@ -55,6 +55,22 @@ msgstr "1 Minuscule"
 msgid "12 Caractères"
 msgstr "12 Caractères"
 
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+msgid "15 ans"
+msgstr "15 ans"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+msgid "16 ans"
+msgstr "16 ans"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+msgid "17 ans"
+msgstr "17 ans"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+msgid "18 ans"
+msgstr "18 ans"
+
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "1er tutoriel"
 msgstr "1er tutoriel"
@@ -150,6 +166,22 @@ msgstr "Adresse e-mail"
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+msgid "Aide financière 15 ans"
+msgstr "Aide financière 15 ans"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+msgid "Aide financière 16 ans"
+msgstr "Aide financière 16 ans"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+msgid "Aide financière 17 ans"
+msgstr "Aide financière 17 ans"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+msgid "Aide financière 18 ans"
+msgstr "Aide financière 18 ans"
 
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
@@ -857,6 +889,10 @@ msgstr "Entrée pour l'email"
 msgid "Entrée pour la date de naissance"
 msgstr "Entrée pour la date de naissance"
 
+#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+msgid "Entrée pour le code postal"
+msgstr "Entrée pour le code postal"
+
 #: src/ui/components/inputs/DateInput.native.test.tsx
 #: src/ui/components/inputs/DateInput.native.test.tsx
 #: src/ui/components/inputs/DateInput.native.test.tsx
@@ -898,9 +934,6 @@ msgstr "Entrée pour le jour de la date de naissance"
 #: src/ui/components/inputs/DateInput.web.test.tsx
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
-#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
-msgid "Entrée pour le code postal"
-msgstr "Entrée pour le code postal"
 
 #: src/features/auth/signup/SetName/SetName.tsx
 msgid "Entrée pour le nom"
@@ -2710,12 +2743,12 @@ msgid "crédit valable jusqu'au"
 msgstr "crédit valable jusqu'au"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
-msgid "dans l’année de tes 15 à 18 ans, obtiens l’aide financière pass Culture d’un montant de 20€ à {deposit} à dépenser dans l’application."
-msgstr "dans l’année de tes 15 à 18 ans, obtiens l’aide financière pass Culture d’un montant de 20€ à {deposit} à dépenser dans l’application."
+msgid "dans l'année de tes 18 ans, le Gouvernement offre un crédit de {deposit} à dépenser dans l’application."
+msgstr "dans l'année de tes 18 ans, le Gouvernement offre un crédit de {deposit} à dépenser dans l’application."
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
-msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
-msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
+msgid "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
+msgstr "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 msgid "des académies de Rennes ou de Versailles, tu fais partie de la phase de test du pass Culture 15-17 ans."
@@ -2748,6 +2781,10 @@ msgstr "Profite de {deposit}"
 #: src/features/profile/components/NonBeneficiaryHeader.tsx
 msgid "enjoy underage deposit"
 msgstr "Profite de ton crédit"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+msgid "et si tu as..."
+msgstr "et si tu as..."
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu es..."

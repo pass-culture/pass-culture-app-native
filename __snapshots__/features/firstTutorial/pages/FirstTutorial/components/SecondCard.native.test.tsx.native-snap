@@ -115,7 +115,7 @@ exports[`SecondCard should render second card 1`] = `
       ]
     }
   >
-    dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application.
+    dans l'année de tes 18 ans, le Gouvernement offre un crédit de 300€ à dépenser dans l’application.
   </Text>
   <View
     flex={2}

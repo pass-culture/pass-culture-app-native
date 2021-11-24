@@ -27,7 +27,14 @@ const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavi
 jest.mock('features/profile/utils')
 const mockedUseIsUserUnderage = mocked(useIsUserUnderage, true)
 
-jest.mock('features/auth/api', () => ({ useDepositAmount: () => '300 €' }))
+jest.mock('features/auth/api', () => ({
+  useDepositAmountsByAge: jest.fn(() => ({
+    fifteenYearsOldDeposit: '20 €',
+    sixteenYearsOldDeposit: '30 €',
+    seventeenYearsOldDeposit: '30 €',
+    eighteenYearsOldDeposit: '300 €',
+  })),
+}))
 jest.mock('features/auth/settings')
 
 const mockData = {

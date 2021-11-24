@@ -97,10 +97,20 @@ export function useAccountSuspend(onSuccess: () => void, onError: (error: unknow
   })
 }
 
-export function useDepositAmount() {
+export function useDepositAmountsByAge() {
   const { data: settings } = useAppSettings()
-  const amount = settings?.depositAmount ?? 30000
-  return formatToFrenchDecimal(amount)
+  const fifteenYearsOldAmount = settings?.depositAmountsByAge?.age_15 ?? 2000
+  const sixteenYearsOldAmount = settings?.depositAmountsByAge?.age_16 ?? 3000
+  const seventeenYearsOldAmount = settings?.depositAmountsByAge?.age_17 ?? 3000
+  const eighteenYearsOldAmount = settings?.depositAmountsByAge?.age_18 ?? 30000
+
+  const amountsByAge = {
+    fifteenYearsOldDeposit: formatToFrenchDecimal(fifteenYearsOldAmount),
+    sixteenYearsOldDeposit: formatToFrenchDecimal(sixteenYearsOldAmount),
+    seventeenYearsOldDeposit: formatToFrenchDecimal(seventeenYearsOldAmount),
+    eighteenYearsOldDeposit: formatToFrenchDecimal(eighteenYearsOldAmount),
+  }
+  return { ...amountsByAge }
 }
 
 export const SIGNUP_NUMBER_OF_STEPS = 4 // email, password, birthday, cgu
