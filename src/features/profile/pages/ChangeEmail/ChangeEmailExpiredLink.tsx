@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
@@ -18,6 +19,13 @@ export function ChangeEmailExpiredLink(props: Props) {
   // TODO (PC-11697): try / catch api call like api.postnativev1requestPasswordReset({ email })
   // }
 
+  const bodyText = !email
+    ? t`Tu peux te connecter sur ton profil pour recommencer le parcours de changement d’email.` +
+      '\n' +
+      '\n' +
+      t`Si tu as besoin d’aide n’hésite pas à contacter le support.`
+    : undefined
+
   // TODO (LucasBeneston): use isFetching from useQuery()
   const isFetching = false
 
@@ -26,6 +34,7 @@ export function ChangeEmailExpiredLink(props: Props) {
       // TODO (PC-11697): uncomment when the resend email feature is available
       // onResendEmail={changeEmailExpiredLink}
       disabledResendEmailButton={isFetching}
+      customBodyText={bodyText}
       contactSupport={() => contactSupport.forChangeEmailExpiredLink(email)}
     />
   )
