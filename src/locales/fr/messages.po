@@ -2118,6 +2118,10 @@ msgstr "Si tu as 18 ans, tu es éligible à une aide financière de"
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
+#: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
+msgid "Si tu as besoin d’aide, n’hésite pas à contacter le support."
+msgstr "Si tu as besoin d’aide, n’hésite pas à contacter le support."
+
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 msgid "Si tu es élève dans"
 msgstr "Si tu es élève dans"
@@ -2442,6 +2446,10 @@ msgstr ""
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 msgid "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
+
+#: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
+msgid "Tu peux te connecter sur ton profil pour recommencer le parcours de changement d’e-mail."
+msgstr "Tu peux te connecter sur ton profil pour recommencer le parcours de changement d’e-mail."
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
