@@ -1,20 +1,37 @@
 import React from 'react'
+import { useMutation } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import {
-  useValidateEmailChangeMutation,
-  UseValidateEmailChangeMutationProps,
-} from 'features/profile/mutations'
 import { render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { AfterChangeEmailValidationBuffer } from '../AfterChangeEmailValidationBuffer'
 
 jest.mock('react-query')
-jest.mock('features/profile/mutations')
-const mockedUseValidateEmailChangeMutation = mocked(useValidateEmailChangeMutation)
+
+const mockedUseMutation = mocked(useMutation)
+const mockUseMutationSuccess = () => {
+  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+  mockedUseMutation.mockImplementation((mutationFunction, { onSuccess }) => ({
+    mutationFunction,
+    mutationOptions: { onSuccess },
+    mutate: () => onSuccess(),
+  }))
+}
+mockUseMutationSuccess()
+
+const mockUseMutationError = () => {
+  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+  mockedUseMutation.mockImplementation((mutationFunction, { onError }) => ({
+    mutationFunction,
+    mutationOptions: { onError },
+    mutate: () => {
+      onError()
+    },
+  }))
+}
 
 const mockShowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -49,6 +66,7 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
   })
 
   it('should navigate to the login page if the token validation succeeds', async () => {
+    mockUseMutationSuccess()
     renderPage()
 
     await waitForExpect(() => {
@@ -62,12 +80,7 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
   })
 
   it('should navigate to error page if the token validation fails', async () => {
-    mockedUseValidateEmailChangeMutation.mockImplementationOnce(
-      // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
-      ({ onError }: UseValidateEmailChangeMutationProps) => ({
-        mutate: () => onError(),
-      })
-    )
+    mockUseMutationError()
 
     renderPage()
 
