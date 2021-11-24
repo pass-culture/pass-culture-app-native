@@ -169,7 +169,6 @@ commands:
       - run: |
           set +eo pipefail
           gsutil rsync -r ./build gs://<< parameters.bucket_name >>
-          true
   invalidate-cache:
     description: Invalidate Cache
     parameters:
