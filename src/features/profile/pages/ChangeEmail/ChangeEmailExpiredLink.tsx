@@ -20,10 +20,10 @@ export function ChangeEmailExpiredLink(props: Props) {
   // }
 
   const bodyText = !email
-    ? t`Tu peux te connecter sur ton profil pour recommencer le parcours de changement d’email.` +
+    ? t`Tu peux te connecter sur ton profil pour recommencer le parcours de changement d’e-mail.` +
       '\n' +
       '\n' +
-      t`Si tu as besoin d’aide n’hésite pas à contacter le support.`
+      t`Si tu as besoin d’aide, n’hésite pas à contacter le support.`
     : undefined
 
   // TODO (LucasBeneston): use isFetching from useQuery()
