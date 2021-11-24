@@ -350,10 +350,6 @@ msgstr "Cela entraînera l'annulation de l'ensemble de tes réservations en cour
 msgid "Centre culturel"
 msgstr "Centre culturel"
 
-#: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
-msgid "Cependant, tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées, et on reviendra vers toi d'ici quelques jours au plus tard :"
-msgstr "Cependant, tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées, et on reviendra vers toi d'ici quelques jours au plus tard :"
-
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
@@ -857,6 +853,10 @@ msgstr "Entrée pour l'email"
 msgid "Entrée pour la date de naissance"
 msgstr "Entrée pour la date de naissance"
 
+#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+msgid "Entrée pour le code postal"
+msgstr "Entrée pour le code postal"
+
 #: src/ui/components/inputs/DateInput.native.test.tsx
 #: src/ui/components/inputs/DateInput.native.test.tsx
 #: src/ui/components/inputs/DateInput.native.test.tsx
@@ -898,9 +898,6 @@ msgstr "Entrée pour le jour de la date de naissance"
 #: src/ui/components/inputs/DateInput.web.test.tsx
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
-#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
-msgid "Entrée pour le code postal"
-msgstr "Entrée pour le code postal"
 
 #: src/features/auth/signup/SetName/SetName.tsx
 msgid "Entrée pour le nom"
@@ -1896,14 +1893,11 @@ msgstr "Reste informé des actualités du pass Culture en activant les notificat
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
-#: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
-msgid "Retour"
-msgstr "Retour"
-
 #: src/features/bookings/pages/BookingNotFound.tsx
 msgid "Retourner l'accueil"
 msgstr "Retourner l'accueil"
 
+#: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
@@ -2401,6 +2395,14 @@ msgstr "Tu peux encore dépenser :"
 msgid "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 
+#: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
+msgid ""
+"Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées.\n"
+"Nous reviendrons vers toi d’ici quelques jours."
+msgstr ""
+"Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées.\n"
+"Nous reviendrons vers toi d’ici quelques jours."
+
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 msgid "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
@@ -2560,8 +2562,8 @@ msgid "Veux-tu abandonner la vérification d'identité ?"
 msgstr "Veux-tu abandonner la vérification d'identité ?"
 
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
-msgid "Victime de notre succès"
-msgstr "Victime de notre succès"
+msgid "Victime de notre succès !"
+msgstr "Victime de notre succès !"
 
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "Voici les 3 étapes que tu vas devoir suivre."
@@ -2610,8 +2612,8 @@ msgid "Vous devez d'abord générer un lien"
 msgstr "Vous devez d'abord générer un lien"
 
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
-msgid "Vous êtes actuellement très nombreux à demander les 300€ et notre service rencontre quelques difficultés."
-msgstr "Vous êtes actuellement très nombreux à demander les 300€ et notre service rencontre quelques difficultés."
+msgid "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
+msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
