@@ -314,6 +314,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
+            title={`Pages non écrans`}
+            onPress={() => navigate('NavigationNotScreensPages')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={`Id Check Unavailable`}
             onPress={() => navigate('IdCheckUnavailable')}
           />

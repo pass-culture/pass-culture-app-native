@@ -27,6 +27,7 @@ import { ThemeProvider } from 'libs/styled/ThemeProvider'
 import { theme } from 'theme'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
 import { ServiceWorkerProvider } from 'web/useServiceWorker'
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
 
@@ -43,36 +44,38 @@ export function App() {
 
   return (
     <ServiceWorkerProvider fileName={`${env.PUBLIC_URL}/service-worker.js`}>
-      <ThemeProvider theme={theme}>
-        <SafeAreaProvider>
-          <QueryClientProvider client={queryClient}>
-            <AuthWrapper>
-              <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                <GeolocationWrapper>
-                  <FavoritesWrapper>
-                    <SearchWrapper>
-                      <I18nProvider i18n={i18n}>
-                        <SnackBarProvider>
-                          <IdentityCheckContextProvider>
-                            <IdCheckContextProvider>
-                              <AppWebHead />
-                              <ScreenErrorProvider>
-                                <Suspense fallback={<LoadingPage />}>
-                                  <AppNavigationContainer />
-                                </Suspense>
-                              </ScreenErrorProvider>
-                            </IdCheckContextProvider>
-                          </IdentityCheckContextProvider>
-                        </SnackBarProvider>
-                      </I18nProvider>
-                    </SearchWrapper>
-                  </FavoritesWrapper>
-                </GeolocationWrapper>
-              </ErrorBoundary>
-            </AuthWrapper>
-          </QueryClientProvider>
-        </SafeAreaProvider>
-      </ThemeProvider>
+      <SupportedBrowsersGate>
+        <ThemeProvider theme={theme}>
+          <SafeAreaProvider>
+            <QueryClientProvider client={queryClient}>
+              <AuthWrapper>
+                <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                  <GeolocationWrapper>
+                    <FavoritesWrapper>
+                      <SearchWrapper>
+                        <I18nProvider i18n={i18n}>
+                          <SnackBarProvider>
+                            <IdentityCheckContextProvider>
+                              <IdCheckContextProvider>
+                                <AppWebHead />
+                                <ScreenErrorProvider>
+                                  <Suspense fallback={<LoadingPage />}>
+                                    <AppNavigationContainer />
+                                  </Suspense>
+                                </ScreenErrorProvider>
+                              </IdCheckContextProvider>
+                            </IdentityCheckContextProvider>
+                          </SnackBarProvider>
+                        </I18nProvider>
+                      </SearchWrapper>
+                    </FavoritesWrapper>
+                  </GeolocationWrapper>
+                </ErrorBoundary>
+              </AuthWrapper>
+            </QueryClientProvider>
+          </SafeAreaProvider>
+        </ThemeProvider>
+      </SupportedBrowsersGate>
     </ServiceWorkerProvider>
   )
 }

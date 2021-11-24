@@ -65,6 +65,7 @@ export type RootStackParamList = {
   }
   Navigation: undefined
   NavigationIdCheckErrors: undefined
+  NavigationNotScreensPages: undefined
   NotificationSettings: undefined
   Offer: {
     id: number
