@@ -4,8 +4,13 @@ import { CENTS_IN_EURO } from 'libs/parsers/pricesConversion'
 
 const EURO_SYMBOL = '€'
 
-export const formatToFrenchDecimal = (cents: number) => {
-  const euros = cents / CENTS_IN_EURO
+/**
+ * Takes a price in cents (ex: 5.5€ = 550 cents) and returns a string with the
+ * price in euros in the French format, ex: "5,50 €"
+ * @param {number} priceInCents
+ */
+export const formatToFrenchDecimal = (priceInCents: number) => {
+  const euros = priceInCents / CENTS_IN_EURO
   // we show 2 decimals if price is not round. Ex: 21,50 €
   const fixed = euros === Math.floor(euros) ? euros : euros.toFixed(2)
   return `${fixed.toString().replace('.', ',')} ${EURO_SYMBOL}`
