@@ -23,7 +23,7 @@ describe('<IdCheckUnavailable/>', () => {
   it('should go back WHEN go back is clicked', () => {
     const { getByText } = renderIdCheckUnavailable()
 
-    fireEvent.press(getByText(`Retour`))
+    fireEvent.press(getByText(`Retourner à l'accueil`))
     expect(mockGoBack).toBeCalledTimes(1)
   })
 })
