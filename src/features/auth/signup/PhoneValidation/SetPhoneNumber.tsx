@@ -46,7 +46,7 @@ const ALLOWED_COUNTRY_CODES: CountryCode[] = [
   'NC',
 ]
 
-export const SetPhoneNumber = memo(() => {
+export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
   const [phoneNumber, setPhoneNumber] = useState('')

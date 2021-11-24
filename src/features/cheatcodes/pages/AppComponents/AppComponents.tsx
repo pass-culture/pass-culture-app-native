@@ -37,12 +37,11 @@ import { ClippedTag } from 'ui/components/ClippedTag'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { Hero } from 'ui/components/hero/Hero'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
-import { DateInput, DatePartType } from 'ui/components/inputs/DateInput'
+import { DateInput } from 'ui/components/inputs/DateInput'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { ShortInput } from 'ui/components/inputs/ShortInput'
 import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -93,7 +92,6 @@ export const AppComponents: FunctionComponent = () => {
   const { goBack } = useGoBack('CheatMenu', undefined)
 
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
-  const [_partialDate, setPartialDate] = useState('')
   const [inputText, setInputText] = useState('')
   const [largeInputText, setLargeInputText] = useState('')
   const [currentStep, setCurrentStep] = useState(1)
@@ -365,15 +363,6 @@ export const AppComponents: FunctionComponent = () => {
         <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Short Input</Typo.Title4>
-        <Spacer.Column numberOfSpaces={1} />
-        <ShortInput
-          identifier={DatePartType.DAY}
-          isValid={_partialDate.length === 4}
-          maxLength={4}
-          onChangeValue={setPartialDate}
-          placeholder="AAAA"
-          testID="Entrée pour l'année"
-        />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Date Input</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />

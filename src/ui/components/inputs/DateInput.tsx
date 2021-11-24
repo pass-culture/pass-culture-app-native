@@ -10,12 +10,6 @@ import validateDate from 'validate-date'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
-export enum DatePartType {
-  DAY = 'day',
-  MONTH = 'month',
-  YEAR = 'year',
-}
-
 interface ValidationBarProps {
   testID?: string
   backgroundColor?: ColorsEnum

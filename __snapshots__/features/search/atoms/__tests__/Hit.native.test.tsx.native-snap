@@ -5,7 +5,7 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
 - First value
 + Second value
 
-@@ -98,10 +98,22 @@
+@@ -100,10 +100,22 @@
               \\"flexDirection\\": \\"row\\",
             },
           ]
@@ -28,7 +28,7 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
             style={
               Array [
                 Object {
-@@ -113,10 +125,39 @@
+@@ -115,10 +127,39 @@
               ]
             }
           >

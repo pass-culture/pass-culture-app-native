@@ -112,7 +112,6 @@ exports[`Search component should render correctly 1`] = `
       <TextInput
         accessibilityLabel="Barre de recherche des offres"
         accessible={true}
-        allowFontScaling={true}
         autoCorrect={false}
         onBlur={[Function]}
         onChangeText={[Function]}
@@ -120,7 +119,6 @@ exports[`Search component should render correctly 1`] = `
         onSubmitEditing={[Function]}
         placeholder="Titre, artiste, lieu..."
         placeholderTextColor="#626262"
-        rejectResponderTermination={true}
         returnKeyType="search"
         selectionColor="#626262"
         style={
@@ -141,7 +139,6 @@ exports[`Search component should render correctly 1`] = `
           ]
         }
         testID="Barre de recherche des offres"
-        underlineColorAndroid="transparent"
         value=""
       />
     </View>
@@ -169,7 +166,9 @@ exports[`Search component should render correctly 1`] = `
       />
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -280,7 +279,9 @@ exports[`Search component should render correctly 1`] = `
       />
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -406,8 +407,15 @@ exports[`Search component should render correctly 1`] = `
   >
     <View
       accessibilityLabel="Rechercher"
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
+      }
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

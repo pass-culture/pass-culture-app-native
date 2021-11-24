@@ -8,6 +8,9 @@ import { server } from 'tests/server'
 
 import { useBookOfferMutation } from '../useBookOfferMutation'
 
+// eslint-disable-next-line local-rules/no-allow-console
+allowConsole({ error: true })
+
 const props = { onError: jest.fn(), onSuccess: jest.fn() }
 
 const setup = (queryClient: QueryClient) => {

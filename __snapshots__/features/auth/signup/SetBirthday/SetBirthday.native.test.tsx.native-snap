@@ -314,7 +314,6 @@ Array [
                       <TextInput
                         accessibilityLabel="Entrée pour la date de naissance"
                         accessible={true}
-                        allowFontScaling={true}
                         autoFocus={true}
                         keyboardType="number-pad"
                         onBlur={[Function]}
@@ -322,7 +321,6 @@ Array [
                         onFocus={[Function]}
                         onSubmitEditing={[Function]}
                         placeholder="JJ/MM/AAAA"
-                        rejectResponderTermination={true}
                         returnKeyType="done"
                         style={
                           Array [
@@ -334,7 +332,6 @@ Array [
                           ]
                         }
                         testID="Entrée pour la date de naissance"
-                        underlineColorAndroid="transparent"
                         value=""
                       />
                       <View
@@ -578,7 +575,9 @@ Array [
   >
     <View
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -611,7 +610,9 @@ Array [
       />
       <View
         accessible={true}
+        collapsable={false}
         focusable={false}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -650,7 +651,9 @@ Array [
           <View
             accessibilityLabel="leftIconButton"
             accessible={true}
+            collapsable={false}
             focusable={false}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -692,7 +695,9 @@ Array [
           <View
             accessibilityLabel="Fermer la modale"
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -1114,7 +1119,6 @@ exports[`SetBirthday Page should render properly 1`] = `
                     <TextInput
                       accessibilityLabel="Entrée pour la date de naissance"
                       accessible={true}
-                      allowFontScaling={true}
                       autoFocus={true}
                       keyboardType="number-pad"
                       onBlur={[Function]}
@@ -1122,7 +1126,6 @@ exports[`SetBirthday Page should render properly 1`] = `
                       onFocus={[Function]}
                       onSubmitEditing={[Function]}
                       placeholder="JJ/MM/AAAA"
-                      rejectResponderTermination={true}
                       returnKeyType="done"
                       style={
                         Array [
@@ -1134,7 +1137,6 @@ exports[`SetBirthday Page should render properly 1`] = `
                         ]
                       }
                       testID="Entrée pour la date de naissance"
-                      underlineColorAndroid="transparent"
                       value=""
                     />
                     <View

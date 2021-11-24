@@ -31,7 +31,7 @@ async function readString(storageKey: StorageKey): Promise<string | null> {
   try {
     return AsyncStorage.getItem(storageKey)
   } catch (error) {
-    onAsyncStorageError(error)
+    if (error instanceof Error) onAsyncStorageError(error)
     return null
   }
 }
@@ -40,7 +40,7 @@ async function readMultiString(storageKeys: StorageKey[]): Promise<[string, stri
   try {
     return AsyncStorage.multiGet(storageKeys)
   } catch (error) {
-    onAsyncStorageError(error)
+    if (error instanceof Error) onAsyncStorageError(error)
     return []
   }
 }
@@ -52,7 +52,7 @@ async function saveString(storageKey: StorageKey, value: string): Promise<void> 
   try {
     await AsyncStorage.setItem(storageKey, value)
   } catch (error) {
-    onAsyncStorageError(error)
+    if (error instanceof Error) onAsyncStorageError(error)
   }
 }
 
@@ -63,7 +63,7 @@ async function saveMultiString(keyValuePairs: Array<[StorageKey, string]>): Prom
   try {
     await AsyncStorage.multiSet(keyValuePairs)
   } catch (error) {
-    onAsyncStorageError(error)
+    if (error instanceof Error) onAsyncStorageError(error)
   }
 }
 
@@ -75,7 +75,7 @@ async function readObject<ObjectType>(storageKey: StorageKey): Promise<ObjectTyp
     }
     return null
   } catch (error) {
-    onAsyncStorageError(error)
+    if (error instanceof Error) onAsyncStorageError(error)
     return null
   }
 }
@@ -85,7 +85,7 @@ async function saveObject(storageKey: StorageKey, value: unknown): Promise<void>
     const stringifiedValue = JSON.stringify(value)
     await AsyncStorage.setItem(storageKey, stringifiedValue)
   } catch (error) {
-    onAsyncStorageError(error)
+    if (error instanceof Error) onAsyncStorageError(error)
   }
 }
 
@@ -93,7 +93,7 @@ async function clear(storageKey: StorageKey): Promise<void> {
   try {
     await AsyncStorage.removeItem(storageKey)
   } catch (error) {
-    onAsyncStorageError(error)
+    if (error instanceof Error) onAsyncStorageError(error)
   }
 }
 

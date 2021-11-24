@@ -103,6 +103,8 @@ Array [
             }
           >
             <View
+              collapsable={false}
+              nativeID="animatedComponent"
               onMoveShouldSetResponder={[Function]}
               onMoveShouldSetResponderCapture={[Function]}
               onResponderEnd={[Function]}

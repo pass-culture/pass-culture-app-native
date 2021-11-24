@@ -154,16 +154,12 @@ exports[`Favorites component should render correctly 1`] = `
           },
         ]
       }
-      disableVirtualization={false}
       getItem={[Function]}
       getItemCount={[Function]}
-      horizontal={false}
-      initialNumToRender={10}
       keyExtractor={[Function]}
-      maxToRenderPerBatch={10}
       onContentSizeChange={[Function]}
-      onEndReachedThreshold={2}
       onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
       onMomentumScrollEnd={[Function]}
       onScroll={[Function]}
       onScrollBeginDrag={[Function]}
@@ -173,9 +169,7 @@ exports[`Favorites component should render correctly 1`] = `
       scrollEnabled={false}
       scrollEventThrottle={50}
       stickyHeaderIndices={Array []}
-      updateCellsBatchingPeriod={50}
       viewabilityConfigCallbackPairs={Array []}
-      windowSize={21}
     >
       <View>
         <View
@@ -217,6 +211,7 @@ exports[`Favorites component should render correctly 1`] = `
               width={80}
             >
               <BVLinearGradient
+                collapsable={false}
                 colors={
                   Array [
                     4292730333,
@@ -232,6 +227,7 @@ exports[`Favorites component should render correctly 1`] = `
                   }
                 }
                 locations={null}
+                nativeID="animatedComponent"
                 startPoint={
                   Object {
                     "x": 0,
@@ -307,6 +303,7 @@ exports[`Favorites component should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
+                  collapsable={false}
                   colors={
                     Array [
                       4292730333,
@@ -322,6 +319,7 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
+                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -373,6 +371,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -388,6 +387,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -438,6 +438,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -453,6 +454,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -503,6 +505,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -518,6 +521,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -568,6 +572,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -583,6 +588,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -668,6 +674,7 @@ exports[`Favorites component should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
+                  collapsable={false}
                   colors={
                     Array [
                       4292730333,
@@ -683,6 +690,7 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
+                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -734,6 +742,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -749,6 +758,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -799,6 +809,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -814,6 +825,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -864,6 +876,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -879,6 +892,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -929,6 +943,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -944,6 +959,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1029,6 +1045,7 @@ exports[`Favorites component should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
+                  collapsable={false}
                   colors={
                     Array [
                       4292730333,
@@ -1044,6 +1061,7 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
+                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1095,6 +1113,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1110,6 +1129,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1160,6 +1180,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1175,6 +1196,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1225,6 +1247,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1240,6 +1263,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1290,6 +1314,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1305,6 +1330,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1390,6 +1416,7 @@ exports[`Favorites component should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
+                  collapsable={false}
                   colors={
                     Array [
                       4292730333,
@@ -1405,6 +1432,7 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
+                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1456,6 +1484,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1471,6 +1500,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1521,6 +1551,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1536,6 +1567,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1586,6 +1618,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1601,6 +1634,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1651,6 +1685,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1666,6 +1701,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1751,6 +1787,7 @@ exports[`Favorites component should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
+                  collapsable={false}
                   colors={
                     Array [
                       4292730333,
@@ -1766,6 +1803,7 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
+                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -1817,6 +1855,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1832,6 +1871,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1882,6 +1922,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1897,6 +1938,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1947,6 +1989,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1962,6 +2005,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2012,6 +2056,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2027,6 +2072,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2112,6 +2158,7 @@ exports[`Favorites component should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
+                  collapsable={false}
                   colors={
                     Array [
                       4292730333,
@@ -2127,6 +2174,7 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
+                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2178,6 +2226,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2193,6 +2242,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2243,6 +2293,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2258,6 +2309,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2308,6 +2360,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2323,6 +2376,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2373,6 +2427,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2388,6 +2443,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2473,6 +2529,7 @@ exports[`Favorites component should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
+                  collapsable={false}
                   colors={
                     Array [
                       4292730333,
@@ -2488,6 +2545,7 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
+                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2539,6 +2597,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2554,6 +2613,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2604,6 +2664,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2619,6 +2680,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2669,6 +2731,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2684,6 +2747,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2734,6 +2798,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2749,6 +2814,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2834,6 +2900,7 @@ exports[`Favorites component should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
+                  collapsable={false}
                   colors={
                     Array [
                       4292730333,
@@ -2849,6 +2916,7 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
+                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -2900,6 +2968,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2915,6 +2984,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2965,6 +3035,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2980,6 +3051,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3030,6 +3102,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3045,6 +3118,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3095,6 +3169,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3110,6 +3185,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3195,6 +3271,7 @@ exports[`Favorites component should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
+                  collapsable={false}
                   colors={
                     Array [
                       4292730333,
@@ -3210,6 +3287,7 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
+                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3261,6 +3339,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3276,6 +3355,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3326,6 +3406,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3341,6 +3422,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3391,6 +3473,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3406,6 +3489,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3456,6 +3540,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3471,6 +3556,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3556,6 +3642,7 @@ exports[`Favorites component should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
+                  collapsable={false}
                   colors={
                     Array [
                       4292730333,
@@ -3571,6 +3658,7 @@ exports[`Favorites component should render correctly 1`] = `
                     }
                   }
                   locations={null}
+                  nativeID="animatedComponent"
                   startPoint={
                     Object {
                       "x": 0,
@@ -3622,6 +3710,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3637,6 +3726,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3687,6 +3777,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3702,6 +3793,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3752,6 +3844,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3767,6 +3860,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3817,6 +3911,7 @@ exports[`Favorites component should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3832,6 +3927,7 @@ exports[`Favorites component should render correctly 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3900,7 +3996,9 @@ exports[`Favorites component should render correctly 1`] = `
   >
     <View
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

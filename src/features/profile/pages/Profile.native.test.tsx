@@ -23,7 +23,6 @@ import { Profile } from './Profile'
 
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
-  // @ts-expect-error : Spread types may only be created from object types.
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: mockNavigate }),
 }))

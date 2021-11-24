@@ -152,7 +152,9 @@ exports[`FourthCard should render fourth card 1`] = `
       <View
         accessibilityLabel="Découvrir"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -215,7 +217,9 @@ exports[`FourthCard should render fourth card 1`] = `
       <View
         accessibilityLabel="Passer"
         accessible={true}
+        collapsable={false}
         focusable={false}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

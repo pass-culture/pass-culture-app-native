@@ -18,16 +18,12 @@ exports[`Home component should render correctly without login modal 1`] = `
     ListHeaderComponent={[Function]}
     bounces={false}
     data={Array []}
-    disableVirtualization={false}
     getItem={[Function]}
     getItemCount={[Function]}
-    horizontal={false}
-    initialNumToRender={10}
     keyExtractor={[Function]}
-    maxToRenderPerBatch={10}
     onContentSizeChange={[Function]}
-    onEndReachedThreshold={2}
     onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
     onMomentumScrollEnd={[Function]}
     onScroll={[Function]}
     onScrollBeginDrag={[Function]}
@@ -37,9 +33,7 @@ exports[`Home component should render correctly without login modal 1`] = `
     scrollEventThrottle={400}
     stickyHeaderIndices={Array []}
     testID="homeBodyScrollView"
-    updateCellsBatchingPeriod={50}
     viewabilityConfigCallbackPairs={Array []}
-    windowSize={21}
   >
     <View>
       <View

@@ -22,7 +22,7 @@ const SnackBarContext = createContext<SnackBarContextValue>({
   hideSnackBar: () => null,
 })
 
-export const SnackBarProvider = memo(({ children }) => {
+export const SnackBarProvider = memo(function SnackBarProviderComponent({ children }) {
   const [snackBarProps, setSnackBarProps] = useState<SnackBarProps>({
     visible: false,
     message: '',

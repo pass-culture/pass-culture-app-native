@@ -124,7 +124,9 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
       <View
         accessibilityLabel="leftIconButton"
         accessible={true}
+        collapsable={false}
         focusable={false}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -176,7 +178,9 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
       <View
         accessibilityLabel="Fermer la modale"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -271,8 +275,10 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
 >
   <View
     accessible={true}
+    collapsable={false}
     focusable={true}
     forwardedRef={[Function]}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -295,10 +301,12 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
     }
   />
   <View
+    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
     forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
+    nativeID="animatedComponent"
     onBackdropPress={[MockFunction]}
     onModalHide={[Function]}
     onModalWillHide={[Function]}
@@ -364,7 +372,9 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
       <View
         accessibilityLabel="leftIconButton"
         accessible={true}
+        collapsable={false}
         focusable={false}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -416,7 +426,9 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
       <View
         accessibilityLabel="Fermer la modale"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

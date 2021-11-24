@@ -26,6 +26,34 @@ export function useMediaQuery(
   if (platform !== undefined && platform !== RN.Platform.OS) {
     return false
   }
+
+  return getMediaQueryFromDimensions({
+    minWidth,
+    maxWidth,
+    minHeight,
+    maxHeight,
+    windowWidth,
+    windowHeight,
+  })
+}
+
+interface Dimensions {
+  minWidth?: number
+  maxWidth?: number
+  minHeight?: number
+  maxHeight?: number
+  windowWidth: number
+  windowHeight: number
+}
+
+export function getMediaQueryFromDimensions({
+  minWidth,
+  maxWidth,
+  minHeight,
+  maxHeight,
+  windowWidth,
+  windowHeight,
+}: Dimensions) {
   let mq = undefined
   const hasWidthMq = !!(minWidth || maxWidth)
   const hasHeightMq = !!(minHeight || maxHeight)

@@ -530,7 +530,9 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           <View
             accessibilityLabel="description-details-button"
             accessible={true}
+            collapsable={false}
             focusable={true}
+            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
