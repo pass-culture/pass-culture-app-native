@@ -313,16 +313,15 @@ const ValidationBarContainer = styled.View({
 })
 
 const HiddenTextInput = styled(TextInput)({
-  fontSize: 18,
+  fontSize: 1,
   lineHeight: '22px',
   textAlign: 'center',
   position: 'absolute',
-  left: 0,
-  right: 0,
+  width: 1,
   height: 1,
   overflow: 'hidden',
   zIndex: ZIndex.BACKGROUND,
-  opacity: 1,
+  opacity: 0.1,
   ...Platform.select({
     web: {
       caretColor: 'transparent',
