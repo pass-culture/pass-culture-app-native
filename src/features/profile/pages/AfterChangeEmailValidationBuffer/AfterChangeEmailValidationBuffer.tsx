@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
@@ -6,6 +7,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { useValidateEmailChangeMutation } from 'features/profile/mutations'
 import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function AfterChangeEmailValidationBuffer() {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -15,6 +17,8 @@ export function AfterChangeEmailValidationBuffer() {
     }, 2000)
   }
   const { params } = useRoute<UseRouteType<'AfterChangeEmailValidationBuffer'>>()
+
+  const { showSuccessSnackBar } = useSnackBarContext()
 
   useEffect(beforeEmailValidation, [])
 
@@ -41,6 +45,10 @@ export function AfterChangeEmailValidationBuffer() {
       await signOut()
     }
     delayedNavigate('Login')
+    showSuccessSnackBar({
+      message: t`Ton e-mail a été modifié.`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
   }
 
   function onEmailValidationFailure() {
