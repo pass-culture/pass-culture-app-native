@@ -21,9 +21,10 @@ export const GenericInfoPageWhite: React.FC<Props> = (props) => {
   const animationRef = useRef<LottieView>(null)
   const grid = useGrid()
   const isSmallHeight = useMediaQuery({ maxHeight: SMALL_HEIGHT })
-  const lottieStyle = useMemo(() => (isSmallHeight ? { height: '100%' } : undefined), [
-    isSmallHeight,
-  ])
+  const lottieStyle = useMemo(
+    () => (isSmallHeight ? { height: '100%' } : undefined),
+    [isSmallHeight]
+  )
 
   useEffect(() => {
     if (animationRef.current) {

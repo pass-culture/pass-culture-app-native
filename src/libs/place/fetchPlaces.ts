@@ -1,19 +1,11 @@
-import { FeatureCollection, Point } from 'geojson'
+import { buildPlaceUrl, BuildSearchAddressProps } from 'libs/place/buildUrl'
 
-import { Properties, SuggestedPlace } from './types'
+import { Collection, SuggestedPlace } from './types'
 
-const API_ADRESSE_URL = `https://api-adresse.data.gouv.fr/search`
 const REGEX_STARTING_WITH_NUMBERS = /^\d/
 
-interface Props {
-  query: string
-  limit?: number
-}
-
-export const buildSuggestedPlaces = (
-  suggestedPlaces: FeatureCollection<Point, Properties>
-): SuggestedPlace[] =>
-  suggestedPlaces.features.map(({ geometry, properties }) => {
+export const buildSuggestedPlaces = (collection: Collection): SuggestedPlace[] =>
+  collection.features.map(({ geometry, properties }) => {
     const { city, context, name, type } = properties
     const detailedPlace = type === 'street' || type === 'housenumber' || type === 'locality'
     const [, department] = context.replace(/\s+/g, '').split(',') // department number, department name, region
@@ -31,8 +23,16 @@ export const buildSuggestedPlaces = (
     }
   })
 
-export const fetchPlaces = ({ query, limit = 20 }: Props) =>
-  fetch(`${API_ADRESSE_URL}/?limit=${limit}&q=${query}`)
-    .then((response) => response.json())
-    .then(buildSuggestedPlaces)
-    .catch(() => [])
+export const fetchPlaces = async ({
+  query,
+}: BuildSearchAddressProps): Promise<SuggestedPlace[]> => {
+  const url = buildPlaceUrl({ query })
+
+  try {
+    const response = await fetch(url)
+    const collection: Collection = await response.json()
+    return buildSuggestedPlaces(collection)
+  } catch (_error) {
+    return []
+  }
+}

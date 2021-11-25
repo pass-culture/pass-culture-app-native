@@ -15,6 +15,7 @@ export type IdentityCheckRootStackParamList = {
   IdentityCheck: undefined
   IdentityCheckStart: undefined
   IdentityCheckWebview: { identificationUrl: string }
+  IdentityCheckAddress: undefined
   IdentityCheckStatus: undefined
   NavigationIdentityCheck: undefined
   IdentityCheckEnd: undefined
@@ -163,11 +164,10 @@ export type RouteParams<
   Screename extends keyof StackParamList
 > = Pick<StackParamList, Screename>[Screename]
 
-export type NavigateParams<
-  RouteName extends keyof ParamListBase
-> = undefined extends ParamListBase[RouteName]
-  ? [RouteName] | [RouteName, ParamListBase[RouteName]]
-  : [RouteName, ParamListBase[RouteName]]
+export type NavigateParams<RouteName extends keyof ParamListBase> =
+  undefined extends ParamListBase[RouteName]
+    ? [RouteName] | [RouteName, ParamListBase[RouteName]]
+    : [RouteName, ParamListBase[RouteName]]
 export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
 export type AllNavigateParams = NavigateParams<keyof AllNavParamList>
 

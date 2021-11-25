@@ -631,8 +631,7 @@ export const homepageEntriesAPIResponse = {
         fields: {
           title: 'Image spécial carnaval',
           file: {
-            url:
-              '//images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png',
+            url: '//images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png',
             details: { size: 128147, image: { width: 596, height: 559 } },
             fileName: 'image (3).png',
             contentType: 'image/png',
@@ -654,8 +653,7 @@ export const homepageEntriesAPIResponse = {
           title: 'Cover pour les blocs métiers',
           description: 'Image de fond pour les blocs métiers',
           file: {
-            url:
-              '//images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
+            url: '//images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
             details: { size: 616732, image: { width: 1934, height: 574 } },
             fileName: 'Capture d’écran 2020-07-22 à 12.24.11.png',
             contentType: 'image/png',
@@ -676,8 +674,7 @@ export const homepageEntriesAPIResponse = {
         fields: {
           title: 'Mbappé2',
           file: {
-            url:
-              '//images.ctfassets.net/2bg01iqy0isv/bRKhK9wmpNkD6l5Zeo71J/cc59c22fe0382b61e831e4693e32826f/1020_Mbapp__2.png',
+            url: '//images.ctfassets.net/2bg01iqy0isv/bRKhK9wmpNkD6l5Zeo71J/cc59c22fe0382b61e831e4693e32826f/1020_Mbapp__2.png',
             details: { size: 100820, image: { width: 450, height: 195 } },
             fileName: '1020_Mbappé2.png',
             contentType: 'image/png',
@@ -734,8 +731,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
             fields: {
               title: 'Image spécial carnaval',
               file: {
-                url:
-                  '//images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png',
+                url: '//images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png',
                 details: { size: 128147, image: { width: 596, height: 559 } },
                 fileName: 'image (3).png',
                 contentType: 'image/png',
@@ -995,8 +991,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               title: 'Cover pour les blocs métiers',
               description: 'Image de fond pour les blocs métiers',
               file: {
-                url:
-                  '//images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
+                url: '//images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
                 details: { size: 616732, image: { width: 1934, height: 574 } },
                 fileName: 'Capture d’écran 2020-07-22 à 12.24.11.png',
                 contentType: 'image/png',
@@ -1017,8 +1012,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
                 contentType: 'image/png',
                 details: { image: { height: 574, width: 1934 }, size: 616732 },
                 fileName: 'Capture d’écran 2020-07-22 à 12.24.11.png',
-                url:
-                  '//images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
+                url: '//images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
               },
               title: 'Cover pour les blocs métiers',
             },
@@ -1060,8 +1054,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
                 contentType: 'image/png',
                 details: { image: { height: 574, width: 1934 }, size: 616732 },
                 fileName: 'Capture d’écran 2020-07-22 à 12.24.11.png',
-                url:
-                  '//images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
+                url: '//images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
               },
               title: 'Cover pour les blocs métiers',
             },
@@ -1215,8 +1208,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
                 fields: {
                   title: 'Mbappé2',
                   file: {
-                    url:
-                      '//images.ctfassets.net/2bg01iqy0isv/bRKhK9wmpNkD6l5Zeo71J/cc59c22fe0382b61e831e4693e32826f/1020_Mbapp__2.png',
+                    url: '//images.ctfassets.net/2bg01iqy0isv/bRKhK9wmpNkD6l5Zeo71J/cc59c22fe0382b61e831e4693e32826f/1020_Mbapp__2.png',
                     details: { size: 100820, image: { width: 450, height: 195 } },
                     fileName: '1020_Mbappé2.png',
                     contentType: 'image/png',
@@ -1367,8 +1359,7 @@ export const adaptedSecondHomepageEntry: HomepageEntry = {
                 contentType: 'image/png',
                 details: { image: { height: 574, width: 1934 }, size: 616732 },
                 fileName: 'Capture d’écran 2020-07-22 à 12.24.11.png',
-                url:
-                  '//images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
+                url: '//images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
               },
               title: 'Cover pour les blocs métiers',
             },

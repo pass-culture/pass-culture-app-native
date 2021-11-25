@@ -17,13 +17,8 @@ interface Props {
 
 export const BookingOfferModalComponent: React.FC<Props> = ({ visible, offerId }) => {
   const { dismissModal, dispatch } = useBooking()
-  const {
-    title,
-    leftIconAccessibilityLabel,
-    leftIcon,
-    onLeftIconPress,
-    children,
-  } = useModalContent()
+  const { title, leftIconAccessibilityLabel, leftIcon, onLeftIconPress, children } =
+    useModalContent()
 
   const modalLeftIconProps = {
     leftIcon,

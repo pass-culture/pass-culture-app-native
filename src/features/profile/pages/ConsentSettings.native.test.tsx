@@ -107,7 +107,7 @@ describe('ConsentSettings', () => {
 })
 
 function renderConsentSettings() {
-  mockedUsePreviousRoute.mockReturnValue((jest.fn() as unknown) as Route<string>)
+  mockedUsePreviousRoute.mockReturnValue(jest.fn() as unknown as Route<string>)
 
   const onGoBack = jest.fn() as () => void
   const navigationProps = {

@@ -30,18 +30,18 @@ type PartialVenue = Pick<
   'id' | 'venueTypeCode' | 'name' | 'description' | 'publicName'
 >
 
-export const mergeVenueData = (venue: PartialVenue) => (
-  prevData: VenueResponse | undefined
-): VenueResponse => ({
-  id: venue.id,
-  name: venue.publicName || venue.name,
-  venueTypeCode: venue.venueTypeCode,
-  isVirtual: false,
-  description: venue.description,
-  accessibility: {},
-  contact: {},
-  ...(prevData || {}),
-})
+export const mergeVenueData =
+  (venue: PartialVenue) =>
+  (prevData: VenueResponse | undefined): VenueResponse => ({
+    id: venue.id,
+    name: venue.publicName || venue.name,
+    venueTypeCode: venue.venueTypeCode,
+    isVirtual: false,
+    description: venue.description,
+    accessibility: {},
+    contact: {},
+    ...(prevData || {}),
+  })
 
 export const WhereSection: React.FC<Props> = ({
   beforeNavigateToItinerary,

@@ -50,8 +50,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
-          url:
-            'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
+          url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
         },
         subcategoryId: SubcategoryIdEnum.CONFERENCE,
         coordinates: {
@@ -79,8 +78,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
-          url:
-            'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
+          url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
         },
         subcategoryId: SubcategoryIdEnum.SPECTACLEENREGISTRE,
         coordinates: {
@@ -108,8 +106,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
-          url:
-            'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
+          url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
         },
         subcategoryId: SubcategoryIdEnum.SPECTACLEENREGISTRE,
         coordinates: {

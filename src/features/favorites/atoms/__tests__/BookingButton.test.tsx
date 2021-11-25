@@ -45,8 +45,7 @@ const offer: FavoriteOfferResponse = {
   id: 146105,
   image: {
     credit: null,
-    url:
-      'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
+    url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
   },
   subcategoryId: SubcategoryIdEnum.TELECHARGEMENTMUSIQUE,
   name: 'Un lit sous une rivière',
@@ -200,7 +199,11 @@ function getUser(params?: {
   remainingCredit?: number
   isBookedOffer?: boolean
 }) {
-  const { isBeneficiary = true, remainingCredit = 300, isBookedOffer = false } = params || {
+  const {
+    isBeneficiary = true,
+    remainingCredit = 300,
+    isBookedOffer = false,
+  } = params || {
     isBeneficiary: true,
     remainingCredit: 300,
     isBookedOffer: false,

@@ -5,10 +5,8 @@ import { useReviewInAppInformation } from 'features/bookOffer/services/useReview
 import { eventMonitoring } from 'libs/monitoring'
 
 export const useShowReview = () => {
-  const {
-    shouldReviewBeRequested,
-    updateInformationWhenReviewHasBeenRequested,
-  } = useReviewInAppInformation()
+  const { shouldReviewBeRequested, updateInformationWhenReviewHasBeenRequested } =
+    useReviewInAppInformation()
 
   useEffect(() => {
     if (InAppReview.isAvailable() && shouldReviewBeRequested) {

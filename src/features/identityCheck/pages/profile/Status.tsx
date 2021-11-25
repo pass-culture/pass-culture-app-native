@@ -10,7 +10,6 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { Spacer } from 'ui/theme'
 
 type UserStatusResponse = { name: ActivityEnum; description?: string }
 
@@ -53,7 +52,6 @@ export const Status = () => {
               onPress={() => setSelectedStatus(status.name)}
             />
           ))}
-          <Spacer.Column numberOfSpaces={16} />
         </ModalContent>
       }
       fixedBottomChildren={

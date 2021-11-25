@@ -22,10 +22,10 @@ export const IdentityCheckWebview: React.FC = () => {
     <React.Fragment>
       <Spacer.TopScreen />
       <StyledWebview
+        allowsInlineMediaPlayback
         source={{ uri: params.identificationUrl }}
         onNavigationStateChange={onNavigationStateChange}
         originWhitelist={ORIGIN_WHITELIST}
-        allowsInlineMediaPlayback
         testID="identity-check-webview"
       />
       <Spacer.BottomScreen />

@@ -1,3 +1,5 @@
+import { FeatureCollection, Point } from 'geojson'
+
 // See https://geo.api.gouv.fr/adresse for more info
 
 export interface Properties {
@@ -31,3 +33,5 @@ export interface SuggestedCity {
   code: string
   postalCode: string
 }
+
+export type Collection = FeatureCollection<Point, Properties>

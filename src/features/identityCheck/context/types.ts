@@ -5,6 +5,7 @@ export interface IdentityCheckState {
   step: IdentityCheckStep | null
   profile: {
     city: SuggestedCity | null
+    address: string | null
     status: string | null
   }
   identification: {
@@ -20,3 +21,4 @@ export type Action =
   | { type: 'SET_STATE'; payload: Partial<IdentityCheckState> }
   | { type: 'SET_STEP'; payload: IdentityCheckStep }
   | { type: 'SET_CITY'; payload: SuggestedCity | null }
+  | { type: 'SET_ADDRESS'; payload: string | null }

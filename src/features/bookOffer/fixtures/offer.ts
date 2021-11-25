@@ -76,8 +76,7 @@ export const mockOffer: OfferResponse = {
     },
   ],
   image: {
-    url:
-      'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
+    url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
     credit: null,
   },
   venue: {
@@ -149,8 +148,7 @@ export const mockDigitalOffer: OfferResponse = {
     },
   ],
   image: {
-    url:
-      'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
+    url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
     credit: null,
   },
   venue: {

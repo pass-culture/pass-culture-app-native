@@ -54,7 +54,7 @@ export const SkeletonTile: React.FC<DimensionProps> = ({ width, height, borderRa
         colors={colors}
         style={{
           borderRadius,
-          ...((StyleSheet.absoluteFill as unknown) as Record<string, unknown>),
+          ...(StyleSheet.absoluteFill as unknown as Record<string, unknown>),
           transform: [{ translateX }],
         }}
       />

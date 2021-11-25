@@ -47,12 +47,8 @@ export const Profile: React.FC = () => {
   const signOut = useLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  const {
-    positionError,
-    permissionState,
-    requestGeolocPermission,
-    showGeolocPermissionModal,
-  } = useGeolocation()
+  const { positionError, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
+    useGeolocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
     permissionState === GeolocPermissionState.GRANTED
   )

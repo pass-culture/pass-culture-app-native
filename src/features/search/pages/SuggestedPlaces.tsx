@@ -7,11 +7,10 @@ import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { usePlaces, useVenues } from 'features/search/api'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
@@ -53,7 +52,7 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
 }
 
 export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
-  const { data: places = [], isLoading: isLoadingPlaces } = usePlaces(query)
+  const { data: places = [], isLoading: isLoadingPlaces } = usePlaces({ query })
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
   const { dispatch } = useStagedSearch()
   const { goBack } = useGoBack(...getTabNavConfig('Search'))

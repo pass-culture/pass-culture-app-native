@@ -5,7 +5,8 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
 import { analytics } from 'libs/analytics'
-import { buildSuggestedPlaces, SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place'
+import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -26,7 +27,7 @@ let mockPlaces: SuggestedPlace[] = []
 let mockVenues: SuggestedVenue[] = []
 
 let mockIsLoading = false
-jest.mock('features/search/api', () => ({
+jest.mock('libs/place', () => ({
   usePlaces: () => ({ data: mockPlaces, isLoading: mockIsLoading }),
   useVenues: () => ({ data: mockVenues, isLoading: mockIsLoading }),
 }))

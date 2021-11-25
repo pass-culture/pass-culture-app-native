@@ -75,9 +75,9 @@ describe('FavoritesResults component', () => {
     } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
     // eslint-disable-next-line local-rules/independant-mocks
-    mockUseRemoveFavorites.mockReturnValue(({
+    mockUseRemoveFavorites.mockReturnValue({
       mutate,
-    } as unknown) as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
+    } as unknown as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByText } = render(reactQueryProviderHOC(<FavoritesResults />))
     const container = getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)

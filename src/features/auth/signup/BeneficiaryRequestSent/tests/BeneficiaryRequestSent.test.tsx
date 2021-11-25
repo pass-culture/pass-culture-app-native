@@ -32,9 +32,9 @@ describe('<BeneficiaryRequestSent />', () => {
     const notifyIdCheckCompleted = jest.fn()
     const useNotifyIdCheckCompletedMock = jest
       .spyOn(AuthApi, 'useNotifyIdCheckCompleted')
-      .mockReturnValue(({
+      .mockReturnValue({
         mutate: notifyIdCheckCompleted,
-      } as unknown) as UseMutationResult<EmptyResponse, unknown, void, unknown>)
+      } as unknown as UseMutationResult<EmptyResponse, unknown, void, unknown>)
 
     render(<BeneficiaryRequestSent />)
     waitForExpect(() => {

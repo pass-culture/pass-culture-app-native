@@ -14,9 +14,9 @@ describe('[Analytics utils]', () => {
     contentSize: { height: 1600 },
   }
   it('event should not be close to bottom', () => {
-    expect(isCloseToBottom((nativeEventMiddle as unknown) as NativeScrollEvent)).toBeFalsy()
+    expect(isCloseToBottom(nativeEventMiddle as unknown as NativeScrollEvent)).toBeFalsy()
   })
   it('event should be close to bottom', () => {
-    expect(isCloseToBottom((nativeEventBottom as unknown) as NativeScrollEvent)).toBeTruthy()
+    expect(isCloseToBottom(nativeEventBottom as unknown as NativeScrollEvent)).toBeTruthy()
   })
 })

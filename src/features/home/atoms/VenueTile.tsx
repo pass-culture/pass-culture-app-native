@@ -23,9 +23,13 @@ export interface VenueTileProps {
   userPosition: GeoCoordinates | null
 }
 
-export const mergeVenueData = (venueHit: VenueHit) => (
-  prevData: VenueResponse | undefined
-): VenueResponse => ({ ...venueHit, isVirtual: false, ...(prevData || {}) })
+export const mergeVenueData =
+  (venueHit: VenueHit) =>
+  (prevData: VenueResponse | undefined): VenueResponse => ({
+    ...venueHit,
+    isVirtual: false,
+    ...(prevData || {}),
+  })
 
 // TODO (Lucasbeneston) : Remove when we get image from venue
 const uri =
