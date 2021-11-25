@@ -526,7 +526,7 @@ jobs:
       - install_node_modules
       - setup_sentry
       - authenticate_gcp:
-          gcp_key_name: GCP_METIER_KEY
+          gcp_key_name: GCP_APP_NATIVE_KEY
       - build_web:
           env: testing
       - push-to-bucket:
@@ -548,7 +548,7 @@ jobs:
       - setup_staging_secrets
       - setup_sentry
       - authenticate_gcp:
-          gcp_key_name: GCP_METIER_KEY
+          gcp_key_name: GCP_APP_NATIVE_KEY
       - build_web:
           env: staging
       - push-to-bucket:
@@ -569,7 +569,7 @@ jobs:
       - setup_integration_secrets
       - setup_sentry
       - authenticate_gcp:
-          gcp_key_name: GCP_METIER_KEY
+          gcp_key_name: GCP_APP_NATIVE_KEY
       - build_web:
           env: integration
       - push-to-bucket:
@@ -591,7 +591,7 @@ jobs:
       - setup_production_secrets
       - setup_sentry
       - authenticate_gcp:
-          gcp_key_name: GCP_METIER_KEY
+          gcp_key_name: GCP_APP_NATIVE_KEY
       - build_web:
           env: production
       - push-to-bucket:
@@ -759,7 +759,7 @@ workflows:
             - test-web
           context:
             - GCP
-            - GCP_EHP
+            - GCP_APP_NATIVE_EHP
       - deploy-web-staging:
           filters:
             tags:
@@ -774,7 +774,7 @@ workflows:
             - test-web
           context:
             - GCP
-            - GCP_EHP
+            - GCP_APP_NATIVE_EHP
       - deploy-web-integration:
           filters:
             tags:
@@ -788,7 +788,7 @@ workflows:
             - test-web
           context:
             - GCP
-            - GCP_EHP
+            - GCP_APP_NATIVE_EHP
       - deploy-web-prod:
           filters:
             tags:
@@ -803,4 +803,4 @@ workflows:
             - test-web
           context:
             - GCP
-            - GCP_PROD
+            - GCP_APP_NATIVE_PROD
