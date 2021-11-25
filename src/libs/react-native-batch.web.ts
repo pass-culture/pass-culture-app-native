@@ -13,7 +13,6 @@ export const Batch = {
     if (disabled) {
       return
     }
-    getBatchSDK()
     /* Initiate Batch SDK opt-in UI configuration (native prompt) */
     let batchSDKUIConfig
 
@@ -95,6 +94,9 @@ export const BatchUser = {
 
 export const BatchPush = {
   registerForRemoteNotifications() {
-    return
+    if (disabled) {
+      return
+    }
+    getBatchSDK()
   },
 }
