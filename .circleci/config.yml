@@ -277,7 +277,7 @@ jobs:
 
   build-ios-production-hard:
     macos:
-      xcode: '12.5.1'
+      xcode: '13.0.0'
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -331,7 +331,7 @@ jobs:
 
   deploy-ios-testing-hard:
     macos:
-      xcode: '12.5.1'
+      xcode: '13.0.0'
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -356,7 +356,7 @@ jobs:
 
   deploy-ios-staging-hard:
     macos:
-      xcode: '12.5.1'
+      xcode: '13.0.0'
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -459,7 +459,7 @@ jobs:
 
   deploy-ios-production-hard:
     macos:
-      xcode: '12.5.1'
+      xcode: '13.0.0'
     working_directory: ~/pass-culture
     steps:
       - checkout

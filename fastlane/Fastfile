@@ -22,6 +22,7 @@ platform :ios do
       output_directory: "#{ENV['IOS_IPA_DIRECTORY']}",
       output_name: "#{ENV['IOS_IPA_NAME']}",
       silent: true,
+      export_method: ENV['EXPORT_METHOD'],
       workspace: "#{ENV['IOS_PROJECT_PATH']}/PassCulture.xcworkspace")
   end
 
