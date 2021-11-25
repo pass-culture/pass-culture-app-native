@@ -808,6 +808,10 @@ msgstr "Email modification mot de passe envoyé"
 msgid "Email modification mot de passe expiré"
 msgstr "Email modification mot de passe expiré"
 
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
+msgstr "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
+
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
@@ -821,6 +825,10 @@ msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réserv
 #: src/ui/components/PassPlaylist.tsx
 msgid "En voir plus"
 msgstr "En voir plus"
+
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "Encore un peu de patience... On se donne rendez-vous en janvier 2022 : nous reviendrons vers toi dès que le pass te sera accessible."
+msgstr "Encore un peu de patience... On se donne rendez-vous en janvier 2022 : nous reviendrons vers toi dès que le pass te sera accessible."
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
@@ -836,6 +844,7 @@ msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Entrée du code de confirmation"
 msgstr "Entrée du code de confirmation"
+
 
 #: src/ui/components/inputs/DateInput.native.test.tsx
 #: src/ui/components/inputs/DateInput.native.test.tsx
@@ -1111,6 +1120,10 @@ msgstr "Il est possible que cette offre soit désactivée ou n'existe pas."
 msgid "Il est possible que cette page soit désactivée ou n'existe pas."
 msgstr "Il est possible que cette page soit désactivée ou n'existe pas."
 
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "Il semblerait que les informations que tu nous as communiquées ne soient pas correctes."
+msgstr "Il semblerait que les informations que tu nous as communiquées ne soient pas correctes."
+
 #: src/features/auth/login/Login.tsx
 msgid "Il y a eu un problème. Tu peux réessayer plus tard."
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
@@ -1250,9 +1263,17 @@ msgstr "L'offre n'a pas été ajoutée à tes favoris"
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "L'usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L'identification doit se faire au nom du futur bénéficiaire."
+msgstr "L'usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L'identification doit se faire au nom du futur bénéficiaire."
+
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "La date choisie est incorrecte"
 msgstr "La date choisie est incorrecte"
+
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n'as pas l'âge requis pour obtenir l'aide du Gouvernement."
+msgstr "La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n'as pas l'âge requis pour obtenir l'aide du Gouvernement."
 
 #: src/libs/geolocation/enums.ts
 msgid "La géolocalisation est désactivée sur l'application"
@@ -1312,6 +1333,10 @@ msgstr ""
 "Le pass Culture ne semble plus à jour sur ton téléphone !\n"
 "Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible."
 
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "Le pass Culture pour les jeunes de 15 à 17 ans est actuellement en phase de test auprès de 22 établissements scolaires des académies de Rennes et de Versailles."
+msgstr "Le pass Culture pour les jeunes de 15 à 17 ans est actuellement en phase de test auprès de 22 établissements scolaires des académies de Rennes et de Versailles."
+
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
@@ -1324,6 +1349,10 @@ msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 #: src/features/bookOffer/components/BookingImpossible.tsx
 msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
+
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé."
+msgstr "Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé."
 
 #: src/features/auth/components/QuitSignupModal.tsx
 #: src/features/identityCheck/pages/QuitIdentityCheckModal.tsx
@@ -1653,6 +1682,11 @@ msgstr "Offre épuisée"
 msgid "Offres"
 msgstr "Offres"
 
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "Oh non !"
+msgstr "Oh non !"
+
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 #: src/features/auth/signup/BeneficiaryRequestSent/BeneficiaryRequestSent.tsx
 msgid "On y va !"
@@ -1871,6 +1905,10 @@ msgstr "Questionnaire culturel"
 msgid "Questions fréquentes"
 msgstr "Questions fréquentes"
 
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "Qui est-ce ?"
+msgstr "Qui est-ce ?"
+
 #: src/features/search/sections/titles.ts
 msgid "Rayon"
 msgstr "Rayon"
@@ -1905,6 +1943,10 @@ msgstr "Rechercher"
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "Refais une demande en vérifiant ton identité avec ta pièce d’identité."
+msgstr "Refais une demande en vérifiant ton identité avec ta pièce d’identité."
+
 #: src/features/bookOffer/components/BookingImpossible.tsx
 msgid "Rends-toi vite sur le site pass Culture afin de la réserver"
 msgstr "Rends-toi vite sur le site pass Culture afin de la réserver"
@@ -1936,6 +1978,7 @@ msgstr "Retourner l'accueil"
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
+#: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
 #: src/features/navigation/PageNotFound.tsx
 #: src/features/offer/pages/OfferNotFound.tsx
 #: src/features/profile/pages/DeleteProfileSuccess.tsx
@@ -2008,6 +2051,11 @@ msgstr "Reviens à partir du 31 janvier pour poursuivre ton inscription et bén�
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 msgid "Réessayer"
 msgstr "Réessayer"
+
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "Réessayer de m'identifier"
+msgstr "Réessayer de m'identifier"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Réglages de notifications"
@@ -2194,6 +2242,12 @@ msgstr "Supprimer mon compte"
 #: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Sélectionne ton statut"
 msgstr "Sélectionne ton statut"
+
+
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
+msgstr "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
+
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEnd.tsx
 msgid "Ta pièce d’identité a bien été transmise !"
@@ -2392,6 +2446,10 @@ msgstr "Tu n'as pas reçu le sms ?"
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
 msgid "Tu n'es pas connecté !"
 msgstr "Tu n'es pas connecté !"
+
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "Tu ne fais pas partie de la phase de test"
+msgstr "Tu ne fais pas partie de la phase de test"
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le"

@@ -1,10 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -13,6 +15,9 @@ import { padding, Spacer } from 'ui/theme'
 export function NavigationIdentityCheck(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('Navigation', undefined)
+  const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
+
+  if (screenError) throw screenError
 
   return (
     <ScrollView>
@@ -60,6 +65,42 @@ export function NavigationIdentityCheck(): JSX.Element {
           <NavigationButton
             title={'IdentityCheckEnd'}
             onPress={() => navigate('IdentityCheckEnd')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={'Ineligible Educonnect Error'}
+            onPress={() => {
+              setScreenError(new ScreenError('UserAgeNotValidEduConnect', NotEligibleEduConnect))
+            }}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={'InvalidAgeFromEduConnect Error'}
+            onPress={() => {
+              setScreenError(
+                new ScreenError('InvalidAgeFromEduConnectEduConnect', NotEligibleEduConnect)
+              )
+            }}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={'InvalidInformationEduConnect Error'}
+            onPress={() => {
+              setScreenError(new ScreenError('InvalidInformationEduConnect', NotEligibleEduConnect))
+            }}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={'LegalRepresentative Error'}
+            onPress={() => {
+              setScreenError(
+                new ScreenError('LegalRepresentativeEduConnect', NotEligibleEduConnect)
+              )
+            }}
           />
         </Row>
       </StyledContainer>
