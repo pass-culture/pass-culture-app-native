@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Status/> should render correctly 1`] = `
+exports[`<Status/> should render correctly with no Collégien status 1`] = `
 Array [
   <View
     height="100%"

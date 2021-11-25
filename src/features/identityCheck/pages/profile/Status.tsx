@@ -1,6 +1,8 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 
+import { ActivityEnum } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
 import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
@@ -10,33 +12,31 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer } from 'ui/theme'
 
-type UserStatus =
-  | 'Lycéen'
-  | 'Étudiant'
-  | 'Employé'
-  | 'Apprenti'
-  | 'Alternant'
-  | 'Volontaire'
-  | 'Inactif'
-  | 'Chômeur'
-
-type UserStatusResponse = { name: UserStatus; description?: string }
+type UserStatusResponse = { name: ActivityEnum; description?: string }
 
 // TODO(antoinewg) dehardcode statuses
-const statuses: UserStatusResponse[] = [
-  { name: 'Lycéen' },
-  { name: 'Étudiant' },
-  { name: 'Employé' },
-  { name: 'Apprenti' },
-  { name: 'Alternant' },
-  { name: 'Volontaire', description: 'En service civique' },
-  { name: 'Inactif', description: 'En incapacité de travailler' },
-  { name: 'Chômeur', description: "En recherche d'emploi" },
+const baseStatuses: UserStatusResponse[] = [
+  { name: ActivityEnum.Lycen },
+  { name: ActivityEnum.Tudiant },
+  { name: ActivityEnum.Employ },
+  { name: ActivityEnum.Apprenti },
+  { name: ActivityEnum.Alternant },
+  { name: ActivityEnum.Volontaire, description: 'En service civique' },
+  { name: ActivityEnum.Inactif, description: 'En incapacité de travailler' },
+  { name: ActivityEnum.Chmeur, description: "En recherche d'emploi" },
 ]
 
 export const Status = () => {
   const { goBack } = useGoBack(...homeNavConfig)
-  const [selectedStatus, setSelectedStatus] = useState<UserStatus | undefined>()
+  const [selectedStatus, setSelectedStatus] = useState<ActivityEnum | undefined>()
+  const { data: settings } = useAppSettings()
+
+  const enabledGeneralisation =
+    settings?.enableNativeEacIndividual && settings?.enableUnderageGeneralisation
+
+  const statuses = enabledGeneralisation
+    ? ([{ name: 'Collégien' }] as UserStatusResponse[]).concat(baseStatuses)
+    : baseStatuses
 
   return (
     <PageWithHeader
