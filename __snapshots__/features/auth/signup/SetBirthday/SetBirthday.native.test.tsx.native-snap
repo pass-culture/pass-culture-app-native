@@ -866,7 +866,7 @@ Array [
             testID="leftIconButton"
           />
           <Text
-            numberOfLines={2}
+            numberOfLines={3}
             style={
               Array [
                 Object {
@@ -882,7 +882,9 @@ Array [
               ]
             }
           >
-            Pourquoi saisir ma date de naissance ?
+            Pourquoi
+saisir ma date de
+naissance ?
           </Text>
           <View
             accessibilityLabel="Fermer la modale"
