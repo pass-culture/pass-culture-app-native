@@ -83,10 +83,9 @@ export type VenueTypeCriteria = { ALL: { label: string; facetFilter: '' } } & {
   [venueType in VenueTypeCodeKey]: { label: string; facetFilter: VenueTypeCodeKey }
 }
 
-export type OptionalVenueTypeCriteria = Pick<VenueTypeCriteria, 'ALL'> &
-  {
-    [venueType in VenueTypeCodeKey]?: { label: string; facetFilter: VenueTypeCodeKey }
-  }
+export type OptionalVenueTypeCriteria = Pick<VenueTypeCriteria, 'ALL'> & {
+  [venueType in VenueTypeCodeKey]?: { label: string; facetFilter: VenueTypeCodeKey }
+}
 
 export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {
   ALL: {

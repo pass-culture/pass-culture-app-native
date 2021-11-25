@@ -49,7 +49,7 @@ describe('SecondCard', () => {
     const { getByText } = render(
       <SecondCard
         lastIndex={0}
-        swiperRef={(ref as unknown) as RefObject<Swiper>}
+        swiperRef={ref as unknown as RefObject<Swiper>}
         activeIndex={0}
         index={0}
       />

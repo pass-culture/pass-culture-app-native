@@ -68,7 +68,9 @@ Array [
       <View
         accessibilityLabel="Revenir en arrière"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -125,7 +127,9 @@ Array [
       <View
         accessibilityLabel="rightIconButton"
         accessible={true}
+        collapsable={false}
         focusable={false}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -291,14 +295,12 @@ Array [
               }
             >
               <TextInput
-                allowFontScaling={true}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
                 onSubmitEditing={[Function]}
                 placeholder="Ex : 34 avenue de l'Opéra"
                 placeholderTextColor="#626262"
-                rejectResponderTermination={true}
                 style={
                   Array [
                     Object {
@@ -317,7 +319,6 @@ Array [
                   ]
                 }
                 textContentType="addressState"
-                underlineColorAndroid="transparent"
                 value=""
               />
             </View>
@@ -362,7 +363,9 @@ Array [
       <View
         accessibilityLabel="Continuer"
         accessible={true}
+        collapsable={false}
         focusable={false}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

@@ -11,8 +11,8 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { usePlaces } from 'features/search/api'
 import { eventMonitoring } from 'libs/monitoring'
+import { useAddresses } from 'libs/place'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -30,11 +30,11 @@ export const SetAddress = () => {
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null)
   const debouncedSetAddress = useRef(debounce(setDebouncedAddress, 500)).current
 
-  // TODO (LucasBeneston): Récupérer cityCode / postalCode du context idcheck
-  const { data: addresses = [], isError } = usePlaces({
+  // TODO (LucasBeneston, antoinewg): Récupérer cityCode / postalCode du context idcheck
+  const { data: addresses = [], isError } = useAddresses({
     query: debouncedAddress,
     cityCode: '',
-    postalCode: '75002',
+    postalCode: '',
     limit: 10,
   })
 
@@ -103,13 +103,13 @@ export const SetAddress = () => {
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
-          {addresses.map((option, index) => (
+          {addresses.map((option: string, index: number) => (
             <AddressOption
               option={option}
-              selected={option.label === selectedAddress}
+              selected={option === selectedAddress}
               onPressOption={onAddressSelection}
-              key={option.label}
-              {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${option.label}`)}
+              key={option}
+              {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${option}`)}
             />
           ))}
         </ModalContent>

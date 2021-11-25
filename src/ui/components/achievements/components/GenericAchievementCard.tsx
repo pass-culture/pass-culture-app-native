@@ -49,9 +49,10 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
   const animatedButtonRef = React.useRef<Animatable.View & View>(null)
 
   const isSmallHeight = useMediaQuery({ maxHeight: SMALL_HEIGHT })
-  const lottieStyle = useMemo(() => (isSmallHeight ? { height: '100%' } : undefined), [
-    isSmallHeight,
-  ])
+  const lottieStyle = useMemo(
+    () => (isSmallHeight ? { height: '100%' } : undefined),
+    [isSmallHeight]
+  )
 
   if (props.index === undefined || props.lastIndex === undefined) {
     throw new MonitoringError(

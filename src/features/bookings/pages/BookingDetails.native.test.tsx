@@ -313,12 +313,12 @@ describe('BookingDetails', () => {
 })
 
 function renderBookingDetails(booking?: Booking) {
-  jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue(({
+  jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue({
     data: booking,
     isSuccess: true,
     isError: false,
     error: undefined,
-  } as unknown) as UseQueryResult<BookingReponse | null>)
+  } as unknown as UseQueryResult<BookingReponse | null>)
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<BookingDetails />))
 }

@@ -14,17 +14,19 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
     ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
     : { locationType: LocationType.EVERYWHERE }
 
-  const locationFilter = (venueId && venue
-    ? {
-        locationType: LocationType.VENUE,
-        venue: {
-          label: venue.publicName || venue.name,
-          info: venue.city,
-          geolocation: { latitude: venue.latitude, longitude: venue.longitude },
-          venueId,
-        },
-      }
-    : defaultLocationFilter) as SearchState['locationFilter']
+  const locationFilter = (
+    venueId && venue
+      ? {
+          locationType: LocationType.VENUE,
+          venue: {
+            label: venue.publicName || venue.name,
+            info: venue.city,
+            geolocation: { latitude: venue.latitude, longitude: venue.longitude },
+            venueId,
+          },
+        }
+      : defaultLocationFilter
+  ) as SearchState['locationFilter']
 
   const params: SearchState = {
     beginningDatetime: null,

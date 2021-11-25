@@ -186,6 +186,7 @@ Array [
             "paddingHorizontal": 24,
           }
         }
+        keyboardDismissMode="on-drag"
         keyboardShouldPersistTaps="handled"
         style={
           Array [

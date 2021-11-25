@@ -13,12 +13,8 @@ import { useShowSkeleton } from './useShowSkeleton'
 export const Home: FunctionComponent = function () {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const showSkeleton = useShowSkeleton()
-  const {
-    displayedModules,
-    homeModules,
-    homeVenuesModules,
-    recommendedHits,
-  } = useDisplayedHomeModules(params?.entryId)
+  const { displayedModules, homeModules, homeVenuesModules, recommendedHits } =
+    useDisplayedHomeModules(params?.entryId)
 
   if (showSkeleton) {
     return (

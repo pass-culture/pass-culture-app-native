@@ -17,10 +17,10 @@ export const FavoritesWrapper = memo<{ children: JSX.Element }>(function Favorit
     favoritesReducer,
     initialFavoritesState
   )
-  const contextValue = useMemo(() => ({ ...contextValueWithoutDispatch, dispatch }), [
-    contextValueWithoutDispatch,
-    dispatch,
-  ])
+  const contextValue = useMemo(
+    () => ({ ...contextValueWithoutDispatch, dispatch }),
+    [contextValueWithoutDispatch, dispatch]
+  )
   return <FavoritesContext.Provider value={contextValue}>{children}</FavoritesContext.Provider>
 })
 

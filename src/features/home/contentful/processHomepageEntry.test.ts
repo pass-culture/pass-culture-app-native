@@ -52,9 +52,9 @@ describe('processHomepageEntry', () => {
     }
 
     it('should filter out unpublished modules', () => {
-      const additionalAlgoliaParameters = ([
+      const additionalAlgoliaParameters = [
         { sys: { type: 'Link', linkType: 'Entry', id: '2nYjyMYFD6HXrrycEW74Km' } },
-      ] as unknown) as AlgoliaParameters[]
+      ] as unknown as AlgoliaParameters[]
 
       const search = buildSearchParams(algoliaParameters, additionalAlgoliaParameters)
       expect(search).toHaveLength(1)
@@ -62,10 +62,10 @@ describe('processHomepageEntry', () => {
     })
 
     it('should compose a playlist with additional parameters', () => {
-      const additionalAlgoliaParameters = ([
+      const additionalAlgoliaParameters = [
         { ...algoliaParameters, fields: { title: 'Musique', categories: ['Musique'] } },
         { ...algoliaParameters, fields: { title: 'Ciné', categories: ['Cinéma'] } },
-      ] as unknown) as AlgoliaParameters[]
+      ] as unknown as AlgoliaParameters[]
 
       const search = buildSearchParams(algoliaParameters, additionalAlgoliaParameters)
       expect(search).toHaveLength(3)

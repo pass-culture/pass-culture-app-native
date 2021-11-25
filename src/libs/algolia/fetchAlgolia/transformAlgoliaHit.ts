@@ -41,15 +41,17 @@ export const parseGeoloc = (hit: AlgoliaHit): AlgoliaHit['_geoloc'] =>
 export const filterAlgoliaHit = (hit: IncompleteSearchHit): boolean =>
   hit && hit.offer && !!hit.offer.thumbUrl && typeof hit.offer.subcategoryId !== 'undefined'
 
-export const transformAlgoliaHit = (urlPrefix?: string) => (hit: AlgoliaHit): AlgoliaHit => ({
-  ...hit,
-  offer: {
-    ...hit.offer,
-    ...convertAlgoliaOfferToCents(hit.offer),
-    thumbUrl: parseThumbUrl(hit.offer.thumbUrl, urlPrefix),
-  },
-  _geoloc: parseGeoloc(hit),
-})
+export const transformAlgoliaHit =
+  (urlPrefix?: string) =>
+  (hit: AlgoliaHit): AlgoliaHit => ({
+    ...hit,
+    offer: {
+      ...hit.offer,
+      ...convertAlgoliaOfferToCents(hit.offer),
+      thumbUrl: parseThumbUrl(hit.offer.thumbUrl, urlPrefix),
+    },
+    _geoloc: parseGeoloc(hit),
+  })
 
 export const useTransformAlgoliaHits = () => {
   const { data: settings } = useAppSettings()
