@@ -2,7 +2,7 @@ import { FeatureCollection, Point } from 'geojson'
 
 import { Properties, SuggestedPlace } from './types'
 
-const API_ADRESSE_URL = `https://api-adresse.data.gouv.fr/search`
+export const API_ADRESSE_URL = `https://api-adresse.data.gouv.fr/search`
 const REGEX_STARTING_WITH_NUMBERS = /^\d/
 
 export interface PlaceProps {
@@ -37,12 +37,20 @@ export const buildSuggestedAddresses = (
   suggestedAddresses: FeatureCollection<Point, Properties>
 ): string[] => suggestedAddresses.features.map(({ properties }) => properties.label)
 
-export const fetchPlaces = ({ query, cityCode, postalCode, limit = 20 }: PlaceProps) => {
+export const buildPlaceUrl = ({ query, cityCode, postalCode, limit = 20 }: PlaceProps): string => {
   let stringQueryParams = `${query}`
   if (cityCode) stringQueryParams += `&citycode=${cityCode}`
   if (postalCode) stringQueryParams += `&postcode=${postalCode}`
-  return fetch(`${API_ADRESSE_URL}/?limit=${limit}&q=${stringQueryParams}`)
-    .then((response) => response.json())
-    .then(buildSuggestedPlaces)
-    .catch(() => [])
+  return `${API_ADRESSE_URL}?q=${stringQueryParams}&limit=${limit}`
+}
+
+export const fetchPlaces = async ({ query, cityCode, postalCode, limit = 20 }: PlaceProps) => {
+  const url = buildPlaceUrl({ query, cityCode, postalCode, limit })
+  try {
+    const response = await fetch(url)
+    const json: FeatureCollection<Point, Properties> = await response.json()
+    return buildSuggestedPlaces(json)
+  } catch (_error) {
+    return []
+  }
 }

@@ -1,39 +1,35 @@
+import { FeatureCollection, Point } from 'geojson'
+import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { eventMonitoring } from 'libs/monitoring'
-import { buildSuggestedAddresses } from 'libs/place'
+import { Properties } from 'libs/place'
+import * as fetchPlaces from 'libs/place/fetchPlaces'
+import { buildPlaceUrl } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-jest.mock('react-query')
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
   useIdentityCheckContext: () => ({ dispatch: mockDispatch }),
 }))
 
+const QUERY_CITY_CODE = ''
 const QUERY_ADDRESS = '1 rue Poissonnière'
-let mockIsError = false
-let mockAddresses: string[] = []
-let mockIsLoading = false
-const mockRemove = jest.fn()
+const QUERY_POSTAL_CODE = ''
 
-jest.mock('libs/place/useAddresses', () => ({
-  useAddresses: () => ({
-    data: mockAddresses,
-    isError: mockIsError,
-    isLoading: mockIsLoading,
-    refetch: jest.fn(() =>
-      Promise.resolve({
-        data: mockAddresses,
-      })
-    ),
-    remove: mockRemove,
-  }),
-}))
+const url = buildPlaceUrl({
+  query: QUERY_ADDRESS,
+  cityCode: QUERY_CITY_CODE,
+  postalCode: QUERY_POSTAL_CODE,
+  limit: 10,
+})
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -45,61 +41,44 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 describe('<SetAddress/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<SetAddress />)
+    const renderAPI = renderSetAddresse()
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should display a list of addresses when user add an address', async () => {
-    mockAddresses = buildSuggestedAddresses(mockedSuggestedPlaces)
-    const { getByText, getByPlaceholderText } = render(<SetAddress />)
+    mockPlacesApiCall(mockedSuggestedPlaces)
+    const mockedGetCitiesSpy = jest.spyOn(fetchPlaces, 'fetchPlaces')
+
+    const { getByText, getByPlaceholderText } = renderSetAddresse()
 
     const input = getByPlaceholderText("Ex : 34 avenue de l'Opéra")
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => {
-      getByText(mockAddresses[0])
-      getByText(mockAddresses[1])
-      getByText(mockAddresses[2])
-    })
-  })
-
-  it('should display a spinner if the results are still loading', () => {
-    mockIsLoading = true
-    const { queryByTestId } = render(<SetAddress />)
-    queryByTestId('spinner')
-  })
-
-  it('should switch input label and remove list of addresses when user pick an address', async () => {
-    mockAddresses = buildSuggestedAddresses(mockedSuggestedPlaces)
-    const { getByText, queryByText, getByPlaceholderText } = render(<SetAddress />)
-
-    const input = getByPlaceholderText("Ex : 34 avenue de l'Opéra")
-    fireEvent.changeText(input, QUERY_ADDRESS)
-
-    queryByText('Recherche et sélectionne ton adresse')
-    expect(queryByText('Adresse sélectionnée')).toBeFalsy()
-    fireEvent.press(getByText(mockAddresses[0]))
-
-    await waitFor(() => {
-      expect(queryByText('Recherche et sélectionne ton adresse')).toBeFalsy()
-      queryByText('Adresse sélectionnée')
-      expect(mockRemove).toHaveBeenCalled()
+      expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, {
+        query: QUERY_ADDRESS,
+        postalCode: QUERY_POSTAL_CODE,
+        limit: 10,
+        cityCode: QUERY_CITY_CODE,
+      })
+      getByText(mockedSuggestedPlaces.features[0].properties.label)
+      getByText(mockedSuggestedPlaces.features[1].properties.label)
+      getByText(mockedSuggestedPlaces.features[2].properties.label)
     })
   })
 
   it('should save address when clicking on "Continuer"', async () => {
-    mockAddresses = buildSuggestedAddresses(mockedSuggestedPlaces)
-    const { getByText, getByPlaceholderText } = render(<SetAddress />)
+    const { getByText, getByPlaceholderText } = renderSetAddresse()
 
     const input = getByPlaceholderText("Ex : 34 avenue de l'Opéra")
     fireEvent.changeText(input, QUERY_ADDRESS)
-    fireEvent.press(getByText(mockAddresses[0]))
+    fireEvent.press(getByText(mockedSuggestedPlaces.features[1].properties.label))
     fireEvent.press(getByText('Continuer'))
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_ADDRESS',
-        payload: mockAddresses[0],
+        payload: mockedSuggestedPlaces.features[1].properties.label,
       })
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toBeCalledWith('IdentityCheckStatus')
@@ -107,8 +86,8 @@ describe('<SetAddress/>', () => {
   })
 
   it('should show the generic error message if the API call returns error', async () => {
-    mockIsError = true
-    const { getByPlaceholderText } = render(<SetAddress />)
+    mockPlacesApiCallError()
+    const { getByPlaceholderText } = renderSetAddresse()
 
     const input = getByPlaceholderText("Ex : 34 avenue de l'Opéra")
     fireEvent.changeText(input, QUERY_ADDRESS)
@@ -126,3 +105,16 @@ describe('<SetAddress/>', () => {
     })
   })
 })
+
+function renderSetAddresse() {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  return render(reactQueryProviderHOC(<SetAddress />))
+}
+
+function mockPlacesApiCall(response: FeatureCollection<Point, Properties>) {
+  server.use(rest.get(url, (req, res, ctx) => res(ctx.status(200), ctx.json(response))))
+}
+
+function mockPlacesApiCallError() {
+  server.use(rest.get(url, (req, res, ctx) => res(ctx.status(400))))
+}

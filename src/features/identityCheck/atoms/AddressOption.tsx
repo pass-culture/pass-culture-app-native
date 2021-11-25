@@ -20,7 +20,7 @@ export const AddressOption = ({ option, onPressOption, selected }: Props) => {
         onPress={() => onPressOption(option.label)}
         activeOpacity={ACTIVE_OPACITY}>
         <TextContainer>
-          <Typo.Body>{option.label}</Typo.Body>
+          <StyledBody selected={selected}>{option.label}</StyledBody>
           {selected ? (
             <IconContainer>
               <Validate color={ColorsEnum.PRIMARY} />
@@ -42,6 +42,10 @@ const TextContainer = styled.View({
   flex: 1,
   justifyContent: 'center',
 })
+
+const StyledBody = styled(Typo.Body)<{ selected: boolean }>(({ selected }) => ({
+  fontWeight: selected ? 'bold' : 'normal',
+}))
 
 const IconContainer = styled.View({
   position: 'absolute',

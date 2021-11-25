@@ -7,12 +7,7 @@ const STALE_TIME_PLACES = 5 * 60 * 1000
 
 export const usePlaces = ({ query, limit, cityCode, postalCode }: PlaceProps) =>
   useQuery<SuggestedPlace[]>(
-    [
-      [QueryKeys.PLACES, query],
-      [QueryKeys.LIMIT, limit],
-      [QueryKeys.CITY_CODE, cityCode],
-      [QueryKeys.POSTAL_CODE, postalCode],
-    ],
+    [[QueryKeys.PLACES, query, cityCode, postalCode]],
     () => fetchPlaces({ query, limit, cityCode, postalCode }),
     {
       staleTime: STALE_TIME_PLACES,

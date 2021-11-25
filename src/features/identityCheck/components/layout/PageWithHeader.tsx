@@ -20,7 +20,9 @@ export const PageWithHeader = (props: Props) => {
       <PageHeader title={props.title} />
       <BodyContainer>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-          <StyledBottomCardContainer keyboardShouldPersistTaps="handled">
+          <StyledBottomCardContainer
+            keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag">
             {props.scrollChildren}
             <Spacer.Flex />
           </StyledBottomCardContainer>

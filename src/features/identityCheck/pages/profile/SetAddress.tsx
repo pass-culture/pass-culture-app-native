@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
+import debounce from 'lodash.debounce'
+import React, { useEffect, useRef, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
@@ -24,23 +25,18 @@ export const SetAddress = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch } = useIdentityCheckContext()
-  const [cityInfo, setCityInfo] = useState({ cityCode: '', postalCode: '' })
   const [addressQuery, setAddressQuery] = useState('')
+  const [debouncedAddress, setDebouncedAddress] = useState<string>(addressQuery)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null)
-  const { data: addresses = [], isError, refetch, remove } = usePlaces({
-    query: addressQuery,
-    cityCode: cityInfo.cityCode,
-    postalCode: cityInfo.postalCode,
+  const debouncedSetAddress = useRef(debounce(setDebouncedAddress, 500)).current
+
+  // TODO (LucasBeneston): Récupérer cityCode / postalCode du context idcheck
+  const { data: addresses = [], isError } = usePlaces({
+    query: debouncedAddress,
+    cityCode: '',
+    postalCode: '75002',
     limit: 10,
   })
-
-  useEffect(() => {
-    // TODO (LucasBeneston) get cityCode and postalCode from SetPostalCode
-    setCityInfo({
-      cityCode: '',
-      postalCode: '75002',
-    })
-  }, [])
 
   useEffect(() => {
     if (isError) {
@@ -56,20 +52,20 @@ export const SetAddress = () => {
     }
   }, [isError])
 
-  function onAddressChange(value: string) {
-    refetch()
+  const onChangeAddress = (value: string) => {
     setAddressQuery(value)
+    debouncedSetAddress(value)
     setSelectedAddress('')
   }
 
-  function onAddressSelection(address: string) {
+  const onAddressSelection = (address: string) => {
     setSelectedAddress(address)
   }
 
-  function resetSearch() {
+  const resetSearch = () => {
     setAddressQuery('')
+    setDebouncedAddress('')
     setSelectedAddress('')
-    remove()
   }
 
   const RightIcon = () =>
@@ -97,7 +93,7 @@ export const SetAddress = () => {
           <CenteredTitle title={t`Quelle est ton adresse ?`} />
           <TextInput
             autoFocus
-            onChangeText={onAddressChange}
+            onChangeText={onChangeAddress}
             value={addressQuery}
             label={t`Recherche et sélectionne ton adresse`}
             placeholder={t`Ex : 34 avenue de l'Opéra`}
