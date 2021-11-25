@@ -75,8 +75,8 @@
     "@bam.tech/react-native-batch": "^6.0.2",
     "@bam.tech/react-native-config": "^1.4.5",
     "@elastic/app-search-javascript": "^7.13.1",
-    "@lingui/core": "^3.10.4",
-    "@lingui/react": "^3.10.2",
+    "@lingui/core": "^3.12.1",
+    "@lingui/react": "^3.12.1",
     "@pass-culture/id-check": "^2.10.19",
     "@pass-culture/react-native-profiling": "1.1.2",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
@@ -170,8 +170,8 @@
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.12.0",
     "@fingerprintjs/fingerprintjs": "^3.3.0",
-    "@lingui/cli": "^3.10.2",
-    "@lingui/macro": "^3.10.2",
+    "@lingui/cli": "^3.12.1",
+    "@lingui/macro": "^3.12.1",
     "@react-native-community/eslint-config": "^3.0.1",
     "@sentry/webpack-plugin": "^1.18.3",
     "@svgr/webpack": "^5.5.0",
@@ -306,7 +306,8 @@
   },
   "resolutions": {
     "@babel/core": "7.12.*",
-    "@babel/runtime": "7.12.*"
+    "@babel/runtime": "7.12.*",
+    "cli-table": "0.3.6"
   },
   "jest": {
     "preset": "react-native"
