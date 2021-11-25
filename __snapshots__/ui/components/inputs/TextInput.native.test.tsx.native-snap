@@ -32,13 +32,11 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
   }
 >
   <TextInput
-    allowFontScaling={true}
     onBlur={[Function]}
     onChangeText={[Function]}
     onFocus={[Function]}
     placeholder="placeholder"
     placeholderTextColor="#626262"
-    rejectResponderTermination={true}
     style={
       Array [
         Object {
@@ -56,7 +54,6 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
         },
       ]
     }
-    underlineColorAndroid="transparent"
   />
 </View>
 `;
