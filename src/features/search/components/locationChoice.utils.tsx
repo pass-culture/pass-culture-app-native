@@ -5,7 +5,7 @@ import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { AroundMeDeprecated } from 'ui/svg/icons/AroundMe_deprecated'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { BicolorLocationPointerDeprecated as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer_deprecated'
 import { EverywhereDeprecated } from 'ui/svg/icons/Everywhere_deprecated'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 

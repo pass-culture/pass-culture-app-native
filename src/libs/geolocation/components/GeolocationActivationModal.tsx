@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { BicolorLocationPointerDeprecated } from 'ui/svg/icons/BicolorLocationPointer_deprecated'
 import { Spacer, Typo } from 'ui/theme'
 
 import { GeolocPermissionState } from '../enums'
@@ -42,7 +42,7 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       onCloseIconPress={hideGeolocPermissionModal}
       testIdSuffix="geoloc-permission-modal">
       <React.Fragment>
-        <BicolorLocationPointer size={140} />
+        <BicolorLocationPointerDeprecated size={140} />
         <Spacer.Column numberOfSpaces={2} />
         <InformationText>
           {t`Retrouve toutes les offres autour de chez toi en activant les données de localisation.`}

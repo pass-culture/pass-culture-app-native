@@ -21,7 +21,7 @@ import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { BicolorLocationPointerDeprecated } from 'ui/svg/icons/BicolorLocationPointer_deprecated'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -166,7 +166,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
       <Icon name="EverywhereDeprecated" component={EverywhereDeprecated} />
       <Icon name="BicolorEverywhere" component={BicolorEverywhere} isNew />
-      <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} />
+      <Icon name="BicolorLocationPointerDeprecated" component={BicolorLocationPointerDeprecated} />
       <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} />
       <Icon name="NoOffer" component={NoOffer} />
       <Icon name="OfferDigital" component={OfferDigital} />
