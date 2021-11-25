@@ -11,6 +11,7 @@ import { ModalHeader } from './ModalHeader'
 
 interface Props {
   title: string
+  numberOfLinesTitle?: number
   visible: boolean
   onCloseIconPress: () => void
   testIdSuffix?: string
@@ -18,6 +19,7 @@ interface Props {
 
 export const AppInformationModal: FunctionComponent<Props> = ({
   title,
+  numberOfLinesTitle,
   visible,
   children,
   onCloseIconPress,
@@ -46,6 +48,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
                 rightIconAccessibilityLabel={t`Fermer la modale`}
                 rightIcon={Close}
                 onRightIconPress={onCloseIconPress}
+                numberOfLines={numberOfLinesTitle}
               />
               <Content style={{ paddingBottom: paddingBottom }}>{children}</Content>
             </Container>

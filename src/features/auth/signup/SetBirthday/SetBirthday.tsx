@@ -173,6 +173,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     financialHelpMessage +
     t`Cette aide sera créditée directement sur ton compte pass Culture.`
 
+  const modalTitle = t`Pourquoi` + '\n' + t`saisir ma date de` + '\n' + t`naissance ?`
+
   return (
     <React.Fragment>
       <BottomContentPage>
@@ -215,7 +217,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
         </BottomCardContentContainer>
       </BottomContentPage>
       <AppInformationModal
-        title="Pourquoi saisir ma date de naissance ?"
+        title={modalTitle}
+        numberOfLinesTitle={3}
         visible={informationModalVisible}
         onCloseIconPress={hideInformationModal}
         testIdSuffix="birthday-information">
