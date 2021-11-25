@@ -324,19 +324,20 @@ Array [
                         onSubmitEditing={[Function]}
                         pointerEvents="none"
                         returnKeyType="done"
+                        selectionColor="transparent"
                         style={
                           Array [
                             Object {
-                              "bottom": 0,
                               "fontSize": 18,
+                              "height": 1,
                               "left": 0,
                               "lineHeight": 22,
-                              "opacity": 0,
+                              "opacity": 1,
+                              "overflow": "hidden",
                               "position": "absolute",
                               "right": 0,
                               "textAlign": "center",
-                              "top": 0,
-                              "zIndex": 0,
+                              "zIndex": -1,
                             },
                           ]
                         }
@@ -1323,19 +1324,20 @@ exports[`SetBirthday Page should render properly 1`] = `
                       onSubmitEditing={[Function]}
                       pointerEvents="none"
                       returnKeyType="done"
+                      selectionColor="transparent"
                       style={
                         Array [
                           Object {
-                            "bottom": 0,
                             "fontSize": 18,
+                            "height": 1,
                             "left": 0,
                             "lineHeight": 22,
-                            "opacity": 0,
+                            "opacity": 1,
+                            "overflow": "hidden",
                             "position": "absolute",
                             "right": 0,
                             "textAlign": "center",
-                            "top": 0,
-                            "zIndex": 0,
+                            "zIndex": -1,
                           },
                         ]
                       }
