@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { PageHeader } from 'features/identityCheck/atoms/layout/PageHeader'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { Background } from 'ui/svg/Background'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 const SMALL_VIEWPORT_MAX_HEIGHT = 500
 
@@ -24,7 +24,6 @@ export const PageWithHeader = (props: Props) => {
       <PageHeader title={props.title} />
       <BodyContainer>
         <StyledBottomCardContainer keyboardShouldPersistTaps="handled">
-          <Spacer.Flex />
           {props.scrollChildren}
           <Spacer.Flex />
         </StyledBottomCardContainer>
@@ -37,14 +36,14 @@ export const PageWithHeader = (props: Props) => {
   )
 }
 
-const BodyContainer = styled.View({
+const BodyContainer = styled.View(({ theme }) => ({
   flex: 1,
   justifyContent: 'flex-end',
   borderTopLeftRadius: getSpacing(4),
   borderTopRightRadius: getSpacing(4),
   overflow: 'hidden',
-  backgroundColor: ColorsEnum.WHITE,
-})
+  backgroundColor: theme.colors.white,
+}))
 
 const StyledBottomCardContainer = styled.ScrollView.attrs({
   contentContainerStyle: {
@@ -54,9 +53,6 @@ const StyledBottomCardContainer = styled.ScrollView.attrs({
     paddingHorizontal: getSpacing(6),
     alignItems: 'center',
     display: 'flex',
-    backgroundColor: ColorsEnum.WHITE,
-    borderTopLeftRadius: getSpacing(4),
-    borderTopRightRadius: getSpacing(4),
   },
 })({
   height: '100%',

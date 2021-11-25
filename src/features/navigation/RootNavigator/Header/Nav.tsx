@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { navigationRef } from 'features/navigation/navigationRef'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
@@ -21,7 +21,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
     <NavItemsContainer maxWidth={maxWidth} height={height} noShadow={noShadow}>
       {tabRoutes.map((route, index) => {
         const onPress = () => {
-          navigationRef?.current?.navigate(...getTabNavConfig(route.name, undefined))
+          navigateFromRef(...getTabNavConfig(route.name, undefined))
         }
         const key = `key-tab-nav-${route.name}`
         function renderNavItem() {

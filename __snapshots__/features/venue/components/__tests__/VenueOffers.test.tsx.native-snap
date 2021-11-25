@@ -188,17 +188,15 @@ Array [
           },
         ]
       }
-      disableVirtualization={false}
       getItem={[Function]}
       getItemCount={[Function]}
       getItemLayout={[Function]}
       horizontal={true}
-      initialNumToRender={10}
       keyExtractor={[Function]}
-      maxToRenderPerBatch={10}
       onContentSizeChange={[Function]}
       onEndReachedThreshold={0.2}
       onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
       onMomentumScrollEnd={[Function]}
       onScroll={[Function]}
       onScrollBeginDrag={[Function]}
@@ -210,9 +208,7 @@ Array [
       showsHorizontalScrollIndicator={false}
       stickyHeaderIndices={Array []}
       testID="offersModuleList"
-      updateCellsBatchingPeriod={50}
       viewabilityConfigCallbackPairs={Array []}
-      windowSize={21}
     >
       <View>
         <View
@@ -936,7 +932,9 @@ Array [
             />
             <View
               accessible={true}
+              collapsable={false}
               focusable={true}
+              nativeID="animatedComponent"
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -972,7 +970,9 @@ Array [
                 />
                 <View
                   accessible={true}
+                  collapsable={false}
                   focusable={true}
+                  nativeID="animatedComponent"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1098,8 +1098,15 @@ Array [
   >
     <View
       accessibilityLabel="Voir toutes les offres"
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
+      }
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

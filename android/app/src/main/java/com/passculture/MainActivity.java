@@ -1,7 +1,5 @@
 package com.passculture;
 
-import android.os.Bundle;
-import org.devio.rn.splashscreen.SplashScreen;
 import android.os.Bundle; // react-native-splash-screen
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen; // react-native-splash-screen

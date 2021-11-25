@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { LoadingPage } from '@pass-culture/id-check/src/ui/components/loaders/LoadingPage'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 
@@ -7,6 +6,7 @@ import {
   isPasswordCorrect,
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
+import { useResetPasswordMutation } from 'features/auth/mutations'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -16,12 +16,11 @@ import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
+import { LoadingPage } from 'ui/components/LoadingPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
-
-import { useResetPasswordMutation } from '../../mutations'
 
 export const ReinitializePassword = () => {
   const route = useRoute<UseRouteType<'ReinitializePassword'>>()

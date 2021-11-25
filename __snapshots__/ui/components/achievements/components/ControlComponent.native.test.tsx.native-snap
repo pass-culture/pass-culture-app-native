@@ -4,7 +4,9 @@ exports[`<ControlComponent /> renders render next when type is next 1`] = `
 <View
   accessibilityLabel="Next"
   accessible={true}
+  collapsable={false}
   focusable={true}
+  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
@@ -36,7 +38,9 @@ exports[`<ControlComponent /> should render correctly prev by default 1`] = `
 <View
   accessibilityLabel="Previous"
   accessible={true}
+  collapsable={false}
   focusable={true}
+  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
@@ -68,7 +72,9 @@ exports[`<ControlComponent /> should render prev when type is prev 1`] = `
 <View
   accessibilityLabel="Previous"
   accessible={true}
+  collapsable={false}
   focusable={true}
+  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}

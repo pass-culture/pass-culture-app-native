@@ -1,9 +1,9 @@
 import { t } from '@lingui/macro'
-import { NavigationContainerRef } from '@react-navigation/native'
-import React, { useCallback, useState, FunctionComponent, RefObject } from 'react'
+import React, { useCallback, useState, FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHome, openUrl } from 'features/navigation/helpers'
+import { navigateFromRef, canGoBackFromRef, goBackFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -17,14 +17,12 @@ export interface Props {
   visible: boolean
   onApproval: () => void
   onRefusal: () => void
-  navigationRef?: RefObject<NavigationContainerRef>
   disableBackdropTap?: boolean
 }
 
 const cookieButtonText = 'Politique des cookies'
 
 export const PrivacyPolicyModal: FunctionComponent<Props> = ({
-  navigationRef,
   visible,
   onApproval,
   onRefusal,
@@ -33,19 +31,18 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
   const [isVisible, setIsVisible] = useState<boolean>(visible)
 
   const goToConsentSettings = useCallback(() => {
-    navigationRef?.current?.navigate('ConsentSettings', {
+    navigateFromRef('ConsentSettings', {
       onGoBack: () => {
         setIsVisible(true)
-        if (!navigationRef.current) return
-        if (navigationRef.current.canGoBack()) {
-          navigationRef.current.goBack()
+        if (canGoBackFromRef()) {
+          goBackFromRef()
         } else {
           navigateToHome()
         }
       },
     })
     setIsVisible(false)
-  }, [navigationRef])
+  }, [navigateFromRef, canGoBackFromRef, goBackFromRef])
 
   async function openCookiesPolicyExternalUrl() {
     await openUrl(env.COOKIES_POLICY_LINK)

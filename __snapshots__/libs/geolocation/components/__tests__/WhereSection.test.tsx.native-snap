@@ -38,7 +38,9 @@ Array [
   />,
   <View
     accessible={true}
+    collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -203,7 +205,9 @@ Array [
     <View
       accessibilityLabel="Voir l'itinéraire"
       accessible={true}
+      collapsable={false}
       focusable={true}
+      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -279,7 +283,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -31,10 +31,96 @@
+@@ -31,10 +31,98 @@
             \\"height\\": 16,
           },
         ]
@@ -287,7 +291,9 @@ exports[`WhereSection should render correctly 2`] = `
     />,
 +   <View
 +     accessible={true}
++     collapsable={false}
 +     focusable={true}
++     nativeID=\\"animatedComponent\\"
 +     onClick={[Function onClick]}
 +     onResponderGrant={[Function onResponderGrant]}
 +     onResponderMove={[Function onResponderMove]}

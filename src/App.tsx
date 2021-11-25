@@ -5,6 +5,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 import { AppState, AppStateStatus, LogBox } from 'react-native'
+import CodePush from 'react-native-code-push'
 import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 
@@ -17,12 +18,14 @@ import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
+import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
 import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign'
-import CodePushProvider from 'libs/codepush/CodePushProvider'
+import { AutoImmediate, NextRestart } from 'libs/codepush/options'
+import { env } from 'libs/environment'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
@@ -43,7 +46,8 @@ LogBox.ignoreLogs([
   'OfferNotFoundError', // custom error
   // The following warning is caused by TabNavigationContext which is updated by the `tabbar` prop
   // of TabNavigator. As of today, no bug has been observed which seems related to the warning.
-  'Cannot update a component (`_TabNavigationStateProvider`) while rendering a different component (`BottomTabView`).',
+  'Cannot update a component',
+  'EventEmitter.removeListener',
 ])
 
 if (__DEV__ && process.env.JEST !== 'true') {
@@ -94,13 +98,15 @@ const App: FunctionComponent = function () {
                     <SearchWrapper>
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
-                          <IdCheckContextProvider>
-                            <SplashScreenProvider>
-                              <ScreenErrorProvider>
-                                <AppNavigationContainer />
-                              </ScreenErrorProvider>
-                            </SplashScreenProvider>
-                          </IdCheckContextProvider>
+                          <IdentityCheckContextProvider>
+                            <IdCheckContextProvider>
+                              <SplashScreenProvider>
+                                <ScreenErrorProvider>
+                                  <AppNavigationContainer />
+                                </ScreenErrorProvider>
+                              </SplashScreenProvider>
+                            </IdCheckContextProvider>
+                          </IdentityCheckContextProvider>
                         </SnackBarProvider>
                       </I18nProvider>
                     </SearchWrapper>
@@ -115,12 +121,7 @@ const App: FunctionComponent = function () {
   )
 }
 
-const AppWithCodepush = __DEV__
-  ? App
-  : () => (
-      <CodePushProvider>
-        <App />
-      </CodePushProvider>
-    )
+const config = env.ENV !== 'production' ? AutoImmediate : NextRestart
+const AppWithCodepush = __DEV__ ? App : CodePush(config)(App)
 
 export { AppWithCodepush as App }

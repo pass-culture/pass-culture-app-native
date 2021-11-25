@@ -19,6 +19,7 @@ export const ExclusivityModule = ({ alt, image, id }: ExclusivityPane) => {
     if (typeof id !== 'number') return
     navigate('Offer', { id, from: 'home' })
     analytics.logClickExclusivityBlock(id)
+    analytics.logConsultOffer({ offerId: id, from: 'exclusivity' })
   }, [id])
 
   const source = useMemo(() => ({ uri: image }), [image])

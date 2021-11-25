@@ -3,7 +3,7 @@
 function setupSharedBatchSDK() {
   // Change this to switch the major Batch SDK version you want to use
   // This MUST match the version used in the bootstrap script you put in your page
-  const BATCHSDK_MAJOR_VERSION = 2
+  const BATCHSDK_MAJOR_VERSION = 3
 
   importScripts('https://via.batch.com/v' + BATCHSDK_MAJOR_VERSION + '/worker.min.js')
 

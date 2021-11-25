@@ -268,7 +268,9 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
       <View
         accessibilityLabel="call-to-action-button"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

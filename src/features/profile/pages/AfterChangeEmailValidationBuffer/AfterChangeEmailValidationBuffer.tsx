@@ -1,11 +1,15 @@
+import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
+import { useMutation } from 'react-query'
 
+import { api } from 'api/api'
+import { ChangeBeneficiaryEmailBody } from 'api/gen'
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
-import { useValidateEmailChangeMutation } from 'features/profile/mutations'
 import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function AfterChangeEmailValidationBuffer() {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -16,15 +20,20 @@ export function AfterChangeEmailValidationBuffer() {
   }
   const { params } = useRoute<UseRouteType<'AfterChangeEmailValidationBuffer'>>()
 
+  const { showSuccessSnackBar } = useSnackBarContext()
+
   useEffect(beforeEmailValidation, [])
 
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
 
-  const { mutate: validateEmail } = useValidateEmailChangeMutation({
-    onSuccess: onEmailValidationSuccess,
-    onError: onEmailValidationFailure,
-  })
+  const { mutate: validateEmail } = useMutation(
+    (body: ChangeBeneficiaryEmailBody) => api.putnativev1profilevalidateEmail(body),
+    {
+      onSuccess: onEmailValidationSuccess,
+      onError: onEmailValidationFailure,
+    }
+  )
 
   function beforeEmailValidation() {
     if (isTimestampExpired(params.expiration_timestamp)) {
@@ -32,7 +41,7 @@ export function AfterChangeEmailValidationBuffer() {
       return
     }
     validateEmail({
-      emailChangeValidationToken: params.token,
+      token: params.token,
     })
   }
 
@@ -41,6 +50,10 @@ export function AfterChangeEmailValidationBuffer() {
       await signOut()
     }
     delayedNavigate('Login')
+    showSuccessSnackBar({
+      message: t`Ton e-mail a été modifié.`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
   }
 
   function onEmailValidationFailure() {

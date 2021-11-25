@@ -196,6 +196,8 @@ export const analytics = {
   logModifyMail: () => analyticsProvider.logEvent(AnalyticsEvent.MODIFY_MAIL),
   logSendActivationMailAgain: (numberOfTimes: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN, { times: numberOfTimes }),
+  logErrorSavingNewEmail: (errorCode: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.ERROR_SAVING_NEW_EMAIL, { code: errorCode }),
   useInit,
 }
 

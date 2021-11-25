@@ -15,6 +15,7 @@ exports[`LocationFilter component should render correctly 1`] = `
 >
   <View
     customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
@@ -152,7 +153,9 @@ exports[`LocationFilter component should render correctly 1`] = `
       />
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -256,7 +259,9 @@ exports[`LocationFilter component should render correctly 1`] = `
       />
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -361,7 +366,9 @@ exports[`LocationFilter component should render correctly 1`] = `
       />
       <View
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -469,6 +476,7 @@ exports[`LocationFilter component should render correctly 1`] = `
   >
     <View
       customHeight={16}
+      enable={true}
       style={
         Array [
           Object {
@@ -518,7 +526,9 @@ exports[`LocationFilter component should render correctly 1`] = `
         <View
           accessibilityLabel="Revenir en arrière"
           accessible={true}
+          collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}

@@ -32,6 +32,7 @@ import { SelectSchool } from 'features/auth/signup/underageSignup/SelectSchool'
 import { SelectSchoolHome } from 'features/auth/signup/underageSignup/SelectSchoolHome'
 import { UnderageAccountCreated } from 'features/auth/signup/underageSignup/UnderageAccountCreated'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
+import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
@@ -41,6 +42,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
+import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -276,6 +278,12 @@ export const routes: Route[] = [
     path: 'cheat-navigation-id-check-errors',
   },
   {
+    name: 'NavigationNotScreensPages',
+    component: NavigationNotScreensPages,
+    hoc: withIdCheckAsyncErrorBoundary,
+    path: 'cheat-navigation-not-screens-pages',
+  },
+  {
     name: 'NotificationSettings',
     component: NotificationSettings,
     path: 'profil/notifications',
@@ -419,6 +427,13 @@ export const routes: Route[] = [
     path: 'verification-eligibilite',
     options: { title: t`Vérification éligibilité` },
   },
+  {
+    name: 'NotYetUnderageEligibility',
+    component: NotYetUnderageEligibility,
+    path: 'cest-pour-bientot',
+    options: { title: t`C'est pour bientôt` },
+  },
+
   {
     name: 'FirstTutorial',
     component: FirstTutorial,

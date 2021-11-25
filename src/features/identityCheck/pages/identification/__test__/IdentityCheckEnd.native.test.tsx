@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IdentityCheckEnd } from 'features/identityCheck/pages/IdentityCheckEnd'
+import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
 import { render } from 'tests/utils'
 
 describe('<IdentityCheckEnd/>', () => {

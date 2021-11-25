@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React, { NamedExoticComponent } from 'react'
 import { UseQueryResult } from 'react-query'
 
-import { GetIdCheckTokenResponse, UserProfileResponse } from 'api/gen'
+import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
@@ -23,7 +23,6 @@ import { Profile } from './Profile'
 
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
-  // @ts-expect-error : Spread types may only be created from object types.
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: mockNavigate }),
 }))
@@ -75,16 +74,13 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
     dispatch: mockFavoriteDispatch,
   }),
 }))
-const mockDepositAmount = '300 €'
 jest.mock('features/auth/api', () => ({
-  useGetIdCheckToken: jest.fn(
-    () =>
-      ({
-        isLoading: false,
-        data: { token: 'thisIsATokenForIdCheck' },
-      } as UseQueryResult<GetIdCheckTokenResponse>)
-  ),
-  useDepositAmount: () => mockDepositAmount,
+  useDepositAmountsByAge: jest.fn(() => ({
+    fifteenYearsOldDeposit: '20 €',
+    sixteenYearsOldDeposit: '30 €',
+    seventeenYearsOldDeposit: '30 €',
+    eighteenYearsOldDeposit: '300 €',
+  })),
 }))
 jest.mock('features/auth/settings')
 

@@ -8,9 +8,10 @@ import { BeneficiaryValidationStep } from 'api/gen'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
-export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink'
+export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink' | 'exclusivity'
 
 export type IdentityCheckRootStackParamList = {
+  IdentityCheckPostalCode: undefined
   IdentityCheck: undefined
   IdentityCheckStart: undefined
   IdentityCheckWebview: { identificationUrl: string }
@@ -64,6 +65,7 @@ export type RootStackParamList = {
   }
   Navigation: undefined
   NavigationIdCheckErrors: undefined
+  NavigationNotScreensPages: undefined
   NotificationSettings: undefined
   Offer: {
     id: number
@@ -104,6 +106,7 @@ export type RootStackParamList = {
   PhoneValidationTooManyAttempts: undefined
   PhoneValidationTooManySMSSent: undefined
   VerifyEligibility: { nextBeneficiaryValidationStep: BeneficiaryValidationStep }
+  NotYetUnderageEligibility: undefined
   FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined
@@ -173,22 +176,20 @@ export type NavigationResultState = ReturnType<typeof getStateFromPath>
 /**
  * Type helper to declare a route
  */
-interface ExtendedPathConfig extends PathConfig {
+type ExtendedPathConfig<ParamList> = Omit<PathConfig<ParamList>, 'initialRouteName'> & {
   deeplinkPaths?: string[]
 }
-export type GenericRoute<ParamList> = {
+export type GenericRoute<ParamList, NestedParamList = ParamListBase> = {
   name: keyof ParamList
   component: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
   hoc?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
   path?: string
   deeplinkPaths?: string[]
-  pathConfig?: ExtendedPathConfig
+  pathConfig?: ExtendedPathConfig<ParamList> | ExtendedPathConfig<NestedParamList>
   options?: { title?: string }
   secure?: boolean
 }
-export type Route = GenericRoute<
-  RootStackParamList & IdCheckRootStackParamList & IdentityCheckRootStackParamList
->
+export type Route = GenericRoute<RootStackParamList, TabParamList>
 
 // Typeguard for screen params
 export function isScreen<Screen extends AllNavigateParams[0]>(

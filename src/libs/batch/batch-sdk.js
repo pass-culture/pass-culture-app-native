@@ -13,5 +13,5 @@ export const getBatchSDK = () => {
     e.async = 1
     e.src = c
     r.parentNode.insertBefore(e, r)
-  })(window, document, 'script', 'https://via.batch.com/v2/bootstrap.min.js')
+  })(window, document, 'script', 'https://via.batch.com/v3/bootstrap.min.js')
 }

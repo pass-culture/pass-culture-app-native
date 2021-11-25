@@ -124,7 +124,9 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
       <View
         accessibilityLabel="leftIconButton"
         accessible={true}
+        collapsable={false}
         focusable={false}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -166,7 +168,9 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
       <View
         accessibilityLabel="Fermer la modale"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -301,7 +305,9 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
               <View
                 accessibilityLabel="Recevoir une alerte"
                 accessible={true}
+                collapsable={false}
                 focusable={true}
+                nativeID="animatedComponent"
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}

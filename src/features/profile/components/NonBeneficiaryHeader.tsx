@@ -4,7 +4,7 @@ import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { BeneficiaryValidationStep, SubscriptionMessage } from 'api/gen'
-import { useDepositAmount } from 'features/auth/api'
+import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
@@ -26,7 +26,7 @@ interface NonBeneficiaryHeaderProps {
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const today = new Date()
-  const depositAmount = useDepositAmount()
+  const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()

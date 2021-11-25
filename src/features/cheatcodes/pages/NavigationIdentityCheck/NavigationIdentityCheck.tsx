@@ -57,6 +57,12 @@ export function NavigationIdentityCheck(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
+            title={'SetPostalCode'}
+            onPress={() => navigate('IdentityCheckPostalCode')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={'IdentityCheckEnd'}
             onPress={() => navigate('IdentityCheckEnd')}
           />

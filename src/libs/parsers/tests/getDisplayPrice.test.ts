@@ -2,6 +2,7 @@ import {
   getDisplayPrice,
   getDisplayPriceWithDuoMention,
   getFavoriteDisplayPrice,
+  formatToFrenchDecimal,
 } from '../getDisplayPrice'
 
 describe('getDisplayPrice', () => {
@@ -61,4 +62,25 @@ describe('getFavoriteDisplayPrice', () => {
       ).toBe(expected)
     }
   )
+})
+
+describe('formatToFrenchDecimal()', () => {
+  it.each`
+    priceInCents | expected
+    ${0}         | ${'0 €'}
+    ${500}       | ${'5 €'}
+    ${-500}      | ${'-5 €'}
+    ${1050}      | ${'10,50 €'}
+    ${-1050}     | ${'-10,50 €'}
+    ${1110}      | ${'11,10 €'}
+    ${-1110}     | ${'-11,10 €'}
+    ${1190}      | ${'11,90 €'}
+    ${-1190}     | ${'-11,90 €'}
+    ${1199}      | ${'11,99 €'}
+    ${-1199}     | ${'-11,99 €'}
+    ${1199.6}    | ${'12,00 €'}
+    ${-1199.6}   | ${'-12,00 €'}
+  `('formatToFrenchDecimal($priceInCents) \t= $expected', ({ priceInCents, expected }) => {
+    expect(formatToFrenchDecimal(priceInCents)).toBe(expected)
+  })
 })

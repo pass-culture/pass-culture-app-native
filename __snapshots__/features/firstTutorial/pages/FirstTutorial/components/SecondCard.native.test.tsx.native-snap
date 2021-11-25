@@ -115,7 +115,7 @@ exports[`SecondCard should render second card 1`] = `
       ]
     }
   >
-    dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application.
+    dans l'année de tes 18 ans, le Gouvernement offre un crédit de 300€ à dépenser dans l’application.
   </Text>
   <View
     flex={2}
@@ -152,7 +152,9 @@ exports[`SecondCard should render second card 1`] = `
       <View
         accessibilityLabel="Continuer"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -215,7 +217,9 @@ exports[`SecondCard should render second card 1`] = `
       <View
         accessibilityLabel="Passer"
         accessible={true}
+        collapsable={false}
         focusable={false}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}

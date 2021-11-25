@@ -475,7 +475,9 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
   <View
     accessibilityLabel="Confirmer la réservation"
     accessible={true}
+    collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -523,5 +525,23 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       Confirmer la réservation
     </Text>
   </View>
+  <Text
+    color="#626262"
+    style={
+      Array [
+        Object {
+          "color": "#626262",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+          "marginBottom": -4,
+          "marginTop": 4,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    20 € seront déduits de ton crédit pass Culture
+  </Text>
 </View>
 `;

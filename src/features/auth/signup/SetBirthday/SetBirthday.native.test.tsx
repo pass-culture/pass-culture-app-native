@@ -1,8 +1,10 @@
+import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack'
 import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
+import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
@@ -22,7 +24,12 @@ jest.mock('features/auth/api', () => {
 
   return {
     ...originalModule,
-    useDepositAmount: jest.fn().mockReturnValue('300 €'),
+    useDepositAmountsByAge: jest.fn().mockReturnValue({
+      fifteenYearsOldDeposit: '20 €',
+      sixteenYearsOldDeposit: '30 €',
+      seventeenYearsOldDeposit: '30 €',
+      eighteenYearsOldDeposit: '300 €',
+    }),
   }
 })
 const mockedUseAppSettings = mocked(useAppSettings)
@@ -90,13 +97,15 @@ describe('SetBirthday Page', () => {
     )
   })
 
-  it('should display the error message "date incorrecte" when the date is too old', () => {
+  it('should display the error message "date incorrecte" when the date is too old', async () => {
     const renderAPI = renderSetBirthday()
 
     changeDate(renderAPI, '31', '12', '1889')
 
-    const message = renderAPI.queryByText('La date choisie est incorrecte')
-    expect(message).toBeTruthy()
+    await waitForExpect(() => {
+      const message = renderAPI.queryByText('La date choisie est incorrecte')
+      expect(message).toBeTruthy()
+    })
   })
 
   it('should display the error message "tu dois avoir 15 ans" when the date is too young', () => {
@@ -202,6 +211,6 @@ function renderSetBirthday() {
 }
 
 function changeDate(renderAPI: RenderAPI, dayStr: string, monthStr: string, yearStr: string) {
-  const dateInput = renderAPI.getByPlaceholderText('JJ/MM/AAAA')
-  fireEvent.changeText(dateInput, [dayStr, monthStr, yearStr].join('/'))
+  const dateInput = renderAPI.getByTestId(t`Entrée pour la date de naissance`)
+  fireEvent.changeText(dateInput, [dayStr, monthStr, yearStr].join(''))
 }

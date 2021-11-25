@@ -1,13 +1,14 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
-import styled from 'styled-components/native'
 
+import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
+import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type UserStatus =
   | 'Lycéen'
@@ -39,9 +40,10 @@ export const Status = () => {
 
   return (
     <PageWithHeader
-      title={t`Sélectionne ton statut`}
+      title={t`Profil`}
       scrollChildren={
-        <ContentContainer>
+        <ModalContent>
+          <CenteredTitle title={t`Sélectionne ton statut`} />
           {statuses.map((status) => (
             <RadioButton
               key={status.name}
@@ -51,8 +53,8 @@ export const Status = () => {
               onPress={() => setSelectedStatus(status.name)}
             />
           ))}
-          <Spacer.Column numberOfSpaces={8} />
-        </ContentContainer>
+          <Spacer.Column numberOfSpaces={16} />
+        </ModalContent>
       }
       fixedBottomChildren={
         <ButtonPrimary
@@ -64,8 +66,3 @@ export const Status = () => {
     />
   )
 }
-
-const ContentContainer = styled.ScrollView({
-  width: '100%',
-  maxWidth: getSpacing(125),
-})

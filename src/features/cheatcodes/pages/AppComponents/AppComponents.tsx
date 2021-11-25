@@ -37,12 +37,11 @@ import { ClippedTag } from 'ui/components/ClippedTag'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { Hero } from 'ui/components/hero/Hero'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
-import { DateInput, DatePartType } from 'ui/components/inputs/DateInput'
+import { DateInput } from 'ui/components/inputs/DateInput'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { ShortInput } from 'ui/components/inputs/ShortInput'
 import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -51,6 +50,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { RadioButton } from 'ui/components/RadioButton'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { SlantTag } from 'ui/components/SlantTag'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
@@ -93,7 +93,6 @@ export const AppComponents: FunctionComponent = () => {
   const { goBack } = useGoBack('CheatMenu', undefined)
 
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
-  const [_partialDate, setPartialDate] = useState('')
   const [inputText, setInputText] = useState('')
   const [largeInputText, setLargeInputText] = useState('')
   const [currentStep, setCurrentStep] = useState(1)
@@ -259,6 +258,23 @@ export const AppComponents: FunctionComponent = () => {
       {/* Tags */}
       <AccordionItem title="Tags">
         <ClippedTag label="Musée du Louvre" onPress={onButtonPress} testId="Enlever le lieu" />
+        <Spacer.Column numberOfSpaces={getSpacing(2)} />
+        <Text>
+          The text in SlantTag is always straight. Developers should play on slantAngle to include
+          whole text in tag
+        </Text>
+        <SlantTag text={'Tag adapts to container size'} slantAngle={-2} />
+        <Spacer.Column numberOfSpaces={getSpacing(2)} />
+        <AlignedText>
+          <SlantTag text={'Tag adapts'} />
+          <Spacer.Flex flex={0.3} />
+          <SlantTag text={'Tag adapts'} />
+        </AlignedText>
+        <AlignedText>
+          <SlantTag text={'given angle'} slantAngle={-10} />
+          <Spacer.Flex flex={0.3} />
+          <SlantTag text={'Tag with fixed dimensions'} width={getSpacing(10)} />
+        </AlignedText>
       </AccordionItem>
 
       <Divider />
@@ -365,15 +381,6 @@ export const AppComponents: FunctionComponent = () => {
         <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Short Input</Typo.Title4>
-        <Spacer.Column numberOfSpaces={1} />
-        <ShortInput
-          identifier={DatePartType.DAY}
-          isValid={_partialDate.length === 4}
-          maxLength={4}
-          onChangeValue={setPartialDate}
-          placeholder="AAAA"
-          testID="Entrée pour l'année"
-        />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Date Input</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />

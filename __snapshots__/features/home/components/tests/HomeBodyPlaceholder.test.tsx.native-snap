@@ -39,6 +39,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         width={160}
       >
         <BVLinearGradient
+          collapsable={false}
           colors={
             Array [
               4292730333,
@@ -54,6 +55,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             }
           }
           locations={null}
+          nativeID="animatedComponent"
           startPoint={
             Object {
               "x": 0,
@@ -115,18 +117,15 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               },
             ]
           }
-          disableVirtualization={false}
           getItem={[Function]}
           getItemCount={[Function]}
           horizontal={true}
-          initialNumToRender={10}
           keyExtractor={[Function]}
-          maxToRenderPerBatch={10}
           onContentSizeChange={[Function]}
-          onEndReachedThreshold={2}
           onGestureHandlerEvent={[Function]}
           onGestureHandlerStateChange={[Function]}
           onLayout={[Function]}
+          onMomentumScrollBegin={[Function]}
           onMomentumScrollEnd={[Function]}
           onScroll={[Function]}
           onScrollBeginDrag={[Function]}
@@ -137,9 +136,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           scrollEventThrottle={50}
           showsHorizontalScrollIndicator={false}
           stickyHeaderIndices={Array []}
-          updateCellsBatchingPeriod={50}
           viewabilityConfigCallbackPairs={Array []}
-          windowSize={21}
         >
           <View>
             <View
@@ -171,6 +168,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={192}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -186,6 +184,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -236,6 +235,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={153.60000000000002}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -251,6 +251,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -301,6 +302,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={57.599999999999994}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -316,6 +318,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -390,6 +393,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={192}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -405,6 +409,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -455,6 +460,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={153.60000000000002}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -470,6 +476,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -520,6 +527,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={57.599999999999994}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -535,6 +543,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -609,6 +618,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={192}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -624,6 +634,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -674,6 +685,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={153.60000000000002}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -689,6 +701,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -739,6 +752,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={57.599999999999994}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -754,6 +768,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -828,6 +843,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={192}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -843,6 +859,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -893,6 +910,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={153.60000000000002}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -908,6 +926,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -958,6 +977,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={57.599999999999994}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -973,6 +993,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1060,6 +1081,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         width={160}
       >
         <BVLinearGradient
+          collapsable={false}
           colors={
             Array [
               4292730333,
@@ -1075,6 +1097,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             }
           }
           locations={null}
+          nativeID="animatedComponent"
           startPoint={
             Object {
               "x": 0,
@@ -1139,18 +1162,15 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               },
             ]
           }
-          disableVirtualization={false}
           getItem={[Function]}
           getItemCount={[Function]}
           horizontal={true}
-          initialNumToRender={10}
           keyExtractor={[Function]}
-          maxToRenderPerBatch={10}
           onContentSizeChange={[Function]}
-          onEndReachedThreshold={2}
           onGestureHandlerEvent={[Function]}
           onGestureHandlerStateChange={[Function]}
           onLayout={[Function]}
+          onMomentumScrollBegin={[Function]}
           onMomentumScrollEnd={[Function]}
           onScroll={[Function]}
           onScrollBeginDrag={[Function]}
@@ -1161,9 +1181,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           scrollEventThrottle={50}
           showsHorizontalScrollIndicator={false}
           stickyHeaderIndices={Array []}
-          updateCellsBatchingPeriod={50}
           viewabilityConfigCallbackPairs={Array []}
-          windowSize={21}
         >
           <View>
             <View
@@ -1195,6 +1213,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={144}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1210,6 +1229,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1260,6 +1280,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={115.2}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1275,6 +1296,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1325,6 +1347,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={43.199999999999996}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1340,6 +1363,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1414,6 +1438,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={144}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1429,6 +1454,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1479,6 +1505,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={115.2}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1494,6 +1521,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1544,6 +1572,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={43.199999999999996}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1559,6 +1588,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1633,6 +1663,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={144}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1648,6 +1679,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1698,6 +1730,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={115.2}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1713,6 +1746,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1763,6 +1797,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={43.199999999999996}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1778,6 +1813,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1852,6 +1888,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={144}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1867,6 +1904,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1917,6 +1955,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={115.2}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1932,6 +1971,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -1982,6 +2022,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={43.199999999999996}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -1997,6 +2038,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2071,6 +2113,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={144}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2086,6 +2129,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2136,6 +2180,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={115.2}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2151,6 +2196,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2201,6 +2247,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={43.199999999999996}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2216,6 +2263,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2296,6 +2344,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       width={702}
     >
       <BVLinearGradient
+        collapsable={false}
         colors={
           Array [
             4292730333,
@@ -2311,6 +2360,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           }
         }
         locations={null}
+        nativeID="animatedComponent"
         startPoint={
           Object {
             "x": 0,
@@ -2382,6 +2432,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         width={160}
       >
         <BVLinearGradient
+          collapsable={false}
           colors={
             Array [
               4292730333,
@@ -2397,6 +2448,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             }
           }
           locations={null}
+          nativeID="animatedComponent"
           startPoint={
             Object {
               "x": 0,
@@ -2461,18 +2513,15 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               },
             ]
           }
-          disableVirtualization={false}
           getItem={[Function]}
           getItemCount={[Function]}
           horizontal={true}
-          initialNumToRender={10}
           keyExtractor={[Function]}
-          maxToRenderPerBatch={10}
           onContentSizeChange={[Function]}
-          onEndReachedThreshold={2}
           onGestureHandlerEvent={[Function]}
           onGestureHandlerStateChange={[Function]}
           onLayout={[Function]}
+          onMomentumScrollBegin={[Function]}
           onMomentumScrollEnd={[Function]}
           onScroll={[Function]}
           onScrollBeginDrag={[Function]}
@@ -2483,9 +2532,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           scrollEventThrottle={50}
           showsHorizontalScrollIndicator={false}
           stickyHeaderIndices={Array []}
-          updateCellsBatchingPeriod={50}
           viewabilityConfigCallbackPairs={Array []}
-          windowSize={21}
         >
           <View>
             <View
@@ -2517,6 +2564,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={144}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2532,6 +2580,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2582,6 +2631,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={115.2}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2597,6 +2647,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2647,6 +2698,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={43.199999999999996}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2662,6 +2714,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2736,6 +2789,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={144}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2751,6 +2805,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2801,6 +2856,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={115.2}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2816,6 +2872,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2866,6 +2923,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={43.199999999999996}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2881,6 +2939,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -2955,6 +3014,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={144}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -2970,6 +3030,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3020,6 +3081,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={115.2}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3035,6 +3097,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3085,6 +3148,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={43.199999999999996}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3100,6 +3164,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3174,6 +3239,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={144}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3189,6 +3255,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3239,6 +3306,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={115.2}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3254,6 +3322,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3304,6 +3373,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={43.199999999999996}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3319,6 +3389,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3393,6 +3464,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={144}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3408,6 +3480,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3458,6 +3531,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={115.2}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3473,6 +3547,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3523,6 +3598,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={43.199999999999996}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3538,6 +3614,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3625,6 +3702,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         width={160}
       >
         <BVLinearGradient
+          collapsable={false}
           colors={
             Array [
               4292730333,
@@ -3640,6 +3718,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             }
           }
           locations={null}
+          nativeID="animatedComponent"
           startPoint={
             Object {
               "x": 0,
@@ -3701,18 +3780,15 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               },
             ]
           }
-          disableVirtualization={false}
           getItem={[Function]}
           getItemCount={[Function]}
           horizontal={true}
-          initialNumToRender={10}
           keyExtractor={[Function]}
-          maxToRenderPerBatch={10}
           onContentSizeChange={[Function]}
-          onEndReachedThreshold={2}
           onGestureHandlerEvent={[Function]}
           onGestureHandlerStateChange={[Function]}
           onLayout={[Function]}
+          onMomentumScrollBegin={[Function]}
           onMomentumScrollEnd={[Function]}
           onScroll={[Function]}
           onScrollBeginDrag={[Function]}
@@ -3723,9 +3799,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           scrollEventThrottle={50}
           showsHorizontalScrollIndicator={false}
           stickyHeaderIndices={Array []}
-          updateCellsBatchingPeriod={50}
           viewabilityConfigCallbackPairs={Array []}
-          windowSize={21}
         >
           <View>
             <View
@@ -3757,6 +3831,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={192}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3772,6 +3847,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3822,6 +3898,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={153.60000000000002}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3837,6 +3914,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3887,6 +3965,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={57.599999999999994}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3902,6 +3981,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -3976,6 +4056,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={192}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -3991,6 +4072,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4041,6 +4123,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={153.60000000000002}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -4056,6 +4139,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4106,6 +4190,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={57.599999999999994}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -4121,6 +4206,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4195,6 +4281,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={192}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -4210,6 +4297,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4260,6 +4348,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={153.60000000000002}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -4275,6 +4364,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4325,6 +4415,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={57.599999999999994}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -4340,6 +4431,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4414,6 +4506,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={192}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -4429,6 +4522,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4479,6 +4573,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={153.60000000000002}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -4494,6 +4589,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,
@@ -4544,6 +4640,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                   width={57.599999999999994}
                 >
                   <BVLinearGradient
+                    collapsable={false}
                     colors={
                       Array [
                         4292730333,
@@ -4559,6 +4656,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                       }
                     }
                     locations={null}
+                    nativeID="animatedComponent"
                     startPoint={
                       Object {
                         "x": 0,

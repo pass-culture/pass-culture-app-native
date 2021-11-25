@@ -42,6 +42,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
   </View>
   <View
     customHeight={16}
+    enable={true}
     style={
       Array [
         Object {
@@ -63,7 +64,9 @@ exports[`AsyncErrorBoundary component should render 1`] = `
   />
   <View
     accessible={true}
+    collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -215,7 +218,9 @@ exports[`AsyncErrorBoundary component should render 1`] = `
       <View
         accessibilityLabel="Réessayer"
         accessible={true}
+        collapsable={false}
         focusable={true}
+        nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -278,6 +283,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
   />
   <View
     customHeight={8}
+    enable={true}
     style={
       Array [
         Object {

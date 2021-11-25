@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<IdentityCheckEnd/> should render correctly 1`] = `
+exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
 <div
   className="css-view-1dbjc4n"
   style={
@@ -143,7 +143,7 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
           }
         }
       >
-        Ta pièce d’identité a bien été transmise !
+        C'est pour bientôt !
       </div>
       <div
         className="css-view-1dbjc4n"
@@ -153,6 +153,100 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
           }
         }
       />
+      <div
+        className="css-text-901oao"
+        dir="auto"
+        style={
+          Object {
+            "color": "rgba(255,255,255,1.00)",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": "15px",
+            "lineHeight": "20px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Reviens à partir du 31 janvier pour poursuivre ton inscription et bénéficier des offres du pass Culture.
+      </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "120px",
+          }
+        }
+      />
+      <div
+        aria-label="Retourner à l'accueil"
+        className="css-view-1dbjc4n"
+        data-testid="Retourner à l'accueil"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onKeyDown={[Function]}
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "none",
+            "WebkitAlignItems": "center",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitBoxPack": "center",
+            "WebkitFlexDirection": "row",
+            "WebkitJustifyContent": "center",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "none",
+            "alignItems": "center",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomLeftRadius": "24px",
+            "borderBottomRightRadius": "24px",
+            "borderBottomWidth": "0px",
+            "borderLeftWidth": "0px",
+            "borderRightWidth": "0px",
+            "borderTopLeftRadius": "24px",
+            "borderTopRightRadius": "24px",
+            "borderTopWidth": "0px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "height": "40px",
+            "justifyContent": "center",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexPack": "center",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "none",
+            "paddingBottom": "2px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
+            "paddingTop": "2px",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "none",
+            "width": "100%",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-text-901oao css-textOneLine-vcwn7f"
+          dir="auto"
+          style={
+            Object {
+              "color": "rgba(235,0,85,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginLeft": "5px",
+              "maxWidth": "100%",
+            }
+          }
+        >
+          Retourner à l'accueil
+        </div>
+      </div>
       <div
         className="css-view-1dbjc4n"
         style={

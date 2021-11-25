@@ -1,12 +1,12 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { useDepositAmount } from 'features/auth/api'
+import { useDepositAmountsByAge } from 'features/auth/api'
 import { ProfileBadge } from 'features/profile/components/ProfileBadge'
 import { Clock } from 'ui/svg/icons/Clock'
 
 export function YoungerBadge() {
-  const depositAmount = useDepositAmount()
+  const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const deposit = depositAmount.replace(' ', '')
 
   const information =

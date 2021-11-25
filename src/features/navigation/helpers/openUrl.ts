@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { Alert, Linking } from 'react-native'
 
 import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
-import { navigationRef } from 'features/navigation/navigationRef'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsData } from 'libs/analytics/analytics'
 import { MonitoringError } from 'libs/monitoring'
@@ -13,7 +13,7 @@ import { navigateToHome } from './navigateToHome'
 const openAppUrl = (url: string) => {
   try {
     const { screen, params } = getScreenFromDeeplink(url)
-    return navigationRef.current?.navigate(screen, params)
+    return navigateFromRef(screen, params)
   } catch {
     // If an error is thrown, that means that no routes were matched
     return navigateToHome()
@@ -35,7 +35,7 @@ const openExternalUrl = async (
     if (shouldLogEvent) analytics.logOpenExternalUrl(url, { ...analyticsData })
     return
   } catch (error) {
-    new MonitoringError(error.message, 'OpenExternalUrlError')
+    if (error instanceof Error) new MonitoringError(error.message, 'OpenExternalUrlError')
   }
 
   if (fallbackUrl) {
@@ -44,7 +44,8 @@ const openExternalUrl = async (
       if (shouldLogEvent) analytics.logOpenExternalUrl(fallbackUrl, { ...analyticsData })
       return
     } catch (error) {
-      new MonitoringError(error.message, 'OpenExternalUrlError_FallbackUrl')
+      if (error instanceof Error)
+        new MonitoringError(error.message, 'OpenExternalUrlError_FallbackUrl')
     }
   }
   showAlert(url)

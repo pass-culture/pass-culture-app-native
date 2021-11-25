@@ -4,12 +4,15 @@ import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useMutation } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
+import { api } from 'api/api'
+import { ApiError } from 'api/apiHelpers'
 import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { CHANGE_EMAIL_ERROR_CODE, useChangeEmailMutation } from 'features/profile/mutations'
+import { ChangeEmailRequest, CHANGE_EMAIL_ERROR_CODE } from 'features/profile/api'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
 import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils/useValidateEmail'
 import { analytics } from 'libs/analytics'
@@ -33,19 +36,22 @@ export function ChangeEmail() {
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
-  const { mutate: changeEmail, isLoading } = useChangeEmailMutation({
-    onSuccess: () => {
-      showSuccessSnackBar({
-        message: t`E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.`,
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      navigateToProfile()
-      analytics.logSaveNewMail()
-    },
-    onError: (error: { code: CHANGE_EMAIL_ERROR_CODE }) => {
-      onEmailChangeError(error.code)
-    },
-  })
+  const { mutate: changeEmail, isLoading } = useMutation(
+    (body: ChangeEmailRequest) => api.postnativev1profileupdateEmail(body),
+    {
+      onSuccess: () => {
+        showSuccessSnackBar({
+          message: t`E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.`,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+        navigateToProfile()
+        analytics.logSaveNewMail()
+      },
+      onError: (error: ApiError | unknown) => {
+        onEmailChangeError((error as ApiError)?.content?.code)
+      },
+    }
+  )
 
   useEffect(() => {
     removePasswordError()
@@ -59,7 +65,9 @@ export function ChangeEmail() {
   const disabled =
     !isLongEnough(password) || !!emailErrorMessage || !!passwordErrorMessage || isLoading
 
-  const onEmailChangeError = (errorCode: CHANGE_EMAIL_ERROR_CODE) => {
+  const onEmailChangeError = (errorCode?: string) => {
+    errorCode && analytics.logErrorSavingNewEmail(errorCode)
+
     switch (errorCode) {
       case CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD:
         setPasswordErrorMessage(t`Mot de passe incorrect`)

@@ -10,7 +10,7 @@
 
 // TODO: remove this condition when BatchSDK will support Safari, see also react-native-batch.web.ts#L3
 // eslint-disable-next-line no-restricted-imports
-import { isSafari } from 'react-device-detect'
+import { isMacOs, isMobileSafari, isSafari } from 'react-device-detect'
 import { clientsClaim } from 'workbox-core'
 import { ExpirationPlugin } from 'workbox-expiration'
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching'
@@ -80,7 +80,9 @@ self.addEventListener('message', (event) => {
   }
 })
 
-if (!isSafari) {
+const disabled = isMobileSafari || (isSafari && !isMacOs)
+
+if (!disabled) {
   // This is for web push notifications with batch
   self.importScripts(process.env.PUBLIC_URL + '/batchsdk-shared-worker.js')
 }

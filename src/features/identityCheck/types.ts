@@ -1,15 +1,18 @@
 import { IdentityCheckRootStackParamList } from 'features/navigation/RootNavigator'
 import { IconInterface } from 'ui/svg/icons/types'
 
-export type Step = 'profil' | 'identification' | 'confirmation' | 'end'
+export enum IdentityCheckStep {
+  PROFILE = 'profile',
+  IDENTIFICATION = 'identification',
+  CONFIRMATION = 'confirmation',
+  END = 'end',
+}
 
-export type Screen = keyof IdentityCheckRootStackParamList
+export type IdentityCheckScreen = keyof IdentityCheckRootStackParamList
 
 export interface StepConfig {
-  name: Step
-  // screenName: keyof IdentityCheckRootStackParamList
+  name: IdentityCheckStep
   label: string
-  // path: string
   icon: React.FC<IconInterface>
-  // screens: Array<Screen>
+  screens: IdentityCheckScreen[]
 }

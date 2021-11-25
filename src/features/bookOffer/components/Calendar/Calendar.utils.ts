@@ -30,7 +30,6 @@ export const monthNamesShort = [
 ]
 export const dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
 export const dayNamesShort = ['D', 'L', 'M', 'M', 'J', 'V', 'S']
-export const today = "Aujourd'hui"
 
 const EARLIEST_YEAR_AVAILABLE = new Date().getFullYear() - 50
 export const YEAR_LIST = Array.from(new Array(100)).map(

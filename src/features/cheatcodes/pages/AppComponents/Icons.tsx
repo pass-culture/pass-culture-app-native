@@ -10,12 +10,15 @@ import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
 import { Again } from 'ui/svg/icons/Again'
-import { AroundMe } from 'ui/svg/icons/AroundMe'
+import { AroundMeDeprecated } from 'ui/svg/icons/AroundMe_deprecated'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
+import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
+import { BicolorBuilding } from 'ui/svg/icons/BicolorBuilding'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
+import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
@@ -40,7 +43,7 @@ import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
-import { Everywhere } from 'ui/svg/icons/Everywhere'
+import { EverywhereDeprecated } from 'ui/svg/icons/Everywhere_deprecated'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { Eye } from 'ui/svg/icons/Eye'
@@ -126,6 +129,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="BicolorLogo" component={BicolorLogo} />
       <Icon name="BicolorSearch" component={BicolorSearch} />
       <Icon name="BicolorBookings" component={BicolorBookings} />
+      <Icon name="BicolorBuilding" component={BicolorBuilding} />
       <Icon name="BicolorFavorite" component={BicolorFavorite} />
       <Icon name="BicolorProfile" component={BicolorProfile} />
       <AlignedText>
@@ -158,8 +162,10 @@ export const Icons: FunctionComponent = () => {
       <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
       <Icon name="InfoDeprecated" component={InfoDeprecated} />
       <Icon name="Info" component={Info} isNew />
-      <Icon name="AroundMe" component={AroundMe} />
-      <Icon name="Everywhere" component={Everywhere} />
+      <Icon name="AroundMe" component={AroundMeDeprecated} />
+      <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
+      <Icon name="EverywhereDeprecated" component={EverywhereDeprecated} />
+      <Icon name="BicolorEverywhere" component={BicolorEverywhere} isNew />
       <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} />
       <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} />
       <Icon name="NoOffer" component={NoOffer} />

@@ -58,9 +58,9 @@ describe('getScreensAndConfig()', () => {
   it('should return a screensConfig and Screens components', () => {
     const { screensConfig, Screens } = getScreensAndConfig(validRoutes, RootStack.Screen)
     expect(screensConfig).toEqual({
-      Offer: 'offer',
-      _DeeplinkOnlyOffer1: 'offre1',
-      _DeeplinkOnlyOffer2: 'offre2',
+      Offer: { path: 'offer' },
+      _DeeplinkOnlyOffer1: { path: 'offre1' },
+      _DeeplinkOnlyOffer2: { path: 'offre2' },
       Login: { path: 'login', parse },
       _DeeplinkOnlyLogin1: { path: 'connexion', parse },
     })

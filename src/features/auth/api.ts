@@ -1,13 +1,12 @@
 import { Platform } from 'react-native'
-import { useMutation, useQuery } from 'react-query'
+import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError, isApiError } from 'api/apiHelpers'
-import { AccountRequest, GetIdCheckTokenResponse, SigninRequest } from 'api/gen'
-import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
+import { isApiError } from 'api/apiHelpers'
+import { AccountRequest, SigninRequest } from 'api/gen'
+import { useLoginRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
 import { campaignTracker } from 'libs/campaign'
-import { QueryKeys } from 'libs/queryKeys'
 
 import { formatToFrenchDecimal } from '../../libs/parsers'
 
@@ -87,24 +86,6 @@ export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse
   }
 }
 
-export function useGetIdCheckToken(
-  queryCondition?: boolean,
-  onError?: (error: ApiError | unknown) => void
-) {
-  queryCondition = queryCondition ?? true
-
-  const { isLoggedIn } = useAuthContext()
-
-  return useQuery<GetIdCheckTokenResponse>(
-    QueryKeys.ID_CHECK_TOKEN,
-    () => api.getnativev1idCheckToken(),
-    {
-      enabled: queryCondition && isLoggedIn,
-      onError,
-    }
-  )
-}
-
 export function useNotifyIdCheckCompleted(options = {}) {
   return useMutation(() => api.postnativev1accounthasCompletedIdCheck(), options)
 }
@@ -116,10 +97,20 @@ export function useAccountSuspend(onSuccess: () => void, onError: (error: unknow
   })
 }
 
-export function useDepositAmount() {
+export function useDepositAmountsByAge() {
   const { data: settings } = useAppSettings()
-  const amount = settings?.depositAmount ?? 30000
-  return formatToFrenchDecimal(amount)
+  const fifteenYearsOldAmount = settings?.depositAmountsByAge?.age_15 ?? 2000
+  const sixteenYearsOldAmount = settings?.depositAmountsByAge?.age_16 ?? 3000
+  const seventeenYearsOldAmount = settings?.depositAmountsByAge?.age_17 ?? 3000
+  const eighteenYearsOldAmount = settings?.depositAmountsByAge?.age_18 ?? 30000
+
+  const amountsByAge = {
+    fifteenYearsOldDeposit: formatToFrenchDecimal(fifteenYearsOldAmount),
+    sixteenYearsOldDeposit: formatToFrenchDecimal(sixteenYearsOldAmount),
+    seventeenYearsOldDeposit: formatToFrenchDecimal(seventeenYearsOldAmount),
+    eighteenYearsOldDeposit: formatToFrenchDecimal(eighteenYearsOldAmount),
+  }
+  return { ...amountsByAge }
 }
 
 export const SIGNUP_NUMBER_OF_STEPS = 4 // email, password, birthday, cgu

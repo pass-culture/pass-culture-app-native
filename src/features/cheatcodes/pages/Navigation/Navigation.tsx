@@ -74,7 +74,8 @@ export function Navigation(): JSX.Element {
         })
       }
     } catch (error) {
-      showErrorSnackBar({ message: error.message, timeout: SNACK_BAR_TIME_OUT })
+      if (error instanceof Error)
+        showErrorSnackBar({ message: error.message, timeout: SNACK_BAR_TIME_OUT })
     }
   }
 
@@ -197,6 +198,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
+            title={"C'est pour bientôt"}
+            onPress={() => navigate('NotYetUnderageEligibility')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={'First Tutorial'}
             onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
           />
@@ -228,7 +235,7 @@ export function Navigation(): JSX.Element {
             onPress={() => {
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-expect-error
-              setRenderedError(createElement(CenteredText, { children: CenteredText }))
+              setRenderedError(createElement(CenteredText, { children: CenteredText })) // eslint-disable-line react/no-children-prop
             }}
           />
           {renderedError}
@@ -304,6 +311,12 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={`Id Check V2 errors`}
             onPress={() => navigate('NavigationIdCheckErrors')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={`Pages non écrans`}
+            onPress={() => navigate('NavigationNotScreensPages')}
           />
         </Row>
         <Row half>
