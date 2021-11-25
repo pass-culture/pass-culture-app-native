@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { Keyboard, TouchableOpacity } from 'react-native'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
@@ -60,6 +60,7 @@ export const SetAddress = () => {
 
   const onAddressSelection = (address: string) => {
     setSelectedAddress(address)
+    Keyboard.dismiss()
   }
 
   const resetSearch = () => {
