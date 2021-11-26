@@ -11,7 +11,7 @@ import { TabParamList, TabRouteName } from '../TabBar/types'
 export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink' | 'exclusivity'
 
 export type IdentityCheckRootStackParamList = {
-  IdentityCheckPostalCode: undefined
+  IdentityCheckCity: undefined
   IdentityCheck: undefined
   IdentityCheckStart: undefined
   IdentityCheckWebview: { identificationUrl: string }

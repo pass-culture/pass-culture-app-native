@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetPostalCode/> should render correctly 1`] = `
+exports[`<SetCity/> should render correctly 1`] = `
 Array [
   <View
     height="100%"

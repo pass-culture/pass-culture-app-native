@@ -57,7 +57,7 @@ describe('<SetName/>', () => {
         payload: {firstName, lastName },
       })
       expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('IdentityCheckPostalCode')
+      expect(navigate).toBeCalledWith('IdentityCheckCity')
     })
   })
 })

@@ -8,7 +8,7 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
-  onPressOption: (option: SuggestedCity ) => void
+  onPressOption: (option: SuggestedCity) => void
   option: SuggestedCity
   selected: boolean
 }
@@ -36,6 +36,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity({
   justifyContent: 'flex-start',
   paddingVertical: getSpacing(3),
 })
+
 const TextContainer = styled.View({
   flex: 1,
   justifyContent: 'center',

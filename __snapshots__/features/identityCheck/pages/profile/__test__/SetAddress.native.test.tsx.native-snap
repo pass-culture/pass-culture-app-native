@@ -319,6 +319,16 @@ Array [
                 textContentType="addressState"
                 value=""
               />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "position": "absolute",
+                      "right": 4,
+                    },
+                  ]
+                }
+              />
             </View>
             <View
               numberOfSpaces={2}

@@ -55,7 +55,7 @@ export const SetAddress = () => {
   const onChangeAddress = (value: string) => {
     setAddressQuery(value)
     debouncedSetAddress(value)
-    setSelectedAddress('')
+    setSelectedAddress(null)
   }
 
   const onAddressSelection = (address: string) => {
@@ -66,7 +66,7 @@ export const SetAddress = () => {
   const resetSearch = () => {
     setAddressQuery('')
     setDebouncedAddress('')
-    setSelectedAddress('')
+    setSelectedAddress(null)
   }
 
   const RightIcon = () =>
@@ -75,7 +75,7 @@ export const SetAddress = () => {
         activeOpacity={ACTIVE_OPACITY}
         onPress={resetSearch}
         {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-        <Invalidate size={24} />
+        <Invalidate />
       </TouchableOpacity>
     ) : null
 

@@ -24,13 +24,13 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-export const SetPostalCode = () => {
+export const SetCity = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch } = useIdentityCheckContext()
   const [postalCodeQuery, setPostalCodeQuery] = useState('')
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(postalCodeQuery)
-  const [selectedPostalCode, setSelectedPostalCode] = useState<SuggestedCity | null>(null)
+  const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(null)
   // const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const debouncedSetPostalCode = useRef(debounce(setDebouncedPostalCode, 500)).current
 
@@ -49,15 +49,15 @@ export const SetPostalCode = () => {
     }
   }, [isError])
 
-  function onChangePostalCode(value: string) {
+  const onChangePostalCode = (value: string) => {
     setPostalCodeQuery(value)
     debouncedSetPostalCode(value)
-    setSelectedPostalCode(null)
+    setSelectedCity(null)
     // setErrorMessage(null)
   }
 
   const onPostalCodeSelection = (city: SuggestedCity) => {
-    setSelectedPostalCode(city)
+    setSelectedCity(city)
     Keyboard.dismiss()
   }
 
@@ -71,7 +71,7 @@ export const SetPostalCode = () => {
   const resetSearch = () => {
     setPostalCodeQuery('')
     setDebouncedPostalCode('')
-    setSelectedPostalCode(null)
+    setSelectedCity(null)
     // setErrorMessage(null)
   }
 
@@ -81,12 +81,12 @@ export const SetPostalCode = () => {
       activeOpacity={ACTIVE_OPACITY}
       onPress={resetSearch}
       {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-      <Invalidate size={24} />
+      <Invalidate />
     </TouchableOpacity>
   ) : null
 
-  async function onSubmit(city: SuggestedCity | null) {
-    if (selectedPostalCode) {
+  const onSubmit = (city: SuggestedCity | null) => {
+    if (selectedCity) {
       dispatch({ type: 'SET_CITY', payload: city })
       navigate('IdentityCheckAddress')
     }
@@ -107,7 +107,7 @@ export const SetPostalCode = () => {
               placeholder={t`Ex : 75017`}
               textContentType="postalCode"
               keyboardType="number-pad"
-              onSubmitEditing={() => onSubmit(selectedPostalCode)}
+              onSubmitEditing={() => onSubmit(selectedCity)}
               RightIcon={() => <RightIcon />}
               {...accessibilityAndTestId(t`Entrée pour le code postal`)}
             />
@@ -118,17 +118,17 @@ export const SetPostalCode = () => {
             {cities.map((option: SuggestedCity, index: number) => (
               <CityOption
                 option={option}
-                selected={option === selectedPostalCode}
+                selected={option.name === selectedCity?.name}
                 onPressOption={onPostalCodeSelection}
                 key={option.name}
-                {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${option}`)}
+                {...accessibilityAndTestId(t`Proposition de ville ${index + 1} : ${option.name}`)}
               />
             ))}
           </ModalContent>
         }
         fixedBottomChildren={
           <ButtonPrimary
-            onPress={() => onSubmit(selectedPostalCode)}
+            onPress={() => onSubmit(selectedCity)}
             title={t`Continuer`}
             disabled={!isPostalCodeValid(postalCodeQuery)}
           />
