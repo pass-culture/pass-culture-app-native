@@ -26,7 +26,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       name: IdentityCheckStep.CONFIRMATION,
       icon: ConfirmationIcon,
       label: t`Confirmation`,
-      screens: ['IdentityCheckStart'],
+      screens: ['IdentityCheckHonor'],
     },
   ]
 }
