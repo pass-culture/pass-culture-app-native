@@ -307,7 +307,14 @@
   "resolutions": {
     "@babel/core": "7.12.*",
     "@babel/runtime": "7.12.*",
-    "cli-table": "0.3.6"
+    "cli-table": "0.3.6",
+    "immer": "^9.0.6",
+    "glob-parent": "^5.1.2",
+    "json-schema": "^0.4.0",
+    "validator": "^13.7.0",
+    "browserslist": "^4.16.5",
+    "ansi-regex": "^5.0.1",
+    "nth-check": "^2.0.1"
   },
   "jest": {
     "preset": "react-native"
