@@ -20,8 +20,7 @@ const STALE_TIME_CITIES = 5 * 60 * 1000
 export const useCities = (postalCode: string) =>
   useQuery([QueryKeys.CITIES, postalCode], () => fetchCities(postalCode), {
     staleTime: STALE_TIME_CITIES,
-    cacheTime: 0,
-    enabled: false,
+    enabled: postalCode.length >= 5,
     select: (data: CitiesResponse) =>
       data.map(({ nom, code }) => ({
         name: nom,

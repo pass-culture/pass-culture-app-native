@@ -1,39 +1,41 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import debounce from 'lodash.debounce'
+import React, { useEffect, useRef, useState } from 'react'
+import { Keyboard, TouchableOpacity } from 'react-native'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
+import { CityOption } from 'features/identityCheck/atoms/CityOption'
 import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
-import { CityModal } from 'features/identityCheck/pages/profile/CityModal'
 import { isPostalCodeValid } from 'features/identityCheck/utils/ValidatePostalCode'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place'
 import { useCities } from 'libs/place/useCities'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { InputError } from 'ui/components/inputs/InputError'
+// import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
-import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Spacer } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SetPostalCode = () => {
-  const { visible: isModalVisible, showModal, hideModal } = useModal(false)
   const { showErrorSnackBar } = useSnackBarContext()
-  const [postalCode, setPostalCode] = useState('')
-  const { data: cities, isError, isLoading, refetch } = useCities(postalCode)
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch } = useIdentityCheckContext()
+  const [postalCodeQuery, setPostalCodeQuery] = useState('')
+  const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(postalCodeQuery)
+  const [selectedPostalCode, setSelectedPostalCode] = useState<SuggestedCity | null>(null)
+  // const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const debouncedSetPostalCode = useRef(debounce(setDebouncedPostalCode, 500)).current
 
-  function onPostalCodeChange(value: string) {
-    setPostalCode(value)
-    setErrorMessage(null)
-  }
-
-  function saveCity(city: SuggestedCity) {
-    dispatch({ type: 'SET_CITY', payload: city })
-  }
+  // console.log({selectedPostalCode})
+  const { data: cities = [], isError } = useCities(debouncedPostalCode)
 
   useEffect(() => {
     if (isError) {
@@ -47,24 +49,47 @@ export const SetPostalCode = () => {
     }
   }, [isError])
 
-  useEffect(() => {
-    if (typeof cities === 'undefined') return
-    if (cities.length === 0)
-      setErrorMessage(
-        t`Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).`
-      )
-    if (cities.length === 1) saveCity(cities[0])
-    if (cities.length > 1) showModal()
-  }, [cities?.length])
-
-  async function onPress() {
-    setErrorMessage(null)
-    await refetch()
+  function onChangePostalCode(value: string) {
+    setPostalCodeQuery(value)
+    debouncedSetPostalCode(value)
+    setSelectedPostalCode(null)
+    // setErrorMessage(null)
   }
 
-  function onSubmitCity(city: SuggestedCity) {
-    saveCity(city)
-    hideModal()
+  const onPostalCodeSelection = (city: SuggestedCity) => {
+    setSelectedPostalCode(city)
+    Keyboard.dismiss()
+  }
+
+  // useEffect(() => {
+  //   if ( cities.length === 0)
+  //     setErrorMessage(
+  //       t`Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).`
+  //     )
+  // }, [cities.length])
+
+  const resetSearch = () => {
+    setPostalCodeQuery('')
+    setDebouncedPostalCode('')
+    setSelectedPostalCode(null)
+    // setErrorMessage(null)
+  }
+
+  const RightIcon = () =>
+  postalCodeQuery.length > 0 ? (
+    <TouchableOpacity
+      activeOpacity={ACTIVE_OPACITY}
+      onPress={resetSearch}
+      {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
+      <Invalidate size={24} />
+    </TouchableOpacity>
+  ) : null
+
+  async function onSubmit(city: SuggestedCity | null) {
+    if (selectedPostalCode) {
+      dispatch({ type: 'SET_CITY', payload: city })
+      navigate('IdentityCheckAddress')
+    }
   }
 
   return (
@@ -75,37 +100,39 @@ export const SetPostalCode = () => {
           <ModalContent>
             <CenteredTitle title={t`Dans quelle ville résides-tu ?`} />
             <TextInput
-              autoCapitalize="none"
-              isError={false}
               autoFocus
-              onChangeText={onPostalCodeChange}
-              value={postalCode}
+              onChangeText={onChangePostalCode}
+              value={postalCodeQuery}
               label={t`Code postal`}
               placeholder={t`Ex : 75017`}
               textContentType="postalCode"
               keyboardType="number-pad"
-              onSubmitEditing={onPress}
+              onSubmitEditing={() => onSubmit(selectedPostalCode)}
+              RightIcon={() => <RightIcon />}
               {...accessibilityAndTestId(t`Entrée pour le code postal`)}
             />
-            {!!errorMessage && (
+            {/* {!!errorMessage && (
               <InputError messageId={errorMessage} numberOfSpacesTop={2} visible />
-            )}
+            )} */}
+            <Spacer.Column numberOfSpaces={2} />
+            {cities.map((option: SuggestedCity, index: number) => (
+              <CityOption
+                option={option}
+                selected={option === selectedPostalCode}
+                onPressOption={onPostalCodeSelection}
+                key={option.name}
+                {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${option}`)}
+              />
+            ))}
           </ModalContent>
         }
         fixedBottomChildren={
           <ButtonPrimary
-            onPress={onPress}
+            onPress={() => onSubmit(selectedPostalCode)}
             title={t`Continuer`}
-            disabled={!isPostalCodeValid(postalCode)}
-            isLoading={isLoading}
+            disabled={!isPostalCodeValid(postalCodeQuery)}
           />
         }
-      />
-      <CityModal
-        cities={cities}
-        isVisible={isModalVisible}
-        onSubmit={onSubmitCity}
-        close={hideModal}
       />
     </React.Fragment>
   )
