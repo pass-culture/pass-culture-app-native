@@ -28,6 +28,7 @@ const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
       placeholder={t`tonadresse@email.com`}
       textContentType="emailAddress"
       value={email}
+      maxLength={120}
       {...accessibilityAndTestId(t`Entrée pour l'email`)}
       {...inputProps}
       ref={forwardedRef}
