@@ -3,6 +3,7 @@ import { IdentityCheckState, Action } from 'features/identityCheck/context/types
 export const initialIdentityCheckState: IdentityCheckState = {
   step: null,
   profile: {
+    name:  null,
     city: null,
     address: null,
     status: null,
@@ -26,6 +27,8 @@ export const identityCheckReducer = (
       return { ...initialIdentityCheckState, ...action.payload }
     case 'SET_STEP':
       return { ...state, step: action.payload }
+    case 'SET_NAME':
+      return { ...state, profile: { ...state.profile, name: action.payload } }
     case 'SET_CITY':
       return { ...state, profile: { ...state.profile, city: action.payload } }
     case 'SET_ADDRESS':
