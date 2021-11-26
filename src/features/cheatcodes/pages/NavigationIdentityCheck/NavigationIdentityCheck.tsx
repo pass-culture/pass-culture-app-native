@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
 import { RootScreenNames, UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -15,6 +16,10 @@ import { padding, Spacer } from 'ui/theme'
 export function NavigationIdentityCheck(): JSX.Element {
   const { goBack } = useGoBack('Navigation', undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
+  const [
+    fastEduconnectConnectionRequestModalVisible,
+    setFastEduconnectConnectionRequestModalVisible,
+  ] = useState(false)
 
   if (screenError) throw screenError
 
@@ -75,8 +80,20 @@ export function NavigationIdentityCheck(): JSX.Element {
             }}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'Identifie-toi en 2 minutes'}
+            onPress={() => {
+              setFastEduconnectConnectionRequestModalVisible(true)
+            }}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
+      <FastEduconnectConnectionRequestModal
+        visible={fastEduconnectConnectionRequestModalVisible}
+        hideModal={() => setFastEduconnectConnectionRequestModalVisible(false)}
+      />
     </ScrollView>
   )
 }
