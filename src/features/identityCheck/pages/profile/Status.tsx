@@ -5,7 +5,6 @@ import { ActivityEnum } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
-import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -40,9 +39,11 @@ export const Status = () => {
   return (
     <PageWithHeader
       title={t`Profil`}
+      fixedTopChildren={
+        <CenteredTitle title={t`Sélectionne ton statut`} />
+      }
       scrollChildren={
-        <ModalContent>
-          <CenteredTitle title={t`Sélectionne ton statut`} />
+        <React.Fragment>
           {statuses.map((status) => (
             <RadioButton
               key={status.name}
@@ -52,7 +53,7 @@ export const Status = () => {
               onPress={() => setSelectedStatus(status.name)}
             />
           ))}
-        </ModalContent>
+        </React.Fragment>
       }
       fixedBottomChildren={
         <ButtonPrimary

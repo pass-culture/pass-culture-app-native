@@ -6,7 +6,6 @@ import { Keyboard, TouchableOpacity } from 'react-native'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
-import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
@@ -18,7 +17,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SetAddress = () => {
@@ -89,9 +87,11 @@ export const SetAddress = () => {
   return (
     <PageWithHeader
       title={t`Profil`}
+      fixedTopChildren={
+        <CenteredTitle title={t`Quelle est ton adresse ?`} />
+      }
       scrollChildren={
-        <ModalContent>
-          <CenteredTitle title={t`Quelle est ton adresse ?`} />
+        <React.Fragment>
           <TextInput
             autoFocus
             onChangeText={onChangeAddress}
@@ -103,7 +103,6 @@ export const SetAddress = () => {
             RightIcon={() => <RightIcon />}
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
-          <Spacer.Column numberOfSpaces={2} />
           {addresses.map((option: string, index: number) => (
             <AddressOption
               option={option}
@@ -113,7 +112,7 @@ export const SetAddress = () => {
               {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${option}`)}
             />
           ))}
-        </ModalContent>
+        </React.Fragment>
       }
       fixedBottomChildren={
         <ButtonPrimary

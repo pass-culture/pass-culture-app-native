@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React, { useEffect, useState } from 'react'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
-import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
@@ -71,9 +70,11 @@ export const SetPostalCode = () => {
     <React.Fragment>
       <PageWithHeader
         title={t`Profil`}
+        fixedTopChildren={
+          <CenteredTitle title={t`Dans quelle ville résides-tu ?`} />
+        }
         scrollChildren={
-          <ModalContent>
-            <CenteredTitle title={t`Dans quelle ville résides-tu ?`} />
+          <React.Fragment>
             <TextInput
               autoCapitalize="none"
               isError={false}
@@ -90,7 +91,7 @@ export const SetPostalCode = () => {
             {!!errorMessage && (
               <InputError messageId={errorMessage} numberOfSpacesTop={2} visible />
             )}
-          </ModalContent>
+          </React.Fragment>
         }
         fixedBottomChildren={
           <ButtonPrimary

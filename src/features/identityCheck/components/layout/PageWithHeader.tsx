@@ -1,67 +1,81 @@
-import React from 'react'
-import { KeyboardAvoidingView, Platform } from 'react-native'
+import React, { ReactNode, useState } from 'react'
+import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { PageHeader } from 'features/identityCheck/atoms/layout/PageHeader'
+import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/layout/CustomKeyboardAvoidingView'
+import { useShouldEnableScrollOnView } from 'features/identityCheck/components/layout/useShouldEnableScrollView'
 import { Background } from 'ui/svg/Background'
-import { getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
   title: string
-  scrollChildren?: React.ReactNode
-  fixedBottomChildren?: React.ReactNode
+  fixedTopChildren?: ReactNode
+  scrollChildren?: ReactNode
+  fixedBottomChildren?: ReactNode
 }
 
 export const PageWithHeader = (props: Props) => {
+  const {
+    isScrollEnabled,
+    onScrollViewLayout,
+    onScrollViewContentSizeChange,
+  } = useShouldEnableScrollOnView()
+
+  const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
+
+  function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
+    const { height } = event.nativeEvent.layout
+    setBottomChildrenViewHeight(height)
+  }
+
   return (
-    <React.Fragment>
-      <Background />
+    <Container>
       <Spacer.TopScreen />
       <PageHeader title={props.title} />
-      <BodyContainer>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-          <StyledBottomCardContainer
-            keyboardShouldPersistTaps="handled"
-            keyboardDismissMode="on-drag">
-            {props.scrollChildren}
-            <Spacer.Flex />
-          </StyledBottomCardContainer>
-        </KeyboardAvoidingView>
-        <FixedButtonContainer>
+      <CustomKeyboardAvoidingView>
+          {props.fixedTopChildren}
+        <ChildrenScrollView
+          bottomChildrenViewHeight={bottomChildrenViewHeight}
+          onContentSizeChange={onScrollViewContentSizeChange}
+          onLayout={onScrollViewLayout}
+          scrollEnabled={isScrollEnabled}>
+          {props.scrollChildren}
+        </ChildrenScrollView>
+        <FixedBottomChildrenView
+          onLayout={onFixedBottomChildrenViewLayout}
+          testID="fixed-bottom-children">
           {props.fixedBottomChildren}
-          <Spacer.BottomScreen />
-        </FixedButtonContainer>
-      </BodyContainer>
-    </React.Fragment>
+        </FixedBottomChildrenView>
+      </CustomKeyboardAvoidingView>
+      <Background />
+      <Spacer.BottomScreen />
+    </Container>
   )
 }
 
-const BodyContainer = styled.View(({ theme }) => ({
+const Container = styled.View({
   flex: 1,
-  justifyContent: 'flex-end',
-  borderTopLeftRadius: getSpacing(4),
-  borderTopRightRadius: getSpacing(4),
-  overflow: 'hidden',
-  backgroundColor: theme.colors.white,
-}))
+  display: 'flex',
+  flexDirection: 'column',
+})
 
-const StyledBottomCardContainer = styled.ScrollView.attrs({
+const FixedBottomChildrenView = styled.View({
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  padding: getSpacing(5),
+  paddingTop: getSpacing(3),
+  backgroundColor: ColorsEnum.WHITE,
+})
+
+type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
+const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>((props) => ({
+  keyboardShouldPersistTaps: 'handled',
   contentContainerStyle: {
     flexGrow: 1,
     flexDirection: 'column',
-    justifyContent: 'space-between',
-    paddingHorizontal: getSpacing(6),
-    alignItems: 'center',
-    display: 'flex',
+    paddingBottom: props.bottomChildrenViewHeight,
   },
-})({
-  height: '100%',
-})
-
-const FixedButtonContainer = styled.View(({ theme }) => ({
-  alignSelf: 'center',
-  alignItems: 'center',
-  width: theme.appContentWidth - getSpacing(2 * 6),
-  position: 'absolute',
-  bottom: getSpacing(6),
-}))
+}))<ChildrenScrollViewProps>({})
