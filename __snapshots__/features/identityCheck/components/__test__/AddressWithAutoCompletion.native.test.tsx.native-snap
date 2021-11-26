@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetAddress/> should render correctly 1`] = `
+exports[`<AddressWithAutoCompletion/> should render correctly 1`] = `
 Array [
   <View
     height="100%"
