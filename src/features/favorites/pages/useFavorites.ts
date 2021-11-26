@@ -141,7 +141,6 @@ export function useFavorites() {
 
 export function useFavorite({ offerId }: { offerId?: number }): FavoriteResponse | undefined {
   const { data } = useFavorites()
-
-  if (typeof offerId !== 'number') return
-  return data?.favorites.find((favorite) => favorite.offer.id === offerId)
+  const favorites = data?.favorites || []
+  return favorites.find((favorite) => favorite.offer.id === offerId)
 }
