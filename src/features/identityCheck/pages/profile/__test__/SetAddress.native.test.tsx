@@ -3,6 +3,7 @@ import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { eventMonitoring } from 'libs/monitoring'
@@ -17,7 +18,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: () => ({ dispatch: mockDispatch }),
+  useIdentityCheckContext: () => ({ dispatch: mockDispatch, ...mockState }),
 }))
 
 const QUERY_CITY_CODE = ''

@@ -124,7 +124,7 @@ export function requestSettingsSuccess(
     wholeFranceOpening: true,
     objectStorageUrl: 'http://localhost',
     displayDmsRedirection: true,
-    idCheckAddressAutocompletion: false,
+    idCheckAddressAutocompletion: true,
     useAppSearch: false,
     isWebappV2Enabled: false,
     enableNativeEacIndividual: false,

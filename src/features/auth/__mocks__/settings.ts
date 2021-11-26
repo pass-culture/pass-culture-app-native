@@ -14,7 +14,7 @@ export const mockDefaultSettings: SettingsResponse = {
   autoActivateDigitalBookings: true,
   enableIdCheckRetention: false,
   enableNativeIdCheckVerboseDebugging: false,
-  idCheckAddressAutocompletion: false,
+  idCheckAddressAutocompletion: true,
   objectStorageUrl: 'http://localhost-storage',
   useAppSearch: false,
   isWebappV2Enabled: false,

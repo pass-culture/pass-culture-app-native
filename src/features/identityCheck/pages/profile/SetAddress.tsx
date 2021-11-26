@@ -4,6 +4,7 @@ import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
@@ -22,39 +23,45 @@ import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SetAddress = () => {
+  const { data: settings } = useAppSettings()
+  const { profile } = useIdentityCheckContext()
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch } = useIdentityCheckContext()
-  const [addressQuery, setAddressQuery] = useState('')
-  const [debouncedAddress, setDebouncedAddress] = useState<string>(addressQuery)
+  const [query, setQuery] = useState<string>('')
+  const [debouncedQuery, setDebouncedQuery] = useState<string>('')
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null)
-  const debouncedSetAddress = useRef(debounce(setDebouncedAddress, 500)).current
+  const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
 
-  // TODO (LucasBeneston, antoinewg): Récupérer cityCode / postalCode du context idcheck
+  const { cityCode, postalCode } = profile
+  const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
+
   const { data: addresses = [], isError } = useAddresses({
-    query: debouncedAddress,
-    cityCode: '',
-    postalCode: '',
+    query: debouncedQuery,
+    cityCode: cityCode ?? '',
+    postalCode: postalCode ?? '',
+    enabled: idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })
 
   useEffect(() => {
-    if (isError) {
-      showErrorSnackBar({
-        message: t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`,
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      eventMonitoring.captureException(
-        new IdentityCheckError(
-          'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
-        )
+    if (!isError) return
+
+    showErrorSnackBar({
+      message: t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+
+    eventMonitoring.captureException(
+      new IdentityCheckError(
+        'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
       )
-    }
+    )
   }, [isError])
 
   const onChangeAddress = (value: string) => {
-    setAddressQuery(value)
-    debouncedSetAddress(value)
+    setQuery(value)
+    debouncedSetQuery(value)
     setSelectedAddress('')
   }
 
@@ -64,20 +71,19 @@ export const SetAddress = () => {
   }
 
   const resetSearch = () => {
-    setAddressQuery('')
-    setDebouncedAddress('')
+    setQuery('')
+    debouncedSetQuery('')
     setSelectedAddress('')
   }
 
-  const RightIcon = () =>
-    addressQuery.length > 0 ? (
-      <TouchableOpacity
-        activeOpacity={ACTIVE_OPACITY}
-        onPress={resetSearch}
-        {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-        <Invalidate size={24} />
-      </TouchableOpacity>
-    ) : null
+  const RightIcon = () => (
+    <TouchableOpacity
+      activeOpacity={ACTIVE_OPACITY}
+      onPress={resetSearch}
+      {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
+      <Invalidate size={24} />
+    </TouchableOpacity>
+  )
 
   const onSubmit = (selectedAddress: string | null) => {
     if (selectedAddress) {
@@ -85,6 +91,15 @@ export const SetAddress = () => {
       navigate('IdentityCheckStatus')
     }
   }
+
+  // The button is enabled only when the user has selected an address
+  // if suggested addresses are available. Otherwise, if the user has
+  // typed something and either the FF doesn't allow suggested addresses
+  // or the API call fails, then the button is enabled
+  const enabled =
+    !isError && idCheckAddressAutocompletion && query.length > 0
+      ? !!selectedAddress
+      : query.length > 0
 
   return (
     <PageWithHeader
@@ -95,12 +110,12 @@ export const SetAddress = () => {
           <TextInput
             autoFocus
             onChangeText={onChangeAddress}
-            value={addressQuery}
+            value={query}
             label={t`Recherche et sélectionne ton adresse`}
             placeholder={t`Ex : 34 avenue de l'Opéra`}
             textContentType="addressState"
             onSubmitEditing={() => onSubmit(selectedAddress)}
-            RightIcon={() => <RightIcon />}
+            RightIcon={() => (query.length > 0 ? <RightIcon /> : null)}
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
@@ -119,7 +134,7 @@ export const SetAddress = () => {
         <ButtonPrimary
           onPress={() => onSubmit(selectedAddress)}
           title={t`Continuer`}
-          disabled={!selectedAddress}
+          disabled={!enabled}
         />
       }
     />
