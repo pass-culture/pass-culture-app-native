@@ -4,7 +4,7 @@ import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/Id
 import { render } from 'tests/utils'
 
 describe('<IdentityCheckEnd/>', () => {
-  it('should render correctly', async () => {
+  it('should render correctly', () => {
     const renderAPI = render(<IdentityCheckEnd />)
     expect(renderAPI).toMatchSnapshot()
   })

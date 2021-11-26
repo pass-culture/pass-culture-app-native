@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
+import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'
@@ -67,6 +68,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: IdentityCheckEnd,
     path: 'verification-identite/fin',
     options: { title: t`Fin du parcours` },
+    secure: true,
+  },
+  {
+    name: 'IdentityCheckHonor',
+    component: IdentityCheckHonor,
+    path: 'confirmation',
+    options: { title: t`Confirmation` },
     secure: true,
   },
 ]

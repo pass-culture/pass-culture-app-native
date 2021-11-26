@@ -6,7 +6,7 @@ import { render } from 'tests/utils'
 jest.mock('react-query')
 
 describe('<IdentityCheckStart/>', () => {
-  it('should render correctly', async () => {
+  it('should render correctly', () => {
     const renderAPI = render(<IdentityCheckStart />)
     expect(renderAPI).toMatchSnapshot()
   })

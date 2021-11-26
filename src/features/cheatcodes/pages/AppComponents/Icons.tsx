@@ -85,6 +85,7 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeprecated } from 'ui/svg/icons/Profile_deprecated'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
+import { Quote } from 'ui/svg/icons/Quote'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SignOut } from 'ui/svg/icons/SignOut'
@@ -208,6 +209,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="EditPen" component={EditPen} isNew />
       <Icon name="Flash" component={Flash} isNew />
       <Icon name="Sun" component={Sun} isNew />
+      <Icon name="Quote" component={Quote} isNew />
     </React.Fragment>
   )
 }
