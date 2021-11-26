@@ -10,7 +10,7 @@ import {
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
-import Governement from 'ui/animations/government.json'
+import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
@@ -22,7 +22,7 @@ export function UnderageAccountCreated() {
   const text = t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !`
 
   return (
-    <GenericInfoPageWhite animation={Governement} title={t`Bonne nouvelle !`}>
+    <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle !`}>
       <StyledSubtitle>
         {maxPrice + '\u00a0' + t`€ viennent d'être crédités sur ton compte pass Culture`}
       </StyledSubtitle>
