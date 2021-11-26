@@ -20,6 +20,7 @@ declare global {
       ) => void
       reset?: () => void
     }
+    onUbbleReady?: () => void
     batchSDK: (
       type?:
         | string
