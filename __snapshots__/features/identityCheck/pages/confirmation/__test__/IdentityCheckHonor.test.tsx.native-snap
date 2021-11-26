@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetName/> should render correctly 1`] = `
+exports[`<IdentityCheckHonor/> should render correctly 1`] = `
 Array [
   <View
     height="100%"
@@ -122,7 +122,7 @@ Array [
           ]
         }
       >
-        Profil
+        Confirmation
       </Text>
       <View
         accessibilityLabel="rightIconButton"
@@ -235,177 +235,116 @@ Array [
                   ]
                 }
               >
-                Comment t'appelles-tu ?
+                Les informations que tu as renseignées sont-elles correctes ?
               </Text>
             </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Prénom
-            </Text>
             <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "height": 8,
-                  },
-                ]
-              }
-            />
-            <View
-              borderColor="#c7c7cc"
-              height="small"
               style={
                 Array [
                   Object {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#c7c7cc",
-                    "borderRadius": 22,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 40,
-                    "paddingBottom": 4,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 4,
-                    "shadowColor": "#151515",
-                    "shadowOffset": Object {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.15,
-                    "shadowRadius": 6,
-                    "width": "100%",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": 352,
                   },
                 ]
               }
             >
-              <TextInput
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                placeholder="Ton prénom"
-                placeholderTextColor="#626262"
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "height": "100%",
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
                     },
                   ]
                 }
-                value=""
               />
-            </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                Array [
-                  Object {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Nom
-            </Text>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "height": 8,
-                  },
-                ]
-              }
-            />
-            <View
-              borderColor="#c7c7cc"
-              height="small"
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#c7c7cc",
-                    "borderRadius": 22,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 40,
-                    "paddingBottom": 4,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 4,
-                    "shadowColor": "#151515",
-                    "shadowOffset": Object {
-                      "height": 2,
-                      "width": 0,
+              <View
+                style={
+                  Array [
+                    Object {
+                      "paddingVertical": 16,
                     },
-                    "shadowOpacity": 0.15,
-                    "shadowRadius": 6,
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <TextInput
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                placeholder="Ton nom"
-                placeholderTextColor="#626262"
+                  ]
+                }
+              >
+                <View
+                  height={48}
+                  width={48}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
                 style={
                   Array [
                     Object {
                       "color": "#151515",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
-                      "height": "100%",
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
+                      "lineHeight": 20,
+                      "textAlign": "center",
                     },
                   ]
                 }
-                value=""
+              >
+                Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.
+              </Text>
+              <View
+                reversed={true}
+                style={
+                  Array [
+                    Object {
+                      "paddingVertical": 16,
+                      "transform": Array [
+                        Object {
+                          "rotate": "180deg",
+                        },
+                      ],
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={48}
+                  width={48}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
+              </Text>
+              <View
+                flex={2}
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 2,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
               />
             </View>
           </View>
@@ -437,10 +376,10 @@ Array [
       }
     >
       <View
-        accessibilityLabel="Continuer"
+        accessibilityLabel="Valider et continuer"
         accessible={true}
         collapsable={false}
-        focusable={false}
+        focusable={true}
         nativeID="animatedComponent"
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -452,7 +391,7 @@ Array [
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#f5f5f5",
+            "backgroundColor": "#eb0055",
             "borderRadius": 24,
             "borderWidth": 0,
             "flexDirection": "row",
@@ -467,7 +406,7 @@ Array [
             "width": "100%",
           }
         }
-        testID="Continuer"
+        testID="Valider et continuer"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -475,7 +414,7 @@ Array [
           style={
             Array [
               Object {
-                "color": "#626262",
+                "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -484,9 +423,9 @@ Array [
               },
             ]
           }
-          textColor="#626262"
+          textColor="#ffffff"
         >
-          Continuer
+          Valider et continuer
         </Text>
       </View>
       <View

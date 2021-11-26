@@ -292,8 +292,6 @@ Array [
                 "alignItems": "center",
                 "msFlexAlign": "center",
                 "paddingBottom": "20px",
-                "paddingLeft": "20px",
-                "paddingRight": "20px",
                 "paddingTop": "20px",
                 "width": "100%",
               }
@@ -308,6 +306,7 @@ Array [
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": "18px",
                   "lineHeight": "22px",
+                  "textAlign": "center",
                 }
               }
             >
