@@ -29,22 +29,15 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   const isUserUnderage = useIsUserUnderage()
-  const prefetchedInfo = {
-    nextBeneficiaryValidationStep: props.nextBeneficiaryValidationStep ?? null,
-  }
 
   function onBannerPress() {
     if (!isUserUnderage) {
-      navigateToNextBeneficiaryValidationStep(prefetchedInfo)
+      navigateToNextBeneficiaryValidationStep()
       return
     }
-    navigate('SelectSchoolHome', prefetchedInfo)
-  }
-
-  if (error) {
-    throw error
+    navigate('SelectSchoolHome')
   }
 
   const deposit = depositAmount.replace(' ', '')

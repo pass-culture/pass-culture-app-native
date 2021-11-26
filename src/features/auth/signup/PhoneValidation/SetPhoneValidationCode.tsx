@@ -96,7 +96,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
     hideModal: hideFullPageModal,
   } = useModal(false)
 
-  const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
 
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: onValidateSuccess,
@@ -207,10 +207,6 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
       t`Attention tu n'as que 3 tentatives.`,
     [route.params]
   )
-
-  if (error) {
-    throw error
-  }
 
   return (
     <React.Fragment>

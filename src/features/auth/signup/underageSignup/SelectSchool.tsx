@@ -1,12 +1,11 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/core'
-import { StackScreenProps } from '@react-navigation/stack'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { eligibleSchools, School } from 'features/auth/signup/underageSignup/eligibleSchools'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
 import { analytics } from 'libs/analytics'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -18,24 +17,16 @@ import { Separator } from 'ui/components/Separator'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-type SelectSchoolProps = StackScreenProps<RootStackParamList, 'SelectSchool'>
-
-export const SelectSchool: React.FC<SelectSchoolProps> = ({
-  route: { params: { nextBeneficiaryValidationStep } = {} },
-}) => {
+export const SelectSchool: React.FC = () => {
   const [selectedSchool, setSelectedSchool] = useState({
     name: '',
     city: '',
     academy: '',
   })
-  const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   useSetIdCheckNavigationContext()
 
   const { navigate } = useNavigation<UseNavigationType>()
-
-  if (error) {
-    throw error
-  }
 
   const renderItem = (item: School, academy: string) => {
     return (
@@ -56,9 +47,7 @@ export const SelectSchool: React.FC<SelectSchoolProps> = ({
 
   const onPressContinue = () => {
     analytics.logSelectSchool(selectedSchool)
-    navigateToNextBeneficiaryValidationStep({
-      nextBeneficiaryValidationStep,
-    })
+    navigateToNextBeneficiaryValidationStep()
   }
 
   return (

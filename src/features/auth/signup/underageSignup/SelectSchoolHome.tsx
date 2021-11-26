@@ -1,12 +1,11 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
 import LottieView from 'lottie-react-native'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import StarAnimation from 'ui/animations/tutorial_star.json'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -15,10 +14,7 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { getSpacing, Typo } from 'ui/theme'
 import { useGrid } from 'ui/theme/grid'
 
-type SelectSchoolHomeProps = StackScreenProps<RootStackParamList, 'SelectSchoolHome'>
-export const SelectSchoolHome: React.FC<SelectSchoolHomeProps> = ({
-  route: { params: { nextBeneficiaryValidationStep } = {} },
-}) => {
+export const SelectSchoolHome: React.FC = () => {
   const animation = useRef<LottieView>(null)
   const { navigate } = useNavigation<UseNavigationType>()
   const grid = useGrid()
@@ -46,11 +42,7 @@ export const SelectSchoolHome: React.FC<SelectSchoolHomeProps> = ({
 
       <ButtonsContainer>
         <ButtonSecondary
-          onPress={() =>
-            navigate('SelectSchool', {
-              nextBeneficiaryValidationStep,
-            })
-          }
+          onPress={() => navigate('SelectSchool')}
           title={t`Voir les établissements partenaires`}
         />
 

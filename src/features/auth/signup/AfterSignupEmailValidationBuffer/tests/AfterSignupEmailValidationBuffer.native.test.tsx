@@ -77,9 +77,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
         expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('VerifyEligibility', {
-          nextBeneficiaryValidationStep: 'phone-validation',
-        })
+        expect(navigate).toHaveBeenCalledWith('VerifyEligibility')
       })
       loginRoutine.mockRestore()
     })

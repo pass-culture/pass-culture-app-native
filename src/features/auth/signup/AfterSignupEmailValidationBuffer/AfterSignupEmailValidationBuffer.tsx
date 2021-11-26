@@ -51,7 +51,7 @@ export function AfterSignupEmailValidationBuffer() {
 
       if (user.isEligibleForBeneficiaryUpgrade) {
         const nextScreen = isUserUnderage(user) ? 'SelectSchoolHome' : 'VerifyEligibility'
-        delayedNavigate(nextScreen, { nextBeneficiaryValidationStep })
+        delayedNavigate(nextScreen)
       } else {
         delayedNavigate('AccountCreated')
       }
