@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/api'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { Helmet } from 'libs/react-helmet/Helmet'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,11 +34,13 @@ export const IdentityCheckWebview: React.FC = () => {
         allowCamera: true,
         identificationUrl: params.identificationUrl,
         events: {
-          onComplete({ redirectUrl }: CompleteEvent) {
+          onComplete({ redirectUrl, status }: CompleteEvent) {
+            analytics.logIdentityCheckComplete({ status })
             ubbleIDV.destroy()
             if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigate('IdentityCheckEnd')
           },
-          onAbort({ redirectUrl }: AbortEvent) {
+          onAbort({ redirectUrl, status, returnReason }: AbortEvent) {
+            analytics.logIdentityCheckAbort({ status, returnReason })
             ubbleIDV.destroy()
             // TODO(antoinewg): navigate to an error page.
             if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigate('IdentityCheckEnd')
