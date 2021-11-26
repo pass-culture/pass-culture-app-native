@@ -183,6 +183,7 @@ Array [
               <TextInput
                 autoCapitalize="none"
                 keyboardType="email-address"
+                maxLength={120}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
