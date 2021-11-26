@@ -37,14 +37,8 @@ export type IdentityCheckRootStackParamList = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
+  SignupForm: { preventCancellation?: boolean } | undefined
   Maintenance: undefined
-  AcceptCgu: {
-    email: string
-    isNewsletterChecked: boolean
-    password: string
-    birthday: string
-    postalCode: string | undefined
-  }
   AccountCreated: undefined
   AfterChangeEmailValidationBuffer: {
     token: string
@@ -93,9 +87,6 @@ export type RootStackParamList = {
   SearchFilter: undefined
   SelectSchool: undefined
   SelectSchoolHome: undefined
-  SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
-  SetEmail: { preventCancellation?: boolean } | undefined
-  SetPassword: { email: string; isNewsletterChecked: boolean }
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: {

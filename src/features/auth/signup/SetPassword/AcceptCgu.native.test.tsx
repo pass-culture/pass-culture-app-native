@@ -1,25 +1,15 @@
 import * as netInfoModule from '@react-native-community/netinfo'
-import { StackScreenProps } from '@react-navigation/stack'
-import { rest } from 'msw'
 import React from 'react'
 import { Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { api } from 'api/api'
-import { AccountRequest } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
 import { contactSupport } from 'features/auth/support.services'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
 import { MonitoringError } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { simulateWebviewMessage, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
-import { ColorsEnum } from 'ui/theme'
 
 import { AcceptCgu } from './AcceptCgu'
 
@@ -38,16 +28,9 @@ function simulateConnectedNetwork() {
   } as netInfoModule.NetInfoState)
 }
 
-describe('AcceptCgu Page', () => {
-  it('should navigate to the previous page on back navigation', () => {
-    simulateConnectedNetwork()
-    const { getByTestId } = renderAcceptCGU()
-    const leftIcon = getByTestId('leftIcon')
-    fireEvent.press(leftIcon)
+const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
-    expect(mockGoBack).toBeCalledTimes(1)
-  })
-
+describe('<AcceptCgu/>', () => {
   it('should open mail app when clicking on contact support button', async () => {
     simulateConnectedNetwork()
     const { findByText } = renderAcceptCGU()
@@ -114,13 +97,6 @@ describe('AcceptCgu Page', () => {
 
   it('should call API to create user account when reCAPTCHA challenge is successful', async () => {
     simulateConnectedNetwork()
-    const postnativev1accountSpy = jest.spyOn(api, 'postnativev1account')
-    server.use(
-      rest.post<AccountRequest, EmptyResponse>(
-        env.API_BASE_URL + '/native/v1/account',
-        (_req, res, ctx) => res.once(ctx.status(200), ctx.json({}))
-      )
-    )
     const renderAPI = renderAcceptCGU()
     fireEvent.press(renderAPI.getByText('Accepter et s’inscrire'))
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
@@ -128,74 +104,33 @@ describe('AcceptCgu Page', () => {
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
-      expect(postnativev1accountSpy).toBeCalledWith(
-        {
-          birthdate: '12-2-1995',
-          email: 'john.doe@example.com',
-          marketingEmailSubscription: true,
-          password: 'password',
-          token: 'fakeToken',
-          postalCode: '35000',
-          appsFlyerPlatform: 'ios',
-          appsFlyerUserId: 'uniqueCustomerId',
-        },
-        { credentials: 'omit' }
-      )
-      expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
-        email: 'john.doe@example.com',
-      })
+      expect(props.signUp).toBeCalledWith('fakeToken')
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
   })
 
   it('should log monitoring error and display error message when API call to create user account fails', async () => {
     simulateConnectedNetwork()
-    const postnativev1accountSpy = jest.spyOn(api, 'postnativev1account')
-    server.use(
-      rest.post<AccountRequest, EmptyResponse>(
-        env.API_BASE_URL + '/native/v1/account',
-        (_req, res, ctx) => res.once(ctx.status(400), ctx.json({}))
-      )
-    )
+    props.signUp.mockImplementationOnce(() => {
+      throw new Error()
+    })
     const renderAPI = renderAcceptCGU()
     fireEvent.press(renderAPI.getByText('Accepter et s’inscrire'))
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
-    const requestBody = {
-      birthdate: '12-2-1995',
-      email: 'john.doe@example.com',
-      marketingEmailSubscription: true,
-      password: 'password',
-      postalCode: '35000',
-      token: 'fakeToken',
-    }
     await waitFor(() => {
-      expect(postnativev1accountSpy).toBeCalledWith(
-        { ...requestBody, appsFlyerPlatform: 'ios', appsFlyerUserId: 'uniqueCustomerId' },
-        { credentials: 'omit' }
-      )
+      expect(props.signUp).toBeCalledWith('fakeToken')
       expect(
         renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
       ).toBeTruthy()
-      expect(MonitoringError).toHaveBeenNthCalledWith(
-        1,
-        `Request info : ${JSON.stringify({
-          ...requestBody,
-          password: 'excludedFromSentryLog',
-          captchaSiteKey: env.SITE_KEY,
-        })}`,
-        'AcceptCguSignUpError'
-      )
-      expect(navigate).not.toBeCalled()
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
   })
 
   it('should NOT call API to create user account when reCAPTCHA challenge was failed', async () => {
     simulateConnectedNetwork()
-    const postnativev1accountSpy = jest.spyOn(api, 'postnativev1account')
     const renderAPI = renderAcceptCGU()
     fireEvent.press(renderAPI.getByText('Accepter et s’inscrire'))
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
@@ -207,15 +142,13 @@ describe('AcceptCgu Page', () => {
         renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
       ).toBeTruthy()
       expect(MonitoringError).toHaveBeenNthCalledWith(1, 'someError', 'AcceptCguOnReCaptchaError')
-      expect(postnativev1accountSpy).not.toBeCalled()
-      expect(navigate).not.toBeCalled()
+      expect(props.signUp).not.toBeCalled()
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
   })
 
   it('should NOT call API to create user account when reCAPTCHA token has expired', async () => {
     simulateConnectedNetwork()
-    const postnativev1accountSpy = jest.spyOn(api, 'postnativev1account')
     const renderAPI = renderAcceptCGU()
     fireEvent.press(renderAPI.getByText('Accepter et s’inscrire'))
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
@@ -224,70 +157,19 @@ describe('AcceptCgu Page', () => {
 
     await waitFor(() => {
       expect(renderAPI.queryByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeTruthy()
-      expect(postnativev1accountSpy).not.toBeCalled()
+      expect(props.signUp).not.toBeCalled()
       expect(navigate).not.toBeCalled()
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
-    })
-  })
-
-  it('should open quit signup modal', () => {
-    simulateConnectedNetwork()
-    const { getByTestId, queryByText } = renderAcceptCGU()
-
-    const rightIcon = getByTestId('rightIcon')
-    fireEvent.press(rightIcon)
-
-    const title = queryByText("Veux-tu abandonner l'inscription ?")
-    expect(title).toBeTruthy()
-  })
-
-  it('should display 4 step dots with the last one as current step', () => {
-    simulateConnectedNetwork()
-    const { getAllByTestId } = renderAcceptCGU()
-    const dots = getAllByTestId('dot-icon')
-    expect(dots.length).toBe(4)
-    expect(dots[3].props.fill).toEqual(ColorsEnum.PRIMARY)
-  })
-
-  describe('<AcceptCgu /> - Analytics', () => {
-    it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
-      simulateConnectedNetwork()
-      const { getByTestId, getByText } = renderAcceptCGU()
-
-      const rightIcon = getByTestId('rightIcon')
-      fireEvent.press(rightIcon)
-
-      const abandonButton = getByText("Abandonner l'inscription")
-      fireEvent.press(abandonButton)
-
-      expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
-      expect(analytics.logCancelSignup).toHaveBeenCalledWith('CGU')
     })
   })
 })
 
 function renderAcceptCGU() {
-  const navigationProps = {
-    route: {
-      params: {
-        email: 'john.doe@example.com',
-        isNewsletterChecked: true,
-        password: 'password',
-        birthday: '12-2-1995',
-        postalCode: '35000',
-      },
-    },
-  } as StackScreenProps<RootStackParamList, 'AcceptCgu'>
-
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      <AuthContext.Provider
-        value={{
-          isLoggedIn: true,
-          setIsLoggedIn: jest.fn(),
-        }}>
-        <AcceptCgu {...navigationProps} />
+      <AuthContext.Provider value={{ isLoggedIn: true, setIsLoggedIn: jest.fn() }}>
+        <AcceptCgu {...props} />
       </AuthContext.Provider>
     )
   )

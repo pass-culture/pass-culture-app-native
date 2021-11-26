@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { SignupStep } from 'features/auth/signup/enums'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -12,19 +13,9 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
 import { ColorsEnum, Typo } from 'ui/theme'
 
-export enum SignupSteps {
-  Email = 'Email',
-  Name = 'Name',
-  Password = 'Password',
-  Birthday = 'Birthday',
-  PostalCode = 'PostalCode',
-  CGU = 'CGU',
-  PhoneNumber = 'PhoneNumber',
-}
-
 interface Props {
   visible: boolean
-  signupStep: SignupSteps
+  signupStep: SignupStep
   resume: () => void
   testIdSuffix?: string
 }

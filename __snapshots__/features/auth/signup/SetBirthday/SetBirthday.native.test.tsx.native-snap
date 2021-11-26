@@ -2,796 +2,433 @@
 
 exports[`SetBirthday Page should display a information modal when clicking "Pourquoi" link 1`] = `
 Array [
-  <RNCSafeAreaView
+  <View
     style={
       Array [
         Object {
-          "height": "100%",
+          "alignItems": "flex-start",
+          "display": "flex",
+          "flexDirection": "column",
+          "maxWidth": 500,
+          "width": "100%",
         },
       ]
     }
   >
     <View
-      height="100%"
       style={
         Array [
           Object {
-            "bottom": 0,
-            "height": "100%",
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
+            "alignItems": "center",
             "width": "100%",
-            "zIndex": -1,
           },
         ]
       }
-      width="100%"
     >
       <View
-        height="100%"
-        width="100%"
+        accessibilityLabel="Pourquoi ?"
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
+          }
+        }
+        testID="Pourquoi ?"
       >
-        <Text>
-          undefined-SVG-Mock
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#eb0055",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 5,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+          textColor="#eb0055"
+        >
+          Pourquoi ?
         </Text>
       </View>
-    </View>
-    <View
-      onPress={[Function]}
-      style={
-        Array [
-          Object {
-            "height": "100%",
-            "justifyContent": "flex-end",
-            "width": "100%",
-          },
-        ]
-      }
-    >
       <View
-        onLayout={[Function]}
+        numberOfSpaces={10}
         style={
           Array [
-            Array [
-              Object {},
-            ],
             Object {
-              "paddingBottom": 0,
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "stretch",
+              "flexDirection": "column",
+              "width": "100%",
             },
           ]
         }
       >
-        <RCTScrollView
-          contentContainerStyle={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 16,
-              "borderTopRightRadius": 16,
-              "flexDirection": "column",
-              "padding": 24,
-              "paddingBottom": 16,
-              "width": "100%",
-            }
-          }
-          customPaddingBottom={16}
-          keyboardShouldPersistTaps="handled"
-          scrollEnabled={false}
+        <View
           style={
             Array [
               Object {
-                "shadowColor": "#151515",
-                "shadowOffset": Object {
-                  "height": 8,
-                  "width": 0,
-                },
-                "shadowOpacity": 0.15,
-                "shadowRadius": 4,
+                "alignItems": "stretch",
+                "alignSelf": "center",
+                "flexDirection": "column",
+                "maxWidth": 300,
+                "position": "relative",
+                "width": "100%",
               },
             ]
           }
         >
-          <View>
-            <View
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "position": "relative",
+                },
+              ]
+            }
+          >
+            <TextInput
+              accessibilityLabel="Entrée pour la date de naissance"
+              accessible={true}
+              autoFocus={true}
+              keyboardType="number-pad"
+              maxLength={8}
+              onBlur={[Function]}
+              onChangeText={[Function]}
+              onSelectionChange={[Function]}
+              onSubmitEditing={[Function]}
+              pointerEvents="none"
+              returnKeyType="done"
+              selectionColor="transparent"
               style={
                 Array [
                   Object {
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "width": "100%",
+                    "fontSize": 1,
+                    "height": 1,
+                    "lineHeight": 22,
+                    "opacity": 0.1,
+                    "overflow": "hidden",
+                    "position": "absolute",
+                    "textAlign": "center",
+                    "width": 1,
+                    "zIndex": -1,
                   },
                 ]
               }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "flex-end",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 0.1,
-                      "flexShrink": 1,
-                      "justifyContent": "flex-start",
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Revenir en arrière"
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "marginLeft": -5,
-                      "opacity": 1,
-                    }
-                  }
-                  testID="Revenir en arrière"
-                >
-                  <View
-                    height={32}
-                    testID="leftIcon"
-                    width={32}
-                  >
-                    <Text>
-                      leftIcon-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 0.8,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                      "zIndex": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={2}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Ton anniversaire
-                </Text>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "flex-start",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 0.1,
-                      "flexShrink": 1,
-                      "justifyContent": "flex-end",
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Abandonner l'inscription"
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "marginRight": -5,
-                      "opacity": 1,
-                    }
-                  }
-                  testID="Abandonner l'inscription"
-                >
-                  <View
-                    height={32}
-                    testID="rightIcon"
-                    width={32}
-                  >
-                    <Text>
-                      rightIcon-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
+              testID="Entrée pour la date de naissance"
+              value=""
+            />
             <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "alignItems": "flex-start",
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                  "maxWidth": 130,
+                  "opacity": 1,
+                  "width": "30%",
+                }
               }
+              testID="Entrée pour le jour de la date de naissance"
             >
-              <View
+              <Text
+                color="#626262"
+                numberOfLines={1}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "width": "100%",
+                      "color": "#626262",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
                     },
                   ]
                 }
+                testID="date-input-label-text"
               >
-                <View
-                  accessibilityLabel="Pourquoi ?"
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
+                JJ
+              </Text>
+              <View
+                backgroundColor="#c7c7cc"
+                isEmpty={true}
+                isFocused={false}
+                isValid={false}
+                style={
+                  Array [
                     Object {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 24,
-                      "borderWidth": 0,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    }
-                  }
-                  testID="Pourquoi ?"
-                >
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#eb0055",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginLeft": 5,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                    textColor="#eb0055"
-                  >
-                    Pourquoi ?
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={10}
-                  style={
-                    Array [
-                      Object {
-                        "height": 40,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "stretch",
-                        "flexDirection": "column",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignItems": "stretch",
-                          "alignSelf": "center",
-                          "flexDirection": "column",
-                          "maxWidth": 300,
-                          "position": "relative",
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "flexDirection": "row",
-                            "position": "relative",
-                          },
-                        ]
-                      }
-                    >
-                      <TextInput
-                        accessibilityLabel="Entrée pour la date de naissance"
-                        accessible={true}
-                        autoFocus={true}
-                        keyboardType="number-pad"
-                        maxLength={8}
-                        onBlur={[Function]}
-                        onChangeText={[Function]}
-                        onSelectionChange={[Function]}
-                        onSubmitEditing={[Function]}
-                        pointerEvents="none"
-                        returnKeyType="done"
-                        selectionColor="transparent"
-                        style={
-                          Array [
-                            Object {
-                              "fontSize": 1,
-                              "height": 1,
-                              "lineHeight": 22,
-                              "opacity": 0.1,
-                              "overflow": "hidden",
-                              "position": "absolute",
-                              "textAlign": "center",
-                              "width": 1,
-                              "zIndex": -1,
-                            },
-                          ]
-                        }
-                        testID="Entrée pour la date de naissance"
-                        value=""
-                      />
-                      <View
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "maxWidth": 130,
-                            "opacity": 1,
-                            "width": "30%",
-                          }
-                        }
-                        testID="Entrée pour le jour de la date de naissance"
-                      >
-                        <Text
-                          color="#626262"
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#626262",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 18,
-                                "lineHeight": 22,
-                                "textAlign": "center",
-                              },
-                            ]
-                          }
-                          testID="date-input-label-text"
-                        >
-                          JJ
-                        </Text>
-                        <View
-                          backgroundColor="#c7c7cc"
-                          isEmpty={true}
-                          isFocused={false}
-                          isValid={false}
-                          style={
-                            Array [
-                              Object {
-                                "alignSelf": "stretch",
-                                "backgroundColor": "#c7c7cc",
-                                "borderRadius": 22,
-                                "height": 5,
-                              },
-                            ]
-                          }
-                          testID="date-input-validation-bar"
-                        />
-                      </View>
-                      <View
-                        flex={0.25}
-                        style={
-                          Array [
-                            Object {
-                              "flexBasis": 0,
-                              "flexGrow": 0.25,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "maxWidth": 130,
-                            "opacity": 1,
-                            "width": "30%",
-                          }
-                        }
-                        testID="Entrée pour le mois de la date de naissance"
-                      >
-                        <Text
-                          color="#626262"
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#626262",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 18,
-                                "lineHeight": 22,
-                                "textAlign": "center",
-                              },
-                            ]
-                          }
-                          testID="date-input-label-text"
-                        >
-                          MM
-                        </Text>
-                        <View
-                          backgroundColor="#c7c7cc"
-                          isEmpty={true}
-                          isFocused={false}
-                          isValid={false}
-                          style={
-                            Array [
-                              Object {
-                                "alignSelf": "stretch",
-                                "backgroundColor": "#c7c7cc",
-                                "borderRadius": 22,
-                                "height": 5,
-                              },
-                            ]
-                          }
-                          testID="date-input-validation-bar"
-                        />
-                      </View>
-                      <View
-                        flex={0.25}
-                        style={
-                          Array [
-                            Object {
-                              "flexBasis": 0,
-                              "flexGrow": 0.25,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "maxWidth": 130,
-                            "opacity": 1,
-                            "width": "30%",
-                          }
-                        }
-                        testID="Entrée pour l'année jour de la date de naissance"
-                      >
-                        <Text
-                          color="#626262"
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#626262",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 18,
-                                "lineHeight": 22,
-                                "textAlign": "center",
-                              },
-                            ]
-                          }
-                          testID="date-input-label-text"
-                        >
-                          AAAA
-                        </Text>
-                        <View
-                          backgroundColor="#c7c7cc"
-                          isEmpty={true}
-                          isFocused={false}
-                          isValid={false}
-                          style={
-                            Array [
-                              Object {
-                                "alignSelf": "stretch",
-                                "backgroundColor": "#c7c7cc",
-                                "borderRadius": 22,
-                                "height": 5,
-                              },
-                            ]
-                          }
-                          testID="date-input-validation-bar"
-                        />
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  numberOfSpaces={14}
-                  style={
-                    Array [
-                      Object {
-                        "height": 56,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  accessibilityLabel="Continuer"
-                  accessible={true}
-                  focusable={false}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#f5f5f5",
-                      "borderRadius": 24,
-                      "borderWidth": 0,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    }
-                  }
-                  testID="Continuer"
-                >
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#626262",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginLeft": 5,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                    textColor="#626262"
-                  >
-                    Continuer
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={5}
-                  style={
-                    Array [
-                      Object {
-                        "height": 20,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignSelf": "center",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      fill="#15884f"
-                      height={8}
-                      testID="dot-icon"
-                      width={8}
-                    >
-                      <Text>
-                        dot-icon-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      Array [
-                        Object {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignSelf": "center",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      fill="#15884f"
-                      height={8}
-                      testID="dot-icon"
-                      width={8}
-                    >
-                      <Text>
-                        dot-icon-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      Array [
-                        Object {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignSelf": "center",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      fill="#eb0055"
-                      height={12}
-                      testID="dot-icon"
-                      width={12}
-                    >
-                      <Text>
-                        dot-icon-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      Array [
-                        Object {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "alignSelf": "center",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      fill="#c7c7cc"
-                      height={8}
-                      testID="dot-icon"
-                      width={8}
-                    >
-                      <Text>
-                        dot-icon-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </View>
+                      "alignSelf": "stretch",
+                      "backgroundColor": "#c7c7cc",
+                      "borderRadius": 22,
+                      "height": 5,
+                    },
+                  ]
+                }
+                testID="date-input-validation-bar"
+              />
             </View>
             <View
-              customHeight={8}
-              enable={true}
+              flex={0.25}
               style={
                 Array [
                   Object {
-                    "height": 8,
+                    "flexBasis": 0,
+                    "flexGrow": 0.25,
+                    "flexShrink": 1,
                   },
                 ]
               }
             />
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                  "maxWidth": 130,
+                  "opacity": 1,
+                  "width": "30%",
+                }
+              }
+              testID="Entrée pour le mois de la date de naissance"
+            >
+              <Text
+                color="#626262"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#626262",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+                testID="date-input-label-text"
+              >
+                MM
+              </Text>
+              <View
+                backgroundColor="#c7c7cc"
+                isEmpty={true}
+                isFocused={false}
+                isValid={false}
+                style={
+                  Array [
+                    Object {
+                      "alignSelf": "stretch",
+                      "backgroundColor": "#c7c7cc",
+                      "borderRadius": 22,
+                      "height": 5,
+                    },
+                  ]
+                }
+                testID="date-input-validation-bar"
+              />
+            </View>
+            <View
+              flex={0.25}
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 0.25,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            />
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                  "maxWidth": 130,
+                  "opacity": 1,
+                  "width": "30%",
+                }
+              }
+              testID="Entrée pour l'année jour de la date de naissance"
+            >
+              <Text
+                color="#626262"
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#626262",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+                testID="date-input-label-text"
+              >
+                AAAA
+              </Text>
+              <View
+                backgroundColor="#c7c7cc"
+                isEmpty={true}
+                isFocused={false}
+                isValid={false}
+                style={
+                  Array [
+                    Object {
+                      "alignSelf": "stretch",
+                      "backgroundColor": "#c7c7cc",
+                      "borderRadius": 22,
+                      "height": 5,
+                    },
+                  ]
+                }
+                testID="date-input-validation-bar"
+              />
+            </View>
           </View>
-        </RCTScrollView>
+        </View>
       </View>
+      <View
+        numberOfSpaces={14}
+        style={
+          Array [
+            Object {
+              "height": 56,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Continuer"
+        accessible={true}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#f5f5f5",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
+          }
+        }
+        testID="Continuer"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#626262",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 5,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+          textColor="#626262"
+        >
+          Continuer
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
     </View>
-  </RNCSafeAreaView>,
+  </View>,
   <Modal
     animationType="fade"
     hardwareAccelerated={false}
@@ -1069,794 +706,431 @@ Cette aide sera créditée directement sur ton compte pass Culture.
 `;
 
 exports[`SetBirthday Page should render properly 1`] = `
-<RNCSafeAreaView
+<View
   style={
     Array [
       Object {
-        "height": "100%",
+        "alignItems": "flex-start",
+        "display": "flex",
+        "flexDirection": "column",
+        "maxWidth": 500,
+        "width": "100%",
       },
     ]
   }
 >
   <View
-    height="100%"
     style={
       Array [
         Object {
-          "bottom": 0,
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
+          "alignItems": "center",
           "width": "100%",
-          "zIndex": -1,
         },
       ]
     }
-    width="100%"
   >
     <View
-      height="100%"
-      width="100%"
+      accessibilityLabel="Pourquoi ?"
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="Pourquoi ?"
     >
-      <Text>
-        undefined-SVG-Mock
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 5,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+        textColor="#eb0055"
+      >
+        Pourquoi ?
       </Text>
     </View>
-  </View>
-  <View
-    onPress={[Function]}
-    style={
-      Array [
-        Object {
-          "height": "100%",
-          "justifyContent": "flex-end",
-          "width": "100%",
-        },
-      ]
-    }
-  >
     <View
-      onLayout={[Function]}
+      numberOfSpaces={10}
       style={
         Array [
-          Array [
-            Object {},
-          ],
           Object {
-            "paddingBottom": 0,
+            "height": 40,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "stretch",
+            "flexDirection": "column",
+            "width": "100%",
           },
         ]
       }
     >
-      <RCTScrollView
-        contentContainerStyle={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderTopLeftRadius": 16,
-            "borderTopRightRadius": 16,
-            "flexDirection": "column",
-            "padding": 24,
-            "paddingBottom": 16,
-            "width": "100%",
-          }
-        }
-        customPaddingBottom={16}
-        keyboardShouldPersistTaps="handled"
-        scrollEnabled={false}
+      <View
         style={
           Array [
             Object {
-              "shadowColor": "#151515",
-              "shadowOffset": Object {
-                "height": 8,
-                "width": 0,
-              },
-              "shadowOpacity": 0.15,
-              "shadowRadius": 4,
+              "alignItems": "stretch",
+              "alignSelf": "center",
+              "flexDirection": "column",
+              "maxWidth": 300,
+              "position": "relative",
+              "width": "100%",
             },
           ]
         }
       >
-        <View>
-          <View
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <TextInput
+            accessibilityLabel="Entrée pour la date de naissance"
+            accessible={true}
+            autoFocus={true}
+            keyboardType="number-pad"
+            maxLength={8}
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onSelectionChange={[Function]}
+            onSubmitEditing={[Function]}
+            pointerEvents="none"
+            returnKeyType="done"
+            selectionColor="transparent"
             style={
               Array [
                 Object {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "width": "100%",
+                  "fontSize": 1,
+                  "height": 1,
+                  "lineHeight": 22,
+                  "opacity": 0.1,
+                  "overflow": "hidden",
+                  "position": "absolute",
+                  "textAlign": "center",
+                  "width": 1,
+                  "zIndex": -1,
                 },
               ]
             }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "flex-end",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 0.1,
-                    "flexShrink": 1,
-                    "justifyContent": "flex-start",
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Revenir en arrière"
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "marginLeft": -5,
-                    "opacity": 1,
-                  }
-                }
-                testID="Revenir en arrière"
-              >
-                <View
-                  height={32}
-                  testID="leftIcon"
-                  width={32}
-                >
-                  <Text>
-                    leftIcon-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 0.8,
-                    "flexShrink": 1,
-                    "justifyContent": "center",
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                    "zIndex": 1,
-                  },
-                ]
-              }
-            >
-              <Text
-                numberOfLines={2}
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 18,
-                      "lineHeight": 22,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                Ton anniversaire
-              </Text>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "flex-start",
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 0.1,
-                    "flexShrink": 1,
-                    "justifyContent": "flex-end",
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Abandonner l'inscription"
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "marginRight": -5,
-                    "opacity": 1,
-                  }
-                }
-                testID="Abandonner l'inscription"
-              >
-                <View
-                  height={32}
-                  testID="rightIcon"
-                  width={32}
-                >
-                  <Text>
-                    rightIcon-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
+            testID="Entrée pour la date de naissance"
+            value=""
+          />
           <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
-                  "alignItems": "flex-start",
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "maxWidth": 500,
-                  "width": "100%",
-                },
-              ]
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "maxWidth": 130,
+                "opacity": 1,
+                "width": "30%",
+              }
             }
+            testID="Entrée pour le jour de la date de naissance"
           >
-            <View
+            <Text
+              color="#626262"
+              numberOfLines={1}
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
-                    "width": "100%",
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                    "textAlign": "center",
                   },
                 ]
               }
+              testID="date-input-label-text"
             >
-              <View
-                accessibilityLabel="Pourquoi ?"
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
+              JJ
+            </Text>
+            <View
+              backgroundColor="#c7c7cc"
+              isEmpty={true}
+              isFocused={false}
+              isValid={false}
+              style={
+                Array [
                   Object {
-                    "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "borderRadius": 24,
-                    "borderWidth": 0,
-                    "flexDirection": "row",
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 2,
-                    "paddingRight": 2,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  }
-                }
-                testID="Pourquoi ?"
-              >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 5,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                  textColor="#eb0055"
-                >
-                  Pourquoi ?
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={10}
-                style={
-                  Array [
-                    Object {
-                      "height": 40,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "stretch",
-                      "flexDirection": "column",
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "stretch",
-                        "alignSelf": "center",
-                        "flexDirection": "column",
-                        "maxWidth": 300,
-                        "position": "relative",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "flexDirection": "row",
-                          "position": "relative",
-                        },
-                      ]
-                    }
-                  >
-                    <TextInput
-                      accessibilityLabel="Entrée pour la date de naissance"
-                      accessible={true}
-                      autoFocus={true}
-                      keyboardType="number-pad"
-                      maxLength={8}
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onSelectionChange={[Function]}
-                      onSubmitEditing={[Function]}
-                      pointerEvents="none"
-                      returnKeyType="done"
-                      selectionColor="transparent"
-                      style={
-                        Array [
-                          Object {
-                            "fontSize": 1,
-                            "height": 1,
-                            "lineHeight": 22,
-                            "opacity": 0.1,
-                            "overflow": "hidden",
-                            "position": "absolute",
-                            "textAlign": "center",
-                            "width": 1,
-                            "zIndex": -1,
-                          },
-                        ]
-                      }
-                      testID="Entrée pour la date de naissance"
-                      value=""
-                    />
-                    <View
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "maxWidth": 130,
-                          "opacity": 1,
-                          "width": "30%",
-                        }
-                      }
-                      testID="Entrée pour le jour de la date de naissance"
-                    >
-                      <Text
-                        color="#626262"
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#626262",
-                              "fontFamily": "Montserrat-Regular",
-                              "fontSize": 18,
-                              "lineHeight": 22,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                        testID="date-input-label-text"
-                      >
-                        JJ
-                      </Text>
-                      <View
-                        backgroundColor="#c7c7cc"
-                        isEmpty={true}
-                        isFocused={false}
-                        isValid={false}
-                        style={
-                          Array [
-                            Object {
-                              "alignSelf": "stretch",
-                              "backgroundColor": "#c7c7cc",
-                              "borderRadius": 22,
-                              "height": 5,
-                            },
-                          ]
-                        }
-                        testID="date-input-validation-bar"
-                      />
-                    </View>
-                    <View
-                      flex={0.25}
-                      style={
-                        Array [
-                          Object {
-                            "flexBasis": 0,
-                            "flexGrow": 0.25,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "maxWidth": 130,
-                          "opacity": 1,
-                          "width": "30%",
-                        }
-                      }
-                      testID="Entrée pour le mois de la date de naissance"
-                    >
-                      <Text
-                        color="#626262"
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#626262",
-                              "fontFamily": "Montserrat-Regular",
-                              "fontSize": 18,
-                              "lineHeight": 22,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                        testID="date-input-label-text"
-                      >
-                        MM
-                      </Text>
-                      <View
-                        backgroundColor="#c7c7cc"
-                        isEmpty={true}
-                        isFocused={false}
-                        isValid={false}
-                        style={
-                          Array [
-                            Object {
-                              "alignSelf": "stretch",
-                              "backgroundColor": "#c7c7cc",
-                              "borderRadius": 22,
-                              "height": 5,
-                            },
-                          ]
-                        }
-                        testID="date-input-validation-bar"
-                      />
-                    </View>
-                    <View
-                      flex={0.25}
-                      style={
-                        Array [
-                          Object {
-                            "flexBasis": 0,
-                            "flexGrow": 0.25,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "maxWidth": 130,
-                          "opacity": 1,
-                          "width": "30%",
-                        }
-                      }
-                      testID="Entrée pour l'année jour de la date de naissance"
-                    >
-                      <Text
-                        color="#626262"
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#626262",
-                              "fontFamily": "Montserrat-Regular",
-                              "fontSize": 18,
-                              "lineHeight": 22,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                        testID="date-input-label-text"
-                      >
-                        AAAA
-                      </Text>
-                      <View
-                        backgroundColor="#c7c7cc"
-                        isEmpty={true}
-                        isFocused={false}
-                        isValid={false}
-                        style={
-                          Array [
-                            Object {
-                              "alignSelf": "stretch",
-                              "backgroundColor": "#c7c7cc",
-                              "borderRadius": 22,
-                              "height": 5,
-                            },
-                          ]
-                        }
-                        testID="date-input-validation-bar"
-                      />
-                    </View>
-                  </View>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={14}
-                style={
-                  Array [
-                    Object {
-                      "height": 56,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Continuer"
-                accessible={true}
-                focusable={false}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#f5f5f5",
-                    "borderRadius": 24,
-                    "borderWidth": 0,
-                    "flexDirection": "row",
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 2,
-                    "paddingRight": 2,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  }
-                }
-                testID="Continuer"
-              >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#626262",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 5,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                  textColor="#626262"
-                >
-                  Continuer
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={5}
-                style={
-                  Array [
-                    Object {
-                      "height": 20,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignSelf": "center",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    fill="#15884f"
-                    height={8}
-                    testID="dot-icon"
-                    width={8}
-                  >
-                    <Text>
-                      dot-icon-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    Array [
-                      Object {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignSelf": "center",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    fill="#15884f"
-                    height={8}
-                    testID="dot-icon"
-                    width={8}
-                  >
-                    <Text>
-                      dot-icon-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    Array [
-                      Object {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignSelf": "center",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    fill="#eb0055"
-                    height={12}
-                    testID="dot-icon"
-                    width={12}
-                  >
-                    <Text>
-                      dot-icon-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    Array [
-                      Object {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignSelf": "center",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    fill="#c7c7cc"
-                    height={8}
-                    testID="dot-icon"
-                    width={8}
-                  >
-                    <Text>
-                      dot-icon-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
+                    "alignSelf": "stretch",
+                    "backgroundColor": "#c7c7cc",
+                    "borderRadius": 22,
+                    "height": 5,
+                  },
+                ]
+              }
+              testID="date-input-validation-bar"
+            />
           </View>
           <View
-            customHeight={8}
-            enable={true}
+            flex={0.25}
             style={
               Array [
                 Object {
-                  "height": 8,
+                  "flexBasis": 0,
+                  "flexGrow": 0.25,
+                  "flexShrink": 1,
                 },
               ]
             }
           />
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "maxWidth": 130,
+                "opacity": 1,
+                "width": "30%",
+              }
+            }
+            testID="Entrée pour le mois de la date de naissance"
+          >
+            <Text
+              color="#626262"
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+              testID="date-input-label-text"
+            >
+              MM
+            </Text>
+            <View
+              backgroundColor="#c7c7cc"
+              isEmpty={true}
+              isFocused={false}
+              isValid={false}
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "stretch",
+                    "backgroundColor": "#c7c7cc",
+                    "borderRadius": 22,
+                    "height": 5,
+                  },
+                ]
+              }
+              testID="date-input-validation-bar"
+            />
+          </View>
+          <View
+            flex={0.25}
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 0.25,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          />
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "maxWidth": 130,
+                "opacity": 1,
+                "width": "30%",
+              }
+            }
+            testID="Entrée pour l'année jour de la date de naissance"
+          >
+            <Text
+              color="#626262"
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+              testID="date-input-label-text"
+            >
+              AAAA
+            </Text>
+            <View
+              backgroundColor="#c7c7cc"
+              isEmpty={true}
+              isFocused={false}
+              isValid={false}
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "stretch",
+                    "backgroundColor": "#c7c7cc",
+                    "borderRadius": 22,
+                    "height": 5,
+                  },
+                ]
+              }
+              testID="date-input-validation-bar"
+            />
+          </View>
         </View>
-      </RCTScrollView>
+      </View>
     </View>
+    <View
+      numberOfSpaces={14}
+      style={
+        Array [
+          Object {
+            "height": 56,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Continuer"
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#f5f5f5",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="Continuer"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#626262",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 5,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+        textColor="#626262"
+      >
+        Continuer
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
   </View>
-</RNCSafeAreaView>
+</View>
 `;

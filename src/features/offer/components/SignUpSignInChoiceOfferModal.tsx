@@ -23,7 +23,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
 
   function goToSignUp() {
     dismissModal()
-    navigate('SetEmail')
+    navigate('SignupForm')
   }
 
   function goToLogin() {

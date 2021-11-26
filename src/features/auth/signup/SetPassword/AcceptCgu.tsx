@@ -1,0 +1,144 @@
+import { t } from '@lingui/macro'
+import { useNetInfo } from '@react-native-community/netinfo'
+import React, { FC, useEffect, useState, useCallback, useMemo } from 'react'
+
+import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
+import { PreValidationSignupStepProps } from 'features/auth/signup/types'
+import { contactSupport } from 'features/auth/support.services'
+import { env } from 'libs/environment'
+import { MonitoringError } from 'libs/monitoring'
+import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
+import { InputError } from 'ui/components/inputs/InputError'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
+import { Email } from 'ui/svg/icons/Email'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+
+import { useAppSettings } from '../../settings'
+
+export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
+  const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
+  const networkInfo = useNetInfo()
+
+  const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
+  const [isFetching, setIsFetching] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!networkInfo.isConnected) {
+      setErrorMessage(t`Hors connexion : en attente du réseau.`)
+      setIsDoingReCaptchaChallenge(false)
+    } else {
+      setErrorMessage(null)
+    }
+  }, [networkInfo.isConnected])
+
+  async function handleSignup(token: string) {
+    setErrorMessage(null)
+    try {
+      setIsFetching(true)
+      await props.signUp(token)
+    } catch {
+      setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
+    } finally {
+      setIsFetching(false)
+    }
+  }
+
+  const openReCaptchaChallenge = useCallback(() => {
+    if (!networkInfo.isConnected) {
+      return
+    }
+    setIsDoingReCaptchaChallenge(true)
+    setErrorMessage(null)
+  }, [networkInfo.isConnected])
+
+  function onReCaptchaClose() {
+    setIsDoingReCaptchaChallenge(false)
+  }
+
+  function onReCaptchaError(error: string) {
+    setIsDoingReCaptchaChallenge(false)
+    setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
+    new MonitoringError(error, 'AcceptCguOnReCaptchaError')
+  }
+
+  function onReCaptchaExpire() {
+    setIsDoingReCaptchaChallenge(false)
+    setErrorMessage(t`Le token reCAPTCHA a expiré, tu peux réessayer.`)
+  }
+
+  function onReCaptchaSuccess(token: string) {
+    setIsDoingReCaptchaChallenge(false)
+    handleSignup(token)
+  }
+
+  const onSubmit = useCallback(() => {
+    settings?.isRecaptchaEnabled ? openReCaptchaChallenge() : handleSignup('dummyToken')
+  }, [settings?.isRecaptchaEnabled, openReCaptchaChallenge])
+
+  const disabled = useMemo(
+    () => isDoingReCaptchaChallenge || isFetching || !networkInfo.isConnected || areSettingsLoading,
+    [isDoingReCaptchaChallenge, isFetching, networkInfo.isConnected, areSettingsLoading]
+  )
+
+  useEnterKeyAction(!disabled ? onSubmit : undefined)
+
+  return (
+    <React.Fragment>
+      {!!settings?.isRecaptchaEnabled && (
+        <ReCaptcha
+          onClose={onReCaptchaClose}
+          onError={onReCaptchaError}
+          onExpire={onReCaptchaExpire}
+          onSuccess={onReCaptchaSuccess}
+          isVisible={isDoingReCaptchaChallenge}
+        />
+      )}
+      <CardContent>
+        <Spacer.Column numberOfSpaces={5} />
+        <Paragraphe>
+          <Typo.Body>{t`En cliquant sur “Accepter et s’inscrire”, tu acceptes nos `}</Typo.Body>
+          <ExternalLink
+            text={t`Conditions Générales d'Utilisation`}
+            url={env.CGU_LINK}
+            color={ColorsEnum.PRIMARY}
+            testID="external-link-cgu"
+          />
+          <Spacer.Row numberOfSpaces={1} />
+          <Typo.Body>{t` ainsi que notre `}</Typo.Body>
+          <ExternalLink
+            text={t`Politique de confidentialité.`}
+            color={ColorsEnum.PRIMARY}
+            url={env.PRIVACY_POLICY_LINK}
+            testID="external-link-privacy-policy"
+          />
+        </Paragraphe>
+        <Spacer.Column numberOfSpaces={5} />
+        <Paragraphe>
+          <Typo.Body>
+            {t`Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :`}
+          </Typo.Body>
+        </Paragraphe>
+        <ButtonTertiary
+          title={t`Contacter le support`}
+          onPress={contactSupport.forGenericQuestion}
+          icon={Email}
+        />
+        <Spacer.Column numberOfSpaces={6} />
+        <ButtonPrimary
+          title={t`Accepter et s’inscrire`}
+          // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
+          // Cf. backend logic for token validation
+          onPress={onSubmit}
+          isLoading={isDoingReCaptchaChallenge || isFetching}
+          disabled={disabled}
+        />
+        {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
+        <Spacer.Column numberOfSpaces={5} />
+      </CardContent>
+    </React.Fragment>
+  )
+}

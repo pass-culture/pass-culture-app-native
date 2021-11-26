@@ -11,13 +11,13 @@ describe('NotConnectedFavorites component', () => {
     expect(renderAPI.toJSON()).toMatchSnapshot()
   })
 
-  it('should navigate to login on button click', () => {
+  it('should navigate to SignupForm on button click', () => {
     const renderAPI = render(<NotConnectedFavorites />)
     fireEvent.press(renderAPI.getByText(`S'inscrire`))
-    expect(navigate).toBeCalledWith('SetEmail')
+    expect(navigate).toBeCalledWith('SignupForm')
   })
 
-  it('should navigate to register on button click', () => {
+  it('should navigate to Login on button click', () => {
     const renderAPI = render(<NotConnectedFavorites />)
     fireEvent.press(renderAPI.getByText(`Se connecter`))
     expect(navigate).toBeCalledWith('Login')

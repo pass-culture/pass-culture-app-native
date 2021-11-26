@@ -110,29 +110,6 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'Set Birthday'}
-            onPress={() =>
-              navigate('SetBirthday', {
-                email: 'jonh.doe@exmaple.com',
-                isNewsletterChecked: false,
-                password: 'user@AZERTY123',
-              })
-            }
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'Signup choix mdp'}
-            onPress={() =>
-              navigate('SetPassword', {
-                email: 'jonh.doe@exmaple.com',
-                isNewsletterChecked: false,
-              })
-            }
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
             title={'Signup : email envoyé'}
             onPress={() =>
               navigate('SignupConfirmationEmailSent', {

@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
+import { SignupStep } from 'features/auth/signup/enums'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
@@ -64,7 +65,7 @@ function renderQuitSignupModal(visible: boolean) {
   const props = {
     visible: visible,
     resume: resumeMock,
-    signupStep: SignupSteps.Birthday,
+    signupStep: SignupStep.Birthday,
   }
   return render(<QuitSignupModal {...props} />)
 }

@@ -11,8 +11,9 @@ import styled from 'styled-components/native'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { useSendPhoneValidationMutation } from 'features/auth/api'
-import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
 import { useAppSettings } from 'features/auth/settings'
+import { SignupStep } from 'features/auth/signup/enums'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { currentTimestamp } from 'libs/dates'
 import { useSafeState } from 'libs/hooks'
@@ -219,7 +220,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
         visible={quitSignupModalVisible}
         resume={hideQuitSignupModal}
         testIdSuffix="phone-number-quit-signup"
-        signupStep={SignupSteps.PhoneNumber}
+        signupStep={SignupStep.PhoneNumber}
       />
     </React.Fragment>
   )
