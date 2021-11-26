@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { BicolorLocationPointerDeprecated } from 'ui/svg/icons/BicolorLocationPointer_deprecated'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 type Props = {
@@ -25,7 +25,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
     onCloseIconPress={onDismiss}
     testIdSuffix="notifications-permission-modal">
     <React.Fragment>
-      <BicolorLocationPointer
+      <BicolorLocationPointerDeprecated
         size={140}
         color={ColorsEnum.GREY_DARK}
         color2={ColorsEnum.GREY_DARK}

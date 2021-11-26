@@ -12,7 +12,7 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { BicolorLocationPointerDeprecated } from 'ui/svg/icons/BicolorLocationPointer_deprecated'
 import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
@@ -36,7 +36,7 @@ export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
   const Icon = isVenue(hit)
     ? () => <LocationBuildingDeprecated size={getSpacing(10)} color={ColorsEnum.PRIMARY} />
-    : () => <BicolorLocationPointer size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
+    : () => <BicolorLocationPointerDeprecated size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
 
   return (
     <ItemContainer onPress={onPress} testID={keyExtractor(hit)}>
