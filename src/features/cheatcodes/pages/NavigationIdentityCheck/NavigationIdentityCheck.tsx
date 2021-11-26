@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { RootScreenNames, UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -13,7 +13,6 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
 export function NavigationIdentityCheck(): JSX.Element {
-  const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('Navigation', undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
 
@@ -32,50 +31,14 @@ export function NavigationIdentityCheck(): JSX.Element {
         onRightIconPress={undefined}
       />
       <StyledContainer>
-        <Row half>
-          <NavigationButton title={'Stepper'} onPress={() => navigate('IdentityCheck')} />
-        </Row>
-        <Row half>
-          <NavigationButton title={'Status'} onPress={() => navigate('IdentityCheckStatus')} />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'IdentityCheckStart'}
-            onPress={() => navigate('IdentityCheckStart')}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'SetName'}
-            onPress={() =>
-              navigate('SetName', {
-                email: 'jonh.doe@exmaple.com',
-                isNewsletterChecked: false,
-              })
-            }
-          />
-        </Row>
-        <Row half>
-          <NavigationButton title={'SetAddress'} onPress={() => navigate('IdentityCheckAddress')} />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'SetPostalCode'}
-            onPress={() => navigate('IdentityCheckPostalCode')}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'IdentityCheckEnd'}
-            onPress={() => navigate('IdentityCheckEnd')}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'IdentityCheckHonor'}
-            onPress={() => navigate('IdentityCheckHonor')}
-          />
-        </Row>
+        <LinkToComponent name="IdentityCheck" title="Stepper" />
+        <LinkToComponent name="IdentityCheckStatus" title="Status" />
+        <LinkToComponent name="IdentityCheckStart" />
+        <LinkToComponent name="SetName" />
+        <LinkToComponent name="IdentityCheckAddress" title="SetAddress" />
+        <LinkToComponent name="IdentityCheckPostalCode" title="SetPostalCode" />
+        <LinkToComponent name="IdentityCheckEnd" />
+        <LinkToComponent name="IdentityCheckHonor" />
         <Row half>
           <NavigationButton
             title={'Ineligible Educonnect Error'}
@@ -115,6 +78,23 @@ export function NavigationIdentityCheck(): JSX.Element {
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
+  )
+}
+
+interface LinkToComponentProps {
+  name: RootScreenNames
+  onPress?: () => void
+  title?: string
+}
+
+const LinkToComponent = ({ name, onPress, title }: LinkToComponentProps) => {
+  const { navigate } = useNavigation<UseNavigationType>()
+  const navigateToComponent = () => navigate(name)
+
+  return (
+    <Row half>
+      <NavigationButton title={title ?? name} onPress={onPress ?? navigateToComponent} />
+    </Row>
   )
 }
 

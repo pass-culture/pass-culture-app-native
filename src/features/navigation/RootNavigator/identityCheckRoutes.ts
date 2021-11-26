@@ -6,6 +6,7 @@ import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/Id
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
+import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SetPostalCode } from 'features/identityCheck/pages/profile/SetPostalCode'
 import { Status } from 'features/identityCheck/pages/profile/Status'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
@@ -14,6 +15,7 @@ import {
   IdentityCheckRootStackParamList,
 } from 'features/navigation/RootNavigator/types'
 
+// Try to keep those routes in the same order as the user flow
 export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[] = [
   {
     // debug route: in navigation component
@@ -21,11 +23,20 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: NavigationIdentityCheck,
     path: 'cheat-navigation-identity-check',
   },
+  // Stepper
   {
     name: 'IdentityCheck',
     component: IdentityCheckStepper,
     path: 'verification-identite',
     options: { title: t`Vérification d'identité` },
+    secure: true,
+  },
+  // Profile
+  {
+    name: 'SetName',
+    component: SetName,
+    path: 'creation-profil/nom-prenom',
+    options: { title: t`Nom/prénom - Formulaire` },
     secure: true,
   },
   {
@@ -49,6 +60,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     options: { title: t`Choix du status` },
     secure: true,
   },
+  // Identification
   {
     name: 'IdentityCheckStart',
     component: IdentityCheckStart,
@@ -70,6 +82,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     options: { title: t`Fin du parcours` },
     secure: true,
   },
+  // Confirmation
   {
     name: 'IdentityCheckHonor',
     component: IdentityCheckHonor,

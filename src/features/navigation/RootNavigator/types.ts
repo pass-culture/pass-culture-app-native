@@ -11,14 +11,19 @@ import { TabParamList, TabRouteName } from '../TabBar/types'
 export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink' | 'exclusivity'
 
 export type IdentityCheckRootStackParamList = {
-  IdentityCheckPostalCode: undefined
+  NavigationIdentityCheck: undefined
+  // Stepper
   IdentityCheck: undefined
-  IdentityCheckStart: undefined
-  IdentityCheckWebview: { identificationUrl: string }
+  // Profile
+  SetName: undefined
+  IdentityCheckPostalCode: undefined
   IdentityCheckAddress: undefined
   IdentityCheckStatus: undefined
-  NavigationIdentityCheck: undefined
+  // Identification
+  IdentityCheckStart: undefined
+  IdentityCheckWebview: { identificationUrl: string }
   IdentityCheckEnd: undefined
+  // Confirmation
   IdentityCheckHonor: undefined
 }
 
@@ -89,14 +94,7 @@ export type RootStackParamList = {
   SelectSchoolHome: { nextBeneficiaryValidationStep: BeneficiaryValidationStep | null | undefined }
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
   SetEmail: { preventCancellation?: boolean } | undefined
-  // TODO (LucasBeneston) : When SetName is active add { lastName: string, firstName: string } to SetPassword, SetBirthday and AcceptCgu
-  SetName: { email: string; isNewsletterChecked: boolean }
-  SetPassword: {
-    email: string
-    isNewsletterChecked: boolean
-    lastName?: string // TODO (LucasBeneston) : Remove optional when SetName is active and add for SetBirthday and AcceptCgu
-    firstName?: string // TODO (LucasBeneston) : Remove optional when SetName is active and add for SetBirthday and AcceptCgu
-  }
+  SetPassword: { email: string; isNewsletterChecked: boolean }
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: {
