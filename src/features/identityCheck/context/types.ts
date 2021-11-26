@@ -1,6 +1,7 @@
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { SuggestedCity } from 'libs/place'
- interface Name {
+
+interface Name {
   firstName: string
   lastName: string
 }
@@ -10,6 +11,8 @@ export interface IdentityCheckState {
   profile: {
     name: Name | null
     city: SuggestedCity | null
+    cityCode: string | null
+    postalCode: string | null
     address: string | null
     status: string | null
   }
@@ -27,4 +30,6 @@ export type Action =
   | { type: 'SET_STEP'; payload: IdentityCheckStep }
   | { type: 'SET_NAME'; payload: Name | null }
   | { type: 'SET_CITY'; payload: SuggestedCity | null }
+  | { type: 'SET_CITY_CODE'; payload: string | null }
+  | { type: 'SET_POSTAL_CODE'; payload: string | null }
   | { type: 'SET_ADDRESS'; payload: string | null }

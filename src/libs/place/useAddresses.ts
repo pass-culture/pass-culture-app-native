@@ -6,12 +6,15 @@ import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_ADDRESSES = 5 * 60 * 1000
 
-export const useAddresses = ({ query, limit, cityCode, postalCode }: BuildSearchAddressProps) =>
+export const useAddresses = ({
+  query,
+  limit,
+  cityCode,
+  postalCode,
+  enabled,
+}: BuildSearchAddressProps & { enabled: boolean }) =>
   useQuery<string[]>(
     [QueryKeys.ADDRESSES, query, cityCode, postalCode],
     () => fetchAddresses({ query, limit, cityCode, postalCode }),
-    {
-      staleTime: STALE_TIME_ADDRESSES,
-      enabled: query.length > 0,
-    }
+    { staleTime: STALE_TIME_ADDRESSES, enabled }
   )
