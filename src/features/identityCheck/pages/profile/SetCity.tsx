@@ -4,8 +4,8 @@ import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 
+import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
-import { CityOption } from 'features/identityCheck/atoms/CityOption'
 import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
@@ -56,8 +56,9 @@ export const SetCity = () => {
     // setErrorMessage(null)
   }
 
-  const onPostalCodeSelection = (city: SuggestedCity) => {
-    setSelectedCity(city)
+  const onPostalCodeSelection = (cityCode: string) => {
+    const city = cities.find((city: SuggestedCity) => city.code === cityCode)
+    setSelectedCity(city || null)
     Keyboard.dismiss()
   }
 
@@ -115,13 +116,13 @@ export const SetCity = () => {
               <InputError messageId={errorMessage} numberOfSpacesTop={2} visible />
             )} */}
             <Spacer.Column numberOfSpaces={2} />
-            {cities.map((option: SuggestedCity, index: number) => (
-              <CityOption
-                option={option}
-                selected={option.name === selectedCity?.name}
+            {cities.map((city: SuggestedCity, index: number) => (
+              <AddressOption
+                label={city.name}
+                selected={city.code === selectedCity?.code}
                 onPressOption={onPostalCodeSelection}
-                key={option.name}
-                {...accessibilityAndTestId(t`Proposition de ville ${index + 1} : ${option.name}`)}
+                optionKey={city.code}
+                {...accessibilityAndTestId(t`Proposition de ville ${index + 1} : ${city.name}`)}
               />
             ))}
           </ModalContent>

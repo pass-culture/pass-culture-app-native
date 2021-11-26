@@ -7,17 +7,18 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
-  onPressOption: (option: string) => void
-  option: string
+  onPressOption: (optionKey: string) => void
+  optionKey: string
+  label: string
   selected: boolean
 }
 
-export const AddressOption = ({ option, onPressOption, selected }: Props) => {
+export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
   return (
     <React.Fragment>
-      <StyledTouchableOpacity onPress={() => onPressOption(option)} activeOpacity={ACTIVE_OPACITY}>
+      <StyledTouchableOpacity onPress={() => onPressOption(optionKey)} activeOpacity={ACTIVE_OPACITY}>
         <TextContainer>
-          <StyledBody selected={selected}>{option}</StyledBody>
+          <StyledBody selected={selected}>{label}</StyledBody>
           {selected ? (
             <IconContainer>
               <Validate color={ColorsEnum.PRIMARY} />
