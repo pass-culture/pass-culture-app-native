@@ -2,7 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SetName } from 'features/auth/signup/SetName'
+import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
@@ -54,7 +54,7 @@ describe('<SetName/>', () => {
     await waitForExpect(() => {
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_NAME',
-        payload: {firstName, lastName },
+        payload: { firstName, lastName },
       })
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toBeCalledWith('IdentityCheckPostalCode')

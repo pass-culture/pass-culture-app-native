@@ -24,7 +24,6 @@ import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNum
 import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
-import { SetName } from 'features/auth/signup/SetName/SetName'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
@@ -365,12 +364,6 @@ export const routes: Route[] = [
     path: 'creation-compte/email',
     deeplinkPaths: ['set-email'],
     options: { title: t`Email - Formulaire` },
-  },
-  {
-    name: 'SetName',
-    component: SetName,
-    path: 'creation-compte/nom-prenom',
-    options: { title: t`Nom prénom - Formulaire` },
   },
   {
     name: 'SetPassword',
