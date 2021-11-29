@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
-import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -34,9 +33,9 @@ export const SetName = () => {
   return (
     <PageWithHeader
       title={t`Profil`}
+      fixedTopChildren={<CenteredTitle title={t`Comment t'appelles-tu ?`} />}
       scrollChildren={
-        <ModalContent>
-          <CenteredTitle title={t`Comment t'appelles-tu ?`} />
+        <React.Fragment>
           <TextInput
             label={t`Prénom`}
             value={firstName}
@@ -63,7 +62,7 @@ export const SetName = () => {
             messageId={t`Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
             numberOfSpacesTop={2}
           />
-        </ModalContent>
+        </React.Fragment>
       }
       fixedBottomChildren={
         <ButtonPrimary title={t`Continuer`} onPress={submitName} disabled={disabled} />

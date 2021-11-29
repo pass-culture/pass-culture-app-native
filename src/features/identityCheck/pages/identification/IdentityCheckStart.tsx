@@ -1,9 +1,9 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { DMSInformation } from 'features/identityCheck/atoms/DMSInformation'
 import { IdentityVerificationText } from 'features/identityCheck/atoms/IdentityVerificationText'
-import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -19,14 +19,14 @@ export const IdentityCheckStart = () => {
       <PageWithHeader
         title={t`Identification`}
         scrollChildren={
-          <ModalContent centered>
+          <Container>
             <Spacer.Column numberOfSpaces={10} />
             <BicolorIdCardWithMagnifyingClass size={getSpacing(36)} />
             <Spacer.Column numberOfSpaces={6} />
             <IdentityVerificationText />
             <Spacer.Column numberOfSpaces={6} />
             <DMSInformation />
-          </ModalContent>
+          </Container>
         }
         fixedBottomChildren={
           <ButtonPrimary onPress={showModal} title={t`Commencer la vérification`} />
@@ -36,3 +36,5 @@ export const IdentityCheckStart = () => {
     </React.Fragment>
   )
 }
+
+const Container = styled.View({ alignItems: 'center' })

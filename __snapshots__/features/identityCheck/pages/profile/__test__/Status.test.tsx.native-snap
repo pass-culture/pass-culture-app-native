@@ -1,7 +1,762 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Status/> should render correctly with no Collégien status 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "display": "flex",
+        "flexBasis": 0,
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    customHeight={16}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 64,
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 18,
+            "lineHeight": 22,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Profil
+    </Text>
+    <View
+      accessibilityLabel="Revenir en arrière"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "left": 12,
+          "opacity": 1,
+          "position": "absolute",
+        }
+      }
+      testID="Revenir en arrière"
+    >
+      <View
+        height={32}
+        testID="icon-back"
+        width={32}
+      >
+        <Text>
+          icon-back-SVG-Mock
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View
+      onLayout={[Function]}
+      style={
+        Array [
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+            },
+          ],
+          Object {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
+              "flexDirection": "column",
+              "height": "100%",
+              "paddingTop": 12,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "maxWidth": 500,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "paddingVertical": 20,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Sélectionne ton statut
+            </Text>
+          </View>
+          <RCTScrollView
+            bottomChildrenViewHeight={0}
+            contentContainerStyle={
+              Object {
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "paddingBottom": 0,
+                "paddingHorizontal": 20,
+              }
+            }
+            keyboardDismissMode="on-drag"
+            keyboardShouldPersistTaps="handled"
+            onContentSizeChange={[Function]}
+            onLayout={[Function]}
+            scrollEnabled={false}
+            style={
+              Array [
+                Object {},
+              ]
+            }
+          >
+            <View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#151515"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Lycéen
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#151515"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Étudiant
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#151515"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Employé
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#151515"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Apprenti
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#151515"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Alternant
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#151515"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Volontaire
+                  </Text>
+                  <Text
+                    color="#626262"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#626262",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    En service civique
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#151515"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Inactif
+                  </Text>
+                  <Text
+                    color="#626262"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#626262",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    En incapacité de travailler
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#151515"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Chômeur
+                  </Text>
+                  <Text
+                    color="#626262"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#626262",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    En recherche d'emploi
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </RCTScrollView>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "bottom": 0,
+                  "left": 0,
+                  "paddingBottom": 20,
+                  "paddingHorizontal": 20,
+                  "paddingTop": 12,
+                  "position": "absolute",
+                  "right": 0,
+                },
+              ]
+            }
+            testID="fixed-bottom-children"
+          >
+            <View
+              accessibilityLabel="Choisis ton statut"
+              accessible={true}
+              collapsable={false}
+              focusable={false}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#f5f5f5",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="Choisis ton statut"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#626262",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+                textColor="#626262"
+              >
+                Choisis ton statut
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
   <View
     height="100%"
     style={
@@ -28,794 +783,17 @@ Array [
         undefined-SVG-Mock
       </Text>
     </View>
-  </View>,
+  </View>
   <View
-    customHeight={16}
+    customHeight={8}
     enable={true}
     style={
       Array [
         Object {
-          "height": 16,
+          "height": 8,
         },
       ]
     }
-  />,
-  <View
-    style={
-      Array [
-        Object {
-          "paddingBottom": 16,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 16,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
-            "zIndex": 1,
-          },
-        ]
-      }
-    >
-      <View
-        accessibilityLabel="Revenir en arrière"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "flex-start",
-            "flexBasis": 0,
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-            "marginLeft": -4,
-            "opacity": 1,
-          }
-        }
-        testID="Revenir en arrière"
-      >
-        <View
-          height={32}
-          testID="leftIcon"
-          width={32}
-        >
-          <Text>
-            leftIcon-SVG-Mock
-          </Text>
-        </View>
-      </View>
-      <Text
-        customStyle={
-          Object {
-            "color": "#ffffff",
-          }
-        }
-        numberOfLines={2}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "flexBasis": 0,
-              "flexGrow": 0.8,
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 18,
-              "lineHeight": 22,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Profil
-      </Text>
-      <View
-        accessibilityLabel="rightIconButton"
-        accessible={true}
-        collapsable={false}
-        focusable={false}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "flex-end",
-            "flexBasis": 0,
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-            "marginRight": -4,
-            "opacity": 1,
-          }
-        }
-        testID="rightIconButton"
-      />
-    </View>
-  </View>,
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#ffffff",
-          "borderTopLeftRadius": 16,
-          "borderTopRightRadius": 16,
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "flex-end",
-          "overflow": "hidden",
-        },
-      ]
-    }
-  >
-    <View
-      onLayout={[Function]}
-      style={
-        Object {
-          "paddingBottom": 0,
-        }
-      }
-    >
-      <RCTScrollView
-        contentContainerStyle={
-          Object {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-            "paddingHorizontal": 24,
-          }
-        }
-        keyboardDismissMode="on-drag"
-        keyboardShouldPersistTaps="handled"
-        style={
-          Array [
-            Object {
-              "height": "100%",
-            },
-          ]
-        }
-      >
-        <View>
-          <View
-            centered={false}
-            paddingBottom={80}
-            style={
-              Array [
-                Object {
-                  "height": "100%",
-                  "maxWidth": 500,
-                  "paddingBottom": 80,
-                  "width": "100%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "paddingVertical": 20,
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 18,
-                      "lineHeight": 22,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                Sélectionne ton statut
-              </Text>
-            </View>
-            <View
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderColor": "#c7c7cc",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "marginBottom": 16,
-                  "opacity": 1,
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  color="#151515"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Lycéen
-                </Text>
-              </View>
-            </View>
-            <View
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderColor": "#c7c7cc",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "marginBottom": 16,
-                  "opacity": 1,
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  color="#151515"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Étudiant
-                </Text>
-              </View>
-            </View>
-            <View
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderColor": "#c7c7cc",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "marginBottom": 16,
-                  "opacity": 1,
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  color="#151515"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Employé
-                </Text>
-              </View>
-            </View>
-            <View
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderColor": "#c7c7cc",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "marginBottom": 16,
-                  "opacity": 1,
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  color="#151515"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Apprenti
-                </Text>
-              </View>
-            </View>
-            <View
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderColor": "#c7c7cc",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "marginBottom": 16,
-                  "opacity": 1,
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  color="#151515"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Alternant
-                </Text>
-              </View>
-            </View>
-            <View
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderColor": "#c7c7cc",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "marginBottom": 16,
-                  "opacity": 1,
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  color="#151515"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Volontaire
-                </Text>
-                <Text
-                  color="#626262"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#626262",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                >
-                  En service civique
-                </Text>
-              </View>
-            </View>
-            <View
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderColor": "#c7c7cc",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "marginBottom": 16,
-                  "opacity": 1,
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  color="#151515"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Inactif
-                </Text>
-                <Text
-                  color="#626262"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#626262",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                >
-                  En incapacité de travailler
-                </Text>
-              </View>
-            </View>
-            <View
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "borderColor": "#c7c7cc",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "marginBottom": 16,
-                  "opacity": 1,
-                  "width": "100%",
-                }
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  color="#151515"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Chômeur
-                </Text>
-                <Text
-                  color="#626262"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#626262",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                >
-                  En recherche d'emploi
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
-            }
-          />
-        </View>
-      </RCTScrollView>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "alignSelf": "center",
-            "bottom": 24,
-            "position": "absolute",
-            "width": 702,
-          },
-        ]
-      }
-    >
-      <View
-        accessibilityLabel="Choisis ton statut"
-        accessible={true}
-        collapsable={false}
-        focusable={false}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#f5f5f5",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Choisis ton statut"
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#626262",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 5,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#626262"
-        >
-          Choisis ton statut
-        </Text>
-      </View>
-      <View
-        customHeight={8}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
-    </View>
-  </View>,
-]
+  />
+</View>
 `;

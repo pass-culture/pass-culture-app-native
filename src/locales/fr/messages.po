@@ -467,7 +467,7 @@ msgstr "Colle ton lien ici ..."
 msgid "Commencer la vérification"
 msgstr "Commencer la vérification"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Comment t'appelles-tu ?"
 msgstr "Comment t'appelles-tu ?"
 
@@ -595,13 +595,13 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
-#: src/features/auth/signup/SetName/SetName.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 #: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
@@ -949,7 +949,7 @@ msgstr "Entrée pour le jour de la date de naissance"
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Entrée pour le nom"
 msgstr "Entrée pour le nom"
 
@@ -957,7 +957,7 @@ msgstr "Entrée pour le nom"
 msgid "Entrée pour le numéro de téléphone"
 msgstr "Entrée pour le numéro de téléphone"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Entrée pour le prénom"
 msgstr "Entrée pour le prénom"
 
@@ -1579,7 +1579,7 @@ msgstr "Ne pas annuler"
 msgid "Ne pas archiver"
 msgstr "Ne pas archiver"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Nom"
 msgstr "Nom"
 
@@ -1587,9 +1587,9 @@ msgstr "Nom"
 msgid "Nom de la réservation"
 msgstr "Nom de la réservation"
 
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Nom prénom - Formulaire"
-msgstr "Nom prénom - Formulaire"
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Nom/prénom - Formulaire"
+msgstr "Nom/prénom - Formulaire"
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Nombre de place"
@@ -1898,6 +1898,7 @@ msgstr "Problèmes pour ouvrir un lien ?"
 
 #: src/features/auth/signup/SetName/SetName.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 #: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
@@ -1916,7 +1917,7 @@ msgstr "Proposition d'adresse {0} : {option}"
 msgid "Proximité géographique"
 msgstr "Proximité géographique"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Prénom"
 msgstr "Prénom"
 
@@ -2356,11 +2357,11 @@ msgstr "Ton mot de passe a été modifié !"
 msgid "Ton mot de passe actuel"
 msgstr "Ton mot de passe actuel"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton nom"
 msgstr "Ton nom"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 msgstr "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 
@@ -2368,11 +2369,11 @@ msgstr "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton prénom"
 msgstr "Ton prénom"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux."
 msgstr "Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux."
 

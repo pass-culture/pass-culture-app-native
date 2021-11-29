@@ -1,33 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Status/> should render correctly with no Collégien status 1`] = `
-Array [
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "bottom": "0px",
-        "height": "100%",
-        "left": "0px",
-        "position": "absolute",
-        "right": "0px",
-        "top": "0px",
-        "width": "100%",
-        "zIndex": -1,
-      }
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitBoxDirection": "normal",
+      "WebkitBoxFlex": 1,
+      "WebkitBoxOrient": "vertical",
+      "WebkitFlexBasis": "0px",
+      "WebkitFlexDirection": "column",
+      "WebkitFlexGrow": 1,
+      "WebkitFlexShrink": 1,
+      "display": "flex",
+      "flexBasis": "0px",
+      "flexDirection": "column",
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "msFlexDirection": "column",
+      "msFlexNegative": 1,
+      "msFlexPositive": 1,
+      "msFlexPreferredSize": "0px",
     }
-  >
-    <div
-      className="css-view-1dbjc4n"
-    >
-      <div
-        className="css-text-901oao"
-        dir="auto"
-      >
-        undefined-SVG-Mock
-      </div>
-    </div>
-  </div>,
+  }
+>
   <div
     className="css-view-1dbjc4n"
     style={
@@ -35,213 +31,121 @@ Array [
         "height": "16px",
       }
     }
-  />,
+  />
   <div
     className="css-view-1dbjc4n"
     style={
       Object {
-        "paddingBottom": "16px",
-        "paddingLeft": "16px",
-        "paddingRight": "16px",
-        "paddingTop": "16px",
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitBoxPack": "center",
+        "WebkitFlexDirection": "row",
+        "WebkitJustifyContent": "center",
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": "64px",
+        "justifyContent": "center",
+        "msFlexAlign": "center",
+        "msFlexDirection": "row",
+        "msFlexPack": "center",
       }
     }
   >
     <div
-      className="css-view-1dbjc4n"
+      className="css-text-901oao"
+      dir="auto"
       style={
         Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "horizontal",
-          "WebkitBoxPack": "justify",
-          "WebkitFlexDirection": "row",
-          "WebkitJustifyContent": "space-between",
-          "alignItems": "center",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "msFlexAlign": "center",
-          "msFlexDirection": "row",
-          "msFlexPack": "justify",
-          "width": "100%",
-          "zIndex": 1,
+          "WebkitBoxFlex": 1,
+          "WebkitFlexBasis": "0px",
+          "WebkitFlexGrow": 1,
+          "WebkitFlexShrink": 1,
+          "color": "rgba(255,255,255,1.00)",
+          "flexBasis": "0px",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": "18px",
+          "lineHeight": "22px",
+          "msFlexNegative": 1,
+          "msFlexPositive": 1,
+          "msFlexPreferredSize": "0px",
+          "textAlign": "center",
         }
       }
     >
-      <div
-        aria-label="Revenir en arrière"
-        className="css-view-1dbjc4n"
-        data-testid="Revenir en arrière"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "flex-start",
-            "WebkitBoxAlign": "start",
-            "WebkitBoxFlex": 0.1,
-            "WebkitFlexBasis": "0px",
-            "WebkitFlexGrow": 0.1,
-            "WebkitFlexShrink": 1,
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "flex-start",
-            "cursor": "pointer",
-            "flexBasis": "0px",
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-            "marginLeft": "-4px",
-            "msFlexAlign": "start",
-            "msFlexNegative": 1,
-            "msFlexPositive": 0.1,
-            "msFlexPreferredSize": "0px",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
+      Profil
+    </div>
+    <div
+      aria-label="Revenir en arrière"
+      className="css-view-1dbjc4n"
+      data-testid="Revenir en arrière"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      style={
+        Object {
+          "MozTransitionProperty": "opacity",
+          "MozUserSelect": "none",
+          "WebkitTransitionDuration": "0s",
+          "WebkitTransitionProperty": "opacity",
+          "WebkitUserSelect": "none",
+          "cursor": "pointer",
+          "left": "12px",
+          "msTouchAction": "manipulation",
+          "msUserSelect": "none",
+          "position": "absolute",
+          "touchAction": "manipulation",
+          "transitionDuration": "0s",
+          "transitionProperty": "opacity",
+          "userSelect": "none",
         }
-        tabIndex="0"
+      }
+      tabIndex="0"
+    >
+      <div
+        className="css-view-1dbjc4n"
+        data-testid="icon-back"
       >
         <div
-          className="css-view-1dbjc4n"
-          data-testid="leftIcon"
+          className="css-text-901oao"
+          dir="auto"
         >
-          <div
-            className="css-text-901oao"
-            dir="auto"
-          >
-            leftIcon-SVG-Mock
-          </div>
+          icon-back-SVG-Mock
         </div>
       </div>
-      <div
-        className="css-text-901oao css-textMultiLine-cens5h"
-        dir="auto"
-        style={
-          Object {
-            "WebkitBoxFlex": 0.8,
-            "WebkitFlexBasis": "0px",
-            "WebkitFlexGrow": 0.8,
-            "WebkitFlexShrink": 1,
-            "WebkitLineClamp": 2,
-            "color": "rgba(255,255,255,1.00)",
-            "flexBasis": "0px",
-            "flexGrow": 0.8,
-            "flexShrink": 1,
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": "18px",
-            "lineHeight": "22px",
-            "msFlexNegative": 1,
-            "msFlexPositive": 0.8,
-            "msFlexPreferredSize": "0px",
-            "textAlign": "center",
-          }
-        }
-      >
-        Profil
-      </div>
-      <div
-        aria-label="rightIconButton"
-        className="css-view-1dbjc4n"
-        data-testid="rightIconButton"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "flex-end",
-            "WebkitBoxAlign": "end",
-            "WebkitBoxFlex": 0.1,
-            "WebkitFlexBasis": "0px",
-            "WebkitFlexGrow": 0.1,
-            "WebkitFlexShrink": 1,
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "flex-end",
-            "cursor": "pointer",
-            "flexBasis": "0px",
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-            "marginRight": "-4px",
-            "msFlexAlign": "end",
-            "msFlexNegative": 1,
-            "msFlexPositive": 0.1,
-            "msFlexPreferredSize": "0px",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      />
     </div>
-  </div>,
+  </div>
   <div
     className="css-view-1dbjc4n"
     style={
       Object {
         "WebkitBoxFlex": 1,
-        "WebkitBoxPack": "end",
         "WebkitFlexBasis": "0px",
         "WebkitFlexGrow": 1,
         "WebkitFlexShrink": 1,
-        "WebkitJustifyContent": "flex-end",
-        "backgroundColor": "rgba(255,255,255,1.00)",
-        "borderTopLeftRadius": "16px",
-        "borderTopRightRadius": "16px",
         "flexBasis": "0px",
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "flex-end",
         "msFlexNegative": 1,
-        "msFlexPack": "end",
         "msFlexPositive": 1,
         "msFlexPreferredSize": "0px",
-        "overflowX": "hidden",
-        "overflowY": "hidden",
       }
     }
   >
     <div
       className="css-view-1dbjc4n"
-      onScroll={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      onWheel={[Function]}
       style={
         Object {
-          "WebkitBoxDirection": "normal",
           "WebkitBoxFlex": 1,
-          "WebkitBoxOrient": "vertical",
-          "WebkitFlexDirection": "column",
+          "WebkitFlexBasis": "0px",
           "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "WebkitOverflowScrolling": "touch",
-          "WebkitTransform": "translateZ(0px)",
-          "flexDirection": "column",
+          "flexBasis": "0px",
           "flexGrow": 1,
-          "flexShrink": 1,
-          "height": "100%",
-          "msFlexDirection": "column",
-          "msFlexNegative": 1,
           "msFlexPositive": 1,
-          "overflowX": "hidden",
-          "overflowY": "auto",
-          "transform": "translateZ(0px)",
+          "msFlexPreferredSize": "0px",
         }
       }
     >
@@ -252,23 +156,18 @@ Array [
             "WebkitAlignItems": "center",
             "WebkitBoxAlign": "center",
             "WebkitBoxDirection": "normal",
-            "WebkitBoxFlex": 1,
             "WebkitBoxOrient": "vertical",
-            "WebkitBoxPack": "justify",
             "WebkitFlexDirection": "column",
-            "WebkitFlexGrow": 1,
-            "WebkitJustifyContent": "space-between",
             "alignItems": "center",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderTopLeftRadius": "22px",
+            "borderTopRightRadius": "22px",
             "display": "flex",
             "flexDirection": "column",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
+            "height": "100%",
             "msFlexAlign": "center",
             "msFlexDirection": "column",
-            "msFlexPack": "justify",
-            "msFlexPositive": 1,
-            "paddingLeft": "24px",
-            "paddingRight": "24px",
+            "paddingTop": "12px",
           }
         }
       >
@@ -276,9 +175,17 @@ Array [
           className="css-view-1dbjc4n"
           style={
             Object {
-              "height": "100%",
+              "WebkitBoxFlex": 1,
+              "WebkitFlexBasis": "0px",
+              "WebkitFlexGrow": 1,
+              "WebkitFlexShrink": 1,
+              "flexBasis": "0px",
+              "flexGrow": 1,
+              "flexShrink": 1,
               "maxWidth": "500px",
-              "paddingBottom": "80px",
+              "msFlexNegative": 1,
+              "msFlexPositive": 1,
+              "msFlexPreferredSize": "0px",
               "width": "100%",
             }
           }
@@ -315,849 +222,896 @@ Array [
           </div>
           <div
             className="css-view-1dbjc4n"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
+            onScroll={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            onWheel={[Function]}
             style={
               Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
-                "alignItems": "center",
-                "borderBottomColor": "rgba(199,199,204,1.00)",
-                "borderBottomLeftRadius": "24px",
-                "borderBottomRightRadius": "24px",
-                "borderBottomWidth": "1px",
-                "borderLeftColor": "rgba(199,199,204,1.00)",
-                "borderLeftWidth": "1px",
-                "borderRightColor": "rgba(199,199,204,1.00)",
-                "borderRightWidth": "1px",
-                "borderTopColor": "rgba(199,199,204,1.00)",
-                "borderTopLeftRadius": "24px",
-                "borderTopRightRadius": "24px",
-                "borderTopWidth": "1px",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "height": "48px",
-                "marginBottom": "16px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "none",
-                "width": "100%",
+                "WebkitBoxFlex": 1,
+                "WebkitBoxOrient": "vertical",
+                "WebkitFlexDirection": "column",
+                "WebkitFlexGrow": 1,
+                "WebkitFlexShrink": 1,
+                "WebkitOverflowScrolling": "touch",
+                "WebkitTransform": "translateZ(0px)",
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "msFlexDirection": "column",
+                "msFlexNegative": 1,
+                "msFlexPositive": 1,
+                "msTouchAction": "none",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "touchAction": "none",
+                "transform": "translateZ(0px)",
               }
             }
-            tabIndex="0"
           >
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
                   "WebkitBoxFlex": 1,
-                  "WebkitFlexBasis": "0px",
+                  "WebkitBoxOrient": "vertical",
+                  "WebkitFlexDirection": "column",
                   "WebkitFlexGrow": 1,
-                  "WebkitFlexShrink": 1,
-                  "alignItems": "center",
-                  "flexBasis": "0px",
+                  "flexDirection": "column",
                   "flexGrow": 1,
-                  "flexShrink": 1,
-                  "msFlexAlign": "center",
-                  "msFlexNegative": 1,
+                  "msFlexDirection": "column",
                   "msFlexPositive": 1,
-                  "msFlexPreferredSize": "0px",
+                  "paddingBottom": "0px",
+                  "paddingLeft": "20px",
+                  "paddingRight": "20px",
                 }
               }
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
                 style={
                   Object {
-                    "color": "rgba(21,21,21,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "none",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "none",
+                    "alignItems": "center",
+                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomLeftRadius": "24px",
+                    "borderBottomRightRadius": "24px",
+                    "borderBottomWidth": "1px",
+                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftWidth": "1px",
+                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightWidth": "1px",
+                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopLeftRadius": "24px",
+                    "borderTopRightRadius": "24px",
+                    "borderTopWidth": "1px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "height": "48px",
+                    "marginBottom": "16px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "none",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "none",
+                    "width": "100%",
                   }
                 }
+                tabIndex="0"
               >
-                Lycéen
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "alignItems": "center",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "msFlexAlign": "center",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(21,21,21,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Lycéen
+                  </div>
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "none",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "none",
+                    "alignItems": "center",
+                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomLeftRadius": "24px",
+                    "borderBottomRightRadius": "24px",
+                    "borderBottomWidth": "1px",
+                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftWidth": "1px",
+                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightWidth": "1px",
+                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopLeftRadius": "24px",
+                    "borderTopRightRadius": "24px",
+                    "borderTopWidth": "1px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "height": "48px",
+                    "marginBottom": "16px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "none",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "none",
+                    "width": "100%",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "alignItems": "center",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "msFlexAlign": "center",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(21,21,21,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Étudiant
+                  </div>
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "none",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "none",
+                    "alignItems": "center",
+                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomLeftRadius": "24px",
+                    "borderBottomRightRadius": "24px",
+                    "borderBottomWidth": "1px",
+                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftWidth": "1px",
+                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightWidth": "1px",
+                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopLeftRadius": "24px",
+                    "borderTopRightRadius": "24px",
+                    "borderTopWidth": "1px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "height": "48px",
+                    "marginBottom": "16px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "none",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "none",
+                    "width": "100%",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "alignItems": "center",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "msFlexAlign": "center",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(21,21,21,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Employé
+                  </div>
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "none",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "none",
+                    "alignItems": "center",
+                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomLeftRadius": "24px",
+                    "borderBottomRightRadius": "24px",
+                    "borderBottomWidth": "1px",
+                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftWidth": "1px",
+                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightWidth": "1px",
+                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopLeftRadius": "24px",
+                    "borderTopRightRadius": "24px",
+                    "borderTopWidth": "1px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "height": "48px",
+                    "marginBottom": "16px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "none",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "none",
+                    "width": "100%",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "alignItems": "center",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "msFlexAlign": "center",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(21,21,21,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Apprenti
+                  </div>
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "none",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "none",
+                    "alignItems": "center",
+                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomLeftRadius": "24px",
+                    "borderBottomRightRadius": "24px",
+                    "borderBottomWidth": "1px",
+                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftWidth": "1px",
+                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightWidth": "1px",
+                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopLeftRadius": "24px",
+                    "borderTopRightRadius": "24px",
+                    "borderTopWidth": "1px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "height": "48px",
+                    "marginBottom": "16px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "none",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "none",
+                    "width": "100%",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "alignItems": "center",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "msFlexAlign": "center",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(21,21,21,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Alternant
+                  </div>
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "none",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "none",
+                    "alignItems": "center",
+                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomLeftRadius": "24px",
+                    "borderBottomRightRadius": "24px",
+                    "borderBottomWidth": "1px",
+                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftWidth": "1px",
+                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightWidth": "1px",
+                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopLeftRadius": "24px",
+                    "borderTopRightRadius": "24px",
+                    "borderTopWidth": "1px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "height": "48px",
+                    "marginBottom": "16px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "none",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "none",
+                    "width": "100%",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "alignItems": "center",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "msFlexAlign": "center",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(21,21,21,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Volontaire
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(98,98,98,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    En service civique
+                  </div>
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "none",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "none",
+                    "alignItems": "center",
+                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomLeftRadius": "24px",
+                    "borderBottomRightRadius": "24px",
+                    "borderBottomWidth": "1px",
+                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftWidth": "1px",
+                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightWidth": "1px",
+                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopLeftRadius": "24px",
+                    "borderTopRightRadius": "24px",
+                    "borderTopWidth": "1px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "height": "48px",
+                    "marginBottom": "16px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "none",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "none",
+                    "width": "100%",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "alignItems": "center",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "msFlexAlign": "center",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(21,21,21,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Inactif
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(98,98,98,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    En incapacité de travailler
+                  </div>
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "none",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "none",
+                    "alignItems": "center",
+                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomLeftRadius": "24px",
+                    "borderBottomRightRadius": "24px",
+                    "borderBottomWidth": "1px",
+                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftWidth": "1px",
+                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightWidth": "1px",
+                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopLeftRadius": "24px",
+                    "borderTopRightRadius": "24px",
+                    "borderTopWidth": "1px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "height": "48px",
+                    "marginBottom": "16px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "none",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "none",
+                    "width": "100%",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "alignItems": "center",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "msFlexAlign": "center",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(21,21,21,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Chômeur
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(98,98,98,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    En recherche d'emploi
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div
             className="css-view-1dbjc4n"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
+            data-testid="fixed-bottom-children"
             style={
               Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
-                "alignItems": "center",
-                "borderBottomColor": "rgba(199,199,204,1.00)",
-                "borderBottomLeftRadius": "24px",
-                "borderBottomRightRadius": "24px",
-                "borderBottomWidth": "1px",
-                "borderLeftColor": "rgba(199,199,204,1.00)",
-                "borderLeftWidth": "1px",
-                "borderRightColor": "rgba(199,199,204,1.00)",
-                "borderRightWidth": "1px",
-                "borderTopColor": "rgba(199,199,204,1.00)",
-                "borderTopLeftRadius": "24px",
-                "borderTopRightRadius": "24px",
-                "borderTopWidth": "1px",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "height": "48px",
-                "marginBottom": "16px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "none",
-                "width": "100%",
+                "backgroundColor": "rgba(255,255,255,1.00)",
+                "bottom": "0px",
+                "left": "0px",
+                "paddingBottom": "20px",
+                "paddingLeft": "20px",
+                "paddingRight": "20px",
+                "paddingTop": "12px",
+                "position": "absolute",
+                "right": "0px",
               }
             }
-            tabIndex="0"
           >
             <div
+              aria-label="Choisis ton statut"
               className="css-view-1dbjc4n"
+              data-testid="Choisis ton statut"
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onKeyDown={[Function]}
               style={
                 Object {
+                  "MozTransitionProperty": "opacity",
+                  "MozUserSelect": "none",
                   "WebkitAlignItems": "center",
                   "WebkitBoxAlign": "center",
-                  "WebkitBoxFlex": 1,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
-                  "WebkitFlexShrink": 1,
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitBoxPack": "center",
+                  "WebkitFlexDirection": "row",
+                  "WebkitJustifyContent": "center",
+                  "WebkitTransitionDuration": "0s",
+                  "WebkitTransitionProperty": "opacity",
+                  "WebkitUserSelect": "none",
                   "alignItems": "center",
-                  "flexBasis": "0px",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "backgroundColor": "rgba(245,245,245,1.00)",
+                  "borderBottomLeftRadius": "24px",
+                  "borderBottomRightRadius": "24px",
+                  "borderBottomWidth": "0px",
+                  "borderLeftWidth": "0px",
+                  "borderRightWidth": "0px",
+                  "borderTopLeftRadius": "24px",
+                  "borderTopRightRadius": "24px",
+                  "borderTopWidth": "0px",
+                  "cursor": "pointer",
+                  "flexDirection": "row",
+                  "height": "40px",
+                  "justifyContent": "center",
+                  "maxWidth": "500px",
                   "msFlexAlign": "center",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 1,
-                  "msFlexPreferredSize": "0px",
+                  "msFlexDirection": "row",
+                  "msFlexPack": "center",
+                  "msTouchAction": "manipulation",
+                  "msUserSelect": "none",
+                  "paddingBottom": "2px",
+                  "paddingLeft": "2px",
+                  "paddingRight": "2px",
+                  "paddingTop": "2px",
+                  "touchAction": "manipulation",
+                  "transitionDuration": "0s",
+                  "transitionProperty": "opacity",
+                  "userSelect": "none",
+                  "width": "100%",
                 }
               }
+              tabIndex="0"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(21,21,21,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                  }
-                }
-              >
-                Étudiant
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
-                "alignItems": "center",
-                "borderBottomColor": "rgba(199,199,204,1.00)",
-                "borderBottomLeftRadius": "24px",
-                "borderBottomRightRadius": "24px",
-                "borderBottomWidth": "1px",
-                "borderLeftColor": "rgba(199,199,204,1.00)",
-                "borderLeftWidth": "1px",
-                "borderRightColor": "rgba(199,199,204,1.00)",
-                "borderRightWidth": "1px",
-                "borderTopColor": "rgba(199,199,204,1.00)",
-                "borderTopLeftRadius": "24px",
-                "borderTopRightRadius": "24px",
-                "borderTopWidth": "1px",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "height": "48px",
-                "marginBottom": "16px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "none",
-                "width": "100%",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxFlex": 1,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
-                  "WebkitFlexShrink": 1,
-                  "alignItems": "center",
-                  "flexBasis": "0px",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "msFlexAlign": "center",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 1,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(21,21,21,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                  }
-                }
-              >
-                Employé
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
-                "alignItems": "center",
-                "borderBottomColor": "rgba(199,199,204,1.00)",
-                "borderBottomLeftRadius": "24px",
-                "borderBottomRightRadius": "24px",
-                "borderBottomWidth": "1px",
-                "borderLeftColor": "rgba(199,199,204,1.00)",
-                "borderLeftWidth": "1px",
-                "borderRightColor": "rgba(199,199,204,1.00)",
-                "borderRightWidth": "1px",
-                "borderTopColor": "rgba(199,199,204,1.00)",
-                "borderTopLeftRadius": "24px",
-                "borderTopRightRadius": "24px",
-                "borderTopWidth": "1px",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "height": "48px",
-                "marginBottom": "16px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "none",
-                "width": "100%",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxFlex": 1,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
-                  "WebkitFlexShrink": 1,
-                  "alignItems": "center",
-                  "flexBasis": "0px",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "msFlexAlign": "center",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 1,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(21,21,21,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                  }
-                }
-              >
-                Apprenti
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
-                "alignItems": "center",
-                "borderBottomColor": "rgba(199,199,204,1.00)",
-                "borderBottomLeftRadius": "24px",
-                "borderBottomRightRadius": "24px",
-                "borderBottomWidth": "1px",
-                "borderLeftColor": "rgba(199,199,204,1.00)",
-                "borderLeftWidth": "1px",
-                "borderRightColor": "rgba(199,199,204,1.00)",
-                "borderRightWidth": "1px",
-                "borderTopColor": "rgba(199,199,204,1.00)",
-                "borderTopLeftRadius": "24px",
-                "borderTopRightRadius": "24px",
-                "borderTopWidth": "1px",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "height": "48px",
-                "marginBottom": "16px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "none",
-                "width": "100%",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxFlex": 1,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
-                  "WebkitFlexShrink": 1,
-                  "alignItems": "center",
-                  "flexBasis": "0px",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "msFlexAlign": "center",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 1,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(21,21,21,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                  }
-                }
-              >
-                Alternant
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
-                "alignItems": "center",
-                "borderBottomColor": "rgba(199,199,204,1.00)",
-                "borderBottomLeftRadius": "24px",
-                "borderBottomRightRadius": "24px",
-                "borderBottomWidth": "1px",
-                "borderLeftColor": "rgba(199,199,204,1.00)",
-                "borderLeftWidth": "1px",
-                "borderRightColor": "rgba(199,199,204,1.00)",
-                "borderRightWidth": "1px",
-                "borderTopColor": "rgba(199,199,204,1.00)",
-                "borderTopLeftRadius": "24px",
-                "borderTopRightRadius": "24px",
-                "borderTopWidth": "1px",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "height": "48px",
-                "marginBottom": "16px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "none",
-                "width": "100%",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxFlex": 1,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
-                  "WebkitFlexShrink": 1,
-                  "alignItems": "center",
-                  "flexBasis": "0px",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "msFlexAlign": "center",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 1,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(21,21,21,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                  }
-                }
-              >
-                Volontaire
-              </div>
-              <div
-                className="css-text-901oao"
+                className="css-text-901oao css-textOneLine-vcwn7f"
                 dir="auto"
                 style={
                   Object {
                     "color": "rgba(98,98,98,1.00)",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                  }
-                }
-              >
-                En service civique
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
-                "alignItems": "center",
-                "borderBottomColor": "rgba(199,199,204,1.00)",
-                "borderBottomLeftRadius": "24px",
-                "borderBottomRightRadius": "24px",
-                "borderBottomWidth": "1px",
-                "borderLeftColor": "rgba(199,199,204,1.00)",
-                "borderLeftWidth": "1px",
-                "borderRightColor": "rgba(199,199,204,1.00)",
-                "borderRightWidth": "1px",
-                "borderTopColor": "rgba(199,199,204,1.00)",
-                "borderTopLeftRadius": "24px",
-                "borderTopRightRadius": "24px",
-                "borderTopWidth": "1px",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "height": "48px",
-                "marginBottom": "16px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "none",
-                "width": "100%",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxFlex": 1,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
-                  "WebkitFlexShrink": 1,
-                  "alignItems": "center",
-                  "flexBasis": "0px",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "msFlexAlign": "center",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 1,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(21,21,21,1.00)",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": "15px",
                     "lineHeight": "20px",
+                    "marginLeft": "5px",
+                    "maxWidth": "100%",
                   }
                 }
               >
-                Inactif
-              </div>
-              <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(98,98,98,1.00)",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                  }
-                }
-              >
-                En incapacité de travailler
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
-                "alignItems": "center",
-                "borderBottomColor": "rgba(199,199,204,1.00)",
-                "borderBottomLeftRadius": "24px",
-                "borderBottomRightRadius": "24px",
-                "borderBottomWidth": "1px",
-                "borderLeftColor": "rgba(199,199,204,1.00)",
-                "borderLeftWidth": "1px",
-                "borderRightColor": "rgba(199,199,204,1.00)",
-                "borderRightWidth": "1px",
-                "borderTopColor": "rgba(199,199,204,1.00)",
-                "borderTopLeftRadius": "24px",
-                "borderTopRightRadius": "24px",
-                "borderTopWidth": "1px",
-                "cursor": "pointer",
-                "flexDirection": "row",
-                "height": "48px",
-                "marginBottom": "16px",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "none",
-                "width": "100%",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxFlex": 1,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
-                  "WebkitFlexShrink": 1,
-                  "alignItems": "center",
-                  "flexBasis": "0px",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "msFlexAlign": "center",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 1,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(21,21,21,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                  }
-                }
-              >
-                Chômeur
-              </div>
-              <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(98,98,98,1.00)",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                  }
-                }
-              >
-                En recherche d'emploi
+                Choisis ton statut
               </div>
             </div>
           </div>
         </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
       </div>
     </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "bottom": "0px",
+        "height": "100%",
+        "left": "0px",
+        "position": "absolute",
+        "right": "0px",
+        "top": "0px",
+        "width": "100%",
+        "zIndex": -1,
+      }
+    }
+  >
     <div
       className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitAlignSelf": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxFlex": 1,
-          "WebkitBoxPack": "end",
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "WebkitJustifyContent": "flex-end",
-          "alignItems": "center",
-          "alignSelf": "center",
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "flex-end",
-          "marginBottom": "24px",
-          "msFlexAlign": "center",
-          "msFlexItemAlign": "center",
-          "msFlexNegative": 1,
-          "msFlexPack": "end",
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-          "msGridRowAlign": "center",
-          "width": "-48px",
-        }
-      }
     >
       <div
-        aria-label="Choisis ton statut"
-        className="css-view-1dbjc4n"
-        data-testid="Choisis ton statut"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitBoxPack": "center",
-            "WebkitFlexDirection": "row",
-            "WebkitJustifyContent": "center",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "backgroundColor": "rgba(245,245,245,1.00)",
-            "borderBottomLeftRadius": "24px",
-            "borderBottomRightRadius": "24px",
-            "borderBottomWidth": "0px",
-            "borderLeftWidth": "0px",
-            "borderRightWidth": "0px",
-            "borderTopLeftRadius": "24px",
-            "borderTopRightRadius": "24px",
-            "borderTopWidth": "0px",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "height": "40px",
-            "justifyContent": "center",
-            "maxWidth": "500px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msFlexPack": "center",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "paddingBottom": "2px",
-            "paddingLeft": "2px",
-            "paddingRight": "2px",
-            "paddingTop": "2px",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-            "width": "100%",
-          }
-        }
-        tabIndex="0"
+        className="css-text-901oao"
+        dir="auto"
       >
-        <div
-          className="css-text-901oao css-textOneLine-vcwn7f"
-          dir="auto"
-          style={
-            Object {
-              "color": "rgba(98,98,98,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-              "marginLeft": "5px",
-              "maxWidth": "100%",
-            }
-          }
-        >
-          Choisis ton statut
-        </div>
+        undefined-SVG-Mock
       </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "8px",
-          }
-        }
-      />
     </div>
-  </div>,
-]
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "8px",
+      }
+    }
+  />
+</div>
 `;

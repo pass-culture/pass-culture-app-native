@@ -3,68 +3,60 @@
 exports[`<SetPostalCode/> should render correctly 1`] = `
 Array [
   <View
-    height="100%"
     style={
       Array [
         Object {
-          "bottom": 0,
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "display": "flex",
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
         },
       ]
     }
-    width="100%"
   >
     <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>,
-  <View
-    customHeight={16}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <View
-    style={
-      Array [
-        Object {
-          "paddingBottom": 16,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 16,
-        },
-      ]
-    }
-  >
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <View
       style={
         Array [
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
-            "zIndex": 1,
+            "height": 64,
+            "justifyContent": "center",
           },
         ]
       }
     >
+      <Text
+        color="#ffffff"
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Profil
+      </Text>
       <View
         accessibilityLabel="Revenir en arrière"
         accessible={true}
@@ -80,132 +72,75 @@ Array [
         onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "alignItems": "flex-start",
-            "flexBasis": 0,
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-            "marginLeft": -4,
+            "left": 12,
             "opacity": 1,
+            "position": "absolute",
           }
         }
         testID="Revenir en arrière"
       >
         <View
           height={32}
-          testID="leftIcon"
+          testID="icon-back"
           width={32}
         >
           <Text>
-            leftIcon-SVG-Mock
+            icon-back-SVG-Mock
           </Text>
         </View>
       </View>
-      <Text
-        customStyle={
-          Object {
-            "color": "#ffffff",
-          }
-        }
-        numberOfLines={2}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "flexBasis": 0,
-              "flexGrow": 0.8,
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 18,
-              "lineHeight": 22,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Profil
-      </Text>
-      <View
-        accessibilityLabel="rightIconButton"
-        accessible={true}
-        collapsable={false}
-        focusable={false}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "flex-end",
-            "flexBasis": 0,
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-            "marginRight": -4,
-            "opacity": 1,
-          }
-        }
-        testID="rightIconButton"
-      />
     </View>
-  </View>,
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#ffffff",
-          "borderTopLeftRadius": 16,
-          "borderTopRightRadius": 16,
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "flex-end",
-          "overflow": "hidden",
-        },
-      ]
-    }
-  >
     <View
-      onLayout={[Function]}
       style={
-        Object {
-          "paddingBottom": 0,
-        }
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
       }
     >
-      <RCTScrollView
-        contentContainerStyle={
-          Object {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-            "paddingHorizontal": 24,
-          }
-        }
-        keyboardDismissMode="on-drag"
-        keyboardShouldPersistTaps="handled"
+      <View
+        onLayout={[Function]}
         style={
           Array [
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+              },
+            ],
             Object {
-              "height": "100%",
+              "paddingBottom": 0,
             },
           ]
         }
       >
-        <View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderTopLeftRadius": 22,
+                "borderTopRightRadius": 22,
+                "display": "flex",
+                "flexDirection": "column",
+                "height": "100%",
+                "paddingTop": 12,
+              },
+            ]
+          }
+        >
           <View
-            centered={false}
-            paddingBottom={80}
             style={
               Array [
                 Object {
-                  "height": "100%",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "maxWidth": 500,
-                  "paddingBottom": 80,
                   "width": "100%",
                 },
               ]
@@ -238,183 +173,228 @@ Array [
                 Dans quelle ville résides-tu ?
               </Text>
             </View>
-            <Text
+            <RCTScrollView
+              bottomChildrenViewHeight={0}
+              contentContainerStyle={
+                Object {
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "paddingBottom": 0,
+                  "paddingHorizontal": 20,
+                }
+              }
+              keyboardDismissMode="on-drag"
+              keyboardShouldPersistTaps="handled"
+              onContentSizeChange={[Function]}
+              onLayout={[Function]}
+              scrollEnabled={false}
               style={
                 Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
+                  Object {},
                 ]
               }
             >
-              Code postal
-            </Text>
+              <View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Code postal
+                </Text>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+                      Object {
+                        "height": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  borderColor="#c7c7cc"
+                  height="small"
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#c7c7cc",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 4,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 4,
+                        "shadowColor": "#151515",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.15,
+                        "shadowRadius": 6,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    autoCapitalize="none"
+                    keyboardType="number-pad"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder="Ex : 75017"
+                    placeholderTextColor="#626262"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                    textContentType="postalCode"
+                    value=""
+                  />
+                </View>
+              </View>
+            </RCTScrollView>
             <View
-              numberOfSpaces={2}
+              onLayout={[Function]}
               style={
                 Array [
                   Object {
-                    "height": 8,
+                    "backgroundColor": "#ffffff",
+                    "bottom": 0,
+                    "left": 0,
+                    "paddingBottom": 20,
+                    "paddingHorizontal": 20,
+                    "paddingTop": 12,
+                    "position": "absolute",
+                    "right": 0,
                   },
                 ]
               }
-            />
-            <View
-              borderColor="#c7c7cc"
-              height="small"
-              style={
-                Array [
+              testID="fixed-bottom-children"
+            >
+              <View
+                accessibilityLabel="Continuer"
+                accessible={true}
+                collapsable={false}
+                focusable={false}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
                   Object {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#c7c7cc",
-                    "borderRadius": 22,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
+                    "backgroundColor": "#f5f5f5",
+                    "borderRadius": 24,
+                    "borderWidth": 0,
                     "flexDirection": "row",
                     "height": 40,
-                    "paddingBottom": 4,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 4,
-                    "shadowColor": "#151515",
-                    "shadowOffset": Object {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.15,
-                    "shadowRadius": 6,
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
                     "width": "100%",
-                  },
-                ]
-              }
-            >
-              <TextInput
-                autoCapitalize="none"
-                keyboardType="number-pad"
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                onSubmitEditing={[Function]}
-                placeholder="Ex : 75017"
-                placeholderTextColor="#626262"
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "height": "100%",
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
-                  ]
+                  }
                 }
-                textContentType="postalCode"
-                value=""
-              />
+                testID="Continuer"
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 5,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                  textColor="#626262"
+                >
+                  Continuer
+                </Text>
+              </View>
             </View>
           </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
-            }
-          />
         </View>
-      </RCTScrollView>
+      </View>
     </View>
     <View
+      height="100%"
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "center",
-            "bottom": 24,
+            "bottom": 0,
+            "height": "100%",
+            "left": 0,
             "position": "absolute",
-            "width": 702,
+            "right": 0,
+            "top": 0,
+            "width": "100%",
+            "zIndex": -1,
           },
         ]
       }
+      width="100%"
     >
       <View
-        accessibilityLabel="Continuer"
-        accessible={true}
-        collapsable={false}
-        focusable={false}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#f5f5f5",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Continuer"
+        height="100%"
+        width="100%"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#626262",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 5,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#626262"
-        >
-          Continuer
+        <Text>
+          undefined-SVG-Mock
         </Text>
       </View>
-      <View
-        customHeight={8}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
   </View>,
   <Modal
     animationType="none"

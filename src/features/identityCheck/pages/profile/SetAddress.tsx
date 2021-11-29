@@ -7,7 +7,6 @@ import { Keyboard, TouchableOpacity } from 'react-native'
 import { useAppSettings } from 'features/auth/settings'
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
-import { ModalContent } from 'features/identityCheck/atoms/ModalContent'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
@@ -104,9 +103,9 @@ export const SetAddress = () => {
   return (
     <PageWithHeader
       title={t`Profil`}
+      fixedTopChildren={<CenteredTitle title={t`Quelle est ton adresse ?`} />}
       scrollChildren={
-        <ModalContent>
-          <CenteredTitle title={t`Quelle est ton adresse ?`} />
+        <React.Fragment>
           <TextInput
             autoFocus
             onChangeText={onChangeAddress}
@@ -128,7 +127,7 @@ export const SetAddress = () => {
               {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${option}`)}
             />
           ))}
-        </ModalContent>
+        </React.Fragment>
       }
       fixedBottomChildren={
         <ButtonPrimary
