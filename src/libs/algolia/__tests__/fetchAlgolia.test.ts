@@ -5,7 +5,7 @@ import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchParametersQuery } from 'libs/algolia/types'
 
 import { Range } from '../../typesUtils/typeHelpers'
-import { fetchAlgolia, attributesToRetrieve } from '../fetchAlgolia'
+import { fetchAlgolia, attributesToRetrieve, fetchAlgoliaHits } from '../fetchAlgolia'
 
 const mockGetFromDate = jest.fn()
 const mockGetLastOfDate = jest.fn()
@@ -49,6 +49,7 @@ jest.mock('algoliasearch')
 
 const mockInitIndex = algoliasearch('', '').initIndex
 const search = mockInitIndex('').search as jest.Mock
+const getObjects = mockInitIndex('').getObjects as jest.Mock
 
 const baseParams = { locationFilter: { locationType: LocationType.EVERYWHERE } }
 
@@ -128,6 +129,43 @@ describe('fetchAlgolia', () => {
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
+        attributesToRetrieve,
+      })
+    })
+  })
+
+  describe('[fetchAlgoliaHits]', () => {
+    it('should fetch with default search params', () => {
+      const queryIds = ['id1', 'id2']
+
+      fetchAlgoliaHits(queryIds, false)
+
+      expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
+      expect(getObjects).toHaveBeenCalledWith(queryIds, {
+        numericFilters: [['offer.prices: 0 TO 300']],
+        attributesToRetrieve,
+      })
+    })
+
+    it('should fetch with udnerage search params', () => {
+      const queryIds = ['id1', 'id2']
+      fetchAlgoliaHits(queryIds, true)
+
+      expect(getObjects).toHaveBeenCalledWith(queryIds, {
+        facetFilters: [
+          ['offer.subcategoryId:-JEU_EN_LIGNE'],
+          ['offer.subcategoryId:-JEU_SUPPORT_PHYSIQUE'],
+          ['offer.subcategoryId:-ABO_JEU_VIDEO'],
+          ['offer.subcategoryId:-ABO_LUDOTHEQUE'],
+          ['offer.isEducational:false'],
+          [
+            'offer.isDigital:false',
+            'offer.searchGroupName:PRESSE',
+            'offer.subcategoryId:LIVRE_NUMERIQUE',
+            'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
+          ],
+        ],
+        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })

@@ -37,7 +37,7 @@ const buildSearchParameters = (
     beginningDatetime = null,
     date = null,
     endingDatetime = null,
-    locationFilter,
+    locationFilter = { locationType: LocationType.EVERYWHERE },
     offerCategories = [],
     offerIsDuo = false,
     offerIsFree = false,
@@ -50,7 +50,7 @@ const buildSearchParameters = (
     priceRange = null,
     timeRange = null,
     tags = [],
-  }: PartialSearchState,
+  }: Record<string, never> | PartialSearchState,
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean
 ) => ({
@@ -127,11 +127,18 @@ export const fetchAlgolia = async (
   }
 }
 
-export const fetchAlgoliaHits = async (objectIds: string[]): Promise<SearchHit[]> => {
+export const fetchAlgoliaHits = async (
+  objectIds: string[],
+  isUserUnderage: boolean
+): Promise<SearchHit[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
+  const searchParameters = buildSearchParameters({}, null, isUserUnderage)
 
   try {
-    const response = await index.getObjects<SearchHit>(objectIds, { attributesToRetrieve })
+    const response = await index.getObjects<SearchHit>(objectIds, {
+      ...searchParameters,
+      attributesToRetrieve,
+    })
     const hits = response.results.filter(Boolean) as SearchHit[]
     return hits.filter(({ offer }) => !offer.isEducational)
   } catch (error) {
