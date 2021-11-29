@@ -2,9 +2,9 @@ import React, { ReactNode, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CustomKeyboardAvoidingView } from 'features/identityCheck/atoms/layout/CustomKeyboardAvoidingView'
 import { PageHeader } from 'features/identityCheck/atoms/layout/PageHeader'
-import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/layout/CustomKeyboardAvoidingView'
-import { useShouldEnableScrollOnView } from 'features/identityCheck/components/layout/useShouldEnableScrollView'
+import { useShouldEnableScrollOnView } from 'features/identityCheck/utils/useShouldEnableScrollView'
 import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
