@@ -7,7 +7,7 @@ import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { QuitIdentityCheckModal } from 'features/identityCheck/pages/QuitIdentityCheckModal'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
-import { getStepState } from 'features/identityCheck/utils/stepper'
+import { useGetStepState } from 'features/identityCheck/utils/useGetStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
@@ -18,6 +18,7 @@ export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
   const steps = useIdentityCheckSteps()
+  const getStepState = useGetStepState()
   const context = useIdentityCheckContext()
 
   const {
@@ -44,7 +45,7 @@ export const IdentityCheckStepper = () => {
             <StepButton
               key={step.name}
               step={step}
-              state={getStepState(step.name, context.step)}
+              state={getStepState(step.name)}
               onPress={() => navigate(step.screens[0])}
             />
           ))}
