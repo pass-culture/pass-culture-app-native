@@ -316,12 +316,13 @@ module.exports = function (webpackEnv) {
           // 1. sentry-cli configuration is in the file ~/.sentryclirc
           //    See https://docs.sentry.io/product/cli/configuration/ for details
           // 2. Other SentryWebpackPlugin configuration
-          include: paths.appPath,
+          include: paths.appBuild,
           ignore: [paths.appNodeModules, paths.appWebpackConfig],
           // include: '.',
           // ignore: ['node_modules', 'webpack.config.js'],
           release: process.env.ENV,
           silent: false,
+          validate: true,
           // sourceMapReference: false,
           // rewrite: false,
           // finalize: false,
