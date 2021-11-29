@@ -24,8 +24,8 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 export const SetCity = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
-  const { dispatch } = useIdentityCheckContext()
-  const [query, setQuery] = useState('')
+  const { dispatch, profile } = useIdentityCheckContext()
+  const [query, setQuery] = useState(profile.city?.postalCode || '')
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
   const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)

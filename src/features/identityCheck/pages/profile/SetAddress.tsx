@@ -26,8 +26,8 @@ export const SetAddress = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
   const { dispatch } = useIdentityCheckContext()
-  const [query, setQuery] = useState<string>('')
-  const [debouncedQuery, setDebouncedQuery] = useState<string>('')
+  const [query, setQuery] = useState<string>(profile.address || '')
+  const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
 

@@ -25,9 +25,9 @@ const baseStatuses: UserStatusResponse[] = [
 ]
 
 export const Status = () => {
-  const [selectedStatus, setSelectedStatus] = useState<ActivityEnum | undefined>()
+  const { dispatch, profile } = useIdentityCheckContext()
+  const [selectedStatus, setSelectedStatus] = useState<ActivityEnum | null>(profile.status || null)
   const { data: settings } = useAppSettings()
-  const { dispatch } = useIdentityCheckContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   const enabledGeneralisation =

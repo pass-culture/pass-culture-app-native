@@ -13,9 +13,9 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { Spacer } from 'ui/theme'
 
 export const SetName = () => {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const { dispatch } = useIdentityCheckContext()
+  const { dispatch, profile } = useIdentityCheckContext()
+  const [firstName, setFirstName] = useState(profile.name?.firstName ?? '')
+  const [lastName, setLastName] = useState(profile.name?.lastName ?? '')
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   const isValidFirstName = isNameValid(firstName)
