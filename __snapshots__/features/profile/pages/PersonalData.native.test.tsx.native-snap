@@ -177,7 +177,7 @@ Array [
               "borderRadius": 0,
               "borderWidth": 0,
               "flexDirection": "row",
-              "height": 16,
+              "height": 32,
               "justifyContent": "center",
               "marginTop": 0,
               "maxWidth": 500,
