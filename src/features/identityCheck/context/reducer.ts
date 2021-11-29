@@ -29,6 +29,8 @@ export const identityCheckReducer = (
       return { ...state, step: action.payload }
     case 'SET_NAME':
       return { ...state, profile: { ...state.profile, name: action.payload } }
+    case 'SET_STATUS':
+      return { ...state, profile: { ...state.profile, status: action.payload } }
     case 'SET_CITY':
       return { ...state, profile: { ...state.profile, city: action.payload } }
     case 'SET_ADDRESS':
