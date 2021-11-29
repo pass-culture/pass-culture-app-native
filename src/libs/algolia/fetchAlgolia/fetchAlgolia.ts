@@ -127,9 +127,12 @@ export const fetchAlgolia = async (
   }
 }
 
-export const fetchAlgoliaHits = async (objectIds: string[]): Promise<SearchHit[]> => {
+export const fetchAlgoliaHits = async (
+  objectIds: string[],
+  isUserUnderage: boolean
+): Promise<SearchHit[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
-  const searchParameters = buildSearchParameters({}, null, false)
+  const searchParameters = buildSearchParameters({}, null, isUserUnderage)
 
   try {
     const response = await index.getObjects<SearchHit>(objectIds, {
