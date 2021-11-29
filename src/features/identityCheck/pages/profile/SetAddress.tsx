@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
@@ -10,7 +9,7 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { eventMonitoring } from 'libs/monitoring'
 import { useAddresses } from 'libs/place'
 import { accessibilityAndTestId } from 'tests/utils'
@@ -25,7 +24,7 @@ export const SetAddress = () => {
   const { data: settings } = useAppSettings()
   const { profile } = useIdentityCheckContext()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
   const { dispatch } = useIdentityCheckContext()
   const [query, setQuery] = useState<string>('')
   const [debouncedQuery, setDebouncedQuery] = useState<string>('')
@@ -86,7 +85,7 @@ export const SetAddress = () => {
   const onSubmit = (selectedAddress: string | null) => {
     if (selectedAddress) {
       dispatch({ type: 'SET_ADDRESS', payload: selectedAddress })
-      navigate('IdentityCheckStatus')
+      navigateToNextScreen()
     }
   }
 

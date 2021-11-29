@@ -1,11 +1,10 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -17,17 +16,16 @@ export const SetName = () => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const { dispatch } = useIdentityCheckContext()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   const isValidFirstName = isNameValid(firstName)
   const isValidLastName = isNameValid(lastName)
   const disabled = !isValidFirstName || !isValidLastName
 
   function submitName() {
-    if (!disabled) {
-      dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
-      navigate('IdentityCheckCity')
-    }
+    if (disabled) return
+    dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
+    navigateToNextScreen()
   }
 
   return (

@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
@@ -9,7 +8,7 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place'
 import { useCities } from 'libs/place/useCities'
@@ -24,7 +23,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SetCity = () => {
   const { showErrorSnackBar } = useSnackBarContext()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
   const { dispatch } = useIdentityCheckContext()
   const [query, setQuery] = useState('')
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
@@ -84,10 +83,9 @@ export const SetCity = () => {
   )
 
   const onSubmit = (city: SuggestedCity | null) => {
-    if (selectedCity) {
-      dispatch({ type: 'SET_CITY', payload: city })
-      navigate('IdentityCheckAddress')
-    }
+    if (selectedCity === null) return
+    dispatch({ type: 'SET_CITY', payload: city })
+    navigateToNextScreen()
   }
 
   return (
