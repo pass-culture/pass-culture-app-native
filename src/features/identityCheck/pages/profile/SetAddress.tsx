@@ -32,13 +32,12 @@ export const SetAddress = () => {
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
 
-  const { cityCode, postalCode } = profile
   const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
 
   const { data: addresses = [], isError } = useAddresses({
     query: debouncedQuery,
-    cityCode: cityCode ?? '',
-    postalCode: postalCode ?? '',
+    cityCode: profile.city?.code ?? '',
+    postalCode: profile.city?.postalCode ?? '',
     enabled: idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })

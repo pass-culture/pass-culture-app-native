@@ -30,6 +30,4 @@ export type Action =
   | { type: 'SET_STEP'; payload: IdentityCheckStep }
   | { type: 'SET_NAME'; payload: Name | null }
   | { type: 'SET_CITY'; payload: SuggestedCity | null }
-  | { type: 'SET_CITY_CODE'; payload: string | null }
-  | { type: 'SET_POSTAL_CODE'; payload: string | null }
   | { type: 'SET_ADDRESS'; payload: string | null }
