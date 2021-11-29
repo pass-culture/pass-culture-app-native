@@ -1,6 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
@@ -8,7 +9,7 @@ import { ColorsEnum } from 'ui/theme'
 jest.mock('features/auth/settings')
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: () => ({ dispatch: mockDispatch }),
+  useIdentityCheckContext: () => ({ dispatch: mockDispatch, ...mockState }),
 }))
 
 const mockNavigateToNextScreen = jest.fn()

@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
-import { Keyboard, TouchableOpacity } from 'react-native'
+import { FlatList, Keyboard, ListRenderItem, TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
@@ -17,8 +18,13 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
+
+const keyExtractor = (address: string) => address
+
+const snackbarMessage = t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`
+const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
 
 export const SetAddress = () => {
   const { data: settings } = useAppSettings()
@@ -28,7 +34,7 @@ export const SetAddress = () => {
   const { dispatch } = useIdentityCheckContext()
   const [query, setQuery] = useState<string>(profile.address || '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
-  const [selectedAddress, setSelectedAddress] = useState<string | null>(null)
+  const [selectedAddress, setSelectedAddress] = useState<string | null>(profile.address || null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
 
   const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
@@ -43,23 +49,14 @@ export const SetAddress = () => {
 
   useEffect(() => {
     if (!isError) return
-
-    showErrorSnackBar({
-      message: t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`,
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-
-    eventMonitoring.captureException(
-      new IdentityCheckError(
-        'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
-      )
-    )
+    showErrorSnackBar({ message: snackbarMessage, timeout: SNACK_BAR_TIME_OUT })
+    eventMonitoring.captureException(new IdentityCheckError(exception))
   }, [isError])
 
   const onChangeAddress = (value: string) => {
+    setSelectedAddress(null)
     setQuery(value)
     debouncedSetQuery(value)
-    setSelectedAddress(null)
   }
 
   const onAddressSelection = (address: string) => {
@@ -68,9 +65,9 @@ export const SetAddress = () => {
   }
 
   const resetSearch = () => {
+    setSelectedAddress(null)
     setQuery('')
     debouncedSetQuery('')
-    setSelectedAddress(null)
   }
 
   const RightIcon = () => (
@@ -82,11 +79,10 @@ export const SetAddress = () => {
     </TouchableOpacity>
   )
 
-  const onSubmit = (selectedAddress: string | null) => {
-    if (selectedAddress) {
-      dispatch({ type: 'SET_ADDRESS', payload: selectedAddress })
-      navigateToNextScreen()
-    }
+  const onPressContinue = () => {
+    if (selectedAddress === null) return
+    dispatch({ type: 'SET_ADDRESS', payload: selectedAddress })
+    navigateToNextScreen()
   }
 
   // The button is enabled only when the user has selected an address
@@ -98,12 +94,23 @@ export const SetAddress = () => {
       ? !!selectedAddress
       : query.length > 0
 
+  const renderItem: ListRenderItem<string> = ({ item: address, index }) => (
+    <AddressOption
+      label={address}
+      selected={address === selectedAddress}
+      onPressOption={onAddressSelection}
+      optionKey={address}
+      key={address}
+      {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${address}`)}
+    />
+  )
+
   return (
     <PageWithHeader
       title={t`Profil`}
-      fixedTopChildren={<CenteredTitle title={t`Quelle est ton adresse ?`} />}
-      scrollChildren={
-        <React.Fragment>
+      fixedTopChildren={
+        <Container>
+          <CenteredTitle title={t`Quelle est ton adresse ?`} />
           <TextInput
             autoFocus
             onChangeText={onChangeAddress}
@@ -111,30 +118,24 @@ export const SetAddress = () => {
             label={t`Recherche et sélectionne ton adresse`}
             placeholder={t`Ex : 34 avenue de l'Opéra`}
             textContentType="addressState"
-            onSubmitEditing={() => onSubmit(selectedAddress)}
             RightIcon={() => (query.length > 0 ? <RightIcon /> : null)}
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
-          {addresses.map((address: string, index: number) => (
-            <AddressOption
-              label={address}
-              selected={address === selectedAddress}
-              onPressOption={onAddressSelection}
-              optionKey={address}
-              key={address}
-              {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${address}`)}
-            />
-          ))}
-        </React.Fragment>
+          <FlatList
+            data={addresses}
+            keyExtractor={keyExtractor}
+            renderItem={renderItem}
+            keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
+          />
+        </Container>
       }
       fixedBottomChildren={
-        <ButtonPrimary
-          onPress={() => onSubmit(selectedAddress)}
-          title={t`Continuer`}
-          disabled={!enabled}
-        />
+        <ButtonPrimary onPress={onPressContinue} title={t`Continuer`} disabled={!enabled} />
       }
     />
   )
 }
+
+const Container = styled.View({ paddingHorizontal: getSpacing(5) })

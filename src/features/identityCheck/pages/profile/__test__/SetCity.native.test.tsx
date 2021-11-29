@@ -1,6 +1,7 @@
 import { rest } from 'msw'
 import React from 'react'
 
+import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { CITIES_API_URL } from 'libs/place'
 import * as fetchCities from 'libs/place/fetchCities'
@@ -13,7 +14,7 @@ import { cleanup, fireEvent, render, waitFor } from 'tests/utils'
 const POSTAL_CODE = '83570'
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: () => ({ dispatch: mockDispatch }),
+  useIdentityCheckContext: () => ({ dispatch: mockDispatch, ...mockState }),
 }))
 
 const mockNavigateToNextScreen = jest.fn()

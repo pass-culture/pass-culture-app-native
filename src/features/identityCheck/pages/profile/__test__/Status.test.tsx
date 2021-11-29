@@ -1,12 +1,13 @@
 import React from 'react'
 
 import { ActivityEnum } from 'api/gen'
+import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { Status } from 'features/identityCheck/pages/profile/Status'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/auth/api')
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({ dispatch: jest.fn() })),
+  useIdentityCheckContext: jest.fn(() => ({ dispatch: jest.fn(), ...mockState })),
 }))
 
 const mockSettings = {
