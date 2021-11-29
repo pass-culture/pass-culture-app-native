@@ -15,7 +15,6 @@ import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { fetchMultipleHits as searchMultipleHits, filterSearchHits } from 'libs/search/fetch/search'
 import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
-import { useSendAdditionalRequestToAppSearch } from 'libs/search/useSendAdditionalRequestToAppSearch'
 
 export type HomeModuleResponse = {
   [moduleId: string]: {
@@ -35,7 +34,6 @@ export const useHomeModules = (
   const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const transformHits = useTransformAlgoliaHits()
   const parseSearchParameters = useParseSearchParameters()
-  const sendAdditionalRequest = useSendAdditionalRequestToAppSearch()
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
   const fetchMultipleHits = isAppSearchBackend ? searchMultipleHits : fetchMultipleAlgolia
@@ -57,9 +55,6 @@ export const useHomeModules = (
       return {
         queryKey: [QueryKeys.HOME_MODULE, moduleId],
         queryFn: fetchModule,
-        onSuccess: sendAdditionalRequest(() =>
-          searchMultipleHits(parsedParameters, position, isUserUnderageBeneficiary)
-        ),
         enabled,
         notifyOnChangeProps: ['data'] as UseInfiniteQueryOptions['notifyOnChangeProps'],
       }

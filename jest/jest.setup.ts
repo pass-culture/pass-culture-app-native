@@ -84,9 +84,6 @@ jest.mock('react-native-flipper')
 jest.mock('libs/environment/env')
 jest.mock('libs/environment/useWebAppUrl')
 
-/* See the corresponding mock in libs/search/__mocks__ */
-jest.mock('libs/search/useSendAdditionalRequestToAppSearch')
-
 jest.mock('features/search/pages/SearchWrapper')
 
 jest.mock('features/favorites/pages/FavoritesWrapper')

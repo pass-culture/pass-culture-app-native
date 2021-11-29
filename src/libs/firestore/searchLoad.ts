@@ -8,6 +8,8 @@ import { QueryKeys } from 'libs/queryKeys'
 // To avoid firing requests firestore on every request
 const STALE_TIME_FIRESTORE_SEARCH_LOAD = 5 * 60 * 1000
 
+// TODO(antoinewg): RemoteStoreDocuments.LOAD_PERCENT is not used anymore
+// However, we can reuse this code for sending to ubble based on firestore param.
 export const getSearchLoad = () =>
   firestoreRemoteStore
     .collection(RemoteStoreCollections.APP_SEARCH)
