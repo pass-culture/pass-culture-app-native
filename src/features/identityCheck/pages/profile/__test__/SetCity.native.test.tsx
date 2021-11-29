@@ -1,7 +1,6 @@
 import { rest } from 'msw'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { CITIES_API_URL } from 'libs/place'
 import * as fetchCities from 'libs/place/fetchCities'
