@@ -13,10 +13,6 @@ jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
 }))
 
-jest.mock('libs/search/useSendAdditionalRequestToAppSearch', () => ({
-  useSendAdditionalRequestToAppSearch: jest.fn(() => () => null),
-}))
-
 const _geoloc = { lat: 20, lng: 23 }
 const subcategoryId = SubcategoryIdEnum.ABOCONCERT
 const mockMultipleHits = {
