@@ -17,6 +17,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SetAddress = () => {
@@ -87,9 +88,7 @@ export const SetAddress = () => {
   return (
     <PageWithHeader
       title={t`Profil`}
-      fixedTopChildren={
-        <CenteredTitle title={t`Quelle est ton adresse ?`} />
-      }
+      fixedTopChildren={<CenteredTitle title={t`Quelle est ton adresse ?`} />}
       scrollChildren={
         <React.Fragment>
           <TextInput
@@ -103,6 +102,7 @@ export const SetAddress = () => {
             RightIcon={() => <RightIcon />}
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
+          <Spacer.Column numberOfSpaces={2} />
           {addresses.map((option: string, index: number) => (
             <AddressOption
               option={option}

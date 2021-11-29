@@ -121,100 +121,81 @@ Array [
           style={
             Array [
               Object {
+                "alignItems": "center",
                 "backgroundColor": "#ffffff",
                 "borderTopLeftRadius": 22,
                 "borderTopRightRadius": 22,
                 "display": "flex",
                 "flexDirection": "column",
                 "height": "100%",
-                "paddingHorizontal": 20,
                 "paddingTop": 12,
               },
             ]
           }
         >
-          <RCTScrollView
-            bottomChildrenViewHeight={0}
-            contentContainerStyle={
-              Object {
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "paddingBottom": 0,
-              }
-            }
-            keyboardShouldPersistTaps="handled"
-            onContentSizeChange={[Function]}
-            onLayout={[Function]}
-            scrollEnabled={false}
+          <View
             style={
               Array [
-                Object {},
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "maxWidth": 500,
+                  "width": "100%",
+                },
               ]
             }
           >
-            <View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                    },
-                  ]
+            <RCTScrollView
+              bottomChildrenViewHeight={0}
+              contentContainerStyle={
+                Object {
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "paddingBottom": 0,
+                  "paddingHorizontal": 20,
                 }
-              >
-                <View
-                  numberOfSpaces={10}
-                  style={
-                    Array [
-                      Object {
-                        "height": 40,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  fill="none"
-                  height={115.2}
-                  width={180}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    Array [
-                      Object {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
+              }
+              keyboardDismissMode="on-drag"
+              keyboardShouldPersistTaps="handled"
+              onContentSizeChange={[Function]}
+              onLayout={[Function]}
+              scrollEnabled={false}
+              style={
+                Array [
+                  Object {},
+                ]
+              }
+            >
+              <View>
                 <View
                   style={
                     Array [
                       Object {
-                        "marginHorizontal": 8,
+                        "alignItems": "center",
                       },
                     ]
                   }
                 >
-                  <Text
+                  <View
+                    numberOfSpaces={10}
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 18,
-                          "lineHeight": 22,
-                          "textAlign": "center",
+                          "height": 40,
                         },
                       ]
                     }
+                  />
+                  <View
+                    fill="none"
+                    height={115.2}
+                    width={180}
                   >
-                    Vérification de l'identité
-                  </Text>
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                   <View
                     numberOfSpaces={6}
                     style={
@@ -225,128 +206,117 @@ Array [
                       ]
                     }
                   />
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#151515",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    Prends une photo de ta
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                       carte d'identité 
-                    </Text>
-                    ou de ton
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                       passeport 
-                    </Text>
-                    en cours de validité pour accéder à ton pass Culture.
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={6}
-                  style={
-                    Array [
-                      Object {
-                        "height": 24,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#f5f5f5",
-                        "borderRadius": 4,
-                        "display": "flex",
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    color="#626262"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#626262",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées
-                  </Text>
                   <View
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "paddingTop": 8,
+                          "marginHorizontal": 8,
                         },
                       ]
                     }
                   >
-                    <View
-                      fill="#151515"
-                      height={16}
-                      width={16}
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={1}
+                    <Text
                       style={
                         Array [
                           Object {
-                            "width": 4,
+                            "color": "#151515",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 18,
+                            "lineHeight": 22,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Vérification de l'identité
+                    </Text>
+                    <View
+                      numberOfSpaces={6}
+                      style={
+                        Array [
+                          Object {
+                            "height": 24,
                           },
                         ]
                       }
                     />
                     <Text
-                      color="#151515"
                       style={
                         Array [
                           Object {
                             "color": "#151515",
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Prends une photo de ta
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#151515",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                         carte d'identité 
+                      </Text>
+                      ou de ton
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#151515",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                         passeport 
+                      </Text>
+                      en cours de validité pour accéder à ton pass Culture.
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={6}
+                    style={
+                      Array [
+                        Object {
+                          "height": 24,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#f5f5f5",
+                          "borderRadius": 4,
+                          "display": "flex",
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      color="#626262"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#626262",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -354,84 +324,129 @@ Array [
                         ]
                       }
                     >
-                      Transmettre un document
+                      Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées
                     </Text>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "paddingTop": 8,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="#151515"
+                        height={16}
+                        width={16}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          Array [
+                            Object {
+                              "width": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        color="#151515"
+                        style={
+                          Array [
+                            Object {
+                              "color": "#151515",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        Transmettre un document
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
-            </View>
-          </RCTScrollView>
-          <View
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "#ffffff",
-                  "bottom": 0,
-                  "left": 0,
-                  "paddingBottom": 20,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 12,
-                  "position": "absolute",
-                  "right": 0,
-                },
-              ]
-            }
-            testID="fixed-bottom-children"
-          >
+            </RCTScrollView>
             <View
-              accessibilityLabel="Commencer la vérification"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              onLayout={[Function]}
               style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "backgroundColor": "#ffffff",
+                    "bottom": 0,
+                    "left": 0,
+                    "paddingBottom": 20,
+                    "paddingHorizontal": 20,
+                    "paddingTop": 12,
+                    "position": "absolute",
+                    "right": 0,
+                  },
+                ]
               }
-              testID="Commencer la vérification"
+              testID="fixed-bottom-children"
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
+                accessibilityLabel="Commencer la vérification"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 5,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  }
                 }
-                textColor="#ffffff"
+                testID="Commencer la vérification"
               >
-                Commencer la vérification
-              </Text>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 5,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                  textColor="#ffffff"
+                >
+                  Commencer la vérification
+                </Text>
+              </View>
             </View>
           </View>
         </View>

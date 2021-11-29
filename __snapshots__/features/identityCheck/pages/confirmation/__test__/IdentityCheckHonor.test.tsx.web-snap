@@ -1,33 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<IdentityCheckHonor/> should render correctly 1`] = `
-Array [
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "bottom": "0px",
-        "height": "100%",
-        "left": "0px",
-        "position": "absolute",
-        "right": "0px",
-        "top": "0px",
-        "width": "100%",
-        "zIndex": -1,
-      }
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitBoxDirection": "normal",
+      "WebkitBoxFlex": 1,
+      "WebkitBoxOrient": "vertical",
+      "WebkitFlexBasis": "0px",
+      "WebkitFlexDirection": "column",
+      "WebkitFlexGrow": 1,
+      "WebkitFlexShrink": 1,
+      "display": "flex",
+      "flexBasis": "0px",
+      "flexDirection": "column",
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "msFlexDirection": "column",
+      "msFlexNegative": 1,
+      "msFlexPositive": 1,
+      "msFlexPreferredSize": "0px",
     }
-  >
-    <div
-      className="css-view-1dbjc4n"
-    >
-      <div
-        className="css-text-901oao"
-        dir="auto"
-      >
-        undefined-SVG-Mock
-      </div>
-    </div>
-  </div>,
+  }
+>
   <div
     className="css-view-1dbjc4n"
     style={
@@ -35,7 +31,7 @@ Array [
         "height": "16px",
       }
     }
-  />,
+  />
   <div
     className="css-view-1dbjc4n"
     style={
@@ -121,349 +117,416 @@ Array [
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <div
     className="css-view-1dbjc4n"
     style={
       Object {
         "WebkitBoxFlex": 1,
-        "WebkitBoxPack": "end",
         "WebkitFlexBasis": "0px",
         "WebkitFlexGrow": 1,
         "WebkitFlexShrink": 1,
-        "WebkitJustifyContent": "flex-end",
-        "backgroundColor": "rgba(255,255,255,1.00)",
-        "borderTopLeftRadius": "16px",
-        "borderTopRightRadius": "16px",
         "flexBasis": "0px",
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "flex-end",
         "msFlexNegative": 1,
-        "msFlexPack": "end",
         "msFlexPositive": 1,
         "msFlexPreferredSize": "0px",
-        "overflowX": "hidden",
-        "overflowY": "hidden",
       }
     }
   >
     <div
       className="css-view-1dbjc4n"
-      onScroll={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      onWheel={[Function]}
       style={
         Object {
-          "WebkitBoxDirection": "normal",
           "WebkitBoxFlex": 1,
-          "WebkitBoxOrient": "vertical",
-          "WebkitFlexDirection": "column",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "WebkitOverflowScrolling": "touch",
-          "WebkitTransform": "translateZ(0px)",
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": "100%",
-          "msFlexDirection": "column",
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "overflowX": "hidden",
-          "overflowY": "auto",
-          "transform": "translateZ(0px)",
-        }
-      }
-    >
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxFlex": 1,
-            "WebkitBoxOrient": "vertical",
-            "WebkitBoxPack": "justify",
-            "WebkitFlexDirection": "column",
-            "WebkitFlexGrow": 1,
-            "WebkitJustifyContent": "space-between",
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-            "msFlexAlign": "center",
-            "msFlexDirection": "column",
-            "msFlexPack": "justify",
-            "msFlexPositive": 1,
-            "paddingLeft": "24px",
-            "paddingRight": "24px",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitAlignItems": "center",
-              "WebkitBoxAlign": "center",
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "alignItems": "center",
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": "352px",
-              "msFlexAlign": "center",
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        >
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxFlex": 1,
-                "WebkitFlexBasis": "0px",
-                "WebkitFlexGrow": 1,
-                "WebkitFlexShrink": 1,
-                "flexBasis": "0px",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "msFlexNegative": 1,
-                "msFlexPositive": 1,
-                "msFlexPreferredSize": "0px",
-              }
-            }
-          />
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "paddingBottom": "16px",
-                "paddingTop": "16px",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-              >
-                undefined-SVG-Mock
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-text-901oao"
-            dir="auto"
-            style={
-              Object {
-                "color": "rgba(21,21,21,1.00)",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": "15px",
-                "lineHeight": "20px",
-                "textAlign": "center",
-              }
-            }
-          >
-            Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitTransform": "rotate(180deg)",
-                "paddingBottom": "16px",
-                "paddingTop": "16px",
-                "transform": "rotate(180deg)",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-              >
-                undefined-SVG-Mock
-              </div>
-            </div>
-          </div>
-          <div
-            className="css-text-901oao"
-            dir="auto"
-            style={
-              Object {
-                "color": "rgba(21,21,21,1.00)",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": "12px",
-                "lineHeight": "16px",
-                "textAlign": "center",
-              }
-            }
-          >
-            Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxFlex": 2,
-                "WebkitFlexBasis": "0px",
-                "WebkitFlexGrow": 2,
-                "WebkitFlexShrink": 1,
-                "flexBasis": "0px",
-                "flexGrow": 2,
-                "flexShrink": 1,
-                "msFlexNegative": 1,
-                "msFlexPositive": 2,
-                "msFlexPreferredSize": "0px",
-              }
-            }
-          />
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitAlignSelf": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxFlex": 1,
-          "WebkitBoxPack": "end",
           "WebkitFlexBasis": "0px",
           "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "WebkitJustifyContent": "flex-end",
-          "alignItems": "center",
-          "alignSelf": "center",
           "flexBasis": "0px",
           "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "flex-end",
-          "marginBottom": "24px",
-          "msFlexAlign": "center",
-          "msFlexItemAlign": "center",
-          "msFlexNegative": 1,
-          "msFlexPack": "end",
           "msFlexPositive": 1,
           "msFlexPreferredSize": "0px",
-          "msGridRowAlign": "center",
-          "width": "-48px",
         }
       }
     >
       <div
-        aria-label="Valider et continuer"
         className="css-view-1dbjc4n"
-        data-testid="Valider et continuer"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
         style={
           Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
             "WebkitAlignItems": "center",
             "WebkitBoxAlign": "center",
             "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitBoxPack": "center",
-            "WebkitFlexDirection": "row",
-            "WebkitJustifyContent": "center",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
+            "WebkitBoxOrient": "vertical",
+            "WebkitFlexDirection": "column",
             "alignItems": "center",
-            "backgroundColor": "rgba(235,0,85,1.00)",
-            "borderBottomLeftRadius": "24px",
-            "borderBottomRightRadius": "24px",
-            "borderBottomWidth": "0px",
-            "borderLeftWidth": "0px",
-            "borderRightWidth": "0px",
-            "borderTopLeftRadius": "24px",
-            "borderTopRightRadius": "24px",
-            "borderTopWidth": "0px",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "height": "40px",
-            "justifyContent": "center",
-            "maxWidth": "500px",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderTopLeftRadius": "22px",
+            "borderTopRightRadius": "22px",
+            "display": "flex",
+            "flexDirection": "column",
+            "height": "100%",
             "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msFlexPack": "center",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "paddingBottom": "2px",
-            "paddingLeft": "2px",
-            "paddingRight": "2px",
-            "paddingTop": "2px",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-            "width": "100%",
+            "msFlexDirection": "column",
+            "paddingTop": "12px",
           }
         }
-        tabIndex="0"
       >
         <div
-          className="css-text-901oao css-textOneLine-vcwn7f"
-          dir="auto"
+          className="css-view-1dbjc4n"
           style={
             Object {
-              "color": "rgba(255,255,255,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-              "marginLeft": "5px",
-              "maxWidth": "100%",
+              "WebkitBoxFlex": 1,
+              "WebkitFlexBasis": "0px",
+              "WebkitFlexGrow": 1,
+              "WebkitFlexShrink": 1,
+              "flexBasis": "0px",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": "500px",
+              "msFlexNegative": 1,
+              "msFlexPositive": 1,
+              "msFlexPreferredSize": "0px",
+              "width": "100%",
             }
           }
         >
-          Valider et continuer
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "alignItems": "center",
+                "msFlexAlign": "center",
+                "paddingBottom": "20px",
+                "paddingTop": "20px",
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              className="css-text-901oao"
+              dir="auto"
+              style={
+                Object {
+                  "color": "rgba(21,21,21,1.00)",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": "18px",
+                  "lineHeight": "22px",
+                  "textAlign": "center",
+                }
+              }
+            >
+              Les informations que tu as renseignées sont-elles correctes ?
+            </div>
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            onScroll={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            onWheel={[Function]}
+            style={
+              Object {
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxFlex": 1,
+                "WebkitBoxOrient": "vertical",
+                "WebkitFlexDirection": "column",
+                "WebkitFlexGrow": 1,
+                "WebkitFlexShrink": 1,
+                "WebkitOverflowScrolling": "touch",
+                "WebkitTransform": "translateZ(0px)",
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "msFlexDirection": "column",
+                "msFlexNegative": 1,
+                "msFlexPositive": 1,
+                "msTouchAction": "none",
+                "overflowX": "hidden",
+                "overflowY": "hidden",
+                "touchAction": "none",
+                "transform": "translateZ(0px)",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 1,
+                  "WebkitBoxOrient": "vertical",
+                  "WebkitFlexDirection": "column",
+                  "WebkitFlexGrow": 1,
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "msFlexDirection": "column",
+                  "msFlexPositive": 1,
+                  "paddingBottom": "0px",
+                  "paddingLeft": "20px",
+                  "paddingRight": "20px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxFlex": 1,
+                    "WebkitFlexBasis": "0px",
+                    "WebkitFlexGrow": 1,
+                    "WebkitFlexShrink": 1,
+                    "alignItems": "center",
+                    "flexBasis": "0px",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "maxWidth": "352px",
+                    "msFlexAlign": "center",
+                    "msFlexNegative": 1,
+                    "msFlexPositive": 1,
+                    "msFlexPreferredSize": "0px",
+                  }
+                }
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "paddingBottom": "16px",
+                      "paddingTop": "16px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                  style={
+                    Object {
+                      "color": "rgba(21,21,21,1.00)",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitTransform": "rotate(180deg)",
+                      "paddingBottom": "16px",
+                      "paddingTop": "16px",
+                      "transform": "rotate(180deg)",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                  style={
+                    Object {
+                      "color": "rgba(21,21,21,1.00)",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": "12px",
+                      "lineHeight": "16px",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitBoxFlex": 2,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 2,
+                      "WebkitFlexShrink": 1,
+                      "flexBasis": "0px",
+                      "flexGrow": 2,
+                      "flexShrink": 1,
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 2,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            data-testid="fixed-bottom-children"
+            style={
+              Object {
+                "backgroundColor": "rgba(255,255,255,1.00)",
+                "bottom": "0px",
+                "left": "0px",
+                "paddingBottom": "20px",
+                "paddingLeft": "20px",
+                "paddingRight": "20px",
+                "paddingTop": "12px",
+                "position": "absolute",
+                "right": "0px",
+              }
+            }
+          >
+            <div
+              aria-label="Valider et continuer"
+              className="css-view-1dbjc4n"
+              data-testid="Valider et continuer"
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onKeyDown={[Function]}
+              style={
+                Object {
+                  "MozTransitionProperty": "opacity",
+                  "MozUserSelect": "none",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitBoxPack": "center",
+                  "WebkitFlexDirection": "row",
+                  "WebkitJustifyContent": "center",
+                  "WebkitTransitionDuration": "0s",
+                  "WebkitTransitionProperty": "opacity",
+                  "WebkitUserSelect": "none",
+                  "alignItems": "center",
+                  "backgroundColor": "rgba(235,0,85,1.00)",
+                  "borderBottomLeftRadius": "24px",
+                  "borderBottomRightRadius": "24px",
+                  "borderBottomWidth": "0px",
+                  "borderLeftWidth": "0px",
+                  "borderRightWidth": "0px",
+                  "borderTopLeftRadius": "24px",
+                  "borderTopRightRadius": "24px",
+                  "borderTopWidth": "0px",
+                  "cursor": "pointer",
+                  "flexDirection": "row",
+                  "height": "40px",
+                  "justifyContent": "center",
+                  "maxWidth": "500px",
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexPack": "center",
+                  "msTouchAction": "manipulation",
+                  "msUserSelect": "none",
+                  "paddingBottom": "2px",
+                  "paddingLeft": "2px",
+                  "paddingRight": "2px",
+                  "paddingTop": "2px",
+                  "touchAction": "manipulation",
+                  "transitionDuration": "0s",
+                  "transitionProperty": "opacity",
+                  "userSelect": "none",
+                  "width": "100%",
+                }
+              }
+              tabIndex="0"
+            >
+              <div
+                className="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(255,255,255,1.00)",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": "15px",
+                    "lineHeight": "20px",
+                    "marginLeft": "5px",
+                    "maxWidth": "100%",
+                  }
+                }
+              >
+                Valider et continuer
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "8px",
-          }
-        }
-      />
     </div>
-  </div>,
-]
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "bottom": "0px",
+        "height": "100%",
+        "left": "0px",
+        "position": "absolute",
+        "right": "0px",
+        "top": "0px",
+        "width": "100%",
+        "zIndex": -1,
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-text-901oao"
+        dir="auto"
+      >
+        undefined-SVG-Mock
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "8px",
+      }
+    }
+  />
+</div>
 `;

@@ -120,13 +120,13 @@ exports[`<SetAddress/> should render correctly 1`] = `
         style={
           Array [
             Object {
+              "alignItems": "center",
               "backgroundColor": "#ffffff",
               "borderTopLeftRadius": 22,
               "borderTopRightRadius": 22,
               "display": "flex",
               "flexDirection": "column",
               "height": "100%",
-              "paddingHorizontal": 20,
               "paddingTop": 12,
             },
           ]
@@ -136,204 +136,229 @@ exports[`<SetAddress/> should render correctly 1`] = `
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "paddingVertical": 20,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "maxWidth": 500,
                 "width": "100%",
               },
             ]
           }
         >
-          <Text
+          <View
             style={
               Array [
                 Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                  "textAlign": "center",
+                  "alignItems": "center",
+                  "paddingVertical": 20,
+                  "width": "100%",
                 },
               ]
             }
           >
-            Quelle est ton adresse ?
-          </Text>
-        </View>
-        <RCTScrollView
-          bottomChildrenViewHeight={0}
-          contentContainerStyle={
-            Object {
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "paddingBottom": 0,
-            }
-          }
-          keyboardShouldPersistTaps="handled"
-          onContentSizeChange={[Function]}
-          onLayout={[Function]}
-          scrollEnabled={false}
-          style={
-            Array [
-              Object {},
-            ]
-          }
-        >
-          <View>
             <Text
               style={
                 Array [
                   Object {
                     "color": "#151515",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                    "textAlign": "center",
                   },
                 ]
               }
             >
-              Recherche et sélectionne ton adresse
+              Quelle est ton adresse ?
             </Text>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "height": 8,
-                  },
-                ]
+          </View>
+          <RCTScrollView
+            bottomChildrenViewHeight={0}
+            contentContainerStyle={
+              Object {
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "paddingBottom": 0,
+                "paddingHorizontal": 20,
               }
-            />
-            <View
-              borderColor="#c7c7cc"
-              height="small"
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#c7c7cc",
-                    "borderRadius": 22,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 40,
-                    "paddingBottom": 4,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 4,
-                    "shadowColor": "#151515",
-                    "shadowOffset": Object {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.15,
-                    "shadowRadius": 6,
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <TextInput
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onFocus={[Function]}
-                onSubmitEditing={[Function]}
-                placeholder="Ex : 34 avenue de l'Opéra"
-                placeholderTextColor="#626262"
+            }
+            keyboardDismissMode="on-drag"
+            keyboardShouldPersistTaps="handled"
+            onContentSizeChange={[Function]}
+            onLayout={[Function]}
+            scrollEnabled={false}
+            style={
+              Array [
+                Object {},
+              ]
+            }
+          >
+            <View>
+              <Text
                 style={
                   Array [
                     Object {
                       "color": "#151515",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
-                      "height": "100%",
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
+                      "lineHeight": 20,
                     },
                   ]
                 }
-                textContentType="addressState"
-                value=""
+              >
+                Recherche et sélectionne ton adresse
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                borderColor="#c7c7cc"
+                height="small"
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#c7c7cc",
+                      "borderRadius": 22,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 40,
+                      "paddingBottom": 4,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 4,
+                      "shadowColor": "#151515",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.15,
+                      "shadowRadius": 6,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <TextInput
+                  onBlur={[Function]}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  onSubmitEditing={[Function]}
+                  placeholder="Ex : 34 avenue de l'Opéra"
+                  placeholderTextColor="#626262"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "height": "100%",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
+                    ]
+                  }
+                  textContentType="addressState"
+                  value=""
+                />
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
               />
             </View>
-          </View>
-        </RCTScrollView>
-        <View
-          onLayout={[Function]}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
-          }
-          testID="fixed-bottom-children"
-        >
+          </RCTScrollView>
           <View
-            accessibilityLabel="Continuer"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            onLayout={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#f5f5f5",
-                "borderRadius": 24,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
-              }
+              Array [
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "bottom": 0,
+                  "left": 0,
+                  "paddingBottom": 20,
+                  "paddingHorizontal": 20,
+                  "paddingTop": 12,
+                  "position": "absolute",
+                  "right": 0,
+                },
+              ]
             }
-            testID="Continuer"
+            testID="fixed-bottom-children"
           >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
+            <View
+              accessibilityLabel="Continuer"
+              accessible={true}
+              collapsable={false}
+              focusable={false}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "color": "#626262",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 5,
-                    "maxWidth": "100%",
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#f5f5f5",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
               }
-              textColor="#626262"
+              testID="Continuer"
             >
-              Continuer
-            </Text>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#626262",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+                textColor="#626262"
+              >
+                Continuer
+              </Text>
+            </View>
           </View>
         </View>
       </View>

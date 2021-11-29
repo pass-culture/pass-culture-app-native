@@ -70,9 +70,7 @@ export const SetPostalCode = () => {
     <React.Fragment>
       <PageWithHeader
         title={t`Profil`}
-        fixedTopChildren={
-          <CenteredTitle title={t`Dans quelle ville résides-tu ?`} />
-        }
+        fixedTopChildren={<CenteredTitle title={t`Dans quelle ville résides-tu ?`} />}
         scrollChildren={
           <React.Fragment>
             <TextInput

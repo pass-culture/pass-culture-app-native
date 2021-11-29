@@ -33,9 +33,7 @@ export const SetName = () => {
   return (
     <PageWithHeader
       title={t`Profil`}
-      fixedTopChildren={
-        <CenteredTitle title={t`Comment t'appelles-tu ?`} />
-      }
+      fixedTopChildren={<CenteredTitle title={t`Comment t'appelles-tu ?`} />}
       scrollChildren={
         <React.Fragment>
           <TextInput

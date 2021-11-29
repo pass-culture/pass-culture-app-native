@@ -16,11 +16,8 @@ interface Props {
 }
 
 export const PageWithHeader = (props: Props) => {
-  const {
-    isScrollEnabled,
-    onScrollViewLayout,
-    onScrollViewContentSizeChange,
-  } = useShouldEnableScrollOnView()
+  const { isScrollEnabled, onScrollViewLayout, onScrollViewContentSizeChange } =
+    useShouldEnableScrollOnView()
 
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
 
@@ -34,7 +31,7 @@ export const PageWithHeader = (props: Props) => {
       <Spacer.TopScreen />
       <PageHeader title={props.title} />
       <CustomKeyboardAvoidingView>
-          {props.fixedTopChildren}
+        {props.fixedTopChildren}
         <ChildrenScrollView
           bottomChildrenViewHeight={bottomChildrenViewHeight}
           onContentSizeChange={onScrollViewContentSizeChange}
@@ -65,17 +62,20 @@ const FixedBottomChildrenView = styled.View({
   bottom: 0,
   left: 0,
   right: 0,
-  padding: getSpacing(5),
+  paddingBottom: getSpacing(5),
   paddingTop: getSpacing(3),
   backgroundColor: ColorsEnum.WHITE,
+  paddingHorizontal: getSpacing(5),
 })
 
 type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
 const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>((props) => ({
   keyboardShouldPersistTaps: 'handled',
+  keyboardDismissMode: 'on-drag',
   contentContainerStyle: {
     flexGrow: 1,
     flexDirection: 'column',
     paddingBottom: props.bottomChildrenViewHeight,
+    paddingHorizontal: getSpacing(5),
   },
 }))<ChildrenScrollViewProps>({})

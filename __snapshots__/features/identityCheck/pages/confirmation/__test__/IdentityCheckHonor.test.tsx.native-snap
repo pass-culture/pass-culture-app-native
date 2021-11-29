@@ -120,13 +120,13 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
         style={
           Array [
             Object {
+              "alignItems": "center",
               "backgroundColor": "#ffffff",
               "borderTopLeftRadius": 22,
               "borderTopRightRadius": 22,
               "display": "flex",
               "flexDirection": "column",
               "height": "100%",
-              "paddingHorizontal": 20,
               "paddingTop": 12,
             },
           ]
@@ -136,231 +136,246 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "paddingVertical": 20,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "maxWidth": 500,
                 "width": "100%",
               },
             ]
           }
         >
-          <Text
+          <View
             style={
               Array [
                 Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                  "textAlign": "center",
+                  "alignItems": "center",
+                  "paddingVertical": 20,
+                  "width": "100%",
                 },
               ]
             }
           >
-            Les informations que tu as renseignées sont-elles correctes ?
-          </Text>
-        </View>
-        <RCTScrollView
-          bottomChildrenViewHeight={0}
-          contentContainerStyle={
-            Object {
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "paddingBottom": 0,
-            }
-          }
-          keyboardShouldPersistTaps="handled"
-          onContentSizeChange={[Function]}
-          onLayout={[Function]}
-          scrollEnabled={false}
-          style={
-            Array [
-              Object {},
-            ]
-          }
-        >
-          <View>
-            <View
+            <Text
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "maxWidth": 352,
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                    "textAlign": "center",
                   },
                 ]
               }
             >
+              Les informations que tu as renseignées sont-elles correctes ?
+            </Text>
+          </View>
+          <RCTScrollView
+            bottomChildrenViewHeight={0}
+            contentContainerStyle={
+              Object {
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "paddingBottom": 0,
+                "paddingHorizontal": 20,
+              }
+            }
+            keyboardDismissMode="on-drag"
+            keyboardShouldPersistTaps="handled"
+            onContentSizeChange={[Function]}
+            onLayout={[Function]}
+            scrollEnabled={false}
+            style={
+              Array [
+                Object {},
+              ]
+            }
+          >
+            <View>
               <View
                 style={
                   Array [
                     Object {
+                      "alignItems": "center",
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "paddingVertical": 16,
+                      "maxWidth": 352,
                     },
                   ]
                 }
               >
                 <View
-                  height={48}
-                  width={48}
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "paddingVertical": 16,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                  <View
+                    height={48}
+                    width={48}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.
+                </Text>
+                <View
+                  reversed={true}
+                  style={
+                    Array [
+                      Object {
+                        "paddingVertical": 16,
+                        "transform": Array [
+                          Object {
+                            "rotate": "180deg",
+                          },
+                        ],
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={48}
+                    width={48}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
+                </Text>
+                <View
+                  flex={2}
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 2,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
               </View>
+            </View>
+          </RCTScrollView>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "bottom": 0,
+                  "left": 0,
+                  "paddingBottom": 20,
+                  "paddingHorizontal": 20,
+                  "paddingTop": 12,
+                  "position": "absolute",
+                  "right": 0,
+                },
+              ]
+            }
+            testID="fixed-bottom-children"
+          >
+            <View
+              accessibilityLabel="Valider et continuer"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="Valider et continuer"
+            >
               <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-Regular",
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
-                      "textAlign": "center",
+                      "marginLeft": 5,
+                      "maxWidth": "100%",
                     },
                   ]
                 }
+                textColor="#ffffff"
               >
-                Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.
+                Valider et continuer
               </Text>
-              <View
-                reversed={true}
-                style={
-                  Array [
-                    Object {
-                      "paddingVertical": 16,
-                      "transform": Array [
-                        Object {
-                          "rotate": "180deg",
-                        },
-                      ],
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={48}
-                  width={48}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.
-              </Text>
-              <View
-                flex={2}
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 2,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              />
             </View>
-          </View>
-        </RCTScrollView>
-        <View
-          onLayout={[Function]}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
-          }
-          testID="fixed-bottom-children"
-        >
-          <View
-            accessibilityLabel="Valider et continuer"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "borderRadius": 24,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
-              }
-            }
-            testID="Valider et continuer"
-          >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 5,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-              textColor="#ffffff"
-            >
-              Valider et continuer
-            </Text>
           </View>
         </View>
       </View>

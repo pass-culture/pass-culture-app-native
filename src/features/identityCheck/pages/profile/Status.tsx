@@ -39,9 +39,7 @@ export const Status = () => {
   return (
     <PageWithHeader
       title={t`Profil`}
-      fixedTopChildren={
-        <CenteredTitle title={t`Sélectionne ton statut`} />
-      }
+      fixedTopChildren={<CenteredTitle title={t`Sélectionne ton statut`} />}
       scrollChildren={
         <React.Fragment>
           {statuses.map((status) => (

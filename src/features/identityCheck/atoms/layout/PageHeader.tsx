@@ -17,10 +17,10 @@ interface Props {
 }
 
 export const PageHeader: React.FC<Props> = (props) => (
-    <HeaderContainer>
-      <Title>{props.title}</Title>
-      <BackIcon/>
-    </HeaderContainer>
+  <HeaderContainer>
+    <Title>{props.title}</Title>
+    <BackIcon />
+  </HeaderContainer>
 )
 
 const HeaderContainer = styled.View({
@@ -32,17 +32,12 @@ const HeaderContainer = styled.View({
 
 const Title = styled(Typo.Title4).attrs({
   color: ColorsEnum.WHITE,
-})({
-  flex: 1,
-  textAlign: 'center',
-})
+})({ flex: 1, textAlign: 'center' })
 
 const BackIcon = () => {
   const { goBack } = useGoBack(...homeNavConfig)
   return (
-    <StyledTouchableOpacity
-      onPress={goBack}
-      {...accessibilityAndTestId(t`Revenir en arrière`)}>
+    <StyledTouchableOpacity onPress={goBack} {...accessibilityAndTestId(t`Revenir en arrière`)}>
       <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
     </StyledTouchableOpacity>
   )
@@ -50,7 +45,4 @@ const BackIcon = () => {
 
 const StyledTouchableOpacity = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,
-})({
-  position: 'absolute',
-  left: getSpacing(3),
-})
+})({ position: 'absolute', left: getSpacing(3) })

@@ -37,6 +37,4 @@ export const IdentityCheckStart = () => {
   )
 }
 
-export const Container = styled.View({
-    alignItems: 'center'
-})
+const Container = styled.View({ alignItems: 'center' })
