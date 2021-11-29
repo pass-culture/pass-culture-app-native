@@ -43,10 +43,10 @@ export const PageWithHeader = (props: Props) => {
           onLayout={onFixedBottomChildrenViewLayout}
           testID="fixed-bottom-children">
           {props.fixedBottomChildren}
+          <Spacer.BottomScreen />
         </FixedBottomChildrenView>
       </CustomKeyboardAvoidingView>
       <Background />
-      <Spacer.BottomScreen />
     </Container>
   )
 }

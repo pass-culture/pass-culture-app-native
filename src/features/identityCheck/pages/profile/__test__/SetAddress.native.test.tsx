@@ -40,6 +40,9 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
+// eslint-disable-next-line local-rules/no-allow-console
+allowConsole({ error: true })
+
 describe('<SetAddress/>', () => {
   it('should render correctly', () => {
     const renderAPI = renderSetAddresse()
@@ -68,18 +71,16 @@ describe('<SetAddress/>', () => {
     })
   })
 
-  // TODO(antoinewg): make this test work
-  xit('should save address when clicking on "Continuer"', async () => {
+  it('should save address when clicking on "Continuer"', async () => {
     mockAddressesApiCall(mockedSuggestedPlaces)
 
-    const { getByText, findByText, getByPlaceholderText } = renderSetAddresse()
+    const { getByText, getByPlaceholderText } = renderSetAddresse()
 
     const input = getByPlaceholderText("Ex : 34 avenue de l'Opéra")
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    const secondAddress = await findByText(mockedSuggestedPlaces.features[1].properties.label)
-
-    fireEvent.press(secondAddress)
+    await waitFor(() => getByText(mockedSuggestedPlaces.features[1].properties.label))
+    fireEvent.press(getByText(mockedSuggestedPlaces.features[1].properties.label))
     fireEvent.press(getByText('Continuer'))
 
     await waitFor(() => {
@@ -95,12 +96,21 @@ describe('<SetAddress/>', () => {
   // TODO(antoinewg): make this test work
   xit('should show the generic error message if the API call returns error', async () => {
     mockAddressesApiCallError()
+    const mockedGetCitiesSpy = jest.spyOn(fetchAddresses, 'fetchAddresses')
+
     const { getByPlaceholderText } = renderSetAddresse()
 
     const input = getByPlaceholderText("Ex : 34 avenue de l'Opéra")
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => {
+      expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, {
+        query: QUERY_ADDRESS,
+        postalCode: QUERY_POSTAL_CODE,
+        limit: 10,
+        cityCode: QUERY_CITY_CODE,
+      })
+
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`,
         timeout: 5000,

@@ -447,6 +447,17 @@ Array [
                   Commencer la vérification
                 </Text>
               </View>
+              <View
+                customHeight={8}
+                enable={true}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
             </View>
           </View>
         </View>
@@ -479,17 +490,6 @@ Array [
         </Text>
       </View>
     </View>
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>,
   <Modal
     animationType="none"

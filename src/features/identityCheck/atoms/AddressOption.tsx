@@ -32,18 +32,22 @@ export const AddressOption = ({ optionKey, label, onPressOption, selected }: Pro
     </React.Fragment>
   )
 }
-const StyledTouchableOpacity = styled.TouchableOpacity({
+
+const StyledTouchableOpacity = styled.TouchableOpacity(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'flex-start',
-  paddingVertical: getSpacing(3),
-})
+  paddingVertical: theme.isMobileViewport ? getSpacing(3) : getSpacing(5),
+}))
+
 const TextContainer = styled.View({
   flex: 1,
   justifyContent: 'center',
 })
+
 const StyledBody = styled(Typo.Body)<{ selected: boolean }>(({ selected }) => ({
   fontWeight: selected ? 'bold' : 'normal',
 }))
+
 const IconContainer = styled.View({
   position: 'absolute',
   right: 0,

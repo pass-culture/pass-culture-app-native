@@ -202,7 +202,6 @@ msgstr "Ajouté récemment"
 msgid "Anniversaire 18 ans"
 msgstr "Anniversaire 18 ans"
 
-#: src/features/identityCheck/pages/profile/CityModal.tsx
 #: src/libs/itinerary/useItinerary.ts
 msgid "Annuler"
 msgstr "Annuler"
@@ -356,7 +355,7 @@ msgstr "Catégories"
 msgid "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
-#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+#: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001)."
 msgstr "Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001)."
 
@@ -450,10 +449,6 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
-
-#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
-msgid "Code postal"
-msgstr "Code postal"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Code postal - Formulaire"
@@ -601,8 +596,8 @@ msgstr "Contacter le support"
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
+#: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
-#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Continuer"
@@ -655,8 +650,7 @@ msgstr "Culture scientifique"
 msgid "C’est très rapide !"
 msgstr "C’est très rapide !"
 
-#: src/features/identityCheck/pages/profile/CityModal.tsx
-#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+#: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Dans quelle ville résides-tu ?"
 msgstr "Dans quelle ville résides-tu ?"
 
@@ -903,7 +897,7 @@ msgstr "Entrée pour l'email"
 msgid "Entrée pour la date de naissance"
 msgstr "Entrée pour la date de naissance"
 
-#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+#: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Entrée pour le code postal"
 msgstr "Entrée pour le code postal"
 
@@ -985,7 +979,7 @@ msgstr "Etablissement scolaire - Sélection"
 msgid "Ex : 34 avenue de l'Opéra"
 msgstr "Ex : 34 avenue de l'Opéra"
 
-#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+#: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Ex : 75017"
 msgstr "Ex : 75017"
 
@@ -1144,6 +1138,10 @@ msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Importer le lien"
 msgstr "Importer le lien"
+
+#: src/features/identityCheck/pages/profile/SetCity.tsx
+msgid "Indique ton code postal et choisis ta ville"
+msgstr "Indique ton code postal et choisis ta ville"
 
 #: src/features/profile/pages/PersonalData.tsx
 #: src/features/profile/pages/Profile.tsx
@@ -1628,7 +1626,7 @@ msgstr "Nous avons besoin de connaître ton âge."
 msgid "Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard."
 msgstr "Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard."
 
-#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
+#: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard."
 msgstr "Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard."
 
@@ -1827,10 +1825,6 @@ msgstr "Place-toi dans un lieu bien éclairé"
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
-#: src/features/identityCheck/pages/profile/CityModal.tsx
-msgid "Plusieurs villes sont associées à ce code postal, sélectionne la tienne."
-msgstr "Plusieurs villes sont associées à ce code postal, sélectionne la tienne."
-
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
@@ -1896,10 +1890,9 @@ msgstr "Problème technique ;("
 msgid "Problèmes pour ouvrir un lien ?"
 msgstr "Problèmes pour ouvrir un lien ?"
 
-#: src/features/auth/signup/SetName/SetName.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
+#: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
-#: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/TabBar/routes.ts
@@ -1910,8 +1903,12 @@ msgid "Profil"
 msgstr "Profil"
 
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
-msgid "Proposition d'adresse {0} : {option}"
-msgstr "Proposition d'adresse {0} : {option}"
+msgid "Proposition d'adresse {0} : {address}"
+msgstr "Proposition d'adresse {0} : {address}"
+
+#: src/features/identityCheck/pages/profile/SetCity.tsx
+msgid "Proposition de ville {0} : {1}"
+msgstr "Proposition de ville {0} : {1}"
 
 #: src/features/favorites/pages/FavoritesSorts.tsx
 msgid "Proximité géographique"
@@ -2109,6 +2106,7 @@ msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
+#: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/search/components/SearchBox.tsx
 msgid "Réinitialiser la recherche"
 msgstr "Réinitialiser la recherche"

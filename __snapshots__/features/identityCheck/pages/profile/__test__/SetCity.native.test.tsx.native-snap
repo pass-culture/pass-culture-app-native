@@ -206,7 +206,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                   ]
                 }
               >
-                Code postal
+                Indique ton code postal et choisis ta ville
               </Text>
               <View
                 numberOfSpaces={2}
@@ -370,6 +370,17 @@ exports[`<SetCity/> should render correctly 1`] = `
                 Continuer
               </Text>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>
@@ -402,16 +413,5 @@ exports[`<SetCity/> should render correctly 1`] = `
       </Text>
     </View>
   </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 8,
-        },
-      ]
-    }
-  />
 </View>
 `;

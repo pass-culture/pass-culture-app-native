@@ -752,6 +752,17 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
                 Choisis ton statut
               </Text>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>
@@ -784,16 +795,5 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
       </Text>
     </View>
   </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 8,
-        },
-      ]
-    }
-  />
 </View>
 `;

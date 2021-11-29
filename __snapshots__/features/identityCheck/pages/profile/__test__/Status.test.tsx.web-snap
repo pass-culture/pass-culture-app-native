@@ -1074,6 +1074,14 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
                 Choisis ton statut
               </div>
             </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "height": "8px",
+                }
+              }
+            />
           </div>
         </div>
       </div>
@@ -1105,13 +1113,5 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "8px",
-      }
-    }
-  />
 </div>
 `;

@@ -437,6 +437,17 @@ exports[`<SetName/> should render correctly 1`] = `
                 Continuer
               </Text>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>
@@ -469,16 +480,5 @@ exports[`<SetName/> should render correctly 1`] = `
       </Text>
     </View>
   </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 8,
-        },
-      ]
-    }
-  />
 </View>
 `;

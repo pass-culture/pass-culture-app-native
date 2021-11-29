@@ -9,14 +9,13 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
-import { isPostalCodeValid } from 'features/identityCheck/utils/ValidatePostalCode'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place'
 import { useCities } from 'libs/place/useCities'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-// import { InputError } from 'ui/components/inputs/InputError'
+import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -30,10 +29,10 @@ export const SetCity = () => {
   const [query, setQuery] = useState('')
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
   const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(null)
-  // const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const debouncedSetCity = useRef(debounce(setDebouncedPostalCode, 500)).current
-  const { data: cities = [], isError } = useCities(debouncedPostalCode)
+  const { data: cities = [], isError, isSuccess } = useCities(debouncedPostalCode)
 
   useEffect(() => {
     if (!isError) return
@@ -48,11 +47,18 @@ export const SetCity = () => {
     )
   }, [isError])
 
+  useEffect(() => {
+    if (isSuccess && cities.length === 0)
+      setErrorMessage(
+        t`Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).`
+      )
+  }, [isSuccess, cities.length])
+
   const onChangePostalCode = (value: string) => {
     setQuery(value)
     debouncedSetCity(value)
     setSelectedCity(null)
-    // setErrorMessage(null)
+    setErrorMessage(null)
   }
 
   const onPostalCodeSelection = (cityCode: string) => {
@@ -65,7 +71,7 @@ export const SetCity = () => {
     setQuery('')
     setDebouncedPostalCode('')
     setSelectedCity(null)
-    // setErrorMessage(null)
+    setErrorMessage(null)
   }
 
   const RightIcon = () => (
@@ -84,8 +90,6 @@ export const SetCity = () => {
     }
   }
 
-  const disabled = typeof selectedCity?.name === 'undefined'
-
   return (
     <React.Fragment>
       <PageWithHeader
@@ -97,7 +101,7 @@ export const SetCity = () => {
               autoFocus
               onChangeText={onChangePostalCode}
               value={query}
-              label={t`Code postal`}
+              label={t`Indique ton code postal et choisis ta ville`}
               placeholder={t`Ex : 75017`}
               textContentType="postalCode"
               keyboardType="number-pad"
@@ -105,9 +109,9 @@ export const SetCity = () => {
               RightIcon={() => (query.length > 0 ? <RightIcon /> : null)}
               {...accessibilityAndTestId(t`Entrée pour le code postal`)}
             />
-            {/* {!!errorMessage && (
+            {!!errorMessage && (
               <InputError messageId={errorMessage} numberOfSpacesTop={2} visible />
-            )} */}
+            )}
             <Spacer.Column numberOfSpaces={2} />
             {cities.map((city: SuggestedCity, index: number) => (
               <AddressOption
@@ -125,7 +129,7 @@ export const SetCity = () => {
           <ButtonPrimary
             onPress={() => onSubmit(selectedCity)}
             title={t`Continuer`}
-            disabled={disabled}
+            disabled={selectedCity === null}
           />
         }
       />

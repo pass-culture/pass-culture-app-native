@@ -376,6 +376,17 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                 Valider et continuer
               </Text>
             </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>
@@ -408,16 +419,5 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
       </Text>
     </View>
   </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 8,
-        },
-      ]
-    }
-  />
 </View>
 `;
