@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SetPostalCode } from 'features/identityCheck/pages/profile/SetPostalCode'
+import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { CITIES_API_URL } from 'libs/place'
 import * as fetchCities from 'libs/place/fetchCities'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
@@ -12,29 +12,30 @@ import { server } from 'tests/server'
 import { cleanup, fireEvent, render, waitFor } from 'tests/utils'
 
 const POSTAL_CODE = '83570'
-
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
   useIdentityCheckContext: () => ({ dispatch: mockDispatch }),
 }))
 
-describe('<SetPostalCode/>', () => {
+// eslint-disable-next-line local-rules/no-allow-console
+allowConsole({ error: true })
+
+describe('<SetCity/>', () => {
   afterEach(cleanup)
 
   it('should render correctly', () => {
-    const renderAPI = renderSetPostaCode()
+    const renderAPI = renderSetCity()
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should display error message when clicking on "Continuer" button and no city is found', async () => {
+  it('should display error message when the user enters a valid postal code but no city found', async () => {
     mockCitiesApiCall([])
     const mockedGetCitiesSpy = jest.spyOn(fetchCities, 'fetchCities')
 
-    const { getByText, getByPlaceholderText } = renderSetPostaCode()
+    const { getByText, getByPlaceholderText } = renderSetCity()
 
     const input = getByPlaceholderText('Ex : 75017')
     fireEvent.changeText(input, POSTAL_CODE)
-    fireEvent.press(getByText('Continuer'))
 
     await waitFor(() => {
       expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, POSTAL_CODE)
@@ -44,39 +45,40 @@ describe('<SetPostalCode/>', () => {
     })
   })
 
-  it('should display cities modal when clicking on "Continuer" button and multiple cities are found', async () => {
+  it('should display cities when the user enters a valid postal code', async () => {
     mockCitiesApiCall(mockedSuggestedCities)
     const mockedGetCitiesSpy = jest.spyOn(fetchCities, 'fetchCities')
 
-    const { getByText, getByPlaceholderText } = renderSetPostaCode()
+    const { getByText, getByPlaceholderText } = renderSetCity()
 
     const input = getByPlaceholderText('Ex : 75017')
     fireEvent.changeText(input, POSTAL_CODE)
-    fireEvent.press(getByText('Continuer'))
 
     await waitFor(() => {
       expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, POSTAL_CODE)
       getByText(mockedSuggestedCities[0].nom)
       getByText(mockedSuggestedCities[1].nom)
-      expect(navigate).not.toBeCalled()
     })
   })
 
-  it('should save city when clicking on "Continuer" and only one city found', async () => {
+  it('should save city when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
-    mockCitiesApiCall([city])
+    mockCitiesApiCall(mockedSuggestedCities)
     const mockedGetCitiesSpy = jest.spyOn(fetchCities, 'fetchCities')
 
-    const { getByText, getByPlaceholderText } = renderSetPostaCode()
+    const { getByText, getByPlaceholderText } = renderSetCity()
 
     const input = getByPlaceholderText('Ex : 75017')
     fireEvent.changeText(input, POSTAL_CODE)
+
+    await waitFor(() => getByText(city.nom))
+    fireEvent.press(getByText(city.nom))
     fireEvent.press(getByText('Continuer'))
 
     await waitFor(() => {
       expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, POSTAL_CODE)
-      getByText(city.nom)
-      expect(navigate).not.toBeCalled()
+      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toBeCalledWith('IdentityCheckAddress')
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_CITY',
         payload: {
@@ -89,9 +91,9 @@ describe('<SetPostalCode/>', () => {
   })
 })
 
-function renderSetPostaCode() {
+function renderSetCity() {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  return render(reactQueryProviderHOC(<SetPostalCode />))
+  return render(reactQueryProviderHOC(<SetCity />))
 }
 
 function mockCitiesApiCall(response: CitiesResponse) {

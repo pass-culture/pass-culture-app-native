@@ -7,17 +7,20 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
-  onPressOption: (option: string) => void
-  option: string
+  onPressOption: (optionKey: string) => void
+  optionKey: string
+  label: string
   selected: boolean
 }
 
-export const AddressOption = ({ option, onPressOption, selected }: Props) => {
+export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
   return (
-    <Container>
-      <StyledTouchableOpacity onPress={() => onPressOption(option)} activeOpacity={ACTIVE_OPACITY}>
+    <React.Fragment>
+      <StyledTouchableOpacity
+        onPress={() => onPressOption(optionKey)}
+        activeOpacity={ACTIVE_OPACITY}>
         <TextContainer>
-          <StyledBody selected={selected}>{option}</StyledBody>
+          <StyledBody selected={selected}>{label}</StyledBody>
           {selected ? (
             <IconContainer>
               <Validate color={ColorsEnum.PRIMARY} />
@@ -26,19 +29,15 @@ export const AddressOption = ({ option, onPressOption, selected }: Props) => {
         </TextContainer>
       </StyledTouchableOpacity>
       <Separator />
-    </Container>
+    </React.Fragment>
   )
 }
 
-const Container = styled.View({
-  paddingHorizontal: getSpacing(4),
-})
-
-const StyledTouchableOpacity = styled.TouchableOpacity({
+const StyledTouchableOpacity = styled.TouchableOpacity(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'flex-start',
-  paddingVertical: getSpacing(3),
-})
+  paddingVertical: theme.isMobileViewport ? getSpacing(3) : getSpacing(5),
+}))
 
 const TextContainer = styled.View({
   flex: 1,

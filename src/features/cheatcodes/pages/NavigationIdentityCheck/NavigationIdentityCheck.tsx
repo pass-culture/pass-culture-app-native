@@ -36,7 +36,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         <LinkToComponent name="IdentityCheckStart" />
         <LinkToComponent name="SetName" />
         <LinkToComponent name="IdentityCheckAddress" title="SetAddress" />
-        <LinkToComponent name="IdentityCheckPostalCode" title="SetPostalCode" />
+        <LinkToComponent name="IdentityCheckCity" title="SetCity" />
         <LinkToComponent name="IdentityCheckEnd" />
         <LinkToComponent name="IdentityCheckHonor" />
         <Row half>

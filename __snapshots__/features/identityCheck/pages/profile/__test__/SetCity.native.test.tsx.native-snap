@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetName/> should render correctly 1`] = `
+exports[`<SetCity/> should render correctly 1`] = `
 <View
   style={
     Array [
@@ -169,7 +169,7 @@ exports[`<SetName/> should render correctly 1`] = `
                 ]
               }
             >
-              Comment t'appelles-tu ?
+              Dans quelle ville résides-tu ?
             </Text>
           </View>
           <RCTScrollView
@@ -206,7 +206,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   ]
                 }
               >
-                Prénom
+                Indique ton code postal et choisis ta ville
               </Text>
               <View
                 numberOfSpaces={2}
@@ -249,10 +249,12 @@ exports[`<SetName/> should render correctly 1`] = `
                 }
               >
                 <TextInput
+                  keyboardType="number-pad"
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}
-                  placeholder="Ton prénom"
+                  onSubmitEditing={[Function]}
+                  placeholder="Ex : 75017"
                   placeholderTextColor="#626262"
                   style={
                     Array [
@@ -271,33 +273,20 @@ exports[`<SetName/> should render correctly 1`] = `
                       },
                     ]
                   }
+                  textContentType="postalCode"
                   value=""
                 />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "position": "absolute",
+                        "right": 4,
+                      },
+                    ]
+                  }
+                />
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  Array [
-                    Object {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Nom
-              </Text>
               <View
                 numberOfSpaces={2}
                 style={
@@ -308,62 +297,6 @@ exports[`<SetName/> should render correctly 1`] = `
                   ]
                 }
               />
-              <View
-                borderColor="#c7c7cc"
-                height="small"
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 4,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 4,
-                      "shadowColor": "#151515",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 6,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <TextInput
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="Ton nom"
-                  placeholderTextColor="#626262"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                    ]
-                  }
-                  value=""
-                />
-              </View>
             </View>
           </RCTScrollView>
           <View

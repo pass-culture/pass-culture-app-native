@@ -26,7 +26,7 @@ export const SetName = () => {
   function submitName() {
     if (!disabled) {
       dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
-      navigate('IdentityCheckPostalCode')
+      navigate('IdentityCheckCity')
     }
   }
 

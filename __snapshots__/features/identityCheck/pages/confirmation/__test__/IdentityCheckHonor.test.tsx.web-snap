@@ -489,6 +489,14 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                 Valider et continuer
               </div>
             </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "height": "8px",
+                }
+              }
+            />
           </div>
         </div>
       </div>
@@ -520,13 +528,5 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "8px",
-      }
-    }
-  />
 </div>
 `;
