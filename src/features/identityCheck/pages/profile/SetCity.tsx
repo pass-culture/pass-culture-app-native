@@ -17,7 +17,7 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export const SetPostalCode = () => {
+export const SetCity = () => {
   const { visible: isModalVisible, showModal, hideModal } = useModal(false)
   const { showErrorSnackBar } = useSnackBarContext()
   const [postalCode, setPostalCode] = useState('')
