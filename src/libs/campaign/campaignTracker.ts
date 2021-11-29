@@ -42,13 +42,15 @@ function useInit() {
 }
 
 async function logEvent(event: CampaignEvents, params: Record<string, unknown>): Promise<void> {
+  if (__DEV__) return
   await appsFlyer.logEvent(event, params)
 }
 
 async function getUserId(): Promise<string | undefined> {
+  if (__DEV__) return 'devAppsFlyerUserId'
   const appsFlyerUserIdPromise: Promise<string | undefined> = new Promise((resolve, reject) => {
     const getAppsFlyerUIDCallback = (error: Error, uid: string) => {
-      error && new MonitoringError(error.message, 'ApssFlyer_getUID') && reject(error)
+      error && new MonitoringError(error.message, 'AppsFlyer_getUID') && reject(error)
       resolve(uid)
     }
     appsFlyer.getAppsFlyerUID(getAppsFlyerUIDCallback)
