@@ -143,6 +143,7 @@ describe('fetchAlgolia', () => {
       expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
       expect(getObjects).toHaveBeenCalledWith(queryIds, {
         attributesToRetrieve,
+        numericFilters: [['offer.prices: 0 TO 300']],
       })
     })
   })
