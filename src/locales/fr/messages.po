@@ -99,7 +99,6 @@ msgstr "Abandonner"
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
-#: src/features/auth/signup/SetName/SetName.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Abandonner l'inscription"
@@ -166,10 +165,6 @@ msgstr "Adresse - Formulaire"
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
-
-#: src/features/identityCheck/pages/profile/SetAddress.tsx
-msgid "Adresse sélectionnée"
-msgstr "Adresse sélectionnée"
 
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "Afficher les 999+ résultats"
@@ -476,7 +471,7 @@ msgstr "Colle ton lien ici ..."
 msgid "Commencer la vérification"
 msgstr "Commencer la vérification"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Comment t'appelles-tu ?"
 msgstr "Comment t'appelles-tu ?"
 
@@ -520,7 +515,9 @@ msgstr "Conditions d'utilisations"
 msgid "Confidentialité"
 msgstr "Confidentialité"
 
+#: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Confirmation"
 msgstr "Confirmation"
 
@@ -602,13 +599,13 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
-#: src/features/auth/signup/SetName/SetName.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 #: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
@@ -699,6 +696,10 @@ msgstr "Demande envoyée !"
 #: src/features/bookings/helpers.ts
 msgid "Dernier jour pour retirer"
 msgstr "Dernier jour pour retirer"
+
+#: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
+msgid "Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées."
+msgstr "Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées."
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
 msgid "Des nouveautés"
@@ -952,7 +953,7 @@ msgstr "Entrée pour le jour de la date de naissance"
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Entrée pour le nom"
 msgstr "Entrée pour le nom"
 
@@ -960,7 +961,7 @@ msgstr "Entrée pour le nom"
 msgid "Entrée pour le numéro de téléphone"
 msgstr "Entrée pour le numéro de téléphone"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Entrée pour le prénom"
 msgstr "Entrée pour le prénom"
 
@@ -1208,6 +1209,10 @@ msgstr "JJ"
 msgid "Je cherche"
 msgstr "Je cherche"
 
+#: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
+msgid "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
+msgstr "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
+
 #: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
 msgid "Je découvre les offres"
 msgstr "Je découvre les offres"
@@ -1374,6 +1379,10 @@ msgstr "Les informations provenant d'ÉduConnect indiquent que vous êtes le rep
 #: src/features/identityCheck/pages/QuitIdentityCheckModal.tsx
 msgid "Les informations que tu as renseignées ne seront pas enregistrées."
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées."
+
+#: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
+msgid "Les informations que tu as renseignées sont-elles correctes ?"
+msgstr "Les informations que tu as renseignées sont-elles correctes ?"
 
 #: src/libs/geolocation/enums.ts
 msgid "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
@@ -1574,7 +1583,7 @@ msgstr "Ne pas annuler"
 msgid "Ne pas archiver"
 msgstr "Ne pas archiver"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Nom"
 msgstr "Nom"
 
@@ -1582,9 +1591,9 @@ msgstr "Nom"
 msgid "Nom de la réservation"
 msgstr "Nom de la réservation"
 
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Nom prénom - Formulaire"
-msgstr "Nom prénom - Formulaire"
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Nom/prénom - Formulaire"
+msgstr "Nom/prénom - Formulaire"
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Nombre de place"
@@ -1892,6 +1901,7 @@ msgid "Problèmes pour ouvrir un lien ?"
 msgstr "Problèmes pour ouvrir un lien ?"
 
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 #: src/features/identityCheck/pages/profile/SetPostalCode.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
@@ -1910,7 +1920,7 @@ msgstr "Proposition d'adresse {0} : {option}"
 msgid "Proximité géographique"
 msgstr "Proximité géographique"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Prénom"
 msgstr "Prénom"
 
@@ -2048,7 +2058,6 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
-#: src/features/auth/signup/SetName/SetName.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
@@ -2281,11 +2290,9 @@ msgstr "Supprimer mon compte"
 msgid "Sélectionne ton statut"
 msgstr "Sélectionne ton statut"
 
-
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 msgstr "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
-
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEnd.tsx
 msgid "Ta pièce d’identité a bien été transmise !"
@@ -2353,11 +2360,11 @@ msgstr "Ton mot de passe a été modifié !"
 msgid "Ton mot de passe actuel"
 msgstr "Ton mot de passe actuel"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton nom"
 msgstr "Ton nom"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 msgstr "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 
@@ -2365,11 +2372,11 @@ msgstr "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton prénom"
 msgstr "Ton prénom"
 
-#: src/features/auth/signup/SetName/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux."
 msgstr "Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux."
 
@@ -2679,6 +2686,10 @@ msgstr "Valider"
 #: src/features/bookOffer/components/BookingEventChoices.tsx
 msgid "Valider ces options"
 msgstr "Valider ces options"
+
+#: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
+msgid "Valider et continuer"
+msgstr "Valider et continuer"
 
 #: src/features/search/components/CalendarPicker.ios.tsx
 #: src/features/search/components/CalendarPicker.web.tsx
