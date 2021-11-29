@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
@@ -26,6 +26,11 @@ export const IdentityCheckStepper = () => {
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(false)
+
+  useEffect(() => {
+    if (context.step === null && steps[0])
+      context.dispatch({ type: 'SET_STEP', payload: steps[0].name })
+  }, [steps.length])
 
   return (
     <React.Fragment>
