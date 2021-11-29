@@ -525,6 +525,10 @@ jobs:
       - copy_assetlinks_testing
       - install_node_modules
       - setup_sentry
+      - run:
+          name: SENTRY_LOG_LEVEL
+          command: |
+            export SENTRY_LOG_LEVEL="debug webpack -c web/config/webpack.config.js"
       - authenticate_gcp:
           gcp_key_name: GCP_APP_NATIVE_KEY
       - build_web:
@@ -752,7 +756,9 @@ workflows:
             tags:
               ignore: /.*/
             branches:
-              only: master
+              only:
+                - PC-10087
+                - master
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
