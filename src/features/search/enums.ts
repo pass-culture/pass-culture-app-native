@@ -1,6 +1,6 @@
 import { SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor'
+import CategoryIconDeprecated from 'ui/svg/icons/categories/bicolor_deprecated'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
 export enum DATE_FILTER_OPTIONS {
@@ -24,57 +24,57 @@ export type CategoryCriteria = {
   }
 }
 
-export const CATEGORY_CRITERIA: CategoryCriteria = {
+export const CATEGORY_CRITERIA_DEPRECATED: CategoryCriteria = {
   [SearchGroupNameEnum.NONE]: {
-    icon: CategoryIcon.All,
+    icon: CategoryIconDeprecated.All,
     facetFilter: SearchGroupNameEnum.NONE,
   },
   [SearchGroupNameEnum.CINEMA]: {
-    icon: CategoryIcon.Cinema,
+    icon: CategoryIconDeprecated.Cinema,
     facetFilter: SearchGroupNameEnum.CINEMA,
   },
   [SearchGroupNameEnum.VISITE]: {
-    icon: CategoryIcon.Exposition,
+    icon: CategoryIconDeprecated.Exposition,
     facetFilter: SearchGroupNameEnum.VISITE,
   },
   [SearchGroupNameEnum.MUSIQUE]: {
-    icon: CategoryIcon.Musique,
+    icon: CategoryIconDeprecated.Musique,
     facetFilter: SearchGroupNameEnum.MUSIQUE,
   },
   [SearchGroupNameEnum.SPECTACLE]: {
-    icon: CategoryIcon.Spectacles,
+    icon: CategoryIconDeprecated.Spectacles,
     facetFilter: SearchGroupNameEnum.SPECTACLE,
   },
   [SearchGroupNameEnum.COURS]: {
-    icon: CategoryIcon.Atelier,
+    icon: CategoryIconDeprecated.Atelier,
     facetFilter: SearchGroupNameEnum.COURS,
   },
   [SearchGroupNameEnum.LIVRE]: {
-    icon: CategoryIcon.Livres,
+    icon: CategoryIconDeprecated.Livres,
     facetFilter: SearchGroupNameEnum.LIVRE,
   },
   [SearchGroupNameEnum.FILM]: {
-    icon: CategoryIcon.Streaming,
+    icon: CategoryIconDeprecated.Streaming,
     facetFilter: SearchGroupNameEnum.FILM,
   },
   [SearchGroupNameEnum.PRESSE]: {
-    icon: CategoryIcon.Presse,
+    icon: CategoryIconDeprecated.Presse,
     facetFilter: SearchGroupNameEnum.PRESSE,
   },
   [SearchGroupNameEnum.JEU]: {
-    icon: CategoryIcon.JeuxVideo,
+    icon: CategoryIconDeprecated.JeuxVideo,
     facetFilter: SearchGroupNameEnum.JEU,
   },
   [SearchGroupNameEnum.CONFERENCE]: {
-    icon: CategoryIcon.Conference,
+    icon: CategoryIconDeprecated.Conference,
     facetFilter: SearchGroupNameEnum.CONFERENCE,
   },
   [SearchGroupNameEnum.INSTRUMENT]: {
-    icon: CategoryIcon.Instrument,
+    icon: CategoryIconDeprecated.Instrument,
     facetFilter: SearchGroupNameEnum.INSTRUMENT,
   },
   [SearchGroupNameEnum.MATERIEL]: {
-    icon: CategoryIcon.ArtsMaterial,
+    icon: CategoryIconDeprecated.ArtsMaterial,
     facetFilter: SearchGroupNameEnum.MATERIEL,
   },
 }
