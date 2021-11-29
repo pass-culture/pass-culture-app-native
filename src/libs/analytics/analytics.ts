@@ -88,6 +88,10 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId }),
   logClickBookOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId }),
+  logIdentityCheckAbort: (params: { status: string; returnReason: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, params),
+  logIdentityCheckComplete: (params: { status: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_COMPLETE, params),
   logOfferSeenDuration: (offerId: number, duration: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration }),
   logHasAddedOfferToFavorites: (params: {
