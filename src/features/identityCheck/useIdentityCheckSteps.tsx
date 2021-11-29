@@ -14,7 +14,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       name: IdentityCheckStep.PROFILE,
       icon: ProfileIcon,
       label: t`Profil`,
-      screens: ['IdentityCheckCity', 'IdentityCheckStatus'],
+      screens: ['IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
     },
     {
       name: IdentityCheckStep.IDENTIFICATION,

@@ -1,8 +1,9 @@
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
+import styled from 'styled-components/native'
 
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
@@ -40,10 +41,16 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
       )}
       <StyledInputContainer isFocus={isFocus} isError={customProps.isError}>
         <BaseTextInput {...nativeProps} ref={forwardedRef} onFocus={onFocus} onBlur={onBlur} />
-        {!!customProps.RightIcon && <RightIcon />}
+        {!!customProps.RightIcon && (
+          <RightIconContainer>
+            <RightIcon />
+          </RightIconContainer>
+        )}
       </StyledInputContainer>
     </React.Fragment>
   )
 }
 
 export const TextInput = forwardRef<RNTextInput, TextInputProps>(WithRefTextInput)
+
+const RightIconContainer = styled.View({ position: 'absolute', right: getSpacing(1) })

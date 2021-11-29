@@ -1,69 +1,87 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import debounce from 'lodash.debounce'
+import React, { useEffect, useRef, useState } from 'react'
+import { Keyboard, TouchableOpacity } from 'react-native'
 
+import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
-import { CityModal } from 'features/identityCheck/pages/profile/CityModal'
 import { isPostalCodeValid } from 'features/identityCheck/utils/ValidatePostalCode'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place'
 import { useCities } from 'libs/place/useCities'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { InputError } from 'ui/components/inputs/InputError'
+// import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
-import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Spacer } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const SetCity = () => {
-  const { visible: isModalVisible, showModal, hideModal } = useModal(false)
   const { showErrorSnackBar } = useSnackBarContext()
-  const [postalCode, setPostalCode] = useState('')
-  const { data: cities, isError, isLoading, refetch } = useCities(postalCode)
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch } = useIdentityCheckContext()
+  const [query, setQuery] = useState('')
+  const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
+  const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(null)
+  // const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  function onPostalCodeChange(value: string) {
-    setPostalCode(value)
-    setErrorMessage(null)
-  }
-
-  function saveCity(city: SuggestedCity) {
-    dispatch({ type: 'SET_CITY', payload: city })
-  }
+  const debouncedSetCity = useRef(debounce(setDebouncedPostalCode, 500)).current
+  const { data: cities = [], isError } = useCities(debouncedPostalCode)
 
   useEffect(() => {
-    if (isError) {
-      showErrorSnackBar({
-        message: t`Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.`,
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      eventMonitoring.captureException(
-        new IdentityCheckError('Failed to fetch data from API: https://geo.api.gouv.fr/communes')
-      )
-    }
+    if (!isError) return
+
+    showErrorSnackBar({
+      message: t`Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+
+    eventMonitoring.captureException(
+      new IdentityCheckError('Failed to fetch data from API: https://geo.api.gouv.fr/communes')
+    )
   }, [isError])
 
-  useEffect(() => {
-    if (typeof cities === 'undefined') return
-    if (cities.length === 0)
-      setErrorMessage(
-        t`Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).`
-      )
-    if (cities.length === 1) saveCity(cities[0])
-    if (cities.length > 1) showModal()
-  }, [cities?.length])
-
-  async function onPress() {
-    setErrorMessage(null)
-    await refetch()
+  const onChangePostalCode = (value: string) => {
+    setQuery(value)
+    debouncedSetCity(value)
+    setSelectedCity(null)
+    // setErrorMessage(null)
   }
 
-  function onSubmitCity(city: SuggestedCity) {
-    saveCity(city)
-    hideModal()
+  const onPostalCodeSelection = (cityCode: string) => {
+    const city = cities.find((city: SuggestedCity) => city.code === cityCode)
+    setSelectedCity(city || null)
+    Keyboard.dismiss()
+  }
+
+  const resetSearch = () => {
+    setQuery('')
+    setDebouncedPostalCode('')
+    setSelectedCity(null)
+    // setErrorMessage(null)
+  }
+
+  const RightIcon = () => (
+    <TouchableOpacity
+      activeOpacity={ACTIVE_OPACITY}
+      onPress={resetSearch}
+      {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
+      <Invalidate />
+    </TouchableOpacity>
+  )
+
+  const onSubmit = (city: SuggestedCity | null) => {
+    if (selectedCity) {
+      dispatch({ type: 'SET_CITY', payload: city })
+      navigate('IdentityCheckAddress')
+    }
   }
 
   return (
@@ -74,37 +92,40 @@ export const SetCity = () => {
         scrollChildren={
           <React.Fragment>
             <TextInput
-              autoCapitalize="none"
-              isError={false}
               autoFocus
-              onChangeText={onPostalCodeChange}
-              value={postalCode}
+              onChangeText={onChangePostalCode}
+              value={query}
               label={t`Code postal`}
               placeholder={t`Ex : 75017`}
               textContentType="postalCode"
               keyboardType="number-pad"
-              onSubmitEditing={onPress}
+              onSubmitEditing={() => onSubmit(selectedCity)}
+              RightIcon={() => (query.length > 0 ? <RightIcon /> : null)}
               {...accessibilityAndTestId(t`Entrée pour le code postal`)}
             />
-            {!!errorMessage && (
+            {/* {!!errorMessage && (
               <InputError messageId={errorMessage} numberOfSpacesTop={2} visible />
-            )}
+            )} */}
+            <Spacer.Column numberOfSpaces={2} />
+            {cities.map((city: SuggestedCity, index: number) => (
+              <AddressOption
+                label={city.name}
+                selected={city.name === selectedCity?.name}
+                onPressOption={onPostalCodeSelection}
+                optionKey={city.name}
+                key={city.name}
+                {...accessibilityAndTestId(t`Proposition de ville ${index + 1} : ${city.name}`)}
+              />
+            ))}
           </React.Fragment>
         }
         fixedBottomChildren={
           <ButtonPrimary
-            onPress={onPress}
+            onPress={() => onSubmit(selectedCity)}
             title={t`Continuer`}
-            disabled={!isPostalCodeValid(postalCode)}
-            isLoading={isLoading}
+            disabled={!isPostalCodeValid(query)}
           />
         }
-      />
-      <CityModal
-        cities={cities}
-        isVisible={isModalVisible}
-        onSubmit={onSubmitCity}
-        close={hideModal}
       />
     </React.Fragment>
   )

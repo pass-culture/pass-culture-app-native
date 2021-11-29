@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetAddress/> should render correctly 1`] = `
+exports[`<SetCity/> should render correctly 1`] = `
 <View
   style={
     Array [
@@ -169,7 +169,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 ]
               }
             >
-              Quelle est ton adresse ?
+              Dans quelle ville résides-tu ?
             </Text>
           </View>
           <RCTScrollView
@@ -206,7 +206,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   ]
                 }
               >
-                Recherche et sélectionne ton adresse
+                Code postal
               </Text>
               <View
                 numberOfSpaces={2}
@@ -249,11 +249,12 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 }
               >
                 <TextInput
+                  keyboardType="number-pad"
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}
                   onSubmitEditing={[Function]}
-                  placeholder="Ex : 34 avenue de l'Opéra"
+                  placeholder="Ex : 75017"
                   placeholderTextColor="#626262"
                   style={
                     Array [
@@ -272,7 +273,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                       },
                     ]
                   }
-                  textContentType="addressState"
+                  textContentType="postalCode"
                   value=""
                 />
                 <View

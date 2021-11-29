@@ -61,7 +61,7 @@ export const SetAddress = () => {
   const onChangeAddress = (value: string) => {
     setQuery(value)
     debouncedSetQuery(value)
-    setSelectedAddress('')
+    setSelectedAddress(null)
   }
 
   const onAddressSelection = (address: string) => {
@@ -72,7 +72,7 @@ export const SetAddress = () => {
   const resetSearch = () => {
     setQuery('')
     debouncedSetQuery('')
-    setSelectedAddress('')
+    setSelectedAddress(null)
   }
 
   const RightIcon = () => (
@@ -80,7 +80,7 @@ export const SetAddress = () => {
       activeOpacity={ACTIVE_OPACITY}
       onPress={resetSearch}
       {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-      <Invalidate size={24} />
+      <Invalidate />
     </TouchableOpacity>
   )
 
@@ -118,13 +118,14 @@ export const SetAddress = () => {
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
-          {addresses.map((option: string, index: number) => (
+          {addresses.map((address: string, index: number) => (
             <AddressOption
-              option={option}
-              selected={option === selectedAddress}
+              label={address}
+              selected={address === selectedAddress}
               onPressOption={onAddressSelection}
-              key={option}
-              {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${option}`)}
+              optionKey={address}
+              key={address}
+              {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${address}`)}
             />
           ))}
         </React.Fragment>

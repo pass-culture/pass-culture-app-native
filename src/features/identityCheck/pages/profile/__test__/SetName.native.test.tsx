@@ -40,7 +40,7 @@ describe('<SetName/>', () => {
     })
   })
 
-  it('should navigate to SetPostalCode page when submit name', async () => {
+  it('should navigate to SetCity page when submit name', async () => {
     const { getByPlaceholderText, findByText } = render(<SetName />)
 
     const firstNameInput = getByPlaceholderText('Ton prénom')

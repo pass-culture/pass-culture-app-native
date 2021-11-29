@@ -6,8 +6,8 @@ import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/Id
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
-import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
+import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { Status } from 'features/identityCheck/pages/profile/Status'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import {
