@@ -1,7 +1,6 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
@@ -10,6 +9,13 @@ jest.mock('features/auth/settings')
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
   useIdentityCheckContext: () => ({ dispatch: mockDispatch }),
+}))
+
+const mockNavigateToNextScreen = jest.fn()
+jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
+  useIdentityCheckNavigation: () => ({
+    navigateToNextScreen: mockNavigateToNextScreen,
+  }),
 }))
 
 const firstName = 'John'
@@ -40,7 +46,7 @@ describe('<SetName/>', () => {
     })
   })
 
-  it('should navigate to SetCity page when submit name', async () => {
+  it('should navigate to next screen when submit name', async () => {
     const { getByPlaceholderText, findByText } = render(<SetName />)
 
     const firstNameInput = getByPlaceholderText('Ton prénom')
@@ -56,8 +62,7 @@ describe('<SetName/>', () => {
         type: 'SET_NAME',
         payload: { firstName, lastName },
       })
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('IdentityCheckCity')
+      expect(mockNavigateToNextScreen).toBeCalledTimes(1)
     })
   })
 })
