@@ -49,7 +49,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     : undefined
 
   const isDepositExpired = depositExpirationDate ? depositExpirationDate < new Date() : false
-  const canUpgradeBeneficiaryRole = isDepositExpired && !!user.nextBeneficiaryValidationStep
+  const canUpgradeBeneficiaryRole = isDepositExpired && user.isEligibleForBeneficiaryUpgrade
 
   if (!user.isBeneficiary || canUpgradeBeneficiaryRole) {
     return (
