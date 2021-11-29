@@ -13,6 +13,7 @@ export const nonBeneficaryUser: UserProfileResponse = {
   needsToFillCulturalSurvey: true,
   roles: [],
   showEligibleCard: false,
+  isEligibleForBeneficiaryUpgrade: false,
   id: 1234,
   subscriptions: {
     marketingEmail: true,

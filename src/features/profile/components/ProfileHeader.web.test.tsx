@@ -19,6 +19,7 @@ const user: UserProfileResponse = {
   },
   lastName: '93 HNMM 2',
   id: 1234,
+  isEligibleForBeneficiaryUpgrade: false,
   needsToFillCulturalSurvey: true,
   roles: [],
   showEligibleCard: false,

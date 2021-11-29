@@ -91,6 +91,7 @@ const userProfileAPIResponse: UserProfileResponse = {
   domainsCredit: { all: { remaining: 30000, initial: 50000 }, physical: null, digital: null },
   needsToFillCulturalSurvey: true,
   showEligibleCard: false,
+  isEligibleForBeneficiaryUpgrade: false,
   id: 1234,
   roles: [],
   subscriptions: {

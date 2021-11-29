@@ -30,6 +30,7 @@ const userProfileAPIResponse: UserProfileResponse = {
   isBeneficiary: true,
   needsToFillCulturalSurvey: true,
   roles: [],
+  isEligibleForBeneficiaryUpgrade: false,
   showEligibleCard: false,
   id: 1234,
   subscriptions: {
