@@ -56,7 +56,7 @@ export const SetCity = () => {
   }
 
   const onPostalCodeSelection = (cityCode: string) => {
-    const city = cities.find((city: SuggestedCity) => city.code === cityCode)
+    const city = cities.find((city: SuggestedCity) => city.name === cityCode)
     setSelectedCity(city || null)
     Keyboard.dismiss()
   }
@@ -83,6 +83,8 @@ export const SetCity = () => {
       navigate('IdentityCheckAddress')
     }
   }
+
+  const disabled = typeof selectedCity?.name === 'undefined'
 
   return (
     <React.Fragment>
@@ -123,7 +125,7 @@ export const SetCity = () => {
           <ButtonPrimary
             onPress={() => onSubmit(selectedCity)}
             title={t`Continuer`}
-            disabled={!isPostalCodeValid(query)}
+            disabled={disabled}
           />
         }
       />
