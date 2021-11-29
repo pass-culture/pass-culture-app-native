@@ -2,7 +2,6 @@ import { FeatureCollection, Point } from 'geojson'
 import { rest } from 'msw'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
@@ -19,6 +18,13 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
   useIdentityCheckContext: () => ({ dispatch: mockDispatch, ...mockState }),
+}))
+
+const mockNavigateToNextScreen = jest.fn()
+jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
+  useIdentityCheckNavigation: () => ({
+    navigateToNextScreen: mockNavigateToNextScreen,
+  }),
 }))
 
 const QUERY_CITY_CODE = ''
@@ -71,7 +77,7 @@ describe('<SetAddress/>', () => {
     })
   })
 
-  it('should save address when clicking on "Continuer"', async () => {
+  it('should save address and navigate to next screen when clicking on "Continuer"', async () => {
     mockAddressesApiCall(mockedSuggestedPlaces)
 
     const { getByText, getByPlaceholderText } = renderSetAddresse()
@@ -88,8 +94,7 @@ describe('<SetAddress/>', () => {
         type: 'SET_ADDRESS',
         payload: mockedSuggestedPlaces.features[1].properties.label,
       })
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('IdentityCheckStatus')
+      expect(mockNavigateToNextScreen).toBeCalledTimes(1)
     })
   })
 
