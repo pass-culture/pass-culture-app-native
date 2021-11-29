@@ -17,6 +17,13 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
   useIdentityCheckContext: () => ({ dispatch: mockDispatch }),
 }))
 
+const mockNavigateToNextScreen = jest.fn()
+jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
+  useIdentityCheckNavigation: () => ({
+    navigateToNextScreen: mockNavigateToNextScreen,
+  }),
+}))
+
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
@@ -61,7 +68,7 @@ describe('<SetCity/>', () => {
     })
   })
 
-  it('should save city when clicking on "Continuer"', async () => {
+  it('should save city and navigate to next screen when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockCitiesApiCall(mockedSuggestedCities)
     const mockedGetCitiesSpy = jest.spyOn(fetchCities, 'fetchCities')
@@ -77,8 +84,7 @@ describe('<SetCity/>', () => {
 
     await waitFor(() => {
       expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, POSTAL_CODE)
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('IdentityCheckAddress')
+      expect(mockNavigateToNextScreen).toBeCalledTimes(1)
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_CITY',
         payload: {
