@@ -88,7 +88,7 @@ module.exports = {
     ],
     strict: ['error', 'global'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
-    'prettier/prettier': 'off',
+    'prettier/prettier': 'error',
     'import/order': [
       'error',
       {
