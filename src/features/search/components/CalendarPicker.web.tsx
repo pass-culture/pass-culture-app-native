@@ -57,7 +57,8 @@ export const CalendarPicker: React.FC<Props> = ({
   setSelectedDate,
 }) => {
   const { isTouch } = useTheme()
-
+  const minDate = new Date()
+  minDate.setHours(0, 0, 0, 0)
   const ref = useRef<Node>(null)
   const [markedDates, setMarkedDates] = useState<{ [name: string]: { selected: boolean } }>({})
   const [desktopCalendarDate, setDesktopCalendarDate] = useState(selectedDate)
@@ -132,6 +133,7 @@ export const CalendarPicker: React.FC<Props> = ({
       ) : (
         <CalendarPickerWrapperDesktop>
           <RNCalendar
+            minDate={minDate}
             style={RNCalendarTheme}
             current={selectedDate as unknown as LocaleConfig}
             firstDay={1}
@@ -159,19 +161,20 @@ export const CalendarPicker: React.FC<Props> = ({
   )
 }
 
-const CalendarPickerWrapper = styled.View({
+const CalendarPickerWrapper = styled.View(({ theme }) => ({
   alignSelf: 'stretch',
   flexDirection: 'row',
   alignItems: 'stretch',
-  fontFamily: 'Montserrat-Regular',
-})
+  fontFamily: theme.fontFamily.regular,
+}))
 
-const CalendarPickerWrapperDesktop = styled.View({
+const CalendarPickerWrapperDesktop = styled.View(({ theme }) => ({
+  minHeight: 360,
   alignSelf: 'stretch',
   flexDirection: 'column',
   alignItems: 'center',
-  fontFamily: 'Montserrat-Regular',
-})
+  fontFamily: theme.fontFamily.regular,
+}))
 
 const CalendarButtonWrapper = styled.View({
   margin: 20,
