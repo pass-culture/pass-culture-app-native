@@ -133,10 +133,10 @@ export const CalendarPicker: React.FC<Props> = ({
         <CalendarPickerWrapperDesktop>
           <RNCalendar
             style={RNCalendarTheme}
-            current={(selectedDate as unknown) as LocaleConfig}
+            current={selectedDate as unknown as LocaleConfig}
             firstDay={1}
             enableSwipeMonths={true}
-            renderHeader={(date) => <MonthHeader date={(date as unknown) as Date} />}
+            renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}
             hideExtraDays={true}
             renderArrow={renderArrow}
             theme={calendarHeaderStyle}

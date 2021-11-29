@@ -9,7 +9,7 @@ import validateDate from 'validate-date'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ColorsEnum, Typo } from 'ui/theme'
-import { ZIndex } from "ui/theme/layers";
+import { ZIndex } from 'ui/theme/layers'
 
 interface ValidationBarProps {
   testID?: string
@@ -326,6 +326,6 @@ const HiddenTextInput = styled(TextInput)({
   ...Platform.select({
     web: {
       caretColor: 'transparent',
-    }
-  })
+    },
+  }),
 })
