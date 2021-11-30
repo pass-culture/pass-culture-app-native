@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
 
-import { BeneficiaryValidationStep, UserProfileResponse } from 'api/gen'
+import { UserProfileResponse } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/ProfileHeader'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { render } from 'tests/utils'
@@ -24,6 +24,7 @@ const user: UserProfileResponse = {
   lastName: '93 HNMM 2',
   id: 1234,
   needsToFillCulturalSurvey: true,
+  isEligibleForBeneficiaryUpgrade: false,
   roles: [],
   showEligibleCard: false,
   subscriptions: {
@@ -44,7 +45,7 @@ const notBeneficiaryUser = {
 const exUnderageBeneficiaryUser: UserProfileResponse = {
   ...user,
   depositExpirationDate: new Date('2020-01-01T03:04:05'),
-  nextBeneficiaryValidationStep: BeneficiaryValidationStep.IdCheck,
+  isEligibleForBeneficiaryUpgrade: true,
 }
 
 jest.mock('features/home/api')

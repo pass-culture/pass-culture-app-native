@@ -106,18 +106,6 @@ export interface AccountRequest {
     email: string;
     /**
      * 
-     * @type {string}
-     * @memberof AccountRequest
-     */
-    firstName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountRequest
-     */
-    lastName?: string | null;
-    /**
-     * 
      * @type {boolean}
      * @memberof AccountRequest
      */
@@ -188,6 +176,18 @@ export interface BeneficiaryInformationUpdateRequest {
      * @memberof BeneficiaryInformationUpdateRequest
      */
     city: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BeneficiaryInformationUpdateRequest
+     */
+    firstName?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof BeneficiaryInformationUpdateRequest
+     */
+    lastName?: string | null;
     /**
      * 
      * @type {string}
@@ -1033,6 +1033,18 @@ export interface IdentificationSessionResponse {
      * @memberof IdentificationSessionResponse
      */
     identificationUrl: string;
+}/**
+ * 
+ * @export
+ * @interface NextSubscriptionStepResponse
+ */
+export interface NextSubscriptionStepResponse {
+    /**
+     * 
+     * @type {SubscriptionStep}
+     * @memberof NextSubscriptionStepResponse
+     */
+    nextSubscriptionStep?: SubscriptionStep | null;
 }/**
  * 
  * @export
@@ -1925,6 +1937,7 @@ export enum SubcategoryIdEnum {
     MUSEEVENTEDISTANCE = 'MUSEE_VENTE_DISTANCE',
     OEUVREART = 'OEUVRE_ART',
     PARTITION = 'PARTITION',
+    PRATIQUEARTVENTEDISTANCE = 'PRATIQUE_ART_VENTE_DISTANCE',
     PODCAST = 'PODCAST',
     RENCONTREENLIGNE = 'RENCONTRE_EN_LIGNE',
     RENCONTREJEU = 'RENCONTRE_JEU',
@@ -1934,6 +1947,7 @@ export enum SubcategoryIdEnum {
     SEANCEESSAIPRATIQUEART = 'SEANCE_ESSAI_PRATIQUE_ART',
     SPECTACLEENREGISTRE = 'SPECTACLE_ENREGISTRE',
     SPECTACLEREPRESENTATION = 'SPECTACLE_REPRESENTATION',
+    SPECTACLEVENTEDISTANCE = 'SPECTACLE_VENTE_DISTANCE',
     SUPPORTPHYSIQUEFILM = 'SUPPORT_PHYSIQUE_FILM',
     SUPPORTPHYSIQUEMUSIQUE = 'SUPPORT_PHYSIQUE_MUSIQUE',
     TELECHARGEMENTLIVREAUDIO = 'TELECHARGEMENT_LIVRE_AUDIO',
@@ -2020,6 +2034,30 @@ export interface SubscriptionMessage {
      * @memberof SubscriptionMessage
      */
     userMessage: string;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SubscriptionStep {
+    EmailValidation = 'email-validation',
+    Maintenance = 'maintenance',
+    PhoneValidation = 'phone-validation',
+    ProfileCompletion = 'profile-completion',
+    IdentityCheck = 'identity-check',
+    UserProfiling = 'user-profiling'
+}/**
+ * 
+ * @export
+ * @interface UpdateEmailTokenExpiration
+ */
+export interface UpdateEmailTokenExpiration {
+    /**
+     * 
+     * @type {Date}
+     * @memberof UpdateEmailTokenExpiration
+     */
+    expiration?: Date | null;
 }/**
  * 
  * @export
@@ -2134,6 +2172,12 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     isBeneficiary: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserProfileResponse
+     */
+    isEligibleForBeneficiaryUpgrade: boolean;
     /**
      * 
      * @type {string}
@@ -2705,6 +2749,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary get_email_update_token_expiration_date <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1profiletokenExpiration(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/profile/token_expiration`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary get_settings <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2736,6 +2802,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
             const localVarQueryParameter = {} as any;
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary next_subscription_step <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1subscriptionnextStep(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/subscription/next_step`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             localVarUrlObj.search = null;
@@ -3624,6 +3712,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary get_email_update_token_expiration_date <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1profiletokenExpiration(basePath: string, options?: any): Promise<UpdateEmailTokenExpiration> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1profiletokenExpiration(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary get_settings <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3641,6 +3740,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          */
         async getnativev1subcategories(basePath: string, options?: any): Promise<SubcategoriesResponseModel> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subcategories(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary next_subscription_step <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1subscriptionnextStep(basePath: string, options?: any): Promise<NextSubscriptionStepResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionnextStep(options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -4113,6 +4223,17 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
+     * @summary get_email_update_token_expiration_date <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1profiletokenExpiration(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1profiletokenExpiration(this.basePath, options)
+    }
+    /**
+     * 
      * @summary get_settings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4132,6 +4253,17 @@ export class DefaultApi extends BaseAPI {
     public async getnativev1subcategories(options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.getnativev1subcategories(this.basePath, options)
+    }
+    /**
+     * 
+     * @summary next_subscription_step <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1subscriptionnextStep(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1subscriptionnextStep(this.basePath, options)
     }
     /**
      * 
