@@ -646,6 +646,10 @@ msgstr "Créneau horaire"
 msgid "Culture scientifique"
 msgstr "Culture scientifique"
 
+#: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
+msgid "C’est quoi ÉduConnect ?"
+msgstr "C’est quoi ÉduConnect ?"
+
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "C’est très rapide !"
 msgstr "C’est très rapide !"
@@ -959,6 +963,10 @@ msgstr "Entrée pour le prénom"
 msgid "Envie de tout envie de lien ?"
 msgstr "Envie de tout envie de lien ?"
 
+#: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
+msgid "Environ 3 heures"
+msgstr "Environ 3 heures"
+
 #: src/features/auth/login/Login.tsx
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
@@ -1106,6 +1114,14 @@ msgstr "Id Check indisponible"
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Identification"
 msgstr "Identification"
+
+#: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
+msgid "Identification manuelle"
+msgstr "Identification manuelle"
+
+#: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
+msgid "Identifie-toi en 2 minutes"
+msgstr "Identifie-toi en 2 minutes"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Il est important que les informations de ton document soient parfaitement lisibles."
@@ -2553,6 +2569,10 @@ msgstr "Tu peux te connecter sur ton profil pour recommencer le parcours de chan
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 
+#: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
+msgid "Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement."
+msgstr "Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement."
+
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 msgid "Tu pourras ainsi nous aider à améliorer l’application."
 msgstr "Tu pourras ainsi nous aider à améliorer l’application."
@@ -2984,6 +3004,10 @@ msgstr "offerte par le Gouvernement."
 #: src/features/profile/components/YoungerBadge.tsx
 msgid "offerts à dépenser sur l’application."
 msgstr "offerts à dépenser sur l’application."
+
+#: src/ui/components/OrSeparator.tsx
+msgid "ou"
+msgstr "ou"
 
 #: src/features/identityCheck/atoms/IdentityVerificationText.tsx
 msgid "ou de ton"
