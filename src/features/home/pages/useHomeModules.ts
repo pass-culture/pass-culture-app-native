@@ -13,8 +13,6 @@ import {
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
-import { fetchMultipleHits as searchMultipleHits, filterSearchHits } from 'libs/search/fetch/search'
-import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 
 export type HomeModuleResponse = {
   [moduleId: string]: {
@@ -31,20 +29,16 @@ export const useHomeModules = (
 ): HomeModuleResponse => {
   const { position } = useGeolocation()
   const homeModules: HomeModuleResponse = {}
-  const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const transformHits = useTransformAlgoliaHits()
   const parseSearchParameters = useParseSearchParameters()
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
-
-  const fetchMultipleHits = isAppSearchBackend ? searchMultipleHits : fetchMultipleAlgolia
-  const filterHits = isAppSearchBackend ? filterSearchHits : filterAlgoliaHit
 
   const queries = useQueries(
     offerModules.map(({ search, moduleId }) => {
       const parsedParameters = search.map(parseSearchParameters).filter(isSearchState)
 
       const fetchModule = async () => {
-        const response = await fetchMultipleHits(
+        const response = await fetchMultipleAlgolia(
           parsedParameters,
           position,
           isUserUnderageBeneficiary
@@ -55,7 +49,6 @@ export const useHomeModules = (
       return {
         queryKey: [QueryKeys.HOME_MODULE, moduleId],
         queryFn: fetchModule,
-        enabled,
         notifyOnChangeProps: ['data'] as UseInfiniteQueryOptions['notifyOnChangeProps'],
       }
     })
@@ -66,7 +59,10 @@ export const useHomeModules = (
     const data = query.data as { moduleId: string; hits: SearchHit[]; nbHits: number }
 
     homeModules[data.moduleId] = {
-      hits: uniqBy(data.hits.filter(filterHits).map(transformHits), 'objectID') as SearchHit[],
+      hits: uniqBy(
+        data.hits.filter(filterAlgoliaHit).map(transformHits),
+        'objectID'
+      ) as SearchHit[],
       nbHits: data.nbHits,
     }
   })

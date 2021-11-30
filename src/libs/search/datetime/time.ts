@@ -5,7 +5,6 @@ import { DATE, DAYS_IN_A_WEEK, SATURDAY_INDEX_IN_A_WEEK, SUNDAY_INDEX_IN_A_WEEK 
 export const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000
 export const MILLISECONDS_IN_A_SECOND = 1000
 
-// TODO(antoinewg) remove these functions once the migration to AppSearch is complete.
 const getTimestampFromDate = (date: Date): number => {
   const dateInTimestamp = date.getTime() / MILLISECONDS_IN_A_SECOND
   return Math.ceil(dateInTimestamp)

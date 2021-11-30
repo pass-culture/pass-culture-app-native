@@ -27,7 +27,7 @@ describe('useNavigateToIdCheck()', () => {
     expect(navigate).toBeCalledWith('IdCheckV2')
   })
 
-  it('should navigate to home when shouldControlNavWithSetting=true, enableNativeIdCheckVersion=false, allowIdCheckRegistration=false', () => {
+  it('should navigate to home when shouldControlNavWithSetting=true, allowIdCheckRegistration=false', () => {
     const navigateToIdCheck = mockNavigateToIdCheck({
       allowIdCheckRegistration: false,
       shouldControlNavWithSetting: true,
@@ -41,7 +41,7 @@ describe('useNavigateToIdCheck()', () => {
     })
   })
 
-  it('should call onIdCheckNavigationBlocked() when onIdCheckNavigationBlocked is defined and shouldControlNavWithSetting=true, enableNativeIdCheckVersion=false, allowIdCheckRegistration=false', () => {
+  it('should call onIdCheckNavigationBlocked() when onIdCheckNavigationBlocked is defined and shouldControlNavWithSetting=true, allowIdCheckRegistration=false', () => {
     const onIdCheckNavigationBlocked = jest.fn()
     const navigateToIdCheck = mockNavigateToIdCheck({
       allowIdCheckRegistration: false,
@@ -55,7 +55,7 @@ describe('useNavigateToIdCheck()', () => {
     expect(navigateToHome).not.toBeCalled()
   })
 
-  it('should navigate to IdCheck v2 when shouldControlNavWithSetting=true, enableNativeIdCheckVersion=true, allowIdCheckRegistration=true', () => {
+  it('should navigate to IdCheck v2 when shouldControlNavWithSetting=true, allowIdCheckRegistration=true', () => {
     const navigateToIdCheck = mockNavigateToIdCheck({
       allowIdCheckRegistration: true,
       shouldControlNavWithSetting: true,

@@ -10,29 +10,21 @@ import { fetchAlgolia, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
-import { fetchHits as fetchAppSearchHits } from 'libs/search/fetch/search'
-import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 
 import { useSearch, useStagedSearch } from './SearchWrapper'
 
 export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
 
 const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
-  const { enabled, isAppSearchBackend } = useAppSearchBackend()
   const { position } = useGeolocation()
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
   const transformHits = useTransformAlgoliaHits()
 
-  const fetchHits = isAppSearchBackend ? fetchAppSearchHits : fetchAlgolia
-
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, partialSearchState],
     async ({ pageParam: page = 0 }) =>
-      await fetchHits({ page, ...partialSearchState }, position, isUserUnderageBeneficiary),
-    {
-      getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
-      enabled,
-    }
+      await fetchAlgolia({ page, ...partialSearchState }, position, isUserUnderageBeneficiary),
+    { getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined) }
   )
 
   const hits = useMemo(

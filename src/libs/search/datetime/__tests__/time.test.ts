@@ -3,7 +3,6 @@ import mockdate from 'mockdate'
 import { Range } from '../../../typesUtils/typeHelpers'
 import { computeTimeRangeFromHoursToSeconds, TIMESTAMP } from '../time'
 
-// TODO(antoinewg) remove these functions once the migration to AppSearch is complete.
 describe('Timezones', () => {
   it('should always be UTC', () => {
     expect(new Date().getTimezoneOffset()).toBe(0)
