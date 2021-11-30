@@ -62,6 +62,7 @@ import { IdCard } from 'ui/svg/icons/IdCard'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
@@ -163,6 +164,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
       <Icon name="InfoDeprecated" component={InfoDeprecated} />
       <Icon name="Info" component={Info} isNew />
+      <Icon name="InfoPlain" component={InfoPlain} isNew />
       <Icon name="AroundMe" component={AroundMeDeprecated} />
       <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
       <Icon name="EverywhereDeprecated" component={EverywhereDeprecated} />
