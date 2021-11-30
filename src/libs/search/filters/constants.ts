@@ -35,26 +35,6 @@ export enum AppSearchFields {
   venue_public_name = 'venue_public_name',
 }
 
-export enum AppSearchVenuesFields {
-  name = 'name',
-  offerer_name = 'offerer_name',
-  venue_type = 'venue_type',
-  position = 'position',
-  description = 'description',
-  id = 'id',
-  audio_disability = 'audio_disability',
-  mental_disability = 'mental_disability',
-  motor_disability = 'motor_disability',
-  visual_disability = 'visual_disability',
-  email = 'email',
-  phone_number = 'phone_number',
-  website = 'website',
-  facebook = 'facebook',
-  twitter = 'twitter',
-  instagram = 'instagram',
-  snapchat = 'snapchat',
-}
-
 // We don't use all the fields indexed. Simply retrieve the one we use.
 export const RESULT_FIELDS: ResultFields<AppSearchFields> = {
   [AppSearchFields.dates]: { raw: {} },
@@ -66,14 +46,6 @@ export const RESULT_FIELDS: ResultFields<AppSearchFields> = {
   [AppSearchFields.prices]: { raw: {} },
   [AppSearchFields.thumb_url]: { raw: {} },
   [AppSearchFields.venue_position]: { raw: {} },
-}
-
-// We don't use all the fields indexed. Simply retrieve the one we use.
-export const VENUES_RESULT_FIELDS: ResultFields<AppSearchVenuesFields> = {
-  [AppSearchVenuesFields.id]: { raw: {} },
-  [AppSearchVenuesFields.name]: { raw: {} },
-  [AppSearchVenuesFields.venue_type]: { raw: {} },
-  [AppSearchVenuesFields.position]: { raw: {} },
 }
 
 export const SORT_OPTIONS: Sort<AppSearchFields> = [

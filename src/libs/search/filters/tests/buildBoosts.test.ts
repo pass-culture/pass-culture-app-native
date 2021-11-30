@@ -1,9 +1,9 @@
 import { LocationType } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
-import { AppSearchFields, AppSearchVenuesFields } from 'libs/search/filters/constants'
+import { AppSearchFields } from 'libs/search/filters/constants'
 
-import { buildBoosts, buildBoostsVenues } from '../buildBoosts'
+import { buildBoosts } from '../buildBoosts'
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -33,15 +33,6 @@ const expectedBoost = {
   },
 }
 
-const venueBoost = {
-  [AppSearchVenuesFields.position]: {
-    type: 'proximity',
-    function: 'exponential',
-    center: `48.8557,2.3469`,
-    factor: 10,
-  },
-}
-
 describe('buildBoosts', () => {
   it('should not add a proximity boost if no position', () => {
     expect(buildBoosts(null, filterEverywhere)).toBeUndefined()
@@ -58,24 +49,5 @@ describe('buildBoosts', () => {
   it("should add a proximity boost centered around the user's position if the search is filtered geographically", () => {
     expect(buildBoosts(userLocation, filterAroundUser)).toStrictEqual(expectedBoost)
     expect(buildBoosts(userLocation, filterPlace)).toStrictEqual(expectedBoost)
-  })
-})
-
-describe('buildBoostsVenues', () => {
-  it('should not add a proximity boost if no position', () => {
-    expect(buildBoostsVenues(null, filterEverywhere)).toBeUndefined()
-    expect(buildBoostsVenues(null, filterAroundUser)).toBeUndefined()
-    expect(buildBoostsVenues(null, filterPlace)).toBeUndefined()
-    expect(buildBoostsVenues(null, filterVenue)).toBeUndefined()
-  })
-
-  it('should not add a proximity boost if no geolocation filter is applied beforehand', () => {
-    expect(buildBoostsVenues(userLocation, filterEverywhere)).toBeUndefined()
-    expect(buildBoostsVenues(userLocation, filterVenue)).toBeUndefined()
-  })
-
-  it("should add a proximity boost centered around the user's position if the search is filtered geographically", () => {
-    expect(buildBoostsVenues(userLocation, filterAroundUser)).toStrictEqual(venueBoost)
-    expect(buildBoostsVenues(userLocation, filterPlace)).toStrictEqual(venueBoost)
   })
 })

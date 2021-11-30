@@ -2,8 +2,7 @@ import { ResultItem } from '@elastic/app-search-javascript'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
-import { AppSearchFields, AppSearchVenuesFields, TRUE } from 'libs/search/filters/constants'
-import { SuggestedVenue } from 'libs/venue'
+import { AppSearchFields, TRUE } from 'libs/search/filters/constants'
 
 const parseArray = (
   searchHit: ResultItem<AppSearchFields>,
@@ -41,15 +40,5 @@ export const buildAlgoliaHit = (searchHit: ResultItem<AppSearchFields>): Algolia
       lng: isNaN(parseFloat(lng)) ? null : parseFloat(lng),
     },
     objectID,
-  }
-}
-
-export const buildVenues = (searchHit: ResultItem<AppSearchVenuesFields>): SuggestedVenue => {
-  const venueId = searchHit.getRaw(AppSearchVenuesFields.id) as string
-
-  return {
-    label: searchHit.getRaw(AppSearchVenuesFields.name) as string,
-    info: searchHit.getRaw(AppSearchVenuesFields.name) as string,
-    venueId: isNaN(parseFloat(venueId)) ? null : parseFloat(venueId),
   }
 }
