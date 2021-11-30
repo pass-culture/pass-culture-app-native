@@ -1,22 +1,25 @@
-import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
-import { REDIRECT_URL_UBBLE } from 'features/identityCheck/api'
+import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { LoadingPage } from 'ui/components/LoadingPage'
 import { Spacer } from 'ui/theme'
 
 // To avoid [Error: Unable to open URL: about:srcdoc. Add about to LSApplicationQueriesSchemes in your Info.plist.]
 const ORIGIN_WHITELIST = ['*']
 
 export const IdentityCheckWebview: React.FC = () => {
-  const { params } = useRoute<UseRouteType<'IdentityCheckWebview'>>()
+  const identificationUrl = useIdentificationUrl()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   function onNavigationStateChange({ url }: { url: string }) {
     if (url.includes(REDIRECT_URL_UBBLE)) navigateToNextScreen()
+  }
+
+  if (!identificationUrl) {
+    return <LoadingPage />
   }
 
   return (
@@ -24,7 +27,7 @@ export const IdentityCheckWebview: React.FC = () => {
       <Spacer.TopScreen />
       <StyledWebview
         allowsInlineMediaPlayback
-        source={{ uri: params.identificationUrl }}
+        source={{ uri: identificationUrl }}
         onNavigationStateChange={onNavigationStateChange}
         originWhitelist={ORIGIN_WHITELIST}
         testID="identity-check-webview"

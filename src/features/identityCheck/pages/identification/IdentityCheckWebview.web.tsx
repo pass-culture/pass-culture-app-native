@@ -1,11 +1,10 @@
-import { useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
-import { REDIRECT_URL_UBBLE } from 'features/identityCheck/api'
+import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
-import { UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { Helmet } from 'libs/react-helmet/Helmet'
+import { LoadingPage } from 'ui/components/LoadingPage'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const Ubble: any
@@ -24,16 +23,17 @@ interface AbortEvent {
 
 // https://ubbleai.github.io/developer-documentation/#webview-integration
 export const IdentityCheckWebview: React.FC = () => {
-  const { params } = useRoute<UseRouteType<'IdentityCheckWebview'>>()
+  const identificationUrl = useIdentificationUrl()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   useEffect(() => {
+    if (!identificationUrl) return
     window.onUbbleReady = () => {
       const ubbleIDV = new Ubble.IDV(document.getElementById(ubbleIframeId), {
         width: '100%',
         height: '100%',
         allowCamera: true,
-        identificationUrl: params.identificationUrl,
+        identificationUrl,
         events: {
           onComplete({ redirectUrl, status }: CompleteEvent) {
             analytics.logIdentityCheckComplete({ status })
@@ -49,7 +49,11 @@ export const IdentityCheckWebview: React.FC = () => {
         },
       })
     }
-  }, [])
+  }, [identificationUrl])
+
+  if (!identificationUrl) {
+    return <LoadingPage />
+  }
 
   return (
     <React.Fragment>
