@@ -120,7 +120,6 @@ export function requestSettingsSuccess(
     enablePhoneValidation: false,
     enableUnderageGeneralisation: false,
     enableIdCheckRetention: false,
-    wholeFranceOpening: true,
     objectStorageUrl: 'http://localhost',
     displayDmsRedirection: true,
     idCheckAddressAutocompletion: true,
