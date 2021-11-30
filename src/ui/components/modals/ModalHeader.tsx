@@ -5,7 +5,7 @@ import { CSSObject } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { ColorsEnum, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ZIndex } from 'ui/theme/layers'
 
 import { isStyleObjectTypeGuard } from '../typeguards'
@@ -33,53 +33,77 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
 }) => {
   const TitleComponent = boldTitle ? BoldTitle : Title
   return (
-    <Container customStyle={customStyles?.container}>
-      <LeftHeaderAction
-        onPress={onLeftIconPress}
-        {...accessibilityAndTestId(leftIconAccessibilityLabel)}>
-        {!!LeftIcon && (
-          <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />
-        )}
-      </LeftHeaderAction>
-      <TitleComponent customStyle={customStyles?.title} numberOfLines={numberOfLines}>
-        {title}
-      </TitleComponent>
-      <RightHeaderAction
-        onPress={onRightIconPress}
-        {...accessibilityAndTestId(rightIconAccessibilityLabel)}>
-        {!!RightIcon && (
-          <RightIcon size={32} testID="rightIcon" color={customStyles?.rightIcon?.color} />
-        )}
-      </RightHeaderAction>
-    </Container>
+    <HeaderContainer>
+      <LeftHeaderActionContainer>
+        <LeftHeaderAction
+          onPress={onLeftIconPress}
+          {...accessibilityAndTestId(leftIconAccessibilityLabel)}>
+          {!!LeftIcon && (
+            <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />
+          )}
+        </LeftHeaderAction>
+      </LeftHeaderActionContainer>
+      <TitleContainer customStyle={customStyles?.container}>
+        <TitleComponent customStyle={customStyles?.title} numberOfLines={numberOfLines}>
+          {title}
+        </TitleComponent>
+      </TitleContainer>
+      <RightHeaderActionContainer>
+        <RightHeaderAction
+          onPress={onRightIconPress}
+          {...accessibilityAndTestId(rightIconAccessibilityLabel)}>
+          {!!RightIcon && (
+            <RightIcon size={32} testID="rightIcon" color={customStyles?.rightIcon?.color} />
+          )}
+        </RightHeaderAction>
+      </RightHeaderActionContainer>
+    </HeaderContainer>
   )
 }
 
-const Container = styled.View<{ customStyle: StyleProp<ViewStyle> }>(({ customStyle }) => ({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
+const HeaderContainer = styled.View({
+  display: 'flex',
   width: '100%',
+  flexDirection: 'row',
+  justifyContent: 'center',
+})
+
+const TitleContainer = styled.View<{ customStyle: StyleProp<ViewStyle> }>(({ customStyle }) => ({
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingRight: getSpacing(3),
+  paddingLeft: getSpacing(3),
+  flex: 0.8,
   zIndex: ZIndex.MODAL_HEADER,
   ...(isStyleObjectTypeGuard(customStyle) ? (customStyle as Record<string, unknown>) : {}),
 }))
 
+const RightHeaderActionContainer = styled.View({
+  flexDirection: 'row',
+  flex: 0.1,
+  alignItems: 'flex-start',
+  justifyContent: 'flex-end',
+})
+
+const LeftHeaderActionContainer = styled.View({
+  flexDirection: 'row',
+  flex: 0.1,
+  alignItems: 'flex-end',
+  justifyContent: 'flex-start',
+})
+
 /* The negative margins are used to compensate for the
   "empty" space of SVG icons. */
 const RightHeaderAction = styled.TouchableOpacity({
-  flex: 0.1,
-  marginRight: -4,
-  alignItems: 'flex-end',
+  marginRight: -5,
 })
+
 const LeftHeaderAction = styled.TouchableOpacity({
-  flex: 0.1,
-  marginLeft: -4,
-  alignItems: 'flex-start',
+  marginLeft: -5,
 })
 
 const titleStyle = ({ customStyle }: { customStyle: StyleProp<ViewStyle> }) =>
   ({
-    flex: 0.8,
     textAlign: 'center',
     ...(isStyleObjectTypeGuard(customStyle) ? (customStyle as Record<string, unknown>) : {}),
   } as CSSObject)
