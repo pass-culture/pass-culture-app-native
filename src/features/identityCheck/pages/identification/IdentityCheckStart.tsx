@@ -6,6 +6,7 @@ import { DMSInformation } from 'features/identityCheck/atoms/DMSInformation'
 import { IdentityVerificationText } from 'features/identityCheck/atoms/IdentityVerificationText'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { BicolorIdCardWithMagnifyingClass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingClass'
@@ -13,6 +14,12 @@ import { Spacer, getSpacing } from 'ui/theme'
 
 export const IdentityCheckStart = () => {
   const { visible, showModal, hideModal } = useModal(false)
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
+
+  const onPressContinue = () => {
+    hideModal()
+    navigateToNextScreen()
+  }
 
   return (
     <React.Fragment>
@@ -32,7 +39,11 @@ export const IdentityCheckStart = () => {
           <ButtonPrimary onPress={showModal} title={t`Commencer la vérification`} />
         }
       />
-      <SomeAdviceBeforeIdentityCheckModal visible={visible} hideModal={hideModal} />
+      <SomeAdviceBeforeIdentityCheckModal
+        visible={visible}
+        hideModal={hideModal}
+        onPressContinue={onPressContinue}
+      />
     </React.Fragment>
   )
 }
