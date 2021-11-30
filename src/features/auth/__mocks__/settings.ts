@@ -7,7 +7,6 @@ export const mockDefaultSettings: SettingsResponse = {
   depositAmount: 30000,
   isRecaptchaEnabled: true,
   allowIdCheckRegistration: true,
-  enableNativeIdCheckVersion: false,
   wholeFranceOpening: true,
   enablePhoneValidation: true,
   displayDmsRedirection: true,

@@ -1772,12 +1772,6 @@ export interface SettingsResponse {
      * @type {boolean}
      * @memberof SettingsResponse
      */
-    enableNativeIdCheckVersion: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
     enablePhoneValidation: boolean;
     /**
      * 
@@ -1809,18 +1803,6 @@ export interface SettingsResponse {
      * @memberof SettingsResponse
      */
     objectStorageUrl: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    useAppSearch: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    wholeFranceOpening: boolean;
 }/**
  * 
  * @export

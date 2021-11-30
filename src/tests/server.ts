@@ -116,7 +116,6 @@ export function requestSettingsSuccess(
     isRecaptchaEnabled: true,
     allowIdCheckRegistration: true,
     autoActivateDigitalBookings: false,
-    enableNativeIdCheckVersion: false,
     enableNativeIdCheckVerboseDebugging: false,
     enablePhoneValidation: false,
     enableUnderageGeneralisation: false,
