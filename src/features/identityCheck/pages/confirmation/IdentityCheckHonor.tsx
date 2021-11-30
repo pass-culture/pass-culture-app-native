@@ -1,16 +1,14 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { Declaration } from 'features/identityCheck/atoms/Declaration'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 export const IdentityCheckHonor = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const onPress = () => navigate('IdentityCheckStatus')
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   return (
     <PageWithHeader
@@ -24,7 +22,9 @@ export const IdentityCheckHonor = () => {
           description={t`Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.`}
         />
       }
-      fixedBottomChildren={<ButtonPrimary onPress={onPress} title={t`Valider et continuer`} />}
+      fixedBottomChildren={
+        <ButtonPrimary onPress={navigateToNextScreen} title={t`Valider et continuer`} />
+      }
     />
   )
 }

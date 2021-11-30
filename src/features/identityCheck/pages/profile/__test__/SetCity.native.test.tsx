@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { CITIES_API_URL } from 'libs/place'
 import * as fetchCities from 'libs/place/fetchCities'
@@ -14,7 +14,14 @@ import { cleanup, fireEvent, render, waitFor } from 'tests/utils'
 const POSTAL_CODE = '83570'
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: () => ({ dispatch: mockDispatch }),
+  useIdentityCheckContext: () => ({ dispatch: mockDispatch, ...mockState }),
+}))
+
+const mockNavigateToNextScreen = jest.fn()
+jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
+  useIdentityCheckNavigation: () => ({
+    navigateToNextScreen: mockNavigateToNextScreen,
+  }),
 }))
 
 // eslint-disable-next-line local-rules/no-allow-console
@@ -61,7 +68,7 @@ describe('<SetCity/>', () => {
     })
   })
 
-  it('should save city when clicking on "Continuer"', async () => {
+  it('should save city and navigate to next screen when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockCitiesApiCall(mockedSuggestedCities)
     const mockedGetCitiesSpy = jest.spyOn(fetchCities, 'fetchCities')
@@ -77,8 +84,7 @@ describe('<SetCity/>', () => {
 
     await waitFor(() => {
       expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, POSTAL_CODE)
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('IdentityCheckAddress')
+      expect(mockNavigateToNextScreen).toBeCalledTimes(1)
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_CITY',
         payload: {

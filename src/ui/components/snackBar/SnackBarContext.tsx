@@ -60,22 +60,20 @@ export const SnackBarProvider = memo(function SnackBarProviderComponent({ childr
   })
 
   return (
-    <React.Fragment>
-      <SnackBarContext.Provider value={snackBarToolsRef.current}>
-        <SnackBar
-          visible={snackBarProps.visible}
-          message={snackBarProps.message}
-          icon={snackBarProps.icon}
-          onClose={snackBarProps.onClose || hideSnackBar}
-          timeout={snackBarProps.timeout}
-          backgroundColor={snackBarProps.backgroundColor}
-          progressBarColor={snackBarProps.progressBarColor}
-          color={snackBarProps.color}
-          refresher={snackBarProps.refresher}
-        />
-        {children}
-      </SnackBarContext.Provider>
-    </React.Fragment>
+    <SnackBarContext.Provider value={snackBarToolsRef.current}>
+      <SnackBar
+        visible={snackBarProps.visible}
+        message={snackBarProps.message}
+        icon={snackBarProps.icon}
+        onClose={snackBarProps.onClose || hideSnackBar}
+        timeout={snackBarProps.timeout}
+        backgroundColor={snackBarProps.backgroundColor}
+        progressBarColor={snackBarProps.progressBarColor}
+        color={snackBarProps.color}
+        refresher={snackBarProps.refresher}
+      />
+      {children}
+    </SnackBarContext.Provider>
   )
 })
 

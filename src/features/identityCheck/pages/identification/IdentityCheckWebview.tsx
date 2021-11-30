@@ -1,10 +1,11 @@
-import { useRoute, useNavigation } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/api'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { UseRouteType } from 'features/navigation/RootNavigator'
 import { Spacer } from 'ui/theme'
 
 // To avoid [Error: Unable to open URL: about:srcdoc. Add about to LSApplicationQueriesSchemes in your Info.plist.]
@@ -12,10 +13,10 @@ const ORIGIN_WHITELIST = ['*']
 
 export const IdentityCheckWebview: React.FC = () => {
   const { params } = useRoute<UseRouteType<'IdentityCheckWebview'>>()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   function onNavigationStateChange({ url }: { url: string }) {
-    if (url.includes(REDIRECT_URL_UBBLE)) navigate('IdentityCheckEnd')
+    if (url.includes(REDIRECT_URL_UBBLE)) navigateToNextScreen()
   }
 
   return (

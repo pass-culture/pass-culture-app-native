@@ -149,28 +149,162 @@ exports[`<SetCity/> should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "paddingVertical": 20,
-                  "width": "100%",
+                  "paddingHorizontal": 20,
                 },
               ]
             }
           >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "paddingVertical": 20,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Dans quelle ville résides-tu ?
+              </Text>
+            </View>
             <Text
               style={
                 Array [
                   Object {
                     "color": "#151515",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
-                    "textAlign": "center",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
                   },
                 ]
               }
             >
-              Dans quelle ville résides-tu ?
+              Indique ton code postal et choisis ta ville
             </Text>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              borderColor="#c7c7cc"
+              height="small"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 22,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 4,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 4,
+                    "shadowColor": "#151515",
+                    "shadowOffset": Object {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.15,
+                    "shadowRadius": 6,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <TextInput
+                keyboardType="number-pad"
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="Ex : 75017"
+                placeholderTextColor="#626262"
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                  ]
+                }
+                textContentType="postalCode"
+                value=""
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "position": "absolute",
+                      "right": 4,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <RCTScrollView
+              data={Array []}
+              getItem={[Function]}
+              getItemCount={[Function]}
+              keyExtractor={[Function]}
+              keyboardDismissMode="on-drag"
+              keyboardShouldPersistTaps="handled"
+              onContentSizeChange={[Function]}
+              onLayout={[Function]}
+              onMomentumScrollBegin={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              removeClippedSubviews={false}
+              renderItem={[Function]}
+              scrollEventThrottle={50}
+              stickyHeaderIndices={Array []}
+              viewabilityConfigCallbackPairs={Array []}
+            >
+              <View />
+            </RCTScrollView>
           </View>
           <RCTScrollView
             bottomChildrenViewHeight={0}
@@ -193,111 +327,7 @@ exports[`<SetCity/> should render correctly 1`] = `
               ]
             }
           >
-            <View>
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Indique ton code postal et choisis ta ville
-              </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  Array [
-                    Object {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                borderColor="#c7c7cc"
-                height="small"
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 4,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 4,
-                      "shadowColor": "#151515",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 6,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <TextInput
-                  keyboardType="number-pad"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder="Ex : 75017"
-                  placeholderTextColor="#626262"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                    ]
-                  }
-                  textContentType="postalCode"
-                  value=""
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "position": "absolute",
-                        "right": 4,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  Array [
-                    Object {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-            </View>
+            <View />
           </RCTScrollView>
           <View
             onLayout={[Function]}

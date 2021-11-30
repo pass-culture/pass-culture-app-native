@@ -6,8 +6,8 @@ import { useAppSettings } from 'features/auth/settings'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 type UserStatusResponse = { name: ActivityEnum; description?: string }
@@ -25,9 +25,10 @@ const baseStatuses: UserStatusResponse[] = [
 ]
 
 export const Status = () => {
-  const { goBack } = useGoBack(...homeNavConfig)
-  const [selectedStatus, setSelectedStatus] = useState<ActivityEnum | undefined>()
+  const { dispatch, profile } = useIdentityCheckContext()
+  const [selectedStatus, setSelectedStatus] = useState<ActivityEnum | null>(profile.status || null)
   const { data: settings } = useAppSettings()
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   const enabledGeneralisation =
     settings?.enableNativeEacIndividual && settings?.enableUnderageGeneralisation
@@ -35,6 +36,12 @@ export const Status = () => {
   const statuses = enabledGeneralisation
     ? ([{ name: 'Collégien' }] as UserStatusResponse[]).concat(baseStatuses)
     : baseStatuses
+
+  const onPressContinue = () => {
+    if (!selectedStatus) return
+    dispatch({ type: 'SET_STATUS', payload: selectedStatus })
+    navigateToNextScreen()
+  }
 
   return (
     <PageWithHeader
@@ -55,7 +62,7 @@ export const Status = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
-          onPress={goBack}
+          onPress={onPressContinue}
           title={!selectedStatus ? t`Choisis ton statut` : t`Continuer`}
           disabled={!selectedStatus}
         />

@@ -1,9 +1,14 @@
 import React from 'react'
 
+import { ActivityEnum } from 'api/gen'
+import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { Status } from 'features/identityCheck/pages/profile/Status'
-import { render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/auth/api')
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: jest.fn(() => ({ dispatch: jest.fn(), ...mockState })),
+}))
 
 const mockSettings = {
   enableUnderageGeneralisation: false,
@@ -15,16 +20,33 @@ jest.mock('features/auth/settings', () => ({
   })),
 }))
 
+const mockNavigateToNextScreen = jest.fn()
+jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
+  useIdentityCheckNavigation: () => ({
+    navigateToNextScreen: mockNavigateToNextScreen,
+  }),
+}))
+
 describe('<Status/>', () => {
   it('should render correctly with no Collégien status', () => {
     const renderAPI = render(<Status />)
     expect(renderAPI).toMatchSnapshot()
   })
+
   it('should show Collégien if enabledGeneralisation is true', () => {
     mockSettings.enableNativeEacIndividual = true
     mockSettings.enableUnderageGeneralisation = true
     const { getByText } = render(<Status />)
 
     expect(getByText('Collégien')).toBeTruthy()
+  })
+
+  it('should navigate to next screen on press "Continuer"', () => {
+    const { getByText } = render(<Status />)
+
+    fireEvent.press(getByText(ActivityEnum.Tudiant))
+    fireEvent.press(getByText('Continuer'))
+
+    expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
   })
 })

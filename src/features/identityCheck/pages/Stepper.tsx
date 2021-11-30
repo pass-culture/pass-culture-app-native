@@ -1,13 +1,13 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { QuitIdentityCheckModal } from 'features/identityCheck/pages/QuitIdentityCheckModal'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
-import { getStepState } from 'features/identityCheck/utils/stepper'
+import { useGetStepState } from 'features/identityCheck/utils/useGetStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
@@ -18,6 +18,7 @@ export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
   const steps = useIdentityCheckSteps()
+  const getStepState = useGetStepState()
   const context = useIdentityCheckContext()
 
   const {
@@ -25,6 +26,11 @@ export const IdentityCheckStepper = () => {
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(false)
+
+  useEffect(() => {
+    if (context.step === null && steps[0])
+      context.dispatch({ type: 'SET_STEP', payload: steps[0].name })
+  }, [steps.length])
 
   return (
     <React.Fragment>
@@ -44,7 +50,7 @@ export const IdentityCheckStepper = () => {
             <StepButton
               key={step.name}
               step={step}
-              state={getStepState(step.name, context.step)}
+              state={getStepState(step.name)}
               onPress={() => navigate(step.screens[0])}
             />
           ))}

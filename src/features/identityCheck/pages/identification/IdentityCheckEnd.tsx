@@ -1,17 +1,17 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { getSpacing } from 'ui/theme'
 
 export const IdentityCheckEnd = () => {
-  const navigation = useNavigation<UseNavigationType>()
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   useEffect(() => {
-    setTimeout(() => navigation.navigate('IdentityCheck'), 3000)
+    const timeout = setTimeout(navigateToNextScreen, 3000)
+    return () => clearTimeout(timeout)
   }, [])
 
   return (
