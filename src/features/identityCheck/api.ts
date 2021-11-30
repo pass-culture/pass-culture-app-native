@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { IdentificationSessionResponse } from 'api/gen'
+import { BeneficiaryInformationUpdateRequest, IdentificationSessionResponse } from 'api/gen'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { MutationKeys } from 'libs/queryKeys'
 
@@ -23,4 +23,33 @@ export function useIdentificationUrl() {
   }, [])
 
   return identificationUrl
+}
+
+interface IdentityCheckPatchProfileOptions {
+  values: BeneficiaryInformationUpdateRequest
+  onSuccess: () => void
+  onError: (error: unknown) => void
+}
+
+export function useIdentityCheckCheckpoint({
+  values,
+  onSuccess,
+  onError,
+}: IdentityCheckPatchProfileOptions) {
+  const { activity, address, city, firstName, lastName, postalCode } = values
+  return useMutation(
+    () =>
+      api.patchnativev1beneficiaryInformation({
+        ...(activity ? { activity } : null),
+        ...(address ? { address } : null),
+        ...(city ? { city } : null),
+        ...(firstName ? { firstName } : null),
+        ...(lastName ? { lastName } : null),
+        ...(postalCode ? { postalCode } : null),
+      } as BeneficiaryInformationUpdateRequest),
+    {
+      onSuccess,
+      onError,
+    }
+  )
 }

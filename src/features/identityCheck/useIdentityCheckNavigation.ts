@@ -1,22 +1,57 @@
+import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
+import { ActivityEnum } from 'api/gen'
+import { useIdentityCheckCheckpoint } from 'features/identityCheck/api'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckScreen, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import {
+  IdentityCheckRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 const isIdentityCheckRoute = (name: string): name is IdentityCheckScreen =>
   identityCheckRoutes.map((route) => route.name).includes(name as IdentityCheckScreen)
 
+const identityCheckCurrentStep = (
+  steps: StepConfig[],
+  currentRoute: keyof IdentityCheckRootStackParamList
+) => steps.find((step) => step.screens.includes(currentRoute))
+
 export const useIdentityCheckNavigation = (): { navigateToNextScreen: () => void } => {
-  const { dispatch } = useIdentityCheckContext()
+  const { dispatch, profile } = useIdentityCheckContext()
+  const { showErrorSnackBar } = useSnackBarContext()
   const steps = useIdentityCheckSteps()
   const { navigate } = useNavigation<UseNavigationType>()
   const { name } = useRoute()
 
   const currentRoute = isIdentityCheckRoute(name) ? name : null
+  const currentStep = currentRoute ? identityCheckCurrentStep(steps, currentRoute) : null
   const nextScreenOrStep = getNextScreenOrStep(steps, currentRoute)
+
+  const { mutate: patchProfile } = useIdentityCheckCheckpoint({
+    values: {
+      activity: profile.status as ActivityEnum,
+      address: profile.address,
+      city: profile.city?.name || '',
+      firstName: profile.name?.firstName,
+      lastName: profile.name?.lastName,
+      postalCode: profile.city?.postalCode || '',
+    },
+    onSuccess: () => dispatch({ type: 'SET_STEP', payload: nextScreenOrStep?.step }),
+    onError: () =>
+      showErrorSnackBar({
+        message: t`Une erreur est survenue lors de la mise à jour de votre profil`,
+        timeout: SNACK_BAR_TIME_OUT,
+      }),
+  })
+
+  const saveCheckpoint = (currentStep: IdentityCheckStep) => {
+    if (currentStep === 'profile') patchProfile()
+  }
 
   return {
     navigateToNextScreen: () => {
@@ -24,8 +59,8 @@ export const useIdentityCheckNavigation = (): { navigateToNextScreen: () => void
       if ('screen' in nextScreenOrStep) {
         navigate(nextScreenOrStep.screen)
       } else if ('step' in nextScreenOrStep) {
+        saveCheckpoint(currentStep)
         // In this case, we just redirect to the stepper screen
-        dispatch({ type: 'SET_STEP', payload: nextScreenOrStep.step })
         navigate('IdentityCheck')
       }
     },
@@ -37,7 +72,7 @@ export const getNextScreenOrStep = (
   currentRoute: IdentityCheckScreen | null
 ): { screen: IdentityCheckScreen } | { step: IdentityCheckStep } | null => {
   if (!currentRoute) return null
-  const currentStep = steps.find((step) => step.screens.includes(currentRoute))
+  const currentStep = identityCheckCurrentStep(steps, currentRoute)
   if (!currentStep) return null
 
   // Step is not completed
