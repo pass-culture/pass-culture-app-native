@@ -15,7 +15,6 @@ import { Login } from 'features/auth/login/Login'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
-import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
@@ -187,12 +186,6 @@ export const routes: Route[] = [
     component: ConsentSettings,
     path: 'profil/confidentialite',
     options: { title: t`Paramètres de confidentialité` },
-  },
-  {
-    name: 'BeneficiaryRequestSent',
-    component: BeneficiaryRequestSent,
-    path: 'demande-beneficiaire-envoyee',
-    options: { title: t`Demande bénéficiaire envoyée` },
   },
   {
     name: 'CulturalSurvey',

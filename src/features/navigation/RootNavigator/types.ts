@@ -25,6 +25,7 @@ export type IdentityCheckRootStackParamList = {
   IdentityCheckEnd: undefined
   // Confirmation
   IdentityCheckHonor: undefined
+  BeneficiaryRequestSent: undefined
 }
 
 /**
@@ -59,7 +60,6 @@ export type RootStackParamList = {
   ConfirmDeleteProfile: undefined
   BookingConfirmation: { offerId: number; bookingId: number }
   BookingDetails: { id: number }
-  BeneficiaryRequestSent: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined
   DeeplinkImporter: undefined

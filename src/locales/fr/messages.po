@@ -679,11 +679,11 @@ msgstr "Date précise"
 msgid "Demain"
 msgstr "Demain"
 
-#: src/features/navigation/RootNavigator/routes.ts
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Demande bénéficiaire envoyée"
 msgstr "Demande bénéficiaire envoyée"
 
-#: src/features/auth/signup/BeneficiaryRequestSent/BeneficiaryRequestSent.tsx
+#: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "Demande envoyée !"
 msgstr "Demande envoyée !"
 
@@ -811,6 +811,14 @@ msgstr "Email modification mot de passe envoyé"
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Email modification mot de passe expiré"
 msgstr "Email modification mot de passe expiré"
+
+#: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
+msgid "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
+msgstr "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
+
+#: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
+msgid "En attendant, tu peux découvrir l'application !"
+msgstr "En attendant, tu peux découvrir l'application !"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
@@ -1658,7 +1666,7 @@ msgstr "Nous n'arrivons pas à ouvrir ce lien : {url}"
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
-#: src/features/auth/signup/BeneficiaryRequestSent/BeneficiaryRequestSent.tsx
+#: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "Nous étudions ton dossier..."
 msgstr "Nous étudions ton dossier..."
 
@@ -1727,7 +1735,7 @@ msgid "Oh non !"
 msgstr "Oh non !"
 
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
-#: src/features/auth/signup/BeneficiaryRequestSent/BeneficiaryRequestSent.tsx
+#: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "On y va !"
 msgstr "On y va !"
 
@@ -2581,21 +2589,13 @@ msgstr "Tu pourras ainsi nous aider à améliorer l’application."
 msgid "Tu pourras retrouver l’offre dans tes réservations teminées"
 msgstr "Tu pourras retrouver l’offre dans tes réservations teminées"
 
-#: src/features/auth/signup/BeneficiaryRequestSent/BeneficiaryRequestSent.tsx
+#: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "Tu recevras un e-mail lorsque ta demande sera validée."
 msgstr "Tu recevras un e-mail lorsque ta demande sera validée."
 
-#: src/features/auth/signup/BeneficiaryRequestSent/BeneficiaryRequestSent.tsx
-msgid "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
-msgstr "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
-
-#: src/features/auth/signup/BeneficiaryRequestSent/BeneficiaryRequestSent.tsx
-msgid "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
-msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
-
-#: src/features/auth/signup/BeneficiaryRequestSent/BeneficiaryRequestSent.tsx
-msgid "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, tu peux découvrir l'application !"
-msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, tu peux découvrir l'application !"
+#: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
+msgid "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
+msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
 
 #: src/features/bookOffer/services/useModalContent.tsx
 msgid "Tu y es presque"
