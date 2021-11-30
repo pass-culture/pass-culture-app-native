@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
+import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
@@ -88,6 +89,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: IdentityCheckHonor,
     path: 'confirmation',
     options: { title: t`Confirmation` },
+    secure: true,
+  },
+  {
+    name: 'BeneficiaryRequestSent',
+    component: BeneficiaryRequestSent,
+    path: 'demande-beneficiaire-envoyee',
+    options: { title: t`Demande bénéficiaire envoyée` },
     secure: true,
   },
 ]

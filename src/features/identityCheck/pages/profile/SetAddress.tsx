@@ -28,10 +28,9 @@ const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.
 
 export const SetAddress = () => {
   const { data: settings } = useAppSettings()
-  const { profile } = useIdentityCheckContext()
+  const { dispatch, profile } = useIdentityCheckContext()
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
-  const { dispatch } = useIdentityCheckContext()
   const [query, setQuery] = useState<string>(profile.address || '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(profile.address || null)
@@ -79,12 +78,6 @@ export const SetAddress = () => {
     </TouchableOpacity>
   )
 
-  const onPressContinue = () => {
-    if (selectedAddress === null) return
-    dispatch({ type: 'SET_ADDRESS', payload: selectedAddress })
-    navigateToNextScreen()
-  }
-
   // The button is enabled only when the user has selected an address
   // if suggested addresses are available. Otherwise, if the user has
   // typed something and either the FF doesn't allow suggested addresses
@@ -93,6 +86,12 @@ export const SetAddress = () => {
     !isError && idCheckAddressAutocompletion && query.length > 0
       ? !!selectedAddress
       : query.length > 0
+
+  const onPressContinue = () => {
+    if (!enabled) return
+    dispatch({ type: 'SET_ADDRESS', payload: selectedAddress || query })
+    navigateToNextScreen()
+  }
 
   const renderItem: ListRenderItem<string> = ({ item: address, index }) => (
     <AddressOption

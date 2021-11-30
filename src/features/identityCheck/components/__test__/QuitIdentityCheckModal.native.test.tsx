@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { QuitIdentityCheckModal } from 'features/identityCheck/pages/QuitIdentityCheckModal'
+import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
 import { navigateToHome } from 'features/navigation/helpers'
 import { fireEvent, render } from 'tests/utils'
 
