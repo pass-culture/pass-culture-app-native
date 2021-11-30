@@ -1846,10 +1846,6 @@ msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton num
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Pourquoi"
-msgstr "Pourquoi"
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -1860,6 +1856,10 @@ msgstr "Pourquoi les biens numériques sont-ils limités ?"
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "Pourquoi saisir ma date de naissance ?"
+msgstr "Pourquoi saisir ma date de naissance ?"
 
 #: src/features/offer/components/useReportOfferModalContent.tsx
 #: src/features/offer/components/useReportOfferModalContent.tsx
@@ -2954,10 +2954,6 @@ msgstr "metteur en scène"
 msgid "montant déduit"
 msgstr "{price} seront déduits de ton crédit pass Culture"
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "naissance ?"
-msgstr "naissance ?"
-
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 msgid "need verify eligibility"
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
@@ -3020,10 +3016,6 @@ msgstr "{price} seront recrédités sur ton pass Culture."
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "saisir ma date de"
-msgstr "saisir ma date de"
 
 #: src/features/offer/services/useShareOffer.ts
 msgid "share offer message"
