@@ -55,7 +55,7 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
       params: {
         token: 'reerereskjlmkdlsf',
         expirationTimestamp: 45465546445,
-        email: 'john@wick.com',
+        new_email: 'john@wick.com',
       },
     }))
   })
