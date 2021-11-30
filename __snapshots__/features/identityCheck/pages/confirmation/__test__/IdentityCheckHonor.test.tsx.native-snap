@@ -202,7 +202,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
-                      "maxWidth": 352,
+                      "maxWidth": 500,
                     },
                   ]
                 }

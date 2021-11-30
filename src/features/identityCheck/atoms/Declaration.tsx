@@ -21,7 +21,7 @@ export const Declaration = ({ text, description }: { text: string; description: 
   )
 }
 
-const CenteredContainer = styled.View({ flex: 1, alignItems: 'center', maxWidth: getSpacing(88) })
+const CenteredContainer = styled.View({ flex: 1, alignItems: 'center', maxWidth: getSpacing(125) })
 const CenteredText = styled(Typo.Body)({ textAlign: 'center' })
 const CenteredDescription = styled(Typo.Caption)({ textAlign: 'center' })
 const QuoteContainer = styled.View<{ reversed?: boolean }>(({ reversed = false }) => ({
