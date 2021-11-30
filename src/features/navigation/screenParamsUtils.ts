@@ -28,7 +28,7 @@ type ParamsParsers = {
 
 export const screenParamsParser: ParamsParsers = {
   AfterChangeEmailValidationBuffer: {
-    email: decodeURIComponent,
+    new_email: decodeURIComponent,
     token: identityFn,
     expiration_timestamp: Number,
   },

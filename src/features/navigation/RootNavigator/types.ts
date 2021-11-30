@@ -44,7 +44,11 @@ export type RootStackParamList = {
     postalCode: string | undefined
   }
   AccountCreated: undefined
-  AfterChangeEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
+  AfterChangeEmailValidationBuffer: {
+    token: string
+    expiration_timestamp: number
+    new_email: string
+  }
   AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
   AppComponents: undefined
   ChangePassword: undefined

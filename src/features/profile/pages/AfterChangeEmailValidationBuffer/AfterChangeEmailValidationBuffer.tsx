@@ -19,6 +19,7 @@ export function AfterChangeEmailValidationBuffer() {
     }, 2000)
   }
   const { params } = useRoute<UseRouteType<'AfterChangeEmailValidationBuffer'>>()
+  const email = params.new_email
 
   const { showSuccessSnackBar } = useSnackBarContext()
 
@@ -37,7 +38,7 @@ export function AfterChangeEmailValidationBuffer() {
 
   function beforeEmailValidation() {
     if (isTimestampExpired(params.expiration_timestamp)) {
-      delayedNavigate('ChangeEmailExpiredLink', { email: params.email })
+      delayedNavigate('ChangeEmailExpiredLink', { email })
       return
     }
     validateEmail({
@@ -57,7 +58,7 @@ export function AfterChangeEmailValidationBuffer() {
   }
 
   function onEmailValidationFailure() {
-    delayedNavigate('ChangeEmailExpiredLink', { email: params.email })
+    delayedNavigate('ChangeEmailExpiredLink', { email })
   }
 
   return <LoadingPage />
