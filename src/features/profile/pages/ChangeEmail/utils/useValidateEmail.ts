@@ -5,7 +5,7 @@ import { isEmailValid } from 'ui/components/inputs/emailCheck'
 
 export const useIsCurrentUserEmail = (email: string): boolean => {
   const { data: user } = useUserProfileInfo()
-  return email === user?.email
+  return email.toLowerCase() === user?.email?.toLowerCase()
 }
 
 export function useValidateEmail(email: string): string | null {

@@ -12,6 +12,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { ChangeEmail } from '../ChangeEmail'
 
+jest.mock('features/home/api')
 jest.mock('react-query')
 const mockedUseMutation = mocked(useMutation)
 const mockUseMutationSuccess = () => {
@@ -75,6 +76,26 @@ describe('<ChangeEmail/>', () => {
       })
     }
   )
+
+  it('should display "same email" error if I entered the same email (case insensitive)', async () => {
+    const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
+    const submitButton = getByTestId('Enregistrer')
+    const background = submitButton.props.style.backgroundColor
+    expect(background).toEqual(ColorsEnum.GREY_LIGHT)
+
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(passwordInput, 'password>=12')
+    fireEvent.changeText(emailInput, 'EMAIL@domain.ext')
+
+    await waitForExpect(() => {
+      const background = submitButton.props.style.backgroundColor
+      expect(background).toEqual(ColorsEnum.GREY_LIGHT)
+
+      const errorMessage = queryByText("L'e-mail saisi est identique à votre e-mail actuel")
+      expect(errorMessage).toBeTruthy()
+    })
+  })
 
   it('should navigate to Profile and log event if the API call is ok', async () => {
     const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
