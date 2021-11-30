@@ -169,7 +169,7 @@ const CalendarPickerWrapper = styled.View(({ theme }) => ({
 }))
 
 const CalendarPickerWrapperDesktop = styled.View(({ theme }) => ({
-  minHeight: 360,
+  minHeight: 390,
   alignSelf: 'stretch',
   flexDirection: 'column',
   alignItems: 'center',
