@@ -96,7 +96,8 @@ export function ChangeEmail() {
       <Spacer.TopScreen />
       <StyledScrollView
         ref={scrollRef}
-        contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}>
+        contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
+        keyboardShouldPersistTaps="handled">
         <Spacer.Column numberOfSpaces={18} />
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />

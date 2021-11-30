@@ -23,6 +23,7 @@ Array [
         "paddingBottom": 0,
       }
     }
+    keyboardShouldPersistTaps="handled"
     style={
       Array [
         Object {
