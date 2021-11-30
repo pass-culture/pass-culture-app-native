@@ -4,8 +4,6 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 import { CountryCode } from 'react-native-country-picker-modal'
 
-import { BeneficiaryValidationStep } from 'api/gen'
-
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
 export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink' | 'exclusivity'
@@ -94,8 +92,8 @@ export type RootStackParamList = {
   PersonalData: undefined
   SearchCategories: undefined
   SearchFilter: undefined
-  SelectSchool: { nextBeneficiaryValidationStep: BeneficiaryValidationStep | null | undefined }
-  SelectSchoolHome: { nextBeneficiaryValidationStep: BeneficiaryValidationStep | null | undefined }
+  SelectSchool: undefined
+  SelectSchoolHome: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
   SetEmail: { preventCancellation?: boolean } | undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
@@ -109,7 +107,7 @@ export type RootStackParamList = {
   SetPhoneValidationCode: { phoneNumber: string; countryCode: CountryCode }
   PhoneValidationTooManyAttempts: undefined
   PhoneValidationTooManySMSSent: undefined
-  VerifyEligibility: { nextBeneficiaryValidationStep: BeneficiaryValidationStep }
+  VerifyEligibility: undefined
   NotYetUnderageEligibility: undefined
   FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined

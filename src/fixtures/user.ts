@@ -1,4 +1,4 @@
-import { BeneficiaryValidationStep, UserProfileResponse, UserRole } from 'api/gen'
+import { UserProfileResponse, UserRole } from 'api/gen'
 
 export const nonBeneficaryUser: UserProfileResponse = {
   bookedOffers: {},
@@ -19,7 +19,6 @@ export const nonBeneficaryUser: UserProfileResponse = {
     marketingEmail: true,
     marketingPush: true,
   },
-  nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
 }
 
 export const beneficiaryUser: UserProfileResponse = {
@@ -32,10 +31,12 @@ export const beneficiaryUser: UserProfileResponse = {
   isBeneficiary: true,
   roles: [UserRole.BENEFICIARY],
   nextBeneficiaryValidationStep: undefined,
+  isEligibleForBeneficiaryUpgrade: false,
 }
 
 export const underageBeneficiaryUser: UserProfileResponse = {
   ...beneficiaryUser,
   isBeneficiary: false,
   roles: [UserRole.UNDERAGEBENEFICIARY],
+  isEligibleForBeneficiaryUpgrade: false,
 }

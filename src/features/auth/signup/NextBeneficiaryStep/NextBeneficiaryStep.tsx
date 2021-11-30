@@ -5,12 +5,10 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { LoadingPage } from 'ui/components/LoadingPage'
 
 export function NextBeneficiaryStep() {
-  const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
-  useFocusEffect(navigateToNextBeneficiaryValidationStep)
-
-  if (error) {
-    throw error
-  }
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  useFocusEffect(() => {
+    navigateToNextBeneficiaryValidationStep()
+  })
 
   return <LoadingPage />
 }

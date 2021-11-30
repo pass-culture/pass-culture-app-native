@@ -11,6 +11,7 @@ import {
   formatPhoneNumber,
   SetPhoneValidationCode,
 } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
@@ -30,6 +31,7 @@ allowConsole({ error: true })
 
 jest.mock('react-query')
 jest.mock('features/auth/settings')
+jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
     refetch: jest.fn(() =>
@@ -132,15 +134,16 @@ describe('SetPhoneValidationCode', () => {
       })
     })
 
-    it('should navigate to id-check if validate phone number request succeeds', async () => {
+    it('should navigate to nextBeneficiaryValidationStep if validate phone number request succeeds', async () => {
+      const {
+        navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
+      } = useBeneficiaryValidationNavigation()
       const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
-
       fireEvent.click(continueButton)
       useMutationCallbacks.onSuccess()
-
       await flushAllPromises()
-      expect(navigate).toBeCalledWith('IdCheckV2')
+      expect(mockedNavigateToNextBeneficiaryValidationStep).toBeCalled()
     })
 
     it('should display input error message if validate phone number request fails', async () => {

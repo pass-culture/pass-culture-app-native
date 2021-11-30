@@ -1,11 +1,11 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
+import waitForExpect from 'wait-for-expect'
 
-import { BeneficiaryValidationStep } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useIsUserUnderage } from 'features/profile/utils'
-import { flushAllPromises, render, fireEvent } from 'tests/utils/web'
+import { render, fireEvent } from 'tests/utils/web'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
@@ -20,10 +20,6 @@ jest.mock('@react-navigation/core', () => {
   }
 })
 
-jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
-
 jest.mock('features/profile/utils')
 const mockedUseIsUserUnderage = mocked(useIsUserUnderage, true)
 
@@ -36,24 +32,8 @@ jest.mock('features/auth/api', () => ({
   })),
 }))
 jest.mock('features/auth/settings')
-
-const mockData = {
-  email: 'email2@domain.ext',
-  firstName: 'Jean',
-  isBeneficiary: false,
-  nextBeneficiaryValidationStep: 'phone-validation',
-}
-jest.mock('features/home/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({
-    isLoading: false,
-    data: mockData,
-    refetch: jest.fn(() =>
-      Promise.resolve({
-        data: mockData,
-      })
-    ),
-  })),
-}))
+jest.mock('features/home/api')
+jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
 describe('NonBeneficiaryHeader  ', () => {
   afterAll(mockdate.reset)
@@ -65,7 +45,7 @@ describe('NonBeneficiaryHeader  ', () => {
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2021-01-31T00:00Z"
         eligibilityEndDatetime="2022-01-31T00:00Z"
-        nextBeneficiaryValidationStep={null}
+        isEligibleForBeneficiaryUpgrade={false}
       />
     )
 
@@ -73,22 +53,25 @@ describe('NonBeneficiaryHeader  ', () => {
   })
 
   it('should render the right body for 18 years old users, call analytics and navigate to phone validation', async () => {
+    const {
+      navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
+    } = useBeneficiaryValidationNavigation()
+
     const today = '2021-02-30T00:00:00Z'
     mockdate.set(new Date(today))
     const { getByTestId } = render(
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
-        nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
+        isEligibleForBeneficiaryUpgrade={true}
       />
     )
 
     const banner = getByTestId('eligibility-banner')
     fireEvent.click(banner)
 
-    await flushAllPromises()
-    expect(navigateToNextBeneficiaryValidationStep).toBeCalledWith({
-      nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
+    await waitForExpect(() => {
+      expect(mockedNavigateToNextBeneficiaryValidationStep).toHaveBeenCalled()
     })
   })
 
@@ -99,7 +82,7 @@ describe('NonBeneficiaryHeader  ', () => {
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
-        nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
+        isEligibleForBeneficiaryUpgrade={true}
       />
     )
 
@@ -114,16 +97,15 @@ describe('NonBeneficiaryHeader  ', () => {
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
-        nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
+        isEligibleForBeneficiaryUpgrade={true}
       />
     )
 
     const banner = getByTestId('eligibility-banner')
     fireEvent.click(banner)
 
-    await flushAllPromises()
-    expect(mockedNavigate).toBeCalledWith('SelectSchoolHome', {
-      nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
+    await waitForExpect(() => {
+      expect(mockedNavigate).toHaveBeenCalledWith('SelectSchoolHome')
     })
   })
 
@@ -137,7 +119,7 @@ describe('NonBeneficiaryHeader  ', () => {
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
-        nextBeneficiaryValidationStep={null}
+        isEligibleForBeneficiaryUpgrade={true}
       />
     )
     const container = queryByTestId('body-container')
@@ -151,7 +133,7 @@ describe('NonBeneficiaryHeader  ', () => {
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2020-02-30T00:00Z"
         eligibilityEndDatetime="2021-02-30T00:00Z"
-        nextBeneficiaryValidationStep={null}
+        isEligibleForBeneficiaryUpgrade={true}
       />
     )
     const container = queryByTestId('body-container')
@@ -163,30 +145,19 @@ describe('NonBeneficiaryHeader  ', () => {
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
-        nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
+        isEligibleForBeneficiaryUpgrade={true}
       />
     )
     expect(queryByText(/Profite de 300€/)).toBeTruthy()
   })
+
   it('should display correct credit message for underage', () => {
     mockedUseIsUserUnderage.mockReturnValueOnce(true)
     const { queryByText } = render(
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2021-02-30T00:00Z"
         eligibilityEndDatetime="2022-02-30T00:00Z"
-        nextBeneficiaryValidationStep={BeneficiaryValidationStep.PhoneValidation}
-      />
-    )
-    expect(queryByText(/Profite de 300€/)).toBeFalsy()
-    expect(queryByText(/Profite de ton crédit/)).toBeTruthy()
-  })
-  it('should display correct credit message for underage with no next step available', () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    const { queryByText } = render(
-      <NonBeneficiaryHeader
-        eligibilityStartDatetime="2021-02-30T00:00Z"
-        eligibilityEndDatetime="2022-02-30T00:00Z"
-        nextBeneficiaryValidationStep={null}
+        isEligibleForBeneficiaryUpgrade={true}
       />
     )
     expect(queryByText(/Profite de 300€/)).toBeFalsy()

@@ -2,7 +2,6 @@ import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useUserProfileInfo } from 'features/home/api'
@@ -20,8 +19,9 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-jest.mock('react-query')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+
+jest.mock('react-query')
 jest.mock('features/home/api')
 const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
 
@@ -38,7 +38,7 @@ describe('<EighteenBirthdayCard />', () => {
     jest.useRealTimers()
   })
 
-  it('should go to id check when user is authed', async () => {
+  it('should navigate to nextBeneficiaryValidationStep on press "Vérifier mon identité"', async () => {
     mockedUseUserProfileInfo.mockReturnValueOnce({ data: nonBeneficaryUser })
     const {
       navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
@@ -49,25 +49,7 @@ describe('<EighteenBirthdayCard />', () => {
     fireEvent.press(getByText('Vérifier mon identité'))
 
     await waitForExpect(() => {
-      expect(mockedNavigateToNextBeneficiaryValidationStep).toBeCalledWith({
-        nextBeneficiaryValidationStep: nonBeneficaryUser.nextBeneficiaryValidationStep,
-      })
-    })
-  })
-
-  it('should go to login check when user is not authed', async () => {
-    mockedUseUserProfileInfo.mockReturnValueOnce({ data: undefined })
-    const { getByText } = await renderEighteenBirthdayCard({
-      isLoggedIn: false,
-    })
-
-    fireEvent.press(getByText('Vérifier mon identité'))
-
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('Login')
-    })
-    expect(mockShowInfoSnackBar).toBeCalledWith({
-      message: `Tu n'es pas connecté !`,
+      expect(mockedNavigateToNextBeneficiaryValidationStep).toBeCalled()
     })
   })
 })

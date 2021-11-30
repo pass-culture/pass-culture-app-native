@@ -57,16 +57,16 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       loginRoutine.mockRestore()
     })
 
-    it('should redirect to Verify Eligibility when nextBeneficiaryValidationStep is phone-validation or id-check', async () => {
+    it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 18 yo', async () => {
       server.use(
-        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) =>
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
           res.once(
             ctx.status(200),
             ctx.json({
               email: 'email@domain.ext',
               firstName: 'Jean',
-              isBeneficiary: true,
-              nextBeneficiaryValidationStep: 'phone-validation',
+              eligibility: 'age-18',
+              isEligibleForBeneficiaryUpgrade: true,
             })
           )
         )
@@ -77,9 +77,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
         expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('VerifyEligibility', {
-          nextBeneficiaryValidationStep: 'phone-validation',
-        })
+        expect(navigate).toHaveBeenCalledWith('VerifyEligibility')
       })
       loginRoutine.mockRestore()
     })

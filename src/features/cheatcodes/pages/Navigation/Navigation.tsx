@@ -5,7 +5,6 @@ import { Alert, ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
-import { BeneficiaryValidationStep } from 'api/gen'
 import { useSignIn } from 'features/auth/api'
 import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
@@ -189,11 +188,7 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={'Vérifier éligibilité'}
-            onPress={() =>
-              navigate('VerifyEligibility', {
-                nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
-              })
-            }
+            onPress={() => navigate('VerifyEligibility')}
           />
         </Row>
         <Row half>
@@ -358,21 +353,13 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={`Accueil sélection établissement`}
-            onPress={() =>
-              navigate('SelectSchoolHome', {
-                nextBeneficiaryValidationStep: BeneficiaryValidationStep.IdCheck,
-              })
-            }
+            onPress={() => navigate('SelectSchoolHome')}
           />
         </Row>
         <Row half>
           <NavigationButton
             title={`Sélection établissement`}
-            onPress={() =>
-              navigate('SelectSchool', {
-                nextBeneficiaryValidationStep: BeneficiaryValidationStep.IdCheck,
-              })
-            }
+            onPress={() => navigate('SelectSchool')}
           />
         </Row>
         <Row half>
