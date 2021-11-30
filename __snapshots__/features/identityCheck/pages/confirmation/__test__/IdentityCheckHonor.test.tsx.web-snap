@@ -284,7 +284,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                     "flexBasis": "0px",
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "maxWidth": "352px",
+                    "maxWidth": "500px",
                     "msFlexAlign": "center",
                     "msFlexNegative": 1,
                     "msFlexPositive": 1,

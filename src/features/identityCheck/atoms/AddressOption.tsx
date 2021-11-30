@@ -15,7 +15,7 @@ interface Props {
 
 export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
   return (
-    <React.Fragment>
+    <Container>
       <StyledTouchableOpacity
         onPress={() => onPressOption(optionKey)}
         activeOpacity={ACTIVE_OPACITY}>
@@ -29,9 +29,13 @@ export const AddressOption = ({ optionKey, label, onPressOption, selected }: Pro
         </TextContainer>
       </StyledTouchableOpacity>
       <Separator />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View({
+  paddingHorizontal: getSpacing(4),
+})
 
 const StyledTouchableOpacity = styled.TouchableOpacity(({ theme }) => ({
   flexDirection: 'column',
