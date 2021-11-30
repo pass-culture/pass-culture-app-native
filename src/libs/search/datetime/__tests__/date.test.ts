@@ -1,7 +1,6 @@
 import { Range } from '../../../typesUtils/typeHelpers'
 import { DATE } from '../date'
 
-// TODO(antoinewg) remove these functions once the migration to AppSearch is complete.
 describe('getDatesFromTimeRangeAndDate', () => {
   describe('utc', () => {
     it('should return dates with beginning and ending times for given date and timerange', () => {

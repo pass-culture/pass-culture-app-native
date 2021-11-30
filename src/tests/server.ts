@@ -123,7 +123,6 @@ export function requestSettingsSuccess(
     objectStorageUrl: 'http://localhost',
     displayDmsRedirection: true,
     idCheckAddressAutocompletion: true,
-    useAppSearch: false,
     isWebappV2Enabled: false,
     enableNativeEacIndividual: false,
     accountCreationMinimumAge: 15,

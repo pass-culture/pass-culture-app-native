@@ -6,8 +6,6 @@ import { fetchMultipleVenues as fetchAlgoliaMultipleVenues } from 'libs/algolia/
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
-import { fetchMultipleVenues as fetchAppSearchMultipleVenues } from 'libs/search/fetch/search'
-import { useAppSearchBackend } from 'libs/search/fetch/useAppSearchBackend'
 
 export type HomeVenuesModuleResponse = {
   [moduleId: string]: {
@@ -21,23 +19,17 @@ export const useHomeVenueModules = (
 ): HomeVenuesModuleResponse => {
   const { position } = useGeolocation()
   const homeVenuesModules: HomeVenuesModuleResponse = {}
-  const { enabled, isAppSearchBackend } = useAppSearchBackend()
-
-  const fetchMultipleVenues = isAppSearchBackend
-    ? fetchAppSearchMultipleVenues
-    : fetchAlgoliaMultipleVenues
 
   const queries = useQueries(
     venuesModules.map(({ search, moduleId }) => {
       const fetchModule = async () => {
-        const hits = await fetchMultipleVenues(search, position)
+        const hits = await fetchAlgoliaMultipleVenues(search, position)
         return { moduleId: moduleId, hits }
       }
 
       return {
         queryKey: [QueryKeys.HOME_VENUES_MODULE, moduleId],
         queryFn: fetchModule,
-        enabled,
         notifyOnChangeProps: ['data'] as UseInfiniteQueryOptions['notifyOnChangeProps'],
       }
     })
