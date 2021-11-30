@@ -84,7 +84,8 @@ export function ChangePassword() {
       <Spacer.TopScreen />
       <StyledScrollView
         ref={scrollRef}
-        contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}>
+        contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
+        keyboardShouldPersistTaps="handled">
         <Spacer.Column numberOfSpaces={20} />
         <PasswordInput
           label={t`Mot de passe actuel`}
