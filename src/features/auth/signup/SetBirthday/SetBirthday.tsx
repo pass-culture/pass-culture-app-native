@@ -173,7 +173,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     financialHelpMessage +
     t`Cette aide sera créditée directement sur ton compte pass Culture.`
 
-  const modalTitle = t`Pourquoi` + '\n' + t`saisir ma date de` + '\n' + t`naissance ?`
+  const modalTitle = t`Pourquoi saisir ma date de naissance\u00a0?`
 
   return (
     <React.Fragment>

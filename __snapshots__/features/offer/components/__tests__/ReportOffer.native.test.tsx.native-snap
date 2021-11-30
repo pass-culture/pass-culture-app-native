@@ -112,102 +112,137 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
       style={
         Array [
           Object {
-            "alignItems": "center",
+            "display": "flex",
             "flexDirection": "row",
-            "justifyContent": "space-between",
+            "justifyContent": "center",
             "width": "100%",
-            "zIndex": 1,
           },
         ]
       }
     >
       <View
-        accessibilityLabel="leftIconButton"
-        accessible={true}
-        collapsable={false}
-        focusable={false}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "flex-start",
-            "flexBasis": 0,
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-            "marginLeft": -4,
-            "opacity": 1,
-          }
-        }
-        testID="leftIconButton"
-      >
-        <View
-          height={32}
-          testID="leftIcon"
-          width={32}
-        >
-          <Text>
-            leftIcon-SVG-Mock
-          </Text>
-        </View>
-      </View>
-      <Text
-        numberOfLines={2}
         style={
           Array [
             Object {
-              "color": "#151515",
+              "alignItems": "flex-end",
               "flexBasis": 0,
-              "flexGrow": 0.8,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
               "flexShrink": 1,
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 18,
-              "lineHeight": 22,
-              "textAlign": "center",
+              "justifyContent": "flex-start",
             },
           ]
         }
       >
-        Titre modale
-      </Text>
-      <View
-        accessibilityLabel="Fermer la modale"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "flex-end",
-            "flexBasis": 0,
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-            "marginRight": -4,
-            "opacity": 1,
+        <View
+          accessibilityLabel="leftIconButton"
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "marginLeft": -5,
+              "opacity": 1,
+            }
           }
+          testID="leftIconButton"
+        >
+          <View
+            height={32}
+            testID="leftIcon"
+            width={32}
+          >
+            <Text>
+              leftIcon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 0.8,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "zIndex": 1,
+            },
+          ]
         }
-        testID="Fermer la modale"
+      >
+        <Text
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Titre modale
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
       >
         <View
-          height={32}
-          testID="rightIcon"
-          width={32}
+          accessibilityLabel="Fermer la modale"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "marginRight": -5,
+              "opacity": 1,
+            }
+          }
+          testID="Fermer la modale"
         >
-          <Text>
-            rightIcon-SVG-Mock
-          </Text>
+          <View
+            height={32}
+            testID="rightIcon"
+            width={32}
+          >
+            <Text>
+              rightIcon-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -360,102 +395,137 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
       style={
         Array [
           Object {
-            "alignItems": "center",
+            "display": "flex",
             "flexDirection": "row",
-            "justifyContent": "space-between",
+            "justifyContent": "center",
             "width": "100%",
-            "zIndex": 1,
           },
         ]
       }
     >
       <View
-        accessibilityLabel="leftIconButton"
-        accessible={true}
-        collapsable={false}
-        focusable={false}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "flex-start",
-            "flexBasis": 0,
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-            "marginLeft": -4,
-            "opacity": 1,
-          }
-        }
-        testID="leftIconButton"
-      >
-        <View
-          height={32}
-          testID="leftIcon"
-          width={32}
-        >
-          <Text>
-            leftIcon-SVG-Mock
-          </Text>
-        </View>
-      </View>
-      <Text
-        numberOfLines={2}
         style={
           Array [
             Object {
-              "color": "#151515",
+              "alignItems": "flex-end",
               "flexBasis": 0,
-              "flexGrow": 0.8,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
               "flexShrink": 1,
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 18,
-              "lineHeight": 22,
-              "textAlign": "center",
+              "justifyContent": "flex-start",
             },
           ]
         }
       >
-        Titre modale
-      </Text>
-      <View
-        accessibilityLabel="Fermer la modale"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "flex-end",
-            "flexBasis": 0,
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-            "marginRight": -4,
-            "opacity": 1,
+        <View
+          accessibilityLabel="leftIconButton"
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "marginLeft": -5,
+              "opacity": 1,
+            }
           }
+          testID="leftIconButton"
+        >
+          <View
+            height={32}
+            testID="leftIcon"
+            width={32}
+          >
+            <Text>
+              leftIcon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 0.8,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "zIndex": 1,
+            },
+          ]
         }
-        testID="Fermer la modale"
+      >
+        <Text
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Titre modale
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
       >
         <View
-          height={32}
-          testID="rightIcon"
-          width={32}
+          accessibilityLabel="Fermer la modale"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "marginRight": -5,
+              "opacity": 1,
+            }
+          }
+          testID="Fermer la modale"
         >
-          <Text>
-            rightIcon-SVG-Mock
-          </Text>
+          <View
+            height={32}
+            testID="rightIcon"
+            width={32}
+          >
+            <Text>
+              rightIcon-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
     </View>
