@@ -12,12 +12,15 @@ export const NoFavoritesResult = () => {
 
   return (
     <Container>
+      <Spacer.TabBar />
       <Spacer.Flex />
-      <EmptyFavorites size={197} color={ColorsEnum.GREY_MEDIUM} />
+      <IconContainer>
+        <EmptyFavorites size={197} color={ColorsEnum.GREY_MEDIUM} />
+      </IconContainer>
       <Explanation color={ColorsEnum.GREY_DARK}>
         {t`Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !`}
       </Explanation>
-      <Spacer.Column numberOfSpaces={8} />
+      <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>
         <AppButton
           title={t`Explorer les offres`}
@@ -32,6 +35,11 @@ export const NoFavoritesResult = () => {
     </Container>
   )
 }
+
+const IconContainer = styled.View({
+  flex: 1,
+  minHeight: 80,
+})
 
 const Container = styled.View({
   flex: 1,
@@ -48,5 +56,6 @@ const ButtonContainer = styled.View({
 
 const Explanation = styled(Typo.Body)({
   flex: 1,
+  flexGrow: 0,
   textAlign: 'center',
 })
