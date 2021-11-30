@@ -40,7 +40,6 @@ export const BookingOfferModalComponent: React.FC<Props> = ({ visible, offerId }
     <AppModal
       visible={visible}
       title={title}
-      isScrollable
       {...modalLeftIconProps}
       rightIconAccessibilityLabel={t`Fermer la modale`}
       rightIcon={Close}

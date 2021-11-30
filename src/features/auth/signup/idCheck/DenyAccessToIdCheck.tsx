@@ -34,8 +34,7 @@ export const DenyAccessToIdCheckModal = (props: DenyAccessToIdCheckModalProps) =
       onLeftIconPress={undefined}
       rightIconAccessibilityLabel={t`Fermer la modale`}
       rightIcon={Close}
-      onRightIconPress={props.dismissModal}
-      isScrollable>
+      onRightIconPress={props.dismissModal}>
       <ModalContent>
         <HappyFace size={getSpacing(20)} color={ColorsEnum.GREY_DARK} />
         <Spacer.Column numberOfSpaces={getSpacing(2)} />

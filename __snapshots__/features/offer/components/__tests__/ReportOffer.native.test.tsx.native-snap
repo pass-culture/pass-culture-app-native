@@ -6,6 +6,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
+  height={428}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[MockFunction]}
   onModalHide={[Function]}
@@ -58,6 +59,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     deviceHeight={1334}
     deviceWidth={750}
     forwardedRef={[Function]}
+    height={428}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[MockFunction]}
     onModalHide={[Function]}
@@ -73,8 +75,11 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     style={
       Object {
         "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "#ffffff",
+        "borderBottomEndRadius": 0,
+        "borderBottomLeftRadius": 0,
+        "borderBottomRightRadius": 0,
+        "borderBottomStartRadius": 0,
         "borderTopEndRadius": 16,
         "borderTopLeftRadius": 20,
         "borderTopRightRadius": 20,
@@ -82,16 +87,19 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         "bottom": 0,
         "flex": 1,
         "flexDirection": "column",
+        "height": 428,
         "justifyContent": "center",
-        "margin": 0,
-        "marginBottom": 0,
-        "marginTop": "auto",
+        "left": 0,
+        "margin": "auto",
+        "maxHeight": 650,
         "maxWidth": 750,
-        "paddingBottom": 24,
-        "paddingLeft": 24,
-        "paddingRight": 24,
-        "paddingTop": 24,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 20,
         "position": "absolute",
+        "right": 0,
+        "top": "auto",
         "transform": Array [
           Object {
             "translateY": 1334,
@@ -109,6 +117,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     swipeThreshold={100}
   >
     <View
+      onLayout={[Function]}
       style={
         Array [
           Object {
@@ -250,30 +259,45 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "maxWidth": 500,
-            "paddingTop": 20,
-            "width": "100%",
+            "height": 20,
           },
+        ]
+      }
+    />
+    <View
+      paddingBottom={8}
+      style={
+        Array [
           Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 480,
             "paddingBottom": 8,
           },
         ]
       }
     >
-      <View
-        style={
-          Array [
-            Object {
-              "width": "100%",
-            },
-          ]
-        }
+      <RCTScrollView
+        onContentSizeChange={[Function]}
+        scrollEnabled={true}
       >
-        <Text>
-          Composant modale
-        </Text>
-      </View>
+        <View>
+          <View
+            style={
+              Array [
+                Object {
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <Text>
+              Composant modale
+            </Text>
+          </View>
+        </View>
+      </RCTScrollView>
     </View>
   </View>
 </Modal>
@@ -285,6 +309,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
+  height={428}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[MockFunction]}
   onModalHide={[Function]}
@@ -340,6 +365,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
     deviceHeight={1334}
     deviceWidth={750}
     forwardedRef={[Function]}
+    height={428}
     hideModalContentWhileAnimating={false}
     nativeID="animatedComponent"
     onBackdropPress={[MockFunction]}
@@ -356,8 +382,11 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
     style={
       Object {
         "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "#ffffff",
+        "borderBottomEndRadius": 0,
+        "borderBottomLeftRadius": 0,
+        "borderBottomRightRadius": 0,
+        "borderBottomStartRadius": 0,
         "borderTopEndRadius": 16,
         "borderTopLeftRadius": 20,
         "borderTopRightRadius": 20,
@@ -365,16 +394,19 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
         "bottom": 0,
         "flex": 1,
         "flexDirection": "column",
+        "height": 428,
         "justifyContent": "center",
-        "margin": 0,
-        "marginBottom": 0,
-        "marginTop": "auto",
+        "left": 0,
+        "margin": "auto",
+        "maxHeight": 650,
         "maxWidth": 750,
-        "paddingBottom": 24,
-        "paddingLeft": 24,
-        "paddingRight": 24,
-        "paddingTop": 24,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 20,
         "position": "absolute",
+        "right": 0,
+        "top": "auto",
         "transform": Array [
           Object {
             "translateY": 0,
@@ -392,6 +424,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
     swipeThreshold={100}
   >
     <View
+      onLayout={[Function]}
       style={
         Array [
           Object {
@@ -533,30 +566,45 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "maxWidth": 500,
-            "paddingTop": 20,
-            "width": "100%",
+            "height": 20,
           },
+        ]
+      }
+    />
+    <View
+      paddingBottom={8}
+      style={
+        Array [
           Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 480,
             "paddingBottom": 8,
           },
         ]
       }
     >
-      <View
-        style={
-          Array [
-            Object {
-              "width": "100%",
-            },
-          ]
-        }
+      <RCTScrollView
+        onContentSizeChange={[Function]}
+        scrollEnabled={true}
       >
-        <Text>
-          Composant modale
-        </Text>
-      </View>
+        <View>
+          <View
+            style={
+              Array [
+                Object {
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <Text>
+              Composant modale
+            </Text>
+          </View>
+        </View>
+      </RCTScrollView>
     </View>
   </View>
 </Modal>

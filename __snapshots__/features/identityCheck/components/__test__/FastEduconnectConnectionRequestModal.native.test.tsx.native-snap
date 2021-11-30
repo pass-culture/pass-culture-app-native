@@ -6,6 +6,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
+  height={428}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[MockFunction]}
   onModalHide={[Function]}
@@ -61,6 +62,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
     deviceHeight={1334}
     deviceWidth={750}
     forwardedRef={[Function]}
+    height={428}
     hideModalContentWhileAnimating={false}
     nativeID="animatedComponent"
     onBackdropPress={[MockFunction]}
@@ -77,8 +79,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
     style={
       Object {
         "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "#ffffff",
+        "borderBottomEndRadius": 0,
+        "borderBottomLeftRadius": 0,
+        "borderBottomRightRadius": 0,
+        "borderBottomStartRadius": 0,
         "borderTopEndRadius": 16,
         "borderTopLeftRadius": 20,
         "borderTopRightRadius": 20,
@@ -86,16 +91,19 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
         "bottom": 0,
         "flex": 1,
         "flexDirection": "column",
+        "height": 428,
         "justifyContent": "center",
-        "margin": 0,
-        "marginBottom": 0,
-        "marginTop": "auto",
+        "left": 0,
+        "margin": "auto",
+        "maxHeight": 650,
         "maxWidth": 750,
-        "paddingBottom": 24,
-        "paddingLeft": 24,
-        "paddingRight": 24,
-        "paddingTop": 24,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 20,
         "position": "absolute",
+        "right": 0,
+        "top": "auto",
         "transform": Array [
           Object {
             "translateY": 0,
@@ -113,6 +121,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
     swipeThreshold={100}
   >
     <View
+      onLayout={[Function]}
       style={
         Array [
           Object {
@@ -254,429 +263,36 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "maxWidth": 500,
-            "paddingTop": 20,
-            "width": "100%",
+            "height": 20,
           },
+        ]
+      }
+    />
+    <View
+      paddingBottom={8}
+      style={
+        Array [
           Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 480,
             "paddingBottom": 8,
           },
         ]
       }
     >
-      <Text
-        color="#626262"
-        style={
-          Array [
-            Object {
-              "color": "#626262",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
+      <RCTScrollView
+        onContentSizeChange={[Function]}
+        scrollEnabled={true}
       >
-        Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement.
-      </Text>
-      <View
-        accessibilityLabel="C’est quoi ÉduConnect ?"
-        accessible={true}
-        collapsable={false}
-        focusable={false}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "marginBottom": 16,
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="C’est quoi ÉduConnect ?"
-      >
-        <View
-          fill="#151515"
-          height={32}
-          testID="button-icon"
-          width={32}
-        >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 5,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#151515"
-        >
-          C’est quoi ÉduConnect ?
-        </Text>
-      </View>
-      <View
-        accessibilityLabel="Identification avec ÉduConnect  "
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Identification avec ÉduConnect  "
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 5,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#ffffff"
-        >
-          Identification avec ÉduConnect  
-        </Text>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "alignSelf": "stretch",
-              "justifyContent": "center",
-              "marginVertical": 24,
-              "position": "relative",
-            },
-          ]
-        }
-      >
-        <View
-          forwardedComponent={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  [Function],
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          forwardedRef={null}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "#c7c7cc",
-                "height": 1,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
-          }
-          theme={
-            Object {
-              "activeOpacity": 0.7,
-              "appBarHeight": 64,
-              "appContentWidth": 750,
-              "borderRadius": Object {
-                "button": 24,
-                "checkbox": 4,
-                "radius": 8,
-              },
-              "bottomContentPage": Object {
-                "offsetTopHeightDesktopTablet": 40,
-              },
-              "breakpoints": Object {
-                "lg": 1024,
-                "md": 960,
-                "sm": 576,
-                "xl": 1200,
-                "xs": 0,
-                "xxl": 1400,
-              },
-              "buttons": Object {
-                "disabled": Object {
-                  "primary": Object {
-                    "backgroundColor": "#f5f5f5",
-                    "textColor": "#626262",
-                  },
-                  "primaryWhite": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "quaternary": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "quaternaryBlack": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "secondary": Object {
-                    "borderColor": "#ff99be",
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "tertiary": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "tertiaryGreyDark": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "tertiaryWhite": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                },
-                "loading": Object {
-                  "primary": Object {
-                    "backgroundColor": "#c10046",
-                  },
-                  "secondary": Object {
-                    "borderColor": "#eb0055",
-                  },
-                },
-                "primary": Object {
-                  "backgroundColor": "#eb0055",
-                  "iconColor": "#ffffff",
-                  "loadingIconColor": "#ffffff",
-                  "textColor": "#ffffff",
-                },
-                "primaryWhite": Object {
-                  "backgroundColor": "#ffffff",
-                  "iconColor": "#eb0055",
-                  "loadingIconColor": "#c10046",
-                  "textColor": "#eb0055",
-                },
-                "quaternary": Object {
-                  "backgroundColor": "transparent",
-                  "iconColor": "#c10046",
-                  "loadingIconColor": "#c10046",
-                  "textColor": "#eb0055",
-                },
-                "quaternaryBlack": Object {
-                  "backgroundColor": "transparent",
-                  "iconColor": "#151515",
-                  "loadingIconColor": "#c10046",
-                  "textColor": "#151515",
-                },
-                "secondary": Object {
-                  "backgroundColor": "transparent",
-                  "borderColor": "#ff99be",
-                  "iconColor": "#eb0055",
-                  "loadingIconColor": "#c10046",
-                  "textColor": "#eb0055",
-                },
-                "tertiary": Object {
-                  "backgroundColor": "transparent",
-                  "iconColor": "#eb0055",
-                  "loadingIconColor": "#c10046",
-                  "textColor": "#eb0055",
-                },
-                "tertiaryGreyDark": Object {
-                  "backgroundColor": "transparent",
-                  "iconColor": "#626262",
-                  "loadingIconColor": "#626262",
-                  "textColor": "#626262",
-                },
-                "tertiaryWhite": Object {
-                  "backgroundColor": "transparent",
-                  "iconColor": "#ffffff",
-                  "loadingIconColor": "#ffffff",
-                  "textColor": "#ffffff",
-                },
-              },
-              "colors": Object {
-                "accent": "#0066ff",
-                "attention": "#ffea00",
-                "black": "#151515",
-                "brand": "#870087",
-                "brandDark": "#070C36",
-                "error": "#b60025",
-                "greenDisabled": "#b8d7c1",
-                "greenLight": "#2cbe6e",
-                "greenValid": "#15884f",
-                "greyDark": "#626262",
-                "greyDisabled": "#e6e6e6",
-                "greyLight": "#f5f5f5",
-                "greyMedium": "#c7c7cc",
-                "primary": "#eb0055",
-                "primaryDark": "#c10046",
-                "primaryDisabled": "#ff99be",
-                "secondary": "#320096",
-                "tertiary": "#cc1673",
-                "transparent": "transparent",
-                "white": "#ffffff",
-              },
-              "fontFamily": Object {
-                "black": "Montserrat-Black",
-                "bold": "Montserrat-Bold",
-                "medium": "Montserrat-Medium",
-                "regular": "Montserrat-Regular",
-                "semiBold": "Montserrat-SemiBold",
-              },
-              "isDesktop": false,
-              "isDesktopViewport": false,
-              "isMobile": true,
-              "isMobileViewport": true,
-              "isTablet": false,
-              "isTabletViewport": false,
-              "isTouch": true,
-              "navTopHeight": 80,
-              "showTabBar": true,
-              "tabBarHeight": 64,
-              "typography": Object {
-                "body": Object {
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": "20px",
-                },
-                "buttonText": Object {
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": "20px",
-                },
-                "caption": Object {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": "16px",
-                },
-                "hero": Object {
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 38,
-                  "lineHeight": "48px",
-                },
-                "title1": Object {
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 24,
-                  "lineHeight": "36px",
-                },
-                "title2": Object {
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 24,
-                  "lineHeight": "28px",
-                },
-                "title3": Object {
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 20,
-                  "lineHeight": "24px",
-                },
-                "title4": Object {
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": "22px",
-                },
-              },
-              "uniqueColors": Object {
-                "backgroundColor": "#DDDDDD",
-                "filterButton": "#d0005f",
-                "foregroundColor": "#EEEEEE",
-                "greyOverlay": "#00000080",
-                "tabBar": "#fffffff8",
-              },
-              "zIndex": Object {
-                "background": -1,
-                "cheatCodeButton": 1,
-                "favoritePastilleContent": 1,
-                "header": 1,
-                "headerNav": 2,
-                "homeOfferCoverIcons": 1,
-                "modalHeader": 1,
-                "playlistsButton": 1,
-                "progressbar": 1,
-                "progressbarIcon": 2,
-                "snackbar": 50,
-                "tabBar": 2,
-              },
-            }
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "backgroundColor": "#ffffff",
-                "paddingHorizontal": 10,
-              },
-            ]
-          }
-        >
+        <View>
           <Text
+            color="#626262"
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#626262",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -685,89 +301,497 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
               ]
             }
           >
-            ou
+            Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement.
           </Text>
-        </View>
-      </View>
-      <View
-        accessibilityLabel="Identification manuelle"
-        accessible={true}
-        collapsable={false}
-        focusable={false}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Identification manuelle"
-      >
-        <View
-          fill="#151515"
-          height={32}
-          testID="button-icon"
-          width={32}
-        >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
+          <View
+            accessibilityLabel="C’est quoi ÉduConnect ?"
+            accessible={true}
+            collapsable={false}
+            focusable={false}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
               Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 5,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#151515"
-        >
-          Identification manuelle
-        </Text>
-      </View>
-      <Text
-        color="#626262"
-        style={
-          Array [
-            Object {
-              "color": "#626262",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Environ 3 heures
-      </Text>
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 24,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "marginBottom": 16,
+                "maxWidth": 500,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              }
+            }
+            testID="C’est quoi ÉduConnect ?"
+          >
+            <View
+              fill="#151515"
+              height={32}
+              testID="button-icon"
+              width={32}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 5,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+              textColor="#151515"
+            >
+              C’est quoi ÉduConnect ?
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="Identification avec ÉduConnect  "
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              }
+            }
+            testID="Identification avec ÉduConnect  "
+          >
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 5,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+              textColor="#ffffff"
+            >
+              Identification avec ÉduConnect  
+            </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "justifyContent": "center",
+                  "marginVertical": 24,
+                  "position": "relative",
+                },
+              ]
+            }
+          >
+            <View
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [
+                    [Function],
+                  ],
+                  "inlineStyle": InlineStyle {
+                    "rules": Array [
+                      [Function],
+                    ],
+                  },
+                  "render": [Function],
+                  "shouldForwardProp": undefined,
+                  "styledComponentId": "StyledNativeComponent",
+                  "target": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#c7c7cc",
+                    "height": 1,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                  },
+                ]
+              }
+              theme={
+                Object {
+                  "activeOpacity": 0.7,
+                  "appBarHeight": 64,
+                  "appContentWidth": 750,
+                  "borderRadius": Object {
+                    "button": 24,
+                    "checkbox": 4,
+                    "radius": 8,
+                  },
+                  "bottomContentPage": Object {
+                    "offsetTopHeightDesktopTablet": 40,
+                  },
+                  "breakpoints": Object {
+                    "lg": 1024,
+                    "md": 960,
+                    "sm": 576,
+                    "xl": 1200,
+                    "xs": 0,
+                    "xxl": 1400,
+                  },
+                  "buttons": Object {
+                    "disabled": Object {
+                      "primary": Object {
+                        "backgroundColor": "#f5f5f5",
+                        "textColor": "#626262",
+                      },
+                      "primaryWhite": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "quaternary": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "quaternaryBlack": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "secondary": Object {
+                        "borderColor": "#ff99be",
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "tertiary": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "tertiaryGreyDark": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "tertiaryWhite": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                    },
+                    "loading": Object {
+                      "primary": Object {
+                        "backgroundColor": "#c10046",
+                      },
+                      "secondary": Object {
+                        "borderColor": "#eb0055",
+                      },
+                    },
+                    "primary": Object {
+                      "backgroundColor": "#eb0055",
+                      "iconColor": "#ffffff",
+                      "loadingIconColor": "#ffffff",
+                      "textColor": "#ffffff",
+                    },
+                    "primaryWhite": Object {
+                      "backgroundColor": "#ffffff",
+                      "iconColor": "#eb0055",
+                      "loadingIconColor": "#c10046",
+                      "textColor": "#eb0055",
+                    },
+                    "quaternary": Object {
+                      "backgroundColor": "transparent",
+                      "iconColor": "#c10046",
+                      "loadingIconColor": "#c10046",
+                      "textColor": "#eb0055",
+                    },
+                    "quaternaryBlack": Object {
+                      "backgroundColor": "transparent",
+                      "iconColor": "#151515",
+                      "loadingIconColor": "#c10046",
+                      "textColor": "#151515",
+                    },
+                    "secondary": Object {
+                      "backgroundColor": "transparent",
+                      "borderColor": "#ff99be",
+                      "iconColor": "#eb0055",
+                      "loadingIconColor": "#c10046",
+                      "textColor": "#eb0055",
+                    },
+                    "tertiary": Object {
+                      "backgroundColor": "transparent",
+                      "iconColor": "#eb0055",
+                      "loadingIconColor": "#c10046",
+                      "textColor": "#eb0055",
+                    },
+                    "tertiaryGreyDark": Object {
+                      "backgroundColor": "transparent",
+                      "iconColor": "#626262",
+                      "loadingIconColor": "#626262",
+                      "textColor": "#626262",
+                    },
+                    "tertiaryWhite": Object {
+                      "backgroundColor": "transparent",
+                      "iconColor": "#ffffff",
+                      "loadingIconColor": "#ffffff",
+                      "textColor": "#ffffff",
+                    },
+                  },
+                  "colors": Object {
+                    "accent": "#0066ff",
+                    "attention": "#ffea00",
+                    "black": "#151515",
+                    "brand": "#870087",
+                    "brandDark": "#070C36",
+                    "error": "#b60025",
+                    "greenDisabled": "#b8d7c1",
+                    "greenLight": "#2cbe6e",
+                    "greenValid": "#15884f",
+                    "greyDark": "#626262",
+                    "greyDisabled": "#e6e6e6",
+                    "greyLight": "#f5f5f5",
+                    "greyMedium": "#c7c7cc",
+                    "primary": "#eb0055",
+                    "primaryDark": "#c10046",
+                    "primaryDisabled": "#ff99be",
+                    "secondary": "#320096",
+                    "tertiary": "#cc1673",
+                    "transparent": "transparent",
+                    "white": "#ffffff",
+                  },
+                  "fontFamily": Object {
+                    "black": "Montserrat-Black",
+                    "bold": "Montserrat-Bold",
+                    "medium": "Montserrat-Medium",
+                    "regular": "Montserrat-Regular",
+                    "semiBold": "Montserrat-SemiBold",
+                  },
+                  "isDesktop": false,
+                  "isDesktopViewport": false,
+                  "isMobile": true,
+                  "isMobileViewport": true,
+                  "isTablet": false,
+                  "isTabletViewport": false,
+                  "isTouch": true,
+                  "navTopHeight": 80,
+                  "showTabBar": true,
+                  "tabBarHeight": 64,
+                  "typography": Object {
+                    "body": Object {
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": "20px",
+                    },
+                    "buttonText": Object {
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": "20px",
+                    },
+                    "caption": Object {
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": "16px",
+                    },
+                    "hero": Object {
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 38,
+                      "lineHeight": "48px",
+                    },
+                    "title1": Object {
+                      "fontFamily": "Montserrat-Black",
+                      "fontSize": 24,
+                      "lineHeight": "36px",
+                    },
+                    "title2": Object {
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 24,
+                      "lineHeight": "28px",
+                    },
+                    "title3": Object {
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 20,
+                      "lineHeight": "24px",
+                    },
+                    "title4": Object {
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": "22px",
+                    },
+                  },
+                  "uniqueColors": Object {
+                    "backgroundColor": "#DDDDDD",
+                    "filterButton": "#d0005f",
+                    "foregroundColor": "#EEEEEE",
+                    "greyOverlay": "#00000080",
+                    "tabBar": "#fffffff8",
+                  },
+                  "zIndex": Object {
+                    "background": -1,
+                    "cheatCodeButton": 1,
+                    "favoritePastilleContent": 1,
+                    "header": 1,
+                    "headerNav": 2,
+                    "homeOfferCoverIcons": 1,
+                    "modalHeader": 1,
+                    "playlistsButton": 1,
+                    "progressbar": 1,
+                    "progressbarIcon": 2,
+                    "snackbar": 50,
+                    "tabBar": 2,
+                  },
+                }
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#ffffff",
+                    "paddingHorizontal": 10,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                ou
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Identification manuelle"
+            accessible={true}
+            collapsable={false}
+            focusable={false}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 24,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              }
+            }
+            testID="Identification manuelle"
+          >
+            <View
+              fill="#151515"
+              height={32}
+              testID="button-icon"
+              width={32}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 5,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+              textColor="#151515"
+            >
+              Identification manuelle
+            </Text>
+          </View>
+          <Text
+            color="#626262"
+            style={
+              Array [
+                Object {
+                  "color": "#626262",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Environ 3 heures
+          </Text>
+        </View>
+      </RCTScrollView>
     </View>
   </View>
 </Modal>
@@ -779,6 +803,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
+  height={428}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[MockFunction]}
   onModalHide={[Function]}
@@ -831,6 +856,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
     deviceHeight={1334}
     deviceWidth={750}
     forwardedRef={[Function]}
+    height={428}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[MockFunction]}
     onModalHide={[Function]}
@@ -846,8 +872,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "#ffffff",
+        "borderBottomEndRadius": 0,
+        "borderBottomLeftRadius": 0,
+        "borderBottomRightRadius": 0,
+        "borderBottomStartRadius": 0,
         "borderTopEndRadius": 16,
         "borderTopLeftRadius": 20,
         "borderTopRightRadius": 20,
@@ -855,16 +884,19 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
         "bottom": 0,
         "flex": 1,
         "flexDirection": "column",
+        "height": 428,
         "justifyContent": "center",
-        "margin": 0,
-        "marginBottom": 0,
-        "marginTop": "auto",
+        "left": 0,
+        "margin": "auto",
+        "maxHeight": 650,
         "maxWidth": 750,
-        "paddingBottom": 24,
-        "paddingLeft": 24,
-        "paddingRight": 24,
-        "paddingTop": 24,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 20,
         "position": "absolute",
+        "right": 0,
+        "top": "auto",
         "transform": Array [
           Object {
             "translateY": 1334,
@@ -882,6 +914,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
     swipeThreshold={100}
   >
     <View
+      onLayout={[Function]}
       style={
         Array [
           Object {
@@ -1023,429 +1056,36 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "maxWidth": 500,
-            "paddingTop": 20,
-            "width": "100%",
+            "height": 20,
           },
+        ]
+      }
+    />
+    <View
+      paddingBottom={8}
+      style={
+        Array [
           Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 480,
             "paddingBottom": 8,
           },
         ]
       }
     >
-      <Text
-        color="#626262"
-        style={
-          Array [
-            Object {
-              "color": "#626262",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
+      <RCTScrollView
+        onContentSizeChange={[Function]}
+        scrollEnabled={true}
       >
-        Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement.
-      </Text>
-      <View
-        accessibilityLabel="C’est quoi ÉduConnect ?"
-        accessible={true}
-        collapsable={false}
-        focusable={false}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "marginBottom": 16,
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="C’est quoi ÉduConnect ?"
-      >
-        <View
-          fill="#151515"
-          height={32}
-          testID="button-icon"
-          width={32}
-        >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 5,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#151515"
-        >
-          C’est quoi ÉduConnect ?
-        </Text>
-      </View>
-      <View
-        accessibilityLabel="Identification avec ÉduConnect  "
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Identification avec ÉduConnect  "
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 5,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#ffffff"
-        >
-          Identification avec ÉduConnect  
-        </Text>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "alignSelf": "stretch",
-              "justifyContent": "center",
-              "marginVertical": 24,
-              "position": "relative",
-            },
-          ]
-        }
-      >
-        <View
-          forwardedComponent={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  [Function],
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          forwardedRef={null}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "#c7c7cc",
-                "height": 1,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
-          }
-          theme={
-            Object {
-              "activeOpacity": 0.7,
-              "appBarHeight": 64,
-              "appContentWidth": 750,
-              "borderRadius": Object {
-                "button": 24,
-                "checkbox": 4,
-                "radius": 8,
-              },
-              "bottomContentPage": Object {
-                "offsetTopHeightDesktopTablet": 40,
-              },
-              "breakpoints": Object {
-                "lg": 1024,
-                "md": 960,
-                "sm": 576,
-                "xl": 1200,
-                "xs": 0,
-                "xxl": 1400,
-              },
-              "buttons": Object {
-                "disabled": Object {
-                  "primary": Object {
-                    "backgroundColor": "#f5f5f5",
-                    "textColor": "#626262",
-                  },
-                  "primaryWhite": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "quaternary": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "quaternaryBlack": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "secondary": Object {
-                    "borderColor": "#ff99be",
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "tertiary": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "tertiaryGreyDark": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                  "tertiaryWhite": Object {
-                    "iconColor": "#ff99be",
-                    "textColor": "#ff99be",
-                  },
-                },
-                "loading": Object {
-                  "primary": Object {
-                    "backgroundColor": "#c10046",
-                  },
-                  "secondary": Object {
-                    "borderColor": "#eb0055",
-                  },
-                },
-                "primary": Object {
-                  "backgroundColor": "#eb0055",
-                  "iconColor": "#ffffff",
-                  "loadingIconColor": "#ffffff",
-                  "textColor": "#ffffff",
-                },
-                "primaryWhite": Object {
-                  "backgroundColor": "#ffffff",
-                  "iconColor": "#eb0055",
-                  "loadingIconColor": "#c10046",
-                  "textColor": "#eb0055",
-                },
-                "quaternary": Object {
-                  "backgroundColor": "transparent",
-                  "iconColor": "#c10046",
-                  "loadingIconColor": "#c10046",
-                  "textColor": "#eb0055",
-                },
-                "quaternaryBlack": Object {
-                  "backgroundColor": "transparent",
-                  "iconColor": "#151515",
-                  "loadingIconColor": "#c10046",
-                  "textColor": "#151515",
-                },
-                "secondary": Object {
-                  "backgroundColor": "transparent",
-                  "borderColor": "#ff99be",
-                  "iconColor": "#eb0055",
-                  "loadingIconColor": "#c10046",
-                  "textColor": "#eb0055",
-                },
-                "tertiary": Object {
-                  "backgroundColor": "transparent",
-                  "iconColor": "#eb0055",
-                  "loadingIconColor": "#c10046",
-                  "textColor": "#eb0055",
-                },
-                "tertiaryGreyDark": Object {
-                  "backgroundColor": "transparent",
-                  "iconColor": "#626262",
-                  "loadingIconColor": "#626262",
-                  "textColor": "#626262",
-                },
-                "tertiaryWhite": Object {
-                  "backgroundColor": "transparent",
-                  "iconColor": "#ffffff",
-                  "loadingIconColor": "#ffffff",
-                  "textColor": "#ffffff",
-                },
-              },
-              "colors": Object {
-                "accent": "#0066ff",
-                "attention": "#ffea00",
-                "black": "#151515",
-                "brand": "#870087",
-                "brandDark": "#070C36",
-                "error": "#b60025",
-                "greenDisabled": "#b8d7c1",
-                "greenLight": "#2cbe6e",
-                "greenValid": "#15884f",
-                "greyDark": "#626262",
-                "greyDisabled": "#e6e6e6",
-                "greyLight": "#f5f5f5",
-                "greyMedium": "#c7c7cc",
-                "primary": "#eb0055",
-                "primaryDark": "#c10046",
-                "primaryDisabled": "#ff99be",
-                "secondary": "#320096",
-                "tertiary": "#cc1673",
-                "transparent": "transparent",
-                "white": "#ffffff",
-              },
-              "fontFamily": Object {
-                "black": "Montserrat-Black",
-                "bold": "Montserrat-Bold",
-                "medium": "Montserrat-Medium",
-                "regular": "Montserrat-Regular",
-                "semiBold": "Montserrat-SemiBold",
-              },
-              "isDesktop": false,
-              "isDesktopViewport": false,
-              "isMobile": true,
-              "isMobileViewport": true,
-              "isTablet": false,
-              "isTabletViewport": false,
-              "isTouch": true,
-              "navTopHeight": 80,
-              "showTabBar": true,
-              "tabBarHeight": 64,
-              "typography": Object {
-                "body": Object {
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": "20px",
-                },
-                "buttonText": Object {
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": "20px",
-                },
-                "caption": Object {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": "16px",
-                },
-                "hero": Object {
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 38,
-                  "lineHeight": "48px",
-                },
-                "title1": Object {
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 24,
-                  "lineHeight": "36px",
-                },
-                "title2": Object {
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 24,
-                  "lineHeight": "28px",
-                },
-                "title3": Object {
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 20,
-                  "lineHeight": "24px",
-                },
-                "title4": Object {
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": "22px",
-                },
-              },
-              "uniqueColors": Object {
-                "backgroundColor": "#DDDDDD",
-                "filterButton": "#d0005f",
-                "foregroundColor": "#EEEEEE",
-                "greyOverlay": "#00000080",
-                "tabBar": "#fffffff8",
-              },
-              "zIndex": Object {
-                "background": -1,
-                "cheatCodeButton": 1,
-                "favoritePastilleContent": 1,
-                "header": 1,
-                "headerNav": 2,
-                "homeOfferCoverIcons": 1,
-                "modalHeader": 1,
-                "playlistsButton": 1,
-                "progressbar": 1,
-                "progressbarIcon": 2,
-                "snackbar": 50,
-                "tabBar": 2,
-              },
-            }
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "backgroundColor": "#ffffff",
-                "paddingHorizontal": 10,
-              },
-            ]
-          }
-        >
+        <View>
           <Text
+            color="#626262"
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#626262",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -1454,89 +1094,497 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               ]
             }
           >
-            ou
+            Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement.
           </Text>
-        </View>
-      </View>
-      <View
-        accessibilityLabel="Identification manuelle"
-        accessible={true}
-        collapsable={false}
-        focusable={false}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Identification manuelle"
-      >
-        <View
-          fill="#151515"
-          height={32}
-          testID="button-icon"
-          width={32}
-        >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
+          <View
+            accessibilityLabel="C’est quoi ÉduConnect ?"
+            accessible={true}
+            collapsable={false}
+            focusable={false}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
               Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 5,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#151515"
-        >
-          Identification manuelle
-        </Text>
-      </View>
-      <Text
-        color="#626262"
-        style={
-          Array [
-            Object {
-              "color": "#626262",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Environ 3 heures
-      </Text>
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 24,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "marginBottom": 16,
+                "maxWidth": 500,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              }
+            }
+            testID="C’est quoi ÉduConnect ?"
+          >
+            <View
+              fill="#151515"
+              height={32}
+              testID="button-icon"
+              width={32}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 5,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+              textColor="#151515"
+            >
+              C’est quoi ÉduConnect ?
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="Identification avec ÉduConnect  "
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              }
+            }
+            testID="Identification avec ÉduConnect  "
+          >
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 5,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+              textColor="#ffffff"
+            >
+              Identification avec ÉduConnect  
+            </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "justifyContent": "center",
+                  "marginVertical": 24,
+                  "position": "relative",
+                },
+              ]
+            }
+          >
+            <View
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [
+                    [Function],
+                  ],
+                  "inlineStyle": InlineStyle {
+                    "rules": Array [
+                      [Function],
+                    ],
+                  },
+                  "render": [Function],
+                  "shouldForwardProp": undefined,
+                  "styledComponentId": "StyledNativeComponent",
+                  "target": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#c7c7cc",
+                    "height": 1,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                  },
+                ]
+              }
+              theme={
+                Object {
+                  "activeOpacity": 0.7,
+                  "appBarHeight": 64,
+                  "appContentWidth": 750,
+                  "borderRadius": Object {
+                    "button": 24,
+                    "checkbox": 4,
+                    "radius": 8,
+                  },
+                  "bottomContentPage": Object {
+                    "offsetTopHeightDesktopTablet": 40,
+                  },
+                  "breakpoints": Object {
+                    "lg": 1024,
+                    "md": 960,
+                    "sm": 576,
+                    "xl": 1200,
+                    "xs": 0,
+                    "xxl": 1400,
+                  },
+                  "buttons": Object {
+                    "disabled": Object {
+                      "primary": Object {
+                        "backgroundColor": "#f5f5f5",
+                        "textColor": "#626262",
+                      },
+                      "primaryWhite": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "quaternary": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "quaternaryBlack": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "secondary": Object {
+                        "borderColor": "#ff99be",
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "tertiary": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "tertiaryGreyDark": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                      "tertiaryWhite": Object {
+                        "iconColor": "#ff99be",
+                        "textColor": "#ff99be",
+                      },
+                    },
+                    "loading": Object {
+                      "primary": Object {
+                        "backgroundColor": "#c10046",
+                      },
+                      "secondary": Object {
+                        "borderColor": "#eb0055",
+                      },
+                    },
+                    "primary": Object {
+                      "backgroundColor": "#eb0055",
+                      "iconColor": "#ffffff",
+                      "loadingIconColor": "#ffffff",
+                      "textColor": "#ffffff",
+                    },
+                    "primaryWhite": Object {
+                      "backgroundColor": "#ffffff",
+                      "iconColor": "#eb0055",
+                      "loadingIconColor": "#c10046",
+                      "textColor": "#eb0055",
+                    },
+                    "quaternary": Object {
+                      "backgroundColor": "transparent",
+                      "iconColor": "#c10046",
+                      "loadingIconColor": "#c10046",
+                      "textColor": "#eb0055",
+                    },
+                    "quaternaryBlack": Object {
+                      "backgroundColor": "transparent",
+                      "iconColor": "#151515",
+                      "loadingIconColor": "#c10046",
+                      "textColor": "#151515",
+                    },
+                    "secondary": Object {
+                      "backgroundColor": "transparent",
+                      "borderColor": "#ff99be",
+                      "iconColor": "#eb0055",
+                      "loadingIconColor": "#c10046",
+                      "textColor": "#eb0055",
+                    },
+                    "tertiary": Object {
+                      "backgroundColor": "transparent",
+                      "iconColor": "#eb0055",
+                      "loadingIconColor": "#c10046",
+                      "textColor": "#eb0055",
+                    },
+                    "tertiaryGreyDark": Object {
+                      "backgroundColor": "transparent",
+                      "iconColor": "#626262",
+                      "loadingIconColor": "#626262",
+                      "textColor": "#626262",
+                    },
+                    "tertiaryWhite": Object {
+                      "backgroundColor": "transparent",
+                      "iconColor": "#ffffff",
+                      "loadingIconColor": "#ffffff",
+                      "textColor": "#ffffff",
+                    },
+                  },
+                  "colors": Object {
+                    "accent": "#0066ff",
+                    "attention": "#ffea00",
+                    "black": "#151515",
+                    "brand": "#870087",
+                    "brandDark": "#070C36",
+                    "error": "#b60025",
+                    "greenDisabled": "#b8d7c1",
+                    "greenLight": "#2cbe6e",
+                    "greenValid": "#15884f",
+                    "greyDark": "#626262",
+                    "greyDisabled": "#e6e6e6",
+                    "greyLight": "#f5f5f5",
+                    "greyMedium": "#c7c7cc",
+                    "primary": "#eb0055",
+                    "primaryDark": "#c10046",
+                    "primaryDisabled": "#ff99be",
+                    "secondary": "#320096",
+                    "tertiary": "#cc1673",
+                    "transparent": "transparent",
+                    "white": "#ffffff",
+                  },
+                  "fontFamily": Object {
+                    "black": "Montserrat-Black",
+                    "bold": "Montserrat-Bold",
+                    "medium": "Montserrat-Medium",
+                    "regular": "Montserrat-Regular",
+                    "semiBold": "Montserrat-SemiBold",
+                  },
+                  "isDesktop": false,
+                  "isDesktopViewport": false,
+                  "isMobile": true,
+                  "isMobileViewport": true,
+                  "isTablet": false,
+                  "isTabletViewport": false,
+                  "isTouch": true,
+                  "navTopHeight": 80,
+                  "showTabBar": true,
+                  "tabBarHeight": 64,
+                  "typography": Object {
+                    "body": Object {
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": "20px",
+                    },
+                    "buttonText": Object {
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": "20px",
+                    },
+                    "caption": Object {
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": "16px",
+                    },
+                    "hero": Object {
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 38,
+                      "lineHeight": "48px",
+                    },
+                    "title1": Object {
+                      "fontFamily": "Montserrat-Black",
+                      "fontSize": 24,
+                      "lineHeight": "36px",
+                    },
+                    "title2": Object {
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 24,
+                      "lineHeight": "28px",
+                    },
+                    "title3": Object {
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 20,
+                      "lineHeight": "24px",
+                    },
+                    "title4": Object {
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": "22px",
+                    },
+                  },
+                  "uniqueColors": Object {
+                    "backgroundColor": "#DDDDDD",
+                    "filterButton": "#d0005f",
+                    "foregroundColor": "#EEEEEE",
+                    "greyOverlay": "#00000080",
+                    "tabBar": "#fffffff8",
+                  },
+                  "zIndex": Object {
+                    "background": -1,
+                    "cheatCodeButton": 1,
+                    "favoritePastilleContent": 1,
+                    "header": 1,
+                    "headerNav": 2,
+                    "homeOfferCoverIcons": 1,
+                    "modalHeader": 1,
+                    "playlistsButton": 1,
+                    "progressbar": 1,
+                    "progressbarIcon": 2,
+                    "snackbar": 50,
+                    "tabBar": 2,
+                  },
+                }
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#ffffff",
+                    "paddingHorizontal": 10,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                ou
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Identification manuelle"
+            accessible={true}
+            collapsable={false}
+            focusable={false}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 24,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              }
+            }
+            testID="Identification manuelle"
+          >
+            <View
+              fill="#151515"
+              height={32}
+              testID="button-icon"
+              width={32}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 5,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+              textColor="#151515"
+            >
+              Identification manuelle
+            </Text>
+          </View>
+          <Text
+            color="#626262"
+            style={
+              Array [
+                Object {
+                  "color": "#626262",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Environ 3 heures
+          </Text>
+        </View>
+      </RCTScrollView>
     </View>
   </View>
 </Modal>
