@@ -9,8 +9,8 @@ import {
 } from 'features/home/contentful'
 import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
 import { offerResponseSnap as offer } from 'features/offer/api/snaps/offerResponseSnap'
-import { mockedAlgoliaResponse } from 'libs/search/fixtures'
-import { mockedSearchResponse } from 'libs/search/fixtures/mockedSearchResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import { mockVenues } from 'libs/algolia/mockedResponses/mockedVenues'
 
 import {
   showBusinessModule,
@@ -21,7 +21,7 @@ import { HomeModuleResponse } from '../useHomeModules'
 
 const nbHits = 2
 const hitsAlgolia = mockedAlgoliaResponse.hits.slice(0, nbHits)
-const hitsSearch = mockedSearchResponse.hits.slice(0, nbHits)
+const hitsSearch = mockVenues.hits.slice(0, nbHits)
 
 const homeModules: HomeModuleResponse = {
   // notInHomeModules should no be here

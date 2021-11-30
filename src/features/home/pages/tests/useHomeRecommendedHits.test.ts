@@ -3,7 +3,7 @@ import { rest } from 'msw'
 
 import { RecommendationPane } from 'features/home/contentful/moduleTypes'
 import * as AlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
-import { mockedAlgoliaResponse } from 'libs/search/fixtures'
+import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { waitFor } from 'tests/utils'

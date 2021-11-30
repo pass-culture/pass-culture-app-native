@@ -6,7 +6,7 @@ interface SearchResponse {
   nbHits: number
 }
 
-export const mockedSearchResponse: SearchResponse = {
+export const mockVenues: SearchResponse = {
   hits: [
     {
       id: 5543,

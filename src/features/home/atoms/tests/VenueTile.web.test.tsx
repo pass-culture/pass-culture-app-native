@@ -1,15 +1,15 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { mockVenues } from 'libs/algolia/mockedResponses/mockedVenues'
 import { analytics } from 'libs/analytics'
-import { mockedSearchResponse } from 'libs/search/fixtures/mockedSearchResponse'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { VenueTile, VenueTileProps } from '../VenueTile'
 
 jest.mock('react-query')
 
-const venue = mockedSearchResponse.hits[0]
+const venue = mockVenues.hits[0]
 
 const props: VenueTileProps = {
   venue,

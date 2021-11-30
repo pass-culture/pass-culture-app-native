@@ -6,9 +6,9 @@ import {
   SearchParametersFields,
   DisplayParametersFields,
 } from 'features/home/contentful/contentful'
+import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { SearchHit, transformHit } from 'libs/search'
-import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
