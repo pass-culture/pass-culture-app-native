@@ -3,6 +3,7 @@ import { t } from '@lingui/macro'
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
+import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/IdentityCheckEduConnect'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'
@@ -104,5 +105,12 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     path: 'demande-beneficiaire-envoyee',
     options: { title: t`Demande bénéficiaire envoyée` },
     secure: true,
+  },
+  {
+    name: 'IdentityCheckEduConnect',
+    component: IdentityCheckEduConnect,
+    path: 'educonnect',
+    options: { title: t`Identification` },
+    secure: false,
   },
 ]
