@@ -61,8 +61,12 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
   )[0]
 }
 
-// Hack to remove unnecessary calendar horizontal margins
-const RNCalendarTheme = { marginHorizontal: getSpacing(-2) }
+const RNCalendarTheme = {
+  // Prevent calendar height from changing when switching month
+  minHeight: 415,
+  // Hack to remove unnecessary calendar horizontal margins
+  marginHorizontal: getSpacing(-2),
+}
 
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId }) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
