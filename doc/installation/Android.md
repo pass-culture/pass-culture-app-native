@@ -8,15 +8,6 @@ First, open the project `android` in Android Studio. Then open the Android Virtu
 
 Download the appropriate keystore file from 1password, for example `testing.keystore`, and place it inside the `/android/keystores` directory.
 
-Then create a `keystores/testing.keystore.properties` file in `/android/keystores` directory with this configuration (required in `build.gradle`):
-
-```
-keyAlias=passculture
-storeFile=testing.keystore
-storePassword=
-keyPassword=
-```
-
 ### 🔥 Firebase setup
 
 Download the `google-services.json` file (1password) and place it inside the `android/app` directory. You can also download this file from the Firebase console.
