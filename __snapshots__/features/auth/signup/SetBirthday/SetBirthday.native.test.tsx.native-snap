@@ -328,15 +328,14 @@ Array [
                         style={
                           Array [
                             Object {
-                              "fontSize": 18,
+                              "fontSize": 1,
                               "height": 1,
-                              "left": 0,
                               "lineHeight": 22,
-                              "opacity": 1,
+                              "opacity": 0.1,
                               "overflow": "hidden",
                               "position": "absolute",
-                              "right": 0,
                               "textAlign": "center",
+                              "width": 1,
                               "zIndex": -1,
                             },
                           ]
@@ -1328,15 +1327,14 @@ exports[`SetBirthday Page should render properly 1`] = `
                       style={
                         Array [
                           Object {
-                            "fontSize": 18,
+                            "fontSize": 1,
                             "height": 1,
-                            "left": 0,
                             "lineHeight": 22,
-                            "opacity": 1,
+                            "opacity": 0.1,
                             "overflow": "hidden",
                             "position": "absolute",
-                            "right": 0,
                             "textAlign": "center",
+                            "width": 1,
                             "zIndex": -1,
                           },
                         ]
