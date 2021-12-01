@@ -1,10 +1,13 @@
+import { t } from '@lingui/macro'
 import { useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { BeneficiaryInformationUpdateRequest, IdentificationSessionResponse } from 'api/gen'
+import { ActivityEnum, IdentificationSessionResponse } from 'api/gen'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { MutationKeys } from 'libs/queryKeys'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export const REDIRECT_URL_UBBLE = `${WEBAPP_V2_URL}/verification-identite/fin`
 
@@ -25,31 +28,27 @@ export function useIdentificationUrl() {
   return identificationUrl
 }
 
-interface IdentityCheckPatchProfileOptions {
-  values: BeneficiaryInformationUpdateRequest
-  onSuccess: () => void
-  onError: (error: unknown) => void
-}
+export function usePatchProfile() {
+  const { profile } = useIdentityCheckContext()
+  const { showErrorSnackBar } = useSnackBarContext()
 
-export function useIdentityCheckCheckpoint({
-  values,
-  onSuccess,
-  onError,
-}: IdentityCheckPatchProfileOptions) {
-  const { activity, address, city, firstName, lastName, postalCode } = values
   return useMutation(
+    MutationKeys.PATCH_PROFILE,
     () =>
       api.patchnativev1beneficiaryInformation({
-        ...(activity ? { activity } : null),
-        ...(address ? { address } : null),
-        ...(city ? { city } : null),
-        ...(firstName ? { firstName } : null),
-        ...(lastName ? { lastName } : null),
-        ...(postalCode ? { postalCode } : null),
-      } as BeneficiaryInformationUpdateRequest),
+        activity: profile.status as ActivityEnum,
+        address: profile.address,
+        city: profile.city?.name || '',
+        firstName: profile.name?.firstName,
+        lastName: profile.name?.lastName,
+        postalCode: profile.city?.postalCode || '',
+      }),
     {
-      onSuccess,
-      onError,
+      onError: () =>
+        showErrorSnackBar({
+          message: t`Une erreur est survenue lors de la mise à jour de votre profil`,
+          timeout: SNACK_BAR_TIME_OUT,
+        }),
     }
   )
 }
