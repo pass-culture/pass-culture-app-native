@@ -104,6 +104,7 @@ describe('LocationFilter component', () => {
       venue: { ...Kourou, venueId: 4 },
     }
     const { queryByTestId } = renderLocationFilter()
+
     expect(queryByTestId('BicolorLocationBuilding')).toBeTruthy()
     expect(queryByTestId('BicolorLocationPointer')).toBeFalsy()
   })

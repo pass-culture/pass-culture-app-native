@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import React from 'react'
 
 import { SearchGroupNameEnum } from 'api/gen'
-import { CATEGORY_CRITERIA_DEPRECATED } from 'features/search/enums'
+import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { fireEvent, render } from 'tests/utils'
@@ -26,7 +26,7 @@ describe('Category component', () => {
     const { result } = renderHook(useSearchGroupLabelMapping)
     const { queryByText } = render(<Category />)
 
-    Object.keys(CATEGORY_CRITERIA_DEPRECATED).forEach((key) => {
+    Object.keys(CATEGORY_CRITERIA).forEach((key) => {
       const searchGroup = key as SearchGroupNameEnum
       const label = result.current[searchGroup]
       if (searchGroup === SearchGroupNameEnum.NONE) {
@@ -42,7 +42,7 @@ describe('Category component', () => {
     fireEvent.press(getByText('Cinéma'))
     expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'TOGGLE_CATEGORY',
-      payload: CATEGORY_CRITERIA_DEPRECATED.CINEMA.facetFilter,
+      payload: CATEGORY_CRITERIA.CINEMA.facetFilter,
     })
   })
 

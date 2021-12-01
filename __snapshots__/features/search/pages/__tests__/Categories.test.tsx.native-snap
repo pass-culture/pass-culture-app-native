@@ -159,19 +159,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -245,19 +245,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -323,19 +323,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -401,19 +401,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -479,19 +479,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -557,19 +557,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -635,19 +635,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -713,19 +713,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -791,19 +791,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -869,19 +869,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -947,19 +947,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -1025,19 +1025,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }
@@ -1103,19 +1103,19 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={48}
-          width={48}
+          height={36}
+          width={36}
         >
           <Text>
             undefined-SVG-Mock
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 8,
+                "width": 16,
               },
             ]
           }

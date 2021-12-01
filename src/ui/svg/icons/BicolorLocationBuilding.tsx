@@ -10,7 +10,7 @@ const NotMemoizedBicolorLocationBuilding: React.FunctionComponent<IconInterface>
   size = 32,
   color = ColorsEnum.PRIMARY,
   color2 = ColorsEnum.SECONDARY,
-  testID,
+  testID = 'BicolorLocationBuilding',
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 

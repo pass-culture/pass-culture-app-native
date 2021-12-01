@@ -8,7 +8,7 @@ import { SearchGroupNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
-import { CATEGORY_CRITERIA_DEPRECATED, LocationType } from 'features/search/enums'
+import { CATEGORY_CRITERIA, LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { useSearchGroupLabel } from 'libs/subcategories'
@@ -25,7 +25,7 @@ export const SearchLandingPage: React.FC = () => {
   const [searchCategory] = [...offerCategories, SearchGroupNameEnum.NONE]
 
   const searchGroupLabel = useSearchGroupLabel(searchCategory)
-  const { icon: Icon } = CATEGORY_CRITERIA_DEPRECATED[searchCategory]
+  const { icon: Icon } = CATEGORY_CRITERIA[searchCategory]
 
   // PLACE and VENUE belong to the same section
   const section = locationType === LocationType.VENUE ? LocationType.PLACE : locationType
@@ -92,7 +92,7 @@ const TouchableOpacity = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,
 })({ alignItems: 'center' })
 
-const iconSize = getSpacing(12)
+const iconSize = getSpacing(9)
 const iconSpacing = Math.round(iconSize / 5)
 
 const BicolorListItem: React.FC<{
@@ -109,6 +109,7 @@ const BicolorListItem: React.FC<{
         <IconContainer>
           <Icon size={iconSize} color={colors.primary} color2={colors.secondary} />
         </IconContainer>
+        <Spacer.Row numberOfSpaces={2} />
         <Title numberOfLines={1}>{title}</Title>
       </TitleIconContainer>
     </Container>

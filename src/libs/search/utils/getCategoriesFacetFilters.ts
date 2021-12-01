@@ -1,5 +1,5 @@
 import { SearchGroupNameEnum } from 'api/gen'
-import { CATEGORY_CRITERIA_DEPRECATED } from 'features/search/enums'
+import { CATEGORY_CRITERIA } from 'features/search/enums'
 
 // Mapping from contentful label to corresponding search group
 const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnum> = {
@@ -19,7 +19,5 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnum> = {
 
 export const getCategoriesFacetFilters = (categoryLabel: string): SearchGroupNameEnum => {
   const searchGroup = categoryLabel in CONTENTFUL_LABELS ? CONTENTFUL_LABELS[categoryLabel] : null
-  return searchGroup
-    ? CATEGORY_CRITERIA_DEPRECATED[searchGroup].facetFilter
-    : SearchGroupNameEnum.NONE
+  return searchGroup ? CATEGORY_CRITERIA[searchGroup].facetFilter : SearchGroupNameEnum.NONE
 }

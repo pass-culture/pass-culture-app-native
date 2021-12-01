@@ -6,7 +6,7 @@ import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
-import { CATEGORY_CRITERIA_DEPRECATED } from 'features/search/enums'
+import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -44,7 +44,7 @@ export const Categories: React.FC = () => {
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
 
-        {Object.entries(CATEGORY_CRITERIA_DEPRECATED).map(([category, { icon: Icon }]) => {
+        {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {
           const searchGroup = category as SearchGroupNameEnum
           const isSelected = isCategorySelected(searchGroup)
           const color2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
@@ -56,8 +56,8 @@ export const Categories: React.FC = () => {
               onPress={selectCategory(searchGroup)}
               testID={searchGroup}>
               <Spacer.Row numberOfSpaces={4} />
-              <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={color2} />
-              <Spacer.Row numberOfSpaces={2} />
+              <Icon size={getSpacing(9)} color={ColorsEnum.PRIMARY} color2={color2} />
+              <Spacer.Row numberOfSpaces={4} />
               <Typo.ButtonText numberOfLines={2} color={textColor}>
                 {searchGroupLabelMapping[searchGroup]}
               </Typo.ButtonText>
