@@ -44,6 +44,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         <LinkToComponent name="IdentityCheckCity" title="SetCity" />
         <LinkToComponent name="IdentityCheckEnd" />
         <LinkToComponent name="IdentityCheckHonor" />
+        <LinkToComponent name="IdentityCheckEduConnectForm" />
         <Row half>
           <NavigationButton
             title={'Ineligible Educonnect Error'}
