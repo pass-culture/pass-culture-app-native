@@ -14,7 +14,7 @@ import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor_deprecated'
+import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 export function UnderageAccountCreated() {

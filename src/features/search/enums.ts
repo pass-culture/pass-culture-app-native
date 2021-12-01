@@ -1,7 +1,6 @@
 import { SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
-import CategoryIconDeprecated from 'ui/svg/icons/categories/bicolor_deprecated'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
 export enum DATE_FILTER_OPTIONS {
@@ -25,60 +24,6 @@ export type CategoryCriteria = {
   }
 }
 
-export const CATEGORY_CRITERIA_DEPRECATED: CategoryCriteria = {
-  [SearchGroupNameEnum.NONE]: {
-    icon: CategoryIconDeprecated.All,
-    facetFilter: SearchGroupNameEnum.NONE,
-  },
-  [SearchGroupNameEnum.CINEMA]: {
-    icon: CategoryIconDeprecated.Cinema,
-    facetFilter: SearchGroupNameEnum.CINEMA,
-  },
-  [SearchGroupNameEnum.VISITE]: {
-    icon: CategoryIconDeprecated.Exposition,
-    facetFilter: SearchGroupNameEnum.VISITE,
-  },
-  [SearchGroupNameEnum.MUSIQUE]: {
-    icon: CategoryIconDeprecated.Musique,
-    facetFilter: SearchGroupNameEnum.MUSIQUE,
-  },
-  [SearchGroupNameEnum.SPECTACLE]: {
-    icon: CategoryIconDeprecated.Spectacles,
-    facetFilter: SearchGroupNameEnum.SPECTACLE,
-  },
-  [SearchGroupNameEnum.COURS]: {
-    icon: CategoryIconDeprecated.Atelier,
-    facetFilter: SearchGroupNameEnum.COURS,
-  },
-  [SearchGroupNameEnum.LIVRE]: {
-    icon: CategoryIconDeprecated.Livres,
-    facetFilter: SearchGroupNameEnum.LIVRE,
-  },
-  [SearchGroupNameEnum.FILM]: {
-    icon: CategoryIconDeprecated.Streaming,
-    facetFilter: SearchGroupNameEnum.FILM,
-  },
-  [SearchGroupNameEnum.PRESSE]: {
-    icon: CategoryIconDeprecated.Presse,
-    facetFilter: SearchGroupNameEnum.PRESSE,
-  },
-  [SearchGroupNameEnum.JEU]: {
-    icon: CategoryIconDeprecated.JeuxVideo,
-    facetFilter: SearchGroupNameEnum.JEU,
-  },
-  [SearchGroupNameEnum.CONFERENCE]: {
-    icon: CategoryIconDeprecated.Conference,
-    facetFilter: SearchGroupNameEnum.CONFERENCE,
-  },
-  [SearchGroupNameEnum.INSTRUMENT]: {
-    icon: CategoryIconDeprecated.Instrument,
-    facetFilter: SearchGroupNameEnum.INSTRUMENT,
-  },
-  [SearchGroupNameEnum.MATERIEL]: {
-    icon: CategoryIconDeprecated.ArtsMaterial,
-    facetFilter: SearchGroupNameEnum.MATERIEL,
-  },
-}
 export const CATEGORY_CRITERIA: CategoryCriteria = {
   [SearchGroupNameEnum.NONE]: {
     icon: CategoryIcon.All,

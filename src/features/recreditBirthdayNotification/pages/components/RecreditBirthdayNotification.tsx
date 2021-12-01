@@ -20,7 +20,7 @@ import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor_deprecated'
+import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { ColorsEnum } from 'ui/theme'
 
 export const RecreditBirthdayNotification = () => {

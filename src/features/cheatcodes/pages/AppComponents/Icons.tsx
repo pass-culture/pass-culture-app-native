@@ -4,7 +4,7 @@ import { View, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen/api'
-import { CATEGORY_CRITERIA, CATEGORY_CRITERIA_DEPRECATED } from 'features/search/enums'
+import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { mapVenueTypeToIcon } from 'libs/parsers'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
@@ -245,15 +245,6 @@ const CategoryIcons = () => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   return (
     <React.Fragment>
-      <Text>{'Categories - Deprecated'}</Text>
-      {Object.entries(CATEGORY_CRITERIA_DEPRECATED).map(([searchGroup, { icon: BicolorIcon }]) => (
-        <AlignedText key={searchGroup}>
-          <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.PRIMARY} />
-          <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
-          <Text> - {searchGroupLabelMapping[searchGroup as SearchGroupNameEnum]} </Text>
-        </AlignedText>
-      ))}
-      <Text>{'\n'}</Text>
       <Text>{'Categories'}</Text>
       {Object.entries(CATEGORY_CRITERIA).map(([searchGroup, { icon: BicolorIcon }]) => (
         <AlignedText key={searchGroup}>
