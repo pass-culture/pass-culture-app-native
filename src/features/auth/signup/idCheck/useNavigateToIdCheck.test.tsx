@@ -1,89 +1,35 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
-import { navigateToHome } from 'features/navigation/helpers'
 
 import { useNavigateToIdCheck } from './useNavigateToIdCheck'
 
-jest.mock('features/navigation/helpers')
 const mockedUseAppSettings = mocked(useAppSettings, true)
 jest.mock('features/auth/settings')
 
 describe('useNavigateToIdCheck()', () => {
-  it('should navigate to IdCheck v2 when shouldControlNavWithSetting=false, allowIdCheckRegistration=false', () => {
-    const navigateToIdCheck = mockNavigateToIdCheck({
-      allowIdCheckRegistration: false,
-      shouldControlNavWithSetting: false,
-      onIdCheckNavigationBlocked: undefined,
-    })
-
+  it('should navigate to home when allowIdCheckRegistration=false', () => {
+    const navigateToIdCheck = mockNavigateToIdCheck(false)
     navigateToIdCheck()
-
-    expect(navigate).toBeCalledWith('IdCheckV2')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'IdCheckUnavailable')
   })
 
-  it('should navigate to home when shouldControlNavWithSetting=true, allowIdCheckRegistration=false', () => {
-    const navigateToIdCheck = mockNavigateToIdCheck({
-      allowIdCheckRegistration: false,
-      shouldControlNavWithSetting: true,
-      onIdCheckNavigationBlocked: undefined,
-    })
-
+  it('should navigate to IdCheck v2 when allowIdCheckRegistration=true', () => {
+    const navigateToIdCheck = mockNavigateToIdCheck(true)
     navigateToIdCheck()
-
-    waitForExpect(() => {
-      expect(navigateToHome).toBeCalled()
-    })
-  })
-
-  it('should call onIdCheckNavigationBlocked() when onIdCheckNavigationBlocked is defined and shouldControlNavWithSetting=true, allowIdCheckRegistration=false', () => {
-    const onIdCheckNavigationBlocked = jest.fn()
-    const navigateToIdCheck = mockNavigateToIdCheck({
-      allowIdCheckRegistration: false,
-      shouldControlNavWithSetting: true,
-      onIdCheckNavigationBlocked,
-    })
-
-    navigateToIdCheck()
-
-    expect(onIdCheckNavigationBlocked).toBeCalled()
-    expect(navigateToHome).not.toBeCalled()
-  })
-
-  it('should navigate to IdCheck v2 when shouldControlNavWithSetting=true, allowIdCheckRegistration=true', () => {
-    const navigateToIdCheck = mockNavigateToIdCheck({
-      allowIdCheckRegistration: true,
-      shouldControlNavWithSetting: true,
-      onIdCheckNavigationBlocked: undefined,
-    })
-
-    navigateToIdCheck()
-
-    expect(navigate).toBeCalledWith('IdCheckV2')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'IdCheckV2')
   })
 })
 
-function mockNavigateToIdCheck({
-  allowIdCheckRegistration,
-  shouldControlNavWithSetting,
-  onIdCheckNavigationBlocked,
-}: {
-  allowIdCheckRegistration: boolean
-  shouldControlNavWithSetting: boolean
-  onIdCheckNavigationBlocked?: () => void
-}) {
+function mockNavigateToIdCheck(allowIdCheckRegistration: boolean) {
   mockedUseAppSettings.mockReturnValue({
     data: { allowIdCheckRegistration },
   } as UseQueryResult<SettingsResponse>)
-  const {
-    result: { current: navigateToIdCheck },
-  } = renderHook(() =>
-    useNavigateToIdCheck({ shouldControlNavWithSetting, onIdCheckNavigationBlocked })
-  )
-  return navigateToIdCheck
+
+  const { result } = renderHook(useNavigateToIdCheck)
+  return result.current
 }
