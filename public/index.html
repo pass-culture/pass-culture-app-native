@@ -15,6 +15,11 @@
     <meta name="version" content="%VERSION%" />
     %META_NO_INDEX%
 
+    <!-- Smart banner -->
+    <meta name="apple-itunes-app" content="app-id=%IOS_APP_STORE_ID%">
+    <meta name="google-play-app" content="app-id=%ANDROID_APP_ID%">
+    <link rel="android-touch-icon" href="%PUBLIC_URL%/images/app-icon-iphone.png" />
+
     <!-- Primary Meta Tags -->
     <meta name="title" content="%TITLE%" />
     <meta name="description" content="%DESCRIPTION%" />
@@ -94,7 +99,7 @@
     <script src="https://unpkg.com/share-api-polyfill/dist/share-min.js"></script>
     <!-- See usage of `window.grecaptcha` in ReCaptcha.web.tsx -->
     <script src="https://www.google.com/recaptcha/api.js?hl=fr" async defer></script>
-    <style type="text/css">
+    <style>
       @font-face {
         font-family: 'Montserrat-Black';
         font-style: normal;
@@ -272,6 +277,7 @@
         flex-direction: column;
       }
     </style>
+    %EXTRA_CSS%
   </head>
   <body>
     <noscript class="no-script">
