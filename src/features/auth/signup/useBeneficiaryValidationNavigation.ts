@@ -52,6 +52,8 @@ export const useBeneficiaryValidationNavigation = () => {
       } else {
         navigate('IdCheckUnavailable')
       }
+    } else if (nextStep === SubscriptionStep.UserProfiling) {
+      navigate('UserProfiling')
     } else {
       isUserUnderage ? navigate('UnavailableEduConnect') : navigateToHome()
     }

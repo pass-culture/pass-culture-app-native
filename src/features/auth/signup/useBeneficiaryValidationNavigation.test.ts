@@ -71,6 +71,16 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
   })
 
+  it('should navigate to UserProfiling if nextStep is user-profiling', async () => {
+    mockNextStepRequest(SubscriptionStep.UserProfiling)
+    const { result } = renderHook(useBeneficiaryValidationNavigation)
+    result.current.navigateToNextBeneficiaryValidationStep()
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('UserProfiling')
+    })
+  })
+
   it('should navigate to IdCheckUnavailable if nextStep is identity-check and allowIdCheckRegistration is false', async () => {
     const mockedSettings = {
       data: {
