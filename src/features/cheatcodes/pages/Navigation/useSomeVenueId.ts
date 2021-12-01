@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 
-import { fetchVenues as fetchAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues'
+import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues'
 
 export const useSomeVenueId = () => {
   // We don't use react-query as this is a query only used on the cheatcodes to debug
   const [venueId, setVenueId] = useState<number>(283)
 
   useEffect(() => {
-    fetchAlgoliaVenues('')
+    fetchVenues('')
       .then(([venue]) => venue.venueId && setVenueId(venue.venueId))
       .catch(() => {
         // The cheatcodes are only in testing

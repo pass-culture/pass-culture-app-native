@@ -6,8 +6,6 @@ export interface Environment {
   ALGOLIA_VENUES_INDEX_NAME: string
   ANDROID_APP_ID: string
   API_BASE_URL: string
-  APP_SEARCH_ENDPOINT: string
-  APP_SEARCH_KEY: string
   APPS_FLYER_DEV_KEY: string
   BATCH_API_KEY_WEB: string
   BATCH_AUTH_KEY: string

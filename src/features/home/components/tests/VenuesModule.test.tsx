@@ -1,18 +1,16 @@
 import React from 'react'
 
-import { mockedSearchResponse } from 'libs/search/fixtures/mockedSearchResponse'
+import { DisplayParametersFields } from 'features/home/contentful'
+import { mockVenues } from 'libs/algolia/mockedResponses/mockedVenues'
 import { render } from 'tests/utils'
 
-import { DisplayParametersFields } from '../../contentful/contentful'
 import { VenuesModule } from '../VenuesModule'
 
 jest.mock('react-query')
 
 const props = {
-  display: {
-    title: 'Module title',
-  } as DisplayParametersFields,
-  hits: mockedSearchResponse.hits,
+  display: { title: 'Module title' } as DisplayParametersFields,
+  hits: mockVenues.hits,
   userPosition: { latitude: 2, longitude: 40 },
 }
 

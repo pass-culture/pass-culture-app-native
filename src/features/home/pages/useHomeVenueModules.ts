@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useQueries, UseInfiniteQueryOptions } from 'react-query'
 
 import { VenuesModule } from 'features/home/contentful'
-import { fetchMultipleVenues as fetchAlgoliaMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
+import { fetchMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
@@ -23,7 +23,7 @@ export const useHomeVenueModules = (
   const queries = useQueries(
     venuesModules.map(({ search, moduleId }) => {
       const fetchModule = async () => {
-        const hits = await fetchAlgoliaMultipleVenues(search, position)
+        const hits = await fetchMultipleVenues(search, position)
         return { moduleId: moduleId, hits }
       }
 
