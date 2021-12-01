@@ -39,12 +39,14 @@ export const PageWithHeader = (props: Props) => {
           scrollEnabled={isScrollEnabled}>
           {props.scrollChildren}
         </ChildrenScrollView>
-        <FixedBottomChildrenView
-          onLayout={onFixedBottomChildrenViewLayout}
-          testID="fixed-bottom-children">
-          {props.fixedBottomChildren}
-          <Spacer.BottomScreen />
-        </FixedBottomChildrenView>
+        {props.fixedBottomChildren ? (
+          <FixedBottomChildrenView
+            onLayout={onFixedBottomChildrenViewLayout}
+            testID="fixed-bottom-children">
+            {props.fixedBottomChildren}
+            <Spacer.BottomScreen />
+          </FixedBottomChildrenView>
+        ) : null}
       </CustomKeyboardAvoidingView>
       <Background />
     </Container>
