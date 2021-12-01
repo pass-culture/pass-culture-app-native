@@ -1,5 +1,8 @@
 {
   "name": "PassCultureMock",
   "version": "1.10.5",
-  "build": 1001005
+  "build": 1001005,
+  "author": {
+    "name": "passCulture"
+  }
 }

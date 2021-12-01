@@ -1054,6 +1054,11 @@ msgstr "Format de l'e-mail incorrect"
 msgid "Format du lien incorrect"
 msgstr "Format du lien incorrect"
 
+#: src/features/smartBanner/SmartBanner.tsx
+#: src/features/smartBanner/SmartBanner.tsx
+msgid "GRATUIT"
+msgstr "GRATUIT"
+
 #: src/libs/parsers/venueType.ts
 msgid "Galeries d’art"
 msgstr "Galeries d’art"
@@ -2329,6 +2334,14 @@ msgstr "Supprimer"
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
 
+#: src/features/smartBanner/SmartBanner.tsx
+msgid "Sur Google Play"
+msgstr "Sur Google Play"
+
+#: src/features/smartBanner/SmartBanner.tsx
+msgid "Sur l'App Store"
+msgstr "Sur l'App Store"
+
 #: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Sélectionne ton statut"
 msgstr "Sélectionne ton statut"
@@ -2754,6 +2767,10 @@ msgstr "Victime de notre succès !"
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "Voici les 3 étapes que tu vas devoir suivre."
 msgstr "Voici les 3 étapes que tu vas devoir suivre."
+
+#: src/features/smartBanner/SmartBanner.tsx
+msgid "Voir"
+msgstr "Voir"
 
 #: src/libs/itinerary/components/SeeItineraryButton.tsx
 #: src/libs/itinerary/useItinerary.ts

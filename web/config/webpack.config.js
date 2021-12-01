@@ -48,6 +48,12 @@ const cssModuleRegex = /\.module\.css$/
 const sassRegex = /\.(scss|sass)$/
 const sassModuleRegex = /\.module\.(scss|sass)$/
 
+const extraCss = fs.readdirSync(paths.appExtraCss)
+  .filter((fileName) => fileName.match(/.*\.css/ig))
+  .map((fileName) => path.join(paths.appExtraCss, fileName))
+  .map((filePath) => `<style>${fs.readFileSync(filePath, 'utf8')}</style>`)
+  .join('\n    ');
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function (webpackEnv) {
@@ -594,9 +600,8 @@ module.exports = function (webpackEnv) {
         AUTHOR: appPackageJson.author.name,
         TITLE: appPackageJson.author.name,
         TWITTER_SITE: appPackageJson.author.twitter,
-        // TODO: uncomment below on WebApp v2 public release
-        // META_NO_INDEX: env.raw.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
-        META_NO_INDEX: `<meta name="robots" content="noindex" />`,
+        META_NO_INDEX: env.raw.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
+        EXTRA_CSS: extraCss || '',
       }),
       // This gives some necessary context to module not found errors, such as
       // the requesting resource.
