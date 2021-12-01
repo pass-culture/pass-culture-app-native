@@ -34,11 +34,12 @@ const supportedBrowsers: Array<{
 ]
 
 function isBrowserSupported() {
-  const notSupported = supportedBrowsers.some(
-    ({ active, version }) => active && version > browserVersion
-  )
-  if (notSupported) return false
-  return true
+  for (const supportedBrowser of supportedBrowsers) {
+    if (supportedBrowser.active && browserVersion >= supportedBrowser.version) {
+      return true
+    }
+  }
+  return false
 }
 
 export const BrowserNotSupportedPage: React.FC<{ onPress: () => void }> = ({ onPress }) => {
