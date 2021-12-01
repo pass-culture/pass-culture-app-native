@@ -438,22 +438,6 @@ Object {
               style="position: relative;"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; height: 40px; justify-content: center; margin: auto auto auto auto; position: absolute; right: 8px; top: 124px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 40px; z-index: 1;"
-                tabindex="0"
-              >
-                <div
-                  class="css-view-1dbjc4n"
-                >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-              </div>
-              <div
                 class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
                 data-testid="offersModuleList"
                 style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
@@ -1914,22 +1898,6 @@ Object {
             class="css-view-1dbjc4n"
             style="position: relative;"
           >
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; height: 40px; justify-content: center; margin: auto auto auto auto; position: absolute; right: 8px; top: 124px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 40px; z-index: 1;"
-              tabindex="0"
-            >
-              <div
-                class="css-view-1dbjc4n"
-              >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-            </div>
             <div
               class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
               data-testid="offersModuleList"

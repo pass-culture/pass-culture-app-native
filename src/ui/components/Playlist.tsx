@@ -160,6 +160,9 @@ export const Playlist = (props: Props) => {
 Playlist.defaultProps = defaultProps
 
 function getItemSteps(nbOfItems: number, itemWidth: number, playlistWidth: number) {
+  if (!nbOfItems || !itemWidth || !playlistWidth) {
+    return { nbOfSteps: 1, steps: [0] }
+  }
   const nbOfItemsDisplayed = Math.floor(playlistWidth / itemWidth)
   const steps = range(0, nbOfItems, nbOfItemsDisplayed)
   return { nbOfSteps: steps.length, steps }
