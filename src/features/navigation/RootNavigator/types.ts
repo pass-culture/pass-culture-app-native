@@ -2,7 +2,7 @@ import { IdCheckRootStackParamList } from '@pass-culture/id-check'
 import { getStateFromPath, PathConfig, RouteProp, ParamListBase } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
-import { CountryCode } from 'react-native-country-picker-modal'
+import type { CountryCode } from 'react-native-country-picker-modal'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 

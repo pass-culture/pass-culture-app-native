@@ -3,20 +3,20 @@ import { renderHook } from '@testing-library/react-hooks'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
-import { getSearchLoad, useSearchLoad } from '../searchLoad'
+import { getUbbleLoad, useUbbleLoad } from '../ubbleLoad'
 
 jest.mock('@react-native-firebase/firestore')
 
-describe('[method] searchLoad', () => {
-  it('should call the right path: appsearch > testing', () => {
-    getSearchLoad()
-    expect(firestore().collection).toHaveBeenCalledWith('appsearch')
-    expect(firestore().collection('appsearch').doc).toHaveBeenCalledWith('testing')
-    expect(firestore().collection('appsearch').doc('testing').get).toHaveBeenCalledTimes(1)
+describe('[method] ubbleLoad', () => {
+  it('should call the right path: ubble > testing', () => {
+    getUbbleLoad()
+    expect(firestore().collection).toHaveBeenCalledWith('ubble')
+    expect(firestore().collection('ubble').doc).toHaveBeenCalledWith('testing')
+    expect(firestore().collection('ubble').doc('testing').get).toHaveBeenCalledTimes(1)
   })
 
-  it('should retrieve the searchLoad', async () => {
-    const { result, waitFor } = renderHook(useSearchLoad, {
+  it('should retrieve the ubbleLoad', async () => {
+    const { result, waitFor } = renderHook(useUbbleLoad, {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
