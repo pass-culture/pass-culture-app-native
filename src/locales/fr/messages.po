@@ -104,7 +104,7 @@ msgstr "Abandonner"
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
-#: src/features/identityCheck/pages/QuitIdentityCheckModal.tsx
+#: src/features/identityCheck/components/QuitIdentityCheckModal.tsx
 msgid "Abandonner la vérification"
 msgstr "Abandonner la vérification"
 
@@ -607,7 +607,7 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/identityCheck/pages/QuitIdentityCheckModal.tsx
+#: src/features/identityCheck/components/QuitIdentityCheckModal.tsx
 msgid "Continuer la vérification"
 msgstr "Continuer la vérification"
 
@@ -1117,11 +1117,16 @@ msgid "Id Check indisponible"
 msgstr "Id Check indisponible"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
+#: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Identification"
 msgstr "Identification"
+
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Identification avec EduConnect"
+msgstr "Identification avec EduConnect"
 
 #: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
 msgid "Identification manuelle"
@@ -1394,7 +1399,7 @@ msgid "Les informations provenant d'ÉduConnect indiquent que vous êtes le repr
 msgstr "Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé."
 
 #: src/features/auth/components/QuitSignupModal.tsx
-#: src/features/identityCheck/pages/QuitIdentityCheckModal.tsx
+#: src/features/identityCheck/components/QuitIdentityCheckModal.tsx
 msgid "Les informations que tu as renseignées ne seront pas enregistrées."
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées."
 
@@ -1537,6 +1542,10 @@ msgstr "Modifier mon e-mail"
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
+
+#: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
+msgid "Mon identité"
+msgstr "Mon identité"
 
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
@@ -1750,6 +1759,10 @@ msgstr "Oups !"
 msgid "Oups, cette offre n’est plus disponible !"
 msgstr "Oups, cette offre n’est plus disponible !"
 
+#: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
+msgid "Ouvrir un onglet ÉduConnect"
+msgstr "Ouvrir un onglet ÉduConnect"
+
 #: src/features/search/components/SearchLandingPage.tsx
 msgid "Où"
 msgstr "Où"
@@ -1864,6 +1877,10 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 #: src/features/profile/pages/ChangeEmail/ChangeEmailDisclaimer.tsx
 msgid "Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification."
 msgstr "Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification."
+
+#: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
+msgid "Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !"
+msgstr "Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
@@ -2723,7 +2740,7 @@ msgstr "Version"
 msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
 
-#: src/features/identityCheck/pages/QuitIdentityCheckModal.tsx
+#: src/features/identityCheck/components/QuitIdentityCheckModal.tsx
 msgid "Veux-tu abandonner la vérification d'identité ?"
 msgstr "Veux-tu abandonner la vérification d'identité ?"
 

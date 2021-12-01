@@ -7,6 +7,9 @@ const MockIdCheckErrorComponent = () => null
 
 const actual = jest.requireActual('@pass-culture/id-check')
 
+export const useEduConnectClient = jest.fn().mockReturnValue(undefined)
+
+export const useEduConnect = jest.fn().mockReturnValue(true)
 export const useIdCheckContext = () => ({
   setContextValue: jest.fn(),
 })
@@ -40,3 +43,6 @@ export const IdCheckContextProvider: React.FC = (props) => {
 export const theme = idCheckTheme
 
 export const Background = actual.Background
+export const EduConnectError = actual.EduConnectError
+export const EduConnectErrors = actual.EduConnectErrors
+export const EduConnectErrorBoundary = actual.EduConnectErrorBoundary
