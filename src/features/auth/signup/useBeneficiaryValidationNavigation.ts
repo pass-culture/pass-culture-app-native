@@ -18,9 +18,7 @@ export const useBeneficiaryValidationNavigation = () => {
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
   const isUserUnderage = useIsUserUnderage()
-  const navigateToIdCheck = useNavigateToIdCheck({
-    onIdCheckNavigationBlocked: () => navigate('IdCheckUnavailable'),
-  })
+  const navigateToIdCheck = useNavigateToIdCheck()
   useSetIdCheckNavigationContext()
   const { showErrorSnackBar } = useSnackBarContext()
 
