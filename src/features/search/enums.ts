@@ -1,5 +1,6 @@
 import { SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
+import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import CategoryIconDeprecated from 'ui/svg/icons/categories/bicolor_deprecated'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
@@ -75,6 +76,60 @@ export const CATEGORY_CRITERIA_DEPRECATED: CategoryCriteria = {
   },
   [SearchGroupNameEnum.MATERIEL]: {
     icon: CategoryIconDeprecated.ArtsMaterial,
+    facetFilter: SearchGroupNameEnum.MATERIEL,
+  },
+}
+export const CATEGORY_CRITERIA: CategoryCriteria = {
+  [SearchGroupNameEnum.NONE]: {
+    icon: CategoryIcon.All,
+    facetFilter: SearchGroupNameEnum.NONE,
+  },
+  [SearchGroupNameEnum.CINEMA]: {
+    icon: CategoryIcon.Cinema,
+    facetFilter: SearchGroupNameEnum.CINEMA,
+  },
+  [SearchGroupNameEnum.VISITE]: {
+    icon: CategoryIcon.Exposition,
+    facetFilter: SearchGroupNameEnum.VISITE,
+  },
+  [SearchGroupNameEnum.MUSIQUE]: {
+    icon: CategoryIcon.Musique,
+    facetFilter: SearchGroupNameEnum.MUSIQUE,
+  },
+  [SearchGroupNameEnum.SPECTACLE]: {
+    icon: CategoryIcon.Spectacles,
+    facetFilter: SearchGroupNameEnum.SPECTACLE,
+  },
+  [SearchGroupNameEnum.COURS]: {
+    icon: CategoryIcon.Atelier,
+    facetFilter: SearchGroupNameEnum.COURS,
+  },
+  [SearchGroupNameEnum.LIVRE]: {
+    icon: CategoryIcon.Livres,
+    facetFilter: SearchGroupNameEnum.LIVRE,
+  },
+  [SearchGroupNameEnum.FILM]: {
+    icon: CategoryIcon.Streaming,
+    facetFilter: SearchGroupNameEnum.FILM,
+  },
+  [SearchGroupNameEnum.PRESSE]: {
+    icon: CategoryIcon.Presse,
+    facetFilter: SearchGroupNameEnum.PRESSE,
+  },
+  [SearchGroupNameEnum.JEU]: {
+    icon: CategoryIcon.JeuxVideo,
+    facetFilter: SearchGroupNameEnum.JEU,
+  },
+  [SearchGroupNameEnum.CONFERENCE]: {
+    icon: CategoryIcon.Conference,
+    facetFilter: SearchGroupNameEnum.CONFERENCE,
+  },
+  [SearchGroupNameEnum.INSTRUMENT]: {
+    icon: CategoryIcon.Instrument,
+    facetFilter: SearchGroupNameEnum.INSTRUMENT,
+  },
+  [SearchGroupNameEnum.MATERIEL]: {
+    icon: CategoryIcon.ArtsMaterial,
     facetFilter: SearchGroupNameEnum.MATERIEL,
   },
 }
