@@ -440,6 +440,7 @@ Array [
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
+    height={428}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
     onModalHide={[Function]}
@@ -492,6 +493,7 @@ Array [
       deviceHeight={1334}
       deviceWidth={750}
       forwardedRef={[Function]}
+      height={428}
       hideModalContentWhileAnimating={false}
       onBackdropPress={[Function]}
       onModalHide={[Function]}
@@ -507,8 +509,11 @@ Array [
       style={
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "backgroundColor": "#ffffff",
+          "borderBottomEndRadius": 0,
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderBottomStartRadius": 0,
           "borderTopEndRadius": 16,
           "borderTopLeftRadius": 20,
           "borderTopRightRadius": 20,
@@ -516,16 +521,19 @@ Array [
           "bottom": 0,
           "flex": 1,
           "flexDirection": "column",
+          "height": 428,
           "justifyContent": "center",
-          "margin": 0,
-          "marginBottom": 0,
-          "marginTop": "auto",
+          "left": 0,
+          "margin": "auto",
+          "maxHeight": 650,
           "maxWidth": 750,
-          "paddingBottom": 24,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
+          "paddingBottom": 20,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 20,
           "position": "absolute",
+          "right": 0,
+          "top": "auto",
           "transform": Array [
             Object {
               "translateY": 0,
@@ -543,6 +551,7 @@ Array [
       swipeThreshold={100}
     >
       <View
+        onLayout={[Function]}
         style={
           Array [
             Object {
@@ -670,154 +679,169 @@ Array [
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "maxWidth": 500,
-              "paddingTop": 20,
-              "width": "100%",
+              "height": 20,
             },
+          ]
+        }
+      />
+      <View
+        paddingBottom={8}
+        style={
+          Array [
             Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": 480,
               "paddingBottom": 8,
             },
           ]
         }
       >
-        <Text
-          style={
-            Array [
-              Object {
-                "paddingBottom": 30,
-                "textAlign": "center",
-              },
-            ]
-          }
+        <RCTScrollView
+          onContentSizeChange={[Function]}
+          scrollEnabled={true}
         >
-          <Text
-            style={
-              Array [
+          <View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "paddingBottom": 30,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
+              </Text>
+            </Text>
+            <View
+              accessibilityLabel="S'inscrire"
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
                 Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
-          </Text>
-        </Text>
-        <View
-          accessibilityLabel="S'inscrire"
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#eb0055",
-              "borderRadius": 24,
-              "borderWidth": 0,
-              "flexDirection": "row",
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            }
-          }
-          testID="S'inscrire"
-        >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              Array [
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="S'inscrire"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+                textColor="#ffffff"
+              >
+                S'inscrire
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={3}
+              style={
+                Array [
+                  Object {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Se connecter"
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
                 Object {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 5,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-            textColor="#ffffff"
-          >
-            S'inscrire
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={3}
-          style={
-            Array [
-              Object {
-                "height": 12,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="Se connecter"
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderRadius": 24,
-              "borderWidth": 0,
-              "flexDirection": "row",
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            }
-          }
-          testID="Se connecter"
-        >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              Array [
-                Object {
-                  "color": "#eb0055",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 5,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-            textColor="#eb0055"
-          >
-            Se connecter
-          </Text>
-        </View>
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="Se connecter"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+                textColor="#eb0055"
+              >
+                Se connecter
+              </Text>
+            </View>
+          </View>
+        </RCTScrollView>
       </View>
     </View>
   </Modal>,

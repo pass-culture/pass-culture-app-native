@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { ViewStyle, TextStyle, StyleProp } from 'react-native'
+import { ViewStyle, TextStyle, StyleProp, LayoutChangeEvent } from 'react-native'
 // eslint-disable-next-line no-restricted-imports
 import { CSSObject } from 'styled-components'
 import styled from 'styled-components/native'
@@ -17,6 +17,7 @@ export type ModalHeaderProps = {
   boldTitle?: boolean
   customStyles?: ModalHeaderStyleClasses
   numberOfLines?: number
+  onLayout?: (event: LayoutChangeEvent) => void
 } & ModalIconProps
 
 export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
@@ -30,10 +31,11 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   onRightIconPress,
   boldTitle = false,
   numberOfLines = 2,
+  onLayout,
 }) => {
   const TitleComponent = boldTitle ? BoldTitle : Title
   return (
-    <HeaderContainer>
+    <HeaderContainer onLayout={onLayout}>
       <LeftHeaderActionContainer>
         <LeftHeaderAction
           onPress={onLeftIconPress}

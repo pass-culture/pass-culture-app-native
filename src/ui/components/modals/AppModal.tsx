@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
-import { ScrollView, useWindowDimensions, View } from 'react-native'
+import React, { FunctionComponent, useRef, useState, useMemo } from 'react'
+import { ScrollView, useWindowDimensions } from 'react-native'
 import RNModal from 'react-native-modal'
 import styled from 'styled-components/native'
 
@@ -10,29 +10,19 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 import { ModalHeader } from './ModalHeader'
 import { ModalIconProps } from './types'
 
-export interface ModalStyles {
-  height?: number
-  maxWidth?: number
-}
-
 type Props = {
   title: string
   visible: boolean
   titleNumberOfLines?: number
-  isScrollable?: boolean
   disableBackdropTap?: boolean
   shouldDisplayOverlay?: boolean
   onBackdropPress?: () => void
-} & ModalIconProps &
-  ModalStyles
+} & ModalIconProps
 
-// Without this, modal-enhanced-react-native-web use display: flex which can't be centered with align-self: center
-// and it also recompute the margin, preventing it from keeping it's bottom: 0 position
-const modalStyles = { flex: 1, margin: 0 }
+// Without this, modal-enhanced-react-native-web recompute the margin with arbitraty values
+const modalStyles = { margin: 'auto' }
 
 export const AppModal: FunctionComponent<Props> = ({
-  height,
-  maxWidth,
   title,
   visible,
   leftIconAccessibilityLabel,
@@ -43,7 +33,6 @@ export const AppModal: FunctionComponent<Props> = ({
   onRightIconPress,
   children,
   titleNumberOfLines,
-  isScrollable = false,
   disableBackdropTap,
   shouldDisplayOverlay = true,
   onBackdropPress,
@@ -61,6 +50,8 @@ export const AppModal: FunctionComponent<Props> = ({
   const { bottom } = useCustomSafeInsets()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
+  const [scrollViewContentHeight, setScrollViewContentHeight] = useState(300)
+  const [headerHeight, setHeaderHeight] = useState(50)
   const scrollViewRef = useRef<ScrollView | null>(null)
 
   useKeyboardEvents({
@@ -79,6 +70,18 @@ export const AppModal: FunctionComponent<Props> = ({
     return onBackdropPress ?? onLeftIconPress ?? onRightIconPress
   }
 
+  const scrollViewPaddingBottom = keyboardHeight || bottom
+  const modalHeight = useMemo(() => {
+    const SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL = 10
+    return (
+      scrollViewContentHeight +
+      scrollViewPaddingBottom +
+      headerHeight +
+      SPACE_BETWEEN_HEADER_AND_CONTENT +
+      2 * MODAL_PADDING +
+      SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL
+    )
+  }, [scrollViewContentHeight, scrollViewPaddingBottom, headerHeight])
   return (
     <StyledModal
       style={modalStyles}
@@ -89,58 +92,70 @@ export const AppModal: FunctionComponent<Props> = ({
       isVisible={visible}
       onBackdropPress={handleOnBackdropPress()}
       testID="modal"
+      height={modalHeight}
       deviceHeight={windowHeight}
-      deviceWidth={windowWidth}
-      maxWidth={maxWidth}
-      height={height}>
-      <ModalHeader title={title} numberOfLines={titleNumberOfLines} {...iconProps} />
-      <Content style={{ paddingBottom: keyboardHeight || bottom }}>
-        {isScrollable ? (
-          <StyledScrollView
-            ref={scrollViewRef}
-            showsVerticalScrollIndicator={false}
-            onContentSizeChange={() =>
-              scrollViewRef.current !== null && scrollViewRef.current.scrollTo({ y: 0 })
-            }
-            contentContainerStyle={{ paddingVertical: getSpacing(2) }}>
-            <View onStartShouldSetResponder={() => true}>{children}</View>
-          </StyledScrollView>
-        ) : (
-          children
-        )}
-      </Content>
+      deviceWidth={windowWidth}>
+      <ModalHeader
+        title={title}
+        numberOfLines={titleNumberOfLines}
+        onLayout={({ nativeEvent }) => {
+          setHeaderHeight(nativeEvent.layout.height)
+        }}
+        {...iconProps}
+      />
+      <SpacerBetweenHeaderAndContent />
+      <ScrollViewContainer paddingBottom={scrollViewPaddingBottom}>
+        <ScrollView
+          ref={scrollViewRef}
+          scrollEnabled={true}
+          onContentSizeChange={(_width, height) => {
+            setScrollViewContentHeight(height)
+            scrollViewRef.current?.scrollTo({ y: 0 })
+          }}>
+          {children}
+        </ScrollView>
+      </ScrollViewContainer>
     </StyledModal>
   )
 }
 
-const Content = styled.View({
-  paddingTop: getSpacing(5),
-  width: '100%',
-  alignItems: 'center',
-  maxWidth: getSpacing(125),
+const SPACE_BETWEEN_HEADER_AND_CONTENT = getSpacing(5)
+const SpacerBetweenHeaderAndContent = styled.View({
+  height: SPACE_BETWEEN_HEADER_AND_CONTENT,
 })
 
-const StyledScrollView = styled(ScrollView)({ width: '100%' })
+const ScrollViewContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
+  flex: 1,
+  maxWidth: getSpacing(120),
+  paddingBottom,
+}))
 
-// @ts-ignore RNModal extends React.Component
-const StyledModal = styled(RNModal)<{ maxWidth: number; height: number }>(
-  ({ maxWidth, height, theme }) => ({
+const MODAL_PADDING = getSpacing(5)
+// @ts-ignore Argument of type 'typeof ReactNativeModal' is not assignable to parameter of type 'AnyStyledComponent'
+const StyledModal = styled(RNModal)<{ height: number }>(({ height, theme }) => {
+  const { isDesktopViewport, appContentWidth, colors } = theme
+  return {
     position: 'absolute',
-    height,
+    right: 0,
+    left: 0,
     bottom: 0,
-    marginTop: 'auto',
-    marginBottom: 0,
-    maxWidth: maxWidth ?? theme.appContentWidth,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
+    backgroundColor: colors.white,
     flexDirection: 'column',
-    backgroundColor: theme.colors.white,
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'center',
+    maxHeight: 650,
+    height,
     width: '100%',
     borderTopStartRadius: getSpacing(4),
     borderTopEndRadius: getSpacing(4),
-    padding: getSpacing(6),
-  })
-)
+    padding: MODAL_PADDING,
+    maxWidth: isDesktopViewport ? getSpacing(130) : appContentWidth,
+    top: isDesktopViewport ? 0 : 'auto',
+    borderBottomStartRadius: isDesktopViewport ? getSpacing(4) : 0,
+    borderBottomEndRadius: isDesktopViewport ? getSpacing(4) : 0,
+    borderBottomRightRadius: isDesktopViewport ? 20 : 0,
+    borderBottomLeftRadius: isDesktopViewport ? 20 : 0,
+  }
+})
