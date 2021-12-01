@@ -1116,9 +1116,12 @@ msgstr "ISBN"
 msgid "Id Check indisponible"
 msgstr "Id Check indisponible"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
 #: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Identification"
@@ -1886,6 +1889,10 @@ msgstr "Pour procéder à ton identification, nous allons te demander de te conn
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 
+#: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
+msgid "Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer."
+msgstr "Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer."
+
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
@@ -2523,10 +2530,6 @@ msgstr "Tu es sur le point d'archiver"
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
-
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
-msgid "Tu n'es pas connecté !"
-msgstr "Tu n'es pas connecté !"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Tu ne fais pas partie de la phase de test"
