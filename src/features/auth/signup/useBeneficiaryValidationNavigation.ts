@@ -1,11 +1,11 @@
 import { t } from '@lingui/macro'
+import { initialRouteName as idCheckInitialRouteName } from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 import { useCallback, useMemo } from 'react'
 
 import { api } from 'api/api'
 import { SubscriptionStep } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
-import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
@@ -18,7 +18,6 @@ export const useBeneficiaryValidationNavigation = () => {
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
   const isUserUnderage = useIsUserUnderage()
-  const navigateToIdCheck = useNavigateToIdCheck()
   useSetIdCheckNavigationContext()
   const { showErrorSnackBar } = useSnackBarContext()
 
@@ -29,7 +28,7 @@ export const useBeneficiaryValidationNavigation = () => {
     } catch (_error) {
       throw new AsyncError('NETWORK_REQUEST_FAILED')
     }
-  }, [settings?.allowIdCheckRegistration, showErrorSnackBar, navigateToIdCheck])
+  }, [settings?.allowIdCheckRegistration, showErrorSnackBar])
 
   function navigateToNextStep(nextStep?: SubscriptionStep | null) {
     if (nextStep === SubscriptionStep.PhoneValidation) {
@@ -41,7 +40,7 @@ export const useBeneficiaryValidationNavigation = () => {
       if (settings?.allowIdCheckRegistration) {
         try {
           analytics.logIdCheck('Profile')
-          navigateToIdCheck()
+          navigate(idCheckInitialRouteName)
         } catch (err) {
           eventMonitoring.captureException(err, { isEligible: true, nextStep })
           showErrorSnackBar({
