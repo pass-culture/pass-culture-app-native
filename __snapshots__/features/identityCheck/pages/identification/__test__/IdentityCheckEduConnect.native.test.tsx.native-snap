@@ -177,9 +177,19 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                 }
               >
                 <View
+                  numberOfSpaces={10}
+                  style={
+                    Array [
+                      Object {
+                        "height": 40,
+                      },
+                    ]
+                  }
+                />
+                <View
                   fill="none"
-                  height={150.4}
-                  width={235}
+                  height={115.2}
+                  width={180}
                 >
                   <Text>
                     undefined-SVG-Mock
