@@ -303,9 +303,8 @@ Array [
                           "backgroundColor": "#f5f5f5",
                           "borderRadius": 4,
                           "display": "flex",
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
+                          "paddingBottom": 8,
+                          "paddingHorizontal": 16,
                           "paddingTop": 16,
                         },
                       ]
@@ -327,47 +326,65 @@ Array [
                       Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées
                     </Text>
                     <View
+                      accessibilityLabel="Transmettre un document"
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      nativeID="animatedComponent"
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "paddingTop": 8,
-                          },
-                        ]
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderRadius": 24,
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "justifyContent": "center",
+                          "maxWidth": 500,
+                          "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "100%",
+                        }
                       }
+                      testID="Transmettre un document"
                     >
                       <View
                         fill="#151515"
                         height={16}
+                        testID="button-icon"
                         width={16}
                       >
                         <Text>
-                          undefined-SVG-Mock
+                          button-icon-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          Array [
-                            Object {
-                              "width": 4,
-                            },
-                          ]
-                        }
-                      />
                       <Text
-                        color="#151515"
+                        adjustsFontSizeToFit={false}
+                        numberOfLines={1}
                         style={
                           Array [
                             Object {
                               "color": "#151515",
-                              "fontFamily": "Montserrat-SemiBold",
+                              "fontFamily": "Montserrat-Bold",
                               "fontSize": 12,
-                              "lineHeight": 16,
+                              "lineHeight": 20,
+                              "marginLeft": 5,
+                              "maxWidth": "100%",
                             },
                           ]
                         }
+                        textColor="#151515"
+                        textSize={12}
                       >
                         Transmettre un document
                       </Text>
