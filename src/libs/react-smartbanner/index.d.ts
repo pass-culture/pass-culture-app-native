@@ -1,13 +1,21 @@
 import React from 'react'
 
-interface SmartBannerProperties {
-  button: string
-  daysHidden: number
+export interface SmartBannerProperties {
+  daysHidden?: number
+  daysReminder?: number
+  appStoreLanguage?: string
+  title?: string
+  author?: string
+  button?: string
+  storeText?: { ios: string; android: string; windows?: string; kindle?: string }
+  price?: { ios: string; android: string; windows?: string; kindle?: string }
+  position?: 'top' | 'bottom'
+  force?: string
+  url?: { ios: string; android: string; windows?: string; kindle?: string }
   ignoreIosVersion?: boolean
-  position: 'top' | 'bottom'
-  price: { ios: string; android: string }
-  storeText: { ios: string; android: string }
-  title: string
+  appMeta?: { ios: string; android: string; windows?: string; kindle?: string }
+  onClose?: () => void
+  onInstall?: () => void
 }
 
 declare const SmartBanner: React.ComponentClass<SmartBannerProperties>
