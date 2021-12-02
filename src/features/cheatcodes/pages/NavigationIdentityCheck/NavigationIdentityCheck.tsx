@@ -5,7 +5,11 @@ import styled from 'styled-components/native'
 
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
-import { RootScreenNames, UseNavigationType } from 'features/navigation/RootNavigator'
+import {
+  RootScreenNames,
+  RootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -47,6 +51,14 @@ export function NavigationIdentityCheck(): JSX.Element {
         <LinkToComponent name="IdentityCheckHonor" />
         <LinkToComponent name="IdentityCheckEduConnectForm" />
         <LinkToComponent name="IdentityCheckEduConnect" title={'EduConnect'} />
+        <LinkToComponent
+          name="IdentityCheckValidation"
+          navigationParams={{
+            firstName: 'firstName',
+            lastName: 'lastName',
+            dateOfBirth: '2021-12-01',
+          }}
+        />
         <Row half>
           <NavigationButton
             title={'Ineligible Educonnect Error'}
@@ -105,11 +117,12 @@ interface LinkToComponentProps {
   name: RootScreenNames
   onPress?: () => void
   title?: string
+  navigationParams?: RootStackParamList[RootScreenNames]
 }
 
-const LinkToComponent = ({ name, onPress, title }: LinkToComponentProps) => {
+const LinkToComponent = ({ name, onPress, title, navigationParams }: LinkToComponentProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToComponent = () => navigate(name)
+  const navigateToComponent = () => navigate(name, navigationParams)
 
   return (
     <Row half>

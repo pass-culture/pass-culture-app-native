@@ -1416,6 +1416,10 @@ msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
+#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
+msgid "Les informations extraites sont-elles correctes ?"
+msgstr "Les informations extraites sont-elles correctes ?"
+
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé."
 msgstr "Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé."
@@ -1565,6 +1569,7 @@ msgstr "Modifier mon e-mail"
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
 #: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
 msgid "Mon identité"
 msgstr "Mon identité"
@@ -2168,6 +2173,10 @@ msgstr "Reviens à partir du 31 janvier pour poursuivre ton inscription et bén�
 msgid "Réessayer"
 msgstr "Réessayer"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
+msgid "Réessayer d'ajouter mon document"
+msgstr "Réessayer d'ajouter mon document"
+
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Réessayer de m'identifier"
@@ -2373,6 +2382,10 @@ msgstr "Sélectionne ton statut"
 msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 msgstr "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 
+#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
+msgid "Ta date de naissance"
+msgstr "Ta date de naissance"
+
 #: src/features/identityCheck/pages/identification/IdentityCheckEnd.tsx
 msgid "Ta pièce d’identité a bien été transmise !"
 msgstr "Ta pièce d’identité a bien été transmise !"
@@ -2443,6 +2456,10 @@ msgstr "Ton mot de passe actuel"
 msgid "Ton nom"
 msgstr "Ton nom"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
+msgid "Ton nom de famille"
+msgstr "Ton nom de famille"
+
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 msgstr "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
@@ -2451,6 +2468,7 @@ msgstr "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Ton prénom"
 msgstr "Ton prénom"
@@ -2770,6 +2788,10 @@ msgstr "Valider et continuer"
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "Valider la date"
 msgstr "Valider la date"
+
+#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
+msgid "Valider mes informations"
+msgstr "Valider mes informations"
 
 #: src/libs/monitoring/errors.ts
 msgid "Venue {venueId} could not be retrieved"

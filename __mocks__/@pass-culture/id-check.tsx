@@ -7,6 +7,12 @@ const MockIdCheckErrorComponent = () => null
 
 const actual = jest.requireActual('@pass-culture/id-check')
 
+const resetCurrentUser = jest.fn().mockResolvedValue(undefined)
+const setCurrentUserStep = jest.fn().mockResolvedValue(undefined)
+export const LocalStorageService = { resetCurrentUser, setCurrentUserStep }
+
+export const useInitialRouteName = jest.fn().mockReturnValue('initialRouteName')
+
 export const useEduConnectClient = jest.fn().mockReturnValue(undefined)
 
 export const useEduConnect = jest.fn().mockReturnValue(true)
