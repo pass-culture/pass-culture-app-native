@@ -49,8 +49,6 @@ export const screenParamsParser: ParamsParsers = {
   },
   Login: {
     preventCancellation: parseObject,
-    followScreen: identityFn,
-    followParams: parseObject,
   },
   Offer: {
     id: Number,
