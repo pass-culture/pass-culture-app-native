@@ -6,6 +6,7 @@ import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/Id
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/IdentityCheckEduConnect'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
+import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'
 import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/profile/IdentityCheckEduConnectForm'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
@@ -89,6 +90,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: IdentityCheckEnd,
     path: 'verification-identite/fin',
     options: { title: t`Fin du parcours` },
+    secure: true,
+  },
+  {
+    name: 'IdentityCheckUnavailable',
+    component: IdentityCheckUnavailable,
+    path: 'verification-identite/verification-indisponible',
+    options: { title: t`Identification` },
     secure: true,
   },
   // Confirmation

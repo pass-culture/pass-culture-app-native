@@ -1138,6 +1138,7 @@ msgstr "Id Check indisponible"
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Identification"
 msgstr "Identification"
 
@@ -1692,6 +1693,10 @@ msgstr "Nous devons vérifier tes informations : l'email peut prendre quelques m
 msgid "Nous n'arrivons pas à ouvrir ce lien : {url}"
 msgstr "Nous n'arrivons pas à ouvrir ce lien : {url}"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
+msgid "Nous reviendrons vers toi dès que le service sera rétabli."
+msgstr "Nous reviendrons vers toi dès que le service sera rétabli."
+
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
@@ -2090,6 +2095,7 @@ msgstr "Retourner l'accueil"
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 #: src/features/navigation/PageNotFound.tsx
 #: src/features/offer/pages/OfferNotFound.tsx
 #: src/features/profile/pages/DeleteProfileSuccess.tsx
@@ -2782,6 +2788,7 @@ msgid "Veux-tu abandonner la vérification d'identité ?"
 msgstr "Veux-tu abandonner la vérification d'identité ?"
 
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Victime de notre succès !"
 msgstr "Victime de notre succès !"
 
@@ -2836,6 +2843,7 @@ msgid "Vous devez d'abord générer un lien"
 msgstr "Vous devez d'abord générer un lien"
 
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 
