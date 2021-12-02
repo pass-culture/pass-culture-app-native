@@ -116,7 +116,6 @@ export type RootStackParamList = {
   RecreditBirthdayNotification: undefined
   PageNotFound: undefined
   UnderageAccountCreated: undefined
-  UserProfiling: undefined
   Venue: { id: number }
   DeeplinksGenerator: undefined
 } & IdCheckRootStackParamList &

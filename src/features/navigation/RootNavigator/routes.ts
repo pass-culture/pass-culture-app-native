@@ -29,7 +29,6 @@ import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfir
 import { SelectSchool } from 'features/auth/signup/underageSignup/SelectSchool'
 import { SelectSchoolHome } from 'features/auth/signup/underageSignup/SelectSchoolHome'
 import { UnderageAccountCreated } from 'features/auth/signup/underageSignup/UnderageAccountCreated'
-import { UserProfiling } from 'features/auth/signup/UserProfiling'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
 import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
@@ -407,12 +406,6 @@ export const routes: Route[] = [
     component: PhoneValidationTooManySMSSent,
     path: 'creation-compte/code-de-validation-trop-de-sms',
     options: { title: t`Validation téléphone - Trop de SMS envoyés` },
-  },
-  {
-    name: 'UserProfiling',
-    component: UserProfiling,
-    path: 'profil-utilisateur',
-    secure: true,
   },
   {
     name: 'VerifyEligibility',
