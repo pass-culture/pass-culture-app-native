@@ -90,7 +90,6 @@ export type RootStackParamList = {
   LegalNotices: undefined
   LocationFilter: undefined
   LocationPicker: undefined
-  NextBeneficiaryStep: undefined
   PersonalData: undefined
   SearchCategories: undefined
   SearchFilter: undefined

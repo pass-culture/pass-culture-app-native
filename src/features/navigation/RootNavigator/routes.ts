@@ -16,7 +16,6 @@ import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
-import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent'
 import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
@@ -377,12 +376,6 @@ export const routes: Route[] = [
     options: { title: t`Email création de compte expiré` },
   },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
-  {
-    name: 'NextBeneficiaryStep',
-    component: NextBeneficiaryStep,
-    path: 'id-check',
-    secure: true,
-  },
   {
     name: 'SetPhoneNumber',
     component: SetPhoneNumber,
