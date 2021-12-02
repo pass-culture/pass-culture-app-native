@@ -1,24 +1,6 @@
 version: 2.1
 
 commands:
-  copy_assetlinks_testing:
-    description: Copy assetlinks-testing.json to assetlinks.json
-    steps:
-      - run:
-          name: Copy assetlinks-testing.json to assetlinks.json
-          command: cp ./public/.well-known/assetlinks-testing.json ./public/.well-known/assetlinks.json
-  copy_assetlinks_staging:
-    description: Copy assetlinks-staging.json to assetlinks.json
-    steps:
-      - run:
-          name: Copy assetlinks-staging.json to assetlinks.json
-          command: cp ./public/.well-known/assetlinks-staging.json ./public/.well-known/assetlinks.json
-  copy_assetlinks_production:
-    description: Copy assetlinks-production.json to assetlinks.json
-    steps:
-      - run:
-          name: Copy assetlinks-production.json to assetlinks.json
-          command: cp ./public/.well-known/assetlinks-production.json ./public/.well-known/assetlinks.json
   install_node_version:
     description: Install Node version with NVM
     steps:
@@ -148,6 +130,14 @@ commands:
       - run: echo ${<< parameters.gcp_key_name >>} > ${HOME}/gcp-key.json
       - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
       - run: gcloud --quiet config set project ${GCP_PROJECT}
+  copy_assetlinks:
+    description: Copy assetlinks-<< parameters.env >>.json to assetlinks.json
+    parameters:
+      env:
+        type: string
+    steps:
+      - run: |
+          cp ./public/.well-known/assetlinks-<< parameters.env >>.json ./public/.well-known/assetlinks.json
   build_web:
     description: Build decliweb
     parameters:
@@ -519,7 +509,8 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - copy_assetlinks_testing
+      - copy_assetlinks:
+          env: testing
       - install_node_modules
       - setup_sentry
       - run:
@@ -544,7 +535,8 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - copy_assetlinks_staging
+      - copy_assetlinks:
+          env: staging
       - install_node_modules
       - setup_staging_secrets
       - setup_sentry
@@ -587,7 +579,8 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - copy_assetlinks_production
+      - copy_assetlinks:
+          env: production
       - install_node_modules
       - setup_production_secrets
       - setup_sentry
@@ -753,9 +746,7 @@ workflows:
             tags:
               ignore: /.*/
             branches:
-              only:
-                - PC-10087
-                - master
+              only: master
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
