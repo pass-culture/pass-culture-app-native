@@ -39,6 +39,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         <LinkToComponent name="IdentityCheck" title="Stepper" />
         <LinkToComponent name="IdentityCheckStatus" title="Status" />
         <LinkToComponent name="IdentityCheckStart" />
+        <LinkToComponent name="IdentityCheckUnavailable" />
         <LinkToComponent name="SetName" />
         <LinkToComponent name="IdentityCheckAddress" title="SetAddress" />
         <LinkToComponent name="IdentityCheckCity" title="SetCity" />
