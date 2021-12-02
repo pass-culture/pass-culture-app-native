@@ -97,7 +97,9 @@ If the file `src/api/gen/.swagger-codegen/VERSION` changes, make sure you locall
 <details>
   <summary>To develop with a local API</summary>
   
-To run the app on a development environment with a local API, you need to create a `.env.development` file :
+See [the docs](./doc/development/localApi.md) to learn how to develop with a local API "superficially".
+
+The other option, more complex, is to create a specific scheme 'Development' with a `.env.development` file :
 copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address.
 
 Make sure you also overload the `BATCH_API_KEY_ANDROID` and `BATCH_API_KEY_IOS` variables with the _dev_ values of the _testing_ [batch project](https://dashboard.batch.com/).
