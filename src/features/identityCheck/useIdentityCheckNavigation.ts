@@ -62,6 +62,7 @@ export const useIdentityCheckNavigation = (): { navigateToNextScreen: () => void
     },
   }
 }
+
 export const getNextScreenOrStep = (
   steps: StepConfig[],
   currentRoute: IdentityCheckScreen | null
@@ -74,10 +75,12 @@ export const getNextScreenOrStep = (
   const currentScreenIndex = currentStep.screens.indexOf(currentRoute)
   const isLastScreen = currentScreenIndex === currentStep.screens.length - 1
   if (!isLastScreen) return { screen: currentStep.screens[currentScreenIndex + 1] }
+
   // Step is completed => find next step
   const currentStepIndex = steps.indexOf(currentStep)
   const isLastStep = currentStepIndex === steps.length - 1
   if (!isLastStep) return { step: steps[currentStepIndex + 1].name }
+
   // Step is complete and is last step
   return { step: IdentityCheckStep.END }
 }

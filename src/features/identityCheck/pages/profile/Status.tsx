@@ -37,9 +37,9 @@ export const Status = () => {
     ? ([{ name: 'Collégien' }] as UserStatusResponse[]).concat(baseStatuses)
     : baseStatuses
 
-  const onPressContinue = () => {
+  const onPressContinue = async () => {
     if (!selectedStatus) return
-    dispatch({ type: 'SET_STATUS', payload: selectedStatus })
+    await dispatch({ type: 'SET_STATUS', payload: selectedStatus })
     navigateToNextScreen()
   }
 

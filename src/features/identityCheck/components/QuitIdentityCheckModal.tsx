@@ -13,7 +13,7 @@ import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
-  resume: () => void
+  hideModal: () => void
   testIdSuffix?: string
 }
 
@@ -22,17 +22,22 @@ const description = t`Les informations que tu as renseignées ne seront pas enre
 
 export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   visible,
-  resume,
+  hideModal,
   testIdSuffix,
 }) => {
+  function quitIdentityCheck() {
+    hideModal()
+    navigateToHome()
+  }
+
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
       <GenericInfoPage title={title} icon={WarningDeprecated} flex={false}>
         <StyledBody>{description}</StyledBody>
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimaryWhite title={t`Continuer la vérification`} onPress={resume} />
+        <ButtonPrimaryWhite title={t`Continuer la vérification`} onPress={hideModal} />
         <Spacer.Column numberOfSpaces={4} />
-        <ButtonTertiaryWhite title={t`Abandonner la vérification`} onPress={navigateToHome} />
+        <ButtonTertiaryWhite title={t`Abandonner la vérification`} onPress={quitIdentityCheck} />
       </GenericInfoPage>
     </AppFullPageModal>
   )

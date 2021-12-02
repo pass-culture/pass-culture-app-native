@@ -66,10 +66,8 @@ export const IdentityCheckStepper = () => {
       </CenteredContainer>
       <QuitIdentityCheckModal
         visible={fullPageModalVisible}
-        resume={hideFullPageModal}
+        hideModal={hideFullPageModal}
         testIdSuffix="quit-identity-check-stepper"
-        // TODO (LucasBeneston) use current state for analytics
-        // identityCheckStep={steps[1].name}
       />
     </React.Fragment>
   )
