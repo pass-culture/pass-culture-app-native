@@ -2191,7 +2191,6 @@ msgid "Réessayer d'ajouter mon document"
 msgstr "Réessayer d'ajouter mon document"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Réessayer de m'identifier"
 msgstr "Réessayer de m'identifier"
 
@@ -2924,6 +2923,7 @@ msgid "Vérifie ton identité sur ton smartphone"
 msgstr "Vérifie ton identité sur ton smartphone"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Vérifier mon identité"
 msgstr "Vérifier mon identité"
 

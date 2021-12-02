@@ -48,7 +48,7 @@ const InvalidInformation: NotEligibleEduConnectErrorData = {
     '\n\n' +
     t`Refais une demande en vérifiant ton identité avec ta pièce d’identité.`,
   descriptionAlignment: 'center',
-  primaryButtonText: t`Réessayer de m'identifier`,
+  primaryButtonText: t`Vérifier mon identité`,
   tertiaryButtonVisible: true,
   onPrimaryButtonPress: () => {
     //(Wendy) TODO: Dans le prochain Ticket ajouter une navigation pour revenir à l'action précédente
