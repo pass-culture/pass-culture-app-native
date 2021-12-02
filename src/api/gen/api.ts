@@ -1547,6 +1547,54 @@ export enum PopOverIcon {
     FILE = 'FILE',
     MAGNIFYINGGLASS = 'MAGNIFYING_GLASS'
 }/**
+ * 
+ * @export
+ * @interface ProfileUpdateRequest
+ */
+export interface ProfileUpdateRequest {
+    /**
+     * 
+     * @type {ActivityEnum}
+     * @memberof ProfileUpdateRequest
+     */
+    activity: ActivityEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProfileUpdateRequest
+     */
+    address?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProfileUpdateRequest
+     */
+    city: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProfileUpdateRequest
+     */
+    firstName: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProfileUpdateRequest
+     */
+    lastName: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProfileUpdateRequest
+     */
+    postalCode: string;
+    /**
+     * 
+     * @type {SchoolType}
+     * @memberof ProfileUpdateRequest
+     */
+    schoolType?: SchoolType | null;
+}/**
  * Describe possible reason codes to used when reporting an offer.  The whole meta part is only consumed by the api client, it has no meaning inside the whole API code.  Note: when adding a new enum symbol, do not forget to update the meta method.
  * @export
  * @enum {string}
@@ -1658,6 +1706,21 @@ export interface ResetPasswordRequest {
      * @memberof ResetPasswordRequest
      */
     resetPasswordToken: string;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SchoolType {
+    LyceAgricole = 'Lycée agricole',
+    CentreDeFormationDapprentis = "Centre de formation d'apprentis",
+    LyceMilitaire = 'Lycée militaire',
+    DomicileOuAuCNED = 'À domicile ou au CNED',
+    LyceMaritime = 'Lycée maritime',
+    LycePriv = 'Lycée privé',
+    CollgePriv = 'Collège privé',
+    LycePublic = 'Lycée public',
+    CollgePublic = 'Collège public'
 }/**
  * An enumeration.
  * @export
@@ -3456,6 +3519,32 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary update_profile <POST>
+         * @param {ProfileUpdateRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1subscriptionprofile(body?: ProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/subscription/profile`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"ProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary start_identification_session <POST>
          * @param {IdentificationSessionRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -4034,6 +4123,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary update_profile <POST>
+         * @param {ProfileUpdateRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1subscriptionprofile(basePath: string, body?: ProfileUpdateRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1subscriptionprofile(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary start_identification_session <POST>
          * @param {IdentificationSessionRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -4542,6 +4643,18 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1signin(body?: SigninRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1signin(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary update_profile <POST>
+     * @param {ProfileUpdateRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1subscriptionprofile(body?: ProfileUpdateRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1subscriptionprofile(this.basePath, body, options)
     }
     /**
      * 
