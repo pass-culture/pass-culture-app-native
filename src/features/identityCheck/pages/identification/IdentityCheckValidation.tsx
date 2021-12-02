@@ -2,9 +2,7 @@ import { t } from '@lingui/macro'
 import {
   IdCheckFile,
   IdCheckRootStackParamList,
-  LocalStorageService,
   useEduConnect,
-  useInitialRouteName,
   UseRouteType,
 } from '@pass-culture/id-check'
 import { UploadButton } from '@pass-culture/id-check/src/components/layout/UploadButton'
@@ -15,6 +13,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { IdentityCheckStep } from 'features/identityCheck/types'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -35,7 +36,9 @@ export const IdentityCheckValidation = ({
 }: ValidationProps) => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const { navigate } = useNavigation<StackNavigationProp<IdCheckRootStackParamList>>()
-  const initialRouteName = useInitialRouteName()
+
+  const { dispatch } = useIdentityCheckContext()
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   const { params } = useRoute<UseRouteType<'Validation'>>()
   const shouldUseEduConnect = useEduConnect()
@@ -44,8 +47,8 @@ export const IdentityCheckValidation = ({
     : ''
 
   const navigateToNextEduConnectStep = async () => {
-    await LocalStorageService.setCurrentUserStep('beneficiary-information')
-    navigate(initialRouteName)
+    dispatch({ type: 'SET_STEP', payload: IdentityCheckStep.CONFIRMATION })
+    navigateToNextScreen()
   }
 
   function onValidate() {
