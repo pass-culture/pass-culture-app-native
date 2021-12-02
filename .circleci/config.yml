@@ -782,7 +782,7 @@ workflows:
           filters:
             tags:
               only:
-                - /^v.*/
+                - /^prod-hard-deploy.*/
                 - /^hotfix-prod.*/
             branches:
               ignore: /.*/
@@ -796,7 +796,7 @@ workflows:
           filters:
             tags:
               only:
-                - /^v.*/
+                - /^prod-hard-deploy.*/
                 - /^hotfix-prod.*/
             branches:
               ignore: /.*/
