@@ -971,6 +971,10 @@ msgstr "Entrée pour le prénom"
 msgid "Envie de tout envie de lien ?"
 msgstr "Envie de tout envie de lien ?"
 
+#: src/features/identityCheck/atoms/DMSInformation.web.tsx
+msgid "Environ 10 jours"
+msgstr "Environ 10 jours"
+
 #: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
 msgid "Environ 3 heures"
 msgstr "Environ 3 heures"
@@ -1054,10 +1058,14 @@ msgstr "Format de l'e-mail incorrect"
 msgid "Format du lien incorrect"
 msgstr "Format du lien incorrect"
 
-#: src/features/smartBanner/SmartBanner.tsx
-#: src/features/smartBanner/SmartBanner.tsx
+#: src/features/smartBanner/SmartBanner.web.tsx
+#: src/features/smartBanner/SmartBanner.web.tsx
 msgid "GRATUIT"
 msgstr "GRATUIT"
+
+#: src/features/identityCheck/atoms/IdentityVerificationText.web.tsx
+msgid "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
+msgstr "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
 
 #: src/libs/parsers/venueType.ts
 msgid "Galeries d’art"
@@ -1124,6 +1132,7 @@ msgstr "Id Check indisponible"
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart.web.tsx
 #: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
@@ -1139,6 +1148,10 @@ msgstr "Identification avec EduConnect"
 #: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
 msgid "Identification manuelle"
 msgstr "Identification manuelle"
+
+#: src/features/identityCheck/atoms/DMSInformation.web.tsx
+msgid "Identification par le site Démarches-Simplifiées"
+msgstr "Identification par le site Démarches-Simplifiées"
 
 #: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
 msgid "Identifie-toi en 2 minutes"
@@ -1927,6 +1940,10 @@ msgstr "Pratique artistiques"
 msgid "Prends une photo de ta"
 msgstr "Prends une photo de ta"
 
+#: src/features/identityCheck/atoms/IdentityVerificationText.web.tsx
+msgid "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
+msgstr "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
+
 #: src/features/search/sections/titles.ts
 msgid "Prix"
 msgstr "Prix"
@@ -2334,11 +2351,11 @@ msgstr "Supprimer"
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
 
-#: src/features/smartBanner/SmartBanner.tsx
+#: src/features/smartBanner/SmartBanner.web.tsx
 msgid "Sur Google Play"
 msgstr "Sur Google Play"
 
-#: src/features/smartBanner/SmartBanner.tsx
+#: src/features/smartBanner/SmartBanner.web.tsx
 msgid "Sur l'App Store"
 msgstr "Sur l'App Store"
 
@@ -2539,6 +2556,10 @@ msgstr "Tu es sur le point d'annuler"
 #: src/features/bookings/components/ArchiveBookingModal.tsx
 msgid "Tu es sur le point d'archiver"
 msgstr "Tu es sur le point d'archiver"
+
+#: src/features/identityCheck/atoms/DMSInformation.web.tsx
+msgid "Tu n'as pas de smartphone ?"
+msgstr "Tu n'as pas de smartphone ?"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Tu n'as pas reçu le sms ?"
@@ -2768,7 +2789,7 @@ msgstr "Victime de notre succès !"
 msgid "Voici les 3 étapes que tu vas devoir suivre."
 msgstr "Voici les 3 étapes que tu vas devoir suivre."
 
-#: src/features/smartBanner/SmartBanner.tsx
+#: src/features/smartBanner/SmartBanner.web.tsx
 msgid "Voir"
 msgstr "Voir"
 
@@ -2830,9 +2851,17 @@ msgstr "Vérification d'identité"
 msgid "Vérification de l'identité"
 msgstr "Vérification de l'identité"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckStart.web.tsx
+msgid "Vérification par smartphone"
+msgstr "Vérification par smartphone"
+
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Vérification éligibilité"
 msgstr "Vérification éligibilité"
+
+#: src/features/identityCheck/atoms/IdentityVerificationText.web.tsx
+msgid "Vérifie ton identité sur ton smartphone"
+msgstr "Vérifie ton identité sur ton smartphone"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
 msgid "Vérifier mon identité"
@@ -3038,6 +3067,7 @@ msgstr "offerte par le Gouvernement."
 msgid "offerts à dépenser sur l’application."
 msgstr "offerts à dépenser sur l’application."
 
+#: src/features/identityCheck/pages/identification/IdentityCheckStart.web.tsx
 #: src/ui/components/OrSeparator.tsx
 msgid "ou"
 msgstr "ou"

@@ -168,36 +168,6 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
           >
             <View />
           </RCTScrollView>
-          <View
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "#ffffff",
-                  "bottom": 0,
-                  "left": 0,
-                  "paddingBottom": 20,
-                  "paddingHorizontal": 20,
-                  "paddingTop": 12,
-                  "position": "absolute",
-                  "right": 0,
-                },
-              ]
-            }
-            testID="fixed-bottom-children"
-          >
-            <View
-              customHeight={8}
-              enable={true}
-              style={
-                Array [
-                  Object {
-                    "height": 8,
-                  },
-                ]
-              }
-            />
-          </View>
         </View>
       </View>
     </View>
