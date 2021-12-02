@@ -23,6 +23,7 @@ export type IdentityCheckRootStackParamList = {
   IdentityCheckEnd: undefined
   IdentityCheckUnavailable: undefined
   IdentityCheckEduConnectForm: undefined
+  IdentityCheckValidation: { firstName?: string; lastName?: string; dateOfBirth?: string }
   // Confirmation
   IdentityCheckHonor: undefined
   BeneficiaryRequestSent: undefined
