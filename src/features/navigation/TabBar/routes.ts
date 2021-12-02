@@ -60,7 +60,8 @@ const tabRouteNames = routes.map((route) => route.name)
 
 // Typeguard for screen params
 export function isTabScreen(screen: ScreenNames): screen is TabRouteName {
-  return screen in tabRouteNames
+  // @ts-expect-error : ScreenNames is not necessarily a screen in tabRouteNames
+  return tabRouteNames.includes(screen)
 }
 
 export const menu: Record<TabRouteName, string> = {
