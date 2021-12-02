@@ -4,14 +4,12 @@ import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIde
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/IdentityCheckEduConnect'
+import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/identification/IdentityCheckEduConnectForm'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
-import {
-  IdentityCheckUnavailable,
-  IdentityCheckValidation,
-} from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
+import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
+import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/IdentityCheckValidation'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'
-import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/profile/IdentityCheckEduConnectForm'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
@@ -67,12 +65,6 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     options: { title: t`Choix du status` },
     secure: true,
   },
-  {
-    name: 'IdentityCheckEduConnectForm',
-    component: IdentityCheckEduConnectForm,
-    path: 'educonnect-formulaire',
-    options: { title: t`Identification avec EduConnect` },
-  },
   // Identification
   {
     name: 'IdentityCheckStart',
@@ -88,7 +80,12 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     options: { title: t`Identification` },
     secure: true,
   },
-
+  {
+    name: 'IdentityCheckEduConnectForm',
+    component: IdentityCheckEduConnectForm,
+    path: 'educonnect-formulaire',
+    options: { title: t`Identification avec EduConnect` },
+  },
   {
     name: 'IdentityCheckValidation',
     component: IdentityCheckValidation,
