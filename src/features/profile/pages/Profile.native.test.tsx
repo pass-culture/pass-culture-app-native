@@ -29,6 +29,7 @@ jest.mock('@react-navigation/native', () => ({
 jest.mock('@react-navigation/bottom-tabs', () =>
   jest.requireActual('@react-navigation/bottom-tabs')
 )
+jest.mock('libs/firestore/ubbleLoad', () => ({ useSendToUbble: jest.fn(() => true) }))
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(

@@ -5,11 +5,13 @@ import { useNavigation } from '@react-navigation/native'
 import { api } from 'api/api'
 import { SubscriptionStep } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
+import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
+import { useSendToUbble } from 'libs/firestore/ubbleLoad'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -34,6 +36,7 @@ const useNavigateToNextSubscriptionStep = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const isUserUnderage = useIsUserUnderage()
   const { showErrorSnackBar } = useSnackBarContext()
+  const redirectToUbble = useRedirectToUbble()
 
   return (nextStep?: SubscriptionStep | null) => {
     if (nextStep === SubscriptionStep.PhoneValidation) return navigate('SetPhoneNumber')
@@ -42,6 +45,7 @@ const useNavigateToNextSubscriptionStep = () => {
       nextStep === SubscriptionStep.ProfileCompletion
     ) {
       if (!settings?.allowIdCheckRegistration) return navigate('IdCheckUnavailable')
+      if (redirectToUbble) return navigate('IdentityCheck')
 
       try {
         analytics.logIdCheck('Profile')
@@ -57,4 +61,13 @@ const useNavigateToNextSubscriptionStep = () => {
       return isUserUnderage ? navigate('UnavailableEduConnect') : navigateToHome()
     }
   }
+}
+
+const useRedirectToUbble = () => {
+  const underLoad = useSendToUbble()
+  const { data: user } = useUserProfileInfo()
+  // TODO(antoinewg): use EligibilityCheckMethods
+  const ubbleAllowed = ((user?.allowedEligibilityCheckMethods || []) as string[]).includes('ubble')
+
+  return underLoad && ubbleAllowed
 }
