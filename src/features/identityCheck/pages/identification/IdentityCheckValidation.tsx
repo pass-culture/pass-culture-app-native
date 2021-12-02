@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+// TODO PC-12075 : remove idCheck imports
 import {
   IdCheckFile,
   IdCheckRootStackParamList,
@@ -19,6 +20,7 @@ import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCh
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
+// TODO PC-12075 : get firstName, name, birthDate, birthDate from IdentityCheckContext
 interface ValidationProps {
   firstName: string
   name: string
