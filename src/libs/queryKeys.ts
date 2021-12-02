@@ -29,5 +29,4 @@ export enum QueryKeys {
 
 export enum MutationKeys {
   IDENTIFICATION_URL = 'identificationUrl',
-  PATCH_PROFILE = 'patchProfile',
 }

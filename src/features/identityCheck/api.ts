@@ -29,16 +29,14 @@ export function useIdentificationUrl() {
 export function usePatchProfile() {
   const { profile } = useIdentityCheckContext()
   const { showErrorSnackBar } = useSnackBarContext()
-
   return useMutation(
-    MutationKeys.PATCH_PROFILE,
     () =>
-      api.patchnativev1beneficiaryInformation({
+      api.postnativev1subscriptionprofile({
         activity: profile.status as ActivityEnum,
         address: profile.address,
         city: profile.city?.name || '',
-        firstName: profile.name?.firstName,
-        lastName: profile.name?.lastName,
+        firstName: profile.name?.firstName || '',
+        lastName: profile.name?.lastName || '',
         postalCode: profile.city?.postalCode || '',
       }),
     {
