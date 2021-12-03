@@ -6,6 +6,7 @@ export enum QueryKeys {
   CITIES = 'cities',
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',
+  FAVORITES_COUNT = 'favoritesCount',
   FIRESTORE_UBBLE_LOAD = 'firestoreUbbleLoad',
   HOMEPAGE_MODULES = 'homepageModules',
   ID_CHECK_TOKEN = 'idCheckToken',
