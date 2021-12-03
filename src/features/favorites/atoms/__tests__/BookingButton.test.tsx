@@ -2,7 +2,6 @@ import React from 'react'
 
 import {
   ExpenseDomain,
-  FavoriteCategoryResponse,
   FavoriteOfferResponse,
   SubcategoryIdEnum,
   UserProfileResponse,
@@ -33,11 +32,6 @@ enum ExpectedCTA {
 
 const credit: Credit = { amount: 100, isExpired: false }
 const offer: FavoriteOfferResponse = {
-  category: {
-    categoryType: 'Event',
-    label: 'Pratique artistique',
-    name: 'LECON',
-  } as FavoriteCategoryResponse,
   coordinates: { latitude: 48.9263, longitude: 2.49008 },
   date: null,
   expenseDomains: [ExpenseDomain.All],

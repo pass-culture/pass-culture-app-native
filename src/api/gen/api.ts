@@ -300,12 +300,6 @@ export interface BookingOfferExtraData {
 export interface BookingOfferResponse {
     /**
      * 
-     * @type {OfferCategoryResponse}
-     * @memberof BookingOfferResponse
-     */
-    category: OfferCategoryResponse;
-    /**
-     * 
      * @type {BookingOfferExtraData}
      * @memberof BookingOfferResponse
      */
@@ -579,32 +573,6 @@ export enum CategoryIdEnum {
     SPECTACLE = 'SPECTACLE',
     TECHNIQUE = 'TECHNIQUE'
 }/**
- * An enumeration.
- * @export
- * @enum {string}
- */
-export enum CategoryNameEnum {
-    CINEMA = 'CINEMA',
-    CONFERENCE = 'CONFERENCE',
-    FILM = 'FILM',
-    INSTRUMENT = 'INSTRUMENT',
-    JEUXVIDEO = 'JEUX_VIDEO',
-    LECON = 'LECON',
-    LIVRE = 'LIVRE',
-    MATERIELARTCREA = 'MATERIEL_ART_CREA',
-    MUSIQUE = 'MUSIQUE',
-    PRESSE = 'PRESSE',
-    SPECTACLE = 'SPECTACLE',
-    VISITE = 'VISITE'
-}/**
- * An enumeration.
- * @export
- * @enum {string}
- */
-export enum CategoryType {
-    Event = 'Event',
-    Thing = 'Thing'
-}/**
  * 
  * @export
  * @interface ChangeBeneficiaryEmailBody
@@ -778,30 +746,6 @@ export enum ExpenseDomain {
 }/**
  * 
  * @export
- * @interface FavoriteCategoryResponse
- */
-export interface FavoriteCategoryResponse {
-    /**
-     * 
-     * @type {CategoryType}
-     * @memberof FavoriteCategoryResponse
-     */
-    categoryType: CategoryType;
-    /**
-     * 
-     * @type {string}
-     * @memberof FavoriteCategoryResponse
-     */
-    label: string;
-    /**
-     * 
-     * @type {CategoryNameEnum}
-     * @memberof FavoriteCategoryResponse
-     */
-    name?: CategoryNameEnum | null;
-}/**
- * 
- * @export
  * @interface FavoriteMediationResponse
  */
 export interface FavoriteMediationResponse {
@@ -823,12 +767,6 @@ export interface FavoriteMediationResponse {
  * @interface FavoriteOfferResponse
  */
 export interface FavoriteOfferResponse {
-    /**
-     * 
-     * @type {FavoriteCategoryResponse}
-     * @memberof FavoriteOfferResponse
-     */
-    category: FavoriteCategoryResponse;
     /**
      * 
      * @type {Coordinates}
@@ -1096,30 +1034,6 @@ export interface OfferAccessibilityResponse {
 }/**
  * 
  * @export
- * @interface OfferCategoryResponse
- */
-export interface OfferCategoryResponse {
-    /**
-     * 
-     * @type {CategoryType}
-     * @memberof OfferCategoryResponse
-     */
-    categoryType: CategoryType;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferCategoryResponse
-     */
-    label: string;
-    /**
-     * 
-     * @type {CategoryNameEnum}
-     * @memberof OfferCategoryResponse
-     */
-    name?: CategoryNameEnum | null;
-}/**
- * 
- * @export
  * @interface OfferExtraData
  */
 export interface OfferExtraData {
@@ -1261,12 +1175,6 @@ export interface OfferResponse {
      * @memberof OfferResponse
      */
     accessibility: OfferAccessibilityResponse;
-    /**
-     * 
-     * @type {OfferCategoryResponse}
-     * @memberof OfferResponse
-     */
-    category: OfferCategoryResponse;
     /**
      * 
      * @type {string}

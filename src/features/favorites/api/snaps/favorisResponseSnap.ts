@@ -1,6 +1,5 @@
 import {
   ExpenseDomain,
-  FavoriteCategoryResponse,
   FavoriteResponse,
   PaginatedFavoritesResponse,
   SubcategoryIdEnum,
@@ -16,11 +15,6 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
       offer: {
         id: 146193,
         name: 'Spectacle une seule date',
-        category: {
-          categoryType: 'Event',
-          label: 'Spectacle',
-          name: 'SPECTACLE',
-        } as FavoriteCategoryResponse,
         expenseDomains: [ExpenseDomain.All],
         externalTicketOfficeUrl: null,
         image: null,
@@ -41,11 +35,6 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
       offer: {
         id: 146112,
         name: 'Je ne sais pas ce que je dis',
-        category: {
-          categoryType: 'Event',
-          label: 'Pratique artistique',
-          name: 'LECON',
-        } as FavoriteCategoryResponse,
         expenseDomains: [ExpenseDomain.All],
         externalTicketOfficeUrl: null,
         image: {
@@ -69,11 +58,6 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
       offer: {
         id: 146099,
         name: 'Un lit sous une rivière',
-        category: {
-          categoryType: 'Event',
-          label: 'Spectacle',
-          name: 'SPECTACLE',
-        } as FavoriteCategoryResponse,
         expenseDomains: [ExpenseDomain.All],
         externalTicketOfficeUrl: null,
         image: {
@@ -97,11 +81,6 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
       offer: {
         id: 146105,
         name: 'Un lit sous une rivière',
-        category: {
-          categoryType: 'Event',
-          label: 'Pratique artistique',
-          name: 'LECON',
-        } as FavoriteCategoryResponse,
         expenseDomains: [ExpenseDomain.All],
         externalTicketOfficeUrl: null,
         image: {
@@ -128,11 +107,6 @@ export const addFavoriteJsonResponseSnap: FavoriteResponse = {
   offer: {
     id: 10000,
     name: 'Spectacle de test',
-    category: {
-      categoryType: 'Event',
-      label: 'Spectacle',
-      name: 'SPECTACLE',
-    } as FavoriteCategoryResponse,
     expenseDomains: [ExpenseDomain.All],
     externalTicketOfficeUrl: null,
     image: null,
