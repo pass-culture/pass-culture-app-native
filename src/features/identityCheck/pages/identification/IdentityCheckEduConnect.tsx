@@ -15,10 +15,11 @@ export const IdentityCheckEduConnect = () => {
       scrollChildren={
         <React.Fragment>
           <Center>
+            <Spacer.Column numberOfSpaces={10} />
             <BicolorIdCardWithMagnifyingClass
               color={ColorsEnum.SECONDARY}
               color2={ColorsEnum.PRIMARY}
-              size={getSpacing(47)}
+              size={getSpacing(36)}
             />
           </Center>
 
