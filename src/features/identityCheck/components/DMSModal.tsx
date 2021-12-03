@@ -31,14 +31,14 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
     <Spacer.Column numberOfSpaces={8} />
     <CustomButtonTertiaryBlack
       title={t`Je suis de nationalité française`}
-      onPress={() => openUrl(env.DSM_URL)}
+      onPress={() => openUrl(env.DMS_FRENCH_CITIZEN_URL)}
       icon={ExternalSite}
     />
     <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Carte d’identité ou passeport.`}</Typo.Caption>
     <Spacer.Column numberOfSpaces={8} />
     <CustomButtonTertiaryBlack
       title={t`Je suis de nationalité étrangère`}
-      onPress={() => openUrl(env.DSM_URL)}
+      onPress={() => openUrl(env.DMS_FOREIGN_CITIZEN_URL)}
       icon={ExternalSite}
     />
     <Typo.Caption color={ColorsEnum.GREY_DARK}>
