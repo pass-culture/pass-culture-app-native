@@ -13,7 +13,7 @@ import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { BicolorLocationBuildingDeprecated as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding_deprecated'
+import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -73,9 +73,11 @@ export const WhereSection: React.FC<Props> = ({
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
+            <Spacer.Row numberOfSpaces={2} />
             <IconContainer>
               <LocationBuilding size={iconSize} />
             </IconContainer>
+            <Spacer.Row numberOfSpaces={2} />
             <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
             <Spacer.Flex />
             <ArrowNext size={getSpacing(6)} />
@@ -122,7 +124,7 @@ const StyledAddress = styled(Typo.Body)({
   textTransform: 'capitalize',
 })
 
-const iconSize = getSpacing(12)
+const iconSize = getSpacing(8)
 const iconSpacing = Math.round(iconSize / 5)
 
 const StyledVenueName = styled(Typo.ButtonText)({
