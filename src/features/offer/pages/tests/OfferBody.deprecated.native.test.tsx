@@ -87,11 +87,11 @@ describe('<OfferBody />', () => {
     expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
   })
 
-  it('should not show distance and go to button', async () => {
+  it('should not show distance when no address and go to button', async () => {
     const wrapper = await renderOfferBodyPage({
       venue: {
         id: 1664,
-        address: '2 RUE LAMENNAIS',
+        address: undefined,
         city: 'PARIS 8',
         offerer: { name: 'PATHE BEAUGRENELLE' },
         name: 'PATHE BEAUGRENELLE',

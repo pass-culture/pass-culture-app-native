@@ -1,21 +1,16 @@
 import { useItinerary } from 'libs/itinerary/useItinerary'
 
 export default function useOpenItinerary(
-  latitude?: number | null,
-  longitude?: number | null,
+  address?: string | null,
   beforeNavigate?: () => Promise<void> | void
 ) {
-  const { availableApps, navigateTo } = useItinerary()
+  const { navigateTo } = useItinerary()
 
-  const openItinerary = async () => {
-    if (!latitude || !longitude) return
+  async function openItinerary() {
+    if (!address) return
     await beforeNavigate?.()
-    navigateTo({ latitude, longitude })
+    navigateTo(address)
   }
 
-  return {
-    openItinerary,
-    canOpenItinerary:
-      latitude !== undefined && longitude !== undefined && availableApps !== undefined,
-  }
+  return { openItinerary, canOpenItinerary: !!address }
 }
