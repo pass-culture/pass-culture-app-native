@@ -72,7 +72,7 @@ const StyledAnimatedView = styled(Animated.View)<{ height: number; width: number
 
 const PastilleContent = styled.View<{ height: number; width: number }>((props) => ({
   position: 'absolute',
-  bottom: '10%',
+  bottom: Platform.select<string | undefined>({ web: '20%', default: undefined }),
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
