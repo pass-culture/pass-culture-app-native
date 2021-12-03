@@ -10,7 +10,6 @@ import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
 import { Again } from 'ui/svg/icons/Again'
-import { AroundMeDeprecated } from 'ui/svg/icons/AroundMe_deprecated'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
@@ -20,9 +19,7 @@ import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { BicolorLocationBuildingDeprecated } from 'ui/svg/icons/BicolorLocationBuilding_deprecated'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { BicolorLocationPointerDeprecated } from 'ui/svg/icons/BicolorLocationPointer_deprecated'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -44,7 +41,6 @@ import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
-import { EverywhereDeprecated } from 'ui/svg/icons/Everywhere_deprecated'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { Eye } from 'ui/svg/icons/Eye'
@@ -165,17 +161,10 @@ export const Icons: FunctionComponent = () => {
       <Icon name="InfoDeprecated" component={InfoDeprecated} />
       <Icon name="Info" component={Info} isNew />
       <Icon name="InfoPlain" component={InfoPlain} isNew />
-      <Icon name="AroundMe" component={AroundMeDeprecated} />
       <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
-      <Icon name="EverywhereDeprecated" component={EverywhereDeprecated} />
       <Icon name="BicolorEverywhere" component={BicolorEverywhere} isNew />
       <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} isNew />
-      <Icon name="BicolorLocationPointerDeprecated" component={BicolorLocationPointerDeprecated} />
       <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} isNew />
-      <Icon
-        name="BicolorLocationBuildingDeprecated"
-        component={BicolorLocationBuildingDeprecated}
-      />
       <Icon name="NoOffer" component={NoOffer} />
       <Icon name="OfferDigital" component={OfferDigital} />
       <Icon name="OfferPhysical" component={OfferPhysical} />

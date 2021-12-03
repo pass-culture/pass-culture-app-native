@@ -207,7 +207,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -310,7 +310,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -403,7 +403,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -496,7 +496,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -589,7 +589,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -682,7 +682,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -775,7 +775,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -868,7 +868,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -961,7 +961,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -1054,7 +1054,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -1147,7 +1147,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -1240,7 +1240,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />
@@ -1333,7 +1333,7 @@ exports[`Categories component should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "width": "8px",
+              "width": "16px",
             }
           }
         />

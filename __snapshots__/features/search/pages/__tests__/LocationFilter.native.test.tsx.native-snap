@@ -188,14 +188,34 @@ exports[`LocationFilter component should render correctly 1`] = `
           }
         >
           <View
-            height={48}
+            numberOfSpaces={3}
+            style={
+              Array [
+                Object {
+                  "width": 12,
+                },
+              ]
+            }
+          />
+          <View
+            height={32}
             testID="BicolorLocationPointer"
-            width={48}
+            width={32}
           >
             <Text>
               BicolorLocationPointer-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              Array [
+                Object {
+                  "width": 12,
+                },
+              ]
+            }
+          />
           <View
             style={
               Array [
@@ -294,13 +314,33 @@ exports[`LocationFilter component should render correctly 1`] = `
           }
         >
           <View
-            height={48}
-            width={48}
+            numberOfSpaces={3}
+            style={
+              Array [
+                Object {
+                  "width": 12,
+                },
+              ]
+            }
+          />
+          <View
+            height={32}
+            width={32}
           >
             <Text>
               undefined-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              Array [
+                Object {
+                  "width": 12,
+                },
+              ]
+            }
+          />
           <View
             style={
               Array [
@@ -401,13 +441,33 @@ exports[`LocationFilter component should render correctly 1`] = `
           }
         >
           <View
-            height={48}
-            width={48}
+            numberOfSpaces={3}
+            style={
+              Array [
+                Object {
+                  "width": 12,
+                },
+              ]
+            }
+          />
+          <View
+            height={32}
+            width={32}
           >
             <Text>
               undefined-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              Array [
+                Object {
+                  "width": 12,
+                },
+              ]
+            }
+          />
           <View
             style={
               Array [

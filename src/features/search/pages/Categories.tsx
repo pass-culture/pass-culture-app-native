@@ -56,8 +56,8 @@ export const Categories: React.FC = () => {
               onPress={selectCategory(searchGroup)}
               testID={searchGroup}>
               <Spacer.Row numberOfSpaces={4} />
-              <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={color2} />
-              <Spacer.Row numberOfSpaces={2} />
+              <Icon size={getSpacing(9)} color={ColorsEnum.PRIMARY} color2={color2} />
+              <Spacer.Row numberOfSpaces={4} />
               <Typo.ButtonText numberOfLines={2} color={textColor}>
                 {searchGroupLabelMapping[searchGroup]}
               </Typo.ButtonText>

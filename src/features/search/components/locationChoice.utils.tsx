@@ -3,10 +3,10 @@ import React from 'react'
 
 import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { AroundMeDeprecated } from 'ui/svg/icons/AroundMe_deprecated'
-import { BicolorLocationBuildingDeprecated as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding_deprecated'
-import { BicolorLocationPointerDeprecated as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer_deprecated'
-import { EverywhereDeprecated } from 'ui/svg/icons/Everywhere_deprecated'
+import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
+import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
+import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
+import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
 export const useLocationChoice = (
@@ -16,14 +16,14 @@ export const useLocationChoice = (
 
   if (section === LocationType.EVERYWHERE)
     return {
-      Icon: EverywhereDeprecated,
+      Icon: Everywhere,
       label: t`Partout`,
       isSelected: searchState.locationFilter.locationType === LocationType.EVERYWHERE,
     }
 
   if (section === LocationType.AROUND_ME)
     return {
-      Icon: AroundMeDeprecated,
+      Icon: AroundMe,
       label: t`Autour de moi`,
       isSelected: searchState.locationFilter.locationType === LocationType.AROUND_ME,
     }

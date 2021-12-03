@@ -14,6 +14,7 @@ import { Streaming } from './Streaming'
 
 export default {
   All,
+  ArtsMaterial,
   Atelier,
   Cinema,
   Conference,
@@ -25,5 +26,4 @@ export default {
   Presse,
   Spectacles,
   Streaming,
-  ArtsMaterial,
 }

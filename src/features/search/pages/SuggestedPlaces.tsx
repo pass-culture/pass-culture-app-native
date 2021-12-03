@@ -12,8 +12,8 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
-import { BicolorLocationPointerDeprecated } from 'ui/svg/icons/BicolorLocationPointer_deprecated'
-import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
+import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
 
@@ -35,13 +35,13 @@ export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
 
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
   const Icon = isVenue(hit)
-    ? () => <LocationBuildingDeprecated size={getSpacing(10)} color={ColorsEnum.PRIMARY} />
-    : () => <BicolorLocationPointerDeprecated size={getSpacing(10)} color2={ColorsEnum.PRIMARY} />
+    ? () => <LocationBuilding size={getSpacing(8)} color={ColorsEnum.PRIMARY} />
+    : () => <BicolorLocationPointer size={getSpacing(8)} color2={ColorsEnum.PRIMARY} />
 
   return (
     <ItemContainer onPress={onPress} testID={keyExtractor(hit)}>
       <Icon />
-      <Spacer.Row numberOfSpaces={2} />
+      <Spacer.Row numberOfSpaces={4} />
       <Text numberOfLines={2}>
         <Typo.ButtonText>{hit.label}</Typo.ButtonText>
         <Spacer.Row numberOfSpaces={1} />

@@ -231,20 +231,30 @@ exports[`Search component should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "left": -10,
+                    "left": -7,
                   },
                 ]
               }
             >
               <View
-                height={48}
-                width={48}
+                height={36}
+                width={36}
               >
                 <Text>
                   undefined-SVG-Mock
                 </Text>
               </View>
             </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
             <Text
               numberOfLines={1}
               style={
@@ -254,7 +264,7 @@ exports[`Search component should render correctly 1`] = `
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 20,
-                    "left": -10,
+                    "left": -7,
                     "lineHeight": 24,
                   },
                 ]
@@ -345,20 +355,30 @@ exports[`Search component should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "left": -10,
+                    "left": -7,
                   },
                 ]
               }
             >
               <View
-                height={48}
-                width={48}
+                height={36}
+                width={36}
               >
                 <Text>
                   undefined-SVG-Mock
                 </Text>
               </View>
             </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
             <Text
               numberOfLines={1}
               style={
@@ -368,7 +388,7 @@ exports[`Search component should render correctly 1`] = `
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 20,
-                    "left": -10,
+                    "left": -7,
                     "lineHeight": 24,
                   },
                 ]

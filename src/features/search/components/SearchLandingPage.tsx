@@ -92,7 +92,7 @@ const TouchableOpacity = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,
 })({ alignItems: 'center' })
 
-const iconSize = getSpacing(12)
+const iconSize = getSpacing(9)
 const iconSpacing = Math.round(iconSize / 5)
 
 const BicolorListItem: React.FC<{
@@ -109,6 +109,7 @@ const BicolorListItem: React.FC<{
         <IconContainer>
           <Icon size={iconSize} color={colors.primary} color2={colors.secondary} />
         </IconContainer>
+        <Spacer.Row numberOfSpaces={2} />
         <Title numberOfLines={1}>{title}</Title>
       </TitleIconContainer>
     </Container>

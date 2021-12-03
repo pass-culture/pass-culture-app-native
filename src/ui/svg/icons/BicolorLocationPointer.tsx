@@ -10,7 +10,7 @@ const NotMemoizedBicolorLocationPointer: React.FunctionComponent<IconInterface> 
   size = 32,
   color = ColorsEnum.PRIMARY,
   color2 = ColorsEnum.SECONDARY,
-  testID,
+  testID = 'BicolorLocationPointer',
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 

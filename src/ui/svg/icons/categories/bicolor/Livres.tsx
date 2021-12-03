@@ -1,30 +1,44 @@
 import * as React from 'react'
-import Svg, { Defs, G, LinearGradient, Path, Stop } from 'react-native-svg'
-import { v1 as uuidv1 } from 'uuid'
+import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { IconInterface } from 'ui/svg/icons/types'
+import { svgIdentifier } from 'ui/svg/utils'
 import { ColorsEnum } from 'ui/theme'
 
-export function Livres({
+export const Livres: React.FunctionComponent<IconInterface> = ({
   size = 32,
   color = ColorsEnum.PRIMARY,
   color2,
   testID,
-}: BicolorIconInterface): JSX.Element {
-  const LINEAR_GRADIENT_1_ID = uuidv1()
+}) => {
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
+
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID}>
       <Defs>
-        <LinearGradient id={LINEAR_GRADIENT_1_ID} x1="16.819%" x2="83.181%" y1="0%" y2="100%">
+        <LinearGradient id={gradientId} x1="16.819%" x2="83.181%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color ?? ColorsEnum.PRIMARY} />
           <Stop offset="100%" stopColor={color2 ?? color ?? ColorsEnum.SECONDARY} />
         </LinearGradient>
       </Defs>
-      <G fill="none" fillRule="evenodd" opacity=".9">
-        <G fill={`url(#${LINEAR_GRADIENT_1_ID})`}>
-          <Path d="M32.75 10c1.465 0 2.659 1.16 2.745 2.613l.005.17.124 19.846c.008 1.243-.81 2.298-1.938 2.648l-.108.03.02.1.007.101v1.693c0 1.039-1.522 1.739-2.654 1.795l-.145.004H14.75c-1.496 0-2.675-1.172-2.722-2.498l-.001-.095-.02-.1-.007-.102V12.787c0-1.48 1.14-2.694 2.582-2.782L14.75 10h18zM18.176 35.422l-3.32.006c-.702 0-1.313.464-1.33.967-.015.51.456 1.035 1.094 1.099l.13.006h16.056c.191 0 .61-.101.945-.246.127-.055.234-.112.31-.164l.043-.033.001-1.549.002-.051.005-.057-13.93.022h-.006zM17.429 11.5H14.75c-.644 0-1.18.504-1.244 1.155l-.006.132v21.452l.087-.04c.341-.153.716-.246 1.102-.267l.166-.004 2.574-.004V11.5zm15.321 0H18.929v22.422l13.944-.022c.65-.001 1.185-.499 1.245-1.133l.006-.128L34 12.787c0-.669-.495-1.215-1.123-1.28l-.127-.007zm-2.285 9.941c.414 0 .75.336.75.75 0 .38-.282.694-.648.743l-.102.007h-8c-.414 0-.75-.335-.75-.75 0-.38.282-.693.648-.743l.102-.007h8zm0-3.94c.414 0 .75.335.75.75 0 .38-.282.693-.648.743l-.102.006h-8c-.414 0-.75-.335-.75-.75 0-.38.282-.693.648-.743l.102-.007h8z" />
-        </G>
-      </G>
+      <Path
+        fill={gradientFill}
+        clipRule={'evenodd'}
+        fillRule={'evenodd'}
+        d="M12 4C9.79228 4 8 5.79228 8 8V39.3371C8.45468 39.121 8.96328 39 9.5 39H14V33C14 32.4477 14.4477 32 15 32C15.5523 32 16 32.4477 16 33V39H38C39.1077 39 40 38.1077 40 37V13C40 12.4477 40.4477 12 41 12C41.5523 12 42 12.4477 42 13V37C42 39.2123 40.2123 41 38 41H9.5C8.67228 41 8 41.6723 8 42.5C8 43.3277 8.67228 44 9.5 44V45C9.5 44 9.50116 44 9.50116 44H36C36.4304 44 36.6955 43.9269 36.8281 43.8403C36.8796 43.8066 36.9107 43.7717 36.9347 43.7239C36.9612 43.6713 37 43.5603 37 43.35C37 42.7977 37.4477 42.35 38 42.35C38.5523 42.35 39 42.7977 39 43.35C39 44.3108 38.6167 45.0607 37.9219 45.5147C37.3045 45.9181 36.5696 46 36 46H9.5C7.92878 46 6.59861 44.9634 6.15636 43.5372C6.05737 43.382 6 43.1977 6 43V8C6 4.68772 8.68772 2 12 2H39C40.6523 2 42 3.34772 42 5V7.66C42 8.21228 41.5523 8.66 41 8.66C40.4477 8.66 40 8.21228 40 7.66V5C40 4.45228 39.5477 4 39 4H16V28C16 28.5523 15.5523 29 15 29C14.4477 29 14 28.5523 14 28V4H12Z"
+      />
+      <Path
+        fill={gradientFill}
+        clipRule={'evenodd'}
+        fillRule={'evenodd'}
+        d="M21 15C21 14.4477 21.4477 14 22 14H34C34.5523 14 35 14.4477 35 15C35 15.5523 34.5523 16 34 16H22C21.4477 16 21 15.5523 21 15Z"
+      />
+      <Path
+        fill={gradientFill}
+        clipRule={'evenodd'}
+        fillRule={'evenodd'}
+        d="M22 19C21.4477 19 21 19.4477 21 20C21 20.5523 21.4477 21 22 21H30C30.5523 21 31 20.5523 31 20C31 19.4477 30.5523 19 30 19H22Z"
+      />
     </Svg>
   )
 }

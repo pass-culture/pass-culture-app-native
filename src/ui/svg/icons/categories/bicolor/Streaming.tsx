@@ -1,30 +1,32 @@
 import * as React from 'react'
-import Svg, { Defs, G, LinearGradient, Path, Stop } from 'react-native-svg'
-import { v1 as uuidv1 } from 'uuid'
+import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { IconInterface } from 'ui/svg/icons/types'
+import { svgIdentifier } from 'ui/svg/utils'
 import { ColorsEnum } from 'ui/theme'
 
-export function Streaming({
+export const Streaming: React.FunctionComponent<IconInterface> = ({
   size = 32,
   color = ColorsEnum.PRIMARY,
   color2,
   testID,
-}: BicolorIconInterface): JSX.Element {
-  const LINEAR_GRADIENT_1_ID = uuidv1()
+}) => {
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
+
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID}>
       <Defs>
-        <LinearGradient id={LINEAR_GRADIENT_1_ID} x1="0%" x2="100%" y1="13.494%" y2="86.506%">
+        <LinearGradient id={gradientId} x1="0%" x2="100%" y1="13.494%" y2="86.506%">
           <Stop offset="0%" stopColor={color ?? ColorsEnum.PRIMARY} />
           <Stop offset="100%" stopColor={color2 ?? color ?? ColorsEnum.SECONDARY} />
         </LinearGradient>
       </Defs>
-      <G fill="none" fillRule="evenodd" opacity=".9">
-        <G fill={`url(#${LINEAR_GRADIENT_1_ID})`}>
-          <Path d="M31.996 35.75H24l-.008-.001h-7.979L16 35.75l-.013-.001h-3.015c-1.5-.056-2.685-1.271-2.723-2.73l.001-17.843c-.051-1.5 1.075-2.77 2.575-2.914L13 12.25h22.028c1.5.057 2.685 1.272 2.723 2.73L37.75 23c0 .414-.336.75-.75.75-.38 0-.693-.282-.743-.648L36.25 23v-5.25h-24.5l-.001 12.5h24.5L36.25 27c0-.414.336-.75.75-.75.38 0 .693.282.743.648l.007.102v4l-.001.01v1.814c.052 1.5-1.074 2.77-2.574 2.914L35 35.75h-3.004zm-16.746-4h-3.501v1.126c-.023.686.478 1.27 1.12 1.362l.131.012h2.25v-2.5zm8 0h-6.5v2.5h6.5v-2.5zm8 0h-6.5v2.5h6.5v-2.5zm5 0h-3.5v2.5h2.222c.689-.026 1.236-.572 1.276-1.268l.002-.132v-1.1zM21.75 20c.13 0 .258.035.37.1l5.51 3.24c.227.143.364.392.364.66s-.137.517-.364.66l-5.51 3.24c-.112.065-.24.1-.37.1-.416-.005-.75-.344-.75-.76v-6.48c0-.416.334-.755.75-.76zm-6.5-6.251h-2.222c-.689.027-1.236.573-1.276 1.269l-.001 1.232h3.499v-2.501zm8 0h-6.5v2.501h6.5v-2.501zm1.5 0v2.501h6.5v-2.5l-6.5-.001zM35 13.75h-2.25v2.5h3.5v-1.126c.024-.686-.477-1.27-1.12-1.362L35 13.75z" />
-        </G>
-      </G>
+      <Path
+        fill={gradientFill}
+        clipRule={'evenodd'}
+        fillRule={'evenodd'}
+        d="M6 8C4.89228 8 4 8.89228 4 10V11H11V8H10H6ZM13 8V11H23V8H13ZM4 13H12H24H36H44V35H36H34L33.9938 35H24.0062L24 35L23.9938 35H12.0062L12 35L11.9938 35H4V22.77V21.05C4 20.4977 3.55228 20.05 3 20.05C2.44772 20.05 2 20.4977 2 21.05V22.77V37V38C2 40.2123 3.78772 42 6 42H12H24H27C27.5523 42 28 41.5523 28 41C28 40.4477 27.5523 40 27 40H25V37L34 37H34.0062H35V40H33C32.4477 40 32 40.4477 32 41C32 41.5523 32.4477 42 33 42H36H42C44.2123 42 46 40.2123 46 38V37V11V10C46 7.78772 44.2123 6 42 6H36H24H12H10H6C3.78772 6 2 7.78772 2 10V11V15.23C2 15.7823 2.44772 16.23 3 16.23C3.55228 16.23 4 15.7823 4 15.23V13ZM35 8H25V11H35V8ZM37 11V8H42C43.1077 8 44 8.89228 44 10V11H37ZM42 40H37V37H44V38C44 39.1077 43.1077 40 42 40ZM11 37L4 37V38C4 39.1077 4.89228 40 6 40H11V37ZM13 40V37L23 37V40H13ZM29.0272 22.4456L22.5411 19.1875C21.3771 18.5966 20.02 19.455 20.02 20.74V27.27C20.02 28.555 21.377 29.4134 22.5411 28.8225L29.0289 25.5636L29.0289 25.5637L29.0403 25.5578C30.2864 24.9117 30.3175 23.0917 29.0282 22.4461L29.0272 22.4456ZM27.6761 24.005L22.02 21.1639V26.8461L27.6761 24.005Z"
+      />
     </Svg>
   )
 }

@@ -69,7 +69,15 @@ Array [
       className="css-view-1dbjc4n"
       style={
         Object {
-          "left": "-10px",
+          "width": "8px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "left": "-6px",
         }
       }
     >
@@ -86,6 +94,14 @@ Array [
       </div>
     </div>
     <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "width": "8px",
+        }
+      }
+    />
+    <div
       className="css-text-901oao css-textOneLine-vcwn7f"
       dir="auto"
       style={
@@ -95,7 +111,7 @@ Array [
           "flexShrink": 1,
           "fontFamily": "Montserrat-Bold",
           "fontSize": "15px",
-          "left": "-10px",
+          "left": "-6px",
           "lineHeight": "20px",
           "msFlexNegative": 1,
           "textTransform": "capitalize",
@@ -312,7 +328,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -28,10 +28,118 @@
+@@ -28,10 +28,134 @@
           \\"height\\": \\"16px\\",
         }
       }
@@ -354,7 +370,15 @@ exports[`WhereSection should render correctly 2`] = `
 +       className=\\"css-view-1dbjc4n\\"
 +       style={
 +         Object {
-+           \\"left\\": \\"-10px\\",
++           \\"width\\": \\"8px\\",
++         }
++       }
++     />
++     <div
++       className=\\"css-view-1dbjc4n\\"
++       style={
++         Object {
++           \\"left\\": \\"-6px\\",
 +         }
 +       }
 +     >
@@ -371,6 +395,14 @@ exports[`WhereSection should render correctly 2`] = `
 +       </div>
 +     </div>
 +     <div
++       className=\\"css-view-1dbjc4n\\"
++       style={
++         Object {
++           \\"width\\": \\"8px\\",
++         }
++       }
++     />
++     <div
 +       className=\\"css-text-901oao css-textOneLine-vcwn7f\\"
 +       dir=\\"auto\\"
 +       style={
@@ -380,7 +412,7 @@ exports[`WhereSection should render correctly 2`] = `
 +           \\"flexShrink\\": 1,
 +           \\"fontFamily\\": \\"Montserrat-Bold\\",
 +           \\"fontSize\\": \\"15px\\",
-+           \\"left\\": \\"-10px\\",
++           \\"left\\": \\"-6px\\",
 +           \\"lineHeight\\": \\"20px\\",
 +           \\"msFlexNegative\\": 1,
 +           \\"textTransform\\": \\"capitalize\\",

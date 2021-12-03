@@ -736,24 +736,44 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         testID="VenueBannerComponent"
       >
         <View
+          numberOfSpaces={2}
           style={
             Array [
               Object {
-                "left": -10,
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "left": -6,
               },
             ]
           }
         >
           <View
-            height={48}
+            height={32}
             testID="BicolorLocationBuilding"
-            width={48}
+            width={32}
           >
             <Text>
               BicolorLocationBuilding-SVG-Mock
             </Text>
           </View>
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
         <Text
           numberOfLines={1}
           style={
@@ -763,7 +783,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
-                "left": -10,
+                "left": -6,
                 "lineHeight": 20,
                 "textTransform": "capitalize",
               },

@@ -23,7 +23,9 @@ export const LocationChoice: React.FC<Props> = (props) => {
   return (
     <Container onPress={onPress} testID={`locationChoice-${testID}`}>
       <FirstPart>
-        <Icon size={48} color2={iconColor2} />
+        <Spacer.Row numberOfSpaces={3} />
+        <Icon color2={iconColor2} />
+        <Spacer.Row numberOfSpaces={3} />
         <TextContainer>
           <Typo.ButtonText
             numberOfLines={3}
