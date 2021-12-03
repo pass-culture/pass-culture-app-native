@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 
 import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -40,11 +41,10 @@ export const IdentityCheckWebview: React.FC = () => {
             ubbleIDV.destroy()
             if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigateToNextScreen()
           },
-          onAbort({ redirectUrl, status, returnReason }: AbortEvent) {
+          onAbort({ status, returnReason }: AbortEvent) {
             analytics.logIdentityCheckAbort({ status, returnReason })
             ubbleIDV.destroy()
-            // TODO(antoinewg): navigate to an error page.
-            if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigateToNextScreen()
+            navigateToHome()
           },
         },
       })
