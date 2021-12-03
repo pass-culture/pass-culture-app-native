@@ -2,24 +2,30 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { openUrl } from 'features/navigation/helpers'
-import { env } from 'libs/environment'
+import { DMSModal } from 'features/identityCheck/components/DMSModal'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { useModal } from 'ui/components/modals/useModal'
 import { DigitalIcon } from 'ui/svg/icons/venueTypes'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-export const DMSInformation = () => (
-  <Container>
-    <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Tu n'as pas de smartphone ?`}</Typo.Body>
-    <Spacer.Column numberOfSpaces={4} />
-    <ButtonTertiaryBlack
-      title={t`Identification par le site Démarches-Simplifiées`}
-      onPress={() => openUrl(env.DSM_URL)}
-      icon={DigitalIcon}
-    />
-    <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Environ 10 jours`}</Typo.Caption>
-  </Container>
-)
+export const DMSInformation = () => {
+  const { visible, showModal, hideModal } = useModal(false)
+  return (
+    <React.Fragment>
+      <Container>
+        <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Tu n'as pas de smartphone ?`}</Typo.Body>
+        <Spacer.Column numberOfSpaces={4} />
+        <ButtonTertiaryBlack
+          title={t`Identification par le site Démarches-Simplifiées`}
+          onPress={showModal}
+          icon={DigitalIcon}
+        />
+        <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Environ 10 jours`}</Typo.Caption>
+      </Container>
+      <DMSModal visible={visible} hideModal={hideModal} />
+    </React.Fragment>
+  )
+}
 
 const Container = styled.View({
   alignItems: 'center',

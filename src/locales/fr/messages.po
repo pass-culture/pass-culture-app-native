@@ -346,6 +346,10 @@ msgstr "CGU & Données"
 msgid "Cadre l’intégralité de ton document"
 msgstr "Cadre l’intégralité de ton document"
 
+#: src/features/identityCheck/components/DMSModal.tsx
+msgid "Carte d’identité ou passeport."
+msgstr "Carte d’identité ou passeport."
+
 #: src/features/search/pages/Categories.tsx
 #: src/features/search/sections/titles.ts
 msgid "Catégories"
@@ -1131,9 +1135,9 @@ msgstr "Id Check indisponible"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckStart.web.tsx
-#: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
@@ -1265,6 +1269,14 @@ msgstr "Je découvre les offres"
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
 msgid "Je ne vois pas mon établissement"
 msgstr "Je ne vois pas mon établissement"
+
+#: src/features/identityCheck/components/DMSModal.tsx
+msgid "Je suis de nationalité française"
+msgstr "Je suis de nationalité française"
+
+#: src/features/identityCheck/components/DMSModal.tsx
+msgid "Je suis de nationalité étrangère"
+msgstr "Je suis de nationalité étrangère"
 
 #: src/features/offer/services/useShareOffer.ts
 msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
@@ -1569,8 +1581,8 @@ msgstr "Modifier mon e-mail"
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
-#: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
 msgid "Mon identité"
 msgstr "Mon identité"
 
@@ -1790,7 +1802,7 @@ msgstr "Oups !"
 msgid "Oups, cette offre n’est plus disponible !"
 msgstr "Oups, cette offre n’est plus disponible !"
 
-#: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 msgid "Ouvrir un onglet ÉduConnect"
 msgstr "Ouvrir un onglet ÉduConnect"
 
@@ -1909,7 +1921,7 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 msgid "Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification."
 msgstr "Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification."
 
-#: src/features/identityCheck/pages/profile/IdentityCheckEduConnectForm.web.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 msgid "Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !"
 msgstr "Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !"
 
@@ -2138,6 +2150,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
+#: src/features/identityCheck/components/DMSModal.tsx
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/search/components/SearchBox.tsx
@@ -2398,6 +2411,10 @@ msgstr "Terminer"
 msgid "Terminer ma réservation"
 msgstr "Terminer ma réservation"
 
+#: src/features/identityCheck/components/DMSModal.tsx
+msgid "Titre de séjour, carte d'identité, ou passeport."
+msgstr "Titre de séjour, carte d'identité, ou passeport."
+
 #: src/features/search/components/SearchBox.tsx
 msgid "Titre, artiste, lieu..."
 msgstr "Titre, artiste, lieu..."
@@ -2500,6 +2517,7 @@ msgid "Toutes les catégories"
 msgstr "Toutes les catégories"
 
 #: src/features/identityCheck/atoms/DMSInformation.tsx
+#: src/features/identityCheck/components/DMSModal.tsx
 msgid "Transmettre un document"
 msgstr "Transmettre un document"
 
@@ -2622,6 +2640,10 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 #: src/libs/notifications/components/PushNotificationsModal.tsx
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
+
+#: src/features/identityCheck/components/DMSModal.tsx
+msgid "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
+msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
@@ -2758,6 +2780,10 @@ msgstr "Utilisé"
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "VISA"
 msgstr "VISA"
+
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Validation de l'identification"
+msgstr "Validation de l'identification"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Validation téléphone"
