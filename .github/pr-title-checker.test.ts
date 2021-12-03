@@ -5,9 +5,9 @@ const REGEX = new RegExp(
 )
 
 const invalidPullRequestTitles: string[] = [
-  '[PC-1234] tech(home): add color to button', // invalid type
-  '[PC-1234] add color to button', // no scope nor type
-  '[PC-1234] feat: add color to button', // no scope
+  '(PC-1234) tech(home): add color to button', // invalid type
+  '(PC-1234) add color to button', // no scope nor type
+  '(PC-1234) feat: add color to button', // no scope
   'feat: add color to button [PC-1234]', // jira ticket at the end
   '[PC-1234] feat(home): add color to button', // crochet instead of parentheses
   'PC-1234 feat(home): add color to button', // no parentheses

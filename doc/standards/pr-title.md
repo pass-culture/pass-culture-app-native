@@ -31,6 +31,8 @@ The commits of the PR won't be on master, but are still useful for PR readliness
   └─⫸ Jira ticket number: with parentheses -> (PC-1234).
 ```
 
+Available types: `build`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor` and `test`.
+
 - Github action to ensure that the PR title is in the right format: [pr-title-checker.yml](../../.github/workflows/pr-title-checker.yml)
 - Test of the regex used in the github action: [pr-title-checker.test.ts](../../.github/pr-title-checker.test.ts)
 
