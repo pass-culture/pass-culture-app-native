@@ -8,8 +8,6 @@ import { QueryKeys } from 'libs/queryKeys'
 // To avoid firing requests firestore on every request
 const STALE_TIME_FIRESTORE_UBBLE_LOAD = 5 * 60 * 1000
 
-// TODO(antoinewg): RemoteStoreDocuments.LOAD_PERCENT is not used anymore
-// However, we can reuse this code for sending to ubble based on firestore param.
 export const getUbbleLoad = () =>
   firestoreRemoteStore
     .collection(RemoteStoreCollections.UBBLE)
@@ -23,6 +21,19 @@ export const getUbbleLoad = () =>
     )
 
 export const useUbbleLoad = () =>
-  useQuery<number>(QueryKeys.FIRESTORE_UBBLE_LOAD, getUbbleLoad, {
+  useQuery<number>(QueryKeys.FIRESTORE_UBBLE_LOAD, () => getUbbleLoad(), {
     staleTime: STALE_TIME_FIRESTORE_UBBLE_LOAD,
   })
+
+export const useIsUnderUbbleLoadThreshold = () => {
+  const { data: ubbleLoad = 0 } = useUbbleLoad()
+  return isBelowLoad(ubbleLoad)
+}
+
+/**
+ * @param load number between 0 and 100, configured in firestore
+ */
+const isBelowLoad = (load: number): boolean => {
+  const randomLoad = Math.random() * 100
+  return randomLoad < load
+}

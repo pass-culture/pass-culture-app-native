@@ -1,12 +1,11 @@
 import { t } from '@lingui/macro'
-import { useNavigation, useRoute, useFocusEffect } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, memo } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import React, { FunctionComponent, memo } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
-import { useAuthContext } from 'features/auth/AuthContext'
 import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -22,7 +21,6 @@ import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
-import { LoadingPage } from 'ui/components/LoadingPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
@@ -46,20 +44,11 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [isLoading, setIsLoading] = useSafeState(false)
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
   const signIn = useSignIn()
-  const { isLoggedIn } = useAuthContext()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
-
-  useFocusEffect(
-    useCallback(() => {
-      if (params?.followScreen && isLoggedIn) {
-        navigate(params.followScreen, params.followParams)
-      }
-    }, [params])
-  )
 
   async function handleSignin() {
     setIsLoading(true)
@@ -80,9 +69,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       const user = await api.getnativev1me()
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
 
-      if (params?.followScreen) {
-        navigate(params.followScreen, params.followParams)
-      } else if (!hasSeenEligibleCard && user.showEligibleCard) {
+      if (!hasSeenEligibleCard && user.showEligibleCard) {
         navigate('EighteenBirthday')
       } else if (shouldShowCulturalSurvey(user)) {
         navigate('CulturalSurvey')
@@ -122,10 +109,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   function onForgottenPasswordClick() {
     navigate('ForgottenPassword')
-  }
-
-  if (isLoggedIn && params?.followScreen) {
-    return <LoadingPage />
   }
 
   const rightIconProps = params?.preventCancellation

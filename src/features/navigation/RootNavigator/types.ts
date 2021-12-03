@@ -73,8 +73,6 @@ export type RootStackParamList = {
   IdCheckTooManyAttempts: undefined
   Login?: {
     preventCancellation?: boolean
-    followScreen?: 'NextBeneficiaryStep'
-    followParams?: RootStackParamList['NextBeneficiaryStep']
   }
   Navigation: undefined
   NavigationIdCheckErrors: undefined
@@ -92,7 +90,6 @@ export type RootStackParamList = {
   LegalNotices: undefined
   LocationFilter: undefined
   LocationPicker: undefined
-  NextBeneficiaryStep: undefined
   PersonalData: undefined
   SearchCategories: undefined
   SearchFilter: undefined
