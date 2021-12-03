@@ -66,11 +66,11 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
 
 const StyledTextInput = styled(RNTextInput).attrs({
   placeholderTextColor: ColorsEnum.GREY_DARK,
-})({
+})(({ theme }) => ({
   flex: 1,
   padding: 0,
-  color: ColorsEnum.BLACK,
-  fontFamily: 'Montserrat-Regular',
+  color: theme.colors.black,
+  fontFamily: theme.fontFamily.regular,
   fontSize: getSpacing(3.75),
   height: '100%',
-})
+}))
