@@ -2,12 +2,10 @@ import React from 'react'
 import { Animated, Share, Platform } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { getWebappVenueUrl } from 'features/venue/services/useShareVenue'
+import { getVenueUrl } from 'features/venue/services/useShareVenue'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
@@ -56,11 +54,9 @@ describe('<VenueHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
 
     expect(share).toHaveBeenCalledTimes(1)
-    const fullWebappUrlWithParams = getWebappVenueUrl(5543, env.WEBAPP_URL)
-    const deepLink = `https://webapp-v2.example.com/lieu/5543`
-
-    const url = generateLongFirebaseDynamicLink(deepLink, fullWebappUrlWithParams)
+    const url = getVenueUrl(5543)
     const message = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
+
     expect(share).toHaveBeenCalledWith(
       { message, title: message, url },
       { dialogTitle: message, subject: message }
@@ -75,12 +71,10 @@ describe('<VenueHeader />', () => {
     fireEvent.press(getByTestId('icon-share'))
 
     expect(share).toHaveBeenCalledTimes(1)
-    const fullWebappUrlWithParams = getWebappVenueUrl(5543, env.WEBAPP_URL)
-    const deepLink = `https://webapp-v2.example.com/lieu/5543`
-
-    const url = generateLongFirebaseDynamicLink(deepLink, fullWebappUrlWithParams)
+    const url = getVenueUrl(5543)
     const message = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
     const messageWithUrl = `${message}\n\n${url}`
+
     expect(share).toHaveBeenCalledWith(
       { message: messageWithUrl, title: message, url },
       { dialogTitle: message, subject: message }
