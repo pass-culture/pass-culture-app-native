@@ -5,7 +5,6 @@ import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 import { AppState, AppStateStatus, LogBox } from 'react-native'
-import CodePush from 'react-native-code-push'
 import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 
@@ -24,8 +23,7 @@ import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
 import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign'
-import { AutoImmediate, NextRestart } from 'libs/codepush/options'
-import { env } from 'libs/environment'
+import { CodePushWrapper } from 'libs/codepush/CodePushWrapper'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
@@ -121,7 +119,12 @@ const App: FunctionComponent = function () {
   )
 }
 
-const config = env.ENV !== 'production' ? AutoImmediate : NextRestart
-const AppWithCodepush = __DEV__ ? App : CodePush(config)(App)
+const AppWithCodepush = __DEV__
+  ? App
+  : () => (
+      <CodePushWrapper>
+        <App />
+      </CodePushWrapper>
+    )
 
 export { AppWithCodepush as App }
