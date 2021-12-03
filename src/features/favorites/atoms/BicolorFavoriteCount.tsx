@@ -4,7 +4,7 @@ import { Animated, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useFavorites } from 'features/favorites/pages/useFavorites'
+import { useFavoritesCount } from 'features/favorites/pages/useFavorites'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFavoriteAuthed } from 'ui/svg/icons/BicolorFavoriteAuthed'
 import { Pastille } from 'ui/svg/icons/Pastille'
@@ -23,18 +23,18 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
 }) => {
   const { colors } = useTheme()
   const { isLoggedIn } = useAuthContext()
-  const { data } = useFavorites()
-  const scale = useScaleFavoritesAnimation(data?.nbFavorites)
+  const { data: favoritesCount } = useFavoritesCount()
+  const scale = useScaleFavoritesAnimation(favoritesCount)
 
-  if (!isLoggedIn || !data) {
+  if (!isLoggedIn || typeof favoritesCount === 'undefined') {
     return <BicolorFavorite size={size} color={color} color2={color2} thin={thin} testID={testID} />
   }
   const pastilleDimensions = {
     width: typeof size === 'number' ? size * 0.8 : 21,
     height: typeof size === 'number' ? size * 0.5 : 15,
   }
-  const hasTooMany = data.nbFavorites >= COUNT_MAX
-  const count = hasTooMany ? COUNT_MAX - 1 : data.nbFavorites || '0'
+  const hasTooMany = favoritesCount >= COUNT_MAX
+  const count = hasTooMany ? COUNT_MAX - 1 : favoritesCount || '0'
   const plusSign = hasTooMany ? t`+` : ''
   return (
     <Container testID="bicolor-favorite-count">

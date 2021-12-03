@@ -5,6 +5,7 @@ import { ApiError } from 'api/apiHelpers'
 import {
   FavoriteRequest,
   FavoriteResponse,
+  FavoritesCountResponse,
   PaginatedFavoritesResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
@@ -40,6 +41,7 @@ export function useRemoveFavorite({ onError }: RemoveFavorite) {
           nbFavorites: favorites.length,
           favorites,
         })
+        queryClient.setQueryData(QueryKeys.FAVORITES_COUNT, { count: favorites.length })
       }
 
       return { previousFavorites: previousFavorites || [] } as FavoriteMutationContext
@@ -47,6 +49,9 @@ export function useRemoveFavorite({ onError }: RemoveFavorite) {
     onError: (error: Error, favoriteId, context: FavoriteMutationContext | undefined) => {
       if (context?.previousFavorites) {
         queryClient.setQueryData(QueryKeys.FAVORITES, context.previousFavorites)
+        queryClient.setQueryData(QueryKeys.FAVORITES_COUNT, {
+          count: context.previousFavorites.length,
+        })
       }
       if (onError) {
         onError(error, favoriteId, context)
@@ -74,15 +79,15 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
       )
 
       if (previousFavorites) {
-        queryClient.setQueryData(QueryKeys.FAVORITES, {
-          ...previousFavorites,
-          favorites: [
-            ...previousFavorites.favorites.filter((favoris) => favoris.offer.id !== data.offer.id),
-            data,
-          ],
-        })
+        const favorites = [
+          ...previousFavorites.favorites.filter((favoris) => favoris.offer.id !== data.offer.id),
+          data,
+        ]
+        queryClient.setQueryData(QueryKeys.FAVORITES, { ...previousFavorites, favorites })
+        queryClient.setQueryData(QueryKeys.FAVORITES_COUNT, { count: favorites.length })
       } else {
         queryClient.invalidateQueries(QueryKeys.FAVORITES)
+        queryClient.invalidateQueries(QueryKeys.FAVORITES_COUNT)
       }
       if (onSuccess) {
         onSuccess(data)
@@ -107,6 +112,7 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
           nbFavorites: favorites.length,
           favorites,
         })
+        queryClient.setQueryData(QueryKeys.FAVORITES_COUNT, { count: favorites.length })
       }
 
       return { previousFavorites: previousFavorites || [] } as FavoriteMutationContext
@@ -118,6 +124,9 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
     ) => {
       if (context?.previousFavorites) {
         queryClient.setQueryData(QueryKeys.FAVORITES, context.previousFavorites)
+        queryClient.setQueryData(QueryKeys.FAVORITES_COUNT, {
+          count: context.previousFavorites.length,
+        })
       }
       if (onError) {
         onError(error, { offerId }, context)
@@ -137,6 +146,16 @@ export function useFavorites() {
     () => api.getnativev1mefavorites(),
     { enabled: isLoggedIn, staleTime: STALE_TIME_FAVORITES }
   )
+}
+
+export function useFavoritesCount() {
+  const { isLoggedIn } = useAuthContext()
+
+  return useQuery(QueryKeys.FAVORITES_COUNT, () => api.getnativev1mefavoritescount(), {
+    enabled: isLoggedIn,
+    staleTime: STALE_TIME_FAVORITES,
+    select: (data: FavoritesCountResponse) => data.count,
+  })
 }
 
 export function useFavorite({ offerId }: { offerId?: number }): FavoriteResponse | undefined {
