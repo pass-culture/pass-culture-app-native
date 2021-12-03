@@ -25,7 +25,7 @@ export const useUbbleLoad = () =>
     staleTime: STALE_TIME_FIRESTORE_UBBLE_LOAD,
   })
 
-export const useSendToUbble = () => {
+export const useIsUnderUbbleLoadThreshold = () => {
   const { data: ubbleLoad = 0 } = useUbbleLoad()
   return isBelowLoad(ubbleLoad)
 }

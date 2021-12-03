@@ -11,7 +11,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
-import { useSendToUbble } from 'libs/firestore/ubbleLoad'
+import { useIsUnderUbbleLoadThreshold } from 'libs/firestore/ubbleLoad'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -64,10 +64,10 @@ const useNavigateToNextSubscriptionStep = () => {
 }
 
 const useRedirectToUbble = () => {
-  const underLoad = useSendToUbble()
+  const isUnderUbbleLoadThreshold = useIsUnderUbbleLoadThreshold()
   const { data: user } = useUserProfileInfo()
   // TODO(antoinewg): use EligibilityCheckMethods
   const ubbleAllowed = ((user?.allowedEligibilityCheckMethods || []) as string[]).includes('ubble')
 
-  return underLoad && ubbleAllowed
+  return isUnderUbbleLoadThreshold && ubbleAllowed
 }

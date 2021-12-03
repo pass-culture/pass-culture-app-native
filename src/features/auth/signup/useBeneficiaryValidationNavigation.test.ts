@@ -17,7 +17,7 @@ jest.mock('features/navigation/helpers')
 jest.mock('features/auth/settings')
 jest.mock('features/home/api')
 jest.mock('features/profile/utils')
-jest.mock('libs/firestore/ubbleLoad', () => ({ useSendToUbble: jest.fn(() => true) }))
+jest.mock('libs/firestore/ubbleLoad', () => ({ useIsUnderUbbleLoadThreshold: jest.fn(() => true) }))
 const mockedUseAppSettings = mocked(useAppSettings)
 const mockedUseIsUserUnderage = mocked(useIsUserUnderage)
 
