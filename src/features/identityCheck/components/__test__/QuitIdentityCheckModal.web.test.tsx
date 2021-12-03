@@ -5,7 +5,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { fireEvent, render } from 'tests/utils/web'
 
 jest.mock('features/navigation/helpers')
-const resumeMock = jest.fn()
+const mockHideModal = jest.fn()
 
 describe('<QuitIdentityCheckModal/>', () => {
   it('should not display the modal when visible is false', () => {
@@ -28,7 +28,7 @@ describe('<QuitIdentityCheckModal/>', () => {
     const resumeButton = getByText('Continuer la vérification')
     fireEvent.click(resumeButton)
 
-    expect(resumeMock).toHaveBeenCalled()
+    expect(mockHideModal).toHaveBeenCalled()
   })
 
   it('should go back to homepage when clicking on "Abandonner la vérification"', () => {
@@ -44,7 +44,7 @@ describe('<QuitIdentityCheckModal/>', () => {
 function renderQuitIdentityCheckModal(visible: boolean) {
   const props = {
     visible: visible,
-    resume: resumeMock,
+    hideModal: mockHideModal,
     testIdSuffix: 'quit-identity-check-stepper',
   }
   return render(<QuitIdentityCheckModal {...props} />)

@@ -1,31 +1,62 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 
+import { usePatchProfile } from 'features/identityCheck/api'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckScreen, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import {
+  IdentityCheckRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
+
+type NextScreenOrStep = { screen: IdentityCheckScreen } | { step: IdentityCheckStep } | null
 
 const isIdentityCheckRoute = (name: string): name is IdentityCheckScreen =>
   identityCheckRoutes.map((route) => route.name).includes(name as IdentityCheckScreen)
 
+const getCurrentStep = (steps: StepConfig[], currentRoute: keyof IdentityCheckRootStackParamList) =>
+  steps.find((step) => step.screens.includes(currentRoute)) || null
+
+export const useCurrentIdentityCheckStep = (): IdentityCheckStep | null => {
+  const { name } = useRoute()
+  const steps = useIdentityCheckSteps()
+  const currentRoute = isIdentityCheckRoute(name) ? name : null
+  const currentStep = currentRoute ? getCurrentStep(steps, currentRoute) : null
+  return currentStep ? currentStep.name : null
+}
+
+export const useNextScreenOrStep = (): NextScreenOrStep => {
+  const { name } = useRoute()
+  const steps = useIdentityCheckSteps()
+  const currentRoute = isIdentityCheckRoute(name) ? name : null
+  return getNextScreenOrStep(steps, currentRoute)
+}
+
 export const useIdentityCheckNavigation = (): { navigateToNextScreen: () => void } => {
   const { dispatch } = useIdentityCheckContext()
-  const steps = useIdentityCheckSteps()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { name } = useRoute()
+  const currentStep = useCurrentIdentityCheckStep()
+  const nextScreenOrStep = useNextScreenOrStep()
 
-  const currentRoute = isIdentityCheckRoute(name) ? name : null
-  const nextScreenOrStep = getNextScreenOrStep(steps, currentRoute)
+  const { mutateAsync: patchProfile } = usePatchProfile()
+
+  const saveCheckpoint = async (nextStep: IdentityCheckStep) => {
+    try {
+      if (currentStep === IdentityCheckStep.PROFILE) await patchProfile()
+      dispatch({ type: 'SET_STEP', payload: nextStep })
+    } catch (e) {
+      // do nothing
+    }
+  }
 
   return {
-    navigateToNextScreen: () => {
+    navigateToNextScreen: async () => {
       if (!nextScreenOrStep) return
       if ('screen' in nextScreenOrStep) {
         navigate(nextScreenOrStep.screen)
       } else if ('step' in nextScreenOrStep) {
-        // In this case, we just redirect to the stepper screen
-        dispatch({ type: 'SET_STEP', payload: nextScreenOrStep.step })
+        await saveCheckpoint(nextScreenOrStep.step)
         navigate('IdentityCheck')
       }
     },
@@ -35,9 +66,9 @@ export const useIdentityCheckNavigation = (): { navigateToNextScreen: () => void
 export const getNextScreenOrStep = (
   steps: StepConfig[],
   currentRoute: IdentityCheckScreen | null
-): { screen: IdentityCheckScreen } | { step: IdentityCheckStep } | null => {
+): NextScreenOrStep => {
   if (!currentRoute) return null
-  const currentStep = steps.find((step) => step.screens.includes(currentRoute))
+  const currentStep = getCurrentStep(steps, currentRoute)
   if (!currentStep) return null
 
   // Step is not completed

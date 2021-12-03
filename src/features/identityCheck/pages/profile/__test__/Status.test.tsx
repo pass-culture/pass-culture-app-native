@@ -1,4 +1,5 @@
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { ActivityEnum } from 'api/gen'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
@@ -41,12 +42,13 @@ describe('<Status/>', () => {
     expect(getByText('Collégien')).toBeTruthy()
   })
 
-  it('should navigate to next screen on press "Continuer"', () => {
+  it('should navigate to next screen on press "Continuer"', async () => {
     const { getByText } = render(<Status />)
 
     fireEvent.press(getByText(ActivityEnum.Tudiant))
     fireEvent.press(getByText('Continuer'))
-
-    expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
+    await waitForExpect(() => {
+      expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
+    })
   })
 })
