@@ -35,22 +35,22 @@ StyledInputContainer.defaultProps = defaultProps
 const StyledView = styled.View<{
   height: Props['inputHeight']
   borderColor: ColorsEnum
-}>((props) => ({
+}>(({ height, borderColor, theme }) => ({
   width: '100%',
-  height: props.height === 'tall' ? getSpacing(12) : getSpacing(10),
+  height: height === 'tall' ? getSpacing(12) : getSpacing(10),
   flexDirection: 'row',
   alignItems: 'center',
   ...padding(1, 4),
   borderRadius: 22,
-  border: `solid 1px ${props.borderColor}`,
-  backgroundColor: ColorsEnum.WHITE,
+  border: `solid 1px ${borderColor}`,
+  backgroundColor: theme.colors.white,
   ...getShadow({
     shadowOffset: {
       width: 0,
       height: 2,
     },
     shadowRadius: 6,
-    shadowColor: ColorsEnum.BLACK,
+    shadowColor: theme.colors.black,
     shadowOpacity: 0.15,
   }),
 }))
