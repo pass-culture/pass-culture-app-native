@@ -18,6 +18,7 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
+    "noUnusedLocals": true,
     "resolveJsonModule": true,
     "target": "es5",
     "skipLibCheck": true,
