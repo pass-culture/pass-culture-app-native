@@ -17,10 +17,14 @@ export function useInitialScreen(): RootScreenNames | undefined {
   const [initialScreen, setInitialScreen] = useSafeState<RootScreenNames | undefined>(undefined)
 
   useEffect(() => {
-    getInitialScreen({ isLoggedIn }).then((screen) => {
-      setInitialScreen(screen)
-      triggerInitialScreenNameAnalytics(screen)
-    })
+    getInitialScreen({ isLoggedIn })
+      .then((screen) => {
+        setInitialScreen(screen)
+        triggerInitialScreenNameAnalytics(screen)
+      })
+      .catch(() => {
+        setInitialScreen('TabNavigator')
+      })
   }, [isLoggedIn])
 
   return initialScreen

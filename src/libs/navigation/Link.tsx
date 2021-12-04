@@ -1,5 +1,4 @@
-import { NavigationAction } from '@react-navigation/core'
-import { Link as DefaultLink } from '@react-navigation/native'
+import { NavigationAction, Link as DefaultLink } from '@react-navigation/native'
 import React from 'react'
 import { GestureResponderEvent, TextProps } from 'react-native'
 
