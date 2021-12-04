@@ -6,7 +6,7 @@ import {
   FavoritesContext as FavoritesContextType,
 } from 'features/favorites/pages/reducer'
 
-export const FavoritesContext = React.createContext<FavoritesContextType | null>(null)
+const FavoritesContext = React.createContext<FavoritesContextType | null>(null)
 
 export const FavoritesWrapper = memo<{ children: JSX.Element }>(function FavoritesWrapper({
   children,

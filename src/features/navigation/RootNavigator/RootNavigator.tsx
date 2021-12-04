@@ -14,7 +14,7 @@ import { Header } from './Header/Header'
 import { RootScreens } from './screens'
 import { RootStack } from './Stack'
 
-export const RootStackNavigator = withWebWrapper(
+const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
     return (
       <RootStack.Navigator

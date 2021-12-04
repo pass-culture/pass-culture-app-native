@@ -30,7 +30,7 @@ type PartialVenue = Pick<
   'id' | 'venueTypeCode' | 'name' | 'description' | 'publicName'
 >
 
-export const mergeVenueData =
+const mergeVenueData =
   (venue: PartialVenue) =>
   (prevData: VenueResponse | undefined): VenueResponse => ({
     id: venue.id,

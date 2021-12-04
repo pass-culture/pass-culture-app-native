@@ -1,27 +1,21 @@
 import React, { FunctionComponent } from 'react'
-import { ViewStyle, TextStyle, StyleProp, LayoutChangeEvent } from 'react-native'
-// eslint-disable-next-line no-restricted-imports
-import { CSSObject } from 'styled-components'
+import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { ZIndex } from 'ui/theme/layers'
-
-import { isStyleObjectTypeGuard } from '../typeguards'
 
 import { ModalIconProps } from './types'
 
-export type ModalHeaderProps = {
+type ModalHeaderProps = {
   title: string
   boldTitle?: boolean
-  customStyles?: ModalHeaderStyleClasses
   numberOfLines?: number
   onLayout?: (event: LayoutChangeEvent) => void
 } & ModalIconProps
 
 export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
-  customStyles,
   title,
   leftIcon: LeftIcon,
   leftIconAccessibilityLabel = 'leftIconButton',
@@ -40,23 +34,17 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         <LeftHeaderAction
           onPress={onLeftIconPress}
           {...accessibilityAndTestId(leftIconAccessibilityLabel)}>
-          {!!LeftIcon && (
-            <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />
-          )}
+          {!!LeftIcon && <LeftIcon size={32} testID="leftIcon" />}
         </LeftHeaderAction>
       </LeftHeaderActionContainer>
-      <TitleContainer customStyle={customStyles?.container}>
-        <TitleComponent customStyle={customStyles?.title} numberOfLines={numberOfLines}>
-          {title}
-        </TitleComponent>
+      <TitleContainer>
+        <TitleComponent numberOfLines={numberOfLines}>{title}</TitleComponent>
       </TitleContainer>
       <RightHeaderActionContainer>
         <RightHeaderAction
           onPress={onRightIconPress}
           {...accessibilityAndTestId(rightIconAccessibilityLabel)}>
-          {!!RightIcon && (
-            <RightIcon size={32} testID="rightIcon" color={customStyles?.rightIcon?.color} />
-          )}
+          {!!RightIcon && <RightIcon size={32} testID="rightIcon" />}
         </RightHeaderAction>
       </RightHeaderActionContainer>
     </HeaderContainer>
@@ -70,15 +58,14 @@ const HeaderContainer = styled.View({
   justifyContent: 'center',
 })
 
-const TitleContainer = styled.View<{ customStyle: StyleProp<ViewStyle> }>(({ customStyle }) => ({
+const TitleContainer = styled.View({
   justifyContent: 'center',
   alignItems: 'center',
   paddingRight: getSpacing(3),
   paddingLeft: getSpacing(3),
   flex: 0.8,
   zIndex: ZIndex.MODAL_HEADER,
-  ...(isStyleObjectTypeGuard(customStyle) ? (customStyle as Record<string, unknown>) : {}),
-}))
+})
 
 const RightHeaderActionContainer = styled.View({
   flexDirection: 'row',
@@ -95,36 +82,9 @@ const LeftHeaderActionContainer = styled.View({
 })
 
 /* The negative margins are used to compensate for the
-  "empty" space of SVG icons. */
-const RightHeaderAction = styled.TouchableOpacity({
-  marginRight: -5,
-})
+ "empty" space of SVG icons. */
+const LeftHeaderAction = styled.TouchableOpacity({ marginLeft: -5 })
+const RightHeaderAction = styled.TouchableOpacity({ marginRight: -5 })
 
-const LeftHeaderAction = styled.TouchableOpacity({
-  marginLeft: -5,
-})
-
-const titleStyle = ({ customStyle }: { customStyle: StyleProp<ViewStyle> }) =>
-  ({
-    textAlign: 'center',
-    ...(isStyleObjectTypeGuard(customStyle) ? (customStyle as Record<string, unknown>) : {}),
-  } as CSSObject)
-
-const Title = styled(Typo.Title4)<{
-  customStyle: StyleProp<ViewStyle>
-}>(titleStyle)
-
-const BoldTitle = styled(Typo.Title3)<{
-  customStyle: StyleProp<ViewStyle>
-}>(titleStyle)
-
-export interface ModalHeaderStyleClasses {
-  container?: ViewStyle
-  leftIcon?: {
-    color?: ColorsEnum
-  }
-  title?: TextStyle
-  rightIcon?: {
-    color?: ColorsEnum
-  }
-}
+const Title = styled(Typo.Title4)({ textAlign: 'center' })
+const BoldTitle = styled(Typo.Title3)({ textAlign: 'center' })

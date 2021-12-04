@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { ColorsEnum, Typo, getSpacing } from 'ui/theme'
 
-export interface OrSeparatorProps extends ViewProps {
+interface OrSeparatorProps extends ViewProps {
   lineColor?: ColorsEnum
 }
 

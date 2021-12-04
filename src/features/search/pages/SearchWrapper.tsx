@@ -8,14 +8,14 @@ import { SearchState } from 'features/search/types'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { useGeolocation } from 'libs/geolocation'
 
-export interface ISearchContext {
+interface ISearchContext {
   searchState: SearchState
   stagedSearchState: SearchState
   dispatch: React.Dispatch<Action>
   stagedDispatch: React.Dispatch<Action>
 }
 
-export const SearchContext = React.createContext<ISearchContext | null>(null)
+const SearchContext = React.createContext<ISearchContext | null>(null)
 
 export const SearchWrapper = memo(function SearchWrapper({ children }: { children: JSX.Element }) {
   const { position } = useGeolocation()

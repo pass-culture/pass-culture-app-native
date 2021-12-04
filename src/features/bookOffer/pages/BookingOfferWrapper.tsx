@@ -8,13 +8,13 @@ import {
 } from 'features/bookOffer/pages/reducer'
 import { useOffer } from 'features/offer/api/useOffer'
 
-export interface IBookingContext {
+interface IBookingContext {
   bookingState: BookingState
   dismissModal: () => void
   dispatch: React.Dispatch<Action>
 }
 
-export const BookingContext = React.createContext<IBookingContext | null>(null)
+const BookingContext = React.createContext<IBookingContext | null>(null)
 
 interface BookingWrapperProps {
   children: JSX.Element

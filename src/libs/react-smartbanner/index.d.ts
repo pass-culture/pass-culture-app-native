@@ -1,6 +1,6 @@
 import React from 'react'
 
-export interface SmartBannerProperties {
+interface SmartBannerProperties {
   button: string
   daysHidden: number
   ignoreIosVersion?: boolean

@@ -128,7 +128,7 @@ export const buildSearchParams = (
   return publishedAdditionalSearchParams
 }
 
-export const buildSearchVenuesParams = (
+const buildSearchVenuesParams = (
   params: VenuesSearchParameters[]
 ): VenuesSearchParametersFields[] =>
   params

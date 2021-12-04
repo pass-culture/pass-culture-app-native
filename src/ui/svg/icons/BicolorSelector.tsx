@@ -46,6 +46,3 @@ export const BicolorSelector: React.FC<RectangleIconInterface> = ({
     </Svg>
   )
 }
-
-const MemoBicolorSelector = React.memo(BicolorSelector)
-export default MemoBicolorSelector

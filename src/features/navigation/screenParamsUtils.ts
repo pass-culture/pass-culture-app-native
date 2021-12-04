@@ -107,7 +107,7 @@ function parseObject(value?: string) {
 const DATE_ISO8601_FORMAT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{2,6}Z$/
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function parseDataWithISODates(data: any) {
+function parseDataWithISODates(data: any) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function reviver(key: string, value: any) {
     return typeof value === 'string' && DATE_ISO8601_FORMAT.test(value) ? new Date(value) : value

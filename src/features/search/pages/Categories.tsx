@@ -14,9 +14,9 @@ import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-export const DEBOUNCED_CALLBACK = 200
+const DEBOUNCED_CALLBACK = 200
 
-export const useSelectCategory = (callback: () => void) => {
+const useSelectCategory = (callback: () => void) => {
   const { searchState, dispatch } = useStagedSearch()
   const debouncedCallback = useRef(debounce(callback, DEBOUNCED_CALLBACK)).current
 

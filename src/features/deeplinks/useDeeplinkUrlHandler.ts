@@ -10,7 +10,7 @@ import { DeeplinkEvent } from './types'
 
 const DEFAULT_ERROR_MESSAGE = t`Le lien est incorrect`
 
-export function useOnDeeplinkError() {
+function useOnDeeplinkError() {
   const { showInfoSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
   return (errorMessage?: string) => {

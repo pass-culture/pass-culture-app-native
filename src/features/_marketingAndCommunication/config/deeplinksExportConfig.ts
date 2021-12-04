@@ -17,7 +17,7 @@ export type ParamConfig = {
   serverValidator?: (value: string) => Promise<unknown>
 }
 
-export type ScreenConfig<Screen extends ScreensUsedByMarketing> = {
+type ScreenConfig<Screen extends ScreensUsedByMarketing> = {
   [Param in keyof ScreensUsedByMarketingParamsList[Screen]]: ParamConfig
 }
 

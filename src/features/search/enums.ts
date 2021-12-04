@@ -17,7 +17,7 @@ export enum LocationType {
   VENUE = 'VENUE',
 }
 
-export type CategoryCriteria = {
+type CategoryCriteria = {
   [category in SearchGroupNameEnum]: {
     icon: React.FC<BicolorIconInterface>
     facetFilter: SearchGroupNameEnum
@@ -79,12 +79,8 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
   },
 }
 
-export type VenueTypeCriteria = { ALL: { label: string; facetFilter: '' } } & {
+type VenueTypeCriteria = { ALL: { label: string; facetFilter: '' } } & {
   [venueType in VenueTypeCodeKey]: { label: string; facetFilter: VenueTypeCodeKey }
-}
-
-export type OptionalVenueTypeCriteria = Pick<VenueTypeCriteria, 'ALL'> & {
-  [venueType in VenueTypeCodeKey]?: { label: string; facetFilter: VenueTypeCodeKey }
 }
 
 export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {

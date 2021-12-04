@@ -26,7 +26,7 @@ export interface BaseButtonProps {
   style?: StyleProp<ViewStyle>
 }
 
-export interface AppButtonProps extends BaseButtonProps {
+interface AppButtonProps extends BaseButtonProps {
   backgroundColor?: ColorsEnum
   borderColor?: ColorsEnum
   iconColor?: ColorsEnum

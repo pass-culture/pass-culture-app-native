@@ -19,8 +19,8 @@ import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
 
-export const isPlace = (hit: SuggestedPlaceOrVenue): hit is SuggestedPlace => !('venueId' in hit)
-export const isVenue = (hit: SuggestedPlaceOrVenue): hit is SuggestedVenue => 'venueId' in hit
+const isPlace = (hit: SuggestedPlaceOrVenue): hit is SuggestedPlace => !('venueId' in hit)
+const isVenue = (hit: SuggestedPlaceOrVenue): hit is SuggestedVenue => 'venueId' in hit
 
 export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
   const { label, info } = hit

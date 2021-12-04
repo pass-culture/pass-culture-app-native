@@ -76,32 +76,12 @@ export const NotEligibleEduConnect = ({
   )
 }
 
-export const TextContainer = styled.View({
-  maxWidth: getSpacing(88),
-  flexDirection: 'column',
-  alignItems: 'stretch',
-  flex: 1,
-})
-
-type TitleTextProps = TextProps & {
-  fontSize: number
-  textAlign?: Exclude<TextStyle['textAlign'], 'auto'>
-}
-export const Title = styled(Typo.Title1).attrs<TitleTextProps>((props) => props)<TitleTextProps>(
-  ({ theme, fontSize, textAlign }) => ({
-    ...theme.typography.title2,
-    fontSize,
-    alignSelf: 'center',
-    textAlign,
-  })
-)
-
 type TextBodyProps = TextProps & {
   isSmallScreen: boolean
   fontSize: number
   textAlign?: Exclude<TextStyle['textAlign'], 'auto'>
 }
-export const Body = styled(Typo.Body).attrs<TextBodyProps>((props) => props)<TextBodyProps>(
+const Body = styled(Typo.Body).attrs<TextBodyProps>((props) => props)<TextBodyProps>(
   ({ theme, isSmallScreen, fontSize, textAlign }) => ({
     ...theme.typography.body,
     fontSize,

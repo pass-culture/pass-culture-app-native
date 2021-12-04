@@ -12,20 +12,6 @@ export const CONTENT_TYPES = {
   VENUES_SEARCH_PARAMETERS: 'venuesSearchParameters',
 }
 
-export enum ContentTypes {
-  ALGOLIA = 'algolia',
-  ALGOLIA_PARAMETERS = 'algoliaParameters',
-  EXCLUSIVITY = 'exclusivity',
-  DISPLAY = 'display',
-  DISPLAY_PARAMETERS = 'displayParameters',
-  HOMEPAGE_NATIF = 'homepageNatif',
-  INFORMATION = 'information',
-  BUSINESS = 'business',
-  RECOMMENDATION = 'recommendation',
-  VENUES_PLAYLIST = 'venuesPlaylist',
-  VENUES_SEARCH_PARAMETERS = 'venuesSearchParameters',
-}
-
 export type Layout = 'two-items' | 'one-item-medium'
 
 export interface Entry<T, ContentType> {
@@ -34,7 +20,7 @@ export interface Entry<T, ContentType> {
   update(): Promise<Entry<T, ContentType>>
 }
 
-export interface EntryCollectionInclusions<T, ContentType> {
+interface EntryCollectionInclusions<T, ContentType> {
   string: Array<Asset<ContentType> | Entry<T, ContentType>>
 }
 
@@ -49,14 +35,14 @@ export interface EntryFields {
   title: string
 }
 
-export interface ContentfulCollection<T> {
+interface ContentfulCollection<T> {
   total: number
   skip: number
   limit: number
   items: Array<T>
 }
 
-export interface Asset<ContentType> {
+interface Asset<ContentType> {
   sys: Sys<ContentType>
   fields: {
     title: string
@@ -76,7 +62,7 @@ export interface Asset<ContentType> {
   }
 }
 
-export interface Sys<ContentType> {
+interface Sys<ContentType> {
   type: string
   id: string
   createdAt: string
@@ -96,19 +82,19 @@ export interface Sys<ContentType> {
   }
 }
 
-export interface SpaceLink {
+interface SpaceLink {
   type: string
   linkType: string
   id: string
 }
 
-export interface EntryTypeLink {
+interface EntryTypeLink {
   type: string
   linkType: string
   id: string
 }
 
-export interface EntryCollectionError {
+interface EntryCollectionError {
   sys: {
     id: string
     type: string
@@ -146,7 +132,7 @@ export interface Cover {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/cover/fields
-export interface CoverFields {
+interface CoverFields {
   title: string
   image: Image
 }
@@ -238,7 +224,7 @@ export interface ExclusivityFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields
-export interface HomepageNatifFields {
+interface HomepageNatifFields {
   title: string
   modules: HomepageModule[]
 }

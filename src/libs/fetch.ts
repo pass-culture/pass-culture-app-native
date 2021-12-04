@@ -1,5 +1,3 @@
-export type RequestCredentials = 'omit' | 'same-origin' | 'include' | undefined
-
 export type Headers = {
   Accept?: string
   'Content-Type'?: string
@@ -47,7 +45,7 @@ async function makeExternalRequest<ResponseBody>(
   return json
 }
 
-export class NotAuthenticatedError extends Error {
+class NotAuthenticatedError extends Error {
   constructor() {
     super(`Erreur d'authentification`)
   }

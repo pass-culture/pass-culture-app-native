@@ -45,14 +45,14 @@ declare namespace FastImage {
     | FastImage.cacheControl.web
 }
 
-export type FastImageSource = {
+type FastImageSource = {
   uri?: string
   headers?: { [key: string]: string }
   priority?: FastImage.Priority
   cache?: FastImage.Cache
 }
 
-export interface ImageStyle extends FlexStyle, TransformsStyle, ShadowStyleIOS {
+interface ImageStyle extends FlexStyle, TransformsStyle, ShadowStyleIOS {
   backfaceVisibility?: 'visible' | 'hidden'
   borderBottomLeftRadius?: number
   borderBottomRightRadius?: number
@@ -67,21 +67,21 @@ export interface ImageStyle extends FlexStyle, TransformsStyle, ShadowStyleIOS {
   opacity?: number
 }
 
-export interface OnLoadEvent {
+interface OnLoadEvent {
   nativeEvent: {
     width: number
     height: number
   }
 }
 
-export interface OnProgressEvent {
+interface OnProgressEvent {
   nativeEvent: {
     loaded: number
     total: number
   }
 }
 
-export interface FastImageProperties {
+interface FastImageProperties {
   source: FastImageSource | number
   resizeMode?: FastImage.ResizeMode
   fallback?: boolean

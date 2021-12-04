@@ -1,6 +1,6 @@
 import { FavoriteSortBy } from 'features/favorites/pages/FavoritesSorts'
 
-export type FavoritesState = {
+type FavoritesState = {
   sortBy: FavoriteSortBy
 }
 
@@ -12,7 +12,7 @@ export const initialFavoritesState: FavoritesState = {
   sortBy: 'RECENTLY_ADDED',
 }
 
-export type Action = { type: 'INIT' } | { type: 'SET_SORT_BY'; payload: FavoriteSortBy }
+type Action = { type: 'INIT' } | { type: 'SET_SORT_BY'; payload: FavoriteSortBy }
 
 export const favoritesReducer = (state: FavoritesState, action: Action): FavoritesState => {
   switch (action.type) {

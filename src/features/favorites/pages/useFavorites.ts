@@ -16,7 +16,7 @@ export interface FavoriteMutationContext {
   previousFavorites: Array<FavoriteResponse>
 }
 
-export interface RemoveFavorite {
+interface RemoveFavorite {
   onError?: (error?: Error, favoriteId?: number, context?: FavoriteMutationContext) => void
 }
 
@@ -60,7 +60,7 @@ export function useRemoveFavorite({ onError }: RemoveFavorite) {
   })
 }
 
-export interface AddFavorite {
+interface AddFavorite {
   onSuccess?: (data?: FavoriteResponse) => void
   onError?: (
     error: Error | ApiError | undefined,

@@ -5,7 +5,7 @@ import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-export type CustomCheckboxProps = {
+type CustomCheckboxProps = {
   isChecked: boolean
   setIsChecked?: (b: boolean) => void
 }

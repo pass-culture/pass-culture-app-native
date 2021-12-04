@@ -14,7 +14,7 @@ import Package from '../../package.json'
 
 import { DefaultApi } from './gen'
 
-export function navigateToLogin() {
+function navigateToLogin() {
   navigateFromRef('Login')
 }
 

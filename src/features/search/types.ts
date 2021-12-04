@@ -6,7 +6,7 @@ import { SuggestedVenue } from 'libs/venue'
 
 import { LocationType } from './enums'
 
-export interface SelectedDate {
+interface SelectedDate {
   option: DATE_FILTER_OPTIONS
   selectedDate: Date
 }

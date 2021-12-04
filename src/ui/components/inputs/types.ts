@@ -1,13 +1,13 @@
 import { RefAttributes } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-export type CustomTextInputProps = {
+type CustomTextInputProps = {
   isError?: boolean
   label?: string
   RightIcon?: React.FC
 }
 
-export type CustomSearchInputProps = {
+type CustomSearchInputProps = {
   inputHeight?: 'small' | 'tall'
   LeftIcon?: React.FC
   RightIcon?: React.FC

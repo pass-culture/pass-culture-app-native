@@ -10,13 +10,8 @@ import {
   VenuesModule,
 } from 'features/home/components'
 import { HomeHeader } from 'features/home/components/HomeHeader'
-import {
-  BusinessPane,
-  ExclusivityPane,
-  OffersWithCover,
-  ProcessedModule,
-} from 'features/home/contentful'
-import { RecommendationPane } from 'features/home/contentful/moduleTypes'
+import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/contentful'
+import { RecommendationPane, ProcessedModule } from 'features/home/contentful/moduleTypes'
 import { HomeModuleResponse } from 'features/home/pages/useHomeModules'
 import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
