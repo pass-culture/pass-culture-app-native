@@ -268,9 +268,6 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
-          <NavigationButton title={'A/B Testing POC'} onPress={() => navigate('ABTestingPOC')} />
-        </Row>
-        <Row half>
           <NavigationButton
             title={`Distance to Eiffel Tower`}
             onPress={() => {

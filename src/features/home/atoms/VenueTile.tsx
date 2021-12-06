@@ -23,7 +23,7 @@ export interface VenueTileProps {
   userPosition: GeoCoordinates | null
 }
 
-export const mergeVenueData =
+const mergeVenueData =
   (venueHit: VenueHit) =>
   (prevData: VenueResponse | undefined): VenueResponse => ({
     ...venueHit,

@@ -57,16 +57,6 @@ const YEAR_VALIDATOR = {
     parseInt(input) >= MIN_POSSIBLE_YEAR &&
     parseInt(input) <= MAX_POSSIBLE_YEAR,
 }
-export const FULL_DATE_VALIDATOR = {
-  isValid(date: Date, year: number, month: number, day: number) {
-    return (
-      date instanceof Date &&
-      date.getFullYear() == year &&
-      date.getMonth() == month - 1 &&
-      date.getDate() == day
-    )
-  },
-}
 
 type DateInputLabelProps = {
   value: string
@@ -76,7 +66,7 @@ type DateInputLabelProps = {
   placeholder: string
   testID: string
 }
-export const DateInputLabel: React.FC<DateInputLabelProps> = ({
+const DateInputLabel: React.FC<DateInputLabelProps> = ({
   placeholder,
   value,
   isValid,
@@ -285,7 +275,7 @@ const Container = styled.View({
   maxWidth: 300,
 })
 type ValidationBarPropsWithoutFocus = Omit<ValidationBarProps, 'onFocus' | 'width'>
-export const ValidationBar = styled.View.attrs<ValidationBarPropsWithoutFocus>(
+const ValidationBar = styled.View.attrs<ValidationBarPropsWithoutFocus>(
   ({ isEmpty, isFocused, isValid }) => {
     if (isValid) {
       return { backgroundColor: ColorsEnum.GREEN_VALID }

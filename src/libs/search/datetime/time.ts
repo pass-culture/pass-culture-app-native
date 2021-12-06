@@ -2,8 +2,8 @@ import { Range } from '../../typesUtils/typeHelpers'
 
 import { DATE, DAYS_IN_A_WEEK, SATURDAY_INDEX_IN_A_WEEK, SUNDAY_INDEX_IN_A_WEEK } from './date'
 
-export const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000
-export const MILLISECONDS_IN_A_SECOND = 1000
+const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000
+const MILLISECONDS_IN_A_SECOND = 1000
 
 const getTimestampFromDate = (date: Date): number => {
   const dateInTimestamp = date.getTime() / MILLISECONDS_IN_A_SECOND

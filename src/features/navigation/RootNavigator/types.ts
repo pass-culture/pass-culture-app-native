@@ -38,7 +38,6 @@ export type IdentityCheckRootStackParamList = {
  */
 export type RootStackParamList = {
   Maintenance: undefined
-  ABTestingPOC: undefined
   AcceptCgu: {
     email: string
     isNewsletterChecked: boolean

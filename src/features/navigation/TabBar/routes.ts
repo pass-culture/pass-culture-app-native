@@ -18,7 +18,7 @@ export const initialRouteName = 'Home'
 
 const Home = withAsyncErrorBoundary(HomeComponent)
 
-export const routes: TabRoute[] = [
+const routes: TabRoute[] = [
   {
     name: 'Home',
     component: Home,
@@ -72,11 +72,12 @@ export const menu: Record<TabRouteName, string> = {
   Profile: t`Profil`,
 }
 
-export const { screensConfig: tabScreensConfig, Screens: TabScreens } = getScreensAndConfig(
+const { screensConfig: tabScreensConfig, Screens: TabScreens } = getScreensAndConfig(
   routes,
   TabStack.Screen
 )
 
+export { TabScreens }
 export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
   initialRouteName,
   screens: tabScreensConfig,

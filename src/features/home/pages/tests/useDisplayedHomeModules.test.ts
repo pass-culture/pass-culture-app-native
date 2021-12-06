@@ -4,9 +4,9 @@ import {
   OffersWithCover,
   BusinessPane,
   ExclusivityPane,
-  ProcessedModule,
   VenuesModule,
 } from 'features/home/contentful'
+import { ProcessedModule } from 'features/home/contentful/moduleTypes'
 import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
 import { offerResponseSnap as offer } from 'features/offer/api/snaps/offerResponseSnap'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'

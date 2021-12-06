@@ -4,7 +4,7 @@ import { AskGeolocPermission } from 'libs/geolocation/types'
 
 import { GeolocPermissionState } from './enums'
 
-export const requestGeolocPermissionSystem = async () => {
+const requestGeolocPermissionSystem = async () => {
   const permissionValue = await Geolocation.requestAuthorization('whenInUse')
   // Corresponding user response: Allow while using app
   if (permissionValue === 'granted') return GeolocPermissionState.GRANTED

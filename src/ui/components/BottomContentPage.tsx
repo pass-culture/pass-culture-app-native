@@ -120,7 +120,7 @@ export const BottomCardContentContainer = styled.View({
 })
 
 const SCALE_HEIGHT_RATIO = 1.75
-export const BottomContentPageBackground = styled(Background).attrs(
+const BottomContentPageBackground = styled(Background).attrs(
   ({ theme: { showTabBar, bottomContentPage } }) => ({
     height: showTabBar
       ? undefined

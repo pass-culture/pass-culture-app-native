@@ -4,9 +4,9 @@ import {
   ExclusivityPane,
   Offers,
   OffersWithCover,
-  ProcessedModule,
   VenuesModule,
 } from 'features/home/contentful'
+import { ProcessedModule } from 'features/home/contentful/moduleTypes'
 import { HomeVenuesModuleResponse } from 'features/home/pages/useHomeVenueModules'
 import { isArrayOfOfferTypeguard, isArrayOfVenuesTypeguard } from 'features/home/typeguards'
 import { GeoCoordinates } from 'libs/geolocation'

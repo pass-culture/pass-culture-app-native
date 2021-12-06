@@ -12,7 +12,7 @@ import { EditPen } from 'ui/svg/icons/EditPen'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo, getSpacing } from 'ui/theme'
 
-export interface FastEduconnectConnectionRequestModalProps {
+interface FastEduconnectConnectionRequestModalProps {
   visible: boolean
   hideModal: () => void
 }

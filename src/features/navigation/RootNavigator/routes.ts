@@ -33,7 +33,6 @@ import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
-import { ABTestingPOC } from 'features/cheatcodes/pages/ABTestingPOC/ABTestingPOC'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
@@ -70,8 +69,6 @@ import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { Venue } from 'features/venue'
 
 import { Route } from './types'
-
-export const initialRouteName = 'TabNavigator'
 
 export const routes: Route[] = [
   ...idCheckRoutes,
@@ -139,7 +136,6 @@ export const routes: Route[] = [
     path: '*',
     options: { title: t`Page introuvable` },
   },
-  { name: 'ABTestingPOC', component: ABTestingPOC, path: 'abtesting' },
   {
     name: 'AcceptCgu',
     component: AcceptCgu,

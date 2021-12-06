@@ -17,7 +17,7 @@ import {
   RequestGeolocPermissionParams,
 } from './types'
 
-export const GeolocationContext = React.createContext<IGeolocationContext>({
+const GeolocationContext = React.createContext<IGeolocationContext>({
   position: null,
   positionError: null,
   permissionState: GeolocPermissionState.DENIED,

@@ -11,7 +11,7 @@ interface BackgroundProps {
   height?: string | number
 }
 
-export function NotMemoizedBackground({ width = '100%', height = '100%' }: BackgroundProps) {
+function NotMemoizedBackground({ width = '100%', height = '100%' }: BackgroundProps) {
   return (
     <BackgroundContainer height={height} width={width}>
       <BackgroundSvg height={height} width={width} />

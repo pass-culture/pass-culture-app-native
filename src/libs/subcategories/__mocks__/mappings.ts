@@ -26,7 +26,7 @@ export const useCategoryIdMapping = () => {
   return mapping
 }
 
-export const useHomeLabelMapping = () => {
+const useHomeLabelMapping = () => {
   const mapping = {} as HomeLabelMapping
   homepageLabels.forEach((curr) => {
     mapping[curr.name] = curr.value || null

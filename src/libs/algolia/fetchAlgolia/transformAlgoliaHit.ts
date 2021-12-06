@@ -15,7 +15,7 @@ type Offer = AlgoliaHit['offer']
 // To follow good frontend practices (see https://frontstuff.io/how-to-handle-monetary-values-in-javascript)
 // we convert all prices in Algolia to cents, use cents in the frontend code,
 // and when we display the prices to the user, we format the price knowing that there are cents.
-export const convertAlgoliaOfferToCents = <T extends Offer>(offer: T): T => ({
+const convertAlgoliaOfferToCents = <T extends Offer>(offer: T): T => ({
   ...offer,
   prices: offer.prices ? offer.prices.map(convertEuroToCents) : undefined,
 })
@@ -34,7 +34,7 @@ export const parseThumbUrl = (
 // The _geoloc is hardcoded for digital offers (without position) so that the results appear in the Search:
 // original PR: https://github.com/pass-culture/pass-culture-api/pull/1334
 // Here we dehardcode those coordinates, so that we don't show a wrong distance to the user.
-export const parseGeoloc = (hit: AlgoliaHit): AlgoliaHit['_geoloc'] =>
+const parseGeoloc = (hit: AlgoliaHit): AlgoliaHit['_geoloc'] =>
   hit.offer.isDigital ? { lat: null, lng: null } : hit._geoloc
 
 // We don't want to display offers without image nor subcategoryId

@@ -11,7 +11,7 @@ interface UseKeyboardReturnData {
   }
 }
 
-export interface UseKeyboardEventsConfig {
+interface UseKeyboardEventsConfig {
   onBeforeShow: (keyboard: UseKeyboardReturnData) => void
   onBeforeHide: (keyboard: UseKeyboardReturnData) => void
 }

@@ -3,7 +3,7 @@ import Svg, { Path, G, Stop, LinearGradient, Use } from 'react-native-svg'
 
 import { ColorsEnum } from 'ui/theme'
 
-export const ticketFooterRatio = 303 / 38
+const ticketFooterRatio = 303 / 38
 const viewBox = '0 0 303 38'
 
 interface Props {

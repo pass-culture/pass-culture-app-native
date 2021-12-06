@@ -18,7 +18,7 @@ const isIdentityCheckRoute = (name: string): name is IdentityCheckScreen =>
 const getCurrentStep = (steps: StepConfig[], currentRoute: keyof IdentityCheckRootStackParamList) =>
   steps.find((step) => step.screens.includes(currentRoute)) || null
 
-export const useCurrentIdentityCheckStep = (): IdentityCheckStep | null => {
+const useCurrentIdentityCheckStep = (): IdentityCheckStep | null => {
   const { name } = useRoute()
   const steps = useIdentityCheckSteps()
   const currentRoute = isIdentityCheckRoute(name) ? name : null
@@ -26,7 +26,7 @@ export const useCurrentIdentityCheckStep = (): IdentityCheckStep | null => {
   return currentStep ? currentStep.name : null
 }
 
-export const useNextScreenOrStep = (): NextScreenOrStep => {
+const useNextScreenOrStep = (): NextScreenOrStep => {
   const { name } = useRoute()
   const steps = useIdentityCheckSteps()
   const currentRoute = isIdentityCheckRoute(name) ? name : null

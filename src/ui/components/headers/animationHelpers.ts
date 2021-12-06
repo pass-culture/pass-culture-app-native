@@ -3,7 +3,7 @@ import { Animated, Easing, NativeScrollEvent, NativeSyntheticEvent } from 'react
 
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
-export const HEIGHT_END_OF_TRANSITION = getSpacing(20)
+const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 
 const interpolationConfig = {
   inputRange: [0, HEIGHT_END_OF_TRANSITION],

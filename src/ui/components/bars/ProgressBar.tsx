@@ -7,7 +7,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 import { ZIndex } from 'ui/theme/layers'
 
-export interface ProgressBarProps {
+interface ProgressBarProps {
   progress: number
   color: ColorsEnum
   icon: FunctionComponent<IconInterface>

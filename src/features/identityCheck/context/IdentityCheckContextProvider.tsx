@@ -6,11 +6,11 @@ import {
 } from 'features/identityCheck/context/reducer'
 import { Action, IdentityCheckState } from 'features/identityCheck/context/types'
 
-export interface IIdentityCheckContext extends IdentityCheckState {
+interface IIdentityCheckContext extends IdentityCheckState {
   dispatch: React.Dispatch<Action>
 }
 
-export const IdentityCheckContext = React.createContext<IIdentityCheckContext | null>(null)
+const IdentityCheckContext = React.createContext<IIdentityCheckContext | null>(null)
 
 export const IdentityCheckContextProvider = ({ children }: { children: JSX.Element }) => {
   const [identityCheckState, dispatch] = useReducer(identityCheckReducer, initialIdentityCheckState)

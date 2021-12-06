@@ -37,7 +37,7 @@ export const useCategoryIdMapping = (): CategoryIdMapping => {
   }, [subcategories.length])
 }
 
-export const useHomeLabelMapping = (): HomeLabelMapping => {
+const useHomeLabelMapping = (): HomeLabelMapping => {
   const { data } = useSubcategories()
   const { homepageLabels = [] } = data || {}
 

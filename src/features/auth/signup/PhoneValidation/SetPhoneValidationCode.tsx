@@ -45,19 +45,9 @@ const AGENT_TYPE = Platform.select({
   web: isDesktopDeviceDetectOnWeb ? 'browser_computer' : 'browser_mobile',
 })
 
-export interface SetPhoneValidationCodeModalProps {
-  visible: boolean
-  dismissModal: () => void
-  phoneNumber: string
-  onGoBack: () => void
-}
-
 const TIMER = 60
 
-export type SetPhoneValidationCodeProps = StackScreenProps<
-  RootStackParamList,
-  'SetPhoneValidationCode'
->
+type SetPhoneValidationCodeProps = StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
 
 export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeComponent({
   route,
