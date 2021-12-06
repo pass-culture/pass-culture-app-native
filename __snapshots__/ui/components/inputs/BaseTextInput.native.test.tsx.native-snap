@@ -2,6 +2,7 @@
 
 exports[`<BaseTextInput /> should render correctly 1`] = `
 <TextInput
+  editable={true}
   placeholder="placeholder"
   placeholderTextColor="#626262"
   style={

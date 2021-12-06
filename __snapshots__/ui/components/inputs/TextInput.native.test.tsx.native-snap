@@ -4,6 +4,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
 <View
   borderColor="#c7c7cc"
   height="small"
+  isInputDisabled={false}
   style={
     Array [
       Object {
@@ -63,11 +64,12 @@ exports[`<TextInput /> should render correctly when focused 1`] = `
 - First value
 + Second value
 
-@@ -1,14 +1,14 @@
+@@ -1,15 +1,15 @@
   <View
 -   borderColor=\\"#c7c7cc\\"
 +   borderColor=\\"#eb0055\\"
     height=\\"small\\"
+    isInputDisabled={false}
     style={
       Array [
         Object {
@@ -87,11 +89,12 @@ exports[`<TextInput /> should render correctly when in error 1`] = `
 - First value
 + Second value
 
-@@ -1,14 +1,14 @@
+@@ -1,15 +1,15 @@
   <View
 -   borderColor=\\"#c7c7cc\\"
 +   borderColor=\\"#b60025\\"
     height=\\"small\\"
+    isInputDisabled={false}
     style={
       Array [
         Object {
