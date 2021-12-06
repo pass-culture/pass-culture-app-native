@@ -5,6 +5,7 @@ export type CustomTextInputProps = {
   isError?: boolean
   label?: string
   RightIcon?: React.FC
+  disabled?: boolean
 }
 
 export type CustomSearchInputProps = {
@@ -14,11 +15,16 @@ export type CustomSearchInputProps = {
 }
 
 export type RNTextInputProps = Pick<
-  React.ComponentProps<typeof RNTextInput>,
+  React.ComponentProps<typeof RNTextInput> & { disabled?: boolean },
+  /* react-native-web's TextInput supports the prop "disabled"
+   * which adds the web property "disabled" (not focusable) to the input
+   * https://github.com/necolas/react-native-web/commit/fc033a3161be76224d120dec7aab7009e9414fa7 */
   | 'autoCapitalize'
   | 'autoCorrect'
   | 'autoFocus'
   | 'blurOnSubmit'
+  | 'editable'
+  | 'disabled'
   | 'keyboardType'
   | 'maxLength'
   | 'onBlur'
@@ -44,7 +50,12 @@ export type TextInputProps = CustomTextInputProps & RNTextInputProps
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
 export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
-  return { isError: props.isError, label: props.label, RightIcon: props.RightIcon }
+  return {
+    isError: props.isError,
+    label: props.label,
+    RightIcon: props.RightIcon,
+    disabled: props.disabled,
+  }
 }
 
 export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
@@ -58,6 +69,8 @@ export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
     autoCorrect: props.autoCorrect,
     autoFocus: props.autoFocus,
     blurOnSubmit: props.blurOnSubmit,
+    disabled: props.disabled,
+    editable: props.editable,
     keyboardType: props.keyboardType,
     maxLength: props.maxLength,
     onBlur: props.onBlur,

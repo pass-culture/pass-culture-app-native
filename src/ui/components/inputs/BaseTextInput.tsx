@@ -47,6 +47,7 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
 
   return (
     <StyledTextInput
+      editable={!props.disabled}
       {...restOfProps}
       testID={props.testID}
       placeholder={restOfProps.placeholder || ''}

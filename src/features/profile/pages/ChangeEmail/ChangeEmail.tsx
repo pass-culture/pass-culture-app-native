@@ -117,7 +117,12 @@ export function ChangeEmail() {
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
           <InputContainer>
-            <EmailInput label={t`Nouvel e-mail`} email={email} onEmailChange={setEmail} />
+            <EmailInput
+              label={t`Nouvel e-mail`}
+              email={email}
+              onEmailChange={setEmail}
+              disabled={hasCurrentEmailChange}
+            />
             {!!emailErrorMessage && (
               <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={2} />
             )}
@@ -130,6 +135,7 @@ export function ChangeEmail() {
               onChangeText={setPassword}
               placeholder={t`Ton mot de passe`}
               textContentType="password"
+              disabled={hasCurrentEmailChange}
             />
             {!!passwordErrorMessage && (
               <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />
