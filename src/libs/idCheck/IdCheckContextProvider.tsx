@@ -8,11 +8,17 @@ import { env } from 'libs/environment'
 import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
 import { eventMonitoring } from 'libs/monitoring'
 
+const silencedCaptureMessage = () => {
+  // do nothing to silence sentry message
+  // use firebase if needed.
+}
+
 export const IdCheckContextProvider = memo(function IdCheckContextProvider({
   children,
 }: {
   children: JSX.Element | JSX.Element[]
 }) {
+  const errorMonitoringIdCheck = { ...eventMonitoring, captureMessage: silencedCaptureMessage }
   return (
     <IdCheckContextProviderDefault
       jouveApiBaseUrl={env.ID_CHECK_API_URL}
@@ -22,7 +28,7 @@ export const IdCheckContextProvider = memo(function IdCheckContextProvider({
       cguDocUrl={env.DOC_CGU_URL}
       dmsFrenchCitizenshipUrl={env.DMS_FRENCH_CITIZEN_URL}
       dmsForeignCitizenshipUrl={env.DMS_FOREIGN_CITIZEN_URL}
-      errorMonitoring={eventMonitoring}
+      errorMonitoring={errorMonitoringIdCheck}
       analytics={idCheckAnalytics}
       retentionClient={idCheckRetentionClient}
       requestLicenceToken={() => api.getnativev1idCheckToken()}
