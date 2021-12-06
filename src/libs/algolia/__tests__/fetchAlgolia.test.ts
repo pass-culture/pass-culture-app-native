@@ -79,6 +79,7 @@ describe('fetchAlgolia', () => {
       numericFilters: [['offer.prices: 0 TO 300']],
     })
   })
+
   describe('underage', () => {
     it('should fetch with provided query and default underage filter', () => {
       const query = 'searched query'
@@ -129,43 +130,6 @@ describe('fetchAlgolia', () => {
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
-        attributesToRetrieve,
-      })
-    })
-  })
-
-  describe('[fetchAlgoliaHits]', () => {
-    it('should fetch with default search params', () => {
-      const queryIds = ['id1', 'id2']
-
-      fetchAlgoliaHits(queryIds, false)
-
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
-      expect(getObjects).toHaveBeenCalledWith(queryIds, {
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve,
-      })
-    })
-
-    it('should fetch with udnerage search params', () => {
-      const queryIds = ['id1', 'id2']
-      fetchAlgoliaHits(queryIds, true)
-
-      expect(getObjects).toHaveBeenCalledWith(queryIds, {
-        facetFilters: [
-          ['offer.subcategoryId:-JEU_EN_LIGNE'],
-          ['offer.subcategoryId:-JEU_SUPPORT_PHYSIQUE'],
-          ['offer.subcategoryId:-ABO_JEU_VIDEO'],
-          ['offer.subcategoryId:-ABO_LUDOTHEQUE'],
-          ['offer.isEducational:false'],
-          [
-            'offer.isDigital:false',
-            'offer.searchGroupName:PRESSE',
-            'offer.subcategoryId:LIVRE_NUMERIQUE',
-            'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
-          ],
-        ],
-        numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
     })
@@ -1197,6 +1161,43 @@ describe('fetchAlgolia', () => {
         attributesToHighlight: [],
         attributesToRetrieve,
       })
+    })
+  })
+})
+
+describe('fetchAlgoliaHits', () => {
+  it('should fetch with default search params', () => {
+    const queryIds = ['id1', 'id2']
+
+    fetchAlgoliaHits(queryIds, false)
+
+    expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
+    expect(getObjects).toHaveBeenCalledWith(queryIds, {
+      numericFilters: [['offer.prices: 0 TO 300']],
+      attributesToRetrieve,
+    })
+  })
+
+  it('should fetch with udnerage search params', () => {
+    const queryIds = ['id1', 'id2']
+    fetchAlgoliaHits(queryIds, true)
+
+    expect(getObjects).toHaveBeenCalledWith(queryIds, {
+      facetFilters: [
+        ['offer.subcategoryId:-JEU_EN_LIGNE'],
+        ['offer.subcategoryId:-JEU_SUPPORT_PHYSIQUE'],
+        ['offer.subcategoryId:-ABO_JEU_VIDEO'],
+        ['offer.subcategoryId:-ABO_LUDOTHEQUE'],
+        ['offer.isEducational:false'],
+        [
+          'offer.isDigital:false',
+          'offer.searchGroupName:PRESSE',
+          'offer.subcategoryId:LIVRE_NUMERIQUE',
+          'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
+        ],
+      ],
+      numericFilters: [['offer.prices: 0 TO 300']],
+      attributesToRetrieve,
     })
   })
 })
