@@ -82,12 +82,12 @@ export const IdentityCheckEduConnectForm = () => {
               <IdCardMagnifyingGlassIcon size={getSpacing(47)} />
             </Center>
 
-            <Typo.ButtonText color={ColorsEnum.GREY_DARK}>{t`Identification`}</Typo.ButtonText>
+            <JustifiedHeader color={ColorsEnum.GREY_DARK}>{t`Identification`}</JustifiedHeader>
             <Spacer.Column numberOfSpaces={4} />
 
-            <Typo.Body color={ColorsEnum.GREY_DARK}>
+            <JustifiedText color={ColorsEnum.GREY_DARK}>
               {t`Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !`}
-            </Typo.Body>
+            </JustifiedText>
 
             <Spacer.Column numberOfSpaces={8} />
           </React.Fragment>
@@ -103,4 +103,12 @@ export const IdentityCheckEduConnectForm = () => {
 
 const Center = styled.View({
   alignSelf: 'center',
+})
+
+const JustifiedText = styled(Typo.Body)({
+  textAlign: 'center',
+})
+
+const JustifiedHeader = styled(Typo.ButtonText)({
+  textAlign: 'center',
 })
