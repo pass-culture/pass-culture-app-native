@@ -154,6 +154,7 @@ Array [
             <View
               borderColor="#c7c7cc"
               height="small"
+              isInputDisabled={false}
               style={
                 Array [
                   Object {
@@ -183,6 +184,7 @@ Array [
             >
               <TextInput
                 autoCapitalize="none"
+                disabled={false}
                 keyboardType="email-address"
                 maxLength={120}
                 onBlur={[Function]}
@@ -276,6 +278,7 @@ Array [
             <View
               borderColor="#c7c7cc"
               height="small"
+              isInputDisabled={false}
               style={
                 Array [
                   Object {
@@ -306,6 +309,658 @@ Array [
               <TextInput
                 accessibilityLabel="Entrée pour le mot de passe"
                 accessible={true}
+                disabled={false}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="Ton mot de passe"
+                placeholderTextColor="#626262"
+                secureTextEntry={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0.9,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+                testID="Entrée pour le mot de passe"
+                textContentType="password"
+                value=""
+              />
+              <View
+                accessibilityLabel="Basculer l'affichage du mot de passe"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 0.1,
+                    "flexShrink": 1,
+                    "maxWidth": 60,
+                    "opacity": 1,
+                  }
+                }
+                testID="Basculer l'affichage du mot de passe"
+              >
+                <View
+                  height="100%"
+                  testID="eye-slash"
+                  width="100%"
+                >
+                  <Text>
+                    eye-slash-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          flex={1}
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          paddingBottom={16}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "paddingBottom": 16,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Enregistrer"
+            accessible={true}
+            collapsable={false}
+            focusable={false}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#f5f5f5",
+                "borderRadius": 24,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              }
+            }
+            testID="Enregistrer"
+          >
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 5,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+              textColor="#626262"
+            >
+              Enregistrer
+            </Text>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "height": 24,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#eb0055",
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+        ]
+      }
+    >
+      <View
+        positionInHeader="left"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={32}
+            testID="icon-back"
+            width={32}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+      <Text
+        color="#ffffff"
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Modifier mon e-mail
+      </Text>
+      <View
+        positionInHeader="right"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;
+
+exports[`<ChangeEmail/> should render correctly when an email change is already in progress 1`] = `
+Array [
+  <View
+    customHeight={16}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "backgroundColor": "#ffffff",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "justifyContent": "space-between",
+        "paddingBottom": 0,
+      }
+    }
+    keyboardShouldPersistTaps="handled"
+    style={
+      Array [
+        Object {
+          "paddingHorizontal": 20,
+        },
+      ]
+    }
+  >
+    <View>
+      <View
+        numberOfSpaces={18}
+        style={
+          Array [
+            Object {
+              "height": 72,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#f5f5f5",
+              "borderRadius": 8,
+              "flexDirection": "row",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            },
+          ]
+        }
+      >
+        <View
+          height={32}
+          width={32}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+              },
+            ]
+          }
+        >
+          Une demande a été envoyée à l’adresse : toto@gmail.com. Tu as 24h pour valider ta nouvelle adresse. Pense à vérifier tes spams.
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        color="#626262"
+        style={
+          Array [
+            Object {
+              "color": "#626262",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification.
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#f5f5f5",
+              "height": 1,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "flex-start",
+                "display": "flex",
+                "flexDirection": "column",
+                "maxWidth": 500,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "maxWidth": 500,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Nouvel e-mail
+            </Text>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              borderColor="#c7c7cc"
+              height="small"
+              isInputDisabled={true}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#f5f5f5",
+                    "borderRadius": 22,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 4,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 4,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <TextInput
+                autoCapitalize="none"
+                disabled={true}
+                keyboardType="email-address"
+                maxLength={120}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="tonadresse@email.com"
+                placeholderTextColor="#626262"
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                  ]
+                }
+                textContentType="emailAddress"
+                value=""
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "flex-start",
+                "display": "flex",
+                "flexDirection": "column",
+                "maxWidth": 500,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "maxWidth": 500,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Mot de passe
+            </Text>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              borderColor="#c7c7cc"
+              height="small"
+              isInputDisabled={true}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#f5f5f5",
+                    "borderRadius": 22,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "paddingBottom": 4,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 4,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <TextInput
+                accessibilityLabel="Entrée pour le mot de passe"
+                accessible={true}
+                disabled={true}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
