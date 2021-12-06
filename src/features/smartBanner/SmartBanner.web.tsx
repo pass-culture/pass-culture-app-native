@@ -19,8 +19,8 @@ const buttonText = t`Voir`
 export const SmartBanner = () => (
   <ReactSmartBanner
     button={buttonText}
-    daysHidden={1}
-    ignoreIosVersion
+    daysHidden={15}
+    daysReminder={90}
     position="top"
     price={price}
     storeText={storeText}

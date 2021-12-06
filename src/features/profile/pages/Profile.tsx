@@ -11,6 +11,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
+import { SmartBanner } from 'features/smartBanner/SmartBanner'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
@@ -107,6 +108,7 @@ export const Profile: React.FC = () => {
       onScroll={onScroll}
       scrollEventThrottle={400}
       testID="profile-scrollview">
+      <SmartBanner />
       <ProfileHeader user={user} />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
