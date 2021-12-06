@@ -114,6 +114,7 @@ exports[`Search component should render correctly 1`] = `
         accessibilityLabel="Barre de recherche des offres"
         accessible={true}
         autoCorrect={false}
+        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}

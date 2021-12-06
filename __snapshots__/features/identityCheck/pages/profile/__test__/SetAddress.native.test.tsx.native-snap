@@ -237,6 +237,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
               }
             >
               <TextInput
+                editable={true}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}

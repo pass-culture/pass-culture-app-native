@@ -185,6 +185,7 @@ Array [
               <TextInput
                 autoCapitalize="none"
                 disabled={false}
+                editable={true}
                 keyboardType="email-address"
                 maxLength={120}
                 onBlur={[Function]}
@@ -310,6 +311,7 @@ Array [
                 accessibilityLabel="Entrée pour le mot de passe"
                 accessible={true}
                 disabled={false}
+                editable={true}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
@@ -846,6 +848,7 @@ Array [
               <TextInput
                 autoCapitalize="none"
                 disabled={true}
+                editable={false}
                 keyboardType="email-address"
                 maxLength={120}
                 onBlur={[Function]}
@@ -961,6 +964,7 @@ Array [
                 accessibilityLabel="Entrée pour le mot de passe"
                 accessible={true}
                 disabled={true}
+                editable={false}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}

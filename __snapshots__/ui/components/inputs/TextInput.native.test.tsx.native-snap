@@ -33,6 +33,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
   }
 >
   <TextInput
+    editable={true}
     onBlur={[Function]}
     onChangeText={[Function]}
     onFocus={[Function]}
