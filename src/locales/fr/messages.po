@@ -1282,10 +1282,6 @@ msgstr "Je suis de nationalité étrangère"
 msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
 msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
 
-#: src/features/auth/signup/SetEmail/SetEmail.tsx
-msgid "Je veux recevoir des recommandations personnalisées de la part du pass Culture."
-msgstr "Je veux recevoir des recommandations personnalisées de la part du pass Culture."
-
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture."
 msgstr "Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture."
@@ -1301,6 +1297,10 @@ msgstr "Jeux"
 #: src/libs/parsers/venueType.ts
 msgid "Jeux / Jeux vidéos"
 msgstr "Jeux / Jeux vidéos"
+
+#: src/features/auth/signup/SetEmail/SetEmail.tsx
+msgid "J’accepte de recevoir les e-mails du pass Culture."
+msgstr "J’accepte de recevoir les e-mails du pass Culture."
 
 #: src/libs/keychain.ts
 #: src/libs/keychain.ts
@@ -2736,6 +2736,10 @@ msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus ta
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
+
+#: src/features/identityCheck/api.ts
+msgid "Une erreur est survenue lors de la mise à jour de votre profil"
+msgstr "Une erreur est survenue lors de la mise à jour de votre profil"
 
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 msgid "Une erreur s'est produite pendant le chargement."

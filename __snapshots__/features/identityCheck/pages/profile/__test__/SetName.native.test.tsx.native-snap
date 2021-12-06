@@ -271,6 +271,7 @@ exports[`<SetName/> should render correctly 1`] = `
                       },
                     ]
                   }
+                  textContentType="username"
                   value=""
                 />
               </View>
@@ -361,6 +362,7 @@ exports[`<SetName/> should render correctly 1`] = `
                       },
                     ]
                   }
+                  textContentType="username"
                   value=""
                 />
               </View>

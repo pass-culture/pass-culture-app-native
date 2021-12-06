@@ -40,6 +40,7 @@ export const SetName = () => {
             autoFocus={true}
             onChangeText={setFirstName}
             placeholder={t`Ton prénom`}
+            textContentType="username"
             {...accessibilityAndTestId(t`Entrée pour le prénom`)}
           />
           <InputError
@@ -53,6 +54,7 @@ export const SetName = () => {
             value={lastName}
             onChangeText={setLastName}
             placeholder={t`Ton nom`}
+            textContentType="username"
             {...accessibilityAndTestId(t`Entrée pour le nom`)}
           />
           <InputError
