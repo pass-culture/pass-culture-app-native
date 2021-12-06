@@ -49,7 +49,6 @@ jest.mock('algoliasearch')
 
 const mockInitIndex = algoliasearch('', '').initIndex
 const search = mockInitIndex('').search as jest.Mock
-const getObjects = mockInitIndex('').getObjects as jest.Mock
 
 const baseParams = { locationFilter: { locationType: LocationType.EVERYWHERE } }
 
@@ -1172,9 +1171,13 @@ describe('fetchAlgoliaHits', () => {
     fetchAlgoliaHits(queryIds, false)
 
     expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
-    expect(getObjects).toHaveBeenCalledWith(queryIds, {
+    expect(search).toHaveBeenCalledWith('', {
+      facetFilters: [['objectID:id1', 'objectID:id2']],
       numericFilters: [['offer.prices: 0 TO 300']],
       attributesToRetrieve,
+      attributesToHighlight: [],
+      page: 0,
+      hitsPerPage: 2,
     })
   })
 
@@ -1182,7 +1185,7 @@ describe('fetchAlgoliaHits', () => {
     const queryIds = ['id1', 'id2']
     fetchAlgoliaHits(queryIds, true)
 
-    expect(getObjects).toHaveBeenCalledWith(queryIds, {
+    expect(search).toHaveBeenCalledWith('', {
       facetFilters: [
         ['offer.subcategoryId:-JEU_EN_LIGNE'],
         ['offer.subcategoryId:-JEU_SUPPORT_PHYSIQUE'],
@@ -1195,9 +1198,13 @@ describe('fetchAlgoliaHits', () => {
           'offer.subcategoryId:LIVRE_NUMERIQUE',
           'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
         ],
+        ['objectID:id1', 'objectID:id2'],
       ],
       numericFilters: [['offer.prices: 0 TO 300']],
       attributesToRetrieve,
+      attributesToHighlight: [],
+      page: 0,
+      hitsPerPage: 2,
     })
   })
 })
