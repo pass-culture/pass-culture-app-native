@@ -1,9 +1,14 @@
+import { URL } from 'url'
+
 import React from 'react'
 import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
+import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { navigateToHome } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { Spacer } from 'ui/theme'
 
@@ -15,7 +20,20 @@ export const IdentityCheckWebview: React.FC = () => {
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   function onNavigationStateChange({ url }: { url: string }) {
-    if (url.includes(REDIRECT_URL_UBBLE)) navigateToNextScreen()
+    const parsedUrl = new URL(url)
+    // See https://ubbleai.github.io/developer-documentation/#step-3-manage-user-return
+    const status = parsedUrl.searchParams.get('status')
+    if (status === 'aborted') {
+      analytics.logIdentityCheckAbort({
+        method: IdentityCheckMethod.Ubble,
+        reason: parsedUrl.searchParams.get('return_reason') || null,
+        errorType: parsedUrl.searchParams.get('error_type') || null,
+      })
+      navigateToHome()
+    } else if (url.includes(REDIRECT_URL_UBBLE)) {
+      analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.Ubble })
+      navigateToNextScreen()
+    }
   }
 
   if (!identificationUrl) {
