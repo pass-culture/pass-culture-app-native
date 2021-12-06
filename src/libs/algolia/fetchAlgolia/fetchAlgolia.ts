@@ -2,6 +2,7 @@ import { Hit } from '@algolia/client-search'
 import flatten from 'lodash.flatten'
 
 import { LocationType } from 'features/search/enums'
+import { initialSearchState } from 'features/search/pages/reducer'
 import { Response } from 'features/search/pages/useSearchResults'
 import { PartialSearchState } from 'features/search/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
@@ -37,8 +38,9 @@ const buildSearchParameters = (
     beginningDatetime = null,
     date = null,
     endingDatetime = null,
-    locationFilter = { locationType: LocationType.EVERYWHERE },
+    locationFilter,
     offerCategories = [],
+    objectIds = [],
     offerIsDuo = false,
     offerIsFree = false,
     offerIsNew = false,
@@ -50,13 +52,14 @@ const buildSearchParameters = (
     priceRange = null,
     timeRange = null,
     tags = [],
-  }: Record<string, never> | PartialSearchState,
+  }: PartialSearchState & { objectIds?: string[] },
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean
 ) => ({
   ...buildFacetFilters({
     locationFilter,
     offerCategories,
+    objectIds,
     offerTypes,
     offerIsDuo,
     tags,
@@ -132,14 +135,21 @@ export const fetchAlgoliaHits = async (
   isUserUnderage: boolean
 ): Promise<SearchHit[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
-  const searchParameters = buildSearchParameters({}, null, isUserUnderage)
+  const searchParameters = buildSearchParameters(
+    { ...initialSearchState, hitsPerPage: objectIds.length, objectIds, query: '' },
+    null,
+    isUserUnderage
+  )
 
   try {
-    const response = await index.getObjects<SearchHit>(objectIds, {
+    const response = await index.search<SearchHit>('', {
+      page: 0,
+      hitsPerPage: objectIds.length,
       ...searchParameters,
       attributesToRetrieve,
+      attributesToHighlight: [], // We disable highlighting because we don't need it
     })
-    const hits = response.results.filter(Boolean) as SearchHit[]
+    const hits = response.hits.filter(Boolean) as SearchHit[]
     return hits.filter(({ offer }) => !offer.isEducational)
   } catch (error) {
     captureAlgoliaError(error)

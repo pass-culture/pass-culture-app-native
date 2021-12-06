@@ -23,6 +23,7 @@ const underageFilter = [
 
 export const buildFacetFilters = ({
   locationFilter,
+  objectIds,
   offerCategories,
   offerTypes,
   offerIsDuo,
@@ -31,7 +32,7 @@ export const buildFacetFilters = ({
 }: Pick<
   SearchParametersQuery,
   'locationFilter' | 'offerCategories' | 'offerTypes' | 'offerIsDuo' | 'tags'
-> & { isUserUnderage: boolean }): null | {
+> & { isUserUnderage: boolean; objectIds?: string[] }): null | {
   facetFilters: FiltersArray
 } => {
   if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
@@ -41,6 +42,11 @@ export const buildFacetFilters = ({
   if (offerCategories.length > 0) {
     const categoriesPredicate = buildOfferCategoriesPredicate(offerCategories)
     facetFilters.push(categoriesPredicate)
+  }
+
+  if (objectIds && objectIds.length > 0) {
+    const objectIdsPredicate = buildObjectIdsPredicate(objectIds)
+    facetFilters.push(objectIdsPredicate)
   }
 
   const offerTypesPredicate = buildOfferTypesPredicate(offerTypes)
@@ -64,6 +70,9 @@ export const buildFacetFilters = ({
 
 const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnum[]): string[] =>
   searchGroups.map((searchGroup) => `${FACETS_ENUM.OFFER_SEARCH_GROUP_NAME}:${searchGroup}`)
+
+const buildObjectIdsPredicate = (objectIds: string[]): string[] =>
+  objectIds.map((objectId) => `${FACETS_ENUM.OBJECT_ID}:${objectId}`)
 
 const buildOfferIsDuoPredicate = (offerIsDuo: boolean): string[] | undefined =>
   offerIsDuo ? [`${FACETS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`] : undefined
