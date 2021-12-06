@@ -972,11 +972,40 @@ export interface IdentificationSessionResponse {
      */
     identificationUrl: string;
 }/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum IdentityCheckMethod {
+    Educonnect = 'educonnect',
+    Jouve = 'jouve',
+    Ubble = 'ubble'
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum MaintenancePageType {
+    WithDms = 'with-dms',
+    WithoutDms = 'without-dms'
+}/**
  * 
  * @export
  * @interface NextSubscriptionStepResponse
  */
 export interface NextSubscriptionStepResponse {
+    /**
+     * 
+     * @type {Array<IdentityCheckMethod>}
+     * @memberof NextSubscriptionStepResponse
+     */
+    allowedIdentityCheckMethods: Array<IdentityCheckMethod>;
+    /**
+     * 
+     * @type {MaintenancePageType}
+     * @memberof NextSubscriptionStepResponse
+     */
+    maintenancePageType?: MaintenancePageType | null;
     /**
      * 
      * @type {SubscriptionStep}
