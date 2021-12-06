@@ -125,7 +125,7 @@ const SpacerBetweenHeaderAndContent = styled.View({
 })
 
 const ScrollViewContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
-  flex: 1,
+  width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),
   paddingBottom,
 }))

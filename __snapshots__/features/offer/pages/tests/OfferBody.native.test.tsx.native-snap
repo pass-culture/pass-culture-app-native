@@ -1331,11 +1331,9 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           style={
             Array [
               Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
                 "maxWidth": 480,
                 "paddingBottom": 8,
+                "width": "100%",
               },
             ]
           }

@@ -319,7 +319,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 480px; padding-bottom: 8px;"
+            style="max-width: 480px; padding-bottom: 8px; width: 100%;"
           >
             <div
               class="css-view-1dbjc4n"
