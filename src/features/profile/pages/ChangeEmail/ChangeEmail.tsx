@@ -109,7 +109,7 @@ export function ChangeEmail() {
         <Spacer.Column numberOfSpaces={18} />
         {hasCurrentEmailChange ? (
           <React.Fragment>
-            <AlreadyChangedEmailDisclaimer email="toto@gmail.com" />
+            <AlreadyChangedEmailDisclaimer />
             <Spacer.Column numberOfSpaces={4} />
           </React.Fragment>
         ) : null}

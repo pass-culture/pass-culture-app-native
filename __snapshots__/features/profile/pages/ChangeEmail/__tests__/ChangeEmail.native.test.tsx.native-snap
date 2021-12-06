@@ -701,7 +701,7 @@ Array [
             ]
           }
         >
-          Une demande a été envoyée à l’adresse : toto@gmail.com. Tu as 24h pour valider ta nouvelle adresse. Pense à vérifier tes spams.
+          Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams.
         </Text>
       </View>
       <View

@@ -5,16 +5,8 @@ import styled from 'styled-components/native'
 import { Clock } from 'ui/svg/icons/Clock'
 import { getSpacingString, Spacer, Typo } from 'ui/theme'
 
-interface Props {
-  email: string
-}
-
-export const AlreadyChangedEmailDisclaimer = ({ email }: Props) => {
-  const message =
-    t`Une demande a été envoyée à l’adresse\u00a0:` +
-    ' ' +
-    email +
-    t`. Tu as 24h pour valider ta nouvelle adresse. Pense à vérifier tes spams.`
+export const AlreadyChangedEmailDisclaimer = () => {
+  const message = t`Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams.`
 
   return (
     <Container>
