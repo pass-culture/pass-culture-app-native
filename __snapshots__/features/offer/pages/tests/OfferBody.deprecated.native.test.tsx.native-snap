@@ -2167,11 +2167,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 style={
                                   Array [
                                     Object {
-                                      "flexBasis": 0,
-                                      "flexGrow": 1,
-                                      "flexShrink": 1,
                                       "maxWidth": 480,
                                       "paddingBottom": 8,
+                                      "width": "100%",
                                     },
                                   ]
                                 }
@@ -4988,11 +4986,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 style={
                                   Array [
                                     Object {
-                                      "flexBasis": 0,
-                                      "flexGrow": 1,
-                                      "flexShrink": 1,
                                       "maxWidth": 480,
                                       "paddingBottom": 8,
+                                      "width": "100%",
                                     },
                                   ]
                                 }
