@@ -4,6 +4,7 @@ export enum QueryKeys {
   HOME_VENUES_MODULE = 'homeVenuesModule',
   BOOKINGS = 'bookings',
   CITIES = 'cities',
+  EMAIL_CHANGE_EXPIRATION_TIMESTAMP = 'emailChangeExpirationTimestamp',
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',
   FIRESTORE_UBBLE_LOAD = 'firestoreUbbleLoad',

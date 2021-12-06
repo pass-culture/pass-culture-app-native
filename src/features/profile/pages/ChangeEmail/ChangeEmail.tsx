@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { useMutation } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -13,10 +13,12 @@ import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ChangeEmailRequest, CHANGE_EMAIL_ERROR_CODE } from 'features/profile/api'
+import { AlreadyChangedEmailDisclaimer } from 'features/profile/pages/ChangeEmail/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
 import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils/useValidateEmail'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
+import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
@@ -35,6 +37,12 @@ export function ChangeEmail() {
   const [passwordErrorMessage, setPasswordErrorMessage] = useSafeState<string | null>(null)
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+
+  const { data: currentEmailChangeTimestampResponse } = useQuery(
+    QueryKeys.EMAIL_CHANGE_EXPIRATION_TIMESTAMP,
+    () => api.getnativev1profiletokenExpiration()
+  )
+  const hasCurrentEmailChange = !!currentEmailChangeTimestampResponse?.expiration
 
   const { mutate: changeEmail, isLoading } = useMutation(
     (body: ChangeEmailRequest) => api.postnativev1profileupdateEmail(body),
@@ -99,6 +107,12 @@ export function ChangeEmail() {
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
         keyboardShouldPersistTaps="handled">
         <Spacer.Column numberOfSpaces={18} />
+        {hasCurrentEmailChange ? (
+          <React.Fragment>
+            <AlreadyChangedEmailDisclaimer email="toto@gmail.com" />
+            <Spacer.Column numberOfSpaces={4} />
+          </React.Fragment>
+        ) : null}
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
