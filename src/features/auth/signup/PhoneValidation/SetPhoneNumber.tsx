@@ -45,6 +45,10 @@ const ALLOWED_COUNTRY_CODES: CountryCode[] = [
   'PF',
   'NC',
 ]
+function getPlaceholder(countryCode: CountryCode): string {
+  if (countryCode === 'NC') return '654 321'
+  return '6 12 34 56 78'
+}
 
 export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
   const { data: settings } = useAppSettings()
@@ -159,7 +163,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
             </Typo.Body>
           </Paragraphe>
           <Spacer.Column numberOfSpaces={8} />
-          <PhoneNumberInput>
+          <InputContainer>
             <CountryPickerPressable onPress={openCountryPickerModal}>
               <CountryPicker
                 withEmoji={Platform.OS !== 'web'}
@@ -184,18 +188,17 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
                 <ArrowNext size={getSpacing(6)} />
               </Animated.View>
             </CountryPickerPressable>
-            <Spacer.Row numberOfSpaces={4} />
             <TextInput
               autoCapitalize="none"
               isError={false}
               keyboardType="number-pad"
               onChangeText={onChangeText}
-              placeholder={t`6 12 34 56 78`}
+              placeholder={getPlaceholder(countryCode)}
               textContentType="telephoneNumber"
               onSubmitEditing={requestSendPhoneValidationCode}
               {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
             />
-          </PhoneNumberInput>
+          </InputContainer>
           {invalidPhoneNumberMessage ? (
             <React.Fragment>
               <InputError visible messageId={invalidPhoneNumberMessage} numberOfSpacesTop={3} />
@@ -235,14 +238,16 @@ const Paragraphe = styled.Text({
   textAlign: 'center',
 })
 
-const PhoneNumberInput = styled.View({
+const InputContainer = styled.View({
   flexDirection: 'row',
-  paddingHorizontal: getSpacing(14),
   alignItems: 'center',
+  justifyContent: 'center',
+  width: getSpacing(40),
 })
 
 const CountryPickerPressable = styled.TouchableOpacity({
   flexDirection: 'row',
+  marginRight: getSpacing(3),
 })
 
 /**
