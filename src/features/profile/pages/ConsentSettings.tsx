@@ -31,13 +31,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
 
   useEffect(() => {
     storage.readObject('has_accepted_cookie').then((hasAcceptedCookie) => {
-      if (hasAcceptedCookie === null) {
-        // default user choice is true
-        storage.saveObject('has_accepted_cookie', true)
-        setIsTrackingSwitchActive(true)
-      } else {
-        setIsTrackingSwitchActive(Boolean(hasAcceptedCookie))
-      }
+      setIsTrackingSwitchActive(Boolean(hasAcceptedCookie))
     })
   }, [])
 
