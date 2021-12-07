@@ -1,12 +1,17 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { analytics } from 'libs/analytics'
 import { Clock } from 'ui/svg/icons/Clock'
 import { getSpacingString, Spacer, Typo } from 'ui/theme'
 
 export const AlreadyChangedEmailDisclaimer = () => {
   const message = t`Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams.`
+
+  useEffect(() => {
+    analytics.logConsultDisclaimerValidationMail()
+  }, [])
 
   return (
     <Container>

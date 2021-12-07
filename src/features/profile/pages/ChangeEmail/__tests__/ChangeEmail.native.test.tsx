@@ -65,10 +65,14 @@ describe('<ChangeEmail/>', () => {
     expect(renderAPI.toJSON()).toMatchSnapshot()
   })
 
-  it('should render correctly when an email change is already in progress', () => {
+  it('should render and log correctly when an email change is already in progress', async () => {
     mockUseQueryWithExpirationTimestamp()
     const renderAPI = render(<ChangeEmail />)
     expect(renderAPI.toJSON()).toMatchSnapshot()
+
+    await waitForExpect(() => {
+      expect(analytics.logConsultDisclaimerValidationMail).toBeCalled()
+    })
 
     mockUseQueryWithoutExpirationTimestamp()
   })
