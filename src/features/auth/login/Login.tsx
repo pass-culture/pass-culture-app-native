@@ -69,7 +69,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       const user = await api.getnativev1me()
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
 
-      if (!hasSeenEligibleCard && user.showEligibleCard) {
+      if (user?.recreditAmountToShow) {
+        navigate('RecreditBirthdayNotification')
+      } else if (!hasSeenEligibleCard && user.showEligibleCard) {
         navigate('EighteenBirthday')
       } else if (shouldShowCulturalSurvey(user)) {
         navigate('CulturalSurvey')
@@ -80,6 +82,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       setErrorMessage(t`Il y a eu un problème. Tu peux réessayer plus tard.`)
     }
   }
+
   function handleSigninFailure(response: SignInResponseFailure) {
     const failureCode = response.content?.code
     if (failureCode === 'EMAIL_NOT_VALIDATED') {

@@ -15,6 +15,11 @@ export interface ChangeEmailRequest {
   password: string
 }
 
+export type ResetRecreditAmountToShowMutationOptions = {
+  onSuccess: () => void
+  onError: (error: unknown) => void
+}
+
 export function useUpdateProfileMutation(
   onSuccessCallback: (data: UserProfileResponse) => void,
   onErrorCallback: (error: unknown) => void
@@ -29,5 +34,15 @@ export function useUpdateProfileMutation(
       onSuccessCallback(response)
     },
     onError: onErrorCallback,
+  })
+}
+
+export function useResetRecreditAmountToShow({
+  onSuccess,
+  onError,
+}: ResetRecreditAmountToShowMutationOptions) {
+  return useMutation(() => api.postnativev1resetRecreditAmountToShow(), {
+    onSuccess,
+    onError,
   })
 }
