@@ -1,7 +1,10 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { openUrl } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -12,6 +15,9 @@ import { EditPen } from 'ui/svg/icons/EditPen'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo, getSpacing } from 'ui/theme'
 
+const FAQ_EDUCONNECT_URL =
+  'https://aide.passculture.app/fr/articles/5707982-jeune-15-17-ans-ou-trouver-mes-identifiants-educonnect'
+
 interface FastEduconnectConnectionRequestModalProps {
   visible: boolean
   hideModal: () => void
@@ -20,7 +26,7 @@ interface FastEduconnectConnectionRequestModalProps {
 export const FastEduconnectConnectionRequestModal: React.FC<FastEduconnectConnectionRequestModalProps> =
   ({ visible, hideModal }) => {
     const { colors } = useTheme()
-
+    const { navigate } = useNavigation<UseNavigationType>()
     return (
       <AppModal
         title={t`Identifie-toi en 2 minutes`}
@@ -35,20 +41,30 @@ export const FastEduconnectConnectionRequestModal: React.FC<FastEduconnectConnec
           {t`Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement. `}
         </MainContent>
 
-        <TextQuestion icon={InfoPlain} title={t`C’est quoi ÉduConnect ?`} />
+        <TextQuestion
+          onPress={() => openUrl(FAQ_EDUCONNECT_URL)}
+          icon={InfoPlain}
+          title={t`C’est quoi ÉduConnect ?`}
+        />
 
         <ButtonPrimary
-          title={'Identification avec ÉduConnect  '}
+          title={t`Identification avec ÉduConnect`}
           onPress={() => {
-            /*
-            TODO: navigate to educonnect identification
-           */
+            hideModal()
+            navigate('IdentityCheckEduConnect')
           }}
         />
 
         <OrSeparator />
 
-        <ButtonTertiaryBlack icon={EditPen} title={t`Identification manuelle`} />
+        <ButtonTertiaryBlack
+          icon={EditPen}
+          title={t`Identification manuelle`}
+          onPress={() => {
+            hideModal()
+            navigate('IdentityCheckStart')
+          }}
+        />
         <DurationInfoText color={colors.greyDark}>{t`Environ 3 heures`}</DurationInfoText>
       </AppModal>
     )
