@@ -90,7 +90,7 @@ platform :android do
       owner_name: ENV['APPCENTER_ORGANISATION'],
       owner_type: "organization",
       app_name: ENV['APPCENTER_ANDROID_APP_ID'],
-      apk: ENV["ANDROID_APK_PATH"],
+      file: ENV["ANDROID_FILE_PATH"],
       release_notes: %x[#{release_notes_command}],
       destinations: ENV['APPCENTER_DISTRIBUTE_GROUPS']
     )
