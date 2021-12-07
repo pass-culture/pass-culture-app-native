@@ -5,7 +5,6 @@ import { useQueryClient } from 'react-query'
 import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
 import { SigninResponse } from 'api/gen'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics, LoginRoutineMethod } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
@@ -86,7 +85,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
 
 export function useLoginRoutine() {
   const { setIsLoggedIn } = useAuthContext()
-  const resetContexts = useResetContexts()
+  const { dispatch } = useSearch()
 
   /**
    * Executes the minimal set of instructions required to proceed to the login
@@ -99,7 +98,8 @@ export function useLoginRoutine() {
     await storage.saveString('access_token', response.accessToken)
     analytics.logLogin({ method })
     setIsLoggedIn(true)
-    resetContexts()
+    // initialise search state to make sure search results correspond to user available categories
+    dispatch({ type: 'INIT' })
   }
 
   return loginRoutine
@@ -114,7 +114,6 @@ export function signOutFromIdCheck() {
 export function useLogoutRoutine(): () => Promise<void> {
   const queryClient = useQueryClient()
   const { setIsLoggedIn } = useAuthContext()
-  const resetContexts = useResetContexts()
 
   return useCallback(async () => {
     try {
@@ -123,7 +122,6 @@ export function useLogoutRoutine(): () => Promise<void> {
       LoggedInQueryKeys.forEach((queryKey) => {
         queryClient.removeQueries(queryKey)
       })
-      resetContexts()
       await storage.clear('access_token')
       await clearRefreshToken()
     } catch (err) {
@@ -132,18 +130,6 @@ export function useLogoutRoutine(): () => Promise<void> {
       setIsLoggedIn(false)
     }
   }, [setIsLoggedIn])
-}
-
-// We also reset the different context that depend on the user
-const useResetContexts = () => {
-  const { dispatch: dispatchSearch } = useSearch()
-  const { dispatch: dispatchIdentityCheck } = useIdentityCheckContext()
-
-  return () => {
-    // initialise search state to make sure search results correspond to user available categories
-    dispatchSearch({ type: 'INIT' })
-    dispatchIdentityCheck({ type: 'INIT' })
-  }
 }
 
 // List of keys that are accessible only when logged in
