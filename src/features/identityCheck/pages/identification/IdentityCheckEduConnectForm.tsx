@@ -1,9 +1,4 @@
-import {
-  useEduConnectClient,
-  EduConnectError,
-  EduConnectErrors,
-  EduConnectErrorBoundary,
-} from '@pass-culture/id-check'
+import { EduConnectError, EduConnectErrors, EduConnectErrorBoundary } from '@pass-culture/id-check'
 import { ErrorTrigger } from '@pass-culture/id-check/src/errors/ErrorTrigger'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useRef, useState } from 'react'
@@ -17,6 +12,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
+import { eduConnectClient } from 'libs/eduConnectClient'
 import { ColorsEnum } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
@@ -24,7 +20,6 @@ export const IdentityCheckEduConnectForm = () => {
   const { dispatch } = useIdentityCheckContext()
 
   const webViewRef = useRef<WebView>(null)
-  const eduConnectClient = useEduConnectClient()
   const [webViewSource, setWebViewSource] = useState<WebViewSource>()
   const { shouldUseEduConnect } = useEduconnect()
   const [error, setError] = useState<EduConnectError | null>(
