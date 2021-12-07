@@ -1,15 +1,14 @@
 import React, { createContext, useCallback, useContext, memo, useState } from 'react'
 import SplashScreen from 'react-native-splash-screen'
 
-interface SplashScreenContext {
-  isSplashScreenHidden: boolean
-  hideSplashScreen?: () => void
-}
+import { SplashScreenContextInterface } from './types'
 
-const SplashScreenContext = createContext<SplashScreenContext>({ isSplashScreenHidden: false })
+const SplashScreenContext = createContext<SplashScreenContextInterface>({
+  isSplashScreenHidden: false,
+})
 
 export function useSplashScreenContext() {
-  return useContext<SplashScreenContext>(SplashScreenContext)
+  return useContext<SplashScreenContextInterface>(SplashScreenContext)
 }
 
 export const SplashScreenProvider = memo(function SplashScreenProvider(props: {
