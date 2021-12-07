@@ -39,7 +39,10 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <StyledInputContainer isFocus={isFocus} isError={customProps.isError}>
+      <StyledInputContainer
+        isFocus={isFocus}
+        isError={customProps.isError}
+        isInputDisabled={customProps.disabled}>
         <BaseTextInput {...nativeProps} ref={forwardedRef} onFocus={onFocus} onBlur={onBlur} />
         {!!customProps.RightIcon && (
           <RightIconContainer>

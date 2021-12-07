@@ -13,7 +13,9 @@ import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ChangeEmailRequest, CHANGE_EMAIL_ERROR_CODE } from 'features/profile/api'
+import { AlreadyChangedEmailDisclaimer } from 'features/profile/pages/ChangeEmail/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/pages/ChangeEmail/ChangeEmailDisclaimer'
+import { useCheckHasCurrentEmailChange } from 'features/profile/pages/ChangeEmail/utils/useCheckHasCurrentEmailChange'
 import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils/useValidateEmail'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
@@ -35,6 +37,7 @@ export function ChangeEmail() {
   const [passwordErrorMessage, setPasswordErrorMessage] = useSafeState<string | null>(null)
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+  const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
 
   const { mutate: changeEmail, isLoading } = useMutation(
     (body: ChangeEmailRequest) => api.postnativev1profileupdateEmail(body),
@@ -99,11 +102,22 @@ export function ChangeEmail() {
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
         keyboardShouldPersistTaps="handled">
         <Spacer.Column numberOfSpaces={18} />
+        {hasCurrentEmailChange ? (
+          <React.Fragment>
+            <AlreadyChangedEmailDisclaimer />
+            <Spacer.Column numberOfSpaces={4} />
+          </React.Fragment>
+        ) : null}
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
           <InputContainer>
-            <EmailInput label={t`Nouvel e-mail`} email={email} onEmailChange={setEmail} />
+            <EmailInput
+              label={t`Nouvel e-mail`}
+              email={email}
+              onEmailChange={setEmail}
+              disabled={hasCurrentEmailChange}
+            />
             {!!emailErrorMessage && (
               <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={2} />
             )}
@@ -116,6 +130,7 @@ export function ChangeEmail() {
               onChangeText={setPassword}
               placeholder={t`Ton mot de passe`}
               textContentType="password"
+              disabled={hasCurrentEmailChange}
             />
             {!!passwordErrorMessage && (
               <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />

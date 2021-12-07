@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMutation } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
@@ -36,6 +36,19 @@ const mockUseMutationError = (code: CHANGE_EMAIL_ERROR_CODE) => {
   }))
 }
 
+const mockedUseQuery = mocked(useQuery)
+const mockUseQueryWithoutExpirationTimestamp = () => {
+  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+  mockedUseQuery.mockImplementationOnce(() => ({}))
+}
+mockUseQueryWithoutExpirationTimestamp()
+const mockUseQueryWithExpirationTimestamp = () => {
+  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+  mockedUseQuery.mockImplementationOnce(() => ({
+    data: { expiration: '2021-12-07T13:45:05.812190' },
+  }))
+}
+
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -50,6 +63,14 @@ describe('<ChangeEmail/>', () => {
   it('should render correctly', () => {
     const renderAPI = render(<ChangeEmail />)
     expect(renderAPI.toJSON()).toMatchSnapshot()
+  })
+
+  it('should render correctly when an email change is already in progress', () => {
+    mockUseQueryWithExpirationTimestamp()
+    const renderAPI = render(<ChangeEmail />)
+    expect(renderAPI.toJSON()).toMatchSnapshot()
+
+    mockUseQueryWithoutExpirationTimestamp()
   })
 
   it.each`

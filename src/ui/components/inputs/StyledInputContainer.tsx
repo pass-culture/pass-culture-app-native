@@ -7,12 +7,14 @@ type Props = {
   isError?: boolean
   isFocus?: boolean
   inputHeight?: 'small' | 'tall'
+  isInputDisabled?: boolean
 }
 
 const defaultProps: Props = {
   isError: false,
   isFocus: false,
   inputHeight: 'small',
+  isInputDisabled: false,
 }
 
 export const StyledInputContainer: React.FC<Props> = (props) => {
@@ -24,7 +26,10 @@ export const StyledInputContainer: React.FC<Props> = (props) => {
   }
 
   return (
-    <StyledView height={props.inputHeight} borderColor={borderColor}>
+    <StyledView
+      height={props.inputHeight}
+      borderColor={borderColor}
+      isInputDisabled={props.isInputDisabled}>
       {props.children}
     </StyledView>
   )
@@ -35,22 +40,25 @@ StyledInputContainer.defaultProps = defaultProps
 const StyledView = styled.View<{
   height: Props['inputHeight']
   borderColor: ColorsEnum
-}>((props) => ({
+  isInputDisabled?: boolean
+}>(({ height, borderColor, isInputDisabled, theme }) => ({
   width: '100%',
-  height: props.height === 'tall' ? getSpacing(12) : getSpacing(10),
+  height: height === 'tall' ? getSpacing(12) : getSpacing(10),
   flexDirection: 'row',
   alignItems: 'center',
   ...padding(1, 4),
   borderRadius: 22,
-  border: `solid 1px ${props.borderColor}`,
-  backgroundColor: ColorsEnum.WHITE,
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowRadius: 6,
-    shadowColor: ColorsEnum.BLACK,
-    shadowOpacity: 0.15,
-  }),
+  border: isInputDisabled ? undefined : `solid 1px ${borderColor}`,
+  backgroundColor: isInputDisabled ? theme.colors.greyLight : theme.colors.white,
+  ...(!isInputDisabled
+    ? getShadow({
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowRadius: 6,
+        shadowColor: theme.colors.black,
+        shadowOpacity: 0.15,
+      })
+    : {}),
 }))

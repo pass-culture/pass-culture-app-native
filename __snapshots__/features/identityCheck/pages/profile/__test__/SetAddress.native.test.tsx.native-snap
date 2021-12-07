@@ -208,6 +208,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
             <View
               borderColor="#c7c7cc"
               height="small"
+              isInputDisabled={false}
               style={
                 Array [
                   Object {
@@ -236,6 +237,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
               }
             >
               <TextInput
+                editable={true}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
