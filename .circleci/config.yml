@@ -755,6 +755,7 @@ workflows:
             - GCP
             - GCP_APP_NATIVE_EHP
       - deploy-web-staging:
+          type: approval
           filters:
             tags:
               only:
@@ -770,6 +771,7 @@ workflows:
             - GCP
             - GCP_APP_NATIVE_EHP
       - deploy-web-integration:
+          type: approval
           filters:
             tags:
               only:
@@ -784,6 +786,7 @@ workflows:
             - GCP
             - GCP_APP_NATIVE_EHP
       - deploy-web-prod:
+          type: approval
           filters:
             tags:
               only:
