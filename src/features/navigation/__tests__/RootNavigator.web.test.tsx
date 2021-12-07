@@ -4,7 +4,7 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
-import * as splashScreenModule from 'libs/splashscreen'
+import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils/web'
@@ -28,6 +28,9 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
   useInitialScreen: () => 'TabNavigator',
 }))
 
+jest.mock('libs/splashscreen')
+const mockUseSplashScreenContext = mocked(useSplashScreenContext)
+
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({
   warn: true,
@@ -41,9 +44,7 @@ describe('<RootNavigator />', () => {
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
     // eslint-disable-next-line local-rules/independant-mocks
-    jest
-      .spyOn(splashScreenModule, 'useSplashScreenContext')
-      .mockReturnValue({ isSplashScreenHidden: false })
+    mockUseSplashScreenContext.mockReturnValue({ isSplashScreenHidden: false })
     const renderAPI = await renderRootNavigator()
 
     const privacyPolicyTitle = renderAPI.queryByText('Respect de ta vie privée')
@@ -53,9 +54,7 @@ describe('<RootNavigator />', () => {
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {
     // eslint-disable-next-line local-rules/independant-mocks
-    jest
-      .spyOn(splashScreenModule, 'useSplashScreenContext')
-      .mockReturnValue({ isSplashScreenHidden: true })
+    mockUseSplashScreenContext.mockReturnValue({ isSplashScreenHidden: true })
 
     const renderAPI = await renderRootNavigator()
 
