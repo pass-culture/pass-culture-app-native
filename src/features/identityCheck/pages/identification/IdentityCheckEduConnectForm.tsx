@@ -1,14 +1,8 @@
-import {
-  useEduConnectClient,
-  useEduConnect,
-  EduConnectError,
-  EduConnectErrors,
-  EduConnectErrorBoundary,
-  IdCheckRootStackParamList,
-} from '@pass-culture/id-check'
+// TODO PC-12075 : remove idCheck imports
+import { EduConnectError, EduConnectErrors, EduConnectErrorBoundary } from '@pass-culture/id-check'
+// TODO PC-12075 : remove idCheck imports
 import { ErrorTrigger } from '@pass-culture/id-check/src/errors/ErrorTrigger'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack/lib/typescript/src/types'
+import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useRef, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { URL } from 'react-native-url-polyfill'
@@ -17,23 +11,28 @@ import { WebViewSource } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
+import { eduConnectClient } from 'libs/eduConnectClient'
 import { ColorsEnum } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
-  const navigation = useNavigation<StackNavigationProp<IdCheckRootStackParamList>>()
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const { dispatch } = useIdentityCheckContext()
+
   const webViewRef = useRef<WebView>(null)
-  const eduConnectClient = useEduConnectClient()
   const [webViewSource, setWebViewSource] = useState<WebViewSource>()
-  const allowEduConnect = useEduConnect()
+  const { shouldUseEduConnect } = useEduconnect()
   const [error, setError] = useState<EduConnectError | null>(
-    allowEduConnect ? null : new EduConnectError(EduConnectErrors.unavailable)
+    shouldUseEduConnect ? null : new EduConnectError(EduConnectErrors.unavailable)
   )
 
   const checkIfEduConnectIsAvailable = useCallback(() => {
-    if (allowEduConnect === false) {
+    if (shouldUseEduConnect === false) {
       setError(new EduConnectError(EduConnectErrors.unavailable))
     }
-  }, [allowEduConnect])
+  }, [shouldUseEduConnect])
 
   const loadWebView = useCallback(() => {
     function setWebView() {
@@ -88,11 +87,17 @@ export const IdentityCheckEduConnectForm = () => {
       const url = new URL(event.url)
       const eduConnectLogoutUrl = url.searchParams.get('logoutUrl') ?? ''
       fetch(eduConnectLogoutUrl)
-      navigation.navigate('Validation', {
-        firstName: url.searchParams.get('firstName') ?? '',
-        lastName: url.searchParams.get('lastName') ?? '',
-        dateOfBirth: url.searchParams.get('dateOfBirth') ?? '',
+      dispatch({
+        type: 'SET_IDENTIFICATION',
+        payload: {
+          firstName: url.searchParams.get('firstName') ?? null,
+          lastName: url.searchParams.get('lastName') ?? null,
+          birthDate: url.searchParams.get('dateOfBirth') ?? null,
+          // TODO PC-12075 check what to do with country code
+          countryCode: 'OK',
+        },
       })
+      navigateToNextScreen()
     }
   }
 

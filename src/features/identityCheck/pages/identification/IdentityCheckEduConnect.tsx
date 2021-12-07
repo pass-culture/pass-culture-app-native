@@ -4,11 +4,13 @@ import styled from 'styled-components/native'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingClass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingClass'
 import { Spacer, Typo, ColorsEnum, getSpacing } from 'ui/theme'
 
 export const IdentityCheckEduConnect = () => {
+  const { navigateToNextScreen } = useIdentityCheckNavigation()
   return (
     <PageWithHeader
       title={t`Identification`}
@@ -35,16 +37,7 @@ export const IdentityCheckEduConnect = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary
-          title={`Connexion avec ÉduConnect`}
-          onPress={() => {
-            /*
-              TODO: Redirection EduConnect Form
-              https://passculture.atlassian.net/browse/PC-12075
-
-             */
-          }}
-        />
+        <ButtonPrimary title={`Connexion avec ÉduConnect`} onPress={navigateToNextScreen} />
       }
     />
   )

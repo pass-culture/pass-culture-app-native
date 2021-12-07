@@ -1,12 +1,9 @@
 import { t } from '@lingui/macro'
-import {
-  EduConnectError,
-  EduConnectErrorBoundary,
-  EduConnectErrors,
-  useEduConnect,
-  useEduConnectClient,
-} from '@pass-culture/id-check'
+// TODO PC-12075 : remove idCheck imports
+import { EduConnectError, EduConnectErrorBoundary, EduConnectErrors } from '@pass-culture/id-check'
+// TODO PC-12075 : remove idCheck imports
 import { IdCardMagnifyingGlassIcon } from '@pass-culture/id-check/src/components/icons/IdCardMagnifyingGlass'
+// TODO PC-12075 : remove idCheck imports
 import { ErrorTrigger } from '@pass-culture/id-check/src/errors/ErrorTrigger'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
@@ -14,21 +11,22 @@ import { ErrorBoundary } from 'react-error-boundary'
 import styled from 'styled-components/native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
+import { eduConnectClient } from 'libs/eduConnectClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
-  const eduConnectClient = useEduConnectClient()
-  const allowEduConnect = useEduConnect()
+  const { shouldUseEduConnect } = useEduconnect()
   const [error, setError] = useState<EduConnectError | null>(
-    allowEduConnect ? null : new EduConnectError(EduConnectErrors.unavailable)
+    shouldUseEduConnect ? null : new EduConnectError(EduConnectErrors.unavailable)
   )
 
   const checkIfEduConnectIsAvailable = useCallback(() => {
-    if (allowEduConnect === false) {
+    if (shouldUseEduConnect === false) {
       setError(new EduConnectError(EduConnectErrors.unavailable))
     }
-  }, [allowEduConnect])
+  }, [shouldUseEduConnect])
 
   const openEduConnect = useCallback(() => {
     async function setWebView() {
