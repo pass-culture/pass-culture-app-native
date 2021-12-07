@@ -65,7 +65,7 @@ export function ChangeEmail() {
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const disabled =
+  const isSubmitButtonDisabled =
     !isLongEnough(password) || !!emailErrorMessage || !!passwordErrorMessage || isLoading
 
   const onEmailChangeError = (errorCode?: string) => {
@@ -144,7 +144,11 @@ export function ChangeEmail() {
           )}
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
-            <ButtonPrimary title={t`Enregistrer`} onPress={submitEmailChange} disabled={disabled} />
+            <ButtonPrimary
+              title={t`Enregistrer`}
+              onPress={submitEmailChange}
+              disabled={isSubmitButtonDisabled}
+            />
           </ButtonContainer>
           <Spacer.Column numberOfSpaces={6} />
         </CenteredContainer>
