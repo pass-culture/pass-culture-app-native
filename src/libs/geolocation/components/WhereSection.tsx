@@ -54,7 +54,10 @@ export const WhereSection: React.FC<Props> = ({
   const navigation = useNavigation<UseNavigationType>()
   const { latitude: lat, longitude: lng } = locationCoordinates
   const distanceToLocation = useDistance({ lat, lng })
-  const { canOpenItinerary, openItinerary } = useOpenItinerary(lat, lng, beforeNavigateToItinerary)
+  const { canOpenItinerary, openItinerary } = useOpenItinerary(
+    venue.address,
+    beforeNavigateToItinerary
+  )
 
   if (distanceToLocation === undefined && venue.address === null) return null
 

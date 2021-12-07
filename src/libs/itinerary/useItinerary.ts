@@ -4,22 +4,21 @@ import { Alert, AlertButton, Platform } from 'react-native'
 import LN from 'react-native-launch-navigator'
 import { AppEnum } from 'react-native-launch-navigator/enum'
 
-import { Coordinates } from 'api/gen'
-import { openUrl } from 'features/navigation/helpers'
-import { MonitoringError } from 'libs/monitoring'
-import { getOpenStreetMapUrl } from 'libs/parsers/getOpenStreetMapUrl'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+
+import { openGoogleMapsItinerary } from './openGoogleMapsItinerary'
+import { UseItineraryResult } from './types'
 
 const appEnumTypeGuard = (app: string): app is AppEnum =>
   Object.values(AppEnum).includes(app as AppEnum)
 
 enum BackupSolution {
-  OPEN_STREET_MAP,
+  GOOGLE_MAPS_WEB,
   SNACKBAR_ERROR,
 }
 
-export const useItinerary = () => {
+export const useItinerary = (): UseItineraryResult => {
   const [availableApps, setAvailableApps] = useState<AppEnum[] | undefined>(undefined)
   const { showInfoSnackBar } = useSnackBarContext()
   const getApps = async () => {
@@ -34,24 +33,21 @@ export const useItinerary = () => {
       setAvailableApps([])
     }
   }
-  const navigateWithOpenStreetMap = (coordinates: Required<Coordinates>) => {
-    const url = getOpenStreetMapUrl(coordinates)
-    openUrl(url)
-  }
+
   const navigateToWithApp = async (
-    coordinates: Required<Coordinates>,
+    address: string,
     app: AppEnum,
     backupSolution: BackupSolution
   ) => {
     try {
-      if (!coordinates.latitude || !coordinates.longitude) {
+      if (!address) {
         throw Error()
       }
-      await LN.navigate([coordinates.latitude, coordinates.longitude], { app })
+      await LN.navigate(address, { app })
     } catch {
       switch (backupSolution) {
-        case BackupSolution.OPEN_STREET_MAP:
-          navigateWithOpenStreetMap(coordinates)
+        case BackupSolution.GOOGLE_MAPS_WEB:
+          openGoogleMapsItinerary(address)
           return
         case BackupSolution.SNACKBAR_ERROR:
           showInfoSnackBar({
@@ -62,19 +58,19 @@ export const useItinerary = () => {
       }
     }
   }
-  const navigateTo = (coordinates: Required<Coordinates>) => {
+  const navigateTo = (address: string) => {
     if (availableApps === undefined) return
     if (availableApps.length === 0) {
-      new MonitoringError('availableApps == []', 'NoAppsForItineraryError')
-      navigateWithOpenStreetMap(coordinates)
+      openGoogleMapsItinerary(address)
+      return
     }
     if (availableApps.length === 1) {
-      navigateToWithApp(coordinates, availableApps[0], BackupSolution.OPEN_STREET_MAP)
+      navigateToWithApp(address, availableApps[0], BackupSolution.GOOGLE_MAPS_WEB)
       return
     }
     const alertButtons: AlertButton[] = availableApps.map((app) => ({
       text: snakeCaseToUppercaseFirstLetter(app),
-      onPress: () => navigateToWithApp(coordinates, app, BackupSolution.SNACKBAR_ERROR),
+      onPress: () => navigateToWithApp(address, app, BackupSolution.SNACKBAR_ERROR),
     }))
     if (Platform.OS === 'ios') alertButtons.push({ text: t`Annuler`, style: 'cancel' })
     Alert.alert(
@@ -84,8 +80,10 @@ export const useItinerary = () => {
       { cancelable: true }
     )
   }
+
   useEffect(() => {
     getApps()
   }, [])
-  return { availableApps, navigateTo }
+
+  return { navigateTo }
 }

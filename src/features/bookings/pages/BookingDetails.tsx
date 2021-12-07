@@ -70,8 +70,7 @@ export function BookingDetails() {
   const { venue, id: offerId } = booking?.stock.offer || {}
   const { latitude, longitude } = venue?.coordinates || {}
   const { canOpenItinerary, openItinerary } = useOpenItinerary(
-    latitude,
-    longitude,
+    `${latitude},${longitude}`,
     async () => void (offerId && analytics.logConsultItinerary({ offerId, from: 'bookingdetails' }))
   )
 

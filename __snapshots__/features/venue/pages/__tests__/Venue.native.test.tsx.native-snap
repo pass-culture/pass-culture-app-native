@@ -1945,9 +1945,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             accessibilityLabel="Voir l'itinéraire"
             accessible={true}
-            collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
