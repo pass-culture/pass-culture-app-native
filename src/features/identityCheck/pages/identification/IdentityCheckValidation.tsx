@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 // TODO PC-12075 : remove idCheck imports
-import { IdCheckFile, IdCheckRootStackParamList, useEduConnect } from '@pass-culture/id-check'
+import { IdCheckFile, IdCheckRootStackParamList } from '@pass-culture/id-check'
 import { UploadButton } from '@pass-culture/id-check/src/components/layout/UploadButton'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -12,6 +12,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -26,7 +27,7 @@ export const IdentityCheckValidation = ({ upload }: ValidationProps) => {
   const { dispatch, identification } = useIdentityCheckContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
-  const shouldUseEduConnect = useEduConnect()
+  const { shouldUseEduConnect } = useEduconnect()
   const birthDate = identification.birthDate
     ? moment(identification.birthDate, 'YYYY-MM-DD').format('DD/MM/YYYY')
     : ''

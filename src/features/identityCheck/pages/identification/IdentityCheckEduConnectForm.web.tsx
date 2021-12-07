@@ -3,7 +3,6 @@ import {
   EduConnectError,
   EduConnectErrorBoundary,
   EduConnectErrors,
-  useEduConnect,
   useEduConnectClient,
 } from '@pass-culture/id-check'
 import { IdCardMagnifyingGlassIcon } from '@pass-culture/id-check/src/components/icons/IdCardMagnifyingGlass'
@@ -14,21 +13,22 @@ import { ErrorBoundary } from 'react-error-boundary'
 import styled from 'styled-components/native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
   const eduConnectClient = useEduConnectClient()
-  const allowEduConnect = useEduConnect()
+  const { shouldUseEduConnect } = useEduconnect()
   const [error, setError] = useState<EduConnectError | null>(
-    allowEduConnect ? null : new EduConnectError(EduConnectErrors.unavailable)
+    shouldUseEduConnect ? null : new EduConnectError(EduConnectErrors.unavailable)
   )
 
   const checkIfEduConnectIsAvailable = useCallback(() => {
-    if (allowEduConnect === false) {
+    if (shouldUseEduConnect === false) {
       setError(new EduConnectError(EduConnectErrors.unavailable))
     }
-  }, [allowEduConnect])
+  }, [shouldUseEduConnect])
 
   const openEduConnect = useCallback(() => {
     async function setWebView() {

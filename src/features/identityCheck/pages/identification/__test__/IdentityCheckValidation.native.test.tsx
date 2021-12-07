@@ -1,4 +1,3 @@
-import { useEduConnect } from '@pass-culture/id-check'
 import 'jest-styled-components/native'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
@@ -8,6 +7,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
 import { fireEvent, render } from 'tests/utils'
 
 import { IdentityCheckValidation } from '../IdentityCheckValidation'
@@ -19,10 +19,11 @@ const { navigateToNextScreen } = useIdentityCheckNavigation()
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const { dispatch, identification } = useIdentityCheckContext()
 jest.mock('@pass-culture/id-check')
-const mockedUseEduConnect = mocked(useEduConnect, true)
+const mockedUseEduConnect = mocked(useEduconnect, true)
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider')
 const mockedUseIdentityCheckContext = useIdentityCheckContext as jest.Mock
 jest.mock('features/identityCheck/useIdentityCheckNavigation')
+jest.mock('features/identityCheck/utils/useEduConnect')
 
 const flushPromises = new Promise(setImmediate)
 
@@ -63,7 +64,7 @@ describe('<IdentityCheckValidation />', () => {
   })
 
   it('should render a link redirect to Success view when country code is OK', () => {
-    mockedUseEduConnect.mockReturnValueOnce(false)
+    mockedUseEduConnect.mockReturnValueOnce({ shouldUseEduConnect: false })
     const { getByText } = render(<IdentityCheckValidation upload={upload} />)
     const validateButton = getByText('Valider mes informations')
     fireEvent.press(validateButton)
@@ -72,7 +73,7 @@ describe('<IdentityCheckValidation />', () => {
   })
 
   it('should render a link redirect to Residence view when country code is KO', () => {
-    mockedUseEduConnect.mockReturnValueOnce(false)
+    mockedUseEduConnect.mockReturnValueOnce({ shouldUseEduConnect: false })
     mockedUseIdentityCheckContext.mockReturnValueOnce({
       dispatch,
       identification: { ...identification, countryCode: 'KO' },

@@ -1,6 +1,5 @@
 import {
   useEduConnectClient,
-  useEduConnect,
   EduConnectError,
   EduConnectErrors,
   EduConnectErrorBoundary,
@@ -17,6 +16,7 @@ import styled from 'styled-components/native'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
 import { ColorsEnum } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
@@ -26,16 +26,16 @@ export const IdentityCheckEduConnectForm = () => {
   const webViewRef = useRef<WebView>(null)
   const eduConnectClient = useEduConnectClient()
   const [webViewSource, setWebViewSource] = useState<WebViewSource>()
-  const allowEduConnect = useEduConnect()
+  const { shouldUseEduConnect } = useEduconnect()
   const [error, setError] = useState<EduConnectError | null>(
-    allowEduConnect ? null : new EduConnectError(EduConnectErrors.unavailable)
+    shouldUseEduConnect ? null : new EduConnectError(EduConnectErrors.unavailable)
   )
 
   const checkIfEduConnectIsAvailable = useCallback(() => {
-    if (allowEduConnect === false) {
+    if (shouldUseEduConnect === false) {
       setError(new EduConnectError(EduConnectErrors.unavailable))
     }
-  }, [allowEduConnect])
+  }, [shouldUseEduConnect])
 
   const loadWebView = useCallback(() => {
     function setWebView() {
