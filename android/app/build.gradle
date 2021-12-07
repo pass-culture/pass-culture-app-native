@@ -116,7 +116,7 @@ apply from: "../../node_modules/react-native-code-push/android/codepush.gradle" 
  * Upload all the APKs to the Play Store and people will download
  * the correct one based on the CPU architecture of their device.
  */
-def enableSeparateBuildPerCPUArchitecture = true
+def enableSeparateBuildPerCPUArchitecture = false
 
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
@@ -180,15 +180,38 @@ android {
         versionName packageJson.version
         buildConfigField "String", "CODEPUSH_KEY", "\"${project.env.get("CODEPUSH_KEY_ANDROID")}\"" // @codepush
         multiDexEnabled true
+        resConfigs "fr" // https://developer.android.com/studio/build/shrink-code#unused-alt-resources
     }
+
+    // When building Android App Bundles, the splits block is ignored.
+    // We keep it for Appcenter as we build apk for it.
     splits {
         abi {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
-            universalApk true  // keep true for AppCenter as it only supports APK format...
+            universalApk false // if we enable splits per abi, we need to set this to true for Appcenter
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
+
+    // Instead, use the bundle block to control which types of configuration APKs
+    // you want your app bundle to support. If all configurations are splitted,
+    // it's the same as if we don't include this piece of code, but we leave it for clarity.
+    bundle {
+        language {
+            // This property is set to true by default.
+            enableSplit = true
+        }
+        density {
+            // This property is set to true by default.
+            enableSplit = true
+        }
+        abi {
+            // This property is set to true by default.
+            enableSplit = true
+        }
+    }
+
     signingConfigs {
         config {
             keyAlias keystoreProperties['keyAlias']
@@ -197,6 +220,7 @@ android {
             storePassword keystoreProperties['storePassword']
         }
     }
+
     buildTypes {
         debug {
             if (nativeArchitectures) {
@@ -206,10 +230,21 @@ android {
             }
         }
         release {
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
             minifyEnabled enableProguardInReleaseBuilds
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
             shrinkResources true
+
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.config
+
+            // https://developer.android.com/studio/build/shrink-code#android_gradle_plugin_version_41_or_later
             ndk {
                 debugSymbolLevel "FULL"
             }
