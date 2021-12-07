@@ -21,6 +21,7 @@ export enum AnalyticsEvent {
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
   CONSULT_AVAILABLE_DATES = 'ConsultAvailableDates',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
+  CONSULT_DISCLAIMER_VALIDATION_MAIL = 'ConsultDisclaimerValidationMail',
   CONSULT_ITINERARY = 'ConsultLocationItinerary',
   CONSULT_OFFER = 'ConsultOffer',
   CONSULT_VENUE = 'ConsultVenue',

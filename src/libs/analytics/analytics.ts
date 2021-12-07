@@ -205,6 +205,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN, { times: numberOfTimes }),
   logErrorSavingNewEmail: (errorCode: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.ERROR_SAVING_NEW_EMAIL, { code: errorCode }),
+  logConsultDisclaimerValidationMail: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_DISCLAIMER_VALIDATION_MAIL),
   useInit,
 }
 
