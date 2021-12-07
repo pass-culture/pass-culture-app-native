@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
+import { withAsyncErrorBoundary } from 'features/errors'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/IdentityCheckEduConnect'
@@ -26,6 +27,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     // debug route: in navigation component
     name: 'NavigationIdentityCheck',
     component: NavigationIdentityCheck,
+    hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-identity-check',
   },
   // Stepper
@@ -81,6 +83,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     secure: true,
   },
   {
+    name: 'IdentityCheckEduConnect',
+    component: IdentityCheckEduConnect,
+    path: 'educonnect',
+    options: { title: t`Identification` },
+    secure: false,
+  },
+  {
     name: 'IdentityCheckEduConnectForm',
     component: IdentityCheckEduConnectForm,
     path: 'educonnect-formulaire',
@@ -120,12 +129,5 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     path: 'demande-beneficiaire-envoyee',
     options: { title: t`Demande bénéficiaire envoyée` },
     secure: true,
-  },
-  {
-    name: 'IdentityCheckEduConnect',
-    component: IdentityCheckEduConnect,
-    path: 'educonnect',
-    options: { title: t`Identification` },
-    secure: false,
   },
 ]
