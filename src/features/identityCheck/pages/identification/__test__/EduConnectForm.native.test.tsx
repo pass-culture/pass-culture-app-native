@@ -4,6 +4,8 @@ import { render } from 'tests/utils'
 
 import { IdentityCheckEduConnectForm } from '../IdentityCheckEduConnectForm'
 
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider')
+jest.mock('features/identityCheck/useIdentityCheckNavigation')
 jest.mock('@pass-culture/id-check')
 
 describe('<IdentityCheckEduConnectForm />', () => {
