@@ -299,7 +299,6 @@ module.exports = function (webpackEnv) {
         '@sentry/react-native': '@sentry/react',
 
         // Those libs are mocked until we implement web specific solutions
-        '@bam.tech/react-native-batch': path.join(paths.appSrc, 'libs/react-native-batch'),
         'react-native-email-link': path.join(paths.appSrc, 'libs/react-native-email-link'),
         'react-native-permissions': path.join(paths.appSrc, 'libs/react-native-permissions'),
         'react-native-fast-image': path.join(paths.appSrc, 'libs/react-native-web-fast-image'),

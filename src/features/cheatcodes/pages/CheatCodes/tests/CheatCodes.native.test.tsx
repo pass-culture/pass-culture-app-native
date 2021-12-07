@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BatchUser } from '__mocks__/@bam.tech/react-native-batch'
+import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises, act, render } from 'tests/utils'

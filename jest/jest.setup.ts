@@ -100,3 +100,9 @@ jest.mock('ui/components/ModuleBanner/backgroundImageSource')
 jest.mock('ui/hooks/useEnterKeyAction')
 
 jest.mock('react-native/Libraries/LogBox/LogBox')
+
+jest.mock('@bam.tech/react-native-batch', () =>
+  jest.requireActual('__mocks__/libs/react-native-batch')
+)
+
+jest.mock('libs/react-native-batch', () => jest.requireActual('__mocks__/libs/react-native-batch'))
