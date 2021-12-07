@@ -52,7 +52,7 @@ You can review & download the **staging** apps on Appcenter for [iOS][5] & [Andr
 
 #### Hard deploy (once a week, manual)
 
-When you want to deploy the current version of the `release` branch in staging, you can run the following commands:
+When you want to deploy the current version of `master` in staging, you can run the following commands:
 
 - `yarn trigger:staging:deploy`
 
@@ -96,7 +96,7 @@ If not urgent, it is better to release a new version.
 - `git tag hotfix-production-vX.X.X-(Y+1)`
 - `git push origin hotfix-production-vX.X.X-(Y+1)`: this will deploy it to `production`
 - ⚠️ check your code push targets the actual production version (one code push targets only one version)
-- ⚠️ Do not forget to create a pull request from your branch to `master` and `release` to retrieve fixes on these branches
+- ⚠️ Do not forget to create a pull request from your branch to `master` to retrieve fixes on master branch
 
 #### Troubleshooting
 

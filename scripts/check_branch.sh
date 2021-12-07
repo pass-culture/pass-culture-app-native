@@ -5,9 +5,9 @@ set -e
 check_branch(){
   CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
   echo $CURRENT_BRANCH
-  if [ "$CURRENT_BRANCH" != "release" ];
+  if [ "$CURRENT_BRANCH" != "master" ];
   then
-    read -p "Are you sure you want to deploy this branch? You should deploy release branch." -n 1 -r
+    read -p "Are you sure you want to deploy this branch? (Yy/Nn)" -n 1 -r
     echo    # step a new line
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
