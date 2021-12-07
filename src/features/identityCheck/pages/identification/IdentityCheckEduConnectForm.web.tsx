@@ -1,6 +1,9 @@
 import { t } from '@lingui/macro'
+// TODO PC-12075 : remove idCheck imports
 import { EduConnectError, EduConnectErrorBoundary, EduConnectErrors } from '@pass-culture/id-check'
+// TODO PC-12075 : remove idCheck imports
 import { IdCardMagnifyingGlassIcon } from '@pass-culture/id-check/src/components/icons/IdCardMagnifyingGlass'
+// TODO PC-12075 : remove idCheck imports
 import { ErrorTrigger } from '@pass-culture/id-check/src/errors/ErrorTrigger'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'

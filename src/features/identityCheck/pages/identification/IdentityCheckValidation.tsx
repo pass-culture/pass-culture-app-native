@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 // TODO PC-12075 : remove idCheck imports
 import { IdCheckFile, IdCheckRootStackParamList } from '@pass-culture/id-check'
+// TODO PC-12075 : remove idCheck imports
 import { UploadButton } from '@pass-culture/id-check/src/components/layout/UploadButton'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -17,6 +18,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface ValidationProps {
+  // TODO PC-12075 : ca vient d ou ca ??
   upload: (file: IdCheckFile) => Promise<void>
 }
 
@@ -41,6 +43,7 @@ export const IdentityCheckValidation = ({ upload }: ValidationProps) => {
     if (shouldUseEduConnect) {
       navigateToNextEduConnectStep()
     } else {
+      // TODO PC-12075 : remove idCheck nav
       navigate(identification.countryCode !== 'OK' ? 'Residence' : 'Success')
     }
   }
