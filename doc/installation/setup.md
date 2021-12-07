@@ -16,6 +16,21 @@ For Android, you will need to:
 For iOS, you will need to:
 
 - install `node`
+  - with NVM to have the right version
+
+   ```sh
+   brew install nvm
+   nvm install
+   nvm use
+   ```
+
+  - **AND**
+  - with Brew to have XCode build's steps (`Bundle React Native code and images` and `Upload Debug Symbols to Sentry`) working
+
+   ```sh
+   brew install node
+   ```
+
 - install Xcode and its command line tools
 - Install a simulator if not already in Xcode
 - install Cocoapods
