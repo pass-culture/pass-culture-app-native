@@ -20,6 +20,9 @@
 # @react-native-config
 -keep class com.passculture.BuildConfig { *; }
 
+# react-native-svg
+-keep public class com.horcrux.svg.** {*;}
+
 # @react-native-fast-image
 -keep public class com.dylanvann.fastimage.* {*;}
 -keep public class com.dylanvann.fastimage.** {*;}
