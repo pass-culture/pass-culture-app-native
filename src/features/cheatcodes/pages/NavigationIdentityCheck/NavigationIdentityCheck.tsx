@@ -79,7 +79,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'InvalidInformationEduConnect Error'}
+            title={'Invalid information EduConnect Error'}
             onPress={() => {
               setScreenError(new ScreenError('InvalidInformationEduConnect', NotEligibleEduConnect))
             }}

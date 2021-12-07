@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import { FunctionComponent } from 'react'
 import { TextStyle } from 'react-native'
 
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { Clock } from 'ui/svg/icons/Clock'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -40,7 +41,9 @@ const InvalidAgeFromEduConnect: NotEligibleEduConnectErrorData = {
   descriptionAlignment: 'center',
 }
 
-const InvalidInformation: NotEligibleEduConnectErrorData = {
+const getInvalidInformation = (
+  onPrimaryButtonPress: () => Promise<void>
+): NotEligibleEduConnectErrorData => ({
   Icon: InfoFraud,
   title: t`Oh non !`,
   description:
@@ -50,10 +53,8 @@ const InvalidInformation: NotEligibleEduConnectErrorData = {
   descriptionAlignment: 'center',
   primaryButtonText: t`Vérifier mon identité`,
   tertiaryButtonVisible: true,
-  onPrimaryButtonPress: () => {
-    //(Wendy) TODO: Dans le prochain Ticket ajouter une navigation pour revenir à l'action précédente
-  },
-}
+  onPrimaryButtonPress,
+})
 
 const LegalRepresentative: NotEligibleEduConnectErrorData = {
   Icon: InfoFraud,
@@ -79,12 +80,13 @@ type NotEligibleEduConnectErrorMessage =
 export function useNotEligibleEduConnectErrorData(
   message: NotEligibleEduConnectErrorMessage | string
 ) {
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   switch (message) {
     case 'InvalidAgeFromEduConnectEduConnect':
       return InvalidAgeFromEduConnect
 
     case 'InvalidInformationEduConnect':
-      return InvalidInformation
+      return getInvalidInformation(navigateToNextBeneficiaryValidationStep)
 
     case 'LegalRepresentativeEduConnect':
       return LegalRepresentative
