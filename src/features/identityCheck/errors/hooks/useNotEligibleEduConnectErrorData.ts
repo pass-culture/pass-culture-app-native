@@ -17,7 +17,7 @@ type NotEligibleEduConnectErrorData = {
   tertiaryButtonVisible?: boolean
   onPrimaryButtonPress?: () => void
 }
-const UserAgeNotValid: NotEligibleEduConnectErrorData = {
+const NonExistentError: NotEligibleEduConnectErrorData = {
   Icon: Clock,
   title: t`Tu ne fais pas partie de la phase de test`,
   description:
@@ -30,7 +30,7 @@ const UserAgeNotValid: NotEligibleEduConnectErrorData = {
   descriptionAlignment: 'left',
 }
 
-const InvalidAgeFromEduConnect: NotEligibleEduConnectErrorData = {
+const UserAgeNotValid: NotEligibleEduConnectErrorData = {
   Icon: InfoFraud,
   title: t`Oh non !`,
   description:
@@ -56,7 +56,7 @@ const getInvalidInformation = (
   onPrimaryButtonPress,
 })
 
-const LegalRepresentative: NotEligibleEduConnectErrorData = {
+const UserTypeNotStudent: NotEligibleEduConnectErrorData = {
   Icon: InfoFraud,
   title: t`Qui est-ce ?`,
   description:
@@ -71,27 +71,25 @@ const LegalRepresentative: NotEligibleEduConnectErrorData = {
   },
 }
 type NotEligibleEduConnectErrorMessage =
-  | 'UserAlreadyBeneficiaryEduConnect'
-  | 'InvalidAgeFromEduConnectEduConnect'
-  | 'UserAgeNotValidEduConnect'
-  | 'InvalidInformationEduConnect'
-  | 'LegalRepresentativeEduConnect'
+  | 'UserAgeNotValid18YearsOld'
+  | 'UserAgeNotValid'
+  | 'UserTypeNotStudent'
 
 export function useNotEligibleEduConnectErrorData(
   message: NotEligibleEduConnectErrorMessage | string
 ) {
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   switch (message) {
-    case 'InvalidAgeFromEduConnectEduConnect':
-      return InvalidAgeFromEduConnect
-
-    case 'InvalidInformationEduConnect':
+    case 'UserAgeNotValid18YearsOld':
       return getInvalidInformation(navigateToNextBeneficiaryValidationStep)
 
-    case 'LegalRepresentativeEduConnect':
-      return LegalRepresentative
+    case 'UserAgeNotValid':
+      return UserAgeNotValid
+
+    case 'UserTypeNotStudent':
+      return UserTypeNotStudent
 
     default:
-      return UserAgeNotValid
+      return NonExistentError
   }
 }
