@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 
+import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -35,16 +37,19 @@ export const IdentityCheckWebview: React.FC = () => {
         allowCamera: true,
         identificationUrl,
         events: {
-          onComplete({ redirectUrl, status }: CompleteEvent) {
-            analytics.logIdentityCheckComplete({ status })
+          onComplete({ redirectUrl }: CompleteEvent) {
+            analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.Ubble })
             ubbleIDV.destroy()
             if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigateToNextScreen()
           },
-          onAbort({ redirectUrl, status, returnReason }: AbortEvent) {
-            analytics.logIdentityCheckAbort({ status, returnReason })
+          onAbort({ redirectUrl, returnReason: reason }: AbortEvent) {
+            analytics.logIdentityCheckAbort({
+              method: IdentityCheckMethod.Ubble,
+              reason,
+              errorType: new URL(redirectUrl).searchParams.get('error_type') || null,
+            })
             ubbleIDV.destroy()
-            // TODO(antoinewg): navigate to an error page.
-            if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigateToNextScreen()
+            navigateToHome()
           },
         },
       })

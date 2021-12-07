@@ -2,7 +2,7 @@ import { IdCheckAnalyticsInterface } from '@pass-culture/id-check'
 import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
-import { VenueContactModel } from 'api/gen'
+import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator'
 import { useUtmParams } from 'libs/utm'
 
@@ -88,10 +88,13 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId }),
   logClickBookOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId }),
-  logIdentityCheckAbort: (params: { status: string; returnReason: string }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, params),
-  logIdentityCheckComplete: (params: { status: string }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_COMPLETE, params),
+  logIdentityCheckAbort: (params: {
+    method: IdentityCheckMethod
+    reason: string | null
+    errorType: string | null
+  }) => analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, params),
+  logIdentityCheckSuccess: (params: { method: IdentityCheckMethod }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_SUCCESS, params),
   logOfferSeenDuration: (offerId: number, duration: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration }),
   logHasAddedOfferToFavorites: (params: {
