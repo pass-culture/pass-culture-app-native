@@ -17,6 +17,10 @@ export interface IdentityCheckState {
   }
   identification: {
     done: boolean
+    firstName: string | null
+    lastName: string | null
+    birthDate: string | null
+    countryCode: string | null
   }
   confirmation: {
     accepted: boolean
@@ -31,3 +35,12 @@ export type Action =
   | { type: 'SET_STATUS'; payload: ActivityEnum | null }
   | { type: 'SET_CITY'; payload: SuggestedCity | null }
   | { type: 'SET_ADDRESS'; payload: string | null }
+  | {
+      type: 'SET_IDENTIFICATION'
+      payload: {
+        firstName: string | null
+        lastName: string | null
+        birthDate: string | null
+        countryCode: string | null
+      }
+    }
