@@ -1,4 +1,3 @@
-import { BatchUser } from '@bam.tech/react-native-batch'
 import { LocalStorageService } from '@pass-culture/id-check'
 import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
@@ -14,6 +13,7 @@ import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
+import { BatchUser } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'
 
 export interface IAuthContext {

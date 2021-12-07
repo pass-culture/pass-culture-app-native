@@ -1,4 +1,3 @@
-import { BatchUser } from '@bam.tech/react-native-batch'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Text, Alert, Button } from 'react-native'
@@ -13,6 +12,7 @@ import { env } from 'libs/environment'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken } from 'libs/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { BatchUser } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 

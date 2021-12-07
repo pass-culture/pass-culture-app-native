@@ -1,18 +1,10 @@
-// TODO: remove this condition when BatchSDK will support Safari, see also service-worker.ts#L11
-// eslint-disable-next-line no-restricted-imports
-import { isSafari, isMobileSafari, isMacOs } from 'react-device-detect'
-
 import { getBatchSDK } from 'libs/batch/batch-sdk'
 import { env } from 'libs/environment'
-
-const disabled = isMobileSafari || (isSafari && !isMacOs)
+import { eventMonitoring } from 'libs/monitoring'
 
 /* eslint-disable no-console */
 export const Batch = {
   start() {
-    if (disabled) {
-      return
-    }
     /* Initiate Batch SDK opt-in UI configuration (native prompt) */
     let batchSDKUIConfig
 
@@ -55,35 +47,34 @@ export const Batch = {
       },
     }
 
-    window.batchSDK('setup', options)
-    window.batchSDK((api) => {
-      api.ui.show('alert')
-    })
+    try {
+      window.batchSDK('setup', options)
+      window.batchSDK((api) => api.ui.show('alert'))
+    } catch (error) {
+      eventMonitoring.captureException(error)
+    }
   },
 }
 
 export const BatchUser = {
   getInstallationID() {
     return new Promise((resolve, reject) => {
-      if (disabled) {
-        resolve('BATCH_NOT_AVAILABLE')
-        return
+      try {
+        window.batchSDK((api) => api.getInstallationID().then(resolve).catch(reject))
+      } catch (error) {
+        eventMonitoring.captureException(error)
       }
-      window.batchSDK(function (api) {
-        api.getInstallationID().then(resolve).catch(reject)
-      })
     })
   },
   editor() {
     return this
   },
   setIdentifier(id: string) {
-    if (disabled) {
-      return this
+    try {
+      window.batchSDK((api) => api.setCustomUserID(id))
+    } catch (error) {
+      eventMonitoring.captureException(error)
     }
-    window.batchSDK(function (api) {
-      api.setCustomUserID(id)
-    })
     return this
   },
   save() {
@@ -93,9 +84,7 @@ export const BatchUser = {
 
 export const BatchPush = {
   registerForRemoteNotifications() {
-    if (disabled) {
-      return
-    }
     getBatchSDK()
+    Batch.start()
   },
 }

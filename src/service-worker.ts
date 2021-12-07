@@ -8,9 +8,6 @@
 // You can also remove this file if you'd prefer not to use a
 // service worker, and the Workbox build step will be skipped.
 
-// TODO: remove this condition when BatchSDK will support Safari, see also react-native-batch.web.ts#L3
-// eslint-disable-next-line no-restricted-imports
-import { isMacOs, isMobileSafari, isSafari } from 'react-device-detect'
 import { clientsClaim } from 'workbox-core'
 import { ExpirationPlugin } from 'workbox-expiration'
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching'
@@ -80,9 +77,5 @@ self.addEventListener('message', (event) => {
   }
 })
 
-const disabled = isMobileSafari || (isSafari && !isMacOs)
-
-if (!disabled) {
-  // This is for web push notifications with batch
-  self.importScripts(process.env.PUBLIC_URL + '/batchsdk-shared-worker.js')
-}
+// This will add batch sdk service worker
+self.importScripts(process.env.PUBLIC_URL + '/batchsdk-shared-worker.js')

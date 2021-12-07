@@ -1,5 +1,6 @@
-import { BatchPush } from '@bam.tech/react-native-batch'
 import { useEffect } from 'react'
+
+import { BatchPush } from 'libs/react-native-batch'
 
 export const useStartBatchNotification = (): void => {
   useEffect(() => {
