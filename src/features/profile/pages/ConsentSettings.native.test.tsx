@@ -20,71 +20,76 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 jest.mock('features/navigation/helpers/usePreviousRoute')
 const mockedUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
 
+// eslint-disable-next-line local-rules/no-allow-console
+allowConsole({ error: true })
+
 describe('ConsentSettings', () => {
-  afterEach(() => {
+  beforeEach(() => {
     storage.clear('has_accepted_cookie')
   })
 
-  it('should save has_accepted_cookie to true (default)', async () => {
+  it('should display inactive switch by default (has_accepted_cookie is null)', async () => {
     storage.saveObject('has_accepted_cookie', null)
-    const { getByTestId } = renderConsentSettings()
+    const { expectTrackingSwitchDisabled } = await renderConsentSettings()
 
-    await waitFor(async () => {
-      expect(await storage.readObject('has_accepted_cookie')).toBe(true)
-      const trackingSwitch = getByTestId('Interrupteur données de navigation')
-      expect(trackingSwitch.parent?.props.accessibilityValue.text).toBe('true')
+    await waitFor(() => {
+      expectTrackingSwitchDisabled()
     })
   })
 
   it('should display inactive switch if user choise is false', async () => {
     storage.saveObject('has_accepted_cookie', false)
-    const { getByTestId } = renderConsentSettings()
+    const { expectTrackingSwitchDisabled } = await renderConsentSettings()
 
     await waitFor(() => {
-      const trackingSwitch = getByTestId('Interrupteur données de navigation')
-      expect(trackingSwitch.parent?.props.accessibilityValue.text).toBe('false')
+      expectTrackingSwitchDisabled()
     })
   })
 
   it('should display active switch if user choise is true', async () => {
     storage.saveObject('has_accepted_cookie', true)
-    const { getByTestId } = renderConsentSettings()
+    const { expectTrackingSwitchEnabled } = await renderConsentSettings()
 
     await waitFor(() => {
-      const trackingSwitch = getByTestId('Interrupteur données de navigation')
-      expect(trackingSwitch.parent?.props.accessibilityValue.text).toBe('true')
+      expectTrackingSwitchEnabled()
     })
   })
 
   it('should enable save button on toggle switch', async () => {
-    const { getByTestId } = renderConsentSettings()
+    const { pressTrackingSwitch, expectSaveButtonEnabled } = await renderConsentSettings()
 
-    const toggleButton = getByTestId('Interrupteur données de navigation')
-    fireEvent.press(toggleButton)
+    pressTrackingSwitch()
 
     await waitFor(() => {
-      const saveButton = getByTestId('Enregistrer')
-      const background = saveButton.props.style.backgroundColor
-      expect(background).toEqual(ColorsEnum.PRIMARY)
+      expectSaveButtonEnabled()
     })
   })
 
   it('should save user choice in storage and call setAnalyticsCollectionEnabled on press save', async () => {
-    const { getByTestId, getByText } = renderConsentSettings()
+    const {
+      expectTrackingSwitchEnabled,
+      expectSaveButtonEnabled,
+      pressTrackingSwitch,
+      pressSaveButton,
+    } = await renderConsentSettings()
 
-    const toggleButton = getByTestId('Interrupteur données de navigation')
-    fireEvent.press(toggleButton)
+    pressTrackingSwitch()
+
+    await waitFor(() => {
+      expectTrackingSwitchEnabled()
+      expectSaveButtonEnabled()
+    })
+
+    pressSaveButton()
 
     await waitFor(async () => {
-      const saveButton = getByText('Enregistrer')
-      fireEvent.press(saveButton)
       expect(await storage.readObject('has_accepted_cookie')).toBe(true)
       expect(analytics.enableCollection).toHaveBeenCalled()
     })
   })
 
   it('should go back on press save', async () => {
-    const { getByTestId, getByText } = renderConsentSettings()
+    const { getByTestId, getByText } = await renderConsentSettings()
 
     const toggleButton = getByTestId('Interrupteur données de navigation')
     fireEvent.press(toggleButton)
@@ -97,7 +102,7 @@ describe('ConsentSettings', () => {
   })
 
   it('should open cookies policies on click on "Politique des cookies"', async () => {
-    const { getByText } = renderConsentSettings()
+    const { getByText } = await renderConsentSettings()
 
     fireEvent.press(getByText('Politique des cookies'))
 
@@ -106,7 +111,10 @@ describe('ConsentSettings', () => {
   })
 })
 
-function renderConsentSettings() {
+const TRACKING_SWITCH_TEST_ID = 'Interrupteur données de navigation'
+const SAVE_BUTTON_TEST_ID = 'Enregistrer'
+
+async function renderConsentSettings() {
   mockedUsePreviousRoute.mockReturnValue(jest.fn() as unknown as Route<string>)
 
   const onGoBack = jest.fn() as () => void
@@ -115,5 +123,42 @@ function renderConsentSettings() {
       params: { onGoBack },
     },
   } as StackScreenProps<RootStackParamList, 'ConsentSettings'>
-  return render(<ConsentSettings {...navigationProps} />)
+
+  const renderAPI = render(<ConsentSettings {...navigationProps} />)
+  await superFlushWithAct(1)
+
+  function pressTrackingSwitch() {
+    const trackingSwitch = renderAPI.getByTestId(TRACKING_SWITCH_TEST_ID)
+    fireEvent.press(trackingSwitch)
+  }
+
+  function expectTrackingSwitchEnabled() {
+    const trackingSwitch = renderAPI.getByTestId(TRACKING_SWITCH_TEST_ID)
+    expect(trackingSwitch.parent?.props.accessibilityValue.text).toBe('true')
+  }
+
+  function expectTrackingSwitchDisabled() {
+    const trackingSwitch = renderAPI.getByTestId(TRACKING_SWITCH_TEST_ID)
+    expect(trackingSwitch.parent?.props.accessibilityValue.text).toBe('false')
+  }
+
+  function pressSaveButton() {
+    const saveButton = renderAPI.getByTestId(SAVE_BUTTON_TEST_ID)
+    fireEvent.press(saveButton)
+  }
+
+  function expectSaveButtonEnabled() {
+    const saveButton = renderAPI.getByTestId(SAVE_BUTTON_TEST_ID)
+    const background = saveButton.props.style.backgroundColor
+    expect(background).toEqual(ColorsEnum.PRIMARY)
+  }
+
+  return {
+    ...renderAPI,
+    expectTrackingSwitchEnabled,
+    expectTrackingSwitchDisabled,
+    expectSaveButtonEnabled,
+    pressTrackingSwitch,
+    pressSaveButton,
+  }
 }
