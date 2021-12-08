@@ -23,10 +23,6 @@ export const IdentityCheckValidation = () => {
     navigateToNextScreen()
   }
 
-  function onValidate() {
-    navigateToNextEduConnectStep()
-  }
-
   return (
     <PageWithHeader
       title={t`Mon identité`}
@@ -48,7 +44,10 @@ export const IdentityCheckValidation = () => {
       }
       fixedBottomChildren={
         <React.Fragment>
-          <StyledButtonPrimary title={t`Valider mes informations`} onPress={onValidate} />
+          <StyledButtonPrimary
+            title={t`Valider mes informations`}
+            onPress={navigateToNextEduConnectStep}
+          />
         </React.Fragment>
       }
     />
