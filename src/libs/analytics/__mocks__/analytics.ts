@@ -73,6 +73,7 @@ export const analytics: typeof actualAnalytics = {
   logShareOffer: jest.fn(),
   logShareVenue: jest.fn(),
   logSignUpTooYoung: jest.fn(),
+  logStartDMSTransmission: jest.fn(),
   logUseFilter: jest.fn(),
   logVenueContact: jest.fn(),
   logVenueSeeAllOffersClicked: jest.fn(),

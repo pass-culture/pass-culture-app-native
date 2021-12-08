@@ -69,6 +69,7 @@ export enum AnalyticsEvent {
   SHARE_OFFER = 'Share',
   SHARE_VENUE = 'ShareVenue',
   SIGN_UP_TOO_YOUNG = 'SignUpTooYoung',
+  START_DMS_TRANSMISSION = 'StartDMSTransmission',
   USE_FILTER = 'UseFilter',
   VENUE_CONTACT = 'VenueContact',
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',

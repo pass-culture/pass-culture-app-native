@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DMSModal } from 'features/identityCheck/components/DMSModal'
+import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { DigitalIcon } from 'ui/svg/icons/venueTypes'
@@ -10,6 +11,12 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export const DMSInformation = () => {
   const { visible, showModal, hideModal } = useModal(false)
+
+  const showDMSModal = () => {
+    analytics.logStartDMSTransmission()
+    showModal()
+  }
+
   return (
     <React.Fragment>
       <Container>
@@ -17,7 +24,7 @@ export const DMSInformation = () => {
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryBlack
           title={t`Identification par le site Démarches-Simplifiées`}
-          onPress={showModal}
+          onPress={showDMSModal}
           icon={DigitalIcon}
         />
         <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Environ 10 jours`}</Typo.Caption>

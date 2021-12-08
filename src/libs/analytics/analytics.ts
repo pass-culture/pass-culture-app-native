@@ -95,6 +95,7 @@ export const analytics = {
   }) => analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, params),
   logIdentityCheckSuccess: (params: { method: IdentityCheckMethod }) =>
     analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_SUCCESS, params),
+  logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logOfferSeenDuration: (offerId: number, duration: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration }),
   logHasAddedOfferToFavorites: (params: {
