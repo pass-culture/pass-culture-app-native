@@ -34,6 +34,8 @@ const useInit = () => {
   }, [campaignDate])
 }
 
+const urlWithValueMaxLength = (url: string) => url.slice(0, STRING_VALUE_MAX_LENGTH)
+
 export const analytics = {
   enableCollection: analyticsProvider.enableCollection,
   disableCollection: analyticsProvider.disableCollection,
@@ -89,19 +91,21 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId }),
   logClickBookOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId }),
-  logIdentityCheckStep: (step: IdentityCheckStep) =>
-    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_STEP, { step }),
-  logIdentityCheckAbort: (from: 'stepper' | 'quitIdentityCheckModal') =>
-    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, { from }),
-  logIdentityCheckContinue: () =>
-    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_CONTINUE),
-  logIdentityCheckUbbleAbort: (params: {
+  logIdentityCheckStep: (nextStep: IdentityCheckStep) =>
+    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_STEP, { nextStep }),
+  logQuitIdentityCheck: (nextStep: IdentityCheckStep) =>
+    analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK, { nextStep }),
+  logConfirmQuitIdentityCheck: (nextStep: IdentityCheckStep) =>
+    analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK, { nextStep }),
+  logContinueIdentityCheck: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONTINUE_IDENTITY_CHECK),
+  logIdentityCheckAbort: (params: {
     method: IdentityCheckMethod
     reason: string | null
     errorType: string | null
-  }) => analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_UBBLE_ABORT, params),
-  logIdentityCheckUbbleSuccess: (params: { method: IdentityCheckMethod }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_UBBLE_SUCCESS, params),
+  }) => analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, params),
+  logIdentityCheckSuccess: (params: { method: IdentityCheckMethod }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_SUCCESS, params),
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logOfferSeenDuration: (offerId: number, duration: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration }),
@@ -112,8 +116,6 @@ export const analytics = {
   }) => analyticsProvider.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params),
   logConsultWhyAnniversary: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY),
-  logQuitIdentityCheckUnavailable: () =>
-    analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK_UNAVAIBLE),
   logCancelSignup: (pageName: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName }),
   logHelpCenterContactSignupConfirmationEmailSent: () =>
@@ -133,21 +135,17 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page }),
   logNoSearchResult: (query: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query }),
-  logOpenDMSForeignCitizenURL: (url: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.OPEN_DMS_FOREIGN_CITIZEN_URL, {
-      url: url.slice(0, STRING_VALUE_MAX_LENGTH),
-    }),
-  logOpenDMSFrenchCitizenURL: (url: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.OPEN_DMS_FRENCH_CITIZEN_URL, {
-      url: url.slice(0, STRING_VALUE_MAX_LENGTH),
-    }),
+  logOpenDMSForeignCitizenURL: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.OPEN_DMS_FOREIGN_CITIZEN_URL),
+  logOpenDMSFrenchCitizenURL: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.OPEN_DMS_FRENCH_CITIZEN_URL),
   logOpenLocationSettings: () => analyticsProvider.logEvent(AnalyticsEvent.OPEN_LOCATION_SETTINGS),
   logOpenNotificationSettings: () =>
     analyticsProvider.logEvent(AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS),
   logIdCheck: (from: 'Profile') => analyticsProvider.logEvent(AnalyticsEvent.ID_CHECK, { from }),
   logProblemWithLink: (url: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.DEEP_LINK_IMPORTER, {
-      url: url.slice(0, STRING_VALUE_MAX_LENGTH),
+      url: urlWithValueMaxLength(url),
     }),
   logProfilScrolledToBottom: () =>
     analyticsProvider.logEvent(AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM),
@@ -167,7 +165,7 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network }),
   logOpenExternalUrl: (url: string, params: OfferAnalyticsData) =>
     analyticsProvider.logEvent(AnalyticsEvent.OPEN_EXTERNAL_URL, {
-      url: url.slice(0, STRING_VALUE_MAX_LENGTH),
+      url: urlWithValueMaxLength(url),
       offerId: params.offerId,
     }),
   logMailTo: (

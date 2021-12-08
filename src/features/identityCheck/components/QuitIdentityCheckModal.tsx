@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -26,14 +27,16 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   hideModal,
   testIdSuffix,
 }) => {
+  const context = useIdentityCheckContext()
+
   function quitIdentityCheck() {
-    analytics.logIdentityCheckAbort('quitIdentityCheckModal')
+    if (context.step) analytics.logConfirmQuitIdentityCheck(context.step)
     hideModal()
     navigateToHome()
   }
 
   function continueIdentityCheck() {
-    analytics.logIdentityCheckContinue()
+    analytics.logContinueIdentityCheck()
     hideModal()
   }
 

@@ -17,12 +17,12 @@ interface Props {
 }
 
 const openDMSFrenchCitizenURL = () => {
-  analytics.logOpenDMSFrenchCitizenURL(env.DMS_FRENCH_CITIZEN_URL)
+  analytics.logOpenDMSFrenchCitizenURL()
   openUrl(env.DMS_FRENCH_CITIZEN_URL)
 }
 
 const openDMSForeignCitizenURL = () => {
-  analytics.logOpenDMSForeignCitizenURL(env.DMS_FOREIGN_CITIZEN_URL)
+  analytics.logOpenDMSForeignCitizenURL()
   openUrl(env.DMS_FOREIGN_CITIZEN_URL)
 }
 

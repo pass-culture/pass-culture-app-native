@@ -31,11 +31,11 @@ export const IdentityCheckStepper = () => {
   }, [steps.length])
 
   function showQuitIdentityCheckModal() {
-    analytics.logIdentityCheckAbort('stepper')
+    if (context.step) analytics.logQuitIdentityCheck(context.step)
     showModal()
   }
 
-  function navigateToNextStep(step: StepConfig) {
+  function navigateToStep(step: StepConfig) {
     analytics.logIdentityCheckStep(step.name)
     navigate(step.screens[0])
   }
@@ -59,7 +59,7 @@ export const IdentityCheckStepper = () => {
               key={step.name}
               step={step}
               state={getStepState(step.name)}
-              onPress={() => navigateToNextStep(step)}
+              onPress={() => navigateToStep(step)}
             />
           ))}
 

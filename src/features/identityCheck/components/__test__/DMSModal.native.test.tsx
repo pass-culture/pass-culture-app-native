@@ -24,7 +24,6 @@ describe('<DMSModal/>', () => {
     const frenchCitizenDMSButton = getByText('Je suis de nationalité française')
     fireEvent.press(frenchCitizenDMSButton)
     expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledTimes(1)
-    expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL)
     expect(mockedOpenUrl).toBeCalledWith(env.DMS_FRENCH_CITIZEN_URL)
   })
 
@@ -33,7 +32,6 @@ describe('<DMSModal/>', () => {
     const foreignCitizenDMSButton = getByText('Je suis de nationalité étrangère')
     fireEvent.press(foreignCitizenDMSButton)
     expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledTimes(1)
-    expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledWith(env.DMS_FOREIGN_CITIZEN_URL)
     expect(mockedOpenUrl).toBeCalledWith(env.DMS_FOREIGN_CITIZEN_URL)
   })
 })

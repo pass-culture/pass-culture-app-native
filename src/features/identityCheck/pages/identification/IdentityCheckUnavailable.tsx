@@ -39,7 +39,7 @@ Nous reviendrons vers toi d’ici quelques jours.`}</StyledBody>
       )}
       <ButtonTertiaryWhite
         title={t`Retourner à l'accueil`}
-        onPress={onPress}
+        onPress={navigateToHome}
         icon={PlainArrowPrevious}
       />
     </GenericInfoPage>
