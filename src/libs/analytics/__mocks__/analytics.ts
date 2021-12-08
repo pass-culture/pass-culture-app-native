@@ -45,6 +45,7 @@ export const analytics: typeof actualAnalytics = {
   logHasSkippedTutorial: jest.fn(),
   logHelpCenterContactSignupConfirmationEmailSent: jest.fn(),
   logIdCheck: jest.fn(),
+  logIdentityCheckStep: jest.fn(),
   logIdentityCheckContinue: jest.fn(),
   logIdentityCheckAbort: jest.fn(),
   logIdentityCheckUbbleAbort: jest.fn(),

@@ -40,6 +40,7 @@ export enum AnalyticsEvent {
   HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
   HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'HelpCenterContactSignUpConfirmation',
   ID_CHECK = 'IdCheck',
+  IDENTITY_CHECK_STEP = 'IdentityCheckStep',
   IDENTITY_CHECK_CONTINUE = 'IdentityCheckContinue',
   IDENTITY_CHECK_ABORT = 'IdentityCheckAbort',
   IDENTITY_CHECK_UBBLE_ABORT = 'IdentityCheckUbbleAbort',

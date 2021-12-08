@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { StepConfig } from 'features/identityCheck/types'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
 import { useGetStepState } from 'features/identityCheck/utils/useGetStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -29,9 +30,14 @@ export const IdentityCheckStepper = () => {
       context.dispatch({ type: 'SET_STEP', payload: steps[0].name })
   }, [steps.length])
 
-  const showQuitIdentityCheckModal = () => {
+  function showQuitIdentityCheckModal() {
     analytics.logIdentityCheckAbort('stepper')
     showModal()
+  }
+
+  function navigateToNextStep(step: StepConfig) {
+    analytics.logIdentityCheckStep(step.name)
+    navigate(step.screens[0])
   }
 
   return (
@@ -53,7 +59,7 @@ export const IdentityCheckStepper = () => {
               key={step.name}
               step={step}
               state={getStepState(step.name)}
-              onPress={() => navigate(step.screens[0])}
+              onPress={() => navigateToNextStep(step)}
             />
           ))}
 

@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator'
 import { useUtmParams } from 'libs/utm'
 
@@ -88,6 +89,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId }),
   logClickBookOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId }),
+  logIdentityCheckStep: (step: IdentityCheckStep) =>
+    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_STEP, { step }),
   logIdentityCheckAbort: (from: 'stepper' | 'quitIdentityCheckModal') =>
     analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, { from }),
   logIdentityCheckContinue: () =>
