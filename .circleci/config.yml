@@ -1,5 +1,33 @@
 version: 2.1
 
+###################
+#  EXECUTORS
+###################
+
+executors:
+  node:
+    docker:
+      - image: cimg/node:12.16
+
+  android:
+    docker:
+      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+
+  ios:
+    macos:
+      xcode: '13.0.0'
+
+  gcp:
+    docker:
+      - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
+        auth:
+          username: _json_key # default username when using a JSON key file to authenticate
+          password: $GCP_INFRA_KEY
+
+###################
+#  COMMANDS
+###################
+
 commands:
   install_node_version:
     description: Install Node version with NVM
@@ -14,6 +42,7 @@ commands:
             echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
             echo 'nvm install 12.16.3 &> /dev/null' >> $BASH_ENV
             echo 'nvm alias default 12.16.3 &> /dev/null' >> $BASH_ENV
+
   install_node_modules:
     description: Install Node Dependencies
     steps:
@@ -29,6 +58,7 @@ commands:
           key: node-modules-v5-{{ checksum "yarn.lock" }}-{{ arch }}
           paths:
             - node_modules
+
   install_ruby_modules:
     description: Install Ruby Dependencies
     steps:
@@ -45,14 +75,17 @@ commands:
           paths:
             - .bundle/
             - vendor/bundle
+
   skip_testing_soft_deploy_when_new_tag:
     description: Skip job when new tag to deploy
     steps:
       - run: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' && circleci step halt || true
+
   setup_android_google_services_config:
     description: Setup android Google services config
     steps:
       - run: echo $ANDROID_GOOGLE_SERVICES_JSON > android/app/google-services.json
+
   setup_staging_secrets:
     description: Setup staging secrets env variables
     steps:
@@ -67,6 +100,7 @@ commands:
             echo "ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_STAGING" >> .env.staging
             echo "RECOMMENDATION_TOKEN=$RECOMMENDATION_TOKEN_STAGING" >> .env.staging
             echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.staging
+
   setup_integration_secrets:
     description: Setup integration secrets env variables
     steps:
@@ -77,6 +111,7 @@ commands:
             echo "ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_STAGING" >> .env.integration
             echo "RECOMMENDATION_TOKEN=$RECOMMENDATION_TOKEN_STAGING" >> .env.integration
             echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.integration
+
   setup_production_secrets:
     description: Setup production secrets env variables
     steps:
@@ -91,14 +126,17 @@ commands:
             echo "ALGOLIA_SEARCH_API_KEY=$ALGOLIA_SEARCH_API_KEY_PRODUCTION" >> .env.production
             echo "RECOMMENDATION_TOKEN=$RECOMMENDATION_TOKEN_PRODUCTION" >> .env.production
             echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.production
+
   install_cocoapods:
     description: Install cocoapods
     steps:
       - run: cd ios/ && bundle exec pod install
+
   decode_match_secrets:
     description: Decode match secrets
     steps:
       - run: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+
   setup_sentry:
     description: Setup sentry credentials
     steps:
@@ -112,6 +150,7 @@ commands:
             echo "" >> ~/.sentryclirc
             echo "[auth]" >> ~/.sentryclirc
             echo "token=$SENTRY_AUTH_TOKEN" >> ~/.sentryclirc
+
   notify-release:
     description: Notify deployment
     steps:
@@ -130,6 +169,7 @@ commands:
       - run: echo ${<< parameters.gcp_key_name >>} > ${HOME}/gcp-key.json
       - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
       - run: gcloud --quiet config set project ${GCP_PROJECT}
+
   copy_assetlinks:
     description: Copy assetlinks-<< parameters.env >>.json to assetlinks.json
     parameters:
@@ -138,6 +178,7 @@ commands:
     steps:
       - run: |
           cp ./public/.well-known/assetlinks-<< parameters.env >>.json ./public/.well-known/assetlinks.json
+
   build_web:
     description: Build decliweb
     parameters:
@@ -147,6 +188,7 @@ commands:
       - install_node_modules
       - run: |
           yarn build:<< parameters.env >>
+
   push-to-bucket:
     description: Push the built decliweb to a cloudstorage bucket
     parameters:
@@ -156,6 +198,7 @@ commands:
       - run: |
           set +eo pipefail
           gsutil rsync -r ./build gs://<< parameters.bucket_name >>
+
   invalidate-cache:
     description: Invalidate Cache
     parameters:
@@ -166,18 +209,20 @@ commands:
           name: Invalidate cache
           command: gcloud compute url-maps invalidate-cdn-cache << parameters.url_map_name >> --path "/*"
 
+###################
+#  JOBS
+###################
+
 jobs:
   checkout-and-install-deps:
-    docker:
-      - image: cimg/node:12.16
+    executor: node
     working_directory: ~/pass-culture
     steps:
       - checkout
       - install_node_modules
 
   test-lint-and-types:
-    docker:
-      - image: cimg/node:12.16
+    executor: node
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -191,8 +236,7 @@ jobs:
           command: yarn test:types
 
   test-native:
-    docker:
-      - image: cimg/node:12.16
+    executor: node
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -202,8 +246,7 @@ jobs:
           command: yarn test:unit:ci
 
   test-web:
-    docker:
-      - image: cimg/node:12.16
+    executor: node
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -213,15 +256,13 @@ jobs:
           command: yarn test:unit:web:ci
 
   notify-hard-release:
-    docker:
-      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    executor: node
     working_directory: ~/pass-culture
     steps:
       - notify-release
 
   deploy-soft-testing:
-    docker:
-      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    executor: android
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -242,8 +283,7 @@ jobs:
             ./scripts/deploy.sh -o ios -t soft -e testing
 
   build-android-production-hard:
-    docker:
-      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    executor: android
     working_directory: ~/pass-culture
     resource_class: medium+
     steps:
@@ -271,8 +311,7 @@ jobs:
             fi
 
   build-ios-production-hard:
-    macos:
-      xcode: '13.0.0'
+    executor: ios
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -299,8 +338,7 @@ jobs:
             fi
 
   deploy-android-testing-hard:
-    docker:
-      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    executor: android
     working_directory: ~/pass-culture
     resource_class: medium+
     steps:
@@ -325,8 +363,7 @@ jobs:
             ./scripts/deploy.sh -o android -t hard -e testing
 
   deploy-ios-testing-hard:
-    macos:
-      xcode: '13.0.0'
+    executor: ios
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -350,8 +387,7 @@ jobs:
             ./scripts/deploy.sh -o ios -t hard -e testing
 
   deploy-ios-staging-hard:
-    macos:
-      xcode: '13.0.0'
+    executor: ios
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -376,8 +412,7 @@ jobs:
             ./scripts/deploy.sh -o ios -t hard -e staging
 
   deploy-android-staging-hard:
-    docker:
-      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    executor: android
     working_directory: ~/pass-culture
     resource_class: medium+
     steps:
@@ -403,8 +438,7 @@ jobs:
             ./scripts/deploy.sh -o android -t hard -e staging
 
   deploy-soft-staging:
-    docker:
-      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    executor: android
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -426,8 +460,7 @@ jobs:
       - notify-release
 
   deploy-android-production-hard:
-    docker:
-      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    executor: android
     working_directory: ~/pass-culture
     resource_class: medium+
     steps:
@@ -453,8 +486,7 @@ jobs:
             ./scripts/deploy.sh -o android -t hard -e production
 
   deploy-ios-production-hard:
-    macos:
-      xcode: '13.0.0'
+    executor: ios
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -478,8 +510,7 @@ jobs:
             ./scripts/deploy.sh -o ios -t hard -e production
 
   deploy-soft-production:
-    docker:
-      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    executor: android
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -501,11 +532,7 @@ jobs:
       - notify-release
 
   deploy-web-testing:
-    docker:
-      - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
-        auth:
-          username: _json_key # default username when using a JSON key file to authenticate
-          password: $GCP_INFRA_KEY
+    executor: gcp
     working_directory: ~/pass-culture
     resource_class: medium+
     steps:
@@ -528,11 +555,7 @@ jobs:
           url_map_name: testing-decliweb-url-map
 
   deploy-web-staging:
-    docker:
-      - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
-        auth:
-          username: _json_key # default username when using a JSON key file to authenticate
-          password: $GCP_INFRA_KEY
+    executor: gcp
     working_directory: ~/pass-culture
     resource_class: medium+
     steps:
@@ -552,11 +575,7 @@ jobs:
           url_map_name: staging-decliweb-url-map
 
   deploy-web-integration:
-    docker:
-      - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
-        auth:
-          username: _json_key # default username when using a JSON key file to authenticate
-          password: $GCP_INFRA_KEY
+    executor: gcp
     working_directory: ~/pass-culture
     resource_class: medium+
     steps:
@@ -574,11 +593,7 @@ jobs:
           url_map_name: integration-decliweb-url-map
 
   deploy-web-prod:
-    docker:
-      - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:12
-        auth:
-          username: _json_key # default username when using a JSON key file to authenticate
-          password: $GCP_INFRA_KEY
+    executor: gcp
     working_directory: ~/pass-culture
     resource_class: medium+
     steps:
@@ -596,6 +611,10 @@ jobs:
           bucket_name: passculture-metier-prod-production-decliweb
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
+
+###################
+#  WORKFLOWS
+###################
 
 workflows:
   version: 2.1
