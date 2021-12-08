@@ -10,7 +10,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
 import { eduConnectClient } from 'libs/eduConnectClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { BicolorIdCardWithMagnifyingClass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingClass'
+import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
@@ -74,7 +74,7 @@ export const IdentityCheckEduConnectForm = () => {
         scrollChildren={
           <React.Fragment>
             <Center>
-              <BicolorIdCardWithMagnifyingClass size={getSpacing(33)} />
+              <BicolorIdCardWithMagnifyingGlass size={getSpacing(33)} />
             </Center>
 
             <JustifiedHeader color={ColorsEnum.GREY_DARK}>{t`Identification`}</JustifiedHeader>

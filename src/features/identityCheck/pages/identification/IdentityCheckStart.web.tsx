@@ -10,7 +10,7 @@ import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/compo
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
-import { BicolorIdCardWithMagnifyingClass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingClass'
+import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { Spacer, getSpacing } from 'ui/theme'
 
 export const IdentityCheckStart = () => {
@@ -29,7 +29,7 @@ export const IdentityCheckStart = () => {
         scrollChildren={
           <Container>
             <Spacer.Flex />
-            <BicolorIdCardWithMagnifyingClass size={getSpacing(30)} />
+            <BicolorIdCardWithMagnifyingGlass size={getSpacing(30)} />
             <Spacer.Column numberOfSpaces={6} />
             <IdentityVerificationText />
             <Spacer.Column numberOfSpaces={6} />

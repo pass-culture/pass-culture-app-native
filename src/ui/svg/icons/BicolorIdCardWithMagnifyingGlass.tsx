@@ -8,7 +8,7 @@ import { BicolorIconInterface } from './types'
 
 const ratio = 155 / 124
 
-export const BicolorIdCardWithMagnifyingClass: React.FC<BicolorIconInterface> = ({
+export const BicolorIdCardWithMagnifyingGlass: React.FC<BicolorIconInterface> = ({
   size = 32,
   color,
   color2,
