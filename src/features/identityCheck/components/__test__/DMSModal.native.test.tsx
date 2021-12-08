@@ -2,9 +2,9 @@ import React from 'react'
 
 import { DMSModal } from 'features/identityCheck/components/DMSModal'
 import { openUrl } from 'features/navigation/helpers/openUrl'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { fireEvent, render } from 'tests/utils'
-import { analytics } from 'libs/analytics'
 
 const hideModalMock = jest.fn()
 jest.mock('features/auth/settings')

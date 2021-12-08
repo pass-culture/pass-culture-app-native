@@ -23,14 +23,14 @@ export const IdentityCheckWebview: React.FC = () => {
     // See https://ubbleai.github.io/developer-documentation/#step-3-manage-user-return
     const status = parsedUrlParams['status']
     if (status === 'aborted') {
-      analytics.logIdentityCheckAbort({
+      analytics.logIdentityCheckUbbleAbort({
         method: IdentityCheckMethod.Ubble,
         reason: parsedUrlParams['return_reason'] || null,
         errorType: parsedUrlParams['error_type'] || null,
       })
       navigateToHome()
     } else if (url.includes(REDIRECT_URL_UBBLE)) {
-      analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.Ubble })
+      analytics.logIdentityCheckUbbleSuccess({ method: IdentityCheckMethod.Ubble })
       navigateToNextScreen()
     }
   }

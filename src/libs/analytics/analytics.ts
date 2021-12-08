@@ -88,13 +88,15 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId }),
   logClickBookOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId }),
-  logIdentityCheckAbort: (params: {
+  logIdentityCheckAbort: (from: 'stepper' | 'quitIdentityCheckModal') =>
+    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, { from }),
+  logIdentityCheckUbbleAbort: (params: {
     method: IdentityCheckMethod
     reason: string | null
     errorType: string | null
-  }) => analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, params),
-  logIdentityCheckSuccess: (params: { method: IdentityCheckMethod }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_SUCCESS, params),
+  }) => analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_UBBLE_ABORT, params),
+  logIdentityCheckUbbleSuccess: (params: { method: IdentityCheckMethod }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_UBBLE_SUCCESS, params),
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logOfferSeenDuration: (offerId: number, duration: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration }),

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
 import { navigateToHome } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
@@ -37,6 +38,8 @@ describe('<QuitIdentityCheckModal/>', () => {
     const abandonButton = getByText('Abandonner la vérification')
     fireEvent.press(abandonButton)
 
+    expect(analytics.logIdentityCheckAbort).toHaveBeenCalledTimes(1)
+    expect(analytics.logIdentityCheckAbort).toHaveBeenCalledWith('quitIdentityCheckModal')
     expect(navigateToHome).toBeCalled()
   })
 })

@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -26,6 +27,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   testIdSuffix,
 }) => {
   function quitIdentityCheck() {
+    analytics.logIdentityCheckAbort('quitIdentityCheckModal')
     hideModal()
     navigateToHome()
   }
