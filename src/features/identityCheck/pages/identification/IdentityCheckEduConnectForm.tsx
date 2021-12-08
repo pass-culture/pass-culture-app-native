@@ -91,8 +91,6 @@ export const IdentityCheckEduConnectForm = () => {
           firstName: url.searchParams.get('firstName') ?? null,
           lastName: url.searchParams.get('lastName') ?? null,
           birthDate: url.searchParams.get('dateOfBirth') ?? null,
-          // TODO PC-12075 check what to do with country code
-          countryCode: 'OK',
         },
       })
       navigateToNextScreen()

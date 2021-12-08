@@ -20,7 +20,6 @@ export interface IdentityCheckState {
     firstName: string | null
     lastName: string | null
     birthDate: string | null
-    countryCode: string | null
   }
   confirmation: {
     accepted: boolean
@@ -41,6 +40,5 @@ export type Action =
         firstName: string | null
         lastName: string | null
         birthDate: string | null
-        countryCode: string | null
       }
     }

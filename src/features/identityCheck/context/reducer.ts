@@ -13,7 +13,6 @@ export const initialIdentityCheckState: IdentityCheckState = {
     firstName: null,
     lastName: null,
     birthDate: null,
-    countryCode: null,
   },
   confirmation: {
     accepted: false,
