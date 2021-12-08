@@ -164,7 +164,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
           </Paragraphe>
           <Spacer.Column numberOfSpaces={8} />
           <InputContainer>
-            <CountryPickerPressable onPress={openCountryPickerModal}>
+            <StyledTouchableOpacity onPress={openCountryPickerModal}>
               <CountryPicker
                 withEmoji={Platform.OS !== 'web'}
                 countryCode={countryCode}
@@ -187,8 +187,8 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
                 testID="accordionArrow">
                 <ArrowNext size={getSpacing(6)} />
               </Animated.View>
-            </CountryPickerPressable>
-            <TextInput
+            </StyledTouchableOpacity>
+            <StyledTextInput
               autoCapitalize="none"
               isError={false}
               keyboardType="number-pad"
@@ -242,13 +242,18 @@ const InputContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  width: getSpacing(40),
+  width: '100%',
+  maxWidth: getSpacing(80),
 })
 
-const CountryPickerPressable = styled.TouchableOpacity({
+const StyledTouchableOpacity = styled.TouchableOpacity({
   flexDirection: 'row',
-  marginRight: getSpacing(3),
+  width: '35%',
 })
+
+const StyledTextInput = styled(TextInput).attrs({
+  containerStyle: { width: '65%' },
+})({})
 
 /**
  * 6 to 10 digits
