@@ -116,20 +116,20 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     settings?.enableNativeEacIndividual && settings.enableUnderageGeneralisation
 
   const financialHelpMessage = displayPostGeneralisationMessage
-    ? t`Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20` +
-      '\u00a0' +
-      t`€ à` +
-      '\u00a0' +
-      deposit +
-      '\u00a0' +
-      t`offerte par le Gouvernement.` +
+    ? t({
+        id: 'postGeneralisationFinancialHelpMessage',
+        values: { deposit },
+        message:
+          'Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20\u00a0€ à\u00a0{deposit}\u00a0offerte par le Gouvernement.',
+      }) +
       '\n' +
       '\n'
-    : t`Si tu as 18 ans, tu es éligible à une aide financière de` +
-      '\u00a0' +
-      deposit +
-      '\u00a0' +
-      t`offerte par le Gouvernement.` +
+    : t({
+        id: 'preGeneralisationFinancialHelpMessage',
+        values: { deposit },
+        message:
+          'Si tu as 18 ans, tu es éligible à une aide financière de\u00a0{deposit}\u00a0offerte par le Gouvernement.',
+      }) +
       '\n' +
       '\n'
 

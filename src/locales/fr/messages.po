@@ -866,10 +866,6 @@ msgstr "Encore un peu de patience... On se donne rendez-vous en janvier 2022 : n
 msgid "Enregistrer"
 msgstr "Enregistrer"
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20"
-msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20"
-
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 msgid "Entre ton adresse"
 msgstr "Entre ton adresse"
@@ -2315,10 +2311,6 @@ msgstr "Seules les sorties et offres physiques seront affichées pour une recher
 msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Si tu as 18 ans, tu es éligible à une aide financière de"
-msgstr "Si tu as 18 ans, tu es éligible à une aide financière de"
-
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
@@ -3143,11 +3135,6 @@ msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est e
 msgid "offerId is undefined"
 msgstr "offerId is undefined"
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "offerte par le Gouvernement."
-msgstr "offerte par le Gouvernement."
-
 #: src/ui/components/OrSeparator.tsx
 msgid "ou"
 msgstr "ou"
@@ -3163,6 +3150,14 @@ msgstr "page-introuvable"
 #: src/features/identityCheck/atoms/IdentityVerificationText.tsx
 msgid "passeport"
 msgstr "passeport"
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "postGeneralisationFinancialHelpMessage"
+msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20 € à {deposit} offerte par le Gouvernement."
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "preGeneralisationFinancialHelpMessage"
+msgstr "Si tu as 18 ans, tu es éligible à une aide financière de {deposit} offerte par le Gouvernement."
 
 #: src/features/bookOffer/components/BookingInformations.tsx
 msgid "prix duo"
@@ -3301,6 +3296,3 @@ msgstr "épuisé"
 msgid "€ viennent d'être crédités sur ton compte pass Culture"
 msgstr "€ viennent d'être crédités sur ton compte pass Culture"
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "€ à"
-msgstr "€ à"
