@@ -1,4 +1,5 @@
 import React from 'react'
+import { ViewStyle, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsEnum, getShadow, getSpacing, padding } from 'ui/theme'
@@ -8,6 +9,7 @@ type Props = {
   isFocus?: boolean
   inputHeight?: 'small' | 'tall'
   isInputDisabled?: boolean
+  style?: ViewStyle
 }
 
 const defaultProps: Props = {
@@ -29,7 +31,8 @@ export const StyledInputContainer: React.FC<Props> = (props) => {
     <StyledView
       height={props.inputHeight}
       borderColor={borderColor}
-      isInputDisabled={props.isInputDisabled}>
+      isInputDisabled={props.isInputDisabled}
+      style={props.style}>
       {props.children}
     </StyledView>
   )
@@ -37,13 +40,13 @@ export const StyledInputContainer: React.FC<Props> = (props) => {
 
 StyledInputContainer.defaultProps = defaultProps
 
-const StyledView = styled.View<{
+const StyledView = styled(View)<{
   height: Props['inputHeight']
   borderColor: ColorsEnum
   isInputDisabled?: boolean
 }>(({ height, borderColor, isInputDisabled, theme }) => ({
-  width: '100%',
   height: height === 'tall' ? getSpacing(12) : getSpacing(10),
+  width: '100%',
   flexDirection: 'row',
   alignItems: 'center',
   ...padding(1, 4),

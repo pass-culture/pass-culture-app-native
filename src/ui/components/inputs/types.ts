@@ -1,11 +1,12 @@
 import { RefAttributes } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
+import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 
 type CustomTextInputProps = {
   isError?: boolean
   label?: string
   RightIcon?: React.FC
   disabled?: boolean
+  containerStyle?: ViewStyle
 }
 
 type CustomSearchInputProps = {
@@ -55,6 +56,7 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
     label: props.label,
     RightIcon: props.RightIcon,
     disabled: props.disabled,
+    containerStyle: props.containerStyle,
   }
 }
 

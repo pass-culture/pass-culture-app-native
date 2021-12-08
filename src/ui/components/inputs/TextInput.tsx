@@ -42,7 +42,8 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
       <StyledInputContainer
         isFocus={isFocus}
         isError={customProps.isError}
-        isInputDisabled={customProps.disabled}>
+        isInputDisabled={customProps.disabled}
+        style={customProps.containerStyle}>
         <BaseTextInput {...nativeProps} ref={forwardedRef} onFocus={onFocus} onBlur={onBlur} />
         {!!customProps.RightIcon && (
           <RightIconContainer>
