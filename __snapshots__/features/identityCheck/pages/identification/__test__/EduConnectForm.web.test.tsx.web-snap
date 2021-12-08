@@ -248,6 +248,10 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
                     "alignSelf": "center",
                     "msFlexItemAlign": "center",
                     "msGridRowAlign": "center",
+                    "paddingBottom": "28px",
+                    "paddingLeft": "28px",
+                    "paddingRight": "28px",
+                    "paddingTop": "28px",
                   }
                 }
               >

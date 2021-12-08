@@ -1,9 +1,5 @@
 import { t } from '@lingui/macro'
-// TODO PC-12075 : remove idCheck imports
 import { EduConnectError, EduConnectErrorBoundary, EduConnectErrors } from '@pass-culture/id-check'
-// TODO PC-12075 : remove idCheck imports
-import { IdCardMagnifyingGlassIcon } from '@pass-culture/id-check/src/components/icons/IdCardMagnifyingGlass'
-// TODO PC-12075 : remove idCheck imports
 import { ErrorTrigger } from '@pass-culture/id-check/src/errors/ErrorTrigger'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
@@ -14,6 +10,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
 import { eduConnectClient } from 'libs/eduConnectClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
@@ -77,7 +74,7 @@ export const IdentityCheckEduConnectForm = () => {
         scrollChildren={
           <React.Fragment>
             <Center>
-              <IdCardMagnifyingGlassIcon size={getSpacing(47)} />
+              <BicolorIdCardWithMagnifyingGlass size={getSpacing(33)} />
             </Center>
 
             <JustifiedHeader color={ColorsEnum.GREY_DARK}>{t`Identification`}</JustifiedHeader>
@@ -101,6 +98,7 @@ export const IdentityCheckEduConnectForm = () => {
 
 const Center = styled.View({
   alignSelf: 'center',
+  padding: getSpacing(7),
 })
 
 const JustifiedText = styled(Typo.Body)({

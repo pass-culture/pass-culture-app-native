@@ -6,7 +6,7 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { BicolorIdCardWithMagnifyingClass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingClass'
+import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { Spacer, Typo, ColorsEnum, getSpacing } from 'ui/theme'
 
 export const IdentityCheckEduConnect = () => {
@@ -18,7 +18,7 @@ export const IdentityCheckEduConnect = () => {
         <React.Fragment>
           <Center>
             <Spacer.Column numberOfSpaces={10} />
-            <BicolorIdCardWithMagnifyingClass
+            <BicolorIdCardWithMagnifyingGlass
               color={ColorsEnum.SECONDARY}
               color2={ColorsEnum.PRIMARY}
               size={getSpacing(36)}

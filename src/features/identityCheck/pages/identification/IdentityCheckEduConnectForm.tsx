@@ -1,6 +1,4 @@
-// TODO PC-12075 : remove idCheck imports
 import { EduConnectError, EduConnectErrors, EduConnectErrorBoundary } from '@pass-culture/id-check'
-// TODO PC-12075 : remove idCheck imports
 import { ErrorTrigger } from '@pass-culture/id-check/src/errors/ErrorTrigger'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useRef, useState } from 'react'
@@ -93,8 +91,6 @@ export const IdentityCheckEduConnectForm = () => {
           firstName: url.searchParams.get('firstName') ?? null,
           lastName: url.searchParams.get('lastName') ?? null,
           birthDate: url.searchParams.get('dateOfBirth') ?? null,
-          // TODO PC-12075 check what to do with country code
-          countryCode: 'OK',
         },
       })
       navigateToNextScreen()

@@ -1,10 +1,4 @@
 import { t } from '@lingui/macro'
-// TODO PC-12075 : remove idCheck imports
-import { IdCheckFile, IdCheckRootStackParamList } from '@pass-culture/id-check'
-// TODO PC-12075 : remove idCheck imports
-import { UploadButton } from '@pass-culture/id-check/src/components/layout/UploadButton'
-import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
 import moment from 'moment'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -13,23 +7,13 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
-import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-interface ValidationProps {
-  // TODO PC-12075 : ca vient d ou ca ??
-  upload: (file: IdCheckFile) => Promise<void>
-}
-
-export const IdentityCheckValidation = ({ upload }: ValidationProps) => {
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-  const { navigate } = useNavigation<StackNavigationProp<IdCheckRootStackParamList>>()
-
+export const IdentityCheckValidation = () => {
   const { dispatch, identification } = useIdentityCheckContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
-  const { shouldUseEduConnect } = useEduconnect()
   const birthDate = identification.birthDate
     ? moment(identification.birthDate, 'YYYY-MM-DD').format('DD/MM/YYYY')
     : ''
@@ -37,15 +21,6 @@ export const IdentityCheckValidation = ({ upload }: ValidationProps) => {
   const navigateToNextEduConnectStep = async () => {
     dispatch({ type: 'SET_STEP', payload: IdentityCheckStep.CONFIRMATION })
     navigateToNextScreen()
-  }
-
-  function onValidate() {
-    if (shouldUseEduConnect) {
-      navigateToNextEduConnectStep()
-    } else {
-      // TODO PC-12075 : remove idCheck nav
-      navigate(identification.countryCode !== 'OK' ? 'Residence' : 'Success')
-    }
   }
 
   return (
@@ -69,13 +44,10 @@ export const IdentityCheckValidation = ({ upload }: ValidationProps) => {
       }
       fixedBottomChildren={
         <React.Fragment>
-          <StyledButtonPrimary title={t`Valider mes informations`} onPress={onValidate} />
-          {!shouldUseEduConnect && (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={3} />
-              <UploadButton text={t`Réessayer d'ajouter mon document`} upload={upload} grey />
-            </React.Fragment>
-          )}
+          <StyledButtonPrimary
+            title={t`Valider mes informations`}
+            onPress={navigateToNextEduConnectStep}
+          />
         </React.Fragment>
       }
     />
