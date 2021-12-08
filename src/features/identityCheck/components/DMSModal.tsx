@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -13,6 +14,16 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 interface Props {
   visible: boolean
   hideModal: () => void
+}
+
+const openDMSFrenchCitizenURL = () => {
+  analytics.logOpenDMSFrenchCitizenURL(env.DMS_FRENCH_CITIZEN_URL)
+  openUrl(env.DMS_FRENCH_CITIZEN_URL)
+}
+
+const openDMSForeignCitizenURL = () => {
+  analytics.logOpenDMSForeignCitizenURL(env.DMS_FOREIGN_CITIZEN_URL)
+  openUrl(env.DMS_FOREIGN_CITIZEN_URL)
 }
 
 export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
@@ -31,14 +42,14 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
     <Spacer.Column numberOfSpaces={8} />
     <CustomButtonTertiaryBlack
       title={t`Je suis de nationalité française`}
-      onPress={() => openUrl(env.DMS_FRENCH_CITIZEN_URL)}
+      onPress={openDMSFrenchCitizenURL}
       icon={ExternalSite}
     />
     <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Carte d’identité ou passeport.`}</Typo.Caption>
     <Spacer.Column numberOfSpaces={8} />
     <CustomButtonTertiaryBlack
       title={t`Je suis de nationalité étrangère`}
-      onPress={() => openUrl(env.DMS_FOREIGN_CITIZEN_URL)}
+      onPress={openDMSForeignCitizenURL}
       icon={ExternalSite}
     />
     <Typo.Caption color={ColorsEnum.GREY_DARK}>

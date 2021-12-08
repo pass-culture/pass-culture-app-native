@@ -49,6 +49,8 @@ export enum AnalyticsEvent {
   NOTIFICATION_TOGGLE = 'NotificationToggle',
   NO_SEARCH_RESULT = 'NoSearchResult',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
+  OPEN_DMS_FOREIGN_CITIZEN_URL = 'OpenDMSForeignCitizenURL',
+  OPEN_DMS_FRENCH_CITIZEN_URL = 'OpenDMSFrenchCitizenURL',
   OPEN_EXTERNAL_URL = 'OpenExternalURL',
   OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
   OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',

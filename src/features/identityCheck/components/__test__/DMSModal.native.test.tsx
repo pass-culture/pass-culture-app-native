@@ -4,6 +4,7 @@ import { DMSModal } from 'features/identityCheck/components/DMSModal'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
 import { fireEvent, render } from 'tests/utils'
+import { analytics } from 'libs/analytics'
 
 const hideModalMock = jest.fn()
 jest.mock('features/auth/settings')
@@ -22,6 +23,8 @@ describe('<DMSModal/>', () => {
     const { getByText } = render(<DMSModal visible={true} hideModal={hideModalMock} />)
     const frenchCitizenDMSButton = getByText('Je suis de nationalité française')
     fireEvent.press(frenchCitizenDMSButton)
+    expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledTimes(1)
+    expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL)
     expect(mockedOpenUrl).toBeCalledWith(env.DMS_FRENCH_CITIZEN_URL)
   })
 
@@ -29,6 +32,8 @@ describe('<DMSModal/>', () => {
     const { getByText } = render(<DMSModal visible={true} hideModal={hideModalMock} />)
     const foreignCitizenDMSButton = getByText('Je suis de nationalité étrangère')
     fireEvent.press(foreignCitizenDMSButton)
+    expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledTimes(1)
+    expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledWith(env.DMS_FOREIGN_CITIZEN_URL)
     expect(mockedOpenUrl).toBeCalledWith(env.DMS_FOREIGN_CITIZEN_URL)
   })
 })

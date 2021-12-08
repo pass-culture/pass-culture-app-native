@@ -124,6 +124,14 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page }),
   logNoSearchResult: (query: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query }),
+  logOpenDMSForeignCitizenURL: (url: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.OPEN_DMS_FOREIGN_CITIZEN_URL, {
+      url: url.slice(0, STRING_VALUE_MAX_LENGTH),
+    }),
+  logOpenDMSFrenchCitizenURL: (url: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.OPEN_DMS_FRENCH_CITIZEN_URL, {
+      url: url.slice(0, STRING_VALUE_MAX_LENGTH),
+    }),
   logOpenLocationSettings: () => analyticsProvider.logEvent(AnalyticsEvent.OPEN_LOCATION_SETTINGS),
   logOpenNotificationSettings: () =>
     analyticsProvider.logEvent(AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS),
