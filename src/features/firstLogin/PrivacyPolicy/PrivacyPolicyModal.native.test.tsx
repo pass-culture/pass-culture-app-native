@@ -40,13 +40,13 @@ describe('<PrivacyPolicyModal />', () => {
     expect(onApproval).not.toBeCalled()
   })
 
-  it('should close and approve when pressing button with text "Continuer"', () => {
+  it('should close and approve when pressing button with text "Autoriser"', () => {
     const { getByText } = renderPrivacyModal({
       onRefusal,
       onApproval,
       visible,
     })
-    fireEvent.press(getByText('Continuer'))
+    fireEvent.press(getByText('Autoriser'))
     expect(onApproval).toBeCalledTimes(1)
     expect(onRefusal).not.toBeCalled()
   })

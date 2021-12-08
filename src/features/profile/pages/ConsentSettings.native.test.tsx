@@ -28,11 +28,12 @@ describe('ConsentSettings', () => {
     storage.clear('has_accepted_cookie')
   })
 
-  it('should display inactive switch by default (has_accepted_cookie is null)', async () => {
+  it('should display inactive switch et set has_accepted_cookie to false if has_accepted_cookie is null', async () => {
     storage.saveObject('has_accepted_cookie', null)
     const { expectTrackingSwitchDisabled } = await renderConsentSettings()
 
-    await waitFor(() => {
+    await waitFor(async () => {
+      expect(await storage.readObject('has_accepted_cookie')).toBe(false)
       expectTrackingSwitchDisabled()
     })
   })

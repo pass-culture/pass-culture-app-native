@@ -31,6 +31,11 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
 
   useEffect(() => {
     storage.readObject('has_accepted_cookie').then((hasAcceptedCookie) => {
+      // If the user has navigated to this page from the privacy modal, we consider that
+      // as an implicit refusal, which they can change with the switch if they want to.
+      if (hasAcceptedCookie === null) {
+        storage.saveObject('has_accepted_cookie', false)
+      }
       setIsTrackingSwitchActive(Boolean(hasAcceptedCookie))
     })
   }, [])

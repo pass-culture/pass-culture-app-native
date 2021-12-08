@@ -292,7 +292,7 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
                 ]
               }
             >
-              Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre
+              Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur "Autoriser", tu acceptes l'utilisation de ces services détaillés dans notre
             </Text>
           </Text>
           <View
@@ -386,120 +386,196 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
             </Text>
           </Text>
           <View
-            accessibilityLabel="Continuer"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "borderRadius": 24,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
-              }
-            }
-            testID="Continuer"
-          >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 5,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-              textColor="#ffffff"
-            >
-              Continuer
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={2}
             style={
               Array [
                 Object {
-                  "height": 8,
+                  "alignItems": "center",
+                  "width": "100%",
                 },
               ]
             }
-          />
-          <View
-            accessibilityLabel="Paramètres de confidentialité"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 24,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
-              }
-            }
-            testID="Paramètres de confidentialité"
           >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
+            <View
+              accessibilityLabel="Refuser"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderColor": "#eb0055",
+                  "borderRadius": 24,
+                  "borderWidth": 2,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 320,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="Refuser"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+                textColor="#eb0055"
+              >
+                Refuser
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={3}
               style={
                 Array [
                   Object {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 5,
-                    "maxWidth": "100%",
+                    "height": 12,
                   },
                 ]
               }
-              textColor="#eb0055"
+            />
+            <View
+              accessibilityLabel="Autoriser"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 320,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="Autoriser"
             >
-              Paramètres de confidentialité
-            </Text>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+                textColor="#ffffff"
+              >
+                Autoriser
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Paramètres de confidentialité"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="Paramètres de confidentialité"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#626262",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 12,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+                textColor="#626262"
+                textSize={12}
+              >
+                Paramètres de confidentialité
+              </Text>
+            </View>
           </View>
         </View>
       </RCTScrollView>

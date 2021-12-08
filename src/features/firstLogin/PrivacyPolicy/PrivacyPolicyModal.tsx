@@ -6,12 +6,13 @@ import { navigateToHome, openUrl } from 'features/navigation/helpers'
 import { navigateFromRef, canGoBackFromRef, goBackFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
 
 export interface Props {
   visible: boolean
@@ -61,7 +62,7 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
       onRightIconPress={onRefusal}>
       <Description>
         <Typo.Body>
-          {t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre`}
+          {t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur "Autoriser", tu acceptes l'utilisation de ces services détaillés dans notre`}
         </Typo.Body>
       </Description>
       <ButtonTertiary
@@ -75,12 +76,33 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
           {t`Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil.`}
         </Typo.Caption>
       </SubDescription>
-      <ButtonPrimary title={t`Continuer`} onPress={onApproval} />
-      <Spacer.Column numberOfSpaces={2} />
-      <ButtonPrimaryWhite title={t`Paramètres de confidentialité`} onPress={goToConsentSettings} />
+      <CallToActionsContainer>
+        <StyleButtonSecondary title={t`Refuser`} onPress={onRefusal} />
+        <Spacer.Column numberOfSpaces={3} />
+        <StyleButtonPrimary title={t`Autoriser`} onPress={onApproval} />
+        <Spacer.Column numberOfSpaces={2} />
+        <ButtonTertiaryGreyDark
+          title={t`Paramètres de confidentialité`}
+          onPress={goToConsentSettings}
+          textSize={getSpacing(3)}
+        />
+      </CallToActionsContainer>
     </AppModal>
   )
 }
+
+const CallToActionsContainer = styled.View({
+  alignItems: 'center',
+  width: '100%',
+})
+
+const StyleButtonPrimary = styled(ButtonPrimary)({
+  maxWidth: getSpacing(80),
+})
+
+const StyleButtonSecondary = styled(ButtonSecondary)({
+  maxWidth: getSpacing(80),
+})
 
 const Description = styled.Text({
   textAlign: 'center',
