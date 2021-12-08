@@ -18,6 +18,7 @@ import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
+import { BicolorIdCardWithMagnifyingClass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingClass'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
@@ -156,6 +157,11 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Validate" component={Validate} />
       <Icon name="Invalidate" component={Invalidate} />
       <Icon name="Favorite" component={Favorite} />
+      <Icon
+        name="BicolorIdCardWithMagnifyingClass"
+        component={BicolorIdCardWithMagnifyingClass}
+        isNew
+      />
       <Icon name="MagnifyingGlassDeprecated" component={MagnifyingGlassDeprecated} />
       <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
       <Icon name="InfoDeprecated" component={InfoDeprecated} />
