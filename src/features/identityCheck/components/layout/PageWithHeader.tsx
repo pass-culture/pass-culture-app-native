@@ -31,14 +31,18 @@ export const PageWithHeader = (props: Props) => {
       <Spacer.TopScreen />
       <PageHeader title={props.title} />
       <CustomKeyboardAvoidingView>
-        {props.fixedTopChildren}
-        <ChildrenScrollView
-          bottomChildrenViewHeight={bottomChildrenViewHeight}
-          onContentSizeChange={onScrollViewContentSizeChange}
-          onLayout={onScrollViewLayout}
-          scrollEnabled={isScrollEnabled}>
-          {props.scrollChildren}
-        </ChildrenScrollView>
+        {props.fixedTopChildren ? (
+          <FixedTopChildrenView>{props.fixedTopChildren}</FixedTopChildrenView>
+        ) : null}
+        {props.scrollChildren ? (
+          <ChildrenScrollView
+            bottomChildrenViewHeight={bottomChildrenViewHeight}
+            onContentSizeChange={onScrollViewContentSizeChange}
+            onLayout={onScrollViewLayout}
+            scrollEnabled={isScrollEnabled}>
+            {props.scrollChildren}
+          </ChildrenScrollView>
+        ) : null}
         {props.fixedBottomChildren ? (
           <FixedBottomChildrenView
             onLayout={onFixedBottomChildrenViewLayout}
@@ -59,14 +63,7 @@ const Container = styled.View({
   flexDirection: 'column',
 })
 
-const FixedBottomChildrenView = styled.View({
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  right: 0,
-  paddingBottom: getSpacing(5),
-  paddingTop: getSpacing(3),
-  backgroundColor: ColorsEnum.WHITE,
+const FixedTopChildrenView = styled.View({
   paddingHorizontal: getSpacing(5),
 })
 
@@ -81,3 +78,14 @@ const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>((pro
     paddingHorizontal: getSpacing(5),
   },
 }))<ChildrenScrollViewProps>({})
+
+const FixedBottomChildrenView = styled.View({
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  paddingBottom: getSpacing(5),
+  paddingTop: getSpacing(3),
+  backgroundColor: ColorsEnum.WHITE,
+  paddingHorizontal: getSpacing(5),
+})
