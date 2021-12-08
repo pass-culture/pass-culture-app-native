@@ -32,12 +32,17 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
     navigateToHome()
   }
 
+  function continueIdentityCheck() {
+    analytics.logIdentityCheckContinue()
+    hideModal()
+  }
+
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
       <GenericInfoPage title={title} icon={WarningDeprecated} flex={false}>
         <StyledBody>{description}</StyledBody>
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimaryWhite title={t`Continuer la vérification`} onPress={hideModal} />
+        <ButtonPrimaryWhite title={t`Continuer la vérification`} onPress={continueIdentityCheck} />
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryWhite title={t`Abandonner la vérification`} onPress={quitIdentityCheck} />
       </GenericInfoPage>

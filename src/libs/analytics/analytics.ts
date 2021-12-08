@@ -90,6 +90,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId }),
   logIdentityCheckAbort: (from: 'stepper' | 'quitIdentityCheckModal') =>
     analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, { from }),
+  logIdentityCheckContinue: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_CONTINUE),
   logIdentityCheckUbbleAbort: (params: {
     method: IdentityCheckMethod
     reason: string | null

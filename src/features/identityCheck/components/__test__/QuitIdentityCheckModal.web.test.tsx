@@ -29,6 +29,7 @@ describe('<QuitIdentityCheckModal/>', () => {
     const resumeButton = getByText('Continuer la vérification')
     fireEvent.click(resumeButton)
 
+    expect(analytics.logIdentityCheckContinue).toHaveBeenCalledTimes(1)
     expect(mockHideModal).toHaveBeenCalled()
   })
 
