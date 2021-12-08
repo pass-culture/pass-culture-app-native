@@ -112,6 +112,8 @@ export const analytics = {
   }) => analyticsProvider.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params),
   logConsultWhyAnniversary: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY),
+  logQuitIdentityCheckUnavailable: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK_UNAVAIBLE),
   logCancelSignup: (pageName: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName }),
   logHelpCenterContactSignupConfirmationEmailSent: () =>

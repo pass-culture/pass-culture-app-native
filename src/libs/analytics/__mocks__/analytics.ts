@@ -65,6 +65,7 @@ export const analytics: typeof actualAnalytics = {
   logOpenNotificationSettings: jest.fn(),
   logProfilScrolledToBottom: jest.fn(),
   logProfilSignUp: jest.fn(),
+  logQuitIdentityCheckUnavailable: jest.fn(),
   logRecommendationModuleSeen: jest.fn(),
   logReinitializeFilters: jest.fn(),
   logResendEmailResetPasswordExpiredLink: jest.fn(),

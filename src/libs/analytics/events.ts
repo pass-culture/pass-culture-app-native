@@ -57,6 +57,7 @@ export enum AnalyticsEvent {
   OPEN_EXTERNAL_URL = 'OpenExternalURL',
   OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
   OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
+  QUIT_IDENTITY_CHECK_UNAVAIBLE = 'QuitIdentityCheckUnavaible',
   PROFIL_SCROLLED_TO_BOTTOM = 'ProfilScrolledToBottom',
   PROFIL_SIGN_UP = 'ProfilSignUp',
   RECOMMENDATION_MODULE_SEEN = 'RecommendationModuleSeen',
