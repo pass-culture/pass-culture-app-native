@@ -5,11 +5,13 @@ import { useQuery } from 'react-query'
 import { api } from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { NoContentError } from 'features/home/components/NoContentError'
 import { HomepageEntry } from 'features/home/contentful'
 import { EntryCollection, EntryFields, processHomepageEntry } from 'features/home/contentful'
 import { useSelectPlaylist } from 'features/home/selectPlaylist'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
+import { ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
 const DEPTH_LEVEL = 2
@@ -21,9 +23,13 @@ export const PARAMS = `?include=${DEPTH_LEVEL}&content_type=homepageNatif&access
 
 export async function getEntries() {
   const url = `${BASE_URL}/entries${PARAMS}`
-  const json = await getExternal<EntryCollection<EntryFields, 'homepageNatif'>>(url)
-
-  return resolveResponse(json)
+  try {
+    const json = await getExternal<EntryCollection<EntryFields, 'homepageNatif'>>(url)
+    return resolveResponse(json)
+  } catch (e) {
+    const error = e as Error
+    throw new ScreenError(error?.message, NoContentError)
+  }
 }
 
 export function useHomepageModules(entryId?: string) {

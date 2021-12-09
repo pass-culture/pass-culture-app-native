@@ -10,6 +10,7 @@ import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButto
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
 import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
+import { NoContentError } from 'features/home/components/NoContentError'
 import { Maintenance } from 'features/maintenance/Maintenance'
 import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -385,6 +386,19 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={'Underage account created'}
             onPress={() => navigate('UnderageAccountCreated')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={'Contentful KO error'}
+            onPress={() =>
+              setScreenError(
+                new ScreenError(
+                  'Échec de la requête https://cdn.contentful.com/spaces/2bg01iqy0isv/environments/testing/entries?include=2&content_type=homepageNatif&access_token=<TOKEN>, code: 400',
+                  NoContentError
+                )
+              )
+            }
           />
         </Row>
       </StyledContainer>
