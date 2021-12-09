@@ -152,7 +152,7 @@ commands:
             echo "token=$SENTRY_AUTH_TOKEN" >> ~/.sentryclirc
 
   notify-release-appcenter:
-    description: Send Slack notification
+    description: Send Slack notification for new AppCenter release
     parameters:
       env:
         type: string
@@ -164,8 +164,20 @@ commands:
             --data '{"channel":"C02QRBGS8GY","blocks":[{"type":"section","text":{"type": "mrkdwn","text":"*<< parameters.env >>*: Version *<< pipeline.git.branch >>* is now available in Appcenter 🚀"}},{"type":"actions","elements":[{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🤖 Android"},"url":"https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-android"},{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🍏 iOS"},"url":"https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-ios"},{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🖥 Web"},"url":"https://app.<< parameters.env >>.passculture.team/"}]}]}' \
             $SLACK_OPS_BOT_URL
 
-  notify-soft-release-production:
-    description: Notify deployment
+  notify-soft-release:
+    description: Send Slack notification for new soft release
+    parameters:
+      env:
+        type: string
+    steps:
+      - run:
+          name: Notify deployed version
+          command: |
+            BOT_MESSAGE="'*<< parameters.env >>* : [App Native] patch *"$CIRCLE_TAG"* has been successfully deployed :muscle:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+
+  notify-release-production:
+    description: Send Slack notification for new production release
     steps:
       - run:
           name: Notify deployed version
@@ -277,11 +289,25 @@ jobs:
           name: Unit Tests Web
           command: yarn test:unit:web:ci
 
-  notify-hard-release:
+  notify-hard-testing-release:
     executor: node
     working_directory: ~/pass-culture
     steps:
-      - notify-release
+      - notify-release-appcenter:
+          env: testing
+
+  notify-hard-staging-release:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - notify-release-appcenter:
+          env: staging
+
+  notify-hard-production-release:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - notify-release-production
 
   deploy-soft-testing:
     executor: android
@@ -303,8 +329,6 @@ jobs:
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
             ./scripts/deploy.sh -o ios -t soft -e testing
-      - notify-release-appcenter:
-          env: testing
 
   deploy-android-testing-hard:
     executor: android
@@ -426,7 +450,7 @@ jobs:
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t soft -e staging
-      - notify-release-appcenter:
+      - notify-soft-release:
           env: staging
 
   deploy-android-production-hard:
@@ -499,7 +523,8 @@ jobs:
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_PRODUCTION_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t soft -e production
-      - notify-soft-release-production
+      - notify-soft-release:
+          env: production
 
   deploy-web-testing:
     executor: gcp
@@ -636,6 +661,15 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
+      - notify-hard-testing-release:
+          filters:
+            tags:
+              only: /^(testing_)?v.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - deploy-ios-testing-hard
+            - deploy-android-testing-hard
       - deploy-android-staging-hard:
           filters:
             tags:
@@ -656,16 +690,13 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
-      - notify-hard-release:
+      - notify-hard-staging-release:
           filters:
             tags:
               only: /^v.*/
             branches:
               ignore: /.*/
           requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
             - deploy-ios-staging-hard
             - deploy-android-staging-hard
       - deploy-soft-staging:
@@ -698,16 +729,13 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
-      - notify-hard-release:
+      - notify-hard-production-release:
           filters:
             tags:
               only: /^prod-hard-deploy.*/
             branches:
               ignore: /.*/
           requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
             - deploy-ios-production-hard
             - deploy-android-production-hard
       - deploy-soft-production:
