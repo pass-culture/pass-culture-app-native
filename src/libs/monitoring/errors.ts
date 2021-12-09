@@ -56,15 +56,27 @@ export class ScreenError extends AsyncError {
   constructor(
     message: string,
     Screen: ComponentType<ScreenErrorProps>,
-    callback?: () => Promise<unknown> | (() => void)
+    callback?: () => Promise<unknown> | (() => void),
+    name?: string,
+    skipLogging?: boolean
   ) {
-    const skipLogging = false
-    super(message, callback, 'ScreenError', skipLogging)
+    super(message, callback, name ?? 'ScreenError', skipLogging ?? false)
     this.Screen = Screen
   }
 }
 
 ScreenError.prototype.name = 'ScreenError'
+
+export class UserProfilingError extends ScreenError {
+  constructor(
+    message: string,
+    Screen: ComponentType<ScreenErrorProps>,
+    callback?: () => Promise<unknown> | (() => void)
+  ) {
+    const skipLogging = true
+    super(message, Screen, callback, 'UserProfilingError', skipLogging)
+  }
+}
 
 export class OfferNotFoundError extends ScreenError {
   constructor(

@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { memo, PropsWithChildren } from 'react'
+import React, { memo, PropsWithChildren, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
@@ -26,12 +26,13 @@ interface NonBeneficiaryHeaderProps {
 }
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
+  const [error, setError] = useState<Error | undefined>()
   const today = new Date()
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
   const isUserUnderage = useIsUserUnderage()
 
   function onBannerPress() {
@@ -97,6 +98,10 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
         <YoungerBadge />
       </BodyContainer>
     )
+  }
+
+  if (error) {
+    throw error
   }
 
   return (

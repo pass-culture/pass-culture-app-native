@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { initialRouteName as idCheckInitialRouteName } from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
+import { useCallback } from 'react'
 
 import { api } from 'api/api'
 import {
@@ -9,55 +10,53 @@ import {
   SubscriptionStep,
   MaintenancePageType,
 } from 'api/gen'
+import { UserProfiling } from 'features/auth/signup/UserProfiling'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { useIsUnderUbbleLoadThreshold } from 'libs/firestore/ubbleLoad'
-import { AsyncError, eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
+import { UserProfilingError } from 'libs/monitoring/errors'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export const useBeneficiaryValidationNavigation = () => {
+export const useBeneficiaryValidationNavigation = (setError: (error: Error) => void) => {
   useSetIdCheckNavigationContext()
-  const navigateToNextStep = useNavigateToNextSubscriptionStep()
+  const navigateToNextStep = useNavigateToNextSubscriptionStep(setError)
 
-  const navigateToNextBeneficiaryValidationStep = async () => {
-    try {
-      const subscription = await api.getnativev1subscriptionnextStep()
-      navigateToNextStep(subscription)
-    } catch (_error) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED')
-    }
-  }
+  const navigateToNextBeneficiaryValidationStep = useCallback(() => {
+    return api.getnativev1subscriptionnextStep().then(navigateToNextStep).catch(setError)
+  }, [navigateToNextStep])
 
   return { navigateToNextBeneficiaryValidationStep }
 }
 
-const useNavigateToNextSubscriptionStep = () => {
+const useNavigateToNextSubscriptionStep = (setError: (error: Error) => void) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const isUserUnderage = useIsUserUnderage()
   const { showErrorSnackBar } = useSnackBarContext()
   const isUnderUbbleLoadThreshold = useIsUnderUbbleLoadThreshold()
 
-  return (nextSubscriptionStep: NextSubscriptionStepResponse) => {
+  function navigateToNextSubscriptionStep(nextSubscriptionStep: NextSubscriptionStepResponse) {
     const {
       allowedIdentityCheckMethods,
       nextSubscriptionStep: nextStep,
       maintenancePageType,
     } = nextSubscriptionStep
 
-    if (nextStep === SubscriptionStep.PhoneValidation) return navigate('SetPhoneNumber')
-    if (nextStep === SubscriptionStep.Maintenance) {
+    if (nextStep === SubscriptionStep.PhoneValidation) {
+      navigate('SetPhoneNumber')
+    } else if (nextStep === SubscriptionStep.Maintenance) {
       const shouldEnableDMS = maintenancePageType === MaintenancePageType.WithDms
-      return navigate('IdentityCheckUnavailable', { withDMS: shouldEnableDMS })
-    }
-    if (
+      navigate('IdentityCheckUnavailable', { withDMS: shouldEnableDMS })
+    } else if (
       nextStep === SubscriptionStep.IdentityCheck ||
       nextStep === SubscriptionStep.ProfileCompletion
     ) {
       if (redirectToUbble(allowedIdentityCheckMethods, isUnderUbbleLoadThreshold)) {
-        return navigate('IdentityCheck')
+        navigate('IdentityCheck')
+        return
       }
 
       try {
@@ -69,11 +68,18 @@ const useNavigateToNextSubscriptionStep = () => {
           message: t`Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures.`,
           timeout: SNACK_BAR_TIME_OUT,
         })
+        navigateToHome()
       }
+    } else if (nextStep === SubscriptionStep.UserProfiling) {
+      setError(new UserProfilingError('SubscriptionStep.UserProfiling', UserProfiling))
+    } else if (isUserUnderage) {
+      navigate('UnavailableEduConnect')
     } else {
-      return isUserUnderage ? navigate('UnavailableEduConnect') : navigateToHome()
+      navigateToHome()
     }
   }
+
+  return navigateToNextSubscriptionStep
 }
 
 const redirectToUbble = (

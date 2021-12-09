@@ -23,7 +23,8 @@ export const SelectSchool: React.FC = () => {
     city: '',
     academy: '',
   })
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  const [error, setError] = useState<Error | undefined>()
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
   useSetIdCheckNavigationContext()
 
   const { navigate } = useNavigation<UseNavigationType>()
@@ -48,6 +49,10 @@ export const SelectSchool: React.FC = () => {
   const onPressContinue = () => {
     analytics.logSelectSchool(selectedSchool)
     navigateToNextBeneficiaryValidationStep()
+  }
+
+  if (error) {
+    throw error
   }
 
   return (
