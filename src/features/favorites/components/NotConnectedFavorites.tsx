@@ -38,7 +38,7 @@ export const NotConnectedFavorites = () => {
         <ButtonContainer>
           <AppButton
             title={t`S'inscrire`}
-            onPress={() => navigate('SetEmail')}
+            onPress={() => navigate('SignupForm')}
             backgroundColor={ColorsEnum.WHITE}
             textColor={ColorsEnum.PRIMARY}
             loadingIconColor={ColorsEnum.WHITE}

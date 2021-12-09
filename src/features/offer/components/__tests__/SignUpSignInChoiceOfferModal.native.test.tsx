@@ -36,6 +36,6 @@ describe('SignUpSignInChoiceOfferModal', () => {
     const button = getByText(`S'inscrire`)
     fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('SetEmail')
+    expect(navigate).toBeCalledWith('SignupForm')
   })
 })

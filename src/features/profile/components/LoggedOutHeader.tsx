@@ -31,7 +31,7 @@ export function LoggedOutHeader() {
           title={t`S'inscrire`}
           onPress={() => {
             analytics.logProfilSignUp()
-            navigate('SetEmail', { preventCancellation: true })
+            navigate('SignupForm', { preventCancellation: true })
           }}
         />
         <Spacer.Column numberOfSpaces={5} />

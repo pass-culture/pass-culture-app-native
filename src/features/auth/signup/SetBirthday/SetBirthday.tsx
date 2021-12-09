@@ -1,34 +1,23 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { SIGNUP_NUMBER_OF_STEPS, useDepositAmountsByAge } from 'features/auth/api'
-import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { useDepositAmountsByAge } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
-import { useGoBack } from 'features/navigation/useGoBack'
+import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
 import { env } from 'libs/environment'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
-import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { DateInput, DateInputRef, DateValidation } from 'ui/components/inputs/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { StepDots } from 'ui/components/StepDots'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
-import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-type Props = StackScreenProps<RootStackParamList, 'SetBirthday'>
 
 let INITIAL_DATE: Date | null = null
 let INITIAL_DAY: string | undefined = undefined
@@ -53,7 +42,7 @@ interface State {
   isTooOld: boolean
 }
 
-export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
+export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const [wereBirthdayAnalyticsTriggered, setWereBirthdayAnalyticsTriggered] = useState(false)
   const [state, setState] = useState<State>({
     date: INITIAL_DATE,
@@ -70,22 +59,11 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const maxYear = now.getFullYear() - youngestAge
   const maxDate = new Date(maxYear, now.getMonth(), now.getDate())
 
-  const { email, isNewsletterChecked, password } = route.params
-
   const {
     visible: informationModalVisible,
     showModal: showInformationModal,
     hideModal: hideInformationModal,
   } = useModal(false)
-
-  const {
-    visible: fullPageModalVisible,
-    showModal: showFullPageModal,
-    hideModal: hideFullPageModal,
-  } = useModal(false)
-
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack('SetPassword', { email, isNewsletterChecked })
 
   const dateInputRef = useRef<DateInputRef>(null)
 
@@ -103,19 +81,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     const { date } = state
     if (date) {
       const birthday = formatDateToISOStringWithoutTime(date)
-      navigate('AcceptCgu', {
-        email,
-        isNewsletterChecked,
-        password,
-        birthday,
-        postalCode: undefined,
-      })
+      props.goToNextStep({ birthdate: birthday })
     }
-  }
-
-  function showQuitSignupModal() {
-    dateInputRef.current && dateInputRef.current.clearFocuses()
-    showFullPageModal()
   }
 
   function onPressWhy() {
@@ -177,45 +144,33 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
 
   return (
     <React.Fragment>
-      <BottomContentPage>
-        <ModalHeader
-          title={t`Ton anniversaire`}
-          leftIconAccessibilityLabel={t`Revenir en arrière`}
-          leftIcon={ArrowPrevious}
-          onLeftIconPress={goBack}
-          rightIconAccessibilityLabel={t`Abandonner l'inscription`}
-          rightIcon={Close}
-          onRightIconPress={showQuitSignupModal}
-        />
-        <BottomCardContentContainer>
-          <InnerContainer>
-            <ButtonTertiary title={t`Pourquoi ?`} onPress={onPressWhy} />
-            <Spacer.Column numberOfSpaces={10} />
-            <DateInputContainer>
-              <DateInput
-                autoFocus={true}
-                onChangeValue={onChangeValue}
-                ref={dateInputRef}
-                minDate={MIN_DATE}
-                maxDate={maxDate}
-                initialDay={INITIAL_DAY}
-                initialMonth={INITIAL_MONTH}
-                initialYear={INITIAL_YEAR}
-                onSubmit={goToNextStep}
-              />
-              {renderErrorMessages()}
-            </DateInputContainer>
-            <Spacer.Column numberOfSpaces={14} />
-            <ButtonPrimary
-              title={t`Continuer`}
-              disabled={!state.isDateValid}
-              onPress={goToNextStep}
+      <BottomCardContentContainer>
+        <InnerContainer>
+          <ButtonTertiary title={t`Pourquoi ?`} onPress={onPressWhy} />
+          <Spacer.Column numberOfSpaces={10} />
+          <DateInputContainer>
+            <DateInput
+              autoFocus={true}
+              onChangeValue={onChangeValue}
+              ref={dateInputRef}
+              minDate={MIN_DATE}
+              maxDate={maxDate}
+              initialDay={INITIAL_DAY}
+              initialMonth={INITIAL_MONTH}
+              initialYear={INITIAL_YEAR}
+              onSubmit={goToNextStep}
             />
-            <Spacer.Column numberOfSpaces={5} />
-            <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={3} />
-          </InnerContainer>
-        </BottomCardContentContainer>
-      </BottomContentPage>
+            {renderErrorMessages()}
+          </DateInputContainer>
+          <Spacer.Column numberOfSpaces={14} />
+          <ButtonPrimary
+            title={t`Continuer`}
+            disabled={!state.isDateValid}
+            onPress={goToNextStep}
+          />
+          <Spacer.Column numberOfSpaces={5} />
+        </InnerContainer>
+      </BottomCardContentContainer>
       <AppInformationModal
         title={modalTitle}
         numberOfLinesTitle={3}
@@ -228,12 +183,6 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           <StyledBody>{birthdayInformation}</StyledBody>
         </ModalChildrenContainer>
       </AppInformationModal>
-      <QuitSignupModal
-        visible={fullPageModalVisible}
-        resume={hideFullPageModal}
-        testIdSuffix="birthday-quit-signup"
-        signupStep={SignupSteps.Birthday}
-      />
     </React.Fragment>
   )
 }

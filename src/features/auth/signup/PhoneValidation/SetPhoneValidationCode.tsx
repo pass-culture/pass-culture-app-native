@@ -12,8 +12,9 @@ import { api } from 'api/api'
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { UserProfilingFraudRequest } from 'api/gen'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
-import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
 import { useAppSettings } from 'features/auth/settings'
+import { SignupStep } from 'features/auth/signup/enums'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -279,7 +280,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
         testIdSuffix="phone-validation-quit-signup"
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
-        signupStep={SignupSteps.PhoneNumber}
+        signupStep={SignupStep.PhoneNumber}
       />
     </React.Fragment>
   )

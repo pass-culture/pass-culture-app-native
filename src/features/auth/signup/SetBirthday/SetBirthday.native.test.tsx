@@ -1,22 +1,20 @@
 import { t } from '@lingui/macro'
-import { StackScreenProps } from '@react-navigation/stack'
 import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
 import { mockDefaultSettings } from 'features/auth/__mocks__/settings'
 import { useAppSettings } from 'features/auth/settings'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, RenderAPI } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
+
+const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 jest.mock('features/auth/settings')
 jest.mock('features/auth/api', () => {
@@ -41,20 +39,12 @@ describe('SetBirthday Page', () => {
   })
 
   it('should render properly', () => {
-    const { toJSON } = renderSetBirthday()
+    const { toJSON } = render(<SetBirthday {...props} />)
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should navigate to the previous page on back navigation', () => {
-    const { getByTestId } = renderSetBirthday()
-    const leftIcon = getByTestId('leftIcon')
-    fireEvent.press(leftIcon)
-
-    expect(mockGoBack).toBeCalledTimes(1)
-  })
-
   it('should keep disabled the button "Continuer" when the date is not complete', () => {
-    const renderAPI = renderSetBirthday()
+    const renderAPI = render(<SetBirthday {...props} />)
 
     changeDate(renderAPI, '1', '1', '1')
 
@@ -63,7 +53,7 @@ describe('SetBirthday Page', () => {
   })
 
   it('should show the correct deposit amount', async () => {
-    const component = renderSetBirthday()
+    const component = render(<SetBirthday {...props} />)
     fireEvent.press(component.getByTestId('Pourquoi ?'))
     expect(component.queryByText(/une aide financière de/)).toBeTruthy()
     expect(component.queryByText(new RegExp('300' + '\u00a0' + '€'))).toBeTruthy()
@@ -82,7 +72,7 @@ describe('SetBirthday Page', () => {
           data: mockSettings,
         } as UseQueryResult<SettingsResponse, unknown>)
     )
-    const component = renderSetBirthday()
+    const component = render(<SetBirthday {...props} />)
     fireEvent.press(component.getByTestId('Pourquoi ?'))
     expect(component.queryByText(/une aide financière progressive allant de/)).toBeTruthy()
 
@@ -98,7 +88,7 @@ describe('SetBirthday Page', () => {
   })
 
   it('should display the error message "date incorrecte" when the date is too old', async () => {
-    const renderAPI = renderSetBirthday()
+    const renderAPI = render(<SetBirthday {...props} />)
 
     changeDate(renderAPI, '31', '12', '1889')
 
@@ -109,7 +99,7 @@ describe('SetBirthday Page', () => {
   })
 
   it('should display the error message "tu dois avoir 15 ans" when the date is too young', () => {
-    const renderAPI = renderSetBirthday()
+    const renderAPI = render(<SetBirthday {...props} />)
 
     changeDate(renderAPI, '01', '01', '2006')
 
@@ -119,24 +109,19 @@ describe('SetBirthday Page', () => {
     expect(message).toBeTruthy()
   })
 
-  it('should navigate to CGU', () => {
-    const renderAPI = renderSetBirthday()
+  it('should call goToNextStep()', () => {
+    const renderAPI = render(<SetBirthday {...props} />)
 
     changeDate(renderAPI, '16', '01', '1995')
 
     const continueButton = renderAPI.getByText('Continuer')
     fireEvent.press(continueButton)
 
-    expect(navigate).toBeCalledWith('AcceptCgu', {
-      birthday: '1995-01-16',
-      email: 'john.doe@example.com',
-      isNewsletterChecked: true,
-      password: 'password',
-    })
+    expect(props.goToNextStep).toBeCalledWith({ birthdate: '1995-01-16' })
   })
 
   it('should display a information modal when clicking "Pourquoi" link', () => {
-    const { getByTestId, toJSON } = renderSetBirthday()
+    const { getByTestId, toJSON } = render(<SetBirthday {...props} />)
 
     const whyBirthdayLink = getByTestId('Pourquoi ?')
     fireEvent.press(whyBirthdayLink)
@@ -146,25 +131,9 @@ describe('SetBirthday Page', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should display 4 step dots with the third one as current step', () => {
-    const { getAllByTestId } = renderSetBirthday()
-    const dots = getAllByTestId('dot-icon')
-    expect(dots.length).toBe(4)
-    expect(dots[2].props.fill).toEqual(ColorsEnum.PRIMARY)
-  })
-
-  it('should call clear focuses', () => {
-    const { getByTestId, getByText } = renderSetBirthday()
-    const quitSignupModalButton = getByTestId("Abandonner l'inscription")
-
-    fireEvent.press(quitSignupModalButton)
-
-    expect(getByText("Continuer l'inscription")).toBeTruthy()
-  })
-
   describe('SetBirthday - analytics', () => {
     it('should log ConsultModalWhyAnniversary when clicking "Pourquoi" link', () => {
-      const { getByTestId } = renderSetBirthday()
+      const { getByTestId } = render(<SetBirthday {...props} />)
 
       const whyBirthdayLink = getByTestId('Pourquoi ?')
       fireEvent.press(whyBirthdayLink)
@@ -172,43 +141,21 @@ describe('SetBirthday Page', () => {
       expect(analytics.logConsultWhyAnniversary).toHaveBeenCalledTimes(1)
     })
 
-    it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
-      const { getByTestId, getByText } = renderSetBirthday()
-
-      const rightIcon = getByTestId('rightIcon')
-      fireEvent.press(rightIcon)
-
-      const abandonButton = getByText("Abandonner l'inscription")
-      fireEvent.press(abandonButton)
-
-      expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
-      expect(analytics.logCancelSignup).toHaveBeenCalledWith('Birthday')
-    })
-
     it('should not log SignUpTooYoung if the user is 15 years old or more', () => {
-      const renderAPI = renderSetBirthday()
+      const renderAPI = render(<SetBirthday {...props} />)
 
       changeDate(renderAPI, '01', '12', '2005')
       expect(analytics.logSignUpTooYoung).not.toBeCalled()
     })
 
     it('should log SignUpTooYoung if the user is 14 years old or less', () => {
-      const renderAPI = renderSetBirthday()
+      const renderAPI = render(<SetBirthday {...props} />)
 
       changeDate(renderAPI, '01', '12', '2006')
       expect(analytics.logSignUpTooYoung).toBeCalledTimes(1)
     })
   })
 })
-
-function renderSetBirthday() {
-  const navigationProps = {
-    route: {
-      params: { email: 'john.doe@example.com', isNewsletterChecked: true, password: 'password' },
-    },
-  } as StackScreenProps<RootStackParamList, 'SetBirthday'>
-  return render(<SetBirthday {...navigationProps} />)
-}
 
 function changeDate(renderAPI: RenderAPI, dayStr: string, monthStr: string, yearStr: string) {
   const dateInput = renderAPI.getByTestId(t`Entrée pour la date de naissance`)

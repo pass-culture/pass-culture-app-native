@@ -7,7 +7,7 @@ import { render, fireEvent } from 'tests/utils'
 import { LoggedOutHeader } from './LoggedOutHeader'
 
 describe('LoggedOutHeader', () => {
-  it('should navigate to the setEmail page', () => {
+  it('should navigate to the SignupForm page', () => {
     const { getByTestId } = render(<LoggedOutHeader />)
 
     const signupButton = getByTestId("S'inscrire")
@@ -15,7 +15,7 @@ describe('LoggedOutHeader', () => {
     fireEvent.press(signupButton)
 
     expect(analytics.logProfilSignUp).toBeCalled()
-    expect(navigate).toBeCalledWith('SetEmail', { preventCancellation: true })
+    expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true })
   })
   it('should navigate to the login page', () => {
     const { getByTestId } = render(<LoggedOutHeader />)

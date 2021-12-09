@@ -11,7 +11,6 @@ import { ReinitializePassword } from 'features/auth/forgottenPassword/Reinitiali
 import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
 import { Login } from 'features/auth/login/Login'
-import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
@@ -19,11 +18,9 @@ import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValida
 import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent'
 import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/SetPhoneValidationCode'
-import { SetBirthday } from 'features/auth/signup/SetBirthday'
-import { SetEmail } from 'features/auth/signup/SetEmail'
-import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
+import { SignupForm } from 'features/auth/signup/SignupForm'
 import { SelectSchool } from 'features/auth/signup/underageSignup/SelectSchool'
 import { SelectSchoolHome } from 'features/auth/signup/underageSignup/SelectSchoolHome'
 import { UnderageAccountCreated } from 'features/auth/signup/underageSignup/UnderageAccountCreated'
@@ -134,13 +131,6 @@ export const routes: Route[] = [
     component: PageNotFound,
     path: '*',
     options: { title: t`Page introuvable` },
-  },
-  {
-    name: 'AcceptCgu',
-    component: AcceptCgu,
-    hoc: withAsyncErrorBoundary,
-    path: 'creation-compte/cgu',
-    options: { title: t`Conditions d'utilisations` },
   },
   {
     name: 'AccountCreated',
@@ -340,23 +330,11 @@ export const routes: Route[] = [
     options: { title: t`Etablissement scolaire - Accueil` },
   },
   {
-    name: 'SetBirthday',
-    component: SetBirthday,
-    path: 'creation-compte/date-de-naissance',
-    options: { title: t`Date de naissance - Formulaire` },
-  },
-  {
-    name: 'SetEmail',
-    component: SetEmail,
-    path: 'creation-compte/email',
-    deeplinkPaths: ['set-email'],
-    options: { title: t`Email - Formulaire` },
-  },
-  {
-    name: 'SetPassword',
-    component: SetPassword,
-    path: 'creation-compte/mot-de-passe',
-    options: { title: t`Mot de passe - Formulaire` },
+    name: 'SignupForm',
+    component: SignupForm,
+    path: 'creation-compte',
+    deeplinkPaths: ['creation-compte/email'],
+    options: { title: t`Création de compte` },
   },
   {
     name: 'SignupConfirmationEmailSent',
