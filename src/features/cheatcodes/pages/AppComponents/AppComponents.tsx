@@ -1,5 +1,4 @@
 /* eslint-disable react-native/no-raw-text */
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { ScrollView, View, Text, Alert, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -12,7 +11,6 @@ import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTic
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
@@ -89,7 +87,6 @@ export const AppComponents: FunctionComponent = () => {
     showModal: showBasicModal,
     hideModal: hideBasicModal,
   } = useModal(false)
-  const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack('CheatMenu', undefined)
 
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
@@ -103,10 +100,6 @@ export const AppComponents: FunctionComponent = () => {
   const [callToActionIconString, setCallToActionIconString] = useState<string>()
   const [callToActionTitle, setCallToActionTitle] = useState<string>()
   const [callToActionLink, setCallToActionLink] = useState<string>()
-
-  function navigateToIdCheckUnavailable() {
-    navigate('IdCheckUnavailable')
-  }
 
   const onTriggerFakeLoading = useCallback(() => {
     setButtonIsLoading(true)
@@ -665,11 +658,6 @@ export const AppComponents: FunctionComponent = () => {
             </Center>
           </ThreeShapesTicket>
           <Text>- {`contient le mot "passculture"`}</Text>
-        </AlignedText>
-        <AlignedText>
-          <Center>
-            <ButtonPrimary title="Deny Access To IdCheck" onPress={navigateToIdCheckUnavailable} />
-          </Center>
         </AlignedText>
       </AccordionItem>
       <Spacer.Column numberOfSpaces={5} />

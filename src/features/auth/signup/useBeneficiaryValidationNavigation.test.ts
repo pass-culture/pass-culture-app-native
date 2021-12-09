@@ -1,6 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
-import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
@@ -8,10 +7,9 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import {
   IdentityCheckMethod,
   NextSubscriptionStepResponse,
-  SettingsResponse,
   SubscriptionStep,
+  MaintenancePageType,
 } from 'api/gen'
-import { useAppSettings } from 'features/auth/settings'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useIsUserUnderage } from 'features/profile/utils'
@@ -23,7 +21,6 @@ jest.mock('features/auth/settings')
 jest.mock('features/home/api')
 jest.mock('features/profile/utils')
 jest.mock('libs/firestore/ubbleLoad', () => ({ useIsUnderUbbleLoadThreshold: jest.fn(() => true) }))
-const mockedUseAppSettings = mocked(useAppSettings)
 const mockedUseIsUserUnderage = mocked(useIsUserUnderage)
 
 const allowedIdentityCheckMethods = [IdentityCheckMethod.Jouve]
@@ -101,24 +98,33 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
   })
 
-  it('should navigate to IdCheckUnavailable if nextStep is identity-check and allowIdCheckRegistration is false', async () => {
-    const mockedSettings = {
-      data: { allowIdCheckRegistration: true },
-      isLoading: false,
-    } as UseQueryResult<SettingsResponse, unknown>
-    mockedUseAppSettings.mockReturnValueOnce(mockedSettings)
-
+  it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and maintenancePageType is withDMS', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
-      nextSubscriptionStep: SubscriptionStep.IdentityCheck,
+      nextSubscriptionStep: SubscriptionStep.Maintenance,
+      maintenancePageType: MaintenancePageType.WithDms,
     })
 
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdCheckV2')
+      expect(navigate).toBeCalledWith('IdentityCheckUnavailable', { withDMS: true })
     })
+  })
+})
+it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and maintenancePageType is not withDMS', async () => {
+  mockNextStepRequest({
+    allowedIdentityCheckMethods,
+    nextSubscriptionStep: SubscriptionStep.Maintenance,
+    maintenancePageType: MaintenancePageType.WithoutDms,
+  })
+
+  const { result } = renderHook(useBeneficiaryValidationNavigation)
+  result.current.navigateToNextBeneficiaryValidationStep()
+
+  await waitForExpect(() => {
+    expect(navigate).toBeCalledWith('IdentityCheckUnavailable', { withDMS: false })
   })
 })
 
