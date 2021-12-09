@@ -1128,10 +1128,6 @@ msgstr "Hors connexion : en attente du réseau."
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Id Check indisponible"
-msgstr "Id Check indisponible"
-
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
@@ -2107,7 +2103,6 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 msgid "Retourner l'accueil"
 msgstr "Retourner l'accueil"
 
-#: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
@@ -2519,7 +2514,6 @@ msgstr "Toutes les catégories"
 msgid "Transmettre un document"
 msgstr "Transmettre un document"
 
-#: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Transmettre un dossier"
 msgstr "Transmettre un dossier"
@@ -2656,7 +2650,6 @@ msgstr "Tu peux encore dépenser :"
 msgid "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 
-#: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid ""
 "Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées.\n"
@@ -2843,7 +2836,6 @@ msgstr "Veux-tu abandonner l'inscription ?"
 msgid "Veux-tu abandonner la vérification d'identité ?"
 msgstr "Veux-tu abandonner la vérification d'identité ?"
 
-#: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Victime de notre succès !"
 msgstr "Victime de notre succès !"
@@ -2898,7 +2890,6 @@ msgstr "Votre lien"
 msgid "Vous devez d'abord générer un lien"
 msgstr "Vous devez d'abord générer un lien"
 
-#: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."

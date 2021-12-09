@@ -68,7 +68,6 @@ export type RootStackParamList = {
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
-  IdCheckUnavailable: undefined
   IdCheckTooManyAttempts: undefined
   Login?: {
     preventCancellation?: boolean

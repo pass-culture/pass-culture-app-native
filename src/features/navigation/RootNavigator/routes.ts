@@ -10,7 +10,6 @@ import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPass
 import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
-import { IdCheckUnavailable } from 'features/auth/IdcheckUnavailable'
 import { Login } from 'features/auth/login/Login'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
@@ -414,13 +413,6 @@ export const routes: Route[] = [
     component: FirstTutorial,
     path: 'introduction-tutoriel',
     options: { title: t`1er tutoriel` },
-  },
-  {
-    name: 'IdCheckUnavailable',
-    component: IdCheckUnavailable,
-    path: 'idcheck-indisponible',
-    options: { title: t`Id Check indisponible` },
-    secure: true,
   },
   {
     name: 'UnderageAccountCreated',
