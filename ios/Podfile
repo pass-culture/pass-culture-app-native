@@ -16,7 +16,7 @@ target 'PassCulture' do
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable these next few lines.
-  use_flipper!({ 'Flipper' => '0.120.0', 'Flipper-DoubleConversion' => '3.1.7' })
+  use_flipper!({ 'Flipper' => '0.123.0', 'Flipper-DoubleConversion' => '3.1.7' })
 
   permissions_path = '../node_modules/react-native-permissions/ios'
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
