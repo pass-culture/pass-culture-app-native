@@ -1,5 +1,3 @@
-import { EduConnectErrors, EduConnectError } from '@pass-culture/id-check'
-
 import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
 import { env } from 'libs/environment'
@@ -16,7 +14,7 @@ export const eduConnectClient = {
     const tokenContent = decodeAccessToken(accessToken ?? '')
     if (!tokenContent) {
       eventMonitoring.captureMessage('eduConnectClient failed to decodeAccessToken')
-      return Promise.reject(new EduConnectError(EduConnectErrors.unavailable))
+      return Promise.reject(new Error())
     }
     if (tokenContent.exp * 1000 <= new Date().getTime()) {
       try {
@@ -26,7 +24,7 @@ export const eduConnectClient = {
         eventMonitoring.captureException(error, {
           message: 'eduConnectClient failed to refreshAccessToken',
         })
-        return Promise.reject(new EduConnectError(EduConnectErrors.unavailable, error as Error))
+        return Promise.reject(new Error('eduConnectClient failed to refreshAccessToken'))
       }
     }
     return accessToken

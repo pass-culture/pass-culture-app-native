@@ -1,4 +1,3 @@
-import { EduConnectError, EduConnectErrors, EduConnectErrorBoundary } from '@pass-culture/id-check'
 import { ErrorTrigger } from '@pass-culture/id-check/src/errors/ErrorTrigger'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useRef, useState } from 'react'
@@ -10,8 +9,10 @@ import styled from 'styled-components/native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { EduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
+import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
+import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
-import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
 import { eduConnectClient } from 'libs/eduConnectClient'
 import { ColorsEnum } from 'ui/theme'
 
@@ -21,16 +22,7 @@ export const IdentityCheckEduConnectForm = () => {
 
   const webViewRef = useRef<WebView>(null)
   const [webViewSource, setWebViewSource] = useState<WebViewSource>()
-  const { shouldUseEduConnect } = useEduconnect()
-  const [error, setError] = useState<EduConnectError | null>(
-    shouldUseEduConnect ? null : new EduConnectError(EduConnectErrors.unavailable)
-  )
-
-  const checkIfEduConnectIsAvailable = useCallback(() => {
-    if (shouldUseEduConnect === false) {
-      setError(new EduConnectError(EduConnectErrors.unavailable))
-    }
-  }, [shouldUseEduConnect])
+  const [error, setError] = useState<EduConnectError | Error | null>(null)
 
   const loadWebView = useCallback(() => {
     function setWebView() {
@@ -50,33 +42,22 @@ export const IdentityCheckEduConnectForm = () => {
 
   useFocusEffect(
     useCallback(() => {
-      checkIfEduConnectIsAvailable()
       return loadWebView()
-    }, [checkIfEduConnectIsAvailable, loadWebView])
+    }, [loadWebView])
   )
 
   const onNavigationStateChange = (event: WebViewNavigation) => {
-    // EduConnect could not display the login form
-    if (event.title.startsWith('Erreur')) {
-      setError(new EduConnectError(EduConnectErrors.unavailable, 'EduConnectServiceError'))
-      return
-    }
     // PC Api detected an error after EduConnect authentication
     const isError = event.url.includes('educonnect/erreur')
     if (isError) {
-      if (event.url.includes('UserAgeNotValid')) {
-        setError(new EduConnectError(EduConnectErrors['not-eligible'], 'UserAgeNotValid'))
-      } else if (event.url.includes('UserNotWhitelisted')) {
-        setError(new EduConnectError(EduConnectErrors['not-eligible'], 'UserNotWhitelisted'))
-      } else if (event.url.includes('UserAlreadyBeneficiary')) {
-        setError(new EduConnectError(EduConnectErrors['not-eligible'], 'UserAlreadyBeneficiary'))
+      if (event.url.includes('UserAgeNotValid18YearsOld')) {
+        setError(new EduConnectError(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld))
+      } else if (event.url.includes('UserAgeNotValid')) {
+        setError(new EduConnectError(EduConnectErrorMessageEnum.UserAgeNotValid))
+      } else if (event.url.includes('UserTypeNotStudent')) {
+        setError(new EduConnectError(EduConnectErrorMessageEnum.UserTypeNotStudent))
       } else {
-        setError(
-          new EduConnectError(
-            EduConnectErrors['not-eligible'],
-            `UnspecifiedError URL error ${event.url}`
-          )
-        )
+        setError(new Error(`UnspecifiedError URL error ${event.url}`))
       }
       return
     }
@@ -99,8 +80,7 @@ export const IdentityCheckEduConnectForm = () => {
 
   const renderError = (errorDomain: string | undefined, errorCode: number, errorDesc: string) => {
     setError(
-      new EduConnectError(
-        EduConnectErrors.unavailable,
+      new Error(
         `EduConnectForm fail to render Webview. errorDomain: ${errorDomain}, errorCode: ${errorCode}, errorDesc: ${errorDesc}`
       )
     )

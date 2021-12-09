@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
+import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
 import {
   RootScreenNames,
   RootStackParamList,
@@ -61,36 +62,36 @@ export function NavigationIdentityCheck(): JSX.Element {
         />
         <Row half>
           <NavigationButton
-            title={'Ineligible Educonnect Error'}
-            onPress={() => {
-              setScreenError(new ScreenError('UserAgeNotValidEduConnect', NotEligibleEduConnect))
-            }}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'InvalidAgeFromEduConnect Error'}
+            title={'UserAgeNotValid Educonnect Error'}
             onPress={() => {
               setScreenError(
-                new ScreenError('InvalidAgeFromEduConnectEduConnect', NotEligibleEduConnect)
+                new ScreenError(EduConnectErrorMessageEnum.UserAgeNotValid, NotEligibleEduConnect)
               )
             }}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Invalid information EduConnect Error'}
+            title={'UserAgeNotValid18YearsOld Error'}
             onPress={() => {
-              setScreenError(new ScreenError('InvalidInformationEduConnect', NotEligibleEduConnect))
+              setScreenError(
+                new ScreenError(
+                  EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld,
+                  NotEligibleEduConnect
+                )
+              )
             }}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={'LegalRepresentative Error'}
+            title={'UserTypeNotStudent Error'}
             onPress={() => {
               setScreenError(
-                new ScreenError('LegalRepresentativeEduConnect', NotEligibleEduConnect)
+                new ScreenError(
+                  EduConnectErrorMessageEnum.UserTypeNotStudent,
+                  NotEligibleEduConnect
+                )
               )
             }}
           />
