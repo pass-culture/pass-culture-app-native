@@ -6,7 +6,6 @@ import { I18nProvider } from '@lingui/react'
 import globalThisShim from 'globalthis/shim'
 import React, { Suspense, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { QueryClientProvider } from 'react-query'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
@@ -22,8 +21,8 @@ import { activate } from 'libs/i18n'
 import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import { useStartBatchNotification } from 'libs/notifications'
-import { queryClient } from 'libs/queryClient'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
+import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { ThemeProvider } from 'libs/styled/ThemeProvider'
 import { theme } from 'theme'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -50,7 +49,7 @@ export function App() {
       <SupportedBrowsersGate>
         <ThemeProvider theme={theme}>
           <SafeAreaProvider>
-            <QueryClientProvider client={queryClient}>
+            <ReactQueryClientProvider>
               <AuthWrapper>
                 <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
                   <GeolocationWrapper>
@@ -75,7 +74,7 @@ export function App() {
                   </GeolocationWrapper>
                 </ErrorBoundary>
               </AuthWrapper>
-            </QueryClientProvider>
+            </ReactQueryClientProvider>
           </SafeAreaProvider>
         </ThemeProvider>
       </SupportedBrowsersGate>
