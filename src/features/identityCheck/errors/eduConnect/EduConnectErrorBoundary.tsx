@@ -5,7 +5,7 @@ import { AsyncErrorBoundary } from 'features/errors'
 import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
 import { eventMonitoring } from 'libs/monitoring'
 
-import { EduConnectError, EduConnectErrors } from './types'
+import { EduConnectError } from './types'
 
 export interface EduConnectFallbackProps extends FallbackProps {
   error: EduConnectError | Error
@@ -25,10 +25,7 @@ export const EduConnectErrorBoundary = memo(function EduConnectErrorBoundary({
   }, [error, errorMonitoring])
 
   const EduConnectErrorPage = useMemo(
-    () =>
-      error instanceof EduConnectError && !!EduConnectErrors[error.errorCode]
-        ? NotEligibleEduConnect
-        : AsyncErrorBoundary,
+    () => (error instanceof EduConnectError ? NotEligibleEduConnect : AsyncErrorBoundary),
     [error]
   )
 

@@ -7,6 +7,12 @@ import { Clock } from 'ui/svg/icons/Clock'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
 import { IconInterface } from 'ui/svg/icons/types'
 
+export enum EduConnectErrorMessageEnum {
+  UserAgeNotValid18YearsOld = 'UserAgeNotValid18YearsOld',
+  UserAgeNotValid = 'UserAgeNotValid',
+  UserTypeNotStudent = 'UserTypeNotStudent',
+}
+
 type NotEligibleEduConnectErrorData = {
   Icon: FunctionComponent<IconInterface>
   title: string
@@ -17,7 +23,9 @@ type NotEligibleEduConnectErrorData = {
   tertiaryButtonVisible?: boolean
   onPrimaryButtonPress?: () => void
 }
-const NonExistentError: NotEligibleEduConnectErrorData = {
+
+//(Yorick) TODO : cette page n'a pas lieu d'exister, on fallback vers une erreur générique
+const OutOfTestPhase: NotEligibleEduConnectErrorData = {
   Icon: Clock,
   title: t`Tu ne fais pas partie de la phase de test`,
   description:
@@ -70,26 +78,20 @@ const UserTypeNotStudent: NotEligibleEduConnectErrorData = {
     //(Wendy) TODO: Dans le prochain Ticket ajouter une navigation pour revenir à l'action précédente
   },
 }
-type NotEligibleEduConnectErrorMessage =
-  | 'UserAgeNotValid18YearsOld'
-  | 'UserAgeNotValid'
-  | 'UserTypeNotStudent'
 
-export function useNotEligibleEduConnectErrorData(
-  message: NotEligibleEduConnectErrorMessage | string
-) {
+export function useNotEligibleEduConnectErrorData(message: EduConnectErrorMessageEnum | string) {
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   switch (message) {
-    case 'UserAgeNotValid18YearsOld':
+    case EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld:
       return getInvalidInformation(navigateToNextBeneficiaryValidationStep)
 
-    case 'UserAgeNotValid':
+    case EduConnectErrorMessageEnum.UserAgeNotValid:
       return UserAgeNotValid
 
-    case 'UserTypeNotStudent':
+    case EduConnectErrorMessageEnum.UserTypeNotStudent:
       return UserTypeNotStudent
 
     default:
-      return NonExistentError
+      return OutOfTestPhase
   }
 }

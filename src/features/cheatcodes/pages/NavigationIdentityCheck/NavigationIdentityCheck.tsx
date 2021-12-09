@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
-import { NotEligibleEduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
+import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
 import {
   RootScreenNames,
   RootStackParamList,
@@ -65,10 +65,7 @@ export function NavigationIdentityCheck(): JSX.Element {
             title={'UserAgeNotValid Educonnect Error'}
             onPress={() => {
               setScreenError(
-                new ScreenError(
-                  NotEligibleEduConnectErrorMessageEnum.UserAgeNotValid,
-                  NotEligibleEduConnect
-                )
+                new ScreenError(EduConnectErrorMessageEnum.UserAgeNotValid, NotEligibleEduConnect)
               )
             }}
           />
@@ -79,7 +76,7 @@ export function NavigationIdentityCheck(): JSX.Element {
             onPress={() => {
               setScreenError(
                 new ScreenError(
-                  NotEligibleEduConnectErrorMessageEnum.UserAgeNotValid18YearsOld,
+                  EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld,
                   NotEligibleEduConnect
                 )
               )
@@ -92,7 +89,7 @@ export function NavigationIdentityCheck(): JSX.Element {
             onPress={() => {
               setScreenError(
                 new ScreenError(
-                  NotEligibleEduConnectErrorMessageEnum.UserTypeNotStudent,
+                  EduConnectErrorMessageEnum.UserTypeNotStudent,
                   NotEligibleEduConnect
                 )
               )
