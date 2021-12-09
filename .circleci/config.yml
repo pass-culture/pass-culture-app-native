@@ -628,7 +628,6 @@ workflows:
             branches:
               only: master
           requires:
-            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - build-ios-production-hard:
@@ -647,6 +646,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
+            - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - deploy-ios-testing-hard:
