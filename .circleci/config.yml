@@ -755,7 +755,6 @@ workflows:
             - GCP
             - GCP_APP_NATIVE_EHP
       - deploy-web-staging:
-          type: approval
           filters:
             tags:
               only:
@@ -764,14 +763,11 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-web
+            - wait_for_approval_web_to_deploy
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
       - deploy-web-integration:
-          type: approval
           filters:
             tags:
               only:
@@ -780,13 +776,11 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - test-lint-and-types
-            - test-web
+            - wait_for_approval_web_to_deploy
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
       - deploy-web-prod:
-          type: approval
           filters:
             tags:
               only:
@@ -795,9 +789,22 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-web
+            - wait_for_approval_web_to_deploy
           context:
             - GCP
             - GCP_APP_NATIVE_PROD
+      - wait_for_approval_web_to_deploy:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+                - /^v.*/
+                - /^hotfix-staging.*/
+            branches:
+              ignore: /.*/
+          type: approval
+          requires:
+            - checkout-and-install-deps
+            - test-lint-and-types
+            - test-web
