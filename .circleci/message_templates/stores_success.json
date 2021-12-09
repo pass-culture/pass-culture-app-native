@@ -1,0 +1,11 @@
+{
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*production*: Version <https://app.circleci.com|v1.165.4> can be published to stores 🚀"
+      }
+    }
+  ]
+}

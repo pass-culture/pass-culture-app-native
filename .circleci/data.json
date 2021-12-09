@@ -1,0 +1,25 @@
+{
+  "channel": "C02QRBGS8GY",
+  "blocks": [
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": { "type": "plain_text", "emoji": true, "text": "🤖 Android" },
+          "url": "https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-android"
+        },
+        {
+          "type": "button",
+          "text": { "type": "plain_text", "emoji": true, "text": "🍏 iOS" },
+          "url": "https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-ios"
+        },
+        {
+          "type": "button",
+          "text": { "type": "plain_text", "emoji": true, "text": "🖥 Web" },
+          "url": "https://app.<< parameters.env >>.passculture.team/"
+        }
+      ]
+    }
+  ]
+}

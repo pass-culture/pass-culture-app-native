@@ -160,6 +160,22 @@ commands:
             BOT_MESSAGE="'[App Native] Version *"$CIRCLE_TAG"* has been successfully deployed :muscle:'"
             curl -X POST -H 'Content-type: application/json' --data "{'text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
 
+  notify-slack-appcenter:
+    description: Send notification to Slack
+    parameters:
+      env:
+        type: string
+        default: testing
+    steps:
+      - run:
+          name: Send Slack notification
+          command: |
+            BOT_MESSAGE="'[App Native] Version *"$CIRCLE_TAG"* has been successfully deployed :muscle:'"
+            echo $BOT_MESSAGE
+            DATA="{'channel':'C02QRBGS8GY','blocks':[{'type':'section','text':{'type': 'mrkdwn','text':'*<< parameters.env >>*: Version *$CIRCLE_SHA1* is now available in Appcenter 🚀'}},{'type':'actions','elements':[{'type':'button','text':{'type':'plain_text','emoji':true,'text':'🤖 Android'},'url':'https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-android'},{'type':'button','text':{'type':'plain_text','emoji':true,'text':'🍏 iOS'},'url':'https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-ios'},{'type':'button','text':{'type':'plain_text','emoji':true,'text':'🖥 Web'},'url':'https://app.<< parameters.env >>.passculture.team/'}]}]}'
+            echo $DATA
+            curl -X POST -H 'Content-type: application/json' --data $DATA $SLACK_OPS_BOT_URL
+
   authenticate_gcp:
     description: Authenticate to a GCP project
     parameters:
@@ -254,12 +270,6 @@ jobs:
       - run:
           name: Unit Tests Web
           command: yarn test:unit:web:ci
-
-  notify-hard-release:
-    executor: node
-    working_directory: ~/pass-culture
-    steps:
-      - notify-release
 
   deploy-soft-testing:
     executor: android
@@ -402,7 +412,6 @@ jobs:
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t soft -e staging
-      - notify-release
 
   deploy-android-production-hard:
     executor: android
@@ -474,7 +483,6 @@ jobs:
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_PRODUCTION_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t soft -e production
-      - notify-release
 
   deploy-web-testing:
     executor: gcp
@@ -553,6 +561,11 @@ jobs:
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
 
+  test-job-slack:
+    executor: node
+    steps:
+      - notify-slack-appcenter
+
 ###################
 #  WORKFLOWS
 ###################
@@ -621,18 +634,6 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
-      - notify-hard-release:
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-            - deploy-ios-staging-hard
-            - deploy-android-staging-hard
       - deploy-soft-staging:
           filters:
             tags:
@@ -663,18 +664,6 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
-      - notify-hard-release:
-          filters:
-            tags:
-              only: /^prod-hard-deploy.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-            - deploy-ios-production-hard
-            - deploy-android-production-hard
       - deploy-soft-production:
           filters:
             tags:
@@ -699,7 +688,6 @@ workflows:
             - GCP
             - GCP_APP_NATIVE_EHP
       - deploy-web-staging:
-          type: approval
           filters:
             tags:
               only:
@@ -711,11 +699,11 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-web
+            - wait_for_approval
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
       - deploy-web-integration:
-          type: approval
           filters:
             tags:
               only:
@@ -726,11 +714,17 @@ workflows:
           requires:
             - test-lint-and-types
             - test-web
+            - wait_for_approval
           context:
             - GCP
             - GCP_APP_NATIVE_EHP
+      - test-job-slack:
+          filters:
+            branches:
+              only: PC-12130
+          context:
+            - Slack
       - deploy-web-prod:
-          type: approval
           filters:
             tags:
               only:
@@ -742,6 +736,13 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-web
+            - wait_for_approval
           context:
             - GCP
             - GCP_APP_NATIVE_PROD
+      # - slack/on-hold:
+      #     context: Slack
+      - wait_for_approval:
+          type: approval
+          # requires:
+          #   - slack/on-hold
