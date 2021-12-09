@@ -75,10 +75,6 @@ msgstr "18 ans"
 msgid "1er tutoriel"
 msgstr "1er tutoriel"
 
-#: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
-msgid "6 12 34 56 78"
-msgstr "6 12 34 56 78"
-
 #: src/ui/components/inputs/DateInput.tsx
 #: src/ui/components/inputs/DateInput.web.test.tsx
 #: src/ui/components/inputs/DateInput.web.test.tsx
@@ -258,6 +254,10 @@ msgstr "Aucune valeur à sauvegarder"
 #: src/features/search/sections/OfferDate.tsx
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
+
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
+msgid "Autoriser"
+msgstr "Autoriser"
 
 #: src/libs/notifications/components/PushNotificationsModal.tsx
 msgid "Autoriser les notifications"
@@ -596,7 +596,6 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
@@ -1715,8 +1714,8 @@ msgid "Nous reviendrons vers toi dès que le service sera rétabli."
 msgstr "Nous reviendrons vers toi dès que le service sera rétabli."
 
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
-msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
+msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur \"Autoriser\", tu acceptes l'utilisation de ces services détaillés dans notre"
+msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur \"Autoriser\", tu acceptes l'utilisation de ces services détaillés dans notre"
 
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "Nous étudions ton dossier..."
@@ -2080,6 +2079,10 @@ msgstr "Redirection en cours"
 msgid "Refais une demande en vérifiant ton identité avec ta pièce d’identité."
 msgstr "Refais une demande en vérifiant ton identité avec ta pièce d’identité."
 
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
+msgid "Refuser"
+msgstr "Refuser"
+
 #: src/features/bookOffer/components/BookingImpossible.tsx
 msgid "Rends-toi vite sur le site pass Culture afin de la réserver"
 msgstr "Rends-toi vite sur le site pass Culture afin de la réserver"
@@ -2185,10 +2188,6 @@ msgstr "Reviens à partir du 31 janvier pour poursuivre ton inscription et bén�
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 msgid "Réessayer"
 msgstr "Réessayer"
-
-#: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
-msgid "Réessayer d'ajouter mon document"
-msgstr "Réessayer d'ajouter mon document"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Réessayer de m'identifier"
@@ -2521,6 +2520,7 @@ msgid "Transmettre un document"
 msgstr "Transmettre un document"
 
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Transmettre un dossier"
 msgstr "Transmettre un dossier"
 
@@ -2657,6 +2657,7 @@ msgid "Tu peux modifier tes paramètres de confidentialité ici ou dans la page 
 msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 
 #: src/features/auth/IdcheckUnavailable/IdCheckUnavailable.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid ""
 "Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées.\n"
 "Nous reviendrons vers toi d’ici quelques jours."
@@ -2729,6 +2730,10 @@ msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
+
+#: src/features/profile/pages/ChangeEmail/AlreadyChangedEmailDisclaimer.tsx
+msgid "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams."
+msgstr "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams."
 
 #: src/api/__mocks__/apiHelpers.ts
 #: src/api/apiHelpers.ts

@@ -1,4 +1,4 @@
-export { getStateFromPath, getPathFromState } from '@react-navigation/native'
+export const { getStateFromPath, getPathFromState } = jest.requireActual('@react-navigation/native')
 import { useEffect } from 'react'
 
 export const addListener = jest.fn()
@@ -25,7 +25,7 @@ export const createNavigationContainerRef = () => ({
   current: navigation,
 })
 
-export const useRoute = jest.fn()
+export const useRoute = jest.fn().mockReturnValue({ params: {} })
 export const useFocusEffect = useEffect
 export const NavigationContainer = jest.fn()
 export const useNavigationState = jest.fn()
