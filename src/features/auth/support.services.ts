@@ -34,10 +34,7 @@ export const contactSupport = {
       .catch(() => eventMonitoring.captureException(new ContactSupportError('GenericQuestion')))
   },
   forSignupConfirmationEmailNotReceived() {
-    openUrl(
-      'https://aide.passculture.app/fr/articles/5257121-je-n-ai-pas-recu-le-mail-de-confirmation-de-creation-de-compte',
-      { shouldLogEvent: false }
-    )
+    openUrl(env.FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED, { shouldLogEvent: false })
       .then(() => analytics.logMailTo('forSignupConfirmationEmailNotReceived'))
       .catch(() =>
         eventMonitoring.captureException(
