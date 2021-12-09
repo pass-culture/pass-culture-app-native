@@ -305,7 +305,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             accessibilityLabel="C’est quoi ÉduConnect ?"
             accessible={true}
             collapsable={false}
-            focusable={false}
+            focusable={true}
             nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -366,7 +366,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             </Text>
           </View>
           <View
-            accessibilityLabel="Identification avec ÉduConnect  "
+            accessibilityLabel="Identification avec ÉduConnect"
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -396,7 +396,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                 "width": "100%",
               }
             }
-            testID="Identification avec ÉduConnect  "
+            testID="Identification avec ÉduConnect"
           >
             <Text
               adjustsFontSizeToFit={false}
@@ -415,7 +415,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
               }
               textColor="#ffffff"
             >
-              Identification avec ÉduConnect  
+              Identification avec ÉduConnect
             </Text>
           </View>
           <View
@@ -713,7 +713,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             accessibilityLabel="Identification manuelle"
             accessible={true}
             collapsable={false}
-            focusable={false}
+            focusable={true}
             nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1096,7 +1096,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             accessibilityLabel="C’est quoi ÉduConnect ?"
             accessible={true}
             collapsable={false}
-            focusable={false}
+            focusable={true}
             nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1157,7 +1157,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             </Text>
           </View>
           <View
-            accessibilityLabel="Identification avec ÉduConnect  "
+            accessibilityLabel="Identification avec ÉduConnect"
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -1187,7 +1187,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 "width": "100%",
               }
             }
-            testID="Identification avec ÉduConnect  "
+            testID="Identification avec ÉduConnect"
           >
             <Text
               adjustsFontSizeToFit={false}
@@ -1206,7 +1206,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               }
               textColor="#ffffff"
             >
-              Identification avec ÉduConnect  
+              Identification avec ÉduConnect
             </Text>
           </View>
           <View
@@ -1504,7 +1504,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             accessibilityLabel="Identification manuelle"
             accessible={true}
             collapsable={false}
-            focusable={false}
+            focusable={true}
             nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
