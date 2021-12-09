@@ -38,6 +38,8 @@ export const identityCheckReducer = (
       return { ...state, profile: { ...state.profile, city: action.payload } }
     case 'SET_ADDRESS':
       return { ...state, profile: { ...state.profile, address: action.payload } }
+    case 'SET_IDENTIFICATION':
+      return { ...state, identification: { ...state.identification, ...action.payload } }
     default:
       return state
   }
