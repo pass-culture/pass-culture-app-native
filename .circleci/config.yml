@@ -161,7 +161,7 @@ commands:
           name: Notify deployed version
           command: |
             curl -X POST -H 'Content-type: application/json' \
-            --data '{"channel":"C02QRBGS8GY","blocks":[{"type":"section","text":{"type": "mrkdwn","text":"*<< parameters.env >>*: Version *<< pipeline.git.branch >>* is now available in Appcenter 🚀"}},{"type":"actions","elements":[{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🤖 Android"},"url":"https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-android"},{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🍏 iOS"},"url":"https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-ios"},{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🖥 Web"},"url":"https://app.<< parameters.env >>.passculture.team/"}]}]}' \
+            --data '{"channel":"C02QRBGS8GY","blocks":[{"type":"section","text":{"type": "mrkdwn","text":"*<< parameters.env >>*: Version *<< pipeline.git.tag >>* is now available in Appcenter 🚀"}},{"type":"actions","elements":[{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🤖 Android"},"url":"https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-android"},{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🍏 iOS"},"url":"https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-ios"},{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🖥 Web"},"url":"https://app.<< parameters.env >>.passculture.team/"}]}]}' \
             $SLACK_OPS_BOT_URL
 
   notify-soft-release:
