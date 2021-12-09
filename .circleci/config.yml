@@ -507,6 +507,7 @@ jobs:
           username: _json_key # default username when using a JSON key file to authenticate
           password: $GCP_INFRA_KEY
     working_directory: ~/pass-culture
+    resourceclass: medium+
     steps:
       - checkout
       - copy_assetlinks:
