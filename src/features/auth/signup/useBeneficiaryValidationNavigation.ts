@@ -3,8 +3,12 @@ import { initialRouteName as idCheckInitialRouteName } from '@pass-culture/id-ch
 import { useNavigation } from '@react-navigation/native'
 
 import { api } from 'api/api'
-import { IdentityCheckMethod, NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
-import { useAppSettings } from 'features/auth/settings'
+import {
+  IdentityCheckMethod,
+  NextSubscriptionStepResponse,
+  SubscriptionStep,
+  MaintenancePageType,
+} from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
@@ -31,21 +35,27 @@ export const useBeneficiaryValidationNavigation = () => {
 }
 
 const useNavigateToNextSubscriptionStep = () => {
-  const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
   const isUserUnderage = useIsUserUnderage()
   const { showErrorSnackBar } = useSnackBarContext()
   const isUnderUbbleLoadThreshold = useIsUnderUbbleLoadThreshold()
 
   return (nextSubscriptionStep: NextSubscriptionStepResponse) => {
-    const { allowedIdentityCheckMethods, nextSubscriptionStep: nextStep } = nextSubscriptionStep
+    const {
+      allowedIdentityCheckMethods,
+      nextSubscriptionStep: nextStep,
+      maintenancePageType,
+    } = nextSubscriptionStep
 
     if (nextStep === SubscriptionStep.PhoneValidation) return navigate('SetPhoneNumber')
+    if (nextStep === SubscriptionStep.Maintenance) {
+      const shouldEnableDMS = maintenancePageType === MaintenancePageType.WithDms
+      return navigate('IdentityCheckUnavailable', { withDMS: shouldEnableDMS })
+    }
     if (
       nextStep === SubscriptionStep.IdentityCheck ||
       nextStep === SubscriptionStep.ProfileCompletion
     ) {
-      if (!settings?.allowIdCheckRegistration) return navigate('IdCheckUnavailable')
       if (redirectToUbble(allowedIdentityCheckMethods, isUnderUbbleLoadThreshold)) {
         return navigate('IdentityCheck')
       }
