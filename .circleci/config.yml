@@ -185,15 +185,6 @@ commands:
             BOT_MESSAGE="'*production* : [App Native] Version *"$CIRCLE_TAG"* has been successfully deployed :muscle:'"
             curl -X POST -H 'Content-type: application/json' --data "{'text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
 
-  notify-release:
-    description: Notify deployment
-    steps:
-      - run:
-          name: Notify deployed version
-          command: |
-            BOT_MESSAGE="'[App Native] Version *"$CIRCLE_TAG"* has been successfully deployed :muscle:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-
   authenticate_gcp:
     description: Authenticate to a GCP project
     parameters:
@@ -606,12 +597,6 @@ jobs:
           bucket_name: passculture-metier-prod-production-decliweb
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
-
-  test-job-slack:
-    executor: node
-    steps:
-      - notify-release-appcenter:
-          env: staging
 
 ###################
 #  WORKFLOWS
