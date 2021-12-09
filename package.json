@@ -151,7 +151,7 @@
     "react-native-tracking-transparency": "^0.1.0",
     "react-native-web-swiper": "2.2.1",
     "react-native-webview": "^11.14.0",
-    "react-query": "^3.33.1",
+    "react-query": "3.34.0",
     "react-test-renderer": "17.0.2",
     "search-params": "^4.0.0",
     "styled-components": "^5.2.0",
