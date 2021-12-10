@@ -3,7 +3,6 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SetEmailModalContent } from 'features/auth/components/signupComponents'
 import { env } from 'libs/environment'
 import { randomAlphaString } from 'libs/random'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -48,7 +47,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
   }
 
   return (
-    <SetEmailModalContent>
+    <React.Fragment>
       <InputContainer>
         <EmailInput
           label={t`Adresse e-mail`}
@@ -80,7 +79,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         disabled={shouldDisableValidateButton}
       />
       <Spacer.Column numberOfSpaces={5} />
-    </SetEmailModalContent>
+    </React.Fragment>
   )
 }
 

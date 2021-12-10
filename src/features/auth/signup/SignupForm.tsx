@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useState, useCallback } from 'react'
 import { Keyboard } from 'react-native'
 
 import { SIGNUP_NUMBER_OF_STEPS, useSignUp } from 'features/auth/api'
@@ -13,12 +13,14 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { AsyncError, MonitoringError } from 'libs/monitoring'
+import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
+import { Spacer } from 'ui/theme'
 
 import { PreValidationSignupStep } from './enums'
 import { SetBirthday } from './SetBirthday'
@@ -26,61 +28,60 @@ import { SetEmail } from './SetEmail'
 import { SignupData, PreValidationSignupStepProps } from './types'
 
 type SignupStepConfig = {
+  name: PreValidationSignupStep
   headerTitle: string
   Component: React.FunctionComponent<PreValidationSignupStepProps>
 }
 
-const SIGNUP_STEP_CONFIG: Record<PreValidationSignupStep, SignupStepConfig> = {
-  [PreValidationSignupStep.Email]: {
+const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
+  {
+    name: PreValidationSignupStep.Email,
     headerTitle: t`Adresse e-mail`,
     Component: SetEmail,
   },
-  [PreValidationSignupStep.Password]: {
+  {
+    name: PreValidationSignupStep.Password,
     headerTitle: t`Mot de passe`,
     Component: SetPassword,
   },
-  [PreValidationSignupStep.Birthday]: {
+  {
+    name: PreValidationSignupStep.Birthday,
     headerTitle: t`Ta date de naissance`,
     Component: SetBirthday,
   },
-  [PreValidationSignupStep.CGU]: {
+  {
+    name: PreValidationSignupStep.CGU,
     headerTitle: t`CGU & Données`,
     Component: AcceptCgu,
   },
-}
-
-const SIGNUP_STEPS_ORDER = Object.keys(SIGNUP_STEP_CONFIG) as PreValidationSignupStep[]
+]
+const SIGNUP_STEP_CONFIG_MAX_INDEX = SIGNUP_STEP_CONFIG.length - 1
 
 type Props = StackScreenProps<RootStackParamList, 'SignupForm'>
 
 export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
   const signUpApiCall = useSignUp()
 
-  const [signupStep, setSignupStep] = useState(PreValidationSignupStep.Email)
-  const [signupData, _setSignupData] = useState<SignupData>({
+  const [stepIndex, setStepIndex] = useState(0)
+  const [signupData, setSignupData] = useState<SignupData>({
     email: '',
     marketingEmailSubscription: false,
     password: '',
     birthdate: '',
     postalCode: '',
   })
-  const stepIndex = SIGNUP_STEPS_ORDER.indexOf(signupStep)
-  const signupStepConfig = SIGNUP_STEP_CONFIG[signupStep]
-
-  const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
+  const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
   const isFirstStep = stepIndex === 0
 
-  function goBack() {
-    if (isFirstStep) {
-      goBackAndLeaveSignup()
-    } else {
-      setSignupStep(SIGNUP_STEPS_ORDER[stepIndex - 1])
-    }
+  const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
+
+  function goToPreviousStep() {
+    setStepIndex((prevStepIndex) => Math.max(0, prevStepIndex - 1))
   }
 
-  function goNext(_signupData: Partial<SignupData>) {
-    _setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
-    setSignupStep(SIGNUP_STEPS_ORDER[stepIndex + 1])
+  function goToNextStep(_signupData: Partial<SignupData>) {
+    setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
+    setStepIndex((prevStepIndex) => Math.min(SIGNUP_STEP_CONFIG_MAX_INDEX, prevStepIndex + 1))
   }
 
   async function signUp(token: string) {
@@ -103,16 +104,18 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
 
   // We use useFocusEffect(...) because we want to remove the BackHandler listener on blur
   // otherwise the logic of the "back action" would leak to other components / screens.
-  useFocusEffect(() => {
-    const unsubscribeFromNavigationListener = navigation.addListener('beforeRemove', (event) => {
-      // For overriding iOS and Android go back and pop screen behaviour
-      const isGoBackAction = ['GO_BACK', 'POP'].includes(event.data.action.type)
-      if (!isGoBackAction) return // Remove screen
-      goBack()
-      event.preventDefault() // Do not remove screen
-    })
-    return unsubscribeFromNavigationListener
-  })
+  useFocusEffect(
+    useCallback(() => {
+      const unsubscribeFromNavigationListener = navigation.addListener('beforeRemove', (event) => {
+        // For overriding iOS and Android go back and pop screen behaviour
+        const isGoBackAction = ['GO_BACK', 'POP'].includes(event.data.action.type)
+        if (!isGoBackAction || isFirstStep) return // Remove screen
+        goToPreviousStep()
+        event.preventDefault() // Do not remove screen
+      })
+      return unsubscribeFromNavigationListener
+    }, [isFirstStep])
+  )
 
   const {
     visible: fullPageModalVisible,
@@ -125,8 +128,8 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
     showFullPageModal()
   }
 
-  const disableGoingBack = isFirstStep && route.params?.preventCancellation
-  const rightIconProps = disableGoingBack
+  const disableQuitSignup = isFirstStep && route.params?.preventCancellation
+  const rightIconProps = disableQuitSignup
     ? {
         rightIconAccessibilityLabel: undefined,
         rightIcon: undefined,
@@ -142,19 +145,22 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
     <React.Fragment>
       <BottomContentPage>
         <ModalHeader
-          title={signupStepConfig.headerTitle}
+          title={stepConfig.headerTitle}
           leftIconAccessibilityLabel={t`Revenir en arrière`}
           leftIcon={ArrowPrevious}
-          onLeftIconPress={goBack}
+          onLeftIconPress={isFirstStep ? goBackAndLeaveSignup : goToPreviousStep}
           {...rightIconProps}
         />
-        <signupStepConfig.Component goToNextStep={goNext} signUp={signUp} />
+        <Spacer.Column numberOfSpaces={5} />
+        <BottomCardContentContainer>
+          <stepConfig.Component goToNextStep={goToNextStep} signUp={signUp} />
+        </BottomCardContentContainer>
         <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
       </BottomContentPage>
       <QuitSignupModal
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
-        signupStep={signupStep}
+        signupStep={stepConfig.name}
       />
     </React.Fragment>
   )

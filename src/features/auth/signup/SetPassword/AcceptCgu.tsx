@@ -98,7 +98,6 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
         />
       )}
       <CardContent>
-        <Spacer.Column numberOfSpaces={5} />
         <Paragraphe>
           <Typo.Body>{t`En cliquant sur “Accepter et s’inscrire”, tu acceptes nos `}</Typo.Body>
           <ExternalLink

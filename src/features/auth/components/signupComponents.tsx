@@ -2,15 +2,6 @@ import styled from 'styled-components/native'
 
 import { getSpacing, padding } from 'ui/theme'
 
-export const SetEmailModalContent = styled.View({
-  paddingTop: getSpacing(7),
-  alignItems: 'center',
-  width: '100%',
-  maxWidth: getSpacing(125),
-})
-
-export const StyledStepDots = styled.View({ width: '100%', alignItems: 'center' })
-
 export const CardContent = styled.View({
   width: '100%',
   alignItems: 'center',
