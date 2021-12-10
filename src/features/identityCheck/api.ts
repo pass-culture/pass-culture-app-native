@@ -5,10 +5,10 @@ import { useMutation } from 'react-query'
 import { api } from 'api/api'
 import { IdentificationSessionResponse, ProfileUpdateRequest } from 'api/gen'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { IdentityCheckState } from 'features/identityCheck/context/types'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { MutationKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { IdentityCheckState } from 'features/identityCheck/context/types'
 
 export const REDIRECT_URL_UBBLE = `${WEBAPP_V2_URL}/verification-identite/fin`
 

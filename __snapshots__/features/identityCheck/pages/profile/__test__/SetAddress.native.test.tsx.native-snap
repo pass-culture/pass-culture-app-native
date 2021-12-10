@@ -284,28 +284,6 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 ]
               }
             />
-            <RCTScrollView
-              data={Array []}
-              getItem={[Function]}
-              getItemCount={[Function]}
-              keyExtractor={[Function]}
-              keyboardDismissMode="on-drag"
-              keyboardShouldPersistTaps="handled"
-              onContentSizeChange={[Function]}
-              onLayout={[Function]}
-              onMomentumScrollBegin={[Function]}
-              onMomentumScrollEnd={[Function]}
-              onScroll={[Function]}
-              onScrollBeginDrag={[Function]}
-              onScrollEndDrag={[Function]}
-              removeClippedSubviews={false}
-              renderItem={[Function]}
-              scrollEventThrottle={50}
-              stickyHeaderIndices={Array []}
-              viewabilityConfigCallbackPairs={Array []}
-            >
-              <View />
-            </RCTScrollView>
           </View>
           <View
             onLayout={[Function]}

@@ -16,6 +16,7 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SpinnerWithCenteredContainer } from 'ui/components/spinner/SpinnerWithCenteredContainer'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -37,7 +38,12 @@ export const SetAddress = () => {
 
   const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
 
-  const { data: addresses = [], isError } = useAddresses({
+  const {
+    data: addresses = [],
+    isLoading,
+    isError,
+    isSuccess,
+  } = useAddresses({
     query: debouncedQuery,
     cityCode: profile.city?.code ?? '',
     postalCode: profile.city?.postalCode ?? '',
@@ -120,13 +126,16 @@ export const SetAddress = () => {
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
-          <FlatList
-            data={addresses}
-            keyExtractor={keyExtractor}
-            renderItem={renderItem}
-            keyboardShouldPersistTaps="handled"
-            keyboardDismissMode="on-drag"
-          />
+          {!!isLoading && <SpinnerWithCenteredContainer />}
+          {!!isSuccess && (
+            <FlatList
+              data={addresses}
+              keyExtractor={keyExtractor}
+              renderItem={renderItem}
+              keyboardShouldPersistTaps="handled"
+              keyboardDismissMode="on-drag"
+            />
+          )}
         </React.Fragment>
       }
       fixedBottomChildren={
