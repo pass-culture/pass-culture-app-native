@@ -44,9 +44,7 @@ export const PageWithHeader = (props: Props) => {
           </ChildrenScrollView>
         ) : null}
         {props.fixedBottomChildren ? (
-          <FixedBottomChildrenView
-            onLayout={onFixedBottomChildrenViewLayout}
-            testID="fixed-bottom-children">
+          <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
             {props.fixedBottomChildren}
             <Spacer.BottomScreen />
           </FixedBottomChildrenView>

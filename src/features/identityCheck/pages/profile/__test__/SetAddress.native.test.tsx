@@ -68,7 +68,7 @@ describe('<SetAddress/>', () => {
       expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, {
         query: QUERY_ADDRESS,
         postalCode: QUERY_POSTAL_CODE,
-        limit: 10,
+        limit: 5,
         cityCode: QUERY_CITY_CODE,
       })
       getByText(mockedSuggestedPlaces.features[0].properties.label)

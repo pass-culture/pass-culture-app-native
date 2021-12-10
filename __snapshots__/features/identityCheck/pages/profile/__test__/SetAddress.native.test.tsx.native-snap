@@ -193,7 +193,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 ]
               }
             >
-              Recherche et sélectionne ton adresse
+              Entre ton adresse
             </Text>
             <View
               numberOfSpaces={2}
@@ -301,7 +301,6 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="fixed-bottom-children"
           >
             <View
               accessibilityLabel="Continuer"

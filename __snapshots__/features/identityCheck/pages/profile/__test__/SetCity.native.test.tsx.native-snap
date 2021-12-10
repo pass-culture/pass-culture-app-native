@@ -302,7 +302,6 @@ exports[`<SetCity/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="fixed-bottom-children"
           >
             <View
               accessibilityLabel="Continuer"

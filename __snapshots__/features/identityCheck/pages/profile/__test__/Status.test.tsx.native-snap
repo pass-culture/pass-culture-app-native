@@ -707,7 +707,6 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
                 },
               ]
             }
-            testID="fixed-bottom-children"
           >
             <View
               accessibilityLabel="Choisis ton statut"

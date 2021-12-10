@@ -887,7 +887,6 @@ Array [
                   },
                 ]
               }
-              testID="fixed-bottom-children"
             >
               <View
                 accessibilityLabel="Commencer la vérification"

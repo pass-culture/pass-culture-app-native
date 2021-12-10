@@ -998,7 +998,6 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
           </div>
           <div
             className="css-view-1dbjc4n"
-            data-testid="fixed-bottom-children"
             style={
               Object {
                 "backgroundColor": "rgba(255,255,255,1.00)",

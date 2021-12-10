@@ -376,7 +376,6 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                 },
               ]
             }
-            testID="fixed-bottom-children"
           >
             <View
               accessibilityLabel="Valider mes informations"

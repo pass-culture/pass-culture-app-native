@@ -48,7 +48,7 @@ export const SetAddress = () => {
     cityCode: profile.city?.code ?? '',
     postalCode: profile.city?.postalCode ?? '',
     enabled: idCheckAddressAutocompletion && debouncedQuery.length > 0,
-    limit: 10,
+    limit: 5,
   })
 
   useEffect(() => {
@@ -92,6 +92,10 @@ export const SetAddress = () => {
       ? !!selectedAddress
       : query.length > 0
 
+  const label = idCheckAddressAutocompletion
+    ? t`Recherche et sélectionne ton adresse`
+    : t`Entre ton adresse`
+
   const onPressContinue = () => {
     if (!enabled) return
     dispatch({ type: 'SET_ADDRESS', payload: selectedAddress || query })
@@ -119,7 +123,7 @@ export const SetAddress = () => {
             autoFocus
             onChangeText={onChangeAddress}
             value={query}
-            label={t`Recherche et sélectionne ton adresse`}
+            label={label}
             placeholder={t`Ex : 34 avenue de l'Opéra`}
             textContentType="addressState"
             RightIcon={() => (query.length > 0 ? <RightIcon /> : null)}
