@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DMSModal } from 'features/identityCheck/components/DMSModal'
+import { analytics } from 'libs/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { Plus } from 'ui/svg/icons/Plus'
@@ -12,11 +13,21 @@ const DMScaption = t`Si tu n’es pas en mesure de prendre en photo ta pièce d�
 
 export const DMSInformation = () => {
   const { visible, showModal, hideModal } = useModal(false)
+
+  const showDMSModal = () => {
+    analytics.logStartDMSTransmission()
+    showModal()
+  }
+
   return (
     <React.Fragment>
       <Background>
         <Typo.Caption color={ColorsEnum.GREY_DARK}>{DMScaption}</Typo.Caption>
-        <ButtonQuaternaryBlack title={t`Transmettre un document`} onPress={showModal} icon={Plus} />
+        <ButtonQuaternaryBlack
+          title={t`Transmettre un document`}
+          onPress={showDMSModal}
+          icon={Plus}
+        />
       </Background>
       <DMSModal visible={visible} hideModal={hideModal} />
     </React.Fragment>

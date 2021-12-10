@@ -1,11 +1,18 @@
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
 import { navigateToHome } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 const mockHideModal = jest.fn()
+
+const mockStep = 'profile'
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({ step: mockStep }),
+}))
 
 describe('<QuitIdentityCheckModal/>', () => {
   it('should not display the modal when visible is false', () => {
@@ -28,16 +35,20 @@ describe('<QuitIdentityCheckModal/>', () => {
     const resumeButton = getByText('Continuer la vérification')
     fireEvent.press(resumeButton)
 
+    expect(analytics.logContinueIdentityCheck).toHaveBeenCalledTimes(1)
     expect(mockHideModal).toHaveBeenCalled()
   })
 
-  it('should go back to homepage when clicking on "Abandonner la vérification"', () => {
+  it('should go back to homepage when clicking on "Abandonner la vérification"', async () => {
     const { getByText } = renderQuitIdentityCheckModal(true)
 
     const abandonButton = getByText('Abandonner la vérification')
     fireEvent.press(abandonButton)
 
-    expect(navigateToHome).toBeCalled()
+    await waitForExpect(() => {
+      expect(analytics.logConfirmQuitIdentityCheck).toHaveBeenNthCalledWith(1, mockStep)
+      expect(navigateToHome).toBeCalled()
+    })
   })
 })
 

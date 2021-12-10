@@ -6,9 +6,11 @@ import styled, { useTheme } from 'styled-components/native'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { StepConfig } from 'features/identityCheck/types'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
 import { useGetStepState } from 'features/identityCheck/utils/useGetStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
 import { Background } from 'ui/svg/Background'
@@ -21,16 +23,22 @@ export const IdentityCheckStepper = () => {
   const getStepState = useGetStepState()
   const context = useIdentityCheckContext()
 
-  const {
-    visible: fullPageModalVisible,
-    showModal: showFullPageModal,
-    hideModal: hideFullPageModal,
-  } = useModal(false)
+  const { visible, showModal, hideModal } = useModal(false)
 
   useEffect(() => {
     if (context.step === null && steps[0])
       context.dispatch({ type: 'SET_STEP', payload: steps[0].name })
   }, [steps.length])
+
+  function showQuitIdentityCheckModal() {
+    if (context.step) analytics.logQuitIdentityCheck(context.step)
+    showModal()
+  }
+
+  function navigateToStep(step: StepConfig) {
+    analytics.logIdentityCheckStep(step.name)
+    navigate(step.screens[0])
+  }
 
   return (
     <React.Fragment>
@@ -51,7 +59,7 @@ export const IdentityCheckStepper = () => {
               key={step.name}
               step={step}
               state={getStepState(step.name)}
-              onPress={() => navigate(step.screens[0])}
+              onPress={() => navigateToStep(step)}
             />
           ))}
 
@@ -61,12 +69,12 @@ export const IdentityCheckStepper = () => {
             <Spacer.Flex flex={2} />
           )}
 
-          <ButtonTertiaryWhite title={t`Abandonner`} onPress={showFullPageModal} />
+          <ButtonTertiaryWhite title={t`Abandonner`} onPress={showQuitIdentityCheckModal} />
         </Container>
       </CenteredContainer>
       <QuitIdentityCheckModal
-        visible={fullPageModalVisible}
-        hideModal={hideFullPageModal}
+        visible={visible}
+        hideModal={hideModal}
         testIdSuffix="quit-identity-check-stepper"
       />
     </React.Fragment>
