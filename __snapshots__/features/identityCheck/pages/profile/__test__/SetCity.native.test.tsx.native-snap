@@ -308,29 +308,6 @@ exports[`<SetCity/> should render correctly 1`] = `
               <View />
             </RCTScrollView>
           </View>
-          <RCTScrollView
-            bottomChildrenViewHeight={0}
-            contentContainerStyle={
-              Object {
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "paddingBottom": 0,
-                "paddingHorizontal": 20,
-              }
-            }
-            keyboardDismissMode="on-drag"
-            keyboardShouldPersistTaps="handled"
-            onContentSizeChange={[Function]}
-            onLayout={[Function]}
-            scrollEnabled={false}
-            style={
-              Array [
-                Object {},
-              ]
-            }
-          >
-            <View />
-          </RCTScrollView>
           <View
             onLayout={[Function]}
             style={

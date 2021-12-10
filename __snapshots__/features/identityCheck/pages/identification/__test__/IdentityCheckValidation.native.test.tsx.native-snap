@@ -145,25 +145,43 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
             ]
           }
         >
-          <Text
+          <View
             style={
               Array [
                 Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                  "paddingBottom": 10,
-                  "paddingLeft": 10,
-                  "paddingRight": 10,
-                  "paddingTop": 10,
-                  "textAlign": "center",
+                  "paddingHorizontal": 20,
                 },
               ]
             }
           >
-            Les informations extraites sont-elles correctes ?
-          </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "paddingVertical": 20,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Les informations extraites sont-elles correctes ?
+              </Text>
+            </View>
+          </View>
           <RCTScrollView
             bottomChildrenViewHeight={0}
             contentContainerStyle={

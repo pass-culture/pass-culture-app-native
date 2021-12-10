@@ -149,28 +149,38 @@ exports[`<SetName/> should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "paddingVertical": 20,
-                  "width": "100%",
+                  "paddingHorizontal": 20,
                 },
               ]
             }
           >
-            <Text
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
-                    "textAlign": "center",
+                    "alignItems": "center",
+                    "paddingVertical": 20,
+                    "width": "100%",
                   },
                 ]
               }
             >
-              Comment t'appelles-tu ?
-            </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Comment t'appelles-tu ?
+              </Text>
+            </View>
           </View>
           <RCTScrollView
             bottomChildrenViewHeight={0}

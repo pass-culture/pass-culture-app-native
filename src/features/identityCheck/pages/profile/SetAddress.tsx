@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { FlatList, Keyboard, ListRenderItem, TouchableOpacity } from 'react-native'
-import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
@@ -18,7 +17,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const keyExtractor = (address: string) => address
@@ -108,7 +107,7 @@ export const SetAddress = () => {
     <PageWithHeader
       title={t`Profil`}
       fixedTopChildren={
-        <Container>
+        <React.Fragment>
           <CenteredTitle title={t`Quelle est ton adresse ?`} />
           <TextInput
             autoFocus
@@ -128,7 +127,7 @@ export const SetAddress = () => {
             keyboardShouldPersistTaps="handled"
             keyboardDismissMode="on-drag"
           />
-        </Container>
+        </React.Fragment>
       }
       fixedBottomChildren={
         <ButtonPrimary onPress={onPressContinue} title={t`Continuer`} disabled={!enabled} />
@@ -136,5 +135,3 @@ export const SetAddress = () => {
     />
   )
 }
-
-const Container = styled.View({ paddingHorizontal: getSpacing(5) })

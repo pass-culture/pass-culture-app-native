@@ -194,30 +194,40 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
             className="css-view-1dbjc4n"
             style={
               Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "alignItems": "center",
-                "msFlexAlign": "center",
-                "paddingBottom": "20px",
-                "paddingTop": "20px",
-                "width": "100%",
+                "paddingLeft": "20px",
+                "paddingRight": "20px",
               }
             }
           >
             <div
-              className="css-text-901oao"
-              dir="auto"
+              className="css-view-1dbjc4n"
               style={
                 Object {
-                  "color": "rgba(21,21,21,1.00)",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": "18px",
-                  "lineHeight": "22px",
-                  "textAlign": "center",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "alignItems": "center",
+                  "msFlexAlign": "center",
+                  "paddingBottom": "20px",
+                  "paddingTop": "20px",
+                  "width": "100%",
                 }
               }
             >
-              Les informations que tu as renseignées sont-elles correctes ?
+              <div
+                className="css-text-901oao"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(21,21,21,1.00)",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": "18px",
+                    "lineHeight": "22px",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Les informations que tu as renseignées sont-elles correctes ?
+              </div>
             </div>
           </div>
           <div

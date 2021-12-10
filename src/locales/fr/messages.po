@@ -93,10 +93,8 @@ msgstr "Abandonner"
 
 #: src/features/auth/components/QuitSignupModal.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-#: src/features/auth/signup/SetEmail/SetEmail.tsx
-#: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
+#: src/features/auth/signup/SignupForm.tsx
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
@@ -108,7 +106,7 @@ msgstr "Abandonner la vérification"
 msgid "Académie de"
 msgstr "Académie de"
 
-#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
@@ -159,6 +157,7 @@ msgstr "Adresse - Formulaire"
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
+#: src/features/auth/signup/SignupForm.tsx
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
@@ -338,7 +337,7 @@ msgstr "C'est pour bientôt"
 msgid "C'est pour bientôt !"
 msgstr "C'est pour bientôt !"
 
-#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/SignupForm.tsx
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
@@ -490,7 +489,7 @@ msgstr "Compte créé !"
 msgid "Compte désactivé"
 msgstr "Compte désactivé"
 
-#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -501,10 +500,6 @@ msgstr "Conditions Générales d’Utilisation"
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "Conditions d'annulation"
 msgstr "Conditions d'annulation"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Conditions d'utilisations"
-msgstr "Conditions d'utilisations"
 
 #: src/features/profile/pages/Profile.tsx
 msgid "Confidentialité"
@@ -582,9 +577,9 @@ msgstr "Consulter notre centre d'aide"
 msgid "Contact"
 msgstr "Contact"
 
-#: src/features/auth/signup/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
@@ -630,6 +625,10 @@ msgstr "Copier dans le press-papier"
 msgid "Cours et pratique artistiques"
 msgstr "Cours et pratique artistiques"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Création de compte"
+msgstr "Création de compte"
+
 #: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 #: src/features/offer/services/useCtaWordingAndAction.ts
@@ -669,10 +668,6 @@ msgstr "Date"
 #: src/features/search/sections/titles.ts
 msgid "Date de l'offre"
 msgstr "Date de l'offre"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Date de naissance - Formulaire"
-msgstr "Date de naissance - Formulaire"
 
 #: src/features/search/sections/OfferDate.tsx
 msgid "Date précise"
@@ -792,10 +787,6 @@ msgid "EAN"
 msgstr "EAN"
 
 #: src/features/navigation/RootNavigator/routes.ts
-msgid "Email - Formulaire"
-msgstr "Email - Formulaire"
-
-#: src/features/navigation/RootNavigator/routes.ts
 msgid "Email création de compte envoyé"
 msgstr "Email création de compte envoyé"
 
@@ -827,7 +818,7 @@ msgstr "En attendant, tu peux découvrir l'application !"
 msgid "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
 msgstr "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
 
-#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
@@ -1061,11 +1052,6 @@ msgstr "Format de l'e-mail incorrect"
 msgid "Format du lien incorrect"
 msgstr "Format du lien incorrect"
 
-#: src/features/smartBanner/SmartBanner.web.tsx
-#: src/features/smartBanner/SmartBanner.web.tsx
-msgid "GRATUIT"
-msgstr "GRATUIT"
-
 #: src/features/identityCheck/atoms/IdentityVerificationText.web.tsx
 msgid "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
 msgstr "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
@@ -1120,7 +1106,7 @@ msgstr "Historique"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 msgid "Hors connexion : en attente du réseau."
 msgstr "Hors connexion : en attente du réseau."
 
@@ -1144,6 +1130,10 @@ msgstr "Identification"
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Identification avec EduConnect"
 msgstr "Identification avec EduConnect"
+
+#: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
+msgid "Identification avec ÉduConnect"
+msgstr "Identification avec ÉduConnect"
 
 #: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
 msgid "Identification manuelle"
@@ -1415,7 +1405,7 @@ msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
@@ -1583,15 +1573,12 @@ msgstr "Mon identité"
 
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
+#: src/features/auth/signup/SignupForm.tsx
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Mot de passe"
 msgstr "Mot de passe"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Mot de passe - Formulaire"
-msgstr "Mot de passe - Formulaire"
 
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Mot de passe actuel"
@@ -1788,6 +1775,7 @@ msgstr "On y va !"
 
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
+#: src/features/home/components/NoContentError.tsx
 #: src/features/search/atoms/NoSearchResult.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Oups !"
@@ -1900,11 +1888,11 @@ msgstr "Place-toi dans un lieu bien éclairé"
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
-#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
-#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
@@ -2067,6 +2055,10 @@ msgstr "Recherche et sélectionne ton adresse"
 msgid "Rechercher"
 msgstr "Rechercher"
 
+#: src/features/home/components/NoContentError.tsx
+msgid "Rechercher une offre"
+msgstr "Rechercher une offre"
+
 #: src/features/home/components/BusinessModule.tsx
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
@@ -2139,12 +2131,9 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/login/Login.tsx
-#: src/features/auth/signup/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-#: src/features/auth/signup/SetEmail/SetEmail.tsx
-#: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
+#: src/features/auth/signup/SignupForm.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
@@ -2165,7 +2154,6 @@ msgstr "Revenir sur l'écran d'envoi de SMS"
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/login/Login.tsx
-#: src/features/auth/signup/AcceptCgu.tsx
 msgid "Revenir à l'accueil"
 msgstr "Revenir à l'accueil"
 
@@ -2372,14 +2360,6 @@ msgstr "Supprimer"
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
 
-#: src/features/smartBanner/SmartBanner.web.tsx
-msgid "Sur Google Play"
-msgstr "Sur Google Play"
-
-#: src/features/smartBanner/SmartBanner.web.tsx
-msgid "Sur l'App Store"
-msgstr "Sur l'App Store"
-
 #: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Sélectionne ton statut"
 msgstr "Sélectionne ton statut"
@@ -2388,6 +2368,7 @@ msgstr "Sélectionne ton statut"
 msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 msgstr "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 
+#: src/features/auth/signup/SignupForm.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
 msgid "Ta date de naissance"
 msgstr "Ta date de naissance"
@@ -2412,10 +2393,6 @@ msgstr "Titre de séjour, carte d'identité, ou passeport."
 msgid "Titre, artiste, lieu..."
 msgstr "Titre, artiste, lieu..."
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Ton anniversaire"
-msgstr "Ton anniversaire"
-
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
@@ -2433,10 +2410,6 @@ msgstr "Ton crédit est expiré"
 msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 
-#: src/features/auth/signup/SetEmail/SetEmail.tsx
-msgid "Ton e-mail"
-msgstr "Ton e-mail"
-
 #: src/features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer.tsx
 msgid "Ton e-mail a été modifié."
 msgstr "Ton e-mail a été modifié."
@@ -2448,7 +2421,6 @@ msgstr "Ton identité restera anonyme auprès des acteurs culturels."
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/login/Login.tsx
-#: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 msgid "Ton mot de passe"
@@ -2714,8 +2686,8 @@ msgstr "Téléphone - Formulaire"
 msgid "Un lien ne fonctionne pas ?"
 msgstr "Un lien ne fonctionne pas ?"
 
-#: src/features/auth/signup/AcceptCgu.tsx
-#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
@@ -2749,6 +2721,10 @@ msgid ""
 msgstr ""
 "Une erreur s’est produite pendant la modification de ton e-mail.\n"
 "Réessaie plus tard."
+
+#: src/features/home/components/NoContentError.tsx
+msgid "Une erreur s’est produite pendant le chargement de nos recommandations."
+msgstr "Une erreur s’est produite pendant le chargement de nos recommandations."
 
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Une erreur s’est produite pendant le chargement."
@@ -2844,10 +2820,6 @@ msgstr "Victime de notre succès !"
 msgid "Voici les 3 étapes que tu vas devoir suivre."
 msgstr "Voici les 3 étapes que tu vas devoir suivre."
 
-#: src/features/smartBanner/SmartBanner.web.tsx
-msgid "Voir"
-msgstr "Voir"
-
 #: src/libs/itinerary/components/SeeItineraryButton.tsx
 #: src/libs/itinerary/useItinerary.ts
 msgid "Voir l'itinéraire"
@@ -2939,7 +2911,7 @@ msgstr "À activer avant le {dateLimit}"
 msgid "activation message"
 msgstr "À activer avant le {date}"
 
-#: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
