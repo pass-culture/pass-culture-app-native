@@ -9,7 +9,6 @@ import {
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { env } from 'libs/environment'
 import { randomPassword } from 'libs/random'
-import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { Spacer } from 'ui/theme'
@@ -33,8 +32,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
   }
 
   return (
-    <BottomCardContentContainer>
-      <Spacer.Column numberOfSpaces={6} />
+    <React.Fragment>
       <PasswordInput
         label={t`Mot de passe`}
         value={password}
@@ -48,6 +46,6 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary title={t`Continuer`} onPress={submitPassword} disabled={disabled} />
       <Spacer.Column numberOfSpaces={5} />
-    </BottomCardContentContainer>
+    </React.Fragment>
   )
 }

@@ -9,7 +9,6 @@ import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
 import { env } from 'libs/environment'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
-import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { DateInput, DateInputRef, DateValidation } from 'ui/components/inputs/DateInput'
@@ -144,33 +143,27 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
 
   return (
     <React.Fragment>
-      <BottomCardContentContainer>
-        <InnerContainer>
-          <ButtonTertiary title={t`Pourquoi ?`} onPress={onPressWhy} />
-          <Spacer.Column numberOfSpaces={10} />
-          <DateInputContainer>
-            <DateInput
-              autoFocus={true}
-              onChangeValue={onChangeValue}
-              ref={dateInputRef}
-              minDate={MIN_DATE}
-              maxDate={maxDate}
-              initialDay={INITIAL_DAY}
-              initialMonth={INITIAL_MONTH}
-              initialYear={INITIAL_YEAR}
-              onSubmit={goToNextStep}
-            />
-            {renderErrorMessages()}
-          </DateInputContainer>
-          <Spacer.Column numberOfSpaces={14} />
-          <ButtonPrimary
-            title={t`Continuer`}
-            disabled={!state.isDateValid}
-            onPress={goToNextStep}
+      <InnerContainer>
+        <ButtonTertiary title={t`Pourquoi ?`} onPress={onPressWhy} />
+        <Spacer.Column numberOfSpaces={8} />
+        <DateInputContainer>
+          <DateInput
+            autoFocus={true}
+            onChangeValue={onChangeValue}
+            ref={dateInputRef}
+            minDate={MIN_DATE}
+            maxDate={maxDate}
+            initialDay={INITIAL_DAY}
+            initialMonth={INITIAL_MONTH}
+            initialYear={INITIAL_YEAR}
+            onSubmit={goToNextStep}
           />
-          <Spacer.Column numberOfSpaces={5} />
-        </InnerContainer>
-      </BottomCardContentContainer>
+          {renderErrorMessages()}
+        </DateInputContainer>
+        <Spacer.Column numberOfSpaces={14} />
+        <ButtonPrimary title={t`Continuer`} disabled={!state.isDateValid} onPress={goToNextStep} />
+        <Spacer.Column numberOfSpaces={5} />
+      </InnerContainer>
       <AppInformationModal
         title={modalTitle}
         numberOfLinesTitle={3}

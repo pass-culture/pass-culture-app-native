@@ -111,14 +111,6 @@ const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom:
   }),
 })
 
-export const BottomCardContentContainer = styled.View({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  width: '100%',
-  maxWidth: getSpacing(125),
-})
-
 const SCALE_HEIGHT_RATIO = 1.75
 const BottomContentPageBackground = styled(Background).attrs(
   ({ theme: { showTabBar, bottomContentPage } }) => ({
