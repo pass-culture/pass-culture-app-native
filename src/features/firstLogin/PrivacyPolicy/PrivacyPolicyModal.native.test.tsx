@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { navigateFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { superFlushWithAct, fireEvent, render, cleanup } from 'tests/utils'
 
@@ -49,12 +48,6 @@ describe('<PrivacyPolicyModal />', () => {
     fireEvent.press(getByText('Autoriser'))
     expect(onApproval).toBeCalledTimes(1)
     expect(onRefusal).not.toBeCalled()
-  })
-
-  it('should navigate to ConsentSettings when pressing button with text "Paramètres de confidentialité"', () => {
-    const { getByText } = renderPrivacyModal({ onRefusal, onApproval, visible })
-    fireEvent.press(getByText('Paramètres de confidentialité'))
-    expect(navigateFromRef).toBeCalled()
   })
 
   it('should open cookies policies on click on "Politique des cookies"', async () => {

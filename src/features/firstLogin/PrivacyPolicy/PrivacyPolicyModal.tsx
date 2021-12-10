@@ -1,18 +1,16 @@
 import { t } from '@lingui/macro'
-import React, { useCallback, useState, FunctionComponent } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome, openUrl } from 'features/navigation/helpers'
-import { navigateFromRef, canGoBackFromRef, goBackFromRef } from 'features/navigation/navigationRef'
+import { openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
-import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
-import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
+import { ColorsEnum, Typo, Spacer, getSpacing } from 'ui/theme'
 
 export interface Props {
   visible: boolean
@@ -29,29 +27,12 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
   onRefusal,
   disableBackdropTap = true,
 }) => {
-  const [isVisible, setIsVisible] = useState<boolean>(visible)
-
-  const goToConsentSettings = useCallback(() => {
-    navigateFromRef('ConsentSettings', {
-      onGoBack: () => {
-        setIsVisible(true)
-        if (canGoBackFromRef()) {
-          goBackFromRef()
-        } else {
-          navigateToHome()
-        }
-      },
-    })
-    setIsVisible(false)
-  }, [navigateFromRef, canGoBackFromRef, goBackFromRef])
-
   async function openCookiesPolicyExternalUrl() {
     await openUrl(env.COOKIES_POLICY_LINK)
   }
-
   return (
     <AppModal
-      visible={isVisible}
+      visible={visible}
       title={t`Respect de ta vie privée`}
       disableBackdropTap={disableBackdropTap}
       leftIconAccessibilityLabel={undefined}
@@ -73,34 +54,29 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
       />
       <SubDescription>
         <Typo.Caption color={ColorsEnum.GREY_DARK}>
-          {t`Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil.`}
+          {t`Tu pourras modifier tes paramètres de confidentialité dans ton profil.`}
         </Typo.Caption>
       </SubDescription>
       <CallToActionsContainer>
-        <StyleButtonSecondary title={t`Refuser`} onPress={onRefusal} />
+        <AcceptanceButton title={t`Autoriser`} onPress={onApproval} />
         <Spacer.Column numberOfSpaces={3} />
-        <StyleButtonPrimary title={t`Autoriser`} onPress={onApproval} />
-        <Spacer.Column numberOfSpaces={2} />
-        <ButtonTertiaryGreyDark
-          title={t`Paramètres de confidentialité`}
-          onPress={goToConsentSettings}
-          textSize={getSpacing(3)}
-        />
+        <RefusalButton title={t`Refuser`} onPress={onRefusal} />
       </CallToActionsContainer>
     </AppModal>
   )
 }
 
-const CallToActionsContainer = styled.View({
+const CallToActionsContainer = styled.View(({ theme }) => ({
+  flexDirection: theme.isDesktopViewport ? 'column' : 'column-reverse',
   alignItems: 'center',
   width: '100%',
-})
+}))
 
-const StyleButtonPrimary = styled(ButtonPrimary)({
+const AcceptanceButton = styled(ButtonPrimary)({
   maxWidth: getSpacing(80),
 })
 
-const StyleButtonSecondary = styled(ButtonSecondary)({
+const RefusalButton = styled(ButtonSecondary)({
   maxWidth: getSpacing(80),
 })
 

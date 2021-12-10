@@ -382,7 +382,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                 ]
               }
             >
-              Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil.
+              Tu pourras modifier tes paramètres de confidentialité dans ton profil.
             </Text>
           </Text>
           <View
@@ -390,75 +390,12 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
               Array [
                 Object {
                   "alignItems": "center",
+                  "flexDirection": "column-reverse",
                   "width": "100%",
                 },
               ]
             }
           >
-            <View
-              accessibilityLabel="Refuser"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderColor": "#eb0055",
-                  "borderRadius": 24,
-                  "borderWidth": 2,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "justifyContent": "center",
-                  "maxWidth": 320,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "width": "100%",
-                }
-              }
-              testID="Refuser"
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 5,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-                textColor="#eb0055"
-              >
-                Refuser
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={3}
-              style={
-                Array [
-                  Object {
-                    "height": 12,
-                  },
-                ]
-              }
-            />
             <View
               accessibilityLabel="Autoriser"
               accessible={true}
@@ -513,17 +450,17 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
               </Text>
             </View>
             <View
-              numberOfSpaces={2}
+              numberOfSpaces={3}
               style={
                 Array [
                   Object {
-                    "height": 8,
+                    "height": 12,
                   },
                 ]
               }
             />
             <View
-              accessibilityLabel="Paramètres de confidentialité"
+              accessibilityLabel="Refuser"
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -539,12 +476,13 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
+                  "borderColor": "#eb0055",
                   "borderRadius": 24,
-                  "borderWidth": 0,
+                  "borderWidth": 2,
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
-                  "maxWidth": 500,
+                  "maxWidth": 320,
                   "opacity": 1,
                   "paddingBottom": 2,
                   "paddingLeft": 2,
@@ -553,7 +491,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                   "width": "100%",
                 }
               }
-              testID="Paramètres de confidentialité"
+              testID="Refuser"
             >
               <Text
                 adjustsFontSizeToFit={false}
@@ -561,19 +499,18 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#626262",
+                      "color": "#eb0055",
                       "fontFamily": "Montserrat-Bold",
-                      "fontSize": 12,
+                      "fontSize": 15,
                       "lineHeight": 20,
                       "marginLeft": 5,
                       "maxWidth": "100%",
                     },
                   ]
                 }
-                textColor="#626262"
-                textSize={12}
+                textColor="#eb0055"
               >
-                Paramètres de confidentialité
+                Refuser
               </Text>
             </View>
           </View>
