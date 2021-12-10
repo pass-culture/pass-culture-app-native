@@ -86,11 +86,11 @@ export const CheatCodes: FunctionComponent<Props> = function () {
   }
 
   function onPressLaunchCamera() {
-    launchCamera(CAMERA_OPTIONS, () => {})
+    launchCamera(CAMERA_OPTIONS, () => null)
   }
 
   function onPressLaunchImageLibrary() {
-    launchImageLibrary(CAMERA_OPTIONS, () => {})
+    launchImageLibrary(CAMERA_OPTIONS, () => null)
   }
 
   return (
