@@ -3,7 +3,7 @@ PODS:
     - AppsFlyerFramework/Main (= 6.4.0)
   - AppsFlyerFramework/Main (6.4.0)
   - Base64 (1.1.2)
-  - Batch (1.17.3)
+  - Batch (1.18.0)
   - BatchFirebaseDispatcher (2.0.0):
     - Batch (~> 1.17)
     - Firebase/Analytics
@@ -44,7 +44,7 @@ PODS:
   - Firebase/RemoteConfig (8.8.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 8.8.0)
-  - FirebaseABTesting (8.9.0):
+  - FirebaseABTesting (8.10.0):
     - FirebaseCore (~> 8.0)
   - FirebaseAnalytics (8.8.0):
     - FirebaseAnalytics/AdIdSupport (= 8.8.0)
@@ -68,7 +68,7 @@ PODS:
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
-  - FirebaseCoreDiagnostics (8.9.0):
+  - FirebaseCoreDiagnostics (8.10.0):
     - GoogleDataTransport (~> 9.1)
     - GoogleUtilities/Environment (~> 7.6)
     - GoogleUtilities/Logger (~> 7.6)
@@ -83,7 +83,7 @@ PODS:
   - FirebaseFirestore/Base (8.8.0)
   - FirebaseFirestore/WithLeveldb (8.8.0):
     - FirebaseFirestore/Base
-  - FirebaseInstallations (8.9.0):
+  - FirebaseInstallations (8.10.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.6)
     - GoogleUtilities/UserDefaults (~> 7.6)
@@ -468,8 +468,6 @@ PODS:
     - React
   - react-native-get-random-values (1.7.1):
     - React-Core
-  - react-native-image-picker (4.0.3):
-    - React-Core
   - react-native-in-app-review (3.2.3):
     - React
   - react-native-netinfo (5.9.10):
@@ -478,11 +476,11 @@ PODS:
     - React
   - react-native-safe-area-context (3.3.2):
     - React-Core
-  - react-native-splash-screen (3.2.0):
-    - React
+  - react-native-splash-screen (3.3.0):
+    - React-Core
   - react-native-tracking-transparency (0.1.1):
     - React
-  - react-native-webview (11.14.3):
+  - react-native-webview (11.15.0):
     - React-Core
   - React-perflogger (0.66.3)
   - React-RCTActionSheet (0.66.3):
@@ -552,7 +550,7 @@ PODS:
   - RNBatchPush (1.0.0):
     - Batch
     - React
-  - RNCAsyncStorage (1.15.13):
+  - RNCAsyncStorage (1.15.14):
     - React-Core
   - RNDateTimePicker (3.5.2):
     - React-Core
@@ -594,7 +592,7 @@ PODS:
     - React
   - RNPermissions (3.1.0):
     - React-Core
-  - RNReanimated (2.2.4):
+  - RNReanimated (2.3.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -620,15 +618,14 @@ PODS:
     - React-RCTNetwork
     - React-RCTSettings
     - React-RCTText
-    - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.9.0):
+  - RNScreens (3.10.1):
     - React-Core
     - React-RCTImage
-  - RNSentry (3.2.3):
+  - RNSentry (3.2.7):
     - React-Core
-    - Sentry (= 7.5.1)
+    - Sentry (= 7.5.4)
   - RNSVG (12.1.1):
     - React
   - SDWebImage (5.11.1):
@@ -637,9 +634,9 @@ PODS:
   - SDWebImageWebPCoder (0.8.4):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
-  - Sentry (7.5.1):
-    - Sentry/Core (= 7.5.1)
-  - Sentry/Core (7.5.1)
+  - Sentry (7.5.4):
+    - Sentry/Core (= 7.5.4)
+  - Sentry/Core (7.5.4)
   - SocketRocket (0.6.0)
   - SSZipArchive (2.2.3)
   - Yoga (1.14.0)
@@ -705,7 +702,6 @@ DEPENDENCIES:
   - react-native-flipper (from `../node_modules/react-native-flipper`)
   - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
   - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
-  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-in-app-review (from `../node_modules/react-native-in-app-review`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - "react-native-profiling (from `../node_modules/@pass-culture/react-native-profiling`)"
@@ -853,8 +849,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-geolocation-service"
   react-native-get-random-values:
     :path: "../node_modules/react-native-get-random-values"
-  react-native-image-picker:
-    :path: "../node_modules/react-native-image-picker"
   react-native-in-app-review:
     :path: "../node_modules/react-native-in-app-review"
   react-native-netinfo:
@@ -942,7 +936,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AppsFlyerFramework: 9c37252d3edce38257afc065ad48a48c0f004000
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
-  Batch: b8254ed9e3c8f01a7638d3218476921940936551
+  Batch: 6a98a347ee208f12954fedb1ac442d4a8fc4fea2
   BatchFirebaseDispatcher: 512b3998e96d8ab2926747f4425bb63168dd1a84
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
@@ -952,13 +946,13 @@ SPEC CHECKSUMS:
   FBLazyVector: de148e8310b8b878db304ceea2fec13f2c02e3a0
   FBReactNativeSpec: 6192956c9e346013d5f1809ba049af720b11c6a4
   Firebase: 629510f1a9ddb235f3a7c5c8ceb23ba887f0f814
-  FirebaseABTesting: 9de50b34bf9eb4a07d4edb7af82c14152fd905aa
+  FirebaseABTesting: fc7255f7e96d3cf7a1131fd68636c47e312cef76
   FirebaseAnalytics: 5506ea8b867d8423485a84b4cd612d279f7b0b8a
   FirebaseCore: 98b29e3828f0a53651c363937a7f7d92a19f1ba2
-  FirebaseCoreDiagnostics: 5daa63f1c1409d981a2d5007daa100b36eac6a34
+  FirebaseCoreDiagnostics: 56fb7216d87e0e6ec2feddefa9d8a392fe8b2c18
   FirebaseDynamicLinks: cf76a46274569da2d4491548a39ef35f3c1a992d
   FirebaseFirestore: d09c620ac1fe1570cb1e909f6f165d6b55bc4ee0
-  FirebaseInstallations: caa7c8e0d3e2345b8829d2fa9ca1b4dfbf2fcc85
+  FirebaseInstallations: 830327b45345ffc859eaa9c17bcd5ae893fd5425
   FirebasePerformance: 0c01a7a496657d7cea86d40c0b1725259d164c6c
   FirebaseRemoteConfig: f6365883d7950d784ee97bcdbbf1e442d4fa6119
   Flipper: a4a80b29f944e402fe902d7133d497659703e245
@@ -1005,14 +999,13 @@ SPEC CHECKSUMS:
   react-native-flipper: e30ae82a1536e8f6f4f34012353ebdf1d8aa5157
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
-  react-native-image-picker: 474cf2c33c2b6671da53d293a16c97995f0aec15
   react-native-in-app-review: 23f4f5b9fcd94339dd5d93c6230557f9c67c7dda
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
   react-native-profiling: 11637537015f8502597cf22f9449a94ebfb4907d
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
-  react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
+  react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   react-native-tracking-transparency: b2029ff756f1128b1f2c7c7c7f3003bc3c950f9f
-  react-native-webview: b83cf1aa6b4453fe53ffcc5896c36cdf37f0383f
+  react-native-webview: e89bf2dba26a04cda967814df3ed1be99f291233
   React-perflogger: 73732888d37d4f5065198727b167846743232882
   React-RCTActionSheet: 96c6d774fa89b1f7c59fc460adc3245ba2d7fd79
   React-RCTAnimation: 8940cfd3a8640bd6f6372150dbdb83a79bcbae6c
@@ -1026,7 +1019,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: bbbdb3d8fcf327c6e2249ee71b6ef1764b7dc266
   ReactCommon: 9bac022ab71596f2b0fde1268272543184c63971
   RNBatchPush: 8b5ce832fcdb4f4ba94033f20e45df9157a73a5b
-  RNCAsyncStorage: ac55c090d35b880ac47a7807ab797854afc640ae
+  RNCAsyncStorage: ea6b5c280997b2b32a587793163b1f10e580c4f7
   RNDateTimePicker: 7658208086d86d09e1627b5c34ba0cf237c60140
   RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
@@ -1040,13 +1033,13 @@ SPEC CHECKSUMS:
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
   RNPermissions: 4b54095940aea8c03fa3e6c92d4ac3647b31ed4e
-  RNReanimated: 65583befd5706cc9c86ae9a081786181ced37b93
-  RNScreens: 4d79118be80f79fa1f4aa131909a1d6e86280af3
-  RNSentry: 97bc62fa65b7d663daee16fbf9771470852217cf
+  RNReanimated: 569c269480a76e39196aa17a5df08ef1561db5ff
+  RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
+  RNSentry: bf1f0970fffd3519a5cf553217f281bbb5b10de4
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
-  Sentry: 0718c3ad7a08e1107599610795adaf08864102f3
+  Sentry: 5c5dd4005f3b7b9765d5a8871232cddbd0d888b7
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Yoga: 32a18c0e845e185f4a2a66ec76e1fd1f958f22fa
