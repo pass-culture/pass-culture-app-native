@@ -56,6 +56,9 @@ const useNavigateToNextSubscriptionStep = () => {
       nextStep === SubscriptionStep.IdentityCheck ||
       nextStep === SubscriptionStep.ProfileCompletion
     ) {
+      if (isUserUnderage) {
+        return navigate('SelectSchoolHome')
+      }
       if (redirectToUbble(allowedIdentityCheckMethods, isUnderUbbleLoadThreshold)) {
         return navigate('IdentityCheck')
       }

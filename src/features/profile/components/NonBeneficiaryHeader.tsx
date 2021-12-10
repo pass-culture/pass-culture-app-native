@@ -1,12 +1,10 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
@@ -27,17 +25,12 @@ interface NonBeneficiaryHeaderProps {
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const today = new Date()
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
-  const { navigate } = useNavigation<UseNavigationType>()
 
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   const isUserUnderage = useIsUserUnderage()
 
   function onBannerPress() {
-    if (!isUserUnderage) {
-      navigateToNextBeneficiaryValidationStep()
-      return
-    }
-    navigate('SelectSchoolHome')
+    navigateToNextBeneficiaryValidationStep()
   }
 
   const deposit = depositAmount.replace(' ', '')
