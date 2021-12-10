@@ -13,6 +13,7 @@ import { AccountCreated } from '../AccountCreated'
 const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
 jest.mock('features/home/api')
 jest.mock('features/navigation/helpers')
+jest.mock('features/auth/settings')
 
 beforeEach(() => {
   mockedUseUserProfileInfo.mockReturnValue({

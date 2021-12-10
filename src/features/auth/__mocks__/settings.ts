@@ -9,6 +9,7 @@ export const mockDefaultSettings: SettingsResponse = {
   autoActivateDigitalBookings: true,
   depositAmount: 30000,
   displayDmsRedirection: true,
+  enableCulturalSurvey: true,
   enableIdCheckRetention: false,
   enableNativeEacIndividual: false,
   enableNativeIdCheckVerboseDebugging: false,

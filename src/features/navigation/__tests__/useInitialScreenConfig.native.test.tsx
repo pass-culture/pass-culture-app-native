@@ -16,6 +16,7 @@ import { useInitialScreen } from '../RootNavigator/useInitialScreenConfig'
 
 const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/settings')
 
 describe('useInitialScreen()', () => {
   afterAll(async () => {

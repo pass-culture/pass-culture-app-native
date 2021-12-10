@@ -1754,6 +1754,12 @@ export interface SettingsResponse {
      * @type {boolean}
      * @memberof SettingsResponse
      */
+    enableCulturalSurvey: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
     enableIdCheckRetention: boolean;
     /**
      * 

@@ -12,6 +12,7 @@ import { superFlushWithAct, act, render } from 'tests/utils'
 import { CulturalSurvey } from './CulturalSurvey'
 
 jest.mock('react-query')
+jest.mock('features/auth/settings')
 
 const mockedUseUserProfileInfo = useUserProfileInfo as jest.MockedFunction<
   typeof useUserProfileInfo

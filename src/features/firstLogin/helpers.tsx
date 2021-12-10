@@ -14,7 +14,7 @@ import { MonitoringError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
-import { shouldShowCulturalSurvey } from './shouldShowCulturalSurvey'
+import { useShouldShowCulturalSurvey } from './shouldShowCulturalSurvey'
 
 const FORM_ID = env.CULTURAL_SURVEY_TYPEFORM_ID
 const source = Platform.select({ web: 'web', ios: 'ios', android: 'android' }) || ''
@@ -40,13 +40,14 @@ export function withCulturalSurveyProvider(
     >()
     const onCulturalSurveyExit = useOnCulturalSurveyExit()
     const { data: user, isLoading: isLoadingUser } = useUserProfileInfo()
+    const shouldShowCulturalSurvey = useShouldShowCulturalSurvey()
 
     const currentRoute = useCurrentRoute()
     const { navigate } = useNavigation<UseNavigationType>()
 
     useEffect(() => {
       if (isLoadingUser) return
-      if (user && shouldShowCulturalSurvey(user)) {
+      if (user && shouldShowCulturalSurvey) {
         const userId = encodeURIComponent(uuidv1()) // legacy issue : the query param userId is not the actual `user.id`
         const userPk = user.id.toString()
         const url = `https://passculture.typeform.com/to/${FORM_ID}?userId=${userId}&userPk=${userPk}&source=${source}`

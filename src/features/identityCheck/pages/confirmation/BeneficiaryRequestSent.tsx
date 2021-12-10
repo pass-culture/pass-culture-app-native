@@ -4,8 +4,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { shouldShowCulturalSurvey } from 'features/firstLogin/shouldShowCulturalSurvey'
-import { useUserProfileInfo } from 'features/home/api'
+import { useShouldShowCulturalSurvey } from 'features/firstLogin/shouldShowCulturalSurvey'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -15,10 +14,8 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function BeneficiaryRequestSent() {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: user } = useUserProfileInfo()
   const { data: settings } = useAppSettings()
-
-  const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
+  const shouldNavigateToCulturalSurvey = useShouldShowCulturalSurvey()
 
   function onPress() {
     if (shouldNavigateToCulturalSurvey) {

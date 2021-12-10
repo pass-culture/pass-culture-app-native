@@ -17,6 +17,7 @@ import { AuthContext } from '../AuthContext'
 import { Login } from './Login'
 jest.mock('react-query')
 jest.mock('features/navigation/helpers')
+jest.mock('features/auth/settings')
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 

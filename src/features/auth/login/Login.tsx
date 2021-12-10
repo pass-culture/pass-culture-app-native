@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
+import { useAppSettings } from 'features/auth/settings'
 import { shouldShowCulturalSurvey } from 'features/firstLogin/shouldShowCulturalSurvey'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -45,6 +46,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
   const signIn = useSignIn()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
+  const { data: settings } = useAppSettings()
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -71,7 +73,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
       if (!hasSeenEligibleCard && user.showEligibleCard) {
         navigate('EighteenBirthday')
-      } else if (shouldShowCulturalSurvey(user)) {
+      } else if (shouldShowCulturalSurvey(user, settings)) {
         navigate('CulturalSurvey')
       } else {
         navigateToHome()

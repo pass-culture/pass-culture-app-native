@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 
 import { api } from 'api/api'
+import { SettingsResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { useAppSettings } from 'features/auth/settings'
 import { shouldShowCulturalSurvey } from 'features/firstLogin/shouldShowCulturalSurvey'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
@@ -15,9 +17,10 @@ export function useInitialScreen(): RootScreenNames | undefined {
   const { isLoggedIn } = useAuthContext()
 
   const [initialScreen, setInitialScreen] = useSafeState<RootScreenNames | undefined>(undefined)
+  const { data: settings } = useAppSettings()
 
   useEffect(() => {
-    getInitialScreen({ isLoggedIn })
+    getInitialScreen({ isLoggedIn, settings })
       .then((screen) => {
         setInitialScreen(screen)
         triggerInitialScreenNameAnalytics(screen)
@@ -30,17 +33,19 @@ export function useInitialScreen(): RootScreenNames | undefined {
   return initialScreen
 }
 
-async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promise<RootScreenNames> {
+async function getInitialScreen({
+  isLoggedIn,
+  settings,
+}: {
+  isLoggedIn: boolean
+  settings: SettingsResponse | undefined
+}): Promise<RootScreenNames> {
   if (isLoggedIn) {
     try {
       const user = await api.getnativev1me()
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
-      if (!hasSeenEligibleCard && user.showEligibleCard) {
-        return 'EighteenBirthday'
-      }
-      if (shouldShowCulturalSurvey(user)) {
-        return 'CulturalSurvey'
-      }
+      if (!hasSeenEligibleCard && user.showEligibleCard) return 'EighteenBirthday'
+      if (shouldShowCulturalSurvey(user, settings)) return 'CulturalSurvey'
     } catch {
       // If we cannot get user's information, we just go to the homepage
       return homeNavConfig[0]
