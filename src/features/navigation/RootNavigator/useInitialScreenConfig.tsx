@@ -34,6 +34,11 @@ async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promis
   if (isLoggedIn) {
     try {
       const user = await api.getnativev1me()
+
+      if (user.recreditAmountToShow) {
+        return 'RecreditBirthdayNotification'
+      }
+
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
       if (!hasSeenEligibleCard && user.showEligibleCard) {
         return 'EighteenBirthday'

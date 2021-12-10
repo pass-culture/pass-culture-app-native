@@ -15,6 +15,7 @@ import { flushAllPromises, superFlushWithAct, act, fireEvent, render } from 'tes
 import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
+
 jest.mock('react-query')
 jest.mock('features/navigation/helpers')
 
@@ -124,6 +125,48 @@ describe('<Login/>', () => {
       needsToFillCulturalSurvey: true,
       showEligibleCard: true,
       isBeneficiary: true,
+    } as UserProfileResponse)
+    const renderAPI = renderLogin()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
+
+    fireEvent.press(renderAPI.getByText('Se connecter'))
+    await act(flushAllPromises)
+
+    await waitForExpect(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
+    })
+  })
+
+  it('should redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow not null', async () => {
+    mockMeApiCall({
+      needsToFillCulturalSurvey: true,
+      showEligibleCard: true,
+      isBeneficiary: true,
+      recreditAmountToShow: 3000,
+    } as UserProfileResponse)
+    const renderAPI = renderLogin()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
+
+    fireEvent.press(renderAPI.getByText('Se connecter'))
+    await act(flushAllPromises)
+
+    await waitForExpect(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
+    })
+  })
+
+  it('should not redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow to null', async () => {
+    mockMeApiCall({
+      needsToFillCulturalSurvey: true,
+      showEligibleCard: true,
+      isBeneficiary: true,
+      recreditAmountToShow: null,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
