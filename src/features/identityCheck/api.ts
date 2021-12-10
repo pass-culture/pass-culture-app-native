@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { ActivityEnum, IdentificationSessionResponse } from 'api/gen'
+import { IdentificationSessionResponse, ProfileUpdateRequest } from 'api/gen'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { MutationKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { IdentityCheckState } from 'features/identityCheck/context/types'
 
 export const REDIRECT_URL_UBBLE = `${WEBAPP_V2_URL}/verification-identite/fin`
 
@@ -26,19 +27,39 @@ export function useIdentificationUrl() {
   return identificationUrl
 }
 
+const getCommpleteProfile = (
+  profile: IdentityCheckState['profile']
+): ProfileUpdateRequest | null => {
+  if (
+    profile.status &&
+    profile.address &&
+    profile.city &&
+    profile.city.name &&
+    profile.city.postalCode &&
+    profile.name &&
+    profile.name.firstName &&
+    profile.name.lastName
+  ) {
+    return {
+      activity: profile.status,
+      address: profile.address,
+      city: profile.city.name,
+      firstName: profile.name.firstName,
+      lastName: profile.name.lastName,
+      postalCode: profile.city.postalCode,
+    }
+  }
+  return null
+}
+
 export function usePatchProfile() {
   const { profile } = useIdentityCheckContext()
   const { showErrorSnackBar } = useSnackBarContext()
   return useMutation(
-    () =>
-      api.postnativev1subscriptionprofile({
-        activity: profile.status as ActivityEnum,
-        address: profile.address,
-        city: profile.city?.name || '',
-        firstName: profile.name?.firstName || '',
-        lastName: profile.name?.lastName || '',
-        postalCode: profile.city?.postalCode || '',
-      }),
+    () => {
+      const body = getCommpleteProfile(profile)
+      return body ? api.postnativev1subscriptionprofile(body) : Promise.reject()
+    },
     {
       onError: () =>
         showErrorSnackBar({
