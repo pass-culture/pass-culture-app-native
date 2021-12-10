@@ -6,6 +6,7 @@ import { useQuery } from 'react-query'
 import { api } from 'api/api'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { AsyncError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
@@ -38,7 +39,7 @@ export function ResetPasswordExpiredLink(props: Props) {
     <LayoutExpiredLink
       onResendEmail={() => resetPasswordEmailQuery()}
       disabledResendEmailButton={isFetching}
-      urlFAQ="https://aide.passculture.app/fr/articles/5261997-je-n-ai-pas-recu-le-mail-de-confirmation-de-changement-de-mot-de-passe"
+      urlFAQ={env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED}
     />
   )
 }

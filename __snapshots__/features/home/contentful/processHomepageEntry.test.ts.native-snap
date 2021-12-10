@@ -98,7 +98,7 @@ Array [
     "secondLine": "Consulte notre FAQ !",
     "targetNotConnectedUsersOnly": true,
     "title": "FAQ pass Culture",
-    "url": "https://aide.passculture.app/fr/",
+    "url": "https://passculture.zendesk.com/hc/fr/",
   },
   BusinessPane {
     "firstLine": "Crée un compte !",
@@ -108,7 +108,7 @@ Array [
     "secondLine": "Si tu as 18 ans, bénéficie de 300 €.",
     "targetNotConnectedUsersOnly": false,
     "title": "Crée un compte !",
-    "url": "https://aide.passculture.app/fr/",
+    "url": "https://passculture.zendesk.com/hc/fr/",
   },
   Offers {
     "display": Object {

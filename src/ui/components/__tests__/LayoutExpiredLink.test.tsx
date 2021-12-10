@@ -5,7 +5,7 @@ import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
 const onResendEmail = jest.fn()
 const isFetching = false
-const url = 'https://aide.passculture.app/fr/'
+const url = 'https://passculture.zendesk.com/hc/fr/'
 const contactSupport = jest.fn()
 
 describe('<LayoutExpiredLink/>', () => {

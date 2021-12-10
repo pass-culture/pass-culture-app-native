@@ -7,6 +7,7 @@ import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
 import { navigateToHome, openUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { env } from 'libs/environment'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -43,11 +44,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
           <Spacer.Column numberOfSpaces={5} />
           <ButtonTertiary
             title={t`Consulter l'article d'aide`}
-            onPress={() =>
-              openUrl(
-                'https://aide.passculture.app/fr/articles/5261997-je-n-ai-pas-recu-le-mail-de-confirmation-de-changement-de-mot-de-passe'
-              )
-            }
+            onPress={() => openUrl(env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED)}
             icon={ExternalSiteDeprecated}
           />
         </Description>

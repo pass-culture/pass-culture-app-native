@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -14,10 +15,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo, getSpacing } from 'ui/theme'
-
-const FAQ_EDUCONNECT_URL =
-  'https://aide.passculture.app/fr/articles/5707982-jeune-15-17-ans-ou-trouver-mes-identifiants-educonnect'
-
 interface FastEduconnectConnectionRequestModalProps {
   visible: boolean
   hideModal: () => void
@@ -42,7 +39,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<FastEduconnectConnec
         </MainContent>
 
         <TextQuestion
-          onPress={() => openUrl(FAQ_EDUCONNECT_URL)}
+          onPress={() => openUrl(env.FAQ_LINK_EDUCONNECT_URL)}
           icon={InfoPlain}
           title={t`C’est quoi ÉduConnect ?`}
         />
