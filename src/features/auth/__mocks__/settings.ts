@@ -4,20 +4,20 @@ import { SettingsResponse } from 'api/gen'
 import { useAppSettings as actualUseAppSettings } from 'features/auth/settings'
 
 export const mockDefaultSettings: SettingsResponse = {
-  depositAmount: 30000,
-  isRecaptchaEnabled: true,
-  allowIdCheckRegistration: true,
-  enablePhoneValidation: true,
-  displayDmsRedirection: true,
-  autoActivateDigitalBookings: true,
-  enableIdCheckRetention: false,
-  enableNativeIdCheckVerboseDebugging: false,
-  idCheckAddressAutocompletion: true,
-  objectStorageUrl: 'http://localhost-storage',
-  isWebappV2Enabled: false,
-  enableNativeEacIndividual: false,
-  enableUnderageGeneralisation: false,
   accountCreationMinimumAge: 15,
+  allowIdCheckRegistration: true,
+  autoActivateDigitalBookings: true,
+  depositAmount: 30000,
+  displayDmsRedirection: true,
+  enableIdCheckRetention: false,
+  enableNativeEacIndividual: false,
+  enableNativeIdCheckVerboseDebugging: false,
+  enablePhoneValidation: true,
+  enableUnderageGeneralisation: false,
+  idCheckAddressAutocompletion: true,
+  isRecaptchaEnabled: true,
+  isWebappV2Enabled: false,
+  objectStorageUrl: 'http://localhost-storage',
 }
 
 export const useAppSettings: typeof actualUseAppSettings = jest.fn(

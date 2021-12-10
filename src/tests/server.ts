@@ -123,20 +123,20 @@ export function requestPasswordResetFail() {
 
 export function requestSettingsSuccess(
   settingsResponse: SettingsResponse = {
-    depositAmount: 30000,
-    isRecaptchaEnabled: true,
+    accountCreationMinimumAge: 15,
     allowIdCheckRegistration: true,
     autoActivateDigitalBookings: false,
+    depositAmount: 30000,
+    displayDmsRedirection: true,
+    enableIdCheckRetention: false,
+    enableNativeEacIndividual: false,
     enableNativeIdCheckVerboseDebugging: false,
     enablePhoneValidation: false,
     enableUnderageGeneralisation: false,
-    enableIdCheckRetention: false,
-    objectStorageUrl: 'http://localhost',
-    displayDmsRedirection: true,
     idCheckAddressAutocompletion: true,
+    isRecaptchaEnabled: true,
     isWebappV2Enabled: false,
-    enableNativeEacIndividual: false,
-    accountCreationMinimumAge: 15,
+    objectStorageUrl: 'http://localhost',
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {
