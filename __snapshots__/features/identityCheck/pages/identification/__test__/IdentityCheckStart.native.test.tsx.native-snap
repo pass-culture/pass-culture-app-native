@@ -525,6 +525,7 @@ Array [
                         style={
                           Array [
                             Object {
+                              "alignItems": "flex-start",
                               "display": "flex",
                               "flexDirection": "row",
                               "justifyContent": "center",
@@ -1130,6 +1131,7 @@ Array [
         style={
           Array [
             Object {
+              "alignItems": "flex-start",
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "center",

@@ -22,24 +22,23 @@ interface FastEduconnectConnectionRequestModalProps {
   hideModal: () => void
 }
 
-export const FastEduconnectConnectionRequestModal: React.FC<
-  FastEduconnectConnectionRequestModalProps
-> = ({ visible, hideModal }) => {
-  const { colors } = useTheme()
-  const { navigate } = useNavigation<UseNavigationType>()
-  return (
-    <AppModal
-      title={t`Identifie-toi en 2 minutes`}
-      visible={visible}
-      leftIconAccessibilityLabel={'leftIconButton'}
-      leftIcon={ArrowPrevious}
-      onLeftIconPress={hideModal}
-      rightIconAccessibilityLabel={'rightIconButton'}
-      rightIcon={Close}
-      onRightIconPress={hideModal}>
-      <MainContent color={colors.greyDark}>
-        {t`Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement. `}
-      </MainContent>
+export const FastEduconnectConnectionRequestModal: React.FC<FastEduconnectConnectionRequestModalProps> =
+  ({ visible, hideModal }) => {
+    const { colors } = useTheme()
+    const { navigate } = useNavigation<UseNavigationType>()
+    return (
+      <AppModal
+        title={t`Identifie-toi en 2 minutes`}
+        visible={visible}
+        leftIconAccessibilityLabel={'leftIconButton'}
+        leftIcon={ArrowPrevious}
+        onLeftIconPress={hideModal}
+        rightIconAccessibilityLabel={'rightIconButton'}
+        rightIcon={Close}
+        onRightIconPress={hideModal}>
+        <MainContent color={colors.greyDark}>
+          {t`Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement. `}
+        </MainContent>
 
         <TextQuestion
           onPress={() => openUrl(env.FAQ_LINK_EDUCONNECT_URL)}
@@ -47,15 +46,15 @@ export const FastEduconnectConnectionRequestModal: React.FC<
           title={t`C’est quoi ÉduConnect ?`}
         />
 
-      <ButtonPrimary
-        title={t`Identification avec ÉduConnect`}
-        onPress={() => {
-          hideModal()
-          navigate('IdentityCheckEduConnect')
-        }}
-      />
+        <ButtonPrimary
+          title={t`Identification avec ÉduConnect`}
+          onPress={() => {
+            hideModal()
+            navigate('IdentityCheckEduConnect')
+          }}
+        />
 
-      <OrSeparator />
+        <OrSeparator />
 
         <ButtonTertiaryBlack
           icon={(props) => <EditPen {...props} size={getSpacing(5)} />}

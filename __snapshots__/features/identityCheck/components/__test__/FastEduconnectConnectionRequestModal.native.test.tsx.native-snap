@@ -125,6 +125,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
       style={
         Array [
           Object {
+            "alignItems": "flex-start",
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
@@ -917,6 +918,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
       style={
         Array [
           Object {
+            "alignItems": "flex-start",
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
