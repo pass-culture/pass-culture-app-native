@@ -6,6 +6,7 @@ import { api } from 'api/api'
 import { ValidateEmailResponse } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/AuthContext'
 import { useValidateEmailMutation } from 'features/auth/mutations'
+import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { isUserUnderage } from 'features/profile/utils'
@@ -14,6 +15,7 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function AfterSignupEmailValidationBuffer() {
+  const { data: settings } = useAppSettings()
   const { showInfoSnackBar } = useSnackBarContext()
 
   const { navigate } = useNavigation<UseNavigationType>()
@@ -50,7 +52,10 @@ export function AfterSignupEmailValidationBuffer() {
       const user = await api.getnativev1me()
 
       if (user.isEligibleForBeneficiaryUpgrade) {
-        const nextScreen = isUserUnderage(user) ? 'SelectSchoolHome' : 'VerifyEligibility'
+        const nextScreen =
+          isUserUnderage(user) && !settings?.enableUnderageGeneralisation
+            ? 'SelectSchoolHome'
+            : 'VerifyEligibility'
         delayedNavigate(nextScreen)
       } else {
         delayedNavigate('AccountCreated')
