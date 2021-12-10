@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
+import { shouldShowCulturalSurvey } from 'features/firstLogin/shouldShowCulturalSurvey'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'

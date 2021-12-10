@@ -5,7 +5,6 @@ import { useQueryClient } from 'react-query'
 import { v1 as uuidv1 } from 'uuid'
 
 import { api } from 'api/api'
-import { UserProfileResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -15,10 +14,7 @@ import { MonitoringError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
-export function shouldShowCulturalSurvey(user?: UserProfileResponse) {
-  if (!user) return false
-  return user.isBeneficiary && user.needsToFillCulturalSurvey
-}
+import { shouldShowCulturalSurvey } from './shouldShowCulturalSurvey'
 
 const FORM_ID = env.CULTURAL_SURVEY_TYPEFORM_ID
 const source = Platform.select({ web: 'web', ios: 'ios', android: 'android' }) || ''

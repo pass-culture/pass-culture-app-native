@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
+import { shouldShowCulturalSurvey } from 'features/firstLogin/shouldShowCulturalSurvey'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'

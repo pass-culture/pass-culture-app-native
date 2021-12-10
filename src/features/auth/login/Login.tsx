@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
-import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
+import { shouldShowCulturalSurvey } from 'features/firstLogin/shouldShowCulturalSurvey'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
