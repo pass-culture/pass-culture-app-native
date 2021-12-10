@@ -12,5 +12,6 @@ export function useAppSettings(options = {}) {
     enabled: true,
     ...options,
     staleTime: STALE_TIME_APP_SETTINGS,
+    select: (data) => ({ ...data, enableCulturalSurvey: true }),
   })
 }
