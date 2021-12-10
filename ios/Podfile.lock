@@ -468,6 +468,8 @@ PODS:
     - React
   - react-native-get-random-values (1.7.1):
     - React-Core
+  - react-native-image-picker (4.0.3):
+    - React-Core
   - react-native-in-app-review (3.2.3):
     - React
   - react-native-netinfo (5.9.10):
@@ -702,6 +704,7 @@ DEPENDENCIES:
   - react-native-flipper (from `../node_modules/react-native-flipper`)
   - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
   - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
+  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-in-app-review (from `../node_modules/react-native-in-app-review`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - "react-native-profiling (from `../node_modules/@pass-culture/react-native-profiling`)"
@@ -849,6 +852,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-geolocation-service"
   react-native-get-random-values:
     :path: "../node_modules/react-native-get-random-values"
+  react-native-image-picker:
+    :path: "../node_modules/react-native-image-picker"
   react-native-in-app-review:
     :path: "../node_modules/react-native-in-app-review"
   react-native-netinfo:
@@ -999,6 +1004,7 @@ SPEC CHECKSUMS:
   react-native-flipper: e30ae82a1536e8f6f4f34012353ebdf1d8aa5157
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
+  react-native-image-picker: 474cf2c33c2b6671da53d293a16c97995f0aec15
   react-native-in-app-review: 23f4f5b9fcd94339dd5d93c6230557f9c67c7dda
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
   react-native-profiling: 11637537015f8502597cf22f9449a94ebfb4907d
