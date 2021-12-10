@@ -478,8 +478,8 @@ PODS:
     - React
   - react-native-safe-area-context (3.3.2):
     - React-Core
-  - react-native-splash-screen (3.3.0):
-    - React-Core
+  - react-native-splash-screen (3.2.0):
+    - React
   - react-native-tracking-transparency (0.1.1):
     - React
   - react-native-webview (11.15.0):
@@ -1009,7 +1009,7 @@ SPEC CHECKSUMS:
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
   react-native-profiling: 11637537015f8502597cf22f9449a94ebfb4907d
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
-  react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
+  react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-tracking-transparency: b2029ff756f1128b1f2c7c7c7f3003bc3c950f9f
   react-native-webview: e89bf2dba26a04cda967814df3ed1be99f291233
   React-perflogger: 73732888d37d4f5065198727b167846743232882
