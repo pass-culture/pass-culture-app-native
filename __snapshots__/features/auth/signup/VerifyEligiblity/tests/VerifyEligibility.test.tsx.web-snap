@@ -114,13 +114,12 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       />
       <div
         className="css-view-1dbjc4n"
-        data-testid="HappyFaceStars"
       >
         <div
           className="css-text-901oao"
           dir="auto"
         >
-          HappyFaceStars-SVG-Mock
+          undefined-SVG-Mock
         </div>
       </div>
       <div
@@ -144,7 +143,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           }
         }
       >
-        Plus que quelques étapes !
+        Vérifie ton identité
       </div>
       <div
         className="css-view-1dbjc4n"
@@ -167,7 +166,9 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           }
         }
       >
-        Pour que tu puisses bénéficier de l’aide financière de 300 € offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité.
+        Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement. 
+
+ Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
       </div>
       <div
         className="css-view-1dbjc4n"
@@ -178,9 +179,9 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       />
       <div
-        aria-label="Vérifier mon éligibilité"
+        aria-label="Vérifier mon identité"
         className="css-view-1dbjc4n"
-        data-testid="Vérifier mon éligibilité"
+        data-testid="Vérifier mon identité"
         onClick={[Function]}
         onContextMenu={[Function]}
         onKeyDown={[Function]}
@@ -245,7 +246,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             }
           }
         >
-          Vérifier mon éligibilité
+          Vérifier mon identité
         </div>
       </div>
       <div
@@ -310,6 +311,17 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
         tabIndex="0"
       >
+        <div
+          className="css-view-1dbjc4n"
+          data-testid="button-icon"
+        >
+          <div
+            className="css-text-901oao"
+            dir="auto"
+          >
+            button-icon-SVG-Mock
+          </div>
+        </div>
         <div
           className="css-text-901oao css-textOneLine-vcwn7f"
           dir="auto"
