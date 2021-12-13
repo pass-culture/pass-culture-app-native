@@ -5,6 +5,7 @@ import React from 'react'
 import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
 type Props = StackScreenProps<RootStackParamList, 'ChangeEmailExpiredLink'>
@@ -26,9 +27,13 @@ export function ChangeEmailExpiredLink(props: Props) {
       t`Si tu as besoin d’aide, n’hésite pas à contacter le support.`
     : undefined
 
+  const renderResendEmailButton = () => (
+    <ButtonPrimaryWhite title={t`Renvoyer l'email`} onPress={() => changeEmailExpiredLink()} />
+  )
+
   return (
     <LayoutExpiredLink
-      onResendEmail={changeEmailExpiredLink}
+      renderResendEmailButton={renderResendEmailButton}
       customBodyText={bodyText}
       contactSupport={email ? () => contactSupport.forChangeEmailExpiredLink(email) : undefined}
     />
