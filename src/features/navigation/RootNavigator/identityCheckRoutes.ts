@@ -7,6 +7,7 @@ import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/Id
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/IdentityCheckEduConnect'
 import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/identification/IdentityCheckEduConnectForm'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
+import { IdentityCheckPending } from 'features/identityCheck/pages/identification/IdentityCheckPending'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
 import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/IdentityCheckValidation'
@@ -114,6 +115,12 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     path: 'verification-identite/verification-indisponible',
     options: { title: t`Identification` },
     secure: true,
+  },
+  {
+    name: 'IdentityCheckPending',
+    component: IdentityCheckPending,
+    path: 'verification-identite/demande-en-attente',
+    options: { title: t`Demande en attente` },
   },
   // Confirmation
   {

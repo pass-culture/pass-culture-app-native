@@ -1,11 +1,14 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { IdentificationSessionResponse, ProfileUpdateRequest } from 'api/gen'
+import { ApiError } from 'api/apiHelpers'
+import { ProfileUpdateRequest } from 'api/gen'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckState } from 'features/identityCheck/context/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { MutationKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -14,14 +17,25 @@ export const REDIRECT_URL_UBBLE = `${WEBAPP_V2_URL}/verification-identite/fin`
 
 export function useIdentificationUrl() {
   const [identificationUrl, setIdentificationUrl] = useState<string | undefined>()
-  const { mutate: requestIdentificationUrl } = useMutation<IdentificationSessionResponse, void>(
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  const { mutate: postIdentificationUrl } = useMutation(
     MutationKeys.IDENTIFICATION_URL,
-    () => api.postnativev1ubbleIdentification({ redirectUrl: REDIRECT_URL_UBBLE }),
-    { onSuccess: (data) => setIdentificationUrl(data.identificationUrl) }
+    async () => {
+      try {
+        const data = await api.postnativev1ubbleIdentification({ redirectUrl: REDIRECT_URL_UBBLE })
+        setIdentificationUrl(data.identificationUrl)
+      } catch (err) {
+        const error = (err as ApiError)?.content.code
+        if (error === 'IDCHECK_ALREADY_PROCESSED') navigate('IdentityCheckPending')
+        navigate('IdentityCheckUnavailable', { withDMS: false })
+      }
+    }
   )
+
   useEffect(() => {
     if (identificationUrl) return
-    requestIdentificationUrl()
+    postIdentificationUrl()
   }, [])
 
   return identificationUrl
