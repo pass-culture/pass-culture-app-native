@@ -1,9 +1,10 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { SetPassword } from 'features/auth/signup/SetPassword/SetPassword'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
+
+import { SetPassword } from './SetPassword'
 
 jest.mock('features/auth/settings')
 
