@@ -16,6 +16,7 @@ type Props = {
   titleNumberOfLines?: number
   disableBackdropTap?: boolean
   shouldDisplayOverlay?: boolean
+  scrollEnabled?: boolean
   onBackdropPress?: () => void
 } & ModalIconProps
 
@@ -36,6 +37,7 @@ export const AppModal: FunctionComponent<Props> = ({
   disableBackdropTap,
   shouldDisplayOverlay = true,
   onBackdropPress,
+  scrollEnabled = true,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -107,7 +109,7 @@ export const AppModal: FunctionComponent<Props> = ({
       <ScrollViewContainer paddingBottom={scrollViewPaddingBottom}>
         <ScrollView
           ref={scrollViewRef}
-          scrollEnabled={true}
+          scrollEnabled={scrollEnabled}
           onContentSizeChange={(_width, height) => {
             setScrollViewContentHeight(height)
             scrollViewRef.current?.scrollTo({ y: 0 })

@@ -1,12 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { memo, useEffect, useState } from 'react'
-import { Animated, Platform } from 'react-native'
-import CountryPicker, {
-  Country,
-  CountryCode,
-  DEFAULT_THEME,
-} from 'react-native-country-picker-modal'
+import { Country, CountryCode } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
@@ -15,6 +10,7 @@ import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
 import { useAppSettings } from 'features/auth/settings'
 import { SignupStep } from 'features/auth/signup/enums'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { CountryPicker, METROPOLITAN_FRANCE } from 'libs/country-picker'
 import { currentTimestamp } from 'libs/dates'
 import { useSafeState } from 'libs/hooks'
 import { MonitoringError } from 'libs/monitoring'
@@ -27,29 +23,17 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Close } from 'ui/svg/icons/Close'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const TIMER = 60
-const ALLOWED_COUNTRY_CODES: CountryCode[] = [
-  'FR',
-  'MQ',
-  'YT',
-  'GP',
-  'GF',
-  'RE',
-  'PM',
-  'BL',
-  'MF',
-  'WF',
-  'PF',
-  'NC',
-]
+
 function getPlaceholder(countryCode: CountryCode): string {
   if (countryCode === 'NC') return '654 321'
   return '6 12 34 56 78'
 }
+
+const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
 export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
   const { data: settings } = useAppSettings()
@@ -59,9 +43,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
   const [validationCodeRequestTimestamp, setValidationCodeRequestTimestamp] = useState<
     null | number
   >(null)
-  const [countryCode, setCountryCode] = useState<CountryCode>('FR')
-  const [phoneNumberPrefix, setPhoneNumberPrefix] = useState('33')
-  const [isCountryPickerVisible, setIsCountryPickerVisible] = useState(false)
+  const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)
   const {
     visible: quitSignupModalVisible,
     showModal: showQuitSignupModal,
@@ -89,7 +71,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
     const now = currentTimestamp()
     storage.saveObject('phone_validation_code_asked_at', now)
     setValidationCodeRequestTimestamp(now)
-    navigate('SetPhoneValidationCode', { phoneNumber, countryCode })
+    navigate('SetPhoneValidationCode', { phoneNumber, countryCode: country.cca2 })
   }
 
   function onError(error: ApiError | unknown) {
@@ -108,9 +90,10 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
   })
 
   function requestSendPhoneValidationCode() {
-    if (isContinueButtonEnabled && isRequestTimestampExpired) {
+    const callingCode = country.callingCode[0]
+    if (isContinueButtonEnabled && isRequestTimestampExpired && callingCode) {
       setInvalidPhoneNumberMessage('')
-      const phoneNumberWithPrefix = '+' + phoneNumberPrefix + formatPhoneNumber(phoneNumber)
+      const phoneNumberWithPrefix = '+' + callingCode + formatPhoneNumber(phoneNumber)
       if (settings?.enableNativeIdCheckVerboseDebugging) {
         const errorMessage = `Request info : ${JSON.stringify({
           phoneNumber: phoneNumberWithPrefix,
@@ -133,18 +116,6 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
     return t`Attends` + ` ${remainingTime}s.`
   }
 
-  function onSelectCountryCode(country: Country) {
-    setCountryCode(country.cca2)
-    setPhoneNumberPrefix(country.callingCode[0])
-  }
-
-  function openCountryPickerModal() {
-    setIsCountryPickerVisible(true)
-  }
-  function closeCountryPickerModal() {
-    setIsCountryPickerVisible(false)
-  }
-
   return (
     <React.Fragment>
       <BottomContentPage>
@@ -165,36 +136,13 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
           </Paragraphe>
           <Spacer.Column numberOfSpaces={8} />
           <InputContainer>
-            <StyledTouchableOpacity onPress={openCountryPickerModal}>
-              <CountryPicker
-                withEmoji={Platform.OS !== 'web'}
-                countryCode={countryCode}
-                countryCodes={ALLOWED_COUNTRY_CODES}
-                onSelect={onSelectCountryCode}
-                translation={'fra'}
-                theme={{
-                  ...DEFAULT_THEME,
-                  fontFamily: 'Montserrat-Bold',
-                  fontSize: getSpacing(3.75),
-                }}
-                withCallingCode
-                withCallingCodeButton
-                modalProps={{ visible: isCountryPickerVisible }}
-                onClose={closeCountryPickerModal}
-                onOpen={openCountryPickerModal}
-              />
-              <Animated.View
-                style={{ transform: [{ rotateZ: `${Math.PI / 2}rad` }] }}
-                testID="accordionArrow">
-                <ArrowNext size={getSpacing(6)} />
-              </Animated.View>
-            </StyledTouchableOpacity>
+            <StyledCountryPicker initialCountry={INITIAL_COUNTRY} onSelect={setCountry} />
             <StyledTextInput
               autoCapitalize="none"
               isError={false}
               keyboardType="number-pad"
               onChangeText={onChangeText}
-              placeholder={getPlaceholder(countryCode)}
+              placeholder={getPlaceholder(country.cca2)}
               textContentType="telephoneNumber"
               onSubmitEditing={requestSendPhoneValidationCode}
               {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
@@ -244,16 +192,16 @@ const InputContainer = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
-  maxWidth: getSpacing(80),
+  maxWidth: getSpacing(90),
 })
 
-const StyledTouchableOpacity = styled.TouchableOpacity({
-  flexDirection: 'row',
-  width: '35%',
-})
+const StyledCountryPicker = styled(CountryPicker)(({ theme }) => ({
+  width: theme.isDesktopViewport ? '25%' : '35%',
+}))
 
-const StyledTextInput = styled(TextInput).attrs({
-  containerStyle: { width: '65%' },
+const StyledTextInput = styled(TextInput).attrs((props) => {
+  const { theme } = props
+  return { containerStyle: { width: theme.isDesktopViewport ? '75%' : '65%' } }
 })({})
 
 /**
