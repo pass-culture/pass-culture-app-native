@@ -1,8 +1,6 @@
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { render, fireEvent } from 'tests/utils'
@@ -15,19 +13,10 @@ jest.mock('features/navigation/helpers')
 jest.mock('react-query')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
-const mockedUseDepositAmountsByAge = mocked(useDepositAmountsByAge)
-
 describe('<VerifyEligibility />', () => {
   it('should show the correct deposit amount', async () => {
-    let queryByText = render(<VerifyEligibility />).queryByText
-    expect(queryByText(/aide financière de 300 € offerte par le Ministère/)).toBeTruthy()
-
-    mockedUseDepositAmountsByAge.mockReturnValueOnce({
-      ...mockedUseDepositAmountsByAge(),
-      eighteenYearsOldDeposit: '500 €',
-    })
-    queryByText = render(<VerifyEligibility />).queryByText
-    expect(queryByText(/aide financière de 500 € offerte par le Ministère/)).toBeTruthy()
+    const VerifyEligibilityComponent = render(<VerifyEligibility />)
+    expect(VerifyEligibilityComponent).toMatchSnapshot()
   })
 
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
@@ -45,7 +34,7 @@ describe('<VerifyEligibility />', () => {
     } = useBeneficiaryValidationNavigation()
     const { findByText } = render(<VerifyEligibility />)
 
-    const button = await findByText('Vérifier mon éligibilité')
+    const button = await findByText('Vérifier mon identité')
     fireEvent.press(button)
 
     await waitForExpect(() => {

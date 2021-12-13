@@ -1813,7 +1813,6 @@ msgstr "Pages"
 msgid "Paramètres applicatifs"
 msgstr "Paramètres applicatifs"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/profile/pages/ConsentSettings.tsx
 msgid "Paramètres de confidentialité"
@@ -1883,10 +1882,6 @@ msgstr "Permanent"
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Place-toi dans un lieu bien éclairé"
 msgstr "Place-toi dans un lieu bien éclairé"
-
-#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-msgid "Plus que quelques étapes !"
-msgstr "Plus que quelques étapes !"
 
 #: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 msgid "Politique de confidentialité."
@@ -2618,10 +2613,6 @@ msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'applica
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
-msgid "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
-msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
-
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid ""
 "Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées.\n"
@@ -2649,6 +2640,10 @@ msgstr "Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton c
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 msgid "Tu pourras ainsi nous aider à améliorer l’application."
 msgstr "Tu pourras ainsi nous aider à améliorer l’application."
+
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
+msgid "Tu pourras modifier tes paramètres de confidentialité dans ton profil."
+msgstr "Tu pourras modifier tes paramètres de confidentialité dans ton profil."
 
 #: src/features/bookings/components/ArchiveBookingModal.tsx
 msgid "Tu pourras retrouver l’offre dans tes réservations teminées"
@@ -2703,6 +2698,7 @@ msgstr "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la v
 #: src/api/__mocks__/apiHelpers.ts
 #: src/api/apiHelpers.ts
 #: src/features/profile/pages/NotificationSettings.tsx
+#: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
 
@@ -2886,18 +2882,19 @@ msgstr "Vérification par smartphone"
 msgid "Vérification éligibilité"
 msgstr "Vérification éligibilité"
 
+#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
+msgid "Vérifie ton identité"
+msgstr "Vérifie ton identité"
+
 #: src/features/identityCheck/atoms/IdentityVerificationText.web.tsx
 msgid "Vérifie ton identité sur ton smartphone"
 msgstr "Vérifie ton identité sur ton smartphone"
 
+#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Vérifier mon identité"
 msgstr "Vérifier mon identité"
-
-#: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-msgid "Vérifier mon éligibilité"
-msgstr "Vérifier mon éligibilité"
 
 #: src/libs/i18n.native.test.ts
 msgid "Welcome to Pass Culture"
@@ -3069,8 +3066,11 @@ msgid "montant déduit"
 msgstr "{price} seront déduits de ton crédit pass Culture"
 
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-msgid "need verify eligibility"
-msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
+msgid "need verify identity"
+msgstr ""
+"Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement. \n"
+"\n"
+" Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription."
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "not cancellable because expired for ex beneficiary"

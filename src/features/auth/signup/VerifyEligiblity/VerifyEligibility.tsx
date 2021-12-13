@@ -2,39 +2,38 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
+import { HappyFace } from 'ui/svg/icons/HappyFace'
+import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
-  const deposit = useDepositAmountsByAge().eighteenYearsOldDeposit
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
 
   return (
-    <GenericInfoPage
-      title={t`Plus que quelques étapes !`}
-      icon={HappyFaceStars}
-      iconSize={getSpacing(65)}>
+    <GenericInfoPage title={t`Vérifie ton identité`} icon={HappyFace} iconSize={getSpacing(30)}>
       <StyledBody>
         {t({
-          id: 'need verify eligibility',
-          values: { deposit },
+          id: 'need verify identity',
           message:
-            'Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité.',
+            'Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement. \n\n Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.',
         })}
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimaryWhite
-        title={t`Vérifier mon éligibilité`}
+        title={t`Vérifier mon identité`}
         onPress={navigateToNextBeneficiaryValidationStep}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
+      <ButtonTertiaryWhite
+        icon={PlainArrowPrevious}
+        title={t`Retourner à l'accueil`}
+        onPress={navigateToHome}
+      />
     </GenericInfoPage>
   )
 }
