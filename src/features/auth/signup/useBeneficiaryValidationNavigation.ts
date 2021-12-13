@@ -9,7 +9,6 @@ import {
   SubscriptionStep,
   MaintenancePageType,
 } from 'api/gen'
-import { useAppSettings } from 'features/auth/settings'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
@@ -37,7 +36,6 @@ export const useBeneficiaryValidationNavigation = () => {
 
 const useNavigateToNextSubscriptionStep = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: settings } = useAppSettings()
   const isUserUnderage = useIsUserUnderage()
   const { showErrorSnackBar } = useSnackBarContext()
   const isUnderUbbleLoadThreshold = useIsUnderUbbleLoadThreshold()
@@ -58,9 +56,6 @@ const useNavigateToNextSubscriptionStep = () => {
       nextStep === SubscriptionStep.IdentityCheck ||
       nextStep === SubscriptionStep.ProfileCompletion
     ) {
-      if (isUserUnderage && !settings?.enableUnderageGeneralisation) {
-        return navigate('SelectSchoolHome')
-      }
       if (redirectToUbble(allowedIdentityCheckMethods, isUnderUbbleLoadThreshold)) {
         return navigate('IdentityCheck')
       }
