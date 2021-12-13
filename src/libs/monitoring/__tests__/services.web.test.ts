@@ -1,4 +1,4 @@
-import * as SentryModule from '@sentry/react-native'
+import * as SentryModule from '@sentry/react'
 
 import { env } from 'libs/environment'
 
@@ -11,7 +11,7 @@ describe('eventMonitoring', () => {
       eventMonitoring.init({ enabled: true })
       expect(SentryModule.init).toBeCalledWith({
         dsn: env.SENTRY_DSN,
-        environment: env.ENV,
+        environment: 'development',
         release: version,
         integrations: [expect.anything()],
         tracesSampleRate: 0.01,

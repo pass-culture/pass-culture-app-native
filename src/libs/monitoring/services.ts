@@ -1,7 +1,8 @@
-import * as SentryModule from '@sentry/react-native'
 import { CaptureContext, User, Event, Severity } from '@sentry/types'
 
 import { SENTRY_CONFIG } from 'libs/monitoring/config'
+
+import * as SentryModule from './sentry'
 
 type EventMonitoring = {
   captureException: (

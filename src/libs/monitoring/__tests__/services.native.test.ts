@@ -11,7 +11,7 @@ describe('eventMonitoring', () => {
       eventMonitoring.init({ enabled: true })
       expect(SentryModule.init).toBeCalledWith({
         dsn: env.SENTRY_DSN,
-        environment: env.ENV,
+        environment: 'development',
         release: version,
         tracesSampleRate: 0.01,
       })
