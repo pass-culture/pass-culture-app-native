@@ -135,6 +135,7 @@ export function requestSettingsSuccess(
     displayDmsRedirection: true,
     idCheckAddressAutocompletion: true,
     isWebappV2Enabled: false,
+    enableCulturalSurvey: false,
     enableNativeEacIndividual: false,
     accountCreationMinimumAge: 15,
   }
