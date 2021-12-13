@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
 
-import { maintenanceStatusListener } from 'libs/firestore/maintenance'
+import { MAINTENANCE, Maintenance, maintenanceStatusListener } from 'libs/firestore/maintenance'
 
-export const useIsUnderMaintenance = () => {
-  const [maintenance, setMaintenance] = useState<boolean | undefined>()
+export const useMaintenance = (): Maintenance => {
+  const [maintenance, setMaintenance] = useState<Maintenance>({
+    status: MAINTENANCE.UNKNOWN,
+    message: undefined,
+  })
   useEffect(() => {
     const subscriber = maintenanceStatusListener(setMaintenance)
 

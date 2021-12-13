@@ -5,8 +5,15 @@ import { render } from 'tests/utils'
 import { Maintenance } from '../Maintenance'
 
 describe('<Maintenance />', () => {
-  it('should match snapshot', async () => {
-    const renderForceUpdate = await render(<Maintenance />)
-    expect(renderForceUpdate).toMatchSnapshot()
+  it('should match snapshot with default message', async () => {
+    const maintenancePage = await render(<Maintenance />)
+    expect(maintenancePage).toMatchSnapshot()
+  })
+
+  it('should match snapshot with custom message', async () => {
+    const maintenancePage = await render(
+      <Maintenance message="C'est tout cassé ! Reviens plus tard" />
+    )
+    expect(maintenancePage).toMatchSnapshot()
   })
 })

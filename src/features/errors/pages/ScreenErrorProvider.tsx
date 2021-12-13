@@ -3,18 +3,19 @@ import React from 'react'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
 import { MaintenanceErrorPage } from 'features/maintenance/MaintenanceErrorPage'
-import { useIsUnderMaintenance } from 'features/maintenance/useMaintenance'
+import { useMaintenance } from 'features/maintenance/useMaintenance'
+import { MAINTENANCE } from 'libs/firestore/maintenance'
 import { ScreenError } from 'libs/monitoring/errors'
 
 export const ScreenErrorProvider = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
-  const isUnderMaintenance = useIsUnderMaintenance()
+  const { status } = useMaintenance()
   const mustUpdateApp = useMustUpdateApp()
 
   if (mustUpdateApp) {
     throw new ScreenError('Must update app', ForceUpdate)
   }
 
-  if (isUnderMaintenance) {
+  if (status === MAINTENANCE.ON) {
     throw new ScreenError('Under maintenance', MaintenanceErrorPage)
   }
 

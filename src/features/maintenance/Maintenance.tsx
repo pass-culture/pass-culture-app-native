@@ -8,7 +8,11 @@ import { LogoPassCulture as LogoPassCultureOriginal } from 'ui/svg/icons/LogoPas
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const Maintenance = () => {
+type MaintenanceProps = {
+  message?: string
+}
+
+export const Maintenance: React.FC<MaintenanceProps> = (props) => {
   return (
     <React.Fragment>
       <Helmet>
@@ -19,7 +23,11 @@ export const Maintenance = () => {
         icon={MaintenanceCone}
         iconSize={getSpacing(40)}>
         <Spacer.Column numberOfSpaces={6} />
-        <StyledBody>{t`L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !`}</StyledBody>
+        <StyledBody>
+          {props.message
+            ? props.message
+            : t`L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !`}
+        </StyledBody>
         <Spacer.Column numberOfSpaces={24} />
         <LogoPassCulture />
       </GenericInfoPage>
