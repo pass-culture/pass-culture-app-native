@@ -9,6 +9,17 @@ import { render, fireEvent } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
+const mockedNavigate = jest.fn()
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native')
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: mockedNavigate,
+    }),
+  }
+})
+
 jest.mock('features/profile/utils')
 const mockedUseIsUserUnderage = mocked(useIsUserUnderage, true)
 
@@ -26,8 +37,6 @@ jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
 describe('NonBeneficiaryHeader  ', () => {
   afterAll(mockdate.reset)
-  const { navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep } =
-    useBeneficiaryValidationNavigation()
 
   it('should render the right body for user under 18 years old', () => {
     const today = '2021-01-30T00:00:00Z'
@@ -44,6 +53,10 @@ describe('NonBeneficiaryHeader  ', () => {
   })
 
   it('should render the right body for 18 years old users, call analytics and navigate to nextBeneficiaryValidationStep', async () => {
+    const {
+      navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
+    } = useBeneficiaryValidationNavigation()
+
     const today = '2021-02-30T00:00:00Z'
     mockdate.set(new Date(today))
     const { getByTestId } = render(
@@ -92,7 +105,7 @@ describe('NonBeneficiaryHeader  ', () => {
     fireEvent.press(banner)
 
     await waitForExpect(() => {
-      expect(mockedNavigateToNextBeneficiaryValidationStep).toHaveBeenCalledWith()
+      expect(mockedNavigate).toHaveBeenCalledWith('SelectSchoolHome')
     })
   })
 

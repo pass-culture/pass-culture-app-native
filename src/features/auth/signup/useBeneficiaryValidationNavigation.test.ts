@@ -10,7 +10,6 @@ import {
   SubscriptionStep,
   MaintenancePageType,
 } from 'api/gen'
-import { useAppSettings } from 'features/auth/settings'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useIsUserUnderage } from 'features/profile/utils'
@@ -19,7 +18,6 @@ import { server } from 'tests/server'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/auth/settings')
-const mockedUseAppSettings = useAppSettings as jest.Mock
 jest.mock('features/home/api')
 jest.mock('features/profile/utils')
 jest.mock('libs/firestore/ubbleLoad', () => ({ useIsUnderUbbleLoadThreshold: jest.fn(() => true) }))
@@ -84,36 +82,6 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('IdCheckV2')
-    })
-  })
-  it('should navigate to SelectSchoolHome if nextStep is profile-completion, user is underage and no generalisation', async () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    mockNextStepRequest({
-      allowedIdentityCheckMethods,
-      nextSubscriptionStep: SubscriptionStep.ProfileCompletion,
-    })
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
-    result.current.navigateToNextBeneficiaryValidationStep()
-
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('SelectSchoolHome')
-    })
-  })
-  it('should navigate to IdentityCheck if nextStep is profile-completion, user is underage, generalisation started and ubble allowed', async () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    mockedUseAppSettings.mockReturnValueOnce({
-      data: { enableUnderageGeneralisation: true },
-      isLoading: false,
-    })
-    mockNextStepRequest({
-      allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble, IdentityCheckMethod.Jouve],
-      nextSubscriptionStep: SubscriptionStep.ProfileCompletion,
-    })
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
-    result.current.navigateToNextBeneficiaryValidationStep()
-
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdentityCheck')
     })
   })
 
