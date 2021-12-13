@@ -57,9 +57,9 @@ export function AfterSignupEmailValidationBuffer() {
             ? 'SelectSchoolHome'
             : 'VerifyEligibility'
         delayedNavigate(nextScreen)
-      } else {
-        delayedNavigate('AccountCreated')
+        return
       }
+      delayedNavigate('AccountCreated')
     } catch {
       delayedNavigate('AccountCreated')
     }
