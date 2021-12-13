@@ -59,7 +59,7 @@ export const IdentityCheckDMS = () => {
                 icon={ExternalSite}
               />
               <Typo.Caption color={ColorsEnum.GREY_DARK}>
-                {t`Titre de séjour, carte d'identité, ou passeport.`}
+                {t`Titre de séjour, carte d'identité ou passeport.`}
               </Typo.Caption>
             </ButtonContainer>
           </ChoicesContainer>
