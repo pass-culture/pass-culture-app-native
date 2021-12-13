@@ -57,3 +57,10 @@ export const formatToSlashedFrenchDate = (ISODate: string) => {
   const year = date.getFullYear()
   return `${day}/${month}/${year}`
 }
+
+export const formatToReadableFrenchDate = (date: Date) => {
+  return new Intl.DateTimeFormat('fr-FR', {
+    month: 'long',
+    day: '2-digit',
+  }).format(date)
+}

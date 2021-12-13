@@ -5,12 +5,18 @@ import {
   dateDiffInFullYears,
   formatToSlashedFrenchDate,
   isTimestampExpired,
+  formatToReadableFrenchDate,
 } from './dates'
 
 describe('currentTimestamp()', () => {
   it('should return timestamp corresponding to current time', () => {
     mockdate.set(new Date('2020-06-10T13:00:00Z'))
     expect(currentTimestamp()).toBe(1591794000)
+  })
+})
+describe('formatToReadableFrenchDate()', () => {
+  it('should return formated translated and readable date', () => {
+    expect(formatToReadableFrenchDate(new Date('2019-12-01T00:00:00Z'))).toEqual('01 décembre')
   })
 })
 

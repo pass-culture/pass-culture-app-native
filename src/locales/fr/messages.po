@@ -106,7 +106,7 @@ msgstr "Abandonner la vérification"
 msgid "Académie de"
 msgstr "Académie de"
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
@@ -490,7 +490,7 @@ msgstr "Compte créé !"
 msgid "Compte désactivé"
 msgstr "Compte désactivé"
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -578,9 +578,9 @@ msgstr "Consulter notre centre d'aide"
 msgid "Contact"
 msgstr "Contact"
 
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
@@ -818,7 +818,7 @@ msgstr "En attendant, tu peux découvrir l'application !"
 msgid "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
 msgstr "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
@@ -1110,7 +1110,7 @@ msgstr "Historique"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Hors connexion : en attente du réseau."
 msgstr "Hors connexion : en attente du réseau."
 
@@ -1409,7 +1409,7 @@ msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
@@ -1887,11 +1887,11 @@ msgstr "Permanent"
 msgid "Place-toi dans un lieu bien éclairé"
 msgstr "Place-toi dans un lieu bien éclairé"
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
@@ -2157,10 +2157,6 @@ msgstr "Revenir à l'accueil"
 #: src/features/offer/components/useReportOfferModalContent.tsx
 msgid "Revenir à l'étape précédente"
 msgstr "Revenir à l'étape précédente"
-
-#: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
-msgid "Reviens à partir du 31 janvier pour poursuivre ton inscription et bénéficier des offres du pass Culture."
-msgstr "Reviens à partir du 31 janvier pour poursuivre ton inscription et bénéficier des offres du pass Culture."
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
@@ -2685,8 +2681,8 @@ msgstr "Téléphone - Formulaire"
 msgid "Un lien ne fonctionne pas ?"
 msgstr "Un lien ne fonctionne pas ?"
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
@@ -2912,7 +2908,7 @@ msgstr "À activer avant le {dateLimit}"
 msgid "activation message"
 msgstr "À activer avant le {date}"
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
@@ -3135,6 +3131,10 @@ msgstr "quotidiennes"
 #: src/features/bookings/components/CancelBookingModal.tsx
 msgid "refunded on your pass"
 msgstr "{price} seront recrédités sur ton pass Culture."
+
+#: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
+msgid "reviens a partir du"
+msgstr "Reviens à partir du {formatedDate} pour poursuivre ton inscription et bénéficier des offres du pass Culture."
 
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "réservation annulable jusqu'au"

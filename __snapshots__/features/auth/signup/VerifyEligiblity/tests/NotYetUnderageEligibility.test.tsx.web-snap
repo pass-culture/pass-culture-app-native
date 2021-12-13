@@ -166,7 +166,7 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
           }
         }
       >
-        Reviens à partir du 31 janvier pour poursuivre ton inscription et bénéficier des offres du pass Culture.
+        Reviens à partir du 01 décembre pour poursuivre ton inscription et bénéficier des offres du pass Culture.
       </div>
       <div
         className="css-view-1dbjc4n"

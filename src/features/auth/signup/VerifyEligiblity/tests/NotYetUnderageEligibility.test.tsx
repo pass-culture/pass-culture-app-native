@@ -9,7 +9,9 @@ import { NotYetUnderageEligibility } from '../NotYetUnderageEligibility'
 
 jest.mock('features/navigation/helpers')
 
-const navigationProps = {} as StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
+const navigationProps = {
+  route: { params: { eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z') } },
+} as StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 describe('<NotYetUnderageEligibility />', () => {
   it('should render properly', async () => {
