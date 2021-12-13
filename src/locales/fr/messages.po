@@ -158,6 +158,7 @@ msgstr "Adresse - Formulaire"
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SignupForm.tsx
+#: src/features/profile/pages/PersonalData.tsx
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
@@ -765,7 +766,6 @@ msgstr "Détails de la réservation"
 msgid "Détails de réservation"
 msgstr "Détails de réservation"
 
-#: src/features/profile/pages/PersonalData.tsx
 #: src/ui/components/contact/ContactBlock.tsx
 msgid "E-mail"
 msgstr "E-mail"

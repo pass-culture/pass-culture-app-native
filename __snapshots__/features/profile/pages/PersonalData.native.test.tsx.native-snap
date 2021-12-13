@@ -121,7 +121,7 @@ Array [
           ]
         }
       >
-        E-mail
+        Adresse e-mail
       </Text>
       <View
         numberOfSpaces={2}

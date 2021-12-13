@@ -41,7 +41,7 @@ export function PersonalData() {
           </React.Fragment>
         )}
         <Row>
-          <Typo.Caption>{t`E-mail`}</Typo.Caption>
+          <Typo.Caption>{t`Adresse e-mail`}</Typo.Caption>
           <Spacer.Column numberOfSpaces={2} />
           <EmailContainer>
             <EmailText>{user?.email}</EmailText>
