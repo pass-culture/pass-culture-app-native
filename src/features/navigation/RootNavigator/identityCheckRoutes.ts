@@ -4,6 +4,7 @@ import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIde
 import { withAsyncErrorBoundary } from 'features/errors'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
+import { IdentityCheckDMS } from 'features/identityCheck/pages/identification/IdentityCheckDMS'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/IdentityCheckEduConnect'
 import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/identification/IdentityCheckEduConnectForm'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
@@ -121,6 +122,12 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: IdentityCheckPending,
     path: 'verification-identite/demande-en-attente',
     options: { title: t`Demande en attente` },
+  },
+  {
+    name: 'IdentityCheckDMS',
+    component: IdentityCheckDMS,
+    path: 'verification-identite/demarches-simplifiees',
+    options: { title: t`Démarches-Simplifiées` },
   },
   // Confirmation
   {
