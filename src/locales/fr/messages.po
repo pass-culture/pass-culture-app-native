@@ -2393,6 +2393,10 @@ msgstr "Titre de séjour, carte d'identité, ou passeport."
 msgid "Titre, artiste, lieu..."
 msgstr "Titre, artiste, lieu..."
 
+#: src/features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer.tsx
+msgid "Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail."
+msgstr "Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail."
+
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
@@ -2409,10 +2413,6 @@ msgstr "Ton crédit est expiré"
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
-
-#: src/features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer.tsx
-msgid "Ton e-mail a été modifié."
-msgstr "Ton e-mail a été modifié."
 
 #: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Ton identité restera anonyme auprès des acteurs culturels."

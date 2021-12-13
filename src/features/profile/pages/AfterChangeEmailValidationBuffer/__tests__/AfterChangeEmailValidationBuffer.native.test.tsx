@@ -72,7 +72,8 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
     await waitForExpect(() => {
       expect(mockSignOut).toBeCalled()
       expect(mockShowSuccessSnackBar).toBeCalledWith({
-        message: 'Ton e-mail a été modifié.',
+        message:
+          'Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.',
         timeout: 5000,
       })
       expect(navigate).toBeCalledWith('Login')
