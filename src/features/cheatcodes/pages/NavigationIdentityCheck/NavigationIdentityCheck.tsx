@@ -43,6 +43,7 @@ export function NavigationIdentityCheck(): JSX.Element {
       <StyledContainer>
         <LinkToComponent name="IdentityCheck" title="Stepper" />
         <LinkToComponent name="IdentityCheckStatus" title="Status" />
+        <LinkToComponent name="IdentityCheckSchoolType" title="SchoolType" />
         <LinkToComponent name="IdentityCheckStart" />
         <LinkToComponent name="IdentityCheckUnavailable" />
         <LinkToComponent name="IdentityCheckPending" />
