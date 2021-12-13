@@ -159,7 +159,6 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
             keyboardShouldPersistTaps="handled"
             onContentSizeChange={[Function]}
             onLayout={[Function]}
-            scrollEnabled={false}
             style={
               Array [
                 Object {},

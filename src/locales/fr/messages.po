@@ -847,6 +847,10 @@ msgstr "Enregistrer"
 msgid "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20"
 msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20"
 
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+msgid "Entre ton adresse"
+msgstr "Entre ton adresse"
+
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Entrée du code de confirmation"
 msgstr "Entrée du code de confirmation"

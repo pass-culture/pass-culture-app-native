@@ -213,10 +213,8 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
                 "msFlexDirection": "column",
                 "msFlexNegative": 1,
                 "msFlexPositive": 1,
-                "msTouchAction": "none",
                 "overflowX": "hidden",
-                "overflowY": "hidden",
-                "touchAction": "none",
+                "overflowY": "auto",
                 "transform": "translateZ(0px)",
               }
             }
@@ -316,7 +314,6 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
           </div>
           <div
             className="css-view-1dbjc4n"
-            data-testid="fixed-bottom-children"
             style={
               Object {
                 "backgroundColor": "rgba(255,255,255,1.00)",

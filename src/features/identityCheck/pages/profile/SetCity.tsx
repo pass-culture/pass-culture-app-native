@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
-import { FlatList, Keyboard, ListRenderItem, TouchableOpacity } from 'react-native'
+import { Keyboard, TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
@@ -17,6 +18,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Spinner } from 'ui/components/Spinner'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -37,7 +39,7 @@ export const SetCity = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const debouncedSetPostalCode = useRef(debounce(setDebouncedPostalCode, 500)).current
-  const { data: cities = [], isError, isSuccess } = useCities(debouncedPostalCode)
+  const { data: cities = [], isLoading, isError, isSuccess } = useCities(debouncedPostalCode)
 
   useEffect(() => {
     if (!isError) return
@@ -84,22 +86,13 @@ export const SetCity = () => {
     navigateToNextScreen()
   }
 
-  const renderItem: ListRenderItem<SuggestedCity> = ({ item: city, index }) => (
-    <AddressOption
-      label={city.name}
-      selected={selectedCity ? keyExtractor(city) === keyExtractor(selectedCity) : false}
-      onPressOption={onPressOption}
-      optionKey={keyExtractor(city)}
-      {...accessibilityAndTestId(t`Proposition de ville ${index + 1} : ${city.name}`)}
-    />
-  )
-
   return (
     <PageWithHeader
       title={t`Profil`}
       fixedTopChildren={
         <React.Fragment>
           <CenteredTitle title={t`Dans quelle ville résides-tu ?`} />
+          <Spacer.Column numberOfSpaces={5} />
           <TextInput
             autoFocus
             onChangeText={onChangePostalCode}
@@ -113,13 +106,23 @@ export const SetCity = () => {
           />
           {!!errorMessage && <InputError messageId={errorMessage} numberOfSpacesTop={2} visible />}
           <Spacer.Column numberOfSpaces={2} />
-          <FlatList
-            data={cities}
-            keyExtractor={keyExtractor}
-            renderItem={renderItem}
-            keyboardShouldPersistTaps="handled"
-            keyboardDismissMode="on-drag"
-          />
+        </React.Fragment>
+      }
+      scrollChildren={
+        <React.Fragment>
+          {!!isLoading && <Spinner />}
+          <CitiesContainer>
+            {cities.map((city, index) => (
+              <AddressOption
+                label={city.name}
+                selected={selectedCity ? keyExtractor(city) === keyExtractor(selectedCity) : false}
+                onPressOption={onPressOption}
+                optionKey={keyExtractor(city)}
+                key={city.name}
+                {...accessibilityAndTestId(t`Proposition de ville ${index + 1} : ${city.name}`)}
+              />
+            ))}
+          </CitiesContainer>
         </React.Fragment>
       }
       fixedBottomChildren={
@@ -132,3 +135,8 @@ export const SetCity = () => {
     />
   )
 }
+
+const CitiesContainer = styled.View({
+  flexGrow: 1,
+  overflow: 'scroll',
+})

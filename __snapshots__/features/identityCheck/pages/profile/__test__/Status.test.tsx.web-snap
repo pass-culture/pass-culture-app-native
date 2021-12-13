@@ -196,6 +196,7 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
               Object {
                 "paddingLeft": "20px",
                 "paddingRight": "20px",
+                "paddingTop": "20px",
               }
             }
           >
@@ -207,8 +208,6 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
                   "WebkitBoxAlign": "center",
                   "alignItems": "center",
                   "msFlexAlign": "center",
-                  "paddingBottom": "20px",
-                  "paddingTop": "20px",
                   "width": "100%",
                 }
               }
@@ -229,6 +228,14 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
                 Sélectionne ton statut
               </div>
             </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "height": "20px",
+                }
+              }
+            />
           </div>
           <div
             className="css-view-1dbjc4n"
@@ -253,10 +260,8 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
                 "msFlexDirection": "column",
                 "msFlexNegative": 1,
                 "msFlexPositive": 1,
-                "msTouchAction": "none",
                 "overflowX": "hidden",
-                "overflowY": "hidden",
-                "touchAction": "none",
+                "overflowY": "auto",
                 "transform": "translateZ(0px)",
               }
             }
@@ -998,7 +1003,6 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
           </div>
           <div
             className="css-view-1dbjc4n"
-            data-testid="fixed-bottom-children"
             style={
               Object {
                 "backgroundColor": "rgba(255,255,255,1.00)",
