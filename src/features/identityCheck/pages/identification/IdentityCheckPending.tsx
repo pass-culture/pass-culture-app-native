@@ -1,15 +1,14 @@
 import { t } from '@lingui/macro'
-import { useGoBack } from 'features/navigation/useGoBack'
 import React from 'react'
 import styled from 'styled-components/native'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 
+import { navigateToHome } from 'features/navigation/helpers'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { IdCardError } from 'ui/svg/icons/IdCardError'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckPending() {
-  const { goBack } = useGoBack('IdentityCheckPending', undefined)
   return (
     <GenericInfoPage
       title={t`Oups !`}
@@ -18,7 +17,7 @@ export function IdentityCheckPending() {
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>{t`Ton inscription est en cours de vérification. Tu recevras une notification dès que ton dossier sera validé.`}</StyledBody>
       <Spacer.Column numberOfSpaces={12} />
-      <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={goBack} />
+      <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )
 }

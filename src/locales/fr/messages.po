@@ -106,7 +106,7 @@ msgstr "Abandonner la vérification"
 msgid "Académie de"
 msgstr "Académie de"
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
@@ -490,7 +490,7 @@ msgstr "Compte créé !"
 msgid "Compte désactivé"
 msgstr "Compte désactivé"
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -578,9 +578,9 @@ msgstr "Consulter notre centre d'aide"
 msgid "Contact"
 msgstr "Contact"
 
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
@@ -681,6 +681,10 @@ msgstr "Demain"
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Demande bénéficiaire envoyée"
 msgstr "Demande bénéficiaire envoyée"
+
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Demande en attente"
+msgstr "Demande en attente"
 
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "Demande envoyée !"
@@ -818,7 +822,7 @@ msgstr "En attendant, tu peux découvrir l'application !"
 msgid "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
 msgstr "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
@@ -1110,7 +1114,7 @@ msgstr "Historique"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Hors connexion : en attente du réseau."
 msgstr "Hors connexion : en attente du réseau."
 
@@ -1174,6 +1178,10 @@ msgstr "Il est possible que cette page soit désactivée ou n'existe pas."
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Il semblerait que les informations que tu nous as communiquées ne soient pas correctes."
 msgstr "Il semblerait que les informations que tu nous as communiquées ne soient pas correctes."
+
+#: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
+msgid "Il y a déjà une demande de crédit pass Culture en cours sur ton compte."
+msgstr "Il y a déjà une demande de crédit pass Culture en cours sur ton compte."
 
 #: src/features/auth/login/Login.tsx
 msgid "Il y a eu un problème. Tu peux réessayer plus tard."
@@ -1409,7 +1417,7 @@ msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
@@ -1780,6 +1788,7 @@ msgstr "On y va !"
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 #: src/features/home/components/NoContentError.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 #: src/features/search/atoms/NoSearchResult.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Oups !"
@@ -1887,11 +1896,11 @@ msgstr "Permanent"
 msgid "Place-toi dans un lieu bien éclairé"
 msgstr "Place-toi dans un lieu bien éclairé"
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
@@ -2097,6 +2106,7 @@ msgstr "Retourner l'accueil"
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 #: src/features/navigation/PageNotFound.tsx
 #: src/features/offer/pages/OfferNotFound.tsx
@@ -2417,6 +2427,10 @@ msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure con
 msgid "Ton identité restera anonyme auprès des acteurs culturels."
 msgstr "Ton identité restera anonyme auprès des acteurs culturels."
 
+#: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
+msgid "Ton inscription est en cours de vérification. Tu recevras une notification dès que ton dossier sera validé."
+msgstr "Ton inscription est en cours de vérification. Tu recevras une notification dès que ton dossier sera validé."
+
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/login/Login.tsx
@@ -2685,8 +2699,8 @@ msgstr "Téléphone - Formulaire"
 msgid "Un lien ne fonctionne pas ?"
 msgstr "Un lien ne fonctionne pas ?"
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
@@ -2912,7 +2926,7 @@ msgstr "À activer avant le {dateLimit}"
 msgid "activation message"
 msgstr "À activer avant le {date}"
 
-#: src/features/auth/signup/SetPassword/AcceptCgu.tsx
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
