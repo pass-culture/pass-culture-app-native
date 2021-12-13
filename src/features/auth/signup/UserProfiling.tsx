@@ -18,6 +18,8 @@ const AGENT_TYPE = Platform.select({
   web: isDesktopDeviceDetectOnWeb ? 'browser_computer' : 'browser_mobile',
 })
 
+// Profiling.profileDevice will first get sessionId then call profiling,
+// it must last minimum 5 secondes before submitting the sessionId to the API
 const PROFILING_MIN_DELAY_MS = 5000
 
 export function UserProfiling({ resetErrorBoundary }: ScreenErrorProps) {

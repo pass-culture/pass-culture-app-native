@@ -29,9 +29,10 @@ describe('<VerifyEligibility />', () => {
   })
 
   it('should navigate to nextBeneficiaryValidationStep WHEN clicking on "Vérifier mon éligibilité" button', async () => {
+    const setError = jest.fn()
     const {
       navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
-    } = useBeneficiaryValidationNavigation()
+    } = useBeneficiaryValidationNavigation(setError)
     const { findByText } = render(<VerifyEligibility />)
 
     const button = await findByText('Vérifier mon identité')
