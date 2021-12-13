@@ -160,7 +160,6 @@ Array [
               keyboardShouldPersistTaps="handled"
               onContentSizeChange={[Function]}
               onLayout={[Function]}
-              scrollEnabled={false}
               style={
                 Array [
                   Object {},
@@ -173,6 +172,7 @@ Array [
                     Array [
                       Object {
                         "alignItems": "center",
+                        "height": "100%",
                       },
                     ]
                   }
@@ -292,6 +292,17 @@ Array [
                       Array [
                         Object {
                           "height": 24,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         },
                       ]
                     }
@@ -868,6 +879,16 @@ Array [
                       </View>
                     </View>
                   </Modal>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      Array [
+                        Object {
+                          "height": 8,
+                        },
+                      ]
+                    }
+                  />
                 </View>
               </View>
             </RCTScrollView>

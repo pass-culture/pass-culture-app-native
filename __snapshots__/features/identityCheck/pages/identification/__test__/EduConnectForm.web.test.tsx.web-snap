@@ -213,10 +213,8 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
                 "msFlexDirection": "column",
                 "msFlexNegative": 1,
                 "msFlexPositive": 1,
-                "msTouchAction": "none",
                 "overflowX": "hidden",
-                "overflowY": "hidden",
-                "touchAction": "none",
+                "overflowY": "auto",
                 "transform": "translateZ(0px)",
               }
             }

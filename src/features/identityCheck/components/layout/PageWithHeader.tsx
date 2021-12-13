@@ -16,8 +16,7 @@ interface Props {
 }
 
 export const PageWithHeader = (props: Props) => {
-  const { isScrollEnabled, onScrollViewLayout, onScrollViewContentSizeChange } =
-    useShouldEnableScrollOnView()
+  const { onScrollViewLayout, onScrollViewContentSizeChange } = useShouldEnableScrollOnView()
 
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
 
@@ -38,8 +37,7 @@ export const PageWithHeader = (props: Props) => {
           <ChildrenScrollView
             bottomChildrenViewHeight={bottomChildrenViewHeight}
             onContentSizeChange={onScrollViewContentSizeChange}
-            onLayout={onScrollViewLayout}
-            scrollEnabled={isScrollEnabled}>
+            onLayout={onScrollViewLayout}>
             {props.scrollChildren}
           </ChildrenScrollView>
         ) : null}
@@ -63,6 +61,7 @@ const Container = styled.View({
 
 const FixedTopChildrenView = styled.View({
   paddingHorizontal: getSpacing(5),
+  paddingTop: getSpacing(5),
 })
 
 type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }

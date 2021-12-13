@@ -150,6 +150,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
               Array [
                 Object {
                   "paddingHorizontal": 20,
+                  "paddingTop": 20,
                 },
               ]
             }
@@ -159,7 +160,6 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                 Array [
                   Object {
                     "alignItems": "center",
-                    "paddingVertical": 20,
                     "width": "100%",
                   },
                 ]
@@ -196,7 +196,6 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
             keyboardShouldPersistTaps="handled"
             onContentSizeChange={[Function]}
             onLayout={[Function]}
-            scrollEnabled={false}
             style={
               Array [
                 Object {},

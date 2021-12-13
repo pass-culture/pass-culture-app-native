@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
-import { FlatList, Keyboard, ListRenderItem, TouchableOpacity } from 'react-native'
+import { Keyboard, TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
@@ -16,12 +17,10 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { SpinnerWithCenteredContainer } from 'ui/components/spinner/SpinnerWithCenteredContainer'
+import { Spinner } from 'ui/components/Spinner'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
-
-const keyExtractor = (address: string) => address
 
 const snackbarMessage = t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
@@ -42,13 +41,12 @@ export const SetAddress = () => {
     data: addresses = [],
     isLoading,
     isError,
-    isSuccess,
   } = useAddresses({
     query: debouncedQuery,
     cityCode: profile.city?.code ?? '',
     postalCode: profile.city?.postalCode ?? '',
     enabled: idCheckAddressAutocompletion && debouncedQuery.length > 0,
-    limit: 5,
+    limit: 10,
   })
 
   useEffect(() => {
@@ -102,23 +100,13 @@ export const SetAddress = () => {
     navigateToNextScreen()
   }
 
-  const renderItem: ListRenderItem<string> = ({ item: address, index }) => (
-    <AddressOption
-      label={address}
-      selected={address === selectedAddress}
-      onPressOption={onAddressSelection}
-      optionKey={address}
-      key={address}
-      {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${address}`)}
-    />
-  )
-
   return (
     <PageWithHeader
       title={t`Profil`}
       fixedTopChildren={
         <React.Fragment>
           <CenteredTitle title={t`Quelle est ton adresse ?`} />
+          <Spacer.Column numberOfSpaces={5} />
           <TextInput
             autoFocus
             onChangeText={onChangeAddress}
@@ -130,16 +118,23 @@ export const SetAddress = () => {
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
           />
           <Spacer.Column numberOfSpaces={2} />
-          {!!isLoading && <SpinnerWithCenteredContainer />}
-          {!!isSuccess && (
-            <FlatList
-              data={addresses}
-              keyExtractor={keyExtractor}
-              renderItem={renderItem}
-              keyboardShouldPersistTaps="handled"
-              keyboardDismissMode="on-drag"
-            />
-          )}
+        </React.Fragment>
+      }
+      scrollChildren={
+        <React.Fragment>
+          {!!isLoading && <Spinner />}
+          <AdressesContainer>
+            {addresses.map((address, index) => (
+              <AddressOption
+                label={address}
+                selected={address === selectedAddress}
+                onPressOption={onAddressSelection}
+                optionKey={address}
+                key={address}
+                {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${address}`)}
+              />
+            ))}
+          </AdressesContainer>
         </React.Fragment>
       }
       fixedBottomChildren={
@@ -148,3 +143,8 @@ export const SetAddress = () => {
     />
   )
 }
+
+const AdressesContainer = styled.View({
+  flexGrow: 1,
+  overflow: 'scroll',
+})

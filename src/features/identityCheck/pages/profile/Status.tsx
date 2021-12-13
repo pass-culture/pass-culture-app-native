@@ -9,6 +9,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Spacer } from 'ui/theme'
 
 type UserStatusResponse = { name: ActivityEnum; description?: string }
 
@@ -46,7 +47,12 @@ export const Status = () => {
   return (
     <PageWithHeader
       title={t`Profil`}
-      fixedTopChildren={<CenteredTitle title={t`Sélectionne ton statut`} />}
+      fixedTopChildren={
+        <React.Fragment>
+          <CenteredTitle title={t`Sélectionne ton statut`} />
+          <Spacer.Column numberOfSpaces={5} />
+        </React.Fragment>
+      }
       scrollChildren={
         <React.Fragment>
           {statuses.map((status) => (

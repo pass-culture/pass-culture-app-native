@@ -32,7 +32,9 @@ export const IdentityCheckStart = () => {
             <Spacer.Column numberOfSpaces={6} />
             <IdentityVerificationText />
             <Spacer.Column numberOfSpaces={6} />
+            <Spacer.Flex />
             <DMSInformation />
+            <Spacer.Column numberOfSpaces={2} />
           </Container>
         }
         fixedBottomChildren={
@@ -48,4 +50,4 @@ export const IdentityCheckStart = () => {
   )
 }
 
-const Container = styled.View({ alignItems: 'center' })
+const Container = styled.View({ height: '100%', alignItems: 'center' })

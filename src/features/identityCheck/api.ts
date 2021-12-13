@@ -27,7 +27,7 @@ export function useIdentificationUrl() {
   return identificationUrl
 }
 
-const getCommpleteProfile = (
+const getCompleteProfile = (
   profile: IdentityCheckState['profile']
 ): ProfileUpdateRequest | null => {
   if (
@@ -57,7 +57,7 @@ export function usePatchProfile() {
   const { showErrorSnackBar } = useSnackBarContext()
   return useMutation(
     () => {
-      const body = getCommpleteProfile(profile)
+      const body = getCompleteProfile(profile)
       return body ? api.postnativev1subscriptionprofile(body) : Promise.reject()
     },
     {
