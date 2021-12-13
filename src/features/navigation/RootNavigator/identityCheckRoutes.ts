@@ -15,6 +15,7 @@ import { IdentityCheckWebview } from 'features/identityCheck/pages/identificatio
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
+import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
 import { Status } from 'features/identityCheck/pages/profile/Status'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import {
@@ -66,6 +67,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: Status,
     path: 'verification-identite/profil/statut',
     options: { title: t`Choix du status` },
+    secure: true,
+  },
+  {
+    name: 'IdentityCheckSchoolType',
+    component: SetSchoolType,
+    path: 'verification-identite/profil/type-etablissement',
+    options: { title: t`Type d'établissement` },
     secure: true,
   },
   // Identification

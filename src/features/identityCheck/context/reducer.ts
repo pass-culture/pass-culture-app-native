@@ -7,6 +7,7 @@ export const initialIdentityCheckState: IdentityCheckState = {
     city: null,
     address: null,
     status: null,
+    schoolType: null,
   },
   identification: {
     done: false,
@@ -36,6 +37,8 @@ export const identityCheckReducer = (
       return { ...state, profile: { ...state.profile, status: action.payload } }
     case 'SET_CITY':
       return { ...state, profile: { ...state.profile, city: action.payload } }
+    case 'SET_SCHOOL_TYPE':
+      return { ...state, profile: { ...state.profile, schoolType: action.payload } }
     case 'SET_ADDRESS':
       return { ...state, profile: { ...state.profile, address: action.payload } }
     case 'SET_IDENTIFICATION':
