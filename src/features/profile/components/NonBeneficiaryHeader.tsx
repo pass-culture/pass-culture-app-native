@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
+import { useAppSettings } from 'features/auth/settings'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
@@ -27,13 +28,14 @@ interface NonBeneficiaryHeaderProps {
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const today = new Date()
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
+  const { data: settings } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
   const isUserUnderage = useIsUserUnderage()
 
   function onBannerPress() {
-    if (!isUserUnderage) {
+    if (!isUserUnderage || settings?.enableUnderageGeneralisation) {
       navigateToNextBeneficiaryValidationStep()
       return
     }
