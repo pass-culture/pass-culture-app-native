@@ -34,7 +34,7 @@ describe('PersonalData', () => {
     await waitForExpect(() => {
       expect(getByText('Prénom et nom')).toBeTruthy()
       expect(getByText('Rosa Bonheur')).toBeTruthy()
-      expect(getByText('E-mail')).toBeTruthy()
+      expect(getByText('Adresse e-mail')).toBeTruthy()
       expect(getByText('rosa.bonheur@gmail.com')).toBeTruthy()
       expect(getByText('Numéro de téléphone')).toBeTruthy()
       expect(getByText('+33685974563')).toBeTruthy()
@@ -48,7 +48,7 @@ describe('PersonalData', () => {
     } as UserProfileResponse)
 
     await waitForExpect(() => {
-      expect(queryByText('E-mail')).toBeTruthy()
+      expect(queryByText('Adresse e-mail')).toBeTruthy()
       expect(queryByText('Prénom et nom')).toBeNull()
       expect(queryByText('Numéro de téléphone')).toBeNull()
     })

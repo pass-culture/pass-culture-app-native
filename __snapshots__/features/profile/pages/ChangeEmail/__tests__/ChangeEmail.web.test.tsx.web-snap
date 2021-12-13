@@ -26,7 +26,7 @@ Object {
             dir="auto"
             style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
-            Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification.
+            Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour.
           </div>
           <div
             class="css-view-1dbjc4n"
@@ -258,7 +258,7 @@ Object {
           dir="auto"
           style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
-          Pour plus de sécurité, saisis ton mot de passe ! Tu recevras un e-mail sur ta nouvelle adresse avec un lien à activer pour confirmer la modification.
+          Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour.
         </div>
         <div
           class="css-view-1dbjc4n"
