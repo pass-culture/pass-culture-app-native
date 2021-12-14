@@ -3,11 +3,15 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { IdentityCheckMethod } from 'api/gen'
+import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
+import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
-import { StepConfig } from 'features/identityCheck/types'
+import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
+import { useSetCurrentSubscriptionStep } from 'features/identityCheck/useSetCurrentSubscriptionStep'
 import { useGetStepState } from 'features/identityCheck/utils/useGetStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -22,8 +26,15 @@ export const IdentityCheckStepper = () => {
   const steps = useIdentityCheckSteps()
   const getStepState = useGetStepState()
   const context = useIdentityCheckContext()
+  const { data: subscription } = useNextSubscriptionStep()
+  useSetCurrentSubscriptionStep()
 
   const { visible, showModal, hideModal } = useModal(false)
+  const {
+    visible: isEduConnectModalVisible,
+    showModal: showEduConnectModal,
+    hideModal: hideEduConnectModal,
+  } = useModal(false)
 
   useEffect(() => {
     if (context.step === null && steps[0])
@@ -35,9 +46,22 @@ export const IdentityCheckStepper = () => {
     showModal()
   }
 
-  function navigateToStep(step: StepConfig) {
+  const shouldShowEduConnectModal = (
+    step: StepConfig,
+    allowedIdentityCheckMethods: IdentityCheckMethod[]
+  ): boolean =>
+    step.name === IdentityCheckStep.IDENTIFICATION &&
+    allowedIdentityCheckMethods.includes(IdentityCheckMethod.Ubble) &&
+    allowedIdentityCheckMethods.includes(IdentityCheckMethod.Educonnect)
+
+  async function navigateToStep(step: StepConfig) {
     analytics.logIdentityCheckStep(step.name)
-    navigate(step.screens[0])
+
+    if (shouldShowEduConnectModal(step, subscription?.allowedIdentityCheckMethods || [])) {
+      showEduConnectModal()
+    } else {
+      navigate(step.screens[0])
+    }
   }
 
   return (
@@ -76,6 +100,10 @@ export const IdentityCheckStepper = () => {
         visible={visible}
         hideModal={hideModal}
         testIdSuffix="quit-identity-check-stepper"
+      />
+      <FastEduconnectConnectionRequestModal
+        visible={isEduConnectModalVisible}
+        hideModal={hideEduConnectModal}
       />
     </React.Fragment>
   )

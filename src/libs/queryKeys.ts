@@ -11,6 +11,7 @@ export enum QueryKeys {
   FIRESTORE_UBBLE_LOAD = 'firestoreUbbleLoad',
   HOMEPAGE_MODULES = 'homepageModules',
   ID_CHECK_TOKEN = 'idCheckToken',
+  NEXT_SUBSCRIPTION_STEP = 'nextSubscriptionStep',
   OFFER = 'offer',
   PHONE_VALIDATION_CODE = 'phoneValidationCode',
   PLACES = 'places',
