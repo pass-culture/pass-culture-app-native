@@ -48,20 +48,21 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     ? getDisplayedExpirationDate(depositExpirationDate, isUnderageBeneficiary)
     : undefined
 
+  const today = new Date()
+
   const isDepositExpired = depositExpirationDate ? depositExpirationDate < new Date() : false
 
-  if (!user.isBeneficiary || user.isEligibleForBeneficiaryUpgrade) {
-    return (
-      <NonBeneficiaryHeader
-        eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
-        eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
-        isEligibleForBeneficiaryUpgrade={user.isEligibleForBeneficiaryUpgrade}
-        subscriptionMessage={user.subscriptionMessage}
-      />
-    )
-  }
-
-  if (isDepositExpired) {
+  if (user.isBeneficiary) {
+    if (!isDepositExpired) {
+      return (
+        <BeneficiaryHeader
+          firstName={user.firstName}
+          lastName={user.lastName}
+          domainsCredit={user.domainsCredit}
+          depositExpirationDate={displayedDepositExpirationDate}
+        />
+      )
+    }
     return (
       <ExBeneficiaryHeader
         firstName={user.firstName}
@@ -70,13 +71,34 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       />
     )
   }
+  if (user.isEligibleForBeneficiaryUpgrade) {
+    return <EligibleForBeneficiaryUpgradeHeader />
+  }
+  if (today < user.eligibilityStartDatetime) {
+    return <YoungerBadge />
+  }
 
-  return (
-    <BeneficiaryHeader
-      firstName={user.firstName}
-      lastName={user.lastName}
-      domainsCredit={user.domainsCredit}
-      depositExpirationDate={displayedDepositExpirationDate}
-    />
-  )
+  return <BodyContainer testID="body-container-above-18" padding={1} />
+}
+
+const EligibleForBeneficiaryHeader = () => {
+  const [nextSubscriptionStep, setNextSubscriptionStep] = useState(undefined)
+
+  useEffect(() => {
+    setNextSubscriptionStep(fetchNextSubscriptionStep())
+  }, [])
+
+  if (nextSubscriptionStep === undefined) {
+    return <Loader />
+  }
+
+  if (nextSubscriptionStep !== null) {
+    return <div onClick={navigateToNextStep}>Profite de 300€</div>
+  }
+
+  if (user.subscriptionMessage !== null) {
+    return <IdCheckProcessingBadge subscriptionMessage={user.subscriptionMessage} />
+  }
+
+  return <div>Dossier en attente</div>
 }
