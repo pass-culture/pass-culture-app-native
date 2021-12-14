@@ -125,6 +125,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
       style={
         Array [
           Object {
+            "alignItems": "flex-start",
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
@@ -188,6 +189,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
               "flexGrow": 0.8,
               "flexShrink": 1,
               "justifyContent": "center",
+              "marginTop": 5,
               "paddingLeft": 12,
               "paddingRight": 12,
               "zIndex": 1,
@@ -337,9 +339,9 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
           >
             <View
               fill="#151515"
-              height={32}
+              height={20}
               testID="button-icon"
-              width={32}
+              width={20}
             >
               <Text>
                 button-icon-SVG-Mock
@@ -353,7 +355,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                   Object {
                     "color": "#151515",
                     "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
+                    "fontSize": 12,
                     "lineHeight": 20,
                     "marginLeft": 5,
                     "maxWidth": "100%",
@@ -361,6 +363,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                 ]
               }
               textColor="#151515"
+              textSize={12}
             >
               C’est quoi ÉduConnect ?
             </Text>
@@ -744,9 +747,9 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
           >
             <View
               fill="#151515"
-              height={32}
+              height={20}
               testID="button-icon"
-              width={32}
+              width={20}
             >
               <Text>
                 button-icon-SVG-Mock
@@ -916,6 +919,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
       style={
         Array [
           Object {
+            "alignItems": "flex-start",
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
@@ -979,6 +983,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               "flexGrow": 0.8,
               "flexShrink": 1,
               "justifyContent": "center",
+              "marginTop": 5,
               "paddingLeft": 12,
               "paddingRight": 12,
               "zIndex": 1,
@@ -1128,9 +1133,9 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
           >
             <View
               fill="#151515"
-              height={32}
+              height={20}
               testID="button-icon"
-              width={32}
+              width={20}
             >
               <Text>
                 button-icon-SVG-Mock
@@ -1144,7 +1149,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                   Object {
                     "color": "#151515",
                     "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
+                    "fontSize": 12,
                     "lineHeight": 20,
                     "marginLeft": 5,
                     "maxWidth": "100%",
@@ -1152,6 +1157,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 ]
               }
               textColor="#151515"
+              textSize={12}
             >
               C’est quoi ÉduConnect ?
             </Text>
@@ -1535,9 +1541,9 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
           >
             <View
               fill="#151515"
-              height={32}
+              height={20}
               testID="button-icon"
-              width={32}
+              width={20}
             >
               <Text>
                 button-icon-SVG-Mock

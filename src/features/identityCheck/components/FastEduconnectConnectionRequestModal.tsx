@@ -7,6 +7,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { OrSeparator } from 'ui/components/OrSeparator'
@@ -42,7 +43,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 
       <TextQuestion
         onPress={() => openUrl(env.FAQ_LINK_EDUCONNECT_URL)}
-        icon={InfoPlain}
+        icon={(props) => <InfoPlain {...props} size={getSpacing(5)} />}
         title={t`C’est quoi ÉduConnect ?`}
       />
 
@@ -57,7 +58,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
       <OrSeparator />
 
       <ButtonTertiaryBlack
-        icon={EditPen}
+        icon={(props) => <EditPen {...props} size={getSpacing(5)} />}
         title={t`Identification manuelle`}
         onPress={() => {
           hideModal()
@@ -77,6 +78,6 @@ const DurationInfoText = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const TextQuestion = styled(ButtonTertiaryBlack)({
+const TextQuestion = styled(ButtonQuaternaryBlack)({
   marginBottom: getSpacing(4),
 })

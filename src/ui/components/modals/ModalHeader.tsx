@@ -56,6 +56,7 @@ const HeaderContainer = styled.View({
   width: '100%',
   flexDirection: 'row',
   justifyContent: 'center',
+  alignItems: 'flex-start',
 })
 
 const TitleContainer = styled.View({
@@ -65,6 +66,7 @@ const TitleContainer = styled.View({
   paddingLeft: getSpacing(3),
   flex: 0.8,
   zIndex: ZIndex.MODAL_HEADER,
+  marginTop: 5,
 })
 
 const RightHeaderActionContainer = styled.View({
