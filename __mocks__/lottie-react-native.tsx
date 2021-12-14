@@ -1,4 +1,4 @@
-import ActualLottieView from 'lottie-react-native'
+import ActualLottieView from 'libs/lottie'
 import React from 'react'
 import { View } from 'react-native'
 

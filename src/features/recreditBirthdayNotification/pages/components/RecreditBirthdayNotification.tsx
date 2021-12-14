@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import LottieView from 'lottie-react-native'
 import React, { useEffect } from 'react'
 
 import {
@@ -14,6 +13,7 @@ import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useResetRecreditAmountToShow } from 'features/profile/api'
 import { analytics } from 'libs/analytics'
+import LottieView from 'libs/lottie'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { storage } from 'libs/storage'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'

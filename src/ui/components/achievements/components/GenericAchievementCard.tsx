@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import LottieView from 'lottie-react-native'
 import React, { FunctionComponent, RefObject, useEffect, useMemo } from 'react'
 import { View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
@@ -7,6 +6,7 @@ import Swiper from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics'
+import LottieView from 'libs/lottie'
 import { MonitoringError } from 'libs/monitoring'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { AnimationObject } from 'ui/animations/type'

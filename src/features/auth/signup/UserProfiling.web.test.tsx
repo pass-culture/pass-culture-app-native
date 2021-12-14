@@ -16,7 +16,6 @@ import { server } from 'tests/server'
 import { render } from 'tests/utils/web'
 
 jest.mock('react-query')
-jest.mock('lottie-react-native', () => jest.requireActual('react-native-web-lottie'))
 jest.mock('@pass-culture/react-native-profiling', () => ({
   profileDevice: jest.fn(),
 }))

@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
-import LottieView from 'lottie-react-native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { Background } from 'ui/svg/Background'
 import { ColorsEnum, Typo } from 'ui/theme'

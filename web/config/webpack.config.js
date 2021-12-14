@@ -300,7 +300,6 @@ module.exports = function (webpackEnv) {
         'react-native': 'react-native-web',
         'react-native-modal': 'modal-enhanced-react-native-web',
         'react-native-svg': 'react-native-svg-web',
-        'lottie-react-native': 'react-native-web-lottie',
         'react-native-linear-gradient': 'react-native-web-linear-gradient',
 
         // Those libs are mocked until we implement web specific solutions
