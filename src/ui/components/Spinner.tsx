@@ -8,7 +8,7 @@ import { ColorsEnum } from 'ui/theme'
 
 const USE_NATIVE_DRIVER = Platform.select({ default: false, ios: true, android: true })
 
-function NotMemoizedSpinner({ size, color = ColorsEnum.GREY_DARK }: IconInterface) {
+function NotMemoizedSpinner({ size = 40, color = ColorsEnum.GREY_DARK }: IconInterface) {
   const animatedValue = useRef(new Animated.Value(0)).current
   const spin = animatedValue.interpolate({
     inputRange: [0, 1],

@@ -347,6 +347,7 @@ msgid "Cadre l’intégralité de ton document"
 msgstr "Cadre l’intégralité de ton document"
 
 #: src/features/identityCheck/components/DMSModal.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
 msgid "Carte d’identité ou passeport."
 msgstr "Carte d’identité ou passeport."
 
@@ -642,6 +643,10 @@ msgstr "Crédit insuffisant"
 msgid "Crédit numérique insuffisant"
 msgstr "Crédit numérique insuffisant"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
+msgid "Créer un dossier sur le site des Démarches Simplifiées"
+msgstr "Créer un dossier sur le site des Démarches Simplifiées"
+
 #: src/features/search/sections/titles.ts
 msgid "Créneau horaire"
 msgstr "Créneau horaire"
@@ -746,6 +751,10 @@ msgstr "Découvrir"
 #: src/features/offer/components/ReportOfferOtherReason.tsx
 msgid "Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre."
 msgstr "Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre."
+
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Démarches-Simplifiées"
+msgstr "Démarches-Simplifiées"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Désactive ton flash"
@@ -1128,6 +1137,7 @@ msgstr "Hors connexion : en attente du réseau."
 msgid "ISBN"
 msgstr "ISBN"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
@@ -1274,10 +1284,12 @@ msgid "Je ne vois pas mon établissement"
 msgstr "Je ne vois pas mon établissement"
 
 #: src/features/identityCheck/components/DMSModal.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
 msgid "Je suis de nationalité française"
 msgstr "Je suis de nationalité française"
 
 #: src/features/identityCheck/components/DMSModal.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
 msgid "Je suis de nationalité étrangère"
 msgstr "Je suis de nationalité étrangère"
 
@@ -1377,6 +1389,10 @@ msgstr "La réservation a bien été archivée. Tu pourras la retrouver dans tes
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "La réservation est annulable jusqu'au"
 msgstr "La réservation est annulable jusqu'au"
+
+#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
+msgid "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
+msgstr "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
@@ -2397,6 +2413,10 @@ msgstr "Terminer"
 msgid "Terminer ma réservation"
 msgstr "Terminer ma réservation"
 
+#: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
+msgid "Titre de séjour, carte d'identité ou passeport."
+msgstr "Titre de séjour, carte d'identité ou passeport."
+
 #: src/features/identityCheck/components/DMSModal.tsx
 msgid "Titre de séjour, carte d'identité, ou passeport."
 msgstr "Titre de séjour, carte d'identité, ou passeport."
@@ -3120,7 +3140,6 @@ msgstr "offerte par le Gouvernement."
 msgid "offerts à dépenser sur l’application."
 msgstr "offerts à dépenser sur l’application."
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart.web.tsx
 #: src/ui/components/OrSeparator.tsx
 msgid "ou"
 msgstr "ou"

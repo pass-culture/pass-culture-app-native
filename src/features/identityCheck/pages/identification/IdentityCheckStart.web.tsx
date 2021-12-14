@@ -4,12 +4,12 @@ import styled from 'styled-components/native'
 
 import { DMSInformation } from 'features/identityCheck/atoms/DMSInformation'
 import { IdentityVerificationText } from 'features/identityCheck/atoms/IdentityVerificationText'
-import { SeparatorWithText } from 'features/identityCheck/atoms/SeparatorWithText'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
+import { OrSeparator } from 'ui/components/OrSeparator'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { Spacer, getSpacing } from 'ui/theme'
 
@@ -34,9 +34,7 @@ export const IdentityCheckStart = () => {
             <IdentityVerificationText />
             <Spacer.Column numberOfSpaces={6} />
             <ButtonPrimary onPress={showModal} title={t`Vérification par smartphone`} />
-            <Spacer.Column numberOfSpaces={6} />
-            <SeparatorWithText texte={t`ou`} />
-            <Spacer.Column numberOfSpaces={6} />
+            <OrSeparator />
             <DMSInformation />
             <Spacer.Flex />
           </Container>

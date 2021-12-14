@@ -1,0 +1,780 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IdentityCheckDMS /> should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "display": "flex",
+        "flexBasis": 0,
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    customHeight={16}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 64,
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 18,
+            "lineHeight": 22,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Identification
+    </Text>
+    <View
+      accessibilityLabel="Revenir en arrière"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "left": 12,
+          "opacity": 1,
+          "position": "absolute",
+        }
+      }
+      testID="Revenir en arrière"
+    >
+      <View
+        height={32}
+        testID="icon-back"
+        width={32}
+      >
+        <Text>
+          icon-back-SVG-Mock
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View
+      onLayout={[Function]}
+      style={
+        Array [
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+            },
+          ],
+          Object {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
+              "flexDirection": "column",
+              "height": "100%",
+              "paddingTop": 12,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "maxWidth": 500,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "paddingHorizontal": 20,
+                  "paddingTop": 20,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": "100%",
+                  },
+                ]
+              }
+            >
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                    },
+                  ]
+                }
+              />
+              <View
+                fill="none"
+                height={96}
+                width={150}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 18,
+                        "lineHeight": 22,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Créer un dossier sur le site des Démarches Simplifiées
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                    },
+                  ]
+                }
+              />
+              <Text
+                color="#626262"
+                style={
+                  Array [
+                    Object {
+                      "color": "#626262",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure.
+              </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "paddingVertical": 40,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Je suis de nationalité française"
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    nativeID="animatedComponent"
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderRadius": 24,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "justifyContent": "flex-start",
+                        "maxWidth": 500,
+                        "opacity": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      }
+                    }
+                    testID="Je suis de nationalité française"
+                  >
+                    <View
+                      height={32}
+                      testID="button-icon"
+                      width={32}
+                    >
+                      <Text>
+                        button-icon-SVG-Mock
+                      </Text>
+                    </View>
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#151515",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "marginLeft": 5,
+                            "maxWidth": "100%",
+                          },
+                        ]
+                      }
+                      textColor="#151515"
+                    >
+                      Je suis de nationalité française
+                    </Text>
+                  </View>
+                  <Text
+                    color="#626262"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#626262",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Carte d’identité ou passeport.
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "alignSelf": "stretch",
+                        "justifyContent": "center",
+                        "marginVertical": 24,
+                        "position": "relative",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [
+                          [Function],
+                        ],
+                        "inlineStyle": InlineStyle {
+                          "rules": Array [
+                            [Function],
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#c7c7cc",
+                          "height": 1,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                        },
+                      ]
+                    }
+                    theme={
+                      Object {
+                        "activeOpacity": 0.7,
+                        "appBarHeight": 64,
+                        "appContentWidth": 750,
+                        "borderRadius": Object {
+                          "button": 24,
+                          "checkbox": 4,
+                          "radius": 8,
+                        },
+                        "bottomContentPage": Object {
+                          "offsetTopHeightDesktopTablet": 40,
+                        },
+                        "breakpoints": Object {
+                          "lg": 1024,
+                          "md": 960,
+                          "sm": 576,
+                          "xl": 1200,
+                          "xs": 0,
+                          "xxl": 1400,
+                        },
+                        "buttons": Object {
+                          "disabled": Object {
+                            "primary": Object {
+                              "backgroundColor": "#f5f5f5",
+                              "textColor": "#626262",
+                            },
+                            "primaryWhite": Object {
+                              "iconColor": "#ff99be",
+                              "textColor": "#ff99be",
+                            },
+                            "quaternary": Object {
+                              "iconColor": "#ff99be",
+                              "textColor": "#ff99be",
+                            },
+                            "quaternaryBlack": Object {
+                              "iconColor": "#ff99be",
+                              "textColor": "#ff99be",
+                            },
+                            "secondary": Object {
+                              "borderColor": "#ff99be",
+                              "iconColor": "#ff99be",
+                              "textColor": "#ff99be",
+                            },
+                            "tertiary": Object {
+                              "iconColor": "#ff99be",
+                              "textColor": "#ff99be",
+                            },
+                            "tertiaryGreyDark": Object {
+                              "iconColor": "#ff99be",
+                              "textColor": "#ff99be",
+                            },
+                            "tertiaryWhite": Object {
+                              "iconColor": "#ff99be",
+                              "textColor": "#ff99be",
+                            },
+                          },
+                          "loading": Object {
+                            "primary": Object {
+                              "backgroundColor": "#c10046",
+                            },
+                            "secondary": Object {
+                              "borderColor": "#eb0055",
+                            },
+                          },
+                          "primary": Object {
+                            "backgroundColor": "#eb0055",
+                            "iconColor": "#ffffff",
+                            "loadingIconColor": "#ffffff",
+                            "textColor": "#ffffff",
+                          },
+                          "primaryWhite": Object {
+                            "backgroundColor": "#ffffff",
+                            "iconColor": "#eb0055",
+                            "loadingIconColor": "#c10046",
+                            "textColor": "#eb0055",
+                          },
+                          "quaternary": Object {
+                            "backgroundColor": "transparent",
+                            "iconColor": "#c10046",
+                            "loadingIconColor": "#c10046",
+                            "textColor": "#eb0055",
+                          },
+                          "quaternaryBlack": Object {
+                            "backgroundColor": "transparent",
+                            "iconColor": "#151515",
+                            "loadingIconColor": "#c10046",
+                            "textColor": "#151515",
+                          },
+                          "secondary": Object {
+                            "backgroundColor": "transparent",
+                            "borderColor": "#ff99be",
+                            "iconColor": "#eb0055",
+                            "loadingIconColor": "#c10046",
+                            "textColor": "#eb0055",
+                          },
+                          "tertiary": Object {
+                            "backgroundColor": "transparent",
+                            "iconColor": "#eb0055",
+                            "loadingIconColor": "#c10046",
+                            "textColor": "#eb0055",
+                          },
+                          "tertiaryGreyDark": Object {
+                            "backgroundColor": "transparent",
+                            "iconColor": "#626262",
+                            "loadingIconColor": "#626262",
+                            "textColor": "#626262",
+                          },
+                          "tertiaryWhite": Object {
+                            "backgroundColor": "transparent",
+                            "iconColor": "#ffffff",
+                            "loadingIconColor": "#ffffff",
+                            "textColor": "#ffffff",
+                          },
+                        },
+                        "colors": Object {
+                          "accent": "#0066ff",
+                          "attention": "#ffea00",
+                          "black": "#151515",
+                          "brand": "#870087",
+                          "brandDark": "#070C36",
+                          "error": "#b60025",
+                          "greenDisabled": "#b8d7c1",
+                          "greenLight": "#2cbe6e",
+                          "greenValid": "#15884f",
+                          "greyDark": "#626262",
+                          "greyDisabled": "#e6e6e6",
+                          "greyLight": "#f5f5f5",
+                          "greyMedium": "#c7c7cc",
+                          "primary": "#eb0055",
+                          "primaryDark": "#c10046",
+                          "primaryDisabled": "#ff99be",
+                          "secondary": "#320096",
+                          "tertiary": "#cc1673",
+                          "transparent": "transparent",
+                          "white": "#ffffff",
+                        },
+                        "fontFamily": Object {
+                          "black": "Montserrat-Black",
+                          "bold": "Montserrat-Bold",
+                          "medium": "Montserrat-Medium",
+                          "regular": "Montserrat-Regular",
+                          "semiBold": "Montserrat-SemiBold",
+                        },
+                        "isDesktop": false,
+                        "isDesktopViewport": false,
+                        "isMobile": true,
+                        "isMobileViewport": true,
+                        "isTablet": false,
+                        "isTabletViewport": false,
+                        "isTouch": true,
+                        "navTopHeight": 80,
+                        "showTabBar": true,
+                        "tabBarHeight": 64,
+                        "typography": Object {
+                          "body": Object {
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "lineHeight": "20px",
+                          },
+                          "buttonText": Object {
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": "20px",
+                          },
+                          "caption": Object {
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": "16px",
+                          },
+                          "hero": Object {
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 38,
+                            "lineHeight": "48px",
+                          },
+                          "title1": Object {
+                            "fontFamily": "Montserrat-Black",
+                            "fontSize": 24,
+                            "lineHeight": "36px",
+                          },
+                          "title2": Object {
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 24,
+                            "lineHeight": "28px",
+                          },
+                          "title3": Object {
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 20,
+                            "lineHeight": "24px",
+                          },
+                          "title4": Object {
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 18,
+                            "lineHeight": "22px",
+                          },
+                        },
+                        "uniqueColors": Object {
+                          "backgroundColor": "#DDDDDD",
+                          "filterButton": "#d0005f",
+                          "foregroundColor": "#EEEEEE",
+                          "greyOverlay": "#00000080",
+                          "tabBar": "#fffffff8",
+                        },
+                        "zIndex": Object {
+                          "background": -1,
+                          "cheatCodeButton": 1,
+                          "favoritePastilleContent": 1,
+                          "header": 1,
+                          "headerNav": 2,
+                          "homeOfferCoverIcons": 1,
+                          "modalHeader": 1,
+                          "playlistsButton": 1,
+                          "progressbar": 1,
+                          "progressbarIcon": 2,
+                          "snackbar": 50,
+                          "tabBar": 2,
+                        },
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#ffffff",
+                          "paddingHorizontal": 10,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#151515",
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      ou
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Je suis de nationalité étrangère"
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    nativeID="animatedComponent"
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderRadius": 24,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "justifyContent": "flex-start",
+                        "maxWidth": 500,
+                        "opacity": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      }
+                    }
+                    testID="Je suis de nationalité étrangère"
+                  >
+                    <View
+                      height={32}
+                      testID="button-icon"
+                      width={32}
+                    >
+                      <Text>
+                        button-icon-SVG-Mock
+                      </Text>
+                    </View>
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#151515",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "marginLeft": 5,
+                            "maxWidth": "100%",
+                          },
+                        ]
+                      }
+                      textColor="#151515"
+                    >
+                      Je suis de nationalité étrangère
+                    </Text>
+                  </View>
+                  <Text
+                    color="#626262"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#626262",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Titre de séjour, carte d'identité ou passeport.
+                  </Text>
+                </View>
+              </View>
+              <View
+                customHeight={8}
+                enable={true}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    height="100%"
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": "100%",
+          "zIndex": -1,
+        },
+      ]
+    }
+    width="100%"
+  >
+    <View
+      height="100%"
+      width="100%"
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
+</View>
+`;
