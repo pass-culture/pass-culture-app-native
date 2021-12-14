@@ -17,6 +17,7 @@ export type IdentityCheckRootStackParamList = {
   IdentityCheckCity: undefined
   IdentityCheckAddress: undefined
   IdentityCheckStatus: undefined
+  IdentityCheckSchoolType: undefined
   // Identification
   IdentityCheckStart: undefined
   IdentityCheckWebview: undefined

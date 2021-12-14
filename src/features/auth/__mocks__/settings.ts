@@ -17,6 +17,7 @@ export const mockDefaultSettings: SettingsResponse = {
   isWebappV2Enabled: false,
   enableNativeEacIndividual: false,
   enableUnderageGeneralisation: false,
+  enableCulturalSurvey: false,
   accountCreationMinimumAge: 15,
 }
 

@@ -19,6 +19,7 @@ export enum QueryKeys {
   REPORTED_OFFERS = 'reportedOffers',
   REPORT_OFFER_REASONS = 'reportOfferReasons',
   RESET_PASSWORD_EXPIRED_LINK = 'resetPasswordExpiredLink',
+  SCHOOL_TYPES = 'schoolTypes',
   SEARCH_RESULTS = 'searchResults',
   SETTINGS = 'settings',
   SIGNUP_CONFIRMATION_EXPIRED_LINK = 'signupConfirmationExpiredLink',

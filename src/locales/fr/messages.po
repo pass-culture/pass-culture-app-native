@@ -429,6 +429,7 @@ msgstr "Choisir les options"
 msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
+#: src/features/identityCheck/pages/profile/SetSchoolType.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Choisis ton statut"
 msgstr "Choisis ton statut"
@@ -597,6 +598,7 @@ msgstr "Contacter le support"
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetSchoolType.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Continuer"
@@ -656,6 +658,10 @@ msgstr "C’est quoi ÉduConnect ?"
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "C’est très rapide !"
 msgstr "C’est très rapide !"
+
+#: src/features/identityCheck/pages/profile/SetSchoolType.tsx
+msgid "Dans quel type d'établissement ?"
+msgstr "Dans quel type d'établissement ?"
 
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Dans quelle ville résides-tu ?"
@@ -1972,6 +1978,7 @@ msgstr "Problèmes pour ouvrir un lien ?"
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetSchoolType.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/TabBar/routes.ts
@@ -2678,6 +2685,10 @@ msgstr "Tu y es presque"
 #: src/features/search/sections/titles.ts
 msgid "Type d'offre"
 msgstr "Type d'offre"
+
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Type d'établissement"
+msgstr "Type d'établissement"
 
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid "Télécharger la dernière version"
