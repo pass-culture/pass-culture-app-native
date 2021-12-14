@@ -95,7 +95,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   } else {
     body = (
       <BodyContainer testID="body-container-under-18">
-        <YoungerBadge />
+        <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
       </BodyContainer>
     )
   }

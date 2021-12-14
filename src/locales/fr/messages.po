@@ -439,6 +439,10 @@ msgstr "Choisis ton statut"
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
+#: src/libs/country-picker/CountryPicker.tsx
+msgid "Choix de l'indicatif téléphonique"
+msgstr "Choix de l'indicatif téléphonique"
+
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Choix du status"
 msgstr "Choix du status"
@@ -1041,6 +1045,10 @@ msgstr "Favoris"
 #: src/ui/components/modals/AppInformationModal.tsx
 msgid "Fermer la modale"
 msgstr "Fermer la modale"
+
+#: src/libs/country-picker/CountryPicker.tsx
+msgid "Fermer la modale de choix de l'indicatif téléphonique"
+msgstr "Fermer la modale de choix de l'indicatif téléphonique"
 
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Fermer la modale et refuser la collecte des données"
@@ -1820,6 +1828,10 @@ msgstr "Oups !"
 msgid "Oups, cette offre n’est plus disponible !"
 msgstr "Oups, cette offre n’est plus disponible !"
 
+#: src/libs/country-picker/CountryPicker.tsx
+msgid "Ouvrir la modale de choix de l'indicatif téléphonique"
+msgstr "Ouvrir la modale de choix de l'indicatif téléphonique"
+
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 msgid "Ouvrir un onglet ÉduConnect"
 msgstr "Ouvrir un onglet ÉduConnect"
@@ -1897,10 +1909,6 @@ msgstr "Pas de résultat trouvé."
 #: src/ui/components/achievements/components/GenericAchievementCard.tsx
 msgid "Passer"
 msgstr "Passer"
-
-#: src/features/profile/components/YoungerBadge.tsx
-msgid "Patience ! À tes 18 ans, tu bénéficieras de"
-msgstr "Patience ! À tes 18 ans, tu bénéficieras de"
 
 #: src/libs/parsers/venueType.ts
 msgid "Patrimoine / tourisme"
@@ -3017,6 +3025,10 @@ msgstr "crédit valable jusqu'au"
 msgid "dans l'année de tes 18 ans, le Gouvernement offre un crédit de {deposit} à dépenser dans l’application."
 msgstr "dans l'année de tes 18 ans, le Gouvernement offre un crédit de {deposit} à dépenser dans l’application."
 
+#: src/features/profile/components/YoungerBadge.tsx
+msgid "date d'éligibilité"
+msgstr "Patience ! Reviens à partir du {date} pour continuer ta souscription et bénéficier du crédit pass Culture."
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 msgstr "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
@@ -3135,10 +3147,6 @@ msgstr "offerId is undefined"
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "offerte par le Gouvernement."
 msgstr "offerte par le Gouvernement."
-
-#: src/features/profile/components/YoungerBadge.tsx
-msgid "offerts à dépenser sur l’application."
-msgstr "offerts à dépenser sur l’application."
 
 #: src/ui/components/OrSeparator.tsx
 msgid "ou"
