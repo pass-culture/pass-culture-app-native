@@ -7,7 +7,6 @@ import { api } from 'api/api'
 import { UserProfilingFraudRequest } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { env } from 'libs/environment'
-import { eventMonitoring } from 'libs/monitoring'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
@@ -43,21 +42,17 @@ export function UserProfiling({ resetErrorBoundary }: ScreenErrorProps) {
     if (sessionId === undefined) {
       return
     }
-    if (!sessionId) {
-      // should not happen but log still
-      eventMonitoring.captureException(new Error('TMX sessionId is null or weird'))
-    } else {
-      setTimeout(() => {
-        api
-          .postnativev1userProfiling({
-            agentType: AGENT_TYPE,
-            sessionId,
-          } as UserProfilingFraudRequest)
-          .then(navigateToNextBeneficiaryValidationStep)
-          .then(resetErrorBoundary)
-          .catch(setError)
-      }, PROFILING_MIN_DELAY_MS)
-    }
+
+    setTimeout(() => {
+      api
+        .postnativev1userProfiling({
+          agentType: AGENT_TYPE,
+          sessionId,
+        } as UserProfilingFraudRequest)
+        .then(navigateToNextBeneficiaryValidationStep)
+        .then(resetErrorBoundary)
+        .catch(setError)
+    }, PROFILING_MIN_DELAY_MS)
   }, [sessionId])
 
   if (genericError) {

@@ -5,7 +5,12 @@ import { theme as idCheckTheme } from '../../src/theme'
 
 const MockIdCheckErrorComponent = () => null
 
-const actual = jest.requireActual('@pass-culture/id-check')
+let actual
+try {
+  actual = jest.requireActual('@pass-culture/id-check')
+} catch (error) {
+  console.error(error)
+}
 
 export const useEduConnectClient = jest.fn().mockReturnValue(undefined)
 
