@@ -1,3 +1,5 @@
+import { monthNames } from 'features/bookOffer/components/Calendar/Calendar.utils'
+
 /**
  *Compare timestamps using this margin expressed in seconds for a better UX experience.
  *
@@ -59,8 +61,8 @@ export const formatToSlashedFrenchDate = (ISODate: string) => {
 }
 
 export const formatToReadableFrenchDate = (date: Date) => {
-  return new Intl.DateTimeFormat('fr-FR', {
-    month: 'long',
-    day: '2-digit',
-  }).format(date)
+  const monthOrder = date.getMonth()
+  const day = ('0' + date.getDate()).slice(-2)
+  const month = monthNames[monthOrder]
+  return `${day} ${month}`
 }
