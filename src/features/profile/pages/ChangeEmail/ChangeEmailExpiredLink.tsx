@@ -17,12 +17,13 @@ export function ChangeEmailExpiredLink() {
     // TODO (PC-11697): try / catch api call like api.postnativev1requestPasswordReset({ email })
   }
 
-  const bodyText = !email
-    ? t`Tu peux te connecter sur ton profil pour recommencer le parcours de changement d’e-mail.` +
-      '\n' +
-      '\n' +
-      t`Si tu as besoin d’aide, n’hésite pas à contacter le support.`
-    : undefined
+  const bodyText =
+    t`Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.` +
+    '\n' +
+    '\n' +
+    (isLoggedIn
+      ? t`Tu peux faire une nouvelle demande de modification dans ton profil.`
+      : t`Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification.`)
 
   const resendEmailButtonText = isLoggedIn ? t`Faire une nouvelle demande` : t`Se connecter`
   const renderResendEmailButton = () => (
