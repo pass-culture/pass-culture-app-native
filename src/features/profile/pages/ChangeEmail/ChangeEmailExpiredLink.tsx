@@ -1,20 +1,23 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/AuthContext'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
 export function ChangeEmailExpiredLink() {
   const { isLoggedIn } = useAuthContext()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   let resendEmailNumberOfHits = 0
 
   const changeEmailExpiredLink = () => {
     resendEmailNumberOfHits++
     analytics.logSendActivationMailAgain(resendEmailNumberOfHits)
-    // TODO (PC-11697): try / catch api call like api.postnativev1requestPasswordReset({ email })
+    navigate('ChangeEmail')
   }
 
   const bodyText =
