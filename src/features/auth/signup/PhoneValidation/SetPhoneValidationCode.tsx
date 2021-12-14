@@ -53,6 +53,7 @@ type SetPhoneValidationCodeProps = StackScreenProps<RootStackParamList, 'SetPhon
 export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeComponent({
   route,
 }: SetPhoneValidationCodeProps) {
+  const [error, setError] = useState<Error | undefined>()
   const { appContentWidth } = useTheme()
   const { data: settings } = useAppSettings()
   const formattedPhoneNumber = formatPhoneNumber(
@@ -87,7 +88,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
     hideModal: hideFullPageModal,
   } = useModal(false)
 
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
 
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: onValidateSuccess,
@@ -198,6 +199,10 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
       t`Attention tu n'as que 3 tentatives.`,
     [route.params]
   )
+
+  if (error) {
+    throw error
+  }
 
   return (
     <React.Fragment>

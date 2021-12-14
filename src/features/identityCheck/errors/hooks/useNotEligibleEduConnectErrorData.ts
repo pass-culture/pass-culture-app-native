@@ -79,8 +79,11 @@ const UserTypeNotStudent: NotEligibleEduConnectErrorData = {
   },
 }
 
-export function useNotEligibleEduConnectErrorData(message: EduConnectErrorMessageEnum | string) {
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+export function useNotEligibleEduConnectErrorData(
+  message: EduConnectErrorMessageEnum | string,
+  setError: (error: Error) => void
+) {
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
   switch (message) {
     case EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld:
       return getInvalidInformation(navigateToNextBeneficiaryValidationStep)

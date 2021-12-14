@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
@@ -7,10 +7,15 @@ import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AchievementCardKeyProps, GenericAchievementCard } from 'ui/components/achievements'
 
 export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
+  const [error, setError] = useState<Error | undefined>()
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const deposit = depositAmount.replace(' ', '')
 
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
+
+  if (error) {
+    throw error
+  }
 
   return (
     <GenericAchievementCard

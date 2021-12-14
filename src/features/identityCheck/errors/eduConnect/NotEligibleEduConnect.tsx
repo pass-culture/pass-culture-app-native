@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useState } from 'react'
 import { TextProps, TextStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -22,6 +22,7 @@ export const NotEligibleEduConnect = ({
   error: { message },
   resetErrorBoundary,
 }: ScreenErrorProps) => {
+  const [error, setError] = useState<Error | undefined>()
   const {
     title,
     description,
@@ -30,7 +31,7 @@ export const NotEligibleEduConnect = ({
     primaryButtonText,
     tertiaryButtonVisible = false,
     onPrimaryButtonPress,
-  } = useNotEligibleEduConnectErrorData(message)
+  } = useNotEligibleEduConnectErrorData(message, setError)
   const { colors } = useTheme()
   const isSmallScreen = useMediaQuery({ maxHeight: SMALL_HEIGHT })
   const getGrid = useGrid()
@@ -41,6 +42,10 @@ export const NotEligibleEduConnect = ({
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
     global.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
+  }
+
+  if (error) {
+    throw error
   }
 
   return (

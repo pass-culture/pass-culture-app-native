@@ -37,7 +37,6 @@ import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdC
 import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
-import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
@@ -73,7 +72,6 @@ export const routes: Route[] = [
   {
     name: 'Offer',
     component: Offer,
-    hoc: withAsyncErrorBoundary,
     pathConfig: {
       path: 'offre/:id',
       deeplinkPaths: ['offer/:id', 'offre', 'offer'],
@@ -84,7 +82,6 @@ export const routes: Route[] = [
   {
     name: 'OfferDescription',
     component: OfferDescription,
-    hoc: withAsyncErrorBoundary,
     path: 'offre/:id/description',
     deeplinkPaths: ['offer/:id/description', 'offre/description', 'offer/description'],
     options: { title: t`Détails de l'offre` },
@@ -92,7 +89,6 @@ export const routes: Route[] = [
   {
     name: 'BookingDetails',
     component: BookingDetails,
-    hoc: withAsyncErrorBoundary,
     pathConfig: {
       path: 'reservation/:id/details',
       deeplinkPaths: ['booking/:id/details'],
@@ -159,7 +155,6 @@ export const routes: Route[] = [
   {
     name: 'ChangeEmailExpiredLink',
     component: ChangeEmailExpiredLink,
-    hoc: withAsyncErrorBoundary,
     path: 'lien-modification-email-expire',
     options: { title: t`Lien de modification de l'email expiré` },
   },
@@ -196,7 +191,6 @@ export const routes: Route[] = [
   {
     name: 'ForgottenPassword',
     component: ForgottenPassword,
-    hoc: withAsyncErrorBoundary,
     path: 'mot-de-passe-oublie',
     options: { title: t`Mot de passe oublié` },
   },
@@ -234,7 +228,6 @@ export const routes: Route[] = [
   {
     name: 'Login',
     component: Login,
-    hoc: withAsyncErrorBoundary,
     pathConfig: {
       path: 'connexion',
       parse: screenParamsParser['Login'],
@@ -244,7 +237,6 @@ export const routes: Route[] = [
   {
     name: 'Navigation',
     component: Navigation,
-    hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation',
   },
   {
@@ -301,7 +293,6 @@ export const routes: Route[] = [
   {
     name: 'ResetPasswordExpiredLink',
     component: ResetPasswordExpiredLink,
-    hoc: withAsyncErrorBoundary,
     path: 'email-modification-mot-de-passe-expire',
     options: { title: t`Email modification mot de passe expiré` },
   },
@@ -401,7 +392,6 @@ export const routes: Route[] = [
   {
     name: 'Venue',
     component: Venue,
-    hoc: withAsyncErrorBoundary,
     pathConfig: {
       path: 'lieu/:id',
       deeplinkPaths: ['venue/:id'],
@@ -413,7 +403,6 @@ export const routes: Route[] = [
   {
     name: 'DeeplinksGenerator',
     component: DeeplinksGenerator,
-    hoc: withAsyncErrorBoundary,
     pathConfig: {
       path: 'liens/generateur',
     },

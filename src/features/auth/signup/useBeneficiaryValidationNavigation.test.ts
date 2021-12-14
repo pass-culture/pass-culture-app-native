@@ -11,9 +11,11 @@ import {
   MaintenancePageType,
 } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { UserProfiling } from 'features/auth/signup/UserProfiling'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { env } from 'libs/environment'
+import { UserProfilingError } from 'libs/monitoring/errors'
 import { server } from 'tests/server'
 
 jest.mock('features/navigation/helpers')
@@ -69,6 +71,23 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('IdCheckV2')
+    })
+  })
+
+  it('should set UserProfilingError if nextStep is user-profiling', async () => {
+    mockNextStepRequest({
+      allowedIdentityCheckMethods,
+      nextSubscriptionStep: SubscriptionStep.UserProfiling,
+    })
+
+    const setError = jest.fn()
+    const { result } = renderHook(() => useBeneficiaryValidationNavigation(setError))
+    result.current.navigateToNextBeneficiaryValidationStep()
+
+    await waitForExpect(() => {
+      expect(setError).toBeCalledWith(
+        new UserProfilingError('SubscriptionStep.UserProfiling', UserProfiling)
+      )
     })
   })
 

@@ -39,10 +39,11 @@ describe('<EighteenBirthdayCard />', () => {
   })
 
   it('should navigate to nextBeneficiaryValidationStep on press "Vérifier mon identité"', async () => {
+    const setError = jest.fn()
     mockedUseUserProfileInfo.mockReturnValueOnce({ data: nonBeneficaryUser })
     const {
       navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
-    } = useBeneficiaryValidationNavigation()
+    } = useBeneficiaryValidationNavigation(setError)
 
     const { getByText } = await renderEighteenBirthdayCard()
 

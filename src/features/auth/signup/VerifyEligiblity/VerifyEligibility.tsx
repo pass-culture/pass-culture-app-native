@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
@@ -12,7 +12,12 @@ import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+  const [error, setError] = useState<Error | undefined>()
+  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
+
+  if (error) {
+    throw error
+  }
 
   return (
     <GenericInfoPage title={t`Vérifie ton identité`} icon={HappyFace} iconSize={getSpacing(30)}>

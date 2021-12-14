@@ -135,9 +135,10 @@ describe('SetPhoneValidationCode', () => {
     })
 
     it('should navigate to nextBeneficiaryValidationStep if validate phone number request succeeds', async () => {
+      const setError = jest.fn()
       const {
         navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
-      } = useBeneficiaryValidationNavigation()
+      } = useBeneficiaryValidationNavigation(setError)
       const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
       fireEvent.click(continueButton)

@@ -1,5 +1,13 @@
 ## Debugging
 
+### react-error-overlay
+
+In development, the Web application by default does not show the react error overlay, you can re-enable it by using `ERROR_OVERLAY=true`, ex:
+
+```bash
+ERROR_OVERLAY=true npm run start:web:testing
+``` 
+
 ### Flipper
 
 You can install [Flipper](https://fbflipper.com/) that will help you visualize the application's logs and network information.
