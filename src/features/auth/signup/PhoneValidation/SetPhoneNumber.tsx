@@ -195,13 +195,22 @@ const InputContainer = styled.View({
   maxWidth: getSpacing(90),
 })
 
+const PICKER_WIDTH_DESKTOP = 30 // in %
+const PICKER_WIDTH_MOBILE = 35 // in %
+const INPUT_WIDTH_DESKTOP = 100 - PICKER_WIDTH_DESKTOP // in %
+const INPUT_WIDTH_MOBILE = 100 - PICKER_WIDTH_MOBILE // in %
+
 const StyledCountryPicker = styled(CountryPicker)(({ theme }) => ({
-  width: theme.isDesktopViewport ? '25%' : '35%',
+  width: theme.isDesktopViewport ? `${PICKER_WIDTH_DESKTOP}%` : `${PICKER_WIDTH_MOBILE}%`,
 }))
 
 const StyledTextInput = styled(TextInput).attrs((props) => {
   const { theme } = props
-  return { containerStyle: { width: theme.isDesktopViewport ? '75%' : '65%' } }
+  return {
+    containerStyle: {
+      width: theme.isDesktopViewport ? `${INPUT_WIDTH_DESKTOP}%` : `${INPUT_WIDTH_MOBILE}%`,
+    },
+  }
 })({})
 
 /**
