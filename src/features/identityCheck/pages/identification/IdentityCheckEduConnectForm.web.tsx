@@ -38,8 +38,7 @@ export const IdentityCheckEduConnectForm = () => {
           setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
         }
       } catch (err) {
-        // @ts-ignore TODO remove this when all migration from idCheck is completed
-        setError(err)
+        setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
       }
     }
     setWebView()
