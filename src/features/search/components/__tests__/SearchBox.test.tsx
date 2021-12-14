@@ -23,13 +23,24 @@ const mockStagedSearchState: SearchState = {
 }
 
 const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
-  useStagedSearch: () => ({ searchState: mockStagedSearchState }),
+  useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
 }))
 jest.mock('libs/analytics')
 
 describe('SearchBox component', () => {
+  it('should call mockStagedDispatch() when typing', () => {
+    const { getByPlaceholderText } = render(<SearchBox />)
+    const searchInput = getByPlaceholderText('Titre, artiste, lieu...')
+    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: '' })
+    fireEvent.changeText(searchInput, 'Ma')
+    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Ma' })
+    fireEvent.changeText(searchInput, 'Mama')
+    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Mama' })
+  })
+
   it('should call logSearchQuery on submit', () => {
     const { getByPlaceholderText } = render(<SearchBox />)
     const searchInput = getByPlaceholderText('Titre, artiste, lieu...')
