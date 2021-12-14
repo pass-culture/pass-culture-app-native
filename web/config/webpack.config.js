@@ -49,11 +49,17 @@ const cssModuleRegex = /\.module\.css$/
 const sassRegex = /\.(scss|sass)$/
 const sassModuleRegex = /\.module\.(scss|sass)$/
 
-const extraCss = fs.readdirSync(paths.appExtraCss)
+const allCssFiles = fs.readdirSync(paths.appExtraCss)
   .filter((fileName) => fileName.match(/.*\.css/ig))
-  .map((fileName) => path.join(paths.appExtraCss, fileName))
-  .map((filePath) => `<style>${fs.readFileSync(filePath, 'utf8')}</style>`)
-  .join('\n    ');
+
+const devCssFiles = allCssFiles.filter((fileName) => fileName.match(/^\d{2}-dev-/))
+const prodCssFiles = allCssFiles.filter((fileName) => !fileName.match(/^\d{2}-dev-/))
+
+function getCss(files) {
+  return files.map((fileName) => path.join(paths.appExtraCss, fileName))
+    .map((filePath) => !filePath.includes('dev-server-overlay') || process.env.ERROR_OVERLAY !== 'true' ? `<style>${fs.readFileSync(filePath, 'utf8')}</style>` : '')
+    .join('\n    ');
+}
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -600,7 +606,8 @@ module.exports = function (webpackEnv) {
         TITLE: appPackageJson.author.name,
         TWITTER_SITE: appPackageJson.author.twitter,
         META_NO_INDEX: env.raw.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
-        EXTRA_CSS: extraCss || '',
+        PROD_CSS: getCss(prodCssFiles) || '',
+        DEV_CSS: !isEnvProduction ? getCss(devCssFiles) : '',
       }),
       // This gives some necessary context to module not found errors, such as
       // the requesting resource.
