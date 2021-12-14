@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState, useEffect, ComponentProps } from 'react'
-import { Animated, ViewStyle, LogBox } from 'react-native'
+import { ViewStyle, LogBox } from 'react-native'
 import ReactNativeCountryPicker, {
   Country,
   CountryList,
@@ -12,7 +12,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'tests/utils'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -48,8 +48,9 @@ export const CountryPicker: React.FC<Props> = (props) => {
   useEffect(() => {
     getAllowedCountries().then(setCountries)
     // We disabled the scroll of the ScrollView (`scrollEnabled=false`) of AppModal,
-    // since CountryList is a FlatList, so we should be ok to ignore this log here
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested inside plain ScrollViews'])
+    // since CountryList is a FlatList, so we should be ok to ignore the log :
+    // 'VirtualizedLists should never be nested inside plain ScrollViews'
+    LogBox.ignoreLogs(['VirtualizedLists should'])
   }, [])
 
   function onSelect(country: Country) {
@@ -66,11 +67,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
         {...accessibilityAndTestId(t`Ouvrir la modale de choix de l'indicatif téléphonique`)}>
         <Flag countryCode={country.cca2} flagSize={25} />
         <CallingCodeText>{callingCode}</CallingCodeText>
-        <Animated.View
-          style={{ transform: [{ rotateZ: `${Math.PI / 2}rad` }] }}
-          testID="accordionArrow">
-          <ArrowNext size={getSpacing(6)} />
-        </Animated.View>
+        <ArrowDown size={getSpacing(4)} />
       </StyledTouchableOpacity>
       <AppModal
         title={t`Choix de l'indicatif téléphonique`}
@@ -100,4 +97,5 @@ const StyledTouchableOpacity = styled.TouchableOpacity({
 
 const CallingCodeText = styled(Typo.ButtonText)({
   marginLeft: -getSpacing(1), // To compensate for the Flag component right margin
+  marginRight: getSpacing(1),
 })
