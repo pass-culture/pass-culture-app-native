@@ -7822,13 +7822,6 @@ fbjs@^3.0.0:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.30"
 
-fd-slicer@~1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/fd-slicer/-/fd-slicer-1.1.0.tgz#25c7c89cb1f9077f8891bbe61d8f390eae256f1e"
-  integrity sha1-JcfInLH5B3+IkbvmHY85Dq4lbx4=
-  dependencies:
-    pend "~1.2.0"
-
 figgy-pudding@^3.5.1:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.2.tgz#b4eee8148abb01dcf1d1ac34367d59e12fa61d6e"
@@ -8276,13 +8269,6 @@ ftp@^0.3.10:
   dependencies:
     readable-stream "1.1.x"
     xregexp "2.0.0"
-
-full-icu@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/full-icu/-/full-icu-1.4.0.tgz#c387825e3872b39a35b7f3d957650726d00d6b7f"
-  integrity sha512-pH8z7WVKJ3QR/8UoIOZupjRCYqpMFSxjPruYbPS8Ra19UGHuUEsnXP8+ny8o7KCF/AZcEkzJXAtGsveYbP17Uw==
-  dependencies:
-    yauzl "^2.10.0"
 
 function-bind@^1.1.1:
   version "1.1.1"
@@ -12480,11 +12466,6 @@ pbkdf2@^3.0.3:
     ripemd160 "^2.0.1"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
-
-pend@~1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
-  integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
 
 performance-now@^2.1.0:
   version "2.1.0"
@@ -17484,14 +17465,6 @@ yargs@^16.0.3, yargs@^16.1.1:
     string-width "^4.2.0"
     y18n "^5.0.5"
     yargs-parser "^20.2.2"
-
-yauzl@^2.10.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-2.10.0.tgz#c7eb17c93e112cb1086fa6d8e51fb0667b79a5f9"
-  integrity sha1-x+sXyT4RLLEIb6bY5R+wZnt5pfk=
-  dependencies:
-    buffer-crc32 "~0.2.3"
-    fd-slicer "~1.1.0"
 
 yazl@2.5.1, yazl@^2.5.1:
   version "2.5.1"
