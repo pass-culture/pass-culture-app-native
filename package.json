@@ -11,7 +11,7 @@
   "build": 10165006,
   "private": true,
   "engines": {
-    "node": ">=12.13.0 <13.0.0"
+    "node": ">=12.13.0"
   },
   "homepage": ".",
   "browserslist": {
@@ -259,7 +259,7 @@
     "postcss-normalize": "^6.0.0",
     "postcss-preset-env": "^6.7.0",
     "postcss-safe-parser": "^5.0.2",
-    "prettier": "^2.1.2",
+    "prettier": "^2.5.1",
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.4",
     "react-device-detect": "^2.0.1",
