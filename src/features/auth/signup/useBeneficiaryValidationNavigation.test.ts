@@ -1,6 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -13,7 +12,6 @@ import {
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UserProfiling } from 'features/auth/signup/UserProfiling'
 import { navigateToHome } from 'features/navigation/helpers'
-import { useIsUserUnderage } from 'features/profile/utils'
 import { env } from 'libs/environment'
 import { UserProfilingError } from 'libs/monitoring/errors'
 import { server } from 'tests/server'
@@ -23,7 +21,6 @@ jest.mock('features/auth/settings')
 jest.mock('features/home/api')
 jest.mock('features/profile/utils')
 jest.mock('libs/firestore/ubbleLoad', () => ({ useIsUnderUbbleLoadThreshold: jest.fn(() => true) }))
-const mockedUseIsUserUnderage = mocked(useIsUserUnderage)
 
 const allowedIdentityCheckMethods = [IdentityCheckMethod.Jouve]
 
@@ -34,17 +31,6 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalled()
-    })
-  })
-
-  it('should navigate to UnavailableEduConnect if nextStep is null and user is underage', async () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
-    result.current.navigateToNextBeneficiaryValidationStep()
-
-    await waitForExpect(() => {
-      expect(navigateToHome).not.toHaveBeenCalled()
-      expect(navigate).toBeCalledWith('UnavailableEduConnect')
     })
   })
 
@@ -61,7 +47,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
   })
 
-  it('should navigate to IdCheck if nextStep is identity-check', async () => {
+  it('should navigate to IdCheck if nextStep is IdentityCheck', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.IdentityCheck,
@@ -70,7 +56,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdCheckV2')
+      expect(navigate).toBeCalledWith('IdentityCheckStepper')
     })
   })
 
@@ -91,7 +77,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
   })
 
-  it('should navigate to IdCheck if nextStep is profile-completion and ubble not allowed', async () => {
+  it('should navigate to IdentityCheckStepper if nextStep is ProfileCompletion', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.ProfileCompletion,
@@ -100,20 +86,20 @@ describe('useBeneficiaryValidationNavigation', () => {
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdCheckV2')
+      expect(navigate).toBeCalledWith('IdentityCheckStepper')
     })
   })
 
-  it('should navigate to IdentityCheck if nextStep is profile-completion and ubble allowed', async () => {
+  it('should navigate to IdentityCheckStepper if nextStep is HonorStatement', async () => {
     mockNextStepRequest({
-      allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble, IdentityCheckMethod.Jouve],
-      nextSubscriptionStep: SubscriptionStep.ProfileCompletion,
+      allowedIdentityCheckMethods,
+      nextSubscriptionStep: SubscriptionStep.HonorStatement,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdentityCheck')
+      expect(navigate).toBeCalledWith('IdentityCheckStepper')
     })
   })
 
