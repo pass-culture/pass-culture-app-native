@@ -5,12 +5,15 @@ import { TextStyle } from 'react-native'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { Clock } from 'ui/svg/icons/Clock'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
+import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { IconInterface } from 'ui/svg/icons/types'
 
 export enum EduConnectErrorMessageEnum {
   UserAgeNotValid18YearsOld = 'UserAgeNotValid18YearsOld',
   UserAgeNotValid = 'UserAgeNotValid',
   UserTypeNotStudent = 'UserTypeNotStudent',
+  OutOfTestPhase = 'OutOfTestPhase',
+  GenericError = 'GenericError',
 }
 
 type NotEligibleEduConnectErrorData = {
@@ -24,7 +27,6 @@ type NotEligibleEduConnectErrorData = {
   onPrimaryButtonPress?: () => void
 }
 
-//(Yorick) TODO : cette page n'a pas lieu d'exister, on fallback vers une erreur générique
 const OutOfTestPhase: NotEligibleEduConnectErrorData = {
   Icon: Clock,
   title: t`Tu ne fais pas partie de la phase de test`,
@@ -78,6 +80,13 @@ const UserTypeNotStudent: NotEligibleEduConnectErrorData = {
     //(Wendy) TODO: Dans le prochain Ticket ajouter une navigation pour revenir à l'action précédente
   },
 }
+const GenericError: NotEligibleEduConnectErrorData = {
+  Icon: MaintenanceCone,
+  title: t`Oups !`,
+  description: t`Une erreur s'est produite pendant le chargement`,
+  titleAlignment: 'center',
+  descriptionAlignment: 'center',
+}
 
 export function useNotEligibleEduConnectErrorData(
   message: EduConnectErrorMessageEnum | string,
@@ -94,7 +103,10 @@ export function useNotEligibleEduConnectErrorData(
     case EduConnectErrorMessageEnum.UserTypeNotStudent:
       return UserTypeNotStudent
 
-    default:
+    case EduConnectErrorMessageEnum.OutOfTestPhase:
       return OutOfTestPhase
+
+    default:
+      return GenericError
   }
 }

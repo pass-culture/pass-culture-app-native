@@ -56,6 +56,8 @@ export const IdentityCheckEduConnectForm = () => {
         setError(new EduConnectError(EduConnectErrorMessageEnum.UserAgeNotValid))
       } else if (event.url.includes('UserTypeNotStudent')) {
         setError(new EduConnectError(EduConnectErrorMessageEnum.UserTypeNotStudent))
+      } else if (event.url.includes('OutOfTestPhase')) {
+        setError(new EduConnectError(EduConnectErrorMessageEnum.OutOfTestPhase))
       } else {
         setError(new Error(`UnspecifiedError URL error ${event.url}`))
       }
