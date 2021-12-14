@@ -1,20 +1,21 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { useAppSettings } from 'features/auth/settings'
+import { IdentityCheckMethod } from 'api/gen'
+import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Profile } from 'ui/svg/icons/Profile'
 import { IconInterface } from 'ui/svg/icons/types'
 
-// hook as it can be dynamic depending on settings
+// hook as it can be dynamic depending on subscription step
 export const useIdentityCheckSteps = (): StepConfig[] => {
-  const { data: settings } = useAppSettings()
+  const { data: subscription } = useNextSubscriptionStep()
 
-  const allowIdCheckRegistration = settings?.allowIdCheckRegistration
-  const { shouldUseEduConnect } = useEduconnect()
+  const shouldUseEduConnect =
+    subscription?.allowedIdentityCheckMethods.includes(IdentityCheckMethod.Educonnect) &&
+    !subscription?.allowedIdentityCheckMethods.includes(IdentityCheckMethod.Ubble)
 
   return [
     {
@@ -29,11 +30,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       label: t`Identification`,
       screens: shouldUseEduConnect
         ? ['IdentityCheckEduConnect', 'IdentityCheckEduConnectForm', 'IdentityCheckValidation']
-        : [
-            'IdentityCheckStart',
-            allowIdCheckRegistration ? 'IdentityCheckWebview' : 'IdentityCheckUnavailable',
-            'IdentityCheckEnd',
-          ],
+        : ['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd'],
     },
     {
       name: IdentityCheckStep.CONFIRMATION,
