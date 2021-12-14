@@ -44,8 +44,13 @@ const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (prop
 export const SearchBox: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
-  const { searchState: stagedSearchState } = useStagedSearch()
-  const [query, setQuery] = useState<string>('')
+  const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
+  const [query, _setQuery] = useState<string>('')
+
+  function setQuery(value: string) {
+    stagedDispatch({ type: 'SET_QUERY', payload: value })
+    _setQuery(value)
+  }
 
   useFocusEffect(
     useCallback(() => {
@@ -71,7 +76,7 @@ export const SearchBox: React.FC = () => {
     const { locationFilter, offerCategories } = stagedSearchState
     const query = event.nativeEvent.text
     navigate(
-      ...getTabNavConfig('Search', { query, showResults: true, locationFilter, offerCategories })
+      ...getTabNavConfig('Search', { showResults: true, query, locationFilter, offerCategories })
     )
     analytics.logSearchQuery(query)
   }
