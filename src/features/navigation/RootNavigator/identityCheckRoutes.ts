@@ -35,7 +35,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
   },
   // Stepper
   {
-    name: 'IdentityCheck',
+    name: 'IdentityCheckStepper',
     component: IdentityCheckStepper,
     path: 'verification-identite',
     options: { title: t`Vérification d'identité` },

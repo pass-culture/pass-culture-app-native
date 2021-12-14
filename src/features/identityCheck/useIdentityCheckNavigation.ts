@@ -57,7 +57,7 @@ export const useIdentityCheckNavigation = (): { navigateToNextScreen: () => void
         navigate(nextScreenOrStep.screen)
       } else if ('step' in nextScreenOrStep) {
         await saveCheckpoint(nextScreenOrStep.step)
-        navigate('IdentityCheck')
+        navigate('IdentityCheckStepper')
       }
     },
   }

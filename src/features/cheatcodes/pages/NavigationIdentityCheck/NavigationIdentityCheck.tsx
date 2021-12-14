@@ -41,7 +41,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         onRightIconPress={undefined}
       />
       <StyledContainer>
-        <LinkToComponent name="IdentityCheck" title="Stepper" />
+        <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
         <LinkToComponent name="IdentityCheckStatus" title="Status" />
         <LinkToComponent name="IdentityCheckSchoolType" title="SchoolType" />
         <LinkToComponent name="IdentityCheckStart" />
