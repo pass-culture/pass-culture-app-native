@@ -1,8 +1,9 @@
+import mockdate from 'mockdate'
 import { rest } from 'msw'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse } from 'api/gen'
+import { EligibilityType, UserProfileResponse } from 'api/gen'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
@@ -14,6 +15,8 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { loginRoutine } from '../../../__mocks__/AuthContext'
 import * as Auth from '../../../AuthContext'
 import { AfterSignupEmailValidationBuffer } from '../AfterSignupEmailValidationBuffer'
+
+mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
 jest.mock('features/auth/settings')
 jest.mock('features/auth/AuthContext')
@@ -80,6 +83,69 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         expect(navigate).toHaveBeenCalledWith('VerifyEligibility')
       })
       loginRoutine.mockRestore()
+    })
+    it('should redirect to SelectSchoolHome when isEligibleForBeneficiaryUpgrade and user is underage', async () => {
+      server.use(
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+          res.once(
+            ctx.status(200),
+            ctx.json({
+              email: 'email@domain.ext',
+              firstName: 'Jean',
+              eligibility: EligibilityType.Underage,
+              isEligibleForBeneficiaryUpgrade: true,
+            })
+          )
+        )
+      )
+      renderPage()
+
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('SelectSchoolHome')
+      })
+    })
+    it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
+      server.use(
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+          res.once(
+            ctx.status(200),
+            ctx.json({
+              email: 'email@domain.ext',
+              firstName: 'Jean',
+              isEligibleForBeneficiaryUpgrade: false,
+              eligibilityStartDatetime: '2019-12-01T00:00:00Z',
+            })
+          )
+        )
+      )
+      renderPage()
+
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('AccountCreated')
+      })
+    })
+
+    it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
+      server.use(
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+          res.once(
+            ctx.status(200),
+            ctx.json({
+              email: 'email@domain.ext',
+              firstName: 'Jean',
+              isEligibleForBeneficiaryUpgrade: false,
+              eligibilityStartDatetime: '2021-12-01T00:00:00Z',
+            })
+          )
+        )
+      )
+      renderPage()
+
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('NotYetUnderageEligibility', {
+          eligibilityStartDatetime: new Date('2021-12-01T00:00:00Z'),
+        })
+      })
     })
 
     it('should redirect to Home with a snackbar message on error', async () => {

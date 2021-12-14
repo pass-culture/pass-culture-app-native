@@ -57,9 +57,15 @@ export function AfterSignupEmailValidationBuffer() {
             ? 'SelectSchoolHome'
             : 'VerifyEligibility'
         delayedNavigate(nextScreen)
-      } else {
-        delayedNavigate('AccountCreated')
+        return
       }
+      const eligibilityStartDatetime =
+        user.eligibilityStartDatetime && new Date(user.eligibilityStartDatetime)
+      if (eligibilityStartDatetime && eligibilityStartDatetime >= new Date()) {
+        delayedNavigate('NotYetUnderageEligibility', { eligibilityStartDatetime })
+        return
+      }
+      delayedNavigate('AccountCreated')
     } catch {
       delayedNavigate('AccountCreated')
     }

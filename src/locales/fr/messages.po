@@ -2168,10 +2168,6 @@ msgstr "Revenir à l'accueil"
 msgid "Revenir à l'étape précédente"
 msgstr "Revenir à l'étape précédente"
 
-#: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
-msgid "Reviens à partir du 31 janvier pour poursuivre ton inscription et bénéficier des offres du pass Culture."
-msgstr "Reviens à partir du 31 janvier pour poursuivre ton inscription et bénéficier des offres du pass Culture."
-
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 msgid "Réessayer"
@@ -3149,6 +3145,10 @@ msgstr "quotidiennes"
 #: src/features/bookings/components/CancelBookingModal.tsx
 msgid "refunded on your pass"
 msgstr "{price} seront recrédités sur ton pass Culture."
+
+#: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
+msgid "reviens a partir du"
+msgstr "Reviens à partir du {formatedDate} pour poursuivre ton inscription et bénéficier des offres du pass Culture."
 
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "réservation annulable jusqu'au"

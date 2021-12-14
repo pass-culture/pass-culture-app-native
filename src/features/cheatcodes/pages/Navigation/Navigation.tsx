@@ -172,7 +172,11 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={"C'est pour bientôt"}
-            onPress={() => navigate('NotYetUnderageEligibility')}
+            onPress={() =>
+              navigate('NotYetUnderageEligibility', {
+                eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z'),
+              })
+            }
           />
         </Row>
         <Row half>

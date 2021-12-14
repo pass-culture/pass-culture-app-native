@@ -99,7 +99,7 @@ export type RootStackParamList = {
   PhoneValidationTooManyAttempts: undefined
   PhoneValidationTooManySMSSent: undefined
   VerifyEligibility: undefined
-  NotYetUnderageEligibility: undefined
+  NotYetUnderageEligibility: { eligibilityStartDatetime: Date }
   FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined

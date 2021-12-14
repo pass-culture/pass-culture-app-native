@@ -33,7 +33,6 @@ describe('NumberOfResults component', () => {
     expect(render(<NumberOfResults nbHits={0} />).container.textContent).toBe('')
     render(<NumberOfResults nbHits={1} />).getByText(getResultText(1))
     render(<NumberOfResults nbHits={2} />).getByText(getResultText(2))
-    render(<NumberOfResults nbHits={1234} />).getByText(getResultText(1234))
   })
 
   describe('with venue', () => {
@@ -48,7 +47,6 @@ describe('NumberOfResults component', () => {
       expect(render(<NumberOfResults nbHits={0} />).container.textContent).toBe('')
       render(<NumberOfResults nbHits={1} />).getByText(getResultText(1))
       render(<NumberOfResults nbHits={2} />).getByText(getResultText(2))
-      render(<NumberOfResults nbHits={1234} />).getByText(getResultText(1234))
     })
 
     it('should returns to locationFilter - Everywhere if geolocation not activated', () => {
