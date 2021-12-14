@@ -58,6 +58,8 @@ export const IdentityCheckEduConnectForm = () => {
         setError(new EduConnectError(EduConnectErrorMessageEnum.UserTypeNotStudent))
       } else if (event.url.includes('OutOfTestPhase')) {
         setError(new EduConnectError(EduConnectErrorMessageEnum.OutOfTestPhase))
+      } else if (event.url.includes('UserNotWhitelisted')) {
+        setError(new EduConnectError(EduConnectErrorMessageEnum.UserNotWhitelisted))
       } else {
         setError(new Error(`UnspecifiedError URL error ${event.url}`))
       }
