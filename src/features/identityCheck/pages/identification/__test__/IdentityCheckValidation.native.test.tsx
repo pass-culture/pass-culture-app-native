@@ -16,7 +16,6 @@ const { dispatch } = useIdentityCheckContext()
 jest.mock('@pass-culture/id-check')
 jest.mock('features/identityCheck/context/IdentityCheckContextProvider')
 jest.mock('features/identityCheck/useIdentityCheckNavigation')
-jest.mock('features/identityCheck/utils/useEduConnect')
 
 const flushPromises = new Promise(setImmediate)
 
