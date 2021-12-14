@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { EduConnectError, EduConnectErrorBoundary, EduConnectErrors } from '@pass-culture/id-check'
 import { ErrorTrigger } from '@pass-culture/id-check/src/errors/ErrorTrigger'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
@@ -7,6 +6,9 @@ import { ErrorBoundary } from 'react-error-boundary'
 import styled from 'styled-components/native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { EduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
+import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
+import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
 import { eduConnectClient } from 'libs/eduConnectClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
@@ -33,7 +35,7 @@ export const IdentityCheckEduConnectForm = () => {
             globalThis.window.open(finalURL, '_blank')
             return
           }
-          setError(new EduConnectError(EduConnectErrors.unavailable, 'EduConnectRedirectError'))
+          setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
         }
       } catch (err) {
         // @ts-ignore TODO remove this when all migration from idCheck is completed
