@@ -2033,6 +2033,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 style={
                                   Array [
                                     Object {
+                                      "alignItems": "flex-start",
                                       "display": "flex",
                                       "flexDirection": "row",
                                       "justifyContent": "center",
@@ -2084,6 +2085,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                         "flexGrow": 0.8,
                                         "flexShrink": 1,
                                         "justifyContent": "center",
+                                        "marginTop": 5,
                                         "paddingLeft": 12,
                                         "paddingRight": 12,
                                         "zIndex": 1,
@@ -4852,6 +4854,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 style={
                                   Array [
                                     Object {
+                                      "alignItems": "flex-start",
                                       "display": "flex",
                                       "flexDirection": "row",
                                       "justifyContent": "center",
@@ -4903,6 +4906,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                         "flexGrow": 0.8,
                                         "flexShrink": 1,
                                         "justifyContent": "center",
+                                        "marginTop": 5,
                                         "paddingLeft": 12,
                                         "paddingRight": 12,
                                         "zIndex": 1,

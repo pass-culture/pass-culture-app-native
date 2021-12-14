@@ -121,6 +121,7 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
       style={
         Array [
           Object {
+            "alignItems": "flex-start",
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
@@ -174,6 +175,7 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
               "flexGrow": 0.8,
               "flexShrink": 1,
               "justifyContent": "center",
+              "marginTop": 5,
               "paddingLeft": 12,
               "paddingRight": 12,
               "zIndex": 1,

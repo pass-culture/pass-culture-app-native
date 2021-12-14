@@ -1197,6 +1197,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           style={
             Array [
               Object {
+                "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -1248,6 +1249,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   "flexGrow": 0.8,
                   "flexShrink": 1,
                   "justifyContent": "center",
+                  "marginTop": 5,
                   "paddingLeft": 12,
                   "paddingRight": 12,
                   "zIndex": 1,

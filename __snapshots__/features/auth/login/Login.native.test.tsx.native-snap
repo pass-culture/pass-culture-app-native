@@ -5,7 +5,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -117,13 +117,11 @@
+@@ -118,13 +118,11 @@
                 }
               >
                 <View
@@ -19,7 +19,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -196,13 +194,11 @@
+@@ -198,13 +196,11 @@
                 }
               >
                 <View
@@ -33,7 +33,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -345,11 +341,11 @@
+@@ -347,11 +343,11 @@
                           \\"paddingTop\\": 0,
                         },
                       ]
@@ -46,7 +46,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
               </View>
             </View>
             <View
-@@ -463,18 +459,16 @@
+@@ -465,18 +461,16 @@
                       },
                     ]
                   }
@@ -66,7 +66,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -525,13 +519,11 @@
+@@ -527,13 +521,11 @@
                 ]
               }
             >
@@ -80,7 +80,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -570,24 +562,22 @@
+@@ -572,24 +564,22 @@
               }
             />
             <View
@@ -107,7 +107,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -606,20 +596,20 @@
+@@ -608,20 +598,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -137,7 +137,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -117,13 +117,11 @@
+@@ -118,13 +118,11 @@
                 }
               >
                 <View
@@ -151,7 +151,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -196,13 +194,11 @@
+@@ -198,13 +196,11 @@
                 }
               >
                 <View
@@ -165,7 +165,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -227,10 +223,59 @@
+@@ -229,10 +225,59 @@
                   </View>
                 </View>
               </View>
@@ -225,7 +225,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -287,19 +332,19 @@
+@@ -289,19 +334,19 @@
                       },
                     ]
                   }
@@ -247,7 +247,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -345,11 +390,11 @@
+@@ -347,11 +392,11 @@
                           \\"paddingTop\\": 0,
                         },
                       ]
@@ -260,7 +260,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               </View>
             </View>
             <View
-@@ -398,19 +443,19 @@
+@@ -400,19 +445,19 @@
                     },
                   ]
                 }
@@ -282,7 +282,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -463,18 +508,16 @@
+@@ -465,18 +510,16 @@
                       },
                     ]
                   }
@@ -302,7 +302,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -525,13 +568,11 @@
+@@ -527,13 +570,11 @@
                 ]
               }
             >
@@ -316,7 +316,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -570,24 +611,22 @@
+@@ -572,24 +613,22 @@
               }
             />
             <View
@@ -343,7 +343,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -606,20 +645,20 @@
+@@ -608,20 +647,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -373,7 +373,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -117,13 +117,11 @@
+@@ -118,13 +118,11 @@
                 }
               >
                 <View
@@ -387,7 +387,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -196,13 +194,11 @@
+@@ -198,13 +196,11 @@
                 }
               >
                 <View
@@ -401,7 +401,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -227,10 +223,59 @@
+@@ -229,10 +225,59 @@
                   </View>
                 </View>
               </View>
@@ -461,7 +461,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -287,19 +332,19 @@
+@@ -289,19 +334,19 @@
                       },
                     ]
                   }
@@ -483,7 +483,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -345,11 +390,11 @@
+@@ -347,11 +392,11 @@
                           \\"paddingTop\\": 0,
                         },
                       ]
@@ -496,7 +496,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               </View>
             </View>
             <View
-@@ -398,19 +443,19 @@
+@@ -400,19 +445,19 @@
                     },
                   ]
                 }
@@ -518,7 +518,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -463,18 +508,16 @@
+@@ -465,18 +510,16 @@
                       },
                     ]
                   }
@@ -538,7 +538,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -525,13 +568,11 @@
+@@ -527,13 +570,11 @@
                 ]
               }
             >
@@ -552,7 +552,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -570,24 +611,22 @@
+@@ -572,24 +613,22 @@
               }
             />
             <View
@@ -579,7 +579,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -606,20 +645,20 @@
+@@ -608,20 +647,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -609,7 +609,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 - First value
 + Second value
 
-@@ -117,13 +117,11 @@
+@@ -118,13 +118,11 @@
                 }
               >
                 <View
@@ -623,7 +623,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -196,13 +194,11 @@
+@@ -198,13 +196,11 @@
                 }
               >
                 <View
@@ -637,7 +637,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -227,10 +223,59 @@
+@@ -229,10 +225,59 @@
                   </View>
                 </View>
               </View>
@@ -697,7 +697,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -287,19 +332,19 @@
+@@ -289,19 +334,19 @@
                       },
                     ]
                   }
@@ -719,7 +719,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -345,11 +390,11 @@
+@@ -347,11 +392,11 @@
                           \\"paddingTop\\": 0,
                         },
                       ]
@@ -732,7 +732,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
               </View>
             </View>
             <View
-@@ -398,19 +443,19 @@
+@@ -400,19 +445,19 @@
                     },
                   ]
                 }
@@ -754,7 +754,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -463,18 +508,16 @@
+@@ -465,18 +510,16 @@
                       },
                     ]
                   }
@@ -774,7 +774,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -525,13 +568,11 @@
+@@ -527,13 +570,11 @@
                 ]
               }
             >
@@ -788,7 +788,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -570,24 +611,22 @@
+@@ -572,24 +613,22 @@
               }
             />
             <View
@@ -815,7 +815,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -606,20 +645,20 @@
+@@ -608,20 +647,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
