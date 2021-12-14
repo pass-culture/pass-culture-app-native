@@ -22,19 +22,19 @@ describe('<ChangeEmailExpiredLink />', () => {
   })
 
   it('should render correctly', () => {
-    const renderAPI = renderChangeEmailExpiredLink()
+    const renderAPI = render(<ChangeEmailExpiredLink />)
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should render correctly when logged out', () => {
     mockUserLoggedOutOnce()
 
-    const renderAPI = renderChangeEmailExpiredLink()
+    const renderAPI = render(<ChangeEmailExpiredLink />)
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should redirect to home page when go back to home button is clicked', async () => {
-    const { getByText } = await renderChangeEmailExpiredLink()
+    const { getByText } = await render(<ChangeEmailExpiredLink />)
 
     fireEvent.press(getByText(`Retourner à l'accueil`))
 
@@ -44,7 +44,7 @@ describe('<ChangeEmailExpiredLink />', () => {
   })
 
   it('should navigate when clicking on resend email button', async () => {
-    const { getByText } = renderChangeEmailExpiredLink()
+    const { getByText } = render(<ChangeEmailExpiredLink />)
 
     const resendEmailButton = getByText('Faire une nouvelle demande')
     fireEvent.press(resendEmailButton)
@@ -55,7 +55,7 @@ describe('<ChangeEmailExpiredLink />', () => {
   })
 
   it('should log event when clicking on resend email button', async () => {
-    const { getByText } = renderChangeEmailExpiredLink()
+    const { getByText } = render(<ChangeEmailExpiredLink />)
 
     const resendEmailButton = getByText('Faire une nouvelle demande')
     fireEvent.press(resendEmailButton)
@@ -73,7 +73,7 @@ describe('<ChangeEmailExpiredLink />', () => {
   it('should navigate when clicking on resend email button when logged out', async () => {
     mockUserLoggedOutOnce()
 
-    const { getByText } = renderChangeEmailExpiredLink()
+    const { getByText } = render(<ChangeEmailExpiredLink />)
 
     const resendEmailButton = getByText('Se connecter')
     fireEvent.press(resendEmailButton)
@@ -83,7 +83,3 @@ describe('<ChangeEmailExpiredLink />', () => {
     })
   })
 })
-
-function renderChangeEmailExpiredLink() {
-  return render(<ChangeEmailExpiredLink />)
-}

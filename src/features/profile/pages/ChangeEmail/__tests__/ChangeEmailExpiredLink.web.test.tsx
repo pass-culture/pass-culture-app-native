@@ -20,19 +20,19 @@ describe('<ChangeEmailExpiredLink />', () => {
   })
 
   it('should render correctly', () => {
-    const renderAPI = renderChangeEmailExpiredLink()
+    const renderAPI = render(<ChangeEmailExpiredLink />)
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should render correctly when logged out', () => {
     mockUserLoggedOutOnce()
 
-    const renderAPI = renderChangeEmailExpiredLink()
+    const renderAPI = render(<ChangeEmailExpiredLink />)
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should redirect to home page when go back to home button is clicked', async () => {
-    const { getByText } = await renderChangeEmailExpiredLink()
+    const { getByText } = await render(<ChangeEmailExpiredLink />)
 
     fireEvent.click(getByText(`Retourner à l'accueil`))
 
@@ -41,7 +41,3 @@ describe('<ChangeEmailExpiredLink />', () => {
     })
   })
 })
-
-function renderChangeEmailExpiredLink() {
-  return render(<ChangeEmailExpiredLink />)
-}
