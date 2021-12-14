@@ -1,8 +1,8 @@
-import LottieView from 'lottie-react-native'
 import React, { useMemo, FunctionComponent } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import LottieView from 'libs/lottie'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
 import { Background } from 'ui/svg/Background'

@@ -1,7 +1,7 @@
-import LottieView from 'lottie-react-native'
 import React, { useEffect, useMemo, useRef } from 'react'
 import styled from 'styled-components/native'
 
+import LottieView from 'libs/lottie'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { AnimationObject } from 'ui/animations/type'
 import { Spacer } from 'ui/components/spacer/Spacer'
