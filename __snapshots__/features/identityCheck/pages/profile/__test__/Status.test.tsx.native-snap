@@ -198,6 +198,7 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
               Object {
                 "flexDirection": "column",
                 "flexGrow": 1,
+                "justifyContent": "center",
                 "paddingBottom": 0,
                 "paddingHorizontal": 20,
               }
