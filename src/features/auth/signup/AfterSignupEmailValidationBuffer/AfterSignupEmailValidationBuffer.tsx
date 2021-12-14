@@ -15,7 +15,7 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function AfterSignupEmailValidationBuffer() {
-  const { data: settings } = useAppSettings()
+  const { data: settings, isSuccess } = useAppSettings()
   const { showInfoSnackBar } = useSnackBarContext()
 
   const { navigate } = useNavigation<UseNavigationType>()
@@ -26,7 +26,9 @@ export function AfterSignupEmailValidationBuffer() {
   }
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
 
-  useEffect(beforeEmailValidation, [])
+  useEffect(() => {
+    isSuccess && beforeEmailValidation()
+  }, [isSuccess])
 
   const loginRoutine = useLoginRoutine()
 

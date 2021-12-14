@@ -22,5 +22,8 @@ export const mockDefaultSettings: SettingsResponse = {
 
 export const useAppSettings: typeof actualUseAppSettings = jest.fn(
   () =>
-    ({ data: mockDefaultSettings, isLoading: false } as UseQueryResult<SettingsResponse, unknown>)
+    ({ data: mockDefaultSettings, isLoading: false, isSuccess: true } as UseQueryResult<
+      SettingsResponse,
+      unknown
+    >)
 )
