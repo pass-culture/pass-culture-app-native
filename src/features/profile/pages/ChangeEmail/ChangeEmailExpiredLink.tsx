@@ -1,18 +1,12 @@
 import { t } from '@lingui/macro'
-import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { contactSupport } from 'features/auth/support.services'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
-type Props = StackScreenProps<RootStackParamList, 'ChangeEmailExpiredLink'>
-
-export function ChangeEmailExpiredLink(props: Props) {
+export function ChangeEmailExpiredLink() {
   let resendEmailNumberOfHits = 0
-  const { email } = props.route.params
 
   const changeEmailExpiredLink = () => {
     resendEmailNumberOfHits++
@@ -35,7 +29,6 @@ export function ChangeEmailExpiredLink(props: Props) {
     <LayoutExpiredLink
       renderResendEmailButton={renderResendEmailButton}
       customBodyText={bodyText}
-      contactSupport={email ? () => contactSupport.forChangeEmailExpiredLink(email) : undefined}
     />
   )
 }
