@@ -37,7 +37,6 @@ import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdC
 import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
-import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
@@ -409,10 +408,4 @@ export const routes: Route[] = [
     },
     options: { title: t`Générateur de lien` },
   },
-].map(
-  (route) =>
-    ({
-      ...route,
-      hoc: (route as Route).hoc ?? withAsyncErrorBoundary,
-    } as Route)
-)
+]
