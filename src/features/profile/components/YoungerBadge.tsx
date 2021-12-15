@@ -1,20 +1,17 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { useDepositAmountsByAge } from 'features/auth/api'
 import { ProfileBadge } from 'features/profile/components/ProfileBadge'
+import { formatToSlashedFrenchDate } from 'libs/dates'
 import { Clock } from 'ui/svg/icons/Clock'
 
-export function YoungerBadge() {
-  const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
-  const deposit = depositAmount.replace(' ', '')
-
-  const information =
-    t`Patience ! À tes 18 ans, tu bénéficieras de` +
-    '\u00a0' +
-    deposit +
-    '\u00a0' +
-    t`offerts à dépenser sur l’application.`
+export function YoungerBadge(props: { eligibilityStartDatetime: Date }) {
+  const information = t({
+    id: "date d'éligibilité",
+    values: { date: formatToSlashedFrenchDate(props.eligibilityStartDatetime.toISOString()) },
+    message:
+      'Patience ! Reviens à partir du {date} pour continuer ton inscription et bénéficier du crédit pass Culture.',
+  })
 
   return <ProfileBadge popOverIcon={Clock} message={information} testID={'younger-badge'} />
 }
