@@ -1,8 +1,10 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import { FunctionComponent } from 'react'
 import { TextStyle } from 'react-native'
 
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Clock } from 'ui/svg/icons/Clock'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
@@ -67,7 +69,9 @@ const getInvalidInformation = (
   onPrimaryButtonPress,
 })
 
-const UserTypeNotStudent: NotEligibleEduConnectErrorData = {
+const getUserTypeNotStudent = (
+  onPrimaryButtonPress: () => void
+): NotEligibleEduConnectErrorData => ({
   Icon: InfoFraud,
   title: t`Qui est-ce ?`,
   description:
@@ -77,10 +81,9 @@ const UserTypeNotStudent: NotEligibleEduConnectErrorData = {
   descriptionAlignment: 'center',
   primaryButtonText: t`Réessayer de m'identifier`,
   tertiaryButtonVisible: true,
-  onPrimaryButtonPress: () => {
-    //(Wendy) TODO: Dans le prochain Ticket ajouter une navigation pour revenir à l'action précédente
-  },
-}
+  onPrimaryButtonPress,
+})
+
 const GenericError: NotEligibleEduConnectErrorData = {
   Icon: MaintenanceCone,
   title: t`Oups !`,
@@ -91,9 +94,10 @@ const GenericError: NotEligibleEduConnectErrorData = {
 
 export function useNotEligibleEduConnectErrorData(
   message: EduConnectErrorMessageEnum | string,
-  setError: (error: Error) => void
+  setError: (error: Error | undefined) => void
 ) {
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
+  const { goBack, navigate } = useNavigation<UseNavigationType>()
   switch (message) {
     case EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld:
       return getInvalidInformation(navigateToNextBeneficiaryValidationStep)
@@ -102,7 +106,10 @@ export function useNotEligibleEduConnectErrorData(
       return UserAgeNotValid
 
     case EduConnectErrorMessageEnum.UserTypeNotStudent:
-      return UserTypeNotStudent
+      return getUserTypeNotStudent(() => {
+        goBack()
+        navigate('IdentityCheckEduConnectForm')
+      })
 
     case EduConnectErrorMessageEnum.UserNotWhitelisted:
     case EduConnectErrorMessageEnum.OutOfTestPhase:
