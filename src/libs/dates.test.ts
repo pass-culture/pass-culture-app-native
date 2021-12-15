@@ -16,8 +16,8 @@ describe('currentTimestamp()', () => {
 })
 describe('formatToReadableFrenchDate()', () => {
   it('should return formated translated and readable date', () => {
-    expect(formatToReadableFrenchDate(new Date('2019-12-01T00:00:00Z'))).toEqual('01 Décembre')
-    expect(formatToReadableFrenchDate(new Date('2019-03-12T00:00:00Z'))).toEqual('12 Mars')
+    expect(formatToReadableFrenchDate(new Date('2019-12-01T00:00:00Z'))).toEqual('01 décembre')
+    expect(formatToReadableFrenchDate(new Date('2019-03-12T00:00:00Z'))).toEqual('12 mars')
   })
 })
 
