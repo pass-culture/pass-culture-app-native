@@ -31,6 +31,8 @@ export type IdentityCheckRootStackParamList = {
   // Confirmation
   IdentityCheckHonor: undefined
   BeneficiaryRequestSent: undefined
+  // Errors
+  EduConnectErrors: { code?: string }
 }
 
 /**

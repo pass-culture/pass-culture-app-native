@@ -1,5 +1,5 @@
-import React, { memo, useEffect, useMemo } from 'react'
-import { FallbackProps } from 'react-error-boundary'
+import React, { ComponentType, memo, useEffect, useMemo } from 'react'
+import { withErrorBoundary, FallbackProps } from 'react-error-boundary'
 
 import { AsyncErrorBoundary } from 'features/errors'
 import { NotEligibleEduConnect } from 'features/identityCheck/errors/eduConnect/NotEligibleEduConnect'
@@ -16,13 +16,11 @@ export const EduConnectErrorBoundary = memo(function EduConnectErrorBoundary({
   error,
   resetErrorBoundary,
 }: EduConnectFallbackProps) {
-  const errorMonitoring = eventMonitoring
-
   useEffect(() => {
     if (error) {
-      errorMonitoring.captureException(error)
+      eventMonitoring.captureException(error)
     }
-  }, [error, errorMonitoring])
+  }, [error])
 
   const EduConnectErrorPage = useMemo(
     () => (error instanceof EduConnectError ? NotEligibleEduConnect : AsyncErrorBoundary),
@@ -31,3 +29,9 @@ export const EduConnectErrorBoundary = memo(function EduConnectErrorBoundary({
 
   return <EduConnectErrorPage error={error} resetErrorBoundary={resetErrorBoundary} />
 })
+
+export function withEduConnectErrorBoundary(component: ComponentType<unknown>) {
+  return withErrorBoundary(memo(component), {
+    FallbackComponent: EduConnectErrorBoundary,
+  })
+}

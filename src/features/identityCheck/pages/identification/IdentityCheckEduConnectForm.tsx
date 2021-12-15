@@ -40,11 +40,7 @@ export const IdentityCheckEduConnectForm = () => {
     return () => setWebViewSource(undefined)
   }, [eduConnectClient])
 
-  useFocusEffect(
-    useCallback(() => {
-      return loadWebView()
-    }, [loadWebView])
-  )
+  useFocusEffect(() => loadWebView())
 
   const onNavigationStateChange = (event: WebViewNavigation) => {
     // PC Api detected an error after EduConnect authentication

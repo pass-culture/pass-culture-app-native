@@ -4,6 +4,7 @@ import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIde
 import { withAsyncErrorBoundary } from 'features/errors'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
+import { EduConnectErrors } from 'features/identityCheck/pages/errors/EduConnectErrors'
 import { IdentityCheckDMS } from 'features/identityCheck/pages/identification/IdentityCheckDMS'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/IdentityCheckEduConnect'
 import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/identification/IdentityCheckEduConnectForm'
@@ -151,5 +152,12 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     path: 'demande-beneficiaire-envoyee',
     options: { title: t`Demande bénéficiaire envoyée` },
     secure: true,
+  },
+  // Errors
+  {
+    name: 'EduConnectErrors',
+    component: EduConnectErrors,
+    path: 'educonnect/erreur',
+    options: { title: t`Erreur` },
   },
 ]
