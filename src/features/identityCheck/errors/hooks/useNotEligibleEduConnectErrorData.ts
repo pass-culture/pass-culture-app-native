@@ -11,6 +11,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 export enum EduConnectErrorMessageEnum {
   UserAgeNotValid18YearsOld = 'UserAgeNotValid18YearsOld',
   UserAgeNotValid = 'UserAgeNotValid',
+  UserNotWhitelisted = 'UserNotWhitelisted',
   UserTypeNotStudent = 'UserTypeNotStudent',
   OutOfTestPhase = 'OutOfTestPhase',
   GenericError = 'GenericError',
@@ -103,6 +104,7 @@ export function useNotEligibleEduConnectErrorData(
     case EduConnectErrorMessageEnum.UserTypeNotStudent:
       return UserTypeNotStudent
 
+    case EduConnectErrorMessageEnum.UserNotWhitelisted:
     case EduConnectErrorMessageEnum.OutOfTestPhase:
       return OutOfTestPhase
 

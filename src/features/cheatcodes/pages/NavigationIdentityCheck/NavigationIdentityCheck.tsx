@@ -26,6 +26,10 @@ export function NavigationIdentityCheck(): JSX.Element {
     setFastEduconnectConnectionRequestModalVisible,
   ] = useState(false)
 
+  const trigger = (message: EduConnectErrorMessageEnum) => {
+    setScreenError(new ScreenError(message, NotEligibleEduConnect))
+  }
+
   if (screenError) throw screenError
 
   return (
@@ -63,42 +67,26 @@ export function NavigationIdentityCheck(): JSX.Element {
             dateOfBirth: '2021-12-01',
           }}
         />
-        <Row half>
-          <NavigationButton
-            title={'UserAgeNotValid Educonnect Error'}
-            onPress={() => {
-              setScreenError(
-                new ScreenError(EduConnectErrorMessageEnum.UserAgeNotValid, NotEligibleEduConnect)
-              )
-            }}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'UserAgeNotValid18YearsOld Error'}
-            onPress={() => {
-              setScreenError(
-                new ScreenError(
-                  EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld,
-                  NotEligibleEduConnect
-                )
-              )
-            }}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'UserTypeNotStudent Error'}
-            onPress={() => {
-              setScreenError(
-                new ScreenError(
-                  EduConnectErrorMessageEnum.UserTypeNotStudent,
-                  NotEligibleEduConnect
-                )
-              )
-            }}
-          />
-        </Row>
+        <LinkToComponent
+          title={'UserAgeNotValid Educonnect Error'}
+          onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid)}
+        />
+        <LinkToComponent
+          title={'UserAgeNotValid18YearsOld Error'}
+          onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld)}
+        />
+        <LinkToComponent
+          title={'UserTypeNotStudent Error'}
+          onPress={() => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent)}
+        />
+        <LinkToComponent
+          title={'OutOfTestPhase Error'}
+          onPress={() => trigger(EduConnectErrorMessageEnum.OutOfTestPhase)}
+        />
+        <LinkToComponent
+          title={'UserNotWhitelisted Error'}
+          onPress={() => trigger(EduConnectErrorMessageEnum.UserNotWhitelisted)}
+        />
         <Row half>
           <NavigationButton
             title={'Identifie-toi en 2 minutes'}
@@ -118,13 +106,18 @@ export function NavigationIdentityCheck(): JSX.Element {
 }
 
 interface LinkToComponentProps {
-  name: RootScreenNames
+  name?: RootScreenNames
   onPress?: () => void
   title?: string
   navigationParams?: RootStackParamList[RootScreenNames]
 }
 
-const LinkToComponent = ({ name, onPress, title, navigationParams }: LinkToComponentProps) => {
+const LinkToComponent = ({
+  name = 'NavigationIdentityCheck',
+  onPress,
+  title,
+  navigationParams,
+}: LinkToComponentProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToComponent = () => navigate(name, navigationParams)
 
