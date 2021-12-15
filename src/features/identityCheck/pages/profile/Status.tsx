@@ -1,46 +1,27 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 
-import { ActivityEnum } from 'api/gen'
-import { useAppSettings } from 'features/auth/settings'
+import { ActivityIdEnum } from 'api/gen'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { useProfileOptions } from 'features/identityCheck/utils/useProfileOptions'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer } from 'ui/theme'
 
-type UserStatusResponse = { name: ActivityEnum; description?: string }
-
-// TODO(antoinewg) dehardcode statuses
-const baseStatuses: UserStatusResponse[] = [
-  { name: ActivityEnum.Lycen },
-  { name: ActivityEnum.Tudiant },
-  { name: ActivityEnum.Employ },
-  { name: ActivityEnum.Apprenti },
-  { name: ActivityEnum.Alternant },
-  { name: ActivityEnum.Volontaire, description: 'En service civique' },
-  { name: ActivityEnum.Inactif, description: 'En incapacité de travailler' },
-  { name: ActivityEnum.Chmeur, description: "En recherche d'emploi" },
-]
-
 export const Status = () => {
+  const { activities } = useProfileOptions()
   const { dispatch, profile } = useIdentityCheckContext()
-  const [selectedStatus, setSelectedStatus] = useState<ActivityEnum | null>(profile.status || null)
-  const { data: settings } = useAppSettings()
+  const [selectedStatus, setSelectedStatus] = useState<ActivityIdEnum | null>(
+    profile.status || null
+  )
   const { navigateToNextScreen } = useIdentityCheckNavigation()
-
-  const enabledGeneralisation =
-    settings?.enableNativeEacIndividual && settings?.enableUnderageGeneralisation
-
-  const statuses = enabledGeneralisation
-    ? ([{ name: 'Collégien' }] as UserStatusResponse[]).concat(baseStatuses)
-    : baseStatuses
 
   const onPressContinue = async () => {
     if (!selectedStatus) return
-    await dispatch({ type: 'SET_STATUS', payload: selectedStatus })
+    dispatch({ type: 'SET_STATUS', payload: selectedStatus })
     navigateToNextScreen()
   }
 
@@ -55,15 +36,16 @@ export const Status = () => {
       }
       scrollChildren={
         <React.Fragment>
-          {statuses.map((status) => (
-            <RadioButton
-              key={status.name}
-              selected={status.name === selectedStatus}
-              description={status.description}
-              name={status.name}
-              onPress={() => setSelectedStatus(status.name)}
-            />
-          ))}
+          {activities &&
+            activities.map((activity) => (
+              <RadioButton
+                key={activity.label}
+                selected={activity.label === selectedStatus}
+                description={activity.description}
+                name={activity.label}
+                onPress={() => setSelectedStatus(activity.id)}
+              />
+            ))}
         </React.Fragment>
       }
       fixedBottomChildren={

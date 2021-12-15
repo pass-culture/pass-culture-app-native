@@ -1,4 +1,4 @@
-import { ActivityEnum, SchoolTypesIdEnum } from 'api/gen'
+import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { SuggestedCity } from 'libs/place'
 
@@ -13,7 +13,7 @@ export interface IdentityCheckState {
     address: string | null
     city: SuggestedCity | null
     name: Name | null
-    status: ActivityEnum | null
+    status: ActivityIdEnum | null
     schoolType: SchoolTypesIdEnum | null
   }
   identification: {
@@ -32,7 +32,7 @@ export type Action =
   | { type: 'SET_STATE'; payload: Partial<IdentityCheckState> }
   | { type: 'SET_STEP'; payload: IdentityCheckStep }
   | { type: 'SET_NAME'; payload: Name | null }
-  | { type: 'SET_STATUS'; payload: ActivityEnum | null }
+  | { type: 'SET_STATUS'; payload: ActivityIdEnum | null }
   | { type: 'SET_SCHOOL_TYPE'; payload: SchoolTypesIdEnum | null }
   | { type: 'SET_CITY'; payload: SuggestedCity | null }
   | { type: 'SET_ADDRESS'; payload: string | null }

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Status/> should render correctly with no Collégien status 1`] = `
+exports[`<Status/> should render correctly 1`] = `
 <div
   className="css-view-1dbjc4n"
   style={
@@ -289,6 +289,90 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
                 }
               }
             >
+              <div
+                className="css-view-1dbjc4n"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "none",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "none",
+                    "alignItems": "center",
+                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomLeftRadius": "24px",
+                    "borderBottomRightRadius": "24px",
+                    "borderBottomWidth": "1px",
+                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftWidth": "1px",
+                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightWidth": "1px",
+                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopLeftRadius": "24px",
+                    "borderTopRightRadius": "24px",
+                    "borderTopWidth": "1px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "height": "48px",
+                    "marginBottom": "16px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "none",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "none",
+                    "width": "100%",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "alignItems": "center",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "msFlexAlign": "center",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(21,21,21,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Collégien
+                  </div>
+                </div>
+              </div>
               <div
                 className="css-view-1dbjc4n"
                 onClick={[Function]}

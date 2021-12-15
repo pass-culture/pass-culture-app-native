@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Status/> should render correctly with no Collégien status 1`] = `
+exports[`<Status/> should render correctly 1`] = `
 <View
   style={
     Array [
@@ -214,6 +214,61 @@ exports[`<Status/> should render correctly with no Collégien status 1`] = `
             }
           >
             <View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#151515"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Collégien
+                  </Text>
+                </View>
+              </View>
               <View
                 accessible={true}
                 collapsable={false}
