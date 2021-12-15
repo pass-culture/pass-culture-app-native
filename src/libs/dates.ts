@@ -63,6 +63,6 @@ export const formatToSlashedFrenchDate = (ISODate: string) => {
 export const formatToReadableFrenchDate = (date: Date) => {
   const monthOrder = date.getMonth()
   const day = ('0' + date.getDate()).slice(-2)
-  const month = monthNames[monthOrder]
+  const month = monthNames[monthOrder].toLowerCase()
   return `${day} ${month}`
 }

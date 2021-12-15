@@ -125,7 +125,7 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
           ]
         }
       >
-        Reviens à partir du 01 Décembre pour poursuivre ton inscription et bénéficier des offres du pass Culture.
+        Reviens à partir du 01 décembre pour poursuivre ton inscription et bénéficier des offres du pass Culture.
       </Text>
       <View
         numberOfSpaces={30}
