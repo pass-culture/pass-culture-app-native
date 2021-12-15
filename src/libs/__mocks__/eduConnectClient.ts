@@ -1,1 +1,4 @@
-export const eduConnectClient = undefined
+export const eduConnectClient = {
+  getAccessToken: () => Promise.resolve('abcd'),
+  getLoginUrl: () => 'http://login',
+}

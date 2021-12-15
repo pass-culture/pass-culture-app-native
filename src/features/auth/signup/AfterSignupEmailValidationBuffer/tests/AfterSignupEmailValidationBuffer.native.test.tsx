@@ -48,7 +48,20 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
   })
 
   describe('when timestamp is NOT expired', () => {
-    it('should redirect to AccountCreated when nextBeneficiaryValidationStep is null', async () => {
+    it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {
+      server.use(
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+          res.once(
+            ctx.status(200),
+            ctx.json({
+              email: 'email@domain.ext',
+              firstName: 'Jean',
+              eligibility: 'age-18',
+              isEligibleForBeneficiaryUpgrade: false,
+            })
+          )
+        )
+      )
       mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
       renderPage()
 

@@ -253,7 +253,8 @@ export interface BeneficiaryInformationUpdateRequest {
 export enum BeneficiaryValidationStep {
     PhoneValidation = 'phone-validation',
     IdCheck = 'id-check',
-    BeneficiaryInformation = 'beneficiary-information'
+    BeneficiaryInformation = 'beneficiary-information',
+    HonorStatement = 'honor-statement'
 }/**
  * 
  * @export
@@ -572,7 +573,8 @@ export interface BookingsResponse {
  */
 export enum CallToActionIcon {
     EMAIL = 'EMAIL',
-    RETRY = 'RETRY'
+    RETRY = 'RETRY',
+    EXTERNAL = 'EXTERNAL'
 }/**
  * 
  * @export
@@ -2120,7 +2122,8 @@ export enum SubscriptionStep {
     PhoneValidation = 'phone-validation',
     ProfileCompletion = 'profile-completion',
     IdentityCheck = 'identity-check',
-    UserProfiling = 'user-profiling'
+    UserProfiling = 'user-profiling',
+    HonorStatement = 'honor-statement'
 }/**
  * 
  * @export
@@ -3570,6 +3573,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary create_honor_statement_fraud_check <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1subscriptionhonorStatement(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/subscription/honor_statement`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary update_profile <POST>
          * @param {ProfileUpdateRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -4185,6 +4210,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary create_honor_statement_fraud_check <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1subscriptionhonorStatement(basePath: string, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1subscriptionhonorStatement(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary update_profile <POST>
          * @param {ProfileUpdateRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -4716,6 +4752,17 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1signin(body?: SigninRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1signin(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary create_honor_statement_fraud_check <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1subscriptionhonorStatement(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1subscriptionhonorStatement(this.basePath, options)
     }
     /**
      * 

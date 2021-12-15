@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFormv 1`] = `
+exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectForm 1`] = `
 <View
   style={
     Array [

@@ -1,4 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useQueryClient } from 'react-query'
 
 import { usePatchProfile } from 'features/identityCheck/api'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
@@ -9,6 +10,7 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
+import { QueryKeys } from 'libs/queryKeys'
 
 type NextScreenOrStep = { screen: IdentityCheckScreen } | { step: IdentityCheckStep } | null
 
@@ -38,12 +40,14 @@ export const useIdentityCheckNavigation = (): { navigateToNextScreen: () => void
   const { navigate } = useNavigation<UseNavigationType>()
   const currentStep = useCurrentIdentityCheckStep()
   const nextScreenOrStep = useNextScreenOrStep()
+  const queryClient = useQueryClient()
 
   const { mutateAsync: patchProfile } = usePatchProfile()
 
   const saveCheckpoint = async (nextStep: IdentityCheckStep) => {
     try {
       if (currentStep === IdentityCheckStep.PROFILE) await patchProfile()
+      queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
       dispatch({ type: 'SET_STEP', payload: nextStep })
     } catch (e) {
       // do nothing
@@ -57,7 +61,7 @@ export const useIdentityCheckNavigation = (): { navigateToNextScreen: () => void
         navigate(nextScreenOrStep.screen)
       } else if ('step' in nextScreenOrStep) {
         await saveCheckpoint(nextScreenOrStep.step)
-        navigate('IdentityCheck')
+        navigate('IdentityCheckStepper')
       }
     },
   }

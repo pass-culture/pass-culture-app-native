@@ -7,29 +7,16 @@ import { ErrorBoundary } from 'react-error-boundary'
 import styled from 'styled-components/native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useEduconnect } from 'features/identityCheck/utils/useEduConnect'
 import { eduConnectClient } from 'libs/eduConnectClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
-  const { shouldUseEduConnect } = useEduconnect()
-  const [error, setError] = useState<EduConnectError | null>(
-    shouldUseEduConnect ? null : new EduConnectError(EduConnectErrors.unavailable)
-  )
-
-  const checkIfEduConnectIsAvailable = useCallback(() => {
-    if (shouldUseEduConnect === false) {
-      setError(new EduConnectError(EduConnectErrors.unavailable))
-    }
-  }, [shouldUseEduConnect])
+  const [error, setError] = useState<EduConnectError | null>(null)
 
   const openEduConnect = useCallback(() => {
     async function setWebView() {
-      if (!eduConnectClient) {
-        return
-      }
       try {
         const { getAccessToken, getLoginUrl } = eduConnectClient
         const accessToken = await getAccessToken()
@@ -59,8 +46,7 @@ export const IdentityCheckEduConnectForm = () => {
   useFocusEffect(
     useCallback(() => {
       openEduConnect()
-      checkIfEduConnectIsAvailable()
-    }, [checkIfEduConnectIsAvailable, openEduConnect])
+    }, [openEduConnect])
   )
 
   if (error) {
