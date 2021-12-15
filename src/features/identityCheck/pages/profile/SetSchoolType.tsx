@@ -11,12 +11,12 @@ import {
   mapSchoolTypeIdToLabel,
 } from 'features/identityCheck/pages/profile/utils'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
-import { useSchoolTypes } from 'features/identityCheck/utils/useSchoolTypes'
+import { useProfileOptions } from 'features/identityCheck/utils/useProfileOptions'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer } from 'ui/theme'
 
 export const SetSchoolType = () => {
-  const { schoolTypes, activities } = useSchoolTypes()
+  const { schoolTypes, activities } = useProfileOptions()
 
   const { dispatch, profile } = useIdentityCheckContext()
   const [selectedSchoolTypeId, setSelectedSchoolTypeId] = useState<SchoolTypesIdEnum | null>(

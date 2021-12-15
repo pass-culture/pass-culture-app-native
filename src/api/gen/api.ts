@@ -1533,6 +1533,24 @@ export enum PopOverIcon {
 }/**
  * 
  * @export
+ * @interface ProfileOptionsResponse
+ */
+export interface ProfileOptionsResponse {
+    /**
+     * 
+     * @type {Array<ActivityResponseModel>}
+     * @memberof ProfileOptionsResponse
+     */
+    activities: Array<ActivityResponseModel>;
+    /**
+     * 
+     * @type {Array<SchoolTypeResponseModel>}
+     * @memberof ProfileOptionsResponse
+     */
+    school_types: Array<SchoolTypeResponseModel>;
+}/**
+ * 
+ * @export
  * @interface ProfileUpdateRequest
  */
 export interface ProfileUpdateRequest {
@@ -1729,24 +1747,6 @@ export enum SchoolTypesIdEnum {
     PRIVATESECONDARYSCHOOL = 'PRIVATE_SECONDARY_SCHOOL',
     PUBLICHIGHSCHOOL = 'PUBLIC_HIGH_SCHOOL',
     PUBLICSECONDARYSCHOOL = 'PUBLIC_SECONDARY_SCHOOL'
-}/**
- * 
- * @export
- * @interface SchoolTypesResponse
- */
-export interface SchoolTypesResponse {
-    /**
-     * 
-     * @type {Array<ActivityResponseModel>}
-     * @memberof SchoolTypesResponse
-     */
-    activities: Array<ActivityResponseModel>;
-    /**
-     * 
-     * @type {Array<SchoolTypeResponseModel>}
-     * @memberof SchoolTypesResponse
-     */
-    school_types: Array<SchoolTypeResponseModel>;
 }/**
  * An enumeration.
  * @export
@@ -2913,12 +2913,12 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary get_school_types <GET>
+         * @summary get_profile_options <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getnativev1subscriptionschoolTypes(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/subscription/school_types`;
+        async getnativev1subscriptionprofileOptions(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/subscription/profile_options`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
@@ -3903,12 +3903,12 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
-         * @summary get_school_types <GET>
+         * @summary get_profile_options <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getnativev1subscriptionschoolTypes(basePath: string, options?: any): Promise<SchoolTypesResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionschoolTypes(options);
+        async getnativev1subscriptionprofileOptions(basePath: string, options?: any): Promise<ProfileOptionsResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionprofileOptions(options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -4448,14 +4448,14 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
-     * @summary get_school_types <GET>
+     * @summary get_profile_options <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public async getnativev1subscriptionschoolTypes(options?: any) {
+    public async getnativev1subscriptionprofileOptions(options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1subscriptionschoolTypes(this.basePath, options)
+        return functionalApi.getnativev1subscriptionprofileOptions(this.basePath, options)
     }
     /**
      * 

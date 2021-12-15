@@ -1,6 +1,6 @@
-import { ActivityIdEnum, SchoolTypesIdEnum, SchoolTypesResponse } from 'api/gen'
+import { ActivityIdEnum, SchoolTypesIdEnum, ProfileOptionsResponse } from 'api/gen'
 
-export const SchoolTypesSnap: SchoolTypesResponse = {
+export const SchoolTypesSnap: ProfileOptionsResponse = {
   activities: [
     {
       associatedSchoolTypesIds: [
