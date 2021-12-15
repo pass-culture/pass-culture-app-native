@@ -99,7 +99,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
           ]
         }
       >
-        Réservation confirmée !
+        Réservation confirmée !
       </Text>
       <View
         numberOfSpaces={5}

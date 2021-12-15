@@ -186,7 +186,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     ]
                   }
                 >
-                  Bonne nouvelle !
+                  Bonne nouvelle !
                 </Text>
                 <Text
                   fontSize={24}

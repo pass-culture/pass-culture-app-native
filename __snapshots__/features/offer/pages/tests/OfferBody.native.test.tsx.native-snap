@@ -407,7 +407,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
           testID="caption-iconDuo"
         >
-          À deux !
+          À deux !
         </Text>
       </View>
       <View

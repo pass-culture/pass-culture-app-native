@@ -285,7 +285,7 @@ exports[`BookingDetails should render correctly 1`] = `
             ]
           }
         >
-          Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.
+          Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.
         </Text>
         <View
           numberOfSpaces={8}

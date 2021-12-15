@@ -99,7 +99,7 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
           ]
         }
       >
-        Ta pièce d’identité a bien été transmise !
+        Ta pièce d’identité a bien été transmise !
       </Text>
       <View
         numberOfSpaces={5}

@@ -684,7 +684,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     ]
                   }
                 >
-                  à portée de main !
+                  à portée de main !
                 </Text>
                 <View
                   flex={0.5}
@@ -892,7 +892,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     ]
                   }
                 >
-                  Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !
+                  Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !
                 </Text>
                 <View
                   flex={2}

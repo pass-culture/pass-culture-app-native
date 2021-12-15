@@ -126,7 +126,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
       ]
     }
   >
-    Oups !
+    Oups !
   </Text>
   <View
     numberOfSpaces={4}
