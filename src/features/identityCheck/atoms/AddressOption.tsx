@@ -13,6 +13,8 @@ interface Props {
   selected: boolean
 }
 
+const ICON_SIZE = getSpacing(8)
+
 export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
   return (
     <Container>
@@ -21,11 +23,9 @@ export const AddressOption = ({ optionKey, label, onPressOption, selected }: Pro
         activeOpacity={ACTIVE_OPACITY}>
         <TextContainer>
           <StyledBody selected={selected}>{label}</StyledBody>
-          {selected ? (
-            <IconContainer>
-              <Validate color={ColorsEnum.PRIMARY} />
-            </IconContainer>
-          ) : null}
+          <IconContainer>
+            {!!selected && <Validate color={ColorsEnum.PRIMARY} size={ICON_SIZE} />}
+          </IconContainer>
         </TextContainer>
       </StyledTouchableOpacity>
       <Separator />
@@ -37,22 +37,26 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(4),
 })
 
-const StyledTouchableOpacity = styled.TouchableOpacity(({ theme }) => ({
+const StyledTouchableOpacity = styled.TouchableOpacity({
   flexDirection: 'column',
   justifyContent: 'flex-start',
-  paddingVertical: theme.isMobileViewport ? getSpacing(3) : getSpacing(5),
-}))
+  paddingVertical: getSpacing(3),
+})
 
 const TextContainer = styled.View({
-  flex: 1,
-  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'row',
 })
 
 const StyledBody = styled(Typo.Body)<{ selected: boolean }>(({ selected }) => ({
   fontWeight: selected ? 'bold' : 'normal',
+  flex: 1,
 }))
 
 const IconContainer = styled.View({
-  position: 'absolute',
-  right: 0,
+  width: ICON_SIZE,
+  height: ICON_SIZE,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginLeft: getSpacing(2),
 })
