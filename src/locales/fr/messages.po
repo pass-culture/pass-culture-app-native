@@ -1512,8 +1512,8 @@ msgstr "Localisation"
 
 #: src/features/maintenance/Maintenance.tsx
 #: src/libs/firestore/maintenance.ts
-msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
-msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
+msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
+msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
 #: src/ui/components/inputs/DateInput.tsx
 #: src/ui/components/inputs/DateInput.web.test.tsx
@@ -2462,6 +2462,10 @@ msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure con
 #: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Ton identité restera anonyme auprès des acteurs culturels."
 msgstr "Ton identité restera anonyme auprès des acteurs culturels."
+
+#: src/features/profile/components/IdentityCheckPendingBadge.tsx
+msgid "Ton inscription est en cours de traitement"
+msgstr "Ton inscription est en cours de traitement"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 msgid "Ton inscription est en cours de vérification. Tu recevras une notification dès que ton dossier sera validé."

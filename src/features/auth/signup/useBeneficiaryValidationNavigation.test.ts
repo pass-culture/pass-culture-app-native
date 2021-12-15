@@ -38,6 +38,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.PhoneValidation,
+      hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()
@@ -51,6 +52,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.IdentityCheck,
+      hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()
@@ -64,6 +66,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.UserProfiling,
+      hasIdentityCheckPending: false,
     })
 
     const setError = jest.fn()
@@ -81,6 +84,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.ProfileCompletion,
+      hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()
@@ -94,6 +98,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.HonorStatement,
+      hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation)
     result.current.navigateToNextBeneficiaryValidationStep()
@@ -108,6 +113,7 @@ describe('useBeneficiaryValidationNavigation', () => {
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.Maintenance,
       maintenancePageType: MaintenancePageType.WithDms,
+      hasIdentityCheckPending: false,
     })
 
     const { result } = renderHook(useBeneficiaryValidationNavigation)
@@ -123,6 +129,7 @@ it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and m
     allowedIdentityCheckMethods,
     nextSubscriptionStep: SubscriptionStep.Maintenance,
     maintenancePageType: MaintenancePageType.WithoutDms,
+    hasIdentityCheckPending: false,
   })
 
   const { result } = renderHook(useBeneficiaryValidationNavigation)

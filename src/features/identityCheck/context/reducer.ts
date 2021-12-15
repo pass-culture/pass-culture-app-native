@@ -11,7 +11,7 @@ export const initialIdentityCheckState: IdentityCheckState = {
     schoolType: null,
   },
   identification: {
-    done: false,
+    processing: false,
     firstName: null,
     lastName: null,
     birthDate: null,
@@ -44,6 +44,8 @@ export const identityCheckReducer = (
       return { ...state, profile: { ...state.profile, schoolType: action.payload } }
     case 'SET_ADDRESS':
       return { ...state, profile: { ...state.profile, address: action.payload } }
+    case 'SET_PROCESSING':
+      return { ...state, identification: { ...state.identification, processing: action.payload } }
     case 'SET_IDENTIFICATION':
       return { ...state, identification: { ...state.identification, ...action.payload } }
     default:

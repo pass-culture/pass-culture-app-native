@@ -18,7 +18,7 @@ export interface IdentityCheckState {
     schoolType: SchoolTypesIdEnum | null
   }
   identification: {
-    done: boolean
+    processing: boolean
     firstName: string | null
     lastName: string | null
     birthDate: string | null
@@ -38,6 +38,7 @@ export type Action =
   | { type: 'SET_SCHOOL_TYPE'; payload: SchoolTypesIdEnum | null }
   | { type: 'SET_CITY'; payload: SuggestedCity | null }
   | { type: 'SET_ADDRESS'; payload: string | null }
+  | { type: 'SET_PROCESSING'; payload: boolean }
   | {
       type: 'SET_IDENTIFICATION'
       payload: {

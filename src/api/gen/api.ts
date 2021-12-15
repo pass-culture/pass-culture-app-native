@@ -1049,6 +1049,12 @@ export interface NextSubscriptionStepResponse {
     allowedIdentityCheckMethods: Array<IdentityCheckMethod>;
     /**
      * 
+     * @type {boolean}
+     * @memberof NextSubscriptionStepResponse
+     */
+    hasIdentityCheckPending: boolean;
+    /**
+     * 
      * @type {MaintenancePageType}
      * @memberof NextSubscriptionStepResponse
      */

@@ -6,9 +6,12 @@ import styled from 'styled-components/native'
 import { SubscriptionMessage } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
+import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
+import { IdentityCheckPendingBadge } from 'features/profile/components/IdentityCheckPendingBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
@@ -30,6 +33,9 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const today = new Date()
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const { data: settings } = useAppSettings()
+  const { data: subscription } = useNextSubscriptionStep()
+  const { identification } = useIdentityCheckContext()
+
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
@@ -55,7 +61,21 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   if (!eligibilityStartDatetime || !eligibilityEndDatetime || today >= eligibilityEndDatetime) {
     body = <BodyContainer testID="body-container-above-18" padding={1} />
   } else if (today >= eligibilityStartDatetime) {
-    if (props.isEligibleForBeneficiaryUpgrade && !props.subscriptionMessage) {
+    if (
+      subscription?.hasIdentityCheckPending &&
+      identification.processing &&
+      !props.subscriptionMessage
+    ) {
+      body = (
+        <BodyContainer testID="body-container-identity-check-pending">
+          <IdentityCheckPendingBadge />
+        </BodyContainer>
+      )
+    } else if (
+      props.isEligibleForBeneficiaryUpgrade &&
+      !props.subscriptionMessage &&
+      subscription?.nextSubscriptionStep
+    ) {
       const moduleBannerWording = isUserUnderage
         ? t({
             id: 'enjoy underage deposit',
