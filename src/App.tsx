@@ -4,10 +4,8 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
-import { AppState, AppStateStatus, LogBox } from 'react-native'
+import { LogBox } from 'react-native'
 import CodePush from 'react-native-code-push'
-import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'react-query'
-import { addPlugin } from 'react-query-native-devtools'
 
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
@@ -31,8 +29,8 @@ import { activate } from 'libs/i18n'
 import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import { useStartBatchNotification } from 'libs/notifications'
-import { queryClient } from 'libs/queryClient'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
+import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled/ThemeProvider'
 import { theme } from 'theme'
@@ -49,29 +47,6 @@ LogBox.ignoreLogs([
   'Cannot update a component',
   'EventEmitter.removeListener',
 ])
-
-if (__DEV__ && process.env.JEST !== 'true') {
-  addPlugin({ queryClient })
-}
-
-// By default, on the web, if a user leaves the app and returns to stale data,
-// React Query automatically requests fresh data in the background.
-// To have the equivalent behaviour for React-Native, we provide focus information through
-// the AppState module :
-reactQueryFocusManager.setEventListener((handleFocus) => {
-  function triggerReactQueryFocusOnBecomeActive(appState: AppStateStatus) {
-    if (appState === 'active') {
-      // When we open the app that was in the background, for logged in user, we refresh the access_token
-      // if it is expired. /refresh_access_token takes 300ms in average, so we delay the
-      // refetching of all cached queries by a slightly larger time
-      setTimeout(handleFocus, 500)
-    }
-  }
-  AppState.addEventListener('change', triggerReactQueryFocusOnBecomeActive)
-  return () => {
-    AppState.removeEventListener('change', triggerReactQueryFocusOnBecomeActive)
-  }
-})
 
 const App: FunctionComponent = function () {
   campaignTracker.useInit()
@@ -90,7 +65,7 @@ const App: FunctionComponent = function () {
     <ABTestingProvider>
       <ThemeProvider theme={theme}>
         <SafeAreaProvider>
-          <QueryClientProvider client={queryClient}>
+          <ReactQueryClientProvider>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
               <AuthWrapper>
                 <GeolocationWrapper>
@@ -114,7 +89,7 @@ const App: FunctionComponent = function () {
                 </GeolocationWrapper>
               </AuthWrapper>
             </ErrorBoundary>
-          </QueryClientProvider>
+          </ReactQueryClientProvider>
         </SafeAreaProvider>
       </ThemeProvider>
     </ABTestingProvider>
