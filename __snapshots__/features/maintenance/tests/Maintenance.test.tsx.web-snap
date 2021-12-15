@@ -381,7 +381,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
           }
         }
       >
-        L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !
+        L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !
       </div>
       <div
         className="css-view-1dbjc4n"

@@ -143,7 +143,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           }
         }
       >
-        Oups !
+        Oups !
       </div>
       <div
         className="css-view-1dbjc4n"
@@ -166,7 +166,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           }
         }
       >
-        Le lien est expiré !
+        Le lien est expiré !
       </div>
       <div
         className="css-text-901oao"
