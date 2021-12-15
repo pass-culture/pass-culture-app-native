@@ -13,9 +13,9 @@ import { IconInterface } from 'ui/svg/icons/types'
 export const useIdentityCheckSteps = (): StepConfig[] => {
   const { data: subscription } = useNextSubscriptionStep()
 
-  const shouldUseEduConnect =
-    subscription?.allowedIdentityCheckMethods.includes(IdentityCheckMethod.Educonnect) &&
-    !subscription?.allowedIdentityCheckMethods.includes(IdentityCheckMethod.Ubble)
+  const shouldUseEduConnect = subscription?.allowedIdentityCheckMethods.includes(
+    IdentityCheckMethod.Educonnect
+  )
 
   return [
     {
