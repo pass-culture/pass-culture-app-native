@@ -551,6 +551,10 @@ msgstr "Connecte-toi"
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
+#: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
+msgid "Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification."
+msgstr "Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification."
+
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
 msgid "Connecte-toi pour profiter de cette fonctionnalité"
 msgstr "Connecte-toi pour profiter de cette fonctionnalité"
@@ -771,10 +775,6 @@ msgstr "Désactiver la géolocalisation"
 #: src/features/bookings/pages/BookingNotFound.tsx
 msgid "Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer."
 msgstr "Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer."
-
-#: src/features/auth/signup/useBeneficiaryValidationNavigation.ts
-msgid "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
-msgstr "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Détails de l'offre"
@@ -1000,6 +1000,10 @@ msgstr "Environ 10 jours"
 msgid "Environ 3 heures"
 msgstr "Environ 3 heures"
 
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Erreur"
+msgstr "Erreur"
+
 #: src/features/auth/login/Login.tsx
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
@@ -1028,6 +1032,10 @@ msgstr "Ex : 75017"
 #: src/features/favorites/components/NoFavoritesResult.tsx
 msgid "Explorer les offres"
 msgstr "Explorer les offres"
+
+#: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
+msgid "Faire une nouvelle demande"
+msgstr "Faire une nouvelle demande"
 
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 msgid "Fais-tu partie de la phase de test ?"
@@ -1507,6 +1515,7 @@ msgid "Localisation"
 msgstr "Localisation"
 
 #: src/features/maintenance/Maintenance.tsx
+#: src/libs/firestore/maintenance.ts
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
@@ -1818,6 +1827,7 @@ msgstr "On y va !"
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 #: src/features/home/components/NoContentError.tsx
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 #: src/features/search/atoms/NoSearchResult.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
@@ -2110,7 +2120,9 @@ msgstr "Refuser"
 msgid "Rends-toi vite sur le site pass Culture afin de la réserver"
 msgstr "Rends-toi vite sur le site pass Culture afin de la réserver"
 
-#: src/ui/components/LayoutExpiredLink.tsx
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink.tsx
+#: src/features/auth/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink.tsx
+#: src/ui/components/__tests__/LayoutExpiredLink.test.tsx
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
@@ -2295,6 +2307,7 @@ msgstr "Salle de projections"
 #: src/features/auth/login/Login.tsx
 #: src/features/favorites/components/NotConnectedFavorites.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
+#: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Se connecter"
 msgstr "Se connecter"
 
@@ -2322,10 +2335,6 @@ msgstr "Si tu as 18 ans, tu es éligible à une aide financière de"
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
-
-#: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
-msgid "Si tu as besoin d’aide, n’hésite pas à contacter le support."
-msgstr "Si tu as besoin d’aide, n’hésite pas à contacter le support."
 
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 msgid "Si tu es élève dans"
@@ -2436,6 +2445,10 @@ msgstr "Titre, artiste, lieu..."
 #: src/features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer.tsx
 msgid "Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail."
 msgstr "Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail."
+
+#: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
+msgid "Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception."
+msgstr "Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception."
 
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 msgid "Ton compte a été activé !"
@@ -2662,6 +2675,10 @@ msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'applica
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
 
+#: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
+msgid "Tu peux faire une nouvelle demande de modification dans ton profil."
+msgstr "Tu peux faire une nouvelle demande de modification dans ton profil."
+
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid ""
 "Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées.\n"
@@ -2673,10 +2690,6 @@ msgstr ""
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 msgid "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
-
-#: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
-msgid "Tu peux te connecter sur ton profil pour recommencer le parcours de changement d’e-mail."
-msgstr "Tu peux te connecter sur ton profil pour recommencer le parcours de changement d’e-mail."
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
@@ -2758,6 +2771,10 @@ msgstr "Une erreur est survenue"
 #: src/features/identityCheck/api.ts
 msgid "Une erreur est survenue lors de la mise à jour de votre profil"
 msgstr "Une erreur est survenue lors de la mise à jour de votre profil"
+
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "Une erreur s'est produite pendant le chargement"
+msgstr "Une erreur s'est produite pendant le chargement"
 
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 msgid "Une erreur s'est produite pendant le chargement."
