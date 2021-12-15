@@ -21,6 +21,8 @@ import { flushAllPromises, render, act, fireEvent, cleanup } from 'tests/utils'
 
 import { Profile } from './Profile'
 
+jest.mock('react-query')
+
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
@@ -84,6 +86,10 @@ jest.mock('features/auth/api', () => ({
   })),
 }))
 jest.mock('features/auth/settings')
+
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({ identification: { processing: false } }),
+}))
 
 describe('Profile component', () => {
   afterEach(() => {

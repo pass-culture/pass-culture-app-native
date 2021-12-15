@@ -74,7 +74,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     } else if (
       props.isEligibleForBeneficiaryUpgrade &&
       !props.subscriptionMessage &&
-      subscription?.nextSubscriptionStep
+      subscription?.nextSubscriptionStep !== null
     ) {
       const moduleBannerWording = isUserUnderage
         ? t({

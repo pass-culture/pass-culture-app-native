@@ -9,6 +9,8 @@ import { render, fireEvent } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
+jest.mock('react-query')
+
 const mockedNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => {
   const actualNav = jest.requireActual('@react-navigation/native')
@@ -34,6 +36,10 @@ jest.mock('features/auth/api', () => ({
 jest.mock('features/auth/settings')
 jest.mock('features/home/api')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({ identification: { processing: false } }),
+}))
 
 describe('NonBeneficiaryHeader  ', () => {
   afterAll(mockdate.reset)
