@@ -20,13 +20,11 @@ export function ChangeEmailExpiredLink() {
     navigate('ChangeEmail')
   }
 
-  const bodyText =
-    t`Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.` +
-    '\n' +
-    '\n' +
-    (isLoggedIn
-      ? t`Tu peux faire une nouvelle demande de modification dans ton profil.`
-      : t`Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification.`)
+  const upperBodyText = t`Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.`
+  const lowerBodyText = isLoggedIn
+    ? t`Tu peux faire une nouvelle demande de modification dans ton profil.`
+    : t`Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification.`
+  const customBodyText = upperBodyText + '\n' + '\n' + lowerBodyText
 
   const resendEmailButtonText = isLoggedIn ? t`Faire une nouvelle demande` : t`Se connecter`
   const renderResendEmailButton = () => (
@@ -36,7 +34,7 @@ export function ChangeEmailExpiredLink() {
   return (
     <LayoutExpiredLink
       renderResendEmailButton={renderResendEmailButton}
-      customBodyText={bodyText}
+      customBodyText={customBodyText}
     />
   )
 }
