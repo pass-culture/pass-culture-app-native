@@ -6,6 +6,17 @@ import styled from 'styled-components/native'
 import { Dot } from 'ui/svg/icons/Dot'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
+export function getDotColors(
+  stepIndex: number,
+  currentStepIndex: number
+): { borderColor?: ColorsEnum; fillColor?: ColorsEnum } {
+  if (stepIndex === currentStepIndex)
+    return { borderColor: ColorsEnum.PRIMARY, fillColor: ColorsEnum.PRIMARY }
+  if (stepIndex < currentStepIndex)
+    return { borderColor: ColorsEnum.GREEN_VALID, fillColor: ColorsEnum.GREEN_VALID }
+  return { borderColor: ColorsEnum.GREY_DARK, fillColor: ColorsEnum.TRANSPARENT }
+}
+
 const CURRENT_STEP_SIZE = 12
 const DEFAULT_SIZE = 8
 
@@ -16,24 +27,14 @@ type DotComponentProps = SwiperProps & {
   onPress?: () => void
 }
 
-export function getColor(stepNumber: number, activeIndex: number) {
-  if (stepNumber === activeIndex) {
-    return ColorsEnum.PRIMARY
-  }
-
-  if (stepNumber < activeIndex) {
-    return ColorsEnum.GREEN_VALID
-  }
-
-  return ColorsEnum.GREY_MEDIUM
-}
-
 export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
+  const { borderColor, fillColor } = getDotColors(props.index, props.activeIndex)
   return (
     <TouchableWithoutFeedback onPress={props.onPress} testID="button">
       <DotContainer>
         <Dot
-          color={getColor(props.index, props.activeIndex)}
+          borderColor={borderColor}
+          fillColor={fillColor}
           size={props.isActive ? CURRENT_STEP_SIZE : DEFAULT_SIZE}
           testID="dot-icon"
         />

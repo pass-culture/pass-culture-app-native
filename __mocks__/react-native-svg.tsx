@@ -6,19 +6,25 @@ const mockReactNativeSvg = jest.genMockFromModule('react-native-svg')
 const Svg = ({
   testID,
   fill,
+  fillColor,
+  borderColor,
   width,
   height,
 }: {
   testID: string
   fill: string
+  fillColor: string
+  borderColor: string
   width: number
   height: number
 }) => {
   const displayNameForTest = `${testID}-SVG-Mock`
   return (
     <View
-      // @ts-expect-error : fill, width, height do not exists on View, but for test purposes setting the props can be useful
+      // @ts-expect-error : fill, fillColor, borderColor, width, height do not exists on View, but for test purposes setting the props can be useful
       fill={fill}
+      fillColor={fillColor}
+      borderColor={borderColor}
       width={width}
       height={height}
       testID={testID}>
