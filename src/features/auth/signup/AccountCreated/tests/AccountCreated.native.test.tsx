@@ -29,7 +29,7 @@ describe('<AccountCreated />', () => {
   it('should redirect to cultural survey page WHEN "On y va !" button is clicked', async () => {
     const renderAPI = render(<AccountCreated />)
 
-    fireEvent.press(await renderAPI.findByText('On y va !'))
+    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
 
     expect(navigateToHome).not.toBeCalledTimes(1)
     expect(navigate).toBeCalledTimes(1)
@@ -43,7 +43,7 @@ describe('<AccountCreated />', () => {
     } as UseQueryResult<UserProfileResponse>)
     const renderAPI = render(<AccountCreated />)
 
-    fireEvent.press(await renderAPI.findByText('On y va !'))
+    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
 
     expect(navigateToHome).toBeCalledTimes(1)
     expect(navigate).not.toBeCalledWith('CulturalSurvey')
@@ -56,7 +56,7 @@ describe('<AccountCreated />', () => {
     } as UseQueryResult<UserProfileResponse>)
     const renderAPI = render(<AccountCreated />)
 
-    fireEvent.press(await renderAPI.findByText('On y va !'))
+    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
 
     expect(navigateToHome).toBeCalledTimes(1)
     expect(navigate).not.toBeCalledWith('CulturalSurvey')

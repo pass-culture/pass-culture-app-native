@@ -136,7 +136,7 @@ describe('<ChangeEmail/>', () => {
       expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
       expect(mockShowSuccessSnackBar).toBeCalledWith({
         message:
-          'E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
+          'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
         timeout: 5000,
       })
       expect(analytics.logSaveNewMail).toBeCalled()

@@ -117,7 +117,7 @@ describe('BookingDetails', () => {
       const { getByText } = renderBookingDetails(booking)
 
       getByText(
-        'Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+        'Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
     })
     it('should display rules for a digital offer with activation code', () => {
@@ -131,7 +131,7 @@ describe('BookingDetails', () => {
       const { getByText } = renderBookingDetails(booking)
 
       getByText(
-        'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+        'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
     })
 
@@ -147,7 +147,7 @@ describe('BookingDetails', () => {
       const { getByText } = renderBookingDetails(booking)
 
       getByText(
-        'Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+        'Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
     })
   })
@@ -207,7 +207,7 @@ describe('BookingDetails', () => {
   describe('booking not found', () => {
     it('should render ScreenError BookingNotFound when booking is not found', () => {
       const renderAPI = renderBookingDetails(undefined)
-      expect(renderAPI.queryByText('Réservation introuvable !')).toBeTruthy()
+      expect(renderAPI.queryByText('Réservation introuvable\u00a0!')).toBeTruthy()
       expect(
         renderAPI.queryByText(
           `Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer.`

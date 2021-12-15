@@ -28,7 +28,7 @@ describe('<BeneficiaryRequestSent />', () => {
   it('should redirect to cultural survey page WHEN "On y va !" button is clicked', () => {
     const { getByText } = render(<BeneficiaryRequestSent />)
 
-    fireEvent.press(getByText('On y va !'))
+    fireEvent.press(getByText('On y va\u00a0!'))
 
     expect(navigateToHome).not.toBeCalled()
     expect(navigate).toBeCalledTimes(1)
@@ -41,7 +41,7 @@ describe('<BeneficiaryRequestSent />', () => {
     } as UseQueryResult<UserProfileResponse>)
     const { getByText } = render(<BeneficiaryRequestSent />)
 
-    fireEvent.press(getByText('On y va !'))
+    fireEvent.press(getByText('On y va\u00a0!'))
 
     expect(navigateToHome).toBeCalledTimes(1)
     expect(navigate).not.toBeCalledWith('CulturalSurvey')
@@ -53,7 +53,7 @@ describe('<BeneficiaryRequestSent />', () => {
     } as UseQueryResult<UserProfileResponse>)
     const { getByText } = render(<BeneficiaryRequestSent />)
 
-    fireEvent.press(getByText('On y va !'))
+    fireEvent.press(getByText('On y va\u00a0!'))
 
     expect(navigateToHome).toBeCalledTimes(1)
     expect(navigate).not.toBeCalledWith('CulturalSurvey')
@@ -71,7 +71,7 @@ describe('<BeneficiaryRequestSent />', () => {
 
     const { getByText } = render(<BeneficiaryRequestSent />)
     getByText(
-      "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, tu peux découvrir l'application !"
+      "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, tu peux découvrir l'application\u00a0!"
     )
   })
 
@@ -85,7 +85,7 @@ describe('<BeneficiaryRequestSent />', () => {
     } as UseQueryResult<UserProfileResponse>)
     const { getByText } = render(<BeneficiaryRequestSent />)
     getByText(
-      'Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !'
+      'Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles\u00a0!'
     )
   })
 })

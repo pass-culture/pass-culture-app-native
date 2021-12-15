@@ -50,7 +50,7 @@ describe('Usage of AsyncErrorBoundary as fallback in ErrorBoundary', () => {
     // TODO (PC-6360) : console error displayed in DEV mode even if caught by ErrorBoundary
     const { getByText } = renderErrorBoundary()
 
-    expect(getByText('Oups !')).toBeTruthy()
+    expect(getByText('Oups\u00a0!')).toBeTruthy()
   })
 })
 
