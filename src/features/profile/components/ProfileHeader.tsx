@@ -92,12 +92,15 @@ const EligibleForBeneficiaryHeader = () => {
     return <Loader />
   }
 
-  if (nextSubscriptionStep !== null) {
+  if (nextSubscriptionStep.nextStep !== null) {
     return <div onClick={navigateToNextStep}>Profite de 300€</div>
   }
 
   if (user.subscriptionMessage !== null) {
     return <IdCheckProcessingBadge subscriptionMessage={user.subscriptionMessage} />
+  }
+  if (nextSubscriptionStep.isIdCheckPending) {
+    return <div>Dossier en attente</div>
   }
 
   return <div>Dossier en attente</div>
