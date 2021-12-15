@@ -9,5 +9,6 @@ export enum RemoteStoreCollections {
 export enum RemoteStoreDocuments {
   LOAD_PERCENT = 'load_percent',
   MAINTENANCE_IS_ON = 'maintenanceIsOn',
+  MAINTENANCE_MESSAGE = 'message',
   MINIMAL_BUILD_NUMBER = 'minimalBuildNumber',
 }

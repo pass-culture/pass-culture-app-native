@@ -260,7 +260,13 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={`Maintenance Page`}
-            onPress={() => setScreenError(new ScreenError('Test maintenance page', Maintenance))}
+            onPress={() =>
+              setScreenError(
+                new ScreenError('Test maintenance page', () => (
+                  <Maintenance message="Some maintenance message that is set in Firestore" />
+                ))
+              )
+            }
           />
         </Row>
         <Row half>
