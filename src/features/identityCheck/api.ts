@@ -83,3 +83,15 @@ export function usePatchProfile() {
     }
   )
 }
+
+interface HonorStatementMutationOptions {
+  onSuccess: () => void
+  onError: (error: unknown) => void
+}
+
+export function usePostHonorStatement({ onSuccess, onError }: HonorStatementMutationOptions) {
+  return useMutation(() => api.postnativev1subscriptionhonorStatement(), {
+    onSuccess,
+    onError,
+  })
+}
