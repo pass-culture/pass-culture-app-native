@@ -27,8 +27,8 @@ export function LayoutExpiredLink({
   customBodyText,
 }: Props) {
   return (
-    <GenericInfoPage title={t`Oups !`} icon={SadFace}>
-      <StyledBody>{t`Le lien est expiré !`}</StyledBody>
+    <GenericInfoPage title={t`Oups\u00a0!`} icon={SadFace}>
+      <StyledBody>{t`Le lien est expiré\u00a0!`}</StyledBody>
       <StyledBody>
         {customBodyText || t`Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.`}
       </StyledBody>

@@ -37,7 +37,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
     rightIcon={undefined}
     onRightIconPress={undefined}>
     <Typo.Body color={ColorsEnum.GREY_DARK}>
-      {t`Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !`}
+      {t`Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long\u00a0!`}
     </Typo.Body>
     <Spacer.Column numberOfSpaces={8} />
     <CustomButtonTertiaryBlack

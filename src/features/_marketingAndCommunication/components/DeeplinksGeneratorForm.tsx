@@ -219,7 +219,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       <BottomContainer>
         <Banner color={ColorsEnum.ERROR}>
           <Warning color={ColorsEnum.ERROR} size={getSpacing(3.5)} />
-          {t`Seulement les "ids" disposent de validation !`}
+          {t`Seulement les "ids" disposent de validation\u00a0!`}
         </Banner>
         <ButtonPrimary title={t`Générer le lien`} disabled={disabled} onPress={onPress} />
       </BottomContainer>

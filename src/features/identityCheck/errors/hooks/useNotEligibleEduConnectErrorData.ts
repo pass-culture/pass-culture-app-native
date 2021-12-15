@@ -45,7 +45,7 @@ const OutOfTestPhase: NotEligibleEduConnectErrorData = {
 
 const UserAgeNotValid: NotEligibleEduConnectErrorData = {
   Icon: InfoFraud,
-  title: t`Oh non !`,
+  title: t`Oh non\u00a0!`,
   description:
     t`La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n'as pas l'âge requis pour obtenir l'aide du Gouvernement.` +
     '\n\n' +
@@ -58,7 +58,7 @@ const getInvalidInformation = (
   onPrimaryButtonPress: () => Promise<void>
 ): NotEligibleEduConnectErrorData => ({
   Icon: InfoFraud,
-  title: t`Oh non !`,
+  title: t`Oh non\u00a0!`,
   description:
     t`Il semblerait que les informations que tu nous as communiquées ne soient pas correctes.` +
     '\n\n' +
@@ -86,7 +86,7 @@ const getUserTypeNotStudent = (
 
 const GenericError: NotEligibleEduConnectErrorData = {
   Icon: MaintenanceCone,
-  title: t`Oups !`,
+  title: t`Oups\u00a0!`,
   description: t`Une erreur s'est produite pendant le chargement`,
   titleAlignment: 'center',
   descriptionAlignment: 'center',

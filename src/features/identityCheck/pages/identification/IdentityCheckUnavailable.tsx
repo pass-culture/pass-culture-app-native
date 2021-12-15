@@ -18,7 +18,7 @@ export function IdentityCheckUnavailable() {
   const { params } = useRoute<UseRouteType<'IdentityCheckUnavailable'>>()
   return (
     <GenericInfoPage
-      title={t`Victime de notre succès !`}
+      title={t`Victime de notre succès\u00a0!`}
       icon={({ color }) => <HappyFace size={getSpacing(30)} color={color} />}>
       <StyledBody>{t`Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés.`}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />

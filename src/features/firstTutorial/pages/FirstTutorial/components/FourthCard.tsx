@@ -33,7 +33,7 @@ export function FourthCard(props: AchievementCardKeyProps) {
       buttonText={t`Découvrir`}
       pauseAnimationOnRenderAtFrame={62}
       subTitle={t`quotidiennes`}
-      text={t`Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !`}
+      text={t`Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant\u00a0!`}
       title={t`Des nouveautés`}
       swiperRef={props.swiperRef}
       name={props.name}

@@ -47,7 +47,7 @@ export function BookingConfirmation() {
 
   return (
     <GenericInfoPage
-      title={t`Réservation confirmée !`}
+      title={t`Réservation confirmée\u00a0!`}
       icon={TicketBooked}
       iconSize={getSpacing(65)}>
       <StyledBody>

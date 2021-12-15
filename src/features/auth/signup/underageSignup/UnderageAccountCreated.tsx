@@ -19,10 +19,10 @@ import { ColorsEnum, Spacer } from 'ui/theme'
 
 export function UnderageAccountCreated() {
   const maxPrice = useMaxPrice()
-  const text = t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !`
+  const text = t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
 
   return (
-    <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle !`}>
+    <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle\u00a0!`}>
       <StyledSubtitle>
         {maxPrice + '\u00a0' + t`€ viennent d'être crédités sur ton compte pass Culture`}
       </StyledSubtitle>

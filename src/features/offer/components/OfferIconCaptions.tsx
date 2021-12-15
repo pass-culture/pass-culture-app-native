@@ -36,7 +36,7 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, categoryId, 
       {!!showDuo && (
         <React.Fragment>
           <Separator />
-          <IconWithCaption testID="iconDuo" Icon={Duo} caption={t`À deux !`} />
+          <IconWithCaption testID="iconDuo" Icon={Duo} caption={t`À deux\u00a0!`} />
         </React.Fragment>
       )}
       <Separator />

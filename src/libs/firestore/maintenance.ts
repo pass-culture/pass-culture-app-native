@@ -45,7 +45,7 @@ export const maintenanceStatusListener = (onMaintenanceChange: OnMaintenanceChan
         const message =
           typeof rawMessage === 'string'
             ? rawMessage
-            : t`L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !`
+            : t`L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement\u00a0!`
 
         const maintenance: Maintenance = maintenanceIsOn
           ? {

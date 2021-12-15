@@ -68,7 +68,7 @@ export const IdentityCheckEduConnectForm = () => {
             <Spacer.Column numberOfSpaces={4} />
 
             <JustifiedText color={ColorsEnum.GREY_DARK}>
-              {t`Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !`}
+              {t`Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture\u00a0!`}
             </JustifiedText>
 
             <Spacer.Column numberOfSpaces={8} />

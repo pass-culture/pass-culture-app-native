@@ -144,7 +144,7 @@ export const routes: Route[] = [
     name: 'AccountCreated',
     component: AccountCreated,
     path: 'creation-compte/confirmation',
-    options: { title: t`Compte créé !` },
+    options: { title: t`Compte créé\u00a0!` },
   },
   {
     name: 'AfterChangeEmailValidationBuffer',
@@ -399,7 +399,7 @@ export const routes: Route[] = [
     name: 'UnderageAccountCreated',
     component: UnderageAccountCreated,
     path: 'creation-compte/confirmation-15-17',
-    options: { title: t`Compte 15-17 créé !` },
+    options: { title: t`Compte 15-17 créé\u00a0!` },
   },
   {
     name: 'Venue',

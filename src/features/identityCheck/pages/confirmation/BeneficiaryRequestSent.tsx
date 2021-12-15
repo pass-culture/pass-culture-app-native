@@ -34,19 +34,19 @@ export function BeneficiaryRequestSent() {
 
   let inTheMeantime = ''
   if (shouldNavigateToCulturalSurvey) {
-    inTheMeantime = t`En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !`
+    inTheMeantime = t`En attendant, aide-nous à en savoir plus sur tes pratiques culturelles\u00a0!`
   } else if (settings?.enableIdCheckRetention) {
-    inTheMeantime = t`En attendant, tu peux découvrir l'application !`
+    inTheMeantime = t`En attendant, tu peux découvrir l'application\u00a0!`
   }
 
   const message = inTheMeantime.length ? `${body} ${inTheMeantime}` : body
 
   return (
-    <GenericInfoPage title={t`Demande envoyée !`} icon={RequestSent} iconSize={getSpacing(42)}>
+    <GenericInfoPage title={t`Demande envoyée\u00a0!`} icon={RequestSent} iconSize={getSpacing(42)}>
       <StyledBody>{t`Nous étudions ton dossier...`}</StyledBody>
       <StyledBody>{message}</StyledBody>
       <Spacer.Column numberOfSpaces={15} />
-      <ButtonPrimaryWhite title={t`On y va !`} onPress={onPress} />
+      <ButtonPrimaryWhite title={t`On y va\u00a0!`} onPress={onPress} />
     </GenericInfoPage>
   )
 }

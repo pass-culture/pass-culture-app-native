@@ -131,7 +131,7 @@ export const ForgottenPassword: FunctionComponent = () => {
       <ModalContent>
         <CenteredText>
           <Typo.Body>
-            {t`Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !`}
+            {t`Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe\u00a0!`}
           </Typo.Body>
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />

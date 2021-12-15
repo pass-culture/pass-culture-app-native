@@ -183,8 +183,8 @@ msgid "Aide financière 18 ans"
 msgstr "Aide financière 18 ans"
 
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
-msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
-msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
+msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
+msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 
 #: src/features/profile/pages/Profile.tsx
 msgid "Aides"
@@ -225,12 +225,12 @@ msgid "Attention tu n'as que 3 tentatives."
 msgstr "Attention tu n'as que 3 tentatives."
 
 #: src/features/bookOffer/components/BookingDetails.tsx
-msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
-msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
+msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
+msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
 
 #: src/features/bookOffer/components/BookingDetails.tsx
-msgid "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
-msgstr "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
+msgid "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
+msgstr "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
 
 #: src/features/search/pages/SuggestedPlaces.tsx
 msgid "Aucun lieu ne correspond à ta recherche"
@@ -321,22 +321,22 @@ msgid "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est p
 msgstr "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est pas impossible que certaines offres ne respectent pas les CGU."
 
 #: src/features/home/components/HomeHeader.tsx
-msgid "Bienvenue !"
-msgstr "Bienvenue !"
+msgid "Bienvenue !"
+msgstr "Bienvenue !"
 
 #: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
-msgid "Bonne nouvelle !"
-msgstr "Bonne nouvelle !"
+msgid "Bonne nouvelle !"
+msgstr "Bonne nouvelle !"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "C'est pour bientôt"
 msgstr "C'est pour bientôt"
 
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
-msgid "C'est pour bientôt !"
-msgstr "C'est pour bientôt !"
+msgid "C'est pour bientôt !"
+msgstr "C'est pour bientôt !"
 
 #: src/features/auth/signup/SignupForm.tsx
 msgid "CGU & Données"
@@ -357,16 +357,16 @@ msgid "Catégories"
 msgstr "Catégories"
 
 #: src/features/bookings/pages/BookingDetails.tsx
-msgid "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
-msgstr "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
+msgid "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
+msgstr "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001)."
 msgstr "Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001)."
 
 #: src/features/bookings/pages/BookingDetails.tsx
-msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
-msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
+msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
+msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
 #: src/features/auth/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer.tsx
 msgid "Ce lien de validation n'est plus valide"
@@ -485,12 +485,12 @@ msgid "Composants"
 msgstr "Composants"
 
 #: src/features/navigation/RootNavigator/routes.ts
-msgid "Compte 15-17 créé !"
-msgstr "Compte 15-17 créé !"
+msgid "Compte 15-17 créé !"
+msgstr "Compte 15-17 créé !"
 
 #: src/features/navigation/RootNavigator/routes.ts
-msgid "Compte créé !"
-msgstr "Compte créé !"
+msgid "Compte créé !"
+msgstr "Compte créé !"
 
 #: src/features/profile/pages/DeleteProfileSuccess.tsx
 msgid "Compte désactivé"
@@ -547,10 +547,6 @@ msgstr "Confirmer le mot de passe"
 msgid "Connecte-toi"
 msgstr "Connecte-toi"
 
-#: src/features/auth/login/Login.tsx
-msgid "Connecte-toi !"
-msgstr "Connecte-toi !"
-
 #: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification."
 msgstr "Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification."
@@ -560,8 +556,12 @@ msgid "Connecte-toi pour profiter de cette fonctionnalité"
 msgstr "Connecte-toi pour profiter de cette fonctionnalité"
 
 #: src/features/favorites/components/NotConnectedFavorites.tsx
-msgid "Connecte-toi pour profiter de cette fonctionnalité !"
-msgstr "Connecte-toi pour profiter de cette fonctionnalité !"
+msgid "Connecte-toi pour profiter de cette fonctionnalité !"
+msgstr "Connecte-toi pour profiter de cette fonctionnalité !"
+
+#: src/features/auth/login/Login.tsx
+msgid "Connecte-toi !"
+msgstr "Connecte-toi !"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Connexion"
@@ -669,8 +669,8 @@ msgid "C’est quoi ÉduConnect ?"
 msgstr "C’est quoi ÉduConnect ?"
 
 #: src/features/identityCheck/pages/Stepper.tsx
-msgid "C’est très rapide !"
-msgstr "C’est très rapide !"
+msgid "C’est très rapide !"
+msgstr "C’est très rapide !"
 
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
 msgid "Dans quel type d'établissement ?"
@@ -706,8 +706,8 @@ msgid "Demande en attente"
 msgstr "Demande en attente"
 
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
-msgid "Demande envoyée !"
-msgstr "Demande envoyée !"
+msgid "Demande envoyée !"
+msgstr "Demande envoyée !"
 
 #: src/features/bookings/helpers.ts
 msgid "Dernier jour pour retirer"
@@ -738,8 +738,8 @@ msgid "Données personnelles"
 msgstr "Données personnelles"
 
 #: src/features/profile/components/IdCheckProcessingBadge.tsx
-msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
-msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
+msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
+msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/bookOffer/components/BookDuoChoice.tsx
@@ -794,12 +794,12 @@ msgid "E-mail"
 msgstr "E-mail"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
-msgid "E-mail envoyé !"
-msgstr "E-mail envoyé !"
+msgid "E-mail envoyé !"
+msgstr "E-mail envoyé !"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
-msgid "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
-msgstr "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
+msgid "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
+msgstr "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
 
 #: src/features/auth/login/Login.tsx
 msgid "E-mail ou mot de passe incorrect."
@@ -830,12 +830,12 @@ msgid "Email modification mot de passe expiré"
 msgstr "Email modification mot de passe expiré"
 
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
-msgid "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
-msgstr "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
+msgid "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
+msgstr "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
-msgid "En attendant, tu peux découvrir l'application !"
-msgstr "En attendant, tu peux découvrir l'application !"
+msgid "En attendant, tu peux découvrir l'application !"
+msgstr "En attendant, tu peux découvrir l'application !"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
@@ -1092,8 +1092,8 @@ msgid "Format du lien incorrect"
 msgstr "Format du lien incorrect"
 
 #: src/features/identityCheck/atoms/IdentityVerificationText.web.tsx
-msgid "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
-msgstr "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
+msgid "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
+msgstr "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
 
 #: src/libs/parsers/venueType.ts
 msgid "Galeries d’art"
@@ -1310,8 +1310,8 @@ msgid "Je suis de nationalité étrangère"
 msgstr "Je suis de nationalité étrangère"
 
 #: src/features/offer/services/useShareOffer.ts
-msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
-msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
+msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
+msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
 
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture."
@@ -1351,8 +1351,8 @@ msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
-msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
-msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
+msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
+msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
 #: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
 msgid "L'e-mail saisi est identique à votre e-mail actuel"
@@ -1415,8 +1415,8 @@ msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais a
 msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 
 #: src/ui/components/LayoutExpiredLink.tsx
-msgid "Le lien est expiré !"
-msgstr "Le lien est expiré !"
+msgid "Le lien est expiré !"
+msgstr "Le lien est expiré !"
 
 #: src/features/deeplinks/useDeeplinkUrlHandler.ts
 msgid "Le lien est incorrect"
@@ -1502,12 +1502,12 @@ msgid "Lieu"
 msgstr "Lieu"
 
 #: src/features/venue/pages/VenueNotFound.tsx
-msgid "Lieu introuvable !"
-msgstr "Lieu introuvable !"
-
-#: src/features/venue/pages/VenueNotFound.tsx
 msgid "Lieu introuvable | Pass Culture"
 msgstr "Lieu introuvable | Pass Culture"
+
+#: src/features/venue/pages/VenueNotFound.tsx
+msgid "Lieu introuvable !"
+msgstr "Lieu introuvable !"
 
 #: src/features/search/pages/LocationFilter.tsx
 #: src/features/search/sections/titles.ts
@@ -1516,8 +1516,8 @@ msgstr "Localisation"
 
 #: src/features/maintenance/Maintenance.tsx
 #: src/libs/firestore/maintenance.ts
-msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
-msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
+msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
+msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
 #: src/ui/components/inputs/DateInput.tsx
 #: src/ui/components/inputs/DateInput.web.test.tsx
@@ -1574,8 +1574,8 @@ msgid "Mes réservations terminées"
 msgstr "Mes réservations terminées"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx
-msgid "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
-msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
+msgid "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
+msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx
 #: src/features/offer/components/OfferHeader.tsx
@@ -1707,8 +1707,8 @@ msgid "Nos conseils :"
 msgstr "Nos conseils :"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
-msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
-msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
+msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
+msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Notices légales"
@@ -1783,12 +1783,12 @@ msgid "Offre expirée"
 msgstr "Offre expirée"
 
 #: src/features/offer/pages/OfferNotFound.tsx
-msgid "Offre introuvable !"
-msgstr "Offre introuvable !"
-
-#: src/features/offer/pages/OfferNotFound.tsx
 msgid "Offre introuvable | Pass Culture"
 msgstr "Offre introuvable | Pass Culture"
+
+#: src/features/offer/pages/OfferNotFound.tsx
+msgid "Offre introuvable !"
+msgstr "Offre introuvable !"
 
 #: src/features/search/sections/OfferType.tsx
 #: src/libs/parsers/venueType.ts
@@ -1816,13 +1816,17 @@ msgstr "Offres"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "Oh non !"
-msgstr "Oh non !"
+msgid "Oh non !"
+msgstr "Oh non !"
 
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
-msgid "On y va !"
-msgstr "On y va !"
+msgid "On y va !"
+msgstr "On y va !"
+
+#: src/features/bookOffer/components/BookingDetails.tsx
+msgid "Oups, cette offre n’est plus disponible !"
+msgstr "Oups, cette offre n’est plus disponible !"
 
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
@@ -1831,12 +1835,8 @@ msgstr "On y va !"
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 #: src/features/search/atoms/NoSearchResult.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
-msgid "Oups !"
-msgstr "Oups !"
-
-#: src/features/bookOffer/components/BookingDetails.tsx
-msgid "Oups, cette offre n’est plus disponible !"
-msgstr "Oups, cette offre n’est plus disponible !"
+msgid "Oups !"
+msgstr "Oups !"
 
 #: src/libs/country-picker/CountryPicker.tsx
 msgid "Ouvrir la modale de choix de l'indicatif téléphonique"
@@ -1859,8 +1859,8 @@ msgid "Page introuvable"
 msgstr "Page introuvable"
 
 #: src/features/navigation/PageNotFound.tsx
-msgid "Page introuvable !"
-msgstr "Page introuvable !"
+msgid "Page introuvable !"
+msgstr "Page introuvable !"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Pages"
@@ -1949,8 +1949,8 @@ msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
-msgid "Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !"
-msgstr "Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !"
+msgid "Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !"
+msgstr "Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
@@ -2173,8 +2173,8 @@ msgid "Retrouve toutes les offres autour de chez toi en activant les données de
 msgstr "Retrouve toutes les offres autour de chez toi en activant les données de localisation."
 
 #: src/features/favorites/components/NoFavoritesResult.tsx
-msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
-msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
+msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
+msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
@@ -2247,16 +2247,16 @@ msgid "Réservation annulée"
 msgstr "Réservation annulée"
 
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
-msgid "Réservation confirmée !"
-msgstr "Réservation confirmée !"
-
-#: src/features/bookings/pages/BookingNotFound.tsx
-msgid "Réservation introuvable !"
-msgstr "Réservation introuvable !"
+msgid "Réservation confirmée !"
+msgstr "Réservation confirmée !"
 
 #: src/features/bookings/pages/BookingNotFound.tsx
 msgid "Réservation introuvable | Pass Culture"
 msgstr "Réservation introuvable | Pass Culture"
+
+#: src/features/bookings/pages/BookingNotFound.tsx
+msgid "Réservation introuvable !"
+msgstr "Réservation introuvable !"
 
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
@@ -2293,8 +2293,8 @@ msgid "Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un
 msgstr "Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour."
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
-msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
+msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
+msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
 #: src/libs/parsers/venueType.ts
 msgid "Salle de concerts"
@@ -2312,8 +2312,8 @@ msgid "Se connecter"
 msgstr "Se connecter"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
-msgid "Seulement les \"ids\" disposent de validation !"
-msgstr "Seulement les \"ids\" disposent de validation !"
+msgid "Seulement les \"ids\" disposent de validation !"
+msgstr "Seulement les \"ids\" disposent de validation !"
 
 #: src/features/search/sections/Location.tsx
 msgid "Seules les sorties et offres physiques seront affichées"
@@ -2419,8 +2419,8 @@ msgid "Ta date de naissance"
 msgstr "Ta date de naissance"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEnd.tsx
-msgid "Ta pièce d’identité a bien été transmise !"
-msgstr "Ta pièce d’identité a bien été transmise !"
+msgid "Ta pièce d’identité a bien été transmise !"
+msgstr "Ta pièce d’identité a bien été transmise !"
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "Terminer"
@@ -2451,21 +2451,21 @@ msgid "Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par 
 msgstr "Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception."
 
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
-msgid "Ton compte a été activé !"
-msgstr "Ton compte a été activé !"
+msgid "Ton compte a été activé !"
+msgstr "Ton compte a été activé !"
 
 #: src/features/favorites/components/NotConnectedFavorites.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
-msgid "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
-msgstr "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
+msgid "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
+msgstr "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 
 #: src/features/home/components/HomeHeader.tsx
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
-msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
-msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
+msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
+msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 
 #: src/features/offer/components/ReportOfferDescription.tsx
 msgid "Ton identité restera anonyme auprès des acteurs culturels."
@@ -2484,8 +2484,8 @@ msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
-msgid "Ton mot de passe a été modifié !"
-msgstr "Ton mot de passe a été modifié !"
+msgid "Ton mot de passe a été modifié !"
+msgstr "Ton mot de passe a été modifié !"
 
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Ton mot de passe actuel"
@@ -2566,8 +2566,8 @@ msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de no
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
-msgid "Trop de tentatives !"
-msgstr "Trop de tentatives !"
+msgid "Trop de tentatives !"
+msgstr "Trop de tentatives !"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
 msgid "Tu as 18 ans..."
@@ -2590,24 +2590,24 @@ msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédi
 msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
-msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
-msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
+msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
+msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 
 #: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
-msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
-msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
+msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
+msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Tu dois avoir"
 msgstr "Tu dois avoir"
 
 #: src/features/bookings/pages/BookingDetails.tsx
-msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
-msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
+msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
+msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
@@ -2664,12 +2664,12 @@ msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 
 #: src/features/identityCheck/components/DMSModal.tsx
-msgid "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
-msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
+msgid "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
+msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
-msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
-msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
+msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
+msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Tu peux encore dépenser :"
@@ -2879,8 +2879,8 @@ msgid "Veux-tu abandonner la vérification d'identité ?"
 msgstr "Veux-tu abandonner la vérification d'identité ?"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
-msgid "Victime de notre succès !"
-msgstr "Victime de notre succès !"
+msgid "Victime de notre succès !"
+msgstr "Victime de notre succès !"
 
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "Voici les 3 étapes que tu vas devoir suivre."
@@ -2933,8 +2933,8 @@ msgid "Vous êtes actuellement très nombreux à vouloir créer un compte, notre
 msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
-msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
-msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
+msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
+msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Vérification d'identité"
@@ -3295,8 +3295,8 @@ msgid "À activer"
 msgstr "À activer"
 
 #: src/features/offer/components/OfferIconCaptions.tsx
-msgid "À deux !"
-msgstr "À deux !"
+msgid "À deux !"
+msgstr "À deux !"
 
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
 msgid "Établissements partenaires"
@@ -3307,8 +3307,8 @@ msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
-msgid "à portée de main !"
-msgstr "à portée de main !"
+msgid "à portée de main !"
+msgstr "à portée de main !"
 
 #: src/features/bookOffer/atoms/HourChoice.tsx
 msgid "épuisé"

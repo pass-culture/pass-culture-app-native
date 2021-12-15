@@ -30,7 +30,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
         message:
           'Tu pourras bénéficier des {deposit} offerts par le Ministère de la Culture dès que tu auras vérifié ton identité',
       })}
-      title={t`Bonne nouvelle !`}
+      title={t`Bonne nouvelle\u00a0!`}
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}

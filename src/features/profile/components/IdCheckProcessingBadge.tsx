@@ -47,7 +47,7 @@ export function IdCheckProcessingBadge(props: IdCheckProcessingBadgeProps) {
         callToActionLink={props.subscriptionMessage?.callToAction?.callToActionLink}
         message={
           props.subscriptionMessage?.userMessage ||
-          t`Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !`
+          t`Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser\u00a0!`
         }
       />
     </React.Fragment>

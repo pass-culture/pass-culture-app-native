@@ -9,7 +9,7 @@ export const IdentityVerificationText = () => (
     <Title>{t`Vérifie ton identité sur ton smartphone`}</Title>
     <Spacer.Column numberOfSpaces={6} />
     <Body>
-      {t`Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long.`}
+      {t`Gagne du temps en vérifiant ton identité directement sur ton smartphone\u00a0! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long.`}
     </Body>
     <Spacer.Column numberOfSpaces={2} />
     <Body>
