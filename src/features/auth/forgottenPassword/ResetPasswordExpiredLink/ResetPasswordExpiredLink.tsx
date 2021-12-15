@@ -40,7 +40,7 @@ export function ResetPasswordExpiredLink(props: Props) {
   const renderResendEmailButton = () => (
     <ButtonPrimaryWhite
       title={t`Renvoyer l'email`}
-      onPress={() => resetPasswordEmailQuery()}
+      onPress={resetPasswordEmailQuery}
       disabled={isFetching}
     />
   )
