@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { navigateToHome, openUrl } from 'features/navigation/helpers'
 import { accessibilityAndTestId } from 'tests/utils'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -15,17 +14,15 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  onResendEmail?: () => void
-  disabledResendEmailButton: boolean
+  renderResendEmailButton?: () => React.ReactNode
   urlFAQ?: string
   contactSupport?: () => void
   customBodyText?: string
 }
 
 export function LayoutExpiredLink({
-  disabledResendEmailButton,
+  renderResendEmailButton,
   urlFAQ,
-  onResendEmail,
   contactSupport,
   customBodyText,
 }: Props) {
@@ -61,14 +58,13 @@ export function LayoutExpiredLink({
       )}
 
       <Spacer.Column numberOfSpaces={8} />
-      {onResendEmail ? (
-        <ButtonPrimaryWhite
-          title={t`Renvoyer l'email`}
-          onPress={onResendEmail}
-          disabled={disabledResendEmailButton}
-        />
+      {renderResendEmailButton ? (
+        <React.Fragment>
+          {renderResendEmailButton()}
+          <Spacer.Column numberOfSpaces={2} />
+        </React.Fragment>
       ) : null}
-      <Spacer.Column numberOfSpaces={2} />
+
       <ButtonTertiaryWhite
         title={t`Retourner à l'accueil`}
         onPress={navigateToHome}

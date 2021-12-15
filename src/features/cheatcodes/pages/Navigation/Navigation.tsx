@@ -344,11 +344,7 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={'Change e-mail lien expiré'}
-            onPress={() =>
-              navigate('ChangeEmailExpiredLink', {
-                email: 'john@wick.com',
-              })
-            }
+            onPress={() => navigate('ChangeEmailExpiredLink')}
           />
         </Row>
         <Row half>

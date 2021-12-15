@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
@@ -9,6 +10,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { AsyncError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink'>
@@ -35,10 +37,17 @@ export function SignupConfirmationExpiredLink(props: Props) {
     }
   }
 
+  const renderResendEmailButton = () => (
+    <ButtonPrimaryWhite
+      title={t`Renvoyer l'email`}
+      onPress={signupConfirmationExpiredLinkQuery}
+      disabled={isFetching}
+    />
+  )
+
   return (
     <LayoutExpiredLink
-      onResendEmail={() => signupConfirmationExpiredLinkQuery()}
-      disabledResendEmailButton={isFetching}
+      renderResendEmailButton={renderResendEmailButton}
       urlFAQ={env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED}
       // contactSupport={() => contactSupport.forSignupConfirmationExpiredLink(props.route.params.email)}
     />

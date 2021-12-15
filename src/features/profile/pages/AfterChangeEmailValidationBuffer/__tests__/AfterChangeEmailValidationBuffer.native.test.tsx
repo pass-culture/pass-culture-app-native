@@ -55,7 +55,6 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
       params: {
         token: 'reerereskjlmkdlsf',
         expirationTimestamp: 45465546445,
-        new_email: 'john@wick.com',
       },
     }))
   })
@@ -86,7 +85,7 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
     renderPage()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('ChangeEmailExpiredLink', { email: 'john@wick.com' })
+      expect(navigate).toBeCalledWith('ChangeEmailExpiredLink')
     })
   })
 })

@@ -1,41 +1,40 @@
 import { t } from '@lingui/macro'
-import { StackScreenProps } from '@react-navigation/stack'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { contactSupport } from 'features/auth/support.services'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
-// import { analytics } from 'libs/analytics'
+import { useAuthContext } from 'features/auth/AuthContext'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
-type Props = StackScreenProps<RootStackParamList, 'ChangeEmailExpiredLink'>
+export function ChangeEmailExpiredLink() {
+  const { isLoggedIn } = useAuthContext()
+  const { navigate } = useNavigation<UseNavigationType>()
 
-export function ChangeEmailExpiredLink(props: Props) {
-  // let resendEmailNumberOfHits = 0
-  const { email } = props.route.params
+  let resendEmailNumberOfHits = 0
 
-  // const changeEmailExpiredLink = () => {
-  //   resendEmailNumberOfHits++
-  //   analytics.logSendActivationMailAgain(resendEmailNumberOfHits)
-  // TODO (PC-11697): try / catch api call like api.postnativev1requestPasswordReset({ email })
-  // }
+  const changeEmailExpiredLink = () => {
+    resendEmailNumberOfHits++
+    analytics.logSendActivationMailAgain(resendEmailNumberOfHits)
+    navigate('ChangeEmail')
+  }
 
-  const bodyText = !email
-    ? t`Tu peux te connecter sur ton profil pour recommencer le parcours de changement d’e-mail.` +
-      '\n' +
-      '\n' +
-      t`Si tu as besoin d’aide, n’hésite pas à contacter le support.`
-    : undefined
+  const upperBodyText = t`Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.`
+  const lowerBodyText = isLoggedIn
+    ? t`Tu peux faire une nouvelle demande de modification dans ton profil.`
+    : t`Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification.`
+  const customBodyText = upperBodyText + '\n' + '\n' + lowerBodyText
 
-  // TODO (LucasBeneston): use isFetching from useQuery()
-  const isFetching = false
+  const resendEmailButtonText = isLoggedIn ? t`Faire une nouvelle demande` : t`Se connecter`
+  const renderResendEmailButton = () => (
+    <ButtonPrimaryWhite title={resendEmailButtonText} onPress={changeEmailExpiredLink} />
+  )
 
   return (
     <LayoutExpiredLink
-      // TODO (PC-11697): uncomment when the resend email feature is available
-      // onResendEmail={changeEmailExpiredLink}
-      disabledResendEmailButton={isFetching}
-      customBodyText={bodyText}
-      contactSupport={email ? () => contactSupport.forChangeEmailExpiredLink(email) : undefined}
+      renderResendEmailButton={renderResendEmailButton}
+      customBodyText={customBodyText}
     />
   )
 }
