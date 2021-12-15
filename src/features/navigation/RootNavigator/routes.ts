@@ -40,6 +40,7 @@ import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthd
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
+import { EduConnectErrors } from 'features/identityCheck/pages/errors/EduConnectErrors'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
@@ -65,8 +66,19 @@ import { Venue } from 'features/venue'
 
 import { Route } from './types'
 
+// This mapping replaces the components from id-check by components defined inside this repo
+// in order to progressively deprecate @pass-culture/id-check
+const importedIdCheckRoutes = idCheckRoutes.map((route) => {
+  if (route.name === 'EduConnectErrorsPage') {
+    // This route is hardcoded in the backend
+    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
+    return { ...route, component: EduConnectErrors }
+  }
+  return route
+})
+
 export const routes: Route[] = [
-  ...idCheckRoutes,
+  ...importedIdCheckRoutes,
   ...identityCheckRoutes,
   { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheck' },
   {

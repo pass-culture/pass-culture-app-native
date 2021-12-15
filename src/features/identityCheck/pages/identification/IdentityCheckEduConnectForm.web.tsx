@@ -44,11 +44,7 @@ export const IdentityCheckEduConnectForm = () => {
     setWebView()
   }, [eduConnectClient])
 
-  useFocusEffect(
-    useCallback(() => {
-      openEduConnect()
-    }, [openEduConnect])
-  )
+  useFocusEffect(() => openEduConnect())
 
   if (error) {
     throw error
