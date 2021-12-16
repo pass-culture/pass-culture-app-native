@@ -55,7 +55,7 @@ const getCompleteProfile = (
     profile.name.lastName
   ) {
     return {
-      activity: profile.status,
+      activityId: profile.status,
       address: profile.address,
       city: profile.city.name,
       firstName: profile.name.firstName,

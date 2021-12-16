@@ -14,6 +14,7 @@ export interface IdentityCheckState {
     city: SuggestedCity | null
     name: Name | null
     status: ActivityIdEnum | null
+    hasSchoolTypes: boolean
     schoolType: SchoolTypesIdEnum | null
   }
   identification: {
@@ -33,6 +34,7 @@ export type Action =
   | { type: 'SET_STEP'; payload: IdentityCheckStep }
   | { type: 'SET_NAME'; payload: Name | null }
   | { type: 'SET_STATUS'; payload: ActivityIdEnum | null }
+  | { type: 'SET_HAS_SCHOOL_TYPES'; payload: boolean }
   | { type: 'SET_SCHOOL_TYPE'; payload: SchoolTypesIdEnum | null }
   | { type: 'SET_CITY'; payload: SuggestedCity | null }
   | { type: 'SET_ADDRESS'; payload: string | null }
