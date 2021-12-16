@@ -25,21 +25,22 @@ const useNavigateToNextSubscriptionStep = (setError: (error: Error) => void) => 
 
   return (nextSubscriptionStep: NextSubscriptionStepResponse) => {
     const { nextSubscriptionStep: nextStep, maintenancePageType } = nextSubscriptionStep
-
     if (nextStep === SubscriptionStep.PhoneValidation) {
-      return navigate('SetPhoneNumber')
+      navigate('SetPhoneNumber')
     } else if (nextStep === SubscriptionStep.Maintenance) {
-      const shouldEnableDMS = maintenancePageType === MaintenancePageType.WithDms
-      return navigate('IdentityCheckUnavailable', { withDMS: shouldEnableDMS })
+      navigate('IdentityCheckUnavailable', {
+        withDMS: maintenancePageType === MaintenancePageType.WithDms,
+      })
     } else if (
       nextStep === SubscriptionStep.IdentityCheck ||
       nextStep === SubscriptionStep.ProfileCompletion ||
       nextStep === SubscriptionStep.HonorStatement
     ) {
-      return navigate('IdentityCheckStepper')
+      navigate('IdentityCheckStepper')
     } else if (nextStep === SubscriptionStep.UserProfiling) {
       setError(new UserProfilingError('SubscriptionStep.UserProfiling', UserProfiling))
+    } else {
+      navigateToHome()
     }
-    return navigateToHome()
   }
 }
