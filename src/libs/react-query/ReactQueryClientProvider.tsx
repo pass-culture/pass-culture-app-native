@@ -4,6 +4,7 @@ import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'rea
 import { addPlugin } from 'react-query-native-devtools'
 
 import { queryClient } from 'libs/react-query/queryClient'
+import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'
 
 if (__DEV__ && process.env.JEST !== 'true') {
   addPlugin({ queryClient })
@@ -29,5 +30,6 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
 })
 
 export const ReactQueryClientProvider = ({ children }: { children: JSX.Element }) => {
+  usePrefetchQueries()
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 }
