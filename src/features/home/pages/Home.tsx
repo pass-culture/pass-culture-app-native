@@ -108,7 +108,7 @@ export const Home: FunctionComponent = () => {
 }
 
 const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide }) => ({
-  height: hide ? 0 : undefined,
+  height: hide ? 0 : '100%',
   overflow: 'hidden',
 }))
 
