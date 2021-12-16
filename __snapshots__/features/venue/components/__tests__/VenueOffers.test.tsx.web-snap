@@ -71,9 +71,9 @@ Array [
       }
     />
     <div
-      aria-label="En voir plus"
+      aria-label="Voir plus d’offres de la sélection Offres"
       className="css-view-1dbjc4n"
-      data-testid="En voir plus"
+      data-testid="Voir plus d’offres de la sélection Offres"
       onClick={[Function]}
       onContextMenu={[Function]}
       onKeyDown={[Function]}

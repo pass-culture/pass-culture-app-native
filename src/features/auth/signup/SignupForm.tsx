@@ -71,6 +71,10 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
     postalCode: '',
   })
   const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
+  const accessibilityLabelForNextStep =
+    stepIndex < SIGNUP_STEP_CONFIG_MAX_INDEX
+      ? t`Continuer vers l'étape` + ' ' + SIGNUP_STEP_CONFIG[stepIndex + 1].headerTitle
+      : undefined
   const isFirstStep = stepIndex === 0
 
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
@@ -153,7 +157,11 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
         />
         <Spacer.Column numberOfSpaces={5} />
         <BottomCardContentContainer>
-          <stepConfig.Component goToNextStep={goToNextStep} signUp={signUp} />
+          <stepConfig.Component
+            goToNextStep={goToNextStep}
+            signUp={signUp}
+            accessibilityLabelForNextStep={accessibilityLabelForNextStep}
+          />
         </BottomCardContentContainer>
         <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
       </BottomContentPage>

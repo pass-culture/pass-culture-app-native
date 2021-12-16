@@ -57,7 +57,9 @@ export const PassPlaylist = (props: Props) => {
             <Spacer.Row numberOfSpaces={3} />
             <StyledTouchableOpacity
               onPress={props.onPressSeeMore}
-              {...accessibilityAndTestId(t`En voir plus`)}>
+              {...accessibilityAndTestId(
+                t`Voir plus d’offres de la sélection` + ' ' + props.title
+              )}>
               <EyeSophisticated color={seeMoreColor} size={getSpacing(4)} />
               <Spacer.Row numberOfSpaces={2} />
               <Typo.ButtonText color={seeMoreColor}>{t`En voir plus`}</Typo.ButtonText>

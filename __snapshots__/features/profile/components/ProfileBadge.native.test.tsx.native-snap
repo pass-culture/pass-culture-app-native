@@ -266,7 +266,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
       }
     >
       <View
-        accessibilityLabel="call-to-action-button"
+        accessibilityLabel="Tu peux cliquer ici"
         accessible={true}
         collapsable={false}
         focusable={true}

@@ -64,20 +64,21 @@ type DateInputLabelProps = {
   hasFocus: boolean
   onFocus: () => void
   placeholder: string
-  testID: string
+  accessibilityLabel: string
 }
+
 const DateInputLabel: React.FC<DateInputLabelProps> = ({
   placeholder,
   value,
   isValid,
   hasFocus,
   onFocus,
-  testID,
+  accessibilityLabel,
 }) => {
   const text = value?.trim?.()?.length ? value.trim() : placeholder
   const color = value?.trim?.()?.length ? undefined : ColorsEnum.GREY_DARK
   return (
-    <DateInputLabelContainer testID={testID} onPress={onFocus}>
+    <StyledTouchableOpacity {...accessibilityAndTestId(accessibilityLabel)} onPress={onFocus}>
       <DateInputLabelText testID={'date-input-label-text'} numberOfLines={1} color={color}>
         {text}
       </DateInputLabelText>
@@ -87,11 +88,11 @@ const DateInputLabel: React.FC<DateInputLabelProps> = ({
         isEmpty={!value?.length}
         isValid={isValid}
       />
-    </DateInputLabelContainer>
+    </StyledTouchableOpacity>
   )
 }
 
-const DateInputLabelContainer = styled.TouchableOpacity({
+const StyledTouchableOpacity = styled.TouchableOpacity({
   flex: 1,
   justifyContent: 'center',
   width: '30%',
@@ -220,8 +221,8 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
           selectionColor={'transparent'}
           {...accessibilityAndTestId(t`Entrée pour la date de naissance`)}
         />
-
         <DateInputLabel
+          accessibilityLabel={t`Entrée pour le jour de la date de naissance`}
           placeholder={t`JJ`}
           value={dateParts.day.value}
           isValid={!dateValidation.isComplete ? dateParts.day.isValid : dateValidation.isValid}
@@ -231,10 +232,10 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
             inputRef.current?.focus?.()
             setValue('')
           }}
-          {...accessibilityAndTestId(t`Entrée pour le jour de la date de naissance`)}
         />
         <Spacer.Flex flex={0.25} />
         <DateInputLabel
+          accessibilityLabel={t`Entrée pour le mois de la date de naissance`}
           placeholder={t`MM`}
           value={dateParts.month.value}
           isValid={!dateValidation.isComplete ? dateParts.month.isValid : dateValidation.isValid}
@@ -244,10 +245,10 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
             inputRef.current?.focus?.()
             setValue(value.substr(0, 2))
           }}
-          {...accessibilityAndTestId(t`Entrée pour le mois de la date de naissance`)}
         />
         <Spacer.Flex flex={0.25} />
         <DateInputLabel
+          accessibilityLabel={t`Entrée pour l'année jour de la date de naissance`}
           placeholder={t`AAAA`}
           value={dateParts.year.value}
           isValid={!dateValidation.isComplete ? dateParts.year.isValid : dateValidation.isValid}
@@ -257,7 +258,6 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
             inputRef.current?.focus?.()
             setValue(value.substr(0, 4))
           }}
-          {...accessibilityAndTestId(t`Entrée pour l'année jour de la date de naissance`)}
         />
       </ValidationBarContainer>
     </Container>
@@ -277,17 +277,9 @@ const Container = styled.View({
 type ValidationBarPropsWithoutFocus = Omit<ValidationBarProps, 'onFocus' | 'width'>
 const ValidationBar = styled.View.attrs<ValidationBarPropsWithoutFocus>(
   ({ isEmpty, isFocused, isValid }) => {
-    if (isValid) {
-      return { backgroundColor: ColorsEnum.GREEN_VALID }
-    }
-
-    if (isFocused) {
-      return { backgroundColor: ColorsEnum.PRIMARY }
-    }
-    if (isEmpty) {
-      return { backgroundColor: ColorsEnum.GREY_MEDIUM }
-    }
-
+    if (isValid) return { backgroundColor: ColorsEnum.GREEN_VALID }
+    if (isFocused) return { backgroundColor: ColorsEnum.PRIMARY }
+    if (isEmpty) return { backgroundColor: ColorsEnum.GREY_MEDIUM }
     return { backgroundColor: ColorsEnum.ERROR }
   }
 )<ValidationBarPropsWithoutFocus>(({ backgroundColor }) => ({

@@ -74,6 +74,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         title={t`Continuer`}
+        accessibilityLabel={props.accessibilityLabelForNextStep}
         onPress={validateEmail}
         isLoading={false}
         disabled={shouldDisableValidateButton}

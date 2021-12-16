@@ -140,6 +140,7 @@ Array [
             value=""
           />
           <View
+            accessibilityLabel="Entrée pour le jour de la date de naissance"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -211,6 +212,7 @@ Array [
             }
           />
           <View
+            accessibilityLabel="Entrée pour le mois de la date de naissance"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -282,6 +284,7 @@ Array [
             }
           />
           <View
+            accessibilityLabel="Entrée pour l'année jour de la date de naissance"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -832,6 +835,7 @@ exports[`SetBirthday Page should render properly 1`] = `
           value=""
         />
         <View
+          accessibilityLabel="Entrée pour le jour de la date de naissance"
           accessible={true}
           focusable={true}
           onClick={[Function]}
@@ -903,6 +907,7 @@ exports[`SetBirthday Page should render properly 1`] = `
           }
         />
         <View
+          accessibilityLabel="Entrée pour le mois de la date de naissance"
           accessible={true}
           focusable={true}
           onClick={[Function]}
@@ -974,6 +979,7 @@ exports[`SetBirthday Page should render properly 1`] = `
           }
         />
         <View
+          accessibilityLabel="Entrée pour l'année jour de la date de naissance"
           accessible={true}
           focusable={true}
           onClick={[Function]}

@@ -7,6 +7,7 @@ export type SignupData = {
 }
 
 export interface PreValidationSignupStepProps {
+  accessibilityLabelForNextStep?: string
   goToNextStep: (signupData: Partial<SignupData>) => void
   signUp: (token: string) => Promise<void>
 }

@@ -528,7 +528,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <View
-            accessibilityLabel="description-details-button"
+            accessibilityLabel="Voir plus d'informations"
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -1016,7 +1016,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         }
       >
         <View
-          accessibilityLabel="report-offer-body"
+          accessibilityLabel="Signaler l'offre"
           accessible={true}
           focusable={true}
           onClick={[Function]}
@@ -1492,7 +1492,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   }
                 />
                 <View
-                  accessibilityLabel="go-to-reason-report-button"
+                  accessibilityLabel="Signaler l'offre"
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}

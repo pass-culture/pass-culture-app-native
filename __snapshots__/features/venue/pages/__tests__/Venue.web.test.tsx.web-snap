@@ -400,9 +400,9 @@ Object {
                 style="width: 12px;"
               />
               <div
-                aria-label="En voir plus"
+                aria-label="Voir plus d’offres de la sélection Offres"
                 class="css-view-1dbjc4n"
-                data-testid="En voir plus"
+                data-testid="Voir plus d’offres de la sélection Offres"
                 style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
                 tabindex="0"
               >
@@ -1861,9 +1861,9 @@ Object {
               style="width: 12px;"
             />
             <div
-              aria-label="En voir plus"
+              aria-label="Voir plus d’offres de la sélection Offres"
               class="css-view-1dbjc4n"
-              data-testid="En voir plus"
+              data-testid="Voir plus d’offres de la sélection Offres"
               style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
             >
