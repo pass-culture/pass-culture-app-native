@@ -43,7 +43,7 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
       <Spacer.Column numberOfSpaces={6} />
       <DescriptionContainer>
         <AccordionItem
-          title={<Typo.ButtonText>{t`Mon crédit est expiré, que faire\u00a0?`}</Typo.ButtonText>}
+          title={<Typo.ButtonText>{t`Mon crédit est expiré, que faire ?`}</Typo.ButtonText>}
           titleStyle={accordionStyle.title}
           bodyStyle={accordionStyle.body}>
           <Description>

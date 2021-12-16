@@ -73,7 +73,7 @@ const getUserTypeNotStudent = (
   onPrimaryButtonPress: () => void
 ): NotEligibleEduConnectErrorData => ({
   Icon: InfoFraud,
-  title: t`Qui est-ce\u00a0?`,
+  title: t`Qui est-ce ?`,
   description:
     t`Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé.` +
     '\n\n' +

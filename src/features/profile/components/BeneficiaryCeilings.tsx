@@ -24,8 +24,8 @@ type CeilingsDescriptionProps = {
 const EXPENSE_DOMAIN_ORDER = [ExpenseDomain.Digital, ExpenseDomain.Physical, ExpenseDomain.All]
 
 const ceilingsDescriptionTitle = {
-  physicalAndDigital: t`Pourquoi les biens physiques et numériques sont-ils limités\u00a0?`,
-  digital: t`Pourquoi les biens numériques sont-ils limités\u00a0?`,
+  physicalAndDigital: t`Pourquoi les biens physiques et numériques sont-ils limités ?`,
+  digital: t`Pourquoi les biens numériques sont-ils limités ?`,
 }
 
 const ceilingsDescription = {

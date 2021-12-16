@@ -40,7 +40,7 @@ export const useReportOfferModalContent = (props: Props) => {
           leftIconAccessibilityLabel: t`Revenir à l'étape précédente`,
           leftIcon: ArrowPrevious,
           onLeftIconPress: () => props.setReportStep(ReportSteps.REPORT_OFFER_DESCRIPTION),
-          title: t`Pourquoi signales-tu` + '\n' + t`cette offre\u00a0?`,
+          title: t`Pourquoi signales-tu` + '\n' + t`cette offre ?`,
         }
       case ReportSteps.REPORT_OFFER_OTHER_REASON:
         return {
@@ -50,7 +50,7 @@ export const useReportOfferModalContent = (props: Props) => {
           leftIconAccessibilityLabel: t`Revenir à l'étape précédente`,
           leftIcon: ArrowPrevious,
           onLeftIconPress: () => props.setReportStep(ReportSteps.REPORT_OFFER_REASON),
-          title: t`Pourquoi signales-tu` + '\n' + t`cette offre\u00a0?`,
+          title: t`Pourquoi signales-tu` + '\n' + t`cette offre ?`,
         }
       default:
         return {

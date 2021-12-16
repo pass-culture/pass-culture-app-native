@@ -42,7 +42,7 @@ export const SetSchoolType = () => {
       title={t`Profil`}
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle title={t`Dans quel type d'établissement\u00a0?`} />
+          <CenteredTitle title={t`Dans quel type d'établissement ?`} />
           <Spacer.Column numberOfSpaces={5} />
         </React.Fragment>
       }

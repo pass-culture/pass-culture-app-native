@@ -71,7 +71,7 @@ export const WhereSection: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title4>{t`Où\u00a0?`}</Typo.Title4>
+      <Typo.Title4>{t`Où ?`}</Typo.Title4>
       {showVenueBanner ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />

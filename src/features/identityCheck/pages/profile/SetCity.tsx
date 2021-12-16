@@ -91,7 +91,7 @@ export const SetCity = () => {
       title={t`Profil`}
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle title={t`Dans quelle ville résides-tu\u00a0?`} />
+          <CenteredTitle title={t`Dans quelle ville résides-tu ?`} />
           <Spacer.Column numberOfSpaces={5} />
           <TextInput
             autoFocus
