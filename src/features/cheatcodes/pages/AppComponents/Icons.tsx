@@ -29,6 +29,7 @@ import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
+import { Check } from 'ui/svg/icons/Check'
 import { CheckDeprecated } from 'ui/svg/icons/Check_deprecated'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Close } from 'ui/svg/icons/Close'
@@ -118,6 +119,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Again" component={Again} isNew />
       <Icon name="ArrowPrevious" component={ArrowPrevious} />
       <Icon name="ArrowNext" component={ArrowNext} />
+      <Icon name="Check" component={Check} isNew />
       <Icon name="CheckDeprecated" component={CheckDeprecated} />
       <Icon name="Clock" component={Clock} isNew />
       <Icon name="Close" component={Close} />
