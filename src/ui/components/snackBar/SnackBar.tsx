@@ -108,7 +108,7 @@ const _SnackBar = (props: SnackBarProps) => {
         duration={animationDuration}
         ref={containerRef}>
         <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
-          {!!Icon && <Icon testID="snackbar-icon" size={32} color={props.color} />}
+          {!!Icon && <Icon testID="snackbar-icon" size={24} color={props.color} />}
           <Spacer.Flex flex={1}>
             <Text testID="snackbar-message" color={props.color}>
               {props.message}

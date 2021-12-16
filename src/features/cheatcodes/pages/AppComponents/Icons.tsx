@@ -30,6 +30,7 @@ import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
 import { Check } from 'ui/svg/icons/Check'
+import { CheckDeprecated } from 'ui/svg/icons/Check_deprecated'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Close } from 'ui/svg/icons/Close'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
@@ -57,7 +58,6 @@ import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Info } from 'ui/svg/icons/Info'
-import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -118,7 +118,8 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Again" component={Again} isNew />
       <Icon name="ArrowPrevious" component={ArrowPrevious} />
       <Icon name="ArrowNext" component={ArrowNext} />
-      <Icon name="Check" component={Check} />
+      <Icon name="Check" component={Check} isNew />
+      <Icon name="CheckDeprecated" component={CheckDeprecated} />
       <Icon name="Clock" component={Clock} isNew />
       <Icon name="Close" component={Close} />
       <Icon name="Duo" component={Duo} />
@@ -164,7 +165,6 @@ export const Icons: FunctionComponent = () => {
       />
       <Icon name="MagnifyingGlassDeprecated" component={MagnifyingGlassDeprecated} />
       <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
-      <Icon name="InfoDeprecated" component={InfoDeprecated} />
       <Icon name="Info" component={Info} isNew />
       <Icon name="InfoPlain" component={InfoPlain} isNew />
       <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />

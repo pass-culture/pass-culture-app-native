@@ -13,7 +13,7 @@ import { formatToSlashedFrenchDate } from 'libs/dates'
 import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryId } from 'libs/subcategories'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
-import { Check } from 'ui/svg/icons/Check'
+import { CheckDeprecated as Check } from 'ui/svg/icons/Check_deprecated'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { BookingItemTitle } from './BookingItemTitle'
