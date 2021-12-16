@@ -32,7 +32,7 @@ export type IdentityCheckRootStackParamList = {
   IdentityCheckHonor: undefined
   BeneficiaryRequestSent: undefined
   // Errors
-  EduConnectErrors: { code?: string }
+  EduConnectErrors: { code?: string; logoutUrl?: string }
 }
 
 /**
