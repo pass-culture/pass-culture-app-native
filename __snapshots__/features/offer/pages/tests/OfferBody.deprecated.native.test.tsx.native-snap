@@ -959,7 +959,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 ]
                               }
                             >
-                              Quand ?
+                              Quand ?
                             </Text>
                             <Text
                               style={
@@ -3423,7 +3423,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 ]
                               }
                             >
-                              Quand ?
+                              Quand ?
                             </Text>
                             <Text
                               style={
@@ -3483,7 +3483,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 ]
                               }
                             >
-                              Où ?
+                              Où ?
                             </Text>
                             <View
                               numberOfSpaces={4}

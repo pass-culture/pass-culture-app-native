@@ -187,7 +187,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                     ]
                   }
                 >
-                  Les informations que tu as renseignées sont-elles correctes ?
+                  Les informations que tu as renseignées sont-elles correctes ?
                 </Text>
               </View>
               <View

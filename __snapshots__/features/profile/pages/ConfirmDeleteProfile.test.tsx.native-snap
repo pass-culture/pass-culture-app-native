@@ -99,7 +99,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
           ]
         }
       >
-        Es-tu sûr de vouloir supprimer ton compte ?
+        Es-tu sûr de vouloir supprimer ton compte ?
       </Text>
       <View
         numberOfSpaces={5}

@@ -1840,7 +1840,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
           ]
         }
       >
-        Où ?
+        Où ?
       </Text>
       <View
         numberOfSpaces={4}
