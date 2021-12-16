@@ -1,5 +1,5 @@
 import React from 'react'
-import { ViewStyle, View } from 'react-native'
+import { ViewStyle, View, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsEnum, getShadow, getSpacing, padding } from 'ui/theme'
@@ -44,24 +44,26 @@ const StyledView = styled(View)<{
   height: Props['inputHeight']
   borderColor: ColorsEnum
   isInputDisabled?: boolean
-}>(({ height, borderColor, isInputDisabled, theme }) => ({
-  height: height === 'tall' ? getSpacing(12) : getSpacing(10),
-  width: '100%',
-  flexDirection: 'row',
-  alignItems: 'center',
-  ...padding(1, 4),
-  borderRadius: 22,
-  border: isInputDisabled ? undefined : `solid 1px ${borderColor}`,
-  backgroundColor: isInputDisabled ? theme.colors.greyLight : theme.colors.white,
-  ...(!isInputDisabled
-    ? getShadow({
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowRadius: 6,
-        shadowColor: theme.colors.black,
-        shadowOpacity: 0.15,
-      })
-    : {}),
-}))
+}>(({ height, borderColor, isInputDisabled, theme }) => {
+  let shadows = {}
+  // ACCESSIBILITY : on the web, it is better to have no shadow to increase the contrast
+  if (!isInputDisabled && Platform.OS !== 'web') {
+    shadows = getShadow({
+      shadowOffset: { width: 0, height: 2 },
+      shadowRadius: 6,
+      shadowColor: theme.colors.black,
+      shadowOpacity: 0.15,
+    })
+  }
+  return {
+    height: height === 'tall' ? getSpacing(12) : getSpacing(10),
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    ...padding(1, 4),
+    borderRadius: 22,
+    border: isInputDisabled ? undefined : `solid 1px ${borderColor}`,
+    backgroundColor: isInputDisabled ? theme.colors.greyLight : theme.colors.white,
+    ...shadows,
+  }
+})
