@@ -31,6 +31,7 @@ export type IdentityCheckRootStackParamList = {
   // Confirmation
   IdentityCheckHonor: undefined
   BeneficiaryRequestSent: undefined
+  UnderageAccountCreated: undefined
   // Errors
   EduConnectErrors: { code?: string; logoutUrl?: string }
 }
@@ -108,7 +109,6 @@ export type RootStackParamList = {
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined
   PageNotFound: undefined
-  UnderageAccountCreated: undefined
   UserProfiling: undefined
   Venue: { id: number }
   DeeplinksGenerator: undefined

@@ -23,7 +23,6 @@ import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfir
 import { SignupForm } from 'features/auth/signup/SignupForm'
 import { SelectSchool } from 'features/auth/signup/underageSignup/SelectSchool'
 import { SelectSchoolHome } from 'features/auth/signup/underageSignup/SelectSchoolHome'
-import { UnderageAccountCreated } from 'features/auth/signup/underageSignup/UnderageAccountCreated'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
 import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
@@ -394,12 +393,6 @@ export const routes: Route[] = [
     component: FirstTutorial,
     path: 'introduction-tutoriel',
     options: { title: t`1er tutoriel` },
-  },
-  {
-    name: 'UnderageAccountCreated',
-    component: UnderageAccountCreated,
-    path: 'creation-compte/confirmation-15-17',
-    options: { title: t`Compte 15-17 créé\u00a0!` },
   },
   {
     name: 'Venue',

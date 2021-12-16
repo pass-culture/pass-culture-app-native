@@ -4,6 +4,7 @@ import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIde
 import { withAsyncErrorBoundary } from 'features/errors'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
+import { UnderageAccountCreated } from 'features/identityCheck/pages/confirmation/UnderageAccountCreated'
 import { EduConnectErrors } from 'features/identityCheck/pages/errors/EduConnectErrors'
 import { IdentityCheckDMS } from 'features/identityCheck/pages/identification/IdentityCheckDMS'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/IdentityCheckEduConnect'
@@ -151,6 +152,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     component: BeneficiaryRequestSent,
     path: 'demande-beneficiaire-envoyee',
     options: { title: t`Demande bénéficiaire envoyée` },
+    secure: true,
+  },
+  {
+    name: 'UnderageAccountCreated',
+    component: UnderageAccountCreated,
+    path: 'creation-compte/confirmation-15-17',
+    options: { title: t`Compte 15-17 créé !` },
     secure: true,
   },
   // Errors

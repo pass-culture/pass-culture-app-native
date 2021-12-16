@@ -19,9 +19,11 @@ export const IdentityCheckHonor = () => {
   const { navigateToNextScreen } = useIdentityCheckNavigation()
   const { showErrorSnackBar } = useSnackBarContext()
   const queryClient = useQueryClient()
+
   const { mutate: postHonorStatement, isLoading } = usePostHonorStatement({
     onSuccess: () => {
       queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
+
       navigateToNextScreen()
     },
     onError: (error) =>
