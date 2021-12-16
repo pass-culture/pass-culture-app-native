@@ -30,7 +30,7 @@ export const SelectSchoolHome: React.FC = () => {
         <StyledLottieView ref={animation} source={StarAnimation} loop={false} />
       </StyledLottieContainer>
       <Spacer.Flex flex={0.5} />
-      <TitleContainer>{t`Fais-tu partie de la phase de test ?`}</TitleContainer>
+      <TitleContainer>{t`Fais-tu partie de la phase de test\u00a0?`}</TitleContainer>
       <BodyContainer>
         {t`Si tu es élève dans` + '\u00a0'}
         <Strong>{t`l'un des 21 établissements de test`}</Strong>

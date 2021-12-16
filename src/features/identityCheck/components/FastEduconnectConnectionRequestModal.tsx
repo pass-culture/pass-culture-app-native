@@ -44,7 +44,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
       <TextQuestion
         onPress={() => openUrl(env.FAQ_LINK_EDUCONNECT_URL)}
         icon={(props) => <InfoPlain {...props} size={getSpacing(5)} />}
-        title={t`C’est quoi ÉduConnect ?`}
+        title={t`C’est quoi ÉduConnect\u00a0?`}
       />
 
       <ButtonPrimary

@@ -33,7 +33,7 @@ export const SetName = () => {
       title={t`Profil`}
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle title={t`Comment t'appelles-tu ?`} />
+          <CenteredTitle title={t`Comment t'appelles-tu\u00a0?`} />
           <Spacer.Column numberOfSpaces={5} />
         </React.Fragment>
       }

@@ -36,7 +36,9 @@ export const IdentityCheckHonor = () => {
       title={t`Confirmation`}
       fixedTopChildren={
         <Container>
-          <CenteredTitle title={t`Les informations que tu as renseignées sont-elles correctes ?`} />
+          <CenteredTitle
+            title={t`Les informations que tu as renseignées sont-elles correctes\u00a0?`}
+          />
           {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={10} />}
           <Declaration
             text={t`Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.`}

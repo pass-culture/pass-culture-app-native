@@ -19,7 +19,7 @@ interface Props {
   testIdSuffix?: string
 }
 
-const title = t`Veux-tu abandonner la vérification d'identité ?`
+const title = t`Veux-tu abandonner la vérification d'identité\u00a0?`
 const description = t`Les informations que tu as renseignées ne seront pas enregistrées.`
 
 export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
