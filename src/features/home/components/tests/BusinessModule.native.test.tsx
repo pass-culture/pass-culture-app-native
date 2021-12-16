@@ -68,7 +68,8 @@ describe('BusinessModule component', () => {
   })
 
   it('should open url with replaced Email when connected and adequate url and display snackbar waiting for email', async () => {
-    mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
     const { getByTestId } = renderModule({ ...props, url: 'some_url_with_email={email}' })
 
     fireEvent.press(getByTestId('imageBusiness'))
@@ -119,6 +120,6 @@ describe('BusinessModule component', () => {
   })
 })
 
-const renderModule = (props: BusinessPane) =>
+const renderModule = (module: BusinessPane) =>
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  render(reactQueryProviderHOC(<BusinessModule {...props} />))
+  render(reactQueryProviderHOC(<BusinessModule module={module} />))
