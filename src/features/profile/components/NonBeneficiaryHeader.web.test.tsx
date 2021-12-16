@@ -93,7 +93,7 @@ describe('NonBeneficiaryHeader  ', () => {
       />
     )
 
-    getByTestId('body-container-18')
+    getByTestId('eligibility-banner-container')
   })
 
   it('should navigate to SelectSchoolHome for 15-17 years old users if user has not completed idcheck', async () => {

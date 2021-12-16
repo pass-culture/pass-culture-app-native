@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE, useIdentificationUrl } from 'features/identityCheck/api'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
@@ -27,7 +26,6 @@ interface AbortEvent {
 // https://ubbleai.github.io/developer-documentation/#webview-integration
 export const IdentityCheckWebview: React.FC = () => {
   const identificationUrl = useIdentificationUrl()
-  const { dispatch } = useIdentityCheckContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   useEffect(() => {
@@ -40,7 +38,6 @@ export const IdentityCheckWebview: React.FC = () => {
         identificationUrl,
         events: {
           onComplete({ redirectUrl }: CompleteEvent) {
-            dispatch({ type: 'SET_PROCESSING', payload: true })
             analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.Ubble })
             ubbleIDV.destroy()
             if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigateToNextScreen()

@@ -27,8 +27,8 @@ export function useIdentificationUrl() {
         setIdentificationUrl(data.identificationUrl)
       } catch (err) {
         const error = (err as ApiError)?.content.code
-        if (error === 'IDCHECK_ALREADY_PROCESSED') navigate('IdentityCheckPending')
-        navigate('IdentityCheckUnavailable', { withDMS: false })
+        if (error === 'IDCHECK_ALREADY_PROCESSED') return navigate('IdentityCheckPending')
+        return navigate('IdentityCheckUnavailable', { withDMS: false })
       }
     }
   )

@@ -1,10 +1,14 @@
 import mockdate from 'mockdate'
+import { rest } from 'msw'
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
+import { IdentityCheckMethod, NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useIsUserUnderage } from 'features/profile/utils'
+import { env } from 'libs/environment'
+import { server } from 'tests/server'
 import { render, fireEvent } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
@@ -41,6 +45,8 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
   useIdentityCheckContext: () => ({ identification: { processing: false } }),
 }))
 
+const allowedIdentityCheckMethods = [IdentityCheckMethod.Ubble]
+
 describe('NonBeneficiaryHeader  ', () => {
   afterAll(mockdate.reset)
 
@@ -59,6 +65,12 @@ describe('NonBeneficiaryHeader  ', () => {
   })
 
   it('should render the right body for 18 years old users, call analytics and navigate to nextBeneficiaryValidationStep', async () => {
+    mockSubscriptionStepResponse({
+      allowedIdentityCheckMethods,
+      nextSubscriptionStep: SubscriptionStep.ProfileCompletion,
+      hasIdentityCheckPending: false,
+    })
+
     const setError = jest.fn()
     const {
       navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
@@ -93,7 +105,7 @@ describe('NonBeneficiaryHeader  ', () => {
       />
     )
 
-    getByTestId('body-container-18')
+    getByTestId('eligibility-banner-container')
   })
 
   it('should navigate to SelectSchoolHome for 15-17 years old users if user has not completed idcheck', async () => {
@@ -144,7 +156,12 @@ describe('NonBeneficiaryHeader  ', () => {
     expect(container).toBeNull()
   })
 
-  it('should display correct depositAmount', () => {
+  it('should display correct depositAmount', async () => {
+    mockSubscriptionStepResponse({
+      allowedIdentityCheckMethods,
+      nextSubscriptionStep: SubscriptionStep.ProfileCompletion,
+      hasIdentityCheckPending: false,
+    })
     const { queryByText } = render(
       <NonBeneficiaryHeader
         eligibilityStartDatetime="2021-02-30T00:00Z"
@@ -152,7 +169,9 @@ describe('NonBeneficiaryHeader  ', () => {
         isEligibleForBeneficiaryUpgrade={true}
       />
     )
-    expect(queryByText(/Profite de 300€/)).toBeTruthy()
+    await waitForExpect(() => {
+      expect(queryByText(/Profite de 300€/)).toBeTruthy()
+    })
   })
 
   it('should display correct credit message for underage', () => {
@@ -168,3 +187,12 @@ describe('NonBeneficiaryHeader  ', () => {
     expect(queryByText(/Profite de ton crédit/)).toBeTruthy()
   })
 })
+
+function mockSubscriptionStepResponse(nextSubscription: NextSubscriptionStepResponse) {
+  return server.use(
+    rest.get<NextSubscriptionStepResponse>(
+      env.API_BASE_URL + `/native/v1/subscription/next_step`,
+      (_req, res, ctx) => res.once(ctx.status(200), ctx.json(nextSubscription))
+    )
+  )
+}
