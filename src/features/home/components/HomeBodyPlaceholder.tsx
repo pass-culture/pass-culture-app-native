@@ -47,40 +47,38 @@ const OfferModulePlaceholder: React.FC<{ size: TileSize; numberOfTiles: number }
   const renderPlaceholder = useCallback(() => <OfferTilePlaceholder size={size} />, [size])
 
   return (
-    <Row>
+    <Container>
       <Spacer.Row numberOfSpaces={6} />
       <View>
+        <Spacer.Column numberOfSpaces={1} />
         <ModuleTitlePlaceholder />
-        <Spacer.Column numberOfSpaces={4} />
-        <Row>
-          <FlatList
-            horizontal
-            data={data}
-            renderItem={renderPlaceholder}
-            ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
-            showsHorizontalScrollIndicator={false}
-          />
-        </Row>
+        <Spacer.Column numberOfSpaces={5} />
+        <FlatList
+          horizontal
+          data={data}
+          renderItem={renderPlaceholder}
+          ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
+          showsHorizontalScrollIndicator={false}
+        />
       </View>
-    </Row>
+    </Container>
   )
 }
 
 const ModuleTitlePlaceholder = () => (
-  <SkeletonTile width={getSpacing(40)} height={getSpacing(4)} borderRadius={2} />
+  <SkeletonTile width={getSpacing(50)} height={getSpacing(4)} borderRadius={2} />
 )
 
-const OfferTilePlaceholder = ({ size }: { size: TileSize }) => {
-  const height = size + PixelRatio.roundToNearestPixel(MARGIN_DP)
+const OfferTilePlaceholder = ({ size }: { size: number }) => {
   const width = size * RATIO_HOME_IMAGE
   return (
     <View>
-      <BasePlaceholder height={height} width={width} />
-      <Spacer.Column numberOfSpaces={2} />
+      <BasePlaceholder height={size} width={width} />
+      <Spacer.Column numberOfSpaces={3} />
       <TextPlaceholder width={0.8 * width} />
       <Spacer.Column numberOfSpaces={2} />
       <TextPlaceholder width={0.3 * width} />
-      <Spacer.Column numberOfSpaces={2} />
+      <Spacer.Column numberOfSpaces={3} />
     </View>
   )
 }
