@@ -54,7 +54,7 @@ describe('SetBirthday Page', () => {
 
   it('should show the correct deposit amount', async () => {
     const component = render(<SetBirthday {...props} />)
-    fireEvent.press(component.getByTestId('Pourquoi ?'))
+    fireEvent.press(component.getByTestId('Pourquoi\u00a0?'))
     expect(component.queryByText(/une aide financière de/)).toBeTruthy()
     expect(component.queryByText(new RegExp('300' + '\u00a0' + '€'))).toBeTruthy()
   })
@@ -73,7 +73,7 @@ describe('SetBirthday Page', () => {
         } as UseQueryResult<SettingsResponse, unknown>)
     )
     const component = render(<SetBirthday {...props} />)
-    fireEvent.press(component.getByTestId('Pourquoi ?'))
+    fireEvent.press(component.getByTestId('Pourquoi\u00a0?'))
     expect(component.queryByText(/une aide financière progressive allant de/)).toBeTruthy()
 
     expect(component.queryByText(new RegExp('20' + '\u00a0' + '€'))).toBeTruthy()
@@ -123,7 +123,7 @@ describe('SetBirthday Page', () => {
   it('should display a information modal when clicking "Pourquoi" link', () => {
     const { getByTestId, toJSON } = render(<SetBirthday {...props} />)
 
-    const whyBirthdayLink = getByTestId('Pourquoi ?')
+    const whyBirthdayLink = getByTestId('Pourquoi\u00a0?')
     fireEvent.press(whyBirthdayLink)
 
     const birthdayModal = getByTestId('modal-birthday-information')
@@ -135,7 +135,7 @@ describe('SetBirthday Page', () => {
     it('should log ConsultModalWhyAnniversary when clicking "Pourquoi" link', () => {
       const { getByTestId } = render(<SetBirthday {...props} />)
 
-      const whyBirthdayLink = getByTestId('Pourquoi ?')
+      const whyBirthdayLink = getByTestId('Pourquoi\u00a0?')
       fireEvent.press(whyBirthdayLink)
 
       expect(analytics.logConsultWhyAnniversary).toHaveBeenCalledTimes(1)

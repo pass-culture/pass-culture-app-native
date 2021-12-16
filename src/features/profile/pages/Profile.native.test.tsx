@@ -174,7 +174,7 @@ describe('Profile component', () => {
     it('should navigate when the how-it-works row is clicked', async () => {
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('Comment ça marche ?')
+      const row = getByTestId('Comment ça marche\u00a0?')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('FirstTutorial', { shouldCloseAppOnBackAction: false })
@@ -192,7 +192,7 @@ describe('Profile component', () => {
     it('should navigate when the how-import-deeplink row is clicked', async () => {
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('Problèmes pour ouvrir un lien ?')
+      const row = getByTestId('Problèmes pour ouvrir un lien\u00a0?')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('DeeplinkImporter')
