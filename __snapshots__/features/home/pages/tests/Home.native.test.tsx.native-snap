@@ -17,6 +17,7 @@ exports[`Home component should render correctly without login modal 1`] = `
     style={
       Array [
         Object {
+          "height": "100%",
           "overflow": "hidden",
         },
       ]
