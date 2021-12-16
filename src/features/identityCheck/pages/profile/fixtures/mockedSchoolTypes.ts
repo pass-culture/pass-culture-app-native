@@ -1,25 +1,70 @@
-import { ActivityIdEnum, SchoolTypesIdEnum, SchoolTypesResponse } from 'api/gen'
+import { ActivityIdEnum, SchoolTypesIdEnum, ProfileOptionsResponse } from 'api/gen'
 
-export const SchoolTypesSnap: SchoolTypesResponse = {
+export const SchoolTypesSnap: ProfileOptionsResponse = {
   activities: [
-    {
-      associatedSchoolTypesIds: [
-        SchoolTypesIdEnum.AGRICULTURALHIGHSCHOOL,
-        SchoolTypesIdEnum.APPRENTICEFORMATIONCENTER,
-      ],
-      id: ActivityIdEnum.HIGHSCHOOLSTUDENT,
-      label: 'Lycéen',
-    },
     {
       associatedSchoolTypesIds: [
         SchoolTypesIdEnum.PRIVATESECONDARYSCHOOL,
         SchoolTypesIdEnum.PUBLICSECONDARYSCHOOL,
+        SchoolTypesIdEnum.HOMEORREMOTESCHOOLING,
       ],
+      description: null,
       id: ActivityIdEnum.MIDDLESCHOOLSTUDENT,
       label: 'Collégien',
     },
     {
+      associatedSchoolTypesIds: [
+        SchoolTypesIdEnum.AGRICULTURALHIGHSCHOOL,
+        SchoolTypesIdEnum.MILITARYHIGHSCHOOL,
+        SchoolTypesIdEnum.NAVALHIGHSCHOOL,
+        SchoolTypesIdEnum.PRIVATEHIGHSCHOOL,
+        SchoolTypesIdEnum.PUBLICHIGHSCHOOL,
+        SchoolTypesIdEnum.HOMEORREMOTESCHOOLING,
+        SchoolTypesIdEnum.APPRENTICEFORMATIONCENTER,
+      ],
+      description: null,
+      id: ActivityIdEnum.HIGHSCHOOLSTUDENT,
+      label: 'Lycéen',
+    },
+    {
       associatedSchoolTypesIds: [],
+      description: null,
+      id: ActivityIdEnum.STUDENT,
+      label: 'Étudiant',
+    },
+    {
+      associatedSchoolTypesIds: [],
+      description: null,
+      id: ActivityIdEnum.EMPLOYEE,
+      label: 'Employé',
+    },
+    {
+      associatedSchoolTypesIds: [],
+      description: null,
+      id: ActivityIdEnum.APPRENTICE,
+      label: 'Apprenti',
+    },
+    {
+      associatedSchoolTypesIds: [],
+      description: null,
+      id: ActivityIdEnum.APPRENTICESTUDENT,
+      label: 'Alternant',
+    },
+    {
+      associatedSchoolTypesIds: [],
+      description: 'En service civique',
+      id: ActivityIdEnum.VOLUNTEER,
+      label: 'Volontaire',
+    },
+    {
+      associatedSchoolTypesIds: [],
+      description: 'En incapacité de travailler',
+      id: ActivityIdEnum.INACTIVE,
+      label: 'Inactif',
+    },
+    {
+      associatedSchoolTypesIds: [],
+      description: "En recherche d'emploi",
       id: ActivityIdEnum.UNEMPLOYED,
       label: 'Chômeur',
     },

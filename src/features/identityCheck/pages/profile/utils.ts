@@ -17,6 +17,16 @@ export const getSchoolTypesIdsFromActivity = (
   activityId: ActivityIdEnum,
   activities: ActivityResponseModel[]
 ) => {
-  const activitySchoolTypes = activities.find((activity) => activity.id === activityId)
-  return activitySchoolTypes?.associatedSchoolTypesIds
+  const activitySchoolTypes = activities.find(
+    (activity) => activity.id === activityId
+  )?.associatedSchoolTypesIds
+
+  return activitySchoolTypes
+}
+
+export const activityHasSchoolTypes = (
+  activityId: ActivityIdEnum,
+  activities: ActivityResponseModel[]
+) => {
+  return !!getSchoolTypesIdsFromActivity(activityId, activities)?.length
 }
