@@ -6,13 +6,13 @@ import waitForExpect from 'wait-for-expect'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import * as HomeAPI from 'features/home/api'
+import { BusinessModule } from 'features/home/components'
+import { BusinessPane } from 'features/home/contentful'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { BusinessPane } from '../../contentful'
-import { BusinessModule } from '../BusinessModule'
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 

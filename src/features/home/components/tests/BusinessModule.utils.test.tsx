@@ -17,6 +17,7 @@ describe('BusinessModule.utils', () => {
       }
     )
   })
+
   describe('fillEmail', () => {
     it.each`
       url                                                        | email                     | expected_result

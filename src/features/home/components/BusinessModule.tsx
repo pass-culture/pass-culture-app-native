@@ -92,6 +92,7 @@ export const BusinessModule = (businessPane: BusinessPane) => {
 
 const Row = styled.View({
   flexDirection: 'row',
+  paddingBottom: getSpacing(6),
 })
 
 const TouchableHighlight = styled.TouchableHighlight({

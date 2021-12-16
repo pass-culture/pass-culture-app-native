@@ -40,6 +40,7 @@ export const ExclusivityModule = ({ alt, image, id }: ExclusivityPane) => {
 
 const Row = styled.View({
   flexDirection: 'row',
+  paddingBottom: getSpacing(6),
 })
 
 const ImageContainer = styled.View({

@@ -45,7 +45,7 @@ export const PassPlaylist = (props: Props) => {
   )
 
   return (
-    <React.Fragment>
+    <Container>
       <Row>
         <TitleComponent numberOfLines={2} testID="playlistTitle" color={titleColor}>
           {props.title}
@@ -80,9 +80,13 @@ export const PassPlaylist = (props: Props) => {
         keyExtractor={props.keyExtractor}
         onEndReached={props.onEndReached}
       />
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View({
+  paddingBottom: getSpacing(6),
+})
 
 const Row = styled.View({
   flexDirection: 'row',

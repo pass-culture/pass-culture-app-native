@@ -97,7 +97,6 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         renderItem={renderItem}
         keyExtractor={keyExtractor}
       />
-      <Spacer.Column numberOfSpaces={6} />
       <MarginContainer>
         <ButtonWithLinearGradient
           wording={VENUE_OFFERS_CTA_WORDING}

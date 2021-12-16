@@ -102,7 +102,7 @@ const BusinessModulePlaceholder = () => {
   )
 }
 
-const Row = styled.View({ flexDirection: 'row' })
+const Container = styled.View({ flexDirection: 'row', paddingBottom: getSpacing(6) })
 
 const CenterContainer = styled.View({
   flex: 1,

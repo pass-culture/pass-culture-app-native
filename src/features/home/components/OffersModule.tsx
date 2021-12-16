@@ -44,6 +44,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const showSeeMore =
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
+
   const onPressSeeMore = showSeeMore
     ? () => {
         analytics.logClickSeeMore(moduleName)
