@@ -3,6 +3,7 @@ import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -12,6 +13,9 @@ import { IconInterface } from 'ui/svg/icons/types'
 // hook as it can be dynamic depending on subscription step
 export const useIdentityCheckSteps = (): StepConfig[] => {
   const { data: subscription } = useNextSubscriptionStep()
+  const { profile } = useIdentityCheckContext()
+
+  const hasSchoolTypes = profile.hasSchoolTypes
 
   const shouldUseEduConnect = subscription?.allowedIdentityCheckMethods.includes(
     IdentityCheckMethod.Educonnect
@@ -22,7 +26,15 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       name: IdentityCheckStep.PROFILE,
       icon: ProfileIcon,
       label: t`Profil`,
-      screens: ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
+      screens: hasSchoolTypes
+        ? [
+            'SetName',
+            'IdentityCheckCity',
+            'IdentityCheckAddress',
+            'IdentityCheckStatus',
+            'IdentityCheckSchoolType',
+          ]
+        : ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
     },
     {
       name: IdentityCheckStep.IDENTIFICATION,

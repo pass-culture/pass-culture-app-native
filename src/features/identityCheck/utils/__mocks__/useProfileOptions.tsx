@@ -2,7 +2,7 @@ import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/m
 
 export const useProfileOptions = jest.fn(() => {
   return {
-    schoolTypes: [{}],
+    schoolTypes: SchoolTypesSnap.school_types,
     activities: SchoolTypesSnap.activities,
   }
 })

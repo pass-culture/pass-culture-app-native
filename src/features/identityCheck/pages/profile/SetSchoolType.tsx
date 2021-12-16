@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
+import styled from 'styled-components/native'
 
 import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
@@ -30,13 +31,11 @@ export const SetSchoolType = () => {
     navigateToNextScreen()
   }
 
-  // TODO PC-11901 : l'activité doit se baser le status de profile tiré de identityCheckContext
-  // En dur pour le test sur les cheatcodes.
-  const schoolTypesIds = activities
-    ? getSchoolTypesIdsFromActivity(ActivityIdEnum.HIGHSCHOOLSTUDENT, activities)
+  const activitySchoolTypes = activities
+    ? getSchoolTypesIdsFromActivity(profile.status as ActivityIdEnum, activities)
     : null
 
-  const hasData = !!schoolTypesIds && !!schoolTypes
+  const hasData = !!activitySchoolTypes && !!schoolTypes
 
   return (
     <PageWithHeader
@@ -48,20 +47,20 @@ export const SetSchoolType = () => {
         </React.Fragment>
       }
       scrollChildren={
-        <React.Fragment>
+        <Container>
           {hasData &&
-            schoolTypesIds.map((schoolTypeId) => {
+            activitySchoolTypes.map((schoolTypeId) => {
               const schoolLabel = mapSchoolTypeIdToLabel(schoolTypeId, schoolTypes) as string
               return (
                 <RadioButton
-                  key={schoolLabel}
+                  key={schoolTypeId}
                   selected={schoolTypeId === selectedSchoolTypeId}
                   name={schoolLabel}
                   onPress={() => setSelectedSchoolTypeId(schoolTypeId)}
                 />
               )
             })}
-        </React.Fragment>
+        </Container>
       }
       fixedBottomChildren={
         <ButtonPrimary
@@ -73,3 +72,7 @@ export const SetSchoolType = () => {
     />
   )
 }
+
+const Container = styled.View({
+  height: '100%',
+})
