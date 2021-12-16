@@ -58,7 +58,6 @@ import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Info } from 'ui/svg/icons/Info'
-import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -166,7 +165,6 @@ export const Icons: FunctionComponent = () => {
       />
       <Icon name="MagnifyingGlassDeprecated" component={MagnifyingGlassDeprecated} />
       <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
-      <Icon name="InfoDeprecated" component={InfoDeprecated} />
       <Icon name="Info" component={Info} isNew />
       <Icon name="InfoPlain" component={InfoPlain} isNew />
       <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
