@@ -68,7 +68,7 @@ describe('<SignupForm />', () => {
   it('should open quit signup modal when preventCancellation route param is false', () => {
     const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
     fireEvent.press(getByTestId('rightIcon'))
-    getByText("Veux-tu abandonner l'inscription ?")
+    getByText("Veux-tu abandonner l'inscription\u00a0?")
   })
 
   it('should not open quit signup modal when preventCancellation route param is true', () => {
