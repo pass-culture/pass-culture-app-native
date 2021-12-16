@@ -15,7 +15,10 @@ type Props = StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
   return (
-    <GenericInfoPage title={t`C'est pour bientôt ! `} icon={Calendar} iconSize={getSpacing(30)}>
+    <GenericInfoPage
+      title={t`C'est pour bientôt\u00a0! `}
+      icon={Calendar}
+      iconSize={getSpacing(30)}>
       <StyledBody>
         {t({
           id: 'reviens a partir du',

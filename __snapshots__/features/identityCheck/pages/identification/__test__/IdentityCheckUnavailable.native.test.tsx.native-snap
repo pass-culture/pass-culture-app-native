@@ -99,7 +99,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
           ]
         }
       >
-        Victime de notre succès !
+        Victime de notre succès !
       </Text>
       <View
         numberOfSpaces={5}

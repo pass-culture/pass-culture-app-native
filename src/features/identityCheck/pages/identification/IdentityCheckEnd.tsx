@@ -16,7 +16,7 @@ export const IdentityCheckEnd = () => {
 
   return (
     <GenericInfoPage
-      title={t`Ta pièce d’identité a bien été transmise !`}
+      title={t`Ta pièce d’identité a bien été transmise\u00a0!`}
       icon={EmailSent}
       iconSize={getSpacing(42)}
     />

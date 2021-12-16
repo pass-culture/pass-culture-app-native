@@ -99,7 +99,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
           ]
         }
       >
-        Oups !
+        Oups !
       </Text>
       <View
         numberOfSpaces={5}
@@ -125,7 +125,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
           ]
         }
       >
-        Le lien est expiré !
+        Le lien est expiré !
       </Text>
       <Text
         color="#ffffff"
@@ -405,7 +405,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
           ]
         }
       >
-        Oups !
+        Oups !
       </Text>
       <View
         numberOfSpaces={5}
@@ -431,7 +431,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
           ]
         }
       >
-        Le lien est expiré !
+        Le lien est expiré !
       </Text>
       <Text
         color="#ffffff"

@@ -19,7 +19,7 @@ export const NoContentError = () => {
   }
 
   return (
-    <GenericInfoPage title={t`Oups !`} icon={BrokenConnection} iconSize={200}>
+    <GenericInfoPage title={t`Oups\u00a0!`} icon={BrokenConnection} iconSize={200}>
       <BodyText>{t`Une erreur s’est produite pendant le chargement de nos recommandations.`}</BodyText>
       <Spacer.Column numberOfSpaces={4} />
       <SearchButton

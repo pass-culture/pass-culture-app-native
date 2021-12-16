@@ -18,7 +18,7 @@ export const NoFavoritesResult = () => {
         <EmptyFavorites size={197} color={ColorsEnum.GREY_MEDIUM} />
       </IconContainer>
       <Explanation color={ColorsEnum.GREY_DARK}>
-        {t`Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !`}
+        {t`Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris\u00a0!`}
       </Explanation>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>

@@ -29,7 +29,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         <title>{t`Lieu introuvable | Pass Culture`}</title>
         <meta name="robots" content="noindex" />
       </Helmet>
-      <GenericInfoPage title={t`Lieu introuvable !`} icon={NoOffer} iconSize={getSpacing(40)}>
+      <GenericInfoPage title={t`Lieu introuvable\u00a0!`} icon={NoOffer} iconSize={getSpacing(40)}>
         <StyledBody>{t`Il est possible que ce lieu soit désactivé ou n'existe pas.`}</StyledBody>
         <Spacer.Column numberOfSpaces={12} />
         <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={onPress} />

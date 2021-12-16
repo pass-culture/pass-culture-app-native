@@ -47,14 +47,14 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
           titleStyle={accordionStyle.title}
           bodyStyle={accordionStyle.body}>
           <Description>
-            {t`Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !`}
+            {t`Ton crédit pass Culture est arrivé à expiration mais l’aventure continue\u00a0!`}
           </Description>
           <Spacer.Column numberOfSpaces={5} />
           <Description>
             {t`Tu peux toujours réserver les offres gratuites exclusives au pass Culture.`}
           </Description>
           <Description>
-            {t`Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !`}
+            {t`Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires\u00a0!`}
           </Description>
         </AccordionItem>
         <Spacer.Column numberOfSpaces={2} />

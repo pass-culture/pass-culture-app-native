@@ -691,7 +691,7 @@ Array [
                                 ]
                               }
                             >
-                              Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !
+                              Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !
                             </Text>
                             <View
                               numberOfSpaces={8}

@@ -44,7 +44,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
       onRightIconPress={dismissModal}>
       <Description>
         <Typo.Body>
-          {t`Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !`}
+          {t`Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil\u00a0!`}
         </Typo.Body>
       </Description>
 

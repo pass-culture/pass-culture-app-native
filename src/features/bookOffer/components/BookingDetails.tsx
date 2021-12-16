@@ -27,9 +27,9 @@ interface Props {
 }
 
 const errorCodeToMessage: Record<string, string> = {
-  INSUFFICIENT_CREDIT: t`Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !`,
-  ALREADY_BOOKED: t`Attention, il est impossible de réserver plusieurs fois la même offre !`,
-  STOCK_NOT_BOOKABLE: t`Oups, cette offre n’est plus disponible !`,
+  INSUFFICIENT_CREDIT: t`Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!`,
+  ALREADY_BOOKED: t`Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!`,
+  STOCK_NOT_BOOKABLE: t`Oups, cette offre n’est plus disponible\u00a0!`,
 }
 
 export const BookingDetails: React.FC<Props> = ({ stocks }) => {

@@ -70,7 +70,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
       ]
     }
   >
-    Bonne nouvelle !
+    Bonne nouvelle !
   </Text>
   <Text
     fontSize={24}

@@ -64,7 +64,7 @@ export const RecreditBirthdayNotification = () => {
   }, [animationRef])
 
   return (
-    <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle !`}>
+    <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle\u00a0!`}>
       <StyledSubtitle>
         {t({
           id: 'birthday notification text',

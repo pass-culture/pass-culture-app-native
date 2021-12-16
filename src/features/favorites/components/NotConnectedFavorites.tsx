@@ -21,14 +21,14 @@ export const NotConnectedFavorites = () => {
 
       <CenteredContainer>
         <TypoTitle4 color={ColorsEnum.WHITE}>
-          {t`Connecte-toi pour profiter de cette fonctionnalité !`}
+          {t`Connecte-toi pour profiter de cette fonctionnalité\u00a0!`}
         </TypoTitle4>
         <Spacer.Column numberOfSpaces={4} />
 
         <TextContainer>
           <CenteredText>
             <Typo.Body color={ColorsEnum.WHITE}>
-              {t`Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !`}
+              {t`Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil\u00a0!`}
             </Typo.Body>
           </CenteredText>
         </TextContainer>

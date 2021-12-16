@@ -128,7 +128,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   return (
     <BottomContentPage>
       <ModalHeader
-        title={t`Connecte-toi !`}
+        title={t`Connecte-toi\u00a0!`}
         leftIconAccessibilityLabel={t`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}

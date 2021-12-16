@@ -41,11 +41,11 @@ const getOfferRules = (
 ): string => {
   const { hasActivationCode, isDigital, isPhysical, isEvent } = properties
   if (hasActivationCode && activationCodeFeatureEnabled)
-    return t`Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+    return t`Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
   if (isDigital)
-    return t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+    return t`Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
   if (isPhysical || isEvent)
-    return t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+    return t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
   return ''
 }
 

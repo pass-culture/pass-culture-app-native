@@ -99,7 +99,7 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
           ]
         }
       >
-        C'est pour bientôt !
+        C'est pour bientôt !
       </Text>
       <View
         numberOfSpaces={5}

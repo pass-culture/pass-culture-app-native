@@ -10,9 +10,9 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function PhoneValidationTooManySMSSent() {
   return (
-    <GenericInfoPage title={t`Trop de tentatives !`} icon={AccountLocked}>
+    <GenericInfoPage title={t`Trop de tentatives\u00a0!`} icon={AccountLocked}>
       <StyledBody>
-        {t`Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !`}
+        {t`Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures\u00a0!`}
       </StyledBody>
 
       <Spacer.Column numberOfSpaces={22} />

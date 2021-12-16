@@ -26,7 +26,7 @@ export const Maintenance: React.FC<MaintenanceProps> = (props) => {
         <StyledBody>
           {props.message
             ? props.message
-            : t`L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !`}
+            : t`L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement\u00a0!`}
         </StyledBody>
         <Spacer.Column numberOfSpaces={24} />
         <LogoPassCulture />

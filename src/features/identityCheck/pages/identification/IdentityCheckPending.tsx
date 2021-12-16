@@ -11,7 +11,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export function IdentityCheckPending() {
   return (
     <GenericInfoPage
-      title={t`Oups !`}
+      title={t`Oups\u00a0!`}
       icon={({ color }) => <IdCardError size={getSpacing(36)} color={color} />}>
       <StyledBody>{t`Il y a déjà une demande de crédit pass Culture en cours sur ton compte.`}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />

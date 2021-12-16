@@ -3119,7 +3119,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                                 testID="caption-iconDuo"
                               >
-                                À deux !
+                                À deux !
                               </Text>
                             </View>
                             <View

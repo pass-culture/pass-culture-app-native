@@ -29,7 +29,7 @@ export function ThirdCard(props: AchievementCardKeyProps) {
       buttonCallback={onGeolocationButtonPress}
       buttonText={t`Activer la géolocalisation`}
       pauseAnimationOnRenderAtFrame={62}
-      subTitle={t`à portée de main !`}
+      subTitle={t`à portée de main\u00a0!`}
       text={t`Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.`}
       title={t`Toute la culture`}
       swiperRef={props.swiperRef}

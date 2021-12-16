@@ -112,7 +112,7 @@ describe('[method] maintenanceStatus', () => {
       expect(mockedCallBack).toHaveBeenCalledWith({
         status: 'ON',
         message:
-          'L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !',
+          'L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement\u00a0!',
       })
     })
   })

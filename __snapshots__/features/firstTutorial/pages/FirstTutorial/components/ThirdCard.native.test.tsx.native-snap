@@ -88,7 +88,7 @@ exports[`ThirdCard should render third card 1`] = `
       ]
     }
   >
-    à portée de main !
+    à portée de main !
   </Text>
   <View
     flex={0.5}

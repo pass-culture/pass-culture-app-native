@@ -31,7 +31,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         <title>{t`Réservation introuvable | Pass Culture`}</title>
       </Helmet>
       <GenericInfoPage
-        title={t`Réservation introuvable !`}
+        title={t`Réservation introuvable\u00a0!`}
         icon={NoBookings}
         iconSize={getSpacing(40)}>
         <StyledBody>{t`Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer.`}</StyledBody>

@@ -13,10 +13,10 @@ describe('ExBeneficiaryHeader', () => {
     getByText('Rosa Bonheur')
     getByText('crédit expiré le 25/12/2020')
     getByText('Mon crédit est expiré, que faire ?')
-    getByText('Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !')
+    getByText('Ton crédit pass Culture est arrivé à expiration mais l’aventure continue\u00a0!')
     getByText('Tu peux toujours réserver les offres gratuites exclusives au pass Culture.')
     getByText(
-      "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
+      "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires\u00a0!"
     )
   })
 })

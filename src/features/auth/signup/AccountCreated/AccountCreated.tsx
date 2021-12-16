@@ -33,14 +33,16 @@ export function AccountCreated() {
   }, [user?.id])
 
   return (
-    <GenericInfoPage title={t`Ton compte a été activé !`} animation={IlluminatedSmileyAnimation}>
+    <GenericInfoPage
+      title={t`Ton compte a été activé\u00a0!`}
+      animation={IlluminatedSmileyAnimation}>
       {!!shouldNavigateToCulturalSurvey && (
         <StyledBody>
-          {t`Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées.`}
+          {t`Aide-nous à en savoir plus sur tes pratiques culturelles\u00a0! Ta sélection n'aura pas d'impact sur les offres proposées.`}
         </StyledBody>
       )}
       <Spacer.Column numberOfSpaces={15} />
-      <ButtonPrimaryWhite title={t`On y va !`} onPress={onPress} />
+      <ButtonPrimaryWhite title={t`On y va\u00a0!`} onPress={onPress} />
     </GenericInfoPage>
   )
 }
