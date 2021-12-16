@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
 
+// TODO(antoinewg): move to ui folder / delete if duplicate
 export const NextArrowIcon: React.FC = (): JSX.Element => {
   return (
     <Svg width="32" height="32" viewBox="0 0 32 32">
