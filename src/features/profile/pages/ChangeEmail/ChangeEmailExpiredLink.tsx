@@ -17,7 +17,7 @@ export function ChangeEmailExpiredLink() {
   const changeEmailExpiredLink = () => {
     resendEmailNumberOfHits++
     analytics.logSendActivationMailAgain(resendEmailNumberOfHits)
-    navigate('ChangeEmail')
+    isLoggedIn ? navigate('ChangeEmail') : navigate('Login')
   }
 
   const upperBodyText = t`Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.`

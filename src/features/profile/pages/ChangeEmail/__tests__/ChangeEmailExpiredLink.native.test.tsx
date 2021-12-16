@@ -79,7 +79,7 @@ describe('<ChangeEmailExpiredLink />', () => {
     fireEvent.press(resendEmailButton)
 
     await waitForExpect(() => {
-      expect(navigate).toHaveBeenCalledWith('ChangeEmail')
+      expect(navigate).toHaveBeenCalledWith('Login')
     })
   })
 })
