@@ -1,21 +1,35 @@
 import { t } from '@lingui/macro'
 import { EventArg, useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { Children, cloneElement, FunctionComponent, ReactElement, useMemo } from 'react'
-import Swiper from 'react-native-web-swiper'
+import Swiper, { SwiperControlsProps } from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
 import { ScreenNames, UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
+import { DotComponent } from 'ui/components/DotComponent'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { ControlComponent } from './ControlComponent'
-import { DotComponent } from './DotComponent'
 import { AchievementCardKeyProps } from './GenericAchievementCard'
 
-const controlProps = {
-  DotComponent,
+// While it may look like a duplication of the type in DotComponent.tsx,
+// we need to enforce this type here to ensure that it receive the right props
+// from the Swiper component.
+// Doing so, we avoid that a change in DotComponent.tsx breaks this file.
+// In short : never modify the following type.
+type DotComponentPropsForSwiper = {
+  index: number
+  activeIndex: number
+  isActive: boolean
+  onPress?: () => void
+}
+
+const DotComponentForSwiper: React.ComponentType<DotComponentPropsForSwiper> = DotComponent
+
+const controlProps: SwiperControlsProps = {
+  DotComponent: DotComponentForSwiper,
   PrevComponent: ControlComponent,
   NextComponent: ControlComponent,
 }

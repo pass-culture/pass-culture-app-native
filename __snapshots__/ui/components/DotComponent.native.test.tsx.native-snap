@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DotComponent /> renders dot active color 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "marginLeft": 4,
+        "marginRight": 4,
+      },
+    ]
+  }
+  testID="button"
+>
+  <View
+    borderColor="#eb0055"
+    fillColor="#eb0055"
+    height={12}
+    testID="dot-icon"
+    width={12}
+  >
+    <Text>
+      dot-icon-SVG-Mock
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<DotComponent /> should render correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "marginLeft": 4,
+        "marginRight": 4,
+      },
+    ]
+  }
+  testID="button"
+>
+  <View
+    borderColor="#626262"
+    fillColor="transparent"
+    height={8}
+    testID="dot-icon"
+    width={8}
+  >
+    <Text>
+      dot-icon-SVG-Mock
+    </Text>
+  </View>
+</View>
+`;

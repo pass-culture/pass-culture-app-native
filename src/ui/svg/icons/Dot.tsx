@@ -4,18 +4,27 @@ import Svg, { Circle, G } from 'react-native-svg'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum } from 'ui/theme'
 
-export const Dot: React.FunctionComponent<IconInterface> = ({
+type Props = Omit<IconInterface, 'color'> & {
+  borderColor?: ColorsEnum
+  fillColor?: ColorsEnum
+}
+
+export const Dot: React.FC<Props> = ({
   size = 8,
-  color = ColorsEnum.BLACK,
+  borderColor = ColorsEnum.BLACK,
+  fillColor = ColorsEnum.BLACK,
   testID,
 }) => (
-  <Svg width={size} height={size} viewBox="0 0 8 8" testID={testID} fill={color}>
-    <G fill="none" fillRule="evenodd">
-      <G fill={color}>
-        <G transform="translate(-210 -422) rotate(-180 109 216)">
-          <Circle cx="4" cy="6" r="4" />
-        </G>
-      </G>
+  <Svg
+    width={size}
+    height={size}
+    viewBox="0 0 9 9"
+    testID={testID}
+    // @ts-expect-error : borderColor and fillColor are on <Svg/> only for test purposes
+    borderColor={borderColor}
+    fillColor={fillColor}>
+    <G fill={fillColor} stroke={borderColor} strokeWidth="1">
+      <Circle cx="4.5" cy="4.5" r="4" />
     </G>
   </Svg>
 )

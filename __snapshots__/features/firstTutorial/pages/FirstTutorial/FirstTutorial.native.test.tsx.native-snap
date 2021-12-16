@@ -1175,7 +1175,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     testID="button"
                   >
                     <View
-                      fill="#eb0055"
+                      borderColor="#eb0055"
+                      fillColor="#eb0055"
                       height={12}
                       testID="dot-icon"
                       width={12}
@@ -1207,7 +1208,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     testID="button"
                   >
                     <View
-                      fill="#c7c7cc"
+                      borderColor="#626262"
+                      fillColor="transparent"
                       height={8}
                       testID="dot-icon"
                       width={8}
@@ -1239,7 +1241,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     testID="button"
                   >
                     <View
-                      fill="#c7c7cc"
+                      borderColor="#626262"
+                      fillColor="transparent"
                       height={8}
                       testID="dot-icon"
                       width={8}
@@ -1271,7 +1274,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     testID="button"
                   >
                     <View
-                      fill="#c7c7cc"
+                      borderColor="#626262"
+                      fillColor="transparent"
                       height={8}
                       testID="dot-icon"
                       width={8}
