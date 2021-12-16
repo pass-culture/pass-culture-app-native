@@ -100,6 +100,7 @@ export const Home: FunctionComponent = () => {
           ListHeaderComponent={ListHeaderComponent}
           initialNumToRender={5}
           onEndReachedThreshold={0.5}
+          removeClippedSubviews={false}
         />
       </HomeBodyLoadingContainer>
       <Spacer.Column numberOfSpaces={6} />
