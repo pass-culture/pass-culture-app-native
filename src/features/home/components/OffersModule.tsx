@@ -1,14 +1,16 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
+import { useUserProfileInfo } from 'features/home/api'
 import { HomeOfferTile } from 'features/home/atoms'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
+import { useOfferModule } from 'features/home/pages/useOfferModule'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
-import { GeoCoordinates } from 'libs/geolocation'
+import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
@@ -16,12 +18,9 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
 type OffersModuleProps = {
-  search: SearchParametersFields
+  search: SearchParametersFields[]
   display: DisplayParametersFields
-  isBeneficiary?: boolean
-  position: GeoCoordinates | null
-  hits: SearchHit[]
-  nbHits: number
+  moduleId: string
   cover: string | null
   index: number
 }
@@ -29,13 +28,18 @@ type OffersModuleProps = {
 const keyExtractor = (item: SearchHit) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
-  const { nbHits, cover, display, search: parameters, position, index, isBeneficiary, hits } = props
-
+  const { cover, display, search, index, moduleId } = props
+  const data = useOfferModule({ search, moduleId })
+  const { position } = useGeolocation()
   const { navigate } = useNavigation<UseNavigationType>()
   const parseSearchParameters = useParseSearchParameters()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
+  const { data: profile } = useUserProfileInfo()
 
+  const { hits = [], nbHits = 0 } = data || {}
+
+  const [parameters] = search
   const moduleName = display.title || parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
@@ -44,6 +48,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const showSeeMore =
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
+
   const onPressSeeMore = showSeeMore
     ? () => {
         analytics.logClickSeeMore(moduleName)
@@ -69,14 +74,14 @@ export const OffersModule = (props: OffersModuleProps) => {
           isDuo={item.offer.isDuo}
           thumbUrl={item.offer.thumbUrl}
           price={getDisplayPrice(item.offer.prices)}
-          isBeneficiary={isBeneficiary}
+          isBeneficiary={profile?.isBeneficiary}
           moduleName={moduleName}
           width={width}
           height={height}
         />
       )
     },
-    [position, isBeneficiary, labelMapping, mapping]
+    [position, profile?.isBeneficiary, labelMapping, mapping]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(display.layout)

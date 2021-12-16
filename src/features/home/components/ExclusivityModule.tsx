@@ -4,16 +4,24 @@ import { PixelRatio } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
+import { shouldDisplayExcluOffer } from 'features/home/components/ExclusivityModule.utils'
 import { ExclusivityPane } from 'features/home/contentful'
+import { useExcluOffer } from 'features/home/pages/useExcluOffer'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useOffer } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
-import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer } from 'ui/theme'
+import { useGeolocation } from 'libs/geolocation'
+import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-export const ExclusivityModule = ({ alt, image, id }: ExclusivityPane) => {
+export const ExclusivityModule = ({
+  alt,
+  image,
+  id,
+  display,
+}: Omit<ExclusivityPane, 'moduleId'>) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: offer } = useOffer({ offerId: id })
+  const { data: offer } = useExcluOffer(id)
+  const { position } = useGeolocation()
 
   const handlePressExclu = useCallback(() => {
     if (typeof id !== 'number') return
@@ -24,7 +32,8 @@ export const ExclusivityModule = ({ alt, image, id }: ExclusivityPane) => {
 
   const source = useMemo(() => ({ uri: image }), [image])
 
-  if (!offer) return null
+  const shouldModuleBeDisplayed = shouldDisplayExcluOffer(display, offer, position)
+  if (!shouldModuleBeDisplayed) return <React.Fragment />
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
@@ -40,6 +49,7 @@ export const ExclusivityModule = ({ alt, image, id }: ExclusivityPane) => {
 
 const Row = styled.View({
   flexDirection: 'row',
+  paddingBottom: getSpacing(6),
 })
 
 const ImageContainer = styled.View({

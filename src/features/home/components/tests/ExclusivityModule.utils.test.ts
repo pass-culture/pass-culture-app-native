@@ -1,5 +1,5 @@
+import { shouldDisplayExcluOffer } from 'features/home/components/ExclusivityModule.utils'
 import { ExclusivityPane } from 'features/home/contentful'
-import { shouldDisplayExcluOffer } from 'features/home/pages/useDisplayedHomeModules.utils'
 import { offerResponseSnap as offer } from 'features/offer/api/snaps/offerResponseSnap'
 import { GeoCoordinates } from 'libs/geolocation'
 

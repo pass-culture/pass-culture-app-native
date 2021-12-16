@@ -377,295 +377,296 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
+              style="padding-bottom: 24px;"
             >
               <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                data-testid="playlistTitle"
-                dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-              >
-                Offres
-              </div>
-              <div
                 class="css-view-1dbjc4n"
-                style="width: 16px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="background-color: rgb(199, 199, 204); height: 20px; width: 1px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 12px;"
-              />
-              <div
-                aria-label="Voir plus d’offres de la sélection Offres"
-                class="css-view-1dbjc4n"
-                data-testid="Voir plus d’offres de la sélection Offres"
-                style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                tabindex="0"
+                style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-text-901oao css-textMultiLine-cens5h"
+                  data-testid="playlistTitle"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                 >
+                  Offres
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 16px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="background-color: rgb(199, 199, 204); height: 20px; width: 1px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 12px;"
+                />
+                <div
+                  aria-label="Voir plus d’offres de la sélection Offres"
+                  class="css-view-1dbjc4n"
+                  data-testid="Voir plus d’offres de la sélection Offres"
+                  style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 8px;"
+                  />
                   <div
                     class="css-text-901oao"
                     dir="auto"
+                    style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                   >
-                    undefined-SVG-Mock
+                    En voir plus
                   </div>
                 </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 8px;"
-                />
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                >
-                  En voir plus
-                </div>
               </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 16px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="position: relative;"
-            >
               <div
-                class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                data-testid="offersModuleList"
-                style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
+                class="css-view-1dbjc4n"
+                style="height: 16px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="position: relative;"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-direction: row;"
+                  class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                  data-testid="offersModuleList"
+                  style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="width: 24px;"
-                    />
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
                     style="flex-direction: row;"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                     >
                       <div
-                        aria-label="offerTile"
                         class="css-view-1dbjc4n"
-                        data-testid="offerTile"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                        tabindex="0"
+                        style="width: 24px;"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-direction: row;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                       >
                         <div
+                          aria-label="offerTile"
                           class="css-view-1dbjc4n"
-                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                          data-testid="offerTile"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                          tabindex="0"
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                            style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
-                              data-testid="categoryImageCaption"
-                              dir="auto"
-                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                             >
-                              Cinéma
+                              <div
+                                class="css-text-901oao css-textOneLine-vcwn7f"
+                                data-testid="categoryImageCaption"
+                                dir="auto"
+                                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Cinéma
+                              </div>
                             </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="margin-top: 8px; max-width: 192px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            dir="auto"
+                            style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Titane - VF
+                          </div>
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            dir="auto"
+                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Dès le 18 août 2021
+                          </div>
+                          <div
+                            class="css-text-901oao"
+                            data-testid="priceIsDuo"
+                            dir="auto"
+                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Gratuit
                           </div>
                         </div>
                       </div>
                       <div
                         class="css-view-1dbjc4n"
-                        style="margin-top: 8px; max-width: 192px;"
-                      >
-                        <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
-                          dir="auto"
-                          style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Titane - VF
-                        </div>
-                        <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
-                          dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Dès le 18 août 2021
-                        </div>
-                        <div
-                          class="css-text-901oao"
-                          data-testid="priceIsDuo"
-                          dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Gratuit
-                        </div>
-                      </div>
+                        style="width: 16px;"
+                      />
                     </div>
                     <div
                       class="css-view-1dbjc4n"
-                      style="width: 16px;"
-                    />
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="flex-direction: row;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      style="flex-direction: row;"
                     >
                       <div
-                        aria-label="offerTile"
                         class="css-view-1dbjc4n"
-                        data-testid="offerTile"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                        tabindex="0"
+                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                       >
                         <div
+                          aria-label="offerTile"
                           class="css-view-1dbjc4n"
-                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                          data-testid="offerTile"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                          tabindex="0"
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                            style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
-                              data-testid="categoryImageCaption"
-                              dir="auto"
-                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                             >
-                              Cinéma
+                              <div
+                                class="css-text-901oao css-textOneLine-vcwn7f"
+                                data-testid="categoryImageCaption"
+                                dir="auto"
+                                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Cinéma
+                              </div>
                             </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="margin-top: 8px; max-width: 192px;"
+                        >
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            dir="auto"
+                            style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Bac Nord - VF
+                          </div>
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            dir="auto"
+                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Dès le 18 août 2021
+                          </div>
+                          <div
+                            class="css-text-901oao"
+                            data-testid="priceIsDuo"
+                            dir="auto"
+                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Gratuit
                           </div>
                         </div>
                       </div>
                       <div
                         class="css-view-1dbjc4n"
-                        style="margin-top: 8px; max-width: 192px;"
-                      >
-                        <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
-                          dir="auto"
-                          style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Bac Nord - VF
-                        </div>
-                        <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
-                          dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Dès le 18 août 2021
-                        </div>
-                        <div
-                          class="css-text-901oao"
-                          data-testid="priceIsDuo"
-                          dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Gratuit
-                        </div>
-                      </div>
+                        style="width: 16px;"
+                      />
                     </div>
                     <div
                       class="css-view-1dbjc4n"
-                      style="width: 16px;"
-                    />
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="flex-direction: row;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      style="flex-direction: row;"
                     >
                       <div
-                        aria-label="offerTile"
                         class="css-view-1dbjc4n"
-                        data-testid="offerTile"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                        tabindex="0"
+                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                       >
                         <div
+                          aria-label="offerTile"
                           class="css-view-1dbjc4n"
-                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                          data-testid="offerTile"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                          tabindex="0"
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                            style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
-                              data-testid="categoryImageCaption"
-                              dir="auto"
-                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                             >
-                              Cinéma
+                              <div
+                                class="css-text-901oao css-textOneLine-vcwn7f"
+                                data-testid="categoryImageCaption"
+                                dir="auto"
+                                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Cinéma
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="margin-top: 8px; max-width: 192px;"
-                      >
                         <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
-                          dir="auto"
-                          style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          class="css-view-1dbjc4n"
+                          style="margin-top: 8px; max-width: 192px;"
                         >
-                          Black Widow - VF
-                        </div>
-                        <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
-                          dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Dès le 18 août 2021
-                        </div>
-                        <div
-                          class="css-text-901oao"
-                          data-testid="priceIsDuo"
-                          dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Gratuit
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            dir="auto"
+                            style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Black Widow - VF
+                          </div>
+                          <div
+                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            dir="auto"
+                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Dès le 18 août 2021
+                          </div>
+                          <div
+                            class="css-text-901oao"
+                            data-testid="priceIsDuo"
+                            dir="auto"
+                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Gratuit
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                  >
                     <div
                       class="css-view-1dbjc4n"
-                      style="width: 24px;"
-                    />
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="width: 24px;"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 24px;"
-            />
             <div
               class="css-view-1dbjc4n"
               style="margin-right: 24px; margin-left: 24px;"
@@ -1838,295 +1839,296 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
+            style="padding-bottom: 24px;"
           >
             <div
-              class="css-text-901oao css-textMultiLine-cens5h"
-              data-testid="playlistTitle"
-              dir="auto"
-              style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-            >
-              Offres
-            </div>
-            <div
               class="css-view-1dbjc4n"
-              style="width: 16px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="background-color: rgb(199, 199, 204); height: 20px; width: 1px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="width: 12px;"
-            />
-            <div
-              aria-label="Voir plus d’offres de la sélection Offres"
-              class="css-view-1dbjc4n"
-              data-testid="Voir plus d’offres de la sélection Offres"
-              style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-              tabindex="0"
+              style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-text-901oao css-textMultiLine-cens5h"
+                data-testid="playlistTitle"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
+                Offres
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 16px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="background-color: rgb(199, 199, 204); height: 20px; width: 1px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="width: 12px;"
+              />
+              <div
+                aria-label="Voir plus d’offres de la sélection Offres"
+                class="css-view-1dbjc4n"
+                data-testid="Voir plus d’offres de la sélection Offres"
+                style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                tabindex="0"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="width: 8px;"
+                />
                 <div
                   class="css-text-901oao"
                   dir="auto"
+                  style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                 >
-                  undefined-SVG-Mock
+                  En voir plus
                 </div>
               </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 8px;"
-              />
-              <div
-                class="css-text-901oao"
-                dir="auto"
-                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-              >
-                En voir plus
-              </div>
             </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 16px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="position: relative;"
-          >
             <div
-              class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-              data-testid="offersModuleList"
-              style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
+              class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="position: relative;"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="flex-direction: row;"
+                class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                data-testid="offersModuleList"
+                style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
               >
                 <div
                   class="css-view-1dbjc4n"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="width: 24px;"
-                  />
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
                   style="flex-direction: row;"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <div
-                      aria-label="offerTile"
                       class="css-view-1dbjc4n"
-                      data-testid="offerTile"
-                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                      tabindex="0"
+                      style="width: 24px;"
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-direction: row;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                     >
                       <div
+                        aria-label="offerTile"
                         class="css-view-1dbjc4n"
-                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        data-testid="offerTile"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                        tabindex="0"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                         >
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
-                            data-testid="categoryImageCaption"
-                            dir="auto"
-                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
-                            Cinéma
+                            <div
+                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
                           </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="margin-top: 8px; max-width: 192px;"
+                      >
+                        <div
+                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          dir="auto"
+                          style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Titane - VF
+                        </div>
+                        <div
+                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          dir="auto"
+                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Dès le 18 août 2021
+                        </div>
+                        <div
+                          class="css-text-901oao"
+                          data-testid="priceIsDuo"
+                          dir="auto"
+                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Gratuit
                         </div>
                       </div>
                     </div>
                     <div
                       class="css-view-1dbjc4n"
-                      style="margin-top: 8px; max-width: 192px;"
-                    >
-                      <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
-                        dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                      >
-                        Titane - VF
-                      </div>
-                      <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
-                        dir="auto"
-                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                      >
-                        Dès le 18 août 2021
-                      </div>
-                      <div
-                        class="css-text-901oao"
-                        data-testid="priceIsDuo"
-                        dir="auto"
-                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                      >
-                        Gratuit
-                      </div>
-                    </div>
+                      style="width: 16px;"
+                    />
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    style="width: 16px;"
-                  />
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="flex-direction: row;"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    style="flex-direction: row;"
                   >
                     <div
-                      aria-label="offerTile"
                       class="css-view-1dbjc4n"
-                      data-testid="offerTile"
-                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                      tabindex="0"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                     >
                       <div
+                        aria-label="offerTile"
                         class="css-view-1dbjc4n"
-                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        data-testid="offerTile"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                        tabindex="0"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                         >
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
-                            data-testid="categoryImageCaption"
-                            dir="auto"
-                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
-                            Cinéma
+                            <div
+                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
                           </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="margin-top: 8px; max-width: 192px;"
+                      >
+                        <div
+                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          dir="auto"
+                          style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Bac Nord - VF
+                        </div>
+                        <div
+                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          dir="auto"
+                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Dès le 18 août 2021
+                        </div>
+                        <div
+                          class="css-text-901oao"
+                          data-testid="priceIsDuo"
+                          dir="auto"
+                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Gratuit
                         </div>
                       </div>
                     </div>
                     <div
                       class="css-view-1dbjc4n"
-                      style="margin-top: 8px; max-width: 192px;"
-                    >
-                      <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
-                        dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                      >
-                        Bac Nord - VF
-                      </div>
-                      <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
-                        dir="auto"
-                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                      >
-                        Dès le 18 août 2021
-                      </div>
-                      <div
-                        class="css-text-901oao"
-                        data-testid="priceIsDuo"
-                        dir="auto"
-                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                      >
-                        Gratuit
-                      </div>
-                    </div>
+                      style="width: 16px;"
+                    />
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    style="width: 16px;"
-                  />
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="flex-direction: row;"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    style="flex-direction: row;"
                   >
                     <div
-                      aria-label="offerTile"
                       class="css-view-1dbjc4n"
-                      data-testid="offerTile"
-                      style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                      tabindex="0"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                     >
                       <div
+                        aria-label="offerTile"
                         class="css-view-1dbjc4n"
-                        style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                        data-testid="offerTile"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                        tabindex="0"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                         >
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
-                            data-testid="categoryImageCaption"
-                            dir="auto"
-                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
-                            Cinéma
+                            <div
+                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              data-testid="categoryImageCaption"
+                              dir="auto"
+                              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Cinéma
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="margin-top: 8px; max-width: 192px;"
-                    >
                       <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
-                        dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        class="css-view-1dbjc4n"
+                        style="margin-top: 8px; max-width: 192px;"
                       >
-                        Black Widow - VF
-                      </div>
-                      <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
-                        dir="auto"
-                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                      >
-                        Dès le 18 août 2021
-                      </div>
-                      <div
-                        class="css-text-901oao"
-                        data-testid="priceIsDuo"
-                        dir="auto"
-                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                      >
-                        Gratuit
+                        <div
+                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          dir="auto"
+                          style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Black Widow - VF
+                        </div>
+                        <div
+                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          dir="auto"
+                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Dès le 18 août 2021
+                        </div>
+                        <div
+                          class="css-text-901oao"
+                          data-testid="priceIsDuo"
+                          dir="auto"
+                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Gratuit
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                >
                   <div
                     class="css-view-1dbjc4n"
-                    style="width: 24px;"
-                  />
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 24px;"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 24px;"
-          />
           <div
             class="css-view-1dbjc4n"
             style="margin-right: 24px; margin-left: 24px;"

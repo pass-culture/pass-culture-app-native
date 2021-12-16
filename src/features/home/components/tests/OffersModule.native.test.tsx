@@ -9,7 +9,6 @@ import {
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { SearchHit, transformHit } from 'libs/search'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
@@ -18,14 +17,13 @@ import { OffersModule } from '../OffersModule'
 mockdate.set(new Date(2020, 10, 16))
 
 const props = {
-  search: {} as SearchParametersFields,
+  search: [{} as SearchParametersFields],
   display: {
     minOffers: 0,
     title: 'Module title',
     layout: 'one-item-medium',
   } as DisplayParametersFields,
-  hits: mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')) as SearchHit[],
-  nbHits: mockedAlgoliaResponse.nbHits,
+  moduleId: 'fakeModuleId',
   cover: null,
   position: null,
 }
@@ -36,26 +34,30 @@ const nativeEventEnd = {
   contentSize: { width: 1600 },
 } as NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']
 
+const mockHits = mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')) as SearchHit[]
+let mockNbHits = mockedAlgoliaResponse.nbHits
+jest.mock('features/home/pages/useOfferModule', () => ({
+  useOfferModule: jest.fn(() => ({ hits: mockHits, nbHits: mockNbHits })),
+}))
+jest.mock('react-query')
+jest.mock('features/home/api')
+
 describe('OffersModule component', () => {
   it('should render correctly - with black title', () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const component = render(reactQueryProviderHOC(<OffersModule {...props} index={1} />))
+    const component = render(<OffersModule {...props} index={1} />)
     expect(component).toMatchSnapshot()
     expect(component.getByTestId('playlistTitle').props.color).toBe(ColorsEnum.BLACK)
   })
+
   it('should render with white title if first module displayed', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const component = render(reactQueryProviderHOC(<OffersModule {...props} index={0} />))
+    const component = render(<OffersModule {...props} index={0} />)
     expect(component.getByTestId('playlistTitle').props.color).toBe(ColorsEnum.WHITE)
   })
 })
 
 describe('OffersModule component - Analytics', () => {
-  afterEach(jest.resetAllMocks)
-
   it('should trigger logEvent "AllTilesSeen" only once', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const component = render(reactQueryProviderHOC(<OffersModule {...props} index={1} />))
+    const component = render(<OffersModule {...props} index={1} />)
     const scrollView = component.getByTestId('offersModuleList')
 
     await act(async () => {
@@ -63,7 +65,7 @@ describe('OffersModule component - Analytics', () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
       await flushAllPromises()
     })
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, props.nbHits)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, mockNbHits)
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
 
     scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
@@ -72,15 +74,12 @@ describe('OffersModule component - Analytics', () => {
 
   it('should trigger logEvent "AllTilesSeen" with module title if no display.title', async () => {
     const component = render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(
-        <OffersModule
-          {...props}
-          search={{ ...props.search, title: 'Search title' }}
-          display={{ ...props.display, title: '' }}
-          index={1}
-        />
-      )
+      <OffersModule
+        {...props}
+        search={[{ title: 'Search title' } as SearchParametersFields]}
+        display={{ ...props.display, title: '' }}
+        index={1}
+      />
     )
     const scrollView = component.getByTestId('offersModuleList')
 
@@ -89,18 +88,15 @@ describe('OffersModule component - Analytics', () => {
       await flushAllPromises()
     })
 
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith('Search title', props.nbHits)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith('Search title', mockNbHits)
   })
 
-  it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', async () => {
-    const component = render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<OffersModule {...props} nbHits={10} index={1} />)
-    )
+  it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', () => {
+    mockNbHits = 10
+    const component = render(<OffersModule {...props} index={1} />)
 
-    await act(async () => {
+    act(() => {
       fireEvent.press(component.getByText('En voir plus'))
-      await flushAllPromises()
     })
 
     expect(analytics.logClickSeeMore).toHaveBeenCalledWith('Module title')

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
 
+// TODO(antoinewg): move to ui folder / delete if duplicate
 export const IdeaIcon: React.FC = (): JSX.Element => {
   return (
     <Svg>

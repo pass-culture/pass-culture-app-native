@@ -6,6 +6,7 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
     Array [
       Object {
         "flexDirection": "row",
+        "paddingBottom": 24,
       },
     ]
   }
@@ -209,6 +210,7 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
     Array [
       Object {
         "flexDirection": "row",
+        "paddingBottom": 24,
       },
     ]
   }

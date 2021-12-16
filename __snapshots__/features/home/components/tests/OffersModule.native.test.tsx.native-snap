@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OffersModule component should render correctly - with black title 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "paddingBottom": 24,
+      },
+    ]
+  }
+>
   <View
     style={
       Array [
@@ -30,7 +38,7 @@ Array [
     >
       Module title
     </Text>
-  </View>,
+  </View>
   <View
     numberOfSpaces={4}
     style={
@@ -40,7 +48,7 @@ Array [
         },
       ]
     }
-  />,
+  />
   <View
     style={
       Array [
@@ -801,7 +809,7 @@ Array [
                 }
                 testID="priceIsDuo"
               >
-                34 €
+                34 € - Duo
               </Text>
             </View>
           </View>
@@ -1025,6 +1033,6 @@ Array [
         </View>
       </View>
     </RCTScrollView>
-  </View>,
-]
+  </View>
+</View>
 `;

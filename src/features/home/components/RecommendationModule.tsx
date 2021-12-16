@@ -1,41 +1,47 @@
-import React, { useCallback } from 'react'
-import { LayoutChangeEvent } from 'react-native'
+import React, { useCallback, useEffect } from 'react'
 
+import { useUserProfileInfo } from 'features/home/api'
 import { HomeOfferTile } from 'features/home/atoms'
 import { DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
+import { useHomeRecommendedHits } from 'features/home/pages/useHomeRecommendedHits'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
-import { GeoCoordinates } from 'libs/geolocation'
+import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
-import { Spacer } from 'ui/theme'
 
 type RecommendationModuleProps = {
   display: DisplayParametersFields
-  isBeneficiary?: boolean
-  position: GeoCoordinates | null
-  hits: SearchHit[]
   index: number
-  setRecommendationY: (y: number) => void
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const { display, isBeneficiary, position, index, setRecommendationY, hits } = props
+  const { display, index } = props
+  const { position } = useGeolocation()
+  const { data: profile } = useUserProfileInfo()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
+  const hits = useHomeRecommendedHits(profile?.id, position)
+  const nbHits = hits?.length || 0
+  const shouldModuleBeDisplayed = nbHits > display.minOffers
+
   const moduleName = display.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
-    analytics.logAllTilesSeen(moduleName, hits.length)
+    analytics.logAllTilesSeen(moduleName, nbHits)
   )
 
-  const onLayout = (event: LayoutChangeEvent) => setRecommendationY(event.nativeEvent.layout.y)
+  useEffect(() => {
+    if (nbHits > 0 && shouldModuleBeDisplayed) {
+      analytics.logRecommendationModuleSeen(display.title, nbHits)
+    }
+  }, [nbHits])
 
   const renderItem: CustomListRenderItem<SearchHit> = useCallback(
     ({ item, width, height }) => {
@@ -52,32 +58,30 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           isDuo={item.offer.isDuo}
           thumbUrl={item.offer.thumbUrl}
           price={getDisplayPrice(item.offer.prices)}
-          isBeneficiary={isBeneficiary}
+          isBeneficiary={profile?.isBeneficiary}
           moduleName={moduleName}
           width={width}
           height={height}
         />
       )
     },
-    [position, isBeneficiary]
+    [position, profile?.isBeneficiary]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(display.layout)
 
+  if (!shouldModuleBeDisplayed) return <React.Fragment />
   return (
-    <React.Fragment>
-      <PassPlaylist
-        testID="offersModuleList"
-        title={display.title}
-        onDarkBackground={index === 0}
-        data={hits}
-        itemHeight={itemHeight}
-        itemWidth={itemWidth}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        onEndReached={logHasSeenAllTilesOnce}
-      />
-      <Spacer.Column testID="recommendationModuleTracker" numberOfSpaces={0} onLayout={onLayout} />
-    </React.Fragment>
+    <PassPlaylist
+      testID="recommendationModuleList"
+      title={display.title}
+      onDarkBackground={index === 0}
+      data={hits || []}
+      itemHeight={itemHeight}
+      itemWidth={itemWidth}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+      onEndReached={logHasSeenAllTilesOnce}
+    />
   )
 }

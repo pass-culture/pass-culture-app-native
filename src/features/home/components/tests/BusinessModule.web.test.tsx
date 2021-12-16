@@ -6,13 +6,13 @@ import waitForExpect from 'wait-for-expect'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import * as HomeAPI from 'features/home/api'
+import { BusinessModule } from 'features/home/components'
+import { BusinessPane } from 'features/home/contentful'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils/web'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { BusinessPane } from '../../contentful'
-import { BusinessModule } from '../BusinessModule'
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
@@ -67,9 +67,9 @@ describe('BusinessModule component', () => {
     })
   })
 
-  // FIXME: Web Integration
-  it('should open url with replaced Email when connected and adequate url and display snackbar waiting for email [Web Integration]', async () => {
-    mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+  it('should open url with replaced Email when connected and adequate url and display snackbar waiting for email', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
     const { getByTestId } = renderModule({ ...props, url: 'some_url_with_email={email}' })
 
     fireEvent.click(getByTestId('imageBusiness'))
@@ -120,6 +120,6 @@ describe('BusinessModule component', () => {
   })
 })
 
-const renderModule = (props: BusinessPane) =>
+const renderModule = (module: BusinessPane) =>
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  render(reactQueryProviderHOC(<BusinessModule {...props} />))
+  render(reactQueryProviderHOC(<BusinessModule module={module} />))

@@ -1,7 +1,6 @@
 import { renderHook, cleanup } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
-import { RecommendationPane } from 'features/home/contentful/moduleTypes'
 import * as AlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -37,7 +36,7 @@ describe('useHomeRecommendedHits', () => {
   })
 
   it('not make any call if there is no recommendation module', async () => {
-    renderHook(() => useHomeRecommendedHits(undefined), {
+    renderHook(() => useHomeRecommendedHits(undefined, null), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -50,10 +49,7 @@ describe('useHomeRecommendedHits', () => {
   })
 
   it('calls fetchAlgolia with params and returns data', async () => {
-    const recommendationModule = new RecommendationPane({
-      display: { title: 'Offres recommandées', layout: 'one-item-medium', minOffers: 4 },
-    })
-    const { result } = renderHook(() => useHomeRecommendedHits(recommendationModule), {
+    const { result } = renderHook(() => useHomeRecommendedHits(mockUserId, null), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })

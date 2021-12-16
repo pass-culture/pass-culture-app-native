@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { IdeaIcon } from 'features/home/assets/IdeaIcon'
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
@@ -21,11 +22,12 @@ import {
 } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-import { fillUrlEmail, shouldUrlBeFilled } from './BusinessModule.utils'
+import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 
-export const BusinessModule = (businessPane: BusinessPane) => {
-  const { title, firstLine, secondLine, leftIcon, image, url } = businessPane
+export const BusinessModule = ({ module }: { module: BusinessPane }) => {
+  const { title, firstLine, secondLine, leftIcon, image, url } = module
   const { appContentWidth } = useTheme()
+  const { isLoggedIn } = useAuthContext()
   const imageWidth = appContentWidth - 2 * MARGIN_DP
   const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_BUSINESS)
 
@@ -56,6 +58,8 @@ export const BusinessModule = (businessPane: BusinessPane) => {
     }
   }, [url, user, shouldRedirect])
 
+  const shouldModuleBeDisplayed = showBusinessModule(module.targetNotConnectedUsersOnly, isLoggedIn)
+  if (!shouldModuleBeDisplayed) return <React.Fragment />
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
@@ -92,6 +96,7 @@ export const BusinessModule = (businessPane: BusinessPane) => {
 
 const Row = styled.View({
   flexDirection: 'row',
+  paddingBottom: getSpacing(6),
 })
 
 const TouchableHighlight = styled.TouchableHighlight({

@@ -12,172 +12,184 @@ exports[`Home component should render correctly without login modal 1`] = `
     ]
   }
 >
-  <RCTScrollView
-    ItemSeparatorComponent={[Function]}
-    ListFooterComponent={<TabBarSpacer />}
-    ListHeaderComponent={[Function]}
-    bounces={false}
-    data={Array []}
-    getItem={[Function]}
-    getItemCount={[Function]}
-    keyExtractor={[Function]}
-    onContentSizeChange={[Function]}
-    onLayout={[Function]}
-    onMomentumScrollBegin={[Function]}
-    onMomentumScrollEnd={[Function]}
-    onScroll={[Function]}
-    onScrollBeginDrag={[Function]}
-    onScrollEndDrag={[Function]}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={400}
-    stickyHeaderIndices={Array []}
-    testID="homeBodyScrollView"
-    viewabilityConfigCallbackPairs={Array []}
+  <View
+    hide={false}
+    style={
+      Array [
+        Object {
+          "overflow": "hidden",
+        },
+      ]
+    }
   >
-    <View>
-      <View
-        onLayout={[Function]}
-      >
+    <RCTScrollView
+      ListFooterComponent={<TabBarSpacer />}
+      ListHeaderComponent={[Function]}
+      bounces={false}
+      data={Array []}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      initialNumToRender={5}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={0.5}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={400}
+      stickyHeaderIndices={Array []}
+      testID="homeBodyScrollView"
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View>
         <View
-          style={
-            Array [
-              Object {
-                "flexGrow": 1,
-                "flexShrink": 0,
-              },
-            ]
-          }
+          onLayout={[Function]}
         >
           <View
-            customHeight={16}
+            style={
+              Array [
+                Object {
+                  "flexGrow": 1,
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              customHeight={16}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "left": 0,
+                    "position": "absolute",
+                    "top": 0,
+                    "zIndex": -1,
+                  },
+                ]
+              }
+            >
+              <View
+                height={294}
+                width={754}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                numberOfSpaces={8}
+                style={
+                  Array [
+                    Object {
+                      "height": 32,
+                    },
+                  ]
+                }
+              />
+              <Text
+                color="#ffffff"
+                fontSize={28}
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Black",
+                      "fontSize": 28,
+                      "fontWeight": "900",
+                      "lineHeight": 36,
+                    },
+                    Object {
+                      "marginHorizontal": 32,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Bienvenue !
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                color="#ffffff"
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Toute la culture à portée de main
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={6}
+              style={
+                Array [
+                  Object {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            customHeight={72}
             enable={true}
             style={
               Array [
                 Object {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "left": 0,
-                  "position": "absolute",
-                  "top": 0,
-                  "zIndex": -1,
-                },
-              ]
-            }
-          >
-            <View
-              height={294}
-              width={754}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexGrow": 1,
-                },
-              ]
-            }
-          >
-            <View
-              numberOfSpaces={8}
-              style={
-                Array [
-                  Object {
-                    "height": 32,
-                  },
-                ]
-              }
-            />
-            <Text
-              color="#ffffff"
-              fontSize={28}
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Black",
-                    "fontSize": 28,
-                    "fontWeight": "900",
-                    "lineHeight": 36,
-                  },
-                  Object {
-                    "marginHorizontal": 32,
-                    "textAlign": "center",
-                  },
-                ]
-              }
-            >
-              Bienvenue !
-            </Text>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "height": 8,
-                  },
-                ]
-              }
-            />
-            <Text
-              color="#ffffff"
-              style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Toute la culture à portée de main
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "height": 24,
+                  "height": 72,
                 },
               ]
             }
           />
         </View>
       </View>
-      <View
-        onLayout={[Function]}
-      >
-        <View
-          customHeight={72}
-          enable={true}
-          style={
-            Array [
-              Object {
-                "height": 72,
-              },
-            ]
-          }
-        />
-      </View>
-    </View>
-  </RCTScrollView>
+    </RCTScrollView>
+  </View>
   <View
     numberOfSpaces={6}
     style={
