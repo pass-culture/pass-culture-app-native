@@ -1,38 +1,124 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
-import { ScrollView } from 'react-native'
+import React, { useCallback, FunctionComponent } from 'react'
+import { FlatList, ScrollView, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import styled from 'styled-components/native'
 
-import { HomeBodyPlaceholder, HomeHeader } from 'features/home/components'
-import { HomeBody } from 'features/home/components/HomeBody'
-import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
+import { useHomepageModules } from 'features/home/api'
+import {
+  BusinessModule,
+  ExclusivityModule,
+  OffersModule,
+  VenuesModule,
+} from 'features/home/components'
+import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
+import { HomeHeader } from 'features/home/components/HomeHeader'
+import { RecommendationModule } from 'features/home/components/RecommendationModule'
+import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/contentful'
+import { RecommendationPane, ProcessedModule } from 'features/home/contentful/moduleTypes'
+import { useShowSkeleton } from 'features/home/pages/useShowSkeleton'
+import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
+import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
+import { analytics, isCloseToBottom } from 'libs/analytics'
 import { Spacer } from 'ui/theme'
 
-import { useShowSkeleton } from './useShowSkeleton'
+const keyExtractor = (item: ProcessedModule, index: number) =>
+  'moduleId' in item ? item.moduleId : `recommendation${index}`
 
-export const Home: FunctionComponent = function () {
-  const { params } = useRoute<UseRouteType<'Home'>>()
-  const showSkeleton = useShowSkeleton()
-  const { displayedModules, homeModules, homeVenuesModules, recommendedHits } =
-    useDisplayedHomeModules(params?.entryId)
+const ListHeaderComponent = () => (
+  <ListHeaderContainer>
+    <Spacer.TopScreen />
+    <HomeHeader />
+  </ListHeaderContainer>
+)
 
-  if (showSkeleton) {
+const renderModule = ({ item, index }: { item: ProcessedModule; index: number }) => {
+  if (isOfferModuleTypeguard(item))
     return (
-      <ScrollView testID="homeScrollView" scrollEventThrottle={400} bounces={false}>
-        <Spacer.TopScreen />
-        <HomeHeader />
-        <HomeBodyPlaceholder />
-        <Spacer.TabBar />
-      </ScrollView>
+      <OffersModule
+        moduleId={item.moduleId}
+        search={item.search}
+        display={item.display}
+        cover={item instanceof OffersWithCover ? item.cover : null}
+        index={index}
+      />
     )
-  }
+
+  if (isVenuesModuleTypeguard(item))
+    return <VenuesModule moduleId={item.moduleId} display={item.display} search={item.search} />
+
+  if (item instanceof RecommendationPane)
+    return <RecommendationModule index={index} display={item.display} />
+
+  if (item instanceof ExclusivityPane)
+    return <ExclusivityModule alt={item.alt} image={item.image} id={item.id} />
+
+  if (item instanceof BusinessPane) return <BusinessModule module={item} />
+
+  return <React.Fragment></React.Fragment>
+}
+
+export const Home: FunctionComponent = () => {
+  const { params } = useRoute<UseRouteType<'Home'>>()
+  const modules = useHomepageModules(params?.entryId) || []
+  const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
+  const showSkeleton = useShowSkeleton()
+
+  const onScroll = useCallback(
+    ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+      if (isCloseToBottom(nativeEvent)) logHasSeenAllModules()
+    },
+    [modules.length]
+  )
 
   return (
-    <HomeBody
-      displayedModules={displayedModules}
-      homeModules={homeModules}
-      homeVenuesModules={homeVenuesModules}
-      recommendedHits={recommendedHits}
-    />
+    <Container>
+      {showSkeleton ? (
+        <ScrollView
+          testID="homeScrollView"
+          scrollEventThrottle={400}
+          bounces={false}
+          scrollEnabled={false}>
+          <Spacer.TopScreen />
+          <HomeHeader />
+          <HomeBodyPlaceholder />
+          <Spacer.TabBar />
+        </ScrollView>
+      ) : (
+        <React.Fragment />
+      )}
+      <HomeBodyLoadingContainer hide={showSkeleton}>
+        <FlatList
+          testID="homeBodyScrollView"
+          scrollEventThrottle={400}
+          bounces={false}
+          onScroll={onScroll}
+          data={modules}
+          renderItem={renderModule}
+          keyExtractor={keyExtractor}
+          ListFooterComponent={<Spacer.TabBar />}
+          ListHeaderComponent={ListHeaderComponent}
+          initialNumToRender={5}
+          onEndReachedThreshold={0.5}
+        />
+      </HomeBodyLoadingContainer>
+      <Spacer.Column numberOfSpaces={6} />
+    </Container>
   )
 }
+
+const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide }) => ({
+  height: hide ? 0 : undefined,
+  overflow: 'hidden',
+}))
+
+const Container = styled.View({
+  flexBasis: 1,
+  flexGrow: 1,
+  flexShrink: 0,
+})
+
+const ListHeaderContainer = styled.View({
+  flexGrow: 1,
+  flexShrink: 0,
+})
