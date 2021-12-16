@@ -19,14 +19,14 @@ describe('QuitSignupModal', () => {
   it('should not display the modal when visible is false', () => {
     const { queryByText } = renderQuitSignupModal(false)
 
-    const title = queryByText("Veux-tu abandonner l'inscription\u00a0?")
+    const title = queryByText("Veux-tu abandonner l'inscription ?")
     expect(title).toBeFalsy()
   })
 
   it('should display the modal when visible is true', () => {
     const { queryByText } = renderQuitSignupModal(true)
 
-    const button = queryByText("Veux-tu abandonner l'inscription\u00a0?")
+    const button = queryByText("Veux-tu abandonner l'inscription ?")
     expect(button).toBeTruthy()
   })
 
