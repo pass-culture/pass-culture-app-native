@@ -44,7 +44,12 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
       />
       <PasswordSecurityRules password={password} />
       <Spacer.Column numberOfSpaces={6} />
-      <ButtonPrimary title={t`Continuer`} onPress={submitPassword} disabled={disabled} />
+      <ButtonPrimary
+        title={t`Continuer`}
+        accessibilityLabel={props.accessibilityLabelForNextStep}
+        onPress={submitPassword}
+        disabled={disabled}
+      />
       <Spacer.Column numberOfSpaces={5} />
     </React.Fragment>
   )

@@ -21,8 +21,12 @@ i18n.loadLocaleData({
 
 i18n.activate('fr')
 
-export function accessibilityAndTestId(id: string) {
-  return { accessible: true, accessibilityLabel: id, testID: id }
+export function accessibilityAndTestId(accessibilityLabel?: string, testID?: string) {
+  return {
+    accessible: !!accessibilityLabel,
+    accessibilityLabel,
+    testID: testID || accessibilityLabel,
+  }
 }
 
 export async function flushAllPromises() {

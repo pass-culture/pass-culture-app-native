@@ -161,7 +161,12 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           {renderErrorMessages()}
         </DateInputContainer>
         <Spacer.Column numberOfSpaces={14} />
-        <ButtonPrimary title={t`Continuer`} disabled={!state.isDateValid} onPress={goToNextStep} />
+        <ButtonPrimary
+          title={t`Continuer`}
+          accessibilityLabel={props.accessibilityLabelForNextStep}
+          disabled={!state.isDateValid}
+          onPress={goToNextStep}
+        />
         <Spacer.Column numberOfSpaces={5} />
       </InnerContainer>
       <AppInformationModal

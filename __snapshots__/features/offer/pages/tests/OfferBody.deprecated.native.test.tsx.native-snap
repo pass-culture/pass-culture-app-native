@@ -843,7 +843,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 }
                               >
                                 <View
-                                  accessibilityLabel="description-details-button"
+                                  accessibilityLabel="voir plus"
                                   accessible={true}
                                   collapsable={false}
                                   focusable={true}
@@ -1852,7 +1852,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               }
                             >
                               <View
-                                accessibilityLabel="report-offer-body"
+                                accessibilityLabel="Signaler l'offre"
                                 accessible={true}
                                 focusable={true}
                                 onClick={[Function]}
@@ -2328,7 +2328,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                         }
                                       />
                                       <View
-                                        accessibilityLabel="go-to-reason-report-button"
+                                        accessibilityLabel="Signaler l'offre"
                                         accessible={true}
                                         focusable={true}
                                         onClick={[Function]}
@@ -3307,7 +3307,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 }
                               >
                                 <View
-                                  accessibilityLabel="description-details-button"
+                                  accessibilityLabel="voir plus"
                                   accessible={true}
                                   collapsable={false}
                                   focusable={true}
@@ -4673,7 +4673,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               }
                             >
                               <View
-                                accessibilityLabel="report-offer-body"
+                                accessibilityLabel="Signaler l'offre"
                                 accessible={true}
                                 focusable={true}
                                 onClick={[Function]}
@@ -5149,7 +5149,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                         }
                                       />
                                       <View
-                                        accessibilityLabel="go-to-reason-report-button"
+                                        accessibilityLabel="Signaler l'offre"
                                         accessible={true}
                                         focusable={true}
                                         onClick={[Function]}

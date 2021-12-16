@@ -10,6 +10,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface BaseButtonProps {
+  accessibilityLabel?: string
   adjustsFontSizeToFit?: boolean
   buttonHeight?: 'small' | 'tall'
   disabled?: boolean
@@ -55,6 +56,7 @@ const _AppButton = <T extends AppButtonProps>({
   borderColor,
   buttonHeight,
   inlineHeight,
+  accessibilityLabel,
   testId,
   title,
   textColor,
@@ -65,10 +67,9 @@ const _AppButton = <T extends AppButtonProps>({
 }: Only<T, AppButtonProps>) => {
   const pressHandler = disabled || isLoading ? undefined : onPress
   const longPressHandler = disabled || isLoading ? undefined : onLongPress
-  const containerTestID = testId ? testId : title
   return (
-    <Container
-      {...accessibilityAndTestId(containerTestID)}
+    <StyledTouchableOpacity
+      {...accessibilityAndTestId(accessibilityLabel || title, testId || title)}
       backgroundColor={backgroundColor}
       fullWidth={fullWidth}
       borderColor={borderColor}
@@ -80,14 +81,18 @@ const _AppButton = <T extends AppButtonProps>({
       style={style}>
       {isLoading ? (
         <Logo
-          {...accessibilityAndTestId('button-isloading-icon')}
+          {...accessibilityAndTestId(undefined, 'button-isloading-icon')}
           color={loadingIconColor}
           size={iconSize}
         />
       ) : (
         <Fragment>
           {!!Icon && (
-            <Icon {...accessibilityAndTestId('button-icon')} color={iconColor} size={iconSize} />
+            <Icon
+              {...accessibilityAndTestId(undefined, 'button-icon')}
+              color={iconColor}
+              size={iconSize}
+            />
           )}
           <Title
             textColor={textColor}
@@ -99,14 +104,14 @@ const _AppButton = <T extends AppButtonProps>({
           </Title>
         </Fragment>
       )}
-    </Container>
+    </StyledTouchableOpacity>
   )
 }
 
 // memo is used to avoid useless rendering while props remain unchanged
 export const AppButton = memo(_AppButton)
 
-interface ContainerProps {
+interface StyledTouchableOpacityProps {
   backgroundColor?: ColorsEnum
   borderColor?: ColorsEnum
   buttonHeight: 'small' | 'tall'
@@ -115,9 +120,9 @@ interface ContainerProps {
   fullWidth?: boolean
 }
 
-const Container = styled(TouchableOpacity).attrs(() => ({
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
-}))<ContainerProps>(
+}))<StyledTouchableOpacityProps>(
   ({ inline, backgroundColor, borderColor, buttonHeight, inlineHeight, fullWidth }) => ({
     flexDirection: 'row',
     justifyContent: 'center',
