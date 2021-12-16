@@ -1,4 +1,4 @@
-import { Check } from 'ui/svg/icons/Check'
+import { CheckDeprecated as Check } from 'ui/svg/icons/Check_deprecated'
 import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
 import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
 import { ColorsEnum } from 'ui/theme'

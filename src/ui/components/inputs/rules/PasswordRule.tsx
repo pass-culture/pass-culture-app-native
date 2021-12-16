@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
-import { Check } from 'ui/svg/icons/Check'
+import { CheckDeprecated as Check } from 'ui/svg/icons/Check_deprecated'
 import { Close } from 'ui/svg/icons/Close'
 import { ColorsEnum } from 'ui/theme'
 
