@@ -6,6 +6,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
     Array [
       Object {
         "flexDirection": "row",
+        "paddingBottom": 24,
       },
     ]
   }

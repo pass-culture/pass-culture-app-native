@@ -7,7 +7,7 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="flex-direction: row;"
+        style="flex-direction: row; padding-bottom: 24px;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -34,7 +34,7 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      style="flex-direction: row;"
+      style="flex-direction: row; padding-bottom: 24px;"
     >
       <div
         class="css-view-1dbjc4n"

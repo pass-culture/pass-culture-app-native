@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExclusivityModule component should render correctly 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitBoxDirection": "normal",
+      "WebkitBoxOrient": "horizontal",
+      "WebkitFlexDirection": "row",
+      "flexDirection": "row",
+      "msFlexDirection": "row",
+      "paddingBottom": "24px",
+    }
+  }
+>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "width": "24px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "maxHeight": "360px",
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      data-testid="imageExclu"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      style={
+        Object {
+          "MozUserSelect": "none",
+          "WebkitUserSelect": "none",
+          "borderBottomLeftRadius": "8px",
+          "borderBottomRightRadius": "8px",
+          "borderTopLeftRadius": "8px",
+          "borderTopRightRadius": "8px",
+          "cursor": "pointer",
+          "maxHeight": "360px",
+          "msTouchAction": "manipulation",
+          "msUserSelect": "none",
+          "touchAction": "manipulation",
+          "userSelect": "none",
+        }
+      }
+      tabIndex="0"
+    />
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "width": "24px",
+      }
+    }
+  />
+</div>
+`;
