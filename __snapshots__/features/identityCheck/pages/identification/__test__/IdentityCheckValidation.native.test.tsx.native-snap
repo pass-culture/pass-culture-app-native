@@ -178,7 +178,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                   ]
                 }
               >
-                Les informations extraites sont-elles correctes ?
+                Les informations extraites sont-elles correctes ?
               </Text>
             </View>
           </View>

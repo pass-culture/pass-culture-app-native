@@ -304,7 +304,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement.
           </Text>
           <View
-            accessibilityLabel="C’est quoi ÉduConnect ?"
+            accessibilityLabel="C’est quoi ÉduConnect ?"
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -335,7 +335,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                 "width": "100%",
               }
             }
-            testID="C’est quoi ÉduConnect ?"
+            testID="C’est quoi ÉduConnect ?"
           >
             <View
               fill="#151515"
@@ -365,7 +365,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
               textColor="#151515"
               textSize={12}
             >
-              C’est quoi ÉduConnect ?
+              C’est quoi ÉduConnect ?
             </Text>
           </View>
           <View
@@ -1098,7 +1098,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement.
           </Text>
           <View
-            accessibilityLabel="C’est quoi ÉduConnect ?"
+            accessibilityLabel="C’est quoi ÉduConnect ?"
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -1129,7 +1129,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 "width": "100%",
               }
             }
-            testID="C’est quoi ÉduConnect ?"
+            testID="C’est quoi ÉduConnect ?"
           >
             <View
               fill="#151515"
@@ -1159,7 +1159,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               textColor="#151515"
               textSize={12}
             >
-              C’est quoi ÉduConnect ?
+              C’est quoi ÉduConnect ?
             </Text>
           </View>
           <View
