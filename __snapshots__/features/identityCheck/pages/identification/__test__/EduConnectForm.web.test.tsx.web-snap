@@ -1,446 +1,356 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectForm 1`] = `
-<div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "WebkitBoxDirection": "normal",
-      "WebkitBoxFlex": 1,
-      "WebkitBoxOrient": "vertical",
-      "WebkitFlexBasis": "0px",
-      "WebkitFlexDirection": "column",
-      "WebkitFlexGrow": 1,
-      "WebkitFlexShrink": 1,
-      "display": "flex",
-      "flexBasis": "0px",
-      "flexDirection": "column",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "msFlexDirection": "column",
-      "msFlexNegative": 1,
-      "msFlexPositive": 1,
-      "msFlexPreferredSize": "0px",
-    }
-  }
->
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "height": "16px",
-      }
-    }
-  />
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitBoxPack": "center",
-        "WebkitFlexDirection": "row",
-        "WebkitJustifyContent": "center",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "height": "64px",
-        "justifyContent": "center",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "msFlexPack": "center",
-      }
-    }
-  >
-    <div
-      className="css-text-901oao"
-      dir="auto"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "color": "rgba(255,255,255,1.00)",
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": "18px",
-          "lineHeight": "22px",
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-          "textAlign": "center",
-        }
-      }
-    >
-      Mon identité
-    </div>
-    <div
-      aria-label="Revenir en arrière"
-      className="css-view-1dbjc4n"
-      data-testid="Revenir en arrière"
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onKeyDown={[Function]}
-      style={
-        Object {
-          "MozTransitionProperty": "opacity",
-          "MozUserSelect": "none",
-          "WebkitTransitionDuration": "0s",
-          "WebkitTransitionProperty": "opacity",
-          "WebkitUserSelect": "none",
-          "cursor": "pointer",
-          "left": "12px",
-          "msTouchAction": "manipulation",
-          "msUserSelect": "none",
-          "position": "absolute",
-          "touchAction": "manipulation",
-          "transitionDuration": "0s",
-          "transitionProperty": "opacity",
-          "userSelect": "none",
-        }
-      }
-      tabIndex="0"
-    >
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
       <div
-        className="css-view-1dbjc4n"
-        data-testid="icon-back"
+        class="css-view-1dbjc4n"
+        style="display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
       >
         <div
-          className="css-text-901oao"
-          dir="auto"
+          class="css-view-1dbjc4n"
+          style="height: 16px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-direction: row; height: 64px; justify-content: center;"
         >
-          icon-back-SVG-Mock
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+          >
+            Mon identité
+          </div>
+          <div
+            aria-label="Revenir en arrière"
+            class="css-view-1dbjc4n"
+            data-testid="Revenir en arrière"
+            style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            tabindex="0"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="icon-back"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                icon-back-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-direction: column; height: 100%; padding-top: 12px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-direction: column; flex-grow: 1; justify-content: center; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="align-self: center; padding: 28px 28px 28px 28px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; text-align: center;"
+                    >
+                      Identification
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 16px;"
+                    />
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+                    >
+                      Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 32px;"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
+                >
+                  <div
+                    aria-label="Ouvrir un onglet ÉduConnect"
+                    class="css-view-1dbjc4n"
+                    data-testid="Ouvrir un onglet ÉduConnect"
+                    style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+                    >
+                      Ouvrir un onglet ÉduConnect
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 8px;"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="bottom: 0px; height: 100%; left: 0px; position: absolute; right: 0px; top: 0px; width: 100%; z-index: -1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxFlex": 1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
-      }
-    }
-  >
+  </body>,
+  "container": <div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-        }
-      }
+      class="css-view-1dbjc4n"
+      style="display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
     >
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "vertical",
-            "WebkitFlexDirection": "column",
-            "alignItems": "center",
-            "backgroundColor": "rgba(255,255,255,1.00)",
-            "borderTopLeftRadius": "22px",
-            "borderTopRightRadius": "22px",
-            "display": "flex",
-            "flexDirection": "column",
-            "height": "100%",
-            "msFlexAlign": "center",
-            "msFlexDirection": "column",
-            "paddingTop": "12px",
-          }
-        }
+        class="css-view-1dbjc4n"
+        style="height: 16px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="align-items: center; flex-direction: row; height: 64px; justify-content: center;"
       >
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": "500px",
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-              "width": "100%",
-            }
-          }
+          class="css-text-901oao"
+          dir="auto"
+          style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+        >
+          Mon identité
+        </div>
+        <div
+          aria-label="Revenir en arrière"
+          class="css-view-1dbjc4n"
+          data-testid="Revenir en arrière"
+          style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          tabindex="0"
         >
           <div
-            className="css-view-1dbjc4n"
-            onScroll={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            onWheel={[Function]}
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxFlex": 1,
-                "WebkitBoxOrient": "vertical",
-                "WebkitFlexDirection": "column",
-                "WebkitFlexGrow": 1,
-                "WebkitFlexShrink": 1,
-                "WebkitOverflowScrolling": "touch",
-                "WebkitTransform": "translateZ(0px)",
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "msFlexDirection": "column",
-                "msFlexNegative": 1,
-                "msFlexPositive": 1,
-                "overflowX": "hidden",
-                "overflowY": "auto",
-                "transform": "translateZ(0px)",
-              }
-            }
+            class="css-view-1dbjc4n"
+            data-testid="icon-back"
           >
             <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxFlex": 1,
-                  "WebkitBoxOrient": "vertical",
-                  "WebkitBoxPack": "center",
-                  "WebkitFlexDirection": "column",
-                  "WebkitFlexGrow": 1,
-                  "WebkitJustifyContent": "center",
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                  "justifyContent": "center",
-                  "msFlexDirection": "column",
-                  "msFlexPack": "center",
-                  "msFlexPositive": 1,
-                  "paddingBottom": "0px",
-                  "paddingLeft": "20px",
-                  "paddingRight": "20px",
-                }
-              }
+              class="css-text-901oao"
+              dir="auto"
+            >
+              icon-back-SVG-Mock
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-direction: column; height: 100%; padding-top: 12px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
             >
               <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "WebkitAlignSelf": "center",
-                    "alignSelf": "center",
-                    "msFlexItemAlign": "center",
-                    "msGridRowAlign": "center",
-                    "paddingBottom": "28px",
-                    "paddingLeft": "28px",
-                    "paddingRight": "28px",
-                    "paddingTop": "28px",
-                  }
-                }
+                class="css-view-1dbjc4n"
+                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
               >
                 <div
-                  className="css-view-1dbjc4n"
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: column; flex-grow: 1; justify-content: center; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <div
-                    className="css-text-901oao"
-                    dir="auto"
+                    class="css-view-1dbjc4n"
+                    style="align-self: center; padding: 28px 28px 28px 28px;"
                   >
-                    undefined-SVG-Mock
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
                   </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(98, 98, 98); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; text-align: center;"
+                  >
+                    Identification
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 16px;"
+                  />
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+                  >
+                    Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 32px;"
+                  />
                 </div>
               </div>
               <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(98,98,98,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                    "textAlign": "center",
-                  }
-                }
+                class="css-view-1dbjc4n"
+                style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
-                Identification
+                <div
+                  aria-label="Ouvrir un onglet ÉduConnect"
+                  class="css-view-1dbjc4n"
+                  data-testid="Ouvrir un onglet ÉduConnect"
+                  style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-text-901oao css-textOneLine-vcwn7f"
+                    dir="auto"
+                    style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+                  >
+                    Ouvrir un onglet ÉduConnect
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 8px;"
+                />
               </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "16px",
-                  }
-                }
-              />
-              <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(98,98,98,1.00)",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "32px",
-                  }
-                }
-              />
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="bottom: 0px; height: 100%; left: 0px; position: absolute; right: 0px; top: 0px; width: 100%; z-index: -1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+        >
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "backgroundColor": "rgba(255,255,255,1.00)",
-                "bottom": "0px",
-                "left": "0px",
-                "paddingBottom": "20px",
-                "paddingLeft": "20px",
-                "paddingRight": "20px",
-                "paddingTop": "12px",
-                "position": "absolute",
-                "right": "0px",
-              }
-            }
+            class="css-text-901oao"
+            dir="auto"
           >
-            <div
-              aria-label="Ouvrir un onglet ÉduConnect"
-              className="css-view-1dbjc4n"
-              data-testid="Ouvrir un onglet ÉduConnect"
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onKeyDown={[Function]}
-              style={
-                Object {
-                  "MozTransitionProperty": "opacity",
-                  "MozUserSelect": "none",
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitBoxPack": "center",
-                  "WebkitFlexDirection": "row",
-                  "WebkitJustifyContent": "center",
-                  "WebkitTransitionDuration": "0s",
-                  "WebkitTransitionProperty": "opacity",
-                  "WebkitUserSelect": "none",
-                  "alignItems": "center",
-                  "backgroundColor": "rgba(235,0,85,1.00)",
-                  "borderBottomLeftRadius": "24px",
-                  "borderBottomRightRadius": "24px",
-                  "borderBottomWidth": "0px",
-                  "borderLeftWidth": "0px",
-                  "borderRightWidth": "0px",
-                  "borderTopLeftRadius": "24px",
-                  "borderTopRightRadius": "24px",
-                  "borderTopWidth": "0px",
-                  "cursor": "pointer",
-                  "flexDirection": "row",
-                  "height": "40px",
-                  "justifyContent": "center",
-                  "maxWidth": "500px",
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                  "msFlexPack": "center",
-                  "msTouchAction": "manipulation",
-                  "msUserSelect": "none",
-                  "paddingBottom": "2px",
-                  "paddingLeft": "2px",
-                  "paddingRight": "2px",
-                  "paddingTop": "2px",
-                  "touchAction": "manipulation",
-                  "transitionDuration": "0s",
-                  "transitionProperty": "opacity",
-                  "userSelect": "none",
-                  "width": "100%",
-                }
-              }
-              tabIndex="0"
-            >
-              <div
-                className="css-text-901oao css-textOneLine-vcwn7f"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(255,255,255,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                    "marginLeft": "5px",
-                    "maxWidth": "100%",
-                  }
-                }
-              >
-                Ouvrir un onglet ÉduConnect
-              </div>
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "height": "8px",
-                }
-              }
-            />
+            undefined-SVG-Mock
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "bottom": "0px",
-        "height": "100%",
-        "left": "0px",
-        "position": "absolute",
-        "right": "0px",
-        "top": "0px",
-        "width": "100%",
-        "zIndex": -1,
-      }
-    }
-  >
-    <div
-      className="css-view-1dbjc4n"
-    >
-      <div
-        className="css-text-901oao"
-        dir="auto"
-      >
-        undefined-SVG-Mock
-      </div>
-    </div>
-  </div>
-</div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;
