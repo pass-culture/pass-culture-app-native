@@ -36,7 +36,9 @@ export function LoggedOutHeader() {
         />
         <Spacer.Column numberOfSpaces={5} />
         <LoginCta>
-          <Typo.Body color={ColorsEnum.WHITE}>{t`Tu as déjà un compte ?` + '\u00a0'}</Typo.Body>
+          <Typo.Body color={ColorsEnum.WHITE}>
+            {t`Tu as déjà un compte\u00a0?` + '\u00a0'}
+          </Typo.Body>
           <TouchableOpacity
             onPress={() => navigate('Login', { preventCancellation: true })}
             {...accessibilityAndTestId(t`Connecte-toi`)}>

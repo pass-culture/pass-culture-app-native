@@ -20,7 +20,7 @@ export const DMSInformation = () => {
   return (
     <React.Fragment>
       <Container>
-        <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Tu n'as pas de smartphone ?`}</Typo.Body>
+        <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Tu n'as pas de smartphone\u00a0?`}</Typo.Body>
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryBlack
           title={t`Identification par le site Démarches-Simplifiées`}

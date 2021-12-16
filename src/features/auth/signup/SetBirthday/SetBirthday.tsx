@@ -144,7 +144,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   return (
     <React.Fragment>
       <InnerContainer>
-        <ButtonTertiary title={t`Pourquoi ?`} onPress={onPressWhy} />
+        <ButtonTertiary title={t`Pourquoi\u00a0?`} onPress={onPressWhy} />
         <Spacer.Column numberOfSpaces={8} />
         <DateInputContainer>
           <DateInput
