@@ -1,6 +1,6 @@
-import { CheckDeprecated as Check } from 'ui/svg/icons/Check_deprecated'
-import { InfoDeprecated } from 'ui/svg/icons/Info_deprecated'
-import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
+import { Check } from 'ui/svg/icons/Check'
+import { Error } from 'ui/svg/icons/Error'
+import { Info } from 'ui/svg/icons/Info'
 import { ColorsEnum } from 'ui/theme'
 
 import { SnackBarSettings, SnackBarType } from './types'
@@ -18,14 +18,14 @@ export const mapSnackBarTypeToStyle = (
       }
     case SnackBarType.ERROR:
       return {
-        icon: WarningDeprecated,
+        icon: Error,
         backgroundColor: ColorsEnum.ERROR,
         progressBarColor: ColorsEnum.PRIMARY_DISABLED,
         color: ColorsEnum.WHITE,
       }
     case SnackBarType.INFO:
       return {
-        icon: InfoDeprecated,
+        icon: Info,
         backgroundColor: ColorsEnum.ACCENT,
         progressBarColor: ColorsEnum.WHITE,
         color: ColorsEnum.WHITE,
