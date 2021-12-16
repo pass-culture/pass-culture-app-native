@@ -61,6 +61,7 @@ const getCompleteProfile = (
       firstName: profile.name.firstName,
       lastName: profile.name.lastName,
       postalCode: profile.city.postalCode,
+      schoolTypeId: profile.schoolType,
     }
   }
   return null
