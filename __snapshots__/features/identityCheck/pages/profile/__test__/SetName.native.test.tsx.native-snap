@@ -178,7 +178,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   ]
                 }
               >
-                Comment t'appelles-tu ?
+                Comment t'appelles-tu ?
               </Text>
             </View>
             <View

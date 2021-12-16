@@ -198,7 +198,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
           ]
         }
       >
-        Tu as déjà un compte ? 
+        Tu as déjà un compte ? 
       </Text>
       <View
         accessibilityLabel="Connecte-toi"

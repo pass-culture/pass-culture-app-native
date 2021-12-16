@@ -24,7 +24,7 @@ Array [
       ]
     }
   >
-    Où ?
+    Où ?
   </Text>,
   <View
     numberOfSpaces={4}
