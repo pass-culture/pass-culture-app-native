@@ -15,8 +15,6 @@ export const EduConnectErrors = withEduConnectErrorBoundary(() => {
     throw new EduConnectError(EduConnectErrorMessageEnum.UserAgeNotValid)
   } else if (params?.code === 'UserTypeNotStudent') {
     throw new EduConnectError(EduConnectErrorMessageEnum.UserTypeNotStudent)
-  } else if (params?.code === 'OutOfTestPhase') {
-    throw new EduConnectError(EduConnectErrorMessageEnum.OutOfTestPhase)
   } else if (params?.code === 'UserNotWhitelisted') {
     throw new EduConnectError(EduConnectErrorMessageEnum.UserNotWhitelisted)
   } else {

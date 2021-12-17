@@ -15,7 +15,6 @@ export enum EduConnectErrorMessageEnum {
   UserAgeNotValid = 'UserAgeNotValid',
   UserNotWhitelisted = 'UserNotWhitelisted',
   UserTypeNotStudent = 'UserTypeNotStudent',
-  OutOfTestPhase = 'OutOfTestPhase',
   GenericError = 'GenericError',
 }
 
@@ -30,7 +29,7 @@ type NotEligibleEduConnectErrorData = {
   onPrimaryButtonPress?: () => void
 }
 
-const OutOfTestPhase: NotEligibleEduConnectErrorData = {
+const UserNotWhitelisted: NotEligibleEduConnectErrorData = {
   Icon: Clock,
   title: t`Tu ne fais pas partie de la phase de test`,
   description:
@@ -116,8 +115,7 @@ export function useNotEligibleEduConnectErrorData(
       })
 
     case EduConnectErrorMessageEnum.UserNotWhitelisted:
-    case EduConnectErrorMessageEnum.OutOfTestPhase:
-      return OutOfTestPhase
+      return UserNotWhitelisted
 
     default:
       return GenericError

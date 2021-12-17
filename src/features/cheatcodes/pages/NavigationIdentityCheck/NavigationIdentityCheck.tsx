@@ -78,10 +78,7 @@ export function NavigationIdentityCheck(): JSX.Element {
           title={'UserTypeNotStudent Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent)}
         />
-        <LinkToComponent
-          title={'OutOfTestPhase Error'}
-          onPress={() => trigger(EduConnectErrorMessageEnum.OutOfTestPhase)}
-        />
+
         <LinkToComponent
           title={'UserNotWhitelisted Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.UserNotWhitelisted)}
