@@ -19,7 +19,7 @@ export const IdentityVerificationText = () => (
 )
 
 const Container = styled.View({ marginHorizontal: getSpacing(2) })
-const Title = styled(Typo.Title4)({ textAlign: 'center', fontFamily: 'Montserrat-Bold' })
+const Title = styled(Typo.Title4)({ textAlign: 'center' })
 const Body = styled(Typo.Body).attrs({
   color: ColorsEnum.GREY_DARK,
 })({

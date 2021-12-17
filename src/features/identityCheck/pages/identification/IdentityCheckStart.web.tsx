@@ -9,8 +9,7 @@ import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/compo
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
-import { OrSeparator } from 'ui/components/OrSeparator'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
+import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { Spacer, getSpacing } from 'ui/theme'
 
 export const IdentityCheckStart = () => {
@@ -29,12 +28,12 @@ export const IdentityCheckStart = () => {
         scrollChildren={
           <Container>
             <Spacer.Flex />
-            <BicolorIdCardWithMagnifyingGlass size={getSpacing(30)} />
+            <BicolorPhonePending size={getSpacing(30)} />
             <Spacer.Column numberOfSpaces={6} />
             <IdentityVerificationText />
             <Spacer.Column numberOfSpaces={6} />
             <ButtonPrimary onPress={showModal} title={t`Vérification par smartphone`} />
-            <OrSeparator />
+            <Spacer.Column numberOfSpaces={8} />
             <DMSInformation />
             <Spacer.Flex />
           </Container>
