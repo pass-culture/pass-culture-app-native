@@ -20,8 +20,7 @@ module.exports = {
         (node) => {
           context.report({
             node,
-            message:
-              'Please use \\u00a0 (nbsp) instead of whitespace before !, ?, :, ;, €, » and after «',
+            message: 'Please use \\u00a0 (nbsp) instead of whitespace before !, ?',
             fix: function (fixer) {
               const textToReplace = node.value.raw.replace(/\s+([!?])/g, '\\u00a0$1')
               return fixer.replaceText(node, `\`${textToReplace}\``)
