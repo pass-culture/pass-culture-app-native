@@ -7,14 +7,15 @@ import styled, { useTheme } from 'styled-components/native'
 
 import {
   monthNamesShort,
-  getListOfDatesInMonth,
-  YEAR_LIST,
+  getDatesInMonth,
+  getYears,
   monthNames,
   dayNames,
   dayNamesShort,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InputError } from 'ui/components/inputs/InputError'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -79,17 +80,39 @@ export const CalendarPicker: React.FC<Props> = ({
     setMarkedDates({ [DateStr]: { selected: true } })
   }, [desktopCalendarDate])
 
-  const optionGroups = useMemo(
-    () => ({
-      day: getListOfDatesInMonth(
-        monthNamesShort.indexOf(mobileDateValues.month),
-        mobileDateValues.year
-      ),
-      month: monthNamesShort,
-      year: YEAR_LIST,
-    }),
-    [mobileDateValues.month, mobileDateValues.year, monthNamesShort, YEAR_LIST]
-  )
+  const { isMobileDateInvalid, optionGroups } = useMemo(() => {
+    const {
+      day: selectedMobileDay,
+      month: selectedMobileMonth,
+      year: selectedMobileYear,
+    } = mobileDateValues
+    const selectedMobileMonthIndex = monthNamesShort.indexOf(selectedMobileMonth)
+    const now = new Date()
+    const currentYear = now.getFullYear()
+    const currentMonth = now.getMonth()
+    const currentDate = now.getDate()
+
+    let invalid = false
+    if (selectedMobileYear < currentYear) {
+      invalid = true
+    } else if (selectedMobileMonthIndex < currentMonth && currentYear === selectedMobileYear) {
+      invalid = true
+    } else if (
+      selectedMobileDay < currentDate &&
+      currentMonth === selectedMobileMonthIndex &&
+      currentYear === selectedMobileYear
+    ) {
+      invalid = true
+    }
+    return {
+      isMobileDateInvalid: invalid && isTouch,
+      optionGroups: {
+        day: getDatesInMonth(selectedMobileMonthIndex, selectedMobileYear),
+        month: monthNamesShort,
+        year: getYears(currentYear, 10),
+      },
+    }
+  }, [mobileDateValues, monthNamesShort, getYears])
 
   function handleMobileDateChange(name: string, value: number | string) {
     setMobileDateValues((prevMobileDateValues) => ({ ...prevMobileDateValues, [name]: value }))
@@ -151,9 +174,15 @@ export const CalendarPicker: React.FC<Props> = ({
         <ButtonPrimary
           testId={'validationButton'}
           title={t`Valider la date`}
+          disabled={isMobileDateInvalid}
           onPress={onValidate}
           adjustsFontSizeToFit={true}
         />
+        {isMobileDateInvalid ? (
+          <InputError visible messageId={t`Choisis une date valide :)`} numberOfSpacesTop={1} />
+        ) : (
+          <Spacer.Column numberOfSpaces={7} />
+        )}
       </CalendarButtonWrapper>
       <Spacer.BottomScreen />
     </AppModal>
@@ -176,7 +205,8 @@ const CalendarPickerWrapperDesktop = styled.View(({ theme }) => ({
 }))
 
 const CalendarButtonWrapper = styled.View({
-  margin: 20,
+  margin: 10,
+  marginBottom: 0,
   alignItems: 'center',
   alignSelf: 'stretch',
 })
