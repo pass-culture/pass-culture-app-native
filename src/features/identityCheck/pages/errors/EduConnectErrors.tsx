@@ -7,7 +7,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 
 export const EduConnectErrors = withEduConnectErrorBoundary(() => {
   const { params } = useRoute<UseRouteType<'EduConnectErrors'>>()
-  params.logoutUrl && fetch(params.logoutUrl)
+  params.logoutUrl && globalThis.window.open(params.logoutUrl)
 
   if (params?.code === 'UserAgeNotValid18YearsOld') {
     throw new EduConnectError(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld)
