@@ -1428,18 +1428,18 @@ msgstr "Le pass Culture"
 
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid ""
-"Le pass Culture de ton navigateur ne semble plus à jour !\n"
+"Le pass Culture de ton navigateur ne semble plus à jour !\n"
 "Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible."
 msgstr ""
-"Le pass Culture de ton navigateur ne semble plus à jour !\n"
+"Le pass Culture de ton navigateur ne semble plus à jour !\n"
 "Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible."
 
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid ""
-"Le pass Culture ne semble plus à jour sur ton téléphone !\n"
+"Le pass Culture ne semble plus à jour sur ton téléphone !\n"
 "Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible."
 msgstr ""
-"Le pass Culture ne semble plus à jour sur ton téléphone !\n"
+"Le pass Culture ne semble plus à jour sur ton téléphone !\n"
 "Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible."
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
@@ -2633,11 +2633,11 @@ msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée ava
 msgid ""
 "Tu n’as pas de réservations en cours.\n"
 "Découvre les offres disponibles \n"
-"sans attendre !"
+"sans attendre !"
 msgstr ""
 "Tu n’as pas de réservations en cours.\n"
 "Découvre les offres disponibles \n"
-"sans attendre !"
+"sans attendre !"
 
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation."
