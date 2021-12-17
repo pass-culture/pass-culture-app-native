@@ -80,7 +80,7 @@ export function SecondCard(props: AchievementCardKeyProps) {
   }
 
   let subtitle = t`et si tu as...`
-  let text = t`de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application.`
+  let text = t`de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.`
 
   if (!enabledGeneralisation) {
     const deposit = depositAmountsByAge.eighteenYearsOldDeposit.replace(' ', '')

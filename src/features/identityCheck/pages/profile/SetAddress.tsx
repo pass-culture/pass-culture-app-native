@@ -112,7 +112,7 @@ export const SetAddress = () => {
             onChangeText={onChangeAddress}
             value={query}
             label={label}
-            placeholder={t`Ex : 34 avenue de l'Opéra`}
+            placeholder={t`Ex\u00a0: 34 avenue de l'Opéra`}
             textContentType="addressState"
             RightIcon={() => (query.length > 0 ? <RightIcon /> : null)}
             {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
@@ -131,7 +131,7 @@ export const SetAddress = () => {
                 onPressOption={onAddressSelection}
                 optionKey={address}
                 key={address}
-                {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1} : ${address}`)}
+                {...accessibilityAndTestId(t`Proposition d'adresse ${index + 1}\u00a0: ${address}`)}
               />
             ))}
           </AdressesContainer>

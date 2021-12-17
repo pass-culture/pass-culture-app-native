@@ -33,7 +33,7 @@ const UserNotWhitelisted: NotEligibleEduConnectErrorData = {
   Icon: Clock,
   title: t`Tu ne fais pas partie de la phase de test`,
   description:
-    t`Encore un peu de patience : en fonction de ton âge, tu pourras compléter ton inscription à la date suivante : ` +
+    t`Encore un peu de patience\u00a0: en fonction de ton âge, tu pourras compléter ton inscription à la date suivante\u00a0: ` +
     '\n\n' +
     t`17 ans, le 10 janvier` +
     '\n' +

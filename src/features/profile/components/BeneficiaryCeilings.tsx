@@ -58,7 +58,7 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
   return (
     <GreyContainer>
       <Spacer.Column numberOfSpaces={6} />
-      <Title>{t`Tu peux encore dépenser :`}</Title>
+      <Title>{t`Tu peux encore dépenser\u00a0:`}</Title>
       <Spacer.Column numberOfSpaces={5} />
       {!!props.domainsCredit && (
         <CeilingsRow>
