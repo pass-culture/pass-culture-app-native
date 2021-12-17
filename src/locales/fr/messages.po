@@ -340,8 +340,8 @@ msgstr "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est 
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
-#: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
+#: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
@@ -451,6 +451,10 @@ msgstr "Choisir un lieu"
 msgid "Choisis ton statut"
 msgstr "Choisis ton statut"
 
+#: src/features/search/components/CalendarPicker.web.tsx
+msgid "Choisis une date valide :)"
+msgstr "Choisis une date valide :)"
+
 #: src/libs/itinerary/useItinerary.ts
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
@@ -500,7 +504,7 @@ msgstr "Comment ça marche ?"
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/navigation/RootNavigator/routes.ts
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Compte 15-17 créé !"
 msgstr "Compte 15-17 créé !"
 
@@ -1306,7 +1310,7 @@ msgstr "Je cherche"
 msgid "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
 msgstr "Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
 
-#: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
+#: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
 msgid "Je découvre les offres"
 msgstr "Je découvre les offres"
 
@@ -2604,7 +2608,7 @@ msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer d
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 
-#: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
+#: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
@@ -3328,6 +3332,6 @@ msgstr "à portée de main !"
 msgid "épuisé"
 msgstr "épuisé"
 
-#: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
+#: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
 msgid "€ viennent d'être crédités sur ton compte pass Culture"
 msgstr "€ viennent d'être crédités sur ton compte pass Culture"
