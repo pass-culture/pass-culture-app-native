@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React, { useState, useMemo, useRef, useEffect } from 'react'
 import Picker from 'react-mobile-picker'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
-import { DateData, Theme } from 'react-native-calendars/src/types'
+import { Theme as RNCalendarTheme, DateData } from 'react-native-calendars/src/types'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -24,12 +24,7 @@ import { getSpacing } from 'ui/theme'
 
 import { Props } from './CalendarPicker.d'
 
-LocaleConfig.locales['fr'] = {
-  monthNames,
-  monthNamesShort,
-  dayNames,
-  dayNamesShort,
-}
+LocaleConfig.locales['fr'] = { monthNames, monthNamesShort, dayNames, dayNamesShort }
 LocaleConfig.defaultLocale = 'fr'
 
 function renderArrow(direction: 'left' | 'right') {
@@ -38,17 +33,9 @@ function renderArrow(direction: 'left' | 'right') {
   return <React.Fragment />
 }
 
-const RNCalendarTheme = { marginHorizontal: getSpacing(-2) }
-const calendarHeaderStyle = {
-  'stylesheet.calendar.header': {
-    header: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginTop: 6,
-      alignItems: 'center',
-    },
-  },
-} as Theme
+const RN_CALENDAR_STYLE: React.ComponentProps<typeof RNCalendar>['style'] = {
+  marginHorizontal: getSpacing(-2),
+}
 
 export const CalendarPicker: React.FC<Props> = ({
   selectedDate,
@@ -56,7 +43,19 @@ export const CalendarPicker: React.FC<Props> = ({
   hideCalendar,
   setSelectedDate,
 }) => {
-  const { isTouch } = useTheme()
+  const { isTouch, fontFamily, colors } = useTheme()
+  const calendarTheme: RNCalendarTheme = useMemo(
+    () => ({
+      selectedDayBackgroundColor: colors.primary,
+      textDayHeaderFontSize: 16,
+      textDayHeaderFontFamily: fontFamily.bold,
+      textDayFontFamily: fontFamily.regular,
+      textMonthFontFamily: fontFamily.regular,
+      todayButtonFontFamily: fontFamily.regular,
+    }),
+    [fontFamily, colors]
+  )
+
   const minDate = new Date()
   minDate.setHours(0, 0, 0, 0)
   const ref = useRef<Node>(null)
@@ -134,14 +133,14 @@ export const CalendarPicker: React.FC<Props> = ({
         <CalendarPickerWrapperDesktop>
           <RNCalendar
             minDate={minDate}
-            style={RNCalendarTheme}
+            style={RN_CALENDAR_STYLE}
             current={selectedDate as unknown as LocaleConfig}
             firstDay={1}
             enableSwipeMonths={true}
             renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}
             hideExtraDays={true}
             renderArrow={renderArrow}
-            theme={calendarHeaderStyle}
+            theme={calendarTheme}
             markedDates={markedDates}
             onDayPress={handleDesktopDateChange}
           />
