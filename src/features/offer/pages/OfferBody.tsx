@@ -113,7 +113,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
       <Spacer.Column numberOfSpaces={4} />
 
       <SectionWithDivider visible={shouldDisplayWhenBlock} margin={true}>
-        <SectionTitle>{t`Quand ?`}</SectionTitle>
+        <SectionTitle>{t`Quand\u00a0?`}</SectionTitle>
         <SectionBody>{formattedDate}</SectionBody>
       </SectionWithDivider>
 

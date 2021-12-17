@@ -1852,7 +1852,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             ]
           }
         >
-          Où ?
+          Où ?
         </Text>
         <View
           numberOfSpaces={4}

@@ -178,7 +178,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                   ]
                 }
               >
-                Dans quelle ville résides-tu ?
+                Dans quelle ville résides-tu ?
               </Text>
             </View>
             <View

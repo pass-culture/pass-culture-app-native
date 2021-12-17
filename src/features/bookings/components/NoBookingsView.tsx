@@ -18,7 +18,7 @@ export function NoBookingsView() {
       <Explanation color={ColorsEnum.GREY_DARK}>
         {t`Tu n’as pas de réservations en cours.
       Découvre les offres disponibles 
-      sans attendre !`}
+      sans attendre\u00a0!`}
       </Explanation>
       <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>

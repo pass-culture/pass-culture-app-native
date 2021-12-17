@@ -321,8 +321,8 @@ msgid "Basculer l'affichage du mot de passe"
 msgstr "Basculer l'affichage du mot de passe"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
-msgid "Besoin d'un lien ?"
-msgstr "Besoin d'un lien ?"
+msgid "Besoin d'un lien ?"
+msgstr "Besoin d'un lien ?"
 
 #: src/libs/parsers/venueType.ts
 msgid "Bibliothèque / médiathèque"
@@ -489,12 +489,12 @@ msgid "Commencer la vérification"
 msgstr "Commencer la vérification"
 
 #: src/features/identityCheck/pages/profile/SetName.tsx
-msgid "Comment t'appelles-tu ?"
-msgstr "Comment t'appelles-tu ?"
+msgid "Comment t'appelles-tu ?"
+msgstr "Comment t'appelles-tu ?"
 
 #: src/features/profile/pages/Profile.tsx
-msgid "Comment ça marche ?"
-msgstr "Comment ça marche ?"
+msgid "Comment ça marche ?"
+msgstr "Comment ça marche ?"
 
 #: src/features/cheatcodes/pages/CheatMenu/CheatMenu.tsx
 msgid "Composants"
@@ -685,20 +685,20 @@ msgid "Culture scientifique"
 msgstr "Culture scientifique"
 
 #: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
-msgid "C’est quoi ÉduConnect ?"
-msgstr "C’est quoi ÉduConnect ?"
+msgid "C’est quoi ÉduConnect ?"
+msgstr "C’est quoi ÉduConnect ?"
 
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "C’est très rapide !"
 msgstr "C’est très rapide !"
 
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
-msgid "Dans quel type d'établissement ?"
-msgstr "Dans quel type d'établissement ?"
+msgid "Dans quel type d'établissement ?"
+msgstr "Dans quel type d'établissement ?"
 
 #: src/features/identityCheck/pages/profile/SetCity.tsx
-msgid "Dans quelle ville résides-tu ?"
-msgstr "Dans quelle ville résides-tu ?"
+msgid "Dans quelle ville résides-tu ?"
+msgstr "Dans quelle ville résides-tu ?"
 
 #: src/features/bookOffer/components/BookDateChoice.tsx
 #: src/features/search/sections/titles.ts
@@ -1004,8 +1004,8 @@ msgid "Entrée pour le prénom"
 msgstr "Entrée pour le prénom"
 
 #: src/features/_marketingAndCommunication/pages/DeeplinksGenerator.tsx
-msgid "Envie de tout envie de lien ?"
-msgstr "Envie de tout envie de lien ?"
+msgid "Envie de tout envie de lien ?"
+msgstr "Envie de tout envie de lien ?"
 
 #: src/features/identityCheck/atoms/DMSInformation.web.tsx
 msgid "Environ 10 jours"
@@ -1024,8 +1024,8 @@ msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
-msgid "Es-tu sûr de vouloir supprimer ton compte ?"
-msgstr "Es-tu sûr de vouloir supprimer ton compte ?"
+msgid "Es-tu sûr de vouloir supprimer ton compte ?"
+msgstr "Es-tu sûr de vouloir supprimer ton compte ?"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Etablissement scolaire - Accueil"
@@ -1053,8 +1053,8 @@ msgid "Faire une nouvelle demande"
 msgstr "Faire une nouvelle demande"
 
 #: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
-msgid "Fais-tu partie de la phase de test ?"
-msgstr "Fais-tu partie de la phase de test ?"
+msgid "Fais-tu partie de la phase de test ?"
+msgstr "Fais-tu partie de la phase de test ?"
 
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
@@ -1447,18 +1447,18 @@ msgstr "Le pass Culture"
 
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid ""
-"Le pass Culture de ton navigateur ne semble plus à jour !\n"
+"Le pass Culture de ton navigateur ne semble plus à jour !\n"
 "Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible."
 msgstr ""
-"Le pass Culture de ton navigateur ne semble plus à jour !\n"
+"Le pass Culture de ton navigateur ne semble plus à jour !\n"
 "Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible."
 
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid ""
-"Le pass Culture ne semble plus à jour sur ton téléphone !\n"
+"Le pass Culture ne semble plus à jour sur ton téléphone !\n"
 "Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible."
 msgstr ""
-"Le pass Culture ne semble plus à jour sur ton téléphone !\n"
+"Le pass Culture ne semble plus à jour sur ton téléphone !\n"
 "Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible."
 
 #: src/features/profile/pages/NotificationSettings.tsx
@@ -1475,8 +1475,8 @@ msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
-msgid "Les informations extraites sont-elles correctes ?"
-msgstr "Les informations extraites sont-elles correctes ?"
+msgid "Les informations extraites sont-elles correctes ?"
+msgstr "Les informations extraites sont-elles correctes ?"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé."
@@ -1488,8 +1488,8 @@ msgid "Les informations que tu as renseignées ne seront pas enregistrées."
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées."
 
 #: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
-msgid "Les informations que tu as renseignées sont-elles correctes ?"
-msgstr "Les informations que tu as renseignées sont-elles correctes ?"
+msgid "Les informations que tu as renseignées sont-elles correctes ?"
+msgstr "Les informations que tu as renseignées sont-elles correctes ?"
 
 #: src/libs/geolocation/enums.ts
 msgid "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
@@ -1625,8 +1625,8 @@ msgid "Modifier mon e-mail"
 msgstr "Modifier mon e-mail"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
-msgid "Mon crédit est expiré, que faire ?"
-msgstr "Mon crédit est expiré, que faire ?"
+msgid "Mon crédit est expiré, que faire ?"
+msgstr "Mon crédit est expiré, que faire ?"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
@@ -1661,8 +1661,8 @@ msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
 #: src/features/auth/login/Login.tsx
-msgid "Mot de passe oublié ?"
-msgstr "Mot de passe oublié ?"
+msgid "Mot de passe oublié ?"
+msgstr "Mot de passe oublié ?"
 
 #: src/libs/parsers/venueType.ts
 msgid "Musique - Disquaire"
@@ -1862,8 +1862,8 @@ msgid "Où"
 msgstr "Où"
 
 #: src/libs/geolocation/components/WhereSection.tsx
-msgid "Où ?"
-msgstr "Où ?"
+msgid "Où ?"
+msgstr "Où ?"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Page introuvable"
@@ -1971,17 +1971,13 @@ msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton nu
 msgid "Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer."
 msgstr "Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer."
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Pourquoi ?"
-msgstr "Pourquoi ?"
+#: src/features/profile/components/BeneficiaryCeilings.tsx
+msgid "Pourquoi les biens numériques sont-ils limités ?"
+msgstr "Pourquoi les biens numériques sont-ils limités ?"
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx
-msgid "Pourquoi les biens numériques sont-ils limités ?"
-msgstr "Pourquoi les biens numériques sont-ils limités ?"
-
-#: src/features/profile/components/BeneficiaryCeilings.tsx
-msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
-msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
+msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
+msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Pourquoi saisir ma date de naissance ?"
@@ -1991,6 +1987,10 @@ msgstr "Pourquoi saisir ma date de naissance ?"
 #: src/features/offer/components/useReportOfferModalContent.tsx
 msgid "Pourquoi signales-tu"
 msgstr "Pourquoi signales-tu"
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "Pourquoi ?"
+msgstr "Pourquoi ?"
 
 #: src/libs/parsers/venueType.ts
 msgid "Pratique artistiques"
@@ -2017,8 +2017,8 @@ msgid "Problème technique ;("
 msgstr "Problème technique ;("
 
 #: src/features/profile/pages/Profile.tsx
-msgid "Problèmes pour ouvrir un lien ?"
-msgstr "Problèmes pour ouvrir un lien ?"
+msgid "Problèmes pour ouvrir un lien ?"
+msgstr "Problèmes pour ouvrir un lien ?"
 
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
@@ -2054,12 +2054,12 @@ msgid "Prénom et nom"
 msgstr "Prénom et nom"
 
 #: src/features/offer/pages/OfferBody.tsx
-msgid "Quand ?"
-msgstr "Quand ?"
+msgid "Quand ?"
+msgstr "Quand ?"
 
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
-msgid "Quelle est ton adresse ?"
-msgstr "Quelle est ton adresse ?"
+msgid "Quelle est ton adresse ?"
+msgstr "Quelle est ton adresse ?"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Quelques conseils"
@@ -2074,8 +2074,8 @@ msgid "Questions fréquentes"
 msgstr "Questions fréquentes"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "Qui est-ce ?"
-msgstr "Qui est-ce ?"
+msgid "Qui est-ce ?"
+msgstr "Qui est-ce ?"
 
 #: src/features/search/sections/titles.ts
 msgid "Rayon"
@@ -2589,8 +2589,8 @@ msgid "Tu as déjà signalé cette offre"
 msgstr "Tu as déjà signalé cette offre"
 
 #: src/features/profile/components/LoggedOutHeader.tsx
-msgid "Tu as déjà un compte ?"
-msgstr "Tu as déjà un compte ?"
+msgid "Tu as déjà un compte ?"
+msgstr "Tu as déjà un compte ?"
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
@@ -2629,12 +2629,12 @@ msgid "Tu es sur le point d'archiver"
 msgstr "Tu es sur le point d'archiver"
 
 #: src/features/identityCheck/atoms/DMSInformation.web.tsx
-msgid "Tu n'as pas de smartphone ?"
-msgstr "Tu n'as pas de smartphone ?"
+msgid "Tu n'as pas de smartphone ?"
+msgstr "Tu n'as pas de smartphone ?"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-msgid "Tu n'as pas reçu le sms ?"
-msgstr "Tu n'as pas reçu le sms ?"
+msgid "Tu n'as pas reçu le sms ?"
+msgstr "Tu n'as pas reçu le sms ?"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Tu ne fais pas partie de la phase de test"
@@ -2648,11 +2648,11 @@ msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée ava
 msgid ""
 "Tu n’as pas de réservations en cours.\n"
 "Découvre les offres disponibles \n"
-"sans attendre !"
+"sans attendre !"
 msgstr ""
 "Tu n’as pas de réservations en cours.\n"
 "Découvre les offres disponibles \n"
-"sans attendre !"
+"sans attendre !"
 
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation."
@@ -2751,8 +2751,8 @@ msgid "Téléphone - Formulaire"
 msgstr "Téléphone - Formulaire"
 
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
-msgid "Un lien ne fonctionne pas ?"
-msgstr "Un lien ne fonctionne pas ?"
+msgid "Un lien ne fonctionne pas ?"
+msgstr "Un lien ne fonctionne pas ?"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
@@ -2878,12 +2878,12 @@ msgid "Version"
 msgstr "Version"
 
 #: src/features/auth/components/QuitSignupModal.tsx
-msgid "Veux-tu abandonner l'inscription ?"
-msgstr "Veux-tu abandonner l'inscription ?"
+msgid "Veux-tu abandonner l'inscription ?"
+msgstr "Veux-tu abandonner l'inscription ?"
 
 #: src/features/identityCheck/components/QuitIdentityCheckModal.tsx
-msgid "Veux-tu abandonner la vérification d'identité ?"
-msgstr "Veux-tu abandonner la vérification d'identité ?"
+msgid "Veux-tu abandonner la vérification d'identité ?"
+msgstr "Veux-tu abandonner la vérification d'identité ?"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Victime de notre succès !"
@@ -2928,8 +2928,8 @@ msgid "Voir toutes les offres"
 msgstr "Voir toutes les offres"
 
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
-msgid "Vois-tu ton établissement ?"
-msgstr "Vois-tu ton établissement ?"
+msgid "Vois-tu ton établissement ?"
+msgstr "Vois-tu ton établissement ?"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksResult.tsx
 msgid "Votre lien"
@@ -3021,8 +3021,8 @@ msgstr "carte d'identité"
 
 #: src/features/offer/components/useReportOfferModalContent.tsx
 #: src/features/offer/components/useReportOfferModalContent.tsx
-msgid "cette offre ?"
-msgstr "cette offre ?"
+msgid "cette offre ?"
+msgstr "cette offre ?"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "credit expired on date"

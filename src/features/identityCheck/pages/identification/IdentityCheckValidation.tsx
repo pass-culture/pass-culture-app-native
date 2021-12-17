@@ -28,7 +28,7 @@ export const IdentityCheckValidation = () => {
     <PageWithHeader
       title={t`Mon identité`}
       fixedTopChildren={
-        <CenteredTitle title={t`Les informations extraites sont-elles correctes ?`} />
+        <CenteredTitle title={t`Les informations extraites sont-elles correctes\u00a0?`} />
       }
       scrollChildren={
         <BodyContainer>

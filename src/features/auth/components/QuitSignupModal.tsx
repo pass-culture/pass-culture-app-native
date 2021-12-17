@@ -31,7 +31,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
     navigateToHome()
   }
 
-  const title = t`Veux-tu abandonner l'inscription ?`
+  const title = t`Veux-tu abandonner l'inscription\u00a0?`
   const description = t`Les informations que tu as renseignées ne seront pas enregistrées.`
 
   return (

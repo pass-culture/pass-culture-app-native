@@ -178,7 +178,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   ]
                 }
               >
-                Quelle est ton adresse ?
+                Quelle est ton adresse ?
               </Text>
             </View>
             <View

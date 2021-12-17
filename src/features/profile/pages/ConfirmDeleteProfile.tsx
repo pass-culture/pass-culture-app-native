@@ -41,7 +41,7 @@ export function ConfirmDeleteProfile() {
 
   return (
     <GenericInfoPage
-      title={t`Es-tu sûr de vouloir supprimer ton compte ?`}
+      title={t`Es-tu sûr de vouloir supprimer ton compte\u00a0?`}
       icon={Error}
       iconSize={getSpacing(25)}>
       <StyledBody>{t`Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies.`}</StyledBody>

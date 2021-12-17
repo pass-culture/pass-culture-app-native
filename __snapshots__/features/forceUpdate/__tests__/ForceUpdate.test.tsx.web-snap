@@ -166,7 +166,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
           }
         }
       >
-        Le pass Culture de ton navigateur ne semble plus à jour !
+        Le pass Culture de ton navigateur ne semble plus à jour !
 Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible.
       </div>
       <div

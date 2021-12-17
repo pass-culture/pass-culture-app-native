@@ -31,9 +31,9 @@ const title = Platform.select({
 })
 
 const description = Platform.select({
-  default: t`Le pass Culture ne semble plus à jour sur ton téléphone !
+  default: t`Le pass Culture ne semble plus à jour sur ton téléphone\u00a0!
                 Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.`,
-  web: t`Le pass Culture de ton navigateur ne semble plus à jour !
+  web: t`Le pass Culture de ton navigateur ne semble plus à jour\u00a0!
                 Pour des questions de performance et de sécurité merci d'actualiser la page pour obtenir la dernière version disponible.`,
 })
 

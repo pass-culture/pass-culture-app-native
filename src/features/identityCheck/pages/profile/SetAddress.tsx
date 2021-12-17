@@ -105,7 +105,7 @@ export const SetAddress = () => {
       title={t`Profil`}
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle title={t`Quelle est ton adresse ?`} />
+          <CenteredTitle title={t`Quelle est ton adresse\u00a0?`} />
           <Spacer.Column numberOfSpaces={5} />
           <TextInput
             autoFocus
