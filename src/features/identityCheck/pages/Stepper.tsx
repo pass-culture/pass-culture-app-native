@@ -3,8 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { IdentityCheckMethod } from 'api/gen'
-import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
+import { IdentityCheckMethod, MaintenancePageType, SubscriptionStep } from 'api/gen'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
@@ -26,8 +25,7 @@ export const IdentityCheckStepper = () => {
   const steps = useIdentityCheckSteps()
   const getStepState = useGetStepState()
   const context = useIdentityCheckContext()
-  const { data: subscription } = useNextSubscriptionStep()
-  useSetCurrentSubscriptionStep()
+  const { subscription } = useSetCurrentSubscriptionStep()
 
   const { visible, showModal, hideModal } = useModal(false)
   const {
@@ -40,6 +38,14 @@ export const IdentityCheckStepper = () => {
     if (context.step === null && steps[0])
       context.dispatch({ type: 'SET_STEP', payload: steps[0].name })
   }, [steps.length])
+
+  useEffect(() => {
+    if (subscription?.nextSubscriptionStep === SubscriptionStep.Maintenance) {
+      navigate('IdentityCheckUnavailable', {
+        withDMS: subscription?.maintenancePageType === MaintenancePageType.WithDms,
+      })
+    }
+  }, [subscription])
 
   function showQuitIdentityCheckModal() {
     if (context.step) analytics.logQuitIdentityCheck(context.step)

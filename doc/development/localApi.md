@@ -24,7 +24,7 @@ To launch the web application, run `yarn start:web:testing`.
 
 #### Mobile app
 
-To make the mmobile app request the backend, you either need to rebuild the application, OR you can change [this line](https://github.com/pass-culture/pass-culture-app-native/blob/masteer/src/api/api.ts#L7):
+To make the mobile app request the backend, you either need to rebuild the application, OR you can change [this line](https://github.com/pass-culture/pass-culture-app-native/blob/master/src/api/api.ts#L7):
 
 ```diff
 +   basePath: 'http://localhost',
