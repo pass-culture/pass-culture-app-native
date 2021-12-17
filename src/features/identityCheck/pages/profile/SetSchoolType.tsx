@@ -25,9 +25,9 @@ export const SetSchoolType = () => {
   )
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
-  const onPressContinue = () => {
+  const onPressContinue = async () => {
     if (!selectedSchoolTypeId) return
-    dispatch({ type: 'SET_SCHOOL_TYPE', payload: selectedSchoolTypeId })
+    await dispatch({ type: 'SET_SCHOOL_TYPE', payload: selectedSchoolTypeId })
     navigateToNextScreen()
   }
 
