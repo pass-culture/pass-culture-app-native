@@ -4,14 +4,14 @@ import React, { memo, PropsWithChildren, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SubscriptionMessage } from 'api/gen'
+import { SubscriptionMessage, SubscriptionStep } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { IdentityCheckPendingBadge } from 'features/profile/components/IdentityCheckPendingBadge'
+import { SubscriptionMessageBadge } from 'features/profile/components/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
@@ -59,10 +59,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     : undefined
 
   const moduleBannerWording = isUserUnderage
-    ? t({
-        id: 'enjoy underage deposit',
-        message: 'Profite de ton crédit',
-      })
+    ? t`Profite de ton crédit`
     : t({
         id: 'enjoy deposit',
         values: { deposit },
@@ -72,7 +69,13 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const NonBeneficiaryBanner = () => {
     if (props.isEligibleForBeneficiaryUpgrade) {
       if (props.subscriptionMessage) {
-        return <IdCheckProcessingBadge subscriptionMessage={props.subscriptionMessage} />
+        return <SubscriptionMessageBadge subscriptionMessage={props.subscriptionMessage} />
+      }
+      if (
+        subscription?.hasIdentityCheckPending &&
+        subscription?.nextSubscriptionStep !== SubscriptionStep.HonorStatement
+      ) {
+        return <IdentityCheckPendingBadge />
       }
       if (subscription?.nextSubscriptionStep) {
         return (
@@ -97,9 +100,6 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
             />
           </View>
         )
-      }
-      if (subscription?.hasIdentityCheckPending) {
-        return <IdentityCheckPendingBadge />
       }
     }
     if (eligibilityStartDatetime && eligibilityStartDatetime > today) {

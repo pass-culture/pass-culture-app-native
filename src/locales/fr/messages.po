@@ -110,6 +110,10 @@ msgstr "Académie de"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
+msgstr "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
+
 #: src/features/offer/pages/OfferBody.tsx
 #: src/features/profile/pages/Profile.tsx
 #: src/features/venue/pages/VenueBody.tsx
@@ -621,6 +625,10 @@ msgstr "Continuer l'inscription"
 msgid "Continuer la vérification"
 msgstr "Continuer la vérification"
 
+#: src/features/auth/signup/SignupForm.tsx
+msgid "Continuer vers l'étape"
+msgstr "Continuer vers l'étape"
+
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
 msgstr "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
@@ -737,7 +745,7 @@ msgstr "Distance"
 msgid "Données personnelles"
 msgstr "Données personnelles"
 
-#: src/features/profile/components/IdCheckProcessingBadge.tsx
+#: src/features/profile/components/SubscriptionMessageBadge.tsx
 msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 
@@ -850,7 +858,6 @@ msgid "En raison d’une erreur technique, l’offre n’a pas pu être réserv�
 msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
 
 #: src/features/home/atoms/SeeMore.tsx
-#: src/ui/components/PassPlaylist.tsx
 #: src/ui/components/PassPlaylist.tsx
 msgid "En voir plus"
 msgstr "En voir plus"
@@ -1512,8 +1519,8 @@ msgstr "Localisation"
 
 #: src/features/maintenance/Maintenance.tsx
 #: src/libs/firestore/maintenance.ts
-msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
-msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
+msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
+msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
 #: src/ui/components/inputs/DateInput.tsx
 #: src/ui/components/inputs/DateInput.web.test.tsx
@@ -2018,6 +2025,10 @@ msgstr "Problèmes pour ouvrir un lien ?"
 msgid "Profil"
 msgstr "Profil"
 
+#: src/features/profile/components/NonBeneficiaryHeader.tsx
+msgid "Profite de ton crédit"
+msgstr "Profite de ton crédit"
+
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 msgid "Proposition d'adresse {0} : {address}"
 msgstr "Proposition d'adresse {0} : {address}"
@@ -2464,8 +2475,8 @@ msgid "Ton identité restera anonyme auprès des acteurs culturels."
 msgstr "Ton identité restera anonyme auprès des acteurs culturels."
 
 #: src/features/profile/components/IdentityCheckPendingBadge.tsx
-msgid "Ton inscription est en cours de traitement"
-msgstr "Ton inscription est en cours de traitement"
+msgid "Ton inscription est en cours de traitement."
+msgstr "Ton inscription est en cours de traitement."
 
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 msgid "Ton inscription est en cours de vérification. Tu recevras une notification dès que ton dossier sera validé."
@@ -2908,6 +2919,10 @@ msgstr "Voir ma réservation"
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
+#: src/ui/components/PassPlaylist.tsx
+msgid "Voir plus d’offres de la sélection"
+msgstr "Voir plus d’offres de la sélection"
+
 #: src/features/venue/components/VenueOffers.tsx
 msgid "Voir toutes les offres"
 msgstr "Voir toutes les offres"
@@ -3074,10 +3089,6 @@ msgstr "en ligne"
 msgid "enjoy deposit"
 msgstr "Profite de {deposit}"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx
-msgid "enjoy underage deposit"
-msgstr "Profite de ton crédit"
-
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu as..."
 msgstr "et si tu as..."
@@ -3114,7 +3125,7 @@ msgstr "le {date}"
 msgid "l'un des 21 établissements de test"
 msgstr "l'un des 21 établissements de test"
 
-#: src/features/profile/components/IdCheckProcessingBadge.tsx
+#: src/features/profile/components/SubscriptionMessageBadge.tsx
 msgid "last update"
 msgstr "Dossier mis à jour le : {day} à {hour}"
 
@@ -3316,4 +3327,3 @@ msgstr "épuisé"
 #: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
 msgid "€ viennent d'être crédités sur ton compte pass Culture"
 msgstr "€ viennent d'être crédités sur ton compte pass Culture"
-

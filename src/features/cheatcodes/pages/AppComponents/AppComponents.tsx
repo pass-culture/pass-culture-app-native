@@ -13,8 +13,8 @@ import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicke
 import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
-import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
+import { SubscriptionMessageBadge } from 'features/profile/components/SubscriptionMessageBadge'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { useUtmParams } from 'libs/utm'
@@ -500,7 +500,7 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Communication InApp</Typo.Title4>
         <Text>Long texte</Text>
         <View>
-          <IdCheckProcessingBadge
+          <SubscriptionMessageBadge
             subscriptionMessage={{
               callToAction: {
                 callToActionIcon: callToActionIconString as CallToActionIcon,

@@ -5,7 +5,8 @@ import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
-import { ProfileUpdateRequest } from 'api/gen'
+import { MaintenancePageType, ProfileUpdateRequest } from 'api/gen'
+import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckState } from 'features/identityCheck/context/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -16,6 +17,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 export const REDIRECT_URL_UBBLE = `${WEBAPP_V2_URL}/verification-identite/fin`
 
 export function useIdentificationUrl() {
+  const { data: subscription } = useNextSubscriptionStep()
   const [identificationUrl, setIdentificationUrl] = useState<string | undefined>()
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -27,8 +29,12 @@ export function useIdentificationUrl() {
         setIdentificationUrl(data.identificationUrl)
       } catch (err) {
         const error = (err as ApiError)?.content.code
-        if (error === 'IDCHECK_ALREADY_PROCESSED') return navigate('IdentityCheckPending')
-        return navigate('IdentityCheckUnavailable', { withDMS: false })
+        if (error === 'IDCHECK_ALREADY_PROCESSED') {
+          navigate('IdentityCheckPending')
+        } else {
+          const shouldEnableDMS = subscription?.maintenancePageType === MaintenancePageType.WithDms
+          navigate('IdentityCheckUnavailable', { withDMS: shouldEnableDMS })
+        }
       }
     }
   )
