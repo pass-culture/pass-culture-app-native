@@ -11,6 +11,7 @@ import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTic
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
+import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
@@ -342,6 +343,13 @@ export const AppComponents: FunctionComponent = () => {
       {/* Icons */}
       <AccordionItem title="Icons">
         <Icons />
+      </AccordionItem>
+
+      <Divider />
+
+      {/* Illustrations */}
+      <AccordionItem title="Illustrations">
+        <Illustrations />
       </AccordionItem>
 
       <Divider />
