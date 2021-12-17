@@ -15,7 +15,6 @@ export enum EduConnectErrorMessageEnum {
   UserAgeNotValid = 'UserAgeNotValid',
   UserNotWhitelisted = 'UserNotWhitelisted',
   UserTypeNotStudent = 'UserTypeNotStudent',
-  OutOfTestPhase = 'OutOfTestPhase',
   GenericError = 'GenericError',
 }
 
@@ -30,17 +29,21 @@ type NotEligibleEduConnectErrorData = {
   onPrimaryButtonPress?: () => void
 }
 
-const OutOfTestPhase: NotEligibleEduConnectErrorData = {
+const UserNotWhitelisted: NotEligibleEduConnectErrorData = {
   Icon: Clock,
   title: t`Tu ne fais pas partie de la phase de test`,
   description:
-    t`Le pass Culture pour les jeunes de 15 à 17 ans est actuellement en phase de test auprès de 22 établissements scolaires des académies de Rennes et de Versailles.` +
+    t`Encore un peu de patience : en fonction de ton âge, tu pourras compléter ton inscription à la date suivante : ` +
     '\n\n' +
-    t`Encore un peu de patience... On se donne rendez-vous en janvier 2022 : nous reviendrons vers toi dès que le pass te sera accessible.` +
+    t`17 ans, le 10 janvier` +
+    '\n' +
+    t`16 ans, le 20 janvier` +
+    '\n' +
+    t`15 ans, le 31 janvier` +
     '\n\n' +
     t`En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres.`,
   titleAlignment: 'left',
-  descriptionAlignment: 'left',
+  descriptionAlignment: 'center',
 }
 
 const UserAgeNotValid: NotEligibleEduConnectErrorData = {
@@ -112,8 +115,7 @@ export function useNotEligibleEduConnectErrorData(
       })
 
     case EduConnectErrorMessageEnum.UserNotWhitelisted:
-    case EduConnectErrorMessageEnum.OutOfTestPhase:
-      return OutOfTestPhase
+      return UserNotWhitelisted
 
     default:
       return GenericError

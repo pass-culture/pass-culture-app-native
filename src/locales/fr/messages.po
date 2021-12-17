@@ -59,13 +59,25 @@ msgstr "12 Caractères"
 msgid "15 ans"
 msgstr "15 ans"
 
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "15 ans, le 31 janvier"
+msgstr "15 ans, le 31 janvier"
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "16 ans"
 msgstr "16 ans"
 
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "16 ans, le 20 janvier"
+msgstr "16 ans, le 20 janvier"
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "17 ans"
 msgstr "17 ans"
+
+#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
+msgid "17 ans, le 10 janvier"
+msgstr "17 ans, le 10 janvier"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "18 ans"
@@ -109,6 +121,10 @@ msgstr "Académie de"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
+
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+msgid "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
+msgstr "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
 
 #: src/features/offer/pages/OfferBody.tsx
 #: src/features/profile/pages/Profile.tsx
@@ -621,6 +637,10 @@ msgstr "Continuer l'inscription"
 msgid "Continuer la vérification"
 msgstr "Continuer la vérification"
 
+#: src/features/auth/signup/SignupForm.tsx
+msgid "Continuer vers l'étape"
+msgstr "Continuer vers l'étape"
+
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
 msgstr "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
@@ -851,13 +871,12 @@ msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réserv
 
 #: src/features/home/atoms/SeeMore.tsx
 #: src/ui/components/PassPlaylist.tsx
-#: src/ui/components/PassPlaylist.tsx
 msgid "En voir plus"
 msgstr "En voir plus"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "Encore un peu de patience... On se donne rendez-vous en janvier 2022 : nous reviendrons vers toi dès que le pass te sera accessible."
-msgstr "Encore un peu de patience... On se donne rendez-vous en janvier 2022 : nous reviendrons vers toi dès que le pass te sera accessible."
+msgid "Encore un peu de patience : en fonction de ton âge, tu pourras compléter ton inscription à la date suivante :"
+msgstr "Encore un peu de patience : en fonction de ton âge, tu pourras compléter ton inscription à la date suivante :"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
@@ -1441,10 +1460,6 @@ msgid ""
 msgstr ""
 "Le pass Culture ne semble plus à jour sur ton téléphone !\n"
 "Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible."
-
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "Le pass Culture pour les jeunes de 15 à 17 ans est actuellement en phase de test auprès de 22 établissements scolaires des académies de Rennes et de Versailles."
-msgstr "Le pass Culture pour les jeunes de 15 à 17 ans est actuellement en phase de test auprès de 22 établissements scolaires des académies de Rennes et de Versailles."
 
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Le réglage est sauvegardé"
@@ -2904,6 +2919,10 @@ msgstr "Voir ma réservation"
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
+#: src/ui/components/PassPlaylist.tsx
+msgid "Voir plus d’offres de la sélection"
+msgstr "Voir plus d’offres de la sélection"
+
 #: src/features/venue/components/VenueOffers.tsx
 msgid "Voir toutes les offres"
 msgstr "Voir toutes les offres"
@@ -3312,4 +3331,3 @@ msgstr "épuisé"
 #: src/features/auth/signup/underageSignup/UnderageAccountCreated.tsx
 msgid "€ viennent d'être crédités sur ton compte pass Culture"
 msgstr "€ viennent d'être crédités sur ton compte pass Culture"
-

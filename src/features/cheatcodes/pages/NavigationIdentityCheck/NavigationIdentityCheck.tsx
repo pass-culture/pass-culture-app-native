@@ -51,6 +51,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         <LinkToComponent name="IdentityCheckUnavailable" />
         <LinkToComponent name="IdentityCheckPending" />
         <LinkToComponent name="SetName" />
+        <LinkToComponent name="SelectSchool" />
         <LinkToComponent name="IdentityCheckAddress" title="SetAddress" />
         <LinkToComponent name="IdentityCheckCity" title="SetCity" />
         <LinkToComponent name="IdentityCheckEnd" />
@@ -78,10 +79,7 @@ export function NavigationIdentityCheck(): JSX.Element {
           title={'UserTypeNotStudent Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent)}
         />
-        <LinkToComponent
-          title={'OutOfTestPhase Error'}
-          onPress={() => trigger(EduConnectErrorMessageEnum.OutOfTestPhase)}
-        />
+
         <LinkToComponent
           title={'UserNotWhitelisted Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.UserNotWhitelisted)}

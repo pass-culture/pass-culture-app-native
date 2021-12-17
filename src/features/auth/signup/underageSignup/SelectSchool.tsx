@@ -1,11 +1,12 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { eligibleSchools, School } from 'features/auth/signup/underageSignup/eligibleSchools'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { withEduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
+import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
+import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
 import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
 import { analytics } from 'libs/analytics'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -17,17 +18,15 @@ import { Separator } from 'ui/components/Separator'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const SelectSchool: React.FC = () => {
+export const SelectSchool = withEduConnectErrorBoundary(() => {
   const [selectedSchool, setSelectedSchool] = useState({
     name: '',
     city: '',
     academy: '',
   })
-  const [error, setError] = useState<Error | undefined>()
+  const [error, setError] = useState<Error | null>(null)
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
   useSetIdCheckNavigationContext()
-
-  const { navigate } = useNavigation<UseNavigationType>()
 
   const renderItem = (item: School, academy: string) => {
     return (
@@ -81,14 +80,16 @@ export const SelectSchool: React.FC = () => {
         <ButtonTertiaryBlack
           title={t`Je ne vois pas mon établissement`}
           icon={Invalidate}
-          onPress={() => navigate('NotEligibleEduConnect')}
+          onPress={() => {
+            setError(new EduConnectError(EduConnectErrorMessageEnum.UserNotWhitelisted))
+          }}
         />
       </BottomContainer>
       <Spacer.Column numberOfSpaces={4} />
       <PageHeader title={t`Établissements partenaires`} />
     </React.Fragment>
   )
-}
+})
 
 const Container = styled.ScrollView(({ theme }) => ({
   flex: 1,
