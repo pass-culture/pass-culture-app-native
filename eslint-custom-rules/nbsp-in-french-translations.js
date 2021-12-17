@@ -1,5 +1,5 @@
 /**
- * This rule aims to spot miss-use of a space instead of a non-breaking space (nbsp) with code \u00a0
+ * This rule aims to spot misuses of a space instead of a non-breaking space (nbsp) with code \u00a0
  * before some characters in French translations, such as ! ? : ; € » or after «
  *
  * Ex: "Bienvenue !" should be "Bienvenue\u00a0!"
