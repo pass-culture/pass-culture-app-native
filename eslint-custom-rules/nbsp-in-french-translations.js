@@ -23,7 +23,17 @@ module.exports = {
             message: 'Please use \\u00a0 (nbsp) instead of whitespace before !, ?, :',
             fix: function (fixer) {
               const textToReplace = node.value.raw.replace(/\s+([!?:])/g, '\\u00a0$1')
-              return fixer.replaceText(node, `\`${textToReplace}\``)
+
+              // We use range here, because fixer.replaceText(node, textToReplace)
+              // removes the backticks, "${" or "}" around the text.
+              // It's because of the "range" property of the provided TemplateElement
+              // in "node" variable: the range is too wide. So we process it manually,
+              // removing the first character
+              const startRangeIndex = node.range[0] + 1
+              const endRangeIndex = startRangeIndex + node.value.raw.length
+              const range = [startRangeIndex, endRangeIndex]
+
+              return fixer.replaceTextRange(range, textToReplace)
             },
           })
         },
