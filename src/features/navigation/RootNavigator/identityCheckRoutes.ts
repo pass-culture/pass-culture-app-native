@@ -158,7 +158,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     name: 'UnderageAccountCreated',
     component: UnderageAccountCreated,
     path: 'creation-compte/confirmation-15-17',
-    options: { title: t`Compte 15-17 créé !` },
+    options: { title: t`Compte 15-17 créé\u00a0!` },
     secure: true,
   },
   // Errors
