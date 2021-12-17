@@ -3,7 +3,6 @@ import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
-import { useUserProfileInfo } from 'features/home/api'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
@@ -17,7 +16,6 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
   const { profile } = useIdentityCheckContext()
 
   const hasSchoolTypes = profile.hasSchoolTypes
-  const { data: userProfileInfo } = useUserProfileInfo()
 
   const shouldUseEduConnect = subscription?.allowedIdentityCheckMethods.includes(
     IdentityCheckMethod.Educonnect
@@ -50,12 +48,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       name: IdentityCheckStep.CONFIRMATION,
       icon: ConfirmationIcon,
       label: t`Confirmation`,
-      screens: [
-        'IdentityCheckHonor',
-        !userProfileInfo?.domainsCredit?.all?.initial
-          ? 'BeneficiaryRequestSent'
-          : 'UnderageAccountCreated',
-      ],
+      screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
     },
   ]
 }
