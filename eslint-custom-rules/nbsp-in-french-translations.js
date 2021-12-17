@@ -16,26 +16,14 @@ module.exports = {
   },
   create(context) {
     return {
-      'TaggedTemplateExpression[tag.name="t"] > TemplateLiteral > TemplateElement[value.raw=/ !/]':
+      'TaggedTemplateExpression[tag.name="t"] > TemplateLiteral > TemplateElement[value.raw=/\\s+[!?]/]':
         (node) => {
           context.report({
             node,
             message:
               'Please use \\u00a0 (nbsp) instead of whitespace before !, ?, :, ;, €, » and after «',
             fix: function (fixer) {
-              const textToReplace = node.value.raw.replace(/ !/g, '\\u00a0!')
-              return fixer.replaceText(node, `\`${textToReplace}\``)
-            },
-          })
-        },
-      'TaggedTemplateExpression[tag.name="t"] > TemplateLiteral > TemplateElement[value.raw=/ \\?/]':
-        (node) => {
-          context.report({
-            node,
-            message:
-              'Please use \\u00a0 (nbsp) instead of whitespace before !, ?, :, ;, €, » and after «',
-            fix: function (fixer) {
-              const textToReplace = node.value.raw.replace(/ \?/g, '\\u00a0?')
+              const textToReplace = node.value.raw.replace(/\s+([!?])/g, '\\u00a0$1')
               return fixer.replaceText(node, `\`${textToReplace}\``)
             },
           })
