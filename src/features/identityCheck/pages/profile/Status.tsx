@@ -9,19 +9,29 @@ import { useIdentityCheckContext } from 'features/identityCheck/context/Identity
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/utils'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { useProfileOptions } from 'features/identityCheck/utils/useProfileOptions'
+import { useIsUserUnderage } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer } from 'ui/theme'
 
 export const Status = () => {
   const { activities } = useProfileOptions()
   const { dispatch, profile } = useIdentityCheckContext()
+  const isUserUnderage = useIsUserUnderage()
   const [selectedStatus, setSelectedStatus] = useState<ActivityIdEnum | null>(
     profile.status || null
   )
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
+  // TODO PC-12410 : déléguer la responsabilité au back de faire cette filtration, remplacer filteredActivities par activities
+  const filteredActivities = isUserUnderage
+    ? activities
+    : activities?.filter((activity) => activity.id !== ActivityIdEnum.MIDDLESCHOOLSTUDENT)
+
+  // TODO PC-12410 : déléguer la responsabilité au back de vider l'array de school_types associé à l'activity (le statut)
   const hasSchoolTypes =
-    activities && selectedStatus ? activityHasSchoolTypes(selectedStatus, activities) : false
+    isUserUnderage && !!filteredActivities && !!selectedStatus
+      ? activityHasSchoolTypes(selectedStatus, filteredActivities)
+      : false
 
   useEffect(() => {
     dispatch({ type: 'SET_HAS_SCHOOL_TYPES', payload: hasSchoolTypes })
@@ -44,8 +54,8 @@ export const Status = () => {
       }
       scrollChildren={
         <React.Fragment>
-          {activities &&
-            activities.map((activity) => (
+          {filteredActivities &&
+            filteredActivities.map((activity) => (
               <RadioButton
                 key={activity.label}
                 selected={activity.id === selectedStatus}
