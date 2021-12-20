@@ -16,13 +16,13 @@ module.exports = {
   },
   create(context) {
     return {
-      'TaggedTemplateExpression[tag.name="t"] > TemplateLiteral > TemplateElement[value.raw=/\\s+[!?:]/]':
+      'TaggedTemplateExpression[tag.name="t"] > TemplateLiteral > TemplateElement[value.raw=/\\s+[!?:»]/]':
         (node) => {
           context.report({
             node,
-            message: 'Please use \\u00a0 (nbsp) instead of whitespace before !, ?, :',
+            message: 'Please use \\u00a0 (nbsp) instead of whitespace before !, ?, :, »',
             fix: function (fixer) {
-              const textToReplace = node.value.raw.replace(/\s+([!?:])/g, '\\u00a0$1')
+              const textToReplace = node.value.raw.replace(/\s+([!?:»])/g, '\\u00a0$1')
 
               // We use range here, because fixer.replaceText(node, textToReplace)
               // removes the backticks, "${" or "}" around the text.
