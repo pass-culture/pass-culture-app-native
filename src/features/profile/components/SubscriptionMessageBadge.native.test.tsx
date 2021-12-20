@@ -3,7 +3,7 @@ import React from 'react'
 import { SubscriptionMessage } from 'api/gen'
 import { render } from 'tests/utils'
 
-import { IdCheckProcessingBadge } from './IdCheckProcessingBadge'
+import { SubscriptionMessageBadge } from './SubscriptionMessageBadge'
 
 const mockedSubscriptionMessage = {
   callToActionMessage: {
@@ -16,18 +16,18 @@ const mockedSubscriptionMessage = {
   userMessage: 'Dossier déposé, nous sommes en train de le traiter',
 } as SubscriptionMessage
 
-describe('IdCheckProcessingBadge', () => {
+describe('SubscriptionMessageBadge', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should display component correctly', () => {
     const component = render(
-      <IdCheckProcessingBadge subscriptionMessage={mockedSubscriptionMessage} />
+      <SubscriptionMessageBadge subscriptionMessage={mockedSubscriptionMessage} />
     )
     expect(component).toMatchSnapshot()
   })
   it('should not display last update sentence if updatedAt props is null', () => {
     const component = render(
-      <IdCheckProcessingBadge
+      <SubscriptionMessageBadge
         // @ts-expect-error updatedAt should not be null, testing the case where it is
         subscriptionMessage={{ ...mockedSubscriptionMessage, updatedAt: undefined }}
       />

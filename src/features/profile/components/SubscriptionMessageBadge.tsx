@@ -9,7 +9,7 @@ import { formatToHour } from 'libs/parsers/formatDates'
 import { Clock } from 'ui/svg/icons/Clock'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-type IdCheckProcessingBadgeProps = {
+type SubscriptionMessageBadgeProps = {
   subscriptionMessage?: SubscriptionMessage | null
 }
 
@@ -25,7 +25,7 @@ const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: Date | undefined) =>
       })
     : undefined
 
-export function IdCheckProcessingBadge(props: IdCheckProcessingBadgeProps) {
+export function SubscriptionMessageBadge(props: SubscriptionMessageBadgeProps) {
   return (
     <React.Fragment>
       {!!props.subscriptionMessage?.updatedAt && (
@@ -49,6 +49,7 @@ export function IdCheckProcessingBadge(props: IdCheckProcessingBadgeProps) {
           props.subscriptionMessage?.userMessage ||
           t`Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser\u00a0!`
         }
+        testID="subscription-message-badge"
       />
     </React.Fragment>
   )
