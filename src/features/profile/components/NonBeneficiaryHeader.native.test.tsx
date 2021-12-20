@@ -66,19 +66,14 @@ jest.mock('features/auth/signup/nextSubscriptionStep', () => ({
 describe('<NonBeneficiaryHeader/>', () => {
   afterAll(mockdate.reset)
 
-  describe('<SubscriptionMessageBadge/>', () => {
-    const { getByTestId } = render(
-      <NonBeneficiaryHeader
-        eligibilityStartDatetime="2021-02-30T00:00Z"
-        eligibilityEndDatetime="2022-02-30T00:00Z"
-        isEligibleForBeneficiaryUpgrade={true}
-        subscriptionMessage={mockedSubscriptionMessage}
-      />
-    )
-    getByTestId('subscription-message-badge')
-  })
-
   describe('<EligibilityBanner/>', () => {
+    beforeEach(() => {
+      mockNextSubscriptionStep = {
+        allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble],
+        nextSubscriptionStep: SubscriptionStep.IdentityCheck,
+        hasIdentityCheckPending: false,
+      }
+    })
     it('should render the right banner for 18 years old users, call analytics and navigate to nextBeneficiaryValidationStep', async () => {
       const setError = jest.fn()
       const {
@@ -178,26 +173,10 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   describe('<IdentityCheckPendingBadge/>', () => {
-    it('should display identity check pending badge if hasIdentityCheckPending is true and SubscriptionStep is not HonorStatement', async () => {
+    it('should display identity check pending badge if hasIdentityCheckPending is true and SubscriptionStep is null', async () => {
       mockNextSubscriptionStep = {
         allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble],
-        nextSubscriptionStep: SubscriptionStep.IdentityCheck,
-        hasIdentityCheckPending: true,
-      }
-      const { getByTestId } = render(
-        <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-02-30T00:00Z"
-          eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
-        />
-      )
-      getByTestId('identity-check-pending-badge')
-    })
-
-    it('should not display identity check pending badge if hasIdentityCheckPending is true and SubscriptionStep is HonorStatement', async () => {
-      mockNextSubscriptionStep = {
-        allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble],
-        nextSubscriptionStep: SubscriptionStep.HonorStatement,
+        nextSubscriptionStep: null,
         hasIdentityCheckPending: true,
       }
       const { queryByTestId } = render(
@@ -207,8 +186,27 @@ describe('<NonBeneficiaryHeader/>', () => {
           isEligibleForBeneficiaryUpgrade={true}
         />
       )
-      expect(queryByTestId('identity-check-pending-badge')).toBeFalsy()
-      queryByTestId('eligibility-banner')
+      queryByTestId('identity-check-pending-badge')
+      expect(queryByTestId('eligibility-banner')).toBeFalsy()
+    })
+  })
+
+  describe('<SubscriptionMessageBadge/>', () => {
+    it('should render the subscription message if hasIdentityCheckPendingis false and SubscriptionStep is null', () => {
+      mockNextSubscriptionStep = {
+        allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble],
+        nextSubscriptionStep: null,
+        hasIdentityCheckPending: false,
+      }
+      const { getByTestId } = render(
+        <NonBeneficiaryHeader
+          eligibilityStartDatetime="2021-02-30T00:00Z"
+          eligibilityEndDatetime="2022-02-30T00:00Z"
+          isEligibleForBeneficiaryUpgrade={true}
+          subscriptionMessage={mockedSubscriptionMessage}
+        />
+      )
+      getByTestId('subscription-message-badge')
     })
   })
 
