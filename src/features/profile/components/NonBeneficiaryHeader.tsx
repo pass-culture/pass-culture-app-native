@@ -4,7 +4,7 @@ import React, { memo, PropsWithChildren, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SubscriptionMessage, SubscriptionStep } from 'api/gen'
+import { SubscriptionMessage } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
@@ -68,15 +68,6 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 
   const NonBeneficiaryBanner = () => {
     if (props.isEligibleForBeneficiaryUpgrade) {
-      if (props.subscriptionMessage) {
-        return <SubscriptionMessageBadge subscriptionMessage={props.subscriptionMessage} />
-      }
-      if (
-        subscription?.hasIdentityCheckPending &&
-        subscription?.nextSubscriptionStep !== SubscriptionStep.HonorStatement
-      ) {
-        return <IdentityCheckPendingBadge />
-      }
       if (subscription?.nextSubscriptionStep) {
         return (
           <View testID="eligibility-banner-container">
@@ -100,6 +91,12 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
             />
           </View>
         )
+      }
+      if (subscription?.hasIdentityCheckPending) {
+        return <IdentityCheckPendingBadge />
+      }
+      if (props.subscriptionMessage) {
+        return <SubscriptionMessageBadge subscriptionMessage={props.subscriptionMessage} />
       }
     }
     if (eligibilityStartDatetime && eligibilityStartDatetime > today) {
