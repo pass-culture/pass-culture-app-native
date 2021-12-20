@@ -251,7 +251,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
-                placeholder="Ex : 34 avenue de l'Opéra"
+                placeholder="Ex : 34 avenue de l'Opéra"
                 placeholderTextColor="#626262"
                 style={
                   Array [

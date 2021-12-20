@@ -24,7 +24,7 @@ describe('SecondCard', () => {
   })
 
   it.each([
-    [true, 'de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application.'],
+    [true, 'de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.'],
     [
       false,
       "dans l'année de tes 18 ans, le Gouvernement offre un crédit de 300€ à dépenser dans l’application.",

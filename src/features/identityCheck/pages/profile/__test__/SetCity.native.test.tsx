@@ -41,7 +41,7 @@ describe('<SetCity/>', () => {
 
     const { getByText, getByPlaceholderText } = renderSetCity()
 
-    const input = getByPlaceholderText('Ex : 75017')
+    const input = getByPlaceholderText('Ex\u00a0: 75017')
     fireEvent.changeText(input, POSTAL_CODE)
 
     await waitFor(() => {
@@ -58,7 +58,7 @@ describe('<SetCity/>', () => {
 
     const { getByText, getByPlaceholderText } = renderSetCity()
 
-    const input = getByPlaceholderText('Ex : 75017')
+    const input = getByPlaceholderText('Ex\u00a0: 75017')
     fireEvent.changeText(input, POSTAL_CODE)
 
     await waitFor(() => {
@@ -75,7 +75,7 @@ describe('<SetCity/>', () => {
 
     const { getByText, getByPlaceholderText } = renderSetCity()
 
-    const input = getByPlaceholderText('Ex : 75017')
+    const input = getByPlaceholderText('Ex\u00a0: 75017')
     fireEvent.changeText(input, POSTAL_CODE)
 
     await waitFor(() => getByText(city.nom))
