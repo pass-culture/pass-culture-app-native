@@ -4,7 +4,7 @@ import React, { memo, PropsWithChildren, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SubscriptionMessage, SubscriptionStep } from 'api/gen'
+import { SubscriptionMessage } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
