@@ -25,16 +25,15 @@ const renderCallToAction = (
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <CallToActionContainer>
-        <ButtonQuaternaryBlack
-          inline
-          icon={callToActionIcon || undefined}
-          testId="call-to-action-button"
-          onPress={() => handleCallToActionLink(callToActionLink)}
-          title={callToActionMessage}
-          justifyContent="flex-start"
-        />
-      </CallToActionContainer>
+      {/* TODO (LucasBeneston) : Add new button with numberOfLines={2} to ui/components/buttons */}
+      <ButtonQuaternaryBlack
+        inline
+        icon={callToActionIcon || undefined}
+        testId="call-to-action-button"
+        onPress={() => handleCallToActionLink(callToActionLink)}
+        title={callToActionMessage}
+        justifyContent="flex-start"
+      />
     </React.Fragment>
   )
 }
@@ -83,8 +82,4 @@ const IconContainer = styled.View({
 
 const TextContainer = styled.View({
   flex: 1,
-})
-
-const CallToActionContainer = styled.View({
-  flexDirection: 'row',
 })

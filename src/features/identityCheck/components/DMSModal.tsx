@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
