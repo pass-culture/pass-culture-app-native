@@ -40,17 +40,19 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       {t`Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long\u00a0!`}
     </Typo.Body>
     <Spacer.Column numberOfSpaces={8} />
-    <CustomButtonTertiaryBlack
+    <ButtonTertiaryBlack
       title={t`Je suis de nationalité française`}
       onPress={openDMSFrenchCitizenURL}
       icon={ExternalSite}
+      justifyContent="flex-start"
     />
     <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Carte d’identité ou passeport.`}</Typo.Caption>
     <Spacer.Column numberOfSpaces={8} />
-    <CustomButtonTertiaryBlack
+    <ButtonTertiaryBlack
       title={t`Je suis de nationalité étrangère`}
       onPress={openDMSForeignCitizenURL}
       icon={ExternalSite}
+      justifyContent="flex-start"
     />
     <Typo.Caption color={ColorsEnum.GREY_DARK}>
       {t`Titre de séjour, carte d'identité, ou passeport.`}
@@ -58,9 +60,3 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
     <Spacer.Column numberOfSpaces={4} />
   </AppModal>
 )
-
-const CustomButtonTertiaryBlack = styled(ButtonTertiaryBlack)({
-  justifyContent: 'flex-start',
-  paddingLeft: 0,
-  paddingRight: 0,
-})

@@ -32,6 +32,7 @@ const renderCallToAction = (
           testId="call-to-action-button"
           onPress={() => handleCallToActionLink(callToActionLink)}
           title={callToActionMessage}
+          justifyContent="flex-start"
         />
       </CallToActionContainer>
     </React.Fragment>

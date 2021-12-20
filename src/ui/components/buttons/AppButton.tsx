@@ -24,6 +24,7 @@ export interface BaseButtonProps {
   textSize?: number
   title: string
   fullWidth?: boolean
+  justifyContent?: 'center' | 'flex-start'
   style?: StyleProp<ViewStyle>
 }
 
@@ -63,6 +64,7 @@ const _AppButton = <T extends AppButtonProps>({
   textSize,
   textLineHeight,
   adjustsFontSizeToFit,
+  justifyContent,
   style,
 }: Only<T, AppButtonProps>) => {
   const pressHandler = disabled || isLoading ? undefined : onPress
@@ -78,6 +80,7 @@ const _AppButton = <T extends AppButtonProps>({
       buttonHeight={buttonHeight ?? 'small'}
       inline={inline}
       inlineHeight={inlineHeight ?? 16}
+      justifyContent={justifyContent ?? 'center'}
       style={style}>
       {isLoading ? (
         <Logo
@@ -99,6 +102,8 @@ const _AppButton = <T extends AppButtonProps>({
             textSize={textSize}
             textLineHeight={textLineHeight}
             adjustsFontSizeToFit={adjustsFontSizeToFit ?? false}
+            icon={Icon}
+            iconSize={iconSize}
             numberOfLines={1}>
             {title}
           </Title>
@@ -118,14 +123,23 @@ interface StyledTouchableOpacityProps {
   inline?: boolean
   inlineHeight?: number
   fullWidth?: boolean
+  justifyContent?: 'center' | 'flex-start'
 }
 
 const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
 }))<StyledTouchableOpacityProps>(
-  ({ inline, backgroundColor, borderColor, buttonHeight, inlineHeight, fullWidth }) => ({
+  ({
+    inline,
+    backgroundColor,
+    borderColor,
+    buttonHeight,
+    inlineHeight,
+    fullWidth,
+    justifyContent,
+  }) => ({
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: justifyContent === 'flex-start' ? 'flex-start' : 'center',
     alignItems: 'center',
     borderRadius: BorderRadiusEnum.BUTTON,
     paddingBottom: 2,
@@ -151,6 +165,12 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
           height: inlineHeight,
         }
       : {}),
+    ...(justifyContent === 'flex-start'
+      ? {
+          paddingRight: 0,
+          paddingLeft: 0,
+        }
+      : {}),
   })
 )
 
@@ -158,6 +178,8 @@ interface TitleProps {
   textColor?: ColorsEnum
   textSize?: number
   textLineHeight?: string
+  icon?: React.FC<IconInterface>
+  iconSize?: number
 }
 
 const Title = styled(Typo.ButtonText)<TitleProps>((props) => ({
@@ -165,5 +187,6 @@ const Title = styled(Typo.ButtonText)<TitleProps>((props) => ({
   color: props.textColor,
   fontSize: props.textSize,
   lineHeight: props.textLineHeight,
-  marginLeft: 5,
+  marginLeft: props.icon ? getSpacing(2) : 0,
+  marginRight: props.iconSize,
 }))
