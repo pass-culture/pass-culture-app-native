@@ -61,7 +61,6 @@ exports[`ThirdCard should render third card 1`] = `
           "color": "#151515",
           "fontFamily": "Montserrat-Black",
           "fontSize": 28,
-          "fontWeight": "900",
           "lineHeight": 36,
         },
         Object {
