@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
 import { fireEvent, render } from 'tests/utils'
 
@@ -8,6 +9,12 @@ jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
   useIdentityCheckNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),
+}))
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: jest.fn(() => ({
+    dispatch: jest.fn(),
+    ...mockState,
+  })),
 }))
 
 describe('<IdentityCheckStart/>', () => {

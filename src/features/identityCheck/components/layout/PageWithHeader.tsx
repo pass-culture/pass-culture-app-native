@@ -13,6 +13,7 @@ interface Props {
   fixedTopChildren?: ReactNode
   scrollChildren?: ReactNode
   fixedBottomChildren?: ReactNode
+  onGoBack?: () => void
 }
 
 export const PageWithHeader = (props: Props) => {
@@ -28,7 +29,7 @@ export const PageWithHeader = (props: Props) => {
   return (
     <Container>
       <Spacer.TopScreen />
-      <PageHeader title={props.title} />
+      <PageHeader title={props.title} onGoBack={props.onGoBack} />
       <CustomKeyboardAvoidingView>
         {props.fixedTopChildren ? (
           <FixedTopChildrenView>{props.fixedTopChildren}</FixedTopChildrenView>

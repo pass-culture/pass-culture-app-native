@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
-import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
@@ -12,14 +11,8 @@ import { IconInterface } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
 export const useIdentityCheckSteps = (): StepConfig[] => {
-  const { data: subscription } = useNextSubscriptionStep()
-  const { profile } = useIdentityCheckContext()
-
+  const { profile, identification } = useIdentityCheckContext()
   const hasSchoolTypes = profile.hasSchoolTypes
-
-  const shouldUseEduConnect = subscription?.allowedIdentityCheckMethods.includes(
-    IdentityCheckMethod.Educonnect
-  )
 
   return [
     {
@@ -40,9 +33,10 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       name: IdentityCheckStep.IDENTIFICATION,
       icon: IdCardIcon,
       label: t`Identification`,
-      screens: shouldUseEduConnect
-        ? ['IdentityCheckEduConnect', 'IdentityCheckEduConnectForm', 'IdentityCheckValidation']
-        : ['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd'],
+      screens:
+        identification.method === IdentityCheckMethod.Educonnect
+          ? ['IdentityCheckEduConnect', 'IdentityCheckEduConnectForm', 'IdentityCheckValidation']
+          : ['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd'],
     },
     {
       name: IdentityCheckStep.CONFIRMATION,
