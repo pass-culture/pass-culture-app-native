@@ -3,6 +3,8 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { IdentityCheckMethod } from 'api/gen'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
@@ -26,7 +28,9 @@ export const FastEduconnectConnectionRequestModal: React.FC<
   FastEduconnectConnectionRequestModalProps
 > = ({ visible, hideModal }) => {
   const { colors } = useTheme()
+  const { dispatch } = useIdentityCheckContext()
   const { navigate } = useNavigation<UseNavigationType>()
+
   return (
     <AppModal
       title={t`Identifie-toi en 2 minutes`}
@@ -51,6 +55,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         title={t`Identification avec ÉduConnect`}
         onPress={() => {
           hideModal()
+          dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.Educonnect })
           navigate('IdentityCheckEduConnect')
         }}
       />
@@ -62,6 +67,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         title={t`Identification manuelle`}
         onPress={() => {
           hideModal()
+          dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.Ubble })
           navigate('IdentityCheckStart')
         }}
       />

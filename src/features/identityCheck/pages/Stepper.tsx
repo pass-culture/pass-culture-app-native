@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { IdentityCheckMethod, MaintenancePageType, SubscriptionStep } from 'api/gen'
+import { MaintenancePageType, SubscriptionStep } from 'api/gen'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
@@ -40,11 +40,22 @@ export const IdentityCheckStepper = () => {
   }, [steps.length])
 
   useEffect(() => {
-    if (subscription?.nextSubscriptionStep === SubscriptionStep.Maintenance) {
-      navigate('IdentityCheckUnavailable', {
-        withDMS: subscription?.maintenancePageType === MaintenancePageType.WithDms,
-      })
+    const showMaintenance = () => {
+      if (subscription?.nextSubscriptionStep === SubscriptionStep.Maintenance) {
+        navigate('IdentityCheckUnavailable', {
+          withDMS: subscription?.maintenancePageType === MaintenancePageType.WithDms,
+        })
+      }
     }
+
+    const setIdentityCheckMethod = () => {
+      const identityCheckMethods = subscription?.allowedIdentityCheckMethods
+      const method = identityCheckMethods?.length === 1 ? identityCheckMethods[0] : null
+      context.dispatch({ type: 'SET_METHOD', payload: method })
+    }
+
+    showMaintenance()
+    setIdentityCheckMethod()
   }, [subscription])
 
   function showQuitIdentityCheckModal() {
@@ -52,18 +63,10 @@ export const IdentityCheckStepper = () => {
     showModal()
   }
 
-  const shouldShowEduConnectModal = (
-    step: StepConfig,
-    allowedIdentityCheckMethods: IdentityCheckMethod[]
-  ): boolean =>
-    step.name === IdentityCheckStep.IDENTIFICATION &&
-    allowedIdentityCheckMethods.includes(IdentityCheckMethod.Ubble) &&
-    allowedIdentityCheckMethods.includes(IdentityCheckMethod.Educonnect)
-
   async function navigateToStep(step: StepConfig) {
     analytics.logIdentityCheckStep(step.name)
 
-    if (shouldShowEduConnectModal(step, subscription?.allowedIdentityCheckMethods || [])) {
+    if (step.name === IdentityCheckStep.IDENTIFICATION && context.identification.method === null) {
       showEduConnectModal()
     } else {
       navigate(step.screens[0])

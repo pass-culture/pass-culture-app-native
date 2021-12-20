@@ -1,4 +1,4 @@
-import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
+import { ActivityIdEnum, IdentityCheckMethod, SchoolTypesIdEnum } from 'api/gen'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { SuggestedCity } from 'libs/place'
 
@@ -22,6 +22,7 @@ export interface IdentityCheckState {
     firstName: string | null
     lastName: string | null
     birthDate: string | null
+    method: IdentityCheckMethod | null
   }
   confirmation: {
     accepted: boolean
@@ -46,3 +47,4 @@ export type Action =
         birthDate: string | null
       }
     }
+  | { type: 'SET_METHOD'; payload: IdentityCheckMethod | null }
