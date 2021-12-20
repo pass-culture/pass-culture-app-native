@@ -477,8 +477,8 @@ msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
 #: src/ui/components/LayoutExpiredLink.tsx
-msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
-msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
+msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
+msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Code postal - Formulaire"
