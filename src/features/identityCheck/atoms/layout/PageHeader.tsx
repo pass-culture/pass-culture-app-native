@@ -19,7 +19,7 @@ interface Props {
 export const PageHeader: React.FC<Props> = (props) => (
   <HeaderContainer>
     <Title>{props.title}</Title>
-    <BackIcon />
+    <BackIcon onGoBack={props.onGoBack} />
   </HeaderContainer>
 )
 
@@ -34,10 +34,16 @@ const Title = styled(Typo.Title4).attrs({
   color: ColorsEnum.WHITE,
 })({ flex: 1, textAlign: 'center' })
 
-const BackIcon = () => {
+interface BackButtonProps {
+  onGoBack?: () => void
+}
+
+const BackIcon: React.FC<BackButtonProps> = (props) => {
   const { goBack } = useGoBack(...homeNavConfig)
   return (
-    <StyledTouchableOpacity onPress={goBack} {...accessibilityAndTestId(t`Revenir en arrière`)}>
+    <StyledTouchableOpacity
+      onPress={props.onGoBack ?? goBack}
+      {...accessibilityAndTestId(t`Revenir en arrière`)}>
       <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
     </StyledTouchableOpacity>
   )

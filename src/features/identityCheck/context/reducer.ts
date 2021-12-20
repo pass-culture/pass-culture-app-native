@@ -15,6 +15,7 @@ export const initialIdentityCheckState: IdentityCheckState = {
     firstName: null,
     lastName: null,
     birthDate: null,
+    method: null,
   },
   confirmation: {
     accepted: false,
@@ -46,6 +47,8 @@ export const identityCheckReducer = (
       return { ...state, profile: { ...state.profile, address: action.payload } }
     case 'SET_IDENTIFICATION':
       return { ...state, identification: { ...state.identification, ...action.payload } }
+    case 'SET_METHOD':
+      return { ...state, identification: { ...state.identification, method: action.payload } }
     default:
       return state
   }

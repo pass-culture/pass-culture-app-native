@@ -1,7 +1,16 @@
 import React from 'react'
 
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
+import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { render } from 'tests/utils'
+
+jest.mock('features/auth/api')
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: jest.fn(() => ({
+    dispatch: jest.fn(),
+    ...mockState,
+  })),
+}))
 
 describe('<IdentityCheckEnd/>', () => {
   it('should render correctly if modal visible', () => {

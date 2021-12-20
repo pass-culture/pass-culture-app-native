@@ -4,16 +4,28 @@ import styled from 'styled-components/native'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { Spacer, Typo, ColorsEnum, getSpacing } from 'ui/theme'
 
 export const IdentityCheckEduConnect = () => {
   const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const { dispatch } = useIdentityCheckContext()
+  const { goBack } = useGoBack(...homeNavConfig)
+
+  const onGoBack = () => {
+    dispatch({ type: 'SET_METHOD', payload: null })
+    goBack()
+  }
+
   return (
     <PageWithHeader
       title={t`Identification`}
+      onGoBack={onGoBack}
       scrollChildren={
         <React.Fragment>
           <Center>
