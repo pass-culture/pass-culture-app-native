@@ -1,21 +1,24 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { memo, PropsWithChildren, useState } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SubscriptionMessage } from 'api/gen'
+import { SubscriptionMessage, SubscriptionStep } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
+import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
+import { IdentityCheckPendingBadge } from 'features/profile/components/IdentityCheckPendingBadge'
+import { SubscriptionMessageBadge } from 'features/profile/components/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface NonBeneficiaryHeaderProps {
   eligibilityStartDatetime?: string
@@ -30,6 +33,8 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const today = new Date()
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const { data: settings } = useAppSettings()
+  const { data: subscription } = useNextSubscriptionStep()
+
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
@@ -44,60 +49,63 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   }
 
   const deposit = depositAmount.replace(' ', '')
+
   const eligibilityStartDatetime = props.eligibilityStartDatetime
     ? new Date(props.eligibilityStartDatetime)
     : undefined
+
   const eligibilityEndDatetime = props.eligibilityEndDatetime
     ? new Date(props.eligibilityEndDatetime)
     : undefined
 
-  let body = null
-  if (!eligibilityStartDatetime || !eligibilityEndDatetime || today >= eligibilityEndDatetime) {
-    body = <BodyContainer testID="body-container-above-18" padding={1} />
-  } else if (today >= eligibilityStartDatetime) {
-    if (props.isEligibleForBeneficiaryUpgrade && !props.subscriptionMessage) {
-      const moduleBannerWording = isUserUnderage
-        ? t({
-            id: 'enjoy underage deposit',
-            message: 'Profite de ton crédit',
-          })
-        : t({
-            id: 'enjoy deposit',
-            values: { deposit },
-            message: 'Profite de {deposit}',
-          })
-      body = (
-        <BodyContainer testID="body-container-18">
-          <Typo.Caption>
-            {t({
-              id: 'elibility deadline',
-              values: { deadline: formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString()) },
-              message: `Tu es éligible jusqu'au {deadline}`,
-            })}
-          </Typo.Caption>
-          <Spacer.Column numberOfSpaces={1} />
-          <ModuleBanner
-            onPress={onBannerPress}
-            leftIcon={<ThumbUp size={68} />}
-            title={moduleBannerWording}
-            subTitle={t`à dépenser dans l'application`}
-            testID="eligibility-banner"
-          />
-        </BodyContainer>
-      )
-    } else {
-      body = (
-        <BodyContainer testID="body-container-18-idcheck-completed">
-          <IdCheckProcessingBadge subscriptionMessage={props.subscriptionMessage} />
-        </BodyContainer>
-      )
+  const moduleBannerWording = isUserUnderage
+    ? t`Profite de ton crédit`
+    : t({
+        id: 'enjoy deposit',
+        values: { deposit },
+        message: 'Profite de {deposit}',
+      })
+
+  const NonBeneficiaryBanner = () => {
+    if (props.isEligibleForBeneficiaryUpgrade) {
+      if (props.subscriptionMessage) {
+        return <SubscriptionMessageBadge subscriptionMessage={props.subscriptionMessage} />
+      }
+      if (
+        subscription?.hasIdentityCheckPending &&
+        subscription?.nextSubscriptionStep !== SubscriptionStep.HonorStatement
+      ) {
+        return <IdentityCheckPendingBadge />
+      }
+      if (subscription?.nextSubscriptionStep) {
+        return (
+          <View testID="eligibility-banner-container">
+            {!!eligibilityEndDatetime && (
+              <Caption>
+                {t({
+                  id: 'elibility deadline',
+                  values: {
+                    deadline: formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString()),
+                  },
+                  message: `Tu es éligible jusqu'au {deadline}`,
+                })}
+              </Caption>
+            )}
+            <ModuleBanner
+              onPress={onBannerPress}
+              leftIcon={<ThumbUp size={68} />}
+              title={moduleBannerWording}
+              subTitle={t`à dépenser dans l'application`}
+              testID="eligibility-banner"
+            />
+          </View>
+        )
+      }
     }
-  } else {
-    body = (
-      <BodyContainer testID="body-container-under-18">
-        <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
-      </BodyContainer>
-    )
+    if (eligibilityStartDatetime && eligibilityStartDatetime > today) {
+      return <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
+    }
+    return <React.Fragment />
   }
 
   if (error) {
@@ -107,17 +115,19 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   return (
     <React.Fragment>
       <SvgPageHeader title={t`Profil`} />
-      {body}
+      <BannerContainer>
+        <NonBeneficiaryBanner />
+      </BannerContainer>
     </React.Fragment>
   )
 }
 
 export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
 
-const BodyContainer = styled.View.attrs<{ padding?: number }>(({ padding }) => ({
-  padding,
-}))<{ padding?: number }>(({ padding }) => ({
-  padding: getSpacing(padding || 4),
+const BannerContainer = styled.View({
+  padding: getSpacing(4),
   paddingBottom: 0,
   position: 'relative',
-}))
+})
+
+const Caption = styled(Typo.Caption)({ marginBottom: getSpacing(2) })

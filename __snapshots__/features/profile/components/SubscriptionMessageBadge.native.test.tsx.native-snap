@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`IdCheckProcessingBadge should display component correctly 1`] = `
+exports[`SubscriptionMessageBadge should display component correctly 1`] = `
 Array [
   <Text
     color="#626262"
@@ -43,7 +43,7 @@ Array [
         },
       ]
     }
-    testID="profile-badge"
+    testID="subscription-message-badge"
   >
     <View
       style={
@@ -94,7 +94,7 @@ Array [
 ]
 `;
 
-exports[`IdCheckProcessingBadge should not display last update sentence if updatedAt props is null 1`] = `
+exports[`SubscriptionMessageBadge should not display last update sentence if updatedAt props is null 1`] = `
 <View
   style={
     Array [
@@ -111,7 +111,7 @@ exports[`IdCheckProcessingBadge should not display last update sentence if updat
       },
     ]
   }
-  testID="profile-badge"
+  testID="subscription-message-badge"
 >
   <View
     style={

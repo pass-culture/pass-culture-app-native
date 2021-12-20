@@ -36,6 +36,7 @@ describe('<UserProfiling />', () => {
     mockBackend({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.UserProfiling,
+      hasIdentityCheckPending: false,
     })
 
     render(<UserProfiling {...defaultProps} />)
@@ -51,6 +52,7 @@ describe('<UserProfiling />', () => {
     mockBackend({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep.IdentityCheck,
+      hasIdentityCheckPending: false,
     })
 
     render(<UserProfiling {...defaultProps} />)
