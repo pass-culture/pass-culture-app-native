@@ -302,6 +302,9 @@ module.exports = function (webpackEnv) {
         'react-native-svg': 'react-native-svg-web',
         'react-native-linear-gradient': 'react-native-web-linear-gradient',
 
+        // still required by @pass-culture/id-check
+        'lottie-react-native': 'react-native-web-lottie',
+
         // Those libs are mocked until we implement web specific solutions
         'react-native-email-link': path.join(paths.appSrc, 'libs/react-native-email-link'),
         'react-native-permissions': path.join(paths.appSrc, 'libs/react-native-permissions'),
