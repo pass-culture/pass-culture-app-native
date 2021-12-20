@@ -308,7 +308,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 15,
                               "lineHeight": 20,
-                              "marginLeft": 5,
+                              "marginLeft": 0,
                               "maxWidth": "100%",
                             },
                           ]
@@ -373,7 +373,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 15,
                               "lineHeight": 20,
-                              "marginLeft": 5,
+                              "marginLeft": 0,
                               "maxWidth": "100%",
                             },
                           ]

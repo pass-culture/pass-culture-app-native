@@ -266,6 +266,7 @@ Array [
       </View>
       <Text
         adjustsFontSizeToFit={false}
+        icon={[Function]}
         numberOfLines={1}
         style={
           Array [
@@ -274,7 +275,7 @@ Array [
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 5,
+              "marginLeft": 8,
               "maxWidth": "100%",
             },
           ]

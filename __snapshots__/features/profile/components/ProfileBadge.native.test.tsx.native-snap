@@ -286,7 +286,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
             "borderWidth": 0,
             "flexDirection": "row",
             "height": 20,
-            "justifyContent": "center",
+            "justifyContent": "flex-start",
             "marginTop": 0,
             "maxWidth": 500,
             "opacity": 1,
@@ -310,6 +310,8 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
         </View>
         <Text
           adjustsFontSizeToFit={false}
+          icon={[Function]}
+          iconSize={16}
           numberOfLines={1}
           style={
             Array [
@@ -318,7 +320,8 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 12,
                 "lineHeight": 20,
-                "marginLeft": 5,
+                "marginLeft": 8,
+                "marginRight": 16,
                 "maxWidth": "100%",
               },
             ]
