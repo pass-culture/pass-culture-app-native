@@ -28,17 +28,23 @@ const mockUseIsUserUnderage = useIsUserUnderage as jest.Mock
 
 describe('<Status/>', () => {
   beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
 
   it('should render correctly', () => {
+    mockUseIsUserUnderage.mockReturnValueOnce(true)
     const renderAPI = render(<Status />)
     expect(renderAPI).toMatchSnapshot()
+  })
+  // TODO PC-12410 : déléguer la responsabilité au back de faire cette filtration
+  it('should render with no Collégien status if user is over 18', () => {
+    mockUseIsUserUnderage.mockReturnValueOnce(false)
+    const { queryByText } = render(<Status />)
+    expect(queryByText(SchoolTypesSnap.activities[0].label)).toBe(null)
   })
 
   it('should navigate to next screen on press "Continuer"', async () => {
     const { getByText } = render(<Status />)
 
-    fireEvent.press(getByText(SchoolTypesSnap.activities[0].label))
+    fireEvent.press(getByText(SchoolTypesSnap.activities[1].label))
     fireEvent.press(getByText('Continuer'))
     await waitForExpect(() => {
       expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
@@ -48,7 +54,7 @@ describe('<Status/>', () => {
     mockUseIsUserUnderage.mockReturnValueOnce(false)
     const { getByText } = render(<Status />)
 
-    fireEvent.press(getByText(SchoolTypesSnap.activities[0].label))
+    fireEvent.press(getByText(SchoolTypesSnap.activities[1].label))
     expect(activityHasSchoolTypes).not.toHaveBeenCalled()
   })
   it('should check if activityHasSchoolTypes if user is underage', () => {
