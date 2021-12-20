@@ -241,7 +241,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
-              "marginLeft": "5px",
+              "marginLeft": "0px",
               "maxWidth": "100%",
             }
           }
@@ -331,7 +331,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
-              "marginLeft": "5px",
+              "marginLeft": "8px",
               "maxWidth": "100%",
             }
           }

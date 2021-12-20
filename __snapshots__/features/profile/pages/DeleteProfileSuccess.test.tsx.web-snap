@@ -262,7 +262,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
-              "marginLeft": "5px",
+              "marginLeft": "0px",
               "maxWidth": "100%",
             }
           }
