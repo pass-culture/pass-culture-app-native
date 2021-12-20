@@ -98,7 +98,7 @@ export const SetCity = () => {
             onChangeText={onChangePostalCode}
             value={query}
             label={t`Indique ton code postal et choisis ta ville`}
-            placeholder={t`Ex : 75017`}
+            placeholder={t`Ex\u00a0: 75017`}
             textContentType="postalCode"
             keyboardType="number-pad"
             RightIcon={() => (query.length > 0 ? <RightIcon /> : null)}
@@ -119,7 +119,9 @@ export const SetCity = () => {
                 onPressOption={onPressOption}
                 optionKey={keyExtractor(city)}
                 key={city.name}
-                {...accessibilityAndTestId(t`Proposition de ville ${index + 1} : ${city.name}`)}
+                {...accessibilityAndTestId(
+                  t`Proposition de ville ${index + 1}\u00a0: ${city.name}`
+                )}
               />
             ))}
           </CitiesContainer>

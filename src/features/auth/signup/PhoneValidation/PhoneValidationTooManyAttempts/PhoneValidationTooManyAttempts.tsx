@@ -15,7 +15,7 @@ export function PhoneValidationTooManyAttempts() {
   return (
     <GenericInfoPage title={t`Trop de tentatives\u00a0!`} icon={AccountLocked}>
       <StyledBody>
-        {t`Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :`}
+        {t`Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux\u00a0:`}
       </StyledBody>
       <Spacer.Column numberOfSpaces={7} />
       <ButtonTertiaryWhite

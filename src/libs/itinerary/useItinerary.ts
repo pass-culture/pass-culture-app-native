@@ -75,7 +75,7 @@ export const useItinerary = (): UseItineraryResult => {
     if (Platform.OS === 'ios') alertButtons.push({ text: t`Annuler`, style: 'cancel' })
     Alert.alert(
       t`Voir l'itinéraire`,
-      t`Choisissez l'application pour vous rendre sur le lieu de l'offre :`,
+      t`Choisissez l'application pour vous rendre sur le lieu de l'offre\u00a0:`,
       alertButtons,
       { cancelable: true }
     )

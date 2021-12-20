@@ -71,7 +71,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
       ]
     }
   >
-    Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !
+    Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !
   </Text>
   <View
     numberOfSpaces={6}

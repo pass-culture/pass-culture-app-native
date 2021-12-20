@@ -87,7 +87,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = new Date('2020-11-01T00:00:00Z')
     const { getByText } = renderBookingDetailsCancelButton(booking)
     getByText(
-      'Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1 novembre 2020'
+      'Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le\u00a01 novembre 2020'
     )
   })
   it('should block user if cancellation date is over and user is ex beneficiary ', () => {

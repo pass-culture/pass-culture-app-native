@@ -33,7 +33,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
       />
       <ModalContent>
         <Description>
-          <Typo.Body>{t`Clique sur le lien reçu à l'adresse :`}</Typo.Body>
+          <Typo.Body>{t`Clique sur le lien reçu à l'adresse\u00a0:`}</Typo.Body>
           <Typo.Body>{route.params.email}</Typo.Body>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>

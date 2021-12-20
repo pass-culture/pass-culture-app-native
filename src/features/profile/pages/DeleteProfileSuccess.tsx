@@ -14,7 +14,7 @@ export function DeleteProfileSuccess() {
       title={t`Compte désactivé`}
       icon={ProfileDeletionLight}
       iconSize={getSpacing(26)}>
-      <StyledBody>{t`Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app`}</StyledBody>
+      <StyledBody>{t`Tu as 30 jours pour te rétracter par e-mail à\u00a0: support@passculture.app`}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
 
       <StyledBody>{t`Une fois ce délai écoulé, ton compte pass Culture sera définitivement supprimé.`}</StyledBody>

@@ -41,7 +41,7 @@ describe('useItinerary', () => {
     result.current.navigateTo(address)
     expect(alertMock).toHaveBeenCalledWith(
       "Voir l'itinéraire",
-      "Choisissez l'application pour vous rendre sur le lieu de l'offre :",
+      "Choisissez l'application pour vous rendre sur le lieu de l'offre\u00a0:",
       [
         { text: 'Sygic', onPress: expect.any(Function) },
         { text: 'Waze', onPress: expect.any(Function) },
@@ -67,7 +67,7 @@ describe('useItinerary', () => {
     result.current.navigateTo(address)
     expect(alertMock).toHaveBeenCalledWith(
       "Voir l'itinéraire",
-      "Choisissez l'application pour vous rendre sur le lieu de l'offre :",
+      "Choisissez l'application pour vous rendre sur le lieu de l'offre\u00a0:",
       [
         { text: 'Sygic', onPress: expect.any(Function) },
         { text: 'Waze', onPress: expect.any(Function) },
@@ -124,7 +124,7 @@ describe('useItinerary', () => {
     result.current.navigateTo(address)
     expect(alertMock).toHaveBeenCalledWith(
       "Voir l'itinéraire",
-      "Choisissez l'application pour vous rendre sur le lieu de l'offre :",
+      "Choisissez l'application pour vous rendre sur le lieu de l'offre\u00a0:",
       [
         { text: 'Sygic', onPress: expect.any(Function) },
         { text: 'Waze', onPress: expect.any(Function) },

@@ -35,7 +35,7 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
       <Typo.Body>
         {t`Il est important que les informations de ton document soient parfaitement lisibles.`}
         {'\n'}
-        {t`Nos conseils :`}
+        {t`Nos conseils\u00a0:`}
       </Typo.Body>
     </Description>
     <Instructions>

@@ -58,7 +58,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(renderAPI.getByText('Valider'))
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
-    expect(renderAPI.queryByText('Hors connexion : en attente du réseau.')).toBeTruthy()
+    expect(renderAPI.queryByText('Hors connexion\u00a0: en attente du réseau.')).toBeTruthy()
     expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
   })
 

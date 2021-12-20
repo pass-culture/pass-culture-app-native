@@ -252,7 +252,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
-                placeholder="Ex : 75017"
+                placeholder="Ex : 75017"
                 placeholderTextColor="#626262"
                 style={
                   Array [

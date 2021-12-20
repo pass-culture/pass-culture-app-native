@@ -62,14 +62,14 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
       />
       <EmailSentModalContent>
         <Description>
-          <Typo.Body>{t`Clique sur le lien reçu à l'adresse :`}</Typo.Body>
+          <Typo.Body>{t`Clique sur le lien reçu à l'adresse\u00a0:`}</Typo.Body>
           <CenteredText>
             <Typo.Body>{route.params.email}</Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
             <Typo.Body>
-              {t`Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver.`}
+              {t`Nous devons vérifier tes informations\u00a0: l'email peut prendre quelques minutes pour arriver.`}
             </Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />

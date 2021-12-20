@@ -28,7 +28,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
 
   useEffect(() => {
     if (!networkInfo.isConnected) {
-      setErrorMessage(t`Hors connexion : en attente du réseau.`)
+      setErrorMessage(t`Hors connexion\u00a0: en attente du réseau.`)
       setIsDoingReCaptchaChallenge(false)
     } else {
       setErrorMessage(null)
@@ -118,7 +118,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
         <Spacer.Column numberOfSpaces={5} />
         <Paragraphe>
           <Typo.Body>
-            {t`Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :`}
+            {t`Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux\u00a0:`}
           </Typo.Body>
         </Paragraphe>
         <ButtonTertiary

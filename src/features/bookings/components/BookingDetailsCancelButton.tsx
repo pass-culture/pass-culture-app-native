@@ -75,7 +75,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
     } else {
       return (
         <CancellationCaption>
-          {t`Tu ne peux plus annuler ta réservation : elle devait être annulée avant le` +
+          {t`Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le` +
             '\u00a0' +
             formattedConfirmationDate}
         </CancellationCaption>

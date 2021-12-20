@@ -204,7 +204,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           }
         }
       >
-        Si tu as besoin d’aide n’hésite pas à :
+        Si tu as besoin d’aide n’hésite pas à :
       </div>
       <div
         className="css-view-1dbjc4n"

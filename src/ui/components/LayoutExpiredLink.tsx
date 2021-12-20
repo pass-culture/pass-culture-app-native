@@ -36,7 +36,7 @@ export function LayoutExpiredLink({
 
       {!!urlFAQ || !!contactSupport ? (
         <React.Fragment>
-          <StyledBody>{t`Si tu as besoin d’aide n’hésite pas à :`}</StyledBody>
+          <StyledBody>{t`Si tu as besoin d’aide n’hésite pas à\u00a0:`}</StyledBody>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       ) : null}
