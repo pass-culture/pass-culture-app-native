@@ -13,6 +13,7 @@ import { GeoCoordinates } from 'libs/geolocation'
 import { VenueHit } from 'libs/search'
 import { parseGeolocationParameters } from 'libs/search/parseSearchParameters'
 import { getVenueTypeFacetFilters } from 'libs/search/utils/getVenueTypeFacetFilters'
+import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 
@@ -31,9 +32,14 @@ export const fetchMultipleVenues = async (
     },
   }))
 
-  const allResults = await client.multipleQueries<AlgoliaVenue>(queries)
-  const hits = flatten(allResults.results.map(({ hits }) => hits))
-  return hits.map(buildVenueHit)
+  try {
+    const allResults = await client.multipleQueries<AlgoliaVenue>(queries)
+    const hits = flatten(allResults.results.map(({ hits }) => hits))
+    return hits.map(buildVenueHit)
+  } catch (error) {
+    captureAlgoliaError(error)
+    return [] as VenueHit[]
+  }
 }
 
 const buildVenuesQueryOptions = (

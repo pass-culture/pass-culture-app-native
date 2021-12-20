@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback, FunctionComponent } from 'react'
-import { FlatList, ScrollView, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHomepageModules } from 'features/home/api'
@@ -10,12 +10,10 @@ import {
   OffersModule,
   VenuesModule,
 } from 'features/home/components'
-import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeHeader } from 'features/home/components/HomeHeader'
 import { RecommendationModule } from 'features/home/components/RecommendationModule'
 import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/contentful'
 import { RecommendationPane, ProcessedModule } from 'features/home/contentful/moduleTypes'
-import { useShowSkeleton } from 'features/home/pages/useShowSkeleton'
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
@@ -62,7 +60,6 @@ export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const modules = useHomepageModules(params?.entryId) || []
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
-  const showSkeleton = useShowSkeleton()
 
   const onScroll = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -73,45 +70,24 @@ export const Home: FunctionComponent = () => {
 
   return (
     <Container>
-      {showSkeleton ? (
-        <ScrollView
-          testID="homeScrollView"
-          scrollEventThrottle={400}
-          bounces={false}
-          scrollEnabled={false}>
-          <Spacer.TopScreen />
-          <HomeHeader />
-          <HomeBodyPlaceholder />
-          <Spacer.TabBar />
-        </ScrollView>
-      ) : (
-        <React.Fragment />
-      )}
-      <HomeBodyLoadingContainer hide={showSkeleton}>
-        <FlatList
-          testID="homeBodyScrollView"
-          scrollEventThrottle={400}
-          bounces={false}
-          onScroll={onScroll}
-          data={modules}
-          renderItem={renderModule}
-          keyExtractor={keyExtractor}
-          ListFooterComponent={<Spacer.TabBar />}
-          ListHeaderComponent={ListHeaderComponent}
-          initialNumToRender={5}
-          onEndReachedThreshold={0.5}
-          removeClippedSubviews={false}
-        />
-      </HomeBodyLoadingContainer>
+      <FlatList
+        testID="homeBodyScrollView"
+        scrollEventThrottle={400}
+        bounces={false}
+        onScroll={onScroll}
+        data={modules}
+        renderItem={renderModule}
+        keyExtractor={keyExtractor}
+        ListFooterComponent={<Spacer.TabBar />}
+        ListHeaderComponent={ListHeaderComponent}
+        initialNumToRender={5}
+        onEndReachedThreshold={0.5}
+        removeClippedSubviews={false}
+      />
       <Spacer.Column numberOfSpaces={6} />
     </Container>
   )
 }
-
-const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide }) => ({
-  height: hide ? 0 : '100%',
-  overflow: 'hidden',
-}))
 
 const Container = styled.View({
   flexBasis: 1,

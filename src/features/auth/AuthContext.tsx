@@ -1,4 +1,5 @@
 import { LocalStorageService } from '@pass-culture/id-check'
+import { useNetInfo } from '@react-native-community/netinfo'
 import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
@@ -42,31 +43,37 @@ export function useAuthContext(): IAuthContext {
 export const AuthWrapper = memo(function AuthWrapper({ children }: { children: JSX.Element }) {
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const networkInfo = useNetInfo()
 
   const readTokenAndConnectUser = useCallback(async () => {
+    let accessToken = await storage.readString('access_token')
+
+    if (!!accessToken && !networkInfo.isConnected) {
+      setIsLoggedIn(true)
+      return
+    }
+
+    if (getAccessTokenStatus(accessToken) === 'expired') {
+      // refreshAccessToken calls the backend to get a new acces token
+      // and also saves it to the storage
+      accessToken = await refreshAccessToken(api)
+    }
+
+    if (getAccessTokenStatus(accessToken) === 'valid') {
+      setIsLoggedIn(true)
+      connectUserToBatchAndFirebase(accessToken)
+    }
+  }, [networkInfo.isConnected])
+
+  useEffect(() => {
     try {
-      let accessToken = await storage.readString('access_token')
-
-      if (getAccessTokenStatus(accessToken) === 'expired') {
-        // refreshAccessToken calls the backend to get a new acces token
-        // and also saves it to the storage
-        accessToken = await refreshAccessToken(api)
-      }
-
-      if (getAccessTokenStatus(accessToken) === 'valid') {
-        setIsLoggedIn(true)
-        connectUserToBatchAndFirebase(accessToken)
-      }
+      readTokenAndConnectUser()
     } catch (err) {
       eventMonitoring.captureException(err)
       setIsLoggedIn(false)
     } finally {
       setLoading(false)
     }
-  }, [])
-
-  useEffect(() => {
-    readTokenAndConnectUser()
   }, [readTokenAndConnectUser])
 
   useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])

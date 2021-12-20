@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.166.1",
-  "build": 10166001,
+  "version": "1.167.1",
+  "build": 10167001,
   "private": true,
   "engines": {
     "node": ">=12.13.0"
@@ -32,7 +32,7 @@
   },
   "scripts": {
     "android": "react-native run-android --variant=developmentDebug",
-    "android:testing": "react-native run-android --variant=apptestingDebug",
+    "android:testing": "react-native run-android --variant=apptestingRelease",
     "android:staging": "react-native run-android --variant=stagingDebug",
     "android:prod": "react-native run-android --variant=productionDebug",
     "ios:testing": "react-native run-ios --scheme PassCulture-Testing",

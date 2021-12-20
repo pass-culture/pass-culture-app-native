@@ -1,10 +1,9 @@
 import React from 'react'
 import { AppState, AppStateStatus } from 'react-native'
-import { focusManager as reactQueryFocusManager, QueryClientProvider } from 'react-query'
+import { focusManager, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 
 import { queryClient } from 'libs/react-query/queryClient'
-import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'
 
 if (__DEV__ && process.env.JEST !== 'true') {
   addPlugin({ queryClient })
@@ -14,7 +13,7 @@ if (__DEV__ && process.env.JEST !== 'true') {
 // React Query automatically requests fresh data in the background.
 // To have the equivalent behaviour for React-Native, we provide focus information through
 // the AppState module :
-reactQueryFocusManager.setEventListener((handleFocus) => {
+focusManager.setEventListener((handleFocus) => {
   function triggerReactQueryFocusOnBecomeActive(appState: AppStateStatus) {
     if (appState === 'active') {
       // When we open the app that was in the background, for logged in user, we refresh the access_token
@@ -30,6 +29,5 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
 })
 
 export const ReactQueryClientProvider = ({ children }: { children: JSX.Element }) => {
-  usePrefetchQueries()
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 }
