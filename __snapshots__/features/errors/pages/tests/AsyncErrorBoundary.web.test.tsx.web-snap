@@ -66,7 +66,7 @@ Object {
         <div
           class="css-text-901oao"
           dir="auto"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Black; font-size: 24px; font-weight: 900; line-height: 36px;"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Black; font-size: 24px; line-height: 36px;"
         >
           Oups !
         </div>
@@ -198,7 +198,7 @@ Object {
       <div
         class="css-text-901oao"
         dir="auto"
-        style="color: rgb(255, 255, 255); font-family: Montserrat-Black; font-size: 24px; font-weight: 900; line-height: 36px;"
+        style="color: rgb(255, 255, 255); font-family: Montserrat-Black; font-size: 24px; line-height: 36px;"
       >
         Oups !
       </div>

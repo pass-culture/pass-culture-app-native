@@ -123,7 +123,6 @@ exports[`Home component should render correctly without login modal 1`] = `
                       "color": "#ffffff",
                       "fontFamily": "Montserrat-Black",
                       "fontSize": 28,
-                      "fontWeight": "900",
                       "lineHeight": 36,
                     },
                     Object {
