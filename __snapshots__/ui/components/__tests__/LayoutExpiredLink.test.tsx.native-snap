@@ -141,7 +141,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           ]
         }
       >
-        Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.
+        Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.
       </Text>
       <View
         numberOfSpaces={6}

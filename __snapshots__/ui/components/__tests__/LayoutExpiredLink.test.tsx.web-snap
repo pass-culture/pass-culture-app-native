@@ -181,7 +181,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           }
         }
       >
-        Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.
+        Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.
       </div>
       <div
         className="css-view-1dbjc4n"

@@ -16,22 +16,27 @@ module.exports = {
   },
   create(context) {
     return {
-      'TaggedTemplateExpression[tag.name="t"] > TemplateLiteral > TemplateElement[value.raw=/\\s+[!?:]/]':
+      'TaggedTemplateExpression[tag.name="t"] > TemplateLiteral > TemplateElement[value.raw=/\\s+[!?:»]/]':
         (node) => {
           context.report({
             node,
-            message: 'Please use \\u00a0 (nbsp) instead of whitespace before !, ?, :',
+            message: 'Please use \\u00a0 (nbsp) instead of whitespace before !, ?, :, »',
             fix: function (fixer) {
-              const textToReplace = node.value.raw.replace(/\s+([!?:])/g, '\\u00a0$1')
+              const textToReplace = node.value.raw.replace(/\s+([!?:»])/g, '\\u00a0$1')
+              const range = getReplaceRange(node)
 
-              // We use range here, because fixer.replaceText(node, textToReplace)
-              // removes the backticks, "${" or "}" around the text.
-              // It's because of the "range" property of the provided TemplateElement
-              // in "node" variable: the range is too wide. So we process it manually,
-              // removing the first character
-              const startRangeIndex = node.range[0] + 1
-              const endRangeIndex = startRangeIndex + node.value.raw.length
-              const range = [startRangeIndex, endRangeIndex]
+              return fixer.replaceTextRange(range, textToReplace)
+            },
+          })
+        },
+      'TaggedTemplateExpression[tag.name="t"] > TemplateLiteral > TemplateElement[value.raw=/«\\s+/]':
+        (node) => {
+          context.report({
+            node,
+            message: 'Please use \\u00a0 (nbsp) instead of whitespace after «',
+            fix: function (fixer) {
+              const textToReplace = node.value.raw.replace(/(«)\s+/g, '$1\\u00a0')
+              const range = getReplaceRange(node)
 
               return fixer.replaceTextRange(range, textToReplace)
             },
@@ -39,4 +44,15 @@ module.exports = {
         },
     }
   },
+}
+
+function getReplaceRange(node) {
+  // We use range here, because fixer.replaceText(node, textToReplace)
+  // removes the backticks, "${" or "}" around the text.
+  // It's because of the "range" property of the provided TemplateElement
+  // in "node" variable: the range is too wide. So we process it manually,
+  // removing the first character
+  const startRangeIndex = node.range[0] + 1
+  const endRangeIndex = startRangeIndex + node.value.raw.length
+  return [startRangeIndex, endRangeIndex]
 }

@@ -30,7 +30,8 @@ export function LayoutExpiredLink({
     <GenericInfoPage title={t`Oups\u00a0!`} icon={SadFace}>
       <StyledBody>{t`Le lien est expiré\u00a0!`}</StyledBody>
       <StyledBody>
-        {customBodyText || t`Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.`}
+        {customBodyText ||
+          t`Clique sur «\u00a0Renvoyer l’e-mail\u00a0» pour recevoir un nouveau lien.`}
       </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
 
