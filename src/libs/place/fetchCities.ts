@@ -1,11 +1,17 @@
+import { CitiesResponse } from 'libs/place'
+
 export const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 
-export const fetchCities = (postalCode: string) => {
+export const fetchCities = async (postalCode: string): Promise<CitiesResponse> => {
   const queryParams = new URLSearchParams()
   queryParams.append('codePostal', postalCode)
   const url = `${CITIES_API_URL}?${queryParams.toString()}`
 
-  return fetch(url)
-    .then((response) => response.json())
-    .catch(() => [])
+  try {
+    const response = await fetch(url)
+    if (!response.ok) throw new Error('Failed to fetch cities')
+    return await response.json()
+  } catch (_error) {
+    return []
+  }
 }
