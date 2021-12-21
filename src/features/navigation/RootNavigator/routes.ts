@@ -40,6 +40,7 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { EduConnectErrors } from 'features/identityCheck/pages/errors/EduConnectErrors'
+import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/IdentityCheckValidation'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
@@ -72,6 +73,11 @@ const importedIdCheckRoutes = idCheckRoutes.map((route) => {
     // This route is hardcoded in the backend
     // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
     return { ...route, component: EduConnectErrors }
+  }
+  if (route.name === 'Validation') {
+    // This route is hardcoded in the backend
+    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
+    return { ...route, component: IdentityCheckValidation }
   }
   return route
 })
