@@ -22,6 +22,7 @@ import { Spinner } from 'ui/components/Spinner'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
 
@@ -80,11 +81,15 @@ export const SetCity = () => {
     </TouchableOpacity>
   )
 
-  const onPressContinue = () => {
+  const submitCity = () => {
     if (selectedCity === null) return
     dispatch({ type: 'SET_CITY', payload: selectedCity })
     navigateToNextScreen()
   }
+
+  const disabled = selectedCity === null
+
+  useEnterKeyAction(!disabled ? submitCity : undefined)
 
   return (
     <PageWithHeader
@@ -128,11 +133,7 @@ export const SetCity = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary
-          onPress={onPressContinue}
-          title={t`Continuer`}
-          disabled={selectedCity === null}
-        />
+        <ButtonPrimary onPress={submitCity} title={t`Continuer`} disabled={disabled} />
       }
     />
   )

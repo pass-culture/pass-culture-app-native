@@ -12,6 +12,7 @@ import { useProfileOptions } from 'features/identityCheck/utils/useProfileOption
 import { useIsUserUnderage } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer } from 'ui/theme'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 
 export const Status = () => {
   const { activities } = useProfileOptions()
@@ -37,11 +38,13 @@ export const Status = () => {
     dispatch({ type: 'SET_HAS_SCHOOL_TYPES', payload: hasSchoolTypes })
   }, [hasSchoolTypes])
 
-  const onPressContinue = async () => {
+  const submitStatus = async () => {
     if (!selectedStatus) return
     await dispatch({ type: 'SET_STATUS', payload: selectedStatus })
     navigateToNextScreen()
   }
+
+  useEnterKeyAction(selectedStatus ? submitStatus : undefined)
 
   return (
     <PageWithHeader
@@ -68,7 +71,7 @@ export const Status = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
-          onPress={onPressContinue}
+          onPress={submitStatus}
           title={!selectedStatus ? t`Choisis ton statut` : t`Continuer`}
           disabled={!selectedStatus}
         />

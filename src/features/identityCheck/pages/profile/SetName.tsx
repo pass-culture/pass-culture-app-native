@@ -11,6 +11,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { isNameValid } from 'ui/components/inputs/nameCheck'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Spacer } from 'ui/theme'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 
 export const SetName = () => {
   const { dispatch, profile } = useIdentityCheckContext()
@@ -27,6 +28,8 @@ export const SetName = () => {
     dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
     navigateToNextScreen()
   }
+
+  useEnterKeyAction(!disabled ? submitName : undefined)
 
   return (
     <PageWithHeader

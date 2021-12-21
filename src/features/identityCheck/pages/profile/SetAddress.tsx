@@ -21,6 +21,7 @@ import { Spinner } from 'ui/components/Spinner'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 
 const snackbarMessage = t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
@@ -94,11 +95,13 @@ export const SetAddress = () => {
     ? t`Recherche et sélectionne ton adresse`
     : t`Entre ton adresse`
 
-  const onPressContinue = () => {
+  const submitAddress = () => {
     if (!enabled) return
     dispatch({ type: 'SET_ADDRESS', payload: selectedAddress || query })
     navigateToNextScreen()
   }
+
+  useEnterKeyAction(enabled ? submitAddress : undefined)
 
   return (
     <PageWithHeader
@@ -138,7 +141,7 @@ export const SetAddress = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary onPress={onPressContinue} title={t`Continuer`} disabled={!enabled} />
+        <ButtonPrimary onPress={submitAddress} title={t`Continuer`} disabled={!enabled} />
       }
     />
   )
