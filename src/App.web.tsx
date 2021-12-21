@@ -1,3 +1,5 @@
+// if __DEV__ import if you want to debug
+// import './why-did-you-render'
 import 'react-app-polyfill/ie9'
 import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
