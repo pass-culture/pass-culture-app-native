@@ -1,5 +1,5 @@
 import resolveResponse from 'contentful-resolve-response'
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
@@ -9,6 +9,7 @@ import { NoContentError } from 'features/home/components/NoContentError'
 import { HomepageEntry } from 'features/home/contentful'
 import { EntryCollection, EntryFields, processHomepageEntry } from 'features/home/contentful'
 import { useSelectPlaylist } from 'features/home/selectPlaylist'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 import { ScreenError } from 'libs/monitoring'
@@ -32,14 +33,20 @@ export async function getEntries() {
   }
 }
 
-export function useHomepageModules(entryId?: string) {
-  const selectPlaylist = useSelectPlaylist(entryId)
+export function useHomepageModules(paramsEntryId?: string) {
+  const selectPlaylist = useSelectPlaylist(paramsEntryId)
   const { data: entries } = useQuery<HomepageEntry[]>(QueryKeys.HOMEPAGE_MODULES, getEntries, {
     staleTime: STALE_TIME_CONTENTFUL,
   })
 
   const entry = selectPlaylist(entries || [])
-  return useMemo(() => (entry ? processHomepageEntry(entry) : []), [entry?.sys.id])
+  const entryId = entry?.sys.id
+
+  useEffect(() => {
+    if (entryId) analytics.logConsultHome({ entryId })
+  }, [entryId])
+
+  return useMemo(() => (entry ? processHomepageEntry(entry) : []), [entryId])
 }
 
 const STALE_TIME_USER_PROFILE = 5 * 60 * 1000

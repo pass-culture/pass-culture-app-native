@@ -53,6 +53,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.ALL_MODULES_SEEN, { numberOfModules }),
   logAllTilesSeen: (moduleName: string, numberOfTiles: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles }),
+  logConsultHome: (params: { entryId: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_HOME, params),
   logConsultOffer: (params: {
     offerId: number
     from: Referrals
