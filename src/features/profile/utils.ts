@@ -8,7 +8,7 @@ import { Again } from 'ui/svg/icons/Again'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalLinkSquare } from 'ui/svg/icons/ExternalLinkSquare'
 import { Info } from 'ui/svg/icons/Info'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -59,7 +59,7 @@ export const matchSubscriptionMessageIconToSvg = (
     case 'CLOCK':
       return Clock
     case 'EXTERNAL':
-      return ExternalSite
+      return ExternalLinkSquare
     case 'MAGNIFYING_GLASS':
       return MagnifyingGlass
     case 'ERROR':

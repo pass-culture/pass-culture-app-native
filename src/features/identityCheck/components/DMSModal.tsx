@@ -7,7 +7,7 @@ import { env } from 'libs/environment'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalLinkSquare } from 'ui/svg/icons/ExternalLinkSquare'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -42,7 +42,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
     <ButtonTertiaryBlack
       title={t`Je suis de nationalité française`}
       onPress={openDMSFrenchCitizenURL}
-      icon={ExternalSite}
+      icon={ExternalLinkSquare}
       justifyContent="flex-start"
     />
     <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Carte d’identité ou passeport.`}</Typo.Caption>
@@ -50,7 +50,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
     <ButtonTertiaryBlack
       title={t`Je suis de nationalité étrangère`}
       onPress={openDMSForeignCitizenURL}
-      icon={ExternalSite}
+      icon={ExternalLinkSquare}
       justifyContent="flex-start"
     />
     <Typo.Caption color={ColorsEnum.GREY_DARK}>

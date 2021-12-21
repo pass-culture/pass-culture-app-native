@@ -257,81 +257,71 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
       }
     />
     <View
+      accessibilityLabel="Tu peux cliquer ici"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "flexDirection": "row",
-          },
-        ]
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 0,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 20,
+          "justifyContent": "flex-start",
+          "marginTop": 0,
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "width": "auto",
+        }
       }
+      testID="call-to-action-button"
     >
       <View
-        accessibilityLabel="Tu peux cliquer ici"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 0,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 20,
-            "justifyContent": "flex-start",
-            "marginTop": 0,
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "width": "auto",
-          }
-        }
-        testID="call-to-action-button"
+        height={16}
+        testID="button-icon"
+        width={16}
       >
-        <View
-          height={16}
-          testID="button-icon"
-          width={16}
-        >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          icon={[Function]}
-          iconSize={16}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 12,
-                "lineHeight": 20,
-                "marginLeft": 8,
-                "marginRight": 16,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#151515"
-          textSize={12}
-        >
-          Tu peux cliquer ici
+        <Text>
+          button-icon-SVG-Mock
         </Text>
       </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        icon={[Function]}
+        iconSize={16}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#151515",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 12,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "marginRight": 16,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+        textColor="#151515"
+        textSize={12}
+      >
+        Tu peux cliquer ici
+      </Text>
     </View>
   </View>
 </View>
