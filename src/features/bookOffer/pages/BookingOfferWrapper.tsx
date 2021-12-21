@@ -14,7 +14,11 @@ interface IBookingContext {
   dispatch: React.Dispatch<Action>
 }
 
-const BookingContext = React.createContext<IBookingContext | null>(null)
+const BookingContext = React.createContext<IBookingContext>({
+  bookingState: initialBookingState,
+  dispatch: () => null,
+  dismissModal: () => null,
+})
 
 interface BookingWrapperProps {
   children: JSX.Element
@@ -33,13 +37,7 @@ export const BookingWrapper = ({ children, dismissModal }: BookingWrapperProps) 
 
 export const useBooking = (): IBookingContext => {
   const bookingContext = useContext(BookingContext)
-  return (
-    bookingContext ?? {
-      bookingState: initialBookingState,
-      dispatch: () => null,
-      dismissModal: () => null,
-    }
-  )
+  return bookingContext
 }
 
 export const useBookingOffer = () => {
