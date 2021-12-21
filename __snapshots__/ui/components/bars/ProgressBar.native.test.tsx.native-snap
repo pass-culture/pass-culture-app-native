@@ -18,9 +18,11 @@ exports[`ProgressBar should render properly 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "backgroundColor": "#eb0055",
           "borderRadius": 32,
           "height": 32,
+          "justifyContent": "center",
           "position": "absolute",
           "width": 32,
           "zIndex": 2,

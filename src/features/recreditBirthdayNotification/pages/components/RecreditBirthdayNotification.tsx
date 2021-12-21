@@ -79,6 +79,7 @@ export const RecreditBirthdayNotification = () => {
           progress={1}
           color={ColorsEnum.BRAND}
           icon={CategoryIcon.Spectacles}
+          iconSize={20}
           isAnimated
         />
         <Amount color={ColorsEnum.BRAND}>{remainingCredit}</Amount>
