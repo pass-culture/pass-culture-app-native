@@ -11,8 +11,8 @@ import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCh
 import { useProfileOptions } from 'features/identityCheck/utils/useProfileOptions'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { Spacer } from 'ui/theme'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
+import { Spacer } from 'ui/theme'
 
 export const Status = () => {
   const { activities } = useProfileOptions()

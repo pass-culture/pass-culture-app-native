@@ -27,6 +27,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export function ChangeEmail() {
@@ -65,9 +66,6 @@ export function ChangeEmail() {
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const isSubmitButtonDisabled =
-    !isLongEnough(password) || !!emailErrorMessage || !!passwordErrorMessage || isLoading
-
   const onEmailChangeError = (errorCode?: string) => {
     errorCode && analytics.logErrorSavingNewEmail(errorCode)
 
@@ -93,6 +91,11 @@ export function ChangeEmail() {
   const submitEmailChange = () => {
     changeEmail({ email, password })
   }
+
+  const isSubmitButtonDisabled =
+    !isLongEnough(password) || !!emailErrorMessage || !!passwordErrorMessage || isLoading
+
+  useEnterKeyAction(!isSubmitButtonDisabled ? submitEmailChange : undefined)
 
   return (
     <React.Fragment>

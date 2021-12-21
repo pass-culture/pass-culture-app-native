@@ -18,10 +18,10 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 
 const snackbarMessage = t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
