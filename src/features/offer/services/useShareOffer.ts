@@ -3,14 +3,12 @@ import { Platform } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
+import { useOffer } from 'features/offer/api/useOffer'
+import { getLocationName } from 'features/offer/atoms/LocationCaption'
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
+import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { share } from 'libs/share'
-
-import { useOffer } from '../api/useOffer'
-import { getLocationName } from '../atoms/LocationCaption'
-
-import { useFunctionOnce } from './useFunctionOnce'
 
 export function getOfferUrl(id: number): string {
   const path = getScreenPath('Offer', { id })
