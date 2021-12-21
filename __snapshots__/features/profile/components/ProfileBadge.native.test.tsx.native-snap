@@ -23,24 +23,6 @@ exports[`ProfileBadge should not show CTA if no link is provided 1`] = `
     style={
       Array [
         Object {
-          "paddingRight": 16,
-        },
-      ]
-    }
-  >
-    <View
-      height={32}
-      width={32}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      Array [
-        Object {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -206,24 +188,6 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
     style={
       Array [
         Object {
-          "paddingRight": 16,
-        },
-      ]
-    }
-  >
-    <View
-      height={32}
-      width={32}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      Array [
-        Object {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -273,19 +237,18 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
         Object {
           "alignItems": "center",
           "backgroundColor": "transparent",
-          "borderRadius": 0,
+          "borderRadius": 24,
           "borderWidth": 0,
           "flexDirection": "row",
-          "height": 20,
+          "height": "auto",
           "justifyContent": "flex-start",
-          "marginTop": 0,
           "maxWidth": 500,
           "opacity": 1,
-          "paddingBottom": 0,
+          "paddingBottom": 2,
           "paddingLeft": 0,
           "paddingRight": 0,
-          "paddingTop": 0,
-          "width": "auto",
+          "paddingTop": 2,
+          "width": "100%",
         }
       }
       testID="call-to-action-button"
@@ -303,7 +266,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
         adjustsFontSizeToFit={false}
         icon={[Function]}
         iconSize={16}
-        numberOfLines={1}
+        numberOfLines={2}
         style={
           Array [
             Object {
@@ -346,24 +309,6 @@ exports[`ProfileBadge should show neither CTA Icon nor CTA message if no CTA mes
   }
   testID="profile-badge"
 >
-  <View
-    style={
-      Array [
-        Object {
-          "paddingRight": 16,
-        },
-      ]
-    }
-  >
-    <View
-      height={32}
-      width={32}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
   <View
     style={
       Array [

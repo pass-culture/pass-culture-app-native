@@ -46,16 +46,14 @@ export const IdentityCheckDMS = () => {
               onPress={openDMSFrenchCitizenURL}
               icon={ExternalSite}
             />
-            <Caption color={ColorsEnum.GREY_DARK}>{t`Carte d’identité ou passeport.`}</Caption>
+            <Caption>{t`Carte d’identité ou passeport.`}</Caption>
             <OrSeparator />
             <ButtonTertiaryBlack
               title={t`Je suis de nationalité étrangère`}
               onPress={openDMSForeignCitizenURL}
               icon={ExternalSite}
             />
-            <Caption color={ColorsEnum.GREY_DARK}>
-              {t`Titre de séjour, carte d'identité ou passeport.`}
-            </Caption>
+            <Caption>{t`Titre de séjour, carte d'identité ou passeport.`}</Caption>
           </ButtonContainer>
           <Spacer.BottomScreen />
         </Container>
@@ -65,8 +63,6 @@ export const IdentityCheckDMS = () => {
 }
 
 const Container = styled.View({ height: '100%', alignItems: 'center' })
-const StyledBody = styled(Typo.Body).attrs({ color: ColorsEnum.GREY_DARK })({
-  textAlign: 'center',
-})
+const StyledBody = styled(Typo.Body).attrs({ color: ColorsEnum.GREY_DARK })({ textAlign: 'center' })
 const ButtonContainer = styled.View({ padding: getSpacing(10) })
-const Caption = styled(Typo.Caption)({ textAlign: 'center' })
+const Caption = styled(Typo.Caption).attrs({ color: ColorsEnum.GREY_DARK })({ textAlign: 'center' })

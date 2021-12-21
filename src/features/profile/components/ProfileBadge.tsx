@@ -25,14 +25,13 @@ const renderCallToAction = (
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      {/* TODO (LucasBeneston) : Add new button with numberOfLines={2} to ui/components/buttons */}
       <ButtonQuaternaryBlack
-        inline
         icon={callToActionIcon || undefined}
         testId="call-to-action-button"
         onPress={() => handleCallToActionLink(callToActionLink)}
         title={callToActionMessage}
         justifyContent="flex-start"
+        numberOfLines={2}
       />
     </React.Fragment>
   )
@@ -43,7 +42,7 @@ export function ProfileBadge(props: ProfileBadgeProps) {
 
   return (
     <Container testID={props.testID || 'profile-badge'}>
-      {Icon ? (
+      {Icon && !props.callToActionIcon ? (
         <IconContainer>
           <Icon size={getSpacing(8)} color={ColorsEnum.GREY_DARK} />
         </IconContainer>
