@@ -54,7 +54,7 @@ export function BookingConfirmation() {
         {t({
           id: 'credit left to spend',
           values: { credit: formatToFrenchDecimal(amountLeft) },
-          message: 'Il te reste encore {credit} à dépenser sur le pass !',
+          message: 'Il te reste encore {credit} à dépenser sur le pass\u00a0!',
         })}
       </StyledBody>
       <Spacer.Column numberOfSpaces={4} />

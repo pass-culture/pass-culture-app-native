@@ -68,7 +68,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
             id: 'not cancellable because expired for ex beneficiary',
             values: { date: formattedConfirmationDate },
             message:
-              'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation : elle devait être annulée avant le {date}',
+              'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le {date}',
           })}
         </CancellationCaption>
       )

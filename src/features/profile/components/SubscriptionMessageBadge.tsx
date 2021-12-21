@@ -21,7 +21,7 @@ const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: Date | undefined) =>
           day: formatToSlashedFrenchDate(new Date(lastUpdatedDate).toISOString()),
           hour: formatToHour(new Date(lastUpdatedDate)),
         },
-        message: 'Dossier mis à jour le : {day} à {hour}',
+        message: 'Dossier mis à jour le\u00a0: {day} à {hour}',
       })
     : undefined
 

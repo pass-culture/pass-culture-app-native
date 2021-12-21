@@ -10,7 +10,7 @@ export function YoungerBadge(props: { eligibilityStartDatetime: Date }) {
     id: "date d'éligibilité",
     values: { date: formatToSlashedFrenchDate(props.eligibilityStartDatetime.toISOString()) },
     message:
-      'Patience ! Reviens à partir du {date} pour continuer ton inscription et bénéficier du crédit pass Culture.',
+      'Patience\u00a0! Reviens à partir du {date} pour continuer ton inscription et bénéficier du crédit pass Culture.',
   })
 
   return <ProfileBadge popOverIcon={Clock} message={information} testID={'younger-badge'} />
