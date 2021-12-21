@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
-import { Keyboard, TouchableOpacity } from 'react-native'
+import { Keyboard, Platform, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
@@ -140,5 +140,6 @@ export const SetCity = () => {
 
 const CitiesContainer = styled.View({
   flexGrow: 1,
-  overflow: 'scroll',
+  overflowY: 'scroll',
+  ...(Platform.OS === 'web' && { boxSizing: 'content-box' }),
 })

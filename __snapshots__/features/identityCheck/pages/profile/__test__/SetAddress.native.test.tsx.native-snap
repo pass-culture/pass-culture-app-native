@@ -322,7 +322,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   Array [
                     Object {
                       "flexGrow": 1,
-                      "overflow": "scroll",
+                      "overflowY": "scroll",
                     },
                   ]
                 }
