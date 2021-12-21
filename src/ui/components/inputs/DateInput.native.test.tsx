@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
@@ -28,7 +27,7 @@ describe('DateInput Component', () => {
       <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
     )
 
-    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    const hiddenInput = getByTestId('Entrée pour la date de naissance')
     expect(hiddenInput).toBeTruthy()
   })
 
@@ -37,7 +36,7 @@ describe('DateInput Component', () => {
       <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
     )
 
-    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    const hiddenInput = getByTestId('Entrée pour la date de naissance')
     expect(hiddenInput).toBeTruthy()
     expect(hiddenInput.props.value).toBe('25101991')
   })
@@ -45,7 +44,7 @@ describe('DateInput Component', () => {
   it('should render hiddenInput with empty initialDate input value', () => {
     const { getByTestId } = render(<DateInput />)
 
-    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    const hiddenInput = getByTestId('Entrée pour la date de naissance')
     expect(hiddenInput).toBeTruthy()
     expect(hiddenInput.props.value).toBe('')
   })
@@ -53,9 +52,9 @@ describe('DateInput Component', () => {
   it('should render date part labels', () => {
     const { getByTestId } = render(<DateInput />)
 
-    const dayEntry = getByTestId(t`Entrée pour le jour de la date de naissance`)
-    const monthEntry = getByTestId(t`Entrée pour le mois de la date de naissance`)
-    const yearEntry = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+    const dayEntry = getByTestId('Entrée pour le jour de la date de naissance')
+    const monthEntry = getByTestId('Entrée pour le mois de la date de naissance')
+    const yearEntry = getByTestId("Entrée pour l'année jour de la date de naissance")
 
     expect(dayEntry).toBeTruthy()
     expect(monthEntry).toBeTruthy()
@@ -79,9 +78,9 @@ describe('DateInput Component', () => {
       <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
     )
 
-    const dayEntry = getByTestId(t`Entrée pour le jour de la date de naissance`)
-    const monthEntry = getByTestId(t`Entrée pour le mois de la date de naissance`)
-    const yearEntry = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+    const dayEntry = getByTestId('Entrée pour le jour de la date de naissance')
+    const monthEntry = getByTestId('Entrée pour le mois de la date de naissance')
+    const yearEntry = getByTestId("Entrée pour l'année jour de la date de naissance")
 
     expect(dayEntry).toBeTruthy()
     expect(monthEntry).toBeTruthy()
@@ -105,9 +104,9 @@ describe('DateInput Component', () => {
       <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
     )
 
-    const dayEntry = getByTestId(t`Entrée pour le jour de la date de naissance`)
-    const monthEntry = getByTestId(t`Entrée pour le mois de la date de naissance`)
-    const yearEntry = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+    const dayEntry = getByTestId('Entrée pour le jour de la date de naissance')
+    const monthEntry = getByTestId('Entrée pour le mois de la date de naissance')
+    const yearEntry = getByTestId("Entrée pour l'année jour de la date de naissance")
 
     expect(dayEntry).toBeTruthy()
     expect(monthEntry).toBeTruthy()
@@ -131,8 +130,8 @@ describe('DateInput Component', () => {
       <DateInput initialDay={'45'} initialMonth={'13'} initialYear={'9000'} />
     )
 
-    const dayEntry = getByTestId(t`Entrée pour le jour de la date de naissance`)
-    const monthEntry = getByTestId(t`Entrée pour le mois de la date de naissance`)
+    const dayEntry = getByTestId('Entrée pour le jour de la date de naissance')
+    const monthEntry = getByTestId('Entrée pour le mois de la date de naissance')
 
     expect(dayEntry).toBeTruthy()
     expect(monthEntry).toBeTruthy()
@@ -150,9 +149,9 @@ describe('DateInput Component', () => {
   it('should be gray with empty date', async () => {
     const { getByTestId } = render(<DateInput />)
 
-    const dayEntry = getByTestId(t`Entrée pour le jour de la date de naissance`)
-    const monthEntry = getByTestId(t`Entrée pour le mois de la date de naissance`)
-    const yearEntry = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+    const dayEntry = getByTestId('Entrée pour le jour de la date de naissance')
+    const monthEntry = getByTestId('Entrée pour le mois de la date de naissance')
+    const yearEntry = getByTestId("Entrée pour l'année jour de la date de naissance")
 
     expect(dayEntry).toBeTruthy()
     expect(monthEntry).toBeTruthy()
@@ -176,12 +175,12 @@ describe('DateInput Component', () => {
       <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
     )
 
-    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    const hiddenInput = getByTestId('Entrée pour la date de naissance')
     expect(hiddenInput).toBeTruthy()
 
-    const dayLabel = getByTestId(t`Entrée pour le jour de la date de naissance`)
-    const monthLabel = getByTestId(t`Entrée pour le mois de la date de naissance`)
-    const yearLabel = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+    const dayLabel = getByTestId('Entrée pour le jour de la date de naissance')
+    const monthLabel = getByTestId('Entrée pour le mois de la date de naissance')
+    const yearLabel = getByTestId("Entrée pour l'année jour de la date de naissance")
 
     expect(dayLabel).toBeTruthy()
     expect(monthLabel).toBeTruthy()
@@ -209,12 +208,12 @@ describe('DateInput Component', () => {
       <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
     )
 
-    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    const hiddenInput = getByTestId('Entrée pour la date de naissance')
     expect(hiddenInput).toBeTruthy()
 
-    const dayLabel = getByTestId(t`Entrée pour le jour de la date de naissance`)
-    const monthLabel = getByTestId(t`Entrée pour le mois de la date de naissance`)
-    const yearLabel = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+    const dayLabel = getByTestId('Entrée pour le jour de la date de naissance')
+    const monthLabel = getByTestId('Entrée pour le mois de la date de naissance')
+    const yearLabel = getByTestId("Entrée pour l'année jour de la date de naissance")
 
     expect(dayLabel).toBeTruthy()
     expect(monthLabel).toBeTruthy()
@@ -232,7 +231,7 @@ describe('DateInput Component', () => {
 
     await waitForExpect(() => {
       expect(hiddenInput.props.value).toBe('25')
-      expect((dayLabelText.children[0] as ReactTestInstance).children[0]).toBe(t`25`)
+      expect((dayLabelText.children[0] as ReactTestInstance).children[0]).toBe('25')
       expect((monthLabelText.children[0] as ReactTestInstance).children[0]).toBe('MM')
       expect((yearLabelText.children[0] as ReactTestInstance).children[0]).toBe('AAAA')
     })
@@ -243,12 +242,12 @@ describe('DateInput Component', () => {
       <DateInput initialDay={'25'} initialMonth={'10'} initialYear={'1991'} />
     )
 
-    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    const hiddenInput = getByTestId('Entrée pour la date de naissance')
     expect(hiddenInput).toBeTruthy()
 
-    const dayLabel = getByTestId(t`Entrée pour le jour de la date de naissance`)
-    const monthLabel = getByTestId(t`Entrée pour le mois de la date de naissance`)
-    const yearLabel = getByTestId(t`Entrée pour l'année jour de la date de naissance`)
+    const dayLabel = getByTestId('Entrée pour le jour de la date de naissance')
+    const monthLabel = getByTestId('Entrée pour le mois de la date de naissance')
+    const yearLabel = getByTestId("Entrée pour l'année jour de la date de naissance")
 
     expect(dayLabel).toBeTruthy()
     expect(monthLabel).toBeTruthy()
@@ -265,8 +264,8 @@ describe('DateInput Component', () => {
 
     await waitForExpect(() => {
       expect(hiddenInput.props.value).toBe('2510')
-      expect((dayLabelText.children[0] as ReactTestInstance).children[0]).toBe(t`25`)
-      expect((monthLabelText.children[0] as ReactTestInstance).children[0]).toBe(t`10`)
+      expect((dayLabelText.children[0] as ReactTestInstance).children[0]).toBe('25')
+      expect((monthLabelText.children[0] as ReactTestInstance).children[0]).toBe('10')
       expect((yearLabelText.children[0] as ReactTestInstance).children[0]).toBe('AAAA')
     })
   })
@@ -282,7 +281,7 @@ describe('DateInput Component', () => {
       />
     )
 
-    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    const hiddenInput = getByTestId('Entrée pour la date de naissance')
     expect(hiddenInput).toBeTruthy()
 
     expect(onChangeValue).toHaveBeenCalledWith(new Date('1991-10-25'), {
@@ -304,7 +303,7 @@ describe('DateInput Component', () => {
       />
     )
 
-    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    const hiddenInput = getByTestId('Entrée pour la date de naissance')
     expect(hiddenInput).toBeTruthy()
 
     expect(onChangeValue).toHaveBeenCalledWith(null, {
@@ -326,10 +325,10 @@ describe('DateInput Component', () => {
       />
     )
 
-    const hiddenInput = getByTestId(t`Entrée pour la date de naissance`)
+    const hiddenInput = getByTestId('Entrée pour la date de naissance')
     expect(hiddenInput).toBeTruthy()
 
-    const monthLabel = getByTestId(t`Entrée pour le mois de la date de naissance`)
+    const monthLabel = getByTestId('Entrée pour le mois de la date de naissance')
     fireEvent.press(monthLabel)
     await waitForExpect(() => {
       expect(onChangeValue).toHaveBeenCalledWith(null, {

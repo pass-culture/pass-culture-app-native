@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
@@ -158,6 +157,6 @@ describe('SetBirthday Page', () => {
 })
 
 function changeDate(renderAPI: RenderAPI, dayStr: string, monthStr: string, yearStr: string) {
-  const dateInput = renderAPI.getByTestId(t`Entrée pour la date de naissance`)
+  const dateInput = renderAPI.getByTestId('Entrée pour la date de naissance')
   fireEvent.changeText(dateInput, [dayStr, monthStr, yearStr].join(''))
 }
