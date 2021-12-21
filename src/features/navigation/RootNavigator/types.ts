@@ -25,7 +25,12 @@ export type IdentityCheckRootStackParamList = {
   IdentityCheckUnavailable: { withDMS?: boolean }
   IdentityCheckEduConnect: undefined
   IdentityCheckEduConnectForm: undefined
-  IdentityCheckValidation: { firstName?: string; lastName?: string; dateOfBirth?: string }
+  IdentityCheckValidation: {
+    firstName?: string
+    lastName?: string
+    dateOfBirth?: string
+    logoutUrl?: string
+  }
   IdentityCheckPending: undefined
   IdentityCheckDMS: undefined
   // Confirmation

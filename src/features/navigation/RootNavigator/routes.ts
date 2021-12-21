@@ -39,6 +39,7 @@ import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthd
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
+import { withEduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectErrors } from 'features/identityCheck/pages/errors/EduConnectErrors'
 import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/IdentityCheckValidation'
 import { PageNotFound } from 'features/navigation/PageNotFound'
@@ -66,26 +67,28 @@ import { Venue } from 'features/venue'
 
 import { Route } from './types'
 
-// This mapping replaces the components from id-check by components defined inside this repo
-// in order to progressively deprecate @pass-culture/id-check
-const importedIdCheckRoutes = idCheckRoutes.map((route) => {
-  if (route.name === 'EduConnectErrorsPage') {
-    // This route is hardcoded in the backend
-    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
-    return { ...route, component: EduConnectErrors }
-  }
-  if (route.name === 'Validation') {
-    // This route is hardcoded in the backend
-    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
-    return { ...route, component: IdentityCheckValidation }
-  }
-  return route
-})
-
 export const routes: Route[] = [
-  ...importedIdCheckRoutes,
+  // This mapping replaces the components from id-check by components defined inside this repo
+  // in order to progressively deprecate @pass-culture/id-check
+  ...([
+    ...idCheckRoutes.filter(
+      (idCheckRoute) =>
+        ![idCheckInitialRouteName, 'Validation', 'EduConnectErrorsPage'].includes(idCheckRoute.name)
+    ),
+    { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheck' },
+    // This route is hardcoded in the backend
+    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
+    { name: 'Validation', component: IdentityCheckValidation, path: 'idcheck/validation' },
+    // This route is hardcoded in the backend
+    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
+    {
+      name: 'EduConnectErrorsPage',
+      component: EduConnectErrors,
+      hoc: withEduConnectErrorBoundary,
+      path: 'idcheck/educonnect/erreur',
+    },
+  ] as Route[]),
   ...identityCheckRoutes,
-  { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheck' },
   {
     name: 'Offer',
     component: Offer,

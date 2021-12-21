@@ -2167,10 +2167,10 @@
   resolved "https://registry.yarnpkg.com/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
-"@pass-culture/id-check@^2.11.0":
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.11.0.tgz#cef9d3e249e87f78a77a589dcea67f73149b5a55"
-  integrity sha512-7nT53QMDCyVoaWzR+jOpVvTcOYMDSqVUBt1Po8jhgjFHdyd+uq6SnQvKfB+7pj80DUmen70d+jA+Mf3bVFvurQ==
+"@pass-culture/id-check@^2.11.1":
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.11.1.tgz#b222c5a9ce7f9493cf101e5613132d4433e5e877"
+  integrity sha512-J6zYQ+chQJdelt1WbwaNBb40uXb4X3EptxHtUJRETX+paRLuj8IQC4Eg7jCydT6wLzSOBY7XVgkEVuzfsB6O1w==
   dependencies:
     deepmerge "^4.2.2"
     lodash "^4.17.21"
