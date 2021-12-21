@@ -150,5 +150,5 @@ export const SetAddress = () => {
 const AdressesContainer = styled.View({
   flexGrow: 1,
   overflowY: 'scroll',
-  ...(Platform.OS === 'web' && { boxSizing: 'content-box' }),
+  ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })

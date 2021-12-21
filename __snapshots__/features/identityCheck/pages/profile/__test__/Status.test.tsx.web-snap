@@ -175,17 +175,9 @@ exports[`<Status/> should render correctly 1`] = `
           className="css-view-1dbjc4n"
           style={
             Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "maxHeight": "100%",
               "maxWidth": "500px",
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
+              "paddingBottom": "24px",
               "width": "100%",
             }
           }
@@ -273,15 +265,11 @@ exports[`<Status/> should render correctly 1`] = `
                   "WebkitBoxDirection": "normal",
                   "WebkitBoxFlex": 1,
                   "WebkitBoxOrient": "vertical",
-                  "WebkitBoxPack": "center",
                   "WebkitFlexDirection": "column",
                   "WebkitFlexGrow": 1,
-                  "WebkitJustifyContent": "center",
                   "flexDirection": "column",
                   "flexGrow": 1,
-                  "justifyContent": "center",
                   "msFlexDirection": "column",
-                  "msFlexPack": "center",
                   "msFlexPositive": 1,
                   "paddingBottom": "0px",
                   "paddingLeft": "20px",

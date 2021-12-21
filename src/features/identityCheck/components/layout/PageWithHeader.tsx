@@ -74,7 +74,6 @@ const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>((pro
     flexDirection: 'column',
     paddingBottom: props.bottomChildrenViewHeight,
     paddingHorizontal: getSpacing(5),
-    justifyContent: 'center',
   },
 }))<ChildrenScrollViewProps>({})
 
