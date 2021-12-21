@@ -23,6 +23,7 @@ export enum AnalyticsEvent {
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
   CONSULT_DISCLAIMER_VALIDATION_MAIL = 'ConsultDisclaimerValidationMail',
   CONSULT_ITINERARY = 'ConsultLocationItinerary',
+  CONSULT_HOME = 'ConsultHome',
   CONSULT_OFFER = 'ConsultOffer',
   CONSULT_VENUE = 'ConsultVenue',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',

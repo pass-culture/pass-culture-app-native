@@ -4,6 +4,7 @@ import { rest } from 'msw'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { processHomepageEntry } from 'features/home/contentful'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import {
   homepageEntriesAPIResponse,
@@ -79,6 +80,16 @@ describe('Home api calls', () => {
 
       await waitFor(() => result.current.length > 0)
       expect(result.current).toEqual(processHomepageEntry(adaptedSecondHomepageEntry))
+    })
+
+    it('should log ConsultHome with specified entryId', async () => {
+      const { result, waitFor } = renderHook(() => useHomepageModules(entryId), {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await waitFor(() => result.current.length > 0)
+      expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { entryId })
     })
   })
 
