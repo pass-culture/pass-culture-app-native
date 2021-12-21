@@ -1,4 +1,3 @@
-import { plural } from '@lingui/macro'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -28,11 +27,10 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 describe('NumberOfResults component', () => {
   it('should correctly format the number of hit - without venue', () => {
     mockLocationFilter = { locationType: LocationType.EVERYWHERE }
-    const getResultText = (count: number) =>
-      plural(count, { one: '# résultat', other: '# résultats' })
     expect(render(<NumberOfResults nbHits={0} />).container.textContent).toBe('')
-    render(<NumberOfResults nbHits={1} />).getByText(getResultText(1))
-    render(<NumberOfResults nbHits={2} />).getByText(getResultText(2))
+    render(<NumberOfResults nbHits={1} />).getByText('1 résultat')
+    render(<NumberOfResults nbHits={2} />).getByText('2 résultats')
+    render(<NumberOfResults nbHits={1234} />).getByText('1,234 résultats')
   })
 
   describe('with venue', () => {
@@ -41,12 +39,10 @@ describe('NumberOfResults component', () => {
     })
 
     it('should correctly format the number of hit', () => {
-      const getResultText = (count: number) =>
-        plural(count, { one: '# résultat', other: '# résultats' }) + ' pour'
-
       expect(render(<NumberOfResults nbHits={0} />).container.textContent).toBe('')
-      render(<NumberOfResults nbHits={1} />).getByText(getResultText(1))
-      render(<NumberOfResults nbHits={2} />).getByText(getResultText(2))
+      render(<NumberOfResults nbHits={1} />).getByText('1 résultat pour')
+      render(<NumberOfResults nbHits={2} />).getByText('2 résultats pour')
+      render(<NumberOfResults nbHits={1234} />).getByText('1,234 résultats pour')
     })
 
     it('should returns to locationFilter - Everywhere if geolocation not activated', () => {

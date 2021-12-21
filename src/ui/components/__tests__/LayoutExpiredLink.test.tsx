@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 
 import { render } from 'tests/utils'
@@ -11,7 +10,7 @@ const url = 'https://passculture.zendesk.com/hc/fr/'
 const contactSupport = jest.fn()
 
 const renderResendEmailButton = () => (
-  <ButtonPrimaryWhite title={t`Renvoyer l'email`} onPress={onResendEmail} disabled={isFetching} />
+  <ButtonPrimaryWhite title="Renvoyer l'email" onPress={onResendEmail} disabled={isFetching} />
 )
 
 describe('<LayoutExpiredLink/>', () => {
