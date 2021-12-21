@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
-import { useRoute } from '@react-navigation/native'
+import { useFocusEffect, useRoute } from '@react-navigation/native'
 import moment from 'moment'
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
@@ -17,14 +17,6 @@ export const IdentityCheckValidation = () => {
   const { params } = useRoute<UseRouteType<'IdentityCheckValidation'>>()
 
   const { dispatch, identification } = useIdentityCheckContext()
-  dispatch({
-    type: 'SET_IDENTIFICATION',
-    payload: {
-      firstName: params.firstName ?? null,
-      lastName: params.lastName ?? null,
-      birthDate: params.dateOfBirth ?? null,
-    },
-  })
 
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
@@ -36,6 +28,19 @@ export const IdentityCheckValidation = () => {
     dispatch({ type: 'SET_STEP', payload: IdentityCheckStep.CONFIRMATION })
     navigateToNextScreen()
   }
+
+  useFocusEffect(
+    useCallback(() => {
+      dispatch({
+        type: 'SET_IDENTIFICATION',
+        payload: {
+          firstName: params.firstName ?? null,
+          lastName: params.lastName ?? null,
+          birthDate: params.dateOfBirth ?? null,
+        },
+      })
+    }, [params])
+  )
 
   return (
     <PageWithHeader
