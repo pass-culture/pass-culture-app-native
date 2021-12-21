@@ -5,6 +5,7 @@ import { VenuesSearchParametersFields } from 'features/home/contentful'
 import { LocationType } from 'features/search/enums'
 import { AlgoliaVenue, FiltersArray } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
+import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
@@ -31,9 +32,14 @@ export const fetchMultipleVenues = async (
     },
   }))
 
-  const allResults = await client.multipleQueries<AlgoliaVenue>(queries)
-  const hits = flatten(allResults.results.map(({ hits }) => hits))
-  return hits.map(buildVenueHit)
+  try {
+    const allResults = await client.multipleQueries<AlgoliaVenue>(queries)
+    const hits = flatten(allResults.results.map(({ hits }) => hits))
+    return hits.map(buildVenueHit)
+  } catch (error) {
+    captureAlgoliaError(error)
+    return [] as VenueHit[]
+  }
 }
 
 const buildVenuesQueryOptions = (

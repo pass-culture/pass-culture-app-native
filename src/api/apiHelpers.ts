@@ -158,17 +158,15 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     return {}
   }
 
-  const responseBody = await response.json()
-
   if (!response.ok) {
     throw new ApiError(
       response.status,
-      await responseBody,
+      response.body,
       `Échec de la requête ${response.url}, code: ${response.status}`
     )
   }
 
-  return await responseBody
+  return await response.json()
 }
 
 export function isApiError(error: ApiError | unknown): error is ApiError {

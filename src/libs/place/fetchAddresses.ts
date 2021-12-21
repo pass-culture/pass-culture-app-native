@@ -14,6 +14,7 @@ export const fetchAddresses = async ({
 
   try {
     const response = await fetch(url)
+    if (!response.ok) throw new Error('Failed to fetch addresses')
     const collection: Collection = await response.json()
     return buildSuggestedAddresses(collection)
   } catch (_error) {
