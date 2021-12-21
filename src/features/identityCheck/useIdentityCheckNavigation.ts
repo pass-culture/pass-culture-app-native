@@ -10,6 +10,7 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
+import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
 type NextScreenOrStep = { screen: IdentityCheckScreen } | { step: IdentityCheckStep } | null
@@ -46,11 +47,13 @@ export const useIdentityCheckNavigation = (): { navigateToNextScreen: () => void
 
   const saveCheckpoint = async (nextStep: IdentityCheckStep) => {
     try {
-      if (currentStep === IdentityCheckStep.PROFILE) await patchProfile()
-      queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
+      if (currentStep === IdentityCheckStep.PROFILE) {
+        await patchProfile()
+      }
+      await queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
       dispatch({ type: 'SET_STEP', payload: nextStep })
-    } catch (e) {
-      // do nothing
+    } catch (error) {
+      eventMonitoring.captureException(error)
     }
   }
 

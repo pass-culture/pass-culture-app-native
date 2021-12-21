@@ -41,7 +41,6 @@ import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectErrors } from 'features/identityCheck/pages/errors/EduConnectErrors'
-import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/IdentityCheckValidation'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
@@ -76,9 +75,6 @@ export const routes: Route[] = [
         ![idCheckInitialRouteName, 'Validation', 'EduConnectErrorsPage'].includes(idCheckRoute.name)
     ),
     { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheck' },
-    // This route is hardcoded in the backend
-    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
-    { name: 'Validation', component: IdentityCheckValidation, path: 'idcheck/validation' },
     // This route is hardcoded in the backend
     // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
     {
