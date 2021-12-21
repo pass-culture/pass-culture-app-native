@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
-import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/utils'
 import {
   fetchAlgoliaHits,
   filterAlgoliaHit,
@@ -53,7 +53,7 @@ const useRecommendedOfferIds = (userId: number | undefined, position: GeoCoordin
 }
 
 const useRecommendedHits = (ids: string[]): SearchHit[] | undefined => {
-  const isUserUnderage = useIsUserUnderageBeneficiary()
+  const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformAlgoliaHits()
 
   const { data: hits } = useQuery(

@@ -4,7 +4,7 @@ import omit from 'lodash.omit'
 import { useMemo } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
-import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/utils'
 import { PartialSearchState } from 'features/search/types'
 import { fetchAlgolia, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
@@ -17,13 +17,13 @@ export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page
 
 const useSearchInfiniteQuery = (partialSearchState: PartialSearchState) => {
   const { position } = useGeolocation()
-  const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
+  const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformAlgoliaHits()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, partialSearchState],
     async ({ pageParam: page = 0 }) =>
-      await fetchAlgolia({ page, ...partialSearchState }, position, isUserUnderageBeneficiary),
+      await fetchAlgolia({ page, ...partialSearchState }, position, isUserUnderage),
     { getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined) }
   )
 

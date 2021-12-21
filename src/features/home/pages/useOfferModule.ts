@@ -3,7 +3,7 @@ import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { SearchParametersFields } from 'features/home/contentful'
-import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/utils'
 import { SearchState } from 'features/search/types'
 import {
   fetchMultipleAlgolia,
@@ -36,13 +36,13 @@ export const useOfferModule = ({
   const { position } = useGeolocation()
   const transformHits = useTransformAlgoliaHits()
   const parseSearchParameters = useParseSearchParameters()
-  const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
+  const isUserUnderage = useIsUserUnderage()
 
   const parsedParameters = search.map(parseSearchParameters).filter(isSearchState)
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_MODULE, moduleId],
-    async () => await fetchMultipleAlgolia(parsedParameters, position, isUserUnderageBeneficiary)
+    async () => await fetchMultipleAlgolia(parsedParameters, position, isUserUnderage)
   )
 
   useEffect(() => {
