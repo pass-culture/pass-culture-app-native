@@ -10,7 +10,7 @@ import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitId
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
-import { useSetCurrentSubscriptionStep } from 'features/identityCheck/useSetCurrentSubscriptionStep'
+import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/useSetCurrentSubscriptionStep'
 import { useGetStepState } from 'features/identityCheck/utils/useGetStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -25,7 +25,7 @@ export const IdentityCheckStepper = () => {
   const steps = useIdentityCheckSteps()
   const getStepState = useGetStepState()
   const context = useIdentityCheckContext()
-  const { subscription } = useSetCurrentSubscriptionStep()
+  const { subscription } = useSetSubscriptionStepAndMethod()
 
   const { visible, showModal, hideModal } = useModal(false)
   const {
@@ -47,15 +47,7 @@ export const IdentityCheckStepper = () => {
         })
       }
     }
-
-    const setIdentityCheckMethod = () => {
-      const identityCheckMethods = subscription?.allowedIdentityCheckMethods
-      const method = identityCheckMethods?.length === 1 ? identityCheckMethods[0] : null
-      context.dispatch({ type: 'SET_METHOD', payload: method })
-    }
-
     showMaintenance()
-    setIdentityCheckMethod()
   }, [subscription])
 
   function showQuitIdentityCheckModal() {
