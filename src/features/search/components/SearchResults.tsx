@@ -9,9 +9,9 @@ import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/comp
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/analytics'
+import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { SearchHit } from 'libs/search'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
-import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 
 const keyExtractor = (item: SearchHit) => item.objectID
 

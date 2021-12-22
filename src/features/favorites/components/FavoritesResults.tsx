@@ -18,7 +18,10 @@ import {
 } from 'features/favorites/pages/utils/sorts'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
+import {
+  FavoriteHitPlaceholder,
+  NumberOfResultsPlaceholder,
+} from 'features/search/components/Placeholders'
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
@@ -74,7 +77,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
 
   const renderItem = useCallback(
     ({ item: favorite }: { item: FavoriteResponse }) => {
-      if (!user || !credit) return <HitPlaceholder />
+      if (!user || !credit) return <FavoriteHitPlaceholder />
       return <Favorite favorite={favorite} user={user} onInAppBooking={setOfferToBook} />
     },
     [credit, favoritesState, user, setOfferToBook]
@@ -133,9 +136,7 @@ const contentContainerStyle = {
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(4),
 }
 
-const Container = styled.View({
-  flex: 1,
-})
+const Container = styled.View({ flex: 1 })
 
 const Separator = styled.View({
   height: 2,
@@ -150,12 +151,12 @@ const SortContainer = styled.View({
   bottom: TAB_BAR_COMP_HEIGHT + getSpacing(6),
 })
 
-const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
+const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 10 }).map((_, index) => ({
   key: index.toString(),
 }))
 
 const FavoritesResultsPlaceHolder = () => {
-  const renderItem = useCallback(() => <HitPlaceholder />, [])
+  const renderItem = useCallback(() => <FavoriteHitPlaceholder />, [])
   const ListHeaderComponent = useMemo(() => <NumberOfResultsPlaceholder />, [])
 
   return (
