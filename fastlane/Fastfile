@@ -25,6 +25,8 @@ platform :ios do
       export_method: ENV['EXPORT_METHOD'],
       workspace: "#{ENV['IOS_PROJECT_PATH']}/PassCulture.xcworkspace")
   end
+  release_notes = %x[#{release_notes_command}]
+  escaped_release_notes = release_notes.gsub("\"", "\\\"")
 
   lane :deploy_appCenter do |options|
     appcenter_upload(
@@ -33,7 +35,7 @@ platform :ios do
       owner_type: "organization",
       app_name: ENV['APPCENTER_IOS_APP_ID'],
       ipa: "#{ENV['IOS_IPA_DIRECTORY']}/#{ENV['IOS_IPA_NAME']}",
-      release_notes: %x[#{release_notes_command}],
+      release_notes: escaped_release_notes,
       destinations: ENV['APPCENTER_DISTRIBUTE_GROUPS']
     )
   end
@@ -41,7 +43,8 @@ platform :ios do
   lane :deploy do |options|
     if options[:codepush] then # @codepush
       release_notes = %x[#{release_notes_command}]
-      sh "cd .. && yarn appcenter codepush release-react --token #{ENV['IOS_APPCENTER_API_TOKEN']} -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{release_notes}\" --disable-duplicate-release-error"
+      escaped_release_notes = release_notes.gsub("\"", "\\\"")
+      sh "cd .. && yarn appcenter codepush release-react --token #{ENV['IOS_APPCENTER_API_TOKEN']} -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{escaped_release_notes}\" --disable-duplicate-release-error"
     else
       match(
         shallow_clone: true,
@@ -99,7 +102,8 @@ platform :android do
   lane :deploy do |options|
     if options[:codepush] then # @codepush
       release_notes = %x[#{release_notes_command}]
-      sh "cd .. && yarn appcenter codepush release-react --token #{ENV['ANDROID_APPCENTER_API_TOKEN']} -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{release_notes}\" --disable-duplicate-release-error"
+      escaped_release_notes = release_notes.gsub("\"", "\\\"")
+      sh "cd .. && yarn appcenter codepush release-react --token #{ENV['ANDROID_APPCENTER_API_TOKEN']} -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{escaped_release_notes}\" --disable-duplicate-release-error"
     else
       build
       if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
