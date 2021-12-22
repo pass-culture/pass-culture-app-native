@@ -24,7 +24,7 @@ export function UnderageAccountCreated() {
   return (
     <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle\u00a0!`}>
       <StyledSubtitle>
-        {maxPrice + '\u00a0' + t`€ viennent d'être crédités sur ton compte pass Culture`}
+        {t`${maxPrice}\u00a0€ viennent d'être crédités sur ton compte pass Culture`}
       </StyledSubtitle>
 
       <Spacer.Column numberOfSpaces={4} />
