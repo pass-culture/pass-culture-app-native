@@ -13,7 +13,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ImageTile } from 'ui/components/ImageTile'
-import { ColorsEnum } from 'ui/theme'
+import { UniqueColors } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface VenueTileProps {
@@ -73,6 +73,6 @@ const TouchableHighlight = styled.TouchableHighlight<{ height: number; width: nu
     height,
     width,
     borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-    backgroundColor: ColorsEnum.GREY_DISABLED,
+    backgroundColor: UniqueColors.GREY_DISABLED,
   })
 )

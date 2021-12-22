@@ -1,11 +1,11 @@
 import { ViewStyle } from 'react-native'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, UniqueColors } from 'ui/theme'
 
 interface IconSharedProperties {
   accessibilityLabel?: string
   accessible?: boolean
-  color?: ColorsEnum
+  color?: ColorsEnum | UniqueColors
   testID?: string
   style?: ViewStyle
 }
@@ -13,11 +13,11 @@ interface IconSharedProperties {
 export interface IconInterface extends IconSharedProperties {
   size?: number | string
   opacity?: number
-  color2?: ColorsEnum
+  color2?: ColorsEnum | UniqueColors
 }
 
 export interface BicolorIconInterface extends IconInterface {
-  color2?: ColorsEnum
+  color2?: ColorsEnum | UniqueColors
   thin?: boolean
 }
 

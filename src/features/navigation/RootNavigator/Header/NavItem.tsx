@@ -5,7 +5,7 @@ import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
 import { accessibilityAndTestId } from 'tests/utils'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, UniqueColors, getSpacing, Typo } from 'ui/theme'
 
 interface NavItemInterface {
   isSelected?: boolean
@@ -31,7 +31,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
         size={getSpacing(6)}
         thin={!isSelected}
       />
-      <Title color={isSelected ? ColorsEnum.BRAND : ColorsEnum.BLACK}>{menu[tabName]}</Title>
+      <Title color={isSelected ? UniqueColors.BRAND : ColorsEnum.BLACK}>{menu[tabName]}</Title>
     </StyledTouchableOpacity>
   )
 }

@@ -23,7 +23,7 @@ import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
-import { ColorsEnum } from 'ui/theme'
+import { UniqueColors } from 'ui/theme'
 
 export const RecreditBirthdayNotification = () => {
   const { data: user } = useUserProfileInfo()
@@ -77,12 +77,12 @@ export const RecreditBirthdayNotification = () => {
       <ProgressBarContainer>
         <ProgressBar
           progress={1}
-          color={ColorsEnum.BRAND}
+          color={UniqueColors.BRAND}
           icon={CategoryIcon.Spectacles}
           iconSize={20}
           isAnimated
         />
-        <Amount color={ColorsEnum.BRAND}>{remainingCredit}</Amount>
+        <Amount color={UniqueColors.BRAND}>{remainingCredit}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Text>{t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.`}</Text>

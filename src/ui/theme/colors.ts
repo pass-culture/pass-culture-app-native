@@ -4,11 +4,9 @@ export enum ColorsEnum {
   BLACK = '#151515',
   ERROR = '#b60025',
   GREEN_VALID = '#15884f',
-  GREEN_DISABLED = '#b8d7c1',
   GREEN_LIGHT = '#2cbe6e',
   GREY_DARK = '#626262',
   GREY_MEDIUM = '#c7c7cc',
-  GREY_DISABLED = '#e6e6e6',
   GREY_LIGHT = '#f5f5f5',
   PRIMARY = '#eb0055',
   PRIMARY_DISABLED = '#ff99be',
@@ -17,14 +15,16 @@ export enum ColorsEnum {
   TERTIARY = '#cc1673',
   TRANSPARENT = 'transparent',
   WHITE = '#ffffff',
-  BRAND = '#870087',
-  BRAND_DARK = '#070C36',
 }
 export enum UniqueColors {
-  TAB_BAR = '#fffffff8',
+  BRAND = '#870087',
+  BRAND_DARK = '#070C36',
+  GREEN_DISABLED = '#b8d7c1',
+  GREY_DISABLED = '#e6e6e6',
   GREY_OVERLAY = '#00000080',
   FILTER_BUTTON = '#d0005f',
   BACKGROUND_COLOR = '#DDDDDD',
   FOREGROUND_COLOR = '#EEEEEE',
+  TAB_BAR = '#fffffff8',
 }
 export const ACTIVE_OPACITY = 0.7

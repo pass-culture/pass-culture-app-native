@@ -2,12 +2,12 @@ import React from 'react'
 import { Text as RNText, TextProps as RNTextProps } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum } from './colors'
+import { ColorsEnum, UniqueColors } from './colors'
 import { useGrid } from './grid'
 import { getSpacing, getSpacingString } from './spacing'
 
 interface CustomTextProps {
-  color?: ColorsEnum
+  color?: ColorsEnum | UniqueColors
 }
 type TextProps = CustomTextProps & RNTextProps
 
