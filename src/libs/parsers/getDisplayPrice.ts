@@ -13,7 +13,7 @@ export const formatToFrenchDecimal = (priceInCents: number) => {
   const euros = priceInCents / CENTS_IN_EURO
   // we show 2 decimals if price is not round. Ex: 21,50 €
   const fixed = euros === Math.floor(euros) ? euros : euros.toFixed(2)
-  return `${fixed.toString().replace('.', ',')} ${EURO_SYMBOL}`
+  return t`${fixed.toString().replace('.', ',')}\u00a0${EURO_SYMBOL}`
 }
 
 const getPricePerPlace = (prices: number[]): string => {
