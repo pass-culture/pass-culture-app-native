@@ -8,4 +8,5 @@ export const notExpiredStock: OfferStockResponse = {
   isBookable: true,
   isExpired: false,
   isSoldOut: false,
+  isForbiddenToUnderage: false,
 }

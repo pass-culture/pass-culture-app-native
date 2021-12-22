@@ -78,6 +78,7 @@ describe('VenueOfferTile component', () => {
       isDuo: false,
       isReleased: true,
       isExpired: false,
+      isForbiddenToUnderage: false,
       isSoldOut: false,
       name: offer.name,
       stocks: [],
