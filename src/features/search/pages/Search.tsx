@@ -39,7 +39,7 @@ const useShowResults = () => {
   return showResults
 }
 
-export const Search: React.FC = () => {
+export function Search() {
   useKeyboardAdjust()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()

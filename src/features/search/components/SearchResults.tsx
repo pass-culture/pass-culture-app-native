@@ -118,7 +118,7 @@ const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => (
   key: index.toString(),
 }))
 
-const SearchResultsPlaceHolder = () => {
+function SearchResultsPlaceHolder() {
   const renderItem = useCallback(() => <HitPlaceholder />, [])
   const ListHeaderComponent = useMemo(() => <NumberOfResultsPlaceholder />, [])
   const ListFooterComponent = useMemo(() => <Footer />, [])

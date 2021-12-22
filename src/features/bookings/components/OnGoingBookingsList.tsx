@@ -1,9 +1,10 @@
 import { plural } from '@lingui/macro'
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
+import { useBookings } from 'features/bookings/api/queries'
 import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -15,26 +16,25 @@ import { NoBookingsView } from './NoBookingsView'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 import { Booking } from './types'
 
-interface OnGoingBookingsListProps {
-  bookings?: Booking[]
-  endedBookings?: Booking[]
-}
-
 const emptyBookings: Booking[] = []
 
-export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
+export function OnGoingBookingsList() {
+  const { data: bookings } = useBookings()
   const { bottom } = useSafeAreaInsets()
 
-  const bookings = props.bookings || emptyBookings
-  const onGoingBookingsCount = bookings.length
+  const {
+    ongoing_bookings: ongoingBookings = emptyBookings,
+    ended_bookings: endedBookings = emptyBookings,
+  } = bookings || {}
+
+  const onGoingBookingsCount = ongoingBookings.length
   const hasBookings = onGoingBookingsCount > 0
-  const hasEndedBookings = (props.endedBookings || []).length > 0
+  const hasEndedBookings = endedBookings.length > 0
   const bookingsCountLabel = plural(onGoingBookingsCount, {
     one: '# réservation en cours',
     other: '# réservations en cours',
   })
 
-  const ListEmptyComponent = useCallback(() => <NoBookingsView />, [])
   const ListHeaderComponent = useCallback(
     () => (hasBookings ? <BookingsCount>{bookingsCountLabel}</BookingsCount> : null),
     [hasBookings, bookingsCountLabel]
@@ -42,10 +42,10 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
   const ListFooterComponent = useCallback(
     () => (
       <FooterContainer safeBottom={bottom}>
-        <EndedBookingsSection endedBookings={props.endedBookings} />
+        <EndedBookingsSection endedBookings={endedBookings} />
       </FooterContainer>
     ),
-    [hasBookings, bookingsCountLabel, props.endedBookings]
+    [hasBookings, bookingsCountLabel, endedBookings]
   )
 
   const logBookingsScrolledToBottom = useFunctionOnce(analytics.logBookingsScrolledToBottom)
@@ -61,11 +61,11 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
       <FlatList
         testID="OnGoingBookingsList"
         keyExtractor={keyExtractor}
-        data={bookings}
+        data={ongoingBookings}
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
         ListHeaderComponent={ListHeaderComponent}
-        ListEmptyComponent={ListEmptyComponent}
+        ListEmptyComponent={<NoBookingsView />}
         ListFooterComponent={ListFooterComponent}
         ItemSeparatorComponent={Separator}
         scrollEnabled={hasBookings}
@@ -82,7 +82,6 @@ const renderItem: ListRenderItem<Booking> = ({ item }) => <OnGoingBookingItem bo
 
 const contentContainerStyle = {
   flexGrow: 1,
-  paddingHorizontal: getSpacing(4),
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(2),
 }
 
@@ -95,11 +94,12 @@ const BookingsCount = styled(Typo.Body).attrs({
   color: ColorsEnum.GREY_DARK,
 })({
   fontSize: 15,
-  paddingTop: getSpacing(4),
-  paddingBottom: getSpacing(2),
+  paddingTop: getSpacing(6),
+  paddingHorizontal: getSpacing(6),
 })
 
 const FooterContainer = styled.View<{ safeBottom: number }>(({ safeBottom }) => ({
   marginBottom: safeBottom ? safeBottom / 2 : 0,
   paddingVertical: getSpacing(4),
+  paddingHorizontal: getSpacing(6),
 }))

@@ -55,7 +55,9 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
 
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
-}))({})
+}))({
+  paddingHorizontal: getSpacing(6),
+})
 
 const ItemContainer = styled.View({
   flexDirection: 'row',
