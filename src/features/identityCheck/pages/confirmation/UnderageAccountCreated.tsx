@@ -15,7 +15,7 @@ import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
-import { ColorsEnum, Spacer } from 'ui/theme'
+import { UniqueColors, Spacer } from 'ui/theme'
 
 export function UnderageAccountCreated() {
   const maxPrice = useMaxPrice()
@@ -31,12 +31,12 @@ export function UnderageAccountCreated() {
       <ProgressBarContainer>
         <ProgressBar
           progress={1}
-          color={ColorsEnum.BRAND}
+          color={UniqueColors.BRAND}
           icon={CategoryIcon.Spectacles}
           iconSize={20}
           isAnimated
         />
-        <Amount color={ColorsEnum.BRAND}>{maxPrice + '€'}</Amount>
+        <Amount color={UniqueColors.BRAND}>{maxPrice + '€'}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Text>{text}</Text>

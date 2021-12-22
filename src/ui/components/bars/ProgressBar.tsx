@@ -4,12 +4,12 @@ import * as Animatable from 'react-native-animatable'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing } from 'ui/theme'
+import { ColorsEnum, UniqueColors, getSpacing } from 'ui/theme'
 import { ZIndex } from 'ui/theme/layers'
 
 interface ProgressBarProps {
   progress: number
-  color: ColorsEnum
+  color: ColorsEnum | UniqueColors
   icon: FunctionComponent<IconInterface>
   isAnimated?: boolean
   iconSize?: number

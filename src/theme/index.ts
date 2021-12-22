@@ -1,8 +1,3 @@
-import {
-  theme as idCheckTheme,
-  ThemeType as IdCheckThemeType,
-} from '@pass-culture/id-check/src/theme'
-import deepmerge from 'deepmerge'
 import { Platform } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
@@ -28,7 +23,7 @@ interface Typography {
   fontWeight?: number
 }
 
-export interface AppThemeType extends Omit<IdCheckThemeType, 'colors' | 'typography'> {
+export interface AppThemeType {
   appContentWidth: number
   appBarHeight: number
   navTopHeight: number
@@ -62,11 +57,11 @@ export interface AppThemeType extends Omit<IdCheckThemeType, 'colors' | 'typogra
     black: ColorsEnum
     error: ColorsEnum
     greenValid: ColorsEnum
-    greenDisabled: ColorsEnum
+    greenDisabled: UniqueColors
     greenLight: ColorsEnum
     greyDark: ColorsEnum
     greyMedium: ColorsEnum
-    greyDisabled: ColorsEnum
+    greyDisabled: UniqueColors
     greyLight: ColorsEnum
     primary: ColorsEnum
     primaryDisabled: ColorsEnum
@@ -75,8 +70,8 @@ export interface AppThemeType extends Omit<IdCheckThemeType, 'colors' | 'typogra
     tertiary: ColorsEnum
     transparent: ColorsEnum
     white: ColorsEnum
-    brand: ColorsEnum
-    brandDark: ColorsEnum
+    brand: UniqueColors
+    brandDark: UniqueColors
   }
   uniqueColors: {
     tabBar: UniqueColors
@@ -115,9 +110,103 @@ export interface AppThemeType extends Omit<IdCheckThemeType, 'colors' | 'typogra
   bottomContentPage: {
     offsetTopHeightDesktopTablet: number
   }
+  buttons: {
+    loading: {
+      primary: {
+        backgroundColor: ColorsEnum
+      }
+      secondary: {
+        borderColor: ColorsEnum
+      }
+    }
+    disabled: {
+      primary: {
+        backgroundColor: ColorsEnum
+        textColor: ColorsEnum
+      }
+      primaryWhite: {
+        iconColor: ColorsEnum
+        textColor: ColorsEnum
+      }
+      secondary: {
+        borderColor: ColorsEnum
+        textColor: ColorsEnum
+        iconColor: ColorsEnum
+      }
+      tertiary: {
+        textColor: ColorsEnum
+        iconColor: ColorsEnum
+      }
+      tertiaryWhite: {
+        textColor: ColorsEnum
+        iconColor: ColorsEnum
+      }
+      tertiaryGreyDark: {
+        textColor: ColorsEnum
+        iconColor: ColorsEnum
+      }
+      quaternary: {
+        iconColor: ColorsEnum
+        textColor: ColorsEnum
+      }
+      quaternaryBlack: {
+        iconColor: ColorsEnum
+        textColor: ColorsEnum
+      }
+    }
+    primary: {
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+      textColor: ColorsEnum
+      backgroundColor?: ColorsEnum
+    }
+    primaryWhite: {
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+    }
+    secondary: {
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+      borderColor: ColorsEnum
+    }
+    tertiary: {
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+    }
+    tertiaryWhite: {
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+    }
+    tertiaryGreyDark: {
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+    }
+    quaternary: {
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+    }
+    quaternaryBlack: {
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+    }
+  }
 }
 
-export const theme: AppThemeType = deepmerge(idCheckTheme, {
+export const theme: AppThemeType = {
   appContentWidth: getSpacing(100),
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
@@ -175,17 +264,16 @@ export const theme: AppThemeType = deepmerge(idCheckTheme, {
     },
   },
   colors: {
-    ...idCheckTheme.colors,
     accent: ColorsEnum.ACCENT,
     attention: ColorsEnum.ATTENTION,
     black: ColorsEnum.BLACK,
     error: ColorsEnum.ERROR,
     greenValid: ColorsEnum.GREEN_VALID,
-    greenDisabled: ColorsEnum.GREEN_DISABLED,
+    greenDisabled: UniqueColors.GREEN_DISABLED,
     greenLight: ColorsEnum.GREEN_LIGHT,
     greyDark: ColorsEnum.GREY_DARK,
     greyMedium: ColorsEnum.GREY_MEDIUM,
-    greyDisabled: ColorsEnum.GREY_DISABLED,
+    greyDisabled: UniqueColors.GREY_DISABLED,
     greyLight: ColorsEnum.GREY_LIGHT,
     primary: ColorsEnum.PRIMARY,
     primaryDisabled: ColorsEnum.PRIMARY_DISABLED,
@@ -194,8 +282,8 @@ export const theme: AppThemeType = deepmerge(idCheckTheme, {
     tertiary: ColorsEnum.TERTIARY,
     transparent: ColorsEnum.TRANSPARENT,
     white: ColorsEnum.WHITE,
-    brand: ColorsEnum.BRAND,
-    brandDark: ColorsEnum.BRAND_DARK,
+    brand: UniqueColors.BRAND,
+    brandDark: UniqueColors.BRAND_DARK,
   },
   uniqueColors: {
     tabBar: UniqueColors.TAB_BAR,
@@ -234,4 +322,98 @@ export const theme: AppThemeType = deepmerge(idCheckTheme, {
   bottomContentPage: {
     offsetTopHeightDesktopTablet: BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
   },
-})
+  buttons: {
+    loading: {
+      primary: {
+        backgroundColor: ColorsEnum.PRIMARY_DARK,
+      },
+      secondary: {
+        borderColor: ColorsEnum.PRIMARY,
+      },
+    },
+    disabled: {
+      primary: {
+        backgroundColor: ColorsEnum.GREY_LIGHT,
+        textColor: ColorsEnum.GREY_DARK,
+      },
+      primaryWhite: {
+        iconColor: ColorsEnum.PRIMARY_DISABLED,
+        textColor: ColorsEnum.PRIMARY_DISABLED,
+      },
+      secondary: {
+        borderColor: ColorsEnum.PRIMARY_DISABLED,
+        textColor: ColorsEnum.PRIMARY_DISABLED,
+        iconColor: ColorsEnum.PRIMARY_DISABLED,
+      },
+      tertiary: {
+        textColor: ColorsEnum.PRIMARY_DISABLED,
+        iconColor: ColorsEnum.PRIMARY_DISABLED,
+      },
+      tertiaryWhite: {
+        textColor: ColorsEnum.PRIMARY_DISABLED,
+        iconColor: ColorsEnum.PRIMARY_DISABLED,
+      },
+      tertiaryGreyDark: {
+        textColor: ColorsEnum.PRIMARY_DISABLED,
+        iconColor: ColorsEnum.PRIMARY_DISABLED,
+      },
+      quaternary: {
+        iconColor: ColorsEnum.PRIMARY_DISABLED,
+        textColor: ColorsEnum.PRIMARY_DISABLED,
+      },
+      quaternaryBlack: {
+        iconColor: ColorsEnum.PRIMARY_DISABLED,
+        textColor: ColorsEnum.PRIMARY_DISABLED,
+      },
+    },
+    primary: {
+      loadingIconColor: ColorsEnum.WHITE,
+      iconColor: ColorsEnum.WHITE,
+      textColor: ColorsEnum.WHITE,
+      backgroundColor: ColorsEnum.PRIMARY,
+    },
+    primaryWhite: {
+      loadingIconColor: ColorsEnum.PRIMARY_DARK,
+      iconColor: ColorsEnum.PRIMARY,
+      textColor: ColorsEnum.PRIMARY,
+      backgroundColor: ColorsEnum.WHITE,
+    },
+    secondary: {
+      loadingIconColor: ColorsEnum.PRIMARY_DARK,
+      iconColor: ColorsEnum.PRIMARY,
+      textColor: ColorsEnum.PRIMARY,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      borderColor: ColorsEnum.PRIMARY_DISABLED,
+    },
+    tertiary: {
+      textColor: ColorsEnum.PRIMARY,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      loadingIconColor: ColorsEnum.PRIMARY_DARK,
+      iconColor: ColorsEnum.PRIMARY,
+    },
+    tertiaryWhite: {
+      textColor: ColorsEnum.WHITE,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      loadingIconColor: ColorsEnum.WHITE,
+      iconColor: ColorsEnum.WHITE,
+    },
+    tertiaryGreyDark: {
+      textColor: ColorsEnum.GREY_DARK,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      loadingIconColor: ColorsEnum.GREY_DARK,
+      iconColor: ColorsEnum.GREY_DARK,
+    },
+    quaternary: {
+      loadingIconColor: ColorsEnum.PRIMARY_DARK,
+      iconColor: ColorsEnum.PRIMARY_DARK,
+      textColor: ColorsEnum.PRIMARY,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+    },
+    quaternaryBlack: {
+      loadingIconColor: ColorsEnum.PRIMARY_DARK,
+      iconColor: ColorsEnum.BLACK,
+      textColor: ColorsEnum.BLACK,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+    },
+  },
+}

@@ -3,7 +3,7 @@ import { Animated, Easing, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
+import { ColorsEnum, UniqueColors, getShadow, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
@@ -51,12 +51,12 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
   )
 }
 
-const getBackgroundColor = (active: boolean, disabled: boolean): ColorsEnum => {
-  if (active) return disabled ? ColorsEnum.GREEN_DISABLED : ColorsEnum.GREEN_VALID
-  return disabled ? ColorsEnum.GREY_DISABLED : ColorsEnum.GREY_MEDIUM
+const getBackgroundColor = (active: boolean, disabled: boolean): ColorsEnum | UniqueColors => {
+  if (active) return disabled ? UniqueColors.GREEN_DISABLED : ColorsEnum.GREEN_VALID
+  return disabled ? UniqueColors.GREY_DISABLED : ColorsEnum.GREY_MEDIUM
 }
 
-const StyledBackgroundColor = styled.View<{ backgroundColor: ColorsEnum }>(
+const StyledBackgroundColor = styled.View<{ backgroundColor: ColorsEnum | UniqueColors }>(
   ({ backgroundColor }) => ({
     backgroundColor,
     width: getSpacing(14),

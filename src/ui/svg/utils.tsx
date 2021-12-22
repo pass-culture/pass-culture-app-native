@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Defs, LinearGradient, Stop } from 'react-native-svg'
 import { v1 as uuidv1 } from 'uuid'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, UniqueColors } from 'ui/theme'
 
 export const svgIdentifier = (prefix?: string, suffix?: string) => {
   const uuid = uuidv1()
@@ -20,8 +20,8 @@ export const svgIdentifier = (prefix?: string, suffix?: string) => {
 
 interface BicolorGradientProps {
   id: string
-  color1: ColorsEnum
-  color2: ColorsEnum
+  color1: ColorsEnum | UniqueColors
+  color2: ColorsEnum | UniqueColors
 }
 
 export const BicolorGradient = ({ id, color1, color2 }: BicolorGradientProps) => (
