@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
@@ -12,6 +12,7 @@ import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
+import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -23,7 +24,11 @@ export const Offer: FunctionComponent = () => {
 
   const { bottom } = useCustomSafeInsets()
   const { data: offerResponse } = useOffer({ offerId })
-  const [showBookingOfferModal, setShowBookingOfferModal] = useState<boolean>(false)
+  const {
+    visible: bookingOfferModalIsVisible,
+    showModal: showBookingOfferModal,
+    hideModal: dismissBookingOfferModal,
+  } = useModal(false)
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     if (offerResponse) {
@@ -52,7 +57,7 @@ export const Offer: FunctionComponent = () => {
             onPress={() => {
               onPressCTA && onPressCTA()
               if (!isExternal) {
-                setShowBookingOfferModal(true)
+                showBookingOfferModal()
               }
             }}
             isExternal={isExternal}
@@ -62,8 +67,8 @@ export const Offer: FunctionComponent = () => {
       )}
 
       <BookingOfferModal
-        visible={showBookingOfferModal}
-        dismissModal={() => setShowBookingOfferModal(false)}
+        visible={bookingOfferModalIsVisible}
+        dismissModal={dismissBookingOfferModal}
         offerId={offerResponse.id}
       />
 

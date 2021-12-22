@@ -1079,7 +1079,6 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
-          "marginBottom": -4,
           "marginTop": 4,
           "textAlign": "center",
         },

@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useRef, useState, useMemo } from 'react'
-import { ScrollView, useWindowDimensions } from 'react-native'
+import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
+import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
 import RNModal from 'react-native-modal'
 import styled from 'styled-components/native'
 
@@ -84,6 +84,22 @@ export const AppModal: FunctionComponent<Props> = ({
       SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL
     )
   }, [scrollViewContentHeight, scrollViewPaddingBottom, headerHeight])
+
+  const updateHeaderHeight = useCallback(
+    ({ nativeEvent }: LayoutChangeEvent): void => {
+      setHeaderHeight(nativeEvent.layout.height)
+    },
+    [setHeaderHeight]
+  )
+
+  const updateScrollViewContentHeight = useCallback(
+    (_width: number, height: number): void => {
+      setScrollViewContentHeight(height)
+      scrollViewRef.current?.scrollTo({ y: 0 })
+    },
+    [setScrollViewContentHeight, scrollViewRef]
+  )
+
   return (
     <StyledModal
       style={modalStyles}
@@ -100,9 +116,7 @@ export const AppModal: FunctionComponent<Props> = ({
       <ModalHeader
         title={title}
         numberOfLines={titleNumberOfLines}
-        onLayout={({ nativeEvent }) => {
-          setHeaderHeight(nativeEvent.layout.height)
-        }}
+        onLayout={updateHeaderHeight}
         {...iconProps}
       />
       <SpacerBetweenHeaderAndContent />
@@ -110,10 +124,7 @@ export const AppModal: FunctionComponent<Props> = ({
         <ScrollView
           ref={scrollViewRef}
           scrollEnabled={scrollEnabled}
-          onContentSizeChange={(_width, height) => {
-            setScrollViewContentHeight(height)
-            scrollViewRef.current?.scrollTo({ y: 0 })
-          }}>
+          onContentSizeChange={updateScrollViewContentHeight}>
           {children}
         </ScrollView>
       </ScrollViewContainer>
