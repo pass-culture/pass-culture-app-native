@@ -56,7 +56,7 @@ describe('Home component', () => {
 
   it('should show the available credit to the user - remaining', () => {
     const { getByText } = render(<Home />)
-    getByText('Tu as 496 € sur ton pass')
+    getByText('Tu as 496\u00a0€ sur ton pass')
   })
 
   it('should show the available credit to the user - expired', () => {
@@ -64,7 +64,7 @@ describe('Home component', () => {
     mockUserProfileInfo!.depositExpirationDate = new Date('2020-02-16T17:16:04.735235')
     const { queryByText, getByText } = render(<Home />)
     expect(getByText('Ton crédit est expiré')).toBeTruthy()
-    expect(queryByText('Tu as 496 € sur ton pass')).toBeFalsy()
+    expect(queryByText('Tu as 496\u00a0€ sur ton pass')).toBeFalsy()
   })
 
   it('should show the available credit to the user - not logged in', () => {

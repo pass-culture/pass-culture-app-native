@@ -105,7 +105,7 @@ describe('BookHourChoice', () => {
     const firstPrice = page.getByTestId('HourChoice148409-price')
 
     expect(firstHour.textContent).toBe('20h00')
-    expect(firstPrice.textContent).toBe('24€')
+    expect(firstPrice.textContent).toBe('24\u00a0€')
 
     const secondHour = page.getByTestId('HourChoice148411-hour')
     const secondPrice = page.getByTestId('HourChoice148411-price')
