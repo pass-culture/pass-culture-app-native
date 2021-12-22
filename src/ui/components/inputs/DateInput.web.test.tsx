@@ -1,4 +1,3 @@
-// TODO(antoinewg): remmove dependency
 import Color from 'color'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
