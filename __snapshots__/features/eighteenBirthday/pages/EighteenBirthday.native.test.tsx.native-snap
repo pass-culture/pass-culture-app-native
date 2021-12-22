@@ -252,6 +252,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                         "flexGrow": 1,
                         "flexShrink": 1,
                         "justifyContent": "flex-end",
+                        "paddingBottom": 40,
                       },
                     ]
                   }
@@ -384,18 +385,6 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  flex={1}
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>

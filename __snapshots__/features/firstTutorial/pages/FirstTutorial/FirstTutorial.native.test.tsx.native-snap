@@ -325,6 +325,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                         "flexGrow": 1,
                         "flexShrink": 1,
                         "justifyContent": "flex-end",
+                        "paddingBottom": 40,
                       },
                     ]
                   }
@@ -392,18 +393,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  flex={1.5}
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1.5,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
             <View
@@ -550,6 +539,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                         "flexGrow": 1,
                         "flexShrink": 1,
                         "justifyContent": "flex-end",
+                        "paddingBottom": 40,
                       },
                     ]
                   }
@@ -572,18 +562,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     />
                   </View>
                 </View>
-                <View
-                  flex={1.5}
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1.5,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
             <View
@@ -730,6 +708,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                         "flexGrow": 1,
                         "flexShrink": 1,
                         "justifyContent": "flex-end",
+                        "paddingBottom": 40,
                       },
                     ]
                   }
@@ -752,18 +731,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     />
                   </View>
                 </View>
-                <View
-                  flex={1.5}
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1.5,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
             <View
@@ -910,6 +877,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                         "flexGrow": 1,
                         "flexShrink": 1,
                         "justifyContent": "flex-end",
+                        "paddingBottom": 40,
                       },
                     ]
                   }
@@ -932,18 +900,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     />
                   </View>
                 </View>
-                <View
-                  flex={1.5}
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1.5,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>
