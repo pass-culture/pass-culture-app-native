@@ -29,6 +29,7 @@ export const attributesToRetrieve = [
   'offer.prices',
   'offer.subcategoryId',
   'offer.thumbUrl',
+  'offer.isForbiddenToUnderage',
   'objectID',
   '_geoloc',
 ]

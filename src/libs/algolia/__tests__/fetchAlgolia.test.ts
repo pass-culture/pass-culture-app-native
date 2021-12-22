@@ -86,19 +86,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query } as SearchParametersQuery, null, true)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [
-          ['offer.subcategoryId:-JEU_EN_LIGNE'],
-          ['offer.subcategoryId:-JEU_SUPPORT_PHYSIQUE'],
-          ['offer.subcategoryId:-ABO_JEU_VIDEO'],
-          ['offer.subcategoryId:-ABO_LUDOTHEQUE'],
-          ['offer.isEducational:false'],
-          [
-            'offer.isDigital:false',
-            'offer.searchGroupName:PRESSE',
-            'offer.subcategoryId:LIVRE_NUMERIQUE',
-            'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
-          ],
-        ],
+        facetFilters: [['offer.isForbiddenToUnderage:false']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -112,20 +100,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerCategories } as SearchParametersQuery, null, true)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [
-          ['offer.subcategoryId:-JEU_EN_LIGNE'],
-          ['offer.subcategoryId:-JEU_SUPPORT_PHYSIQUE'],
-          ['offer.subcategoryId:-ABO_JEU_VIDEO'],
-          ['offer.subcategoryId:-ABO_LUDOTHEQUE'],
-          ['offer.isEducational:false'],
-          [
-            'offer.isDigital:false',
-            'offer.searchGroupName:PRESSE',
-            'offer.subcategoryId:LIVRE_NUMERIQUE',
-            'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
-          ],
-          ['offer.searchGroupName:LECON'],
-        ],
+        facetFilters: [['offer.isForbiddenToUnderage:false'], ['offer.searchGroupName:LECON']],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -1186,20 +1161,7 @@ describe('fetchAlgoliaHits', () => {
     fetchAlgoliaHits(queryIds, true)
 
     expect(search).toHaveBeenCalledWith('', {
-      facetFilters: [
-        ['offer.subcategoryId:-JEU_EN_LIGNE'],
-        ['offer.subcategoryId:-JEU_SUPPORT_PHYSIQUE'],
-        ['offer.subcategoryId:-ABO_JEU_VIDEO'],
-        ['offer.subcategoryId:-ABO_LUDOTHEQUE'],
-        ['offer.isEducational:false'],
-        [
-          'offer.isDigital:false',
-          'offer.searchGroupName:PRESSE',
-          'offer.subcategoryId:LIVRE_NUMERIQUE',
-          'offer.subcategoryId:LIVRE_AUDIO_PHYSIQUE',
-        ],
-        ['objectID:id1', 'objectID:id2'],
-      ],
+      facetFilters: [['offer.isForbiddenToUnderage:false'], ['objectID:id1', 'objectID:id2']],
       numericFilters: [['offer.prices: 0 TO 300']],
       attributesToRetrieve,
       attributesToHighlight: [],
