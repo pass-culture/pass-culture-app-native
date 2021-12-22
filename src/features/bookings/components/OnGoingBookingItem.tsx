@@ -30,25 +30,23 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
     <Container
       onPress={() => navigate('BookingDetails', { id: booking.id })}
       testID="OnGoingBookingItem">
-      <ItemContainer>
-        <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(categoryId)} />
-        <AttributesView>
-          <BookingItemTitle title={stock.offer.name} />
-          {!!dateLabel && <DateLabel color={ColorsEnum.GREY_DARK}>{dateLabel}</DateLabel>}
-          <Spacer.Column numberOfSpaces={1} />
-          {!!bookingProperties.isDuo && <DuoBold />}
-          <Spacer.Flex />
-          {!!withdrawLabel && (
-            <WithDrawContainer>
-              <Clock size={16} color={ColorsEnum.PRIMARY} />
-              <Spacer.Row numberOfSpaces={1} />
-              <WithdrawCaption color={ColorsEnum.PRIMARY} numberOfLines={2}>
-                {withdrawLabel}
-              </WithdrawCaption>
-            </WithDrawContainer>
-          )}
-        </AttributesView>
-      </ItemContainer>
+      <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(categoryId)} />
+      <AttributesView>
+        <BookingItemTitle title={stock.offer.name} />
+        {!!dateLabel && <DateLabel color={ColorsEnum.GREY_DARK}>{dateLabel}</DateLabel>}
+        <Spacer.Column numberOfSpaces={1} />
+        {!!bookingProperties.isDuo && <DuoBold />}
+        <Spacer.Flex />
+        {!!withdrawLabel && (
+          <WithDrawContainer>
+            <Clock size={16} color={ColorsEnum.PRIMARY} />
+            <Spacer.Row numberOfSpaces={1} />
+            <WithdrawCaption color={ColorsEnum.PRIMARY} numberOfLines={2}>
+              {withdrawLabel}
+            </WithdrawCaption>
+          </WithDrawContainer>
+        )}
+      </AttributesView>
     </Container>
   )
 }
@@ -57,11 +55,7 @@ const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
 }))({
   paddingHorizontal: getSpacing(6),
-})
-
-const ItemContainer = styled.View({
   flexDirection: 'row',
-  paddingVertical: getSpacing(4),
 })
 
 const AttributesView = styled.View({

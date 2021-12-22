@@ -18,7 +18,7 @@ describe('Bookings', () => {
   it('should always execute the query (in cache or in network)', () => {
     const useBookings = jest.spyOn(Queries, 'useBookings')
     renderBookings(bookingsSnap)
-    expect(useBookings).toBeCalledTimes(1)
+    expect(useBookings).toBeCalledTimes(2)
   })
 
   it('should display the right number of ongoing bookings', async () => {
