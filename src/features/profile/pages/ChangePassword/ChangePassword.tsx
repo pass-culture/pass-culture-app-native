@@ -17,6 +17,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export function ChangePassword() {
@@ -79,6 +80,10 @@ export function ChangePassword() {
 
   const { bottom } = useSafeAreaInsets()
 
+  const disabled = !shouldSave || isLoading
+
+  useEnterKeyAction(!disabled ? submitPassword : undefined)
+
   return (
     <Container>
       <Spacer.TopScreen />
@@ -130,11 +135,7 @@ export function ChangePassword() {
         {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
         {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
         <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
-          <ButtonPrimary
-            title={t`Enregistrer`}
-            onPress={submitPassword}
-            disabled={!shouldSave || isLoading}
-          />
+          <ButtonPrimary title={t`Enregistrer`} onPress={submitPassword} disabled={disabled} />
         </ButtonContainer>
         <Spacer.Column numberOfSpaces={6} />
       </StyledScrollView>

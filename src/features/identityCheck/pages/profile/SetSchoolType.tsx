@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
-import styled from 'styled-components/native'
 
 import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
@@ -47,7 +46,7 @@ export const SetSchoolType = () => {
         </React.Fragment>
       }
       scrollChildren={
-        <Container>
+        <React.Fragment>
           {hasData &&
             activitySchoolTypes.map((schoolTypeId) => {
               const schoolLabel = mapSchoolTypeIdToLabel(schoolTypeId, schoolTypes) as string
@@ -60,7 +59,7 @@ export const SetSchoolType = () => {
                 />
               )
             })}
-        </Container>
+        </React.Fragment>
       }
       fixedBottomChildren={
         <ButtonPrimary
@@ -72,7 +71,3 @@ export const SetSchoolType = () => {
     />
   )
 }
-
-const Container = styled.View({
-  height: '100%',
-})

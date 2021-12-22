@@ -10,6 +10,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { isNameValid } from 'ui/components/inputs/nameCheck'
 import { TextInput } from 'ui/components/inputs/TextInput'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 
 export const SetName = () => {
@@ -27,6 +28,8 @@ export const SetName = () => {
     dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
     navigateToNextScreen()
   }
+
+  useEnterKeyAction(!disabled ? submitName : undefined)
 
   return (
     <PageWithHeader

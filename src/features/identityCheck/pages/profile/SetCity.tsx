@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
-import { Keyboard, TouchableOpacity } from 'react-native'
+import { Keyboard, Platform, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
@@ -19,6 +19,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -80,11 +81,15 @@ export const SetCity = () => {
     </TouchableOpacity>
   )
 
-  const onPressContinue = () => {
+  const submitCity = () => {
     if (selectedCity === null) return
     dispatch({ type: 'SET_CITY', payload: selectedCity })
     navigateToNextScreen()
   }
+
+  const disabled = selectedCity === null
+
+  useEnterKeyAction(!disabled ? submitCity : undefined)
 
   return (
     <PageWithHeader
@@ -128,11 +133,7 @@ export const SetCity = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary
-          onPress={onPressContinue}
-          title={t`Continuer`}
-          disabled={selectedCity === null}
-        />
+        <ButtonPrimary onPress={submitCity} title={t`Continuer`} disabled={disabled} />
       }
     />
   )
@@ -140,5 +141,6 @@ export const SetCity = () => {
 
 const CitiesContainer = styled.View({
   flexGrow: 1,
-  overflow: 'scroll',
+  overflowY: 'scroll',
+  ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })

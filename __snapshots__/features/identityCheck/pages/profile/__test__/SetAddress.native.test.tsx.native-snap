@@ -301,7 +301,6 @@ exports[`<SetAddress/> should render correctly 1`] = `
               Object {
                 "flexDirection": "column",
                 "flexGrow": 1,
-                "justifyContent": "center",
                 "paddingBottom": 0,
                 "paddingHorizontal": 20,
               }
@@ -322,7 +321,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   Array [
                     Object {
                       "flexGrow": 1,
-                      "overflow": "scroll",
+                      "overflowY": "scroll",
                     },
                   ]
                 }

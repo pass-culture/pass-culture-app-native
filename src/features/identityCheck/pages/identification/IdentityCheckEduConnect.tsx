@@ -27,7 +27,7 @@ export const IdentityCheckEduConnect = () => {
       title={t`Identification`}
       onGoBack={onGoBack}
       scrollChildren={
-        <React.Fragment>
+        <Container>
           <Center>
             <Spacer.Column numberOfSpaces={10} />
             <BicolorIdCardWithMagnifyingGlass
@@ -46,7 +46,7 @@ export const IdentityCheckEduConnect = () => {
           </TextContent>
 
           <Spacer.Column numberOfSpaces={8} />
-        </React.Fragment>
+        </Container>
       }
       fixedBottomChildren={
         <ButtonPrimary title={`Connexion avec ÉduConnect`} onPress={navigateToNextScreen} />
@@ -55,10 +55,6 @@ export const IdentityCheckEduConnect = () => {
   )
 }
 
-const Center = styled.View({
-  alignSelf: 'center',
-})
-
-const TextContent = styled(Typo.Body)({
-  textAlign: 'center',
-})
+const Center = styled.View({ alignSelf: 'center' })
+const TextContent = styled(Typo.Body)({ textAlign: 'center' })
+const Container = styled.View({ flexGrow: 1, justifyContent: 'center' })

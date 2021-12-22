@@ -151,7 +151,6 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
               Object {
                 "flexDirection": "column",
                 "flexGrow": 1,
-                "justifyContent": "center",
                 "paddingBottom": 0,
                 "paddingHorizontal": 20,
               }
@@ -171,93 +170,104 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "alignSelf": "center",
+                      "flexGrow": 1,
+                      "justifyContent": "center",
                     },
                   ]
                 }
               >
                 <View
-                  numberOfSpaces={10}
                   style={
                     Array [
                       Object {
-                        "height": 40,
+                        "alignSelf": "center",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    numberOfSpaces={10}
+                    style={
+                      Array [
+                        Object {
+                          "height": 40,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    fill="none"
+                    height={115.2}
+                    width={180}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 18,
+                          "lineHeight": 22,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Identification
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    Array [
+                      Object {
+                        "height": 16,
                       },
                     ]
                   }
                 />
-                <View
-                  fill="none"
-                  height={115.2}
-                  width={180}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
                 <Text
+                  color="#626262"
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                         "textAlign": "center",
                       },
                     ]
                   }
                 >
-                  Identification
+                  Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer.
                 </Text>
+                <View
+                  numberOfSpaces={8}
+                  style={
+                    Array [
+                      Object {
+                        "height": 32,
+                      },
+                    ]
+                  }
+                />
               </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  Array [
-                    Object {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
-              <Text
-                color="#626262"
-                style={
-                  Array [
-                    Object {
-                      "color": "#626262",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer.
-              </Text>
-              <View
-                numberOfSpaces={8}
-                style={
-                  Array [
-                    Object {
-                      "height": 32,
-                    },
-                  ]
-                }
-              />
             </View>
           </RCTScrollView>
           <View

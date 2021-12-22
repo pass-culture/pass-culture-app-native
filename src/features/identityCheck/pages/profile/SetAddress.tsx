@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
-import { Keyboard, TouchableOpacity } from 'react-native'
+import { Keyboard, Platform, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -18,6 +18,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -94,11 +95,13 @@ export const SetAddress = () => {
     ? t`Recherche et sélectionne ton adresse`
     : t`Entre ton adresse`
 
-  const onPressContinue = () => {
+  const submitAddress = () => {
     if (!enabled) return
     dispatch({ type: 'SET_ADDRESS', payload: selectedAddress || query })
     navigateToNextScreen()
   }
+
+  useEnterKeyAction(enabled ? submitAddress : undefined)
 
   return (
     <PageWithHeader
@@ -138,7 +141,7 @@ export const SetAddress = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary onPress={onPressContinue} title={t`Continuer`} disabled={!enabled} />
+        <ButtonPrimary onPress={submitAddress} title={t`Continuer`} disabled={!enabled} />
       }
     />
   )
@@ -146,5 +149,6 @@ export const SetAddress = () => {
 
 const AdressesContainer = styled.View({
   flexGrow: 1,
-  overflow: 'scroll',
+  overflowY: 'scroll',
+  ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })

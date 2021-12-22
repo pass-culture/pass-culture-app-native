@@ -198,7 +198,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
               Object {
                 "flexDirection": "column",
                 "flexGrow": 1,
-                "justifyContent": "center",
                 "paddingBottom": 0,
                 "paddingHorizontal": 20,
               }
@@ -215,388 +214,378 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
           >
             <View>
               <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "height": "100%",
-                    },
-                  ]
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
                 }
               >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  nativeID="animatedComponent"
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 48,
-                      "marginBottom": 16,
-                      "opacity": 1,
-                      "width": "100%",
-                    }
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
                   }
                 >
-                  <View
+                  <Text
+                    color="#151515"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
                   >
-                    <Text
-                      color="#151515"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Lycée agricole
-                    </Text>
-                  </View>
+                    Lycée agricole
+                  </Text>
                 </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  nativeID="animatedComponent"
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 48,
-                      "marginBottom": 16,
-                      "opacity": 1,
-                      "width": "100%",
-                    }
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
                   }
                 >
-                  <View
+                  <Text
+                    color="#151515"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
-                  >
-                    <Text
-                      color="#151515"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
+                  />
                 </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  nativeID="animatedComponent"
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 48,
-                      "marginBottom": 16,
-                      "opacity": 1,
-                      "width": "100%",
-                    }
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
                   }
                 >
-                  <View
+                  <Text
+                    color="#151515"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
-                  >
-                    <Text
-                      color="#151515"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
+                  />
                 </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  nativeID="animatedComponent"
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 48,
-                      "marginBottom": 16,
-                      "opacity": 1,
-                      "width": "100%",
-                    }
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
                   }
                 >
-                  <View
+                  <Text
+                    color="#151515"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
-                  >
-                    <Text
-                      color="#151515"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
+                  />
                 </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  nativeID="animatedComponent"
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 48,
-                      "marginBottom": 16,
-                      "opacity": 1,
-                      "width": "100%",
-                    }
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
                   }
                 >
-                  <View
+                  <Text
+                    color="#151515"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
-                  >
-                    <Text
-                      color="#151515"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
+                  />
                 </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  nativeID="animatedComponent"
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 48,
-                      "marginBottom": 16,
-                      "opacity": 1,
-                      "width": "100%",
-                    }
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
                   }
                 >
-                  <View
+                  <Text
+                    color="#151515"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
-                  >
-                    <Text
-                      color="#151515"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
+                  />
                 </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  nativeID="animatedComponent"
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 48,
-                      "marginBottom": 16,
-                      "opacity": 1,
-                      "width": "100%",
-                    }
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
                   }
                 >
-                  <View
+                  <Text
+                    color="#151515"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
                   >
-                    <Text
-                      color="#151515"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Centre de formation d'apprentis
-                    </Text>
-                  </View>
+                    Centre de formation d'apprentis
+                  </Text>
                 </View>
               </View>
             </View>
@@ -915,7 +904,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
               Object {
                 "flexDirection": "column",
                 "flexGrow": 1,
-                "justifyContent": "center",
                 "paddingBottom": 0,
                 "paddingHorizontal": 20,
               }
@@ -932,176 +920,166 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
           >
             <View>
               <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "height": "100%",
-                    },
-                  ]
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
                 }
               >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  nativeID="animatedComponent"
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 48,
-                      "marginBottom": 16,
-                      "opacity": 1,
-                      "width": "100%",
-                    }
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
                   }
                 >
-                  <View
+                  <Text
+                    color="#151515"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
                   >
-                    <Text
-                      color="#151515"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Collège privé
-                    </Text>
-                  </View>
+                    Collège privé
+                  </Text>
                 </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  nativeID="animatedComponent"
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 48,
-                      "marginBottom": 16,
-                      "opacity": 1,
-                      "width": "100%",
-                    }
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
                   }
                 >
-                  <View
+                  <Text
+                    color="#151515"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
                   >
-                    <Text
-                      color="#151515"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Collège public
-                    </Text>
-                  </View>
+                    Collège public
+                  </Text>
                 </View>
+              </View>
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                nativeID="animatedComponent"
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderColor": "#c7c7cc",
+                    "borderRadius": 24,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "marginBottom": 16,
+                    "opacity": 1,
+                    "width": "100%",
+                  }
+                }
+              >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  nativeID="animatedComponent"
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "alignItems": "center",
-                      "borderColor": "#c7c7cc",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 48,
-                      "marginBottom": 16,
-                      "opacity": 1,
-                      "width": "100%",
-                    }
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
                   }
                 >
-                  <View
+                  <Text
+                    color="#151515"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
-                  >
-                    <Text
-                      color="#151515"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
+                  />
                 </View>
               </View>
             </View>

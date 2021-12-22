@@ -43,7 +43,7 @@ const ChildrenContainer = styled.View({
 })
 
 const CenteredWebContainer = styled.View({
-  flex: 1,
+  ...(Platform.OS === 'web' ? { maxHeight: '100%', paddingBottom: getSpacing(6) } : { flex: 1 }),
   width: '100%',
   maxWidth: getSpacing(125),
 })
