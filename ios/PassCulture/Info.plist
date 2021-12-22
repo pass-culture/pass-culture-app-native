@@ -90,6 +90,8 @@
 	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Cette application peut vérifier ton identité avec de l'audio</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Bold.ttf</string>
