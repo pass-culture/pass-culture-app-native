@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -13,14 +13,24 @@ import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
 
 export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
+  const timer = useRef<number>()
   const { navigate } = useNavigation<UseNavigationType>()
+
+  useEffect(
+    () => () => {
+      if (timer.current) {
+        clearTimeout(timer.current)
+      }
+    },
+    []
+  )
 
   async function onPress() {
     navigate(...homeNavConfig)
 
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
-    global.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
+    timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
 
   return (
