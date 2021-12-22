@@ -534,7 +534,6 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
-          "marginBottom": -4,
           "marginTop": 4,
           "textAlign": "center",
         },

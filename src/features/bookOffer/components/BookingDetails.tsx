@@ -132,6 +132,5 @@ const Separator = styled.View({
 })
 const Caption = styled(Typo.Caption).attrs({ color: ColorsEnum.GREY_DARK })({
   marginTop: getSpacing(1),
-  marginBottom: -getSpacing(1),
   textAlign: 'center',
 })
