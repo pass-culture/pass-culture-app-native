@@ -10,6 +10,7 @@ import {
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
+import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -36,7 +37,7 @@ export function UnderageAccountCreated() {
           iconSize={20}
           isAnimated
         />
-        <Amount color={UniqueColors.BRAND}>{maxPrice + '€'}</Amount>
+        <Amount color={UniqueColors.BRAND}>{formatPriceInEuroToDisplayPrice(maxPrice)}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Text>{text}</Text>

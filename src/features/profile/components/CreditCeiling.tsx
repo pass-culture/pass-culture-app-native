@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ExpenseDomain } from 'api/gen/api'
+import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { Logo } from 'ui/svg/icons/Logo'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { OfferOutings } from 'ui/svg/icons/OfferOutings'
@@ -69,7 +70,7 @@ export function CreditCeiling(props: CreditCeilingProps) {
   if (!ceilingConfig || props.initial <= 0) {
     return null
   }
-  const amountLabel = `${props.amount} €`
+  const amountLabel = formatPriceInEuroToDisplayPrice(props.amount)
   const progress = Number((props.amount / props.initial).toFixed(2))
   const color = props.amount === 0 ? ColorsEnum.GREY_DARK : ceilingConfig.color
 

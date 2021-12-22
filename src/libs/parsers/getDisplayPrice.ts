@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { CENTS_IN_EURO } from 'libs/parsers/pricesConversion'
+import { CENTS_IN_EURO, convertEuroToCents } from 'libs/parsers/pricesConversion'
 
 const EURO_SYMBOL = '€'
 
@@ -16,11 +16,14 @@ export const formatToFrenchDecimal = (priceInCents: number) => {
   return t`${fixed.toString().replace('.', ',')}\u00a0${EURO_SYMBOL}`
 }
 
+export const formatPriceInEuroToDisplayPrice = (priceInEuro: number) =>
+  formatToFrenchDecimal(convertEuroToCents(priceInEuro))
+
 const getPricePerPlace = (prices: number[]): string => {
   const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))
   if (uniquePrices.length === 1) return `${formatToFrenchDecimal(uniquePrices[0])}`
   const sortedPrices = uniquePrices.sort((a, b) => a - b)
-  return `Dès ${formatToFrenchDecimal(sortedPrices[0])}`
+  return t`Dès ${formatToFrenchDecimal(sortedPrices[0])}`
 }
 
 export const getDisplayPrice = (prices: number[] | undefined): string => {

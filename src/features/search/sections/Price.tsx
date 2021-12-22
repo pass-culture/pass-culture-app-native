@@ -5,10 +5,9 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
+import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Slider } from 'ui/components/inputs/Slider'
-
-const formatEuro = (price: number) => `${price} €`
 
 export const Price: React.FC = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Price)
@@ -33,7 +32,7 @@ export const Price: React.FC = () => {
         showValues={true}
         values={values}
         max={maxPrice}
-        formatValues={formatEuro}
+        formatValues={formatPriceInEuroToDisplayPrice}
         onValuesChangeFinish={onValuesChangeFinish}
       />
     </CenteredSection>
