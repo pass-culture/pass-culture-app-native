@@ -35,7 +35,13 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       label: t`Identification`,
       screens:
         identification.method === IdentityCheckMethod.Educonnect
-          ? ['IdentityCheckEduConnect', 'IdentityCheckEduConnectForm', 'IdentityCheckValidation']
+          ? [
+              'IdentityCheckEduConnect',
+              'IdentityCheckEduConnectForm',
+              // this route `IdentityCheckValidation` has to be at the end of a step. See comment in the component
+              // TODO(antoinewg): replace this route by `Validation` once the backend redirects to `educonnect/validation`
+              'IdentityCheckValidation',
+            ]
           : ['IdentityCheckStart', 'IdentityCheckWebview', 'IdentityCheckEnd'],
     },
     {

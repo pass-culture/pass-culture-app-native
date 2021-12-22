@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useRoute } from '@react-navigation/native'
+import { useNavigation, useFocusEffect, useRoute } from '@react-navigation/native'
 import moment from 'moment'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
@@ -8,25 +8,30 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-export const IdentityCheckValidation = () => {
+export function IdentityCheckValidation() {
   const { params } = useRoute<UseRouteType<'IdentityCheckValidation'>>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const { dispatch, identification } = useIdentityCheckContext()
-
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   const birthDate = identification.birthDate
     ? moment(identification.birthDate, 'YYYY-MM-DD').format('DD/MM/YYYY')
     : ''
 
-  const navigateToNextEduConnectStep = async () => {
+  const navigateToNextEduConnectStep = () => {
     dispatch({ type: 'SET_STEP', payload: IdentityCheckStep.CONFIRMATION })
-    navigateToNextScreen()
+    // Here we do not call navigateToNextScreen but navigate directly to the next screen
+    // This is possible because we are the last step of the flow profile.
+    // This is because this component may not be in useIdentityCheckSteps, but we can arrive here
+    // on web by being redirected by the backend from educonnect. See:
+    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L161
+    // TODO(antoinewg): once the backend redirects to `validation`, use navigateToNextScreen and delete route
+    navigate('IdentityCheckStepper')
   }
 
   useFocusEffect(
