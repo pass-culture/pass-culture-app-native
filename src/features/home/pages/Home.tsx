@@ -18,8 +18,8 @@ import { RecommendationPane, ProcessedModule } from 'features/home/contentful/mo
 import { useShowSkeleton } from 'features/home/pages/useShowSkeleton'
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { Spacer } from 'ui/theme'
 
 const keyExtractor = (item: ProcessedModule, index: number) =>

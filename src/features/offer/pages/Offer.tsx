@@ -4,17 +4,16 @@ import styled from 'styled-components/native'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { UseRouteType } from 'features/navigation/RootNavigator'
+import { useOffer } from 'features/offer/api/useOffer'
+import { OfferHeader } from 'features/offer/components'
 import { OfferWebHead } from 'features/offer/pages/OfferWebHead/OfferWebHead'
+import { useCtaWordingAndAction } from 'features/offer/services/useCtaWordingAndAction'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-
-import { useOffer } from '../api/useOffer'
-import { OfferHeader } from '../components'
-import { useCtaWordingAndAction } from '../services/useCtaWordingAndAction'
-import { useFunctionOnce } from '../services/useFunctionOnce'
 
 import { OfferBody } from './OfferBody'
 
