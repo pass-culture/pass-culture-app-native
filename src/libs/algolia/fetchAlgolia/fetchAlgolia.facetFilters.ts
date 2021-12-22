@@ -1,25 +1,9 @@
-import { SearchGroupNameEnum, SubcategoryIdEnum } from 'api/gen'
+import { SearchGroupNameEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
 
-// We do not want to display these subcategories for underage beneficiaries : JEUENLIGNE, JEUSUPPORTPHYSIQUE, ABOJEUVIDEO or ABOLUDOTHEQUE
-// We also do not want to display digital offers unless they are free, press, audio book or numeric book
-
-// TODO(anoukhello): get these categories from api
-const underageFilter = [
-  [`${FACETS_ENUM.OFFER_SUB_CATEGORY}:-${SubcategoryIdEnum.JEUENLIGNE}`],
-  [`${FACETS_ENUM.OFFER_SUB_CATEGORY}:-${SubcategoryIdEnum.JEUSUPPORTPHYSIQUE}`],
-  [`${FACETS_ENUM.OFFER_SUB_CATEGORY}:-${SubcategoryIdEnum.ABOJEUVIDEO}`],
-  [`${FACETS_ENUM.OFFER_SUB_CATEGORY}:-${SubcategoryIdEnum.ABOLUDOTHEQUE}`],
-  [`${FACETS_ENUM.OFFER_IS_EDUCATIONAL}:false`],
-  [
-    `${FACETS_ENUM.OFFER_IS_DIGITAL}:false`,
-    `${FACETS_ENUM.OFFER_SEARCH_GROUP_NAME}:${SearchGroupNameEnum.PRESSE}`,
-    `${FACETS_ENUM.OFFER_SUB_CATEGORY}:${SubcategoryIdEnum.LIVRENUMERIQUE}`,
-    `${FACETS_ENUM.OFFER_SUB_CATEGORY}:${SubcategoryIdEnum.LIVREAUDIOPHYSIQUE}`,
-  ],
-]
+const underageFilter = [[`${FACETS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:false`]]
 
 export const buildFacetFilters = ({
   locationFilter,
