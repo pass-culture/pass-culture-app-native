@@ -127,11 +127,11 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Eye" component={Eye} />
       <Icon name="EyeSlash" component={EyeSlash} />
       <Icon name="Logo" component={Logo} />
-      <Icon name="BicolorLogo" component={BicolorLogo} />
-      <Icon name="BicolorSearch" component={BicolorSearch} />
-      <Icon name="BicolorBookings" component={BicolorBookings} />
-      <Icon name="BicolorFavorite" component={BicolorFavorite} />
-      <Icon name="BicolorProfile" component={BicolorProfile} />
+      <Icon name="BicolorLogo" component={BicolorLogo} isNew />
+      <Icon name="BicolorSearch" component={BicolorSearch} isNew />
+      <Icon name="BicolorBookings" component={BicolorBookings} isNew />
+      <Icon name="BicolorFavorite" component={BicolorFavorite} isNew />
+      <Icon name="BicolorProfile" component={BicolorProfile} isNew />
       <AlignedText>
         <BicolorSelector width={ICON_SIZE} height={getSpacing(1)} />
         <Text> - BicolorSelector </Text>
