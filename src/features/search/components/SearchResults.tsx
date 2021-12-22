@@ -11,14 +11,28 @@ import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/analytics'
 import { SearchHit } from 'libs/search'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
+import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
+const ANIMATION_DURATION = 700
+
 export const SearchResults: React.FC = () => {
   const flatListRef = useRef<FlatList<SearchHit> | null>(null)
-  const { hasNextPage, fetchNextPage, data, hits, nbHits, isLoading, isFetchingNextPage } =
-    useSearchResults()
+  const {
+    hasNextPage,
+    fetchNextPage,
+    refetch,
+    data,
+    hits,
+    nbHits,
+    isLoading,
+    isFetching,
+    isFetchingNextPage,
+  } = useSearchResults()
   const { searchState } = useSearch()
+  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
+  const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
   useEffect(
     // Despite the fact that the useEffect hook being called immediately,
@@ -67,7 +81,7 @@ export const SearchResults: React.FC = () => {
     [isFetchingNextPage, hits.length]
   )
 
-  if (isLoading || !data) return <SearchResultsPlaceHolder />
+  if (showSkeleton) return <SearchResultsPlaceHolder />
   return (
     <React.Fragment>
       <Container>
@@ -81,6 +95,8 @@ export const SearchResults: React.FC = () => {
           ItemSeparatorComponent={Separator}
           ListFooterComponent={ListFooterComponent}
           renderItem={renderItem}
+          refreshing={isRefreshing}
+          onRefresh={refetch}
           onEndReached={onEndReached}
           scrollEnabled={nbHits > 0}
           ListEmptyComponent={ListEmptyComponent}
