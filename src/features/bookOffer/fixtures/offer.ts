@@ -10,6 +10,7 @@ export const mockOffer: OfferResponse = {
   },
   description: null,
   expenseDomains: [ExpenseDomain.All],
+  isForbiddenToUnderage: false,
   externalTicketOfficeUrl: null,
   extraData: {
     author: null,
@@ -42,6 +43,7 @@ export const mockOffer: OfferResponse = {
       price: 2400,
       isExpired: false,
       isSoldOut: false,
+      isForbiddenToUnderage: false,
     },
     {
       id: 148411,
@@ -51,6 +53,7 @@ export const mockOffer: OfferResponse = {
       isBookable: false,
       price: 2400,
       isExpired: false,
+      isForbiddenToUnderage: false,
       isSoldOut: false,
     },
     {
@@ -61,6 +64,7 @@ export const mockOffer: OfferResponse = {
       isBookable: true,
       price: 2700,
       isExpired: false,
+      isForbiddenToUnderage: false,
       isSoldOut: false,
     },
   ],
@@ -97,6 +101,7 @@ export const mockDigitalOffer: OfferResponse = {
   },
   description: null,
   expenseDomains: [ExpenseDomain.All],
+  isForbiddenToUnderage: false,
   externalTicketOfficeUrl: null,
   extraData: {
     author: null,
@@ -128,6 +133,7 @@ export const mockDigitalOffer: OfferResponse = {
       isBookable: true,
       price: 2400,
       isExpired: false,
+      isForbiddenToUnderage: false,
       isSoldOut: false,
     },
   ],

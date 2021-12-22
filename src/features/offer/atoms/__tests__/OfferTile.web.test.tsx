@@ -81,6 +81,7 @@ describe('OfferTile component', () => {
       isDuo: false,
       isEducational: false,
       isReleased: true,
+      isForbiddenToUnderage: false,
       isExpired: false,
       isSoldOut: false,
       subcategoryId: offer.subcategoryId,

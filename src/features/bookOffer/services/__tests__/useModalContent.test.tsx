@@ -55,6 +55,7 @@ describe('useModalContent', () => {
               "id": 118929,
               "isBookable": true,
               "isExpired": false,
+              "isForbiddenToUnderage": false,
               "isSoldOut": false,
               "price": 500,
             },

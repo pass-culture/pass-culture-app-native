@@ -1,5 +1,6 @@
 import { rest } from 'msw'
 import React from 'react'
+import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -8,6 +9,7 @@ import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
 import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
+import { useIsUserUnderage } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { env } from 'libs/environment'
@@ -54,6 +56,9 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const mockStocks = mockOffer.stocks
 const mockDigitalStocks = mockDigitalOffer.stocks
+
+jest.mock('features/profile/utils')
+const mockedUseIsUserUnderage = mocked(useIsUserUnderage)
 
 describe('<BookingDetails />', () => {
   it('should initialize correctly state when offer isDigital', async () => {
@@ -102,6 +107,17 @@ describe('<BookingDetails />', () => {
       beginningDatetime: new Date('2021-03-02T20:00:00'),
     } as ReturnType<typeof useBookingStock>
 
+    const page = await renderBookingDetails(mockStocks)
+    expect(page).toMatchSnapshot()
+  })
+  it('should render disable CTA when user is underage and stock is forbidden to underage', async () => {
+    mockBookingStock = {
+      price: 2000,
+      id: 148409,
+      beginningDatetime: new Date('2021-03-02T20:00:00'),
+      isForbiddenToUnderage: true,
+    } as ReturnType<typeof useBookingStock>
+    mockedUseIsUserUnderage.mockReturnValueOnce(true)
     const page = await renderBookingDetails(mockStocks)
     expect(page).toMatchSnapshot()
   })

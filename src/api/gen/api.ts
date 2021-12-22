@@ -1322,6 +1322,12 @@ export interface OfferResponse {
      * @type {boolean}
      * @memberof OfferResponse
      */
+    isForbiddenToUnderage: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferResponse
+     */
     isReleased: boolean;
     /**
      * 
@@ -1419,6 +1425,12 @@ export interface OfferStockResponse {
      * @memberof OfferStockResponse
      */
     isExpired: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferStockResponse
+     */
+    isForbiddenToUnderage: boolean;
     /**
      * 
      * @type {boolean}
@@ -1728,6 +1740,12 @@ export interface ResetPasswordRequest {
 export interface SchoolTypeResponseModel {
     /**
      * 
+     * @type {string}
+     * @memberof SchoolTypeResponseModel
+     */
+    description?: string | null;
+    /**
+     * 
      * @type {SchoolTypesIdEnum}
      * @memberof SchoolTypeResponseModel
      */
@@ -2012,6 +2030,7 @@ export enum SubcategoryIdEnum {
     JEUSUPPORTPHYSIQUE = 'JEU_SUPPORT_PHYSIQUE',
     LIVESTREAMEVENEMENT = 'LIVESTREAM_EVENEMENT',
     LIVESTREAMMUSIQUE = 'LIVESTREAM_MUSIQUE',
+    LIVESTREAMPRATIQUEARTISTIQUE = 'LIVESTREAM_PRATIQUE_ARTISTIQUE',
     LIVREAUDIOPHYSIQUE = 'LIVRE_AUDIO_PHYSIQUE',
     LIVRENUMERIQUE = 'LIVRE_NUMERIQUE',
     LIVREPAPIER = 'LIVRE_PAPIER',
@@ -2020,6 +2039,7 @@ export enum SubcategoryIdEnum {
     MUSEEVENTEDISTANCE = 'MUSEE_VENTE_DISTANCE',
     OEUVREART = 'OEUVRE_ART',
     PARTITION = 'PARTITION',
+    PLATEFORMEPRATIQUEARTISTIQUE = 'PLATEFORME_PRATIQUE_ARTISTIQUE',
     PRATIQUEARTVENTEDISTANCE = 'PRATIQUE_ART_VENTE_DISTANCE',
     PODCAST = 'PODCAST',
     RENCONTREENLIGNE = 'RENCONTRE_EN_LIGNE',

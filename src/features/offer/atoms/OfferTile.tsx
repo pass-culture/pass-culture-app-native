@@ -64,6 +64,7 @@ export const mergeOfferData =
     isEducational: false,
     isReleased: true,
     isSoldOut: false,
+    isForbiddenToUnderage: false,
     id: offer.offerId,
     stocks: [] as Array<OfferStockResponse>,
     expenseDomains: [] as Array<ExpenseDomain>,
