@@ -24,6 +24,8 @@ export interface BaseButtonProps {
   textSize?: number
   title: string
   fullWidth?: boolean
+  justifyContent?: 'center' | 'flex-start'
+  numberOfLines?: number
   style?: StyleProp<ViewStyle>
 }
 
@@ -63,6 +65,8 @@ const _AppButton = <T extends AppButtonProps>({
   textSize,
   textLineHeight,
   adjustsFontSizeToFit,
+  justifyContent,
+  numberOfLines,
   style,
 }: Only<T, AppButtonProps>) => {
   const pressHandler = disabled || isLoading ? undefined : onPress
@@ -78,6 +82,8 @@ const _AppButton = <T extends AppButtonProps>({
       buttonHeight={buttonHeight ?? 'small'}
       inline={inline}
       inlineHeight={inlineHeight ?? 16}
+      justifyContent={justifyContent ?? 'center'}
+      numberOfLines={numberOfLines}
       style={style}>
       {isLoading ? (
         <Logo
@@ -99,7 +105,9 @@ const _AppButton = <T extends AppButtonProps>({
             textSize={textSize}
             textLineHeight={textLineHeight}
             adjustsFontSizeToFit={adjustsFontSizeToFit ?? false}
-            numberOfLines={1}>
+            icon={Icon}
+            iconSize={iconSize}
+            numberOfLines={numberOfLines ?? 1}>
             {title}
           </Title>
         </Fragment>
@@ -118,20 +126,28 @@ interface StyledTouchableOpacityProps {
   inline?: boolean
   inlineHeight?: number
   fullWidth?: boolean
+  justifyContent?: 'center' | 'flex-start'
+  numberOfLines?: number
 }
 
 const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
 }))<StyledTouchableOpacityProps>(
-  ({ inline, backgroundColor, borderColor, buttonHeight, inlineHeight, fullWidth }) => ({
+  ({
+    inline,
+    backgroundColor,
+    borderColor,
+    buttonHeight,
+    inlineHeight,
+    fullWidth,
+    justifyContent,
+    numberOfLines,
+  }) => ({
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: justifyContent === 'flex-start' ? 'flex-start' : 'center',
     alignItems: 'center',
     borderRadius: BorderRadiusEnum.BUTTON,
-    paddingBottom: 2,
-    paddingRight: 2,
-    paddingTop: 2,
-    paddingLeft: 2,
+    padding: 2,
     backgroundColor,
     borderColor,
     borderWidth: borderColor ? 2 : 0,
@@ -143,14 +159,13 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
           borderWidth: 0,
           borderRadius: 0,
           marginTop: 0,
-          paddingBottom: 0,
-          paddingTop: 0,
-          paddingRight: 0,
-          paddingLeft: 0,
+          padding: 0,
           width: 'auto',
           height: inlineHeight,
         }
       : {}),
+    ...(justifyContent === 'flex-start' ? { paddingRight: 0, paddingLeft: 0 } : {}),
+    ...(numberOfLines ? { height: 'auto' } : {}),
   })
 )
 
@@ -158,6 +173,8 @@ interface TitleProps {
   textColor?: ColorsEnum
   textSize?: number
   textLineHeight?: string
+  icon?: React.FC<IconInterface>
+  iconSize?: number
 }
 
 const Title = styled(Typo.ButtonText)<TitleProps>((props) => ({
@@ -165,5 +182,6 @@ const Title = styled(Typo.ButtonText)<TitleProps>((props) => ({
   color: props.textColor,
   fontSize: props.textSize,
   lineHeight: props.textLineHeight,
-  marginLeft: 5,
+  marginLeft: props.icon ? getSpacing(2) : 0,
+  marginRight: props.iconSize,
 }))

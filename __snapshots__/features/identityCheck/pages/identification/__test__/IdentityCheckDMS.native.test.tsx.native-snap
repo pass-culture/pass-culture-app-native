@@ -261,98 +261,93 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "paddingVertical": 40,
+                      "paddingBottom": 40,
+                      "paddingLeft": 40,
+                      "paddingRight": 40,
+                      "paddingTop": 40,
                     },
                   ]
                 }
               >
                 <View
+                  accessibilityLabel="Je suis de nationalité française"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderRadius": 24,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "height": 40,
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "opacity": 1,
+                      "paddingBottom": 2,
+                      "paddingLeft": 2,
+                      "paddingRight": 2,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    }
+                  }
+                  testID="Je suis de nationalité française"
+                >
+                  <View
+                    height={32}
+                    testID="button-icon"
+                    width={32}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    icon={[Function]}
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 8,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                    textColor="#151515"
+                  >
+                    Je suis de nationalité française
+                  </Text>
+                </View>
+                <Text
+                  color="#626262"
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "textAlign": "center",
                       },
                     ]
                   }
                 >
-                  <View
-                    accessibilityLabel="Je suis de nationalité française"
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    nativeID="animatedComponent"
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderRadius": 24,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "justifyContent": "flex-start",
-                        "maxWidth": 500,
-                        "opacity": 1,
-                        "paddingBottom": 2,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      }
-                    }
-                    testID="Je suis de nationalité française"
-                  >
-                    <View
-                      height={32}
-                      testID="button-icon"
-                      width={32}
-                    >
-                      <Text>
-                        button-icon-SVG-Mock
-                      </Text>
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "marginLeft": 5,
-                            "maxWidth": "100%",
-                          },
-                        ]
-                      }
-                      textColor="#151515"
-                    >
-                      Je suis de nationalité française
-                    </Text>
-                  </View>
-                  <Text
-                    color="#626262"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#626262",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Carte d’identité ou passeport.
-                  </Text>
-                </View>
+                  Carte d’identité ou passeport.
+                </Text>
                 <View
                   style={
                     Array [
@@ -645,92 +640,84 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </View>
                 </View>
                 <View
+                  accessibilityLabel="Je suis de nationalité étrangère"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderRadius": 24,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "height": 40,
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "opacity": 1,
+                      "paddingBottom": 2,
+                      "paddingLeft": 2,
+                      "paddingRight": 2,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    }
+                  }
+                  testID="Je suis de nationalité étrangère"
+                >
+                  <View
+                    height={32}
+                    testID="button-icon"
+                    width={32}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    icon={[Function]}
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 8,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                    textColor="#151515"
+                  >
+                    Je suis de nationalité étrangère
+                  </Text>
+                </View>
+                <Text
+                  color="#626262"
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
+                        "color": "#626262",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "textAlign": "center",
                       },
                     ]
                   }
                 >
-                  <View
-                    accessibilityLabel="Je suis de nationalité étrangère"
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    nativeID="animatedComponent"
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderRadius": 24,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "justifyContent": "flex-start",
-                        "maxWidth": 500,
-                        "opacity": 1,
-                        "paddingBottom": 2,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      }
-                    }
-                    testID="Je suis de nationalité étrangère"
-                  >
-                    <View
-                      height={32}
-                      testID="button-icon"
-                      width={32}
-                    >
-                      <Text>
-                        button-icon-SVG-Mock
-                      </Text>
-                    </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "marginLeft": 5,
-                            "maxWidth": "100%",
-                          },
-                        ]
-                      }
-                      textColor="#151515"
-                    >
-                      Je suis de nationalité étrangère
-                    </Text>
-                  </View>
-                  <Text
-                    color="#626262"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#626262",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Titre de séjour, carte d'identité ou passeport.
-                  </Text>
-                </View>
+                  Titre de séjour, carte d'identité ou passeport.
+                </Text>
               </View>
               <View
                 customHeight={8}

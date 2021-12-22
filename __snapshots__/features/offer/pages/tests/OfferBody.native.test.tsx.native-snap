@@ -571,7 +571,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 5,
+                    "marginLeft": 0,
                     "maxWidth": "100%",
                   },
                 ]
@@ -942,6 +942,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           </View>
           <Text
             adjustsFontSizeToFit={false}
+            icon={[Function]}
             numberOfLines={1}
             style={
               Array [
@@ -950,7 +951,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 5,
+                  "marginLeft": 8,
                   "maxWidth": "100%",
                 },
               ]
@@ -1057,6 +1058,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           </View>
           <Text
             adjustsFontSizeToFit={false}
+            icon={[Function]}
             numberOfLines={1}
             style={
               Array [
@@ -1065,7 +1067,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 5,
+                  "marginLeft": 8,
                   "maxWidth": "100%",
                 },
               ]
@@ -1532,7 +1534,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
-                          "marginLeft": 5,
+                          "marginLeft": 0,
                           "maxWidth": "100%",
                         },
                       ]

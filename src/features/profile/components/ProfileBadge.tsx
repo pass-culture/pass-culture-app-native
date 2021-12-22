@@ -25,15 +25,14 @@ const renderCallToAction = (
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <CallToActionContainer>
-        <ButtonQuaternaryBlack
-          inline
-          icon={callToActionIcon || undefined}
-          testId="call-to-action-button"
-          onPress={() => handleCallToActionLink(callToActionLink)}
-          title={callToActionMessage}
-        />
-      </CallToActionContainer>
+      <ButtonQuaternaryBlack
+        icon={callToActionIcon || undefined}
+        testId="call-to-action-button"
+        onPress={() => handleCallToActionLink(callToActionLink)}
+        title={callToActionMessage}
+        justifyContent="flex-start"
+        numberOfLines={2}
+      />
     </React.Fragment>
   )
 }
@@ -43,7 +42,7 @@ export function ProfileBadge(props: ProfileBadgeProps) {
 
   return (
     <Container testID={props.testID || 'profile-badge'}>
-      {Icon ? (
+      {Icon && !props.callToActionIcon ? (
         <IconContainer>
           <Icon size={getSpacing(8)} color={ColorsEnum.GREY_DARK} />
         </IconContainer>
@@ -82,8 +81,4 @@ const IconContainer = styled.View({
 
 const TextContainer = styled.View({
   flex: 1,
-})
-
-const CallToActionContainer = styled.View({
-  flexDirection: 'row',
 })

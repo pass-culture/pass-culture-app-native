@@ -349,6 +349,8 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             </View>
             <Text
               adjustsFontSizeToFit={false}
+              icon={[Function]}
+              iconSize={16}
               numberOfLines={1}
               style={
                 Array [
@@ -357,7 +359,8 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 12,
                     "lineHeight": 20,
-                    "marginLeft": 5,
+                    "marginLeft": 8,
+                    "marginRight": 16,
                     "maxWidth": "100%",
                   },
                 ]
@@ -411,7 +414,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 5,
+                    "marginLeft": 0,
                     "maxWidth": "100%",
                   },
                 ]
@@ -757,6 +760,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             </View>
             <Text
               adjustsFontSizeToFit={false}
+              icon={[Function]}
               numberOfLines={1}
               style={
                 Array [
@@ -765,7 +769,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 5,
+                    "marginLeft": 8,
                     "maxWidth": "100%",
                   },
                 ]
@@ -1143,6 +1147,8 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             </View>
             <Text
               adjustsFontSizeToFit={false}
+              icon={[Function]}
+              iconSize={16}
               numberOfLines={1}
               style={
                 Array [
@@ -1151,7 +1157,8 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 12,
                     "lineHeight": 20,
-                    "marginLeft": 5,
+                    "marginLeft": 8,
+                    "marginRight": 16,
                     "maxWidth": "100%",
                   },
                 ]
@@ -1205,7 +1212,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 5,
+                    "marginLeft": 0,
                     "maxWidth": "100%",
                   },
                 ]
@@ -1551,6 +1558,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             </View>
             <Text
               adjustsFontSizeToFit={false}
+              icon={[Function]}
               numberOfLines={1}
               style={
                 Array [
@@ -1559,7 +1567,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 5,
+                    "marginLeft": 8,
                     "maxWidth": "100%",
                   },
                 ]

@@ -118,7 +118,7 @@ Object {
               <div
                 class="css-text-901oao css-textOneLine-vcwn7f"
                 dir="auto"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
               >
                 Réessayer
               </div>
@@ -250,7 +250,7 @@ Object {
             <div
               class="css-text-901oao css-textOneLine-vcwn7f"
               dir="auto"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 5px; max-width: 100%;"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Réessayer
             </div>

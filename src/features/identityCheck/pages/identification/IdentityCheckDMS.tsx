@@ -40,29 +40,21 @@ export const IdentityCheckDMS = () => {
             {t`La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure.`}
           </StyledBody>
           {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={5} />}
-          <ChoicesContainer>
-            <ButtonContainer>
-              <CustomButtonTertiaryBlack
-                title={t`Je suis de nationalité française`}
-                onPress={openDMSFrenchCitizenURL}
-                icon={ExternalSite}
-              />
-              <Typo.Caption color={ColorsEnum.GREY_DARK}>
-                {t`Carte d’identité ou passeport.`}
-              </Typo.Caption>
-            </ButtonContainer>
+          <ButtonContainer>
+            <ButtonTertiaryBlack
+              title={t`Je suis de nationalité française`}
+              onPress={openDMSFrenchCitizenURL}
+              icon={ExternalSite}
+            />
+            <Caption>{t`Carte d’identité ou passeport.`}</Caption>
             <OrSeparator />
-            <ButtonContainer>
-              <CustomButtonTertiaryBlack
-                title={t`Je suis de nationalité étrangère`}
-                onPress={openDMSForeignCitizenURL}
-                icon={ExternalSite}
-              />
-              <Typo.Caption color={ColorsEnum.GREY_DARK}>
-                {t`Titre de séjour, carte d'identité ou passeport.`}
-              </Typo.Caption>
-            </ButtonContainer>
-          </ChoicesContainer>
+            <ButtonTertiaryBlack
+              title={t`Je suis de nationalité étrangère`}
+              onPress={openDMSForeignCitizenURL}
+              icon={ExternalSite}
+            />
+            <Caption>{t`Titre de séjour, carte d'identité ou passeport.`}</Caption>
+          </ButtonContainer>
           <Spacer.BottomScreen />
         </Container>
       }
@@ -71,18 +63,6 @@ export const IdentityCheckDMS = () => {
 }
 
 const Container = styled.View({ height: '100%', alignItems: 'center' })
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.GREY_DARK,
-})({
-  textAlign: 'center',
-})
-const ChoicesContainer = styled.View({ paddingVertical: getSpacing(10) })
-const CustomButtonTertiaryBlack = styled(ButtonTertiaryBlack)({
-  justifyContent: 'flex-start',
-  paddingLeft: 0,
-  paddingRight: 0,
-})
-
-const ButtonContainer = styled.View({
-  alignItems: 'center',
-})
+const StyledBody = styled(Typo.Body).attrs({ color: ColorsEnum.GREY_DARK })({ textAlign: 'center' })
+const ButtonContainer = styled.View({ padding: getSpacing(10) })
+const Caption = styled(Typo.Caption).attrs({ color: ColorsEnum.GREY_DARK })({ textAlign: 'center' })

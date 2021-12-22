@@ -118,7 +118,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                       \\"fontFamily\\": \\"Montserrat-Bold\\",
                       \\"fontSize\\": 15,
                       \\"lineHeight\\": 20,
-                      \\"marginLeft\\": 5,
+                      \\"marginLeft\\": 0,
                       \\"maxWidth\\": \\"100%\\",
                     },
                   ]
@@ -354,7 +354,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"fontFamily\\": \\"Montserrat-Bold\\",
                       \\"fontSize\\": 15,
                       \\"lineHeight\\": 20,
-                      \\"marginLeft\\": 5,
+                      \\"marginLeft\\": 0,
                       \\"maxWidth\\": \\"100%\\",
                     },
                   ]
@@ -590,7 +590,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"fontFamily\\": \\"Montserrat-Bold\\",
                       \\"fontSize\\": 15,
                       \\"lineHeight\\": 20,
-                      \\"marginLeft\\": 5,
+                      \\"marginLeft\\": 0,
                       \\"maxWidth\\": \\"100%\\",
                     },
                   ]
@@ -826,7 +826,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"fontFamily\\": \\"Montserrat-Bold\\",
                       \\"fontSize\\": 15,
                       \\"lineHeight\\": 20,
-                      \\"marginLeft\\": 5,
+                      \\"marginLeft\\": 0,
                       \\"maxWidth\\": \\"100%\\",
                     },
                   ]

@@ -661,7 +661,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
-                      "marginLeft": 5,
+                      "marginLeft": 0,
                       "maxWidth": "100%",
                     },
                   ]
@@ -1166,7 +1166,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
-                      "marginLeft": 5,
+                      "marginLeft": 0,
                       "maxWidth": "100%",
                     },
                   ]

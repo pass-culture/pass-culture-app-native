@@ -208,7 +208,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 5,
+                "marginLeft": 0,
                 "maxWidth": "100%",
               },
             ]
@@ -272,6 +272,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         </View>
         <Text
           adjustsFontSizeToFit={false}
+          icon={[Function]}
           numberOfLines={1}
           style={
             Array [
@@ -280,7 +281,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 5,
+                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
@@ -514,7 +515,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 5,
+                "marginLeft": 0,
                 "maxWidth": "100%",
               },
             ]
@@ -578,6 +579,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         </View>
         <Text
           adjustsFontSizeToFit={false}
+          icon={[Function]}
           numberOfLines={1}
           style={
             Array [
@@ -586,7 +588,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 5,
+                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
