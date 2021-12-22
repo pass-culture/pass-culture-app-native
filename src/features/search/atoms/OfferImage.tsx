@@ -43,6 +43,7 @@ const imageStyle = { borderRadius, height, width }
 const Container = styled.View({
   width,
   height,
+  borderRadius,
   ...getShadow({
     shadowOffset: {
       width: 0,
