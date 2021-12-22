@@ -203,19 +203,21 @@ describe('getCtaWordingAndAction', () => {
     // same as beneficiaries except for video games and non free digital offers except press category
     describe('underage beneficiary', () => {
       it.each`
-        isEvent  | expected                     | disabled | isDigital | category                          | price
-        ${false} | ${'Réserver'}                | ${false} | ${true}   | ${SearchGroupNameEnum.PRESSE}     | ${20}
-        ${true}  | ${undefined}                 | ${true}  | ${true}   | ${SearchGroupNameEnum.FILM}       | ${20}
-        ${true}  | ${undefined}                 | ${true}  | ${true}   | ${SearchGroupNameEnum.FILM}       | ${0}
-        ${false} | ${'Réserver'}                | ${false} | ${false}  | ${SearchGroupNameEnum.JEU}        | ${0}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20}
+        isEvent  | expected                     | disabled | isDigital | category                          | price | isForbiddenToUnderage
+        ${false} | ${'Réserver'}                | ${false} | ${true}   | ${SearchGroupNameEnum.PRESSE}     | ${20} | ${false}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILM}       | ${20} | ${false}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILM}       | ${0}  | ${false}
+        ${false} | ${'Réserver'}                | ${false} | ${false}  | ${SearchGroupNameEnum.JEU}        | ${0}  | ${false}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20} | ${false}
+        ${true}  | ${undefined}                 | ${true}  | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20} | ${true}
       `(
-        'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, category=$category and price=$price',
-        ({ isEvent, expected, disabled, isDigital, category, price }) => {
+        'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, isForbiddenToUnderage=$isForbiddenToUnderage, category=$category and price=$price',
+        ({ isEvent, expected, disabled, isDigital, category, price, isForbiddenToUnderage }) => {
           mockedUser.roles = [UserRole.UNDERAGEBENEFICIARY]
           const { wording, onPress } = getCta(
             {
               isDigital,
+              isForbiddenToUnderage,
               stocks: [
                 {
                   id: 118929,
@@ -223,6 +225,7 @@ describe('getCtaWordingAndAction', () => {
                   isBookable: true,
                   isExpired: false,
                   isSoldOut: false,
+                  isForbiddenToUnderage,
                   price,
                 },
               ],

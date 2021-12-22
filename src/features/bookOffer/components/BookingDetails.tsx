@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { isApiError } from 'api/apiHelpers'
 import { OfferStockResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useIsUserUnderage } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -38,6 +39,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const selectedStock = useBookingStock()
   const offer = useBookingOffer()
   const { showErrorSnackBar } = useSnackBarContext()
+  const isUserUnderage = useIsUserUnderage()
   const { quantity, offerId } = bookingState
 
   const { mutate } = useBookOfferMutation({
@@ -96,6 +98,8 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
     message: '{price} seront déduits de ton crédit pass Culture',
   })
 
+  const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
+
   return (
     <Container>
       <Banner title={disclaimer} />
@@ -111,7 +115,11 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
       <Spacer.Column numberOfSpaces={6} />
 
-      <ButtonPrimary title={t`Confirmer la réservation`} onPress={onPressBookOffer} />
+      <ButtonPrimary
+        disabled={!isStockBookable}
+        title={t`Confirmer la réservation`}
+        onPress={onPressBookOffer}
+      />
       {!!formattedPriceWithEuro && <Caption>{deductedAmount}</Caption>}
     </Container>
   )

@@ -18,6 +18,7 @@ const defaultBookableStocks: OfferResponse['stocks'] = [
     beginningDatetime: new Date('2021-01-04T13:30:00'),
     isBookable: true,
     isExpired: false,
+    isForbiddenToUnderage: false,
     isSoldOut: false,
   },
 ]
@@ -28,6 +29,7 @@ const freeBookableStocks: OfferResponse['stocks'] = [
     beginningDatetime: new Date('2021-01-04T13:30:00'),
     isBookable: true,
     isExpired: false,
+    isForbiddenToUnderage: false,
     isSoldOut: false,
   },
 ]
@@ -38,6 +40,7 @@ const sevenEurosBookableStocks: OfferResponse['stocks'] = [
     beginningDatetime: new Date('2021-01-04T13:30:00'),
     isBookable: true,
     isExpired: false,
+    isForbiddenToUnderage: false,
     isSoldOut: false,
   },
 ]
@@ -48,6 +51,7 @@ const severalStocks: OfferResponse['stocks'] = [
     beginningDatetime: new Date('2021-01-04T13:30:00'),
     isBookable: true,
     isExpired: false,
+    isForbiddenToUnderage: false,
     isSoldOut: false,
   },
   {
@@ -56,6 +60,7 @@ const severalStocks: OfferResponse['stocks'] = [
     beginningDatetime: new Date('2021-01-03T13:30:00'),
     isBookable: false,
     isExpired: false,
+    isForbiddenToUnderage: false,
     isSoldOut: false,
   },
 ]
@@ -66,6 +71,7 @@ const noBookableStocks: OfferResponse['stocks'] = [
     beginningDatetime: new Date('2021-01-04T13:30:00'),
     isBookable: false,
     isExpired: false,
+    isForbiddenToUnderage: false,
     isSoldOut: false,
   },
   {
@@ -74,6 +80,7 @@ const noBookableStocks: OfferResponse['stocks'] = [
     beginningDatetime: new Date('2021-01-03T13:30:00'),
     isBookable: false,
     isExpired: false,
+    isForbiddenToUnderage: false,
     isSoldOut: false,
   },
 ]

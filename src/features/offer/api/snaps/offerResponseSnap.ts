@@ -19,6 +19,7 @@ export const offerResponseSnap: OfferResponse = {
   subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
   isReleased: true,
   isExpired: false,
+  isForbiddenToUnderage: false,
   isSoldOut: false,
   stocks: [
     {
@@ -27,6 +28,7 @@ export const offerResponseSnap: OfferResponse = {
       price: 500,
       isBookable: true,
       isExpired: false,
+      isForbiddenToUnderage: false,
       isSoldOut: false,
     },
     {
@@ -35,6 +37,7 @@ export const offerResponseSnap: OfferResponse = {
       price: 500,
       isBookable: true,
       isExpired: false,
+      isForbiddenToUnderage: false,
       isSoldOut: false,
     },
   ],

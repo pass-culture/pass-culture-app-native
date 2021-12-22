@@ -79,6 +79,7 @@ describe('VenueOfferTile component', () => {
       isReleased: true,
       isEducational: false,
       isExpired: false,
+      isForbiddenToUnderage: false,
       isSoldOut: false,
       name: offer.name,
       stocks: [],
