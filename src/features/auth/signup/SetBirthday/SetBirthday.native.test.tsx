@@ -100,12 +100,23 @@ describe('SetBirthday Page', () => {
   it('should display the error message "tu dois avoir 15 ans" when the date is too young', () => {
     const renderAPI = render(<SetBirthday {...props} />)
 
-    changeDate(renderAPI, '01', '01', '2006')
+    changeDate(renderAPI, '02', '12', '2005') // 15 years old - 1 day
 
     const message = renderAPI.queryByText(
       'Tu dois avoir' + '\u00a0' + 15 + '\u00a0' + "ans pour t'inscrire"
     )
     expect(message).toBeTruthy()
+  })
+
+  it('should not display the error message "tu dois avoir 15 ans" when the user is exactly 15yo', () => {
+    const renderAPI = render(<SetBirthday {...props} />)
+
+    changeDate(renderAPI, '01', '12', '2005') // 15 years old
+
+    const message = renderAPI.queryByText(
+      'Tu dois avoir' + '\u00a0' + 15 + '\u00a0' + "ans pour t'inscrire"
+    )
+    expect(message).toBeFalsy()
   })
 
   it('should call goToNextStep()', () => {

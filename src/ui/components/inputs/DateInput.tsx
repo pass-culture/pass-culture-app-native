@@ -136,8 +136,11 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   }, [value])
 
   const date = useMemo(() => {
-    const dateStr = [dateParts.year.value, dateParts.month.value, dateParts.day.value].join('-')
-    if (validateDate(dateStr, 'boolean')) return new Date(dateStr)
+    const { year, month, day } = dateParts
+    const dateStr = [year.value, month.value, day.value].join('-')
+    if (validateDate(dateStr, 'boolean')) {
+      return new Date(+year.value, +month.value - 1, +day.value)
+    }
     return null
   }, [dateParts])
 
