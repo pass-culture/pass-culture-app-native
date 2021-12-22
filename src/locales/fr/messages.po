@@ -2840,6 +2840,7 @@ msgid "VISA"
 msgstr "VISA"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Validation de l'identification"
 msgstr "Validation de l'identification"
 
@@ -3015,9 +3016,7 @@ msgstr "autour de toi"
 
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "birthday notification text"
-msgstr ""
-"Pour tes {age} ans, le Gouvernement vient d'ajouter {amount} euros à ton crédit. \n"
-"Tu disposes maintenant de :"
+msgstr "Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à ton crédit. Tu disposes maintenant de :"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "c'est..."

@@ -32,7 +32,7 @@ export const RecreditBirthdayNotification = () => {
     : undefined
   const animationRef = React.useRef<LottieView>(null)
   const credit = useAvailableCredit()
-  const creditedAmount = user?.recreditAmountToShow ?? 0
+  const creditedAmount = formatToFrenchDecimal(user?.recreditAmountToShow ?? 3000)
   const remainingCredit = formatToFrenchDecimal(credit?.amount ?? 3000)
   const { showErrorSnackBar } = useSnackBarContext()
 
@@ -65,11 +65,11 @@ export const RecreditBirthdayNotification = () => {
 
   return (
     <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle\u00a0!`}>
-      <StyledSubtitle>
+      <StyledSubtitle testID={'recreditMessage'}>
         {t({
           id: 'birthday notification text',
           values: { creditedAmount, age },
-          message: `Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} euros à ton crédit. Tu disposes maintenant de :`,
+          message: `Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à ton crédit. Tu disposes maintenant de :`,
         })}
       </StyledSubtitle>
 
