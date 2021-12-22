@@ -44,6 +44,7 @@ export const IdentityCheckWebview: React.FC = () => {
       <Spacer.TopScreen />
       <StyledWebview
         allowsInlineMediaPlayback
+        mediaPlaybackRequiresUserAction={false}
         source={{ uri: identificationUrl }}
         onNavigationStateChange={onNavigationStateChange}
         originWhitelist={ORIGIN_WHITELIST}
