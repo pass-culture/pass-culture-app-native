@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useIsFetching } from 'react-query'
 
 import { QueryKeys } from 'libs/queryKeys'
@@ -6,15 +6,17 @@ import { QueryKeys } from 'libs/queryKeys'
 export const ANIMATION_DELAY = 700 // Time for the skeleton animation to finish
 
 const useShowSkeletonFromFetchingCount = (fetchingCount: number) => {
+  const timer = useRef<number>()
   const [showSkeleton, setShowSkeleton] = useState(true)
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout
     if (fetchingCount === 0) {
-      timeout = global.setTimeout(() => setShowSkeleton(false), ANIMATION_DELAY)
+      timer.current = globalThis.setTimeout(() => setShowSkeleton(false), ANIMATION_DELAY)
     }
     return () => {
-      if (timeout) clearTimeout(timeout)
+      if (timer.current) {
+        clearTimeout(timer.current)
+      }
     }
   }, [fetchingCount])
 

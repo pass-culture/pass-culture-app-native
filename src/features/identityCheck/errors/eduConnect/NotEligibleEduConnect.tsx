@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { TextProps, TextStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -22,6 +22,7 @@ export const NotEligibleEduConnect = ({
   error: { message },
   resetErrorBoundary,
 }: ScreenErrorProps) => {
+  const timer = useRef<number>()
   const [error, setError] = useState<Error | undefined>()
   const {
     title,
@@ -37,11 +38,20 @@ export const NotEligibleEduConnect = ({
   const getGrid = useGrid()
   const bodyFontSize = getSpacing(getGrid({ default: 3.75, sm: 3 }, 'height'))
 
+  useEffect(
+    () => () => {
+      if (timer.current) {
+        clearTimeout(timer.current)
+      }
+    },
+    []
+  )
+
   const onAbandon = () => {
     navigateToHome()
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
-    global.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
+    timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
 
   if (error) {

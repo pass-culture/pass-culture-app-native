@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
@@ -14,7 +14,17 @@ import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
+  const timer = useRef<number>()
   const { navigate } = useNavigation<UseNavigationType>()
+
+  useEffect(
+    () => () => {
+      if (timer.current) {
+        clearTimeout(timer.current)
+      }
+    },
+    []
+  )
 
   async function onPress() {
     navigate('EndedBookings')
@@ -22,7 +32,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
     // TODO(antoinewg/kopax): check if this can be removed. https://github.com/tannerlinsley/react-query/releases/tag/v3.32.3
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
-    global.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
+    timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
 
   return (

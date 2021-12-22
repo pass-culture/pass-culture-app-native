@@ -10,7 +10,7 @@ import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 import { useSearchResults } from './useSearchResults'
 
 const useShowResults = () => {
-  const timer = useRef<NodeJS.Timeout>()
+  const timer = useRef<number>()
   const { searchState } = useSearch()
   const [showResults, setShowResults] = useState<boolean>(searchState.showResults)
   const { isLoading } = useSearchResults()
@@ -22,14 +22,18 @@ const useShowResults = () => {
       } else {
         // For most networks, 20ms is enough time to fetch the results fom Algolia
         // In this case we can avoid displaying the placeholders
-        timer.current = global.setTimeout(() => {
+        timer.current = globalThis.setTimeout(() => {
           setShowResults(true)
         }, 20)
       }
     } else {
       setShowResults(false)
     }
-    return () => timer.current && clearTimeout(timer.current)
+    return () => {
+      if (timer.current) {
+        clearTimeout(timer.current)
+      }
+    }
   }, [searchState.showResults, isLoading])
 
   return showResults
