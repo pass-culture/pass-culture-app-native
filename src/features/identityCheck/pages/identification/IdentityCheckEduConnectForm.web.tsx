@@ -1,10 +1,10 @@
 import { t } from '@lingui/macro'
-import { ErrorTrigger } from '@pass-culture/id-check/src/errors/ErrorTrigger'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import styled from 'styled-components/native'
 
+import { ErrorTrigger } from 'features/identityCheck/atoms/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { EduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
