@@ -16,19 +16,32 @@ const getIdentityCheckStep = (
   return null
 }
 
-export const useSetCurrentSubscriptionStep = () => {
+export const useSetSubscriptionStepAndMethod = () => {
   const context = useIdentityCheckContext()
   const { refetch } = useNextSubscriptionStep()
   const [subscription, setSubscription] = useState<NextSubscriptionStepResponse | undefined>()
+
+  const setCurrentStep = (susbcriptionResponse: NextSubscriptionStepResponse | undefined) => {
+    setSubscription(susbcriptionResponse)
+    const nextStep = susbcriptionResponse?.nextSubscriptionStep
+    const step = getIdentityCheckStep(nextStep || null)
+    if (step) context.dispatch({ type: 'SET_STEP', payload: step })
+  }
+
+  const setCurrentIdentityCheckMethod = (
+    susbcriptionResponse: NextSubscriptionStepResponse | undefined
+  ) => {
+    const identityCheckMethods = susbcriptionResponse?.allowedIdentityCheckMethods
+    const method = identityCheckMethods?.length === 1 ? identityCheckMethods[0] : null
+    context.dispatch({ type: 'SET_METHOD', payload: method })
+  }
 
   useFocusEffect(
     useCallback(() => {
       refetch()
         .then(({ data: subscription }) => {
-          setSubscription(subscription)
-          const nextStep = subscription?.nextSubscriptionStep
-          const step = getIdentityCheckStep(nextStep || null)
-          if (step) context.dispatch({ type: 'SET_STEP', payload: step })
+          setCurrentStep(subscription)
+          setCurrentIdentityCheckMethod(subscription)
         })
         .catch(() => {
           eventMonitoring.captureException(new Error('Error fetching subscription'))
