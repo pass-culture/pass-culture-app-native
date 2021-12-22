@@ -1,12 +1,6 @@
 import { t } from '@lingui/macro'
 
-import {
-  OfferResponse,
-  FavoriteOfferResponse,
-  SearchGroupNameEnum,
-  UserProfileResponse,
-  SubcategoryIdEnum,
-} from 'api/gen'
+import { OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openUrl, navigateToBooking } from 'features/navigation/helpers'
@@ -60,22 +54,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  // TODO(anoukhello): get these categories from api
-  const isOfferVideoGame = [
-    SubcategoryIdEnum.JEUENLIGNE,
-    SubcategoryIdEnum.JEUSUPPORTPHYSIQUE,
-    SubcategoryIdEnum.ABOJEUVIDEO,
-    SubcategoryIdEnum.ABOLUDOTHEQUE,
-  ].includes(offer.subcategoryId)
-
-  // underage beneficiary cannot book video games and digital offers except press category and audio book
-  const isOfferCategoryNotBookableByUser =
-    isUnderageBeneficiary &&
-    (isOfferVideoGame ||
-      (offer.isDigital &&
-        subcategory.searchGroupName !== SearchGroupNameEnum.PRESSE &&
-        offer.subcategoryId !== SubcategoryIdEnum.LIVRENUMERIQUE &&
-        offer.subcategoryId !== SubcategoryIdEnum.LIVREAUDIOPHYSIQUE))
+  const isOfferCategoryNotBookableByUser = isUnderageBeneficiary && offer.isForbiddenToUnderage
 
   // Non beneficiary or educational offer or unavailable offer for user
   if (!isLoggedIn || !isBeneficiary || offer.isEducational || isOfferCategoryNotBookableByUser) {
