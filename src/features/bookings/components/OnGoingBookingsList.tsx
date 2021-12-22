@@ -1,5 +1,5 @@
 import { plural } from '@lingui/macro'
-import React, { useEffect, useState, useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -12,6 +12,7 @@ import {
 } from 'features/search/components/Placeholders'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { Separator } from 'ui/components/Separator'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
@@ -22,32 +23,13 @@ import { Booking } from './types'
 
 const emptyBookings: Booking[] = []
 
-const ANIMATION_DURATION = 500
-const useShowBookingSkeleton = () => {
-  const { isLoading } = useBookings()
-  const [showSkeleton, setShowSkeleton] = useState(isLoading)
-
-  useEffect(() => {
-    let timer: number | null = null
-    if (isLoading) {
-      setShowSkeleton(true)
-    } else {
-      timer = globalThis.setTimeout(() => {
-        setShowSkeleton(false)
-      }, ANIMATION_DURATION)
-    }
-    return () => {
-      if (timer) clearTimeout(timer)
-    }
-  }, [isLoading])
-
-  return showSkeleton
-}
+const ANIMATION_DURATION = 700
 
 export function OnGoingBookingsList() {
-  const { data: bookings } = useBookings()
+  const { data: bookings, isLoading, isFetching, refetch } = useBookings()
   const { bottom } = useSafeAreaInsets()
-  const showSkeleton = useShowBookingSkeleton()
+  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
+  const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
   const {
     ongoing_bookings: ongoingBookings = emptyBookings,
@@ -91,6 +73,8 @@ export function OnGoingBookingsList() {
         keyExtractor={keyExtractor}
         data={ongoingBookings}
         renderItem={renderItem}
+        refreshing={isRefreshing}
+        onRefresh={refetch}
         contentContainerStyle={contentContainerStyle}
         ListHeaderComponent={ListHeaderComponent}
         ListEmptyComponent={<NoBookingsView />}

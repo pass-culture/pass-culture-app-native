@@ -20,6 +20,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
+import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
@@ -43,12 +44,16 @@ function applySortBy(
   }
 }
 
+const ANIMATION_DURATION = 700
+
 export const FavoritesResults: React.FC = React.memo(function FavoritesResults() {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
   const favoritesState = useFavoritesState()
   const { position } = useGeolocation()
-  const { data, isLoading } = useFavorites()
+  const { data, isLoading, isFetching, refetch } = useFavorites()
+  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
+  const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
   const sortedFavorites = useMemo(() => {
     if (!data) {
@@ -85,8 +90,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
     [sortedFavorites?.length]
   )
 
-  if (isLoading || !data) return <FavoritesResultsPlaceHolder />
-
+  if (showSkeleton) return <FavoritesResultsPlaceHolder />
   return (
     <React.Fragment>
       {!!offerToBook && (
@@ -106,6 +110,8 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           ListHeaderComponent={ListHeaderComponent}
           ListFooterComponent={ListFooterComponent}
           renderItem={renderItem}
+          refreshing={isRefreshing}
+          onRefresh={refetch}
           onEndReachedThreshold={0.9}
           scrollEnabled={sortedFavorites && sortedFavorites.length > 0}
           ListEmptyComponent={ListEmptyComponent}
