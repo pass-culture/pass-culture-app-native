@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 
 import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationIdentityCheck'
 import { withAsyncErrorBoundary } from 'features/errors'
+import { withEduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { UnderageAccountCreated } from 'features/identityCheck/pages/confirmation/UnderageAccountCreated'
@@ -110,7 +111,22 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
   {
     name: 'IdentityCheckValidation',
     component: IdentityCheckValidation,
-    path: 'validation',
+    hoc: withEduConnectErrorBoundary,
+    // This route is hardcoded in the backend
+    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L161
+    // TODO(antoinewg): delete this route once the backend redirects to `educonnect/validation`
+    path: 'idcheck/validation',
+    options: { title: t`Validation de l'identification` },
+  },
+  {
+    name: 'Validation',
+    component: IdentityCheckValidation,
+    // This route is not used yet but will be once this line is modified in the  backend
+    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L161
+    // Once the backend redirects to educonnect/validation instead of idcheck/validation
+    // we can delete the route above and replace IdentityCheckValidation by Validation
+    path: 'educonnect/validation',
+    hoc: withEduConnectErrorBoundary,
     options: { title: t`Validation de l'identification` },
   },
   {

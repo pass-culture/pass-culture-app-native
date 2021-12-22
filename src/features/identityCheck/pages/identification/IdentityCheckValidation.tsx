@@ -11,7 +11,7 @@ import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCh
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-export const IdentityCheckValidation = () => {
+export function IdentityCheckValidation() {
   const { dispatch, identification } = useIdentityCheckContext()
   const { navigateToNextScreen } = useIdentityCheckNavigation()
 
