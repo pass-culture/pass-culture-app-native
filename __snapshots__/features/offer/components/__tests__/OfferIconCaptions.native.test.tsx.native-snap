@@ -134,7 +134,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       }
       testID="caption-iconPrice"
     >
-      28 €
+      28 €
     </Text>
   </View>
   <View

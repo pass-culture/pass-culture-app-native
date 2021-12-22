@@ -110,7 +110,7 @@ exports[`CreditCeiling should render properly 1`] = `
       ]
     }
   >
-    155 €
+    155 €
   </Text>
   <View>
     <Text

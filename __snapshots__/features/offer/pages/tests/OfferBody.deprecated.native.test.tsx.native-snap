@@ -720,7 +720,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 }
                                 testID="caption-iconPrice"
                               >
-                                5 €
+                                5 €
                               </Text>
                             </View>
                             <View
@@ -3185,7 +3185,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                                 testID="caption-iconPrice"
                               >
-                                5 € / place
+                                5 € / place
                               </Text>
                             </View>
                             <View

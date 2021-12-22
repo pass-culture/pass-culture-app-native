@@ -366,7 +366,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         ]
       }
     >
-      20 €
+      20 €
     </Text>
     <View
       numberOfSpaces={2}
@@ -540,7 +540,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       ]
     }
   >
-    20 € seront déduits de ton crédit pass Culture
+    20 € seront déduits de ton crédit pass Culture
   </Text>
 </View>
 `;
@@ -911,7 +911,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
         ]
       }
     >
-      20 €
+      20 €
     </Text>
     <View
       numberOfSpaces={2}
@@ -1085,7 +1085,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       ]
     }
   >
-    20 € seront déduits de ton crédit pass Culture
+    20 € seront déduits de ton crédit pass Culture
   </Text>
 </View>
 `;

@@ -95,7 +95,7 @@ Object {
                 dir="auto"
                 style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
-                24€
+                24 €
               </div>
             </div>
           </div>
@@ -194,7 +194,7 @@ Object {
               dir="auto"
               style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
             >
-              24€
+              24 €
             </div>
           </div>
         </div>
