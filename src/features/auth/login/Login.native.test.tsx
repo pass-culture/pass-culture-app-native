@@ -18,6 +18,16 @@ import { Login } from './Login'
 
 jest.mock('react-query')
 jest.mock('features/navigation/helpers')
+const mockSearchDispatch = jest.fn()
+const mockStagedSearchDispatch = jest.fn()
+const mockIdentityCheckDispatch = jest.fn()
+jest.mock('features/search/pages/SearchWrapper', () => ({
+  useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),
+  useStagedSearch: jest.fn(() => ({ dispatch: mockStagedSearchDispatch })),
+}))
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
+}))
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
@@ -53,6 +63,9 @@ describe('<Login/>', () => {
       expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
       expect(analytics.setUserId).toHaveBeenCalledWith(111)
       expect(navigateToHome).toBeCalledTimes(1)
+      expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+      expect(mockStagedSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+      expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
     })
   })
 
