@@ -11,7 +11,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="background-color: rgb(235, 0, 85); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; height: 32px; position: absolute; width: 32px; z-index: 2;"
+          style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; height: 32px; justify-content: center; position: absolute; width: 32px; z-index: 2;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -46,7 +46,7 @@ Object {
     >
       <div
         class="css-view-1dbjc4n"
-        style="background-color: rgb(235, 0, 85); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; height: 32px; position: absolute; width: 32px; z-index: 2;"
+        style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; height: 32px; justify-content: center; position: absolute; width: 32px; z-index: 2;"
       >
         <div
           class="css-view-1dbjc4n"
