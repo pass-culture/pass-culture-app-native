@@ -4,8 +4,8 @@ import React from 'react'
 import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
-import { api } from 'api/api'
 import { extractApiErrorMessage } from 'api/apiHelpers'
+import { useUserProfileInfo } from 'features/home/api'
 import { usePostHonorStatement } from 'features/identityCheck/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { Declaration } from 'features/identityCheck/atoms/Declaration'
@@ -23,13 +23,13 @@ export const IdentityCheckHonor = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const queryClient = useQueryClient()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { refetch } = useUserProfileInfo()
 
   const { mutate: postHonorStatement, isLoading } = usePostHonorStatement({
     onSuccess: () => {
-      queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
-      api
-        .getnativev1me()
-        .then((userProfile) => {
+      queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
+      refetch()
+        .then(({ data: userProfile }) => {
           if (userProfile?.domainsCredit?.all?.initial) {
             navigate('UnderageAccountCreated')
           } else {
