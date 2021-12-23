@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.3
 
 ###################
 #  EXECUTORS
@@ -233,6 +235,13 @@ commands:
       - run:
           name: Invalidate cache
           command: gcloud compute url-maps invalidate-cdn-cache << parameters.url_map_name >> --path "/*"
+  
+  copy-sonarcloud-properties:
+    description: Copy sonarcloud sonar-project.properties
+    steps:
+      - run: |
+          mkdir -p /tmp/cache/scanner/sonar-scanner-4.6.2.2472-linux/conf
+          cp sonar-scanner.properties /tmp/cache/scanner/sonar-scanner-4.6.2.2472-linux/conf/sonar-scanner.properties
 
 ###################
 #  JOBS
@@ -598,6 +607,15 @@ jobs:
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
 
+  sonarcloud-test:
+    docker:
+      - image: 'circleci/python:3.7.4'
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      # - copy-sonarcloud-properties
+      - sonarcloud/scan
+
 ###################
 #  WORKFLOWS
 ###################
@@ -616,6 +634,14 @@ workflows:
       - test-native:
           requires:
             - checkout-and-install-deps
+      - sonarcloud-test:
+          filters:
+            branches:
+              only:
+                - sonarcloud
+          requires:
+            - checkout-and-install-deps
+          context: sonarcloud
       - test-web:
           requires:
             - checkout-and-install-deps

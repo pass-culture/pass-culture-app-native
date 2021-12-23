@@ -75,7 +75,7 @@ export const safeFetch = async (
   const tokenContent = decodeAccessToken(token)
 
   if (!tokenContent) {
-    return Promise.reject(navigateToLogin())
+    navigateToLogin()
   }
 
   if (tokenContent.exp * 1000 <= new Date().getTime()) {
@@ -90,7 +90,7 @@ export const safeFetch = async (
         },
       }
     } catch (error) {
-      return Promise.reject(navigateToLogin())
+      navigateToLogin()
     }
   }
 
