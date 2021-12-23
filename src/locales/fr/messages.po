@@ -3022,7 +3022,7 @@ msgstr "Bonjour {name}"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
 msgid "id check explanation"
-msgstr "Tu pourras bénéficier des {deposit} offerts par le Ministère de la Culture dès que tu auras vérifié ton identité"
+msgstr "Tu pourras bénéficier des {deposit} offerts par le Gouvernement dès que tu auras vérifié ton identité"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "interprète"
