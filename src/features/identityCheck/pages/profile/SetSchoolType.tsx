@@ -8,7 +8,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import {
   getSchoolTypesIdsFromActivity,
-  mapSchoolTypeIdToLabel,
+  mapSchoolTypeIdToLabelAndDescription,
 } from 'features/identityCheck/pages/profile/utils'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { useProfileOptions } from 'features/identityCheck/utils/useProfileOptions'
@@ -49,12 +49,16 @@ export const SetSchoolType = () => {
         <React.Fragment>
           {hasData &&
             activitySchoolTypes.map((schoolTypeId) => {
-              const schoolLabel = mapSchoolTypeIdToLabel(schoolTypeId, schoolTypes) as string
+              const { label, description } = mapSchoolTypeIdToLabelAndDescription(
+                schoolTypeId,
+                schoolTypes
+              )
               return (
                 <RadioButton
                   key={schoolTypeId}
                   selected={schoolTypeId === selectedSchoolTypeId}
-                  name={schoolLabel}
+                  name={label as string}
+                  description={description}
                   onPress={() => setSelectedSchoolTypeId(schoolTypeId)}
                 />
               )

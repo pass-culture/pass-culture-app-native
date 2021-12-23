@@ -3,17 +3,23 @@ import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/m
 import {
   activityHasSchoolTypes,
   getSchoolTypesIdsFromActivity,
-  mapSchoolTypeIdToLabel,
+  mapSchoolTypeIdToLabelAndDescription,
 } from 'features/identityCheck/pages/profile/utils'
 
 const schoolTypes = SchoolTypesSnap.school_types
 const activities = SchoolTypesSnap.activities
 
 describe('mapSchoolTypeIdToLabel', () => {
-  it('should return the associated label', () => {
-    expect(mapSchoolTypeIdToLabel(SchoolTypesIdEnum.AGRICULTURALHIGHSCHOOL, schoolTypes)).toEqual(
-      'Lycée agricole'
-    )
+  it('should return the associated label and description', () => {
+    expect(
+      mapSchoolTypeIdToLabelAndDescription(SchoolTypesIdEnum.AGRICULTURALHIGHSCHOOL, schoolTypes)
+    ).toEqual({ description: null, label: 'Lycée agricole' })
+    expect(
+      mapSchoolTypeIdToLabelAndDescription(SchoolTypesIdEnum.HOMEORREMOTESCHOOLING, schoolTypes)
+    ).toEqual({
+      description: 'À domicile, CNED, institut de santé, etc.',
+      label: 'Accompagnement spécialisé',
+    })
   })
 })
 
