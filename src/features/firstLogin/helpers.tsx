@@ -73,9 +73,9 @@ export function withCulturalSurveyProvider(
 
 function useOnCulturalSurveyExit() {
   const queryClient = useQueryClient()
-  return function (userId: string | null, userPk: string) {
+  return async function (userId: string | null, userPk: string) {
     try {
-      api.postnativev1meculturalSurvey({
+      await api.postnativev1meculturalSurvey({
         culturalSurveyId: userId,
         needsToFillCulturalSurvey: false,
       })
