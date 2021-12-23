@@ -58,7 +58,7 @@ export const getUniqueSortedTimestamps = (timestamps: number[] | undefined): num
   if (!timestamps || timestamps.length === 0) return []
   const uniqueTimestamps = Array.from(new Set(timestamps))
   const futureTimestamps = uniqueTimestamps.filter((timestamp) => timestamp >= new Date().valueOf())
-  return futureTimestamps.sort()
+  return futureTimestamps.sort((a, b) => a - b)
 }
 
 /**
