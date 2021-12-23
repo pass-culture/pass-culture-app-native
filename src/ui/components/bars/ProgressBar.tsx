@@ -12,7 +12,6 @@ interface ProgressBarProps {
   color: ColorsEnum | UniqueColors
   icon: FunctionComponent<IconInterface>
   isAnimated?: boolean
-  iconSize?: number
 }
 
 const ProgressBarComponent: React.FC<ProgressBarProps> = ({
@@ -20,7 +19,6 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({
   progress,
   icon: Icon,
   isAnimated = false,
-  iconSize = 32,
 }) => {
   const barRef = useRef<Animatable.View & View>(null)
   const [barWidth, setBarWidth] = useState(0)
@@ -48,7 +46,7 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({
   return (
     <Container>
       <IconContainer backgroundColor={color}>
-        <Icon color={ColorsEnum.WHITE} testID="progress-bar-icon" size={iconSize} />
+        <Icon color={ColorsEnum.WHITE} testID="progress-bar-icon" size={20} />
       </IconContainer>
       <ProgressBarContainer>
         <Bar

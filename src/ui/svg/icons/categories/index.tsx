@@ -12,6 +12,7 @@ import { Spectacles } from './Spectacles'
 import { Streaming } from './Streaming'
 import { VideoGames } from './VideoGames'
 
+// TODO(anoukhello) update default icon size in ClippedImage component to fit mockup once we update category icons
 export const Category = {
   ArtsMaterial: ArtsMaterial,
   Atelier: Atelier,

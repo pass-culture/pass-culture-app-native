@@ -31,9 +31,9 @@ exports[`ProgressBar should render properly 1`] = `
     }
   >
     <View
-      height={32}
+      height={20}
       testID="progress-bar-icon"
-      width={32}
+      width={20}
     >
       <Text>
         progress-bar-icon-SVG-Mock
