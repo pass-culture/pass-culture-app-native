@@ -6,12 +6,12 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
-import { beneficiaryUser, nonBeneficaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { act, fireEvent, render, useMutationFactory } from 'tests/utils'
 
 jest.mock('react-query')
 
-let mockUserProfile: UserProfileResponse = nonBeneficaryUser
+let mockUserProfile: UserProfileResponse = nonBeneficiaryUser
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
     refetch: jest.fn(() =>

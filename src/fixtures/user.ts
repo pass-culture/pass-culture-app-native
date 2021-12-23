@@ -1,6 +1,6 @@
 import { UserProfileResponse, UserRole } from 'api/gen'
 
-export const nonBeneficaryUser: UserProfileResponse = {
+export const nonBeneficiaryUser: UserProfileResponse = {
   bookedOffers: {},
   domainsCredit: {
     all: { initial: 0, remaining: 0 },
@@ -22,7 +22,7 @@ export const nonBeneficaryUser: UserProfileResponse = {
 }
 
 export const beneficiaryUser: UserProfileResponse = {
-  ...nonBeneficaryUser,
+  ...nonBeneficiaryUser,
   domainsCredit: {
     all: { initial: 30000, remaining: 25000 },
     physical: { initial: 30000, remaining: 10000 },
