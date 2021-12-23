@@ -69,6 +69,7 @@ export function ClippedImage(props: ClippedImageProps) {
 }
 
 const Container = styled.View({
+  borderRadius: 4,
   ...getShadow({
     shadowOffset: {
       width: 0,

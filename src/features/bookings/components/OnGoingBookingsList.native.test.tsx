@@ -1,12 +1,16 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromises, render, act } from 'tests/utils'
+import { flushAllPromises, render } from 'tests/utils'
 
-import { bookingsSnap } from '../api/bookingsSnap'
+import { bookingsSnap as mockBookings } from '../api/bookingsSnap'
 
 import { OnGoingBookingsList } from './OnGoingBookingsList'
+
+jest.mock('react-query')
+jest.mock('features/bookings/api/queries', () => ({
+  useBookings: jest.fn(() => ({ data: mockBookings })),
+}))
 
 describe('<OnGoingBookingsList /> - Analytics', () => {
   const nativeEventMiddle = {
@@ -20,60 +24,31 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
     contentSize: { height: 1600 },
   }
 
-  it('should trigger logEvent "BookingsScrolledToBottom" when reaching the end', async () => {
-    const { getByTestId } = await renderBookings()
+  it('should trigger logEvent "BookingsScrolledToBottom" when reaching the end', () => {
+    const { getByTestId } = render(<OnGoingBookingsList />)
     const flatList = getByTestId('OnGoingBookingsList')
-    await act(async () => {
-      await flushAllPromises()
-    })
 
-    await act(async () => {
-      await flatList.props.onScroll({ nativeEvent: nativeEventMiddle })
-    })
+    flatList.props.onScroll({ nativeEvent: nativeEventMiddle })
     expect(analytics.logBookingsScrolledToBottom).not.toHaveBeenCalled()
 
-    await act(async () => {
-      await flatList.props.onScroll({ nativeEvent: nativeEventBottom })
-    })
+    flatList.props.onScroll({ nativeEvent: nativeEventBottom })
 
     expect(analytics.logBookingsScrolledToBottom).toHaveBeenCalledTimes(1)
   })
 
-  it('should trigger logEvent "BookingsScrolledToBottom" only once', async () => {
-    const { getByTestId } = await renderBookings()
+  it('should trigger logEvent "BookingsScrolledToBottom" only once', () => {
+    const { getByTestId } = render(<OnGoingBookingsList />)
     const flatList = getByTestId('OnGoingBookingsList')
 
-    await act(async () => {
-      await flushAllPromises()
-    })
-
-    await act(async () => {
-      // 1st scroll to bottom => trigger
-      await flatList.props.onScroll({ nativeEvent: nativeEventBottom })
-      await flushAllPromises()
-    })
+    // 1st scroll to bottom => trigger
+    flatList.props.onScroll({ nativeEvent: nativeEventBottom })
     expect(analytics.logBookingsScrolledToBottom).toHaveBeenCalledTimes(1)
 
-    await act(async () => {
-      // 2nd scroll to bottom => NOT trigger
-      await flatList.props.onScroll({ nativeEvent: nativeEventMiddle })
-      await flatList.props.onScroll({ nativeEvent: nativeEventBottom })
-      await flushAllPromises()
-    })
+    // 2nd scroll to bottom => NOT trigger
+    flatList.props.onScroll({ nativeEvent: nativeEventMiddle })
+    flatList.props.onScroll({ nativeEvent: nativeEventBottom })
+    flushAllPromises()
 
     expect(analytics.logBookingsScrolledToBottom).toHaveBeenCalledTimes(1)
   })
 })
-
-async function renderBookings() {
-  const renderAPI = render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(
-      <OnGoingBookingsList
-        bookings={bookingsSnap.ongoing_bookings}
-        endedBookings={bookingsSnap.ended_bookings}
-      />
-    )
-  )
-  return renderAPI
-}

@@ -11,6 +11,7 @@ interface DimensionProps {
   height: number
   width: number
   borderRadius: number
+  fullWidth?: boolean
 }
 
 const useWaveAnimation = (width: number) => {
@@ -43,11 +44,15 @@ const colors = [
   UniqueColors.BACKGROUND_COLOR,
 ]
 
-export const SkeletonTile: React.FC<DimensionProps> = ({ width, height, borderRadius }) => {
+export function SkeletonTile({ width, height, borderRadius, fullWidth }: DimensionProps) {
   const translateX = useWaveAnimation(width)
 
   return (
-    <BackgroundContainer height={height} width={width} borderRadius={borderRadius}>
+    <BackgroundContainer
+      height={height}
+      width={width}
+      borderRadius={borderRadius}
+      fullWidth={fullWidth}>
       <AnimatedLinearGradient
         start={start}
         end={end}
@@ -62,10 +67,12 @@ export const SkeletonTile: React.FC<DimensionProps> = ({ width, height, borderRa
   )
 }
 
-const BackgroundContainer = styled.View<DimensionProps>(({ height, width, borderRadius }) => ({
-  borderRadius,
-  height,
-  width,
-  overflow: 'hidden',
-  backgroundColor: UniqueColors.BACKGROUND_COLOR,
-}))
+const BackgroundContainer = styled.View<DimensionProps>(
+  ({ height, width, borderRadius, fullWidth }) => ({
+    borderRadius,
+    height,
+    width: fullWidth ? '100%' : width,
+    overflow: 'hidden',
+    backgroundColor: UniqueColors.BACKGROUND_COLOR,
+  })
+)
