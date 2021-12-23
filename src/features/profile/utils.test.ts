@@ -3,7 +3,7 @@ import { openInbox } from 'react-native-email-link'
 import { UserProfileResponse } from 'api/gen'
 import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { openUrl, isAppUrl } from 'features/navigation/helpers'
-import { beneficiaryUser, nonBeneficaryUser, underageBeneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Info } from 'ui/svg/icons/Info'
 
@@ -58,8 +58,8 @@ describe('profile utils', () => {
   describe('Compute is user Ex-beneficiary', () => {
     it.each`
       user                       | isCreditExpired | expected
-      ${nonBeneficaryUser}       | ${false}        | ${false}
-      ${nonBeneficaryUser}       | ${true}         | ${false}
+      ${nonBeneficiaryUser}      | ${false}        | ${false}
+      ${nonBeneficiaryUser}      | ${true}         | ${false}
       ${beneficiaryUser}         | ${false}        | ${false}
       ${beneficiaryUser}         | ${true}         | ${true}
       ${underageBeneficiaryUser} | ${false}        | ${false}

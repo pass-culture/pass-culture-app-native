@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { AuthContext } from 'features/auth/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useUserProfileInfo } from 'features/home/api'
-import { nonBeneficaryUser } from 'fixtures/user'
+import { nonBeneficiaryUser } from 'fixtures/user'
 import { act, fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -40,7 +40,7 @@ describe('<EighteenBirthdayCard />', () => {
 
   it('should navigate to nextBeneficiaryValidationStep on press "Vérifier mon identité"', async () => {
     const setError = jest.fn()
-    mockedUseUserProfileInfo.mockReturnValueOnce({ data: nonBeneficaryUser })
+    mockedUseUserProfileInfo.mockReturnValueOnce({ data: nonBeneficiaryUser })
     const {
       navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
     } = useBeneficiaryValidationNavigation(setError)

@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 import { useMutation } from 'react-query'
 import { mocked } from 'ts-jest/utils'
@@ -7,11 +6,21 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
-import { env } from 'libs/environment'
-import { server } from 'tests/server'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { act, fireEvent, render, useMutationFactory } from 'tests/utils'
 
 jest.mock('react-query')
+
+let mockUserProfile: UserProfileResponse = nonBeneficiaryUser
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({
+    refetch: jest.fn(() =>
+      Promise.resolve({
+        data: mockUserProfile,
+      })
+    ),
+  })),
+}))
 
 const mockNavigateToNextScreen = jest.fn()
 jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
@@ -25,18 +34,10 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
   onError: () => {},
 }
 
-function mockUserProfile(response: UserProfileResponse) {
-  server.use(
-    rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(response))
-    })
-  )
-}
-
 describe('<IdentityCheckHonor/>', () => {
   beforeEach(() => {
     // @ts-expect-error ts(2345)
-    return mockedUseMutation.mockImplementation(useMutationFactory(useMutationCallbacks))
+    mockedUseMutation.mockImplementation(useMutationFactory(useMutationCallbacks))
   })
 
   it('should render correctly', () => {
@@ -44,11 +45,7 @@ describe('<IdentityCheckHonor/>', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should navigate to next screen on postHonorStatement request success', async () => {
-    mockUserProfile({
-      domainsCredit: null,
-    } as UserProfileResponse)
-
+  it('should navigate to next screen on postHonorStatement request success if user is not beneficiary yet', async () => {
     const renderAPI = render(<IdentityCheckHonor />)
 
     const button = renderAPI.getByTestId('Valider et continuer')
@@ -62,14 +59,8 @@ describe('<IdentityCheckHonor/>', () => {
     })
   })
 
-  it('should navigate to UnderageAccountCreated on postHonorStatement request success', async () => {
-    mockUserProfile({
-      domainsCredit: {
-        all: {
-          initial: 3000,
-        },
-      },
-    } as UserProfileResponse)
+  it('should navigate to UnderageAccountCreated on postHonorStatement request success if user is beneficiary', async () => {
+    mockUserProfile = beneficiaryUser
 
     const renderAPI = render(<IdentityCheckHonor />)
 
