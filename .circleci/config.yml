@@ -271,8 +271,7 @@ jobs:
       - run:
           name: Unit Tests Native
           command: yarn test:unit:ci
-      - store_artifacts:
-          path: coverage
+      - sonarcloud/scan
 
   test-web:
     executor: node
@@ -602,14 +601,6 @@ jobs:
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
 
-  quality:
-    executor: node
-    working_directory: ~/pass-culture
-    steps:
-      - checkout
-      - install_node_modules
-      - sonarcloud/scan
-
 ###################
 #  WORKFLOWS
 ###################
@@ -628,6 +619,7 @@ workflows:
       - test-native:
           requires:
             - checkout-and-install-deps
+          context: SonarCloud
       - test-web:
           requires:
             - checkout-and-install-deps
@@ -812,7 +804,3 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-web
-      - quality:
-          context: SonarCloud
-          requires:
-            - test-native
