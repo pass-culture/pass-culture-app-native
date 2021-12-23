@@ -233,7 +233,7 @@ commands:
       - run:
           name: Invalidate cache
           command: gcloud compute url-maps invalidate-cdn-cache << parameters.url_map_name >> --path "/*"
-
+  
 ###################
 #  JOBS
 ###################
