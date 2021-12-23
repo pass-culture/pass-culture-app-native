@@ -64,7 +64,7 @@ export const SelectSchool = withEduConnectErrorBoundary(() => {
         {Object.keys(eligibleSchools).map((academy) => (
           <React.Fragment key={academy}>
             <Divider />
-            <AccordionItem title={t`Académie de` + '\u00a0' + academy}>
+            <AccordionItem title={t`Académie de\u00a0${academy}`}>
               {eligibleSchools[academy].map((item) => renderItem(item, academy))}
             </AccordionItem>
           </React.Fragment>
