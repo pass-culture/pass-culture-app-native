@@ -102,7 +102,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
       return (
         <InputError
           visible
-          messageId={t`Tu dois avoir` + '\u00a0' + youngestAge + '\u00a0' + t`ans pour t'inscrire`}
+          messageId={t`Tu dois avoir\u00a0${youngestAge}\u00a0ans pour t'inscrire`}
           numberOfSpacesTop={5}
         />
       )

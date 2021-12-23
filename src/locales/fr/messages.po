@@ -92,8 +92,8 @@ msgid "Abandonner la vérification"
 msgstr "Abandonner la vérification"
 
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
-msgid "Académie de"
-msgstr "Académie de"
+msgid "Académie de {academy}"
+msgstr "Académie de {academy}"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Accepter et s’inscrire"
@@ -1330,8 +1330,8 @@ msgid "La réservation a bien été archivée. Tu pourras la retrouver dans tes 
 msgstr "La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées"
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
-msgid "La réservation est annulable jusqu'au"
-msgstr "La réservation est annulable jusqu'au"
+msgid "La réservation est annulable jusqu'au {formattedConfirmationDate}"
+msgstr "La réservation est annulable jusqu'au {formattedConfirmationDate}"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
 msgid "La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure."
@@ -2528,8 +2528,8 @@ msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Dé
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Tu dois avoir"
-msgstr "Tu dois avoir"
+msgid "Tu dois avoir {youngestAge} ans pour t'inscrire"
+msgstr "Tu dois avoir {youngestAge} ans pour t'inscrire"
 
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
@@ -2560,8 +2560,8 @@ msgid "Tu ne fais pas partie de la phase de test"
 msgstr "Tu ne fais pas partie de la phase de test"
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
-msgid "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le"
-msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le"
+msgid "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
+msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
 
 #: src/features/bookings/components/NoBookingsView.tsx
 msgid ""
@@ -2913,10 +2913,6 @@ msgstr "À activer avant le {date}"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "ans pour t'inscrire"
-msgstr "ans pour t'inscrire"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "auteur"

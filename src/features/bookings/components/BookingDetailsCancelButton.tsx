@@ -57,7 +57,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
           {renderButton}
           <Spacer.Column numberOfSpaces={4} />
           <CancellationCaption>
-            {t`La réservation est annulable jusqu'au` + '\u00a0' + formattedConfirmationDate}
+            {t`La réservation est annulable jusqu'au\u00a0${formattedConfirmationDate}`}
           </CancellationCaption>
         </React.Fragment>
       )
@@ -75,9 +75,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
     } else {
       return (
         <CancellationCaption>
-          {t`Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le` +
-            '\u00a0' +
-            formattedConfirmationDate}
+          {t`Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le\u00a0${formattedConfirmationDate}`}
         </CancellationCaption>
       )
     }
