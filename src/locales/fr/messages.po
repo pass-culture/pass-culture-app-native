@@ -748,6 +748,10 @@ msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train d
 msgid "Duo"
 msgstr "Duo"
 
+#: src/libs/parsers/getDisplayPrice.ts
+msgid "Dès {0}"
+msgstr "Dès {0}"
+
 #: src/features/profile/pages/Profile.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Déconnexion"
@@ -2861,8 +2865,8 @@ msgid "Vous êtes actuellement très nombreux à vouloir créer un compte, notre
 msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
-msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
-msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
+msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300 €. Tu recevras une alerte par mail pour commencer ta demande des 300 € dès que le service sera de nouveau disponible !"
+msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300 €. Tu recevras une alerte par mail pour commencer ta demande des 300 € dès que le service sera de nouveau disponible !"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Vérification d'identité"
@@ -3184,9 +3188,17 @@ msgstr "À retirer avant le {dateLimit}"
 msgid "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
 msgstr "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
 
+#: src/libs/parsers/getDisplayPrice.ts
+msgid "{0} {EURO_SYMBOL}"
+msgstr "{0} {EURO_SYMBOL}"
+
 #: src/features/bookings/pages/EndedBookings.tsx
 msgid "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
 msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
+
+#: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
+msgid "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"
+msgstr "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"
 
 #: src/features/favorites/atoms/NumberOfResults.tsx
 msgid "{nbFavorites, plural, one {# favori} other {# favoris}}"
@@ -3227,7 +3239,3 @@ msgstr "à portée de main !"
 #: src/features/bookOffer/atoms/HourChoice.tsx
 msgid "épuisé"
 msgstr "épuisé"
-
-#: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
-msgid "€ viennent d'être crédités sur ton compte pass Culture"
-msgstr "€ viennent d'être crédités sur ton compte pass Culture"

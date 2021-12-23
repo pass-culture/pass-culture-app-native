@@ -138,17 +138,17 @@ describe('<OfferIconCaptions />', () => {
 
   it.each`
     stocks                      | isDuo    | isBeneficiary | expectedDisplayedPrice
-    ${sevenEurosBookableStocks} | ${false} | ${true}       | ${'7 €'}
-    ${sevenEurosBookableStocks} | ${true}  | ${true}       | ${'7 € / place'}
-    ${sevenEurosBookableStocks} | ${true}  | ${false}      | ${'7 €'}
+    ${sevenEurosBookableStocks} | ${false} | ${true}       | ${'7\u00a0€'}
+    ${sevenEurosBookableStocks} | ${true}  | ${true}       | ${'7\u00a0€ / place'}
+    ${sevenEurosBookableStocks} | ${true}  | ${false}      | ${'7\u00a0€'}
     ${freeBookableStocks}       | ${false} | ${true}       | ${'Gratuit'}
     ${freeBookableStocks}       | ${true}  | ${true}       | ${'Gratuit'}
     ${freeBookableStocks}       | ${true}  | ${false}      | ${'Gratuit'}
     ${noPrice}                  | ${false} | ${true}       | ${''}
     ${noPrice}                  | ${true}  | ${true}       | ${''}
     ${noPrice}                  | ${true}  | ${false}      | ${''}
-    ${severalStocks}            | ${true}  | ${false}      | ${'7 €'}
-    ${noBookableStocks}         | ${true}  | ${false}      | ${'Dès 7 €'}
+    ${severalStocks}            | ${true}  | ${false}      | ${'7\u00a0€'}
+    ${noBookableStocks}         | ${true}  | ${false}      | ${'Dès 7\u00a0€'}
   `('should show right price', async ({ stocks, isDuo, isBeneficiary, expectedDisplayedPrice }) => {
     const component = await renderOfferIconCaptions({ isDuo, stocks, isBeneficiary })
     await waitForExpect(() => {

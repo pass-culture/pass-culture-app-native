@@ -166,7 +166,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
           }
         }
       >
-        Il te reste encore 20 € à dépenser sur le pass !
+        Il te reste encore 20 € à dépenser sur le pass !
       </div>
       <div
         className="css-view-1dbjc4n"

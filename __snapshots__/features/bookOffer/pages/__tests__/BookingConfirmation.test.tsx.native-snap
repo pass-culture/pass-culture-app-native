@@ -125,7 +125,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
           ]
         }
       >
-        Il te reste encore 20 € à dépenser sur le pass !
+        Il te reste encore 20 € à dépenser sur le pass !
       </Text>
       <View
         numberOfSpaces={4}

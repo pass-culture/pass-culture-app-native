@@ -114,7 +114,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
       ]
     }
   >
-    Tu pourras bénéficier des 300€ offerts par le Gouvernement dès que tu auras vérifié ton identité
+    Tu pourras bénéficier des 300 € offerts par le Gouvernement dès que tu auras vérifié ton identité
   </Text>
   <View
     flex={2}

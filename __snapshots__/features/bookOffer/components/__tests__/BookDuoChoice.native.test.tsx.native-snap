@@ -156,7 +156,7 @@ Array [
             }
             testID="DuoChoice1-price"
           >
-            20€
+            20 €
           </Text>
         </View>
       </View>
@@ -268,7 +268,7 @@ Array [
             }
             testID="DuoChoice2-price"
           >
-            40€
+            40 €
           </Text>
         </View>
       </View>

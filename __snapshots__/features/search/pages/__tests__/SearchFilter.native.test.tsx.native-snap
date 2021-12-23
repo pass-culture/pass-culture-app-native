@@ -1794,7 +1794,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               ]
             }
           >
-            0 € - 300 €
+            0 € - 300 €
           </Text>
           <View
             numberOfSpaces={4}

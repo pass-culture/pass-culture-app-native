@@ -472,7 +472,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
           testID="caption-iconPrice"
         >
-          Dès 24 € / place
+          Dès 24 € / place
         </Text>
       </View>
       <View

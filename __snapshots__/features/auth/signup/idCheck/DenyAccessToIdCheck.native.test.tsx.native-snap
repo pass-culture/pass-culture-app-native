@@ -326,7 +326,7 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
                   ]
                 }
               >
-                Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !
+                Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300 €. Tu recevras une alerte par mail pour commencer ta demande des 300 € dès que le service sera de nouveau disponible !
               </Text>
             </Text>
             <View

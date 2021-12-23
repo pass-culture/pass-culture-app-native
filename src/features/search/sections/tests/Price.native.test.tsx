@@ -25,9 +25,9 @@ describe('Price component', () => {
     mockedUseMaxPrice.mockImplementation(() => 300)
   })
   it('should render initial price range correctly', () => {
-    expect(render(<Price />).queryByText('0 € - 300 €')).toBeTruthy()
+    expect(render(<Price />).queryByText('0\u00a0€ - 300\u00a0€')).toBeTruthy()
     mockSearchState = { ...initialSearchState, priceRange: [20, 200] }
-    expect(render(<Price />).queryByText('20 € - 200 €')).toBeTruthy()
+    expect(render(<Price />).queryByText('20\u00a0€ - 200\u00a0€')).toBeTruthy()
   })
   it('should dispatch PRICE_RANGE onPress', () => {
     const { getByTestId } = render(<Price />)
@@ -95,12 +95,12 @@ describe('Price component for underage', () => {
   })
 
   it('should render initial price correctly', () => {
-    expect(render(<Price />).queryByText(`0 € - ${maxPrice} €`)).toBeTruthy()
+    expect(render(<Price />).queryByText(`0\u00a0€ - ${maxPrice}\u00a0€`)).toBeTruthy()
   })
 
   it('should render the price correctly when the max price is changed', () => {
     mockSearchState = { ...initialSearchState, priceRange: [0, 49] }
-    expect(render(<Price />).queryByText(`0 € - 49 €`)).toBeTruthy()
+    expect(render(<Price />).queryByText(`0\u00a0€ - 49\u00a0€`)).toBeTruthy()
   })
 
   it('should NOT have the indicator when the price range is untouched', () => {

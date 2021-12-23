@@ -115,7 +115,7 @@ Array [
         ]
       }
     >
-      0,22 €
+      0,22 €
     </Text>
     <View
       numberOfSpaces={2}
@@ -717,7 +717,7 @@ Array [
         ]
       }
     >
-      0,22 €
+      0,22 €
     </Text>
     <View
       numberOfSpaces={2}
@@ -1018,7 +1018,7 @@ Array [
         ]
       }
     >
-      0,11 €
+      0,11 €
     </Text>
     <View
       numberOfSpaces={2}
@@ -1465,7 +1465,7 @@ Array [
         ]
       }
     >
-      0,22 €
+      0,22 €
     </Text>
     <View
       numberOfSpaces={2}
@@ -1490,7 +1490,7 @@ Array [
         ]
       }
     >
-      (0,11 € x 2 places)
+      (0,11 € x 2 places)
     </Text>
   </View>,
 ]
