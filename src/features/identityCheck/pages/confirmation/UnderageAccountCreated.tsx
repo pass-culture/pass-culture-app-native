@@ -34,7 +34,6 @@ export function UnderageAccountCreated() {
           progress={1}
           color={UniqueColors.BRAND}
           icon={CategoryIcon.Spectacles}
-          iconSize={20}
           isAnimated
         />
         <Amount color={UniqueColors.BRAND}>{formatPriceInEuroToDisplayPrice(maxPrice)}</Amount>
