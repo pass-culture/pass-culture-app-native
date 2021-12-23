@@ -46,9 +46,9 @@ describe('<IdentityCheckHonor/>', () => {
   })
 
   it('should navigate to next screen on postHonorStatement request success if user is not beneficiary yet', async () => {
-    const renderAPI = render(<IdentityCheckHonor />)
+    const { getByText } = render(<IdentityCheckHonor />)
 
-    const button = renderAPI.getByTestId('Valider et continuer')
+    const button = getByText('Valider et continuer')
     fireEvent.press(button)
 
     await act(async () => {
@@ -62,9 +62,9 @@ describe('<IdentityCheckHonor/>', () => {
   it('should navigate to UnderageAccountCreated on postHonorStatement request success if user is beneficiary', async () => {
     mockUserProfile = beneficiaryUser
 
-    const renderAPI = render(<IdentityCheckHonor />)
+    const { getByText } = render(<IdentityCheckHonor />)
 
-    const button = renderAPI.getByTestId('Valider et continuer')
+    const button = getByText('Valider et continuer')
     fireEvent.press(button)
 
     await act(async () => {
