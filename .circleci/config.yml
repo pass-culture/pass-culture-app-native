@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.3
 
 ###################
 #  EXECUTORS
@@ -269,6 +271,7 @@ jobs:
       - run:
           name: Unit Tests Native
           command: yarn test:unit:ci
+      - sonarcloud/scan
 
   test-web:
     executor: node
@@ -616,6 +619,7 @@ workflows:
       - test-native:
           requires:
             - checkout-and-install-deps
+          context: SonarCloud
       - test-web:
           requires:
             - checkout-and-install-deps
