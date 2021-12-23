@@ -29,7 +29,7 @@ export const storage = {
 
 async function readString(storageKey: StorageKey): Promise<string | null> {
   try {
-    return AsyncStorage.getItem(storageKey)
+    return await AsyncStorage.getItem(storageKey)
   } catch (error) {
     if (error instanceof Error) onAsyncStorageError(error)
     return null
@@ -38,7 +38,7 @@ async function readString(storageKey: StorageKey): Promise<string | null> {
 
 async function readMultiString(storageKeys: StorageKey[]): Promise<[string, string | null][]> {
   try {
-    return AsyncStorage.multiGet(storageKeys)
+    return await AsyncStorage.multiGet(storageKeys)
   } catch (error) {
     if (error instanceof Error) onAsyncStorageError(error)
     return []
