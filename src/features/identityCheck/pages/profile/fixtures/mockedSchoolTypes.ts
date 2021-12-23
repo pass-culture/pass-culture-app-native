@@ -70,9 +70,14 @@ export const SchoolTypesSnap: ProfileOptionsResponse = {
     },
   ],
   school_types: [
-    { id: SchoolTypesIdEnum.AGRICULTURALHIGHSCHOOL, label: 'Lycée agricole' },
+    { id: SchoolTypesIdEnum.AGRICULTURALHIGHSCHOOL, label: 'Lycée agricole', description: null },
     { id: SchoolTypesIdEnum.APPRENTICEFORMATIONCENTER, label: "Centre de formation d'apprentis" },
     { id: SchoolTypesIdEnum.PRIVATESECONDARYSCHOOL, label: 'Collège privé' },
     { id: SchoolTypesIdEnum.PUBLICSECONDARYSCHOOL, label: 'Collège public' },
+    {
+      id: SchoolTypesIdEnum.HOMEORREMOTESCHOOLING,
+      description: 'À domicile, CNED, institut de santé, etc.',
+      label: 'Accompagnement spécialisé',
+    },
   ],
 }

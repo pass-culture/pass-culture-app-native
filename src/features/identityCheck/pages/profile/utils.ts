@@ -5,12 +5,12 @@ import {
   SchoolTypesIdEnum,
 } from 'api/gen'
 
-export const mapSchoolTypeIdToLabel = (
+export const mapSchoolTypeIdToLabelAndDescription = (
   schoolTypeId: SchoolTypesIdEnum,
   schoolTypes: SchoolTypeResponseModel[]
 ) => {
   const schoolType = schoolTypes?.find((schoolType) => schoolType.id === schoolTypeId)
-  return schoolType?.label
+  return { label: schoolType?.label, description: schoolType?.description }
 }
 
 export const getSchoolTypesIdsFromActivity = (

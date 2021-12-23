@@ -768,7 +768,23 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         "lineHeight": "20px",
                       }
                     }
-                  />
+                  >
+                    Accompagnement spécialisé
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(98,98,98,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    À domicile, CNED, institut de santé, etc.
+                  </div>
                 </div>
               </div>
               <div
@@ -1510,7 +1526,23 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                         "lineHeight": "20px",
                       }
                     }
-                  />
+                  >
+                    Accompagnement spécialisé
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(98,98,98,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    À domicile, CNED, institut de santé, etc.
+                  </div>
                 </div>
               </div>
             </div>
