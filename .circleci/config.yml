@@ -812,8 +812,5 @@ workflows:
             - test-web
       - quality:
           context: SonarCloud
-          filters:
-            branches:
-              only: sonar
           requires:
             - test-native
