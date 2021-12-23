@@ -230,7 +230,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     ]
                   }
                 >
-                  Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité
+                  Tu pourras bénéficier des 300€ offerts par le Gouvernement dès que tu auras vérifié ton identité
                 </Text>
                 <View
                   flex={2}

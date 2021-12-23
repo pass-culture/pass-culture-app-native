@@ -28,7 +28,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
         id: 'id check explanation',
         values: { deposit },
         message:
-          'Tu pourras bénéficier des {deposit} offerts par le Ministère de la Culture dès que tu auras vérifié ton identité',
+          'Tu pourras bénéficier des {deposit} offerts par le Gouvernement dès que tu auras vérifié ton identité',
       })}
       title={t`Bonne nouvelle\u00a0!`}
       swiperRef={props.swiperRef}
