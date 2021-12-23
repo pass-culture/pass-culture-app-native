@@ -47,6 +47,10 @@ export const CalendarPicker: React.FC<Props> = ({
   const { isTouch, fontFamily, colors } = useTheme()
   const calendarTheme: RNCalendarTheme = useMemo(
     () => ({
+      textSectionTitleColor: colors.greyDark,
+      textDisabledColor: colors.greyMedium,
+      todayTextColor: colors.primaryDark,
+      dayTextColor: colors.black,
       selectedDayBackgroundColor: colors.primary,
       textDayHeaderFontSize: 16,
       textDayHeaderFontFamily: fontFamily.bold,
