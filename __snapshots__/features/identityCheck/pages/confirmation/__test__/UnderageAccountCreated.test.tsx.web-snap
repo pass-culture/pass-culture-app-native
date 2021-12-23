@@ -1,0 +1,423 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UnderageAccountCreated/> should render correctly 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitAlignSelf": "center",
+      "WebkitBoxFlex": 1,
+      "WebkitFlexBasis": "0px",
+      "WebkitFlexGrow": 1,
+      "WebkitFlexShrink": 1,
+      "alignSelf": "center",
+      "flexBasis": "0px",
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "maxWidth": "500px",
+      "msFlexItemAlign": "center",
+      "msFlexNegative": 1,
+      "msFlexPositive": 1,
+      "msFlexPreferredSize": "0px",
+      "msGridRowAlign": "center",
+      "paddingLeft": "20px",
+      "paddingRight": "20px",
+    }
+  }
+>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "WebkitBoxFlex": 1,
+        "WebkitBoxPack": "center",
+        "WebkitFlexGrow": 1,
+        "WebkitJustifyContent": "center",
+        "alignItems": "center",
+        "flexGrow": 1,
+        "height": "30%",
+        "justifyContent": "center",
+        "msFlexAlign": "center",
+        "msFlexPack": "center",
+        "msFlexPositive": 1,
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  />
+  <div
+    className="css-text-901oao"
+    dir="auto"
+    style={
+      Object {
+        "color": "rgba(21,21,21,1.00)",
+        "fontFamily": "Montserrat-Black",
+        "fontSize": "24px",
+        "lineHeight": "36px",
+        "textAlign": "center",
+      }
+    }
+  >
+    Bonne nouvelle !
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 0.5,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 0.5,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 0.5,
+        "flexShrink": 1,
+        "msFlexNegative": 1,
+        "msFlexPositive": 0.5,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  />
+  <div
+    className="css-text-901oao"
+    dir="auto"
+    style={
+      Object {
+        "color": "rgba(21,21,21,1.00)",
+        "fontFamily": "Montserrat-Medium",
+        "fontSize": "18px",
+        "lineHeight": "22px",
+        "textAlign": "center",
+      }
+    }
+  >
+    300 € viennent d'être crédités sur ton compte pass Culture
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "16px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "paddingLeft": "40px",
+        "paddingRight": "40px",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
+          "WebkitBoxDirection": "normal",
+          "WebkitBoxOrient": "horizontal",
+          "WebkitFlexDirection": "row",
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": "40px",
+          "maxHeight": "40px",
+          "msFlexAlign": "center",
+          "msFlexDirection": "row",
+        }
+      }
+    >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitAlignItems": "center",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxPack": "center",
+            "WebkitJustifyContent": "center",
+            "alignItems": "center",
+            "backgroundColor": "rgba(135,0,135,1.00)",
+            "borderBottomLeftRadius": "32px",
+            "borderBottomRightRadius": "32px",
+            "borderTopLeftRadius": "32px",
+            "borderTopRightRadius": "32px",
+            "height": "32px",
+            "justifyContent": "center",
+            "msFlexAlign": "center",
+            "msFlexPack": "center",
+            "position": "absolute",
+            "width": "32px",
+            "zIndex": 2,
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+          data-testid="progress-bar-icon"
+        >
+          <div
+            className="css-text-901oao"
+            dir="auto"
+          >
+            progress-bar-icon-SVG-Mock
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxFlex": 1,
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexBasis": "0px",
+            "WebkitFlexDirection": "row",
+            "WebkitFlexGrow": 1,
+            "WebkitFlexShrink": 1,
+            "borderBottomColor": "rgba(199,199,204,1.00)",
+            "borderBottomLeftRadius": "20px",
+            "borderBottomRightRadius": "20px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(199,199,204,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(199,199,204,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(199,199,204,1.00)",
+            "borderTopLeftRadius": "20px",
+            "borderTopRightRadius": "20px",
+            "borderTopWidth": "2px",
+            "flexBasis": "0px",
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "height": "20px",
+            "marginLeft": "20px",
+            "msFlexDirection": "row",
+            "msFlexNegative": 1,
+            "msFlexPositive": 1,
+            "msFlexPreferredSize": "0px",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "position": "relative",
+            "zIndex": 1,
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+          data-testid="progress-bar"
+          id="animatedComponent"
+          style={
+            Object {
+              "WebkitBoxFlex": 1,
+              "WebkitFlexBasis": "0px",
+              "WebkitFlexGrow": 1,
+              "WebkitFlexShrink": 1,
+              "backgroundColor": "rgba(135,0,135,1.00)",
+              "flexBasis": "0px",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "left": "0px",
+              "msFlexNegative": 1,
+              "msFlexPositive": 1,
+              "msFlexPreferredSize": "0px",
+              "opacity": 0,
+              "position": "relative",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="css-text-901oao"
+      dir="auto"
+      style={
+        Object {
+          "color": "rgba(135,0,135,1.00)",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": "22px",
+          "lineHeight": "28px",
+          "textAlign": "center",
+        }
+      }
+    >
+      300 €
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "16px",
+      }
+    }
+  />
+  <div
+    className="css-text-901oao"
+    dir="auto"
+    style={
+      Object {
+        "color": "rgba(21,21,21,1.00)",
+        "fontFamily": "Montserrat-Regular",
+        "fontSize": "15px",
+        "lineHeight": "20px",
+        "textAlign": "center",
+      }
+    }
+  >
+    Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "20px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "alignItems": "center",
+        "msFlexAlign": "center",
+      }
+    }
+  >
+    <div
+      aria-label="Je découvre les offres"
+      className="css-view-1dbjc4n"
+      data-testid="Je découvre les offres"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      style={
+        Object {
+          "MozTransitionProperty": "opacity",
+          "MozUserSelect": "none",
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
+          "WebkitBoxDirection": "normal",
+          "WebkitBoxOrient": "horizontal",
+          "WebkitBoxPack": "center",
+          "WebkitFlexDirection": "row",
+          "WebkitJustifyContent": "center",
+          "WebkitTransitionDuration": "0s",
+          "WebkitTransitionProperty": "opacity",
+          "WebkitUserSelect": "none",
+          "alignItems": "center",
+          "backgroundColor": "rgba(235,0,85,1.00)",
+          "borderBottomLeftRadius": "24px",
+          "borderBottomRightRadius": "24px",
+          "borderBottomWidth": "0px",
+          "borderLeftWidth": "0px",
+          "borderRightWidth": "0px",
+          "borderTopLeftRadius": "24px",
+          "borderTopRightRadius": "24px",
+          "borderTopWidth": "0px",
+          "cursor": "pointer",
+          "flexDirection": "row",
+          "height": "40px",
+          "justifyContent": "center",
+          "maxWidth": "500px",
+          "msFlexAlign": "center",
+          "msFlexDirection": "row",
+          "msFlexPack": "center",
+          "msTouchAction": "manipulation",
+          "msUserSelect": "none",
+          "paddingBottom": "2px",
+          "paddingLeft": "2px",
+          "paddingRight": "2px",
+          "paddingTop": "2px",
+          "touchAction": "manipulation",
+          "transitionDuration": "0s",
+          "transitionProperty": "opacity",
+          "userSelect": "none",
+          "width": "100%",
+        }
+      }
+      tabIndex="0"
+    >
+      <div
+        className="css-text-901oao css-textOneLine-vcwn7f"
+        dir="auto"
+        style={
+          Object {
+            "color": "rgba(255,255,255,1.00)",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": "15px",
+            "lineHeight": "20px",
+            "marginLeft": "0px",
+            "maxWidth": "100%",
+          }
+        }
+      >
+        Je découvre les offres
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 2,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 2,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 2,
+        "flexShrink": 1,
+        "msFlexNegative": 1,
+        "msFlexPositive": 2,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  />
+</div>
+`;

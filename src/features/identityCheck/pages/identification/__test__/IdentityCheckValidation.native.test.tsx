@@ -1,21 +1,31 @@
-import 'jest-styled-components/native'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { fireEvent, render } from 'tests/utils'
 
 import { IdentityCheckValidation } from '../IdentityCheckValidation'
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const { navigateToNextScreen } = useIdentityCheckNavigation()
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const { dispatch } = useIdentityCheckContext()
-jest.mock('@pass-culture/id-check')
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider')
-jest.mock('features/identityCheck/useIdentityCheckNavigation')
+const mockNavigateToNextScreen = jest.fn()
+jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
+  useIdentityCheckNavigation: () => ({
+    navigateToNextScreen: mockNavigateToNextScreen,
+  }),
+}))
+
+const mockDispatch = jest.fn()
+jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
+  useIdentityCheckContext: () => ({
+    dispatch: mockDispatch,
+    identification: {
+      done: false,
+      firstName: 'John',
+      lastName: 'Doe',
+      birthDate: '1993-01-28',
+      method: null,
+    },
+  }),
+}))
 
 const flushPromises = new Promise(setImmediate)
 
@@ -32,10 +42,9 @@ describe('<IdentityCheckValidation />', () => {
     fireEvent.press(validateButton)
     // wait for localStorage to have been updated
     await flushPromises
-    expect(navigateToNextScreen).toBeCalledTimes(1)
-    expect(navigateToNextScreen).toHaveBeenCalledWith()
-    expect(dispatch).toBeCalledTimes(1)
-    expect(dispatch).toHaveBeenCalledWith({
+    expect(mockNavigateToNextScreen).toBeCalledTimes(1)
+    expect(mockNavigateToNextScreen).toHaveBeenCalledWith()
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       payload: IdentityCheckStep.CONFIRMATION,
       type: 'SET_STEP',
     })

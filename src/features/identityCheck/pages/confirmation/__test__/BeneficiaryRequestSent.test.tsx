@@ -25,6 +25,11 @@ describe('<BeneficiaryRequestSent />', () => {
     } as UseQueryResult<UserProfileResponse>)
   })
 
+  it('should render correctly', () => {
+    const renderAPI = render(<BeneficiaryRequestSent />)
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   it('should redirect to cultural survey page WHEN "On y va !" button is clicked', () => {
     const { getByText } = render(<BeneficiaryRequestSent />)
 
