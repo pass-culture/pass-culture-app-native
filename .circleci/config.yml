@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.3
 
 ###################
 #  EXECUTORS
@@ -233,7 +235,7 @@ commands:
       - run:
           name: Invalidate cache
           command: gcloud compute url-maps invalidate-cdn-cache << parameters.url_map_name >> --path "/*"
-  
+
 ###################
 #  JOBS
 ###################
@@ -598,6 +600,14 @@ jobs:
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
 
+  quality:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+      - sonarcloud/scan
+
 ###################
 #  WORKFLOWS
 ###################
@@ -800,3 +810,10 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-web
+      - quality:
+          context: SonarCloud
+          filters:
+            branches:
+              only: sonar
+          requires:
+            - test-native
