@@ -78,7 +78,7 @@ export const safeFetch = async (
     navigateToLogin()
   }
 
-  if (tokenContent.exp * 1000 <= new Date().getTime()) {
+  if (tokenContent && tokenContent.exp * 1000 <= new Date().getTime()) {
     try {
       const newAccessToken = await refreshAccessToken(api)
 
