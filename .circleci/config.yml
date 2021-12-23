@@ -15,7 +15,7 @@ executors:
 
   ios:
     macos:
-      xcode: '13.0.0'
+      xcode: '13.2.1'
 
   gcp:
     docker:
