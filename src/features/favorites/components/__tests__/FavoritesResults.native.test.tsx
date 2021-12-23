@@ -58,7 +58,11 @@ describe('FavoritesResults component', () => {
   })
 
   it('should show favorite placeholder on init', () => {
-    mockUseFavorites.mockReturnThis()
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockUseFavorites.mockReturnValue({
+      data: undefined,
+      isLoading: true,
+    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
     const { getByTestId } = renderFavoritesResults()
     const container = getByTestId('FavoritesResultsPlaceHolder')

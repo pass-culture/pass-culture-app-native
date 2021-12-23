@@ -122,36 +122,6 @@ exports[`Favorites component should render correctly 1`] = `
           Object {
             "key": "9",
           },
-          Object {
-            "key": "10",
-          },
-          Object {
-            "key": "11",
-          },
-          Object {
-            "key": "12",
-          },
-          Object {
-            "key": "13",
-          },
-          Object {
-            "key": "14",
-          },
-          Object {
-            "key": "15",
-          },
-          Object {
-            "key": "16",
-          },
-          Object {
-            "key": "17",
-          },
-          Object {
-            "key": "18",
-          },
-          Object {
-            "key": "19",
-          },
         ]
       }
       getItem={[Function]}
@@ -614,6 +584,169 @@ exports[`Favorites component should render correctly 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
           </View>
           <View
             highlighted={false}
@@ -977,6 +1110,169 @@ exports[`Favorites component should render correctly 1`] = `
                         "transform": Array [
                           Object {
                             "translateX": -40,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
                           },
                         ],
                       }
@@ -1356,6 +1652,169 @@ exports[`Favorites component should render correctly 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
           </View>
           <View
             highlighted={false}
@@ -1719,6 +2178,169 @@ exports[`Favorites component should render correctly 1`] = `
                         "transform": Array [
                           Object {
                             "translateX": -40,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
                           },
                         ],
                       }
@@ -2098,6 +2720,169 @@ exports[`Favorites component should render correctly 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
           </View>
           <View
             highlighted={false}
@@ -2461,6 +3246,169 @@ exports[`Favorites component should render correctly 1`] = `
                         "transform": Array [
                           Object {
                             "translateX": -40,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
                           },
                         ],
                       }
@@ -2840,6 +3788,169 @@ exports[`Favorites component should render correctly 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
           </View>
           <View
             highlighted={false}
@@ -3203,6 +4314,169 @@ exports[`Favorites component should render correctly 1`] = `
                         "transform": Array [
                           Object {
                             "translateX": -40,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
                           },
                         ],
                       }
@@ -3582,6 +4856,169 @@ exports[`Favorites component should render correctly 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
           </View>
           <View
             highlighted={false}
@@ -3953,33 +5390,171 @@ exports[`Favorites component should render correctly 1`] = `
                 </View>
               </View>
             </View>
-          </View>
-          <View
-            highlighted={false}
-            leadingItem={
-              Object {
-                "key": "9",
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginTop": 24,
+                  },
+                ]
               }
-            }
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "#f5f5f5",
-                  "height": 2,
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                },
-              ]
-            }
-          />
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxWidth": 280,
+                      "minWidth": 120,
+                      "width": "47%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderRadius={24}
+                  fullWidth={true}
+                  height={48}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#DDDDDD",
+                        "borderRadius": 24,
+                        "height": 48,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width={160}
+                >
+                  <BVLinearGradient
+                    collapsable={false}
+                    colors={
+                      Array [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    nativeID="animatedComponent"
+                    startPoint={
+                      Object {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 24,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "translateX": -200,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
         </View>
-        <View
-          style={
-            Object {
-              "height": 0,
-            }
-          }
-        />
       </View>
     </RCTScrollView>
   </View>
