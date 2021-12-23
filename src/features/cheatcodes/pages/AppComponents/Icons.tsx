@@ -75,9 +75,9 @@ import { MagnifyingGlassDeprecated } from 'ui/svg/icons/MagnifyingGlass_deprecat
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
-import { OfferOutings } from 'ui/svg/icons/OfferOutings'
-import { OfferOutingsPhysical } from 'ui/svg/icons/OfferOutingsPhysical'
+import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
+import { Offers } from 'ui/svg/icons/Offers'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -172,10 +172,10 @@ export const Icons: FunctionComponent = () => {
       <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} isNew />
       <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} isNew />
       <Icon name="NoOffer" component={NoOffer} />
-      <Icon name="OfferDigital" component={OfferDigital} />
-      <Icon name="OfferPhysical" component={OfferPhysical} />
-      <Icon name="OfferOutings" component={OfferOutings} />
-      <Icon name="OfferOutingsPhysical" component={OfferOutingsPhysical} />
+      <Icon name="OfferDigital" component={OfferDigital} isNew />
+      <Icon name="OfferPhysical" component={OfferPhysical} isNew />
+      <Icon name="OfferEvent" component={OfferEvent} isNew />
+      <Icon name="Offers" component={Offers} isNew />
       <Icon name="LegalNotices" component={LegalNotices} isNew />
       <Icon name="Confidentiality" component={Confidentiality} isNew />
       <Icon name="BicolorConfidentiality" component={BicolorConfidentiality} />

@@ -30,6 +30,7 @@ export type ClippedImageProps = {
 export function ClippedImage(props: ClippedImageProps) {
   const linearGradientId = props.clipId + '_linear'
   const pathId = props.clipId + '_path'
+  // TODO(anoukhello) update default icon size to fit mockup once MAP_CATEGORY_ID_TO_ICON uses new icons
   const Icon = props.altIcon || OfferDigital
 
   return (

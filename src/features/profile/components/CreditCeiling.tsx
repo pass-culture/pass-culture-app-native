@@ -4,11 +4,11 @@ import styled from 'styled-components/native'
 
 import { ExpenseDomain } from 'api/gen/api'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
-import { Logo } from 'ui/svg/icons/Logo'
+import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
-import { OfferOutings } from 'ui/svg/icons/OfferOutings'
-import { OfferOutingsPhysical } from 'ui/svg/icons/OfferOutingsPhysical'
+import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
+import { Offers } from 'ui/svg/icons/Offers'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 import { ProgressBar } from '../../../ui/components/bars/ProgressBar'
@@ -25,7 +25,7 @@ const CreditCeilingMapWithPhysical = {
   [ExpenseDomain.All]: {
     label: 'en sorties (concerts...)',
     color: ColorsEnum.ACCENT,
-    icon: OfferOutings,
+    icon: OfferEvent,
   },
   [ExpenseDomain.Physical]: {
     label: 'en offres physiques (livres...)',
@@ -43,7 +43,7 @@ const CreditCeilingMapWithoutPhysical = {
   [ExpenseDomain.All]: {
     label: 'en sorties & biens physiques (concerts, livres...)',
     color: ColorsEnum.PRIMARY,
-    icon: OfferOutingsPhysical,
+    icon: Offers,
   },
   [ExpenseDomain.Digital]: {
     label: 'en offres numériques (streaming...)',
@@ -55,7 +55,7 @@ const CreditCeilingMapWithoutPhysical = {
 
 const underageBeneficiaryCeilingConfig = {
   ...CreditCeilingMapWithoutPhysical[ExpenseDomain.All],
-  icon: Logo,
+  icon: BicolorLogo,
 }
 
 export function CreditCeiling(props: CreditCeilingProps) {
