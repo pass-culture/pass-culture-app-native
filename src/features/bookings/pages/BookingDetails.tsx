@@ -68,9 +68,9 @@ export function BookingDetails() {
   const mapping = useSubcategoriesMapping()
 
   const { venue, id: offerId } = booking?.stock.offer || {}
-  const { latitude, longitude } = venue?.coordinates || {}
+  const { address, postalCode, city } = venue || {}
   const { canOpenItinerary, openItinerary } = useOpenItinerary(
-    `${latitude},${longitude}`,
+    `${address} ${postalCode} ${city}`,
     async () => void (offerId && analytics.logConsultItinerary({ offerId, from: 'bookingdetails' }))
   )
 
