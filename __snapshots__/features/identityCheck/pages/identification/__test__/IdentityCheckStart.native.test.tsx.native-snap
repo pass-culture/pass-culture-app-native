@@ -552,10 +552,10 @@ Array [
                           }
                         >
                           <View
-                            accessibilityLabel="Revenir en arrière"
+                            accessibilityLabel="leftIconButton"
                             accessible={true}
                             collapsable={false}
-                            focusable={true}
+                            focusable={false}
                             nativeID="animatedComponent"
                             onClick={[Function]}
                             onResponderGrant={[Function]}
@@ -570,18 +570,8 @@ Array [
                                 "opacity": 1,
                               }
                             }
-                            testID="Revenir en arrière"
-                          >
-                            <View
-                              height={32}
-                              testID="leftIcon"
-                              width={32}
-                            >
-                              <Text>
-                                leftIcon-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
+                            testID="leftIconButton"
+                          />
                         </View>
                         <View
                           style={
@@ -632,10 +622,10 @@ Array [
                           }
                         >
                           <View
-                            accessibilityLabel="rightIconButton"
+                            accessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
                             accessible={true}
                             collapsable={false}
-                            focusable={false}
+                            focusable={true}
                             nativeID="animatedComponent"
                             onClick={[Function]}
                             onResponderGrant={[Function]}
@@ -650,8 +640,18 @@ Array [
                                 "opacity": 1,
                               }
                             }
-                            testID="rightIconButton"
-                          />
+                            testID="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
+                          >
+                            <View
+                              height={32}
+                              testID="rightIcon"
+                              width={32}
+                            >
+                              <Text>
+                                rightIcon-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
                       <View
@@ -1161,10 +1161,10 @@ Array [
           }
         >
           <View
-            accessibilityLabel="Revenir en arrière"
+            accessibilityLabel="leftIconButton"
             accessible={true}
             collapsable={false}
-            focusable={true}
+            focusable={false}
             nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1179,18 +1179,8 @@ Array [
                 "opacity": 1,
               }
             }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={32}
-              testID="leftIcon"
-              width={32}
-            >
-              <Text>
-                leftIcon-SVG-Mock
-              </Text>
-            </View>
-          </View>
+            testID="leftIconButton"
+          />
         </View>
         <View
           style={
@@ -1241,10 +1231,10 @@ Array [
           }
         >
           <View
-            accessibilityLabel="rightIconButton"
+            accessibilityLabel="Fermer la modale de conseils pour avoir un document lisible"
             accessible={true}
             collapsable={false}
-            focusable={false}
+            focusable={true}
             nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1259,8 +1249,18 @@ Array [
                 "opacity": 1,
               }
             }
-            testID="rightIconButton"
-          />
+            testID="Fermer la modale de conseils pour avoir un document lisible"
+          >
+            <View
+              height={32}
+              testID="rightIcon"
+              width={32}
+            >
+              <Text>
+                rightIcon-SVG-Mock
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
       <View

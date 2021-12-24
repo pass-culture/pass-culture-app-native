@@ -152,7 +152,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
           accessibilityLabel="leftIconButton"
           accessible={true}
           collapsable={false}
-          focusable={true}
+          focusable={false}
           nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -168,17 +168,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             }
           }
           testID="leftIconButton"
-        >
-          <View
-            height={32}
-            testID="leftIcon"
-            width={32}
-          >
-            <Text>
-              leftIcon-SVG-Mock
-            </Text>
-          </View>
-        </View>
+        />
       </View>
       <View
         style={
@@ -229,7 +219,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
         }
       >
         <View
-          accessibilityLabel="rightIconButton"
+          accessibilityLabel="Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -247,7 +237,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
               "opacity": 1,
             }
           }
-          testID="rightIconButton"
+          testID="Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
         >
           <View
             height={32}
@@ -950,7 +940,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
           accessibilityLabel="leftIconButton"
           accessible={true}
           collapsable={false}
-          focusable={true}
+          focusable={false}
           nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -966,17 +956,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             }
           }
           testID="leftIconButton"
-        >
-          <View
-            height={32}
-            testID="leftIcon"
-            width={32}
-          >
-            <Text>
-              leftIcon-SVG-Mock
-            </Text>
-          </View>
-        </View>
+        />
       </View>
       <View
         style={
@@ -1027,7 +1007,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
         }
       >
         <View
-          accessibilityLabel="rightIconButton"
+          accessibilityLabel="Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -1045,7 +1025,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               "opacity": 1,
             }
           }
-          testID="rightIconButton"
+          testID="Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
         >
           <View
             height={32}

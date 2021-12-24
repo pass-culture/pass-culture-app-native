@@ -96,7 +96,7 @@ describe('<BookingDetailsCancelButton />', () => {
     mockedisUserExBeneficiary.mockReturnValueOnce(true)
     const { getByText } = renderBookingDetailsCancelButton(booking)
     getByText(
-      'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation : elle devait être annulée avant le 1 novembre 2020'
+      'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1 novembre 2020'
     )
   })
 })

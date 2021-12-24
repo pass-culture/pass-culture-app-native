@@ -46,20 +46,11 @@ export function IdentityCheckValidation() {
         </BodyContainer>
       }
       fixedBottomChildren={
-        <React.Fragment>
-          <StyledButtonPrimary
-            title={t`Valider mes informations`}
-            onPress={navigateToNextEduConnectStep}
-          />
-        </React.Fragment>
+        <ButtonPrimary title={t`Valider mes informations`} onPress={navigateToNextEduConnectStep} />
       }
     />
   )
 }
-
-const StyledButtonPrimary = styled(ButtonPrimary)({
-  width: '100%',
-})
 
 const BodyContainer = styled.View({
   alignItems: 'center',

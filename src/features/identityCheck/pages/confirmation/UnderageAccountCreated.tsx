@@ -15,12 +15,15 @@ import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { UniqueColors, Spacer } from 'ui/theme'
 
 export function UnderageAccountCreated() {
   const maxPrice = useMaxPrice()
   const text = t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
+
+  useEnterKeyAction(navigateToHome)
 
   return (
     <GenericInfoPageWhite animation={TutorialPassLogo} title={t`Bonne nouvelle\u00a0!`}>

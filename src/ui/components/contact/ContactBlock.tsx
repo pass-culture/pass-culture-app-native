@@ -7,7 +7,7 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { analytics } from 'libs/analytics'
 import { isValidFrenchPhoneNumber, openPhoneNumber, openMail } from 'ui/components/contact/helpers'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { ExternalLinkSquare } from 'ui/svg/icons/ExternalLinkSquare'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -44,7 +44,7 @@ export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
         <ContactAtom label={t`Téléphone`} onPress={onPressPhone} Icon={PhoneFilled} />
       )}
       {!!website && (
-        <ContactAtom label={t`Site internet`} onPress={onPressWebsite} Icon={ExternalLinkSquare} />
+        <ContactAtom label={t`Site internet`} onPress={onPressWebsite} Icon={ExternalSiteFilled} />
       )}
     </Container>
   )

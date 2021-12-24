@@ -11,6 +11,7 @@ import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckValidation() {
@@ -47,6 +48,8 @@ export function IdentityCheckValidation() {
     }, [params])
   )
 
+  useEnterKeyAction(navigateToNextEduConnectStep)
+
   return (
     <PageWithHeader
       title={t`Mon identité`}
@@ -55,6 +58,7 @@ export function IdentityCheckValidation() {
       }
       scrollChildren={
         <BodyContainer>
+          <Spacer.Column numberOfSpaces={6} />
           <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Ton prénom`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Title3 testID="validation-first-name">{identification.firstName}</Typo.Title3>
@@ -69,23 +73,12 @@ export function IdentityCheckValidation() {
         </BodyContainer>
       }
       fixedBottomChildren={
-        <React.Fragment>
-          <StyledButtonPrimary
-            title={t`Valider mes informations`}
-            onPress={navigateToNextEduConnectStep}
-          />
-        </React.Fragment>
+        <ButtonPrimary title={t`Valider mes informations`} onPress={navigateToNextEduConnectStep} />
       }
     />
   )
 }
 
-const StyledButtonPrimary = styled(ButtonPrimary)({
-  width: '100%',
-})
-
 const BodyContainer = styled.View({
   alignItems: 'center',
-  justifyContent: 'center',
-  flex: 1,
 })

@@ -27,7 +27,7 @@ export const IdentityCheckStart = () => {
         title={t`Identification`}
         scrollChildren={
           <Container>
-            <Spacer.Flex />
+            <Spacer.Column numberOfSpaces={6} />
             <BicolorPhonePending size={getSpacing(30)} />
             <Spacer.Column numberOfSpaces={6} />
             <IdentityVerificationText />
@@ -35,7 +35,7 @@ export const IdentityCheckStart = () => {
             <ButtonPrimary onPress={showModal} title={t`Vérification par smartphone`} />
             <Spacer.Column numberOfSpaces={8} />
             <DMSInformation />
-            <Spacer.Flex />
+            <Spacer.Column numberOfSpaces={6} />
           </Container>
         }
       />
@@ -48,4 +48,4 @@ export const IdentityCheckStart = () => {
   )
 }
 
-const Container = styled.View({ alignItems: 'center', height: '100%' })
+const Container = styled.View({ alignItems: 'center' })

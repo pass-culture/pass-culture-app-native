@@ -87,8 +87,12 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
+                      style="align-items: center;"
                     >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="height: 24px;"
+                      />
                       <div
                         class="css-text-901oao"
                         dir="auto"
@@ -286,8 +290,12 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
+                    style="align-items: center;"
                   >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 24px;"
+                    />
                     <div
                       class="css-text-901oao"
                       dir="auto"

@@ -13,6 +13,7 @@ import {
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { useProfileOptions } from 'features/identityCheck/utils/useProfileOptions'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 
 export const SetSchoolType = () => {
@@ -35,6 +36,8 @@ export const SetSchoolType = () => {
     : null
 
   const hasData = !!activitySchoolTypes && !!schoolTypes
+
+  useEnterKeyAction(selectedSchoolTypeId ? onPressContinue : undefined)
 
   return (
     <PageWithHeader

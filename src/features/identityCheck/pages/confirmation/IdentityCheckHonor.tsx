@@ -15,6 +15,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const IdentityCheckHonor = () => {
@@ -49,6 +50,8 @@ export const IdentityCheckHonor = () => {
         timeout: SNACK_BAR_TIME_OUT,
       }),
   })
+
+  useEnterKeyAction(() => postHonorStatement())
 
   return (
     <PageWithHeader

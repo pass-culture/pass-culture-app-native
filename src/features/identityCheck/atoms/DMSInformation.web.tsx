@@ -6,7 +6,7 @@ import { DMSModal } from 'features/identityCheck/components/DMSModal'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
-import { ExternalLinkSquare } from 'ui/svg/icons/ExternalLinkSquare'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export const DMSInformation = () => {
@@ -25,7 +25,7 @@ export const DMSInformation = () => {
         <ButtonTertiaryBlack
           title={t`Identification par le site Démarches-Simplifiées`}
           onPress={showDMSModal}
-          icon={ExternalLinkSquare}
+          icon={ExternalSiteFilled}
         />
         <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Environ 10 jours`}</Typo.Caption>
       </Container>
