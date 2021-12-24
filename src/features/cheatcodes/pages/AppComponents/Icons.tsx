@@ -122,7 +122,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="CheckDeprecated" component={CheckDeprecated} />
       <Icon name="Clock" component={Clock} isNew />
       <Icon name="Close" component={Close} />
-      <Icon name="Duo" component={Duo} />
+      <Icon name="Duo" component={Duo} isNew />
       <Icon name="DuoBold" component={DuoBold} />
       <Icon name="Eye" component={Eye} />
       <Icon name="EyeSlash" component={EyeSlash} />
@@ -150,7 +150,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="HappyFaceStars" component={HappyFaceStars} />
       <Icon name="LocationPointer" component={LocationPointer} />
       <Icon name="Digital" component={Digital} />
-      <Icon name="OrderPrice" component={OrderPrice} />
+      <Icon name="OrderPrice" component={OrderPrice} isNew />
       <Icon name="HandicapVisual" component={HandicapVisual} />
       <Icon name="HandicapMental" component={HandicapMental} />
       <Icon name="HandicapMotor" component={HandicapMotor} />
