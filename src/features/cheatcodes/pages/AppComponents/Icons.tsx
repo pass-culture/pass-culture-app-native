@@ -37,7 +37,6 @@ import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
-import { DuoDeprecated } from 'ui/svg/icons/Duo_deprecated'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { DuoPerson } from 'ui/svg/icons/DuoPerson'
 import { EditPen } from 'ui/svg/icons/EditPen'
@@ -124,7 +123,6 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Clock" component={Clock} isNew />
       <Icon name="Close" component={Close} />
       <Icon name="Duo" component={Duo} isNew />
-      <Icon name="DuoDeprecated" component={DuoDeprecated} />
       <Icon name="DuoBold" component={DuoBold} />
       <Icon name="Eye" component={Eye} />
       <Icon name="EyeSlash" component={EyeSlash} />
