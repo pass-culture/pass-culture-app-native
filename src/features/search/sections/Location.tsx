@@ -33,6 +33,7 @@ export const Location: React.FC = () => {
     <Section title={SectionTitle.Location} count={+(locationType !== LocationType.EVERYWHERE)}>
       <LocationContentContainer testID="changeLocation" onPress={onPressChangeLocation}>
         <Icon size={getSpacing(10)} color={ColorsEnum.BLACK} color2={ColorsEnum.BLACK} />
+        <Spacer.Row numberOfSpaces={2} />
         <Label numberOfLines={2}>{label}</Label>
         <Spacer.Flex />
         <ArrowNext size={getSpacing(6)} />
