@@ -54,7 +54,7 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Category } from 'ui/svg/icons/categories'
+import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { CheckDeprecated } from 'ui/svg/icons/Check_deprecated'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassDeprecated } from 'ui/svg/icons/MagnifyingGlass_deprecated'
@@ -638,13 +638,14 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <OnGoingTicket
-            altIcon={Category.Artwork}
+            altIcon={CategoryIcon.ArtsMaterial}
             image="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
           />
           <Text> - OnGoing Ticket </Text>
         </AlignedText>
+
         <AlignedText>
-          <OnGoingTicket altIcon={Category.Artwork} />
+          <OnGoingTicket altIcon={CategoryIcon.ArtsMaterial} />
           <Text> - OnGoing Ticket without image </Text>
         </AlignedText>
         <AlignedText>
