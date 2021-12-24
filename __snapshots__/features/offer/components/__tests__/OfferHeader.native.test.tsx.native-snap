@@ -440,7 +440,6 @@ Array [
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
-    height={428}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
     onModalHide={[Function]}
@@ -493,7 +492,6 @@ Array [
       deviceHeight={1334}
       deviceWidth={750}
       forwardedRef={[Function]}
-      height={428}
       hideModalContentWhileAnimating={false}
       onBackdropPress={[Function]}
       onModalHide={[Function]}
@@ -509,28 +507,11 @@ Array [
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
-          "borderBottomLeftRadius": 0,
-          "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
           "bottom": 0,
           "flex": 1,
-          "flexDirection": "column",
-          "height": 428,
           "justifyContent": "center",
           "left": 0,
           "margin": "auto",
-          "maxHeight": 650,
-          "maxWidth": 750,
-          "paddingBottom": 20,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 20,
           "position": "absolute",
           "right": 0,
           "top": "auto",
@@ -539,7 +520,6 @@ Array [
               "translateY": 0,
             },
           ],
-          "width": "100%",
         }
       }
       supportedOrientations={
@@ -551,185 +531,132 @@ Array [
       swipeThreshold={100}
     >
       <View
-        onLayout={[Function]}
+        height={428}
         style={
           Array [
             Object {
-              "alignItems": "flex-start",
-              "display": "flex",
-              "flexDirection": "row",
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomEndRadius": 0,
+              "borderBottomLeftRadius": 0,
+              "borderBottomRightRadius": 0,
+              "borderBottomStartRadius": 0,
+              "borderTopEndRadius": 16,
+              "borderTopLeftRadius": 20,
+              "borderTopRightRadius": 20,
+              "borderTopStartRadius": 16,
+              "flexDirection": "column",
+              "height": 428,
               "justifyContent": "center",
+              "maxHeight": 650,
+              "maxWidth": 750,
+              "paddingBottom": 20,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 20,
               "width": "100%",
             },
           ]
         }
       >
         <View
-          style={
-            Array [
-              Object {
-                "alignItems": "flex-end",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-              },
-            ]
-          }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -5,
-                "opacity": 1,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 0.8,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "marginTop": 5,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "zIndex": 1,
-              },
-            ]
-          }
-        >
-          <Text
-            numberOfLines={3}
-            style={
-              Array [
-                Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Connecte-toi pour profiter de cette fonctionnalité
-          </Text>
-        </View>
-        <View
+          onLayout={[Function]}
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
+                "display": "flex",
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
+                "justifyContent": "center",
+                "width": "100%",
               },
             ]
           }
         >
           <View
-            accessibilityLabel="Fermer la modale"
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "marginRight": -5,
-                "opacity": 1,
-              }
+              Array [
+                Object {
+                  "alignItems": "flex-end",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 0.1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                },
+              ]
             }
-            testID="Fermer la modale"
           >
             <View
-              height={32}
-              testID="rightIcon"
-              width={32}
-            >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
-            </View>
+              accessibilityLabel="leftIconButton"
+              accessible={true}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "marginLeft": -5,
+                  "opacity": 1,
+                }
+              }
+              testID="leftIconButton"
+            />
           </View>
-        </View>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "height": 20,
-            },
-          ]
-        }
-      />
-      <View
-        paddingBottom={8}
-        style={
-          Array [
-            Object {
-              "maxWidth": 480,
-              "paddingBottom": 8,
-              "width": "100%",
-            },
-          ]
-        }
-      >
-        <RCTScrollView
-          onContentSizeChange={[Function]}
-          scrollEnabled={true}
-        >
-          <View>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 0.8,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                  "marginTop": 5,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "zIndex": 1,
+                },
+              ]
+            }
+          >
             <Text
+              numberOfLines={3}
               style={
                 Array [
                   Object {
-                    "paddingBottom": 30,
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
                     "textAlign": "center",
                   },
                 ]
               }
             >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
-              </Text>
+              Connecte-toi pour profiter de cette fonctionnalité
             </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "flex-start",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 0.1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                },
+              ]
+            }
+          >
             <View
-              accessibilityLabel="S'inscrire"
+              accessibilityLabel="Fermer la modale"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -741,107 +668,190 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "justifyContent": "center",
-                  "maxWidth": 500,
+                  "marginRight": -5,
                   "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "width": "100%",
                 }
               }
-              testID="S'inscrire"
+              testID="Fermer la modale"
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-                textColor="#ffffff"
+              <View
+                height={32}
+                testID="rightIcon"
+                width={32}
               >
-                S'inscrire
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={3}
-              style={
-                Array [
-                  Object {
-                    "height": 12,
-                  },
-                ]
-              }
-            />
-            <View
-              accessibilityLabel="Se connecter"
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 24,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "width": "100%",
-                }
-              }
-              testID="Se connecter"
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-                textColor="#eb0055"
-              >
-                Se connecter
-              </Text>
+                <Text>
+                  rightIcon-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
-        </RCTScrollView>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "height": 20,
+              },
+            ]
+          }
+        />
+        <View
+          paddingBottom={8}
+          style={
+            Array [
+              Object {
+                "maxWidth": 480,
+                "paddingBottom": 8,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RCTScrollView
+            onContentSizeChange={[Function]}
+            scrollEnabled={true}
+          >
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "paddingBottom": 30,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
+                </Text>
+              </Text>
+              <View
+                accessibilityLabel="S'inscrire"
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  }
+                }
+                testID="S'inscrire"
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                  textColor="#ffffff"
+                >
+                  S'inscrire
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  Array [
+                    Object {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Se connecter"
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 24,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  }
+                }
+                testID="Se connecter"
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                  textColor="#eb0055"
+                >
+                  Se connecter
+                </Text>
+              </View>
+            </View>
+          </RCTScrollView>
+        </View>
       </View>
     </View>
   </Modal>,

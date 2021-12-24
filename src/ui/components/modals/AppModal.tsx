@@ -110,24 +110,25 @@ export const AppModal: FunctionComponent<Props> = ({
       isVisible={visible}
       onBackdropPress={handleOnBackdropPress()}
       testID="modal"
-      height={modalHeight}
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}>
-      <ModalHeader
-        title={title}
-        numberOfLines={titleNumberOfLines}
-        onLayout={updateHeaderHeight}
-        {...iconProps}
-      />
-      <SpacerBetweenHeaderAndContent />
-      <ScrollViewContainer paddingBottom={scrollViewPaddingBottom}>
-        <ScrollView
-          ref={scrollViewRef}
-          scrollEnabled={scrollEnabled}
-          onContentSizeChange={updateScrollViewContentHeight}>
-          {children}
-        </ScrollView>
-      </ScrollViewContainer>
+      <ModalContainer height={modalHeight}>
+        <ModalHeader
+          title={title}
+          numberOfLines={titleNumberOfLines}
+          onLayout={updateHeaderHeight}
+          {...iconProps}
+        />
+        <SpacerBetweenHeaderAndContent />
+        <ScrollViewContainer paddingBottom={scrollViewPaddingBottom}>
+          <ScrollView
+            ref={scrollViewRef}
+            scrollEnabled={scrollEnabled}
+            onContentSizeChange={updateScrollViewContentHeight}>
+            {children}
+          </ScrollView>
+        </ScrollViewContainer>
+      </ModalContainer>
     </StyledModal>
   )
 }
@@ -144,14 +145,22 @@ const ScrollViewContainer = styled.View<{ paddingBottom: number }>(({ paddingBot
 }))
 
 const MODAL_PADDING = getSpacing(5)
-// @ts-ignore Argument of type 'typeof ReactNativeModal' is not assignable to parameter of type 'AnyStyledComponent'
-const StyledModal = styled(RNModal)<{ height: number }>(({ height, theme }) => {
-  const { isDesktopViewport, appContentWidth, colors } = theme
+// @ts-ignore Argument of type 'typeof ReactNativeModal' is not assignable to parameter of type 'Any<StyledComponent>'
+const StyledModal = styled(RNModal)<{ height: number }>(({ theme }) => {
+  const { isDesktopViewport } = theme
   return {
     position: 'absolute',
     right: 0,
     left: 0,
     bottom: 0,
+    top: isDesktopViewport ? 0 : 'auto',
+    alignItems: 'center',
+  }
+})
+
+const ModalContainer = styled.View<{ height: number }>(({ height, theme }) => {
+  const { isDesktopViewport, appContentWidth, colors } = theme
+  return {
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     backgroundColor: colors.white,
@@ -165,7 +174,6 @@ const StyledModal = styled(RNModal)<{ height: number }>(({ height, theme }) => {
     borderTopEndRadius: getSpacing(4),
     padding: MODAL_PADDING,
     maxWidth: isDesktopViewport ? getSpacing(130) : appContentWidth,
-    top: isDesktopViewport ? 0 : 'auto',
     borderBottomStartRadius: isDesktopViewport ? getSpacing(4) : 0,
     borderBottomEndRadius: isDesktopViewport ? getSpacing(4) : 0,
     borderBottomRightRadius: isDesktopViewport ? 20 : 0,

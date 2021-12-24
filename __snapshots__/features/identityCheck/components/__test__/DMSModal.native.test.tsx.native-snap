@@ -6,7 +6,6 @@ exports[`<DMSModal/> should render correctly 1`] = `
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
-  height={428}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[MockFunction]}
   onModalHide={[Function]}
@@ -59,7 +58,6 @@ exports[`<DMSModal/> should render correctly 1`] = `
     deviceHeight={1334}
     deviceWidth={750}
     forwardedRef={[Function]}
-    height={428}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[MockFunction]}
     onModalHide={[Function]}
@@ -75,28 +73,11 @@ exports[`<DMSModal/> should render correctly 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "borderBottomEndRadius": 0,
-        "borderBottomLeftRadius": 0,
-        "borderBottomRightRadius": 0,
-        "borderBottomStartRadius": 0,
-        "borderTopEndRadius": 16,
-        "borderTopLeftRadius": 20,
-        "borderTopRightRadius": 20,
-        "borderTopStartRadius": 16,
         "bottom": 0,
         "flex": 1,
-        "flexDirection": "column",
-        "height": 428,
         "justifyContent": "center",
         "left": 0,
         "margin": "auto",
-        "maxHeight": 650,
-        "maxWidth": 750,
-        "paddingBottom": 20,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 20,
         "position": "absolute",
         "right": 0,
         "top": "auto",
@@ -105,7 +86,6 @@ exports[`<DMSModal/> should render correctly 1`] = `
             "translateY": 1334,
           },
         ],
-        "width": "100%",
       }
     }
     supportedOrientations={
@@ -117,365 +97,395 @@ exports[`<DMSModal/> should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
-      onLayout={[Function]}
+      height={428}
       style={
         Array [
           Object {
-            "alignItems": "flex-start",
-            "display": "flex",
-            "flexDirection": "row",
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomEndRadius": 0,
+            "borderBottomLeftRadius": 0,
+            "borderBottomRightRadius": 0,
+            "borderBottomStartRadius": 0,
+            "borderTopEndRadius": 16,
+            "borderTopLeftRadius": 20,
+            "borderTopRightRadius": 20,
+            "borderTopStartRadius": 16,
+            "flexDirection": "column",
+            "height": 428,
             "justifyContent": "center",
+            "maxHeight": 650,
+            "maxWidth": 750,
+            "paddingBottom": 20,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 20,
             "width": "100%",
           },
         ]
       }
     >
       <View
-        style={
-          Array [
-            Object {
-              "alignItems": "flex-end",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 0.1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-            },
-          ]
-        }
-      >
-        <View
-          accessibilityLabel="leftIconButton"
-          accessible={true}
-          collapsable={false}
-          focusable={false}
-          nativeID="animatedComponent"
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "marginLeft": -5,
-              "opacity": 1,
-            }
-          }
-          testID="leftIconButton"
-        />
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexGrow": 0.8,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "marginTop": 5,
-              "paddingLeft": 12,
-              "paddingRight": 12,
-              "zIndex": 1,
-            },
-          ]
-        }
-      >
-        <Text
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
-                "textAlign": "center",
-              },
-            ]
-          }
-        >
-          Transmettre un document
-        </Text>
-      </View>
-      <View
+        onLayout={[Function]}
         style={
           Array [
             Object {
               "alignItems": "flex-start",
-              "flexBasis": 0,
+              "display": "flex",
               "flexDirection": "row",
-              "flexGrow": 0.1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
+              "justifyContent": "center",
+              "width": "100%",
             },
           ]
         }
       >
         <View
-          accessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          nativeID="animatedComponent"
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
-            Object {
-              "marginRight": -5,
-              "opacity": 1,
-            }
+            Array [
+              Object {
+                "alignItems": "flex-end",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+              },
+            ]
           }
-          testID="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
         >
           <View
-            height={32}
-            testID="rightIcon"
-            width={32}
+            accessibilityLabel="leftIconButton"
+            accessible={true}
+            collapsable={false}
+            focusable={false}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginLeft": -5,
+                "opacity": 1,
+              }
+            }
+            testID="leftIconButton"
+          />
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 0.8,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "marginTop": 5,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                  "textAlign": "center",
+                },
+              ]
+            }
           >
-            <Text>
-              rightIcon-SVG-Mock
-            </Text>
+            Transmettre un document
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "flex-start",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginRight": -5,
+                "opacity": 1,
+              }
+            }
+            testID="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
+          >
+            <View
+              height={32}
+              testID="rightIcon"
+              width={32}
+            >
+              <Text>
+                rightIcon-SVG-Mock
+              </Text>
+            </View>
           </View>
         </View>
       </View>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <View
-      paddingBottom={8}
-      style={
-        Array [
-          Object {
-            "maxWidth": 480,
-            "paddingBottom": 8,
-            "width": "100%",
-          },
-        ]
-      }
-    >
-      <RCTScrollView
-        onContentSizeChange={[Function]}
-        scrollEnabled={true}
+      <View
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <View
+        paddingBottom={8}
+        style={
+          Array [
+            Object {
+              "maxWidth": 480,
+              "paddingBottom": 8,
+              "width": "100%",
+            },
+          ]
+        }
       >
-        <View>
-          <Text
-            color="#626262"
-            style={
-              Array [
-                Object {
-                  "color": "#626262",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !
-          </Text>
-          <View
-            numberOfSpaces={8}
-            style={
-              Array [
-                Object {
-                  "height": 32,
-                },
-              ]
-            }
-          />
-          <View
-            accessibilityLabel="Je suis de nationalité française"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderRadius": 24,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "flex-start",
-                "maxWidth": 500,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 2,
-                "width": "100%",
-              }
-            }
-            testID="Je suis de nationalité française"
-          >
-            <View
-              height={32}
-              testID="button-icon"
-              width={32}
-            >
-              <Text>
-                button-icon-SVG-Mock
-              </Text>
-            </View>
+        <RCTScrollView
+          onContentSizeChange={[Function]}
+          scrollEnabled={true}
+        >
+          <View>
             <Text
-              adjustsFontSizeToFit={false}
-              icon={[Function]}
-              numberOfLines={1}
+              color="#626262"
               style={
                 Array [
                   Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Bold",
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 8,
-                    "maxWidth": "100%",
                   },
                 ]
               }
-              textColor="#151515"
             >
-              Je suis de nationalité française
+              Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !
             </Text>
-          </View>
-          <Text
-            color="#626262"
-            style={
-              Array [
-                Object {
-                  "color": "#626262",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-          >
-            Carte d’identité ou passeport.
-          </Text>
-          <View
-            numberOfSpaces={8}
-            style={
-              Array [
-                Object {
-                  "height": 32,
-                },
-              ]
-            }
-          />
-          <View
-            accessibilityLabel="Je suis de nationalité étrangère"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderRadius": 24,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "flex-start",
-                "maxWidth": 500,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 2,
-                "width": "100%",
-              }
-            }
-            testID="Je suis de nationalité étrangère"
-          >
             <View
-              height={32}
-              testID="button-icon"
-              width={32}
-            >
-              <Text>
-                button-icon-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              icon={[Function]}
-              numberOfLines={1}
+              numberOfSpaces={8}
               style={
                 Array [
                   Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 8,
-                    "maxWidth": "100%",
+                    "height": 32,
                   },
                 ]
               }
-              textColor="#151515"
+            />
+            <View
+              accessibilityLabel="Je suis de nationalité française"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "flex-start",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="Je suis de nationalité française"
             >
-              Je suis de nationalité étrangère
+              <View
+                height={32}
+                testID="button-icon"
+                width={32}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                icon={[Function]}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+                textColor="#151515"
+              >
+                Je suis de nationalité française
+              </Text>
+            </View>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Carte d’identité ou passeport.
             </Text>
+            <View
+              numberOfSpaces={8}
+              style={
+                Array [
+                  Object {
+                    "height": 32,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Je suis de nationalité étrangère"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "flex-start",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="Je suis de nationalité étrangère"
+            >
+              <View
+                height={32}
+                testID="button-icon"
+                width={32}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                icon={[Function]}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+                textColor="#151515"
+              >
+                Je suis de nationalité étrangère
+              </Text>
+            </View>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Titre de séjour, carte d'identité, ou passeport.
+            </Text>
+            <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
           </View>
-          <Text
-            color="#626262"
-            style={
-              Array [
-                Object {
-                  "color": "#626262",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-          >
-            Titre de séjour, carte d'identité, ou passeport.
-          </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              Array [
-                Object {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-        </View>
-      </RCTScrollView>
+        </RCTScrollView>
+      </View>
     </View>
   </View>
 </Modal>
