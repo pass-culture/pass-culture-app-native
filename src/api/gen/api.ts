@@ -523,6 +523,18 @@ export interface BookingVenueResponse {
      * @type {string}
      * @memberof BookingVenueResponse
      */
+    address?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingVenueResponse
+     */
+    postalCode?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingVenueResponse
+     */
     city?: string | null;
     /**
      * 
