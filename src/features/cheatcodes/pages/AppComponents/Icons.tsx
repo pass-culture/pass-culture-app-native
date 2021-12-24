@@ -28,7 +28,6 @@ import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
-import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
 import { Check } from 'ui/svg/icons/Check'
 import { CheckDeprecated } from 'ui/svg/icons/Check_deprecated'
 import { Clock } from 'ui/svg/icons/Clock'
@@ -65,7 +64,6 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
-import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Lock } from 'ui/svg/icons/Lock'
@@ -189,11 +187,9 @@ export const Icons: FunctionComponent = () => {
       <Icon name="LifeBuoy" component={LifeBuoy} isNew />
       <Icon name="Bell" component={Bell} isNew />
       <Icon name="ProfileDeletion" component={ProfileDeletion} />
-      <Icon name="Booking" component={Booking} />
+      <Icon name="Booking" component={Booking} isNew />
       <Icon name="Calendar" component={Calendar} isNew />
-      <Icon name="CalendarDeprecated" component={CalendarDeprecated} />
       <Icon name="LocationBuilding" component={LocationBuilding} isNew />
-      <Icon name="LocationBuildingDeprecated" component={LocationBuildingDeprecated} />
       <Icon name="InfoFraud" component={InfoFraud} isNew />
       <AlignedText>
         <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />

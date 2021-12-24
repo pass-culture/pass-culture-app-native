@@ -15,19 +15,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -86,19 +86,19 @@ Array [
   >
     <View
       fill="#626262"
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -156,19 +156,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -231,19 +231,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -301,19 +301,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -371,19 +371,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -457,19 +457,19 @@ Array [
   >
     <View
       fill="#626262"
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -532,19 +532,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -602,19 +602,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -688,19 +688,19 @@ Array [
   >
     <View
       fill="#626262"
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -763,19 +763,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -833,19 +833,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -903,19 +903,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -989,19 +989,19 @@ Array [
   >
     <View
       fill="#626262"
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -1064,19 +1064,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -1135,19 +1135,19 @@ Array [
   >
     <View
       fill="#626262"
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -1210,19 +1210,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -1280,19 +1280,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -1350,19 +1350,19 @@ Array [
     }
   >
     <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }
@@ -1436,19 +1436,19 @@ Array [
   >
     <View
       fill="#626262"
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "width": 8,
+            "width": 12,
           },
         ]
       }

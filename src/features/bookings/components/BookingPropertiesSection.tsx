@@ -9,10 +9,10 @@ import { getBookingLabels, getBookingProperties } from 'features/bookings/helper
 import { useUserProfileInfo } from 'features/home/api'
 import { useSubcategory } from 'libs/subcategories'
 import { SectionRow } from 'ui/components/SectionRow'
-import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
+import { Calendar } from 'ui/svg/icons/Calendar'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
-import { LocationBuildingDeprecated } from 'ui/svg/icons/LocationBuilding_deprecated'
-import { ProfileDeprecated } from 'ui/svg/icons/Profile_deprecated'
+import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { Profile } from 'ui/svg/icons/Profile'
 import { Spacer, Typo } from 'ui/theme'
 
 type BookingPropertiesSectionProps = {
@@ -54,7 +54,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             </TitleNameContainer>
           )}
           type={'clickable'}
-          icon={() => <ProfileDeprecated size={24} />}
+          icon={() => <Profile size={20} />}
         />
       ) : null}
       {propertiesLabels.dateLabel?.length > 0 && (
@@ -64,7 +64,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             title={propertiesLabels.dateLabel}
             renderTitle={renderRowTitle}
             type={'clickable'}
-            icon={() => <CalendarDeprecated size={24} />}
+            icon={() => <Calendar size={20} />}
           />
         </React.Fragment>
       )}
@@ -74,7 +74,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           title={propertiesLabels.locationLabel}
           renderTitle={renderRowTitle}
           type={'clickable'}
-          icon={() => <LocationBuildingDeprecated size={24} />}
+          icon={() => <LocationBuilding size={20} />}
         />
       )}
     </View>
