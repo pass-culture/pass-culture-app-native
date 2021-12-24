@@ -241,161 +241,166 @@ Object {
           class="css-view-1dbjc4n r-pointerEvents-12vffkv"
           data-testid="modal"
           id="animatedComponent"
-          style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; bottom: 0px; flex: 1; flex-direction: column; height: 428px; justify-content: center; left: 0px; margin: auto auto auto auto; max-height: 650px; max-width: 0px; padding: 20px 20px 20px 20px; position: absolute; right: 0px; transform: translateY(0px); width: 100%;"
+          style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: flex-start; display: flex; flex-direction: row; justify-content: center; width: 100%;"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 0px; padding: 20px 20px 20px 20px; width: 100%;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: flex-end; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-start;"
+              style="align-items: flex-start; display: flex; flex-direction: row; justify-content: center; width: 100%;"
             >
               <div
-                aria-label="leftIconButton"
                 class="css-view-1dbjc4n"
-                data-testid="leftIconButton"
-                style="cursor: pointer; margin-left: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                tabindex="0"
-              />
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; flex-basis: 0px; flex-grow: 0.8; flex-shrink: 1; justify-content: center; margin-top: 5px; padding-left: 12px; padding-right: 12px; z-index: 1;"
-            >
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                style="align-items: flex-end; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-start;"
               >
-                Transmettre un document
+                <div
+                  aria-label="leftIconButton"
+                  class="css-view-1dbjc4n"
+                  data-testid="leftIconButton"
+                  style="cursor: pointer; margin-left: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  tabindex="0"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-basis: 0px; flex-grow: 0.8; flex-shrink: 1; justify-content: center; margin-top: 5px; padding-left: 12px; padding-right: 12px; z-index: 1;"
+              >
+                <div
+                  class="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                >
+                  Transmettre un document
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
+              >
+                <div
+                  aria-label="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
+                  class="css-view-1dbjc4n"
+                  data-testid="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
+                  style="cursor: pointer; margin-right: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="rightIcon"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      rightIcon-SVG-Mock
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
+              style="height: 20px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="max-width: 480px; padding-bottom: 8px; width: 100%;"
             >
               <div
-                aria-label="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
                 class="css-view-1dbjc4n"
-                data-testid="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
-                style="cursor: pointer; margin-right: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                tabindex="0"
+                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="rightIcon"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
+                    style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                   >
-                    rightIcon-SVG-Mock
+                    Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 20px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="max-width: 480px; padding-bottom: 8px; width: 100%;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
-            >
-              <div
-                class="css-view-1dbjc4n"
-              >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-                >
-                  Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="height: 32px;"
-                />
-                <div
-                  aria-label="Je suis de nationalité française"
-                  class="css-view-1dbjc4n"
-                  data-testid="Je suis de nationalité française"
-                  style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: flex-start; max-width: 500px; padding: 2px 0px 2px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                  tabindex="0"
-                >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="button-icon"
+                    style="height: 32px;"
+                  />
+                  <div
+                    aria-label="Je suis de nationalité française"
+                    class="css-view-1dbjc4n"
+                    data-testid="Je suis de nationalité française"
+                    style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: flex-start; max-width: 500px; padding: 2px 0px 2px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                    tabindex="0"
                   >
                     <div
-                      class="css-text-901oao"
-                      dir="auto"
+                      class="css-view-1dbjc4n"
+                      data-testid="button-icon"
                     >
-                      button-icon-SVG-Mock
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        button-icon-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                    >
+                      Je suis de nationalité française
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao css-textOneLine-vcwn7f"
+                    class="css-text-901oao"
                     dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                    style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                   >
-                    Je suis de nationalité française
+                    Carte d’identité ou passeport.
                   </div>
-                </div>
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                >
-                  Carte d’identité ou passeport.
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="height: 32px;"
-                />
-                <div
-                  aria-label="Je suis de nationalité étrangère"
-                  class="css-view-1dbjc4n"
-                  data-testid="Je suis de nationalité étrangère"
-                  style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: flex-start; max-width: 500px; padding: 2px 0px 2px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                  tabindex="0"
-                >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="button-icon"
+                    style="height: 32px;"
+                  />
+                  <div
+                    aria-label="Je suis de nationalité étrangère"
+                    class="css-view-1dbjc4n"
+                    data-testid="Je suis de nationalité étrangère"
+                    style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: flex-start; max-width: 500px; padding: 2px 0px 2px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                    tabindex="0"
                   >
                     <div
-                      class="css-text-901oao"
-                      dir="auto"
+                      class="css-view-1dbjc4n"
+                      data-testid="button-icon"
                     >
-                      button-icon-SVG-Mock
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        button-icon-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-901oao css-textOneLine-vcwn7f"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                    >
+                      Je suis de nationalité étrangère
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao css-textOneLine-vcwn7f"
+                    class="css-text-901oao"
                     dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                    style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                   >
-                    Je suis de nationalité étrangère
+                    Titre de séjour, carte d'identité, ou passeport.
                   </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 16px;"
+                  />
                 </div>
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                >
-                  Titre de séjour, carte d'identité, ou passeport.
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="height: 16px;"
-                />
               </div>
             </div>
           </div>
@@ -419,175 +424,180 @@ Object {
           class="css-view-1dbjc4n r-pointerEvents-12vffkv"
           data-testid="modal"
           id="animatedComponent"
-          style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; bottom: 0px; flex: 1; flex-direction: column; height: 428px; justify-content: center; left: 0px; margin: auto auto auto auto; max-height: 650px; max-width: 0px; padding: 20px 20px 20px 20px; position: absolute; right: 0px; transform: translateY(0px); width: 100%;"
+          style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: flex-start; display: flex; flex-direction: row; justify-content: center; width: 100%;"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 0px; padding: 20px 20px 20px 20px; width: 100%;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: flex-end; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-start;"
+              style="align-items: flex-start; display: flex; flex-direction: row; justify-content: center; width: 100%;"
             >
               <div
-                aria-label="leftIconButton"
                 class="css-view-1dbjc4n"
-                data-testid="leftIconButton"
-                style="cursor: pointer; margin-left: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                tabindex="0"
-              />
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; flex-basis: 0px; flex-grow: 0.8; flex-shrink: 1; justify-content: center; margin-top: 5px; padding-left: 12px; padding-right: 12px; z-index: 1;"
-            >
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                style="align-items: flex-end; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-start;"
               >
-                Quelques conseils
+                <div
+                  aria-label="leftIconButton"
+                  class="css-view-1dbjc4n"
+                  data-testid="leftIconButton"
+                  style="cursor: pointer; margin-left: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  tabindex="0"
+                />
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-basis: 0px; flex-grow: 0.8; flex-shrink: 1; justify-content: center; margin-top: 5px; padding-left: 12px; padding-right: 12px; z-index: 1;"
+              >
+                <div
+                  class="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                >
+                  Quelques conseils
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
+              >
+                <div
+                  aria-label="Fermer la modale de conseils pour avoir un document lisible"
+                  class="css-view-1dbjc4n"
+                  data-testid="Fermer la modale de conseils pour avoir un document lisible"
+                  style="cursor: pointer; margin-right: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="rightIcon"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      rightIcon-SVG-Mock
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
+              style="height: 20px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="max-width: 480px; padding-bottom: 8px; width: 100%;"
             >
               <div
-                aria-label="Fermer la modale de conseils pour avoir un document lisible"
                 class="css-view-1dbjc4n"
-                data-testid="Fermer la modale de conseils pour avoir un document lisible"
-                style="cursor: pointer; margin-right: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                tabindex="0"
+                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="rightIcon"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
+                    style="text-align: center;"
                   >
-                    rightIcon-SVG-Mock
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 20px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="max-width: 480px; padding-bottom: 8px; width: 100%;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
-            >
-              <div
-                class="css-view-1dbjc4n"
-              >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="text-align: center;"
-                >
-                  <span
-                    class="css-text-901oao css-textHasAncestor-16my406"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-                  >
-                    Il est important que les informations de ton document soient parfaitement lisibles.
-                    
+                    <span
+                      class="css-text-901oao css-textHasAncestor-16my406"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                    >
+                      Il est important que les informations de ton document soient parfaitement lisibles.
+                      
 
-                    Nos conseils :
-                  </span>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="padding-top: 24px; padding-bottom: 24px; width: 100%;"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: center; flex-direction: row; padding-top: 12px; padding-bottom: 12px;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; padding-left: 8px;"
-                    >
-                      Désactive ton flash
-                    </div>
+                      Nos conseils :
+                    </span>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    style="align-items: center; flex-direction: row; padding-top: 12px; padding-bottom: 12px;"
+                    style="padding-top: 24px; padding-bottom: 24px; width: 100%;"
                   >
                     <div
                       class="css-view-1dbjc4n"
+                      style="align-items: center; flex-direction: row; padding-top: 12px; padding-bottom: 12px;"
                     >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
                       <div
                         class="css-text-901oao"
                         dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; padding-left: 8px;"
                       >
-                        undefined-SVG-Mock
+                        Désactive ton flash
                       </div>
                     </div>
                     <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; padding-left: 8px;"
+                      class="css-view-1dbjc4n"
+                      style="align-items: center; flex-direction: row; padding-top: 12px; padding-bottom: 12px;"
                     >
-                      Place-toi dans un lieu bien éclairé
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; padding-left: 8px;"
+                      >
+                        Place-toi dans un lieu bien éclairé
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="align-items: center; flex-direction: row; padding-top: 12px; padding-bottom: 12px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; padding-left: 8px;"
+                      >
+                        Cadre l’intégralité de ton document
+                      </div>
                     </div>
                   </div>
                   <div
+                    aria-label="J'ai compris"
                     class="css-view-1dbjc4n"
-                    style="align-items: center; flex-direction: row; padding-top: 12px; padding-bottom: 12px;"
+                    data-testid="J'ai compris"
+                    style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                    tabindex="0"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-text-901oao"
+                      class="css-text-901oao css-textOneLine-vcwn7f"
                       dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; padding-left: 8px;"
+                      style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
                     >
-                      Cadre l’intégralité de ton document
+                      J'ai compris
                     </div>
-                  </div>
-                </div>
-                <div
-                  aria-label="J'ai compris"
-                  class="css-view-1dbjc4n"
-                  data-testid="J'ai compris"
-                  style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                  tabindex="0"
-                >
-                  <div
-                    class="css-text-901oao css-textOneLine-vcwn7f"
-                    dir="auto"
-                    style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
-                  >
-                    J'ai compris
                   </div>
                 </div>
               </div>
