@@ -13,7 +13,6 @@ import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBla
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { OrSeparator } from 'ui/components/OrSeparator'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
@@ -35,10 +34,10 @@ export const FastEduconnectConnectionRequestModal: React.FC<
     <AppModal
       title={t`Identifie-toi en 2 minutes`}
       visible={visible}
-      leftIconAccessibilityLabel={'leftIconButton'}
-      leftIcon={ArrowPrevious}
-      onLeftIconPress={hideModal}
-      rightIconAccessibilityLabel={'rightIconButton'}
+      leftIconAccessibilityLabel={undefined}
+      leftIcon={undefined}
+      onLeftIconPress={undefined}
+      rightIconAccessibilityLabel={t`Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées`}
       rightIcon={Close}
       onRightIconPress={hideModal}>
       <MainContent color={colors.greyDark}>

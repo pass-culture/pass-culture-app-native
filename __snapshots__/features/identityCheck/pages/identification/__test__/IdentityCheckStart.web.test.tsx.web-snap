@@ -70,11 +70,11 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="align-items: center; height: 100%;"
+                      style="align-items: center;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        style="height: 24px;"
                       />
                       <div
                         class="css-view-1dbjc4n"
@@ -198,7 +198,7 @@ Object {
                       </div>
                       <div
                         class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        style="height: 24px;"
                       />
                     </div>
                   </div>
@@ -252,24 +252,12 @@ Object {
               style="align-items: flex-end; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-start;"
             >
               <div
-                aria-label="Revenir en arrière"
+                aria-label="leftIconButton"
                 class="css-view-1dbjc4n"
-                data-testid="Revenir en arrière"
+                data-testid="leftIconButton"
                 style="cursor: pointer; margin-left: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
                 tabindex="0"
-              >
-                <div
-                  class="css-view-1dbjc4n"
-                  data-testid="leftIcon"
-                >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                  >
-                    leftIcon-SVG-Mock
-                  </div>
-                </div>
-              </div>
+              />
             </div>
             <div
               class="css-view-1dbjc4n"
@@ -288,12 +276,24 @@ Object {
               style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
             >
               <div
-                aria-label="rightIconButton"
+                aria-label="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
                 class="css-view-1dbjc4n"
-                data-testid="rightIconButton"
+                data-testid="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
                 style="cursor: pointer; margin-right: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
                 tabindex="0"
-              />
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="rightIcon"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    rightIcon-SVG-Mock
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div
@@ -430,24 +430,12 @@ Object {
               style="align-items: flex-end; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-start;"
             >
               <div
-                aria-label="Revenir en arrière"
+                aria-label="leftIconButton"
                 class="css-view-1dbjc4n"
-                data-testid="Revenir en arrière"
+                data-testid="leftIconButton"
                 style="cursor: pointer; margin-left: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
                 tabindex="0"
-              >
-                <div
-                  class="css-view-1dbjc4n"
-                  data-testid="leftIcon"
-                >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                  >
-                    leftIcon-SVG-Mock
-                  </div>
-                </div>
-              </div>
+              />
             </div>
             <div
               class="css-view-1dbjc4n"
@@ -466,12 +454,24 @@ Object {
               style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
             >
               <div
-                aria-label="rightIconButton"
+                aria-label="Fermer la modale de conseils pour avoir un document lisible"
                 class="css-view-1dbjc4n"
-                data-testid="rightIconButton"
+                data-testid="Fermer la modale de conseils pour avoir un document lisible"
                 style="cursor: pointer; margin-right: -5px; transition-duration: 0s; transition-property: opacity; user-select: none;"
                 tabindex="0"
-              />
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  data-testid="rightIcon"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    rightIcon-SVG-Mock
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div
@@ -663,11 +663,11 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    style="align-items: center; height: 100%;"
+                    style="align-items: center;"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      style="height: 24px;"
                     />
                     <div
                       class="css-view-1dbjc4n"
@@ -791,7 +791,7 @@ Object {
                     </div>
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      style="height: 24px;"
                     />
                   </div>
                 </div>

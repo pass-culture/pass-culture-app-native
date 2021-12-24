@@ -1,0 +1,320 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageWithHeader/> should render correctly 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitBoxDirection": "normal",
+      "WebkitBoxFlex": 1,
+      "WebkitBoxOrient": "vertical",
+      "WebkitFlexBasis": "0px",
+      "WebkitFlexDirection": "column",
+      "WebkitFlexGrow": 1,
+      "WebkitFlexShrink": 1,
+      "display": "flex",
+      "flexBasis": "0px",
+      "flexDirection": "column",
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "msFlexDirection": "column",
+      "msFlexNegative": 1,
+      "msFlexPositive": 1,
+      "msFlexPreferredSize": "0px",
+    }
+  }
+>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "16px",
+      }
+    }
+  />
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitBoxPack": "center",
+        "WebkitFlexDirection": "row",
+        "WebkitJustifyContent": "center",
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": "64px",
+        "justifyContent": "center",
+        "msFlexAlign": "center",
+        "msFlexDirection": "row",
+        "msFlexPack": "center",
+      }
+    }
+  >
+    <div
+      className="css-text-901oao"
+      dir="auto"
+      style={
+        Object {
+          "WebkitBoxFlex": 1,
+          "WebkitFlexBasis": "0px",
+          "WebkitFlexGrow": 1,
+          "WebkitFlexShrink": 1,
+          "color": "rgba(255,255,255,1.00)",
+          "flexBasis": "0px",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": "18px",
+          "lineHeight": "22px",
+          "msFlexNegative": 1,
+          "msFlexPositive": 1,
+          "msFlexPreferredSize": "0px",
+          "textAlign": "center",
+        }
+      }
+    >
+      Page with header title
+    </div>
+    <div
+      aria-label="Revenir en arrière"
+      className="css-view-1dbjc4n"
+      data-testid="Revenir en arrière"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      style={
+        Object {
+          "MozTransitionProperty": "opacity",
+          "MozUserSelect": "none",
+          "WebkitTransitionDuration": "0s",
+          "WebkitTransitionProperty": "opacity",
+          "WebkitUserSelect": "none",
+          "cursor": "pointer",
+          "left": "12px",
+          "msTouchAction": "manipulation",
+          "msUserSelect": "none",
+          "position": "absolute",
+          "touchAction": "manipulation",
+          "transitionDuration": "0s",
+          "transitionProperty": "opacity",
+          "userSelect": "none",
+        }
+      }
+      tabIndex="0"
+    >
+      <div
+        className="css-view-1dbjc4n"
+        data-testid="icon-back"
+      >
+        <div
+          className="css-text-901oao"
+          dir="auto"
+        >
+          icon-back-SVG-Mock
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitBoxFlex": 1,
+        "WebkitFlexBasis": "0px",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "flexBasis": "0px",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "msFlexPreferredSize": "0px",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "WebkitBoxFlex": 1,
+          "WebkitFlexBasis": "0px",
+          "WebkitFlexGrow": 1,
+          "flexBasis": "0px",
+          "flexGrow": 1,
+          "msFlexPositive": 1,
+          "msFlexPreferredSize": "0px",
+        }
+      }
+    >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitAlignItems": "center",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "vertical",
+            "WebkitFlexDirection": "column",
+            "alignItems": "center",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderTopLeftRadius": "22px",
+            "borderTopRightRadius": "22px",
+            "display": "flex",
+            "flexDirection": "column",
+            "height": "100%",
+            "msFlexAlign": "center",
+            "msFlexDirection": "column",
+            "paddingTop": "12px",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "maxHeight": "100%",
+              "maxWidth": "500px",
+              "paddingBottom": "24px",
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingLeft": "20px",
+                "paddingRight": "20px",
+                "paddingTop": "20px",
+              }
+            }
+          >
+            <div
+              className="css-text-901oao"
+              dir="auto"
+            >
+              fixed top children
+            </div>
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            onScroll={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            onWheel={[Function]}
+            style={
+              Object {
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxFlex": 1,
+                "WebkitBoxOrient": "vertical",
+                "WebkitFlexDirection": "column",
+                "WebkitFlexGrow": 1,
+                "WebkitFlexShrink": 1,
+                "WebkitOverflowScrolling": "touch",
+                "WebkitTransform": "translateZ(0px)",
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "msFlexDirection": "column",
+                "msFlexNegative": 1,
+                "msFlexPositive": 1,
+                "overflowX": "hidden",
+                "overflowY": "auto",
+                "transform": "translateZ(0px)",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 1,
+                  "WebkitBoxOrient": "vertical",
+                  "WebkitFlexDirection": "column",
+                  "WebkitFlexGrow": 1,
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "msFlexDirection": "column",
+                  "msFlexPositive": 1,
+                  "paddingBottom": "0px",
+                  "paddingLeft": "20px",
+                  "paddingRight": "20px",
+                }
+              }
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                scroll children
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "backgroundColor": "rgba(255,255,255,1.00)",
+                "bottom": "0px",
+                "left": "0px",
+                "paddingBottom": "20px",
+                "paddingLeft": "20px",
+                "paddingRight": "20px",
+                "paddingTop": "12px",
+                "position": "absolute",
+                "right": "0px",
+              }
+            }
+          >
+            <div
+              className="css-text-901oao"
+              dir="auto"
+            >
+              fixed bottom children
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "height": "8px",
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "bottom": "0px",
+        "height": "100%",
+        "left": "0px",
+        "position": "absolute",
+        "right": "0px",
+        "top": "0px",
+        "width": "100%",
+        "zIndex": -1,
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-text-901oao"
+        dir="auto"
+      >
+        undefined-SVG-Mock
+      </div>
+    </div>
+  </div>
+</div>
+`;

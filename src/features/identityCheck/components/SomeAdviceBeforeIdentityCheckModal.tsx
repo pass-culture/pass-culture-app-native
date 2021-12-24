@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { Close } from 'ui/svg/icons/Close'
 import { Flash } from 'ui/svg/icons/Flash'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Sun } from 'ui/svg/icons/Sun'
@@ -25,12 +25,12 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
   <AppModal
     visible={visible}
     title={t`Quelques conseils`}
-    leftIconAccessibilityLabel={t`Revenir en arrière`}
-    leftIcon={ArrowPrevious}
-    onLeftIconPress={hideModal}
-    rightIconAccessibilityLabel={undefined}
-    rightIcon={undefined}
-    onRightIconPress={undefined}>
+    leftIconAccessibilityLabel={undefined}
+    leftIcon={undefined}
+    onLeftIconPress={undefined}
+    rightIconAccessibilityLabel={t`Fermer la modale de conseils pour avoir un document lisible`}
+    rightIcon={Close}
+    onRightIconPress={hideModal}>
     <Description>
       <Typo.Body>
         {t`Il est important que les informations de ton document soient parfaitement lisibles.`}

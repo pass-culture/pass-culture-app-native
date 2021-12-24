@@ -15,6 +15,11 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
 }))
 
 describe('<QuitIdentityCheckModal/>', () => {
+  it('should render correctly', () => {
+    const renderAPI = renderQuitIdentityCheckModal(true)
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   it('should not display the modal when visible is false', () => {
     const { queryByText } = renderQuitIdentityCheckModal(false)
 

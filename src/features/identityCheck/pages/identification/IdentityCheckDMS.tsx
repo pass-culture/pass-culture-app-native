@@ -10,7 +10,7 @@ import { env } from 'libs/environment'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { OrSeparator } from 'ui/components/OrSeparator'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalLinkSquare } from 'ui/svg/icons/ExternalLinkSquare'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckDMS = () => {
@@ -44,14 +44,14 @@ export const IdentityCheckDMS = () => {
             <ButtonTertiaryBlack
               title={t`Je suis de nationalité française`}
               onPress={openDMSFrenchCitizenURL}
-              icon={ExternalSite}
+              icon={ExternalLinkSquare}
             />
             <Caption>{t`Carte d’identité ou passeport.`}</Caption>
             <OrSeparator />
             <ButtonTertiaryBlack
               title={t`Je suis de nationalité étrangère`}
               onPress={openDMSForeignCitizenURL}
-              icon={ExternalSite}
+              icon={ExternalLinkSquare}
             />
             <Caption>{t`Titre de séjour, carte d'identité ou passeport.`}</Caption>
           </ButtonContainer>

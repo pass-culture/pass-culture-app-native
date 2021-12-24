@@ -12,10 +12,17 @@ jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 describe('<DMSModal/>', () => {
-  it('should call hideModal function when clicking on ArrowPrevious icon', () => {
+  it('should render correctly', () => {
+    const renderAPI = render(<DMSModal visible={true} hideModal={hideModalMock} />)
+    expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should call hideModal function when clicking on Close icon', () => {
     const { getByTestId } = render(<DMSModal visible={true} hideModal={hideModalMock} />)
-    const leftIcon = getByTestId('Revenir en arrière')
-    fireEvent.press(leftIcon)
+    const rightIcon = getByTestId(
+      'Fermer la modale pour transmettre un document sur le site Démarches Simplifiée'
+    )
+    fireEvent.press(rightIcon)
     expect(hideModalMock).toHaveBeenCalled()
   })
 

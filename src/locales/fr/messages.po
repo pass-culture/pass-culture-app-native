@@ -988,9 +988,21 @@ msgstr "Fermer la modale"
 msgid "Fermer la modale de choix de l'indicatif téléphonique"
 msgstr "Fermer la modale de choix de l'indicatif téléphonique"
 
+#: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
+msgid "Fermer la modale de conseils pour avoir un document lisible"
+msgstr "Fermer la modale de conseils pour avoir un document lisible"
+
+#: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
+msgid "Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
+msgstr "Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
+
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Fermer la modale et refuser la collecte des données"
 msgstr "Fermer la modale et refuser la collecte des données"
+
+#: src/features/identityCheck/components/DMSModal.tsx
+msgid "Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
+msgstr "Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
 
 #: src/features/search/components/CalendarPicker.ios.tsx
 #: src/features/search/components/CalendarPicker.web.tsx
@@ -2108,8 +2120,6 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
-#: src/features/identityCheck/components/DMSModal.tsx
-#: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
@@ -2949,7 +2959,7 @@ msgstr "Tu as {credit} sur ton pass"
 
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 msgid "credit left to spend"
-msgstr "Il te reste encore {credit} à dépenser sur le pass !"
+msgstr "Il te reste encore {credit} à dépenser sur le pass !"
 
 #: src/features/bookOffer/atoms/HourChoice.tsx
 #: src/features/bookOffer/components/BookDuoChoice.tsx
@@ -2970,7 +2980,7 @@ msgstr "dans l'année de tes 18 ans, le Gouvernement offre un crédit de {deposi
 
 #: src/features/profile/components/YoungerBadge.tsx
 msgid "date d'éligibilité"
-msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription et bénéficier du crédit pass Culture."
+msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription et bénéficier du crédit pass Culture."
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
@@ -3042,7 +3052,7 @@ msgstr "l'un des 21 établissements de test"
 
 #: src/features/profile/components/SubscriptionMessageBadge.tsx
 msgid "last update"
-msgstr "Dossier mis à jour le : {day} à {hour}"
+msgstr "Dossier mis à jour le : {day} à {hour}"
 
 #: src/features/bookings/helpers.ts
 msgid "le jour"
@@ -3072,7 +3082,7 @@ msgstr ""
 msgid "not cancellable because expired for ex beneficiary"
 msgstr ""
 "Ton crédit est expiré.\n"
-"Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {date}"
+"Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {date}"
 
 #: src/features/bookings/components/CancelBookingModal.tsx
 msgid "not refunded because expired"
