@@ -30,7 +30,6 @@ export type ClippedImageProps = {
 export function ClippedImage(props: ClippedImageProps) {
   const linearGradientId = props.clipId + '_linear'
   const pathId = props.clipId + '_path'
-  // TODO(anoukhello) update default icon size to fit mockup once MAP_CATEGORY_ID_TO_ICON uses new icons
   const Icon = props.altIcon || OfferDigital
 
   return (
@@ -62,7 +61,7 @@ export function ClippedImage(props: ClippedImageProps) {
       </Svg>
       {!props.image && Icon ? (
         <IconContainer testID="iconContainer">
-          <Icon size={48} color={ColorsEnum.GREY_MEDIUM} />
+          <Icon size={40} color={ColorsEnum.GREY_MEDIUM} />
         </IconContainer>
       ) : null}
     </Container>
