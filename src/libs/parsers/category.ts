@@ -1,27 +1,27 @@
 import { CategoryIdEnum } from 'api/gen'
-import { Category } from 'ui/svg/icons/categories'
+import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { IconInterface } from 'ui/svg/icons/types'
 
 export const MAP_CATEGORY_ID_TO_ICON: {
   [k in CategoryIdEnum]: React.FC<IconInterface>
 } = {
-  [CategoryIdEnum.CINEMA]: Category.Cinema,
-  [CategoryIdEnum.MUSEE]: Category.Exposition,
-  [CategoryIdEnum.MUSIQUELIVE]: Category.Musique,
-  [CategoryIdEnum.MUSIQUEENREGISTREE]: Category.Musique,
-  [CategoryIdEnum.SPECTACLE]: Category.Spectacles,
-  [CategoryIdEnum.PRATIQUEART]: Category.Atelier,
-  [CategoryIdEnum.LIVRE]: Category.Book,
-  [CategoryIdEnum.FILM]: Category.Streaming,
-  [CategoryIdEnum.MEDIA]: Category.Presse,
-  [CategoryIdEnum.JEU]: Category.VideoGames,
-  [CategoryIdEnum.CONFERENCE]: Category.Conference,
-  [CategoryIdEnum.INSTRUMENT]: Category.Instrument,
-  [CategoryIdEnum.BEAUXARTS]: Category.ArtsMaterial,
-  [CategoryIdEnum.TECHNIQUE]: Category.Artwork,
+  [CategoryIdEnum.CINEMA]: CategoryIcon.Cinema,
+  [CategoryIdEnum.MUSEE]: CategoryIcon.Exposition,
+  [CategoryIdEnum.MUSIQUELIVE]: CategoryIcon.Musique,
+  [CategoryIdEnum.MUSIQUEENREGISTREE]: CategoryIcon.Musique,
+  [CategoryIdEnum.SPECTACLE]: CategoryIcon.Spectacles,
+  [CategoryIdEnum.PRATIQUEART]: CategoryIcon.Atelier,
+  [CategoryIdEnum.LIVRE]: CategoryIcon.Livres,
+  [CategoryIdEnum.FILM]: CategoryIcon.Streaming,
+  [CategoryIdEnum.MEDIA]: CategoryIcon.Presse,
+  [CategoryIdEnum.JEU]: CategoryIcon.JeuxVideo,
+  [CategoryIdEnum.CONFERENCE]: CategoryIcon.Conference,
+  [CategoryIdEnum.INSTRUMENT]: CategoryIcon.Instrument,
+  [CategoryIdEnum.BEAUXARTS]: CategoryIcon.ArtsMaterial,
+  [CategoryIdEnum.TECHNIQUE]: CategoryIcon.ArtsMaterial,
 }
 
 export const mapCategoryToIcon = (id: CategoryIdEnum | null): React.FC<IconInterface> => {
   if (id && id in MAP_CATEGORY_ID_TO_ICON) return MAP_CATEGORY_ID_TO_ICON[id]
-  return Category.Artwork
+  return CategoryIcon.ArtsMaterial
 }

@@ -45,6 +45,14 @@ exports[`OfferCategory renders correctly 1`] = `
     </div>
   </div>
   <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "8px",
+      }
+    }
+  />
+  <div
     className="css-text-901oao"
     data-testid="caption-undefined"
     dir="auto"

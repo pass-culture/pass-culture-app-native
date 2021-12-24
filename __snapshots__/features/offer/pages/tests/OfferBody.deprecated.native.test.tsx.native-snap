@@ -632,15 +632,24 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 }
                               >
                                 <View
-                                  fill="#626262"
-                                  height={40}
-                                  width={40}
+                                  height={32}
+                                  width={32}
                                 >
                                   <Text>
                                     undefined-SVG-Mock
                                   </Text>
                                 </View>
                               </View>
+                              <View
+                                numberOfSpaces={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 8,
+                                    },
+                                  ]
+                                }
+                              />
                               <Text
                                 style={
                                   Array [
@@ -697,15 +706,25 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               >
                                 <View
                                   fill="#626262"
-                                  height={40}
+                                  height={32}
                                   testID="iconPrice"
-                                  width={40}
+                                  width={32}
                                 >
                                   <Text>
                                     iconPrice-SVG-Mock
                                   </Text>
                                 </View>
                               </View>
+                              <View
+                                numberOfSpaces={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 8,
+                                    },
+                                  ]
+                                }
+                              />
                               <Text
                                 style={
                                   Array [
@@ -3032,15 +3051,24 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                               >
                                 <View
-                                  fill="#626262"
-                                  height={40}
-                                  width={40}
+                                  height={32}
+                                  width={32}
                                 >
                                   <Text>
                                     undefined-SVG-Mock
                                   </Text>
                                 </View>
                               </View>
+                              <View
+                                numberOfSpaces={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 8,
+                                    },
+                                  ]
+                                }
+                              />
                               <Text
                                 style={
                                   Array [
@@ -3096,16 +3124,25 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                               >
                                 <View
-                                  fill="#626262"
-                                  height={40}
+                                  height={32}
                                   testID="iconDuo"
-                                  width={40}
+                                  width={32}
                                 >
                                   <Text>
                                     iconDuo-SVG-Mock
                                   </Text>
                                 </View>
                               </View>
+                              <View
+                                numberOfSpaces={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 8,
+                                    },
+                                  ]
+                                }
+                              />
                               <Text
                                 style={
                                   Array [
@@ -3162,15 +3199,25 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               >
                                 <View
                                   fill="#626262"
-                                  height={40}
+                                  height={32}
                                   testID="iconPrice"
-                                  width={40}
+                                  width={32}
                                 >
                                   <Text>
                                     iconPrice-SVG-Mock
                                   </Text>
                                 </View>
                               </View>
+                              <View
+                                numberOfSpaces={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 8,
+                                    },
+                                  ]
+                                }
+                              />
                               <Text
                                 style={
                                   Array [

@@ -8,7 +8,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { IconWithCaption, OfferCategory } from 'features/offer/atoms'
 import { getOfferPrices } from 'features/offer/services/getOfferPrice'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
-import { DuoDeprecated as Duo } from 'ui/svg/icons/Duo_deprecated'
+import { Duo } from 'ui/svg/icons/Duo'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
