@@ -26,6 +26,7 @@ import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
+import { Booking } from 'ui/svg/icons/Booking'
 import { BookingDeprecated } from 'ui/svg/icons/Booking_deprecated'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarDeprecated } from 'ui/svg/icons/Calendar_deprecated'
@@ -187,6 +188,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="LifeBuoy" component={LifeBuoy} isNew />
       <Icon name="Bell" component={Bell} isNew />
       <Icon name="ProfileDeletion" component={ProfileDeletion} />
+      <Icon name="Booking" component={Booking} isNew />
       <Icon name="BookingDeprecated" component={BookingDeprecated} />
       <Icon name="Calendar" component={Calendar} isNew />
       <Icon name="CalendarDeprecated" component={CalendarDeprecated} />
