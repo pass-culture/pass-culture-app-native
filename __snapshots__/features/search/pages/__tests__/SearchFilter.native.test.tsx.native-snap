@@ -121,6 +121,16 @@ exports[`SearchFilter component should render correctly 1`] = `
               undefined-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "width": 8,
+                },
+              ]
+            }
+          />
           <Text
             numberOfLines={2}
             style={
