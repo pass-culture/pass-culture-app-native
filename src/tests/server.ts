@@ -131,7 +131,7 @@ export function requestSettingsSuccess(
     enablePhoneValidation: false,
     enableUnderageGeneralisation: false,
     enableIdCheckRetention: false,
-    objectStorageUrl: 'http://localhost',
+    objectStorageUrl: 'https://localhost',
     displayDmsRedirection: true,
     idCheckAddressAutocompletion: true,
     isWebappV2Enabled: false,

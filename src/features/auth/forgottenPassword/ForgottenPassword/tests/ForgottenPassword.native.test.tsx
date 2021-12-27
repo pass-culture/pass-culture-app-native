@@ -139,7 +139,7 @@ describe('<ForgottenPassword />', () => {
       ).toBeTruthy()
       expect(MonitoringError).toHaveBeenNthCalledWith(
         1,
-        'Échec de la requête http://localhost/native/v1/request_password_reset, code: 400',
+        'Échec de la requête https://localhost/native/v1/request_password_reset, code: 400',
         'ForgottenPasswordRequestResetError'
       )
       expect(navigate).not.toBeCalled()

@@ -14,9 +14,9 @@ Voir plus de critiques en suivant le lien suivant : `
 const description1 = description1WithoutUrl + 'https://fauxliencritique.com/'
 
 const description2 = `https://www.google.com/ Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-https://www.google.com/ Lorem ipsum dolor sit amet, consectetur http://another-wronglyplacedurl.extension_is_6_car_max elit. 
-http://www.google.com/ Lorem ipsum dolor sit amet, consecteturhttps://wrongly-placed.urladipiscing elit. 
-some text here as well http://www.google.com/?key=valeu&key2=value2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+https://www.google.com/ Lorem ipsum dolor sit amet, consectetur https://another-wronglyplacedurl.extension_is_6_car_max elit. 
+https://www.google.com/ Lorem ipsum dolor sit amet, consecteturhttps://wrongly-placed.urladipiscing elit. 
+some text here as well https://www.google.com/?key=valeu&key2=value2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 
 https://www.google.com/`
 

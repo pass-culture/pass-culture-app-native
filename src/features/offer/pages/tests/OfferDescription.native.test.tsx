@@ -60,7 +60,7 @@ describe('getContentFromOffer()', () => {
   it('add description if defined', () => {
     expect(getContentFromOffer({}, '')).toEqual([])
     expect(getField(getContentFromOffer({}, 'desc'), 'description')).toEqual(['desc'])
-    expect(getField(getContentFromOffer({}, 'link http://link.com'), 'description')).toEqual([
+    expect(getField(getContentFromOffer({}, 'link https://link.com'), 'description')).toEqual([
       'link ',
       expect.anything(),
     ])

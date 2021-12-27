@@ -10,7 +10,7 @@ export const offerResponseSnap: OfferResponse = {
     visualDisability: false,
   },
   description:
-    'Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…\nTous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html',
+    'Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html',
   expenseDomains: [ExpenseDomain.All],
   isDigital: false,
   isDuo: true,
